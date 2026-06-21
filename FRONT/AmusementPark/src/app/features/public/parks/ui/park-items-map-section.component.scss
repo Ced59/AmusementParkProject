@@ -123,52 +123,6 @@
   color: var(--app-heading);
 }
 
-.park-items-map__unlocated {
-  display: grid;
-  gap: 0.75rem;
-  padding: 0.9rem;
-  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 24%, var(--app-border));
-  border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--app-accent-cyan) 8%, var(--app-surface));
-}
-
-.park-items-map__unlocated strong,
-.park-items-map__unlocated span {
-  display: block;
-}
-
-.park-items-map__unlocated strong {
-  color: var(--app-heading);
-}
-
-.park-items-map__unlocated > div > span {
-  color: var(--app-text-muted);
-  font-size: 0.85rem;
-}
-
-.park-items-map__unlocated-list {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.park-items-map__unlocated-list a {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 0.12rem 0.6rem;
-  align-items: center;
-  padding: 0.6rem 0.7rem;
-  border: 1px solid var(--app-border);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--app-surface) 82%, transparent);
-  color: var(--app-heading);
-  text-decoration: none;
-}
-
-.park-items-map__unlocated-list a small {
-  grid-column: 2;
-  color: var(--app-text-muted);
-}
-
 :host ::ng-deep .park-items-map__slot .leaflet-map-container {
   height: 28rem;
   border-radius: var(--radius-lg);

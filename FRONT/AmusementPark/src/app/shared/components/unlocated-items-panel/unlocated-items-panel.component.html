@@ -1,0 +1,56 @@
+@if (totalItems > 0) {
+  <div class="unlocated-items-panel">
+    <div class="unlocated-items-panel__header">
+      <div>
+        <strong>{{ titleKey | translate:{ count: totalItems } }}</strong>
+        <span>{{ subtitleKey | translate }}</span>
+      </div>
+
+      @if (hasPagination) {
+        <span class="unlocated-items-panel__page">{{ pageLabel }}</span>
+      }
+    </div>
+
+    <div class="unlocated-items-panel__list">
+      @for (item of pagedItems; track item.id ?? item.name) {
+        @if (item.detailLink) {
+          <a class="unlocated-items-panel__item" [routerLink]="item.detailLink">
+            <i class="pi pi-link" aria-hidden="true"></i>
+            <span>{{ item.name }}</span>
+            <small>{{ item.categoryLabelKey | translate }} &middot; {{ item.typeLabelKey | translate }}</small>
+          </a>
+        } @else {
+          <div class="unlocated-items-panel__item">
+            <i class="pi pi-link" aria-hidden="true"></i>
+            <span>{{ item.name }}</span>
+            <small>{{ item.categoryLabelKey | translate }} &middot; {{ item.typeLabelKey | translate }}</small>
+          </div>
+        }
+      }
+    </div>
+
+    @if (hasPagination) {
+      <div class="unlocated-items-panel__pagination">
+        <button
+          appUiButton="ghost"
+          type="button"
+          [disabled]="currentPage <= 1"
+          [appUiButtonDisabled]="currentPage <= 1"
+          (click)="previousPage()">
+          <i class="pi pi-arrow-left" aria-hidden="true"></i>
+          <span>{{ 'pagination.previous' | translate }}</span>
+        </button>
+
+        <button
+          appUiButton="ghost"
+          type="button"
+          [disabled]="currentPage >= totalPages"
+          [appUiButtonDisabled]="currentPage >= totalPages"
+          (click)="nextPage()">
+          <span>{{ 'pagination.next' | translate }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    }
+  </div>
+}

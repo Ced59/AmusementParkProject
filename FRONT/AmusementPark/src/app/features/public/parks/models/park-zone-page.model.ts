@@ -34,6 +34,7 @@ export interface ParkZonePageViewModel {
   parkLink: string[] | null;
   zonesLink: string[] | null;
   allItemsLink: string[] | null;
+  allItemsQueryParams: Record<string, string> | null;
   zoneName: string;
   zoneDescription: string | null;
   totalItems: number;

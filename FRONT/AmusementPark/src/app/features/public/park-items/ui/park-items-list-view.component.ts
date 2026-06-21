@@ -9,6 +9,7 @@ import { MapMarker } from '@app/models/map/map-marker';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
+import { UnlocatedItemsPanelComponent } from '@shared/components/unlocated-items-panel/unlocated-items-panel.component';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
 import { SelectOption } from '../models/select-option.model';
 import { ParkItemsPageViewModel, ParkItemZoneCardViewModel } from '../models/park-items-page-view.model';
@@ -41,7 +42,8 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
     UiChipComponent,
     UiKickerComponent,
     UiSurfaceDirective,
-    PublicSharePanelComponent
+    PublicSharePanelComponent,
+    UnlocatedItemsPanelComponent
   ]
 })
 export class ParkItemsListViewComponent {

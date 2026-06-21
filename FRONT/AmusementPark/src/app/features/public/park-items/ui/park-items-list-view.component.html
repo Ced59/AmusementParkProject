@@ -96,26 +96,10 @@
             </div>
           }
 
-          @if (focus.unlocatedItems.length > 0) {
-            <div class="items-map-panel__unlocated">
-              <div>
-                <strong>{{ 'parkItems.unlocated.title' | translate:{ count: focus.unlocatedItems.length } }}</strong>
-                <span>{{ 'parkItems.unlocated.subtitle' | translate }}</span>
-              </div>
-
-              <div class="items-map-panel__unlocated-list">
-                @for (item of focus.unlocatedItems; track item.id ?? item.name) {
-                  @if (item.detailLink) {
-                    <a [routerLink]="item.detailLink">
-                      <i class="pi pi-link" aria-hidden="true"></i>
-                      <span>{{ item.name }}</span>
-                      <small>{{ item.categoryLabelKey | translate }} &middot; {{ item.typeLabelKey | translate }}</small>
-                    </a>
-                  }
-                }
-              </div>
-            </div>
-          }
+          <app-unlocated-items-panel
+            [items]="focus.unlocatedItems"
+            [pageSize]="5">
+          </app-unlocated-items-panel>
         </div>
       }
 

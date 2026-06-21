@@ -18,6 +18,7 @@ import {
 import { ParkItem } from '@app/models/parks/park-item';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { ApiResponse } from '@app/models/shared/api_reponse';
+import { PagedResult } from '@shared/models/contracts';
 import {
   normalizeParkItem,
   normalizeParkItemAdminRows,
@@ -25,7 +26,7 @@ import {
   unwrapCollection,
   unwrapPagedCollection
 } from '../shared/api-helpers';
-import { PARK_ITEMS_API_ENDPOINTS, ParkItemAdminListFilters, ParkItemAdminListSort } from './park-items-api-endpoints';
+import { PARK_ITEMS_API_ENDPOINTS, ParkItemAdminListFilters, ParkItemAdminListSort, ParkItemsByParkIdFilters } from './park-items-api-endpoints';
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 
@@ -123,9 +124,29 @@ export class ParkItemsApiService {
   }
 
   getParkItemsByParkId(parkId: string, options: ParkItemsHttpOptions = {}): Observable<ParkItem[]> {
-    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId(parkId, 1, 100, options.closedFilter)}`;
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId(parkId, 1, 100, { closedFilter: options.closedFilter })}`;
     return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url, options).pipe(
       map((response: ParkItem[] | PagedCollectionResponse<ParkItem>) => unwrapCollection<ParkItem>(response).map((item: ParkItem) => normalizeParkItem(item)))
+    );
+  }
+
+  getParkItemsByParkIdPage(
+    parkId: string,
+    page: number = 1,
+    size: number = 12,
+    filters: ParkItemsByParkIdFilters | null = null,
+    options: ParkItemsHttpOptions = {}
+  ): Observable<PagedResult<ParkItem>> {
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId(parkId, page, size, filters)}`;
+    return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url, options).pipe(
+      map((response: ParkItem[] | PagedCollectionResponse<ParkItem>) => {
+        const pageResult: PagedResult<ParkItem> = unwrapPagedCollection<ParkItem>(response);
+
+        return {
+          items: pageResult.items.map((item: ParkItem) => normalizeParkItem(item)),
+          pagination: pageResult.pagination
+        };
+      })
     );
   }
 

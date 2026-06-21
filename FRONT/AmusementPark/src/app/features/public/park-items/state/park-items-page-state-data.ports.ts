@@ -21,7 +21,7 @@ export const PARK_ITEMS_PAGE_STATE_MANUFACTURERS_API_SERVICE_PORT = new Injectio
   factory: () => inject(ManufacturersApiService)
 });
 
-export interface ParkItemsPageStateParkItemsApiServicePort extends Pick<ParkItemsApiService, 'getParkItemsByParkId'> {
+export interface ParkItemsPageStateParkItemsApiServicePort extends Pick<ParkItemsApiService, 'getParkItemsByParkIdPage'> {
 }
 
 export const PARK_ITEMS_PAGE_STATE_PARK_ITEMS_API_SERVICE_PORT = new InjectionToken<ParkItemsPageStateParkItemsApiServicePort>('PARK_ITEMS_PAGE_STATE_PARK_ITEMS_API_SERVICE_PORT', {
@@ -29,7 +29,7 @@ export const PARK_ITEMS_PAGE_STATE_PARK_ITEMS_API_SERVICE_PORT = new InjectionTo
   factory: () => inject(ParkItemsApiService)
 });
 
-export interface ParkItemsPageStateParksApiServicePort extends Pick<ParksApiService, 'getParkById' | 'getParkExplorer'> {
+export interface ParkItemsPageStateParksApiServicePort extends Pick<ParksApiService, 'getParkById' | 'getParkExplorer' | 'getParkMapItems'> {
 }
 
 export const PARK_ITEMS_PAGE_STATE_PARKS_API_SERVICE_PORT = new InjectionToken<ParkItemsPageStateParksApiServicePort>('PARK_ITEMS_PAGE_STATE_PARKS_API_SERVICE_PORT', {

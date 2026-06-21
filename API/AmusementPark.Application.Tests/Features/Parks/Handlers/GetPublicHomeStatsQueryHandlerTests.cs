@@ -259,6 +259,11 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
             throw new NotImplementedException();
         }
 
+        public Task<PagedResult<ParkItem>> GetPublicPageByParkIdAsync(int page, int pageSize, string parkId, string? search, bool includeHidden, ClosedEntityFilter closedFilter, ParkItemCategory? category, ParkItemType? type, string? zoneId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

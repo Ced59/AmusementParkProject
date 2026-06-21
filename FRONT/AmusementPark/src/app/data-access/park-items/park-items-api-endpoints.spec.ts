@@ -58,4 +58,14 @@ describe('PARK_ITEMS_API_ENDPOINTS', () => {
     expect(PARK_ITEMS_API_ENDPOINTS.getRelatedParkItems('item 1', 4, 'openOnly'))
       .toBe('park-items/item%201/related?limit=4');
   });
+
+  it('builds filtered public park item page urls', () => {
+    expect(PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId('park 1', 2, 12, {
+      closedFilter: 'closedOnly',
+      search: '  food court  ',
+      category: 'Restaurant',
+      type: 'Snack',
+      zoneId: 'zone 1'
+    })).toBe('park-items/park/park%201?page=2&size=12&closedFilter=closedOnly&search=food%20court&category=Restaurant&type=Snack&zoneId=zone%201');
+  });
 });

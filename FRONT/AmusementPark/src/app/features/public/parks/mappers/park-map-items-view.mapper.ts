@@ -44,8 +44,7 @@ function mapUnlocatedItems(response: ParkMapItems, language: string): ParkItemsM
         itemName: item.name
       })
     }))
-    .sort((left: ParkItemsMapUnlocatedItemViewModel, right: ParkItemsMapUnlocatedItemViewModel) => left.name.localeCompare(right.name))
-    .slice(0, 16);
+    .sort((left: ParkItemsMapUnlocatedItemViewModel, right: ParkItemsMapUnlocatedItemViewModel) => left.name.localeCompare(right.name));
 }
 
 function mapItemToMarker(response: ParkMapItems, item: ParkMapItem, language: string): ParkItemsMapMarkerViewModel {

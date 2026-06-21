@@ -3,7 +3,7 @@ import { ParkItemsApiService } from '@data-access/park-items/park-items-api.serv
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 
-export interface ParkZonesPageStateParksApiServicePort extends Pick<ParksApiService, 'getParkDetailSummary' | 'getParkExplorer'> {
+export interface ParkZonesPageStateParksApiServicePort extends Pick<ParksApiService, 'getParkDetailSummary' | 'getParkExplorer' | 'getParkMapItems'> {
 }
 
 export const PARK_ZONES_PAGE_STATE_PARKS_API_SERVICE_PORT = new InjectionToken<ParkZonesPageStateParksApiServicePort>('PARK_ZONES_PAGE_STATE_PARKS_API_SERVICE_PORT', {
@@ -19,7 +19,7 @@ export const PARK_ZONES_PAGE_STATE_PARK_ZONES_API_SERVICE_PORT = new InjectionTo
   factory: () => inject(ParkZonesApiService)
 });
 
-export interface ParkZonesPageStateParkItemsApiServicePort extends Pick<ParkItemsApiService, 'getParkItemsByParkId'> {
+export interface ParkZonesPageStateParkItemsApiServicePort extends Pick<ParkItemsApiService, 'getParkItemsByParkIdPage'> {
 }
 
 export const PARK_ZONES_PAGE_STATE_PARK_ITEMS_API_SERVICE_PORT = new InjectionToken<ParkZonesPageStateParkItemsApiServicePort>('PARK_ZONES_PAGE_STATE_PARK_ITEMS_API_SERVICE_PORT', {
