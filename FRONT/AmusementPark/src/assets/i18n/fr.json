@@ -1053,6 +1053,15 @@
       "statuses": {
         "operating": "Ouvert",
         "closedDefinitively": "Fermé définitivement"
+      },
+      "sort": {
+        "label": "Tri",
+        "default": "Défaut",
+        "nameAsc": "Nom A-Z",
+        "totalDesc": "Items max",
+        "totalAsc": "Items min",
+        "visibleDesc": "Vis. max",
+        "visibleAsc": "Vis. min"
       }
     },
     "references": {

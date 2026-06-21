@@ -33,6 +33,7 @@ export class AdminParksComponent implements OnInit {
   protected readonly countryCodeFilter = this.stateFacade.countryCodeFilter;
   protected readonly validCoordinatesFilter = this.stateFacade.validCoordinatesFilter;
   protected readonly sortField = this.stateFacade.sortField;
+  protected readonly sortDirection = this.stateFacade.sortDirection;
   protected readonly sortOrder = computed<1 | -1>(() => this.stateFacade.sortDirection() === 'desc' ? -1 : 1);
   protected readonly selectedParkIds = signal<string[]>([]);
   protected readonly selectedCount = computed(() => this.selectedParkIds().length);
@@ -159,6 +160,17 @@ export class AdminParksComponent implements OnInit {
       console.error('Error making selected park items visible', error);
       this.stateFacade.loadParks(this.currentPage(), this.pageSize());
     }
+  }
+
+  onSortChanged(event: { sortField: ParkAdminListSortField; sortDirection: ParkAdminListSortDirection }): void {
+    const sortChanged: boolean = this.stateFacade.updateSort(event.sortField, event.sortDirection);
+    if (!sortChanged) {
+      return;
+    }
+
+    this.selectedParkIds.set([]);
+    this.stateFacade.loadParks(1, this.pageSize());
+    this.scrollAnchorService.scrollToSelector('[data-pagination-scroll-target="admin-parks"]');
   }
 
   async onMakeFilteredValidCoordinateParksVisible(): Promise<void> {

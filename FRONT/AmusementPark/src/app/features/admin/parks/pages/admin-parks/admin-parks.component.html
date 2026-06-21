@@ -11,6 +11,7 @@
   [countryCodeFilter]="countryCodeFilter"
   [validCoordinatesFilter]="validCoordinatesFilter"
   [sortField]="sortField"
+  [sortDirection]="sortDirection"
   [sortOrder]="sortOrder"
   [selectedParkIds]="selectedParkIds"
   [selectedCount]="selectedCount"
@@ -29,5 +30,6 @@
   (bulkStatusChanged)="onBulkStatusChange($event)"
   (bulkParkItemsVisibilityChanged)="onSelectedParkItemsVisibilityChange()"
   (filteredValidCoordinateParksVisibilityRequested)="onMakeFilteredValidCoordinateParksVisible()"
+  (sortChanged)="onSortChanged($event)"
   (selectionCleared)="clearSelection()">
 </app-admin-parks-view>
