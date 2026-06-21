@@ -1,6 +1,20 @@
 {
-  "version": "2.3.10",
+  "version": "2.3.11",
   "history": [
+    {
+      "version": "2.3.11",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'historique des versions se parcourt plus facilement.",
+        "en": "Version history is easier to browse.",
+        "de": "Der Versionsverlauf ist leichter zu durchsehen.",
+        "nl": "De versiegeschiedenis is makkelijker te bekijken.",
+        "it": "La cronologia delle versioni è più facile da consultare.",
+        "es": "El historial de versiones se recorre con más facilidad.",
+        "pl": "Historia wersji jest łatwiejsza do przeglądania.",
+        "pt": "O histórico de versões fica mais fácil de consultar."
+      }
+    },
     {
       "version": "2.3.10",
       "releasedAt": "2026-06-21",

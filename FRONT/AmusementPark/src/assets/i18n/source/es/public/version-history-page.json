@@ -4,6 +4,12 @@
     "title": "Que ha cambiado",
     "lead": "Version actual: {{version}}. Sigue las mejoras visibles del sitio con cada actualizacion.",
     "timelineAriaLabel": "Linea temporal del historial de versiones",
+    "loading": "Cargando versiones...",
+    "loadError": "No se pudo cargar el historial.",
+    "actions": {
+      "expand": "Ver {{count}}",
+      "collapse": "Plegar"
+    },
     "levels": {
       "major": "Mayor",
       "minor": "Hito",

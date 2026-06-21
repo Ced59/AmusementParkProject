@@ -4,6 +4,12 @@
     "title": "Co sie zmienilo",
     "lead": "Aktualna wersja: {{version}}. Sledz widoczne ulepszenia strony w kolejnych aktualizacjach.",
     "timelineAriaLabel": "Os czasu historii wersji",
+    "loading": "Ladowanie wersji...",
+    "loadError": "Nie udalo sie zaladowac historii.",
+    "actions": {
+      "expand": "Pokaz {{count}}",
+      "collapse": "Zwin"
+    },
     "levels": {
       "major": "Duza",
       "minor": "Etap",

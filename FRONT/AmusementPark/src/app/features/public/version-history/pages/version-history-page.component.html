@@ -8,27 +8,144 @@
   </section>
 
   <section class="version-history-timeline" [attr.aria-label]="'versionHistoryPage.timelineAriaLabel' | translate">
-    @for (entry of entries; track trackByVersion($index, entry)) {
-      <article
-        class="version-entry"
-        [class.version-entry--major]="level(entry) === 'major'"
-        [class.version-entry--minor]="level(entry) === 'minor'"
-        [class.version-entry--patch]="level(entry) === 'patch'"
-        [class.version-entry--indented]="level(entry) !== 'major'"
-        appUiSurface="shell"
-        appUiSurfacePadding="regular">
-        <div class="version-entry__marker" aria-hidden="true"></div>
-        <div class="version-entry__header">
-          <div>
-            <strong>{{ entry.version }}</strong>
-            <time [attr.datetime]="entry.releasedAt">{{ entry.releasedAt | date:'longDate' }}</time>
+    @if (historyLoading()) {
+      <div class="version-history-loading" appUiSurface="shell" appUiSurfacePadding="regular">
+        <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+        <span>{{ 'versionHistoryPage.loading' | translate }}</span>
+      </div>
+    } @else if (historyLoadFailed()) {
+      <div class="version-history-loading" appUiSurface="shell" appUiSurfacePadding="regular">
+        <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+        <span>{{ 'versionHistoryPage.loadError' | translate }}</span>
+      </div>
+    } @else {
+      @for (major of nodes(); track trackByNode($index, major)) {
+        <article
+          class="version-entry version-entry--major"
+          [class.version-entry--expanded]="isExpanded(major)"
+          appUiSurface="shell"
+          appUiSurfacePadding="regular">
+          <div class="version-entry__marker" aria-hidden="true"></div>
+          <div class="version-entry__header">
+            <div>
+              <strong>{{ major.entry.version }}</strong>
+              <time [attr.datetime]="major.entry.releasedAt">{{ major.entry.releasedAt | date:'longDate' }}</time>
+            </div>
+            <app-ui-chip [tone]="chipTone(major.level)" iconClass="pi pi-tag">
+              {{ levelKey(major.level) | translate }}
+            </app-ui-chip>
           </div>
-          <app-ui-chip [tone]="level(entry) === 'major' ? 'rose' : level(entry) === 'minor' ? 'sky' : 'lime'" iconClass="pi pi-tag">
-            {{ levelKey(entry) | translate }}
-          </app-ui-chip>
-        </div>
-        <p>{{ label(entry) }}</p>
-      </article>
+          <p>{{ label(major.entry) }}</p>
+          @if (hasChildren(major)) {
+            <button
+              class="version-entry__toggle"
+              type="button"
+              [attr.aria-expanded]="isExpanded(major)"
+              (click)="toggleNode(major)">
+              <i [class]="isExpanded(major) ? 'pi pi-chevron-up' : 'pi pi-chevron-down'" aria-hidden="true"></i>
+              <span>
+                {{ (isExpanded(major) ? 'versionHistoryPage.actions.collapse' : 'versionHistoryPage.actions.expand') | translate:{ count: major.childCount } }}
+              </span>
+            </button>
+          }
+        </article>
+
+        @if (isExpanded(major)) {
+          <div class="version-history-children version-history-children--minor">
+            @for (minor of major.children; track trackByNode($index, minor)) {
+              <article
+                class="version-entry version-entry--minor version-entry--indented"
+                [class.version-entry--expanded]="isExpanded(minor)"
+                appUiSurface="shell"
+                appUiSurfacePadding="regular">
+                <div class="version-entry__marker" aria-hidden="true"></div>
+                <div class="version-entry__header">
+                  <div>
+                    <strong>{{ minor.entry.version }}</strong>
+                    <time [attr.datetime]="minor.entry.releasedAt">{{ minor.entry.releasedAt | date:'longDate' }}</time>
+                  </div>
+                  <app-ui-chip [tone]="chipTone(minor.level)" iconClass="pi pi-tag">
+                    {{ levelKey(minor.level) | translate }}
+                  </app-ui-chip>
+                </div>
+                <p>{{ label(minor.entry) }}</p>
+                @if (hasChildren(minor)) {
+                  <button
+                    class="version-entry__toggle"
+                    type="button"
+                    [attr.aria-expanded]="isExpanded(minor)"
+                    (click)="toggleNode(minor)">
+                    <i [class]="isExpanded(minor) ? 'pi pi-chevron-up' : 'pi pi-chevron-down'" aria-hidden="true"></i>
+                    <span>
+                      {{ (isExpanded(minor) ? 'versionHistoryPage.actions.collapse' : 'versionHistoryPage.actions.expand') | translate:{ count: minor.childCount } }}
+                    </span>
+                  </button>
+                }
+              </article>
+
+              @if (isExpanded(minor)) {
+                <div class="version-history-children version-history-children--patch">
+                  @if (isLoadingChildren(minor)) {
+                    <div class="version-history-loading version-history-loading--inline">
+                      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                      <span>{{ 'versionHistoryPage.loading' | translate }}</span>
+                    </div>
+                  } @else {
+                    @for (patch of loadedChildren(minor); track trackByNode($index, patch)) {
+                      <article
+                        class="version-entry version-entry--patch version-entry--indented"
+                        appUiSurface="shell"
+                        appUiSurfacePadding="regular">
+                        <div class="version-entry__marker" aria-hidden="true"></div>
+                        <div class="version-entry__header">
+                          <div>
+                            <strong>{{ patch.entry.version }}</strong>
+                            <time [attr.datetime]="patch.entry.releasedAt">{{ patch.entry.releasedAt | date:'longDate' }}</time>
+                          </div>
+                          <app-ui-chip [tone]="chipTone(patch.level)" iconClass="pi pi-tag">
+                            {{ levelKey(patch.level) | translate }}
+                          </app-ui-chip>
+                        </div>
+                        <p>{{ label(patch.entry) }}</p>
+                      </article>
+                    }
+                  }
+                </div>
+              }
+            }
+
+            @if (isLoadingChildren(major) || loadedChildren(major).length > 0) {
+              <div class="version-history-children version-history-children--patch">
+                @if (isLoadingChildren(major)) {
+                  <div class="version-history-loading version-history-loading--inline">
+                    <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                    <span>{{ 'versionHistoryPage.loading' | translate }}</span>
+                  </div>
+                } @else {
+                  @for (patch of loadedChildren(major); track trackByNode($index, patch)) {
+                    <article
+                      class="version-entry version-entry--patch version-entry--indented"
+                      appUiSurface="shell"
+                      appUiSurfacePadding="regular">
+                      <div class="version-entry__marker" aria-hidden="true"></div>
+                      <div class="version-entry__header">
+                        <div>
+                          <strong>{{ patch.entry.version }}</strong>
+                          <time [attr.datetime]="patch.entry.releasedAt">{{ patch.entry.releasedAt | date:'longDate' }}</time>
+                        </div>
+                        <app-ui-chip [tone]="chipTone(patch.level)" iconClass="pi pi-tag">
+                          {{ levelKey(patch.level) | translate }}
+                        </app-ui-chip>
+                      </div>
+                      <p>{{ label(patch.entry) }}</p>
+                    </article>
+                  }
+                }
+              </div>
+            }
+          </div>
+        }
+      }
     }
   </section>
 </section>

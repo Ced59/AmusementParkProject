@@ -4,6 +4,12 @@
     "title": "Was sich geaendert hat",
     "lead": "Aktuelle Version: {{version}}. Folge den sichtbaren Verbesserungen der Website im Laufe der Zeit.",
     "timelineAriaLabel": "Zeitleiste des Versionsverlaufs",
+    "loading": "Versionen werden geladen...",
+    "loadError": "Der Versionsverlauf konnte nicht geladen werden.",
+    "actions": {
+      "expand": "{{count}} anzeigen",
+      "collapse": "Einklappen"
+    },
     "levels": {
       "major": "Gross",
       "minor": "Etappe",

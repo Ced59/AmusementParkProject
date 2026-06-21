@@ -2998,6 +2998,12 @@
     "title": "O que mudou",
     "lead": "Versao atual: {{version}}. Acompanhe as melhorias visiveis do site ao longo das atualizacoes.",
     "timelineAriaLabel": "Linha temporal do historico de versoes",
+    "loading": "A carregar versoes...",
+    "loadError": "Nao foi possivel carregar o historico.",
+    "actions": {
+      "expand": "Ver {{count}}",
+      "collapse": "Recolher"
+    },
     "levels": {
       "major": "Maior",
       "minor": "Marco",
