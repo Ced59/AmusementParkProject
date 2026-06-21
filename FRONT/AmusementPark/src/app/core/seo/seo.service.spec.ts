@@ -223,6 +223,15 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/fr/technical/lap-bar');
   });
 
+  it('applies indexable localized metadata to the public manufacturers page', () => {
+    service.applyRouteDefaults('/fr/manufacturers');
+
+    expect(documentRef.title).toBe('Constructeurs d attractions - Amusement Parks');
+    expect(readMetaContent('meta[name="description"]'))
+      .toBe('Parcours les constructeurs d attractions et de coasters avec leur fiche publique, leur histoire et leurs liens utiles.');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+  });
+
   function readMetaContent(selector: string): string | null {
     return documentRef.head.querySelector<HTMLMetaElement>(selector)?.content ?? null;
   }

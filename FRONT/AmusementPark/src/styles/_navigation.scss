@@ -118,10 +118,12 @@
 .mobile-bottom-nav__item,
 .app-mobile-bottom-nav__item {
   min-width: 0;
+  min-height: 3.7rem;
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.22rem;
   padding: 0.5rem 0.25rem;
   border-radius: 1rem;
@@ -150,10 +152,14 @@ button.app-mobile-bottom-nav__item {
 
 .mobile-bottom-nav__label,
 .app-mobile-bottom-nav__label {
+  max-width: 100%;
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.02em;
-  white-space: nowrap;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+  text-align: center;
+  white-space: normal;
 }
 
 @media (min-width: 681px) and (max-width: 1120px) {

@@ -1,0 +1,91 @@
+<section class="manufacturers-page public-page">
+  <header class="manufacturers-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <app-ui-kicker tone="sky" iconClass="pi pi-building">
+      {{ 'manufacturersPage.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ 'manufacturersPage.title' | translate }}</h1>
+    <p>{{ 'manufacturersPage.subtitle' | translate }}</p>
+  </header>
+
+  <section class="manufacturers-toolbar" appUiSurface="shell" appUiSurfacePadding="regular">
+    <label for="manufacturerSearch">{{ 'manufacturersPage.search.label' | translate }}</label>
+    <div class="manufacturers-toolbar__search">
+      <i class="pi pi-search" aria-hidden="true"></i>
+      <input
+        id="manufacturerSearch"
+        type="search"
+        [value]="searchTerm()"
+        [placeholder]="'manufacturersPage.search.placeholder' | translate"
+        (input)="onSearchInput($event)" />
+      @if (searchTerm()) {
+        <button appUiButton="ghost" type="button" (click)="clearSearch()">
+          <i class="pi pi-times" aria-hidden="true"></i>
+          <span>{{ 'actions.clear' | translate }}</span>
+        </button>
+      }
+    </div>
+    <p>{{ 'manufacturersPage.search.count' | translate:{ count: filteredManufacturers().length } }}</p>
+  </section>
+
+  @if (loading()) {
+    <section class="manufacturers-state" appUiSurface="shell" appUiSurfacePadding="regular">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'manufacturersPage.loading' | translate }}</span>
+    </section>
+  } @else if (errorKey(); as error) {
+    <section class="manufacturers-state manufacturers-state--error" appUiSurface="shell" appUiSurfacePadding="regular">
+      <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+      <span>{{ error | translate }}</span>
+    </section>
+  } @else if (filteredManufacturers().length === 0) {
+    <section class="manufacturers-state" appUiSurface="shell" appUiSurfacePadding="regular">
+      <i class="pi pi-inbox" aria-hidden="true"></i>
+      <span>{{ 'manufacturersPage.empty' | translate }}</span>
+    </section>
+  } @else {
+    <div class="manufacturers-groups">
+      @for (group of groupedManufacturers(); track group.letter) {
+        <section class="manufacturers-group">
+          <div class="manufacturers-group__letter">{{ group.letter }}</div>
+          <div class="manufacturers-grid">
+            @for (manufacturer of group.manufacturers; track manufacturer.id || manufacturer.name) {
+              @if (manufacturerRoute(manufacturer); as route) {
+                <a class="manufacturer-card" [routerLink]="route" appUiSurface="shell" appUiSurfacePadding="regular">
+                  <span class="manufacturer-card__top">
+                    <span class="manufacturer-card__name">{{ manufacturer.name }}</span>
+                    <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                  </span>
+
+                  @if (manufacturer.legalName && manufacturer.legalName !== manufacturer.name) {
+                    <span class="manufacturer-card__legal">{{ manufacturer.legalName }}</span>
+                  }
+
+                  @if (biographyPreview(manufacturer); as preview) {
+                    <span class="manufacturer-card__summary">{{ preview }}</span>
+                  } @else {
+                    <span class="manufacturer-card__summary manufacturer-card__summary--empty">{{ 'manufacturersPage.noDescription' | translate }}</span>
+                  }
+
+                  <span class="manufacturer-card__facts">
+                    @if (activityYears(manufacturer); as years) {
+                      <span><i class="pi pi-calendar" aria-hidden="true"></i>{{ years }}</span>
+                    }
+                    @if (locationLine(manufacturer); as location) {
+                      <span><i class="pi pi-map-marker" aria-hidden="true"></i>{{ location }}</span>
+                    }
+                    @if (manufacturer.attractionCount !== undefined && manufacturer.attractionCount !== null) {
+                      <span><i class="pi pi-sitemap" aria-hidden="true"></i>{{ 'manufacturersPage.attractionCount' | translate:{ count: manufacturer.attractionCount } }}</span>
+                    }
+                    @if (websiteHost(manufacturer); as host) {
+                      <span><i class="pi pi-globe" aria-hidden="true"></i>{{ host }}</span>
+                    }
+                  </span>
+                </a>
+              }
+            }
+          </div>
+        </section>
+      }
+    </div>
+  }
+</section>

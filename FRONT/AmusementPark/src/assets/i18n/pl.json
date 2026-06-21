@@ -1821,6 +1821,7 @@
     "parks": "Parki",
     "rankings": "Rankingi",
     "technical": "Technika",
+    "manufacturers": "Producenci",
     "about": "O nas",
     "profile": "Profil",
     "admin": "Administracja"
@@ -2259,6 +2260,21 @@
       "placeholderSubtitle": "Wyróżnione parki pojawią się tutaj.",
       "errorMessage": "Nie udało się wczytać wyróżnionych parków."
     }
+  },
+  "manufacturersPage": {
+    "kicker": "Producenci",
+    "title": "Producenci atrakcji",
+    "subtitle": "Przegladaj producentow atrakcji i coasterow zarejestrowanych na stronie, z publicznymi profilami i przydatnymi linkami.",
+    "search": {
+      "label": "Szukaj",
+      "placeholder": "Nazwa, kraj, miasto lub rok",
+      "count": "{{count}} producentow widocznych"
+    },
+    "loading": "Ladowanie producentow...",
+    "error": "Nie mozna teraz zaladowac producentow.",
+    "empty": "Zaden producent nie pasuje do wyszukiwania.",
+    "noDescription": "Profil szczegolowy wymaga jeszcze uzupelnienia.",
+    "attractionCount": "{{count}} atrakcji"
   },
   "publicNavigation": {
     "youAreHere": "Jesteś tutaj",

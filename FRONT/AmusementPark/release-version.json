@@ -1,6 +1,20 @@
 {
-  "version": "2.4.0",
+  "version": "2.5.0",
   "history": [
+    {
+      "version": "2.5.0",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "La liste des constructeurs arrive sur le site.",
+        "en": "The manufacturer list arrives on the site.",
+        "de": "Die Herstellerliste kommt auf die Website.",
+        "nl": "De bouwerslijst komt op de site.",
+        "it": "Arriva la lista dei costruttori sul sito.",
+        "es": "Llega la lista de fabricantes al sitio.",
+        "pl": "Lista producentow trafia na strone.",
+        "pt": "A lista de fabricantes chega ao site."
+      }
+    },
     {
       "version": "2.4.0",
       "releasedAt": "2026-06-21",

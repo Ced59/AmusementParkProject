@@ -1821,6 +1821,7 @@
     "parks": "Parks",
     "rankings": "Ranglisten",
     "technical": "Technik",
+    "manufacturers": "Hersteller",
     "about": "Über uns",
     "profile": "Profil",
     "admin": "Administration"
@@ -2259,6 +2260,21 @@
       "placeholderSubtitle": "Ausgewählte Parks erscheinen hier.",
       "errorMessage": "Die hervorgehobenen Parks konnten nicht geladen werden."
     }
+  },
+  "manufacturersPage": {
+    "kicker": "Hersteller",
+    "title": "Hersteller von Attraktionen",
+    "subtitle": "Durchsuche Hersteller von Attraktionen und Coastern, die auf der Website referenziert sind, mit Profilen und nuetzlichen Links.",
+    "search": {
+      "label": "Suche",
+      "placeholder": "Name, Land, Stadt oder Jahr",
+      "count": "{{count}} Hersteller angezeigt"
+    },
+    "loading": "Hersteller werden geladen...",
+    "error": "Hersteller koennen gerade nicht geladen werden.",
+    "empty": "Kein Hersteller passt zu deiner Suche.",
+    "noDescription": "Das Detailprofil muss noch ergaenzt werden.",
+    "attractionCount": "{{count}} Attraktion(en)"
   },
   "publicNavigation": {
     "youAreHere": "Du bist hier",
