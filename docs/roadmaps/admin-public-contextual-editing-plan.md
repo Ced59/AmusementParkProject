@@ -331,6 +331,14 @@ Risques a verifier :
 - Ne pas dupliquer des formulaires lourds dans le public initial.
 - Ne pas mettre d'orchestration metier dans les composants publics.
 
+Note de mise en oeuvre :
+
+- Le jalon 6 active un formulaire contextuel mobile-first pour `park.description`.
+- Le formulaire charge les variantes via l'export JSON borne afin de reprendre les huit langues supportees par le contrat du bloc.
+- La sauvegarde reconstruit un document JSON borne et passe par l'apply contextualise existant, ce qui conserve la preview serveur, l'audit, les validations et l'invalidation cache du jalon 5.
+- Une erreur de chargement ou de sauvegarde conserve les champs deja saisis dans le drawer.
+- `parkItem.description` reste un jalon d'extension dedie afin de garder cette PR focalisee et reversible.
+
 ### Jalon 7 - Ajout cible d'entites enfants
 
 But : creer depuis le contexte public sans perdre le rattachement.

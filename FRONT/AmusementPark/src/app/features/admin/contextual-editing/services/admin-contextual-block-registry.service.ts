@@ -31,7 +31,7 @@ const PARK_CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition
     labelKey: 'admin.contextualBlocks.blocks.parkDescription.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkDescription.description',
     iconClass: 'pi pi-align-left',
-    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'formEditPlanned'],
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
     jsonScope: [
       'park.id',
       'park.descriptions[*].languageCode',

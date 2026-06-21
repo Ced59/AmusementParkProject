@@ -9,6 +9,7 @@ import {
 } from '../../models/admin-contextual-block.model';
 import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
+import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField } from '../../state/admin-contextual-block-form.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 
@@ -35,17 +36,24 @@ export class AdminContextualBlockDrawerComponent {
   protected readonly applyResult: Signal<ContextualBlockPreviewResult | null> = this.applyFacade.applyResult;
   protected readonly isApplying: Signal<boolean> = this.applyFacade.isApplying;
   protected readonly applyErrorKey: Signal<string | null> = this.applyFacade.errorKey;
+  protected readonly localizedFormFields: Signal<readonly AdminContextualBlockLocalizedFormField[]> = this.formFacade.localizedFields;
+  protected readonly isFormLoading: Signal<boolean> = this.formFacade.isLoading;
+  protected readonly isFormSaving: Signal<boolean> = this.formFacade.isSaving;
+  protected readonly formErrorKey: Signal<string | null> = this.formFacade.errorKey;
+  protected readonly formSuccessKey: Signal<string | null> = this.formFacade.successKey;
 
   constructor(
     private readonly selectionFacade: AdminContextualBlockSelectionFacade,
     private readonly exportFacade: AdminContextualBlockExportFacade,
     private readonly previewFacade: AdminContextualBlockPreviewFacade,
-    private readonly applyFacade: AdminContextualBlockApplyFacade
+    private readonly applyFacade: AdminContextualBlockApplyFacade,
+    private readonly formFacade: AdminContextualBlockFormFacade
   ) {
     effect((): void => {
       const selectedBlock: AdminContextualBlockInstance | null = this.selectedBlock();
       this.previewFacade.resetForBlock(selectedBlock);
       this.applyFacade.resetForBlock(selectedBlock);
+      this.formFacade.resetForBlock(selectedBlock);
     });
   }
 
@@ -67,6 +75,10 @@ export class AdminContextualBlockDrawerComponent {
 
   protected canApplyJson(block: AdminContextualBlockInstance): boolean {
     return this.applyFacade.canApply(block);
+  }
+
+  protected canEditForm(block: AdminContextualBlockInstance): boolean {
+    return this.formFacade.canEditForm(block);
   }
 
   protected canApplyCurrentPreview(block: AdminContextualBlockInstance): boolean {
@@ -93,6 +105,19 @@ export class AdminContextualBlockDrawerComponent {
     this.applyFacade.clearResult();
   }
 
+  protected reloadForm(block: AdminContextualBlockInstance): void {
+    this.formFacade.loadForm(block);
+  }
+
+  protected updateLocalizedFormField(languageCode: string, event: Event): void {
+    const target: HTMLTextAreaElement | null = event.target instanceof HTMLTextAreaElement ? event.target : null;
+    this.formFacade.updateLocalizedValue(languageCode, target?.value ?? '');
+  }
+
+  protected saveForm(block: AdminContextualBlockInstance): void {
+    this.formFacade.saveForm(block);
+  }
+
   protected getIdEntries(block: AdminContextualBlockInstance): AdminContextualBlockIdEntry[] {
     return Object.entries(block.ids).map(([key, value]: [string, string]) => ({ key, value }));
   }
@@ -117,5 +142,9 @@ export class AdminContextualBlockDrawerComponent {
 
   protected trackPreviewChange(change: ContextualBlockPreviewChange): string {
     return `${change.entityType}:${change.entityId}:${change.field}:${change.languageCode ?? ''}`;
+  }
+
+  protected trackLocalizedFormField(field: AdminContextualBlockLocalizedFormField): string {
+    return field.languageCode;
   }
 }

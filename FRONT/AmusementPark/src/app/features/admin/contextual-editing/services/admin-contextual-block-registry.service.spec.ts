@@ -50,6 +50,7 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.capabilities).toContain('boundedJsonExport');
     expect(block?.capabilities).toContain('boundedJsonPreview');
     expect(block?.capabilities).toContain('boundedJsonApply');
+    expect(block?.capabilities).toContain('contextualFormEdit');
     expect(block?.jsonScope).toContain('park.descriptions[*].languageCode');
     expect(block?.jsonScope).toContain('park.descriptions[*].value');
   });

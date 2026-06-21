@@ -1,0 +1,29 @@
+export interface ContextualBlockExportTarget {
+  readonly entityType: string;
+  readonly entityId: string;
+}
+
+export interface ContextualBlockExportMetadata {
+  readonly source: string;
+  readonly exportedAtUtc: string;
+}
+
+export interface ContextualBlockLocalizedText {
+  readonly languageCode: string;
+  readonly value: string | null;
+}
+
+export interface ContextualParkDescriptionBlock {
+  readonly parkId: string;
+  readonly descriptions: readonly ContextualBlockLocalizedText[];
+}
+
+export interface ContextualBlockExportDocument<TBlock = unknown> {
+  readonly documentType: string;
+  readonly schemaVersion: string;
+  readonly blockType: string;
+  readonly target: ContextualBlockExportTarget;
+  readonly ids: Readonly<Record<string, string>>;
+  readonly block: TBlock | null;
+  readonly metadata: ContextualBlockExportMetadata;
+}

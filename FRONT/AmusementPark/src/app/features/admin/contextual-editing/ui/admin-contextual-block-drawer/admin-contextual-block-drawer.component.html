@@ -77,6 +77,58 @@
         </ul>
       </section>
 
+      @if (canEditForm(block)) {
+        <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__form">
+          <h3>{{ 'admin.contextualBlocks.drawer.formTitle' | translate }}</h3>
+
+          @if (isFormLoading()) {
+            <p class="admin-contextual-block-drawer__form-status">{{ 'admin.contextualBlocks.drawer.formLoading' | translate }}</p>
+          }
+
+          @if (localizedFormFields().length > 0) {
+            <div class="admin-contextual-block-drawer__form-fields">
+              @for (field of localizedFormFields(); track trackLocalizedFormField(field)) {
+                <label>
+                  <span>{{ field.languageCode }}</span>
+                  <textarea
+                    rows="4"
+                    [attr.aria-label]="'admin.contextualBlocks.drawer.localizedFieldAriaLabel' | translate: { languageCode: field.languageCode }"
+                    [value]="field.value"
+                    (input)="updateLocalizedFormField(field.languageCode, $event)"></textarea>
+                </label>
+              }
+            </div>
+
+            <div class="admin-contextual-block-drawer__preview-actions">
+              <button
+                type="button"
+                class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary"
+                [disabled]="isFormLoading() || isFormSaving()"
+                (click)="saveForm(block)">
+                <i class="pi pi-save" aria-hidden="true"></i>
+                <span>{{ (isFormSaving() ? 'admin.contextualBlocks.drawer.formSaveBusy' : 'admin.contextualBlocks.drawer.formSave') | translate }}</span>
+              </button>
+              <button
+                type="button"
+                class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary"
+                [disabled]="isFormLoading() || isFormSaving()"
+                (click)="reloadForm(block)">
+                <i class="pi pi-refresh" aria-hidden="true"></i>
+                <span>{{ 'admin.contextualBlocks.drawer.formReload' | translate }}</span>
+              </button>
+            </div>
+          }
+
+          @if (formErrorKey(); as errorKey) {
+            <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
+          }
+
+          @if (formSuccessKey(); as successKey) {
+            <p class="admin-contextual-block-drawer__success" role="status">{{ successKey | translate }}</p>
+          }
+        </section>
+      }
+
       @if (canPreviewJson(block)) {
         <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__preview">
           <h3>{{ 'admin.contextualBlocks.drawer.jsonDraft' | translate }}</h3>
