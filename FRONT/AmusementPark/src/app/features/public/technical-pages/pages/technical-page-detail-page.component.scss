@@ -199,6 +199,41 @@
   text-align: center;
 }
 
+.technical-diagram[data-diagram-key='chain-lift']::before {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 50%;
+  height: 2.25rem;
+  transform: translateY(-50%) rotate(-9deg);
+  border-block: 2px solid color-mix(in srgb, var(--app-text-faint) 42%, transparent);
+}
+
+.technical-diagram[data-diagram-key='chain-lift']::after {
+  content: '';
+  position: absolute;
+  left: 7%;
+  top: calc(50% + 1.4rem);
+  width: 3rem;
+  aspect-ratio: 1;
+  border: 0.4rem solid var(--app-accent-lime);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--app-surface) 0 32%, transparent 34%),
+    conic-gradient(from 45deg, color-mix(in srgb, var(--app-accent-lime) 42%, transparent) 0 25%, transparent 0 50%, color-mix(in srgb, var(--app-accent-lime) 42%, transparent) 0 75%, transparent 0);
+}
+
+.technical-diagram[data-diagram-key='chain-lift'] .technical-diagram__rail {
+  height: 0.55rem;
+  transform: translateY(-50%) rotate(-9deg);
+  border: 1px solid color-mix(in srgb, var(--app-accent-lime) 48%, var(--app-bg));
+  background:
+    repeating-linear-gradient(90deg, var(--app-accent-lime) 0 0.65rem, var(--app-accent-cyan) 0.65rem 1.05rem, color-mix(in srgb, var(--app-bg) 35%, transparent) 1.05rem 1.3rem),
+    linear-gradient(90deg, var(--app-accent-cyan), var(--app-accent-lime));
+  box-shadow: 0 0 1.3rem color-mix(in srgb, var(--app-accent-cyan) 22%, transparent);
+}
+
 .technical-table-wrap {
   overflow-x: auto;
 }
@@ -324,5 +359,32 @@
     width: 0.35rem;
     height: auto;
     transform: translateX(-50%);
+  }
+
+  .technical-diagram[data-diagram-key='chain-lift']::before {
+    top: 8%;
+    bottom: 8%;
+    left: 50%;
+    right: auto;
+    width: 2.25rem;
+    height: auto;
+    transform: translateX(-50%);
+    border-block: 0;
+    border-inline: 2px solid color-mix(in srgb, var(--app-text-faint) 42%, transparent);
+  }
+
+  .technical-diagram[data-diagram-key='chain-lift']::after {
+    top: auto;
+    bottom: 1rem;
+    left: calc(50% - 3.2rem);
+  }
+
+  .technical-diagram[data-diagram-key='chain-lift'] .technical-diagram__rail {
+    width: 0.55rem;
+    height: auto;
+    transform: translateX(-50%);
+    background:
+      repeating-linear-gradient(180deg, var(--app-accent-lime) 0 0.65rem, var(--app-accent-cyan) 0.65rem 1.05rem, color-mix(in srgb, var(--app-bg) 35%, transparent) 1.05rem 1.3rem),
+      linear-gradient(180deg, var(--app-accent-cyan), var(--app-accent-lime));
   }
 }

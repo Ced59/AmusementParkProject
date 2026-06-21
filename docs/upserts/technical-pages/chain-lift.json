@@ -1,0 +1,682 @@
+{
+  "pages": [
+    {
+      "categoryKey": "lift",
+      "categoryNames": [
+        { "languageCode": "fr", "value": "Systèmes de lift" },
+        { "languageCode": "en", "value": "Lift systems" },
+        { "languageCode": "de", "value": "Liftsysteme" },
+        { "languageCode": "nl", "value": "Liftsystemen" },
+        { "languageCode": "it", "value": "Sistemi di lift" },
+        { "languageCode": "es", "value": "Sistemas de lift" },
+        { "languageCode": "pl", "value": "Systemy wyciagu" },
+        { "languageCode": "pt", "value": "Sistemas de lift" }
+      ],
+      "slug": "chain-lift",
+      "titles": [
+        { "languageCode": "fr", "value": "Lift à chaîne" },
+        { "languageCode": "en", "value": "Chain lift" },
+        { "languageCode": "de", "value": "Kettenlift" },
+        { "languageCode": "nl", "value": "Kettinglift" },
+        { "languageCode": "it", "value": "Lift a catena" },
+        { "languageCode": "es", "value": "Lift de cadena" },
+        { "languageCode": "pl", "value": "Lift lancuchowy" },
+        { "languageCode": "pt", "value": "Lift de corrente" }
+      ],
+      "summaries": [
+        { "languageCode": "fr", "value": "Le lift à chaîne est le système classique qui hisse un train de coaster vers un point haut grâce à une chaîne motorisée, avant que la gravité ne prenne le relais." },
+        { "languageCode": "en", "value": "A chain lift is the classic system that pulls a coaster train to a high point with a motor-driven chain before gravity takes over." },
+        { "languageCode": "de", "value": "Ein Kettenlift zieht einen Achterbahnzug mit einer motorisierten Kette auf einen Hochpunkt, bevor die Schwerkraft übernimmt." },
+        { "languageCode": "nl", "value": "Een kettinglift trekt een achtbaantrein met een aangedreven ketting naar een hoog punt, waarna de zwaartekracht overneemt." },
+        { "languageCode": "it", "value": "Un lift a catena trascina il treno di un coaster fino a un punto alto con una catena motorizzata, poi subentra la gravita." },
+        { "languageCode": "es", "value": "Un lift de cadena arrastra el tren de una montana rusa hasta un punto alto mediante una cadena motorizada, antes de que actue la gravedad." },
+        { "languageCode": "pl", "value": "Lift lancuchowy wciaga pociag coastera na wysoki punkt za pomoca napedzanego lancucha, a potem przejmuje go grawitacja." },
+        { "languageCode": "pt", "value": "Um lift de corrente puxa o comboio de uma montanha-russa ate um ponto alto com uma corrente motorizada, antes de a gravidade assumir." }
+      ],
+      "aliases": [
+        {
+          "categoryKey": "launch",
+          "labels": [
+            { "languageCode": "fr", "value": "Lift à chaîne" },
+            { "languageCode": "en", "value": "Chain lift" },
+            { "languageCode": "de", "value": "Kettenlift" },
+            { "languageCode": "nl", "value": "Kettinglift" },
+            { "languageCode": "it", "value": "Lift a catena" },
+            { "languageCode": "es", "value": "Lift de cadena" },
+            { "languageCode": "pl", "value": "Lift lancuchowy" },
+            { "languageCode": "pt", "value": "Lift de corrente" }
+          ]
+        },
+        {
+          "categoryKey": "launch",
+          "labels": [
+            { "languageCode": "fr", "value": "Lift a chaine" },
+            { "languageCode": "en", "value": "Chain-driven lift" },
+            { "languageCode": "de", "value": "Kettenaufzug" },
+            { "languageCode": "nl", "value": "Kettingoptakeling" },
+            { "languageCode": "it", "value": "Salita a catena" },
+            { "languageCode": "es", "value": "Subida de cadena" },
+            { "languageCode": "pl", "value": "Wyciag lancuchowy" },
+            { "languageCode": "pt", "value": "Subida por corrente" }
+          ]
+        },
+        {
+          "categoryKey": "lift",
+          "labels": [
+            { "languageCode": "fr", "value": "Montée à chaîne" },
+            { "languageCode": "en", "value": "Lift hill" },
+            { "languageCode": "de", "value": "Lift Hill mit Kette" },
+            { "languageCode": "nl", "value": "Lift hill met ketting" },
+            { "languageCode": "it", "value": "Collina lift a catena" },
+            { "languageCode": "es", "value": "Colina de lift con cadena" },
+            { "languageCode": "pl", "value": "Wzniesienie lancuchowe" },
+            { "languageCode": "pt", "value": "Subida de lift com corrente" }
+          ]
+        },
+        {
+          "categoryKey": "lift",
+          "labels": [
+            { "languageCode": "fr", "value": "Montée par chaîne" },
+            { "languageCode": "en", "value": "Chain lift hill" },
+            { "languageCode": "de", "value": "Kettenlifthill" },
+            { "languageCode": "nl", "value": "Ketting lift hill" },
+            { "languageCode": "it", "value": "Lift hill a catena" },
+            { "languageCode": "es", "value": "Lift hill de cadena" },
+            { "languageCode": "pl", "value": "Chain lift hill" },
+            { "languageCode": "pt", "value": "Lift hill de corrente" }
+          ]
+        },
+        {
+          "categoryKey": "propulsion",
+          "labels": [
+            { "languageCode": "fr", "value": "Chaîne de traction" },
+            { "languageCode": "en", "value": "Lift chain" },
+            { "languageCode": "de", "value": "Antriebskette" },
+            { "languageCode": "nl", "value": "Aandrijfketting" },
+            { "languageCode": "it", "value": "Catena di traino" },
+            { "languageCode": "es", "value": "Cadena de arrastre" },
+            { "languageCode": "pl", "value": "Lancuch napedowy" },
+            { "languageCode": "pt", "value": "Corrente de tracao" }
+          ]
+        },
+        {
+          "categoryKey": "launch",
+          "labels": [
+            { "languageCode": "fr", "value": "Chaine" },
+            { "languageCode": "en", "value": "Classic lift" },
+            { "languageCode": "de", "value": "Klassischer Lift" },
+            { "languageCode": "nl", "value": "Klassieke lift" },
+            { "languageCode": "it", "value": "Lift classico" },
+            { "languageCode": "es", "value": "Lift clasico" },
+            { "languageCode": "pl", "value": "Klasyczny lift" },
+            { "languageCode": "pt", "value": "Lift classico" }
+          ]
+        },
+        {
+          "categoryKey": "launch",
+          "labels": [
+            { "languageCode": "fr", "value": "Chaîne" },
+            { "languageCode": "en", "value": "Chain" },
+            { "languageCode": "de", "value": "Kette" },
+            { "languageCode": "nl", "value": "Ketting" },
+            { "languageCode": "it", "value": "Catena" },
+            { "languageCode": "es", "value": "Cadena" },
+            { "languageCode": "pl", "value": "Lancuch" },
+            { "languageCode": "pt", "value": "Corrente" }
+          ]
+        }
+      ],
+      "contentBlocks": [
+        {
+          "blockType": "callout",
+          "tone": "info",
+          "titles": [
+            { "languageCode": "fr", "value": "À retenir" },
+            { "languageCode": "en", "value": "Key idea" },
+            { "languageCode": "de", "value": "Kurzfassung" },
+            { "languageCode": "nl", "value": "Kernidee" },
+            { "languageCode": "it", "value": "Idea chiave" },
+            { "languageCode": "es", "value": "Idea clave" },
+            { "languageCode": "pl", "value": "Najwazniejsze" },
+            { "languageCode": "pt", "value": "Ideia principal" }
+          ],
+          "bodies": [
+            { "languageCode": "fr", "value": "<p>Un lift à chaîne ne lance pas le train comme un LSM ou un launch hydraulique. Il convertit l'énergie électrique d'un moteur en traction mécanique continue : la chaîne se déplace dans une auge, un crochet sous le train s'y accroche, puis l'ensemble monte à vitesse contrôlée jusqu'au sommet.</p><p>C'est une technologie très répandue parce qu'elle est lisible, robuste, maintenable et compatible avec des layouts très variés. Sa principale limite vient de sa vitesse modérée, du bruit mécanique et de la maintenance régulière de la chaîne, des pignons et des dispositifs anti-retour.</p>" },
+            { "languageCode": "en", "value": "<p>A chain lift does not launch the train like an LSM or hydraulic launch. It turns electrical power from a motor into continuous mechanical traction: the chain runs in a trough, a dog under the train engages it, and the train climbs at a controlled speed to the crest.</p><p>The technology is common because it is readable, robust, maintainable and suitable for many layouts. Its main limits are moderate speed, mechanical noise, and regular maintenance on the chain, sprockets and anti-rollback devices.</p>" },
+            { "languageCode": "de", "value": "<p>Ein Kettenlift startet den Zug nicht wie ein LSM- oder Hydrauliklaunch. Er wandelt elektrische Energie in eine gleichmaessige mechanische Zugkraft um: Die Kette laeuft in einer Fuehrung, ein Mitnehmer unter dem Zug greift ein und der Zug steigt kontrolliert bis zum Scheitelpunkt.</p><p>Das System ist verbreitet, weil es robust, verstaendlich und gut wartbar ist. Grenzen sind die eher moderate Geschwindigkeit, mechanische Geraeusche und regelmaessige Wartung an Kette, Ritzeln und Ruecklaufsicherung.</p>" },
+            { "languageCode": "nl", "value": "<p>Een kettinglift lanceert de trein niet zoals een LSM of hydraulische lancering. Hij zet elektrische energie om in continue mechanische trekkracht: de ketting loopt in een goot, een meenemer onder de trein grijpt in en de trein klimt gecontroleerd naar de top.</p><p>De techniek is populair omdat ze duidelijk, robuust en goed onderhoudbaar is. De grenzen zitten vooral in de matige snelheid, het mechanische geluid en het onderhoud van ketting, tandwielen en terugrolbeveiliging.</p>" },
+            { "languageCode": "it", "value": "<p>Un lift a catena non lancia il treno come un LSM o un launch idraulico. Trasforma l'energia elettrica del motore in trazione meccanica continua: la catena scorre in una guida, un dente sotto il treno si aggancia e il treno sale a velocita controllata fino alla cresta.</p><p>La tecnologia e diffusa perche e chiara, robusta e manutenibile. I limiti principali sono velocita moderata, rumore meccanico e manutenzione regolare di catena, pignoni e anti-rollback.</p>" },
+            { "languageCode": "es", "value": "<p>Un lift de cadena no lanza el tren como un LSM o un launch hidraulico. Convierte la energia electrica del motor en traccion mecanica continua: la cadena se mueve por una guia, un enganche bajo el tren se acopla y el tren sube a velocidad controlada hasta la cresta.</p><p>Es una tecnologia muy extendida porque es clara, robusta y facil de mantener. Sus limites principales son la velocidad moderada, el ruido mecanico y el mantenimiento de cadena, pinones y anti-rollback.</p>" },
+            { "languageCode": "pl", "value": "<p>Lift lancuchowy nie wystrzeliwuje pociagu jak LSM albo launch hydrauliczny. Zamienia energie elektryczna silnika w ciagla sile mechaniczna: lancuch porusza sie w prowadnicy, zabierak pod pociagiem wchodzi w zazebienie i pociag jedzie kontrolowana predkoscia do szczytu.</p><p>To popularna technologia, bo jest czytelna, solidna i latwa w utrzymaniu. Ograniczenia to umiarkowana predkosc, halas mechaniczny oraz regularny serwis lancucha, kol zebatych i zabezpieczen przed cofaniem.</p>" },
+            { "languageCode": "pt", "value": "<p>Um lift de corrente nao lanca o comboio como um LSM ou um launch hidraulico. Converte energia eletrica do motor em tracao mecanica continua: a corrente percorre uma guia, um engate sob o comboio prende-se nela e o comboio sobe a velocidade controlada ate ao topo.</p><p>A tecnologia e comum por ser clara, robusta e facil de manter. Os limites principais sao a velocidade moderada, o ruido mecanico e a manutencao regular da corrente, dos pinhoes e dos sistemas anti-retorno.</p>" }
+          ]
+        },
+        {
+          "blockType": "image",
+          "imageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAC0CAYAAABMvP/AAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABJ3SURBVHhe7d37j1z1ecfx/AlNAw0QwIDvBgM29Q3bYBZsvL6sF7M2eMEYF1hh7MjGXOKQGFICpHUTCoSQQEqLIBIkIUatgkiDhCykhlZNKgs1NyInCk4U2rRRkKLKISXf6nPoORk/Z2d35nvmzDNzzvuHl2R5rnt2dj7zfZ5nzvd9f3TSzAAAALrrffY/AABA+QhgAAAcEMAAADgggAEAcEAAAwDggAAGAMABAQwAgAMCGAAABwQwAAAOCGAAABwQwAAAOCCAAQBwQAADAOCAAAYAwAEBDACAAwIYAAAHBDAAAA4IYAAAHBDAAAA4IIABAHBAAAMA4IAABgDAAQEMAIADAhgAAAcEMAAADghgAAAcEMAAADgggAEAcEAAAwDggAAGAMABAQwAgAMCGAAABwQwAAAOCGAAABwQwAAAOCCAAQBwQAADAOCAAAYAwAEBDACAAwIYAAAHBDAAAA4IYAAAHBDAAAA4IIABAHBAAAMA4IAABgDAAQEMAIADAhgAAAcEMAAADghgAAAcEMAAADgggAEAcEAAAwDggAAGkPmTM84Lp85c3Ff0nO3Pgf5z8lnza/e7JIABZBRoMxcO9hU9Z/tzoLedeNrcMO28S8KCgZGwcuTmMDL28bBl571hyeWjuetWGQEMIEMAowxnzb0ozL94Y1gx9GdhePtHkrC1rrzhLgIYQH0RwCjq9JmLw9wl68KyNVvD2mtvzQWtXLXjnnD55l3JCnjmvMtqV3pOEcAAMgQw2qG+7ewFl4dFl12VBKoN2tSaLbuT1e3ZiwbDh6YvyN1PXRHAADIEMJpp1re1hq67PVy07vpw/rINYcqcC3P3gz8ggAFkCGCkWu3bDmy8KQllXf+PT5mTux80RwADyBDA9UTf1gcBDCBDAFdfkb7tCdMWhDNWbw3n7ftsWP70q+Gk8wdy94/WEcAAMgRwtRTt2yps5+79TFjy2NfDym8eCUM/CMeZPro395hoHQEMIEMA97cifdvTBjaH2WP3hAUHng0DL34vF7bjueD+p3LPAa0jgAFkCOD+UaRve/LCwWT1qgC9+Ll/yQVrqy45eDj3vNA6AhhAhgDuTUX6tifOWRqmjuxM+rYK2zXfeTsXpLHWv34svP/0c3PPF60hgAFkCGB/Rfq2jUNSS598OQx+65e50Cxq1aGfJfet3rAeiwCORwADyBDA3Vekb6sAPHvXA02HpIrSalnTzgr0M4duTFbT9vkjHgEMIEMAl6tI3/bUZcPZkJR6rzYsO0El6nl3P570h7v9FSO2IwRQawRw5xTp26ZDUgrDmCGp0SNvhdt+8XI48OsHw9ibr+cuF4W4wnzm9fuScLfPv0zNyuzshgSgtgjgOM0CxRqvb6uyrsq7RYakGgP3mXe2hxfCmsx9v3oiKU8veuhgUq5W2do+/7K1WmYngAH0JfumjHLoWLcaKLZvq4GlxiEpDTTZ+2/FRIFrPfzdlbnXSpmKlNnrhgAGKsK+SaMcNkwmCpR0SEqrz04NSSl0bchaXz02GD75yoowev/iMH9teVPKRcrsIICByrBv1ChHs0BRH1X91JghqVZ6tqIS9c0v3ekSuEXK7BgfAQxUhH2zRjl0rDUh3DgkpRNS2OtNZKISsnq2uo5OB6kw1+Rz45DUuZee25XAjS2z2/tBcwQwUBH2TR7l6PSQlPXokaHc77Zs9G19EMBARdg3fbETw2iPPZ4xeqlnK/RtewcBDFSEfeMXGyhojz2eqVZ7tipN7/m3h90Cl75tbyOAgYqwb/5iAwXtscdTbAk57dmK+sHaYUj9YZ1MQ7+XbvVshb5tfyGAgYqwQUEAF2ePp9jV7GNvjiR76drfR9no2/Y/AhioCBsUBHBx9nimAdytFW2Kvm01EcBARdigIICLs8dTyg5c+rb1QQADFWGDggAuzh5Psce9KPq29UUAAxVhg4IALs4ez6IBTN8WjQhgoCJsUBDAxdnj2U4A07fFZAhgoCJsUBDAxdnj2SyA6dsiBgEMVIQNCgK4OHs80wCmb4tOIICBirBBQQAXZ4+n2KAV+raIQQADFWGDggAuzh7PNIDp26ITCGCgImxQEMDF2eMp9rgDsQhgoCJsUBDAxdnjSQCjkwhgoE/ZQSAbFARwcfZ4EsDoJAIY6AOtnMDBBgUBXJw9ngQwOokABnpM7AkcbFAQwMXZ40kAo5MIYMBR7AkcTpyzNJw5dGM4b99nkz1o13zn7VxQEMDF2eNJAKOTCGCgi2zf1gat2BM4fOCMeeGM1VuTsF365Mth1aGf5UIB3WN/p0AsAhgoSSt92/FO4KCwPXvXA2HRQwfDym8eyQVAFYy88Zvc//UL+3sGYhHAQAfE9m1PXTYcZl6/Lyw48Gy45ODh3Jt9avTIW+G2X7wcDvz6wTD25uu5y/vJjqPfDl9+d1Py89jL+oH93QOxCGCgTbF925POHwjTR/eGeXc/nvRt179+LPfmnmoM3Gfe2R5eCGsy9/3qidz1+8Xunx/Kfo7nfz8ctv74aO46vc6+HoBYBDAwiZi+7QfPuSgbklr+9KtNh6RSEwWu9eSxXcltVJ5e8tjXk3K1ytb2PnuRSs+NP99Tvx0LV/zwt7nr9TL7+gBiEcBAg5i+7QdnLEwCcO7ez0QNSSl0bchaz7+7Ifz10VvCzm/cGi7esyWcMK375x+OLbPb+5m/9tzw1WOD2c9223PLc9cB6oAARm3FBsppA5uzIamBF7+XC1Rpp2f70f94IR+4/zsU/uqH28JNX7o2LNxyUe65ly22zG7vp5nN+xce9/Ou2/2nuesAVUcAoxZiAyUdkrrg/qdaHpKyJeTJerYj3/j78Pzv1oe/OLwpbPvcmmSFaJ9/2WLK7EX3t93/0sXZMdKKeNayubnr9Bu9xvRhzf5/q+p++7ohgFFJMYFyyvyVYerIzsJDUlbasxWtmDXxPHvsnmQlbZ93N8SU2cvY3/aUGXPCF99clR2nz//osnDClFm56/ULfchLP9jpmNnLJ1P329cRAYy+FxMop5yz7LghqcFv/TIXss201LP9/XB45L/vCHteuzcMPnx30iO2z7sbYsvs9n7KUrV+sF6HOp76cKdAspdPpu63rxsCGH0lJlBOPXtpNiSlqeHxhqQK92w1JPXzXa5DUrFldns/3Va1fnD6utQHQntZK+p++zohgNGzYgNFpV2VeFsdkrIl5Ml6tte/8f3jhqSWbPUpt8WU2Yv2bctSpX6wKgiquOj465jbyydT99vXCQGMnhETKB9avDYbklLf1oZlK4FrNfZsRcNXun89zskLB3PPuxtiyuxl9G3LUrV+sF7H+p3ow2HMh566374uCGC4iAmU0xYNJkNS6Q5AEw1JNWq1Z/vob/aHO37waLjiuS+4DknFlNm72bctS5X6wQqd9HWt36O9fDJ1v31dEMAoXUygnD5vINsBaLwhqcI923GGpN5/eve//hNbZrf3UxVV6gfrQ6Z+d/ogqX/byydT99vXAQGMjooNlMYhqfF2AJqohDxpz/YnR8Lz7w5nQ1Ir7rjOZUhKYsrsdSvhVakfrA+d+p1qNWgva0Xdb191BDAKiQmUKZduSUq8+j5szJCUZXu2Kk2rRK3v86pkrU0Q7PPuhpgyez/1bctSpX6wPjylfxf6O7GXT6but686AhgtiwmUKcuHkx2AJhuSatROz/Zj//mVsOXQP2RDUjozlX3e3RBTZq9C37YsVeoH60Nn+reh14m9fDJ1v32VEcAYV0ygTFm4+rghqcYdgDrRs1XgfuSNLyRDUjoXs9eQVGyZ3d4PJlalfrBeB3pN6G/JXtaKut++qghgRAXKWQtWZUNS2gFooiEpW0JuqWf7/0NSt/7rA65DUhJTZq9b37YsVekH629MrxG9VvRh1V4+mbrfvqoI4BqKCZQzB7clq86YISnL9mxFq2VNOyvQdYrIE+cszT3vbogps9O3LU+V+sGqKOn1ow+4Ma+Zut++igjgiosJlDMvfe9MUhqSmmgHoFS7Pdsbfvr9bEhK/WGvIamYMjt92+6z/eAdT/h8OOsEfahVlSk2gOp++6ohgCskJlCmXrIpCcF0B6DxVrRFerbpkJTC3HNIKqbMTt+2d6T94E++siJZFdvL+0XR1kTdb181BHCfigmUqReuz3YAmmhIypaQW+3Z2iEprx2AJKbMzptDb1t18wW5/wP6GQHcJ9oNlKkXXJb0bdMhKbsD0ESBa43XsxUNXum+9RieQ1IxZXZKYAC8EcA9KCZQpg3dkKw6tQPQeENSjWJ6tlota9XsPSQVU2anbwugF/VVAOuNVCvBVBXOLxoTKNMvvybppzYOSXWyZ2uHpLx2AIops9O3BdAvejqAVSbUSlBvvvZNt5FWiSrP9vpKJyZQpq+48rghqXQHoIlKyO30bBW4o//0UhLmmnz2GpKSdsvs9G0B9LOeDGAFb3rmlEY7PrUv7H7ojsyuT9+Zu45Wkb2yMm43UGYsHw5Th8eyHYBaHZKymvVsReVpfZfXe0gqpsxO3xZAlfRcAOvNVm+86ZvwnX+7Ozz42rbwlf9Znwsa+do768Kjh68NH39uZ9j+0f3Z7RTg3VwdtRsosxauSfq22gFovCGpRjE9W93ODkl57QAUU2bv9WoGABTVMwGssNRKMX0zvv2JPeHptzbmgmYiCun7XhwL1+z5RHIfCsIyVk0xgTJj3fZsSEo7AHW6Z5vuAKSw1fmYvYakYsrs9G0B1FFPBLDCNw0yhadWtDZw2vF3R0ey1bBKv0V24IgJlFlrtyVDUtqhZ7whKVtCbrdnmw5J6f49h6Sk3TI7fVsAeE9PBHC68r3u9nuS8LSBGuPZtzckPeM0HBWk9nHH026gzBrYHKZt/nBbQ1LWRD1b0Yo5HZLy2gFI2i2z07cFgObcA1hv1Hrj1sq3U+GbUkn6xrs/lty/Vq/2sdsNlDnLhsOMkVuyISm7A1Aqtmcr6gVrSEq9Yc8hqZgyO31bAGidawBrdZQOXBUtOzejPrJW1nqMxStHWw6Uc1RK3nhzEoQKxCv/+XBHe7a6ngI83QHIc0gqpsxO3xYAinENYJVx9caugSsbWJ30l6/8YbirWaDMHr4pKfGONyRlS8gxPVs7JOW1A5C0W2anbwsAnecWwCpx6o1eped2p53bpa8qpUNZK4ZuCLNXXxtmbb8rGWJKdwCaKHCtyXq2ouEr3b+GsTyHpNots9O3BYDucAtgrcD05n/XMx/OBVwZPvWPNyaPt+mRg7mwLNKzFa2YtXL2HpKibwsA/cMtgNOAeOTbW3NhV4Yv/dcVyeNdvfdA2PDvvzsuQFvt2YodkvLaAYi+LQD0N5cAVngoHFR+VnnYhl9Z0q8lDR86elwAj9ez1f/rVJDpkJR2APIakhL6tgBQLS4BrL6kAkPncrYhWSaVu/W4G1947+QYjdIhKX2f13tIir4tAFSfSwArMBQiZU8/WzpNpR535OlDxw1Jee4ARN8WAOrJJYC1ulOodGsAK/XpV7cnj6ueqH1O3UDfFgCQcglgrfgUNNrpyIZkmdJJaK027XMqA31bAEAzLgGsVZ3CR3v62pAsk7Ys1ONqBW6fU1H0bQEA7XAJ4PQkHDpFpA3JMt36ub3J46oMbJ9TO+jbAgCKcglgSUuyf/PjzbmgLIM2Zkj3CW51ZyShbwsAKINbAGtlqODSZLINyzLohB96PK1Y7XNpRN8WANANbgGs4FKYjd17V1dOxpGWn7VCTZ8DfVsAgBe3AJY09LRbkQ3MTtJWh3qcTWP7w4Wrr6FvCwBw5xrA6Qk5tFORztVsg7MTtLrWKtsGrdC3BQB4cQ1g0YpTYajzNJdRitZ3jXX/V9/y5+HSjWP0bQEAPcE9gDVlnA47qU/byRBOTz151Y5PUE4GAPQU9wAWhePI2P5sJfzs2xtyYdoOhXi68hWVuu1jAgDgqScCWDSRrK/3pD3hB1/blgvWVjz+xtVZz1cTzDphhn0sAAC89UwAi77i0/h1IK2GFcQ6iYYNWkuTzulXjURlbYW6fQwAAHpBTwVwSl8BSlfDKW1dqJ6ufP67o8nGCvq3dlRKz3AlOlOVBq0YsgIA9LKeDGBRgOokGTr9Y2MQN6OVs85gxYkyAAD9oGcDuFHj+ZhFJ9LQRgicnQoA0K/6IoABAKgaAhgAAAcEMAAADghgAAAcEMAAADgggAEAcEAAAwDggAAGAMABAQwAgAMCGAAABwQwAAAOCGAAABwQwAAAOCCAAQBwQAADAOCAAAYAwAEBDACAAwIYAAAHBDAAAA4IYAAAHBDAAAA4IIABAHBAAAMA4IAABgDAAQEMAICD/wPPE7Eaz4hwJwAAAABJRU5ErkJggg==",
+          "titles": [
+            { "languageCode": "fr", "value": "Vue simplifiée du lift" },
+            { "languageCode": "en", "value": "Simplified lift view" },
+            { "languageCode": "de", "value": "Vereinfachte Liftansicht" },
+            { "languageCode": "nl", "value": "Vereenvoudigde liftweergave" },
+            { "languageCode": "it", "value": "Vista semplificata del lift" },
+            { "languageCode": "es", "value": "Vista simplificada del lift" },
+            { "languageCode": "pl", "value": "Uproszczony widok liftu" },
+            { "languageCode": "pt", "value": "Vista simplificada do lift" }
+          ],
+          "captions": [
+            { "languageCode": "fr", "value": "Schéma intégré : chaîne dans son auge, train accroché, zone moteur et sommet de lift." },
+            { "languageCode": "en", "value": "Embedded schematic: chain in its trough, engaged train, motor area and lift crest." },
+            { "languageCode": "de", "value": "Integriertes Schema: Kette in der Fuehrung, eingekuppelter Zug, Motorbereich und Lifthoehepunkt." },
+            { "languageCode": "nl", "value": "Ingebed schema: ketting in de goot, gekoppelde trein, motorgebied en liftkam." },
+            { "languageCode": "it", "value": "Schema integrato: catena nella guida, treno agganciato, zona motore e cresta del lift." },
+            { "languageCode": "es", "value": "Esquema integrado: cadena en la guia, tren acoplado, zona de motor y cresta del lift." },
+            { "languageCode": "pl", "value": "Wbudowany schemat: lancuch w prowadnicy, podpiety pociag, strefa silnika i szczyt liftu." },
+            { "languageCode": "pt", "value": "Esquema integrado: corrente na guia, comboio engatado, zona do motor e topo do lift." }
+          ],
+          "altTexts": [
+            { "languageCode": "fr", "value": "Schéma d'un train de coaster tracté par un lift à chaîne sur une pente." },
+            { "languageCode": "en", "value": "Diagram of a coaster train pulled by a chain lift on an incline." },
+            { "languageCode": "de", "value": "Diagramm eines Achterbahnzuges, der auf einer Steigung von einem Kettenlift gezogen wird." },
+            { "languageCode": "nl", "value": "Diagram van een achtbaantrein die op een helling door een kettinglift wordt getrokken." },
+            { "languageCode": "it", "value": "Schema di un treno coaster trainato da un lift a catena su una salita." },
+            { "languageCode": "es", "value": "Diagrama de un tren de coaster arrastrado por un lift de cadena en pendiente." },
+            { "languageCode": "pl", "value": "Schemat pociagu coastera wciaganego przez lift lancuchowy po pochyleniu." },
+            { "languageCode": "pt", "value": "Diagrama de um comboio de coaster puxado por um lift de corrente numa inclinacao." }
+          ]
+        },
+        {
+          "blockType": "diagram",
+          "diagramKey": "chain-lift",
+          "titles": [
+            { "languageCode": "fr", "value": "Schéma de fonctionnement" },
+            { "languageCode": "en", "value": "Operating diagram" },
+            { "languageCode": "de", "value": "Funktionsschema" },
+            { "languageCode": "nl", "value": "Werkingsschema" },
+            { "languageCode": "it", "value": "Schema di funzionamento" },
+            { "languageCode": "es", "value": "Esquema de funcionamiento" },
+            { "languageCode": "pl", "value": "Schemat dzialania" },
+            { "languageCode": "pt", "value": "Esquema de funcionamento" }
+          ],
+          "bodies": [
+            { "languageCode": "fr", "value": "<p>Le chemin d'énergie est simple : moteur électrique, réducteur, pignon d'entraînement, chaîne, crochet du train, rails de montée. Le moteur maintient une vitesse de chaîne régulière ; le réducteur augmente le couple ; les pignons guident et retournent la chaîne ; le train est tiré uniquement quand son crochet est correctement engagé.</p><ol><li>Le train arrive en bas du lift et ralentit ou se positionne sur la zone d'accrochage.</li><li>Le crochet sous le train rencontre la chaîne mobile et se met en prise.</li><li>La chaîne tire le train vers le sommet pendant que les anti-retours empêchent toute marche arrière dangereuse.</li><li>Au sommet, la géométrie de voie libère progressivement le crochet ; le train bascule sur la première descente ou la section suivante.</li></ol>" },
+            { "languageCode": "en", "value": "<p>The energy path is straightforward: electric motor, gearbox, drive sprocket, chain, train dog and lift rails. The motor keeps chain speed steady; the gearbox increases torque; sprockets guide and return the chain; the train is pulled only when its dog is correctly engaged.</p><ol><li>The train reaches the base of the lift and positions on the pickup zone.</li><li>The dog under the train meets the moving chain and engages.</li><li>The chain pulls the train upward while anti-rollback devices prevent unsafe reverse movement.</li><li>At the crest, track geometry releases the dog and the train rolls into the first drop or next section.</li></ol>" },
+            { "languageCode": "de", "value": "<p>Der Energiepfad ist klar: Elektromotor, Getriebe, Antriebsritzel, Kette, Mitnehmer am Zug und Liftgleis. Der Motor haelt die Kettengeschwindigkeit konstant; das Getriebe erhoeht das Drehmoment; Ritzel fuehren die Kette; der Zug wird nur gezogen, wenn der Mitnehmer korrekt greift.</p><ol><li>Der Zug erreicht den Liftfuss und positioniert sich im Aufnahmebereich.</li><li>Der Mitnehmer unter dem Zug greift in die laufende Kette.</li><li>Die Kette zieht den Zug nach oben, waehrend Ruecklaufsicherungen ein gefaehrliches Zurueckrollen verhindern.</li><li>Am Scheitel loest die Gleisgeometrie den Mitnehmer und der Zug faehrt in die erste Abfahrt oder die naechste Sektion.</li></ol>" },
+            { "languageCode": "nl", "value": "<p>Het energiepad is eenvoudig: elektromotor, tandwielkast, aandrijftandwiel, ketting, meenemer van de trein en liftspoor. De motor houdt de kettingsnelheid constant; de tandwielkast verhoogt het koppel; tandwielen geleiden de ketting; de trein wordt alleen getrokken wanneer de meenemer correct grijpt.</p><ol><li>De trein bereikt de voet van de lift en positioneert zich in de oppakzone.</li><li>De meenemer onder de trein grijpt in de bewegende ketting.</li><li>De ketting trekt de trein omhoog terwijl terugrolbeveiliging gevaarlijk terugrollen voorkomt.</li><li>Op de kam komt de meenemer vrij en rolt de trein de eerste afdaling of volgende sectie in.</li></ol>" },
+            { "languageCode": "it", "value": "<p>Il percorso dell'energia e lineare: motore elettrico, riduttore, pignone, catena, dente del treno e binari di salita. Il motore mantiene costante la velocita della catena; il riduttore aumenta la coppia; i pignoni guidano la catena; il treno viene tirato solo quando il dente e agganciato correttamente.</p><ol><li>Il treno arriva alla base del lift e si posiziona nella zona di presa.</li><li>Il dente sotto il treno incontra la catena in movimento e si aggancia.</li><li>La catena tira il treno verso l'alto mentre gli anti-rollback impediscono movimenti inversi pericolosi.</li><li>In cresta la geometria libera il dente e il treno entra nella prima discesa o nella sezione successiva.</li></ol>" },
+            { "languageCode": "es", "value": "<p>El recorrido de energia es directo: motor electrico, reductor, pinon motriz, cadena, enganche del tren y via de subida. El motor mantiene estable la velocidad de la cadena; el reductor aumenta el par; los pinones guian la cadena; el tren solo es arrastrado cuando el enganche esta bien acoplado.</p><ol><li>El tren llega a la base del lift y se coloca en la zona de captura.</li><li>El enganche bajo el tren encuentra la cadena en movimiento y se acopla.</li><li>La cadena tira del tren hacia arriba mientras los anti-rollback evitan un retroceso peligroso.</li><li>En la cresta, la geometria libera el enganche y el tren entra en la primera bajada o en la seccion siguiente.</li></ol>" },
+            { "languageCode": "pl", "value": "<p>Droga energii jest prosta: silnik elektryczny, przekladnia, kolo napedowe, lancuch, zabierak pociagu i tor liftu. Silnik utrzymuje stala predkosc lancucha; przekladnia zwieksza moment; kola prowadza lancuch; pociag jest ciagniety tylko wtedy, gdy zabierak jest poprawnie zazebiony.</p><ol><li>Pociag dojezdza do podstawy liftu i ustawia sie w strefie podjecia.</li><li>Zabierak pod pociagiem trafia na poruszajacy sie lancuch.</li><li>Lancuch ciagnie pociag w gore, a zabezpieczenia przed cofaniem blokuj a niebezpieczny ruch w tyl.</li><li>Na szczycie geometria toru zwalnia zabierak i pociag wjezdza w pierwszy spadek albo kolejna sekcje.</li></ol>" },
+            { "languageCode": "pt", "value": "<p>O caminho de energia e direto: motor eletrico, redutor, pinhao motriz, corrente, engate do comboio e carris de subida. O motor mantem a velocidade da corrente estavel; o redutor aumenta o binario; os pinhoes guiam a corrente; o comboio so e puxado quando o engate esta bem acoplado.</p><ol><li>O comboio chega a base do lift e posiciona-se na zona de captura.</li><li>O engate sob o comboio encontra a corrente em movimento e acopla.</li><li>A corrente puxa o comboio para cima enquanto os anti-retorno impedem recuo perigoso.</li><li>No topo, a geometria liberta o engate e o comboio entra na primeira descida ou na proxima seccao.</li></ol>" }
+          ],
+          "captions": [
+            { "languageCode": "fr", "value": "Le schéma met en évidence la conversion énergie -> transmission -> train." },
+            { "languageCode": "en", "value": "The diagram highlights the energy -> transmission -> train path." },
+            { "languageCode": "de", "value": "Das Schema zeigt den Weg Energie -> Uebertragung -> Zug." },
+            { "languageCode": "nl", "value": "Het schema toont het pad energie -> overbrenging -> trein." },
+            { "languageCode": "it", "value": "Lo schema evidenzia il percorso energia -> trasmissione -> treno." },
+            { "languageCode": "es", "value": "El esquema muestra la ruta energia -> transmision -> tren." },
+            { "languageCode": "pl", "value": "Schemat pokazuje droge energia -> przeniesienie -> pociag." },
+            { "languageCode": "pt", "value": "O esquema destaca o percurso energia -> transmissao -> comboio." }
+          ]
+        },
+        {
+          "blockType": "columns",
+          "titles": [
+            { "languageCode": "fr", "value": "Sous-ensembles techniques" },
+            { "languageCode": "en", "value": "Technical subassemblies" },
+            { "languageCode": "de", "value": "Technische Baugruppen" },
+            { "languageCode": "nl", "value": "Technische modules" },
+            { "languageCode": "it", "value": "Sottogruppi tecnici" },
+            { "languageCode": "es", "value": "Subconjuntos tecnicos" },
+            { "languageCode": "pl", "value": "Podzespoly techniczne" },
+            { "languageCode": "pt", "value": "Subconjuntos tecnicos" }
+          ],
+          "columns": [
+            {
+              "blockType": "text",
+              "titles": [
+                { "languageCode": "fr", "value": "Moteur et réducteur" },
+                { "languageCode": "en", "value": "Motor and gearbox" },
+                { "languageCode": "de", "value": "Motor und Getriebe" },
+                { "languageCode": "nl", "value": "Motor en tandwielkast" },
+                { "languageCode": "it", "value": "Motore e riduttore" },
+                { "languageCode": "es", "value": "Motor y reductor" },
+                { "languageCode": "pl", "value": "Silnik i przekladnia" },
+                { "languageCode": "pt", "value": "Motor e redutor" }
+              ],
+              "bodies": [
+                { "languageCode": "fr", "value": "<p>Le moteur fournit la puissance et le réducteur transforme une rotation rapide en couple élevé. Sur les lifts modernes, un variateur peut lisser le démarrage, limiter les à-coups et faciliter les modes maintenance.</p>" },
+                { "languageCode": "en", "value": "<p>The motor provides power and the gearbox turns fast rotation into high torque. On modern lifts, a variable drive can smooth startup, reduce jolts and support maintenance modes.</p>" },
+                { "languageCode": "de", "value": "<p>Der Motor liefert Leistung und das Getriebe wandelt schnelle Rotation in hohes Drehmoment. Moderne Lifte koennen mit einem Frequenzumrichter sanfter starten und Wartungsmodi unterstuetzen.</p>" },
+                { "languageCode": "nl", "value": "<p>De motor levert vermogen en de tandwielkast zet snelle rotatie om in hoog koppel. Moderne liften kunnen met een frequentieregelaar zachter starten en onderhoudsmodi ondersteunen.</p>" },
+                { "languageCode": "it", "value": "<p>Il motore fornisce potenza e il riduttore trasforma una rotazione veloce in coppia elevata. Sui lift moderni un inverter puo rendere l'avvio piu morbido e aiutare la manutenzione.</p>" },
+                { "languageCode": "es", "value": "<p>El motor aporta potencia y el reductor convierte una rotacion rapida en mucho par. En lifts modernos, un variador puede suavizar el arranque y facilitar modos de mantenimiento.</p>" },
+                { "languageCode": "pl", "value": "<p>Silnik dostarcza moc, a przekladnia zmienia szybki obrot w wysoki moment. W nowoczesnych liftach falownik moze wygladzic start i ulatwic tryby serwisowe.</p>" },
+                { "languageCode": "pt", "value": "<p>O motor fornece potencia e o redutor transforma rotacao rapida em binario elevado. Em lifts modernos, um variador pode suavizar o arranque e apoiar modos de manutencao.</p>" }
+              ]
+            },
+            {
+              "blockType": "text",
+              "titles": [
+                { "languageCode": "fr", "value": "Chaîne, pignons et auge" },
+                { "languageCode": "en", "value": "Chain, sprockets and trough" },
+                { "languageCode": "de", "value": "Kette, Ritzel und Fuehrung" },
+                { "languageCode": "nl", "value": "Ketting, tandwielen en goot" },
+                { "languageCode": "it", "value": "Catena, pignoni e guida" },
+                { "languageCode": "es", "value": "Cadena, pinones y guia" },
+                { "languageCode": "pl", "value": "Lancuch, kola i prowadnica" },
+                { "languageCode": "pt", "value": "Corrente, pinhoes e guia" }
+              ],
+              "bodies": [
+                { "languageCode": "fr", "value": "<p>La chaîne circule en boucle fermée. Elle est guidée par une auge centrale, retournée par des pignons et tendue pour éviter les sauts de maillons. Les zones de retour et de tension sont des points de contrôle essentiels.</p>" },
+                { "languageCode": "en", "value": "<p>The chain runs as a closed loop. It is guided by a central trough, returned by sprockets and tensioned to prevent skipped links. Return and tensioning areas are key inspection points.</p>" },
+                { "languageCode": "de", "value": "<p>Die Kette laeuft als geschlossene Schleife. Sie wird in einer zentralen Fuehrung gefuehrt, ueber Ritzel umgelenkt und gespannt, damit keine Glieder ueberspringen.</p>" },
+                { "languageCode": "nl", "value": "<p>De ketting loopt als gesloten lus. Ze wordt geleid door een centrale goot, omgekeerd door tandwielen en gespannen om overslaan te voorkomen.</p>" },
+                { "languageCode": "it", "value": "<p>La catena scorre in un anello chiuso. E guidata da una canalina centrale, rinviata da pignoni e tensionata per evitare salti di maglia.</p>" },
+                { "languageCode": "es", "value": "<p>La cadena circula como un bucle cerrado. Va guiada por una canaleta central, retorna por pinones y se mantiene tensada para evitar saltos de eslabones.</p>" },
+                { "languageCode": "pl", "value": "<p>Lancuch pracuje w petli zamknietej. Prowadzi go centralna prowadnica, zawracaja kola zebate, a napiecie zapobiega przeskakiwaniu ogniw.</p>" },
+                { "languageCode": "pt", "value": "<p>A corrente circula em circuito fechado. E guiada por uma calha central, retorna por pinhoes e fica tensionada para evitar saltos de elos.</p>" }
+              ]
+            },
+            {
+              "blockType": "text",
+              "titles": [
+                { "languageCode": "fr", "value": "Crochet du train" },
+                { "languageCode": "en", "value": "Train dog" },
+                { "languageCode": "de", "value": "Mitnehmer am Zug" },
+                { "languageCode": "nl", "value": "Meenemer van de trein" },
+                { "languageCode": "it", "value": "Dente del treno" },
+                { "languageCode": "es", "value": "Enganche del tren" },
+                { "languageCode": "pl", "value": "Zabierak pociagu" },
+                { "languageCode": "pt", "value": "Engate do comboio" }
+              ],
+              "bodies": [
+                { "languageCode": "fr", "value": "<p>Le crochet, souvent articulé, est la pièce qui transmet l'effort de la chaîne au train. Sa forme doit permettre l'accrochage en bas, la traction pendant la montée et le dégagement sans choc au sommet.</p>" },
+                { "languageCode": "en", "value": "<p>The dog, often articulated, transfers chain force to the train. Its shape must allow pickup at the bottom, traction during the climb and smooth release at the crest.</p>" },
+                { "languageCode": "de", "value": "<p>Der oft gelenkige Mitnehmer uebertraegt die Kettenkraft auf den Zug. Seine Form muss Aufnahme, Zugkraft und sanftes Loesen am Scheitel ermoeglichen.</p>" },
+                { "languageCode": "nl", "value": "<p>De vaak scharnierende meenemer brengt de kracht van de ketting over op de trein. De vorm moet oppakken, trekken en soepel lossen mogelijk maken.</p>" },
+                { "languageCode": "it", "value": "<p>Il dente, spesso articolato, trasferisce la forza della catena al treno. Deve agganciarsi in basso, tirare in salita e liberarsi senza urti in cresta.</p>" },
+                { "languageCode": "es", "value": "<p>El enganche, a menudo articulado, transmite la fuerza de la cadena al tren. Debe capturar abajo, tirar durante la subida y liberarse sin golpe en la cresta.</p>" },
+                { "languageCode": "pl", "value": "<p>Zabierak, czesto przegubowy, przenosi sile lancucha na pociag. Musi poprawnie lapac na dole, ciagnac w gore i gladko zwalniac na szczycie.</p>" },
+                { "languageCode": "pt", "value": "<p>O engate, muitas vezes articulado, transmite a forca da corrente ao comboio. Deve captar em baixo, puxar na subida e libertar suavemente no topo.</p>" }
+              ]
+            },
+            {
+              "blockType": "text",
+              "titles": [
+                { "languageCode": "fr", "value": "Anti-retour et supervision" },
+                { "languageCode": "en", "value": "Anti-rollback and supervision" },
+                { "languageCode": "de", "value": "Ruecklaufsicherung und Ueberwachung" },
+                { "languageCode": "nl", "value": "Terugrolbeveiliging en bewaking" },
+                { "languageCode": "it", "value": "Anti-rollback e supervisione" },
+                { "languageCode": "es", "value": "Anti-rollback y supervision" },
+                { "languageCode": "pl", "value": "Anti-rollback i nadzor" },
+                { "languageCode": "pt", "value": "Anti-retorno e supervisao" }
+              ],
+              "bodies": [
+                { "languageCode": "fr", "value": "<p>Les cliquets anti-retour, ou un système équivalent, empêchent le train de repartir en arrière si la chaîne s'arrête. Des capteurs surveillent position, vitesse, tension, surcouple, arrêts d'urgence et état des zones de bloc.</p>" },
+                { "languageCode": "en", "value": "<p>Anti-rollback dogs, or an equivalent system, prevent the train from rolling backward if the chain stops. Sensors monitor position, speed, tension, over-torque, emergency stops and block status.</p>" },
+                { "languageCode": "de", "value": "<p>Ruecklaufsperren oder ein gleichwertiges System verhindern Zurueckrollen bei Kettenstopp. Sensoren ueberwachen Position, Geschwindigkeit, Spannung, Ueberlast, Not-Halt und Blockstatus.</p>" },
+                { "languageCode": "nl", "value": "<p>Anti-terugrolklauwen of een gelijkwaardig systeem voorkomen terugrollen als de ketting stopt. Sensoren bewaken positie, snelheid, spanning, overkoppel, noodstop en blokstatus.</p>" },
+                { "languageCode": "it", "value": "<p>I dispositivi anti-rollback, o un sistema equivalente, impediscono al treno di arretrare se la catena si ferma. I sensori controllano posizione, velocita, tensione, sovracoppia, arresti di emergenza e blocchi.</p>" },
+                { "languageCode": "es", "value": "<p>Los anti-rollback, o un sistema equivalente, impiden que el tren retroceda si la cadena se detiene. Sensores controlan posicion, velocidad, tension, sobrepar, paradas de emergencia y bloques.</p>" },
+                { "languageCode": "pl", "value": "<p>Zapadki anti-rollback lub system rownowazny zapobiegaja cofaniu, gdy lancuch stanie. Czujniki pilnuja pozycji, predkosci, napiecia, przeciazenia, E-stopow i stanu blokow.</p>" },
+                { "languageCode": "pt", "value": "<p>Os anti-retorno, ou sistema equivalente, impedem o recuo se a corrente parar. Sensores monitorizam posicao, velocidade, tensao, sobre-binario, paragens de emergencia e blocos.</p>" }
+              ]
+            }
+          ]
+        },
+        {
+          "blockType": "table",
+          "titles": [
+            { "languageCode": "fr", "value": "Composants et rôle" },
+            { "languageCode": "en", "value": "Components and role" },
+            { "languageCode": "de", "value": "Komponenten und Rolle" },
+            { "languageCode": "nl", "value": "Componenten en rol" },
+            { "languageCode": "it", "value": "Componenti e ruolo" },
+            { "languageCode": "es", "value": "Componentes y funcion" },
+            { "languageCode": "pl", "value": "Elementy i rola" },
+            { "languageCode": "pt", "value": "Componentes e funcao" }
+          ],
+          "table": {
+            "headers": [
+              {
+                "texts": [
+                  { "languageCode": "fr", "value": "Élément" },
+                  { "languageCode": "en", "value": "Element" },
+                  { "languageCode": "de", "value": "Element" },
+                  { "languageCode": "nl", "value": "Element" },
+                  { "languageCode": "it", "value": "Elemento" },
+                  { "languageCode": "es", "value": "Elemento" },
+                  { "languageCode": "pl", "value": "Element" },
+                  { "languageCode": "pt", "value": "Elemento" }
+                ]
+              },
+              {
+                "texts": [
+                  { "languageCode": "fr", "value": "Rôle technique" },
+                  { "languageCode": "en", "value": "Technical role" },
+                  { "languageCode": "de", "value": "Technische Rolle" },
+                  { "languageCode": "nl", "value": "Technische rol" },
+                  { "languageCode": "it", "value": "Ruolo tecnico" },
+                  { "languageCode": "es", "value": "Funcion tecnica" },
+                  { "languageCode": "pl", "value": "Rola techniczna" },
+                  { "languageCode": "pt", "value": "Funcao tecnica" }
+                ]
+              },
+              {
+                "texts": [
+                  { "languageCode": "fr", "value": "Points de vigilance" },
+                  { "languageCode": "en", "value": "Watch points" },
+                  { "languageCode": "de", "value": "Pruefpunkte" },
+                  { "languageCode": "nl", "value": "Aandachtspunten" },
+                  { "languageCode": "it", "value": "Punti di controllo" },
+                  { "languageCode": "es", "value": "Puntos de control" },
+                  { "languageCode": "pl", "value": "Punkty kontroli" },
+                  { "languageCode": "pt", "value": "Pontos de atencao" }
+                ]
+              }
+            ],
+            "rows": [
+              {
+                "cells": [
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Moteur" },
+                    { "languageCode": "en", "value": "Motor" },
+                    { "languageCode": "de", "value": "Motor" },
+                    { "languageCode": "nl", "value": "Motor" },
+                    { "languageCode": "it", "value": "Motore" },
+                    { "languageCode": "es", "value": "Motor" },
+                    { "languageCode": "pl", "value": "Silnik" },
+                    { "languageCode": "pt", "value": "Motor" }
+                  ] },
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Fournit la puissance de traction." },
+                    { "languageCode": "en", "value": "Provides traction power." },
+                    { "languageCode": "de", "value": "Liefert Zugleistung." },
+                    { "languageCode": "nl", "value": "Levert trekkracht." },
+                    { "languageCode": "it", "value": "Fornisce potenza di trazione." },
+                    { "languageCode": "es", "value": "Aporta potencia de traccion." },
+                    { "languageCode": "pl", "value": "Dostarcza mocy ciagniecia." },
+                    { "languageCode": "pt", "value": "Fornece potencia de tracao." }
+                  ] },
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Température, intensité, surcouple, ventilation." },
+                    { "languageCode": "en", "value": "Temperature, current, over-torque, cooling." },
+                    { "languageCode": "de", "value": "Temperatur, Strom, Uebermoment, Kuehlung." },
+                    { "languageCode": "nl", "value": "Temperatuur, stroom, overkoppel, koeling." },
+                    { "languageCode": "it", "value": "Temperatura, corrente, sovracoppia, raffreddamento." },
+                    { "languageCode": "es", "value": "Temperatura, corriente, sobrepar, refrigeracion." },
+                    { "languageCode": "pl", "value": "Temperatura, prad, nadmoment, chlodzenie." },
+                    { "languageCode": "pt", "value": "Temperatura, corrente, sobre-binario, arrefecimento." }
+                  ] }
+                ]
+              },
+              {
+                "cells": [
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Chaîne" },
+                    { "languageCode": "en", "value": "Chain" },
+                    { "languageCode": "de", "value": "Kette" },
+                    { "languageCode": "nl", "value": "Ketting" },
+                    { "languageCode": "it", "value": "Catena" },
+                    { "languageCode": "es", "value": "Cadena" },
+                    { "languageCode": "pl", "value": "Lancuch" },
+                    { "languageCode": "pt", "value": "Corrente" }
+                  ] },
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Transmet l'effort au train via le crochet." },
+                    { "languageCode": "en", "value": "Transfers force to the train through the dog." },
+                    { "languageCode": "de", "value": "Uebertraegt die Kraft ueber den Mitnehmer auf den Zug." },
+                    { "languageCode": "nl", "value": "Brengt kracht via de meenemer over op de trein." },
+                    { "languageCode": "it", "value": "Trasmette la forza al treno tramite il dente." },
+                    { "languageCode": "es", "value": "Transmite fuerza al tren mediante el enganche." },
+                    { "languageCode": "pl", "value": "Przenosi sile na pociag przez zabierak." },
+                    { "languageCode": "pt", "value": "Transmite forca ao comboio pelo engate." }
+                  ] },
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Allongement, lubrification, maillons, tension." },
+                    { "languageCode": "en", "value": "Elongation, lubrication, links, tension." },
+                    { "languageCode": "de", "value": "Laengung, Schmierung, Glieder, Spannung." },
+                    { "languageCode": "nl", "value": "Rek, smering, schakels, spanning." },
+                    { "languageCode": "it", "value": "Allungamento, lubrificazione, maglie, tensione." },
+                    { "languageCode": "es", "value": "Alargamiento, lubricacion, eslabones, tension." },
+                    { "languageCode": "pl", "value": "Wydluzenie, smarowanie, ogniwa, napiecie." },
+                    { "languageCode": "pt", "value": "Alongamento, lubrificacao, elos, tensao." }
+                  ] }
+                ]
+              },
+              {
+                "cells": [
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Anti-retour" },
+                    { "languageCode": "en", "value": "Anti-rollback" },
+                    { "languageCode": "de", "value": "Ruecklaufsicherung" },
+                    { "languageCode": "nl", "value": "Terugrolbeveiliging" },
+                    { "languageCode": "it", "value": "Anti-rollback" },
+                    { "languageCode": "es", "value": "Anti-rollback" },
+                    { "languageCode": "pl", "value": "Anti-rollback" },
+                    { "languageCode": "pt", "value": "Anti-retorno" }
+                  ] },
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Retient le train en cas d'arrêt ou de perte de traction." },
+                    { "languageCode": "en", "value": "Holds the train if traction stops or is lost." },
+                    { "languageCode": "de", "value": "Haelt den Zug bei Stopp oder Zugkraftverlust." },
+                    { "languageCode": "nl", "value": "Houdt de trein vast bij stop of verlies van trekkracht." },
+                    { "languageCode": "it", "value": "Trattiene il treno se la trazione si ferma o si perde." },
+                    { "languageCode": "es", "value": "Retiene el tren si la traccion se detiene o se pierde." },
+                    { "languageCode": "pl", "value": "Trzyma pociag przy zatrzymaniu lub utracie ciagu." },
+                    { "languageCode": "pt", "value": "Segura o comboio se a tracao parar ou se perder." }
+                  ] },
+                  { "texts": [
+                    { "languageCode": "fr", "value": "Usure des crans, bruit anormal, engagement complet." },
+                    { "languageCode": "en", "value": "Tooth wear, abnormal noise, full engagement." },
+                    { "languageCode": "de", "value": "Zahnverschleiss, ungewoehnliche Geraeusche, voller Eingriff." },
+                    { "languageCode": "nl", "value": "Tandslijtage, abnormaal geluid, volledige ingreep." },
+                    { "languageCode": "it", "value": "Usura dei denti, rumore anomalo, innesto completo." },
+                    { "languageCode": "es", "value": "Desgaste de dientes, ruido anormal, acoplamiento completo." },
+                    { "languageCode": "pl", "value": "Zuzycie zebow, nietypowy halas, pelne zazebienie." },
+                    { "languageCode": "pt", "value": "Desgaste dos dentes, ruido anormal, engate completo." }
+                  ] }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "blockType": "metrics",
+          "titles": [
+            { "languageCode": "fr", "value": "Ordres de grandeur" },
+            { "languageCode": "en", "value": "Typical ranges" },
+            { "languageCode": "de", "value": "Typische Bereiche" },
+            { "languageCode": "nl", "value": "Typische waarden" },
+            { "languageCode": "it", "value": "Valori tipici" },
+            { "languageCode": "es", "value": "Rangos tipicos" },
+            { "languageCode": "pl", "value": "Typowe zakresy" },
+            { "languageCode": "pt", "value": "Intervalos tipicos" }
+          ],
+          "metrics": [
+            {
+              "label": [
+                { "languageCode": "fr", "value": "Vitesse de montée" },
+                { "languageCode": "en", "value": "Lift speed" },
+                { "languageCode": "de", "value": "Liftgeschwindigkeit" },
+                { "languageCode": "nl", "value": "Liftsnelheid" },
+                { "languageCode": "it", "value": "Velocita di salita" },
+                { "languageCode": "es", "value": "Velocidad de subida" },
+                { "languageCode": "pl", "value": "Predkosc liftu" },
+                { "languageCode": "pt", "value": "Velocidade de subida" }
+              ],
+              "value": [
+                { "languageCode": "fr", "value": "Environ 1 à 3 m/s" },
+                { "languageCode": "en", "value": "About 1 to 3 m/s" },
+                { "languageCode": "de", "value": "Etwa 1 bis 3 m/s" },
+                { "languageCode": "nl", "value": "Ongeveer 1 tot 3 m/s" },
+                { "languageCode": "it", "value": "Circa 1-3 m/s" },
+                { "languageCode": "es", "value": "Aprox. 1 a 3 m/s" },
+                { "languageCode": "pl", "value": "Około 1-3 m/s" },
+                { "languageCode": "pt", "value": "Cerca de 1 a 3 m/s" }
+              ],
+              "helpText": [
+                { "languageCode": "fr", "value": "Variable selon constructeur, pente, masse du train et débit recherché." },
+                { "languageCode": "en", "value": "Depends on manufacturer, slope, train mass and target throughput." },
+                { "languageCode": "de", "value": "Abhaengig von Hersteller, Neigung, Zugmasse und Zielkapazitaet." },
+                { "languageCode": "nl", "value": "Afhankelijk van bouwer, helling, treinmassa en gewenste capaciteit." },
+                { "languageCode": "it", "value": "Dipende da costruttore, pendenza, massa del treno e capacita desiderata." },
+                { "languageCode": "es", "value": "Depende del fabricante, pendiente, masa del tren y capacidad buscada." },
+                { "languageCode": "pl", "value": "Zalezy od producenta, nachylenia, masy pociagu i przepustowosci." },
+                { "languageCode": "pt", "value": "Depende do fabricante, inclinacao, massa do comboio e capacidade pretendida." }
+              ]
+            },
+            {
+              "label": [
+                { "languageCode": "fr", "value": "Angle courant" },
+                { "languageCode": "en", "value": "Common angle" },
+                { "languageCode": "de", "value": "Ueblicher Winkel" },
+                { "languageCode": "nl", "value": "Gebruikelijke hoek" },
+                { "languageCode": "it", "value": "Angolo comune" },
+                { "languageCode": "es", "value": "Angulo habitual" },
+                { "languageCode": "pl", "value": "Typowy kat" },
+                { "languageCode": "pt", "value": "Angulo comum" }
+              ],
+              "value": [
+                { "languageCode": "fr", "value": "Souvent 25 à 45°" },
+                { "languageCode": "en", "value": "Often 25 to 45°" },
+                { "languageCode": "de", "value": "Oft 25 bis 45°" },
+                { "languageCode": "nl", "value": "Vaak 25 tot 45°" },
+                { "languageCode": "it", "value": "Spesso 25-45°" },
+                { "languageCode": "es", "value": "A menudo 25 a 45°" },
+                { "languageCode": "pl", "value": "Czesto 25-45°" },
+                { "languageCode": "pt", "value": "Frequentemente 25 a 45°" }
+              ],
+              "helpText": [
+                { "languageCode": "fr", "value": "Des lifts plus raides existent mais imposent plus de contraintes mécaniques et d'évacuation." },
+                { "languageCode": "en", "value": "Steeper lifts exist but add mechanical and evacuation constraints." },
+                { "languageCode": "de", "value": "Steilere Lifte gibt es, sie bringen aber mechanische und Evakuierungsauflagen." },
+                { "languageCode": "nl", "value": "Steilere liften bestaan, maar geven meer mechanische en evacuatie-eisen." },
+                { "languageCode": "it", "value": "Esistono lift piu ripidi, ma aumentano vincoli meccanici ed evacuativi." },
+                { "languageCode": "es", "value": "Hay lifts mas inclinados, pero anaden exigencias mecanicas y de evacuacion." },
+                { "languageCode": "pl", "value": "Stromsze lifty istnieja, ale zwiekszaja wymagania mechaniczne i ewakuacyjne." },
+                { "languageCode": "pt", "value": "Ha lifts mais inclinados, mas aumentam exigencias mecanicas e de evacuacao." }
+              ]
+            },
+            {
+              "label": [
+                { "languageCode": "fr", "value": "Débit" },
+                { "languageCode": "en", "value": "Throughput impact" },
+                { "languageCode": "de", "value": "Kapazitaetseffekt" },
+                { "languageCode": "nl", "value": "Capaciteitsimpact" },
+                { "languageCode": "it", "value": "Impatto sulla capacita" },
+                { "languageCode": "es", "value": "Impacto en capacidad" },
+                { "languageCode": "pl", "value": "Wplyw na przepustowosc" },
+                { "languageCode": "pt", "value": "Impacto na capacidade" }
+              ],
+              "value": [
+                { "languageCode": "fr", "value": "Dépend du temps de montée" },
+                { "languageCode": "en", "value": "Driven by lift time" },
+                { "languageCode": "de", "value": "Vom Liftzeit bestimmt" },
+                { "languageCode": "nl", "value": "Bepaald door lifttijd" },
+                { "languageCode": "it", "value": "Dipende dal tempo di salita" },
+                { "languageCode": "es", "value": "Depende del tiempo de subida" },
+                { "languageCode": "pl", "value": "Zalezy od czasu wjazdu" },
+                { "languageCode": "pt", "value": "Depende do tempo de subida" }
+              ],
+              "helpText": [
+                { "languageCode": "fr", "value": "Un lift long peut devenir la section limitante du cycle d'exploitation." },
+                { "languageCode": "en", "value": "A long lift can become the limiting section of the operating cycle." },
+                { "languageCode": "de", "value": "Ein langer Lift kann den Betriebszyklus begrenzen." },
+                { "languageCode": "nl", "value": "Een lange lift kan de beperkende sectie van de cyclus worden." },
+                { "languageCode": "it", "value": "Un lift lungo puo diventare la sezione limitante del ciclo operativo." },
+                { "languageCode": "es", "value": "Un lift largo puede limitar el ciclo de operacion." },
+                { "languageCode": "pl", "value": "Dlugi lift moze ograniczac cykl pracy." },
+                { "languageCode": "pt", "value": "Um lift longo pode limitar o ciclo operacional." }
+              ]
+            }
+          ]
+        },
+        {
+          "blockType": "list",
+          "titles": [
+            { "languageCode": "fr", "value": "Quand qualifier une attraction en lift à chaîne" },
+            { "languageCode": "en", "value": "When to tag a ride as chain lift" },
+            { "languageCode": "de", "value": "Wann eine Anlage als Kettenlift gilt" },
+            { "languageCode": "nl", "value": "Wanneer een baan een kettinglift is" },
+            { "languageCode": "it", "value": "Quando indicare lift a catena" },
+            { "languageCode": "es", "value": "Cuando marcar lift de cadena" },
+            { "languageCode": "pl", "value": "Kiedy oznaczyc lift lancuchowy" },
+            { "languageCode": "pt", "value": "Quando marcar lift de corrente" }
+          ],
+          "bodies": [
+            { "languageCode": "fr", "value": "<p>Pour les fiches attractions, renseigne ce type quand la mise en énergie principale se fait par une chaîne visible ou documentée sur une montée. Si l'attraction combine plusieurs systèmes, indique le système dominant ou le premier système de prise de vitesse, puis détaille le reste dans la description.</p>" },
+            { "languageCode": "en", "value": "<p>For ride records, use this type when the main energy input comes from a visible or documented chain on a lift hill. If the ride combines systems, use the dominant or first speed-building system, then explain the rest in the description.</p>" },
+            { "languageCode": "de", "value": "<p>Bei Attraktionsdaten passt dieser Typ, wenn die Hauptenergie ueber eine sichtbare oder belegte Kette auf einem Lift kommt. Bei Kombisystemen das dominante oder erste Beschleunigungssystem waehlen und den Rest beschreiben.</p>" },
+            { "languageCode": "nl", "value": "<p>Gebruik dit type wanneer de hoofdenergie komt van een zichtbare of gedocumenteerde ketting op een liftheuvel. Bij combinaties kies je het dominante of eerste snelheidsopbouwende systeem en beschrijf je de rest.</p>" },
+            { "languageCode": "it", "value": "<p>Usa questo tipo quando l'energia principale arriva da una catena visibile o documentata su una salita. Se l'attrazione combina sistemi, scegli quello dominante o il primo sistema che genera velocita e descrivi il resto.</p>" },
+            { "languageCode": "es", "value": "<p>Usa este tipo cuando la energia principal venga de una cadena visible o documentada en una subida. Si la atraccion combina sistemas, usa el dominante o el primer sistema de velocidad y explica el resto.</p>" },
+            { "languageCode": "pl", "value": "<p>Uzyj tego typu, gdy glowna energia pochodzi z widocznego lub udokumentowanego lancucha na wzniesieniu. Przy systemach laczonych wybierz dominujacy lub pierwszy system budujacy predkosc i opisz reszte.</p>" },
+            { "languageCode": "pt", "value": "<p>Usa este tipo quando a energia principal vem de uma corrente visivel ou documentada numa subida. Se a atracao combina sistemas, escolhe o dominante ou o primeiro sistema de ganho de velocidade e descreve o resto.</p>" }
+          ],
+          "items": [
+            { "texts": [
+              { "languageCode": "fr", "value": "La montée est tractée par une chaîne centrale ou latérale." },
+              { "languageCode": "en", "value": "The hill is pulled by a central or side chain." },
+              { "languageCode": "de", "value": "Die Steigung wird von einer mittigen oder seitlichen Kette gezogen." },
+              { "languageCode": "nl", "value": "De helling wordt door een centrale of zijketting getrokken." },
+              { "languageCode": "it", "value": "La salita e trainata da una catena centrale o laterale." },
+              { "languageCode": "es", "value": "La subida se arrastra con una cadena central o lateral." },
+              { "languageCode": "pl", "value": "Wzniesienie jest ciagniete lancuchem centralnym lub bocznym." },
+              { "languageCode": "pt", "value": "A subida e puxada por uma corrente central ou lateral." }
+            ] },
+            { "texts": [
+              { "languageCode": "fr", "value": "Le train ne reçoit pas une accélération brusque mais une traction continue." },
+              { "languageCode": "en", "value": "The train receives continuous pull rather than sudden acceleration." },
+              { "languageCode": "de", "value": "Der Zug erhaelt kontinuierlichen Zug statt ploetzlicher Beschleunigung." },
+              { "languageCode": "nl", "value": "De trein krijgt continue trekkracht in plaats van plotse acceleratie." },
+              { "languageCode": "it", "value": "Il treno riceve trazione continua, non accelerazione brusca." },
+              { "languageCode": "es", "value": "El tren recibe traccion continua, no aceleracion brusca." },
+              { "languageCode": "pl", "value": "Pociag dostaje ciagla sile, a nie gwaltowne przyspieszenie." },
+              { "languageCode": "pt", "value": "O comboio recebe tracao continua, nao aceleracao brusca." }
+            ] },
+            { "texts": [
+              { "languageCode": "fr", "value": "Le bruit caractéristique de cliquetis vient souvent de l'anti-retour, pas seulement de la chaîne." },
+              { "languageCode": "en", "value": "The characteristic clicking often comes from anti-rollback, not only the chain." },
+              { "languageCode": "de", "value": "Das typische Klicken kommt oft von der Ruecklaufsicherung, nicht nur von der Kette." },
+              { "languageCode": "nl", "value": "Het kenmerkende klikken komt vaak van de terugrolbeveiliging, niet alleen van de ketting." },
+              { "languageCode": "it", "value": "Il ticchettio tipico viene spesso dall'anti-rollback, non solo dalla catena." },
+              { "languageCode": "es", "value": "El clic caracteristico suele venir del anti-rollback, no solo de la cadena." },
+              { "languageCode": "pl", "value": "Charakterystyczne klikanie czesto pochodzi z anti-rollback, nie tylko z lancucha." },
+              { "languageCode": "pt", "value": "O clique caracteristico vem muitas vezes do anti-retorno, nao apenas da corrente." }
+            ] }
+          ]
+        },
+        {
+          "blockType": "callout",
+          "tone": "warning",
+          "titles": [
+            { "languageCode": "fr", "value": "Sécurité et évacuation" },
+            { "languageCode": "en", "value": "Safety and evacuation" },
+            { "languageCode": "de", "value": "Sicherheit und Evakuierung" },
+            { "languageCode": "nl", "value": "Veiligheid en evacuatie" },
+            { "languageCode": "it", "value": "Sicurezza ed evacuazione" },
+            { "languageCode": "es", "value": "Seguridad y evacuacion" },
+            { "languageCode": "pl", "value": "Bezpieczenstwo i ewakuacja" },
+            { "languageCode": "pt", "value": "Seguranca e evacuacao" }
+          ],
+          "bodies": [
+            { "languageCode": "fr", "value": "<p>Un arrêt sur lift n'est pas automatiquement une situation dangereuse : le train est retenu par les dispositifs anti-retour et par la logique de bloc. En revanche, l'accès passerelle, les points d'ancrage, les procédures d'évacuation et les communications opérateur doivent être pensés dès la conception, car un lift haut ou raide rend chaque intervention plus lente.</p>" },
+            { "languageCode": "en", "value": "<p>A stop on a lift is not automatically dangerous: the train is held by anti-rollback devices and block logic. However, walkways, anchor points, evacuation procedures and operator communication must be planned from design time because a tall or steep lift makes every intervention slower.</p>" },
+            { "languageCode": "de", "value": "<p>Ein Halt auf dem Lift ist nicht automatisch gefaehrlich: Ruecklaufsicherung und Blocklogik halten den Zug. Laufstege, Anschlagpunkte, Evakuierungsablaeufe und Bedienerkommunikation muessen aber von Anfang an geplant werden.</p>" },
+            { "languageCode": "nl", "value": "<p>Een stop op de lift is niet automatisch gevaarlijk: de trein wordt gehouden door terugrolbeveiliging en bloklogica. Looppaden, ankerpunten, evacuatieprocedures en communicatie moeten vanaf het ontwerp kloppen.</p>" },
+            { "languageCode": "it", "value": "<p>Una fermata sul lift non e automaticamente pericolosa: il treno e trattenuto da anti-rollback e logica di blocco. Passerelle, ancoraggi, evacuazione e comunicazione operatore vanno pero progettati fin dall'inizio.</p>" },
+            { "languageCode": "es", "value": "<p>Una parada en el lift no es automaticamente peligrosa: el tren queda retenido por anti-rollback y logica de bloques. Pasarelas, anclajes, evacuacion y comunicacion de operador deben planearse desde el diseno.</p>" },
+            { "languageCode": "pl", "value": "<p>Zatrzymanie na lifcie nie jest automatycznie niebezpieczne: pociag trzyma anti-rollback i logika blokow. Pomosty, punkty kotwiczenia, procedury ewakuacji i komunikacja musza byc przewidziane od projektu.</p>" },
+            { "languageCode": "pt", "value": "<p>Uma paragem no lift nao e automaticamente perigosa: o comboio fica seguro por anti-retorno e logica de blocos. Passadicos, pontos de ancoragem, evacuacao e comunicacao do operador devem ser previstos no projeto.</p>" }
+          ]
+        }
+      ],
+      "sortOrder": 1010,
+      "isVisible": true,
+      "adminReviewStatus": "Validated"
+    }
+  ]
+}
