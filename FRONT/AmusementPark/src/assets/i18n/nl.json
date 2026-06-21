@@ -1169,7 +1169,38 @@
         "previewCurrentValue": "Huidig",
         "previewProposedValue": "Voorstel",
         "previewJsonNoChanges": "Geen wijziging gevonden.",
-        "emptyValue": "Leeg"
+        "emptyValue": "Leeg",
+        "photoAddTitle": "Foto toevoegen",
+        "photoSourceFile": "Bestand",
+        "photoSourceRemote": "Link",
+        "photoFileLabel": "Afbeeldingsbestand",
+        "photoSelectedFile": "Bestand: {{ fileName }}",
+        "photoRemoteUrlLabel": "Afbeeldings-URL",
+        "photoRemoteUrlPlaceholder": "https://...",
+        "photoPreviewRemote": "Link bekijken",
+        "photoPreviewAlt": "Fotovoorbeeld",
+        "photoMetadataReading": "Metadata lezen...",
+        "photoMetadataFileName": "Naam",
+        "photoMetadataContentType": "Type",
+        "photoMetadataSize": "Grootte",
+        "photoMetadataDimensions": "Afmetingen",
+        "photoMetadataGeoLocation": "Geolocatie",
+        "photoMetadataGeoUnavailable": "Controle na import voor een URL",
+        "photoMetadataGeoMissing": "Geen coordinaten gevonden",
+        "photoDescriptionLabel": "Beschrijving",
+        "photoDescriptionPlaceholder": "Korte beschrijving",
+        "photoCategoryLabel": "Categorie",
+        "photoTagsLoading": "Tags laden...",
+        "photoTagsLabel": "Fototags",
+        "photoPublishedLabel": "Foto publiceren",
+        "photoSetCurrentLabel": "Instellen als hoofdafbeelding",
+        "photoUpload": "Foto toevoegen",
+        "photoUploading": "Toevoegen...",
+        "photoSourceRequired": "Kies een bestand of voer een afbeeldingslink in.",
+        "photoInvalidRemoteUrl": "De link moet een geldige http- of https-URL zijn.",
+        "photoUploadError": "Foto toevoegen mislukt.",
+        "photoUploadSucceeded": "Foto toegevoegd, de pagina wordt bijgewerkt.",
+        "photoTagsLoadError": "Fototags konden niet worden geladen."
       },
       "capabilities": {
         "fullAdminEdit": "Volledige adminbewerking beschikbaar",
@@ -1180,7 +1211,8 @@
         "targetedChildAdd": "Gericht toevoegen beschikbaar",
         "boundedJsonExportPlanned": "Begrensde JSON-export gepland",
         "boundedJsonUpsertPlanned": "Begrensde JSON-upsert gepland",
-        "formEditPlanned": "Contextformulier gepland"
+        "formEditPlanned": "Contextformulier gepland",
+        "contextualPhotoAdd": "Contextueel foto toevoegen beschikbaar"
       },
       "blocks": {
         "parkHero": {
@@ -1206,6 +1238,14 @@
         "parkItemLocation": {
           "label": "Itemlocatie",
           "description": "Algemene positie van dit item in het park."
+        },
+        "parkImages": {
+          "label": "Parkfoto's",
+          "description": "Publieke parkgalerij en gericht foto's toevoegen."
+        },
+        "parkItemImages": {
+          "label": "Itemfoto's",
+          "description": "Publieke itemgalerij en gericht foto's toevoegen."
         }
       }
     },

@@ -58,6 +58,7 @@
           [photos]="photos"
           [categories]="categories"
           [language]="language"
+          [appAdminContextualBlock]="getImagesContextualBlock(currentItem)"
           [displayLimits]="[6, 12, 24, 0]"
           [defaultDisplayLimit]="0"
           tone="sky"
@@ -89,7 +90,11 @@
           </div>
         }
       } @else {
-        <section class="park-item-images-empty" appUiSurface="soft" appUiSurfacePadding="spacious">
+        <section
+          class="park-item-images-empty"
+          appUiSurface="soft"
+          appUiSurfacePadding="spacious"
+          [appAdminContextualBlock]="getImagesContextualBlock(currentItem)">
           <i class="pi pi-image" aria-hidden="true"></i>
           <h2>{{ 'parkItems.imagesPage.emptyTitle' | translate }}</h2>
           <p>{{ 'parkItems.imagesPage.emptyMessage' | translate:{ name: currentItem.name } }}</p>
