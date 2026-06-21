@@ -1169,7 +1169,38 @@
         "previewCurrentValue": "Current",
         "previewProposedValue": "Proposed",
         "previewJsonNoChanges": "No change detected.",
-        "emptyValue": "Empty"
+        "emptyValue": "Empty",
+        "photoAddTitle": "Add a photo",
+        "photoSourceFile": "File",
+        "photoSourceRemote": "Link",
+        "photoFileLabel": "Image file",
+        "photoSelectedFile": "File: {{ fileName }}",
+        "photoRemoteUrlLabel": "Image URL",
+        "photoRemoteUrlPlaceholder": "https://...",
+        "photoPreviewRemote": "Preview link",
+        "photoPreviewAlt": "Photo preview",
+        "photoMetadataReading": "Reading metadata...",
+        "photoMetadataFileName": "Name",
+        "photoMetadataContentType": "Type",
+        "photoMetadataSize": "Size",
+        "photoMetadataDimensions": "Dimensions",
+        "photoMetadataGeoLocation": "Geolocation",
+        "photoMetadataGeoUnavailable": "Checked after import for a URL",
+        "photoMetadataGeoMissing": "No coordinates detected",
+        "photoDescriptionLabel": "Description",
+        "photoDescriptionPlaceholder": "Short description",
+        "photoCategoryLabel": "Category",
+        "photoTagsLoading": "Loading tags...",
+        "photoTagsLabel": "Photo tags",
+        "photoPublishedLabel": "Publish photo",
+        "photoSetCurrentLabel": "Set as main image",
+        "photoUpload": "Add photo",
+        "photoUploading": "Adding...",
+        "photoSourceRequired": "Choose a file or enter an image link.",
+        "photoInvalidRemoteUrl": "The link must be a valid http or https URL.",
+        "photoUploadError": "Photo upload failed.",
+        "photoUploadSucceeded": "Photo added, the page is updating.",
+        "photoTagsLoadError": "Photo tags could not be loaded."
       },
       "capabilities": {
         "fullAdminEdit": "Full admin edit available",
@@ -1180,7 +1211,8 @@
         "targetedChildAdd": "Targeted add available",
         "boundedJsonExportPlanned": "Bounded JSON export planned",
         "boundedJsonUpsertPlanned": "Bounded JSON upsert planned",
-        "formEditPlanned": "Context form planned"
+        "formEditPlanned": "Context form planned",
+        "contextualPhotoAdd": "Contextual photo add available"
       },
       "blocks": {
         "parkHero": {
@@ -1206,6 +1238,14 @@
         "parkItemLocation": {
           "label": "Item location",
           "description": "General position of this item inside the park."
+        },
+        "parkImages": {
+          "label": "Park photos",
+          "description": "Public park gallery and targeted photo addition."
+        },
+        "parkItemImages": {
+          "label": "Item photos",
+          "description": "Public item gallery and targeted photo addition."
         }
       }
     },

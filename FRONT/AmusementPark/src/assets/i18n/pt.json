@@ -1169,7 +1169,38 @@
         "previewCurrentValue": "Atual",
         "previewProposedValue": "Proposto",
         "previewJsonNoChanges": "Nenhuma alteracao detetada.",
-        "emptyValue": "Vazio"
+        "emptyValue": "Vazio",
+        "photoAddTitle": "Adicionar foto",
+        "photoSourceFile": "Ficheiro",
+        "photoSourceRemote": "Link",
+        "photoFileLabel": "Ficheiro de imagem",
+        "photoSelectedFile": "Ficheiro: {{ fileName }}",
+        "photoRemoteUrlLabel": "URL da imagem",
+        "photoRemoteUrlPlaceholder": "https://...",
+        "photoPreviewRemote": "Pre-visualizar link",
+        "photoPreviewAlt": "Pre-visualizacao da foto",
+        "photoMetadataReading": "A ler metadados...",
+        "photoMetadataFileName": "Nome",
+        "photoMetadataContentType": "Tipo",
+        "photoMetadataSize": "Tamanho",
+        "photoMetadataDimensions": "Dimensoes",
+        "photoMetadataGeoLocation": "Geolocalizacao",
+        "photoMetadataGeoUnavailable": "Verificacao apos importar uma URL",
+        "photoMetadataGeoMissing": "Nenhuma coordenada detetada",
+        "photoDescriptionLabel": "Descricao",
+        "photoDescriptionPlaceholder": "Descricao curta",
+        "photoCategoryLabel": "Categoria",
+        "photoTagsLoading": "A carregar tags...",
+        "photoTagsLabel": "Tags da foto",
+        "photoPublishedLabel": "Publicar foto",
+        "photoSetCurrentLabel": "Definir como imagem principal",
+        "photoUpload": "Adicionar foto",
+        "photoUploading": "A adicionar...",
+        "photoSourceRequired": "Escolhe um ficheiro ou indica um link de imagem.",
+        "photoInvalidRemoteUrl": "O link deve ser um URL http ou https valido.",
+        "photoUploadError": "Nao foi possivel adicionar a foto.",
+        "photoUploadSucceeded": "Foto adicionada, a pagina esta a atualizar.",
+        "photoTagsLoadError": "Nao foi possivel carregar as tags da foto."
       },
       "capabilities": {
         "fullAdminEdit": "Edicao admin completa disponivel",
@@ -1180,7 +1211,8 @@
         "targetedChildAdd": "Adicao direcionada disponivel",
         "boundedJsonExportPlanned": "Export JSON limitado previsto",
         "boundedJsonUpsertPlanned": "Upsert JSON limitado previsto",
-        "formEditPlanned": "Formulario contextual previsto"
+        "formEditPlanned": "Formulario contextual previsto",
+        "contextualPhotoAdd": "Adicao contextual de foto disponivel"
       },
       "blocks": {
         "parkHero": {
@@ -1206,6 +1238,14 @@
         "parkItemLocation": {
           "label": "Localizacao do item",
           "description": "Posicao geral deste item no parque."
+        },
+        "parkImages": {
+          "label": "Fotos do parque",
+          "description": "Galeria publica do parque e adicao direcionada de fotos."
+        },
+        "parkItemImages": {
+          "label": "Fotos do item",
+          "description": "Galeria publica do item e adicao direcionada de fotos."
         }
       }
     },

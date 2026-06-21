@@ -40,6 +40,24 @@ const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = 
     localizedLanguageCodes: SUPPORTED_LANGUAGE_CODES
   },
   {
+    type: 'park.images',
+    labelKey: 'admin.contextualBlocks.blocks.parkImages.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkImages.description',
+    iconClass: 'pi pi-images',
+    capabilities: ['fullAdminEdit', 'contextualPhotoAdd'],
+    jsonScope: [
+      'park.id',
+      'image.file',
+      'image.sourceUrl',
+      'image.category',
+      'image.tagIds[*]',
+      'image.description',
+      'image.isPublished',
+      'image.setAsCurrent'
+    ],
+    localizedLanguageCodes: []
+  },
+  {
     type: 'park.practical',
     labelKey: 'admin.contextualBlocks.blocks.parkPractical.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkPractical.description',
@@ -85,6 +103,25 @@ const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = 
       'parkItem.descriptions[*].value'
     ],
     localizedLanguageCodes: SUPPORTED_LANGUAGE_CODES
+  },
+  {
+    type: 'parkItem.images',
+    labelKey: 'admin.contextualBlocks.blocks.parkItemImages.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkItemImages.description',
+    iconClass: 'pi pi-images',
+    capabilities: ['fullAdminEdit', 'contextualPhotoAdd'],
+    jsonScope: [
+      'parkItem.id',
+      'parkItem.parkId',
+      'image.file',
+      'image.sourceUrl',
+      'image.category',
+      'image.tagIds[*]',
+      'image.description',
+      'image.isPublished',
+      'image.setAsCurrent'
+    ],
+    localizedLanguageCodes: []
   },
   {
     type: 'parkItem.location',
@@ -182,7 +219,7 @@ export class AdminContextualBlockRegistryService {
   }
 
   private isParkItemBlockType(type: AdminContextualBlockType): boolean {
-    return type === 'parkItem.description' || type === 'parkItem.location';
+    return type === 'parkItem.description' || type === 'parkItem.images' || type === 'parkItem.location';
   }
 
   private normalizeLanguageCode(languageCode: string | null | undefined): string {

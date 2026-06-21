@@ -4,6 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
+import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { buildPublicParkItemsRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkImagesStateFacade } from '../state/park-images-state.facade';
@@ -37,7 +38,8 @@ export class ParkImagesPageComponent implements OnInit {
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly seoService: SeoService,
-    private readonly stateFacade: ParkImagesStateFacade
+    private readonly stateFacade: ParkImagesStateFacade,
+    private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
   ) {
     effect((): void => {
       const currentPark = this.park();
@@ -84,6 +86,12 @@ export class ParkImagesPageComponent implements OnInit {
 
       this.currentParkId = parkId;
       this.stateFacade.loadParkImages(parkId);
+    });
+
+    this.contextualBlockRefreshEvents.appliedBlock$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: AdminContextualBlockAppliedEvent) => {
+      if (event.blockType === 'park.images' && event.entityId === this.currentParkId && this.currentParkId) {
+        this.stateFacade.loadParkImages(this.currentParkId);
+      }
     });
   }
 

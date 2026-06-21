@@ -1169,7 +1169,38 @@
         "previewCurrentValue": "Aktuell",
         "previewProposedValue": "Vorschlag",
         "previewJsonNoChanges": "Keine Aenderung erkannt.",
-        "emptyValue": "Leer"
+        "emptyValue": "Leer",
+        "photoAddTitle": "Foto hinzufugen",
+        "photoSourceFile": "Datei",
+        "photoSourceRemote": "Link",
+        "photoFileLabel": "Bilddatei",
+        "photoSelectedFile": "Datei: {{ fileName }}",
+        "photoRemoteUrlLabel": "Bild-URL",
+        "photoRemoteUrlPlaceholder": "https://...",
+        "photoPreviewRemote": "Link anzeigen",
+        "photoPreviewAlt": "Fotovorschau",
+        "photoMetadataReading": "Metadaten werden gelesen...",
+        "photoMetadataFileName": "Name",
+        "photoMetadataContentType": "Typ",
+        "photoMetadataSize": "Grosse",
+        "photoMetadataDimensions": "Abmessungen",
+        "photoMetadataGeoLocation": "Geolokalisierung",
+        "photoMetadataGeoUnavailable": "Prufung nach Import einer URL",
+        "photoMetadataGeoMissing": "Keine Koordinaten erkannt",
+        "photoDescriptionLabel": "Beschreibung",
+        "photoDescriptionPlaceholder": "Kurze Beschreibung",
+        "photoCategoryLabel": "Kategorie",
+        "photoTagsLoading": "Tags werden geladen...",
+        "photoTagsLabel": "Foto-Tags",
+        "photoPublishedLabel": "Foto veroffentlichen",
+        "photoSetCurrentLabel": "Als Hauptbild setzen",
+        "photoUpload": "Foto hinzufugen",
+        "photoUploading": "Wird hinzugefugt...",
+        "photoSourceRequired": "Wahle eine Datei oder gib einen Bildlink ein.",
+        "photoInvalidRemoteUrl": "Der Link muss eine gultige http- oder https-URL sein.",
+        "photoUploadError": "Das Foto konnte nicht hinzugefugt werden.",
+        "photoUploadSucceeded": "Foto hinzugefugt, die Seite wird aktualisiert.",
+        "photoTagsLoadError": "Foto-Tags konnten nicht geladen werden."
       },
       "capabilities": {
         "fullAdminEdit": "Vollstaendige Admin-Bearbeitung verfuegbar",
@@ -1180,7 +1211,8 @@
         "targetedChildAdd": "Gezieltes Hinzufuegen verfuegbar",
         "boundedJsonExportPlanned": "Begrenzter JSON-Export geplant",
         "boundedJsonUpsertPlanned": "Begrenzter JSON-Upsert geplant",
-        "formEditPlanned": "Kontextformular geplant"
+        "formEditPlanned": "Kontextformular geplant",
+        "contextualPhotoAdd": "Kontextuelles Foto-Hinzufugen verfugbar"
       },
       "blocks": {
         "parkHero": {
@@ -1206,6 +1238,14 @@
         "parkItemLocation": {
           "label": "Item-Standort",
           "description": "Allgemeine Position dieses Items im Park."
+        },
+        "parkImages": {
+          "label": "Parkfotos",
+          "description": "Offentliche Parkgalerie und gezieltes Hinzufugen von Fotos."
+        },
+        "parkItemImages": {
+          "label": "Item-Fotos",
+          "description": "Offentliche Item-Galerie und gezieltes Hinzufugen von Fotos."
         }
       }
     },

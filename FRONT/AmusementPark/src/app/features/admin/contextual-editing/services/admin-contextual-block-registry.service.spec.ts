@@ -19,9 +19,11 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(service.getDefinitions().map((definition) => definition.type)).toEqual([
       'park.hero',
       'park.description',
+      'park.images',
       'park.practical',
       'park.location',
       'parkItem.description',
+      'parkItem.images',
       'parkItem.location'
     ]);
   });
@@ -80,6 +82,23 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.jsonScope).toEqual(['park.id', 'park.latitude', 'park.longitude']);
   });
 
+  it('creates a park images block for targeted contextual photo additions', () => {
+    const block: AdminContextualBlockInstance | null = service.createParkBlock(
+      'park.images',
+      'park-1',
+      'Phantasialand',
+      'fr'
+    );
+
+    expect(block?.id).toBe('park.images:park-1');
+    expect(block?.entityType).toBe('Park');
+    expect(block?.entityId).toBe('park-1');
+    expect(block?.ids).toEqual({ parkId: 'park-1' });
+    expect(block?.capabilities).toContain('contextualPhotoAdd');
+    expect(block?.jsonScope).toContain('image.file');
+    expect(block?.jsonScope).toContain('image.tagIds[*]');
+  });
+
   it('creates a park item description block with parent ids and a full admin route', () => {
     const block: AdminContextualBlockInstance | null = service.createParkItemBlock(
       'parkItem.description',
@@ -118,6 +137,24 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.locationFallbackCenter).toEqual([50.2, 3.3]);
     expect(block?.adminRoute).toEqual(['/', 'fr', 'admin', 'parks', 'edit', 'park-1', 'items', 'item-1']);
     expect(block?.jsonScope).toEqual(['parkItem.id', 'parkItem.parkId', 'parkItem.latitude', 'parkItem.longitude']);
+  });
+
+  it('creates a park item images block attached to its parent park', () => {
+    const block: AdminContextualBlockInstance | null = service.createParkItemBlock(
+      'parkItem.images',
+      'item-1',
+      'park-1',
+      'Wakala',
+      'fr'
+    );
+
+    expect(block?.id).toBe('parkItem.images:item-1');
+    expect(block?.entityType).toBe('ParkItem');
+    expect(block?.entityId).toBe('item-1');
+    expect(block?.ids).toEqual({ parkId: 'park-1', parkItemId: 'item-1' });
+    expect(block?.capabilities).toContain('contextualPhotoAdd');
+    expect(block?.jsonScope).toContain('parkItem.parkId');
+    expect(block?.jsonScope).toContain('image.sourceUrl');
   });
 
   it('keeps unsupported hero exports as planned capabilities only', () => {
