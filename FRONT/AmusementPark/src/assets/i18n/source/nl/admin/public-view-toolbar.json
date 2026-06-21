@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "publicViewToolbar": {
+      "ariaLabel": "Adminbalk voor publieke weergave",
+      "viewMode": "Publieke weergave",
+      "viewModeAriaLabel": "Kies de publieke weergave",
+      "editionOff": "Bewerken uit",
+      "editionOn": "Bewerken aan",
+      "enableEditionMode": "Bewerken inschakelen",
+      "disableEditionMode": "Bewerken uitschakelen",
+      "modes": {
+        "anonymous": {
+          "label": "Niet-ingelogde bezoeker",
+          "short": "Gast",
+          "aria": "Bekijken als niet-ingelogde bezoeker"
+        },
+        "user": {
+          "label": "Bezoeker met user-rol",
+          "short": "User",
+          "aria": "Bekijken als bezoeker met user-rol"
+        },
+        "moderator": {
+          "label": "Bezoeker met moderatorrol",
+          "short": "Mod",
+          "aria": "Bekijken als bezoeker met moderatorrol"
+        },
+        "admin": {
+          "label": "Admin",
+          "short": "Admin",
+          "aria": "Bekijken als admin"
+        }
+      }
+    }
+  }
+}

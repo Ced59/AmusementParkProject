@@ -1064,6 +1064,37 @@
         "visibleAsc": "Visible min"
       }
     },
+    "publicViewToolbar": {
+      "ariaLabel": "Admin public view toolbar",
+      "viewMode": "Public view",
+      "viewModeAriaLabel": "Choose the public view",
+      "editionOff": "Edit off",
+      "editionOn": "Edit on",
+      "enableEditionMode": "Enable editing",
+      "disableEditionMode": "Disable editing",
+      "modes": {
+        "anonymous": {
+          "label": "Anonymous visitor",
+          "short": "Visitor",
+          "aria": "View as anonymous visitor"
+        },
+        "user": {
+          "label": "User role visitor",
+          "short": "User",
+          "aria": "View as user role visitor"
+        },
+        "moderator": {
+          "label": "Moderator role visitor",
+          "short": "Mod",
+          "aria": "View as moderator role visitor"
+        },
+        "admin": {
+          "label": "Admin",
+          "short": "Admin",
+          "aria": "View as admin"
+        }
+      }
+    },
     "references": {
       "sections": {
         "identity": "Identity",

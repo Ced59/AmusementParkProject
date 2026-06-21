@@ -1,6 +1,20 @@
 {
-  "version": "2.3.12",
+  "version": "2.3.13",
   "history": [
+    {
+      "version": "2.3.13",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile se prepare mieux.",
+        "en": "Mobile administration is better prepared.",
+        "de": "Mobile Administration ist besser vorbereitet.",
+        "nl": "Mobiele administratie is beter voorbereid.",
+        "it": "L'amministrazione mobile e preparata meglio.",
+        "es": "La administracion movil queda mejor preparada.",
+        "pl": "Administracja mobilna jest lepiej przygotowana.",
+        "pt": "A administracao movel fica melhor preparada."
+      }
+    },
     {
       "version": "2.3.12",
       "releasedAt": "2026-06-21",

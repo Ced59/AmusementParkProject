@@ -15,6 +15,8 @@ import { VideoType } from '@app/models/videos/video-type';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { PagedResult } from '@shared/models/contracts';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
 import {
   PARK_DETAIL_PARKS_PORT,
   PARK_DETAIL_VIDEOS_PORT,
@@ -28,21 +30,27 @@ class FakeParksPort implements ParkDetailParksPort {
   public nearestResponse$: Observable<ParkDistanceResponse> = of(createNearbyResponse());
   public weatherResponse$: Observable<ParkWeatherForecast> = of(createWeatherForecast());
   public readonly summaryCalls: string[] = [];
+  public readonly summaryOptions: Array<AnonymousHttpOptions | undefined> = [];
   public readonly nearestCalls: { sourceParkId: string; limit?: number; maxDistanceKilometers?: number | null }[] = [];
+  public readonly nearestOptions: Array<AnonymousHttpOptions | undefined> = [];
   public readonly weatherCalls: { id: string; days?: number }[] = [];
+  public readonly weatherOptions: Array<AnonymousHttpOptions | undefined> = [];
 
-  getParkDetailSummary(id: string): Observable<ParkDetailSummary> {
+  getParkDetailSummary(id: string, options?: AnonymousHttpOptions): Observable<ParkDetailSummary> {
     this.summaryCalls.push(id);
+    this.summaryOptions.push(options);
     return this.summaryResponse$;
   }
 
-  getNearestParks(sourceParkId: string, limit?: number, maxDistanceKilometers?: number | null): Observable<ParkDistanceResponse> {
+  getNearestParks(sourceParkId: string, limit?: number, maxDistanceKilometers?: number | null, options?: AnonymousHttpOptions): Observable<ParkDistanceResponse> {
     this.nearestCalls.push({ sourceParkId, limit, maxDistanceKilometers });
+    this.nearestOptions.push(options);
     return this.nearestResponse$;
   }
 
-  getParkWeather(id: string, days?: number): Observable<ParkWeatherForecast> {
+  getParkWeather(id: string, days?: number, options?: AnonymousHttpOptions): Observable<ParkWeatherForecast> {
     this.weatherCalls.push({ id, days });
+    this.weatherOptions.push(options);
     return this.weatherResponse$;
   }
 }
@@ -58,9 +66,11 @@ class FakeSsrHttpStatusService {
 class FakeVideosPort implements ParkDetailVideosPort {
   public videosResponse$: Observable<PagedResult<VideoDto>> = of(createVideosPage(1));
   public readonly calls: VideoSearchQuery[] = [];
+  public readonly options: Array<AnonymousHttpOptions | undefined> = [];
 
-  getVideosPage(query: VideoSearchQuery = {}): Observable<PagedResult<VideoDto>> {
+  getVideosPage(query: VideoSearchQuery = {}, options?: AnonymousHttpOptions): Observable<PagedResult<VideoDto>> {
     this.calls.push(query);
+    this.options.push(options);
     return this.videosResponse$;
   }
 }
@@ -318,6 +328,22 @@ describe('ParkDetailStateFacade', () => {
     context.facade.loadPark('park-1');
 
     expect(context.facade.park()?.videosLink).toBeNull();
+  });
+
+  it('keeps public park detail API reads anonymous by default', () => {
+    const context = configureFacade();
+
+    context.facade.loadPark('park-1');
+
+    const capturedOptions: Array<AnonymousHttpOptions | undefined> = [
+      ...context.parksPort.summaryOptions,
+      ...context.parksPort.nearestOptions,
+      ...context.parksPort.weatherOptions,
+      ...context.videosPort.options
+    ];
+
+    expect(capturedOptions.length).toBe(4);
+    expect(capturedOptions.every((options: AnonymousHttpOptions | undefined) => options?.context.get(SKIP_AUTHORIZATION_HEADER) === true)).toBeTrue();
   });
 
   it('keeps the logo fallback but hides the images link when no main photo exists', () => {

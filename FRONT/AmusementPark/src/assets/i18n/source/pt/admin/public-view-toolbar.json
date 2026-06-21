@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "publicViewToolbar": {
+      "ariaLabel": "Barra admin da vista publica",
+      "viewMode": "Vista publica",
+      "viewModeAriaLabel": "Escolher a vista publica",
+      "editionOff": "Edicao off",
+      "editionOn": "Edicao on",
+      "enableEditionMode": "Ativar edicao",
+      "disableEditionMode": "Desativar edicao",
+      "modes": {
+        "anonymous": {
+          "label": "Visitante sem sessao",
+          "short": "Visita",
+          "aria": "Ver como visitante sem sessao"
+        },
+        "user": {
+          "label": "Visitante com papel user",
+          "short": "User",
+          "aria": "Ver como visitante com papel user"
+        },
+        "moderator": {
+          "label": "Visitante com papel moderador",
+          "short": "Mod",
+          "aria": "Ver como visitante com papel moderador"
+        },
+        "admin": {
+          "label": "Admin",
+          "short": "Admin",
+          "aria": "Ver como admin"
+        }
+      }
+    }
+  }
+}
