@@ -6,6 +6,7 @@ import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing
 import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import { AdminContextualBlockInstance } from '../../models/admin-contextual-block.model';
 import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
+import { AdminContextualBlockChildAddFacade, AdminContextualBlockChildAddZoneOption } from '../../state/admin-contextual-block-child-add.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
 import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField } from '../../state/admin-contextual-block-form.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
@@ -56,6 +57,21 @@ describe('AdminContextualBlockDrawerComponent', () => {
     updateLocalizedValue: jasmine.Spy;
     saveForm: jasmine.Spy;
   };
+  let childAddFacade: {
+    itemName: Signal<string>;
+    selectedZoneId: Signal<string | null>;
+    zoneOptions: Signal<readonly AdminContextualBlockChildAddZoneOption[]>;
+    isLoadingZones: Signal<boolean>;
+    isCreating: Signal<boolean>;
+    errorKey: Signal<string | null>;
+    successKey: Signal<string | null>;
+    createdItemAdminRoute: Signal<readonly string[] | null>;
+    canAddChild: jasmine.Spy;
+    resetForBlock: jasmine.Spy;
+    updateItemName: jasmine.Spy;
+    updateSelectedZoneId: jasmine.Spy;
+    createChild: jasmine.Spy;
+  };
 
   beforeEach(async () => {
     const isExportingSignal = signal<boolean>(false);
@@ -75,6 +91,16 @@ describe('AdminContextualBlockDrawerComponent', () => {
     const isFormSavingSignal = signal<boolean>(false);
     const formErrorKeySignal = signal<string | null>(null);
     const formSuccessKeySignal = signal<string | null>(null);
+    const childAddNameSignal = signal<string>('');
+    const childAddSelectedZoneIdSignal = signal<string | null>(null);
+    const childAddZonesSignal = signal<readonly AdminContextualBlockChildAddZoneOption[]>([
+      { id: 'zone-1', label: 'Berlin', latitude: 50.1, longitude: 3.2 }
+    ]);
+    const isChildAddLoadingZonesSignal = signal<boolean>(false);
+    const isChildAddCreatingSignal = signal<boolean>(false);
+    const childAddErrorKeySignal = signal<string | null>(null);
+    const childAddSuccessKeySignal = signal<string | null>(null);
+    const createdItemAdminRouteSignal = signal<readonly string[] | null>(null);
     exportFacade = {
       isExporting: isExportingSignal.asReadonly(),
       errorKey: errorKeySignal.asReadonly(),
@@ -137,6 +163,27 @@ describe('AdminContextualBlockDrawerComponent', () => {
         applyErrorKeySignal.set(null);
       })
     };
+    childAddFacade = {
+      itemName: childAddNameSignal.asReadonly(),
+      selectedZoneId: childAddSelectedZoneIdSignal.asReadonly(),
+      zoneOptions: childAddZonesSignal.asReadonly(),
+      isLoadingZones: isChildAddLoadingZonesSignal.asReadonly(),
+      isCreating: isChildAddCreatingSignal.asReadonly(),
+      errorKey: childAddErrorKeySignal.asReadonly(),
+      successKey: childAddSuccessKeySignal.asReadonly(),
+      createdItemAdminRoute: createdItemAdminRouteSignal.asReadonly(),
+      canAddChild: jasmine.createSpy('canAddChild').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
+        return Boolean(block?.capabilities.includes('targetedChildAdd'));
+      }),
+      resetForBlock: jasmine.createSpy('resetForBlock'),
+      updateItemName: jasmine.createSpy('updateItemName').and.callFake((value: string): void => {
+        childAddNameSignal.set(value);
+      }),
+      updateSelectedZoneId: jasmine.createSpy('updateSelectedZoneId').and.callFake((value: string | null): void => {
+        childAddSelectedZoneIdSignal.set(value);
+      }),
+      createChild: jasmine.createSpy('createChild')
+    };
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, AdminContextualBlockDrawerComponent],
@@ -159,6 +206,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
         {
           provide: AdminContextualBlockFormFacade,
           useValue: formFacade
+        },
+        {
+          provide: AdminContextualBlockChildAddFacade,
+          useValue: childAddFacade
         }
       ]
     }).compileComponents();
@@ -211,6 +262,20 @@ describe('AdminContextualBlockDrawerComponent', () => {
             formNoChanges: 'Aucun changement a enregistrer.',
             formUnavailable: 'Formulaire indisponible',
             localizedFieldAriaLabel: 'Champ localise',
+            addChildTitle: 'Ajouter un item',
+            addChildHint: 'Cree cache et a relire.',
+            addChildNameLabel: 'Nom',
+            addChildNamePlaceholder: 'Nom de l item',
+            addChildZoneLabel: 'Zone',
+            addChildNoZoneOption: 'Sans zone',
+            addChildZonesLoading: 'Chargement des zones...',
+            addChildCreate: 'Creer',
+            addChildCreateBusy: 'Creation...',
+            addChildError: 'Creation impossible.',
+            addChildNameRequired: 'Nom obligatoire.',
+            addChildUnavailable: 'Ajout indisponible.',
+            addChildSucceeded: 'Item cree.',
+            openCreatedChild: 'Ouvrir l item',
             previewChanged: 'Modifies',
             previewErrors: 'Erreurs',
             previewWarnings: 'Alertes',
@@ -226,6 +291,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
             boundedJsonPreview: 'Previsualisation JSON borne disponible',
             boundedJsonApply: 'Application JSON borne disponible',
             contextualFormEdit: 'Formulaire contextuel disponible',
+            targetedChildAdd: 'Ajout cible disponible',
             boundedJsonExportPlanned: 'Export JSON borne prevu',
             boundedJsonUpsertPlanned: 'Upsert JSON borne prevu',
             formEditPlanned: 'Formulaire contextuel prevu'
@@ -349,6 +415,30 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(formFacade.saveForm).toHaveBeenCalledOnceWith(block);
   });
 
+  it('delegates targeted child creation to the child add facade', () => {
+    const block: AdminContextualBlockInstance = createHeroBlock();
+    publicViewModeFacade.setViewMode('adminPreview');
+    publicViewModeFacade.setEditionModeEnabled(true);
+    selectionFacade.selectBlock(block);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const nameInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__child-add input') as HTMLInputElement;
+    const zoneSelect: HTMLSelectElement = host.querySelector('.admin-contextual-block-drawer__child-add select') as HTMLSelectElement;
+    nameInput.value = 'New ride';
+    nameInput.dispatchEvent(new Event('input'));
+    zoneSelect.value = 'zone-1';
+    zoneSelect.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+
+    const createButton: HTMLButtonElement = host.querySelector('.admin-contextual-block-drawer__child-add .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
+    createButton.click();
+
+    expect(childAddFacade.updateItemName).toHaveBeenCalledWith('New ride');
+    expect(childAddFacade.updateSelectedZoneId).toHaveBeenCalledWith('zone-1');
+    expect(childAddFacade.createChild).toHaveBeenCalledOnceWith(block);
+  });
+
   it('clears the selected block from the close action', () => {
     publicViewModeFacade.setViewMode('adminPreview');
     publicViewModeFacade.setEditionModeEnabled(true);
@@ -379,6 +469,24 @@ function createBlock(): AdminContextualBlockInstance {
     capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+  };
+}
+
+function createHeroBlock(): AdminContextualBlockInstance {
+  return {
+    id: 'park.hero:park-1',
+    type: 'park.hero',
+    entityType: 'Park',
+    entityId: 'park-1',
+    contextLabel: 'Phantasialand',
+    ids: { parkId: 'park-1' },
+    labelKey: 'admin.contextualBlocks.blocks.parkHero.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkHero.description',
+    iconClass: 'pi pi-image',
+    capabilities: ['fullAdminEdit', 'targetedChildAdd'],
+    jsonScope: ['park.id'],
+    localizedLanguageCodes: [],
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
   };
 }

@@ -15,7 +15,7 @@ const PARK_CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition
     labelKey: 'admin.contextualBlocks.blocks.parkHero.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkHero.description',
     iconClass: 'pi pi-image',
-    capabilities: ['fullAdminEdit', 'boundedJsonExportPlanned', 'boundedJsonUpsertPlanned', 'formEditPlanned'],
+    capabilities: ['fullAdminEdit', 'targetedChildAdd', 'boundedJsonExportPlanned', 'boundedJsonUpsertPlanned', 'formEditPlanned'],
     jsonScope: [
       'park.id',
       'park.name',

@@ -8,6 +8,7 @@ import {
   AdminContextualBlockInstance
 } from '../../models/admin-contextual-block.model';
 import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
+import { AdminContextualBlockChildAddFacade, AdminContextualBlockChildAddZoneOption } from '../../state/admin-contextual-block-child-add.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
 import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField } from '../../state/admin-contextual-block-form.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
@@ -41,19 +42,29 @@ export class AdminContextualBlockDrawerComponent {
   protected readonly isFormSaving: Signal<boolean> = this.formFacade.isSaving;
   protected readonly formErrorKey: Signal<string | null> = this.formFacade.errorKey;
   protected readonly formSuccessKey: Signal<string | null> = this.formFacade.successKey;
+  protected readonly childAddName: Signal<string> = this.childAddFacade.itemName;
+  protected readonly childAddSelectedZoneId: Signal<string | null> = this.childAddFacade.selectedZoneId;
+  protected readonly childAddZoneOptions: Signal<readonly AdminContextualBlockChildAddZoneOption[]> = this.childAddFacade.zoneOptions;
+  protected readonly isChildAddLoadingZones: Signal<boolean> = this.childAddFacade.isLoadingZones;
+  protected readonly isChildAddCreating: Signal<boolean> = this.childAddFacade.isCreating;
+  protected readonly childAddErrorKey: Signal<string | null> = this.childAddFacade.errorKey;
+  protected readonly childAddSuccessKey: Signal<string | null> = this.childAddFacade.successKey;
+  protected readonly createdChildAdminRoute: Signal<readonly string[] | null> = this.childAddFacade.createdItemAdminRoute;
 
   constructor(
     private readonly selectionFacade: AdminContextualBlockSelectionFacade,
     private readonly exportFacade: AdminContextualBlockExportFacade,
     private readonly previewFacade: AdminContextualBlockPreviewFacade,
     private readonly applyFacade: AdminContextualBlockApplyFacade,
-    private readonly formFacade: AdminContextualBlockFormFacade
+    private readonly formFacade: AdminContextualBlockFormFacade,
+    private readonly childAddFacade: AdminContextualBlockChildAddFacade
   ) {
     effect((): void => {
       const selectedBlock: AdminContextualBlockInstance | null = this.selectedBlock();
       this.previewFacade.resetForBlock(selectedBlock);
       this.applyFacade.resetForBlock(selectedBlock);
       this.formFacade.resetForBlock(selectedBlock);
+      this.childAddFacade.resetForBlock(selectedBlock);
     });
   }
 
@@ -79,6 +90,10 @@ export class AdminContextualBlockDrawerComponent {
 
   protected canEditForm(block: AdminContextualBlockInstance): boolean {
     return this.formFacade.canEditForm(block);
+  }
+
+  protected canAddChild(block: AdminContextualBlockInstance): boolean {
+    return this.childAddFacade.canAddChild(block);
   }
 
   protected canApplyCurrentPreview(block: AdminContextualBlockInstance): boolean {
@@ -118,6 +133,20 @@ export class AdminContextualBlockDrawerComponent {
     this.formFacade.saveForm(block);
   }
 
+  protected updateChildAddName(event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.childAddFacade.updateItemName(target?.value ?? '');
+  }
+
+  protected updateChildAddZone(event: Event): void {
+    const target: HTMLSelectElement | null = event.target instanceof HTMLSelectElement ? event.target : null;
+    this.childAddFacade.updateSelectedZoneId(target?.value ?? null);
+  }
+
+  protected createChild(block: AdminContextualBlockInstance): void {
+    this.childAddFacade.createChild(block);
+  }
+
   protected getIdEntries(block: AdminContextualBlockInstance): AdminContextualBlockIdEntry[] {
     return Object.entries(block.ids).map(([key, value]: [string, string]) => ({ key, value }));
   }
@@ -146,5 +175,9 @@ export class AdminContextualBlockDrawerComponent {
 
   protected trackLocalizedFormField(field: AdminContextualBlockLocalizedFormField): string {
     return field.languageCode;
+  }
+
+  protected trackChildAddZone(zone: AdminContextualBlockChildAddZoneOption): string {
+    return zone.id;
   }
 }

@@ -1,6 +1,20 @@
 {
-  "version": "2.3.18",
+  "version": "2.3.19",
   "history": [
+    {
+      "version": "2.3.19",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile gagne en precision.",
+        "en": "Mobile administration gains precision.",
+        "de": "Mobile Administration wird praeziser.",
+        "nl": "Mobiele administratie wordt preciezer.",
+        "it": "L'amministrazione mobile diventa piu precisa.",
+        "es": "La administracion movil gana precision.",
+        "pl": "Administracja mobilna staje sie precyzyjniejsza.",
+        "pt": "A administracao movel fica mais precisa."
+      }
+    },
     {
       "version": "2.3.18",
       "releasedAt": "2026-06-21",
