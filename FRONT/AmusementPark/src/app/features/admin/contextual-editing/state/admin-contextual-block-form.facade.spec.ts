@@ -2,7 +2,13 @@ import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
 import { ContextualBlocksApiService } from '@data-access/admin/contextual-blocks-api.service';
-import { ContextualBlockExportDocument, ContextualParkDescriptionBlock, ContextualParkItemDescriptionBlock } from '@shared/models/admin/contextual-block-export.models';
+import {
+  ContextualBlockExportDocument,
+  ContextualParkDescriptionBlock,
+  ContextualParkItemDescriptionBlock,
+  ContextualParkItemLocationBlock,
+  ContextualParkLocationBlock
+} from '@shared/models/admin/contextual-block-export.models';
 import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
 import { ADMIN_CONTEXTUAL_BLOCK_FORM_DATA_PORT } from './admin-contextual-block-form-data.ports';
@@ -112,6 +118,72 @@ describe('AdminContextualBlockFormFacade', () => {
     }));
   });
 
+  it('loads a park location form with a fallback map center when no position exists yet', () => {
+    contextualBlocksApi.getBlockExportDocument.and.returnValue(of(createParkLocationDocument(null, null)));
+    const block: AdminContextualBlockInstance = createParkLocationBlock();
+
+    facade.resetForBlock(block);
+
+    expect(contextualBlocksApi.getBlockExportDocument).toHaveBeenCalledOnceWith('park.location', 'park-1');
+    expect(facade.localizedFields()).toEqual([]);
+    expect(facade.locationForm()).toEqual({
+      latitude: null,
+      longitude: null,
+      mapCenter: [50.1, 3.2],
+      mapZoom: 16,
+      mapMarkers: []
+    });
+    expect(facade.errorKey()).toBeNull();
+  });
+
+  it('saves a park item location picked from the map and emits a refresh event', () => {
+    const applyResult: ContextualBlockPreviewResult = {
+      ...createApplyResult(true),
+      blockType: 'parkItem.location',
+      target: {
+        entityType: 'ParkItem',
+        entityId: 'item-1',
+        displayName: 'Wakala'
+      }
+    };
+    contextualBlocksApi.getBlockExportDocument.and.returnValue(of(createParkItemLocationDocument(null, null)));
+    contextualBlocksApi.applyBlock.and.returnValue(of(applyResult));
+    const block: AdminContextualBlockInstance = createParkItemLocationBlock();
+    facade.resetForBlock(block);
+
+    facade.updateLocationPosition(50.712345, 3.612345, block);
+    facade.saveForm(block);
+
+    expect(contextualBlocksApi.applyBlock).toHaveBeenCalledOnceWith('parkItem.location', 'item-1', jasmine.objectContaining({
+      block: jasmine.objectContaining({
+        parkId: 'park-1',
+        parkItemId: 'item-1',
+        zoneId: 'zone-1',
+        latitude: 50.712345,
+        longitude: 3.612345
+      })
+    }));
+    expect(facade.successKey()).toBe('admin.contextualBlocks.drawer.formSaveSucceeded');
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledOnceWith(jasmine.objectContaining({
+      blockType: 'parkItem.location',
+      entityType: 'ParkItem',
+      entityId: 'item-1'
+    }));
+  });
+
+  it('rejects partial location coordinates before bounded apply', () => {
+    contextualBlocksApi.getBlockExportDocument.and.returnValue(of(createParkLocationDocument(null, null)));
+    const block: AdminContextualBlockInstance = createParkLocationBlock();
+    facade.resetForBlock(block);
+
+    facade.updateLocationLatitude('48.85', block);
+    facade.saveForm(block);
+
+    expect(contextualBlocksApi.applyBlock).not.toHaveBeenCalled();
+    expect(facade.errorKey()).toBe('admin.contextualBlocks.drawer.locationInvalid');
+    expect(refreshEvents.notifyBlockApplied).not.toHaveBeenCalled();
+  });
+
   it('keeps edited fields when save fails', () => {
     contextualBlocksApi.getBlockExportDocument.and.returnValue(of(createDocument()));
     contextualBlocksApi.applyBlock.and.returnValue(throwError(() => new Error('failed')));
@@ -193,6 +265,58 @@ function createParkItemDocument(): ContextualBlockExportDocument<ContextualParkI
   };
 }
 
+function createParkLocationDocument(latitude: number | null, longitude: number | null): ContextualBlockExportDocument<ContextualParkLocationBlock> {
+  return {
+    documentType: 'AmusementParkContextualBlockUpsert',
+    schemaVersion: '2026-06-21',
+    blockType: 'park.location',
+    target: {
+      entityType: 'Park',
+      entityId: 'park-1'
+    },
+    ids: {
+      parkId: 'park-1'
+    },
+    block: {
+      parkId: 'park-1',
+      latitude,
+      longitude
+    },
+    metadata: {
+      source: 'admin-contextual-block-export',
+      exportedAtUtc: '2026-06-21T10:00:00Z'
+    }
+  };
+}
+
+function createParkItemLocationDocument(latitude: number | null, longitude: number | null): ContextualBlockExportDocument<ContextualParkItemLocationBlock> {
+  return {
+    documentType: 'AmusementParkContextualBlockUpsert',
+    schemaVersion: '2026-06-21',
+    blockType: 'parkItem.location',
+    target: {
+      entityType: 'ParkItem',
+      entityId: 'item-1'
+    },
+    ids: {
+      parkId: 'park-1',
+      parkItemId: 'item-1',
+      zoneId: 'zone-1'
+    },
+    block: {
+      parkId: 'park-1',
+      parkItemId: 'item-1',
+      zoneId: 'zone-1',
+      latitude,
+      longitude
+    },
+    metadata: {
+      source: 'admin-contextual-block-export',
+      exportedAtUtc: '2026-06-21T10:00:00Z'
+    }
+  };
+}
+
 function createApplyResult(isApplied: boolean): ContextualBlockPreviewResult {
   return {
     operationId: 'operation-1',
@@ -233,6 +357,26 @@ function createBlock(): AdminContextualBlockInstance {
     capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
+    locationFallbackCenter: null,
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+  };
+}
+
+function createParkLocationBlock(): AdminContextualBlockInstance {
+  return {
+    id: 'park.location:park-1',
+    type: 'park.location',
+    entityType: 'Park',
+    entityId: 'park-1',
+    contextLabel: 'Phantasialand',
+    ids: { parkId: 'park-1' },
+    labelKey: 'admin.contextualBlocks.blocks.parkLocation.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkLocation.description',
+    iconClass: 'pi pi-map-marker',
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    jsonScope: ['park.id', 'park.latitude', 'park.longitude'],
+    localizedLanguageCodes: [],
+    locationFallbackCenter: [50.1, 3.2],
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
   };
 }
@@ -251,6 +395,26 @@ function createParkItemBlock(): AdminContextualBlockInstance {
     capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
     jsonScope: ['parkItem.id', 'parkItem.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
+    locationFallbackCenter: null,
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1', 'items', 'item-1']
+  };
+}
+
+function createParkItemLocationBlock(): AdminContextualBlockInstance {
+  return {
+    id: 'parkItem.location:item-1',
+    type: 'parkItem.location',
+    entityType: 'ParkItem',
+    entityId: 'item-1',
+    contextLabel: 'Wakala',
+    ids: { parkId: 'park-1', parkItemId: 'item-1', zoneId: 'zone-1' },
+    labelKey: 'admin.contextualBlocks.blocks.parkItemLocation.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkItemLocation.description',
+    iconClass: 'pi pi-map-marker',
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    jsonScope: ['parkItem.id', 'parkItem.parkId', 'parkItem.latitude', 'parkItem.longitude'],
+    localizedLanguageCodes: [],
+    locationFallbackCenter: [50.1, 3.2],
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1', 'items', 'item-1']
   };
 }

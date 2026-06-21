@@ -109,6 +109,7 @@ function createBlock(capabilities: AdminContextualBlockInstance['capabilities'])
     capabilities,
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
+    locationFallbackCenter: null,
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
   };
 }

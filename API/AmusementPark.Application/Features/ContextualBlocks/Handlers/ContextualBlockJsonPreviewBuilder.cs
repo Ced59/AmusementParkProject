@@ -18,23 +18,26 @@ internal static class ContextualBlockJsonPreviewBuilder
         "block",
         "metadata",
     };
-
     private static readonly HashSet<string> TargetAllowedProperties = new HashSet<string>(StringComparer.Ordinal)
     {
         "entityType",
         "entityId",
     };
-
     private static readonly HashSet<string> MetadataAllowedProperties = new HashSet<string>(StringComparer.Ordinal)
     {
         "source",
         "exportedAtUtc",
     };
-
     private static readonly HashSet<string> DescriptionBlockAllowedProperties = new HashSet<string>(StringComparer.Ordinal)
     {
         "parkId",
         "descriptions",
+    };
+    private static readonly HashSet<string> LocationBlockAllowedProperties = new HashSet<string>(StringComparer.Ordinal)
+    {
+        "parkId",
+        "latitude",
+        "longitude",
     };
 
     private static readonly HashSet<string> ParkItemDescriptionBlockAllowedProperties = new HashSet<string>(StringComparer.Ordinal)
@@ -43,6 +46,15 @@ internal static class ContextualBlockJsonPreviewBuilder
         "parkItemId",
         "zoneId",
         "descriptions",
+    };
+
+    private static readonly HashSet<string> ParkItemLocationBlockAllowedProperties = new HashSet<string>(StringComparer.Ordinal)
+    {
+        "parkId",
+        "parkItemId",
+        "zoneId",
+        "latitude",
+        "longitude",
     };
 
     private static readonly HashSet<string> LocalizedTextAllowedProperties = new HashSet<string>(StringComparer.Ordinal)
@@ -112,6 +124,35 @@ internal static class ContextualBlockJsonPreviewBuilder
         return result;
     }
 
+    public static ContextualBlockPreviewResult PreviewParkItemLocation(string blockType, ParkItem item, JsonElement document)
+    {
+        ContextualBlockPreviewResult result = CreateResult(blockType, nameof(ParkItem), item.Id, item.Name);
+        PreviewJsonDocument(document, blockType, item.Id, nameof(ParkItem), ParkItemDescriptionIdAllowedProperties, result, out JsonElement block, out JsonElement ids);
+
+        if (block.ValueKind != JsonValueKind.Object)
+        {
+            FinalizeResult(result, 0);
+            return result;
+        }
+
+        ValidateAllowedProperties(block, ParkItemLocationBlockAllowedProperties, "block", result);
+        ValidateParkItemAttachment(ids, "ids", item, result);
+        ValidateParkItemAttachment(block, "block", item, result);
+
+        List<ContextualBlockPreviewChange> changes = ContextualBlockLocationPreviewBuilder.PreviewLocationBlock(
+            nameof(ParkItem),
+            item.Id,
+            item.Name,
+            item.Position?.Latitude,
+            item.Position?.Longitude,
+            block,
+            result);
+
+        AddChanges(result, changes);
+        FinalizeResult(result, 2);
+        return result;
+    }
+
     public static ContextualBlockPreviewResult PreviewParkDescription(string blockType, Park park, JsonElement document)
     {
         ContextualBlockPreviewResult result = CreateResult(blockType, nameof(Park), park.Id, park.Name);
@@ -137,6 +178,35 @@ internal static class ContextualBlockJsonPreviewBuilder
 
         AddChanges(result, changes);
         FinalizeResult(result, ContextualBlockContracts.SupportedLanguageCodes.Length);
+        return result;
+    }
+
+    public static ContextualBlockPreviewResult PreviewParkLocation(string blockType, Park park, JsonElement document)
+    {
+        ContextualBlockPreviewResult result = CreateResult(blockType, nameof(Park), park.Id, park.Name);
+        PreviewJsonDocument(document, blockType, park.Id, nameof(Park), ParkOnlyIdAllowedProperties, result, out JsonElement block, out JsonElement ids);
+
+        if (block.ValueKind != JsonValueKind.Object)
+        {
+            FinalizeResult(result, 0);
+            return result;
+        }
+
+        ValidateAllowedProperties(block, LocationBlockAllowedProperties, "block", result);
+        ValidateParkId(ids, "ids.parkId", park.Id, result);
+        ValidateParkId(block, "block.parkId", park.Id, result);
+
+        List<ContextualBlockPreviewChange> changes = ContextualBlockLocationPreviewBuilder.PreviewLocationBlock(
+            nameof(Park),
+            park.Id,
+            park.Name,
+            park.Position?.Latitude,
+            park.Position?.Longitude,
+            block,
+            result);
+
+        AddChanges(result, changes);
+        FinalizeResult(result, 2);
         return result;
     }
 

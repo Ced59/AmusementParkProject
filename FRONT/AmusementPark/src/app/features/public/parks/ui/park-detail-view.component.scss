@@ -443,6 +443,18 @@
   transform: translateY(-1px);
 }
 
+.park-side-card--location-admin-anchor {
+  display: none;
+}
+
+.park-side-card--location-admin-anchor.admin-contextual-block {
+  min-height: 5rem;
+  display: block;
+  border: 1px dashed color-mix(in srgb, var(--app-primary) 42%, var(--app-border));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-primary) 6%, transparent);
+}
+
 @media (min-width: 680px) {
   .park-stats-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));

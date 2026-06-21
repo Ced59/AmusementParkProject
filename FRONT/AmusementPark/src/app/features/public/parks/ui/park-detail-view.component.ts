@@ -73,6 +73,29 @@ export class ParkDetailViewComponent {
   }
 
   protected getContextualBlock(type: AdminContextualBlockType, currentPark: ParkDetailViewModel): AdminContextualBlockInstance | null {
-    return this.contextualBlockRegistry.createParkBlock(type, currentPark.id, currentPark.name, this.currentLang);
+    return this.contextualBlockRegistry.createParkBlock(
+      type,
+      currentPark.id,
+      currentPark.name,
+      this.currentLang,
+      this.resolveLocationFallbackCenter(currentPark)
+    );
+  }
+
+  private resolveLocationFallbackCenter(currentPark: ParkDetailViewModel): readonly [number, number] | null {
+    return this.isValidCoordinatePair(currentPark.latitude, currentPark.longitude)
+      ? [currentPark.latitude as number, currentPark.longitude as number]
+      : null;
+  }
+
+  private isValidCoordinatePair(latitude: number | null, longitude: number | null): boolean {
+    return latitude !== null &&
+      longitude !== null &&
+      Number.isFinite(latitude) &&
+      Number.isFinite(longitude) &&
+      latitude >= -90 &&
+      latitude <= 90 &&
+      longitude >= -180 &&
+      longitude <= 180;
   }
 }

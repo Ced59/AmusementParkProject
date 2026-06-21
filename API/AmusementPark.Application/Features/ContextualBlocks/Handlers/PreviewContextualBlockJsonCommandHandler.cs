@@ -39,7 +39,7 @@ public sealed class PreviewContextualBlockJsonCommandHandler
         }
 
         string entityId = command.EntityId.Trim();
-        if (string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal))
+        if (IsParkItemBlockType(blockType))
         {
             ParkItem? item = await this.parkItemRepository.GetByIdAsync(entityId, true, cancellationToken);
             if (item is null)
@@ -47,7 +47,9 @@ public sealed class PreviewContextualBlockJsonCommandHandler
                 return ApplicationResult<ContextualBlockPreviewResult>.Failure(ApplicationErrors.EntityNotFound(nameof(ParkItem), entityId));
             }
 
-            ContextualBlockPreviewResult itemResult = ContextualBlockJsonPreviewBuilder.PreviewParkItemDescription(blockType, item, command.Document);
+            ContextualBlockPreviewResult itemResult = string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal)
+                ? ContextualBlockJsonPreviewBuilder.PreviewParkItemDescription(blockType, item, command.Document)
+                : ContextualBlockJsonPreviewBuilder.PreviewParkItemLocation(blockType, item, command.Document);
             return ApplicationResult<ContextualBlockPreviewResult>.Success(itemResult);
         }
 
@@ -57,10 +59,26 @@ public sealed class PreviewContextualBlockJsonCommandHandler
             return ApplicationResult<ContextualBlockPreviewResult>.Failure(ApplicationErrors.EntityNotFound(nameof(Park), entityId));
         }
 
-        ContextualBlockPreviewResult result = string.Equals(blockType, ContextualBlockContracts.ParkDescriptionBlockType, StringComparison.Ordinal)
-            ? ContextualBlockJsonPreviewBuilder.PreviewParkDescription(blockType, park, command.Document)
-            : ContextualBlockJsonPreviewBuilder.PreviewParkPractical(blockType, park, command.Document);
+        ContextualBlockPreviewResult result;
+        if (string.Equals(blockType, ContextualBlockContracts.ParkDescriptionBlockType, StringComparison.Ordinal))
+        {
+            result = ContextualBlockJsonPreviewBuilder.PreviewParkDescription(blockType, park, command.Document);
+        }
+        else if (string.Equals(blockType, ContextualBlockContracts.ParkLocationBlockType, StringComparison.Ordinal))
+        {
+            result = ContextualBlockJsonPreviewBuilder.PreviewParkLocation(blockType, park, command.Document);
+        }
+        else
+        {
+            result = ContextualBlockJsonPreviewBuilder.PreviewParkPractical(blockType, park, command.Document);
+        }
 
         return ApplicationResult<ContextualBlockPreviewResult>.Success(result);
+    }
+
+    private static bool IsParkItemBlockType(string blockType)
+    {
+        return string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal)
+            || string.Equals(blockType, ContextualBlockContracts.ParkItemLocationBlockType, StringComparison.Ordinal);
     }
 }

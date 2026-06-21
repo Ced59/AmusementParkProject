@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Signal, signal } from '@angular/core';
+import { Signal, WritableSignal, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -8,7 +8,7 @@ import { AdminContextualBlockInstance } from '../../models/admin-contextual-bloc
 import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
 import { AdminContextualBlockChildAddFacade, AdminContextualBlockChildAddZoneOption } from '../../state/admin-contextual-block-child-add.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
-import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField } from '../../state/admin-contextual-block-form.facade';
+import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField, AdminContextualBlockLocationForm } from '../../state/admin-contextual-block-form.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
@@ -47,6 +47,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
   };
   let formFacade: {
     localizedFields: Signal<readonly AdminContextualBlockLocalizedFormField[]>;
+    locationForm: Signal<AdminContextualBlockLocationForm | null>;
     isLoading: Signal<boolean>;
     isSaving: Signal<boolean>;
     errorKey: Signal<string | null>;
@@ -55,8 +56,13 @@ describe('AdminContextualBlockDrawerComponent', () => {
     resetForBlock: jasmine.Spy;
     loadForm: jasmine.Spy;
     updateLocalizedValue: jasmine.Spy;
+    updateLocationPosition: jasmine.Spy;
+    updateLocationLatitude: jasmine.Spy;
+    updateLocationLongitude: jasmine.Spy;
+    clearLocation: jasmine.Spy;
     saveForm: jasmine.Spy;
   };
+  let locationFormSignal: WritableSignal<AdminContextualBlockLocationForm | null>;
   let childAddFacade: {
     itemName: Signal<string>;
     selectedZoneId: Signal<string | null>;
@@ -87,6 +93,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
       { languageCode: 'en', value: 'English description' },
       { languageCode: 'fr', value: '' }
     ]);
+    locationFormSignal = signal<AdminContextualBlockLocationForm | null>(null);
     const isFormLoadingSignal = signal<boolean>(false);
     const isFormSavingSignal = signal<boolean>(false);
     const formErrorKeySignal = signal<string | null>(null);
@@ -132,6 +139,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     };
     formFacade = {
       localizedFields: localizedFieldsSignal.asReadonly(),
+      locationForm: locationFormSignal.asReadonly(),
       isLoading: isFormLoadingSignal.asReadonly(),
       isSaving: isFormSavingSignal.asReadonly(),
       errorKey: formErrorKeySignal.asReadonly(),
@@ -145,6 +153,33 @@ describe('AdminContextualBlockDrawerComponent', () => {
         localizedFieldsSignal.update((fields: readonly AdminContextualBlockLocalizedFormField[]) => fields.map((field: AdminContextualBlockLocalizedFormField) => {
           return field.languageCode === languageCode ? { ...field, value } : field;
         }));
+      }),
+      updateLocationPosition: jasmine.createSpy('updateLocationPosition').and.callFake((latitude: number, longitude: number): void => {
+        const currentForm: AdminContextualBlockLocationForm | null = locationFormSignal();
+        locationFormSignal.set({
+          latitude,
+          longitude,
+          mapCenter: [latitude, longitude],
+          mapZoom: currentForm?.mapZoom ?? 16,
+          mapMarkers: [{
+            id: 'contextual-location',
+            lat: latitude,
+            lng: longitude,
+            title: 'Phantasialand',
+            iconKind: 'park'
+          }]
+        });
+      }),
+      updateLocationLatitude: jasmine.createSpy('updateLocationLatitude'),
+      updateLocationLongitude: jasmine.createSpy('updateLocationLongitude'),
+      clearLocation: jasmine.createSpy('clearLocation').and.callFake((): void => {
+        locationFormSignal.set({
+          latitude: null,
+          longitude: null,
+          mapCenter: [48.85, 2.35],
+          mapZoom: 16,
+          mapMarkers: []
+        });
       }),
       saveForm: jasmine.createSpy('saveForm')
     };
@@ -262,6 +297,11 @@ describe('AdminContextualBlockDrawerComponent', () => {
             formNoChanges: 'Aucun changement a enregistrer.',
             formUnavailable: 'Formulaire indisponible',
             localizedFieldAriaLabel: 'Champ localise',
+            locationPickerHint: 'Clique sur la carte pour placer le point.',
+            locationLatitude: 'Latitude',
+            locationLongitude: 'Longitude',
+            locationClear: 'Retirer la localisation',
+            locationInvalid: 'Coordonnees invalides.',
             addChildTitle: 'Ajouter un item',
             addChildHint: 'Cree cache et a relire.',
             addChildNameLabel: 'Nom',
@@ -422,6 +462,46 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(formFacade.saveForm).toHaveBeenCalledOnceWith(block);
   });
 
+  it('renders the contextual location form and delegates map actions', () => {
+    const block: AdminContextualBlockInstance = createLocationBlock();
+    locationFormSignal.set({
+      latitude: 48.85,
+      longitude: 2.35,
+      mapCenter: [48.85, 2.35],
+      mapZoom: 16,
+      mapMarkers: [{
+        id: 'contextual-location',
+        lat: 48.85,
+        lng: 2.35,
+        title: 'Phantasialand',
+        iconKind: 'park'
+      }]
+    });
+    publicViewModeFacade.setViewMode('adminPreview');
+    publicViewModeFacade.setEditionModeEnabled(true);
+    selectionFacade.selectBlock(block);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const latitudeInput: HTMLInputElement = host.querySelector('input[aria-label="Latitude"]') as HTMLInputElement;
+    const longitudeInput: HTMLInputElement = host.querySelector('input[aria-label="Longitude"]') as HTMLInputElement;
+    latitudeInput.value = '50.1';
+    latitudeInput.dispatchEvent(new Event('input'));
+    longitudeInput.value = '3.2';
+    longitudeInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    const buttons: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-contextual-block-drawer__form .admin-contextual-block-drawer__action');
+    buttons.item(0).click();
+    buttons.item(1).click();
+
+    expect(host.querySelector('app-leaflet-map')).not.toBeNull();
+    expect(formFacade.updateLocationLatitude).toHaveBeenCalledWith('50.1', block);
+    expect(formFacade.updateLocationLongitude).toHaveBeenCalledWith('3.2', block);
+    expect(formFacade.saveForm).toHaveBeenCalledOnceWith(block);
+    expect(formFacade.clearLocation).toHaveBeenCalledOnceWith(block);
+  });
+
   it('delegates targeted child creation to the child add facade', () => {
     const block: AdminContextualBlockInstance = createHeroBlock();
     publicViewModeFacade.setViewMode('adminPreview');
@@ -476,6 +556,26 @@ function createBlock(): AdminContextualBlockInstance {
     capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
+    locationFallbackCenter: null,
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+  };
+}
+
+function createLocationBlock(): AdminContextualBlockInstance {
+  return {
+    id: 'park.location:park-1',
+    type: 'park.location',
+    entityType: 'Park',
+    entityId: 'park-1',
+    contextLabel: 'Phantasialand',
+    ids: { parkId: 'park-1' },
+    labelKey: 'admin.contextualBlocks.blocks.parkLocation.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkLocation.description',
+    iconClass: 'pi pi-map-marker',
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    jsonScope: ['park.id', 'park.latitude', 'park.longitude'],
+    localizedLanguageCodes: [],
+    locationFallbackCenter: [48.85, 2.35],
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
   };
 }
@@ -494,6 +594,7 @@ function createHeroBlock(): AdminContextualBlockInstance {
     capabilities: ['fullAdminEdit', 'targetedChildAdd'],
     jsonScope: ['park.id'],
     localizedLanguageCodes: [],
+    locationFallbackCenter: null,
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
   };
 }

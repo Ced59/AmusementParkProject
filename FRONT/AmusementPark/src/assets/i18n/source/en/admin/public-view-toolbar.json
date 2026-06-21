@@ -57,6 +57,11 @@
         "formNoChanges": "No change to save.",
         "formUnavailable": "This block form is not available.",
         "localizedFieldAriaLabel": "Edit {{ languageCode }} variant",
+        "locationPickerHint": "Tap the map to create or move the point. Coordinates stay available as a fallback.",
+        "locationLatitude": "Latitude",
+        "locationLongitude": "Longitude",
+        "locationClear": "Remove point",
+        "locationInvalid": "Latitude and longitude must be valid, or both empty.",
         "addChildTitle": "Add an item",
         "addChildHint": "The item is created hidden and to review before publication.",
         "addChildNameLabel": "Name",
@@ -122,6 +127,10 @@
           "label": "Park description",
           "description": "Localized public description for every supported language."
         },
+        "parkLocation": {
+          "label": "Park location",
+          "description": "Main park position on the public map."
+        },
         "parkPractical": {
           "label": "Practical info",
           "description": "Address, references, website and useful park coordinates."
@@ -129,6 +138,10 @@
         "parkItemDescription": {
           "label": "Item description",
           "description": "Localized public description for every supported language."
+        },
+        "parkItemLocation": {
+          "label": "Item location",
+          "description": "General position of this item inside the park."
         }
       }
     }

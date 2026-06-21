@@ -4,9 +4,11 @@ import { finalize } from 'rxjs';
 import {
   ContextualBlockExportDocument,
   ContextualBlockLocalizedText,
+  ContextualLocationBlock,
   ContextualLocalizedDescriptionBlock
 } from '@shared/models/admin/contextual-block-export.models';
 import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
+import { MapMarker } from '@app/models/map/map-marker';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
 import {
   ADMIN_CONTEXTUAL_BLOCK_FORM_DATA_PORT,
@@ -19,19 +21,32 @@ export interface AdminContextualBlockLocalizedFormField {
   readonly value: string;
 }
 
+export interface AdminContextualBlockLocationForm {
+  readonly latitude: number | null;
+  readonly longitude: number | null;
+  readonly mapCenter: readonly [number, number];
+  readonly mapZoom: number;
+  readonly mapMarkers: readonly MapMarker[];
+}
+
+const DEFAULT_LOCATION_CENTER: readonly [number, number] = [48.8566, 2.3522];
+
 @Injectable({
   providedIn: 'root'
 })
 export class AdminContextualBlockFormFacade {
   private readonly localizedFieldsSignal = signal<readonly AdminContextualBlockLocalizedFormField[]>([]);
+  private readonly locationFormSignal = signal<AdminContextualBlockLocationForm | null>(null);
   private readonly isLoadingSignal = signal<boolean>(false);
   private readonly isSavingSignal = signal<boolean>(false);
   private readonly errorKeySignal = signal<string | null>(null);
   private readonly successKeySignal = signal<string | null>(null);
   private activeBlockId: string | null = null;
-  private currentDocument: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock> | null = null;
+  private currentDescriptionDocument: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock> | null = null;
+  private currentLocationDocument: ContextualBlockExportDocument<ContextualLocationBlock> | null = null;
 
   public readonly localizedFields: Signal<readonly AdminContextualBlockLocalizedFormField[]> = this.localizedFieldsSignal.asReadonly();
+  public readonly locationForm: Signal<AdminContextualBlockLocationForm | null> = this.locationFormSignal.asReadonly();
   public readonly isLoading: Signal<boolean> = this.isLoadingSignal.asReadonly();
   public readonly isSaving: Signal<boolean> = this.isSavingSignal.asReadonly();
   public readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
@@ -54,8 +69,10 @@ export class AdminContextualBlockFormFacade {
     }
 
     this.activeBlockId = nextBlockId;
-    this.currentDocument = null;
+    this.currentDescriptionDocument = null;
+    this.currentLocationDocument = null;
     this.localizedFieldsSignal.set([]);
+    this.locationFormSignal.set(null);
     this.errorKeySignal.set(null);
     this.successKeySignal.set(null);
     this.isLoadingSignal.set(false);
@@ -81,25 +98,12 @@ export class AdminContextualBlockFormFacade {
     }
 
     this.isLoadingSignal.set(true);
-    this.contextualBlocksApi.getBlockExportDocument<ContextualLocalizedDescriptionBlock>(block.type, block.entityId)
-      .pipe(finalize((): void => this.isLoadingSignal.set(false)))
-      .subscribe({
-        next: (document: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock>): void => {
-          if (!this.isLocalizedDescriptionDocument(document, block)) {
-            this.errorKeySignal.set('admin.contextualBlocks.drawer.formLoadError');
-            return;
-          }
+    if (this.isLocationBlock(block)) {
+      this.loadLocationForm(block);
+      return;
+    }
 
-          this.currentDocument = document;
-          this.localizedFieldsSignal.set(document.block.descriptions.map((description: ContextualBlockLocalizedText) => ({
-            languageCode: description.languageCode,
-            value: description.value ?? ''
-          })));
-        },
-        error: (): void => {
-          this.errorKeySignal.set('admin.contextualBlocks.drawer.formLoadError');
-        }
-      });
+    this.loadLocalizedDescriptionForm(block);
   }
 
   updateLocalizedValue(languageCode: string, value: string): void {
@@ -117,11 +121,81 @@ export class AdminContextualBlockFormFacade {
     this.successKeySignal.set(null);
   }
 
+  updateLocationPosition(latitude: number, longitude: number, block: AdminContextualBlockInstance): void {
+    this.setLocationForm(latitude, longitude, block);
+  }
+
+  updateLocationLatitude(value: string, block: AdminContextualBlockInstance): void {
+    const currentForm: AdminContextualBlockLocationForm | null = this.locationFormSignal();
+    this.setLocationForm(this.parseNullableNumber(value), currentForm?.longitude ?? null, block);
+  }
+
+  updateLocationLongitude(value: string, block: AdminContextualBlockInstance): void {
+    const currentForm: AdminContextualBlockLocationForm | null = this.locationFormSignal();
+    this.setLocationForm(currentForm?.latitude ?? null, this.parseNullableNumber(value), block);
+  }
+
+  clearLocation(block: AdminContextualBlockInstance): void {
+    this.setLocationForm(null, null, block);
+  }
+
   saveForm(block: AdminContextualBlockInstance): void {
     this.errorKeySignal.set(null);
     this.successKeySignal.set(null);
 
-    const currentDocument: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock> | null = this.currentDocument;
+    if (this.isLocationBlock(block)) {
+      this.saveLocationForm(block);
+      return;
+    }
+
+    this.saveLocalizedDescriptionForm(block);
+  }
+
+  private loadLocalizedDescriptionForm(block: AdminContextualBlockInstance): void {
+    this.isLoadingSignal.set(true);
+    this.contextualBlocksApi.getBlockExportDocument<ContextualLocalizedDescriptionBlock>(block.type, block.entityId)
+      .pipe(finalize((): void => this.isLoadingSignal.set(false)))
+      .subscribe({
+        next: (document: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock>): void => {
+          if (!this.isLocalizedDescriptionDocument(document, block)) {
+            this.errorKeySignal.set('admin.contextualBlocks.drawer.formLoadError');
+            return;
+          }
+
+          this.currentDescriptionDocument = document;
+          this.localizedFieldsSignal.set(document.block.descriptions.map((description: ContextualBlockLocalizedText) => ({
+            languageCode: description.languageCode,
+            value: description.value ?? ''
+          })));
+        },
+        error: (): void => {
+          this.errorKeySignal.set('admin.contextualBlocks.drawer.formLoadError');
+        }
+      });
+  }
+
+  private loadLocationForm(block: AdminContextualBlockInstance): void {
+    this.isLoadingSignal.set(true);
+    this.contextualBlocksApi.getBlockExportDocument<ContextualLocationBlock>(block.type, block.entityId)
+      .pipe(finalize((): void => this.isLoadingSignal.set(false)))
+      .subscribe({
+        next: (document: ContextualBlockExportDocument<ContextualLocationBlock>): void => {
+          if (!this.isLocationDocument(document, block)) {
+            this.errorKeySignal.set('admin.contextualBlocks.drawer.formLoadError');
+            return;
+          }
+
+          this.currentLocationDocument = document;
+          this.setLocationForm(document.block.latitude, document.block.longitude, block);
+        },
+        error: (): void => {
+          this.errorKeySignal.set('admin.contextualBlocks.drawer.formLoadError');
+        }
+      });
+  }
+
+  private saveLocalizedDescriptionForm(block: AdminContextualBlockInstance): void {
+    const currentDocument: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock> | null = this.currentDescriptionDocument;
 
     if (!this.canEditForm(block) || !currentDocument?.block) {
       this.errorKeySignal.set('admin.contextualBlocks.drawer.formSaveError');
@@ -154,7 +228,60 @@ export class AdminContextualBlockFormFacade {
             return;
           }
 
-          this.currentDocument = document;
+          this.currentDescriptionDocument = document;
+          this.successKeySignal.set('admin.contextualBlocks.drawer.formSaveSucceeded');
+          this.refreshEvents.notifyBlockApplied({
+            blockType: block.type,
+            entityType: block.entityType,
+            entityId: result.target.entityId,
+            appliedAtUtc: new Date().toISOString()
+          });
+        },
+        error: (): void => {
+          this.errorKeySignal.set('admin.contextualBlocks.drawer.formSaveError');
+        }
+      });
+  }
+
+  private saveLocationForm(block: AdminContextualBlockInstance): void {
+    const currentDocument: ContextualBlockExportDocument<ContextualLocationBlock> | null = this.currentLocationDocument;
+    const locationForm: AdminContextualBlockLocationForm | null = this.locationFormSignal();
+
+    if (!this.canEditForm(block) || !currentDocument?.block || !locationForm) {
+      this.errorKeySignal.set('admin.contextualBlocks.drawer.formSaveError');
+      return;
+    }
+
+    if (!this.isValidLocationPair(locationForm.latitude, locationForm.longitude) && (locationForm.latitude !== null || locationForm.longitude !== null)) {
+      this.errorKeySignal.set('admin.contextualBlocks.drawer.locationInvalid');
+      return;
+    }
+
+    const document: ContextualBlockExportDocument<ContextualLocationBlock> = {
+      ...currentDocument,
+      block: {
+        ...currentDocument.block,
+        latitude: locationForm.latitude,
+        longitude: locationForm.longitude
+      }
+    };
+
+    this.isSavingSignal.set(true);
+    this.contextualBlocksApi.applyBlock(block.type, block.entityId, document)
+      .pipe(finalize((): void => this.isSavingSignal.set(false)))
+      .subscribe({
+        next: (result: ContextualBlockPreviewResult): void => {
+          if (!result.canApply) {
+            this.errorKeySignal.set('admin.contextualBlocks.drawer.formSaveError');
+            return;
+          }
+
+          if (!result.isApplied) {
+            this.errorKeySignal.set('admin.contextualBlocks.drawer.formNoChanges');
+            return;
+          }
+
+          this.currentLocationDocument = document;
           this.successKeySignal.set('admin.contextualBlocks.drawer.formSaveSucceeded');
           this.refreshEvents.notifyBlockApplied({
             blockType: block.type,
@@ -191,5 +318,84 @@ export class AdminContextualBlockFormFacade {
     }
 
     return null;
+  }
+
+  private isLocationDocument(
+    document: ContextualBlockExportDocument<ContextualLocationBlock>,
+    block: AdminContextualBlockInstance
+  ): document is ContextualBlockExportDocument<ContextualLocationBlock> & { block: ContextualLocationBlock } {
+    return document.blockType === block.type &&
+      document.target.entityType === block.entityType &&
+      document.target.entityId === block.entityId &&
+      document.block !== null &&
+      this.resolveLocationDocumentEntityId(document.block, block.entityType) === block.entityId;
+  }
+
+  private resolveLocationDocumentEntityId(block: ContextualLocationBlock, entityType: string): string | null {
+    if (entityType === 'Park') {
+      return block.parkId;
+    }
+
+    if (entityType === 'ParkItem' && 'parkItemId' in block) {
+      return block.parkItemId;
+    }
+
+    return null;
+  }
+
+  private isLocationBlock(block: AdminContextualBlockInstance): boolean {
+    return block.type === 'park.location' || block.type === 'parkItem.location';
+  }
+
+  private setLocationForm(latitudeValue: number | null, longitudeValue: number | null, block: AdminContextualBlockInstance): void {
+    const latitude: number | null = this.normalizeNullableNumber(latitudeValue);
+    const longitude: number | null = this.normalizeNullableNumber(longitudeValue);
+    const hasValidPair: boolean = this.isValidLocationPair(latitude, longitude);
+    const fallbackCenter: readonly [number, number] = this.resolveLocationFallbackCenter(block);
+    const mapCenter: readonly [number, number] = hasValidPair ? [latitude as number, longitude as number] : fallbackCenter;
+    const iconKind: MapMarker['iconKind'] = block.entityType === 'Park' ? 'park' : 'other';
+
+    this.locationFormSignal.set({
+      latitude,
+      longitude,
+      mapCenter,
+      mapZoom: hasValidPair || block.locationFallbackCenter ? 16 : 5,
+      mapMarkers: hasValidPair
+        ? [{
+            id: 'contextual-location',
+            lat: latitude as number,
+            lng: longitude as number,
+            title: block.contextLabel,
+            iconKind
+          }]
+        : []
+    });
+    this.errorKeySignal.set(null);
+    this.successKeySignal.set(null);
+  }
+
+  private resolveLocationFallbackCenter(block: AdminContextualBlockInstance): readonly [number, number] {
+    return block.locationFallbackCenter ?? DEFAULT_LOCATION_CENTER;
+  }
+
+  private parseNullableNumber(value: string): number | null {
+    if (value.trim().length === 0) {
+      return null;
+    }
+
+    return this.normalizeNullableNumber(Number(value));
+  }
+
+  private normalizeNullableNumber(value: number | null): number | null {
+    return value !== null && Number.isFinite(value) ? value : null;
+  }
+
+  private isValidLocationPair(latitude: number | null, longitude: number | null): boolean {
+    return latitude !== null &&
+      longitude !== null &&
+      latitude >= -90 &&
+      latitude <= 90 &&
+      longitude >= -180 &&
+      longitude <= 180;
   }
 }

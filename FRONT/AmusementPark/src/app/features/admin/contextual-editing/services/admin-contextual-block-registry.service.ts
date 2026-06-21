@@ -60,6 +60,19 @@ const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = 
     localizedLanguageCodes: []
   },
   {
+    type: 'park.location',
+    labelKey: 'admin.contextualBlocks.blocks.parkLocation.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkLocation.description',
+    iconClass: 'pi pi-map-marker',
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    jsonScope: [
+      'park.id',
+      'park.latitude',
+      'park.longitude'
+    ],
+    localizedLanguageCodes: []
+  },
+  {
     type: 'parkItem.description',
     labelKey: 'admin.contextualBlocks.blocks.parkItemDescription.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkItemDescription.description',
@@ -72,6 +85,20 @@ const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = 
       'parkItem.descriptions[*].value'
     ],
     localizedLanguageCodes: SUPPORTED_LANGUAGE_CODES
+  },
+  {
+    type: 'parkItem.location',
+    labelKey: 'admin.contextualBlocks.blocks.parkItemLocation.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkItemLocation.description',
+    iconClass: 'pi pi-map-marker',
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    jsonScope: [
+      'parkItem.id',
+      'parkItem.parkId',
+      'parkItem.latitude',
+      'parkItem.longitude'
+    ],
+    localizedLanguageCodes: []
   }
 ];
 
@@ -95,12 +122,13 @@ export class AdminContextualBlockRegistryService {
     type: AdminContextualBlockType,
     parkId: string | null | undefined,
     parkName: string | null | undefined,
-    languageCode: string | null | undefined
+    languageCode: string | null | undefined,
+    locationFallbackCenter: readonly [number, number] | null = null
   ): AdminContextualBlockInstance | null {
     const normalizedParkId: string | null = this.normalizeValue(parkId);
     const definition: AdminContextualBlockDefinition | null = this.getDefinition(type);
 
-    if (!normalizedParkId || !definition || definition.type === 'parkItem.description') {
+    if (!normalizedParkId || !definition || this.isParkItemBlockType(definition.type)) {
       return null;
     }
 
@@ -115,6 +143,7 @@ export class AdminContextualBlockRegistryService {
       ids: {
         parkId: normalizedParkId
       },
+      locationFallbackCenter: this.normalizeFallbackCenter(locationFallbackCenter),
       adminRoute: ['/', normalizedLanguageCode, 'admin', 'parks', 'edit', normalizedParkId]
     };
   }
@@ -124,13 +153,14 @@ export class AdminContextualBlockRegistryService {
     parkItemId: string | null | undefined,
     parkId: string | null | undefined,
     itemName: string | null | undefined,
-    languageCode: string | null | undefined
+    languageCode: string | null | undefined,
+    locationFallbackCenter: readonly [number, number] | null = null
   ): AdminContextualBlockInstance | null {
     const normalizedParkItemId: string | null = this.normalizeValue(parkItemId);
     const normalizedParkId: string | null = this.normalizeValue(parkId);
     const definition: AdminContextualBlockDefinition | null = this.getDefinition(type);
 
-    if (!normalizedParkItemId || !normalizedParkId || !definition || definition.type !== 'parkItem.description') {
+    if (!normalizedParkItemId || !normalizedParkId || !definition || !this.isParkItemBlockType(definition.type)) {
       return null;
     }
 
@@ -146,8 +176,13 @@ export class AdminContextualBlockRegistryService {
         parkId: normalizedParkId,
         parkItemId: normalizedParkItemId
       },
+      locationFallbackCenter: this.normalizeFallbackCenter(locationFallbackCenter),
       adminRoute: ['/', normalizedLanguageCode, 'admin', 'parks', 'edit', normalizedParkId, 'items', normalizedParkItemId]
     };
+  }
+
+  private isParkItemBlockType(type: AdminContextualBlockType): boolean {
+    return type === 'parkItem.description' || type === 'parkItem.location';
   }
 
   private normalizeLanguageCode(languageCode: string | null | undefined): string {
@@ -166,5 +201,23 @@ export class AdminContextualBlockRegistryService {
     const trimmedValue: string = value.trim();
 
     return trimmedValue.length > 0 ? trimmedValue : null;
+  }
+
+  private normalizeFallbackCenter(value: readonly [number, number] | null): readonly [number, number] | null {
+    if (!value || value.length !== 2) {
+      return null;
+    }
+
+    const latitude: number = value[0];
+    const longitude: number = value[1];
+
+    return Number.isFinite(latitude)
+      && Number.isFinite(longitude)
+      && latitude >= -90
+      && latitude <= 90
+      && longitude >= -180
+      && longitude <= 180
+      ? [latitude, longitude]
+      : null;
   }
 }

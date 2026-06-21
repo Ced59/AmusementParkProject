@@ -1,4 +1,10 @@
-export type AdminContextualBlockType = 'park.hero' | 'park.description' | 'park.practical' | 'parkItem.description';
+export type AdminContextualBlockType =
+  | 'park.hero'
+  | 'park.description'
+  | 'park.location'
+  | 'park.practical'
+  | 'parkItem.description'
+  | 'parkItem.location';
 
 export type AdminContextualBlockEntityType = 'Park' | 'ParkItem';
 
@@ -29,5 +35,6 @@ export interface AdminContextualBlockInstance extends AdminContextualBlockDefini
   readonly entityId: string;
   readonly contextLabel: string;
   readonly ids: Readonly<Record<string, string>>;
+  readonly locationFallbackCenter: readonly [number, number] | null;
   readonly adminRoute: string[] | null;
 }

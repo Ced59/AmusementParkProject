@@ -1121,6 +1121,11 @@
         "formNoChanges": "Aucun changement a enregistrer.",
         "formUnavailable": "Le formulaire de ce bloc n'est pas disponible.",
         "localizedFieldAriaLabel": "Modifier la variante {{ languageCode }}",
+        "locationPickerHint": "Tape la carte pour creer ou deplacer le point. Les coordonnees restent modifiables en secours.",
+        "locationLatitude": "Latitude",
+        "locationLongitude": "Longitude",
+        "locationClear": "Retirer le point",
+        "locationInvalid": "Latitude et longitude doivent etre valides, ou toutes les deux vides.",
         "addChildTitle": "Ajouter un item",
         "addChildHint": "L'item est cree cache et a relire avant publication.",
         "addChildNameLabel": "Nom",
@@ -1186,6 +1191,10 @@
           "label": "Description du parc",
           "description": "Description publique localisee pour toutes les langues supportees."
         },
+        "parkLocation": {
+          "label": "Localisation du parc",
+          "description": "Position principale du parc sur la carte publique."
+        },
         "parkPractical": {
           "label": "Infos pratiques",
           "description": "Adresse, references, site web et coordonnees utiles du parc."
@@ -1193,6 +1202,10 @@
         "parkItemDescription": {
           "label": "Description de l'item",
           "description": "Description publique localisee pour toutes les langues supportees."
+        },
+        "parkItemLocation": {
+          "label": "Localisation de l'item",
+          "description": "Position generale de cet item dans le parc."
         }
       }
     },

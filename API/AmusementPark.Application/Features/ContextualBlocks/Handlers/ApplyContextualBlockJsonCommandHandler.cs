@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
 
 namespace AmusementPark.Application.Features.ContextualBlocks.Handlers;
@@ -59,9 +60,12 @@ public sealed class ApplyContextualBlockJsonCommandHandler
 
         string blockType = command.BlockType.Trim();
         string entityId = command.EntityId.Trim();
-        if (string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal))
+        if (IsParkItemBlockType(blockType))
         {
-            return await this.ApplyParkItemDescriptionAsync(entityId, command.Document.GetProperty("block"), previewResult, cancellationToken);
+            JsonElement parkItemBlock = command.Document.GetProperty("block");
+            return string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal)
+                ? await this.ApplyParkItemDescriptionAsync(entityId, parkItemBlock, previewResult, cancellationToken)
+                : await this.ApplyParkItemLocationAsync(entityId, parkItemBlock, previewResult, cancellationToken);
         }
 
         Park? park = await this.parkRepository.GetByIdAsync(entityId, true, cancellationToken);
@@ -74,6 +78,10 @@ public sealed class ApplyContextualBlockJsonCommandHandler
         if (string.Equals(blockType, ContextualBlockContracts.ParkDescriptionBlockType, StringComparison.Ordinal))
         {
             ApplyDescriptionBlock(park, block);
+        }
+        else if (string.Equals(blockType, ContextualBlockContracts.ParkLocationBlockType, StringComparison.Ordinal))
+        {
+            ApplyRequiredPositionBlock(park, block);
         }
         else if (string.Equals(blockType, ContextualBlockContracts.ParkPracticalBlockType, StringComparison.Ordinal))
         {
@@ -94,6 +102,12 @@ public sealed class ApplyContextualBlockJsonCommandHandler
         return ApplicationResult<ContextualBlockPreviewResult>.Success(previewResult);
     }
 
+    private static bool IsParkItemBlockType(string blockType)
+    {
+        return string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal)
+            || string.Equals(blockType, ContextualBlockContracts.ParkItemLocationBlockType, StringComparison.Ordinal);
+    }
+
     private async Task<ApplicationResult<ContextualBlockPreviewResult>> ApplyParkItemDescriptionAsync(
         string parkItemId,
         JsonElement block,
@@ -107,6 +121,29 @@ public sealed class ApplyContextualBlockJsonCommandHandler
         }
 
         ApplyDescriptionBlock(item, block);
+        ApplicationResult<ParkItem> updateResult = await this.updateParkItemHandler.HandleAsync(new UpdateParkItemCommand(parkItemId, item), cancellationToken);
+        if (!updateResult.IsSuccess)
+        {
+            return ApplicationResult<ContextualBlockPreviewResult>.Failure(updateResult.Errors);
+        }
+
+        previewResult.IsApplied = true;
+        return ApplicationResult<ContextualBlockPreviewResult>.Success(previewResult);
+    }
+
+    private async Task<ApplicationResult<ContextualBlockPreviewResult>> ApplyParkItemLocationAsync(
+        string parkItemId,
+        JsonElement block,
+        ContextualBlockPreviewResult previewResult,
+        CancellationToken cancellationToken)
+    {
+        ParkItem? item = await this.parkItemRepository.GetByIdAsync(parkItemId, true, cancellationToken);
+        if (item is null)
+        {
+            return ApplicationResult<ContextualBlockPreviewResult>.Failure(ApplicationErrors.EntityNotFound(nameof(ParkItem), parkItemId));
+        }
+
+        ApplyRequiredPositionBlock(item, block);
         ApplicationResult<ParkItem> updateResult = await this.updateParkItemHandler.HandleAsync(new UpdateParkItemCommand(parkItemId, item), cancellationToken);
         if (!updateResult.IsSuccess)
         {
@@ -151,7 +188,7 @@ public sealed class ApplyContextualBlockJsonCommandHandler
         ApplyStringField(block, "websiteUrl", value => park.WebsiteUrl = value);
         ApplyStringField(block, "founderId", value => park.FounderId = value);
         ApplyStringField(block, "operatorId", value => park.OperatorId = value);
-        ApplyPosition(park, block);
+        ApplyPartialPositionBlock(park, block);
     }
 
     private static void ApplyStringField(JsonElement block, string fieldName, Action<string?> assign)
@@ -165,7 +202,21 @@ public sealed class ApplyContextualBlockJsonCommandHandler
         assign(value);
     }
 
-    private static void ApplyPosition(Park park, JsonElement block)
+    private static void ApplyRequiredPositionBlock(GeolocatedEntityBase entity, JsonElement block)
+    {
+        JsonElement latitudeElement = block.GetProperty("latitude");
+        JsonElement longitudeElement = block.GetProperty("longitude");
+
+        if (latitudeElement.ValueKind == JsonValueKind.Null && longitudeElement.ValueKind == JsonValueKind.Null)
+        {
+            entity.ClearPosition();
+            return;
+        }
+
+        entity.SetPosition(latitudeElement.GetDouble(), longitudeElement.GetDouble());
+    }
+
+    private static void ApplyPartialPositionBlock(GeolocatedEntityBase entity, JsonElement block)
     {
         bool hasLatitude = block.TryGetProperty("latitude", out JsonElement latitudeElement);
         bool hasLongitude = block.TryGetProperty("longitude", out JsonElement longitudeElement);
@@ -174,8 +225,8 @@ public sealed class ApplyContextualBlockJsonCommandHandler
             return;
         }
 
-        double? latitude = park.Position?.Latitude;
-        double? longitude = park.Position?.Longitude;
+        double? latitude = entity.Position?.Latitude;
+        double? longitude = entity.Position?.Longitude;
 
         if (hasLatitude)
         {
@@ -189,13 +240,13 @@ public sealed class ApplyContextualBlockJsonCommandHandler
 
         if (latitude.HasValue && longitude.HasValue)
         {
-            park.SetPosition(latitude.Value, longitude.Value);
+            entity.SetPosition(latitude.Value, longitude.Value);
             return;
         }
 
         if (!latitude.HasValue || !longitude.HasValue)
         {
-            park.ClearPosition();
+            entity.ClearPosition();
         }
     }
 }

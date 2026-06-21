@@ -155,6 +155,7 @@ function createBlock(): AdminContextualBlockInstance {
     capabilities: ['fullAdminEdit', 'targetedChildAdd'],
     jsonScope: ['park.id'],
     localizedLanguageCodes: [],
+    locationFallbackCenter: null,
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
   };
 }
