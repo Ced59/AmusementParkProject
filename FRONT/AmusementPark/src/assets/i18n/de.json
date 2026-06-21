@@ -1095,6 +1095,41 @@
         }
       }
     },
+    "contextualBlocks": {
+      "editAction": "Bearbeiten",
+      "drawer": {
+        "ariaLabel": "Ausgewaehlter bearbeitbarer Block",
+        "kicker": "Kontextblock",
+        "close": "Blockdiagnose schliessen",
+        "type": "Blocktyp",
+        "entity": "Entitaet",
+        "label": "Aktuelles Element",
+        "capabilities": "Faehigkeiten",
+        "localizedLanguages": "Lokalisiert in",
+        "jsonScope": "JSON-Bereich",
+        "openAdminEdit": "Vollstaendige Admin-Bearbeitung oeffnen"
+      },
+      "capabilities": {
+        "fullAdminEdit": "Vollstaendige Admin-Bearbeitung verfuegbar",
+        "boundedJsonExportPlanned": "Begrenzter JSON-Export geplant",
+        "boundedJsonUpsertPlanned": "Begrenzter JSON-Upsert geplant",
+        "formEditPlanned": "Kontextformular geplant"
+      },
+      "blocks": {
+        "parkHero": {
+          "label": "Park-Hero",
+          "description": "Identitaet, visuelle Signale und zentrale Parkfelder."
+        },
+        "parkDescription": {
+          "label": "Parkbeschreibung",
+          "description": "Lokalisierte oeffentliche Beschreibung fuer alle unterstuetzten Sprachen."
+        },
+        "parkPractical": {
+          "label": "Praktische Infos",
+          "description": "Adresse, Referenzen, Website und nuetzliche Parkkoordinaten."
+        }
+      }
+    },
     "references": {
       "sections": {
         "identity": "Identität",

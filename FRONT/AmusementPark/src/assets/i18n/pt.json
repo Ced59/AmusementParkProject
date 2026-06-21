@@ -1095,6 +1095,41 @@
         }
       }
     },
+    "contextualBlocks": {
+      "editAction": "Editar",
+      "drawer": {
+        "ariaLabel": "Bloco editavel selecionado",
+        "kicker": "Bloco contextual",
+        "close": "Fechar diagnostico do bloco",
+        "type": "Tipo de bloco",
+        "entity": "Entidade",
+        "label": "Item atual",
+        "capabilities": "Capacidades",
+        "localizedLanguages": "Localizado em",
+        "jsonScope": "Escopo JSON",
+        "openAdminEdit": "Abrir edicao admin completa"
+      },
+      "capabilities": {
+        "fullAdminEdit": "Edicao admin completa disponivel",
+        "boundedJsonExportPlanned": "Export JSON limitado previsto",
+        "boundedJsonUpsertPlanned": "Upsert JSON limitado previsto",
+        "formEditPlanned": "Formulario contextual previsto"
+      },
+      "blocks": {
+        "parkHero": {
+          "label": "Hero do parque",
+          "description": "Identidade, sinais visuais e campos principais do parque."
+        },
+        "parkDescription": {
+          "label": "Descricao do parque",
+          "description": "Descricao publica localizada para todos os idiomas suportados."
+        },
+        "parkPractical": {
+          "label": "Info pratica",
+          "description": "Endereco, referencias, site e coordenadas uteis do parque."
+        }
+      }
+    },
     "references": {
       "sections": {
         "identity": "Identidade",

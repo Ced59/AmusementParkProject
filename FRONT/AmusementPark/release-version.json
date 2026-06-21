@@ -1,6 +1,20 @@
 {
-  "version": "2.3.13",
+  "version": "2.3.14",
   "history": [
+    {
+      "version": "2.3.14",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile devient plus pratique.",
+        "en": "Mobile administration becomes more convenient.",
+        "de": "Mobile Administration wird praktischer.",
+        "nl": "Mobiele administratie wordt praktischer.",
+        "it": "L'amministrazione mobile diventa piu pratica.",
+        "es": "La administracion movil resulta mas practica.",
+        "pl": "Administracja mobilna staje sie wygodniejsza.",
+        "pt": "A administracao movel fica mais pratica."
+      }
+    },
     {
       "version": "2.3.13",
       "releasedAt": "2026-06-21",

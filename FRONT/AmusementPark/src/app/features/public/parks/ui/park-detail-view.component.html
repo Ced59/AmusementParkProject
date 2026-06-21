@@ -12,7 +12,7 @@
   }">
   @if (currentPark) {
     <section class="park-detail">
-      <section class="park-banner">
+      <section class="park-banner" [appAdminContextualBlock]="getContextualBlock('park.hero', currentPark)">
         <div class="park-banner__bg" aria-hidden="true"></div>
         <div class="park-banner__pattern" aria-hidden="true"></div>
 
@@ -180,7 +180,7 @@
             }
           }
 
-          <section class="park-desc">
+          <section class="park-desc" [appAdminContextualBlock]="getContextualBlock('park.description', currentPark)">
             <app-ui-kicker iconClass="pi pi-align-left">
               {{ 'parks.detail.description.badge' | translate }}
             </app-ui-kicker>
@@ -199,7 +199,7 @@
 
         <aside class="park-sidebar" aria-label="Park detail sidebar">
           @if (currentPark.practicalRows.length > 0) {
-            <section class="park-side-card park-side-card--practical info-card">
+            <section class="park-side-card park-side-card--practical info-card" [appAdminContextualBlock]="getContextualBlock('park.practical', currentPark)">
               <header class="info-card__header">
                 <span class="info-card__header-icon"><i class="pi pi-info-circle" aria-hidden="true"></i></span>
                 <div>

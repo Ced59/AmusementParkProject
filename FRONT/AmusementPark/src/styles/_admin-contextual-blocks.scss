@@ -1,0 +1,67 @@
+.admin-contextual-block {
+  position: relative;
+  outline: 2px dashed color-mix(in srgb, var(--app-primary) 50%, transparent);
+  outline-offset: 0.35rem;
+  isolation: isolate;
+}
+
+.admin-contextual-block--selected {
+  outline-style: solid;
+  outline-color: color-mix(in srgb, var(--app-accent-gold) 82%, var(--app-primary));
+}
+
+.admin-contextual-block:focus-visible {
+  outline-style: solid;
+  outline-width: 3px;
+}
+
+.admin-contextual-block__edit-button {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 20;
+  min-height: 2.75rem;
+  max-width: calc(100% - 1.4rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.58rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 50%, var(--app-border));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--app-surface) 94%, transparent);
+  color: var(--app-heading);
+  box-shadow: 0 12px 32px color-mix(in srgb, #000 24%, transparent);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 850;
+  line-height: 1.15;
+  cursor: pointer;
+}
+
+.admin-contextual-block__edit-button:hover,
+.admin-contextual-block__edit-button:focus-visible {
+  border-color: var(--app-primary);
+  background: var(--app-primary);
+  color: var(--app-on-primary, #fff);
+}
+
+.admin-contextual-block__edit-button span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  .admin-contextual-block {
+    outline-offset: 0.18rem;
+  }
+
+  .admin-contextual-block__edit-button {
+    top: 0.55rem;
+    right: 0.55rem;
+    min-width: 2.75rem;
+    max-width: calc(100% - 1.1rem);
+  }
+}

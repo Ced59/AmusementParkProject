@@ -1,0 +1,90 @@
+@if (selectedBlock(); as block) {
+  <aside
+    class="admin-contextual-block-drawer"
+    role="dialog"
+    aria-modal="false"
+    [attr.aria-label]="'admin.contextualBlocks.drawer.ariaLabel' | translate">
+    <header class="admin-contextual-block-drawer__header">
+      <div class="admin-contextual-block-drawer__title">
+        <span class="admin-contextual-block-drawer__icon">
+          <i [class]="block.iconClass" aria-hidden="true"></i>
+        </span>
+        <div>
+          <p>{{ 'admin.contextualBlocks.drawer.kicker' | translate }}</p>
+          <h2>{{ block.labelKey | translate }}</h2>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="admin-contextual-block-drawer__close"
+        [attr.aria-label]="'admin.contextualBlocks.drawer.close' | translate"
+        (click)="close()">
+        <i class="pi pi-times" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="admin-contextual-block-drawer__body">
+      <p class="admin-contextual-block-drawer__description">{{ block.descriptionKey | translate }}</p>
+
+      <dl class="admin-contextual-block-drawer__ids">
+        <div>
+          <dt>{{ 'admin.contextualBlocks.drawer.type' | translate }}</dt>
+          <dd>{{ block.type }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'admin.contextualBlocks.drawer.entity' | translate }}</dt>
+          <dd>{{ block.entityType }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'admin.contextualBlocks.drawer.label' | translate }}</dt>
+          <dd>{{ block.contextLabel }}</dd>
+        </div>
+        @for (entry of getIdEntries(block); track entry.key) {
+          <div>
+            <dt>{{ entry.key }}</dt>
+            <dd>{{ entry.value }}</dd>
+          </div>
+        }
+      </dl>
+
+      <section class="admin-contextual-block-drawer__section">
+        <h3>{{ 'admin.contextualBlocks.drawer.capabilities' | translate }}</h3>
+        <ul>
+          @for (capability of block.capabilities; track capability) {
+            <li>{{ getCapabilityLabelKey(capability) | translate }}</li>
+          }
+        </ul>
+      </section>
+
+      @if (block.localizedLanguageCodes.length > 0) {
+        <section class="admin-contextual-block-drawer__section">
+          <h3>{{ 'admin.contextualBlocks.drawer.localizedLanguages' | translate }}</h3>
+          <div class="admin-contextual-block-drawer__chips">
+            @for (languageCode of block.localizedLanguageCodes; track languageCode) {
+              <span>{{ languageCode }}</span>
+            }
+          </div>
+        </section>
+      }
+
+      <section class="admin-contextual-block-drawer__section">
+        <h3>{{ 'admin.contextualBlocks.drawer.jsonScope' | translate }}</h3>
+        <ul>
+          @for (field of block.jsonScope; track field) {
+            <li><code>{{ field }}</code></li>
+          }
+        </ul>
+      </section>
+    </div>
+
+    @if (block.adminRoute) {
+      <footer class="admin-contextual-block-drawer__footer">
+        <a class="admin-contextual-block-drawer__admin-link" [routerLink]="block.adminRoute">
+          <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          <span>{{ 'admin.contextualBlocks.drawer.openAdminEdit' | translate }}</span>
+        </a>
+      </footer>
+    }
+  </aside>
+}
