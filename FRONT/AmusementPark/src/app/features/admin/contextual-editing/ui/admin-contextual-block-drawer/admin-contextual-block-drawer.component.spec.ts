@@ -9,6 +9,13 @@ import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-bl
 import { AdminContextualBlockChildAddFacade, AdminContextualBlockChildAddZoneOption } from '../../state/admin-contextual-block-child-add.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
 import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField, AdminContextualBlockLocationForm } from '../../state/admin-contextual-block-form.facade';
+import {
+  AdminContextualBlockPhotoAddFacade,
+  AdminContextualBlockPhotoCategoryOption,
+  AdminContextualBlockPhotoMetadataRow,
+  AdminContextualBlockPhotoTagOption,
+  AdminContextualPhotoSourceMode
+} from '../../state/admin-contextual-block-photo-add.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
@@ -78,6 +85,37 @@ describe('AdminContextualBlockDrawerComponent', () => {
     updateSelectedZoneId: jasmine.Spy;
     createChild: jasmine.Spy;
   };
+  let photoAddFacade: {
+    sourceMode: Signal<AdminContextualPhotoSourceMode>;
+    selectedFile: Signal<File | null>;
+    remoteSourceUrl: Signal<string>;
+    previewUrl: Signal<string | null>;
+    metadataRows: Signal<readonly AdminContextualBlockPhotoMetadataRow[]>;
+    description: Signal<string>;
+    isPublished: Signal<boolean>;
+    setAsCurrent: Signal<boolean>;
+    categoryOptions: Signal<readonly AdminContextualBlockPhotoCategoryOption[]>;
+    selectedCategorySlug: Signal<string>;
+    tagOptions: Signal<readonly AdminContextualBlockPhotoTagOption[]>;
+    selectedTagIds: Signal<readonly string[]>;
+    isLoadingTags: Signal<boolean>;
+    isReadingMetadata: Signal<boolean>;
+    isUploading: Signal<boolean>;
+    errorKey: Signal<string | null>;
+    successKey: Signal<string | null>;
+    canAddPhoto: jasmine.Spy;
+    resetForBlock: jasmine.Spy;
+    setSourceMode: jasmine.Spy;
+    selectFile: jasmine.Spy;
+    updateRemoteSourceUrl: jasmine.Spy;
+    previewRemoteSourceUrl: jasmine.Spy;
+    updateDescription: jasmine.Spy;
+    updateSelectedCategorySlug: jasmine.Spy;
+    toggleTag: jasmine.Spy;
+    updateIsPublished: jasmine.Spy;
+    updateSetAsCurrent: jasmine.Spy;
+    uploadPhoto: jasmine.Spy;
+  };
 
   beforeEach(async () => {
     const isExportingSignal = signal<boolean>(false);
@@ -108,6 +146,30 @@ describe('AdminContextualBlockDrawerComponent', () => {
     const childAddErrorKeySignal = signal<string | null>(null);
     const childAddSuccessKeySignal = signal<string | null>(null);
     const createdItemAdminRouteSignal = signal<readonly string[] | null>(null);
+    const photoSourceModeSignal = signal<AdminContextualPhotoSourceMode>('file');
+    const photoSelectedFileSignal = signal<File | null>(null);
+    const photoRemoteSourceUrlSignal = signal<string>('');
+    const photoPreviewUrlSignal = signal<string | null>('https://example.test/photo.jpg');
+    const photoMetadataRowsSignal = signal<readonly AdminContextualBlockPhotoMetadataRow[]>([
+      { labelKey: 'admin.contextualBlocks.drawer.photoMetadataDimensions', value: '1024 x 768 px', tone: 'neutral' },
+      { labelKey: 'admin.contextualBlocks.drawer.photoMetadataGeoLocation', value: '50.100000, 3.200000', tone: 'success' }
+    ]);
+    const photoDescriptionSignal = signal<string>('');
+    const photoIsPublishedSignal = signal<boolean>(true);
+    const photoSetAsCurrentSignal = signal<boolean>(false);
+    const photoCategoryOptionsSignal = signal<readonly AdminContextualBlockPhotoCategoryOption[]>([
+      { slug: 'park-gallery', labelKey: 'admin.parks.photos.categories.gallery' }
+    ]);
+    const photoSelectedCategorySlugSignal = signal<string>('park-gallery');
+    const photoTagOptionsSignal = signal<readonly AdminContextualBlockPhotoTagOption[]>([
+      { id: 'tag-1', slug: 'night', label: 'Nuit', isCategoryTag: false }
+    ]);
+    const photoSelectedTagIdsSignal = signal<readonly string[]>([]);
+    const isPhotoLoadingTagsSignal = signal<boolean>(false);
+    const isPhotoReadingMetadataSignal = signal<boolean>(false);
+    const isPhotoUploadingSignal = signal<boolean>(false);
+    const photoErrorKeySignal = signal<string | null>(null);
+    const photoSuccessKeySignal = signal<string | null>(null);
     exportFacade = {
       isExporting: isExportingSignal.asReadonly(),
       errorKey: errorKeySignal.asReadonly(),
@@ -219,6 +281,53 @@ describe('AdminContextualBlockDrawerComponent', () => {
       }),
       createChild: jasmine.createSpy('createChild')
     };
+    photoAddFacade = {
+      sourceMode: photoSourceModeSignal.asReadonly(),
+      selectedFile: photoSelectedFileSignal.asReadonly(),
+      remoteSourceUrl: photoRemoteSourceUrlSignal.asReadonly(),
+      previewUrl: photoPreviewUrlSignal.asReadonly(),
+      metadataRows: photoMetadataRowsSignal.asReadonly(),
+      description: photoDescriptionSignal.asReadonly(),
+      isPublished: photoIsPublishedSignal.asReadonly(),
+      setAsCurrent: photoSetAsCurrentSignal.asReadonly(),
+      categoryOptions: photoCategoryOptionsSignal.asReadonly(),
+      selectedCategorySlug: photoSelectedCategorySlugSignal.asReadonly(),
+      tagOptions: photoTagOptionsSignal.asReadonly(),
+      selectedTagIds: photoSelectedTagIdsSignal.asReadonly(),
+      isLoadingTags: isPhotoLoadingTagsSignal.asReadonly(),
+      isReadingMetadata: isPhotoReadingMetadataSignal.asReadonly(),
+      isUploading: isPhotoUploadingSignal.asReadonly(),
+      errorKey: photoErrorKeySignal.asReadonly(),
+      successKey: photoSuccessKeySignal.asReadonly(),
+      canAddPhoto: jasmine.createSpy('canAddPhoto').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
+        return Boolean(block?.capabilities.includes('contextualPhotoAdd'));
+      }),
+      resetForBlock: jasmine.createSpy('resetForBlock'),
+      setSourceMode: jasmine.createSpy('setSourceMode').and.callFake((mode: AdminContextualPhotoSourceMode): void => {
+        photoSourceModeSignal.set(mode);
+      }),
+      selectFile: jasmine.createSpy('selectFile'),
+      updateRemoteSourceUrl: jasmine.createSpy('updateRemoteSourceUrl').and.callFake((value: string): void => {
+        photoRemoteSourceUrlSignal.set(value);
+      }),
+      previewRemoteSourceUrl: jasmine.createSpy('previewRemoteSourceUrl'),
+      updateDescription: jasmine.createSpy('updateDescription').and.callFake((value: string): void => {
+        photoDescriptionSignal.set(value);
+      }),
+      updateSelectedCategorySlug: jasmine.createSpy('updateSelectedCategorySlug').and.callFake((value: string): void => {
+        photoSelectedCategorySlugSignal.set(value);
+      }),
+      toggleTag: jasmine.createSpy('toggleTag').and.callFake((tagId: string, checked: boolean): void => {
+        photoSelectedTagIdsSignal.set(checked ? [tagId] : []);
+      }),
+      updateIsPublished: jasmine.createSpy('updateIsPublished').and.callFake((value: boolean): void => {
+        photoIsPublishedSignal.set(value);
+      }),
+      updateSetAsCurrent: jasmine.createSpy('updateSetAsCurrent').and.callFake((value: boolean): void => {
+        photoSetAsCurrentSignal.set(value);
+      }),
+      uploadPhoto: jasmine.createSpy('uploadPhoto')
+    };
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, AdminContextualBlockDrawerComponent],
@@ -245,6 +354,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
         {
           provide: AdminContextualBlockChildAddFacade,
           useValue: childAddFacade
+        },
+        {
+          provide: AdminContextualBlockPhotoAddFacade,
+          useValue: photoAddFacade
         }
       ]
     }).compileComponents();
@@ -316,6 +429,37 @@ describe('AdminContextualBlockDrawerComponent', () => {
             addChildUnavailable: 'Ajout indisponible.',
             addChildSucceeded: 'Item cree.',
             openCreatedChild: 'Ouvrir l item',
+            photoAddTitle: 'Ajouter une photo',
+            photoSourceFile: 'Fichier',
+            photoSourceRemote: 'Lien',
+            photoFileLabel: 'Fichier image',
+            photoSelectedFile: 'Fichier: {{ fileName }}',
+            photoRemoteUrlLabel: 'URL image',
+            photoRemoteUrlPlaceholder: 'https://...',
+            photoPreviewRemote: 'Previsualiser le lien',
+            photoPreviewAlt: 'Apercu de la photo',
+            photoMetadataReading: 'Lecture des metadonnees...',
+            photoMetadataFileName: 'Nom',
+            photoMetadataContentType: 'Type',
+            photoMetadataSize: 'Taille',
+            photoMetadataDimensions: 'Dimensions',
+            photoMetadataGeoLocation: 'Geoloc',
+            photoMetadataGeoUnavailable: 'Verification apres import',
+            photoMetadataGeoMissing: 'Aucune coordonnee detectee',
+            photoDescriptionLabel: 'Description',
+            photoDescriptionPlaceholder: 'Description courte',
+            photoCategoryLabel: 'Categorie',
+            photoTagsLoading: 'Chargement des tags...',
+            photoTagsLabel: 'Tags photo',
+            photoPublishedLabel: 'Publier la photo',
+            photoSetCurrentLabel: 'Definir comme image principale',
+            photoUpload: 'Ajouter la photo',
+            photoUploading: 'Ajout...',
+            photoSourceRequired: 'Source requise',
+            photoInvalidRemoteUrl: 'URL invalide',
+            photoUploadError: 'Ajout impossible',
+            photoUploadSucceeded: 'Photo ajoutee',
+            photoTagsLoadError: 'Tags indisponibles',
             previewChanged: 'Modifies',
             previewErrors: 'Erreurs',
             previewWarnings: 'Alertes',
@@ -331,6 +475,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
             boundedJsonPreview: 'Previsualisation JSON borne disponible',
             boundedJsonApply: 'Application JSON borne disponible',
             contextualFormEdit: 'Formulaire contextuel disponible',
+            contextualPhotoAdd: 'Ajout photo contextuel disponible',
             targetedChildAdd: 'Ajout cible disponible',
             boundedJsonExportPlanned: 'Export JSON borne prevu',
             boundedJsonUpsertPlanned: 'Upsert JSON borne prevu',
@@ -340,6 +485,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
             parkDescription: {
               label: 'Description du parc',
               description: 'Description localisee'
+            },
+            parkImages: {
+              label: 'Photos du parc',
+              description: 'Galerie publique'
             }
           }
         }
@@ -526,6 +675,52 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(childAddFacade.createChild).toHaveBeenCalledOnceWith(block);
   });
 
+  it('renders contextual photo additions and delegates upload choices to the photo facade', () => {
+    const block: AdminContextualBlockInstance = createPhotoBlock();
+    publicViewModeFacade.setViewMode('adminPreview');
+    publicViewModeFacade.setEditionModeEnabled(true);
+    selectionFacade.selectBlock(block);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const sourceButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-contextual-block-drawer__segmented button');
+    sourceButtons.item(1).click();
+    fixture.detectChanges();
+
+    const remoteInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__photo-add input[type="url"]') as HTMLInputElement;
+    remoteInput.value = 'https://example.test/photo.jpg';
+    remoteInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    const descriptionInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__photo-add input[type="text"]') as HTMLInputElement;
+    descriptionInput.value = 'Night view';
+    descriptionInput.dispatchEvent(new Event('input'));
+
+    const tagInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__tag-list input[type="checkbox"]') as HTMLInputElement;
+    tagInput.checked = true;
+    tagInput.dispatchEvent(new Event('change'));
+
+    const toggles: NodeListOf<HTMLInputElement> = host.querySelectorAll('.admin-contextual-block-drawer__toggles input[type="checkbox"]');
+    toggles.item(1).checked = true;
+    toggles.item(1).dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+
+    const previewButton: HTMLButtonElement = host.querySelector('.admin-contextual-block-drawer__photo-add .admin-contextual-block-drawer__action--secondary') as HTMLButtonElement;
+    const uploadButton: HTMLButtonElement = host.querySelector('.admin-contextual-block-drawer__photo-add .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
+    previewButton.click();
+    uploadButton.click();
+
+    expect(host.textContent).toContain('Ajouter une photo');
+    expect(host.textContent).toContain('1024 x 768 px');
+    expect(photoAddFacade.setSourceMode).toHaveBeenCalledWith('remote');
+    expect(photoAddFacade.updateRemoteSourceUrl).toHaveBeenCalledWith('https://example.test/photo.jpg');
+    expect(photoAddFacade.updateDescription).toHaveBeenCalledWith('Night view');
+    expect(photoAddFacade.toggleTag).toHaveBeenCalledWith('tag-1', true);
+    expect(photoAddFacade.updateSetAsCurrent).toHaveBeenCalledWith(true);
+    expect(photoAddFacade.previewRemoteSourceUrl).toHaveBeenCalled();
+    expect(photoAddFacade.uploadPhoto).toHaveBeenCalledOnceWith(block);
+  });
+
   it('clears the selected block from the close action', () => {
     publicViewModeFacade.setViewMode('adminPreview');
     publicViewModeFacade.setEditionModeEnabled(true);
@@ -576,6 +771,25 @@ function createLocationBlock(): AdminContextualBlockInstance {
     jsonScope: ['park.id', 'park.latitude', 'park.longitude'],
     localizedLanguageCodes: [],
     locationFallbackCenter: [48.85, 2.35],
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+  };
+}
+
+function createPhotoBlock(): AdminContextualBlockInstance {
+  return {
+    id: 'park.images:park-1',
+    type: 'park.images',
+    entityType: 'Park',
+    entityId: 'park-1',
+    contextLabel: 'Phantasialand',
+    ids: { parkId: 'park-1' },
+    labelKey: 'admin.contextualBlocks.blocks.parkImages.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkImages.description',
+    iconClass: 'pi pi-images',
+    capabilities: ['fullAdminEdit', 'contextualPhotoAdd'],
+    jsonScope: ['park.id', 'image.file', 'image.sourceUrl'],
+    localizedLanguageCodes: [],
+    locationFallbackCenter: null,
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
   };
 }

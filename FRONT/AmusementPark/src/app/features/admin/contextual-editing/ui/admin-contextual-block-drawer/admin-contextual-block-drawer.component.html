@@ -27,6 +27,177 @@
     <div class="admin-contextual-block-drawer__body">
       <p class="admin-contextual-block-drawer__description">{{ block.descriptionKey | translate }}</p>
 
+      @if (canAddPhoto(block)) {
+        <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__photo-add">
+          <h3>{{ 'admin.contextualBlocks.drawer.photoAddTitle' | translate }}</h3>
+
+          <div class="admin-contextual-block-drawer__segmented">
+            <button
+              type="button"
+              [class.admin-contextual-block-drawer__segmented-button--active]="photoSourceMode() === 'file'"
+              [disabled]="isPhotoUploading()"
+              (click)="setPhotoSourceMode('file')">
+              <i class="pi pi-upload" aria-hidden="true"></i>
+              <span>{{ 'admin.contextualBlocks.drawer.photoSourceFile' | translate }}</span>
+            </button>
+            <button
+              type="button"
+              [class.admin-contextual-block-drawer__segmented-button--active]="photoSourceMode() === 'remote'"
+              [disabled]="isPhotoUploading()"
+              (click)="setPhotoSourceMode('remote')">
+              <i class="pi pi-link" aria-hidden="true"></i>
+              <span>{{ 'admin.contextualBlocks.drawer.photoSourceRemote' | translate }}</span>
+            </button>
+          </div>
+
+          @if (photoSourceMode() === 'file') {
+            <label class="admin-contextual-block-drawer__file-picker">
+              <span>{{ 'admin.contextualBlocks.drawer.photoFileLabel' | translate }}</span>
+              <input
+                type="file"
+                accept="image/*"
+                [disabled]="isPhotoUploading()"
+                (change)="selectPhotoFile($event)" />
+            </label>
+
+            @if (photoSelectedFile(); as selectedFile) {
+              <p class="admin-contextual-block-drawer__form-status">
+                {{ 'admin.contextualBlocks.drawer.photoSelectedFile' | translate:{ fileName: selectedFile.name } }}
+              </p>
+            }
+          } @else {
+            <div class="admin-contextual-block-drawer__form-fields">
+              <label>
+                <span>{{ 'admin.contextualBlocks.drawer.photoRemoteUrlLabel' | translate }}</span>
+                <input
+                  type="url"
+                  [attr.placeholder]="'admin.contextualBlocks.drawer.photoRemoteUrlPlaceholder' | translate"
+                  [value]="photoRemoteSourceUrl()"
+                  [disabled]="isPhotoUploading()"
+                  (input)="updatePhotoRemoteSourceUrl($event)" />
+              </label>
+            </div>
+
+            <button
+              type="button"
+              class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary"
+              [disabled]="isPhotoReadingMetadata() || isPhotoUploading() || photoRemoteSourceUrl().trim().length === 0"
+              (click)="previewPhotoRemoteSourceUrl()">
+              <i class="pi pi-eye" aria-hidden="true"></i>
+              <span>{{ (isPhotoReadingMetadata() ? 'admin.contextualBlocks.drawer.photoMetadataReading' : 'admin.contextualBlocks.drawer.photoPreviewRemote') | translate }}</span>
+            </button>
+          }
+
+          @if (photoPreviewUrl(); as previewUrl) {
+            <div class="admin-contextual-block-drawer__photo-preview">
+              <app-image-display
+                [imagePathOrUrl]="previewUrl"
+                [alt]="'admin.contextualBlocks.drawer.photoPreviewAlt' | translate"
+                imgClass="admin-contextual-block-drawer__photo-preview-image"
+                placeholderClass="admin-contextual-block-drawer__photo-preview-image admin-contextual-block-drawer__photo-preview-image--placeholder"
+                placeholderIconClass="pi pi-image">
+              </app-image-display>
+            </div>
+          }
+
+          @if (isPhotoReadingMetadata()) {
+            <p class="admin-contextual-block-drawer__form-status">{{ 'admin.contextualBlocks.drawer.photoMetadataReading' | translate }}</p>
+          }
+
+          @if (photoMetadataRows().length > 0) {
+            <dl class="admin-contextual-block-drawer__metadata">
+              @for (row of photoMetadataRows(); track trackPhotoMetadataRow(row)) {
+                <div [class.admin-contextual-block-drawer__metadata-row--success]="row.tone === 'success'" [class.admin-contextual-block-drawer__metadata-row--warning]="row.tone === 'warning'">
+                  <dt>{{ row.labelKey | translate }}</dt>
+                  <dd>{{ row.value }}</dd>
+                </div>
+              }
+            </dl>
+          }
+
+          <div class="admin-contextual-block-drawer__form-fields">
+            <label>
+              <span>{{ 'admin.contextualBlocks.drawer.photoDescriptionLabel' | translate }}</span>
+              <input
+                type="text"
+                [attr.placeholder]="'admin.contextualBlocks.drawer.photoDescriptionPlaceholder' | translate"
+                [value]="photoDescription()"
+                [disabled]="isPhotoUploading()"
+                (input)="updatePhotoDescription($event)" />
+            </label>
+
+            <label>
+              <span>{{ 'admin.contextualBlocks.drawer.photoCategoryLabel' | translate }}</span>
+              <select
+                [value]="photoSelectedCategorySlug()"
+                [disabled]="isPhotoUploading() || isPhotoLoadingTags()"
+                (change)="updatePhotoCategory($event)">
+                @for (category of photoCategoryOptions(); track trackPhotoCategory(category)) {
+                  <option [value]="category.slug">{{ category.labelKey | translate }}</option>
+                }
+              </select>
+            </label>
+          </div>
+
+          @if (isPhotoLoadingTags()) {
+            <p class="admin-contextual-block-drawer__form-status">{{ 'admin.contextualBlocks.drawer.photoTagsLoading' | translate }}</p>
+          }
+
+          @if (photoTagOptions().length > 0) {
+            <div class="admin-contextual-block-drawer__tag-list" role="group" [attr.aria-label]="'admin.contextualBlocks.drawer.photoTagsLabel' | translate">
+              @for (tag of photoTagOptions(); track trackPhotoTag(tag)) {
+                <label [class.admin-contextual-block-drawer__tag--category]="tag.isCategoryTag">
+                  <input
+                    type="checkbox"
+                    [checked]="isPhotoTagSelected(tag.id)"
+                    [disabled]="isPhotoUploading()"
+                    (change)="togglePhotoTag(tag.id, $event)" />
+                  <span>{{ tag.label }}</span>
+                </label>
+              }
+            </div>
+          }
+
+          <div class="admin-contextual-block-drawer__toggles">
+            <label>
+              <input
+                type="checkbox"
+                [checked]="photoIsPublished()"
+                [disabled]="isPhotoUploading()"
+                (change)="updatePhotoPublished($event)" />
+              <span>{{ 'admin.contextualBlocks.drawer.photoPublishedLabel' | translate }}</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                [checked]="photoSetAsCurrent()"
+                [disabled]="isPhotoUploading()"
+                (change)="updatePhotoSetAsCurrent($event)" />
+              <span>{{ 'admin.contextualBlocks.drawer.photoSetCurrentLabel' | translate }}</span>
+            </label>
+          </div>
+
+          <div class="admin-contextual-block-drawer__preview-actions">
+            <button
+              type="button"
+              class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary"
+              [disabled]="isPhotoUploading() || isPhotoReadingMetadata() || (photoSourceMode() === 'file' ? !photoSelectedFile() : photoRemoteSourceUrl().trim().length === 0)"
+              (click)="uploadPhoto(block)">
+              <i class="pi pi-save" aria-hidden="true"></i>
+              <span>{{ (isPhotoUploading() ? 'admin.contextualBlocks.drawer.photoUploading' : 'admin.contextualBlocks.drawer.photoUpload') | translate }}</span>
+            </button>
+          </div>
+
+          @if (photoErrorKey(); as errorKey) {
+            <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
+          }
+
+          @if (photoSuccessKey(); as successKey) {
+            <p class="admin-contextual-block-drawer__success" role="status">{{ successKey | translate }}</p>
+          }
+        </section>
+      }
+
       @if (canEditForm(block)) {
         <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__form">
           <h3>{{ 'admin.contextualBlocks.drawer.formTitle' | translate }}</h3>

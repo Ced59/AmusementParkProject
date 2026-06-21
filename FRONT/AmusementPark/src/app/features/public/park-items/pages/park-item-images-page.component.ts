@@ -4,6 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
+import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
 import {
   buildPublicParkItemRouteCommands,
   buildPublicParkItemsRouteCommands,
@@ -43,7 +44,8 @@ export class ParkItemImagesPageComponent implements OnInit {
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly seoService: SeoService,
-    private readonly stateFacade: ParkItemImagesStateFacade
+    private readonly stateFacade: ParkItemImagesStateFacade,
+    private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
   ) {
     effect((): void => {
       const currentItem = this.item();
@@ -93,6 +95,12 @@ export class ParkItemImagesPageComponent implements OnInit {
 
       this.currentItemId = itemId;
       this.stateFacade.loadItemImages(itemId);
+    });
+
+    this.contextualBlockRefreshEvents.appliedBlock$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: AdminContextualBlockAppliedEvent) => {
+      if (event.blockType === 'parkItem.images' && event.entityId === this.currentItemId && this.currentItemId) {
+        this.stateFacade.loadItemImages(this.currentItemId);
+      }
     });
   }
 

@@ -105,7 +105,38 @@
         "previewCurrentValue": "Biezace",
         "previewProposedValue": "Proponowane",
         "previewJsonNoChanges": "Nie wykryto zmian.",
-        "emptyValue": "Puste"
+        "emptyValue": "Puste",
+        "photoAddTitle": "Dodaj zdjecie",
+        "photoSourceFile": "Plik",
+        "photoSourceRemote": "Link",
+        "photoFileLabel": "Plik obrazu",
+        "photoSelectedFile": "Plik: {{ fileName }}",
+        "photoRemoteUrlLabel": "URL obrazu",
+        "photoRemoteUrlPlaceholder": "https://...",
+        "photoPreviewRemote": "Podglad linku",
+        "photoPreviewAlt": "Podglad zdjecia",
+        "photoMetadataReading": "Odczyt metadanych...",
+        "photoMetadataFileName": "Nazwa",
+        "photoMetadataContentType": "Typ",
+        "photoMetadataSize": "Rozmiar",
+        "photoMetadataDimensions": "Wymiary",
+        "photoMetadataGeoLocation": "Geolokalizacja",
+        "photoMetadataGeoUnavailable": "Sprawdzenie po imporcie URL",
+        "photoMetadataGeoMissing": "Nie wykryto wspolrzednych",
+        "photoDescriptionLabel": "Opis",
+        "photoDescriptionPlaceholder": "Krotki opis",
+        "photoCategoryLabel": "Kategoria",
+        "photoTagsLoading": "Ladowanie tagow...",
+        "photoTagsLabel": "Tagi zdjecia",
+        "photoPublishedLabel": "Opublikuj zdjecie",
+        "photoSetCurrentLabel": "Ustaw jako glowne zdjecie",
+        "photoUpload": "Dodaj zdjecie",
+        "photoUploading": "Dodawanie...",
+        "photoSourceRequired": "Wybierz plik albo podaj link obrazu.",
+        "photoInvalidRemoteUrl": "Link musi byc poprawnym adresem http lub https.",
+        "photoUploadError": "Nie udalo sie dodac zdjecia.",
+        "photoUploadSucceeded": "Zdjecie dodane, strona sie aktualizuje.",
+        "photoTagsLoadError": "Nie udalo sie zaladowac tagow zdjec."
       },
       "capabilities": {
         "fullAdminEdit": "Pelna edycja admin dostepna",
@@ -116,7 +147,8 @@
         "targetedChildAdd": "Ukierunkowane dodawanie dostepne",
         "boundedJsonExportPlanned": "Ograniczony eksport JSON zaplanowany",
         "boundedJsonUpsertPlanned": "Ograniczony upsert JSON zaplanowany",
-        "formEditPlanned": "Formularz kontekstowy zaplanowany"
+        "formEditPlanned": "Formularz kontekstowy zaplanowany",
+        "contextualPhotoAdd": "Kontekstowe dodawanie zdjec dostepne"
       },
       "blocks": {
         "parkHero": {
@@ -142,6 +174,14 @@
         "parkItemLocation": {
           "label": "Lokalizacja itemu",
           "description": "Ogolna pozycja tego itemu w parku."
+        },
+        "parkImages": {
+          "label": "Zdjecia parku",
+          "description": "Publiczna galeria parku i celowane dodawanie zdjec."
+        },
+        "parkItemImages": {
+          "label": "Zdjecia itemu",
+          "description": "Publiczna galeria itemu i celowane dodawanie zdjec."
         }
       }
     }

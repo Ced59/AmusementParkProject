@@ -1,9 +1,11 @@
 export type AdminContextualBlockType =
   | 'park.hero'
   | 'park.description'
+  | 'park.images'
   | 'park.location'
   | 'park.practical'
   | 'parkItem.description'
+  | 'parkItem.images'
   | 'parkItem.location';
 
 export type AdminContextualBlockEntityType = 'Park' | 'ParkItem';
@@ -14,6 +16,7 @@ export type AdminContextualBlockCapability =
   | 'boundedJsonPreview'
   | 'boundedJsonApply'
   | 'contextualFormEdit'
+  | 'contextualPhotoAdd'
   | 'targetedChildAdd'
   | 'boundedJsonExportPlanned'
   | 'boundedJsonUpsertPlanned'
