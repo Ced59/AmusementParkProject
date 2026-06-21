@@ -114,6 +114,7 @@ public sealed class ParkZoneRepository : IParkZoneRepository
     {
         FilterDefinition<ParkZoneDocument> zoneFilter = Builders<ParkZoneDocument>.Filter.Eq(document => document.ParkId, parkId);
         FilterDefinition<ParkItemDocument> itemFilter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
+            & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
             & BuildClosedFilter(closedFilter);
 
         if (!includeHidden)
@@ -128,6 +129,17 @@ public sealed class ParkZoneRepository : IParkZoneRepository
             .ToListAsync(cancellationToken);
 
         List<ParkItemDocument> itemDocuments = await this.itemsCollection.Find(itemFilter)
+            .Project(static document => new ParkItemDocument
+            {
+                Id = document.Id,
+                ParkId = document.ParkId,
+                ZoneId = document.ZoneId,
+                Name = document.Name,
+                Category = document.Category,
+                Type = document.Type,
+                IsVisible = document.IsVisible,
+                AdminReviewStatus = document.AdminReviewStatus,
+            })
             .SortBy(document => document.Category)
             .ThenBy(document => document.Type)
             .ThenBy(document => document.Name)

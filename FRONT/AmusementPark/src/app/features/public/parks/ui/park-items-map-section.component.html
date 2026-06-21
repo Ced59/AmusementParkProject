@@ -93,24 +93,8 @@
     }
   </div>
 
-  @if ((map?.unlocatedItems?.length ?? 0) > 0) {
-    <div class="park-items-map__unlocated">
-      <div>
-        <strong>{{ 'parkItems.unlocated.title' | translate:{ count: map?.unlocatedItems?.length ?? 0 } }}</strong>
-        <span>{{ 'parkItems.unlocated.subtitle' | translate }}</span>
-      </div>
-
-      <div class="park-items-map__unlocated-list">
-        @for (item of map?.unlocatedItems ?? []; track item.id ?? item.name) {
-          @if (item.detailLink) {
-            <a [routerLink]="item.detailLink">
-              <i class="pi pi-link" aria-hidden="true"></i>
-              <span>{{ item.name }}</span>
-              <small>{{ item.categoryLabelKey | translate }} &middot; {{ item.typeLabelKey | translate }}</small>
-            </a>
-          }
-        }
-      </div>
-    </div>
-  }
+  <app-unlocated-items-panel
+    [items]="map?.unlocatedItems ?? []"
+    [pageSize]="5">
+  </app-unlocated-items-panel>
 </section>

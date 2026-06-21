@@ -1,6 +1,20 @@
 {
-  "version": "2.3.9",
+  "version": "2.3.10",
   "history": [
+    {
+      "version": "2.3.10",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "Les données publiques sont plus cohérentes.",
+        "en": "Public data is more consistent.",
+        "de": "Öffentliche Daten sind stimmiger.",
+        "nl": "Publieke gegevens zijn consistenter.",
+        "it": "I dati pubblici sono più coerenti.",
+        "es": "Los datos públicos son más coherentes.",
+        "pl": "Dane publiczne są spójniejsze.",
+        "pt": "Os dados públicos ficam mais coerentes."
+      }
+    },
     {
       "version": "2.3.9",
       "releasedAt": "2026-06-21",

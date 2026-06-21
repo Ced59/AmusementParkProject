@@ -39,7 +39,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class ParkItemsController : ControllerBase
 {
-    private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItemListResult>>> getParkItemsByParkIdQueryHandler;
+    private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<PagedResult<ParkItemListResult>>> getParkItemsByParkIdQueryHandler;
     private readonly IQueryHandler<GetParkItemsPageQuery, ApplicationResult<PagedResult<ParkItemAdminListResult>>> getParkItemsPageQueryHandler;
     private readonly IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler;
     private readonly IQueryHandler<GetParkItemSiblingNavigationQuery, ApplicationResult<ParkItemSiblingNavigationResult>> getParkItemSiblingNavigationQueryHandler;
@@ -55,7 +55,7 @@ public sealed class ParkItemsController : ControllerBase
     private readonly ICommandHandler<ApplyParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreateApplyResult>> applyParkItemsBulkCreateCommandHandler;
 
     public ParkItemsController(
-        IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItemListResult>>> getParkItemsByParkIdQueryHandler,
+        IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<PagedResult<ParkItemListResult>>> getParkItemsByParkIdQueryHandler,
         IQueryHandler<GetParkItemsPageQuery, ApplicationResult<PagedResult<ParkItemAdminListResult>>> getParkItemsPageQueryHandler,
         IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler,
         IQueryHandler<GetParkItemSiblingNavigationQuery, ApplicationResult<ParkItemSiblingNavigationResult>> getParkItemSiblingNavigationQueryHandler,
@@ -90,10 +90,26 @@ public sealed class ParkItemsController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetByParkIdAsync(
+        [FromRoute] string parkId,
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? closedFilter = null,
+        [FromQuery] string? search = null,
+        [FromQuery] string? category = null,
+        [FromQuery] string? type = null,
+        [FromQuery] string? zoneId = null,
+        CancellationToken cancellationToken = default)
     {
-        ApplicationResult<IReadOnlyCollection<ParkItemListResult>> result = await this.getParkItemsByParkIdQueryHandler.HandleAsync(
-            new GetParkItemsByParkIdQuery(parkId, this.UserCanSeeNonVisible(), ParseClosedEntityFilter(closedFilter)),
+        ApplicationResult<PagedResult<ParkItemListResult>> result = await this.getParkItemsByParkIdQueryHandler.HandleAsync(
+            new GetParkItemsByParkIdQuery(
+                parkId,
+                pagination.ToApplication(),
+                this.UserCanSeeNonVisible(),
+                ParseClosedEntityFilter(closedFilter),
+                search,
+                ParseParkItemCategory(category),
+                ParseParkItemType(type),
+                zoneId),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -101,7 +117,7 @@ public sealed class ParkItemsController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ParkItemDto> response = pagination.ToPagedResponse(result.Value, static item => item.ToHttp());
+        PagedResponseDto<ParkItemDto> response = result.Value.ToPagedResponse(static item => item.ToHttp());
         return this.Ok(response);
     }
 

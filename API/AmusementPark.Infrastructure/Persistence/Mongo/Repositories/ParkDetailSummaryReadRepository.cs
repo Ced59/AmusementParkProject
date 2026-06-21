@@ -109,6 +109,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
     private async Task<IReadOnlyDictionary<ParkItemCategory, int>> GetCountsByCategoryAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
+            & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
             & BuildClosedFilter(closedFilter);
         if (!includeHidden)
         {

@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -9,7 +10,7 @@ using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkItems.Handlers;
 
-public sealed class GetParkItemsByParkIdQueryHandler : IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItemListResult>>>
+public sealed class GetParkItemsByParkIdQueryHandler : IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<PagedResult<ParkItemListResult>>>
 {
     private readonly IParkItemRepository parkItemRepository;
     private readonly IImageRepository imageRepository;
@@ -25,21 +26,37 @@ public sealed class GetParkItemsByParkIdQueryHandler : IQueryHandler<GetParkItem
         this.parkItemReferenceValidator = parkItemReferenceValidator;
     }
 
-    public async Task<ApplicationResult<IReadOnlyCollection<ParkItemListResult>>> HandleAsync(GetParkItemsByParkIdQuery query, CancellationToken cancellationToken = default)
+    public async Task<ApplicationResult<PagedResult<ParkItemListResult>>> HandleAsync(GetParkItemsByParkIdQuery query, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(query.ParkId))
         {
-            return ApplicationResult<IReadOnlyCollection<ParkItemListResult>>.Failure(ApplicationErrors.Required(nameof(query.ParkId)));
+            return ApplicationResult<PagedResult<ParkItemListResult>>.Failure(ApplicationErrors.Required(nameof(query.ParkId)));
+        }
+
+        if (query.Paging.Page <= 0 || query.Paging.PageSize <= 0)
+        {
+            return ApplicationResult<PagedResult<ParkItemListResult>>.Failure(ApplicationErrors.InvalidPagination());
         }
 
         ApplicationError? parkError = await this.parkItemReferenceValidator.EnsureParkExistsAsync(query.ParkId, cancellationToken);
         if (parkError is not null)
         {
-            return ApplicationResult<IReadOnlyCollection<ParkItemListResult>>.Failure(parkError);
+            return ApplicationResult<PagedResult<ParkItemListResult>>.Failure(parkError);
         }
 
-        IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByParkIdAsync(query.ParkId.Trim(), query.IncludeHidden, query.ClosedFilter, cancellationToken);
-        IReadOnlyCollection<string> itemIds = items
+        PagedResult<ParkItem> page = await this.parkItemRepository.GetPublicPageByParkIdAsync(
+            query.Paging.Page,
+            query.Paging.PageSize,
+            query.ParkId.Trim(),
+            query.Search,
+            query.IncludeHidden,
+            query.ClosedFilter,
+            query.Category,
+            query.Type,
+            query.ZoneId,
+            cancellationToken);
+
+        IReadOnlyCollection<string> itemIds = page.Items
             .Select(static item => item.Id)
             .Where(static itemId => !string.IsNullOrWhiteSpace(itemId))
             .Select(static itemId => itemId!)
@@ -52,7 +69,7 @@ public sealed class GetParkItemsByParkIdQueryHandler : IQueryHandler<GetParkItem
             !query.IncludeHidden,
             cancellationToken);
 
-        List<ParkItemListResult> results = items
+        List<ParkItemListResult> results = page.Items
             .Select(item => new ParkItemListResult
             {
                 Item = item,
@@ -60,6 +77,7 @@ public sealed class GetParkItemsByParkIdQueryHandler : IQueryHandler<GetParkItem
             })
             .ToList();
 
-        return ApplicationResult<IReadOnlyCollection<ParkItemListResult>>.Success(results);
+        return ApplicationResult<PagedResult<ParkItemListResult>>.Success(
+            new PagedResult<ParkItemListResult>(results, page.Page, page.PageSize, page.TotalItems));
     }
 }

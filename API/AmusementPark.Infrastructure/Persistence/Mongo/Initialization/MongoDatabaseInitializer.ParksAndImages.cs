@@ -198,6 +198,16 @@ public sealed partial class MongoDatabaseInitializer
                 Builders<ParkItemDocument>.IndexKeys
                     .Ascending(item => item.ParkId)
                     .Ascending(item => item.IsVisible)
+                    .Ascending(item => item.ZoneId)
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.Type)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_park_items_public_park_zone_category_type_name" }),
+            new CreateIndexModel<ParkItemDocument>(
+                Builders<ParkItemDocument>.IndexKeys
+                    .Ascending(item => item.ParkId)
+                    .Ascending(item => item.IsVisible)
                     .Ascending(item => item.Latitude)
                     .Ascending(item => item.Longitude)
                     .Ascending(item => item.Category)

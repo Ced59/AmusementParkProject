@@ -55,6 +55,54 @@ public sealed class ParkItemRepository : IParkItemRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
+    public async Task<PagedResult<ParkItem>> GetPublicPageByParkIdAsync(
+        int page,
+        int pageSize,
+        string parkId,
+        string? search,
+        bool includeHidden,
+        ClosedEntityFilter closedFilter,
+        ParkItemCategory? category,
+        ParkItemType? type,
+        string? zoneId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkItemDocument> filter = BuildPublicParkItemsFilter(parkId, search, includeHidden, closedFilter, category, type, zoneId);
+
+        long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+
+        List<ParkItemDocument> documents = await this.collection.Find(filter)
+            .Project(static document => new ParkItemDocument
+            {
+                Id = document.Id,
+                ParkId = document.ParkId,
+                ZoneId = document.ZoneId,
+                Name = document.Name,
+                Category = document.Category,
+                Type = document.Type,
+                Subtype = document.Subtype,
+                Latitude = document.Latitude,
+                Longitude = document.Longitude,
+                Descriptions = document.Descriptions,
+                AttractionDetails = document.AttractionDetails,
+                IsVisible = document.IsVisible,
+                AdminReviewStatus = document.AdminReviewStatus,
+            })
+            .SortBy(document => document.Category)
+            .ThenBy(document => document.Type)
+            .ThenBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .Skip((page - 1) * pageSize)
+            .Limit(pageSize)
+            .ToListAsync(cancellationToken);
+
+        return new PagedResult<ParkItem>(
+            documents.Select(document => document.ToDomain()).ToList(),
+            page,
+            pageSize,
+            totalItems);
+    }
+
     public async Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
     {
         List<string> normalizedParkIds = NormalizeParkIds(parkIds);
@@ -237,7 +285,9 @@ public sealed class ParkItemRepository : IParkItemRepository
 
     public async Task<long> CountByCategoryAsync(ParkItemCategory category, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category);
+        FilterDefinition<ParkItemDocument> filter =
+            Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category) &
+            Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant);
 
         if (!includeHidden)
         {
@@ -266,7 +316,8 @@ public sealed class ParkItemRepository : IParkItemRepository
 
         FilterDefinition<ParkItemDocument> filter =
             Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category) &
-            Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds);
+            Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds) &
+            Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant);
 
         if (!includeHidden)
         {
@@ -291,7 +342,9 @@ public sealed class ParkItemRepository : IParkItemRepository
             return new Dictionary<string, IReadOnlyDictionary<ParkItemCategory, int>>(StringComparer.Ordinal);
         }
 
-        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds);
+        FilterDefinition<ParkItemDocument> filter =
+            Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds) &
+            Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant);
         if (!includeHidden)
         {
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
@@ -668,6 +721,56 @@ public sealed class ParkItemRepository : IParkItemRepository
             default:
                 return Builders<ParkItemDocument>.Filter.Empty;
         }
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildPublicParkItemsFilter(
+        string parkId,
+        string? search,
+        bool includeHidden,
+        ClosedEntityFilter closedFilter,
+        ParkItemCategory? category,
+        ParkItemType? type,
+        string? zoneId)
+    {
+        FilterDefinition<ParkItemDocument> filter =
+            Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
+            & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        filter &= BuildClosedFilter(closedFilter);
+
+        if (category.HasValue)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category.Value);
+        }
+
+        if (type.HasValue)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.Type, type.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(zoneId))
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.ZoneId, zoneId.Trim());
+        }
+
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            string escapedSearch = Regex.Escape(search.Trim());
+            BsonRegularExpression regex = new BsonRegularExpression(escapedSearch, "i");
+            filter &= Builders<ParkItemDocument>.Filter.Or(
+                Builders<ParkItemDocument>.Filter.Regex(document => document.Name, regex),
+                Builders<ParkItemDocument>.Filter.Regex(document => document.Subtype, regex),
+                Builders<ParkItemDocument>.Filter.Regex("descriptions.value", regex),
+                Builders<ParkItemDocument>.Filter.Regex("attractionDetails.model", regex),
+                Builders<ParkItemDocument>.Filter.Regex("attractionDetails.status", regex));
+        }
+
+        return filter;
     }
 
     private static FilterDefinition<ParkItemDocument> BuildMissingDescriptionFilter(string languageCode)

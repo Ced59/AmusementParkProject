@@ -78,8 +78,7 @@ function mapUnlocatedItems(
         itemName: item.name
       })
     }))
-    .sort((left: ParkItemsUnlocatedItemViewModel, right: ParkItemsUnlocatedItemViewModel) => left.name.localeCompare(right.name))
-    .slice(0, 10);
+    .sort((left: ParkItemsUnlocatedItemViewModel, right: ParkItemsUnlocatedItemViewModel) => left.name.localeCompare(right.name));
 }
 
 function mapDisplayedItemsToMapViewModel(

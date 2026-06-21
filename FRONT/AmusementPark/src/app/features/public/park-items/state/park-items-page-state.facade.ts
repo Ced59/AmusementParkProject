@@ -13,19 +13,21 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
+import { PagedResult, DEFAULT_PAGINATION } from '@shared/models/contracts';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explorer';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkMapItem, ParkMapItems, ParkMapUnlocatedItem } from '@app/models/parks/park-map-items';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
+import { ParkItemsByParkIdFilters } from '@data-access/park-items/park-items-api-endpoints';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { resolveLocalizedValue } from '@shared/utils/localization';
-import { resolveParkItemDescription } from '@shared/utils/display/park-item-presentation.helpers';
 import { buildTranslationOptions } from '@shared/utils/display/display-options';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { mapParkItemToCardViewModel } from '../mappers/park-item-card.mapper';
@@ -51,10 +53,17 @@ import {
   PARK_ITEMS_PAGE_STATE_PARK_ZONES_API_SERVICE_PORT,
   ParkItemsPageStateParkZonesApiServicePort
 } from './park-items-page-state-data.ports';
+
+const EMPTY_PARK_ITEMS_PAGE: PagedResult<ParkItem> = {
+  items: [],
+  pagination: DEFAULT_PAGINATION
+};
+
 interface ParkItemsPageSourceData {
   park: Park;
   explorer: ParkExplorer;
-  allItems: ParkItem[];
+  itemsPage: PagedResult<ParkItem>;
+  mapItems: ParkItem[];
   manufacturers: AttractionManufacturer[];
   zones: ParkZone[];
   parkPhotos: ImageDto[];
@@ -96,14 +105,18 @@ export class ParkItemsPageStateFacade {
   });
   public readonly categoryOptions: Signal<SelectOption[]> = computed(() => {
     const base: SelectOption[] = [{ labelKey: 'parkItems.filters.allCategories', value: null }];
-    const categoryValues: string[] = Array.from(new Set(this.allItems().map((item: ParkItem) => item.category)))
+    const categoryValues: string[] = (this.explorer()?.overview.countsByCategory ?? [])
+      .filter((count) => count.count > 0)
+      .map((count) => count.key)
       .sort((left: string, right: string) => left.localeCompare(right));
 
     return base.concat(buildTranslationOptions(categoryValues, getParkItemCategoryTranslationKey));
   });
   public readonly typeOptions: Signal<SelectOption[]> = computed(() => {
     const base: SelectOption[] = [{ labelKey: 'parkItems.filters.allTypes', value: null }];
-    const typeValues: string[] = Array.from(new Set(this.allItems().map((item: ParkItem) => item.type)))
+    const typeValues: string[] = (this.explorer()?.overview.countsByType ?? [])
+      .filter((count) => count.count > 0)
+      .map((count) => count.key)
       .sort((left: string, right: string) => left.localeCompare(right));
 
     return base.concat(buildTranslationOptions(typeValues, getParkItemTypeTranslationKey));
@@ -141,8 +154,8 @@ export class ParkItemsPageStateFacade {
       this.park(),
       this.explorer(),
       this.zones(),
-      this.filteredItems(),
-      this.typeFilterScopeItems(),
+      this.filteredMapItems(),
+      this.typeFilterScopeMapItems(),
       this.selectedZoneIdSignal(),
       this.screenStateStore.data()?.parkPhotos ?? [],
       this.currentLanguageSignal()
@@ -150,10 +163,8 @@ export class ParkItemsPageStateFacade {
   });
   public readonly pagedItems: Signal<ParkItemCardViewModel[]> = computed(() => {
     const park: Park | null = this.park();
-    const firstIndex: number = (this.currentPageSignal() - 1) * this.pageSizeSignal();
 
-    return this.filteredItems()
-      .slice(firstIndex, firstIndex + this.pageSizeSignal())
+    return this.itemsPage().items
       .map((item: ParkItem) => mapParkItemToCardViewModel(
         item,
         park,
@@ -167,7 +178,7 @@ export class ParkItemsPageStateFacade {
         this.resolveItemImageSrcSet(item)
       ));
   });
-  public readonly totalResults = computed(() => this.filteredItems().length);
+  public readonly totalResults = computed(() => this.itemsPage().pagination.totalItems);
   public readonly rangeStart = computed(() => {
     if (this.totalResults() === 0) {
       return 0;
@@ -175,7 +186,13 @@ export class ParkItemsPageStateFacade {
 
     return ((this.currentPageSignal() - 1) * this.pageSizeSignal()) + 1;
   });
-  public readonly rangeEnd = computed(() => Math.min(this.currentPageSignal() * this.pageSizeSignal(), this.totalResults()));
+  public readonly rangeEnd = computed(() => {
+    if (this.totalResults() === 0 || this.itemsPage().items.length === 0) {
+      return 0;
+    }
+
+    return Math.min(this.rangeStart() + this.itemsPage().items.length - 1, this.totalResults());
+  });
   public readonly currentPage = this.currentPageSignal.asReadonly();
   public readonly pageSize = this.pageSizeSignal.asReadonly();
   public readonly selectedZoneId = this.selectedZoneIdSignal.asReadonly();
@@ -188,7 +205,8 @@ export class ParkItemsPageStateFacade {
 
   private readonly park: Signal<Park | null> = computed(() => this.screenStateStore.data()?.park ?? null);
   private readonly explorer: Signal<ParkExplorer | null> = computed(() => this.screenStateStore.data()?.explorer ?? null);
-  private readonly allItems: Signal<ParkItem[]> = computed(() => this.screenStateStore.data()?.allItems ?? []);
+  private readonly itemsPage: Signal<PagedResult<ParkItem>> = computed(() => this.screenStateStore.data()?.itemsPage ?? EMPTY_PARK_ITEMS_PAGE);
+  private readonly mapItems: Signal<ParkItem[]> = computed(() => this.screenStateStore.data()?.mapItems ?? []);
   private readonly zones: Signal<ParkZone[]> = computed(() => this.screenStateStore.data()?.zones ?? []);
   private readonly manufacturersById = computed(() => {
     const manufacturers: AttractionManufacturer[] = this.screenStateStore.data()?.manufacturers ?? [];
@@ -224,8 +242,8 @@ export class ParkItemsPageStateFacade {
 
     return this.zonesById()[selectedZoneId] ?? null;
   });
-  private readonly filteredItems: Signal<ParkItem[]> = computed(() => this.filterItems(true));
-  private readonly typeFilterScopeItems: Signal<ParkItem[]> = computed(() => this.filterItems(false));
+  private readonly filteredMapItems: Signal<ParkItem[]> = computed(() => this.filterMapItems(true));
+  private readonly typeFilterScopeMapItems: Signal<ParkItem[]> = computed(() => this.filterMapItems(false));
 
   constructor(
     @Inject(PARK_ITEMS_PAGE_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: ParkItemsPageStateParksApiServicePort,
@@ -247,6 +265,7 @@ export class ParkItemsPageStateFacade {
   }
 
   setFilters(filters: ParkItemsPageFilters): void {
+    const previousItemsRequestKey: string = this.buildItemsRequestKey();
     const previousClosedFilter: ClosedEntityFilter = this.selectedClosedFilterSignal();
 
     this.searchTermSignal.set(filters.searchTerm);
@@ -258,9 +277,17 @@ export class ParkItemsPageStateFacade {
     this.pageSizeSignal.set(filters.pageSize);
     this.normalizeFilters();
 
-    if (previousClosedFilter !== filters.selectedClosedFilter && this.currentParkIdSignal()) {
-      this.reloadCurrentData();
+    const nextItemsRequestKey: string = this.buildItemsRequestKey();
+    if (!this.currentParkIdSignal() || previousItemsRequestKey === nextItemsRequestKey) {
+      return;
     }
+
+    if (previousClosedFilter !== filters.selectedClosedFilter) {
+      this.reloadCurrentData();
+      return;
+    }
+
+    this.reloadItemsPage();
   }
 
   loadData(parkId: string, currentLanguage: string): void {
@@ -277,6 +304,7 @@ export class ParkItemsPageStateFacade {
     }
 
     const closedFilter: ClosedEntityFilter = this.selectedClosedFilterSignal();
+    const itemsFilters: ParkItemsByParkIdFilters = this.buildItemsRequestFilters();
     const previousData: ParkItemsPageSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
@@ -285,7 +313,13 @@ export class ParkItemsPageStateFacade {
     forkJoin({
       park: this.parksApiService.getParkById(parkId, anonymousHttpOptions()),
       explorer: this.parksApiService.getParkExplorer(parkId, { ...anonymousHttpOptions(), closedFilter }),
-      items: this.parkItemsApiService.getParkItemsByParkId(parkId, { ...anonymousHttpOptions(), closedFilter }),
+      mapItems: this.parksApiService.getParkMapItems(parkId, { ...anonymousHttpOptions(), closedFilter }),
+      itemsPage: this.parkItemsApiService.getParkItemsByParkIdPage(
+        parkId,
+        this.currentPageSignal(),
+        this.pageSizeSignal(),
+        itemsFilters,
+        anonymousHttpOptions()),
       manufacturers: useMinimalSsrData
         ? of([] as AttractionManufacturer[])
         : this.manufacturersApiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
@@ -297,14 +331,16 @@ export class ParkItemsPageStateFacade {
       next: ({
         park,
         explorer,
-        items,
+        mapItems,
+        itemsPage,
         manufacturers,
         zones,
         parkPhotos
       }: {
         park: Park;
         explorer: ParkExplorer;
-        items: ParkItem[];
+        mapItems: ParkMapItems;
+        itemsPage: PagedResult<ParkItem>;
         manufacturers: AttractionManufacturer[];
         zones: ParkZone[];
         parkPhotos: ImageDto[];
@@ -312,12 +348,15 @@ export class ParkItemsPageStateFacade {
         this.screenStateStore.setReady({
           park,
           explorer,
-          allItems: items,
+          itemsPage,
+          mapItems: mapParkMapItemsToParkItems(mapItems),
           manufacturers,
           zones,
           parkPhotos
         });
-        this.normalizeFilters();
+        if (this.normalizeFilters()) {
+          this.reloadItemsPage();
+        }
       },
       error: (error: unknown) => {
         console.error('Error loading park items page', error);
@@ -326,10 +365,43 @@ export class ParkItemsPageStateFacade {
     });
   }
 
-  private filterItems(includeTypeFilter: boolean): ParkItem[] {
-    const allItems: ParkItem[] = this.allItems();
+  private reloadItemsPage(): void {
+    const parkId: string | null = this.currentParkIdSignal();
+    const previousData: ParkItemsPageSourceData | undefined = this.screenStateStore.data();
 
-    if (allItems.length === 0) {
+    if (!parkId || !previousData) {
+      return;
+    }
+
+    this.screenStateStore.setLoading(previousData);
+
+    this.parkItemsApiService.getParkItemsByParkIdPage(
+      parkId,
+      this.currentPageSignal(),
+      this.pageSizeSignal(),
+      this.buildItemsRequestFilters(),
+      anonymousHttpOptions()
+    ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (itemsPage: PagedResult<ParkItem>) => {
+        this.screenStateStore.setReady({
+          ...previousData,
+          itemsPage
+        });
+        if (this.normalizeFilters()) {
+          this.reloadItemsPage();
+        }
+      },
+      error: (error: unknown) => {
+        console.error('Error loading park items page', error);
+        this.screenStateStore.setError('parkItems.list.errorMessage', previousData);
+      }
+    });
+  }
+
+  private filterMapItems(includeTypeFilter: boolean): ParkItem[] {
+    const mapItems: ParkItem[] = this.mapItems();
+
+    if (mapItems.length === 0) {
       return [];
     }
 
@@ -337,11 +409,10 @@ export class ParkItemsPageStateFacade {
     const selectedCategory: string | null = this.selectedCategorySignal();
     const selectedType: string | null = includeTypeFilter ? this.selectedTypeSignal() : null;
     const selectedZoneId: string | null = this.selectedZoneIdSignal();
-    const currentLanguage: string = this.currentLanguageSignal();
     const manufacturersById: Record<string, string> = this.manufacturersById();
     const zonesById: Record<string, string> = this.zonesById();
 
-    return allItems
+    return mapItems
       .filter((item: ParkItem) => {
         if (selectedCategory && item.category !== selectedCategory) {
           return false;
@@ -363,11 +434,9 @@ export class ParkItemsPageStateFacade {
           ? manufacturersById[item.attractionDetails.manufacturerId] ?? null
           : null;
         const zoneName: string | null = item.zoneId ? zonesById[item.zoneId] ?? null : null;
-        const description: string = resolveParkItemDescription(item, currentLanguage) ?? '';
         const haystack: string = [
           item.name,
           item.subtype,
-          description,
           manufacturerName,
           item.attractionDetails?.model,
           item.attractionDetails?.status,
@@ -380,6 +449,30 @@ export class ParkItemsPageStateFacade {
         return haystack.includes(normalizedSearchTerm);
       })
       .sort((left: ParkItem, right: ParkItem) => left.name.localeCompare(right.name));
+  }
+
+  private buildItemsRequestFilters(): ParkItemsByParkIdFilters {
+    return {
+      closedFilter: this.selectedClosedFilterSignal(),
+      search: this.searchTermSignal(),
+      category: this.selectedCategorySignal() as ParkItemsByParkIdFilters['category'],
+      type: this.selectedTypeSignal() as ParkItemsByParkIdFilters['type'],
+      zoneId: this.selectedZoneIdSignal()
+    };
+  }
+
+  private buildItemsRequestKey(): string {
+    const filters: ParkItemsByParkIdFilters = this.buildItemsRequestFilters();
+
+    return [
+      this.currentPageSignal(),
+      this.pageSizeSignal(),
+      filters.closedFilter ?? DEFAULT_CLOSED_ENTITY_FILTER,
+      filters.search?.trim() ?? '',
+      filters.category ?? '',
+      filters.type ?? '',
+      filters.zoneId?.trim() ?? ''
+    ].join('|');
   }
 
   private resolveManufacturerName(item: ParkItem): string | null {
@@ -412,7 +505,8 @@ export class ParkItemsPageStateFacade {
     return imageId ? this.imagesApiService.buildImageSrcSet(imageId, [320, 480, 640, 800]) : null;
   }
 
-  private normalizeFilters(): void {
+  private normalizeFilters(): boolean {
+    const previousItemsRequestKey: string = this.buildItemsRequestKey();
     const selectedZoneId: string | null = this.selectedZoneIdSignal();
     const sourceData: ParkItemsPageSourceData | undefined = this.screenStateStore.data();
     const availableZoneIds: string[] = Object.keys(this.zonesById());
@@ -421,14 +515,14 @@ export class ParkItemsPageStateFacade {
       this.selectedZoneIdSignal.set(null);
     }
 
-    const filteredItems: ParkItem[] = this.filteredItems();
+    const totalPages: number = this.itemsPage().pagination.totalPages;
     const currentPage: number = this.currentPageSignal();
-    const pageSize: number = this.pageSizeSignal();
-    const firstIndex: number = (currentPage - 1) * pageSize;
 
-    if (filteredItems.length > 0 && firstIndex >= filteredItems.length) {
+    if (totalPages > 0 && currentPage > totalPages) {
       this.currentPageSignal.set(1);
     }
+
+    return previousItemsRequestKey !== this.buildItemsRequestKey();
   }
 }
 
@@ -451,4 +545,36 @@ function resolveParkSocialImageId(parkPhotos: ImageDto[]): string | null {
 function normalizeOptionalImageId(value: string | null | undefined): string | null {
   const normalizedValue: string = value?.trim() ?? '';
   return normalizedValue.length > 0 ? normalizedValue : null;
+}
+
+function mapParkMapItemsToParkItems(mapItems: ParkMapItems): ParkItem[] {
+  const parkId: string = mapItems.park.id ?? '';
+  const locatedItems: ParkItem[] = mapItems.items.map((item: ParkMapItem) => mapParkMapItemToParkItem(parkId, item, item.latitude, item.longitude));
+  const unlocatedItems: ParkItem[] = (mapItems.unlocatedItems ?? []).map((item: ParkMapUnlocatedItem) => mapParkMapItemToParkItem(parkId, item, null, null));
+
+  return locatedItems.concat(unlocatedItems);
+}
+
+function mapParkMapItemToParkItem(
+  parkId: string,
+  item: ParkMapItem | ParkMapUnlocatedItem,
+  latitude: number | null,
+  longitude: number | null
+): ParkItem {
+  return {
+    id: item.id,
+    parkId,
+    zoneId: item.zoneId ?? null,
+    name: item.name,
+    category: item.category as ParkItem['category'],
+    type: item.type as ParkItem['type'],
+    subtype: item.subtype ?? null,
+    latitude,
+    longitude,
+    descriptions: [],
+    attractionDetails: null,
+    attractionLocations: null,
+    isVisible: true,
+    adminReviewStatus: 'Validated'
+  };
 }

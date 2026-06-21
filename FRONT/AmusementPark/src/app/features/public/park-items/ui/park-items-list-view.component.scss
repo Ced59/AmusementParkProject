@@ -104,53 +104,6 @@
   color: var(--app-primary);
 }
 
-.items-map-panel__unlocated {
-  display: grid;
-  gap: 0.7rem;
-  padding: 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 24%, var(--app-border));
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--app-accent-cyan) 8%, var(--app-surface));
-}
-
-.items-map-panel__unlocated strong,
-.items-map-panel__unlocated span {
-  display: block;
-}
-
-.items-map-panel__unlocated strong {
-  color: var(--app-heading);
-  font-size: 0.9rem;
-}
-
-.items-map-panel__unlocated > div > span {
-  color: var(--app-text-muted);
-  font-size: 0.82rem;
-}
-
-.items-map-panel__unlocated-list {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.items-map-panel__unlocated-list a {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 0.15rem 0.55rem;
-  align-items: center;
-  padding: 0.55rem 0.65rem;
-  border: 1px solid var(--app-border);
-  border-radius: var(--radius-md);
-  color: var(--app-heading);
-  background: color-mix(in srgb, var(--app-surface) 82%, transparent);
-  text-decoration: none;
-}
-
-.items-map-panel__unlocated-list a small {
-  grid-column: 2;
-  color: var(--app-text-muted);
-}
-
 .items-grid {
   display: grid;
   gap: 0.9rem;

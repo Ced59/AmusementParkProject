@@ -86,10 +86,34 @@ export function mapParkContentSummaryViewModel(
       { category: 'Show' }
     ),
     createSummaryEntry(
+      'parkExplorer.categories.shop',
+      categoryCounts.get('Shop') ?? 0,
+      'pi pi-shopping-bag',
+      { category: 'Shop' }
+    ),
+    createSummaryEntry(
+      'parkExplorer.categories.animal',
+      categoryCounts.get('Animal') ?? 0,
+      'pi pi-heart',
+      { category: 'Animal' }
+    ),
+    createSummaryEntry(
+      'parkExplorer.categories.transport',
+      categoryCounts.get('Transport') ?? 0,
+      'pi pi-car',
+      { category: 'Transport' }
+    ),
+    createSummaryEntry(
       'parkExplorer.categories.service',
       categoryCounts.get('Service') ?? 0,
       'pi pi-wrench',
       { category: 'Service' }
+    ),
+    createSummaryEntry(
+      'parkExplorer.categories.other',
+      categoryCounts.get('Other') ?? 0,
+      'pi pi-ellipsis-h',
+      { category: 'Other' }
     )
   ].filter((entry: ParkContentSummaryEntryViewModel) => entry.count > 0 || entry.queryParams == null);
 

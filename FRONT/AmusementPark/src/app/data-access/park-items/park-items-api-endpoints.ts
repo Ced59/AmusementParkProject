@@ -22,6 +22,14 @@ export interface ParkItemAdminListSort {
   sortDirection: ParkItemAdminSortDirection;
 }
 
+export interface ParkItemsByParkIdFilters {
+  closedFilter?: ClosedEntityFilter | null;
+  search?: string | null;
+  category?: ParkItemCategory | null;
+  type?: ParkItemType | null;
+  zoneId?: string | null;
+}
+
 function buildParkItemAdminListQuery(filters: ParkItemAdminListFilters | null = null): string {
   if (!filters) {
     return '';
@@ -69,8 +77,36 @@ function buildClosedFilterQuery(closedFilter: ClosedEntityFilter | null | undefi
   return `${prefix}closedFilter=${encodeURIComponent(closedFilter)}`;
 }
 
+function buildParkItemsByParkIdQuery(filters: ParkItemsByParkIdFilters | null = null): string {
+  if (!filters) {
+    return '';
+  }
+
+  const params: string[] = [];
+  if (filters.closedFilter && filters.closedFilter !== DEFAULT_CLOSED_ENTITY_FILTER) {
+    params.push(`closedFilter=${encodeURIComponent(filters.closedFilter)}`);
+  }
+  if (filters.search?.trim()) {
+    params.push(`search=${encodeURIComponent(filters.search.trim())}`);
+  }
+  if (filters.category) {
+    params.push(`category=${encodeURIComponent(filters.category)}`);
+  }
+  if (filters.type) {
+    params.push(`type=${encodeURIComponent(filters.type)}`);
+  }
+  if (filters.zoneId?.trim()) {
+    params.push(`zoneId=${encodeURIComponent(filters.zoneId.trim())}`);
+  }
+
+  return params.length > 0 ? `&${params.join('&')}` : '';
+}
+
 export const PARK_ITEMS_API_ENDPOINTS = {
-  getParkItemsByParkId: (parkId: string, page: number = 1, size: number = 100, closedFilter?: ClosedEntityFilter | null) => `park-items/park/${parkId}?page=${page}&size=${size}${buildClosedFilterQuery(closedFilter)}`,
+  getParkItemsByParkId: (parkId: string, page: number = 1, size: number = 100, filters: ParkItemsByParkIdFilters | ClosedEntityFilter | null = null) => {
+    const normalizedFilters: ParkItemsByParkIdFilters | null = typeof filters === 'string' ? { closedFilter: filters } : filters;
+    return `park-items/park/${encodeURIComponent(parkId)}?page=${page}&size=${size}${buildParkItemsByParkIdQuery(normalizedFilters)}`;
+  },
   getParkItemSiblingNavigation: (parkItemId: string, closedFilter?: ClosedEntityFilter | null) => `park-items/${encodeURIComponent(parkItemId)}/siblings${buildClosedFilterQuery(closedFilter, '?')}`,
   getRelatedParkItems: (parkItemId: string, limit: number = 3, closedFilter?: ClosedEntityFilter | null) => `park-items/${encodeURIComponent(parkItemId)}/related?limit=${limit}${buildClosedFilterQuery(closedFilter)}`,
   getParkItemsPaginated: (
