@@ -1,6 +1,20 @@
 {
-  "version": "2.6.2",
+  "version": "2.6.3",
   "history": [
+    {
+      "version": "2.6.3",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les pages techniques s'ouvrent correctement.",
+        "en": "Technical pages open correctly.",
+        "de": "Technikseiten oeffnen sich korrekt.",
+        "nl": "Technische pagina's openen correct.",
+        "it": "Le pagine tecniche si aprono correttamente.",
+        "es": "Las paginas tecnicas se abren correctamente.",
+        "pl": "Strony techniczne otwieraja sie poprawnie.",
+        "pt": "As paginas tecnicas abrem corretamente."
+      }
+    },
     {
       "version": "2.6.2",
       "releasedAt": "2026-06-22",
