@@ -16,21 +16,6 @@ namespace AmusementPark.Application.Features.ContextualBlocks.Handlers;
 public sealed class ExportContextualBlockJsonQueryHandler
     : IQueryHandler<ExportContextualBlockJsonQuery, ApplicationResult<ContextualBlockJsonExportResult>>
 {
-    private const string ParkDescriptionBlockType = "park.description";
-    private const string ParkPracticalBlockType = "park.practical";
-
-    private static readonly string[] SupportedLanguageCodes = new[]
-    {
-        "en",
-        "fr",
-        "es",
-        "de",
-        "it",
-        "pl",
-        "nl",
-        "pt",
-    };
-
     private static readonly JsonSerializerOptions ExportJsonOptions = BuildExportJsonOptions();
 
     private readonly IParkRepository parkRepository;
@@ -53,7 +38,7 @@ public sealed class ExportContextualBlockJsonQueryHandler
         }
 
         string blockType = query.BlockType.Trim();
-        if (!IsSupportedBlockType(blockType))
+        if (!ContextualBlockContracts.IsSupportedBlockType(blockType))
         {
             return ApplicationResult<ContextualBlockJsonExportResult>.Failure(ContextualBlockApplicationErrors.UnsupportedBlockType(blockType));
         }
@@ -66,7 +51,7 @@ public sealed class ExportContextualBlockJsonQueryHandler
         }
 
         DateTime exportedAtUtc = DateTime.UtcNow;
-        if (string.Equals(blockType, ParkDescriptionBlockType, StringComparison.Ordinal))
+        if (string.Equals(blockType, ContextualBlockContracts.ParkDescriptionBlockType, StringComparison.Ordinal))
         {
             ContextualParkDescriptionBlock block = new ContextualParkDescriptionBlock
             {
@@ -116,12 +101,6 @@ public sealed class ExportContextualBlockJsonQueryHandler
         };
         options.Converters.Add(new JsonStringEnumConverter());
         return options;
-    }
-
-    private static bool IsSupportedBlockType(string blockType)
-    {
-        return string.Equals(blockType, ParkDescriptionBlockType, StringComparison.Ordinal)
-            || string.Equals(blockType, ParkPracticalBlockType, StringComparison.Ordinal);
     }
 
     private static ContextualBlockExportDocument<TBlock> BuildDocument<TBlock>(
@@ -203,7 +182,7 @@ public sealed class ExportContextualBlockJsonQueryHandler
         }
 
         List<LocalizedText> descriptions = new List<LocalizedText>();
-        foreach (string languageCode in SupportedLanguageCodes)
+        foreach (string languageCode in ContextualBlockContracts.SupportedLanguageCodes)
         {
             LocalizedText? description;
             if (descriptionsByLanguage.TryGetValue(languageCode, out description))

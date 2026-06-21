@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -17,5 +18,10 @@ export class ContextualBlocksApiService {
       observe: 'response',
       responseType: 'blob'
     });
+  }
+
+  previewBlock(blockType: string, entityId: string, document: unknown): Observable<ContextualBlockPreviewResult> {
+    const url: string = `${environment.apiBaseUrl}admin/contextual-blocks/${encodeURIComponent(blockType)}/${encodeURIComponent(entityId)}/preview`;
+    return this.http.post<ContextualBlockPreviewResult>(url, { document });
   }
 }
