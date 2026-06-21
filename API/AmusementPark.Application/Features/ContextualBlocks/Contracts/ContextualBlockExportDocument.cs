@@ -33,6 +33,15 @@ public sealed class ContextualParkDescriptionBlock
     public List<LocalizedText> Descriptions { get; init; } = new List<LocalizedText>();
 }
 
+public sealed class ContextualParkLocationBlock
+{
+    public string ParkId { get; init; } = string.Empty;
+
+    public double? Latitude { get; init; }
+
+    public double? Longitude { get; init; }
+}
+
 public sealed class ContextualParkItemDescriptionBlock
 {
     public string ParkId { get; init; } = string.Empty;
@@ -42,6 +51,19 @@ public sealed class ContextualParkItemDescriptionBlock
     public string? ZoneId { get; init; }
 
     public List<LocalizedText> Descriptions { get; init; } = new List<LocalizedText>();
+}
+
+public sealed class ContextualParkItemLocationBlock
+{
+    public string ParkId { get; init; } = string.Empty;
+
+    public string ParkItemId { get; init; } = string.Empty;
+
+    public string? ZoneId { get; init; }
+
+    public double? Latitude { get; init; }
+
+    public double? Longitude { get; init; }
 }
 
 public sealed class ContextualParkPracticalBlock

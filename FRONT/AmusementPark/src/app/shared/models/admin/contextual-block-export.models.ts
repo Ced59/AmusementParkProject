@@ -18,6 +18,12 @@ export interface ContextualParkDescriptionBlock {
   readonly descriptions: readonly ContextualBlockLocalizedText[];
 }
 
+export interface ContextualParkLocationBlock {
+  readonly parkId: string;
+  readonly latitude: number | null;
+  readonly longitude: number | null;
+}
+
 export interface ContextualParkItemDescriptionBlock {
   readonly parkId: string;
   readonly parkItemId: string;
@@ -25,7 +31,17 @@ export interface ContextualParkItemDescriptionBlock {
   readonly descriptions: readonly ContextualBlockLocalizedText[];
 }
 
+export interface ContextualParkItemLocationBlock {
+  readonly parkId: string;
+  readonly parkItemId: string;
+  readonly zoneId: string | null;
+  readonly latitude: number | null;
+  readonly longitude: number | null;
+}
+
 export type ContextualLocalizedDescriptionBlock = ContextualParkDescriptionBlock | ContextualParkItemDescriptionBlock;
+
+export type ContextualLocationBlock = ContextualParkLocationBlock | ContextualParkItemLocationBlock;
 
 export interface ContextualBlockExportDocument<TBlock = unknown> {
   readonly documentType: string;

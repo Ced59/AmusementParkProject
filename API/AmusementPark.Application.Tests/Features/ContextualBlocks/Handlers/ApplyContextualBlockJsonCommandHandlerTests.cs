@@ -222,6 +222,36 @@ public sealed class ApplyContextualBlockJsonCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenParkLocationJsonIsValid_ShouldUpdateParkPosition()
+    {
+        Park park = CreatePark();
+        Mock<IParkRepository> parkRepository = CreateRepository(park);
+        Mock<ICommandHandler<UpdateParkCommand, ApplicationResult<Park>>> updateParkHandler = CreateUpdateHandler();
+        ApplyContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository, updateParkHandler);
+
+        using JsonDocument document = JsonDocument.Parse(BuildParkLocationDocument("park-1", 50.85, 4.35));
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new ApplyContextualBlockJsonCommand("park.location", "park-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.IsApplied);
+        Assert.NotNull(park.Position);
+        Assert.Equal(50.85, park.Position.Latitude, 3);
+        Assert.Equal(4.35, park.Position.Longitude, 3);
+        updateParkHandler.Verify(
+            handlerMock => handlerMock.HandleAsync(It.Is<UpdateParkCommand>(command => command.ParkId == "park-1"), It.IsAny<CancellationToken>()),
+            Times.Once);
+        parkRepository.Verify(
+            repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()),
+            Times.Exactly(2));
+        parkRepository.VerifyAll();
+        updateParkHandler.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenParkItemDescriptionJsonIsValid_ShouldUpdateLocalizedDescriptions()
     {
         ParkItem item = CreateParkItem();
@@ -264,6 +294,48 @@ public sealed class ApplyContextualBlockJsonCommandHandlerTests
         updateParkItemHandler.Verify(
             handlerMock => handlerMock.HandleAsync(
                 It.Is<UpdateParkItemCommand>(command => command.ParkItemId == "item-1" && command.ParkItem.Descriptions.Count == 8),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.Verify(
+            repository => repository.GetByIdAsync("item-1", true, It.IsAny<CancellationToken>()),
+            Times.Exactly(2));
+        parkItemRepository.VerifyAll();
+        updateParkItemHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenParkItemLocationJsonIsValid_ShouldUpdateParkItemPosition()
+    {
+        ParkItem item = CreateParkItem();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = CreateParkItemRepository(item);
+        Mock<ICommandHandler<UpdateParkCommand, ApplicationResult<Park>>> updateParkHandler = CreateUpdateHandler();
+        Mock<ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>>> updateParkItemHandler = CreateUpdateParkItemHandler();
+        ApplyContextualBlockJsonCommandHandler handler = CreateHandler(
+            parkRepository,
+            updateParkHandler,
+            parkItemRepository,
+            updateParkItemHandler);
+
+        using JsonDocument document = JsonDocument.Parse(BuildParkItemLocationDocument("park-1", "item-1", "zone-1", 50.811, 2.933));
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new ApplyContextualBlockJsonCommand("parkItem.location", "item-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.IsApplied);
+        Assert.NotNull(item.Position);
+        Assert.Equal(50.811, item.Position.Latitude, 3);
+        Assert.Equal(2.933, item.Position.Longitude, 3);
+        updateParkHandler.Verify(
+            handlerMock => handlerMock.HandleAsync(It.IsAny<UpdateParkCommand>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        updateParkItemHandler.Verify(
+            handlerMock => handlerMock.HandleAsync(
+                It.Is<UpdateParkItemCommand>(command => command.ParkItemId == "item-1" && command.ParkItem.Position != null),
                 It.IsAny<CancellationToken>()),
             Times.Once);
         parkRepository.VerifyNoOtherCalls();
@@ -430,6 +502,50 @@ public sealed class ApplyContextualBlockJsonCommandHandlerTests
           "block": {
             "parkId": "{{parkId}}",
             "descriptions": [{{descriptionJson}}]
+          }
+        }
+        """;
+    }
+
+    private static string BuildParkLocationDocument(string parkId, double? latitude, double? longitude)
+    {
+        string latitudeJson = latitude.HasValue ? JsonSerializer.Serialize(latitude.Value) : "null";
+        string longitudeJson = longitude.HasValue ? JsonSerializer.Serialize(longitude.Value) : "null";
+
+        return $$"""
+        {
+          "documentType": "AmusementParkContextualBlockUpsert",
+          "schemaVersion": "2026-06-21",
+          "blockType": "park.location",
+          "target": { "entityType": "Park", "entityId": "{{parkId}}" },
+          "ids": { "parkId": "{{parkId}}" },
+          "block": {
+            "parkId": "{{parkId}}",
+            "latitude": {{latitudeJson}},
+            "longitude": {{longitudeJson}}
+          }
+        }
+        """;
+    }
+
+    private static string BuildParkItemLocationDocument(string parkId, string parkItemId, string? zoneId, double? latitude, double? longitude)
+    {
+        string zoneIdJson = zoneId is null ? string.Empty : $", \"zoneId\": \"{zoneId}\"";
+        string latitudeJson = latitude.HasValue ? JsonSerializer.Serialize(latitude.Value) : "null";
+        string longitudeJson = longitude.HasValue ? JsonSerializer.Serialize(longitude.Value) : "null";
+
+        return $$"""
+        {
+          "documentType": "AmusementParkContextualBlockUpsert",
+          "schemaVersion": "2026-06-21",
+          "blockType": "parkItem.location",
+          "target": { "entityType": "ParkItem", "entityId": "{{parkItemId}}" },
+          "ids": { "parkId": "{{parkId}}", "parkItemId": "{{parkItemId}}"{{zoneIdJson}} },
+          "block": {
+            "parkId": "{{parkId}}",
+            "parkItemId": "{{parkItemId}}"{{zoneIdJson}},
+            "latitude": {{latitudeJson}},
+            "longitude": {{longitudeJson}}
           }
         }
         """;

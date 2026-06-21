@@ -207,6 +207,10 @@
   gap: 0.7rem;
 }
 
+.admin-contextual-block-drawer__form-fields--inline {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .admin-contextual-block-drawer__form-fields label {
   display: grid;
   gap: 0.35rem;
@@ -241,6 +245,18 @@
 .admin-contextual-block-drawer__form-fields textarea {
   min-height: 7.5rem;
   resize: vertical;
+}
+
+.admin-contextual-block-drawer__location-picker {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.admin-contextual-block-drawer__location-picker app-leaflet-map,
+.admin-contextual-block-drawer__location-picker .leaflet-map-container {
+  min-height: 18rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .admin-contextual-block-drawer__form-fields input:focus,
@@ -482,5 +498,14 @@
   .admin-contextual-block-drawer__preview-actions,
   .admin-contextual-block-drawer__preview-counts {
     grid-template-columns: 1fr;
+  }
+
+  .admin-contextual-block-drawer__form-fields--inline {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-contextual-block-drawer__location-picker app-leaflet-map,
+  .admin-contextual-block-drawer__location-picker .leaflet-map-container {
+    min-height: min(44vh, 20rem);
   }
 }

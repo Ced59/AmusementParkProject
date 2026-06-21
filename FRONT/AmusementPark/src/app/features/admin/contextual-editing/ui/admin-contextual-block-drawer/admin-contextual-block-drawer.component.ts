@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, effect, Signal } from '@angular/cor
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { ContextualBlockPreviewChange, ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import {
   AdminContextualBlockCapability,
@@ -10,7 +11,7 @@ import {
 import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
 import { AdminContextualBlockChildAddFacade, AdminContextualBlockChildAddZoneOption } from '../../state/admin-contextual-block-child-add.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
-import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField } from '../../state/admin-contextual-block-form.facade';
+import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField, AdminContextualBlockLocationForm } from '../../state/admin-contextual-block-form.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 
@@ -24,7 +25,7 @@ interface AdminContextualBlockIdEntry {
   templateUrl: './admin-contextual-block-drawer.component.html',
   styleUrl: './admin-contextual-block-drawer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule]
+  imports: [RouterLink, TranslateModule, LeafletMapComponent]
 })
 export class AdminContextualBlockDrawerComponent {
   protected readonly selectedBlock: Signal<AdminContextualBlockInstance | null> = this.selectionFacade.selectedBlock;
@@ -38,6 +39,7 @@ export class AdminContextualBlockDrawerComponent {
   protected readonly isApplying: Signal<boolean> = this.applyFacade.isApplying;
   protected readonly applyErrorKey: Signal<string | null> = this.applyFacade.errorKey;
   protected readonly localizedFormFields: Signal<readonly AdminContextualBlockLocalizedFormField[]> = this.formFacade.localizedFields;
+  protected readonly locationForm: Signal<AdminContextualBlockLocationForm | null> = this.formFacade.locationForm;
   protected readonly isFormLoading: Signal<boolean> = this.formFacade.isLoading;
   protected readonly isFormSaving: Signal<boolean> = this.formFacade.isSaving;
   protected readonly formErrorKey: Signal<string | null> = this.formFacade.errorKey;
@@ -127,6 +129,24 @@ export class AdminContextualBlockDrawerComponent {
   protected updateLocalizedFormField(languageCode: string, event: Event): void {
     const target: HTMLTextAreaElement | null = event.target instanceof HTMLTextAreaElement ? event.target : null;
     this.formFacade.updateLocalizedValue(languageCode, target?.value ?? '');
+  }
+
+  protected updateLocationFormPosition(block: AdminContextualBlockInstance, position: { lat: number; lng: number }): void {
+    this.formFacade.updateLocationPosition(position.lat, position.lng, block);
+  }
+
+  protected updateLocationLatitude(block: AdminContextualBlockInstance, event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.formFacade.updateLocationLatitude(target?.value ?? '', block);
+  }
+
+  protected updateLocationLongitude(block: AdminContextualBlockInstance, event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.formFacade.updateLocationLongitude(target?.value ?? '', block);
+  }
+
+  protected clearLocation(block: AdminContextualBlockInstance): void {
+    this.formFacade.clearLocation(block);
   }
 
   protected saveForm(block: AdminContextualBlockInstance): void {

@@ -40,13 +40,13 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
   /** Centre initial [lat, lng] */
-  @Input() center: [number, number] = [0, 0];
+  @Input() center: readonly [number, number] = [0, 0];
 
   /** Zoom initial */
   @Input() zoom = 2;
 
   /** Marqueurs à afficher */
-  @Input() markers: MapMarker[] = [];
+  @Input() markers: readonly MapMarker[] = [];
 
   /** Centre automatiquement la carte sur l'ensemble des marqueurs. */
   @Input() fitBounds = false;
@@ -230,7 +230,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     this.map = this.L.map(this.mapContainer.nativeElement, {
-      center: this.center,
+      center: this.toMutableLatLng(this.center),
       zoom: this.zoom
     });
 
@@ -466,7 +466,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return;
     }
 
-    this.map.setView(this.center, this.zoom);
+    this.map.setView(this.toMutableLatLng(this.center), this.zoom);
   }
 
   private refreshMarkers(): void {
@@ -739,6 +739,10 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     this.map.fitBounds(bounds, { padding: this.resolveFitBoundsPadding(), maxZoom: this.fitBoundsMaxZoom });
     this.ensureFitBoundsMinimumZoom();
     return true;
+  }
+
+  private toMutableLatLng(position: readonly [number, number]): [number, number] {
+    return [position[0], position[1]];
   }
 
   private resolveFitBoundsPadding(): [number, number] {

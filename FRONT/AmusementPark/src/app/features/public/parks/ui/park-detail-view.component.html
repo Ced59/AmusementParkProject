@@ -243,7 +243,16 @@
           }
 
           @if (currentPark.hasLocationInfo) {
-            <app-park-location-section class="park-side-card park-side-card--location" [park]="currentPark"></app-park-location-section>
+            <app-park-location-section
+              class="park-side-card park-side-card--location"
+              [park]="currentPark"
+              [appAdminContextualBlock]="getContextualBlock('park.location', currentPark)">
+            </app-park-location-section>
+          } @else {
+            <section
+              class="park-side-card park-side-card--location-admin-anchor"
+              [appAdminContextualBlock]="getContextualBlock('park.location', currentPark)">
+            </section>
           }
 
           <app-park-weather-card

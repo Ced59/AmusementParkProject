@@ -149,6 +149,59 @@ public sealed class ExportContextualBlockJsonQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenParkLocationBlockExists_ShouldExportOnlyCoordinates()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Location Park",
+            CountryCode = "BE",
+            City = "Ypres",
+            Descriptions = new List<LocalizedText>
+            {
+                new LocalizedText("en", "Should not be exported here"),
+            },
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        ExportContextualBlockJsonQueryHandler handler = new ExportContextualBlockJsonQueryHandler(
+            parkRepository.Object,
+            new Mock<IParkItemRepository>(MockBehavior.Strict).Object);
+
+        ApplicationResult<ContextualBlockJsonExportResult> result = await handler.HandleAsync(
+            new ExportContextualBlockJsonQuery("park.location", "park-1"),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.EndsWith("-park-location-contextual-block.json", result.Value.FileName);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Json);
+        JsonElement root = document.RootElement;
+        JsonElement block = root.GetProperty("block");
+
+        Assert.Equal("park.location", root.GetProperty("blockType").GetString());
+        Assert.Equal("Park", root.GetProperty("target").GetProperty("entityType").GetString());
+        Assert.Equal("park-1", root.GetProperty("target").GetProperty("entityId").GetString());
+        Assert.Equal("park-1", root.GetProperty("ids").GetProperty("parkId").GetString());
+        Assert.Equal("park-1", block.GetProperty("parkId").GetString());
+        Assert.Equal(JsonValueKind.Null, block.GetProperty("latitude").ValueKind);
+        Assert.Equal(JsonValueKind.Null, block.GetProperty("longitude").ValueKind);
+        AssertNoFullGraphProperties(root);
+        AssertNoProperty(block, "descriptions");
+        AssertNoProperty(block, "city");
+        AssertNoProperty(block, "countryCode");
+
+        parkRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenParkItemDescriptionBlockExists_ShouldExportBoundedLocalizedJsonWithAttachmentIds()
     {
         ParkItem item = new ParkItem
@@ -212,6 +265,64 @@ public sealed class ExportContextualBlockJsonQueryHandlerTests
             .EnumerateArray()
             .Single(static description => description.GetProperty("languageCode").GetString() == "fr");
         Assert.Equal("Description francaise", frenchDescription.GetProperty("value").GetString());
+
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenParkItemLocationBlockExists_ShouldExportOnlyCoordinatesAndAttachmentIds()
+    {
+        ParkItem item = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            ZoneId = "zone-1",
+            Name = "Wakala",
+            Descriptions = new List<LocalizedText>
+            {
+                new LocalizedText("fr", "Should not be exported here"),
+            },
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        item.SetPosition(50.811, 2.933);
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(item);
+
+        ExportContextualBlockJsonQueryHandler handler = new ExportContextualBlockJsonQueryHandler(parkRepository.Object, parkItemRepository.Object);
+
+        ApplicationResult<ContextualBlockJsonExportResult> result = await handler.HandleAsync(
+            new ExportContextualBlockJsonQuery("parkItem.location", "item-1"),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.EndsWith("-parkItem-location-contextual-block.json", result.Value.FileName);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Json);
+        JsonElement root = document.RootElement;
+        JsonElement block = root.GetProperty("block");
+
+        Assert.Equal("parkItem.location", root.GetProperty("blockType").GetString());
+        Assert.Equal("ParkItem", root.GetProperty("target").GetProperty("entityType").GetString());
+        Assert.Equal("item-1", root.GetProperty("target").GetProperty("entityId").GetString());
+        Assert.Equal("park-1", root.GetProperty("ids").GetProperty("parkId").GetString());
+        Assert.Equal("item-1", root.GetProperty("ids").GetProperty("parkItemId").GetString());
+        Assert.Equal("zone-1", root.GetProperty("ids").GetProperty("zoneId").GetString());
+        Assert.Equal("park-1", block.GetProperty("parkId").GetString());
+        Assert.Equal("item-1", block.GetProperty("parkItemId").GetString());
+        Assert.Equal("zone-1", block.GetProperty("zoneId").GetString());
+        Assert.Equal(50.811, block.GetProperty("latitude").GetDouble(), 3);
+        Assert.Equal(2.933, block.GetProperty("longitude").GetDouble(), 3);
+        AssertNoFullGraphProperties(root);
+        AssertNoProperty(block, "descriptions");
+        AssertNoProperty(block, "name");
+        AssertNoProperty(block, "category");
 
         parkRepository.VerifyNoOtherCalls();
         parkItemRepository.VerifyAll();

@@ -148,5 +148,25 @@ export class ParkItemDetailViewComponent {
       this.currentLang
     );
   }
+
+  protected getLocationContextualBlock(currentDetail: ParkItemDetailViewModel): AdminContextualBlockInstance | null {
+    return this.contextualBlockRegistry.createParkItemBlock(
+      'parkItem.location',
+      currentDetail.id,
+      currentDetail.parkId,
+      currentDetail.name,
+      this.currentLang,
+      currentDetail.mapCenter
+    );
+  }
+
+  protected getSpecGroupContextualBlock(
+    group: { titleKey: string },
+    currentDetail: ParkItemDetailViewModel
+  ): AdminContextualBlockInstance | null {
+    return group.titleKey === 'parkItems.detail.locationTitle'
+      ? this.getLocationContextualBlock(currentDetail)
+      : null;
+  }
 }
 

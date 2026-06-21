@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ContextualBlocks.Commands;
@@ -200,6 +201,34 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenParkLocationJsonChangesCoordinates_ShouldPreviewOnlyLocationFields()
+    {
+        Park park = CreatePark();
+        Mock<IParkRepository> parkRepository = CreateRepository(park);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository);
+
+        using JsonDocument document = JsonDocument.Parse(BuildParkLocationDocument("park-1", 50.85, 4.35));
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new PreviewContextualBlockJsonCommand("park.location", "park-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.CanApply);
+        Assert.Empty(result.Value.Errors);
+        Assert.Equal(2, result.Value.Changes.Count);
+        ContextualBlockPreviewChange latitudeChange = result.Value.Changes.Single(static change => change.Field == "latitude");
+        ContextualBlockPreviewChange longitudeChange = result.Value.Changes.Single(static change => change.Field == "longitude");
+        Assert.Equal(48.85, double.Parse(latitudeChange.OldValue!, CultureInfo.InvariantCulture), 3);
+        Assert.Equal(50.85, double.Parse(latitudeChange.NewValue!, CultureInfo.InvariantCulture), 3);
+        Assert.Equal(2.35, double.Parse(longitudeChange.OldValue!, CultureInfo.InvariantCulture), 3);
+        Assert.Equal(4.35, double.Parse(longitudeChange.NewValue!, CultureInfo.InvariantCulture), 3);
+        Assert.DoesNotContain(result.Value.Changes, static change => change.Field == "city");
+        parkRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenParkItemDescriptionJsonChangesOneLanguage_ShouldReturnReadablePreview()
     {
         ParkItem item = CreateParkItem();
@@ -261,6 +290,57 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
         Assert.Empty(result.Value.Changes);
         parkRepository.VerifyNoOtherCalls();
         parkItemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenParkItemLocationJsonAddsCoordinates_ShouldPreviewParkItemLocation()
+    {
+        ParkItem item = CreateParkItem();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = CreateParkItemRepository(item);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository, parkItemRepository);
+
+        using JsonDocument document = JsonDocument.Parse(BuildParkItemLocationDocument("park-1", "item-1", "zone-1", 50.811, 2.933));
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new PreviewContextualBlockJsonCommand("parkItem.location", "item-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.CanApply);
+        Assert.Equal("ParkItem", result.Value.Target.EntityType);
+        Assert.Equal("item-1", result.Value.Target.EntityId);
+        Assert.Equal(2, result.Value.Changes.Count);
+        ContextualBlockPreviewChange latitudeChange = result.Value.Changes.Single(static change => change.Field == "latitude");
+        ContextualBlockPreviewChange longitudeChange = result.Value.Changes.Single(static change => change.Field == "longitude");
+        Assert.Null(latitudeChange.OldValue);
+        Assert.Null(longitudeChange.OldValue);
+        Assert.Equal(50.811, double.Parse(latitudeChange.NewValue!, CultureInfo.InvariantCulture), 3);
+        Assert.Equal(2.933, double.Parse(longitudeChange.NewValue!, CultureInfo.InvariantCulture), 3);
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenLocationJsonContainsPartialCoordinates_ShouldRejectBeforeApply()
+    {
+        Park park = CreatePark();
+        Mock<IParkRepository> parkRepository = CreateRepository(park);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository);
+
+        using JsonDocument document = JsonDocument.Parse(BuildParkLocationDocument("park-1", 48.85, null));
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new PreviewContextualBlockJsonCommand("park.location", "park-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.False(result.Value.CanApply);
+        Assert.Contains(result.Value.Errors, static error => error.Contains("block.latitude et block.longitude", StringComparison.Ordinal));
+        Assert.Empty(result.Value.Changes);
+        parkRepository.VerifyAll();
     }
 
     private static PreviewContextualBlockJsonCommandHandler CreateHandler(
@@ -406,6 +486,50 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
             "parkId": "{{parkId}}",
             "parkItemId": "{{parkItemId}}"{{zoneIdJson}},
             "descriptions": [{{descriptionJson}}]
+          }
+        }
+        """;
+    }
+
+    private static string BuildParkLocationDocument(string parkId, double? latitude, double? longitude)
+    {
+        string latitudeJson = latitude.HasValue ? JsonSerializer.Serialize(latitude.Value) : "null";
+        string longitudeJson = longitude.HasValue ? JsonSerializer.Serialize(longitude.Value) : "null";
+
+        return $$"""
+        {
+          "documentType": "AmusementParkContextualBlockUpsert",
+          "schemaVersion": "2026-06-21",
+          "blockType": "park.location",
+          "target": { "entityType": "Park", "entityId": "{{parkId}}" },
+          "ids": { "parkId": "{{parkId}}" },
+          "block": {
+            "parkId": "{{parkId}}",
+            "latitude": {{latitudeJson}},
+            "longitude": {{longitudeJson}}
+          }
+        }
+        """;
+    }
+
+    private static string BuildParkItemLocationDocument(string parkId, string parkItemId, string? zoneId, double? latitude, double? longitude)
+    {
+        string zoneIdJson = zoneId is null ? string.Empty : $", \"zoneId\": \"{zoneId}\"";
+        string latitudeJson = latitude.HasValue ? JsonSerializer.Serialize(latitude.Value) : "null";
+        string longitudeJson = longitude.HasValue ? JsonSerializer.Serialize(longitude.Value) : "null";
+
+        return $$"""
+        {
+          "documentType": "AmusementParkContextualBlockUpsert",
+          "schemaVersion": "2026-06-21",
+          "blockType": "parkItem.location",
+          "target": { "entityType": "ParkItem", "entityId": "{{parkItemId}}" },
+          "ids": { "parkId": "{{parkId}}", "parkItemId": "{{parkItemId}}"{{zoneIdJson}} },
+          "block": {
+            "parkId": "{{parkId}}",
+            "parkItemId": "{{parkItemId}}"{{zoneIdJson}},
+            "latitude": {{latitudeJson}},
+            "longitude": {{longitudeJson}}
           }
         }
         """;

@@ -20,7 +20,9 @@ describe('AdminContextualBlockRegistryService', () => {
       'park.hero',
       'park.description',
       'park.practical',
-      'parkItem.description'
+      'park.location',
+      'parkItem.description',
+      'parkItem.location'
     ]);
   });
 
@@ -38,6 +40,7 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.ids).toEqual({ parkId: 'park-1' });
     expect(block?.adminRoute).toEqual(['/', 'fr', 'admin', 'parks', 'edit', 'park-1']);
     expect(block?.capabilities).toContain('targetedChildAdd');
+    expect(block?.locationFallbackCenter).toBeNull();
   });
 
   it('bounds localized description blocks to every supported language', () => {
@@ -55,6 +58,26 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.capabilities).toContain('contextualFormEdit');
     expect(block?.jsonScope).toContain('park.descriptions[*].languageCode');
     expect(block?.jsonScope).toContain('park.descriptions[*].value');
+  });
+
+  it('creates a park location block focused on bounded coordinates and map fallback', () => {
+    const block: AdminContextualBlockInstance | null = service.createParkBlock(
+      'park.location',
+      'park-1',
+      'Phantasialand',
+      'fr',
+      [50.1, 3.2]
+    );
+
+    expect(block?.id).toBe('park.location:park-1');
+    expect(block?.entityType).toBe('Park');
+    expect(block?.entityId).toBe('park-1');
+    expect(block?.ids).toEqual({ parkId: 'park-1' });
+    expect(block?.localizedLanguageCodes).toEqual([]);
+    expect(block?.locationFallbackCenter).toEqual([50.1, 3.2]);
+    expect(block?.capabilities).toContain('boundedJsonExport');
+    expect(block?.capabilities).toContain('contextualFormEdit');
+    expect(block?.jsonScope).toEqual(['park.id', 'park.latitude', 'park.longitude']);
   });
 
   it('creates a park item description block with parent ids and a full admin route', () => {
@@ -77,6 +100,26 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.jsonScope).toContain('parkItem.descriptions[*].value');
   });
 
+  it('creates a park item location block attached to its parent park', () => {
+    const block: AdminContextualBlockInstance | null = service.createParkItemBlock(
+      'parkItem.location',
+      'item-1',
+      'park-1',
+      'Wakala',
+      'fr',
+      [50.2, 3.3]
+    );
+
+    expect(block?.id).toBe('parkItem.location:item-1');
+    expect(block?.entityType).toBe('ParkItem');
+    expect(block?.entityId).toBe('item-1');
+    expect(block?.ids).toEqual({ parkId: 'park-1', parkItemId: 'item-1' });
+    expect(block?.localizedLanguageCodes).toEqual([]);
+    expect(block?.locationFallbackCenter).toEqual([50.2, 3.3]);
+    expect(block?.adminRoute).toEqual(['/', 'fr', 'admin', 'parks', 'edit', 'park-1', 'items', 'item-1']);
+    expect(block?.jsonScope).toEqual(['parkItem.id', 'parkItem.parkId', 'parkItem.latitude', 'parkItem.longitude']);
+  });
+
   it('keeps unsupported hero exports as planned capabilities only', () => {
     const block: AdminContextualBlockInstance | null = service.createParkBlock(
       'park.hero',
@@ -95,5 +138,6 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(service.createParkBlock('park.practical', null, 'No id', 'fr')).toBeNull();
     expect(service.createParkItemBlock('parkItem.description', 'item-1', null, 'No park', 'fr')).toBeNull();
     expect(service.createParkBlock('parkItem.description', 'item-1', 'Wrong factory', 'fr')).toBeNull();
+    expect(service.createParkItemBlock('park.location', 'item-1', 'park-1', 'Wrong factory', 'fr')).toBeNull();
   });
 });

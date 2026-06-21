@@ -1,6 +1,20 @@
 {
-  "version": "2.3.24",
+  "version": "2.3.25",
   "history": [
+    {
+      "version": "2.3.25",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile gagne des outils de localisation.",
+        "en": "Mobile administration gains location tools.",
+        "de": "Mobile Administration erhaelt Standortwerkzeuge.",
+        "nl": "Mobiele administratie krijgt locatietools.",
+        "it": "L'amministrazione mobile aggiunge strumenti di posizione.",
+        "es": "La administracion movil suma herramientas de ubicacion.",
+        "pl": "Administracja mobilna zyskuje narzedzia lokalizacji.",
+        "pt": "A administracao movel ganha ferramentas de localizacao."
+      }
+    },
     {
       "version": "2.3.24",
       "releasedAt": "2026-06-21",

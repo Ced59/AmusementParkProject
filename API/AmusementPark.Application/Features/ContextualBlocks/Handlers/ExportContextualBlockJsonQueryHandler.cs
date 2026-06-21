@@ -47,7 +47,7 @@ public sealed class ExportContextualBlockJsonQueryHandler
         }
 
         string entityId = query.EntityId.Trim();
-        if (string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal))
+        if (IsParkItemBlockType(blockType))
         {
             ParkItem? item = await this.parkItemRepository.GetByIdAsync(entityId, true, cancellationToken);
             if (item is null)
@@ -56,22 +56,43 @@ public sealed class ExportContextualBlockJsonQueryHandler
             }
 
             DateTime parkItemExportedAtUtc = DateTime.UtcNow;
-            ContextualParkItemDescriptionBlock itemBlock = new ContextualParkItemDescriptionBlock
+            if (string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal))
+            {
+                ContextualParkItemDescriptionBlock itemBlock = new ContextualParkItemDescriptionBlock
+                {
+                    ParkId = item.ParkId,
+                    ParkItemId = item.Id,
+                    ZoneId = item.ZoneId,
+                    Descriptions = BuildLocalizedDescriptions(item.Descriptions),
+                };
+
+                ContextualBlockExportDocument<ContextualParkItemDescriptionBlock> itemDocument = BuildDocument(
+                    item,
+                    blockType,
+                    BuildParkItemIds(item),
+                    itemBlock,
+                    parkItemExportedAtUtc);
+
+                return ApplicationResult<ContextualBlockJsonExportResult>.Success(BuildResult(item, blockType, itemDocument, parkItemExportedAtUtc));
+            }
+
+            ContextualParkItemLocationBlock locationBlock = new ContextualParkItemLocationBlock
             {
                 ParkId = item.ParkId,
                 ParkItemId = item.Id,
                 ZoneId = item.ZoneId,
-                Descriptions = BuildLocalizedDescriptions(item.Descriptions),
+                Latitude = item.Position?.Latitude,
+                Longitude = item.Position?.Longitude,
             };
 
-            ContextualBlockExportDocument<ContextualParkItemDescriptionBlock> itemDocument = BuildDocument(
+            ContextualBlockExportDocument<ContextualParkItemLocationBlock> locationDocument = BuildDocument(
                 item,
                 blockType,
                 BuildParkItemIds(item),
-                itemBlock,
+                locationBlock,
                 parkItemExportedAtUtc);
 
-            return ApplicationResult<ContextualBlockJsonExportResult>.Success(BuildResult(item, blockType, itemDocument, parkItemExportedAtUtc));
+            return ApplicationResult<ContextualBlockJsonExportResult>.Success(BuildResult(item, blockType, locationDocument, parkItemExportedAtUtc));
         }
 
         Park? park = await this.parkRepository.GetByIdAsync(entityId, true, cancellationToken);
@@ -97,6 +118,25 @@ public sealed class ExportContextualBlockJsonQueryHandler
                 exportedAtUtc);
 
             return ApplicationResult<ContextualBlockJsonExportResult>.Success(BuildResult(park, blockType, document, exportedAtUtc));
+        }
+
+        if (string.Equals(blockType, ContextualBlockContracts.ParkLocationBlockType, StringComparison.Ordinal))
+        {
+            ContextualParkLocationBlock locationBlock = new ContextualParkLocationBlock
+            {
+                ParkId = park.Id,
+                Latitude = park.Position?.Latitude,
+                Longitude = park.Position?.Longitude,
+            };
+
+            ContextualBlockExportDocument<ContextualParkLocationBlock> locationDocument = BuildDocument(
+                park,
+                blockType,
+                BuildParkIds(park),
+                locationBlock,
+                exportedAtUtc);
+
+            return ApplicationResult<ContextualBlockJsonExportResult>.Success(BuildResult(park, blockType, locationDocument, exportedAtUtc));
         }
 
         ContextualParkPracticalBlock practicalBlock = new ContextualParkPracticalBlock
@@ -131,6 +171,12 @@ public sealed class ExportContextualBlockJsonQueryHandler
         };
         options.Converters.Add(new JsonStringEnumConverter());
         return options;
+    }
+
+    private static bool IsParkItemBlockType(string blockType)
+    {
+        return string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal)
+            || string.Equals(blockType, ContextualBlockContracts.ParkItemLocationBlockType, StringComparison.Ordinal);
     }
 
     private static ContextualBlockExportDocument<TBlock> BuildDocument<TBlock>(
