@@ -1,6 +1,20 @@
 {
-  "version": "2.3.11",
+  "version": "2.3.12",
   "history": [
+    {
+      "version": "2.3.12",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "Les futures ameliorations d'administration sont mieux preparees.",
+        "en": "Future admin improvements are better planned.",
+        "de": "Kuenftige Admin-Verbesserungen sind besser geplant.",
+        "nl": "Toekomstige adminverbeteringen zijn beter gepland.",
+        "it": "I futuri miglioramenti admin sono pianificati meglio.",
+        "es": "Las futuras mejoras de administracion estan mejor planificadas.",
+        "pl": "Przyszle usprawnienia admina sa lepiej zaplanowane.",
+        "pt": "As futuras melhorias de administracao ficam melhor planeadas."
+      }
+    },
     {
       "version": "2.3.11",
       "releasedAt": "2026-06-21",
