@@ -314,7 +314,7 @@
       "emptyItemsMessage": "Derzeit ist kein öffentlicher Ort mit diesem Bereich verknüpft."
     },
     "closedFilters": {
-      "label": "?ffnung",
+      "label": "Öffnung",
       "openOnly": "Offen",
       "withClosed": "Mit geschl.",
       "closedOnly": "Geschlossen"

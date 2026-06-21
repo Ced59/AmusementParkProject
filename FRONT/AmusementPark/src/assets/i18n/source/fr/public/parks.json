@@ -316,11 +316,11 @@
     "closedFilters": {
       "label": "Ouverture",
       "openOnly": "Ouverts",
-      "withClosed": "Avec ferm?s",
-      "closedOnly": "Ferm?s"
+      "withClosed": "Avec fermés",
+      "closedOnly": "Fermés"
     },
     "statuses": {
-      "closedDefinitively": "Ferm? d?finitivement"
+      "closedDefinitively": "Fermé définitivement"
     }
   }
 }

@@ -18,8 +18,8 @@
       "allZones": "Toutes les zones",
       "closedStatus": "Ouverture",
       "openOnly": "Ouverts",
-      "withClosed": "Avec ferm?s",
-      "closedOnly": "Ferm?s"
+      "withClosed": "Avec fermés",
+      "closedOnly": "Fermés"
     },
     "list": {
       "subtitle": "Explore les attractions, spectacles, restaurants, boutiques et services de ce parc, puis ouvre la fiche détaillée de chaque lieu.",
@@ -33,7 +33,7 @@
       "emptyFilteredMessage": "Essaie d’élargir tes filtres ou réinitialise-les pour voir plus de lieux.",
       "filteredResults": "Résultats filtrés",
       "resultsCount": "Affichage de {{start}} à {{end}} sur {{total}} lieu(x)",
-      "backToPark": "Retour ? {{name}}",
+      "backToPark": "Retour à {{name}}",
       "titleWithPark": "Lieux de {{name}}"
     },
     "detail": {
@@ -227,7 +227,7 @@
     },
     "unlocated": {
       "title": "{{count}} lieu(x) sans carte",
-      "subtitle": "Ils ne sont pas g?olocalis?s, mais restent accessibles ici."
+      "subtitle": "Ils ne sont pas géolocalisés, mais restent accessibles ici."
     }
   }
 }

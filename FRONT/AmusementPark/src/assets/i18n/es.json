@@ -99,7 +99,7 @@
       "markToReviewShort": "Revisar",
       "processLaterShort": "Luego",
       "clearSelectionShort": "Limpiar",
-      "showItems": "?tems visibles"
+      "showItems": "Ítems visibles"
     },
     "contactGrievances": {
       "navTitle": "Mensajes contacto",
@@ -1048,7 +1048,7 @@
       "reviewStatus": "Estado admin",
       "loadError": "No se pudieron cargar los parques.",
       "status": "Estado",
-      "itemsTotalCount": "?tems",
+      "itemsTotalCount": "Ítems",
       "itemsVisibleCount": "Vis.",
       "statuses": {
         "operating": "Abierto",
@@ -2326,7 +2326,7 @@
     },
     "unlocated": {
       "title": "{{count}} lugar(es) fuera del mapa",
-      "subtitle": "No est?n geolocalizados, pero puedes abrirlos aqu?."
+      "subtitle": "No están geolocalizados, pero puedes abrirlos aquí."
     },
     "videosPage": {
       "kicker": "Vídeos del lugar",

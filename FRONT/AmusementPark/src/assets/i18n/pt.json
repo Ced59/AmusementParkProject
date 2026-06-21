@@ -95,11 +95,11 @@
       "markNotRelevant": "Não relevante",
       "validCoordinatesScope": "Parques com coordenadas validas",
       "makeFilteredValidCoordinatesVisible": "Tornar visiveis os geolocalizados",
-      "makeVisibleShort": "Vis?vel",
+      "makeVisibleShort": "Visível",
       "markToReviewShort": "Rever",
       "processLaterShort": "Depois",
       "clearSelectionShort": "Limpar",
-      "showItems": "Itens vis?veis"
+      "showItems": "Itens visíveis"
     },
     "contactGrievances": {
       "navTitle": "Mensagens contacto",
@@ -2326,7 +2326,7 @@
     },
     "unlocated": {
       "title": "{{count}} local(is) fora do mapa",
-      "subtitle": "N?o est?o geolocalizados, mas podes abri-los aqui."
+      "subtitle": "Não estão geolocalizados, mas podes abri-los aqui."
     },
     "videosPage": {
       "kicker": "Vídeos do local",

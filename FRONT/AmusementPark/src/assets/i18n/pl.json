@@ -1052,7 +1052,7 @@
       "itemsVisibleCount": "Wid.",
       "statuses": {
         "operating": "Otwarty",
-        "closedDefinitively": "Zamkni?ty na sta?e"
+        "closedDefinitively": "Zamknięty na stałe"
       }
     },
     "references": {
@@ -2118,7 +2118,7 @@
       "closedStatus": "Otwarcie",
       "openOnly": "Otwarte",
       "withClosed": "Z zamkn.",
-      "closedOnly": "Zamkni?te"
+      "closedOnly": "Zamknięte"
     },
     "list": {
       "subtitle": "Przeglądaj atrakcje, pokazy, restauracje, sklepy i usługi parku, a potem otwieraj szczegółowe strony każdego miejsca.",
@@ -2729,10 +2729,10 @@
       "label": "Otwarcie",
       "openOnly": "Otwarte",
       "withClosed": "Z zamkn.",
-      "closedOnly": "Zamkni?te"
+      "closedOnly": "Zamknięte"
     },
     "statuses": {
-      "closedDefinitively": "Zamkni?ty na sta?e"
+      "closedDefinitively": "Zamknięty na stałe"
     },
     "videosPage": {
       "kicker": "Park videos",

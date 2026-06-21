@@ -96,9 +96,9 @@
       "validCoordinatesScope": "Parks mit gueltigen Koordinaten",
       "makeFilteredValidCoordinatesVisible": "Geolokalisierte Parks sichtbar machen",
       "makeVisibleShort": "Sichtbar",
-      "markToReviewShort": "Pr?fen",
-      "processLaterShort": "Sp?ter",
-      "clearSelectionShort": "Zur?ck",
+      "markToReviewShort": "Prüfen",
+      "processLaterShort": "Später",
+      "clearSelectionShort": "Zurück",
       "showItems": "Items zeigen"
     },
     "contactGrievances": {
@@ -1051,7 +1051,7 @@
       "itemsTotalCount": "Items",
       "itemsVisibleCount": "Sicht.",
       "statuses": {
-        "operating": "Ge?ffnet",
+        "operating": "Geöffnet",
         "closedDefinitively": "Dauerhaft geschlossen"
       }
     },
@@ -2115,7 +2115,7 @@
       "allCategories": "Alle Kategorien",
       "allTypes": "Alle Typen",
       "allZones": "Alle Bereiche",
-      "closedStatus": "?ffnung",
+      "closedStatus": "Öffnung",
       "openOnly": "Offen",
       "withClosed": "Mit geschl.",
       "closedOnly": "Geschlossen"
@@ -2132,7 +2132,7 @@
       "emptyFilteredMessage": "Erweitere deine Filter oder setze sie zurück, um mehr Orte zu sehen.",
       "filteredResults": "Gefilterte Ergebnisse",
       "resultsCount": "Anzeige {{start}} bis {{end}} von {{total}} Ort(en)",
-      "backToPark": "Zur?ck zu {{name}}",
+      "backToPark": "Zurück zu {{name}}",
       "titleWithPark": "Orte in {{name}}"
     },
     "detail": {
@@ -2726,7 +2726,7 @@
       "emptyItemsMessage": "Derzeit ist kein öffentlicher Ort mit diesem Bereich verknüpft."
     },
     "closedFilters": {
-      "label": "?ffnung",
+      "label": "Öffnung",
       "openOnly": "Offen",
       "withClosed": "Mit geschl.",
       "closedOnly": "Geschlossen"
