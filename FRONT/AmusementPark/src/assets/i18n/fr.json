@@ -2998,6 +2998,12 @@
     "title": "Ce qui a changé",
     "lead": "Version actuelle : {{version}}. Retrouve les nouveautés visibles du site au fil des mises à jour.",
     "timelineAriaLabel": "Historique des versions",
+    "loading": "Chargement des versions...",
+    "loadError": "Impossible de charger l'historique.",
+    "actions": {
+      "expand": "Voir {{count}}",
+      "collapse": "Réduire"
+    },
     "levels": {
       "major": "Majeure",
       "minor": "Palier",

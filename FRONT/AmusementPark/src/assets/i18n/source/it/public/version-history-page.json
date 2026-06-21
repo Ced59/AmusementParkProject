@@ -4,6 +4,12 @@
     "title": "Cosa e cambiato",
     "lead": "Versione attuale: {{version}}. Segui i miglioramenti visibili del sito nel tempo.",
     "timelineAriaLabel": "Cronologia delle versioni",
+    "loading": "Caricamento versioni...",
+    "loadError": "Impossibile caricare la cronologia.",
+    "actions": {
+      "expand": "Mostra {{count}}",
+      "collapse": "Riduci"
+    },
     "levels": {
       "major": "Maggiore",
       "minor": "Tappa",

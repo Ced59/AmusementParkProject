@@ -2998,6 +2998,12 @@
     "title": "Wat veranderde",
     "lead": "Huidige versie: {{version}}. Volg de zichtbare verbeteringen van de site doorheen de tijd.",
     "timelineAriaLabel": "Tijdlijn van versiegeschiedenis",
+    "loading": "Versies laden...",
+    "loadError": "De versiegeschiedenis kon niet laden.",
+    "actions": {
+      "expand": "{{count}} tonen",
+      "collapse": "Inklappen"
+    },
     "levels": {
       "major": "Groot",
       "minor": "Mijlpaal",

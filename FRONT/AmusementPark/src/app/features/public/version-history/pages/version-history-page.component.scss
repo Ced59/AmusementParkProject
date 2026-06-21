@@ -57,6 +57,11 @@
   border-left: 4px solid var(--version-level-color, var(--c-lime));
 }
 
+.version-history-children {
+  display: grid;
+  gap: 0.9rem;
+}
+
 .version-entry--minor {
   margin-left: var(--version-indent-minor);
 }
@@ -122,6 +127,46 @@
 .version-entry p {
   margin: 0;
   line-height: 1.65;
+}
+
+.version-entry__toggle {
+  justify-self: start;
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid color-mix(in srgb, var(--version-level-color, var(--c-lime)) 36%, var(--border));
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--version-level-color, var(--c-lime)) 12%, var(--surface));
+  color: var(--heading);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.version-entry__toggle:hover,
+.version-entry__toggle:focus-visible {
+  border-color: var(--version-level-color, var(--c-lime));
+  outline: none;
+}
+
+.version-entry__toggle i {
+  font-size: 0.78rem;
+}
+
+.version-history-loading {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+.version-history-loading--inline {
+  margin-left: var(--version-indent-patch);
+  padding: 0.55rem 0.2rem;
 }
 
 .version-entry--major {

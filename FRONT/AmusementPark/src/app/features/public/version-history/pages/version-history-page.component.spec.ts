@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { TranslationService } from '@app/services/translation.service';
+import { siteVersion } from '../../../../../environments/version.generated';
 import { VersionHistoryPageComponent } from './version-history-page.component';
 
 describe('VersionHistoryPageComponent', () => {
@@ -34,6 +35,12 @@ describe('VersionHistoryPageComponent', () => {
         title: 'Ce qui a change',
         lead: 'Version actuelle : {{version}}. Retrouve les nouveautes visibles du site au fil des mises a jour.',
         timelineAriaLabel: 'Historique des versions',
+        loading: 'Chargement des versions...',
+        loadError: 'Impossible de charger l historique.',
+        actions: {
+          expand: 'Voir {{count}}',
+          collapse: 'Reduire'
+        },
         levels: {
           major: 'Majeure',
           minor: 'Palier',
@@ -47,12 +54,50 @@ describe('VersionHistoryPageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('marks version milestones and fixes with separate indentation levels', () => {
+  it('marks version milestones and fixes with separate indentation levels', async () => {
+    await settleVersionHistory(fixture);
+
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
 
+    expect(host.querySelector('.version-entry--major')).not.toBeNull();
     expect(host.querySelector('.version-entry--minor')).not.toBeNull();
     expect(host.querySelector('.version-entry--patch')).not.toBeNull();
     expect(host.querySelector('.version-entry--minor.version-entry--indented')).not.toBeNull();
     expect(host.querySelector('.version-entry--patch.version-entry--indented')).not.toBeNull();
   });
+
+  it('collapses patches for an expanded milestone', async () => {
+    await settleVersionHistory(fixture);
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const patchVersionsBeforeCollapse: string[] = getPatchVersions(host);
+
+    expect(patchVersionsBeforeCollapse).toContain(siteVersion);
+
+    const currentMinorToggle: HTMLButtonElement | null = host.querySelector('.version-entry--minor .version-entry__toggle');
+    currentMinorToggle?.click();
+    fixture.detectChanges();
+
+    expect(getPatchVersions(host)).not.toContain(siteVersion);
+  });
 });
+
+async function settleVersionHistory(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    await fixture.whenStable();
+    await new Promise<void>((resolve: () => void): void => {
+      window.setTimeout(resolve, 0);
+    });
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    if (host.querySelector('.version-entry--patch')) {
+      return;
+    }
+  }
+}
+
+function getPatchVersions(host: HTMLElement): string[] {
+  return Array.from(host.querySelectorAll('.version-entry--patch strong'))
+    .map((element: Element) => element.textContent?.trim() ?? '')
+    .filter((value: string) => value.length > 0);
+}

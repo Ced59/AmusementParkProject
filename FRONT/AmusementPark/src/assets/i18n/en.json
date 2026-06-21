@@ -2998,6 +2998,12 @@
     "title": "What changed",
     "lead": "Current version: {{version}}. Follow the visible improvements added to the site over time.",
     "timelineAriaLabel": "Version history timeline",
+    "loading": "Loading versions...",
+    "loadError": "Version history could not load.",
+    "actions": {
+      "expand": "Show {{count}}",
+      "collapse": "Collapse"
+    },
     "levels": {
       "major": "Major",
       "minor": "Milestone",
