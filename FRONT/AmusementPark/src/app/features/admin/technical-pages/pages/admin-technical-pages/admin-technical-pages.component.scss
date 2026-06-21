@@ -1,0 +1,117 @@
+.admin-technical-pages {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-technical-pages__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.admin-technical-pages__head h1,
+.admin-technical-pages__head p {
+  margin: 0;
+}
+
+.admin-technical-pages__head h1 {
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+  letter-spacing: 0;
+}
+
+.admin-technical-pages__head p {
+  margin-top: 0.45rem;
+  color: var(--app-text-muted);
+}
+
+.admin-technical-pages__import {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.admin-technical-pages__import label {
+  color: var(--app-heading);
+  font-weight: 800;
+}
+
+.admin-technical-pages__import textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 0.85rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: var(--app-bg);
+  color: var(--app-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+}
+
+.admin-technical-pages__import-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.admin-technical-pages__message {
+  color: var(--app-accent-lime);
+  font-weight: 800;
+}
+
+.admin-technical-pages__error {
+  color: var(--app-danger);
+  font-weight: 800;
+}
+
+.admin-technical-pages__table-wrap {
+  margin-top: 1.3rem;
+  overflow-x: auto;
+}
+
+.admin-technical-pages__state {
+  margin: 0;
+  padding: 2rem 0;
+  color: var(--app-text-muted);
+  text-align: center;
+}
+
+.admin-technical-pages__table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.admin-technical-pages__table th,
+.admin-technical-pages__table td {
+  padding: 0.85rem;
+  border-bottom: 1px solid var(--app-border);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.admin-technical-pages__table th {
+  color: var(--app-text-faint);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.admin-technical-pages__table td strong,
+.admin-technical-pages__table td small {
+  display: block;
+}
+
+.admin-technical-pages__table td small {
+  margin-top: 0.2rem;
+  color: var(--app-text-muted);
+}
+
+@media (max-width: 760px) {
+  .admin-technical-pages__head {
+    flex-direction: column;
+  }
+}

@@ -63,6 +63,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ISitemapSectionProvider, ParkItemImagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemVideosSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ReferencesSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, TechnicalPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapXmlWriter, SitemapXmlWriter>();
         services.AddScoped<SeoSitemapGenerationOrchestrator>();
         services.AddScoped<PublicSeoUrlResolver>();

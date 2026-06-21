@@ -7,6 +7,7 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
+import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoHostingProvider } from '@app/models/videos/video-hosting-provider';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
@@ -19,12 +20,14 @@ import {
   PARK_ITEM_DETAIL_ITEMS_PORT,
   PARK_ITEM_DETAIL_MANUFACTURERS_PORT,
   PARK_ITEM_DETAIL_PARKS_PORT,
+  PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT,
   PARK_ITEM_DETAIL_VIDEOS_PORT,
   PARK_ITEM_DETAIL_ZONES_PORT,
   ParkItemDetailImagesPort,
   ParkItemDetailItemsPort,
   ParkItemDetailManufacturersPort,
   ParkItemDetailParksPort,
+  ParkItemDetailTechnicalPagesPort,
   ParkItemDetailVideosPort,
   ParkItemDetailZonesPort
 } from './park-item-detail-data.ports';
@@ -104,6 +107,16 @@ class FakeVideosPort implements ParkItemDetailVideosPort {
   }
 }
 
+class FakeTechnicalPagesPort implements ParkItemDetailTechnicalPagesPort {
+  public response$: Observable<TechnicalPage[]> = of([createTechnicalPage()]);
+  public callCount = 0;
+
+  getAllPublicPages(): Observable<TechnicalPage[]> {
+    this.callCount += 1;
+    return this.response$;
+  }
+}
+
 class FakeSsrHttpStatusService {
   public notFoundCallCount = 0;
 
@@ -138,10 +151,45 @@ function createParkItem(overrides: Partial<ParkItem> = {}): ParkItem {
     attractionDetails: {
       manufacturerId: 'manufacturer-1',
       manufacturerName: null,
-      model: 'Launch Coaster'
+      model: 'Launch Coaster',
+      restraintType: 'Lap bar'
     },
     ...overrides
   } as ParkItem;
+}
+
+function createTechnicalPage(): TechnicalPage {
+  return {
+    id: 'technical-lap-bar',
+    categoryKey: 'restraint',
+    categoryNames: [
+      { languageCode: 'fr', value: 'Retenues' },
+      { languageCode: 'en', value: 'Restraints' }
+    ],
+    slug: 'lap-bar',
+    titles: [
+      { languageCode: 'fr', value: 'Lap bar' },
+      { languageCode: 'en', value: 'Lap bar' }
+    ],
+    summaries: [
+      { languageCode: 'fr', value: 'Explication technique de la lap bar.' },
+      { languageCode: 'en', value: 'Technical explanation of the lap bar.' }
+    ],
+    aliases: [
+      {
+        categoryKey: 'restraint',
+        labels: [
+          { languageCode: 'fr', value: 'Lap bar' },
+          { languageCode: 'en', value: 'Lap bar' }
+        ]
+      }
+    ],
+    contentBlocks: [],
+    sortOrder: 0,
+    isVisible: true,
+    adminReviewStatus: 'Validated',
+    updatedAtUtc: '2026-01-01T00:00:00Z'
+  };
 }
 
 function createImage(id: string): ImageDto {
@@ -231,6 +279,7 @@ function configureFacade(): {
   zonesPort: FakeZonesPort;
   imagesPort: FakeImagesPort;
   videosPort: FakeVideosPort;
+  technicalPagesPort: FakeTechnicalPagesPort;
   ssrStatusService: FakeSsrHttpStatusService;
 } {
   const itemsPort: FakeItemsPort = new FakeItemsPort();
@@ -239,6 +288,7 @@ function configureFacade(): {
   const zonesPort: FakeZonesPort = new FakeZonesPort();
   const imagesPort: FakeImagesPort = new FakeImagesPort();
   const videosPort: FakeVideosPort = new FakeVideosPort();
+  const technicalPagesPort: FakeTechnicalPagesPort = new FakeTechnicalPagesPort();
   const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
 
   TestBed.configureTestingModule({
@@ -250,6 +300,7 @@ function configureFacade(): {
       { provide: PARK_ITEM_DETAIL_ZONES_PORT, useValue: zonesPort },
       { provide: PARK_ITEM_DETAIL_IMAGES_PORT, useValue: imagesPort },
       { provide: PARK_ITEM_DETAIL_VIDEOS_PORT, useValue: videosPort },
+      { provide: PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT, useValue: technicalPagesPort },
       { provide: SsrHttpStatusService, useValue: ssrStatusService }
     ]
   });
@@ -262,6 +313,7 @@ function configureFacade(): {
     zonesPort,
     imagesPort,
     videosPort,
+    technicalPagesPort,
     ssrStatusService
   };
 }
@@ -294,6 +346,12 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.facade.detail()?.siblingNavigation?.next?.routerLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-2', 'raik']);
     expect(context.facade.detail()?.relatedItems[0]?.description?.length).toBeLessThanOrEqual(160);
     expect(context.facade.detail()?.relatedItems[0]?.description?.endsWith('...')).toBeTrue();
+    expect(context.facade.detail()?.specGroups[0]?.rows.find((row) => row.labelKey === 'parkItems.fields.restraintType')?.routerLink).toEqual([
+      '/',
+      'fr',
+      'technical',
+      'lap-bar'
+    ]);
     expect(context.itemsPort.itemCalls).toEqual(['item-1']);
     expect(context.parksPort.calls).toEqual(['park-1']);
     expect(context.itemsPort.siblingCalls).toEqual(['item-1']);
@@ -309,6 +367,7 @@ describe('ParkItemDetailStateFacade', () => {
       ownerType: VideoOwnerType.PARK_ITEM,
       ownerId: 'item-1'
     }]);
+    expect(context.technicalPagesPort.callCount).toBe(1);
   });
 
   it('hides the videos link when the park item has no published videos', () => {
@@ -337,6 +396,7 @@ describe('ParkItemDetailStateFacade', () => {
     context.itemsPort.relatedResponse$ = throwError(() => new Error('Related items unavailable'));
     context.manufacturersPort.response$ = throwError(() => new Error('Manufacturer unavailable'));
     context.zonesPort.response$ = throwError(() => new Error('Zone unavailable'));
+    context.technicalPagesPort.response$ = throwError(() => new Error('Technical pages unavailable'));
 
     context.facade.loadItem('item-1');
 
@@ -347,5 +407,6 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.facade.detail()?.heroPhoto).toBeNull();
     expect(context.facade.detail()?.imagesLink).toBeNull();
     expect(context.facade.detail()?.relatedItems).toEqual([]);
+    expect(context.facade.detail()?.specGroups[0]?.rows.find((row) => row.labelKey === 'parkItems.fields.restraintType')?.routerLink).toBeNull();
   });
 });

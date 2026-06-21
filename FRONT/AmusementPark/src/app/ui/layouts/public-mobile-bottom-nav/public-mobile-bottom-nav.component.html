@@ -14,6 +14,11 @@
     <span class="app-mobile-bottom-nav__label">{{ 'sidebar.rankings' | translate }}</span>
   </a>
 
+  <a class="app-mobile-bottom-nav__item" [attr.aria-label]="'sidebar.technical' | translate" [routerLink]="['/', currentLang(), 'technical']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+    <span class="app-mobile-bottom-nav__icon" aria-hidden="true"><i class="pi pi-cog"></i></span>
+    <span class="app-mobile-bottom-nav__label">{{ 'sidebar.technical' | translate }}</span>
+  </a>
+
   <button
     type="button"
     class="app-mobile-bottom-nav__item"

@@ -32,6 +32,8 @@ public sealed class MongoDbSettings
 
     public string AttractionManufacturersCollectionName { get; set; } = "attractionManufacturers";
 
+    public string TechnicalPagesCollectionName { get; set; } = "technicalPages";
+
     public string ParkZonesCollectionName { get; set; } = "parkZones";
 
     public string ParkItemsCollectionName { get; set; } = "parkItems";

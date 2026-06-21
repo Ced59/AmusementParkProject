@@ -11,6 +11,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.TechnicalPages;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Videos;
 using Microsoft.Extensions.Hosting;
@@ -91,6 +92,9 @@ public sealed partial class MongoDatabaseInitializer
 
         await this.EnsureCollectionExistsAsync(this.settings.AttractionManufacturersCollectionName, cancellationToken);
         await this.InitializeAttractionManufacturersIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.TechnicalPagesCollectionName, cancellationToken);
+        await this.InitializeTechnicalPagesIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkZonesCollectionName, cancellationToken);
         await this.InitializeParkZonesIndexesAsync(cancellationToken);

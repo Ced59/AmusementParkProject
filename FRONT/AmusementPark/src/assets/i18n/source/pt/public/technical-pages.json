@@ -1,0 +1,23 @@
+{
+  "technicalPages": {
+    "list": {
+      "kicker": "Guias técnicos",
+      "title": "Entender os elementos técnicos",
+      "subtitle": "Explora lifts, retenções, trens, materiais e sistemas que moldam as atrações.",
+      "loading": "Carregando guias técnicos...",
+      "empty": "Ainda não há página técnica publicada.",
+      "errorMessage": "Não foi possível carregar as páginas técnicas.",
+      "categoryCount": "{{count}} página(s)"
+    },
+    "detail": {
+      "loading": "Carregando a página técnica...",
+      "backToList": "Todos os elementos técnicos",
+      "errorMessage": "Não foi possível carregar esta página técnica.",
+      "diagram": {
+        "input": "Energia",
+        "system": "Sistema",
+        "train": "Trem"
+      }
+    }
+  }
+}

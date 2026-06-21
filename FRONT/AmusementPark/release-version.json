@@ -1,6 +1,20 @@
 {
-  "version": "2.3.26",
+  "version": "2.4.0",
   "history": [
+    {
+      "version": "2.4.0",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "Les pages techniques arrivent sur le site.",
+        "en": "Technical pages arrive on the site.",
+        "de": "Technikseiten kommen auf die Website.",
+        "nl": "Technische pagina's komen op de site.",
+        "it": "Arrivano le pagine tecniche sul sito.",
+        "es": "Llegan las paginas tecnicas al sitio.",
+        "pl": "Strony techniczne trafiaja na strone.",
+        "pt": "As paginas tecnicas chegam ao site."
+      }
+    },
     {
       "version": "2.3.26",
       "releasedAt": "2026-06-21",

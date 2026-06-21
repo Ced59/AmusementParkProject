@@ -1423,6 +1423,45 @@
       "parkItems": "Content",
       "data": "Gegevens"
     },
+    "technicalPages": {
+      "kicker": "Redactionele inhoud",
+      "title": "Technische pagina's",
+      "subtitle": "Beheer lange technische uitlegpagina's.",
+      "create": "Pagina maken",
+      "empty": "Nog geen technische pagina.",
+      "table": {
+        "title": "Titel",
+        "category": "Categorie",
+        "slug": "Slug",
+        "status": "Status",
+        "blocks": "blok(ken)"
+      },
+      "import": {
+        "label": "JSON-upsert",
+        "submit": "Importeren",
+        "invalidJson": "De JSON is ongeldig.",
+        "success": "Import voltooid.",
+        "failed": "Deze JSON kan niet worden geïmporteerd."
+      },
+      "edit": {
+        "createTitle": "Technische pagina maken",
+        "updateTitle": "Technische pagina bewerken",
+        "identity": "Identiteit",
+        "categoryKey": "Categoriesleutel",
+        "slug": "Slug",
+        "sortOrder": "Weergavevolgorde",
+        "isVisible": "Pagina publiceren",
+        "localized": "Meertalige teksten",
+        "categoryNames": "Categorienamen",
+        "titles": "Titels",
+        "summaries": "Samenvattingen",
+        "richContent": "Rijke inhoud",
+        "aliasesJson": "Aliases JSON",
+        "contentBlocksJson": "Inhoudsblokken JSON",
+        "invalidJson": "Aliases of inhoudsblokken zijn geen geldige JSON.",
+        "saveFailed": "Technische pagina kan niet worden opgeslagen."
+      }
+    },
     "title": "Beheerpaneel",
     "users": {
       "total": "Totaal aantal gebruikers: {{count}}",
@@ -1781,6 +1820,7 @@
     "home": "Start",
     "parks": "Parken",
     "rankings": "Ranglijsten",
+    "technical": "Techniek",
     "about": "Over",
     "profile": "Profiel",
     "admin": "Beheer"
@@ -3177,6 +3217,27 @@
       "title": "Deze video delen",
       "description": "Stuur deze video naar iemand die hem leuk kan vinden.",
       "text": "Bekijk {{title}} op AmusementPark."
+    }
+  },
+  "technicalPages": {
+    "list": {
+      "kicker": "Technische gidsen",
+      "title": "Technische elementen begrijpen",
+      "subtitle": "Ontdek liften, beugels, treinen, materialen en systemen die attracties vormgeven.",
+      "loading": "Technische gidsen laden...",
+      "empty": "Er is nog geen technische pagina gepubliceerd.",
+      "errorMessage": "Technische pagina's kunnen niet worden geladen.",
+      "categoryCount": "{{count}} pagina('s)"
+    },
+    "detail": {
+      "loading": "Technische pagina laden...",
+      "backToList": "Alle technische elementen",
+      "errorMessage": "Deze technische pagina kan niet worden geladen.",
+      "diagram": {
+        "input": "Energie",
+        "system": "Systeem",
+        "train": "Trein"
+      }
     }
   },
   "versionHistoryPage": {

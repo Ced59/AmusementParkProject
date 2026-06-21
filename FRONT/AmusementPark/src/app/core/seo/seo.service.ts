@@ -4,6 +4,7 @@ import { Meta, Title } from '@angular/platform-browser';
 
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { TechnicalContentBlock, TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
@@ -566,6 +567,10 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       title: 'Rankings — Amusement Parks',
       description: 'Discover parks, attractions, restaurants, hotels and services that visitors consistently rate highly.',
     },
+    technical: {
+      title: 'Technical attraction guides - Amusement Parks',
+      description: 'Understand attraction systems, coaster lifts, restraints, trains, materials and other technical elements.',
+    },
     about: {
       title: 'About Amusement Parks — Project and data approach',
       description: 'Learn about the Amusement Parks project, its purpose, its public park portfolio and its careful data publication approach.',
@@ -608,6 +613,10 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       title: 'Classements — Amusement Parks',
       description: 'Découvre les parcs, attractions, restaurants, hôtels et services les plus régulièrement appréciés des visiteurs.',
     },
+    technical: {
+      title: 'Dossiers techniques - Amusement Parks',
+      description: 'Explore les lifts, retenues, trains, materiaux et autres systemes techniques des attractions.',
+    },
     about: {
       title: 'À propos — Amusement Parks',
       description: 'Découvre le projet Amusement Parks, son objectif, son portefeuille public de parcs et sa démarche de publication des données.',
@@ -642,6 +651,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Explora parques, atracciones y destinos', description: 'Explora parques de ocio, atracciones, restaurantes, hoteles y referencias del sector en todo el mundo.' },
     parks: { title: 'Parques de ocio del mundo — Amusement Parks', description: 'Consulta parques visibles, parques temáticos, acuáticos, zoológicos y resorts con información pública y mapa.' },
     rankings: { title: 'Rankings — Amusement Parks', description: 'Descubre parques, atracciones, restaurantes, hoteles y servicios valorados de forma constante por visitantes.' },
+    technical: { title: 'Guias tecnicas - Amusement Parks', description: 'Explora lifts, sujeciones, trenes, materiales y otros sistemas tecnicos de las atracciones.' },
     about: { title: 'Acerca de Amusement Parks — Proyecto y datos', description: 'Conoce el proyecto Amusement Parks, su objetivo y su enfoque cuidadoso de publicación de datos.' },
     contact: { title: 'Contacto — Amusement Parks', description: 'Contacta con Amusement Parks por correo o deja un mensaje breve y protegido para los administradores.' },
     versions: { title: 'Historial de versiones — Amusement Parks', description: 'Sigue el historial publico de versiones de Amusement Parks con una nota breve por lanzamiento.' },
@@ -654,6 +664,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Parks, Attraktionen und Reiseziele entdecken', description: 'Entdecke Freizeitparks, Attraktionen, Restaurants, Hotels und Branchenreferenzen weltweit.' },
     parks: { title: 'Freizeitparks weltweit — Amusement Parks', description: 'Durchsuche sichtbare Freizeitparks, Themenparks, Wasserparks, Zoos und Resorts mit öffentlichen Details und Karte.' },
     rankings: { title: 'Ranglisten — Amusement Parks', description: 'Entdecke Parks, Attraktionen, Restaurants, Hotels und Services, die Besucher dauerhaft hoch bewerten.' },
+    technical: { title: 'Technik-Guides - Amusement Parks', description: 'Entdecke Lifts, Rueckhaltesysteme, Zuege, Materialien und weitere technische Systeme von Attraktionen.' },
     about: { title: 'Über Amusement Parks — Projekt und Datenansatz', description: 'Erfahre mehr über das Projekt Amusement Parks, seinen Zweck und seine sorgfältige Veröffentlichung von Daten.' },
     contact: { title: 'Kontakt — Amusement Parks', description: 'Kontaktiere Amusement Parks per E-Mail oder sende eine kurze geschuetzte Nachricht an die Administration.' },
     versions: { title: 'Versionsverlauf — Amusement Parks', description: 'Verfolge den oeffentlichen Versionsverlauf von Amusement Parks mit kurzen Hinweisen je Version.' },
@@ -666,6 +677,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Esplora parchi, attrazioni e destinazioni', description: 'Esplora parchi divertimento, attrazioni, ristoranti, hotel e riferimenti del settore in tutto il mondo.' },
     parks: { title: 'Parchi divertimento nel mondo — Amusement Parks', description: 'Sfoglia parchi visibili, parchi a tema, acquatici, zoo e resort con informazioni pubbliche e mappa.' },
     rankings: { title: 'Classifiche — Amusement Parks', description: 'Scopri parchi, attrazioni, ristoranti, hotel e servizi valutati con continuità dai visitatori.' },
+    technical: { title: 'Guide tecniche - Amusement Parks', description: 'Esplora lift, sistemi di ritenuta, treni, materiali e altri sistemi tecnici delle attrazioni.' },
     about: { title: 'Informazioni su Amusement Parks — Progetto e dati', description: 'Scopri il progetto Amusement Parks, il suo obiettivo e il suo approccio prudente alla pubblicazione dei dati.' },
     contact: { title: 'Contatto — Amusement Parks', description: 'Contatta Amusement Parks via email o lascia un breve messaggio protetto agli amministratori.' },
     versions: { title: 'Cronologia versioni — Amusement Parks', description: 'Segui la cronologia pubblica delle versioni di Amusement Parks con brevi note per ogni rilascio.' },
@@ -678,6 +690,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Odkrywaj parki, atrakcje i kierunki', description: 'Odkrywaj parki rozrywki, atrakcje, restauracje, hotele i referencje branżowe na całym świecie.' },
     parks: { title: 'Parki rozrywki na świecie — Amusement Parks', description: 'Przeglądaj widoczne parki rozrywki, parki tematyczne, wodne, zoo i resorty z publicznymi informacjami oraz mapą.' },
     rankings: { title: 'Rankingi — Amusement Parks', description: 'Odkrywaj parki, atrakcje, restauracje, hotele i usługi stale wysoko oceniane przez odwiedzających.' },
+    technical: { title: 'Przewodniki techniczne - Amusement Parks', description: 'Poznaj windy, zabezpieczenia, pociagi, materialy i inne systemy techniczne atrakcji.' },
     about: { title: 'O Amusement Parks — Projekt i dane', description: 'Poznaj projekt Amusement Parks, jego cel oraz ostrożne podejście do publikacji danych.' },
     contact: { title: 'Kontakt — Amusement Parks', description: 'Skontaktuj sie z Amusement Parks e-mailem lub zostaw krotka chroniona wiadomosc dla administratorow.' },
     versions: { title: 'Historia wersji — Amusement Parks', description: 'Sledz publiczna historie wersji Amusement Parks z krotkimi notatkami dla kazdego wydania.' },
@@ -690,6 +703,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Ontdek parken, attracties en bestemmingen', description: 'Ontdek pretparken, attracties, restaurants, hotels en brancheverwijzingen over de hele wereld.' },
     parks: { title: 'Pretparken wereldwijd — Amusement Parks', description: 'Bekijk zichtbare pretparken, themaparken, waterparken, dierentuinen en resorts met publieke info en kaart.' },
     rankings: { title: 'Ranglijsten — Amusement Parks', description: 'Ontdek parken, attracties, restaurants, hotels en services die bezoekers blijvend hoog beoordelen.' },
+    technical: { title: 'Technische gidsen - Amusement Parks', description: 'Ontdek liften, beugels, treinen, materialen en andere technische systemen van attracties.' },
     about: { title: 'Over Amusement Parks — Project en data-aanpak', description: 'Lees meer over het Amusement Parks-project, het doel en de zorgvuldige aanpak voor datapublicatie.' },
     contact: { title: 'Contact — Amusement Parks', description: 'Neem contact op met Amusement Parks per e-mail of laat een kort beschermd bericht achter voor de beheerders.' },
     versions: { title: 'Versiegeschiedenis — Amusement Parks', description: 'Volg de publieke versiegeschiedenis van Amusement Parks met korte notities per release.' },
@@ -702,6 +716,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Explore parques, atrações e destinos', description: 'Explore parques de diversão, atrações, restaurantes, hotéis e referências do setor em todo o mundo.' },
     parks: { title: 'Parques de diversão no mundo — Amusement Parks', description: 'Veja parques visíveis, parques temáticos, aquáticos, zoológicos e resorts com informações públicas e mapa.' },
     rankings: { title: 'Rankings — Amusement Parks', description: 'Descubra parques, atrações, restaurantes, hotéis e serviços avaliados de forma consistente pelos visitantes.' },
+    technical: { title: 'Guias tecnicos - Amusement Parks', description: 'Explora lifts, retencoes, trens, materiais e outros sistemas tecnicos das atracoes.' },
     about: { title: 'Sobre o Amusement Parks — Projeto e dados', description: 'Conheça o projeto Amusement Parks, seu objetivo e sua abordagem cuidadosa de publicação de dados.' },
     contact: { title: 'Contacto — Amusement Parks', description: 'Contacte o Amusement Parks por email ou deixe uma mensagem curta e protegida para a administracao.' },
     versions: { title: 'Historico de versoes — Amusement Parks', description: 'Acompanhe o historico publico de versoes do Amusement Parks com notas curtas por lancamento.' },
@@ -779,6 +794,23 @@ export class SeoService {
 
   applyParkListSeo(language: string, url: string): void {
     this.apply(this.buildStaticRouteData('parks', language, url, 'index,follow'));
+  }
+
+  applyTechnicalPageSeo(page: TechnicalPage, language: string, url: string): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const pageTitle: string = this.normalizeOptionalText(resolveLocalizedText(page.titles, normalizedLanguage, page.slug)) ?? page.slug;
+    const pageDescription: string = this.normalizeOptionalText(resolveLocalizedText(page.summaries, normalizedLanguage, DEFAULT_DESCRIPTION)) ?? DEFAULT_DESCRIPTION;
+
+    this.apply({
+      title: `${pageTitle} - ${SITE_NAME}`,
+      description: truncateSeoText(pageDescription, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(this.resolveTechnicalPageImageId(page)) ?? undefined,
+      imageAlt: pageTitle,
+      jsonLd: [this.buildTechnicalPageBreadcrumbJsonLd(pageTitle, url)]
+    });
   }
 
   applyNotFoundSeo(language: string, url: string): void {
@@ -1523,6 +1555,53 @@ export class SeoService {
     return [this.buildBreadcrumbJsonLd(breadcrumbItems), itemJsonLd];
   }
 
+  private buildTechnicalPageBreadcrumbJsonLd(pageLabel: string, url: string): unknown {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
+    const technicalPath: string = `/${language}/technical`;
+
+    return this.buildBreadcrumbJsonLd([
+      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveTechnicalBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(technicalPath) },
+      { name: pageLabel, url: canonicalUrl }
+    ]);
+  }
+
+  private resolveTechnicalBreadcrumbLabel(language: string): string {
+    const labels: Record<string, string> = {
+      fr: 'Technique',
+      en: 'Technical guides',
+      es: 'Guias tecnicas',
+      de: 'Technik',
+      it: 'Guide tecniche',
+      nl: 'Techniek',
+      pl: 'Technika',
+      pt: 'Guias tecnicos'
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveTechnicalPageImageId(page: TechnicalPage): string | null {
+    return this.resolveTechnicalBlockImageId(page.contentBlocks);
+  }
+
+  private resolveTechnicalBlockImageId(blocks: TechnicalContentBlock[] | null | undefined): string | null {
+    for (const block of blocks ?? []) {
+      const imageId: string | null = this.normalizeOptionalText(block.imageId);
+      if (imageId) {
+        return imageId;
+      }
+
+      const nestedImageId: string | null = this.resolveTechnicalBlockImageId(block.columns);
+      if (nestedImageId) {
+        return nestedImageId;
+      }
+    }
+
+    return null;
+  }
+
   private resolveVideoTitle(video: VideoDto, language: string): string {
     const localizedTitle: string = resolveLocalizedText(video.titles, language, video.title || 'Video');
     return this.normalizeOptionalText(localizedTitle) ?? this.normalizeOptionalText(video.title) ?? 'Video';
@@ -1745,6 +1824,10 @@ export class SeoService {
 
     if (routeSegment === 'rankings') {
       return 'rankings';
+    }
+
+    if (routeSegment === 'technical') {
+      return 'technical';
     }
 
     if (routeSegment === 'about') {

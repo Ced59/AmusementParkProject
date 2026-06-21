@@ -6,6 +6,7 @@ import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-v
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoHostingProvider } from '@app/models/videos/video-hosting-provider';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
@@ -203,6 +204,25 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
+  it('applies indexable localized metadata to the public technical pages list', () => {
+    service.applyRouteDefaults('/fr/technical');
+
+    expect(documentRef.title).toBe('Dossiers techniques - Amusement Parks');
+    expect(readMetaContent('meta[name="description"]'))
+      .toBe('Explore les lifts, retenues, trains, materiaux et autres systemes techniques des attractions.');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readMetaContent('meta[property="og:locale"]')).toBe('fr_FR');
+  });
+
+  it('applies localized metadata to a technical detail page', () => {
+    service.applyTechnicalPageSeo(buildTechnicalPage(), 'fr', '/fr/technical/lap-bar');
+
+    expect(documentRef.title).toBe('Lap bar - Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toBe('Explication technique de la lap bar.');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/technical-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/fr/technical/lap-bar');
+  });
+
   function readMetaContent(selector: string): string | null {
     return documentRef.head.querySelector<HTMLMetaElement>(selector)?.content ?? null;
   }
@@ -300,6 +320,34 @@ function buildVideo(overrides: Partial<VideoDto> = {}): VideoDto {
     isPublished: true,
     createdAt: '2026-01-01T00:00:00Z',
     updatedAt: '2026-01-01T00:00:00Z',
+    ...overrides
+  };
+}
+
+function buildTechnicalPage(overrides: Partial<TechnicalPage> = {}): TechnicalPage {
+  return {
+    id: 'technical-lap-bar',
+    categoryKey: 'restraint',
+    categoryNames: [{ languageCode: 'fr', value: 'Retenues' }],
+    slug: 'lap-bar',
+    titles: [
+      { languageCode: 'fr', value: 'Lap bar' },
+      { languageCode: 'en', value: 'Lap bar' }
+    ],
+    summaries: [
+      { languageCode: 'fr', value: 'Explication technique de la lap bar.' },
+      { languageCode: 'en', value: 'Technical explanation of the lap bar.' }
+    ],
+    aliases: [],
+    contentBlocks: [
+      {
+        blockType: 'image',
+        imageId: 'technical-photo-1'
+      }
+    ],
+    sortOrder: 0,
+    isVisible: true,
+    adminReviewStatus: 'Validated',
     ...overrides
   };
 }

@@ -1,5 +1,6 @@
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
@@ -30,6 +31,7 @@ import {
 } from './park-item-detail-navigation.mapper';
 import { getAttractionStatusValueKey } from './park-item-detail-presentation.mapper';
 import { pushGroup, pushRow } from './park-item-detail-row.helpers';
+import { buildTechnicalPageRouterLink } from './park-item-detail-technical-links.mapper';
 
 export function buildSpecGroups(
   technicalRows: ParkItemDetailRowViewModel[],
@@ -45,7 +47,12 @@ export function buildSpecGroups(
   return groups;
 }
 
-export function buildTechnicalRows(item: ParkItem, manufacturerName: string | null, currentLanguage: string): ParkItemDetailRowViewModel[] {
+export function buildTechnicalRows(
+  item: ParkItem,
+  manufacturerName: string | null,
+  currentLanguage: string,
+  technicalPages: TechnicalPage[] = []
+): ParkItemDetailRowViewModel[] {
   const details = item.attractionDetails;
   const rows: ParkItemDetailRowViewModel[] = [];
 
@@ -65,10 +72,38 @@ export function buildTechnicalRows(item: ParkItem, manufacturerName: string | nu
       : null);
   pushRow(rows, 'parkItems.fields.model', details?.model, null, 'pi pi-box');
   pushStatusRow(rows, details?.status);
-  pushRow(rows, 'parkItems.fields.materialType', details?.materialType, null, 'pi pi-wrench');
-  pushRow(rows, 'parkItems.fields.seatingType', details?.seatingType, null, 'pi pi-users');
-  pushRow(rows, 'parkItems.fields.launchType', details?.launchType, null, 'pi pi-send');
-  pushRow(rows, 'parkItems.fields.restraintType', details?.restraintType, null, 'pi pi-lock');
+  pushRow(
+    rows,
+    'parkItems.fields.materialType',
+    details?.materialType,
+    null,
+    'pi pi-wrench',
+    buildTechnicalPageRouterLink(technicalPages, ['material'], details?.materialType, currentLanguage)
+  );
+  pushRow(
+    rows,
+    'parkItems.fields.seatingType',
+    details?.seatingType,
+    null,
+    'pi pi-users',
+    buildTechnicalPageRouterLink(technicalPages, ['seating'], details?.seatingType, currentLanguage)
+  );
+  pushRow(
+    rows,
+    'parkItems.fields.launchType',
+    details?.launchType,
+    null,
+    'pi pi-send',
+    buildTechnicalPageRouterLink(technicalPages, ['launch'], details?.launchType, currentLanguage)
+  );
+  pushRow(
+    rows,
+    'parkItems.fields.restraintType',
+    details?.restraintType,
+    null,
+    'pi pi-lock',
+    buildTechnicalPageRouterLink(technicalPages, ['restraint'], details?.restraintType, currentLanguage)
+  );
   pushRow(rows, 'parkItems.fields.openingDate', formatDate(details?.openingDate ?? details?.openingDateText), null, 'pi pi-calendar-plus');
   pushRow(rows, 'parkItems.fields.closingDate', formatDate(details?.closingDate ?? details?.closingDateText), null, 'pi pi-calendar-minus');
 

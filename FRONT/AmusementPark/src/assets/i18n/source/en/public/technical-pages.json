@@ -1,0 +1,23 @@
+{
+  "technicalPages": {
+    "list": {
+      "kicker": "Technical guides",
+      "title": "Understand technical elements",
+      "subtitle": "Explore lifts, restraints, trains, materials and the systems that shape attractions.",
+      "loading": "Loading technical guides...",
+      "empty": "No published technical page yet.",
+      "errorMessage": "Unable to load technical pages.",
+      "categoryCount": "{{count}} page(s)"
+    },
+    "detail": {
+      "loading": "Loading the technical page...",
+      "backToList": "All technical elements",
+      "errorMessage": "Unable to load this technical page.",
+      "diagram": {
+        "input": "Energy",
+        "system": "System",
+        "train": "Train"
+      }
+    }
+  }
+}

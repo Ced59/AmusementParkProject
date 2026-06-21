@@ -54,6 +54,10 @@
           <i class="pi pi-wrench" aria-hidden="true"></i>
           <span>{{ 'admin.manufacturers.title' | translate }}</span>
         </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'technical-pages']" routerLinkActive="active">
+          <i class="pi pi-cog" aria-hidden="true"></i>
+          <span>{{ 'admin.technicalPages.title' | translate }}</span>
+        </a>
         <a [routerLink]="['/', currentLang, 'admin', 'images']" routerLinkActive="active">
           <i class="pi pi-image" aria-hidden="true"></i>
           <span>{{ 'admin.images.title' | translate }}</span>

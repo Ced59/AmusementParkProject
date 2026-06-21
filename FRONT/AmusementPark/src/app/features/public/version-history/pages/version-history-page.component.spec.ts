@@ -71,13 +71,15 @@ describe('VersionHistoryPageComponent', () => {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     const patchVersionsBeforeCollapse: string[] = getPatchVersions(host);
 
-    expect(patchVersionsBeforeCollapse).toContain(siteVersion);
+    expect(patchVersionsBeforeCollapse.length).toBeGreaterThan(0);
 
-    const currentMinorToggle: HTMLButtonElement | null = host.querySelector('.version-entry--minor .version-entry__toggle');
-    currentMinorToggle?.click();
+    const currentMajorToggle: HTMLButtonElement | null = host.querySelector('.version-entry--major.version-entry--expanded .version-entry__toggle');
+    expect(currentMajorToggle).not.toBeNull();
+
+    currentMajorToggle?.click();
     fixture.detectChanges();
 
-    expect(getPatchVersions(host)).not.toContain(siteVersion);
+    expect(getPatchVersions(host).length).toBe(0);
   });
 });
 

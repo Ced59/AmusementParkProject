@@ -1,0 +1,23 @@
+{
+  "technicalPages": {
+    "list": {
+      "kicker": "Technik-Guides",
+      "title": "Technische Elemente verstehen",
+      "subtitle": "Entdecke Lifts, Rückhaltesysteme, Züge, Materialien und die Systeme hinter Attraktionen.",
+      "loading": "Technik-Guides werden geladen...",
+      "empty": "Es ist noch keine Technikseite veröffentlicht.",
+      "errorMessage": "Technikseiten konnten nicht geladen werden.",
+      "categoryCount": "{{count}} Seite(n)"
+    },
+    "detail": {
+      "loading": "Technikseite wird geladen...",
+      "backToList": "Alle technischen Elemente",
+      "errorMessage": "Diese Technikseite konnte nicht geladen werden.",
+      "diagram": {
+        "input": "Energie",
+        "system": "System",
+        "train": "Zug"
+      }
+    }
+  }
+}
