@@ -1,4 +1,5 @@
 using AmusementPark.WebAPI.OutputCaching;
+using AmusementPark.WebAPI.AdminPublicView;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Net.Http.Headers;
 using Xunit;
@@ -35,5 +36,20 @@ public sealed class PublicHttpCacheHeadersApplicatorTests
 
         Assert.Equal("public, max-age=60, s-maxage=300", context.Response.Headers.CacheControl.ToString());
         Assert.Equal(HeaderNames.AcceptLanguage, context.Response.Headers.Vary.ToString());
+    }
+
+    [Fact]
+    public void Apply_WhenPublicViewSimulationHeaderIsPresent_ShouldApplyNoStore()
+    {
+        DefaultHttpContext context = new DefaultHttpContext();
+        context.Request.Method = HttpMethods.Get;
+        context.Request.Path = "/parks";
+        context.Request.Headers[AdminPublicViewSimulation.RequestHeaderName] = "adminPreview";
+        context.Response.StatusCode = StatusCodes.Status200OK;
+
+        PublicHttpCacheHeadersApplicator.Apply(context);
+
+        Assert.Equal("no-store", context.Response.Headers.CacheControl.ToString());
+        Assert.Contains(AdminPublicViewSimulation.RequestHeaderName, context.Response.Headers.Vary.ToString());
     }
 }

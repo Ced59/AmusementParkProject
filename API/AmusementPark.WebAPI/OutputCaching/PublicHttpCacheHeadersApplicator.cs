@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AmusementPark.WebAPI.AdminPublicView;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Microsoft.Net.Http.Headers;
@@ -38,6 +39,12 @@ internal static class PublicHttpCacheHeadersApplicator
     {
         if (context.Response.StatusCode != StatusCodes.Status200OK)
         {
+            return;
+        }
+
+        if (AdminPublicViewSimulation.HasRequestHeader(context.Request.Headers))
+        {
+            AdminPublicViewSimulation.ApplyNoStoreHeaders(context);
             return;
         }
 

@@ -15,6 +15,7 @@ using AmusementPark.WebAPI.Contracts.ParkZones;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using AmusementPark.WebAPI.OutputCaching;
+using AmusementPark.WebAPI.AdminPublicView;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -153,7 +154,7 @@ public sealed class ParkZonesController : ControllerBase
 
     private bool UserCanSeeNonVisible()
     {
-        return this.User?.IsInRole("ADMIN") == true;
+        return this.HttpContext.UserCanSeeNonVisibleInPublicView();
     }
 
     private static ClosedEntityFilter ParseClosedEntityFilter(string? value)

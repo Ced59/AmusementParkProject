@@ -428,6 +428,14 @@ Risques a verifier :
 - Ne jamais confondre role simule et role autorise.
 - Ne pas stocker une reponse simulee dans un cache partage.
 
+Note de mise en oeuvre :
+
+- Le jalon 9 formalise le header interne `X-AmusementPark-Public-View-Mode` pour les lectures publiques simulees.
+- Le frontend ne l'ajoute que lorsque l'admin quitte la vue anonyme ; les lectures publiques anonymes restent inchangees par defaut.
+- Le backend refuse tout header de simulation sans session reelle admin, applique `no-store` et neutralise le cache de sortie pour ces requetes.
+- Les modes `userVisitor` et `moderatorVisitor` restent des simulations de lecture : ils ne donnent aucun droit serveur et masquent les contenus non visibles.
+- Le mode `adminPreview` reste le seul mode de lecture simulee qui expose les contenus non visibles, sans activer l'edition tant que le mode edition n'est pas explicitement active.
+
 ### Jalon 10 - Durcissement final
 
 But : rendre le dispositif exploitable en production.

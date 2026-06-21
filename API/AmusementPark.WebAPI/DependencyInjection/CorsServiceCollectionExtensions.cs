@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AmusementPark.WebAPI.AdminPublicView;
 using AmusementPark.WebAPI.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -26,8 +27,8 @@ public static class CorsServiceCollectionExtensions
         string[] configuredAllowedOrigins = ParseConfiguredOrigins(corsSettings);
         string[] allowedOrigins = NormalizeAllowedOrigins(configuredAllowedOrigins, corsSettings.AllowCredentials, environment);
         string[] allowedMethods = NormalizeTokens(corsSettings.AllowedMethods, ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]);
-        string[] allowedHeaders = NormalizeTokens(corsSettings.AllowedHeaders, ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With"]);
-        string[] exposedHeaders = NormalizeTokens(corsSettings.ExposedHeaders, Array.Empty<string>());
+        string[] allowedHeaders = NormalizeTokens(corsSettings.AllowedHeaders, ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With", AdminPublicViewSimulation.RequestHeaderName]);
+        string[] exposedHeaders = NormalizeTokens(corsSettings.ExposedHeaders, ["Retry-After", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset", AdminPublicViewSimulation.AppliedResponseHeaderName]);
 
         CorsSettings normalizedSettings = new CorsSettings
         {
