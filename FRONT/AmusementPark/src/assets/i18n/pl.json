@@ -1053,6 +1053,15 @@
       "statuses": {
         "operating": "Otwarty",
         "closedDefinitively": "Zamknięty na stałe"
+      },
+      "sort": {
+        "label": "Sortuj",
+        "default": "Domyślne",
+        "nameAsc": "Nazwa A-Z",
+        "totalDesc": "Elem. max",
+        "totalAsc": "Elem. min",
+        "visibleDesc": "Wid. max",
+        "visibleAsc": "Wid. min"
       }
     },
     "references": {

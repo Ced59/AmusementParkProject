@@ -101,6 +101,11 @@
   margin-bottom: 1rem;
 }
 
+.admin-mobile-sort-bar {
+  display: none;
+  margin-bottom: 1rem;
+}
+
 .admin-field select,
 .admin-field input[pInputText],
 .admin-search-field input[pInputText] {
@@ -222,6 +227,10 @@
   .admin-toolbar,
   .admin-filters-grid {
     grid-template-columns: 1fr;
+  }
+
+  .admin-mobile-sort-bar {
+    display: block;
   }
 
   .admin-toolbar__actions,

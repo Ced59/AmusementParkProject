@@ -435,6 +435,15 @@
       "statuses": {
         "operating": "Open",
         "closedDefinitively": "Permanently closed"
+      },
+      "sort": {
+        "label": "Sort",
+        "default": "Default",
+        "nameAsc": "Name A-Z",
+        "totalDesc": "Items max",
+        "totalAsc": "Items min",
+        "visibleDesc": "Visible max",
+        "visibleAsc": "Visible min"
       }
     }
   }

@@ -13,8 +13,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
-import { ParkAdminListFilters, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
+import { ParkAdminListFilters, ParkAdminListSortDirection, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
+
+type AdminParkSortOptionValue = `${ParkAdminListSortField}:${ParkAdminListSortDirection}`;
 
 @Component({
   selector: 'app-admin-parks-view',
@@ -36,6 +38,7 @@ export class AdminParksViewComponent {
   @Input() countryCodeFilter!: Signal<string>;
   @Input() validCoordinatesFilter!: Signal<boolean | null>;
   @Input() sortField!: Signal<ParkAdminListSortField>;
+  @Input() sortDirection!: Signal<ParkAdminListSortDirection>;
   @Input() sortOrder!: Signal<1 | -1>;
   @Input() selectedParkIds!: Signal<string[]>;
   @Input() selectedCount!: Signal<number>;
@@ -56,6 +59,16 @@ export class AdminParksViewComponent {
   @Output() bulkParkItemsVisibilityChanged: EventEmitter<void> = new EventEmitter<void>();
   @Output() filteredValidCoordinateParksVisibilityRequested: EventEmitter<void> = new EventEmitter<void>();
   @Output() selectionCleared: EventEmitter<void> = new EventEmitter<void>();
+  @Output() sortChanged: EventEmitter<{ sortField: ParkAdminListSortField; sortDirection: ParkAdminListSortDirection }> = new EventEmitter<{ sortField: ParkAdminListSortField; sortDirection: ParkAdminListSortDirection }>();
+
+  protected readonly mobileSortOptions: ReadonlyArray<{ value: AdminParkSortOptionValue; labelKey: string }> = [
+    { value: 'default:asc', labelKey: 'admin.parks.sort.default' },
+    { value: 'name:asc', labelKey: 'admin.parks.sort.nameAsc' },
+    { value: 'parkItemsTotalCount:desc', labelKey: 'admin.parks.sort.totalDesc' },
+    { value: 'parkItemsTotalCount:asc', labelKey: 'admin.parks.sort.totalAsc' },
+    { value: 'parkItemsVisibleCount:desc', labelKey: 'admin.parks.sort.visibleDesc' },
+    { value: 'parkItemsVisibleCount:asc', labelKey: 'admin.parks.sort.visibleAsc' },
+  ];
 
   protected localVisibilityFilter: boolean | null = null;
   protected localAdminReviewStatusFilter: AdminReviewStatus | null = null;
@@ -151,6 +164,18 @@ export class AdminParksViewComponent {
     this.selectionCleared.emit();
   }
 
+  protected getSortValue(): AdminParkSortOptionValue {
+    return `${this.sortField()}:${this.sortDirection()}` as AdminParkSortOptionValue;
+  }
+
+  protected onMobileSortChanged(value: string): void {
+    const parts: string[] = value.split(':');
+    this.sortChanged.emit({
+      sortField: this.normalizeSortField(parts[0]),
+      sortDirection: parts[1] === 'desc' ? 'desc' : 'asc',
+    });
+  }
+
   getTypeTranslationKey(type: string | null | undefined): string {
     return this.getTypeTranslationKeyFn(type);
   }
@@ -201,5 +226,18 @@ export class AdminParksViewComponent {
 
   private formatCount(count: number | null | undefined): string {
     return count === null || count === undefined ? '-' : String(count);
+  }
+
+  private normalizeSortField(value: string | undefined): ParkAdminListSortField {
+    switch (value) {
+      case 'name':
+        return 'name';
+      case 'parkItemsTotalCount':
+        return 'parkItemsTotalCount';
+      case 'parkItemsVisibleCount':
+        return 'parkItemsVisibleCount';
+      default:
+        return 'default';
+    }
   }
 }

@@ -109,6 +109,17 @@
     </label>
   </div>
 
+  <div class="admin-mobile-sort-bar">
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.parks.sort.label' | translate }}</span>
+      <select [ngModel]="getSortValue()" (ngModelChange)="onMobileSortChanged($event)">
+        @for (option of mobileSortOptions; track option.value) {
+          <option [value]="option.value">{{ option.labelKey | translate }}</option>
+        }
+      </select>
+    </label>
+  </div>
+
   <div class="admin-coordinate-bulk-bar">
     <span>{{ 'admin.bulk.validCoordinatesScope' | translate }}</span>
     <button

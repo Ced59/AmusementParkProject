@@ -1053,6 +1053,15 @@
       "statuses": {
         "operating": "Open",
         "closedDefinitively": "Definitief gesloten"
+      },
+      "sort": {
+        "label": "Sort.",
+        "default": "Standaard",
+        "nameAsc": "Naam A-Z",
+        "totalDesc": "Items max",
+        "totalAsc": "Items min",
+        "visibleDesc": "Zichtb. max",
+        "visibleAsc": "Zichtb. min"
       }
     },
     "references": {

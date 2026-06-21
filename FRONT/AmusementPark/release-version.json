@@ -1,6 +1,20 @@
 {
-  "version": "2.3.8",
+  "version": "2.3.9",
   "history": [
+    {
+      "version": "2.3.9",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "Améliorations d'ergonomie admin mobile.",
+        "en": "Mobile admin usability improvements.",
+        "de": "Verbesserte mobile Admin-Bedienung.",
+        "nl": "Verbeterde mobiele adminbediening.",
+        "it": "Migliorie per l'admin mobile.",
+        "es": "Mejoras de uso en admin móvil.",
+        "pl": "Ulepszenia mobilnego panelu admina.",
+        "pt": "Melhorias de uso no admin móvel."
+      }
+    },
     {
       "version": "2.3.8",
       "releasedAt": "2026-06-21",

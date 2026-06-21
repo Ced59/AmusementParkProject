@@ -1053,6 +1053,15 @@
       "statuses": {
         "operating": "Geöffnet",
         "closedDefinitively": "Dauerhaft geschlossen"
+      },
+      "sort": {
+        "label": "Sort.",
+        "default": "Standard",
+        "nameAsc": "Name A-Z",
+        "totalDesc": "Items max",
+        "totalAsc": "Items min",
+        "visibleDesc": "Sichtb. max",
+        "visibleAsc": "Sichtb. min"
       }
     },
     "references": {
