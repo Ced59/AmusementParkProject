@@ -1,0 +1,23 @@
+{
+  "technicalPages": {
+    "list": {
+      "kicker": "Guide tecniche",
+      "title": "Capire gli elementi tecnici",
+      "subtitle": "Esplora lift, sistemi di ritenuta, treni, materiali e sistemi che modellano le attrazioni.",
+      "loading": "Caricamento delle guide tecniche...",
+      "empty": "Nessuna pagina tecnica pubblicata per ora.",
+      "errorMessage": "Impossibile caricare le pagine tecniche.",
+      "categoryCount": "{{count}} pagina/e"
+    },
+    "detail": {
+      "loading": "Caricamento della pagina tecnica...",
+      "backToList": "Tutti gli elementi tecnici",
+      "errorMessage": "Impossibile caricare questa pagina tecnica.",
+      "diagram": {
+        "input": "Energia",
+        "system": "Sistema",
+        "train": "Treno"
+      }
+    }
+  }
+}

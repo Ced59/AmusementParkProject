@@ -1,0 +1,43 @@
+{
+  "admin": {
+    "technicalPages": {
+      "kicker": "Editorial content",
+      "title": "Technical pages",
+      "subtitle": "Manage long technical explanation pages.",
+      "create": "Create page",
+      "empty": "No technical page yet.",
+      "table": {
+        "title": "Title",
+        "category": "Category",
+        "slug": "Slug",
+        "status": "Status",
+        "blocks": "block(s)"
+      },
+      "import": {
+        "label": "JSON upsert",
+        "submit": "Import",
+        "invalidJson": "The JSON is invalid.",
+        "success": "Import completed.",
+        "failed": "Unable to import this JSON."
+      },
+      "edit": {
+        "createTitle": "Create technical page",
+        "updateTitle": "Edit technical page",
+        "identity": "Identity",
+        "categoryKey": "Category key",
+        "slug": "Slug",
+        "sortOrder": "Display order",
+        "isVisible": "Publish page",
+        "localized": "Multilingual texts",
+        "categoryNames": "Category names",
+        "titles": "Titles",
+        "summaries": "Summaries",
+        "richContent": "Rich content",
+        "aliasesJson": "Aliases JSON",
+        "contentBlocksJson": "Content blocks JSON",
+        "invalidJson": "Aliases or content blocks are not valid JSON.",
+        "saveFailed": "Unable to save the technical page."
+      }
+    }
+  }
+}

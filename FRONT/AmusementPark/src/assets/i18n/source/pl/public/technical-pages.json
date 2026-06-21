@@ -1,0 +1,23 @@
+{
+  "technicalPages": {
+    "list": {
+      "kicker": "Przewodniki techniczne",
+      "title": "Poznaj elementy techniczne",
+      "subtitle": "Odkrywaj windy, zabezpieczenia, pociągi, materiały i systemy tworzące atrakcje.",
+      "loading": "Ładowanie przewodników technicznych...",
+      "empty": "Nie opublikowano jeszcze żadnej strony technicznej.",
+      "errorMessage": "Nie można załadować stron technicznych.",
+      "categoryCount": "{{count}} strona/stron"
+    },
+    "detail": {
+      "loading": "Ładowanie strony technicznej...",
+      "backToList": "Wszystkie elementy techniczne",
+      "errorMessage": "Nie można załadować tej strony technicznej.",
+      "diagram": {
+        "input": "Energia",
+        "system": "System",
+        "train": "Pociąg"
+      }
+    }
+  }
+}

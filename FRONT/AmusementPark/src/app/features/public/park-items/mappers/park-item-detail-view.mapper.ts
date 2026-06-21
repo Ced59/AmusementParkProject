@@ -2,6 +2,7 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
+import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { MeasurementSystem, DEFAULT_MEASUREMENT_SYSTEM } from '@shared/models/measurements/measurement-system.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
@@ -55,13 +56,14 @@ export function mapParkItemToDetailViewModel(
   textTruncator: NaturalTextTruncatorService | null = null,
   measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
   measurementConversionService: MeasurementConversionService = new MeasurementConversionService(),
-  hasVideos: boolean = false
+  hasVideos: boolean = false,
+  technicalPages: TechnicalPage[] = []
 ): ParkItemDetailViewModel | null {
   if (!item) {
     return null;
   }
 
-  const technicalRows: ParkItemDetailRowViewModel[] = buildTechnicalRows(item, manufacturerName, currentLanguage);
+  const technicalRows: ParkItemDetailRowViewModel[] = buildTechnicalRows(item, manufacturerName, currentLanguage, technicalPages);
   const performanceRows: ParkItemDetailRowViewModel[] = buildPerformanceRows(
     item,
     currentLanguage,

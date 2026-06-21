@@ -7,6 +7,7 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
+import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { PagedResult } from '@shared/models/contracts';
@@ -25,12 +26,14 @@ import {
   PARK_ITEM_DETAIL_ITEMS_PORT,
   PARK_ITEM_DETAIL_MANUFACTURERS_PORT,
   PARK_ITEM_DETAIL_PARKS_PORT,
+  PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT,
   PARK_ITEM_DETAIL_VIDEOS_PORT,
   PARK_ITEM_DETAIL_ZONES_PORT,
   ParkItemDetailImagesPort,
   ParkItemDetailItemsPort,
   ParkItemDetailManufacturersPort,
   ParkItemDetailParksPort,
+  ParkItemDetailTechnicalPagesPort,
   ParkItemDetailVideosPort,
   ParkItemDetailZonesPort
 } from './park-item-detail-data.ports';
@@ -44,6 +47,7 @@ interface ParkItemDetailSourceData {
   siblingNavigation: ParkItemSiblingNavigation | null;
   photos: ImageDto[];
   hasVideos: boolean;
+  technicalPages: TechnicalPage[];
 }
 
 @Injectable()
@@ -67,7 +71,8 @@ export class ParkItemDetailStateFacade {
       this.textTruncator,
       this.measurementPreferenceService.preferredSystem(),
       this.measurementConversionService,
-      sourceData?.hasVideos ?? false
+      sourceData?.hasVideos ?? false,
+      sourceData?.technicalPages ?? []
     );
   });
 
@@ -78,6 +83,7 @@ export class ParkItemDetailStateFacade {
     @Inject(PARK_ITEM_DETAIL_ZONES_PORT) private readonly parkZonesApiService: ParkItemDetailZonesPort,
     @Inject(PARK_ITEM_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkItemDetailImagesPort,
     @Inject(PARK_ITEM_DETAIL_VIDEOS_PORT) private readonly videosApiService: ParkItemDetailVideosPort,
+    @Inject(PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT) private readonly technicalPagesApiService: ParkItemDetailTechnicalPagesPort,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService,
     private readonly ssrRuntimeService: SsrRuntimeService,
@@ -105,7 +111,8 @@ export class ParkItemDetailStateFacade {
           relatedItems: [],
           siblingNavigation: null,
           photos: [],
-          hasVideos: false
+          hasVideos: false,
+          technicalPages: []
         });
 
         this.loadRelatedData(item);
@@ -138,6 +145,21 @@ export class ParkItemDetailStateFacade {
         }
 
         this.screenStateStore.setError('parkItems.detail.errorMessage', this.screenStateStore.data());
+      }
+    });
+
+    this.technicalPagesApiService.getAllPublicPages().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (technicalPages: TechnicalPage[]) => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          technicalPages
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          technicalPages: []
+        }));
       }
     });
 

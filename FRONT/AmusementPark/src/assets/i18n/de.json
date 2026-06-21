@@ -1423,6 +1423,45 @@
       "parkItems": "Inhalte",
       "data": "Daten"
     },
+    "technicalPages": {
+      "kicker": "Redaktionelle Inhalte",
+      "title": "Technikseiten",
+      "subtitle": "Lange technische Erklärseiten verwalten.",
+      "create": "Seite erstellen",
+      "empty": "Noch keine Technikseite vorhanden.",
+      "table": {
+        "title": "Titel",
+        "category": "Kategorie",
+        "slug": "Slug",
+        "status": "Status",
+        "blocks": "Block/Blöcke"
+      },
+      "import": {
+        "label": "JSON-Upsert",
+        "submit": "Importieren",
+        "invalidJson": "Das JSON ist ungültig.",
+        "success": "Import abgeschlossen.",
+        "failed": "Dieses JSON konnte nicht importiert werden."
+      },
+      "edit": {
+        "createTitle": "Technikseite erstellen",
+        "updateTitle": "Technikseite bearbeiten",
+        "identity": "Identität",
+        "categoryKey": "Kategorieschlüssel",
+        "slug": "Slug",
+        "sortOrder": "Anzeigereihenfolge",
+        "isVisible": "Seite veröffentlichen",
+        "localized": "Mehrsprachige Texte",
+        "categoryNames": "Kategorienamen",
+        "titles": "Titel",
+        "summaries": "Zusammenfassungen",
+        "richContent": "Rich Content",
+        "aliasesJson": "Alias-JSON",
+        "contentBlocksJson": "Inhaltsblöcke JSON",
+        "invalidJson": "Aliases oder Inhaltsblöcke sind kein gültiges JSON.",
+        "saveFailed": "Technikseite konnte nicht gespeichert werden."
+      }
+    },
     "title": "Administrationsbereich",
     "users": {
       "total": "Gesamtzahl der Benutzer: {{count}}",
@@ -1781,6 +1820,7 @@
     "home": "Startseite",
     "parks": "Parks",
     "rankings": "Ranglisten",
+    "technical": "Technik",
     "about": "Über uns",
     "profile": "Profil",
     "admin": "Administration"
@@ -3177,6 +3217,27 @@
       "title": "Dieses Video teilen",
       "description": "Sende dieses Video an jemanden, dem es gefallen könnte.",
       "text": "Sieh dir {{title}} auf AmusementPark an."
+    }
+  },
+  "technicalPages": {
+    "list": {
+      "kicker": "Technik-Guides",
+      "title": "Technische Elemente verstehen",
+      "subtitle": "Entdecke Lifts, Rückhaltesysteme, Züge, Materialien und die Systeme hinter Attraktionen.",
+      "loading": "Technik-Guides werden geladen...",
+      "empty": "Es ist noch keine Technikseite veröffentlicht.",
+      "errorMessage": "Technikseiten konnten nicht geladen werden.",
+      "categoryCount": "{{count}} Seite(n)"
+    },
+    "detail": {
+      "loading": "Technikseite wird geladen...",
+      "backToList": "Alle technischen Elemente",
+      "errorMessage": "Diese Technikseite konnte nicht geladen werden.",
+      "diagram": {
+        "input": "Energie",
+        "system": "System",
+        "train": "Zug"
+      }
     }
   },
   "versionHistoryPage": {

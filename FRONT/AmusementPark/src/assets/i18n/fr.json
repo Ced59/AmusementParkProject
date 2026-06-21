@@ -1423,6 +1423,45 @@
       "parkItems": "Contenus",
       "data": "Données"
     },
+    "technicalPages": {
+      "kicker": "Contenu éditorial",
+      "title": "Pages techniques",
+      "subtitle": "Gestion des pages longues d'explication technique.",
+      "create": "Créer une page",
+      "empty": "Aucune page technique pour le moment.",
+      "table": {
+        "title": "Titre",
+        "category": "Catégorie",
+        "slug": "Slug",
+        "status": "Statut",
+        "blocks": "bloc(s)"
+      },
+      "import": {
+        "label": "Upsert JSON",
+        "submit": "Importer",
+        "invalidJson": "Le JSON est invalide.",
+        "success": "Import terminé.",
+        "failed": "Impossible d'importer ce JSON."
+      },
+      "edit": {
+        "createTitle": "Créer une page technique",
+        "updateTitle": "Modifier la page technique",
+        "identity": "Identité",
+        "categoryKey": "Clé de catégorie",
+        "slug": "Slug",
+        "sortOrder": "Ordre d'affichage",
+        "isVisible": "Publier la page",
+        "localized": "Textes multilingues",
+        "categoryNames": "Noms de catégorie",
+        "titles": "Titres",
+        "summaries": "Résumés",
+        "richContent": "Contenu riche",
+        "aliasesJson": "Alias JSON",
+        "contentBlocksJson": "Blocs de contenu JSON",
+        "invalidJson": "Les alias ou blocs de contenu ne sont pas un JSON valide.",
+        "saveFailed": "Impossible d'enregistrer la page technique."
+      }
+    },
     "title": "Panneau d'administration",
     "users": {
       "total": "Nombre total d'utilisateurs : {{count}}",
@@ -1781,6 +1820,7 @@
     "home": "Accueil",
     "parks": "Parcs",
     "rankings": "Classements",
+    "technical": "Technique",
     "about": "À propos",
     "profile": "Profil",
     "admin": "Admin"
@@ -3177,6 +3217,27 @@
       "title": "Partager cette vidéo",
       "description": "Envoie cette vidéo à quelqu’un qui pourrait l’apprécier.",
       "text": "Regarde {{title}} sur AmusementPark."
+    }
+  },
+  "technicalPages": {
+    "list": {
+      "kicker": "Dossiers techniques",
+      "title": "Comprendre les éléments techniques",
+      "subtitle": "Explore les lifts, retenues, trains, matériaux et autres systèmes qui façonnent les attractions.",
+      "loading": "Chargement des dossiers techniques...",
+      "empty": "Aucune page technique publiée pour le moment.",
+      "errorMessage": "Impossible de charger les pages techniques.",
+      "categoryCount": "{{count}} page(s)"
+    },
+    "detail": {
+      "loading": "Chargement de la page technique...",
+      "backToList": "Tous les éléments techniques",
+      "errorMessage": "Impossible de charger cette page technique.",
+      "diagram": {
+        "input": "Énergie",
+        "system": "Système",
+        "train": "Train"
+      }
     }
   },
   "versionHistoryPage": {

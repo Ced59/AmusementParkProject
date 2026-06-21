@@ -17,6 +17,7 @@ public static class DomainCatalog
         "ParkFounder",
         "ParkOperator",
         "AttractionManufacturer",
+        "TechnicalPage",
         "AttractionDetails",
         "AttractionLocations",
         "AttractionAccessCondition",

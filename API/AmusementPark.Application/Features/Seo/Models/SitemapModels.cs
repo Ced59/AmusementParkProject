@@ -15,6 +15,7 @@ public static class SitemapSectionKeys
     public const string ParkItemImages = "park-item-images";
     public const string ParkItemVideos = "park-item-videos";
     public const string References = "references";
+    public const string TechnicalPages = "technical-pages";
 
     public static readonly IReadOnlyCollection<string> All = new[]
     {
@@ -28,6 +29,7 @@ public static class SitemapSectionKeys
         ParkItemImages,
         ParkItemVideos,
         References,
+        TechnicalPages,
     };
 }
 

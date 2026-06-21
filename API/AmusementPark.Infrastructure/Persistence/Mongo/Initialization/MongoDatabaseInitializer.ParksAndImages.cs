@@ -10,6 +10,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.TechnicalPages;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Bson;
@@ -328,6 +329,7 @@ public sealed partial class MongoDatabaseInitializer
         await BackfillAdminReviewPriorityAsync(this.database.GetCollection<ParkItemDocument>(this.settings.ParkItemsCollectionName), cancellationToken);
         await BackfillAdminReviewPriorityAsync(this.database.GetCollection<ParkOperatorDocument>(this.settings.ParkOperatorsCollectionName), cancellationToken);
         await BackfillAdminReviewPriorityAsync(this.database.GetCollection<AttractionManufacturerDocument>(this.settings.AttractionManufacturersCollectionName), cancellationToken);
+        await BackfillAdminReviewPriorityAsync(this.database.GetCollection<TechnicalPageDocument>(this.settings.TechnicalPagesCollectionName), cancellationToken);
     }
 
     private static async Task BackfillParkRandomSortKeysAsync(IMongoCollection<ParkDocument> collection, CancellationToken cancellationToken)

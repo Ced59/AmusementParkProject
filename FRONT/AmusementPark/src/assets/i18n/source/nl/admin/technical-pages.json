@@ -1,0 +1,43 @@
+{
+  "admin": {
+    "technicalPages": {
+      "kicker": "Redactionele inhoud",
+      "title": "Technische pagina's",
+      "subtitle": "Beheer lange technische uitlegpagina's.",
+      "create": "Pagina maken",
+      "empty": "Nog geen technische pagina.",
+      "table": {
+        "title": "Titel",
+        "category": "Categorie",
+        "slug": "Slug",
+        "status": "Status",
+        "blocks": "blok(ken)"
+      },
+      "import": {
+        "label": "JSON-upsert",
+        "submit": "Importeren",
+        "invalidJson": "De JSON is ongeldig.",
+        "success": "Import voltooid.",
+        "failed": "Deze JSON kan niet worden geïmporteerd."
+      },
+      "edit": {
+        "createTitle": "Technische pagina maken",
+        "updateTitle": "Technische pagina bewerken",
+        "identity": "Identiteit",
+        "categoryKey": "Categoriesleutel",
+        "slug": "Slug",
+        "sortOrder": "Weergavevolgorde",
+        "isVisible": "Pagina publiceren",
+        "localized": "Meertalige teksten",
+        "categoryNames": "Categorienamen",
+        "titles": "Titels",
+        "summaries": "Samenvattingen",
+        "richContent": "Rijke inhoud",
+        "aliasesJson": "Aliases JSON",
+        "contentBlocksJson": "Inhoudsblokken JSON",
+        "invalidJson": "Aliases of inhoudsblokken zijn geen geldige JSON.",
+        "saveFailed": "Technische pagina kan niet worden opgeslagen."
+      }
+    }
+  }
+}

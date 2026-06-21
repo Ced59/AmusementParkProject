@@ -388,6 +388,11 @@ public sealed class SeoSitemapGenerationOrchestrator
             return 9;
         }
 
+        if (string.Equals(key, SitemapSectionKeys.TechnicalPages, StringComparison.OrdinalIgnoreCase))
+        {
+            return 10;
+        }
+
         return 100;
     }
 

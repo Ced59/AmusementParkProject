@@ -1423,6 +1423,45 @@
       "parkItems": "Treści",
       "data": "Dane"
     },
+    "technicalPages": {
+      "kicker": "Treści redakcyjne",
+      "title": "Strony techniczne",
+      "subtitle": "Zarządzanie długimi stronami z wyjaśnieniami technicznymi.",
+      "create": "Utwórz stronę",
+      "empty": "Nie ma jeszcze strony technicznej.",
+      "table": {
+        "title": "Tytuł",
+        "category": "Kategoria",
+        "slug": "Slug",
+        "status": "Status",
+        "blocks": "blok(i)"
+      },
+      "import": {
+        "label": "Upsert JSON",
+        "submit": "Importuj",
+        "invalidJson": "JSON jest nieprawidłowy.",
+        "success": "Import zakończony.",
+        "failed": "Nie można zaimportować tego JSON."
+      },
+      "edit": {
+        "createTitle": "Utwórz stronę techniczną",
+        "updateTitle": "Edytuj stronę techniczną",
+        "identity": "Tożsamość",
+        "categoryKey": "Klucz kategorii",
+        "slug": "Slug",
+        "sortOrder": "Kolejność wyświetlania",
+        "isVisible": "Opublikuj stronę",
+        "localized": "Teksty wielojęzyczne",
+        "categoryNames": "Nazwy kategorii",
+        "titles": "Tytuły",
+        "summaries": "Podsumowania",
+        "richContent": "Treść rozszerzona",
+        "aliasesJson": "Aliasy JSON",
+        "contentBlocksJson": "Bloki treści JSON",
+        "invalidJson": "Aliasy lub bloki treści nie są prawidłowym JSON.",
+        "saveFailed": "Nie można zapisać strony technicznej."
+      }
+    },
     "title": "Panel administracyjny",
     "users": {
       "total": "Łączna liczba użytkowników: {{count}}",
@@ -1781,6 +1820,7 @@
     "home": "Strona główna",
     "parks": "Parki",
     "rankings": "Rankingi",
+    "technical": "Technika",
     "about": "O nas",
     "profile": "Profil",
     "admin": "Administracja"
@@ -3177,6 +3217,27 @@
       "title": "Udostępnij ten film",
       "description": "Wyślij ten film komuś, komu może się spodobać.",
       "text": "Obejrzyj {{title}} w AmusementPark."
+    }
+  },
+  "technicalPages": {
+    "list": {
+      "kicker": "Przewodniki techniczne",
+      "title": "Poznaj elementy techniczne",
+      "subtitle": "Odkrywaj windy, zabezpieczenia, pociągi, materiały i systemy tworzące atrakcje.",
+      "loading": "Ładowanie przewodników technicznych...",
+      "empty": "Nie opublikowano jeszcze żadnej strony technicznej.",
+      "errorMessage": "Nie można załadować stron technicznych.",
+      "categoryCount": "{{count}} strona/stron"
+    },
+    "detail": {
+      "loading": "Ładowanie strony technicznej...",
+      "backToList": "Wszystkie elementy techniczne",
+      "errorMessage": "Nie można załadować tej strony technicznej.",
+      "diagram": {
+        "input": "Energia",
+        "system": "System",
+        "train": "Pociąg"
+      }
     }
   },
   "versionHistoryPage": {

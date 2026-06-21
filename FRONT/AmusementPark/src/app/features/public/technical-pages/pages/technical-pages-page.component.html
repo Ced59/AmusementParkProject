@@ -1,0 +1,58 @@
+<section class="technical-index">
+  <header class="technical-index__hero">
+    <div class="technical-index__hero-copy">
+      <span class="technical-index__kicker">
+        <i class="pi pi-cog" aria-hidden="true"></i>
+        {{ 'technicalPages.list.kicker' | translate }}
+      </span>
+      <h1>{{ 'technicalPages.list.title' | translate }}</h1>
+      <p>{{ 'technicalPages.list.subtitle' | translate }}</p>
+    </div>
+  </header>
+
+  <main class="technical-index__body">
+    @if (isLoading()) {
+      <section class="technical-index__state">
+        <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+        <p>{{ 'technicalPages.list.loading' | translate }}</p>
+      </section>
+    } @else if (errorMessage(); as error) {
+      <section class="technical-index__state technical-index__state--error">
+        <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+        <p>{{ error | translate }}</p>
+      </section>
+    } @else if (groups().length === 0) {
+      <section class="technical-index__state">
+        <i class="pi pi-inbox" aria-hidden="true"></i>
+        <p>{{ 'technicalPages.list.empty' | translate }}</p>
+      </section>
+    } @else {
+      <div class="technical-category-list">
+        @for (group of groups(); track group.categoryKey) {
+          <section class="technical-category">
+            <div class="technical-category__head">
+              <span class="technical-category__icon" aria-hidden="true"><i class="pi pi-sitemap"></i></span>
+              <div>
+                <h2>{{ group.categoryName }}</h2>
+                <p>{{ 'technicalPages.list.categoryCount' | translate:{ count: group.pages.length } }}</p>
+              </div>
+            </div>
+
+            <div class="technical-card-grid">
+              @for (page of group.pages; track page.slug) {
+                <a class="technical-card" [routerLink]="['/', currentLang(), 'technical', page.slug]">
+                  <span class="technical-card__top">
+                    <span class="technical-card__category">{{ group.categoryName }}</span>
+                    <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                  </span>
+                  <strong>{{ title(page) }}</strong>
+                  <span>{{ summary(page) }}</span>
+                </a>
+              }
+            </div>
+          </section>
+        }
+      </div>
+    }
+  </main>
+</section>

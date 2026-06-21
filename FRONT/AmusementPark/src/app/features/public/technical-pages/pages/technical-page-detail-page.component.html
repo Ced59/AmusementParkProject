@@ -1,0 +1,206 @@
+<section class="technical-detail">
+  @if (isLoading()) {
+    <section class="technical-detail__state">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <p>{{ 'technicalPages.detail.loading' | translate }}</p>
+    </section>
+  } @else if (errorMessage(); as error) {
+    <section class="technical-detail__state technical-detail__state--error">
+      <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+      <p>{{ error | translate }}</p>
+      <a [routerLink]="['/', currentLang(), 'technical']">{{ 'technicalPages.detail.backToList' | translate }}</a>
+    </section>
+  } @else if (page(); as currentPage) {
+    <header class="technical-detail__hero">
+      <div class="technical-detail__hero-inner">
+        <a class="technical-detail__back" [routerLink]="['/', currentLang(), 'technical']">
+          <i class="pi pi-arrow-left" aria-hidden="true"></i>
+          <span>{{ 'technicalPages.detail.backToList' | translate }}</span>
+        </a>
+
+        <span class="technical-detail__category">
+          <i class="pi pi-cog" aria-hidden="true"></i>
+          {{ categoryName(currentPage) }}
+        </span>
+        <h1>{{ title(currentPage) }}</h1>
+        <p>{{ summary(currentPage) }}</p>
+      </div>
+    </header>
+
+    <main class="technical-detail__body">
+      @for (block of currentPage.contentBlocks; track $index) {
+        @switch (normalizedBlockType(block)) {
+          @case ('image') {
+            <section class="technical-block technical-block--media">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              @if (imageUrl(block); as src) {
+                <figure>
+                  <img [src]="src" [alt]="blockAltText(block)" loading="lazy" />
+                  @if (blockCaption(block)) {
+                    <figcaption>{{ blockCaption(block) }}</figcaption>
+                  }
+                </figure>
+              }
+              @if (blockBody(block)) {
+                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+              }
+            </section>
+          }
+          @case ('diagram') {
+            <section class="technical-block technical-block--diagram">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              <div class="technical-diagram" [attr.data-diagram-key]="block.diagramKey || 'generic'">
+                <span class="technical-diagram__rail"></span>
+                <span class="technical-diagram__node technical-diagram__node--input">{{ 'technicalPages.detail.diagram.input' | translate }}</span>
+                <span class="technical-diagram__node technical-diagram__node--system">{{ 'technicalPages.detail.diagram.system' | translate }}</span>
+                <span class="technical-diagram__node technical-diagram__node--train">{{ 'technicalPages.detail.diagram.train' | translate }}</span>
+              </div>
+              @if (blockBody(block)) {
+                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+              }
+              @if (blockCaption(block)) {
+                <p class="technical-block__caption">{{ blockCaption(block) }}</p>
+              }
+            </section>
+          }
+          @case ('table') {
+            <section class="technical-block technical-block--table">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              @if (blockBody(block)) {
+                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+              }
+              @if (block.table; as table) {
+                <div class="technical-table-wrap">
+                  <table class="technical-table">
+                    <thead>
+                      <tr>
+                        @for (header of table.headers; track $index) {
+                          <th>{{ cellText(header) }}</th>
+                        }
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (row of table.rows; track $index) {
+                        <tr>
+                          @for (cell of row.cells; track $index) {
+                            <td>{{ cellText(cell) }}</td>
+                          }
+                        </tr>
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              }
+            </section>
+          }
+          @case ('list') {
+            <section class="technical-block technical-block--list">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              @if (blockBody(block)) {
+                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+              }
+              <ul>
+                @for (item of block.items || []; track $index) {
+                  <li>{{ itemText(item) }}</li>
+                }
+              </ul>
+            </section>
+          }
+          @case ('metrics') {
+            <section class="technical-block technical-block--metrics">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              <div class="technical-metrics">
+                @for (metric of block.metrics || []; track $index) {
+                  <article class="technical-metric">
+                    <span>{{ metricLabel(metric) }}</span>
+                    <strong>{{ metricValue(metric) }}</strong>
+                    @if (metricHelpText(metric)) {
+                      <small>{{ metricHelpText(metric) }}</small>
+                    }
+                  </article>
+                }
+              </div>
+            </section>
+          }
+          @case ('callout') {
+            <section class="technical-block technical-block--callout" [attr.data-tone]="blockTone(block)">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              @if (blockBody(block)) {
+                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+              }
+            </section>
+          }
+          @case ('quote') {
+            <blockquote class="technical-block technical-block--quote">
+              @if (blockBody(block)) {
+                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+              }
+              @if (blockCaption(block)) {
+                <cite>{{ blockCaption(block) }}</cite>
+              }
+            </blockquote>
+          }
+          @case ('links') {
+            <section class="technical-block technical-block--links">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              <div class="technical-link-list">
+                @for (link of block.links || []; track link.url) {
+                  <a [href]="link.url" target="_blank" rel="noopener noreferrer nofollow">
+                    <span>{{ linkLabel(link) }}</span>
+                    <i class="pi pi-external-link" aria-hidden="true"></i>
+                  </a>
+                }
+              </div>
+            </section>
+          }
+          @case ('columns') {
+            <section class="technical-block technical-block--columns">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              @if (blockBody(block)) {
+                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+              }
+              <div class="technical-columns">
+                @for (column of block.columns || []; track $index) {
+                  <article class="technical-column">
+                    @if (blockTitle(column)) {
+                      <h3>{{ blockTitle(column) }}</h3>
+                    }
+                    @if (blockBody(column)) {
+                      <div class="technical-rich-text" [innerHTML]="blockBody(column) | safeRichHtml"></div>
+                    }
+                  </article>
+                }
+              </div>
+            </section>
+          }
+          @default {
+            <section class="technical-block technical-block--text">
+              @if (blockTitle(block)) {
+                <h2>{{ blockTitle(block) }}</h2>
+              }
+              @if (blockBody(block)) {
+                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+              }
+            </section>
+          }
+        }
+      }
+    </main>
+  }
+</section>

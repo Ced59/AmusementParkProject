@@ -1,0 +1,43 @@
+{
+  "admin": {
+    "technicalPages": {
+      "kicker": "Contenuto editoriale",
+      "title": "Pagine tecniche",
+      "subtitle": "Gestione delle pagine lunghe di spiegazione tecnica.",
+      "create": "Crea pagina",
+      "empty": "Nessuna pagina tecnica per ora.",
+      "table": {
+        "title": "Titolo",
+        "category": "Categoria",
+        "slug": "Slug",
+        "status": "Stato",
+        "blocks": "blocco/i"
+      },
+      "import": {
+        "label": "Upsert JSON",
+        "submit": "Importa",
+        "invalidJson": "Il JSON non è valido.",
+        "success": "Import completato.",
+        "failed": "Impossibile importare questo JSON."
+      },
+      "edit": {
+        "createTitle": "Crea pagina tecnica",
+        "updateTitle": "Modifica pagina tecnica",
+        "identity": "Identità",
+        "categoryKey": "Chiave categoria",
+        "slug": "Slug",
+        "sortOrder": "Ordine di visualizzazione",
+        "isVisible": "Pubblica pagina",
+        "localized": "Testi multilingue",
+        "categoryNames": "Nomi categoria",
+        "titles": "Titoli",
+        "summaries": "Riassunti",
+        "richContent": "Contenuto ricco",
+        "aliasesJson": "Alias JSON",
+        "contentBlocksJson": "Blocchi contenuto JSON",
+        "invalidJson": "Alias o blocchi contenuto non sono JSON validi.",
+        "saveFailed": "Impossibile salvare la pagina tecnica."
+      }
+    }
+  }
+}

@@ -17,6 +17,7 @@ using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialShare.Ports;
+using AmusementPark.Application.Features.TechnicalPages.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Application.Ports;
@@ -137,6 +138,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IParkFounderRepository, ParkFounderRepository>();
         services.AddScoped<IParkOperatorRepository, ParkOperatorRepository>();
         services.AddScoped<IAttractionManufacturerRepository, AttractionManufacturerRepository>();
+        services.AddScoped<ITechnicalPageRepository, TechnicalPageRepository>();
         services.AddScoped<IParkRepository, ParkRepository>();
         services.AddScoped<IParkDetailSummaryReadRepository, ParkDetailSummaryReadRepository>();
         services.AddScoped<IParkMapItemsReadRepository, ParkMapItemsReadRepository>();
