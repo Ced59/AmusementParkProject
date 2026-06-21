@@ -27,7 +27,7 @@ public sealed class GetRandomVisibleParksQueryHandler : IQueryHandler<GetRandomV
         int requestedLimit = query.Limit <= 0 ? DefaultLimit : query.Limit;
         int normalizedLimit = Math.Clamp(requestedLimit, MinimumLimit, MaximumLimit);
 
-        IReadOnlyCollection<Park> parks = await this.parkRepository.GetRandomVisibleAsync(normalizedLimit, cancellationToken);
+        IReadOnlyCollection<Park> parks = await this.parkRepository.GetRandomVisibleAsync(normalizedLimit, query.ClosedFilter, cancellationToken);
         return ApplicationResult<IReadOnlyCollection<Park>>.Success(parks);
     }
 }

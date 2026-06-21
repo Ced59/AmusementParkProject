@@ -5,10 +5,15 @@ import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
+
+export interface ParkMapHttpOptions extends AnonymousHttpOptions {
+  closedFilter?: ClosedEntityFilter;
+}
 
 export interface ParkMapParksPort {
-  getParkMapItems(id: string, options?: AnonymousHttpOptions): Observable<ParkMapItems>;
-  getParkDetailSummary(id: string, options?: AnonymousHttpOptions): Observable<ParkDetailSummary>;
+  getParkMapItems(id: string, options?: ParkMapHttpOptions): Observable<ParkMapItems>;
+  getParkDetailSummary(id: string, options?: ParkMapHttpOptions): Observable<ParkDetailSummary>;
 }
 
 export const PARK_MAP_PARKS_PORT = new InjectionToken<ParkMapParksPort>('PARK_MAP_PARKS_PORT', {

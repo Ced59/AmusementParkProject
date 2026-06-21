@@ -25,6 +25,21 @@
           <p class="public-section-header__subtitle">{{ 'parks.mapPage.subtitle' | translate:{ name: currentPark.name } }}</p>
 
           <div class="park-subpage-hero__actions">
+            <label class="park-map-page__closed-filter">
+              <span>{{ 'parkItems.filters.closedStatus' | translate }}</span>
+              <select [value]="selectedClosedFilter" (change)="onClosedFilterSelectChanged($event)">
+                @for (option of closedFilterOptions; track option.value) {
+                  <option [value]="option.value">
+                    @if (option.labelKey) {
+                      {{ option.labelKey | translate }}
+                    } @else {
+                      {{ option.label ?? '' }}
+                    }
+                  </option>
+                }
+              </select>
+            </label>
+
             @if (detailLink) {
               <a appUiButton="ghost" [routerLink]="detailLink">
                 <i class="pi pi-arrow-left" aria-hidden="true"></i>

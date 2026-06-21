@@ -29,7 +29,7 @@ public sealed class GetVisibleParkMapPointsQueryHandler : IQueryHandler<GetVisib
         IReadOnlyCollection<string> regionCountryCodes = this.countryReferenceService.GetCountryCodesForRegion(query.Region);
         ParkSearchCriteria criteria = new ParkSearchCriteria(query.SearchTerm, matchingCountryCodes, regionCountryCodes);
 
-        IReadOnlyCollection<Park> parks = await this.parkRepository.GetVisibleMapPointsAsync(criteria, cancellationToken);
+        IReadOnlyCollection<Park> parks = await this.parkRepository.GetVisibleMapPointsAsync(criteria, query.ClosedFilter, cancellationToken);
         return ApplicationResult<IReadOnlyCollection<Park>>.Success(parks);
     }
 }

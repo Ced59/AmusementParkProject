@@ -133,6 +133,56 @@ public sealed class ImageRepository : IImageRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken)
+    {
+        List<string> normalizedOwnerIds = ownerIds
+            .Where(static ownerId => !string.IsNullOrWhiteSpace(ownerId))
+            .Select(static ownerId => ownerId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedOwnerIds.Count == 0)
+        {
+            return new Dictionary<string, string>(StringComparer.Ordinal);
+        }
+
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = BuildOwnerTypeFilter(builder, ownerType) &
+                                                 builder.In(static document => document.OwnerId, normalizedOwnerIds) &
+                                                 BuildCategoryFilter(builder, category);
+
+        if (publishedOnly)
+        {
+            filter &= builder.Eq(static document => document.IsPublished, true);
+        }
+
+        List<ImageOwnerMainImageProjection> projections = await this.collection.Find(filter)
+            .SortByDescending(static document => document.IsCurrent)
+            .ThenByDescending(static document => document.CreatedAt)
+            .Project(static document => new ImageOwnerMainImageProjection
+            {
+                Id = document.Id,
+                OwnerId = document.OwnerId,
+            })
+            .ToListAsync(cancellationToken);
+
+        Dictionary<string, string> imageIdsByOwnerId = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (ImageOwnerMainImageProjection projection in projections)
+        {
+            if (string.IsNullOrWhiteSpace(projection.OwnerId) || string.IsNullOrWhiteSpace(projection.Id))
+            {
+                continue;
+            }
+
+            if (!imageIdsByOwnerId.ContainsKey(projection.OwnerId))
+            {
+                imageIdsByOwnerId[projection.OwnerId] = projection.Id;
+            }
+        }
+
+        return imageIdsByOwnerId;
+    }
+
     public async Task<Image?> GetCurrentByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken)
     {
         string cacheKey = BuildCurrentOwnerImageCacheKey(ownerType, ownerId, category);
@@ -480,6 +530,13 @@ public sealed class ImageRepository : IImageRepository
             ("created", false) => builder.Ascending(static document => document.CreatedAt),
             _ => builder.Descending(static document => document.CreatedAt),
         };
+    }
+
+    private sealed class ImageOwnerMainImageProjection
+    {
+        public string? Id { get; init; }
+
+        public string? OwnerId { get; init; }
     }
 }
 

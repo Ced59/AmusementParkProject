@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, inject } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
@@ -16,7 +17,7 @@ import { ParkItemCardComponent } from './park-item-card.component';
 import { ParkItemsFiltersComponent } from './park-items-filters.component';
 import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
 import { UiMapSlotComponent } from '@ui/maps';
-import { UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 
 @Component({
@@ -27,6 +28,7 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
   imports: [
     NgIf,
     NgFor,
+    RouterLink,
     TranslateModule,
     EmptyStateComponent,
     PageStateComponent,
@@ -35,6 +37,7 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
     ParkItemCardComponent,
     ParkItemsFiltersComponent,
     UiMapSlotComponent,
+    UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
     UiSurfaceDirective,
@@ -51,9 +54,12 @@ export class ParkItemsListViewComponent {
   @Input({ required: true }) selectedCategory!: Signal<string | null>;
   @Input({ required: true }) selectedType!: Signal<string | null>;
   @Input({ required: true }) selectedZoneId!: Signal<string | null>;
+  @Input({ required: true }) selectedClosedFilter!: Signal<string>;
   @Input({ required: true }) categoryOptions!: Signal<SelectOption[]>;
   @Input({ required: true }) typeOptions!: Signal<SelectOption[]>;
   @Input({ required: true }) zoneOptions!: Signal<SelectOption[]>;
+  @Input({ required: true }) closedFilterOptions!: Signal<SelectOption[]>;
+  @Input({ required: true }) hasZones!: Signal<boolean>;
   @Input({ required: true }) totalResults!: Signal<number>;
   @Input({ required: true }) rangeStart!: Signal<number>;
   @Input({ required: true }) rangeEnd!: Signal<number>;
@@ -66,10 +72,9 @@ export class ParkItemsListViewComponent {
   @Output() categoryChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() typeChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() zoneChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
+  @Output() closedFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() zoneSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
-
-  protected readonly hasZones = computed(() => false);
 
   private readonly mapMarkerPopupActionService: MapMarkerPopupActionService = inject(MapMarkerPopupActionService);
   private readonly translateService: TranslateService = inject(TranslateService);
@@ -122,6 +127,10 @@ export class ParkItemsListViewComponent {
 
   onZoneChanged(value: string | null): void {
     this.zoneChanged.emit(value);
+  }
+
+  onClosedFilterChanged(value: string | null): void {
+    this.closedFilterChanged.emit(value);
   }
 
   onZoneSelected(zoneId: string | null): void {

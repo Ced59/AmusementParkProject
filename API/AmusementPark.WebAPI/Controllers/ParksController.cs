@@ -41,8 +41,8 @@ public sealed class ParksController : ControllerBase
     private readonly IQueryHandler<GetParkByIdQuery, ApplicationResult<Park>> getParkByIdQueryHandler;
     private readonly IQueryHandler<GetParkDetailSummaryQuery, ApplicationResult<ParkDetailSummaryResult>> getParkDetailSummaryQueryHandler;
     private readonly IQueryHandler<GetParkMapItemsQuery, ApplicationResult<ParkMapItemsResult>> getParkMapItemsQueryHandler;
-    private readonly IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler;
-    private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<Park>>> searchParksQueryHandler;
+    private readonly IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>> getParksPageQueryHandler;
+    private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksQueryHandler;
     private readonly IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler;
     private readonly IQueryHandler<CalculateParkDistancesQuery, ApplicationResult<ParkDistanceResult>> calculateParkDistancesQueryHandler;
     private readonly IQueryHandler<GetNearestParksQuery, ApplicationResult<ParkDistanceResult>> getNearestParksQueryHandler;
@@ -58,8 +58,8 @@ public sealed class ParksController : ControllerBase
         IQueryHandler<GetParkByIdQuery, ApplicationResult<Park>> getParkByIdQueryHandler,
         IQueryHandler<GetParkDetailSummaryQuery, ApplicationResult<ParkDetailSummaryResult>> getParkDetailSummaryQueryHandler,
         IQueryHandler<GetParkMapItemsQuery, ApplicationResult<ParkMapItemsResult>> getParkMapItemsQueryHandler,
-        IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler,
-        IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<Park>>> searchParksQueryHandler,
+        IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>> getParksPageQueryHandler,
+        IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksQueryHandler,
         IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler,
         IQueryHandler<CalculateParkDistancesQuery, ApplicationResult<ParkDistanceResult>> calculateParkDistancesQueryHandler,
         IQueryHandler<GetNearestParksQuery, ApplicationResult<ParkDistanceResult>> getNearestParksQueryHandler,
@@ -108,7 +108,7 @@ public sealed class ParksController : ControllerBase
     public async Task<IActionResult> GetRandomVisibleParksAsync([FromQuery] int limit = 4, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<Park>> result = await this.getRandomVisibleParksQueryHandler.HandleAsync(
-            new GetRandomVisibleParksQuery(limit),
+            new GetRandomVisibleParksQuery(limit, ClosedEntityFilter.OpenOnly),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -144,13 +144,13 @@ public sealed class ParksController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkMapPointDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetVisibleParkMapPointsAsync([FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetVisibleParkMapPointsAsync([FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
     {
         string? effectiveQuery = string.IsNullOrWhiteSpace(query) ? name : query;
         WorldRegionFilter? regionFilter = WorldRegionFilterParser.Parse(region);
 
         ApplicationResult<IReadOnlyCollection<Park>> result = await this.getVisibleParkMapPointsQueryHandler.HandleAsync(
-            new GetVisibleParkMapPointsQuery(effectiveQuery, regionFilter),
+            new GetVisibleParkMapPointsQuery(effectiveQuery, regionFilter, ParseClosedEntityFilter(closedFilter)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -170,9 +170,9 @@ public sealed class ParksController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDetailSummaryDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetParkDetailSummaryAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetParkDetailSummaryAsync([FromRoute] string id, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<ParkDetailSummaryResult> result = await this.getParkDetailSummaryQueryHandler.HandleAsync(new GetParkDetailSummaryQuery(id, this.UserCanSeeNonVisible()), cancellationToken);
+        ApplicationResult<ParkDetailSummaryResult> result = await this.getParkDetailSummaryQueryHandler.HandleAsync(new GetParkDetailSummaryQuery(id, this.UserCanSeeNonVisible(), ParseClosedEntityFilter(closedFilter)), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
@@ -185,9 +185,9 @@ public sealed class ParksController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkMapItemsDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetParkMapItemsAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetParkMapItemsAsync([FromRoute] string id, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<ParkMapItemsResult> result = await this.getParkMapItemsQueryHandler.HandleAsync(new GetParkMapItemsQuery(id, this.UserCanSeeNonVisible()), cancellationToken);
+        ApplicationResult<ParkMapItemsResult> result = await this.getParkMapItemsQueryHandler.HandleAsync(new GetParkMapItemsQuery(id, this.UserCanSeeNonVisible(), ParseClosedEntityFilter(closedFilter)), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
@@ -226,6 +226,9 @@ public sealed class ParksController : ControllerBase
         [FromQuery] string? type = null,
         [FromQuery] string? countryCode = null,
         [FromQuery] bool? hasValidCoordinates = null,
+        [FromQuery] string? closedFilter = null,
+        [FromQuery] string? sortBy = null,
+        [FromQuery] string? sortDirection = null,
         CancellationToken cancellationToken = default)
     {
         bool canSeeNonVisible = this.UserCanSeeNonVisible();
@@ -237,10 +240,14 @@ public sealed class ParksController : ControllerBase
         bool? effectiveIsVisible = canSeeNonVisible ? isVisible : true;
         AdminReviewStatus? parsedAdminReviewStatus = canSeeNonVisible ? ParseAdminReviewStatus(adminReviewStatus) : null;
         ParkType? parsedType = ParseParkType(type);
+        ClosedEntityFilter parsedClosedFilter = ParseClosedEntityFilter(closedFilter);
+        ClosedEntityFilter effectiveClosedFilter = canSeeNonVisible && !visibleOnly ? ClosedEntityFilter.All : parsedClosedFilter;
+        ParkAdminSortField parsedSortField = canSeeNonVisible ? ParseParkAdminSortField(sortBy) : ParkAdminSortField.Default;
+        bool sortDescending = IsDescendingSort(sortDirection);
 
-        ApplicationResult<PagedResult<Park>> result = string.IsNullOrWhiteSpace(effectiveQuery) && regionFilter is null
-            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates), cancellationToken)
-            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates), cancellationToken);
+        ApplicationResult<PagedResult<ParkListResult>> result = string.IsNullOrWhiteSpace(effectiveQuery) && regionFilter is null
+            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedSortField, sortDescending), cancellationToken)
+            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedSortField, sortDescending), cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
         {
@@ -263,11 +270,12 @@ public sealed class ParksController : ControllerBase
         [FromQuery] double? radiusMeters = null,
         [FromQuery] double? radiusKilometers = null,
         [FromQuery] double? radius = null,
+        [FromQuery] string? closedFilter = null,
         CancellationToken cancellationToken = default)
     {
         double radiusInKilometers = ResolveRadiusInKilometers(radiusMeters, radiusKilometers, radius);
         ApplicationResult<IReadOnlyCollection<Park>> result = await this.searchParksByLocationQueryHandler.HandleAsync(
-            new SearchParksByLocationQuery(latitude, longitude, radiusInKilometers, false),
+            new SearchParksByLocationQuery(latitude, longitude, radiusInKilometers, false, ParseClosedEntityFilter(closedFilter)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -308,10 +316,11 @@ public sealed class ParksController : ControllerBase
         [FromRoute] string id,
         [FromQuery] int limit = 4,
         [FromQuery] double? maxDistanceKilometers = null,
+        [FromQuery] string? closedFilter = null,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<ParkDistanceResult> result = await this.getNearestParksQueryHandler.HandleAsync(
-            new GetNearestParksQuery(id, limit, maxDistanceKilometers, this.UserCanSeeNonVisible()),
+            new GetNearestParksQuery(id, limit, maxDistanceKilometers, this.UserCanSeeNonVisible(), ParseClosedEntityFilter(closedFilter)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -387,6 +396,32 @@ public sealed class ParksController : ControllerBase
     private static ParkType? ParseParkType(string? value)
     {
         return Enum.TryParse(value, true, out ParkType parsed) ? parsed : null;
+    }
+
+    private static ClosedEntityFilter ParseClosedEntityFilter(string? value)
+    {
+        return value?.Trim().ToLowerInvariant() switch
+        {
+            "all" or "includeclosed" or "withclosed" => ClosedEntityFilter.All,
+            "closed" or "closedonly" or "onlyclosed" => ClosedEntityFilter.ClosedOnly,
+            _ => ClosedEntityFilter.OpenOnly,
+        };
+    }
+
+    private static ParkAdminSortField ParseParkAdminSortField(string? value)
+    {
+        return value?.Trim().ToLowerInvariant() switch
+        {
+            "name" => ParkAdminSortField.Name,
+            "parkitemstotalcount" or "itemstotal" or "totalitems" => ParkAdminSortField.ParkItemsTotalCount,
+            "parkitemsvisiblecount" or "itemsvisible" or "visibleitems" => ParkAdminSortField.ParkItemsVisibleCount,
+            _ => ParkAdminSortField.Default,
+        };
+    }
+
+    private static bool IsDescendingSort(string? value)
+    {
+        return value?.Trim().ToLowerInvariant() is "desc" or "descending" or "-1";
     }
 
     private static double ResolveRadiusInKilometers(double? radiusMeters, double? radiusKilometers, double? legacyRadiusMeters)

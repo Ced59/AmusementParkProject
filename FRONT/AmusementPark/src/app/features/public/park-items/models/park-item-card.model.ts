@@ -7,6 +7,8 @@ export interface ParkItemCardViewModel {
   typeLabelKey: string;
   typeIconClass: string;
   zoneName: string | null;
+  imageUrl: string | null;
+  imageSrcSet: string | null;
   highlights: string[];
   itemLink: string[] | null;
 }

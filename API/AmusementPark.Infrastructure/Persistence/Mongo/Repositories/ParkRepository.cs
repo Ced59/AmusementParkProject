@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -57,14 +58,14 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
+    public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, CancellationToken cancellationToken, ParkAdminSortField sortField = ParkAdminSortField.Default, bool sortDescending = false)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates);
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates, closedFilter);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
-            .Sort(this.BuildAdminListSort())
+            .Sort(this.BuildAdminListSort(sortField, sortDescending))
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -76,9 +77,9 @@ public sealed class ParkRepository : IParkRepository
             totalItems);
     }
 
-    public async Task<long> CountAsync(bool includeHidden, CancellationToken cancellationToken)
+    public async Task<long> CountAsync(bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden);
+        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden) & BuildClosedFilter(closedFilter);
         return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
     }
 
@@ -105,18 +106,19 @@ public sealed class ParkRepository : IParkRepository
         return this.GetParkIdsByFilterAsync(filter, cancellationToken);
     }
 
-    public Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken)
+    public Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         ParkSearchCriteria criteria = new ParkSearchCriteria(searchTerm, Array.Empty<string>(), Array.Empty<string>());
-        return this.GetVisibleMapPointsAsync(criteria, cancellationToken);
+        return this.GetVisibleMapPointsAsync(criteria, closedFilter, cancellationToken);
     }
 
-    public async Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(ParkSearchCriteria criteria, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(ParkSearchCriteria criteria, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true)
             & Builders<ParkDocument>.Filter.Ne(document => document.Latitude, null)
             & Builders<ParkDocument>.Filter.Ne(document => document.Longitude, null)
-            & this.BuildCriteriaFilter(criteria);
+            & this.BuildCriteriaFilter(criteria)
+            & BuildClosedFilter(closedFilter);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
             .Project(BuildMapPointProjection())
@@ -130,7 +132,8 @@ public sealed class ParkRepository : IParkRepository
     public async Task<IReadOnlyCollection<Park>> GetVisibleWithValidCoordinatesAsync(CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true)
-            & BuildValidCoordinatesFilter();
+            & BuildValidCoordinatesFilter()
+            & BuildClosedFilter(ClosedEntityFilter.OpenOnly);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
             .Project(BuildMapPointProjection())
@@ -141,12 +144,12 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken)
+    public Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
-        return this.GetRandomVisibleAsync(limit, Array.Empty<string>(), cancellationToken);
+        return this.GetRandomVisibleAsync(limit, Array.Empty<string>(), closedFilter, cancellationToken);
     }
 
-    public async Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         if (limit <= 0)
         {
@@ -154,7 +157,7 @@ public sealed class ParkRepository : IParkRepository
         }
 
         int safeLimit = Math.Min(limit, RandomVisibleFallbackHardLimit);
-        FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(excludedParkIds);
+        FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(excludedParkIds, closedFilter);
         List<ParkDocument> documents = await this.LoadRandomVisibleWindowAsync(filter, safeLimit, cancellationToken);
 
         if (documents.Count == 0)
@@ -165,14 +168,14 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<IReadOnlyCollection<Park>> GetManualHomeFeaturedVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Park>> GetManualHomeFeaturedVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         if (limit <= 0)
         {
             return Array.Empty<Park>();
         }
 
-        FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(excludedParkIds)
+        FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(excludedParkIds, closedFilter)
             & Builders<ParkDocument>.Filter.Eq(document => document.IsFeaturedOnHome, true);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
@@ -185,9 +188,10 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken)
+    public async Task<int> CountDistinctCountryCodesAsync(bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden)
+            & BuildClosedFilter(closedFilter)
             & Builders<ParkDocument>.Filter.Ne(document => document.CountryCode, null)
             & Builders<ParkDocument>.Filter.Ne(document => document.CountryCode, string.Empty);
 
@@ -233,18 +237,18 @@ public sealed class ParkRepository : IParkRepository
     public Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
     {
         ParkSearchCriteria criteria = new ParkSearchCriteria(name, Array.Empty<string>(), Array.Empty<string>());
-        return this.SearchAsync(criteria, page, pageSize, includeHidden, null, null, null, null, null, cancellationToken);
+        return this.SearchAsync(criteria, page, pageSize, includeHidden, null, null, null, null, null, ClosedEntityFilter.OpenOnly, cancellationToken);
     }
 
-    public async Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
+    public async Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, CancellationToken cancellationToken, ParkAdminSortField sortField = ParkAdminSortField.Default, bool sortDescending = false)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates)
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates, closedFilter)
             & this.BuildCriteriaFilter(criteria);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
-            .Sort(this.BuildAdminListSort())
+            .Sort(this.BuildAdminListSort(sortField, sortDescending))
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -256,16 +260,16 @@ public sealed class ParkRepository : IParkRepository
             totalItems);
     }
 
-    public async Task<IReadOnlyCollection<Park>> SearchByLocationAsync(double latitude, double longitude, double radiusInKilometers, bool includeHidden, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Park>> SearchByLocationAsync(double latitude, double longitude, double radiusInKilometers, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         GeoJsonPoint<GeoJson2DGeographicCoordinates> center = BuildGeoJsonPoint(latitude, longitude);
-        FilterDefinition<ParkDocument> filter = this.BuildNearLocationFilter(center, radiusInKilometers, includeHidden);
+        FilterDefinition<ParkDocument> filter = this.BuildNearLocationFilter(center, radiusInKilometers, includeHidden, closedFilter);
 
         List<ParkDocument> documents = await this.collection.Find(filter).ToListAsync(cancellationToken);
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<IReadOnlyCollection<Park>> GetNearestByLocationAsync(double latitude, double longitude, int limit, double? maxDistanceInKilometers, bool includeHidden, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Park>> GetNearestByLocationAsync(double latitude, double longitude, int limit, double? maxDistanceInKilometers, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         if (limit <= 0)
         {
@@ -273,7 +277,7 @@ public sealed class ParkRepository : IParkRepository
         }
 
         GeoJsonPoint<GeoJson2DGeographicCoordinates> center = BuildGeoJsonPoint(latitude, longitude);
-        FilterDefinition<ParkDocument> filter = this.BuildNearLocationFilter(center, maxDistanceInKilometers, includeHidden);
+        FilterDefinition<ParkDocument> filter = this.BuildNearLocationFilter(center, maxDistanceInKilometers, includeHidden, closedFilter);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
             .Limit(limit)
@@ -376,7 +380,7 @@ public sealed class ParkRepository : IParkRepository
 
     public async Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates);
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates, ClosedEntityFilter.All);
 
         List<string> parkIds = await this.collection.Find(filter)
             .Project(document => document.Id)
@@ -483,7 +487,7 @@ public sealed class ParkRepository : IParkRepository
             .ToListAsync(cancellationToken);
     }
 
-    private FilterDefinition<ParkDocument> BuildNearLocationFilter(GeoJsonPoint<GeoJson2DGeographicCoordinates> center, double? radiusInKilometers, bool includeHidden)
+    private FilterDefinition<ParkDocument> BuildNearLocationFilter(GeoJsonPoint<GeoJson2DGeographicCoordinates> center, double? radiusInKilometers, bool includeHidden, ClosedEntityFilter closedFilter)
     {
         double? maxDistanceInMeters = radiusInKilometers.HasValue
             ? Math.Max(0d, radiusInKilometers.Value) * 1000d
@@ -501,7 +505,7 @@ public sealed class ParkRepository : IParkRepository
             filter &= Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        return filter;
+        return filter & BuildClosedFilter(closedFilter);
     }
 
     private FilterDefinition<ParkDocument> BuildCriteriaFilter(ParkSearchCriteria? criteria)
@@ -569,9 +573,9 @@ public sealed class ParkRepository : IParkRepository
             .ToList();
     }
 
-    private FilterDefinition<ParkDocument> BuildAdminListFilter(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates)
+    private FilterDefinition<ParkDocument> BuildAdminListFilter(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden);
+        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden) & BuildClosedFilter(closedFilter);
 
         if (isVisible.HasValue)
         {
@@ -628,17 +632,29 @@ public sealed class ParkRepository : IParkRepository
         return Builders<ParkDocument>.Filter.BuildAdminReviewStatusFilter("adminReviewStatus", adminReviewStatus);
     }
 
-    private SortDefinition<ParkDocument> BuildAdminListSort()
+    private SortDefinition<ParkDocument> BuildAdminListSort(ParkAdminSortField sortField, bool sortDescending)
     {
-        return Builders<ParkDocument>.Sort
+        SortDefinitionBuilder<ParkDocument> sortBuilder = Builders<ParkDocument>.Sort;
+
+        if (sortField == ParkAdminSortField.Name)
+        {
+            SortDefinition<ParkDocument> primarySort = sortDescending
+                ? sortBuilder.Descending(document => document.Name)
+                : sortBuilder.Ascending(document => document.Name);
+
+            return primarySort.Ascending(document => document.Id);
+        }
+
+        return sortBuilder
             .Ascending(document => document.AdminReviewPriority)
             .Ascending(document => document.Name)
             .Ascending(document => document.Id);
     }
 
-    private FilterDefinition<ParkDocument> BuildVisibleSelectionFilter(IReadOnlyCollection<string> excludedParkIds)
+    private FilterDefinition<ParkDocument> BuildVisibleSelectionFilter(IReadOnlyCollection<string> excludedParkIds, ClosedEntityFilter closedFilter)
     {
-        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true)
+            & BuildClosedFilter(closedFilter);
         List<string> normalizedExcludedIds = NormalizeParkIds(excludedParkIds);
 
         if (normalizedExcludedIds.Count > 0)
@@ -668,5 +684,15 @@ public sealed class ParkRepository : IParkRepository
         return includeHidden
             ? Builders<ParkDocument>.Filter.Empty
             : Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
+    }
+
+    private static FilterDefinition<ParkDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
+    {
+        return closedFilter switch
+        {
+            ClosedEntityFilter.All => Builders<ParkDocument>.Filter.Empty,
+            ClosedEntityFilter.ClosedOnly => Builders<ParkDocument>.Filter.Eq(document => document.Status, ParkStatus.ClosedDefinitively),
+            _ => Builders<ParkDocument>.Filter.Ne(document => document.Status, ParkStatus.ClosedDefinitively),
+        };
     }
 }

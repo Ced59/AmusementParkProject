@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text;
 using System.Text.Json;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Errors;
@@ -58,6 +59,7 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchString(patch, "name", park.Name, value => park.Name = value, change);
         PatchString(patch, "countryCode", park.CountryCode, value => park.CountryCode = value?.ToUpperInvariant(), change);
         PatchEnumNullable(patch, "type", park.Type, value => park.Type = value, change, "type");
+        PatchParkStatus(patch, park, change);
         PatchString(patch, "founderId", park.FounderId, value => park.FounderId = value, change);
         PatchString(patch, "operatorId", park.OperatorId, value => park.OperatorId = value, change);
         PatchString(patch, "websiteUrl", park.WebsiteUrl, value => park.WebsiteUrl = value, change);
@@ -106,6 +108,64 @@ public sealed partial class ParkGraphUpsertProcessor
             }
         }
     }
+
+    private static void PatchParkStatus(JsonElement? patch, Park park, ParkGraphUpsertChange change)
+    {
+        if (!HasProperty(patch, "status"))
+        {
+            return;
+        }
+
+        ParkStatus? next = ReadParkStatus(patch, "status");
+        if (!next.HasValue)
+        {
+            return;
+        }
+
+        AddChange(change, "status", park.Status, next.Value);
+        park.Status = next.Value;
+    }
+
+    private static ParkStatus? ReadParkStatus(JsonElement? element, string propertyName)
+    {
+        string? value = ReadString(element, propertyName);
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        if (TryReadEnum(value, out ParkStatus parsed))
+        {
+            return parsed;
+        }
+
+        string normalized = NormalizeStatusToken(value);
+        return normalized switch
+        {
+            "operating" or "open" or "opened" or "enfonctionnement" => ParkStatus.Operating,
+            "closeddefinitively" or "permanentlyclosed" or "definitivelyclosed" or "fermedefinitivement" => ParkStatus.ClosedDefinitively,
+            _ => null,
+        };
+    }
+
+    private static string NormalizeStatusToken(string value)
+    {
+        string decomposed = value.Trim().Normalize(NormalizationForm.FormD);
+        StringBuilder builder = new StringBuilder(decomposed.Length);
+        foreach (char character in decomposed)
+        {
+            UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(character);
+            if (category == UnicodeCategory.NonSpacingMark || character == '_' || character == '-' || character == ' ' || character == '\'')
+            {
+                continue;
+            }
+
+            builder.Append(char.ToLowerInvariant(character));
+        }
+
+        return builder.ToString().Normalize(NormalizationForm.FormC);
+    }
+
     private static void PatchZone(ParkZone zone, JsonElement patch, ParkGraphUpsertChange change)
     {
         PatchString(patch, "name", zone.Name, value => zone.Name = value ?? string.Empty, change);
@@ -206,7 +266,7 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchString(patch, "externalSource", details.ExternalSource, value => details.ExternalSource = value, change, "attractionDetails.externalSource");
         PatchString(patch, "externalId", details.ExternalId, value => details.ExternalId = value, change, "attractionDetails.externalId");
         PatchString(patch, "sourceUrl", details.SourceUrl, value => details.SourceUrl = value, change, "attractionDetails.sourceUrl");
-        PatchString(patch, "status", details.Status, value => details.Status = value, change, "attractionDetails.status");
+        PatchString(patch, "status", details.Status, value => details.Status = ParkItemStatusNormalizer.Normalize(value), change, "attractionDetails.status");
         PatchString(patch, "materialType", details.MaterialType, value => details.MaterialType = value, change, "attractionDetails.materialType");
         PatchString(patch, "seatingType", details.SeatingType, value => details.SeatingType = value, change, "attractionDetails.seatingType");
         PatchString(patch, "launchType", details.LaunchType, value => details.LaunchType = value, change, "attractionDetails.launchType");

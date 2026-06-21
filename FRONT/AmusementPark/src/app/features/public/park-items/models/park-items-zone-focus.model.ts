@@ -18,4 +18,13 @@ export interface ParkItemsZoneFocusViewModel {
   hasActiveZone: boolean;
   topTypeHighlights: ParkItemsCountTagViewModel[];
   map: ParkItemsMapViewModel;
+  unlocatedItems: ParkItemsUnlocatedItemViewModel[];
+}
+
+export interface ParkItemsUnlocatedItemViewModel {
+  id: string | null;
+  name: string;
+  categoryLabelKey: string;
+  typeLabelKey: string;
+  detailLink: string[] | null;
 }

@@ -23,6 +23,7 @@ describe('admin park edit form mapper', () => {
     expect(form.get('name')?.value).toBe('');
     expect(form.get('latitude')?.value).toBe(DEFAULT_ADMIN_PARK_COORDINATES[0]);
     expect(form.get('longitude')?.value).toBe(DEFAULT_ADMIN_PARK_COORDINATES[1]);
+    expect(form.get('status')?.value).toBe('Operating');
     expect(form.get('isVisible')?.value).toBeTrue();
     expect(form.get('adminReviewStatus')?.value).toBe('Validated');
   });
@@ -48,6 +49,7 @@ describe('admin park edit form mapper', () => {
     expect(form.get('id')?.value).toBe('park-1');
     expect(form.get('countryCode')?.value).toBe('');
     expect(form.get('isVisible')?.value).toBeTrue();
+    expect(form.get('status')?.value).toBe('Operating');
     expect(form.get('adminReviewStatus')?.value).toBe('Validated');
     expect(form.get('descriptions')?.value).toEqual([]);
     expect(form.get('websiteUrl')?.value).toBe('');

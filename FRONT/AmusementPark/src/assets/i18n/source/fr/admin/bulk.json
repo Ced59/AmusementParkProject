@@ -11,7 +11,12 @@
       "markValidated": "Valider",
       "markNotRelevant": "Non pertinent",
       "validCoordinatesScope": "Parcs avec coordonnees valides",
-      "makeFilteredValidCoordinatesVisible": "Rendre visibles les geolocalises"
+      "makeFilteredValidCoordinatesVisible": "Rendre visibles les geolocalises",
+      "makeVisibleShort": "Visible",
+      "markToReviewShort": "? traiter",
+      "processLaterShort": "Plus tard",
+      "clearSelectionShort": "Annuler",
+      "showItems": "Items visibles"
     }
   }
 }

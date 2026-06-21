@@ -428,7 +428,14 @@
       "title": "Parcs",
       "subtitle": "Filtrez, priorisez et administrez les parcs visibles sur le site.",
       "reviewStatus": "Statut admin",
-      "loadError": "Impossible de charger les parcs."
+      "loadError": "Impossible de charger les parcs.",
+      "status": "Statut",
+      "itemsTotalCount": "Items",
+      "itemsVisibleCount": "Vis.",
+      "statuses": {
+        "operating": "Ouvert",
+        "closedDefinitively": "Ferm? d?finitivement"
+      }
     }
   }
 }

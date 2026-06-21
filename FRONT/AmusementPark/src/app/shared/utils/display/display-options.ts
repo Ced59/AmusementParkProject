@@ -4,6 +4,7 @@ import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water
 import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
+import { ParkStatus } from '@app/models/parks/park-status';
 import { ParkType } from '@app/models/parks/park-type';
 import {
   getParkItemCategoryTranslationKey,
@@ -23,6 +24,11 @@ export const PARK_TYPE_OPTIONS: ReadonlyArray<TranslationOption<ParkType>> = [
   buildTranslationOption('AnimalPark', getParkTypeTranslationKey),
   buildTranslationOption('AmusementPark', getParkTypeTranslationKey),
   buildTranslationOption('Resort', getParkTypeTranslationKey)
+];
+
+export const PARK_STATUS_OPTIONS: ReadonlyArray<TranslationOption<ParkStatus>> = [
+  { labelKey: 'admin.parks.statuses.operating', value: 'Operating' },
+  { labelKey: 'admin.parks.statuses.closedDefinitively', value: 'ClosedDefinitively' }
 ];
 
 export const PARK_ITEM_CATEGORY_OPTIONS: ReadonlyArray<TranslationOption<ParkItemCategory>> = [

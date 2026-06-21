@@ -15,6 +15,8 @@ public sealed class ParkUpdateDto
 
     public ParkTypeDto? Type { get; set; }
 
+    public ParkStatusDto Status { get; set; } = ParkStatusDto.Operating;
+
     public string? FounderId { get; set; }
 
     public string? OperatorId { get; set; }

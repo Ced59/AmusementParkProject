@@ -312,6 +312,15 @@
       "itemsTitle": "À découvrir dans cette zone",
       "emptyItemsTitle": "Aucun lieu dans cette zone",
       "emptyItemsMessage": "Aucun lieu public n'est actuellement rattaché à cette zone."
+    },
+    "closedFilters": {
+      "label": "Ouverture",
+      "openOnly": "Ouverts",
+      "withClosed": "Avec ferm?s",
+      "closedOnly": "Ferm?s"
+    },
+    "statuses": {
+      "closedDefinitively": "Ferm? d?finitivement"
     }
   }
 }

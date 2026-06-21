@@ -1,5 +1,6 @@
 import { LocalizedItem } from '../shared/localized-item';
 import { ParkType } from './park-type';
+import { ParkStatus } from './park-status';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 
 export interface Park {
@@ -7,6 +8,7 @@ export interface Park {
   name?: string;
   countryCode?: string;
   type?: ParkType | null;
+  status?: ParkStatus;
   founderId?: string | null;
   operatorId?: string | null;
   latitude: number;
@@ -21,5 +23,7 @@ export interface Park {
   city?: string;
   postalCode?: string;
   currentLogoImageId?: string | null;
+  parkItemsTotalCount?: number | null;
+  parkItemsVisibleCount?: number | null;
   descriptions?: LocalizedItem<string>[];
 }

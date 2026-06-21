@@ -312,6 +312,15 @@
       "itemsTitle": "Locais a descobrir nesta zona",
       "emptyItemsTitle": "Nenhum local nesta zona",
       "emptyItemsMessage": "Nenhum local público está atualmente ligado a esta zona."
+    },
+    "closedFilters": {
+      "label": "Abertura",
+      "openOnly": "Abertos",
+      "withClosed": "Com fechados",
+      "closedOnly": "Fechados"
+    },
+    "statuses": {
+      "closedDefinitively": "Fechado definitivamente"
     }
   }
 }

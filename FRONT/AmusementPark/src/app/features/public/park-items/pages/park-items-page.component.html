@@ -8,9 +8,12 @@
   [selectedCategory]="selectedCategory"
   [selectedType]="selectedType"
   [selectedZoneId]="selectedZoneId"
+  [selectedClosedFilter]="selectedClosedFilter"
   [categoryOptions]="categoryOptions"
   [typeOptions]="typeOptions"
   [zoneOptions]="zoneOptions"
+  [closedFilterOptions]="closedFilterOptions"
+  [hasZones]="hasZones"
   [totalResults]="totalResults"
   [rangeStart]="rangeStart"
   [rangeEnd]="rangeEnd"
@@ -22,6 +25,7 @@
   (categoryChanged)="onCategoryChanged($event)"
   (typeChanged)="onTypeChanged($event)"
   (zoneChanged)="onZoneChanged($event)"
+  (closedFilterChanged)="onClosedFilterChanged($event)"
   (zoneSelected)="onZoneSelected($event)"
   (pageChanged)="onPageChanged($event)">
 </app-park-items-list-view>

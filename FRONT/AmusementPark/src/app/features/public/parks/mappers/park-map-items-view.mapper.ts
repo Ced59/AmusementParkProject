@@ -1,10 +1,12 @@
-import { ParkMapItem, ParkMapItems, ParkMapZone } from '@app/models/parks/park-map-items';
+import { ParkMapItem, ParkMapItems, ParkMapUnlocatedItem, ParkMapZone } from '@app/models/parks/park-map-items';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
+import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import {
   ParkItemsMapFilterOptionViewModel,
   ParkItemsMapMarkerViewModel,
+  ParkItemsMapUnlocatedItemViewModel,
   ParkItemsMapViewModel
 } from '../models/park-items-map-view.model';
 
@@ -20,10 +22,30 @@ export function mapParkMapItemsToViewModel(response: ParkMapItems, language: str
     language,
     center: resolveCenter(response, markers),
     markers,
+    unlocatedItems: mapUnlocatedItems(response, language),
     categoryFilters: buildCategoryFilters(markers),
     zoneFilters: buildZoneFilters(markers, response.zones ?? []),
     hasItemMarkers: markers.length > 0
   };
+}
+
+function mapUnlocatedItems(response: ParkMapItems, language: string): ParkItemsMapUnlocatedItemViewModel[] {
+  return (response.unlocatedItems ?? [])
+    .map((item: ParkMapUnlocatedItem) => ({
+      id: item.id ?? null,
+      name: item.name,
+      categoryLabelKey: getParkItemCategoryTranslationKey(item.category),
+      typeLabelKey: getParkItemTypeTranslationKey(item.type),
+      detailLink: buildPublicParkItemRouteCommands({
+        language,
+        parkId: response.park.id,
+        parkName: response.park.name,
+        itemId: item.id,
+        itemName: item.name
+      })
+    }))
+    .sort((left: ParkItemsMapUnlocatedItemViewModel, right: ParkItemsMapUnlocatedItemViewModel) => left.name.localeCompare(right.name))
+    .slice(0, 16);
 }
 
 function mapItemToMarker(response: ParkMapItems, item: ParkMapItem, language: string): ParkItemsMapMarkerViewModel {

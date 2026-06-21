@@ -1,6 +1,20 @@
 {
-  "version": "2.3.6",
+  "version": "2.3.7",
   "history": [
+    {
+      "version": "2.3.7",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "Les listes de parcs et de lieux sont plus pratiques.",
+        "en": "Park and place lists are easier to use.",
+        "de": "Park- und Ortslisten sind einfacher nutzbar.",
+        "nl": "Park- en plekkenlijsten zijn makkelijker te gebruiken.",
+        "it": "Gli elenchi di parchi e luoghi sono più pratici.",
+        "es": "Las listas de parques y lugares son más cómodas.",
+        "pl": "Listy parków i miejsc są wygodniejsze.",
+        "pt": "As listas de parques e locais estão mais práticas."
+      }
+    },
     {
       "version": "2.3.6",
       "releasedAt": "2026-06-20",

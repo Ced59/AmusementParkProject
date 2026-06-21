@@ -428,7 +428,14 @@
       "title": "Parks",
       "subtitle": "Filter, prioritize and administer parks exposed on the site.",
       "reviewStatus": "Admin status",
-      "loadError": "Unable to load parks."
+      "loadError": "Unable to load parks.",
+      "status": "Status",
+      "itemsTotalCount": "Items",
+      "itemsVisibleCount": "Vis.",
+      "statuses": {
+        "operating": "Open",
+        "closedDefinitively": "Permanently closed"
+      }
     }
   }
 }

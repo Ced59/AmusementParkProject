@@ -38,4 +38,6 @@ public sealed class ParkItemDto
     public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
 
     public RatingSummaryDto? Rating { get; set; }
+
+    public string? MainImageId { get; set; }
 }

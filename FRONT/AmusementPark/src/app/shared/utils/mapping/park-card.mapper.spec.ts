@@ -35,6 +35,15 @@ describe('mapParkToCardModel', () => {
     expect(result.addressLine).toBe('Street, 1000, Brussels');
     expect(result.coordinatesLine).toBe('50.123, 3.988');
     expect(result.shortDescription).toBe('Hello world');
+    expect(result.status).toBe('Operating');
+    expect(result.isClosedDefinitively).toBeFalse();
+  });
+
+  it('marks permanently closed parks for public cards', () => {
+    const result = mapParkToCardModel(createPark({ status: 'ClosedDefinitively' }), 'en');
+
+    expect(result.status).toBe('ClosedDefinitively');
+    expect(result.isClosedDefinitively).toBeTrue();
   });
 
   it('returns null coordinate fields when coordinates are not finite', () => {

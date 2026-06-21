@@ -312,6 +312,15 @@
       "itemsTitle": "Orte in diesem Bereich entdecken",
       "emptyItemsTitle": "Kein Ort in diesem Bereich",
       "emptyItemsMessage": "Derzeit ist kein öffentlicher Ort mit diesem Bereich verknüpft."
+    },
+    "closedFilters": {
+      "label": "?ffnung",
+      "openOnly": "Offen",
+      "withClosed": "Mit geschl.",
+      "closedOnly": "Geschlossen"
+    },
+    "statuses": {
+      "closedDefinitively": "Dauerhaft geschlossen"
     }
   }
 }

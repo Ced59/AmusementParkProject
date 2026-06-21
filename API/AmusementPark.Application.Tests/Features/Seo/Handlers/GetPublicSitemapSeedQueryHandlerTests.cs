@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Contracts;
@@ -111,7 +112,10 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
                 null,
                 null,
                 null,
-                It.IsAny<CancellationToken>()))
+                ClosedEntityFilter.OpenOnly,
+                It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Default,
+                false))
             .Returns((
                 int page,
                 int pageSize,
@@ -121,7 +125,10 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
                 ParkType? type,
                 string? countryCode,
                 bool? hasValidCoordinates,
-                CancellationToken cancellationToken) =>
+                ClosedEntityFilter closedFilter,
+                CancellationToken cancellationToken,
+                ParkAdminSortField sortField,
+                bool sortDescending) =>
             {
                 IReadOnlyCollection<Park> pageItems = parks
                     .Skip((page - 1) * pageSize)

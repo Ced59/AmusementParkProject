@@ -312,6 +312,15 @@
       "itemsTitle": "Plekken om te ontdekken in deze zone",
       "emptyItemsTitle": "Geen plek in deze zone",
       "emptyItemsMessage": "Er is momenteel geen openbare plek aan deze zone gekoppeld."
+    },
+    "closedFilters": {
+      "label": "Opening",
+      "openOnly": "Open",
+      "withClosed": "Met gesloten",
+      "closedOnly": "Gesloten"
+    },
+    "statuses": {
+      "closedDefinitively": "Definitief gesloten"
     }
   }
 }

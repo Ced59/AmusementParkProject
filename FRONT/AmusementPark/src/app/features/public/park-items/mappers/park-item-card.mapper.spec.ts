@@ -38,7 +38,15 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.typeLabelKey).toBe('parkExplorer.types.rollerCoaster');
     expect(result.typeIconClass).toBe('pi pi-bolt');
     expect(result.zoneName).toBe('Zone A');
+    expect(result.imageUrl).toBeNull();
     expect(result.itemLink).toEqual(['/', 'fr', 'park', 'park-1', 'parc-test', 'item', 'item-1', 'big-ride']);
+  });
+
+  it('maps the optional card image urls', () => {
+    const result = mapParkItemToCardViewModel(createItem(), park, 'fr', 'B&M', 'Zone A', null, 'Metric', undefined, '/images/main', '/images/main 640w');
+
+    expect(result.imageUrl).toBe('/images/main');
+    expect(result.imageSrcSet).toBe('/images/main 640w');
   });
 
   it('limits highlights to four values and localizes known statuses', () => {

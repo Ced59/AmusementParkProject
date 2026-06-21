@@ -122,21 +122,6 @@
     </button>
   </div>
 
-  @if (selectedCount() > 0) {
-    <div class="admin-bulk-bar">
-      <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
-      <div class="admin-bulk-bar__actions">
-        <button pButton type="button" class="p-button-sm" icon="pi pi-eye" [label]="'admin.bulk.makeVisible' | translate" (click)="makeSelectedVisible()"></button>
-        <button pButton type="button" class="p-button-sm p-button-secondary" icon="pi pi-eye-slash" [label]="'admin.bulk.hide' | translate" (click)="hideSelected()"></button>
-        <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
-        <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
-        <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
-        <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
-        <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
-      </div>
-    </div>
-  }
-
   <p-table
     [value]="parks()"
     [loading]="loading()"
@@ -145,6 +130,8 @@
     [totalRecords]="totalRecords()"
     [lazy]="true"
     (onLazyLoad)="onPageChanged($event)"
+    [sortField]="sortField() === 'default' ? undefined : sortField()"
+    [sortOrder]="sortOrder()"
     [responsiveLayout]="'scroll'"
     styleClass="admin-data-table">
     <ng-template pTemplate="header">
@@ -152,11 +139,22 @@
         <th class="admin-selection-column">
           <input type="checkbox" [checked]="areAllCurrentParksSelected()" (change)="onAllSelectionChange($event)" aria-label="Select all parks" />
         </th>
-        <th>{{ 'admin.parks.name' | translate }}</th>
+        <th pSortableColumn="name">
+          {{ 'admin.parks.name' | translate }}
+          <p-sortIcon field="name"></p-sortIcon>
+        </th>
         <th>{{ 'admin.parks.type' | translate }}</th>
         <th>{{ 'admin.parks.country' | translate }}</th>
         <th>{{ 'admin.parks.city' | translate }}</th>
         <th>{{ 'admin.parks.coordinates' | translate }}</th>
+        <th pSortableColumn="parkItemsTotalCount">
+          {{ 'admin.parks.itemsTotalCount' | translate }}
+          <p-sortIcon field="parkItemsTotalCount"></p-sortIcon>
+        </th>
+        <th pSortableColumn="parkItemsVisibleCount">
+          {{ 'admin.parks.itemsVisibleCount' | translate }}
+          <p-sortIcon field="parkItemsVisibleCount"></p-sortIcon>
+        </th>
         <th>{{ 'admin.parks.reviewStatus' | translate }}</th>
         <th>{{ 'admin.parks.visible' | translate }}</th>
         <th>{{ 'admin.parks.actions' | translate }}</th>
@@ -164,6 +162,25 @@
     </ng-template>
 
     <ng-template pTemplate="body" let-park>
+      @if (isParkSelected(park)) {
+        <tr class="admin-bulk-row">
+          <td colspan="11">
+            <div class="admin-bulk-bar">
+              <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
+              <div class="admin-bulk-bar__actions">
+                <button pButton type="button" class="p-button-sm" icon="pi pi-eye" [label]="'admin.bulk.makeVisibleShort' | translate" (click)="makeSelectedVisible()"></button>
+                <button pButton type="button" class="p-button-sm p-button-secondary" icon="pi pi-eye-slash" [label]="'admin.bulk.hide' | translate" (click)="hideSelected()"></button>
+                <button pButton type="button" class="p-button-sm p-button-help" icon="pi pi-sitemap" [label]="'admin.bulk.showItems' | translate" (click)="makeSelectedParkItemsVisible()"></button>
+                <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReviewShort' | translate" (click)="markSelectedToReview()"></button>
+                <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
+                <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLaterShort' | translate" (click)="markSelectedLater()"></button>
+                <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
+                <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelectionShort' | translate" (click)="clearSelection()"></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      }
       <tr [class.admin-row--later]="park.adminReviewStatus === 'ToProcessLater' || park.adminReviewStatus === 'NotRelevant'">
         <td class="admin-selection-column">
           <input type="checkbox" [checked]="isParkSelected(park)" (change)="onParkSelectionChange(park, $event)" [attr.aria-label]="park.name" />
@@ -180,6 +197,12 @@
           } @else {
             <span class="admin-coordinate-value admin-coordinate-value--missing">{{ 'admin.parks.coordinatesMissing' | translate }}</span>
           }
+        </td>
+        <td [attr.data-label]="'admin.parks.itemsTotalCount' | translate">
+          <span class="admin-coordinate-value">{{ getParkItemsTotalCountLabel(park) }}</span>
+        </td>
+        <td [attr.data-label]="'admin.parks.itemsVisibleCount' | translate">
+          <span class="admin-coordinate-value">{{ getParkItemsVisibleCountLabel(park) }}</span>
         </td>
         <td [attr.data-label]="'admin.parks.reviewStatus' | translate">
           <p-tag
@@ -219,7 +242,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="9">
+        <td colspan="11">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"

@@ -12,10 +12,16 @@
     <section class="results-workbench" appUiSurface="panel" appUiSurfacePadding="regular" data-pagination-scroll-target>
       <div class="results-workbench__header">
         <div>
+          @if (currentView.backLink) {
+            <a class="results-workbench__back" appUiButton="ghost" [routerLink]="currentView.backLink">
+              <i class="pi pi-arrow-left" aria-hidden="true"></i>
+              <span>{{ 'parkItems.list.backToPark' | translate:{ name: currentView.parkName } }}</span>
+            </a>
+          }
           <app-ui-kicker iconClass="pi pi-sitemap">
-            {{ 'parkVisitor.summary.viewAllItems' | translate }}
+            {{ currentView.parkName }}
           </app-ui-kicker>
-          <h1>{{ 'parkVisitor.summary.viewAllItems' | translate }}</h1>
+          <h1>{{ 'parkItems.list.titleWithPark' | translate:{ name: currentView.parkName } }}</h1>
           <p>
             {{ 'parkItems.list.resultsCount' | translate:{ start: rangeStart(), end: rangeEnd(), total: totalResults() } }}
           </p>
@@ -36,14 +42,17 @@
         [selectedCategory]="selectedCategory"
         [selectedType]="selectedType"
         [selectedZoneId]="selectedZoneId"
+        [selectedClosedFilter]="selectedClosedFilter"
         [categoryOptions]="categoryOptions"
         [typeOptions]="typeOptions"
         [zoneOptions]="zoneOptions"
+        [closedFilterOptions]="closedFilterOptions"
         [hasZones]="hasZones"
         (searchChanged)="onSearchChanged($event)"
         (categoryChanged)="onCategoryChanged($event)"
         (typeChanged)="onTypeChanged($event)"
-        (zoneChanged)="onZoneChanged($event)">
+        (zoneChanged)="onZoneChanged($event)"
+        (closedFilterChanged)="onClosedFilterChanged($event)">
       </app-park-items-filters>
 
       @if (zoneFocus(); as focus) {
@@ -84,6 +93,27 @@
                   {{ typeCount.labelKey | translate }} &middot; {{ typeCount.count }}
                 </button>
               }
+            </div>
+          }
+
+          @if (focus.unlocatedItems.length > 0) {
+            <div class="items-map-panel__unlocated">
+              <div>
+                <strong>{{ 'parkItems.unlocated.title' | translate:{ count: focus.unlocatedItems.length } }}</strong>
+                <span>{{ 'parkItems.unlocated.subtitle' | translate }}</span>
+              </div>
+
+              <div class="items-map-panel__unlocated-list">
+                @for (item of focus.unlocatedItems; track item.id ?? item.name) {
+                  @if (item.detailLink) {
+                    <a [routerLink]="item.detailLink">
+                      <i class="pi pi-link" aria-hidden="true"></i>
+                      <span>{{ item.name }}</span>
+                      <small>{{ item.categoryLabelKey | translate }} &middot; {{ item.typeLabelKey | translate }}</small>
+                    </a>
+                  }
+                }
+              </div>
             </div>
           }
         </div>

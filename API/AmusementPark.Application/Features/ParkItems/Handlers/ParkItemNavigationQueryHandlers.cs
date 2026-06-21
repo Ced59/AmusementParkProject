@@ -48,6 +48,7 @@ public sealed class GetParkItemSiblingNavigationQueryHandler
         IReadOnlyList<ParkItemSiblingNavigationItem> siblings = await this.parkItemRepository.GetNavigationItemsByParkIdAsync(
             currentItem.ParkId,
             query.IncludeHidden,
+            query.ClosedFilter,
             cancellationToken);
 
         int currentIndex = siblings
@@ -122,6 +123,7 @@ public sealed class GetRelatedParkItemsQueryHandler
             currentItem,
             limit,
             query.IncludeHidden,
+            query.ClosedFilter,
             cancellationToken);
 
         return ApplicationResult<IReadOnlyCollection<ParkItem>>.Success(relatedItems);

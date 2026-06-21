@@ -15,7 +15,11 @@
       "clear": "Clear filters",
       "allCategories": "All categories",
       "allTypes": "All types",
-      "allZones": "All zones"
+      "allZones": "All zones",
+      "closedStatus": "Opening",
+      "openOnly": "Open",
+      "withClosed": "With closed",
+      "closedOnly": "Closed"
     },
     "list": {
       "subtitle": "Explore the park's attractions, shows, restaurants, shops and services, then open each detailed page.",
@@ -28,7 +32,9 @@
       "emptyFilteredTitle": "No matching place",
       "emptyFilteredMessage": "Try widening your filters or reset them to see more places.",
       "filteredResults": "Filtered results",
-      "resultsCount": "Showing {{start}} to {{end}} of {{total}} place(s)"
+      "resultsCount": "Showing {{start}} to {{end}} of {{total}} place(s)",
+      "backToPark": "Back to {{name}}",
+      "titleWithPark": "{{name}} places"
     },
     "detail": {
       "loadingTitle": "Loading page",
@@ -218,6 +224,10 @@
       "removed": "Removed / dismantled",
       "planned": "Planned",
       "unknown": "Unknown"
+    },
+    "unlocated": {
+      "title": "{{count}} place(s) off map",
+      "subtitle": "They are not geolocated, but you can still open them here."
     }
   }
 }

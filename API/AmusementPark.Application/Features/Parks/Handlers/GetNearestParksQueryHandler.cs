@@ -54,6 +54,7 @@ public sealed class GetNearestParksQueryHandler : IQueryHandler<GetNearestParksQ
             queryLimit,
             query.MaxDistanceKilometers,
             includeHidden: false,
+            closedFilter: query.ClosedFilter,
             cancellationToken: cancellationToken);
 
         List<ParkDistanceTargetResult> targets = nearbyCandidates

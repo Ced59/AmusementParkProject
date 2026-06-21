@@ -4,9 +4,11 @@ import { ParkZone } from '@app/models/parks/park-zone';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
+import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import {
   ParkItemsMapFilterOptionViewModel,
   ParkItemsMapMarkerViewModel,
+  ParkItemsMapUnlocatedItemViewModel,
   ParkItemsMapViewModel
 } from '../models/park-items-map-view.model';
 
@@ -28,10 +30,36 @@ export function mapParkItemsToMapViewModel(
     language: currentLanguage,
     center: resolveMapCenter(park, markers),
     markers,
+    unlocatedItems: mapUnlocatedItems(park, items, currentLanguage),
     categoryFilters: buildCategoryFilters(markers),
     zoneFilters: buildZoneFilters(markers, zones),
     hasItemMarkers: markers.length > 0
   };
+}
+
+function mapUnlocatedItems(
+  park: Park,
+  items: readonly ParkItem[],
+  currentLanguage: string
+): ParkItemsMapUnlocatedItemViewModel[] {
+  return items
+    .filter((item: ParkItem) => item.isVisible !== false)
+    .filter((item: ParkItem) => !hasValidParkItemPosition(item))
+    .map((item: ParkItem) => ({
+      id: item.id ?? null,
+      name: item.name,
+      categoryLabelKey: getParkItemCategoryTranslationKey(item.category),
+      typeLabelKey: getParkItemTypeTranslationKey(item.type),
+      detailLink: buildPublicParkItemRouteCommands({
+        language: currentLanguage,
+        parkId: park.id,
+        parkName: park.name,
+        itemId: item.id,
+        itemName: item.name
+      })
+    }))
+    .sort((left: ParkItemsMapUnlocatedItemViewModel, right: ParkItemsMapUnlocatedItemViewModel) => left.name.localeCompare(right.name))
+    .slice(0, 16);
 }
 
 function mapParkItemToMarker(

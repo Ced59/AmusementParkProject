@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Handlers;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -48,7 +49,7 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.Same(summary, result.Value);
-        Assert.Equal(new[] { new SummaryCall("park-1", true) }, repository.Calls);
+        Assert.Equal(new[] { new SummaryCall("park-1", true, ClosedEntityFilter.OpenOnly) }, repository.Calls);
     }
 
     [Fact]
@@ -60,7 +61,7 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
         ApplicationResult<ParkDetailSummaryResult> result = await handler.HandleAsync(new GetParkDetailSummaryQuery("park-404"));
 
         Assert.False(result.IsSuccess);
-        Assert.Equal(new[] { new SummaryCall("park-404", false) }, repository.Calls);
+        Assert.Equal(new[] { new SummaryCall("park-404", false, ClosedEntityFilter.OpenOnly) }, repository.Calls);
     }
 
     private static Park CreatePark(string id)
@@ -75,7 +76,7 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
         return park;
     }
 
-    private sealed record SummaryCall(string ParkId, bool IncludeHidden);
+    private sealed record SummaryCall(string ParkId, bool IncludeHidden, ClosedEntityFilter ClosedFilter);
 
     private sealed class FakeParkDetailSummaryReadRepository : IParkDetailSummaryReadRepository
     {
@@ -83,9 +84,9 @@ public sealed class GetParkDetailSummaryQueryHandlerTests
 
         public List<SummaryCall> Calls { get; } = new List<SummaryCall>();
 
-        public Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+        public Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
         {
-            this.Calls.Add(new SummaryCall(parkId, includeHidden));
+            this.Calls.Add(new SummaryCall(parkId, includeHidden, closedFilter));
             return Task.FromResult(this.Summary);
         }
     }

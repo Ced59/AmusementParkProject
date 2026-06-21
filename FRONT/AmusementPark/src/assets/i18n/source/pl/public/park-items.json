@@ -15,7 +15,11 @@
       "clear": "Wyczyść filtry",
       "allCategories": "Wszystkie kategorie",
       "allTypes": "Wszystkie typy",
-      "allZones": "Wszystkie strefy"
+      "allZones": "Wszystkie strefy",
+      "closedStatus": "Otwarcie",
+      "openOnly": "Otwarte",
+      "withClosed": "Z zamkn.",
+      "closedOnly": "Zamkni?te"
     },
     "list": {
       "subtitle": "Przeglądaj atrakcje, pokazy, restauracje, sklepy i usługi parku, a potem otwieraj szczegółowe strony każdego miejsca.",
@@ -28,7 +32,9 @@
       "emptyFilteredTitle": "Brak pasującego miejsca",
       "emptyFilteredMessage": "Rozszerz filtry albo zresetuj je, aby zobaczyć więcej miejsc.",
       "filteredResults": "Wyniki filtrowane",
-      "resultsCount": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc(a)"
+      "resultsCount": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc(a)",
+      "backToPark": "Wr?? do {{name}}",
+      "titleWithPark": "Miejsca w {{name}}"
     },
     "detail": {
       "loadingTitle": "Ładowanie strony",
@@ -218,6 +224,10 @@
       "removed": "Usunięte / zdemontowane",
       "planned": "Planowane",
       "unknown": "Nieznane"
+    },
+    "unlocated": {
+      "title": "{{count}} miejsce/a poza map?",
+      "subtitle": "Nie maj? geolokalizacji, ale otworzysz je tutaj."
     }
   }
 }

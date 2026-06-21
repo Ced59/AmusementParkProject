@@ -94,7 +94,12 @@
       "markValidated": "Validate",
       "markNotRelevant": "Not relevant",
       "validCoordinatesScope": "Valid-coordinate parks",
-      "makeFilteredValidCoordinatesVisible": "Make geolocated parks visible"
+      "makeFilteredValidCoordinatesVisible": "Make geolocated parks visible",
+      "makeVisibleShort": "Show",
+      "markToReviewShort": "Review",
+      "processLaterShort": "Later",
+      "clearSelectionShort": "Clear",
+      "showItems": "Show items"
     },
     "contactGrievances": {
       "navTitle": "Contact messages",
@@ -1041,7 +1046,14 @@
       "title": "Parks",
       "subtitle": "Filter, prioritize and administer parks exposed on the site.",
       "reviewStatus": "Admin status",
-      "loadError": "Unable to load parks."
+      "loadError": "Unable to load parks.",
+      "status": "Status",
+      "itemsTotalCount": "Items",
+      "itemsVisibleCount": "Vis.",
+      "statuses": {
+        "operating": "Open",
+        "closedDefinitively": "Permanently closed"
+      }
     },
     "references": {
       "sections": {
@@ -2102,7 +2114,11 @@
       "clear": "Clear filters",
       "allCategories": "All categories",
       "allTypes": "All types",
-      "allZones": "All zones"
+      "allZones": "All zones",
+      "closedStatus": "Opening",
+      "openOnly": "Open",
+      "withClosed": "With closed",
+      "closedOnly": "Closed"
     },
     "list": {
       "subtitle": "Explore the park's attractions, shows, restaurants, shops and services, then open each detailed page.",
@@ -2115,7 +2131,9 @@
       "emptyFilteredTitle": "No matching place",
       "emptyFilteredMessage": "Try widening your filters or reset them to see more places.",
       "filteredResults": "Filtered results",
-      "resultsCount": "Showing {{start}} to {{end}} of {{total}} place(s)"
+      "resultsCount": "Showing {{start}} to {{end}} of {{total}} place(s)",
+      "backToPark": "Back to {{name}}",
+      "titleWithPark": "{{name}} places"
     },
     "detail": {
       "loadingTitle": "Loading page",
@@ -2305,6 +2323,10 @@
       "removed": "Removed / dismantled",
       "planned": "Planned",
       "unknown": "Unknown"
+    },
+    "unlocated": {
+      "title": "{{count}} place(s) off map",
+      "subtitle": "They are not geolocated, but you can still open them here."
     },
     "videosPage": {
       "kicker": "Place videos",
@@ -2702,6 +2724,15 @@
       "itemsTitle": "Places to discover in this zone",
       "emptyItemsTitle": "No place in this zone",
       "emptyItemsMessage": "No public place is currently attached to this zone."
+    },
+    "closedFilters": {
+      "label": "Opening",
+      "openOnly": "Open",
+      "withClosed": "With closed",
+      "closedOnly": "Closed"
+    },
+    "statuses": {
+      "closedDefinitively": "Permanently closed"
     },
     "videosPage": {
       "kicker": "Park videos",

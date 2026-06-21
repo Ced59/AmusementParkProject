@@ -9,6 +9,8 @@ public sealed class ParkMapItemsDto
 
     public IReadOnlyCollection<ParkMapItemDto> Items { get; set; } = Array.Empty<ParkMapItemDto>();
 
+    public IReadOnlyCollection<ParkMapUnlocatedItemDto> UnlocatedItems { get; set; } = Array.Empty<ParkMapUnlocatedItemDto>();
+
     public IReadOnlyCollection<ParkMapZoneDto> Zones { get; set; } = Array.Empty<ParkMapZoneDto>();
 }
 
@@ -29,6 +31,21 @@ public sealed class ParkMapItemDto
     public double Latitude { get; set; }
 
     public double Longitude { get; set; }
+}
+
+public sealed class ParkMapUnlocatedItemDto
+{
+    public required string Id { get; set; }
+
+    public required string Name { get; set; }
+
+    public required string Category { get; set; }
+
+    public required string Type { get; set; }
+
+    public string? Subtype { get; set; }
+
+    public string? ZoneId { get; set; }
 }
 
 public sealed class ParkMapZoneDto

@@ -38,7 +38,6 @@ public sealed class ParkItemContentQualityService
 
         bool isPublishable = structureComplete
             && hasAnyDescription
-            && hasZone
             && hasPreciseType;
 
         return new ParkItemContentQualityResult

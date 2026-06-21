@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
@@ -88,8 +89,8 @@ public sealed class SearchLocalizedContentTargetsQueryHandler : IQueryHandler<Se
     private async Task<PagedResult<LocalizedContentTargetResult>> SearchParksAsync(string search, int page, int pageSize, CancellationToken cancellationToken)
     {
         PagedResult<Park> parks = string.IsNullOrWhiteSpace(search)
-            ? await this.parkRepository.GetPageAsync(page, pageSize, true, null, null, null, null, null, cancellationToken)
-            : await this.parkRepository.SearchAsync(new ParkSearchCriteria(search, Array.Empty<string>(), Array.Empty<string>()), page, pageSize, true, null, null, null, null, null, cancellationToken);
+            ? await this.parkRepository.GetPageAsync(page, pageSize, true, null, null, null, null, null, ClosedEntityFilter.All, cancellationToken)
+            : await this.parkRepository.SearchAsync(new ParkSearchCriteria(search, Array.Empty<string>(), Array.Empty<string>()), page, pageSize, true, null, null, null, null, null, ClosedEntityFilter.All, cancellationToken);
 
         return parks.Map(static park => new LocalizedContentTargetResult(
             LocalizedContentEntityTypes.Park,

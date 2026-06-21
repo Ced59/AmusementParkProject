@@ -13,7 +13,7 @@ import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult, AdminR
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
 import { Pagination } from '@app/models/shared/pagination';
-import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
+import { ParkAdminListFilters, ParkAdminListSort, ParkAdminListSortDirection, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
@@ -41,6 +41,8 @@ export class AdminParksStateFacade {
   private readonly typeFilterSignal = signal<ParkType | null>(null);
   private readonly countryCodeFilterSignal = signal('');
   private readonly validCoordinatesFilterSignal = signal<boolean | null>(null);
+  private readonly sortFieldSignal = signal<ParkAdminListSortField>('default');
+  private readonly sortDirectionSignal = signal<ParkAdminListSortDirection>('asc');
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -54,12 +56,18 @@ export class AdminParksStateFacade {
   public readonly typeFilter = this.typeFilterSignal.asReadonly();
   public readonly countryCodeFilter = this.countryCodeFilterSignal.asReadonly();
   public readonly validCoordinatesFilter = this.validCoordinatesFilterSignal.asReadonly();
+  public readonly sortField = this.sortFieldSignal.asReadonly();
+  public readonly sortDirection = this.sortDirectionSignal.asReadonly();
   public readonly filters = computed<ParkAdminListFilters>(() => ({
     isVisible: this.visibilityFilterSignal(),
     adminReviewStatus: this.adminReviewStatusFilterSignal(),
     type: this.typeFilterSignal(),
     countryCode: this.countryCodeFilterSignal().trim() || null,
     hasValidCoordinates: this.validCoordinatesFilterSignal()
+  }));
+  public readonly sort = computed<ParkAdminListSort>(() => ({
+    sortBy: this.sortFieldSignal(),
+    sortDirection: this.sortDirectionSignal()
   }));
 
   constructor(@Inject(ADMIN_PARKS_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: AdminParksStateParksApiServicePort,
@@ -71,6 +79,7 @@ export class AdminParksStateFacade {
     const previousData: AdminParksViewModel | undefined = this.screenStateStore.data();
     const trimmedQuery: string = this.searchQuerySignal().trim();
     const filters: ParkAdminListFilters = this.filters();
+    const sort: ParkAdminListSort = this.sort();
 
     this.currentPageSignal.set(page);
     this.pageSizeSignal.set(size);
@@ -104,7 +113,7 @@ export class AdminParksStateFacade {
     };
 
     if (trimmedQuery.length > 0) {
-      this.parksApiService.searchParks(trimmedQuery, page, size, false, null, filters).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      this.parksApiService.searchParks(trimmedQuery, page, size, false, null, filters, { sort }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (response: ParksApiResponse) => {
           handleResponse(response, page, size);
         },
@@ -116,7 +125,7 @@ export class AdminParksStateFacade {
       return;
     }
 
-    this.parksApiService.getParksPaginated(page, size, false, null, filters).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getParksPaginated(page, size, false, null, filters, { sort }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
         handleResponse(response, page, size);
       },
@@ -142,6 +151,13 @@ export class AdminParksStateFacade {
     this.countryCodeFilterSignal.set(filters.countryCode ?? '');
     this.validCoordinatesFilterSignal.set(filters.hasValidCoordinates ?? null);
     this.loadParks(1, this.pageSizeSignal());
+  }
+
+  updateSort(sortField: ParkAdminListSortField, sortDirection: ParkAdminListSortDirection): boolean {
+    const changed: boolean = this.sortFieldSignal() !== sortField || this.sortDirectionSignal() !== sortDirection;
+    this.sortFieldSignal.set(sortField);
+    this.sortDirectionSignal.set(sortDirection);
+    return changed;
   }
 
   updateBulkAdministration(request: BulkAdministrationUpdateRequest): Observable<BulkAdministrationUpdateResult> {

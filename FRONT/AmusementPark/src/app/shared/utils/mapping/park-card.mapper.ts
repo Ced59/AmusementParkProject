@@ -27,6 +27,7 @@ export function mapParkToCardModel(
     name: park.name?.trim() ?? '',
     countryCode: park.countryCode?.trim() ?? null,
     city: park.city?.trim() ?? null,
+    status: park.status ?? 'Operating',
     latitude: hasCoordinates ? park.latitude : null,
     longitude: hasCoordinates ? park.longitude : null,
     logoImageId: park.currentLogoImageId?.trim() ?? null,
@@ -35,6 +36,7 @@ export function mapParkToCardModel(
     addressLine: buildParkAddressLine(park),
     coordinatesLine: hasCoordinates ? `${park.latitude.toFixed(3)}, ${park.longitude.toFixed(3)}` : null,
     shortDescription,
+    isClosedDefinitively: park.status === 'ClosedDefinitively'
   };
 }
 

@@ -1,3 +1,4 @@
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Application.Features.Ratings.Results;
@@ -38,7 +39,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         this.ratingAggregatesCollection = database.GetCollection<RatingAggregateDocument>(settings.RatingAggregatesCollectionName);
     }
 
-    public async Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+    public async Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> parkFilter = Builders<ParkDocument>.Filter.Eq(document => document.Id, parkId);
         if (!includeHidden)
@@ -52,7 +53,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
             return null;
         }
 
-        Task<IReadOnlyDictionary<ParkItemCategory, int>> countsTask = this.GetCountsByCategoryAsync(parkId, includeHidden, cancellationToken);
+        Task<IReadOnlyDictionary<ParkItemCategory, int>> countsTask = this.GetCountsByCategoryAsync(parkId, includeHidden, closedFilter, cancellationToken);
         Task<int> zoneCountTask = this.GetZoneCountAsync(parkId, includeHidden, cancellationToken);
         Task<Image?> mainImageTask = this.GetMainImageAsync(parkDocument, cancellationToken);
         Task<string?> founderNameTask = this.GetFounderNameAsync(parkDocument.FounderId, cancellationToken);
@@ -105,9 +106,10 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
             aggregate.BayesianScore);
     }
 
-    private async Task<IReadOnlyDictionary<ParkItemCategory, int>> GetCountsByCategoryAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+    private async Task<IReadOnlyDictionary<ParkItemCategory, int>> GetCountsByCategoryAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId);
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
+            & BuildClosedFilter(closedFilter);
         if (!includeHidden)
         {
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
@@ -215,5 +217,19 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
     private static string? NormalizeOptionalString(string? value)
     {
         return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
+    {
+        FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
+            "attractionDetails.status",
+            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermedefinitivement)$", "i"));
+
+        return closedFilter switch
+        {
+            ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
+            ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
+            _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
+        };
     }
 }

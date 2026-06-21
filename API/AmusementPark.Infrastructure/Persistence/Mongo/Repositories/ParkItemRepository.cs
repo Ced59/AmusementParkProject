@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Contracts;
@@ -31,12 +32,19 @@ public sealed class ParkItemRepository : IParkItemRepository
 
     public async Task<IReadOnlyCollection<ParkItem>> GetByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
     {
+        return await this.GetByParkIdAsync(parkId, includeHidden, ClosedEntityFilter.All, cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<ParkItem>> GetByParkIdAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
+    {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId);
 
         if (!includeHidden)
         {
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
+
+        filter &= BuildClosedFilter(closedFilter);
 
         List<ParkItemDocument> documents = await this.collection.Find(filter)
             .SortBy(document => document.Category)
@@ -47,7 +55,37 @@ public sealed class ParkItemRepository : IParkItemRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = NormalizeParkIds(parkIds);
+        if (normalizedParkIds.Count == 0)
+        {
+            return Array.Empty<ParkItem>();
+        }
+
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        List<ParkItemDocument> documents = await this.collection.Find(filter)
+            .SortBy(document => document.ParkId)
+            .ThenBy(document => document.Category)
+            .ThenBy(document => document.Type)
+            .ThenBy(document => document.Name)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
     public async Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+    {
+        return await this.GetNavigationItemsByParkIdAsync(parkId, includeHidden, ClosedEntityFilter.All, cancellationToken);
+    }
+
+    public async Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId);
 
@@ -55,6 +93,8 @@ public sealed class ParkItemRepository : IParkItemRepository
         {
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
+
+        filter &= BuildClosedFilter(closedFilter);
 
         List<ParkItemSiblingNavigationItem> items = await this.collection.Find(filter)
             .SortBy(document => document.Category)
@@ -73,6 +113,11 @@ public sealed class ParkItemRepository : IParkItemRepository
 
     public async Task<IReadOnlyCollection<ParkItem>> GetRelatedItemsAsync(ParkItem currentItem, int limit, bool includeHidden, CancellationToken cancellationToken)
     {
+        return await this.GetRelatedItemsAsync(currentItem, limit, includeHidden, ClosedEntityFilter.All, cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<ParkItem>> GetRelatedItemsAsync(ParkItem currentItem, int limit, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
+    {
         if (limit <= 0 || string.IsNullOrWhiteSpace(currentItem.Id) || string.IsNullOrWhiteSpace(currentItem.ParkId))
         {
             return Array.Empty<ParkItem>();
@@ -87,6 +132,8 @@ public sealed class ParkItemRepository : IParkItemRepository
         {
             filter &= filterBuilder.Eq(document => document.IsVisible, true);
         }
+
+        filter &= BuildClosedFilter(closedFilter);
 
         List<FilterDefinition<ParkItemDocument>> affinityFilters = new List<FilterDefinition<ParkItemDocument>>
         {
@@ -185,6 +232,11 @@ public sealed class ParkItemRepository : IParkItemRepository
 
     public async Task<long> CountByCategoryAsync(ParkItemCategory category, bool includeHidden, CancellationToken cancellationToken)
     {
+        return await this.CountByCategoryAsync(category, includeHidden, ClosedEntityFilter.All, cancellationToken);
+    }
+
+    public async Task<long> CountByCategoryAsync(ParkItemCategory category, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
+    {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category);
 
         if (!includeHidden)
@@ -192,11 +244,18 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
+        filter &= BuildClosedFilter(closedFilter);
+
         return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
     }
 
 
     public async Task<long> CountByCategoryForParkIdsAsync(ParkItemCategory category, IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
+    {
+        return await this.CountByCategoryForParkIdsAsync(category, parkIds, includeHidden, ClosedEntityFilter.All, cancellationToken);
+    }
+
+    public async Task<long> CountByCategoryForParkIdsAsync(ParkItemCategory category, IReadOnlyCollection<string> parkIds, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         List<string> normalizedParkIds = NormalizeParkIds(parkIds);
 
@@ -214,10 +273,17 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
+        filter &= BuildClosedFilter(closedFilter);
+
         return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
     }
 
     public async Task<IReadOnlyDictionary<string, IReadOnlyDictionary<ParkItemCategory, int>>> GetCountsByCategoryForParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
+    {
+        return await this.GetCountsByCategoryForParkIdsAsync(parkIds, includeHidden, ClosedEntityFilter.All, cancellationToken);
+    }
+
+    public async Task<IReadOnlyDictionary<string, IReadOnlyDictionary<ParkItemCategory, int>>> GetCountsByCategoryForParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         List<string> normalizedParkIds = NormalizeParkIds(parkIds);
         if (normalizedParkIds.Count == 0)
@@ -230,6 +296,8 @@ public sealed class ParkItemRepository : IParkItemRepository
         {
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
+
+        filter &= BuildClosedFilter(closedFilter);
 
         List<BsonDocument> aggregationResults = await this.collection.Aggregate()
             .Match(filter)
@@ -286,6 +354,46 @@ public sealed class ParkItemRepository : IParkItemRepository
             pair => pair.Key,
             pair => (IReadOnlyDictionary<ParkItemCategory, int>)pair.Value,
             StringComparer.Ordinal);
+    }
+
+    public async Task<IReadOnlyDictionary<string, ParkItemVisibilityCounts>> GetVisibilityCountsByParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = NormalizeParkIds(parkIds);
+        if (normalizedParkIds.Count == 0)
+        {
+            return new Dictionary<string, ParkItemVisibilityCounts>(StringComparer.Ordinal);
+        }
+
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds);
+
+        List<BsonDocument> aggregationResults = await this.collection.Aggregate()
+            .Match(filter)
+            .Group(new BsonDocument
+            {
+                { "_id", "$parkId" },
+                { "totalCount", new BsonDocument("$sum", 1) },
+                { "visibleCount", new BsonDocument("$sum", new BsonDocument("$cond", new BsonArray { "$isVisible", 1, 0 })) },
+            })
+            .ToListAsync(cancellationToken);
+
+        Dictionary<string, ParkItemVisibilityCounts> counts = new Dictionary<string, ParkItemVisibilityCounts>(StringComparer.Ordinal);
+
+        foreach (BsonDocument aggregationResult in aggregationResults)
+        {
+            BsonValue parkIdValue = aggregationResult.GetValue("_id", BsonNull.Value);
+            if (!parkIdValue.IsString || string.IsNullOrWhiteSpace(parkIdValue.AsString))
+            {
+                continue;
+            }
+
+            counts[parkIdValue.AsString] = new ParkItemVisibilityCounts
+            {
+                TotalCount = aggregationResult.GetValue("totalCount", 0).ToInt32(),
+                VisibleCount = aggregationResult.GetValue("visibleCount", 0).ToInt32(),
+            };
+        }
+
+        return counts;
     }
 
     public Task<ParkItem?> GetByIdAsync(string parkItemId, CancellationToken cancellationToken)
@@ -661,6 +769,20 @@ public sealed class ParkItemRepository : IParkItemRepository
             .Select(static parkId => parkId.Trim())
             .Distinct(StringComparer.Ordinal)
             .ToList();
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
+    {
+        FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
+            "attractionDetails.status",
+            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermé\\s*définitivement|fermedefinitivement)$", "i"));
+
+        return closedFilter switch
+        {
+            ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
+            ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
+            _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
+        };
     }
 
     public async Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken)

@@ -11,6 +11,7 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
 import { ParkListViewComponent } from '../ui/park-list-view.component';
 import { SeoService } from '@core/seo/seo.service';
+import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 
 @Component({
   selector: 'app-park-list-page',
@@ -31,8 +32,14 @@ export class ParkListPageComponent implements OnInit {
   protected readonly selectedMapParkId = this.stateFacade.selectedParkId;
   protected readonly selectedParkCard = this.stateFacade.selectedParkCard;
   protected readonly selectedRegion = this.stateFacade.selectedRegion;
+  protected readonly selectedClosedFilter = this.stateFacade.selectedClosedFilter;
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
+  protected readonly closedFilterOptions = signal([
+    { labelKey: 'parks.closedFilters.openOnly', value: DEFAULT_CLOSED_ENTITY_FILTER },
+    { labelKey: 'parks.closedFilters.withClosed', value: 'all' },
+    { labelKey: 'parks.closedFilters.closedOnly', value: 'closedOnly' }
+  ]);
 
   private readonly searchSubject: Subject<string> = new Subject<string>();
   private activeLanguage: string | null = null;
@@ -121,6 +128,15 @@ export class ParkListPageComponent implements OnInit {
     this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), region);
   }
 
+  onClosedFilterChanged(value: string | null): void {
+    const closedFilter: ClosedEntityFilter = normalizeClosedFilter(value);
+
+    this.stateFacade.setClosedFilter(closedFilter);
+    this.stateFacade.clearSelectedPark();
+    this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
+    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
+  }
+
   onMapParkSelected(parkId: string | null): void {
     this.stateFacade.selectParkFromMap(parkId);
   }
@@ -132,4 +148,12 @@ export class ParkListPageComponent implements OnInit {
   clearSelectedPark(): void {
     this.stateFacade.clearSelectedPark();
   }
+}
+
+function normalizeClosedFilter(value: string | null): ClosedEntityFilter {
+  if (value === 'all' || value === 'closedOnly') {
+    return value;
+  }
+
+  return DEFAULT_CLOSED_ENTITY_FILTER;
 }

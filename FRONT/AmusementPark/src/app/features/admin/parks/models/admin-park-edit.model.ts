@@ -1,8 +1,14 @@
 import { ParkType } from '@app/models/parks/park-type';
+import { ParkStatus } from '@app/models/parks/park-status';
 
 export interface AdminParkTypeOption {
   labelKey: string;
   value: ParkType;
+}
+
+export interface AdminParkStatusOption {
+  labelKey: string;
+  value: ParkStatus;
 }
 
 export interface AdminParkCountryOption {

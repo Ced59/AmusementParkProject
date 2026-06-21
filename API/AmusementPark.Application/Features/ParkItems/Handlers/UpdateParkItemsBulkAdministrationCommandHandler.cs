@@ -70,10 +70,7 @@ public sealed class UpdateParkItemsBulkAdministrationCommandHandler : ICommandHa
             command.AdminReviewStatus,
             cancellationToken);
 
-        foreach (string parkItemId in normalizedParkItemIds)
-        {
-            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, parkItemId, cancellationToken);
-        }
+        await this.searchProjectionWriter.UpsertManyAsync(SearchProjectionResourceTypes.ParkItems, normalizedParkItemIds, cancellationToken);
 
         if (updatedCount > 0)
         {

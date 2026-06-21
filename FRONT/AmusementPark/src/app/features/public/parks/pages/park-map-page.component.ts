@@ -8,6 +8,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { buildPublicParkItemsRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkMapStateFacade } from '../state/park-map-state.facade';
 import { ParkMapViewComponent } from '../ui/park-map-view.component';
+import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 
 @Component({
   selector: 'app-park-map-page',
@@ -25,6 +26,12 @@ export class ParkMapPageComponent implements OnInit {
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
   protected readonly itemsLink = signal<string[] | null>(null);
+  protected readonly selectedClosedFilter = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
+  protected readonly closedFilterOptions = signal([
+    { labelKey: 'parkItems.filters.openOnly', value: DEFAULT_CLOSED_ENTITY_FILTER },
+    { labelKey: 'parkItems.filters.withClosed', value: 'all' },
+    { labelKey: 'parkItems.filters.closedOnly', value: 'closedOnly' }
+  ]);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private currentParkId: string | null = null;
@@ -74,7 +81,25 @@ export class ParkMapPageComponent implements OnInit {
       }
 
       this.currentParkId = parkId;
-      this.stateFacade.loadParkMap(parkId);
+      this.stateFacade.loadParkMap(parkId, this.selectedClosedFilter());
     });
   }
+
+  onClosedFilterChanged(value: string | null): void {
+    const closedFilter: ClosedEntityFilter = normalizeClosedFilter(value);
+
+    this.selectedClosedFilter.set(closedFilter);
+
+    if (this.currentParkId) {
+      this.stateFacade.loadParkMap(this.currentParkId, closedFilter);
+    }
+  }
+}
+
+function normalizeClosedFilter(value: string | null): ClosedEntityFilter {
+  if (value === 'all' || value === 'closedOnly') {
+    return value;
+  }
+
+  return DEFAULT_CLOSED_ENTITY_FILTER;
 }

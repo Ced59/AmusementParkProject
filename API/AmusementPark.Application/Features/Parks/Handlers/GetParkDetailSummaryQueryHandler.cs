@@ -25,7 +25,7 @@ public sealed class GetParkDetailSummaryQueryHandler : IQueryHandler<GetParkDeta
             return ApplicationResult<ParkDetailSummaryResult>.Failure(ParkApplicationErrors.ParkNotExists());
         }
 
-        ParkDetailSummaryResult? summary = await this.repository.GetAsync(query.ParkId.Trim(), query.IncludeHidden, cancellationToken);
+        ParkDetailSummaryResult? summary = await this.repository.GetAsync(query.ParkId.Trim(), query.IncludeHidden, query.ClosedFilter, cancellationToken);
         if (summary is null)
         {
             return ApplicationResult<ParkDetailSummaryResult>.Failure(ParkApplicationErrors.ParkNotExists());

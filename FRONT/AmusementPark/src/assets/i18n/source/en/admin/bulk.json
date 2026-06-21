@@ -11,7 +11,12 @@
       "markValidated": "Validate",
       "markNotRelevant": "Not relevant",
       "validCoordinatesScope": "Valid-coordinate parks",
-      "makeFilteredValidCoordinatesVisible": "Make geolocated parks visible"
+      "makeFilteredValidCoordinatesVisible": "Make geolocated parks visible",
+      "makeVisibleShort": "Show",
+      "markToReviewShort": "Review",
+      "processLaterShort": "Later",
+      "clearSelectionShort": "Clear",
+      "showItems": "Show items"
     }
   }
 }

@@ -428,7 +428,14 @@
       "title": "Parchi",
       "subtitle": "Filtra, priorizza e amministra i parchi del sito.",
       "reviewStatus": "Stato admin",
-      "loadError": "Impossibile caricare i parchi."
+      "loadError": "Impossibile caricare i parchi.",
+      "status": "Stato",
+      "itemsTotalCount": "Item",
+      "itemsVisibleCount": "Vis.",
+      "statuses": {
+        "operating": "Aperto",
+        "closedDefinitively": "Chiuso definitivamente"
+      }
     }
   }
 }

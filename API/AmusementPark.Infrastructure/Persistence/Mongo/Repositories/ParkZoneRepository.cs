@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
@@ -106,8 +107,14 @@ public sealed class ParkZoneRepository : IParkZoneRepository
 
     public async Task<ParkExplorerResult> GetExplorerAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
     {
+        return await this.GetExplorerAsync(parkId, includeHidden, ClosedEntityFilter.All, cancellationToken);
+    }
+
+    public async Task<ParkExplorerResult> GetExplorerAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
+    {
         FilterDefinition<ParkZoneDocument> zoneFilter = Builders<ParkZoneDocument>.Filter.Eq(document => document.ParkId, parkId);
-        FilterDefinition<ParkItemDocument> itemFilter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId);
+        FilterDefinition<ParkItemDocument> itemFilter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
+            & BuildClosedFilter(closedFilter);
 
         if (!includeHidden)
         {
@@ -131,6 +138,20 @@ public sealed class ParkZoneRepository : IParkZoneRepository
             ParkId = parkId,
             Zones = zoneDocuments.Select(document => document.ToDomain()).ToList(),
             Items = itemDocuments.Select(document => document.ToDomain()).ToList(),
+        };
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
+    {
+        FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
+            "attractionDetails.status",
+            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermé\\s*définitivement|fermedefinitivement)$", "i"));
+
+        return closedFilter switch
+        {
+            ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
+            ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
+            _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
         };
     }
 }

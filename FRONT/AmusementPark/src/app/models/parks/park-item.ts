@@ -22,4 +22,5 @@ export interface ParkItem {
   isVisible?: boolean;
   adminReviewStatus?: AdminReviewStatus;
   rating?: RatingSummary | null;
+  mainImageId?: string | null;
 }

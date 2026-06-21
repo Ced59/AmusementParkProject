@@ -1,9 +1,11 @@
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -24,7 +26,7 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
         this.parkZonesCollection = database.GetCollection<ParkZoneDocument>(settings.ParkZonesCollectionName);
     }
 
-    public async Task<ParkMapItemsResult?> GetAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+    public async Task<ParkMapItemsResult?> GetAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> parkFilter = Builders<ParkDocument>.Filter.Eq(document => document.Id, parkId);
         if (!includeHidden)
@@ -39,12 +41,18 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
         }
 
         Task<List<ParkZoneDocument>> zonesTask = this.GetZonesAsync(parkId, includeHidden, cancellationToken);
-        Task<List<ParkItemDocument>> itemsTask = this.GetItemsAsync(parkId, includeHidden, cancellationToken);
+        Task<List<ParkItemDocument>> itemsTask = this.GetItemsAsync(parkId, includeHidden, closedFilter, cancellationToken);
 
         await Task.WhenAll(zonesTask, itemsTask);
 
         List<ParkZoneDocument> zoneDocuments = await zonesTask;
         List<ParkItemDocument> itemDocuments = await itemsTask;
+        List<ParkItemDocument> locatedDocuments = itemDocuments
+            .Where(static document => HasValidCoordinates(document.Latitude, document.Longitude))
+            .ToList();
+        List<ParkItemDocument> unlocatedDocuments = itemDocuments
+            .Where(static document => !HasValidCoordinates(document.Latitude, document.Longitude))
+            .ToList();
 
         return new ParkMapItemsResult
         {
@@ -55,8 +63,7 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
                 Name = document.Name,
                 SortOrder = document.SortOrder,
             }).ToList(),
-            Items = itemDocuments
-                .Where(static document => HasValidCoordinates(document.Latitude, document.Longitude))
+            Items = locatedDocuments
                 .Select(static document => new ParkMapItemResult
                 {
                     Id = document.Id,
@@ -67,6 +74,17 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
                     ZoneId = string.IsNullOrWhiteSpace(document.ZoneId) ? null : document.ZoneId,
                     Latitude = document.Latitude!.Value,
                     Longitude = document.Longitude!.Value,
+                })
+                .ToList(),
+            UnlocatedItems = unlocatedDocuments
+                .Select(static document => new ParkMapUnlocatedItemResult
+                {
+                    Id = document.Id,
+                    Name = document.Name,
+                    Category = document.Category,
+                    Type = document.Type,
+                    Subtype = document.Subtype,
+                    ZoneId = string.IsNullOrWhiteSpace(document.ZoneId) ? null : document.ZoneId,
                 })
                 .ToList(),
         };
@@ -95,19 +113,11 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
             .ToListAsync(cancellationToken);
     }
 
-    private Task<List<ParkItemDocument>> GetItemsAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+    private Task<List<ParkItemDocument>> GetItemsAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
             & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
-            & Builders<ParkItemDocument>.Filter.Exists(document => document.Latitude, true)
-            & Builders<ParkItemDocument>.Filter.Exists(document => document.Longitude, true)
-            & Builders<ParkItemDocument>.Filter.Gte(document => document.Latitude, -90d)
-            & Builders<ParkItemDocument>.Filter.Lte(document => document.Latitude, 90d)
-            & Builders<ParkItemDocument>.Filter.Gte(document => document.Longitude, -180d)
-            & Builders<ParkItemDocument>.Filter.Lte(document => document.Longitude, 180d)
-            & Builders<ParkItemDocument>.Filter.Or(
-                Builders<ParkItemDocument>.Filter.Ne(document => document.Latitude, 0d),
-                Builders<ParkItemDocument>.Filter.Ne(document => document.Longitude, 0d));
+            & BuildClosedFilter(closedFilter);
 
         if (!includeHidden)
         {
@@ -144,5 +154,19 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
             && Math.Abs(latitude.Value) <= 90d
             && Math.Abs(longitude.Value) <= 180d
             && !(Math.Abs(latitude.Value) < double.Epsilon && Math.Abs(longitude.Value) < double.Epsilon);
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
+    {
+        FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
+            "attractionDetails.status",
+            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermedefinitivement)$", "i"));
+
+        return closedFilter switch
+        {
+            ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
+            ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
+            _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
+        };
     }
 }

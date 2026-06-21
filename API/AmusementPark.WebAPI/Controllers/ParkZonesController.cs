@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkZones.Commands;
 using AmusementPark.Application.Features.ParkZones.Queries;
@@ -96,10 +97,10 @@ public sealed class ParkZonesController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkExplorerDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetExplorerAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetExplorerAsync([FromRoute] string parkId, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
     {
         bool includeNonVisible = this.UserCanSeeNonVisible();
-        ApplicationResult<ParkExplorerResult> result = await this.getParkExplorerQueryHandler.HandleAsync(new GetParkExplorerQuery(parkId, includeNonVisible), cancellationToken);
+        ApplicationResult<ParkExplorerResult> result = await this.getParkExplorerQueryHandler.HandleAsync(new GetParkExplorerQuery(parkId, includeNonVisible, ParseClosedEntityFilter(closedFilter)), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
@@ -153,5 +154,15 @@ public sealed class ParkZonesController : ControllerBase
     private bool UserCanSeeNonVisible()
     {
         return this.User?.IsInRole("ADMIN") == true;
+    }
+
+    private static ClosedEntityFilter ParseClosedEntityFilter(string? value)
+    {
+        return (value ?? string.Empty).Trim().ToLowerInvariant().Replace("-", string.Empty, StringComparison.Ordinal) switch
+        {
+            "all" or "includeclosed" or "withclosed" => ClosedEntityFilter.All,
+            "closed" or "closedonly" or "onlyclosed" => ClosedEntityFilter.ClosedOnly,
+            _ => ClosedEntityFilter.OpenOnly,
+        };
     }
 }

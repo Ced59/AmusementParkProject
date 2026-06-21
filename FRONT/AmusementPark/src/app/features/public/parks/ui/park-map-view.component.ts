@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -6,6 +6,7 @@ import { Park } from '@app/models/parks/park';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiSelectOptionModel } from '@ui/forms';
 import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { ParkItemsMapSectionComponent } from './park-items-map-section.component';
 
@@ -31,4 +32,13 @@ export class ParkMapViewComponent {
   @Input() map: ParkItemsMapViewModel | null = null;
   @Input() detailLink: string[] | null = null;
   @Input() itemsLink: string[] | null = null;
+  @Input() selectedClosedFilter: string = 'openOnly';
+  @Input() closedFilterOptions: UiSelectOptionModel[] = [];
+
+  @Output() closedFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
+
+  onClosedFilterSelectChanged(event: Event): void {
+    const target: HTMLSelectElement | null = event.target instanceof HTMLSelectElement ? event.target : null;
+    this.closedFilterChanged.emit(target?.value ?? null);
+  }
 }

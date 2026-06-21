@@ -39,7 +39,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class ParkItemsController : ControllerBase
 {
-    private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler;
+    private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItemListResult>>> getParkItemsByParkIdQueryHandler;
     private readonly IQueryHandler<GetParkItemsPageQuery, ApplicationResult<PagedResult<ParkItemAdminListResult>>> getParkItemsPageQueryHandler;
     private readonly IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler;
     private readonly IQueryHandler<GetParkItemSiblingNavigationQuery, ApplicationResult<ParkItemSiblingNavigationResult>> getParkItemSiblingNavigationQueryHandler;
@@ -49,12 +49,13 @@ public sealed class ParkItemsController : ControllerBase
     private readonly ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler;
     private readonly ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler;
     private readonly ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler;
+    private readonly ICommandHandler<UpdateParkItemsVisibilityByParkIdsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsVisibilityByParkIdsCommandHandler;
     private readonly ICommandHandler<UpdateParkItemsBulkFieldsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkFieldsCommandHandler;
     private readonly ICommandHandler<PreviewParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreatePreviewResult>> previewParkItemsBulkCreateCommandHandler;
     private readonly ICommandHandler<ApplyParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreateApplyResult>> applyParkItemsBulkCreateCommandHandler;
 
     public ParkItemsController(
-        IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler,
+        IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItemListResult>>> getParkItemsByParkIdQueryHandler,
         IQueryHandler<GetParkItemsPageQuery, ApplicationResult<PagedResult<ParkItemAdminListResult>>> getParkItemsPageQueryHandler,
         IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler,
         IQueryHandler<GetParkItemSiblingNavigationQuery, ApplicationResult<ParkItemSiblingNavigationResult>> getParkItemSiblingNavigationQueryHandler,
@@ -64,6 +65,7 @@ public sealed class ParkItemsController : ControllerBase
         ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler,
         ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler,
         ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler,
+        ICommandHandler<UpdateParkItemsVisibilityByParkIdsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsVisibilityByParkIdsCommandHandler,
         ICommandHandler<UpdateParkItemsBulkFieldsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkFieldsCommandHandler,
         ICommandHandler<PreviewParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreatePreviewResult>> previewParkItemsBulkCreateCommandHandler,
         ICommandHandler<ApplyParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreateApplyResult>> applyParkItemsBulkCreateCommandHandler)
@@ -78,6 +80,7 @@ public sealed class ParkItemsController : ControllerBase
         this.updateParkItemCommandHandler = updateParkItemCommandHandler;
         this.deleteParkItemCommandHandler = deleteParkItemCommandHandler;
         this.updateParkItemsBulkAdministrationCommandHandler = updateParkItemsBulkAdministrationCommandHandler;
+        this.updateParkItemsVisibilityByParkIdsCommandHandler = updateParkItemsVisibilityByParkIdsCommandHandler;
         this.updateParkItemsBulkFieldsCommandHandler = updateParkItemsBulkFieldsCommandHandler;
         this.previewParkItemsBulkCreateCommandHandler = previewParkItemsBulkCreateCommandHandler;
         this.applyParkItemsBulkCreateCommandHandler = applyParkItemsBulkCreateCommandHandler;
@@ -87,10 +90,10 @@ public sealed class ParkItemsController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<IReadOnlyCollection<ParkItem>> result = await this.getParkItemsByParkIdQueryHandler.HandleAsync(
-            new GetParkItemsByParkIdQuery(parkId, this.UserCanSeeNonVisible()),
+        ApplicationResult<IReadOnlyCollection<ParkItemListResult>> result = await this.getParkItemsByParkIdQueryHandler.HandleAsync(
+            new GetParkItemsByParkIdQuery(parkId, this.UserCanSeeNonVisible(), ParseClosedEntityFilter(closedFilter)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -156,10 +159,10 @@ public sealed class ParkItemsController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkItemSiblingNavigationDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetSiblingNavigationAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetSiblingNavigationAsync([FromRoute] string id, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
     {
         ApplicationResult<ParkItemSiblingNavigationResult> result = await this.getParkItemSiblingNavigationQueryHandler.HandleAsync(
-            new GetParkItemSiblingNavigationQuery(id, this.UserCanSeeNonVisible()),
+            new GetParkItemSiblingNavigationQuery(id, this.UserCanSeeNonVisible(), ParseClosedEntityFilter(closedFilter)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -174,10 +177,10 @@ public sealed class ParkItemsController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkItemDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetRelatedAsync([FromRoute] string id, [FromQuery] int limit = 3, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetRelatedAsync([FromRoute] string id, [FromQuery] int limit = 3, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<ParkItem>> result = await this.getRelatedParkItemsQueryHandler.HandleAsync(
-            new GetRelatedParkItemsQuery(id, limit, this.UserCanSeeNonVisible()),
+            new GetRelatedParkItemsQuery(id, limit, this.UserCanSeeNonVisible(), ParseClosedEntityFilter(closedFilter)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -263,6 +266,27 @@ public sealed class ParkItemsController : ControllerBase
     {
         ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParkItemsBulkFieldsCommandHandler.HandleAsync(
             request.ToApplication(),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(new BulkAdministrationUpdateResultDto
+        {
+            RequestedCount = result.Value.RequestedCount,
+            UpdatedCount = result.Value.UpdatedCount,
+        });
+    }
+
+    [HttpPatch("bulk-park-visibility")]
+    [AdminAudit("park-item.bulk-park-visibility.update", "ParkItem", StaticTargetId = "bulk")]
+    [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateParkItemsVisibilityByParkIdsAsync([FromBody] ParkItemsByParkVisibilityUpdateDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParkItemsVisibilityByParkIdsCommandHandler.HandleAsync(
+            new UpdateParkItemsVisibilityByParkIdsCommand(request.ParkIds, request.IsVisible),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -373,6 +397,16 @@ public sealed class ParkItemsController : ControllerBase
     private static ParkItemContentBacklogFilter? ParseParkItemContentBacklogFilter(string? value)
     {
         return Enum.TryParse(value, true, out ParkItemContentBacklogFilter parsed) ? parsed : null;
+    }
+
+    private static ClosedEntityFilter ParseClosedEntityFilter(string? value)
+    {
+        return (value ?? string.Empty).Trim().ToLowerInvariant().Replace("-", string.Empty, StringComparison.Ordinal) switch
+        {
+            "all" or "includeclosed" or "withclosed" => ClosedEntityFilter.All,
+            "closed" or "closedonly" or "onlyclosed" => ClosedEntityFilter.ClosedOnly,
+            _ => ClosedEntityFilter.OpenOnly,
+        };
     }
 
     private bool UserCanSeeNonVisible()

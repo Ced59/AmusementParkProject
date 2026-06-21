@@ -22,7 +22,9 @@ export function mapParkItemToCardViewModel(
   zoneName: string | null,
   textTruncator: NaturalTextTruncatorService | null = null,
   measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
-  measurementConversionService: MeasurementConversionService = defaultMeasurementConversionService
+  measurementConversionService: MeasurementConversionService = defaultMeasurementConversionService,
+  imageUrl: string | null = null,
+  imageSrcSet: string | null = null
 ): ParkItemCardViewModel {
   const modelName: string | null = item.attractionDetails?.model?.trim() ?? null;
   const subtitleParts: string[] = [manufacturerName, modelName]
@@ -37,6 +39,8 @@ export function mapParkItemToCardViewModel(
     typeLabelKey: getParkItemTypeTranslationKey(item.type),
     typeIconClass: resolveParkItemTypeIconClass(item.type),
     zoneName,
+    imageUrl,
+    imageSrcSet,
     highlights: buildParkItemHighlights(item, manufacturerName, currentLanguage, measurementSystem, measurementConversionService),
     itemLink: buildParkItemLink(park, item, currentLanguage)
   };

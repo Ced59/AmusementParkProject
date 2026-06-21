@@ -1,6 +1,17 @@
 @if (card; as currentCard) {
   <article class="ui-item-card" [attr.aria-label]="currentCard.name">
-    <div class="ui-item-card__visual">
+    <div class="ui-item-card__visual" [class.ui-item-card__visual--photo]="currentCard.imageUrl">
+      @if (currentCard.imageUrl) {
+        <img
+          class="ui-item-card__photo"
+          [src]="currentCard.imageUrl"
+          [attr.srcset]="currentCard.imageSrcSet"
+          sizes="(min-width: 1180px) 30vw, (min-width: 680px) 46vw, 92vw"
+          [alt]="currentCard.name"
+          loading="lazy"
+          decoding="async" />
+      }
+
       <span class="ui-item-card__icon">
         <i [class]="currentCard.typeIconClass" aria-hidden="true"></i>
       </span>

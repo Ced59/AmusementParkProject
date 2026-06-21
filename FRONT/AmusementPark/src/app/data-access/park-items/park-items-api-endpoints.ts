@@ -1,6 +1,7 @@
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
+import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 
 export interface ParkItemAdminListFilters {
   isVisible?: boolean | null;
@@ -60,10 +61,18 @@ function buildParkItemAdminSortQuery(sort: ParkItemAdminListSort | null = null):
   return `&sortBy=${encodeURIComponent(sort.sortBy)}&sortDirection=${encodeURIComponent(sort.sortDirection)}`;
 }
 
+function buildClosedFilterQuery(closedFilter: ClosedEntityFilter | null | undefined, prefix: '?' | '&' = '&'): string {
+  if (!closedFilter || closedFilter === DEFAULT_CLOSED_ENTITY_FILTER) {
+    return '';
+  }
+
+  return `${prefix}closedFilter=${encodeURIComponent(closedFilter)}`;
+}
+
 export const PARK_ITEMS_API_ENDPOINTS = {
-  getParkItemsByParkId: (parkId: string, page: number = 1, size: number = 100) => `park-items/park/${parkId}?page=${page}&size=${size}`,
-  getParkItemSiblingNavigation: (parkItemId: string) => `park-items/${encodeURIComponent(parkItemId)}/siblings`,
-  getRelatedParkItems: (parkItemId: string, limit: number = 3) => `park-items/${encodeURIComponent(parkItemId)}/related?limit=${limit}`,
+  getParkItemsByParkId: (parkId: string, page: number = 1, size: number = 100, closedFilter?: ClosedEntityFilter | null) => `park-items/park/${parkId}?page=${page}&size=${size}${buildClosedFilterQuery(closedFilter)}`,
+  getParkItemSiblingNavigation: (parkItemId: string, closedFilter?: ClosedEntityFilter | null) => `park-items/${encodeURIComponent(parkItemId)}/siblings${buildClosedFilterQuery(closedFilter, '?')}`,
+  getRelatedParkItems: (parkItemId: string, limit: number = 3, closedFilter?: ClosedEntityFilter | null) => `park-items/${encodeURIComponent(parkItemId)}/related?limit=${limit}${buildClosedFilterQuery(closedFilter)}`,
   getParkItemsPaginated: (
     page: number,
     size: number,
@@ -81,6 +90,7 @@ export const PARK_ITEMS_API_ENDPOINTS = {
   updateParkItem: (id: string) => `park-items/${id}`,
   deleteParkItem: (id: string) => `park-items/${id}`,
   updateParkItemsBulkAdministration: 'park-items/bulk-administration',
+  updateParkItemsVisibilityByParkIds: 'park-items/bulk-park-visibility',
   updateParkItemsBulkFields: 'park-items/bulk-fields',
   previewParkItemsBulkCreate: 'park-items/bulk-create/preview',
   applyParkItemsBulkCreate: 'park-items/bulk-create/apply'

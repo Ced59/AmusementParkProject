@@ -25,6 +25,7 @@ internal static class ParksHttpMappers
             Name = dto.Name?.Trim(),
             CountryCode = NormalizeOptionalString(dto.CountryCode),
             Type = dto.Type.ToDomain(),
+            Status = dto.Status.ToDomain(),
             FounderId = NormalizeOptionalString(dto.FounderId),
             OperatorId = NormalizeOptionalString(dto.OperatorId),
             Descriptions = dto.Descriptions.ToDomain(),
@@ -52,6 +53,7 @@ internal static class ParksHttpMappers
             Name = dto.Name.Trim(),
             CountryCode = NormalizeOptionalString(dto.CountryCode),
             Type = dto.Type.ToDomain(),
+            Status = dto.Status.ToDomain(),
             FounderId = NormalizeOptionalString(dto.FounderId),
             OperatorId = NormalizeOptionalString(dto.OperatorId),
             Descriptions = dto.Descriptions.ToDomain(),
@@ -80,6 +82,7 @@ internal static class ParksHttpMappers
             Name = value.Name,
             CountryCode = value.CountryCode,
             Type = value.Type.ToHttp(),
+            Status = value.Status.ToHttp(),
             FounderId = value.FounderId,
             OperatorId = value.OperatorId,
             Latitude = value.Position?.Latitude ?? 0.0,
@@ -107,6 +110,7 @@ internal static class ParksHttpMappers
             Name = value.Name,
             CountryCode = value.CountryCode,
             Type = value.Type.ToHttp(),
+            Status = value.Status.ToHttp(),
             FounderId = value.FounderId,
             OperatorId = value.OperatorId,
             Latitude = value.Position?.Latitude ?? 0.0,
@@ -123,6 +127,16 @@ internal static class ParksHttpMappers
             PostalCode = value.PostalCode,
             CurrentLogoImageId = value.CurrentLogoImageId,
         };
+    }
+
+    public static ParkDto ToHttp(this ParkListResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        ParkDto dto = value.Park.ToHttp();
+        dto.ParkItemsTotalCount = value.ParkItemsTotalCount;
+        dto.ParkItemsVisibleCount = value.ParkItemsVisibleCount;
+        return dto;
     }
 
     public static ParkDetailSummaryDto ToDetailSummaryHttp(this ParkDetailSummaryResult value)
@@ -174,6 +188,15 @@ internal static class ParksHttpMappers
                 ZoneId = item.ZoneId,
                 Latitude = item.Latitude,
                 Longitude = item.Longitude,
+            }).ToList(),
+            UnlocatedItems = value.UnlocatedItems.Select(static item => new ParkMapUnlocatedItemDto
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Category = item.Category.ToString(),
+                Type = item.Type.ToString(),
+                Subtype = item.Subtype,
+                ZoneId = item.ZoneId,
             }).ToList(),
             Zones = value.Zones.Select(static zone => new ParkMapZoneDto
             {
@@ -512,5 +535,15 @@ internal static class ParksHttpMappers
         }
 
         return Enum.TryParse(value.Value.ToString(), out ParkTypeDto parsed) ? parsed : null;
+    }
+
+    private static ParkStatus ToDomain(this ParkStatusDto value)
+    {
+        return Enum.TryParse(value.ToString(), out ParkStatus parsed) ? parsed : ParkStatus.Operating;
+    }
+
+    private static ParkStatusDto ToHttp(this ParkStatus value)
+    {
+        return Enum.TryParse(value.ToString(), out ParkStatusDto parsed) ? parsed : ParkStatusDto.Operating;
     }
 }

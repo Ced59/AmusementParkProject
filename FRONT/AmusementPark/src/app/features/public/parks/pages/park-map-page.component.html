@@ -3,5 +3,8 @@
   [park]="park()"
   [map]="map()"
   [detailLink]="detailLink()"
-  [itemsLink]="itemsLink()">
+  [itemsLink]="itemsLink()"
+  [selectedClosedFilter]="selectedClosedFilter()"
+  [closedFilterOptions]="closedFilterOptions()"
+  (closedFilterChanged)="onClosedFilterChanged($event)">
 </app-park-map-view>

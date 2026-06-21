@@ -11,6 +11,7 @@ import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store'
 import { mapParkMapItemsToViewModel } from '../mappers/park-map-items-view.mapper';
 import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { PARK_MAP_PARKS_PORT, ParkMapParksPort } from './park-map-data.ports';
+import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 
 interface ParkMapPageData {
   mapItems: ParkMapItems;
@@ -45,13 +46,13 @@ export class ParkMapStateFacade {
     this.currentLanguageSignal.set(language || 'en');
   }
 
-  loadParkMap(parkId: string): void {
+  loadParkMap(parkId: string, closedFilter: ClosedEntityFilter = DEFAULT_CLOSED_ENTITY_FILTER): void {
     const previousData: ParkMapPageData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
     forkJoin({
-      mapItems: this.parksPort.getParkMapItems(parkId, anonymousHttpOptions()),
-      summary: this.parksPort.getParkDetailSummary(parkId, anonymousHttpOptions())
+      mapItems: this.parksPort.getParkMapItems(parkId, { ...anonymousHttpOptions(), closedFilter }),
+      summary: this.parksPort.getParkDetailSummary(parkId, { ...anonymousHttpOptions(), closedFilter })
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (data: { mapItems: ParkMapItems; summary: ParkDetailSummary }) => {
         this.screenStateStore.setReady({

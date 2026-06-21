@@ -90,6 +90,27 @@
 
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
+      <label for="parkStatus">{{ 'admin.parks.status' | translate }}</label>
+      <p-select
+        inputId="parkStatus"
+        formControlName="status"
+        [options]="parkStatusOptions"
+        optionValue="value"
+        [appendTo]="'body'">
+        <ng-template let-option #item>
+          {{ option.labelKey | translate }}
+        </ng-template>
+        <ng-template let-option #selectedItem>
+          @if (option) {
+            {{ option.labelKey | translate }}
+          }
+        </ng-template>
+      </p-select>
+    </div>
+  </div>
+
+  <div class="grid formgrid">
+    <div class="field col-12 md:col-6">
       <app-entity-select
         formControlName="founderId"
         [label]="'admin.parks.founder' | translate"

@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
@@ -526,7 +527,7 @@ public sealed class SitemapSectionProvidersTests
 
         Assert.Single(urls);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-99/late-park/item/item-99/late-attraction");
-        parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<bool?>(), It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<bool?>(), It.IsAny<ClosedEntityFilter>(), It.IsAny<CancellationToken>()), Times.Never);
     }
 
     [Fact]
@@ -586,7 +587,10 @@ public sealed class SitemapSectionProvidersTests
                 null,
                 null,
                 null,
-                It.IsAny<CancellationToken>()))
+                ClosedEntityFilter.OpenOnly,
+                It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Default,
+                false))
             .Returns((
                 int page,
                 int pageSize,
@@ -596,7 +600,10 @@ public sealed class SitemapSectionProvidersTests
                 ParkType? type,
                 string? countryCode,
                 bool? hasValidCoordinates,
-                CancellationToken cancellationToken) =>
+                ClosedEntityFilter closedFilter,
+                CancellationToken cancellationToken,
+                ParkAdminSortField sortField,
+                bool sortDescending) =>
             {
                 IReadOnlyCollection<Park> pageItems = parks
                     .Skip((page - 1) * pageSize)

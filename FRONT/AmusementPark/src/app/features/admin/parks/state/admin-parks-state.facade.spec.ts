@@ -5,7 +5,7 @@ import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from 
 import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { Pagination } from '@app/models/shared/pagination';
-import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
+import { ParkAdminListFilters, ParkAdminListSort } from '@data-access/parks/parks-api-endpoints';
 import {
   ADMIN_PARKS_STATE_PARKS_API_SERVICE_PORT,
   AdminParksStateParksApiServicePort
@@ -16,17 +16,17 @@ class FakeParksPort implements AdminParksStateParksApiServicePort {
   public pageResponse$: Observable<ParksApiResponse> = of(createResponse([createPark('park-1')], createPagination(1, 10, 1)));
   public searchResponse$: Observable<ParksApiResponse> = of(createResponse([createPark('searched-park')], createPagination(1, 10, 1)));
   public bulkResponse$: Observable<BulkAdministrationUpdateResult> = of({ requestedCount: 1, updatedCount: 1 });
-  public readonly pageCalls: { page: number; size: number; filters: ParkAdminListFilters | null }[] = [];
-  public readonly searchCalls: { query: string; page: number; size: number; filters: ParkAdminListFilters | null }[] = [];
+  public readonly pageCalls: { page: number; size: number; filters: ParkAdminListFilters | null; sort: ParkAdminListSort | null }[] = [];
+  public readonly searchCalls: { query: string; page: number; size: number; filters: ParkAdminListFilters | null; sort: ParkAdminListSort | null }[] = [];
   public readonly bulkCalls: BulkAdministrationUpdateRequest[] = [];
 
-  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
-    this.pageCalls.push({ page, size, filters });
+  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region = null, filters: ParkAdminListFilters | null = null, options: { sort?: ParkAdminListSort } = {}): Observable<ParksApiResponse> {
+    this.pageCalls.push({ page, size, filters, sort: options.sort ?? null });
     return this.pageResponse$;
   }
 
-  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
-    this.searchCalls.push({ query, page, size, filters });
+  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region = null, filters: ParkAdminListFilters | null = null, options: { sort?: ParkAdminListSort } = {}): Observable<ParksApiResponse> {
+    this.searchCalls.push({ query, page, size, filters, sort: options.sort ?? null });
     return this.searchResponse$;
   }
 
@@ -108,6 +108,15 @@ describe('AdminParksStateFacade', () => {
     expect(facade.validCoordinatesFilter()).toBeTrue();
     expect(port.pageCalls[0].page).toBe(1);
     expect(port.pageCalls[0].filters).toEqual({ isVisible: true, adminReviewStatus: null, type: null, countryCode: 'DE', hasValidCoordinates: true });
+  });
+
+  it('passes admin sort options to park list requests', () => {
+    const changed: boolean = facade.updateSort('parkItemsVisibleCount', 'desc');
+
+    facade.loadParks(1, 10);
+
+    expect(changed).toBeTrue();
+    expect(port.pageCalls[0].sort).toEqual({ sortBy: 'parkItemsVisibleCount', sortDirection: 'desc' });
   });
 
   it('delegates bulk administration updates to the port', () => {

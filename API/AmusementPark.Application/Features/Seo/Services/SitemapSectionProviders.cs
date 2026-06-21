@@ -114,6 +114,7 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
         return !string.IsNullOrWhiteSpace(park.Id) &&
                !string.IsNullOrWhiteSpace(park.Name) &&
                park.IsVisible &&
+               park.Status != ParkStatus.ClosedDefinitively &&
                park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 
@@ -467,6 +468,7 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
                !string.IsNullOrWhiteSpace(item.ParkId) &&
                !string.IsNullOrWhiteSpace(item.Name) &&
                item.IsVisible &&
+               !ParkItemStatusNormalizer.IsClosedDefinitively(item.AttractionDetails?.Status) &&
                item.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 }

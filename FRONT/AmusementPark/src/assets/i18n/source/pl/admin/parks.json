@@ -428,7 +428,14 @@
       "title": "Parki",
       "subtitle": "Filtruj, priorytetyzuj i administruj parkami w serwisie.",
       "reviewStatus": "Status admin",
-      "loadError": "Nie udało się wczytać parków."
+      "loadError": "Nie udało się wczytać parków.",
+      "status": "Status",
+      "itemsTotalCount": "Itemy",
+      "itemsVisibleCount": "Wid.",
+      "statuses": {
+        "operating": "Otwarty",
+        "closedDefinitively": "Zamkni?ty na sta?e"
+      }
     }
   }
 }

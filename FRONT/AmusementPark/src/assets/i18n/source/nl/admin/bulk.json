@@ -11,7 +11,12 @@
       "markValidated": "Valideren",
       "markNotRelevant": "Niet relevant",
       "validCoordinatesScope": "Parken met geldige coordinaten",
-      "makeFilteredValidCoordinatesVisible": "Maak geolokaliseerde parken zichtbaar"
+      "makeFilteredValidCoordinatesVisible": "Maak geolokaliseerde parken zichtbaar",
+      "makeVisibleShort": "Zichtbaar",
+      "markToReviewShort": "Review",
+      "processLaterShort": "Later",
+      "clearSelectionShort": "Wissen",
+      "showItems": "Items tonen"
     }
   }
 }

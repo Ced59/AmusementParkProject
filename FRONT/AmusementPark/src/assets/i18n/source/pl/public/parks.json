@@ -312,6 +312,15 @@
       "itemsTitle": "Miejsca do odkrycia w tej strefie",
       "emptyItemsTitle": "Brak miejsca w tej strefie",
       "emptyItemsMessage": "Żadne publiczne miejsce nie jest obecnie powiązane z tą strefą."
+    },
+    "closedFilters": {
+      "label": "Otwarcie",
+      "openOnly": "Otwarte",
+      "withClosed": "Z zamkn.",
+      "closedOnly": "Zamkni?te"
+    },
+    "statuses": {
+      "closedDefinitively": "Zamkni?ty na sta?e"
     }
   }
 }

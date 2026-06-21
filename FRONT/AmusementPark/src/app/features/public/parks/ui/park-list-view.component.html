@@ -43,8 +43,10 @@
     searchLabelKey="parks.search.label"
     searchPlaceholderKey="parks.search.placeholder"
     [searchTerm]="searchTerm()"
+    [filters]="filters()"
     clearActionLabelKey="parks.search.clear"
     (searchTermChange)="onSearchInput($event)"
+    (filterChanged)="onFilterChanged($event)"
     (clearClicked)="clearSearch()">
   </app-ui-search-panel>
 

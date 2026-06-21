@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -8,7 +8,7 @@ import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
-import { UiSearchPanelComponent } from '@ui/forms';
+import { UiSearchPanelComponent, UiSearchPanelSelectFilterModel, UiSelectOptionModel } from '@ui/forms';
 import { UiParkCardComponent } from '@ui/cards';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
@@ -32,6 +32,8 @@ export class ParkListViewComponent {
   @Input() selectedMapParkId!: Signal<string | null>;
   @Input() selectedParkCard!: Signal<ParkCardModel | null>;
   @Input() selectedRegion!: Signal<ParkRegionFilter | null>;
+  @Input() selectedClosedFilter!: Signal<string>;
+  @Input() closedFilterOptions!: Signal<UiSelectOptionModel[]>;
   @Input() currentLang!: Signal<string>;
   @Input() searchTerm!: Signal<string>;
 
@@ -39,9 +41,19 @@ export class ParkListViewComponent {
   @Output() clearSearchClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() mapParkSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() regionFilterChanged: EventEmitter<ParkRegionFilter | null> = new EventEmitter<ParkRegionFilter | null>();
+  @Output() closedFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() resultParkFocused: EventEmitter<ParkCardModel> = new EventEmitter<ParkCardModel>();
   @Output() selectedParkCleared: EventEmitter<void> = new EventEmitter<void>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
+
+  protected readonly filters = computed<UiSearchPanelSelectFilterModel[]>(() => [
+    {
+      id: 'closed',
+      labelKey: 'parks.closedFilters.label',
+      selectedValue: this.selectedClosedFilter(),
+      options: this.closedFilterOptions()
+    }
+  ]);
 
   protected buildParkLink(park: ParkCardModel): string[] | null {
     return buildPublicParkRouteCommands({
@@ -65,6 +77,12 @@ export class ParkListViewComponent {
 
   onRegionFilterChanged(region: ParkRegionFilter | null): void {
     this.regionFilterChanged.emit(region);
+  }
+
+  onFilterChanged(event: { id: string; value: string | null }): void {
+    if (event.id === 'closed') {
+      this.closedFilterChanged.emit(event.value);
+    }
   }
 
   onResultCardClick(event: MouseEvent, park: ParkCardModel): void {
