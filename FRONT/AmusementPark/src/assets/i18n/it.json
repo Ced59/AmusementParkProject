@@ -1064,6 +1064,37 @@
         "visibleAsc": "Vis. min"
       }
     },
+    "publicViewToolbar": {
+      "ariaLabel": "Barra admin per vista pubblica",
+      "viewMode": "Vista pubblica",
+      "viewModeAriaLabel": "Scegli la vista pubblica",
+      "editionOff": "Modifica off",
+      "editionOn": "Modifica on",
+      "enableEditionMode": "Attiva modifica",
+      "disableEditionMode": "Disattiva modifica",
+      "modes": {
+        "anonymous": {
+          "label": "Visitatore non connesso",
+          "short": "Visita",
+          "aria": "Vedi come visitatore non connesso"
+        },
+        "user": {
+          "label": "Visitatore ruolo user",
+          "short": "User",
+          "aria": "Vedi come visitatore ruolo user"
+        },
+        "moderator": {
+          "label": "Visitatore ruolo moderatore",
+          "short": "Mod",
+          "aria": "Vedi come visitatore ruolo moderatore"
+        },
+        "admin": {
+          "label": "Admin",
+          "short": "Admin",
+          "aria": "Vedi come admin"
+        }
+      }
+    },
     "references": {
       "sections": {
         "identity": "Identità",

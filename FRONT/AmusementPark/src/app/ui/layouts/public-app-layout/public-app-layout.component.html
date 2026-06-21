@@ -8,4 +8,8 @@
 
   <app-public-mobile-bottom-nav></app-public-mobile-bottom-nav>
   <app-public-footer></app-public-footer>
+
+  @if (adminToolbarComponent(); as toolbarComponent) {
+    <ng-container *ngComponentOutlet="toolbarComponent"></ng-container>
+  }
 </div>

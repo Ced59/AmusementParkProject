@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "publicViewToolbar": {
+      "ariaLabel": "Pasek admina dla widoku publicznego",
+      "viewMode": "Widok publiczny",
+      "viewModeAriaLabel": "Wybierz widok publiczny",
+      "editionOff": "Edycja off",
+      "editionOn": "Edycja on",
+      "enableEditionMode": "Wlacz edycje",
+      "disableEditionMode": "Wylacz edycje",
+      "modes": {
+        "anonymous": {
+          "label": "Niezalogowany odwiedzajacy",
+          "short": "Gosc",
+          "aria": "Pokaz jako niezalogowany odwiedzajacy"
+        },
+        "user": {
+          "label": "Odwiedzajacy z rola user",
+          "short": "User",
+          "aria": "Pokaz jako odwiedzajacy z rola user"
+        },
+        "moderator": {
+          "label": "Odwiedzajacy z rola moderator",
+          "short": "Mod",
+          "aria": "Pokaz jako odwiedzajacy z rola moderator"
+        },
+        "admin": {
+          "label": "Admin",
+          "short": "Admin",
+          "aria": "Pokaz jako admin"
+        }
+      }
+    }
+  }
+}

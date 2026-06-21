@@ -42,24 +42,30 @@ Ces bases doivent etre reutilisees, mais pas exposees telles quelles dans les pa
    - Le JSON exporte ou applique ne contient que le bloc selectionne et les references indispensables.
    - Les champs hors scope du bloc doivent etre refuses par le backend.
 
-4. Preview avant mutation JSON
+4. Localisation complete des upserts JSON
+   - Un bloc contenant des champs localises doit pouvoir etre exporte, previsualise et applique avec toutes les langues supportees par le site.
+   - Le JSON borne doit fournir les ids et les codes langue necessaires pour rattacher chaque variante localisee au bon bloc.
+   - Une mise a jour multilingue ne doit pas supprimer silencieusement une langue absente du JSON ; l'absence doit etre refusee, ignoree explicitement ou traitee par une option claire selon le contrat du bloc.
+   - Les erreurs de validation doivent indiquer la langue concernee et rester lisibles sur mobile.
+
+5. Preview avant mutation JSON
    - Tout upsert JSON contextuel passe par une preview.
    - L'apply doit reutiliser les validations metier, l'audit admin et l'invalidation cache existants.
 
-5. Ajout cible non dangereux
+6. Ajout cible non dangereux
    - Toute creation depuis une page publique doit etre rattachee par ids explicites.
    - Les contenus publicables crees rapidement restent caches ou `ToReview` par defaut lorsque le domaine le permet.
 
-6. Cache et SEO proteges
+7. Cache et SEO proteges
    - Une reponse authentifiee admin ne doit jamais etre stockee dans le cache public.
    - Le mode edition ne doit pas modifier les balises SEO, les canoniques, les hreflang, le robots/noindex ou le HTML SSR visiteur.
 
-7. Roles explicites
+8. Roles explicites
    - Les vues "visiteur non authentifie", "visiteur role user", "moderateur" et "admin" sont des modes de simulation d'affichage.
    - Seul le role admin donne acces aux actions d'edition.
    - Les roles simules ne remplacent jamais l'autorisation serveur reelle.
 
-8. Responsive obligatoire a chaque jalon
+9. Responsive obligatoire a chaque jalon
    - Chaque jalon doit etre utilisable entierement sur telephone.
    - Une fonctionnalite admin contextuelle n'est pas livrable si elle fonctionne seulement sur desktop.
    - Les overlays, drawers, toolbars, formulaires, previews JSON, tableaux de changements et boutons de bloc doivent avoir un comportement mobile dedie.
@@ -93,6 +99,7 @@ Champs minimum :
 - `entityId` : id de l'entite principale.
 - `parentIds` : ids necessaires au rattachement, par exemple `parkId`, `zoneId`, `itemId`, `ownerId`.
 - `jsonScope` : liste des champs exportables et importables pour ce bloc.
+- `localizedScopes` : liste des champs localises et des langues attendues quand le bloc contient du contenu multilingue.
 - `capabilities` : `exportJson`, `previewJson`, `applyJson`, `editForm`, `addChild`, `openFullAdmin`.
 - `refreshStrategy` : rechargement local du bloc, rechargement de la facade, ou navigation.
 - `riskLevel` : faible, moyen ou eleve pour guider les tests et la review.
@@ -109,6 +116,21 @@ Exemple conceptuel :
   },
   "jsonScope": [
     "descriptions"
+  ],
+  "localizedScopes": [
+    {
+      "field": "descriptions",
+      "requiredLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ]
+    }
   ],
   "capabilities": [
     "exportJson",
@@ -185,6 +207,7 @@ Livrables :
 - Endpoint admin dedie, par exemple `GET admin/contextual-blocks/{blockType}/{entityId}/export`.
 - Export pour `park.description` et `park.practical`.
 - JSON contenant le bloc et les ids de rattachement strictement necessaires.
+- JSON contenant les variantes localisees du bloc quand le bloc est multilingue, avec codes langue explicites.
 - Tests backend sur le bornage et les champs exportes.
 - Service data-access admin et facade frontend dediee.
 
@@ -193,6 +216,7 @@ Fin fonctionnelle :
 - Depuis la fiche parc publique, l'admin selectionne le bloc description.
 - Il telecharge un JSON centre sur ce bloc.
 - Le JSON ne contient pas le graphe complet du parc.
+- Un bloc localise exporte toutes les langues attendues par le contrat du bloc.
 - Le telechargement et les actions d'export restent accessibles sur telephone.
 
 Risques a verifier :
@@ -208,6 +232,7 @@ Livrables :
 
 - Endpoint admin `preview` dedie.
 - Validation des champs autorises par `blockType`.
+- Validation des variantes localisees attendues par le `blockType`, avec erreurs par langue.
 - Mapping vers les commandes existantes quand le scope correspond deja a `LocalizedContent` ou `ParkGraphUpsert`.
 - Resultat de preview lisible : champs modifies, warnings, erreurs, bloc cible.
 - Tests backend pour refus des champs hors scope.
@@ -218,6 +243,7 @@ Fin fonctionnelle :
 - L'admin modifie le JSON d'un bloc description.
 - La preview indique les changements attendus.
 - Un champ hors scope est refuse avant apply.
+- Une variante localisee manquante ou mal rattachee est signalee avant apply.
 - La preview est lisible en vertical sur telephone.
 
 Risques a verifier :
@@ -447,6 +473,7 @@ La fonctionnalite complete est consideree terminee seulement quand :
 - l'admin peut activer/desactiver le mode edition ;
 - chaque bloc expose ses ids et son scope ;
 - les exports JSON sont bornes au bloc ;
+- les blocs localises sont exportables et upsertables avec toutes leurs langues attendues ;
 - les applies JSON passent par preview ;
 - les formulaires contextuels reutilisent les patterns admin existants ;
 - les ajouts ciblent explicitement leurs parents ;

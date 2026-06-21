@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "publicViewToolbar": {
+      "ariaLabel": "Admin-Leiste fuer die oeffentliche Ansicht",
+      "viewMode": "Oeffentliche Ansicht",
+      "viewModeAriaLabel": "Oeffentliche Ansicht waehlen",
+      "editionOff": "Bearbeiten aus",
+      "editionOn": "Bearbeiten an",
+      "enableEditionMode": "Bearbeiten aktivieren",
+      "disableEditionMode": "Bearbeiten deaktivieren",
+      "modes": {
+        "anonymous": {
+          "label": "Nicht angemeldeter Besucher",
+          "short": "Gast",
+          "aria": "Als nicht angemeldeter Besucher ansehen"
+        },
+        "user": {
+          "label": "Besucher mit User-Rolle",
+          "short": "User",
+          "aria": "Als Besucher mit User-Rolle ansehen"
+        },
+        "moderator": {
+          "label": "Besucher mit Moderator-Rolle",
+          "short": "Mod",
+          "aria": "Als Besucher mit Moderator-Rolle ansehen"
+        },
+        "admin": {
+          "label": "Admin",
+          "short": "Admin",
+          "aria": "Als Admin ansehen"
+        }
+      }
+    }
+  }
+}
