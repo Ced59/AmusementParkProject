@@ -4,7 +4,7 @@ import { finalize } from 'rxjs';
 import {
   ContextualBlockExportDocument,
   ContextualBlockLocalizedText,
-  ContextualParkDescriptionBlock
+  ContextualLocalizedDescriptionBlock
 } from '@shared/models/admin/contextual-block-export.models';
 import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
@@ -29,7 +29,7 @@ export class AdminContextualBlockFormFacade {
   private readonly errorKeySignal = signal<string | null>(null);
   private readonly successKeySignal = signal<string | null>(null);
   private activeBlockId: string | null = null;
-  private currentDocument: ContextualBlockExportDocument<ContextualParkDescriptionBlock> | null = null;
+  private currentDocument: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock> | null = null;
 
   public readonly localizedFields: Signal<readonly AdminContextualBlockLocalizedFormField[]> = this.localizedFieldsSignal.asReadonly();
   public readonly isLoading: Signal<boolean> = this.isLoadingSignal.asReadonly();
@@ -81,11 +81,11 @@ export class AdminContextualBlockFormFacade {
     }
 
     this.isLoadingSignal.set(true);
-    this.contextualBlocksApi.getBlockExportDocument<ContextualParkDescriptionBlock>(block.type, block.entityId)
+    this.contextualBlocksApi.getBlockExportDocument<ContextualLocalizedDescriptionBlock>(block.type, block.entityId)
       .pipe(finalize((): void => this.isLoadingSignal.set(false)))
       .subscribe({
-        next: (document: ContextualBlockExportDocument<ContextualParkDescriptionBlock>): void => {
-          if (!this.isParkDescriptionDocument(document, block)) {
+        next: (document: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock>): void => {
+          if (!this.isLocalizedDescriptionDocument(document, block)) {
             this.errorKeySignal.set('admin.contextualBlocks.drawer.formLoadError');
             return;
           }
@@ -121,14 +121,14 @@ export class AdminContextualBlockFormFacade {
     this.errorKeySignal.set(null);
     this.successKeySignal.set(null);
 
-    const currentDocument: ContextualBlockExportDocument<ContextualParkDescriptionBlock> | null = this.currentDocument;
+    const currentDocument: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock> | null = this.currentDocument;
 
     if (!this.canEditForm(block) || !currentDocument?.block) {
       this.errorKeySignal.set('admin.contextualBlocks.drawer.formSaveError');
       return;
     }
 
-    const document: ContextualBlockExportDocument<ContextualParkDescriptionBlock> = {
+    const document: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock> = {
       ...currentDocument,
       block: {
         ...currentDocument.block,
@@ -169,15 +169,27 @@ export class AdminContextualBlockFormFacade {
       });
   }
 
-  private isParkDescriptionDocument(
-    document: ContextualBlockExportDocument<ContextualParkDescriptionBlock>,
+  private isLocalizedDescriptionDocument(
+    document: ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock>,
     block: AdminContextualBlockInstance
-  ): document is ContextualBlockExportDocument<ContextualParkDescriptionBlock> & { block: ContextualParkDescriptionBlock } {
+  ): document is ContextualBlockExportDocument<ContextualLocalizedDescriptionBlock> & { block: ContextualLocalizedDescriptionBlock } {
     return document.blockType === block.type &&
       document.target.entityType === block.entityType &&
       document.target.entityId === block.entityId &&
       document.block !== null &&
-      document.block.parkId === block.entityId &&
+      this.resolveDocumentEntityId(document.block, block.entityType) === block.entityId &&
       Array.isArray(document.block.descriptions);
+  }
+
+  private resolveDocumentEntityId(block: ContextualLocalizedDescriptionBlock, entityType: string): string | null {
+    if (entityType === 'Park') {
+      return block.parkId;
+    }
+
+    if (entityType === 'ParkItem' && 'parkItemId' in block) {
+      return block.parkItemId;
+    }
+
+    return null;
   }
 }

@@ -1,6 +1,6 @@
-export type AdminContextualBlockType = 'park.hero' | 'park.description' | 'park.practical';
+export type AdminContextualBlockType = 'park.hero' | 'park.description' | 'park.practical' | 'parkItem.description';
 
-export type AdminContextualBlockEntityType = 'Park';
+export type AdminContextualBlockEntityType = 'Park' | 'ParkItem';
 
 export type AdminContextualBlockCapability =
   | 'fullAdminEdit'

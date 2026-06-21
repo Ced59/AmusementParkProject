@@ -397,6 +397,14 @@ Fin fonctionnelle :
 - Le visiteur ne voit aucune difference.
 - Chaque nouvelle page couverte est validee sur mobile avant merge.
 
+Note de mise en oeuvre :
+
+- Le jalon 8 etend le dispositif a la fiche park item avec le bloc `parkItem.description`.
+- Le contrat JSON borne exporte et applique uniquement les descriptions localisees du park item avec `parkId`, `parkItemId` et `zoneId` quand il existe.
+- Le formulaire contextuel reutilise le meme flux localise que `park.description` et passe par l'apply contextualise avant refresh.
+- Apres apply, la fiche park item recharge ses donnees publiques anonymes sans navigation complete.
+- Les listes d'items, pages zones, galeries et videos restent des extensions separees pour garder la PR focalisee.
+
 ### Jalon 9 - Simulation de roles robuste
 
 But : rendre les vues par role utiles sans affaiblir la securite.

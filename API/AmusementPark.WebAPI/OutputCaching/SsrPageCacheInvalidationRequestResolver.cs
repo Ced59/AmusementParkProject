@@ -77,7 +77,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             "LocalizedContent" => await this.ResolveLocalizedContentAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "Images" => await this.ResolveImagesAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "ParkGraphUpserts" => await this.ResolveParkGraphUpsertAsync(context, executedContext, includeSeoDocuments, cancellationToken),
-            "ContextualBlocks" => this.ResolveContextualBlocks(context, executedContext, includeSeoDocuments),
+            "ContextualBlocks" => await this.ResolveContextualBlocksAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             _ => SsrPageCacheInvalidationRequest.AllCaches(),
         };
 
@@ -298,10 +298,11 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         return await this.ResolveEntityImpactAsync(entityType, entityId, includeSeoDocuments, cancellationToken);
     }
 
-    private SsrPageCacheInvalidationRequest ResolveContextualBlocks(
+    private async Task<SsrPageCacheInvalidationRequest> ResolveContextualBlocksAsync(
         ActionExecutingContext context,
         ActionExecutedContext? executedContext,
-        bool includeSeoDocuments)
+        bool includeSeoDocuments,
+        CancellationToken cancellationToken)
     {
         object? resultValue = ResolveResultValue(executedContext);
         if (resultValue is not ContextualBlockPreviewResultDto result)
@@ -325,6 +326,17 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         if (blockType.Trim().StartsWith("park.", StringComparison.Ordinal))
         {
             return BuildParkImpactRequest(new[] { entityId.Trim() }, includeSeoDocuments, includeDiscoveryPages: true);
+        }
+
+        string entityType = NormalizeEntityType(result.Target.EntityType);
+        if (string.Equals(entityType, "parkitem", StringComparison.Ordinal))
+        {
+            HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
+            HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
+            bool resolved = await this.AddParkItemImpactAsync(paths, prefixes, entityId.Trim(), cancellationToken);
+            return resolved
+                ? BuildRequest(paths, prefixes, includeSeoDocuments)
+                : SsrPageCacheInvalidationRequest.AllCaches();
         }
 
         return SsrPageCacheInvalidationRequest.AllCaches();

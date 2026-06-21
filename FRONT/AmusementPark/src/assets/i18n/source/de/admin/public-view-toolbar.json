@@ -123,6 +123,10 @@
         "parkPractical": {
           "label": "Praktische Infos",
           "description": "Adresse, Referenzen, Website und nuetzliche Parkkoordinaten."
+        },
+        "parkItemDescription": {
+          "label": "Item-Beschreibung",
+          "description": "Lokalisierte oeffentliche Beschreibung fuer alle unterstuetzten Sprachen."
         }
       }
     }

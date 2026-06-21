@@ -33,6 +33,17 @@ public sealed class ContextualParkDescriptionBlock
     public List<LocalizedText> Descriptions { get; init; } = new List<LocalizedText>();
 }
 
+public sealed class ContextualParkItemDescriptionBlock
+{
+    public string ParkId { get; init; } = string.Empty;
+
+    public string ParkItemId { get; init; } = string.Empty;
+
+    public string? ZoneId { get; init; }
+
+    public List<LocalizedText> Descriptions { get; init; } = new List<LocalizedText>();
+}
+
 public sealed class ContextualParkPracticalBlock
 {
     public string ParkId { get; init; } = string.Empty;

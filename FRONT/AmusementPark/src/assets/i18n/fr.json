@@ -1187,6 +1187,10 @@
         "parkPractical": {
           "label": "Infos pratiques",
           "description": "Adresse, references, site web et coordonnees utiles du parc."
+        },
+        "parkItemDescription": {
+          "label": "Description de l'item",
+          "description": "Description publique localisee pour toutes les langues supportees."
         }
       }
     },

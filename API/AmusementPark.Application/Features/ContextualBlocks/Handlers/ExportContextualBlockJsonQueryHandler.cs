@@ -7,6 +7,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ContextualBlocks.Contracts;
 using AmusementPark.Application.Features.ContextualBlocks.Queries;
 using AmusementPark.Application.Features.ContextualBlocks.Results;
+using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
@@ -19,10 +20,12 @@ public sealed class ExportContextualBlockJsonQueryHandler
     private static readonly JsonSerializerOptions ExportJsonOptions = BuildExportJsonOptions();
 
     private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
 
-    public ExportContextualBlockJsonQueryHandler(IParkRepository parkRepository)
+    public ExportContextualBlockJsonQueryHandler(IParkRepository parkRepository, IParkItemRepository parkItemRepository)
     {
         this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
     }
 
     public async Task<ApplicationResult<ContextualBlockJsonExportResult>> HandleAsync(ExportContextualBlockJsonQuery query, CancellationToken cancellationToken = default)
@@ -44,6 +47,33 @@ public sealed class ExportContextualBlockJsonQueryHandler
         }
 
         string entityId = query.EntityId.Trim();
+        if (string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal))
+        {
+            ParkItem? item = await this.parkItemRepository.GetByIdAsync(entityId, true, cancellationToken);
+            if (item is null)
+            {
+                return ApplicationResult<ContextualBlockJsonExportResult>.Failure(ApplicationErrors.EntityNotFound(nameof(ParkItem), entityId));
+            }
+
+            DateTime parkItemExportedAtUtc = DateTime.UtcNow;
+            ContextualParkItemDescriptionBlock itemBlock = new ContextualParkItemDescriptionBlock
+            {
+                ParkId = item.ParkId,
+                ParkItemId = item.Id,
+                ZoneId = item.ZoneId,
+                Descriptions = BuildLocalizedDescriptions(item.Descriptions),
+            };
+
+            ContextualBlockExportDocument<ContextualParkItemDescriptionBlock> itemDocument = BuildDocument(
+                item,
+                blockType,
+                BuildParkItemIds(item),
+                itemBlock,
+                parkItemExportedAtUtc);
+
+            return ApplicationResult<ContextualBlockJsonExportResult>.Success(BuildResult(item, blockType, itemDocument, parkItemExportedAtUtc));
+        }
+
         Park? park = await this.parkRepository.GetByIdAsync(entityId, true, cancellationToken);
         if (park is null)
         {
@@ -127,6 +157,30 @@ public sealed class ExportContextualBlockJsonQueryHandler
         };
     }
 
+    private static ContextualBlockExportDocument<TBlock> BuildDocument<TBlock>(
+        ParkItem item,
+        string blockType,
+        Dictionary<string, string> ids,
+        TBlock block,
+        DateTime exportedAtUtc)
+    {
+        return new ContextualBlockExportDocument<TBlock>
+        {
+            BlockType = blockType,
+            Target = new ContextualBlockExportTarget
+            {
+                EntityType = nameof(ParkItem),
+                EntityId = item.Id,
+            },
+            Ids = ids,
+            Block = block,
+            Metadata = new ContextualBlockExportMetadata
+            {
+                ExportedAtUtc = exportedAtUtc,
+            },
+        };
+    }
+
     private static ContextualBlockJsonExportResult BuildResult<TBlock>(
         Park park,
         string blockType,
@@ -137,6 +191,20 @@ public sealed class ExportContextualBlockJsonQueryHandler
         return new ContextualBlockJsonExportResult
         {
             FileName = BuildFileName(park, blockType, exportedAtUtc),
+            Json = json,
+        };
+    }
+
+    private static ContextualBlockJsonExportResult BuildResult<TBlock>(
+        ParkItem item,
+        string blockType,
+        ContextualBlockExportDocument<TBlock> document,
+        DateTime exportedAtUtc)
+    {
+        string json = JsonSerializer.Serialize(document, ExportJsonOptions);
+        return new ContextualBlockJsonExportResult
+        {
+            FileName = BuildFileName(item, blockType, exportedAtUtc),
             Json = json,
         };
     }
@@ -157,6 +225,17 @@ public sealed class ExportContextualBlockJsonQueryHandler
         return ids;
     }
 
+    private static Dictionary<string, string> BuildParkItemIds(ParkItem item)
+    {
+        Dictionary<string, string> ids = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["parkId"] = item.ParkId,
+            ["parkItemId"] = item.Id,
+        };
+        AddOptionalId(ids, "zoneId", item.ZoneId);
+        return ids;
+    }
+
     private static void AddOptionalId(Dictionary<string, string> ids, string key, string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
@@ -169,8 +248,13 @@ public sealed class ExportContextualBlockJsonQueryHandler
 
     private static List<LocalizedText> BuildLocalizedDescriptions(Park park)
     {
+        return BuildLocalizedDescriptions(park.Descriptions);
+    }
+
+    private static List<LocalizedText> BuildLocalizedDescriptions(IReadOnlyCollection<LocalizedText> sourceDescriptions)
+    {
         Dictionary<string, LocalizedText> descriptionsByLanguage = new Dictionary<string, LocalizedText>(StringComparer.OrdinalIgnoreCase);
-        foreach (LocalizedText description in park.Descriptions)
+        foreach (LocalizedText description in sourceDescriptions)
         {
             string languageCode = NormalizeLanguageCode(description.LanguageCode);
             if (languageCode.Length == 0 || descriptionsByLanguage.ContainsKey(languageCode))
@@ -206,6 +290,14 @@ public sealed class ExportContextualBlockJsonQueryHandler
     private static string BuildFileName(Park park, string blockType, DateTime exportedAtUtc)
     {
         string sourceName = string.IsNullOrWhiteSpace(park.Name) ? park.Id : park.Name;
+        string safeName = SanitizeFileName(sourceName);
+        string safeBlockType = blockType.Replace('.', '-');
+        return $"{safeName}-{exportedAtUtc.ToString("yyyyMMdd-HHmmss", CultureInfo.InvariantCulture)}-{safeBlockType}-contextual-block.json";
+    }
+
+    private static string BuildFileName(ParkItem item, string blockType, DateTime exportedAtUtc)
+    {
+        string sourceName = string.IsNullOrWhiteSpace(item.Name) ? item.Id : item.Name;
         string safeName = SanitizeFileName(sourceName);
         string safeBlockType = blockType.Replace('.', '-');
         return $"{safeName}-{exportedAtUtc.ToString("yyyyMMdd-HHmmss", CultureInfo.InvariantCulture)}-{safeBlockType}-contextual-block.json";

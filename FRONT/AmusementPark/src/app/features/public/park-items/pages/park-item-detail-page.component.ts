@@ -9,6 +9,7 @@ import { ParkItemDetailStateFacade } from '../state/park-item-detail-state.facad
 import { ParkItemDetailViewComponent } from '../ui/park-item-detail-view.component';
 import { SeoService } from '@core/seo/seo.service';
 import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.service';
+import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
 
 @Component({
   selector: 'app-park-item-detail-page',
@@ -35,7 +36,8 @@ export class ParkItemDetailPageComponent implements OnInit {
     private readonly translationService: TranslationService,
     private readonly stateFacade: ParkItemDetailStateFacade,
     private readonly seoService: SeoService,
-    private readonly lcpImagePreloadService: LcpImagePreloadService
+    private readonly lcpImagePreloadService: LcpImagePreloadService,
+    private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
   ) {
     this.destroyRef.onDestroy((): void => {
       if (this.isBrowser) {
@@ -75,6 +77,19 @@ export class ParkItemDetailPageComponent implements OnInit {
       }
 
       this.stateFacade.loadItem(itemId);
+    });
+
+    this.contextualBlockRefreshEvents.appliedBlock$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: AdminContextualBlockAppliedEvent) => {
+      if (event.entityType !== 'ParkItem') {
+        return;
+      }
+
+      const currentItemId: string | null = this.detail()?.id ?? this.route.snapshot.paramMap.get('itemId');
+      if (currentItemId !== event.entityId) {
+        return;
+      }
+
+      this.stateFacade.loadItem(event.entityId);
     });
   }
 

@@ -17,6 +17,9 @@ import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.component';
+import { AdminContextualBlockDirective } from '@features/admin/contextual-editing/ui/admin-contextual-block/admin-contextual-block.directive';
+import { AdminContextualBlockInstance } from '@features/admin/contextual-editing/models/admin-contextual-block.model';
+import { AdminContextualBlockRegistryService } from '@features/admin/contextual-editing/services/admin-contextual-block-registry.service';
 
 @Component({
   selector: 'app-park-item-detail-view',
@@ -40,7 +43,8 @@ import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.c
     UiSectionHeaderComponent,
     UiSurfaceDirective,
     PublicSharePanelComponent,
-    RatingStarsComponent
+    RatingStarsComponent,
+    AdminContextualBlockDirective
   ]
 })
 export class ParkItemDetailViewComponent {
@@ -79,12 +83,14 @@ export class ParkItemDetailViewComponent {
   @Input() heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
   @Input() heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
   @Input() heroImageSrcWidth: number | null = 960;
+  @Input() currentLang: string = 'en';
 
   @Output() backToItemsClicked: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private readonly mapDirectionsUrlService: MapDirectionsUrlService,
-    private readonly translateService: TranslateService
+    private readonly translateService: TranslateService,
+    private readonly contextualBlockRegistry: AdminContextualBlockRegistryService
   ) {
   }
 
@@ -131,6 +137,16 @@ export class ParkItemDetailViewComponent {
 
   onLocationMarkerClick(marker: MapMarker): void {
     this.selectedLocationPointId.set(marker.id);
+  }
+
+  protected getDescriptionContextualBlock(currentDetail: ParkItemDetailViewModel): AdminContextualBlockInstance | null {
+    return this.contextualBlockRegistry.createParkItemBlock(
+      'parkItem.description',
+      currentDetail.id,
+      currentDetail.parkId,
+      currentDetail.name,
+      this.currentLang
+    );
   }
 }
 

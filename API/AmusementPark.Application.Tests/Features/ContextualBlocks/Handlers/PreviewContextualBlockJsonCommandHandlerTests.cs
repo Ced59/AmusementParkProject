@@ -3,6 +3,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ContextualBlocks.Commands;
 using AmusementPark.Application.Features.ContextualBlocks.Handlers;
 using AmusementPark.Application.Features.ContextualBlocks.Results;
+using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
@@ -18,7 +19,7 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
     {
         Park park = CreatePark();
         Mock<IParkRepository> parkRepository = CreateRepository(park);
-        PreviewContextualBlockJsonCommandHandler handler = new PreviewContextualBlockJsonCommandHandler(parkRepository.Object);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository);
 
         using JsonDocument document = JsonDocument.Parse(BuildDescriptionDocument("park-1", new Dictionary<string, string?>
         {
@@ -55,7 +56,7 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
     {
         Park park = CreatePark();
         Mock<IParkRepository> parkRepository = CreateRepository(park);
-        PreviewContextualBlockJsonCommandHandler handler = new PreviewContextualBlockJsonCommandHandler(parkRepository.Object);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository);
 
         string json = BuildDescriptionDocument("park-1", BuildAllDescriptions());
         json = json.Replace("\"descriptions\":", "\"name\":\"Forbidden\",\"descriptions\":", StringComparison.Ordinal);
@@ -79,7 +80,7 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
     {
         Park park = CreatePark();
         Mock<IParkRepository> parkRepository = CreateRepository(park);
-        PreviewContextualBlockJsonCommandHandler handler = new PreviewContextualBlockJsonCommandHandler(parkRepository.Object);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository);
         Dictionary<string, string?> descriptions = BuildAllDescriptions();
         descriptions.Remove("de");
         using JsonDocument document = JsonDocument.Parse(BuildDescriptionDocument("park-1", descriptions));
@@ -101,7 +102,7 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
     {
         Park park = CreatePark();
         Mock<IParkRepository> parkRepository = CreateRepository(park);
-        PreviewContextualBlockJsonCommandHandler handler = new PreviewContextualBlockJsonCommandHandler(parkRepository.Object);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository);
         using JsonDocument document = JsonDocument.Parse(BuildDescriptionDocument("other-park", BuildAllDescriptions()));
 
         ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
@@ -123,7 +124,7 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
     {
         Park park = CreatePark();
         Mock<IParkRepository> parkRepository = CreateRepository(park);
-        PreviewContextualBlockJsonCommandHandler handler = new PreviewContextualBlockJsonCommandHandler(parkRepository.Object);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository);
 
         using JsonDocument document = JsonDocument.Parse(
             """
@@ -168,7 +169,7 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
     {
         Park park = CreatePark();
         Mock<IParkRepository> parkRepository = CreateRepository(park);
-        PreviewContextualBlockJsonCommandHandler handler = new PreviewContextualBlockJsonCommandHandler(parkRepository.Object);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository);
 
         using JsonDocument document = JsonDocument.Parse(
             """
@@ -198,6 +199,79 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
         parkRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenParkItemDescriptionJsonChangesOneLanguage_ShouldReturnReadablePreview()
+    {
+        ParkItem item = CreateParkItem();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = CreateParkItemRepository(item);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository, parkItemRepository);
+
+        using JsonDocument document = JsonDocument.Parse(BuildParkItemDescriptionDocument("park-1", "item-1", "zone-1", new Dictionary<string, string?>
+        {
+            ["en"] = "English item description",
+            ["fr"] = "Description item mise a jour",
+            ["es"] = null,
+            ["de"] = null,
+            ["it"] = null,
+            ["pl"] = null,
+            ["nl"] = null,
+            ["pt"] = null,
+        }));
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new PreviewContextualBlockJsonCommand("parkItem.description", "item-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.CanApply);
+        Assert.Empty(result.Value.Errors);
+        Assert.Equal("ParkItem", result.Value.Target.EntityType);
+        Assert.Equal("item-1", result.Value.Target.EntityId);
+        ContextualBlockPreviewChange change = Assert.Single(result.Value.Changes);
+        Assert.Equal("descriptions.fr.value", change.Field);
+        Assert.Equal("fr", change.LanguageCode);
+        Assert.Equal("Description item francaise", change.OldValue);
+        Assert.Equal("Description item mise a jour", change.NewValue);
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenParkItemDescriptionTargetsAnotherItem_ShouldRejectAttachment()
+    {
+        ParkItem item = CreateParkItem();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = CreateParkItemRepository(item);
+        PreviewContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository, parkItemRepository);
+
+        using JsonDocument document = JsonDocument.Parse(BuildParkItemDescriptionDocument("park-1", "other-item", "zone-1", BuildAllItemDescriptions()));
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new PreviewContextualBlockJsonCommand("parkItem.description", "item-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.False(result.Value.CanApply);
+        Assert.Contains(result.Value.Errors, static error => error.Contains("target.entityId", StringComparison.Ordinal));
+        Assert.Contains(result.Value.Errors, static error => error.Contains("ids.parkItemId", StringComparison.Ordinal));
+        Assert.Contains(result.Value.Errors, static error => error.Contains("block.parkItemId", StringComparison.Ordinal));
+        Assert.Empty(result.Value.Changes);
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyAll();
+    }
+
+    private static PreviewContextualBlockJsonCommandHandler CreateHandler(
+        Mock<IParkRepository> parkRepository,
+        Mock<IParkItemRepository>? parkItemRepository = null)
+    {
+        return new PreviewContextualBlockJsonCommandHandler(
+            parkRepository.Object,
+            (parkItemRepository ?? new Mock<IParkItemRepository>(MockBehavior.Strict)).Object);
+    }
+
     private static Mock<IParkRepository> CreateRepository(Park park)
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -205,6 +279,15 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
             .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
         return parkRepository;
+    }
+
+    private static Mock<IParkItemRepository> CreateParkItemRepository(ParkItem item)
+    {
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(item);
+        return parkItemRepository;
     }
 
     private static Park CreatePark()
@@ -230,12 +313,43 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
         return park;
     }
 
+    private static ParkItem CreateParkItem()
+    {
+        return new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            ZoneId = "zone-1",
+            Name = "Preview Item",
+            Descriptions = new List<LocalizedText>
+            {
+                new LocalizedText("en", "English item description"),
+                new LocalizedText("fr", "Description item francaise"),
+            },
+        };
+    }
+
     private static Dictionary<string, string?> BuildAllDescriptions()
     {
         return new Dictionary<string, string?>(StringComparer.Ordinal)
         {
             ["en"] = "English description",
             ["fr"] = "Description francaise",
+            ["es"] = null,
+            ["de"] = null,
+            ["it"] = null,
+            ["pl"] = null,
+            ["nl"] = null,
+            ["pt"] = null,
+        };
+    }
+
+    private static Dictionary<string, string?> BuildAllItemDescriptions()
+    {
+        return new Dictionary<string, string?>(StringComparer.Ordinal)
+        {
+            ["en"] = "English item description",
+            ["fr"] = "Description item francaise",
             ["es"] = null,
             ["de"] = null,
             ["it"] = null,
@@ -264,6 +378,33 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
           "ids": { "parkId": "{{parkId}}" },
           "block": {
             "parkId": "{{parkId}}",
+            "descriptions": [{{descriptionJson}}]
+          }
+        }
+        """;
+    }
+
+    private static string BuildParkItemDescriptionDocument(string parkId, string parkItemId, string? zoneId, IReadOnlyDictionary<string, string?> descriptions)
+    {
+        string descriptionJson = string.Join(
+            ",",
+            descriptions.Select(static entry =>
+            {
+                string value = entry.Value is null ? "null" : JsonSerializer.Serialize(entry.Value);
+                return $$"""{ "languageCode": "{{entry.Key}}", "value": {{value}} }""";
+            }));
+        string zoneIdJson = zoneId is null ? string.Empty : $", \"zoneId\": \"{zoneId}\"";
+
+        return $$"""
+        {
+          "documentType": "AmusementParkContextualBlockUpsert",
+          "schemaVersion": "2026-06-21",
+          "blockType": "parkItem.description",
+          "target": { "entityType": "ParkItem", "entityId": "{{parkItemId}}" },
+          "ids": { "parkId": "{{parkId}}", "parkItemId": "{{parkItemId}}"{{zoneIdJson}} },
+          "block": {
+            "parkId": "{{parkId}}",
+            "parkItemId": "{{parkItemId}}"{{zoneIdJson}},
             "descriptions": [{{descriptionJson}}]
           }
         }

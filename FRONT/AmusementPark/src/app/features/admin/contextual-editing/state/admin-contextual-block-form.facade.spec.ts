@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
 import { ContextualBlocksApiService } from '@data-access/admin/contextual-blocks-api.service';
-import { ContextualBlockExportDocument, ContextualParkDescriptionBlock } from '@shared/models/admin/contextual-block-export.models';
+import { ContextualBlockExportDocument, ContextualParkDescriptionBlock, ContextualParkItemDescriptionBlock } from '@shared/models/admin/contextual-block-export.models';
 import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
 import { ADMIN_CONTEXTUAL_BLOCK_FORM_DATA_PORT } from './admin-contextual-block-form-data.ports';
@@ -76,6 +76,42 @@ describe('AdminContextualBlockFormFacade', () => {
     }));
   });
 
+  it('saves park item localized fields through the same bounded form flow', () => {
+    const applyResult: ContextualBlockPreviewResult = {
+      ...createApplyResult(true),
+      blockType: 'parkItem.description',
+      target: {
+        entityType: 'ParkItem',
+        entityId: 'item-1',
+        displayName: 'Wakala'
+      }
+    };
+    contextualBlocksApi.getBlockExportDocument.and.returnValue(of(createParkItemDocument()));
+    contextualBlocksApi.applyBlock.and.returnValue(of(applyResult));
+    const block: AdminContextualBlockInstance = createParkItemBlock();
+    facade.resetForBlock(block);
+
+    facade.updateLocalizedValue('fr', 'Description item');
+    facade.saveForm(block);
+
+    expect(contextualBlocksApi.getBlockExportDocument).toHaveBeenCalledOnceWith('parkItem.description', 'item-1');
+    expect(contextualBlocksApi.applyBlock).toHaveBeenCalledOnceWith('parkItem.description', 'item-1', jasmine.objectContaining({
+      block: jasmine.objectContaining({
+        parkId: 'park-1',
+        parkItemId: 'item-1',
+        descriptions: [
+          { languageCode: 'en', value: 'English item description' },
+          { languageCode: 'fr', value: 'Description item' }
+        ]
+      })
+    }));
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledOnceWith(jasmine.objectContaining({
+      blockType: 'parkItem.description',
+      entityType: 'ParkItem',
+      entityId: 'item-1'
+    }));
+  });
+
   it('keeps edited fields when save fails', () => {
     contextualBlocksApi.getBlockExportDocument.and.returnValue(of(createDocument()));
     contextualBlocksApi.applyBlock.and.returnValue(throwError(() => new Error('failed')));
@@ -127,6 +163,36 @@ function createDocument(): ContextualBlockExportDocument<ContextualParkDescripti
   };
 }
 
+function createParkItemDocument(): ContextualBlockExportDocument<ContextualParkItemDescriptionBlock> {
+  return {
+    documentType: 'AmusementParkContextualBlockUpsert',
+    schemaVersion: '2026-06-21',
+    blockType: 'parkItem.description',
+    target: {
+      entityType: 'ParkItem',
+      entityId: 'item-1'
+    },
+    ids: {
+      parkId: 'park-1',
+      parkItemId: 'item-1',
+      zoneId: 'zone-1'
+    },
+    block: {
+      parkId: 'park-1',
+      parkItemId: 'item-1',
+      zoneId: 'zone-1',
+      descriptions: [
+        { languageCode: 'en', value: 'English item description' },
+        { languageCode: 'fr', value: null }
+      ]
+    },
+    metadata: {
+      source: 'admin-contextual-block-export',
+      exportedAtUtc: '2026-06-21T10:00:00Z'
+    }
+  };
+}
+
 function createApplyResult(isApplied: boolean): ContextualBlockPreviewResult {
   return {
     operationId: 'operation-1',
@@ -168,5 +234,23 @@ function createBlock(): AdminContextualBlockInstance {
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+  };
+}
+
+function createParkItemBlock(): AdminContextualBlockInstance {
+  return {
+    id: 'parkItem.description:item-1',
+    type: 'parkItem.description',
+    entityType: 'ParkItem',
+    entityId: 'item-1',
+    contextLabel: 'Wakala',
+    ids: { parkId: 'park-1', parkItemId: 'item-1' },
+    labelKey: 'admin.contextualBlocks.blocks.parkItemDescription.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkItemDescription.description',
+    iconClass: 'pi pi-align-left',
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    jsonScope: ['parkItem.id', 'parkItem.descriptions[*].value'],
+    localizedLanguageCodes: ['fr', 'en'],
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1', 'items', 'item-1']
   };
 }

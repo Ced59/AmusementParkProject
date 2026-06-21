@@ -211,7 +211,12 @@
 
     <div class="item-detail-body">
       <div class="item-detail-main">
-        <section class="detail-panel detail-panel--description" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="currentDetail.description">
+        <section
+          class="detail-panel detail-panel--description"
+          appUiSurface="detail"
+          appUiSurfacePadding="regular"
+          [appAdminContextualBlock]="getDescriptionContextualBlock(currentDetail)"
+          *ngIf="currentDetail.description">
           <app-ui-section-header
             kickerIconClass="pi pi-align-left"
             kickerLabelKey="parkItems.detail.descriptionTitle"
