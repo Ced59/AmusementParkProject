@@ -68,6 +68,23 @@ public sealed class ParkItemsHttpMappersTests
     }
 
     [Fact]
+    public void ToDomain_WhenQuickCreateAttractionUsesDropTowerType_ShouldKeepDropTowerType()
+    {
+        ParkItemQuickCreateDto dto = new ParkItemQuickCreateDto
+        {
+            ParkId = "park-1",
+            Name = "Drop tower",
+            Category = ParkItemCategoryDto.Attraction,
+            Type = ParkItemTypeDto.DropTower,
+        };
+
+        ParkItem parkItem = dto.ToDomain();
+
+        Assert.Equal(ParkItemCategory.Attraction, parkItem.Category);
+        Assert.Equal(ParkItemType.DropTower, parkItem.Type);
+    }
+
+    [Fact]
     public void ToDomain_WhenQuickCreateAttractionHasManufacturer_ShouldMapLightAttractionDetails()
     {
         ParkItemQuickCreateDto dto = new ParkItemQuickCreateDto

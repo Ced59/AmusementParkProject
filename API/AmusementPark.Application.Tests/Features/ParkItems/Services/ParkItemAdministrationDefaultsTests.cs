@@ -49,6 +49,20 @@ public sealed class ParkItemAdministrationDefaultsTests
     }
 
     [Fact]
+    public void ApplyQuickCreateDefaults_WhenAttractionUsesDropTowerType_ShouldKeepType()
+    {
+        ParkItem parkItem = new ParkItem
+        {
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.DropTower,
+        };
+
+        ParkItemAdministrationDefaults.ApplyQuickCreateDefaults(parkItem);
+
+        Assert.Equal(ParkItemType.DropTower, parkItem.Type);
+    }
+
+    [Fact]
     public void ApplyQuickCreateDefaults_WhenPositionIsMissing_ShouldUseFallbackPosition()
     {
         ParkItem parkItem = new ParkItem();

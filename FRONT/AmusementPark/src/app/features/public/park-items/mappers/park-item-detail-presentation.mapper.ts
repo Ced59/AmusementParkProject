@@ -73,6 +73,7 @@ export function resolveParkItemTypeIconClass(type: string | null | undefined): s
     case 'FamilyRide':
       return 'pi pi-heart';
     case 'ThrillRide':
+    case 'DropTower':
       return 'pi pi-send';
     case 'Restaurant':
     case 'Snack':
@@ -127,6 +128,7 @@ export function resolveParkItemTypeTone(type: string | null | undefined, categor
     case 'Snack':
       return 'food';
     case 'ThrillRide':
+    case 'DropTower':
     case 'Game':
       return 'thrill';
     case 'MeetAndGreet':

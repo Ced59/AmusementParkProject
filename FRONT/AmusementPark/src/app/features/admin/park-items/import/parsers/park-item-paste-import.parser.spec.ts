@@ -11,12 +11,12 @@ describe('parseParkItemPasteImport', () => {
   });
 
   it('detects semicolon columns without a header', () => {
-    const result = parseParkItemPasteImport('Blue Fire;Attraction;RollerCoaster;Iceland;Mack Rides');
+    const result = parseParkItemPasteImport('Blue Fire;Attraction;DropTower;Iceland;Mack Rides');
 
     expect(result[0]).toEqual(jasmine.objectContaining({
       name: 'Blue Fire',
       category: 'Attraction',
-      type: 'RollerCoaster',
+      type: 'DropTower',
       zoneName: 'Iceland',
       manufacturerName: 'Mack Rides',
     }));

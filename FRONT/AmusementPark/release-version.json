@@ -1,6 +1,20 @@
 {
-  "version": "2.3.22",
+  "version": "2.3.23",
   "history": [
+    {
+      "version": "2.3.23",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "Les types de contenus sont plus complets.",
+        "en": "Content types are more complete.",
+        "de": "Inhaltstypen sind vollstaendiger.",
+        "nl": "Contenttypes zijn vollediger.",
+        "it": "I tipi di contenuto sono piu completi.",
+        "es": "Los tipos de contenido estan mas completos.",
+        "pl": "Typy tresci sa pelniejsze.",
+        "pt": "Os tipos de conteudo ficam mais completos."
+      }
+    },
     {
       "version": "2.3.22",
       "releasedAt": "2026-06-21",

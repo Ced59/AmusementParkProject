@@ -2234,7 +2234,8 @@
       "locker": "Cacifo",
       "parking": "Estacionamento",
       "station": "Estação",
-      "cinema": "Cinemas 4D"
+      "cinema": "Cinemas 4D",
+      "dropTower": "Torres de queda"
     }
   },
   "parkItems": {

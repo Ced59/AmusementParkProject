@@ -62,6 +62,7 @@ public static class ParkItemAdministrationDefaults
                 or ParkItemType.Playground
                 or ParkItemType.InteractiveExperience
                 or ParkItemType.Cinema
+                or ParkItemType.DropTower
                 or ParkItemType.Game
                 or ParkItemType.MeetAndGreet
                 or ParkItemType.ObservationRide

@@ -452,6 +452,7 @@ function toParkItemType(value: unknown, category: ParkItemCategory): ParkItemTyp
       'Playground',
       'InteractiveExperience',
       'Cinema',
+      'DropTower',
       'Game',
       'MeetAndGreet',
       'ObservationRide',
