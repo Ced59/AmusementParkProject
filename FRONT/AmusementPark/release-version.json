@@ -1,6 +1,20 @@
 {
-  "version": "2.6.11",
+  "version": "2.6.12",
   "history": [
+    {
+      "version": "2.6.12",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les partages et cartes restent mieux adaptes au mobile.",
+        "en": "Sharing and maps fit mobile screens better.",
+        "de": "Teilen und Karten passen besser auf Mobilbildschirme.",
+        "nl": "Delen en kaarten passen beter op mobiele schermen.",
+        "it": "Condivisione e mappe si adattano meglio al mobile.",
+        "es": "Compartir y mapas se adaptan mejor al movil.",
+        "pl": "Udostepnianie i mapy lepiej pasuja do telefonu.",
+        "pt": "Partilhas e mapas ajustam-se melhor ao telemovel."
+      }
+    },
     {
       "version": "2.6.11",
       "releasedAt": "2026-06-22",

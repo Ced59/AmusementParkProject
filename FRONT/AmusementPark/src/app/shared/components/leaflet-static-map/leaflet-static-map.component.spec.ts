@@ -7,10 +7,13 @@ import { LeafletStaticMapComponent } from './leaflet-static-map.component';
 type LeafletStaticMapComponentInternals = {
   addMarker: (marker: MapMarker) => void;
   focusSelectedMarker: () => boolean;
+  renderMarkers: () => void;
   L: { marker: jasmine.Spy; divIcon: jasmine.Spy; latLngBounds: jasmine.Spy } | null;
   map: { getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; remove: jasmine.Spy; setView: jasmine.Spy } | null;
   markerLayer: { clearLayers: jasmine.Spy } | null;
   leafletMarkers: Map<string, LeafletMarkerTestDouble>;
+  openPopupMarkerId: string | null;
+  pendingPopupMarkerId: string | null;
 };
 
 type LeafletMarkerTestDouble = {
@@ -107,6 +110,40 @@ describe('LeafletStaticMapComponent', () => {
     expect(markerClickSpy).toHaveBeenCalledWith(markerModel);
   });
 
+  it('keeps the directions popup open when marker inputs are rebuilt after a click', () => {
+    const internals: LeafletStaticMapComponentInternals = component as unknown as LeafletStaticMapComponentInternals;
+    const markerLayer: { clearLayers: jasmine.Spy } = jasmine.createSpyObj('markerLayer', ['clearLayers']);
+    const testDouble = createLeafletMarkerTestDouble();
+    const markerModel: MapMarker = {
+      id: 'park-location',
+      lat: 48.85,
+      lng: 2.35,
+      actionUrl: 'https://maps.google.com/?daddr=48.85,2.35',
+      actionLabel: 'Y aller'
+    };
+
+    configureLeafletMarkerFactory(internals, testDouble.marker);
+    internals.markerLayer = markerLayer;
+    component.markers = [markerModel];
+
+    internals.renderMarkers();
+
+    const clickHandlers: Array<(...args: unknown[]) => void> = testDouble.handlers.get('click') ?? [];
+    expect(clickHandlers.length).toBe(1);
+
+    clickHandlers[0]();
+
+    expect(testDouble.marker.openPopup.calls.count()).toBe(1);
+    expect(internals.openPopupMarkerId).toBe('park-location');
+
+    internals.renderMarkers();
+
+    expect(markerLayer.clearLayers.calls.count()).toBe(2);
+    expect(testDouble.marker.openPopup.calls.count()).toBe(2);
+    expect(internals.pendingPopupMarkerId).toBeNull();
+    expect(internals.openPopupMarkerId).toBe('park-location');
+  });
+
   it('opens the selected marker popup without rebuilding markers', () => {
     const internals: LeafletStaticMapComponentInternals = component as unknown as LeafletStaticMapComponentInternals;
     const map: { getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; remove: jasmine.Spy; setView: jasmine.Spy } = jasmine.createSpyObj('map', ['getZoom', 'invalidateSize', 'remove', 'setView']);
@@ -122,5 +159,6 @@ describe('LeafletStaticMapComponent', () => {
     expect(internals.focusSelectedMarker()).toBeTrue();
     expect(map.setView).toHaveBeenCalledWith({ lat: 48.85, lng: 2.35 }, 14, { animate: true });
     expect(testDouble.marker.openPopup).toHaveBeenCalled();
+    expect(internals.openPopupMarkerId).toBe('entrance');
   });
 });
