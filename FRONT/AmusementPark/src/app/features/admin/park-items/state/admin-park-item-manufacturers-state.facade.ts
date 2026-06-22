@@ -40,7 +40,7 @@ export class AdminParkItemManufacturersStateFacade {
 
     this.manufacturersLoadingSignal.set(true);
 
-    this.manufacturersApiService.getAttractionManufacturers()
+    this.manufacturersApiService.getAttractionManufacturers(true)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (manufacturers: AttractionManufacturer[]) => {

@@ -78,6 +78,7 @@
         </th>
         <th>{{ 'admin.manufacturers.name' | translate }}</th>
         <th>{{ 'admin.manufacturers.attractionCount' | translate }}</th>
+        <th>{{ 'admin.filters.visibility' | translate }}</th>
         <th>{{ 'admin.manufacturers.reviewStatus' | translate }}</th>
         <th>{{ 'admin.manufacturers.actions' | translate }}</th>
       </tr>
@@ -91,6 +92,12 @@
         <td [attr.data-label]="'admin.manufacturers.name' | translate"><strong class="admin-row-title">{{ manufacturer.name }}</strong></td>
         <td [attr.data-label]="'admin.manufacturers.attractionCount' | translate">
           <span class="admin-count-chip">{{ manufacturer.attractionCount ?? 0 }}</span>
+        </td>
+        <td [attr.data-label]="'admin.filters.visibility' | translate">
+          <p-tag
+            [value]="((manufacturer.isVisible ?? true) ? 'admin.visible.visible' : 'admin.hidden.hidden') | translate"
+            [severity]="(manufacturer.isVisible ?? true) ? 'success' : 'warn'">
+          </p-tag>
         </td>
         <td [attr.data-label]="'admin.manufacturers.reviewStatus' | translate">
           <p-tag
@@ -112,7 +119,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="5">
+        <td colspan="6">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"

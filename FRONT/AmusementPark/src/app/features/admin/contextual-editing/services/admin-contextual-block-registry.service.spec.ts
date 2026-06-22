@@ -179,6 +179,7 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.parkGraphUpsertFileName).toBe('mack-rides-manufacturer-upsert.json');
     expect(block?.capabilities).toContain('parkGraphUpsertDraft');
     expect(block?.localizedLanguageCodes).toEqual(LANGUAGES.map((language: LanguageOption) => language.value));
+    expect(block?.jsonScope).toContain('references.manufacturers[*].isVisible');
     expect(block?.jsonScope).toContain('references.manufacturers[*].biography[*].value');
   });
 

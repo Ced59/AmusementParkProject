@@ -1293,6 +1293,7 @@
         "countryCode": "Código de país",
         "latitude": "Latitud",
         "longitude": "Longitud",
+        "isVisible": "Visible en el sitio público",
         "occupation": "Ocupación / rol",
         "birthDate": "Fecha de nacimiento",
         "deathDate": "Fecha de fallecimiento",

@@ -9,5 +9,8 @@ namespace AmusementPark.Application.Features.AttractionManufacturers.Queries;
 /// <summary>
 /// Récupère la liste des attraction manufacturers.
 /// </summary>
-public sealed record GetAttractionManufacturersQuery(PagedQuery Paging, string? Search = null)
+/// <param name="Paging">Pagination demandee.</param>
+/// <param name="Search">Filtre de recherche.</param>
+/// <param name="IncludeHidden">Inclut les constructeurs masques.</param>
+public sealed record GetAttractionManufacturersQuery(PagedQuery Paging, string? Search = null, bool IncludeHidden = false)
     : IQuery<ApplicationResult<PagedResult<AttractionManufacturerResult>>>;

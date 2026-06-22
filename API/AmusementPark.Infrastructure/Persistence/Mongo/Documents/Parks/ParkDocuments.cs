@@ -149,6 +149,9 @@ public sealed class AttractionManufacturerDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? CurrentLogoImageId { get; set; }
 
+    [BsonElement("isVisible")]
+    public bool IsVisible { get; set; } = true;
+
     [BsonElement("adminReviewStatus")]
     [BsonRepresentation(BsonType.String)]
     public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;

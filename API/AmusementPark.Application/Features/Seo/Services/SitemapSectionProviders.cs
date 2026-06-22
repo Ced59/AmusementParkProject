@@ -520,7 +520,7 @@ public sealed class ReferencesSitemapSectionProvider : ISitemapSectionProvider
         }
 
         IReadOnlyCollection<AttractionManufacturer> manufacturers = await this.attractionManufacturerRepository.GetAllAsync(cancellationToken);
-        foreach (AttractionManufacturer entity in manufacturers.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant))
+        foreach (AttractionManufacturer entity in manufacturers.Where(static entity => entity.IsVisible && entity.AdminReviewStatus != AdminReviewStatus.NotRelevant))
         {
             AddReferenceUrls(urls, languages, "park-manufacturer", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }

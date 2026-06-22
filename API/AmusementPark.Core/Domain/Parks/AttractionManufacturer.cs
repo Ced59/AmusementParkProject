@@ -44,6 +44,11 @@ public sealed class AttractionManufacturer : AuditableEntity
     public string? CurrentLogoImageId { get; set; }
 
     /// <summary>
+    /// Indique si le constructeur est visible publiquement.
+    /// </summary>
+    public bool IsVisible { get; set; } = true;
+
+    /// <summary>
     /// Statut de revue interne pour le pilotage back-office.
     /// </summary>
     public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;

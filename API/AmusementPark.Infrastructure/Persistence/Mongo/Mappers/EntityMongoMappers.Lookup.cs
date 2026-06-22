@@ -130,6 +130,7 @@ internal static partial class EntityMongoMappers
             ContactDetails = ToDomainContactDetails(document.ContactDetails),
             Biography = CommonMongoMappers.ToDomain(document.Biography),
             CurrentLogoImageId = document.CurrentLogoImageId,
+            IsVisible = document.IsVisible,
             AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
         };
 
@@ -150,6 +151,7 @@ internal static partial class EntityMongoMappers
             ContactDetails = ToDocumentContactDetails(entity.ContactDetails),
             Biography = CommonMongoMappers.ToDocuments(entity.Biography),
             CurrentLogoImageId = entity.CurrentLogoImageId,
+            IsVisible = entity.IsVisible,
             AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
             AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
             CreatedAt = entity.CreatedAtUtc,

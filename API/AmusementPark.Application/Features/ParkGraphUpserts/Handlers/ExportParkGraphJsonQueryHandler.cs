@@ -432,6 +432,7 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
             ClosedYear = manufacturer.ClosedYear,
             ContactDetails = manufacturer.ContactDetails,
             Biography = CopyLocalizedTexts(manufacturer.Biography),
+            IsVisible = manufacturer.IsVisible,
             AdminReviewStatus = manufacturer.AdminReviewStatus,
         };
     }

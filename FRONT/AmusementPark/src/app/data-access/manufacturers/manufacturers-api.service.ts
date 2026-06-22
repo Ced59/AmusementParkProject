@@ -22,15 +22,19 @@ export class ManufacturersApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getAttractionManufacturers(): Observable<AttractionManufacturer[]> {
-    return this.getAllAttractionManufacturers();
+  getAttractionManufacturers(includeHidden: boolean = false): Observable<AttractionManufacturer[]> {
+    return this.getAllAttractionManufacturers(includeHidden);
   }
 
-  getAttractionManufacturersPage(page: number = 1, size: number = 100, search: string | null = null): Observable<PagedResult<AttractionManufacturer>> {
+  getAttractionManufacturersPage(page: number = 1, size: number = 100, search: string | null = null, includeHidden: boolean = false): Observable<PagedResult<AttractionManufacturer>> {
     const url: string = `${environment.apiBaseUrl}${MANUFACTURERS_API_ENDPOINTS.getAttractionManufacturers}`;
     let params: HttpParams = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
+
+    if (includeHidden) {
+      params = params.set('includeHidden', 'true');
+    }
 
     if (search?.trim()) {
       params = params.set('search', search.trim());
@@ -41,23 +45,24 @@ export class ManufacturersApiService {
     );
   }
 
-  getAllAttractionManufacturers(): Observable<AttractionManufacturer[]> {
-    return this.getAttractionManufacturersPage(1, 100).pipe(
+  getAllAttractionManufacturers(includeHidden: boolean = false): Observable<AttractionManufacturer[]> {
+    return this.getAttractionManufacturersPage(1, 100, null, includeHidden).pipe(
       expand((result: PagedResult<AttractionManufacturer>) => {
         const nextPage: number = result.pagination.currentPage + 1;
         if (nextPage > result.pagination.totalPages) {
           return EMPTY;
         }
 
-        return this.getAttractionManufacturersPage(nextPage, result.pagination.itemsPerPage || 100);
+        return this.getAttractionManufacturersPage(nextPage, result.pagination.itemsPerPage || 100, null, includeHidden);
       }),
       reduce((items: AttractionManufacturer[], result: PagedResult<AttractionManufacturer>) => [...items, ...unwrapCollection<AttractionManufacturer>({ data: result.items })], [] as AttractionManufacturer[])
     );
   }
 
-  getAttractionManufacturerById(id: string): Observable<AttractionManufacturer> {
+  getAttractionManufacturerById(id: string, includeHidden: boolean = false): Observable<AttractionManufacturer> {
     const url: string = `${environment.apiBaseUrl}${MANUFACTURERS_API_ENDPOINTS.getAttractionManufacturerById(id)}`;
-    return this.http.get<AttractionManufacturer>(url);
+    const params: HttpParams = includeHidden ? new HttpParams().set('includeHidden', 'true') : new HttpParams();
+    return this.http.get<AttractionManufacturer>(url, { params });
   }
 
   createAttractionManufacturer(manufacturer: AttractionManufacturer): Observable<AttractionManufacturer> {

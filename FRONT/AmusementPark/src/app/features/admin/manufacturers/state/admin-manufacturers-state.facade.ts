@@ -59,7 +59,7 @@ export class AdminManufacturersStateFacade {
     const previousData: AdminManufacturersViewModel | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.manufacturersApiService.getAllAttractionManufacturers().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.manufacturersApiService.getAllAttractionManufacturers(true).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (manufacturers: AttractionManufacturer[]) => {
         this.manufacturersSignal.set(manufacturers.map((manufacturer: AttractionManufacturer) => ({ ...manufacturer, adminReviewStatus: manufacturer.adminReviewStatus ?? 'ToReview' })));
         this.ensureCurrentPageIsValid();

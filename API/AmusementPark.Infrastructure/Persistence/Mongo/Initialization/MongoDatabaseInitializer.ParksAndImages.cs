@@ -129,6 +129,12 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.Name)
                     .Ascending(item => item.Id),
                 new CreateIndexOptions { Name = "idx_attraction_manufacturers_admin_review_priority_name" }),
+            new CreateIndexModel<AttractionManufacturerDocument>(
+                Builders<AttractionManufacturerDocument>.IndexKeys
+                    .Ascending(item => item.IsVisible)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_attraction_manufacturers_visibility_name" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);

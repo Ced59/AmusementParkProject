@@ -10,9 +10,11 @@ import { AdminParkItemManufacturersStateFacade } from './admin-park-item-manufac
 
 class FakeManufacturersPort implements AdminParkItemManufacturersStateManufacturersApiServicePort {
   public calls: number = 0;
+  public includeHiddenValues: boolean[] = [];
 
-  getAttractionManufacturers(): Observable<AttractionManufacturer[]> {
+  getAttractionManufacturers(includeHidden: boolean = false): Observable<AttractionManufacturer[]> {
     this.calls += 1;
+    this.includeHiddenValues.push(includeHidden);
     return of([
       {
         id: 'manufacturer-1',
@@ -47,6 +49,7 @@ describe('AdminParkItemManufacturersStateFacade', () => {
     facade.load();
 
     expect(port.calls).toBe(1);
+    expect(port.includeHiddenValues).toEqual([true]);
     expect(facade.manufacturerOptions()).toEqual([
       { id: 'manufacturer-1', label: 'Mack Rides' }
     ]);

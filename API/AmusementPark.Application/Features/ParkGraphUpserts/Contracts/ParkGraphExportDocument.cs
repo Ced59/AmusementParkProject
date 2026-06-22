@@ -335,6 +335,8 @@ public sealed class ParkGraphExportManufacturer
 
     public List<LocalizedText> Biography { get; init; } = new List<LocalizedText>();
 
+    public bool IsVisible { get; init; } = true;
+
     public AdminReviewStatus AdminReviewStatus { get; init; }
 }
 

@@ -1293,6 +1293,7 @@
         "countryCode": "Ländercode",
         "latitude": "Breitengrad",
         "longitude": "Längengrad",
+        "isVisible": "Auf der öffentlichen Seite sichtbar",
         "occupation": "Tätigkeit / Rolle",
         "birthDate": "Geburtsdatum",
         "deathDate": "Sterbedatum",

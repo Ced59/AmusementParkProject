@@ -33,7 +33,7 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
         }
 
         AmusementPark.Core.Domain.Parks.AttractionManufacturer? entity = await this.repository.GetByIdAsync(query.Id, cancellationToken);
-        if (entity is null)
+        if (entity is null || (!query.IncludeHidden && !entity.IsVisible))
         {
             return ApplicationResult<AttractionManufacturerResult>.Failure(ApplicationError.NotFound("attraction-manufacturer.not-found", "Attraction manufacturer not exists"));
         }
@@ -51,6 +51,7 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
             ContactDetails = entity.ContactDetails,
             Biography = entity.Biography,
             CurrentLogoImageId = entity.CurrentLogoImageId,
+            IsVisible = entity.IsVisible,
             AdminReviewStatus = entity.AdminReviewStatus,
             AttractionCount = attractionCount,
         });

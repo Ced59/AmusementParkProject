@@ -415,7 +415,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             CompositeScore = 0.0,
             CreatedAt = source.CreatedAt,
             UpdatedAt = source.UpdatedAt,
-            IsVisible = true,
+            IsVisible = source.IsVisible,
         };
     }
 

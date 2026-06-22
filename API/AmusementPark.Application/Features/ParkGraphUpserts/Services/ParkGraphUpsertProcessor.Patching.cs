@@ -381,6 +381,7 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchIntNullable(patch, "foundedYear", entity.FoundedYear, value => entity.FoundedYear = value, change);
         PatchIntNullable(patch, "closedYear", entity.ClosedYear, value => entity.ClosedYear = value, change);
         PatchString(patch, "currentLogoImageId", entity.CurrentLogoImageId, value => entity.CurrentLogoImageId = value, change);
+        PatchBool(patch, "isVisible", entity.IsVisible, value => entity.IsVisible = value, change);
         PatchEnum(patch, "adminReviewStatus", entity.AdminReviewStatus, value => entity.AdminReviewStatus = value, change);
         PatchContactDetails(patch, entity.ContactDetails, value => entity.ContactDetails = value, change);
         if (HasProperty(patch, "biography"))

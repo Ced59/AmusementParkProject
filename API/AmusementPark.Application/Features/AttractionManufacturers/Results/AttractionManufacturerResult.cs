@@ -49,6 +49,11 @@ public sealed class AttractionManufacturerResult
     public string? CurrentLogoImageId { get; init; }
 
     /// <summary>
+    /// Indique si le constructeur est visible publiquement.
+    /// </summary>
+    public bool IsVisible { get; init; } = true;
+
+    /// <summary>
     /// Nombre d'attractions liées.
     /// </summary>
     public int AttractionCount { get; init; }

@@ -688,6 +688,7 @@ public sealed class ParkGraphUpsertProcessorTests
               {
                 "key": "manufacturer:mack-rides",
                 "name": "Mack Rides",
+                "isVisible": false,
                 "adminReviewStatus": "Validated"
               }
             ]
@@ -711,6 +712,7 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.True(result.Value.CanApply);
         Assert.NotNull(createdManufacturer);
         Assert.Equal("Mack Rides", createdManufacturer.Name);
+        Assert.False(createdManufacturer.IsVisible);
         attractionManufacturerRepository.VerifyAll();
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
