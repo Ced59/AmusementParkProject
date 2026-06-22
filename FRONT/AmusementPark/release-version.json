@@ -1,6 +1,20 @@
 {
-  "version": "2.6.3",
+  "version": "2.6.4",
   "history": [
+    {
+      "version": "2.6.4",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Le chargement des pages techniques est corrige.",
+        "en": "Technical page loading is fixed.",
+        "de": "Das Laden der Technikseiten ist korrigiert.",
+        "nl": "Het laden van technische pagina's is opgelost.",
+        "it": "Il caricamento delle pagine tecniche e corretto.",
+        "es": "La carga de paginas tecnicas queda corregida.",
+        "pl": "Ladowanie stron technicznych zostalo poprawione.",
+        "pt": "O carregamento das paginas tecnicas foi corrigido."
+      }
+    },
     {
       "version": "2.6.3",
       "releasedAt": "2026-06-22",
