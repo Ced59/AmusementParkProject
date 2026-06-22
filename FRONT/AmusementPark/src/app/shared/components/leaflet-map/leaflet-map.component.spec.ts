@@ -3,6 +3,7 @@ import { SimpleChange, ViewEncapsulation } from '@angular/core';
 
 import { LeafletMapComponent } from './leaflet-map.component';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import { MapMarker } from '@app/models/map/map-marker';
 
 type LeafletTestMap = {
   fitBounds: jasmine.Spy;
@@ -14,6 +15,7 @@ type LeafletTestMap = {
 };
 
 type LeafletMapComponentInternals = {
+  addSingleMarker: (marker: MapMarker) => void;
   focusSelectedMarker: () => boolean;
   openPendingSelectedMarkerPopup: () => void;
   buildTileLayerOptions: () => Record<string, unknown>;
@@ -29,7 +31,51 @@ type LeafletMapComponentInternals = {
   markerLayer: { clearLayers: jasmine.Spy } | null;
   leafletMarkers: Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>;
   pendingPopupMarkerId: string | null;
+  openPopupMarkerId: string | null;
 };
+
+type LeafletMarkerTestDouble = {
+  addTo: jasmine.Spy;
+  bindPopup: jasmine.Spy;
+  getLatLng: jasmine.Spy;
+  getPopup: jasmine.Spy;
+  on: jasmine.Spy;
+  openPopup: jasmine.Spy;
+};
+
+type LeafletMarkerHandlers = Map<string, Array<(...args: unknown[]) => void>>;
+
+function createLeafletMarkerTestDouble(): { marker: LeafletMarkerTestDouble; handlers: LeafletMarkerHandlers } {
+  const marker: LeafletMarkerTestDouble = jasmine.createSpyObj('leafletMarker', [
+    'addTo',
+    'bindPopup',
+    'getLatLng',
+    'getPopup',
+    'on',
+    'openPopup'
+  ]);
+  const handlers: LeafletMarkerHandlers = new Map<string, Array<(...args: unknown[]) => void>>();
+
+  marker.addTo.and.returnValue(marker);
+  marker.bindPopup.and.returnValue(marker);
+  marker.getLatLng.and.returnValue({ lat: 48.85, lng: 2.35 });
+  marker.getPopup.and.returnValue({});
+  marker.on.and.callFake((eventName: string, handler: (...args: unknown[]) => void): LeafletMarkerTestDouble => {
+    const existingHandlers: Array<(...args: unknown[]) => void> = handlers.get(eventName) ?? [];
+    handlers.set(eventName, [...existingHandlers, handler]);
+    return marker;
+  });
+
+  return { marker, handlers };
+}
+
+function configureLeafletMarkerFactory(internals: LeafletMapComponentInternals, marker: LeafletMarkerTestDouble): void {
+  internals.L = {
+    latLngBounds: jasmine.createSpy('latLngBounds'),
+    marker: jasmine.createSpy('marker').and.returnValue(marker),
+    divIcon: jasmine.createSpy('divIcon').and.returnValue({})
+  } as unknown as LeafletMapComponentInternals['L'];
+}
 
 describe('LeafletMapComponent', () => {
   let component: LeafletMapComponent;
@@ -86,6 +132,67 @@ describe('LeafletMapComponent', () => {
     internals.openPendingSelectedMarkerPopup();
 
     expect(marker.openPopup).toHaveBeenCalled();
+    expect(internals.pendingPopupMarkerId).toBeNull();
+  });
+
+  it('binds and opens a directions-only marker popup when the marker is clicked', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const markerLayer: { clearLayers: jasmine.Spy } = jasmine.createSpyObj('markerLayer', ['clearLayers']);
+    const testDouble = createLeafletMarkerTestDouble();
+    const markerModel: MapMarker = {
+      id: 'park-gps',
+      lat: 48.85,
+      lng: 2.35,
+      actionUrl: 'https://maps.google.com/?daddr=48.85,2.35',
+      actionLabel: 'Y aller'
+    };
+    const markerClickSpy: jasmine.Spy = jasmine.createSpy('markerClick');
+
+    configureLeafletMarkerFactory(internals, testDouble.marker);
+    internals.markerLayer = markerLayer;
+    component.markerClick.subscribe(markerClickSpy);
+
+    internals.addSingleMarker(markerModel);
+
+    expect(testDouble.marker.bindPopup).toHaveBeenCalled();
+    const popupContent: string = testDouble.marker.bindPopup.calls.mostRecent().args[0] as string;
+    expect(popupContent).toContain('leaflet-map-popup__action--directions');
+    expect(popupContent).toContain('Y aller');
+    expect(popupContent).not.toContain('<strong></strong>');
+
+    const clickHandlers: Array<(...args: unknown[]) => void> = testDouble.handlers.get('click') ?? [];
+    expect(clickHandlers.length).toBe(1);
+
+    clickHandlers[0]();
+
+    expect(testDouble.marker.openPopup).toHaveBeenCalled();
+    expect(internals.openPopupMarkerId).toBe('park-gps');
+    expect(markerClickSpy).toHaveBeenCalledWith(markerModel);
+  });
+
+  it('keeps an open marker popup after a marker refresh rebuilds the rendered markers', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const markerLayer: { clearLayers: jasmine.Spy } = jasmine.createSpyObj('markerLayer', ['clearLayers']);
+    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const testDouble = createLeafletMarkerTestDouble();
+
+    component.markers = [{
+      id: 'park',
+      lat: 48.85,
+      lng: 2.35,
+      title: 'Parc test',
+      actionUrl: 'https://maps.google.com/?daddr=48.85,2.35',
+      actionLabel: 'Y aller'
+    }];
+    internals.map = map;
+    internals.markerLayer = markerLayer;
+    internals.openPopupMarkerId = 'park';
+    configureLeafletMarkerFactory(internals, testDouble.marker);
+
+    internals.refreshMarkers();
+
+    expect(markerLayer.clearLayers).toHaveBeenCalled();
+    expect(testDouble.marker.openPopup).toHaveBeenCalled();
     expect(internals.pendingPopupMarkerId).toBeNull();
   });
 

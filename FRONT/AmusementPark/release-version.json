@@ -1,6 +1,20 @@
 {
-  "version": "2.6.7",
+  "version": "2.6.8",
   "history": [
+    {
+      "version": "2.6.8",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les cartes ouvrent mieux les itineraires.",
+        "en": "Map directions open more reliably.",
+        "de": "Kartenrouten oeffnen zuverlaessiger.",
+        "nl": "Routeknoppen op kaarten openen betrouwbaarder.",
+        "it": "Gli itinerari dalle mappe si aprono meglio.",
+        "es": "Las rutas desde mapas se abren mejor.",
+        "pl": "Trasy z map otwieraja sie pewniej.",
+        "pt": "As rotas dos mapas abrem melhor."
+      }
+    },
     {
       "version": "2.6.7",
       "releasedAt": "2026-06-22",
