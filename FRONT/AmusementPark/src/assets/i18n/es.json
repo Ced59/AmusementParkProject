@@ -2111,30 +2111,30 @@
     "title": "Contactar con AmusementPark",
     "lead": "Envia una nota sobre el sitio, un dato que falte, un problema de datos o una idea de mejora.",
     "email": {
-      "badge": "Correo temporal",
+      "badge": "Correo oficial",
       "title": "Contacto directo",
-      "note": "Esta direccion es temporal hasta configurar un proveedor de correo dedicado."
+      "note": "Puedes escribir directamente a esta direccion; es el contacto estable del sitio."
     },
     "form": {
       "kicker": "Cuaderno de comentarios",
       "title": "Dejar un mensaje",
-      "description": "Los mensajes se guardan como texto simple y se revisan desde el panel admin.",
+      "description": "Deja una nota, una correccion o una idea de mejora.",
       "messageLabel": "Tu mensaje",
-      "help": "Solo texto simple. Se rechazan etiquetas HTML y enlaces abusivos.",
-      "validation": "Escribe un mensaje de texto simple entre 10 y 2000 caracteres.",
-      "success": "Tu mensaje se ha registrado.",
+      "help": "Escribe tu mensaje de forma sencilla, sin enlaces innecesarios.",
+      "validation": "Escribe un mensaje claro entre 10 y 2000 caracteres.",
+      "success": "Tu mensaje se ha enviado.",
       "error": "No se pudo enviar el mensaje. Revisa el texto o intentalo mas tarde.",
       "submit": "Enviar",
       "submitting": "Enviando"
     },
     "privacy": {
       "badge": "Proteccion",
-      "title": "Aviso antiabuso",
-      "text": "Este formulario es deliberadamente estricto para proteger el sitio y sus administradores.",
+      "title": "Un espacio protegido",
+      "text": "El formulario se mantiene sencillo para que los intercambios sigan siendo limpios y utiles.",
       "points": {
-        "plainText": "Solo se aceptan mensajes en texto simple.",
-        "ip": "Tu direccion IP se registra para limitar abusos repetidos.",
-        "admin": "Solo los administradores pueden consultar los mensajes y el contexto tecnico."
+        "plainText": "Tu mensaje debe ser claro y respetuoso.",
+        "ip": "Los abusos repetidos pueden limitarse.",
+        "admin": "Solo el equipo del sitio puede leer los mensajes."
       }
     }
   },

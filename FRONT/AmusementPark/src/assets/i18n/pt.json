@@ -2111,30 +2111,30 @@
     "title": "Contactar o AmusementPark",
     "lead": "Envia uma nota sobre o site, uma informação em falta, um problema de dados ou uma ideia de melhoria.",
     "email": {
-      "badge": "Email temporario",
+      "badge": "Email oficial",
       "title": "Contacto direto",
-      "note": "Este endereco e temporario ate ser configurado um fornecedor de email dedicado."
+      "note": "Podes escrever diretamente para este endereco; e o contacto estavel do site."
     },
     "form": {
       "kicker": "Livro de comentarios",
       "title": "Deixar uma mensagem",
-      "description": "As mensagens sao guardadas como texto simples e revistas no painel admin.",
+      "description": "Deixa uma nota, uma correcao ou uma ideia de melhoria.",
       "messageLabel": "A tua mensagem",
-      "help": "Apenas texto simples. Tags HTML e links abusivos sao recusados.",
-      "validation": "Introduz uma mensagem de texto simples entre 10 e 2000 caracteres.",
-      "success": "A tua mensagem foi registada.",
+      "help": "Escreve a tua mensagem de forma simples, sem links desnecessarios.",
+      "validation": "Introduz uma mensagem clara entre 10 e 2000 caracteres.",
+      "success": "A tua mensagem foi enviada.",
       "error": "Nao foi possivel enviar a mensagem. Verifique o texto ou tente mais tarde.",
       "submit": "Enviar",
       "submitting": "A enviar"
     },
     "privacy": {
       "badge": "Protecao",
-      "title": "Aviso antiabuso",
-      "text": "Este formulario e intencionalmente rigoroso para proteger o site e os administradores.",
+      "title": "Um espaco protegido",
+      "text": "O formulario fica simples de proposito para manter trocas limpas e uteis.",
       "points": {
-        "plainText": "As mensagens sao aceites apenas em texto simples.",
-        "ip": "O teu endereço IP é registado para limitar abusos repetidos.",
-        "admin": "Apenas administradores podem consultar mensagens e contexto tecnico."
+        "plainText": "A tua mensagem deve continuar clara e respeitosa.",
+        "ip": "Abusos repetidos podem ser limitados.",
+        "admin": "Apenas a equipa do site pode ler as mensagens."
       }
     }
   },

@@ -2111,30 +2111,30 @@
     "title": "Kontakt z AmusementPark",
     "lead": "Wyslij uwage o stronie, brakujacej informacji, problemie z danymi albo pomysl na ulepszenie.",
     "email": {
-      "badge": "Tymczasowy e-mail",
+      "badge": "Oficjalny e-mail",
       "title": "Kontakt bezposredni",
-      "note": "Ten adres jest tymczasowy do czasu skonfigurowania dedykowanego dostawcy poczty."
+      "note": "Mozesz pisac bezposrednio na ten adres; to staly kontakt strony."
     },
     "form": {
       "kicker": "Ksiega uwag",
       "title": "Zostaw wiadomosc",
-      "description": "Wiadomosci sa zapisywane jako zwykly tekst i przegladane w panelu admina.",
+      "description": "Zostaw uwage, poprawke albo pomysl na ulepszenie.",
       "messageLabel": "Twoja wiadomosc",
-      "help": "Tylko zwykly tekst. Tagi HTML i naduzywane linki sa odrzucane.",
-      "validation": "Wpisz zwykla wiadomosc tekstowa od 10 do 2000 znakow.",
-      "success": "Twoja wiadomosc zostala zapisana.",
+      "help": "Napisz wiadomosc prosto, bez niepotrzebnych linkow.",
+      "validation": "Wpisz jasna wiadomosc od 10 do 2000 znakow.",
+      "success": "Twoja wiadomosc zostala wyslana.",
       "error": "Nie udalo sie wyslac wiadomosci. Sprawdz tekst albo sprobuj pozniej.",
       "submit": "Wyslij",
       "submitting": "Wysylanie"
     },
     "privacy": {
       "badge": "Ochrona",
-      "title": "Informacja antynaduzyciowa",
-      "text": "Ten formularz jest celowo surowy, aby chronic strone i administratorow.",
+      "title": "Chroniona przestrzen",
+      "text": "Formularz pozostaje prosty, aby rozmowy byly czyste i przydatne.",
       "points": {
-        "plainText": "Akceptowane sa tylko wiadomosci jako zwykly tekst.",
-        "ip": "Twoj adres IP jest zapisywany, aby ograniczac powtarzajace sie naduzycia.",
-        "admin": "Tylko administratorzy moga przegladac wiadomosci i kontekst techniczny."
+        "plainText": "Twoja wiadomosc powinna byc jasna i z szacunkiem.",
+        "ip": "Powtarzajace sie naduzycia moga byc ograniczane.",
+        "admin": "Tylko zespol strony moze czytac wiadomosci."
       }
     }
   },

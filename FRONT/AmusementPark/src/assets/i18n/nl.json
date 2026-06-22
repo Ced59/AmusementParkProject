@@ -2111,30 +2111,30 @@
     "title": "Contact met AmusementPark",
     "lead": "Stuur een opmerking over de site, ontbrekende informatie, een dataprobleem of een verbeteridee.",
     "email": {
-      "badge": "Tijdelijk e-mailadres",
+      "badge": "Officieel e-mailadres",
       "title": "Direct contact",
-      "note": "Dit adres is tijdelijk totdat een eigen mailprovider is ingesteld."
+      "note": "Je kunt rechtstreeks naar dit adres schrijven; het is het vaste contact voor de site."
     },
     "form": {
       "kicker": "Feedbackboek",
       "title": "Laat een bericht achter",
-      "description": "Berichten worden als platte tekst opgeslagen en in het adminpaneel bekeken.",
+      "description": "Laat een opmerking, correctie of verbeteridee achter.",
       "messageLabel": "Je bericht",
-      "help": "Alleen platte tekst. HTML-tags en misbruiklinks worden geweigerd.",
-      "validation": "Voer een plattetekstbericht in tussen 10 en 2000 tekens.",
-      "success": "Je bericht is geregistreerd.",
+      "help": "Schrijf je bericht eenvoudig, zonder onnodige links.",
+      "validation": "Voer een duidelijk bericht in tussen 10 en 2000 tekens.",
+      "success": "Je bericht is verzonden.",
       "error": "Het bericht kon niet worden verzonden. Controleer de tekst of probeer later opnieuw.",
       "submit": "Verzenden",
       "submitting": "Verzenden"
     },
     "privacy": {
       "badge": "Bescherming",
-      "title": "Anti-misbruikmelding",
-      "text": "Dit formulier is bewust streng om de site en beheerders te beschermen.",
+      "title": "Een beschermde ruimte",
+      "text": "Het formulier blijft bewust eenvoudig, zodat uitwisselingen netjes en nuttig blijven.",
       "points": {
-        "plainText": "Berichten worden alleen als platte tekst geaccepteerd.",
-        "ip": "Je IP-adres wordt opgeslagen om herhaald misbruik te beperken.",
-        "admin": "Alleen beheerders kunnen berichten en technische context bekijken."
+        "plainText": "Je bericht moet duidelijk en respectvol blijven.",
+        "ip": "Herhaald misbruik kan worden beperkt.",
+        "admin": "Alleen het siteteam kan berichten lezen."
       }
     }
   },

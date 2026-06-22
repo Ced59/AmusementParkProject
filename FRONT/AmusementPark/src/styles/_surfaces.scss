@@ -116,7 +116,22 @@
 }
 
 .app-surface--filter {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 86%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+  border-color: color-mix(in srgb, var(--app-primary) 34%, var(--app-border-strong));
+  background:
+    radial-gradient(ellipse 36% 130% at 0% 0%, color-mix(in srgb, var(--app-primary) 14%, transparent), transparent 66%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 94%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow:
+    var(--shadow-card),
+    inset 0 1px 0 color-mix(in srgb, #ffffff 8%, transparent);
+}
+
+.app-surface--filter::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--app-primary), var(--c-gold), var(--c-sky));
 }
 
 .app-surface--shell,
