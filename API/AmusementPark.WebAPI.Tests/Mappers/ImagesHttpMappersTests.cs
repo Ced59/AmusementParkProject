@@ -1,4 +1,5 @@
 using System;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
@@ -37,6 +38,30 @@ public sealed class ImagesHttpMappersTests
         Assert.True(ownerTypeParsed);
         Assert.Equal(ImageCategory.ParkItem, category.ToDomain());
         Assert.Equal(ImageOwnerType.ParkItem, ownerType.ToDomain());
+    }
+
+    [Fact]
+    public void ImageCreateDto_WhenCreated_ShouldDefaultWatermarkToTrue()
+    {
+        ImageCreateDto dto = new ImageCreateDto();
+
+        Assert.True(dto.WithWatermark);
+    }
+
+    [Fact]
+    public void RemoteImageCreateDto_WhenCreated_ShouldDefaultWatermarkToFalse()
+    {
+        RemoteImageCreateDto dto = new RemoteImageCreateDto
+        {
+            SourceUrl = "https://cdn.example.test/photo.jpg",
+            Category = ImageCategoryDto.PARK,
+            OwnerType = ImageOwnerTypeDto.PARK,
+        };
+
+        RemoteImageImportRequest request = dto.ToApplication();
+
+        Assert.False(dto.WithWatermark);
+        Assert.False(request.WithWatermark);
     }
 
     [Fact]

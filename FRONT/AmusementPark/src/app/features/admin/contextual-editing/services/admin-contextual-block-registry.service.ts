@@ -53,7 +53,8 @@ const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = 
       'image.tagIds[*]',
       'image.description',
       'image.isPublished',
-      'image.setAsCurrent'
+      'image.setAsCurrent',
+      'image.withWatermark'
     ],
     localizedLanguageCodes: []
   },
@@ -119,7 +120,8 @@ const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = 
       'image.tagIds[*]',
       'image.description',
       'image.isPublished',
-      'image.setAsCurrent'
+      'image.setAsCurrent',
+      'image.withWatermark'
     ],
     localizedLanguageCodes: []
   },

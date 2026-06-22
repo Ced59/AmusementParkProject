@@ -55,6 +55,15 @@
                   {{ 'admin.parks.items.photos.selectedCount' | translate:{ count: selectedPhotoCount } }}
                 </small>
               }
+              <label class="photo-watermark-toggle">
+                <input
+                  type="checkbox"
+                  [ngModel]="photoWithWatermark"
+                  (ngModelChange)="photoWithWatermarkChange.emit($event)"
+                  [ngModelOptions]="{ standalone: true }"
+                  [disabled]="photosUploading" />
+                <span>{{ 'shared.imageUpload.withWatermark' | translate }}</span>
+              </label>
               <input
                 pInputText
                 type="url"
@@ -73,6 +82,15 @@
                   </app-image-display>
                 </div>
               }
+              <label class="photo-watermark-toggle">
+                <input
+                  type="checkbox"
+                  [ngModel]="remotePhotoWithWatermark"
+                  (ngModelChange)="remotePhotoWithWatermarkChange.emit($event)"
+                  [ngModelOptions]="{ standalone: true }"
+                  [disabled]="photosUploading" />
+                <span>{{ 'shared.imageUpload.withWatermark' | translate }}</span>
+              </label>
               <div class="photo-upload-grid">
                 <div class="field">
                   <label class="block mb-2">{{ 'admin.parks.items.photos.categoryLabel' | translate }}</label>

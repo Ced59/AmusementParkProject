@@ -92,6 +92,17 @@
         [disabled]="isUploading" />
     }
 
+    @if (allowWatermarkChoice) {
+      <label class="watermark-choice">
+        <input
+          type="checkbox"
+          [(ngModel)]="withWatermark"
+          [ngModelOptions]="{ standalone: true }"
+          [disabled]="isUploading" />
+        <span>{{ watermarkLabelKey | translate }}</span>
+      </label>
+    }
+
     @if (errorTranslationKey) {
       <div class="upload-error">
         {{ errorTranslationKey | translate }}

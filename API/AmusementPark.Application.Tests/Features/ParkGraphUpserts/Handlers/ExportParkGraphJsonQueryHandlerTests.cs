@@ -229,10 +229,12 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         Assert.Equal("park", parkExportImage.GetProperty("ownerKey").GetString());
         Assert.Equal("https://source.example.test/park.jpg", parkExportImage.GetProperty("sourceUrl").GetString());
         Assert.Equal("/images/image-park-1", parkExportImage.GetProperty("internalUrl").GetString());
+        Assert.False(parkExportImage.GetProperty("withWatermark").GetBoolean());
         Assert.Equal("item-1", itemExportImage.GetProperty("ownerKey").GetString());
         Assert.Equal("manufacturer:manufacturer-1", manufacturerExportImage.GetProperty("ownerKey").GetString());
         Assert.Equal("https://source.example.test/manufacturer.png", manufacturerExportImage.GetProperty("sourceUrl").GetString());
         Assert.Equal("/images/image-manufacturer-1", manufacturerExportImage.GetProperty("internalUrl").GetString());
+        Assert.False(manufacturerExportImage.GetProperty("withWatermark").GetBoolean());
 
         parkRepository.VerifyAll();
         zoneRepository.VerifyAll();

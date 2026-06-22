@@ -23,7 +23,9 @@ export function buildManufacturerParkGraphUpsertJson(manufacturer: AttractionMan
     park: {},
     zones: [],
     items: [],
-    images: [],
+    images: [
+      buildRemoteImageDraft(manufacturer)
+    ],
     metadata: {
       source: 'admin-public-manufacturer-overlay',
       referenceKind: 'manufacturer',
@@ -32,6 +34,18 @@ export function buildManufacturerParkGraphUpsertJson(manufacturer: AttractionMan
   };
 
   return JSON.stringify(document, null, 2);
+}
+
+function buildRemoteImageDraft(manufacturer: AttractionManufacturer): JsonObject {
+  return {
+    sourceUrl: '',
+    ownerKey: buildManufacturerKey(manufacturer),
+    category: 'Manufacturer',
+    description: '',
+    isPublished: true,
+    setAsCurrent: false,
+    withWatermark: false
+  };
 }
 
 export function buildManufacturerParkGraphUpsertFileName(manufacturer: AttractionManufacturer): string {

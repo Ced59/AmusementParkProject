@@ -38,6 +38,8 @@ export class AdminParkItemPhotosStateFacade {
   private readonly selectedPhotoFilesSignal = signal<File[]>([]);
   private readonly newPhotoDescriptionSignal = signal('');
   private readonly remotePhotoSourceUrlSignal = signal('');
+  private readonly photoWithWatermarkSignal = signal(true);
+  private readonly remotePhotoWithWatermarkSignal = signal(false);
   private readonly selectedPhotoCategorySlugSignal = signal(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly photoTagIdsBySlugSignal = signal<Record<string, string>>({});
 
@@ -48,6 +50,8 @@ export class AdminParkItemPhotosStateFacade {
   public readonly photosPageSize: Signal<number> = this.photosPageSizeSignal.asReadonly();
   public readonly newPhotoDescription: Signal<string> = this.newPhotoDescriptionSignal.asReadonly();
   public readonly remotePhotoSourceUrl: Signal<string> = this.remotePhotoSourceUrlSignal.asReadonly();
+  public readonly photoWithWatermark: Signal<boolean> = this.photoWithWatermarkSignal.asReadonly();
+  public readonly remotePhotoWithWatermark: Signal<boolean> = this.remotePhotoWithWatermarkSignal.asReadonly();
   public readonly selectedPhotoCategorySlug: Signal<string> = this.selectedPhotoCategorySlugSignal.asReadonly();
   public readonly photoCategoryOptions: Signal<AdminParkItemPhotoCategoryOption[]> = signal([...PARK_ITEM_PHOTO_CATEGORY_OPTIONS]).asReadonly();
   public readonly selectedPhotoCount: Signal<number> = computed(() => this.selectedPhotoFilesSignal().length);
@@ -79,6 +83,8 @@ export class AdminParkItemPhotosStateFacade {
     this.selectedPhotoFilesSignal.set([]);
     this.newPhotoDescriptionSignal.set('');
     this.remotePhotoSourceUrlSignal.set('');
+    this.photoWithWatermarkSignal.set(true);
+    this.remotePhotoWithWatermarkSignal.set(false);
     this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
     this.photoTagIdsBySlugSignal.set({});
   }
@@ -133,6 +139,14 @@ export class AdminParkItemPhotosStateFacade {
     this.remotePhotoSourceUrlSignal.set(sourceUrl);
   }
 
+  setPhotoWithWatermark(withWatermark: boolean): void {
+    this.photoWithWatermarkSignal.set(withWatermark);
+  }
+
+  setRemotePhotoWithWatermark(withWatermark: boolean): void {
+    this.remotePhotoWithWatermarkSignal.set(withWatermark);
+  }
+
   setSelectedPhotoCategorySlug(slug: string): void {
     const isKnownSlug: boolean = PARK_ITEM_PHOTO_CATEGORY_OPTIONS.some((option: AdminParkItemPhotoCategoryOption) => option.slug === slug);
     this.selectedPhotoCategorySlugSignal.set(isKnownSlug ? slug : PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
@@ -164,6 +178,8 @@ export class AdminParkItemPhotosStateFacade {
       this.selectedPhotoFilesSignal.set([]);
       this.remotePhotoSourceUrlSignal.set('');
       this.newPhotoDescriptionSignal.set('');
+      this.photoWithWatermarkSignal.set(true);
+      this.remotePhotoWithWatermarkSignal.set(false);
       this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
       this.photoTagIdsBySlugSignal.set({});
       this.toastMessageService.add(
@@ -200,13 +216,15 @@ export class AdminParkItemPhotosStateFacade {
         ownerType: ImageOwnerType.PARK_ITEM,
         ownerId: itemId,
         description: this.newPhotoDescriptionSignal() || itemName || undefined,
-        withWatermark: false,
+        withWatermark: this.remotePhotoWithWatermarkSignal(),
         setAsCurrent: shouldSetCurrent
       }));
       const taggedImage: ImageDto = await this.applySelectedPhotoCategoryAsync(importedImage);
       this.upsertPhoto(this.toOwnedImageItem(taggedImage));
       this.remotePhotoSourceUrlSignal.set('');
       this.newPhotoDescriptionSignal.set('');
+      this.photoWithWatermarkSignal.set(true);
+      this.remotePhotoWithWatermarkSignal.set(false);
       this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
       this.toastMessageService.add(
         'success',
@@ -333,7 +351,7 @@ export class AdminParkItemPhotosStateFacade {
       this.imagesApiService.uploadImage(
         file,
         ImageCategory.PARK_ITEM,
-        false,
+        this.photoWithWatermarkSignal(),
         itemName
       )
     );

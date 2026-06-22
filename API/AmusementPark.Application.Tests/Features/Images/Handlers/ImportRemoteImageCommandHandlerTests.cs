@@ -78,6 +78,43 @@ public sealed class ImportRemoteImageCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenParkLogoRequestsWatermark_ShouldImportWithoutWatermark()
+    {
+        Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+        Image importedImage = new Image
+        {
+            Id = "image-1",
+            Category = ImageCategory.ParkLogo,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            SourceUrl = "https://cdn.example.test/logo.png",
+        };
+
+        remoteImageImporter
+            .Setup(importer => importer.ImportAsync(
+                It.Is<RemoteImageImportRequest>(request =>
+                    request.Category == ImageCategory.ParkLogo &&
+                    !request.WithWatermark),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(importedImage);
+
+        ImportRemoteImageCommandHandler handler = CreateHandler(remoteImageImporter);
+
+        ApplicationResult<Image> result = await handler.HandleAsync(new ImportRemoteImageCommand(new RemoteImageImportRequest
+        {
+            SourceUrl = "https://cdn.example.test/logo.png",
+            Category = ImageCategory.ParkLogo,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            WithWatermark = true,
+            SetAsCurrent = false,
+        }));
+
+        Assert.True(result.IsSuccess);
+        remoteImageImporter.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenParkLogoIsSetAsCurrent_ShouldSynchronizeParkLogo()
     {
         Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);

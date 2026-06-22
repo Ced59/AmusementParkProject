@@ -67,6 +67,7 @@ export class AdminContextualBlockDrawerComponent {
   protected readonly photoPreviewUrl: Signal<string | null> = this.photoAddFacade.previewUrl;
   protected readonly photoMetadataRows: Signal<readonly AdminContextualBlockPhotoMetadataRow[]> = this.photoAddFacade.metadataRows;
   protected readonly photoDescription: Signal<string> = this.photoAddFacade.description;
+  protected readonly photoWithWatermark: Signal<boolean> = this.photoAddFacade.withWatermark;
   protected readonly photoIsPublished: Signal<boolean> = this.photoAddFacade.isPublished;
   protected readonly photoSetAsCurrent: Signal<boolean> = this.photoAddFacade.setAsCurrent;
   protected readonly photoCategoryOptions: Signal<readonly AdminContextualBlockPhotoCategoryOption[]> = this.photoAddFacade.categoryOptions;
@@ -246,6 +247,11 @@ export class AdminContextualBlockDrawerComponent {
   protected updatePhotoDescription(event: Event): void {
     const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
     this.photoAddFacade.updateDescription(target?.value ?? '');
+  }
+
+  protected updatePhotoWithWatermark(event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.photoAddFacade.updateWithWatermark(target?.checked ?? false);
   }
 
   protected updatePhotoCategory(event: Event): void {

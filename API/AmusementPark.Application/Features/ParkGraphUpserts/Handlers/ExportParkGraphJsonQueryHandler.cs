@@ -325,6 +325,7 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
             IsPublished = image.IsPublished,
             IsCurrent = image.IsCurrent,
             SetAsCurrent = image.IsCurrent,
+            WithWatermark = false,
             SourceUrl = image.SourceUrl,
             InternalUrl = BuildInternalImageUrl(image.Id),
             Description = image.Description,

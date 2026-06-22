@@ -162,6 +162,14 @@
             <label>
               <input
                 type="checkbox"
+                [checked]="photoWithWatermark()"
+                [disabled]="isPhotoUploading()"
+                (change)="updatePhotoWithWatermark($event)" />
+              <span>{{ 'shared.imageUpload.withWatermark' | translate }}</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
                 [checked]="photoIsPublished()"
                 [disabled]="isPhotoUploading()"
                 (change)="updatePhotoPublished($event)" />

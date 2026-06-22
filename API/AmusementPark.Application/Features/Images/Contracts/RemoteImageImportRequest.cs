@@ -14,7 +14,7 @@ public sealed class RemoteImageImportRequest
 
     public string? Description { get; init; }
 
-    public bool WithWatermark { get; init; } = true;
+    public bool WithWatermark { get; init; }
 
     public bool SetAsCurrent { get; init; }
 }
