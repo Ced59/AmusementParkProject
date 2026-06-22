@@ -202,24 +202,40 @@ public sealed partial class ParkGraphUpsertProcessor
 
     private async Task SynchronizeDeletedImageAsync(Image image, Park targetPark, CancellationToken cancellationToken)
     {
-        if (image.OwnerType != ImageOwnerType.Park
-            || image.Category != ImageCategory.ParkLogo
-            || string.IsNullOrWhiteSpace(image.OwnerId))
+        if (string.IsNullOrWhiteSpace(image.OwnerId))
         {
             return;
         }
 
-        Park? ownerPark = string.Equals(image.OwnerId, targetPark.Id, StringComparison.Ordinal)
-            ? targetPark
-            : await this.parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
-        if (ownerPark is null)
+        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.ParkLogo)
         {
+            Park? ownerPark = string.Equals(image.OwnerId, targetPark.Id, StringComparison.Ordinal)
+                ? targetPark
+                : await this.parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
+            if (ownerPark is null)
+            {
+                return;
+            }
+
+            Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, image.OwnerId, ImageCategory.ParkLogo, cancellationToken);
+            ownerPark.CurrentLogoImageId = currentLogo?.Id;
+            await this.parkRepository.UpdateAsync(ownerPark.Id, ownerPark, cancellationToken);
             return;
         }
 
-        Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, image.OwnerId, ImageCategory.ParkLogo, cancellationToken);
-        ownerPark.CurrentLogoImageId = currentLogo?.Id;
-        await this.parkRepository.UpdateAsync(ownerPark.Id, ownerPark, cancellationToken);
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer)
+        {
+            AttractionManufacturer? manufacturer = await this.attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
+            if (manufacturer is null)
+            {
+                return;
+            }
+
+            Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, image.OwnerId, ImageCategory.Manufacturer, cancellationToken);
+            manufacturer.CurrentLogoImageId = currentLogo?.Id;
+            await this.attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);
+        }
     }
 
     private void AddSkippedDeletionChange(ParkGraphUpsertResult result, string entityType, string id, string message)

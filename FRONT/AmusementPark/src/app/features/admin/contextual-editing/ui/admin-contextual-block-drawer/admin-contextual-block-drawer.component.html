@@ -421,16 +421,17 @@
               <i class="pi pi-download" aria-hidden="true"></i>
               <span>{{ 'admin.contextualBlocks.drawer.downloadParkGraphUpsert' | translate }}</span>
             </button>
-            @if (block.parkGraphUpsertImportRoute) {
-              <a
-                class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary"
-                [routerLink]="block.parkGraphUpsertImportRoute"
-                target="_blank"
-                rel="noopener noreferrer">
-                <i class="pi pi-upload" aria-hidden="true"></i>
-                <span>{{ 'admin.contextualBlocks.drawer.openParkGraphUpsertImport' | translate }}</span>
-              </a>
-            }
+            <label
+              class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary admin-contextual-block-drawer__file-action"
+              [class.admin-contextual-block-drawer__action--disabled]="isParkGraphUpsertImporting()">
+              <input
+                type="file"
+                accept="application/json,.json"
+                [disabled]="isParkGraphUpsertImporting()"
+                (change)="importParkGraphUpsertFile(block, $event)" />
+              <i class="pi pi-upload" aria-hidden="true"></i>
+              <span>{{ (isParkGraphUpsertImporting() ? 'admin.contextualBlocks.drawer.importParkGraphUpsertBusy' : 'admin.contextualBlocks.drawer.importParkGraphUpsert') | translate }}</span>
+            </label>
           </div>
 
           @if (parkGraphUpsertErrorKey(); as errorKey) {

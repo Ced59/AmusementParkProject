@@ -77,16 +77,23 @@
         "addChildSucceeded": "Ukryty item utworzony, strona sie aktualizuje.",
         "openCreatedChild": "Otworz item",
         "parkGraphUpsertTitle": "JSON upsert producenta",
-        "parkGraphUpsertHint": "Skopiuj lub pobierz ten wypelniony JSON, a potem zaimportuj go w narzedziu upsert po wyborze parku docelowego.",
+        "parkGraphUpsertHint": "Skopiuj, pobierz albo bezposrednio zaimportuj ten wypelniony JSON producenta.",
         "parkGraphUpsertDraftAriaLabel": "Wypelniony JSON upsert producenta",
         "copyParkGraphUpsert": "Kopiuj JSON",
         "copyParkGraphUpsertBusy": "Kopiowanie...",
         "downloadParkGraphUpsert": "Pobierz JSON",
         "openParkGraphUpsertImport": "Otworz import JSON",
+        "importParkGraphUpsert": "Importuj JSON",
+        "importParkGraphUpsertBusy": "Import...",
         "parkGraphUpsertCopied": "JSON skopiowany do schowka.",
         "parkGraphUpsertDownloaded": "Pobieranie JSON rozpoczete.",
+        "parkGraphUpsertImported": "JSON producenta zaimportowany.",
         "parkGraphUpsertCopyError": "Kopiowanie JSON nie powiodlo sie.",
         "parkGraphUpsertDownloadError": "Pobieranie JSON nie powiodlo sie.",
+        "parkGraphUpsertImportError": "Import JSON nie powiodl sie.",
+        "parkGraphUpsertImportBlocked": "Nie mozna bylo zastosowac JSON.",
+        "parkGraphUpsertImportInvalidFile": "Wybierz plik .json.",
+        "parkGraphUpsertImportInvalidJson": "Plik JSON jest nieprawidlowy.",
         "parkGraphUpsertUnavailable": "Brak szkicu upsert dla tego bloku.",
         "downloadJson": "Pobierz JSON bloku",
         "downloadJsonBusy": "Pobieranie...",
@@ -157,7 +164,7 @@
         "boundedJsonApply": "Ograniczone zastosowanie JSON dostepne",
         "contextualFormEdit": "Formularz kontekstowy dostepny",
         "targetedChildAdd": "Ukierunkowane dodawanie dostepne",
-        "parkGraphUpsertDraft": "Szkic upsert grafu dostepny",
+        "parkGraphUpsertDraft": "Szkic upsert JSON dostepny",
         "boundedJsonExportPlanned": "Ograniczony eksport JSON zaplanowany",
         "boundedJsonUpsertPlanned": "Ograniczony upsert JSON zaplanowany",
         "formEditPlanned": "Formularz kontekstowy zaplanowany",
@@ -198,7 +205,7 @@
         },
         "manufacturerReference": {
           "label": "Producent",
-          "description": "Wypelniony szkic upsert grafu dla tego producenta."
+          "description": "Wypelniony szkic upsert JSON dla tego producenta."
         }
       }
     }

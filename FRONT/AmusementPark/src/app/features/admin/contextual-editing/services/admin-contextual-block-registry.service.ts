@@ -267,8 +267,7 @@ export class AdminContextualBlockRegistryService {
       locationFallbackCenter: null,
       adminRoute: ['/', normalizedLanguageCode, 'admin', 'manufacturers', 'edit', normalizedManufacturerId],
       parkGraphUpsertDraftJson: this.normalizeValue(parkGraphUpsertDraftJson),
-      parkGraphUpsertFileName: this.normalizeFileName(parkGraphUpsertFileName, normalizedManufacturerId),
-      parkGraphUpsertImportRoute: ['/', normalizedLanguageCode, 'admin', 'park-graph-upserts']
+      parkGraphUpsertFileName: this.normalizeFileName(parkGraphUpsertFileName, normalizedManufacturerId)
     };
   }
 
@@ -323,6 +322,6 @@ export class AdminContextualBlockRegistryService {
   private normalizeFileName(value: string | null | undefined, fallbackId: string): string {
     const normalizedValue: string | null = this.normalizeValue(value);
 
-    return normalizedValue ?? `manufacturer-${fallbackId}-park-graph-upsert.json`;
+    return normalizedValue ?? `manufacturer-${fallbackId}-manufacturer-upsert.json`;
   }
 }

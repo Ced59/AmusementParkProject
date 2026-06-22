@@ -1,8 +1,11 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -17,12 +20,21 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
 {
     private readonly IImageRepository imageRepository;
     private readonly IParkRepository parkRepository;
+    private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
 
-    public SetCurrentImageCommandHandler(IImageRepository imageRepository, IParkRepository parkRepository, IUserRepository userRepository)
+    public SetCurrentImageCommandHandler(
+        IImageRepository imageRepository,
+        IParkRepository parkRepository,
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IUserRepository userRepository)
     {
         this.imageRepository = imageRepository;
         this.parkRepository = parkRepository;
+        this.attractionManufacturerRepository = attractionManufacturerRepository;
+        this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
     }
 
@@ -52,7 +64,7 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorSettingCurrentImage());
             }
 
-            await SynchronizeOwnerAsync(updated, this.parkRepository, this.userRepository, cancellationToken);
+            await SynchronizeOwnerAsync(updated, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
             return ApplicationResult<Image>.Success(updated);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -65,7 +77,13 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
         }
     }
 
-    private static async Task SynchronizeOwnerAsync(Image image, IParkRepository parkRepository, IUserRepository userRepository, CancellationToken cancellationToken)
+    private static async Task SynchronizeOwnerAsync(
+        Image image,
+        IParkRepository parkRepository,
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IUserRepository userRepository,
+        CancellationToken cancellationToken)
     {
         if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
@@ -86,6 +104,19 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
             {
                 park.CurrentLogoImageId = image.Id;
                 await parkRepository.UpdateAsync(park.Id, park, cancellationToken);
+            }
+
+            return;
+        }
+
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer && !string.IsNullOrWhiteSpace(image.OwnerId))
+        {
+            AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
+            if (manufacturer is not null)
+            {
+                manufacturer.CurrentLogoImageId = image.Id;
+                await attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
+                await searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);
             }
         }
     }

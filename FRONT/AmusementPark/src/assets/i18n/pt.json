@@ -1141,16 +1141,23 @@
         "addChildSucceeded": "Item oculto criado, a pagina vai ser atualizada.",
         "openCreatedChild": "Abrir item",
         "parkGraphUpsertTitle": "JSON upsert do fabricante",
-        "parkGraphUpsertHint": "Copia ou transfere este JSON pre-preenchido e depois importa-o na ferramenta upsert apos escolher um parque alvo.",
+        "parkGraphUpsertHint": "Copia, transfere ou importa diretamente este JSON pre-preenchido do fabricante.",
         "parkGraphUpsertDraftAriaLabel": "JSON upsert pre-preenchido do fabricante",
         "copyParkGraphUpsert": "Copiar JSON",
         "copyParkGraphUpsertBusy": "A copiar...",
         "downloadParkGraphUpsert": "Transferir JSON",
         "openParkGraphUpsertImport": "Abrir importacao JSON",
+        "importParkGraphUpsert": "Importar JSON",
+        "importParkGraphUpsertBusy": "A importar...",
         "parkGraphUpsertCopied": "JSON copiado para a area de transferencia.",
         "parkGraphUpsertDownloaded": "Transferencia JSON iniciada.",
+        "parkGraphUpsertImported": "JSON do fabricante importado.",
         "parkGraphUpsertCopyError": "A copia JSON falhou.",
         "parkGraphUpsertDownloadError": "A transferencia JSON falhou.",
+        "parkGraphUpsertImportError": "A importacao JSON falhou.",
+        "parkGraphUpsertImportBlocked": "Nao foi possivel aplicar o JSON.",
+        "parkGraphUpsertImportInvalidFile": "Escolhe um ficheiro .json.",
+        "parkGraphUpsertImportInvalidJson": "O ficheiro JSON e invalido.",
         "parkGraphUpsertUnavailable": "Nao ha rascunho upsert disponivel para este bloco.",
         "downloadJson": "Transferir JSON do bloco",
         "downloadJsonBusy": "A transferir...",
@@ -1221,7 +1228,7 @@
         "boundedJsonApply": "Aplicacao JSON limitada disponivel",
         "contextualFormEdit": "Formulario contextual disponivel",
         "targetedChildAdd": "Adicao direcionada disponivel",
-        "parkGraphUpsertDraft": "Rascunho upsert de grafo disponivel",
+        "parkGraphUpsertDraft": "Rascunho upsert JSON disponivel",
         "boundedJsonExportPlanned": "Export JSON limitado previsto",
         "boundedJsonUpsertPlanned": "Upsert JSON limitado previsto",
         "formEditPlanned": "Formulario contextual previsto",
@@ -1262,7 +1269,7 @@
         },
         "manufacturerReference": {
           "label": "Fabricante",
-          "description": "Rascunho upsert de grafo pre-preenchido para este fabricante."
+          "description": "Rascunho upsert JSON pre-preenchido para este fabricante."
         }
       }
     },

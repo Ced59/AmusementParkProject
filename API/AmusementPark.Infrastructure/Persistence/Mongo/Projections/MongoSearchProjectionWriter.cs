@@ -411,6 +411,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Description = SearchLocalizedTextResolver.Resolve(source.Biography, "en") ?? source.Name,
             LocalizedDescriptions = SearchLocalizedTextResolver.Normalize(source.Biography),
             Keywords = this.BuildKeywords(source.Name, "manufacturer", "constructor", "fabricant"),
+            LogoImageId = source.CurrentLogoImageId,
             CompositeScore = 0.0,
             CreatedAt = source.CreatedAt,
             UpdatedAt = source.UpdatedAt,

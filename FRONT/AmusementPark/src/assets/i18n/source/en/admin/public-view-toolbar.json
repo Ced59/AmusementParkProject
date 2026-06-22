@@ -77,16 +77,23 @@
         "addChildSucceeded": "Hidden item created, the page is updating.",
         "openCreatedChild": "Open item",
         "parkGraphUpsertTitle": "Manufacturer upsert JSON",
-        "parkGraphUpsertHint": "Copy or download this prefilled JSON, then import it in the park graph upsert tool after choosing a target park.",
+        "parkGraphUpsertHint": "Copy, download, or directly import this prefilled manufacturer JSON.",
         "parkGraphUpsertDraftAriaLabel": "Prefilled manufacturer upsert JSON",
         "copyParkGraphUpsert": "Copy JSON",
         "copyParkGraphUpsertBusy": "Copying...",
         "downloadParkGraphUpsert": "Download JSON",
         "openParkGraphUpsertImport": "Open JSON import",
+        "importParkGraphUpsert": "Import JSON",
+        "importParkGraphUpsertBusy": "Importing...",
         "parkGraphUpsertCopied": "JSON copied to clipboard.",
         "parkGraphUpsertDownloaded": "JSON download started.",
+        "parkGraphUpsertImported": "Manufacturer JSON imported.",
         "parkGraphUpsertCopyError": "JSON copy failed.",
         "parkGraphUpsertDownloadError": "JSON download failed.",
+        "parkGraphUpsertImportError": "JSON import failed.",
+        "parkGraphUpsertImportBlocked": "The JSON could not be applied.",
+        "parkGraphUpsertImportInvalidFile": "Choose a .json file.",
+        "parkGraphUpsertImportInvalidJson": "The JSON file is invalid.",
         "parkGraphUpsertUnavailable": "No upsert draft is available for this block.",
         "downloadJson": "Download block JSON",
         "downloadJsonBusy": "Downloading...",
@@ -157,7 +164,7 @@
         "boundedJsonApply": "Bounded JSON apply available",
         "contextualFormEdit": "Context form available",
         "targetedChildAdd": "Targeted add available",
-        "parkGraphUpsertDraft": "Park graph upsert draft available",
+        "parkGraphUpsertDraft": "JSON upsert draft available",
         "boundedJsonExportPlanned": "Bounded JSON export planned",
         "boundedJsonUpsertPlanned": "Bounded JSON upsert planned",
         "formEditPlanned": "Context form planned",
@@ -198,7 +205,7 @@
         },
         "manufacturerReference": {
           "label": "Manufacturer",
-          "description": "Prefilled park graph upsert draft for this manufacturer."
+          "description": "Prefilled JSON upsert draft for this manufacturer."
         }
       }
     }

@@ -122,6 +122,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
   let parkGraphUpsertFacade: {
     isCopying: Signal<boolean>;
     isDownloading: Signal<boolean>;
+    isImporting: Signal<boolean>;
     errorKey: Signal<string | null>;
     successKey: Signal<string | null>;
     canUseDraft: jasmine.Spy;
@@ -129,6 +130,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     resetForBlock: jasmine.Spy;
     copyDraft: jasmine.Spy;
     downloadDraft: jasmine.Spy;
+    importDraftFile: jasmine.Spy;
   };
 
   beforeEach(async () => {
@@ -187,6 +189,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     const photoSuccessKeySignal = signal<string | null>(null);
     const isParkGraphUpsertCopyingSignal = signal<boolean>(false);
     const isParkGraphUpsertDownloadingSignal = signal<boolean>(false);
+    const isParkGraphUpsertImportingSignal = signal<boolean>(false);
     const parkGraphUpsertErrorKeySignal = signal<string | null>(null);
     const parkGraphUpsertSuccessKeySignal = signal<string | null>(null);
     exportFacade = {
@@ -354,6 +357,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     parkGraphUpsertFacade = {
       isCopying: isParkGraphUpsertCopyingSignal.asReadonly(),
       isDownloading: isParkGraphUpsertDownloadingSignal.asReadonly(),
+      isImporting: isParkGraphUpsertImportingSignal.asReadonly(),
       errorKey: parkGraphUpsertErrorKeySignal.asReadonly(),
       successKey: parkGraphUpsertSuccessKeySignal.asReadonly(),
       canUseDraft: jasmine.createSpy('canUseDraft').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
@@ -365,7 +369,8 @@ describe('AdminContextualBlockDrawerComponent', () => {
       }),
       resetForBlock: jasmine.createSpy('resetForBlock'),
       copyDraft: jasmine.createSpy('copyDraft'),
-      downloadDraft: jasmine.createSpy('downloadDraft')
+      downloadDraft: jasmine.createSpy('downloadDraft'),
+      importDraftFile: jasmine.createSpy('importDraftFile')
     };
 
     await TestBed.configureTestingModule({
@@ -473,16 +478,23 @@ describe('AdminContextualBlockDrawerComponent', () => {
             addChildSucceeded: 'Item cree.',
             openCreatedChild: 'Ouvrir l item',
             parkGraphUpsertTitle: 'Upsert constructeur',
-            parkGraphUpsertHint: 'Copie ou telecharge ce JSON puis importe-le dans l outil upsert.',
+            parkGraphUpsertHint: 'Copie telecharge ou importe ce JSON constructeur.',
             parkGraphUpsertDraftAriaLabel: 'Brouillon upsert constructeur',
             copyParkGraphUpsert: 'Copier le JSON',
             copyParkGraphUpsertBusy: 'Copie...',
             downloadParkGraphUpsert: 'Telecharger le JSON',
             openParkGraphUpsertImport: 'Ouvrir l import JSON',
+            importParkGraphUpsert: 'Importer un JSON',
+            importParkGraphUpsertBusy: 'Import...',
             parkGraphUpsertCopied: 'JSON copie.',
             parkGraphUpsertDownloaded: 'JSON telecharge.',
+            parkGraphUpsertImported: 'JSON importe.',
             parkGraphUpsertCopyError: 'Copie impossible.',
             parkGraphUpsertDownloadError: 'Telechargement impossible.',
+            parkGraphUpsertImportError: 'Import impossible.',
+            parkGraphUpsertImportBlocked: 'JSON bloque.',
+            parkGraphUpsertImportInvalidFile: 'Fichier JSON requis.',
+            parkGraphUpsertImportInvalidJson: 'JSON invalide.',
             parkGraphUpsertUnavailable: 'Brouillon indisponible.',
             photoAddTitle: 'Ajouter une photo',
             photoSourceFile: 'Fichier',
@@ -531,7 +543,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
             boundedJsonApply: 'Application JSON borne disponible',
             contextualFormEdit: 'Formulaire contextuel disponible',
             contextualPhotoAdd: 'Ajout photo contextuel disponible',
-            parkGraphUpsertDraft: 'Brouillon upsert graphe disponible',
+            parkGraphUpsertDraft: 'Brouillon upsert JSON disponible',
             targetedChildAdd: 'Ajout cible disponible',
             boundedJsonExportPlanned: 'Export JSON borne prevu',
             boundedJsonUpsertPlanned: 'Upsert JSON borne prevu',
@@ -784,7 +796,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(photoAddFacade.uploadPhoto).toHaveBeenCalledOnceWith(block);
   });
 
-  it('renders manufacturer park graph upsert draft actions', () => {
+  it('renders manufacturer JSON upsert draft actions', () => {
     const block: AdminContextualBlockInstance = createManufacturerBlock();
     publicViewModeFacade.setViewMode('adminPreview');
     publicViewModeFacade.setEditionModeEnabled(true);
@@ -794,18 +806,24 @@ describe('AdminContextualBlockDrawerComponent', () => {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     const textarea: HTMLTextAreaElement = host.querySelector('.admin-contextual-block-drawer__park-graph-upsert textarea') as HTMLTextAreaElement;
     const actions: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-contextual-block-drawer__park-graph-upsert button');
-    const importLink: HTMLAnchorElement = host.querySelector('.admin-contextual-block-drawer__park-graph-upsert a') as HTMLAnchorElement;
+    const importInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__park-graph-upsert input[type="file"]') as HTMLInputElement;
+    const importFile: File = new File(['{ "documentType": "AmusementParkParkGraphUpsert" }'], 'manufacturer.json', { type: 'application/json' });
 
     actions.item(0).click();
     actions.item(1).click();
+    Object.defineProperty(importInput, 'files', {
+      configurable: true,
+      value: [importFile]
+    });
+    importInput.dispatchEvent(new Event('change'));
 
     expect(host.textContent).toContain('Upsert constructeur');
     expect(textarea.value).toContain('AmusementParkParkGraphUpsert');
     expect(parkGraphUpsertFacade.copyDraft).toHaveBeenCalledOnceWith(block);
     expect(parkGraphUpsertFacade.downloadDraft).toHaveBeenCalledOnceWith(block);
-    expect(importLink?.textContent).toContain('Ouvrir l import JSON');
-    expect(importLink?.target).toBe('_blank');
-    expect(importLink?.rel).toContain('noopener');
+    expect(host.textContent).toContain('Importer un JSON');
+    expect(importInput.accept).toContain('.json');
+    expect(parkGraphUpsertFacade.importDraftFile).toHaveBeenCalledOnceWith(block, importFile);
   });
 
   it('clears the selected block from the close action', () => {
@@ -860,8 +878,7 @@ function createManufacturerBlock(): AdminContextualBlockInstance {
     locationFallbackCenter: null,
     adminRoute: ['/', 'fr', 'admin', 'manufacturers', 'edit', 'manufacturer-1'],
     parkGraphUpsertDraftJson: '{ "documentType": "AmusementParkParkGraphUpsert" }',
-    parkGraphUpsertFileName: 'manufacturer-1-park-graph-upsert.json',
-    parkGraphUpsertImportRoute: ['/', 'fr', 'admin', 'park-graph-upserts']
+    parkGraphUpsertFileName: 'manufacturer-1-manufacturer-upsert.json'
   };
 }
 

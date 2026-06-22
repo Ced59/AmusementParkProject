@@ -44,6 +44,11 @@ public sealed class AttractionManufacturerResult
     public IReadOnlyCollection<LocalizedText> Biography { get; init; } = Array.Empty<LocalizedText>();
 
     /// <summary>
+    /// Identifiant de l'image courante utilisee comme logo.
+    /// </summary>
+    public string? CurrentLogoImageId { get; init; }
+
+    /// <summary>
     /// Nombre d'attractions liées.
     /// </summary>
     public int AttractionCount { get; init; }
@@ -53,4 +58,3 @@ public sealed class AttractionManufacturerResult
     /// </summary>
     public AdminReviewStatus AdminReviewStatus { get; init; }
 }
-

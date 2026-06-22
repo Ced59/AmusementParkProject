@@ -50,6 +50,7 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
             ClosedYear = entity.ClosedYear,
             ContactDetails = entity.ContactDetails,
             Biography = entity.Biography,
+            CurrentLogoImageId = entity.CurrentLogoImageId,
             AdminReviewStatus = entity.AdminReviewStatus,
             AttractionCount = attractionCount,
         });

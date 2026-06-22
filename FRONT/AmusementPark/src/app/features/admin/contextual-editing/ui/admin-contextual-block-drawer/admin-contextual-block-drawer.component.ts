@@ -81,6 +81,7 @@ export class AdminContextualBlockDrawerComponent {
   protected readonly photoSuccessKey: Signal<string | null> = this.photoAddFacade.successKey;
   protected readonly isParkGraphUpsertCopying: Signal<boolean> = this.parkGraphUpsertFacade.isCopying;
   protected readonly isParkGraphUpsertDownloading: Signal<boolean> = this.parkGraphUpsertFacade.isDownloading;
+  protected readonly isParkGraphUpsertImporting: Signal<boolean> = this.parkGraphUpsertFacade.isImporting;
   protected readonly parkGraphUpsertErrorKey: Signal<string | null> = this.parkGraphUpsertFacade.errorKey;
   protected readonly parkGraphUpsertSuccessKey: Signal<string | null> = this.parkGraphUpsertFacade.successKey;
 
@@ -151,6 +152,15 @@ export class AdminContextualBlockDrawerComponent {
 
   protected downloadParkGraphUpsertDraft(block: AdminContextualBlockInstance): void {
     this.parkGraphUpsertFacade.downloadDraft(block);
+  }
+
+  protected importParkGraphUpsertFile(block: AdminContextualBlockInstance, event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    const file: File | null = target?.files && target.files.length > 0 ? target.files[0] : null;
+    void this.parkGraphUpsertFacade.importDraftFile(block, file);
+    if (target) {
+      target.value = '';
+    }
   }
 
   protected canApplyCurrentPreview(block: AdminContextualBlockInstance): boolean {

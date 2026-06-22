@@ -5,7 +5,7 @@ import {
 } from './park-reference-manufacturer-upsert.mapper';
 
 describe('park-reference-manufacturer-upsert.mapper', () => {
-  it('builds a bounded park graph upsert draft for the current manufacturer', () => {
+  it('builds a park-independent JSON upsert draft for the current manufacturer', () => {
     const manufacturer: AttractionManufacturer = {
       id: 'manufacturer-1',
       name: 'Mack Rides',
@@ -27,6 +27,7 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
         { languageCode: 'fr', value: '<p>Constructeur allemand.</p>' },
         { languageCode: 'en', value: '<p>German manufacturer.</p>' }
       ],
+      currentLogoImageId: 'logo-1',
       adminReviewStatus: 'Validated'
     };
 
@@ -34,9 +35,10 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
     const draftManufacturer = document.references.manufacturers[0];
 
     expect(document.documentType).toBe('AmusementParkParkGraphUpsert');
-    expect(document.park).toEqual({});
-    expect(document.zones).toEqual([]);
-    expect(document.items).toEqual([]);
+    expect(document.identity).toBeUndefined();
+    expect(document.park).toBeUndefined();
+    expect(document.zones).toBeUndefined();
+    expect(document.items).toBeUndefined();
     expect(document.images).toEqual([
       {
         sourceUrl: '',
@@ -44,7 +46,7 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
         category: 'Manufacturer',
         description: '',
         isPublished: true,
-        setAsCurrent: false,
+        setAsCurrent: true,
         withWatermark: false
       }
     ]);
@@ -55,6 +57,7 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
       legalName: 'Mack Rides GmbH & Co KG',
       foundedYear: 1780,
       closedYear: null,
+      currentLogoImageId: 'logo-1',
       adminReviewStatus: 'Validated'
     }));
     expect(draftManufacturer.contactDetails).toEqual(jasmine.objectContaining({
@@ -70,6 +73,6 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
   });
 
   it('builds a stable import file name from the manufacturer identity', () => {
-    expect(buildManufacturerParkGraphUpsertFileName({ id: 'A.R.M.', name: 'A.R.M.' })).toBe('a-r-m-park-graph-upsert.json');
+    expect(buildManufacturerParkGraphUpsertFileName({ id: 'A.R.M.', name: 'A.R.M.' })).toBe('a-r-m-manufacturer-upsert.json');
   });
 });

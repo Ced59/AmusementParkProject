@@ -1141,16 +1141,23 @@
         "addChildSucceeded": "Verborgenes Item erstellt, die Seite wird aktualisiert.",
         "openCreatedChild": "Item oeffnen",
         "parkGraphUpsertTitle": "Hersteller-Upsert-JSON",
-        "parkGraphUpsertHint": "Kopiere oder lade dieses vorausgefuellte JSON herunter und importiere es danach im Park-Graph-Upsert mit einem Zielpark.",
+        "parkGraphUpsertHint": "Kopiere, lade herunter oder importiere dieses vorausgefuellte Hersteller-JSON direkt.",
         "parkGraphUpsertDraftAriaLabel": "Vorausgefuelltes Hersteller-Upsert-JSON",
         "copyParkGraphUpsert": "JSON kopieren",
         "copyParkGraphUpsertBusy": "Kopieren...",
         "downloadParkGraphUpsert": "JSON herunterladen",
         "openParkGraphUpsertImport": "JSON-Import oeffnen",
+        "importParkGraphUpsert": "JSON importieren",
+        "importParkGraphUpsertBusy": "Import...",
         "parkGraphUpsertCopied": "JSON wurde in die Zwischenablage kopiert.",
         "parkGraphUpsertDownloaded": "JSON-Download gestartet.",
+        "parkGraphUpsertImported": "Hersteller-JSON importiert.",
         "parkGraphUpsertCopyError": "JSON konnte nicht kopiert werden.",
         "parkGraphUpsertDownloadError": "JSON konnte nicht heruntergeladen werden.",
+        "parkGraphUpsertImportError": "JSON-Import fehlgeschlagen.",
+        "parkGraphUpsertImportBlocked": "Das JSON konnte nicht angewendet werden.",
+        "parkGraphUpsertImportInvalidFile": "Waehle eine .json-Datei.",
+        "parkGraphUpsertImportInvalidJson": "Die JSON-Datei ist ungueltig.",
         "parkGraphUpsertUnavailable": "Fuer diesen Block ist kein Upsert-Entwurf verfuegbar.",
         "downloadJson": "Block-JSON herunterladen",
         "downloadJsonBusy": "Download laeuft...",
@@ -1221,7 +1228,7 @@
         "boundedJsonApply": "Begrenzte JSON-Anwendung verfuegbar",
         "contextualFormEdit": "Kontextformular verfuegbar",
         "targetedChildAdd": "Gezieltes Hinzufuegen verfuegbar",
-        "parkGraphUpsertDraft": "Park-Graph-Upsert-Entwurf verfuegbar",
+        "parkGraphUpsertDraft": "JSON-Upsert-Entwurf verfuegbar",
         "boundedJsonExportPlanned": "Begrenzter JSON-Export geplant",
         "boundedJsonUpsertPlanned": "Begrenzter JSON-Upsert geplant",
         "formEditPlanned": "Kontextformular geplant",
@@ -1262,7 +1269,7 @@
         },
         "manufacturerReference": {
           "label": "Hersteller",
-          "description": "Vorausgefuellter Park-Graph-Upsert-Entwurf fuer diesen Hersteller."
+          "description": "Vorausgefuellter JSON-Upsert-Entwurf fuer diesen Hersteller."
         }
       }
     },

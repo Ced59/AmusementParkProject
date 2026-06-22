@@ -47,6 +47,7 @@ public sealed class CreateAttractionManufacturerCommandHandler : ICommandHandler
                 ClosedYear = created.ClosedYear,
                 ContactDetails = created.ContactDetails,
                 Biography = created.Biography,
+                CurrentLogoImageId = created.CurrentLogoImageId,
                 AdminReviewStatus = created.AdminReviewStatus,
                 AttractionCount = 0,
             });

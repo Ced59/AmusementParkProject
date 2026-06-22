@@ -122,6 +122,7 @@ internal static class LookupHttpMappers
             ClosedYear = dto.ClosedYear,
             ContactDetails = ToDomainContactDetails(dto.ContactDetails),
             Biography = dto.Biography.ToDomain(),
+            CurrentLogoImageId = NormalizeOptional(dto.CurrentLogoImageId),
             AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
@@ -136,6 +137,7 @@ internal static class LookupHttpMappers
             ClosedYear = dto.ClosedYear,
             ContactDetails = ToDomainContactDetails(dto.ContactDetails),
             Biography = dto.Biography.ToDomain(),
+            CurrentLogoImageId = NormalizeOptional(dto.CurrentLogoImageId),
             AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
@@ -151,6 +153,7 @@ internal static class LookupHttpMappers
             ClosedYear = value.ClosedYear,
             ContactDetails = ToHttpContactDetails(value.ContactDetails),
             Biography = value.Biography.ToHttp(),
+            CurrentLogoImageId = value.CurrentLogoImageId,
             AttractionCount = value.AttractionCount,
             AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
         };

@@ -1,10 +1,13 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -19,12 +22,21 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
 {
     private readonly IImageRepository imageRepository;
     private readonly IParkRepository parkRepository;
+    private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
 
-    public LinkImageCommandHandler(IImageRepository imageRepository, IParkRepository parkRepository, IUserRepository userRepository)
+    public LinkImageCommandHandler(
+        IImageRepository imageRepository,
+        IParkRepository parkRepository,
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IUserRepository userRepository)
     {
         this.imageRepository = imageRepository;
         this.parkRepository = parkRepository;
+        this.attractionManufacturerRepository = attractionManufacturerRepository;
+        this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
     }
 
@@ -64,9 +76,9 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                 {
                     Description = command.Description,
                     GeoLocation = updated.GeoLocation == null ? null : new GeoPointValue(updated.GeoLocation.Latitude, updated.GeoLocation.Longitude),
-                    AltTexts = updated.AltTexts.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value)).ToList(),
-                    Captions = updated.Captions.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value)).ToList(),
-                    Credits = updated.Credits.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value)).ToList(),
+                    AltTexts = updated.AltTexts.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
+                    Captions = updated.Captions.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
+                    Credits = updated.Credits.Select(static value => new LocalizedTextValue(value.LanguageCode, value.Value ?? string.Empty)).ToList(),
                     TagIds = updated.TagIds.ToList(),
                     Category = updated.Category,
                     IsPublished = updated.IsPublished,
@@ -80,7 +92,7 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                 }
             }
 
-            await SynchronizeOwnerAsync(updated, this.parkRepository, this.userRepository, cancellationToken);
+            await SynchronizeOwnerAsync(updated, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
             return ApplicationResult<Image>.Success(updated);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -93,7 +105,13 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
         }
     }
 
-    private static async Task SynchronizeOwnerAsync(Image image, IParkRepository parkRepository, IUserRepository userRepository, CancellationToken cancellationToken)
+    private static async Task SynchronizeOwnerAsync(
+        Image image,
+        IParkRepository parkRepository,
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IUserRepository userRepository,
+        CancellationToken cancellationToken)
     {
         if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
@@ -114,6 +132,24 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
             {
                 park.CurrentLogoImageId = image.IsCurrent ? image.Id : null;
                 await parkRepository.UpdateAsync(park.Id, park, cancellationToken);
+            }
+
+            return;
+        }
+
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer && !string.IsNullOrWhiteSpace(image.OwnerId))
+        {
+            if (!image.IsCurrent)
+            {
+                return;
+            }
+
+            AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
+            if (manufacturer is not null)
+            {
+                manufacturer.CurrentLogoImageId = image.Id;
+                await attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
+                await searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);
             }
         }
     }
