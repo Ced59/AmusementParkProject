@@ -152,6 +152,7 @@ const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = 
       'references.manufacturers[*].foundedYear',
       'references.manufacturers[*].closedYear',
       'references.manufacturers[*].contactDetails',
+      'references.manufacturers[*].isVisible',
       'references.manufacturers[*].biography[*].languageCode',
       'references.manufacturers[*].biography[*].value',
       'references.manufacturers[*].adminReviewStatus'

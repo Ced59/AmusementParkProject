@@ -48,6 +48,11 @@ public sealed class AttractionManufacturerUpdateDto
     public string? CurrentLogoImageId { get; set; }
 
     /// <summary>
+    /// Indique si le constructeur est visible publiquement.
+    /// </summary>
+    public bool IsVisible { get; set; } = true;
+
+    /// <summary>
     /// Statut de revue interne back-office.
     /// </summary>
     public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;

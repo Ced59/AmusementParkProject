@@ -223,9 +223,9 @@ public sealed class AttractionManufacturerRepository : MongoCrudRepositoryBase<A
         return base.GetAllAsync(document => document.ToDomain(), cancellationToken);
     }
 
-    public async Task<PagedResult<AttractionManufacturer>> GetPageAsync(int page, int pageSize, string? search, CancellationToken cancellationToken)
+    public async Task<PagedResult<AttractionManufacturer>> GetPageAsync(int page, int pageSize, string? search, bool includeHidden, CancellationToken cancellationToken)
     {
-        FilterDefinition<AttractionManufacturerDocument> filter = BuildManufacturerSearchFilter(search);
+        FilterDefinition<AttractionManufacturerDocument> filter = BuildManufacturerFilter(search, includeHidden);
         long totalItems = await this.Collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<AttractionManufacturerDocument> documents = await this.Collection.Find(filter)
@@ -262,16 +262,22 @@ public sealed class AttractionManufacturerRepository : MongoCrudRepositoryBase<A
         return base.UpdateBulkAdminReviewStatusAsync(ids, adminReviewStatus, cancellationToken);
     }
 
-    private static FilterDefinition<AttractionManufacturerDocument> BuildManufacturerSearchFilter(string? search)
+    private static FilterDefinition<AttractionManufacturerDocument> BuildManufacturerFilter(string? search, bool includeHidden)
     {
+        FilterDefinitionBuilder<AttractionManufacturerDocument> filterBuilder = Builders<AttractionManufacturerDocument>.Filter;
+        FilterDefinition<AttractionManufacturerDocument> visibilityFilter = includeHidden
+            ? Builders<AttractionManufacturerDocument>.Filter.Empty
+            : filterBuilder.Or(
+                filterBuilder.Eq(document => document.IsVisible, true),
+                filterBuilder.Exists("isVisible", false));
+
         if (string.IsNullOrWhiteSpace(search))
         {
-            return Builders<AttractionManufacturerDocument>.Filter.Empty;
+            return visibilityFilter;
         }
 
         string normalizedSearch = search.Trim();
         BsonRegularExpression regex = new BsonRegularExpression(Regex.Escape(normalizedSearch), "i");
-        FilterDefinitionBuilder<AttractionManufacturerDocument> filterBuilder = Builders<AttractionManufacturerDocument>.Filter;
         List<FilterDefinition<AttractionManufacturerDocument>> searchFilters = new List<FilterDefinition<AttractionManufacturerDocument>>
         {
             filterBuilder.Regex(document => document.Name, regex),
@@ -286,6 +292,6 @@ public sealed class AttractionManufacturerRepository : MongoCrudRepositoryBase<A
             searchFilters.Add(filterBuilder.Eq(document => document.ClosedYear, year));
         }
 
-        return filterBuilder.Or(searchFilters);
+        return visibilityFilter & filterBuilder.Or(searchFilters);
     }
 }

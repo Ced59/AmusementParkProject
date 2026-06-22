@@ -82,11 +82,12 @@ export class AdminManufacturerEditComponent implements OnInit {
         longitude: [null]
       }),
       biography: [[]],
+      isVisible: [true],
       adminReviewStatus: ['Validated' as AdminReviewStatus]
     });
 
     if (this.manufacturerId) {
-      this.manufacturersApiService.getAttractionManufacturerById(this.manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      this.manufacturersApiService.getAttractionManufacturerById(this.manufacturerId, true).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (manufacturer: AttractionManufacturer) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
@@ -96,6 +97,7 @@ export class AdminManufacturerEditComponent implements OnInit {
               closedYear: manufacturer.closedYear ?? null,
               contactDetails: manufacturer.contactDetails ?? {},
               biography: manufacturer.biography ?? [],
+              isVisible: manufacturer.isVisible ?? true,
               adminReviewStatus: manufacturer.adminReviewStatus ?? 'ToReview'
             });
           });
@@ -121,6 +123,7 @@ export class AdminManufacturerEditComponent implements OnInit {
       closedYear: this.toOptionalNumber(this.form.value.closedYear),
       contactDetails: this.buildContactDetails(),
       biography: this.form.value.biography ?? [],
+      isVisible: this.form.value.isVisible !== false,
       adminReviewStatus: this.form.value.adminReviewStatus ?? 'Validated'
     };
 

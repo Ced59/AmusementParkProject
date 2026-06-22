@@ -8,4 +8,5 @@ namespace AmusementPark.Application.Features.AttractionManufacturers.Queries;
 /// Récupère un attraction manufacturer par identifiant.
 /// </summary>
 /// <param name="Id">Identifiant métier.</param>
-public sealed record GetAttractionManufacturerByIdQuery(string Id) : IQuery<ApplicationResult<AttractionManufacturerResult>>;
+/// <param name="IncludeHidden">Inclut les constructeurs masques.</param>
+public sealed record GetAttractionManufacturerByIdQuery(string Id, bool IncludeHidden = false) : IQuery<ApplicationResult<AttractionManufacturerResult>>;

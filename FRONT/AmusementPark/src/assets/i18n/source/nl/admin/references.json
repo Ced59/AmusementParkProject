@@ -20,6 +20,7 @@
         "countryCode": "Landcode",
         "latitude": "Breedtegraad",
         "longitude": "Lengtegraad",
+        "isVisible": "Zichtbaar op de publieke site",
         "occupation": "Beroep / rol",
         "birthDate": "Geboortedatum",
         "deathDate": "Overlijdensdatum",

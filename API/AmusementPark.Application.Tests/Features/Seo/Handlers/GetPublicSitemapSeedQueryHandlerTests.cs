@@ -46,6 +46,20 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
             AdminReviewStatus = AdminReviewStatus.Validated,
             UpdatedAtUtc = itemUpdatedAtUtc,
         };
+        AttractionManufacturer visibleManufacturer = new AttractionManufacturer
+        {
+            Id = "manufacturer-visible",
+            Name = "Visible Maker",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        AttractionManufacturer hiddenManufacturer = new AttractionManufacturer
+        {
+            Id = "manufacturer-hidden",
+            Name = "Hidden Maker",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IParkOperatorRepository> parkOperatorRepository = new Mock<IParkOperatorRepository>(MockBehavior.Strict);
@@ -61,7 +75,7 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         SetupPublicSitemapItems(parkItemRepository, new[] { publicItem });
         parkOperatorRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<ParkOperator>());
         parkFounderRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<ParkFounder>());
-        attractionManufacturerRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<AttractionManufacturer>());
+        attractionManufacturerRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(new[] { visibleManufacturer, hiddenManufacturer });
         GetPublicSitemapSeedQueryHandler handler = new GetPublicSitemapSeedQueryHandler(
             parkRepository.Object,
             parkItemRepository.Object,
@@ -86,6 +100,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos/video-park-1/park-tour" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos/video-item-1/front-row" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park-manufacturer/manufacturer-visible/visible-maker");
+        Assert.DoesNotContain(result.Value, static url => url.RelativePath == "/fr/park-manufacturer/manufacturer-hidden/hidden-maker");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/weather");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale/images");

@@ -20,6 +20,7 @@
         "countryCode": "Código do país",
         "latitude": "Latitude",
         "longitude": "Longitude",
+        "isVisible": "Visível no site público",
         "occupation": "Ocupação / função",
         "birthDate": "Data de nascimento",
         "deathDate": "Data de falecimento",

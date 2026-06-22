@@ -45,6 +45,7 @@ public sealed class GetAttractionManufacturersQueryHandler : IQueryHandler<GetAt
             query.Paging.Page,
             query.Paging.PageSize,
             query.Search,
+            query.IncludeHidden,
             cancellationToken);
 
         List<string> ids = page.Items.Where(static entity => !string.IsNullOrWhiteSpace(entity.Id)).Select(static entity => entity.Id).Cast<string>().ToList();
@@ -60,6 +61,7 @@ public sealed class GetAttractionManufacturersQueryHandler : IQueryHandler<GetAt
             ContactDetails = entity.ContactDetails,
             Biography = entity.Biography,
             CurrentLogoImageId = entity.CurrentLogoImageId,
+            IsVisible = entity.IsVisible,
             AdminReviewStatus = entity.AdminReviewStatus,
             AttractionCount = !string.IsNullOrWhiteSpace(entity.Id) && counts.TryGetValue(entity.Id, out int value) ? value : 0,
         }).ToList();

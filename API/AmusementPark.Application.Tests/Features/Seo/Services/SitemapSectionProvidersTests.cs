@@ -1,9 +1,12 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Common.Requests;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
@@ -573,6 +576,40 @@ public sealed class SitemapSectionProvidersTests
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
         imageRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReferencesProvider_WhenManufacturerIsHidden_ShouldSkipManufacturerUrl()
+    {
+        Mock<IParkOperatorRepository> operatorRepository = new Mock<IParkOperatorRepository>(MockBehavior.Strict);
+        Mock<IParkFounderRepository> founderRepository = new Mock<IParkFounderRepository>(MockBehavior.Strict);
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        operatorRepository
+            .Setup(repository => repository.GetAllAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkOperator>());
+        founderRepository
+            .Setup(repository => repository.GetAllAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkFounder>());
+        manufacturerRepository
+            .Setup(repository => repository.GetAllAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new AttractionManufacturer { Id = "manufacturer-visible", Name = "Visible Maker", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+                new AttractionManufacturer { Id = "manufacturer-hidden", Name = "Hidden Maker", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
+            });
+        ReferencesSitemapSectionProvider provider = new ReferencesSitemapSectionProvider(
+            operatorRepository.Object,
+            founderRepository.Object,
+            manufacturerRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park-manufacturer/manufacturer-visible/visible-maker");
+        Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park-manufacturer/manufacturer-hidden/hidden-maker");
+        operatorRepository.VerifyAll();
+        founderRepository.VerifyAll();
+        manufacturerRepository.VerifyAll();
     }
 
     private static void SetupPublicSitemapParks(Mock<IParkRepository> repository, IReadOnlyCollection<Park> parks)

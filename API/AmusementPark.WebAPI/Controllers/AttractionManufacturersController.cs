@@ -58,10 +58,11 @@ public sealed class AttractionManufacturersController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicReferenceData)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<AttractionManufacturerDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? search = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? search = null, [FromQuery] bool includeHidden = false, CancellationToken cancellationToken = default)
     {
+        bool effectiveIncludeHidden = includeHidden && this.User.IsInRole(AuthorizationRoleGroups.Admin);
         ApplicationResult<PagedResult<AttractionManufacturerResult>> result = await this.getAttractionManufacturersQueryHandler.HandleAsync(
-            new GetAttractionManufacturersQuery(pagination.ToApplication(), search),
+            new GetAttractionManufacturersQuery(pagination.ToApplication(), search, effectiveIncludeHidden),
             cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
@@ -98,9 +99,10 @@ public sealed class AttractionManufacturersController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicReferenceData)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(AttractionManufacturerDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetByIdAsync([FromRoute] string id, [FromQuery] bool includeHidden = false, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<AttractionManufacturerResult> result = await this.getAttractionManufacturerByIdQueryHandler.HandleAsync(new GetAttractionManufacturerByIdQuery(id), cancellationToken);
+        bool effectiveIncludeHidden = includeHidden && this.User.IsInRole(AuthorizationRoleGroups.Admin);
+        ApplicationResult<AttractionManufacturerResult> result = await this.getAttractionManufacturerByIdQueryHandler.HandleAsync(new GetAttractionManufacturerByIdQuery(id, effectiveIncludeHidden), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);

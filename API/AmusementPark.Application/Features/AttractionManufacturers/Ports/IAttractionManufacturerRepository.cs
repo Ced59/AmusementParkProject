@@ -16,7 +16,7 @@ public interface IAttractionManufacturerRepository
     /// <summary>
     /// Retourne une page de attraction manufacturers.
     /// </summary>
-    Task<PagedResult<AttractionManufacturer>> GetPageAsync(int page, int pageSize, string? search, CancellationToken cancellationToken);
+    Task<PagedResult<AttractionManufacturer>> GetPageAsync(int page, int pageSize, string? search, bool includeHidden, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retourne un attraction manufacturer par identifiant.

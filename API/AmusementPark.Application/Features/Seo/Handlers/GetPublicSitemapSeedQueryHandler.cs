@@ -241,7 +241,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             this.AddReferenceUrls(urls, languages, "park-founder", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }
 
-        foreach (AttractionManufacturer entity in manufacturers.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant))
+        foreach (AttractionManufacturer entity in manufacturers.Where(static entity => entity.IsVisible && entity.AdminReviewStatus != AdminReviewStatus.NotRelevant))
         {
             this.AddReferenceUrls(urls, languages, "park-manufacturer", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }

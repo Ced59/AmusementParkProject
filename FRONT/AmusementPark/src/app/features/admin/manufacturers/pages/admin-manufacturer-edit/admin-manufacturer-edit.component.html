@@ -95,6 +95,13 @@
       <section class="form-section">
         <h3>{{ 'admin.references.sections.administration' | translate }}</h3>
         <div class="field field--status">
+          <label>
+            <input type="checkbox" formControlName="isVisible" />
+            <span>{{ 'admin.references.fields.isVisible' | translate }}</span>
+          </label>
+        </div>
+
+        <div class="field field--status">
           <label for="adminReviewStatus">{{ 'admin.filters.reviewStatus' | translate }}</label>
           <select id="adminReviewStatus" formControlName="adminReviewStatus">
             <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>

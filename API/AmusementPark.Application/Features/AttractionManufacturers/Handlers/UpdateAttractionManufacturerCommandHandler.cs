@@ -75,6 +75,7 @@ public sealed class UpdateAttractionManufacturerCommandHandler : ICommandHandler
                 ContactDetails = updated.ContactDetails,
                 Biography = updated.Biography,
                 CurrentLogoImageId = updated.CurrentLogoImageId,
+                IsVisible = updated.IsVisible,
                 AdminReviewStatus = updated.AdminReviewStatus,
                 AttractionCount = attractionCount,
             });

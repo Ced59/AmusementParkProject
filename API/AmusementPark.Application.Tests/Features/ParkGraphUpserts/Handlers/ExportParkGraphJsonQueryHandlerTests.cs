@@ -107,6 +107,7 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         {
             Id = "manufacturer-1",
             Name = "Manufacturer",
+            IsVisible = false,
             AdminReviewStatus = AdminReviewStatus.Validated,
         };
 
@@ -223,6 +224,7 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         Assert.Equal("zone-1", root.GetProperty("items")[0].GetProperty("zoneKey").GetString());
         Assert.Equal("manufacturer-1", root.GetProperty("items")[0].GetProperty("attractionDetails").GetProperty("manufacturerKey").GetString());
         Assert.Equal("Manufacturer", root.GetProperty("references").GetProperty("manufacturers")[0].GetProperty("name").GetString());
+        Assert.False(root.GetProperty("references").GetProperty("manufacturers")[0].GetProperty("isVisible").GetBoolean());
         JsonElement parkExportImage = root.GetProperty("images").EnumerateArray().Single(image => image.GetProperty("imageId").GetString() == "image-park-1");
         JsonElement itemExportImage = root.GetProperty("images").EnumerateArray().Single(image => image.GetProperty("imageId").GetString() == "image-item-1");
         JsonElement manufacturerExportImage = root.GetProperty("images").EnumerateArray().Single(image => image.GetProperty("imageId").GetString() == "image-manufacturer-1");

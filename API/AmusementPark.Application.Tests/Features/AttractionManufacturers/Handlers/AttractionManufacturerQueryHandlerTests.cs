@@ -27,7 +27,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
         };
 
         manufacturerRepository
-            .Setup(repository => repository.GetPageAsync(2, 12, "ride", It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetPageAsync(2, 12, "ride", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new PagedResult<AttractionManufacturer>(manufacturers, 2, 12, 30));
 
         parkItemRepository
@@ -111,12 +111,100 @@ public sealed class AttractionManufacturerQueryHandlerTests
         parkItemRepository.VerifyAll();
     }
 
-    private static AttractionManufacturer CreateManufacturer(string id, string name)
+    [Fact]
+    public async Task HandleAsync_WhenListIncludesHidden_ShouldForwardIncludeHiddenToRepository()
+    {
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+
+        manufacturerRepository
+            .Setup(repository => repository.GetPageAsync(1, 12, null, true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<AttractionManufacturer>(
+                new[] { CreateManufacturer("hidden", "Hidden Manufacturer", false) },
+                1,
+                12,
+                1));
+
+        parkItemRepository
+            .Setup(repository => repository.GetAttractionCountsByManufacturerIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "hidden" })),
+                It.IsAny<CancellationToken>(),
+                false))
+            .ReturnsAsync(new Dictionary<string, int>());
+
+        GetAttractionManufacturersQueryHandler handler = new GetAttractionManufacturersQueryHandler(
+            manufacturerRepository.Object,
+            parkItemRepository.Object,
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<AttractionManufacturerResult>> result = await handler.HandleAsync(
+            new GetAttractionManufacturersQuery(new PagedQuery(1, 12), IncludeHidden: true));
+
+        Assert.True(result.IsSuccess);
+        AttractionManufacturerResult manufacturer = Assert.Single(Assert.IsType<PagedResult<AttractionManufacturerResult>>(result.Value).Items);
+        Assert.False(manufacturer.IsVisible);
+        manufacturerRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenManufacturerHiddenAndNotIncluded_ShouldReturnNotFound()
+    {
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+
+        manufacturerRepository
+            .Setup(repository => repository.GetByIdAsync("hidden", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateManufacturer("hidden", "Hidden Manufacturer", false));
+
+        GetAttractionManufacturerByIdQueryHandler handler = new GetAttractionManufacturerByIdQueryHandler(
+            manufacturerRepository.Object,
+            parkItemRepository.Object);
+
+        ApplicationResult<AttractionManufacturerResult> result = await handler.HandleAsync(new GetAttractionManufacturerByIdQuery("hidden"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "attraction-manufacturer.not-found");
+        manufacturerRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenManufacturerHiddenAndIncluded_ShouldReturnManufacturer()
+    {
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+
+        manufacturerRepository
+            .Setup(repository => repository.GetByIdAsync("hidden", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateManufacturer("hidden", "Hidden Manufacturer", false));
+
+        parkItemRepository
+            .Setup(repository => repository.GetAttractionCountsByManufacturerIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "hidden" })),
+                It.IsAny<CancellationToken>(),
+                false))
+            .ReturnsAsync(new Dictionary<string, int>());
+
+        GetAttractionManufacturerByIdQueryHandler handler = new GetAttractionManufacturerByIdQueryHandler(
+            manufacturerRepository.Object,
+            parkItemRepository.Object);
+
+        ApplicationResult<AttractionManufacturerResult> result = await handler.HandleAsync(new GetAttractionManufacturerByIdQuery("hidden", IncludeHidden: true));
+
+        Assert.True(result.IsSuccess);
+        Assert.False(result.Value?.IsVisible);
+        manufacturerRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+    }
+
+    private static AttractionManufacturer CreateManufacturer(string id, string name, bool isVisible = true)
     {
         return new AttractionManufacturer
         {
             Id = id,
             Name = name,
+            IsVisible = isVisible,
             AdminReviewStatus = AdminReviewStatus.Validated,
         };
     }

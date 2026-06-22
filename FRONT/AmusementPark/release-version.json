@@ -1,6 +1,20 @@
 {
-  "version": "2.6.16",
+  "version": "2.6.17",
   "history": [
+    {
+      "version": "2.6.17",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "L'administration devient plus precise.",
+        "en": "Admin controls become more precise.",
+        "de": "Die Administration wird praeziser.",
+        "nl": "De administratie wordt nauwkeuriger.",
+        "it": "L'amministrazione diventa piu precisa.",
+        "es": "La administracion gana precision.",
+        "pl": "Administracja staje sie dokladniejsza.",
+        "pt": "A administracao fica mais precisa."
+      }
+    },
     {
       "version": "2.6.16",
       "releasedAt": "2026-06-22",
