@@ -1,6 +1,20 @@
 {
-  "version": "2.6.12",
+  "version": "2.6.13",
   "history": [
+    {
+      "version": "2.6.13",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "L'administration devient plus pratique.",
+        "en": "Admin ergonomics improve.",
+        "de": "Die Administration wird praktischer.",
+        "nl": "De administratie wordt praktischer.",
+        "it": "L'amministrazione diventa piu pratica.",
+        "es": "La administracion resulta mas practica.",
+        "pl": "Administracja staje sie wygodniejsza.",
+        "pt": "A administracao fica mais pratica."
+      }
+    },
     {
       "version": "2.6.12",
       "releasedAt": "2026-06-22",

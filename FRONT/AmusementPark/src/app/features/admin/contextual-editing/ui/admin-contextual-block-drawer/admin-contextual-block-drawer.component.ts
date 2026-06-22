@@ -22,6 +22,7 @@ import {
 } from '../../state/admin-contextual-block-photo-add.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
+import { AdminContextualBlockParkGraphUpsertFacade } from '../../state/admin-contextual-block-park-graph-upsert.facade';
 
 interface AdminContextualBlockIdEntry {
   readonly key: string;
@@ -77,6 +78,10 @@ export class AdminContextualBlockDrawerComponent {
   protected readonly isPhotoUploading: Signal<boolean> = this.photoAddFacade.isUploading;
   protected readonly photoErrorKey: Signal<string | null> = this.photoAddFacade.errorKey;
   protected readonly photoSuccessKey: Signal<string | null> = this.photoAddFacade.successKey;
+  protected readonly isParkGraphUpsertCopying: Signal<boolean> = this.parkGraphUpsertFacade.isCopying;
+  protected readonly isParkGraphUpsertDownloading: Signal<boolean> = this.parkGraphUpsertFacade.isDownloading;
+  protected readonly parkGraphUpsertErrorKey: Signal<string | null> = this.parkGraphUpsertFacade.errorKey;
+  protected readonly parkGraphUpsertSuccessKey: Signal<string | null> = this.parkGraphUpsertFacade.successKey;
 
   constructor(
     private readonly selectionFacade: AdminContextualBlockSelectionFacade,
@@ -85,7 +90,8 @@ export class AdminContextualBlockDrawerComponent {
     private readonly applyFacade: AdminContextualBlockApplyFacade,
     private readonly formFacade: AdminContextualBlockFormFacade,
     private readonly childAddFacade: AdminContextualBlockChildAddFacade,
-    private readonly photoAddFacade: AdminContextualBlockPhotoAddFacade
+    private readonly photoAddFacade: AdminContextualBlockPhotoAddFacade,
+    private readonly parkGraphUpsertFacade: AdminContextualBlockParkGraphUpsertFacade
   ) {
     effect((): void => {
       const selectedBlock: AdminContextualBlockInstance | null = this.selectedBlock();
@@ -94,6 +100,7 @@ export class AdminContextualBlockDrawerComponent {
       this.formFacade.resetForBlock(selectedBlock);
       this.childAddFacade.resetForBlock(selectedBlock);
       this.photoAddFacade.resetForBlock(selectedBlock);
+      this.parkGraphUpsertFacade.resetForBlock(selectedBlock);
     });
   }
 
@@ -127,6 +134,22 @@ export class AdminContextualBlockDrawerComponent {
 
   protected canAddPhoto(block: AdminContextualBlockInstance): boolean {
     return this.photoAddFacade.canAddPhoto(block);
+  }
+
+  protected canPrepareParkGraphUpsert(block: AdminContextualBlockInstance): boolean {
+    return this.parkGraphUpsertFacade.canUseDraft(block);
+  }
+
+  protected getParkGraphUpsertDraft(block: AdminContextualBlockInstance): string {
+    return this.parkGraphUpsertFacade.getDraft(block) ?? '';
+  }
+
+  protected copyParkGraphUpsertDraft(block: AdminContextualBlockInstance): void {
+    void this.parkGraphUpsertFacade.copyDraft(block);
+  }
+
+  protected downloadParkGraphUpsertDraft(block: AdminContextualBlockInstance): void {
+    this.parkGraphUpsertFacade.downloadDraft(block);
   }
 
   protected canApplyCurrentPreview(block: AdminContextualBlockInstance): boolean {

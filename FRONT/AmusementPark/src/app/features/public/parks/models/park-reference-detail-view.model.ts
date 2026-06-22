@@ -37,4 +37,6 @@ export interface ParkReferenceDetailViewModel {
   photoCategories: UiPhotoCarouselCategoryOption[];
   attractions: ParkReferenceAttractionViewModel[];
   attractionsPagination: PaginationContract | null;
+  adminParkGraphUpsertJson: string | null;
+  adminParkGraphUpsertFileName: string | null;
 }

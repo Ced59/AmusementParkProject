@@ -1140,6 +1140,18 @@
         "addChildUnavailable": "Gezieltes Hinzufuegen ist fuer diesen Block nicht verfuegbar.",
         "addChildSucceeded": "Verborgenes Item erstellt, die Seite wird aktualisiert.",
         "openCreatedChild": "Item oeffnen",
+        "parkGraphUpsertTitle": "Hersteller-Upsert-JSON",
+        "parkGraphUpsertHint": "Kopiere oder lade dieses vorausgefuellte JSON herunter und importiere es danach im Park-Graph-Upsert mit einem Zielpark.",
+        "parkGraphUpsertDraftAriaLabel": "Vorausgefuelltes Hersteller-Upsert-JSON",
+        "copyParkGraphUpsert": "JSON kopieren",
+        "copyParkGraphUpsertBusy": "Kopieren...",
+        "downloadParkGraphUpsert": "JSON herunterladen",
+        "openParkGraphUpsertImport": "JSON-Import oeffnen",
+        "parkGraphUpsertCopied": "JSON wurde in die Zwischenablage kopiert.",
+        "parkGraphUpsertDownloaded": "JSON-Download gestartet.",
+        "parkGraphUpsertCopyError": "JSON konnte nicht kopiert werden.",
+        "parkGraphUpsertDownloadError": "JSON konnte nicht heruntergeladen werden.",
+        "parkGraphUpsertUnavailable": "Fuer diesen Block ist kein Upsert-Entwurf verfuegbar.",
         "downloadJson": "Block-JSON herunterladen",
         "downloadJsonBusy": "Download laeuft...",
         "downloadJsonError": "JSON-Download fehlgeschlagen.",
@@ -1209,6 +1221,7 @@
         "boundedJsonApply": "Begrenzte JSON-Anwendung verfuegbar",
         "contextualFormEdit": "Kontextformular verfuegbar",
         "targetedChildAdd": "Gezieltes Hinzufuegen verfuegbar",
+        "parkGraphUpsertDraft": "Park-Graph-Upsert-Entwurf verfuegbar",
         "boundedJsonExportPlanned": "Begrenzter JSON-Export geplant",
         "boundedJsonUpsertPlanned": "Begrenzter JSON-Upsert geplant",
         "formEditPlanned": "Kontextformular geplant",
@@ -1246,6 +1259,10 @@
         "parkItemImages": {
           "label": "Item-Fotos",
           "description": "Offentliche Item-Galerie und gezieltes Hinzufugen von Fotos."
+        },
+        "manufacturerReference": {
+          "label": "Hersteller",
+          "description": "Vorausgefuellter Park-Graph-Upsert-Entwurf fuer diesen Hersteller."
         }
       }
     },

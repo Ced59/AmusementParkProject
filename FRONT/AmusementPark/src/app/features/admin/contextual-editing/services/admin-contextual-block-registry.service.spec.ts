@@ -24,7 +24,8 @@ describe('AdminContextualBlockRegistryService', () => {
       'park.location',
       'parkItem.description',
       'parkItem.images',
-      'parkItem.location'
+      'parkItem.location',
+      'reference.manufacturer'
     ]);
   });
 
@@ -157,6 +158,28 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.jsonScope).toContain('image.sourceUrl');
   });
 
+  it('creates a manufacturer reference block with a graph upsert draft and import route', () => {
+    const block: AdminContextualBlockInstance | null = service.createManufacturerBlock(
+      'manufacturer-1',
+      'Mack Rides',
+      'fr',
+      '{ "documentType": "AmusementParkParkGraphUpsert" }',
+      'mack-rides-park-graph-upsert.json'
+    );
+
+    expect(block?.id).toBe('reference.manufacturer:manufacturer-1');
+    expect(block?.entityType).toBe('AttractionManufacturer');
+    expect(block?.entityId).toBe('manufacturer-1');
+    expect(block?.ids).toEqual({ manufacturerId: 'manufacturer-1' });
+    expect(block?.adminRoute).toEqual(['/', 'fr', 'admin', 'manufacturers', 'edit', 'manufacturer-1']);
+    expect(block?.parkGraphUpsertImportRoute).toEqual(['/', 'fr', 'admin', 'park-graph-upserts']);
+    expect(block?.parkGraphUpsertDraftJson).toContain('AmusementParkParkGraphUpsert');
+    expect(block?.parkGraphUpsertFileName).toBe('mack-rides-park-graph-upsert.json');
+    expect(block?.capabilities).toContain('parkGraphUpsertDraft');
+    expect(block?.localizedLanguageCodes).toEqual(LANGUAGES.map((language: LanguageOption) => language.value));
+    expect(block?.jsonScope).toContain('references.manufacturers[*].biography[*].value');
+  });
+
   it('keeps unsupported hero exports as planned capabilities only', () => {
     const block: AdminContextualBlockInstance | null = service.createParkBlock(
       'park.hero',
@@ -176,5 +199,7 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(service.createParkItemBlock('parkItem.description', 'item-1', null, 'No park', 'fr')).toBeNull();
     expect(service.createParkBlock('parkItem.description', 'item-1', 'Wrong factory', 'fr')).toBeNull();
     expect(service.createParkItemBlock('park.location', 'item-1', 'park-1', 'Wrong factory', 'fr')).toBeNull();
+    expect(service.createParkBlock('reference.manufacturer', 'manufacturer-1', 'Wrong factory', 'fr')).toBeNull();
+    expect(service.createManufacturerBlock(null, 'No id', 'fr', '{}', 'manufacturer.json')).toBeNull();
   });
 });

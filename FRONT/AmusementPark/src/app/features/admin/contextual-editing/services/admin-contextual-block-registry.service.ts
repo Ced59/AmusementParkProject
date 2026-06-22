@@ -136,6 +136,25 @@ const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = 
       'parkItem.longitude'
     ],
     localizedLanguageCodes: []
+  },
+  {
+    type: 'reference.manufacturer',
+    labelKey: 'admin.contextualBlocks.blocks.manufacturerReference.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.manufacturerReference.description',
+    iconClass: 'pi pi-wrench',
+    capabilities: ['fullAdminEdit', 'parkGraphUpsertDraft'],
+    jsonScope: [
+      'references.manufacturers[*].id',
+      'references.manufacturers[*].name',
+      'references.manufacturers[*].legalName',
+      'references.manufacturers[*].foundedYear',
+      'references.manufacturers[*].closedYear',
+      'references.manufacturers[*].contactDetails',
+      'references.manufacturers[*].biography[*].languageCode',
+      'references.manufacturers[*].biography[*].value',
+      'references.manufacturers[*].adminReviewStatus'
+    ],
+    localizedLanguageCodes: SUPPORTED_LANGUAGE_CODES
   }
 ];
 
@@ -165,7 +184,7 @@ export class AdminContextualBlockRegistryService {
     const normalizedParkId: string | null = this.normalizeValue(parkId);
     const definition: AdminContextualBlockDefinition | null = this.getDefinition(type);
 
-    if (!normalizedParkId || !definition || this.isParkItemBlockType(definition.type)) {
+    if (!normalizedParkId || !definition || !this.isParkBlockType(definition.type)) {
       return null;
     }
 
@@ -218,8 +237,49 @@ export class AdminContextualBlockRegistryService {
     };
   }
 
+  createManufacturerBlock(
+    manufacturerId: string | null | undefined,
+    manufacturerName: string | null | undefined,
+    languageCode: string | null | undefined,
+    parkGraphUpsertDraftJson: string | null | undefined,
+    parkGraphUpsertFileName: string | null | undefined
+  ): AdminContextualBlockInstance | null {
+    const normalizedManufacturerId: string | null = this.normalizeValue(manufacturerId);
+    const definition: AdminContextualBlockDefinition | null = this.getDefinition('reference.manufacturer');
+
+    if (!normalizedManufacturerId || !definition) {
+      return null;
+    }
+
+    const normalizedLanguageCode: string = this.normalizeLanguageCode(languageCode);
+
+    return {
+      ...definition,
+      id: `${definition.type}:${normalizedManufacturerId}`,
+      entityType: 'AttractionManufacturer',
+      entityId: normalizedManufacturerId,
+      contextLabel: this.normalizeValue(manufacturerName) ?? normalizedManufacturerId,
+      ids: {
+        manufacturerId: normalizedManufacturerId
+      },
+      locationFallbackCenter: null,
+      adminRoute: ['/', normalizedLanguageCode, 'admin', 'manufacturers', 'edit', normalizedManufacturerId],
+      parkGraphUpsertDraftJson: this.normalizeValue(parkGraphUpsertDraftJson),
+      parkGraphUpsertFileName: this.normalizeFileName(parkGraphUpsertFileName, normalizedManufacturerId),
+      parkGraphUpsertImportRoute: ['/', normalizedLanguageCode, 'admin', 'park-graph-upserts']
+    };
+  }
+
   private isParkItemBlockType(type: AdminContextualBlockType): boolean {
     return type === 'parkItem.description' || type === 'parkItem.images' || type === 'parkItem.location';
+  }
+
+  private isParkBlockType(type: AdminContextualBlockType): boolean {
+    return type === 'park.hero'
+      || type === 'park.description'
+      || type === 'park.images'
+      || type === 'park.location'
+      || type === 'park.practical';
   }
 
   private normalizeLanguageCode(languageCode: string | null | undefined): string {
@@ -256,5 +316,11 @@ export class AdminContextualBlockRegistryService {
       && longitude <= 180
       ? [latitude, longitude]
       : null;
+  }
+
+  private normalizeFileName(value: string | null | undefined, fallbackId: string): string {
+    const normalizedValue: string | null = this.normalizeValue(value);
+
+    return normalizedValue ?? `manufacturer-${fallbackId}-park-graph-upsert.json`;
   }
 }

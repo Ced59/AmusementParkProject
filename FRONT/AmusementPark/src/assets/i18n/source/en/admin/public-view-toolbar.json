@@ -76,6 +76,18 @@
         "addChildUnavailable": "Targeted add is not available for this block.",
         "addChildSucceeded": "Hidden item created, the page is updating.",
         "openCreatedChild": "Open item",
+        "parkGraphUpsertTitle": "Manufacturer upsert JSON",
+        "parkGraphUpsertHint": "Copy or download this prefilled JSON, then import it in the park graph upsert tool after choosing a target park.",
+        "parkGraphUpsertDraftAriaLabel": "Prefilled manufacturer upsert JSON",
+        "copyParkGraphUpsert": "Copy JSON",
+        "copyParkGraphUpsertBusy": "Copying...",
+        "downloadParkGraphUpsert": "Download JSON",
+        "openParkGraphUpsertImport": "Open JSON import",
+        "parkGraphUpsertCopied": "JSON copied to clipboard.",
+        "parkGraphUpsertDownloaded": "JSON download started.",
+        "parkGraphUpsertCopyError": "JSON copy failed.",
+        "parkGraphUpsertDownloadError": "JSON download failed.",
+        "parkGraphUpsertUnavailable": "No upsert draft is available for this block.",
         "downloadJson": "Download block JSON",
         "downloadJsonBusy": "Downloading...",
         "downloadJsonError": "JSON download failed.",
@@ -145,6 +157,7 @@
         "boundedJsonApply": "Bounded JSON apply available",
         "contextualFormEdit": "Context form available",
         "targetedChildAdd": "Targeted add available",
+        "parkGraphUpsertDraft": "Park graph upsert draft available",
         "boundedJsonExportPlanned": "Bounded JSON export planned",
         "boundedJsonUpsertPlanned": "Bounded JSON upsert planned",
         "formEditPlanned": "Context form planned",
@@ -182,6 +195,10 @@
         "parkItemImages": {
           "label": "Item photos",
           "description": "Public item gallery and targeted photo addition."
+        },
+        "manufacturerReference": {
+          "label": "Manufacturer",
+          "description": "Prefilled park graph upsert draft for this manufacturer."
         }
       }
     }

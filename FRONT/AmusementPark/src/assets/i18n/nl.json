@@ -1140,6 +1140,18 @@
         "addChildUnavailable": "Gericht toevoegen is niet beschikbaar voor dit blok.",
         "addChildSucceeded": "Verborgen item gemaakt, de pagina wordt bijgewerkt.",
         "openCreatedChild": "Item openen",
+        "parkGraphUpsertTitle": "Fabrikant-upsert-JSON",
+        "parkGraphUpsertHint": "Kopieer of download deze vooraf ingevulde JSON en importeer die daarna in de park-graph-upsert met een doelpark.",
+        "parkGraphUpsertDraftAriaLabel": "Vooraf ingevulde fabrikant-upsert-JSON",
+        "copyParkGraphUpsert": "JSON kopieren",
+        "copyParkGraphUpsertBusy": "Kopieren...",
+        "downloadParkGraphUpsert": "JSON downloaden",
+        "openParkGraphUpsertImport": "JSON-import openen",
+        "parkGraphUpsertCopied": "JSON gekopieerd naar het klembord.",
+        "parkGraphUpsertDownloaded": "JSON-download gestart.",
+        "parkGraphUpsertCopyError": "JSON kopieren mislukt.",
+        "parkGraphUpsertDownloadError": "JSON downloaden mislukt.",
+        "parkGraphUpsertUnavailable": "Geen upsert-concept beschikbaar voor dit blok.",
         "downloadJson": "Blok-JSON downloaden",
         "downloadJsonBusy": "Downloaden...",
         "downloadJsonError": "JSON-download mislukt.",
@@ -1209,6 +1221,7 @@
         "boundedJsonApply": "Begrensde JSON-toepassing beschikbaar",
         "contextualFormEdit": "Contextformulier beschikbaar",
         "targetedChildAdd": "Gericht toevoegen beschikbaar",
+        "parkGraphUpsertDraft": "Park-graph-upsert-concept beschikbaar",
         "boundedJsonExportPlanned": "Begrensde JSON-export gepland",
         "boundedJsonUpsertPlanned": "Begrensde JSON-upsert gepland",
         "formEditPlanned": "Contextformulier gepland",
@@ -1246,6 +1259,10 @@
         "parkItemImages": {
           "label": "Itemfoto's",
           "description": "Publieke itemgalerij en gericht foto's toevoegen."
+        },
+        "manufacturerReference": {
+          "label": "Fabrikant",
+          "description": "Vooraf ingevuld park-graph-upsert-concept voor deze fabrikant."
         }
       }
     },

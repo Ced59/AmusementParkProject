@@ -1140,6 +1140,18 @@
         "addChildUnavailable": "L'ajout cible de ce bloc n'est pas disponible.",
         "addChildSucceeded": "Item cree cache, la page se met a jour.",
         "openCreatedChild": "Ouvrir l'item",
+        "parkGraphUpsertTitle": "Upsert JSON constructeur",
+        "parkGraphUpsertHint": "Copie ou telecharge ce JSON pre-rempli, puis importe-le dans l'outil d'upsert apres avoir choisi un parc cible.",
+        "parkGraphUpsertDraftAriaLabel": "JSON upsert constructeur pre-rempli",
+        "copyParkGraphUpsert": "Copier JSON",
+        "copyParkGraphUpsertBusy": "Copie...",
+        "downloadParkGraphUpsert": "Telecharger JSON",
+        "openParkGraphUpsertImport": "Ouvrir import JSON",
+        "parkGraphUpsertCopied": "JSON copie dans le presse-papiers.",
+        "parkGraphUpsertDownloaded": "Telechargement JSON lance.",
+        "parkGraphUpsertCopyError": "La copie JSON a echoue.",
+        "parkGraphUpsertDownloadError": "Le telechargement JSON a echoue.",
+        "parkGraphUpsertUnavailable": "Aucun brouillon upsert n'est disponible pour ce bloc.",
         "downloadJson": "Telecharger le JSON du bloc",
         "downloadJsonBusy": "Telechargement...",
         "downloadJsonError": "Le telechargement JSON a echoue.",
@@ -1209,6 +1221,7 @@
         "boundedJsonApply": "Application JSON borne disponible",
         "contextualFormEdit": "Formulaire contextuel disponible",
         "targetedChildAdd": "Ajout cible disponible",
+        "parkGraphUpsertDraft": "Brouillon upsert de graphe disponible",
         "boundedJsonExportPlanned": "Export JSON borne prevu",
         "boundedJsonUpsertPlanned": "Upsert JSON borne prevu",
         "formEditPlanned": "Formulaire contextuel prevu",
@@ -1246,6 +1259,10 @@
         "parkItemImages": {
           "label": "Photos de l'item",
           "description": "Galerie publique de cet item et ajout cible de nouvelles photos."
+        },
+        "manufacturerReference": {
+          "label": "Constructeur",
+          "description": "Brouillon upsert de graphe pre-rempli pour ce constructeur."
         }
       }
     },

@@ -76,6 +76,18 @@
         "addChildUnavailable": "Ukierunkowane dodawanie nie jest dostepne dla tego bloku.",
         "addChildSucceeded": "Ukryty item utworzony, strona sie aktualizuje.",
         "openCreatedChild": "Otworz item",
+        "parkGraphUpsertTitle": "JSON upsert producenta",
+        "parkGraphUpsertHint": "Skopiuj lub pobierz ten wypelniony JSON, a potem zaimportuj go w narzedziu upsert po wyborze parku docelowego.",
+        "parkGraphUpsertDraftAriaLabel": "Wypelniony JSON upsert producenta",
+        "copyParkGraphUpsert": "Kopiuj JSON",
+        "copyParkGraphUpsertBusy": "Kopiowanie...",
+        "downloadParkGraphUpsert": "Pobierz JSON",
+        "openParkGraphUpsertImport": "Otworz import JSON",
+        "parkGraphUpsertCopied": "JSON skopiowany do schowka.",
+        "parkGraphUpsertDownloaded": "Pobieranie JSON rozpoczete.",
+        "parkGraphUpsertCopyError": "Kopiowanie JSON nie powiodlo sie.",
+        "parkGraphUpsertDownloadError": "Pobieranie JSON nie powiodlo sie.",
+        "parkGraphUpsertUnavailable": "Brak szkicu upsert dla tego bloku.",
         "downloadJson": "Pobierz JSON bloku",
         "downloadJsonBusy": "Pobieranie...",
         "downloadJsonError": "Pobieranie JSON nie powiodlo sie.",
@@ -145,6 +157,7 @@
         "boundedJsonApply": "Ograniczone zastosowanie JSON dostepne",
         "contextualFormEdit": "Formularz kontekstowy dostepny",
         "targetedChildAdd": "Ukierunkowane dodawanie dostepne",
+        "parkGraphUpsertDraft": "Szkic upsert grafu dostepny",
         "boundedJsonExportPlanned": "Ograniczony eksport JSON zaplanowany",
         "boundedJsonUpsertPlanned": "Ograniczony upsert JSON zaplanowany",
         "formEditPlanned": "Formularz kontekstowy zaplanowany",
@@ -182,6 +195,10 @@
         "parkItemImages": {
           "label": "Zdjecia itemu",
           "description": "Publiczna galeria itemu i celowane dodawanie zdjec."
+        },
+        "manufacturerReference": {
+          "label": "Producent",
+          "description": "Wypelniony szkic upsert grafu dla tego producenta."
         }
       }
     }
