@@ -6,6 +6,8 @@ public interface ITechnicalPageRepository
 {
     Task<IReadOnlyCollection<TechnicalPage>> GetAllAsync(bool includeHidden, CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<TechnicalPage>> GetPublicLinkIndexAsync(CancellationToken cancellationToken);
+
     Task<TechnicalPage?> GetByIdAsync(string id, CancellationToken cancellationToken);
 
     Task<TechnicalPage?> GetBySlugAsync(string slug, bool includeHidden, CancellationToken cancellationToken);

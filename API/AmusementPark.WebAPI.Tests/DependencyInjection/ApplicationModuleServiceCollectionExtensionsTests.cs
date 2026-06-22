@@ -40,6 +40,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<SubmitContactGrievanceCommand, ApplicationResult<ContactGrievanceSubmissionResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetContactGrievancesQuery, ApplicationResult<PagedResult<AmusementPark.Core.Domain.Contact.ContactGrievance>>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalPagesQuery, ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalPageLinkIndexQuery, ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalPageBySlugQuery, ApplicationResult<TechnicalPageResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpsertTechnicalPagesJsonCommand, ApplicationResult<TechnicalPageJsonUpsertResult>>));
     }

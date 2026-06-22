@@ -25,6 +25,7 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class TechnicalPagesController : ControllerBase
 {
     private readonly IQueryHandler<GetTechnicalPagesQuery, ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>> getTechnicalPagesQueryHandler;
+    private readonly IQueryHandler<GetTechnicalPageLinkIndexQuery, ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>> getTechnicalPageLinkIndexQueryHandler;
     private readonly IQueryHandler<GetTechnicalPageByIdQuery, ApplicationResult<TechnicalPageResult>> getTechnicalPageByIdQueryHandler;
     private readonly IQueryHandler<GetTechnicalPageBySlugQuery, ApplicationResult<TechnicalPageResult>> getTechnicalPageBySlugQueryHandler;
     private readonly ICommandHandler<CreateTechnicalPageCommand, ApplicationResult<TechnicalPageResult>> createTechnicalPageCommandHandler;
@@ -33,6 +34,7 @@ public sealed class TechnicalPagesController : ControllerBase
 
     public TechnicalPagesController(
         IQueryHandler<GetTechnicalPagesQuery, ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>> getTechnicalPagesQueryHandler,
+        IQueryHandler<GetTechnicalPageLinkIndexQuery, ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>> getTechnicalPageLinkIndexQueryHandler,
         IQueryHandler<GetTechnicalPageByIdQuery, ApplicationResult<TechnicalPageResult>> getTechnicalPageByIdQueryHandler,
         IQueryHandler<GetTechnicalPageBySlugQuery, ApplicationResult<TechnicalPageResult>> getTechnicalPageBySlugQueryHandler,
         ICommandHandler<CreateTechnicalPageCommand, ApplicationResult<TechnicalPageResult>> createTechnicalPageCommandHandler,
@@ -40,6 +42,7 @@ public sealed class TechnicalPagesController : ControllerBase
         ICommandHandler<UpsertTechnicalPagesJsonCommand, ApplicationResult<TechnicalPageJsonUpsertResult>> upsertTechnicalPagesJsonCommandHandler)
     {
         this.getTechnicalPagesQueryHandler = getTechnicalPagesQueryHandler;
+        this.getTechnicalPageLinkIndexQueryHandler = getTechnicalPageLinkIndexQueryHandler;
         this.getTechnicalPageByIdQueryHandler = getTechnicalPageByIdQueryHandler;
         this.getTechnicalPageBySlugQueryHandler = getTechnicalPageBySlugQueryHandler;
         this.createTechnicalPageCommandHandler = createTechnicalPageCommandHandler;
@@ -60,6 +63,22 @@ public sealed class TechnicalPagesController : ControllerBase
         }
 
         PagedResponseDto<TechnicalPageDto> response = pagination.ToPagedResponse(result.Value, static value => value.ToHttp());
+        return this.Ok(response);
+    }
+
+    [HttpGet("link-index")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicReferenceData)]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(List<TechnicalPageDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetPublicLinkIndexAsync(CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<TechnicalPageResult>> result = await this.getTechnicalPageLinkIndexQueryHandler.HandleAsync(new GetTechnicalPageLinkIndexQuery(), cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        List<TechnicalPageDto> response = result.Value.Select(static value => value.ToHttp()).ToList();
         return this.Ok(response);
     }
 

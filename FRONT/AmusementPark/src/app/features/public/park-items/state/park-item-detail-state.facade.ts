@@ -148,21 +148,6 @@ export class ParkItemDetailStateFacade {
       }
     });
 
-    this.technicalPagesApiService.getAllPublicPages().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (technicalPages: TechnicalPage[]) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
-          ...current,
-          technicalPages
-        }));
-      },
-      error: () => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
-          ...current,
-          technicalPages: []
-        }));
-      }
-    });
-
     if (!item.id) {
       return;
     }
@@ -206,6 +191,21 @@ export class ParkItemDetailStateFacade {
     if (useMinimalSsrData) {
       return;
     }
+
+    this.technicalPagesApiService.getPublicLinkIndex().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (technicalPages: TechnicalPage[]) => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          technicalPages
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          technicalPages: []
+        }));
+      }
+    });
 
     this.parkItemsApiService.getParkItemSiblingNavigation(item.id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (siblingNavigation: ParkItemSiblingNavigation) => {
