@@ -344,6 +344,9 @@ jobs:
     needs:
       - docker-images
       - dependency-security
+    concurrency:
+      group: production-deploy-${{ github.ref_name }}
+      cancel-in-progress: false
     if: >-
       ${{
         github.event_name != 'pull_request' &&
@@ -503,7 +506,14 @@ jobs:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: |
           set -euo pipefail
-          ssh -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
-            "export GHCR_USERNAME='${GHCR_USERNAME}' GHCR_TOKEN='${GHCR_TOKEN}'; \
+          {
+            printf '%s\n' "${GHCR_USERNAME}"
+            printf '%s\n' "${GHCR_TOKEN}"
+          } | ssh -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
+            "set -euo pipefail; \
+             read -r GHCR_USERNAME; \
+             read -r GHCR_TOKEN; \
+             export GHCR_USERNAME GHCR_TOKEN; \
              if [ -n \"\${GHCR_USERNAME}\" ] && [ -n \"\${GHCR_TOKEN}\" ]; then echo \"\${GHCR_TOKEN}\" | docker login ghcr.io -u \"\${GHCR_USERNAME}\" --password-stdin; fi; \
+             unset GHCR_USERNAME GHCR_TOKEN; \
              cd '${VPS_DEPLOY_PATH}' && ./scripts/deploy.sh"

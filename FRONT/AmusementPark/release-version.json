@@ -1,6 +1,20 @@
 {
-  "version": "2.6.5",
+  "version": "2.6.6",
   "history": [
+    {
+      "version": "2.6.6",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les mises en ligne sont plus stables.",
+        "en": "Deployments are more stable.",
+        "de": "Veroeffentlichungen laufen stabiler.",
+        "nl": "Publicaties verlopen stabieler.",
+        "it": "Le pubblicazioni sono piu stabili.",
+        "es": "Las publicaciones son mas estables.",
+        "pl": "Wdrozenia sa stabilniejsze.",
+        "pt": "As publicacoes ficam mais estaveis."
+      }
+    },
     {
       "version": "2.6.5",
       "releasedAt": "2026-06-22",
