@@ -21,7 +21,8 @@
     "qr": {
       "title": "Share via QR code",
       "loading": "Generating QR code",
-      "alt": "QR code for {{title}}"
+      "alt": "QR code for {{title}}",
+      "error": "The QR code cannot be created right now."
     },
     "home": {
       "title": "Share AmusementPark",

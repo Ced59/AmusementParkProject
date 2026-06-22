@@ -3192,7 +3192,8 @@
     "qr": {
       "title": "Udostępnij kodem QR",
       "loading": "Tworzenie kodu QR",
-      "alt": "Kod QR dla {{title}}"
+      "alt": "Kod QR dla {{title}}",
+      "error": "Nie mozna teraz utworzyc kodu QR."
     },
     "home": {
       "title": "Udostępnij AmusementPark",

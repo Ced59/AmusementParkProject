@@ -106,6 +106,13 @@
   }
 }
 
+.public-share-panel__qr-error {
+  margin: 0;
+  color: var(--app-danger, #c61855);
+  font-weight: 800;
+  line-height: 1.45;
+}
+
 .public-share-panel__qr-loading {
   display: inline-flex;
   align-items: center;

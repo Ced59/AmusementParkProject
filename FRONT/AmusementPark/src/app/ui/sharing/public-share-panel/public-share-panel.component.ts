@@ -7,6 +7,7 @@ import {
   SocialShareTargetType
 } from '@app/models/social-share/social-share.models';
 import { UiSurfaceDirective } from '@ui/primitives';
+import { PublicShareQrCodeService } from './public-share-qr-code.service';
 import { PublicShareTrackingService } from './public-share-tracking.service';
 
 type PrimaryNetwork = 'LinkedIn' | 'Facebook' | 'X' | 'Reddit';
@@ -40,6 +41,7 @@ export class PublicSharePanelComponent {
   protected readonly showMore = signal(false);
   protected readonly showQr = signal(false);
   protected readonly qrCodeDataUrl = signal<string | null>(null);
+  protected readonly qrCodeError = signal(false);
   protected readonly qrCodeLoading = signal(false);
   protected readonly copyConfirmed = signal(false);
 
@@ -63,6 +65,7 @@ export class PublicSharePanelComponent {
     @Inject(DOCUMENT) private readonly document: Document,
     @Inject(PLATFORM_ID) platformId: object,
     private readonly translateService: TranslateService,
+    private readonly qrCodeService: PublicShareQrCodeService,
     private readonly trackingService: PublicShareTrackingService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -141,27 +144,28 @@ export class PublicSharePanelComponent {
   protected async toggleQrCode(): Promise<void> {
     const nextVisible: boolean = !this.showQr();
     this.showQr.set(nextVisible);
+    const url: string = this.shareUrl;
 
-    if (!nextVisible || !this.isBrowser || this.shareUrl.length === 0) {
+    if (!nextVisible) {
+      return;
+    }
+
+    if (!this.isBrowser || url.length === 0) {
+      this.qrCodeError.set(true);
       return;
     }
 
     if (!this.qrCodeDataUrl()) {
+      this.qrCodeError.set(false);
       this.qrCodeLoading.set(true);
 
       try {
-        const qrCodeModule = await import('qrcode');
-        const qrDataUrl: string = await qrCodeModule.toDataURL(this.shareUrl, {
-          width: 240,
-          margin: 2,
-          errorCorrectionLevel: 'M',
-          color: {
-            dark: '#0f172a',
-            light: '#ffffff'
-          }
-        });
-
+        const qrDataUrl: string = await this.qrCodeService.createDataUrl(url);
         this.qrCodeDataUrl.set(qrDataUrl);
+      } catch {
+        this.qrCodeDataUrl.set(null);
+        this.qrCodeError.set(true);
+        return;
       } finally {
         this.qrCodeLoading.set(false);
       }
