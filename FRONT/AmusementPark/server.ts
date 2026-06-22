@@ -10,6 +10,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, unlinkSync,
 import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
+import { isApiHeaderHiddenFromPublicProxy } from './src/app/core/ssr/public-api-header-policy';
 import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { siteVersion } from './src/environments/version.generated';
@@ -1528,13 +1529,6 @@ function buildSeoDocumentFetchHeaders(req: Request, targetUrl: URL): http.Outgoi
   };
 
   return headers;
-}
-
-function isApiHeaderHiddenFromPublicProxy(name: string): boolean {
-  const normalizedName = name.toLowerCase();
-  return normalizedName === 'content-security-policy'
-    || normalizedName === 'content-security-policy-report-only'
-    || normalizedName === 'x-powered-by';
 }
 
 function appendForwardedFor(req: Request): string {
