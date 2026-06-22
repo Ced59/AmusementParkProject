@@ -1,6 +1,20 @@
 {
-  "version": "2.6.9",
+  "version": "2.6.10",
   "history": [
+    {
+      "version": "2.6.10",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les fichiers publics sont servis plus proprement.",
+        "en": "Public files are served more cleanly.",
+        "de": "Oeffentliche Dateien werden sauberer ausgeliefert.",
+        "nl": "Publieke bestanden worden netter geserveerd.",
+        "it": "I file pubblici vengono serviti in modo piu pulito.",
+        "es": "Los archivos publicos se sirven de forma mas limpia.",
+        "pl": "Pliki publiczne sa serwowane czytelniej.",
+        "pt": "Os ficheiros publicos sao servidos de forma mais limpa."
+      }
+    },
     {
       "version": "2.6.9",
       "releasedAt": "2026-06-22",
