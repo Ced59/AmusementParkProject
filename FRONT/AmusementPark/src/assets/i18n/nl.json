@@ -2862,6 +2862,7 @@
       "errorTitle": "Profiel kan niet worden geladen",
       "errorMessage": "Het gevraagde profiel kon niet worden geladen.",
       "backToParks": "Terug naar parken",
+      "backToManufacturers": "Terug naar fabrikanten",
       "operator": {
         "badge": "Parkexploitant",
         "title": "Exploitant",

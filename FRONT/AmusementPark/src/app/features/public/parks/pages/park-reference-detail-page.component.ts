@@ -21,6 +21,7 @@ export class ParkReferenceDetailPageComponent implements OnInit {
   protected readonly reference = this.stateFacade.reference;
   protected readonly attractionsLoading = this.stateFacade.attractionsLoading;
   protected readonly currentLang = signal<string>('en');
+  protected readonly backLabelKey = signal<string>('parks.reference.backToParks');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
 
@@ -42,6 +43,8 @@ export class ParkReferenceDetailPageComponent implements OnInit {
       const id: string | null = params.get('id');
       const kind: ParkReferenceKind = this.resolveReferenceKind();
 
+      this.backLabelKey.set(this.resolveBackLabelKey(kind));
+
       if (!id) {
         return;
       }
@@ -56,7 +59,9 @@ export class ParkReferenceDetailPageComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/', this.currentLang(), 'parks']);
+    const routeSegment: string = this.resolveBackRouteSegment(this.resolveReferenceKind());
+
+    this.router.navigate(['/', this.currentLang(), routeSegment]);
   }
 
   onAttractionsPageChanged(event: { page?: number; rows?: number }): void {
@@ -73,5 +78,21 @@ export class ParkReferenceDetailPageComponent implements OnInit {
     }
 
     return 'operator';
+  }
+
+  private resolveBackRouteSegment(kind: ParkReferenceKind): string {
+    if (kind === 'manufacturer') {
+      return 'manufacturers';
+    }
+
+    return 'parks';
+  }
+
+  private resolveBackLabelKey(kind: ParkReferenceKind): string {
+    if (kind === 'manufacturer') {
+      return 'parks.reference.backToManufacturers';
+    }
+
+    return 'parks.reference.backToParks';
   }
 }

@@ -2862,6 +2862,7 @@
       "errorTitle": "Unable to load profile",
       "errorMessage": "The requested profile could not be loaded.",
       "backToParks": "Back to parks",
+      "backToManufacturers": "Back to manufacturers",
       "operator": {
         "badge": "Park operator",
         "title": "Operator",

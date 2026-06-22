@@ -2862,6 +2862,7 @@
       "errorTitle": "Profil kann nicht geladen werden",
       "errorMessage": "Das angeforderte Profil konnte nicht geladen werden.",
       "backToParks": "Zurück zu den Parks",
+      "backToManufacturers": "Zurück zu den Herstellern",
       "operator": {
         "badge": "Parkbetreiber",
         "title": "Betreiber",
