@@ -3192,7 +3192,8 @@
     "qr": {
       "title": "Partilhar por código QR",
       "loading": "A gerar código QR",
-      "alt": "Código QR para {{title}}"
+      "alt": "Código QR para {{title}}",
+      "error": "Nao e possivel criar o codigo QR agora."
     },
     "home": {
       "title": "Partilhar AmusementPark",

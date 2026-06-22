@@ -21,7 +21,8 @@
     "qr": {
       "title": "Per QR-Code teilen",
       "loading": "QR-Code wird erstellt",
-      "alt": "QR-Code für {{title}}"
+      "alt": "QR-Code für {{title}}",
+      "error": "Der QR-Code kann gerade nicht erstellt werden."
     },
     "home": {
       "title": "AmusementPark teilen",

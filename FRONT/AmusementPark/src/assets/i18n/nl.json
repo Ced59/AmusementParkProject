@@ -3192,7 +3192,8 @@
     "qr": {
       "title": "Delen via QR-code",
       "loading": "QR-code maken",
-      "alt": "QR-code voor {{title}}"
+      "alt": "QR-code voor {{title}}",
+      "error": "De QR-code kan nu niet worden gemaakt."
     },
     "home": {
       "title": "AmusementPark delen",

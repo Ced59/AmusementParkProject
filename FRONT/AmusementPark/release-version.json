@@ -1,6 +1,20 @@
 {
-  "version": "2.6.10",
+  "version": "2.6.11",
   "history": [
+    {
+      "version": "2.6.11",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Le QR code de partage s'affiche correctement.",
+        "en": "Share QR codes display correctly.",
+        "de": "QR-Codes zum Teilen werden korrekt angezeigt.",
+        "nl": "QR-codes om te delen verschijnen correct.",
+        "it": "I codici QR di condivisione si vedono correttamente.",
+        "es": "Los codigos QR para compartir se muestran correctamente.",
+        "pl": "Kody QR do udostepniania wyswietlaja sie poprawnie.",
+        "pt": "Os codigos QR de partilha aparecem corretamente."
+      }
+    },
     {
       "version": "2.6.10",
       "releasedAt": "2026-06-22",

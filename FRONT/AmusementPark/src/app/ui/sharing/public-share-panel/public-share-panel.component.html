@@ -81,6 +81,8 @@
       } @else if (qrCodeDataUrl()) {
         <img [src]="qrCodeDataUrl()" [alt]="'shareSocial.qr.alt' | translate:{ title: resolvedTargetTitle }" width="240" height="240" loading="lazy" />
         <code>{{ shareUrl }}</code>
+      } @else if (qrCodeError()) {
+        <p class="public-share-panel__qr-error" aria-live="polite">{{ 'shareSocial.qr.error' | translate }}</p>
       }
     </div>
   }

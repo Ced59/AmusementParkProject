@@ -21,7 +21,8 @@
     "qr": {
       "title": "Compartir con código QR",
       "loading": "Generando código QR",
-      "alt": "Código QR para {{title}}"
+      "alt": "Código QR para {{title}}",
+      "error": "El codigo QR no se puede crear ahora."
     },
     "home": {
       "title": "Compartir AmusementPark",
