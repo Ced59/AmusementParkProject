@@ -33,6 +33,31 @@ public sealed class TechnicalPageRepository : ITechnicalPageRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<TechnicalPage>> GetPublicLinkIndexAsync(CancellationToken cancellationToken)
+    {
+        List<TechnicalPageDocument> documents = await this.collection
+            .Find(BuildPublicFilter())
+            .Project(static document => new TechnicalPageDocument
+            {
+                Id = document.Id,
+                CategoryKey = document.CategoryKey,
+                Slug = document.Slug,
+                Titles = document.Titles,
+                Aliases = document.Aliases,
+                SortOrder = document.SortOrder,
+                IsVisible = document.IsVisible,
+                AdminReviewStatus = document.AdminReviewStatus,
+                CreatedAt = document.CreatedAt,
+                UpdatedAt = document.UpdatedAt,
+            })
+            .SortBy(document => document.CategoryKey)
+            .ThenBy(document => document.SortOrder)
+            .ThenBy(document => document.Slug)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
     public async Task<TechnicalPage?> GetByIdAsync(string id, CancellationToken cancellationToken)
     {
         TechnicalPageDocument? document = await this.collection

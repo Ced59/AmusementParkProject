@@ -28,6 +28,23 @@ public sealed class GetTechnicalPagesQueryHandler : IQueryHandler<GetTechnicalPa
     }
 }
 
+public sealed class GetTechnicalPageLinkIndexQueryHandler : IQueryHandler<GetTechnicalPageLinkIndexQuery, ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>>
+{
+    private readonly ITechnicalPageRepository repository;
+
+    public GetTechnicalPageLinkIndexQueryHandler(ITechnicalPageRepository repository)
+    {
+        this.repository = repository;
+    }
+
+    public async Task<ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>> HandleAsync(GetTechnicalPageLinkIndexQuery query, CancellationToken cancellationToken = default)
+    {
+        IReadOnlyCollection<TechnicalPage> pages = await this.repository.GetPublicLinkIndexAsync(cancellationToken);
+        IReadOnlyCollection<TechnicalPageResult> results = pages.Select(TechnicalPageResult.FromDomain).ToList();
+        return ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>.Success(results);
+    }
+}
+
 public sealed class GetTechnicalPageByIdQueryHandler : IQueryHandler<GetTechnicalPageByIdQuery, ApplicationResult<TechnicalPageResult>>
 {
     private readonly ITechnicalPageRepository repository;

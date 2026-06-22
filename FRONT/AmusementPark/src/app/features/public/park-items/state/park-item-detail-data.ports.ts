@@ -47,7 +47,7 @@ export interface ParkItemDetailVideosPort {
 }
 
 export interface ParkItemDetailTechnicalPagesPort {
-  getAllPublicPages(): Observable<TechnicalPage[]>;
+  getPublicLinkIndex(): Observable<TechnicalPage[]>;
 }
 
 export const PARK_ITEM_DETAIL_ITEMS_PORT = new InjectionToken<ParkItemDetailItemsPort>('PARK_ITEM_DETAIL_ITEMS_PORT', {

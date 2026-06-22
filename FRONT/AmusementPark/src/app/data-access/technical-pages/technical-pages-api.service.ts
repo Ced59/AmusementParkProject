@@ -46,6 +46,13 @@ export class TechnicalPagesApiService {
     );
   }
 
+  getPublicLinkIndex(): Observable<TechnicalPage[]> {
+    const url: string = `${environment.apiBaseUrl}${TECHNICAL_PAGES_API_ENDPOINTS.getPublicLinkIndex}`;
+    return this.http.get<TechnicalPage[]>(url).pipe(
+      map((response: TechnicalPage[]) => unwrapCollection<TechnicalPage>(response))
+    );
+  }
+
   getAdminPagesPage(page: number = 1, size: number = 100): Observable<PagedResult<TechnicalPage>> {
     const url: string = `${environment.apiBaseUrl}${TECHNICAL_PAGES_API_ENDPOINTS.getAdminPages}`;
     const params: HttpParams = new HttpParams()

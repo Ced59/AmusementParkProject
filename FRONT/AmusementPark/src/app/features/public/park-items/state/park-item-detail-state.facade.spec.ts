@@ -14,6 +14,7 @@ import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
 import { VideoType } from '@app/models/videos/video-type';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { PagedResult } from '@shared/models/contracts';
 import {
   PARK_ITEM_DETAIL_IMAGES_PORT,
@@ -111,9 +112,17 @@ class FakeTechnicalPagesPort implements ParkItemDetailTechnicalPagesPort {
   public response$: Observable<TechnicalPage[]> = of([createTechnicalPage()]);
   public callCount = 0;
 
-  getAllPublicPages(): Observable<TechnicalPage[]> {
+  getPublicLinkIndex(): Observable<TechnicalPage[]> {
     this.callCount += 1;
     return this.response$;
+  }
+}
+
+class FakeSsrRuntimeService {
+  public useMinimalPublicData = false;
+
+  shouldUseMinimalPublicData(): boolean {
+    return this.useMinimalPublicData;
   }
 }
 
@@ -281,6 +290,7 @@ function configureFacade(): {
   videosPort: FakeVideosPort;
   technicalPagesPort: FakeTechnicalPagesPort;
   ssrStatusService: FakeSsrHttpStatusService;
+  ssrRuntimeService: FakeSsrRuntimeService;
 } {
   const itemsPort: FakeItemsPort = new FakeItemsPort();
   const parksPort: FakeParksPort = new FakeParksPort();
@@ -290,6 +300,7 @@ function configureFacade(): {
   const videosPort: FakeVideosPort = new FakeVideosPort();
   const technicalPagesPort: FakeTechnicalPagesPort = new FakeTechnicalPagesPort();
   const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
+  const ssrRuntimeService: FakeSsrRuntimeService = new FakeSsrRuntimeService();
 
   TestBed.configureTestingModule({
     providers: [
@@ -301,7 +312,8 @@ function configureFacade(): {
       { provide: PARK_ITEM_DETAIL_IMAGES_PORT, useValue: imagesPort },
       { provide: PARK_ITEM_DETAIL_VIDEOS_PORT, useValue: videosPort },
       { provide: PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT, useValue: technicalPagesPort },
-      { provide: SsrHttpStatusService, useValue: ssrStatusService }
+      { provide: SsrHttpStatusService, useValue: ssrStatusService },
+      { provide: SsrRuntimeService, useValue: ssrRuntimeService }
     ]
   });
 
@@ -314,7 +326,8 @@ function configureFacade(): {
     imagesPort,
     videosPort,
     technicalPagesPort,
-    ssrStatusService
+    ssrStatusService,
+    ssrRuntimeService
   };
 }
 
@@ -368,6 +381,20 @@ describe('ParkItemDetailStateFacade', () => {
       ownerId: 'item-1'
     }]);
     expect(context.technicalPagesPort.callCount).toBe(1);
+  });
+
+  it('skips technical link index and deep related data during minimal SSR rendering', () => {
+    const context = configureFacade();
+    context.ssrRuntimeService.useMinimalPublicData = true;
+
+    context.facade.loadItem('item-1');
+
+    expect(context.technicalPagesPort.callCount).toBe(0);
+    expect(context.itemsPort.siblingCalls).toEqual([]);
+    expect(context.itemsPort.relatedCalls).toEqual([]);
+    expect(context.manufacturersPort.calls).toEqual([]);
+    expect(context.zonesPort.calls).toEqual([]);
+    expect(context.facade.detail()?.specGroups[0]?.rows.find((row) => row.labelKey === 'parkItems.fields.restraintType')?.routerLink).toBeNull();
   });
 
   it('hides the videos link when the park item has no published videos', () => {

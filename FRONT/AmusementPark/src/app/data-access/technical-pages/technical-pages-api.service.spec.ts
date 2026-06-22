@@ -44,6 +44,17 @@ describe('TechnicalPagesApiService', () => {
     request.flush({ slug: 'chain-lift' } as TechnicalPage);
   });
 
+  it('gets the lightweight public technical link index without a double slash in the API URL', () => {
+    service.getPublicLinkIndex().subscribe((pages) => {
+      expect(pages[0].slug).toBe('lap-bar');
+    });
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}technical-pages/link-index`);
+    expect(request.request.method).toBe('GET');
+    expect(request.request.url).not.toContain('/api//');
+    request.flush([{ slug: 'lap-bar' } as TechnicalPage]);
+  });
+
   it('upserts technical pages JSON without a double slash in the API URL', () => {
     service.upsertJson({ pages: [{ slug: 'chain-lift' } as TechnicalPage] }).subscribe((result) => {
       expect(result.createdCount).toBe(1);

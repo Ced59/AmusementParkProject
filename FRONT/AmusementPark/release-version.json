@@ -1,6 +1,20 @@
 {
-  "version": "2.6.4",
+  "version": "2.6.5",
   "history": [
+    {
+      "version": "2.6.5",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les pages publiques chargent plus legerement.",
+        "en": "Public pages load more lightly.",
+        "de": "Oeffentliche Seiten laden schlanker.",
+        "nl": "Publieke pagina's laden lichter.",
+        "it": "Le pagine pubbliche caricano piu leggere.",
+        "es": "Las paginas publicas cargan con menos peso.",
+        "pl": "Strony publiczne laduja lzejsze.",
+        "pt": "As paginas publicas carregam mais leves."
+      }
+    },
     {
       "version": "2.6.4",
       "releasedAt": "2026-06-22",
