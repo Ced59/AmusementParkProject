@@ -16,10 +16,53 @@ compose_project_name="${COMPOSE_PROJECT_NAME:-amusementpark}"
 public_http_port="${PUBLIC_HTTP_PORT:-18080}"
 npm_docker_network_name="${NPM_DOCKER_NETWORK_NAME:-nginx-proxy-network}"
 public_domain="${PUBLIC_DOMAIN:-amusement-parks.fun}"
+deploy_lock_file="${DEPLOY_LOCK_FILE:-/tmp/amusementpark-deploy.lock}"
+deploy_lock_timeout_seconds="${DEPLOY_LOCK_TIMEOUT_SECONDS:-900}"
+deploy_compose_log_timeout_seconds="${DEPLOY_COMPOSE_LOG_TIMEOUT_SECONDS:-30}"
+deploy_compose_up_timeout_seconds="${DEPLOY_COMPOSE_UP_TIMEOUT_SECONDS:-300}"
+deploy_docker_prune_timeout_seconds="${DEPLOY_DOCKER_PRUNE_TIMEOUT_SECONDS:-120}"
 
 compose() {
   docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
 }
+
+run_with_timeout() {
+  local timeout_seconds="$1"
+  shift
+
+  if command -v timeout >/dev/null 2>&1; then
+    timeout --preserve-status "${timeout_seconds}" "$@"
+  else
+    "$@"
+  fi
+}
+
+compose_with_timeout() {
+  local timeout_seconds="$1"
+  shift
+
+  run_with_timeout "${timeout_seconds}" docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
+}
+
+compose_logs() {
+  local tail_lines="$1"
+  local service_name="$2"
+
+  compose_with_timeout "${deploy_compose_log_timeout_seconds}" logs --tail="${tail_lines}" "${service_name}"
+}
+
+if ! command -v flock >/dev/null 2>&1; then
+  echo "Missing required flock command; deployment locking cannot be enforced." >&2
+  exit 1
+fi
+
+exec 9>"${deploy_lock_file}"
+echo "Acquiring deployment lock ${deploy_lock_file}..."
+if ! flock -w "${deploy_lock_timeout_seconds}" 9; then
+  echo "Timed out while waiting for deployment lock after ${deploy_lock_timeout_seconds}s." >&2
+  exit 1
+fi
+echo "Deployment lock acquired."
 
 wait_for_service_healthy() {
   local service_name="$1"
@@ -44,7 +87,7 @@ wait_for_service_healthy() {
       if [ "${health_status}" = "unhealthy" ] || [ "${health_status}" = "exited" ] || [ "${health_status}" = "dead" ]; then
         echo "${service_name} service reached status '${health_status}'." >&2
         compose ps >&2 || true
-        compose logs --tail=160 "${service_name}" >&2 || true
+        compose_logs 160 "${service_name}" >&2 || true
         return 1
       fi
     fi
@@ -55,7 +98,7 @@ wait_for_service_healthy() {
 
   echo "Timed out while waiting for ${service_name} service to become healthy after ${timeout_seconds}s." >&2
   compose ps >&2 || true
-  compose logs --tail=160 "${service_name}" >&2 || true
+  compose_logs 160 "${service_name}" >&2 || true
   return 1
 }
 
@@ -103,8 +146,8 @@ curl_with_retry() {
 
   echo "Health check failed after ${max_attempts} attempts: ${url}" >&2
   compose ps >&2 || true
-  compose logs --tail=160 front >&2 || true
-  compose logs --tail=120 api >&2 || true
+  compose_logs 160 front >&2 || true
+  compose_logs 120 api >&2 || true
   return 1
 }
 
@@ -128,17 +171,17 @@ echo "Pulling production images..."
 compose pull
 
 echo "Starting production stack..."
-if ! compose up -d --remove-orphans; then
+if ! compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans; then
   echo "Docker Compose failed while starting the production stack. Recent container status:" >&2
   compose ps >&2 || true
   echo "Recent API logs:" >&2
-  compose logs --tail=200 api >&2 || true
+  compose_logs 200 api >&2 || true
   echo "Recent MongoDB logs:" >&2
-  compose logs --tail=120 mongodb >&2 || true
+  compose_logs 120 mongodb >&2 || true
   echo "Recent MinIO logs:" >&2
-  compose logs --tail=80 minio >&2 || true
+  compose_logs 80 minio >&2 || true
   echo "Recent Front SSR logs:" >&2
-  compose logs --tail=120 front >&2 || true
+  compose_logs 120 front >&2 || true
   exit 1
 fi
 
@@ -191,6 +234,6 @@ else
 fi
 
 echo "Pruning old Docker images older than 7 days..."
-docker image prune -af --filter "until=168h" >/dev/null || true
+run_with_timeout "${deploy_docker_prune_timeout_seconds}" docker image prune -af --filter "until=168h" >/dev/null || true
 
 echo "Deployment completed. Configure Nginx Proxy Manager to forward ${public_domain} to amusementpark-front:4000 on Docker network ${npm_docker_network_name} with SSL + Force SSL."
