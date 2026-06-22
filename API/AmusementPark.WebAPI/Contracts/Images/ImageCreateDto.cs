@@ -28,7 +28,7 @@ public sealed class RemoteImageCreateDto
 
     public string? Description { get; set; }
 
-    public bool WithWatermark { get; set; } = true;
+    public bool WithWatermark { get; set; }
 
     public bool SetAsCurrent { get; set; }
 }

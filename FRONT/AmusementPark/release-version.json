@@ -1,6 +1,20 @@
 {
-  "version": "2.6.13",
+  "version": "2.6.14",
   "history": [
+    {
+      "version": "2.6.14",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les imports d'images sont plus fiables.",
+        "en": "Image imports are more reliable.",
+        "de": "Bildimporte werden zuverlaessiger.",
+        "nl": "Afbeeldingen importeren gaat betrouwbaarder.",
+        "it": "Le importazioni di immagini sono piu affidabili.",
+        "es": "Las importaciones de imagenes son mas fiables.",
+        "pl": "Import obrazow dziala pewniej.",
+        "pt": "As importacoes de imagens ficam mais fiaveis."
+      }
+    },
     {
       "version": "2.6.13",
       "releasedAt": "2026-06-22",

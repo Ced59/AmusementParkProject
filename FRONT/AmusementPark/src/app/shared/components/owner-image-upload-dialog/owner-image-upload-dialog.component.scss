@@ -81,6 +81,20 @@
   object-fit: contain;
 }
 
+.watermark-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text-color-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.watermark-choice span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .upload-error {
   color: var(--red-500);
   font-size: 0.9rem;

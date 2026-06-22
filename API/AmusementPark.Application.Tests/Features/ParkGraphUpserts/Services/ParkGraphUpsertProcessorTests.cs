@@ -609,7 +609,8 @@ public sealed class ParkGraphUpsertProcessorTests
             {
               "sourceUrl": "https://cdn.example.test/logo.webp",
               "ownerKey": "park",
-              "category": "ParkLogo"
+              "category": "ParkLogo",
+              "withWatermark": true
             }
           ]
         }
@@ -632,6 +633,7 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(imageChange.Fields, field => field.Field == "sourceUrl" && field.NewValue == "https://cdn.example.test/logo.webp");
         Assert.Contains(imageChange.Fields, field => field.Field == "ownerType" && field.NewValue == "Park");
         Assert.Contains(imageChange.Fields, field => field.Field == "category" && field.NewValue == "ParkLogo");
+        Assert.Contains(imageChange.Fields, field => field.Field == "withWatermark" && field.NewValue == "false");
         remoteImageImporter.VerifyNoOtherCalls();
         parkRepository.VerifyAll();
         historyRepository.VerifyAll();
@@ -758,6 +760,114 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(imageChange.Fields, field => field.Field == "internalUrl" && field.NewValue == "/images/image-remote-1");
         parkRepository.VerifyAll();
         imageRepository.VerifyAll();
+        remoteImageImporter.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenRemoteParkImageRequestsWatermark_ShouldForwardWatermark()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Park",
+            CountryCode = "FR",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.ToReview,
+        };
+
+        Image importedImage = new Image
+        {
+            Id = "image-remote-1",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
+            SourceUrl = "https://cdn.example.test/photo.webp",
+            IsPublished = true,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+        remoteImageImporter
+            .Setup(value => value.ImportAsync(
+                It.Is<RemoteImageImportRequest>(request =>
+                    request.SourceUrl == "https://cdn.example.test/photo.webp"
+                    && request.OwnerType == ImageOwnerType.Park
+                    && request.OwnerId == "park-1"
+                    && request.Category == ImageCategory.Park
+                    && request.WithWatermark
+                    && request.SetAsCurrent == false),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(importedImage);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            remoteImageImporter.Object,
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "images": [
+            {
+              "sourceUrl": "https://cdn.example.test/photo.webp",
+              "ownerKey": "park",
+              "category": "Park",
+              "withWatermark": true
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        ParkGraphUpsertChange imageChange = Assert.Single(result.Value!.Changes, change => change.EntityType == "Image");
+        Assert.Equal("Created", imageChange.ChangeType);
+        Assert.Contains(imageChange.Fields, field => field.Field == "withWatermark" && field.NewValue == "true");
+        parkRepository.VerifyAll();
         remoteImageImporter.VerifyAll();
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();

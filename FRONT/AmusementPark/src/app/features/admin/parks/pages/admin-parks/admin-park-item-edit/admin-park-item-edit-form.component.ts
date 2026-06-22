@@ -111,6 +111,8 @@ export class AdminParkItemEditFormComponent {
   @Input() selectedPhotoCount: number = 0;
   @Input() newPhotoDescription: string = '';
   @Input() remotePhotoSourceUrl: string = '';
+  @Input() photoWithWatermark: boolean = true;
+  @Input() remotePhotoWithWatermark: boolean = false;
   @Input() selectedPhotoCategorySlug: string = 'park-item-gallery';
   @Input() photoCategoryOptions: AdminParkItemPhotoCategoryOption[] = [];
   @Input() photosUploading: boolean = false;
@@ -148,6 +150,8 @@ export class AdminParkItemEditFormComponent {
   @Output() photoFileSelected: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() newPhotoDescriptionChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() remotePhotoSourceUrlChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() photoWithWatermarkChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() remotePhotoWithWatermarkChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectedPhotoCategorySlugChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() uploadPhoto: EventEmitter<void> = new EventEmitter<void>();
   @Output() importRemotePhoto: EventEmitter<void> = new EventEmitter<void>();

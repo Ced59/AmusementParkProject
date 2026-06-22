@@ -63,7 +63,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                 OwnerType = command.Request.OwnerType,
                 OwnerId = ownerId,
                 Description = Normalize(command.Request.Description),
-                WithWatermark = command.Request.WithWatermark,
+                WithWatermark = ShouldApplyWatermark(command.Request.Category, command.Request.WithWatermark),
                 SetAsCurrent = command.Request.SetAsCurrent,
             };
 
@@ -100,6 +100,11 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
     private static bool IsHttpUri(Uri uri)
     {
         return uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps;
+    }
+
+    private static bool ShouldApplyWatermark(ImageCategory category, bool requestedWithWatermark)
+    {
+        return requestedWithWatermark && category != ImageCategory.ParkLogo;
     }
 
     private static string? Normalize(string? value)

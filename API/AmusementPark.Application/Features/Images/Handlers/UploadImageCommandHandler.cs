@@ -41,6 +41,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
 
         try
         {
+            bool withWatermark = ShouldApplyWatermark(command.Request.Category, command.Request.WithWatermark);
             ImageProcessingMetadata? metadata = await this.imageProcessingPipeline.ExtractMetadataAsync(command.Request, cancellationToken);
 
             if (command.Request.File.Content.CanSeek)
@@ -55,7 +56,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             IReadOnlyCollection<string> savedFiles = await this.imageBinaryStorage.SaveAsync(
                 storagePath,
                 command.Request.File,
-                command.Request.WithWatermark,
+                withWatermark,
                 cancellationToken);
 
             ImageUploadRequest preparedRequest = new ImageUploadRequest
@@ -64,7 +65,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 Category = command.Request.Category,
                 File = command.Request.File,
                 Description = command.Request.Description,
-                WithWatermark = command.Request.WithWatermark,
+                WithWatermark = withWatermark,
                 OwnerType = command.Request.OwnerType,
                 OwnerId = string.IsNullOrWhiteSpace(command.Request.OwnerId) ? null : command.Request.OwnerId.Trim(),
                 StoragePath = storagePath,
@@ -92,6 +93,11 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
         {
             return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.ImageProcessingFailed());
         }
+    }
+
+    private static bool ShouldApplyWatermark(ImageCategory category, bool requestedWithWatermark)
+    {
+        return requestedWithWatermark && category != ImageCategory.ParkLogo;
     }
 
     private static string ToPathSegment(ImageCategory category)

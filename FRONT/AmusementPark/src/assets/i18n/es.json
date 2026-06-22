@@ -1829,7 +1829,8 @@
       "descriptionPlaceholder": "Descripción",
       "remoteSourceUrlPlaceholder": "URL de la imagen fuente",
       "remoteImport": "Importar desde URL",
-      "remotePreviewAlt": "Vista previa de la imagen fuente"
+      "remotePreviewAlt": "Vista previa de la imagen fuente",
+      "withWatermark": "Anadir watermark"
     }
   },
   "sidebar": {

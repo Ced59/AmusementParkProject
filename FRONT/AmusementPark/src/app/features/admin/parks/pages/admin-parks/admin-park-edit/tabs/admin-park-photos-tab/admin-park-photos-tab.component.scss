@@ -23,6 +23,22 @@
   gap: 1rem;
 }
 
+.photo-watermark-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  max-width: 100%;
+  color: var(--text-color-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.photo-watermark-toggle span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .photo-remote-preview {
   display: flex;
   justify-content: center;

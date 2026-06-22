@@ -1829,7 +1829,8 @@
       "descriptionPlaceholder": "Descrição",
       "remoteSourceUrlPlaceholder": "URL da imagem de origem",
       "remoteImport": "Importar por URL",
-      "remotePreviewAlt": "Pre-visualizacao da imagem de origem"
+      "remotePreviewAlt": "Pre-visualizacao da imagem de origem",
+      "withWatermark": "Adicionar watermark"
     }
   },
   "sidebar": {

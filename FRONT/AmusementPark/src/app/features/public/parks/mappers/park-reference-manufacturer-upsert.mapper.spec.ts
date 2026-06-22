@@ -37,7 +37,17 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
     expect(document.park).toEqual({});
     expect(document.zones).toEqual([]);
     expect(document.items).toEqual([]);
-    expect(document.images).toEqual([]);
+    expect(document.images).toEqual([
+      {
+        sourceUrl: '',
+        ownerKey: 'manufacturer:manufacturer-1',
+        category: 'Manufacturer',
+        description: '',
+        isPublished: true,
+        setAsCurrent: false,
+        withWatermark: false
+      }
+    ]);
     expect(draftManufacturer).toEqual(jasmine.objectContaining({
       key: 'manufacturer:manufacturer-1',
       id: 'manufacturer-1',

@@ -1,9 +1,14 @@
 using System.Net;
+using System.Net.Http.Headers;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Images;
 using Microsoft.Extensions.Logging;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats;
+using DomainImage = AmusementPark.Core.Domain.Images.Image;
+using ImageSharpImage = SixLabors.ImageSharp.Image;
 
 namespace AmusementPark.Infrastructure.Services.Images;
 
@@ -13,32 +18,7 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
 
     private const int MaxRedirects = 5;
     private const long MaxImageBytes = 10 * 1024 * 1024;
-
-    private static readonly HashSet<string> StreamContentTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-    {
-        "application/octet-stream",
-        "binary/octet-stream",
-    };
-
-    private static readonly Dictionary<string, string> ExtensionContentTypes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-    {
-        [".apng"] = "image/apng",
-        [".avif"] = "image/avif",
-        [".bmp"] = "image/bmp",
-        [".gif"] = "image/gif",
-        [".ico"] = "image/x-icon",
-        [".jfif"] = "image/jpeg",
-        [".jpe"] = "image/jpeg",
-        [".jpeg"] = "image/jpeg",
-        [".jpg"] = "image/jpeg",
-        [".pjp"] = "image/jpeg",
-        [".pjpeg"] = "image/jpeg",
-        [".png"] = "image/png",
-        [".tga"] = "image/x-tga",
-        [".tif"] = "image/tiff",
-        [".tiff"] = "image/tiff",
-        [".webp"] = "image/webp",
-    };
+    private const string BrowserUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0 Safari/537.36";
 
     private readonly IHttpClientFactory httpClientFactory;
     private readonly IImageRepository imageRepository;
@@ -60,7 +40,7 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
         this.logger = logger;
     }
 
-    public async Task<Image?> ImportAsync(RemoteImageImportRequest request, CancellationToken cancellationToken)
+    public async Task<DomainImage?> ImportAsync(RemoteImageImportRequest request, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -79,6 +59,7 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
 
             using (downloadedImage)
             {
+                bool withWatermark = ShouldApplyWatermark(request.Category, request.WithWatermark);
                 string imageId = Guid.NewGuid().ToString("N");
                 string storagePath = $"{ToPathSegment(request.Category)}/{imageId}";
                 FilePayload file = new FilePayload
@@ -95,7 +76,7 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
                     Category = request.Category,
                     File = file,
                     Description = request.Description,
-                    WithWatermark = request.WithWatermark,
+                    WithWatermark = withWatermark,
                     OwnerType = request.OwnerType,
                     OwnerId = string.IsNullOrWhiteSpace(request.OwnerId) ? null : request.OwnerId.Trim(),
                     StoragePath = storagePath,
@@ -108,14 +89,14 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
                     file.Content.Position = 0;
                 }
 
-                await this.imageBinaryStorage.SaveAsync(storagePath, file, request.WithWatermark, cancellationToken);
+                await this.imageBinaryStorage.SaveAsync(storagePath, file, withWatermark, cancellationToken);
                 ImageUploadRequest preparedRequest = new ImageUploadRequest
                 {
                     ImageId = imageId,
                     Category = request.Category,
                     File = file,
                     Description = request.Description,
-                    WithWatermark = request.WithWatermark,
+                    WithWatermark = withWatermark,
                     OwnerType = request.OwnerType,
                     OwnerId = string.IsNullOrWhiteSpace(request.OwnerId) ? null : request.OwnerId.Trim(),
                     StoragePath = storagePath,
@@ -155,7 +136,7 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
             }
 
             using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, currentUri);
-            request.Headers.Accept.ParseAdd("image/avif,image/webp,image/apng,image/*,*/*;q=0.8");
+            ApplyBrowserLikeHeaders(request, currentUri);
 
             using HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
             if (IsRedirect(response.StatusCode))
@@ -182,13 +163,7 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
             }
 
             string? mediaType = response.Content.Headers.ContentType?.MediaType;
-            string fileName = BuildFileName(currentUri, mediaType);
-            string contentType = ResolveContentType(fileName, mediaType);
-            if (!IsPotentialImageContent(contentType, fileName))
-            {
-                return null;
-            }
-
+            string fileName = BuildFileName(currentUri, mediaType, response.Content.Headers.ContentDisposition);
             MemoryStream content = new MemoryStream();
             try
             {
@@ -201,6 +176,16 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
                 }
 
                 content.Position = 0;
+                IImageFormat? detectedFormat = await ImageSharpImage.DetectFormatAsync(content, cancellationToken);
+                if (detectedFormat is null)
+                {
+                    content.Dispose();
+                    return null;
+                }
+
+                content.Position = 0;
+                string contentType = ResolveContentType(mediaType, detectedFormat);
+                fileName = EnsureFileNameExtension(fileName, detectedFormat, contentType);
                 return new DownloadedImage(content, fileName, contentType);
             }
             catch
@@ -211,6 +196,23 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
         }
 
         return null;
+    }
+
+    internal static bool ShouldApplyWatermark(ImageCategory category, bool requestedWithWatermark)
+    {
+        return requestedWithWatermark && category != ImageCategory.ParkLogo;
+    }
+
+    private static void ApplyBrowserLikeHeaders(HttpRequestMessage request, Uri currentUri)
+    {
+        request.Headers.UserAgent.ParseAdd(BrowserUserAgent);
+        request.Headers.Accept.ParseAdd("image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8");
+        request.Headers.AcceptLanguage.ParseAdd("fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7");
+        request.Headers.CacheControl = new CacheControlHeaderValue { NoCache = true };
+        request.Headers.Referrer = new Uri(currentUri.GetLeftPart(UriPartial.Authority));
+        request.Headers.TryAddWithoutValidation("Sec-Fetch-Dest", "image");
+        request.Headers.TryAddWithoutValidation("Sec-Fetch-Mode", "no-cors");
+        request.Headers.TryAddWithoutValidation("Sec-Fetch-Site", "cross-site");
     }
 
     private static async Task CopyToMemoryWithLimitAsync(Stream input, MemoryStream output, long maxBytes, CancellationToken cancellationToken)
@@ -318,19 +320,31 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
         return (bytes[0] & 0xfe) == 0xfc;
     }
 
-    private static string BuildFileName(Uri uri, string? mediaType)
+    private static string BuildFileName(Uri uri, string? mediaType, ContentDispositionHeaderValue? contentDisposition)
     {
-        string fileName = Path.GetFileName(uri.LocalPath);
+        string? dispositionFileName = contentDisposition?.FileNameStar ?? contentDisposition?.FileName;
+        string fileName = NormalizeHeaderFileName(dispositionFileName) ?? Path.GetFileName(uri.LocalPath);
         if (string.IsNullOrWhiteSpace(fileName))
         {
-            fileName = $"remote-image{ResolveExtension(mediaType)}";
+            fileName = "remote-image";
         }
 
         char[] invalidCharacters = Path.GetInvalidFileNameChars();
         string sanitized = new string(fileName.Select(character => invalidCharacters.Contains(character) ? '_' : character).ToArray());
-        return string.IsNullOrWhiteSpace(Path.GetExtension(sanitized))
+        return string.IsNullOrWhiteSpace(Path.GetExtension(sanitized)) && IsImageMediaType(mediaType)
             ? $"{sanitized}{ResolveExtension(mediaType)}"
             : sanitized;
+    }
+
+    private static string? NormalizeHeaderFileName(string? fileName)
+    {
+        string trimmedFileName = fileName?.Trim().Trim('"') ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(trimmedFileName))
+        {
+            return null;
+        }
+
+        return Path.GetFileName(trimmedFileName.Replace('\\', '/'));
     }
 
     private static string ResolveExtension(string? mediaType)
@@ -353,27 +367,36 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
         };
     }
 
-    private static string ResolveContentType(string fileName, string? mediaType)
+    private static string ResolveContentType(string? mediaType, IImageFormat detectedFormat)
     {
-        if (!string.IsNullOrWhiteSpace(mediaType))
+        if (IsImageMediaType(mediaType))
         {
-            return mediaType.Trim();
+            string detectedMimeType = detectedFormat.DefaultMimeType;
+            return string.IsNullOrWhiteSpace(detectedMimeType) ? mediaType!.Trim() : detectedMimeType;
         }
 
-        string extension = Path.GetExtension(fileName);
-        return ExtensionContentTypes.TryGetValue(extension, out string? contentType)
-            ? contentType
-            : "application/octet-stream";
+        return detectedFormat.DefaultMimeType;
     }
 
-    private static bool IsPotentialImageContent(string contentType, string fileName)
+    private static string EnsureFileNameExtension(string fileName, IImageFormat detectedFormat, string contentType)
     {
-        if (contentType.StartsWith("image/", StringComparison.OrdinalIgnoreCase))
+        string extension = Path.GetExtension(fileName);
+        string[] detectedExtensions = detectedFormat.FileExtensions.ToArray();
+        if (!string.IsNullOrWhiteSpace(extension) && detectedExtensions.Any(detectedExtension => string.Equals(extension.TrimStart('.'), detectedExtension.TrimStart('.'), StringComparison.OrdinalIgnoreCase)))
         {
-            return true;
+            return fileName;
         }
 
-        return StreamContentTypes.Contains(contentType) && ExtensionContentTypes.ContainsKey(Path.GetExtension(fileName));
+        string resolvedExtension = detectedExtensions.FirstOrDefault()
+            ?? ResolveExtension(contentType);
+
+        return $"{Path.GetFileNameWithoutExtension(fileName)}.{resolvedExtension.TrimStart('.')}";
+    }
+
+    private static bool IsImageMediaType(string? mediaType)
+    {
+        return !string.IsNullOrWhiteSpace(mediaType) &&
+               mediaType.StartsWith("image/", StringComparison.OrdinalIgnoreCase);
     }
 
     private static string ToPathSegment(ImageCategory category)

@@ -48,6 +48,8 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
   @Input() remoteImportButtonKey: string = 'shared.imageUpload.remoteImport';
   @Input() remotePreviewAltKey: string = 'shared.imageUpload.remotePreviewAlt';
   @Input() withWatermark: boolean = false;
+  @Input() allowWatermarkChoice: boolean = false;
+  @Input() watermarkLabelKey: string = 'shared.imageUpload.withWatermark';
   @Input() maxFileSizeBytes: number = 5 * 1024 * 1024;
 
   @Output() uploaded: EventEmitter<ImageDto> = new EventEmitter<ImageDto>();
@@ -184,10 +186,15 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
   }
 
   setRemoteSourceUrl(value: string): void {
+    const hadRemoteSourceUrl: boolean = this.remoteSourceUrl.trim().length > 0;
     this.remoteSourceUrl = value;
     this.errorTranslationKey = null;
 
     if (this.remoteSourceUrl.trim().length > 0) {
+      if (!hadRemoteSourceUrl && this.allowWatermarkChoice) {
+        this.withWatermark = false;
+      }
+
       this.selectedFile = null;
       this.cleanupPreviewUrl();
       if (this.fileInput?.nativeElement) {
@@ -222,6 +229,10 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     }
 
     this.selectedFile = file;
+    if (this.allowWatermarkChoice) {
+      this.withWatermark = true;
+    }
+
     this.setPreviewFromFile(file);
   }
 
@@ -275,6 +286,10 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     this.description = '';
     this.errorTranslationKey = null;
     this.isDragging = false;
+    if (this.allowWatermarkChoice) {
+      this.withWatermark = true;
+    }
+
     this.cleanupPreviewUrl();
 
     if (this.fileInput?.nativeElement) {

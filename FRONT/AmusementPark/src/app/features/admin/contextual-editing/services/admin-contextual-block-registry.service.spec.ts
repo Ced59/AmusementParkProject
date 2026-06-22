@@ -98,6 +98,7 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.capabilities).toContain('contextualPhotoAdd');
     expect(block?.jsonScope).toContain('image.file');
     expect(block?.jsonScope).toContain('image.tagIds[*]');
+    expect(block?.jsonScope).toContain('image.withWatermark');
   });
 
   it('creates a park item description block with parent ids and a full admin route', () => {
@@ -156,6 +157,7 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.capabilities).toContain('contextualPhotoAdd');
     expect(block?.jsonScope).toContain('parkItem.parkId');
     expect(block?.jsonScope).toContain('image.sourceUrl');
+    expect(block?.jsonScope).toContain('image.withWatermark');
   });
 
   it('creates a manufacturer reference block with a graph upsert draft and import route', () => {

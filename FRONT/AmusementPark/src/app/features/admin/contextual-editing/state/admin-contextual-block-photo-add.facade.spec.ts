@@ -124,7 +124,7 @@ describe('AdminContextualBlockPhotoAddFacade', () => {
     expect(facade.previewUrl()).toBeNull();
     expect(facade.successKey()).toBe('admin.contextualBlocks.drawer.photoUploadSucceeded');
     expect(facade.metadataRows().length).toBe(0);
-    expect(imagesPort.uploadImage).toHaveBeenCalledOnceWith(file, ImageCategory.PARK, false, 'Entrance view');
+    expect(imagesPort.uploadImage).toHaveBeenCalledOnceWith(file, ImageCategory.PARK, true, 'Entrance view');
     expect(imagesPort.linkImage).toHaveBeenCalledOnceWith({
       imageId: 'uploaded-1',
       ownerType: ImageOwnerType.PARK,
@@ -160,6 +160,7 @@ describe('AdminContextualBlockPhotoAddFacade', () => {
     facade.previewRemoteSourceUrl();
     await flushPromises();
     facade.updateDescription('Queue line');
+    facade.updateWithWatermark(false);
     facade.updateIsPublished(false);
     facade.uploadPhoto(block);
     await flushPromises();

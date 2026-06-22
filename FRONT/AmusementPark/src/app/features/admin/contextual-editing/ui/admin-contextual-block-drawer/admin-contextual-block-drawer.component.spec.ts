@@ -93,6 +93,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     previewUrl: Signal<string | null>;
     metadataRows: Signal<readonly AdminContextualBlockPhotoMetadataRow[]>;
     description: Signal<string>;
+    withWatermark: Signal<boolean>;
     isPublished: Signal<boolean>;
     setAsCurrent: Signal<boolean>;
     categoryOptions: Signal<readonly AdminContextualBlockPhotoCategoryOption[]>;
@@ -111,6 +112,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     updateRemoteSourceUrl: jasmine.Spy;
     previewRemoteSourceUrl: jasmine.Spy;
     updateDescription: jasmine.Spy;
+    updateWithWatermark: jasmine.Spy;
     updateSelectedCategorySlug: jasmine.Spy;
     toggleTag: jasmine.Spy;
     updateIsPublished: jasmine.Spy;
@@ -167,6 +169,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
       { labelKey: 'admin.contextualBlocks.drawer.photoMetadataGeoLocation', value: '50.100000, 3.200000', tone: 'success' }
     ]);
     const photoDescriptionSignal = signal<string>('');
+    const photoWithWatermarkSignal = signal<boolean>(false);
     const photoIsPublishedSignal = signal<boolean>(true);
     const photoSetAsCurrentSignal = signal<boolean>(false);
     const photoCategoryOptionsSignal = signal<readonly AdminContextualBlockPhotoCategoryOption[]>([
@@ -304,6 +307,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
       previewUrl: photoPreviewUrlSignal.asReadonly(),
       metadataRows: photoMetadataRowsSignal.asReadonly(),
       description: photoDescriptionSignal.asReadonly(),
+      withWatermark: photoWithWatermarkSignal.asReadonly(),
       isPublished: photoIsPublishedSignal.asReadonly(),
       setAsCurrent: photoSetAsCurrentSignal.asReadonly(),
       categoryOptions: photoCategoryOptionsSignal.asReadonly(),
@@ -329,6 +333,9 @@ describe('AdminContextualBlockDrawerComponent', () => {
       previewRemoteSourceUrl: jasmine.createSpy('previewRemoteSourceUrl'),
       updateDescription: jasmine.createSpy('updateDescription').and.callFake((value: string): void => {
         photoDescriptionSignal.set(value);
+      }),
+      updateWithWatermark: jasmine.createSpy('updateWithWatermark').and.callFake((value: boolean): void => {
+        photoWithWatermarkSignal.set(value);
       }),
       updateSelectedCategorySlug: jasmine.createSpy('updateSelectedCategorySlug').and.callFake((value: string): void => {
         photoSelectedCategorySlugSignal.set(value);
@@ -754,8 +761,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
     tagInput.dispatchEvent(new Event('change'));
 
     const toggles: NodeListOf<HTMLInputElement> = host.querySelectorAll('.admin-contextual-block-drawer__toggles input[type="checkbox"]');
-    toggles.item(1).checked = true;
-    toggles.item(1).dispatchEvent(new Event('change'));
+    toggles.item(0).checked = true;
+    toggles.item(0).dispatchEvent(new Event('change'));
+    toggles.item(2).checked = true;
+    toggles.item(2).dispatchEvent(new Event('change'));
     fixture.detectChanges();
 
     const previewButton: HTMLButtonElement = host.querySelector('.admin-contextual-block-drawer__photo-add .admin-contextual-block-drawer__action--secondary') as HTMLButtonElement;
@@ -768,6 +777,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(photoAddFacade.setSourceMode).toHaveBeenCalledWith('remote');
     expect(photoAddFacade.updateRemoteSourceUrl).toHaveBeenCalledWith('https://example.test/photo.jpg');
     expect(photoAddFacade.updateDescription).toHaveBeenCalledWith('Night view');
+    expect(photoAddFacade.updateWithWatermark).toHaveBeenCalledWith(true);
     expect(photoAddFacade.toggleTag).toHaveBeenCalledWith('tag-1', true);
     expect(photoAddFacade.updateSetAsCurrent).toHaveBeenCalledWith(true);
     expect(photoAddFacade.previewRemoteSourceUrl).toHaveBeenCalled();

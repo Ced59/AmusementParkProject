@@ -221,7 +221,9 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, "isPublished", null, ReadBool(patch, "isPublished") ?? true);
 
         bool setAsCurrent = ReadBool(patch, "setAsCurrent") ?? category == ImageCategory.ParkLogo;
+        bool withWatermark = ShouldApplyRemoteImageWatermark(category, ReadBool(patch, "withWatermark"));
         AddChange(change, "setAsCurrent", null, setAsCurrent);
+        AddChange(change, "withWatermark", null, withWatermark);
 
         if (!Uri.TryCreate(sourceUrl, UriKind.Absolute, out Uri? sourceUri)
             || (sourceUri.Scheme != Uri.UriSchemeHttp && sourceUri.Scheme != Uri.UriSchemeHttps))
@@ -257,7 +259,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 OwnerType = resolvedOwnerType,
                 OwnerId = resolvedOwnerId,
                 Description = ReadString(patch, "description"),
-                WithWatermark = ReadBool(patch, "withWatermark") ?? category != ImageCategory.ParkLogo,
+                WithWatermark = withWatermark,
                 SetAsCurrent = false,
             };
 
@@ -551,6 +553,11 @@ public sealed partial class ParkGraphUpsertProcessor
             || HasProperty(patch, "tagIds")
             || HasProperty(patch, "geoLocation")
             || HasProperty(patch, "isPublished");
+    }
+
+    private static bool ShouldApplyRemoteImageWatermark(ImageCategory category, bool? requestedWithWatermark)
+    {
+        return category != ImageCategory.ParkLogo && requestedWithWatermark == true;
     }
 
     private static string BuildInternalImageUrl(string imageId)

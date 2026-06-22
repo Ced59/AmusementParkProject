@@ -54,6 +54,7 @@ export class AdminContextualBlockPhotoAddFacade {
   private readonly metadataPreviewSignal = signal<AdminContextualPhotoMetadataPreview | null>(null);
   private readonly metadataRowsSignal = signal<readonly AdminContextualBlockPhotoMetadataRow[]>([]);
   private readonly descriptionSignal = signal<string>('');
+  private readonly withWatermarkSignal = signal<boolean>(true);
   private readonly isPublishedSignal = signal<boolean>(true);
   private readonly setAsCurrentSignal = signal<boolean>(false);
   private readonly categoryOptionsSignal = signal<readonly AdminContextualBlockPhotoCategoryOption[]>([]);
@@ -74,6 +75,7 @@ export class AdminContextualBlockPhotoAddFacade {
   public readonly previewUrl: Signal<string | null> = this.previewUrlSignal.asReadonly();
   public readonly metadataRows: Signal<readonly AdminContextualBlockPhotoMetadataRow[]> = this.metadataRowsSignal.asReadonly();
   public readonly description: Signal<string> = this.descriptionSignal.asReadonly();
+  public readonly withWatermark: Signal<boolean> = this.withWatermarkSignal.asReadonly();
   public readonly isPublished: Signal<boolean> = this.isPublishedSignal.asReadonly();
   public readonly setAsCurrent: Signal<boolean> = this.setAsCurrentSignal.asReadonly();
   public readonly categoryOptions: Signal<readonly AdminContextualBlockPhotoCategoryOption[]> = this.categoryOptionsSignal.asReadonly();
@@ -109,6 +111,7 @@ export class AdminContextualBlockPhotoAddFacade {
     this.metadataPreviewSignal.set(null);
     this.metadataRowsSignal.set([]);
     this.descriptionSignal.set('');
+    this.withWatermarkSignal.set(this.getDefaultWatermarkForSourceMode('file'));
     this.isPublishedSignal.set(true);
     this.setAsCurrentSignal.set(false);
     this.tagOptionsSignal.set([]);
@@ -145,6 +148,7 @@ export class AdminContextualBlockPhotoAddFacade {
     }
 
     this.sourceModeSignal.set(mode);
+    this.withWatermarkSignal.set(this.getDefaultWatermarkForSourceMode(mode));
     this.clearSource();
   }
 
@@ -166,6 +170,7 @@ export class AdminContextualBlockPhotoAddFacade {
     }
 
     this.sourceModeSignal.set('file');
+    this.withWatermarkSignal.set(this.getDefaultWatermarkForSourceMode('file'));
     this.selectedFileSignal.set(file);
     this.remoteSourceUrlSignal.set('');
     this.previewUrlSignal.set(URL.createObjectURL(file));
@@ -173,6 +178,10 @@ export class AdminContextualBlockPhotoAddFacade {
   }
 
   updateRemoteSourceUrl(sourceUrl: string): void {
+    if (this.sourceModeSignal() !== 'remote') {
+      this.withWatermarkSignal.set(this.getDefaultWatermarkForSourceMode('remote'));
+    }
+
     this.sourceModeSignal.set('remote');
     this.remoteSourceUrlSignal.set(sourceUrl);
     this.selectedFileSignal.set(null);
@@ -203,6 +212,12 @@ export class AdminContextualBlockPhotoAddFacade {
 
   updateDescription(description: string): void {
     this.descriptionSignal.set(description);
+    this.errorKeySignal.set(null);
+    this.successKeySignal.set(null);
+  }
+
+  updateWithWatermark(withWatermark: boolean): void {
+    this.withWatermarkSignal.set(withWatermark);
     this.errorKeySignal.set(null);
     this.successKeySignal.set(null);
   }
@@ -307,7 +322,7 @@ export class AdminContextualBlockPhotoAddFacade {
     const uploadedImage: UploadedImage = await firstValueFrom(this.imagesPort.uploadImage(
       selectedFile,
       this.resolveImageCategory(block),
-      false,
+      this.withWatermarkSignal(),
       this.descriptionSignal().trim() || block.contextLabel
     ));
 
@@ -327,7 +342,7 @@ export class AdminContextualBlockPhotoAddFacade {
       ownerType: this.resolveOwnerType(block),
       ownerId: block.entityId,
       description: this.descriptionSignal().trim() || block.contextLabel,
-      withWatermark: false,
+      withWatermark: this.withWatermarkSignal(),
       setAsCurrent: this.setAsCurrentSignal()
     }));
   }
@@ -505,7 +520,12 @@ export class AdminContextualBlockPhotoAddFacade {
 
   private resetSourceAfterSuccess(image: ImageDto): void {
     this.clearSource();
+    this.withWatermarkSignal.set(this.getDefaultWatermarkForSourceMode(this.sourceModeSignal()));
     this.setAsCurrentSignal.set(image.isCurrent);
+  }
+
+  private getDefaultWatermarkForSourceMode(mode: AdminContextualPhotoSourceMode): boolean {
+    return mode === 'file';
   }
 
   private resolveCategoryOptions(block: AdminContextualBlockInstance): readonly AdminContextualBlockPhotoCategoryOption[] {

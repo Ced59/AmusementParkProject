@@ -1829,7 +1829,8 @@
       "descriptionPlaceholder": "Beschrijving",
       "remoteSourceUrlPlaceholder": "URL van bronafbeelding",
       "remoteImport": "Importeren via URL",
-      "remotePreviewAlt": "Voorbeeld van bronafbeelding"
+      "remotePreviewAlt": "Voorbeeld van bronafbeelding",
+      "withWatermark": "Watermark toevoegen"
     }
   },
   "sidebar": {

@@ -15,7 +15,8 @@
       "descriptionPlaceholder": "Description",
       "remoteSourceUrlPlaceholder": "Source image URL",
       "remoteImport": "Import from URL",
-      "remotePreviewAlt": "Source image preview"
+      "remotePreviewAlt": "Source image preview",
+      "withWatermark": "Add watermark"
     }
   }
 }
