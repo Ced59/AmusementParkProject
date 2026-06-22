@@ -640,6 +640,210 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenManufacturerReferenceHasNoParkContext_ShouldApplyReferenceOnlyDocument()
+    {
+        AttractionManufacturer? createdManufacturer = null;
+        Mock<IAttractionManufacturerRepository> attractionManufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        attractionManufacturerRepository
+            .Setup(value => value.GetAllAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<AttractionManufacturer>());
+        attractionManufacturerRepository
+            .Setup(value => value.CreateAsync(It.IsAny<AttractionManufacturer>(), It.IsAny<CancellationToken>()))
+            .Callback<AttractionManufacturer, CancellationToken>((manufacturer, _) =>
+            {
+                manufacturer.Id = "manufacturer-1";
+                createdManufacturer = manufacturer;
+            })
+            .ReturnsAsync((AttractionManufacturer manufacturer, CancellationToken _) => manufacturer);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, "manufacturer-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            attractionManufacturerRepository.Object,
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "references": {
+            "manufacturers": [
+              {
+                "key": "manufacturer:mack-rides",
+                "name": "Mack Rides",
+                "adminReviewStatus": "Validated"
+              }
+            ]
+          }
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = null,
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Null(result.Value!.TargetParkId);
+        Assert.True(result.Value.CanApply);
+        Assert.NotNull(createdManufacturer);
+        Assert.Equal("Mack Rides", createdManufacturer.Name);
+        attractionManufacturerRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenRemoteManufacturerImageHasNoParkContext_ShouldImportAndSetManufacturerLogo()
+    {
+        AttractionManufacturer manufacturer = new AttractionManufacturer
+        {
+            Id = "manufacturer-1",
+            Name = "Mack Rides",
+        };
+
+        Mock<IAttractionManufacturerRepository> attractionManufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        attractionManufacturerRepository
+            .Setup(value => value.GetAllAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { manufacturer });
+        attractionManufacturerRepository
+            .Setup(value => value.GetByIdAsync("manufacturer-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(manufacturer);
+        attractionManufacturerRepository
+            .Setup(value => value.UpdateAsync(
+                "manufacturer-1",
+                It.Is<AttractionManufacturer>(value => value.CurrentLogoImageId == "image-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, AttractionManufacturer value, CancellationToken _) => value);
+
+        Image importedImage = new Image
+        {
+            Id = "image-1",
+            OwnerType = ImageOwnerType.AttractionManufacturer,
+            OwnerId = "manufacturer-1",
+            Category = ImageCategory.Manufacturer,
+            SourceUrl = "https://cdn.example.test/logo.png",
+        };
+        Image currentImage = new Image
+        {
+            Id = "image-1",
+            OwnerType = ImageOwnerType.AttractionManufacturer,
+            OwnerId = "manufacturer-1",
+            Category = ImageCategory.Manufacturer,
+            SourceUrl = "https://cdn.example.test/logo.png",
+            IsCurrent = true,
+        };
+
+        Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+        remoteImageImporter
+            .Setup(value => value.ImportAsync(
+                It.Is<RemoteImageImportRequest>(request =>
+                    request.OwnerType == ImageOwnerType.AttractionManufacturer
+                    && request.OwnerId == "manufacturer-1"
+                    && request.Category == ImageCategory.Manufacturer
+                    && request.WithWatermark == false
+                    && request.SetAsCurrent == false),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(importedImage);
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.SetCurrentAsync("image-1", ImageOwnerType.AttractionManufacturer, "manufacturer-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(currentImage);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, "manufacturer-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            attractionManufacturerRepository.Object,
+            imageRepository.Object,
+            remoteImageImporter.Object,
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "references": {
+            "manufacturers": [
+              {
+                "key": "manufacturer:mack-rides",
+                "id": "manufacturer-1",
+                "name": "Mack Rides"
+              }
+            ]
+          },
+          "images": [
+            {
+              "sourceUrl": "https://cdn.example.test/logo.png",
+              "ownerKey": "manufacturer:mack-rides",
+              "category": "Manufacturer",
+              "setAsCurrent": true,
+              "withWatermark": false
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = null,
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("image-1", manufacturer.CurrentLogoImageId);
+        Assert.Contains(result.Value!.Changes, change => change.EntityType == "Image" && change.ChangeType == "Created");
+        attractionManufacturerRepository.VerifyAll();
+        remoteImageImporter.VerifyAll();
+        imageRepository.VerifyAll();
+        searchProjectionWriter.Verify(value => value.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, "manufacturer-1", It.IsAny<CancellationToken>()), Times.Once);
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenRemoteParkLogoIsProvided_ShouldImportAndSetCurrent()
     {
         Park park = new Park

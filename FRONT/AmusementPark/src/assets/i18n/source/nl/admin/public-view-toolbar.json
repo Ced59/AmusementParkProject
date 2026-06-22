@@ -77,16 +77,23 @@
         "addChildSucceeded": "Verborgen item gemaakt, de pagina wordt bijgewerkt.",
         "openCreatedChild": "Item openen",
         "parkGraphUpsertTitle": "Fabrikant-upsert-JSON",
-        "parkGraphUpsertHint": "Kopieer of download deze vooraf ingevulde JSON en importeer die daarna in de park-graph-upsert met een doelpark.",
+        "parkGraphUpsertHint": "Kopieer, download of importeer deze vooraf ingevulde fabrikant-JSON direct.",
         "parkGraphUpsertDraftAriaLabel": "Vooraf ingevulde fabrikant-upsert-JSON",
         "copyParkGraphUpsert": "JSON kopieren",
         "copyParkGraphUpsertBusy": "Kopieren...",
         "downloadParkGraphUpsert": "JSON downloaden",
         "openParkGraphUpsertImport": "JSON-import openen",
+        "importParkGraphUpsert": "JSON importeren",
+        "importParkGraphUpsertBusy": "Importeren...",
         "parkGraphUpsertCopied": "JSON gekopieerd naar het klembord.",
         "parkGraphUpsertDownloaded": "JSON-download gestart.",
+        "parkGraphUpsertImported": "Fabrikant-JSON geimporteerd.",
         "parkGraphUpsertCopyError": "JSON kopieren mislukt.",
         "parkGraphUpsertDownloadError": "JSON downloaden mislukt.",
+        "parkGraphUpsertImportError": "JSON importeren mislukt.",
+        "parkGraphUpsertImportBlocked": "De JSON kon niet worden toegepast.",
+        "parkGraphUpsertImportInvalidFile": "Kies een .json-bestand.",
+        "parkGraphUpsertImportInvalidJson": "Het JSON-bestand is ongeldig.",
         "parkGraphUpsertUnavailable": "Geen upsert-concept beschikbaar voor dit blok.",
         "downloadJson": "Blok-JSON downloaden",
         "downloadJsonBusy": "Downloaden...",
@@ -157,7 +164,7 @@
         "boundedJsonApply": "Begrensde JSON-toepassing beschikbaar",
         "contextualFormEdit": "Contextformulier beschikbaar",
         "targetedChildAdd": "Gericht toevoegen beschikbaar",
-        "parkGraphUpsertDraft": "Park-graph-upsert-concept beschikbaar",
+        "parkGraphUpsertDraft": "JSON-upsert-concept beschikbaar",
         "boundedJsonExportPlanned": "Begrensde JSON-export gepland",
         "boundedJsonUpsertPlanned": "Begrensde JSON-upsert gepland",
         "formEditPlanned": "Contextformulier gepland",
@@ -198,7 +205,7 @@
         },
         "manufacturerReference": {
           "label": "Fabrikant",
-          "description": "Vooraf ingevuld park-graph-upsert-concept voor deze fabrikant."
+          "description": "Vooraf ingevuld JSON-upsert-concept voor deze fabrikant."
         }
       }
     }

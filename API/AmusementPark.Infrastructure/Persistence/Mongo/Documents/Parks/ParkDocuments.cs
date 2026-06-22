@@ -145,6 +145,10 @@ public sealed class AttractionManufacturerDocument : MongoDocumentBase
     [BsonElement("biography")]
     public List<LocalizedTextDocument> Biography { get; set; } = new();
 
+    [BsonElement("currentLogoImageId")]
+    [BsonIgnoreIfNull]
+    public string? CurrentLogoImageId { get; set; }
+
     [BsonElement("adminReviewStatus")]
     [BsonRepresentation(BsonType.String)]
     public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;

@@ -31,6 +31,7 @@ export class AdminReferenceImagesComponent implements OnInit, OnChanges {
   protected isLoading: boolean = false;
   protected uploadDialogVisible: boolean = false;
   protected readonly ImageCategory = ImageCategory;
+  protected readonly ImageOwnerType = ImageOwnerType;
 
   constructor(
     private readonly imagesApiService: ImagesApiService,

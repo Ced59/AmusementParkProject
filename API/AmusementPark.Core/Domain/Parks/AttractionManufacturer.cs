@@ -39,6 +39,11 @@ public sealed class AttractionManufacturer : AuditableEntity
     public List<LocalizedText> Biography { get; set; } = new();
 
     /// <summary>
+    /// Identifiant de l'image courante utilisee comme logo.
+    /// </summary>
+    public string? CurrentLogoImageId { get; set; }
+
+    /// <summary>
     /// Statut de revue interne pour le pilotage back-office.
     /// </summary>
     public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;

@@ -102,6 +102,18 @@ public sealed partial class ParkGraphUpsertProcessor
 
         JsonElement? parkPatch = GetObject(root, "park");
         JsonElement? identity = GetObject(root, "identity");
+        bool requiresParkContext = RequiresParkContext(root);
+        Dictionary<string, string> founderKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, string> operatorKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, string> manufacturerKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        if (root.TryGetProperty("references", out JsonElement references) && references.ValueKind == JsonValueKind.Object)
+        {
+            await this.ProcessFoundersAsync(references, founderKeys, result, apply, cancellationToken);
+            await this.ProcessOperatorsAsync(references, operatorKeys, result, apply, cancellationToken);
+            await this.ProcessManufacturersAsync(references, manufacturerKeys, result, apply, cancellationToken);
+        }
+
         string? targetParkId = NormalizeString(request.TargetParkId)
             ?? ReadString(identity, "parkId")
             ?? ReadString(identity, "id")
@@ -117,18 +129,26 @@ public sealed partial class ParkGraphUpsertProcessor
                 result.Errors.Add($"Aucun parc existant ne correspond à l'identifiant '{targetParkId}'.");
             }
         }
-        else if (request.CreateIfMissing)
+        else if (request.CreateIfMissing && requiresParkContext)
         {
             targetPark = BuildNewParkFromPatch(parkPatch, identity, result);
             parkWillBeCreated = true;
         }
-        else
+        else if (requiresParkContext)
         {
             result.Errors.Add("Aucun parc cible sélectionné. Sélectionner un parc existant ou activer la création explicite.");
         }
 
         if (targetPark is null)
         {
+            if (!requiresParkContext && result.Errors.Count == 0)
+            {
+                await this.ProcessImagesAsync(root, null, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase), founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
+                FinalizeCounts(result);
+                await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+                return ApplicationResult<ParkGraphUpsertResult>.Success(result);
+            }
+
             result.CanApply = false;
             FinalizeCounts(result);
             await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
@@ -138,17 +158,6 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         PublicSeoParkSnapshot? previousParkSnapshot = PublicSeoParkSnapshot.FromPark(targetPark);
-
-        Dictionary<string, string> founderKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        Dictionary<string, string> operatorKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        Dictionary<string, string> manufacturerKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
-        if (root.TryGetProperty("references", out JsonElement references) && references.ValueKind == JsonValueKind.Object)
-        {
-            await this.ProcessFoundersAsync(references, founderKeys, result, apply, cancellationToken);
-            await this.ProcessOperatorsAsync(references, operatorKeys, result, apply, cancellationToken);
-            await this.ProcessManufacturersAsync(references, manufacturerKeys, result, apply, cancellationToken);
-        }
 
         ParkGraphUpsertChange parkChange = BuildEntityChange("Park", targetPark.Id, "park", targetPark.Name ?? "Parc", parkWillBeCreated ? "Created" : "Unchanged", parkWillBeCreated ? "createIfMissing" : "id");
         PatchPark(targetPark, parkPatch, identity, founderKeys, operatorKeys, parkChange, result, parkWillBeCreated);
@@ -208,17 +217,77 @@ public sealed partial class ParkGraphUpsertProcessor
         return ApplicationResult<ParkGraphUpsertResult>.Success(result);
     }
 
+    private static bool RequiresParkContext(JsonElement root)
+    {
+        if (HasNonEmptyObject(root, "identity")
+            || HasNonEmptyObject(root, "park")
+            || HasNonEmptyArray(root, "zones")
+            || HasNonEmptyArray(root, "items")
+            || HasNonEmptyArray(root, "suppr")
+            || HasNonEmptyObject(root, "suppr")
+            || HasNonEmptyArray(root, "deletions")
+            || HasNonEmptyObject(root, "deletions"))
+        {
+            return true;
+        }
 
+        JsonElement? images = GetArray(root, "images");
+        if (images is null)
+        {
+            return false;
+        }
 
+        foreach (JsonElement image in images.Value.EnumerateArray())
+        {
+            if (ImageRequiresParkContext(image))
+            {
+                return true;
+            }
+        }
 
+        return false;
+    }
 
+    private static bool ImageRequiresParkContext(JsonElement patch)
+    {
+        if (patch.ValueKind != JsonValueKind.Object)
+        {
+            return false;
+        }
 
+        string? ownerKey = ReadString(patch, "ownerKey");
+        if (string.Equals(ownerKey, "park", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
 
+        ImageOwnerType requestedOwnerType = ResolveRequestedImageOwnerType(patch);
+        if (requestedOwnerType == ImageOwnerType.Park || requestedOwnerType == ImageOwnerType.ParkItem)
+        {
+            return true;
+        }
 
+        if (requestedOwnerType == ImageOwnerType.ParkOperator
+            || requestedOwnerType == ImageOwnerType.ParkFounder
+            || requestedOwnerType == ImageOwnerType.AttractionManufacturer)
+        {
+            return false;
+        }
 
+        return !string.IsNullOrWhiteSpace(ownerKey);
+    }
 
+    private static bool HasNonEmptyObject(JsonElement root, string propertyName)
+    {
+        JsonElement? value = GetObject(root, propertyName);
+        return value is not null && value.Value.EnumerateObject().Any();
+    }
 
-
+    private static bool HasNonEmptyArray(JsonElement root, string propertyName)
+    {
+        JsonElement? value = GetArray(root, propertyName);
+        return value is not null && value.Value.GetArrayLength() > 0;
+    }
 
     private async Task SaveHistoryAsync(ParkGraphUpsertRequest request, string? requestedByUserId, bool apply, ParkGraphUpsertResult result, CancellationToken cancellationToken)
     {

@@ -203,6 +203,24 @@
   gap: 0.75rem;
 }
 
+.admin-contextual-block-drawer__file-action {
+  cursor: pointer;
+}
+
+.admin-contextual-block-drawer__file-action input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.admin-contextual-block-drawer__action--disabled {
+  opacity: 0.58;
+  pointer-events: none;
+}
+
 .admin-contextual-block-drawer__form-status {
   margin: 0;
   color: var(--app-text-muted);

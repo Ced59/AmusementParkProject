@@ -89,7 +89,10 @@ public sealed class RemoteImageImporterTests
     [InlineData(ImageCategory.Park, false, false)]
     [InlineData(ImageCategory.ParkLogo, true, false)]
     [InlineData(ImageCategory.ParkLogo, false, false)]
-    public void ShouldApplyWatermark_ShouldNeverApplyToParkLogo(ImageCategory category, bool requestedWithWatermark, bool expected)
+    [InlineData(ImageCategory.Manufacturer, true, false)]
+    [InlineData(ImageCategory.Operator, true, false)]
+    [InlineData(ImageCategory.Founder, true, false)]
+    public void ShouldApplyWatermark_ShouldNeverApplyToLogoCategories(ImageCategory category, bool requestedWithWatermark, bool expected)
     {
         bool result = RemoteImageImporter.ShouldApplyWatermark(category, requestedWithWatermark);
 

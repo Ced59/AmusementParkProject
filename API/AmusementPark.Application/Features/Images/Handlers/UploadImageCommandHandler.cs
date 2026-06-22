@@ -97,7 +97,15 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
 
     private static bool ShouldApplyWatermark(ImageCategory category, bool requestedWithWatermark)
     {
-        return requestedWithWatermark && category != ImageCategory.ParkLogo;
+        return requestedWithWatermark && !IsLogoCategory(category);
+    }
+
+    private static bool IsLogoCategory(ImageCategory category)
+    {
+        return category is ImageCategory.ParkLogo
+            or ImageCategory.Operator
+            or ImageCategory.Manufacturer
+            or ImageCategory.Founder;
     }
 
     private static string ToPathSegment(ImageCategory category)

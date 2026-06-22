@@ -10,6 +10,7 @@ export interface AttractionManufacturer {
   closedYear?: number | null;
   contactDetails?: ParkReferenceContactDetails | null;
   biography?: LocalizedItem<string>[];
+  currentLogoImageId?: string | null;
   attractionCount?: number;
   adminReviewStatus?: AdminReviewStatus;
 }

@@ -18,7 +18,7 @@ public sealed partial class ParkGraphUpsertProcessor
 {
     private async Task ProcessImagesAsync(
         JsonElement root,
-        Park park,
+        Park? park,
         Dictionary<string, string> itemKeys,
         Dictionary<string, string> founderKeys,
         Dictionary<string, string> operatorKeys,
@@ -170,7 +170,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 if (shouldSetCurrent && resolvedOwnerId is not null)
                 {
                     Image? current = await this.imageRepository.SetCurrentAsync(image.Id, ownerType, resolvedOwnerId, cancellationToken);
-                    await this.SynchronizeCurrentParkLogoAsync(current, park, cancellationToken);
+                    await this.SynchronizeCurrentImageOwnerAsync(current, park, cancellationToken);
                 }
             }
 
@@ -180,7 +180,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
     private async Task ProcessRemoteImageAsync(
         JsonElement patch,
-        Park park,
+        Park? park,
         Dictionary<string, string> itemKeys,
         Dictionary<string, string> founderKeys,
         Dictionary<string, string> operatorKeys,
@@ -307,33 +307,48 @@ public sealed partial class ParkGraphUpsertProcessor
             if (setAsCurrent)
             {
                 Image? current = await this.imageRepository.SetCurrentAsync(image.Id, resolvedOwnerType, resolvedOwnerId, cancellationToken);
-                await this.SynchronizeCurrentParkLogoAsync(current, park, cancellationToken);
+                await this.SynchronizeCurrentImageOwnerAsync(current, park, cancellationToken);
             }
         }
 
         result.Changes.Add(change);
     }
 
-    private async Task SynchronizeCurrentParkLogoAsync(Image? current, Park targetPark, CancellationToken cancellationToken)
+    private async Task SynchronizeCurrentImageOwnerAsync(Image? current, Park? targetPark, CancellationToken cancellationToken)
     {
         if (current is null
-            || current.OwnerType != ImageOwnerType.Park
-            || current.Category != ImageCategory.ParkLogo
             || string.IsNullOrWhiteSpace(current.OwnerId))
         {
             return;
         }
 
-        Park? ownerPark = string.Equals(current.OwnerId, targetPark.Id, StringComparison.Ordinal)
-            ? targetPark
-            : await this.parkRepository.GetByIdAsync(current.OwnerId, true, cancellationToken);
-        if (ownerPark is null)
+        if (current.OwnerType == ImageOwnerType.Park && current.Category == ImageCategory.ParkLogo)
         {
+            Park? ownerPark = targetPark is not null && string.Equals(current.OwnerId, targetPark.Id, StringComparison.Ordinal)
+                ? targetPark
+                : await this.parkRepository.GetByIdAsync(current.OwnerId, true, cancellationToken);
+            if (ownerPark is null)
+            {
+                return;
+            }
+
+            ownerPark.CurrentLogoImageId = current.Id;
+            await this.parkRepository.UpdateAsync(ownerPark.Id, ownerPark, cancellationToken);
             return;
         }
 
-        ownerPark.CurrentLogoImageId = current.Id;
-        await this.parkRepository.UpdateAsync(ownerPark.Id, ownerPark, cancellationToken);
+        if (current.OwnerType == ImageOwnerType.AttractionManufacturer && current.Category == ImageCategory.Manufacturer)
+        {
+            AttractionManufacturer? manufacturer = await this.attractionManufacturerRepository.GetByIdAsync(current.OwnerId, cancellationToken);
+            if (manufacturer is null)
+            {
+                return;
+            }
+
+            manufacturer.CurrentLogoImageId = current.Id;
+            await this.attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);
+        }
     }
 
     private static string DescribeStringCollection(IReadOnlyCollection<string> values)
@@ -407,7 +422,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
     private static bool ResolveGraphImageOwner(
         JsonElement patch,
-        Park park,
+        Park? park,
         Dictionary<string, string> itemKeys,
         Dictionary<string, string> founderKeys,
         Dictionary<string, string> operatorKeys,
@@ -423,6 +438,11 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (string.Equals(ownerKey, "park", StringComparison.OrdinalIgnoreCase))
         {
+            if (park is null)
+            {
+                return false;
+            }
+
             ownerType = ImageOwnerType.Park;
             resolvedOwnerId = park.Id;
             return true;
@@ -481,6 +501,11 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (string.IsNullOrWhiteSpace(resolvedOwnerId))
         {
+            if (park is null)
+            {
+                return false;
+            }
+
             ownerType = ImageOwnerType.Park;
             resolvedOwnerId = park.Id;
         }
@@ -557,7 +582,15 @@ public sealed partial class ParkGraphUpsertProcessor
 
     private static bool ShouldApplyRemoteImageWatermark(ImageCategory category, bool? requestedWithWatermark)
     {
-        return category != ImageCategory.ParkLogo && requestedWithWatermark == true;
+        return !IsLogoCategory(category) && requestedWithWatermark == true;
+    }
+
+    private static bool IsLogoCategory(ImageCategory category)
+    {
+        return category is ImageCategory.ParkLogo
+            or ImageCategory.Operator
+            or ImageCategory.Manufacturer
+            or ImageCategory.Founder;
     }
 
     private static string BuildInternalImageUrl(string imageId)

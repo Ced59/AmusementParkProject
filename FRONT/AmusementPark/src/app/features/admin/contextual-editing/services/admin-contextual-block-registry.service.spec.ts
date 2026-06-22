@@ -160,13 +160,13 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.jsonScope).toContain('image.withWatermark');
   });
 
-  it('creates a manufacturer reference block with a graph upsert draft and import route', () => {
+  it('creates a manufacturer reference block with a JSON upsert draft', () => {
     const block: AdminContextualBlockInstance | null = service.createManufacturerBlock(
       'manufacturer-1',
       'Mack Rides',
       'fr',
       '{ "documentType": "AmusementParkParkGraphUpsert" }',
-      'mack-rides-park-graph-upsert.json'
+      'mack-rides-manufacturer-upsert.json'
     );
 
     expect(block?.id).toBe('reference.manufacturer:manufacturer-1');
@@ -174,9 +174,9 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.entityId).toBe('manufacturer-1');
     expect(block?.ids).toEqual({ manufacturerId: 'manufacturer-1' });
     expect(block?.adminRoute).toEqual(['/', 'fr', 'admin', 'manufacturers', 'edit', 'manufacturer-1']);
-    expect(block?.parkGraphUpsertImportRoute).toEqual(['/', 'fr', 'admin', 'park-graph-upserts']);
+    expect(block?.parkGraphUpsertImportRoute).toBeUndefined();
     expect(block?.parkGraphUpsertDraftJson).toContain('AmusementParkParkGraphUpsert');
-    expect(block?.parkGraphUpsertFileName).toBe('mack-rides-park-graph-upsert.json');
+    expect(block?.parkGraphUpsertFileName).toBe('mack-rides-manufacturer-upsert.json');
     expect(block?.capabilities).toContain('parkGraphUpsertDraft');
     expect(block?.localizedLanguageCodes).toEqual(LANGUAGES.map((language: LanguageOption) => language.value));
     expect(block?.jsonScope).toContain('references.manufacturers[*].biography[*].value');

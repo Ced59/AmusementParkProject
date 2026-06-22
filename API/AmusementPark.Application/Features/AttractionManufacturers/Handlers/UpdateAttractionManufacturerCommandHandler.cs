@@ -44,15 +44,26 @@ public sealed class UpdateAttractionManufacturerCommandHandler : ICommandHandler
 
         try
         {
-            AttractionManufacturer? updated = await this.repository.UpdateAsync(command.Id, command.AttractionManufacturer, cancellationToken);
+            string manufacturerId = command.Id.Trim();
+            AttractionManufacturer? existing = await this.repository.GetByIdAsync(manufacturerId, cancellationToken);
+            if (existing is null)
+            {
+                return ApplicationResult<AttractionManufacturerResult>.Failure(ApplicationError.NotFound("attraction-manufacturer.not-found", "Attraction manufacturer not exists"));
+            }
+
+            command.AttractionManufacturer.Id = existing.Id;
+            command.AttractionManufacturer.CreatedAtUtc = existing.CreatedAtUtc;
+            command.AttractionManufacturer.CurrentLogoImageId = existing.CurrentLogoImageId;
+
+            AttractionManufacturer? updated = await this.repository.UpdateAsync(manufacturerId, command.AttractionManufacturer, cancellationToken);
             if (updated is null)
             {
                 return ApplicationResult<AttractionManufacturerResult>.Failure(ApplicationError.NotFound("attraction-manufacturer.not-found", "Attraction manufacturer not exists"));
             }
 
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, updated.Id, cancellationToken);
-            IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { command.Id }, cancellationToken, includeHidden: false);
-            int attractionCount = counts.TryGetValue(command.Id, out int value) ? value : 0;
+            IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { manufacturerId }, cancellationToken, includeHidden: false);
+            int attractionCount = counts.TryGetValue(manufacturerId, out int value) ? value : 0;
 
             return ApplicationResult<AttractionManufacturerResult>.Success(new AttractionManufacturerResult
             {
@@ -63,6 +74,7 @@ public sealed class UpdateAttractionManufacturerCommandHandler : ICommandHandler
                 ClosedYear = updated.ClosedYear,
                 ContactDetails = updated.ContactDetails,
                 Biography = updated.Biography,
+                CurrentLogoImageId = updated.CurrentLogoImageId,
                 AdminReviewStatus = updated.AdminReviewStatus,
                 AttractionCount = attractionCount,
             });

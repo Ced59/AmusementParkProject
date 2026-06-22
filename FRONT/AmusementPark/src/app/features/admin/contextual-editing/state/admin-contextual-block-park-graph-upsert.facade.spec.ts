@@ -1,23 +1,36 @@
 import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
+import { ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
+import {
+  ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT,
+  AdminContextualBlockParkGraphUpsertDataPort
+} from './admin-contextual-block-park-graph-upsert-data.ports';
 import { AdminContextualBlockParkGraphUpsertFacade } from './admin-contextual-block-park-graph-upsert.facade';
 
 describe('AdminContextualBlockParkGraphUpsertFacade', () => {
   let documentRef: Document;
   let facade: AdminContextualBlockParkGraphUpsertFacade;
+  let parkGraphUpsertsApi: jasmine.SpyObj<AdminContextualBlockParkGraphUpsertDataPort>;
 
   beforeEach(() => {
+    parkGraphUpsertsApi = jasmine.createSpyObj<AdminContextualBlockParkGraphUpsertDataPort>('AdminContextualBlockParkGraphUpsertDataPort', ['apply']);
+    parkGraphUpsertsApi.apply.and.returnValue(of(createResult()));
+
     TestBed.configureTestingModule({
-      providers: [AdminContextualBlockParkGraphUpsertFacade]
+      providers: [
+        AdminContextualBlockParkGraphUpsertFacade,
+        { provide: ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT, useValue: parkGraphUpsertsApi }
+      ]
     });
 
     documentRef = TestBed.inject(DOCUMENT);
     facade = TestBed.inject(AdminContextualBlockParkGraphUpsertFacade);
   });
 
-  it('only enables copy and download actions for blocks with a graph upsert draft', () => {
+  it('only enables copy and download actions for blocks with a JSON upsert draft', () => {
     expect(facade.canUseDraft(createBlock('{ "documentType": "AmusementParkParkGraphUpsert" }'))).toBeTrue();
     expect(facade.canUseDraft(createBlock(''))).toBeFalse();
     expect(facade.canUseDraft({ ...createBlock('{}'), capabilities: ['fullAdminEdit'] })).toBeFalse();
@@ -49,7 +62,54 @@ describe('AdminContextualBlockParkGraphUpsertFacade', () => {
       Reflect.deleteProperty(navigatorRef, 'clipboard');
     }
   });
+
+  it('imports a selected JSON file without a target park', async () => {
+    const file: File = new File(['{ "references": { "manufacturers": [{ "name": "Mack Rides" }] } }'], 'manufacturer.json', { type: 'application/json' });
+
+    await facade.importDraftFile(createBlock('{ "documentType": "AmusementParkParkGraphUpsert" }'), file);
+
+    const request: ParkGraphUpsertRequest = parkGraphUpsertsApi.apply.calls.mostRecent().args[0];
+    expect(request.targetParkId).toBeNull();
+    expect(request.createIfMissing).toBeFalse();
+    expect(request.replaceCollections).toBeFalse();
+    expect(request.document).toEqual({ references: { manufacturers: [{ name: 'Mack Rides' }] } });
+    expect(facade.successKey()).toBe('admin.contextualBlocks.drawer.parkGraphUpsertImported');
+    expect(facade.errorKey()).toBeNull();
+  });
+
+  it('rejects non JSON import files before calling the API', async () => {
+    const file: File = new File(['{}'], 'manufacturer.txt', { type: 'text/plain' });
+
+    await facade.importDraftFile(createBlock('{ "documentType": "AmusementParkParkGraphUpsert" }'), file);
+
+    expect(parkGraphUpsertsApi.apply).not.toHaveBeenCalled();
+    expect(facade.errorKey()).toBe('admin.contextualBlocks.drawer.parkGraphUpsertImportInvalidFile');
+  });
 });
+
+function createResult(): ParkGraphUpsertResult {
+  return {
+    operationId: 'operation-1',
+    mode: 'merge',
+    isApplied: true,
+    canApply: true,
+    previewedAtUtc: '2026-06-22T00:00:00Z',
+    appliedAtUtc: '2026-06-22T00:00:00Z',
+    targetParkId: null,
+    targetParkName: null,
+    counts: {
+      created: 1,
+      updated: 0,
+      deleted: 0,
+      unchanged: 0,
+      warnings: 0,
+      errors: 0
+    },
+    changes: [],
+    warnings: [],
+    errors: []
+  };
+}
 
 function createBlock(draft: string): AdminContextualBlockInstance {
   return {
@@ -68,7 +128,6 @@ function createBlock(draft: string): AdminContextualBlockInstance {
     locationFallbackCenter: null,
     adminRoute: ['/', 'fr', 'admin', 'manufacturers', 'edit', 'manufacturer-1'],
     parkGraphUpsertDraftJson: draft,
-    parkGraphUpsertFileName: 'manufacturer-1-park-graph-upsert.json',
-    parkGraphUpsertImportRoute: ['/', 'fr', 'admin', 'park-graph-upserts']
+    parkGraphUpsertFileName: 'manufacturer-1-manufacturer-upsert.json'
   };
 }

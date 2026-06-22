@@ -1,9 +1,12 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -16,17 +19,23 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
     private readonly IRemoteImageImporter remoteImageImporter;
     private readonly IImageRepository imageRepository;
     private readonly IParkRepository parkRepository;
+    private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
 
     public ImportRemoteImageCommandHandler(
         IRemoteImageImporter remoteImageImporter,
         IImageRepository imageRepository,
         IParkRepository parkRepository,
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository)
     {
         this.remoteImageImporter = remoteImageImporter;
         this.imageRepository = imageRepository;
         this.parkRepository = parkRepository;
+        this.attractionManufacturerRepository = attractionManufacturerRepository;
+        this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
     }
 
@@ -82,7 +91,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
                 }
 
                 image = current;
-                await SynchronizeOwnerAsync(image, this.parkRepository, this.userRepository, cancellationToken);
+                await SynchronizeOwnerAsync(image, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
             }
 
             return ApplicationResult<Image>.Success(image);
@@ -104,7 +113,15 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
 
     private static bool ShouldApplyWatermark(ImageCategory category, bool requestedWithWatermark)
     {
-        return requestedWithWatermark && category != ImageCategory.ParkLogo;
+        return requestedWithWatermark && !IsLogoCategory(category);
+    }
+
+    private static bool IsLogoCategory(ImageCategory category)
+    {
+        return category is ImageCategory.ParkLogo
+            or ImageCategory.Operator
+            or ImageCategory.Manufacturer
+            or ImageCategory.Founder;
     }
 
     private static string? Normalize(string? value)
@@ -113,7 +130,13 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
         return string.IsNullOrWhiteSpace(trimmed) ? null : trimmed;
     }
 
-    private static async Task SynchronizeOwnerAsync(Image image, IParkRepository parkRepository, IUserRepository userRepository, CancellationToken cancellationToken)
+    private static async Task SynchronizeOwnerAsync(
+        Image image,
+        IParkRepository parkRepository,
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IUserRepository userRepository,
+        CancellationToken cancellationToken)
     {
         if (image.OwnerType == ImageOwnerType.User && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
@@ -134,6 +157,19 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
             {
                 park.CurrentLogoImageId = image.Id;
                 await parkRepository.UpdateAsync(park.Id, park, cancellationToken);
+            }
+
+            return;
+        }
+
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer && !string.IsNullOrWhiteSpace(image.OwnerId))
+        {
+            AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
+            if (manufacturer is not null)
+            {
+                manufacturer.CurrentLogoImageId = image.Id;
+                await attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
+                await searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);
             }
         }
     }

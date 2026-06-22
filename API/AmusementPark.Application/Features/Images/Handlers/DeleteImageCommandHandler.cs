@@ -1,8 +1,11 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -18,17 +21,23 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
     private readonly IImageRepository imageRepository;
     private readonly IImageBinaryStorage imageBinaryStorage;
     private readonly IParkRepository parkRepository;
+    private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
 
     public DeleteImageCommandHandler(
         IImageRepository imageRepository,
         IImageBinaryStorage imageBinaryStorage,
         IParkRepository parkRepository,
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository)
     {
         this.imageRepository = imageRepository;
         this.imageBinaryStorage = imageBinaryStorage;
         this.parkRepository = parkRepository;
+        this.attractionManufacturerRepository = attractionManufacturerRepository;
+        this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
     }
 
@@ -58,7 +67,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 await this.imageBinaryStorage.DeleteAsync(image.Path, cancellationToken);
             }
 
-            await SynchronizeAfterDeletionAsync(image, this.imageRepository, this.parkRepository, this.userRepository, cancellationToken);
+            await SynchronizeAfterDeletionAsync(image, this.imageRepository, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);
             return ApplicationResult.Success();
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -75,6 +84,8 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         Image image,
         IImageRepository imageRepository,
         IParkRepository parkRepository,
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        ISearchProjectionWriter searchProjectionWriter,
         IUserRepository userRepository,
         CancellationToken cancellationToken)
     {
@@ -114,6 +125,21 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
             Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, image.OwnerId, ImageCategory.ParkLogo, cancellationToken);
             park.CurrentLogoImageId = currentLogo?.Id;
             await parkRepository.UpdateAsync(park.Id, park, cancellationToken);
+            return;
+        }
+
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer && !string.IsNullOrWhiteSpace(image.OwnerId))
+        {
+            AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
+            if (manufacturer is null)
+            {
+                return;
+            }
+
+            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, image.OwnerId, ImageCategory.Manufacturer, cancellationToken);
+            manufacturer.CurrentLogoImageId = currentLogo?.Id;
+            await attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
+            await searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);
         }
     }
 

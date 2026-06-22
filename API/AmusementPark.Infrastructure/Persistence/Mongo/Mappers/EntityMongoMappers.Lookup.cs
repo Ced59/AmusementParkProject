@@ -129,6 +129,7 @@ internal static partial class EntityMongoMappers
             ClosedYear = document.ClosedYear,
             ContactDetails = ToDomainContactDetails(document.ContactDetails),
             Biography = CommonMongoMappers.ToDomain(document.Biography),
+            CurrentLogoImageId = document.CurrentLogoImageId,
             AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
         };
 
@@ -148,6 +149,7 @@ internal static partial class EntityMongoMappers
             ClosedYear = entity.ClosedYear,
             ContactDetails = ToDocumentContactDetails(entity.ContactDetails),
             Biography = CommonMongoMappers.ToDocuments(entity.Biography),
+            CurrentLogoImageId = entity.CurrentLogoImageId,
             AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
             AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
             CreatedAt = entity.CreatedAtUtc,

@@ -43,6 +43,11 @@ public sealed class AttractionManufacturerUpdateDto
     public List<LocalizedTextDto> Biography { get; set; } = new();
 
     /// <summary>
+    /// Identifiant optionnel de l'image courante utilisee comme logo.
+    /// </summary>
+    public string? CurrentLogoImageId { get; set; }
+
+    /// <summary>
     /// Statut de revue interne back-office.
     /// </summary>
     public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;

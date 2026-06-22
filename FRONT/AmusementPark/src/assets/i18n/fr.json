@@ -1141,16 +1141,23 @@
         "addChildSucceeded": "Item cree cache, la page se met a jour.",
         "openCreatedChild": "Ouvrir l'item",
         "parkGraphUpsertTitle": "Upsert JSON constructeur",
-        "parkGraphUpsertHint": "Copie ou telecharge ce JSON pre-rempli, puis importe-le dans l'outil d'upsert apres avoir choisi un parc cible.",
+        "parkGraphUpsertHint": "Copie, telecharge ou importe directement ce JSON constructeur pre-rempli.",
         "parkGraphUpsertDraftAriaLabel": "JSON upsert constructeur pre-rempli",
         "copyParkGraphUpsert": "Copier JSON",
         "copyParkGraphUpsertBusy": "Copie...",
         "downloadParkGraphUpsert": "Telecharger JSON",
         "openParkGraphUpsertImport": "Ouvrir import JSON",
+        "importParkGraphUpsert": "Importer un JSON",
+        "importParkGraphUpsertBusy": "Import...",
         "parkGraphUpsertCopied": "JSON copie dans le presse-papiers.",
         "parkGraphUpsertDownloaded": "Telechargement JSON lance.",
+        "parkGraphUpsertImported": "JSON constructeur importe.",
         "parkGraphUpsertCopyError": "La copie JSON a echoue.",
         "parkGraphUpsertDownloadError": "Le telechargement JSON a echoue.",
+        "parkGraphUpsertImportError": "L'import JSON a echoue.",
+        "parkGraphUpsertImportBlocked": "Le JSON n'a pas pu etre applique.",
+        "parkGraphUpsertImportInvalidFile": "Choisis un fichier .json.",
+        "parkGraphUpsertImportInvalidJson": "Le fichier JSON est invalide.",
         "parkGraphUpsertUnavailable": "Aucun brouillon upsert n'est disponible pour ce bloc.",
         "downloadJson": "Telecharger le JSON du bloc",
         "downloadJsonBusy": "Telechargement...",
@@ -1221,7 +1228,7 @@
         "boundedJsonApply": "Application JSON borne disponible",
         "contextualFormEdit": "Formulaire contextuel disponible",
         "targetedChildAdd": "Ajout cible disponible",
-        "parkGraphUpsertDraft": "Brouillon upsert de graphe disponible",
+        "parkGraphUpsertDraft": "Brouillon upsert JSON disponible",
         "boundedJsonExportPlanned": "Export JSON borne prevu",
         "boundedJsonUpsertPlanned": "Upsert JSON borne prevu",
         "formEditPlanned": "Formulaire contextuel prevu",
@@ -1262,7 +1269,7 @@
         },
         "manufacturerReference": {
           "label": "Constructeur",
-          "description": "Brouillon upsert de graphe pre-rempli pour ce constructeur."
+          "description": "Brouillon upsert JSON pre-rempli pour ce constructeur."
         }
       }
     },

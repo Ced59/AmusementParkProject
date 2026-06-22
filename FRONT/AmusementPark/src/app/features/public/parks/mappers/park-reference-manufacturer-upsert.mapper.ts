@@ -9,10 +9,6 @@ export function buildManufacturerParkGraphUpsertJson(manufacturer: AttractionMan
     documentType: 'AmusementParkParkGraphUpsert',
     schemaVersion: '2026-05-25',
     mode: 'merge',
-    identity: {
-      name: '',
-      countryCode: ''
-    },
     references: {
       operators: [],
       founders: [],
@@ -20,9 +16,6 @@ export function buildManufacturerParkGraphUpsertJson(manufacturer: AttractionMan
         buildManufacturerReference(manufacturer)
       ]
     },
-    park: {},
-    zones: [],
-    items: [],
     images: [
       buildRemoteImageDraft(manufacturer)
     ],
@@ -43,7 +36,7 @@ function buildRemoteImageDraft(manufacturer: AttractionManufacturer): JsonObject
     category: 'Manufacturer',
     description: '',
     isPublished: true,
-    setAsCurrent: false,
+    setAsCurrent: true,
     withWatermark: false
   };
 }
@@ -59,7 +52,7 @@ export function buildManufacturerParkGraphUpsertFileName(manufacturer: Attractio
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-  return `${slug || 'manufacturer'}-park-graph-upsert.json`;
+  return `${slug || 'manufacturer'}-manufacturer-upsert.json`;
 }
 
 function buildManufacturerReference(manufacturer: AttractionManufacturer): JsonObject {
@@ -70,6 +63,7 @@ function buildManufacturerReference(manufacturer: AttractionManufacturer): JsonO
     legalName: normalizeOptionalString(manufacturer.legalName),
     foundedYear: normalizeOptionalNumber(manufacturer.foundedYear),
     closedYear: normalizeOptionalNumber(manufacturer.closedYear),
+    currentLogoImageId: normalizeOptionalString(manufacturer.currentLogoImageId),
     contactDetails: buildContactDetails(manufacturer.contactDetails),
     biography: buildLocalizedItems(manufacturer.biography),
     adminReviewStatus: manufacturer.adminReviewStatus ?? 'ToReview'
