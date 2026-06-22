@@ -199,6 +199,10 @@
   gap: 0.75rem;
 }
 
+.admin-contextual-block-drawer__park-graph-upsert {
+  gap: 0.75rem;
+}
+
 .admin-contextual-block-drawer__form-status {
   margin: 0;
   color: var(--app-text-muted);
@@ -453,6 +457,12 @@
 .admin-contextual-block-drawer__json-input:focus {
   outline: 2px solid color-mix(in srgb, var(--app-primary) 42%, transparent);
   outline-offset: 2px;
+}
+
+.admin-contextual-block-drawer__json-input--readonly {
+  min-height: 14rem;
+  white-space: pre;
+  overflow: auto;
 }
 
 .admin-contextual-block-drawer__preview-actions {

@@ -20,6 +20,10 @@ import {
   ParkReferenceDetailViewModel,
   ParkReferenceFactViewModel
 } from '../models/park-reference-detail-view.model';
+import {
+  buildManufacturerParkGraphUpsertFileName,
+  buildManufacturerParkGraphUpsertJson
+} from './park-reference-manufacturer-upsert.mapper';
 
 export function mapParkFounderToReferenceDetailViewModel(
   founder: ParkFounder,
@@ -51,7 +55,9 @@ export function mapParkFounderToReferenceDetailViewModel(
     photos: gallery,
     photoCategories: buildPhotoCategories(gallery),
     attractions: [],
-    attractionsPagination: null
+    attractionsPagination: null,
+    adminParkGraphUpsertJson: null,
+    adminParkGraphUpsertFileName: null
   };
 }
 
@@ -78,7 +84,9 @@ export function mapParkOperatorToReferenceDetailViewModel(
     photos: gallery,
     photoCategories: buildPhotoCategories(gallery),
     attractions: [],
-    attractionsPagination: null
+    attractionsPagination: null,
+    adminParkGraphUpsertJson: null,
+    adminParkGraphUpsertFileName: null
   };
 }
 
@@ -112,7 +120,9 @@ export function mapAttractionManufacturerToReferenceDetailViewModel(
     photos: gallery,
     photoCategories: buildPhotoCategories(gallery),
     attractions: attractions.map((item: ParkItemAdminRow) => mapAttraction(item, currentLanguage)),
-    attractionsPagination
+    attractionsPagination,
+    adminParkGraphUpsertJson: buildManufacturerParkGraphUpsertJson(manufacturer),
+    adminParkGraphUpsertFileName: buildManufacturerParkGraphUpsertFileName(manufacturer)
   };
 }
 

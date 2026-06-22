@@ -76,6 +76,18 @@
         "addChildUnavailable": "L'aggiunta mirata non e disponibile per questo blocco.",
         "addChildSucceeded": "Item nascosto creato, la pagina si aggiorna.",
         "openCreatedChild": "Apri item",
+        "parkGraphUpsertTitle": "JSON upsert costruttore",
+        "parkGraphUpsertHint": "Copia o scarica questo JSON precompilato, poi importalo nello strumento upsert dopo aver scelto un parco target.",
+        "parkGraphUpsertDraftAriaLabel": "JSON upsert costruttore precompilato",
+        "copyParkGraphUpsert": "Copia JSON",
+        "copyParkGraphUpsertBusy": "Copia...",
+        "downloadParkGraphUpsert": "Scarica JSON",
+        "openParkGraphUpsertImport": "Apri import JSON",
+        "parkGraphUpsertCopied": "JSON copiato negli appunti.",
+        "parkGraphUpsertDownloaded": "Download JSON avviato.",
+        "parkGraphUpsertCopyError": "Copia JSON non riuscita.",
+        "parkGraphUpsertDownloadError": "Download JSON non riuscito.",
+        "parkGraphUpsertUnavailable": "Nessuna bozza upsert disponibile per questo blocco.",
         "downloadJson": "Scarica JSON del blocco",
         "downloadJsonBusy": "Download in corso...",
         "downloadJsonError": "Download JSON non riuscito.",
@@ -145,6 +157,7 @@
         "boundedJsonApply": "Applicazione JSON limitata disponibile",
         "contextualFormEdit": "Modulo contestuale disponibile",
         "targetedChildAdd": "Aggiunta mirata disponibile",
+        "parkGraphUpsertDraft": "Bozza upsert grafo disponibile",
         "boundedJsonExportPlanned": "Export JSON limitato previsto",
         "boundedJsonUpsertPlanned": "Upsert JSON limitato previsto",
         "formEditPlanned": "Modulo contestuale previsto",
@@ -182,6 +195,10 @@
         "parkItemImages": {
           "label": "Foto dell'item",
           "description": "Galleria pubblica dell'item e aggiunta mirata di foto."
+        },
+        "manufacturerReference": {
+          "label": "Costruttore",
+          "description": "Bozza upsert grafo precompilata per questo costruttore."
         }
       }
     }

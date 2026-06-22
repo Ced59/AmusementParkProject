@@ -1140,6 +1140,18 @@
         "addChildUnavailable": "A adicao direcionada nao esta disponivel para este bloco.",
         "addChildSucceeded": "Item oculto criado, a pagina vai ser atualizada.",
         "openCreatedChild": "Abrir item",
+        "parkGraphUpsertTitle": "JSON upsert do fabricante",
+        "parkGraphUpsertHint": "Copia ou transfere este JSON pre-preenchido e depois importa-o na ferramenta upsert apos escolher um parque alvo.",
+        "parkGraphUpsertDraftAriaLabel": "JSON upsert pre-preenchido do fabricante",
+        "copyParkGraphUpsert": "Copiar JSON",
+        "copyParkGraphUpsertBusy": "A copiar...",
+        "downloadParkGraphUpsert": "Transferir JSON",
+        "openParkGraphUpsertImport": "Abrir importacao JSON",
+        "parkGraphUpsertCopied": "JSON copiado para a area de transferencia.",
+        "parkGraphUpsertDownloaded": "Transferencia JSON iniciada.",
+        "parkGraphUpsertCopyError": "A copia JSON falhou.",
+        "parkGraphUpsertDownloadError": "A transferencia JSON falhou.",
+        "parkGraphUpsertUnavailable": "Nao ha rascunho upsert disponivel para este bloco.",
         "downloadJson": "Transferir JSON do bloco",
         "downloadJsonBusy": "A transferir...",
         "downloadJsonError": "A transferencia JSON falhou.",
@@ -1209,6 +1221,7 @@
         "boundedJsonApply": "Aplicacao JSON limitada disponivel",
         "contextualFormEdit": "Formulario contextual disponivel",
         "targetedChildAdd": "Adicao direcionada disponivel",
+        "parkGraphUpsertDraft": "Rascunho upsert de grafo disponivel",
         "boundedJsonExportPlanned": "Export JSON limitado previsto",
         "boundedJsonUpsertPlanned": "Upsert JSON limitado previsto",
         "formEditPlanned": "Formulario contextual previsto",
@@ -1246,6 +1259,10 @@
         "parkItemImages": {
           "label": "Fotos do item",
           "description": "Galeria publica do item e adicao direcionada de fotos."
+        },
+        "manufacturerReference": {
+          "label": "Fabricante",
+          "description": "Rascunho upsert de grafo pre-preenchido para este fabricante."
         }
       }
     },

@@ -76,6 +76,18 @@
         "addChildUnavailable": "La adicion dirigida no esta disponible para este bloque.",
         "addChildSucceeded": "Item oculto creado, la pagina se actualiza.",
         "openCreatedChild": "Abrir item",
+        "parkGraphUpsertTitle": "JSON upsert de fabricante",
+        "parkGraphUpsertHint": "Copia o descarga este JSON prerrellenado y luego importalo en la herramienta de upsert tras elegir un parque objetivo.",
+        "parkGraphUpsertDraftAriaLabel": "JSON upsert prerrellenado del fabricante",
+        "copyParkGraphUpsert": "Copiar JSON",
+        "copyParkGraphUpsertBusy": "Copiando...",
+        "downloadParkGraphUpsert": "Descargar JSON",
+        "openParkGraphUpsertImport": "Abrir import JSON",
+        "parkGraphUpsertCopied": "JSON copiado al portapapeles.",
+        "parkGraphUpsertDownloaded": "Descarga JSON iniciada.",
+        "parkGraphUpsertCopyError": "No se pudo copiar el JSON.",
+        "parkGraphUpsertDownloadError": "No se pudo descargar el JSON.",
+        "parkGraphUpsertUnavailable": "No hay borrador upsert disponible para este bloque.",
         "downloadJson": "Descargar JSON del bloque",
         "downloadJsonBusy": "Descargando...",
         "downloadJsonError": "La descarga JSON ha fallado.",
@@ -145,6 +157,7 @@
         "boundedJsonApply": "Aplicacion JSON acotada disponible",
         "contextualFormEdit": "Formulario contextual disponible",
         "targetedChildAdd": "Adicion dirigida disponible",
+        "parkGraphUpsertDraft": "Borrador upsert de grafo disponible",
         "boundedJsonExportPlanned": "Export JSON acotado previsto",
         "boundedJsonUpsertPlanned": "Upsert JSON acotado previsto",
         "formEditPlanned": "Formulario contextual previsto",
@@ -182,6 +195,10 @@
         "parkItemImages": {
           "label": "Fotos del item",
           "description": "Galeria publica del item y adicion dirigida de fotos."
+        },
+        "manufacturerReference": {
+          "label": "Fabricante",
+          "description": "Borrador upsert de grafo prerrellenado para este fabricante."
         }
       }
     }

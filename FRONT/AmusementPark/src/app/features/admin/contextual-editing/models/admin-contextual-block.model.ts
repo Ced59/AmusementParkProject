@@ -6,9 +6,10 @@ export type AdminContextualBlockType =
   | 'park.practical'
   | 'parkItem.description'
   | 'parkItem.images'
-  | 'parkItem.location';
+  | 'parkItem.location'
+  | 'reference.manufacturer';
 
-export type AdminContextualBlockEntityType = 'Park' | 'ParkItem';
+export type AdminContextualBlockEntityType = 'Park' | 'ParkItem' | 'AttractionManufacturer';
 
 export type AdminContextualBlockCapability =
   | 'fullAdminEdit'
@@ -17,6 +18,7 @@ export type AdminContextualBlockCapability =
   | 'boundedJsonApply'
   | 'contextualFormEdit'
   | 'contextualPhotoAdd'
+  | 'parkGraphUpsertDraft'
   | 'targetedChildAdd'
   | 'boundedJsonExportPlanned'
   | 'boundedJsonUpsertPlanned'
@@ -40,4 +42,7 @@ export interface AdminContextualBlockInstance extends AdminContextualBlockDefini
   readonly ids: Readonly<Record<string, string>>;
   readonly locationFallbackCenter: readonly [number, number] | null;
   readonly adminRoute: string[] | null;
+  readonly parkGraphUpsertDraftJson?: string | null;
+  readonly parkGraphUpsertFileName?: string | null;
+  readonly parkGraphUpsertImportRoute?: string[] | null;
 }

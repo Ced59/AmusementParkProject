@@ -16,6 +16,7 @@ import {
   AdminContextualBlockPhotoTagOption,
   AdminContextualPhotoSourceMode
 } from '../../state/admin-contextual-block-photo-add.facade';
+import { AdminContextualBlockParkGraphUpsertFacade } from '../../state/admin-contextual-block-park-graph-upsert.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
@@ -116,6 +117,17 @@ describe('AdminContextualBlockDrawerComponent', () => {
     updateSetAsCurrent: jasmine.Spy;
     uploadPhoto: jasmine.Spy;
   };
+  let parkGraphUpsertFacade: {
+    isCopying: Signal<boolean>;
+    isDownloading: Signal<boolean>;
+    errorKey: Signal<string | null>;
+    successKey: Signal<string | null>;
+    canUseDraft: jasmine.Spy;
+    getDraft: jasmine.Spy;
+    resetForBlock: jasmine.Spy;
+    copyDraft: jasmine.Spy;
+    downloadDraft: jasmine.Spy;
+  };
 
   beforeEach(async () => {
     const isExportingSignal = signal<boolean>(false);
@@ -170,6 +182,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
     const isPhotoUploadingSignal = signal<boolean>(false);
     const photoErrorKeySignal = signal<string | null>(null);
     const photoSuccessKeySignal = signal<string | null>(null);
+    const isParkGraphUpsertCopyingSignal = signal<boolean>(false);
+    const isParkGraphUpsertDownloadingSignal = signal<boolean>(false);
+    const parkGraphUpsertErrorKeySignal = signal<string | null>(null);
+    const parkGraphUpsertSuccessKeySignal = signal<string | null>(null);
     exportFacade = {
       isExporting: isExportingSignal.asReadonly(),
       errorKey: errorKeySignal.asReadonly(),
@@ -328,6 +344,22 @@ describe('AdminContextualBlockDrawerComponent', () => {
       }),
       uploadPhoto: jasmine.createSpy('uploadPhoto')
     };
+    parkGraphUpsertFacade = {
+      isCopying: isParkGraphUpsertCopyingSignal.asReadonly(),
+      isDownloading: isParkGraphUpsertDownloadingSignal.asReadonly(),
+      errorKey: parkGraphUpsertErrorKeySignal.asReadonly(),
+      successKey: parkGraphUpsertSuccessKeySignal.asReadonly(),
+      canUseDraft: jasmine.createSpy('canUseDraft').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
+        return Boolean(block?.capabilities.includes('parkGraphUpsertDraft') && block.parkGraphUpsertDraftJson?.trim());
+      }),
+      getDraft: jasmine.createSpy('getDraft').and.callFake((block: AdminContextualBlockInstance | null): string | null => {
+        const draft: string = block?.parkGraphUpsertDraftJson?.trim() ?? '';
+        return draft.length > 0 ? draft : null;
+      }),
+      resetForBlock: jasmine.createSpy('resetForBlock'),
+      copyDraft: jasmine.createSpy('copyDraft'),
+      downloadDraft: jasmine.createSpy('downloadDraft')
+    };
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, AdminContextualBlockDrawerComponent],
@@ -358,6 +390,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
         {
           provide: AdminContextualBlockPhotoAddFacade,
           useValue: photoAddFacade
+        },
+        {
+          provide: AdminContextualBlockParkGraphUpsertFacade,
+          useValue: parkGraphUpsertFacade
         }
       ]
     }).compileComponents();
@@ -429,6 +465,18 @@ describe('AdminContextualBlockDrawerComponent', () => {
             addChildUnavailable: 'Ajout indisponible.',
             addChildSucceeded: 'Item cree.',
             openCreatedChild: 'Ouvrir l item',
+            parkGraphUpsertTitle: 'Upsert constructeur',
+            parkGraphUpsertHint: 'Copie ou telecharge ce JSON puis importe-le dans l outil upsert.',
+            parkGraphUpsertDraftAriaLabel: 'Brouillon upsert constructeur',
+            copyParkGraphUpsert: 'Copier le JSON',
+            copyParkGraphUpsertBusy: 'Copie...',
+            downloadParkGraphUpsert: 'Telecharger le JSON',
+            openParkGraphUpsertImport: 'Ouvrir l import JSON',
+            parkGraphUpsertCopied: 'JSON copie.',
+            parkGraphUpsertDownloaded: 'JSON telecharge.',
+            parkGraphUpsertCopyError: 'Copie impossible.',
+            parkGraphUpsertDownloadError: 'Telechargement impossible.',
+            parkGraphUpsertUnavailable: 'Brouillon indisponible.',
             photoAddTitle: 'Ajouter une photo',
             photoSourceFile: 'Fichier',
             photoSourceRemote: 'Lien',
@@ -476,6 +524,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
             boundedJsonApply: 'Application JSON borne disponible',
             contextualFormEdit: 'Formulaire contextuel disponible',
             contextualPhotoAdd: 'Ajout photo contextuel disponible',
+            parkGraphUpsertDraft: 'Brouillon upsert graphe disponible',
             targetedChildAdd: 'Ajout cible disponible',
             boundedJsonExportPlanned: 'Export JSON borne prevu',
             boundedJsonUpsertPlanned: 'Upsert JSON borne prevu',
@@ -489,6 +538,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
             parkImages: {
               label: 'Photos du parc',
               description: 'Galerie publique'
+            },
+            manufacturerReference: {
+              label: 'Constructeur',
+              description: 'Brouillon upsert du constructeur'
             }
           }
         }
@@ -721,6 +774,30 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(photoAddFacade.uploadPhoto).toHaveBeenCalledOnceWith(block);
   });
 
+  it('renders manufacturer park graph upsert draft actions', () => {
+    const block: AdminContextualBlockInstance = createManufacturerBlock();
+    publicViewModeFacade.setViewMode('adminPreview');
+    publicViewModeFacade.setEditionModeEnabled(true);
+    selectionFacade.selectBlock(block);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const textarea: HTMLTextAreaElement = host.querySelector('.admin-contextual-block-drawer__park-graph-upsert textarea') as HTMLTextAreaElement;
+    const actions: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-contextual-block-drawer__park-graph-upsert button');
+    const importLink: HTMLAnchorElement = host.querySelector('.admin-contextual-block-drawer__park-graph-upsert a') as HTMLAnchorElement;
+
+    actions.item(0).click();
+    actions.item(1).click();
+
+    expect(host.textContent).toContain('Upsert constructeur');
+    expect(textarea.value).toContain('AmusementParkParkGraphUpsert');
+    expect(parkGraphUpsertFacade.copyDraft).toHaveBeenCalledOnceWith(block);
+    expect(parkGraphUpsertFacade.downloadDraft).toHaveBeenCalledOnceWith(block);
+    expect(importLink?.textContent).toContain('Ouvrir l import JSON');
+    expect(importLink?.target).toBe('_blank');
+    expect(importLink?.rel).toContain('noopener');
+  });
+
   it('clears the selected block from the close action', () => {
     publicViewModeFacade.setViewMode('adminPreview');
     publicViewModeFacade.setEditionModeEnabled(true);
@@ -753,6 +830,28 @@ function createBlock(): AdminContextualBlockInstance {
     localizedLanguageCodes: ['fr', 'en'],
     locationFallbackCenter: null,
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+  };
+}
+
+function createManufacturerBlock(): AdminContextualBlockInstance {
+  return {
+    id: 'reference.manufacturer:manufacturer-1',
+    type: 'reference.manufacturer',
+    entityType: 'AttractionManufacturer',
+    entityId: 'manufacturer-1',
+    contextLabel: 'Mack Rides',
+    ids: { manufacturerId: 'manufacturer-1' },
+    labelKey: 'admin.contextualBlocks.blocks.manufacturerReference.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.manufacturerReference.description',
+    iconClass: 'pi pi-wrench',
+    capabilities: ['fullAdminEdit', 'parkGraphUpsertDraft'],
+    jsonScope: ['references.manufacturers[*].name'],
+    localizedLanguageCodes: ['fr', 'en'],
+    locationFallbackCenter: null,
+    adminRoute: ['/', 'fr', 'admin', 'manufacturers', 'edit', 'manufacturer-1'],
+    parkGraphUpsertDraftJson: '{ "documentType": "AmusementParkParkGraphUpsert" }',
+    parkGraphUpsertFileName: 'manufacturer-1-park-graph-upsert.json',
+    parkGraphUpsertImportRoute: ['/', 'fr', 'admin', 'park-graph-upserts']
   };
 }
 
