@@ -36,6 +36,7 @@ export class ParkReferenceDetailViewComponent {
   @Input() reference!: Signal<ParkReferenceDetailViewModel | null>;
   @Input() attractionsLoading!: Signal<boolean>;
   @Input() currentLang: string = 'en';
+  @Input() backLabelKey: string = 'parks.reference.backToParks';
 
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() attractionsPageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();

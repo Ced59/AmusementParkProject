@@ -1,6 +1,20 @@
 {
-  "version": "2.6.15",
+  "version": "2.6.16",
   "history": [
+    {
+      "version": "2.6.16",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "La navigation des constructeurs est corrigee.",
+        "en": "Manufacturer navigation is fixed.",
+        "de": "Die Hersteller-Navigation ist korrigiert.",
+        "nl": "Navigatie voor fabrikanten is opgelost.",
+        "it": "La navigazione dei costruttori e corretta.",
+        "es": "La navegacion de fabricantes queda corregida.",
+        "pl": "Nawigacja producentow zostala poprawiona.",
+        "pt": "A navegacao dos fabricantes fica corrigida."
+      }
+    },
     {
       "version": "2.6.15",
       "releasedAt": "2026-06-22",

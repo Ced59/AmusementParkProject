@@ -2862,6 +2862,7 @@
       "errorTitle": "Não foi possível carregar a ficha",
       "errorMessage": "Não foi possível carregar a ficha pedida.",
       "backToParks": "Voltar aos parques",
+      "backToManufacturers": "Voltar aos fabricantes",
       "operator": {
         "badge": "Operador do parque",
         "title": "Operador",
