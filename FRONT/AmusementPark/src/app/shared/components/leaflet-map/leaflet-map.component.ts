@@ -36,6 +36,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   private markerRefreshTimeoutId: number | null = null;
   private mapSizeRefreshTimeoutIds: number[] = [];
   private pendingPopupMarkerId: string | null = null;
+  private openPopupMarkerId: string | null = null;
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
@@ -474,6 +475,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return;
     }
 
+    this.keepOpenPopupPendingForMarkerRefresh();
     this.clearRenderedMarkers();
 
     const renderableMarkers: MapMarker[] = this.getRenderableMarkers();
@@ -507,6 +509,14 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   private clearRenderedMarkers(): void {
     this.markerLayer?.clearLayers();
     this.leafletMarkers.clear();
+  }
+
+  private keepOpenPopupPendingForMarkerRefresh(): void {
+    if (this.pendingPopupMarkerId !== null || this.openPopupMarkerId === null) {
+      return;
+    }
+
+    this.pendingPopupMarkerId = this.openPopupMarkerId;
   }
 
   private getRenderableMarkers(): MapMarker[] {
@@ -591,13 +601,18 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       icon: createLeafletMarkerIcon(this.L, markerModel.iconKind)
     });
 
-    if (markerModel.title || markerModel.subtitle) {
-      marker.bindPopup(this.buildPopupContent(markerModel));
+    const popupContent: string = this.buildPopupContent(markerModel);
+
+    if (popupContent.length > 0) {
+      marker.bindPopup(popupContent);
+      marker.on('popupopen', (): void => this.handleMarkerPopupOpen(markerModel.id));
+      marker.on('popupclose', (): void => this.handleMarkerPopupClose(markerModel.id));
     }
 
     marker.addTo(this.markerLayer);
 
     marker.on('click', () => {
+      this.openMarkerPopup(marker, markerModel.id);
       this.ngZone.run((): void => {
         this.markerClick.emit(markerModel);
       });
@@ -614,6 +629,26 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     this.leafletMarkers.set(markerModel.id, marker);
+  }
+
+  private openMarkerPopup(marker: import('leaflet').Marker, markerId: string): void {
+    if (!marker.getPopup()) {
+      return;
+    }
+
+    this.openPopupMarkerId = markerId;
+    marker.openPopup();
+  }
+
+  private handleMarkerPopupOpen(markerId: string): void {
+    this.openPopupMarkerId = markerId;
+    this.bindInternalPopupNavigationLinks();
+  }
+
+  private handleMarkerPopupClose(markerId: string): void {
+    if (this.openPopupMarkerId === markerId) {
+      this.openPopupMarkerId = null;
+    }
   }
 
   private addClusterMarker(cluster: MarkerCluster): void {
@@ -779,12 +814,18 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     const actionLinks: string = this.buildPopupActions(marker);
 
+    const titleBlock: string = title.length > 0 ? `<strong>${title}</strong>` : '';
+
+    if (!titleBlock && !lines && !actionLinks) {
+      return '';
+    }
+
     if (!lines && !actionLinks) {
-      return `<strong>${title}</strong>`;
+      return titleBlock;
     }
 
     const linesBlock: string = lines.length > 0 ? `<div class="leaflet-map-popup__lines">${lines}</div>` : '';
-    return `<strong>${title}</strong>${linesBlock}${actionLinks}`;
+    return `${titleBlock}${linesBlock}${actionLinks}`;
   }
 
   private resolveTranslatedPopupLine(translationKey: string | null | undefined, fallback: string | null | undefined): string {
