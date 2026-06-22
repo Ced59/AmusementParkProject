@@ -44,6 +44,8 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
   private tileLayer: import('leaflet').TileLayer | null = null;
   private markerLayer: import('leaflet').LayerGroup | null = null;
   private leafletMarkers: Map<string, import('leaflet').Marker> = new Map<string, import('leaflet').Marker>();
+  private openPopupMarkerId: string | null = null;
+  private pendingPopupMarkerId: string | null = null;
 
   private readonly isBrowser: boolean;
 
@@ -248,6 +250,7 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
       return;
     }
 
+    this.keepOpenPopupPendingForMarkerRefresh();
     this.markerLayer.clearLayers();
     this.leafletMarkers.clear();
 
@@ -256,6 +259,16 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
         this.addMarker(marker);
       }
     }
+
+    this.openPendingMarkerPopup();
+  }
+
+  private keepOpenPopupPendingForMarkerRefresh(): void {
+    if (this.pendingPopupMarkerId !== null || this.openPopupMarkerId === null) {
+      return;
+    }
+
+    this.pendingPopupMarkerId = this.openPopupMarkerId;
   }
 
   private addMarker(markerModel: MapMarker): void {
@@ -270,12 +283,13 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
 
     if (popupContent.length > 0) {
       marker.bindPopup(popupContent);
-      marker.on('popupopen', (): void => this.bindInternalPopupNavigationLinks());
+      marker.on('popupopen', (): void => this.handleMarkerPopupOpen(markerModel.id));
+      marker.on('popupclose', (): void => this.handleMarkerPopupClose(markerModel.id));
     }
 
     marker.addTo(this.markerLayer);
     marker.on('click', (): void => {
-      this.openMarkerPopup(marker);
+      this.openMarkerPopup(marker, markerModel.id);
       this.ngZone.run((): void => {
         this.markerClick.emit(markerModel);
       });
@@ -315,7 +329,7 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
 
     const position: import('leaflet').LatLng = marker.getLatLng();
     this.map.setView(position, Math.max(this.map.getZoom(), LeafletStaticMapComponent.FocusZoom), { animate: true });
-    this.openMarkerPopup(marker);
+    this.openMarkerPopup(marker, this.selectedMarkerId);
     return true;
   }
 
@@ -345,12 +359,39 @@ export class LeafletStaticMapComponent implements AfterViewInit, OnChanges, OnDe
     this.map?.setView(this.toMutableLatLng(this.center), this.zoom);
   }
 
-  private openMarkerPopup(marker: import('leaflet').Marker): void {
+  private openMarkerPopup(marker: import('leaflet').Marker, markerId: string): void {
     if (!marker.getPopup()) {
       return;
     }
 
+    this.openPopupMarkerId = markerId;
     marker.openPopup();
+  }
+
+  private openPendingMarkerPopup(): void {
+    if (this.pendingPopupMarkerId === null) {
+      return;
+    }
+
+    const marker: import('leaflet').Marker | undefined = this.leafletMarkers.get(this.pendingPopupMarkerId);
+
+    if (!marker) {
+      return;
+    }
+
+    this.openMarkerPopup(marker, this.pendingPopupMarkerId);
+    this.pendingPopupMarkerId = null;
+  }
+
+  private handleMarkerPopupOpen(markerId: string): void {
+    this.openPopupMarkerId = markerId;
+    this.bindInternalPopupNavigationLinks();
+  }
+
+  private handleMarkerPopupClose(markerId: string): void {
+    if (this.openPopupMarkerId === markerId) {
+      this.openPopupMarkerId = null;
+    }
   }
 
   private hasUsableCoordinates(marker: MapMarker): boolean {
