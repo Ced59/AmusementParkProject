@@ -16,9 +16,11 @@ type LeafletTestMap = {
 
 type LeafletMapComponentInternals = {
   addSingleMarker: (marker: MapMarker) => void;
+  handleMapViewportChange: () => void;
   focusSelectedMarker: () => boolean;
   openPendingSelectedMarkerPopup: () => void;
   buildTileLayerOptions: () => Record<string, unknown>;
+  scheduleMarkerRefresh: (delayMs?: number) => void;
   scheduleViewportUpdate: () => void;
   scheduleMapSizeStabilization: () => void;
   applyDefaultViewport: () => void;
@@ -31,7 +33,6 @@ type LeafletMapComponentInternals = {
   markerLayer: { clearLayers: jasmine.Spy } | null;
   leafletMarkers: Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>;
   pendingPopupMarkerId: string | null;
-  openPopupMarkerId: string | null;
 };
 
 type LeafletMarkerTestDouble = {
@@ -166,34 +167,39 @@ describe('LeafletMapComponent', () => {
     clickHandlers[0]();
 
     expect(testDouble.marker.openPopup).toHaveBeenCalled();
-    expect(internals.openPopupMarkerId).toBe('park-gps');
     expect(markerClickSpy).toHaveBeenCalledWith(markerModel);
   });
 
-  it('keeps an open marker popup after a marker refresh rebuilds the rendered markers', () => {
+  it('does not refresh markers after a viewport move for a simple map', () => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const markerLayer: { clearLayers: jasmine.Spy } = jasmine.createSpyObj('markerLayer', ['clearLayers']);
     const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
-    const testDouble = createLeafletMarkerTestDouble();
 
-    component.markers = [{
-      id: 'park',
-      lat: 48.85,
-      lng: 2.35,
-      title: 'Parc test',
-      actionUrl: 'https://maps.google.com/?daddr=48.85,2.35',
-      actionLabel: 'Y aller'
-    }];
+    component.markers = [{ id: 'park', lat: 48.85, lng: 2.35 }];
+    component.stabilizeDynamicMarkerViewport = false;
+    map.getZoom.and.returnValue(13);
     internals.map = map;
-    internals.markerLayer = markerLayer;
-    internals.openPopupMarkerId = 'park';
-    configureLeafletMarkerFactory(internals, testDouble.marker);
 
-    internals.refreshMarkers();
+    const scheduleMarkerRefreshSpy: jasmine.Spy = spyOn(internals, 'scheduleMarkerRefresh');
 
-    expect(markerLayer.clearLayers).toHaveBeenCalled();
-    expect(testDouble.marker.openPopup).toHaveBeenCalled();
-    expect(internals.pendingPopupMarkerId).toBeNull();
+    internals.handleMapViewportChange();
+
+    expect(scheduleMarkerRefreshSpy).not.toHaveBeenCalled();
+  });
+
+  it('refreshes markers after viewport moves for stabilized dynamic maps', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+
+    component.markers = [{ id: 'park', lat: 48.85, lng: 2.35 }];
+    component.stabilizeDynamicMarkerViewport = true;
+    map.getZoom.and.returnValue(13);
+    internals.map = map;
+
+    const scheduleMarkerRefreshSpy: jasmine.Spy = spyOn(internals, 'scheduleMarkerRefresh');
+
+    internals.handleMapViewportChange();
+
+    expect(scheduleMarkerRefreshSpy).toHaveBeenCalledWith(40);
   });
 
   it('clears pending marker popup when there is no selected marker', () => {

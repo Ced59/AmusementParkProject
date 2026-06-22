@@ -1,6 +1,20 @@
 {
-  "version": "2.6.8",
+  "version": "2.6.9",
   "history": [
+    {
+      "version": "2.6.9",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les cartes de lieu restent plus stables.",
+        "en": "Location maps stay more stable.",
+        "de": "Ortskarten bleiben stabiler.",
+        "nl": "Locatiekaarten blijven stabieler.",
+        "it": "Le mappe dei luoghi restano piu stabili.",
+        "es": "Los mapas de lugar se mantienen mas estables.",
+        "pl": "Mapy miejsc dzialaja stabilniej.",
+        "pt": "Os mapas de local ficam mais estaveis."
+      }
+    },
     {
       "version": "2.6.8",
       "releasedAt": "2026-06-22",

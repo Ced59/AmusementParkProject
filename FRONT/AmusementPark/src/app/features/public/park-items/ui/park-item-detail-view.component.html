@@ -234,7 +234,7 @@
           subtitleKey="parkItems.detail.locationSubtitle"
           [appAdminContextualBlock]="getLocationContextualBlock(currentDetail)">
           <app-ui-map-slot [available]="locationMapMarkers().length > 0" minHeight="340px">
-            <app-leaflet-map
+            <app-leaflet-static-map
               [center]="currentDetail.mapCenter"
               [zoom]="currentDetail.mapZoom"
               [markers]="locationMapMarkers()"
@@ -242,7 +242,7 @@
               [fitBoundsMaxZoom]="18"
               [selectedMarkerId]="selectedLocationPointId()"
               (markerClick)="onLocationMarkerClick($event)">
-            </app-leaflet-map>
+            </app-leaflet-static-map>
           </app-ui-map-slot>
 
           <div uiMapShellSide class="location-list">

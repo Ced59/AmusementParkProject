@@ -3,7 +3,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
+import { LeafletStaticMapComponent } from '@shared/components/leaflet-static-map/leaflet-static-map.component';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
@@ -33,7 +33,7 @@ import { AdminContextualBlockRegistryService } from '@features/admin/contextual-
     PageStateComponent,
     ImageDisplayComponent,
     TranslateModule,
-    LeafletMapComponent,
+    LeafletStaticMapComponent,
     UiButtonDirective,
     UiChipComponent,
     UiItemCardComponent,
