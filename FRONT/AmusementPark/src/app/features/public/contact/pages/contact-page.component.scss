@@ -24,6 +24,27 @@
   min-width: 0;
 }
 
+.contact-form {
+  position: relative;
+  isolation: isolate;
+  border-color: color-mix(in srgb, var(--c-rose) 34%, var(--app-border-strong));
+  background:
+    radial-gradient(ellipse 42% 120% at 0% 0%, color-mix(in srgb, var(--c-rose) 13%, transparent), transparent 66%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 94%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow:
+    var(--shadow-card),
+    inset 0 1px 0 color-mix(in srgb, #ffffff 8%, transparent);
+}
+
+.contact-form::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--c-rose), var(--c-orange), var(--c-gold));
+}
+
 .contact-hero h1,
 .contact-form h2,
 .contact-email h2,
@@ -73,18 +94,26 @@
   width: 100%;
   min-height: 14rem;
   resize: vertical;
-  border: 1px solid var(--border-2);
+  border: 1px solid color-mix(in srgb, var(--c-rose) 24%, var(--border-3));
   border-radius: var(--radius-lg);
   padding: 1rem;
   color: var(--text);
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 88%, var(--app-surface-2) 12%);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #ffffff 5%, transparent);
   font: inherit;
   line-height: 1.6;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 .contact-form textarea:focus {
   border-color: var(--c-sky);
-  outline: 3px solid color-mix(in srgb, var(--c-sky) 24%, transparent);
+  outline: none;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--c-sky) 24%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--c-sky) 18%, transparent);
 }
 
 .contact-form__trap {

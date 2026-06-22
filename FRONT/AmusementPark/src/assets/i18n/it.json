@@ -2111,30 +2111,30 @@
     "title": "Contattare AmusementPark",
     "lead": "Invia una nota sul sito, un dettaglio mancante, un problema nei dati o un'idea di miglioramento.",
     "email": {
-      "badge": "Email temporanea",
+      "badge": "Email ufficiale",
       "title": "Contatto diretto",
-      "note": "Questo indirizzo e temporaneo finche non sara configurato un provider email dedicato."
+      "note": "Puoi scrivere direttamente a questo indirizzo; e il contatto stabile del sito."
     },
     "form": {
       "kicker": "Registro feedback",
       "title": "Lascia un messaggio",
-      "description": "I messaggi sono salvati come testo semplice e controllati dal pannello admin.",
+      "description": "Lascia una nota, una correzione o un'idea di miglioramento.",
       "messageLabel": "Il tuo messaggio",
-      "help": "Solo testo semplice. Tag HTML e link abusivi vengono rifiutati.",
-      "validation": "Inserisci un messaggio di testo semplice tra 10 e 2000 caratteri.",
-      "success": "Il tuo messaggio e stato registrato.",
+      "help": "Scrivi il messaggio in modo semplice, senza link inutili.",
+      "validation": "Inserisci un messaggio chiaro tra 10 e 2000 caratteri.",
+      "success": "Il tuo messaggio e stato inviato.",
       "error": "Il messaggio non puo essere inviato. Controlla il testo o riprova piu tardi.",
       "submit": "Invia",
       "submitting": "Invio"
     },
     "privacy": {
       "badge": "Protezione",
-      "title": "Avviso antiabuso",
-      "text": "Questo modulo e volutamente severo per proteggere il sito e gli amministratori.",
+      "title": "Uno spazio protetto",
+      "text": "Il modulo resta volutamente semplice per mantenere scambi puliti e utili.",
       "points": {
-        "plainText": "Sono accettati solo messaggi in testo semplice.",
-        "ip": "Il tuo indirizzo IP viene registrato per limitare abusi ripetuti.",
-        "admin": "Solo gli amministratori possono consultare messaggi e contesto tecnico."
+        "plainText": "Il tuo messaggio deve restare chiaro e rispettoso.",
+        "ip": "Gli abusi ripetuti possono essere limitati.",
+        "admin": "Solo il team del sito puo leggere i messaggi."
       }
     }
   },

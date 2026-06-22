@@ -1,6 +1,20 @@
 {
-  "version": "2.6.6",
+  "version": "2.6.7",
   "history": [
+    {
+      "version": "2.6.7",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Les formulaires ressortent mieux.",
+        "en": "Forms stand out more clearly.",
+        "de": "Formulare sind klarer erkennbar.",
+        "nl": "Formulieren vallen duidelijker op.",
+        "it": "I moduli risaltano meglio.",
+        "es": "Los formularios destacan mejor.",
+        "pl": "Formularze sa bardziej widoczne.",
+        "pt": "Os formularios ficam mais visiveis."
+      }
+    },
     {
       "version": "2.6.6",
       "releasedAt": "2026-06-22",

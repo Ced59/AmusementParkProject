@@ -2111,30 +2111,30 @@
     "title": "AmusementPark kontaktieren",
     "lead": "Sende einen Hinweis zur Website, zu fehlenden Angaben, Datenproblemen oder Verbesserungsideen.",
     "email": {
-      "badge": "Vorlaeufige E-Mail",
+      "badge": "Offizielle E-Mail",
       "title": "Direkter Kontakt",
-      "note": "Diese Adresse ist vorlaeufig, bis ein eigener Mailanbieter eingerichtet ist."
+      "note": "Du kannst direkt an diese Adresse schreiben; sie ist der feste Kontakt der Website."
     },
     "form": {
       "kicker": "Rueckmeldebuch",
       "title": "Nachricht hinterlassen",
-      "description": "Nachrichten werden als reiner Text gespeichert und im Adminbereich geprueft.",
+      "description": "Hinterlasse einen Hinweis, eine Korrektur oder eine Verbesserungsidee.",
       "messageLabel": "Deine Nachricht",
-      "help": "Nur reiner Text. HTML-Tags und missbraeuchliche Links werden abgelehnt.",
-      "validation": "Gib eine reine Textnachricht mit 10 bis 2000 Zeichen ein.",
-      "success": "Deine Nachricht wurde gespeichert.",
+      "help": "Schreibe deine Nachricht einfach und ohne unnoetige Links.",
+      "validation": "Gib eine klare Nachricht mit 10 bis 2000 Zeichen ein.",
+      "success": "Deine Nachricht wurde gesendet.",
       "error": "Die Nachricht konnte nicht gesendet werden. Pruefe den Text oder versuche es spaeter erneut.",
       "submit": "Senden",
       "submitting": "Senden"
     },
     "privacy": {
       "badge": "Schutz",
-      "title": "Anti-Missbrauch-Hinweis",
-      "text": "Dieses Formular ist bewusst streng, um die Website und ihre Administratoren zu schuetzen.",
+      "title": "Geschuetzter Bereich",
+      "text": "Das Formular bleibt bewusst einfach, damit der Austausch sauber und nuetzlich bleibt.",
       "points": {
-        "plainText": "Nachrichten werden nur als reiner Text akzeptiert.",
-        "ip": "Deine IP-Adresse wird gespeichert, um wiederholten Missbrauch zu begrenzen.",
-        "admin": "Nur Administratoren koennen Nachrichten und technische Daten einsehen."
+        "plainText": "Deine Nachricht soll klar und respektvoll bleiben.",
+        "ip": "Wiederholter Missbrauch kann begrenzt werden.",
+        "admin": "Nur das Website-Team kann die Nachrichten lesen."
       }
     }
   },

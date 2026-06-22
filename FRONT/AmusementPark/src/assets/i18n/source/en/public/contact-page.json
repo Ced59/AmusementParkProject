@@ -4,30 +4,30 @@
     "title": "Contact AmusementPark",
     "lead": "Send a note about the site, a missing detail, a data issue or an idea to improve the experience.",
     "email": {
-      "badge": "Temporary email",
+      "badge": "Official email",
       "title": "Direct contact",
-      "note": "This address is temporary until a dedicated mail provider is configured."
+      "note": "You can write directly to this address; it is the stable contact for the site."
     },
     "form": {
       "kicker": "Feedback notebook",
       "title": "Leave a message",
-      "description": "Messages are stored as plain text and reviewed from the admin panel.",
+      "description": "Leave a note, correction or improvement idea.",
       "messageLabel": "Your message",
-      "help": "Plain text only. HTML tags and abusive links are rejected.",
-      "validation": "Enter a plain text message between 10 and 2000 characters.",
-      "success": "Your message has been recorded.",
+      "help": "Write your message simply, without unnecessary links.",
+      "validation": "Enter a clear message between 10 and 2000 characters.",
+      "success": "Your message has been sent.",
       "error": "The message could not be sent. Check the text or try again later.",
       "submit": "Send",
       "submitting": "Sending"
     },
     "privacy": {
       "badge": "Protection",
-      "title": "Anti-abuse notice",
-      "text": "This form is intentionally strict to protect the site and its administrators.",
+      "title": "A protected space",
+      "text": "The form stays intentionally simple so exchanges remain clean and useful.",
       "points": {
-        "plainText": "Messages are accepted as plain text only.",
-        "ip": "Your IP address is recorded to limit repeated abuse.",
-        "admin": "Only administrators can consult submitted messages and technical context."
+        "plainText": "Your message should stay clear and respectful.",
+        "ip": "Repeated abuse can be limited.",
+        "admin": "Only the site team can read messages."
       }
     }
   }

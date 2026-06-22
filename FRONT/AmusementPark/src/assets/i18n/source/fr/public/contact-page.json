@@ -4,30 +4,30 @@
     "title": "Contacter AmusementPark",
     "lead": "Envoie une remarque sur le site, une information manquante, un problème de données ou une idée d’amélioration.",
     "email": {
-      "badge": "Adresse temporaire",
+      "badge": "Adresse officielle",
       "title": "Contact direct",
-      "note": "Cette adresse est temporaire en attendant la configuration d'un provider mail dédié."
+      "note": "Tu peux écrire directement à cette adresse, c'est le contact stable du site."
     },
     "form": {
       "kicker": "Cahier de doléances",
       "title": "Laisser un message",
-      "description": "Les messages sont stockés en texte simple et consultables depuis le panel admin.",
+      "description": "Dépose une remarque, une correction ou une idée d'amélioration.",
       "messageLabel": "Ton message",
-      "help": "Texte simple uniquement. Les balises HTML et les liens abusifs sont rejetés.",
-      "validation": "Saisis un message en texte simple entre 10 et 2000 caractères.",
-      "success": "Ton message a bien été enregistré.",
+      "help": "Écris simplement ton message, sans lien inutile.",
+      "validation": "Saisis un message clair entre 10 et 2000 caractères.",
+      "success": "Ton message a bien été envoyé.",
       "error": "Le message n’a pas pu être envoyé. Vérifie le texte ou réessaie plus tard.",
       "submit": "Envoyer",
       "submitting": "Envoi"
     },
     "privacy": {
       "badge": "Protection",
-      "title": "Information anti-abus",
-      "text": "Ce formulaire est volontairement strict pour protéger le site et ses administrateurs.",
+      "title": "Un espace protégé",
+      "text": "Le formulaire reste volontairement simple pour garder des échanges propres et utiles.",
       "points": {
-        "plainText": "Les messages sont acceptés en texte simple uniquement.",
-        "ip": "Ton adresse IP est enregistrée pour limiter les abus répétés.",
-        "admin": "Seuls les administrateurs peuvent consulter les messages et le contexte technique."
+        "plainText": "Ton message doit rester clair et respectueux.",
+        "ip": "Les abus répétés peuvent être limités.",
+        "admin": "Seule l'équipe du site peut lire les messages."
       }
     }
   }
