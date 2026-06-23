@@ -15,13 +15,17 @@ interface ActivatedRouteStub {
 }
 
 interface AdminParkGraphUpsertsComponentHarness {
+  appliedResultMessageKey: string | null;
+  appliedResultMessageParams: Record<string, number>;
   contentChangeCount: number;
   hasJsonDraft: boolean;
   jsonText: string;
+  lastAppliedResult: ParkGraphUpsertResult | null;
   previewResult: ParkGraphUpsertResult | null;
   searchTerm: string;
   selectedPark: Park | null;
   uiError: string | null;
+  apply(): void;
   exportSelectedParkJson(): void;
   loadExpertJsonFile(event: Event): void;
   preview(): void;
@@ -223,6 +227,78 @@ describe('AdminParkGraphUpsertsComponent', () => {
 
     expect(harness.contentChangeCount).toBe(1);
     expect(fixture.nativeElement.querySelector('.admin-alert--info')).not.toBeNull();
+  });
+
+  it('shows a partial apply result with the rejected image detail', () => {
+    createComponent({
+      parkId: 'park-1',
+      parkName: 'Selected Park'
+    });
+
+    harness.jsonText = '{"items":[],"images":[]}';
+    harness.previewResult = {
+      operationId: 'operation-preview',
+      mode: 'merge',
+      isApplied: false,
+      canApply: true,
+      previewedAtUtc: '2026-06-18T10:00:00Z',
+      targetParkId: 'park-1',
+      targetParkName: 'Selected Park',
+      counts: { created: 1, updated: 0, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      changes: [],
+      warnings: [],
+      errors: []
+    };
+
+    harness.apply();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/apply`);
+    expect(request.request.method).toBe('POST');
+    request.flush({
+      operationId: 'operation-apply',
+      mode: 'merge',
+      isApplied: true,
+      canApply: false,
+      previewedAtUtc: '2026-06-18T10:00:00Z',
+      appliedAtUtc: '2026-06-18T10:01:00Z',
+      targetParkId: 'park-1',
+      targetParkName: 'Selected Park',
+      counts: { created: 1, updated: 0, deleted: 0, unchanged: 0, warnings: 0, errors: 1 },
+      changes: [
+        {
+          entityType: 'ParkItem',
+          entityId: 'item-1',
+          entityKey: 'item:coaster',
+          displayName: 'Coaster',
+          changeType: 'Created',
+          matchedBy: 'name',
+          fields: []
+        },
+        {
+          entityType: 'Image',
+          entityId: null,
+          entityKey: 'https://cdn.example.test/photo.webp',
+          displayName: 'https://cdn.example.test/photo.webp',
+          changeType: 'Skipped',
+          matchedBy: 'sourceUrl',
+          fields: [
+            {
+              field: 'sourceUrl',
+              oldValue: null,
+              newValue: 'https://cdn.example.test/photo.webp'
+            }
+          ]
+        }
+      ],
+      warnings: [],
+      errors: ["Remote image was not imported: 'https://cdn.example.test/photo.webp'."]
+    } satisfies ParkGraphUpsertResult);
+    fixture.detectChanges();
+
+    expect(harness.appliedResultMessageKey).toBe('admin.parkGraphUpserts.result.appliedPartial');
+    expect(harness.appliedResultMessageParams).toEqual({ applied: 1, failed: 1 });
+    expect(fixture.nativeElement.querySelector('.admin-alert--warning')).not.toBeNull();
+    expect(fixture.nativeElement.textContent).toContain('https://cdn.example.test/photo.webp');
   });
 
   it('queues a deletion and removes the source image block from the JSON draft', () => {

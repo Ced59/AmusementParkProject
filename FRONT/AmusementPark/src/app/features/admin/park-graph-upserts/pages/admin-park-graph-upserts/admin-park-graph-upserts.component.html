@@ -129,8 +129,14 @@
         }
       </header>
 
-      @if (lastAppliedResult) {
-        <p class="admin-alert admin-alert--success">{{ 'admin.parkGraphUpserts.result.applied' | translate }}</p>
+      @if (appliedResultMessageKey) {
+        <p
+          class="admin-alert"
+          [class.admin-alert--success]="isAppliedResultSuccess"
+          [class.admin-alert--warning]="isAppliedResultPartial"
+          [class.admin-alert--error]="isAppliedResultRejected">
+          {{ appliedResultMessageKey | translate: appliedResultMessageParams }}
+        </p>
       }
 
       @if (previewResult) {
