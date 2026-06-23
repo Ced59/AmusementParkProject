@@ -1,6 +1,20 @@
 {
-  "version": "2.7.4",
+  "version": "2.7.5",
   "history": [
+    {
+      "version": "2.7.5",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "L'administration s'adapte mieux aux petits ecrans.",
+        "en": "Admin views fit small screens better.",
+        "de": "Die Administration passt besser auf kleine Bildschirme.",
+        "nl": "De administratie past beter op kleine schermen.",
+        "it": "L'amministrazione si adatta meglio agli schermi piccoli.",
+        "es": "La administracion se adapta mejor a pantallas pequenas.",
+        "pl": "Administracja lepiej pasuje do malych ekranow.",
+        "pt": "A administracao adapta-se melhor a ecra pequenos."
+      }
+    },
     {
       "version": "2.7.4",
       "releasedAt": "2026-06-23",
