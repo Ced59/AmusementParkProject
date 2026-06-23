@@ -1,6 +1,20 @@
 {
-  "version": "2.6.20",
+  "version": "2.6.21",
   "history": [
+    {
+      "version": "2.6.21",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "Les outils techniques sont plus fiables.",
+        "en": "Technical tools are more reliable.",
+        "de": "Technische Werkzeuge sind zuverlaessiger.",
+        "nl": "Technische hulpmiddelen zijn betrouwbaarder.",
+        "it": "Gli strumenti tecnici sono piu affidabili.",
+        "es": "Las herramientas tecnicas son mas fiables.",
+        "pl": "Narzedzia techniczne sa bardziej niezawodne.",
+        "pt": "As ferramentas tecnicas ficam mais fiaveis."
+      }
+    },
     {
       "version": "2.6.20",
       "releasedAt": "2026-06-23",
