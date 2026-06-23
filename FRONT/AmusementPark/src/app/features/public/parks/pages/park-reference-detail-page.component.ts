@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
+import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { ParkReferenceKind } from '../models/park-reference-detail-view.model';
 import { ParkReferenceDetailStateFacade } from '../state/park-reference-detail-state.facade';
@@ -29,7 +30,8 @@ export class ParkReferenceDetailPageComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly translationService: TranslationService,
-    private readonly stateFacade: ParkReferenceDetailStateFacade
+    private readonly stateFacade: ParkReferenceDetailStateFacade,
+    private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
   ) {
   }
 
@@ -55,6 +57,19 @@ export class ParkReferenceDetailPageComponent implements OnInit {
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.currentLang.set(language);
       this.stateFacade.setCurrentLanguage(language);
+    });
+
+    this.contextualBlockRefreshEvents.appliedBlock$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: AdminContextualBlockAppliedEvent) => {
+      if (event.entityType !== 'AttractionManufacturer' || this.resolveReferenceKind() !== 'manufacturer') {
+        return;
+      }
+
+      const currentReferenceId: string | null = this.reference()?.id ?? this.route.snapshot.paramMap.get('id');
+      if (currentReferenceId !== event.entityId) {
+        return;
+      }
+
+      this.stateFacade.loadReference('manufacturer', event.entityId);
     });
   }
 

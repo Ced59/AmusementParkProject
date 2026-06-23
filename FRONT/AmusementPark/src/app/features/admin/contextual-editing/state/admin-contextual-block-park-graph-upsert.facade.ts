@@ -4,6 +4,7 @@ import { firstValueFrom } from 'rxjs';
 
 import { ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
 import {
   ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT,
   AdminContextualBlockParkGraphUpsertDataPort
@@ -28,7 +29,8 @@ export class AdminContextualBlockParkGraphUpsertFacade {
 
   constructor(
     @Inject(DOCUMENT) private readonly document: Document,
-    @Inject(ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT) private readonly parkGraphUpsertsApi: AdminContextualBlockParkGraphUpsertDataPort
+    @Inject(ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT) private readonly parkGraphUpsertsApi: AdminContextualBlockParkGraphUpsertDataPort,
+    private readonly refreshEvents: AdminContextualBlockRefreshEvents
   ) {
   }
 
@@ -129,6 +131,7 @@ export class AdminContextualBlockParkGraphUpsertFacade {
       }
 
       this.successKeySignal.set('admin.contextualBlocks.drawer.parkGraphUpsertImported');
+      this.notifyRefreshEvents(block, result);
     } catch (error: unknown) {
       this.errorKeySignal.set(error instanceof SyntaxError
         ? 'admin.contextualBlocks.drawer.parkGraphUpsertImportInvalidJson'
@@ -182,5 +185,67 @@ export class AdminContextualBlockParkGraphUpsertFacade {
   private isJsonFile(file: File): boolean {
     const fileName: string = file.name.trim().toLowerCase();
     return fileName.endsWith('.json') || file.type === 'application/json';
+  }
+
+  private notifyRefreshEvents(block: AdminContextualBlockInstance, result: ParkGraphUpsertResult): void {
+    if (!result.isApplied || !result.canApply) {
+      return;
+    }
+
+    const appliedAtUtc: string = result.appliedAtUtc ?? new Date().toISOString();
+    const eventKeys = new Set<string>();
+
+    this.addRefreshEvent(eventKeys, block.entityType, block.entityId, block.type, appliedAtUtc);
+
+    for (const change of result.changes) {
+      this.addRefreshEvent(eventKeys, this.toRefreshEntityType(change.entityType), change.entityId ?? null, block.type, appliedAtUtc);
+
+      if (change.entityType !== 'Image') {
+        continue;
+      }
+
+      const ownerType: string | null = this.findChangeFieldValue(change.fields, 'ownerType');
+      const ownerId: string | null = this.findChangeFieldValue(change.fields, 'ownerId');
+      this.addRefreshEvent(eventKeys, this.toRefreshEntityType(ownerType), ownerId, block.type, appliedAtUtc);
+    }
+  }
+
+  private addRefreshEvent(
+    eventKeys: Set<string>,
+    entityType: 'Park' | 'ParkItem' | 'AttractionManufacturer' | null,
+    entityId: string | null,
+    blockType: AdminContextualBlockInstance['type'],
+    appliedAtUtc: string
+  ): void {
+    const normalizedEntityId: string = entityId?.trim() ?? '';
+    if (!entityType || normalizedEntityId.length === 0) {
+      return;
+    }
+
+    const eventKey: string = `${entityType}:${normalizedEntityId}`;
+    if (eventKeys.has(eventKey)) {
+      return;
+    }
+
+    eventKeys.add(eventKey);
+    this.refreshEvents.notifyBlockApplied({
+      blockType,
+      entityType,
+      entityId: normalizedEntityId,
+      appliedAtUtc
+    });
+  }
+
+  private toRefreshEntityType(value: string | null | undefined): 'Park' | 'ParkItem' | 'AttractionManufacturer' | null {
+    if (value === 'Park' || value === 'ParkItem' || value === 'AttractionManufacturer') {
+      return value;
+    }
+
+    return null;
+  }
+
+  private findChangeFieldValue(fields: ParkGraphUpsertResult['changes'][number]['fields'], fieldName: string): string | null {
+    const field = fields.find((candidate): boolean => candidate.field === fieldName);
+    return field?.newValue ?? field?.oldValue ?? null;
   }
 }

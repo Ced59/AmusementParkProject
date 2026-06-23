@@ -1,6 +1,20 @@
 {
-  "version": "2.7.1",
+  "version": "2.7.2",
   "history": [
+    {
+      "version": "2.7.2",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "L'administration se met mieux a jour.",
+        "en": "Admin updates appear more reliably.",
+        "de": "Admin-Aktualisierungen erscheinen zuverlaessiger.",
+        "nl": "Administratie-updates verschijnen betrouwbaarder.",
+        "it": "Gli aggiornamenti admin appaiono in modo piu affidabile.",
+        "es": "Las actualizaciones de administracion aparecen con mas fiabilidad.",
+        "pl": "Aktualizacje administracji pojawiaja sie pewniej.",
+        "pt": "As atualizacoes de administracao aparecem com mais fiabilidade."
+      }
+    },
     {
       "version": "2.7.1",
       "releasedAt": "2026-06-23",
