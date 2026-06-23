@@ -10,7 +10,10 @@ import { forkJoin } from 'rxjs';
 
 import { AdminImageBulkMetadataUpdate } from '@app/models/images/admin-image-bulk-metadata-update';
 import { AdminImageSearchQuery } from '@app/models/images/admin-image-search-query';
+import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
+import { ImageGeoLocation } from '@app/models/images/image-geo-location';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { DEFAULT_PAGINATION, PagedResult, PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -19,6 +22,7 @@ import {
   ADMIN_SITE_STATE_IMAGES_API_SERVICE_PORT,
   AdminSiteStateImagesApiServicePort
 } from './admin-site-state-data.ports';
+
 interface AdminSiteViewModel {
   images: ImageDto[];
   tags: ImageTagDto[];
@@ -26,6 +30,7 @@ interface AdminSiteViewModel {
   pagination: PaginationContract;
   query: AdminImageSearchQuery;
   selectedImageIds: string[];
+  operationErrorKey: string | null;
 }
 
 const DEFAULT_IMAGE_QUERY: AdminImageSearchQuery = {
@@ -43,6 +48,8 @@ const DEFAULT_IMAGE_QUERY: AdminImageSearchQuery = {
   sortDirection: 'desc',
 };
 
+const DEFAULT_LANGUAGE_CODE = 'fr';
+
 @Injectable()
 export class AdminSiteStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<AdminSiteViewModel>();
@@ -54,6 +61,7 @@ export class AdminSiteStateFacade {
   public readonly pagination: Signal<PaginationContract> = computed(() => this.screenStateStore.data()?.pagination ?? DEFAULT_PAGINATION);
   public readonly query: Signal<AdminImageSearchQuery> = computed(() => this.screenStateStore.data()?.query ?? DEFAULT_IMAGE_QUERY);
   public readonly selectedImageIds: Signal<string[]> = computed(() => this.screenStateStore.data()?.selectedImageIds ?? []);
+  public readonly operationErrorKey: Signal<string | null> = computed(() => this.screenStateStore.data()?.operationErrorKey ?? null);
   public readonly selectedCount: Signal<number> = computed(() => this.selectedImageIds().length);
   public readonly isEveryPageImageSelected: Signal<boolean> = computed(() => {
     const imageIds: string[] = this.images().map((image: ImageDto) => image.id);
@@ -91,6 +99,7 @@ export class AdminSiteStateFacade {
           pagination: page.pagination,
           query,
           selectedImageIds,
+          operationErrorKey: null,
         });
       },
       error: (error: unknown) => {
@@ -116,6 +125,7 @@ export class AdminSiteStateFacade {
       pagination: currentData?.pagination ?? DEFAULT_PAGINATION,
       query,
       selectedImageIds: currentData?.selectedImageIds ?? [],
+      operationErrorKey: null,
     });
   }
 
@@ -132,6 +142,7 @@ export class AdminSiteStateFacade {
       pagination: currentData?.pagination ?? DEFAULT_PAGINATION,
       query: DEFAULT_IMAGE_QUERY,
       selectedImageIds: [],
+      operationErrorKey: null,
     });
     this.reload();
   }
@@ -156,6 +167,7 @@ export class AdminSiteStateFacade {
     this.screenStateStore.setReady({
       ...currentData,
       selectedImage: this.cloneImage(image),
+      operationErrorKey: null,
     });
   }
 
@@ -172,6 +184,7 @@ export class AdminSiteStateFacade {
         ...currentData.selectedImage,
         ...patch,
       },
+      operationErrorKey: null,
     });
   }
 
@@ -196,6 +209,7 @@ export class AdminSiteStateFacade {
         ...currentData.selectedImage,
         tagIds: Array.from(currentTags),
       },
+      operationErrorKey: null,
     });
   }
 
@@ -217,6 +231,7 @@ export class AdminSiteStateFacade {
     this.screenStateStore.setReady({
       ...currentData,
       selectedImageIds: Array.from(selectedIds),
+      operationErrorKey: null,
     });
   }
 
@@ -239,6 +254,7 @@ export class AdminSiteStateFacade {
     this.screenStateStore.setReady({
       ...currentData,
       selectedImageIds: Array.from(selectedIds),
+      operationErrorKey: null,
     });
   }
 
@@ -252,6 +268,7 @@ export class AdminSiteStateFacade {
     this.screenStateStore.setReady({
       ...currentData,
       selectedImageIds: [],
+      operationErrorKey: null,
     });
   }
 
@@ -273,13 +290,114 @@ export class AdminSiteStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error applying bulk image metadata', error);
-        this.screenStateStore.setError('common.errorMessage', currentData);
+        this.setOperationError(currentData);
       },
     });
   }
 
+  saveSelectedImage(): void {
+    const currentData: AdminSiteViewModel | undefined = this.screenStateStore.data();
+    const selectedImage: ImageDto | null | undefined = currentData?.selectedImage;
+
+    if (!currentData || !selectedImage) {
+      return;
+    }
+
+    this.imagesApiService.updateAdminImage(selectedImage.id, {
+      description: selectedImage.description,
+      category: selectedImage.category,
+      ownerType: selectedImage.ownerType,
+      ownerId: selectedImage.ownerType === ImageOwnerType.NONE ? null : selectedImage.ownerId,
+      isCurrent: selectedImage.isCurrent,
+      geoLocation: this.normalizeGeoLocation(selectedImage.geoLocation),
+      altTexts: selectedImage.altTexts ?? [],
+      captions: selectedImage.captions ?? [],
+      credits: selectedImage.credits ?? [],
+      tagIds: selectedImage.tagIds ?? [],
+      isPublished: selectedImage.isPublished,
+      sourceUrl: selectedImage.sourceUrl ?? null,
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => {
+        this.reload();
+      },
+      error: (error: unknown) => {
+        console.error('Error saving admin image metadata', error);
+        this.setOperationError(currentData);
+      },
+    });
+  }
+
+  applyWatermarkToSelectedImage(): void {
+    const currentData: AdminSiteViewModel | undefined = this.screenStateStore.data();
+    const selectedImage: ImageDto | null | undefined = currentData?.selectedImage;
+
+    if (!currentData || !selectedImage || !this.canApplyWatermark(selectedImage)) {
+      return;
+    }
+
+    this.imagesApiService.applyWatermark(selectedImage.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => {
+        this.reload();
+      },
+      error: (error: unknown) => {
+        console.error('Error applying image watermark', error);
+        this.setOperationError(currentData);
+      },
+    });
+  }
+
+  createTag(slugValue: string): boolean {
+    const currentData: AdminSiteViewModel | undefined = this.screenStateStore.data();
+    const slug: string = slugValue.trim().toLowerCase();
+
+    if (!currentData || !slug) {
+      return false;
+    }
+
+    this.imagesApiService.createAdminImageTag({
+      slug,
+      labels: [{ languageCode: DEFAULT_LANGUAGE_CODE, value: slug }],
+      descriptions: [],
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => {
+        this.reload();
+      },
+      error: (error: unknown) => {
+        console.error('Error creating admin image tag', error);
+        this.setOperationError(currentData);
+      },
+    });
+
+    return true;
+  }
+
+  deleteImages(imageIds: readonly string[]): void {
+    const currentData: AdminSiteViewModel | undefined = this.screenStateStore.data();
+    const uniqueImageIds: string[] = Array.from(new Set(
+      imageIds
+        .map((imageId: string) => imageId.trim())
+        .filter((imageId: string) => imageId.length > 0)
+    ));
+
+    if (!currentData || uniqueImageIds.length === 0) {
+      return;
+    }
+
+    forkJoin(uniqueImageIds.map((imageId: string) => this.imagesApiService.deleteImage(imageId)))
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.reload();
+        },
+        error: (error: unknown) => {
+          console.error('Error deleting admin images', error);
+          this.setOperationError(currentData);
+        },
+      });
+  }
+
   setError(): void {
-    this.screenStateStore.setError('common.errorMessage', this.screenStateStore.data());
+    this.setOperationError(this.screenStateStore.data());
   }
 
   private resolveSelectedImage(images: ImageDto[], previousSelectionId: string | null): ImageDto | null {
@@ -306,15 +424,47 @@ export class AdminSiteStateFacade {
   private cloneImage(image: ImageDto): ImageDto {
     const clonedImage: ImageDto = JSON.parse(JSON.stringify(image)) as ImageDto;
 
-    if (!clonedImage.geoLocation) {
-      clonedImage.geoLocation = { latitude: 0, longitude: 0 };
-    }
-
     clonedImage.tagIds = clonedImage.tagIds ?? [];
     clonedImage.altTexts = clonedImage.altTexts ?? [];
     clonedImage.captions = clonedImage.captions ?? [];
     clonedImage.credits = clonedImage.credits ?? [];
 
     return clonedImage;
+  }
+
+  private canApplyWatermark(image: ImageDto): boolean {
+    return image.category !== ImageCategory.LOGO && !image.isWatermarked && !!image.path;
+  }
+
+  private normalizeGeoLocation(geoLocation: ImageGeoLocation | null | undefined): ImageGeoLocation | null {
+    if (!geoLocation) {
+      return null;
+    }
+
+    const latitude: number = Number(geoLocation.latitude);
+    const longitude: number = Number(geoLocation.longitude);
+
+    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+      return null;
+    }
+
+    return {
+      latitude,
+      longitude,
+    };
+  }
+
+  private setOperationError(previousData: AdminSiteViewModel | undefined): void {
+    const currentData: AdminSiteViewModel | undefined = previousData ?? this.screenStateStore.data();
+
+    if (!currentData) {
+      this.screenStateStore.setError('common.errorMessage');
+      return;
+    }
+
+    this.screenStateStore.setReady({
+      ...currentData,
+      operationErrorKey: 'common.errorMessage',
+    });
   }
 }

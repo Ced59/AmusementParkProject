@@ -153,9 +153,20 @@
           </select>
           <button type="button" class="btn btn--ghost btn--sm" (click)="applyBulkAddTag()">{{ 'admin.images.addTag' | translate }}</button>
           <button type="button" class="btn btn--ghost btn--sm" (click)="applyBulkRemoveTag()">{{ 'admin.images.removeTag' | translate }}</button>
+          <button type="button" class="btn btn--danger btn--sm" (click)="deleteSelectedImages()">
+            <i class="pi pi-trash" aria-hidden="true"></i>
+            {{ 'admin.images.bulkDelete' | translate }}
+          </button>
           <button type="button" class="btn btn--ghost btn--sm" (click)="clearSelection()">{{ 'actions.clear' | translate }}</button>
         </div>
       </section>
+    }
+
+    @if (operationErrorKey(); as errorKey) {
+      <div class="admin-images-operation-error" role="alert">
+        <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+        <span>{{ errorKey | translate }}</span>
+      </div>
     }
 
     <div class="admin-images-workbench">
@@ -177,24 +188,62 @@
         } @else {
           <div class="admin-images-grid">
             @for (image of images(); track trackById($index, image)) {
-              <article class="admin-image-card" [class.admin-image-card--active]="selectedImage()?.id === image.id">
+              <article
+                class="admin-image-card"
+                [class.admin-image-card--active]="selectedImage()?.id === image.id"
+                [class.admin-image-card--orphan]="image.ownerType === 'NONE' || !image.ownerId">
                 <label class="admin-image-card__select" (click)="$event.stopPropagation()">
-                  <input type="checkbox" [checked]="isImageSelected(image.id)" (change)="toggleImageSelection(image.id, $any($event.target).checked)">
+                  <input
+                    type="checkbox"
+                    [attr.aria-label]="getSelectionAriaLabel(image)"
+                    [checked]="isImageSelected(image.id)"
+                    (change)="toggleImageSelection(image.id, $any($event.target).checked)">
                 </label>
 
-                <button type="button" class="admin-image-card__button" (click)="selectImage(image)">
+                <button
+                  type="button"
+                  class="admin-image-card__delete"
+                  [attr.aria-label]="getDeleteAriaLabel(image)"
+                  (click)="$event.stopPropagation(); deleteImage(image)">
+                  <i class="pi pi-trash" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="admin-image-card__button" [attr.aria-label]="getCardAriaLabel(image)" (click)="selectImage(image)">
                   <app-image-display
                     [imageId]="image.id"
-                    [alt]="image.description || image.originalFileName || image.id"
+                    [alt]="getImageAlt(image)"
                     imgClass="admin-image-card__preview"
                     placeholderClass="admin-image-card__preview admin-image-card__preview--placeholder"
                     placeholderIconClass="pi pi-image">
                   </app-image-display>
 
                   <span class="admin-image-card__body">
-                    <strong>{{ image.originalFileName || image.id }}</strong>
-                    <span>{{ image.width }} × {{ image.height }} · {{ formatBytes(image.sizeInBytes) }}</span>
-                    <span>{{ formatDate(image.createdAt) }}</span>
+                    <strong>{{ getImageTitle(image) }}</strong>
+                    <span class="admin-image-card__subtitle">{{ getImageSubtitle(image) }}</span>
+                    <span class="admin-image-card__meta-line">
+                      <span>{{ 'admin.images.owner' | translate }}</span>
+                      <b>{{ getOwnerSummary(image) }}</b>
+                    </span>
+                    <span class="admin-image-card__meta-line">
+                      <span>{{ 'admin.images.category' | translate }}</span>
+                      <b>{{ ('images.categories.' + image.category) | translate }}</b>
+                    </span>
+                    <span class="admin-image-card__meta-line">
+                      <span>{{ 'admin.images.dimensions' | translate }}</span>
+                      <b>{{ getDimensionsSummary(image) }} - {{ formatBytes(image.sizeInBytes) }}</b>
+                    </span>
+                    <span class="admin-image-card__meta-line">
+                      <span>{{ 'admin.images.createdAt' | translate }}</span>
+                      <b>{{ formatDate(image.createdAt) }}</b>
+                    </span>
+                    <span class="admin-image-card__meta-line">
+                      <span>{{ 'admin.images.tags' | translate }}</span>
+                      <b>{{ getTagSummary(image) }}</b>
+                    </span>
+                    <span class="admin-image-card__meta-line">
+                      <span>{{ 'admin.images.geo' | translate }}</span>
+                      <b>{{ getGeoSummary(image) }}</b>
+                    </span>
                   </span>
                 </button>
 
@@ -208,6 +257,8 @@
                   </span>
                   @if (image.ownerType !== 'NONE') {
                     <span class="admin-image-badge admin-image-badge--owner">{{ ('images.ownerTypes.' + image.ownerType) | translate }}</span>
+                  } @else {
+                    <span class="admin-image-badge admin-image-badge--orphan">{{ 'admin.images.noOwner' | translate }}</span>
                   }
                 </div>
               </article>
@@ -260,10 +311,10 @@
 
           <dl class="admin-image-facts">
             <div><dt>ID</dt><dd>{{ currentImage.id }}</dd></div>
-            <div><dt>{{ 'admin.images.dimensions' | translate }}</dt><dd>{{ currentImage.width }} × {{ currentImage.height }}</dd></div>
+            <div><dt>{{ 'admin.images.dimensions' | translate }}</dt><dd>{{ getDimensionsSummary(currentImage) }}</dd></div>
             <div><dt>{{ 'admin.images.weight' | translate }}</dt><dd>{{ formatBytes(currentImage.sizeInBytes) }}</dd></div>
-            <div><dt>{{ 'admin.images.mimeType' | translate }}</dt><dd>{{ currentImage.contentType || '—' }}</dd></div>
-            <div><dt>{{ 'admin.images.owner' | translate }}</dt><dd>{{ ('images.ownerTypes.' + currentImage.ownerType) | translate }} · {{ currentImage.ownerId || '—' }}</dd></div>
+            <div><dt>{{ 'admin.images.mimeType' | translate }}</dt><dd>{{ currentImage.contentType || '-' }}</dd></div>
+            <div><dt>{{ 'admin.images.owner' | translate }}</dt><dd>{{ getOwnerSummary(currentImage) }}</dd></div>
             <div><dt>{{ 'admin.images.watermark' | translate }}</dt><dd>{{ (currentImage.isWatermarked ? 'admin.images.watermarked' : 'admin.images.notWatermarked') | translate }}</dd></div>
           </dl>
 
@@ -347,6 +398,10 @@
                 <input type="number" [ngModel]="currentImage.geoLocation?.longitude" (ngModelChange)="updateSelectedImageLongitude($event)">
               </label>
             </div>
+            <button type="button" class="btn btn--ghost btn--sm admin-image-clear-geo" (click)="clearSelectedImageGeoLocation()">
+              <i class="pi pi-map-marker" aria-hidden="true"></i>
+              {{ 'admin.images.clearGeo' | translate }}
+            </button>
 
             <div class="admin-images-two-columns">
               <label class="admin-field">
@@ -379,6 +434,10 @@
             <button type="button" class="btn btn--primary" (click)="saveImage()">
               <i class="pi pi-save" aria-hidden="true"></i>
               {{ 'admin.images.saveImage' | translate }}
+            </button>
+            <button type="button" class="btn btn--danger" (click)="deleteImage(currentImage)">
+              <i class="pi pi-trash" aria-hidden="true"></i>
+              {{ 'admin.images.deleteImage' | translate }}
             </button>
           </div>
         } @else {

@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
-import { firstValueFrom } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { AdminImageSortDirection, AdminImageSortField } from '@app/models/images/admin-image-search-query';
 import { ImageCategory } from '@app/models/images/image-category';
@@ -10,7 +9,6 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
-import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AdminSiteStateFacade } from '@features/admin/site/state/admin-site-state.facade';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -32,6 +30,7 @@ export class AdminSiteComponent implements OnInit {
   protected readonly query = this.stateFacade.query;
   protected readonly pagination = this.stateFacade.pagination;
   protected readonly selectedImageIds = this.stateFacade.selectedImageIds;
+  protected readonly operationErrorKey = this.stateFacade.operationErrorKey;
   protected readonly selectedCount = this.stateFacade.selectedCount;
   protected readonly isEveryPageImageSelected = this.stateFacade.isEveryPageImageSelected;
   protected readonly categories: ImageCategory[] = [
@@ -63,8 +62,8 @@ export class AdminSiteComponent implements OnInit {
   protected bulkCategory: ImageCategory | '' = '';
 
   constructor(
-    public readonly imagesApiService: ImagesApiService,
-    private readonly stateFacade: AdminSiteStateFacade
+    private readonly stateFacade: AdminSiteStateFacade,
+    private readonly translate: TranslateService
   ) {
   }
 
@@ -156,67 +155,48 @@ export class AdminSiteComponent implements OnInit {
     return this.selectedImageIds().includes(imageId);
   }
 
-  protected async saveImage(): Promise<void> {
-    const selectedImage: ImageDto | null = this.selectedImage();
-
-    if (!selectedImage) {
-      return;
-    }
-
-    try {
-      await firstValueFrom(this.imagesApiService.updateAdminImage(selectedImage.id, {
-        description: selectedImage.description,
-        category: selectedImage.category,
-        ownerType: selectedImage.ownerType,
-        ownerId: selectedImage.ownerType === ImageOwnerType.NONE ? null : selectedImage.ownerId,
-        isCurrent: selectedImage.isCurrent,
-        geoLocation: selectedImage.geoLocation ?? null,
-        altTexts: selectedImage.altTexts ?? [],
-        captions: selectedImage.captions ?? [],
-        credits: selectedImage.credits ?? [],
-        tagIds: selectedImage.tagIds ?? [],
-        isPublished: selectedImage.isPublished,
-        sourceUrl: selectedImage.sourceUrl ?? null,
-      }));
-      this.reload();
-    } catch {
-      this.stateFacade.setError();
-    }
+  protected saveImage(): void {
+    this.stateFacade.saveSelectedImage();
   }
 
-  protected async applyWatermarkToSelectedImage(): Promise<void> {
-    const selectedImage: ImageDto | null = this.selectedImage();
-
-    if (!selectedImage || !this.canApplyWatermark(selectedImage)) {
-      return;
-    }
-
-    try {
-      await firstValueFrom(this.imagesApiService.applyWatermark(selectedImage.id));
-      this.reload();
-    } catch {
-      this.stateFacade.setError();
-    }
+  protected applyWatermarkToSelectedImage(): void {
+    this.stateFacade.applyWatermarkToSelectedImage();
   }
 
-  protected async createTag(): Promise<void> {
-    const slug: string = this.newTagSlug.trim().toLowerCase();
-
-    if (!slug) {
-      return;
-    }
-
-    try {
-      await firstValueFrom(this.imagesApiService.createAdminImageTag({
-        slug,
-        labels: [{ languageCode: this.defaultLanguageCode, value: slug }],
-        descriptions: [],
-      }));
+  protected createTag(): void {
+    if (this.stateFacade.createTag(this.newTagSlug)) {
       this.newTagSlug = '';
-      this.reload();
-    } catch {
-      this.stateFacade.setError();
     }
+  }
+
+  protected deleteImage(image: ImageDto): void {
+    const confirmed: boolean = confirm(this.translate.instant('admin.images.deleteConfirm', {
+      name: image.originalFileName || image.id,
+    }));
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.stateFacade.deleteImages([image.id]);
+  }
+
+  protected deleteSelectedImages(): void {
+    const imageIds: string[] = this.selectedImageIds();
+
+    if (imageIds.length === 0) {
+      return;
+    }
+
+    const confirmed: boolean = confirm(this.translate.instant('admin.images.bulkDeleteConfirm', {
+      count: imageIds.length,
+    }));
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.stateFacade.deleteImages(imageIds);
   }
 
   protected updateSelectedImageDescription(value: string): void {
@@ -256,14 +236,10 @@ export class AdminSiteComponent implements OnInit {
   protected updateSelectedImageLatitude(latitude: number | string): void {
     const selectedImage: ImageDto | null = this.selectedImage();
 
-    if (!selectedImage?.geoLocation) {
-      return;
-    }
-
     this.stateFacade.updateSelectedImage({
       geoLocation: {
-        ...selectedImage.geoLocation,
         latitude: Number(latitude),
+        longitude: selectedImage?.geoLocation?.longitude ?? 0,
       },
     });
   }
@@ -271,15 +247,78 @@ export class AdminSiteComponent implements OnInit {
   protected updateSelectedImageLongitude(longitude: number | string): void {
     const selectedImage: ImageDto | null = this.selectedImage();
 
-    if (!selectedImage?.geoLocation) {
-      return;
-    }
-
     this.stateFacade.updateSelectedImage({
       geoLocation: {
-        ...selectedImage.geoLocation,
+        latitude: selectedImage?.geoLocation?.latitude ?? 0,
         longitude: Number(longitude),
       },
+    });
+  }
+
+  protected clearSelectedImageGeoLocation(): void {
+    this.stateFacade.updateSelectedImage({ geoLocation: null });
+  }
+
+  protected getOwnerSummary(image: ImageDto): string {
+    if (image.ownerType === ImageOwnerType.NONE || !image.ownerId) {
+      return this.translate.instant('admin.images.noOwner');
+    }
+
+    const ownerType: string = this.translate.instant(`images.ownerTypes.${image.ownerType}`);
+    return `${ownerType} - ${image.ownerId}`;
+  }
+
+  protected getTagSummary(image: ImageDto): string {
+    const tagIds: string[] = image.tagIds ?? [];
+
+    if (tagIds.length === 0) {
+      return this.translate.instant('admin.images.noTags');
+    }
+
+    return tagIds.map((tagId: string) => this.getTagSlug(tagId)).join(', ');
+  }
+
+  protected hasGeoLocation(image: ImageDto): boolean {
+    return Number.isFinite(image.geoLocation?.latitude) && Number.isFinite(image.geoLocation?.longitude);
+  }
+
+  protected getGeoSummary(image: ImageDto): string {
+    if (!this.hasGeoLocation(image)) {
+      return this.translate.instant('admin.images.noGeo');
+    }
+
+    return `${image.geoLocation?.latitude}, ${image.geoLocation?.longitude}`;
+  }
+
+  protected getDimensionsSummary(image: ImageDto): string {
+    return `${image.width} x ${image.height}`;
+  }
+
+  protected getImageTitle(image: ImageDto): string {
+    return image.description || image.originalFileName || image.id;
+  }
+
+  protected getImageSubtitle(image: ImageDto): string {
+    return image.originalFileName && image.description ? image.originalFileName : image.id;
+  }
+
+  protected getImageAlt(image: ImageDto): string {
+    return image.description || image.originalFileName || image.id;
+  }
+
+  protected getCardAriaLabel(image: ImageDto): string {
+    return `${this.getImageTitle(image)} - ${this.getOwnerSummary(image)}`;
+  }
+
+  protected getSelectionAriaLabel(image: ImageDto): string {
+    return this.translate.instant('admin.images.selectImageAria', {
+      name: image.originalFileName || image.id,
+    });
+  }
+
+  protected getDeleteAriaLabel(image: ImageDto): string {
+    return this.translate.instant('admin.images.deleteImageAria', {
+      name: image.originalFileName || image.id,
     });
   }
 
@@ -342,7 +381,7 @@ export class AdminSiteComponent implements OnInit {
     const bytes: number = value ?? 0;
 
     if (bytes <= 0) {
-      return '—';
+      return '-';
     }
 
     const units: string[] = ['B', 'KB', 'MB', 'GB'];
@@ -359,7 +398,7 @@ export class AdminSiteComponent implements OnInit {
 
   protected formatDate(value: string | null | undefined): string {
     if (!value) {
-      return '—';
+      return '-';
     }
 
     return new Intl.DateTimeFormat('fr-FR', {
