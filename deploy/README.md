@@ -170,6 +170,9 @@ En production, le déploiement utilise `Smtp` par défaut si `PROD_EMAIL_MODE` n
 - `PUBLIC_DOMAIN`, défaut `amusement-parks.fun`
 - `ALLOWED_HOSTS`, défaut pipeline : `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;api;amusementpark-api`. Le host de `FRONT_SSR_API_INTERNAL_URL`, `localhost` et `127.0.0.1` sont ajoutés automatiquement au fichier généré si nécessaire.
 - `FRONT_SSR_API_INTERNAL_URL`, défaut `http://api:8080`
+- `SSR_INTERNAL_BASE_URL`, défaut `http://front:4000` pour les appels internes API vers le serveur SSR.
+- `SSR_TECHNICAL_STATS_RETENTION_DAYS`, défaut `15`, ajustable ensuite depuis le panel admin des stats techniques.
+- `SSR_TECHNICAL_STATS_FLUSH_INTERVAL_SECONDS`, défaut `60`.
 - `PUBLIC_HTTP_PORT`, défaut `18080`
 - `MINIO_API_PORT`, défaut `19000`
 - `MINIO_CONSOLE_PORT`, défaut `19001`

@@ -44,6 +44,9 @@ services:
       SSR_DISK_PAGE_CACHE_MAX_BYTES: ${SSR_DISK_PAGE_CACHE_MAX_BYTES:-4294967296}
       SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES: ${SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES:-100}
       SSR_PAGE_CACHE_MAX_HTML_BYTES: ${SSR_PAGE_CACHE_MAX_HTML_BYTES:-2097152}
+      SSR_TECHNICAL_STATS_PERSISTENCE_ENABLED: ${SSR_TECHNICAL_STATS_PERSISTENCE_ENABLED:-true}
+      SSR_TECHNICAL_STATS_RETENTION_DAYS: ${SSR_TECHNICAL_STATS_RETENTION_DAYS:-15}
+      SSR_TECHNICAL_STATS_FLUSH_INTERVAL_SECONDS: ${SSR_TECHNICAL_STATS_FLUSH_INTERVAL_SECONDS:-60}
       SSR_ASSET_MISS_LOG_SAMPLE_RATE: ${SSR_ASSET_MISS_LOG_SAMPLE_RATE:-25}
       SSR_CSR_FALLBACK_LOG_SAMPLE_RATE: ${SSR_CSR_FALLBACK_LOG_SAMPLE_RATE:-100}
       SSR_CSR_FALLBACK_CACHE_CONTROL: ${SSR_CSR_FALLBACK_CACHE_CONTROL:-public, max-age=60, stale-while-revalidate=300}
@@ -53,6 +56,8 @@ services:
           - amusementpark-front
           - amusementpark-front-ssr
       backend_private:
+        aliases:
+          - amusementpark-front
     healthcheck:
       test: ["CMD-SHELL", "wget -q --header=\"X-Forwarded-Proto: https\" --spider http://127.0.0.1:4000/healthz || exit 1"]
       interval: 30s
@@ -127,7 +132,7 @@ services:
       Seo__SupportedLanguages__5: pl
       Seo__SupportedLanguages__6: nl
       Seo__SupportedLanguages__7: pt
-      Ssr__InternalBaseUrl: ${SSR_INTERNAL_BASE_URL:-http://amusementpark-front:4000}
+      Ssr__InternalBaseUrl: ${SSR_INTERNAL_BASE_URL:-http://front:4000}
       Ssr__CacheInvalidationToken: ${SSR_CACHE_INVALIDATION_TOKEN:?SSR_CACHE_INVALIDATION_TOKEN is required}
       Authentication__RefreshTokenCookie__Name: amusementpark.refresh
       Authentication__RefreshTokenCookie__Path: /api/auth

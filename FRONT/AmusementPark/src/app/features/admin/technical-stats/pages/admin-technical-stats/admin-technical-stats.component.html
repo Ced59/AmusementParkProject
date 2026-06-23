@@ -150,6 +150,11 @@
           <div class="admin-technical-stats-mini-grid">
             <span>{{ t('seoDocs') }} <strong>{{ currentStats.storage.seoDocumentEntries | number }} / {{ currentStats.storage.seoDocumentMaxEntries | number }}</strong></span>
             <span>{{ t('diskWrites') }} <strong>{{ currentStats.storage.diskWrites | number }}</strong></span>
+            <span>
+              {{ t('technicalStatsStorage') }}
+              <button type="button" class="admin-technical-stats-help" [pTooltip]="t('technicalStatsStorageHelp')" tooltipPosition="top" aria-label="Help">?</button>
+              <strong>{{ formatBytes(currentStats.storage.technicalStatsPersistenceBytes) }} / {{ currentStats.storage.technicalStatsPersistenceEntries | number }}</strong>
+            </span>
             <span>{{ t('assetMisses') }} <strong>{{ currentStats.storage.assetMisses | number }}</strong></span>
           </div>
         </div>
@@ -216,7 +221,42 @@
           <span>{{ t('staleTtl') }} <strong>{{ formatDuration(currentStats.config.stalePageCacheSeconds) }}</strong></span>
           <span>{{ t('htmlLimit') }} <strong>{{ formatBytes(currentStats.config.pageCacheMaxHtmlBytes) }}</strong></span>
           <span>{{ t('browserCache') }} <strong>{{ currentStats.config.pageCacheBrowserCacheControl }}</strong></span>
+          <span>{{ t('persistence') }} <strong>{{ boolLabel(currentStats.config.technicalStatsPersistenceEnabled) }}</strong></span>
+          <span>{{ t('flushInterval') }} <strong>{{ formatDuration(currentStats.config.technicalStatsPersistenceFlushIntervalSeconds) }}</strong></span>
+          <span>
+            {{ t('lastFlush') }}
+            <strong>{{ currentStats.config.technicalStatsPersistenceLastFlushUtc ? (currentStats.config.technicalStatsPersistenceLastFlushUtc | date:'yyyy-MM-dd HH:mm':'UTC') : t('never') }}</strong>
+          </span>
+          <span>
+            {{ t('lastCleanup') }}
+            <strong>{{ currentStats.config.technicalStatsPersistenceLastCleanupUtc ? (currentStats.config.technicalStatsPersistenceLastCleanupUtc | date:'yyyy-MM-dd HH:mm':'UTC') : t('never') }}</strong>
+          </span>
         </div>
+
+        <form class="admin-technical-stats-retention" (submit)="saveRetentionDays($event, currentStats)">
+          <label>
+            <span>{{ t('retentionDays') }}</span>
+            <input
+              type="number"
+              name="technicalStatsRetentionDays"
+              min="1"
+              max="365"
+              [ngModel]="currentRetentionDays(currentStats)"
+              (ngModelChange)="setRetentionDaysDraft($event)">
+          </label>
+          <button
+            pButton
+            type="submit"
+            icon="pi pi-save"
+            [label]="t('save')"
+            [loading]="settingsSaving()"
+            [disabled]="settingsSaving() || !currentStats.config.technicalStatsPersistenceEnabled">
+          </button>
+          <small>{{ t('retentionHelp') }}</small>
+          @if (settingsError()) {
+            <p class="admin-technical-stats-save-error">{{ t('saveError') }}</p>
+          }
+        </form>
       </article>
     </section>
   }

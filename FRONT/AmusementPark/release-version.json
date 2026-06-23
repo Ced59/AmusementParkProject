@@ -1,6 +1,20 @@
 {
-  "version": "2.6.19",
+  "version": "2.6.20",
   "history": [
+    {
+      "version": "2.6.20",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "L'administration garde mieux ses donnees.",
+        "en": "Admin data is kept more reliably.",
+        "de": "Administrationsdaten bleiben verlaesslicher erhalten.",
+        "nl": "Administratiegegevens blijven betrouwbaarder bewaard.",
+        "it": "I dati di amministrazione restano piu affidabili.",
+        "es": "Los datos de administracion se conservan mejor.",
+        "pl": "Dane administracyjne sa lepiej zachowywane.",
+        "pt": "Os dados de administracao ficam mais bem preservados."
+      }
+    },
     {
       "version": "2.6.19",
       "releasedAt": "2026-06-23",

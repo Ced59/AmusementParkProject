@@ -64,6 +64,12 @@ public sealed class TechnicalStatsStorageSummaryDto
 
     public long DiskWrites { get; set; }
 
+    public int TechnicalStatsPersistenceEntries { get; set; }
+
+    public long TechnicalStatsPersistenceBytes { get; set; }
+
+    public int TechnicalStatsPersistencePurgedBuckets { get; set; }
+
     public int SeoDocumentEntries { get; set; }
 
     public int SeoDocumentMaxEntries { get; set; }
@@ -161,6 +167,26 @@ public sealed class TechnicalStatsRuntimeConfigDto
     public string CsrFallbackCacheControl { get; set; } = string.Empty;
 
     public string SeoDocumentBrowserCacheControl { get; set; } = string.Empty;
+
+    public bool TechnicalStatsPersistenceEnabled { get; set; }
+
+    public int TechnicalStatsPersistenceRetentionDays { get; set; }
+
+    public int TechnicalStatsPersistenceFlushIntervalSeconds { get; set; }
+
+    public DateTime? TechnicalStatsPersistenceLastFlushUtc { get; set; }
+
+    public DateTime? TechnicalStatsPersistenceLastCleanupUtc { get; set; }
+}
+
+public sealed class UpdateTechnicalStatsSettingsDto
+{
+    public int PersistenceRetentionDays { get; set; }
+}
+
+public sealed class TechnicalStatsSettingsDto
+{
+    public int PersistenceRetentionDays { get; set; }
 }
 
 public sealed class TechnicalStatsCountDto

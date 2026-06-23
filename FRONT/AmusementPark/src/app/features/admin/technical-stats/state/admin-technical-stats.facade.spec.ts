@@ -11,7 +11,7 @@ describe('AdminTechnicalStatsFacade', () => {
   let port: jasmine.SpyObj<AdminTechnicalStatsDataPort>;
 
   beforeEach(() => {
-    port = jasmine.createSpyObj<AdminTechnicalStatsDataPort>('AdminTechnicalStatsDataPort', ['getStats']);
+    port = jasmine.createSpyObj<AdminTechnicalStatsDataPort>('AdminTechnicalStatsDataPort', ['getStats', 'updateSettings']);
 
     TestBed.configureTestingModule({
       providers: [
@@ -48,6 +48,28 @@ describe('AdminTechnicalStatsFacade', () => {
     expect(facade.state().kind).toBe('error');
     expect(facade.stats()).toBe(stats);
   });
+
+  it('updates settings and reloads stats', () => {
+    const stats: TechnicalStatsSnapshot = createStats();
+    port.getStats.and.returnValue(of(stats));
+    port.updateSettings.and.returnValue(of({ persistenceRetentionDays: 20 }));
+
+    facade.updateSettings({ persistenceRetentionDays: 20 });
+
+    expect(port.updateSettings).toHaveBeenCalledWith({ persistenceRetentionDays: 20 });
+    expect(port.getStats).toHaveBeenCalled();
+    expect(facade.settingsSaving()).toBeFalse();
+    expect(facade.settingsError()).toBeFalse();
+  });
+
+  it('flags settings update errors', () => {
+    port.updateSettings.and.returnValue(throwError(() => new Error('network')));
+
+    facade.updateSettings({ persistenceRetentionDays: 20 });
+
+    expect(facade.settingsSaving()).toBeFalse();
+    expect(facade.settingsError()).toBeTrue();
+  });
 });
 
 function createStats(): TechnicalStatsSnapshot {
@@ -77,6 +99,9 @@ function createStats(): TechnicalStatsSnapshot {
       diskBytes: 1024,
       diskMaxBytes: 2048,
       diskWrites: 1,
+      technicalStatsPersistenceEntries: 1,
+      technicalStatsPersistenceBytes: 256,
+      technicalStatsPersistencePurgedBuckets: 0,
       seoDocumentEntries: 0,
       seoDocumentMaxEntries: 128,
       seoDocumentRequests: 0,
@@ -127,7 +152,12 @@ function createStats(): TechnicalStatsSnapshot {
       pageCacheMaxHtmlBytes: 2097152,
       pageCacheBrowserCacheControl: 'no-cache',
       csrFallbackCacheControl: 'public, max-age=60',
-      seoDocumentBrowserCacheControl: 'no-cache'
+      seoDocumentBrowserCacheControl: 'no-cache',
+      technicalStatsPersistenceEnabled: true,
+      technicalStatsPersistenceRetentionDays: 15,
+      technicalStatsPersistenceFlushIntervalSeconds: 60,
+      technicalStatsPersistenceLastFlushUtc: null,
+      technicalStatsPersistenceLastCleanupUtc: null
     }
   };
 }

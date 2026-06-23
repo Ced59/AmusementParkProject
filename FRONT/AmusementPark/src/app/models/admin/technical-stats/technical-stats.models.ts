@@ -33,6 +33,9 @@ export interface TechnicalStatsStorageSummary {
   diskBytes: number;
   diskMaxBytes: number;
   diskWrites: number;
+  technicalStatsPersistenceEntries: number;
+  technicalStatsPersistenceBytes: number;
+  technicalStatsPersistencePurgedBuckets: number;
   seoDocumentEntries: number;
   seoDocumentMaxEntries: number;
   seoDocumentRequests: number;
@@ -88,6 +91,19 @@ export interface TechnicalStatsRuntimeConfig {
   pageCacheBrowserCacheControl: string;
   csrFallbackCacheControl: string;
   seoDocumentBrowserCacheControl: string;
+  technicalStatsPersistenceEnabled: boolean;
+  technicalStatsPersistenceRetentionDays: number;
+  technicalStatsPersistenceFlushIntervalSeconds: number;
+  technicalStatsPersistenceLastFlushUtc: string | null;
+  technicalStatsPersistenceLastCleanupUtc: string | null;
+}
+
+export interface UpdateTechnicalStatsSettingsRequest {
+  persistenceRetentionDays: number;
+}
+
+export interface TechnicalStatsSettings {
+  persistenceRetentionDays: number;
 }
 
 export interface TechnicalStatsCount {

@@ -19,7 +19,7 @@ Cette passe ferme les derniers cas où une écriture admin réussie pouvait lais
 SSR_CACHE_INVALIDATION_TOKEN=CHANGE_ME_GENERATE_WITH_OPENSSL_RAND_HEX_32
 SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL=no-cache, max-age=0, must-revalidate
 SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL=no-cache, max-age=0, must-revalidate
-SSR_INTERNAL_BASE_URL=http://amusementpark-front:4000
+SSR_INTERNAL_BASE_URL=http://front:4000
 SSR_SEO_DOCUMENT_CACHE_SECONDS=0
 ```
 

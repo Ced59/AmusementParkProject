@@ -292,6 +292,51 @@
   font-size: 1.2rem;
 }
 
+.admin-technical-stats-retention {
+  display: grid;
+  grid-template-columns: minmax(9rem, 1fr) auto;
+  align-items: end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--app-border);
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+    min-width: 0;
+    color: var(--app-text-muted);
+    font-size: 0.82rem;
+    font-weight: 850;
+    text-transform: uppercase;
+  }
+
+  input {
+    width: 100%;
+    min-height: 2.5rem;
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-md);
+    padding: 0.45rem 0.65rem;
+    color: var(--app-heading);
+    background: rgba(15, 23, 42, 0.2);
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  small,
+  .admin-technical-stats-save-error {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--app-text-muted);
+    font-weight: 700;
+  }
+
+  .admin-technical-stats-save-error {
+    color: #fb7185;
+  }
+}
+
 @media (max-width: 1120px) {
   .admin-technical-stats-kpis,
   .admin-technical-stats-grid {
@@ -317,7 +362,8 @@
 
   .admin-technical-stats-mini-grid,
   .admin-technical-stats-metrics,
-  .admin-technical-stats-config {
+  .admin-technical-stats-config,
+  .admin-technical-stats-retention {
     grid-template-columns: 1fr;
   }
 }

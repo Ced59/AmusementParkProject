@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonDirective } from 'primeng/button';
 import { Card } from 'primeng/card';
@@ -21,14 +22,21 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     nav: 'Stats techniques',
     kicker: 'Observabilite SSR',
     title: 'Stats techniques',
-    subtitle: 'Suivi du cache SSR applicatif, des robots, du rendu et des purges depuis le dernier demarrage.',
+    subtitle: 'Suivi du cache SSR applicatif, des robots, du rendu et des purges sur la fenetre retenue.',
     refresh: 'Rafraichir',
     loading: 'Chargement des stats techniques...',
     errorTitle: 'Stats indisponibles',
     errorMessage: 'Le serveur SSR ne repond pas encore aux stats techniques internes.',
+    unavailableMissingSettings: 'La configuration interne SSR du back est incomplete : URL interne ou token partage absent.',
+    unavailableForbidden: 'Le serveur SSR repond 403 : le token partage entre back et front SSR ne correspond pas.',
+    unavailableNotFound: 'Le serveur SSR repond 404 : endpoint interne absent ou token SSR non configure cote front.',
+    unavailableTimeout: 'Le serveur SSR ne repond pas dans le delai attendu.',
+    unavailableRequestFailed: 'Le back ne joint pas le service front SSR sur le reseau Docker interne.',
+    unavailableEmpty: 'Le serveur SSR a repondu sans snapshot exploitable.',
+    unavailableUnexpected: 'Le provider SSR a rencontre une erreur inattendue.',
     lastRefresh: 'Snapshot genere',
-    startedAt: 'Processus demarre',
-    uptime: 'Uptime',
+    startedAt: 'Fenetre commencee',
+    uptime: 'Duree fenetre',
     build: 'Version',
     hitRate: 'Hit rate',
     hitRateHelp: 'Part des pages HTML servies directement depuis le cache SSR, y compris le cache stale encore utilisable.',
@@ -44,6 +52,8 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     storageTitle: 'Stockage cache',
     memory: 'Memoire',
     disk: 'Disque',
+    technicalStatsStorage: 'Stats persistantes',
+    technicalStatsStorageHelp: 'Buckets journaliers conserves dans le volume SSR. Les fichiers plus vieux que la retention sont purges automatiquement.',
     seoDocs: 'SEO docs',
     diskWrites: 'Ecritures disque',
     assetMisses: 'Assets 404',
@@ -75,6 +85,15 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     staleTtl: 'Stale TTL',
     htmlLimit: 'Limite HTML',
     browserCache: 'Cache-Control pages',
+    retentionTitle: 'Retention stats',
+    retentionHelp: 'Nombre de jours de buckets SSR conserves sur disque. Par defaut : 15 jours.',
+    retentionDays: 'Jours conserves',
+    persistence: 'Persistance',
+    flushInterval: 'Flush stats',
+    lastFlush: 'Dernier flush',
+    lastCleanup: 'Derniere purge',
+    save: 'Enregistrer',
+    saveError: 'Impossible de sauvegarder le reglage pour le moment.',
     yes: 'Oui',
     no: 'Non',
     never: 'Jamais'
@@ -83,14 +102,21 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     nav: 'Technical stats',
     kicker: 'SSR observability',
     title: 'Technical stats',
-    subtitle: 'Application SSR cache, robots, rendering and purge metrics since the last process start.',
+    subtitle: 'Application SSR cache, robots, rendering and purge metrics over the retained window.',
     refresh: 'Refresh',
     loading: 'Loading technical stats...',
     errorTitle: 'Stats unavailable',
     errorMessage: 'The SSR server is not answering internal technical stats yet.',
+    unavailableMissingSettings: 'The backend SSR internal configuration is incomplete: missing internal URL or shared token.',
+    unavailableForbidden: 'The SSR server returned 403: the shared backend/front SSR token does not match.',
+    unavailableNotFound: 'The SSR server returned 404: internal endpoint missing or SSR token not configured on the frontend.',
+    unavailableTimeout: 'The SSR server did not answer within the expected timeout.',
+    unavailableRequestFailed: 'The backend cannot reach the frontend SSR service on the internal Docker network.',
+    unavailableEmpty: 'The SSR server answered without a usable snapshot.',
+    unavailableUnexpected: 'The SSR provider hit an unexpected error.',
     lastRefresh: 'Snapshot generated',
-    startedAt: 'Process started',
-    uptime: 'Uptime',
+    startedAt: 'Window started',
+    uptime: 'Window duration',
     build: 'Version',
     hitRate: 'Hit rate',
     hitRateHelp: 'Share of HTML pages served directly from the SSR cache, including still-usable stale cache.',
@@ -106,6 +132,8 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     storageTitle: 'Cache storage',
     memory: 'Memory',
     disk: 'Disk',
+    technicalStatsStorage: 'Persistent stats',
+    technicalStatsStorageHelp: 'Daily buckets kept in the SSR volume. Files older than the retention window are purged automatically.',
     seoDocs: 'SEO docs',
     diskWrites: 'Disk writes',
     assetMisses: 'Asset 404s',
@@ -137,6 +165,15 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     staleTtl: 'Stale TTL',
     htmlLimit: 'HTML limit',
     browserCache: 'Page Cache-Control',
+    retentionTitle: 'Stats retention',
+    retentionHelp: 'Number of SSR bucket days kept on disk. Default: 15 days.',
+    retentionDays: 'Days kept',
+    persistence: 'Persistence',
+    flushInterval: 'Stats flush',
+    lastFlush: 'Last flush',
+    lastCleanup: 'Last cleanup',
+    save: 'Save',
+    saveError: 'Unable to save this setting right now.',
     yes: 'Yes',
     no: 'No',
     never: 'Never'
@@ -178,6 +215,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
   providers: [AdminTechnicalStatsFacade],
   imports: [
     CommonModule,
+    FormsModule,
     ButtonDirective,
     Card,
     PrimeTemplate,
@@ -189,9 +227,12 @@ export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly state = this.facade.state;
   protected readonly loading = this.facade.loading;
   protected readonly stats = this.facade.stats;
+  protected readonly settingsSaving = this.facade.settingsSaving;
+  protected readonly settingsError = this.facade.settingsError;
   protected readonly hitRatePercent = this.facade.hitRatePercent;
   protected readonly robotHitRatePercent = this.facade.robotHitRatePercent;
   protected readonly hasUnavailableStats = computed(() => (this.state().kind === 'error' || this.stats()?.isAvailable === false) && !this.loading());
+  protected readonly retentionDaysDraft = signal<number | null>(null);
 
   constructor(
     private readonly facade: AdminTechnicalStatsFacade,
@@ -205,6 +246,21 @@ export class AdminTechnicalStatsComponent implements OnInit {
 
   protected refresh(): void {
     this.facade.load();
+  }
+
+  protected saveRetentionDays(event: Event, stats: TechnicalStatsSnapshot): void {
+    event.preventDefault();
+    const retentionDays = this.clampRetentionDays(this.currentRetentionDays(stats));
+    this.retentionDaysDraft.set(retentionDays);
+    this.facade.updateSettings({ persistenceRetentionDays: retentionDays });
+  }
+
+  protected setRetentionDaysDraft(value: number | string): void {
+    this.retentionDaysDraft.set(this.clampRetentionDays(value));
+  }
+
+  protected currentRetentionDays(stats: TechnicalStatsSnapshot): number {
+    return this.retentionDaysDraft() ?? stats.config.technicalStatsPersistenceRetentionDays;
   }
 
   protected t(key: string): string {
@@ -268,7 +324,28 @@ export class AdminTechnicalStatsComponent implements OnInit {
 
   protected unavailableMessage(stats: TechnicalStatsSnapshot | null): string {
     const reason: string = stats?.unavailableReason?.trim() ?? '';
-    return reason.length > 0 ? reason : this.t('errorMessage');
+    if (reason.length === 0) {
+      return this.t('errorMessage');
+    }
+
+    switch (reason) {
+      case 'missing-settings':
+        return this.t('unavailableMissingSettings');
+      case 'http-403':
+        return this.t('unavailableForbidden');
+      case 'http-404':
+        return this.t('unavailableNotFound');
+      case 'timeout':
+        return this.t('unavailableTimeout');
+      case 'request-failed':
+        return this.t('unavailableRequestFailed');
+      case 'empty-response':
+        return this.t('unavailableEmpty');
+      case 'unexpected-error':
+        return this.t('unavailableUnexpected');
+      default:
+        return `${this.t('errorMessage')} (${reason})`;
+    }
   }
 
   protected trackStatus(_: number, item: TechnicalStatsCount): string {
@@ -328,5 +405,14 @@ export class AdminTechnicalStatsComponent implements OnInit {
     }
 
     return Math.min(100, Math.max(0, value));
+  }
+
+  private clampRetentionDays(value: number | string): number {
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) {
+      return 15;
+    }
+
+    return Math.min(365, Math.max(1, Math.round(parsed)));
   }
 }
