@@ -2,6 +2,10 @@ namespace AmusementPark.WebAPI.Contracts.TechnicalStats;
 
 public sealed class TechnicalStatsSnapshotDto
 {
+    public bool IsAvailable { get; set; } = true;
+
+    public string? UnavailableReason { get; set; }
+
     public DateTime GeneratedAtUtc { get; set; }
 
     public DateTime StartedAtUtc { get; set; }

@@ -1,6 +1,20 @@
 {
-  "version": "2.6.18",
+  "version": "2.6.19",
   "history": [
+    {
+      "version": "2.6.19",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "L'administration reste plus stable.",
+        "en": "Admin views stay more stable.",
+        "de": "Die Administration bleibt stabiler.",
+        "nl": "De administratie blijft stabieler.",
+        "it": "L'amministrazione resta piu stabile.",
+        "es": "La administracion queda mas estable.",
+        "pl": "Administracja pozostaje stabilniejsza.",
+        "pt": "A administracao fica mais estavel."
+      }
+    },
     {
       "version": "2.6.18",
       "releasedAt": "2026-06-23",

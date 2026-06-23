@@ -430,6 +430,8 @@ function buildTechnicalStatsSnapshot(): Record<string, unknown> {
   const totalRenders = technicalStatsCounters.totalRenders;
 
   return {
+    isAvailable: true,
+    unavailableReason: null,
     generatedAtUtc: generatedAtUtc.toISOString(),
     startedAtUtc: technicalStatsStartedAtUtc.toISOString(),
     uptimeSeconds,

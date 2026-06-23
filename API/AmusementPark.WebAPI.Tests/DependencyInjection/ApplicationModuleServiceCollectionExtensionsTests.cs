@@ -7,6 +7,8 @@ using AmusementPark.Application.Features.Contact.Queries;
 using AmusementPark.Application.Features.TechnicalPages.Commands;
 using AmusementPark.Application.Features.TechnicalPages.Queries;
 using AmusementPark.Application.Features.TechnicalPages.Results;
+using AmusementPark.Application.Features.TechnicalStats.Contracts;
+using AmusementPark.Application.Features.TechnicalStats.Queries;
 using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Videos.Queries;
@@ -21,7 +23,7 @@ namespace AmusementPark.WebAPI.Tests.DependencyInjection;
 public sealed class ApplicationModuleServiceCollectionExtensionsTests
 {
     [Fact]
-    public void AddApplicationModules_WhenCalled_ShouldRegisterVideoHandlers()
+    public void AddApplicationModules_WhenCalled_ShouldRegisterApplicationHandlers()
     {
         ServiceCollection services = new ServiceCollection();
         IConfiguration configuration = new ConfigurationBuilder().Build();
@@ -43,5 +45,6 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalPageLinkIndexQuery, ApplicationResult<IReadOnlyCollection<TechnicalPageResult>>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalPageBySlugQuery, ApplicationResult<TechnicalPageResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpsertTechnicalPagesJsonCommand, ApplicationResult<TechnicalPageJsonUpsertResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalStatsQuery, ApplicationResult<TechnicalStatsSnapshot>>));
     }
 }

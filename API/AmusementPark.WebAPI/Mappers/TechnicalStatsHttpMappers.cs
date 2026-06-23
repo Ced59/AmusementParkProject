@@ -11,6 +11,8 @@ public static class TechnicalStatsHttpMappers
 
         return new TechnicalStatsSnapshotDto
         {
+            IsAvailable = snapshot.IsAvailable,
+            UnavailableReason = snapshot.UnavailableReason,
             GeneratedAtUtc = snapshot.GeneratedAtUtc,
             StartedAtUtc = snapshot.StartedAtUtc,
             UptimeSeconds = snapshot.UptimeSeconds,

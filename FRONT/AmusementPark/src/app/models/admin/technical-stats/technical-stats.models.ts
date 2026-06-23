@@ -1,4 +1,6 @@
 export interface TechnicalStatsSnapshot {
+  isAvailable: boolean;
+  unavailableReason?: string | null;
   generatedAtUtc: string;
   startedAtUtc: string;
   uptimeSeconds: number;
