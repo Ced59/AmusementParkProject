@@ -32,7 +32,7 @@ public sealed class GetTechnicalStatsQueryHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsyncReturnsFailureWhenProviderReturnsNull()
+    public async Task HandleAsyncReturnsUnavailableSnapshotWhenProviderReturnsNull()
     {
         Mock<ITechnicalStatsProvider> provider = new Mock<ITechnicalStatsProvider>(MockBehavior.Strict);
         provider
@@ -42,7 +42,10 @@ public sealed class GetTechnicalStatsQueryHandlerTests
 
         AmusementPark.Application.Errors.ApplicationResult<TechnicalStatsSnapshot> result = await handler.HandleAsync(new GetTechnicalStatsQuery());
 
-        Assert.False(result.IsSuccess);
-        Assert.Contains(result.Errors, error => error.Code == "technical-stats.unavailable");
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.False(result.Value.IsAvailable);
+        Assert.Null(result.Value.UnavailableReason);
+        Assert.Equal(0, result.Value.UptimeSeconds);
     }
 }

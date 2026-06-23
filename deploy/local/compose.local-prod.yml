@@ -38,6 +38,7 @@ services:
       SSR_CSP_ALLOW_LOCAL_DEV_SOURCES: "true"
       SSR_ALLOWED_HOSTS: "${SSR_ALLOWED_HOSTS:-localhost;127.0.0.1;amusement.localhost}"
       SSR_FORCE_HTTPS: "false"
+      SSR_CACHE_INVALIDATION_TOKEN: ${SSR_CACHE_INVALIDATION_TOKEN:-local-ssr-cache-token}
       SSR_SEO_DOCUMENT_CACHE_SECONDS: ${SSR_SEO_DOCUMENT_CACHE_SECONDS:-0}
       SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES: ${SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES:-128}
     ports:
@@ -124,6 +125,8 @@ services:
       Seo__SupportedLanguages__5: pl
       Seo__SupportedLanguages__6: nl
       Seo__SupportedLanguages__7: pt
+      Ssr__InternalBaseUrl: http://front:4000
+      Ssr__CacheInvalidationToken: ${SSR_CACHE_INVALIDATION_TOKEN:-local-ssr-cache-token}
       Email__Mode: Console
       Initialization__AdminUser__Enabled: ${ADMIN_USER_ENABLED:-true}
       Initialization__AdminUser__Email: ${ADMIN_USER_EMAIL:-admin@amusement.localhost}

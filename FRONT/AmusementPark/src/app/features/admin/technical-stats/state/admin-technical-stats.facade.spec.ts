@@ -53,6 +53,8 @@ describe('AdminTechnicalStatsFacade', () => {
 function createStats(): TechnicalStatsSnapshot {
   return {
     generatedAtUtc: '2026-06-23T10:00:00Z',
+    isAvailable: true,
+    unavailableReason: null,
     startedAtUtc: '2026-06-23T09:00:00Z',
     uptimeSeconds: 3600,
     buildVersion: '2.6.18',

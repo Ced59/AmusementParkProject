@@ -191,7 +191,7 @@ export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly stats = this.facade.stats;
   protected readonly hitRatePercent = this.facade.hitRatePercent;
   protected readonly robotHitRatePercent = this.facade.robotHitRatePercent;
-  protected readonly hasError = computed(() => this.state().kind === 'error' && !this.loading());
+  protected readonly hasUnavailableStats = computed(() => (this.state().kind === 'error' || this.stats()?.isAvailable === false) && !this.loading());
 
   constructor(
     private readonly facade: AdminTechnicalStatsFacade,
@@ -264,6 +264,11 @@ export class AdminTechnicalStatsComponent implements OnInit {
 
   protected boolLabel(value: boolean): string {
     return value ? this.t('yes') : this.t('no');
+  }
+
+  protected unavailableMessage(stats: TechnicalStatsSnapshot | null): string {
+    const reason: string = stats?.unavailableReason?.trim() ?? '';
+    return reason.length > 0 ? reason : this.t('errorMessage');
   }
 
   protected trackStatus(_: number, item: TechnicalStatsCount): string {

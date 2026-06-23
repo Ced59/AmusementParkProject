@@ -24,7 +24,13 @@ public sealed class GetTechnicalStatsQueryHandler
 
         if (snapshot is null)
         {
-            return ApplicationResult<TechnicalStatsSnapshot>.Failure(TechnicalStatsApplicationErrors.Unavailable());
+            snapshot = new TechnicalStatsSnapshot
+            {
+                IsAvailable = false,
+                GeneratedAtUtc = DateTime.UtcNow,
+                StartedAtUtc = DateTime.UtcNow,
+                UptimeSeconds = 0
+            };
         }
 
         return ApplicationResult<TechnicalStatsSnapshot>.Success(snapshot);

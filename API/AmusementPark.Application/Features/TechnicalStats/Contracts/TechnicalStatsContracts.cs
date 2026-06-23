@@ -2,6 +2,10 @@ namespace AmusementPark.Application.Features.TechnicalStats.Contracts;
 
 public sealed class TechnicalStatsSnapshot
 {
+    public bool IsAvailable { get; set; } = true;
+
+    public string? UnavailableReason { get; set; }
+
     public DateTime GeneratedAtUtc { get; set; }
 
     public DateTime StartedAtUtc { get; set; }
