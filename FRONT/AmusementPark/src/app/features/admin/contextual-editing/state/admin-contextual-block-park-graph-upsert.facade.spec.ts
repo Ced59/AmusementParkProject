@@ -2,27 +2,31 @@ import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
+import { ParkGraphUpsertChange, ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
 import {
   ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT,
   AdminContextualBlockParkGraphUpsertDataPort
 } from './admin-contextual-block-park-graph-upsert-data.ports';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
 import { AdminContextualBlockParkGraphUpsertFacade } from './admin-contextual-block-park-graph-upsert.facade';
 
 describe('AdminContextualBlockParkGraphUpsertFacade', () => {
   let documentRef: Document;
   let facade: AdminContextualBlockParkGraphUpsertFacade;
   let parkGraphUpsertsApi: jasmine.SpyObj<AdminContextualBlockParkGraphUpsertDataPort>;
+  let refreshEvents: jasmine.SpyObj<AdminContextualBlockRefreshEvents>;
 
   beforeEach(() => {
     parkGraphUpsertsApi = jasmine.createSpyObj<AdminContextualBlockParkGraphUpsertDataPort>('AdminContextualBlockParkGraphUpsertDataPort', ['apply']);
     parkGraphUpsertsApi.apply.and.returnValue(of(createResult()));
+    refreshEvents = jasmine.createSpyObj<AdminContextualBlockRefreshEvents>('AdminContextualBlockRefreshEvents', ['notifyBlockApplied']);
 
     TestBed.configureTestingModule({
       providers: [
         AdminContextualBlockParkGraphUpsertFacade,
-        { provide: ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT, useValue: parkGraphUpsertsApi }
+        { provide: ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT, useValue: parkGraphUpsertsApi },
+        { provide: AdminContextualBlockRefreshEvents, useValue: refreshEvents }
       ]
     });
 
@@ -63,7 +67,21 @@ describe('AdminContextualBlockParkGraphUpsertFacade', () => {
     }
   });
 
-  it('imports a selected JSON file without a target park', async () => {
+  it('imports a selected JSON file without a target park and emits a refresh event', async () => {
+    parkGraphUpsertsApi.apply.and.returnValue(of(createResult([
+      {
+        entityType: 'Image',
+        entityId: 'image-1',
+        entityKey: null,
+        displayName: 'Logo Mack Rides',
+        changeType: 'Created',
+        matchedBy: 'sourceUrl',
+        fields: [
+          { field: 'ownerType', newValue: 'AttractionManufacturer' },
+          { field: 'ownerId', newValue: 'manufacturer-1' }
+        ]
+      }
+    ])));
     const file: File = new File(['{ "references": { "manufacturers": [{ "name": "Mack Rides" }] } }'], 'manufacturer.json', { type: 'application/json' });
 
     await facade.importDraftFile(createBlock('{ "documentType": "AmusementParkParkGraphUpsert" }'), file);
@@ -75,6 +93,13 @@ describe('AdminContextualBlockParkGraphUpsertFacade', () => {
     expect(request.document).toEqual({ references: { manufacturers: [{ name: 'Mack Rides' }] } });
     expect(facade.successKey()).toBe('admin.contextualBlocks.drawer.parkGraphUpsertImported');
     expect(facade.errorKey()).toBeNull();
+    expect(facade.isImporting()).toBeFalse();
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledOnceWith({
+      blockType: 'reference.manufacturer',
+      entityType: 'AttractionManufacturer',
+      entityId: 'manufacturer-1',
+      appliedAtUtc: '2026-06-22T00:00:00Z'
+    });
   });
 
   it('rejects non JSON import files before calling the API', async () => {
@@ -84,10 +109,11 @@ describe('AdminContextualBlockParkGraphUpsertFacade', () => {
 
     expect(parkGraphUpsertsApi.apply).not.toHaveBeenCalled();
     expect(facade.errorKey()).toBe('admin.contextualBlocks.drawer.parkGraphUpsertImportInvalidFile');
+    expect(refreshEvents.notifyBlockApplied).not.toHaveBeenCalled();
   });
 });
 
-function createResult(): ParkGraphUpsertResult {
+function createResult(changes: ParkGraphUpsertChange[] = []): ParkGraphUpsertResult {
   return {
     operationId: 'operation-1',
     mode: 'merge',
@@ -105,7 +131,7 @@ function createResult(): ParkGraphUpsertResult {
       warnings: 0,
       errors: 0
     },
-    changes: [],
+    changes,
     warnings: [],
     errors: []
   };
