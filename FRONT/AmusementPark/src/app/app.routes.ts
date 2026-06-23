@@ -97,6 +97,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/social-share/pages/admin-social-share-stats/admin-social-share-stats.component').then((m) => m.AdminSocialShareStatsComponent)
           },
           {
+            path: 'technical-stats',
+            loadComponent: () => import('@features/admin/technical-stats/pages/admin-technical-stats/admin-technical-stats.component').then((m) => m.AdminTechnicalStatsComponent)
+          },
+          {
             path: 'images',
             loadChildren: () =>
               import('@features/admin/site/pages/admin-site/admin-site.module')

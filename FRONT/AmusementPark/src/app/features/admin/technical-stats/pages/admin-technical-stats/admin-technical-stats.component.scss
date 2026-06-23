@@ -1,0 +1,323 @@
+.admin-technical-stats-header {
+  align-items: flex-start;
+}
+
+.admin-technical-stats-state {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  min-height: 14rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--app-text-muted);
+
+  i {
+    color: #38bdf8;
+    font-size: 2rem;
+  }
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    color: var(--app-heading);
+  }
+}
+
+.admin-technical-stats-state--error i {
+  color: #fb7185;
+}
+
+.admin-technical-stats-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+
+  span {
+    padding: 0.45rem 0.65rem;
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-md);
+    color: var(--app-text-muted);
+    font-size: 0.82rem;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  strong {
+    color: var(--app-heading);
+  }
+}
+
+.admin-technical-stats-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.admin-technical-stats-kpi,
+.admin-technical-stats-panel {
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.admin-technical-stats-kpi {
+  display: grid;
+  gap: 0.6rem;
+  min-width: 0;
+  padding: 1rem;
+
+  strong {
+    color: var(--app-heading);
+    font-size: clamp(1.65rem, 3vw, 2.25rem);
+    line-height: 1;
+  }
+
+  small {
+    color: var(--app-text-muted);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+}
+
+.admin-technical-stats-kpi__head,
+.admin-technical-stats-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+
+  span,
+  h3 {
+    min-width: 0;
+  }
+}
+
+.admin-technical-stats-kpi__head span {
+  color: var(--app-text-muted);
+  font-size: 0.8rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.admin-technical-stats-help {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  border-radius: 50%;
+  color: var(--app-text-muted);
+  background: rgba(15, 23, 42, 0.15);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: help;
+}
+
+.admin-technical-stats-kpi--gauge {
+  justify-items: start;
+}
+
+.admin-technical-stats-gauge {
+  display: grid;
+  place-items: center;
+  width: 7.25rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0.75rem;
+    border-radius: 50%;
+    background: var(--app-surface);
+  }
+
+  strong {
+    position: relative;
+    z-index: 1;
+    font-size: 1.55rem;
+  }
+}
+
+.admin-technical-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.admin-technical-stats-panel {
+  min-width: 0;
+  padding: 1rem;
+}
+
+.admin-technical-stats-panel--wide {
+  grid-column: 1 / -1;
+}
+
+.admin-technical-stats-section-head {
+  margin-bottom: 0.85rem;
+
+  h3 {
+    margin: 0;
+    color: var(--app-heading);
+    font-size: 1rem;
+  }
+}
+
+.admin-technical-stats-bars,
+.admin-technical-stats-stack,
+.admin-technical-stats-metrics,
+.admin-technical-stats-config {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.admin-technical-stats-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1.2fr) minmax(6rem, 2fr) auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+
+  span {
+    color: var(--app-text);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+  }
+
+  strong,
+  small {
+    color: var(--app-heading);
+    white-space: nowrap;
+  }
+
+  small {
+    color: var(--app-text-muted);
+    font-weight: 800;
+  }
+}
+
+.admin-technical-stats-row__bar,
+.admin-technical-stats-progress {
+  height: 0.7rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.18);
+
+  span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #22c55e 0%, #38bdf8 55%, #f59e0b 100%);
+  }
+}
+
+.admin-technical-stats-row__bar--robot span {
+  background: linear-gradient(90deg, #38bdf8 0%, #a3e635 100%);
+}
+
+.admin-technical-stats-empty {
+  margin: 0;
+  color: var(--app-text-muted);
+  font-weight: 700;
+}
+
+.admin-technical-stats-storage {
+  display: grid;
+  gap: 0.4rem;
+
+  span {
+    color: var(--app-text-muted);
+    font-size: 0.8rem;
+    font-weight: 850;
+    text-transform: uppercase;
+  }
+
+  strong {
+    color: var(--app-heading);
+    overflow-wrap: anywhere;
+  }
+
+  small {
+    color: var(--app-text-muted);
+    font-weight: 700;
+  }
+}
+
+.admin-technical-stats-mini-grid,
+.admin-technical-stats-metrics,
+.admin-technical-stats-config {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-technical-stats-mini-grid span,
+.admin-technical-stats-metrics div,
+.admin-technical-stats-config span {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+  padding: 0.7rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.045);
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.admin-technical-stats-mini-grid strong,
+.admin-technical-stats-metrics strong,
+.admin-technical-stats-config strong {
+  color: var(--app-heading);
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.admin-technical-stats-metrics span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.admin-technical-stats-metrics--compact strong {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1120px) {
+  .admin-technical-stats-kpis,
+  .admin-technical-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .admin-technical-stats-meta,
+  .admin-technical-stats-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .admin-technical-stats-row {
+    grid-template-columns: 1fr auto;
+
+    .admin-technical-stats-row__bar {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+
+  .admin-technical-stats-mini-grid,
+  .admin-technical-stats-metrics,
+  .admin-technical-stats-config {
+    grid-template-columns: 1fr;
+  }
+}

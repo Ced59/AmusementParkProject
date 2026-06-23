@@ -58,6 +58,7 @@ const targetedRefreshMaxUrls = Math.max(0, Number(process.env['SSR_TARGETED_REFR
 const targetedRefreshConcurrency = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_CONCURRENCY'] ?? 1));
 const targetedRefreshDelayMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_REFRESH_DELAY_MILLISECONDS'] ?? 1500));
 const targetedRefreshTimeoutSeconds = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_TIMEOUT_SECONDS'] ?? 45));
+const technicalStatsStartedAtUtc = new Date();
 let activeRenderCount = 0;
 let assetMissCount = 0;
 let csrFallbackCount = 0;
@@ -67,6 +68,92 @@ const pendingRenderQueue: Array<() => void> = [];
 const pendingTargetedRefreshQueue: string[] = [];
 const queuedTargetedRefreshKeys = new Set<string>();
 let activeTargetedRefreshCount = 0;
+
+type SsrPageResponseStatus =
+  'HIT'
+  | 'MISS'
+  | 'WARMED'
+  | 'WARMUP-HIT'
+  | 'STALE'
+  | 'WARMUP-STALE'
+  | 'SSR-UNCACHED'
+  | 'CSR-CACHE-MISS-FALLBACK'
+  | 'CSR-OVERLOAD-FALLBACK'
+  | 'CSR-WARMUP-SKIPPED';
+
+interface TechnicalStatsCounters {
+  pageResponses: number;
+  cacheablePageResponses: number;
+  cacheHitResponses: number;
+  robotPageResponses: number;
+  robotCacheHitResponses: number;
+  totalRenders: number;
+  totalRenderMilliseconds: number;
+  maxRenderMilliseconds: number;
+  slowRenders: number;
+  renderQueueFullRejections: number;
+  targetedRefreshQueued: number;
+  targetedRefreshSucceeded: number;
+  targetedRefreshFailed: number;
+  invalidationRequests: number;
+  invalidationAllRequests: number;
+  invalidationTargetedRequests: number;
+  invalidationClearedEntries: number;
+  invalidationStaleEntries: number;
+  invalidationQueuedRefreshes: number;
+  lastInvalidationUtc: string | null;
+  seoDocumentRequests: number;
+  seoDocumentHits: number;
+  seoDocumentMisses: number;
+}
+
+interface TechnicalStatsCount {
+  readonly key: string;
+  readonly count: number;
+  readonly percent: number;
+}
+
+interface TechnicalStatsRobotFamily {
+  readonly key: string;
+  readonly count: number;
+  readonly cacheHits: number;
+  readonly hitRatePercent: number;
+}
+
+interface DiskPageCacheStats {
+  readonly entries: number;
+  readonly bytes: number;
+}
+
+const technicalStatsCounters: TechnicalStatsCounters = {
+  pageResponses: 0,
+  cacheablePageResponses: 0,
+  cacheHitResponses: 0,
+  robotPageResponses: 0,
+  robotCacheHitResponses: 0,
+  totalRenders: 0,
+  totalRenderMilliseconds: 0,
+  maxRenderMilliseconds: 0,
+  slowRenders: 0,
+  renderQueueFullRejections: 0,
+  targetedRefreshQueued: 0,
+  targetedRefreshSucceeded: 0,
+  targetedRefreshFailed: 0,
+  invalidationRequests: 0,
+  invalidationAllRequests: 0,
+  invalidationTargetedRequests: 0,
+  invalidationClearedEntries: 0,
+  invalidationStaleEntries: 0,
+  invalidationQueuedRefreshes: 0,
+  lastInvalidationUtc: null,
+  seoDocumentRequests: 0,
+  seoDocumentHits: 0,
+  seoDocumentMisses: 0
+};
+
+const pageResponseStatusCounts = new Map<SsrPageResponseStatus, number>();
+const robotFamilyCounts = new Map<string, number>();
+const robotFamilyCacheHitCounts = new Map<string, number>();
 
 interface PageCacheEntry {
   readonly buildVersion?: string;
@@ -180,17 +267,17 @@ export function app(): express.Express {
   // de contenu public : purge le cache de pages SSR pour rendre les
   // modifications immédiatement visibles. Protégé par un jeton partagé ;
   // désactivé (404) si aucun jeton n'est configuré.
-  server.post('/internal/cache/invalidate', express.json({ limit: '64kb', type: ['application/json', 'application/*+json'] }), (req: Request, res: Response) => {
-    if (!cacheInvalidationToken) {
-      res.status(404).type('text/plain').send('Not found');
+  server.get('/internal/technical-stats', (req: Request, res: Response) => {
+    if (!authorizeInternalCacheRequest(req, res)) {
       return;
     }
 
-    const providedToken = req.headers['x-amusementpark-cache-token'];
-    const token = Array.isArray(providedToken) ? providedToken[0] : providedToken;
+    res.setHeader('Cache-Control', 'no-store');
+    res.status(200).type('application/json').send(JSON.stringify(buildTechnicalStatsSnapshot()));
+  });
 
-    if (token !== cacheInvalidationToken) {
-      res.status(403).type('text/plain').send('Forbidden');
+  server.post('/internal/cache/invalidate', express.json({ limit: '64kb', type: ['application/json', 'application/*+json'] }), (req: Request, res: Response) => {
+    if (!authorizeInternalCacheRequest(req, res)) {
       return;
     }
 
@@ -198,6 +285,8 @@ export function app(): express.Express {
     const result = invalidationRequest.all
       ? clearAllSsrCaches()
       : clearTargetedSsrCaches(invalidationRequest);
+
+    recordCacheInvalidation(invalidationRequest, result);
 
     res.status(200).type('application/json').send(JSON.stringify(result));
   });
@@ -249,7 +338,9 @@ export function app(): express.Express {
     if (cachedEntry !== null) {
       res.status(cachedEntry.statusCode);
       const staleEntry = isStalePageCacheEntry(cachedEntry);
-      setPageCacheResponseHeaders(res, staleEntry ? (warmupRequest ? 'WARMUP-STALE' : 'STALE') : (warmupRequest ? 'WARMUP-HIT' : 'HIT'));
+      const cacheStatus: SsrPageResponseStatus = staleEntry ? (warmupRequest ? 'WARMUP-STALE' : 'STALE') : (warmupRequest ? 'WARMUP-HIT' : 'HIT');
+      setPageCacheResponseHeaders(res, cacheStatus);
+      recordPageResponse(req, cacheStatus, cacheKey);
       if (staleEntry && cacheKey !== null && !warmupRequest) {
         enqueueTargetedRefreshes([cacheKey]);
       }
@@ -281,7 +372,11 @@ export function app(): express.Express {
       .then((html: string) => {
         if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300) {
           setCachedPage(cacheKey, res.statusCode, html);
-          setPageCacheResponseHeaders(res, warmupRequest ? 'WARMED' : 'MISS');
+          const cacheStatus: SsrPageResponseStatus = warmupRequest ? 'WARMED' : 'MISS';
+          setPageCacheResponseHeaders(res, cacheStatus);
+          recordPageResponse(req, cacheStatus, cacheKey);
+        } else {
+          recordPageResponse(req, 'SSR-UNCACHED', cacheKey);
         }
 
         res.send(html);
@@ -309,6 +404,173 @@ function redirectLegacyVideoShareRoute(req: Request, res: Response, next: NextFu
   }
 
   res.redirect(301, canonicalPath);
+}
+
+function authorizeInternalCacheRequest(req: Request, res: Response): boolean {
+  if (!cacheInvalidationToken) {
+    res.status(404).type('text/plain').send('Not found');
+    return false;
+  }
+
+  const providedToken = req.headers['x-amusementpark-cache-token'];
+  const token = Array.isArray(providedToken) ? providedToken[0] : providedToken;
+
+  if (token !== cacheInvalidationToken) {
+    res.status(403).type('text/plain').send('Forbidden');
+    return false;
+  }
+
+  return true;
+}
+
+function buildTechnicalStatsSnapshot(): Record<string, unknown> {
+  const generatedAtUtc = new Date();
+  const uptimeSeconds = Math.max(0, Math.round((generatedAtUtc.getTime() - technicalStatsStartedAtUtc.getTime()) / 1000));
+  const diskStats = measureDiskPageCache();
+  const totalRenders = technicalStatsCounters.totalRenders;
+
+  return {
+    generatedAtUtc: generatedAtUtc.toISOString(),
+    startedAtUtc: technicalStatsStartedAtUtc.toISOString(),
+    uptimeSeconds,
+    buildVersion: currentBuildVersion,
+    cache: {
+      pageResponses: technicalStatsCounters.pageResponses,
+      cacheablePageResponses: technicalStatsCounters.cacheablePageResponses,
+      cacheHitResponses: technicalStatsCounters.cacheHitResponses,
+      hitRatePercent: toPercent(technicalStatsCounters.cacheHitResponses, technicalStatsCounters.pageResponses),
+      robotPageResponses: technicalStatsCounters.robotPageResponses,
+      robotCacheHitResponses: technicalStatsCounters.robotCacheHitResponses,
+      robotHitRatePercent: toPercent(technicalStatsCounters.robotCacheHitResponses, technicalStatsCounters.robotPageResponses),
+      statuses: buildCountRows(pageResponseStatusCounts, technicalStatsCounters.pageResponses),
+      robotFamilies: buildRobotFamilyRows()
+    },
+    storage: {
+      memoryEntries: pageCache.size,
+      memoryMaxEntries: pageCacheMaxEntries,
+      diskEnabled: diskPageCacheEnabled,
+      diskEntries: diskStats.entries,
+      diskBytes: diskStats.bytes,
+      diskMaxBytes: diskPageCacheMaxBytes,
+      diskWrites: diskPageCacheWriteCount,
+      seoDocumentEntries: seoDocumentCache.size,
+      seoDocumentMaxEntries: seoDocumentCacheMaxEntries,
+      seoDocumentRequests: technicalStatsCounters.seoDocumentRequests,
+      seoDocumentHits: technicalStatsCounters.seoDocumentHits,
+      seoDocumentMisses: technicalStatsCounters.seoDocumentMisses,
+      assetMisses: assetMissCount
+    },
+    rendering: {
+      ssrRenderEnabled,
+      renderOnCacheMiss,
+      renderCriticalRoutesOnCacheMiss,
+      activeRenders: activeRenderCount,
+      queuedRenders: pendingRenderQueue.length,
+      maxConcurrency: renderMaxConcurrency,
+      maxQueueEntries: renderQueueMaxEntries,
+      totalRenders,
+      averageRenderMilliseconds: totalRenders > 0 ? Math.round(technicalStatsCounters.totalRenderMilliseconds / totalRenders) : 0,
+      maxRenderMilliseconds: technicalStatsCounters.maxRenderMilliseconds,
+      slowRenders: technicalStatsCounters.slowRenders,
+      slowRenderThresholdMilliseconds,
+      queueFullRejections: technicalStatsCounters.renderQueueFullRejections
+    },
+    refresh: {
+      enabled: targetedRefreshEnabled,
+      pendingRefreshes: pendingTargetedRefreshQueue.length,
+      activeRefreshes: activeTargetedRefreshCount,
+      deduplicatedRefreshKeys: queuedTargetedRefreshKeys.size,
+      queuedRefreshes: technicalStatsCounters.targetedRefreshQueued,
+      succeededRefreshes: technicalStatsCounters.targetedRefreshSucceeded,
+      failedRefreshes: technicalStatsCounters.targetedRefreshFailed,
+      maxUrls: targetedRefreshMaxUrls,
+      concurrency: targetedRefreshConcurrency,
+      delayMilliseconds: targetedRefreshDelayMilliseconds,
+      timeoutSeconds: targetedRefreshTimeoutSeconds
+    },
+    invalidation: {
+      requests: technicalStatsCounters.invalidationRequests,
+      allRequests: technicalStatsCounters.invalidationAllRequests,
+      targetedRequests: technicalStatsCounters.invalidationTargetedRequests,
+      clearedEntries: technicalStatsCounters.invalidationClearedEntries,
+      staleEntries: technicalStatsCounters.invalidationStaleEntries,
+      queuedRefreshes: technicalStatsCounters.invalidationQueuedRefreshes,
+      lastInvalidationUtc: technicalStatsCounters.lastInvalidationUtc
+    },
+    config: {
+      pageCacheTtlSeconds,
+      stalePageCacheSeconds,
+      pageCacheMaxHtmlBytes,
+      pageCacheBrowserCacheControl,
+      csrFallbackCacheControl,
+      seoDocumentBrowserCacheControl
+    }
+  };
+}
+
+function buildCountRows<TKey>(map: Map<TKey, number>, total: number): TechnicalStatsCount[] {
+  return Array.from(map.entries())
+    .map(([key, count]: [TKey, number]): TechnicalStatsCount => ({
+      key: String(key),
+      count,
+      percent: toPercent(count, total)
+    }))
+    .sort((left: TechnicalStatsCount, right: TechnicalStatsCount): number => right.count - left.count || left.key.localeCompare(right.key));
+}
+
+function buildRobotFamilyRows(): TechnicalStatsRobotFamily[] {
+  return Array.from(robotFamilyCounts.entries())
+    .map(([key, count]: [string, number]): TechnicalStatsRobotFamily => {
+      const cacheHits = robotFamilyCacheHitCounts.get(key) ?? 0;
+      return {
+        key,
+        count,
+        cacheHits,
+        hitRatePercent: toPercent(cacheHits, count)
+      };
+    })
+    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key));
+}
+
+function toPercent(value: number, total: number): number {
+  if (total <= 0) {
+    return 0;
+  }
+
+  return Math.round((value / total) * 1000) / 10;
+}
+
+function measureDiskPageCache(): DiskPageCacheStats {
+  if (!diskPageCacheEnabled || !existsSync(diskPageCacheDirectory)) {
+    return { entries: 0, bytes: 0 };
+  }
+
+  let entries = 0;
+  let bytes = 0;
+
+  try {
+    for (const fileName of readdirSync(diskPageCacheDirectory)) {
+      if (!fileName.endsWith('.json')) {
+        continue;
+      }
+
+      try {
+        const stats = statSync(join(diskPageCacheDirectory, fileName));
+        if (!stats.isFile()) {
+          continue;
+        }
+
+        entries += 1;
+        bytes += stats.size;
+      } catch {
+        // Best effort technical snapshot only.
+      }
+    }
+  } catch (error: unknown) {
+    console.warn('SSR disk page cache stats failed', error);
+  }
+
+  return { entries, bytes };
 }
 
 function run(): void {
@@ -342,6 +604,7 @@ function scheduleSsrRender(render: () => Promise<string>, requestUrl?: string): 
   }
 
   if (pendingRenderQueue.length >= renderQueueMaxEntries) {
+    technicalStatsCounters.renderQueueFullRejections += 1;
     console.warn(`SSR render queue full: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${requestUrl ?? 'unknown'}`);
     return Promise.reject(new SsrRenderQueueFullError());
   }
@@ -364,7 +627,11 @@ function runScheduledSsrRender(render: () => Promise<string>, requestUrl?: strin
 
   return render().finally((): void => {
     const elapsedMilliseconds = Date.now() - startedAt;
+    technicalStatsCounters.totalRenders += 1;
+    technicalStatsCounters.totalRenderMilliseconds += elapsedMilliseconds;
+    technicalStatsCounters.maxRenderMilliseconds = Math.max(technicalStatsCounters.maxRenderMilliseconds, elapsedMilliseconds);
     if (slowRenderThresholdMilliseconds > 0 && elapsedMilliseconds >= slowRenderThresholdMilliseconds) {
+      technicalStatsCounters.slowRenders += 1;
       console.warn(`SSR slow render: ${elapsedMilliseconds}ms, active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${requestUrl ?? 'unknown'}`);
     }
 
@@ -416,6 +683,7 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   }
 
   csrFallbackCount += 1;
+  recordPageResponse(req, toCsrFallbackStatus(mode), buildPageCacheKey(req));
   if (csrFallbackLogSampleRate > 0 && csrFallbackCount % csrFallbackLogSampleRate === 0) {
     console.warn(`SSR CSR fallback sample: count=${csrFallbackCount}, mode=${mode}, url=${req.originalUrl}`);
   }
@@ -424,6 +692,101 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('Cache-Control', csrFallbackCacheControl);
   res.type('html').send(readCsrShellHtml(csrIndexHtmlPath));
+}
+
+function toCsrFallbackStatus(mode: string): SsrPageResponseStatus {
+  switch (mode) {
+    case 'CSR-OVERLOAD-FALLBACK':
+      return 'CSR-OVERLOAD-FALLBACK';
+    case 'CSR-WARMUP-SKIPPED':
+      return 'CSR-WARMUP-SKIPPED';
+    default:
+      return 'CSR-CACHE-MISS-FALLBACK';
+  }
+}
+
+function recordPageResponse(req: Request, status: SsrPageResponseStatus, cacheKey: string | null): void {
+  technicalStatsCounters.pageResponses += 1;
+  incrementCount(pageResponseStatusCounts, status);
+
+  if (cacheKey !== null) {
+    technicalStatsCounters.cacheablePageResponses += 1;
+  }
+
+  const isCacheHit = isCacheHitStatus(status);
+  if (isCacheHit) {
+    technicalStatsCounters.cacheHitResponses += 1;
+  }
+
+  const robotFamily = detectRobotFamily(req);
+  if (robotFamily === null) {
+    return;
+  }
+
+  technicalStatsCounters.robotPageResponses += 1;
+  incrementCount(robotFamilyCounts, robotFamily);
+
+  if (isCacheHit) {
+    technicalStatsCounters.robotCacheHitResponses += 1;
+    incrementCount(robotFamilyCacheHitCounts, robotFamily);
+  }
+}
+
+function isCacheHitStatus(status: SsrPageResponseStatus): boolean {
+  return status === 'HIT'
+    || status === 'STALE'
+    || status === 'WARMUP-HIT'
+    || status === 'WARMUP-STALE';
+}
+
+function detectRobotFamily(req: Request): string | null {
+  const userAgent = getHeaderValue(req, 'user-agent').toLowerCase();
+  if (userAgent.length === 0 || userAgent.includes('amusementpark-ssr-targetedrefresh')) {
+    return null;
+  }
+
+  if (userAgent.includes('googlebot') || userAgent.includes('adsbot-google') || userAgent.includes('mediapartners-google')) {
+    return 'Googlebot';
+  }
+
+  if (userAgent.includes('bingbot') || userAgent.includes('msnbot')) {
+    return 'Bingbot';
+  }
+
+  if (userAgent.includes('duckduckbot')) {
+    return 'DuckDuckBot';
+  }
+
+  if (userAgent.includes('yandexbot')) {
+    return 'YandexBot';
+  }
+
+  if (userAgent.includes('ahrefsbot')) {
+    return 'AhrefsBot';
+  }
+
+  if (userAgent.includes('semrushbot')) {
+    return 'SemrushBot';
+  }
+
+  if (/(?:bot|crawler|spider|slurp|facebookexternalhit|whatsapp|telegrambot|linkedinbot|pinterest|discordbot|twitterbot)/i.test(userAgent)) {
+    return 'Other bot';
+  }
+
+  return null;
+}
+
+function getHeaderValue(req: Request, headerName: string): string {
+  const headerValue = req.headers[headerName.toLowerCase()];
+  if (Array.isArray(headerValue)) {
+    return headerValue.join(' ');
+  }
+
+  return headerValue ?? '';
+}
+
+function incrementCount<TValue>(map: Map<TValue, number>, key: TValue, count = 1): void {
+  map.set(key, (map.get(key) ?? 0) + count);
 }
 
 function setStaticAssetResponseHeaders(res: Response, filePath: string): void {
@@ -746,7 +1109,7 @@ function isStalePageCacheEntry(entry: PageCacheEntry): boolean {
   return entry.expiresAt <= Date.now() && (entry.staleUntil ?? 0) > Date.now();
 }
 
-function setPageCacheResponseHeaders(res: Response, cacheStatus: 'HIT' | 'MISS' | 'WARMED' | 'WARMUP-HIT' | 'STALE' | 'WARMUP-STALE'): void {
+function setPageCacheResponseHeaders(res: Response, cacheStatus: SsrPageResponseStatus): void {
   res.setHeader('X-AmusementPark-SSR-Cache', cacheStatus);
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('Cache-Control', pageCacheBrowserCacheControl);
@@ -875,6 +1238,20 @@ function clearTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): Ca
     queuedRefreshes,
     all: false
   };
+}
+
+function recordCacheInvalidation(request: NormalizedCacheInvalidationRequest, result: CacheInvalidationResult): void {
+  technicalStatsCounters.invalidationRequests += 1;
+  technicalStatsCounters.invalidationClearedEntries += result.cleared;
+  technicalStatsCounters.invalidationStaleEntries += result.stalePageEntries;
+  technicalStatsCounters.invalidationQueuedRefreshes += result.queuedRefreshes;
+  technicalStatsCounters.lastInvalidationUtc = new Date().toISOString();
+
+  if (request.all) {
+    technicalStatsCounters.invalidationAllRequests += 1;
+  } else {
+    technicalStatsCounters.invalidationTargetedRequests += 1;
+  }
 }
 
 function clearMatchingMemoryPageCache(request: NormalizedCacheInvalidationRequest, matchedCacheKeys: Set<string>): number {
@@ -1020,6 +1397,7 @@ function enqueueTargetedRefreshes(cacheKeys: string[]): number {
     queued += 1;
   }
 
+  technicalStatsCounters.targetedRefreshQueued += queued;
   drainTargetedRefreshQueue();
   return queued;
 }
@@ -1033,7 +1411,11 @@ function drainTargetedRefreshQueue(): void {
 
     activeTargetedRefreshCount += 1;
     void refreshTargetedCacheKey(cacheKey)
+      .then(() => {
+        technicalStatsCounters.targetedRefreshSucceeded += 1;
+      })
       .catch((error: unknown) => {
+        technicalStatsCounters.targetedRefreshFailed += 1;
         console.warn(`SSR targeted refresh failed: key=${cacheKey}`, error);
       })
       .finally(() => {
@@ -1281,10 +1663,12 @@ function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, 
     return;
   }
 
+  technicalStatsCounters.seoDocumentRequests += 1;
   const cacheKey = buildSeoDocumentCacheKey(targetPath);
   const cachedEntry = getCachedSeoDocument(cacheKey);
 
   if (cachedEntry !== null) {
+    technicalStatsCounters.seoDocumentHits += 1;
     writeCachedSeoDocument(req, res, cachedEntry, 'HIT');
     return;
   }
@@ -1305,6 +1689,7 @@ function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, 
       return;
     }
 
+    technicalStatsCounters.seoDocumentMisses += 1;
     writeCachedSeoDocument(req, res, entry, 'MISS');
   });
 }

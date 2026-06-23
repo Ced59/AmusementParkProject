@@ -1,6 +1,20 @@
 {
-  "version": "2.6.17",
+  "version": "2.6.18",
   "history": [
+    {
+      "version": "2.6.18",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "L'administration devient plus lisible.",
+        "en": "Admin views become clearer.",
+        "de": "Die Administration wird uebersichtlicher.",
+        "nl": "De administratie wordt overzichtelijker.",
+        "it": "L'amministrazione diventa piu chiara.",
+        "es": "La administracion queda mas clara.",
+        "pl": "Administracja staje sie czytelniejsza.",
+        "pt": "A administracao fica mais clara."
+      }
+    },
     {
       "version": "2.6.17",
       "releasedAt": "2026-06-22",
