@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AdminContextualBlockDirective } from '@features/admin/contextual-editing/ui/admin-contextual-block/admin-contextual-block.directive';
 import { AdminContextualBlockInstance } from '@features/admin/contextual-editing/models/admin-contextual-block.model';
 import { AdminContextualBlockRegistryService } from '@features/admin/contextual-editing/services/admin-contextual-block-registry.service';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
@@ -24,6 +25,7 @@ import { ParkReferenceDetailViewModel } from '../models/park-reference-detail-vi
     RouterLink,
     TranslateModule,
     SafeRichHtmlPipe,
+    ImageDisplayComponent,
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
@@ -32,6 +34,8 @@ import { ParkReferenceDetailViewModel } from '../models/park-reference-detail-vi
   ]
 })
 export class ParkReferenceDetailViewComponent {
+  protected readonly heroLogoResponsiveWidths: readonly number[] = [96, 160, 240];
+
   @Input() state!: Signal<ScreenState<unknown, string>>;
   @Input() reference!: Signal<ParkReferenceDetailViewModel | null>;
   @Input() attractionsLoading!: Signal<boolean>;
