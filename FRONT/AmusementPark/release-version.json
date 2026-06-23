@@ -1,6 +1,20 @@
 {
-  "version": "2.7.0",
+  "version": "2.7.1",
   "history": [
+    {
+      "version": "2.7.1",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "L'administration des images devient plus fiable.",
+        "en": "Image administration becomes more reliable.",
+        "de": "Die Bildverwaltung wird zuverlaessiger.",
+        "nl": "Afbeeldingenbeheer wordt betrouwbaarder.",
+        "it": "L'amministrazione delle immagini diventa piu affidabile.",
+        "es": "La administracion de imagenes resulta mas fiable.",
+        "pl": "Administracja obrazami dziala pewniej.",
+        "pt": "A administracao de imagens fica mais fiavel."
+      }
+    },
     {
       "version": "2.7.0",
       "releasedAt": "2026-06-23",

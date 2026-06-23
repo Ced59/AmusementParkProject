@@ -150,6 +150,16 @@ describe('ImagesApiService', () => {
     request.flush({ data: [{ id: 'tag-1', slug: 'entrance' }] });
   });
 
+  it('deletes images through the image endpoint', () => {
+    service.deleteImage('img-1').subscribe((deleted) => {
+      expect(deleted).toBeTrue();
+    });
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}images/img-1`);
+    expect(request.request.method).toBe('DELETE');
+    request.flush(true);
+  });
+
   it('updates admin image metadata and image tags', () => {
     service.updateAdminImage('img-1', { altTexts: [], captions: [], credits: [], tagIds: [], isPublished: true }).subscribe();
     service.createAdminImageTag({ slug: 'tag', labels: [], descriptions: [] }).subscribe();
