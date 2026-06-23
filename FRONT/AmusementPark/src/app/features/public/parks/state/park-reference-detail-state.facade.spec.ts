@@ -64,6 +64,7 @@ describe('ParkReferenceDetailStateFacade', () => {
       isVisible: true,
       category: 'Attraction'
     }, null, jasmine.any(Object));
+    expect(facade.reference()?.heroLogoImageId).toBe('logo-1');
     expect(facade.reference()?.attractions.map((attraction) => attraction.name)).toEqual(['Ride 1']);
     expect(facade.reference()?.attractionsPagination?.totalItems).toBe(18);
   });
@@ -93,7 +94,8 @@ function buildManufacturer(): AttractionManufacturer {
   return {
     id: 'manufacturer-1',
     name: 'Mack Rides',
-    biography: []
+    biography: [],
+    currentLogoImageId: ' logo-1 '
   };
 }
 

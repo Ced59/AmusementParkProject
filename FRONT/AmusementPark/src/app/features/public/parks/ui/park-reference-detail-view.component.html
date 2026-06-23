@@ -13,8 +13,21 @@
         <div class="park-reference-hero__pattern" aria-hidden="true"></div>
 
         <div class="park-reference-hero__content">
-          <div class="park-reference-hero__icon">
-            <i [class]="currentReference.heroIconClass" aria-hidden="true"></i>
+          <div class="park-reference-hero__icon" [class.park-reference-hero__icon--logo]="currentReference.heroLogoImageId">
+            @if (currentReference.heroLogoImageId; as logoImageId) {
+              <app-image-display
+                [imageId]="logoImageId"
+                [alt]="currentReference.name"
+                imgClass="park-reference-hero__logo-image"
+                placeholderClass="park-reference-hero__logo-placeholder"
+                [placeholderIconClass]="currentReference.heroIconClass"
+                [srcWidth]="160"
+                [responsiveWidths]="heroLogoResponsiveWidths"
+                sizes="92px">
+              </app-image-display>
+            } @else {
+              <i [class]="currentReference.heroIconClass" aria-hidden="true"></i>
+            }
           </div>
 
           <div class="park-reference-hero__main">

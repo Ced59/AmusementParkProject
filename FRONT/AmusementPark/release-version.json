@@ -1,6 +1,20 @@
 {
-  "version": "2.7.2",
+  "version": "2.7.3",
   "history": [
+    {
+      "version": "2.7.3",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "Les logos constructeurs ressortent mieux.",
+        "en": "Manufacturer logos stand out better.",
+        "de": "Herstellerlogos sind besser sichtbar.",
+        "nl": "Logo's van bouwers vallen beter op.",
+        "it": "I loghi dei costruttori risaltano meglio.",
+        "es": "Los logotipos de fabricantes destacan mejor.",
+        "pl": "Logo producentow sa lepiej widoczne.",
+        "pt": "Os logotipos dos fabricantes ficam mais visiveis."
+      }
+    },
     {
       "version": "2.7.2",
       "releasedAt": "2026-06-23",

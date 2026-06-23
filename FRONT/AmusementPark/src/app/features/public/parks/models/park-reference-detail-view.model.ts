@@ -32,6 +32,7 @@ export interface ParkReferenceDetailViewModel {
   descriptionTitleKey: string;
   emptyDescriptionKey: string;
   heroIconClass: string;
+  heroLogoImageId: string | null;
   facts: ParkReferenceFactViewModel[];
   photos: UiPhotoCarouselImage[];
   photoCategories: UiPhotoCarouselCategoryOption[];
