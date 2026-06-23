@@ -1,4 +1,4 @@
-using AmusementPark.Application.Errors;
+﻿using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;
@@ -25,7 +25,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
         ApplicationResult<Image> result = await handler.HandleAsync(new ImportRemoteImageCommand(new RemoteImageImportRequest
         {
             SourceUrl = "ftp://example.test/logo.png",
-            Category = ImageCategory.ParkLogo,
+            Category = ImageCategory.Logo,
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
         }));
@@ -80,13 +80,13 @@ public sealed class ImportRemoteImageCommandHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenParkLogoRequestsWatermark_ShouldImportWithoutWatermark()
+    public async Task HandleAsync_WhenLogoRequestsWatermark_ShouldImportWithoutWatermark()
     {
         Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
         Image importedImage = new Image
         {
             Id = "image-1",
-            Category = ImageCategory.ParkLogo,
+            Category = ImageCategory.Logo,
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
             SourceUrl = "https://cdn.example.test/logo.png",
@@ -95,7 +95,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
         remoteImageImporter
             .Setup(importer => importer.ImportAsync(
                 It.Is<RemoteImageImportRequest>(request =>
-                    request.Category == ImageCategory.ParkLogo &&
+                    request.Category == ImageCategory.Logo &&
                     !request.WithWatermark),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(importedImage);
@@ -105,7 +105,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
         ApplicationResult<Image> result = await handler.HandleAsync(new ImportRemoteImageCommand(new RemoteImageImportRequest
         {
             SourceUrl = "https://cdn.example.test/logo.png",
-            Category = ImageCategory.ParkLogo,
+            Category = ImageCategory.Logo,
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
             WithWatermark = true,
@@ -117,7 +117,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenParkLogoIsSetAsCurrent_ShouldSynchronizeParkLogo()
+    public async Task HandleAsync_WhenLogoIsSetAsCurrent_ShouldSynchronizeLogo()
     {
         Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
@@ -126,7 +126,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
         Image importedImage = new Image
         {
             Id = "image-1",
-            Category = ImageCategory.ParkLogo,
+            Category = ImageCategory.Logo,
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
             SourceUrl = "https://cdn.example.test/logo.avif",
@@ -134,7 +134,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
         Image currentImage = new Image
         {
             Id = "image-1",
-            Category = ImageCategory.ParkLogo,
+            Category = ImageCategory.Logo,
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
             IsCurrent = true,
@@ -177,7 +177,7 @@ public sealed class ImportRemoteImageCommandHandlerTests
         ApplicationResult<Image> result = await handler.HandleAsync(new ImportRemoteImageCommand(new RemoteImageImportRequest
         {
             SourceUrl = "https://cdn.example.test/logo.avif",
-            Category = ImageCategory.ParkLogo,
+            Category = ImageCategory.Logo,
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
             WithWatermark = false,

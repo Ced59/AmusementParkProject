@@ -19,7 +19,7 @@ internal static class ImagesHttpMappers
         return value switch
         {
             ImageCategoryDto.AVATAR => ImageCategory.Avatar,
-            ImageCategoryDto.PARK_LOGO => ImageCategory.ParkLogo,
+            ImageCategoryDto.LOGO => ImageCategory.Logo,
             ImageCategoryDto.PARK => ImageCategory.Park,
             ImageCategoryDto.PARK_ITEM => ImageCategory.ParkItem,
             ImageCategoryDto.OPERATOR => ImageCategory.Operator,
@@ -103,7 +103,7 @@ internal static class ImagesHttpMappers
         return value switch
         {
             ImageCategory.Avatar => ImageCategoryDto.AVATAR,
-            ImageCategory.ParkLogo => ImageCategoryDto.PARK_LOGO,
+            ImageCategory.Logo => ImageCategoryDto.LOGO,
             ImageCategory.Park => ImageCategoryDto.PARK,
             ImageCategory.ParkItem => ImageCategoryDto.PARK_ITEM,
             ImageCategory.Operator => ImageCategoryDto.OPERATOR,
@@ -164,7 +164,10 @@ internal static class ImagesHttpMappers
             Captions = value.Captions.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
             Credits = value.Credits.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
             TagIds = value.TagIds.Distinct(StringComparer.Ordinal).ToList(),
-            Category = existing.Category,
+            Category = value.Category?.ToDomain() ?? existing.Category,
+            OwnerType = value.OwnerType?.ToDomain(),
+            OwnerId = value.OwnerId,
+            IsCurrent = value.IsCurrent,
             IsPublished = value.IsPublished,
             SourceUrl = string.IsNullOrWhiteSpace(value.SourceUrl) ? existing.SourceUrl : value.SourceUrl,
         };
@@ -204,6 +207,7 @@ internal static class ImagesHttpMappers
             Width = value.Image.Width,
             Height = value.Image.Height,
             SizeInBytes = value.Image.SizeInBytes,
+            IsWatermarked = value.Image.IsWatermarked,
             SourceUrl = value.Image.SourceUrl,
         };
     }
@@ -220,6 +224,7 @@ internal static class ImagesHttpMappers
             Description = value.Description,
             IsCurrent = value.IsCurrent,
             IsPublished = value.IsPublished,
+            IsWatermarked = value.IsWatermarked,
             Width = value.Width,
             Height = value.Height,
             SizeInBytes = value.SizeInBytes,

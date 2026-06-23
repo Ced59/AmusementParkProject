@@ -22,6 +22,12 @@ public sealed class ImageMetadataUpdate
 
     public ImageCategory Category { get; init; }
 
+    public ImageOwnerType? OwnerType { get; init; }
+
+    public string? OwnerId { get; init; }
+
+    public bool? IsCurrent { get; init; }
+
     public bool IsPublished { get; init; } = true;
 
     public string? SourceUrl { get; init; }

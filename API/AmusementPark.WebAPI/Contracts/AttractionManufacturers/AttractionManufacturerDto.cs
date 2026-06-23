@@ -51,6 +51,11 @@ public sealed class AttractionManufacturerDto
     public string? CurrentLogoImageId { get; set; }
 
     /// <summary>
+    /// Identifiant de l'image principale publique a utiliser sur les cartes.
+    /// </summary>
+    public string? MainImageId { get; set; }
+
+    /// <summary>
     /// Indique si le constructeur est visible publiquement.
     /// </summary>
     public bool IsVisible { get; set; } = true;

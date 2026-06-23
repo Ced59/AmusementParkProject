@@ -23,5 +23,7 @@ public sealed class ImageCreatedDto
 
     public long SizeInBytes { get; set; }
 
+    public bool IsWatermarked { get; set; }
+
     public string? SourceUrl { get; set; }
 }

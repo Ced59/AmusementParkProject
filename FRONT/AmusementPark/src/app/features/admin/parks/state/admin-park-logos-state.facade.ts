@@ -78,7 +78,7 @@ export class AdminParkLogosStateFacade {
   loadLogos(parkId: string): void {
     this.logosLoadingSignal.set(true);
 
-    this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK_LOGO).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.LOGO).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (images: ImageDto[]) => {
         const logoItems: OwnedImageItem[] = images.map((image: ImageDto) => this.toOwnedImageItem(image));
         this.parkLogosSignal.set(logoItems);
@@ -174,7 +174,7 @@ export class AdminParkLogosStateFacade {
     try {
       const importedImage: ImageDto = await firstValueFrom(this.imagesApiService.importRemoteImage({
         sourceUrl,
-        category: ImageCategory.PARK_LOGO,
+        category: ImageCategory.LOGO,
         ownerType: ImageOwnerType.PARK,
         ownerId: parkId,
         description: this.newLogoDescriptionSignal() || parkName || undefined,
@@ -251,7 +251,7 @@ export class AdminParkLogosStateFacade {
     const uploadedImage: UploadedImage = await firstValueFrom(
       this.imagesApiService.uploadImage(
         file,
-        ImageCategory.PARK_LOGO,
+        ImageCategory.LOGO,
         false,
         parkName
       )

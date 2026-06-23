@@ -42,6 +42,7 @@ public sealed class ImagesController : ControllerBase
     private readonly ICommandHandler<ImportRemoteImageCommand, ApplicationResult<Image>> importRemoteImageCommandHandler;
     private readonly ICommandHandler<LinkImageCommand, ApplicationResult<Image>> linkImageCommandHandler;
     private readonly ICommandHandler<SetCurrentImageCommand, ApplicationResult<Image>> setCurrentImageCommandHandler;
+    private readonly ICommandHandler<ApplyImageWatermarkCommand, ApplicationResult<Image>> applyImageWatermarkCommandHandler;
     private readonly ICommandHandler<DeleteImageCommand, ApplicationResult> deleteImageCommandHandler;
     private readonly ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>> updateImageMetadataCommandHandler;
     private readonly ICommandHandler<CreateImageTagCommand, ApplicationResult<ImageTag>> createImageTagCommandHandler;
@@ -59,6 +60,7 @@ public sealed class ImagesController : ControllerBase
         ICommandHandler<ImportRemoteImageCommand, ApplicationResult<Image>> importRemoteImageCommandHandler,
         ICommandHandler<LinkImageCommand, ApplicationResult<Image>> linkImageCommandHandler,
         ICommandHandler<SetCurrentImageCommand, ApplicationResult<Image>> setCurrentImageCommandHandler,
+        ICommandHandler<ApplyImageWatermarkCommand, ApplicationResult<Image>> applyImageWatermarkCommandHandler,
         ICommandHandler<DeleteImageCommand, ApplicationResult> deleteImageCommandHandler,
         ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>> updateImageMetadataCommandHandler,
         ICommandHandler<CreateImageTagCommand, ApplicationResult<ImageTag>> createImageTagCommandHandler,
@@ -75,6 +77,7 @@ public sealed class ImagesController : ControllerBase
         this.importRemoteImageCommandHandler = importRemoteImageCommandHandler;
         this.linkImageCommandHandler = linkImageCommandHandler;
         this.setCurrentImageCommandHandler = setCurrentImageCommandHandler;
+        this.applyImageWatermarkCommandHandler = applyImageWatermarkCommandHandler;
         this.deleteImageCommandHandler = deleteImageCommandHandler;
         this.updateImageMetadataCommandHandler = updateImageMetadataCommandHandler;
         this.createImageTagCommandHandler = createImageTagCommandHandler;
@@ -223,6 +226,20 @@ public sealed class ImagesController : ControllerBase
     public async Task<IActionResult> SetCurrentImageAsync([FromRoute] string imageId, CancellationToken cancellationToken = default)
     {
         ApplicationResult<Image> result = await this.setCurrentImageCommandHandler.HandleAsync(new SetCurrentImageCommand(imageId, ImageOwnerType.None, string.Empty), cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("{imageId}/watermark")]
+    [AdminAudit("image.watermark.apply", "Image", TargetIdRouteKey = "imageId")]
+    [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ApplyWatermarkAsync([FromRoute] string imageId, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<Image> result = await this.applyImageWatermarkCommandHandler.HandleAsync(new ApplyImageWatermarkCommand(imageId), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);

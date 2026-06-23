@@ -71,6 +71,7 @@ function createSummary(): ParkDetailSummary {
       path: 'park/image-1',
       description: 'Bellewaerde',
       isCurrent: true,
+      isWatermarked: false,
       isPublished: true,
       width: 1200,
       height: 800,

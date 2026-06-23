@@ -13,6 +13,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.TechnicalPages;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -317,6 +318,59 @@ public sealed partial class MongoDatabaseInitializer
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
+    }
+
+    private async Task BackfillLegacyImageCategoriesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<BsonDocument> imagesCollection = this.database.GetCollection<BsonDocument>(this.settings.ImagesCollectionName);
+        DateTime now = DateTime.UtcNow;
+
+        UpdateResult parkLogoResult = await imagesCollection.UpdateManyAsync(
+            Builders<BsonDocument>.Filter.Eq("category", "ParkLogo"),
+            Builders<BsonDocument>.Update
+                .Set("category", "Logo")
+                .Set("updatedAt", now),
+            cancellationToken: cancellationToken);
+
+        if (parkLogoResult.ModifiedCount > 0)
+        {
+            this.logger.LogInformation("Migrated {Count} image category values from ParkLogo to Logo.", parkLogoResult.ModifiedCount);
+        }
+
+        IMongoCollection<BsonDocument> manufacturersCollection = this.database.GetCollection<BsonDocument>(this.settings.AttractionManufacturersCollectionName);
+        List<BsonDocument> manufacturerLogoDocuments = await manufacturersCollection
+            .Find(Builders<BsonDocument>.Filter.And(
+                Builders<BsonDocument>.Filter.Exists("currentLogoImageId", true),
+                Builders<BsonDocument>.Filter.Ne("currentLogoImageId", BsonNull.Value)))
+            .Project(Builders<BsonDocument>.Projection.Include("currentLogoImageId").Exclude("_id"))
+            .ToListAsync(cancellationToken);
+
+        List<string> manufacturerLogoImageIds = manufacturerLogoDocuments
+            .Select(static document => document.TryGetValue("currentLogoImageId", out BsonValue value) && value.IsString ? value.AsString : null)
+            .Where(static value => !string.IsNullOrWhiteSpace(value))
+            .Select(static value => value!)
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (manufacturerLogoImageIds.Count == 0)
+        {
+            return;
+        }
+
+        UpdateResult manufacturerLogoResult = await imagesCollection.UpdateManyAsync(
+            Builders<BsonDocument>.Filter.And(
+                Builders<BsonDocument>.Filter.In("_id", manufacturerLogoImageIds),
+                Builders<BsonDocument>.Filter.Eq("ownerType", "AttractionManufacturer"),
+                Builders<BsonDocument>.Filter.Ne("category", "Logo")),
+            Builders<BsonDocument>.Update
+                .Set("category", "Logo")
+                .Set("updatedAt", now),
+            cancellationToken: cancellationToken);
+
+        if (manufacturerLogoResult.ModifiedCount > 0)
+        {
+            this.logger.LogInformation("Migrated {Count} current manufacturer logo images to Logo category.", manufacturerLogoResult.ModifiedCount);
+        }
     }
 
     private async Task InitializeImageTagsIndexesAsync(CancellationToken cancellationToken)

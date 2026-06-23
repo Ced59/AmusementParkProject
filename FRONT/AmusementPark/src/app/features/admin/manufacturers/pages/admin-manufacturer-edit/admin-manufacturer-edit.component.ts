@@ -44,7 +44,8 @@ export class AdminManufacturerEditComponent implements OnInit {
   currentLang: string = 'en';
 
   protected readonly imageOwnerType: ImageOwnerType = ImageOwnerType.ATTRACTION_MANUFACTURER;
-  protected readonly imageCategory: ImageCategory = ImageCategory.MANUFACTURER;
+  protected readonly imageCategory: ImageCategory = ImageCategory.LOGO;
+  protected readonly imageCategoryOptions: ImageCategory[] = [ImageCategory.LOGO, ImageCategory.MANUFACTURER];
 
   constructor(
     private readonly fb: FormBuilder,

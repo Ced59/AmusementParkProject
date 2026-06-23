@@ -114,7 +114,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
             return;
         }
 
-        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.ParkLogo && !string.IsNullOrWhiteSpace(image.OwnerId))
+        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             Park? park = await parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
             if (park is null)
@@ -122,13 +122,13 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 return;
             }
 
-            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, image.OwnerId, ImageCategory.ParkLogo, cancellationToken);
+            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, image.OwnerId, ImageCategory.Logo, cancellationToken);
             park.CurrentLogoImageId = currentLogo?.Id;
             await parkRepository.UpdateAsync(park.Id, park, cancellationToken);
             return;
         }
 
-        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer && !string.IsNullOrWhiteSpace(image.OwnerId))
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
             if (manufacturer is null)
@@ -136,7 +136,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 return;
             }
 
-            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, image.OwnerId, ImageCategory.Manufacturer, cancellationToken);
+            Image? currentLogo = await imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, image.OwnerId, ImageCategory.Logo, cancellationToken);
             manufacturer.CurrentLogoImageId = currentLogo?.Id;
             await attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
             await searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);

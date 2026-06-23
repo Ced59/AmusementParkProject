@@ -100,6 +100,11 @@ public sealed class Image : AuditableEntity
     public string? SourceUrl { get; set; }
 
     /// <summary>
+    /// Indique si le watermark applicatif a ete applique au binaire stocke.
+    /// </summary>
+    public bool IsWatermarked { get; set; }
+
+    /// <summary>
     /// Indique si l'image est publiée.
     /// </summary>
     public bool IsPublished { get; set; } = true;

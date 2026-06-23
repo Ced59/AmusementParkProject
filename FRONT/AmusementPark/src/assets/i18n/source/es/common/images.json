@@ -1,16 +1,24 @@
 {
   "images": {
     "categories": {
+      "LOGO": "Logo",
       "AVATAR": "Avatar",
-      "PARK_LOGO": "Logo del parque",
       "PARK": "Foto del parque",
-      "PARK_ITEM": "Foto de lugar"
+      "PARK_ITEM": "Foto de lugar",
+      "OPERATOR": "Foto de operador",
+      "MANUFACTURER": "Foto de fabricante",
+      "FOUNDER": "Foto de fundador",
+      "VIDEO_THUMBNAIL": "Miniatura de video"
     },
     "ownerTypes": {
       "NONE": "Ninguno",
       "PARK": "Parque",
       "USER": "Usuario",
-      "PARK_ITEM": "Ficha del parque"
+      "PARK_ITEM": "Ficha del parque",
+      "PARK_OPERATOR": "Operador",
+      "ATTRACTION_MANUFACTURER": "Fabricante",
+      "PARK_FOUNDER": "Fundador",
+      "VIDEO": "Video"
     }
   }
 }

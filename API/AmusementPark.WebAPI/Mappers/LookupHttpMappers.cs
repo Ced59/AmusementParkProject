@@ -156,6 +156,7 @@ internal static class LookupHttpMappers
             ContactDetails = ToHttpContactDetails(value.ContactDetails),
             Biography = value.Biography.ToHttp(),
             CurrentLogoImageId = value.CurrentLogoImageId,
+            MainImageId = value.MainImageId,
             IsVisible = value.IsVisible,
             AttractionCount = value.AttractionCount,
             AdminReviewStatus = value.AdminReviewStatus.ToHttp(),

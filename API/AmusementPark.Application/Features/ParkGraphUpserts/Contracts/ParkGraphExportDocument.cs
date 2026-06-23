@@ -246,6 +246,8 @@ public sealed class ParkGraphExportImage
 
     public bool WithWatermark { get; init; }
 
+    public bool IsWatermarked { get; init; }
+
     public string? SourceUrl { get; init; }
 
     public string? InternalUrl { get; init; }

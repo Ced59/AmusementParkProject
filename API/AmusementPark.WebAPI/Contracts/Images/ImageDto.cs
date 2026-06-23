@@ -25,6 +25,8 @@ public sealed class ImageDto
 
     public bool IsPublished { get; set; }
 
+    public bool IsWatermarked { get; set; }
+
     public int Width { get; set; }
 
     public int Height { get; set; }

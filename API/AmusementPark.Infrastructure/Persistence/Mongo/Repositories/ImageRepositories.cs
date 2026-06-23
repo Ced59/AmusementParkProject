@@ -235,6 +235,7 @@ public sealed class ImageRepository : IImageRepository
             OriginalFileName = request.File.FileName,
             ContentType = request.File.ContentType,
             SourceUrl = string.IsNullOrWhiteSpace(request.SourceUrl) ? null : request.SourceUrl.Trim(),
+            IsWatermarked = request.WithWatermark,
             Width = request.Width,
             Height = request.Height,
             GeoLocation = request.GeoLocation is null ? null : CommonMongoMappers.ToDocument(new GeoPoint(request.GeoLocation.Latitude, request.GeoLocation.Longitude)),
@@ -321,6 +322,18 @@ public sealed class ImageRepository : IImageRepository
             .Set(static document => document.SourceUrl, string.IsNullOrWhiteSpace(metadata.SourceUrl) ? null : metadata.SourceUrl.Trim())
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
 
+        if (metadata.OwnerType.HasValue)
+        {
+            update = update
+                .Set(static document => document.OwnerType, metadata.OwnerType.Value)
+                .Set(static document => document.OwnerId, string.IsNullOrWhiteSpace(metadata.OwnerId) ? null : metadata.OwnerId.Trim());
+        }
+
+        if (metadata.IsCurrent.HasValue)
+        {
+            update = update.Set(static document => document.IsCurrent, metadata.IsCurrent.Value);
+        }
+
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
         {
             ReturnDocument = ReturnDocument.After,
@@ -328,6 +341,27 @@ public sealed class ImageRepository : IImageRepository
 
         ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
         InvalidateReadCache();
+        return document?.ToDomain();
+    }
+
+    public async Task<Image?> MarkWatermarkedAsync(string imageId, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(static document => document.Id, imageId);
+        UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
+            .Set(static document => document.IsWatermarked, true)
+            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
+
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
+        if (document is not null)
+        {
+            InvalidateReadCache();
+        }
+
         return document?.ToDomain();
     }
 

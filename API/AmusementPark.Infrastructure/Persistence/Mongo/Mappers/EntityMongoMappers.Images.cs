@@ -40,6 +40,7 @@ internal static partial class EntityMongoMappers
             OriginalFileName = document.OriginalFileName,
             ContentType = document.ContentType,
             SourceUrl = document.SourceUrl,
+            IsWatermarked = document.IsWatermarked,
             IsPublished = document.IsPublished,
         };
 
@@ -71,6 +72,7 @@ internal static partial class EntityMongoMappers
             OriginalFileName = entity.OriginalFileName,
             ContentType = entity.ContentType,
             SourceUrl = entity.SourceUrl,
+            IsWatermarked = entity.IsWatermarked,
             IsPublished = entity.IsPublished,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,

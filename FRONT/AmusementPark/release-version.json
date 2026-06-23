@@ -1,6 +1,20 @@
 {
-  "version": "2.6.21",
+  "version": "2.7.0",
   "history": [
+    {
+      "version": "2.7.0",
+      "releasedAt": "2026-06-23",
+      "labels": {
+        "fr": "Les images sont mieux organisees.",
+        "en": "Images are better organized.",
+        "de": "Bilder sind besser organisiert.",
+        "nl": "Afbeeldingen zijn beter georganiseerd.",
+        "it": "Le immagini sono meglio organizzate.",
+        "es": "Las imagenes estan mejor organizadas.",
+        "pl": "Obrazy sa lepiej uporzadkowane.",
+        "pt": "As imagens ficam mais bem organizadas."
+      }
+    },
     {
       "version": "2.6.21",
       "releasedAt": "2026-06-23",

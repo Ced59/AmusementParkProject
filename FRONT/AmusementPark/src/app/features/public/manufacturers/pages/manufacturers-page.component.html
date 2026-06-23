@@ -51,6 +51,18 @@
             @for (manufacturer of group.manufacturers; track manufacturer.id || manufacturer.name) {
               @if (manufacturerRoute(manufacturer); as route) {
                 <a class="manufacturer-card" [routerLink]="route" appUiSurface="shell" appUiSurfacePadding="regular">
+                  @if (manufacturerImageId(manufacturer); as imageId) {
+                    <span class="manufacturer-card__media">
+                      <app-image-display
+                        [imageId]="imageId"
+                        [alt]="manufacturer.name"
+                        imgClass="manufacturer-card__image"
+                        placeholderClass="manufacturer-card__image manufacturer-card__image--placeholder"
+                        placeholderKind="photo">
+                      </app-image-display>
+                    </span>
+                  }
+
                   <span class="manufacturer-card__top">
                     <span class="manufacturer-card__name">{{ manufacturer.name }}</span>
                     <i class="pi pi-arrow-up-right" aria-hidden="true"></i>

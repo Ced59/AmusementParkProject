@@ -167,13 +167,13 @@
     "hidden": "Hidden",
     "images": {
       "title": "Images",
-      "kicker": "M15 · Media library",
+      "kicker": "M15 Â· Media library",
       "subtitle": "Server-side search, sorting and metadata editing designed for tens of thousands of images.",
       "total": "image(s)",
       "selected": "selected",
-      "loadingMessage": "Loading media library…",
+      "loadingMessage": "Loading media libraryâ€¦",
       "search": "Search",
-      "searchPlaceholder": "File name, id, description, owner…",
+      "searchPlaceholder": "File name, id, description, ownerâ€¦",
       "category": "Category",
       "allCategories": "All categories",
       "ownerType": "Owner",
@@ -226,6 +226,12 @@
       "owner": "Owner",
       "description": "Description",
       "isPublished": "Published image",
+      "isCurrent": "Current image",
+      "watermark": "Watermark",
+      "watermarked": "Watermarked",
+      "notWatermarked": "No watermark",
+      "applyWatermark": "Apply watermark",
+      "sourceUrl": "Source URL",
       "latitude": "Latitude",
       "longitude": "Longitude",
       "altTextFr": "FR alt text",
@@ -1788,10 +1794,13 @@
   "description": "Explore amusement parks, attractions and practical information around the world.",
   "images": {
     "categories": {
+      "LOGO": "Logo",
       "AVATAR": "Avatar",
-      "PARK_LOGO": "Park logo",
       "PARK": "Park photo",
       "PARK_ITEM": "Place photo",
+      "OPERATOR": "Operator photo",
+      "MANUFACTURER": "Manufacturer photo",
+      "FOUNDER": "Founder photo",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
@@ -1799,6 +1808,9 @@
       "PARK": "Park",
       "USER": "User",
       "PARK_ITEM": "Park content page",
+      "PARK_OPERATOR": "Operator",
+      "ATTRACTION_MANUFACTURER": "Manufacturer",
+      "PARK_FOUNDER": "Founder",
       "VIDEO": "Video"
     }
   },

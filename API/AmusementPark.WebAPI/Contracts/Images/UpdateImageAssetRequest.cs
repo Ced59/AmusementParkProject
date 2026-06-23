@@ -8,6 +8,14 @@ namespace AmusementPark.WebAPI.Contracts.Images;
 /// </summary>
 public sealed class UpdateImageAssetRequest
 {
+    public ImageCategoryDto? Category { get; set; }
+
+    public ImageOwnerTypeDto? OwnerType { get; set; }
+
+    public string? OwnerId { get; set; }
+
+    public bool? IsCurrent { get; set; }
+
     public string? Description { get; set; }
 
     public ImageGeoLocationDto? GeoLocation { get; set; }

@@ -102,10 +102,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
 
     private static bool IsLogoCategory(ImageCategory category)
     {
-        return category is ImageCategory.ParkLogo
-            or ImageCategory.Operator
-            or ImageCategory.Manufacturer
-            or ImageCategory.Founder;
+        return category is ImageCategory.Logo;
     }
 
     private static string ToPathSegment(ImageCategory category)
@@ -113,7 +110,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
         return category switch
         {
             ImageCategory.Avatar => "avatar",
-            ImageCategory.ParkLogo => "park_logo",
+            ImageCategory.Logo => "logo",
             ImageCategory.Park => "park",
             ImageCategory.ParkItem => "park_item",
             ImageCategory.Operator => "operator",

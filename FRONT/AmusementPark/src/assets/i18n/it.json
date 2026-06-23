@@ -167,13 +167,13 @@
     "hidden": "Nascosto",
     "images": {
       "title": "Immagini",
-      "kicker": "M15 · Libreria media",
+      "kicker": "M15 Â· Libreria media",
       "subtitle": "Ricerca, ordinamento e modifica dei metadati lato server pensati per decine di migliaia di immagini.",
       "total": "immagine(s)",
       "selected": "selezionato",
-      "loadingMessage": "Caricamento media library…",
+      "loadingMessage": "Caricamento media libraryâ€¦",
       "search": "Cerca",
-      "searchPlaceholder": "Nome file, id, descrizione, proprietario…",
+      "searchPlaceholder": "Nome file, id, descrizione, proprietarioâ€¦",
       "category": "Categoria",
       "allCategories": "Tutte le categorie",
       "ownerType": "Proprietario",
@@ -226,6 +226,12 @@
       "owner": "Proprietario",
       "description": "Descrizione",
       "isPublished": "Published immagine",
+      "isCurrent": "Immagine corrente",
+      "watermark": "Watermark",
+      "watermarked": "Con watermark",
+      "notWatermarked": "Senza watermark",
+      "applyWatermark": "Applica watermark",
+      "sourceUrl": "URL sorgente",
       "latitude": "Latitudine",
       "longitude": "Longitudine",
       "altTextFr": "Testo alternativo FR",
@@ -1788,10 +1794,13 @@
   "description": "Esplora parchi divertimento, attrazioni e informazioni pratiche in tutto il mondo.",
   "images": {
     "categories": {
+      "LOGO": "Logo",
       "AVATAR": "Avatar",
-      "PARK_LOGO": "Logo del parco",
       "PARK": "Foto del parco",
       "PARK_ITEM": "Foto del luogo",
+      "OPERATOR": "Foto dell'operatore",
+      "MANUFACTURER": "Foto del costruttore",
+      "FOUNDER": "Foto del fondatore",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
@@ -1799,6 +1808,9 @@
       "PARK": "Parco",
       "USER": "User",
       "PARK_ITEM": "Scheda del parco",
+      "PARK_OPERATOR": "Operatore",
+      "ATTRACTION_MANUFACTURER": "Costruttore",
+      "PARK_FOUNDER": "Fondatore",
       "VIDEO": "Video"
     }
   },

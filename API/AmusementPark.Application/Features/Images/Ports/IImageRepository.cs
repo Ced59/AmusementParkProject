@@ -20,6 +20,7 @@ public interface IImageRepository
     Task<Image?> LinkAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
     Task<Image?> SetCurrentAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
     Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken);
+    Task<Image?> MarkWatermarkedAsync(string imageId, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken);
     Task<int> UpdateBulkMetadataAsync(IReadOnlyCollection<string> imageIds, ImageBulkMetadataUpdate metadata, CancellationToken cancellationToken);
 }

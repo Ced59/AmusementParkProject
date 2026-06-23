@@ -1,6 +1,6 @@
 export enum ImageCategory {
   AVATAR = 'AVATAR',
-  PARK_LOGO = 'PARK_LOGO',
+  LOGO = 'LOGO',
   PARK = 'PARK',
   PARK_ITEM = 'PARK_ITEM',
   OPERATOR = 'OPERATOR',

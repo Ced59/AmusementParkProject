@@ -44,7 +44,7 @@ Le document park graph est exporte par `ExportParkGraphJsonQueryHandler` avec `J
 | `AttractionAccessConditionType` | `items[].attractionDetails.accessConditions[].type` | `MinHeight`, `MinHeightAccompanied`, `MaxHeight`, `MinAge`, `MinAgeAccompanied`, `PregnancyRestriction`, `HeartRestriction`, `BackNeckRestriction`, `WheelchairTransferRequired`, `AccessPassRequired`, `Custom` |
 | `AttractionAccessConditionUnit` | `items[].attractionDetails.accessConditions[].unit` | `Centimeter`, `Inch`, `Year` |
 | `ImageOwnerType` | `images[].ownerType` | `Park`, `ParkItem`, `ParkOperator`, `ParkFounder`, `AttractionManufacturer` dans le park graph. Les autres valeurs domaine existent mais ne doivent pas etre utilisees dans ce flux. |
-| `ImageCategory` | `images[].category` | `Avatar`, `ParkLogo`, `Park`, `ParkItem`, `Operator`, `Manufacturer`, `Founder`, `VideoThumbnail` |
+| `ImageCategory` | `images[].category` | `Avatar`, `Logo`, `Park`, `ParkItem`, `Operator`, `Manufacturer`, `Founder`, `VideoThumbnail` |
 
 `AdminReviewStatus.Ready` existe comme alias legacy de `Validated` cote domaine. Il ne doit pas etre utilise dans les nouveaux JSON.
 

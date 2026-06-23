@@ -140,6 +140,29 @@
   transform: translateY(-2px);
 }
 
+.manufacturer-card__media {
+  display: grid;
+  min-height: 7.4rem;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-surface) 84%, transparent);
+}
+
+:host ::ng-deep .manufacturer-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: contain;
+  padding: 0.75rem;
+  background: color-mix(in srgb, var(--app-surface) 90%, transparent);
+}
+
+:host ::ng-deep .manufacturer-card__image--placeholder {
+  display: grid;
+  place-items: center;
+  object-fit: initial;
+}
+
 .manufacturer-card__top {
   display: flex;
   min-width: 0;

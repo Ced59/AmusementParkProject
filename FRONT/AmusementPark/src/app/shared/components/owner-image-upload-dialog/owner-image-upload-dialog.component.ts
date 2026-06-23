@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize, Subscription, switchMap } from 'rxjs';
 
@@ -24,13 +24,16 @@ import { ImageUploadSecurityService } from '@shared/utils/security';
   changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [Bind, Dialog, ButtonDirective, FormsModule, InputText, PrimeTemplate, TranslateModule, ImageDisplayComponent]
 })
-export class OwnerImageUploadDialogComponent implements OnDestroy {
+export class OwnerImageUploadDialogComponent implements OnChanges, OnDestroy {
   @Input() visible: boolean = false;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() ownerId: string = '';
   @Input() ownerType: ImageOwnerType = ImageOwnerType.USER;
   @Input() category: ImageCategory = ImageCategory.AVATAR;
+  @Input() categoryOptions: ImageCategory[] = [];
+  @Input() showCategoryChoice: boolean = false;
+  @Input() categoryLabelKey: string = 'admin.images.category';
   @Input() titleKey: string = 'shared.imageUpload.title';
   @Input() chooseButtonKey: string = 'shared.imageUpload.choose';
   @Input() uploadButtonKey: string = 'shared.imageUpload.upload';
@@ -60,6 +63,7 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
   previewUrl: string | null = null;
   remoteSourceUrl: string = '';
   description: string = '';
+  selectedCategory: ImageCategory = this.category;
   isUploading: boolean = false;
   isDragging: boolean = false;
   errorTranslationKey: string | null = null;
@@ -71,6 +75,13 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     private readonly imageUploadSecurityService: ImageUploadSecurityService,
     private readonly destroyRef: DestroyRef
   ) {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['category'] || changes['categoryOptions']) {
+      this.selectedCategory = this.resolveInitialCategory();
+      this.applyWatermarkDefaults();
+    }
   }
 
   ngOnDestroy(): void {
@@ -135,9 +146,10 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
       return;
     }
 
+    const category: ImageCategory = this.currentCategory;
     const normalizedRemoteSourceUrl: string = this.remoteSourceUrl.trim();
     if (this.allowRemoteImport && normalizedRemoteSourceUrl.length > 0) {
-      this.importRemote(normalizedRemoteSourceUrl);
+      this.importRemote(normalizedRemoteSourceUrl, category);
       return;
     }
 
@@ -152,8 +164,8 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     this.uploadSubscription?.unsubscribe();
     this.uploadSubscription = this.imagesApiService.uploadImage(
       this.selectedFile,
-      this.category,
-      this.withWatermark,
+      category,
+      this.shouldApplyWatermark(category),
       this.showDescription ? this.description : undefined)
       .pipe(
         switchMap((uploadedImage: UploadedImage) => {
@@ -191,7 +203,7 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     this.errorTranslationKey = null;
 
     if (this.remoteSourceUrl.trim().length > 0) {
-      if (!hadRemoteSourceUrl && this.allowWatermarkChoice) {
+      if (!hadRemoteSourceUrl && this.canChooseWatermark) {
         this.withWatermark = false;
       }
 
@@ -206,6 +218,24 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
   get remotePreviewUrl(): string | null {
     const normalizedRemoteSourceUrl: string = this.remoteSourceUrl.trim();
     return normalizedRemoteSourceUrl.length > 0 ? normalizedRemoteSourceUrl : null;
+  }
+
+  get visibleCategoryOptions(): ImageCategory[] {
+    const options: ImageCategory[] = this.categoryOptions.length > 0 ? this.categoryOptions : [this.category];
+    return Array.from(new Set(options));
+  }
+
+  get currentCategory(): ImageCategory {
+    return this.selectedCategory || this.category;
+  }
+
+  get canChooseWatermark(): boolean {
+    return this.allowWatermarkChoice && this.currentCategory !== ImageCategory.LOGO;
+  }
+
+  setCategory(value: string): void {
+    this.selectedCategory = value as ImageCategory;
+    this.applyWatermarkDefaults();
   }
 
   private processSelectedFile(file: File | null): void {
@@ -229,14 +259,16 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     }
 
     this.selectedFile = file;
-    if (this.allowWatermarkChoice) {
+    if (this.canChooseWatermark) {
       this.withWatermark = true;
+    } else {
+      this.withWatermark = false;
     }
 
     this.setPreviewFromFile(file);
   }
 
-  private importRemote(sourceUrl: string): void {
+  private importRemote(sourceUrl: string, category: ImageCategory): void {
     if (!this.ownerId) {
       this.errorTranslationKey = this.noImageSelectedKey;
       return;
@@ -247,11 +279,11 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     this.uploadSubscription?.unsubscribe();
     this.uploadSubscription = this.imagesApiService.importRemoteImage({
       sourceUrl,
-      category: this.category,
+      category,
       ownerType: this.ownerType,
       ownerId: this.ownerId,
       description: this.showDescription ? this.description : undefined,
-      withWatermark: this.withWatermark,
+      withWatermark: this.shouldApplyWatermark(category),
       setAsCurrent: true
     })
       .pipe(finalize(() => {
@@ -286,8 +318,10 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     this.description = '';
     this.errorTranslationKey = null;
     this.isDragging = false;
-    if (this.allowWatermarkChoice) {
+    if (this.canChooseWatermark) {
       this.withWatermark = true;
+    } else {
+      this.withWatermark = false;
     }
 
     this.cleanupPreviewUrl();
@@ -298,5 +332,30 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
 
     this.visible = false;
     this.visibleChange.emit(false);
+  }
+
+  private resolveInitialCategory(): ImageCategory {
+    const options: ImageCategory[] = this.visibleCategoryOptions;
+    return options.includes(this.category) ? this.category : options[0] ?? this.category;
+  }
+
+  private applyWatermarkDefaults(): void {
+    if (this.currentCategory === ImageCategory.LOGO) {
+      this.withWatermark = false;
+      return;
+    }
+
+    if (this.selectedFile && this.allowWatermarkChoice) {
+      this.withWatermark = true;
+      return;
+    }
+
+    if (this.remoteSourceUrl.trim().length > 0) {
+      this.withWatermark = false;
+    }
+  }
+
+  private shouldApplyWatermark(category: ImageCategory): boolean {
+    return category !== ImageCategory.LOGO && this.withWatermark;
   }
 }

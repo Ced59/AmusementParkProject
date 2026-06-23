@@ -17,6 +17,17 @@
     (change)="onFileInputChange($event)" />
 
   <div class="dialog-body">
+    @if (showCategoryChoice) {
+      <label class="category-choice">
+        <span>{{ categoryLabelKey | translate }}</span>
+        <select [ngModel]="currentCategory" (ngModelChange)="setCategory($event)" [disabled]="isUploading">
+          @for (option of visibleCategoryOptions; track option) {
+            <option [value]="option">{{ ('images.categories.' + option) | translate }}</option>
+          }
+        </select>
+      </label>
+    }
+
     <div
       class="drop-zone"
       [class.drop-zone--dragging]="isDragging"
@@ -92,7 +103,7 @@
         [disabled]="isUploading" />
     }
 
-    @if (allowWatermarkChoice) {
+    @if (canChooseWatermark) {
       <label class="watermark-choice">
         <input
           type="checkbox"

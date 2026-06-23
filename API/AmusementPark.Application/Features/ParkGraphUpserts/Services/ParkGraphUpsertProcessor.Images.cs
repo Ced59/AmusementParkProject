@@ -53,6 +53,11 @@ public sealed partial class ParkGraphUpsertProcessor
                 continue;
             }
 
+            ImageOwnerType previousOwnerType = image.OwnerType;
+            string? previousOwnerId = image.OwnerId;
+            ImageCategory previousCategory = image.Category;
+            bool wasCurrent = image.IsCurrent;
+
             bool hasOwnerPatch = HasProperty(patch, "ownerType") || HasProperty(patch, "ownerId") || HasProperty(patch, "ownerKey");
             ImageOwnerType ownerType = image.OwnerType;
             string? resolvedOwnerId = image.OwnerId;
@@ -128,12 +133,19 @@ public sealed partial class ParkGraphUpsertProcessor
             }
 
             bool metadataChanged = change.Fields.Count > metadataFieldStart;
+            bool categoryChanged = image.Category != category;
+            bool currentScopeChanged = ownerChanged || categoryChanged;
 
             bool setAsCurrent = ReadBool(patch, "setAsCurrent") == true;
-            bool shouldSetCurrent = setAsCurrent && (ownerChanged || !image.IsCurrent);
+            bool shouldSetCurrent = setAsCurrent && (currentScopeChanged || !image.IsCurrent);
+            bool shouldClearCurrent = currentScopeChanged && image.IsCurrent && !setAsCurrent;
             if (shouldSetCurrent)
             {
                 AddChange(change, "isCurrent", image.IsCurrent, true);
+            }
+            else if (shouldClearCurrent)
+            {
+                AddChange(change, "isCurrent", image.IsCurrent, false);
             }
 
             ImageMetadataUpdate metadata = new ImageMetadataUpdate
@@ -147,6 +159,9 @@ public sealed partial class ParkGraphUpsertProcessor
                 Category = category,
                 IsPublished = isPublished,
                 SourceUrl = sourceUrl,
+                OwnerType = ownerType,
+                OwnerId = resolvedOwnerId,
+                IsCurrent = shouldClearCurrent ? false : null,
             };
 
             if (change.Fields.Count > 0)
@@ -156,15 +171,21 @@ public sealed partial class ParkGraphUpsertProcessor
 
             if (apply)
             {
-                if (ownerChanged && resolvedOwnerId is not null && !setAsCurrent)
+                bool shouldUpdateMetadata = metadataChanged || (ownerChanged && !shouldSetCurrent) || shouldClearCurrent;
+                if (shouldUpdateMetadata)
                 {
-                    Image? linked = await this.imageRepository.LinkAsync(image.Id, ownerType, resolvedOwnerId, cancellationToken);
-                    image = linked ?? image;
+                    Image? metadataUpdated = await this.imageRepository.UpdateMetadataAsync(image.Id, metadata, cancellationToken);
+                    image = metadataUpdated ?? image;
                 }
 
-                if (metadataChanged)
+                if (currentScopeChanged && wasCurrent)
                 {
-                    await this.imageRepository.UpdateMetadataAsync(image.Id, metadata, cancellationToken);
+                    await this.SynchronizeCurrentImageOwnerScopeAsync(
+                        previousOwnerType,
+                        previousOwnerId,
+                        previousCategory,
+                        park,
+                        cancellationToken);
                 }
 
                 if (shouldSetCurrent && resolvedOwnerId is not null)
@@ -220,7 +241,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, "category", null, category);
         AddChange(change, "isPublished", null, ReadBool(patch, "isPublished") ?? true);
 
-        bool setAsCurrent = ReadBool(patch, "setAsCurrent") ?? category == ImageCategory.ParkLogo;
+        bool setAsCurrent = ReadBool(patch, "setAsCurrent") ?? category == ImageCategory.Logo;
         bool withWatermark = ShouldApplyRemoteImageWatermark(category, ReadBool(patch, "withWatermark"));
         AddChange(change, "setAsCurrent", null, setAsCurrent);
         AddChange(change, "withWatermark", null, withWatermark);
@@ -322,30 +343,47 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
-        if (current.OwnerType == ImageOwnerType.Park && current.Category == ImageCategory.ParkLogo)
+        await this.SynchronizeCurrentImageOwnerScopeAsync(current.OwnerType, current.OwnerId, current.Category, targetPark, cancellationToken);
+    }
+
+    private async Task SynchronizeCurrentImageOwnerScopeAsync(
+        ImageOwnerType ownerType,
+        string? ownerId,
+        ImageCategory category,
+        Park? targetPark,
+        CancellationToken cancellationToken)
+    {
+        if (ownerType == ImageOwnerType.None || string.IsNullOrWhiteSpace(ownerId))
         {
-            Park? ownerPark = targetPark is not null && string.Equals(current.OwnerId, targetPark.Id, StringComparison.Ordinal)
+            return;
+        }
+
+        if (ownerType == ImageOwnerType.Park && category == ImageCategory.Logo)
+        {
+            Park? ownerPark = targetPark is not null && string.Equals(ownerId, targetPark.Id, StringComparison.Ordinal)
                 ? targetPark
-                : await this.parkRepository.GetByIdAsync(current.OwnerId, true, cancellationToken);
+                : await this.parkRepository.GetByIdAsync(ownerId, true, cancellationToken);
             if (ownerPark is null)
             {
                 return;
             }
 
-            ownerPark.CurrentLogoImageId = current.Id;
+            Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, ownerId, ImageCategory.Logo, cancellationToken);
+            ownerPark.CurrentLogoImageId = currentLogo?.Id;
             await this.parkRepository.UpdateAsync(ownerPark.Id, ownerPark, cancellationToken);
             return;
         }
 
-        if (current.OwnerType == ImageOwnerType.AttractionManufacturer && current.Category == ImageCategory.Manufacturer)
+        if (ownerType == ImageOwnerType.AttractionManufacturer && category == ImageCategory.Logo)
         {
-            AttractionManufacturer? manufacturer = await this.attractionManufacturerRepository.GetByIdAsync(current.OwnerId, cancellationToken);
+            AttractionManufacturer? manufacturer = await this.attractionManufacturerRepository.GetByIdAsync(ownerId, cancellationToken);
             if (manufacturer is null)
             {
                 return;
             }
 
-            manufacturer.CurrentLogoImageId = current.Id;
+            Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, ownerId, ImageCategory.Logo, cancellationToken);
+            manufacturer.CurrentLogoImageId = currentLogo?.Id;
             await this.attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);
         }
@@ -587,10 +625,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
     private static bool IsLogoCategory(ImageCategory category)
     {
-        return category is ImageCategory.ParkLogo
-            or ImageCategory.Operator
-            or ImageCategory.Manufacturer
-            or ImageCategory.Founder;
+        return category is ImageCategory.Logo;
     }
 
     private static string BuildInternalImageUrl(string imageId)

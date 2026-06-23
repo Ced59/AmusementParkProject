@@ -95,6 +95,7 @@ function createImage(id: string): ImageDto {
     path: `parks/${id}`,
     description: `Photo ${id}`,
     isCurrent: id === 'image-1',
+    isWatermarked: false,
     isPublished: true,
     width: 1200,
     height: 800,

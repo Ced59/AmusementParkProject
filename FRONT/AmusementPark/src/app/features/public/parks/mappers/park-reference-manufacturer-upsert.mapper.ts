@@ -33,7 +33,7 @@ function buildRemoteImageDraft(manufacturer: AttractionManufacturer): JsonObject
   return {
     sourceUrl: '',
     ownerKey: buildManufacturerKey(manufacturer),
-    category: 'Manufacturer',
+    category: 'Logo',
     description: '',
     isPublished: true,
     setAsCurrent: true,
@@ -64,6 +64,7 @@ function buildManufacturerReference(manufacturer: AttractionManufacturer): JsonO
     foundedYear: normalizeOptionalNumber(manufacturer.foundedYear),
     closedYear: normalizeOptionalNumber(manufacturer.closedYear),
     currentLogoImageId: normalizeOptionalString(manufacturer.currentLogoImageId),
+    isVisible: manufacturer.isVisible !== false,
     contactDetails: buildContactDetails(manufacturer.contactDetails),
     biography: buildLocalizedItems(manufacturer.biography),
     adminReviewStatus: manufacturer.adminReviewStatus ?? 'ToReview'

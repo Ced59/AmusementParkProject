@@ -174,7 +174,7 @@ function isOwnerGalleryCategory(category: ImageCategory | number | string | null
 function isAdministrativeOnlyImageCategory(category: ImageCategory | number | string | null | undefined): boolean {
   const normalizedCategory: string = String(category ?? '').toUpperCase();
   return normalizedCategory === ImageCategory.AVATAR
-    || normalizedCategory === ImageCategory.PARK_LOGO
+    || normalizedCategory === ImageCategory.LOGO
     || normalizedCategory === '0'
     || normalizedCategory === '1';
 }

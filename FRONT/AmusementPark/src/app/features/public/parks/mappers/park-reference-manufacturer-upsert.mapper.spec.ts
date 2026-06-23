@@ -28,6 +28,7 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
         { languageCode: 'en', value: '<p>German manufacturer.</p>' }
       ],
       currentLogoImageId: 'logo-1',
+      isVisible: false,
       adminReviewStatus: 'Validated'
     };
 
@@ -43,7 +44,7 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
       {
         sourceUrl: '',
         ownerKey: 'manufacturer:manufacturer-1',
-        category: 'Manufacturer',
+        category: 'Logo',
         description: '',
         isPublished: true,
         setAsCurrent: true,
@@ -58,6 +59,7 @@ describe('park-reference-manufacturer-upsert.mapper', () => {
       foundedYear: 1780,
       closedYear: null,
       currentLogoImageId: 'logo-1',
+      isVisible: false,
       adminReviewStatus: 'Validated'
     }));
     expect(draftManufacturer.contactDetails).toEqual(jasmine.objectContaining({

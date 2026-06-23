@@ -103,6 +103,7 @@ function createSummary(totalItems: number = 3, hasMainImage: boolean = true): Pa
       path: 'parks/main.jpg',
       description: 'Main park image',
       isCurrent: true,
+      isWatermarked: false,
       isPublished: true,
       width: 1200,
       height: 800,

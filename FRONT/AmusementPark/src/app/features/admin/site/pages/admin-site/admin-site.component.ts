@@ -34,8 +34,26 @@ export class AdminSiteComponent implements OnInit {
   protected readonly selectedImageIds = this.stateFacade.selectedImageIds;
   protected readonly selectedCount = this.stateFacade.selectedCount;
   protected readonly isEveryPageImageSelected = this.stateFacade.isEveryPageImageSelected;
-  protected readonly categories: ImageCategory[] = [ImageCategory.AVATAR, ImageCategory.PARK_LOGO, ImageCategory.PARK, ImageCategory.PARK_ITEM];
-  protected readonly ownerTypes: ImageOwnerType[] = [ImageOwnerType.NONE, ImageOwnerType.PARK, ImageOwnerType.USER, ImageOwnerType.PARK_ITEM];
+  protected readonly categories: ImageCategory[] = [
+    ImageCategory.LOGO,
+    ImageCategory.AVATAR,
+    ImageCategory.PARK,
+    ImageCategory.PARK_ITEM,
+    ImageCategory.OPERATOR,
+    ImageCategory.MANUFACTURER,
+    ImageCategory.FOUNDER,
+    ImageCategory.VIDEO_THUMBNAIL
+  ];
+  protected readonly ownerTypes: ImageOwnerType[] = [
+    ImageOwnerType.NONE,
+    ImageOwnerType.PARK,
+    ImageOwnerType.USER,
+    ImageOwnerType.PARK_ITEM,
+    ImageOwnerType.PARK_OPERATOR,
+    ImageOwnerType.ATTRACTION_MANUFACTURER,
+    ImageOwnerType.PARK_FOUNDER,
+    ImageOwnerType.VIDEO
+  ];
   protected readonly sortFields: AdminImageSortField[] = ['created', 'updated', 'filename', 'size', 'dimensions'];
   protected readonly pageSizes: number[] = [20, 40, 60, 100];
   protected readonly defaultLanguageCode: string = 'fr';
@@ -148,13 +166,33 @@ export class AdminSiteComponent implements OnInit {
     try {
       await firstValueFrom(this.imagesApiService.updateAdminImage(selectedImage.id, {
         description: selectedImage.description,
+        category: selectedImage.category,
+        ownerType: selectedImage.ownerType,
+        ownerId: selectedImage.ownerType === ImageOwnerType.NONE ? null : selectedImage.ownerId,
+        isCurrent: selectedImage.isCurrent,
         geoLocation: selectedImage.geoLocation ?? null,
         altTexts: selectedImage.altTexts ?? [],
         captions: selectedImage.captions ?? [],
         credits: selectedImage.credits ?? [],
         tagIds: selectedImage.tagIds ?? [],
         isPublished: selectedImage.isPublished,
+        sourceUrl: selectedImage.sourceUrl ?? null,
       }));
+      this.reload();
+    } catch {
+      this.stateFacade.setError();
+    }
+  }
+
+  protected async applyWatermarkToSelectedImage(): Promise<void> {
+    const selectedImage: ImageDto | null = this.selectedImage();
+
+    if (!selectedImage || !this.canApplyWatermark(selectedImage)) {
+      return;
+    }
+
+    try {
+      await firstValueFrom(this.imagesApiService.applyWatermark(selectedImage.id));
       this.reload();
     } catch {
       this.stateFacade.setError();
@@ -187,6 +225,32 @@ export class AdminSiteComponent implements OnInit {
 
   protected updateSelectedImagePublished(isPublished: boolean): void {
     this.stateFacade.updateSelectedImage({ isPublished });
+  }
+
+  protected updateSelectedImageCategory(category: string): void {
+    this.stateFacade.updateSelectedImage({ category: category as ImageCategory });
+  }
+
+  protected updateSelectedImageOwnerType(ownerType: string): void {
+    const normalizedOwnerType: ImageOwnerType = ownerType as ImageOwnerType;
+    const currentImage: ImageDto | null = this.selectedImage();
+    this.stateFacade.updateSelectedImage({
+      ownerType: normalizedOwnerType,
+      ownerId: normalizedOwnerType === ImageOwnerType.NONE ? undefined : currentImage?.ownerId,
+      isCurrent: normalizedOwnerType === ImageOwnerType.NONE ? false : (currentImage?.isCurrent ?? false),
+    });
+  }
+
+  protected updateSelectedImageOwnerId(ownerId: string): void {
+    this.stateFacade.updateSelectedImage({ ownerId: ownerId || undefined });
+  }
+
+  protected updateSelectedImageCurrent(isCurrent: boolean): void {
+    this.stateFacade.updateSelectedImage({ isCurrent });
+  }
+
+  protected updateSelectedImageSourceUrl(sourceUrl: string): void {
+    this.stateFacade.updateSelectedImage({ sourceUrl: sourceUrl || null });
   }
 
   protected updateSelectedImageLatitude(latitude: number | string): void {
@@ -270,6 +334,10 @@ export class AdminSiteComponent implements OnInit {
     return this.tags().find((tag: ImageTagDto) => tag.id === tagId)?.slug ?? tagId;
   }
 
+  protected canApplyWatermark(image: ImageDto): boolean {
+    return image.category !== ImageCategory.LOGO && !image.isWatermarked && !!image.path;
+  }
+
   protected formatBytes(value: number | null | undefined): string {
     const bytes: number = value ?? 0;
 
@@ -305,6 +373,18 @@ export class AdminSiteComponent implements OnInit {
 
   protected trackById(_: number, item: { id: string }): string {
     return item.id;
+  }
+
+  protected booleanFilterValue(value: boolean | null | undefined): string {
+    if (value === true) {
+      return 'true';
+    }
+
+    if (value === false) {
+      return 'false';
+    }
+
+    return '';
   }
 
   private parseBooleanFilter(value: string): boolean | null {

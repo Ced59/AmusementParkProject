@@ -2,6 +2,7 @@ const databaseName = process.env.MONGO_APP_DATABASE || 'AmusementPark';
 const imagesCollectionName = process.env.MONGO_IMAGES_COLLECTION || 'images';
 const videosCollectionName = process.env.MONGO_VIDEOS_COLLECTION || 'videos';
 const parkItemsCollectionName = process.env.MONGO_PARK_ITEMS_COLLECTION || 'parkItems';
+const attractionManufacturersCollectionName = process.env.MONGO_ATTRACTION_MANUFACTURERS_COLLECTION || 'attractionManufacturers';
 const dryRun = String(process.env.DRY_RUN || '').toLowerCase() === 'true';
 
 const database = db.getSiblingDB(databaseName);
@@ -33,6 +34,34 @@ updateMany(
   { $set: { category: 'ParkItem', updatedAt: now } },
   'images category Attraction -> ParkItem',
 );
+
+updateMany(
+  imagesCollectionName,
+  { category: 'ParkLogo' },
+  { $set: { category: 'Logo', updatedAt: now } },
+  'images category ParkLogo -> Logo',
+);
+
+const manufacturerLogoImageIds = database
+  .getCollection(attractionManufacturersCollectionName)
+  .distinct('currentLogoImageId', {
+    currentLogoImageId: { $type: 'string', $ne: '' },
+  });
+
+if (manufacturerLogoImageIds.length > 0) {
+  updateMany(
+    imagesCollectionName,
+    {
+      _id: { $in: manufacturerLogoImageIds },
+      ownerType: 'AttractionManufacturer',
+      category: { $ne: 'Logo' },
+    },
+    { $set: { category: 'Logo', updatedAt: now } },
+    'images current manufacturer logos -> Logo',
+  );
+} else {
+  print('images current manufacturer logos -> Logo: no referenced logo image');
+}
 
 updateMany(
   videosCollectionName,

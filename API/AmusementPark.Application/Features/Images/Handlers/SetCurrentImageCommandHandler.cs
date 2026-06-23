@@ -97,7 +97,7 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
             return;
         }
 
-        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.ParkLogo && !string.IsNullOrWhiteSpace(image.OwnerId))
+        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             Park? park = await parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
             if (park is not null)
@@ -109,7 +109,7 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
             return;
         }
 
-        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer && !string.IsNullOrWhiteSpace(image.OwnerId))
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
             if (manufacturer is not null)

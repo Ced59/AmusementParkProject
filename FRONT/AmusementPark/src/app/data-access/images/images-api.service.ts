@@ -131,6 +131,11 @@ export class ImagesApiService {
     return this.http.put<ImageDto>(url, {});
   }
 
+  applyWatermark(imageId: string): Observable<ImageDto> {
+    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.applyWatermark(imageId)}`;
+    return this.http.post<ImageDto>(url, {});
+  }
+
   deleteImage(imageId: string): Observable<boolean> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.deleteImage(imageId)}`;
     return this.http.delete<boolean>(url);
@@ -222,8 +227,8 @@ export class ImagesApiService {
       .set('size', String(query.size ?? 40));
 
     params = this.appendOptionalParam(params, 'search', query.search);
-    params = this.appendOptionalParam(params, 'category', query.category);
-    params = this.appendOptionalParam(params, 'ownerType', query.ownerType);
+    params = this.appendOptionalParam(params, 'category', query.category ? toImageCategoryApiValue(query.category) : null);
+    params = this.appendOptionalParam(params, 'ownerType', query.ownerType ? toImageOwnerTypeApiValue(query.ownerType) : null);
     params = this.appendOptionalParam(params, 'ownerId', query.ownerId);
     params = this.appendOptionalParam(params, 'tagId', query.tagId);
     params = this.appendOptionalBooleanParam(params, 'isPublished', query.isPublished);
@@ -239,10 +244,17 @@ export class ImagesApiService {
 
   updateAdminImagesBulkMetadata(request: AdminImageBulkMetadataUpdate): Observable<AdminImageBulkMetadataResult> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getAdminImages}/bulk-metadata`;
-    return this.http.patch<AdminImageBulkMetadataResult>(url, request);
+    return this.http.patch<AdminImageBulkMetadataResult>(url, {
+      ...request,
+      category: request.category ? toImageCategoryApiValue(request.category) : undefined
+    });
   }
 
   updateAdminImage(id: string, request: {
+    category?: ImageCategory | null;
+    ownerType?: ImageOwnerType | null;
+    ownerId?: string | null;
+    isCurrent?: boolean | null;
     description?: string;
     geoLocation?: ImageGeoLocation | null;
     altTexts: LocalizedItemDto<string>[];
@@ -253,7 +265,11 @@ export class ImagesApiService {
     sourceUrl?: string | null;
   }): Observable<ImageDto> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.updateAdminImage(id)}`;
-    return this.http.put<ImageDto>(url, request);
+    return this.http.put<ImageDto>(url, {
+      ...request,
+      category: request.category ? toImageCategoryApiValue(request.category) : undefined,
+      ownerType: request.ownerType ? toImageOwnerTypeApiValue(request.ownerType) : undefined
+    });
   }
 
   getImageTags(options: ImagesHttpOptions = {}): Observable<ImageTagDto[]> {
