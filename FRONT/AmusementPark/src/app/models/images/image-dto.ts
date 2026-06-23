@@ -12,6 +12,7 @@ export interface ImageDto {
   description?: string;
   isCurrent: boolean;
   isPublished: boolean;
+  isWatermarked: boolean;
   width: number;
   height: number;
   sizeInBytes: number;

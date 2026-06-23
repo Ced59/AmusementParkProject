@@ -8,6 +8,23 @@
   gap: 1rem;
 }
 
+.category-choice {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--text-color-secondary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.category-choice select {
+  min-height: 2.55rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.75rem;
+  background: var(--surface-card);
+  color: var(--text-color);
+  padding: 0 0.75rem;
+}
+
 .drop-zone {
   border: 2px dashed var(--surface-border);
   border-radius: 1rem;

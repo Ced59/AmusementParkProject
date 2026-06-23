@@ -6,7 +6,7 @@ namespace AmusementPark.Core.Domain.Images;
 public enum ImageCategory
 {
     Avatar = 0,
-    ParkLogo = 1,
+    Logo = 1,
     Park = 2,
     ParkItem = 3,
     [Obsolete("Use ParkItem.")]

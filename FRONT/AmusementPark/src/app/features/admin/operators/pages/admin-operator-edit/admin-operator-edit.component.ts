@@ -44,7 +44,8 @@ export class AdminOperatorEditComponent implements OnInit {
   currentLang: string = 'en';
 
   protected readonly imageOwnerType: ImageOwnerType = ImageOwnerType.PARK_OPERATOR;
-  protected readonly imageCategory: ImageCategory = ImageCategory.OPERATOR;
+  protected readonly imageCategory: ImageCategory = ImageCategory.LOGO;
+  protected readonly imageCategoryOptions: ImageCategory[] = [ImageCategory.LOGO, ImageCategory.OPERATOR];
 
   constructor(
     private readonly fb: FormBuilder,

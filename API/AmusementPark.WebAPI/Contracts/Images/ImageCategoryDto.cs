@@ -9,7 +9,7 @@ namespace AmusementPark.WebAPI.Contracts.Images;
 public enum ImageCategoryDto
 {
     AVATAR = 0,
-    PARK_LOGO = 1,
+    LOGO = 1,
     PARK = 2,
     PARK_ITEM = 3,
     OPERATOR = 4,

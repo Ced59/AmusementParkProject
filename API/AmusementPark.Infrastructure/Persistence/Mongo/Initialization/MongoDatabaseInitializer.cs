@@ -55,6 +55,7 @@ public sealed partial class MongoDatabaseInitializer
         await this.InitializeRefreshTokensIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ImagesCollectionName, cancellationToken);
+        await this.BackfillLegacyImageCategoriesAsync(cancellationToken);
         await this.InitializeImagesIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ImageTagsCollectionName, cancellationToken);

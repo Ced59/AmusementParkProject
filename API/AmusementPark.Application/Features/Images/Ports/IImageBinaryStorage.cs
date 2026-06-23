@@ -24,6 +24,11 @@ public interface IImageBinaryStorage
         CancellationToken cancellationToken);
 
     /// <summary>
+    /// RecrÃ©e les variantes d'une image existante avec le watermark applicatif.
+    /// </summary>
+    Task<bool> ApplyWatermarkAsync(string pathWithoutExtension, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Supprime toutes les variantes connues d'une image.
     /// </summary>
     Task DeleteAsync(string pathWithoutExtension, CancellationToken cancellationToken);

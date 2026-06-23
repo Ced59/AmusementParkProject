@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
@@ -609,7 +609,7 @@ public sealed class ParkGraphUpsertProcessorTests
             {
               "sourceUrl": "https://cdn.example.test/logo.webp",
               "ownerKey": "park",
-              "category": "ParkLogo",
+              "category": "Logo",
               "withWatermark": true
             }
           ]
@@ -632,7 +632,7 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Equal("Created", imageChange.ChangeType);
         Assert.Contains(imageChange.Fields, field => field.Field == "sourceUrl" && field.NewValue == "https://cdn.example.test/logo.webp");
         Assert.Contains(imageChange.Fields, field => field.Field == "ownerType" && field.NewValue == "Park");
-        Assert.Contains(imageChange.Fields, field => field.Field == "category" && field.NewValue == "ParkLogo");
+        Assert.Contains(imageChange.Fields, field => field.Field == "category" && field.NewValue == "Logo");
         Assert.Contains(imageChange.Fields, field => field.Field == "withWatermark" && field.NewValue == "false");
         remoteImageImporter.VerifyNoOtherCalls();
         parkRepository.VerifyAll();
@@ -746,7 +746,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Id = "image-1",
             OwnerType = ImageOwnerType.AttractionManufacturer,
             OwnerId = "manufacturer-1",
-            Category = ImageCategory.Manufacturer,
+            Category = ImageCategory.Logo,
             SourceUrl = "https://cdn.example.test/logo.png",
         };
         Image currentImage = new Image
@@ -754,7 +754,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Id = "image-1",
             OwnerType = ImageOwnerType.AttractionManufacturer,
             OwnerId = "manufacturer-1",
-            Category = ImageCategory.Manufacturer,
+            Category = ImageCategory.Logo,
             SourceUrl = "https://cdn.example.test/logo.png",
             IsCurrent = true,
         };
@@ -765,7 +765,7 @@ public sealed class ParkGraphUpsertProcessorTests
                 It.Is<RemoteImageImportRequest>(request =>
                     request.OwnerType == ImageOwnerType.AttractionManufacturer
                     && request.OwnerId == "manufacturer-1"
-                    && request.Category == ImageCategory.Manufacturer
+                    && request.Category == ImageCategory.Logo
                     && request.WithWatermark == false
                     && request.SetAsCurrent == false),
                 It.IsAny<CancellationToken>()))
@@ -774,6 +774,9 @@ public sealed class ParkGraphUpsertProcessorTests
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         imageRepository
             .Setup(value => value.SetCurrentAsync("image-1", ImageOwnerType.AttractionManufacturer, "manufacturer-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(currentImage);
+        imageRepository
+            .Setup(value => value.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, "manufacturer-1", ImageCategory.Logo, It.IsAny<CancellationToken>()))
             .ReturnsAsync(currentImage);
 
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
@@ -816,7 +819,7 @@ public sealed class ParkGraphUpsertProcessorTests
             {
               "sourceUrl": "https://cdn.example.test/logo.png",
               "ownerKey": "manufacturer:mack-rides",
-              "category": "Manufacturer",
+              "category": "Logo",
               "setAsCurrent": true,
               "withWatermark": false
             }
@@ -846,7 +849,7 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
-    public async Task ApplyAsync_WhenRemoteParkLogoIsProvided_ShouldImportAndSetCurrent()
+    public async Task ApplyAsync_WhenRemoteLogoIsProvided_ShouldImportAndSetCurrent()
     {
         Park park = new Park
         {
@@ -862,7 +865,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Id = "image-remote-1",
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
-            Category = ImageCategory.ParkLogo,
+            Category = ImageCategory.Logo,
             SourceUrl = "https://cdn.example.test/logo.webp",
             IsPublished = true,
         };
@@ -872,7 +875,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Id = "image-remote-1",
             OwnerType = ImageOwnerType.Park,
             OwnerId = "park-1",
-            Category = ImageCategory.ParkLogo,
+            Category = ImageCategory.Logo,
             SourceUrl = "https://cdn.example.test/logo.webp",
             IsPublished = true,
             IsCurrent = true,
@@ -890,6 +893,9 @@ public sealed class ParkGraphUpsertProcessorTests
         imageRepository
             .Setup(value => value.SetCurrentAsync("image-remote-1", ImageOwnerType.Park, "park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(currentImage);
+        imageRepository
+            .Setup(value => value.GetCurrentByOwnerAsync(ImageOwnerType.Park, "park-1", ImageCategory.Logo, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(currentImage);
 
         Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
         remoteImageImporter
@@ -898,7 +904,7 @@ public sealed class ParkGraphUpsertProcessorTests
                     request.SourceUrl == "https://cdn.example.test/logo.webp"
                     && request.OwnerType == ImageOwnerType.Park
                     && request.OwnerId == "park-1"
-                    && request.Category == ImageCategory.ParkLogo
+                    && request.Category == ImageCategory.Logo
                     && request.WithWatermark == false
                     && request.SetAsCurrent == false),
                 It.IsAny<CancellationToken>()))
@@ -940,7 +946,7 @@ public sealed class ParkGraphUpsertProcessorTests
             {
               "sourceUrl": "https://cdn.example.test/logo.webp",
               "ownerKey": "park",
-              "category": "ParkLogo"
+              "category": "Logo"
             }
           ]
         }

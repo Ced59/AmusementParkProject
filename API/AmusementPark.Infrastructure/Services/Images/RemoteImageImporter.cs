@@ -205,10 +205,7 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
 
     private static bool IsLogoCategory(ImageCategory category)
     {
-        return category is ImageCategory.ParkLogo
-            or ImageCategory.Operator
-            or ImageCategory.Manufacturer
-            or ImageCategory.Founder;
+        return category is ImageCategory.Logo;
     }
 
     private static void ApplyBrowserLikeHeaders(HttpRequestMessage request, Uri currentUri)
@@ -412,7 +409,7 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
         return category switch
         {
             ImageCategory.Avatar => "avatar",
-            ImageCategory.ParkLogo => "park_logo",
+            ImageCategory.Logo => "logo",
             ImageCategory.Park => "park",
             ImageCategory.ParkItem => "park_item",
             ImageCategory.Operator => "operator",

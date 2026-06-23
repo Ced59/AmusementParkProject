@@ -11,6 +11,7 @@ export interface AttractionManufacturer {
   contactDetails?: ParkReferenceContactDetails | null;
   biography?: LocalizedItem<string>[];
   currentLogoImageId?: string | null;
+  mainImageId?: string | null;
   isVisible?: boolean;
   attractionCount?: number;
   adminReviewStatus?: AdminReviewStatus;

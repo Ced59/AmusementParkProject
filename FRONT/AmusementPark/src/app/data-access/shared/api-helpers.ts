@@ -19,7 +19,7 @@ const IMAGE_OWNER_TYPE_API_VALUES: ReadonlyMap<ImageOwnerType, number> = new Map
 
 const IMAGE_CATEGORY_API_VALUES: ReadonlyMap<ImageCategory, number> = new Map<ImageCategory, number>([
   [ImageCategory.AVATAR, 0],
-  [ImageCategory.PARK_LOGO, 1],
+  [ImageCategory.LOGO, 1],
   [ImageCategory.PARK, 2],
   [ImageCategory.PARK_ITEM, 3],
   [ImageCategory.OPERATOR, 4],

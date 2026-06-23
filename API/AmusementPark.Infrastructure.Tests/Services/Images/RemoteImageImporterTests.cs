@@ -1,4 +1,4 @@
-using System.Net;
+﻿using System.Net;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
@@ -87,12 +87,12 @@ public sealed class RemoteImageImporterTests
     [Theory]
     [InlineData(ImageCategory.Park, true, true)]
     [InlineData(ImageCategory.Park, false, false)]
-    [InlineData(ImageCategory.ParkLogo, true, false)]
-    [InlineData(ImageCategory.ParkLogo, false, false)]
-    [InlineData(ImageCategory.Manufacturer, true, false)]
-    [InlineData(ImageCategory.Operator, true, false)]
-    [InlineData(ImageCategory.Founder, true, false)]
-    public void ShouldApplyWatermark_ShouldNeverApplyToLogoCategories(ImageCategory category, bool requestedWithWatermark, bool expected)
+    [InlineData(ImageCategory.Logo, true, false)]
+    [InlineData(ImageCategory.Logo, false, false)]
+    [InlineData(ImageCategory.Manufacturer, true, true)]
+    [InlineData(ImageCategory.Operator, true, true)]
+    [InlineData(ImageCategory.Founder, true, true)]
+    public void ShouldApplyWatermark_ShouldOnlyBlockLogoCategories(ImageCategory category, bool requestedWithWatermark, bool expected)
     {
         bool result = RemoteImageImporter.ShouldApplyWatermark(category, requestedWithWatermark);
 

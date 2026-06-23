@@ -148,7 +148,7 @@ describe('api helpers', () => {
 
   it('maps image categories to API numeric values with default fallback', () => {
     expect(toImageCategoryApiValue(ImageCategory.AVATAR)).toBe(0);
-    expect(toImageCategoryApiValue(ImageCategory.PARK_LOGO)).toBe(1);
+    expect(toImageCategoryApiValue(ImageCategory.LOGO)).toBe(1);
     expect(toImageCategoryApiValue(ImageCategory.PARK_ITEM)).toBe(3);
     expect(toImageCategoryApiValue(ImageCategory.FOUNDER)).toBe(6);
     expect(toImageCategoryApiValue(ImageCategory.VIDEO_THUMBNAIL)).toBe(7);

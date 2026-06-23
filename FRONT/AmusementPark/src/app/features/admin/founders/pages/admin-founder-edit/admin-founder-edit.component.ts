@@ -42,7 +42,8 @@ export class AdminFounderEditComponent implements OnInit {
   currentLang: string = 'en';
 
   protected readonly imageOwnerType: ImageOwnerType = ImageOwnerType.PARK_FOUNDER;
-  protected readonly imageCategory: ImageCategory = ImageCategory.FOUNDER;
+  protected readonly imageCategory: ImageCategory = ImageCategory.LOGO;
+  protected readonly imageCategoryOptions: ImageCategory[] = [ImageCategory.LOGO, ImageCategory.FOUNDER];
 
   constructor(
     private readonly fb: FormBuilder,

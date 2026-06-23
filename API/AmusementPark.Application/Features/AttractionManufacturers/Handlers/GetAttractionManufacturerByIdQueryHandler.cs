@@ -3,7 +3,9 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Queries;
 using AmusementPark.Application.Features.AttractionManufacturers.Results;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Core.Domain.Images;
 
 namespace AmusementPark.Application.Features.AttractionManufacturers.Handlers;
 
@@ -14,14 +16,16 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
 {
     private readonly IAttractionManufacturerRepository repository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly IImageRepository imageRepository;
 
     /// <summary>
     /// Initialise une nouvelle instance de la classe <see cref="GetAttractionManufacturerByIdQueryHandler"/>.
     /// </summary>
-    public GetAttractionManufacturerByIdQueryHandler(IAttractionManufacturerRepository repository, IParkItemRepository parkItemRepository)
+    public GetAttractionManufacturerByIdQueryHandler(IAttractionManufacturerRepository repository, IParkItemRepository parkItemRepository, IImageRepository imageRepository)
     {
         this.repository = repository;
         this.parkItemRepository = parkItemRepository;
+        this.imageRepository = imageRepository;
     }
 
     /// <inheritdoc />
@@ -40,6 +44,14 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
 
         IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { query.Id }, cancellationToken, includeHidden: false);
         int attractionCount = counts.TryGetValue(query.Id, out int value) ? value : 0;
+        IReadOnlyDictionary<string, string> logoImageIds = await this.imageRepository.GetMainImageIdsByOwnersAsync(ImageOwnerType.AttractionManufacturer, new[] { query.Id }, ImageCategory.Logo, publishedOnly: true, cancellationToken);
+        IReadOnlyDictionary<string, string> manufacturerImageIds = await this.imageRepository.GetMainImageIdsByOwnersAsync(ImageOwnerType.AttractionManufacturer, new[] { query.Id }, ImageCategory.Manufacturer, publishedOnly: true, cancellationToken);
+        string? currentLogoImageId = !string.IsNullOrWhiteSpace(entity.CurrentLogoImageId)
+            ? entity.CurrentLogoImageId
+            : logoImageIds.GetValueOrDefault(query.Id);
+        string? mainImageId = !string.IsNullOrWhiteSpace(currentLogoImageId)
+            ? currentLogoImageId
+            : manufacturerImageIds.GetValueOrDefault(query.Id);
 
         return ApplicationResult<AttractionManufacturerResult>.Success(new AttractionManufacturerResult
         {
@@ -50,7 +62,8 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
             ClosedYear = entity.ClosedYear,
             ContactDetails = entity.ContactDetails,
             Biography = entity.Biography,
-            CurrentLogoImageId = entity.CurrentLogoImageId,
+            CurrentLogoImageId = currentLogoImageId,
+            MainImageId = mainImageId,
             IsVisible = entity.IsVisible,
             AdminReviewStatus = entity.AdminReviewStatus,
             AttractionCount = attractionCount,

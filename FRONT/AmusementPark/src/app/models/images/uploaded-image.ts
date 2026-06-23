@@ -8,5 +8,6 @@ export interface UploadedImage {
   width?: number;
   height?: number;
   sizeInBytes?: number;
+  isWatermarked?: boolean;
   savedListFile?: string[];
 }

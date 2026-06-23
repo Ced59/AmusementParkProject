@@ -5,8 +5,10 @@ using AmusementPark.Application.Features.AttractionManufacturers.Handlers;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Queries;
 using AmusementPark.Application.Features.AttractionManufacturers.Results;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Validation;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
 using Xunit;
@@ -20,6 +22,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
     {
         Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         List<AttractionManufacturer> manufacturers = new List<AttractionManufacturer>
         {
             CreateManufacturer("mack", "Mack Rides"),
@@ -40,9 +43,12 @@ public sealed class AttractionManufacturerQueryHandlerTests
                 ["mack"] = 3,
             });
 
+        SetupManufacturerImages(imageRepository, new[] { "mack", "vekoma" }, new Dictionary<string, string> { ["mack"] = "logo-mack" });
+
         GetAttractionManufacturersQueryHandler handler = new GetAttractionManufacturersQueryHandler(
             manufacturerRepository.Object,
             parkItemRepository.Object,
+            imageRepository.Object,
             new PagedQueryValidator());
 
         ApplicationResult<PagedResult<AttractionManufacturerResult>> result = await handler.HandleAsync(
@@ -55,9 +61,11 @@ public sealed class AttractionManufacturerQueryHandlerTests
         Assert.Equal(30, page.TotalItems);
         Assert.Equal(new[] { "Mack Rides", "Vekoma" }, page.Items.Select(static item => item.Name).ToArray());
         Assert.Equal(new[] { 3, 0 }, page.Items.Select(static item => item.AttractionCount).ToArray());
+        Assert.Equal("logo-mack", page.Items.First().MainImageId);
 
         manufacturerRepository.VerifyAll();
         parkItemRepository.VerifyAll();
+        imageRepository.VerifyAll();
     }
 
     [Fact]
@@ -65,9 +73,11 @@ public sealed class AttractionManufacturerQueryHandlerTests
     {
         Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         GetAttractionManufacturersQueryHandler handler = new GetAttractionManufacturersQueryHandler(
             manufacturerRepository.Object,
             parkItemRepository.Object,
+            imageRepository.Object,
             new PagedQueryValidator());
 
         ApplicationResult<PagedResult<AttractionManufacturerResult>> result = await handler.HandleAsync(
@@ -77,6 +87,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
         Assert.Contains(result.Errors, static error => error.Code == "validation.pagination.invalid");
         manufacturerRepository.VerifyNoOtherCalls();
         parkItemRepository.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -84,6 +95,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
     {
         Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
 
         manufacturerRepository
             .Setup(repository => repository.GetByIdAsync("mack", It.IsAny<CancellationToken>()))
@@ -99,16 +111,21 @@ public sealed class AttractionManufacturerQueryHandlerTests
                 ["mack"] = 7,
             });
 
+        SetupManufacturerImages(imageRepository, new[] { "mack" }, new Dictionary<string, string>(), new Dictionary<string, string> { ["mack"] = "manufacturer-photo" });
+
         GetAttractionManufacturerByIdQueryHandler handler = new GetAttractionManufacturerByIdQueryHandler(
             manufacturerRepository.Object,
-            parkItemRepository.Object);
+            parkItemRepository.Object,
+            imageRepository.Object);
 
         ApplicationResult<AttractionManufacturerResult> result = await handler.HandleAsync(new GetAttractionManufacturerByIdQuery("mack"));
 
         Assert.True(result.IsSuccess);
         Assert.Equal(7, result.Value?.AttractionCount);
+        Assert.Equal("manufacturer-photo", result.Value?.MainImageId);
         manufacturerRepository.VerifyAll();
         parkItemRepository.VerifyAll();
+        imageRepository.VerifyAll();
     }
 
     [Fact]
@@ -116,6 +133,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
     {
         Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
 
         manufacturerRepository
             .Setup(repository => repository.GetPageAsync(1, 12, null, true, It.IsAny<CancellationToken>()))
@@ -132,9 +150,12 @@ public sealed class AttractionManufacturerQueryHandlerTests
                 false))
             .ReturnsAsync(new Dictionary<string, int>());
 
+        SetupManufacturerImages(imageRepository, new[] { "hidden" });
+
         GetAttractionManufacturersQueryHandler handler = new GetAttractionManufacturersQueryHandler(
             manufacturerRepository.Object,
             parkItemRepository.Object,
+            imageRepository.Object,
             new PagedQueryValidator());
 
         ApplicationResult<PagedResult<AttractionManufacturerResult>> result = await handler.HandleAsync(
@@ -145,6 +166,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
         Assert.False(manufacturer.IsVisible);
         manufacturerRepository.VerifyAll();
         parkItemRepository.VerifyAll();
+        imageRepository.VerifyAll();
     }
 
     [Fact]
@@ -152,6 +174,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
     {
         Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
 
         manufacturerRepository
             .Setup(repository => repository.GetByIdAsync("hidden", It.IsAny<CancellationToken>()))
@@ -159,7 +182,8 @@ public sealed class AttractionManufacturerQueryHandlerTests
 
         GetAttractionManufacturerByIdQueryHandler handler = new GetAttractionManufacturerByIdQueryHandler(
             manufacturerRepository.Object,
-            parkItemRepository.Object);
+            parkItemRepository.Object,
+            imageRepository.Object);
 
         ApplicationResult<AttractionManufacturerResult> result = await handler.HandleAsync(new GetAttractionManufacturerByIdQuery("hidden"));
 
@@ -167,6 +191,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
         Assert.Contains(result.Errors, static error => error.Code == "attraction-manufacturer.not-found");
         manufacturerRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -174,6 +199,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
     {
         Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
 
         manufacturerRepository
             .Setup(repository => repository.GetByIdAsync("hidden", It.IsAny<CancellationToken>()))
@@ -186,9 +212,12 @@ public sealed class AttractionManufacturerQueryHandlerTests
                 false))
             .ReturnsAsync(new Dictionary<string, int>());
 
+        SetupManufacturerImages(imageRepository, new[] { "hidden" });
+
         GetAttractionManufacturerByIdQueryHandler handler = new GetAttractionManufacturerByIdQueryHandler(
             manufacturerRepository.Object,
-            parkItemRepository.Object);
+            parkItemRepository.Object,
+            imageRepository.Object);
 
         ApplicationResult<AttractionManufacturerResult> result = await handler.HandleAsync(new GetAttractionManufacturerByIdQuery("hidden", IncludeHidden: true));
 
@@ -196,6 +225,7 @@ public sealed class AttractionManufacturerQueryHandlerTests
         Assert.False(result.Value?.IsVisible);
         manufacturerRepository.VerifyAll();
         parkItemRepository.VerifyAll();
+        imageRepository.VerifyAll();
     }
 
     private static AttractionManufacturer CreateManufacturer(string id, string name, bool isVisible = true)
@@ -207,5 +237,31 @@ public sealed class AttractionManufacturerQueryHandlerTests
             IsVisible = isVisible,
             AdminReviewStatus = AdminReviewStatus.Validated,
         };
+    }
+
+    private static void SetupManufacturerImages(
+        Mock<IImageRepository> imageRepository,
+        IEnumerable<string> expectedIds,
+        IReadOnlyDictionary<string, string>? logoImageIds = null,
+        IReadOnlyDictionary<string, string>? manufacturerImageIds = null)
+    {
+        string[] expectedIdArray = expectedIds.ToArray();
+        imageRepository
+            .Setup(repository => repository.GetMainImageIdsByOwnersAsync(
+                ImageOwnerType.AttractionManufacturer,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(expectedIdArray)),
+                ImageCategory.Logo,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(logoImageIds ?? new Dictionary<string, string>());
+
+        imageRepository
+            .Setup(repository => repository.GetMainImageIdsByOwnersAsync(
+                ImageOwnerType.AttractionManufacturer,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(expectedIdArray)),
+                ImageCategory.Manufacturer,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(manufacturerImageIds ?? new Dictionary<string, string>());
     }
 }

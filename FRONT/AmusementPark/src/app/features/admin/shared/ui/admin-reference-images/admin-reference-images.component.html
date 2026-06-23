@@ -39,6 +39,7 @@
       </app-image-display>
       <div class="admin-reference-images__meta">
         <strong>{{ image.description || image.originalFileName || ('admin.references.images.untitled' | translate) }}</strong>
+        <span class="admin-reference-images__category">{{ ('images.categories.' + image.category) | translate }}</span>
         <button
           pButton
           type="button"
@@ -57,8 +58,10 @@
   [ownerId]="ownerId || ''"
   [ownerType]="ownerType"
   [category]="category"
-  [withWatermark]="category !== ImageCategory.PARK_LOGO && ownerType !== ImageOwnerType.ATTRACTION_MANUFACTURER"
-  [allowWatermarkChoice]="category !== ImageCategory.PARK_LOGO && ownerType !== ImageOwnerType.ATTRACTION_MANUFACTURER"
+  [categoryOptions]="uploadCategoryOptions"
+  [showCategoryChoice]="uploadCategoryOptions.length > 1"
+  [withWatermark]="category !== ImageCategory.LOGO"
+  [allowWatermarkChoice]="true"
   [showDescription]="true"
   [allowRemoteImport]="true"
   titleKey="admin.references.images.uploadTitle"

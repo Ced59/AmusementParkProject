@@ -9,6 +9,7 @@ import { AttractionManufacturer } from '@app/models/parks/attraction-manufacture
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PaginationContract } from '@shared/models/contracts';
 import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/localized-text.helpers';
 import { buildPublicParkReferenceRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
@@ -25,6 +26,7 @@ import { PublicManufacturerGroup, PublicManufacturersStateFacade } from '../stat
   imports: [
     RouterLink,
     TranslateModule,
+    ImageDisplayComponent,
     PaginationComponent,
     UiButtonDirective,
     UiKickerComponent,
@@ -140,6 +142,10 @@ export class ManufacturersPageComponent implements OnInit {
     } catch {
       return websiteUrl.replace(/^https?:\/\//i, '').replace(/^www\./i, '').split('/')[0] || websiteUrl;
     }
+  }
+
+  protected manufacturerImageId(manufacturer: AttractionManufacturer): string | null {
+    return manufacturer.mainImageId ?? manufacturer.currentLogoImageId ?? null;
   }
 
   private watchRouteLanguageChanges(): void {

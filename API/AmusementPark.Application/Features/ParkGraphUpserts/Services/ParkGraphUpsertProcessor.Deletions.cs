@@ -207,7 +207,7 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
-        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.ParkLogo)
+        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo)
         {
             Park? ownerPark = string.Equals(image.OwnerId, targetPark.Id, StringComparison.Ordinal)
                 ? targetPark
@@ -217,13 +217,13 @@ public sealed partial class ParkGraphUpsertProcessor
                 return;
             }
 
-            Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, image.OwnerId, ImageCategory.ParkLogo, cancellationToken);
+            Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.Park, image.OwnerId, ImageCategory.Logo, cancellationToken);
             ownerPark.CurrentLogoImageId = currentLogo?.Id;
             await this.parkRepository.UpdateAsync(ownerPark.Id, ownerPark, cancellationToken);
             return;
         }
 
-        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer)
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Logo)
         {
             AttractionManufacturer? manufacturer = await this.attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
             if (manufacturer is null)
@@ -231,7 +231,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 return;
             }
 
-            Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, image.OwnerId, ImageCategory.Manufacturer, cancellationToken);
+            Image? currentLogo = await this.imageRepository.GetCurrentByOwnerAsync(ImageOwnerType.AttractionManufacturer, image.OwnerId, ImageCategory.Logo, cancellationToken);
             manufacturer.CurrentLogoImageId = currentLogo?.Id;
             await this.attractionManufacturerRepository.UpdateAsync(manufacturer.Id, manufacturer, cancellationToken);
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, manufacturer.Id, cancellationToken);

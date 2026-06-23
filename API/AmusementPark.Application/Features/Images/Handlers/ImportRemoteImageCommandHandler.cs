@@ -118,10 +118,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
 
     private static bool IsLogoCategory(ImageCategory category)
     {
-        return category is ImageCategory.ParkLogo
-            or ImageCategory.Operator
-            or ImageCategory.Manufacturer
-            or ImageCategory.Founder;
+        return category is ImageCategory.Logo;
     }
 
     private static string? Normalize(string? value)
@@ -150,7 +147,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
             return;
         }
 
-        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.ParkLogo && !string.IsNullOrWhiteSpace(image.OwnerId))
+        if (image.OwnerType == ImageOwnerType.Park && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             Park? park = await parkRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
             if (park is not null)
@@ -162,7 +159,7 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
             return;
         }
 
-        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Manufacturer && !string.IsNullOrWhiteSpace(image.OwnerId))
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer && image.Category == ImageCategory.Logo && !string.IsNullOrWhiteSpace(image.OwnerId))
         {
             AttractionManufacturer? manufacturer = await attractionManufacturerRepository.GetByIdAsync(image.OwnerId, cancellationToken);
             if (manufacturer is not null)

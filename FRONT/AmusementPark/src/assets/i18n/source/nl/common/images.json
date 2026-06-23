@@ -1,16 +1,24 @@
 {
   "images": {
     "categories": {
+      "LOGO": "Logo",
       "AVATAR": "Avatar",
-      "PARK_LOGO": "Parklogo",
       "PARK": "Parkfoto",
-      "PARK_ITEM": "Foto van plek"
+      "PARK_ITEM": "Foto van plek",
+      "OPERATOR": "Exploitantfoto",
+      "MANUFACTURER": "Bouwerfoto",
+      "FOUNDER": "Oprichterfoto",
+      "VIDEO_THUMBNAIL": "Videominiatuur"
     },
     "ownerTypes": {
       "NONE": "Geen",
       "PARK": "Park",
       "USER": "Gebruiker",
-      "PARK_ITEM": "Parkcontentpagina"
+      "PARK_ITEM": "Parkcontentpagina",
+      "PARK_OPERATOR": "Exploitant",
+      "ATTRACTION_MANUFACTURER": "Bouwer",
+      "PARK_FOUNDER": "Oprichter",
+      "VIDEO": "Video"
     }
   }
 }

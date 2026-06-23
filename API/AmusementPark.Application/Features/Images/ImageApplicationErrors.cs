@@ -57,6 +57,21 @@ internal static class ImageApplicationErrors
         return ApplicationError.Technical("image.delete.failed", "Error while deleting image.");
     }
 
+    public static ApplicationError ErrorApplyingWatermark()
+    {
+        return ApplicationError.Technical("image.watermark.failed", "Error while applying image watermark.");
+    }
+
+    public static ApplicationError ImageWatermarkNotAllowed()
+    {
+        return ApplicationError.Validation("image.watermark.not-allowed", "Watermark cannot be applied to this image.");
+    }
+
+    public static ApplicationError ImageBinaryNotFound()
+    {
+        return ApplicationError.NotFound("image.binary-not-found", "Image binary does not exist.");
+    }
+
     public static ApplicationError ImageTagAlreadyExists(string slug)
     {
         return ApplicationError.Conflict("image-tag.already-exists", $"Image tag '{slug}' already exists.");

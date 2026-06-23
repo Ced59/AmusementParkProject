@@ -210,6 +210,7 @@ function createImage(id: string): ImageDto {
     path: `items/${id}.jpg`,
     description: 'Taron main image',
     isCurrent: true,
+    isWatermarked: false,
     isPublished: true,
     width: 1200,
     height: 800,

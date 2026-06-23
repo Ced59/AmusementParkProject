@@ -64,7 +64,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         inputCopy.Position = 0;
 
         await using MemoryStream workingStream = withWatermark
-            ? await ApplyWatermarkAsync(inputCopy, cancellationToken)
+            ? await ApplyWatermarkToStreamAsync(inputCopy, cancellationToken)
             : new MemoryStream(inputCopy.ToArray());
 
         workingStream.Position = 0;
@@ -91,6 +91,58 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         }
 
         return savedFiles;
+    }
+
+    public async Task<bool> ApplyWatermarkAsync(string pathWithoutExtension, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(pathWithoutExtension))
+        {
+            return false;
+        }
+
+        await EnsureBucketExistsAsync(cancellationToken);
+
+        (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(pathWithoutExtension, cancellationToken);
+        if (source is null)
+        {
+            return false;
+        }
+
+        try
+        {
+            await using Stream sourceStream = source.Value.Stream;
+            await using MemoryStream watermarkedStream = await ApplyWatermarkToStreamAsync(sourceStream, cancellationToken);
+            using Image image = await Image.LoadAsync(watermarkedStream, cancellationToken);
+            ResizeInPlaceIfNeeded(image);
+
+            foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetFormats())
+            {
+                byte[] content = await EncodeWithSizeLimitAsync(image, format.encoderFactory, cancellationToken);
+                string objectName = $"{pathWithoutExtension}.{format.extension}";
+
+                await using MemoryStream objectStream = new MemoryStream(content);
+                await this.minioClient.PutObjectAsync(
+                    new PutObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(objectName)
+                        .WithStreamData(objectStream)
+                        .WithObjectSize(objectStream.Length)
+                        .WithContentType(format.contentType),
+                    cancellationToken);
+            }
+
+            await this.DeleteResponsiveVariantsAsync(pathWithoutExtension, cancellationToken);
+            return true;
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogWarning(exception, "Unable to apply watermark to image {PathWithoutExtension} in MinIO bucket {Bucket}.", pathWithoutExtension, this.settings.Bucket);
+            return false;
+        }
     }
 
     public async Task<(Stream Stream, string ContentType)?> GetBestAsync(string pathWithoutExtension, string? acceptHeader, int? width, CancellationToken cancellationToken)
@@ -282,6 +334,32 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         }
     }
 
+    private async Task DeleteResponsiveVariantsAsync(string pathWithoutExtension, CancellationToken cancellationToken)
+    {
+        foreach (string objectName in GetResponsiveObjectNamesForDeletion(pathWithoutExtension))
+        {
+            try
+            {
+                await this.minioClient.RemoveObjectAsync(
+                    new RemoveObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(objectName),
+                    cancellationToken);
+            }
+            catch (Minio.Exceptions.ObjectNotFoundException)
+            {
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogWarning(exception, "Unable to delete responsive image object {ObjectName} from MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
+            }
+        }
+    }
+
     internal static IEnumerable<string> GetObjectNamesForDeletion(string pathWithoutExtension)
     {
         yield return $"{pathWithoutExtension}.webp";
@@ -289,6 +367,17 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         yield return $"{pathWithoutExtension}.jpeg";
         yield return $"{pathWithoutExtension}.png";
 
+        foreach (int width in ResponsiveWidths)
+        {
+            yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.webp";
+            yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
+            yield return $"{pathWithoutExtension}.w{width}.webp";
+            yield return $"{pathWithoutExtension}.w{width}.jpg";
+        }
+    }
+
+    private static IEnumerable<string> GetResponsiveObjectNamesForDeletion(string pathWithoutExtension)
+    {
         foreach (int width in ResponsiveWidths)
         {
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.webp";
@@ -431,7 +520,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         return lastAttempt ?? Array.Empty<byte>();
     }
 
-    private async Task<MemoryStream> ApplyWatermarkAsync(Stream imageStream, CancellationToken cancellationToken)
+    private async Task<MemoryStream> ApplyWatermarkToStreamAsync(Stream imageStream, CancellationToken cancellationToken)
     {
         if (imageStream.CanSeek)
         {

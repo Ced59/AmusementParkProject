@@ -243,6 +243,7 @@ function createImageDto(partial: Partial<ImageDto>): ImageDto {
     ownerType: partial.ownerType ?? ImageOwnerType.PARK,
     ownerId: partial.ownerId ?? 'park-1',
     isCurrent: partial.isCurrent ?? false,
+    isWatermarked: partial.isWatermarked ?? false,
     isPublished: partial.isPublished ?? true,
     width: partial.width ?? 1024,
     height: partial.height ?? 768,

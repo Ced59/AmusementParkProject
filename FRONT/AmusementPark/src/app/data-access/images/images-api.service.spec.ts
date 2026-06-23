@@ -24,7 +24,7 @@ describe('ImagesApiService', () => {
   it('uploads images through form data with mapped category and optional description', () => {
     const file: File = new File(['content'], 'park.png', { type: 'image/png' });
 
-    service.uploadImage(file, ImageCategory.PARK_LOGO, false, 'Logo').subscribe();
+    service.uploadImage(file, ImageCategory.LOGO, false, 'Logo').subscribe();
 
     const request = httpTestingController.expectOne(`${environment.apiBaseUrl}images`);
     expect(request.request.method).toBe('POST');
@@ -37,7 +37,7 @@ describe('ImagesApiService', () => {
   });
 
   it('links images with mapped owner type', () => {
-    service.linkImage({ imageId: 'img-1', ownerType: ImageOwnerType.PARK, ownerId: 'park-1', category: ImageCategory.PARK_LOGO } as never).subscribe();
+    service.linkImage({ imageId: 'img-1', ownerType: ImageOwnerType.PARK, ownerId: 'park-1', category: ImageCategory.LOGO } as never).subscribe();
 
     const request = httpTestingController.expectOne(`${environment.apiBaseUrl}images/links`);
     expect(request.request.method).toBe('POST');
@@ -48,7 +48,7 @@ describe('ImagesApiService', () => {
   it('imports remote images with mapped owner type and category', () => {
     service.importRemoteImage({
       sourceUrl: 'https://cdn.example.test/logo.webp',
-      category: ImageCategory.PARK_LOGO,
+      category: ImageCategory.LOGO,
       ownerType: ImageOwnerType.PARK,
       ownerId: 'park-1',
       withWatermark: false,

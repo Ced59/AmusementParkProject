@@ -87,7 +87,7 @@
 
         <label class="admin-field">
           <span class="admin-field-label">{{ 'admin.images.publication' | translate }}</span>
-          <select [ngModel]="query().isPublished === null ? '' : query().isPublished" (ngModelChange)="updatePublishedFilter($event)">
+          <select [ngModel]="booleanFilterValue(query().isPublished)" (ngModelChange)="updatePublishedFilter($event)">
             <option value="">{{ 'admin.images.allPublicationStates' | translate }}</option>
             <option value="true">{{ 'admin.images.published' | translate }}</option>
             <option value="false">{{ 'admin.images.hidden' | translate }}</option>
@@ -96,7 +96,7 @@
 
         <label class="admin-field">
           <span class="admin-field-label">{{ 'admin.images.ownership' | translate }}</span>
-          <select [ngModel]="query().hasOwner === null ? '' : query().hasOwner" (ngModelChange)="updateHasOwnerFilter($event)">
+          <select [ngModel]="booleanFilterValue(query().hasOwner)" (ngModelChange)="updateHasOwnerFilter($event)">
             <option value="">{{ 'admin.images.allOwnershipStates' | translate }}</option>
             <option value="true">{{ 'admin.images.linkedOnly' | translate }}</option>
             <option value="false">{{ 'admin.images.orphansOnly' | translate }}</option>
@@ -105,7 +105,7 @@
 
         <label class="admin-field">
           <span class="admin-field-label">{{ 'admin.images.geo' | translate }}</span>
-          <select [ngModel]="query().hasGeoLocation === null ? '' : query().hasGeoLocation" (ngModelChange)="updateHasGeoLocationFilter($event)">
+          <select [ngModel]="booleanFilterValue(query().hasGeoLocation)" (ngModelChange)="updateHasGeoLocationFilter($event)">
             <option value="">{{ 'admin.images.allGeoStates' | translate }}</option>
             <option value="true">{{ 'admin.images.withGeo' | translate }}</option>
             <option value="false">{{ 'admin.images.withoutGeo' | translate }}</option>
@@ -203,6 +203,9 @@
                   <span class="admin-image-badge" [class.admin-image-badge--published]="image.isPublished" [class.admin-image-badge--hidden]="!image.isPublished">
                     {{ (image.isPublished ? 'admin.images.published' : 'admin.images.hidden') | translate }}
                   </span>
+                  <span class="admin-image-badge" [class.admin-image-badge--watermarked]="image.isWatermarked" [class.admin-image-badge--plain]="!image.isWatermarked">
+                    {{ (image.isWatermarked ? 'admin.images.watermarked' : 'admin.images.notWatermarked') | translate }}
+                  </span>
                   @if (image.ownerType !== 'NONE') {
                     <span class="admin-image-badge admin-image-badge--owner">{{ ('images.ownerTypes.' + image.ownerType) | translate }}</span>
                   }
@@ -261,9 +264,60 @@
             <div><dt>{{ 'admin.images.weight' | translate }}</dt><dd>{{ formatBytes(currentImage.sizeInBytes) }}</dd></div>
             <div><dt>{{ 'admin.images.mimeType' | translate }}</dt><dd>{{ currentImage.contentType || '—' }}</dd></div>
             <div><dt>{{ 'admin.images.owner' | translate }}</dt><dd>{{ ('images.ownerTypes.' + currentImage.ownerType) | translate }} · {{ currentImage.ownerId || '—' }}</dd></div>
+            <div><dt>{{ 'admin.images.watermark' | translate }}</dt><dd>{{ (currentImage.isWatermarked ? 'admin.images.watermarked' : 'admin.images.notWatermarked') | translate }}</dd></div>
           </dl>
 
           <div class="admin-image-editor-form">
+            <div class="admin-image-watermark-panel">
+              <div>
+                <span class="admin-field-label">{{ 'admin.images.watermark' | translate }}</span>
+                <strong>{{ (currentImage.isWatermarked ? 'admin.images.watermarked' : 'admin.images.notWatermarked') | translate }}</strong>
+              </div>
+              <button
+                type="button"
+                class="btn btn--ghost btn--sm"
+                [disabled]="!canApplyWatermark(currentImage)"
+                (click)="applyWatermarkToSelectedImage()">
+                <i class="pi pi-image" aria-hidden="true"></i>
+                {{ 'admin.images.applyWatermark' | translate }}
+              </button>
+            </div>
+
+            <div class="admin-images-two-columns">
+              <label class="admin-field">
+                <span class="admin-field-label">{{ 'admin.images.category' | translate }}</span>
+                <select [ngModel]="currentImage.category" (ngModelChange)="updateSelectedImageCategory($event)">
+                  @for (category of categories; track category) {
+                    <option [value]="category">{{ ('images.categories.' + category) | translate }}</option>
+                  }
+                </select>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field-label">{{ 'admin.images.ownerType' | translate }}</span>
+                <select [ngModel]="currentImage.ownerType" (ngModelChange)="updateSelectedImageOwnerType($event)">
+                  @for (ownerType of ownerTypes; track ownerType) {
+                    <option [value]="ownerType">{{ ('images.ownerTypes.' + ownerType) | translate }}</option>
+                  }
+                </select>
+              </label>
+            </div>
+
+            <label class="admin-field">
+              <span class="admin-field-label">{{ 'admin.images.ownerId' | translate }}</span>
+              <input
+                type="text"
+                [ngModel]="currentImage.ownerId || ''"
+                (ngModelChange)="updateSelectedImageOwnerId($event)"
+                [disabled]="currentImage.ownerType === 'NONE'"
+                [placeholder]="'admin.images.ownerIdPlaceholder' | translate">
+            </label>
+
+            <label class="admin-field">
+              <span class="admin-field-label">{{ 'admin.images.sourceUrl' | translate }}</span>
+              <input type="url" [ngModel]="currentImage.sourceUrl || ''" (ngModelChange)="updateSelectedImageSourceUrl($event)">
+            </label>
+
             <label class="admin-field">
               <span class="admin-field-label">{{ 'admin.images.description' | translate }}</span>
               <textarea [ngModel]="currentImage.description || ''" (ngModelChange)="updateSelectedImageDescription($event)"></textarea>
@@ -272,6 +326,15 @@
             <label class="admin-image-switch">
               <input type="checkbox" [ngModel]="currentImage.isPublished" (ngModelChange)="updateSelectedImagePublished($event)">
               <span>{{ 'admin.images.isPublished' | translate }}</span>
+            </label>
+
+            <label class="admin-image-switch">
+              <input
+                type="checkbox"
+                [ngModel]="currentImage.isCurrent"
+                (ngModelChange)="updateSelectedImageCurrent($event)"
+                [disabled]="currentImage.ownerType === 'NONE' || !currentImage.ownerId">
+              <span>{{ 'admin.images.isCurrent' | translate }}</span>
             </label>
 
             <div class="admin-images-two-columns">
