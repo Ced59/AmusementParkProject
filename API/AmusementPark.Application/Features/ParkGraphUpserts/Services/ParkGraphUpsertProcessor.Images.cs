@@ -271,6 +271,16 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
+        Image? duplicateImage = await this.imageRepository.GetByOwnerAndSourceUrlAsync(resolvedOwnerType, resolvedOwnerId, sourceUrl, cancellationToken);
+        if (duplicateImage is not null)
+        {
+            result.Warnings.Add($"Remote image skipped: sourceUrl already exists for {resolvedOwnerType} '{resolvedOwnerId}' as image '{duplicateImage.Id}': '{sourceUrl}'.");
+            AddChange(change, "duplicateImageId", null, duplicateImage.Id);
+            change.ChangeType = "Skipped";
+            result.Changes.Add(change);
+            return;
+        }
+
         if (apply)
         {
             RemoteImageImportRequest request = new RemoteImageImportRequest

@@ -354,6 +354,49 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     return Boolean(this.previewResult?.canApply) && !this.isApplying && !this.isPreviewing;
   }
 
+  protected get appliedResultMessageKey(): string | null {
+    const result: ParkGraphUpsertResult | null = this.lastAppliedResult;
+    if (!result) {
+      return null;
+    }
+
+    if (!this.hasResultFailureSignals(result)) {
+      return 'admin.parkGraphUpserts.result.applied';
+    }
+
+    return this.countAppliedMutations(result) > 0
+      ? 'admin.parkGraphUpserts.result.appliedPartial'
+      : 'admin.parkGraphUpserts.result.appliedNoChange';
+  }
+
+  protected get appliedResultMessageParams(): Record<string, number> {
+    const result: ParkGraphUpsertResult | null = this.lastAppliedResult;
+    if (!result) {
+      return { applied: 0, failed: 0 };
+    }
+
+    return {
+      applied: this.countAppliedMutations(result),
+      failed: this.countRejectedEntries(result)
+    };
+  }
+
+  protected get isAppliedResultSuccess(): boolean {
+    return Boolean(this.lastAppliedResult) && !this.hasResultFailureSignals(this.lastAppliedResult);
+  }
+
+  protected get isAppliedResultPartial(): boolean {
+    return Boolean(this.lastAppliedResult)
+      && this.hasResultFailureSignals(this.lastAppliedResult)
+      && this.countAppliedMutations(this.lastAppliedResult) > 0;
+  }
+
+  protected get isAppliedResultRejected(): boolean {
+    return Boolean(this.lastAppliedResult)
+      && this.hasResultFailureSignals(this.lastAppliedResult)
+      && this.countAppliedMutations(this.lastAppliedResult) === 0;
+  }
+
   protected get hasOperationErrors(): boolean {
     return this.collectOperationErrors().length > 0;
   }
@@ -742,12 +785,39 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   }
 
   private notifyApplyResult(result: ParkGraphUpsertResult): void {
-    if (result.errors.length > 0 || result.changes.some((change: ParkGraphUpsertChange): boolean => change.changeType === 'Skipped')) {
+    if (this.hasResultFailureSignals(result) && this.countAppliedMutations(result) > 0) {
       this.showToast('warn', 'admin.parkGraphUpserts.toasts.applyPartialTitle', 'admin.parkGraphUpserts.toasts.applyPartialDetail');
       return;
     }
 
+    if (this.hasResultFailureSignals(result)) {
+      const severity: ToastSeverity = result.errors.length > 0 ? 'error' : 'warn';
+      this.showToast(severity, 'admin.parkGraphUpserts.toasts.applyRejectedTitle', 'admin.parkGraphUpserts.toasts.applyRejectedDetail', { count: this.countRejectedEntries(result) });
+      return;
+    }
+
     this.showToast('success', 'admin.parkGraphUpserts.toasts.applySuccessTitle', 'admin.parkGraphUpserts.toasts.applySuccessDetail');
+  }
+
+  private hasResultFailureSignals(result: ParkGraphUpsertResult | null): boolean {
+    return Boolean(result && (result.errors.length > 0 || result.changes.some((change: ParkGraphUpsertChange): boolean => change.changeType === 'Skipped')));
+  }
+
+  private countAppliedMutations(result: ParkGraphUpsertResult | null): number {
+    if (!result) {
+      return 0;
+    }
+
+    return result.counts.created + result.counts.updated + result.counts.deleted;
+  }
+
+  private countRejectedEntries(result: ParkGraphUpsertResult | null): number {
+    if (!result) {
+      return 0;
+    }
+
+    const skippedChanges: number = result.changes.filter((change: ParkGraphUpsertChange): boolean => change.changeType === 'Skipped').length;
+    return skippedChanges > 0 ? skippedChanges : result.errors.length;
   }
 
   private collectOperationErrors(): string[] {

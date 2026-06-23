@@ -583,6 +583,11 @@ public sealed class ParkGraphUpsertProcessorTests
 
         Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
 
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnerAndSourceUrlAsync(ImageOwnerType.Park, "park-1", "https://cdn.example.test/logo.webp", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Image?)null);
+
         Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
         historyRepository
             .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
@@ -595,7 +600,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
             Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
-            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            imageRepository.Object,
             remoteImageImporter.Object,
             Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
             historyRepository.Object,
@@ -636,6 +641,97 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(imageChange.Fields, field => field.Field == "withWatermark" && field.NewValue == "false");
         remoteImageImporter.VerifyNoOtherCalls();
         parkRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenRemoteImageSourceAlreadyExistsForOwner_ShouldReportSkippedWarning()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Park",
+            CountryCode = "FR",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.ToReview,
+        };
+
+        Image existingImage = new Image
+        {
+            Id = "image-existing-1",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
+            SourceUrl = "https://cdn.example.test/photo.webp",
+            IsPublished = true,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnerAndSourceUrlAsync(ImageOwnerType.Park, "park-1", "https://cdn.example.test/photo.webp", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existingImage);
+
+        Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object,
+            remoteImageImporter.Object,
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "images": [
+            {
+              "sourceUrl": "https://cdn.example.test/photo.webp",
+              "ownerKey": "park",
+              "category": "Park"
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.PreviewAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.CanApply);
+        Assert.Empty(result.Value.Errors);
+        Assert.Contains(result.Value.Warnings, warning => warning.Contains("sourceUrl already exists", StringComparison.Ordinal) && warning.Contains("image-existing-1", StringComparison.Ordinal));
+        ParkGraphUpsertChange imageChange = Assert.Single(result.Value.Changes, change => change.EntityType == "Image");
+        Assert.Equal("Skipped", imageChange.ChangeType);
+        Assert.Contains(imageChange.Fields, field => field.Field == "duplicateImageId" && field.NewValue == "image-existing-1");
+        remoteImageImporter.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
+        imageRepository.VerifyAll();
         historyRepository.VerifyAll();
     }
 
@@ -773,6 +869,9 @@ public sealed class ParkGraphUpsertProcessorTests
 
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         imageRepository
+            .Setup(value => value.GetByOwnerAndSourceUrlAsync(ImageOwnerType.AttractionManufacturer, "manufacturer-1", "https://cdn.example.test/logo.png", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Image?)null);
+        imageRepository
             .Setup(value => value.SetCurrentAsync("image-1", ImageOwnerType.AttractionManufacturer, "manufacturer-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(currentImage);
         imageRepository
@@ -891,6 +990,9 @@ public sealed class ParkGraphUpsertProcessorTests
 
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         imageRepository
+            .Setup(value => value.GetByOwnerAndSourceUrlAsync(ImageOwnerType.Park, "park-1", "https://cdn.example.test/logo.webp", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Image?)null);
+        imageRepository
             .Setup(value => value.SetCurrentAsync("image-remote-1", ImageOwnerType.Park, "park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(currentImage);
         imageRepository
@@ -979,6 +1081,112 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenRemoteImageSourceAlreadyExistsForOwner_ShouldSkipWithWarning()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Park",
+            CountryCode = "FR",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.ToReview,
+        };
+
+        Image existingImage = new Image
+        {
+            Id = "image-existing-1",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
+            SourceUrl = "https://cdn.example.test/photo.webp",
+            IsPublished = true,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnerAndSourceUrlAsync(ImageOwnerType.Park, "park-1", "https://cdn.example.test/photo.webp", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existingImage);
+
+        Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object,
+            remoteImageImporter.Object,
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "images": [
+            {
+              "sourceUrl": "https://cdn.example.test/photo.webp",
+              "ownerKey": "park",
+              "category": "Park",
+              "withWatermark": true
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.CanApply);
+        Assert.Empty(result.Value.Errors);
+        Assert.Contains(result.Value.Warnings, warning => warning.Contains("sourceUrl already exists", StringComparison.Ordinal) && warning.Contains("image-existing-1", StringComparison.Ordinal));
+        ParkGraphUpsertChange imageChange = Assert.Single(result.Value.Changes, change => change.EntityType == "Image");
+        Assert.Equal("Skipped", imageChange.ChangeType);
+        Assert.Contains(imageChange.Fields, field => field.Field == "duplicateImageId" && field.NewValue == "image-existing-1");
+        remoteImageImporter.Verify(value => value.ImportAsync(It.IsAny<RemoteImageImportRequest>(), It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenRemoteParkImageRequestsWatermark_ShouldForwardWatermark()
     {
         Park park = new Park
@@ -1007,6 +1215,11 @@ public sealed class ParkGraphUpsertProcessorTests
         parkRepository
             .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnerAndSourceUrlAsync(ImageOwnerType.Park, "park-1", "https://cdn.example.test/photo.webp", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Image?)null);
 
         Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
         remoteImageImporter
@@ -1043,7 +1256,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
             Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
-            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            imageRepository.Object,
             remoteImageImporter.Object,
             searchProjectionWriter.Object,
             historyRepository.Object,
@@ -1080,6 +1293,7 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Equal("Created", imageChange.ChangeType);
         Assert.Contains(imageChange.Fields, field => field.Field == "withWatermark" && field.NewValue == "true");
         parkRepository.VerifyAll();
+        imageRepository.VerifyAll();
         remoteImageImporter.VerifyAll();
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();

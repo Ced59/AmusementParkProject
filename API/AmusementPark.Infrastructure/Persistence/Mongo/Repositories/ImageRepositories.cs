@@ -133,6 +133,27 @@ public sealed class ImageRepository : IImageRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
+    public async Task<Image?> GetByOwnerAndSourceUrlAsync(ImageOwnerType ownerType, string ownerId, string sourceUrl, CancellationToken cancellationToken)
+    {
+        string normalizedOwnerId = string.IsNullOrWhiteSpace(ownerId) ? string.Empty : ownerId.Trim();
+        string normalizedSourceUrl = string.IsNullOrWhiteSpace(sourceUrl) ? string.Empty : sourceUrl.Trim();
+        if (string.IsNullOrWhiteSpace(normalizedOwnerId) || string.IsNullOrWhiteSpace(normalizedSourceUrl))
+        {
+            return null;
+        }
+
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = BuildOwnerTypeFilter(builder, ownerType) &
+                                                 builder.Eq(static document => document.OwnerId, normalizedOwnerId) &
+                                                 builder.Eq(static document => document.SourceUrl, normalizedSourceUrl);
+
+        ImageDocument? document = await this.collection.Find(filter)
+            .SortByDescending(static document => document.CreatedAt)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        return document?.ToDomain();
+    }
+
     public async Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken)
     {
         List<string> normalizedOwnerIds = ownerIds
