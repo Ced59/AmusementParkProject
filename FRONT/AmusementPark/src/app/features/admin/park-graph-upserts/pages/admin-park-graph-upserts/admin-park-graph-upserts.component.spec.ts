@@ -301,6 +301,60 @@ describe('AdminParkGraphUpsertsComponent', () => {
     expect(fixture.nativeElement.textContent).toContain('https://cdn.example.test/photo.webp');
   });
 
+  it('wraps long preview warnings inside the result panel', () => {
+    createComponent({
+      parkId: 'park-1',
+      parkName: 'Selected Park'
+    });
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    host.style.width = '360px';
+    const sourceUrl = 'https://cdn.example.test/images/this-is-a-very-long-source-url-that-must-not-overflow-mobile-screens/photo.webp';
+    const warning = `Remote image skipped: sourceUrl already exists for Park 'park-1' as image 'image-existing-1': '${sourceUrl}'.`;
+
+    harness.jsonText = '{"images":[]}';
+    harness.preview();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    request.flush({
+      operationId: 'operation-1',
+      mode: 'merge',
+      isApplied: false,
+      canApply: true,
+      previewedAtUtc: '2026-06-18T10:00:00Z',
+      targetParkId: 'park-1-with-a-long-identifier-that-should-wrap',
+      targetParkName: 'Selected Park',
+      counts: { created: 0, updated: 0, deleted: 0, unchanged: 0, warnings: 1, errors: 0 },
+      changes: [
+        {
+          entityType: 'Image',
+          entityId: null,
+          entityKey: sourceUrl,
+          displayName: sourceUrl,
+          changeType: 'Skipped',
+          matchedBy: 'sourceUrl',
+          fields: [
+            {
+              field: 'sourceUrl',
+              oldValue: null,
+              newValue: sourceUrl
+            }
+          ]
+        }
+      ],
+      warnings: [warning],
+      errors: []
+    } satisfies ParkGraphUpsertResult);
+    fixture.detectChanges();
+
+    const warningMessage = fixture.nativeElement.querySelector('.message-list--warning .message-group p') as HTMLElement;
+    const targetCode = fixture.nativeElement.querySelector('.result-head .admin-muted code') as HTMLElement;
+
+    expect(warningMessage).not.toBeNull();
+    expect(getComputedStyle(warningMessage).overflowWrap).toBe('anywhere');
+    expect(getComputedStyle(targetCode).overflowWrap).toBe('anywhere');
+  });
+
   it('queues a deletion and removes the source image block from the JSON draft', () => {
     createComponent({
       parkId: 'park-1',
