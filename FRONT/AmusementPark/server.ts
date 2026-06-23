@@ -264,43 +264,8 @@ export function app(): express.Express {
     res.status(200).type('text/plain').send('ok\n');
   });
 
-  server.use(redirectHttpToHttps);
-  server.use(applySecurityHeaders);
-
-  server.head('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
-
-  server.get('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
-
-  server.head('/sitemap.xml', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
-
-  server.get('/sitemap.xml', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
-
-  server.head('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
-
-  server.get('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
-
-  server.head('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
-
-  server.get('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
-
   // Endpoints internes appeles par l'API sur le reseau prive. Ils sont proteges
-  // par le jeton partage et restent inaccessibles si aucun jeton n'est configure.
+  // par le jeton partage et restent en HTTP Docker, avant la redirection HTTPS publique.
   server.get('/internal/technical-stats', (req: Request, res: Response) => {
     if (!authorizeInternalCacheRequest(req, res)) {
       return;
@@ -338,6 +303,41 @@ export function app(): express.Express {
     recordCacheInvalidation(invalidationRequest, result);
 
     res.status(200).type('application/json').send(JSON.stringify(result));
+  });
+
+  server.use(redirectHttpToHttps);
+  server.use(applySecurityHeaders);
+
+  server.head('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
+  });
+
+  server.get('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
+  });
+
+  server.head('/sitemap.xml', (req: Request, res: Response, next: NextFunction) => {
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
+  });
+
+  server.get('/sitemap.xml', (req: Request, res: Response, next: NextFunction) => {
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
+  });
+
+  server.head('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
+  });
+
+  server.get('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
+  });
+
+  server.head('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
+  });
+
+  server.get('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.use('/api', (req: Request, res: Response, next: NextFunction) => {
