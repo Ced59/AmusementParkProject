@@ -70,6 +70,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/seo-sitemaps', renderMode: RenderMode.Client },
   { path: ':lang/admin/contact-grievances', renderMode: RenderMode.Client },
   { path: ':lang/admin/park-weather', renderMode: RenderMode.Client },
+  { path: ':lang/admin/technical-stats', renderMode: RenderMode.Client },
   { path: ':lang/admin/images', renderMode: RenderMode.Client },
   { path: ':lang/admin/site', renderMode: RenderMode.Client },
   { path: ':lang/admin/park-graph-upserts', renderMode: RenderMode.Client },

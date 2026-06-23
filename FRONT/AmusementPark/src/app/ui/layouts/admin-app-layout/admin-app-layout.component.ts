@@ -17,4 +17,8 @@ export class AdminAppLayoutComponent {
   protected get currentLang(): string {
     return this.router.url.split('/')[1] || 'en';
   }
+
+  protected get technicalStatsNavLabel(): string {
+    return this.currentLang === 'fr' ? 'Stats techniques' : 'Technical stats';
+  }
 }

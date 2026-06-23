@@ -18,6 +18,7 @@ using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialShare.Ports;
 using AmusementPark.Application.Features.TechnicalPages.Ports;
+using AmusementPark.Application.Features.TechnicalStats.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Application.Ports;
@@ -103,6 +104,10 @@ public static class InfrastructureServiceCollectionExtensions
         {
             client.Timeout = TimeSpan.FromSeconds(3);
         });
+        services.AddHttpClient(HttpTechnicalStatsProvider.HttpClientName, static client =>
+        {
+            client.Timeout = TimeSpan.FromSeconds(3);
+        });
         services.AddHttpClient(ExternalVideoMetadataProvider.HttpClientName, client =>
         {
             client.Timeout = TimeSpan.FromSeconds(videoMetadataSettings.RequestTimeoutSeconds);
@@ -179,6 +184,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHostedService<ParkWeatherRefreshBackgroundService>();
         services.AddHostedService<ParkWeatherAutomaticRefreshBackgroundService>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
+        services.AddScoped<ITechnicalStatsProvider, HttpTechnicalStatsProvider>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
         services.AddSingleton<IDataSourceImportJobQueue, InMemoryDataSourceImportJobQueue>();
         services.AddScoped<IDataAcquisitionHttpFetcher, DataAcquisitionHttpFetcher>();
