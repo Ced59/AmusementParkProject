@@ -53,6 +53,9 @@ public static class TechnicalStatsHttpMappers
             DiskBytes = summary.DiskBytes,
             DiskMaxBytes = summary.DiskMaxBytes,
             DiskWrites = summary.DiskWrites,
+            TechnicalStatsPersistenceEntries = summary.TechnicalStatsPersistenceEntries,
+            TechnicalStatsPersistenceBytes = summary.TechnicalStatsPersistenceBytes,
+            TechnicalStatsPersistencePurgedBuckets = summary.TechnicalStatsPersistencePurgedBuckets,
             SeoDocumentEntries = summary.SeoDocumentEntries,
             SeoDocumentMaxEntries = summary.SeoDocumentMaxEntries,
             SeoDocumentRequests = summary.SeoDocumentRequests,
@@ -123,7 +126,32 @@ public static class TechnicalStatsHttpMappers
             PageCacheMaxHtmlBytes = config.PageCacheMaxHtmlBytes,
             PageCacheBrowserCacheControl = config.PageCacheBrowserCacheControl,
             CsrFallbackCacheControl = config.CsrFallbackCacheControl,
-            SeoDocumentBrowserCacheControl = config.SeoDocumentBrowserCacheControl
+            SeoDocumentBrowserCacheControl = config.SeoDocumentBrowserCacheControl,
+            TechnicalStatsPersistenceEnabled = config.TechnicalStatsPersistenceEnabled,
+            TechnicalStatsPersistenceRetentionDays = config.TechnicalStatsPersistenceRetentionDays,
+            TechnicalStatsPersistenceFlushIntervalSeconds = config.TechnicalStatsPersistenceFlushIntervalSeconds,
+            TechnicalStatsPersistenceLastFlushUtc = config.TechnicalStatsPersistenceLastFlushUtc,
+            TechnicalStatsPersistenceLastCleanupUtc = config.TechnicalStatsPersistenceLastCleanupUtc
+        };
+    }
+
+    public static TechnicalStatsSettings ToApplication(this UpdateTechnicalStatsSettingsDto dto)
+    {
+        ArgumentNullException.ThrowIfNull(dto);
+
+        return new TechnicalStatsSettings
+        {
+            PersistenceRetentionDays = dto.PersistenceRetentionDays
+        };
+    }
+
+    public static TechnicalStatsSettingsDto ToHttp(this TechnicalStatsSettings settings)
+    {
+        ArgumentNullException.ThrowIfNull(settings);
+
+        return new TechnicalStatsSettingsDto
+        {
+            PersistenceRetentionDays = settings.PersistenceRetentionDays
         };
     }
 

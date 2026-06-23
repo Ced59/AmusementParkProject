@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Contact.Queries;
 using AmusementPark.Application.Features.TechnicalPages.Commands;
 using AmusementPark.Application.Features.TechnicalPages.Queries;
 using AmusementPark.Application.Features.TechnicalPages.Results;
+using AmusementPark.Application.Features.TechnicalStats.Commands;
 using AmusementPark.Application.Features.TechnicalStats.Contracts;
 using AmusementPark.Application.Features.TechnicalStats.Queries;
 using AmusementPark.Application.Features.Videos.Commands;
@@ -46,5 +47,6 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalPageBySlugQuery, ApplicationResult<TechnicalPageResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpsertTechnicalPagesJsonCommand, ApplicationResult<TechnicalPageJsonUpsertResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalStatsQuery, ApplicationResult<TechnicalStatsSnapshot>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpdateTechnicalStatsSettingsCommand, ApplicationResult<TechnicalStatsSettings>>));
     }
 }

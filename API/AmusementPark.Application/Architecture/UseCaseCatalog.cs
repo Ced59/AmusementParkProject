@@ -26,5 +26,6 @@ public static class UseCaseCatalog
             ["AdminAudit"] = new[] { "GetAdminAuditLogs" },
             ["Ratings"] = new[] { "UpsertUserRating", "GetRatingSummary", "GetUserRating", "ListUserRatings", "GetUserRatingStats", "GetRatingRankings" },
             ["TechnicalPages"] = new[] { "GetTechnicalPages", "GetTechnicalPageById", "GetTechnicalPageBySlug", "CreateTechnicalPage", "UpdateTechnicalPage", "UpsertTechnicalPagesJson" },
+            ["TechnicalStats"] = new[] { "GetTechnicalStats", "UpdateTechnicalStatsSettings" },
         };
 }

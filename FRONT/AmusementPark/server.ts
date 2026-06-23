@@ -6,7 +6,7 @@ import https from 'node:https';
 import { dirname, join, resolve } from 'node:path';
 import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
@@ -58,7 +58,21 @@ const targetedRefreshMaxUrls = Math.max(0, Number(process.env['SSR_TARGETED_REFR
 const targetedRefreshConcurrency = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_CONCURRENCY'] ?? 1));
 const targetedRefreshDelayMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_REFRESH_DELAY_MILLISECONDS'] ?? 1500));
 const targetedRefreshTimeoutSeconds = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_TIMEOUT_SECONDS'] ?? 45));
-const technicalStatsStartedAtUtc = new Date();
+const technicalStatsPersistenceEnabled = (process.env['SSR_TECHNICAL_STATS_PERSISTENCE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
+const technicalStatsPersistenceDirectory = process.env['SSR_TECHNICAL_STATS_PERSISTENCE_DIR'] ?? join(diskPageCacheDirectory, 'technical-stats');
+const technicalStatsSettingsFilePath = join(technicalStatsPersistenceDirectory, 'settings.json');
+const technicalStatsMinRetentionDays = 1;
+const technicalStatsMaxRetentionDays = 365;
+const technicalStatsDefaultRetentionDays = normalizeInteger(process.env['SSR_TECHNICAL_STATS_RETENTION_DAYS'], 15, technicalStatsMinRetentionDays, technicalStatsMaxRetentionDays);
+const technicalStatsPersistenceFlushIntervalSeconds = normalizeInteger(process.env['SSR_TECHNICAL_STATS_FLUSH_INTERVAL_SECONDS'], 60, 5, 3600);
+let technicalStatsStartedAtUtc = new Date();
+let technicalStatsRetentionDays = technicalStatsDefaultRetentionDays;
+let technicalStatsPersistenceLastFlushUtc: string | null = null;
+let technicalStatsPersistenceLastCleanupUtc: string | null = null;
+let technicalStatsPersistencePurgedBuckets = 0;
+let technicalStatsPersistenceEntries = 0;
+let technicalStatsPersistenceBytes = 0;
+let technicalStatsPersistenceTimerStarted = false;
 let activeRenderCount = 0;
 let assetMissCount = 0;
 let csrFallbackCount = 0;
@@ -125,6 +139,22 @@ interface DiskPageCacheStats {
   readonly bytes: number;
 }
 
+interface TechnicalStatsPersistentBucket {
+  readonly version: 1;
+  readonly date: string;
+  readonly startedAtUtc: string;
+  readonly updatedAtUtc: string;
+  readonly counters: TechnicalStatsCounters;
+  readonly pageResponseStatusCounts: Record<string, number>;
+  readonly robotFamilyCounts: Record<string, number>;
+  readonly robotFamilyCacheHitCounts: Record<string, number>;
+}
+
+interface TechnicalStatsPersistenceSettings {
+  readonly retentionDays: number;
+  readonly updatedAtUtc: string;
+}
+
 const technicalStatsCounters: TechnicalStatsCounters = {
   pageResponses: 0,
   cacheablePageResponses: 0,
@@ -154,6 +184,12 @@ const technicalStatsCounters: TechnicalStatsCounters = {
 const pageResponseStatusCounts = new Map<SsrPageResponseStatus, number>();
 const robotFamilyCounts = new Map<string, number>();
 const robotFamilyCacheHitCounts = new Map<string, number>();
+let lastPersistedTechnicalStatsCounters = cloneTechnicalStatsCounters(technicalStatsCounters);
+let lastPersistedPageResponseStatusCounts = cloneNumberMap(pageResponseStatusCounts);
+let lastPersistedRobotFamilyCounts = cloneNumberMap(robotFamilyCounts);
+let lastPersistedRobotFamilyCacheHitCounts = cloneNumberMap(robotFamilyCacheHitCounts);
+
+initializeTechnicalStatsPersistence();
 
 interface PageCacheEntry {
   readonly buildVersion?: string;
@@ -263,10 +299,8 @@ export function app(): express.Express {
     proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
-  // Endpoint interne (réseau privé only) déclenché par l'API après une écriture
-  // de contenu public : purge le cache de pages SSR pour rendre les
-  // modifications immédiatement visibles. Protégé par un jeton partagé ;
-  // désactivé (404) si aucun jeton n'est configuré.
+  // Endpoints internes appeles par l'API sur le reseau prive. Ils sont proteges
+  // par le jeton partage et restent inaccessibles si aucun jeton n'est configure.
   server.get('/internal/technical-stats', (req: Request, res: Response) => {
     if (!authorizeInternalCacheRequest(req, res)) {
       return;
@@ -274,6 +308,21 @@ export function app(): express.Express {
 
     res.setHeader('Cache-Control', 'no-store');
     res.status(200).type('application/json').send(JSON.stringify(buildTechnicalStatsSnapshot()));
+  });
+
+  server.put('/internal/technical-stats/settings', express.json({ limit: '8kb', type: ['application/json', 'application/*+json'] }), (req: Request, res: Response) => {
+    if (!authorizeInternalCacheRequest(req, res)) {
+      return;
+    }
+
+    const updateResult = updateTechnicalStatsSettings(req.body);
+    if (!updateResult.ok) {
+      res.status(400).type('application/json').send(JSON.stringify({ error: updateResult.error }));
+      return;
+    }
+
+    res.setHeader('Cache-Control', 'no-store');
+    res.status(200).type('application/json').send(JSON.stringify(updateResult.settings));
   });
 
   server.post('/internal/cache/invalidate', express.json({ limit: '64kb', type: ['application/json', 'application/*+json'] }), (req: Request, res: Response) => {
@@ -455,6 +504,9 @@ function buildTechnicalStatsSnapshot(): Record<string, unknown> {
       diskBytes: diskStats.bytes,
       diskMaxBytes: diskPageCacheMaxBytes,
       diskWrites: diskPageCacheWriteCount,
+      technicalStatsPersistenceEntries,
+      technicalStatsPersistenceBytes,
+      technicalStatsPersistencePurgedBuckets,
       seoDocumentEntries: seoDocumentCache.size,
       seoDocumentMaxEntries: seoDocumentCacheMaxEntries,
       seoDocumentRequests: technicalStatsCounters.seoDocumentRequests,
@@ -505,7 +557,12 @@ function buildTechnicalStatsSnapshot(): Record<string, unknown> {
       pageCacheMaxHtmlBytes,
       pageCacheBrowserCacheControl,
       csrFallbackCacheControl,
-      seoDocumentBrowserCacheControl
+      seoDocumentBrowserCacheControl,
+      technicalStatsPersistenceEnabled,
+      technicalStatsPersistenceRetentionDays: technicalStatsRetentionDays,
+      technicalStatsPersistenceFlushIntervalSeconds,
+      technicalStatsPersistenceLastFlushUtc,
+      technicalStatsPersistenceLastCleanupUtc
     }
   };
 }
@@ -542,6 +599,16 @@ function toPercent(value: number, total: number): number {
   return Math.round((value / total) * 1000) / 10;
 }
 
+function normalizeInteger(value: number | string | null | undefined, fallback: number, min: number, max: number): number {
+  const parsed = typeof value === 'number' ? value : Number(value);
+
+  if (!Number.isFinite(parsed)) {
+    return fallback;
+  }
+
+  return Math.min(max, Math.max(min, Math.round(parsed)));
+}
+
 function measureDiskPageCache(): DiskPageCacheStats {
   if (!diskPageCacheEnabled || !existsSync(diskPageCacheDirectory)) {
     return { entries: 0, bytes: 0 };
@@ -575,9 +642,562 @@ function measureDiskPageCache(): DiskPageCacheStats {
   return { entries, bytes };
 }
 
+function initializeTechnicalStatsPersistence(): void {
+  if (!technicalStatsPersistenceEnabled) {
+    return;
+  }
+
+  try {
+    ensureTechnicalStatsPersistenceDirectory();
+    loadTechnicalStatsPersistenceSettings();
+    technicalStatsPersistencePurgedBuckets = purgeExpiredTechnicalStatsBuckets();
+    loadPersistedTechnicalStatsBuckets();
+    updateTechnicalStatsPersistenceMeasurements();
+    rememberPersistedTechnicalStatsBaseline();
+  } catch (error: unknown) {
+    console.warn('SSR technical stats persistence initialization failed', error);
+  }
+}
+
+function startTechnicalStatsPersistenceTimers(): void {
+  if (!technicalStatsPersistenceEnabled || technicalStatsPersistenceTimerStarted) {
+    return;
+  }
+
+  technicalStatsPersistenceTimerStarted = true;
+
+  const flushTimer = setInterval((): void => {
+    persistTechnicalStatsBucket();
+  }, technicalStatsPersistenceFlushIntervalSeconds * 1000);
+  flushTimer.unref();
+
+  const cleanupTimer = setInterval((): void => {
+    cleanupTechnicalStatsPersistence();
+  }, 60 * 60 * 1000);
+  cleanupTimer.unref();
+}
+
+function persistTechnicalStatsBucket(): void {
+  if (!technicalStatsPersistenceEnabled) {
+    return;
+  }
+
+  try {
+    ensureTechnicalStatsPersistenceDirectory();
+
+    const today = toUtcDateKey(new Date());
+    const existingBucket = readTechnicalStatsBucket(today);
+    const nowIso = new Date().toISOString();
+    const deltaCounters = diffTechnicalStatsCounters(technicalStatsCounters, lastPersistedTechnicalStatsCounters);
+    const deltaStatusCounts = diffNumberMaps(pageResponseStatusCounts, lastPersistedPageResponseStatusCounts);
+    const deltaRobotCounts = diffNumberMaps(robotFamilyCounts, lastPersistedRobotFamilyCounts);
+    const deltaRobotCacheHitCounts = diffNumberMaps(robotFamilyCacheHitCounts, lastPersistedRobotFamilyCacheHitCounts);
+    const hasDelta = hasTechnicalStatsCountersDelta(deltaCounters)
+      || deltaStatusCounts.size > 0
+      || deltaRobotCounts.size > 0
+      || deltaRobotCacheHitCounts.size > 0;
+
+    if (!hasDelta) {
+      return;
+    }
+
+    const bucket: TechnicalStatsPersistentBucket = {
+      version: 1,
+      date: today,
+      startedAtUtc: existingBucket?.startedAtUtc ?? technicalStatsStartedAtUtc.toISOString(),
+      updatedAtUtc: nowIso,
+      counters: mergeTechnicalStatsCounters(existingBucket?.counters ?? createEmptyTechnicalStatsCounters(), deltaCounters),
+      pageResponseStatusCounts: mergeRecordCounts(existingBucket?.pageResponseStatusCounts ?? {}, mapToRecord(deltaStatusCounts)),
+      robotFamilyCounts: mergeRecordCounts(existingBucket?.robotFamilyCounts ?? {}, mapToRecord(deltaRobotCounts)),
+      robotFamilyCacheHitCounts: mergeRecordCounts(existingBucket?.robotFamilyCacheHitCounts ?? {}, mapToRecord(deltaRobotCacheHitCounts))
+    };
+
+    writeTechnicalStatsBucket(bucket);
+    technicalStatsPersistenceLastFlushUtc = nowIso;
+    rememberPersistedTechnicalStatsBaseline();
+    updateTechnicalStatsPersistenceMeasurements();
+  } catch (error: unknown) {
+    console.warn('SSR technical stats persistence flush failed', error);
+  }
+}
+
+function cleanupTechnicalStatsPersistence(): void {
+  if (!technicalStatsPersistenceEnabled) {
+    return;
+  }
+
+  persistTechnicalStatsBucket();
+  technicalStatsPersistencePurgedBuckets = purgeExpiredTechnicalStatsBuckets();
+  technicalStatsPersistenceLastCleanupUtc = new Date().toISOString();
+  loadPersistedTechnicalStatsBuckets();
+  updateTechnicalStatsPersistenceMeasurements();
+  rememberPersistedTechnicalStatsBaseline();
+}
+
+function loadTechnicalStatsPersistenceSettings(): void {
+  if (!existsSync(technicalStatsSettingsFilePath)) {
+    return;
+  }
+
+  try {
+    const raw = readFileSync(technicalStatsSettingsFilePath, 'utf8');
+    const parsed = JSON.parse(raw) as Partial<TechnicalStatsPersistenceSettings>;
+    technicalStatsRetentionDays = normalizeInteger(
+      parsed.retentionDays,
+      technicalStatsDefaultRetentionDays,
+      technicalStatsMinRetentionDays,
+      technicalStatsMaxRetentionDays);
+  } catch (error: unknown) {
+    console.warn('SSR technical stats settings load failed', error);
+  }
+}
+
+function updateTechnicalStatsSettings(body: unknown): { readonly ok: true; readonly settings: Record<string, number> } | { readonly ok: false; readonly error: string } {
+  if (!isObject(body)) {
+    return { ok: false, error: 'invalid-body' };
+  }
+
+  const requestedRetentionDays = Number(body['persistenceRetentionDays']);
+  if (!Number.isFinite(requestedRetentionDays)) {
+    return { ok: false, error: 'invalid-retention-days' };
+  }
+
+  technicalStatsRetentionDays = normalizeInteger(
+    requestedRetentionDays,
+    technicalStatsDefaultRetentionDays,
+    technicalStatsMinRetentionDays,
+    technicalStatsMaxRetentionDays);
+
+  persistTechnicalStatsSettings();
+  cleanupTechnicalStatsPersistence();
+
+  return {
+    ok: true,
+    settings: buildTechnicalStatsSettingsSnapshot()
+  };
+}
+
+function persistTechnicalStatsSettings(): void {
+  if (!technicalStatsPersistenceEnabled) {
+    return;
+  }
+
+  try {
+    ensureTechnicalStatsPersistenceDirectory();
+    const settings: TechnicalStatsPersistenceSettings = {
+      retentionDays: technicalStatsRetentionDays,
+      updatedAtUtc: new Date().toISOString()
+    };
+    writeJsonAtomically(technicalStatsSettingsFilePath, settings);
+  } catch (error: unknown) {
+    console.warn('SSR technical stats settings save failed', error);
+  }
+}
+
+function buildTechnicalStatsSettingsSnapshot(): Record<string, number> {
+  return {
+    persistenceRetentionDays: technicalStatsRetentionDays
+  };
+}
+
+function loadPersistedTechnicalStatsBuckets(): void {
+  const buckets = readRetainedTechnicalStatsBuckets();
+
+  resetTechnicalStatsCounters();
+  pageResponseStatusCounts.clear();
+  robotFamilyCounts.clear();
+  robotFamilyCacheHitCounts.clear();
+
+  if (buckets.length === 0) {
+    technicalStatsStartedAtUtc = new Date();
+    return;
+  }
+
+  let earliestStartedAtUtc: string | null = null;
+
+  for (const bucket of buckets) {
+    mergeCountersIntoTechnicalStats(bucket.counters);
+    mergeRecordIntoMap(bucket.pageResponseStatusCounts, pageResponseStatusCounts);
+    mergeRecordIntoMap(bucket.robotFamilyCounts, robotFamilyCounts);
+    mergeRecordIntoMap(bucket.robotFamilyCacheHitCounts, robotFamilyCacheHitCounts);
+
+    if (earliestStartedAtUtc === null || bucket.startedAtUtc < earliestStartedAtUtc) {
+      earliestStartedAtUtc = bucket.startedAtUtc;
+    }
+  }
+
+  technicalStatsStartedAtUtc = earliestStartedAtUtc ? new Date(earliestStartedAtUtc) : new Date();
+}
+
+function readRetainedTechnicalStatsBuckets(): TechnicalStatsPersistentBucket[] {
+  if (!existsSync(technicalStatsPersistenceDirectory)) {
+    return [];
+  }
+
+  const cutoff = getTechnicalStatsRetentionCutoffDateKey();
+  const buckets: TechnicalStatsPersistentBucket[] = [];
+
+  for (const fileName of readdirSync(technicalStatsPersistenceDirectory)) {
+    const bucketDate = parseTechnicalStatsBucketFileDate(fileName);
+    if (bucketDate === null || bucketDate < cutoff) {
+      continue;
+    }
+
+    const bucket = readTechnicalStatsBucket(bucketDate);
+    if (bucket !== null) {
+      buckets.push(bucket);
+    }
+  }
+
+  return buckets.sort((left: TechnicalStatsPersistentBucket, right: TechnicalStatsPersistentBucket): number => left.date.localeCompare(right.date));
+}
+
+function readTechnicalStatsBucket(dateKey: string): TechnicalStatsPersistentBucket | null {
+  const filePath = getTechnicalStatsBucketPath(dateKey);
+
+  if (!existsSync(filePath)) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(readFileSync(filePath, 'utf8')) as Partial<TechnicalStatsPersistentBucket>;
+
+    if (parsed.version !== 1 || parsed.date !== dateKey || typeof parsed.startedAtUtc !== 'string' || typeof parsed.updatedAtUtc !== 'string') {
+      return null;
+    }
+
+    return {
+      version: 1,
+      date: dateKey,
+      startedAtUtc: parsed.startedAtUtc,
+      updatedAtUtc: parsed.updatedAtUtc,
+      counters: normalizeTechnicalStatsCounters(parsed.counters),
+      pageResponseStatusCounts: normalizeCountRecord(parsed.pageResponseStatusCounts),
+      robotFamilyCounts: normalizeCountRecord(parsed.robotFamilyCounts),
+      robotFamilyCacheHitCounts: normalizeCountRecord(parsed.robotFamilyCacheHitCounts)
+    };
+  } catch (error: unknown) {
+    console.warn(`SSR technical stats bucket read failed: ${dateKey}`, error);
+    return null;
+  }
+}
+
+function writeTechnicalStatsBucket(bucket: TechnicalStatsPersistentBucket): void {
+  writeJsonAtomically(getTechnicalStatsBucketPath(bucket.date), bucket);
+}
+
+function purgeExpiredTechnicalStatsBuckets(): number {
+  if (!existsSync(technicalStatsPersistenceDirectory)) {
+    return 0;
+  }
+
+  const cutoff = getTechnicalStatsRetentionCutoffDateKey();
+  let purged = 0;
+
+  for (const fileName of readdirSync(technicalStatsPersistenceDirectory)) {
+    const bucketDate = parseTechnicalStatsBucketFileDate(fileName);
+    if (bucketDate === null || bucketDate >= cutoff) {
+      continue;
+    }
+
+    try {
+      unlinkSync(join(technicalStatsPersistenceDirectory, fileName));
+      purged += 1;
+    } catch {
+      // Best effort cleanup only.
+    }
+  }
+
+  return purged;
+}
+
+function updateTechnicalStatsPersistenceMeasurements(): void {
+  if (!technicalStatsPersistenceEnabled || !existsSync(technicalStatsPersistenceDirectory)) {
+    technicalStatsPersistenceEntries = 0;
+    technicalStatsPersistenceBytes = 0;
+    return;
+  }
+
+  let entries = 0;
+  let bytes = 0;
+
+  for (const fileName of readdirSync(technicalStatsPersistenceDirectory)) {
+    if (parseTechnicalStatsBucketFileDate(fileName) === null) {
+      continue;
+    }
+
+    try {
+      const fileStats = statSync(join(technicalStatsPersistenceDirectory, fileName));
+      if (!fileStats.isFile()) {
+        continue;
+      }
+
+      entries += 1;
+      bytes += fileStats.size;
+    } catch {
+      // Best effort measurement only.
+    }
+  }
+
+  technicalStatsPersistenceEntries = entries;
+  technicalStatsPersistenceBytes = bytes;
+}
+
+function ensureTechnicalStatsPersistenceDirectory(): void {
+  if (!existsSync(technicalStatsPersistenceDirectory)) {
+    mkdirSync(technicalStatsPersistenceDirectory, { recursive: true });
+  }
+}
+
+function getTechnicalStatsBucketPath(dateKey: string): string {
+  return join(technicalStatsPersistenceDirectory, `bucket-${dateKey}.json`);
+}
+
+function parseTechnicalStatsBucketFileDate(fileName: string): string | null {
+  const match = /^bucket-(\d{4}-\d{2}-\d{2})\.json$/.exec(fileName);
+  return match ? match[1] : null;
+}
+
+function getTechnicalStatsRetentionCutoffDateKey(): string {
+  const now = new Date();
+  const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const cutoff = new Date(todayUtc - (technicalStatsRetentionDays - 1) * 86400000);
+  return toUtcDateKey(cutoff);
+}
+
+function toUtcDateKey(date: Date): string {
+  return date.toISOString().slice(0, 10);
+}
+
+function writeJsonAtomically(filePath: string, value: unknown): void {
+  const temporaryPath = `${filePath}.${process.pid}.tmp`;
+  writeFileSync(temporaryPath, JSON.stringify(value), 'utf8');
+  renameSync(temporaryPath, filePath);
+}
+
+function rememberPersistedTechnicalStatsBaseline(): void {
+  lastPersistedTechnicalStatsCounters = cloneTechnicalStatsCounters(technicalStatsCounters);
+  lastPersistedPageResponseStatusCounts = cloneNumberMap(pageResponseStatusCounts);
+  lastPersistedRobotFamilyCounts = cloneNumberMap(robotFamilyCounts);
+  lastPersistedRobotFamilyCacheHitCounts = cloneNumberMap(robotFamilyCacheHitCounts);
+}
+
+function createEmptyTechnicalStatsCounters(): TechnicalStatsCounters {
+  return {
+    pageResponses: 0,
+    cacheablePageResponses: 0,
+    cacheHitResponses: 0,
+    robotPageResponses: 0,
+    robotCacheHitResponses: 0,
+    totalRenders: 0,
+    totalRenderMilliseconds: 0,
+    maxRenderMilliseconds: 0,
+    slowRenders: 0,
+    renderQueueFullRejections: 0,
+    targetedRefreshQueued: 0,
+    targetedRefreshSucceeded: 0,
+    targetedRefreshFailed: 0,
+    invalidationRequests: 0,
+    invalidationAllRequests: 0,
+    invalidationTargetedRequests: 0,
+    invalidationClearedEntries: 0,
+    invalidationStaleEntries: 0,
+    invalidationQueuedRefreshes: 0,
+    lastInvalidationUtc: null,
+    seoDocumentRequests: 0,
+    seoDocumentHits: 0,
+    seoDocumentMisses: 0
+  };
+}
+
+function cloneTechnicalStatsCounters(source: TechnicalStatsCounters): TechnicalStatsCounters {
+  return { ...source };
+}
+
+function normalizeTechnicalStatsCounters(source: unknown): TechnicalStatsCounters {
+  if (!isObject(source)) {
+    return createEmptyTechnicalStatsCounters();
+  }
+
+  const counters = createEmptyTechnicalStatsCounters();
+  for (const key of Object.keys(counters) as Array<keyof TechnicalStatsCounters>) {
+    if (key === 'lastInvalidationUtc') {
+      counters.lastInvalidationUtc = typeof source[key] === 'string' ? source[key] : null;
+      continue;
+    }
+
+    counters[key] = Math.max(0, Number(source[key] ?? 0)) as never;
+  }
+
+  return counters;
+}
+
+function resetTechnicalStatsCounters(): void {
+  Object.assign(technicalStatsCounters, createEmptyTechnicalStatsCounters());
+}
+
+function diffTechnicalStatsCounters(current: TechnicalStatsCounters, baseline: TechnicalStatsCounters): TechnicalStatsCounters {
+  return {
+    pageResponses: Math.max(0, current.pageResponses - baseline.pageResponses),
+    cacheablePageResponses: Math.max(0, current.cacheablePageResponses - baseline.cacheablePageResponses),
+    cacheHitResponses: Math.max(0, current.cacheHitResponses - baseline.cacheHitResponses),
+    robotPageResponses: Math.max(0, current.robotPageResponses - baseline.robotPageResponses),
+    robotCacheHitResponses: Math.max(0, current.robotCacheHitResponses - baseline.robotCacheHitResponses),
+    totalRenders: Math.max(0, current.totalRenders - baseline.totalRenders),
+    totalRenderMilliseconds: Math.max(0, current.totalRenderMilliseconds - baseline.totalRenderMilliseconds),
+    maxRenderMilliseconds: current.maxRenderMilliseconds > baseline.maxRenderMilliseconds ? current.maxRenderMilliseconds : 0,
+    slowRenders: Math.max(0, current.slowRenders - baseline.slowRenders),
+    renderQueueFullRejections: Math.max(0, current.renderQueueFullRejections - baseline.renderQueueFullRejections),
+    targetedRefreshQueued: Math.max(0, current.targetedRefreshQueued - baseline.targetedRefreshQueued),
+    targetedRefreshSucceeded: Math.max(0, current.targetedRefreshSucceeded - baseline.targetedRefreshSucceeded),
+    targetedRefreshFailed: Math.max(0, current.targetedRefreshFailed - baseline.targetedRefreshFailed),
+    invalidationRequests: Math.max(0, current.invalidationRequests - baseline.invalidationRequests),
+    invalidationAllRequests: Math.max(0, current.invalidationAllRequests - baseline.invalidationAllRequests),
+    invalidationTargetedRequests: Math.max(0, current.invalidationTargetedRequests - baseline.invalidationTargetedRequests),
+    invalidationClearedEntries: Math.max(0, current.invalidationClearedEntries - baseline.invalidationClearedEntries),
+    invalidationStaleEntries: Math.max(0, current.invalidationStaleEntries - baseline.invalidationStaleEntries),
+    invalidationQueuedRefreshes: Math.max(0, current.invalidationQueuedRefreshes - baseline.invalidationQueuedRefreshes),
+    lastInvalidationUtc: current.lastInvalidationUtc !== baseline.lastInvalidationUtc ? current.lastInvalidationUtc : null,
+    seoDocumentRequests: Math.max(0, current.seoDocumentRequests - baseline.seoDocumentRequests),
+    seoDocumentHits: Math.max(0, current.seoDocumentHits - baseline.seoDocumentHits),
+    seoDocumentMisses: Math.max(0, current.seoDocumentMisses - baseline.seoDocumentMisses)
+  };
+}
+
+function hasTechnicalStatsCountersDelta(counters: TechnicalStatsCounters): boolean {
+  return counters.pageResponses > 0
+    || counters.cacheablePageResponses > 0
+    || counters.cacheHitResponses > 0
+    || counters.robotPageResponses > 0
+    || counters.robotCacheHitResponses > 0
+    || counters.totalRenders > 0
+    || counters.totalRenderMilliseconds > 0
+    || counters.maxRenderMilliseconds > 0
+    || counters.slowRenders > 0
+    || counters.renderQueueFullRejections > 0
+    || counters.targetedRefreshQueued > 0
+    || counters.targetedRefreshSucceeded > 0
+    || counters.targetedRefreshFailed > 0
+    || counters.invalidationRequests > 0
+    || counters.invalidationAllRequests > 0
+    || counters.invalidationTargetedRequests > 0
+    || counters.invalidationClearedEntries > 0
+    || counters.invalidationStaleEntries > 0
+    || counters.invalidationQueuedRefreshes > 0
+    || counters.lastInvalidationUtc !== null
+    || counters.seoDocumentRequests > 0
+    || counters.seoDocumentHits > 0
+    || counters.seoDocumentMisses > 0;
+}
+
+function mergeTechnicalStatsCounters(left: TechnicalStatsCounters, right: TechnicalStatsCounters): TechnicalStatsCounters {
+  return {
+    pageResponses: left.pageResponses + right.pageResponses,
+    cacheablePageResponses: left.cacheablePageResponses + right.cacheablePageResponses,
+    cacheHitResponses: left.cacheHitResponses + right.cacheHitResponses,
+    robotPageResponses: left.robotPageResponses + right.robotPageResponses,
+    robotCacheHitResponses: left.robotCacheHitResponses + right.robotCacheHitResponses,
+    totalRenders: left.totalRenders + right.totalRenders,
+    totalRenderMilliseconds: left.totalRenderMilliseconds + right.totalRenderMilliseconds,
+    maxRenderMilliseconds: Math.max(left.maxRenderMilliseconds, right.maxRenderMilliseconds),
+    slowRenders: left.slowRenders + right.slowRenders,
+    renderQueueFullRejections: left.renderQueueFullRejections + right.renderQueueFullRejections,
+    targetedRefreshQueued: left.targetedRefreshQueued + right.targetedRefreshQueued,
+    targetedRefreshSucceeded: left.targetedRefreshSucceeded + right.targetedRefreshSucceeded,
+    targetedRefreshFailed: left.targetedRefreshFailed + right.targetedRefreshFailed,
+    invalidationRequests: left.invalidationRequests + right.invalidationRequests,
+    invalidationAllRequests: left.invalidationAllRequests + right.invalidationAllRequests,
+    invalidationTargetedRequests: left.invalidationTargetedRequests + right.invalidationTargetedRequests,
+    invalidationClearedEntries: left.invalidationClearedEntries + right.invalidationClearedEntries,
+    invalidationStaleEntries: left.invalidationStaleEntries + right.invalidationStaleEntries,
+    invalidationQueuedRefreshes: left.invalidationQueuedRefreshes + right.invalidationQueuedRefreshes,
+    lastInvalidationUtc: getLatestIsoDate(left.lastInvalidationUtc, right.lastInvalidationUtc),
+    seoDocumentRequests: left.seoDocumentRequests + right.seoDocumentRequests,
+    seoDocumentHits: left.seoDocumentHits + right.seoDocumentHits,
+    seoDocumentMisses: left.seoDocumentMisses + right.seoDocumentMisses
+  };
+}
+
+function mergeCountersIntoTechnicalStats(counters: TechnicalStatsCounters): void {
+  const merged = mergeTechnicalStatsCounters(technicalStatsCounters, counters);
+  Object.assign(technicalStatsCounters, merged);
+}
+
+function getLatestIsoDate(left: string | null, right: string | null): string | null {
+  if (left === null) {
+    return right;
+  }
+
+  if (right === null) {
+    return left;
+  }
+
+  return left >= right ? left : right;
+}
+
+function cloneNumberMap<TKey>(source: Map<TKey, number>): Map<TKey, number> {
+  return new Map<TKey, number>(source.entries());
+}
+
+function diffNumberMaps<TKey>(current: Map<TKey, number>, baseline: Map<TKey, number>): Map<TKey, number> {
+  const delta = new Map<TKey, number>();
+
+  for (const [key, value] of current.entries()) {
+    const count = Math.max(0, value - (baseline.get(key) ?? 0));
+    if (count > 0) {
+      delta.set(key, count);
+    }
+  }
+
+  return delta;
+}
+
+function mapToRecord<TKey>(source: Map<TKey, number>): Record<string, number> {
+  const record: Record<string, number> = {};
+  for (const [key, value] of source.entries()) {
+    record[String(key)] = value;
+  }
+
+  return record;
+}
+
+function normalizeCountRecord(source: unknown): Record<string, number> {
+  if (!isObject(source)) {
+    return {};
+  }
+
+  const record: Record<string, number> = {};
+  for (const [key, value] of Object.entries(source)) {
+    const count = Number(value);
+    if (Number.isFinite(count) && count > 0) {
+      record[key] = Math.round(count);
+    }
+  }
+
+  return record;
+}
+
+function mergeRecordCounts(left: Record<string, number>, right: Record<string, number>): Record<string, number> {
+  const merged: Record<string, number> = { ...left };
+
+  for (const [key, value] of Object.entries(right)) {
+    merged[key] = (merged[key] ?? 0) + value;
+  }
+
+  return merged;
+}
+
+function mergeRecordIntoMap<TKey extends string>(source: Record<string, number>, target: Map<TKey, number>): void {
+  for (const [key, value] of Object.entries(source)) {
+    target.set(key as TKey, (target.get(key as TKey) ?? 0) + value);
+  }
+}
+
 function run(): void {
   const port = Number(process.env['PORT'] ?? 4000);
   const server = app();
+
+  startTechnicalStatsPersistenceTimers();
 
   server.listen(port, () => {
     console.log(`Angular SSR server listening on http://0.0.0.0:${port}`);
@@ -588,6 +1208,7 @@ function run(): void {
     console.log(`SSR disk page cache budget check: every ${diskPageCacheBudgetCheckEveryWrites} writes`);
     console.log(`SSR page cache max HTML bytes: ${pageCacheMaxHtmlBytes}`);
     console.log(`SSR public page cache ignores analytics cookies: ${pageCacheAllowAuthenticatedPublicHtml}`);
+    console.log(`SSR technical stats persistence: ${technicalStatsPersistenceEnabled ? 'enabled' : 'disabled'} / ${technicalStatsPersistenceDirectory} / retention=${technicalStatsRetentionDays}d / flush=${technicalStatsPersistenceFlushIntervalSeconds}s`);
     console.log(`SSR page browser Cache-Control: ${pageCacheBrowserCacheControl}`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
     console.log(`SSR SEO document browser Cache-Control: ${seoDocumentBrowserCacheControl}`);

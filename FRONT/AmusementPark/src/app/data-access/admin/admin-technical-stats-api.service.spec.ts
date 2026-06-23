@@ -53,6 +53,9 @@ describe('AdminTechnicalStatsApiService', () => {
         diskBytes: 1024,
         diskMaxBytes: 2048,
         diskWrites: 1,
+        technicalStatsPersistenceEntries: 1,
+        technicalStatsPersistenceBytes: 256,
+        technicalStatsPersistencePurgedBuckets: 0,
         seoDocumentEntries: 0,
         seoDocumentMaxEntries: 128,
         seoDocumentRequests: 0,
@@ -103,8 +106,24 @@ describe('AdminTechnicalStatsApiService', () => {
         pageCacheMaxHtmlBytes: 2097152,
         pageCacheBrowserCacheControl: 'no-cache',
         csrFallbackCacheControl: 'public, max-age=60',
-        seoDocumentBrowserCacheControl: 'no-cache'
+        seoDocumentBrowserCacheControl: 'no-cache',
+        technicalStatsPersistenceEnabled: true,
+        technicalStatsPersistenceRetentionDays: 15,
+        technicalStatsPersistenceFlushIntervalSeconds: 60,
+        technicalStatsPersistenceLastFlushUtc: null,
+        technicalStatsPersistenceLastCleanupUtc: null
       }
     });
+  });
+
+  it('updates technical stats settings', () => {
+    service.updateSettings({ persistenceRetentionDays: 20 }).subscribe((response) => {
+      expect(response.persistenceRetentionDays).toBe(20);
+    });
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/technical-stats/settings`);
+    expect(request.request.method).toBe('PUT');
+    expect(request.request.body).toEqual({ persistenceRetentionDays: 20 });
+    request.flush({ persistenceRetentionDays: 20 });
   });
 });
