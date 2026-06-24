@@ -64,6 +64,8 @@ public sealed class MongoDbSettings
 
     public string SeoSitemapSnapshotsCollectionName { get; set; } = "seoSitemapSnapshots";
 
+    public string SeoSitemapSnapshotSectionsCollectionName { get; set; } = "seoSitemapSnapshotSections";
+
     public string SeoSitemapGenerationHistoryCollectionName { get; set; } = "seoSitemapGenerationHistory";
 
     public string SeoSitemapSettingsCollectionName { get; set; } = "seoSitemapSettings";

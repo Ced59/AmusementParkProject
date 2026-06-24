@@ -14,14 +14,40 @@ public sealed class SeoSitemapSnapshotDocument : MongoDocumentBase
     [BsonElement("indexXml")]
     public string IndexXml { get; set; } = string.Empty;
 
+    [BsonElement("sectionsStorageId")]
+    [BsonIgnoreIfNull]
+    public string? SectionsStorageId { get; set; }
+
     [BsonElement("sectionXmlByKey")]
-    public Dictionary<string, string> SectionXmlByKey { get; set; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+    [BsonIgnoreIfNull]
+    public Dictionary<string, string>? SectionXmlByKey { get; set; }
 
     [BsonElement("sections")]
     public List<SeoSitemapSectionStatsDocument> Sections { get; set; } = new List<SeoSitemapSectionStatsDocument>();
 
     [BsonElement("totalUrlCount")]
     public int TotalUrlCount { get; set; }
+}
+
+public sealed class SeoSitemapSnapshotSectionChunkDocument : MongoDocumentBase
+{
+    [BsonElement("snapshotId")]
+    public string SnapshotId { get; set; } = string.Empty;
+
+    [BsonElement("storageId")]
+    public string StorageId { get; set; } = string.Empty;
+
+    [BsonElement("sectionKey")]
+    public string SectionKey { get; set; } = string.Empty;
+
+    [BsonElement("chunkIndex")]
+    public int ChunkIndex { get; set; }
+
+    [BsonElement("chunkCount")]
+    public int ChunkCount { get; set; }
+
+    [BsonElement("xmlChunk")]
+    public string XmlChunk { get; set; } = string.Empty;
 }
 
 public sealed class SeoSitemapGenerationHistoryDocument : MongoDocumentBase
