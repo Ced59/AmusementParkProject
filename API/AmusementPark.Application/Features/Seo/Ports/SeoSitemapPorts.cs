@@ -35,6 +35,8 @@ public interface ISeoSitemapSnapshotRepository
 {
     Task<SitemapSnapshot?> GetLatestAsync(CancellationToken cancellationToken);
 
+    Task<string?> GetSectionXmlAsync(string sectionKey, CancellationToken cancellationToken);
+
     Task SaveAsync(SitemapSnapshot snapshot, CancellationToken cancellationToken);
 }
 

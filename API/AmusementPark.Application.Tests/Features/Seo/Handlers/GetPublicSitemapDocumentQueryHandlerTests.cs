@@ -14,6 +14,57 @@ namespace AmusementPark.Application.Tests.Features.Seo.Handlers;
 public sealed class GetPublicSitemapDocumentQueryHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenSectionIsRequested_ShouldReadOnlyRequestedSection()
+    {
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            GeneratedAtUtc = new DateTime(2026, 6, 20, 10, 0, 0, DateTimeKind.Utc),
+            PublicBaseUrl = "https://example.com",
+            IndexXml = "<sitemapindex />",
+            Sections = new[]
+            {
+                new SitemapSectionStats("static-fr", "static-fr.xml", "Static FR", 1, null),
+            },
+            TotalUrlCount = 1,
+        };
+
+        snapshotRepository
+            .Setup(repository => repository.GetLatestAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(snapshot);
+        snapshotRepository
+            .Setup(repository => repository.GetSectionXmlAsync("static-fr", It.IsAny<CancellationToken>()))
+            .ReturnsAsync("<urlset />");
+
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            Array.Empty<ISitemapSectionProvider>(),
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            new InMemorySeoSitemapRuntimeStateStore());
+        GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
+            snapshotRepository.Object,
+            orchestrator);
+
+        ApplicationResult<SitemapDocumentResult> result = await handler.HandleAsync(
+            new GetPublicSitemapDocumentQuery("static-fr.xml", "https://example.com", new[] { "fr" }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Equal("<urlset />", result.Value.Content);
+        snapshotRepository.VerifyAll();
+        historyRepository.VerifyNoOtherCalls();
+        settingsRepository.VerifyNoOtherCalls();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenSnapshotIsMissing_ShouldGenerateFallbackSnapshotAndReturnIndex()
     {
         SitemapSnapshot? savedSnapshot = null;

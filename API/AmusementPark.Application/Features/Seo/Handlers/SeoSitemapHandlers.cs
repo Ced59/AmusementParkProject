@@ -264,7 +264,8 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
         }
 
         string normalizedSectionKey = NormalizeSectionKey(query.SectionKey);
-        if (!snapshot.SectionXmlByKey.TryGetValue(normalizedSectionKey, out string? sectionXml))
+        string? sectionXml = await this.snapshotRepository.GetSectionXmlAsync(normalizedSectionKey, cancellationToken);
+        if (sectionXml is null)
         {
             return ApplicationResult<SitemapDocumentResult>.Failure(ApplicationError.NotFound("seo.sitemap-section.not-found", $"La section sitemap '{query.SectionKey}' est introuvable."));
         }

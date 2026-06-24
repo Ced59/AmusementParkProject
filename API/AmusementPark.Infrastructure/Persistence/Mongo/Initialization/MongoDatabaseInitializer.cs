@@ -114,6 +114,12 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.AdminAuditLogsCollectionName, cancellationToken);
         await this.InitializeAdminAuditIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.SeoSitemapSnapshotsCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.SeoSitemapSnapshotSectionsCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.SeoSitemapGenerationHistoryCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.SeoSitemapSettingsCollectionName, cancellationToken);
+        await this.InitializeSeoSitemapIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.ParkGraphUpsertHistoryCollectionName, cancellationToken);
         await this.InitializeParkGraphUpsertHistoryIndexesAsync(cancellationToken);
 

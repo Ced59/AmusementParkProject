@@ -1,6 +1,20 @@
 {
-  "version": "2.7.5",
+  "version": "2.7.6",
   "history": [
+    {
+      "version": "2.7.6",
+      "releasedAt": "2026-06-24",
+      "labels": {
+        "fr": "Les sitemaps restent fiables quand ils grandissent.",
+        "en": "Sitemaps stay reliable as they grow.",
+        "de": "Sitemaps bleiben auch bei Wachstum zuverlaessig.",
+        "nl": "Sitemaps blijven betrouwbaar als ze groeien.",
+        "it": "Le sitemap restano affidabili quando crescono.",
+        "es": "Los sitemaps siguen siendo fiables al crecer.",
+        "pl": "Sitemapy pozostaja niezawodne, gdy rosna.",
+        "pt": "Os sitemaps continuam fiaveis ao crescer."
+      }
+    },
     {
       "version": "2.7.5",
       "releasedAt": "2026-06-23",
