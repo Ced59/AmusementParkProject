@@ -105,6 +105,177 @@ public sealed class ParkWeatherRefreshOrchestratorTests
     }
 
     [Fact]
+    public async Task ProcessRunAsync_WhenProviderTimeoutsPark_ShouldMarkParkFailedAndContinue()
+    {
+        Park firstPark = CreatePark("park-1", "Magic Park", true, 48.86, 2.35);
+        Park timeoutPark = CreatePark("park-timeout", "Timeout Park", true, 50.63, 3.06);
+        Park lastPark = CreatePark("park-3", "Last Park", true, 43.60, 1.44);
+        ParkWeatherRun run = new ParkWeatherRun
+        {
+            Id = "run-timeout",
+            Scope = ParkWeatherRefreshScope.FullVisibleParks,
+            Status = ParkWeatherRunStatus.Queued,
+            Trigger = ParkWeatherRunTrigger.Manual,
+        };
+        ParkWeatherDailySnapshot firstForecast = CreateSnapshot("park-1", DateOnly.FromDateTime(DateTime.UtcNow), ParkWeatherDataKind.Forecast);
+        ParkWeatherDailySnapshot lastForecast = CreateSnapshot("park-3", DateOnly.FromDateTime(DateTime.UtcNow), ParkWeatherDataKind.Forecast);
+        List<ParkWeatherDailySnapshot> persistedSnapshots = new List<ParkWeatherDailySnapshot>();
+        List<ParkWeatherRunItemStatus> timeoutItemStatuses = new List<ParkWeatherRunItemStatus>();
+        string? timeoutErrorMessage = null;
+        IReadOnlyCollection<Park> invalidatedParks = Array.Empty<Park>();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetVisibleWithValidCoordinatesAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { firstPark, timeoutPark, lastPark });
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        weatherRepository
+            .Setup(repository => repository.UpsertSnapshotsAsync(It.IsAny<IReadOnlyCollection<ParkWeatherDailySnapshot>>(), It.IsAny<CancellationToken>()))
+            .Callback<IReadOnlyCollection<ParkWeatherDailySnapshot>, CancellationToken>((snapshots, _) => persistedSnapshots.AddRange(snapshots))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredForecastsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredObservationsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IParkWeatherRunRepository> runRepository = CreateRunRepository(
+            run,
+            item =>
+            {
+                if (item.ParkId == "park-timeout")
+                {
+                    timeoutItemStatuses.Add(item.Status);
+                    timeoutErrorMessage = item.ErrorMessage;
+                }
+            });
+        Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
+        providerStrategy
+            .Setup(strategy => strategy.FetchDailyForecastAsync(
+                It.Is<Park>(park => park.Id == "park-1"),
+                7,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkWeatherProviderResult { Snapshots = new[] { firstForecast } });
+        providerStrategy
+            .Setup(strategy => strategy.FetchDailyForecastAsync(
+                It.Is<Park>(park => park.Id == "park-timeout"),
+                7,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new TaskCanceledException("The request was canceled due to the configured HttpClient.Timeout of 20 seconds elapsing."));
+        providerStrategy
+            .Setup(strategy => strategy.FetchDailyForecastAsync(
+                It.Is<Park>(park => park.Id == "park-3"),
+                7,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkWeatherProviderResult { Snapshots = new[] { lastForecast } });
+        Mock<IParkWeatherProviderStrategyResolver> providerStrategyResolver = new Mock<IParkWeatherProviderStrategyResolver>(MockBehavior.Strict);
+        providerStrategyResolver
+            .Setup(resolver => resolver.Resolve())
+            .Returns(providerStrategy.Object);
+        Mock<IParkWeatherCacheInvalidator> cacheInvalidator = new Mock<IParkWeatherCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateUpdatedWeatherAsync(It.IsAny<IReadOnlyCollection<Park>>(), It.IsAny<CancellationToken>()))
+            .Callback<IReadOnlyCollection<Park>, CancellationToken>((parks, _) => invalidatedParks = parks)
+            .Returns(Task.CompletedTask);
+        ParkWeatherRefreshOrchestrator orchestrator = new ParkWeatherRefreshOrchestrator(
+            parkRepository.Object,
+            weatherRepository.Object,
+            runRepository.Object,
+            providerStrategyResolver.Object,
+            new TestRefreshSettings(),
+            cacheInvalidator.Object,
+            new NoOpParkWeatherNotificationService(),
+            new ParkWeatherHistoricalComparisonDateResolver());
+
+        await orchestrator.ProcessRunAsync("run-timeout", CancellationToken.None);
+
+        Assert.Equal(ParkWeatherRunStatus.CompletedWithFailures, run.Status);
+        Assert.Equal(3, run.TotalParkCount);
+        Assert.Equal(2, run.SucceededParkCount);
+        Assert.Equal(1, run.FailedParkCount);
+        Assert.Equal(new[] { firstForecast, lastForecast }, persistedSnapshots);
+        Assert.Equal(new[] { ParkWeatherRunItemStatus.Running, ParkWeatherRunItemStatus.Failed }, timeoutItemStatuses);
+        Assert.Contains("HttpClient.Timeout", timeoutErrorMessage ?? string.Empty, StringComparison.Ordinal);
+        Assert.Equal(new[] { firstPark, lastPark }, invalidatedParks);
+        parkRepository.VerifyAll();
+        weatherRepository.VerifyAll();
+        runRepository.VerifyAll();
+        providerStrategyResolver.VerifyAll();
+        providerStrategy.VerifyAll();
+        cacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ProcessRunAsync_WhenCacheInvalidationFails_ShouldKeepProcessedParksAndCompleteWithFailure()
+    {
+        Park park = CreatePark("park-1", "Magic Park", true, 48.86, 2.35);
+        ParkWeatherRun run = new ParkWeatherRun
+        {
+            Id = "run-cache",
+            Scope = ParkWeatherRefreshScope.FullVisibleParks,
+            Status = ParkWeatherRunStatus.Queued,
+            Trigger = ParkWeatherRunTrigger.Manual,
+        };
+        ParkWeatherDailySnapshot forecast = CreateSnapshot("park-1", DateOnly.FromDateTime(DateTime.UtcNow), ParkWeatherDataKind.Forecast);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetVisibleWithValidCoordinatesAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        weatherRepository
+            .Setup(repository => repository.UpsertSnapshotsAsync(It.Is<IReadOnlyCollection<ParkWeatherDailySnapshot>>(snapshots => snapshots.Single() == forecast), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredForecastsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredObservationsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IParkWeatherRunRepository> runRepository = CreateRunRepository(run);
+        Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
+        providerStrategy
+            .Setup(strategy => strategy.FetchDailyForecastAsync(
+                park,
+                7,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkWeatherProviderResult { Snapshots = new[] { forecast } });
+        Mock<IParkWeatherProviderStrategyResolver> providerStrategyResolver = new Mock<IParkWeatherProviderStrategyResolver>(MockBehavior.Strict);
+        providerStrategyResolver
+            .Setup(resolver => resolver.Resolve())
+            .Returns(providerStrategy.Object);
+        Mock<IParkWeatherCacheInvalidator> cacheInvalidator = new Mock<IParkWeatherCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateUpdatedWeatherAsync(It.IsAny<IReadOnlyCollection<Park>>(), It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new InvalidOperationException("Cache endpoint unavailable"));
+        ParkWeatherRefreshOrchestrator orchestrator = new ParkWeatherRefreshOrchestrator(
+            parkRepository.Object,
+            weatherRepository.Object,
+            runRepository.Object,
+            providerStrategyResolver.Object,
+            new TestRefreshSettings(),
+            cacheInvalidator.Object,
+            new NoOpParkWeatherNotificationService(),
+            new ParkWeatherHistoricalComparisonDateResolver());
+
+        await orchestrator.ProcessRunAsync("run-cache", CancellationToken.None);
+
+        Assert.Equal(ParkWeatherRunStatus.CompletedWithFailures, run.Status);
+        Assert.Equal(1, run.TotalParkCount);
+        Assert.Equal(1, run.SucceededParkCount);
+        Assert.Equal(0, run.FailedParkCount);
+        Assert.Contains("Weather cache invalidation failed", run.Message ?? string.Empty, StringComparison.Ordinal);
+        parkRepository.VerifyAll();
+        weatherRepository.VerifyAll();
+        runRepository.VerifyAll();
+        providerStrategyResolver.VerifyAll();
+        providerStrategy.VerifyAll();
+        cacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
     public async Task ProcessRunAsync_WhenRetryingFailedRun_ShouldKeepOnlyVisibleParksWithCoordinates()
     {
         Park validPark = CreatePark("park-1", "Magic Park", true, 48.86, 2.35);
@@ -358,7 +529,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         cacheInvalidator.VerifyAll();
     }
 
-    private static Mock<IParkWeatherRunRepository> CreateRunRepository(ParkWeatherRun run)
+    private static Mock<IParkWeatherRunRepository> CreateRunRepository(ParkWeatherRun run, Action<ParkWeatherRunItem>? upsertItemCallback = null)
     {
         Mock<IParkWeatherRunRepository> runRepository = new Mock<IParkWeatherRunRepository>(MockBehavior.Strict);
         runRepository
@@ -369,6 +540,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             .Returns(Task.CompletedTask);
         runRepository
             .Setup(repository => repository.UpsertItemAsync(It.IsAny<ParkWeatherRunItem>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkWeatherRunItem, CancellationToken>((item, _) => upsertItemCallback?.Invoke(item))
             .Returns(Task.CompletedTask);
 
         return runRepository;

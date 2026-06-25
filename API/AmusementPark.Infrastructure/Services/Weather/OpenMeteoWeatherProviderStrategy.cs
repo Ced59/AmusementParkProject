@@ -103,7 +103,7 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
                         ParkWeatherDataKind.Observation,
                         DateTime.UtcNow));
                 }
-                catch (Exception exception) when (exception is not OperationCanceledException)
+                catch (Exception exception) when (ShouldHandleProviderWarning(exception, cancellationToken))
                 {
                     warnings.Add($"Yesterday observation could not be fetched: {SanitizeWarning(exception.Message)}");
                 }
@@ -360,6 +360,11 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
     {
         string normalizedMessage = string.IsNullOrWhiteSpace(message) ? "unknown error" : message.Trim();
         return normalizedMessage.Length <= 200 ? normalizedMessage : normalizedMessage[..200];
+    }
+
+    private static bool ShouldHandleProviderWarning(Exception exception, CancellationToken cancellationToken)
+    {
+        return exception is not OperationCanceledException || !cancellationToken.IsCancellationRequested;
     }
 
     private sealed record DateRange(DateOnly Start, DateOnly End);
