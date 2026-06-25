@@ -1,6 +1,20 @@
 {
-  "version": "2.7.6",
+  "version": "2.7.7",
   "history": [
+    {
+      "version": "2.7.7",
+      "releasedAt": "2026-06-25",
+      "labels": {
+        "fr": "La meteo des parcs se met a jour plus surement.",
+        "en": "Park weather updates more reliably.",
+        "de": "Parkwetter wird zuverlaessiger aktualisiert.",
+        "nl": "Parkweer wordt betrouwbaarder bijgewerkt.",
+        "it": "Il meteo dei parchi si aggiorna in modo piu affidabile.",
+        "es": "La meteo de los parques se actualiza con mas fiabilidad.",
+        "pl": "Pogoda parkow aktualizuje sie pewniej.",
+        "pt": "A meteorologia dos parques atualiza com mais fiabilidade."
+      }
+    },
     {
       "version": "2.7.6",
       "releasedAt": "2026-06-24",

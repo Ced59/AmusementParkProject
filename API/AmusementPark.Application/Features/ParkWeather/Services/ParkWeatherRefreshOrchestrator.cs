@@ -48,10 +48,11 @@ public sealed class ParkWeatherRefreshOrchestrator
         run.StartedAtUtc = DateTime.UtcNow;
         run.Message = "Weather refresh running.";
         await this.runRepository.UpdateAsync(run, cancellationToken);
-        await this.NotifyAutomaticRunStartedAsync(run, cancellationToken);
+        List<string> runWarnings = new List<string>();
 
         try
         {
+            await this.NotifyAutomaticRunStartedSafelyAsync(run, runWarnings, cancellationToken);
             IReadOnlyCollection<Park> parks = await this.ResolveTargetParksAsync(run, cancellationToken);
             run.TotalParkCount = parks.Count;
             await this.runRepository.UpdateAsync(run, cancellationToken);
@@ -69,19 +70,17 @@ public sealed class ParkWeatherRefreshOrchestrator
                 await this.DelayBetweenParksAsync(cancellationToken);
             }
 
-            await this.CleanupExpiredWeatherDataAsync(cancellationToken);
-            await this.cacheInvalidator.InvalidateUpdatedWeatherAsync(updatedParks, cancellationToken);
+            await this.CleanupExpiredWeatherDataSafelyAsync(runWarnings, cancellationToken);
+            await this.InvalidateUpdatedWeatherSafelyAsync(updatedParks, runWarnings, cancellationToken);
 
             run.CompletedAtUtc = DateTime.UtcNow;
-            run.Status = run.FailedParkCount == 0
+            run.Status = run.FailedParkCount == 0 && runWarnings.Count == 0
                 ? ParkWeatherRunStatus.Completed
                 : ParkWeatherRunStatus.CompletedWithFailures;
-            run.Message = run.FailedParkCount == 0
-                ? "Weather refresh completed."
-                : "Weather refresh completed with failures.";
+            run.Message = BuildCompletionMessage(run, runWarnings);
 
             await this.runRepository.UpdateAsync(run, cancellationToken);
-            await this.NotifyAutomaticRunCompletedAsync(run, cancellationToken);
+            await this.NotifyAutomaticRunCompletedSafelyAsync(run, cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
@@ -97,23 +96,45 @@ public sealed class ParkWeatherRefreshOrchestrator
             run.Status = ParkWeatherRunStatus.Failed;
             run.Message = SanitizeMessage(exception.Message);
             await this.runRepository.UpdateAsync(run, cancellationToken);
-            await this.NotifyAutomaticRunCompletedAsync(run, cancellationToken);
+            await this.NotifyAutomaticRunCompletedSafelyAsync(run, cancellationToken);
         }
     }
 
-    private async Task NotifyAutomaticRunStartedAsync(ParkWeatherRun run, CancellationToken cancellationToken)
+    private async Task NotifyAutomaticRunStartedSafelyAsync(ParkWeatherRun run, List<string> runWarnings, CancellationToken cancellationToken)
     {
         if (run.Trigger == ParkWeatherRunTrigger.Automatic)
         {
-            await this.notificationService.NotifyRunStartedAsync(run, cancellationToken);
+            try
+            {
+                await this.notificationService.NotifyRunStartedAsync(run, cancellationToken);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                runWarnings.Add($"Start notification failed: {SanitizeMessage(exception.Message)}");
+            }
         }
     }
 
-    private async Task NotifyAutomaticRunCompletedAsync(ParkWeatherRun run, CancellationToken cancellationToken)
+    private async Task NotifyAutomaticRunCompletedSafelyAsync(ParkWeatherRun run, CancellationToken cancellationToken)
     {
         if (run.Trigger == ParkWeatherRunTrigger.Automatic)
         {
-            await this.notificationService.NotifyRunCompletedAsync(run, cancellationToken);
+            try
+            {
+                await this.notificationService.NotifyRunCompletedAsync(run, cancellationToken);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                // The run status is already persisted; notification failures must stay isolated.
+            }
         }
     }
 
@@ -202,7 +223,7 @@ public sealed class ParkWeatherRefreshOrchestrator
             await this.runRepository.UpdateAsync(run, cancellationToken);
             return snapshots.Count > 0;
         }
-        catch (Exception exception) when (exception is not OperationCanceledException)
+        catch (Exception exception) when (ShouldHandleParkFailure(exception, cancellationToken))
         {
             item.Status = ParkWeatherRunItemStatus.Failed;
             item.CompletedAtUtc = DateTime.UtcNow;
@@ -290,7 +311,7 @@ public sealed class ParkWeatherRefreshOrchestrator
             warnings.AddRange(historicalProviderResult.Warnings);
             return historicalProviderResult.Snapshots;
         }
-        catch (Exception exception) when (exception is not OperationCanceledException)
+        catch (Exception exception) when (ShouldHandleParkFailure(exception, cancellationToken))
         {
             warnings.Add($"Historical comparison observations could not be fetched: {SanitizeMessage(exception.Message)}");
             return Array.Empty<ParkWeatherDailySnapshot>();
@@ -308,6 +329,41 @@ public sealed class ParkWeatherRefreshOrchestrator
         await this.weatherRepository.DeleteExpiredObservationsAsync(oldestObservationLocalDateToKeep, cancellationToken);
     }
 
+    private async Task CleanupExpiredWeatherDataSafelyAsync(List<string> runWarnings, CancellationToken cancellationToken)
+    {
+        try
+        {
+            await this.CleanupExpiredWeatherDataAsync(cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            runWarnings.Add($"Expired weather cleanup failed: {SanitizeMessage(exception.Message)}");
+        }
+    }
+
+    private async Task InvalidateUpdatedWeatherSafelyAsync(
+        IReadOnlyCollection<Park> updatedParks,
+        List<string> runWarnings,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            await this.cacheInvalidator.InvalidateUpdatedWeatherAsync(updatedParks, cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            runWarnings.Add($"Weather cache invalidation failed: {SanitizeMessage(exception.Message)}");
+        }
+    }
+
     private static bool HasValidCoordinates(Park park)
     {
         return park.Position is not null
@@ -318,5 +374,26 @@ public sealed class ParkWeatherRefreshOrchestrator
     {
         string normalizedMessage = string.IsNullOrWhiteSpace(message) ? "Unexpected weather refresh error." : message.Trim();
         return normalizedMessage.Length <= 300 ? normalizedMessage : normalizedMessage[..300];
+    }
+
+    private static bool ShouldHandleParkFailure(Exception exception, CancellationToken cancellationToken)
+    {
+        return exception is not OperationCanceledException || !cancellationToken.IsCancellationRequested;
+    }
+
+    private static string BuildCompletionMessage(ParkWeatherRun run, IReadOnlyCollection<string> runWarnings)
+    {
+        string message = run.FailedParkCount > 0
+            ? "Weather refresh completed with failures."
+            : runWarnings.Count > 0
+                ? "Weather refresh completed with warnings."
+                : "Weather refresh completed.";
+
+        if (runWarnings.Count == 0)
+        {
+            return message;
+        }
+
+        return SanitizeMessage($"{message} {string.Join(" ", runWarnings)}");
     }
 }

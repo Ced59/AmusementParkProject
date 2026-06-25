@@ -42,6 +42,36 @@ public sealed class OpenMeteoWeatherProviderStrategyTests
     }
 
     [Fact]
+    public async Task FetchDailyForecastAsync_WhenYesterdayObservationTimesOut_ShouldReturnForecastWithWarning()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler
+        {
+            ThrowArchiveTimeout = true,
+        };
+        TestHttpClientFactory httpClientFactory = new TestHttpClientFactory(new HttpClient(handler));
+        OpenMeteoWeatherProviderStrategy strategy = new OpenMeteoWeatherProviderStrategy(
+            httpClientFactory,
+            new ParkWeatherSettings
+            {
+                OpenMeteoForecastBaseUrl = "https://weather.test/forecast",
+                OpenMeteoArchiveBaseUrl = "https://weather.test/archive",
+                MinimumDelayBetweenProviderRequestsMilliseconds = 0,
+            });
+        Park park = CreatePark();
+
+        ParkWeatherProviderResult result = await strategy.FetchDailyForecastAsync(
+            park,
+            7,
+            includeYesterdayObservation: true,
+            CancellationToken.None);
+
+        Assert.Equal(2, result.Snapshots.Count);
+        Assert.All(result.Snapshots, static snapshot => Assert.Equal(ParkWeatherDataKind.Forecast, snapshot.DataKind));
+        Assert.Contains(result.Warnings, static warning => warning.Contains("Yesterday observation could not be fetched", StringComparison.Ordinal));
+        Assert.Equal(2, handler.Requests.Count);
+    }
+
+    [Fact]
     public async Task FetchDailyObservationsAsync_WhenDatesSpanSeparateRanges_ShouldRequestEachContiguousRange()
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler();
@@ -109,10 +139,17 @@ public sealed class OpenMeteoWeatherProviderStrategyTests
     {
         public List<Uri> Requests { get; } = new List<Uri>();
 
+        public bool ThrowArchiveTimeout { get; init; }
+
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             Uri requestUri = request.RequestUri ?? throw new InvalidOperationException("Request URI is required.");
             this.Requests.Add(requestUri);
+
+            if (this.ThrowArchiveTimeout && requestUri.AbsolutePath == "/archive")
+            {
+                throw new TaskCanceledException("The request was canceled due to the configured HttpClient.Timeout of 20 seconds elapsing.");
+            }
 
             string content = requestUri.AbsolutePath == "/forecast"
                 ? ForecastResponse
