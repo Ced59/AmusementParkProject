@@ -50,6 +50,7 @@ export class AdminFieldModeActionsFacade {
   public readonly locationKey: Signal<AdminFieldModeLocationKey> = this.locationKeySignal.asReadonly();
   public readonly busy: Signal<boolean> = this.busySignal.asReadonly();
   public readonly readyForPhoto: Signal<boolean> = computed(() => this.isPositionFresh(this.positionSignal()));
+  public readonly photoCategoryOptions = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS).asReadonly();
 
   constructor(
     @Inject(ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: AdminFieldModeImagesApiServicePort,
