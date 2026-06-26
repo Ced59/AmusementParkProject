@@ -44,8 +44,12 @@
   <ng-container *ngIf="state.selectedPark(); else noParkSelected">
     <section class="admin-field-mode__stats" aria-label="Mode terrain résumé">
       <article class="admin-card">
-        <strong>{{ state.totalItemCount() }}</strong>
-        <span class="admin-muted">{{ text('items', 'items') }}</span>
+        <strong>{{ state.unprocessedItemCount() }}</strong>
+        <span class="admin-muted">{{ text('à traiter', 'todo') }}</span>
+      </article>
+      <article class="admin-card">
+        <strong>{{ state.processedItemCount() }}</strong>
+        <span class="admin-muted">{{ text('traités', 'processed') }}</span>
       </article>
       <article class="admin-card">
         <strong>{{ state.missingPhotosCount() }}</strong>
@@ -54,10 +58,6 @@
       <article class="admin-card">
         <strong>{{ state.missingGeneralLocationCount() }}</strong>
         <span class="admin-muted">{{ text('sans position', 'without position') }}</span>
-      </article>
-      <article class="admin-card">
-        <strong>{{ state.missingPreciseLocationCount() }}</strong>
-        <span class="admin-muted">{{ text('sans accès précis', 'without precise access') }}</span>
       </article>
     </section>
 
@@ -69,7 +69,12 @@
           <input id="field-mode-item-search" type="search" [placeholder]="text('Rechercher un item', 'Search an item')" [ngModel]="state.search()" (ngModelChange)="setSearch($event)">
         </div>
       </div>
-      <div class="admin-toolbar__actions admin-field-mode__filters" aria-label="Filtres">
+      <div class="admin-toolbar__actions admin-field-mode__filters" aria-label="Filtres terrain">
+        <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'unprocessed'" (click)="setProcessedFilter('unprocessed')">{{ text('À traiter', 'Todo') }}</button>
+        <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'processed'" (click)="setProcessedFilter('processed')">{{ text('Traités', 'Processed') }}</button>
+        <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'all'" (click)="setProcessedFilter('all')">{{ text('Tous', 'All') }}</button>
+      </div>
+      <div class="admin-toolbar__actions admin-field-mode__filters" aria-label="Filtres qualité">
         <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.filter() === 'all'" (click)="setFilter('all')">{{ text('Tout', 'All') }}</button>
         <button pButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingPhotos'" (click)="setFilter('missingPhotos')">{{ text('Photos', 'Photos') }}</button>
         <button pButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingGeneralLocation'" (click)="setFilter('missingGeneralLocation')">{{ text('Position', 'Position') }}</button>
@@ -79,17 +84,21 @@
 
     <div class="admin-field-mode__workspace">
       <section class="admin-field-mode__list" aria-label="Park items">
-        <button type="button" class="admin-field-mode__item admin-card" *ngFor="let row of state.filteredRows()" (click)="selectRow(row)" [class.admin-field-mode__item--active]="state.selectedItem()?.id === row.item.id">
+        <article role="button" tabindex="0" class="admin-field-mode__item admin-card" *ngFor="let row of state.filteredRows()" (click)="selectRow(row)" (keydown.enter)="selectRow(row)" (keydown.space)="selectRow(row)" [class.admin-field-mode__item--active]="state.selectedItem()?.id === row.item.id" [class.admin-field-mode__item--processed]="row.isProcessed">
           <span class="admin-field-mode__item-main">
             <strong class="admin-row-title">{{ row.item.name }}</strong>
             <small class="admin-muted">{{ row.item.category }} · {{ row.item.type }}</small>
           </span>
           <span class="admin-field-mode__badges">
+            <span class="admin-badge" [class.admin-badge--success]="row.isProcessed">{{ row.isProcessed ? text('Traité', 'Processed') : text('À traiter', 'Todo') }}</span>
             <span class="admin-badge" [class.admin-badge--warning]="(row.photoCount ?? 0) === 0">📷 {{ row.photoCount ?? '?' }}</span>
             <span class="admin-badge" [class.admin-badge--warning]="!row.hasGeneralLocation">📍 {{ row.hasGeneralLocation ? text('OK', 'OK') : text('À faire', 'Todo') }}</span>
             <span class="admin-badge" [class.admin-badge--warning]="!row.hasAnyPreciseLocation">🎯 {{ row.preciseLocationCount }}</span>
           </span>
-        </button>
+          <button pButton type="button" class="p-button-sm p-button-text admin-field-mode__processed-toggle" (click)="toggleProcessed(row, $event)">
+            {{ row.isProcessed ? text('Remettre à traiter', 'Mark todo') : text('Marquer traité', 'Mark processed') }}
+          </button>
+        </article>
       </section>
 
       <aside class="admin-field-mode__editor admin-editor-card" *ngIf="state.selectedItem() as item; else noItemSelected">
@@ -98,6 +107,9 @@
             <span class="admin-kicker">{{ text('Édition rapide', 'Quick edit') }}</span>
             <h2>{{ item.name }}</h2>
           </div>
+          <button pButton type="button" class="p-button-sm" *ngIf="selectedRow() as row" (click)="toggleProcessed(row, $event)">
+            {{ row.isProcessed ? text('Remettre à traiter', 'Mark todo') : text('Marquer traité', 'Mark processed') }}
+          </button>
         </header>
 
         <section class="admin-field-mode__block admin-callout">
@@ -144,6 +156,7 @@
         </section>
 
         <p class="admin-field-mode__message admin-callout" *ngIf="actions.statusMessageKey() as messageKey">{{ messageLabel(messageKey) }}</p>
+        <p class="admin-field-mode__message admin-callout" *ngIf="state.messageKey() as messageKey">{{ messageLabel(messageKey) }}</p>
       </aside>
     </div>
   </ng-container>
