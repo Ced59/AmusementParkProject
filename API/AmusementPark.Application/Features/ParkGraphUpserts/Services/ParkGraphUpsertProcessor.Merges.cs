@@ -100,6 +100,9 @@ public sealed partial class ParkGraphUpsertProcessor
 
         IReadOnlyCollection<ParkItem> sourceItems = await this.parkItemRepository.GetByManufacturerIdAsync(source.Id, true, cancellationToken);
         IReadOnlyCollection<Image> sourceImages = await this.imageRepository.GetByOwnerAsync(ImageOwnerType.AttractionManufacturer, source.Id, null, cancellationToken);
+        string? copiedSourceLogoImageId = ShouldTakeSourceSection(sections, "logo")
+            ? NormalizeString(source.CurrentLogoImageId)
+            : null;
         AddAttachmentCountChange(targetChange, "attachments.parkItemsMoved", sourceItems.Count);
         AddAttachmentCountChange(targetChange, "attachments.imagesMoved", sourceImages.Count);
 
@@ -111,12 +114,6 @@ public sealed partial class ParkGraphUpsertProcessor
         ParkGraphUpsertChange sourceChange = BuildDeletedMergeSourceChange("AttractionManufacturer", source.Id, source.Name, target.Id);
         if (apply)
         {
-            if (targetChange.Fields.Count > 0)
-            {
-                AttractionManufacturer? updated = await this.attractionManufacturerRepository.UpdateAsync(merged.Id, merged, cancellationToken);
-                merged = updated ?? merged;
-            }
-
             foreach (ParkItem item in sourceItems)
             {
                 PublicSeoParkItemSnapshot? previousSnapshot = PublicSeoParkItemSnapshot.FromParkItem(item);
@@ -144,7 +141,19 @@ public sealed partial class ParkGraphUpsertProcessor
 
             foreach (Image image in sourceImages)
             {
+                if (IsCopiedSourceLogoImage(image, copiedSourceLogoImageId))
+                {
+                    await this.imageRepository.SetCurrentAsync(image.Id, ImageOwnerType.AttractionManufacturer, merged.Id, cancellationToken);
+                    continue;
+                }
+
                 await this.imageRepository.LinkAsync(image.Id, ImageOwnerType.AttractionManufacturer, merged.Id, cancellationToken);
+            }
+
+            if (targetChange.Fields.Count > 0)
+            {
+                AttractionManufacturer? updated = await this.attractionManufacturerRepository.UpdateAsync(merged.Id, merged, cancellationToken);
+                merged = updated ?? merged;
             }
 
             await this.attractionManufacturerRepository.DeleteAsync(source.Id, cancellationToken);
@@ -160,6 +169,13 @@ public sealed partial class ParkGraphUpsertProcessor
         AddManufacturerKeyRemaps(manufacturerKeys, source.Id, target.Id);
         result.Changes.Add(targetChange);
         result.Changes.Add(sourceChange);
+    }
+
+    private static bool IsCopiedSourceLogoImage(Image image, string? copiedSourceLogoImageId)
+    {
+        return !string.IsNullOrWhiteSpace(copiedSourceLogoImageId)
+            && string.Equals(image.Id, copiedSourceLogoImageId, StringComparison.Ordinal)
+            && image.Category == ImageCategory.Logo;
     }
 
     private async Task MergeParkAsync(
