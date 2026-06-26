@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { AdminFieldModeGeolocationPermissionState, AdminFieldModeGeolocationPort } from '../state/admin-field-mode-data.ports';
 
+interface BrowserPolicy {
+  allowsFeature?(feature: string): boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +18,10 @@ export class AdminFieldModePositionService implements AdminFieldModeGeolocationP
     const nav: Navigator | undefined = globalThis.navigator;
     if (!nav?.geolocation) {
       return 'unavailable';
+    }
+
+    if (this.isBlockedByPermissionsPolicy()) {
+      return 'blocked-by-policy';
     }
 
     if (!nav.permissions?.query) {
@@ -41,5 +49,22 @@ export class AdminFieldModePositionService implements AdminFieldModeGeolocationP
     return new Promise((resolve: PositionCallback, reject: PositionErrorCallback): void => {
       provider.getCurrentPosition(resolve, reject, options);
     });
+  }
+
+  private isBlockedByPermissionsPolicy(): boolean {
+    const currentDocument = typeof globalThis !== 'undefined'
+      ? globalThis.document as (Document & { permissionsPolicy?: BrowserPolicy; featurePolicy?: BrowserPolicy }) | undefined
+      : undefined;
+    const policy: BrowserPolicy | undefined = currentDocument?.permissionsPolicy ?? currentDocument?.featurePolicy;
+
+    if (!policy?.allowsFeature) {
+      return false;
+    }
+
+    try {
+      return !policy.allowsFeature('geolocation');
+    } catch {
+      return false;
+    }
   }
 }

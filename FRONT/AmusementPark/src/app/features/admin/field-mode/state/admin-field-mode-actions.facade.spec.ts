@@ -93,6 +93,15 @@ describe('AdminFieldModeActionsFacade', () => {
     expect(positionPort.getCurrentPosition).not.toHaveBeenCalled();
     expect(facade.statusMessageKey()).toBe('admin.fieldMode.messages.positionDenied');
   });
+
+  it('stops location capture when browser policy blocks geolocation', async () => {
+    positionPort.getPermissionState.and.returnValue(Promise.resolve('blocked-by-policy'));
+
+    await expectAsync(facade.refreshPosition()).toBeRejected();
+
+    expect(positionPort.getCurrentPosition).not.toHaveBeenCalled();
+    expect(facade.statusMessageKey()).toBe('admin.fieldMode.messages.positionBlockedByPolicy');
+  });
 });
 
 function createFileInputEvent(file: File): Event {

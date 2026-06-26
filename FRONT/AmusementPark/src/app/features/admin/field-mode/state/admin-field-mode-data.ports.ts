@@ -19,7 +19,7 @@ import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
 import { ParkItemAdminListFilters, ParkItemAdminListSort, ParkItemsByParkIdFilters } from '@data-access/park-items/park-items-api-endpoints';
 import { PagedResult } from '@shared/models/contracts';
 
-export type AdminFieldModeGeolocationPermissionState = PermissionState | 'unsupported' | 'insecure-context' | 'unavailable';
+export type AdminFieldModeGeolocationPermissionState = PermissionState | 'unsupported' | 'insecure-context' | 'unavailable' | 'blocked-by-policy';
 
 export interface AdminFieldModeParksApiServicePort {
   getParksPaginated(page: number, size: number): Observable<ParksApiResponse>;
