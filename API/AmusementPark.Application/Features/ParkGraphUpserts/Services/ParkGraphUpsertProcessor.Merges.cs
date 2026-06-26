@@ -150,13 +150,19 @@ public sealed partial class ParkGraphUpsertProcessor
                 await this.imageRepository.LinkAsync(image.Id, ImageOwnerType.AttractionManufacturer, merged.Id, cancellationToken);
             }
 
+            bool sourceDeleted = await this.attractionManufacturerRepository.DeleteAsync(source.Id, cancellationToken);
+            if (!sourceDeleted)
+            {
+                result.Errors.Add($"Manufacturer merge failed: source '{source.Id}' could not be deleted before updating target '{target.Id}'.");
+                return;
+            }
+
             if (targetChange.Fields.Count > 0)
             {
                 AttractionManufacturer? updated = await this.attractionManufacturerRepository.UpdateAsync(merged.Id, merged, cancellationToken);
                 merged = updated ?? merged;
             }
 
-            await this.attractionManufacturerRepository.DeleteAsync(source.Id, cancellationToken);
             await this.searchProjectionWriter.DeleteAsync(SearchProjectionResourceTypes.Manufacturers, source.Id, cancellationToken);
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, merged.Id, cancellationToken);
             if (sourceItems.Count > 0)
