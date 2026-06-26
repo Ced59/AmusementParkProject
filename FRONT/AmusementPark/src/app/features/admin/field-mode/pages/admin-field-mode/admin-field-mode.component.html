@@ -1,5 +1,5 @@
 <section class="admin-field-mode">
-  <div class="admin-field-mode__toast" *ngIf="actions.statusMessageKey() as messageKey" role="status" aria-live="polite">
+  <div class="admin-field-mode__toast" *ngIf="actions.statusMessageKey() || state.messageKey() as messageKey" role="status" aria-live="polite">
     {{ messageLabel(messageKey) }}
   </div>
 

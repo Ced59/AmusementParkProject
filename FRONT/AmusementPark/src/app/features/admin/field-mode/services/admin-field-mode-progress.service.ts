@@ -22,16 +22,23 @@ export class AdminFieldModeProgressService implements AdminFieldModeProcessedSta
   }
 
   getProcessedItemIds(parkId: string): Observable<Set<string>> {
-    const url: string = `${environment.apiBaseUrl}/admin/field-mode/parks/${encodeURIComponent(parkId)}/processed-items`;
+    const url: string = this.buildUrl(`admin/field-mode/parks/${encodeURIComponent(parkId)}/processed-items`);
     return this.http.get<AdminFieldModeProcessedItemsResponse>(url).pipe(
       map((response: AdminFieldModeProcessedItemsResponse) => new Set(response.itemIds ?? []))
     );
   }
 
   setProcessed(parkId: string, itemId: string, isProcessed: boolean): Observable<boolean> {
-    const url: string = `${environment.apiBaseUrl}/admin/field-mode/parks/${encodeURIComponent(parkId)}/items/${encodeURIComponent(itemId)}/processed`;
+    const url: string = this.buildUrl(`admin/field-mode/parks/${encodeURIComponent(parkId)}/items/${encodeURIComponent(itemId)}/processed`);
     return this.http.put<AdminFieldModeProcessedItemResponse>(url, { isProcessed }).pipe(
       map((response: AdminFieldModeProcessedItemResponse) => response.isProcessed)
     );
+  }
+
+  private buildUrl(path: string): string {
+    const baseUrl: string = environment.apiBaseUrl.endsWith('/')
+      ? environment.apiBaseUrl
+      : `${environment.apiBaseUrl}/`;
+    return `${baseUrl}${path.replace(/^\/+/, '')}`;
   }
 }
