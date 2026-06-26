@@ -97,6 +97,57 @@
         </div>
       </div>
 
+      <section class="merge-builder" aria-labelledby="merge-builder-title">
+        <div class="merge-builder__head">
+          <h3 id="merge-builder-title">{{ 'admin.parkGraphUpserts.mergeBuilder.title' | translate }}</h3>
+          <button type="button" class="btn-nav" (click)="addMergeDraft()" [disabled]="!canAddMergeDraft">
+            <span class="pi pi-code" aria-hidden="true"></span>
+            {{ 'admin.parkGraphUpserts.mergeBuilder.add' | translate }}
+          </button>
+        </div>
+
+        <div class="merge-builder__fields">
+          <label>
+            <span>{{ 'admin.parkGraphUpserts.mergeBuilder.entityType' | translate }}</span>
+            <select class="admin-input" [ngModel]="mergeEntityType" (ngModelChange)="selectMergeEntityType($event)">
+              @for (entityType of mergeEntityTypes; track trackMergeEntityType($index, entityType)) {
+                <option [value]="entityType">{{ ('admin.parkGraphUpserts.mergeBuilder.entityTypes.' + entityType) | translate }}</option>
+              }
+            </select>
+          </label>
+          <label>
+            <span>{{ 'admin.parkGraphUpserts.mergeBuilder.sourceId' | translate }}</span>
+            <input type="text" class="admin-input" [(ngModel)]="mergeSourceId" autocomplete="off">
+          </label>
+          <label>
+            <span>{{ 'admin.parkGraphUpserts.mergeBuilder.targetId' | translate }}</span>
+            <input type="text" class="admin-input" [(ngModel)]="mergeTargetId" autocomplete="off">
+          </label>
+        </div>
+
+        <div class="merge-sections" role="group" [attr.aria-label]="'admin.parkGraphUpserts.mergeBuilder.sections' | translate">
+          @for (section of mergeSections; track trackMergeSection($index, section)) {
+            <div class="merge-section">
+              <span>{{ ('admin.parkGraphUpserts.mergeBuilder.sectionLabels.' + section) | translate }}</span>
+              <div class="merge-section__choices">
+                <button
+                  type="button"
+                  [class.active]="mergeSectionChoices[section] !== 'source'"
+                  (click)="setMergeSectionChoice(section, 'target')">
+                  {{ 'admin.parkGraphUpserts.mergeBuilder.targetVersion' | translate }}
+                </button>
+                <button
+                  type="button"
+                  [class.active]="mergeSectionChoices[section] === 'source'"
+                  (click)="setMergeSectionChoice(section, 'source')">
+                  {{ 'admin.parkGraphUpserts.mergeBuilder.sourceVersion' | translate }}
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+
       <textarea class="json-editor" [(ngModel)]="jsonText" [placeholder]="expertJsonPlaceholder" spellcheck="false" aria-label="JSON"></textarea>
     </section>
   </article>

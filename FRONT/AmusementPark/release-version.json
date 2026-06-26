@@ -1,6 +1,20 @@
 {
-  "version": "2.7.7",
+  "version": "2.7.8",
   "history": [
+    {
+      "version": "2.7.8",
+      "releasedAt": "2026-06-26",
+      "labels": {
+        "fr": "L'administration gere mieux les doublons.",
+        "en": "Admin duplicate handling improves.",
+        "de": "Die Administration verarbeitet Duplikate besser.",
+        "nl": "De administratie verwerkt dubbels beter.",
+        "it": "L'amministrazione gestisce meglio i duplicati.",
+        "es": "La administracion gestiona mejor los duplicados.",
+        "pl": "Administracja lepiej obsluguje duplikaty.",
+        "pt": "A administracao gere melhor duplicados."
+      }
+    },
     {
       "version": "2.7.7",
       "releasedAt": "2026-06-25",

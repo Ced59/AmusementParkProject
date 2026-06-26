@@ -446,7 +446,9 @@
         "errorsCopiedTitle": "Errori copiati",
         "errorsCopiedDetail": "I dettagli sono negli appunti.",
         "copyFailedTitle": "Copia non riuscita",
-        "copyFailedDetail": "Non e stato possibile copiare i dettagli."
+        "copyFailedDetail": "Non e stato possibile copiare i dettagli.",
+        "mergeDraftUpdatedTitle": "Fusione aggiunta",
+        "mergeDraftUpdatedDetail": "La bozza JSON e stata aggiornata."
       },
       "result": {
         "title": "Anteprima",
@@ -524,6 +526,37 @@
         "manufacturerName": "Manufacturer name",
         "imageUrl": "Image URL",
         "imageAltText": "Image alt text"
+      },
+      "mergeBuilder": {
+        "title": "Unisci duplicato",
+        "entityType": "Entita",
+        "sourceId": "Id duplicato",
+        "targetId": "Id mantenuto",
+        "sections": "Sezioni",
+        "targetVersion": "Mantieni",
+        "sourceVersion": "Prendi",
+        "add": "Aggiungi fusione",
+        "entityTypes": {
+          "AttractionManufacturer": "Costruttore",
+          "Park": "Parco",
+          "ParkItem": "Item parco"
+        },
+        "sectionLabels": {
+          "identity": "Identita",
+          "contactDetails": "Contatto",
+          "biography": "Biografia",
+          "logo": "Logo",
+          "administration": "Amministrazione",
+          "ownership": "Proprieta",
+          "contact": "Contatto",
+          "descriptions": "Descrizioni",
+          "location": "Posizione",
+          "visibility": "Visibilita",
+          "homeFeature": "Home",
+          "zone": "Zona",
+          "attractionDetails": "Dettagli attrazione",
+          "attractionLocations": "Accessi attrazione"
+        }
       },
       "history": {
         "title": "Graph history",

@@ -17,7 +17,7 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
 public sealed partial class ParkGraphUpsertProcessor
 {
-    private async Task<ParkGraphUpsertItemSeoChanges> ProcessItemsAsync(JsonElement root, Park park, Dictionary<string, string> zoneKeys, Dictionary<string, string> manufacturerKeys, Dictionary<string, string> itemKeys, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
+    private async Task<ParkGraphUpsertItemSeoChanges> ProcessItemsAsync(JsonElement root, Park park, Dictionary<string, string> zoneKeys, Dictionary<string, string> manufacturerKeys, Dictionary<string, string> manufacturerIdRemaps, Dictionary<string, string> itemKeys, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
     {
         ParkGraphUpsertItemSeoChanges seoChanges = new ParkGraphUpsertItemSeoChanges();
         if (!root.TryGetProperty("items", out JsonElement items) || items.ValueKind != JsonValueKind.Array)
@@ -53,7 +53,7 @@ public sealed partial class ParkGraphUpsertProcessor
             PublicSeoParkItemSnapshot? previousItemSnapshot = isNew ? null : PublicSeoParkItemSnapshot.FromParkItem(item);
 
             ParkGraphUpsertChange change = BuildEntityChange("ParkItem", item.Id, key, item.Name, isNew ? "Created" : "Unchanged", isNew ? "name" : MatchMode(id, name));
-            this.PatchItem(item, patch, zoneKeys, manufacturerKeys, change, result, isNew);
+            this.PatchItem(item, patch, zoneKeys, manufacturerKeys, manufacturerIdRemaps, change, result, isNew);
             item.ParkId = park.Id;
 
             if (change.Fields.Count > 0 || isNew)

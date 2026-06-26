@@ -115,6 +115,8 @@ public interface IParkRepository
     /// </summary>
     Task<Park?> UpdateAsync(string parkId, Park park, CancellationToken cancellationToken);
 
+    Task<bool> DeleteAsync(string parkId, CancellationToken cancellationToken);
+
     /// <summary>
     /// Met à jour uniquement la visibilité d'un parc.
     /// </summary>

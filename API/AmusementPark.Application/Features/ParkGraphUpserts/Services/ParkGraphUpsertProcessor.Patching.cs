@@ -185,7 +185,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         ApplyOptionalPositionPatch(zone, patch, change);
     }
-    private void PatchItem(ParkItem item, JsonElement patch, Dictionary<string, string> zoneKeys, Dictionary<string, string> manufacturerKeys, ParkGraphUpsertChange change, ParkGraphUpsertResult result, bool isNew)
+    private void PatchItem(ParkItem item, JsonElement patch, Dictionary<string, string> zoneKeys, Dictionary<string, string> manufacturerKeys, Dictionary<string, string> manufacturerIdRemaps, ParkGraphUpsertChange change, ParkGraphUpsertResult result, bool isNew)
     {
         PatchString(patch, "name", item.Name, value => item.Name = value ?? string.Empty, change);
         PatchString(patch, "subtype", item.Subtype, value => item.Subtype = value, change);
@@ -230,7 +230,7 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             JsonElement? detailsPatch = GetObject(patch, "attractionDetails");
             item.AttractionDetails ??= new AttractionDetails();
-            this.PatchAttractionDetails(item.AttractionDetails, detailsPatch, manufacturerKeys, change, result, item.Name);
+            this.PatchAttractionDetails(item.AttractionDetails, detailsPatch, manufacturerKeys, manufacturerIdRemaps, change, result, item.Name);
         }
         else if (isNew && item.Category == ParkItemCategory.Attraction)
         {
@@ -243,17 +243,29 @@ public sealed partial class ParkGraphUpsertProcessor
             PatchAttractionLocations(item.AttractionLocations, GetObject(patch, "attractionLocations"), change);
         }
     }
-    private void PatchAttractionDetails(AttractionDetails details, JsonElement? patch, Dictionary<string, string> manufacturerKeys, ParkGraphUpsertChange change, ParkGraphUpsertResult result, string itemName)
+    private void PatchAttractionDetails(AttractionDetails details, JsonElement? patch, Dictionary<string, string> manufacturerKeys, Dictionary<string, string> manufacturerIdRemaps, ParkGraphUpsertChange change, ParkGraphUpsertResult result, string itemName)
     {
         if (patch is null)
         {
             return;
         }
 
-        PatchString(patch, "manufacturerId", details.ManufacturerId, value => details.ManufacturerId = value, change, "attractionDetails.manufacturerId");
+        if (HasProperty(patch, "manufacturerId"))
+        {
+            string? requestedManufacturerId = RemapId(manufacturerIdRemaps, ReadStringAllowNull(patch, "manufacturerId")?.Trim());
+            if (string.IsNullOrWhiteSpace(requestedManufacturerId))
+            {
+                requestedManufacturerId = null;
+            }
+
+            AddChange(change, "attractionDetails.manufacturerId", details.ManufacturerId, requestedManufacturerId);
+            details.ManufacturerId = requestedManufacturerId;
+        }
+
         string? manufacturerKey = ReadString(patch, "manufacturerKey");
         if (!string.IsNullOrWhiteSpace(manufacturerKey) && manufacturerKeys.TryGetValue(manufacturerKey, out string? manufacturerId))
         {
+            manufacturerId = RemapId(manufacturerIdRemaps, manufacturerId);
             AddChange(change, "attractionDetails.manufacturerId", details.ManufacturerId, manufacturerId);
             details.ManufacturerId = manufacturerId;
         }

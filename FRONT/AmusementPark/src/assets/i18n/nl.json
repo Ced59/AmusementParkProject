@@ -446,7 +446,9 @@
         "errorsCopiedTitle": "Fouten gekopieerd",
         "errorsCopiedDetail": "De details staan op het klembord.",
         "copyFailedTitle": "Kopieren mislukt",
-        "copyFailedDetail": "De details konden niet worden gekopieerd."
+        "copyFailedDetail": "De details konden niet worden gekopieerd.",
+        "mergeDraftUpdatedTitle": "Merge toegevoegd",
+        "mergeDraftUpdatedDetail": "Het JSON-concept is bijgewerkt."
       },
       "result": {
         "title": "Voorbeeld",
@@ -524,6 +526,37 @@
         "manufacturerName": "Manufacturer name",
         "imageUrl": "Image URL",
         "imageAltText": "Image alt text"
+      },
+      "mergeBuilder": {
+        "title": "Dubbel samenvoegen",
+        "entityType": "Entiteit",
+        "sourceId": "Dubbel id",
+        "targetId": "Bewaard id",
+        "sections": "Secties",
+        "targetVersion": "Bewaar",
+        "sourceVersion": "Neem over",
+        "add": "Merge toevoegen",
+        "entityTypes": {
+          "AttractionManufacturer": "Bouwer",
+          "Park": "Park",
+          "ParkItem": "Parkitem"
+        },
+        "sectionLabels": {
+          "identity": "Identiteit",
+          "contactDetails": "Contact",
+          "biography": "Biografie",
+          "logo": "Logo",
+          "administration": "Administratie",
+          "ownership": "Eigendom",
+          "contact": "Contact",
+          "descriptions": "Beschrijvingen",
+          "location": "Locatie",
+          "visibility": "Zichtbaarheid",
+          "homeFeature": "Home",
+          "zone": "Zone",
+          "attractionDetails": "Attractiedetails",
+          "attractionLocations": "Attractietoegangen"
+        }
       },
       "history": {
         "title": "Graph history",

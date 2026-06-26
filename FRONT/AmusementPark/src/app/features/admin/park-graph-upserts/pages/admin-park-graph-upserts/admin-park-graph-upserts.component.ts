@@ -17,6 +17,8 @@ import { SafeExternalUrlPipe } from '@shared/pipes';
 import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 
 type ParkGraphUpsertChangeTypeFilter = 'All' | 'Created' | 'Updated' | 'Deleted' | 'Unchanged' | 'Warning' | 'Skipped';
+type ParkGraphUpsertMergeEntityType = 'AttractionManufacturer' | 'Park' | 'ParkItem';
+type ParkGraphUpsertMergeSectionChoice = 'target' | 'source';
 type ToastSeverity = 'success' | 'info' | 'warn' | 'error';
 type JsonObject = Record<string, unknown>;
 
@@ -41,6 +43,12 @@ interface ParkGraphUpsertSourceLocation {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminParkGraphUpsertsComponent implements OnInit {
+  private static readonly mergeSectionsByEntityType: Record<ParkGraphUpsertMergeEntityType, readonly string[]> = {
+    AttractionManufacturer: ['identity', 'contactDetails', 'biography', 'logo', 'administration'],
+    Park: ['identity', 'ownership', 'contact', 'descriptions', 'location', 'logo', 'visibility', 'homeFeature'],
+    ParkItem: ['identity', 'zone', 'descriptions', 'location', 'attractionDetails', 'attractionLocations', 'visibility']
+  };
+
   private static readonly removableSourceLocations: Record<string, ParkGraphUpsertSourceLocation> = {
     ParkZone: {
       path: ['zones'],
@@ -75,6 +83,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   };
 
   protected readonly changeTypeFilters: ParkGraphUpsertChangeTypeFilter[] = ['All', 'Created', 'Updated', 'Deleted', 'Unchanged', 'Warning', 'Skipped'];
+  protected readonly mergeEntityTypes: ParkGraphUpsertMergeEntityType[] = ['AttractionManufacturer', 'Park', 'ParkItem'];
   protected readonly expertJsonPlaceholder: string = this.buildDefaultJson();
 
   protected searchTerm: string = '';
@@ -92,6 +101,10 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   protected uiError: string | null = null;
   protected operationErrorDetail: string | null = null;
   protected isNearPageBottom: boolean = false;
+  protected mergeEntityType: ParkGraphUpsertMergeEntityType = 'AttractionManufacturer';
+  protected mergeSourceId: string = '';
+  protected mergeTargetId: string = '';
+  protected mergeSectionChoices: Record<string, ParkGraphUpsertMergeSectionChoice> = this.createMergeSectionChoices('AttractionManufacturer');
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -405,8 +418,80 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     return this.jsonText.trim().length > 0;
   }
 
+  protected get mergeSections(): readonly string[] {
+    return AdminParkGraphUpsertsComponent.mergeSectionsByEntityType[this.mergeEntityType];
+  }
+
+  protected get canAddMergeDraft(): boolean {
+    const sourceId: string = this.mergeSourceId.trim();
+    const targetId: string = this.mergeTargetId.trim();
+    return sourceId.length > 0 && targetId.length > 0 && sourceId !== targetId;
+  }
+
+  protected selectMergeEntityType(entityType: string): void {
+    if (!this.isMergeEntityType(entityType)) {
+      return;
+    }
+
+    this.mergeEntityType = entityType;
+    this.mergeSectionChoices = this.createMergeSectionChoices(entityType);
+  }
+
+  protected setMergeSectionChoice(section: string, choice: ParkGraphUpsertMergeSectionChoice): void {
+    this.mergeSectionChoices = {
+      ...this.mergeSectionChoices,
+      [section]: choice
+    };
+  }
+
+  protected addMergeDraft(): void {
+    if (!this.canAddMergeDraft) {
+      return;
+    }
+
+    const document: JsonObject | null = this.parseJsonDraftForMergeEdit();
+    if (document === null) {
+      return;
+    }
+
+    const sections: JsonObject = {};
+    for (const section of this.mergeSections) {
+      sections[section] = this.mergeSectionChoices[section] === 'source' ? 'source' : 'target';
+    }
+
+    const merge = {
+      entityType: this.mergeEntityType,
+      sourceId: this.mergeSourceId.trim(),
+      targetId: this.mergeTargetId.trim(),
+      sections
+    };
+
+    const existingMerges: unknown = document['merges'];
+    if (Array.isArray(existingMerges)) {
+      existingMerges.push(merge);
+    } else {
+      document['merges'] = [merge];
+    }
+
+    this.jsonText = JSON.stringify(document, null, 2);
+    this.previewResult = null;
+    this.lastAppliedResult = null;
+    this.uiError = null;
+    this.operationErrorDetail = null;
+    this.showToast('success', 'admin.parkGraphUpserts.toasts.mergeDraftUpdatedTitle', 'admin.parkGraphUpserts.toasts.mergeDraftUpdatedDetail');
+    this.changeDetectorRef.markForCheck();
+  }
+
   protected trackPark(_: number, park: Park): string {
     return park.id ?? park.name ?? `${park.latitude}-${park.longitude}`;
+  }
+
+  protected trackMergeEntityType(_: number, entityType: ParkGraphUpsertMergeEntityType): string {
+    return entityType;
+  }
+
+  protected trackMergeSection(_: number, section: string): string {
+    return section;
   }
 
   protected trackChange(index: number, change: ParkGraphUpsertChange): string {
@@ -468,12 +553,6 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     this.uiError = null;
     this.operationErrorDetail = null;
 
-    if (!this.selectedPark?.id) {
-      this.uiError = 'admin.parkGraphUpserts.errors.noParkSelected';
-      this.changeDetectorRef.markForCheck();
-      return null;
-    }
-
     let document: unknown;
     try {
       document = JSON.parse(this.jsonText);
@@ -483,8 +562,14 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
       return null;
     }
 
+    if (this.requiresSelectedPark(document) && !this.selectedPark?.id) {
+      this.uiError = 'admin.parkGraphUpserts.errors.noParkSelected';
+      this.changeDetectorRef.markForCheck();
+      return null;
+    }
+
     return {
-      targetParkId: this.selectedPark.id,
+      targetParkId: this.selectedPark?.id ?? null,
       createIfMissing: false,
       replaceCollections: false,
       document
@@ -578,6 +663,114 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     }
 
     return document;
+  }
+
+  private parseJsonDraftForMergeEdit(): JsonObject | null {
+    const text: string = this.jsonText.trim();
+    if (text.length === 0) {
+      return JSON.parse(this.buildDefaultJson()) as JsonObject;
+    }
+
+    return this.parseJsonDraftForEdit();
+  }
+
+  private requiresSelectedPark(document: unknown): boolean {
+    if (!this.isJsonObject(document)) {
+      return true;
+    }
+
+    if (this.hasNonEmptyObject(document, 'identity')
+      || this.hasNonEmptyObject(document, 'park')
+      || this.hasNonEmptyArray(document, 'zones')
+      || this.hasNonEmptyArray(document, 'items')
+      || this.hasNonEmptyArray(document, 'suppr')
+      || this.hasNonEmptyObject(document, 'suppr')
+      || this.hasNonEmptyArray(document, 'deletions')
+      || this.hasNonEmptyObject(document, 'deletions')) {
+      return true;
+    }
+
+    const images: unknown = document['images'];
+    return Array.isArray(images) && images.some((image: unknown): boolean => this.imageRequiresSelectedPark(image));
+  }
+
+  private imageRequiresSelectedPark(image: unknown): boolean {
+    if (!this.isJsonObject(image)) {
+      return false;
+    }
+
+    const ownerKey: string | null = this.readNestedString(image, 'ownerKey');
+    if (ownerKey?.trim().toLocaleLowerCase() === 'park') {
+      return true;
+    }
+
+    const ownerType: string = this.resolveImageOwnerType(image, ownerKey);
+    if (ownerType === 'Park' || ownerType === 'ParkItem') {
+      return true;
+    }
+
+    if (ownerType === 'ParkOperator' || ownerType === 'ParkFounder' || ownerType === 'AttractionManufacturer') {
+      return false;
+    }
+
+    return (ownerKey?.trim().length ?? 0) > 0;
+  }
+
+  private resolveImageOwnerType(image: JsonObject, ownerKey: string | null): string {
+    const ownerType: string | null = this.readNestedString(image, 'ownerType');
+    if (ownerType) {
+      return this.normalizeImageOwnerType(ownerType);
+    }
+
+    const normalizedOwnerKey: string = ownerKey?.trim().toLocaleLowerCase() ?? '';
+    if (normalizedOwnerKey.startsWith('operator:')) {
+      return 'ParkOperator';
+    }
+
+    if (normalizedOwnerKey.startsWith('founder:')) {
+      return 'ParkFounder';
+    }
+
+    if (normalizedOwnerKey.startsWith('manufacturer:')) {
+      return 'AttractionManufacturer';
+    }
+
+    return 'Park';
+  }
+
+  private normalizeImageOwnerType(value: string): string {
+    const normalizedValue: string = value.trim().toLocaleLowerCase().replace(/[^a-z0-9]/g, '');
+    if (normalizedValue === 'parkoperator' || normalizedValue === 'operator') {
+      return 'ParkOperator';
+    }
+
+    if (normalizedValue === 'parkfounder' || normalizedValue === 'founder') {
+      return 'ParkFounder';
+    }
+
+    if (normalizedValue === 'attractionmanufacturer' || normalizedValue === 'manufacturer') {
+      return 'AttractionManufacturer';
+    }
+
+    if (normalizedValue === 'parkitem' || normalizedValue === 'item') {
+      return 'ParkItem';
+    }
+
+    if (normalizedValue === 'park') {
+      return 'Park';
+    }
+
+    return value.trim();
+  }
+
+  private hasNonEmptyObject(document: JsonObject, propertyName: string): boolean {
+    const value: unknown = document[propertyName];
+    return this.isJsonObject(value) && Object.keys(value).length > 0;
+  }
+
+  private hasNonEmptyArray(document: JsonObject, propertyName: string): boolean {
+    const value: unknown = document[propertyName];
+    return Array.isArray(value) && value.length > 0;
   }
 
   private queueDeletionIfSupported(document: JsonObject, change: ParkGraphUpsertChange): boolean {
@@ -891,6 +1084,19 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     return translatedValue === key ? fallback : translatedValue;
   }
 
+  private isMergeEntityType(value: string): value is ParkGraphUpsertMergeEntityType {
+    return value === 'AttractionManufacturer' || value === 'Park' || value === 'ParkItem';
+  }
+
+  private createMergeSectionChoices(entityType: ParkGraphUpsertMergeEntityType): Record<string, ParkGraphUpsertMergeSectionChoice> {
+    const choices: Record<string, ParkGraphUpsertMergeSectionChoice> = {};
+    for (const section of AdminParkGraphUpsertsComponent.mergeSectionsByEntityType[entityType]) {
+      choices[section] = 'target';
+    }
+
+    return choices;
+  }
+
   private isJsonObject(value: unknown): value is JsonObject {
     return typeof value === 'object' && value !== null && !Array.isArray(value);
   }
@@ -936,6 +1142,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
       zones: [],
       items: [],
       images: [],
+      merges: [],
       metadata: {
         source: 'manual-json'
       }

@@ -446,7 +446,9 @@
         "errorsCopiedTitle": "Bledy skopiowane",
         "errorsCopiedDetail": "Szczegoly sa w schowku.",
         "copyFailedTitle": "Kopiowanie nieudane",
-        "copyFailedDetail": "Nie mozna skopiowac szczegolow."
+        "copyFailedDetail": "Nie mozna skopiowac szczegolow.",
+        "mergeDraftUpdatedTitle": "Scalanie dodane",
+        "mergeDraftUpdatedDetail": "Szkic JSON zostal zaktualizowany."
       },
       "result": {
         "title": "Podgląd",
@@ -524,6 +526,37 @@
         "manufacturerName": "Manufacturer name",
         "imageUrl": "Image URL",
         "imageAltText": "Image alt text"
+      },
+      "mergeBuilder": {
+        "title": "Scal duplikat",
+        "entityType": "Encja",
+        "sourceId": "Id duplikatu",
+        "targetId": "Zachowane id",
+        "sections": "Sekcje",
+        "targetVersion": "Zachowaj",
+        "sourceVersion": "Przejmij",
+        "add": "Dodaj scalanie",
+        "entityTypes": {
+          "AttractionManufacturer": "Producent",
+          "Park": "Park",
+          "ParkItem": "Element parku"
+        },
+        "sectionLabels": {
+          "identity": "Tozsamosc",
+          "contactDetails": "Kontakt",
+          "biography": "Biografia",
+          "logo": "Logo",
+          "administration": "Administracja",
+          "ownership": "Wlasnosc",
+          "contact": "Kontakt",
+          "descriptions": "Opisy",
+          "location": "Lokalizacja",
+          "visibility": "Widocznosc",
+          "homeFeature": "Strona glowna",
+          "zone": "Strefa",
+          "attractionDetails": "Szczegoly atrakcji",
+          "attractionLocations": "Dostepy atrakcji"
+        }
       },
       "history": {
         "title": "Graph history",
