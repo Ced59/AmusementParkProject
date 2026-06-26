@@ -80,9 +80,15 @@ export interface AdminFieldModeGeolocationPort {
   getPermissionState(): Promise<AdminFieldModeGeolocationPermissionState>;
 }
 
+export interface AdminFieldModeProcessedStatusPort {
+  getProcessedItemIds(parkId: string): Observable<Set<string>>;
+  setProcessed(parkId: string, itemId: string, isProcessed: boolean): Observable<boolean>;
+}
+
 export const ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT = new InjectionToken<AdminFieldModeParksApiServicePort>('ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT');
 export const ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT = new InjectionToken<AdminFieldModeParkItemsApiServicePort>('ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT');
 export const ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT = new InjectionToken<AdminFieldModeImagesApiServicePort>('ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT');
 export const ADMIN_FIELD_MODE_GEOLOCATION_PORT = new InjectionToken<AdminFieldModeGeolocationPort>('ADMIN_FIELD_MODE_GEOLOCATION_PORT');
+export const ADMIN_FIELD_MODE_PROCESSED_STATUS_PORT = new InjectionToken<AdminFieldModeProcessedStatusPort>('ADMIN_FIELD_MODE_PROCESSED_STATUS_PORT');
 
 export type AdminFieldModeLocationUpdateResult = BulkAdministrationUpdateResult | ParkItem;
