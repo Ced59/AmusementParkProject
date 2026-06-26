@@ -76,14 +76,10 @@ export class AdminFieldModeActionsFacade {
       return;
     }
 
-    if (!this.readyForPhoto()) {
-      this.fileSignal.set(null);
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.positionRequired');
-      return;
-    }
-
     this.fileSignal.set(file);
-    this.statusMessageKeySignal.set(null);
+    this.statusMessageKeySignal.set(this.readyForPhoto()
+      ? 'admin.fieldMode.messages.photoReady'
+      : 'admin.fieldMode.messages.photoSelectedPositionRequired');
   }
 
   setPhotoCategorySlug(slug: string): void {
@@ -102,7 +98,12 @@ export class AdminFieldModeActionsFacade {
 
   async addPhoto(item: ParkItem, shouldSetCurrent: boolean): Promise<boolean> {
     const file: File | null = this.fileSignal();
-    if (!item.id || !file || this.busySignal()) {
+    if (!item.id || this.busySignal()) {
+      return false;
+    }
+
+    if (!file) {
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.photoRequired');
       return false;
     }
 
@@ -126,7 +127,9 @@ export class AdminFieldModeActionsFacade {
       return true;
     } catch (error: unknown) {
       console.error('Error adding field mode photo', error);
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.photoFailed');
+      if (!this.statusMessageKeySignal()?.startsWith('admin.fieldMode.messages.position')) {
+        this.statusMessageKeySignal.set('admin.fieldMode.messages.photoFailed');
+      }
       return false;
     } finally {
       this.busySignal.set(false);
@@ -147,7 +150,9 @@ export class AdminFieldModeActionsFacade {
       return savedItem;
     } catch (error: unknown) {
       console.error('Error saving field mode location', error);
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.locationFailed');
+      if (!this.statusMessageKeySignal()?.startsWith('admin.fieldMode.messages.position')) {
+        this.statusMessageKeySignal.set('admin.fieldMode.messages.locationFailed');
+      }
       return null;
     } finally {
       this.busySignal.set(false);
@@ -157,7 +162,7 @@ export class AdminFieldModeActionsFacade {
   private async captureFreshPosition(): Promise<AdminFieldModePosition> {
     this.statusSignal.set('checking');
     try {
-      const position: GeolocationPosition = await this.positionService.getCurrentPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 15000 });
+      const position: GeolocationPosition = await this.positionService.getCurrentPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 20000 });
       const value: AdminFieldModePosition = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
@@ -166,13 +171,33 @@ export class AdminFieldModeActionsFacade {
       };
       this.positionSignal.set(value);
       this.statusSignal.set('ready');
-      this.statusMessageKeySignal.set(null);
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.positionReady');
       return value;
     } catch (error: unknown) {
       this.statusSignal.set('error');
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.positionUnavailable');
+      this.statusMessageKeySignal.set(this.getPositionErrorMessageKey(error));
       throw error;
     }
+  }
+
+  private getPositionErrorMessageKey(error: unknown): string {
+    const code: number | undefined = typeof error === 'object' && error !== null && 'code' in error
+      ? Number((error as { code?: unknown }).code)
+      : undefined;
+
+    if (code === 1) {
+      return 'admin.fieldMode.messages.positionDenied';
+    }
+
+    if (code === 3) {
+      return 'admin.fieldMode.messages.positionTimeout';
+    }
+
+    if (code === 2) {
+      return 'admin.fieldMode.messages.positionUnavailable';
+    }
+
+    return 'admin.fieldMode.messages.positionUnavailable';
   }
 
   private isPositionFresh(position: AdminFieldModePosition | null): boolean {
