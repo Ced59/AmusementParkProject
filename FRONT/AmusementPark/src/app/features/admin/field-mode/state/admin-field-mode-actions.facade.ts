@@ -207,7 +207,7 @@ export class AdminFieldModeActionsFacade {
   private async applyPhotoMetadata(image: ImageDto, position: AdminFieldModePosition, description: string): Promise<ImageDto> {
     const selectedTagId: string | undefined = this.photoTagIdsBySlug[this.photoCategorySlugSignal()];
     return firstValueFrom(this.imagesApiService.updateAdminImage(image.id, {
-      description: image.description ?? description || undefined,
+      description: image.description ?? (description || undefined),
       geoLocation: {
         latitude: position.latitude,
         longitude: position.longitude
