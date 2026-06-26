@@ -1,0 +1,14 @@
+{
+  "version": "2.7.10",
+  "releasedAt": "2026-06-26",
+  "labels": {
+    "fr": "L'administration fusionne mieux les doublons.",
+    "en": "Admin duplicate merging improves.",
+    "de": "Die Administration fuehrt Duplikate besser zusammen.",
+    "nl": "De administratie voegt dubbels beter samen.",
+    "it": "L'amministrazione unisce meglio i duplicati.",
+    "es": "La administracion fusiona mejor los duplicados.",
+    "pl": "Administracja lepiej laczy duplikaty.",
+    "pt": "A administracao funde melhor duplicados."
+  }
+}
