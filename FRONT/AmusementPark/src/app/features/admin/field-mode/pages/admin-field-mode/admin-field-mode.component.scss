@@ -215,20 +215,32 @@
   gap: 0.65rem;
   width: 100%;
   color: inherit;
+  cursor: pointer;
   padding: 0.85rem;
   text-align: left;
   transition:
     background-color var(--transition-fast),
     border-color var(--transition-fast),
     box-shadow var(--transition-fast),
+    opacity var(--transition-fast),
     transform var(--transition-fast);
 }
 
 .admin-field-mode__item:hover,
+.admin-field-mode__item:focus-visible,
 .admin-field-mode__item--active {
   border-color: color-mix(in srgb, var(--app-primary) 42%, var(--app-border));
   background: var(--admin-row-hover);
   box-shadow: var(--shadow-focus);
+  outline: none;
+}
+
+.admin-field-mode__item--processed {
+  opacity: 0.76;
+}
+
+.admin-field-mode__processed-toggle {
+  justify-self: start;
 }
 
 .admin-field-mode__item-main strong,
@@ -304,6 +316,10 @@
   .admin-field-mode__tools button,
   .admin-field-mode__editor button {
     width: 100%;
+  }
+
+  .admin-field-mode__processed-toggle {
+    justify-self: stretch;
   }
 }
 
