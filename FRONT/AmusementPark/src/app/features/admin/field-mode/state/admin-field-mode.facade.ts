@@ -1,6 +1,6 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, forkJoin, map, of } from 'rxjs';
+import { Observable, catchError, forkJoin, map, of } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -57,6 +57,7 @@ export class AdminFieldModeFacade {
   private readonly selectedPhotoDescriptionSignal = signal('');
   private readonly selectedLocationKeySignal = signal<AdminFieldModeLocationKey>('general');
   private readonly messageKeySignal = signal<string | null>(null);
+  private parkSearchRequestId = 0;
 
   public readonly parks: Signal<Park[]> = this.parksSignal.asReadonly();
   public readonly rows: Signal<AdminFieldModeItemRow[]> = this.rowsSignal.asReadonly();
@@ -81,15 +82,7 @@ export class AdminFieldModeFacade {
   public readonly parkOptions: Signal<AdminFieldModeParkOption[]> = computed(() => this.parksSignal()
     .filter((park: Park) => !!park.id)
     .map((park: Park) => ({ label: park.name ?? 'Unnamed park', value: park.id ?? '' })));
-  public readonly filteredParkOptions: Signal<AdminFieldModeParkOption[]> = computed(() => {
-    const searchTerm: string = this.parkSearchSignal().trim().toLowerCase();
-    const options: AdminFieldModeParkOption[] = this.parkOptions();
-    const filteredOptions: AdminFieldModeParkOption[] = searchTerm
-      ? options.filter((park: AdminFieldModeParkOption) => park.label.toLowerCase().includes(searchTerm))
-      : options;
-
-    return filteredOptions.slice(0, 30);
-  });
+  public readonly filteredParkOptions: Signal<AdminFieldModeParkOption[]> = computed(() => this.parkOptions().slice(0, 30));
   public readonly selectedPark: Signal<Park | null> = computed(() => this.parksSignal().find((park: Park) => park.id === this.selectedParkIdSignal()) ?? null);
   public readonly selectedParkLabel: Signal<string | null> = computed(() => this.selectedPark()?.name ?? null);
   public readonly filteredRows: Signal<AdminFieldModeItemRow[]> = computed(() => this.filterRows());
@@ -110,24 +103,23 @@ export class AdminFieldModeFacade {
   }
 
   initialize(routeItemId: string | null = null): void {
-    this.selectedParkIdSignal.set(readAdminFieldModeSelectedParkId(ADMIN_FIELD_MODE_SELECTED_PARK_STORAGE_KEY));
+    const selectedParkId: string | null = readAdminFieldModeSelectedParkId(ADMIN_FIELD_MODE_SELECTED_PARK_STORAGE_KEY);
+    this.selectedParkIdSignal.set(selectedParkId);
     this.loadingSignal.set(true);
-    this.parksApiService.getParksPaginated(1, 500).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (response) => {
-        this.parksSignal.set(response.data ?? []);
-        const selectedParkId: string | null = this.selectedParkIdSignal();
-        if (selectedParkId) {
-          this.loadItems(selectedParkId, routeItemId);
-          return;
-        }
-        this.loadingSignal.set(false);
-      },
-      error: () => this.loadingSignal.set(false)
-    });
+    this.loadParkOptions('');
+
+    if (selectedParkId) {
+      this.ensureSelectedParkAvailable(selectedParkId);
+      this.loadItems(selectedParkId, routeItemId);
+      return;
+    }
+
+    this.loadingSignal.set(false);
   }
 
   setParkSearch(value: string): void {
     this.parkSearchSignal.set(value);
+    this.loadParkOptions(value);
   }
 
   setSearch(value: string): void {
@@ -145,6 +137,7 @@ export class AdminFieldModeFacade {
     this.parkSearchSignal.set('');
     writeAdminFieldModeSelectedParkId(ADMIN_FIELD_MODE_SELECTED_PARK_STORAGE_KEY, parkId);
     if (parkId) {
+      this.ensureSelectedParkAvailable(parkId);
       this.loadItems(parkId);
     }
   }
@@ -193,6 +186,59 @@ export class AdminFieldModeFacade {
     }
     this.selectedPhotoFileSignal.set(file);
     this.messageKeySignal.set(null);
+  }
+
+  private loadParkOptions(query: string): void {
+    const normalizedQuery: string = query.trim();
+    const requestId: number = ++this.parkSearchRequestId;
+    const request$: Observable<{ data?: Park[] }> = normalizedQuery.length >= 2
+      ? this.parksApiService.searchParks(normalizedQuery, 1, 30)
+      : this.parksApiService.getParksPaginated(1, 30);
+
+    request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: { data?: Park[] }) => {
+        if (requestId !== this.parkSearchRequestId) {
+          return;
+        }
+        this.parksSignal.set(this.mergeWithSelectedPark(response.data ?? []));
+      },
+      error: () => {
+        if (requestId === this.parkSearchRequestId) {
+          this.parksSignal.set(this.mergeWithSelectedPark([]));
+        }
+      }
+    });
+  }
+
+  private ensureSelectedParkAvailable(parkId: string): void {
+    if (this.parksSignal().some((park: Park) => park.id === parkId)) {
+      return;
+    }
+
+    this.parksApiService.getParkById(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (park: Park) => this.parksSignal.set(this.mergeUniqueParks([park, ...this.parksSignal()])),
+      error: () => undefined
+    });
+  }
+
+  private mergeWithSelectedPark(parks: Park[]): Park[] {
+    const selectedParkId: string | null = this.selectedParkIdSignal();
+    const selectedPark: Park | undefined = selectedParkId
+      ? this.parksSignal().find((park: Park) => park.id === selectedParkId)
+      : undefined;
+
+    return this.mergeUniqueParks(selectedPark ? [selectedPark, ...parks] : parks);
+  }
+
+  private mergeUniqueParks(parks: Park[]): Park[] {
+    const seenIds = new Set<string>();
+    return parks.filter((park: Park) => {
+      if (!park.id || seenIds.has(park.id)) {
+        return false;
+      }
+      seenIds.add(park.id);
+      return true;
+    });
   }
 
   private loadItems(parkId: string, routeItemId: string | null = null): void {

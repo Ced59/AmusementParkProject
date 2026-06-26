@@ -19,6 +19,7 @@ import { PagedResult } from '@shared/models/contracts';
 
 export interface AdminFieldModeParksApiServicePort {
   getParksPaginated(page: number, size: number): Observable<ParksApiResponse>;
+  searchParks(query: string, page: number, size: number): Observable<ParksApiResponse>;
   getParkById(id: string): Observable<Park>;
 }
 
