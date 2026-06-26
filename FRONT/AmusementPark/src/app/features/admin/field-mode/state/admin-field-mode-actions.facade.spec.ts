@@ -41,6 +41,15 @@ describe('AdminFieldModeActionsFacade', () => {
 
     imageUploadSecurityService.validateImageFile.and.returnValue({ isValid: true, errorKey: null });
     imagesPort.getAdminImageTags.and.returnValue(of([{ id: 'tag-gallery', slug: 'park-item-gallery', labels: [], descriptions: [], isActive: true, createdAt: '', updatedAt: '' }]));
+    imagesPort.createAdminImageTag.and.callFake((request) => of({
+      id: `${request.slug}-tag`,
+      slug: request.slug,
+      labels: request.labels,
+      descriptions: request.descriptions,
+      isActive: true,
+      createdAt: '',
+      updatedAt: ''
+    }));
     imagesPort.uploadImage.and.returnValue(of({ id: 'uploaded-1' }));
     imagesPort.linkImage.and.returnValue(of(createImageDto()));
     imagesPort.updateAdminImage.and.returnValue(of(createImageDto()));
@@ -92,11 +101,12 @@ describe('AdminFieldModeActionsFacade', () => {
 });
 
 function createFileInputEvent(file: File): Event {
-  const input: HTMLInputElement = document.createElement('input');
-  Object.defineProperty(input, 'files', {
-    value: [file]
-  });
-  return { target: input } as unknown as Event;
+  return {
+    target: {
+      files: [file],
+      value: ''
+    }
+  } as unknown as Event;
 }
 
 function createPosition(): GeolocationPosition {
