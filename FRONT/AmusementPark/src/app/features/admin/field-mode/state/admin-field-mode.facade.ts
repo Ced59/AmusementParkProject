@@ -1,12 +1,10 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, firstValueFrom, forkJoin, map, of } from 'rxjs';
+import { catchError, forkJoin, map, of } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
-import { ImageTagDto } from '@app/models/images/image-tag-dto';
-import { UploadedImage } from '@app/models/images/uploaded-image';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { Park } from '@app/models/parks/park';
@@ -45,6 +43,7 @@ export class AdminFieldModeFacade {
   private readonly rowsSignal = signal<AdminFieldModeItemRow[]>([]);
   private readonly selectedParkIdSignal = signal<string | null>(null);
   private readonly selectedItemSignal = signal<ParkItem | null>(null);
+  private readonly parkSearchSignal = signal('');
   private readonly searchSignal = signal('');
   private readonly filterSignal = signal<AdminFieldModeFilter>('all');
   private readonly loadingSignal = signal(false);
@@ -58,12 +57,12 @@ export class AdminFieldModeFacade {
   private readonly selectedPhotoDescriptionSignal = signal('');
   private readonly selectedLocationKeySignal = signal<AdminFieldModeLocationKey>('general');
   private readonly messageKeySignal = signal<string | null>(null);
-  private photoTagIdsBySlug: Record<string, string> = {};
 
   public readonly parks: Signal<Park[]> = this.parksSignal.asReadonly();
   public readonly rows: Signal<AdminFieldModeItemRow[]> = this.rowsSignal.asReadonly();
   public readonly selectedParkId: Signal<string | null> = this.selectedParkIdSignal.asReadonly();
   public readonly selectedItem: Signal<ParkItem | null> = this.selectedItemSignal.asReadonly();
+  public readonly parkSearch: Signal<string> = this.parkSearchSignal.asReadonly();
   public readonly search: Signal<string> = this.searchSignal.asReadonly();
   public readonly filter: Signal<AdminFieldModeFilter> = this.filterSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -79,8 +78,20 @@ export class AdminFieldModeFacade {
   public readonly messageKey: Signal<string | null> = this.messageKeySignal.asReadonly();
   public readonly photoCategoryOptions = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS).asReadonly();
   public readonly locationOptions = signal(ADMIN_FIELD_MODE_LOCATION_OPTIONS).asReadonly();
-  public readonly parkOptions: Signal<AdminFieldModeParkOption[]> = computed(() => this.parksSignal().filter((park: Park) => !!park.id).map((park: Park) => ({ label: park.name ?? 'Unnamed park', value: park.id ?? '' })));
+  public readonly parkOptions: Signal<AdminFieldModeParkOption[]> = computed(() => this.parksSignal()
+    .filter((park: Park) => !!park.id)
+    .map((park: Park) => ({ label: park.name ?? 'Unnamed park', value: park.id ?? '' })));
+  public readonly filteredParkOptions: Signal<AdminFieldModeParkOption[]> = computed(() => {
+    const searchTerm: string = this.parkSearchSignal().trim().toLowerCase();
+    const options: AdminFieldModeParkOption[] = this.parkOptions();
+    const filteredOptions: AdminFieldModeParkOption[] = searchTerm
+      ? options.filter((park: AdminFieldModeParkOption) => park.label.toLowerCase().includes(searchTerm))
+      : options;
+
+    return filteredOptions.slice(0, 30);
+  });
   public readonly selectedPark: Signal<Park | null> = computed(() => this.parksSignal().find((park: Park) => park.id === this.selectedParkIdSignal()) ?? null);
+  public readonly selectedParkLabel: Signal<string | null> = computed(() => this.selectedPark()?.name ?? null);
   public readonly filteredRows: Signal<AdminFieldModeItemRow[]> = computed(() => this.filterRows());
   public readonly totalItemCount: Signal<number> = computed(() => this.rowsSignal().length);
   public readonly missingPhotosCount: Signal<number> = computed(() => this.rowsSignal().filter((row: AdminFieldModeItemRow) => (row.photoCount ?? 0) === 0).length);
@@ -115,6 +126,10 @@ export class AdminFieldModeFacade {
     });
   }
 
+  setParkSearch(value: string): void {
+    this.parkSearchSignal.set(value);
+  }
+
   setSearch(value: string): void {
     this.searchSignal.set(value);
   }
@@ -127,6 +142,7 @@ export class AdminFieldModeFacade {
     this.selectedParkIdSignal.set(parkId);
     this.selectedItemSignal.set(null);
     this.rowsSignal.set([]);
+    this.parkSearchSignal.set('');
     writeAdminFieldModeSelectedParkId(ADMIN_FIELD_MODE_SELECTED_PARK_STORAGE_KEY, parkId);
     if (parkId) {
       this.loadItems(parkId);
