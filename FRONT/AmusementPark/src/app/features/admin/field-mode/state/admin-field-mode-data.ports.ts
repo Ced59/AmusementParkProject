@@ -19,6 +19,8 @@ import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
 import { ParkItemAdminListFilters, ParkItemAdminListSort, ParkItemsByParkIdFilters } from '@data-access/park-items/park-items-api-endpoints';
 import { PagedResult } from '@shared/models/contracts';
 
+export type AdminFieldModeGeolocationPermissionState = PermissionState | 'unsupported' | 'insecure-context' | 'unavailable';
+
 export interface AdminFieldModeParksApiServicePort {
   getParksPaginated(page: number, size: number): Observable<ParksApiResponse>;
   searchParks(query: string, page: number, size: number): Observable<ParksApiResponse>;
@@ -75,6 +77,7 @@ export interface AdminFieldModeImagesApiServicePort {
 
 export interface AdminFieldModeGeolocationPort {
   getCurrentPosition(options?: PositionOptions): Promise<GeolocationPosition>;
+  getPermissionState(): Promise<AdminFieldModeGeolocationPermissionState>;
 }
 
 export const ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT = new InjectionToken<AdminFieldModeParksApiServicePort>('ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT');

@@ -16,6 +16,7 @@ import {
   ADMIN_FIELD_MODE_GEOLOCATION_PORT,
   ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT,
   ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT,
+  AdminFieldModeGeolocationPermissionState,
   AdminFieldModeGeolocationPort,
   AdminFieldModeImagesApiServicePort,
   AdminFieldModeParkItemsApiServicePort
@@ -176,7 +177,19 @@ export class AdminFieldModeActionsFacade {
   private async captureFreshPosition(): Promise<AdminFieldModePosition> {
     this.statusSignal.set('checking');
     try {
-      const position: GeolocationPosition = await this.positionService.getCurrentPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 20000 });
+      const permissionState: AdminFieldModeGeolocationPermissionState = await this.positionService.getPermissionState();
+      const blockingMessageKey: string | null = this.getBlockingPermissionMessageKey(permissionState);
+      if (blockingMessageKey) {
+        this.statusSignal.set('error');
+        this.statusMessageKeySignal.set(blockingMessageKey);
+        throw new Error(blockingMessageKey);
+      }
+
+      if (permissionState === 'prompt') {
+        this.statusMessageKeySignal.set('admin.fieldMode.messages.positionPrompt');
+      }
+
+      const position: GeolocationPosition = await this.requestCurrentPositionWithFallback();
       const value: AdminFieldModePosition = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
@@ -189,15 +202,44 @@ export class AdminFieldModeActionsFacade {
       return value;
     } catch (error: unknown) {
       this.statusSignal.set('error');
-      this.statusMessageKeySignal.set(this.getPositionErrorMessageKey(error));
+      if (!this.statusMessageKeySignal()?.startsWith('admin.fieldMode.messages.position')) {
+        this.statusMessageKeySignal.set(this.getPositionErrorMessageKey(error));
+      }
       throw error;
     }
   }
 
+  private async requestCurrentPositionWithFallback(): Promise<GeolocationPosition> {
+    try {
+      return await this.positionService.getCurrentPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 12000 });
+    } catch (error: unknown) {
+      if (this.getPositionErrorCode(error) !== 3) {
+        throw error;
+      }
+
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.positionRetryLowAccuracy');
+      return this.positionService.getCurrentPosition({ enableHighAccuracy: false, maximumAge: 0, timeout: 20000 });
+    }
+  }
+
+  private getBlockingPermissionMessageKey(permissionState: AdminFieldModeGeolocationPermissionState): string | null {
+    if (permissionState === 'denied') {
+      return 'admin.fieldMode.messages.positionDenied';
+    }
+
+    if (permissionState === 'insecure-context') {
+      return 'admin.fieldMode.messages.positionInsecureContext';
+    }
+
+    if (permissionState === 'unavailable') {
+      return 'admin.fieldMode.messages.positionUnavailable';
+    }
+
+    return null;
+  }
+
   private getPositionErrorMessageKey(error: unknown): string {
-    const code: number | undefined = typeof error === 'object' && error !== null && 'code' in error
-      ? Number((error as { code?: unknown }).code)
-      : undefined;
+    const code: number | undefined = this.getPositionErrorCode(error);
 
     if (code === 1) {
       return 'admin.fieldMode.messages.positionDenied';
@@ -212,6 +254,12 @@ export class AdminFieldModeActionsFacade {
     }
 
     return 'admin.fieldMode.messages.positionUnavailable';
+  }
+
+  private getPositionErrorCode(error: unknown): number | undefined {
+    return typeof error === 'object' && error !== null && 'code' in error
+      ? Number((error as { code?: unknown }).code)
+      : undefined;
   }
 
   private async ensurePhotoCategoryTags(): Promise<void> {
