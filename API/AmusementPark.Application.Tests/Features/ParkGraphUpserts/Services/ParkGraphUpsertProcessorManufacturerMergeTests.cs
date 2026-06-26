@@ -1,6 +1,7 @@
 using System.Text.Json;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Common.Measurements;
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
