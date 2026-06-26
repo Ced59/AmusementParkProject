@@ -83,7 +83,7 @@ export class AdminFieldModeComponent implements OnInit {
     const row: AdminFieldModeItemRow | null = this.selectedRow();
     const added: boolean = await this.actionsFacade.addPhoto(item, (row?.photoCount ?? 0) === 0);
     if (added) {
-      this.state.refreshItems();
+      this.reloadSelectedPark();
     }
   }
 
@@ -95,8 +95,7 @@ export class AdminFieldModeComponent implements OnInit {
 
     const savedItem: ParkItem | null = await this.actionsFacade.saveLocation(item, this.actions.locationKey() as AdminFieldModeLocationKey);
     if (savedItem) {
-      this.state.refreshItems();
-      this.state.selectItem(savedItem.id ?? null);
+      this.reloadSelectedPark();
     }
   }
 
@@ -114,5 +113,9 @@ export class AdminFieldModeComponent implements OnInit {
 
   protected text(fr: string, en: string): string {
     return this.currentLang === 'fr' ? fr : en;
+  }
+
+  private reloadSelectedPark(): void {
+    this.fieldModeFacade.selectPark(this.state.selectedParkId());
   }
 }
