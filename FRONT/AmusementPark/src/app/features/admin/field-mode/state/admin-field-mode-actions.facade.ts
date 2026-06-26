@@ -223,6 +223,10 @@ export class AdminFieldModeActionsFacade {
   }
 
   private getBlockingPermissionMessageKey(permissionState: AdminFieldModeGeolocationPermissionState): string | null {
+    if (permissionState === 'blocked-by-policy') {
+      return 'admin.fieldMode.messages.positionBlockedByPolicy';
+    }
+
     if (permissionState === 'denied') {
       return 'admin.fieldMode.messages.positionDenied';
     }
