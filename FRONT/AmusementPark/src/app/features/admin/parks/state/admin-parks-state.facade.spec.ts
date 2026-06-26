@@ -154,11 +154,13 @@ describe('AdminParksStateFacade', () => {
   });
 
   it('keeps previous data when a reload fails', () => {
+    spyOn(console, 'error');
     facade.loadParks(1, 10);
     port.pageResponse$ = throwError(() => new Error('network'));
 
     facade.loadParks(2, 10);
 
+    expect(console.error).toHaveBeenCalled();
     expect(facade.state().kind).toBe('error');
     expect(facade.parks().map((park: Park) => park.id)).toEqual(['park-1']);
   });
