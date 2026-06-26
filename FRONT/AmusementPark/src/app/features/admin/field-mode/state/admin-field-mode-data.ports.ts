@@ -11,10 +11,12 @@ import { LinkImageToOwner } from '@app/models/images/link-image-to-owner';
 import { UploadedImage } from '@app/models/images/uploaded-image';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
+import { ApiResponse } from '@app/models/shared/api_reponse';
 import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
-import { ParkItemsByParkIdFilters } from '@data-access/park-items/park-items-api-endpoints';
+import { ParkItemAdminListFilters, ParkItemAdminListSort, ParkItemsByParkIdFilters } from '@data-access/park-items/park-items-api-endpoints';
 import { PagedResult } from '@shared/models/contracts';
 
 export interface AdminFieldModeParksApiServicePort {
@@ -31,6 +33,15 @@ export interface AdminFieldModeParkItemsApiServicePort {
     filters: ParkItemsByParkIdFilters | null,
     options: { closedFilter?: ClosedEntityFilter } | undefined
   ): Observable<PagedResult<ParkItem>>;
+  getParkItemsPaginated(
+    page: number,
+    size: number,
+    parkId?: string | null,
+    search?: string | null,
+    filters?: ParkItemAdminListFilters | null,
+    sort?: ParkItemAdminListSort | null,
+    options?: { closedFilter?: ClosedEntityFilter } | undefined
+  ): Observable<ApiResponse<ParkItemAdminRow>>;
   getParkItemById(id: string): Observable<ParkItem>;
   updateParkItem(id: string, item: ParkItem): Observable<ParkItem>;
 }
