@@ -9,10 +9,11 @@ import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 
-import { AdminFieldModeFilter, AdminFieldModeItemRow, AdminFieldModeLocationKey, AdminFieldModePhotoCategoryOption } from '../../models/admin-field-mode.model';
+import { AdminFieldModeFilter, AdminFieldModeItemRow, AdminFieldModeLocationKey, AdminFieldModePhotoCategoryOption, AdminFieldModeProcessedFilter } from '../../models/admin-field-mode.model';
+import { AdminFieldModeProgressService } from '../../services/admin-field-mode-progress.service';
 import { AdminFieldModePositionService } from '../../services/admin-field-mode-position.service';
 import { AdminFieldModeActionsFacade } from '../../state/admin-field-mode-actions.facade';
-import { ADMIN_FIELD_MODE_GEOLOCATION_PORT, ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT, ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT, ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT } from '../../state/admin-field-mode-data.ports';
+import { ADMIN_FIELD_MODE_GEOLOCATION_PORT, ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT, ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT, ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT, ADMIN_FIELD_MODE_PROCESSED_STATUS_PORT } from '../../state/admin-field-mode-data.ports';
 import { AdminFieldModeFacade } from '../../state/admin-field-mode.facade';
 
 @Component({
@@ -26,7 +27,8 @@ import { AdminFieldModeFacade } from '../../state/admin-field-mode.facade';
     { provide: ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT, useExisting: ParksApiService },
     { provide: ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT, useExisting: ParkItemsApiService },
     { provide: ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT, useExisting: ImagesApiService },
-    { provide: ADMIN_FIELD_MODE_GEOLOCATION_PORT, useExisting: AdminFieldModePositionService }
+    { provide: ADMIN_FIELD_MODE_GEOLOCATION_PORT, useExisting: AdminFieldModePositionService },
+    { provide: ADMIN_FIELD_MODE_PROCESSED_STATUS_PORT, useExisting: AdminFieldModeProgressService }
   ],
   imports: [CommonModule, FormsModule, ButtonDirective]
 })
@@ -71,6 +73,15 @@ export class AdminFieldModeComponent implements OnInit {
 
   protected setFilter(value: AdminFieldModeFilter): void {
     this.fieldModeFacade.setFilter(value);
+  }
+
+  protected setProcessedFilter(value: AdminFieldModeProcessedFilter): void {
+    this.fieldModeFacade.setProcessedFilter(value);
+  }
+
+  protected toggleProcessed(row: AdminFieldModeItemRow, event?: Event): void {
+    event?.stopPropagation();
+    this.fieldModeFacade.toggleProcessed(row);
   }
 
   protected selectRow(row: AdminFieldModeItemRow): void {
@@ -131,7 +142,10 @@ export class AdminFieldModeComponent implements OnInit {
       'admin.fieldMode.messages.photoAdded': { fr: 'Photo ajoutée avec sa position EXIF.', en: 'Photo added with its EXIF position.' },
       'admin.fieldMode.messages.photoFailed': { fr: 'Photo non envoyée.', en: 'Photo was not uploaded.' },
       'admin.fieldMode.messages.locationSaved': { fr: 'Localisation enregistrée.', en: 'Location saved.' },
-      'admin.fieldMode.messages.locationFailed': { fr: 'Localisation non enregistrée.', en: 'Location was not saved.' }
+      'admin.fieldMode.messages.locationFailed': { fr: 'Localisation non enregistrée.', en: 'Location was not saved.' },
+      'admin.fieldMode.messages.itemProcessed': { fr: 'Item marqué traité.', en: 'Item marked as processed.' },
+      'admin.fieldMode.messages.itemUnprocessed': { fr: 'Item remis à traiter.', en: 'Item moved back to todo.' },
+      'admin.fieldMode.messages.itemProcessedFailed': { fr: 'Statut terrain non enregistré.', en: 'Field status was not saved.' }
     };
     const message = messages[key];
     return message ? this.text(message.fr, message.en) : key;
