@@ -19,6 +19,13 @@
   gap: 0.45rem;
 }
 
+.admin-field-mode__hero-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
 .admin-field-mode__hero h1 {
   margin: 0.25rem 0 0;
 }
@@ -26,6 +33,40 @@
 .admin-field-mode__hero p {
   margin: 0.45rem 0 0;
   max-width: 52rem;
+}
+
+.admin-field-mode__active-park {
+  display: inline-flex;
+  align-items: center;
+  max-width: min(12rem, 42vw);
+  min-height: 2rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 35%, var(--app-border));
+  border-radius: 999px;
+  background: var(--app-primary-soft);
+  color: var(--app-heading);
+  gap: 0.4rem;
+  padding: 0.25rem 0.45rem 0.25rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.admin-field-mode__active-park span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-field-mode__active-park strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--app-primary) 22%, transparent);
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .admin-field-mode__park-card {
@@ -227,6 +268,10 @@
 }
 
 @media (max-width: 719px) {
+  .admin-field-mode__hero-title-row {
+    align-items: flex-start;
+  }
+
   .admin-field-mode__park-card-header,
   .admin-field-mode__tools,
   .admin-toolbar {
