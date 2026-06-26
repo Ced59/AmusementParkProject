@@ -26,6 +26,7 @@ export interface AdminFieldModeParksApiServicePort {
 }
 
 export interface AdminFieldModeParkItemsApiServicePort {
+  getParkItemsByParkId(parkId: string, options: { closedFilter?: ClosedEntityFilter } | undefined): Observable<ParkItem[]>;
   getParkItemsByParkIdPage(
     parkId: string,
     page: number,
