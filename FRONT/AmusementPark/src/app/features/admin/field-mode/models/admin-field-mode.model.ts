@@ -2,6 +2,7 @@ import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 
 export type AdminFieldModeFilter = 'all' | 'missingPhotos' | 'missingGeneralLocation' | 'missingPreciseLocation';
+export type AdminFieldModeProcessedFilter = 'unprocessed' | 'processed' | 'all';
 export type AdminFieldModeLocationKey = 'general' | 'entrance' | 'exit' | 'fastPassEntrance' | 'reducedMobilityEntrance';
 export type AdminFieldModeGpsStatus = 'idle' | 'checking' | 'ready' | 'error';
 
@@ -29,6 +30,7 @@ export interface AdminFieldModeItemRow {
   hasGeneralLocation: boolean;
   preciseLocationCount: number;
   hasAnyPreciseLocation: boolean;
+  isProcessed: boolean;
 }
 
 export interface AdminFieldModeViewModel {
