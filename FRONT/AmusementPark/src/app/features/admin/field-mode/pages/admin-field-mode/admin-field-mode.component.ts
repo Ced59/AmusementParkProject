@@ -3,18 +3,17 @@ import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/c
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonDirective } from 'primeng/button';
-import { SelectModule } from 'primeng/select';
-import { TagModule } from 'primeng/tag';
 
+import { ParkItem } from '@app/models/parks/park-item';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { ParkItem } from '@app/models/parks/park-item';
-import { AdminFieldModePositionService } from '../../services/admin-field-mode-position.service';
-import { ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT, ADMIN_FIELD_MODE_GEOLOCATION_PORT, ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT, ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT } from '../../state/admin-field-mode-data.ports';
-import { AdminFieldModeActionsFacade } from '../../state/admin-field-mode-actions.facade';
-import { AdminFieldModeFacade } from '../../state/admin-field-mode.facade';
+
 import { AdminFieldModeFilter, AdminFieldModeItemRow, AdminFieldModeLocationKey, AdminFieldModePhotoCategoryOption } from '../../models/admin-field-mode.model';
+import { AdminFieldModePositionService } from '../../services/admin-field-mode-position.service';
+import { AdminFieldModeActionsFacade } from '../../state/admin-field-mode-actions.facade';
+import { ADMIN_FIELD_MODE_GEOLOCATION_PORT, ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT, ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT, ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT } from '../../state/admin-field-mode-data.ports';
+import { AdminFieldModeFacade } from '../../state/admin-field-mode.facade';
 
 @Component({
   selector: 'app-admin-field-mode',
@@ -29,7 +28,7 @@ import { AdminFieldModeFilter, AdminFieldModeItemRow, AdminFieldModeLocationKey,
     { provide: ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT, useExisting: ImagesApiService },
     { provide: ADMIN_FIELD_MODE_GEOLOCATION_PORT, useExisting: AdminFieldModePositionService }
   ],
-  imports: [CommonModule, FormsModule, ButtonDirective, SelectModule, TagModule]
+  imports: [CommonModule, FormsModule, ButtonDirective]
 })
 export class AdminFieldModeComponent implements OnInit {
   protected readonly state = this.fieldModeFacade;
@@ -60,6 +59,10 @@ export class AdminFieldModeComponent implements OnInit {
 
   protected setSelectedPark(parkId: string | null): void {
     this.fieldModeFacade.selectPark(parkId);
+  }
+
+  protected setParkSearch(value: string): void {
+    this.fieldModeFacade.setParkSearch(value);
   }
 
   protected setSearch(value: string): void {
