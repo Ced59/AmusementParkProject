@@ -114,6 +114,8 @@ public sealed partial class ParkGraphUpsertProcessor
             await this.ProcessManufacturersAsync(references, manufacturerKeys, result, apply, cancellationToken);
         }
 
+        ParkGraphUpsertMergeSummary mergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
+
         string? targetParkId = NormalizeString(request.TargetParkId)
             ?? ReadString(identity, "parkId")
             ?? ReadString(identity, "id")
@@ -141,12 +143,23 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (targetPark is null)
         {
-            if (!requiresParkContext && result.Errors.Count == 0)
+            if (!requiresParkContext)
             {
-                await this.ProcessImagesAsync(root, null, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase), founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
+                if (result.Errors.Count == 0)
+                {
+                    await this.ProcessImagesAsync(root, null, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase), founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, result, apply, cancellationToken);
+                }
+
                 FinalizeCounts(result);
+                if (apply && result.Errors.Count == 0)
+                {
+                    await this.NotifyMergeSeoAsync(mergeSummary, cancellationToken);
+                }
+
                 await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
-                return ApplicationResult<ParkGraphUpsertResult>.Success(result);
+                return apply && result.Errors.Count > 0
+                    ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas etre applique car une fusion est invalide."))
+                    : ApplicationResult<ParkGraphUpsertResult>.Success(result);
             }
 
             result.CanApply = false;
@@ -181,8 +194,8 @@ public sealed partial class ParkGraphUpsertProcessor
 
         Dictionary<string, string> zoneKeys = await this.ProcessZonesAsync(root, targetPark, result, apply, cancellationToken);
         Dictionary<string, string> itemKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        ParkGraphUpsertItemSeoChanges itemSeoChanges = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, itemKeys, result, apply, cancellationToken);
-        await this.ProcessImagesAsync(root, targetPark, itemKeys, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
+        ParkGraphUpsertItemSeoChanges itemSeoChanges = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, itemKeys, result, apply, cancellationToken);
+        await this.ProcessImagesAsync(root, targetPark, itemKeys, founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, result, apply, cancellationToken);
         ParkGraphUpsertItemSeoChanges deletionSeoChanges = await this.ProcessDeletionsAsync(root, targetPark, result, apply, cancellationToken);
         itemSeoChanges.MergeFrom(deletionSeoChanges);
 
@@ -197,15 +210,15 @@ public sealed partial class ParkGraphUpsertProcessor
             if (result.Changes.Any(static change => !string.Equals(change.ChangeType, "Unchanged", StringComparison.Ordinal)))
             {
                 IReadOnlyCollection<PublicSeoParkSnapshot> previousParks = previousParkSnapshot is null
-                    ? Array.Empty<PublicSeoParkSnapshot>()
-                    : new[] { previousParkSnapshot };
+                    ? mergeSummary.PreviousParks
+                    : new[] { previousParkSnapshot }.Concat(mergeSummary.PreviousParks).ToList();
                 await this.publicSeoUpdateNotifier.NotifyAsync(
                     new PublicSeoUpdate
                     {
                         PreviousParks = previousParks,
-                        CurrentParks = PublicSeoParkSnapshot.FromParks(new[] { targetPark }),
-                        PreviousParkItems = itemSeoChanges.PreviousItems,
-                        CurrentParkItems = itemSeoChanges.CurrentItems,
+                        CurrentParks = PublicSeoParkSnapshot.FromParks(new[] { targetPark }).Concat(mergeSummary.CurrentParks).ToList(),
+                        PreviousParkItems = itemSeoChanges.PreviousItems.Concat(mergeSummary.PreviousParkItems).ToList(),
+                        CurrentParkItems = itemSeoChanges.CurrentItems.Concat(mergeSummary.CurrentParkItems).ToList(),
                         IncludeDiscoveryPages = true,
                     },
                     cancellationToken);

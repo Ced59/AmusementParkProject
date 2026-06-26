@@ -446,7 +446,9 @@
         "errorsCopiedTitle": "Erros copiados",
         "errorsCopiedDetail": "Os detalhes estao na area de transferencia.",
         "copyFailedTitle": "Copia falhou",
-        "copyFailedDetail": "Nao foi possivel copiar os detalhes."
+        "copyFailedDetail": "Nao foi possivel copiar os detalhes.",
+        "mergeDraftUpdatedTitle": "Fusao adicionada",
+        "mergeDraftUpdatedDetail": "O rascunho JSON foi atualizado."
       },
       "result": {
         "title": "Pré-visualização",
@@ -524,6 +526,37 @@
         "manufacturerName": "Manufacturer name",
         "imageUrl": "Image URL",
         "imageAltText": "Image alt text"
+      },
+      "mergeBuilder": {
+        "title": "Fundir duplicado",
+        "entityType": "Entidade",
+        "sourceId": "Id duplicado",
+        "targetId": "Id mantido",
+        "sections": "Secoes",
+        "targetVersion": "Manter",
+        "sourceVersion": "Usar",
+        "add": "Adicionar fusao",
+        "entityTypes": {
+          "AttractionManufacturer": "Fabricante",
+          "Park": "Parque",
+          "ParkItem": "Item de parque"
+        },
+        "sectionLabels": {
+          "identity": "Identidade",
+          "contactDetails": "Contacto",
+          "biography": "Biografia",
+          "logo": "Logo",
+          "administration": "Administracao",
+          "ownership": "Propriedade",
+          "contact": "Contacto",
+          "descriptions": "Descricoes",
+          "location": "Localizacao",
+          "visibility": "Visibilidade",
+          "homeFeature": "Inicio",
+          "zone": "Zona",
+          "attractionDetails": "Detalhes da atracao",
+          "attractionLocations": "Acessos da atracao"
+        }
       },
       "history": {
         "title": "Graph history",

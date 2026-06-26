@@ -52,6 +52,7 @@
 .park-search-row,
 .editor-actions,
 .wizard-actions,
+.merge-builder__head,
 .selected-park__actions {
   display: flex;
   gap: 0.65rem;
@@ -219,21 +220,103 @@
   }
 }
 
+.merge-builder {
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  padding: 0.85rem;
+  background: rgba(15, 11, 6, 0.24);
+}
+
+.merge-builder__head {
+  justify-content: space-between;
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+.merge-builder__fields,
+.merge-sections {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.merge-builder__fields {
+  grid-template-columns: minmax(11rem, 0.8fr) repeat(2, minmax(10rem, 1fr));
+}
+
+.merge-builder__fields label,
+.preview-filters label {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.merge-builder__fields span,
+.preview-filters span {
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+}
+
+.merge-sections {
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+}
+
+.merge-section {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+
+  > span {
+    color: var(--app-heading);
+    font-size: 0.82rem;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+  }
+}
+
+.merge-section__choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: 2.35rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 210, 140, 0.16);
+  border-radius: var(--radius-md);
+
+  button {
+    min-width: 0;
+    border: 0;
+    border-left: 1px solid rgba(255, 210, 140, 0.16);
+    background: rgba(255, 210, 140, 0.04);
+    color: var(--app-text-muted);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    &.active {
+      background: rgba(56, 197, 245, 0.16);
+      color: var(--app-heading);
+    }
+
+    &:hover {
+      background: rgba(56, 197, 245, 0.12);
+    }
+  }
+}
+
 .preview-filters {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
-
-  label {
-    display: grid;
-    gap: 0.35rem;
-    min-width: 0;
-  }
-
-  span {
-    color: var(--app-text-muted);
-    font-size: 0.82rem;
-  }
 }
 
 .admin-alert,
@@ -491,8 +574,13 @@
   .park-search-row,
   .editor-actions,
   .wizard-actions,
+  .merge-builder__head,
   .selected-park__actions {
     display: grid;
+  }
+
+  .merge-builder__fields {
+    grid-template-columns: 1fr;
   }
 
   .preview-filters {

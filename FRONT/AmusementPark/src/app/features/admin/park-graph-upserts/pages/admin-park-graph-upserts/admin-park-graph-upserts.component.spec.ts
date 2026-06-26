@@ -21,15 +21,22 @@ interface AdminParkGraphUpsertsComponentHarness {
   hasJsonDraft: boolean;
   jsonText: string;
   lastAppliedResult: ParkGraphUpsertResult | null;
+  mergeEntityType: string;
+  mergeSectionChoices: Record<string, string>;
+  mergeSourceId: string;
+  mergeTargetId: string;
   previewResult: ParkGraphUpsertResult | null;
   searchTerm: string;
   selectedPark: Park | null;
   uiError: string | null;
+  addMergeDraft(): void;
   apply(): void;
   exportSelectedParkJson(): void;
   loadExpertJsonFile(event: Event): void;
   preview(): void;
   removePreviewBlock(change: ParkGraphUpsertResult['changes'][number]): void;
+  selectMergeEntityType(entityType: string): void;
+  setMergeSectionChoice(section: string, choice: string): void;
 }
 
 describe('AdminParkGraphUpsertsComponent', () => {
@@ -182,6 +189,91 @@ describe('AdminParkGraphUpsertsComponent', () => {
 
     expect(harness.previewResult?.targetParkId).toBe('park-1');
     expect(harness.previewResult?.canApply).toBeTrue();
+  });
+
+  it('previews a manufacturer merge without a selected park', () => {
+    createComponent();
+
+    harness.jsonText = JSON.stringify({
+      merges: [
+        {
+          entityType: 'AttractionManufacturer',
+          sourceId: 'manufacturer-source',
+          targetId: 'manufacturer-target',
+          sections: {
+            identity: 'source',
+            contactDetails: 'target'
+          }
+        }
+      ]
+    });
+    harness.preview();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body).toEqual({
+      targetParkId: null,
+      createIfMissing: false,
+      replaceCollections: false,
+      document: {
+        merges: [
+          {
+            entityType: 'AttractionManufacturer',
+            sourceId: 'manufacturer-source',
+            targetId: 'manufacturer-target',
+            sections: {
+              identity: 'source',
+              contactDetails: 'target'
+            }
+          }
+        ]
+      }
+    });
+
+    request.flush({
+      operationId: 'operation-merge',
+      mode: 'merge',
+      isApplied: false,
+      canApply: true,
+      previewedAtUtc: '2026-06-18T10:00:00Z',
+      targetParkId: null,
+      targetParkName: null,
+      counts: { created: 0, updated: 1, deleted: 1, unchanged: 0, warnings: 0, errors: 0 },
+      changes: [],
+      warnings: [],
+      errors: []
+    } satisfies ParkGraphUpsertResult);
+
+    expect(harness.uiError).toBeNull();
+    expect(harness.previewResult?.canApply).toBeTrue();
+  });
+
+  it('adds a merge block to the JSON draft with section choices', () => {
+    createComponent();
+
+    harness.mergeSourceId = 'source-item';
+    harness.mergeTargetId = 'target-item';
+    harness.selectMergeEntityType('ParkItem');
+    harness.setMergeSectionChoice('descriptions', 'source');
+    harness.addMergeDraft();
+
+    const document = JSON.parse(harness.jsonText) as {
+      merges: Array<{
+        entityType: string;
+        sourceId: string;
+        targetId: string;
+        sections: Record<string, string>;
+      }>;
+    };
+
+    expect(document.merges).toHaveSize(1);
+    expect(document.merges[0]).toEqual(jasmine.objectContaining({
+      entityType: 'ParkItem',
+      sourceId: 'source-item',
+      targetId: 'target-item'
+    }));
+    expect(document.merges[0].sections['descriptions']).toBe('source');
+    expect(document.merges[0].sections['identity']).toBe('target');
   });
 
   it('shows when previewed content fields will be updated', () => {

@@ -189,6 +189,11 @@ public sealed class GetParkByIdQueryHandlerTests
             throw new NotImplementedException();
         }
 
+        public Task<bool> DeleteAsync(string parkId, CancellationToken cancellationToken)
+        {
+            return Task.FromResult(false);
+        }
+
         public Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

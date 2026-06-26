@@ -332,6 +332,15 @@ public sealed class ParkRepository : IParkRepository
         return document.ToDomain();
     }
 
+    public async Task<bool> DeleteAsync(string parkId, CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            document => document.Id == parkId,
+            cancellationToken: cancellationToken);
+
+        return result.DeletedCount > 0;
+    }
+
     public async Task<Park?> UpdateVisibilityAsync(string parkId, bool isVisible, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.Id, parkId);

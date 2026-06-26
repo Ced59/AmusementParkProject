@@ -277,6 +277,11 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         {
             throw new NotImplementedException();
         }
+
+        public Task<bool> DeleteAsync(string parkId, CancellationToken cancellationToken)
+        {
+            return Task.FromResult(false);
+        }
     }
 
     private sealed class FakeParkItemRepository : IParkItemRepository
@@ -384,6 +389,11 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         public Task<IReadOnlyCollection<string>> GetParkIdsByManufacturerIdAsync(string manufacturerId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<ParkItem>> GetByManufacturerIdAsync(string manufacturerId, bool includeHidden, CancellationToken cancellationToken)
+        {
+            return Task.FromResult<IReadOnlyCollection<ParkItem>>(Array.Empty<ParkItem>());
         }
 
         public Task<ParkItem> CreateAsync(ParkItem parkItem, CancellationToken cancellationToken)

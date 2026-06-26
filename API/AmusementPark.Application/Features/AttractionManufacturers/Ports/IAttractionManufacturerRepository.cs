@@ -33,6 +33,8 @@ public interface IAttractionManufacturerRepository
     /// </summary>
     Task<AttractionManufacturer?> UpdateAsync(string id, AttractionManufacturer entity, CancellationToken cancellationToken);
 
+    Task<bool> DeleteAsync(string id, CancellationToken cancellationToken);
+
     /// <summary>
     /// Met à jour en masse le statut de revue admin.
     /// </summary>

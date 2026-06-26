@@ -446,7 +446,9 @@
         "errorsCopiedTitle": "Errores copiados",
         "errorsCopiedDetail": "Los detalles estan en el portapapeles.",
         "copyFailedTitle": "Copia fallida",
-        "copyFailedDetail": "No se pudieron copiar los detalles."
+        "copyFailedDetail": "No se pudieron copiar los detalles.",
+        "mergeDraftUpdatedTitle": "Fusion anadida",
+        "mergeDraftUpdatedDetail": "El borrador JSON se ha actualizado."
       },
       "result": {
         "title": "Previsualización",
@@ -524,6 +526,37 @@
         "manufacturerName": "Manufacturer name",
         "imageUrl": "Image URL",
         "imageAltText": "Image alt text"
+      },
+      "mergeBuilder": {
+        "title": "Fusionar duplicado",
+        "entityType": "Entidad",
+        "sourceId": "Id duplicado",
+        "targetId": "Id conservado",
+        "sections": "Secciones",
+        "targetVersion": "Conservar",
+        "sourceVersion": "Tomar",
+        "add": "Anadir fusion",
+        "entityTypes": {
+          "AttractionManufacturer": "Fabricante",
+          "Park": "Parque",
+          "ParkItem": "Item de parque"
+        },
+        "sectionLabels": {
+          "identity": "Identidad",
+          "contactDetails": "Contacto",
+          "biography": "Biografia",
+          "logo": "Logo",
+          "administration": "Administracion",
+          "ownership": "Propiedad",
+          "contact": "Contacto",
+          "descriptions": "Descripciones",
+          "location": "Ubicacion",
+          "visibility": "Visibilidad",
+          "homeFeature": "Inicio",
+          "zone": "Zona",
+          "attractionDetails": "Detalles de atraccion",
+          "attractionLocations": "Accesos de atraccion"
+        }
       },
       "history": {
         "title": "Graph history",

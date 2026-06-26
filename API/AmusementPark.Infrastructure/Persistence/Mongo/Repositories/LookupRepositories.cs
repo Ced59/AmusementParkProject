@@ -113,6 +113,15 @@ public abstract class MongoCrudRepositoryBase<TDomain, TDocument>
         return toDomain(document);
     }
 
+    protected async Task<bool> DeleteAsync(string id, CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            document => document.Id == id,
+            cancellationToken: cancellationToken);
+
+        return result.DeletedCount > 0;
+    }
+
     protected async Task<int> UpdateBulkAdminReviewStatusAsync(IReadOnlyCollection<string> ids, AdminReviewStatus adminReviewStatus, CancellationToken cancellationToken)
     {
         List<string> normalizedIds = ids
@@ -255,6 +264,11 @@ public sealed class AttractionManufacturerRepository : MongoCrudRepositoryBase<A
     public Task<AttractionManufacturer?> UpdateAsync(string id, AttractionManufacturer entity, CancellationToken cancellationToken)
     {
         return base.UpdateAsync(id, entity, value => value.ToDocument(), document => document.ToDomain(), cancellationToken);
+    }
+
+    public Task<bool> DeleteAsync(string id, CancellationToken cancellationToken)
+    {
+        return base.DeleteAsync(id, cancellationToken);
     }
 
     public Task<int> UpdateBulkAdminReviewStatusAsync(IReadOnlyCollection<string> ids, AdminReviewStatus adminReviewStatus, CancellationToken cancellationToken)

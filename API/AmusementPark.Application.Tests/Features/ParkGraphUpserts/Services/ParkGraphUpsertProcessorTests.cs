@@ -1415,4 +1415,231 @@ public sealed class ParkGraphUpsertProcessorTests
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
     }
+
+    [Fact]
+    public async Task PreviewAsync_WhenManufacturerMergeHasNoParkTarget_ShouldReturnAutonomousDiff()
+    {
+        AttractionManufacturer source = new AttractionManufacturer
+        {
+            Id = "manufacturer-source",
+            Name = "Source Builder",
+            LegalName = "Source Builder Ltd",
+        };
+        AttractionManufacturer target = new AttractionManufacturer
+        {
+            Id = "manufacturer-target",
+            Name = "Target Builder",
+            LegalName = "Target Builder SA",
+        };
+
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        manufacturerRepository
+            .Setup(value => value.GetByIdAsync("manufacturer-source", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(source);
+        manufacturerRepository
+            .Setup(value => value.GetByIdAsync("manufacturer-target", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(target);
+
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(value => value.GetByManufacturerIdAsync("manufacturer-source", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnerAsync(ImageOwnerType.AttractionManufacturer, "manufacturer-source", null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            parkItemRepository.Object,
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            manufacturerRepository.Object,
+            imageRepository.Object,
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "merges": [
+            {
+              "entityType": "AttractionManufacturer",
+              "sourceId": "manufacturer-source",
+              "targetId": "manufacturer-target",
+              "sections": {
+                "identity": "source"
+              }
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.PreviewAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.CanApply);
+        Assert.Null(result.Value.TargetParkId);
+        ParkGraphUpsertChange targetChange = Assert.Single(result.Value.Changes, change => change.EntityId == "manufacturer-target");
+        Assert.Equal("Updated", targetChange.ChangeType);
+        Assert.Contains(targetChange.Fields, field => field.Field == "name" && field.OldValue == "Target Builder" && field.NewValue == "Source Builder");
+        ParkGraphUpsertChange sourceChange = Assert.Single(result.Value.Changes, change => change.EntityId == "manufacturer-source");
+        Assert.Equal("Deleted", sourceChange.ChangeType);
+        manufacturerRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenManufacturerMergeIsApplied_ShouldMoveAttractionsAndDeleteSource()
+    {
+        AttractionManufacturer source = new AttractionManufacturer
+        {
+            Id = "manufacturer-source",
+            Name = "Source Builder",
+            LegalName = "Source Builder Ltd",
+        };
+        AttractionManufacturer target = new AttractionManufacturer
+        {
+            Id = "manufacturer-target",
+            Name = "Target Builder",
+            LegalName = "Target Builder SA",
+        };
+        ParkItem sourceItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Source Coaster",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            AttractionDetails = new AttractionDetails
+            {
+                ManufacturerId = "manufacturer-source",
+            },
+        };
+        ParkItem? updatedItem = null;
+        AttractionManufacturer? updatedManufacturer = null;
+
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        manufacturerRepository
+            .Setup(value => value.GetByIdAsync("manufacturer-source", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(source);
+        manufacturerRepository
+            .Setup(value => value.GetByIdAsync("manufacturer-target", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(target);
+        manufacturerRepository
+            .Setup(value => value.UpdateAsync("manufacturer-target", It.IsAny<AttractionManufacturer>(), It.IsAny<CancellationToken>()))
+            .Callback<string, AttractionManufacturer, CancellationToken>((_, value, _) => updatedManufacturer = value)
+            .ReturnsAsync((string _, AttractionManufacturer value, CancellationToken _) => value);
+        manufacturerRepository
+            .Setup(value => value.DeleteAsync("manufacturer-source", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(value => value.GetByManufacturerIdAsync("manufacturer-source", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { sourceItem });
+        parkItemRepository
+            .Setup(value => value.UpdateAsync("item-1", It.IsAny<ParkItem>(), It.IsAny<CancellationToken>()))
+            .Callback<string, ParkItem, CancellationToken>((_, value, _) => updatedItem = value)
+            .ReturnsAsync((string _, ParkItem value, CancellationToken _) => value);
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnerAsync(ImageOwnerType.AttractionManufacturer, "manufacturer-source", null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.DeleteAsync(SearchProjectionResourceTypes.Manufacturers, "manufacturer-source", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, "manufacturer-target", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        searchProjectionWriter
+            .Setup(value => value.UpsertManyAsync(SearchProjectionResourceTypes.ParkItems, It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.Is<PublicSeoUpdate>(update => update.PreviousParkItems.Count == 1 && update.CurrentParkItems.Count == 1), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            parkItemRepository.Object,
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            manufacturerRepository.Object,
+            imageRepository.Object,
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "merges": [
+            {
+              "entityType": "manufacturer",
+              "sourceId": "manufacturer-source",
+              "targetId": "manufacturer-target",
+              "sections": {
+                "identity": "source"
+              }
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(updatedManufacturer);
+        Assert.Equal("Source Builder", updatedManufacturer.Name);
+        Assert.NotNull(updatedItem);
+        Assert.Equal("manufacturer-target", updatedItem.AttractionDetails?.ManufacturerId);
+        Assert.Contains(result.Value!.Changes, change => change.EntityId == "manufacturer-source" && change.ChangeType == "Deleted");
+        manufacturerRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
 }

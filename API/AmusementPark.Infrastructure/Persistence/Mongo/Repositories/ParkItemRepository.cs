@@ -512,6 +512,32 @@ public sealed class ParkItemRepository : IParkItemRepository
             .ToList();
     }
 
+    public async Task<IReadOnlyCollection<ParkItem>> GetByManufacturerIdAsync(string manufacturerId, bool includeHidden, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(manufacturerId))
+        {
+            return Array.Empty<ParkItem>();
+        }
+
+        string normalizedManufacturerId = manufacturerId.Trim();
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(
+            document => document.AttractionDetails!.ManufacturerId,
+            normalizedManufacturerId);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        List<ParkItemDocument> documents = await this.collection.Find(filter)
+            .SortBy(document => document.ParkId)
+            .ThenBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<ParkItem> CreateAsync(ParkItem parkItem, CancellationToken cancellationToken)
     {
         ParkItemDocument document = parkItem.ToDocument();

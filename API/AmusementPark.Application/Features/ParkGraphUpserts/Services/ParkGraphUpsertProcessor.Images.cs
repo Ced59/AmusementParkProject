@@ -23,6 +23,7 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> founderKeys,
         Dictionary<string, string> operatorKeys,
         Dictionary<string, string> manufacturerKeys,
+        Dictionary<string, string> manufacturerIdRemaps,
         ParkGraphUpsertResult result,
         bool apply,
         CancellationToken cancellationToken)
@@ -42,7 +43,7 @@ public sealed partial class ParkGraphUpsertProcessor
             string? imageId = ReadString(patch, "imageId") ?? ReadString(patch, "id");
             if (string.IsNullOrWhiteSpace(imageId))
             {
-                await this.ProcessRemoteImageAsync(patch, park, itemKeys, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
+                await this.ProcessRemoteImageAsync(patch, park, itemKeys, founderKeys, operatorKeys, manufacturerKeys, manufacturerIdRemaps, result, apply, cancellationToken);
                 continue;
             }
 
@@ -75,6 +76,10 @@ public sealed partial class ParkGraphUpsertProcessor
                     ownerId,
                     out ownerType,
                     out resolvedOwnerId);
+                if (ownerType == ImageOwnerType.AttractionManufacturer)
+                {
+                    resolvedOwnerId = RemapId(manufacturerIdRemaps, resolvedOwnerId);
+                }
             }
 
             ParkGraphUpsertChange change = BuildEntityChange("Image", image.Id, null, image.OriginalFileName ?? image.Id, "Unchanged", "imageId");
@@ -206,6 +211,7 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> founderKeys,
         Dictionary<string, string> operatorKeys,
         Dictionary<string, string> manufacturerKeys,
+        Dictionary<string, string> manufacturerIdRemaps,
         ParkGraphUpsertResult result,
         bool apply,
         CancellationToken cancellationToken)
@@ -231,6 +237,10 @@ public sealed partial class ParkGraphUpsertProcessor
             ownerId,
             out ImageOwnerType resolvedOwnerType,
             out string? resolvedOwnerId);
+        if (resolvedOwnerType == ImageOwnerType.AttractionManufacturer)
+        {
+            resolvedOwnerId = RemapId(manufacturerIdRemaps, resolvedOwnerId);
+        }
 
         ImageCategory category = ReadEnumNullable<ImageCategory>(patch, "category") ?? ResolveDefaultImageCategory(resolvedOwnerType);
         string displayName = ReadString(patch, "description") ?? ownerKey ?? sourceUrl;
@@ -594,28 +604,6 @@ public sealed partial class ParkGraphUpsertProcessor
 
         string key = ownerKey[prefix.Length..].Trim();
         return TryResolveOwnerKey(key, ownerKeys, null, out ownerId);
-    }
-
-    private static bool IsRemoteImportOwnerSupported(ImageOwnerType ownerType)
-    {
-        return ownerType is ImageOwnerType.Park
-            or ImageOwnerType.ParkItem
-            or ImageOwnerType.ParkOperator
-            or ImageOwnerType.AttractionManufacturer
-            or ImageOwnerType.ParkFounder;
-    }
-
-    private static ImageCategory ResolveDefaultImageCategory(ImageOwnerType ownerType)
-    {
-        return ownerType switch
-        {
-            ImageOwnerType.Park => ImageCategory.Park,
-            ImageOwnerType.ParkItem => ImageCategory.ParkItem,
-            ImageOwnerType.ParkOperator => ImageCategory.Operator,
-            ImageOwnerType.AttractionManufacturer => ImageCategory.Manufacturer,
-            ImageOwnerType.ParkFounder => ImageCategory.Founder,
-            _ => ImageCategory.Park,
-        };
     }
 
     private static bool HasRemoteMetadataPatch(JsonElement patch)

@@ -127,7 +127,9 @@
         "errorsCopiedTitle": "Errors copied",
         "errorsCopiedDetail": "The details are in the clipboard.",
         "copyFailedTitle": "Copy failed",
-        "copyFailedDetail": "The details could not be copied."
+        "copyFailedDetail": "The details could not be copied.",
+        "mergeDraftUpdatedTitle": "Merge added",
+        "mergeDraftUpdatedDetail": "The JSON draft was updated."
       },
       "result": {
         "title": "Preview",
@@ -205,6 +207,37 @@
         "manufacturerName": "Manufacturer name",
         "imageUrl": "Image URL",
         "imageAltText": "Image alt text"
+      },
+      "mergeBuilder": {
+        "title": "Merge duplicate",
+        "entityType": "Entity",
+        "sourceId": "Duplicate id",
+        "targetId": "Kept id",
+        "sections": "Sections",
+        "targetVersion": "Keep",
+        "sourceVersion": "Take",
+        "add": "Add merge",
+        "entityTypes": {
+          "AttractionManufacturer": "Manufacturer",
+          "Park": "Park",
+          "ParkItem": "Park item"
+        },
+        "sectionLabels": {
+          "identity": "Identity",
+          "contactDetails": "Contact",
+          "biography": "Biography",
+          "logo": "Logo",
+          "administration": "Administration",
+          "ownership": "Ownership",
+          "contact": "Contact",
+          "descriptions": "Descriptions",
+          "location": "Location",
+          "visibility": "Visibility",
+          "homeFeature": "Home feature",
+          "zone": "Zone",
+          "attractionDetails": "Attraction details",
+          "attractionLocations": "Attraction locations"
+        }
       },
       "history": {
         "title": "Graph history",
