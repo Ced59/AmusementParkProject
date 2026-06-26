@@ -1,0 +1,118 @@
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ButtonDirective } from 'primeng/button';
+import { SelectModule } from 'primeng/select';
+import { TagModule } from 'primeng/tag';
+
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { ParkItem } from '@app/models/parks/park-item';
+import { AdminFieldModePositionService } from '../../services/admin-field-mode-position.service';
+import { ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT, ADMIN_FIELD_MODE_GEOLOCATION_PORT, ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT, ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT } from '../../state/admin-field-mode-data.ports';
+import { AdminFieldModeActionsFacade } from '../../state/admin-field-mode-actions.facade';
+import { AdminFieldModeFacade } from '../../state/admin-field-mode.facade';
+import { AdminFieldModeFilter, AdminFieldModeItemRow, AdminFieldModeLocationKey, AdminFieldModePhotoCategoryOption } from '../../models/admin-field-mode.model';
+
+@Component({
+  selector: 'app-admin-field-mode',
+  templateUrl: './admin-field-mode.component.html',
+  styleUrls: ['./admin-field-mode.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    AdminFieldModeFacade,
+    AdminFieldModeActionsFacade,
+    { provide: ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT, useExisting: ParksApiService },
+    { provide: ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT, useExisting: ParkItemsApiService },
+    { provide: ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT, useExisting: ImagesApiService },
+    { provide: ADMIN_FIELD_MODE_GEOLOCATION_PORT, useExisting: AdminFieldModePositionService }
+  ],
+  imports: [CommonModule, FormsModule, ButtonDirective, SelectModule, TagModule]
+})
+export class AdminFieldModeComponent implements OnInit {
+  protected readonly state = this.fieldModeFacade;
+  protected readonly actions = this.actionsFacade;
+  protected readonly selectedRow = computed(() => {
+    const selectedItem: ParkItem | null = this.state.selectedItem();
+    if (!selectedItem?.id) {
+      return null;
+    }
+    return this.state.rows().find((row: AdminFieldModeItemRow) => row.item.id === selectedItem.id) ?? null;
+  });
+
+  constructor(
+    private readonly fieldModeFacade: AdminFieldModeFacade,
+    private readonly actionsFacade: AdminFieldModeActionsFacade,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.fieldModeFacade.initialize(this.route.snapshot.paramMap.get('itemId'));
+  }
+
+  protected get currentLang(): string {
+    return this.router.url.split('/')[1] || 'en';
+  }
+
+  protected setSelectedPark(parkId: string | null): void {
+    this.fieldModeFacade.selectPark(parkId);
+  }
+
+  protected setSearch(value: string): void {
+    this.fieldModeFacade.setSearch(value);
+  }
+
+  protected setFilter(value: AdminFieldModeFilter): void {
+    this.fieldModeFacade.setFilter(value);
+  }
+
+  protected selectRow(row: AdminFieldModeItemRow): void {
+    this.fieldModeFacade.selectItem(row.item.id ?? null);
+  }
+
+  protected async addPhoto(): Promise<void> {
+    const item: ParkItem | null = this.state.selectedItem();
+    if (!item) {
+      return;
+    }
+
+    const row: AdminFieldModeItemRow | null = this.selectedRow();
+    const added: boolean = await this.actionsFacade.addPhoto(item, (row?.photoCount ?? 0) === 0);
+    if (added) {
+      this.state.refreshItems();
+    }
+  }
+
+  protected async saveLocation(): Promise<void> {
+    const item: ParkItem | null = this.state.selectedItem();
+    if (!item) {
+      return;
+    }
+
+    const savedItem: ParkItem | null = await this.actionsFacade.saveLocation(item, this.actions.locationKey() as AdminFieldModeLocationKey);
+    if (savedItem) {
+      this.state.refreshItems();
+      this.state.selectItem(savedItem.id ?? null);
+    }
+  }
+
+  protected setLocationKey(value: string): void {
+    this.actions.setLocationKey(value as AdminFieldModeLocationKey);
+  }
+
+  protected setPhotoCategorySlug(value: string): void {
+    this.actions.setPhotoCategorySlug(value);
+  }
+
+  protected photoCategoryLabel(option: AdminFieldModePhotoCategoryOption): string {
+    return this.currentLang === 'fr' ? option.labelFr : option.labelEn;
+  }
+
+  protected text(fr: string, en: string): string {
+    return this.currentLang === 'fr' ? fr : en;
+  }
+}
