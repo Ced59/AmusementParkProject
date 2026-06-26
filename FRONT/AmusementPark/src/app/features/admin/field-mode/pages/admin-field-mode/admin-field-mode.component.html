@@ -1,4 +1,8 @@
 <section class="admin-field-mode">
+  <div class="admin-field-mode__toast" *ngIf="actions.statusMessageKey() as messageKey" role="status" aria-live="polite">
+    {{ messageLabel(messageKey) }}
+  </div>
+
   <header class="admin-field-mode__hero admin-card">
     <span class="admin-kicker">{{ text('Administration itinérante', 'Mobile administration') }}</span>
     <div class="admin-field-mode__hero-title-row">
@@ -103,7 +107,7 @@
             <p *ngIf="!actions.position()">{{ text('Aucune position fraîche capturée.', 'No fresh position captured.') }}</p>
           </div>
           <button pButton type="button" (click)="actions.refreshPosition()" [disabled]="actions.busy()">
-            {{ text('Actualiser GPS', 'Refresh GPS') }}
+            {{ actions.status() === 'checking' ? text('Capture GPS…', 'Capturing GPS…') : text('Actualiser GPS', 'Refresh GPS') }}
           </button>
         </section>
 
