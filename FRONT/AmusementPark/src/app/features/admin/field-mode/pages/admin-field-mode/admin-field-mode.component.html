@@ -1,73 +1,100 @@
 <section class="admin-field-mode">
-  <header class="admin-field-mode__hero">
-    <span class="admin-field-mode__kicker">{{ text('Administration itinérante', 'Mobile administration') }}</span>
-    <h1>{{ text('Mode terrain', 'Field mode') }}</h1>
-    <p>{{ text('Sélectionne un parc, garde-le entre les sessions et complète les données utiles directement sur place.', 'Select a park, keep it between sessions and complete useful on-site data.') }}</p>
+  <header class="admin-field-mode__hero admin-card">
+    <span class="admin-kicker">{{ text('Administration itinérante', 'Mobile administration') }}</span>
+    <h1 class="admin-page-title">{{ text('Mode terrain', 'Field mode') }}</h1>
+    <p class="admin-muted">{{ text('Sélectionne un parc, garde-le entre les sessions et complète les données utiles directement sur place.', 'Select a park, keep it between sessions and complete useful on-site data.') }}</p>
   </header>
 
-  <section class="admin-field-mode__park-card">
-    <label for="field-mode-park">{{ text('Parc actif', 'Active park') }}</label>
-    <select id="field-mode-park" [ngModel]="state.selectedParkId()" (ngModelChange)="setSelectedPark($event)">
-      <option [ngValue]="null">{{ text('Choisir un parc', 'Choose a park') }}</option>
-      <option *ngFor="let park of state.parkOptions()" [ngValue]="park.value">{{ park.label }}</option>
-    </select>
-    <button pButton type="button" class="p-button-text" (click)="state.clearSelectedPark()" [disabled]="!state.selectedParkId()">
-      {{ text('Désélectionner', 'Clear selection') }}
-    </button>
+  <section class="admin-field-mode__park-card admin-card">
+    <div class="admin-list-header admin-field-mode__park-card-header">
+      <div>
+        <span class="admin-kicker">{{ text('Parc actif', 'Active park') }}</span>
+        <h2>{{ state.selectedParkLabel() ?? text('Choisir un parc', 'Choose a park') }}</h2>
+        <p>{{ text('Recherche le parc par son nom, puis touche la ligne pour le garder actif.', 'Search the park by name, then tap the row to keep it active.') }}</p>
+      </div>
+      <button pButton type="button" class="p-button-text" (click)="state.clearSelectedPark()" [disabled]="!state.selectedParkId()">
+        {{ text('Désélectionner', 'Clear selection') }}
+      </button>
+    </div>
+
+    <div class="admin-field-mode__park-picker">
+      <div class="admin-field admin-toolbar__search">
+        <label for="field-mode-park-search">{{ text('Recherche parc', 'Park search') }}</label>
+        <div class="admin-search-field">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          <input id="field-mode-park-search" type="search" [placeholder]="text('Ex. Le Fleury, Walibi, Bellewaerde…', 'E.g. Le Fleury, Walibi, Bellewaerde…')" [ngModel]="state.parkSearch()" (ngModelChange)="setParkSearch($event)">
+        </div>
+      </div>
+
+      <div class="admin-field-mode__park-results" *ngIf="state.filteredParkOptions().length > 0; else noParkResult">
+        <button type="button" class="admin-field-mode__park-result" *ngFor="let park of state.filteredParkOptions()" (click)="setSelectedPark(park.value)" [class.admin-field-mode__park-result--active]="state.selectedParkId() === park.value">
+          <span>{{ park.label }}</span>
+          <small *ngIf="state.selectedParkId() === park.value">{{ text('Actif', 'Active') }}</small>
+        </button>
+      </div>
+    </div>
   </section>
 
   <ng-container *ngIf="state.selectedPark(); else noParkSelected">
     <section class="admin-field-mode__stats" aria-label="Mode terrain résumé">
-      <article>
+      <article class="admin-card">
         <strong>{{ state.totalItemCount() }}</strong>
-        <span>{{ text('items', 'items') }}</span>
+        <span class="admin-muted">{{ text('items', 'items') }}</span>
       </article>
-      <article>
+      <article class="admin-card">
         <strong>{{ state.missingPhotosCount() }}</strong>
-        <span>{{ text('sans photo', 'without photos') }}</span>
+        <span class="admin-muted">{{ text('sans photo', 'without photos') }}</span>
       </article>
-      <article>
+      <article class="admin-card">
         <strong>{{ state.missingGeneralLocationCount() }}</strong>
-        <span>{{ text('sans position', 'without position') }}</span>
+        <span class="admin-muted">{{ text('sans position', 'without position') }}</span>
       </article>
-      <article>
+      <article class="admin-card">
         <strong>{{ state.missingPreciseLocationCount() }}</strong>
-        <span>{{ text('sans accès précis', 'without precise access') }}</span>
+        <span class="admin-muted">{{ text('sans accès précis', 'without precise access') }}</span>
       </article>
     </section>
 
-    <section class="admin-field-mode__tools">
-      <input type="search" [placeholder]="text('Rechercher un item', 'Search an item')" [ngModel]="state.search()" (ngModelChange)="setSearch($event)">
-      <div class="admin-field-mode__filters" aria-label="Filtres">
-        <button pButton type="button" [class.admin-field-mode__filter--active]="state.filter() === 'all'" (click)="setFilter('all')">{{ text('Tout', 'All') }}</button>
-        <button pButton type="button" [class.admin-field-mode__filter--active]="state.filter() === 'missingPhotos'" (click)="setFilter('missingPhotos')">{{ text('Photos', 'Photos') }}</button>
-        <button pButton type="button" [class.admin-field-mode__filter--active]="state.filter() === 'missingGeneralLocation'" (click)="setFilter('missingGeneralLocation')">{{ text('Position', 'Position') }}</button>
-        <button pButton type="button" [class.admin-field-mode__filter--active]="state.filter() === 'missingPreciseLocation'" (click)="setFilter('missingPreciseLocation')">{{ text('Accès', 'Access') }}</button>
+    <section class="admin-field-mode__tools admin-card admin-toolbar">
+      <div class="admin-field admin-toolbar__search">
+        <label for="field-mode-item-search">{{ text('Recherche item', 'Item search') }}</label>
+        <div class="admin-search-field">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          <input id="field-mode-item-search" type="search" [placeholder]="text('Rechercher un item', 'Search an item')" [ngModel]="state.search()" (ngModelChange)="setSearch($event)">
+        </div>
+      </div>
+      <div class="admin-toolbar__actions admin-field-mode__filters" aria-label="Filtres">
+        <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.filter() === 'all'" (click)="setFilter('all')">{{ text('Tout', 'All') }}</button>
+        <button pButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingPhotos'" (click)="setFilter('missingPhotos')">{{ text('Photos', 'Photos') }}</button>
+        <button pButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingGeneralLocation'" (click)="setFilter('missingGeneralLocation')">{{ text('Position', 'Position') }}</button>
+        <button pButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingPreciseLocation'" (click)="setFilter('missingPreciseLocation')">{{ text('Accès', 'Access') }}</button>
       </div>
     </section>
 
     <div class="admin-field-mode__workspace">
       <section class="admin-field-mode__list" aria-label="Park items">
-        <button type="button" class="admin-field-mode__item" *ngFor="let row of state.filteredRows()" (click)="selectRow(row)" [class.admin-field-mode__item--active]="state.selectedItem()?.id === row.item.id">
+        <button type="button" class="admin-field-mode__item admin-card" *ngFor="let row of state.filteredRows()" (click)="selectRow(row)" [class.admin-field-mode__item--active]="state.selectedItem()?.id === row.item.id">
           <span class="admin-field-mode__item-main">
-            <strong>{{ row.item.name }}</strong>
-            <small>{{ row.item.category }} · {{ row.item.type }}</small>
+            <strong class="admin-row-title">{{ row.item.name }}</strong>
+            <small class="admin-muted">{{ row.item.category }} · {{ row.item.type }}</small>
           </span>
           <span class="admin-field-mode__badges">
-            <span class="admin-field-mode__badge" [class.admin-field-mode__badge--warn]="(row.photoCount ?? 0) === 0">📷 {{ row.photoCount ?? '?' }}</span>
-            <span class="admin-field-mode__badge" [class.admin-field-mode__badge--warn]="!row.hasGeneralLocation">📍 {{ row.hasGeneralLocation ? text('OK', 'OK') : text('À faire', 'Todo') }}</span>
-            <span class="admin-field-mode__badge" [class.admin-field-mode__badge--warn]="!row.hasAnyPreciseLocation">🎯 {{ row.preciseLocationCount }}</span>
+            <span class="admin-badge" [class.admin-badge--warning]="(row.photoCount ?? 0) === 0">📷 {{ row.photoCount ?? '?' }}</span>
+            <span class="admin-badge" [class.admin-badge--warning]="!row.hasGeneralLocation">📍 {{ row.hasGeneralLocation ? text('OK', 'OK') : text('À faire', 'Todo') }}</span>
+            <span class="admin-badge" [class.admin-badge--warning]="!row.hasAnyPreciseLocation">🎯 {{ row.preciseLocationCount }}</span>
           </span>
         </button>
       </section>
 
-      <aside class="admin-field-mode__editor" *ngIf="state.selectedItem() as item; else noItemSelected">
-        <header>
-          <span>{{ text('Édition rapide', 'Quick edit') }}</span>
-          <h2>{{ item.name }}</h2>
+      <aside class="admin-field-mode__editor admin-editor-card" *ngIf="state.selectedItem() as item; else noItemSelected">
+        <header class="page-header">
+          <div>
+            <span class="admin-kicker">{{ text('Édition rapide', 'Quick edit') }}</span>
+            <h2>{{ item.name }}</h2>
+          </div>
         </header>
 
-        <section class="admin-field-mode__position-panel">
+        <section class="admin-field-mode__block admin-callout">
           <div>
             <strong>{{ text('Position téléphone', 'Phone position') }}</strong>
             <p *ngIf="actions.position() as position">{{ position.latitude | number:'1.6-6' }}, {{ position.longitude | number:'1.6-6' }} · ±{{ position.accuracy ?? '?' }} m</p>
@@ -78,45 +105,58 @@
           </button>
         </section>
 
-        <section class="admin-field-mode__block">
+        <section class="admin-field-mode__block admin-card">
           <h3>{{ text('Localisation', 'Location') }}</h3>
-          <select [ngModel]="actions.locationKey()" (ngModelChange)="setLocationKey($event)">
-            <option *ngFor="let option of state.locationOptions()" [ngValue]="option.key">{{ text(option.labelFr, option.labelEn) }}</option>
-          </select>
+          <div class="admin-field">
+            <label for="field-mode-location-kind">{{ text('Type de position', 'Position type') }}</label>
+            <select id="field-mode-location-kind" [ngModel]="actions.locationKey()" (ngModelChange)="setLocationKey($event)">
+              <option *ngFor="let option of state.locationOptions()" [ngValue]="option.key">{{ text(option.labelFr, option.labelEn) }}</option>
+            </select>
+          </div>
           <button pButton type="button" (click)="saveLocation()" [disabled]="actions.busy()">
             {{ text('Enregistrer ici', 'Save here') }}
           </button>
         </section>
 
-        <section class="admin-field-mode__block admin-field-mode__block--photo">
+        <section class="admin-field-mode__block admin-card">
           <h3>{{ text('Photo géolocalisée', 'Geolocated photo') }}</h3>
-          <p>{{ text('La photo est bloquée tant qu’une position GPS fraîche n’est pas disponible.', 'Photo capture is blocked until a fresh position is available.') }}</p>
-          <select [ngModel]="actions.photoCategorySlug()" (ngModelChange)="setPhotoCategorySlug($event)">
-            <option *ngFor="let category of actions.photoCategoryOptions()" [ngValue]="category.slug">{{ photoCategoryLabel(category) }}</option>
-          </select>
-          <textarea rows="3" [placeholder]="text('Note optionnelle', 'Optional note')" [ngModel]="actions.photoDescription()" (ngModelChange)="actions.setPhotoDescription($event)"></textarea>
-          <input type="file" accept="image/*" capture="environment" (change)="actions.selectFile($event)" [disabled]="!actions.readyForPhoto() || actions.busy()">
+          <p class="admin-muted">{{ text('La photo est bloquée tant qu’une position GPS fraîche n’est pas disponible.', 'Photo capture is blocked until a fresh position is available.') }}</p>
+          <div class="admin-field">
+            <label for="field-mode-photo-category">{{ text('Catégorie photo', 'Photo category') }}</label>
+            <select id="field-mode-photo-category" [ngModel]="actions.photoCategorySlug()" (ngModelChange)="setPhotoCategorySlug($event)">
+              <option *ngFor="let category of actions.photoCategoryOptions()" [ngValue]="category.slug">{{ photoCategoryLabel(category) }}</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="field-mode-photo-note">{{ text('Note', 'Note') }}</label>
+            <textarea id="field-mode-photo-note" rows="3" [placeholder]="text('Note optionnelle', 'Optional note')" [ngModel]="actions.photoDescription()" (ngModelChange)="actions.setPhotoDescription($event)"></textarea>
+          </div>
+          <input class="admin-field-mode__file" type="file" accept="image/*" capture="environment" (change)="actions.selectFile($event)" [disabled]="!actions.readyForPhoto() || actions.busy()">
           <button pButton type="button" (click)="addPhoto()" [disabled]="!actions.selectedFile() || actions.busy()">
             {{ text('Envoyer la photo', 'Upload photo') }}
           </button>
         </section>
 
-        <p class="admin-field-mode__message" *ngIf="actions.statusMessageKey() as messageKey">{{ messageLabel(messageKey) }}</p>
+        <p class="admin-field-mode__message admin-callout" *ngIf="actions.statusMessageKey() as messageKey">{{ messageLabel(messageKey) }}</p>
       </aside>
     </div>
   </ng-container>
 </section>
 
+<ng-template #noParkResult>
+  <p class="admin-field-mode__empty-result admin-muted">{{ text('Aucun parc trouvé.', 'No park found.') }}</p>
+</ng-template>
+
 <ng-template #noParkSelected>
-  <section class="admin-field-mode__empty">
-    <h2>{{ text('Aucun parc sélectionné', 'No selected park') }}</h2>
-    <p>{{ text('Choisis le parc que tu visites. Il restera actif jusqu’à désélection.', 'Choose the park you are visiting. It will stay active until you clear it.') }}</p>
+  <section class="admin-field-mode__empty admin-card">
+    <h2 class="admin-page-title">{{ text('Aucun parc sélectionné', 'No selected park') }}</h2>
+    <p class="admin-muted">{{ text('Choisis le parc que tu visites. Il restera actif jusqu’à désélection.', 'Choose the park you are visiting. It will stay active until you clear it.') }}</p>
   </section>
 </ng-template>
 
 <ng-template #noItemSelected>
-  <aside class="admin-field-mode__editor admin-field-mode__editor--empty">
+  <aside class="admin-field-mode__editor admin-editor-card admin-field-mode__editor--empty">
     <h2>{{ text('Sélectionne un item', 'Select an item') }}</h2>
-    <p>{{ text('La fiche terrain permet d’ajouter une photo, une position générale ou une entrée/sortie précise.', 'The field sheet lets you add a photo, a general position or a precise entrance/exit.') }}</p>
+    <p class="admin-muted">{{ text('La fiche terrain permet d’ajouter une photo, une position générale ou une entrée/sortie précise.', 'The field sheet lets you add a photo, a general position or a precise entrance/exit.') }}</p>
   </aside>
 </ng-template>
