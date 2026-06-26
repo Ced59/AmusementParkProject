@@ -62,7 +62,9 @@ export class AdminFieldModeFacade {
   private readonly selectedPhotoDescriptionSignal = signal('');
   private readonly selectedLocationKeySignal = signal<AdminFieldModeLocationKey>('general');
   private readonly messageKeySignal = signal<string | null>(null);
+  private readonly localProcessedOverrides = new Map<string, boolean>();
   private parkSearchRequestId = 0;
+  private itemLoadRequestId = 0;
 
   public readonly parks: Signal<Park[]> = this.parksSignal.asReadonly();
   public readonly rows: Signal<AdminFieldModeItemRow[]> = this.rowsSignal.asReadonly();
@@ -149,6 +151,7 @@ export class AdminFieldModeFacade {
     this.selectedItemSignal.set(null);
     this.rowsSignal.set([]);
     this.parkSearchSignal.set('');
+    this.localProcessedOverrides.clear();
     writeAdminFieldModeSelectedParkId(ADMIN_FIELD_MODE_SELECTED_PARK_STORAGE_KEY, parkId);
     if (parkId) {
       this.ensureSelectedParkAvailable(parkId);
@@ -188,15 +191,19 @@ export class AdminFieldModeFacade {
       return;
     }
 
-    const nextProcessed = !row.isProcessed;
+    const previousProcessed = row.isProcessed;
+    const nextProcessed = !previousProcessed;
+    this.localProcessedOverrides.set(itemId, nextProcessed);
     this.setRowProcessed(itemId, nextProcessed);
     this.processedStatusService.setProcessed(parkId, itemId, nextProcessed).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (savedProcessed: boolean) => {
+        this.localProcessedOverrides.set(itemId, savedProcessed);
         this.setRowProcessed(itemId, savedProcessed);
         this.messageKeySignal.set(savedProcessed ? 'admin.fieldMode.messages.itemProcessed' : 'admin.fieldMode.messages.itemUnprocessed');
       },
       error: () => {
-        this.setRowProcessed(itemId, row.isProcessed);
+        this.localProcessedOverrides.set(itemId, previousProcessed);
+        this.setRowProcessed(itemId, previousProcessed);
         this.messageKeySignal.set('admin.fieldMode.messages.itemProcessedFailed');
       }
     });
@@ -293,6 +300,7 @@ export class AdminFieldModeFacade {
   }
 
   private loadItems(parkId: string, routeItemId: string | null = null): void {
+    const requestId: number = ++this.itemLoadRequestId;
     this.loadingSignal.set(true);
     this.getAdminRows(parkId).pipe(
       switchMap((adminRows: ParkItemAdminRow[]) => adminRows.length > 0
@@ -301,11 +309,17 @@ export class AdminFieldModeFacade {
       switchMap((rows: AdminFieldModeItemRow[]) => this.applyProcessedStatuses(parkId, rows))
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (rows: AdminFieldModeItemRow[]) => {
+        if (requestId !== this.itemLoadRequestId) {
+          return;
+        }
         this.rowsSignal.set(rows.sort((left: AdminFieldModeItemRow, right: AdminFieldModeItemRow) => left.item.name.localeCompare(right.item.name)));
         this.selectItem(routeItemId);
         this.loadingSignal.set(false);
       },
       error: () => {
+        if (requestId !== this.itemLoadRequestId) {
+          return;
+        }
         this.rowsSignal.set([]);
         this.loadingSignal.set(false);
       }
@@ -354,18 +368,24 @@ export class AdminFieldModeFacade {
 
   private buildRow(item: ParkItem): Observable<AdminFieldModeItemRow> {
     if (!item.id) {
-      return of(this.toRow(item, null, false));
+      return of(this.toRow(item, null, this.resolveProcessedState(item.id, false)));
     }
     return this.imagesApiService.getImagesPage(ImageOwnerType.PARK_ITEM, item.id, ImageCategory.PARK_ITEM, 1, 1).pipe(
-      map((page: PagedResult<ImageDto>) => this.toRow(item, page.pagination.totalItems, false)),
-      catchError(() => of(this.toRow(item, null, false)))
+      map((page: PagedResult<ImageDto>) => this.toRow(item, page.pagination.totalItems, this.resolveProcessedState(item.id, false))),
+      catchError(() => of(this.toRow(item, null, this.resolveProcessedState(item.id, false))))
     );
   }
 
   private applyProcessedStatuses(parkId: string, rows: AdminFieldModeItemRow[]): Observable<AdminFieldModeItemRow[]> {
     return this.processedStatusService.getProcessedItemIds(parkId).pipe(
-      map((processedIds: Set<string>) => rows.map((row: AdminFieldModeItemRow) => ({ ...row, isProcessed: !!row.item.id && processedIds.has(row.item.id) }))),
-      catchError(() => of(rows))
+      map((processedIds: Set<string>) => rows.map((row: AdminFieldModeItemRow) => ({
+        ...row,
+        isProcessed: this.resolveProcessedState(row.item.id, !!row.item.id && processedIds.has(row.item.id))
+      }))),
+      catchError(() => of(rows.map((row: AdminFieldModeItemRow) => ({
+        ...row,
+        isProcessed: this.resolveProcessedState(row.item.id, this.getCurrentRowProcessedState(row.item.id) ?? row.isProcessed)
+      }))))
     );
   }
 
@@ -387,7 +407,7 @@ export class AdminFieldModeFacade {
 
   private replaceRowItem(item: ParkItem): void {
     this.rowsSignal.set(this.rowsSignal().map((row: AdminFieldModeItemRow) => row.item.id === item.id
-      ? this.toRow(item, row.photoCount, row.isProcessed)
+      ? this.toRow(item, row.photoCount, this.resolveProcessedState(item.id, row.isProcessed))
       : row));
   }
 
@@ -395,6 +415,22 @@ export class AdminFieldModeFacade {
     this.rowsSignal.set(this.rowsSignal().map((row: AdminFieldModeItemRow) => row.item.id === itemId
       ? { ...row, isProcessed }
       : row));
+  }
+
+  private resolveProcessedState(itemId: string | null | undefined, fallback: boolean): boolean {
+    if (!itemId || !this.localProcessedOverrides.has(itemId)) {
+      return fallback;
+    }
+
+    return this.localProcessedOverrides.get(itemId) ?? fallback;
+  }
+
+  private getCurrentRowProcessedState(itemId: string | null | undefined): boolean | null {
+    if (!itemId) {
+      return null;
+    }
+
+    return this.rowsSignal().find((row: AdminFieldModeItemRow) => row.item.id === itemId)?.isProcessed ?? null;
   }
 
   private toRow(item: ParkItem, photoCount: number | null, isProcessed: boolean): AdminFieldModeItemRow {
