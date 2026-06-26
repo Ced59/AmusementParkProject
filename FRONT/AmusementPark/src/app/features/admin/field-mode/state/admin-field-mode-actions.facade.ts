@@ -21,6 +21,7 @@ import {
 } from './admin-field-mode-data.ports';
 import {
   ADMIN_FIELD_MODE_GPS_MAX_AGE_MS,
+  ADMIN_FIELD_MODE_LOCATION_OPTIONS,
   ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS,
   AdminFieldModeGpsStatus,
   AdminFieldModeLocationKey,
@@ -36,6 +37,7 @@ export class AdminFieldModeActionsFacade {
   private readonly fileSignal = signal<File | null>(null);
   private readonly photoCategorySlugSignal = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly photoDescriptionSignal = signal('');
+  private readonly locationKeySignal = signal<AdminFieldModeLocationKey>('general');
   private readonly busySignal = signal(false);
   private photoTagIdsBySlug: Record<string, string> = {};
 
@@ -45,6 +47,7 @@ export class AdminFieldModeActionsFacade {
   public readonly selectedFile: Signal<File | null> = this.fileSignal.asReadonly();
   public readonly photoCategorySlug: Signal<string> = this.photoCategorySlugSignal.asReadonly();
   public readonly photoDescription: Signal<string> = this.photoDescriptionSignal.asReadonly();
+  public readonly locationKey: Signal<AdminFieldModeLocationKey> = this.locationKeySignal.asReadonly();
   public readonly busy: Signal<boolean> = this.busySignal.asReadonly();
   public readonly readyForPhoto: Signal<boolean> = computed(() => this.isPositionFresh(this.positionSignal()));
 
@@ -89,6 +92,11 @@ export class AdminFieldModeActionsFacade {
 
   setPhotoDescription(description: string): void {
     this.photoDescriptionSignal.set(description);
+  }
+
+  setLocationKey(locationKey: AdminFieldModeLocationKey): void {
+    const known: boolean = ADMIN_FIELD_MODE_LOCATION_OPTIONS.some((option) => option.key === locationKey);
+    this.locationKeySignal.set(known ? locationKey : 'general');
   }
 
   async addPhoto(item: ParkItem, shouldSetCurrent: boolean): Promise<boolean> {
