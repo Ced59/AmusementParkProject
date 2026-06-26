@@ -111,6 +111,20 @@ export class AdminFieldModeComponent implements OnInit {
     return this.currentLang === 'fr' ? option.labelFr : option.labelEn;
   }
 
+  protected messageLabel(key: string): string {
+    const messages: Record<string, { fr: string; en: string }> = {
+      'admin.fieldMode.messages.invalidImage': { fr: 'Image invalide.', en: 'Invalid image.' },
+      'admin.fieldMode.messages.positionRequired': { fr: 'Actualise la position GPS avant de choisir une photo.', en: 'Refresh the GPS position before choosing a photo.' },
+      'admin.fieldMode.messages.positionUnavailable': { fr: 'Position indisponible. Autorise la localisation et réessaie.', en: 'Position unavailable. Allow location access and try again.' },
+      'admin.fieldMode.messages.photoAdded': { fr: 'Photo ajoutée avec sa position.', en: 'Photo added with its position.' },
+      'admin.fieldMode.messages.photoFailed': { fr: 'Photo non envoyée.', en: 'Photo was not uploaded.' },
+      'admin.fieldMode.messages.locationSaved': { fr: 'Localisation enregistrée.', en: 'Location saved.' },
+      'admin.fieldMode.messages.locationFailed': { fr: 'Localisation non enregistrée.', en: 'Location was not saved.' }
+    };
+    const message = messages[key];
+    return message ? this.text(message.fr, message.en) : key;
+  }
+
   protected text(fr: string, en: string): string {
     return this.currentLang === 'fr' ? fr : en;
   }
