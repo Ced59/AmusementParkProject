@@ -122,7 +122,7 @@
 
         <section class="admin-field-mode__block admin-card">
           <h3>{{ text('Photo géolocalisée', 'Geolocated photo') }}</h3>
-          <p class="admin-muted">{{ text('La photo est bloquée tant qu’une position GPS fraîche n’est pas disponible.', 'Photo capture is blocked until a fresh position is available.') }}</p>
+          <p class="admin-muted">{{ text('Seules les photos avec coordonnées GPS EXIF sont acceptées dans le mode terrain.', 'Only photos with EXIF GPS coordinates are accepted in field mode.') }}</p>
           <div class="admin-field">
             <label for="field-mode-photo-category">{{ text('Catégorie photo', 'Photo category') }}</label>
             <select id="field-mode-photo-category" [ngModel]="actions.photoCategorySlug()" (ngModelChange)="setPhotoCategorySlug($event)">
@@ -133,8 +133,8 @@
             <label for="field-mode-photo-note">{{ text('Note', 'Note') }}</label>
             <textarea id="field-mode-photo-note" rows="3" [placeholder]="text('Note optionnelle', 'Optional note')" [ngModel]="actions.photoDescription()" (ngModelChange)="actions.setPhotoDescription($event)"></textarea>
           </div>
-          <input class="admin-field-mode__file" type="file" accept="image/*" capture="environment" (change)="actions.selectFile($event)" [disabled]="!actions.readyForPhoto() || actions.busy()">
-          <button pButton type="button" (click)="addPhoto()" [disabled]="!actions.selectedFile() || actions.busy()">
+          <input class="admin-field-mode__file" type="file" accept="image/jpeg" capture="environment" (change)="actions.selectFile($event)" [disabled]="actions.busy()">
+          <button pButton type="button" (click)="addPhoto()" [disabled]="!actions.readyForPhoto() || actions.busy()">
             {{ text('Envoyer la photo', 'Upload photo') }}
           </button>
         </section>

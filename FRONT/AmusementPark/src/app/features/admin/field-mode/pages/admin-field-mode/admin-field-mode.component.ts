@@ -117,9 +117,14 @@ export class AdminFieldModeComponent implements OnInit {
   protected messageLabel(key: string): string {
     const messages: Record<string, { fr: string; en: string }> = {
       'admin.fieldMode.messages.invalidImage': { fr: 'Image invalide.', en: 'Invalid image.' },
-      'admin.fieldMode.messages.positionRequired': { fr: 'Actualise la position GPS avant de choisir une photo.', en: 'Refresh the GPS position before choosing a photo.' },
-      'admin.fieldMode.messages.positionUnavailable': { fr: 'Position indisponible. Autorise la localisation et réessaie.', en: 'Position unavailable. Allow location access and try again.' },
-      'admin.fieldMode.messages.photoAdded': { fr: 'Photo ajoutée avec sa position.', en: 'Photo added with its position.' },
+      'admin.fieldMode.messages.photoRequired': { fr: 'Choisis une photo avant l’envoi.', en: 'Choose a photo before upload.' },
+      'admin.fieldMode.messages.photoMissingGps': { fr: 'Photo refusée : aucune coordonnée GPS EXIF détectée.', en: 'Photo rejected: no EXIF GPS coordinates found.' },
+      'admin.fieldMode.messages.photoGpsReady': { fr: 'Photo acceptée : coordonnées GPS détectées.', en: 'Photo accepted: GPS coordinates detected.' },
+      'admin.fieldMode.messages.positionDenied': { fr: 'Localisation refusée. Autorise la position pour ce site dans Chrome puis réessaie.', en: 'Location denied. Allow location for this site in Chrome and try again.' },
+      'admin.fieldMode.messages.positionTimeout': { fr: 'Position GPS trop longue à obtenir. Place-toi en extérieur ou réactive la localisation puis réessaie.', en: 'GPS position timed out. Move outside or re-enable location and try again.' },
+      'admin.fieldMode.messages.positionUnavailable': { fr: 'Position indisponible. Active la localisation du téléphone et vérifie l’autorisation du navigateur.', en: 'Position unavailable. Enable phone location and check browser permission.' },
+      'admin.fieldMode.messages.positionReady': { fr: 'Position GPS capturée.', en: 'GPS position captured.' },
+      'admin.fieldMode.messages.photoAdded': { fr: 'Photo ajoutée avec sa position EXIF.', en: 'Photo added with its EXIF position.' },
       'admin.fieldMode.messages.photoFailed': { fr: 'Photo non envoyée.', en: 'Photo was not uploaded.' },
       'admin.fieldMode.messages.locationSaved': { fr: 'Localisation enregistrée.', en: 'Location saved.' },
       'admin.fieldMode.messages.locationFailed': { fr: 'Localisation non enregistrée.', en: 'Location was not saved.' }

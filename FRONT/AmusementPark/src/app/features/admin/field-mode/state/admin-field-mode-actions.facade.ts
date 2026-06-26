@@ -11,6 +11,7 @@ import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ImageUploadSecurityService } from '@shared/utils/security';
 
+import { AdminFieldModePhotoGpsService } from '../services/admin-field-mode-photo-gps.service';
 import {
   ADMIN_FIELD_MODE_GEOLOCATION_PORT,
   ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT,
@@ -20,7 +21,6 @@ import {
   AdminFieldModeParkItemsApiServicePort
 } from './admin-field-mode-data.ports';
 import {
-  ADMIN_FIELD_MODE_GPS_MAX_AGE_MS,
   ADMIN_FIELD_MODE_LOCATION_OPTIONS,
   ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS,
   AdminFieldModeGpsStatus,
@@ -34,6 +34,7 @@ export class AdminFieldModeActionsFacade {
   private readonly statusSignal = signal<AdminFieldModeGpsStatus>('idle');
   private readonly statusMessageKeySignal = signal<string | null>(null);
   private readonly positionSignal = signal<AdminFieldModePosition | null>(null);
+  private readonly photoPositionSignal = signal<AdminFieldModePosition | null>(null);
   private readonly fileSignal = signal<File | null>(null);
   private readonly photoCategorySlugSignal = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly photoDescriptionSignal = signal('');
@@ -44,19 +45,21 @@ export class AdminFieldModeActionsFacade {
   public readonly status: Signal<AdminFieldModeGpsStatus> = this.statusSignal.asReadonly();
   public readonly statusMessageKey: Signal<string | null> = this.statusMessageKeySignal.asReadonly();
   public readonly position: Signal<AdminFieldModePosition | null> = this.positionSignal.asReadonly();
+  public readonly photoPosition: Signal<AdminFieldModePosition | null> = this.photoPositionSignal.asReadonly();
   public readonly selectedFile: Signal<File | null> = this.fileSignal.asReadonly();
   public readonly photoCategorySlug: Signal<string> = this.photoCategorySlugSignal.asReadonly();
   public readonly photoDescription: Signal<string> = this.photoDescriptionSignal.asReadonly();
   public readonly locationKey: Signal<AdminFieldModeLocationKey> = this.locationKeySignal.asReadonly();
   public readonly busy: Signal<boolean> = this.busySignal.asReadonly();
-  public readonly readyForPhoto: Signal<boolean> = computed(() => this.isPositionFresh(this.positionSignal()));
+  public readonly readyForPhoto: Signal<boolean> = computed(() => !!this.fileSignal() && !!this.photoPositionSignal());
   public readonly photoCategoryOptions = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS).asReadonly();
 
   constructor(
     @Inject(ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: AdminFieldModeImagesApiServicePort,
     @Inject(ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: AdminFieldModeParkItemsApiServicePort,
     @Inject(ADMIN_FIELD_MODE_GEOLOCATION_PORT) private readonly positionService: AdminFieldModeGeolocationPort,
-    private readonly imageUploadSecurityService: ImageUploadSecurityService
+    private readonly imageUploadSecurityService: ImageUploadSecurityService,
+    private readonly photoGpsService: AdminFieldModePhotoGpsService
   ) {
   }
 
@@ -64,26 +67,29 @@ export class AdminFieldModeActionsFacade {
     await this.captureFreshPosition();
   }
 
-  selectFile(event: Event): void {
+  async selectFile(event: Event): Promise<void> {
     const input: HTMLInputElement = event.target as HTMLInputElement;
     const file: File | null = input.files?.[0] ?? null;
     input.value = '';
     const validation = this.imageUploadSecurityService.validateImageFile(file);
 
+    this.fileSignal.set(null);
+    this.photoPositionSignal.set(null);
+
     if (!validation.isValid || !file) {
-      this.fileSignal.set(null);
       this.statusMessageKeySignal.set(validation.errorKey ?? 'admin.fieldMode.messages.invalidImage');
       return;
     }
 
-    if (!this.readyForPhoto()) {
-      this.fileSignal.set(null);
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.positionRequired');
+    const photoPosition: AdminFieldModePosition | null = await this.photoGpsService.readPosition(file);
+    if (!photoPosition) {
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.photoMissingGps');
       return;
     }
 
     this.fileSignal.set(file);
-    this.statusMessageKeySignal.set(null);
+    this.photoPositionSignal.set(photoPosition);
+    this.statusMessageKeySignal.set('admin.fieldMode.messages.photoGpsReady');
   }
 
   setPhotoCategorySlug(slug: string): void {
@@ -102,13 +108,23 @@ export class AdminFieldModeActionsFacade {
 
   async addPhoto(item: ParkItem, shouldSetCurrent: boolean): Promise<boolean> {
     const file: File | null = this.fileSignal();
-    if (!item.id || !file || this.busySignal()) {
+    const photoPosition: AdminFieldModePosition | null = this.photoPositionSignal();
+    if (!item.id || this.busySignal()) {
+      return false;
+    }
+
+    if (!file) {
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.photoRequired');
+      return false;
+    }
+
+    if (!photoPosition) {
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.photoMissingGps');
       return false;
     }
 
     this.busySignal.set(true);
     try {
-      const position: AdminFieldModePosition = await this.captureFreshPosition();
       await this.ensurePhotoCategoryTags();
       const description: string = this.photoDescriptionSignal().trim();
       const uploaded: UploadedImage = await firstValueFrom(this.imagesApiService.uploadImage(file, ImageCategory.PARK_ITEM, true, description || item.name));
@@ -119,8 +135,9 @@ export class AdminFieldModeActionsFacade {
         description: description || undefined,
         setAsCurrent: shouldSetCurrent
       }));
-      await this.applyPhotoMetadata(linked, position, description);
+      await this.applyPhotoMetadata(linked, photoPosition, description);
       this.fileSignal.set(null);
+      this.photoPositionSignal.set(null);
       this.photoDescriptionSignal.set('');
       this.statusMessageKeySignal.set('admin.fieldMode.messages.photoAdded');
       return true;
@@ -147,7 +164,9 @@ export class AdminFieldModeActionsFacade {
       return savedItem;
     } catch (error: unknown) {
       console.error('Error saving field mode location', error);
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.locationFailed');
+      if (!this.statusMessageKeySignal()?.startsWith('admin.fieldMode.messages.position')) {
+        this.statusMessageKeySignal.set('admin.fieldMode.messages.locationFailed');
+      }
       return null;
     } finally {
       this.busySignal.set(false);
@@ -157,7 +176,7 @@ export class AdminFieldModeActionsFacade {
   private async captureFreshPosition(): Promise<AdminFieldModePosition> {
     this.statusSignal.set('checking');
     try {
-      const position: GeolocationPosition = await this.positionService.getCurrentPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 15000 });
+      const position: GeolocationPosition = await this.positionService.getCurrentPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 20000 });
       const value: AdminFieldModePosition = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
@@ -166,17 +185,33 @@ export class AdminFieldModeActionsFacade {
       };
       this.positionSignal.set(value);
       this.statusSignal.set('ready');
-      this.statusMessageKeySignal.set(null);
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.positionReady');
       return value;
     } catch (error: unknown) {
       this.statusSignal.set('error');
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.positionUnavailable');
+      this.statusMessageKeySignal.set(this.getPositionErrorMessageKey(error));
       throw error;
     }
   }
 
-  private isPositionFresh(position: AdminFieldModePosition | null): boolean {
-    return !!position && Date.now() - position.capturedAt <= ADMIN_FIELD_MODE_GPS_MAX_AGE_MS;
+  private getPositionErrorMessageKey(error: unknown): string {
+    const code: number | undefined = typeof error === 'object' && error !== null && 'code' in error
+      ? Number((error as { code?: unknown }).code)
+      : undefined;
+
+    if (code === 1) {
+      return 'admin.fieldMode.messages.positionDenied';
+    }
+
+    if (code === 3) {
+      return 'admin.fieldMode.messages.positionTimeout';
+    }
+
+    if (code === 2) {
+      return 'admin.fieldMode.messages.positionUnavailable';
+    }
+
+    return 'admin.fieldMode.messages.positionUnavailable';
   }
 
   private async ensurePhotoCategoryTags(): Promise<void> {
