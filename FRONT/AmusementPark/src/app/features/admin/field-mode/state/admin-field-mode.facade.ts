@@ -18,10 +18,12 @@ import {
   ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT,
   ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT,
   ADMIN_FIELD_MODE_PARKS_API_SERVICE_PORT,
+  ADMIN_FIELD_MODE_PROCESSED_STATUS_PORT,
   AdminFieldModeGeolocationPort,
   AdminFieldModeImagesApiServicePort,
   AdminFieldModeParkItemsApiServicePort,
-  AdminFieldModeParksApiServicePort
+  AdminFieldModeParksApiServicePort,
+  AdminFieldModeProcessedStatusPort
 } from './admin-field-mode-data.ports';
 import { readAdminFieldModeSelectedParkId, writeAdminFieldModeSelectedParkId } from './admin-field-mode-storage';
 import {
@@ -35,7 +37,8 @@ import {
   AdminFieldModeLocationKey,
   AdminFieldModeParkOption,
   AdminFieldModePhotoCategoryOption,
-  AdminFieldModePosition
+  AdminFieldModePosition,
+  AdminFieldModeProcessedFilter
 } from '../models/admin-field-mode.model';
 
 @Injectable()
@@ -47,6 +50,7 @@ export class AdminFieldModeFacade {
   private readonly parkSearchSignal = signal('');
   private readonly searchSignal = signal('');
   private readonly filterSignal = signal<AdminFieldModeFilter>('all');
+  private readonly processedFilterSignal = signal<AdminFieldModeProcessedFilter>('unprocessed');
   private readonly loadingSignal = signal(false);
   private readonly savingSignal = signal(false);
   private readonly uploadingSignal = signal(false);
@@ -67,6 +71,7 @@ export class AdminFieldModeFacade {
   public readonly parkSearch: Signal<string> = this.parkSearchSignal.asReadonly();
   public readonly search: Signal<string> = this.searchSignal.asReadonly();
   public readonly filter: Signal<AdminFieldModeFilter> = this.filterSignal.asReadonly();
+  public readonly processedFilter: Signal<AdminFieldModeProcessedFilter> = this.processedFilterSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
   public readonly uploading: Signal<boolean> = this.uploadingSignal.asReadonly();
@@ -89,6 +94,8 @@ export class AdminFieldModeFacade {
   public readonly showParkSearch: Signal<boolean> = computed(() => !this.selectedParkIdSignal());
   public readonly filteredRows: Signal<AdminFieldModeItemRow[]> = computed(() => this.filterRows());
   public readonly totalItemCount: Signal<number> = computed(() => this.rowsSignal().length);
+  public readonly processedItemCount: Signal<number> = computed(() => this.rowsSignal().filter((row: AdminFieldModeItemRow) => row.isProcessed).length);
+  public readonly unprocessedItemCount: Signal<number> = computed(() => this.rowsSignal().filter((row: AdminFieldModeItemRow) => !row.isProcessed).length);
   public readonly missingPhotosCount: Signal<number> = computed(() => this.rowsSignal().filter((row: AdminFieldModeItemRow) => (row.photoCount ?? 0) === 0).length);
   public readonly missingGeneralLocationCount: Signal<number> = computed(() => this.rowsSignal().filter((row: AdminFieldModeItemRow) => !row.hasGeneralLocation).length);
   public readonly missingPreciseLocationCount: Signal<number> = computed(() => this.rowsSignal().filter((row: AdminFieldModeItemRow) => !row.hasAnyPreciseLocation).length);
@@ -99,6 +106,7 @@ export class AdminFieldModeFacade {
     @Inject(ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: AdminFieldModeParkItemsApiServicePort,
     @Inject(ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: AdminFieldModeImagesApiServicePort,
     @Inject(ADMIN_FIELD_MODE_GEOLOCATION_PORT) private readonly geolocationService: AdminFieldModeGeolocationPort,
+    @Inject(ADMIN_FIELD_MODE_PROCESSED_STATUS_PORT) private readonly processedStatusService: AdminFieldModeProcessedStatusPort,
     private readonly imageUploadSecurityService: ImageUploadSecurityService,
     private readonly destroyRef: DestroyRef
   ) {
@@ -130,6 +138,10 @@ export class AdminFieldModeFacade {
 
   setFilter(value: AdminFieldModeFilter): void {
     this.filterSignal.set(value);
+  }
+
+  setProcessedFilter(value: AdminFieldModeProcessedFilter): void {
+    this.processedFilterSignal.set(value);
   }
 
   selectPark(parkId: string | null): void {
@@ -166,6 +178,27 @@ export class AdminFieldModeFacade {
         this.replaceRowItem(loadedItem);
       },
       error: () => undefined
+    });
+  }
+
+  toggleProcessed(row: AdminFieldModeItemRow): void {
+    const parkId: string | null = this.selectedParkIdSignal();
+    const itemId: string | undefined = row.item.id;
+    if (!parkId || !itemId) {
+      return;
+    }
+
+    const nextProcessed = !row.isProcessed;
+    this.setRowProcessed(itemId, nextProcessed);
+    this.processedStatusService.setProcessed(parkId, itemId, nextProcessed).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (savedProcessed: boolean) => {
+        this.setRowProcessed(itemId, savedProcessed);
+        this.messageKeySignal.set(savedProcessed ? 'admin.fieldMode.messages.itemProcessed' : 'admin.fieldMode.messages.itemUnprocessed');
+      },
+      error: () => {
+        this.setRowProcessed(itemId, row.isProcessed);
+        this.messageKeySignal.set('admin.fieldMode.messages.itemProcessedFailed');
+      }
     });
   }
 
@@ -264,7 +297,8 @@ export class AdminFieldModeFacade {
     this.getAdminRows(parkId).pipe(
       switchMap((adminRows: ParkItemAdminRow[]) => adminRows.length > 0
         ? this.buildRowsFromAdminRows(adminRows)
-        : this.getFallbackItems(parkId).pipe(switchMap((items: ParkItem[]) => this.buildRowsFromItems(items))))
+        : this.getFallbackItems(parkId).pipe(switchMap((items: ParkItem[]) => this.buildRowsFromItems(items)))),
+      switchMap((rows: AdminFieldModeItemRow[]) => this.applyProcessedStatuses(parkId, rows))
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (rows: AdminFieldModeItemRow[]) => {
         this.rowsSignal.set(rows.sort((left: AdminFieldModeItemRow, right: AdminFieldModeItemRow) => left.item.name.localeCompare(right.item.name)));
@@ -320,11 +354,18 @@ export class AdminFieldModeFacade {
 
   private buildRow(item: ParkItem): Observable<AdminFieldModeItemRow> {
     if (!item.id) {
-      return of(this.toRow(item, null));
+      return of(this.toRow(item, null, false));
     }
     return this.imagesApiService.getImagesPage(ImageOwnerType.PARK_ITEM, item.id, ImageCategory.PARK_ITEM, 1, 1).pipe(
-      map((page: PagedResult<ImageDto>) => this.toRow(item, page.pagination.totalItems)),
-      catchError(() => of(this.toRow(item, null)))
+      map((page: PagedResult<ImageDto>) => this.toRow(item, page.pagination.totalItems, false)),
+      catchError(() => of(this.toRow(item, null, false)))
+    );
+  }
+
+  private applyProcessedStatuses(parkId: string, rows: AdminFieldModeItemRow[]): Observable<AdminFieldModeItemRow[]> {
+    return this.processedStatusService.getProcessedItemIds(parkId).pipe(
+      map((processedIds: Set<string>) => rows.map((row: AdminFieldModeItemRow) => ({ ...row, isProcessed: !!row.item.id && processedIds.has(row.item.id) }))),
+      catchError(() => of(rows))
     );
   }
 
@@ -346,13 +387,19 @@ export class AdminFieldModeFacade {
 
   private replaceRowItem(item: ParkItem): void {
     this.rowsSignal.set(this.rowsSignal().map((row: AdminFieldModeItemRow) => row.item.id === item.id
-      ? this.toRow(item, row.photoCount)
+      ? this.toRow(item, row.photoCount, row.isProcessed)
       : row));
   }
 
-  private toRow(item: ParkItem, photoCount: number | null): AdminFieldModeItemRow {
+  private setRowProcessed(itemId: string, isProcessed: boolean): void {
+    this.rowsSignal.set(this.rowsSignal().map((row: AdminFieldModeItemRow) => row.item.id === itemId
+      ? { ...row, isProcessed }
+      : row));
+  }
+
+  private toRow(item: ParkItem, photoCount: number | null, isProcessed: boolean): AdminFieldModeItemRow {
     const preciseLocationCount: number = this.countPreciseLocations(item);
-    return { item, photoCount, hasGeneralLocation: item.latitude !== null && item.latitude !== undefined && item.longitude !== null && item.longitude !== undefined, preciseLocationCount, hasAnyPreciseLocation: preciseLocationCount > 0 };
+    return { item, photoCount, hasGeneralLocation: item.latitude !== null && item.latitude !== undefined && item.longitude !== null && item.longitude !== undefined, preciseLocationCount, hasAnyPreciseLocation: preciseLocationCount > 0, isProcessed };
   }
 
   private countPreciseLocations(item: ParkItem): number {
@@ -363,7 +410,14 @@ export class AdminFieldModeFacade {
 
   private filterRows(): AdminFieldModeItemRow[] {
     const searchTerm: string = this.searchSignal().trim().toLowerCase();
+    const processedFilter: AdminFieldModeProcessedFilter = this.processedFilterSignal();
     return this.rowsSignal().filter((row: AdminFieldModeItemRow) => {
+      if (processedFilter === 'processed' && !row.isProcessed) {
+        return false;
+      }
+      if (processedFilter === 'unprocessed' && row.isProcessed) {
+        return false;
+      }
       if (searchTerm && !row.item.name.toLowerCase().includes(searchTerm)) {
         return false;
       }
