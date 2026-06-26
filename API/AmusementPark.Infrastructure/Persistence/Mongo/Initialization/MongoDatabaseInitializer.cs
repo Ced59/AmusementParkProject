@@ -103,6 +103,9 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.ParkItemsCollectionName, cancellationToken);
         await this.InitializeParkItemsIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(AdminFieldModeItemProgressCollectionName, cancellationToken);
+        await this.InitializeAdminFieldModeItemProgressAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.AttractionAccessConditionTypesCollectionName, cancellationToken);
         await this.InitializeAttractionAccessConditionTypesIndexesAsync(cancellationToken);
         await this.SeedSystemAttractionAccessConditionTypesAsync(cancellationToken);
