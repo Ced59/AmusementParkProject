@@ -27,11 +27,12 @@ describe('AdminFieldModeActionsFacade', () => {
   beforeEach(() => {
     imagesPort = jasmine.createSpyObj<AdminFieldModeImagesApiServicePort>('AdminFieldModeImagesApiServicePort', ['getImagesPage', 'uploadImage', 'linkImage', 'updateAdminImage', 'getAdminImageTags', 'createAdminImageTag']);
     const parkItemsPort = jasmine.createSpyObj<AdminFieldModeParkItemsApiServicePort>('AdminFieldModeParkItemsApiServicePort', ['getParkItemsByParkId', 'getParkItemsByParkIdPage', 'getParkItemsPaginated', 'getParkItemById', 'updateParkItem']);
-    positionPort = jasmine.createSpyObj<AdminFieldModeGeolocationPort>('AdminFieldModeGeolocationPort', ['getCurrentPosition']);
+    positionPort = jasmine.createSpyObj<AdminFieldModeGeolocationPort>('AdminFieldModeGeolocationPort', ['getCurrentPosition', 'getPermissionState']);
     photoGpsService = jasmine.createSpyObj<AdminFieldModePhotoGpsService>('AdminFieldModePhotoGpsService', ['readPosition']);
     imageUploadSecurityService = jasmine.createSpyObj<ImageUploadSecurityService>('ImageUploadSecurityService', ['validateImageFile']);
 
     imageUploadSecurityService.validateImageFile.and.returnValue({ isValid: true, errorKey: null });
+    positionPort.getPermissionState.and.returnValue(Promise.resolve('granted'));
     photoGpsService.readPosition.and.returnValue(Promise.resolve(createFieldPosition()));
     imagesPort.getAdminImageTags.and.returnValue(of([{ id: 'tag-gallery', slug: 'park-item-gallery', labels: [], descriptions: [], isActive: true, createdAt: '', updatedAt: '' }]));
     imagesPort.createAdminImageTag.and.callFake((request) => of({ id: `${request.slug}-tag`, slug: request.slug, labels: request.labels, descriptions: request.descriptions, isActive: true, createdAt: '', updatedAt: '' }));
@@ -82,6 +83,15 @@ describe('AdminFieldModeActionsFacade', () => {
     expect(uploaded).toBeTrue();
     expect(positionPort.getCurrentPosition).not.toHaveBeenCalled();
     expect(imagesPort.updateAdminImage).toHaveBeenCalledOnceWith('image-1', jasmine.objectContaining({ geoLocation: { latitude: 50.1, longitude: 3.2 }, tagIds: ['tag-gallery'] }));
+  });
+
+  it('stops location capture when browser permission is denied', async () => {
+    positionPort.getPermissionState.and.returnValue(Promise.resolve('denied'));
+
+    await expectAsync(facade.refreshPosition()).toBeRejected();
+
+    expect(positionPort.getCurrentPosition).not.toHaveBeenCalled();
+    expect(facade.statusMessageKey()).toBe('admin.fieldMode.messages.positionDenied');
   });
 });
 
