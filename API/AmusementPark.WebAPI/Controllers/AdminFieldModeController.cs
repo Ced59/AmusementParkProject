@@ -40,7 +40,9 @@ public sealed class AdminFieldModeController : ControllerBase
             & Builders<BsonDocument>.Filter.Eq("isProcessed", true);
         List<BsonDocument> documents = await this.Collection.Find(filter).ToListAsync(cancellationToken);
         string[] itemIds = documents
-            .Select(static document => document.GetValue("itemId", BsonNull.Value).AsString)
+            .Select(static document => document.GetValue("itemId", BsonNull.Value))
+            .Where(static value => value.IsString)
+            .Select(static value => value.AsString)
             .Where(static itemId => !string.IsNullOrWhiteSpace(itemId))
             .Distinct(StringComparer.Ordinal)
             .Order(StringComparer.Ordinal)
@@ -67,7 +69,7 @@ public sealed class AdminFieldModeController : ControllerBase
 
         if (!request.IsProcessed)
         {
-            await this.Collection.DeleteOneAsync(filter, cancellationToken);
+            await this.Collection.DeleteManyAsync(filter, cancellationToken);
             return this.Ok(new AdminFieldModeProcessedItemDto(parkId, itemId, false));
         }
 
@@ -78,7 +80,15 @@ public sealed class AdminFieldModeController : ControllerBase
             .Set("updatedAtUtc", DateTime.UtcNow)
             .SetOnInsert("createdAtUtc", DateTime.UtcNow);
 
-        await this.Collection.UpdateOneAsync(filter, update, new UpdateOptions { IsUpsert = true }, cancellationToken);
+        try
+        {
+            await this.Collection.UpdateOneAsync(filter, update, new UpdateOptions { IsUpsert = true }, cancellationToken);
+        }
+        catch (MongoWriteException exception) when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            await this.Collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
+        }
+
         return this.Ok(new AdminFieldModeProcessedItemDto(parkId, itemId, true));
     }
 
