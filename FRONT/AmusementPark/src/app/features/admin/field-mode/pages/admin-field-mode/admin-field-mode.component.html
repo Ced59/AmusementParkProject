@@ -1,20 +1,23 @@
 <section class="admin-field-mode">
   <header class="admin-field-mode__hero admin-card">
     <span class="admin-kicker">{{ text('Administration itinérante', 'Mobile administration') }}</span>
-    <h1 class="admin-page-title">{{ text('Mode terrain', 'Field mode') }}</h1>
-    <p class="admin-muted">{{ text('Sélectionne un parc, garde-le entre les sessions et complète les données utiles directement sur place.', 'Select a park, keep it between sessions and complete useful on-site data.') }}</p>
+    <div class="admin-field-mode__hero-title-row">
+      <h1 class="admin-page-title">{{ text('Mode terrain', 'Field mode') }}</h1>
+      <button type="button" class="admin-field-mode__active-park" *ngIf="state.selectedParkLabel() as parkName" (click)="state.clearSelectedPark()" [attr.aria-label]="text('Désélectionner le parc actif', 'Clear active park')">
+        <span>{{ parkName }}</span>
+        <strong aria-hidden="true">×</strong>
+      </button>
+    </div>
+    <p class="admin-muted">{{ text('Complète rapidement les photos et positions utiles directement sur place.', 'Quickly complete useful photos and positions on site.') }}</p>
   </header>
 
-  <section class="admin-field-mode__park-card admin-card">
+  <section class="admin-field-mode__park-card admin-card" *ngIf="state.showParkSearch()">
     <div class="admin-list-header admin-field-mode__park-card-header">
       <div>
         <span class="admin-kicker">{{ text('Parc actif', 'Active park') }}</span>
-        <h2>{{ state.selectedParkLabel() ?? text('Choisir un parc', 'Choose a park') }}</h2>
+        <h2>{{ text('Choisir un parc', 'Choose a park') }}</h2>
         <p>{{ text('Recherche le parc par son nom, puis touche la ligne pour le garder actif.', 'Search the park by name, then tap the row to keep it active.') }}</p>
       </div>
-      <button pButton type="button" class="p-button-text" (click)="state.clearSelectedPark()" [disabled]="!state.selectedParkId()">
-        {{ text('Désélectionner', 'Clear selection') }}
-      </button>
     </div>
 
     <div class="admin-field-mode__park-picker">
@@ -27,9 +30,8 @@
       </div>
 
       <div class="admin-field-mode__park-results" *ngIf="state.filteredParkOptions().length > 0; else noParkResult">
-        <button type="button" class="admin-field-mode__park-result" *ngFor="let park of state.filteredParkOptions()" (click)="setSelectedPark(park.value)" [class.admin-field-mode__park-result--active]="state.selectedParkId() === park.value">
+        <button type="button" class="admin-field-mode__park-result" *ngFor="let park of state.filteredParkOptions()" (click)="setSelectedPark(park.value)">
           <span>{{ park.label }}</span>
-          <small *ngIf="state.selectedParkId() === park.value">{{ text('Actif', 'Active') }}</small>
         </button>
       </div>
     </div>

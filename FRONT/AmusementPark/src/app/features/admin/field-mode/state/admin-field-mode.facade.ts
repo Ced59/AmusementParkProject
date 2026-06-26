@@ -86,6 +86,7 @@ export class AdminFieldModeFacade {
   public readonly filteredParkOptions: Signal<AdminFieldModeParkOption[]> = computed(() => this.parkOptions().slice(0, 30));
   public readonly selectedPark: Signal<Park | null> = computed(() => this.parksSignal().find((park: Park) => park.id === this.selectedParkIdSignal()) ?? null);
   public readonly selectedParkLabel: Signal<string | null> = computed(() => this.selectedPark()?.name ?? null);
+  public readonly showParkSearch: Signal<boolean> = computed(() => !this.selectedParkIdSignal());
   public readonly filteredRows: Signal<AdminFieldModeItemRow[]> = computed(() => this.filterRows());
   public readonly totalItemCount: Signal<number> = computed(() => this.rowsSignal().length);
   public readonly missingPhotosCount: Signal<number> = computed(() => this.rowsSignal().filter((row: AdminFieldModeItemRow) => (row.photoCount ?? 0) === 0).length);
@@ -140,7 +141,10 @@ export class AdminFieldModeFacade {
     if (parkId) {
       this.ensureSelectedParkAvailable(parkId);
       this.loadItems(parkId);
+      return;
     }
+
+    this.loadingSignal.set(false);
   }
 
   clearSelectedPark(): void {
@@ -257,8 +261,16 @@ export class AdminFieldModeFacade {
 
   private loadItems(parkId: string, routeItemId: string | null = null): void {
     this.loadingSignal.set(true);
-    this.parkItemsApiService.getParkItemsPaginated(1, 500, parkId, null, null, { sortBy: 'name', sortDirection: 'asc' }, { closedFilter: 'all' }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (page) => this.loadRowsWithPhotoCounts(page.data ?? [], routeItemId),
+    this.getAdminRows(parkId).pipe(
+      switchMap((adminRows: ParkItemAdminRow[]) => adminRows.length > 0
+        ? this.buildRowsFromAdminRows(adminRows)
+        : this.getFallbackItems(parkId).pipe(switchMap((items: ParkItem[]) => this.buildRowsFromItems(items))))
+    ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (rows: AdminFieldModeItemRow[]) => {
+        this.rowsSignal.set(rows.sort((left: AdminFieldModeItemRow, right: AdminFieldModeItemRow) => left.item.name.localeCompare(right.item.name)));
+        this.selectItem(routeItemId);
+        this.loadingSignal.set(false);
+      },
       error: () => {
         this.rowsSignal.set([]);
         this.loadingSignal.set(false);
@@ -266,24 +278,37 @@ export class AdminFieldModeFacade {
     });
   }
 
-  private loadRowsWithPhotoCounts(adminRows: ParkItemAdminRow[], routeItemId: string | null): void {
+  private getAdminRows(parkId: string): Observable<ParkItemAdminRow[]> {
+    return this.parkItemsApiService.getParkItemsPaginated(1, 500, parkId, null, null, { sortBy: 'name', sortDirection: 'asc' }, { closedFilter: 'all' }).pipe(
+      map((page) => page.data ?? []),
+      catchError(() => of([]))
+    );
+  }
+
+  private getFallbackItems(parkId: string): Observable<ParkItem[]> {
+    return this.parkItemsApiService.getParkItemsByParkIdPage(parkId, 1, 500, { closedFilter: 'all' }, { closedFilter: 'all' }).pipe(
+      map((page: PagedResult<ParkItem>) => page.items ?? []),
+      switchMap((items: ParkItem[]) => items.length > 0
+        ? of(items)
+        : this.parkItemsApiService.getParkItemsByParkId(parkId, { closedFilter: 'all' })),
+      catchError(() => this.parkItemsApiService.getParkItemsByParkId(parkId, { closedFilter: 'all' }).pipe(catchError(() => of([]))))
+    );
+  }
+
+  private buildRowsFromAdminRows(adminRows: ParkItemAdminRow[]): Observable<AdminFieldModeItemRow[]> {
     if (adminRows.length === 0) {
-      this.rowsSignal.set([]);
-      this.loadingSignal.set(false);
-      return;
+      return of([]);
     }
 
-    forkJoin(adminRows.map((adminRow: ParkItemAdminRow) => this.buildRowFromAdminRow(adminRow))).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (rows: AdminFieldModeItemRow[]) => {
-        this.rowsSignal.set(rows.sort((left: AdminFieldModeItemRow, right: AdminFieldModeItemRow) => left.item.name.localeCompare(right.item.name)));
-        this.selectItem(routeItemId);
-        this.loadingSignal.set(false);
-      },
-      error: () => {
-        this.rowsSignal.set(adminRows.map((adminRow: ParkItemAdminRow) => this.toRow(this.toFallbackParkItem(adminRow), null)));
-        this.loadingSignal.set(false);
-      }
-    });
+    return forkJoin(adminRows.map((adminRow: ParkItemAdminRow) => this.buildRowFromAdminRow(adminRow)));
+  }
+
+  private buildRowsFromItems(items: ParkItem[]): Observable<AdminFieldModeItemRow[]> {
+    if (items.length === 0) {
+      return of([]);
+    }
+
+    return forkJoin(items.map((item: ParkItem) => this.buildRow(item)));
   }
 
   private buildRowFromAdminRow(adminRow: ParkItemAdminRow): Observable<AdminFieldModeItemRow> {
