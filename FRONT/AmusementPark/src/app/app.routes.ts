@@ -43,6 +43,14 @@ export const routes: Routes = [
                 .then((m) => m.AdminParkItemsIndexModule)
           },
           {
+            path: 'field-mode',
+            loadComponent: () => import('@features/admin/field-mode/pages/admin-field-mode/admin-field-mode.component').then((m) => m.AdminFieldModeComponent)
+          },
+          {
+            path: 'field-mode/item/:itemId',
+            loadComponent: () => import('@features/admin/field-mode/pages/admin-field-mode/admin-field-mode.component').then((m) => m.AdminFieldModeComponent)
+          },
+          {
             path: 'operators',
             loadChildren: () =>
               import('@features/admin/operators/pages/admin-operators/admin-operators.module')
