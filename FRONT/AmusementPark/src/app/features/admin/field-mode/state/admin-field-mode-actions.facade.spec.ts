@@ -33,6 +33,7 @@ describe('AdminFieldModeActionsFacade', () => {
     ]);
     const parkItemsPort = jasmine.createSpyObj<AdminFieldModeParkItemsApiServicePort>('AdminFieldModeParkItemsApiServicePort', [
       'getParkItemsByParkIdPage',
+      'getParkItemsPaginated',
       'getParkItemById',
       'updateParkItem'
     ]);
