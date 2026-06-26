@@ -69,13 +69,13 @@ describe('AdminFieldModeActionsFacade', () => {
     facade = TestBed.inject(AdminFieldModeActionsFacade);
   });
 
-  it('rejects a selected photo when no fresh position has been captured', () => {
+  it('keeps a selected photo while warning that upload still needs a fresh position', () => {
     const file: File = new File(['image'], 'photo.jpg', { type: 'image/jpeg' });
 
     facade.selectFile(createFileInputEvent(file));
 
-    expect(facade.selectedFile()).toBeNull();
-    expect(facade.statusMessageKey()).toBe('admin.fieldMode.messages.positionRequired');
+    expect(facade.selectedFile()).toBe(file);
+    expect(facade.statusMessageKey()).toBe('admin.fieldMode.messages.photoSelectedPositionRequired');
   });
 
   it('uploads and stores photo geolocation after a fresh position capture', async () => {
