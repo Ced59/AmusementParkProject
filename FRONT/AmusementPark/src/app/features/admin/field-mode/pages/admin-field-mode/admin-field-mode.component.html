@@ -101,7 +101,7 @@
           </button>
         </section>
 
-        <p class="admin-field-mode__message" *ngIf="actions.statusMessageKey() as messageKey">{{ messageKey }}</p>
+        <p class="admin-field-mode__message" *ngIf="actions.statusMessageKey() as messageKey">{{ messageLabel(messageKey) }}</p>
       </aside>
     </div>
   </ng-container>
