@@ -18,6 +18,10 @@ export class AdminAppLayoutComponent {
     return this.router.url.split('/')[1] || 'en';
   }
 
+  protected get fieldModeNavLabel(): string {
+    return this.currentLang === 'fr' ? 'Mode terrain' : 'Field mode';
+  }
+
   protected get technicalStatsNavLabel(): string {
     return this.currentLang === 'fr' ? 'Stats techniques' : 'Technical stats';
   }
