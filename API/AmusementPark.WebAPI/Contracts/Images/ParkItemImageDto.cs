@@ -4,7 +4,7 @@ namespace AmusementPark.WebAPI.Contracts.Images;
 
 public sealed class ParkItemImageDto
 {
-    public ImageDto Image { get; set; } = new();
+    public required ImageDto Image { get; set; }
 
-    public ParkItemDto Item { get; set; } = new();
+    public required ParkItemDto Item { get; set; }
 }

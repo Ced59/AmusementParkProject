@@ -1,5 +1,6 @@
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Handlers;
