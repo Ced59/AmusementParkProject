@@ -13,6 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
+import { ImageGeoLocation } from '@app/models/images/image-geo-location';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { UploadedImage } from '@app/models/images/uploaded-image';
@@ -335,6 +336,10 @@ export class AdminParkPhotosStateFacade {
         parkName
       )
     );
+    const uploadedGeoLocation: ImageGeoLocation | null = this.resolveUploadedGeoLocation(uploadedImage);
+    if (!uploadedGeoLocation) {
+      this.showMissingGeoWarning();
+    }
 
     const linkedImage: ImageDto = await firstValueFrom(
       this.imagesApiService.linkImage({
@@ -346,27 +351,48 @@ export class AdminParkPhotosStateFacade {
       })
     );
 
-    const taggedImage: ImageDto = await this.applySelectedPhotoCategoryAsync(linkedImage);
+    const taggedImage: ImageDto = await this.applySelectedPhotoCategoryAsync(linkedImage, uploadedGeoLocation);
     this.upsertPhoto(this.toOwnedImageItem(taggedImage));
   }
 
-  private async applySelectedPhotoCategoryAsync(image: ImageDto): Promise<ImageDto> {
+  private async applySelectedPhotoCategoryAsync(image: ImageDto, uploadedGeoLocation: ImageGeoLocation | null = null): Promise<ImageDto> {
     const selectedTagId: string | undefined = this.photoTagIdsBySlugSignal()[this.selectedPhotoCategorySlugSignal()];
+    const geoLocation: ImageGeoLocation | null = image.geoLocation ?? uploadedGeoLocation;
 
-    if (!selectedTagId) {
+    if (!selectedTagId && !uploadedGeoLocation) {
       return image;
     }
 
     return firstValueFrom(this.imagesApiService.updateAdminImage(image.id, {
       description: image.description,
-      geoLocation: image.geoLocation ?? null,
+      geoLocation,
       altTexts: image.altTexts ?? [],
       captions: image.captions ?? [],
       credits: image.credits ?? [],
-      tagIds: [...new Set([...(image.tagIds ?? []), selectedTagId])],
+      tagIds: selectedTagId ? [...new Set([...(image.tagIds ?? []), selectedTagId])] : image.tagIds ?? [],
       isPublished: image.isPublished !== false,
       sourceUrl: image.sourceUrl ?? null
     }));
+  }
+
+  private resolveUploadedGeoLocation(uploadedImage: UploadedImage): ImageGeoLocation | null {
+    if (uploadedImage.latitude === null || uploadedImage.latitude === undefined || uploadedImage.longitude === null || uploadedImage.longitude === undefined) {
+      return null;
+    }
+
+    const latitude: number = Number(uploadedImage.latitude);
+    const longitude: number = Number(uploadedImage.longitude);
+    return Number.isFinite(latitude) && Number.isFinite(longitude)
+      ? { latitude, longitude }
+      : null;
+  }
+
+  private showMissingGeoWarning(): void {
+    this.toastMessageService.add(
+      'warn',
+      this.translateService.instant('common.warning'),
+      this.translateService.instant('admin.contextualBlocks.drawer.photoMetadataGeoMissing')
+    );
   }
 
   private upsertPhoto(item: OwnedImageItem): void {

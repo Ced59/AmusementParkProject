@@ -24,6 +24,13 @@ export interface AdminFieldModePhotoCategoryOption {
   labelEn: string;
 }
 
+export interface AdminFieldModePhotoSelection {
+  id: string;
+  file: File;
+  position: AdminFieldModePosition;
+  previewUrl: string;
+}
+
 export interface AdminFieldModeItemRow {
   item: ParkItem;
   photoCount: number | null;
@@ -40,6 +47,7 @@ export interface AdminFieldModeViewModel {
 
 export const ADMIN_FIELD_MODE_SELECTED_PARK_STORAGE_KEY = 'admin.fieldMode.selectedParkId';
 export const ADMIN_FIELD_MODE_GPS_MAX_AGE_MS = 2 * 60 * 1000;
+export const ADMIN_FIELD_MODE_GPS_TARGET_ACCURACY_METERS = 6;
 
 export const ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminFieldModePhotoCategoryOption> = [
   { slug: 'park-item-gallery', labelFr: 'Galerie générale', labelEn: 'General gallery' },

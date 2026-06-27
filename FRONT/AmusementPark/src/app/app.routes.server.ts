@@ -60,6 +60,8 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/parks/edit/:idPark/items/new', renderMode: RenderMode.Client },
   { path: ':lang/admin/parks/edit/:idPark/items/:idItem', renderMode: RenderMode.Client },
   { path: ':lang/admin/items', renderMode: RenderMode.Client },
+  { path: ':lang/admin/field-mode/item/:itemId', renderMode: RenderMode.Client },
+  { path: ':lang/admin/field-mode', renderMode: RenderMode.Client },
   { path: ':lang/admin/operators', renderMode: RenderMode.Client },
   { path: ':lang/admin/founders', renderMode: RenderMode.Client },
   { path: ':lang/admin/founders/new', renderMode: RenderMode.Client },

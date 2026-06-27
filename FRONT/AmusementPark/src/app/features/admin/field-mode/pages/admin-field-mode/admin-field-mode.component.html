@@ -61,7 +61,7 @@
       </article>
     </section>
 
-    <section class="admin-field-mode__tools admin-card admin-toolbar">
+    <section class="admin-field-mode__tools admin-card admin-toolbar" *ngIf="!isDetailMode()">
       <div class="admin-field admin-toolbar__search">
         <label for="field-mode-item-search">{{ text('Recherche item', 'Item search') }}</label>
         <div class="admin-search-field">
@@ -82,8 +82,8 @@
       </div>
     </section>
 
-    <div class="admin-field-mode__workspace">
-      <section class="admin-field-mode__list" aria-label="Park items">
+    <div class="admin-field-mode__workspace" [class.admin-field-mode__workspace--detail]="isDetailMode()">
+      <section class="admin-field-mode__list" aria-label="Park items" *ngIf="!isDetailMode()">
         <article role="button" tabindex="0" class="admin-field-mode__item admin-card" *ngFor="let row of state.filteredRows()" (click)="selectRow(row)" (keydown.enter)="selectRow(row)" (keydown.space)="selectRow(row)" [class.admin-field-mode__item--active]="state.selectedItem()?.id === row.item.id" [class.admin-field-mode__item--processed]="row.isProcessed">
           <span class="admin-field-mode__item-main">
             <strong class="admin-row-title">{{ row.item.name }}</strong>
@@ -109,6 +109,9 @@
           </div>
           <button pButton type="button" class="p-button-sm" *ngIf="selectedRow() as row" (click)="toggleProcessed(row, $event)">
             {{ row.isProcessed ? text('Remettre à traiter', 'Mark todo') : text('Marquer traité', 'Mark processed') }}
+          </button>
+          <button pButton type="button" class="p-button-sm p-button-text" *ngIf="isDetailMode()" (click)="goBackToList()">
+            {{ text('Retour liste', 'Back to list') }}
           </button>
         </header>
 
@@ -149,9 +152,32 @@
             <label for="field-mode-photo-note">{{ text('Note', 'Note') }}</label>
             <textarea id="field-mode-photo-note" rows="3" [placeholder]="text('Note optionnelle', 'Optional note')" [ngModel]="actions.photoDescription()" (ngModelChange)="actions.setPhotoDescription($event)"></textarea>
           </div>
-          <input class="admin-field-mode__file" type="file" accept="image/jpeg" capture="environment" (change)="actions.selectFile($event)" [disabled]="actions.busy()">
-          <button pButton type="button" (click)="addPhoto()" [disabled]="!actions.readyForPhoto() || actions.busy()">
-            {{ text('Envoyer la photo', 'Upload photo') }}
+          <div class="admin-field-mode__photo-source-actions">
+            <label class="admin-field-mode__photo-source" [class.admin-field-mode__photo-source--disabled]="actions.busy()">
+              <i class="pi pi-camera" aria-hidden="true"></i>
+              <span>{{ text('Appareil photo', 'Camera') }}</span>
+              <input type="file" accept="image/*" capture="environment" multiple (change)="actions.selectFiles($event)" [disabled]="actions.busy()">
+            </label>
+            <label class="admin-field-mode__photo-source" [class.admin-field-mode__photo-source--disabled]="actions.busy()">
+              <i class="pi pi-images" aria-hidden="true"></i>
+              <span>{{ text('Fichiers', 'Files') }}</span>
+              <input type="file" accept="image/*" multiple (change)="actions.selectFiles($event)" [disabled]="actions.busy()">
+            </label>
+          </div>
+          <div class="admin-field-mode__photo-preview-grid" *ngIf="actions.selectedPhotos().length > 0">
+            <figure class="admin-field-mode__photo-preview" *ngFor="let photo of actions.selectedPhotos()">
+              <img [src]="photo.previewUrl" [alt]="photo.file.name">
+              <figcaption>
+                <span>{{ photo.file.name }}</span>
+                <small>{{ photo.position.latitude | number:'1.5-5' }}, {{ photo.position.longitude | number:'1.5-5' }}</small>
+              </figcaption>
+              <button pButton type="button" class="p-button-sm p-button-text" (click)="actions.removeSelectedPhoto(photo.id)">
+                {{ text('Retirer', 'Remove') }}
+              </button>
+            </figure>
+          </div>
+          <button pButton type="button" (click)="addPhoto()" [disabled]="!actions.readyForPhoto()">
+            {{ actions.uploadingCount() > 0 ? text('Envoi en cours en arrière-plan', 'Uploading in background') : text('Envoyer la sélection', 'Upload selection') }}
           </button>
         </section>
 

@@ -51,6 +51,35 @@ export class AdminFieldModePositionService implements AdminFieldModeGeolocationP
     });
   }
 
+  watchPosition(successCallback: PositionCallback, errorCallback?: PositionErrorCallback | null, options?: PositionOptions): number {
+    const nav: Navigator | undefined = typeof globalThis !== 'undefined'
+      ? globalThis.navigator
+      : undefined;
+    const provider: Geolocation | undefined = nav?.geolocation;
+
+    if (!provider) {
+      if (errorCallback) {
+        errorCallback({ code: 2, message: 'Position is not available in this browser.' } as GeolocationPositionError);
+      }
+      return -1;
+    }
+
+    return provider.watchPosition(successCallback, errorCallback ?? null, options);
+  }
+
+  clearWatch(watchId: number): void {
+    const nav: Navigator | undefined = typeof globalThis !== 'undefined'
+      ? globalThis.navigator
+      : undefined;
+    const provider: Geolocation | undefined = nav?.geolocation;
+
+    if (!provider || watchId < 0) {
+      return;
+    }
+
+    provider.clearWatch(watchId);
+  }
+
   private isBlockedByPermissionsPolicy(): boolean {
     const currentDocument = typeof globalThis !== 'undefined'
       ? globalThis.document as (Document & { permissionsPolicy?: BrowserPolicy; featurePolicy?: BrowserPolicy }) | undefined

@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ButtonDirective } from 'primeng/button';
 
 import { ParkItem } from '@app/models/parks/park-item';
@@ -35,6 +36,7 @@ import { AdminFieldModeFacade } from '../../state/admin-field-mode.facade';
 export class AdminFieldModeComponent implements OnInit {
   protected readonly state = this.fieldModeFacade;
   protected readonly actions = this.actionsFacade;
+  protected readonly isDetailMode = signal(false);
   protected readonly selectedRow = computed(() => {
     const selectedItem: ParkItem | null = this.state.selectedItem();
     if (!selectedItem?.id) {
@@ -47,12 +49,17 @@ export class AdminFieldModeComponent implements OnInit {
     private readonly fieldModeFacade: AdminFieldModeFacade,
     private readonly actionsFacade: AdminFieldModeActionsFacade,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
   ngOnInit(): void {
-    this.fieldModeFacade.initialize(this.route.snapshot.paramMap.get('itemId'));
+    this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((paramMap) => {
+      const itemId: string | null = paramMap.get('itemId');
+      this.isDetailMode.set(!!itemId);
+      this.fieldModeFacade.initialize(itemId);
+    });
   }
 
   protected get currentLang(): string {
@@ -79,25 +86,40 @@ export class AdminFieldModeComponent implements OnInit {
     this.fieldModeFacade.setProcessedFilter(value);
   }
 
-  protected toggleProcessed(row: AdminFieldModeItemRow, event?: Event): void {
+  protected async toggleProcessed(row: AdminFieldModeItemRow, event?: Event): Promise<void> {
     event?.stopPropagation();
-    this.fieldModeFacade.toggleProcessed(row);
+    const wasProcessed: boolean = row.isProcessed;
+    const saved: boolean = await this.fieldModeFacade.toggleProcessed(row);
+    if (saved && this.isDetailMode() && !wasProcessed) {
+      await this.goBackToList();
+    }
   }
 
   protected selectRow(row: AdminFieldModeItemRow): void {
-    this.fieldModeFacade.selectItem(row.item.id ?? null);
+    if (!row.item.id) {
+      this.fieldModeFacade.selectItem(null);
+      return;
+    }
+
+    this.fieldModeFacade.selectItem(row.item.id);
+    void this.router.navigate(['/', this.currentLang, 'admin', 'field-mode', 'item', row.item.id]);
+  }
+
+  protected async goBackToList(): Promise<void> {
+    await this.router.navigate(['/', this.currentLang, 'admin', 'field-mode']);
   }
 
   protected async addPhoto(): Promise<void> {
     const item: ParkItem | null = this.state.selectedItem();
-    if (!item) {
+    if (!item?.id) {
       return;
     }
 
     const row: AdminFieldModeItemRow | null = this.selectedRow();
-    const added: boolean = await this.actionsFacade.addPhoto(item, (row?.photoCount ?? 0) === 0);
+    const queuedCount: number = this.actions.selectedPhotos().length;
+    const added: boolean = this.actionsFacade.addPhoto(item, (row?.photoCount ?? 0) === 0);
     if (added) {
-      this.reloadSelectedPark();
+      this.fieldModeFacade.incrementPhotoCount(item.id, queuedCount);
     }
   }
 
@@ -109,7 +131,7 @@ export class AdminFieldModeComponent implements OnInit {
 
     const savedItem: ParkItem | null = await this.actionsFacade.saveLocation(item, this.actions.locationKey() as AdminFieldModeLocationKey);
     if (savedItem) {
-      this.reloadSelectedPark();
+      this.fieldModeFacade.applySavedItem(savedItem);
     }
   }
 
@@ -131,6 +153,8 @@ export class AdminFieldModeComponent implements OnInit {
       'admin.fieldMode.messages.photoRequired': { fr: 'Choisis une photo avant l’envoi.', en: 'Choose a photo before upload.' },
       'admin.fieldMode.messages.photoMissingGps': { fr: 'Photo refusée : aucune coordonnée GPS EXIF détectée.', en: 'Photo rejected: no EXIF GPS coordinates found.' },
       'admin.fieldMode.messages.photoGpsReady': { fr: 'Photo acceptée : coordonnées GPS détectées.', en: 'Photo accepted: GPS coordinates detected.' },
+      'admin.fieldMode.messages.photosPartiallyReady': { fr: 'Certaines photos ont été ignorées car elles sont invalides ou sans GPS EXIF.', en: 'Some photos were skipped because they are invalid or missing EXIF GPS.' },
+      'admin.fieldMode.messages.photosQueued': { fr: 'Envoi photo lancé en arrière-plan.', en: 'Photo upload started in the background.' },
       'admin.fieldMode.messages.positionPrompt': { fr: 'Chrome doit afficher une demande d’autorisation de position. Autorise-la pour continuer.', en: 'Chrome should show a location permission prompt. Allow it to continue.' },
       'admin.fieldMode.messages.positionRetryLowAccuracy': { fr: 'GPS précis trop lent, nouvelle tentative avec une localisation approximative.', en: 'Precise GPS is too slow, retrying with approximate location.' },
       'admin.fieldMode.messages.positionBlockedByPolicy': { fr: 'Localisation bloquée par Permissions-Policy. Vérifie les headers servis par le proxy/Nginx.', en: 'Location is blocked by Permissions-Policy. Check headers served by the proxy/Nginx.' },
@@ -139,13 +163,15 @@ export class AdminFieldModeComponent implements OnInit {
       'admin.fieldMode.messages.positionUnavailable': { fr: 'Position indisponible. Active la localisation du téléphone et vérifie l’autorisation du navigateur.', en: 'Position unavailable. Enable phone location and check browser permission.' },
       'admin.fieldMode.messages.positionInsecureContext': { fr: 'La géolocalisation exige HTTPS. Recharge la page en https:// puis réessaie.', en: 'Geolocation requires HTTPS. Reload the page with https:// and try again.' },
       'admin.fieldMode.messages.positionReady': { fr: 'Position GPS capturée.', en: 'GPS position captured.' },
+      'admin.fieldMode.messages.positionBestEffort': { fr: 'Meilleure position GPS disponible capturée, mais la précision cible n’est pas atteinte.', en: 'Best available GPS position captured, but target accuracy was not reached.' },
       'admin.fieldMode.messages.photoAdded': { fr: 'Photo ajoutée avec sa position EXIF.', en: 'Photo added with its EXIF position.' },
       'admin.fieldMode.messages.photoFailed': { fr: 'Photo non envoyée.', en: 'Photo was not uploaded.' },
       'admin.fieldMode.messages.locationSaved': { fr: 'Localisation enregistrée.', en: 'Location saved.' },
       'admin.fieldMode.messages.locationFailed': { fr: 'Localisation non enregistrée.', en: 'Location was not saved.' },
       'admin.fieldMode.messages.itemProcessed': { fr: 'Item marqué traité.', en: 'Item marked as processed.' },
       'admin.fieldMode.messages.itemUnprocessed': { fr: 'Item remis à traiter.', en: 'Item moved back to todo.' },
-      'admin.fieldMode.messages.itemProcessedFailed': { fr: 'Statut terrain non enregistré.', en: 'Field status was not saved.' }
+      'admin.fieldMode.messages.itemProcessedFailed': { fr: 'Statut terrain non enregistré.', en: 'Field status was not saved.' },
+      'admin.fieldMode.messages.itemLoadFailed': { fr: 'Item terrain introuvable.', en: 'Field item could not be loaded.' }
     };
     const message = messages[key];
     return message ? this.text(message.fr, message.en) : key;
@@ -155,7 +181,4 @@ export class AdminFieldModeComponent implements OnInit {
     return this.currentLang === 'fr' ? fr : en;
   }
 
-  private reloadSelectedPark(): void {
-    this.fieldModeFacade.selectPark(this.state.selectedParkId());
-  }
 }
