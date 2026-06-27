@@ -164,6 +164,32 @@
               <input type="file" multiple (change)="actions.selectFiles($event)" [disabled]="actions.busy()">
             </label>
           </div>
+          <section class="admin-field-mode__photo-inspections" *ngIf="actions.photoInspections().length > 0">
+            <article class="admin-field-mode__photo-inspection" *ngFor="let inspection of actions.photoInspections()" [class.admin-field-mode__photo-inspection--accepted]="inspection.status === 'accepted'" [class.admin-field-mode__photo-inspection--missing-gps]="inspection.status === 'missingGps'" [class.admin-field-mode__photo-inspection--invalid]="inspection.status === 'invalid'">
+              <div class="admin-field-mode__photo-inspection-preview" *ngIf="inspection.previewUrl; else noInspectionPreview">
+                <img [src]="inspection.previewUrl" [alt]="inspection.fileName">
+              </div>
+              <ng-template #noInspectionPreview>
+                <div class="admin-field-mode__photo-inspection-preview admin-field-mode__photo-inspection-preview--empty">{{ text('Aperçu indisponible', 'No preview') }}</div>
+              </ng-template>
+              <div class="admin-field-mode__photo-inspection-body">
+                <div class="admin-field-mode__photo-inspection-heading">
+                  <strong>{{ inspection.fileName }}</strong>
+                  <span>{{ inspection.status === 'accepted' ? text('Acceptée', 'Accepted') : inspection.status === 'missingGps' ? text('GPS absent', 'Missing GPS') : text('Refusée', 'Rejected') }}</span>
+                </div>
+                <dl>
+                  <div><dt>{{ text('Taille', 'Size') }}</dt><dd>{{ inspection.sizeInBytes | number }} o</dd></div>
+                  <div><dt>{{ text('Type', 'Type') }}</dt><dd>{{ inspection.contentType || '—' }}</dd></div>
+                  <div><dt>{{ text('Dimensions', 'Dimensions') }}</dt><dd>{{ inspection.width && inspection.height ? (inspection.width + ' × ' + inspection.height) : '—' }}</dd></div>
+                  <div><dt>{{ text('GPS', 'GPS') }}</dt><dd>{{ inspection.gpsDetected ? text('détecté', 'found') : text('absent', 'missing') }}</dd></div>
+                  <div><dt>{{ text('Latitude', 'Latitude') }}</dt><dd>{{ inspection.latitude === null ? '—' : (inspection.latitude | number:'1.6-7') }}</dd></div>
+                  <div><dt>{{ text('Longitude', 'Longitude') }}</dt><dd>{{ inspection.longitude === null ? '—' : (inspection.longitude | number:'1.6-7') }}</dd></div>
+                  <div><dt>{{ text('Modifiée', 'Modified') }}</dt><dd>{{ inspection.lastModified ? (inspection.lastModified | date:'short') : '—' }}</dd></div>
+                </dl>
+                <button *ngIf="inspection.status === 'accepted'" pButton type="button" class="p-button-sm p-button-text" (click)="actions.removeSelectedPhoto(inspection.id)">{{ text('Retirer', 'Remove') }}</button>
+              </div>
+            </article>
+          </section>
           <div class="admin-field-mode__photo-preview-grid" *ngIf="actions.selectedPhotos().length > 0">
             <figure class="admin-field-mode__photo-preview" *ngFor="let photo of actions.selectedPhotos()">
               <img [src]="photo.previewUrl" [alt]="photo.file.name">
