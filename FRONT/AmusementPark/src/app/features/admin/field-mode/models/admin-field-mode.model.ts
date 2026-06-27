@@ -6,6 +6,7 @@ export type AdminFieldModeFilter = 'all' | 'missingPhotos' | 'missingGeneralLoca
 export type AdminFieldModeProcessedFilter = 'unprocessed' | 'processed' | 'all';
 export type AdminFieldModeLocationKey = 'general' | 'entrance' | 'exit' | 'fastPassEntrance' | 'reducedMobilityEntrance';
 export type AdminFieldModeGpsStatus = 'idle' | 'checking' | 'ready' | 'error';
+export type AdminFieldModePhotoInspectionStatus = 'accepted' | 'invalid' | 'missingGps';
 
 export interface AdminFieldModeParkOption {
   label: string;
@@ -20,6 +21,20 @@ export interface AdminFieldModePosition {
 }
 
 export type AdminFieldModePhotoCategoryOption = Pick<ParkItemPhotoCategoryDefinition, 'slug' | 'labelFr' | 'labelEn'>;
+
+export interface AdminFieldModePhotoInspection {
+  id: string;
+  fileName: string;
+  sizeInBytes: number;
+  contentType: string | null;
+  lastModified: number | null;
+  width: number | null;
+  height: number | null;
+  gpsDetected: boolean;
+  latitude: number | null;
+  longitude: number | null;
+  status: AdminFieldModePhotoInspectionStatus;
+}
 
 export interface AdminFieldModePhotoSelection {
   id: string;
@@ -51,7 +66,7 @@ export const ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminFieldMo
 export const ADMIN_FIELD_MODE_LOCATION_OPTIONS: ReadonlyArray<{ key: AdminFieldModeLocationKey; labelFr: string; labelEn: string }> = [
   { key: 'general', labelFr: 'Position générale', labelEn: 'General position' },
   { key: 'entrance', labelFr: 'Entrée précise', labelEn: 'Precise entrance' },
-  { key: 'exit', labelFr: 'Sortie précise', labelEn: 'Precise exit' },
+  { key: 'exit', labelFr: 'Sortie précise', labelEn: 'Exit' },
   { key: 'fastPassEntrance', labelFr: 'Accès rapide', labelEn: 'Fast pass entrance' },
   { key: 'reducedMobilityEntrance', labelFr: 'Accès PMR', labelEn: 'Reduced-mobility entrance' }
 ];
