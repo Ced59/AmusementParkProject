@@ -34,7 +34,7 @@ export interface AdminFieldModePhotoInspection {
   latitude: number | null;
   longitude: number | null;
   status: AdminFieldModePhotoInspectionStatus;
-  previewUrl: string | null;
+  previewUrl?: string | null;
 }
 
 export interface AdminFieldModePhotoSelection {
