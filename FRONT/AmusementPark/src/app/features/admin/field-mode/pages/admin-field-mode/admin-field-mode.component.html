@@ -161,7 +161,7 @@
             <label class="admin-field-mode__photo-source" [class.admin-field-mode__photo-source--disabled]="actions.busy()">
               <i class="pi pi-images" aria-hidden="true"></i>
               <span>{{ text('Fichiers', 'Files') }}</span>
-              <input type="file" accept="image/*" multiple (change)="actions.selectFiles($event)" [disabled]="actions.busy()">
+              <input type="file" multiple (change)="actions.selectFiles($event)" [disabled]="actions.busy()">
             </label>
           </div>
           <div class="admin-field-mode__photo-preview-grid" *ngIf="actions.selectedPhotos().length > 0">
@@ -189,7 +189,7 @@
 </section>
 
 <ng-template #noParkResult>
-  <p class="admin-field-mode__empty-result admin-muted">{{ text('Aucun parc trouvé.', 'No park found.') }}</p>
+  <p class="admin-field-mode__empty-result admin-muted">{{ text('Aucun parc trouvé.', 'No park found') }}</p>
 </ng-template>
 
 <ng-template #noParkSelected>
