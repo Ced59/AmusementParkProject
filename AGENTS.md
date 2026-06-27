@@ -37,6 +37,7 @@ The project must preserve its current architecture, SOLID principles, separation
 - All application emails must use a rich branded HTML template consistent with the site visual identity, escape dynamic content safely, and keep a readable plain-text alternative for SMTP delivery.
 - Always pay close attention to performance impact. The production VPS target is modest, so avoid unnecessary CPU work, memory pressure, network payload, bundle weight, synchronous blocking work, and repeated runtime computations.
 - Do not test by starting a local frontend or backend server on the user's PC unless the user explicitly asks for it.
+- Do not spend time running heavy local test/build suites when the CI pipeline will run them after the PR is opened. Prefer lightweight local checks when useful, then monitor the CI runs and fix any failures from those runs.
 - If `.codex-remote-attachments/` exists in the local repository, remove it before committing or pushing.
 - When unsure, inspect the existing pattern and follow it.
 
