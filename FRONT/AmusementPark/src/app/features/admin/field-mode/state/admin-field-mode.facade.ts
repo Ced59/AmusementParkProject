@@ -1,6 +1,6 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Observable, catchError, forkJoin, map, of, switchMap } from 'rxjs';
+import { Observable, catchError, firstValueFrom, forkJoin, map, of, switchMap } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -57,7 +57,7 @@ export class AdminFieldModeFacade {
   private readonly gpsStatusSignal = signal<AdminFieldModeGpsStatus>('idle');
   private readonly gpsErrorSignal = signal<string | null>(null);
   private readonly currentPositionSignal = signal<AdminFieldModePosition | null>(null);
-  private readonly selectedPhotoCategorySlugSignal = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
+  private readonly selectedPhotoCategorySlugSignal = signal<string>(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly selectedPhotoFileSignal = signal<File | null>(null);
   private readonly selectedPhotoDescriptionSignal = signal('');
   private readonly selectedLocationKeySignal = signal<AdminFieldModeLocationKey>('general');
@@ -126,6 +126,11 @@ export class AdminFieldModeFacade {
       return;
     }
 
+    if (routeItemId) {
+      this.loadItemRouteContext(routeItemId);
+      return;
+    }
+
     this.loadingSignal.set(false);
   }
 
@@ -184,29 +189,60 @@ export class AdminFieldModeFacade {
     });
   }
 
-  toggleProcessed(row: AdminFieldModeItemRow): void {
+  async toggleProcessed(row: AdminFieldModeItemRow): Promise<boolean> {
+    return this.setProcessed(row, !row.isProcessed);
+  }
+
+  async setProcessed(row: AdminFieldModeItemRow, isProcessed: boolean): Promise<boolean> {
     const parkId: string | null = this.selectedParkIdSignal();
     const itemId: string | undefined = row.item.id;
     if (!parkId || !itemId) {
-      return;
+      return false;
     }
 
     const previousProcessed = row.isProcessed;
-    const nextProcessed = !previousProcessed;
-    this.localProcessedOverrides.set(itemId, nextProcessed);
-    this.setRowProcessed(itemId, nextProcessed);
-    this.processedStatusService.setProcessed(parkId, itemId, nextProcessed).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (savedProcessed: boolean) => {
-        this.localProcessedOverrides.set(itemId, savedProcessed);
-        this.setRowProcessed(itemId, savedProcessed);
-        this.messageKeySignal.set(savedProcessed ? 'admin.fieldMode.messages.itemProcessed' : 'admin.fieldMode.messages.itemUnprocessed');
-      },
-      error: () => {
-        this.localProcessedOverrides.set(itemId, previousProcessed);
-        this.setRowProcessed(itemId, previousProcessed);
-        this.messageKeySignal.set('admin.fieldMode.messages.itemProcessedFailed');
+    this.localProcessedOverrides.set(itemId, isProcessed);
+    this.setRowProcessed(itemId, isProcessed);
+
+    try {
+      const savedProcessed: boolean = await firstValueFrom(this.processedStatusService.setProcessed(parkId, itemId, isProcessed));
+      this.localProcessedOverrides.set(itemId, savedProcessed);
+      this.setRowProcessed(itemId, savedProcessed);
+      this.messageKeySignal.set(savedProcessed ? 'admin.fieldMode.messages.itemProcessed' : 'admin.fieldMode.messages.itemUnprocessed');
+      return true;
+    } catch {
+      this.localProcessedOverrides.set(itemId, previousProcessed);
+      this.setRowProcessed(itemId, previousProcessed);
+      this.messageKeySignal.set('admin.fieldMode.messages.itemProcessedFailed');
+      return false;
+    }
+  }
+
+  applySavedItem(item: ParkItem): void {
+    if (!item.id) {
+      return;
+    }
+
+    this.selectedItemSignal.set(item);
+    this.replaceRowItem(item);
+  }
+
+  incrementPhotoCount(itemId: string, count: number): void {
+    if (!itemId || count <= 0) {
+      return;
+    }
+
+    this.rowsSignal.set(this.rowsSignal().map((row: AdminFieldModeItemRow) => {
+      if (row.item.id !== itemId) {
+        return row;
       }
-    });
+
+      const currentCount: number = row.photoCount ?? 0;
+      return {
+        ...row,
+        photoCount: currentCount + count
+      };
+    }));
   }
 
   setSelectedPhotoCategorySlug(slug: string): void {
@@ -341,6 +377,22 @@ export class AdminFieldModeFacade {
         : this.parkItemsApiService.getParkItemsByParkId(parkId, { closedFilter: 'all' })),
       catchError(() => this.parkItemsApiService.getParkItemsByParkId(parkId, { closedFilter: 'all' }).pipe(catchError(() => of([]))))
     );
+  }
+
+  private loadItemRouteContext(itemId: string): void {
+    this.loadingSignal.set(true);
+    this.parkItemsApiService.getParkItemById(itemId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (item: ParkItem) => {
+        this.selectedParkIdSignal.set(item.parkId);
+        writeAdminFieldModeSelectedParkId(ADMIN_FIELD_MODE_SELECTED_PARK_STORAGE_KEY, item.parkId);
+        this.ensureSelectedParkAvailable(item.parkId);
+        this.loadItems(item.parkId, item.id ?? itemId);
+      },
+      error: () => {
+        this.loadingSignal.set(false);
+        this.messageKeySignal.set('admin.fieldMode.messages.itemLoadFailed');
+      }
+    });
   }
 
   private buildRowsFromAdminRows(adminRows: ParkItemAdminRow[]): Observable<AdminFieldModeItemRow[]> {

@@ -1,6 +1,11 @@
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
+import {
+  getParkPhotoCategoryBySlug,
+  ParkPhotoCategoryDefinition,
+  resolveParkPhotoCategoryFromTagSlug
+} from '@app/models/images/park-photo-category';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
@@ -180,105 +185,17 @@ function isAdministrativeOnlyImageCategory(category: ImageCategory | number | st
 }
 
 function resolveParkPhotoCategoryKey(tagIdOrSlug: string | undefined): string {
-  const normalizedValue: string = (tagIdOrSlug ?? '').toLowerCase();
-
-  if (normalizedValue.includes('entrance')) {
-    return 'park-entrance';
-  }
-
-  if (normalizedValue.includes('overview')) {
-    return 'park-overview';
-  }
-
-  if (normalizedValue.includes('map')) {
-    return 'park-map';
-  }
-
-  if (normalizedValue.includes('atmosphere') || normalizedValue.includes('atmosphère')) {
-    return 'park-atmosphere';
-  }
-
-  if (normalizedValue.includes('event')) {
-    return 'park-event';
-  }
-
-  if (normalizedValue.includes('halloween')) {
-    return 'park-halloween';
-  }
-
-  if (normalizedValue.includes('christmas') || normalizedValue.includes('noel') || normalizedValue.includes('noël')) {
-    return 'park-christmas';
-  }
-
-  if (normalizedValue.includes('easter') || normalizedValue.includes('paques') || normalizedValue.includes('pâques')) {
-    return 'park-easter';
-  }
-
-  if (normalizedValue.includes('food')) {
-    return 'park-food';
-  }
-
-  if (normalizedValue.includes('service')) {
-    return 'park-services';
-  }
-
-  return 'park-gallery';
+  return resolveParkPhotoCategoryFromTagSlug(tagIdOrSlug).slug;
 }
 
 function resolveParkPhotoCategoryLabelKey(categoryKey: string): string {
-  switch (categoryKey) {
-    case 'park-entrance':
-      return 'parks.photos.categories.entrance';
-    case 'park-overview':
-      return 'parks.photos.categories.overview';
-    case 'park-map':
-      return 'parks.photos.categories.map';
-    case 'park-atmosphere':
-      return 'parks.photos.categories.atmosphere';
-    case 'park-event':
-      return 'parks.photos.categories.event';
-    case 'park-halloween':
-      return 'parks.photos.categories.halloween';
-    case 'park-christmas':
-      return 'parks.photos.categories.christmas';
-    case 'park-easter':
-      return 'parks.photos.categories.easter';
-    case 'park-food':
-      return 'parks.photos.categories.food';
-    case 'park-services':
-      return 'parks.photos.categories.services';
-    default:
-      return 'parks.photos.categories.gallery';
-  }
+  const category: ParkPhotoCategoryDefinition | null = getParkPhotoCategoryBySlug(categoryKey);
+  return category?.publicLabelKey ?? 'parks.photos.categories.gallery';
 }
 
 function getPhotoCategoryOrder(categoryKey: string): number {
-  switch (categoryKey) {
-    case 'park-gallery':
-      return 0;
-    case 'park-entrance':
-      return 1;
-    case 'park-overview':
-      return 2;
-    case 'park-map':
-      return 3;
-    case 'park-atmosphere':
-      return 4;
-    case 'park-event':
-      return 5;
-    case 'park-halloween':
-      return 6;
-    case 'park-christmas':
-      return 7;
-    case 'park-easter':
-      return 8;
-    case 'park-food':
-      return 9;
-    case 'park-services':
-      return 10;
-    default:
-      return categoryKey.startsWith('item-') ? 20 : 99;
-  }
+  const category: ParkPhotoCategoryDefinition | null = getParkPhotoCategoryBySlug(categoryKey);
+  return category?.sortOrder ?? (categoryKey.startsWith('item-') ? 20 : 99);
 }
 
 function buildParkItemLink(park: Park, item: ParkItem, currentLanguage: string): string[] | null {

@@ -1,3 +1,4 @@
+import { PARK_PHOTO_CATEGORIES, ParkPhotoCategoryDefinition } from '@app/models/images/park-photo-category';
 import { ParkType } from '@app/models/parks/park-type';
 import { ParkStatus } from '@app/models/parks/park-status';
 
@@ -20,18 +21,15 @@ export interface AdminParkCountryOption {
 export interface AdminParkPhotoCategoryOption {
   slug: string;
   labelKey: string;
+  labelFr: string;
+  labelEn: string;
 }
 
-export const PARK_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminParkPhotoCategoryOption> = [
-  { slug: 'park-gallery', labelKey: 'admin.parks.photos.categories.gallery' },
-  { slug: 'park-entrance', labelKey: 'admin.parks.photos.categories.entrance' },
-  { slug: 'park-overview', labelKey: 'admin.parks.photos.categories.overview' },
-  { slug: 'park-map', labelKey: 'admin.parks.photos.categories.map' },
-  { slug: 'park-atmosphere', labelKey: 'admin.parks.photos.categories.atmosphere' },
-  { slug: 'park-event', labelKey: 'admin.parks.photos.categories.event' },
-  { slug: 'park-halloween', labelKey: 'admin.parks.photos.categories.halloween' },
-  { slug: 'park-christmas', labelKey: 'admin.parks.photos.categories.christmas' },
-  { slug: 'park-easter', labelKey: 'admin.parks.photos.categories.easter' },
-  { slug: 'park-food', labelKey: 'admin.parks.photos.categories.food' },
-  { slug: 'park-services', labelKey: 'admin.parks.photos.categories.services' }
-];
+export const PARK_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminParkPhotoCategoryOption> = PARK_PHOTO_CATEGORIES.map((
+  category: ParkPhotoCategoryDefinition
+): AdminParkPhotoCategoryOption => ({
+  slug: category.slug,
+  labelKey: category.adminLabelKey,
+  labelFr: category.labelFr,
+  labelEn: category.labelEn
+}));

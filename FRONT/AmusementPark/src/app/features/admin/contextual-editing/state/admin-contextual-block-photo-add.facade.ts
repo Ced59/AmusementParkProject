@@ -26,6 +26,8 @@ import {
 export interface AdminContextualBlockPhotoCategoryOption {
   readonly slug: string;
   readonly labelKey: string;
+  readonly labelFr?: string;
+  readonly labelEn?: string;
 }
 
 export interface AdminContextualBlockPhotoTagOption {
@@ -384,8 +386,8 @@ export class AdminContextualBlockPhotoAddFacade {
       const createdTag: ImageTagDto = await firstValueFrom(this.imagesPort.createAdminImageTag({
         slug: option.slug,
         labels: [
-          { languageCode: 'fr', value: this.translateService.instant(option.labelKey) },
-          { languageCode: 'en', value: this.translateService.instant(option.labelKey) }
+          { languageCode: 'fr', value: option.labelFr ?? this.translateService.instant(option.labelKey) },
+          { languageCode: 'en', value: option.labelEn ?? this.translateService.instant(option.labelKey) }
         ],
         descriptions: []
       }));

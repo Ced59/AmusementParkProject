@@ -1,7 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageGeoLocation } from '@app/models/images/image-geo-location';
@@ -77,6 +76,8 @@ export interface AdminFieldModeImagesApiServicePort {
 
 export interface AdminFieldModeGeolocationPort {
   getCurrentPosition(options?: PositionOptions): Promise<GeolocationPosition>;
+  watchPosition(successCallback: PositionCallback, errorCallback?: PositionErrorCallback | null, options?: PositionOptions): number;
+  clearWatch(watchId: number): void;
   getPermissionState(): Promise<AdminFieldModeGeolocationPermissionState>;
 }
 
@@ -90,5 +91,3 @@ export const ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT = new InjectionToken<A
 export const ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT = new InjectionToken<AdminFieldModeImagesApiServicePort>('ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT');
 export const ADMIN_FIELD_MODE_GEOLOCATION_PORT = new InjectionToken<AdminFieldModeGeolocationPort>('ADMIN_FIELD_MODE_GEOLOCATION_PORT');
 export const ADMIN_FIELD_MODE_PROCESSED_STATUS_PORT = new InjectionToken<AdminFieldModeProcessedStatusPort>('ADMIN_FIELD_MODE_PROCESSED_STATUS_PORT');
-
-export type AdminFieldModeLocationUpdateResult = BulkAdministrationUpdateResult | ParkItem;

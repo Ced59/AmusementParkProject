@@ -1,3 +1,4 @@
+import { PARK_ITEM_PHOTO_CATEGORIES, ParkItemPhotoCategoryDefinition } from '@app/models/images/park-item-photo-category';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { TranslationOption } from '@shared/utils/display/display-options';
@@ -30,13 +31,15 @@ export const ATTRACTION_LOCATION_OPTIONS: ReadonlyArray<AttractionLocationOption
 export interface AdminParkItemPhotoCategoryOption {
   slug: string;
   labelKey: string;
+  labelFr: string;
+  labelEn: string;
 }
 
-export const PARK_ITEM_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminParkItemPhotoCategoryOption> = [
-  { slug: 'park-item-gallery', labelKey: 'admin.parks.items.photos.categories.gallery' },
-  { slug: 'park-item-entrance', labelKey: 'admin.parks.items.photos.categories.entrance' },
-  { slug: 'park-item-exit', labelKey: 'admin.parks.items.photos.categories.exit' },
-  { slug: 'park-item-layout', labelKey: 'admin.parks.items.photos.categories.layout' },
-  { slug: 'park-item-queue', labelKey: 'admin.parks.items.photos.categories.queue' },
-  { slug: 'park-item-station', labelKey: 'admin.parks.items.photos.categories.station' }
-];
+export const PARK_ITEM_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminParkItemPhotoCategoryOption> = PARK_ITEM_PHOTO_CATEGORIES.map((
+  category: ParkItemPhotoCategoryDefinition
+): AdminParkItemPhotoCategoryOption => ({
+  slug: category.slug,
+  labelKey: category.adminLabelKey,
+  labelFr: category.labelFr,
+  labelEn: category.labelEn
+}));

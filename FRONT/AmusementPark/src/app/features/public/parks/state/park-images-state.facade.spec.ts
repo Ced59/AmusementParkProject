@@ -109,7 +109,7 @@ function createImage(id: string): ImageDto {
     altTexts: [],
     captions: [],
     credits: [],
-    tagIds: ['tag-entrance'],
+    tagIds: ['tag-map'],
     createdAt: '2026-01-01T00:00:00Z',
     updatedAt: '2026-01-01T00:00:00Z'
   };
@@ -117,9 +117,9 @@ function createImage(id: string): ImageDto {
 
 function createImageTag(): ImageTagDto {
   return {
-    id: 'tag-entrance',
-    slug: 'entrance',
-    labels: [{ languageCode: 'en', value: 'Entrance' }],
+    id: 'tag-map',
+    slug: 'park-map',
+    labels: [{ languageCode: 'en', value: 'Official park map' }],
     descriptions: [],
     isActive: true,
     createdAt: '2026-01-01T00:00:00Z',
@@ -180,9 +180,9 @@ describe('ParkImagesStateFacade', () => {
     expect(context.facade.park()?.name).toBe('Phantasialand');
     expect(context.facade.totalImages()).toBe(2);
     expect(context.facade.canLoadMore()).toBeTrue();
-    expect(context.facade.photos()[0]?.categoryKey).toBe('park-entrance');
+    expect(context.facade.photos()[0]?.categoryKey).toBe('park-map');
     expect(context.facade.photos()[0]?.year).toBe('2024');
-    expect(context.facade.categories()).toEqual([{ key: 'park-entrance', labelKey: 'parks.photos.categories.entrance', count: 1 }]);
+    expect(context.facade.categories()).toEqual([{ key: 'park-map', labelKey: 'parks.photos.categories.map', count: 1 }]);
     expect(context.parksPort.calls).toEqual(['park-1']);
     expect(context.imagesPort.tagCallCount).toBe(1);
     expect(context.imagesPort.pageCalls).toEqual([

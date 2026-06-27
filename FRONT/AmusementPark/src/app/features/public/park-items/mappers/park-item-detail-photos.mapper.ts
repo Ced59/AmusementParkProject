@@ -1,5 +1,10 @@
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
+import {
+  getParkItemPhotoCategoryByPublicKey,
+  ParkItemPhotoCategoryDefinition,
+  resolveParkItemPhotoCategoryFromTagSlug
+} from '@app/models/images/park-item-photo-category';
 import { buildPublicPhotoMetadata, buildPublicPhotoTagLookup, PublicPhotoMetadata, PublicPhotoTagLookup } from '@ui/media';
 import {
   ParkItemPhotoCategoryOptionViewModel,
@@ -57,50 +62,15 @@ export function buildPhotoCategories(photos: ParkItemPhotoViewModel[]): ParkItem
 }
 
 function resolvePhotoCategoryKey(tagIdOrSlug: string | undefined): string {
-  const normalizedValue: string = (tagIdOrSlug ?? '').toLowerCase();
-
-  if (normalizedValue.includes('entrance')) {
-    return 'entrance';
-  }
-
-  if (normalizedValue.includes('exit')) {
-    return 'exit';
-  }
-
-  if (normalizedValue.includes('layout')) {
-    return 'layout';
-  }
-
-  if (normalizedValue.includes('queue')) {
-    return 'queue';
-  }
-
-  if (normalizedValue.includes('station')) {
-    return 'station';
-  }
-
-  return 'gallery';
+  return resolveParkItemPhotoCategoryFromTagSlug(tagIdOrSlug).publicKey;
 }
 
 function resolvePhotoCategoryLabelKey(categoryKey: string): string {
-  return `parkItems.photos.categories.${categoryKey}`;
+  const category: ParkItemPhotoCategoryDefinition | null = getParkItemPhotoCategoryByPublicKey(categoryKey);
+  return category?.publicLabelKey ?? 'parkItems.photos.categories.gallery';
 }
 
 function getPhotoCategoryOrder(categoryKey: string): number {
-  switch (categoryKey) {
-    case 'gallery':
-      return 0;
-    case 'entrance':
-      return 1;
-    case 'exit':
-      return 2;
-    case 'queue':
-      return 3;
-    case 'station':
-      return 4;
-    case 'layout':
-      return 5;
-    default:
-      return 99;
-  }
+  const category: ParkItemPhotoCategoryDefinition | null = getParkItemPhotoCategoryByPublicKey(categoryKey);
+  return category?.sortOrder ?? 99;
 }

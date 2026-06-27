@@ -1,11 +1,13 @@
 import { Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { UploadedImage } from '@app/models/images/uploaded-image';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { ParkItem } from '@app/models/parks/park-item';
@@ -24,35 +26,42 @@ import {
 import {
   ADMIN_FIELD_MODE_LOCATION_OPTIONS,
   ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS,
+  ADMIN_FIELD_MODE_GPS_TARGET_ACCURACY_METERS,
   AdminFieldModeGpsStatus,
   AdminFieldModeLocationKey,
   AdminFieldModePhotoCategoryOption,
+  AdminFieldModePhotoSelection,
   AdminFieldModePosition
 } from '../models/admin-field-mode.model';
 
 @Injectable()
 export class AdminFieldModeActionsFacade {
+  private static nextPhotoSelectionId = 0;
+
   private readonly statusSignal = signal<AdminFieldModeGpsStatus>('idle');
   private readonly statusMessageKeySignal = signal<string | null>(null);
   private readonly positionSignal = signal<AdminFieldModePosition | null>(null);
   private readonly photoPositionSignal = signal<AdminFieldModePosition | null>(null);
-  private readonly fileSignal = signal<File | null>(null);
-  private readonly photoCategorySlugSignal = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
+  private readonly photoSelectionsSignal = signal<AdminFieldModePhotoSelection[]>([]);
+  private readonly photoCategorySlugSignal = signal<string>(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly photoDescriptionSignal = signal('');
   private readonly locationKeySignal = signal<AdminFieldModeLocationKey>('general');
   private readonly busySignal = signal(false);
+  private readonly uploadingCountSignal = signal(0);
   private photoTagIdsBySlug: Record<string, string> = {};
 
   public readonly status: Signal<AdminFieldModeGpsStatus> = this.statusSignal.asReadonly();
   public readonly statusMessageKey: Signal<string | null> = this.statusMessageKeySignal.asReadonly();
   public readonly position: Signal<AdminFieldModePosition | null> = this.positionSignal.asReadonly();
   public readonly photoPosition: Signal<AdminFieldModePosition | null> = this.photoPositionSignal.asReadonly();
-  public readonly selectedFile: Signal<File | null> = this.fileSignal.asReadonly();
+  public readonly selectedFile: Signal<File | null> = computed(() => this.photoSelectionsSignal()[0]?.file ?? null);
+  public readonly selectedPhotos: Signal<AdminFieldModePhotoSelection[]> = this.photoSelectionsSignal.asReadonly();
   public readonly photoCategorySlug: Signal<string> = this.photoCategorySlugSignal.asReadonly();
   public readonly photoDescription: Signal<string> = this.photoDescriptionSignal.asReadonly();
   public readonly locationKey: Signal<AdminFieldModeLocationKey> = this.locationKeySignal.asReadonly();
   public readonly busy: Signal<boolean> = this.busySignal.asReadonly();
-  public readonly readyForPhoto: Signal<boolean> = computed(() => !!this.fileSignal() && !!this.photoPositionSignal());
+  public readonly uploadingCount: Signal<number> = this.uploadingCountSignal.asReadonly();
+  public readonly readyForPhoto: Signal<boolean> = computed(() => this.photoSelectionsSignal().length > 0);
   public readonly photoCategoryOptions = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS).asReadonly();
 
   constructor(
@@ -60,7 +69,9 @@ export class AdminFieldModeActionsFacade {
     @Inject(ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: AdminFieldModeParkItemsApiServicePort,
     @Inject(ADMIN_FIELD_MODE_GEOLOCATION_PORT) private readonly positionService: AdminFieldModeGeolocationPort,
     private readonly imageUploadSecurityService: ImageUploadSecurityService,
-    private readonly photoGpsService: AdminFieldModePhotoGpsService
+    private readonly photoGpsService: AdminFieldModePhotoGpsService,
+    private readonly toastMessageService: ToastMessageService,
+    private readonly translateService: TranslateService
   ) {
   }
 
@@ -68,29 +79,74 @@ export class AdminFieldModeActionsFacade {
     await this.captureFreshPosition();
   }
 
-  async selectFile(event: Event): Promise<void> {
+  async selectFiles(event: Event): Promise<void> {
     const input: HTMLInputElement = event.target as HTMLInputElement;
-    const file: File | null = input.files?.[0] ?? null;
+    const files: File[] = Array.from(input.files ?? []);
     input.value = '';
-    const validation = this.imageUploadSecurityService.validateImageFile(file);
 
-    this.fileSignal.set(null);
+    this.clearSelectedPhotos();
     this.photoPositionSignal.set(null);
 
-    if (!validation.isValid || !file) {
-      this.statusMessageKeySignal.set(validation.errorKey ?? 'admin.fieldMode.messages.invalidImage');
+    if (files.length === 0) {
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.photoRequired');
       return;
     }
 
-    const photoPosition: AdminFieldModePosition | null = await this.photoGpsService.readPosition(file);
-    if (!photoPosition) {
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.photoMissingGps');
+    const validSelections: AdminFieldModePhotoSelection[] = [];
+    let invalidImageCount = 0;
+    let missingGpsCount = 0;
+
+    for (const file of files) {
+      const validation = this.imageUploadSecurityService.validateImageFile(file);
+      if (!validation.isValid) {
+        invalidImageCount++;
+        continue;
+      }
+
+      const photoPosition: AdminFieldModePosition | null = await this.photoGpsService.readPosition(file);
+      if (!photoPosition) {
+        missingGpsCount++;
+        continue;
+      }
+
+      validSelections.push({
+        id: `field-photo-${AdminFieldModeActionsFacade.nextPhotoSelectionId++}`,
+        file,
+        position: photoPosition,
+        previewUrl: URL.createObjectURL(file)
+      });
+    }
+
+    if (validSelections.length === 0) {
+      this.statusMessageKeySignal.set(missingGpsCount > 0 ? 'admin.fieldMode.messages.photoMissingGps' : 'admin.fieldMode.messages.invalidImage');
       return;
     }
 
-    this.fileSignal.set(file);
-    this.photoPositionSignal.set(photoPosition);
+    this.photoSelectionsSignal.set(validSelections);
+    this.photoPositionSignal.set(validSelections[0].position);
+
+    if (invalidImageCount + missingGpsCount > 0) {
+      this.statusMessageKeySignal.set('admin.fieldMode.messages.photosPartiallyReady');
+      return;
+    }
+
     this.statusMessageKeySignal.set('admin.fieldMode.messages.photoGpsReady');
+  }
+
+  async selectFile(event: Event): Promise<void> {
+    await this.selectFiles(event);
+  }
+
+  removeSelectedPhoto(selectionId: string): void {
+    const selection: AdminFieldModePhotoSelection | undefined = this.photoSelectionsSignal().find((item: AdminFieldModePhotoSelection) => item.id === selectionId);
+    if (!selection) {
+      return;
+    }
+
+    URL.revokeObjectURL(selection.previewUrl);
+    const selections: AdminFieldModePhotoSelection[] = this.photoSelectionsSignal().filter((item: AdminFieldModePhotoSelection) => item.id !== selectionId);
+    this.photoSelectionsSignal.set(selections);
+    this.photoPositionSignal.set(selections[0]?.position ?? null);
   }
 
   setPhotoCategorySlug(slug: string): void {
@@ -107,47 +163,73 @@ export class AdminFieldModeActionsFacade {
     this.locationKeySignal.set(known ? locationKey : 'general');
   }
 
-  async addPhoto(item: ParkItem, shouldSetCurrent: boolean): Promise<boolean> {
-    const file: File | null = this.fileSignal();
-    const photoPosition: AdminFieldModePosition | null = this.photoPositionSignal();
-    if (!item.id || this.busySignal()) {
+  addPhoto(item: ParkItem, shouldSetCurrent: boolean): boolean {
+    if (!item.id) {
       return false;
     }
 
-    if (!file) {
+    const itemId: string = item.id;
+    const selections: AdminFieldModePhotoSelection[] = [...this.photoSelectionsSignal()];
+    if (selections.length === 0) {
       this.statusMessageKeySignal.set('admin.fieldMode.messages.photoRequired');
       return false;
     }
 
-    if (!photoPosition) {
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.photoMissingGps');
-      return false;
-    }
+    const description: string = this.photoDescriptionSignal().trim();
+    const categorySlug: string = this.photoCategorySlugSignal();
+    this.clearSelectedPhotos();
+    this.photoDescriptionSignal.set('');
+    this.statusMessageKeySignal.set('admin.fieldMode.messages.photosQueued');
+    void this.uploadPhotosInBackground(item, itemId, selections, description, categorySlug, shouldSetCurrent);
+    return true;
+  }
 
-    this.busySignal.set(true);
+  private async uploadPhotosInBackground(
+    item: ParkItem,
+    itemId: string,
+    selections: AdminFieldModePhotoSelection[],
+    description: string,
+    categorySlug: string,
+    shouldSetCurrent: boolean
+  ): Promise<void> {
+    this.uploadingCountSignal.update((count: number) => count + selections.length);
+    let uploadedCount = 0;
     try {
       await this.ensurePhotoCategoryTags();
-      const description: string = this.photoDescriptionSignal().trim();
-      const uploaded: UploadedImage = await firstValueFrom(this.imagesApiService.uploadImage(file, ImageCategory.PARK_ITEM, true, description || item.name));
-      const linked: ImageDto = await firstValueFrom(this.imagesApiService.linkImage({
-        imageId: uploaded.id,
-        ownerType: ImageOwnerType.PARK_ITEM,
-        ownerId: item.id,
-        description: description || undefined,
-        setAsCurrent: shouldSetCurrent
-      }));
-      await this.applyPhotoMetadata(linked, photoPosition, description);
-      this.fileSignal.set(null);
-      this.photoPositionSignal.set(null);
-      this.photoDescriptionSignal.set('');
+      for (let index: number = 0; index < selections.length; index++) {
+        const selection: AdminFieldModePhotoSelection = selections[index];
+        const uploaded: UploadedImage = await firstValueFrom(this.imagesApiService.uploadImage(selection.file, ImageCategory.PARK_ITEM, true, description || item.name));
+        const linked: ImageDto = await firstValueFrom(this.imagesApiService.linkImage({
+          imageId: uploaded.id,
+          ownerType: ImageOwnerType.PARK_ITEM,
+          ownerId: itemId,
+          description: description || undefined,
+          setAsCurrent: shouldSetCurrent && index === 0
+        }));
+        const metadataPosition: AdminFieldModePosition = this.resolveUploadedImagePosition(uploaded, selection.position);
+        await this.applyPhotoMetadata(linked, metadataPosition, description, categorySlug);
+        uploadedCount++;
+      }
+
       this.statusMessageKeySignal.set('admin.fieldMode.messages.photoAdded');
-      return true;
+      this.toastMessageService.add(
+        'success',
+        this.fieldText('Photos envoyées', 'Photos uploaded'),
+        this.fieldText(`${uploadedCount} photo(s) ajoutée(s) à ${item.name}.`, `${uploadedCount} photo(s) added to ${item.name}.`)
+      );
     } catch (error: unknown) {
       console.error('Error adding field mode photo', error);
       this.statusMessageKeySignal.set('admin.fieldMode.messages.photoFailed');
-      return false;
+      this.toastMessageService.add(
+        'error',
+        this.fieldText('Envoi photo échoué', 'Photo upload failed'),
+        this.fieldText(`${uploadedCount}/${selections.length} photo(s) envoyée(s) pour ${item.name}.`, `${uploadedCount}/${selections.length} photo(s) uploaded for ${item.name}.`)
+      );
     } finally {
-      this.busySignal.set(false);
+      for (const selection of selections) {
+        URL.revokeObjectURL(selection.previewUrl);
+      }
+      this.uploadingCountSignal.update((count: number) => Math.max(0, count - selections.length));
     }
   }
 
@@ -198,7 +280,11 @@ export class AdminFieldModeActionsFacade {
       };
       this.positionSignal.set(value);
       this.statusSignal.set('ready');
-      this.statusMessageKeySignal.set('admin.fieldMode.messages.positionReady');
+      this.statusMessageKeySignal.set(
+        value.accuracy !== null && value.accuracy > ADMIN_FIELD_MODE_GPS_TARGET_ACCURACY_METERS
+          ? 'admin.fieldMode.messages.positionBestEffort'
+          : 'admin.fieldMode.messages.positionReady'
+      );
       return value;
     } catch (error: unknown) {
       this.statusSignal.set('error');
@@ -211,15 +297,88 @@ export class AdminFieldModeActionsFacade {
 
   private async requestCurrentPositionWithFallback(): Promise<GeolocationPosition> {
     try {
-      return await this.positionService.getCurrentPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 12000 });
+      return await this.requestBestPosition({ enableHighAccuracy: true, maximumAge: 0, timeout: 12000 }, 12000);
     } catch (error: unknown) {
       if (this.getPositionErrorCode(error) !== 3) {
         throw error;
       }
 
       this.statusMessageKeySignal.set('admin.fieldMode.messages.positionRetryLowAccuracy');
-      return this.positionService.getCurrentPosition({ enableHighAccuracy: false, maximumAge: 0, timeout: 20000 });
+      return this.requestBestPosition({ enableHighAccuracy: false, maximumAge: 0, timeout: 6000 }, 6000);
     }
+  }
+
+  private requestBestPosition(options: PositionOptions, maxWaitMilliseconds: number): Promise<GeolocationPosition> {
+    return new Promise((resolve: (position: GeolocationPosition) => void, reject: (error: unknown) => void): void => {
+      let bestPosition: GeolocationPosition | null = null;
+      let settled = false;
+      let watchId = -1;
+
+      const cleanup = (): void => {
+        if (watchId >= 0) {
+          this.positionService.clearWatch(watchId);
+        }
+      };
+
+      const settleWithPosition = (position: GeolocationPosition): void => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        cleanup();
+        resolve(position);
+      };
+
+      const settleWithError = (error: unknown): void => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        cleanup();
+        reject(error);
+      };
+
+      const timeoutId: ReturnType<typeof setTimeout> = setTimeout((): void => {
+        if (bestPosition) {
+          settleWithPosition(bestPosition);
+          return;
+        }
+
+        settleWithError({ code: 3, message: 'Position timed out.' });
+      }, maxWaitMilliseconds);
+
+      const clearTimeoutAndSettle = (position: GeolocationPosition): void => {
+        clearTimeout(timeoutId);
+        settleWithPosition(position);
+      };
+
+      watchId = this.positionService.watchPosition(
+        (position: GeolocationPosition): void => {
+          if (!bestPosition || this.getPositionAccuracy(position) < this.getPositionAccuracy(bestPosition)) {
+            bestPosition = position;
+          }
+
+          if (this.getPositionAccuracy(position) <= ADMIN_FIELD_MODE_GPS_TARGET_ACCURACY_METERS) {
+            clearTimeoutAndSettle(position);
+          }
+        },
+        (error: GeolocationPositionError): void => {
+          if (bestPosition) {
+            clearTimeoutAndSettle(bestPosition);
+            return;
+          }
+
+          clearTimeout(timeoutId);
+          settleWithError(error);
+        },
+        options);
+    });
+  }
+
+  private getPositionAccuracy(position: GeolocationPosition): number {
+    return Number.isFinite(position.coords.accuracy) ? position.coords.accuracy : Number.MAX_SAFE_INTEGER;
   }
 
   private getBlockingPermissionMessageKey(permissionState: AdminFieldModeGeolocationPermissionState): string | null {
@@ -266,6 +425,15 @@ export class AdminFieldModeActionsFacade {
       : undefined;
   }
 
+  private clearSelectedPhotos(): void {
+    for (const selection of this.photoSelectionsSignal()) {
+      URL.revokeObjectURL(selection.previewUrl);
+    }
+
+    this.photoSelectionsSignal.set([]);
+    this.photoPositionSignal.set(null);
+  }
+
   private async ensurePhotoCategoryTags(): Promise<void> {
     const tags: ImageTagDto[] = await firstValueFrom(this.imagesApiService.getAdminImageTags());
     const idsBySlug: Record<string, string> = {};
@@ -291,8 +459,8 @@ export class AdminFieldModeActionsFacade {
     this.photoTagIdsBySlug = idsBySlug;
   }
 
-  private async applyPhotoMetadata(image: ImageDto, position: AdminFieldModePosition, description: string): Promise<ImageDto> {
-    const selectedTagId: string | undefined = this.photoTagIdsBySlug[this.photoCategorySlugSignal()];
+  private async applyPhotoMetadata(image: ImageDto, position: AdminFieldModePosition, description: string, categorySlug: string): Promise<ImageDto> {
+    const selectedTagId: string | undefined = this.photoTagIdsBySlug[categorySlug];
     return firstValueFrom(this.imagesApiService.updateAdminImage(image.id, {
       description: image.description ?? (description || undefined),
       geoLocation: {
@@ -306,6 +474,23 @@ export class AdminFieldModeActionsFacade {
       isPublished: image.isPublished !== false,
       sourceUrl: image.sourceUrl ?? null
     }));
+  }
+
+  private resolveUploadedImagePosition(uploaded: UploadedImage, fallback: AdminFieldModePosition): AdminFieldModePosition {
+    if (Number.isFinite(uploaded.latitude) && Number.isFinite(uploaded.longitude)) {
+      return {
+        latitude: uploaded.latitude as number,
+        longitude: uploaded.longitude as number,
+        accuracy: fallback.accuracy,
+        capturedAt: fallback.capturedAt
+      };
+    }
+
+    return fallback;
+  }
+
+  private fieldText(fr: string, en: string): string {
+    return this.translateService.currentLang === 'fr' ? fr : en;
   }
 
   private applyLocation(item: ParkItem, locationKey: AdminFieldModeLocationKey, position: AdminFieldModePosition): ParkItem {
