@@ -288,7 +288,7 @@ const PARK_ITEM_PHOTO_CATEGORIES_BY_SLUG: ReadonlyMap<string, ParkItemPhotoCateg
 );
 
 const PARK_ITEM_PHOTO_CATEGORIES_BY_PUBLIC_KEY: ReadonlyMap<string, ParkItemPhotoCategoryDefinition> = new Map<string, ParkItemPhotoCategoryDefinition>(
-  PARK_ITEM_PHOTO_CATEGORIES.map((category: ParkItemPhotoCategoryDefinition) => [category.publicKey, category])
+  PARK_ITEM_PHOTO_CATEGORIES.map((category: ParkItemPhotoCategoryDefinition) => [normalizeParkItemPhotoCategorySegment(category.publicKey), category])
 );
 
 export function getParkItemPhotoCategoryBySlug(slug: string | null | undefined): ParkItemPhotoCategoryDefinition | null {
