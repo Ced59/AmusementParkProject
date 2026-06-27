@@ -1,6 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Results;
 
 namespace AmusementPark.Application.Features.Images.Queries;
