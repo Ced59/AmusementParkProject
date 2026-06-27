@@ -57,7 +57,7 @@ export class AdminFieldModeFacade {
   private readonly gpsStatusSignal = signal<AdminFieldModeGpsStatus>('idle');
   private readonly gpsErrorSignal = signal<string | null>(null);
   private readonly currentPositionSignal = signal<AdminFieldModePosition | null>(null);
-  private readonly selectedPhotoCategorySlugSignal = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
+  private readonly selectedPhotoCategorySlugSignal = signal<string>(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly selectedPhotoFileSignal = signal<File | null>(null);
   private readonly selectedPhotoDescriptionSignal = signal('');
   private readonly selectedLocationKeySignal = signal<AdminFieldModeLocationKey>('general');

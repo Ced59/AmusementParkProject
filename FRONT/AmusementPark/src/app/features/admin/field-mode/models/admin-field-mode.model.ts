@@ -1,3 +1,4 @@
+import { PARK_ITEM_PHOTO_CATEGORIES, ParkItemPhotoCategoryDefinition } from '@app/models/images/park-item-photo-category';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 
@@ -18,11 +19,7 @@ export interface AdminFieldModePosition {
   capturedAt: number;
 }
 
-export interface AdminFieldModePhotoCategoryOption {
-  slug: string;
-  labelFr: string;
-  labelEn: string;
-}
+export type AdminFieldModePhotoCategoryOption = Pick<ParkItemPhotoCategoryDefinition, 'slug' | 'labelFr' | 'labelEn'>;
 
 export interface AdminFieldModePhotoSelection {
   id: string;
@@ -49,22 +46,7 @@ export const ADMIN_FIELD_MODE_SELECTED_PARK_STORAGE_KEY = 'admin.fieldMode.selec
 export const ADMIN_FIELD_MODE_GPS_MAX_AGE_MS = 2 * 60 * 1000;
 export const ADMIN_FIELD_MODE_GPS_TARGET_ACCURACY_METERS = 6;
 
-export const ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminFieldModePhotoCategoryOption> = [
-  { slug: 'park-item-gallery', labelFr: 'Galerie générale', labelEn: 'General gallery' },
-  { slug: 'park-item-entrance', labelFr: 'Entrée de l’attraction', labelEn: 'Attraction entrance' },
-  { slug: 'park-item-exit', labelFr: 'Sortie', labelEn: 'Exit' },
-  { slug: 'park-item-restriction-sign', labelFr: 'Panneau de restrictions', labelEn: 'Restriction sign' },
-  { slug: 'park-item-wait-time-sign', labelFr: 'Panneau temps d’attente', labelEn: 'Wait-time sign' },
-  { slug: 'park-item-accessibility-sign', labelFr: 'Accessibilité', labelEn: 'Accessibility' },
-  { slug: 'park-item-queue', labelFr: 'File d’attente', labelEn: 'Queue' },
-  { slug: 'park-item-station', labelFr: 'Gare / embarquement', labelEn: 'Station / boarding' },
-  { slug: 'park-item-vehicle', labelFr: 'Véhicule / train', labelEn: 'Vehicle / train' },
-  { slug: 'park-item-theming', labelFr: 'Décors / ambiance', labelEn: 'Theming' },
-  { slug: 'park-item-layout', labelFr: 'Vue d’ensemble', labelEn: 'Overview' },
-  { slug: 'park-item-menu', labelFr: 'Menu / tarifs', labelEn: 'Menu / prices' },
-  { slug: 'park-item-shop-front', labelFr: 'Façade boutique / restaurant', labelEn: 'Shop / restaurant frontage' },
-  { slug: 'park-item-safety', labelFr: 'Sécurité / consignes', labelEn: 'Safety instructions' }
-];
+export const ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminFieldModePhotoCategoryOption> = PARK_ITEM_PHOTO_CATEGORIES;
 
 export const ADMIN_FIELD_MODE_LOCATION_OPTIONS: ReadonlyArray<{ key: AdminFieldModeLocationKey; labelFr: string; labelEn: string }> = [
   { key: 'general', labelFr: 'Position générale', labelEn: 'General position' },

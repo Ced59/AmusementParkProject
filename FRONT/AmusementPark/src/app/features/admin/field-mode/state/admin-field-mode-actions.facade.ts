@@ -43,7 +43,7 @@ export class AdminFieldModeActionsFacade {
   private readonly positionSignal = signal<AdminFieldModePosition | null>(null);
   private readonly photoPositionSignal = signal<AdminFieldModePosition | null>(null);
   private readonly photoSelectionsSignal = signal<AdminFieldModePhotoSelection[]>([]);
-  private readonly photoCategorySlugSignal = signal(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
+  private readonly photoCategorySlugSignal = signal<string>(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly photoDescriptionSignal = signal('');
   private readonly locationKeySignal = signal<AdminFieldModeLocationKey>('general');
   private readonly busySignal = signal(false);

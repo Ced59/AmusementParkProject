@@ -315,8 +315,8 @@ export class AdminParkPhotosStateFacade {
       const createdTag: ImageTagDto = await firstValueFrom(this.imagesApiService.createAdminImageTag({
         slug: option.slug,
         labels: [
-          { languageCode: 'fr', value: this.translateService.instant(option.labelKey) },
-          { languageCode: 'en', value: this.translateService.instant(option.labelKey) }
+          { languageCode: 'fr', value: option.labelFr },
+          { languageCode: 'en', value: option.labelEn }
         ],
         descriptions: []
       }));
