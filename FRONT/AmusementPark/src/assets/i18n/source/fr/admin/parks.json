@@ -186,9 +186,17 @@
             "gallery": "Galerie",
             "entrance": "Entrée",
             "exit": "Sortie",
+            "restrictionSign": "Panneau de restrictions",
+            "waitTimeSign": "Panneau temps d’attente",
+            "accessibilitySign": "Accessibilité",
             "layout": "Plan",
             "queue": "File d’attente",
-            "station": "Gare"
+            "station": "Gare",
+            "vehicle": "Véhicule / train",
+            "theming": "Décors / ambiance",
+            "menu": "Menu / tarifs",
+            "shopFront": "Façade boutique / restaurant",
+            "safety": "Sécurité / consignes"
           }
         },
         "attractionConfigurationTitle": "Configuration de l’attraction",

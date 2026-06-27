@@ -168,6 +168,7 @@ export class AdminFieldModeActionsFacade {
       return false;
     }
 
+    const itemId: string = item.id;
     const selections: AdminFieldModePhotoSelection[] = [...this.photoSelectionsSignal()];
     if (selections.length === 0) {
       this.statusMessageKeySignal.set('admin.fieldMode.messages.photoRequired');
@@ -179,12 +180,13 @@ export class AdminFieldModeActionsFacade {
     this.clearSelectedPhotos();
     this.photoDescriptionSignal.set('');
     this.statusMessageKeySignal.set('admin.fieldMode.messages.photosQueued');
-    void this.uploadPhotosInBackground(item, selections, description, categorySlug, shouldSetCurrent);
+    void this.uploadPhotosInBackground(item, itemId, selections, description, categorySlug, shouldSetCurrent);
     return true;
   }
 
   private async uploadPhotosInBackground(
     item: ParkItem,
+    itemId: string,
     selections: AdminFieldModePhotoSelection[],
     description: string,
     categorySlug: string,
@@ -200,7 +202,7 @@ export class AdminFieldModeActionsFacade {
         const linked: ImageDto = await firstValueFrom(this.imagesApiService.linkImage({
           imageId: uploaded.id,
           ownerType: ImageOwnerType.PARK_ITEM,
-          ownerId: item.id,
+          ownerId: itemId,
           description: description || undefined,
           setAsCurrent: shouldSetCurrent && index === 0
         }));

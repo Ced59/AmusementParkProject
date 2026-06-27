@@ -186,9 +186,17 @@
             "gallery": "Galeria",
             "entrance": "Entrada",
             "exit": "Saída",
+            "restrictionSign": "Placa de restrições",
+            "waitTimeSign": "Placa de tempo de espera",
+            "accessibilitySign": "Acessibilidade",
             "layout": "Planta",
             "queue": "Fila",
-            "station": "Estação"
+            "station": "Estação",
+            "vehicle": "Veículo / comboio",
+            "theming": "Cenário / ambiente",
+            "menu": "Menu / preços",
+            "shopFront": "Fachada loja / restaurante",
+            "safety": "Instruções de segurança"
           }
         },
         "attractionConfigurationTitle": "Configuração da atração",

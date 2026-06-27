@@ -858,9 +858,17 @@
             "gallery": "Gallery",
             "entrance": "Entrance",
             "exit": "Exit",
+            "restrictionSign": "Restriction sign",
+            "waitTimeSign": "Wait-time sign",
+            "accessibilitySign": "Accessibility",
             "layout": "Layout",
             "queue": "Queue",
-            "station": "Station"
+            "station": "Station",
+            "vehicle": "Vehicle / train",
+            "theming": "Theming",
+            "menu": "Menu / prices",
+            "shopFront": "Shop / restaurant frontage",
+            "safety": "Safety instructions"
           }
         },
         "attractionConfigurationTitle": "Attraction configuration",

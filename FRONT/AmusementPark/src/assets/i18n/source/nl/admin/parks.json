@@ -186,9 +186,17 @@
             "gallery": "Galerij",
             "entrance": "Ingang",
             "exit": "Uitgang",
+            "restrictionSign": "Restrictiebord",
+            "waitTimeSign": "Wachttijdbord",
+            "accessibilitySign": "Toegankelijkheid",
             "layout": "Indeling",
             "queue": "Wachtrij",
-            "station": "Station"
+            "station": "Station",
+            "vehicle": "Voertuig / trein",
+            "theming": "Thema / sfeer",
+            "menu": "Menu / prijzen",
+            "shopFront": "Gevel winkel / restaurant",
+            "safety": "Veiligheidsinstructies"
           }
         },
         "attractionConfigurationTitle": "Attractieconfiguratie",

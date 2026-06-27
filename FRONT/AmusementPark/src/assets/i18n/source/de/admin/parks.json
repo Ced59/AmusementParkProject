@@ -186,9 +186,17 @@
             "gallery": "Galerie",
             "entrance": "Eingang",
             "exit": "Ausgang",
+            "restrictionSign": "Beschraenkungsschild",
+            "waitTimeSign": "Wartezeit-Anzeige",
+            "accessibilitySign": "Barrierefreiheit",
             "layout": "Layout",
             "queue": "Warteschlange",
-            "station": "Station"
+            "station": "Station",
+            "vehicle": "Fahrzeug / Zug",
+            "theming": "Thematisierung",
+            "menu": "Menue / Preise",
+            "shopFront": "Shop- / Restaurantfassade",
+            "safety": "Sicherheitshinweise"
           }
         },
         "attractionConfigurationTitle": "Attraktionskonfiguration",

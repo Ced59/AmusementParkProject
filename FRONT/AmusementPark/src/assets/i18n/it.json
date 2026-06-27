@@ -858,9 +858,17 @@
             "gallery": "Galleria",
             "entrance": "Ingresso",
             "exit": "Uscita",
+            "restrictionSign": "Cartello restrizioni",
+            "waitTimeSign": "Cartello tempi di attesa",
+            "accessibilitySign": "Accessibilità",
             "layout": "Layout",
             "queue": "Coda",
-            "station": "Stazione"
+            "station": "Stazione",
+            "vehicle": "Veicolo / treno",
+            "theming": "Tema / atmosfera",
+            "menu": "Menu / prezzi",
+            "shopFront": "Facciata negozio / ristorante",
+            "safety": "Istruzioni di sicurezza"
           }
         },
         "attractionConfigurationTitle": "Configurazione dell’attrazione",

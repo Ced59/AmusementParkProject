@@ -145,7 +145,8 @@ function createGeolocationPosition(latitude: number, longitude: number, accuracy
       altitude: null,
       altitudeAccuracy: null,
       heading: null,
-      speed: null
+      speed: null,
+      toJSON: () => ({ latitude, longitude, accuracy })
     },
     timestamp: Date.now()
   };
