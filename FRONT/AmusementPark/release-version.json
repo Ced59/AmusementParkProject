@@ -1,6 +1,20 @@
 {
-  "version": "2.7.10",
+  "version": "2.7.11",
   "history": [
+    {
+      "version": "2.7.11",
+      "releasedAt": "2026-06-27",
+      "labels": {
+        "fr": "Les galeries de parcs deviennent plus completes.",
+        "en": "Park galleries become more complete.",
+        "de": "Parkgalerien werden vollstaendiger.",
+        "nl": "Parkgalerijen worden vollediger.",
+        "it": "Le gallerie dei parchi diventano piu complete.",
+        "es": "Las galerias de parques quedan mas completas.",
+        "pl": "Galerie parkow staja sie pelniejsze.",
+        "pt": "As galerias de parques ficam mais completas."
+      }
+    },
     {
       "version": "2.7.10",
       "releasedAt": "2026-06-27",

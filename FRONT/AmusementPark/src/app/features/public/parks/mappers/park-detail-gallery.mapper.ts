@@ -16,6 +16,9 @@ import { ParkDetailPhotoCategoryOptionViewModel, ParkDetailPhotoViewModel } from
 import { ParkDetailItemPhotoSource } from './park-detail-mapping.model';
 import { normalizeOptionalString } from './park-detail-info.mapper';
 
+const ParkLogoCategoryKey = 'park-logo';
+const ParkLogoCategoryLabelKey = 'parks.photos.categories.logo';
+
 export function resolveParkHeroImageId(parkPhotos: ImageDto[]): string | null {
 
   const currentPhoto: ImageDto | undefined = parkPhotos.find((photo: ImageDto) => {
@@ -40,23 +43,62 @@ export function buildPhotos(
   parkPhotos: ImageDto[],
   itemPhotoSources: ParkDetailItemPhotoSource[],
   imageTags: ImageTagDto[],
-  currentLanguage: string
+  currentLanguage: string,
+  logoPhotos: ImageDto[] = []
 ): ParkDetailPhotoViewModel[] {
   const tagLookup: PublicPhotoTagLookup = buildPublicPhotoTagLookup(imageTags, currentLanguage);
+  const mappedLogoPhotos: ParkDetailPhotoViewModel[] = buildLogoPhotos(park, logoPhotos, tagLookup, currentLanguage);
   const mappedParkPhotos: ParkDetailPhotoViewModel[] = buildParkPhotos(park, parkPhotos, tagLookup, currentLanguage);
   const mappedItemPhotos: ParkDetailPhotoViewModel[] = itemPhotoSources.flatMap((source: ParkDetailItemPhotoSource) => {
     return buildItemPhotos(park, source.item, source.photos, tagLookup, currentLanguage);
   });
 
-
-  return [...mappedParkPhotos, ...mappedItemPhotos]
+  return [...mappedLogoPhotos, ...mappedParkPhotos, ...mappedItemPhotos]
     .filter((photo: ParkDetailPhotoViewModel) => photo.imageId.trim().length > 0)
     .sort((first: ParkDetailPhotoViewModel, second: ParkDetailPhotoViewModel) => {
+      if (isLogoPhoto(first) !== isLogoPhoto(second)) {
+        return isLogoPhoto(first) ? -1 : 1;
+      }
+
       if (first.isCurrent !== second.isCurrent) {
         return first.isCurrent ? -1 : 1;
       }
 
       return getPhotoCategoryOrder(first.categoryKey) - getPhotoCategoryOrder(second.categoryKey);
+    });
+}
+
+function buildLogoPhotos(
+  park: Park,
+  photos: ImageDto[],
+  tagLookup: PublicPhotoTagLookup,
+  currentLanguage: string
+): ParkDetailPhotoViewModel[] {
+  const parkName: string = park.name?.trim() ?? 'Park';
+
+  return photos
+    .filter((photo: ImageDto) => isDisplayableLogoPhoto(photo))
+    .map((photo: ImageDto) => {
+      const metadata: PublicPhotoMetadata = buildPublicPhotoMetadata(photo, tagLookup, {
+        currentLanguage,
+        fallbackAlt: `${parkName} logo`,
+        fallbackTagKey: ParkLogoCategoryKey,
+        fallbackTagLabelKey: ParkLogoCategoryLabelKey
+      });
+
+      return {
+        id: photo.id,
+        imageId: photo.id,
+        category: photo.category,
+        categoryKey: ParkLogoCategoryKey,
+        categoryLabelKey: ParkLogoCategoryLabelKey,
+        ...metadata,
+        isCurrent: photo.isCurrent,
+        sourceTitle: parkName,
+        sourceIconClass: 'pi pi-image',
+        sourceRouterLink: null,
+        sourceLinkLabelKey: null
+      };
     });
 }
 
@@ -115,7 +157,7 @@ function buildItemPhotos(
     return [];
   }
 
-    return photos
+  return photos
     .filter((photo: ImageDto) => isDisplayableItemPhoto(photo))
     .map((photo: ImageDto) => {
       const metadata: PublicPhotoMetadata = buildPublicPhotoMetadata(photo, tagLookup, {
@@ -168,6 +210,10 @@ function isDisplayableParkPhoto(photo: ImageDto): boolean {
   return isOwnerGalleryCategory(photo.category) && (photo.isPublished !== false || photo.isCurrent);
 }
 
+function isDisplayableLogoPhoto(photo: ImageDto): boolean {
+  return isLogoCategory(photo.category) && (photo.isPublished !== false || photo.isCurrent);
+}
+
 function isDisplayableItemPhoto(photo: ImageDto): boolean {
   return !isAdministrativeOnlyImageCategory(photo.category) && (photo.isPublished !== false || photo.isCurrent);
 }
@@ -179,9 +225,14 @@ function isOwnerGalleryCategory(category: ImageCategory | number | string | null
 function isAdministrativeOnlyImageCategory(category: ImageCategory | number | string | null | undefined): boolean {
   const normalizedCategory: string = String(category ?? '').toUpperCase();
   return normalizedCategory === ImageCategory.AVATAR
-    || normalizedCategory === ImageCategory.LOGO
+    || isLogoCategory(normalizedCategory)
     || normalizedCategory === '0'
     || normalizedCategory === '1';
+}
+
+function isLogoCategory(category: ImageCategory | number | string | null | undefined): boolean {
+  const normalizedCategory: string = String(category ?? '').toUpperCase();
+  return normalizedCategory === ImageCategory.LOGO || normalizedCategory === '1';
 }
 
 function resolveParkPhotoCategoryKey(tagIdOrSlug: string | undefined): string {
@@ -194,8 +245,16 @@ function resolveParkPhotoCategoryLabelKey(categoryKey: string): string {
 }
 
 function getPhotoCategoryOrder(categoryKey: string): number {
+  if (categoryKey === ParkLogoCategoryKey) {
+    return -10;
+  }
+
   const category: ParkPhotoCategoryDefinition | null = getParkPhotoCategoryBySlug(categoryKey);
   return category?.sortOrder ?? (categoryKey.startsWith('item-') ? 20 : 99);
+}
+
+function isLogoPhoto(photo: ParkDetailPhotoViewModel): boolean {
+  return photo.categoryKey === ParkLogoCategoryKey;
 }
 
 function buildParkItemLink(park: Park, item: ParkItem, currentLanguage: string): string[] | null {

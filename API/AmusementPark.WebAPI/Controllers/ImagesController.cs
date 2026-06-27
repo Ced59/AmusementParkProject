@@ -51,6 +51,7 @@ public sealed class ImagesController : ControllerBase
     private readonly IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>> getImageByIdQueryHandler;
     private readonly IQueryHandler<GetAllImagesQuery, ApplicationResult<IReadOnlyCollection<Image>>> getAllImagesQueryHandler;
     private readonly IQueryHandler<GetImagesPageQuery, ApplicationResult<PagedResult<Image>>> getImagesPageQueryHandler;
+    private readonly IQueryHandler<GetParkItemImagesByParkQuery, ApplicationResult<PagedResult<ParkItemImageResult>>> getParkItemImagesByParkQueryHandler;
     private readonly IQueryHandler<GetCurrentImageQuery, ApplicationResult<Image>> getCurrentImageQueryHandler;
     private readonly IQueryHandler<ListImageTagsQuery, ApplicationResult<IReadOnlyCollection<ImageTag>>> listImageTagsQueryHandler;
     private readonly IImageBinaryStorage imageBinaryStorage;
@@ -69,6 +70,7 @@ public sealed class ImagesController : ControllerBase
         IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>> getImageByIdQueryHandler,
         IQueryHandler<GetAllImagesQuery, ApplicationResult<IReadOnlyCollection<Image>>> getAllImagesQueryHandler,
         IQueryHandler<GetImagesPageQuery, ApplicationResult<PagedResult<Image>>> getImagesPageQueryHandler,
+        IQueryHandler<GetParkItemImagesByParkQuery, ApplicationResult<PagedResult<ParkItemImageResult>>> getParkItemImagesByParkQueryHandler,
         IQueryHandler<GetCurrentImageQuery, ApplicationResult<Image>> getCurrentImageQueryHandler,
         IQueryHandler<ListImageTagsQuery, ApplicationResult<IReadOnlyCollection<ImageTag>>> listImageTagsQueryHandler,
         IImageBinaryStorage imageBinaryStorage)
@@ -86,6 +88,7 @@ public sealed class ImagesController : ControllerBase
         this.getImageByIdQueryHandler = getImageByIdQueryHandler;
         this.getAllImagesQueryHandler = getAllImagesQueryHandler;
         this.getImagesPageQueryHandler = getImagesPageQueryHandler;
+        this.getParkItemImagesByParkQueryHandler = getParkItemImagesByParkQueryHandler;
         this.getCurrentImageQueryHandler = getCurrentImageQueryHandler;
         this.listImageTagsQueryHandler = listImageTagsQueryHandler;
         this.imageBinaryStorage = imageBinaryStorage;
@@ -217,6 +220,26 @@ public sealed class ImagesController : ControllerBase
         }
 
         PagedResponseDto<ImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp());
+        return this.Ok(response);
+    }
+
+    [HttpGet("parks/{parkId}/park-items")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(PagedResponseDto<ParkItemImageDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetParkItemImagesByParkAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
+    {
+        bool canSeeNonVisible = this.UserCanSeeNonVisible();
+        ApplicationResult<PagedResult<ParkItemImageResult>> result = await this.getParkItemImagesByParkQueryHandler.HandleAsync(
+            new GetParkItemImagesByParkQuery(pagination.ToApplication(), parkId, canSeeNonVisible),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        PagedResponseDto<ParkItemImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp());
         return this.Ok(response);
     }
 

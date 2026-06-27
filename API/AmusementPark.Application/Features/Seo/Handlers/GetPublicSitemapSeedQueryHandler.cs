@@ -80,6 +80,14 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             ImageOwnerType.ParkItem,
             ImageCategory.ParkItem,
             cancellationToken);
+        IReadOnlyCollection<ParkItem> publicItems = await SitemapPublicCandidateLoader.LoadPublicItemsAsync(
+            this.parkItemRepository,
+            cancellationToken);
+        HashSet<string> parkIdsWithPublishedItemImages = publicItems
+            .Where(item => !string.IsNullOrWhiteSpace(item.Id) && itemIdsWithPublishedImages.Contains(item.Id))
+            .Select(static item => item.ParkId)
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
         IReadOnlyDictionary<string, List<Video>> videosByParkId = VideoSitemapSectionProviderHelpers.GroupVideosByOwnerId(
             await VideoSitemapSectionProviderHelpers.LoadPublishedVideosAsync(
                 this.videoRepository,
@@ -91,8 +99,8 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
                 VideoOwnerType.ParkItem,
                 cancellationToken));
 
-        this.AddParkUrls(urls, visibleParks, languages, parkIdsWithPublishedImages, videosByParkId);
-        await this.AddParkItemUrlsAsync(urls, visibleParkById, languages, itemIdsWithPublishedImages, videosByItemId, cancellationToken);
+        this.AddParkUrls(urls, visibleParks, languages, parkIdsWithPublishedImages, parkIdsWithPublishedItemImages, videosByParkId);
+        this.AddParkItemUrls(urls, visibleParkById, languages, publicItems, itemIdsWithPublishedImages, videosByItemId);
 
         await this.AddReferenceUrlsAsync(urls, languages, cancellationToken);
 
@@ -137,6 +145,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         IReadOnlyCollection<Park> parks,
         IReadOnlyCollection<string> languages,
         HashSet<string> parkIdsWithPublishedImages,
+        HashSet<string> parkIdsWithPublishedItemImages,
         IReadOnlyDictionary<string, List<Video>> videosByParkId)
     {
         foreach (Park park in parks)
@@ -151,7 +160,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             {
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc));
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/weather", park.UpdatedAtUtc));
-                if (parkIdsWithPublishedImages.Contains(park.Id))
+                if (parkIdsWithPublishedImages.Contains(park.Id) || parkIdsWithPublishedItemImages.Contains(park.Id))
                 {
                     urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc));
                 }
@@ -172,18 +181,14 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         }
     }
 
-    private async Task AddParkItemUrlsAsync(
+    private void AddParkItemUrls(
         List<PublicSitemapUrl> urls,
         IReadOnlyDictionary<string, Park> visibleParkById,
         IReadOnlyCollection<string> languages,
+        IReadOnlyCollection<ParkItem> items,
         HashSet<string> itemIdsWithPublishedImages,
-        IReadOnlyDictionary<string, List<Video>> videosByItemId,
-        CancellationToken cancellationToken)
+        IReadOnlyDictionary<string, List<Video>> videosByItemId)
     {
-        IReadOnlyCollection<ParkItem> items = await SitemapPublicCandidateLoader.LoadPublicItemsAsync(
-            this.parkItemRepository,
-            cancellationToken);
-
         foreach (ParkItem item in items)
         {
             if (!ParkItemsSitemapSectionProvider.IsPublicItem(item))

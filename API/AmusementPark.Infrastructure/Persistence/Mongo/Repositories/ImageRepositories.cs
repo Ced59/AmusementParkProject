@@ -507,6 +507,16 @@ public sealed class ImageRepository : IImageRepository
         {
             filter &= builder.Eq(static document => document.OwnerId, criteria.OwnerId.Trim());
         }
+        else if (criteria.OwnerIds is not null)
+        {
+            List<string> normalizedOwnerIds = criteria.OwnerIds
+                .Where(static ownerId => !string.IsNullOrWhiteSpace(ownerId))
+                .Select(static ownerId => ownerId.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+
+            filter &= builder.In(static document => document.OwnerId, normalizedOwnerIds);
+        }
 
         if (!string.IsNullOrWhiteSpace(criteria.TagId))
         {

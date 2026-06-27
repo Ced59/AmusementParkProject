@@ -5,6 +5,7 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
+import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
@@ -17,6 +18,7 @@ export interface ParkImagesParksPort {
 
 export interface ParkImagesImagesPort {
   getImagesPage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<PagedResult<ImageDto>>;
+  getParkItemImagesByPark(parkId: string, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<PagedResult<ParkItemImageDto>>;
   getImageTags(options?: AnonymousHttpOptions): Observable<ImageTagDto[]>;
 }
 

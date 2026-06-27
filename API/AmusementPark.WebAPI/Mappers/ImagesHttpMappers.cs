@@ -274,6 +274,15 @@ internal static class ImagesHttpMappers
         };
     }
 
+    public static ParkItemImageDto ToHttp(this ParkItemImageResult value)
+    {
+        return new ParkItemImageDto
+        {
+            Image = value.Image.ToHttp(),
+            Item = value.Item.ToHttp(),
+        };
+    }
+
     public static ParkLogoDto ToParkLogoHttp(this Image value)
     {
         return new ParkLogoDto

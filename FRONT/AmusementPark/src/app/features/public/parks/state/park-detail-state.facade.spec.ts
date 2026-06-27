@@ -2,7 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { Observable, of, throwError } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { Park } from '@app/models/parks/park';
@@ -18,8 +20,10 @@ import { CountryDisplayService } from '@shared/services/countries/country-displa
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
 import {
+  PARK_DETAIL_IMAGES_PORT,
   PARK_DETAIL_PARKS_PORT,
   PARK_DETAIL_VIDEOS_PORT,
+  ParkDetailImagesPort,
   ParkDetailParksPort,
   ParkDetailVideosPort
 } from './park-detail-data.ports';
@@ -75,7 +79,25 @@ class FakeVideosPort implements ParkDetailVideosPort {
   }
 }
 
-function createPark(): Park {
+class FakeImagesPort implements ParkDetailImagesPort {
+  public parkImagesResponse$: Observable<PagedResult<ImageDto>> = of(createImagePage<ImageDto>([]));
+  public logoImagesResponse$: Observable<PagedResult<ImageDto>> = of(createImagePage<ImageDto>([]));
+  public itemImagesResponse$: Observable<PagedResult<ParkItemImageDto>> = of(createImagePage<ParkItemImageDto>([]));
+  public readonly pageCalls: { ownerType: ImageOwnerType; ownerId: string; category: ImageCategory; page?: number; size?: number }[] = [];
+  public readonly itemImageCalls: { parkId: string; page?: number; size?: number }[] = [];
+
+  getImagesPage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number): Observable<PagedResult<ImageDto>> {
+    this.pageCalls.push({ ownerType, ownerId, category, page, size });
+    return category === ImageCategory.LOGO ? this.logoImagesResponse$ : this.parkImagesResponse$;
+  }
+
+  getParkItemImagesByPark(parkId: string, page?: number, size?: number): Observable<PagedResult<ParkItemImageDto>> {
+    this.itemImageCalls.push({ parkId, page, size });
+    return this.itemImagesResponse$;
+  }
+}
+
+function createPark(hasLogo: boolean = true): Park {
   return {
     id: 'park-1',
     name: 'Bellewaerde',
@@ -85,16 +107,16 @@ function createPark(): Park {
     isVisible: true,
     founderId: 'founder-1',
     operatorId: 'operator-1',
-    currentLogoImageId: 'logo-1',
+    currentLogoImageId: hasLogo ? 'logo-1' : null,
     descriptions: [
       { languageCode: 'en', value: '<p>Belgian park.</p>' }
     ]
   };
 }
 
-function createSummary(totalItems: number = 3, hasMainImage: boolean = true): ParkDetailSummary {
+function createSummary(totalItems: number = 3, hasMainImage: boolean = true, hasLogo: boolean = true): ParkDetailSummary {
   return {
-    park: createPark(),
+    park: createPark(hasLogo),
     mainImage: hasMainImage ? {
       id: 'main-image-1',
       category: ImageCategory.PARK,
@@ -169,8 +191,12 @@ function createVideo(): VideoDto {
 }
 
 function createVideosPage(totalItems: number): PagedResult<VideoDto> {
+  return createImagePage(totalItems > 0 ? [createVideo()] : [], totalItems);
+}
+
+function createImagePage<TItem>(items: TItem[], totalItems: number = items.length): PagedResult<TItem> {
   return {
-    items: totalItems > 0 ? [createVideo()] : [],
+    items,
     pagination: {
       totalItems,
       totalPages: totalItems > 0 ? 1 : 0,
@@ -253,10 +279,12 @@ function configureFacade(): {
   facade: ParkDetailStateFacade;
   parksPort: FakeParksPort;
   videosPort: FakeVideosPort;
+  imagesPort: FakeImagesPort;
   ssrStatusService: FakeSsrHttpStatusService;
 } {
   const parksPort: FakeParksPort = new FakeParksPort();
   const videosPort: FakeVideosPort = new FakeVideosPort();
+  const imagesPort: FakeImagesPort = new FakeImagesPort();
   const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
 
   TestBed.configureTestingModule({
@@ -264,6 +292,7 @@ function configureFacade(): {
       ParkDetailStateFacade,
       { provide: PARK_DETAIL_PARKS_PORT, useValue: parksPort },
       { provide: PARK_DETAIL_VIDEOS_PORT, useValue: videosPort },
+      { provide: PARK_DETAIL_IMAGES_PORT, useValue: imagesPort },
       {
         provide: CountryDisplayService,
         useValue: {
@@ -278,6 +307,7 @@ function configureFacade(): {
     facade: TestBed.inject(ParkDetailStateFacade),
     parksPort,
     videosPort,
+    imagesPort,
     ssrStatusService
   };
 }
@@ -347,7 +377,7 @@ describe('ParkDetailStateFacade', () => {
     expect(capturedOptions.every((options: AnonymousHttpOptions | undefined) => options?.context.get(SKIP_AUTHORIZATION_HEADER) === true)).toBeTrue();
   });
 
-  it('keeps the logo fallback but hides the images link when no main photo exists', () => {
+  it('keeps the logo fallback and exposes the images link when no main photo exists', () => {
     const context = configureFacade();
     context.parksPort.summaryResponse$ = of(createSummary(3, false));
 
@@ -356,7 +386,59 @@ describe('ParkDetailStateFacade', () => {
 
     expect(context.facade.park()?.heroImageId).toBe('logo-1');
     expect(context.facade.park()?.primaryPhoto).toBeNull();
-    expect(context.facade.park()?.imagesLink).toBeNull();
+    expect(context.facade.park()?.imagesLink).toEqual(['/', 'fr', 'park', 'park-1', 'bellewaerde', 'images']);
+    expect(context.imagesPort.pageCalls).toEqual([]);
+    expect(context.imagesPort.itemImageCalls).toEqual([]);
+  });
+
+  it('exposes the images link when only park items have photos', () => {
+    const context = configureFacade();
+    context.parksPort.summaryResponse$ = of(createSummary(3, false, false));
+    context.imagesPort.itemImagesResponse$ = of(createImagePage<ParkItemImageDto>([
+      {
+        item: {
+          id: 'item-1',
+          parkId: 'park-1',
+          name: 'Family Ride',
+          category: 'Attraction',
+          type: 'FlatRide',
+          latitude: null,
+          longitude: null
+        },
+        image: {
+          id: 'item-image-1',
+          category: ImageCategory.PARK_ITEM,
+          ownerType: ImageOwnerType.PARK_ITEM,
+          ownerId: 'item-1',
+          path: 'items/item-image-1',
+          description: 'Item image',
+          isCurrent: false,
+          isWatermarked: false,
+          isPublished: true,
+          width: 1200,
+          height: 800,
+          sizeInBytes: 1000,
+          altTexts: [],
+          captions: [],
+          credits: [],
+          tagIds: [],
+          createdAt: '2026-01-01T00:00:00Z',
+          updatedAt: '2026-01-01T00:00:00Z'
+        }
+      }
+    ]));
+
+    context.facade.setCurrentLanguage('fr');
+    context.facade.loadPark('park-1');
+
+    expect(context.facade.park()?.heroImageId).toBeNull();
+    expect(context.facade.park()?.primaryPhoto).toBeNull();
+    expect(context.facade.park()?.imagesLink).toEqual(['/', 'fr', 'park', 'park-1', 'bellewaerde', 'images']);
+    expect(context.imagesPort.pageCalls).toEqual([
+      { ownerType: ImageOwnerType.PARK, ownerId: 'park-1', category: ImageCategory.PARK, page: 1, size: 1 },
+      { ownerType: ImageOwnerType.PARK, ownerId: 'park-1', category: ImageCategory.LOGO, page: 1, size: 1 }
+    ]);
+    expect(context.imagesPort.itemImageCalls).toEqual([{ parkId: 'park-1', page: 1, size: 1 }]);
   });
 
   it('sets the SSR 404 status and preserves the previous data when the summary is missing', () => {

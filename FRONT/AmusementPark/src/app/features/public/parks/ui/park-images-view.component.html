@@ -42,7 +42,49 @@
         </div>
       </header>
 
-      @if (photos.length > 0) {
+      @if (showItemTab) {
+        <div class="park-images-tabs" role="tablist" [attr.aria-label]="'parks.imagesPage.tabs.label' | translate">
+          <button
+            class="park-images-tabs__tab"
+            type="button"
+            role="tab"
+            id="park-images-tab-park"
+            aria-controls="park-images-panel"
+            [class.is-active]="activeTab === 'park'"
+            [attr.aria-selected]="activeTab === 'park'"
+            [attr.tabindex]="activeTab === 'park' ? 0 : -1"
+            (click)="selectTab('park')">
+            <span>{{ 'parks.imagesPage.tabs.park' | translate }}</span>
+            <strong>{{ parkTabImageCount }}</strong>
+          </button>
+
+          <button
+            class="park-images-tabs__tab"
+            type="button"
+            role="tab"
+            id="park-images-tab-items"
+            aria-controls="park-images-panel"
+            [class.is-active]="activeTab === 'items'"
+            [attr.aria-selected]="activeTab === 'items'"
+            [attr.tabindex]="activeTab === 'items' ? 0 : -1"
+            (click)="selectTab('items')">
+            <span>{{ 'parks.imagesPage.tabs.items' | translate }}</span>
+            <strong>{{ itemTabImageCount }}</strong>
+          </button>
+        </div>
+      }
+
+      <div
+        id="park-images-panel"
+        role="tabpanel"
+        [attr.aria-labelledby]="activeTab === 'items' ? 'park-images-tab-items' : 'park-images-tab-park'">
+      @if (itemImagesLoading && activeTab === 'items') {
+        <section class="park-images-empty" appUiSurface="soft" appUiSurfacePadding="spacious">
+          <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+          <h2>{{ 'parks.imagesPage.loadingItemsTitle' | translate }}</h2>
+          <p>{{ 'parks.imagesPage.loadingItemsMessage' | translate:{ name: currentPark.name } }}</p>
+        </section>
+      } @else if (photos.length > 0) {
         <app-ui-photo-carousel
           [photos]="photos"
           [categories]="categories"
@@ -85,9 +127,10 @@
           [appAdminContextualBlock]="getImagesContextualBlock(currentPark)">
           <i class="pi pi-image" aria-hidden="true"></i>
           <h2>{{ 'parks.imagesPage.emptyTitle' | translate }}</h2>
-          <p>{{ 'parks.imagesPage.emptyMessage' | translate:{ name: currentPark.name } }}</p>
+          <p>{{ (activeTab === 'items' ? 'parks.imagesPage.emptyItemsMessage' : 'parks.imagesPage.emptyMessage') | translate:{ name: currentPark.name } }}</p>
         </section>
       }
+      </div>
     </section>
   }
 </app-page-state>

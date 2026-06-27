@@ -15,4 +15,5 @@ public sealed record ImageSearchCriteria(
     bool? HasOwner = null,
     bool? HasGeoLocation = null,
     string? SortBy = null,
-    string? SortDirection = null);
+    string? SortDirection = null,
+    IReadOnlyCollection<string>? OwnerIds = null);

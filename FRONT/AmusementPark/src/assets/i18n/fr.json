@@ -3020,6 +3020,7 @@
       "openItem": "Ouvrir la fiche {{name}}",
       "categories": {
         "gallery": "Parc ? Galerie",
+        "logo": "Logo",
         "entrance": "Entr?e du parc",
         "parking": "Parking / acc?s",
         "transport": "Transports / navettes",
@@ -3063,10 +3064,18 @@
       "errorTitle": "Images indisponibles",
       "errorMessage": "Impossible de charger les images de ce parc pour le moment.",
       "backToPark": "Retour à {{name}}",
+      "tabs": {
+        "label": "Sources des images du parc",
+        "park": "Photos du parc",
+        "items": "Photos des lieux"
+      },
+      "loadingItemsTitle": "Chargement des photos des lieux",
+      "loadingItemsMessage": "Les photos des lieux de {{name}} sont en cours de chargement.",
       "loadMore": "Charger plus d’images",
       "loadingMore": "Chargement…",
       "emptyTitle": "Aucune image publiée",
-      "emptyMessage": "Aucune image publiée n’est encore disponible pour {{name}}."
+      "emptyMessage": "Aucune image publiée n’est encore disponible pour {{name}}.",
+      "emptyItemsMessage": "Aucune photo publiée des lieux de {{name}} n’est encore disponible."
     },
     "mapPage": {
       "kicker": "Carte du parc",

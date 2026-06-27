@@ -3020,6 +3020,7 @@
       "openItem": "Otwórz stronę szczegółów {{name}}",
       "categories": {
         "gallery": "Park ? Galeria",
+        "logo": "Logo",
         "entrance": "Wej?cie do parku",
         "parking": "Parking / dost?p",
         "transport": "Transport / busy wahad?owe",
@@ -3063,10 +3064,18 @@
       "errorTitle": "Zdjęcia niedostępne",
       "errorMessage": "Nie można teraz załadować zdjęć tego parku.",
       "backToPark": "Wróć do {{name}}",
+      "tabs": {
+        "label": "Widok galerii",
+        "park": "Zdjecia parku",
+        "items": "Zdjecia miejsc"
+      },
       "loadMore": "Załaduj więcej zdjęć",
       "loadingMore": "Ładowanie…",
+      "loadingItemsTitle": "Ladowanie zdjec miejsc",
+      "loadingItemsMessage": "Przygotowywanie zdjec miejsc w {{name}}.",
       "emptyTitle": "Brak opublikowanych zdjęć",
-      "emptyMessage": "Dla {{name}} nie ma jeszcze dostępnych opublikowanych zdjęć."
+      "emptyMessage": "Dla {{name}} nie ma jeszcze dostępnych opublikowanych zdjęć.",
+      "emptyItemsMessage": "Dla {{name}} nie ma jeszcze dostepnych opublikowanych zdjec miejsc."
     },
     "mapPage": {
       "kicker": "Mapa parku",

@@ -100,8 +100,10 @@ public sealed class PublicSeoUrlResolver
             AddZoneImpactUrls(relativePaths, languages, parentPark, new[] { item }, parentZones);
 
             AddParkItemDetailUrls(relativePaths, languages, parentPark, item);
-            if (await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken))
+            bool itemHasImages = await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken);
+            if (itemHasImages)
             {
+                AddParkImageUrls(relativePaths, languages, parentPark);
                 AddParkItemImageUrls(relativePaths, languages, parentPark, item);
             }
         }
@@ -123,7 +125,7 @@ public sealed class PublicSeoUrlResolver
     {
         AddParkDetailUrls(relativePaths, languages, park);
 
-        if (await this.HasPublishedImagesAsync(ImageOwnerType.Park, ImageCategory.Park, park.Id, imagePresenceByKey, cancellationToken))
+        if (await this.HasPublishedParkOrItemImagesAsync(park.Id, currentPublicItems, imagePresenceByKey, cancellationToken))
         {
             AddParkImageUrls(relativePaths, languages, park);
         }
@@ -341,6 +343,28 @@ public sealed class PublicSeoUrlResolver
         bool hasImages = page.Items.Count > 0;
         imagePresenceByKey[key] = hasImages;
         return hasImages;
+    }
+
+    private async Task<bool> HasPublishedParkOrItemImagesAsync(
+        string parkId,
+        IReadOnlyCollection<PublicSeoParkItemSnapshot> currentPublicItems,
+        Dictionary<string, bool> imagePresenceByKey,
+        CancellationToken cancellationToken)
+    {
+        if (await this.HasPublishedImagesAsync(ImageOwnerType.Park, ImageCategory.Park, parkId, imagePresenceByKey, cancellationToken))
+        {
+            return true;
+        }
+
+        foreach (PublicSeoParkItemSnapshot item in currentPublicItems)
+        {
+            if (await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static IReadOnlyCollection<PublicSeoParkSnapshot> MergeParkSnapshots(
