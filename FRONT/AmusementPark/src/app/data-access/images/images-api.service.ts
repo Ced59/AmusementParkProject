@@ -9,6 +9,7 @@ import { AdminImageSearchQuery } from '@app/models/images/admin-image-search-que
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageGeoLocation } from '@app/models/images/image-geo-location';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { LinkImageToOwner } from '@app/models/images/link-image-to-owner';
 import { RemoteImageImport } from '@app/models/images/remote-image-import';
@@ -114,6 +115,17 @@ export class ImagesApiService {
 
     return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url, { ...options, params }).pipe(
       map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => unwrapPagedCollection<ImageDto>(response))
+    );
+  }
+
+  getParkItemImagesByPark(parkId: string, page: number = 1, size: number = 24, options: ImagesHttpOptions = {}): Observable<PagedResult<ParkItemImageDto>> {
+    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getParkItemImagesByPark(parkId)}`;
+    const params: HttpParams = new HttpParams()
+      .set('page', String(page))
+      .set('size', String(size));
+
+    return this.http.get<ParkItemImageDto[] | PagedCollectionResponse<ParkItemImageDto>>(url, { ...options, params }).pipe(
+      map((response: ParkItemImageDto[] | PagedCollectionResponse<ParkItemImageDto>) => unwrapPagedCollection<ParkItemImageDto>(response))
     );
   }
 

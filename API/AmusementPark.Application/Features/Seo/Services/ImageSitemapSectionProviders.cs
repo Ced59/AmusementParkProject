@@ -16,11 +16,13 @@ namespace AmusementPark.Application.Features.Seo.Services;
 public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
 {
     private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
     private readonly IImageRepository imageRepository;
 
-    public ParkImagesSitemapSectionProvider(IParkRepository parkRepository, IImageRepository imageRepository)
+    public ParkImagesSitemapSectionProvider(IParkRepository parkRepository, IParkItemRepository parkItemRepository, IImageRepository imageRepository)
     {
         this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
         this.imageRepository = imageRepository;
     }
 
@@ -44,23 +46,59 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
             ImageOwnerType.Park,
             ImageCategory.Park,
             cancellationToken);
+        HashSet<string> itemIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
+            this.imageRepository,
+            ImageOwnerType.ParkItem,
+            ImageCategory.ParkItem,
+            cancellationToken);
+        IReadOnlyCollection<ParkItem> publicItems = await ParkItemListsSitemapSectionProvider.LoadPublicItemsAsync(
+            this.parkItemRepository,
+            cancellationToken);
+        Dictionary<string, DateTime?> itemImageLastModifiedByParkId = BuildItemImageLastModifiedByParkId(publicItems, itemIdsWithPublishedImages);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in publicParks)
         {
-            if (!parkIdsWithPublishedImages.Contains(park.Id!))
+            bool hasDirectImages = parkIdsWithPublishedImages.Contains(park.Id!);
+            bool hasItemImages = itemImageLastModifiedByParkId.ContainsKey(park.Id!);
+            if (!hasDirectImages && !hasItemImages)
             {
                 continue;
             }
 
             string slug = SeoSlugService.ToSlug(park.Name, "park");
+            DateTime? lastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(
+                park.UpdatedAtUtc,
+                itemImageLastModifiedByParkId.GetValueOrDefault(park.Id!));
             foreach (string language in languages)
             {
-                urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc, "weekly", 0.72m));
+                urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/images", lastModifiedUtc, "weekly", 0.72m));
             }
         }
 
         return urls;
+    }
+
+    private static Dictionary<string, DateTime?> BuildItemImageLastModifiedByParkId(
+        IReadOnlyCollection<ParkItem> publicItems,
+        HashSet<string> itemIdsWithPublishedImages)
+    {
+        Dictionary<string, DateTime?> lastModifiedByParkId = new Dictionary<string, DateTime?>(StringComparer.OrdinalIgnoreCase);
+        foreach (ParkItem item in publicItems)
+        {
+            if (string.IsNullOrWhiteSpace(item.Id) || string.IsNullOrWhiteSpace(item.ParkId) || !itemIdsWithPublishedImages.Contains(item.Id))
+            {
+                continue;
+            }
+
+            DateTime? current = lastModifiedByParkId.GetValueOrDefault(item.ParkId);
+            if (!current.HasValue || item.UpdatedAtUtc > current.Value)
+            {
+                lastModifiedByParkId[item.ParkId] = item.UpdatedAtUtc;
+            }
+        }
+
+        return lastModifiedByParkId;
     }
 }
 

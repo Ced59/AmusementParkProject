@@ -1,6 +1,11 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { forkJoin } from 'rxjs';
 
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDistanceResponse, ParkDistanceTarget } from '@app/models/parks/park-distance';
 import { ParkDetailSummary, ParkDetailSummaryStats } from '@app/models/parks/park-detail-summary';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
@@ -27,6 +32,8 @@ import { ParkDetailViewModel } from '../models/park-detail-view.model';
 import {
   PARK_DETAIL_PARKS_PORT,
   PARK_DETAIL_VIDEOS_PORT,
+  PARK_DETAIL_IMAGES_PORT,
+  ParkDetailImagesPort,
   ParkDetailParksPort,
   ParkDetailVideosPort
 } from './park-detail-data.ports';
@@ -40,6 +47,7 @@ export class ParkDetailStateFacade {
   private readonly weatherStateStore = new SignalScreenStateStore<ParkWeatherForecast>();
   private readonly currentLanguageSignal = signal('en');
   private readonly hasVideosSignal = signal(false);
+  private readonly hasImagesSignal = signal(false);
 
   public readonly state = this.screenStateStore.state;
   public readonly nearbyState = this.nearbyStateStore.state;
@@ -64,7 +72,8 @@ export class ParkDetailStateFacade {
         [],
         [],
         currentSummary.rating ?? null,
-        this.hasVideosSignal()
+        this.hasVideosSignal(),
+        this.hasImagesSignal()
       );
     });
   });
@@ -89,6 +98,7 @@ export class ParkDetailStateFacade {
   constructor(
     @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
     @Inject(PARK_DETAIL_VIDEOS_PORT) private readonly videosApiService: ParkDetailVideosPort,
+    @Inject(PARK_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkDetailImagesPort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly textTruncator: NaturalTextTruncatorService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
@@ -110,13 +120,16 @@ export class ParkDetailStateFacade {
     this.nearbyStateStore.setLoading(previousNearbyData);
     this.weatherStateStore.setLoading(previousWeatherData);
     this.hasVideosSignal.set(false);
+    this.hasImagesSignal.set(false);
 
     this.parksApiService.getParkDetailSummary(id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (summary: ParkDetailSummary) => {
         this.screenStateStore.setReady(summary);
+        this.hasImagesSignal.set(this.hasKnownImage(summary));
         this.loadNearbyParks(summary.park);
         this.loadWeather(summary.park);
         this.loadVideoAvailability(summary.park);
+        this.loadImageAvailability(summary);
       },
       error: (error: unknown) => {
         console.error('Error loading park detail summary', error);
@@ -179,6 +192,36 @@ export class ParkDetailStateFacade {
     });
   }
 
+  private loadImageAvailability(summary: ParkDetailSummary): void {
+    if (this.hasKnownImage(summary)) {
+      this.hasImagesSignal.set(true);
+      return;
+    }
+
+    const parkId: string | null = summary.park.id?.trim() ?? null;
+    if (!parkId) {
+      this.hasImagesSignal.set(false);
+      return;
+    }
+
+    forkJoin({
+      parkImages: this.imagesApiService.getImagesPage(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 1, anonymousHttpOptions()),
+      logoImages: this.imagesApiService.getImagesPage(ImageOwnerType.PARK, parkId, ImageCategory.LOGO, 1, 1, anonymousHttpOptions()),
+      itemImages: this.imagesApiService.getParkItemImagesByPark(parkId, 1, 1, anonymousHttpOptions())
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: { parkImages: PagedResult<ImageDto>; logoImages: PagedResult<ImageDto>; itemImages: PagedResult<ParkItemImageDto> }) => {
+        this.hasImagesSignal.set(
+          response.parkImages.pagination.totalItems > 0 ||
+          response.logoImages.pagination.totalItems > 0 ||
+          response.itemImages.pagination.totalItems > 0
+        );
+      },
+      error: () => {
+        this.hasImagesSignal.set(false);
+      }
+    });
+  }
+
   private loadNearbyParks(park: Park): void {
     const parkId: string | null = park.id?.trim() ?? null;
 
@@ -230,6 +273,10 @@ export class ParkDetailStateFacade {
       zones: [],
       unassigned: null
     };
+  }
+
+  private hasKnownImage(summary: ParkDetailSummary): boolean {
+    return !!summary.mainImage?.id || !!summary.park.currentLogoImageId?.trim();
   }
 
   private toCategoryCounts(stats: ParkDetailSummaryStats): ParkExplorerCount[] {

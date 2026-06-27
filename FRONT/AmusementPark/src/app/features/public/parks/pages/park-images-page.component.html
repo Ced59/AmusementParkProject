@@ -3,11 +3,17 @@
   [park]="park()"
   [photos]="photos()"
   [categories]="categories()"
+  [activeTab]="activeTab()"
+  [parkTabImageCount]="parkTabImageCount()"
+  [itemTabImageCount]="itemTabImageCount()"
+  [showItemTab]="showItemTab()"
   [totalImages]="totalImages()"
   [canLoadMore]="canLoadMore()"
   [loadingMore]="loadingMore()"
+  [itemImagesLoading]="itemImagesLoading()"
   [language]="currentLanguage()"
   [detailLink]="detailLink()"
   [itemsLink]="itemsLink()"
+  (tabSelected)="onTabSelected($event)"
   (loadMoreClicked)="onLoadMoreClicked()">
 </app-park-images-view>

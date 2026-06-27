@@ -93,6 +93,7 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Assert.NotNull(result.Value);
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/rankings");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/rankings");
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/images" && url.LastModifiedUtc == new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/images" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
@@ -102,11 +103,72 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos/video-item-1/front-row" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park-manufacturer/manufacturer-visible/visible-maker");
         Assert.DoesNotContain(result.Value, static url => url.RelativePath == "/fr/park-manufacturer/manufacturer-hidden/hidden-maker");
+        Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/images");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/weather");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale/images");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/videos/video-park-1/park-tour");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale/videos/video-item-1/front-row");
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkOperatorRepository.VerifyAll();
+        parkFounderRepository.VerifyAll();
+        attractionManufacturerRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        videoRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenOnlyParkItemHasPublishedImage_ShouldIncludeParentParkImagesUrl()
+    {
+        CancellationToken cancellationToken = new CancellationTokenSource().Token;
+        Park parentPark = new Park
+        {
+            Id = "park-1",
+            Name = "Visible Park",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            UpdatedAtUtc = new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc),
+        };
+        ParkItem publicItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Attraction familiale",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            UpdatedAtUtc = new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc),
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOperatorRepository> parkOperatorRepository = new Mock<IParkOperatorRepository>(MockBehavior.Strict);
+        Mock<IParkFounderRepository> parkFounderRepository = new Mock<IParkFounderRepository>(MockBehavior.Strict);
+        Mock<IAttractionManufacturerRepository> attractionManufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = CreateImageRepository(
+            CreateImage("image-item-1", ImageOwnerType.ParkItem, "item-1", ImageCategory.ParkItem));
+        Mock<IVideoRepository> videoRepository = CreateVideoRepository();
+        SetupPublicSitemapParks(parkRepository, new[] { parentPark });
+        SetupPublicSitemapItems(parkItemRepository, new[] { publicItem });
+        parkOperatorRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<ParkOperator>());
+        parkFounderRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<ParkFounder>());
+        attractionManufacturerRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<AttractionManufacturer>());
+        GetPublicSitemapSeedQueryHandler handler = new GetPublicSitemapSeedQueryHandler(
+            parkRepository.Object,
+            parkItemRepository.Object,
+            parkOperatorRepository.Object,
+            parkFounderRepository.Object,
+            attractionManufacturerRepository.Object,
+            imageRepository.Object,
+            videoRepository.Object);
+
+        ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>> result = await handler.HandleAsync(
+            new GetPublicSitemapSeedQuery(new[] { "fr" }),
+            cancellationToken);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/images" && url.LastModifiedUtc == new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/images" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
         parkOperatorRepository.VerifyAll();
@@ -283,7 +345,17 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
             return false;
         }
 
+        if (!string.IsNullOrWhiteSpace(criteria.OwnerId) && !string.Equals(image.OwnerId, criteria.OwnerId.Trim(), StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
         if (criteria.IsPublished.HasValue && image.IsPublished != criteria.IsPublished.Value)
+        {
+            return false;
+        }
+
+        if (criteria.OwnerIds is not null && !criteria.OwnerIds.Contains(image.OwnerId, StringComparer.OrdinalIgnoreCase))
         {
             return false;
         }

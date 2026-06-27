@@ -3020,6 +3020,7 @@
       "openItem": "Detailpagina van {{name}} openen",
       "categories": {
         "gallery": "Park ? Galerij",
+        "logo": "Logo",
         "entrance": "Parkingang",
         "parking": "Parking / toegang",
         "transport": "Vervoer / shuttles",
@@ -3063,10 +3064,18 @@
       "errorTitle": "Afbeeldingen niet beschikbaar",
       "errorMessage": "De afbeeldingen van dit park kunnen momenteel niet worden geladen.",
       "backToPark": "Terug naar {{name}}",
+      "tabs": {
+        "label": "Bronnen van parkbeelden",
+        "park": "Parkfoto's",
+        "items": "Foto's van plekken"
+      },
+      "loadingItemsTitle": "Foto's van plekken laden",
+      "loadingItemsMessage": "De foto's van plekken in {{name}} worden geladen.",
       "loadMore": "Meer afbeeldingen laden",
       "loadingMore": "Laden…",
       "emptyTitle": "Geen gepubliceerde afbeeldingen",
-      "emptyMessage": "Er zijn nog geen gepubliceerde afbeeldingen beschikbaar voor {{name}}."
+      "emptyMessage": "Er zijn nog geen gepubliceerde afbeeldingen beschikbaar voor {{name}}.",
+      "emptyItemsMessage": "Er zijn nog geen gepubliceerde foto's van plekken beschikbaar voor {{name}}."
     },
     "mapPage": {
       "kicker": "Parkkaart",

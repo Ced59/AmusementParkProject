@@ -77,6 +77,18 @@ describe('ImagesApiService', () => {
     request.flush({ data: [{ id: 'img-1' }] });
   });
 
+  it('gets park item images for a park with pagination params', () => {
+    service.getParkItemImagesByPark('park-1', 3, 12).subscribe((page) => {
+      expect(page.items).toEqual([{ image: { id: 'item-img-1' }, item: { id: 'item-1' } } as never]);
+    });
+
+    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}images/parks/park-1/park-items`);
+    expect(request.request.method).toBe('GET');
+    expect(request.request.params.get('page')).toBe('3');
+    expect(request.request.params.get('size')).toBe('12');
+    request.flush({ data: [{ image: { id: 'item-img-1' }, item: { id: 'item-1' } }] });
+  });
+
   it('builds image urls from ids and normalizes supported image paths', () => {
     expect(service.buildImageUrl('img-1')).toBe(`${environment.imagesBaseUrl}/img-1`);
     expect(service.buildImageUrl('img-1', { width: 640 })).toBe(`${environment.imagesBaseUrl}/img-1?width=640&v=2`);

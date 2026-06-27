@@ -10,6 +10,7 @@ import { PageStateComponent } from '@shared/components/page-state/page-state.com
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselComponent, UiPhotoCarouselImage } from '@ui/media';
+import { ParkImagesGalleryTab } from '../models/park-images-view.model';
 
 @Component({
   selector: 'app-park-images-view',
@@ -33,13 +34,19 @@ export class ParkImagesViewComponent {
   @Input() park: Park | null = null;
   @Input() photos: UiPhotoCarouselImage[] = [];
   @Input() categories: UiPhotoCarouselCategoryOption[] = [];
+  @Input() activeTab: ParkImagesGalleryTab = 'park';
+  @Input() parkTabImageCount: number = 0;
+  @Input() itemTabImageCount: number = 0;
+  @Input() showItemTab: boolean = false;
   @Input() totalImages: number = 0;
   @Input() canLoadMore: boolean = false;
   @Input() loadingMore: boolean = false;
+  @Input() itemImagesLoading: boolean = false;
   @Input() language: string = 'en';
   @Input() detailLink: string[] | null = null;
   @Input() itemsLink: string[] | null = null;
 
+  @Output() tabSelected: EventEmitter<ParkImagesGalleryTab> = new EventEmitter<ParkImagesGalleryTab>();
   @Output() loadMoreClicked: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private readonly contextualBlockRegistry: AdminContextualBlockRegistryService) {
@@ -47,6 +54,10 @@ export class ParkImagesViewComponent {
 
   loadMore(): void {
     this.loadMoreClicked.emit();
+  }
+
+  selectTab(tab: ParkImagesGalleryTab): void {
+    this.tabSelected.emit(tab);
   }
 
   protected getImagesContextualBlock(currentPark: Park): AdminContextualBlockInstance | null {

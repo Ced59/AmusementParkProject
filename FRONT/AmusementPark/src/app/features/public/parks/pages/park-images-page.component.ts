@@ -23,9 +23,14 @@ export class ParkImagesPageComponent implements OnInit {
   protected readonly park = this.stateFacade.park;
   protected readonly photos = this.stateFacade.photos;
   protected readonly categories = this.stateFacade.categories;
+  protected readonly activeTab = this.stateFacade.activeTab;
+  protected readonly parkTabImageCount = this.stateFacade.parkTabImageCount;
+  protected readonly itemTabImageCount = this.stateFacade.itemTabImageCount;
+  protected readonly showItemTab = this.stateFacade.showItemTab;
   protected readonly totalImages = this.stateFacade.totalImages;
   protected readonly canLoadMore = this.stateFacade.canLoadMore;
   protected readonly loadingMore = this.stateFacade.loadingMore;
+  protected readonly itemImagesLoading = this.stateFacade.itemImagesLoading;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
   protected readonly itemsLink = signal<string[] | null>(null);
@@ -62,7 +67,7 @@ export class ParkImagesPageComponent implements OnInit {
         this.currentLanguage(),
         this.router.url,
         this.totalImages(),
-        this.photos()[0]?.imageId ?? null
+        this.stateFacade.socialImageId()
       );
     });
   }
@@ -97,5 +102,9 @@ export class ParkImagesPageComponent implements OnInit {
 
   onLoadMoreClicked(): void {
     this.stateFacade.loadNextPage();
+  }
+
+  onTabSelected(tab: 'park' | 'items'): void {
+    this.stateFacade.selectTab(tab);
   }
 }

@@ -231,6 +231,7 @@
       "openItem": "Open {{name}} detail page",
       "categories": {
         "gallery": "Park ? Gallery",
+        "logo": "Logo",
         "entrance": "Park entrance",
         "parking": "Parking / access",
         "transport": "Transport / shuttles",
@@ -274,10 +275,18 @@
       "errorTitle": "Images unavailable",
       "errorMessage": "The images for this park cannot be loaded right now.",
       "backToPark": "Back to {{name}}",
+      "tabs": {
+        "label": "Park image sources",
+        "park": "Park photos",
+        "items": "Place photos"
+      },
+      "loadingItemsTitle": "Loading place photos",
+      "loadingItemsMessage": "The place photos for {{name}} are being loaded.",
       "loadMore": "Load more images",
       "loadingMore": "Loading…",
       "emptyTitle": "No published images",
-      "emptyMessage": "No published image is available for {{name}} yet."
+      "emptyMessage": "No published image is available for {{name}} yet.",
+      "emptyItemsMessage": "No published place photo is available for {{name}} yet."
     },
     "mapPage": {
       "kicker": "Park map",

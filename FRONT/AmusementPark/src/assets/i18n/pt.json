@@ -3020,6 +3020,7 @@
       "openItem": "Abrir a ficha de {{name}}",
       "categories": {
         "gallery": "Parque ? Galeria",
+        "logo": "Logo",
         "entrance": "Entrada do parque",
         "parking": "Estacionamento / acesso",
         "transport": "Transportes / shuttles",
@@ -3063,10 +3064,18 @@
       "errorTitle": "Imagens indisponíveis",
       "errorMessage": "Não é possível carregar as imagens deste parque neste momento.",
       "backToPark": "Voltar a {{name}}",
+      "tabs": {
+        "label": "Vista da galeria",
+        "park": "Fotos do parque",
+        "items": "Fotos dos locais"
+      },
       "loadMore": "Carregar mais imagens",
       "loadingMore": "A carregar…",
+      "loadingItemsTitle": "A carregar fotos dos locais",
+      "loadingItemsMessage": "A preparar as fotos dos locais de {{name}}.",
       "emptyTitle": "Sem imagens publicadas",
-      "emptyMessage": "Ainda não há imagens publicadas disponíveis para {{name}}."
+      "emptyMessage": "Ainda não há imagens publicadas disponíveis para {{name}}.",
+      "emptyItemsMessage": "Ainda nao ha fotos publicadas dos locais disponiveis para {{name}}."
     },
     "mapPage": {
       "kicker": "Mapa do parque",
