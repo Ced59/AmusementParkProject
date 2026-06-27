@@ -30,9 +30,16 @@ import {
   AdminFieldModeGpsStatus,
   AdminFieldModeLocationKey,
   AdminFieldModePhotoCategoryOption,
+  AdminFieldModePhotoInspection,
+  AdminFieldModePhotoInspectionStatus,
   AdminFieldModePhotoSelection,
   AdminFieldModePosition
 } from '../models/admin-field-mode.model';
+
+interface ImageDimensions {
+  width: number;
+  height: number;
+}
 
 @Injectable()
 export class AdminFieldModeActionsFacade {
@@ -43,6 +50,7 @@ export class AdminFieldModeActionsFacade {
   private readonly positionSignal = signal<AdminFieldModePosition | null>(null);
   private readonly photoPositionSignal = signal<AdminFieldModePosition | null>(null);
   private readonly photoSelectionsSignal = signal<AdminFieldModePhotoSelection[]>([]);
+  private readonly photoInspectionsSignal = signal<AdminFieldModePhotoInspection[]>([]);
   private readonly photoCategorySlugSignal = signal<string>(ADMIN_FIELD_MODE_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly photoDescriptionSignal = signal('');
   private readonly locationKeySignal = signal<AdminFieldModeLocationKey>('general');
@@ -56,6 +64,7 @@ export class AdminFieldModeActionsFacade {
   public readonly photoPosition: Signal<AdminFieldModePosition | null> = this.photoPositionSignal.asReadonly();
   public readonly selectedFile: Signal<File | null> = computed(() => this.photoSelectionsSignal()[0]?.file ?? null);
   public readonly selectedPhotos: Signal<AdminFieldModePhotoSelection[]> = this.photoSelectionsSignal.asReadonly();
+  public readonly photoInspections: Signal<AdminFieldModePhotoInspection[]> = this.photoInspectionsSignal.asReadonly();
   public readonly photoCategorySlug: Signal<string> = this.photoCategorySlugSignal.asReadonly();
   public readonly photoDescription: Signal<string> = this.photoDescriptionSignal.asReadonly();
   public readonly locationKey: Signal<AdminFieldModeLocationKey> = this.locationKeySignal.asReadonly();
@@ -93,29 +102,38 @@ export class AdminFieldModeActionsFacade {
     }
 
     const validSelections: AdminFieldModePhotoSelection[] = [];
+    const inspections: AdminFieldModePhotoInspection[] = [];
     let invalidImageCount = 0;
     let missingGpsCount = 0;
 
     for (const file of files) {
+      const selectionId: string = `field-photo-${AdminFieldModeActionsFacade.nextPhotoSelectionId++}`;
       const validation = this.imageUploadSecurityService.validateImageFile(file);
+      const imageDimensions: ImageDimensions | null = validation.isValid ? await this.readImageDimensions(file) : null;
+
       if (!validation.isValid) {
         invalidImageCount++;
+        inspections.push(this.createPhotoInspection(selectionId, file, 'invalid', imageDimensions, null));
         continue;
       }
 
       const photoPosition: AdminFieldModePosition | null = await this.photoGpsService.readPosition(file);
       if (!photoPosition) {
         missingGpsCount++;
+        inspections.push(this.createPhotoInspection(selectionId, file, 'missingGps', imageDimensions, null));
         continue;
       }
 
+      inspections.push(this.createPhotoInspection(selectionId, file, 'accepted', imageDimensions, photoPosition));
       validSelections.push({
-        id: `field-photo-${AdminFieldModeActionsFacade.nextPhotoSelectionId++}`,
+        id: selectionId,
         file,
         position: photoPosition,
         previewUrl: URL.createObjectURL(file)
       });
     }
+
+    this.photoInspectionsSignal.set(inspections);
 
     if (validSelections.length === 0) {
       this.statusMessageKeySignal.set(missingGpsCount > 0 ? 'admin.fieldMode.messages.photoMissingGps' : 'admin.fieldMode.messages.invalidImage');
@@ -146,6 +164,7 @@ export class AdminFieldModeActionsFacade {
     URL.revokeObjectURL(selection.previewUrl);
     const selections: AdminFieldModePhotoSelection[] = this.photoSelectionsSignal().filter((item: AdminFieldModePhotoSelection) => item.id !== selectionId);
     this.photoSelectionsSignal.set(selections);
+    this.photoInspectionsSignal.set(this.photoInspectionsSignal().filter((item: AdminFieldModePhotoInspection) => item.id !== selectionId));
     this.photoPositionSignal.set(selections[0]?.position ?? null);
   }
 
@@ -431,6 +450,7 @@ export class AdminFieldModeActionsFacade {
     }
 
     this.photoSelectionsSignal.set([]);
+    this.photoInspectionsSignal.set([]);
     this.photoPositionSignal.set(null);
   }
 
@@ -487,6 +507,50 @@ export class AdminFieldModeActionsFacade {
     }
 
     return fallback;
+  }
+
+  private createPhotoInspection(
+    id: string,
+    file: File,
+    status: AdminFieldModePhotoInspectionStatus,
+    dimensions: ImageDimensions | null,
+    position: AdminFieldModePosition | null
+  ): AdminFieldModePhotoInspection {
+    return {
+      id,
+      fileName: file.name,
+      sizeInBytes: file.size,
+      contentType: file.type || null,
+      lastModified: Number.isFinite(file.lastModified) ? file.lastModified : null,
+      width: dimensions?.width ?? null,
+      height: dimensions?.height ?? null,
+      gpsDetected: position !== null,
+      latitude: position?.latitude ?? null,
+      longitude: position?.longitude ?? null,
+      status
+    };
+  }
+
+  private readImageDimensions(file: File): Promise<ImageDimensions | null> {
+    return new Promise((resolve: (value: ImageDimensions | null) => void): void => {
+      const image = new Image();
+      const objectUrl: string = URL.createObjectURL(file);
+      const cleanup = (): void => URL.revokeObjectURL(objectUrl);
+
+      image.onload = (): void => {
+        const width: number = image.naturalWidth || image.width;
+        const height: number = image.naturalHeight || image.height;
+        cleanup();
+        resolve(width > 0 && height > 0 ? { width, height } : null);
+      };
+
+      image.onerror = (): void => {
+        cleanup();
+        resolve(null);
+      };
+
+      image.src = objectUrl;
+    });
   }
 
   private fieldText(fr: string, en: string): string {
