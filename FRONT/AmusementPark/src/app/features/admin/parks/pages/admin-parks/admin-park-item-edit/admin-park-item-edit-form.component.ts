@@ -23,7 +23,9 @@ import {
   AdminParkItemTypeOption,
   AttractionLocationKey,
   AttractionLocationOption,
-  AdminParkItemPhotoCategoryOption
+  AdminParkItemPhotoCategoryOption,
+  AdminParkItemPhotoUploadPreview,
+  AdminParkItemPhotoUploadProgress
 } from '@features/admin/park-items/models/admin-park-item-edit.model';
 import {
   AdminParkItemSequentialNavigationState,
@@ -109,12 +111,17 @@ export class AdminParkItemEditFormComponent {
   @Input() currentPhoto: OwnedImageItem | null = null;
   @Input() allowMultiplePhotoUpload: boolean = true;
   @Input() selectedPhotoCount: number = 0;
+  @Input() selectedPhotoPreviews: AdminParkItemPhotoUploadPreview[] = [];
+  @Input() selectedPhotoAnalysisPending: boolean = false;
+  @Input() selectedPhotoMissingGeoLocationCount: number = 0;
   @Input() newPhotoDescription: string = '';
   @Input() remotePhotoSourceUrl: string = '';
   @Input() photoWithWatermark: boolean = true;
   @Input() remotePhotoWithWatermark: boolean = false;
   @Input() selectedPhotoCategorySlug: string = 'park-item-gallery';
   @Input() photoCategoryOptions: AdminParkItemPhotoCategoryOption[] = [];
+  @Input() photoCategoryLabelKeyByTagId: Record<string, string> = {};
+  @Input() photoUploadProgress: AdminParkItemPhotoUploadProgress | null = null;
   @Input() photosUploading: boolean = false;
   @Input() photosLoading: boolean = false;
   @Input() attractionPhotos: OwnedImageItem[] = [];
@@ -148,6 +155,7 @@ export class AdminParkItemEditFormComponent {
   @Output() useGeneralLocation: EventEmitter<void> = new EventEmitter<void>();
   @Output() clearSelectedLocation: EventEmitter<void> = new EventEmitter<void>();
   @Output() photoFileSelected: EventEmitter<Event> = new EventEmitter<Event>();
+  @Output() selectedPhotoRemoved: EventEmitter<string> = new EventEmitter<string>();
   @Output() newPhotoDescriptionChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() remotePhotoSourceUrlChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() photoWithWatermarkChange: EventEmitter<boolean> = new EventEmitter<boolean>();

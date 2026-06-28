@@ -12,8 +12,8 @@ import { AttractionLocationPoint } from '@app/models/parks/attraction-location-p
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ImageUploadSecurityService } from '@shared/utils/security';
+import { PhotoGpsMetadataService } from '@shared/utils/images/photo-gps-metadata.service';
 
-import { AdminFieldModePhotoGpsService } from '../services/admin-field-mode-photo-gps.service';
 import {
   ADMIN_FIELD_MODE_GEOLOCATION_PORT,
   ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT,
@@ -69,7 +69,7 @@ export class AdminFieldModeActionsFacade {
     @Inject(ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: AdminFieldModeParkItemsApiServicePort,
     @Inject(ADMIN_FIELD_MODE_GEOLOCATION_PORT) private readonly positionService: AdminFieldModeGeolocationPort,
     private readonly imageUploadSecurityService: ImageUploadSecurityService,
-    private readonly photoGpsService: AdminFieldModePhotoGpsService,
+    private readonly photoGpsService: PhotoGpsMetadataService,
     private readonly toastMessageService: ToastMessageService,
     private readonly translateService: TranslateService
   ) {

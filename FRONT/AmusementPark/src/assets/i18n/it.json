@@ -854,6 +854,13 @@
           "categoryLabel": "Categoria foto",
           "descriptionLabel": "Descrizione",
           "categorized": "Categorizzato",
+          "uncategorized": "Senza categoria",
+          "metadataAnalyzing": "Controllo metadati",
+          "metadataGeoFound": "GPS rilevato",
+          "metadataGeoMissing": "Nessun GPS",
+          "metadataGeoMissingWarning": "{{count}} foto selezionata/e non contengono coordinate GPS.",
+          "removeSelectedPhoto": "Rimuovi foto selezionata",
+          "uploadProgress": "{{completed}} / {{total}} foto caricate",
           "categories": {
             "gallery": "Galleria",
             "entrance": "Ingresso",
@@ -862,7 +869,7 @@
             "signage": "Segnaletica",
             "restrictionSign": "Cartello restrizioni",
             "waitTimeSign": "Cartello tempi di attesa",
-            "accessibilitySign": "Accessibilit?",
+            "accessibilitySign": "Accessibilità",
             "queue": "Coda",
             "station": "Stazione",
             "vehicle": "Veicolo / treno",
@@ -1100,7 +1107,7 @@
         "descriptionLabel": "Descrizione",
         "categorized": "Categorizzato",
         "categories": {
-          "gallery": "Parco ? Galleria",
+          "gallery": "Parco - Galleria",
           "entrance": "Ingresso del parco",
           "parking": "Parcheggio / accesso",
           "transport": "Trasporti / navette",
@@ -1116,7 +1123,7 @@
           "shop": "Negozi",
           "services": "Servizi",
           "hotel": "Hotel / alloggi",
-          "accessibility": "Accessibilit?",
+          "accessibility": "Accessibilità",
           "safety": "Sicurezza",
           "signage": "Segnaletica"
         }
@@ -2616,7 +2623,7 @@
         "signage": "Segnaletica",
         "restrictionSign": "Cartello restrizioni",
         "waitTimeSign": "Cartello tempi di attesa",
-        "accessibilitySign": "Accessibilit?",
+        "accessibilitySign": "Accessibilità",
         "queue": "Coda",
         "station": "Stazione",
         "vehicle": "Veicolo / treno",
@@ -3019,7 +3026,7 @@
       "current": "Attuale",
       "openItem": "Apri la scheda di {{name}}",
       "categories": {
-        "gallery": "Parco ? Galleria",
+        "gallery": "Parco - Galleria",
         "logo": "Logo",
         "entrance": "Ingresso del parco",
         "parking": "Parcheggio / accesso",
@@ -3036,7 +3043,7 @@
         "shop": "Negozi",
         "services": "Servizi",
         "hotel": "Hotel / alloggi",
-        "accessibility": "Accessibilit?",
+        "accessibility": "Accessibilità",
         "safety": "Sicurezza",
         "signage": "Segnaletica"
       },

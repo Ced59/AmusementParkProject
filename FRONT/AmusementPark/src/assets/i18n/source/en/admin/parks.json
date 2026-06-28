@@ -182,6 +182,13 @@
           "categoryLabel": "Photo category",
           "descriptionLabel": "Description",
           "categorized": "Categorized",
+          "uncategorized": "Uncategorized",
+          "metadataAnalyzing": "Checking metadata",
+          "metadataGeoFound": "GPS detected",
+          "metadataGeoMissing": "No GPS",
+          "metadataGeoMissingWarning": "{{count}} selected photo(s) do not contain GPS coordinates.",
+          "removeSelectedPhoto": "Remove selected photo",
+          "uploadProgress": "{{completed}} / {{total}} photo(s) uploaded",
           "categories": {
             "gallery": "Gallery",
             "entrance": "Entrance",
@@ -428,7 +435,7 @@
         "descriptionLabel": "Description",
         "categorized": "Categorized",
         "categories": {
-          "gallery": "Park ? Gallery",
+          "gallery": "Park - Gallery",
           "entrance": "Park entrance",
           "parking": "Parking / access",
           "transport": "Transport / shuttles",

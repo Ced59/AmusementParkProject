@@ -35,6 +35,22 @@ export interface AdminParkItemPhotoCategoryOption {
   labelEn: string;
 }
 
+export interface AdminParkItemPhotoUploadPreview {
+  id: string;
+  fileName: string;
+  sizeInBytes: number;
+  previewUrl: string;
+  isAnalyzing: boolean;
+  hasGeoLocation: boolean | null;
+  latitude: number | null;
+  longitude: number | null;
+}
+
+export interface AdminParkItemPhotoUploadProgress {
+  completed: number;
+  total: number;
+}
+
 export const PARK_ITEM_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminParkItemPhotoCategoryOption> = PARK_ITEM_PHOTO_CATEGORIES.map((
   category: ParkItemPhotoCategoryDefinition
 ): AdminParkItemPhotoCategoryOption => ({

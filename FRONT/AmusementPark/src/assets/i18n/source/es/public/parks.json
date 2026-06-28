@@ -230,7 +230,7 @@
       "current": "Actual",
       "openItem": "Abrir la ficha de {{name}}",
       "categories": {
-        "gallery": "Parque ? Galer?a",
+        "gallery": "Parque - Galería",
         "logo": "Logo",
         "entrance": "Entrada del parque",
         "parking": "Aparcamiento / acceso",
@@ -239,7 +239,7 @@
         "map": "Mapa oficial del parque",
         "atmosphere": "Ambiente",
         "event": "Eventos",
-        "show": "Espect?culos",
+        "show": "Espectáculos",
         "halloween": "Halloween",
         "christmas": "Navidad",
         "easter": "Pascua",
@@ -249,7 +249,7 @@
         "hotel": "Hoteles / alojamiento",
         "accessibility": "Accesibilidad",
         "safety": "Seguridad",
-        "signage": "Se?alizaci?n"
+        "signage": "Señalización"
       },
       "controls": {
         "category": "Categoría de foto",

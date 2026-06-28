@@ -30,6 +30,7 @@ The project must preserve its current architecture, SOLID principles, separation
 - Respect the current architecture and naming conventions.
 - Do not introduce shortcuts that bypass validation, authorization, domain rules, or application services.
 - Do not remove files unless the deletion is clearly justified and listed in the PR summary.
+- When extracting shared frontend components or services, use the shared implementation directly instead of keeping no-op wrappers around the old local abstraction.
 - Do not silently change public contracts, route URLs, DTO shapes, database behavior, localization behavior, or SEO behavior.
 - Prefer incremental, testable changes over broad rewrites.
 - Add or update tests for every behavior change.
