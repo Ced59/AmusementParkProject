@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { AdminFieldModePosition } from '../models/admin-field-mode.model';
+export interface PhotoGpsPosition {
+  latitude: number;
+  longitude: number;
+  accuracy: number | null;
+  capturedAt: number;
+}
 
 interface GpsIfdValues {
   latitudeRef?: string;
@@ -12,14 +17,14 @@ interface GpsIfdValues {
 @Injectable({
   providedIn: 'root'
 })
-export class AdminFieldModePhotoGpsService {
-  async readPosition(file: File): Promise<AdminFieldModePosition | null> {
+export class PhotoGpsMetadataService {
+  async readPosition(file: File): Promise<PhotoGpsPosition | null> {
     if (!file.type.toLowerCase().includes('jpeg') && !file.name.toLowerCase().match(/\.(jpe?g)$/)) {
       return null;
     }
 
     const buffer: ArrayBuffer = await file.arrayBuffer();
-    const view = new DataView(buffer);
+    const view: DataView = new DataView(buffer);
     const tiffStart: number | null = this.findExifTiffStart(view);
     if (tiffStart === null) {
       return null;
@@ -61,7 +66,7 @@ export class AdminFieldModePhotoGpsService {
       return null;
     }
 
-    let offset = 2;
+    let offset: number = 2;
     while (offset + 4 <= view.byteLength) {
       if (view.getUint8(offset) !== 0xff) {
         return null;
@@ -117,7 +122,7 @@ export class AdminFieldModePhotoGpsService {
     }
 
     const entryCount: number = view.getUint16(absoluteIfdOffset, littleEndian);
-    for (let index = 0; index < entryCount; index += 1) {
+    for (let index: number = 0; index < entryCount; index += 1) {
       const entryOffset: number = absoluteIfdOffset + 2 + index * 12;
       if (entryOffset + 12 > view.byteLength) {
         return null;
@@ -141,7 +146,7 @@ export class AdminFieldModePhotoGpsService {
     }
 
     const entryCount: number = view.getUint16(absoluteIfdOffset, littleEndian);
-    for (let index = 0; index < entryCount; index += 1) {
+    for (let index: number = 0; index < entryCount; index += 1) {
       const entryOffset: number = absoluteIfdOffset + 2 + index * 12;
       if (entryOffset + 12 > view.byteLength) {
         return result;
@@ -163,8 +168,8 @@ export class AdminFieldModePhotoGpsService {
   }
 
   private readAscii(view: DataView, offset: number, maxLength: number): string {
-    let value = '';
-    for (let index = 0; index < maxLength && offset + index < view.byteLength; index += 1) {
+    let value: string = '';
+    for (let index: number = 0; index < maxLength && offset + index < view.byteLength; index += 1) {
       const charCode: number = view.getUint8(offset + index);
       if (charCode === 0) {
         break;

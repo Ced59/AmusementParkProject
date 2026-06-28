@@ -1,6 +1,20 @@
 {
-  "version": "2.7.11",
+  "version": "2.7.12",
   "history": [
+    {
+      "version": "2.7.12",
+      "releasedAt": "2026-06-28",
+      "labels": {
+        "fr": "L'administration des photos devient plus claire.",
+        "en": "Photo administration becomes clearer.",
+        "de": "Die Fotoverwaltung wird klarer.",
+        "nl": "Fotobeheer wordt duidelijker.",
+        "it": "La gestione delle foto diventa piu chiara.",
+        "es": "La gestion de fotos queda mas clara.",
+        "pl": "Zarzadzanie zdjeciami jest czytelniejsze.",
+        "pt": "A administracao de fotos fica mais clara."
+      }
+    },
     {
       "version": "2.7.11",
       "releasedAt": "2026-06-27",

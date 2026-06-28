@@ -20,15 +20,30 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
+import { PhotoGpsMetadataService, PhotoGpsPosition } from '@shared/utils/images/photo-gps-metadata.service';
 import { ImageUploadSecurityService } from '@shared/utils/security';
-import { AdminParkItemPhotoCategoryOption, PARK_ITEM_PHOTO_CATEGORY_OPTIONS } from '../models/admin-park-item-edit.model';
+import {
+  AdminParkItemPhotoCategoryOption,
+  AdminParkItemPhotoUploadPreview,
+  AdminParkItemPhotoUploadProgress,
+  PARK_ITEM_PHOTO_CATEGORY_OPTIONS
+} from '../models/admin-park-item-edit.model';
 
 import {
   ADMIN_PARK_ITEM_PHOTOS_STATE_IMAGES_API_SERVICE_PORT,
   AdminParkItemPhotosStateImagesApiServicePort
 } from './admin-park-item-photos-state-data.ports';
+
+interface AdminParkItemPhotoFileSelection extends AdminParkItemPhotoUploadPreview {
+  file: File;
+  geoLocation: ImageGeoLocation | null;
+}
+
 @Injectable()
 export class AdminParkItemPhotosStateFacade {
+  private static nextPhotoSelectionId: number = 0;
+  private static readonly concurrentUploadLimit: number = 2;
+
   private readonly currentLanguageSignal = signal('en');
   private readonly attractionPhotosSignal = signal<OwnedImageItem[]>([]);
   private readonly currentPhotoSignal = signal<OwnedImageItem | null>(null);
@@ -36,13 +51,14 @@ export class AdminParkItemPhotosStateFacade {
   private readonly photosUploadingSignal = signal(false);
   private readonly photosPageSignal = signal(0);
   private readonly photosPageSizeSignal = signal(8);
-  private readonly selectedPhotoFilesSignal = signal<File[]>([]);
+  private readonly selectedPhotoSelectionsSignal = signal<AdminParkItemPhotoFileSelection[]>([]);
   private readonly newPhotoDescriptionSignal = signal('');
   private readonly remotePhotoSourceUrlSignal = signal('');
   private readonly photoWithWatermarkSignal = signal(true);
   private readonly remotePhotoWithWatermarkSignal = signal(false);
   private readonly selectedPhotoCategorySlugSignal = signal(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly photoTagIdsBySlugSignal = signal<Record<string, string>>({});
+  private readonly photoUploadProgressSignal = signal<AdminParkItemPhotoUploadProgress | null>(null);
 
   public readonly attractionPhotos: Signal<OwnedImageItem[]> = this.attractionPhotosSignal.asReadonly();
   public readonly currentPhoto: Signal<OwnedImageItem | null> = this.currentPhotoSignal.asReadonly();
@@ -55,7 +71,41 @@ export class AdminParkItemPhotosStateFacade {
   public readonly remotePhotoWithWatermark: Signal<boolean> = this.remotePhotoWithWatermarkSignal.asReadonly();
   public readonly selectedPhotoCategorySlug: Signal<string> = this.selectedPhotoCategorySlugSignal.asReadonly();
   public readonly photoCategoryOptions: Signal<AdminParkItemPhotoCategoryOption[]> = signal([...PARK_ITEM_PHOTO_CATEGORY_OPTIONS]).asReadonly();
-  public readonly selectedPhotoCount: Signal<number> = computed(() => this.selectedPhotoFilesSignal().length);
+  public readonly selectedPhotoCount: Signal<number> = computed(() => this.selectedPhotoSelectionsSignal().length);
+  public readonly selectedPhotoPreviews: Signal<AdminParkItemPhotoUploadPreview[]> = computed(() => {
+    return this.selectedPhotoSelectionsSignal().map((selection: AdminParkItemPhotoFileSelection) => ({
+      id: selection.id,
+      fileName: selection.fileName,
+      sizeInBytes: selection.sizeInBytes,
+      previewUrl: selection.previewUrl,
+      isAnalyzing: selection.isAnalyzing,
+      hasGeoLocation: selection.hasGeoLocation,
+      latitude: selection.latitude,
+      longitude: selection.longitude
+    }));
+  });
+  public readonly selectedPhotoAnalysisPending: Signal<boolean> = computed(() => {
+    return this.selectedPhotoSelectionsSignal().some((selection: AdminParkItemPhotoFileSelection) => selection.isAnalyzing);
+  });
+  public readonly selectedPhotoMissingGeoLocationCount: Signal<number> = computed(() => {
+    return this.selectedPhotoSelectionsSignal().filter((selection: AdminParkItemPhotoFileSelection) => selection.hasGeoLocation === false).length;
+  });
+  public readonly photoUploadProgress: Signal<AdminParkItemPhotoUploadProgress | null> = this.photoUploadProgressSignal.asReadonly();
+  public readonly photoCategoryLabelKeyByTagId: Signal<Record<string, string>> = computed(() => {
+    const idsBySlug: Record<string, string> = this.photoTagIdsBySlugSignal();
+    const result: Record<string, string> = {};
+
+    for (const option of PARK_ITEM_PHOTO_CATEGORY_OPTIONS) {
+      result[option.slug] = option.labelKey;
+
+      const tagId: string | undefined = idsBySlug[option.slug];
+      if (tagId) {
+        result[tagId] = option.labelKey;
+      }
+    }
+
+    return result;
+  });
   public readonly pagedPhotos: Signal<OwnedImageItem[]> = computed(() => {
     const start: number = this.photosPageSignal() * this.photosPageSizeSignal();
     return this.attractionPhotosSignal().slice(start, start + this.photosPageSizeSignal());
@@ -66,6 +116,7 @@ export class AdminParkItemPhotosStateFacade {
     private readonly translateService: TranslateService,
     private readonly toastMessageService: ToastMessageService,
     private readonly imageUploadSecurityService: ImageUploadSecurityService,
+    private readonly photoGpsMetadataService: PhotoGpsMetadataService,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -81,13 +132,14 @@ export class AdminParkItemPhotosStateFacade {
     this.photosUploadingSignal.set(false);
     this.photosPageSignal.set(0);
     this.photosPageSizeSignal.set(8);
-    this.selectedPhotoFilesSignal.set([]);
+    this.clearSelectedPhotoSelection();
     this.newPhotoDescriptionSignal.set('');
     this.remotePhotoSourceUrlSignal.set('');
     this.photoWithWatermarkSignal.set(true);
     this.remotePhotoWithWatermarkSignal.set(false);
     this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
     this.photoTagIdsBySlugSignal.set({});
+    this.photoUploadProgressSignal.set(null);
   }
 
   loadPhotos(itemId: string): void {
@@ -113,7 +165,7 @@ export class AdminParkItemPhotosStateFacade {
     const inputElement: HTMLInputElement = event.target as HTMLInputElement;
 
     if (!inputElement.files || inputElement.files.length === 0) {
-      this.selectedPhotoFilesSignal.set([]);
+      this.clearSelectedPhotoSelection();
       return;
     }
 
@@ -128,8 +180,22 @@ export class AdminParkItemPhotosStateFacade {
       );
     }
 
-    this.selectedPhotoFilesSignal.set(validFiles);
+    this.setSelectedPhotoFiles(validFiles);
     inputElement.value = '';
+  }
+
+  removeSelectedPhoto(selectionId: string): void {
+    const selection: AdminParkItemPhotoFileSelection | undefined =
+      this.selectedPhotoSelectionsSignal().find((item: AdminParkItemPhotoFileSelection) => item.id === selectionId);
+
+    if (!selection) {
+      return;
+    }
+
+    URL.revokeObjectURL(selection.previewUrl);
+    this.selectedPhotoSelectionsSignal.set(
+      this.selectedPhotoSelectionsSignal().filter((item: AdminParkItemPhotoFileSelection) => item.id !== selectionId)
+    );
   }
 
   setNewPhotoDescription(description: string): void {
@@ -159,35 +225,53 @@ export class AdminParkItemPhotosStateFacade {
   }
 
   async uploadSelectedPhotos(itemId: string, itemName: string): Promise<void> {
-    if (this.selectedPhotoFilesSignal().length === 0 || this.photosUploadingSignal()) {
+    const selections: AdminParkItemPhotoFileSelection[] = [...this.selectedPhotoSelectionsSignal()];
+    if (selections.length === 0 || this.photosUploadingSignal() || this.selectedPhotoAnalysisPending()) {
       return;
     }
 
     this.photosUploadingSignal.set(true);
     await this.ensurePhotoCategoryTagsAsync();
-    const files: File[] = [...this.selectedPhotoFilesSignal()];
     const hadNoPhotoInitially: boolean = this.attractionPhotosSignal().length === 0;
     let uploadedCount: number = 0;
+    let failedCount: number = 0;
+    let completedCount: number = 0;
+    let nextIndex: number = 0;
+    this.photoUploadProgressSignal.set({ completed: 0, total: selections.length });
 
     try {
-      for (let index: number = 0; index < files.length; index++) {
-        const shouldSetCurrent: boolean = hadNoPhotoInitially && index === 0;
-        await this.uploadPhotoAsync(files[index], itemId, itemName, shouldSetCurrent);
-        uploadedCount++;
-      }
+      const uploadWorker = async (): Promise<void> => {
+        while (nextIndex < selections.length) {
+          const selectionIndex: number = nextIndex;
+          nextIndex++;
 
-      this.selectedPhotoFilesSignal.set([]);
+          const shouldSetCurrent: boolean = hadNoPhotoInitially && selectionIndex === 0;
+          try {
+            await this.uploadPhotoAsync(selections[selectionIndex], itemId, itemName, shouldSetCurrent);
+            uploadedCount++;
+          } catch (error: unknown) {
+            failedCount++;
+            console.error('Error uploading attraction image', error);
+          } finally {
+            completedCount++;
+            this.photoUploadProgressSignal.set({ completed: completedCount, total: selections.length });
+          }
+        }
+      };
+
+      const workers: Promise<void>[] = Array.from(
+        { length: Math.min(AdminParkItemPhotosStateFacade.concurrentUploadLimit, selections.length) },
+        () => uploadWorker()
+      );
+      await Promise.all(workers);
+
+      this.clearSelectedPhotoSelection();
       this.remotePhotoSourceUrlSignal.set('');
       this.newPhotoDescriptionSignal.set('');
       this.photoWithWatermarkSignal.set(true);
       this.remotePhotoWithWatermarkSignal.set(false);
       this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
-      this.photoTagIdsBySlugSignal.set({});
-      this.toastMessageService.add(
-        'success',
-        this.translateService.instant('admin.parks.items.saveMessages.successSummary'),
-        this.translateService.instant('admin.parks.items.photos.uploadSuccess', { count: uploadedCount })
-      );
+      this.showUploadResultMessage(uploadedCount, failedCount);
     } catch (error: unknown) {
       console.error('Error uploading attraction images', error);
       this.toastMessageService.add(
@@ -197,6 +281,7 @@ export class AdminParkItemPhotosStateFacade {
       );
     } finally {
       this.photosUploadingSignal.set(false);
+      this.photoUploadProgressSignal.set(null);
     }
   }
 
@@ -289,6 +374,69 @@ export class AdminParkItemPhotosStateFacade {
     });
   }
 
+  private setSelectedPhotoFiles(files: File[]): void {
+    this.clearSelectedPhotoSelection();
+
+    const selections: AdminParkItemPhotoFileSelection[] = files.map((file: File) => ({
+      id: `park-item-photo-${AdminParkItemPhotosStateFacade.nextPhotoSelectionId++}`,
+      file,
+      fileName: file.name,
+      sizeInBytes: file.size,
+      previewUrl: URL.createObjectURL(file),
+      isAnalyzing: true,
+      hasGeoLocation: null,
+      latitude: null,
+      longitude: null,
+      geoLocation: null
+    }));
+
+    this.selectedPhotoSelectionsSignal.set(selections);
+    void this.analyzeSelectedPhotoFilesAsync(selections);
+  }
+
+  private async analyzeSelectedPhotoFilesAsync(selections: AdminParkItemPhotoFileSelection[]): Promise<void> {
+    for (const selection of selections) {
+      try {
+        const position: PhotoGpsPosition | null = await this.photoGpsMetadataService.readPosition(selection.file);
+        this.updateSelectedPhotoSelection(selection.id, {
+          isAnalyzing: false,
+          hasGeoLocation: !!position,
+          latitude: position?.latitude ?? null,
+          longitude: position?.longitude ?? null,
+          geoLocation: position ? { latitude: position.latitude, longitude: position.longitude } : null
+        });
+      } catch (error: unknown) {
+        console.error('Error reading photo GPS metadata', error);
+        this.updateSelectedPhotoSelection(selection.id, {
+          isAnalyzing: false,
+          hasGeoLocation: false,
+          latitude: null,
+          longitude: null,
+          geoLocation: null
+        });
+      }
+    }
+  }
+
+  private updateSelectedPhotoSelection(selectionId: string, patch: Partial<AdminParkItemPhotoFileSelection>): void {
+    const selections: AdminParkItemPhotoFileSelection[] = this.selectedPhotoSelectionsSignal();
+    if (!selections.some((selection: AdminParkItemPhotoFileSelection) => selection.id === selectionId)) {
+      return;
+    }
+
+    this.selectedPhotoSelectionsSignal.set(
+      selections.map((selection: AdminParkItemPhotoFileSelection) => selection.id === selectionId ? { ...selection, ...patch } : selection)
+    );
+  }
+
+  private clearSelectedPhotoSelection(): void {
+    for (const selection of this.selectedPhotoSelectionsSignal()) {
+      URL.revokeObjectURL(selection.previewUrl);
+    }
+
+    this.selectedPhotoSelectionsSignal.set([]);
+  }
+
   private ensurePhotoCategoryTags(): void {
     void this.ensurePhotoCategoryTagsAsync();
   }
@@ -348,16 +496,16 @@ export class AdminParkItemPhotosStateFacade {
     }));
   }
 
-  private async uploadPhotoAsync(file: File, itemId: string, itemName: string, setAsCurrent: boolean): Promise<void> {
+  private async uploadPhotoAsync(selection: AdminParkItemPhotoFileSelection, itemId: string, itemName: string, setAsCurrent: boolean): Promise<void> {
     const uploadedImage: UploadedImage = await firstValueFrom(
       this.imagesApiService.uploadImage(
-        file,
+        selection.file,
         ImageCategory.PARK_ITEM,
         this.photoWithWatermarkSignal(),
         itemName
       )
     );
-    const uploadedGeoLocation: ImageGeoLocation | null = this.resolveUploadedGeoLocation(uploadedImage);
+    const uploadedGeoLocation: ImageGeoLocation | null = this.resolveUploadedGeoLocation(uploadedImage) ?? selection.geoLocation;
     if (!uploadedGeoLocation) {
       this.showMissingGeoWarning();
     }
@@ -374,6 +522,23 @@ export class AdminParkItemPhotosStateFacade {
 
     const taggedImage: ImageDto = await this.applySelectedPhotoCategoryAsync(linkedImage, uploadedGeoLocation);
     this.upsertPhoto(this.toOwnedImageItem(taggedImage));
+  }
+
+  private showUploadResultMessage(uploadedCount: number, failedCount: number): void {
+    if (failedCount === 0) {
+      this.toastMessageService.add(
+        'success',
+        this.translateService.instant('admin.parks.items.saveMessages.successSummary'),
+        this.translateService.instant('admin.parks.items.photos.uploadSuccess', { count: uploadedCount })
+      );
+      return;
+    }
+
+    this.toastMessageService.add(
+      uploadedCount > 0 ? 'warn' : 'error',
+      this.translateService.instant('admin.parks.items.saveMessages.errorSummary'),
+      this.translateService.instant('admin.parks.items.photos.uploadError', { count: uploadedCount })
+    );
   }
 
   private resolveUploadedGeoLocation(uploadedImage: UploadedImage): ImageGeoLocation | null {

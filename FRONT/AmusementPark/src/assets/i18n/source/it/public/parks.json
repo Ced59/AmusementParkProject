@@ -230,7 +230,7 @@
       "current": "Attuale",
       "openItem": "Apri la scheda di {{name}}",
       "categories": {
-        "gallery": "Parco ? Galleria",
+        "gallery": "Parco - Galleria",
         "logo": "Logo",
         "entrance": "Ingresso del parco",
         "parking": "Parcheggio / accesso",
@@ -247,7 +247,7 @@
         "shop": "Negozi",
         "services": "Servizi",
         "hotel": "Hotel / alloggi",
-        "accessibility": "Accessibilit?",
+        "accessibility": "Accessibilità",
         "safety": "Sicurezza",
         "signage": "Segnaletica"
       },

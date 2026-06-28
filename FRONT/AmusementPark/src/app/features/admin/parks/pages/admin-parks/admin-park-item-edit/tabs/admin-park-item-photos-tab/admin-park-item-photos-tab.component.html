@@ -49,11 +49,66 @@
               <input type="file"
                 (change)="photoFileSelected.emit($event)"
                 accept="image/*"
+                [disabled]="photosUploading"
                 [multiple]="allowMultiplePhotoUpload" />
               @if (selectedPhotoCount > 0) {
                 <small class="text-color-secondary">
                   {{ 'admin.parks.items.photos.selectedCount' | translate:{ count: selectedPhotoCount } }}
                 </small>
+              }
+              @if (selectedPhotoPreviews.length > 0) {
+                <div class="photo-selection-grid">
+                  @for (preview of selectedPhotoPreviews; track preview.id) {
+                    <article class="photo-selection-card">
+                      <div class="photo-selection-card__image-wrap">
+                        <img
+                          class="photo-selection-card__image"
+                          [src]="preview.previewUrl"
+                          [alt]="preview.fileName" />
+                      </div>
+                      <div class="photo-selection-card__content">
+                        <strong>{{ preview.fileName }}</strong>
+                        <small class="text-color-secondary">{{ formatFileSize(preview.sizeInBytes) }}</small>
+                        @if (preview.isAnalyzing) {
+                          <p-tag
+                            [value]="'admin.parks.items.photos.metadataAnalyzing' | translate"
+                            severity="info">
+                          </p-tag>
+                        } @else if (preview.hasGeoLocation) {
+                          <p-tag
+                            [value]="'admin.parks.items.photos.metadataGeoFound' | translate"
+                            severity="success">
+                          </p-tag>
+                          <small class="text-color-secondary">
+                            {{ preview.latitude?.toFixed(5) }}, {{ preview.longitude?.toFixed(5) }}
+                          </small>
+                        } @else {
+                          <p-tag
+                            [value]="'admin.parks.items.photos.metadataGeoMissing' | translate"
+                            severity="warn">
+                          </p-tag>
+                        }
+                      </div>
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-times"
+                        class="p-button-rounded p-button-text photo-selection-card__remove"
+                        [disabled]="photosUploading"
+                        [attr.aria-label]="'admin.parks.items.photos.removeSelectedPhoto' | translate"
+                        (click)="selectedPhotoRemoved.emit(preview.id)">
+                      </button>
+                    </article>
+                  }
+                </div>
+              }
+              @if (selectedPhotoMissingGeoLocationCount > 0) {
+                <div class="photo-upload-warning" role="alert">
+                  <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+                  <span>
+                    {{ 'admin.parks.items.photos.metadataGeoMissingWarning' | translate:{ count: selectedPhotoMissingGeoLocationCount } }}
+                  </span>
+                </div>
               }
               <label class="photo-watermark-toggle">
                 <input
@@ -119,9 +174,20 @@
                 </div>
               </div>
               <div class="flex justify-content-end gap-2 flex-wrap">
+                @if (photoUploadProgress) {
+                  <div class="photo-upload-progress">
+                    <p-progressBar [value]="uploadProgressPercentage"></p-progressBar>
+                    <small class="text-color-secondary">
+                      {{ 'admin.parks.items.photos.uploadProgress' | translate:{
+                        completed: photoUploadProgress.completed,
+                        total: photoUploadProgress.total
+                      } }}
+                    </small>
+                  </div>
+                }
                 <button pButton type="button"
                   (click)="uploadPhoto.emit()"
-                  [disabled]="selectedPhotoCount === 0 || photosUploading">
+                  [disabled]="!canUploadSelectedPhotos">
                   @if (!photosUploading) {
                     <span>
                       {{ 'admin.parks.items.photos.uploadButton' | translate }}
@@ -190,9 +256,15 @@
                     <small class="mb-2 text-center">
                       {{ photo.description || ('admin.parks.items.photos.noDescription' | translate) }}
                     </small>
-                    @if (photo.tagIds.length > 0) {
+                    @if (resolvePhotoCategoryLabelKey(photo); as categoryLabelKey) {
+                      <p-tag
+                        [value]="categoryLabelKey | translate"
+                        severity="info"
+                        class="mb-2">
+                      </p-tag>
+                    } @else {
                       <small class="text-color-secondary mb-2">
-                        {{ 'admin.parks.items.photos.categorized' | translate }}
+                        {{ 'admin.parks.items.photos.uncategorized' | translate }}
                       </small>
                     }
                     <div class="flex gap-2">

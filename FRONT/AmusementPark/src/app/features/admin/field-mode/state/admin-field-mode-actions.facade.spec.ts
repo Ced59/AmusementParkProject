@@ -6,9 +6,9 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ImageUploadSecurityService } from '@shared/utils/security';
+import { PhotoGpsMetadataService } from '@shared/utils/images/photo-gps-metadata.service';
 import { TranslateService } from '@ngx-translate/core';
 
-import { AdminFieldModePhotoGpsService } from '../services/admin-field-mode-photo-gps.service';
 import {
   ADMIN_FIELD_MODE_GEOLOCATION_PORT,
   ADMIN_FIELD_MODE_IMAGES_API_SERVICE_PORT,
@@ -23,7 +23,7 @@ describe('AdminFieldModeActionsFacade', () => {
   let facade: AdminFieldModeActionsFacade;
   let imagesPort: jasmine.SpyObj<AdminFieldModeImagesApiServicePort>;
   let positionPort: jasmine.SpyObj<AdminFieldModeGeolocationPort>;
-  let photoGpsService: jasmine.SpyObj<AdminFieldModePhotoGpsService>;
+  let photoGpsService: jasmine.SpyObj<PhotoGpsMetadataService>;
   let imageUploadSecurityService: jasmine.SpyObj<ImageUploadSecurityService>;
   let toastMessageService: jasmine.SpyObj<ToastMessageService>;
   let translateService: jasmine.SpyObj<TranslateService> & { currentLang: string };
@@ -32,7 +32,7 @@ describe('AdminFieldModeActionsFacade', () => {
     imagesPort = jasmine.createSpyObj<AdminFieldModeImagesApiServicePort>('AdminFieldModeImagesApiServicePort', ['getImagesPage', 'uploadImage', 'linkImage', 'updateAdminImage', 'getAdminImageTags', 'createAdminImageTag']);
     const parkItemsPort = jasmine.createSpyObj<AdminFieldModeParkItemsApiServicePort>('AdminFieldModeParkItemsApiServicePort', ['getParkItemsByParkId', 'getParkItemsByParkIdPage', 'getParkItemsPaginated', 'getParkItemById', 'updateParkItem']);
     positionPort = jasmine.createSpyObj<AdminFieldModeGeolocationPort>('AdminFieldModeGeolocationPort', ['getCurrentPosition', 'getPermissionState', 'watchPosition', 'clearWatch']);
-    photoGpsService = jasmine.createSpyObj<AdminFieldModePhotoGpsService>('AdminFieldModePhotoGpsService', ['readPosition']);
+    photoGpsService = jasmine.createSpyObj<PhotoGpsMetadataService>('PhotoGpsMetadataService', ['readPosition']);
     imageUploadSecurityService = jasmine.createSpyObj<ImageUploadSecurityService>('ImageUploadSecurityService', ['validateImageFile']);
     toastMessageService = jasmine.createSpyObj<ToastMessageService>('ToastMessageService', ['add']);
     translateService = jasmine.createSpyObj<TranslateService>('TranslateService', ['instant'], { currentLang: 'fr' }) as jasmine.SpyObj<TranslateService> & { currentLang: string };
@@ -58,7 +58,7 @@ describe('AdminFieldModeActionsFacade', () => {
         { provide: ADMIN_FIELD_MODE_PARK_ITEMS_API_SERVICE_PORT, useValue: parkItemsPort },
         { provide: ADMIN_FIELD_MODE_GEOLOCATION_PORT, useValue: positionPort },
         { provide: ImageUploadSecurityService, useValue: imageUploadSecurityService },
-        { provide: AdminFieldModePhotoGpsService, useValue: photoGpsService },
+        { provide: PhotoGpsMetadataService, useValue: photoGpsService },
         { provide: ToastMessageService, useValue: toastMessageService },
         { provide: TranslateService, useValue: translateService }
       ]
