@@ -303,9 +303,13 @@
         "publicVisible": "Visible",
         "publicHidden": "Hidden",
         "moveToUncategorized": "Move to triage",
+        "loadMoreParkImages": "Load more park images",
+        "loadMoreParkItemImages": "Load more item images",
+        "loadingMore": "Loading...",
         "toasts": {
           "parksLoadError": "Unable to load parks.",
           "workspaceLoadError": "Unable to load photos for this park.",
+          "loadMoreError": "Unable to load more photos.",
           "parkSelectedSummary": "Park selected",
           "parkSelectedDetail": "{{name}} is ready for photo processing.",
           "filesSelectedSummary": "Photos selected",
@@ -327,7 +331,10 @@
           "visibilitySummary": "Visibility updated",
           "visibilityPublicDetail": "The photo is now publicly visible.",
           "visibilityHiddenDetail": "The photo is now hidden from the public.",
-          "visibilityError": "Unable to change visibility."
+          "visibilityError": "Unable to change visibility.",
+          "deleteSummary": "Photo deleted",
+          "deleteDetail": "The photo was deleted.",
+          "deleteError": "Unable to delete the photo."
         }
       }
     },

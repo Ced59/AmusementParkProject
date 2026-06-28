@@ -175,12 +175,21 @@
               (categoryChange)="setPhotoDraftCategory($event)"
               (save)="savePhotoCategorization($event)"
               (uncategorize)="movePhotoToUncategorized($event)"
-              (togglePublished)="togglePublished($event)">
+              (togglePublished)="togglePublished($event)"
+              (deletePhoto)="deletePhoto($event)">
             </app-admin-photo-batch-card>
           }
         </div>
       } @else {
         <p class="admin-photo-batch-empty">{{ 'admin.images.batch.uncategorizedEmpty' | translate }}</p>
+      }
+      @if (!photosLoading() && canLoadMoreParkPhotos()) {
+        <div class="admin-photo-batch-load-more">
+          <button type="button" class="btn btn--ghost btn--sm" [disabled]="parkPhotosLoadingMore()" (click)="loadMoreParkPhotos()">
+            <i class="pi" [class.pi-spinner]="parkPhotosLoadingMore()" [class.pi-spin]="parkPhotosLoadingMore()" [class.pi-angle-down]="!parkPhotosLoadingMore()" aria-hidden="true"></i>
+            {{ (parkPhotosLoadingMore() ? 'admin.images.batch.loadingMore' : 'admin.images.batch.loadMoreParkImages') | translate }}
+          </button>
+        </div>
       }
     </section>
 
@@ -208,12 +217,21 @@
               (categoryChange)="setPhotoDraftCategory($event)"
               (save)="savePhotoCategorization($event)"
               (uncategorize)="movePhotoToUncategorized($event)"
-              (togglePublished)="togglePublished($event)">
+              (togglePublished)="togglePublished($event)"
+              (deletePhoto)="deletePhoto($event)">
             </app-admin-photo-batch-card>
           }
         </div>
       } @else {
         <p class="admin-photo-batch-empty">{{ 'admin.images.batch.parkEmpty' | translate }}</p>
+      }
+      @if (!photosLoading() && canLoadMoreParkPhotos()) {
+        <div class="admin-photo-batch-load-more">
+          <button type="button" class="btn btn--ghost btn--sm" [disabled]="parkPhotosLoadingMore()" (click)="loadMoreParkPhotos()">
+            <i class="pi" [class.pi-spinner]="parkPhotosLoadingMore()" [class.pi-spin]="parkPhotosLoadingMore()" [class.pi-angle-down]="!parkPhotosLoadingMore()" aria-hidden="true"></i>
+            {{ (parkPhotosLoadingMore() ? 'admin.images.batch.loadingMore' : 'admin.images.batch.loadMoreParkImages') | translate }}
+          </button>
+        </div>
       }
     </section>
 
@@ -241,12 +259,21 @@
               (categoryChange)="setPhotoDraftCategory($event)"
               (save)="savePhotoCategorization($event)"
               (uncategorize)="movePhotoToUncategorized($event)"
-              (togglePublished)="togglePublished($event)">
+              (togglePublished)="togglePublished($event)"
+              (deletePhoto)="deletePhoto($event)">
             </app-admin-photo-batch-card>
           }
         </div>
       } @else {
         <p class="admin-photo-batch-empty">{{ 'admin.images.batch.parkItemEmpty' | translate }}</p>
+      }
+      @if (!photosLoading() && canLoadMoreParkItemPhotos()) {
+        <div class="admin-photo-batch-load-more">
+          <button type="button" class="btn btn--ghost btn--sm" [disabled]="parkItemPhotosLoadingMore()" (click)="loadMoreParkItemPhotos()">
+            <i class="pi" [class.pi-spinner]="parkItemPhotosLoadingMore()" [class.pi-spin]="parkItemPhotosLoadingMore()" [class.pi-angle-down]="!parkItemPhotosLoadingMore()" aria-hidden="true"></i>
+            {{ (parkItemPhotosLoadingMore() ? 'admin.images.batch.loadingMore' : 'admin.images.batch.loadMoreParkItemImages') | translate }}
+          </button>
+        </div>
       }
     </section>
   }

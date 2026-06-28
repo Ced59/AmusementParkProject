@@ -104,6 +104,10 @@
           {{ 'admin.images.batch.moveToUncategorized' | translate }}
         </button>
       }
+      <button type="button" class="btn btn--danger btn--sm" [disabled]="photo.isSaving" (click)="deleteCurrentPhoto()">
+        <i class="pi pi-trash" aria-hidden="true"></i>
+        {{ 'admin.images.deleteImage' | translate }}
+      </button>
     </footer>
   </div>
 </article>

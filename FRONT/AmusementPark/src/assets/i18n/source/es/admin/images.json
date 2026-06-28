@@ -138,9 +138,13 @@
         "publicVisible": "Visible",
         "publicHidden": "Oculta",
         "moveToUncategorized": "Volver a revisar",
+        "loadMoreParkImages": "Cargar más imágenes del parque",
+        "loadMoreParkItemImages": "Cargar más imágenes de fichas",
+        "loadingMore": "Cargando...",
         "toasts": {
           "parksLoadError": "No se pueden cargar los parques.",
           "workspaceLoadError": "No se pueden cargar las fotos de este parque.",
+          "loadMoreError": "No se pueden cargar más fotos.",
           "parkSelectedSummary": "Parque seleccionado",
           "parkSelectedDetail": "{{name}} está listo para procesar fotos.",
           "filesSelectedSummary": "Fotos seleccionadas",
@@ -162,7 +166,10 @@
           "visibilitySummary": "Visibilidad actualizada",
           "visibilityPublicDetail": "La foto ahora es visible públicamente.",
           "visibilityHiddenDetail": "La foto ahora está oculta al público.",
-          "visibilityError": "No se puede cambiar la visibilidad."
+          "visibilityError": "No se puede cambiar la visibilidad.",
+          "deleteSummary": "Foto eliminada",
+          "deleteDetail": "La foto se ha eliminado.",
+          "deleteError": "No se puede eliminar la foto."
         }
       }
     }

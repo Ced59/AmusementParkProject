@@ -33,6 +33,7 @@ export class AdminPhotoBatchCardComponent {
   @Output() save = new EventEmitter<string>();
   @Output() uncategorize = new EventEmitter<string>();
   @Output() togglePublished = new EventEmitter<string>();
+  @Output() deletePhoto = new EventEmitter<AdminPhotoBatchPhoto>();
 
   protected get categoryOptions(): readonly (AdminParkPhotoCategoryOption | AdminParkItemPhotoCategoryOption)[] {
     return this.photo.draftOwnerKind === 'parkItem'
@@ -77,6 +78,12 @@ export class AdminPhotoBatchCardComponent {
   protected togglePublicVisibility(): void {
     if (!this.photo.isSaving) {
       this.togglePublished.emit(this.photo.id);
+    }
+  }
+
+  protected deleteCurrentPhoto(): void {
+    if (!this.photo.isSaving) {
+      this.deletePhoto.emit(this.photo);
     }
   }
 }

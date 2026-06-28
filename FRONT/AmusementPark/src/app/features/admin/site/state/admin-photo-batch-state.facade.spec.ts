@@ -42,9 +42,11 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
   public uploadResponse$: Observable<UploadedImage> = of({ id: 'uploaded-1' });
   public linkResponse$: Observable<ImageDto> = of(createImage('image-1', { isPublished: true }));
   public tagsResponse$: Observable<ImageTagDto[]> = of(createCategoryTags());
+  public deleteResponse$: Observable<boolean> = of(true);
 
   public readonly uploadCalls: File[] = [];
   public readonly updateCalls: Array<{ id: string; request: UpdateAdminImageRequest }> = [];
+  public readonly deleteCalls: string[] = [];
   public readonly adminImageQueries: Partial<AdminImageSearchQuery>[] = [];
   public readonly parkItemImageCalls: Array<{ parkId: string; page: number; size: number }> = [];
 
@@ -68,6 +70,11 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
       geoLocation: request.geoLocation ?? null,
       tagIds: request.tagIds ?? []
     }));
+  }
+
+  deleteImage(imageId: string): Observable<boolean> {
+    this.deleteCalls.push(imageId);
+    return this.deleteResponse$;
   }
 
   getAdminImages(query: Partial<AdminImageSearchQuery> = {}): Observable<PagedResult<ImageDto>> {
@@ -179,7 +186,7 @@ describe('AdminPhotoBatchStateFacade', () => {
     expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual(['image-1']);
   });
 
-  it('loads park photos and park items with API-bounded pages', async () => {
+  it('loads the first image pages and loads more on demand', async () => {
     parkItemsPort.responsesByPage = {
       1: {
         data: [createParkItemRow('item-1', 'Demo Coaster')],
@@ -201,6 +208,14 @@ describe('AdminPhotoBatchStateFacade', () => {
         })
       ], createPagination(2, 2, 2, 100))
     };
+    imagesPort.parkItemImagesPages = {
+      1: createPagedResult<ParkItemImageDto>([
+        createParkItemImage('item-photo-1', 'item-1', 'Demo Coaster')
+      ], createPagination(2, 1, 2, 100)),
+      2: createPagedResult<ParkItemImageDto>([
+        createParkItemImage('item-photo-2', 'item-2', 'Demo Show')
+      ], createPagination(2, 2, 2, 100))
+    };
 
     await prepareSelectedParkAsync(facade);
 
@@ -209,15 +224,33 @@ describe('AdminPhotoBatchStateFacade', () => {
       { page: 2, size: 100 }
     ]);
     expect(imagesPort.adminImageQueries.map((query) => ({ page: query.page, size: query.size }))).toEqual([
-      { page: 1, size: 100 },
-      { page: 2, size: 100 }
+      { page: 1, size: 100 }
     ]);
     expect(imagesPort.parkItemImageCalls).toEqual([
       { parkId: 'park-1', page: 1, size: 100 }
     ]);
     expect(facade.parkItems().map((item) => item.id)).toEqual(['item-1', 'item-2']);
     expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual(['uncategorized-1']);
+    expect(facade.parkPhotos().map((photo) => photo.id)).toEqual([]);
+    expect(facade.parkItemPhotos().map((photo) => photo.id)).toEqual(['item-photo-1']);
+    expect(facade.canLoadMoreParkPhotos()).toBeTrue();
+    expect(facade.canLoadMoreParkItemPhotos()).toBeTrue();
+
+    await facade.loadMoreParkPhotos();
+    await facade.loadMoreParkItemPhotos();
+
+    expect(imagesPort.adminImageQueries.map((query) => ({ page: query.page, size: query.size }))).toEqual([
+      { page: 1, size: 100 },
+      { page: 2, size: 100 }
+    ]);
+    expect(imagesPort.parkItemImageCalls).toEqual([
+      { parkId: 'park-1', page: 1, size: 100 },
+      { parkId: 'park-1', page: 2, size: 100 }
+    ]);
     expect(facade.parkPhotos().map((photo) => photo.id)).toEqual(['park-1-photo']);
+    expect(facade.parkItemPhotos().map((photo) => photo.id)).toEqual(['item-photo-1', 'item-photo-2']);
+    expect(facade.canLoadMoreParkPhotos()).toBeFalse();
+    expect(facade.canLoadMoreParkItemPhotos()).toBeFalse();
   });
 
   it('categorizes a draft photo as a park item photo with the selected category tag', async () => {
@@ -266,6 +299,23 @@ describe('AdminPhotoBatchStateFacade', () => {
       'warn',
       'common.warning',
       'admin.images.batch.toasts.visibilityNeedsCategory'
+    );
+  });
+
+  it('deletes a loaded photo from the batch workspace', async () => {
+    imagesPort.parkImagesPage$ = of(createPagedResult<ImageDto>([
+      createImage('image-1', { isPublished: false, tagIds: [] })
+    ]));
+    await prepareSelectedParkAsync(facade);
+
+    await facade.deletePhoto('image-1');
+
+    expect(imagesPort.deleteCalls).toEqual(['image-1']);
+    expect(facade.uncategorizedPhotos()).toEqual([]);
+    expect(toastMessageService.add).toHaveBeenCalledWith(
+      'success',
+      'admin.images.batch.toasts.deleteSummary',
+      'admin.images.batch.toasts.deleteDetail'
     );
   });
 });
@@ -331,6 +381,26 @@ function createImage(id: string, partial: Partial<ImageDto> = {}): ImageDto {
     createdAt: '2026-01-01T00:00:00Z',
     updatedAt: '2026-01-02T00:00:00Z',
     ...partial
+  };
+}
+
+function createParkItemImage(imageId: string, itemId: string, itemName: string): ParkItemImageDto {
+  return {
+    image: createImage(imageId, {
+      category: ImageCategory.PARK_ITEM,
+      ownerType: ImageOwnerType.PARK_ITEM,
+      ownerId: itemId,
+      tagIds: [`${PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug}-tag`]
+    }),
+    item: {
+      id: itemId,
+      parkId: 'park-1',
+      name: itemName,
+      category: 'Attraction',
+      type: 'RollerCoaster',
+      latitude: null,
+      longitude: null
+    }
   };
 }
 

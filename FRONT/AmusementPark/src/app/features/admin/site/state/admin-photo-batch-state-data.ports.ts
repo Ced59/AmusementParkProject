@@ -6,6 +6,7 @@ import { ParksApiService } from '@data-access/parks/parks-api.service';
 
 export interface AdminPhotoBatchImagesPort extends Pick<ImagesApiService,
   'createAdminImageTag' |
+  'deleteImage' |
   'getAdminImageTags' |
   'getAdminImages' |
   'getParkItemImagesByPark' |

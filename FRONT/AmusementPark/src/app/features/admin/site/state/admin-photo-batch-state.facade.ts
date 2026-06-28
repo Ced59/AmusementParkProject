@@ -56,6 +56,12 @@ type PhotoPatch = Partial<Pick<AdminPhotoBatchPhoto,
   'draftCategorySlug' |
   'isSaving'>>;
 
+interface WorkspaceImagePage<TItem> {
+  items: TItem[];
+  page: number;
+  canLoadMore: boolean;
+}
+
 const DEFAULT_PARK_PHOTO_CATEGORY_SLUG: string = PARK_PHOTO_CATEGORY_OPTIONS[0].slug;
 const DEFAULT_PARK_ITEM_PHOTO_CATEGORY_SLUG: string = PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug;
 const PARKS_PAGE_SIZE: number = 60;
@@ -73,6 +79,12 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
   private readonly parkItemsLoadingSignal = signal(false);
   private readonly photosSignal = signal<AdminPhotoBatchPhoto[]>([]);
   private readonly photosLoadingSignal = signal(false);
+  private readonly parkPhotosPageSignal = signal(0);
+  private readonly parkItemPhotosPageSignal = signal(0);
+  private readonly parkPhotosCanLoadMoreSignal = signal(false);
+  private readonly parkItemPhotosCanLoadMoreSignal = signal(false);
+  private readonly parkPhotosLoadingMoreSignal = signal(false);
+  private readonly parkItemPhotosLoadingMoreSignal = signal(false);
   private readonly selectedFilesSignal = signal<AdminPhotoBatchUploadSelection[]>([]);
   private readonly uploadingSignal = signal(false);
   private readonly uploadProgressSignal = signal<AdminPhotoBatchUploadProgress | null>(null);
@@ -90,6 +102,10 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
   public readonly parkItems: Signal<AdminPhotoBatchParkItemOption[]> = this.parkItemsSignal.asReadonly();
   public readonly parkItemsLoading: Signal<boolean> = this.parkItemsLoadingSignal.asReadonly();
   public readonly photosLoading: Signal<boolean> = this.photosLoadingSignal.asReadonly();
+  public readonly canLoadMoreParkPhotos: Signal<boolean> = this.parkPhotosCanLoadMoreSignal.asReadonly();
+  public readonly canLoadMoreParkItemPhotos: Signal<boolean> = this.parkItemPhotosCanLoadMoreSignal.asReadonly();
+  public readonly parkPhotosLoadingMore: Signal<boolean> = this.parkPhotosLoadingMoreSignal.asReadonly();
+  public readonly parkItemPhotosLoadingMore: Signal<boolean> = this.parkItemPhotosLoadingMoreSignal.asReadonly();
   public readonly selectedFiles: Signal<AdminPhotoBatchUploadSelection[]> = this.selectedFilesSignal.asReadonly();
   public readonly selectedFileCount: Signal<number> = computed(() => this.selectedFilesSignal().length);
   public readonly selectedFilesAnalyzing: Signal<boolean> = computed(() =>
@@ -188,6 +204,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     this.selectedParkNameSignal.set(selectedPark?.name ?? null);
     this.photosSignal.set([]);
     this.parkItemsSignal.set([]);
+    this.resetPhotoPagination();
     this.clearSelectedFiles();
 
     if (!normalizedParkId) {
@@ -208,6 +225,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       return;
     }
 
+    this.resetPhotoPagination();
     void this.loadParkWorkspaceAsync(parkId);
   }
 
@@ -346,6 +364,78 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         this.translateService.instant('common.warning'),
         this.translateService.instant('admin.images.batch.toasts.missingGeoDetail', { count: missingGeoCount })
       );
+    }
+  }
+
+  async loadMoreParkPhotos(): Promise<void> {
+    const parkId: string | null = this.selectedParkIdSignal();
+    if (!parkId || this.photosLoadingSignal() || this.parkPhotosLoadingMoreSignal() || !this.parkPhotosCanLoadMoreSignal()) {
+      return;
+    }
+
+    const nextPage: number = this.parkPhotosPageSignal() + 1;
+    this.parkPhotosLoadingMoreSignal.set(true);
+
+    try {
+      const pageResult: WorkspaceImagePage<ImageDto> = await this.loadParkPhotosPageAsync(parkId, nextPage);
+      if (this.selectedParkIdSignal() !== parkId) {
+        return;
+      }
+
+      const itemNameById: Map<string, string> = this.createParkItemNameById();
+      const photos: AdminPhotoBatchPhoto[] = pageResult.items.map((image: ImageDto): AdminPhotoBatchPhoto =>
+        this.toBatchPhoto(image, itemNameById)
+      );
+      this.appendPhotos(photos);
+      this.parkPhotosPageSignal.set(pageResult.page);
+      this.parkPhotosCanLoadMoreSignal.set(pageResult.canLoadMore);
+    } catch (error: unknown) {
+      console.error('Error loading more park batch photos', error);
+      this.toastMessageService.add(
+        'error',
+        this.translateService.instant('common.errorTitle'),
+        this.translateService.instant('admin.images.batch.toasts.loadMoreError')
+      );
+    } finally {
+      if (this.selectedParkIdSignal() === parkId) {
+        this.parkPhotosLoadingMoreSignal.set(false);
+      }
+    }
+  }
+
+  async loadMoreParkItemPhotos(): Promise<void> {
+    const parkId: string | null = this.selectedParkIdSignal();
+    if (!parkId || this.photosLoadingSignal() || this.parkItemPhotosLoadingMoreSignal() || !this.parkItemPhotosCanLoadMoreSignal()) {
+      return;
+    }
+
+    const nextPage: number = this.parkItemPhotosPageSignal() + 1;
+    this.parkItemPhotosLoadingMoreSignal.set(true);
+
+    try {
+      const pageResult: WorkspaceImagePage<ParkItemImageDto> = await this.loadParkItemPhotosPageAsync(parkId, nextPage);
+      if (this.selectedParkIdSignal() !== parkId) {
+        return;
+      }
+
+      const itemNameById: Map<string, string> = this.createParkItemNameById();
+      const photos: AdminPhotoBatchPhoto[] = pageResult.items.map((itemImage: ParkItemImageDto): AdminPhotoBatchPhoto =>
+        this.toBatchPhoto(itemImage.image, itemNameById, itemImage.item.name)
+      );
+      this.appendPhotos(photos);
+      this.parkItemPhotosPageSignal.set(pageResult.page);
+      this.parkItemPhotosCanLoadMoreSignal.set(pageResult.canLoadMore);
+    } catch (error: unknown) {
+      console.error('Error loading more park item batch photos', error);
+      this.toastMessageService.add(
+        'error',
+        this.translateService.instant('common.errorTitle'),
+        this.translateService.instant('admin.images.batch.toasts.loadMoreError')
+      );
+    } finally {
+      if (this.selectedParkIdSignal() === parkId) {
+        this.parkItemPhotosLoadingMoreSignal.set(false);
+      }
     }
   }
 
@@ -524,20 +614,51 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     }
   }
 
+  async deletePhoto(photoId: string): Promise<void> {
+    const photo: AdminPhotoBatchPhoto | undefined = this.photosSignal().find((item: AdminPhotoBatchPhoto) => item.id === photoId);
+    if (!photo || photo.isSaving) {
+      return;
+    }
+
+    this.patchPhoto(photoId, { isSaving: true });
+
+    try {
+      const deleted: boolean = await firstValueFrom(this.imagesPort.deleteImage(photo.image.id));
+      if (!deleted) {
+        throw new Error('Image deletion returned false.');
+      }
+
+      this.photosSignal.set(this.photosSignal().filter((item: AdminPhotoBatchPhoto) => item.id !== photoId));
+      this.toastMessageService.add(
+        'success',
+        this.translateService.instant('admin.images.batch.toasts.deleteSummary'),
+        this.translateService.instant('admin.images.batch.toasts.deleteDetail')
+      );
+    } catch (error: unknown) {
+      console.error('Error deleting batch photo', error);
+      this.patchPhoto(photoId, { isSaving: false });
+      this.toastMessageService.add(
+        'error',
+        this.translateService.instant('common.errorTitle'),
+        this.translateService.instant('admin.images.batch.toasts.deleteError')
+      );
+    }
+  }
+
   private async loadParkWorkspaceAsync(parkId: string): Promise<void> {
     this.parkItemsLoadingSignal.set(true);
     this.photosLoadingSignal.set(true);
     await this.ensureCategoryTagsAsync();
 
     try {
-      const [parkItemRows, parkImages, parkItemImages]: [
+      const [parkItemRows, parkImagesPage, parkItemImagesPage]: [
         ParkItemAdminRow[],
-        ImageDto[],
-        ParkItemImageDto[]
+        WorkspaceImagePage<ImageDto>,
+        WorkspaceImagePage<ParkItemImageDto>
       ] = await Promise.all([
         this.loadAllParkItemsAsync(parkId),
-        this.loadAllParkPhotosAsync(parkId),
-        this.loadAllParkItemPhotosAsync(parkId)
+        this.loadParkPhotosPageAsync(parkId, 1),
+        this.loadParkItemPhotosPageAsync(parkId, 1)
       ]);
 
       if (this.selectedParkIdSignal() !== parkId) {
@@ -553,14 +674,18 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         parkItems.map((item: AdminPhotoBatchParkItemOption) => [item.id, item.name])
       );
       const photos: AdminPhotoBatchPhoto[] = [
-        ...parkImages.map((image: ImageDto): AdminPhotoBatchPhoto => this.toBatchPhoto(image, itemNameById)),
-        ...parkItemImages.map((itemImage: ParkItemImageDto): AdminPhotoBatchPhoto =>
+        ...parkImagesPage.items.map((image: ImageDto): AdminPhotoBatchPhoto => this.toBatchPhoto(image, itemNameById)),
+        ...parkItemImagesPage.items.map((itemImage: ParkItemImageDto): AdminPhotoBatchPhoto =>
           this.toBatchPhoto(itemImage.image, itemNameById, itemImage.item.name)
         )
       ];
 
       this.parkItemsSignal.set(parkItems);
       this.photosSignal.set(this.dedupePhotos(photos));
+      this.parkPhotosPageSignal.set(parkImagesPage.page);
+      this.parkPhotosCanLoadMoreSignal.set(parkImagesPage.canLoadMore);
+      this.parkItemPhotosPageSignal.set(parkItemImagesPage.page);
+      this.parkItemPhotosCanLoadMoreSignal.set(parkItemImagesPage.canLoadMore);
     } catch (error: unknown) {
       console.error('Error loading photo batch workspace', error);
       this.toastMessageService.add(
@@ -597,44 +722,34 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     return rows;
   }
 
-  private async loadAllParkPhotosAsync(parkId: string): Promise<ImageDto[]> {
-    const images: ImageDto[] = [];
-    let page: number = 1;
-    let shouldLoadNextPage: boolean = true;
+  private async loadParkPhotosPageAsync(parkId: string, page: number): Promise<WorkspaceImagePage<ImageDto>> {
+    const response: PagedResult<ImageDto> = await firstValueFrom(this.imagesPort.getAdminImages({
+      page,
+      size: WORKSPACE_PAGE_SIZE,
+      category: ImageCategory.PARK,
+      ownerType: ImageOwnerType.PARK,
+      ownerId: parkId,
+      sortBy: 'created',
+      sortDirection: 'desc'
+    }));
+    const pageImages: ImageDto[] = response.items ?? [];
 
-    while (shouldLoadNextPage) {
-      const response: PagedResult<ImageDto> = await firstValueFrom(this.imagesPort.getAdminImages({
-        page,
-        size: WORKSPACE_PAGE_SIZE,
-        category: ImageCategory.PARK,
-        ownerType: ImageOwnerType.PARK,
-        ownerId: parkId,
-        sortBy: 'created',
-        sortDirection: 'desc'
-      }));
-      const pageImages: ImageDto[] = response.items ?? [];
-      images.push(...pageImages);
-      shouldLoadNextPage = this.shouldLoadNextPage(response.pagination, page, pageImages.length);
-      page++;
-    }
-
-    return images;
+    return {
+      items: pageImages,
+      page,
+      canLoadMore: this.shouldLoadNextPage(response.pagination, page, pageImages.length)
+    };
   }
 
-  private async loadAllParkItemPhotosAsync(parkId: string): Promise<ParkItemImageDto[]> {
-    const images: ParkItemImageDto[] = [];
-    let page: number = 1;
-    let shouldLoadNextPage: boolean = true;
+  private async loadParkItemPhotosPageAsync(parkId: string, page: number): Promise<WorkspaceImagePage<ParkItemImageDto>> {
+    const response: PagedResult<ParkItemImageDto> = await firstValueFrom(this.imagesPort.getParkItemImagesByPark(parkId, page, WORKSPACE_PAGE_SIZE));
+    const pageImages: ParkItemImageDto[] = response.items ?? [];
 
-    while (shouldLoadNextPage) {
-      const response: PagedResult<ParkItemImageDto> = await firstValueFrom(this.imagesPort.getParkItemImagesByPark(parkId, page, WORKSPACE_PAGE_SIZE));
-      const pageImages: ParkItemImageDto[] = response.items ?? [];
-      images.push(...pageImages);
-      shouldLoadNextPage = this.shouldLoadNextPage(response.pagination, page, pageImages.length);
-      page++;
-    }
-
-    return images;
+    return {
+      items: pageImages,
+      page,
+      canLoadMore: this.shouldLoadNextPage(response.pagination, page, pageImages.length)
+    };
   }
 
   private shouldLoadNextPage(pagination: PaginationContract | null | undefined, currentPage: number, currentItemCount: number): boolean {
@@ -859,12 +974,35 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     this.photosSignal.set(nextPhotos);
   }
 
+  private appendPhotos(photos: AdminPhotoBatchPhoto[]): void {
+    if (photos.length === 0) {
+      return;
+    }
+
+    this.photosSignal.set(this.dedupePhotos([...this.photosSignal(), ...photos]));
+  }
+
   private patchPhoto(photoId: string, patch: PhotoPatch): void {
     this.photosSignal.set(this.photosSignal().map((photo: AdminPhotoBatchPhoto) =>
       photo.id === photoId
         ? { ...photo, ...patch }
         : photo
     ));
+  }
+
+  private resetPhotoPagination(): void {
+    this.parkPhotosPageSignal.set(0);
+    this.parkItemPhotosPageSignal.set(0);
+    this.parkPhotosCanLoadMoreSignal.set(false);
+    this.parkItemPhotosCanLoadMoreSignal.set(false);
+    this.parkPhotosLoadingMoreSignal.set(false);
+    this.parkItemPhotosLoadingMoreSignal.set(false);
+  }
+
+  private createParkItemNameById(): Map<string, string> {
+    return new Map<string, string>(
+      this.parkItemsSignal().map((item: AdminPhotoBatchParkItemOption) => [item.id, item.name])
+    );
   }
 
   private getNonCategoryTagIds(image: ImageDto): string[] {
