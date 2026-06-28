@@ -1,6 +1,20 @@
 {
-  "version": "2.7.17",
+  "version": "2.7.18",
   "history": [
+    {
+      "version": "2.7.18",
+      "releasedAt": "2026-06-28",
+      "labels": {
+        "fr": "Les parcs valides remontent mieux.",
+        "en": "Validated parks appear sooner.",
+        "de": "Gepruefte Parks erscheinen frueher.",
+        "nl": "Goedgekeurde parken verschijnen eerder.",
+        "it": "I parchi verificati compaiono prima.",
+        "es": "Los parques validados aparecen antes.",
+        "pl": "Zatwierdzone parki pojawiaja sie wczesniej.",
+        "pt": "Os parques validados aparecem mais cedo."
+      }
+    },
     {
       "version": "2.7.17",
       "releasedAt": "2026-06-28",

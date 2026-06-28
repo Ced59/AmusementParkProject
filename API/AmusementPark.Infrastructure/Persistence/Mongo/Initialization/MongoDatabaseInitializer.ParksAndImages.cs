@@ -65,6 +65,13 @@ public sealed partial class MongoDatabaseInitializer
             new CreateIndexModel<ParkDocument>(
                 Builders<ParkDocument>.IndexKeys
                     .Ascending(item => item.IsVisible)
+                    .Descending(item => item.AdminReviewStatus)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_parks_public_review_status_name_id" }),
+            new CreateIndexModel<ParkDocument>(
+                Builders<ParkDocument>.IndexKeys
+                    .Ascending(item => item.IsVisible)
                     .Ascending(item => item.IsFeaturedOnHome)
                     .Ascending(item => item.FeaturedHomeOrder)
                     .Ascending(item => item.Name)

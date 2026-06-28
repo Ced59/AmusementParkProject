@@ -65,7 +65,7 @@ public sealed class ParkRepository : IParkRepository
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
-            .Sort(this.BuildAdminListSort(sortField, sortDescending))
+            .Sort(ParkListOrdering.Build(sortField, sortDescending, includeHidden))
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -248,7 +248,7 @@ public sealed class ParkRepository : IParkRepository
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
-            .Sort(this.BuildAdminListSort(sortField, sortDescending))
+            .Sort(ParkListOrdering.Build(sortField, sortDescending, includeHidden))
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -639,25 +639,6 @@ public sealed class ParkRepository : IParkRepository
     private FilterDefinition<ParkDocument> BuildAdminReviewStatusFilter(AdminReviewStatus adminReviewStatus)
     {
         return Builders<ParkDocument>.Filter.BuildAdminReviewStatusFilter("adminReviewStatus", adminReviewStatus);
-    }
-
-    private SortDefinition<ParkDocument> BuildAdminListSort(ParkAdminSortField sortField, bool sortDescending)
-    {
-        SortDefinitionBuilder<ParkDocument> sortBuilder = Builders<ParkDocument>.Sort;
-
-        if (sortField == ParkAdminSortField.Name)
-        {
-            SortDefinition<ParkDocument> primarySort = sortDescending
-                ? sortBuilder.Descending(document => document.Name)
-                : sortBuilder.Ascending(document => document.Name);
-
-            return primarySort.Ascending(document => document.Id);
-        }
-
-        return sortBuilder
-            .Ascending(document => document.AdminReviewPriority)
-            .Ascending(document => document.Name)
-            .Ascending(document => document.Id);
     }
 
     private FilterDefinition<ParkDocument> BuildVisibleSelectionFilter(IReadOnlyCollection<string> excludedParkIds, ClosedEntityFilter closedFilter)
