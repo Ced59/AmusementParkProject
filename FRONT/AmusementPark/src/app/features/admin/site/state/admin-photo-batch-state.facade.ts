@@ -29,7 +29,7 @@ import { AdminContextualPhotoMetadataReaderService } from '@features/admin/conte
 import { PARK_ITEM_PHOTO_CATEGORY_OPTIONS } from '@features/admin/park-items/models/admin-park-item-edit.model';
 import { PARK_PHOTO_CATEGORY_OPTIONS } from '@features/admin/parks/models/admin-park-edit.model';
 import { ImageUploadSecurityService } from '@shared/utils/security';
-import { PagedResult } from '@shared/models/contracts';
+import { PagedResult, PaginationContract } from '@shared/models/contracts';
 
 import {
   AdminPhotoBatchCategorySets,
@@ -59,8 +59,7 @@ type PhotoPatch = Partial<Pick<AdminPhotoBatchPhoto,
 const DEFAULT_PARK_PHOTO_CATEGORY_SLUG: string = PARK_PHOTO_CATEGORY_OPTIONS[0].slug;
 const DEFAULT_PARK_ITEM_PHOTO_CATEGORY_SLUG: string = PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug;
 const PARKS_PAGE_SIZE: number = 60;
-const PARK_ITEMS_PAGE_SIZE: number = 500;
-const PHOTOS_PAGE_SIZE: number = 300;
+const WORKSPACE_PAGE_SIZE: number = 100;
 const UPLOAD_CONCURRENCY_LIMIT: number = 2;
 
 @Injectable()
@@ -531,29 +530,21 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     await this.ensureCategoryTagsAsync();
 
     try {
-      const [parkItemsResponse, parkPhotosPage, parkItemPhotosPage]: [
-        ApiResponse<ParkItemAdminRow>,
-        PagedResult<ImageDto>,
-        PagedResult<ParkItemImageDto>
+      const [parkItemRows, parkImages, parkItemImages]: [
+        ParkItemAdminRow[],
+        ImageDto[],
+        ParkItemImageDto[]
       ] = await Promise.all([
-        firstValueFrom(this.parkItemsPort.getParkItemsPaginated(1, PARK_ITEMS_PAGE_SIZE, parkId, '', null, null)),
-        firstValueFrom(this.imagesPort.getAdminImages({
-          page: 1,
-          size: PHOTOS_PAGE_SIZE,
-          category: ImageCategory.PARK,
-          ownerType: ImageOwnerType.PARK,
-          ownerId: parkId,
-          sortBy: 'created',
-          sortDirection: 'desc'
-        })),
-        firstValueFrom(this.imagesPort.getParkItemImagesByPark(parkId, 1, PHOTOS_PAGE_SIZE))
+        this.loadAllParkItemsAsync(parkId),
+        this.loadAllParkPhotosAsync(parkId),
+        this.loadAllParkItemPhotosAsync(parkId)
       ]);
 
       if (this.selectedParkIdSignal() !== parkId) {
         return;
       }
 
-      const parkItems: AdminPhotoBatchParkItemOption[] = (parkItemsResponse.data ?? [])
+      const parkItems: AdminPhotoBatchParkItemOption[] = parkItemRows
         .map((item: ParkItemAdminRow): AdminPhotoBatchParkItemOption => ({
           id: item.id,
           name: item.name || item.id
@@ -562,8 +553,8 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         parkItems.map((item: AdminPhotoBatchParkItemOption) => [item.id, item.name])
       );
       const photos: AdminPhotoBatchPhoto[] = [
-        ...parkPhotosPage.items.map((image: ImageDto): AdminPhotoBatchPhoto => this.toBatchPhoto(image, itemNameById)),
-        ...parkItemPhotosPage.items.map((itemImage: ParkItemImageDto): AdminPhotoBatchPhoto =>
+        ...parkImages.map((image: ImageDto): AdminPhotoBatchPhoto => this.toBatchPhoto(image, itemNameById)),
+        ...parkItemImages.map((itemImage: ParkItemImageDto): AdminPhotoBatchPhoto =>
           this.toBatchPhoto(itemImage.image, itemNameById, itemImage.item.name)
         )
       ];
@@ -581,6 +572,77 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       this.parkItemsLoadingSignal.set(false);
       this.photosLoadingSignal.set(false);
     }
+  }
+
+  private async loadAllParkItemsAsync(parkId: string): Promise<ParkItemAdminRow[]> {
+    const rows: ParkItemAdminRow[] = [];
+    let page: number = 1;
+    let shouldLoadNextPage: boolean = true;
+
+    while (shouldLoadNextPage) {
+      const response: ApiResponse<ParkItemAdminRow> = await firstValueFrom(this.parkItemsPort.getParkItemsPaginated(
+        page,
+        WORKSPACE_PAGE_SIZE,
+        parkId,
+        '',
+        null,
+        { sortBy: 'name', sortDirection: 'asc' }
+      ));
+      const pageRows: ParkItemAdminRow[] = response.data ?? [];
+      rows.push(...pageRows);
+      shouldLoadNextPage = this.shouldLoadNextPage(response.pagination, page, pageRows.length);
+      page++;
+    }
+
+    return rows;
+  }
+
+  private async loadAllParkPhotosAsync(parkId: string): Promise<ImageDto[]> {
+    const images: ImageDto[] = [];
+    let page: number = 1;
+    let shouldLoadNextPage: boolean = true;
+
+    while (shouldLoadNextPage) {
+      const response: PagedResult<ImageDto> = await firstValueFrom(this.imagesPort.getAdminImages({
+        page,
+        size: WORKSPACE_PAGE_SIZE,
+        category: ImageCategory.PARK,
+        ownerType: ImageOwnerType.PARK,
+        ownerId: parkId,
+        sortBy: 'created',
+        sortDirection: 'desc'
+      }));
+      const pageImages: ImageDto[] = response.items ?? [];
+      images.push(...pageImages);
+      shouldLoadNextPage = this.shouldLoadNextPage(response.pagination, page, pageImages.length);
+      page++;
+    }
+
+    return images;
+  }
+
+  private async loadAllParkItemPhotosAsync(parkId: string): Promise<ParkItemImageDto[]> {
+    const images: ParkItemImageDto[] = [];
+    let page: number = 1;
+    let shouldLoadNextPage: boolean = true;
+
+    while (shouldLoadNextPage) {
+      const response: PagedResult<ParkItemImageDto> = await firstValueFrom(this.imagesPort.getParkItemImagesByPark(parkId, page, WORKSPACE_PAGE_SIZE));
+      const pageImages: ParkItemImageDto[] = response.items ?? [];
+      images.push(...pageImages);
+      shouldLoadNextPage = this.shouldLoadNextPage(response.pagination, page, pageImages.length);
+      page++;
+    }
+
+    return images;
+  }
+
+  private shouldLoadNextPage(pagination: PaginationContract | null | undefined, currentPage: number, currentItemCount: number): boolean {
+    if (pagination && pagination.totalPages > 0) {
+      return currentPage < pagination.totalPages;
+    }
+
+    return currentItemCount >= WORKSPACE_PAGE_SIZE;
   }
 
   private async uploadSelectionAsync(selection: AdminPhotoBatchUploadSelection, parkId: string, parkName: string): Promise<ImageDto> {

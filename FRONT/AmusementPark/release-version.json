@@ -1,6 +1,20 @@
 {
-  "version": "2.7.13",
+  "version": "2.7.14",
   "history": [
+    {
+      "version": "2.7.14",
+      "releasedAt": "2026-06-28",
+      "labels": {
+        "fr": "L'administration des photos gagne en fiabilite.",
+        "en": "Photo administration becomes more reliable.",
+        "de": "Die Fotoverwaltung wird zuverlaessiger.",
+        "nl": "Fotobeheer wordt betrouwbaarder.",
+        "it": "La gestione delle foto diventa piu affidabile.",
+        "es": "La administracion de fotos gana fiabilidad.",
+        "pl": "Zarzadzanie zdjeciami dziala pewniej.",
+        "pt": "A administracao de fotos fica mais fiavel."
+      }
+    },
     {
       "version": "2.7.13",
       "releasedAt": "2026-06-28",
