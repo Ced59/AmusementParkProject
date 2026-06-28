@@ -1,6 +1,20 @@
 {
-  "version": "2.7.12",
+  "version": "2.7.13",
   "history": [
+    {
+      "version": "2.7.13",
+      "releasedAt": "2026-06-28",
+      "labels": {
+        "fr": "L'administration des photos gagne en efficacité.",
+        "en": "Photo administration becomes more efficient.",
+        "de": "Die Fotoverwaltung wird effizienter.",
+        "nl": "Fotobeheer wordt efficienter.",
+        "it": "La gestione delle foto diventa piu efficiente.",
+        "es": "La administracion de fotos gana eficiencia.",
+        "pl": "Zarzadzanie zdjeciami staje sie sprawniejsze.",
+        "pt": "A administracao de fotos fica mais eficiente."
+      }
+    },
     {
       "version": "2.7.12",
       "releasedAt": "2026-06-28",
