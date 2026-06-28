@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ProgressBar } from 'primeng/progressbar';
 
 import {
@@ -32,6 +32,10 @@ export class AdminPhotoBatchComponent implements OnInit {
   protected readonly parkItems = this.stateFacade.parkItems;
   protected readonly parkItemsLoading = this.stateFacade.parkItemsLoading;
   protected readonly photosLoading = this.stateFacade.photosLoading;
+  protected readonly canLoadMoreParkPhotos = this.stateFacade.canLoadMoreParkPhotos;
+  protected readonly canLoadMoreParkItemPhotos = this.stateFacade.canLoadMoreParkItemPhotos;
+  protected readonly parkPhotosLoadingMore = this.stateFacade.parkPhotosLoadingMore;
+  protected readonly parkItemPhotosLoadingMore = this.stateFacade.parkItemPhotosLoadingMore;
   protected readonly selectedFiles = this.stateFacade.selectedFiles;
   protected readonly selectedFileCount = this.stateFacade.selectedFileCount;
   protected readonly selectedFilesAnalyzing = this.stateFacade.selectedFilesAnalyzing;
@@ -47,7 +51,8 @@ export class AdminPhotoBatchComponent implements OnInit {
 
   constructor(
     private readonly stateFacade: AdminPhotoBatchStateFacade,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly translate: TranslateService
   ) {
   }
 
@@ -117,6 +122,26 @@ export class AdminPhotoBatchComponent implements OnInit {
 
   protected togglePublished(photoId: string): void {
     void this.stateFacade.togglePublished(photoId);
+  }
+
+  protected loadMoreParkPhotos(): void {
+    void this.stateFacade.loadMoreParkPhotos();
+  }
+
+  protected loadMoreParkItemPhotos(): void {
+    void this.stateFacade.loadMoreParkItemPhotos();
+  }
+
+  protected deletePhoto(photo: AdminPhotoBatchPhoto): void {
+    const confirmed: boolean = confirm(this.translate.instant('admin.images.deleteConfirm', {
+      name: photo.image.originalFileName || photo.image.description || photo.image.id
+    }));
+
+    if (!confirmed) {
+      return;
+    }
+
+    void this.stateFacade.deletePhoto(photo.id);
   }
 
   protected trackSelectionById(_: number, selection: AdminPhotoBatchUploadSelection): string {

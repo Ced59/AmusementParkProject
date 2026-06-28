@@ -1,6 +1,20 @@
 {
-  "version": "2.7.15",
+  "version": "2.7.16",
   "history": [
+    {
+      "version": "2.7.16",
+      "releasedAt": "2026-06-28",
+      "labels": {
+        "fr": "L'administration des photos devient plus pratique.",
+        "en": "Photo administration becomes more convenient.",
+        "de": "Die Fotoverwaltung wird praktischer.",
+        "nl": "Fotobeheer wordt handiger.",
+        "it": "La gestione delle foto diventa piu pratica.",
+        "es": "La administracion de fotos resulta mas practica.",
+        "pl": "Zarzadzanie zdjeciami staje sie wygodniejsze.",
+        "pt": "A administracao de fotos fica mais pratica."
+      }
+    },
     {
       "version": "2.7.15",
       "releasedAt": "2026-06-28",

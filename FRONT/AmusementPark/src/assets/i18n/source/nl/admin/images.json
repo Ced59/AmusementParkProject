@@ -138,9 +138,13 @@
         "publicVisible": "Zichtbaar",
         "publicHidden": "Verborgen",
         "moveToUncategorized": "Terug naar sorteren",
+        "loadMoreParkImages": "Meer parkafbeeldingen laden",
+        "loadMoreParkItemImages": "Meer itemafbeeldingen laden",
+        "loadingMore": "Laden...",
         "toasts": {
           "parksLoadError": "Parken kunnen niet worden geladen.",
           "workspaceLoadError": "Foto's van dit park kunnen niet worden geladen.",
+          "loadMoreError": "Kan niet meer foto's laden.",
           "parkSelectedSummary": "Park geselecteerd",
           "parkSelectedDetail": "{{name}} is klaar voor fotoverwerking.",
           "filesSelectedSummary": "Foto's geselecteerd",
@@ -162,7 +166,10 @@
           "visibilitySummary": "Zichtbaarheid bijgewerkt",
           "visibilityPublicDetail": "De foto is nu publiek zichtbaar.",
           "visibilityHiddenDetail": "De foto is nu verborgen voor publiek.",
-          "visibilityError": "Zichtbaarheid kan niet worden gewijzigd."
+          "visibilityError": "Zichtbaarheid kan niet worden gewijzigd.",
+          "deleteSummary": "Foto verwijderd",
+          "deleteDetail": "De foto is verwijderd.",
+          "deleteError": "Kan de foto niet verwijderen."
         }
       }
     }

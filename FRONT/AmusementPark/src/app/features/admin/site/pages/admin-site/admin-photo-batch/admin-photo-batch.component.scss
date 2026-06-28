@@ -168,6 +168,11 @@
   text-align: center;
 }
 
+.admin-photo-batch-load-more {
+  display: flex;
+  justify-content: center;
+}
+
 :host ::ng-deep .admin-photo-batch-progress .p-progressbar {
   height: 0.65rem;
   overflow: hidden;
