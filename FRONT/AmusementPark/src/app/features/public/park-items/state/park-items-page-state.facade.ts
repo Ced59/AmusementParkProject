@@ -373,8 +373,6 @@ export class ParkItemsPageStateFacade {
       return;
     }
 
-    this.screenStateStore.setLoading(previousData);
-
     this.parkItemsApiService.getParkItemsByParkIdPage(
       parkId,
       this.currentPageSignal(),

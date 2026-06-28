@@ -13,4 +13,5 @@ public sealed record VideoSearchCriteria(
     string? LanguageCode = null,
     bool? IsPublished = null,
     string? SortBy = null,
-    string? SortDirection = null);
+    string? SortDirection = null,
+    IReadOnlyCollection<string>? OwnerIds = null);

@@ -23,6 +23,12 @@ export interface PublicVideoBackLink {
   variant: 'primary' | 'ghost' | 'soft';
 }
 
+export interface PublicVideoListTab {
+  id: string;
+  labelKey: string;
+  count: number;
+}
+
 @Component({
   selector: 'app-public-video-list-view',
   templateUrl: './public-video-list-view.component.html',
@@ -61,12 +67,15 @@ export class PublicVideoListViewComponent implements OnChanges {
   @Input() emptyTitleKey: string = 'videos.list.emptyTitle';
   @Input() emptyMessageKey: string = 'videos.list.emptyMessage';
   @Input() backLinks: PublicVideoBackLink[] = [];
+  @Input() tabs: PublicVideoListTab[] = [];
+  @Input() activeTab: string | null = null;
   @Input() shareTargetType: SocialShareTargetType = 'Videos';
   @Input() shareTargetId: string | null = null;
   @Input() shareTargetTitle: string | null = null;
 
   @Output() filtersChanged: EventEmitter<PublicVideoFilterState> = new EventEmitter<PublicVideoFilterState>();
   @Output() loadMoreClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() tabSelected: EventEmitter<string> = new EventEmitter<string>();
 
   protected readonly thumbnailResponsiveWidths: readonly number[] = [320, 480, 640, 800];
   protected creatorNameDraft: string = '';
@@ -107,6 +116,10 @@ export class PublicVideoListViewComponent implements OnChanges {
   clearFilters(): void {
     this.creatorNameDraft = '';
     this.emitFilters({ type: null, tagId: null, creatorName: '' });
+  }
+
+  selectTab(tabId: string): void {
+    this.tabSelected.emit(tabId);
   }
 
   loadMore(): void {

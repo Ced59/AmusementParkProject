@@ -182,6 +182,16 @@ public sealed class VideoRepository : IVideoRepository
         {
             filter &= builder.Eq(static document => document.OwnerId, criteria.OwnerId.Trim());
         }
+        else if (criteria.OwnerIds is not null)
+        {
+            List<string> normalizedOwnerIds = criteria.OwnerIds
+                .Where(static ownerId => !string.IsNullOrWhiteSpace(ownerId))
+                .Select(static ownerId => ownerId.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+
+            filter &= builder.In(static document => document.OwnerId, normalizedOwnerIds);
+        }
 
         if (criteria.Type.HasValue)
         {
@@ -276,7 +286,8 @@ public sealed class VideoRepository : IVideoRepository
             criteria.LanguageCode,
             criteria.IsPublished,
             criteria.SortBy,
-            criteria.SortDirection);
+            criteria.SortDirection,
+            criteria.OwnerIds is null ? string.Empty : string.Join(",", criteria.OwnerIds.OrderBy(static ownerId => ownerId, StringComparer.Ordinal)));
     }
 
     private static long GetCacheVersion()

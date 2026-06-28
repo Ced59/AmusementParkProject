@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { CreateVideoTagRequest, UpdateVideoTagRequest } from '@app/models/videos/video-tag-write-request';
+import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
 import { ResolvedVideoMetadataDto } from '@app/models/videos/resolved-video-metadata-dto';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
@@ -50,6 +51,15 @@ export class VideosApiService {
 
     return this.http.get<VideoDto[] | PagedCollectionResponse<VideoDto>>(url, { ...options, params }).pipe(
       map((response: VideoDto[] | PagedCollectionResponse<VideoDto>) => unwrapPagedCollection<VideoDto>(response))
+    );
+  }
+
+  getParkItemVideosByPark(parkId: string, query: VideoSearchQuery = {}, options: VideosHttpOptions = {}): Observable<PagedResult<ParkItemVideoDto>> {
+    const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.getParkItemVideosByPark(parkId)}`;
+    const params: HttpParams = this.buildSearchParams(query);
+
+    return this.http.get<ParkItemVideoDto[] | PagedCollectionResponse<ParkItemVideoDto>>(url, { ...options, params }).pipe(
+      map((response: ParkItemVideoDto[] | PagedCollectionResponse<ParkItemVideoDto>) => unwrapPagedCollection<ParkItemVideoDto>(response))
     );
   }
 

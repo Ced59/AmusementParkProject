@@ -36,6 +36,26 @@
       </div>
     </header>
 
+    @if (tabs.length > 0) {
+      <div class="public-video-list__tabs" role="tablist" [attr.aria-label]="'parks.videosPage.tabs.label' | translate">
+        @for (tab of tabs; track tab.id) {
+          <button
+            class="public-video-list__tab"
+            type="button"
+            role="tab"
+            [id]="'public-video-list-tab-' + tab.id"
+            aria-controls="public-video-list-panel"
+            [class.is-active]="activeTab === tab.id"
+            [attr.aria-selected]="activeTab === tab.id"
+            [attr.tabindex]="activeTab === tab.id ? 0 : -1"
+            (click)="selectTab(tab.id)">
+            <span>{{ tab.labelKey | translate }}</span>
+            <strong>{{ tab.count }}</strong>
+          </button>
+        }
+      </div>
+    }
+
     <form class="public-video-list__filters" appUiSurface="filter" appUiSurfacePadding="regular" (submit)="applyCreatorFilter($event)">
       <label class="public-video-list__filter-field">
         <span>{{ 'videos.filters.type' | translate }}</span>
@@ -78,6 +98,10 @@
       </div>
     </form>
 
+    <div
+      id="public-video-list-panel"
+      role="tabpanel"
+      [attr.aria-labelledby]="activeTab ? 'public-video-list-tab-' + activeTab : null">
     @if (videos.length > 0) {
       <section class="public-video-list__grid" aria-label="Videos">
         @for (video of videos; track video.id) {
@@ -148,6 +172,7 @@
         <p>{{ emptyMessageKey | translate:titleParams }}</p>
       </section>
     }
+    </div>
 
     <app-public-share-panel
       [targetType]="shareTargetType"

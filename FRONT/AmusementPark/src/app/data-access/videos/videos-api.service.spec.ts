@@ -53,6 +53,33 @@ describe('VideosApiService', () => {
     request.flush({ data: [{ id: 'video-1' }] });
   });
 
+  it('gets park item videos for a park with filter query params', () => {
+    service.getParkItemVideosByPark('park 1', {
+      page: 3,
+      size: 6,
+      type: VideoType.ON_RIDE,
+      tagId: 'tag-1',
+      creatorName: 'creator',
+      languageCode: 'fr',
+      sortBy: 'published',
+      sortDirection: 'desc'
+    }).subscribe((page) => {
+      expect(page.items).toEqual([{ video: { id: 'video-1' }, item: { id: 'item-1' } } as never]);
+    });
+
+    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos/parks/park%201/park-items`);
+    expect(request.request.method).toBe('GET');
+    expect(request.request.params.get('page')).toBe('3');
+    expect(request.request.params.get('size')).toBe('6');
+    expect(request.request.params.get('type')).toBe('ON_RIDE');
+    expect(request.request.params.get('tagId')).toBe('tag-1');
+    expect(request.request.params.get('creatorName')).toBe('creator');
+    expect(request.request.params.get('languageCode')).toBe('fr');
+    expect(request.request.params.get('sortBy')).toBe('published');
+    expect(request.request.params.get('sortDirection')).toBe('desc');
+    request.flush({ data: [{ video: { id: 'video-1' }, item: { id: 'item-1' } }] });
+  });
+
   it('gets a video detail and public tags', () => {
     service.getVideoById('video-1', {}, 'fr').subscribe((video) => {
       expect(video.id).toBe('video-1');

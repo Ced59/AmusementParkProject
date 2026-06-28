@@ -1,6 +1,20 @@
 {
-  "version": "2.7.18",
+  "version": "2.7.19",
   "history": [
+    {
+      "version": "2.7.19",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les pages de parcs sont plus fluides.",
+        "en": "Park pages feel smoother.",
+        "de": "Parkseiten wirken flüssiger.",
+        "nl": "Parkpagina's voelen soepeler aan.",
+        "it": "Le pagine dei parchi sono piu fluide.",
+        "es": "Las paginas de parques son mas fluidas.",
+        "pl": "Strony parkow dzialaja plynniej.",
+        "pt": "As paginas dos parques ficam mais fluidas."
+      }
+    },
     {
       "version": "2.7.18",
       "releasedAt": "2026-06-28",

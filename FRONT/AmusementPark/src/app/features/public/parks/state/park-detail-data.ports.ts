@@ -9,6 +9,7 @@ import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { VideoDto } from '@app/models/videos/video-dto';
+import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
@@ -24,6 +25,7 @@ export interface ParkDetailParksPort {
 
 export interface ParkDetailVideosPort {
   getVideosPage(query?: VideoSearchQuery, options?: AnonymousHttpOptions): Observable<PagedResult<VideoDto>>;
+  getParkItemVideosByPark(parkId: string, query?: VideoSearchQuery, options?: AnonymousHttpOptions): Observable<PagedResult<ParkItemVideoDto>>;
 }
 
 export interface ParkDetailImagesPort {

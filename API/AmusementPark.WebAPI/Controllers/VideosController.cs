@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Videos.Queries;
+using AmusementPark.Application.Features.Videos.Results;
 using AmusementPark.Core.Domain.Videos;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Common;
@@ -30,6 +31,7 @@ public sealed class VideosController : ControllerBase
     private readonly ICommandHandler<UpdateVideoTagCommand, ApplicationResult<VideoTag>> updateVideoTagCommandHandler;
     private readonly IQueryHandler<GetVideoByIdQuery, ApplicationResult<Video>> getVideoByIdQueryHandler;
     private readonly IQueryHandler<GetVideosPageQuery, ApplicationResult<PagedResult<Video>>> getVideosPageQueryHandler;
+    private readonly IQueryHandler<GetParkItemVideosByParkQuery, ApplicationResult<PagedResult<ParkItemVideoResult>>> getParkItemVideosByParkQueryHandler;
     private readonly IQueryHandler<ListVideoTagsQuery, ApplicationResult<IReadOnlyCollection<VideoTag>>> listVideoTagsQueryHandler;
     private readonly IQueryHandler<ResolveVideoMetadataQuery, ApplicationResult<ResolvedVideoMetadata>> resolveVideoMetadataQueryHandler;
 
@@ -41,6 +43,7 @@ public sealed class VideosController : ControllerBase
         ICommandHandler<UpdateVideoTagCommand, ApplicationResult<VideoTag>> updateVideoTagCommandHandler,
         IQueryHandler<GetVideoByIdQuery, ApplicationResult<Video>> getVideoByIdQueryHandler,
         IQueryHandler<GetVideosPageQuery, ApplicationResult<PagedResult<Video>>> getVideosPageQueryHandler,
+        IQueryHandler<GetParkItemVideosByParkQuery, ApplicationResult<PagedResult<ParkItemVideoResult>>> getParkItemVideosByParkQueryHandler,
         IQueryHandler<ListVideoTagsQuery, ApplicationResult<IReadOnlyCollection<VideoTag>>> listVideoTagsQueryHandler,
         IQueryHandler<ResolveVideoMetadataQuery, ApplicationResult<ResolvedVideoMetadata>> resolveVideoMetadataQueryHandler)
     {
@@ -51,6 +54,7 @@ public sealed class VideosController : ControllerBase
         this.updateVideoTagCommandHandler = updateVideoTagCommandHandler;
         this.getVideoByIdQueryHandler = getVideoByIdQueryHandler;
         this.getVideosPageQueryHandler = getVideosPageQueryHandler;
+        this.getParkItemVideosByParkQueryHandler = getParkItemVideosByParkQueryHandler;
         this.listVideoTagsQueryHandler = listVideoTagsQueryHandler;
         this.resolveVideoMetadataQueryHandler = resolveVideoMetadataQueryHandler;
     }
@@ -95,6 +99,50 @@ public sealed class VideosController : ControllerBase
         }
 
         PagedResponseDto<VideoDto> response = result.Value.ToPagedResponse(static video => video.ToHttp());
+        return this.Ok(response);
+    }
+
+    [HttpGet("parks/{parkId}/park-items")]
+    [AllowAnonymous]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [ProducesResponseType(typeof(PagedResponseDto<ParkItemVideoDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetParkItemVideosByParkAsync(
+        [FromRoute] string parkId,
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? search = null,
+        [FromQuery] VideoHostingProviderDto? hostingProvider = null,
+        [FromQuery] VideoTypeDto? type = null,
+        [FromQuery] string? tagId = null,
+        [FromQuery] string? creatorName = null,
+        [FromQuery] string? languageCode = null,
+        [FromQuery] string? sortBy = null,
+        [FromQuery] string? sortDirection = null,
+        CancellationToken cancellationToken = default)
+    {
+        bool canSeeNonVisible = this.UserCanSeeNonVisible();
+        VideoSearchCriteria criteria = new VideoSearchCriteria(
+            search,
+            hostingProvider.ToOptionalDomain(),
+            VideoOwnerType.ParkItem,
+            null,
+            type.ToOptionalDomain(),
+            tagId,
+            creatorName,
+            languageCode,
+            canSeeNonVisible ? null : true,
+            sortBy,
+            sortDirection);
+
+        ApplicationResult<PagedResult<ParkItemVideoResult>> result = await this.getParkItemVideosByParkQueryHandler.HandleAsync(
+            new GetParkItemVideosByParkQuery(pagination.ToApplication(), parkId, criteria, canSeeNonVisible),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        PagedResponseDto<ParkItemVideoDto> response = result.Value.ToPagedResponse(static videoValue => videoValue.ToHttp());
         return this.Ok(response);
     }
 

@@ -4,6 +4,8 @@
   [totalVideos]="totalVideos()"
   [canLoadMore]="canLoadMore()"
   [loadingMore]="loadingMore()"
+  [tabs]="tabs()"
+  [activeTab]="activeTab()"
   [filters]="filters()"
   [typeOptions]="typeOptions()"
   [tagOptions]="tagOptions()"
@@ -16,11 +18,12 @@
   loadingMessageKey="parks.videosPage.loadingMessage"
   errorTitleKey="parks.videosPage.errorTitle"
   errorMessageKey="parks.videosPage.errorMessage"
-  emptyTitleKey="parks.videosPage.emptyTitle"
-  emptyMessageKey="parks.videosPage.emptyMessage"
   [backLinks]="backLinks()"
   [shareTargetId]="park()?.id ?? null"
   [shareTargetTitle]="park()?.name ?? null"
+  [emptyMessageKey]="itemVideosLoading() && activeTab() === 'items' ? 'parks.videosPage.loadingItemsMessage' : 'parks.videosPage.emptyMessage'"
+  [emptyTitleKey]="itemVideosLoading() && activeTab() === 'items' ? 'parks.videosPage.loadingItemsTitle' : 'parks.videosPage.emptyTitle'"
   (filtersChanged)="onFiltersChanged($event)"
+  (tabSelected)="onTabSelected($event)"
   (loadMoreClicked)="onLoadMoreClicked()">
 </app-public-video-list-view>

@@ -13,6 +13,7 @@ import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer
 import { Park } from '@app/models/parks/park';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
+import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { PagedResult } from '@shared/models/contracts';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
@@ -177,14 +178,25 @@ export class ParkDetailStateFacade {
       return;
     }
 
-    this.videosApiService.getVideosPage({
-      page: 1,
-      size: 1,
-      ownerType: VideoOwnerType.PARK,
-      ownerId: parkId
-    }, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (response: PagedResult<VideoDto>) => {
-        this.hasVideosSignal.set(response.pagination.totalItems > 0 || response.items.length > 0);
+    forkJoin({
+      parkVideos: this.videosApiService.getVideosPage({
+        page: 1,
+        size: 1,
+        ownerType: VideoOwnerType.PARK,
+        ownerId: parkId
+      }, anonymousHttpOptions()),
+      itemVideos: this.videosApiService.getParkItemVideosByPark(parkId, {
+        page: 1,
+        size: 1
+      }, anonymousHttpOptions())
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: { parkVideos: PagedResult<VideoDto>; itemVideos: PagedResult<ParkItemVideoDto> }) => {
+        this.hasVideosSignal.set(
+          response.parkVideos.pagination.totalItems > 0 ||
+          response.parkVideos.items.length > 0 ||
+          response.itemVideos.pagination.totalItems > 0 ||
+          response.itemVideos.items.length > 0
+        );
       },
       error: () => {
         this.hasVideosSignal.set(false);

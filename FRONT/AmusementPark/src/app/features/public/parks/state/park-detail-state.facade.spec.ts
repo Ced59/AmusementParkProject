@@ -9,6 +9,7 @@ import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { Park } from '@app/models/parks/park';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
+import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoHostingProvider } from '@app/models/videos/video-hosting-provider';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
@@ -69,13 +70,21 @@ class FakeSsrHttpStatusService {
 
 class FakeVideosPort implements ParkDetailVideosPort {
   public videosResponse$: Observable<PagedResult<VideoDto>> = of(createVideosPage(1));
+  public itemVideosResponse$: Observable<PagedResult<ParkItemVideoDto>> = of(createImagePage<ParkItemVideoDto>([]));
   public readonly calls: VideoSearchQuery[] = [];
+  public readonly itemVideoCalls: { parkId: string; query: VideoSearchQuery }[] = [];
   public readonly options: Array<AnonymousHttpOptions | undefined> = [];
 
   getVideosPage(query: VideoSearchQuery = {}, options?: AnonymousHttpOptions): Observable<PagedResult<VideoDto>> {
     this.calls.push(query);
     this.options.push(options);
     return this.videosResponse$;
+  }
+
+  getParkItemVideosByPark(parkId: string, query: VideoSearchQuery = {}, options?: AnonymousHttpOptions): Observable<PagedResult<ParkItemVideoDto>> {
+    this.itemVideoCalls.push({ parkId, query });
+    this.options.push(options);
+    return this.itemVideosResponse$;
   }
 }
 
@@ -342,6 +351,7 @@ describe('ParkDetailStateFacade', () => {
       ownerType: VideoOwnerType.PARK,
       ownerId: 'park-1'
     }]);
+    expect(context.videosPort.itemVideoCalls).toEqual([{ parkId: 'park-1', query: { page: 1, size: 1 } }]);
     expect(context.parksPort.nearestCalls).toEqual([{ sourceParkId: 'park-1', limit: 4, maxDistanceKilometers: null }]);
     expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
     expect(context.facade.nearbyState().kind).toBe('ready');
@@ -361,6 +371,35 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.videosLink).toBeNull();
   });
 
+  it('exposes the videos link when only park items have videos', () => {
+    const context = configureFacade();
+    context.videosPort.videosResponse$ = of(createVideosPage(0));
+    context.videosPort.itemVideosResponse$ = of(createImagePage<ParkItemVideoDto>([
+      {
+        item: {
+          id: 'item-1',
+          parkId: 'park-1',
+          name: 'Family Ride',
+          category: 'Attraction',
+          type: 'FlatRide',
+          latitude: null,
+          longitude: null
+        },
+        video: {
+          ...createVideo(),
+          id: 'item-video-1',
+          ownerType: VideoOwnerType.PARK_ITEM,
+          ownerId: 'item-1'
+        }
+      }
+    ]));
+
+    context.facade.setCurrentLanguage('fr');
+    context.facade.loadPark('park-1');
+
+    expect(context.facade.park()?.videosLink).toEqual(['/', 'fr', 'park', 'park-1', 'bellewaerde', 'videos']);
+  });
+
   it('keeps public park detail API reads anonymous by default', () => {
     const context = configureFacade();
 
@@ -373,7 +412,7 @@ describe('ParkDetailStateFacade', () => {
       ...context.videosPort.options
     ];
 
-    expect(capturedOptions.length).toBe(4);
+    expect(capturedOptions.length).toBe(5);
     expect(capturedOptions.every((options: AnonymousHttpOptions | undefined) => options?.context.get(SKIP_AUTHORIZATION_HEADER) === true)).toBeTrue();
   });
 
