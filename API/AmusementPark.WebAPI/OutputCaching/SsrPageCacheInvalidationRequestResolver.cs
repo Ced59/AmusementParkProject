@@ -365,10 +365,11 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
 
         if (string.IsNullOrWhiteSpace(ownerType) || string.IsNullOrWhiteSpace(ownerId))
         {
-            return BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments);
+            return WithoutRefresh(BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments));
         }
 
-        return await this.ResolveEntityImpactAsync(ownerType, ownerId, includeSeoDocuments, cancellationToken);
+        SsrPageCacheInvalidationRequest request = await this.ResolveEntityImpactAsync(ownerType, ownerId, includeSeoDocuments, cancellationToken);
+        return WithoutRefresh(request);
     }
 
     private async Task<SsrPageCacheInvalidationRequest> ResolveParkGraphUpsertAsync(
@@ -803,6 +804,19 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             Prefixes = request.Prefixes,
             IncludeSeoDocuments = request.IncludeSeoDocuments,
             AllowStale = false,
+            Refresh = false,
+        };
+    }
+
+    private static SsrPageCacheInvalidationRequest WithoutRefresh(SsrPageCacheInvalidationRequest request)
+    {
+        return new SsrPageCacheInvalidationRequest
+        {
+            All = request.All,
+            Paths = request.Paths,
+            Prefixes = request.Prefixes,
+            IncludeSeoDocuments = request.IncludeSeoDocuments,
+            AllowStale = request.AllowStale,
             Refresh = false,
         };
     }

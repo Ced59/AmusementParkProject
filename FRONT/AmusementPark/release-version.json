@@ -1,6 +1,20 @@
 {
-  "version": "2.7.14",
+  "version": "2.7.15",
   "history": [
+    {
+      "version": "2.7.15",
+      "releasedAt": "2026-06-28",
+      "labels": {
+        "fr": "L'administration gagne en stabilite.",
+        "en": "Admin reliability improves.",
+        "de": "Die Administration wird stabiler.",
+        "nl": "De administratie wordt stabieler.",
+        "it": "L'amministrazione diventa piu stabile.",
+        "es": "La administracion gana estabilidad.",
+        "pl": "Administracja dziala stabilniej.",
+        "pt": "A administracao fica mais estavel."
+      }
+    },
     {
       "version": "2.7.14",
       "releasedAt": "2026-06-28",
