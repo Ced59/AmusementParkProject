@@ -1,0 +1,109 @@
+<article class="admin-photo-batch-card" [class.admin-photo-batch-card--saving]="photo.isSaving">
+  <div class="admin-photo-batch-card__media">
+    <app-image-display
+      [imageId]="photo.image.id"
+      [alt]="photo.image.description || photo.image.originalFileName || photo.image.id"
+      imgClass="admin-photo-batch-card__image"
+      placeholderClass="admin-photo-batch-card__placeholder"
+      placeholderKind="photo"
+      sizes="(max-width: 900px) 100vw, 320px"
+      [srcWidth]="480">
+    </app-image-display>
+  </div>
+
+  <div class="admin-photo-batch-card__body">
+    <header class="admin-photo-batch-card__header">
+      <div>
+        <strong>{{ photo.image.originalFileName || photo.image.description || photo.image.id }}</strong>
+        <span>{{ photo.image.createdAt | date:'short' }}</span>
+      </div>
+      <button
+        type="button"
+        class="btn btn--sm"
+        [class.btn--lime]="photo.image.isPublished"
+        [class.btn--ghost]="!photo.image.isPublished"
+        [disabled]="photo.isSaving"
+        (click)="togglePublicVisibility()">
+        <i class="pi" [class.pi-eye]="photo.image.isPublished" [class.pi-eye-slash]="!photo.image.isPublished" aria-hidden="true"></i>
+        {{ (photo.image.isPublished ? 'admin.images.batch.publicVisible' : 'admin.images.batch.publicHidden') | translate }}
+      </button>
+    </header>
+
+    <dl class="admin-photo-batch-card__metadata">
+      <div>
+        <dt>{{ 'admin.images.batch.owner' | translate }}</dt>
+        <dd>
+          @if (photo.section === 'parkItem') {
+            {{ photo.parkItemName || photo.parkItemId }}
+          } @else {
+            {{ 'admin.images.batch.ownerPark' | translate }}
+          }
+        </dd>
+      </div>
+      <div>
+        <dt>{{ 'admin.images.batch.category' | translate }}</dt>
+        <dd>
+          @if (photo.categoryLabelKey) {
+            {{ photo.categoryLabelKey | translate }}
+          } @else {
+            {{ 'admin.images.batch.uncategorized' | translate }}
+          }
+        </dd>
+      </div>
+      <div>
+        <dt>{{ 'admin.images.batch.geo' | translate }}</dt>
+        <dd [class.admin-photo-batch-card__geo-ok]="hasGeoLocation" [class.admin-photo-batch-card__geo-missing]="!hasGeoLocation">
+          @if (hasGeoLocation) {
+            {{ photo.image.geoLocation?.latitude | number:'1.5-5' }}, {{ photo.image.geoLocation?.longitude | number:'1.5-5' }}
+          } @else {
+            {{ 'admin.images.batch.geoMissing' | translate }}
+          }
+        </dd>
+      </div>
+    </dl>
+
+    <div class="admin-photo-batch-card__form">
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.images.batch.target' | translate }}</span>
+        <select [ngModel]="photo.draftOwnerKind" (ngModelChange)="onOwnerKindChange($event)">
+          <option value="park">{{ 'admin.images.batch.targetPark' | translate }}</option>
+          <option value="parkItem">{{ 'admin.images.batch.targetParkItem' | translate }}</option>
+        </select>
+      </label>
+
+      @if (photo.draftOwnerKind === 'parkItem') {
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.batch.parkItem' | translate }}</span>
+          <select [ngModel]="photo.draftParkItemId || ''" (ngModelChange)="onParkItemChange($event)">
+            <option value="">{{ 'admin.images.batch.chooseParkItem' | translate }}</option>
+            @for (item of parkItems; track item.id) {
+              <option [value]="item.id">{{ item.name }}</option>
+            }
+          </select>
+        </label>
+      }
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.images.batch.category' | translate }}</span>
+        <select [ngModel]="photo.draftCategorySlug" (ngModelChange)="onCategoryChange($event)">
+          @for (category of categoryOptions; track category.slug) {
+            <option [value]="category.slug">{{ category.labelKey | translate }}</option>
+          }
+        </select>
+      </label>
+    </div>
+
+    <footer class="admin-photo-batch-card__actions">
+      <button type="button" class="btn btn--primary btn--sm" [disabled]="!canSave" (click)="savePhoto()">
+        <i class="pi pi-save" aria-hidden="true"></i>
+        {{ 'actions.save' | translate }}
+      </button>
+      @if (photo.section !== 'uncategorized') {
+        <button type="button" class="btn btn--ghost btn--sm" [disabled]="photo.isSaving" (click)="moveToUncategorized()">
+          <i class="pi pi-inbox" aria-hidden="true"></i>
+          {{ 'admin.images.batch.moveToUncategorized' | translate }}
+        </button>
+      }
+    </footer>
+  </div>
+</article>

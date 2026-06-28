@@ -62,9 +62,13 @@
           <i class="pi pi-cog" aria-hidden="true"></i>
           <span>{{ 'admin.technicalPages.title' | translate }}</span>
         </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'images']" routerLinkActive="active">
+        <a [routerLink]="['/', currentLang, 'admin', 'images']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <i class="pi pi-image" aria-hidden="true"></i>
           <span>{{ 'admin.images.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'images', 'batch']" routerLinkActive="active">
+          <i class="pi pi-images" aria-hidden="true"></i>
+          <span>{{ 'admin.images.batch.navTitle' | translate }}</span>
         </a>
         <a [routerLink]="['/', currentLang, 'admin', 'videos']" routerLinkActive="active">
           <i class="pi pi-video" aria-hidden="true"></i>

@@ -1,0 +1,253 @@
+<div class="admin-photo-batch-page">
+  <header class="admin-list-header admin-photo-batch-page__header">
+    <div>
+      <span class="admin-kicker">{{ 'admin.images.batch.kicker' | translate }}</span>
+      <h2>{{ 'admin.images.batch.title' | translate }}</h2>
+      <p>{{ 'admin.images.batch.subtitle' | translate }}</p>
+    </div>
+    <a class="btn btn--ghost btn--sm" [routerLink]="['/', currentLang, 'admin', 'images']">
+      <i class="pi pi-images" aria-hidden="true"></i>
+      {{ 'admin.images.batch.backToLibrary' | translate }}
+    </a>
+  </header>
+
+  <section class="admin-photo-batch-workflow" aria-labelledby="admin-photo-batch-setup-title">
+    <header class="admin-photo-batch-section-header">
+      <div>
+        <h3 id="admin-photo-batch-setup-title">{{ 'admin.images.batch.setupTitle' | translate }}</h3>
+        <p>{{ 'admin.images.batch.setupSubtitle' | translate }}</p>
+      </div>
+      @if (selectedParkName()) {
+        <span class="admin-total-pill">{{ selectedParkName() }}</span>
+      }
+    </header>
+
+    <div class="admin-photo-batch-setup">
+      <div class="admin-photo-batch-setup__parks">
+        <div class="admin-toolbar">
+          <label class="admin-toolbar__search">
+            <span class="admin-field-label">{{ 'admin.images.batch.parkSearch' | translate }}</span>
+            <span class="admin-search-field">
+              <i class="pi pi-search" aria-hidden="true"></i>
+              <input
+                type="search"
+                [ngModel]="parkSearch()"
+                (ngModelChange)="updateParkSearch($event)"
+                (keydown.enter)="searchParks()"
+                [placeholder]="'admin.images.batch.parkSearchPlaceholder' | translate">
+            </span>
+          </label>
+          <button type="button" class="btn btn--ghost btn--sm" [disabled]="parksLoading()" (click)="searchParks()">
+            <i class="pi pi-filter" aria-hidden="true"></i>
+            {{ 'actions.apply' | translate }}
+          </button>
+        </div>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.batch.park' | translate }}</span>
+          <select [ngModel]="selectedParkId() || ''" [disabled]="parksLoading() || uploading()" (ngModelChange)="selectPark($event)">
+            <option value="">{{ 'admin.images.batch.choosePark' | translate }}</option>
+            @for (park of parks(); track park.id) {
+              <option [value]="park.id">{{ park.name }}</option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <div class="admin-photo-batch-setup__upload">
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.batch.files' | translate }}</span>
+          <input type="file" accept="image/*" multiple [disabled]="!selectedParkId() || uploading()" (change)="selectFiles($event)">
+        </label>
+
+        <label class="admin-checkbox-row">
+          <input type="checkbox" [ngModel]="withWatermark()" [disabled]="uploading()" (ngModelChange)="setWithWatermark($event)">
+          <span>{{ 'admin.images.batch.withWatermark' | translate }}</span>
+        </label>
+
+        <div class="admin-photo-batch-setup__actions">
+          <button
+            type="button"
+            class="btn btn--primary btn--sm"
+            [disabled]="!selectedParkId() || selectedFileCount() === 0 || uploading()"
+            (click)="uploadSelectedFiles()">
+            <i class="pi pi-upload" aria-hidden="true"></i>
+            {{ 'admin.images.batch.startUpload' | translate }}
+          </button>
+          @if (selectedFileCount() > 0) {
+            <button type="button" class="btn btn--ghost btn--sm" [disabled]="uploading()" (click)="clearSelectedFiles()">
+              <i class="pi pi-times" aria-hidden="true"></i>
+              {{ 'actions.clear' | translate }}
+            </button>
+          }
+          @if (selectedParkId()) {
+            <button type="button" class="btn btn--ghost btn--sm" [disabled]="uploading() || photosLoading()" (click)="refreshSelectedPark()">
+              <i class="pi pi-refresh" aria-hidden="true"></i>
+              {{ 'actions.refresh' | translate }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    @if (uploadProgress(); as progress) {
+      <div class="admin-photo-batch-progress">
+        <div class="admin-photo-batch-progress__meta">
+          <strong>{{ 'admin.images.batch.uploadProgress' | translate: { current: progress.activeIndex, total: progress.total } }}</strong>
+          <span>{{ progress.currentFileName }}</span>
+        </div>
+        <p-progressBar [value]="uploadPercent()"></p-progressBar>
+      </div>
+    }
+
+    @if (selectedFileCount() > 0) {
+      <section class="admin-photo-batch-queue" aria-labelledby="admin-photo-batch-queue-title">
+        <header class="admin-photo-batch-section-header">
+          <div>
+            <h3 id="admin-photo-batch-queue-title">{{ 'admin.images.batch.queueTitle' | translate: { count: selectedFileCount() } }}</h3>
+            @if (selectedFilesAnalyzing()) {
+              <p>{{ 'admin.images.batch.metadataAnalyzing' | translate }}</p>
+            } @else if (selectedFilesWithoutGeoCount() > 0) {
+              <p>{{ 'admin.images.batch.metadataMissingGeoCount' | translate: { count: selectedFilesWithoutGeoCount() } }}</p>
+            }
+          </div>
+        </header>
+
+        <div class="admin-photo-batch-queue__grid">
+          @for (selection of selectedFiles(); track trackSelectionById($index, selection)) {
+            <article class="admin-photo-batch-selection">
+              <div class="admin-photo-batch-selection__media">
+                <img [src]="selection.previewUrl" [alt]="selection.fileName" loading="lazy" decoding="async">
+              </div>
+              <div class="admin-photo-batch-selection__body">
+                <strong>{{ selection.fileName }}</strong>
+                <span>{{ formatBytes(selection.sizeInBytes) }}</span>
+                <span>
+                  @if (selection.width && selection.height) {
+                    {{ selection.width }} x {{ selection.height }} px
+                  } @else {
+                    {{ 'admin.images.batch.dimensionsPending' | translate }}
+                  }
+                </span>
+                <span [class.admin-photo-batch-selection__geo-ok]="hasSelectionGeo(selection)" [class.admin-photo-batch-selection__geo-missing]="!hasSelectionGeo(selection)">
+                  @if (selection.metadataStatus === 'pending') {
+                    {{ 'admin.images.batch.metadataPending' | translate }}
+                  } @else if (hasSelectionGeo(selection)) {
+                    {{ selection.geoLocation?.latitude | number:'1.5-5' }}, {{ selection.geoLocation?.longitude | number:'1.5-5' }}
+                  } @else {
+                    {{ 'admin.images.batch.geoMissing' | translate }}
+                  }
+                </span>
+                <button type="button" class="btn btn--ghost btn--sm" [disabled]="uploading()" (click)="removeSelectedFile(selection.id)">
+                  <i class="pi pi-trash" aria-hidden="true"></i>
+                  {{ 'admin.images.batch.removeSelection' | translate }}
+                </button>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    }
+  </section>
+
+  @if (selectedParkId()) {
+    <section class="admin-photo-batch-section admin-photo-batch-section--uncategorized" aria-labelledby="admin-photo-batch-uncategorized-title">
+      <header class="admin-photo-batch-section-header">
+        <div>
+          <h3 id="admin-photo-batch-uncategorized-title">{{ 'admin.images.batch.uncategorizedSection' | translate }}</h3>
+          <p>{{ 'admin.images.batch.uncategorizedSubtitle' | translate }}</p>
+        </div>
+        <span class="admin-count-chip">{{ uncategorizedPhotos().length }}</span>
+      </header>
+
+      @if (photosLoading()) {
+        <p class="admin-photo-batch-empty">{{ 'admin.images.batch.photosLoading' | translate }}</p>
+      } @else if (uncategorizedPhotos().length > 0) {
+        <div class="admin-photo-batch-grid">
+          @for (photo of uncategorizedPhotos(); track trackPhotoById($index, photo)) {
+            <app-admin-photo-batch-card
+              [photo]="photo"
+              [parkItems]="parkItems()"
+              [parkCategoryOptions]="categorySets().park"
+              [parkItemCategoryOptions]="categorySets().parkItem"
+              (ownerKindChange)="setPhotoDraftOwnerKind($event)"
+              (parkItemChange)="setPhotoDraftParkItem($event)"
+              (categoryChange)="setPhotoDraftCategory($event)"
+              (save)="savePhotoCategorization($event)"
+              (uncategorize)="movePhotoToUncategorized($event)"
+              (togglePublished)="togglePublished($event)">
+            </app-admin-photo-batch-card>
+          }
+        </div>
+      } @else {
+        <p class="admin-photo-batch-empty">{{ 'admin.images.batch.uncategorizedEmpty' | translate }}</p>
+      }
+    </section>
+
+    <section class="admin-photo-batch-section" aria-labelledby="admin-photo-batch-park-title">
+      <header class="admin-photo-batch-section-header">
+        <div>
+          <h3 id="admin-photo-batch-park-title">{{ 'admin.images.batch.parkSection' | translate }}</h3>
+          <p>{{ 'admin.images.batch.parkSubtitle' | translate }}</p>
+        </div>
+        <span class="admin-count-chip">{{ parkPhotos().length }}</span>
+      </header>
+
+      @if (photosLoading()) {
+        <p class="admin-photo-batch-empty">{{ 'admin.images.batch.photosLoading' | translate }}</p>
+      } @else if (parkPhotos().length > 0) {
+        <div class="admin-photo-batch-grid">
+          @for (photo of parkPhotos(); track trackPhotoById($index, photo)) {
+            <app-admin-photo-batch-card
+              [photo]="photo"
+              [parkItems]="parkItems()"
+              [parkCategoryOptions]="categorySets().park"
+              [parkItemCategoryOptions]="categorySets().parkItem"
+              (ownerKindChange)="setPhotoDraftOwnerKind($event)"
+              (parkItemChange)="setPhotoDraftParkItem($event)"
+              (categoryChange)="setPhotoDraftCategory($event)"
+              (save)="savePhotoCategorization($event)"
+              (uncategorize)="movePhotoToUncategorized($event)"
+              (togglePublished)="togglePublished($event)">
+            </app-admin-photo-batch-card>
+          }
+        </div>
+      } @else {
+        <p class="admin-photo-batch-empty">{{ 'admin.images.batch.parkEmpty' | translate }}</p>
+      }
+    </section>
+
+    <section class="admin-photo-batch-section" aria-labelledby="admin-photo-batch-items-title">
+      <header class="admin-photo-batch-section-header">
+        <div>
+          <h3 id="admin-photo-batch-items-title">{{ 'admin.images.batch.parkItemSection' | translate }}</h3>
+          <p>{{ parkItemsLoading() ? ('admin.images.batch.parkItemsLoading' | translate) : ('admin.images.batch.parkItemSubtitle' | translate) }}</p>
+        </div>
+        <span class="admin-count-chip">{{ parkItemPhotos().length }}</span>
+      </header>
+
+      @if (photosLoading()) {
+        <p class="admin-photo-batch-empty">{{ 'admin.images.batch.photosLoading' | translate }}</p>
+      } @else if (parkItemPhotos().length > 0) {
+        <div class="admin-photo-batch-grid">
+          @for (photo of parkItemPhotos(); track trackPhotoById($index, photo)) {
+            <app-admin-photo-batch-card
+              [photo]="photo"
+              [parkItems]="parkItems()"
+              [parkCategoryOptions]="categorySets().park"
+              [parkItemCategoryOptions]="categorySets().parkItem"
+              (ownerKindChange)="setPhotoDraftOwnerKind($event)"
+              (parkItemChange)="setPhotoDraftParkItem($event)"
+              (categoryChange)="setPhotoDraftCategory($event)"
+              (save)="savePhotoCategorization($event)"
+              (uncategorize)="movePhotoToUncategorized($event)"
+              (togglePublished)="togglePublished($event)">
+            </app-admin-photo-batch-card>
+          }
+        </div>
+      } @else {
+        <p class="admin-photo-batch-empty">{{ 'admin.images.batch.parkItemEmpty' | translate }}</p>
+      }
+    </section>
+  }
+</div>
