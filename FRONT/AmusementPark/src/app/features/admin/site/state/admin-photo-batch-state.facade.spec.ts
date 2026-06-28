@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
+import { AdminImageSearchQuery } from '@app/models/images/admin-image-search-query';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageGeoLocation } from '@app/models/images/image-geo-location';
@@ -36,12 +37,16 @@ type UpdateAdminImageRequest = Parameters<AdminPhotoBatchImagesPort['updateAdmin
 class FakeImagesPort implements AdminPhotoBatchImagesPort {
   public parkImagesPage$: Observable<PagedResult<ImageDto>> = of(createPagedResult<ImageDto>([]));
   public parkItemImagesPage$: Observable<PagedResult<ParkItemImageDto>> = of(createPagedResult<ParkItemImageDto>([]));
+  public parkImagesPages: Record<number, PagedResult<ImageDto>> = {};
+  public parkItemImagesPages: Record<number, PagedResult<ParkItemImageDto>> = {};
   public uploadResponse$: Observable<UploadedImage> = of({ id: 'uploaded-1' });
   public linkResponse$: Observable<ImageDto> = of(createImage('image-1', { isPublished: true }));
   public tagsResponse$: Observable<ImageTagDto[]> = of(createCategoryTags());
 
   public readonly uploadCalls: File[] = [];
   public readonly updateCalls: Array<{ id: string; request: UpdateAdminImageRequest }> = [];
+  public readonly adminImageQueries: Partial<AdminImageSearchQuery>[] = [];
+  public readonly parkItemImageCalls: Array<{ parkId: string; page: number; size: number }> = [];
 
   uploadImage(file: File): Observable<UploadedImage> {
     this.uploadCalls.push(file);
@@ -65,12 +70,17 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
     }));
   }
 
-  getAdminImages(): Observable<PagedResult<ImageDto>> {
-    return this.parkImagesPage$;
+  getAdminImages(query: Partial<AdminImageSearchQuery> = {}): Observable<PagedResult<ImageDto>> {
+    this.adminImageQueries.push(query);
+    const page: number = query.page ?? 1;
+    const pageResponse: PagedResult<ImageDto> | undefined = this.parkImagesPages[page];
+    return pageResponse ? of(pageResponse) : this.parkImagesPage$;
   }
 
-  getParkItemImagesByPark(): Observable<PagedResult<ParkItemImageDto>> {
-    return this.parkItemImagesPage$;
+  getParkItemImagesByPark(parkId: string, page: number = 1, size: number = 24): Observable<PagedResult<ParkItemImageDto>> {
+    this.parkItemImageCalls.push({ parkId, page, size });
+    const pageResponse: PagedResult<ParkItemImageDto> | undefined = this.parkItemImagesPages[page];
+    return pageResponse ? of(pageResponse) : this.parkItemImagesPage$;
   }
 
   getAdminImageTags(): Observable<ImageTagDto[]> {
@@ -103,8 +113,12 @@ class FakeParksPort implements AdminPhotoBatchParksPort {
 }
 
 class FakeParkItemsPort implements AdminPhotoBatchParkItemsPort {
-  getParkItemsPaginated(): Observable<ApiResponse<ParkItemAdminRow>> {
-    return of({
+  public responsesByPage: Record<number, ApiResponse<ParkItemAdminRow>> = {};
+  public readonly calls: Array<{ page: number; size: number; parkId: string | null | undefined }> = [];
+
+  getParkItemsPaginated(page: number, size: number, parkId?: string | null): Observable<ApiResponse<ParkItemAdminRow>> {
+    this.calls.push({ page, size, parkId });
+    return of(this.responsesByPage[page] ?? {
       data: [createParkItemRow('item-1', 'Demo Coaster')],
       pagination: createPagination(1)
     });
@@ -114,12 +128,14 @@ class FakeParkItemsPort implements AdminPhotoBatchParkItemsPort {
 describe('AdminPhotoBatchStateFacade', () => {
   let facade: AdminPhotoBatchStateFacade;
   let imagesPort: FakeImagesPort;
+  let parkItemsPort: FakeParkItemsPort;
   let metadataReader: jasmine.SpyObj<AdminContextualPhotoMetadataReaderService>;
   let imageUploadSecurityService: jasmine.SpyObj<ImageUploadSecurityService>;
   let toastMessageService: jasmine.SpyObj<ToastMessageService>;
 
   beforeEach(() => {
     imagesPort = new FakeImagesPort();
+    parkItemsPort = new FakeParkItemsPort();
     metadataReader = jasmine.createSpyObj<AdminContextualPhotoMetadataReaderService>('AdminContextualPhotoMetadataReaderService', ['readFile']);
     imageUploadSecurityService = jasmine.createSpyObj<ImageUploadSecurityService>('ImageUploadSecurityService', ['filterValidImageFiles']);
     toastMessageService = jasmine.createSpyObj<ToastMessageService>('ToastMessageService', ['add']);
@@ -131,7 +147,7 @@ describe('AdminPhotoBatchStateFacade', () => {
         AdminPhotoBatchStateFacade,
         { provide: ADMIN_PHOTO_BATCH_IMAGES_PORT, useValue: imagesPort },
         { provide: ADMIN_PHOTO_BATCH_PARKS_PORT, useClass: FakeParksPort },
-        { provide: ADMIN_PHOTO_BATCH_PARK_ITEMS_PORT, useClass: FakeParkItemsPort },
+        { provide: ADMIN_PHOTO_BATCH_PARK_ITEMS_PORT, useValue: parkItemsPort },
         { provide: AdminContextualPhotoMetadataReaderService, useValue: metadataReader },
         { provide: ImageUploadSecurityService, useValue: imageUploadSecurityService },
         { provide: ToastMessageService, useValue: toastMessageService },
@@ -161,6 +177,47 @@ describe('AdminPhotoBatchStateFacade', () => {
     expect(imagesPort.updateCalls[0].request.isPublished).toBeFalse();
     expect(imagesPort.updateCalls[0].request.geoLocation).toEqual({ latitude: 50.1, longitude: 3.2 });
     expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual(['image-1']);
+  });
+
+  it('loads park photos and park items with API-bounded pages', async () => {
+    parkItemsPort.responsesByPage = {
+      1: {
+        data: [createParkItemRow('item-1', 'Demo Coaster')],
+        pagination: createPagination(2, 1, 2, 100)
+      },
+      2: {
+        data: [createParkItemRow('item-2', 'Demo Show')],
+        pagination: createPagination(2, 2, 2, 100)
+      }
+    };
+    imagesPort.parkImagesPages = {
+      1: createPagedResult<ImageDto>([
+        createImage('uncategorized-1', { isPublished: false, tagIds: [] })
+      ], createPagination(2, 1, 2, 100)),
+      2: createPagedResult<ImageDto>([
+        createImage('park-1-photo', {
+          isPublished: false,
+          tagIds: [`${PARK_PHOTO_CATEGORY_OPTIONS[0].slug}-tag`]
+        })
+      ], createPagination(2, 2, 2, 100))
+    };
+
+    await prepareSelectedParkAsync(facade);
+
+    expect(parkItemsPort.calls.map((call) => ({ page: call.page, size: call.size }))).toEqual([
+      { page: 1, size: 100 },
+      { page: 2, size: 100 }
+    ]);
+    expect(imagesPort.adminImageQueries.map((query) => ({ page: query.page, size: query.size }))).toEqual([
+      { page: 1, size: 100 },
+      { page: 2, size: 100 }
+    ]);
+    expect(imagesPort.parkItemImageCalls).toEqual([
+      { parkId: 'park-1', page: 1, size: 100 }
+    ]);
+    expect(facade.parkItems().map((item) => item.id)).toEqual(['item-1', 'item-2']);
+    expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual(['uncategorized-1']);
+    expect(facade.parkPhotos().map((photo) => photo.id)).toEqual(['park-1-photo']);
   });
 
   it('categorizes a draft photo as a park item photo with the selected category tag', async () => {
@@ -290,12 +347,12 @@ function createParkItemRow(id: string, name: string): ParkItemAdminRow {
   };
 }
 
-function createPagination(totalItems: number) {
+function createPagination(totalItems: number, currentPage: number = 1, totalPages: number = 1, itemsPerPage: number = Math.max(totalItems, 1)) {
   return {
     totalItems,
-    totalPages: 1,
-    currentPage: 1,
-    itemsPerPage: Math.max(totalItems, 1)
+    totalPages,
+    currentPage,
+    itemsPerPage
   };
 }
 
