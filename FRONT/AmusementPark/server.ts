@@ -58,6 +58,7 @@ const targetedRefreshMaxUrls = Math.max(0, Number(process.env['SSR_TARGETED_REFR
 const targetedRefreshConcurrency = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_CONCURRENCY'] ?? 1));
 const targetedRefreshDelayMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_REFRESH_DELAY_MILLISECONDS'] ?? 1500));
 const targetedRefreshTimeoutSeconds = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_TIMEOUT_SECONDS'] ?? 45));
+const targetedInvalidationDebounceMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_INVALIDATION_DEBOUNCE_MILLISECONDS'] ?? 250));
 const technicalStatsPersistenceEnabled = (process.env['SSR_TECHNICAL_STATS_PERSISTENCE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const technicalStatsPersistenceDirectory = process.env['SSR_TECHNICAL_STATS_PERSISTENCE_DIR'] ?? join(diskPageCacheDirectory, 'technical-stats');
 const technicalStatsSettingsFilePath = join(technicalStatsPersistenceDirectory, 'settings.json');
@@ -82,6 +83,9 @@ const pendingRenderQueue: Array<() => void> = [];
 const pendingTargetedRefreshQueue: string[] = [];
 const queuedTargetedRefreshKeys = new Set<string>();
 let activeTargetedRefreshCount = 0;
+let pendingTargetedInvalidationRequest: NormalizedCacheInvalidationRequest | null = null;
+let pendingTargetedInvalidationTimer: ReturnType<typeof setTimeout> | null = null;
+let targetedInvalidationInProgress = false;
 
 type SsrPageResponseStatus =
   'HIT'
@@ -226,6 +230,7 @@ interface CacheInvalidationResult {
   readonly stalePageEntries: number;
   readonly queuedRefreshes: number;
   readonly all: boolean;
+  readonly deferred?: boolean;
 }
 
 interface SeoDocumentCacheEntry {
@@ -296,9 +301,13 @@ export function app(): express.Express {
     }
 
     const invalidationRequest = normalizeCacheInvalidationRequest(req.body);
+    if (invalidationRequest.all) {
+      clearPendingTargetedSsrCacheInvalidation();
+    }
+
     const result = invalidationRequest.all
       ? clearAllSsrCaches()
-      : clearTargetedSsrCaches(invalidationRequest);
+      : enqueueTargetedSsrCacheInvalidation(invalidationRequest);
 
     recordCacheInvalidation(invalidationRequest, result);
 
@@ -1863,18 +1872,103 @@ function clearTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): Ca
   };
 }
 
+function enqueueTargetedSsrCacheInvalidation(request: NormalizedCacheInvalidationRequest): CacheInvalidationResult {
+  pendingTargetedInvalidationRequest = pendingTargetedInvalidationRequest === null
+    ? request
+    : mergeTargetedInvalidationRequests(pendingTargetedInvalidationRequest, request);
+
+  scheduleTargetedSsrCacheInvalidation();
+
+  return {
+    cleared: 0,
+    pageMemoryEntries: 0,
+    pageDiskEntries: 0,
+    seoDocumentEntries: 0,
+    stalePageEntries: 0,
+    queuedRefreshes: 0,
+    all: false,
+    deferred: true
+  };
+}
+
+function scheduleTargetedSsrCacheInvalidation(): void {
+  if (pendingTargetedInvalidationTimer !== null || targetedInvalidationInProgress) {
+    return;
+  }
+
+  pendingTargetedInvalidationTimer = setTimeout(processPendingTargetedSsrCacheInvalidation, targetedInvalidationDebounceMilliseconds);
+}
+
+function processPendingTargetedSsrCacheInvalidation(): void {
+  pendingTargetedInvalidationTimer = null;
+
+  if (targetedInvalidationInProgress || pendingTargetedInvalidationRequest === null) {
+    return;
+  }
+
+  const request = pendingTargetedInvalidationRequest;
+  pendingTargetedInvalidationRequest = null;
+  targetedInvalidationInProgress = true;
+
+  try {
+    const result = clearTargetedSsrCaches(request);
+    recordCacheInvalidationResult(result);
+  } catch (error: unknown) {
+    console.warn('SSR targeted cache invalidation failed', error);
+  } finally {
+    targetedInvalidationInProgress = false;
+
+    if (pendingTargetedInvalidationRequest !== null) {
+      scheduleTargetedSsrCacheInvalidation();
+    }
+  }
+}
+
+function clearPendingTargetedSsrCacheInvalidation(): void {
+  if (pendingTargetedInvalidationTimer !== null) {
+    clearTimeout(pendingTargetedInvalidationTimer);
+    pendingTargetedInvalidationTimer = null;
+  }
+
+  pendingTargetedInvalidationRequest = null;
+}
+
+function mergeTargetedInvalidationRequests(
+  current: NormalizedCacheInvalidationRequest,
+  next: NormalizedCacheInvalidationRequest
+): NormalizedCacheInvalidationRequest {
+  const allowStale = current.allowStale && next.allowStale;
+
+  return {
+    all: false,
+    paths: mergeNormalizedStrings(current.paths, next.paths),
+    prefixes: mergeNormalizedStrings(current.prefixes, next.prefixes),
+    includeSeoDocuments: current.includeSeoDocuments || next.includeSeoDocuments,
+    allowStale,
+    refresh: allowStale && (current.refresh || next.refresh)
+  };
+}
+
+function mergeNormalizedStrings(current: string[], next: string[]): string[] {
+  return Array.from(new Set([...current, ...next]));
+}
+
 function recordCacheInvalidation(request: NormalizedCacheInvalidationRequest, result: CacheInvalidationResult): void {
   technicalStatsCounters.invalidationRequests += 1;
-  technicalStatsCounters.invalidationClearedEntries += result.cleared;
-  technicalStatsCounters.invalidationStaleEntries += result.stalePageEntries;
-  technicalStatsCounters.invalidationQueuedRefreshes += result.queuedRefreshes;
-  technicalStatsCounters.lastInvalidationUtc = new Date().toISOString();
+  recordCacheInvalidationResult(result);
 
   if (request.all) {
     technicalStatsCounters.invalidationAllRequests += 1;
   } else {
     technicalStatsCounters.invalidationTargetedRequests += 1;
   }
+}
+
+function recordCacheInvalidationResult(result: CacheInvalidationResult): void {
+  technicalStatsCounters.invalidationClearedEntries += result.cleared;
+  technicalStatsCounters.invalidationStaleEntries += result.stalePageEntries;
+  technicalStatsCounters.invalidationQueuedRefreshes += result.queuedRefreshes;
+  technicalStatsCounters.lastInvalidationUtc = new Date().toISOString();
 }
 
 function clearMatchingMemoryPageCache(request: NormalizedCacheInvalidationRequest, matchedCacheKeys: Set<string>): number {
