@@ -3223,6 +3223,13 @@
       "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
       "loadingTitle": "Loading videos",
       "loadingMessage": "Preparing the park videos.",
+      "loadingItemsTitle": "Loading place videos",
+      "loadingItemsMessage": "Preparing videos from places at {{name}}.",
+      "tabs": {
+        "label": "Video sections",
+        "park": "Park",
+        "items": "Park places"
+      },
       "errorTitle": "Videos unavailable",
       "errorMessage": "The videos for this park cannot be loaded right now.",
       "backToPark": "Back to {{name}}",

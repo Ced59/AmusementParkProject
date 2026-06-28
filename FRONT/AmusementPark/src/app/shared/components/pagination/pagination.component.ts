@@ -63,6 +63,14 @@ export class PaginationComponent {
   }
 
   protected onPageChange(event: PaginatorState): void {
+    const nextFirst: number = event.first ?? this.resolvedFirst;
+    const nextRows: number = event.rows ?? this.resolvedRows;
+    const isCurrentPageEvent: boolean = nextFirst === this.resolvedFirst && nextRows === this.resolvedRows;
+
+    if (isCurrentPageEvent) {
+      return;
+    }
+
     this.pageChanged.emit(event);
 
     if (!this.scrollOnPageChange) {

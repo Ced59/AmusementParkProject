@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { TranslationService } from '@app/services/translation.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
@@ -41,6 +43,7 @@ export class ParkItemsPageComponent implements OnInit {
   protected readonly selectedClosedFilter = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly searchChanges: Subject<string> = new Subject<string>();
   private currentParkId: string | null = null;
 
   constructor(
@@ -70,6 +73,22 @@ export class ParkItemsPageComponent implements OnInit {
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.currentLanguage.set(language);
       this.stateFacade.setCurrentLanguage(language);
+    });
+
+    this.searchChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((searchTerm: string) => {
+      this.updateQueryParams({
+        search: searchTerm,
+        category: this.selectedCategory(),
+        type: this.selectedType(),
+        zone: this.selectedZoneId(),
+        closed: this.selectedClosedFilter(),
+        page: 1,
+        size: this.pageSize()
+      });
     });
 
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
@@ -125,15 +144,7 @@ export class ParkItemsPageComponent implements OnInit {
 
   onSearchChanged(value: string): void {
     this.searchTerm.set(value ?? '');
-    this.updateQueryParams({
-      search: this.searchTerm(),
-      category: this.selectedCategory(),
-      type: this.selectedType(),
-      zone: this.selectedZoneId(),
-      closed: this.selectedClosedFilter(),
-      page: 1,
-      size: this.pageSize()
-    });
+    this.searchChanges.next(this.searchTerm());
   }
 
   onCategoryChanged(value: string | null): void {
@@ -207,6 +218,7 @@ export class ParkItemsPageComponent implements OnInit {
     this.selectedType.set(null);
     this.selectedZoneId.set(null);
     this.selectedClosedFilter.set(DEFAULT_CLOSED_ENTITY_FILTER);
+    this.searchChanges.next('');
 
     this.updateQueryParams({
       search: null,

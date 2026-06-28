@@ -1,5 +1,6 @@
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Videos.Contracts;
+using AmusementPark.Application.Features.Videos.Results;
 using AmusementPark.Core.Domain.Videos;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Videos;
@@ -196,6 +197,15 @@ internal static class VideosHttpMappers
             IsActive = value.IsActive,
             CreatedAt = value.CreatedAtUtc,
             UpdatedAt = value.UpdatedAtUtc,
+        };
+    }
+
+    public static ParkItemVideoDto ToHttp(this ParkItemVideoResult value)
+    {
+        return new ParkItemVideoDto
+        {
+            Video = value.Video.ToHttp(),
+            Item = value.Item.ToHttp(),
         };
     }
 

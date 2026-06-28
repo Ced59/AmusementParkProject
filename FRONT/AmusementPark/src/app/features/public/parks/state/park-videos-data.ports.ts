@@ -2,6 +2,7 @@ import { inject, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
+import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
 import { VideoTagDto } from '@app/models/videos/video-tag-dto';
@@ -16,6 +17,7 @@ export interface ParkVideosParksPort {
 
 export interface ParkVideosVideosPort {
   getVideosPage(query?: VideoSearchQuery, options?: AnonymousHttpOptions): Observable<PagedResult<VideoDto>>;
+  getParkItemVideosByPark(parkId: string, query?: VideoSearchQuery, options?: AnonymousHttpOptions): Observable<PagedResult<ParkItemVideoDto>>;
   getVideoById(id: string, options?: AnonymousHttpOptions, languageCode?: string | null): Observable<VideoDto>;
   getVideoTags(options?: AnonymousHttpOptions): Observable<VideoTagDto[]>;
 }

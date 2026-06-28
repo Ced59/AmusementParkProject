@@ -6,6 +6,13 @@
       "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
       "loadingTitle": "Loading videos",
       "loadingMessage": "Preparing the park videos.",
+      "loadingItemsTitle": "Plekvideo's laden",
+      "loadingItemsMessage": "Video's van plekken in {{name}} worden voorbereid.",
+      "tabs": {
+        "label": "Videosecties",
+        "park": "Park",
+        "items": "Plekken in het park"
+      },
       "errorTitle": "Videos unavailable",
       "errorMessage": "The videos for this park cannot be loaded right now.",
       "backToPark": "Back to {{name}}",

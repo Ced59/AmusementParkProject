@@ -6,6 +6,13 @@
       "subtitle": "Regarde les vidéos de {{name}} : onrides, offrides, clips officiels et contenus créateurs.",
       "loadingTitle": "Chargement des vidéos",
       "loadingMessage": "Préparation des vidéos du parc.",
+      "loadingItemsTitle": "Chargement des vidéos des lieux",
+      "loadingItemsMessage": "Préparation des vidéos des lieux de {{name}}.",
+      "tabs": {
+        "label": "Sections vidéos",
+        "park": "Parc",
+        "items": "Lieux du parc"
+      },
       "errorTitle": "Vidéos indisponibles",
       "errorMessage": "Impossible de charger les vidéos de ce parc pour le moment.",
       "backToPark": "Retour à {{name}}",

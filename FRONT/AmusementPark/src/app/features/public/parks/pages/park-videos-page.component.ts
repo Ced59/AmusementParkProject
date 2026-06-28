@@ -11,13 +11,14 @@ import {
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicVideoFilterState } from '@features/public/videos/models/public-video-view.model';
-import { PublicVideoBackLink, PublicVideoListViewComponent } from '@features/public/videos/ui/public-video-list-view.component';
+import { PublicVideoBackLink, PublicVideoListTab, PublicVideoListViewComponent } from '@features/public/videos/ui/public-video-list-view.component';
 import {
   buildPublicVideoFilterKey,
   buildPublicVideoFilterQueryParams,
   parsePublicVideoFilters
 } from '@features/public/videos/utils/public-video-filter-query.helpers';
 import { ParkVideosStateFacade } from '../state/park-videos-state.facade';
+import { ParkVideosGalleryTab } from '../models/park-videos-view.model';
 
 @Component({
   selector: 'app-park-videos-page',
@@ -33,17 +34,24 @@ export class ParkVideosPageComponent implements OnInit {
   protected readonly parkImageId = this.stateFacade.parkImageId;
   protected readonly videos = this.stateFacade.videoCards;
   protected readonly totalVideos = this.stateFacade.totalVideos;
+  protected readonly parkTabVideoCount = this.stateFacade.parkTabVideoCount;
+  protected readonly itemTabVideoCount = this.stateFacade.itemTabVideoCount;
+  protected readonly showItemTab = this.stateFacade.showItemTab;
+  protected readonly activeTab = this.stateFacade.activeTab;
   protected readonly canLoadMore = this.stateFacade.canLoadMore;
   protected readonly loadingMore = this.stateFacade.loadingMore;
+  protected readonly itemVideosLoading = this.stateFacade.itemVideosLoading;
   protected readonly filters = this.stateFacade.filters;
   protected readonly typeOptions = this.stateFacade.typeOptions;
   protected readonly tagOptions = this.stateFacade.tagOptions;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly titleParams = signal<Record<string, string | number | null | undefined>>({});
   protected readonly backLinks = signal<PublicVideoBackLink[]>([]);
+  protected readonly tabs = signal<PublicVideoListTab[]>([]);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private currentLoadKey: string | null = null;
+  private currentParkId: string | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -62,6 +70,12 @@ export class ParkVideosPageComponent implements OnInit {
         name: currentPark.name,
         count: this.totalVideos()
       });
+      this.tabs.set(this.showItemTab()
+        ? [
+          { id: 'park', labelKey: 'parks.videosPage.tabs.park', count: this.parkTabVideoCount() },
+          { id: 'items', labelKey: 'parks.videosPage.tabs.items', count: this.itemTabVideoCount() }
+        ]
+        : []);
       this.backLinks.set([
         {
           routerLink: buildPublicParkRouteCommands({
@@ -115,6 +129,11 @@ export class ParkVideosPageComponent implements OnInit {
           return;
         }
 
+        if (parkId !== this.currentParkId) {
+          this.currentParkId = parkId;
+          this.stateFacade.selectTab('park');
+        }
+
         const filters: PublicVideoFilterState = parsePublicVideoFilters(queryParams);
         const loadKey: string = `${parkId}|${buildPublicVideoFilterKey(filters)}`;
         if (loadKey === this.currentLoadKey) {
@@ -135,5 +154,11 @@ export class ParkVideosPageComponent implements OnInit {
 
   onLoadMoreClicked(): void {
     this.stateFacade.loadNextPage();
+  }
+
+  onTabSelected(tabId: string): void {
+    if (tabId === 'park' || tabId === 'items') {
+      this.stateFacade.selectTab(tabId as ParkVideosGalleryTab);
+    }
   }
 }
