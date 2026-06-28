@@ -441,6 +441,32 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         imageRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task ResolveAsync_ForImageMutation_ShouldTargetOwnerWithoutImmediateRefresh()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("Images", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new Image
+        {
+            Id = "image-1",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/", request.Prefixes);
+        Assert.Contains("/fr/home", request.Paths);
+        Assert.True(request.IncludeSeoDocuments);
+        Assert.True(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
     private static SsrPageCacheInvalidationRequestResolver CreateResolver(
         Mock<IParkRepository>? parkRepository = null,
         Mock<IParkItemRepository>? parkItemRepository = null,
