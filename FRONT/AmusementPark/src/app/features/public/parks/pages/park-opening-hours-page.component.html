@@ -87,64 +87,123 @@
         }
 
         @if (monthGroup(data.calendar); as group) {
-          <section class="park-opening-hours-month">
-            <header class="park-opening-hours-month__header">
-              <h2>{{ group.label }}</h2>
-              <p>{{ monthSummaryKey(group) | translate:{ open: group.openDays, closed: group.closedDays } }}</p>
-            </header>
+          <div class="park-opening-hours-calendar__content">
+            <section class="park-opening-hours-month">
+              <header class="park-opening-hours-month__header">
+                <h2>{{ group.label }}</h2>
+                <p>{{ monthSummaryKey(group) | translate:{ open: group.openDays, closed: group.closedDays } }}</p>
+              </header>
 
-            <div class="park-opening-hours-month__table-wrap">
-              <table class="park-opening-hours-month__table">
-                <caption>{{ group.label }}</caption>
-                <thead>
-                  <tr>
-                    @for (weekDayLabel of weekDayLabels(); track weekDayLabel) {
-                      <th scope="col">{{ weekDayLabel }}</th>
-                    }
-                  </tr>
-                </thead>
-                <tbody>
-                  @for (week of group.weeks; track week.key) {
+              <div class="park-opening-hours-month__table-wrap">
+                <table class="park-opening-hours-month__table">
+                  <caption>{{ group.label }}</caption>
+                  <thead>
                     <tr>
-                      @for (cell of week.cells; track cell.key) {
-                        <td
-                          [class.park-opening-hours-cell--empty]="cell.tone === 'empty'"
-                          [class.park-opening-hours-cell--closed]="cell.tone === 'closed'"
-                          [class.park-opening-hours-cell--short]="cell.tone === 'short'"
-                          [class.park-opening-hours-cell--standard]="cell.tone === 'standard'"
-                          [class.park-opening-hours-cell--long]="cell.tone === 'long'"
-                          [class.park-opening-hours-cell--today]="cell.isToday"
-                          [attr.aria-label]="cellAriaLabel(cell)">
-                          @if (cell.localDate) {
-                            <div class="park-opening-hours-cell">
-                              @if (cell.tone !== 'empty') {
-                                <span class="park-opening-hours-cell__tone" aria-hidden="true"></span>
-                              }
-                              <span class="park-opening-hours-cell__date">{{ cell.dayNumber }}</span>
-                              @if (cell.isToday) {
-                                <span class="park-opening-hours-cell__today">{{ 'parkOpeningHours.page.today' | translate }}</span>
-                              }
-
-                              @if (cell.day; as day) {
-                                @if (cell.tone === 'closed') {
-                                  <span class="park-opening-hours-cell__status">{{ 'parkOpeningHours.page.closed' | translate }}</span>
-                                } @else {
-                                  <span class="park-opening-hours-cell__hours">{{ formatCompactRanges(day) }}</span>
-                                  @if (publicDayNote(day); as note) {
-                                    <small>{{ note }}</small>
-                                  }
-                                }
-                              }
-                            </div>
-                          }
-                        </td>
+                      @for (weekDayLabel of weekDayLabels(); track weekDayLabel) {
+                        <th scope="col">{{ weekDayLabel }}</th>
                       }
                     </tr>
-                  }
-                </tbody>
-              </table>
-            </div>
-          </section>
+                  </thead>
+                  <tbody>
+                    @for (week of group.weeks; track week.key) {
+                      <tr>
+                        @for (cell of week.cells; track cell.key) {
+                          <td
+                            [class.park-opening-hours-cell--placeholder]="!cell.localDate"
+                            [class.park-opening-hours-cell--undefined]="cell.localDate && cell.tone === 'empty'"
+                            [class.park-opening-hours-cell--closed]="cell.tone === 'closed'"
+                            [class.park-opening-hours-cell--short]="cell.tone === 'short'"
+                            [class.park-opening-hours-cell--standard]="cell.tone === 'standard'"
+                            [class.park-opening-hours-cell--long]="cell.tone === 'long'"
+                            [class.park-opening-hours-cell--today]="cell.isToday"
+                            [class.park-opening-hours-cell--selected]="isSelectedCell(cell)">
+                            @if (cell.localDate) {
+                              <button
+                                type="button"
+                                class="park-opening-hours-cell"
+                                [attr.aria-label]="cellAriaLabel(cell)"
+                                [attr.aria-pressed]="isSelectedCell(cell)"
+                                (click)="selectDay(cell)">
+                                @if (cell.tone !== 'empty') {
+                                  <span class="park-opening-hours-cell__tone" aria-hidden="true"></span>
+                                }
+                                @if (hasPublicDayNote(cell.day)) {
+                                  <span class="park-opening-hours-cell__event" aria-hidden="true">
+                                    <i class="pi pi-info-circle"></i>
+                                  </span>
+                                }
+                                <span class="park-opening-hours-cell__date">{{ cell.dayNumber }}</span>
+                                @if (cell.isToday) {
+                                  <span class="park-opening-hours-cell__today">{{ 'parkOpeningHours.page.today' | translate }}</span>
+                                }
+
+                                @if (cell.day; as day) {
+                                  @if (cell.tone === 'closed') {
+                                    <span class="park-opening-hours-cell__status">{{ 'parkOpeningHours.page.closed' | translate }}</span>
+                                  } @else {
+                                    <span class="park-opening-hours-cell__hours">{{ formatCompactRanges(day) }}</span>
+                                  }
+                                }
+                              </button>
+                            }
+                          </td>
+                        }
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            @if (selectedDayDetails(data.calendar); as details) {
+              <aside class="park-opening-hours-day-detail" [attr.aria-label]="'parkOpeningHours.page.dayDetailAriaLabel' | translate">
+                <header class="park-opening-hours-day-detail__header">
+                  <p>
+                    @if (details.isToday) {
+                      {{ 'parkOpeningHours.page.today' | translate }}
+                    } @else {
+                      {{ 'parkOpeningHours.page.selectedDay' | translate }}
+                    }
+                  </p>
+                  <h3>{{ formatDate(details.localDate) }}</h3>
+                  <span
+                    class="park-opening-hours-day-detail__status"
+                    [class.park-opening-hours-day-detail__status--open]="details.status === 'open'"
+                    [class.park-opening-hours-day-detail__status--closed]="details.status === 'closed'"
+                    [class.park-opening-hours-day-detail__status--not-defined]="details.status === 'notDefined'">
+                    {{ selectedDayStatusLabelKey(details) | translate }}
+                  </span>
+                </header>
+
+                @if (details.status === 'open' && details.day) {
+                  <div class="park-opening-hours-day-detail__section">
+                    <h4>{{ 'parkOpeningHours.page.dayHoursTitle' | translate }}</h4>
+                    <ul class="park-opening-hours-day-detail__ranges">
+                      @for (range of details.day.timeRanges; track range.opensAt + '-' + range.closesAt + '-' + range.closesNextDay) {
+                        <li>
+                          <strong>{{ formatRange(range) }}</strong>
+                          @if (range.lastAdmissionAt) {
+                            <span>{{ 'parkOpeningHours.page.lastAdmission' | translate:{ time: formatLastAdmission(range) } }}</span>
+                          }
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                } @else if (details.status === 'closed') {
+                  <p class="park-opening-hours-day-detail__message">{{ 'parkOpeningHours.page.dayClosedMessage' | translate }}</p>
+                } @else {
+                  <p class="park-opening-hours-day-detail__message">{{ 'parkOpeningHours.page.dayNotDefinedMessage' | translate }}</p>
+                }
+
+                @if (details.note) {
+                  <div class="park-opening-hours-day-detail__section park-opening-hours-day-detail__section--event">
+                    <h4>{{ 'parkOpeningHours.page.dayInformationTitle' | translate }}</h4>
+                    <p>{{ details.note }}</p>
+                  </div>
+                }
+              </aside>
+            }
+          </div>
         }
       </section>
 

@@ -1,6 +1,20 @@
 {
-  "version": "3.0.2",
+  "version": "3.0.3",
   "history": [
+    {
+      "version": "3.0.3",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les détails des horaires deviennent plus utiles.",
+        "en": "Opening-hour details become more useful.",
+        "de": "Details zu Oeffnungszeiten werden nuetzlicher.",
+        "nl": "Details van openingstijden worden nuttiger.",
+        "it": "I dettagli degli orari diventano piu utili.",
+        "es": "Los detalles de horarios son mas utiles.",
+        "pl": "Szczegoly godzin otwarcia sa bardziej przydatne.",
+        "pt": "Os detalhes dos horarios ficam mais uteis."
+      }
+    },
     {
       "version": "3.0.2",
       "releasedAt": "2026-06-30",
