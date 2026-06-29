@@ -108,7 +108,7 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
         Assert.True(result.Value.WasGeneratedOnDemand);
-        Assert.Contains("https://example.com/sitemaps/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
         Assert.NotNull(savedSnapshot);
         Assert.NotNull(historyEntry);
         Assert.Equal(SitemapGenerationTrigger.PublicFallback, historyEntry!.Trigger);

@@ -150,7 +150,7 @@ public sealed class GetSeoSitemapOverviewQueryHandler : IQueryHandler<GetSeoSite
             SitemapIndexUrl = $"{publicBaseUrl}/sitemap.xml",
             RobotsUrl = $"{publicBaseUrl}/robots.txt",
             IndexNowKeyFileUrl = BuildKeyFileUrl(publicBaseUrl, settings),
-            PublicSitemapUrls = sections.Select(section => $"{publicBaseUrl}/sitemaps/{section.FileName}").ToList(),
+            PublicSitemapUrls = sections.Select(section => $"{publicBaseUrl}/{section.FileName}").ToList(),
         };
 
         return ApplicationResult<SeoSitemapOverviewResult>.Success(result);

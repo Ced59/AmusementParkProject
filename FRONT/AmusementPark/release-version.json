@@ -1,6 +1,20 @@
 {
-  "version": "2.7.23",
+  "version": "2.7.24",
   "history": [
+    {
+      "version": "2.7.24",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les sitemaps sont plus faciles a lire.",
+        "en": "Sitemaps are easier to read.",
+        "de": "Sitemaps sind leichter lesbar.",
+        "nl": "Sitemaps zijn makkelijker leesbaar.",
+        "it": "Le sitemap sono piu facili da leggere.",
+        "es": "Los sitemaps son mas faciles de leer.",
+        "pl": "Sitemapy sa latwiejsze do odczytania.",
+        "pt": "Os sitemaps ficam mais faceis de ler."
+      }
+    },
     {
       "version": "2.7.23",
       "releasedAt": "2026-06-29",

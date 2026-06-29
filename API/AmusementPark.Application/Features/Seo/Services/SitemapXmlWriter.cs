@@ -65,7 +65,7 @@ public sealed class SitemapXmlWriter : ISitemapXmlWriter
             foreach (SitemapSectionStats section in sections)
             {
                 writer.WriteStartElement("sitemap");
-                writer.WriteElementString("loc", $"{normalizedBaseUrl}/sitemaps/{section.FileName}");
+                writer.WriteElementString("loc", $"{normalizedBaseUrl}/{section.FileName}");
 
                 if (section.LastModifiedUtc.HasValue)
                 {

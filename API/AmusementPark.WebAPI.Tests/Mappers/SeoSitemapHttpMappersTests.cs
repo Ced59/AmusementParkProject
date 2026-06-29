@@ -65,7 +65,7 @@ public sealed class SeoSitemapHttpMappersTests
         Assert.Equal("Manual", dto.Trigger);
         Assert.Equal(12, dto.TotalUrlCount);
         SeoSitemapSectionStatsDto section = Assert.Single(dto.Sections);
-        Assert.Equal("https://example.com/sitemaps/static.xml", section.PublicUrl);
+        Assert.Equal("https://example.com/static.xml", section.PublicUrl);
         Assert.Equal(new[] { "warning" }, dto.Errors);
         Assert.True(dto.IndexNow.WasRequested);
         Assert.True(dto.IndexNow.IsSuccess);
@@ -90,7 +90,7 @@ public sealed class SeoSitemapHttpMappersTests
             SitemapIndexUrl = "https://example.com/sitemap.xml",
             RobotsUrl = "https://example.com/robots.txt",
             IndexNowKeyFileUrl = "https://example.com/key.txt",
-            PublicSitemapUrls = new[] { "https://example.com/sitemaps/static.xml" },
+            PublicSitemapUrls = new[] { "https://example.com/static.xml" },
         };
 
         SeoSitemapOverviewDto dto = result.ToHttp("https://example.com/");
@@ -100,6 +100,6 @@ public sealed class SeoSitemapHttpMappersTests
         Assert.Equal(42, dto.Runtime.ProgressPercentage);
         Assert.Equal(result.Snapshot.GeneratedAtUtc, dto.LastGeneratedAtUtc);
         Assert.True(dto.Settings.IsIndexNowEnabled);
-        Assert.Equal(new[] { "https://example.com/sitemaps/static.xml" }, dto.PublicSitemapUrls);
+        Assert.Equal(new[] { "https://example.com/static.xml" }, dto.PublicSitemapUrls);
     }
 }

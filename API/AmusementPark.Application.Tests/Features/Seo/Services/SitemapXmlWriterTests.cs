@@ -57,9 +57,9 @@ public sealed class SitemapXmlWriterTests
         List<XElement> sitemapElements = document.Root!.Elements(ns + "sitemap").ToList();
 
         Assert.Equal("sitemapindex", document.Root.Name.LocalName);
-        Assert.Equal("https://example.com/sitemaps/static.xml", sitemapElements[0].Element(ns + "loc")!.Value);
+        Assert.Equal("https://example.com/static.xml", sitemapElements[0].Element(ns + "loc")!.Value);
         Assert.Equal("2026-06-06", sitemapElements[0].Element(ns + "lastmod")!.Value);
-        Assert.Equal("https://example.com/sitemaps/parks.xml", sitemapElements[1].Element(ns + "loc")!.Value);
+        Assert.Equal("https://example.com/parks.xml", sitemapElements[1].Element(ns + "loc")!.Value);
         Assert.Null(sitemapElements[1].Element(ns + "lastmod"));
     }
 }
