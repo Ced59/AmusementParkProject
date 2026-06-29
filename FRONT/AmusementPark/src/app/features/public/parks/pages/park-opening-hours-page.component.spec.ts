@@ -4,7 +4,7 @@ import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
-import { ParkOpeningHoursDay, ParkOpeningHoursTimeRange } from '@app/models/parks/park-opening-hours';
+import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRange } from '@app/models/parks/park-opening-hours';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
@@ -63,18 +63,17 @@ describe('ParkOpeningHoursPageComponent', () => {
   });
 
   it('builds month groups as calendar weeks with the year in the month label', () => {
-    const groups = component.monthGroups([
+    const group = component.monthGroup(createCalendar([
       createOpenDay('2026-07-04', '10:00', '18:00'),
       createOpenDay('2026-07-05', '10:00', '18:00'),
       createClosedDay('2026-07-06')
-    ]);
+    ]));
 
-    const cells = groups[0].weeks.flatMap((week) => week.cells);
+    const cells = group.weeks.flatMap((week) => week.cells);
 
-    expect(groups.length).toBe(1);
-    expect(groups[0].label).toContain('2026');
-    expect(groups[0].openDays).toBe(2);
-    expect(groups[0].closedDays).toBe(1);
+    expect(group.label).toContain('2026');
+    expect(group.openDays).toBe(2);
+    expect(group.closedDays).toBe(1);
     expect(cells.filter((cell) => cell.localDate?.startsWith('2026-07')).length).toBe(31);
     expect(cells.length % 7).toBe(0);
   });
@@ -104,6 +103,19 @@ describe('ParkOpeningHoursPageComponent', () => {
     expect(component.dayTone(createOpenDay('2026-07-04', '09:00', '20:00'))).toBe('long');
   });
 });
+
+function createCalendar(days: ParkOpeningHoursDay[]): ParkOpeningHoursCalendar {
+  return {
+    parkId: 'park-1',
+    timeZoneId: 'Europe/Paris',
+    updatedAtUtc: '2026-06-29T00:00:00Z',
+    firstDate: '2026-07-01',
+    lastDate: '2026-07-31',
+    fromDate: '2026-07-01',
+    toDate: '2026-07-31',
+    days
+  };
+}
 
 function createOpenDay(localDate: string, opensAt: string, closesAt: string, label: string | null = null): ParkOpeningHoursDay {
   return {

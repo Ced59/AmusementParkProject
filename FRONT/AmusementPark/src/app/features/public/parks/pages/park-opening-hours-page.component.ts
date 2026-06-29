@@ -68,13 +68,20 @@ export class ParkOpeningHoursPageComponent implements OnInit {
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
   protected readonly weekDayLabels = signal<string[]>([]);
+  protected readonly selectedMonthKey = signal<string>(this.resolveCurrentMonthKey(null));
+  protected readonly monthLoading = signal<boolean>(false);
+  protected readonly monthLoadFailed = signal<boolean>(false);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly monthCalendarCache = new Map<string, ParkOpeningHoursCalendar>();
   private currentParkId: string | null = null;
-  private monthGroupsCache: {
+  private monthLoadSequence = 0;
+  private monthGroupCache: {
     days: ParkOpeningHoursDay[];
     language: string;
-    groups: ParkOpeningHoursMonthGroup[];
+    monthKey: string;
+    todayLocalDate: string;
+    group: ParkOpeningHoursMonthGroup;
   } | null = null;
 
   constructor(
@@ -130,30 +137,71 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     });
   }
 
-  monthGroups(days: ParkOpeningHoursDay[]): ParkOpeningHoursMonthGroup[] {
+  monthGroup(calendar: ParkOpeningHoursCalendar): ParkOpeningHoursMonthGroup {
+    const monthKey: string = this.resolveCalendarMonthKey(calendar);
     const language: string = this.currentLanguage();
-    if (this.monthGroupsCache?.days === days && this.monthGroupsCache.language === language) {
-      return this.monthGroupsCache.groups;
+    const todayLocalDate: string = this.resolveTodayLocalDate(calendar.timeZoneId);
+    const monthDays: ParkOpeningHoursDay[] = calendar.days.filter((day: ParkOpeningHoursDay): boolean => day.localDate.startsWith(monthKey));
+
+    if (
+      this.monthGroupCache?.days === calendar.days
+      && this.monthGroupCache.language === language
+      && this.monthGroupCache.monthKey === monthKey
+      && this.monthGroupCache.todayLocalDate === todayLocalDate
+    ) {
+      return this.monthGroupCache.group;
     }
 
-    const groupsByKey: Map<string, ParkOpeningHoursDay[]> = new Map<string, ParkOpeningHoursDay[]>();
-    for (const day of days) {
-      const key: string = day.localDate.slice(0, 7);
-      const groupDays: ParkOpeningHoursDay[] = groupsByKey.get(key) ?? [];
-      groupDays.push(day);
-      groupsByKey.set(key, groupDays);
-    }
-
-    const groups: ParkOpeningHoursMonthGroup[] = [...groupsByKey.entries()]
-      .sort(([firstKey]: [string, ParkOpeningHoursDay[]], [secondKey]: [string, ParkOpeningHoursDay[]]): number => firstKey.localeCompare(secondKey))
-      .map(([key, groupDays]: [string, ParkOpeningHoursDay[]]): ParkOpeningHoursMonthGroup => this.buildMonthGroup(key, groupDays));
-    this.monthGroupsCache = {
-      days,
+    const group: ParkOpeningHoursMonthGroup = this.buildMonthGroup(monthKey, monthDays, todayLocalDate);
+    this.monthGroupCache = {
+      days: calendar.days,
       language,
-      groups
+      monthKey,
+      todayLocalDate,
+      group
     };
 
-    return groups;
+    return group;
+  }
+
+  previousMonthKey(calendar: ParkOpeningHoursCalendar): string | null {
+    const previousMonthKey: string = this.addMonths(this.resolveCalendarMonthKey(calendar), -1);
+    return this.isMonthWithinCoverage(previousMonthKey, calendar.firstDate, calendar.lastDate) ? previousMonthKey : null;
+  }
+
+  nextMonthKey(calendar: ParkOpeningHoursCalendar): string | null {
+    const nextMonthKey: string = this.addMonths(this.resolveCalendarMonthKey(calendar), 1);
+    return this.isMonthWithinCoverage(nextMonthKey, calendar.firstDate, calendar.lastDate) ? nextMonthKey : null;
+  }
+
+  currentMonthKey(calendar: ParkOpeningHoursCalendar): string | null {
+    return this.clampMonthKey(this.resolveCurrentMonthKey(calendar.timeZoneId), calendar.firstDate, calendar.lastDate);
+  }
+
+  canGoToCurrentMonth(calendar: ParkOpeningHoursCalendar): boolean {
+    const currentMonthKey: string | null = this.currentMonthKey(calendar);
+    return currentMonthKey !== null && currentMonthKey !== this.resolveCalendarMonthKey(calendar);
+  }
+
+  showPreviousMonth(data: ParkOpeningHoursPageData): void {
+    const monthKey: string | null = this.previousMonthKey(data.calendar);
+    if (monthKey) {
+      this.activateMonth(data, monthKey);
+    }
+  }
+
+  showNextMonth(data: ParkOpeningHoursPageData): void {
+    const monthKey: string | null = this.nextMonthKey(data.calendar);
+    if (monthKey) {
+      this.activateMonth(data, monthKey);
+    }
+  }
+
+  showCurrentMonth(data: ParkOpeningHoursPageData): void {
+    const monthKey: string | null = this.currentMonthKey(data.calendar);
+    if (monthKey) {
+      this.activateMonth(data, monthKey);
+    }
   }
 
   monthSummaryKey(group: ParkOpeningHoursMonthGroup): string {
@@ -251,41 +299,41 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     return ranges.length > 0 ? `${this.formatDate(cell.localDate)}, ${status}, ${ranges}` : `${this.formatDate(cell.localDate)}, ${status}`;
   }
 
-  private buildMonthGroup(key: string, days: ParkOpeningHoursDay[]): ParkOpeningHoursMonthGroup {
-    const [yearText, monthText] = key.split('-');
+  private buildMonthGroup(monthKey: string, days: ParkOpeningHoursDay[], todayLocalDate: string): ParkOpeningHoursMonthGroup {
+    const [yearText, monthText] = monthKey.split('-');
     const year: number = Number.parseInt(yearText, 10);
     const monthIndex: number = Number.parseInt(monthText, 10) - 1;
     const daysByDate: Map<string, ParkOpeningHoursDay> = new Map<string, ParkOpeningHoursDay>(
       days.map((day: ParkOpeningHoursDay): [string, ParkOpeningHoursDay] => [day.localDate, day])
     );
-    const daysInMonth: number = new Date(year, monthIndex + 1, 0).getDate();
-    const firstDayOffset: number = this.resolveMondayFirstOffset(new Date(year, monthIndex, 1, 12, 0, 0).getDay());
+    const daysInMonth: number = new Date(Date.UTC(year, monthIndex + 1, 0)).getUTCDate();
+    const firstDayOffset: number = this.resolveMondayFirstOffset(new Date(Date.UTC(year, monthIndex, 1, 12, 0, 0)).getUTCDay());
     const cells: ParkOpeningHoursCalendarCell[] = [];
 
     for (let index: number = 0; index < firstDayOffset; index += 1) {
-      cells.push(this.createEmptyCell(`${key}-empty-start-${index}`));
+      cells.push(this.createEmptyCell(`${monthKey}-empty-start-${index}`));
     }
 
     for (let dayNumber: number = 1; dayNumber <= daysInMonth; dayNumber += 1) {
-      const localDate: string = `${key}-${dayNumber.toString().padStart(2, '0')}`;
-      cells.push(this.createDayCell(localDate, dayNumber, daysByDate.get(localDate) ?? null));
+      const localDate: string = `${monthKey}-${dayNumber.toString().padStart(2, '0')}`;
+      cells.push(this.createDayCell(localDate, dayNumber, daysByDate.get(localDate) ?? null, todayLocalDate));
     }
 
     while (cells.length % 7 !== 0) {
-      cells.push(this.createEmptyCell(`${key}-empty-end-${cells.length}`));
+      cells.push(this.createEmptyCell(`${monthKey}-empty-end-${cells.length}`));
     }
 
     const weeks: ParkOpeningHoursCalendarWeek[] = [];
     for (let index: number = 0; index < cells.length; index += 7) {
       weeks.push({
-        key: `${key}-week-${index / 7}`,
+        key: `${monthKey}-week-${index / 7}`,
         cells: cells.slice(index, index + 7)
       });
     }
 
     return {
-      key,
-      label: this.formatMonth(`${key}-01`),
+      key: monthKey,
+      label: this.formatMonth(`${monthKey}-01`),
       openDays: days.filter((day: ParkOpeningHoursDay): boolean => !this.isClosed(day)).length,
       closedDays: days.filter((day: ParkOpeningHoursDay): boolean => this.isClosed(day)).length,
       weeks
@@ -303,14 +351,14 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     };
   }
 
-  private createDayCell(localDate: string, dayNumber: number, day: ParkOpeningHoursDay | null): ParkOpeningHoursCalendarCell {
+  private createDayCell(localDate: string, dayNumber: number, day: ParkOpeningHoursDay | null, todayLocalDate: string): ParkOpeningHoursCalendarCell {
     return {
       key: localDate,
       localDate,
       dayNumber,
       day,
       tone: this.dayTone(day),
-      isToday: localDate === this.resolveTodayLocalDate()
+      isToday: localDate === todayLocalDate
     };
   }
 
@@ -349,12 +397,33 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     return (day + 6) % 7;
   }
 
-  private resolveTodayLocalDate(): string {
-    const today: Date = new Date();
-    const year: number = today.getFullYear();
-    const month: string = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day: string = today.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
+  private resolveTodayLocalDate(timeZoneId: string | null | undefined): string {
+    const valueByType: Record<string, string> = this.resolveDateParts(timeZoneId, new Date());
+    return `${valueByType['year']}-${valueByType['month']}-${valueByType['day']}`;
+  }
+
+  private resolveCurrentMonthKey(timeZoneId: string | null | undefined): string {
+    return this.resolveTodayLocalDate(timeZoneId).slice(0, 7);
+  }
+
+  private resolveDateParts(timeZoneId: string | null | undefined, date: Date): Record<string, string> {
+    let parts: Intl.DateTimeFormatPart[];
+    try {
+      parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: timeZoneId || undefined,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(date);
+    } catch {
+      parts = new Intl.DateTimeFormat('en-CA', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(date);
+    }
+
+    return Object.fromEntries(parts.map((part: Intl.DateTimeFormatPart) => [part.type, part.value]));
   }
 
   private isTechnicalPublicNote(note: string): boolean {
@@ -378,11 +447,19 @@ export class ParkOpeningHoursPageComponent implements OnInit {
 
   private loadOpeningHoursPage(parkId: string): void {
     const previousData: ParkOpeningHoursPageData | undefined = this.stateStore.data();
+    const requestedMonthKey: string = this.resolveCurrentMonthKey(null);
+    const requestedRange: { from: string; to: string } = this.resolveMonthRange(requestedMonthKey);
+
+    this.monthCalendarCache.clear();
+    this.monthGroupCache = null;
+    this.monthLoading.set(false);
+    this.monthLoadFailed.set(false);
+    this.selectedMonthKey.set(requestedMonthKey);
     this.stateStore.setLoading(previousData);
 
     forkJoin({
       summary: this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()),
-      calendar: this.parksApiService.getParkOpeningHours(parkId, null, null, anonymousHttpOptions())
+      calendar: this.parksApiService.getParkOpeningHours(parkId, requestedRange.from, requestedRange.to, anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (data: { summary: ParkDetailSummary; calendar: ParkOpeningHoursCalendar }) => {
         const pageData: ParkOpeningHoursPageData = {
@@ -391,12 +468,22 @@ export class ParkOpeningHoursPageComponent implements OnInit {
           calendar: data.calendar
         };
 
-        if (!pageData.calendar.days || pageData.calendar.days.length === 0) {
+        if (!this.hasOpeningHoursCoverage(pageData.calendar)) {
           this.ssrHttpStatusService.setNotFound();
           this.stateStore.setEmpty(pageData);
           return;
         }
 
+        this.cacheCalendar(requestedMonthKey, pageData.calendar);
+
+        const preferredMonthKey: string | null = this.resolvePreferredInitialMonthKey(pageData.calendar, requestedMonthKey);
+        if (preferredMonthKey && preferredMonthKey !== requestedMonthKey) {
+          this.selectedMonthKey.set(preferredMonthKey);
+          this.loadInitialMonth(pageData, preferredMonthKey);
+          return;
+        }
+
+        this.selectedMonthKey.set(requestedMonthKey);
         this.stateStore.setReady(pageData);
       },
       error: (error: unknown) => {
@@ -409,6 +496,153 @@ export class ParkOpeningHoursPageComponent implements OnInit {
         this.stateStore.setError('parkOpeningHours.page.errorMessage', previousData);
       }
     });
+  }
+
+  private loadInitialMonth(pageData: ParkOpeningHoursPageData, monthKey: string): void {
+    const cachedCalendar: ParkOpeningHoursCalendar | undefined = this.monthCalendarCache.get(monthKey);
+    if (cachedCalendar) {
+      this.stateStore.setReady({ ...pageData, calendar: cachedCalendar });
+      return;
+    }
+
+    const parkId: string | null = pageData.park.id?.trim() ?? null;
+    if (!parkId) {
+      this.stateStore.setReady(pageData);
+      return;
+    }
+
+    this.monthLoading.set(true);
+    this.loadMonthCalendar(parkId, monthKey, pageData, true);
+  }
+
+  private activateMonth(data: ParkOpeningHoursPageData, monthKey: string): void {
+    const normalizedMonthKey: string | null = this.clampMonthKey(monthKey, data.calendar.firstDate, data.calendar.lastDate);
+    const parkId: string | null = data.park.id?.trim() ?? null;
+    if (!normalizedMonthKey || !parkId || normalizedMonthKey === this.resolveCalendarMonthKey(data.calendar)) {
+      return;
+    }
+
+    this.selectedMonthKey.set(normalizedMonthKey);
+    this.monthLoadFailed.set(false);
+
+    const cachedCalendar: ParkOpeningHoursCalendar | undefined = this.monthCalendarCache.get(normalizedMonthKey);
+    if (cachedCalendar) {
+      this.stateStore.setReady({ ...data, calendar: cachedCalendar });
+      return;
+    }
+
+    this.monthLoading.set(true);
+    this.loadMonthCalendar(parkId, normalizedMonthKey, data, false);
+  }
+
+  private loadMonthCalendar(parkId: string, monthKey: string, pageData: ParkOpeningHoursPageData, initialLoad: boolean): void {
+    const requestId: number = ++this.monthLoadSequence;
+    const range: { from: string; to: string } = this.resolveMonthRange(monthKey);
+
+    this.parksApiService.getParkOpeningHours(parkId, range.from, range.to, anonymousHttpOptions())
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (calendar: ParkOpeningHoursCalendar) => {
+          if (requestId !== this.monthLoadSequence) {
+            return;
+          }
+
+          this.cacheCalendar(monthKey, calendar);
+          this.monthLoading.set(false);
+          this.monthLoadFailed.set(false);
+          this.stateStore.setReady({ ...pageData, calendar });
+        },
+        error: (error: unknown) => {
+          if (requestId !== this.monthLoadSequence) {
+            return;
+          }
+
+          console.error('Error loading park opening hours month', error);
+          this.monthLoading.set(false);
+          this.monthLoadFailed.set(true);
+
+          if (initialLoad) {
+            this.stateStore.setError('parkOpeningHours.page.errorMessage', pageData);
+          }
+        }
+      });
+  }
+
+  private hasOpeningHoursCoverage(calendar: ParkOpeningHoursCalendar): boolean {
+    return !!calendar.firstDate || !!calendar.lastDate || calendar.days.length > 0;
+  }
+
+  private resolvePreferredInitialMonthKey(calendar: ParkOpeningHoursCalendar, fallbackMonthKey: string): string | null {
+    const parkCurrentMonthKey: string = this.resolveCurrentMonthKey(calendar.timeZoneId);
+    return this.clampMonthKey(parkCurrentMonthKey, calendar.firstDate, calendar.lastDate)
+      ?? this.clampMonthKey(fallbackMonthKey, calendar.firstDate, calendar.lastDate)
+      ?? fallbackMonthKey;
+  }
+
+  private resolveCalendarMonthKey(calendar: ParkOpeningHoursCalendar): string {
+    const selectedMonthKey: string = this.selectedMonthKey();
+    const fromMonthKey: string = calendar.fromDate.slice(0, 7);
+    const toMonthKey: string = calendar.toDate.slice(0, 7);
+    if (selectedMonthKey >= fromMonthKey && selectedMonthKey <= toMonthKey) {
+      return selectedMonthKey;
+    }
+
+    return fromMonthKey;
+  }
+
+  private cacheCalendar(monthKey: string, calendar: ParkOpeningHoursCalendar): void {
+    this.monthCalendarCache.set(monthKey, calendar);
+  }
+
+  private resolveMonthRange(monthKey: string): { from: string; to: string } {
+    const [year, month] = this.parseMonthKey(monthKey);
+    const lastDay: number = new Date(Date.UTC(year, month, 0)).getUTCDate();
+
+    return {
+      from: `${monthKey}-01`,
+      to: `${monthKey}-${lastDay.toString().padStart(2, '0')}`
+    };
+  }
+
+  private addMonths(monthKey: string, offset: number): string {
+    const [year, month] = this.parseMonthKey(monthKey);
+    const date: Date = new Date(Date.UTC(year, month - 1 + offset, 1, 12, 0, 0));
+    return `${date.getUTCFullYear()}-${(date.getUTCMonth() + 1).toString().padStart(2, '0')}`;
+  }
+
+  private clampMonthKey(monthKey: string, firstDate: string | null | undefined, lastDate: string | null | undefined): string | null {
+    const firstMonthKey: string | null = firstDate ? firstDate.slice(0, 7) : null;
+    const lastMonthKey: string | null = lastDate ? lastDate.slice(0, 7) : null;
+
+    if (firstMonthKey && monthKey < firstMonthKey) {
+      return firstMonthKey;
+    }
+
+    if (lastMonthKey && monthKey > lastMonthKey) {
+      return lastMonthKey;
+    }
+
+    return monthKey;
+  }
+
+  private isMonthWithinCoverage(monthKey: string, firstDate: string | null | undefined, lastDate: string | null | undefined): boolean {
+    const firstMonthKey: string | null = firstDate ? firstDate.slice(0, 7) : null;
+    const lastMonthKey: string | null = lastDate ? lastDate.slice(0, 7) : null;
+
+    if (firstMonthKey && monthKey < firstMonthKey) {
+      return false;
+    }
+
+    if (lastMonthKey && monthKey > lastMonthKey) {
+      return false;
+    }
+
+    return firstMonthKey !== null || lastMonthKey !== null;
+  }
+
+  private parseMonthKey(monthKey: string): [number, number] {
+    const [yearText, monthText] = monthKey.split('-');
+    return [Number.parseInt(yearText, 10), Number.parseInt(monthText, 10)];
   }
 
   private formatMonth(value: string): string {

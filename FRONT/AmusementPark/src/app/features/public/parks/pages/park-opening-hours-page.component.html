@@ -45,7 +45,48 @@
           <span><i class="park-opening-hours-legend-dot park-opening-hours-legend-dot--long"></i>{{ 'parkOpeningHours.page.longOpening' | translate }}</span>
         </div>
 
-        @for (group of monthGroups(data.calendar.days); track group.key) {
+        <nav class="park-opening-hours-calendar__nav" [attr.aria-label]="'parkOpeningHours.page.monthNavigationLabel' | translate">
+          <button
+            appUiButton="ghost"
+            type="button"
+            [disabled]="!previousMonthKey(data.calendar) || monthLoading()"
+            (click)="showPreviousMonth(data)">
+            <i class="pi pi-chevron-left" aria-hidden="true"></i>
+            <span>{{ 'parkOpeningHours.page.previousMonth' | translate }}</span>
+          </button>
+
+          <button
+            appUiButton="ghost"
+            type="button"
+            [disabled]="!canGoToCurrentMonth(data.calendar) || monthLoading()"
+            (click)="showCurrentMonth(data)">
+            <i class="pi pi-calendar" aria-hidden="true"></i>
+            <span>{{ 'parkOpeningHours.page.currentMonth' | translate }}</span>
+          </button>
+
+          <button
+            appUiButton="ghost"
+            type="button"
+            [disabled]="!nextMonthKey(data.calendar) || monthLoading()"
+            (click)="showNextMonth(data)">
+            <span>{{ 'parkOpeningHours.page.nextMonth' | translate }}</span>
+            <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </nav>
+
+        @if (monthLoading()) {
+          <p class="park-opening-hours-calendar__loading" aria-live="polite">
+            <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+            <span>{{ 'parkOpeningHours.page.monthLoading' | translate }}</span>
+          </p>
+        } @else if (monthLoadFailed()) {
+          <p class="park-opening-hours-calendar__loading park-opening-hours-calendar__loading--error" aria-live="polite">
+            <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+            <span>{{ 'parkOpeningHours.page.monthLoadError' | translate }}</span>
+          </p>
+        }
+
+        @if (monthGroup(data.calendar); as group) {
           <section class="park-opening-hours-month">
             <header class="park-opening-hours-month__header">
               <h2>{{ group.label }}</h2>
@@ -76,6 +117,9 @@
                           [attr.aria-label]="cellAriaLabel(cell)">
                           @if (cell.localDate) {
                             <div class="park-opening-hours-cell">
+                              @if (cell.tone !== 'empty') {
+                                <span class="park-opening-hours-cell__tone" aria-hidden="true"></span>
+                              }
                               <span class="park-opening-hours-cell__date">{{ cell.dayNumber }}</span>
                               @if (cell.isToday) {
                                 <span class="park-opening-hours-cell__today">{{ 'parkOpeningHours.page.today' | translate }}</span>
