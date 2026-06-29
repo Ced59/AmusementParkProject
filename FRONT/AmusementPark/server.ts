@@ -12,6 +12,7 @@ import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
 import { isApiHeaderHiddenFromPublicProxy } from './src/app/core/ssr/public-api-header-policy';
 import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
+import { optimizeHtmlForRobotNoJs, RobotHtmlOptimizationResult } from './src/app/core/ssr/robot-html-optimizer';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { siteVersion } from './src/environments/version.generated';
 
@@ -25,6 +26,7 @@ const forceHttps = (process.env['SSR_FORCE_HTTPS'] ?? 'false').toLowerCase() ===
 const ssrRenderEnabled = (process.env['SSR_RENDER_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const renderOnCacheMiss = (process.env['SSR_RENDER_ON_CACHE_MISS'] ?? 'false').toLowerCase() === 'true';
 const renderCriticalRoutesOnCacheMiss = (process.env['SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS'] ?? 'true').toLowerCase() !== 'false';
+const robotNoJsHtmlEnabled = (process.env['SSR_ROBOT_NO_JS_HTML_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 'false').toLowerCase() === 'true';
 const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 86400));
 const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 2000));
@@ -402,7 +404,7 @@ export function app(): express.Express {
       if (staleEntry && cacheKey !== null && !warmupRequest) {
         enqueueTargetedRefreshes([cacheKey]);
       }
-      res.type('html').send(cachedEntry.html);
+      res.type('html').send(prepareHtmlForResponse(req, res, cachedEntry.html));
       return;
     }
 
@@ -437,7 +439,7 @@ export function app(): express.Express {
           recordPageResponse(req, 'SSR-UNCACHED', cacheKey);
         }
 
-        res.send(html);
+        res.send(prepareHtmlForResponse(req, res, html));
       })
       .catch((err: unknown) => {
         if (err instanceof SsrRenderQueueFullError) {
@@ -1323,7 +1325,24 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   res.setHeader('X-AmusementPark-SSR-Mode', mode);
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('Cache-Control', csrFallbackCacheControl);
-  res.type('html').send(readCsrShellHtml(csrIndexHtmlPath));
+  res.type('html').send(prepareHtmlForResponse(req, res, readCsrShellHtml(csrIndexHtmlPath)));
+}
+
+function prepareHtmlForResponse(req: Request, res: Response, html: string): string {
+  if (!robotNoJsHtmlEnabled || detectRobotFamily(req) === null) {
+    return html;
+  }
+
+  const optimizationResult: RobotHtmlOptimizationResult = optimizeHtmlForRobotNoJs(html);
+  if (optimizationResult.removedScriptCount === 0 && optimizationResult.removedScriptLikeLinkCount === 0) {
+    return optimizationResult.html;
+  }
+
+  res.setHeader('X-AmusementPark-Robot-Html', 'no-js');
+  res.setHeader('X-AmusementPark-Robot-Html-Scripts-Removed', optimizationResult.removedScriptCount.toString());
+  res.setHeader('X-AmusementPark-Robot-Html-Links-Removed', optimizationResult.removedScriptLikeLinkCount.toString());
+
+  return optimizationResult.html;
 }
 
 function toCsrFallbackStatus(mode: string): SsrPageResponseStatus {
