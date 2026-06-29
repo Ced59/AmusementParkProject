@@ -8,6 +8,7 @@ This folder groups the SEO roadmap and all search-engine export data used to bui
 - `google-search-console/` — normalized text exports from Google Search Console XLSX files.
 - `bing-webmaster-tools/` — Bing Webmaster Tools / IndexNow CSV exports and pasted sitemap export.
 - `yandex-webmaster/` — Yandex Webmaster duplicate titles/descriptions report and related exported tables.
+- `verification-notes.md` — implementation-time verification against routes, SSR, sitemaps, canonical URLs, noindex rules and IndexNow.
 
 ## Notes for Codex
 
