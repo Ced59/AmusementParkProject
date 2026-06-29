@@ -1,6 +1,7 @@
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkType } from '@app/models/parks/park-type';
+import { ParkOpeningHoursAdminFilter } from '@app/models/parks/park-opening-hours';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 
 
@@ -10,9 +11,10 @@ export interface ParkAdminListFilters {
   type?: ParkType | null;
   countryCode?: string | null;
   hasValidCoordinates?: boolean | null;
+  openingHoursStatus?: ParkOpeningHoursAdminFilter | null;
 }
 
-export type ParkAdminListSortField = 'default' | 'name' | 'parkItemsTotalCount' | 'parkItemsVisibleCount';
+export type ParkAdminListSortField = 'default' | 'name' | 'parkItemsTotalCount' | 'parkItemsVisibleCount' | 'openingHoursStatus';
 export type ParkAdminListSortDirection = 'asc' | 'desc';
 
 export interface ParkAdminListSort {
@@ -40,6 +42,9 @@ function buildAdminListQuery(filters: ParkAdminListFilters | null = null): strin
   }
   if (filters.hasValidCoordinates !== null && filters.hasValidCoordinates !== undefined) {
     params.push(`hasValidCoordinates=${filters.hasValidCoordinates}`);
+  }
+  if (filters.openingHoursStatus && filters.openingHoursStatus !== 'all') {
+    params.push(`openingHoursStatus=${encodeURIComponent(filters.openingHoursStatus)}`);
   }
 
   return params.length > 0 ? `&${params.join('&')}` : '';
@@ -87,6 +92,19 @@ export const PARKS_API_ENDPOINTS = {
   getParkById: (id: string) => `parks/${id}`,
   getParkWeather: (id: string, days: number = 7) => `parks/${encodeURIComponent(id)}/weather?days=${days}`,
   getParkWeatherHistoricalComparisons: (id: string, days: number = 7, years: number = 10) => `parks/${encodeURIComponent(id)}/weather/historical-comparisons?days=${days}&years=${years}`,
+  getParkOpeningHours: (id: string, from?: string | null, to?: string | null) => {
+    const params: string[] = [];
+    if (from) {
+      params.push(`from=${encodeURIComponent(from)}`);
+    }
+    if (to) {
+      params.push(`to=${encodeURIComponent(to)}`);
+    }
+
+    return `parks/${encodeURIComponent(id)}/opening-hours${params.length > 0 ? `?${params.join('&')}` : ''}`;
+  },
+  getAdminParkOpeningHours: (id: string) => `admin/parks/${encodeURIComponent(id)}/opening-hours`,
+  upsertAdminParkOpeningHours: (id: string) => `admin/parks/${encodeURIComponent(id)}/opening-hours`,
   getParkDetailSummary: (id: string, closedFilter?: ClosedEntityFilter | null) => `parks/${id}/detail-summary${buildClosedFilterQuery(closedFilter, '?')}`,
   getParkMapItems: (id: string, closedFilter?: ClosedEntityFilter | null) => `parks/${id}/map-items${buildClosedFilterQuery(closedFilter, '?')}`,
   getParkDistances: (sourceParkId: string, targetParkIds: string[]) => {

@@ -85,6 +85,9 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.ParksCollectionName, cancellationToken);
         await this.InitializeParksIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.ParkOpeningHoursCollectionName, cancellationToken);
+        await this.InitializeParkOpeningHoursIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.ParkFoundersCollectionName, cancellationToken);
         await this.InitializeParkFoundersIndexesAsync(cancellationToken);
 

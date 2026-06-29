@@ -32,6 +32,7 @@ export class AdminParksComponent implements OnInit {
   protected readonly typeFilter = this.stateFacade.typeFilter;
   protected readonly countryCodeFilter = this.stateFacade.countryCodeFilter;
   protected readonly validCoordinatesFilter = this.stateFacade.validCoordinatesFilter;
+  protected readonly openingHoursFilter = this.stateFacade.openingHoursFilter;
   protected readonly sortField = this.stateFacade.sortField;
   protected readonly sortDirection = this.stateFacade.sortDirection;
   protected readonly sortOrder = computed<1 | -1>(() => this.stateFacade.sortDirection() === 'desc' ? -1 : 1);
@@ -217,6 +218,8 @@ export class AdminParksComponent implements OnInit {
         return 'parkItemsTotalCount';
       case 'parkItemsVisibleCount':
         return 'parkItemsVisibleCount';
+      case 'openingHoursStatus':
+        return 'openingHoursStatus';
       default:
         return 'default';
     }

@@ -1,6 +1,20 @@
 {
-  "version": "2.7.26",
+  "version": "3.0.0",
   "history": [
+    {
+      "version": "3.0.0",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les horaires des parcs arrivent sur le site.",
+        "en": "Park opening hours arrive on the site.",
+        "de": "Parkoeffnungszeiten kommen auf die Website.",
+        "nl": "Openingstijden van parken komen naar de site.",
+        "it": "Gli orari dei parchi arrivano sul sito.",
+        "es": "Los horarios de parques llegan al sitio.",
+        "pl": "Godziny otwarcia parkow trafiaja na strone.",
+        "pt": "Os horarios dos parques chegam ao site."
+      }
+    },
     {
       "version": "2.7.26",
       "releasedAt": "2026-06-29",

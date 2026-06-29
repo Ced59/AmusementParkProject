@@ -163,6 +163,7 @@ export const routes: Routes = [
           { path: 'park/:id/:slug/zones', loadComponent: () => import('./features/public/parks/pages/park-zones-page.component').then((m) => m.ParkZonesPageComponent) },
           { path: 'park/:id/:slug/zone/:zoneId/:zoneSlug', loadComponent: () => import('./features/public/parks/pages/park-zone-page.component').then((m) => m.ParkZonePageComponent) },
           { path: 'park/:id/:slug/weather', loadComponent: () => import('./features/public/parks/pages/park-weather-page.component').then((m) => m.ParkWeatherPageComponent) },
+          { path: 'park/:id/:slug/opening-hours', loadComponent: () => import('./features/public/parks/pages/park-opening-hours-page.component').then((m) => m.ParkOpeningHoursPageComponent) },
           { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/images', loadComponent: () => import('./features/public/park-items/pages/park-item-images-page.component').then((m) => m.ParkItemImagesPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/video/s/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', pathMatch: 'full' },

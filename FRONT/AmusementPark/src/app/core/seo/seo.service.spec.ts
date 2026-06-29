@@ -196,6 +196,26 @@ describe('SeoService', () => {
       .toBe('Browse attractions, shows, restaurants, shops and practical places at Demo Park.');
   });
 
+  it('applies indexable localized metadata to park opening hours pages without duplicating language copy', () => {
+    service.applyParkOpeningHoursSeo('Parc Demo', 'fr', '/fr/park/park-1/parc-demo/opening-hours', 12);
+
+    const frenchTitle: string = documentRef.title;
+    const frenchDescription: string | null = readMetaContent('meta[name="description"]');
+
+    expect(frenchTitle).toBe('Dates et horaires de Parc Demo - Amusement Parks');
+    expect(frenchDescription).toContain('Parc Demo');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park/park-1/parc-demo/opening-hours');
+
+    service.applyParkOpeningHoursSeo('Demo Park', 'en', '/en/park/park-1/demo-park/opening-hours?from=2026-07-01', 12, null, '/en/park/park-1/demo-park/opening-hours');
+
+    expect(documentRef.title).toBe('Dates and opening hours for Demo Park - Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).not.toBe(frenchDescription);
+    expect(documentRef.title).not.toBe(frenchTitle);
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/en/park/park-1/demo-park/opening-hours');
+  });
+
   it('uses a clean canonical route for stale park zone slugs', () => {
     service.applyParkZoneSeo(
       'Europa-Park',

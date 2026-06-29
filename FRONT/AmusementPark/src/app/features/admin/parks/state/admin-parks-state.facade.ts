@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult, AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
+import { ParkOpeningHoursAdminFilter } from '@app/models/parks/park-opening-hours';
 import { ParkType } from '@app/models/parks/park-type';
 import { Pagination } from '@app/models/shared/pagination';
 import { ParkAdminListFilters, ParkAdminListSort, ParkAdminListSortDirection, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
@@ -41,6 +42,7 @@ export class AdminParksStateFacade {
   private readonly typeFilterSignal = signal<ParkType | null>(null);
   private readonly countryCodeFilterSignal = signal('');
   private readonly validCoordinatesFilterSignal = signal<boolean | null>(null);
+  private readonly openingHoursFilterSignal = signal<ParkOpeningHoursAdminFilter>('all');
   private readonly sortFieldSignal = signal<ParkAdminListSortField>('default');
   private readonly sortDirectionSignal = signal<ParkAdminListSortDirection>('asc');
 
@@ -56,6 +58,7 @@ export class AdminParksStateFacade {
   public readonly typeFilter = this.typeFilterSignal.asReadonly();
   public readonly countryCodeFilter = this.countryCodeFilterSignal.asReadonly();
   public readonly validCoordinatesFilter = this.validCoordinatesFilterSignal.asReadonly();
+  public readonly openingHoursFilter = this.openingHoursFilterSignal.asReadonly();
   public readonly sortField = this.sortFieldSignal.asReadonly();
   public readonly sortDirection = this.sortDirectionSignal.asReadonly();
   public readonly filters = computed<ParkAdminListFilters>(() => ({
@@ -63,7 +66,8 @@ export class AdminParksStateFacade {
     adminReviewStatus: this.adminReviewStatusFilterSignal(),
     type: this.typeFilterSignal(),
     countryCode: this.countryCodeFilterSignal().trim() || null,
-    hasValidCoordinates: this.validCoordinatesFilterSignal()
+    hasValidCoordinates: this.validCoordinatesFilterSignal(),
+    openingHoursStatus: this.openingHoursFilterSignal()
   }));
   public readonly sort = computed<ParkAdminListSort>(() => ({
     sortBy: this.sortFieldSignal(),
@@ -150,6 +154,7 @@ export class AdminParksStateFacade {
     this.typeFilterSignal.set(filters.type ?? null);
     this.countryCodeFilterSignal.set(filters.countryCode ?? '');
     this.validCoordinatesFilterSignal.set(filters.hasValidCoordinates ?? null);
+    this.openingHoursFilterSignal.set(filters.openingHoursStatus ?? 'all');
     this.loadParks(1, this.pageSizeSignal());
   }
 

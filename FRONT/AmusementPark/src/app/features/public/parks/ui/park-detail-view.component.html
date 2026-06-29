@@ -255,6 +255,13 @@
             </section>
           }
 
+          <app-park-opening-hours-card
+            class="park-side-card park-side-card--opening-hours"
+            [calendar]="openingHours"
+            [state]="openingHoursState"
+            [openingHoursLink]="currentPark.openingHoursLink">
+          </app-park-opening-hours-card>
+
           <app-park-weather-card
             class="park-side-card park-side-card--weather"
             [forecast]="weather"

@@ -22,5 +22,6 @@ public sealed record SearchParksQuery(
     string? CountryCode = null,
     bool? HasValidCoordinates = null,
     ClosedEntityFilter ClosedFilter = ClosedEntityFilter.OpenOnly,
+    ParkOpeningHoursAdminFilter OpeningHoursFilter = ParkOpeningHoursAdminFilter.All,
     ParkAdminSortField SortField = ParkAdminSortField.Default,
     bool SortDescending = false) : IQuery<ApplicationResult<PagedResult<ParkListResult>>>;

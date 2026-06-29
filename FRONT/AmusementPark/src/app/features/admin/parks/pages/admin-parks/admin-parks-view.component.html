@@ -107,6 +107,18 @@
         <option [ngValue]="false">{{ 'admin.filters.invalidCoordinatesOnly' | translate }}</option>
       </select>
     </label>
+
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.parks.openingHours.filterLabel' | translate }}</span>
+      <select [(ngModel)]="localOpeningHoursFilter" (ngModelChange)="onFilterChanged()">
+        <option [ngValue]="'all'">{{ 'admin.parks.openingHours.filters.all' | translate }}</option>
+        <option [ngValue]="'configured'">{{ 'admin.parks.openingHours.filters.configured' | translate }}</option>
+        <option [ngValue]="'notConfigured'">{{ 'admin.parks.openingHours.filters.notConfigured' | translate }}</option>
+        <option [ngValue]="'upToDate'">{{ 'admin.parks.openingHours.filters.upToDate' | translate }}</option>
+        <option [ngValue]="'needsUpdate'">{{ 'admin.parks.openingHours.filters.needsUpdate' | translate }}</option>
+        <option [ngValue]="'expired'">{{ 'admin.parks.openingHours.filters.expired' | translate }}</option>
+      </select>
+    </label>
   </div>
 
   <div class="admin-mobile-sort-bar">
@@ -166,6 +178,10 @@
           {{ 'admin.parks.itemsVisibleCount' | translate }}
           <p-sortIcon field="parkItemsVisibleCount"></p-sortIcon>
         </th>
+        <th pSortableColumn="openingHoursStatus">
+          {{ 'admin.parks.openingHours.title' | translate }}
+          <p-sortIcon field="openingHoursStatus"></p-sortIcon>
+        </th>
         <th>{{ 'admin.parks.reviewStatus' | translate }}</th>
         <th>{{ 'admin.parks.visible' | translate }}</th>
         <th>{{ 'admin.parks.actions' | translate }}</th>
@@ -175,7 +191,7 @@
     <ng-template pTemplate="body" let-park>
       @if (isParkSelected(park)) {
         <tr class="admin-bulk-row">
-          <td colspan="11">
+          <td colspan="12">
             <div class="admin-bulk-bar">
               <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
               <div class="admin-bulk-bar__actions">
@@ -215,6 +231,15 @@
         <td [attr.data-label]="'admin.parks.itemsVisibleCount' | translate">
           <span class="admin-coordinate-value">{{ getParkItemsVisibleCountLabel(park) }}</span>
         </td>
+        <td [attr.data-label]="'admin.parks.openingHours.title' | translate">
+          <div class="admin-opening-hours-status">
+            <p-tag
+              [value]="getOpeningHoursStatusLabelKey(park.openingHours?.status) | translate"
+              [severity]="getOpeningHoursStatusSeverity(park.openingHours?.status)">
+            </p-tag>
+            <span>{{ getOpeningHoursCoverageLabelKey(park) | translate:getOpeningHoursCoverageParams(park) }}</span>
+          </div>
+        </td>
         <td [attr.data-label]="'admin.parks.reviewStatus' | translate">
           <p-tag
             [value]="getStatusLabelKey(park.adminReviewStatus) | translate"
@@ -253,7 +278,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="11">
+        <td colspan="12">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"

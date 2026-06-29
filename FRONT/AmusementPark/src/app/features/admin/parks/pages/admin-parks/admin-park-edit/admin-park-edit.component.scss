@@ -32,6 +32,71 @@
   gap: 0.5rem;
 }
 
+.admin-opening-hours-editor {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-opening-hours-editor__header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.admin-opening-hours-editor__header h3 {
+  margin: 0;
+}
+
+.admin-opening-hours-editor__header p {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+}
+
+.admin-opening-hours-editor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.admin-opening-hours-editor__textarea {
+  width: 100%;
+  min-height: 32rem;
+  padding: 1rem;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--bg) 88%, black);
+  color: var(--text);
+  font-family: "Cascadia Mono", "Consolas", monospace;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  resize: vertical;
+  tab-size: 2;
+}
+
+.admin-opening-hours-editor__textarea:focus {
+  border-color: rgba(255, 90, 31, 0.42);
+  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.08);
+  outline: none;
+}
+
+.admin-opening-hours-editor__hint,
+.admin-opening-hours-editor__error {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.admin-opening-hours-editor__hint {
+  color: var(--text-muted);
+}
+
+.admin-opening-hours-editor__error {
+  color: var(--danger);
+  font-weight: 800;
+}
+
 @media (max-width: 991px) {
   .page-header,
   .page-header__aside {
@@ -44,6 +109,10 @@
   }
 
   .admin-park-edit__quick-links {
+    justify-content: flex-start;
+  }
+
+  .admin-opening-hours-editor__actions {
     justify-content: flex-start;
   }
 }

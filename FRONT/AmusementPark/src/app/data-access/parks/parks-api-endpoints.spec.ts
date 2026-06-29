@@ -7,10 +7,11 @@ describe('PARKS_API_ENDPOINTS', () => {
       adminReviewStatus: 'ToReview',
       type: 'ThemePark',
       countryCode: ' be ',
-      hasValidCoordinates: true
+      hasValidCoordinates: true,
+      openingHoursStatus: 'needsUpdate'
     });
 
-    expect(endpoint).toBe('parks?page=2&size=25&visibleOnly=true&region=europe&isVisible=false&adminReviewStatus=ToReview&type=ThemePark&countryCode=be&hasValidCoordinates=true');
+    expect(endpoint).toBe('parks?page=2&size=25&visibleOnly=true&region=europe&isVisible=false&adminReviewStatus=ToReview&type=ThemePark&countryCode=be&hasValidCoordinates=true&openingHoursStatus=needsUpdate');
   });
 
   it('omits empty optional filters', () => {
@@ -18,7 +19,8 @@ describe('PARKS_API_ENDPOINTS', () => {
       isVisible: null,
       adminReviewStatus: null,
       type: null,
-      countryCode: '  '
+      countryCode: '  ',
+      openingHoursStatus: 'all'
     });
 
     expect(endpoint).toBe('parks?page=1&size=10');
@@ -51,6 +53,16 @@ describe('PARKS_API_ENDPOINTS', () => {
       .toBe('parks?page=1&size=10&sortBy=parkItemsTotalCount&sortDirection=desc');
     expect(PARKS_API_ENDPOINTS.searchParks('parc', 1, 10, false, null, null, { sortBy: 'parkItemsVisibleCount', sortDirection: 'asc' }))
       .toBe('parks?page=1&size=10&query=parc&sortBy=parkItemsVisibleCount&sortDirection=asc');
+    expect(PARKS_API_ENDPOINTS.getParksPaginated(1, 10, false, null, null, { sortBy: 'openingHoursStatus', sortDirection: 'desc' }))
+      .toBe('parks?page=1&size=10&sortBy=openingHoursStatus&sortDirection=desc');
+  });
+
+  it('builds opening hours urls with optional date bounds', () => {
+    expect(PARKS_API_ENDPOINTS.getParkOpeningHours('park 1', '2026-07-01', '2026-07-31'))
+      .toBe('parks/park%201/opening-hours?from=2026-07-01&to=2026-07-31');
+    expect(PARKS_API_ENDPOINTS.getParkOpeningHours('park 1')).toBe('parks/park%201/opening-hours');
+    expect(PARKS_API_ENDPOINTS.getAdminParkOpeningHours('park 1')).toBe('admin/parks/park%201/opening-hours');
+    expect(PARKS_API_ENDPOINTS.upsertAdminParkOpeningHours('park 1')).toBe('admin/parks/park%201/opening-hours');
   });
 
   it('builds distance urls with encoded ids and no empty query when targets are missing', () => {

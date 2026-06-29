@@ -13,6 +13,8 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
@@ -40,6 +42,10 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly IParkGraphUpsertHistoryRepository historyRepository;
     private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
     private readonly IMeasurementConversionService measurementConversionService;
+    private readonly IParkOpeningHoursRepository? parkOpeningHoursRepository;
+    private readonly ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer;
+    private readonly ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder;
+    private readonly ISeoSitemapRefreshScheduler? seoSitemapRefreshScheduler;
 
     public ParkGraphUpsertProcessor(
         IParkRepository parkRepository,
@@ -53,7 +59,11 @@ public sealed partial class ParkGraphUpsertProcessor
         ISearchProjectionWriter searchProjectionWriter,
         IParkGraphUpsertHistoryRepository historyRepository,
         IPublicSeoUpdateNotifier publicSeoUpdateNotifier,
-        IMeasurementConversionService measurementConversionService)
+        IMeasurementConversionService measurementConversionService,
+        IParkOpeningHoursRepository? parkOpeningHoursRepository = null,
+        ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null,
+        ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null,
+        ISeoSitemapRefreshScheduler? seoSitemapRefreshScheduler = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -67,6 +77,10 @@ public sealed partial class ParkGraphUpsertProcessor
         this.historyRepository = historyRepository;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
         this.measurementConversionService = measurementConversionService;
+        this.parkOpeningHoursRepository = parkOpeningHoursRepository;
+        this.parkOpeningHoursScheduleNormalizer = parkOpeningHoursScheduleNormalizer;
+        this.parkOpeningHoursCoverageSegmentBuilder = parkOpeningHoursCoverageSegmentBuilder;
+        this.seoSitemapRefreshScheduler = seoSitemapRefreshScheduler;
     }
 
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)
@@ -102,6 +116,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         JsonElement? parkPatch = GetObject(root, "park");
         JsonElement? identity = GetObject(root, "identity");
+        JsonElement? openingHoursPatch = ResolveOpeningHoursPatch(root);
         bool requiresParkContext = RequiresParkContext(root);
         Dictionary<string, string> founderKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> operatorKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -119,7 +134,8 @@ public sealed partial class ParkGraphUpsertProcessor
         string? targetParkId = NormalizeString(request.TargetParkId)
             ?? ReadString(identity, "parkId")
             ?? ReadString(identity, "id")
-            ?? ReadString(parkPatch, "id");
+            ?? ReadString(parkPatch, "id")
+            ?? ReadString(openingHoursPatch, "parkId");
 
         Park? targetPark = null;
         bool parkWillBeCreated = false;
@@ -192,6 +208,7 @@ public sealed partial class ParkGraphUpsertProcessor
         result.TargetParkId = targetPark.Id;
         result.TargetParkName = targetPark.Name;
 
+        await this.ProcessOpeningHoursAsync(root, targetPark, result, apply, cancellationToken);
         Dictionary<string, string> zoneKeys = await this.ProcessZonesAsync(root, targetPark, result, apply, cancellationToken);
         Dictionary<string, string> itemKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         ParkGraphUpsertItemSeoChanges itemSeoChanges = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, itemKeys, result, apply, cancellationToken);
@@ -234,6 +251,7 @@ public sealed partial class ParkGraphUpsertProcessor
     {
         if (HasNonEmptyObject(root, "identity")
             || HasNonEmptyObject(root, "park")
+            || HasOpeningHoursPatch(root)
             || HasNonEmptyArray(root, "zones")
             || HasNonEmptyArray(root, "items")
             || HasNonEmptyArray(root, "suppr")

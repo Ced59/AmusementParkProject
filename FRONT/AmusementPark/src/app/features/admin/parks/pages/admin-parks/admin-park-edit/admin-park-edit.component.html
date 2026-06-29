@@ -79,7 +79,8 @@
           <p-tab [value]="3">{{ 'admin.parks.tabs.logos' | translate }}</p-tab>
           <p-tab [value]="4">{{ 'admin.parks.tabs.photos' | translate }}</p-tab>
           @if (isEditMode()) {
-            <p-tab [value]="5">{{ 'admin.parks.tabs.videos' | translate }}</p-tab>
+            <p-tab [value]="5">{{ 'admin.parks.tabs.openingHours' | translate }}</p-tab>
+            <p-tab [value]="6">{{ 'admin.parks.tabs.videos' | translate }}</p-tab>
           }
         </p-tablist>
 
@@ -198,6 +199,64 @@
           @if (isEditMode()) {
             <p-tabpanel [value]="5">
               @if (activeTabIndex() === 5) {
+                <section class="admin-opening-hours-editor">
+                  <header class="admin-opening-hours-editor__header">
+                    <div>
+                      <h3>{{ 'admin.parks.openingHoursEditor.title' | translate }}</h3>
+                      <p>{{ 'admin.parks.openingHoursEditor.subtitle' | translate }}</p>
+                    </div>
+
+                    <div class="admin-opening-hours-editor__actions">
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-refresh"
+                        class="p-button-sm p-button-secondary"
+                        [disabled]="openingHoursLoading() || openingHoursSaving()"
+                        [label]="'admin.parks.openingHoursEditor.reload' | translate"
+                        (click)="reloadOpeningHoursJson()">
+                      </button>
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-align-left"
+                        class="p-button-sm p-button-secondary"
+                        [disabled]="openingHoursLoading() || openingHoursSaving()"
+                        [label]="'admin.parks.openingHoursEditor.format' | translate"
+                        (click)="formatOpeningHoursJson()">
+                      </button>
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-save"
+                        class="p-button-sm p-button-success"
+                        [disabled]="openingHoursLoading() || openingHoursSaving()"
+                        [label]="'admin.parks.openingHoursEditor.upsert' | translate"
+                        (click)="saveOpeningHoursJson()">
+                      </button>
+                    </div>
+                  </header>
+
+                  <textarea
+                    class="admin-opening-hours-editor__textarea"
+                    [ngModel]="openingHoursJson()"
+                    [ngModelOptions]="{ standalone: true }"
+                    (ngModelChange)="onOpeningHoursJsonChanged($event)"
+                    spellcheck="false"
+                    [attr.aria-label]="'admin.parks.openingHoursEditor.jsonLabel' | translate">
+                  </textarea>
+
+                  @if (openingHoursError(); as openingHoursErrorKey) {
+                    <p class="admin-opening-hours-editor__error">{{ openingHoursErrorKey | translate }}</p>
+                  } @else {
+                    <p class="admin-opening-hours-editor__hint">{{ 'admin.parks.openingHoursEditor.hint' | translate }}</p>
+                  }
+                </section>
+              }
+            </p-tabpanel>
+
+            <p-tabpanel [value]="6">
+              @if (activeTabIndex() === 6) {
                 <app-admin-video-create-panel
                   [ownerType]="videoOwnerType"
                   [ownerId]="parkId()"

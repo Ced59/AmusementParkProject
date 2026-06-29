@@ -4,6 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { Park } from '@app/models/parks/park';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
+import { ParkOpeningHoursCalendar, ParkOpeningHoursSchedule } from '@app/models/parks/park-opening-hours';
 import { environment } from '../../../environments/environment';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { ParksApiService } from './parks-api.service';
@@ -162,6 +163,51 @@ describe('ParksApiService', () => {
     const bulkRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/bulk-administration`);
     expect(bulkRequest.request.method).toBe('PATCH');
     bulkRequest.flush({ requestedCount: 1, updatedCount: 1 });
+  });
+
+  it('reads and upserts park opening hours through JSON endpoints', () => {
+    const calendar: ParkOpeningHoursCalendar = {
+      parkId: 'park-1',
+      timeZoneId: 'Europe/Paris',
+      updatedAtUtc: '2026-06-29T10:00:00Z',
+      fromDate: '2026-07-01',
+      toDate: '2026-07-01',
+      days: []
+    };
+    const schedule: ParkOpeningHoursSchedule = {
+      parkId: 'park-1',
+      timeZoneId: 'Europe/Paris',
+      regularRules: [],
+      dateOverrides: []
+    };
+
+    service.getParkOpeningHours('park-1', '2026-07-01', '2026-07-31').subscribe((result: ParkOpeningHoursCalendar): void => {
+      expect(result).toEqual(calendar);
+    });
+    service.getAdminParkOpeningHours('park-1').subscribe((result: ParkOpeningHoursSchedule): void => {
+      expect(result).toEqual(schedule);
+    });
+    service.upsertAdminParkOpeningHours('park-1', schedule).subscribe((result: ParkOpeningHoursSchedule): void => {
+      expect(result).toEqual(schedule);
+    });
+
+    const publicRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/park-1/opening-hours?from=2026-07-01&to=2026-07-31`);
+    expect(publicRequest.request.method).toBe('GET');
+    publicRequest.flush(calendar);
+
+    const adminGetRequest = httpTestingController.expectOne((request) => {
+      return request.urlWithParams === `${environment.apiBaseUrl}admin/parks/park-1/opening-hours` && request.method === 'GET';
+    });
+    expect(adminGetRequest.request.method).toBe('GET');
+    adminGetRequest.flush(schedule);
+
+    const adminPutRequest = httpTestingController.expectOne((request) => {
+      return request.urlWithParams === `${environment.apiBaseUrl}admin/parks/park-1/opening-hours` && request.method === 'PUT';
+    });
+    expect(adminPutRequest.request.method).toBe('PUT');
+    expect(adminPutRequest.request.headers.get('Content-Type')).toBe('application/json');
+    expect(adminPutRequest.request.body).toEqual(schedule);
+    adminPutRequest.flush(schedule);
   });
 
   function createParkDetailSummary(name: string): ParkDetailSummary {

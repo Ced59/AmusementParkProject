@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkZones.Results;
@@ -136,6 +137,7 @@ internal static class ParksHttpMappers
         ParkDto dto = value.Park.ToHttp();
         dto.ParkItemsTotalCount = value.ParkItemsTotalCount;
         dto.ParkItemsVisibleCount = value.ParkItemsVisibleCount;
+        dto.OpeningHours = value.OpeningHours?.ToHttp();
         return dto;
     }
 
@@ -514,6 +516,28 @@ internal static class ParksHttpMappers
     private static int? NormalizeOptionalOrder(int? value)
     {
         return value.HasValue && value.Value > 0 ? value.Value : null;
+    }
+
+    private static ParkOpeningHoursAdminSummaryDto ToHttp(this ParkOpeningHoursAdminSummaryResult value)
+    {
+        return new ParkOpeningHoursAdminSummaryDto
+        {
+            HasOpeningHours = value.HasOpeningHours,
+            Status = value.Status.ToString(),
+            TimeZoneId = value.TimeZoneId,
+            FirstDate = value.FirstDate.HasValue ? FormatDate(value.FirstDate.Value) : null,
+            LastDate = value.LastDate.HasValue ? FormatDate(value.LastDate.Value) : null,
+            CompleteUntilDate = value.CompleteUntilDate.HasValue ? FormatDate(value.CompleteUntilDate.Value) : null,
+            CompleteForDays = value.CompleteForDays,
+            WarningThresholdDays = value.WarningThresholdDays,
+            LastVerifiedAtUtc = value.LastVerifiedAtUtc,
+            UpdatedAtUtc = value.UpdatedAtUtc,
+        };
+    }
+
+    private static string FormatDate(DateOnly date)
+    {
+        return date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
     }
 
     private static ParkType? ToDomain(this ParkTypeDto? value)

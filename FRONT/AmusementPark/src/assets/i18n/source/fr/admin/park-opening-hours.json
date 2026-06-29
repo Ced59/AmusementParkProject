@@ -1,0 +1,53 @@
+{
+  "admin": {
+    "parks": {
+      "tabs": {
+        "openingHours": "Horaires"
+      },
+      "sort": {
+        "openingHoursAttentionFirst": "Horaires a traiter",
+        "openingHoursReadyFirst": "Horaires complets"
+      },
+      "openingHours": {
+        "title": "Horaires",
+        "filterLabel": "Horaires",
+        "notConfigured": "Non renseignes",
+        "coverageOne": "Horaires complets pour {{ count }} jour, jusqu'au {{ date }}",
+        "coverageMany": "Horaires complets pour {{ count }} jours, jusqu'au {{ date }}",
+        "statuses": {
+          "NotConfigured": "Non renseignes",
+          "Expired": "Expires",
+          "NeedsUpdate": "A mettre a jour",
+          "UpToDate": "A jour"
+        },
+        "filters": {
+          "all": "Tous les horaires",
+          "configured": "Renseignes",
+          "notConfigured": "Non renseignes",
+          "upToDate": "A jour",
+          "needsUpdate": "A mettre a jour",
+          "expired": "Expires"
+        }
+      },
+      "openingHoursEditor": {
+        "title": "JSON horaires",
+        "subtitle": "Colle ou modifie le JSON d'horaires, puis lance l'upsert pour ce parc.",
+        "reload": "Recharger",
+        "format": "Formater",
+        "upsert": "Upsert JSON",
+        "jsonLabel": "JSON horaires",
+        "invalidJson": "Le JSON est invalide.",
+        "savedSummary": "Horaires enregistres",
+        "savedDetail": "Le planning a ete upsert.",
+        "saveError": "Le planning n'a pas pu etre enregistre.",
+        "loadError": "Le planning n'a pas pu etre charge.",
+        "hint": "Les jours fermes doivent etre explicites quand ils doivent compter comme couverture complete."
+      }
+    },
+    "parkGraphUpserts": {
+      "editor": {
+        "description": "Les proprietes absentes sont conservees. La section openingHours est preview puis appliquee avec le meme JSON global que le parc, les zones, les fiches et les images."
+      }
+    }
+  }
+}

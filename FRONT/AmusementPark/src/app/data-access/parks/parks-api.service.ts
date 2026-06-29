@@ -7,6 +7,7 @@ import { ParkExplorer } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkWeatherForecast, ParkWeatherHistoricalComparisons } from '@app/models/parks/park-weather';
+import { ParkOpeningHoursCalendar, ParkOpeningHoursSchedule } from '@app/models/parks/park-opening-hours';
 import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
@@ -90,6 +91,21 @@ export class ParksApiService {
   getParkWeatherHistoricalComparisons(id: string, days: number = 7, years: number = 10, options: ParksHttpOptions = {}): Observable<ParkWeatherHistoricalComparisons> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkWeatherHistoricalComparisons(id, days, years)}`;
     return this.http.get<ParkWeatherHistoricalComparisons>(url, options);
+  }
+
+  getParkOpeningHours(id: string, from?: string | null, to?: string | null, options: ParksHttpOptions = {}): Observable<ParkOpeningHoursCalendar> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkOpeningHours(id, from, to)}`;
+    return this.http.get<ParkOpeningHoursCalendar>(url, options);
+  }
+
+  getAdminParkOpeningHours(id: string): Observable<ParkOpeningHoursSchedule> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getAdminParkOpeningHours(id)}`;
+    return this.http.get<ParkOpeningHoursSchedule>(url);
+  }
+
+  upsertAdminParkOpeningHours(id: string, schedule: ParkOpeningHoursSchedule): Observable<ParkOpeningHoursSchedule> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.upsertAdminParkOpeningHours(id)}`;
+    return this.http.put<ParkOpeningHoursSchedule>(url, schedule, this.jsonHttpOptions);
   }
 
   getParkDetailSummary(id: string, options: ParksHttpOptions = {}): Observable<ParkDetailSummary> {

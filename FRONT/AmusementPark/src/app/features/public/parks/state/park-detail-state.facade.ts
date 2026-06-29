@@ -8,6 +8,7 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDistanceResponse, ParkDistanceTarget } from '@app/models/parks/park-distance';
 import { ParkDetailSummary, ParkDetailSummaryStats } from '@app/models/parks/park-detail-summary';
+import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
@@ -46,6 +47,7 @@ export class ParkDetailStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<ParkDetailSummary>();
   private readonly nearbyStateStore = new SignalScreenStateStore<ParkDistanceTarget[]>();
   private readonly weatherStateStore = new SignalScreenStateStore<ParkWeatherForecast>();
+  private readonly openingHoursStateStore = new SignalScreenStateStore<ParkOpeningHoursCalendar>();
   private readonly currentLanguageSignal = signal('en');
   private readonly hasVideosSignal = signal(false);
   private readonly hasImagesSignal = signal(false);
@@ -53,6 +55,7 @@ export class ParkDetailStateFacade {
   public readonly state = this.screenStateStore.state;
   public readonly nearbyState = this.nearbyStateStore.state;
   public readonly weatherState = this.weatherStateStore.state;
+  public readonly openingHoursState = this.openingHoursStateStore.state;
   public readonly park: Signal<ParkDetailViewModel | null> = computed(() => {
     const summary: ParkDetailSummary | undefined = this.screenStateStore.data();
 
@@ -95,6 +98,7 @@ export class ParkDetailStateFacade {
     ));
   });
   public readonly weather: Signal<ParkWeatherForecast | null> = computed(() => this.weatherStateStore.data() ?? null);
+  public readonly openingHours: Signal<ParkOpeningHoursCalendar | null> = computed(() => this.openingHoursStateStore.data() ?? null);
 
   constructor(
     @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
@@ -117,9 +121,11 @@ export class ParkDetailStateFacade {
     const previousData: ParkDetailSummary | undefined = this.screenStateStore.data();
     const previousNearbyData: ParkDistanceTarget[] | undefined = this.nearbyStateStore.data();
     const previousWeatherData: ParkWeatherForecast | undefined = this.weatherStateStore.data();
+    const previousOpeningHoursData: ParkOpeningHoursCalendar | undefined = this.openingHoursStateStore.data();
     this.screenStateStore.setLoading(previousData);
     this.nearbyStateStore.setLoading(previousNearbyData);
     this.weatherStateStore.setLoading(previousWeatherData);
+    this.openingHoursStateStore.setLoading(previousOpeningHoursData);
     this.hasVideosSignal.set(false);
     this.hasImagesSignal.set(false);
 
@@ -129,6 +135,7 @@ export class ParkDetailStateFacade {
         this.hasImagesSignal.set(this.hasKnownImage(summary));
         this.loadNearbyParks(summary.park);
         this.loadWeather(summary.park);
+        this.loadOpeningHours(summary.park);
         this.loadVideoAvailability(summary.park);
         this.loadImageAvailability(summary);
       },
@@ -142,8 +149,59 @@ export class ParkDetailStateFacade {
         this.screenStateStore.setError('parks.detail.errorMessage', previousData);
         this.nearbyStateStore.setError('parks.detail.nearby.errorMessage', previousNearbyData);
         this.weatherStateStore.setError('parkWeather.errorMessage', previousWeatherData);
+        this.openingHoursStateStore.setError('parkOpeningHours.errorMessage', previousOpeningHoursData);
       }
     });
+  }
+
+  private loadOpeningHours(park: Park): void {
+    const parkId: string | null = park.id?.trim() ?? null;
+
+    if (!parkId) {
+      this.openingHoursStateStore.setEmpty(undefined);
+      return;
+    }
+
+    const range: { from: string; to: string } = this.resolveOpeningHoursPreviewRange();
+    this.parksApiService.getParkOpeningHours(parkId, range.from, range.to, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (calendar: ParkOpeningHoursCalendar) => {
+        if (!calendar.days || calendar.days.length === 0) {
+          this.openingHoursStateStore.setEmpty(calendar);
+          return;
+        }
+
+        this.openingHoursStateStore.setReady(calendar);
+      },
+      error: (error: unknown) => {
+        if (hasHttpStatus(error, 404)) {
+          this.openingHoursStateStore.setEmpty(undefined);
+          return;
+        }
+
+        console.error('Error loading park opening hours', error);
+        this.openingHoursStateStore.setError('parkOpeningHours.errorMessage');
+      }
+    });
+  }
+
+  private resolveOpeningHoursPreviewRange(): { from: string; to: string } {
+    const today: Date = new Date();
+    const fromDate: Date = new Date(today);
+    fromDate.setDate(today.getDate() - 1);
+    const toDate: Date = new Date(today);
+    toDate.setDate(today.getDate() + 1);
+
+    return {
+      from: this.formatLocalDate(fromDate),
+      to: this.formatLocalDate(toDate)
+    };
+  }
+
+  private formatLocalDate(date: Date): string {
+    const year: number = date.getFullYear();
+    const month: string = String(date.getMonth() + 1).padStart(2, '0');
+    const day: string = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   private loadWeather(park: Park): void {

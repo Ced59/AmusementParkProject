@@ -6,8 +6,10 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { Park } from '@app/models/parks/park';
+import { ParkOpeningHoursSchedule } from '@app/models/parks/park-opening-hours';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
+import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { Bind } from 'primeng/bind';
 import { Tag } from 'primeng/tag';
 import { ButtonDirective } from 'primeng/button';
@@ -86,6 +88,9 @@ export class AdminParkEditComponent implements OnInit {
   public readonly parkId = signal<string | null>(null);
   public readonly isEditMode = computed(() => !!this.parkId());
   public readonly hasPendingChanges = signal(false);
+  public readonly openingHoursJson = signal('');
+  public readonly openingHoursError = signal<string | null>(null);
+  public readonly openingHoursLoaded = signal(false);
   public readonly videoOwnerType: VideoOwnerType = VideoOwnerType.PARK;
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -113,6 +118,14 @@ export class AdminParkEditComponent implements OnInit {
 
   public get isSaving(): Signal<boolean> {
     return this.editStateFacade.isSaving;
+  }
+
+  public get openingHoursLoading(): Signal<boolean> {
+    return this.editStateFacade.openingHoursLoading;
+  }
+
+  public get openingHoursSaving(): Signal<boolean> {
+    return this.editStateFacade.openingHoursSaving;
   }
 
   protected get referenceData(): AdminParkReferenceDataFacade {
@@ -186,6 +199,10 @@ export class AdminParkEditComponent implements OnInit {
       setTimeout((): void => {
         this.locationStateFacade.refreshFromForm();
       }, 80);
+    }
+
+    if (this.activeTabIndex() === 5) {
+      void this.loadOpeningHoursJson(false);
     }
   }
 
@@ -301,6 +318,59 @@ export class AdminParkEditComponent implements OnInit {
     }
 
     return this.translate.instant('admin.parks.editorStatus.upToDate');
+  }
+
+  onOpeningHoursJsonChanged(value: string): void {
+    this.openingHoursJson.set(value);
+    this.openingHoursError.set(null);
+  }
+
+  reloadOpeningHoursJson(): void {
+    void this.loadOpeningHoursJson(true);
+  }
+
+  formatOpeningHoursJson(): void {
+    try {
+      const parsed: unknown = JSON.parse(this.openingHoursJson() || '{}');
+      this.openingHoursJson.set(JSON.stringify(parsed, null, 2));
+      this.openingHoursError.set(null);
+    } catch {
+      this.openingHoursError.set('admin.parks.openingHoursEditor.invalidJson');
+    }
+  }
+
+  async saveOpeningHoursJson(): Promise<void> {
+    const parkId: string | null = this.parkId();
+    if (!parkId || this.openingHoursSaving()) {
+      return;
+    }
+
+    let payload: ParkOpeningHoursSchedule;
+    try {
+      payload = JSON.parse(this.openingHoursJson() || '{}') as ParkOpeningHoursSchedule;
+    } catch {
+      this.openingHoursError.set('admin.parks.openingHoursEditor.invalidJson');
+      return;
+    }
+
+    payload.parkId = parkId;
+    payload.regularRules = Array.isArray(payload.regularRules) ? payload.regularRules : [];
+    payload.dateOverrides = Array.isArray(payload.dateOverrides) ? payload.dateOverrides : [];
+
+    try {
+      const savedSchedule: ParkOpeningHoursSchedule = await this.editStateFacade.saveOpeningHours(parkId, payload);
+      this.openingHoursJson.set(JSON.stringify(savedSchedule, null, 2));
+      this.openingHoursLoaded.set(true);
+      this.openingHoursError.set(null);
+      this.toastMessageService.add(
+        'success',
+        this.translate.instant('admin.parks.openingHoursEditor.savedSummary'),
+        this.translate.instant('admin.parks.openingHoursEditor.savedDetail')
+      );
+    } catch (error: unknown) {
+      console.error('Error saving opening hours', error);
+      this.openingHoursError.set('admin.parks.openingHoursEditor.saveError');
+    }
   }
 
   private initializeContextFromRoute(): void {
@@ -477,5 +547,41 @@ export class AdminParkEditComponent implements OnInit {
 
   private navigateToList(): void {
     this.router.navigate(['/', this.currentLang(), 'admin', 'parks']);
+  }
+
+  private async loadOpeningHoursJson(force: boolean): Promise<void> {
+    const parkId: string | null = this.parkId();
+    if (!parkId || (!force && this.openingHoursLoaded())) {
+      return;
+    }
+
+    try {
+      const schedule: ParkOpeningHoursSchedule = await this.editStateFacade.loadOpeningHours(parkId);
+      this.openingHoursJson.set(JSON.stringify(schedule, null, 2));
+      this.openingHoursLoaded.set(true);
+      this.openingHoursError.set(null);
+    } catch (error: unknown) {
+      if (hasHttpStatus(error, 404)) {
+        this.openingHoursJson.set(JSON.stringify(this.createOpeningHoursTemplate(parkId), null, 2));
+        this.openingHoursLoaded.set(true);
+        this.openingHoursError.set(null);
+        return;
+      }
+
+      console.error('Error loading opening hours', error);
+      this.openingHoursError.set('admin.parks.openingHoursEditor.loadError');
+    }
+  }
+
+  private createOpeningHoursTemplate(parkId: string): ParkOpeningHoursSchedule {
+    return {
+      parkId,
+      timeZoneId: 'Europe/Paris',
+      sourceUrl: '',
+      notes: '',
+      lastVerifiedAtUtc: new Date().toISOString(),
+      regularRules: [],
+      dateOverrides: []
+    };
   }
 }

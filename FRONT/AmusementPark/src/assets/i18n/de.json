@@ -429,7 +429,7 @@
       },
       "editor": {
         "title": "JSON-Dokument",
-        "description": "Fehlende Eigenschaften bleiben erhalten. Zones/items-Arrays führen Upserts nur für die enthaltenen Einträge aus."
+        "description": "Fehlende Eigenschaften bleiben erhalten. Die openingHours-Sektion wird mit demselben globalen JSON wie Park, Zonen, Seiten und Bilder geprueft und angewendet."
       },
       "export": {
         "title": "Park-JSON exportieren",
@@ -690,70 +690,62 @@
         }
       }
     },
-    "parkWeather": {
-      "navTitle": "Wetter",
-      "title": "Wetteraktualisierung",
-      "subtitle": "Uberwacht geplante Ausfuhrungen, sichtbare Parks und Fehler.",
-      "loading": "Wetterstatus wird geladen...",
-      "loadError": "Wetterstatus konnte nicht geladen werden.",
-      "startError": "Wetteraktualisierung konnte nicht gestartet werden.",
-      "retryError": "Wetteraktualisierung konnte nicht erneut gestartet werden.",
-      "empty": "Keine Wetterinformationen verfugbar.",
-      "actions": {
-        "startManual": "Jetzt aktualisieren",
-        "retryFailed": "Fehler erneut versuchen",
-        "retryPark": "Erneut"
+    "parks": {
+      "tabs": {
+        "openingHours": "Oeffnungszeiten",
+        "general": "Allgemein",
+        "location": "Standort",
+        "descriptions": "Beschreibungen",
+        "logos": "Logos",
+        "photos": "Fotos",
+        "videos": "Videos"
       },
-      "stats": {
-        "status": "Status",
-        "progress": "Fortschritt",
-        "success": "Erfolgreich",
-        "warnings": "{{count}} Warnung(en)",
-        "failed": "Fehler"
+      "sort": {
+        "openingHoursAttentionFirst": "Zeiten zuerst pruefen",
+        "openingHoursReadyFirst": "Zeiten komplett zuerst",
+        "label": "Sort.",
+        "default": "Standard",
+        "nameAsc": "Name A-Z",
+        "totalDesc": "Items max",
+        "totalAsc": "Items min",
+        "visibleDesc": "Sichtb. max",
+        "visibleAsc": "Sichtb. min"
       },
-      "statuses": {
-        "queued": "In Warteschlange",
-        "running": "Lauft",
-        "completed": "Abgeschlossen",
-        "completedWithFailures": "Abgeschlossen mit Fehlern",
-        "failed": "Fehlgeschlagen",
-        "skipped": "Ubersprungen"
-      },
-      "messages": {
-        "queued": "Wetteraktualisierung ist in der Warteschlange.",
-        "running": "Wetteraktualisierung lauft.",
-        "completed": "Wetteraktualisierung abgeschlossen.",
-        "completedWithFailures": "Wetteraktualisierung mit Fehlern abgeschlossen.",
-        "canceled": "Wetteraktualisierung wurde abgebrochen.",
-        "skippedByManual": "Automatische Ausfuhrung ubersprungen, da eine manuelle Aktualisierung diesen Zyklus bereits abdeckt."
-      },
-      "values": {
-        "empty": "-"
-      },
-      "latestRun": {
-        "title": "Letzte Ausfuhrung",
-        "meta": "{{trigger}} - {{scope}}",
-        "requestedAt": "Angefordert",
-        "startedAt": "Gestartet",
-        "cancelAuto": "Automatiklauf storniert"
-      },
-      "failures": {
-        "title": "Fehlgeschlagene Parks",
-        "subtitle": "Alle Fehler oder einen einzelnen Park erneut starten.",
-        "empty": "Kein fehlgeschlagener Park in dieser Ausfuhrung.",
-        "columns": {
-          "park": "Park",
-          "error": "Fehler",
-          "attempts": "Versuche",
-          "actions": "Aktionen"
+      "openingHours": {
+        "title": "Oeffnungszeiten",
+        "filterLabel": "Zeiten",
+        "notConfigured": "Nicht konfiguriert",
+        "coverageOne": "Vollstaendige Zeiten fuer {{ count }} Tag, bis {{ date }}",
+        "coverageMany": "Vollstaendige Zeiten fuer {{ count }} Tage, bis {{ date }}",
+        "statuses": {
+          "NotConfigured": "Nicht konfiguriert",
+          "Expired": "Abgelaufen",
+          "NeedsUpdate": "Aktualisierung noetig",
+          "UpToDate": "Aktuell"
+        },
+        "filters": {
+          "all": "Alle Zeiten",
+          "configured": "Konfiguriert",
+          "notConfigured": "Nicht konfiguriert",
+          "upToDate": "Aktuell",
+          "needsUpdate": "Aktualisierung noetig",
+          "expired": "Abgelaufen"
         }
       },
-      "noRun": {
-        "title": "Noch keine Ausfuhrung",
-        "message": "Starte eine manuelle Aktualisierung oder warte auf die nachste geplante Ausfuhrung."
-      }
-    },
-    "parks": {
+      "openingHoursEditor": {
+        "title": "Oeffnungszeiten JSON",
+        "subtitle": "Fuege das Zeitplan-JSON ein oder bearbeite es und starte dann den Upsert fuer diesen Park.",
+        "reload": "Neu laden",
+        "format": "Formatieren",
+        "upsert": "JSON upserten",
+        "jsonLabel": "Oeffnungszeiten JSON",
+        "invalidJson": "Das JSON ist ungueltig.",
+        "savedSummary": "Oeffnungszeiten gespeichert",
+        "savedDetail": "Der Zeitplan wurde upserted.",
+        "saveError": "Der Zeitplan konnte nicht gespeichert werden.",
+        "loadError": "Der Zeitplan konnte nicht geladen werden.",
+        "hint": "Geschlossene Tage muessen explizit sein, wenn sie als vollstaendige Abdeckung zaehlen sollen."
+      },
       "total": "Gesamtzahl der Parks: {{count}}",
       "empty": "Keine Parks gefunden.",
       "name": "Park",
@@ -1123,14 +1115,6 @@
       "visibilityHelp": "Steuert, ob dieser Park in der öffentlichen Anwendung sichtbar ist.",
       "locationSectionTitle": "Standort und Adresse",
       "locationSectionHelp": "Definiere hier den Hauptpunkt des Parks und seine Postanschrift.",
-      "tabs": {
-        "general": "Allgemein",
-        "location": "Standort",
-        "descriptions": "Beschreibungen",
-        "logos": "Logos",
-        "photos": "Fotos",
-        "videos": "Videos"
-      },
       "editorStatus": {
         "saving": "Speichern...",
         "unsavedChanges": "Nicht gespeicherte Änderungen",
@@ -1219,15 +1203,69 @@
       "statuses": {
         "operating": "Geöffnet",
         "closedDefinitively": "Dauerhaft geschlossen"
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Wetter",
+      "title": "Wetteraktualisierung",
+      "subtitle": "Uberwacht geplante Ausfuhrungen, sichtbare Parks und Fehler.",
+      "loading": "Wetterstatus wird geladen...",
+      "loadError": "Wetterstatus konnte nicht geladen werden.",
+      "startError": "Wetteraktualisierung konnte nicht gestartet werden.",
+      "retryError": "Wetteraktualisierung konnte nicht erneut gestartet werden.",
+      "empty": "Keine Wetterinformationen verfugbar.",
+      "actions": {
+        "startManual": "Jetzt aktualisieren",
+        "retryFailed": "Fehler erneut versuchen",
+        "retryPark": "Erneut"
       },
-      "sort": {
-        "label": "Sort.",
-        "default": "Standard",
-        "nameAsc": "Name A-Z",
-        "totalDesc": "Items max",
-        "totalAsc": "Items min",
-        "visibleDesc": "Sichtb. max",
-        "visibleAsc": "Sichtb. min"
+      "stats": {
+        "status": "Status",
+        "progress": "Fortschritt",
+        "success": "Erfolgreich",
+        "warnings": "{{count}} Warnung(en)",
+        "failed": "Fehler"
+      },
+      "statuses": {
+        "queued": "In Warteschlange",
+        "running": "Lauft",
+        "completed": "Abgeschlossen",
+        "completedWithFailures": "Abgeschlossen mit Fehlern",
+        "failed": "Fehlgeschlagen",
+        "skipped": "Ubersprungen"
+      },
+      "messages": {
+        "queued": "Wetteraktualisierung ist in der Warteschlange.",
+        "running": "Wetteraktualisierung lauft.",
+        "completed": "Wetteraktualisierung abgeschlossen.",
+        "completedWithFailures": "Wetteraktualisierung mit Fehlern abgeschlossen.",
+        "canceled": "Wetteraktualisierung wurde abgebrochen.",
+        "skippedByManual": "Automatische Ausfuhrung ubersprungen, da eine manuelle Aktualisierung diesen Zyklus bereits abdeckt."
+      },
+      "values": {
+        "empty": "-"
+      },
+      "latestRun": {
+        "title": "Letzte Ausfuhrung",
+        "meta": "{{trigger}} - {{scope}}",
+        "requestedAt": "Angefordert",
+        "startedAt": "Gestartet",
+        "cancelAuto": "Automatiklauf storniert"
+      },
+      "failures": {
+        "title": "Fehlgeschlagene Parks",
+        "subtitle": "Alle Fehler oder einen einzelnen Park erneut starten.",
+        "empty": "Kein fehlgeschlagener Park in dieser Ausfuhrung.",
+        "columns": {
+          "park": "Park",
+          "error": "Fehler",
+          "attempts": "Versuche",
+          "actions": "Aktionen"
+        }
+      },
+      "noRun": {
+        "title": "Noch keine Ausfuhrung",
+        "message": "Starte eine manuelle Aktualisierung oder warte auf die nachste geplante Ausfuhrung."
       }
     },
     "publicViewToolbar": {
@@ -2806,6 +2844,46 @@
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
+    }
+  },
+  "parkOpeningHours": {
+    "card": {
+      "title": "Daten und Zeiten",
+      "openNow": "Jetzt geoeffnet",
+      "closedNow": "Jetzt geschlossen",
+      "openBadge": "Geoeffnet",
+      "closedBadge": "Geschlossen",
+      "today": "Heute",
+      "closedToday": "Heute geschlossen",
+      "notDefinedToday": "Heute nicht angegeben",
+      "parkTimeZone": "Parkzeit",
+      "visitorTimeZone": "Deine Zeitzone: {{ timeZone }}",
+      "viewAll": "Alle Daten und Zeiten ansehen",
+      "loading": "Zeiten werden geladen"
+    },
+    "page": {
+      "kicker": "Daten und Zeiten",
+      "title": "Daten und Oeffnungszeiten fuer {{ name }}",
+      "lead": "Sieh dir die aktuell gepflegten Daten und Tageszeiten fuer {{ name }} an.",
+      "backToPark": "Zurueck zu {{ name }}",
+      "officialSite": "Offizielle Website",
+      "disclaimer": "Diese Zeiten dienen nur zur Orientierung. Pruefe vor deinem Besuch immer die offizielle Website von {{ name }}, da private Events, Sonderschliessungen, Wetter, Betrieb oder andere Aenderungen hier eventuell nicht bekannt oder aktualisiert sind.",
+      "summaryLabel": "Zusammenfassung der Oeffnungszeiten",
+      "coverage": "Erfasster Zeitraum",
+      "coverageUnknown": "Unbekannter Zeitraum",
+      "timeZone": "Zeitzone",
+      "daysCount": "Erfasste Tage",
+      "daysCountValue": "{{ count }} Tage",
+      "calendarLabel": "Daten und Oeffnungszeiten fuer {{ name }}",
+      "open": "Geoeffnet",
+      "closed": "Geschlossen",
+      "closedNoReason": "Geschlossen",
+      "loadingTitle": "Daten und Zeiten werden geladen",
+      "loadingMessage": "Der erfasste Plan wird geladen.",
+      "emptyTitle": "Keine Daten oder Zeiten erfasst",
+      "emptyMessage": "Fuer diesen Park ist noch kein Oeffnungsplan verfuegbar.",
+      "errorTitle": "Daten und Zeiten nicht verfuegbar",
+      "errorMessage": "Der Oeffnungsplan konnte nicht geladen werden."
     }
   },
   "parkVisitor": {

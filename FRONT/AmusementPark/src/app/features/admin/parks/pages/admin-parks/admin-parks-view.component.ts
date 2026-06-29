@@ -12,6 +12,7 @@ import { Tag } from 'primeng/tag';
 import { TranslateModule } from '@ngx-translate/core';
 import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
+import { ParkOpeningHoursAdminFilter, ParkOpeningHoursAdminStatus } from '@app/models/parks/park-opening-hours';
 import { ParkType } from '@app/models/parks/park-type';
 import { ParkAdminListFilters, ParkAdminListSortDirection, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
@@ -37,6 +38,7 @@ export class AdminParksViewComponent {
   @Input() typeFilter!: Signal<ParkType | null>;
   @Input() countryCodeFilter!: Signal<string>;
   @Input() validCoordinatesFilter!: Signal<boolean | null>;
+  @Input() openingHoursFilter!: Signal<ParkOpeningHoursAdminFilter>;
   @Input() sortField!: Signal<ParkAdminListSortField>;
   @Input() sortDirection!: Signal<ParkAdminListSortDirection>;
   @Input() sortOrder!: Signal<1 | -1>;
@@ -68,6 +70,8 @@ export class AdminParksViewComponent {
     { value: 'parkItemsTotalCount:asc', labelKey: 'admin.parks.sort.totalAsc' },
     { value: 'parkItemsVisibleCount:desc', labelKey: 'admin.parks.sort.visibleDesc' },
     { value: 'parkItemsVisibleCount:asc', labelKey: 'admin.parks.sort.visibleAsc' },
+    { value: 'openingHoursStatus:asc', labelKey: 'admin.parks.sort.openingHoursAttentionFirst' },
+    { value: 'openingHoursStatus:desc', labelKey: 'admin.parks.sort.openingHoursReadyFirst' },
   ];
 
   protected localVisibilityFilter: boolean | null = null;
@@ -75,6 +79,7 @@ export class AdminParksViewComponent {
   protected localTypeFilter: ParkType | null = null;
   protected localCountryCodeFilter: string = '';
   protected localValidCoordinatesFilter: boolean | null = null;
+  protected localOpeningHoursFilter: ParkOpeningHoursAdminFilter = 'all';
 
   onSearchQueryChanged(searchQuery: string): void {
     this.searchQueryChanged.emit(searchQuery);
@@ -94,7 +99,8 @@ export class AdminParksViewComponent {
       adminReviewStatus: this.localAdminReviewStatusFilter,
       type: this.localTypeFilter,
       countryCode: this.localCountryCodeFilter,
-      hasValidCoordinates: this.localValidCoordinatesFilter
+      hasValidCoordinates: this.localValidCoordinatesFilter,
+      openingHoursStatus: this.localOpeningHoursFilter
     });
   }
 
@@ -224,6 +230,41 @@ export class AdminParksViewComponent {
     return this.formatCount(park.parkItemsVisibleCount);
   }
 
+  getOpeningHoursStatusLabelKey(status: ParkOpeningHoursAdminStatus | null | undefined): string {
+    return `admin.parks.openingHours.statuses.${status ?? 'NotConfigured'}`;
+  }
+
+  getOpeningHoursStatusSeverity(status: ParkOpeningHoursAdminStatus | null | undefined): 'success' | 'info' | 'warn' | 'danger' {
+    switch (status) {
+      case 'UpToDate':
+        return 'success';
+      case 'NeedsUpdate':
+        return 'warn';
+      case 'Expired':
+        return 'danger';
+      case 'NotConfigured':
+      default:
+        return 'info';
+    }
+  }
+
+  getOpeningHoursCoverageLabelKey(park: Park): string {
+    if (!park.openingHours?.hasOpeningHours) {
+      return 'admin.parks.openingHours.notConfigured';
+    }
+
+    return park.openingHours.completeForDays === 1
+      ? 'admin.parks.openingHours.coverageOne'
+      : 'admin.parks.openingHours.coverageMany';
+  }
+
+  getOpeningHoursCoverageParams(park: Park): Record<string, string | number> {
+    return {
+      count: park.openingHours?.completeForDays ?? 0,
+      date: park.openingHours?.completeUntilDate ?? park.openingHours?.lastDate ?? '-'
+    };
+  }
+
   private formatCount(count: number | null | undefined): string {
     return count === null || count === undefined ? '-' : String(count);
   }
@@ -236,6 +277,8 @@ export class AdminParksViewComponent {
         return 'parkItemsTotalCount';
       case 'parkItemsVisibleCount':
         return 'parkItemsVisibleCount';
+      case 'openingHoursStatus':
+        return 'openingHoursStatus';
       default:
         return 'default';
     }

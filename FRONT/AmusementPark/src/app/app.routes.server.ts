@@ -34,6 +34,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/park/:id/:slug/zones', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/zone/:zoneId/:zoneSlug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/weather', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/opening-hours', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/items', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug/images', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug/video/s/:videoId/:videoSlug', renderMode: RenderMode.Server },

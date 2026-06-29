@@ -10,6 +10,7 @@ import { ImageDisplayComponent } from '@shared/components/image-display/image-di
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent } from '@ui/primitives';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
@@ -17,6 +18,7 @@ import { ParkDetailViewModel } from '../models/park-detail-view.model';
 import { ParkContentSummaryComponent } from './park-content-summary.component';
 import { ParkLocationSectionComponent } from './park-location-section.component';
 import { ParkNearbySectionComponent } from './park-nearby-section.component';
+import { ParkOpeningHoursCardComponent } from './park-opening-hours-card.component';
 import { ParkWeatherCardComponent } from './park-weather-card.component';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.component';
@@ -32,6 +34,7 @@ import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.c
     ParkContentSummaryComponent,
     ParkLocationSectionComponent,
     ParkNearbySectionComponent,
+    ParkOpeningHoursCardComponent,
     ParkWeatherCardComponent,
     TranslateModule,
     SafeExternalUrlPipe,
@@ -52,6 +55,8 @@ export class ParkDetailViewComponent {
   @Input() summary: ParkContentSummaryViewModel | null = null;
   @Input() weather: ParkWeatherForecast | null = null;
   @Input() weatherState: ScreenState<unknown, string> | null = null;
+  @Input() openingHours: ParkOpeningHoursCalendar | null = null;
+  @Input() openingHoursState: ScreenState<unknown, string> | null = null;
   @Input() nearbyParks: ParkCardModel[] = [];
   @Input() nearbyState: ScreenState<unknown, string> | null = null;
   @Input() currentLang: string = 'en';

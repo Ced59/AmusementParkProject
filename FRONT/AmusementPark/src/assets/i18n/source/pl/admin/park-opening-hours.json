@@ -1,0 +1,53 @@
+{
+  "admin": {
+    "parks": {
+      "tabs": {
+        "openingHours": "Godziny otwarcia"
+      },
+      "sort": {
+        "openingHoursAttentionFirst": "Godziny do sprawdzenia",
+        "openingHoursReadyFirst": "Godziny kompletne"
+      },
+      "openingHours": {
+        "title": "Godziny otwarcia",
+        "filterLabel": "Godziny",
+        "notConfigured": "Nie ustawiono",
+        "coverageOne": "Pelne godziny dla {{ count }} dnia, do {{ date }}",
+        "coverageMany": "Pelne godziny dla {{ count }} dni, do {{ date }}",
+        "statuses": {
+          "NotConfigured": "Nie ustawiono",
+          "Expired": "Wygasle",
+          "NeedsUpdate": "Do aktualizacji",
+          "UpToDate": "Aktualne"
+        },
+        "filters": {
+          "all": "Wszystkie godziny",
+          "configured": "Ustawione",
+          "notConfigured": "Nie ustawiono",
+          "upToDate": "Aktualne",
+          "needsUpdate": "Do aktualizacji",
+          "expired": "Wygasle"
+        }
+      },
+      "openingHoursEditor": {
+        "title": "JSON godzin",
+        "subtitle": "Wklej lub edytuj JSON harmonogramu, a potem wykonaj upsert dla tego parku.",
+        "reload": "Przeladuj",
+        "format": "Formatuj",
+        "upsert": "Upsert JSON",
+        "jsonLabel": "JSON godzin",
+        "invalidJson": "JSON jest nieprawidlowy.",
+        "savedSummary": "Godziny zapisane",
+        "savedDetail": "Harmonogram zostal upsertowany.",
+        "saveError": "Nie udalo sie zapisac harmonogramu.",
+        "loadError": "Nie udalo sie zaladowac harmonogramu.",
+        "hint": "Dni zamkniete musza byc jawne, jesli maja liczyc sie jako pelna kompletacja."
+      }
+    },
+    "parkGraphUpserts": {
+      "editor": {
+        "description": "Brakujace wlasciwosci sa zachowane. Sekcja openingHours jest podgladana i stosowana w tym samym globalnym JSON co park, strefy, strony i obrazy."
+      }
+    }
+  }
+}

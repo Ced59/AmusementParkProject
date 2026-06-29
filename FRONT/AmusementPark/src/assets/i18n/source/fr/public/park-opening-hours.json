@@ -1,0 +1,42 @@
+{
+  "parkOpeningHours": {
+    "card": {
+      "title": "Dates et horaires",
+      "openNow": "Ouvert en ce moment",
+      "closedNow": "Ferme en ce moment",
+      "openBadge": "Ouvert",
+      "closedBadge": "Ferme",
+      "today": "Aujourd'hui",
+      "closedToday": "Ferme aujourd'hui",
+      "notDefinedToday": "Non renseigne aujourd'hui",
+      "parkTimeZone": "Fuseau du parc",
+      "visitorTimeZone": "Ton fuseau : {{ timeZone }}",
+      "viewAll": "Voir toutes les dates et horaires",
+      "loading": "Chargement des horaires"
+    },
+    "page": {
+      "kicker": "Dates et horaires",
+      "title": "Dates et horaires de {{ name }}",
+      "lead": "Parcours les dates et horaires actuellement renseignes pour {{ name }}.",
+      "backToPark": "Retour a {{ name }}",
+      "officialSite": "Site officiel",
+      "disclaimer": "Ces horaires sont donnes a titre indicatif. Verifie toujours le site officiel de {{ name }} avant ta visite, car une privatisation, une fermeture exceptionnelle, la meteo, l'exploitation ou d'autres changements peuvent ne pas etre connus ou ajoutes au moment de la mise a jour.",
+      "summaryLabel": "Resume des horaires",
+      "coverage": "Periode renseignee",
+      "coverageUnknown": "Periode inconnue",
+      "timeZone": "Fuseau horaire",
+      "daysCount": "Jours renseignes",
+      "daysCountValue": "{{ count }} jours",
+      "calendarLabel": "Dates et horaires de {{ name }}",
+      "open": "Ouvert",
+      "closed": "Ferme",
+      "closedNoReason": "Ferme",
+      "loadingTitle": "Chargement des dates et horaires",
+      "loadingMessage": "Les horaires renseignes chargent.",
+      "emptyTitle": "Aucune date ni horaire renseigne",
+      "emptyMessage": "Aucun planning d'ouverture n'est encore disponible pour ce parc.",
+      "errorTitle": "Dates et horaires indisponibles",
+      "errorMessage": "Impossible de charger les horaires d'ouverture."
+    }
+  }
+}
