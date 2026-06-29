@@ -93,8 +93,14 @@ public sealed class ParkOpeningHoursController : ControllerBase
         [FromBody] ParkOpeningHoursScheduleDto request,
         CancellationToken cancellationToken = default)
     {
+        ApplicationResult<ParkOpeningHoursSchedule> mappingResult = request.ToDomainResult(parkId);
+        if (!mappingResult.IsSuccess || mappingResult.Value is null)
+        {
+            return this.ToActionResult(mappingResult);
+        }
+
         ApplicationResult<ParkOpeningHoursSchedule> result = await this.upsertScheduleCommandHandler.HandleAsync(
-            new UpsertParkOpeningHoursScheduleCommand(request.ToDomain(parkId)),
+            new UpsertParkOpeningHoursScheduleCommand(mappingResult.Value),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

@@ -1,4 +1,6 @@
 using System.Globalization;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkOpeningHours;
 using AmusementPark.Application.Features.ParkOpeningHours.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.ParkOpeningHours;
@@ -10,9 +12,32 @@ internal static class ParkOpeningHoursHttpMappers
     private const string DateFormat = "yyyy-MM-dd";
     private const string TimeFormat = "HH:mm";
 
-    public static ParkOpeningHoursSchedule ToDomain(this ParkOpeningHoursScheduleDto dto, string parkId)
+    public static ApplicationResult<ParkOpeningHoursSchedule> ToDomainResult(this ParkOpeningHoursScheduleDto dto, string parkId)
     {
         ArgumentNullException.ThrowIfNull(dto);
+
+        Dictionary<string, List<string>> errors = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+        ParkOpeningHoursSchedule schedule = ToDomain(dto, parkId, errors);
+        if (errors.Count > 0)
+        {
+            Dictionary<string, IReadOnlyCollection<string>> validationErrors = errors.ToDictionary(
+                static item => item.Key,
+                static item => (IReadOnlyCollection<string>)item.Value,
+                StringComparer.Ordinal);
+
+            return ApplicationResult<ParkOpeningHoursSchedule>.Failure(ParkOpeningHoursApplicationErrors.InvalidSchedule(validationErrors));
+        }
+
+        return ApplicationResult<ParkOpeningHoursSchedule>.Success(schedule);
+    }
+
+    private static ParkOpeningHoursSchedule ToDomain(
+        ParkOpeningHoursScheduleDto dto,
+        string parkId,
+        Dictionary<string, List<string>> errors)
+    {
+        IReadOnlyCollection<ParkOpeningHoursRuleDto> regularRules = dto.RegularRules ?? Array.Empty<ParkOpeningHoursRuleDto>();
+        IReadOnlyCollection<ParkOpeningHoursDateOverrideDto> dateOverrides = dto.DateOverrides ?? Array.Empty<ParkOpeningHoursDateOverrideDto>();
 
         return new ParkOpeningHoursSchedule
         {
@@ -21,8 +46,8 @@ internal static class ParkOpeningHoursHttpMappers
             SourceUrl = NormalizeOptionalString(dto.SourceUrl),
             Notes = NormalizeOptionalString(dto.Notes),
             LastVerifiedAtUtc = dto.LastVerifiedAtUtc,
-            RegularRules = dto.RegularRules.Select(static rule => rule.ToDomain()).ToList(),
-            DateOverrides = dto.DateOverrides.Select(static dateOverride => dateOverride.ToDomain()).ToList(),
+            RegularRules = regularRules.Select((rule, index) => rule.ToDomain(errors, $"regularRules[{index}]")).ToList(),
+            DateOverrides = dateOverrides.Select((dateOverride, index) => dateOverride.ToDomain(errors, $"dateOverrides[{index}]")).ToList(),
         };
     }
 
@@ -82,27 +107,31 @@ internal static class ParkOpeningHoursHttpMappers
         };
     }
 
-    private static ParkOpeningHoursRule ToDomain(this ParkOpeningHoursRuleDto dto)
+    private static ParkOpeningHoursRule ToDomain(
+        this ParkOpeningHoursRuleDto dto,
+        Dictionary<string, List<string>> errors,
+        string fieldPrefix)
     {
         return new ParkOpeningHoursRule
         {
             Id = NormalizeOptionalString(dto.Id),
             StartDate = ParseDateOrDefault(dto.StartDate),
             EndDate = ParseDateOrDefault(dto.EndDate),
-            DaysOfWeek = dto.DaysOfWeek
-                .Select(static value => Enum.TryParse(value, true, out DayOfWeek parsed) ? parsed : (DayOfWeek?)null)
-                .Where(static value => value.HasValue)
-                .Select(static value => value!.Value)
-                .ToList(),
+            DaysOfWeek = ParseDaysOfWeek(dto.DaysOfWeek, $"{fieldPrefix}.daysOfWeek", errors),
             IsClosed = dto.IsClosed,
             Label = NormalizeOptionalString(dto.Label),
             Reason = NormalizeOptionalString(dto.Reason),
             SortOrder = dto.SortOrder,
-            TimeRanges = dto.TimeRanges.Select(static timeRange => timeRange.ToDomain()).ToList(),
+            TimeRanges = (dto.TimeRanges ?? Array.Empty<ParkOpeningHoursTimeRangeDto>())
+                .Select((timeRange, index) => timeRange.ToDomain(errors, $"{fieldPrefix}.timeRanges[{index}]"))
+                .ToList(),
         };
     }
 
-    private static ParkOpeningHoursDateOverride ToDomain(this ParkOpeningHoursDateOverrideDto dto)
+    private static ParkOpeningHoursDateOverride ToDomain(
+        this ParkOpeningHoursDateOverrideDto dto,
+        Dictionary<string, List<string>> errors,
+        string fieldPrefix)
     {
         return new ParkOpeningHoursDateOverride
         {
@@ -110,17 +139,42 @@ internal static class ParkOpeningHoursHttpMappers
             IsClosed = dto.IsClosed,
             Label = NormalizeOptionalString(dto.Label),
             Reason = NormalizeOptionalString(dto.Reason),
-            TimeRanges = dto.TimeRanges.Select(static timeRange => timeRange.ToDomain()).ToList(),
+            TimeRanges = (dto.TimeRanges ?? Array.Empty<ParkOpeningHoursTimeRangeDto>())
+                .Select((timeRange, index) => timeRange.ToDomain(errors, $"{fieldPrefix}.timeRanges[{index}]"))
+                .ToList(),
         };
     }
 
-    private static ParkOpeningHoursTimeRange ToDomain(this ParkOpeningHoursTimeRangeDto dto)
+    private static ParkOpeningHoursTimeRange ToDomain(
+        this ParkOpeningHoursTimeRangeDto dto,
+        Dictionary<string, List<string>> errors,
+        string fieldPrefix)
     {
         bool opensAtParsed = TryParseTime(dto.OpensAt, out TimeOnly opensAt);
         bool closesAtParsed = TryParseTime(dto.ClosesAt, out TimeOnly closesAt);
-        TimeOnly? lastAdmissionAt = TryParseTime(dto.LastAdmissionAt, out TimeOnly parsedLastAdmissionAt)
-            ? parsedLastAdmissionAt
-            : null;
+        TimeOnly? lastAdmissionAt = null;
+
+        if (!opensAtParsed)
+        {
+            AddError(errors, $"{fieldPrefix}.opensAt", $"Time must use the {TimeFormat} format.");
+        }
+
+        if (!closesAtParsed)
+        {
+            AddError(errors, $"{fieldPrefix}.closesAt", $"Time must use the {TimeFormat} format.");
+        }
+
+        if (!string.IsNullOrWhiteSpace(dto.LastAdmissionAt))
+        {
+            if (TryParseTime(dto.LastAdmissionAt, out TimeOnly parsedLastAdmissionAt))
+            {
+                lastAdmissionAt = parsedLastAdmissionAt;
+            }
+            else
+            {
+                AddError(errors, $"{fieldPrefix}.lastAdmissionAt", $"Time must use the {TimeFormat} format.");
+            }
+        }
 
         return new ParkOpeningHoursTimeRange
         {
@@ -130,6 +184,43 @@ internal static class ParkOpeningHoursHttpMappers
             LastAdmissionAt = lastAdmissionAt,
             LastAdmissionNextDay = dto.LastAdmissionNextDay,
         };
+    }
+
+    private static List<DayOfWeek> ParseDaysOfWeek(
+        IReadOnlyCollection<string>? values,
+        string fieldPath,
+        Dictionary<string, List<string>> errors)
+    {
+        List<DayOfWeek> days = new List<DayOfWeek>();
+        IReadOnlyCollection<string> rawValues = values ?? Array.Empty<string>();
+
+        foreach (string? value in rawValues)
+        {
+            string normalizedValue = value?.Trim() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(normalizedValue)
+                || !Enum.TryParse(normalizedValue, true, out DayOfWeek parsed)
+                || !Enum.IsDefined(typeof(DayOfWeek), parsed))
+            {
+                string displayValue = string.IsNullOrWhiteSpace(normalizedValue) ? "<empty>" : normalizedValue;
+                AddError(errors, fieldPath, $"Invalid weekday value '{displayValue}'. Allowed values are {string.Join(", ", Enum.GetNames<DayOfWeek>())}.");
+                continue;
+            }
+
+            days.Add(parsed);
+        }
+
+        return days;
+    }
+
+    private static void AddError(Dictionary<string, List<string>> errors, string fieldPath, string message)
+    {
+        if (!errors.TryGetValue(fieldPath, out List<string>? messages))
+        {
+            messages = new List<string>();
+            errors[fieldPath] = messages;
+        }
+
+        messages.Add(message);
     }
 
     private static ParkOpeningHoursRuleDto ToHttp(this ParkOpeningHoursRuleResult result)
