@@ -16,6 +16,7 @@ Date: 2026-06-29
 - Added dedicated localized SEO metadata for public reference pages and park zone pages.
 - Enriched attraction fallback descriptions with existing displayed specs only.
 - Kept noindex behavior for filtered URLs, empty galleries, empty video lists, empty weather pages, maps, private/admin/account/auth/technical error routes.
+- Added the public manufacturers index page to static sitemap generation because the route is SSR, visible in public navigation and indexable.
 - Added a guard so full sitemap generation does not trigger massive IndexNow submissions. Public content updates remain the selective IndexNow path.
 
 ## Deliberate non-changes
