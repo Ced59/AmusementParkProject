@@ -5,7 +5,7 @@ Date: 2026-06-29
 ## Verified conclusions
 
 - Duplicate public metadata was real. The code confirmed generic SEO fallback on park operator, founder and manufacturer detail routes, English-only zone metadata, and self-canonical URLs when an entity was reached through an old slug.
-- Public critical routes are configured for SSR in `app.routes.server.ts`. Admin, auth, account and private areas remain client-rendered or noindex through route/default SEO handling.
+- Public critical routes are configured for SSR in `app.routes.server.ts`. Admin, auth, account and private areas remain client-rendered or noindex through route/default SEO handling. Public technical pages are editorial content and remain indexable.
 - Static, media and zone sitemap providers already skip empty language sections or content-free image/video/zone pages. The current sitemap generation no longer exposes empty section XML files.
 - Park item, zone, media and reference sitemap URLs are generated from current entity names and route slugs. The frontend now uses the same loaded entity data for canonical URLs.
 - IndexNow already had a selective path through `PublicSeoUpdateNotifier`; the risky path was full sitemap generation submitting every generated public URL.
