@@ -8,7 +8,15 @@
       </span>
       <div>
         <h2>{{ 'parkOpeningHours.card.title' | translate }}</h2>
-        <p>{{ (currentStatus.isOpen ? 'parkOpeningHours.card.openNow' : 'parkOpeningHours.card.closedNow') | translate }}</p>
+        <p>
+          @if (currentStatus.isOpen) {
+            {{ 'parkOpeningHours.card.openNow' | translate }}
+          } @else if (currentStatus.nextOpeningDelayLabel) {
+            {{ 'parkOpeningHours.card.opensIn' | translate:{ duration: currentStatus.nextOpeningDelayLabel } }}
+          } @else {
+            {{ 'parkOpeningHours.card.closedNow' | translate }}
+          }
+        </p>
       </div>
     </header>
 

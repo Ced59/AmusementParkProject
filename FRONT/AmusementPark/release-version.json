@@ -1,6 +1,20 @@
 {
-  "version": "3.0.1",
+  "version": "3.0.2",
   "history": [
+    {
+      "version": "3.0.2",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les horaires des parcs deviennent plus pratiques.",
+        "en": "Park opening hours become easier to use.",
+        "de": "Parkoeffnungszeiten werden praktischer.",
+        "nl": "Openingstijden van parken worden handiger.",
+        "it": "Gli orari dei parchi diventano piu pratici.",
+        "es": "Los horarios de parques son mas practicos.",
+        "pl": "Godziny otwarcia parkow sa wygodniejsze.",
+        "pt": "Os horarios dos parques ficam mais praticos."
+      }
+    },
     {
       "version": "3.0.1",
       "releasedAt": "2026-06-29",

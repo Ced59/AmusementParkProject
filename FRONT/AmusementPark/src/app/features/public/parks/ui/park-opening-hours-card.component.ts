@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, Input, OnDestroy, PLATFORM_ID, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRange } from '@app/models/parks/park-opening-hours';
 
@@ -14,6 +14,7 @@ interface ParkOpeningHoursStatus {
   isOpen: boolean;
   activeRange: ParkOpeningHoursTimeRange | null;
   today: ParkOpeningHoursDay | null;
+  nextOpeningDelayLabel: string | null;
 }
 
 @Component({
@@ -24,16 +25,38 @@ interface ParkOpeningHoursStatus {
   imports: [RouterLink, TranslateModule]
 })
 export class ParkOpeningHoursCardComponent implements OnDestroy {
-  @Input() calendar: ParkOpeningHoursCalendar | null = null;
-  @Input() state: ScreenState<unknown, string> | null = null;
+  private readonly calendarSignal = signal<ParkOpeningHoursCalendar | null>(null);
+  private readonly stateSignal = signal<ScreenState<unknown, string> | null>(null);
+
+  @Input()
+  set calendar(value: ParkOpeningHoursCalendar | null) {
+    this.calendarSignal.set(value);
+  }
+
+  get calendar(): ParkOpeningHoursCalendar | null {
+    return this.calendarSignal();
+  }
+
+  @Input()
+  set state(value: ScreenState<unknown, string> | null) {
+    this.stateSignal.set(value);
+  }
+
+  get state(): ScreenState<unknown, string> | null {
+    return this.stateSignal();
+  }
+
   @Input() openingHoursLink: string[] | null = null;
 
   protected readonly now = signal(new Date());
   private readonly timerId: ReturnType<typeof setInterval> | null;
 
-  protected readonly status = computed<ParkOpeningHoursStatus>(() => this.resolveStatus(this.calendar, this.now()));
+  protected readonly status = computed<ParkOpeningHoursStatus>(() => this.resolveStatus(this.calendarSignal(), this.now()));
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor(
+    @Inject(PLATFORM_ID) platformId: object,
+    private readonly translateService: TranslateService
+  ) {
     this.timerId = isPlatformBrowser(platformId)
       ? setInterval((): void => this.now.set(new Date()), 60000)
       : null;
@@ -46,11 +69,11 @@ export class ParkOpeningHoursCardComponent implements OnDestroy {
   }
 
   get hasCalendar(): boolean {
-    return !!this.calendar?.days?.length;
+    return !!this.calendarSignal()?.days?.length;
   }
 
   get isLoading(): boolean {
-    return this.state?.kind === 'loading';
+    return this.stateSignal()?.kind === 'loading';
   }
 
   protected formatRanges(day: ParkOpeningHoursDay | null): string {
@@ -73,7 +96,7 @@ export class ParkOpeningHoursCardComponent implements OnDestroy {
 
   private resolveStatus(calendar: ParkOpeningHoursCalendar | null, now: Date): ParkOpeningHoursStatus {
     if (!calendar?.days?.length) {
-      return { isOpen: false, activeRange: null, today: null };
+      return { isOpen: false, activeRange: null, today: null, nextOpeningDelayLabel: null };
     }
 
     const parkNow: ParkOpeningHoursNow = this.resolveParkNow(calendar.timeZoneId, now);
@@ -87,6 +110,7 @@ export class ParkOpeningHoursCardComponent implements OnDestroy {
       isOpen: activeRange !== null,
       activeRange,
       today,
+      nextOpeningDelayLabel: activeRange ? null : this.formatDelay(this.findNextOpeningDelayMinutes(calendar.days, parkNow)),
     };
   }
 
@@ -106,16 +130,86 @@ export class ParkOpeningHoursCardComponent implements OnDestroy {
     }) ?? null;
   }
 
+  private findNextOpeningDelayMinutes(days: ParkOpeningHoursDay[], parkNow: ParkOpeningHoursNow): number | null {
+    const sortedDays: ParkOpeningHoursDay[] = [...days].sort((first: ParkOpeningHoursDay, second: ParkOpeningHoursDay): number => {
+      return first.localDate.localeCompare(second.localDate);
+    });
+    let nextDelayMinutes: number | null = null;
+
+    for (const day of sortedDays) {
+      if (day.isClosed || day.timeRanges.length === 0) {
+        continue;
+      }
+
+      const dayOffset: number = this.diffLocalDatesInDays(parkNow.localDate, day.localDate);
+      if (dayOffset < 0) {
+        continue;
+      }
+
+      for (const range of day.timeRanges) {
+        const delayMinutes: number = (dayOffset * 1440) + this.toMinutes(range.opensAt) - parkNow.minutes;
+        if (delayMinutes <= 0) {
+          continue;
+        }
+
+        if (nextDelayMinutes === null || delayMinutes < nextDelayMinutes) {
+          nextDelayMinutes = delayMinutes;
+        }
+      }
+    }
+
+    return nextDelayMinutes;
+  }
+
+  private formatDelay(delayMinutes: number | null): string | null {
+    if (delayMinutes === null) {
+      return null;
+    }
+
+    const totalMinutes: number = Math.max(1, Math.ceil(delayMinutes));
+    const days: number = Math.floor(totalMinutes / 1440);
+    const hours: number = Math.floor((totalMinutes % 1440) / 60);
+    const minutes: number = totalMinutes % 60;
+    const language: string = this.translateService.currentLang || this.translateService.defaultLang || 'en';
+    const formatter: Intl.NumberFormat = new Intl.NumberFormat(language);
+
+    if (days > 0) {
+      const dayUnit: string = language === 'fr' ? (days === 1 ? 'jour' : 'jours') : 'd';
+      const dayText: string = `${formatter.format(days)} ${dayUnit}`;
+      return hours > 0 ? `${dayText} ${formatter.format(hours)} h` : dayText;
+    }
+
+    if (hours > 0) {
+      const hourText: string = `${formatter.format(hours)} h`;
+      return minutes > 0 && hours < 3 ? `${hourText} ${formatter.format(minutes)} min` : hourText;
+    }
+
+    return `${formatter.format(minutes)} min`;
+  }
+
   private resolveParkNow(timeZoneId: string, now: Date): ParkOpeningHoursNow {
-    const parts: Intl.DateTimeFormatPart[] = new Intl.DateTimeFormat('en-CA', {
-      timeZone: timeZoneId || undefined,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      hourCycle: 'h23'
-    }).formatToParts(now);
+    let parts: Intl.DateTimeFormatPart[];
+    try {
+      parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: timeZoneId || undefined,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23'
+      }).formatToParts(now);
+    } catch {
+      parts = new Intl.DateTimeFormat('en-CA', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23'
+      }).formatToParts(now);
+    }
+
     const valueByType: Record<string, string> = Object.fromEntries(parts.map((part: Intl.DateTimeFormatPart) => [part.type, part.value]));
     const hour: number = Number(valueByType['hour'] ?? '0');
     const minute: number = Number(valueByType['minute'] ?? '0');
@@ -131,6 +225,14 @@ export class ParkOpeningHoursCardComponent implements OnDestroy {
     const date: Date = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
     date.setUTCDate(date.getUTCDate() - 1);
     return date.toISOString().slice(0, 10);
+  }
+
+  private diffLocalDatesInDays(fromLocalDate: string, toLocalDate: string): number {
+    const fromParts: number[] = fromLocalDate.split('-').map((part: string) => Number(part));
+    const toParts: number[] = toLocalDate.split('-').map((part: string) => Number(part));
+    const fromTime: number = Date.UTC(fromParts[0], fromParts[1] - 1, fromParts[2]);
+    const toTime: number = Date.UTC(toParts[0], toParts[1] - 1, toParts[2]);
+    return Math.round((toTime - fromTime) / 86400000);
   }
 
   private toMinutes(value: string): number {

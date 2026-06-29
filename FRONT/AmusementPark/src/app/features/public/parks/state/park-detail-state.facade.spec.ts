@@ -7,7 +7,7 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
-import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
+import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRange } from '@app/models/parks/park-opening-hours';
 import { Park } from '@app/models/parks/park';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
@@ -36,6 +36,7 @@ class FakeParksPort implements ParkDetailParksPort {
   public nearestResponse$: Observable<ParkDistanceResponse> = of(createNearbyResponse());
   public weatherResponse$: Observable<ParkWeatherForecast> = of(createWeatherForecast());
   public openingHoursResponse$: Observable<ParkOpeningHoursCalendar> = of(createOpeningHoursCalendar());
+  public openingHoursResponses$: Observable<ParkOpeningHoursCalendar>[] = [];
   public readonly summaryCalls: string[] = [];
   public readonly summaryOptions: Array<AnonymousHttpOptions | undefined> = [];
   public readonly nearestCalls: { sourceParkId: string; limit?: number; maxDistanceKilometers?: number | null }[] = [];
@@ -66,6 +67,11 @@ class FakeParksPort implements ParkDetailParksPort {
   getParkOpeningHours(id: string, from?: string | null, to?: string | null, options?: AnonymousHttpOptions): Observable<ParkOpeningHoursCalendar> {
     this.openingHoursCalls.push({ id, from, to });
     this.openingHoursOptions.push(options);
+    const queuedResponse$: Observable<ParkOpeningHoursCalendar> | undefined = this.openingHoursResponses$.shift();
+    if (queuedResponse$) {
+      return queuedResponse$;
+    }
+
     return this.openingHoursResponse$;
   }
 }
@@ -294,17 +300,61 @@ function createWeatherForecast(): ParkWeatherForecast {
   };
 }
 
-function createOpeningHoursCalendar(): ParkOpeningHoursCalendar {
+function createOpeningHoursCalendar(days: ParkOpeningHoursDay[] = [createOpenOpeningHoursDay(formatUtcDate(addUtcDays(new Date(), 1)))]): ParkOpeningHoursCalendar {
   return {
     parkId: 'park-1',
-    timeZoneId: 'Europe/Paris',
+    timeZoneId: 'UTC',
     updatedAtUtc: '2026-06-19T00:00:00Z',
-    firstDate: null,
-    lastDate: null,
+    firstDate: '2026-01-01',
+    lastDate: '2026-12-31',
     fromDate: '2026-06-18',
     toDate: '2026-06-20',
-    days: []
+    days
   };
+}
+
+function createClosedOpeningHoursDay(localDate: string): ParkOpeningHoursDay {
+  return {
+    localDate,
+    isClosed: true,
+    isDefined: true,
+    sourceKind: 'Rule',
+    label: null,
+    reason: null,
+    timeRanges: []
+  };
+}
+
+function createOpenOpeningHoursDay(localDate: string): ParkOpeningHoursDay {
+  return {
+    localDate,
+    isClosed: false,
+    isDefined: true,
+    sourceKind: 'Rule',
+    label: null,
+    reason: null,
+    timeRanges: [createOpeningHoursRange('10:00', '18:00')]
+  };
+}
+
+function createOpeningHoursRange(opensAt: string, closesAt: string): ParkOpeningHoursTimeRange {
+  return {
+    opensAt,
+    closesAt,
+    closesNextDay: false,
+    lastAdmissionAt: null,
+    lastAdmissionNextDay: false
+  };
+}
+
+function addUtcDays(date: Date, days: number): Date {
+  const nextDate: Date = new Date(date);
+  nextDate.setUTCDate(nextDate.getUTCDate() + days);
+  return nextDate;
+}
+
+function formatUtcDate(date: Date): string {
+  return date.toISOString().slice(0, 10);
 }
 
 function configureFacade(): {
@@ -440,6 +490,22 @@ describe('ParkDetailStateFacade', () => {
 
     expect(capturedOptions.length).toBe(6);
     expect(capturedOptions.every((options: AnonymousHttpOptions | undefined) => options?.context.get(SKIP_AUTHORIZATION_HEADER) === true)).toBeTrue();
+  });
+
+  it('loads a bounded future opening window when the preview has no upcoming opening', () => {
+    const context = configureFacade();
+    const today: string = formatUtcDate(new Date());
+    const futureDate: string = formatUtcDate(addUtcDays(new Date(), 45));
+    context.parksPort.openingHoursResponses$ = [
+      of(createOpeningHoursCalendar([createClosedOpeningHoursDay(today)])),
+      of(createOpeningHoursCalendar([createOpenOpeningHoursDay(futureDate)]))
+    ];
+
+    context.facade.loadPark('park-1');
+
+    expect(context.parksPort.openingHoursCalls.length).toBe(2);
+    expect(context.facade.openingHoursState().kind).toBe('ready');
+    expect(context.facade.openingHours()?.days.map((day: ParkOpeningHoursDay) => day.localDate)).toEqual([today, futureDate]);
   });
 
   it('keeps the logo fallback and exposes the images link when no main photo exists', () => {
