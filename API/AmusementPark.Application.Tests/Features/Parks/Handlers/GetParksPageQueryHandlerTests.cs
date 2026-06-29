@@ -61,7 +61,7 @@ public sealed class GetParksPageQueryHandlerTests
                 ClosedEntityFilter.All,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
-                false))
+                true))
             .ReturnsAsync(new PagedResult<Park>(parks, 1, parks.Count, parks.Count));
 
         parkItemRepository
