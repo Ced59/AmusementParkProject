@@ -102,7 +102,47 @@
 
 .park-opening-hours-calendar {
   display: grid;
-  gap: 1.2rem;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.park-opening-hours-calendar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  align-items: center;
+  color: var(--app-text-muted, #b09d7a);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.park-opening-hours-calendar__legend span {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.park-opening-hours-legend-dot {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: var(--app-border, rgba(255, 210, 140, 0.12));
+}
+
+.park-opening-hours-legend-dot--closed {
+  background: var(--app-danger, #ff6b6b);
+}
+
+.park-opening-hours-legend-dot--short {
+  background: var(--app-accent-gold, #ffd166);
+}
+
+.park-opening-hours-legend-dot--standard {
+  background: var(--app-success, #42d392);
+}
+
+.park-opening-hours-legend-dot--long {
+  background: var(--app-info, #38bdf8);
 }
 
 .park-opening-hours-month {
@@ -110,79 +150,210 @@
   gap: 0.8rem;
 }
 
-.park-opening-hours-month h2 {
+.park-opening-hours-month__header {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.park-opening-hours-month__header h2 {
   margin: 0;
   color: var(--app-heading, #ffffff);
   font-size: clamp(1.25rem, 2.4vw, 1.75rem);
   letter-spacing: 0;
 }
 
-.park-opening-hours-days {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  gap: 0.75rem;
+.park-opening-hours-month__header p {
+  margin: 0;
+  color: var(--app-text-muted, #b09d7a);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-align: right;
 }
 
-.park-opening-hours-day {
-  display: grid;
-  gap: 0.75rem;
-  min-height: 8.25rem;
-  padding: 0.9rem;
-  border: 1px solid color-mix(in srgb, var(--app-success, #42d392) 28%, var(--app-border, rgba(255, 210, 140, 0.12)));
-  border-radius: var(--radius-md, 8px);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-success, #42d392) 8%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+.park-opening-hours-month__table-wrap {
+  min-width: 0;
 }
 
-.park-opening-hours-day--closed {
-  border-color: color-mix(in srgb, var(--app-danger, #ff6b6b) 28%, var(--app-border, rgba(255, 210, 140, 0.12)));
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-danger, #ff6b6b) 8%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+.park-opening-hours-month__table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0.35rem;
 }
 
-.park-opening-hours-day header {
-  display: flex;
-  gap: 0.5rem;
-  align-items: flex-start;
-  justify-content: space-between;
+.park-opening-hours-month__table caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.park-opening-hours-day header span {
-  color: var(--app-heading, #ffffff);
-  font-weight: 900;
-  line-height: 1.25;
-}
-
-.park-opening-hours-day header strong {
-  flex: 0 0 auto;
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-pill, 999px);
-  background: color-mix(in srgb, var(--app-heading, #ffffff) 8%, transparent);
-  color: var(--app-text, #f6eed9);
+.park-opening-hours-month__table th {
+  padding: 0 0 0.25rem;
+  color: var(--app-text-faint, #75644e);
   font-size: 0.72rem;
   font-weight: 900;
+  letter-spacing: 0;
+  text-align: center;
   text-transform: uppercase;
 }
 
-.park-opening-hours-day p {
-  margin: 0;
-  color: var(--app-text, #f6eed9);
-  font-size: 1rem;
-  font-weight: 850;
-  line-height: 1.35;
+.park-opening-hours-month__table td {
+  height: 6.4rem;
+  padding: 0;
+  border: 1px solid var(--app-border, rgba(255, 210, 140, 0.12));
+  border-radius: var(--radius-md, 8px);
+  background: color-mix(in srgb, var(--app-surface-2, #211a13) 88%, transparent);
+  vertical-align: top;
 }
 
-.park-opening-hours-day small {
+.park-opening-hours-cell {
+  display: grid;
+  gap: 0.25rem;
+  align-content: start;
+  min-height: 6.4rem;
+  padding: 0.55rem;
+}
+
+.park-opening-hours-cell__date {
+  color: var(--app-heading, #ffffff);
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.park-opening-hours-cell__today {
+  width: max-content;
+  max-width: 100%;
+  padding: 0.12rem 0.28rem;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--app-accent-gold, #ffd166);
+  color: #1a1208;
+  font-size: 0.62rem;
+  font-weight: 900;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.park-opening-hours-cell__status,
+.park-opening-hours-cell__hours {
+  color: var(--app-text, #f6eed9);
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.park-opening-hours-cell small {
+  display: -webkit-box;
+  margin-top: 0.1rem;
+  overflow: hidden;
   color: var(--app-text-muted, #b09d7a);
-  line-height: 1.35;
+  font-size: 0.72rem;
+  line-height: 1.15;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.park-opening-hours-cell--empty {
+  border-color: transparent;
+  background: transparent;
+}
+
+.park-opening-hours-cell--closed {
+  border-color: color-mix(in srgb, var(--app-danger, #ff6b6b) 34%, var(--app-border, rgba(255, 210, 140, 0.12)));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-danger, #ff6b6b) 13%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+}
+
+.park-opening-hours-cell--short {
+  border-color: color-mix(in srgb, var(--app-accent-gold, #ffd166) 36%, var(--app-border, rgba(255, 210, 140, 0.12)));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-accent-gold, #ffd166) 14%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+}
+
+.park-opening-hours-cell--standard {
+  border-color: color-mix(in srgb, var(--app-success, #42d392) 34%, var(--app-border, rgba(255, 210, 140, 0.12)));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-success, #42d392) 12%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+}
+
+.park-opening-hours-cell--long {
+  border-color: color-mix(in srgb, var(--app-info, #38bdf8) 38%, var(--app-border, rgba(255, 210, 140, 0.12)));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-info, #38bdf8) 12%, var(--app-surface, #1a140f)), var(--app-surface-2, #211a13));
+}
+
+.park-opening-hours-cell--today {
+  outline: 2px solid var(--app-accent-gold, #ffd166);
+  outline-offset: 1px;
 }
 
 @media (max-width: 760px) {
   .park-opening-hours-page {
     width: min(100% - 1.5rem, 1120px);
-    padding-bottom: 5.5rem;
+    padding-bottom: 7rem;
   }
 
   .park-opening-hours-summary {
     grid-template-columns: 1fr;
+  }
+
+  .park-opening-hours-calendar__legend {
+    gap: 0.5rem 0.75rem;
+    font-size: 0.76rem;
+  }
+
+  .park-opening-hours-month__header {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .park-opening-hours-month__header p {
+    font-size: 0.8rem;
+    text-align: left;
+  }
+
+  .park-opening-hours-month__table {
+    border-spacing: 0.22rem;
+  }
+
+  .park-opening-hours-month__table th {
+    font-size: 0.58rem;
+  }
+
+  .park-opening-hours-month__table td {
+    height: 4.8rem;
+    border-radius: 7px;
+  }
+
+  .park-opening-hours-cell {
+    gap: 0.18rem;
+    min-height: 4.8rem;
+    padding: 0.34rem 0.26rem;
+  }
+
+  .park-opening-hours-cell__date {
+    font-size: 0.78rem;
+  }
+
+  .park-opening-hours-cell__today {
+    padding: 0.1rem 0.2rem;
+    font-size: 0.5rem;
+  }
+
+  .park-opening-hours-cell__status,
+  .park-opening-hours-cell__hours {
+    font-size: 0.62rem;
+  }
+
+  .park-opening-hours-cell small {
+    display: none;
   }
 
   .park-opening-hours-hero__actions {
@@ -191,5 +362,33 @@
 
   .park-opening-hours-hero__actions > * {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .park-opening-hours-page {
+    width: min(100% - 1rem, 1120px);
+  }
+
+  .park-opening-hours-month__table {
+    border-spacing: 0.16rem;
+  }
+
+  .park-opening-hours-month__table td {
+    height: 4.35rem;
+  }
+
+  .park-opening-hours-cell {
+    min-height: 4.35rem;
+    padding: 0.3rem 0.2rem;
+  }
+
+  .park-opening-hours-cell__status,
+  .park-opening-hours-cell__hours {
+    font-size: 0.56rem;
+  }
+
+  .park-opening-hours-cell__today {
+    font-size: 0.46rem;
   }
 }

@@ -96,10 +96,6 @@ public sealed partial class ParkGraphUpsertProcessor
 
         normalizedSchedule.CoverageSegments = this.parkOpeningHoursCoverageSegmentBuilder.BuildSegments(normalizedSchedule).ToList();
         await this.parkOpeningHoursRepository.UpsertAsync(normalizedSchedule, cancellationToken);
-        if (this.seoSitemapRefreshScheduler is not null)
-        {
-            await this.seoSitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
-        }
     }
 
     private static bool HasOpeningHoursPatch(JsonElement root)

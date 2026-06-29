@@ -20,6 +20,8 @@ public sealed class PublicSeoUpdate
     public IReadOnlyCollection<PublicSeoVideoSnapshot> CurrentVideos { get; init; } = Array.Empty<PublicSeoVideoSnapshot>();
 
     public bool IncludeDiscoveryPages { get; init; }
+
+    public bool SuppressSitemapRefresh { get; init; }
 }
 
 public sealed record PublicSeoParkSnapshot(

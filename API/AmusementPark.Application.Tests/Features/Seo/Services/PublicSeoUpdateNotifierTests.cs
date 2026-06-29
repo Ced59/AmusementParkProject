@@ -213,6 +213,89 @@ public sealed class PublicSeoUpdateNotifierTests
     }
 
     [Fact]
+    public async Task NotifyAsync_WhenSitemapRefreshIsSuppressed_ShouldSubmitImpactedUrlsWithoutSchedulingRefresh()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = CreateEmptyImageRepository();
+        Mock<IPublicSeoContextProvider> contextProvider = new Mock<IPublicSeoContextProvider>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> refreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park
+                {
+                    Id = "park-1",
+                    Name = "Magic Park",
+                    IsVisible = true,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                },
+            });
+        parkZoneRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        contextProvider
+            .Setup(provider => provider.GetAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PublicSeoContext("https://example.com/", new[] { "fr" }));
+        settingsRepository
+            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new SeoSitemapSettings
+            {
+                IsIndexNowEnabled = true,
+                IndexNowKey = "key",
+                IndexNowEndpoints = new[] { "https://api.indexnow.org/indexnow" },
+            });
+        indexNowSubmitter
+            .Setup(submitter => submitter.SubmitAsync(
+                It.Is<SeoSitemapSettings>(settings => settings.IsIndexNowEnabled),
+                "https://example.com",
+                It.Is<IReadOnlyCollection<string>>(urls =>
+                    urls.Contains("https://example.com/fr/park/park-1/magic-park") &&
+                    urls.Contains("https://example.com/fr/park/park-1/magic-park/items") &&
+                    urls.Contains("https://example.com/fr/park/park-1/magic-park/item/item-1/new-name")),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new IndexNowSubmissionResult { WasRequested = true, IsEnabled = true, IsSuccess = true, SubmittedUrlCount = 3 });
+
+        PublicSeoUrlResolver resolver = new PublicSeoUrlResolver(
+            parkItemRepository.Object,
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            imageRepository.Object);
+        PublicSeoUpdateNotifier notifier = new PublicSeoUpdateNotifier(
+            resolver,
+            contextProvider.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            refreshScheduler.Object);
+
+        await notifier.NotifyAsync(
+            new PublicSeoUpdate
+            {
+                CurrentParkItems = new[]
+                {
+                    new PublicSeoParkItemSnapshot("item-1", "park-1", null, "New Name", true, AdminReviewStatus.Validated, null),
+                },
+                SuppressSitemapRefresh = true,
+            },
+            CancellationToken.None);
+
+        contextProvider.VerifyAll();
+        parkRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        settingsRepository.VerifyAll();
+        refreshScheduler.VerifyNoOtherCalls();
+        indexNowSubmitter.VerifyAll();
+    }
+
+    [Fact]
     public async Task ResolveAsync_WhenPublishedParkVideoChanges_ShouldReturnParkVideoListAndWatchUrls()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

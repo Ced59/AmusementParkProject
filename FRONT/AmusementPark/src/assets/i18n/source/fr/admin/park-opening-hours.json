@@ -5,28 +5,28 @@
         "openingHours": "Horaires"
       },
       "sort": {
-        "openingHoursAttentionFirst": "Horaires a traiter",
+        "openingHoursAttentionFirst": "Horaires à traiter",
         "openingHoursReadyFirst": "Horaires complets"
       },
       "openingHours": {
         "title": "Horaires",
         "filterLabel": "Horaires",
-        "notConfigured": "Non renseignes",
+        "notConfigured": "Non renseignés",
         "coverageOne": "Horaires complets pour {{ count }} jour, jusqu'au {{ date }}",
         "coverageMany": "Horaires complets pour {{ count }} jours, jusqu'au {{ date }}",
         "statuses": {
-          "NotConfigured": "Non renseignes",
-          "Expired": "Expires",
-          "NeedsUpdate": "A mettre a jour",
-          "UpToDate": "A jour"
+          "NotConfigured": "Non renseignés",
+          "Expired": "Expirés",
+          "NeedsUpdate": "À mettre à jour",
+          "UpToDate": "À jour"
         },
         "filters": {
           "all": "Tous les horaires",
-          "configured": "Renseignes",
-          "notConfigured": "Non renseignes",
-          "upToDate": "A jour",
-          "needsUpdate": "A mettre a jour",
-          "expired": "Expires"
+          "configured": "Renseignés",
+          "notConfigured": "Non renseignés",
+          "upToDate": "À jour",
+          "needsUpdate": "À mettre à jour",
+          "expired": "Expirés"
         }
       },
       "openingHoursEditor": {
@@ -37,16 +37,16 @@
         "upsert": "Upsert JSON",
         "jsonLabel": "JSON horaires",
         "invalidJson": "Le JSON est invalide.",
-        "savedSummary": "Horaires enregistres",
-        "savedDetail": "Le planning a ete upsert.",
-        "saveError": "Le planning n'a pas pu etre enregistre.",
-        "loadError": "Le planning n'a pas pu etre charge.",
-        "hint": "Les jours fermes doivent etre explicites quand ils doivent compter comme couverture complete."
+        "savedSummary": "Horaires enregistrés",
+        "savedDetail": "Le planning a été upsert.",
+        "saveError": "Le planning n'a pas pu être enregistré.",
+        "loadError": "Le planning n'a pas pu être chargé.",
+        "hint": "Les jours fermés doivent être explicites quand ils doivent compter comme couverture complète."
       }
     },
     "parkGraphUpserts": {
       "editor": {
-        "description": "Les proprietes absentes sont conservees. La section openingHours est preview puis appliquee avec le meme JSON global que le parc, les zones, les fiches et les images."
+        "description": "Les propriétés absentes sont conservées. La section openingHours est preview puis appliquée avec le même JSON global que le parc, les zones, les fiches et les images."
       }
     }
   }

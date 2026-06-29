@@ -45,7 +45,6 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly IParkOpeningHoursRepository? parkOpeningHoursRepository;
     private readonly ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer;
     private readonly ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder;
-    private readonly ISeoSitemapRefreshScheduler? seoSitemapRefreshScheduler;
 
     public ParkGraphUpsertProcessor(
         IParkRepository parkRepository,
@@ -62,8 +61,7 @@ public sealed partial class ParkGraphUpsertProcessor
         IMeasurementConversionService measurementConversionService,
         IParkOpeningHoursRepository? parkOpeningHoursRepository = null,
         ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null,
-        ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null,
-        ISeoSitemapRefreshScheduler? seoSitemapRefreshScheduler = null)
+        ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -80,7 +78,6 @@ public sealed partial class ParkGraphUpsertProcessor
         this.parkOpeningHoursRepository = parkOpeningHoursRepository;
         this.parkOpeningHoursScheduleNormalizer = parkOpeningHoursScheduleNormalizer;
         this.parkOpeningHoursCoverageSegmentBuilder = parkOpeningHoursCoverageSegmentBuilder;
-        this.seoSitemapRefreshScheduler = seoSitemapRefreshScheduler;
     }
 
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)
@@ -237,6 +234,7 @@ public sealed partial class ParkGraphUpsertProcessor
                         PreviousParkItems = itemSeoChanges.PreviousItems.Concat(mergeSummary.PreviousParkItems).ToList(),
                         CurrentParkItems = itemSeoChanges.CurrentItems.Concat(mergeSummary.CurrentParkItems).ToList(),
                         IncludeDiscoveryPages = true,
+                        SuppressSitemapRefresh = true,
                     },
                     cancellationToken);
             }
