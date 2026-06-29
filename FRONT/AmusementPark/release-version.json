@@ -1,6 +1,20 @@
 {
-  "version": "2.7.22",
+  "version": "2.7.23",
   "history": [
+    {
+      "version": "2.7.23",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les pages publiques sont plus legeres.",
+        "en": "Public pages are lighter.",
+        "de": "Oeffentliche Seiten sind leichter.",
+        "nl": "Publieke pagina's zijn lichter.",
+        "it": "Le pagine pubbliche sono piu leggere.",
+        "es": "Las paginas publicas son mas ligeras.",
+        "pl": "Publiczne strony sa lzejsze.",
+        "pt": "As paginas publicas ficam mais leves."
+      }
+    },
     {
       "version": "2.7.22",
       "releasedAt": "2026-06-29",
