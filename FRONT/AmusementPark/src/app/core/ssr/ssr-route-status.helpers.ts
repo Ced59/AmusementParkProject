@@ -9,7 +9,9 @@ export function resolveSsrRouteStatusCode(url: string): number {
 }
 
 export function shouldApplyNoindexFollowHeader(url: string): boolean {
-  return isSsrNotFoundRoute(url) || isNoindexPublicPageRoute(url);
+  const path: string = normalizeSsrPath(url);
+
+  return isSsrNotFoundRoute(url) || isKnownPrivateClientRoute(path) || isNoindexPublicPageRoute(url);
 }
 
 export function isSsrNotFoundRoute(url: string): boolean {
@@ -36,7 +38,8 @@ function isKnownLocalizedPageRoute(path: string): boolean {
 
 function isKnownPublicPageRoute(path: string): boolean {
   return /^\/[a-z]{2}\/?$/i.test(path)
-    || /^\/[a-z]{2}\/(?:home|parks|rankings|about|contact|versions|privacy)\/?$/i.test(path)
+    || /^\/[a-z]{2}\/(?:home|parks|rankings|manufacturers|about|contact|versions|privacy)\/?$/i.test(path)
+    || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/images|\/videos|\/map|\/zones|\/weather|\/items)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path)

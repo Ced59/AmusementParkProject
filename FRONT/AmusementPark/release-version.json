@@ -1,6 +1,20 @@
 {
-  "version": "2.7.21",
+  "version": "2.7.22",
   "history": [
+    {
+      "version": "2.7.22",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les pages publiques restent accessibles.",
+        "en": "Public pages stay reachable.",
+        "de": "Oeffentliche Seiten bleiben erreichbar.",
+        "nl": "Publieke pagina's blijven bereikbaar.",
+        "it": "Le pagine pubbliche restano raggiungibili.",
+        "es": "Las paginas publicas siguen accesibles.",
+        "pl": "Publiczne strony pozostaja dostepne.",
+        "pt": "As paginas publicas continuam acessiveis."
+      }
+    },
     {
       "version": "2.7.21",
       "releasedAt": "2026-06-29",

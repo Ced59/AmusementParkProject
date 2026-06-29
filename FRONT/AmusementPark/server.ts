@@ -1598,6 +1598,8 @@ function isPublicStaticSsrRoute(path: string): boolean {
     || /^\/[a-z]{2}\/home\/?$/i.test(path)
     || /^\/[a-z]{2}\/parks\/?$/i.test(path)
     || /^\/[a-z]{2}\/rankings\/?$/i.test(path)
+    || /^\/[a-z]{2}\/manufacturers\/?$/i.test(path)
+    || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/about\/?$/i.test(path)
     || /^\/[a-z]{2}\/contact\/?$/i.test(path)
     || /^\/[a-z]{2}\/versions\/?$/i.test(path)

@@ -20,6 +20,9 @@ describe('SSR route status helpers', () => {
       '/fr/home',
       '/fr/parks',
       '/fr/rankings',
+      '/fr/manufacturers',
+      '/fr/technical',
+      '/fr/technical/chain-lift',
       '/fr/about',
       '/fr/contact',
       '/fr/versions',
@@ -53,6 +56,9 @@ describe('SSR route status helpers', () => {
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/map')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/items?zone=abc')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/weather?unit=celsius')).toBeTrue();
+    expect(shouldApplyNoindexFollowHeader('/fr/profile')).toBeTrue();
+    expect(shouldApplyNoindexFollowHeader('/fr/admin/parks')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/parks')).toBeFalse();
+    expect(shouldApplyNoindexFollowHeader('/fr/technical/chain-lift')).toBeFalse();
   });
 });
