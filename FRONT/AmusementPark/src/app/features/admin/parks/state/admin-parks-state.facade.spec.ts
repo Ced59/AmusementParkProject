@@ -107,7 +107,14 @@ describe('AdminParksStateFacade', () => {
     expect(facade.countryCodeFilter()).toBe('DE');
     expect(facade.validCoordinatesFilter()).toBeTrue();
     expect(port.pageCalls[0].page).toBe(1);
-    expect(port.pageCalls[0].filters).toEqual({ isVisible: true, adminReviewStatus: null, type: null, countryCode: 'DE', hasValidCoordinates: true });
+    expect(port.pageCalls[0].filters).toEqual({
+      isVisible: true,
+      adminReviewStatus: null,
+      type: null,
+      countryCode: 'DE',
+      hasValidCoordinates: true,
+      openingHoursStatus: 'all'
+    });
   });
 
   it('passes admin sort options to park list requests', () => {
