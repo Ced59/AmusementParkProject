@@ -104,7 +104,7 @@ public static class SeoSitemapHttpMappers
             DisplayName = stats.DisplayName,
             UrlCount = stats.UrlCount,
             LastModifiedUtc = stats.LastModifiedUtc,
-            PublicUrl = $"{normalizedBaseUrl}/sitemaps/{stats.FileName}",
+            PublicUrl = $"{normalizedBaseUrl}/{stats.FileName}",
         };
     }
 

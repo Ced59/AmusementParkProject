@@ -76,10 +76,10 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         Assert.Contains(snapshot.Sections, static section => section.Key == "park-videos-fr" && section.FileName == "park-videos-fr.xml");
         Assert.Contains(snapshot.Sections, static section => section.Key == "park-item-images-fr" && section.FileName == "park-item-images-fr.xml");
         Assert.Contains(snapshot.Sections, static section => section.Key == "park-item-videos-fr" && section.FileName == "park-item-videos-fr.xml");
-        Assert.Contains("https://example.com/sitemaps/park-images-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
-        Assert.Contains("https://example.com/sitemaps/park-videos-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
-        Assert.Contains("https://example.com/sitemaps/park-item-images-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
-        Assert.Contains("https://example.com/sitemaps/park-item-videos-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/park-images-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/park-videos-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/park-item-images-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/park-item-videos-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
         Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-images-fr"));
         Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-videos-fr"));
         Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-item-images-fr"));

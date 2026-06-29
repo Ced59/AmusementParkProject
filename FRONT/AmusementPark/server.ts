@@ -335,13 +335,13 @@ export function app(): express.Express {
     proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
-  server.head('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
+  server.head('/:fileName([A-Za-z0-9_-]+\\.xml)', proxyRootSitemapSectionToApi);
 
-  server.get('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
-    proxySeoDocumentToApi(req, res, next, req.originalUrl);
-  });
+  server.get('/:fileName([A-Za-z0-9_-]+\\.xml)', proxyRootSitemapSectionToApi);
+
+  server.head('/sitemaps/:fileName([A-Za-z0-9_-]+\\.xml)', redirectLegacySitemapSectionRoute);
+
+  server.get('/sitemaps/:fileName([A-Za-z0-9_-]+\\.xml)', redirectLegacySitemapSectionRoute);
 
   server.head('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
     proxySeoDocumentToApi(req, res, next, req.originalUrl);
@@ -2573,6 +2573,21 @@ function writeCachedSeoDocument(req: Request, res: Response, entry: SeoDocumentC
   }
 
   res.send(entry.body);
+}
+
+function proxyRootSitemapSectionToApi(req: Request, res: Response, next: NextFunction): void {
+  const fileName = req.params['fileName'];
+  if (!fileName || fileName.toLowerCase() === 'sitemap.xml') {
+    next();
+    return;
+  }
+
+  proxySeoDocumentToApi(req, res, next, `/sitemaps/${fileName}`);
+}
+
+function redirectLegacySitemapSectionRoute(req: Request, res: Response): void {
+  const fileName = req.params['fileName'];
+  res.redirect(308, `/${fileName}`);
 }
 
 function isHopByHopHeader(name: string): boolean {
