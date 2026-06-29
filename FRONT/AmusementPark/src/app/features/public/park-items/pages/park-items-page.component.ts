@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { TranslationService } from '@app/services/translation.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { buildPublicParkItemsRouteCommands, buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkItemsPageStateFacade } from '../state/park-items-page-state.facade';
 import { ParkItemsListViewComponent } from '../ui/park-items-list-view.component';
 import { SeoService } from '@core/seo/seo.service';
@@ -60,7 +61,17 @@ export class ParkItemsPageComponent implements OnInit {
         return;
       }
 
-      this.seoService.applyParkItemsSeo(currentView.parkName, this.currentLanguage(), this.router.url, this.stateFacade.parkImageId());
+      this.seoService.applyParkItemsSeo(
+        currentView.parkName,
+        this.currentLanguage(),
+        this.router.url,
+        this.stateFacade.parkImageId(),
+        buildPublicRoutePath(buildPublicParkItemsRouteCommands({
+          language: this.currentLanguage(),
+          parkId: this.currentParkId,
+          parkName: currentView.parkName
+        }))
+      );
     });
   }
 

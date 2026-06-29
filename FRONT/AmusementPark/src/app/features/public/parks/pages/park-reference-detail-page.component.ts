@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
+import { SeoService } from '@core/seo/seo.service';
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { buildPublicParkReferenceRouteCommands, buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkReferenceKind } from '../models/park-reference-detail-view.model';
 import { ParkReferenceDetailStateFacade } from '../state/park-reference-detail-state.facade';
 import { ParkReferenceDetailViewComponent } from '../ui/park-reference-detail-view.component';
@@ -31,8 +33,28 @@ export class ParkReferenceDetailPageComponent implements OnInit {
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly stateFacade: ParkReferenceDetailStateFacade,
+    private readonly seoService: SeoService,
     private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
   ) {
+    effect((): void => {
+      const currentReference = this.reference();
+
+      if (!currentReference) {
+        return;
+      }
+
+      this.seoService.applyParkReferenceSeo(
+        currentReference,
+        this.currentLang(),
+        this.router.url,
+        buildPublicRoutePath(buildPublicParkReferenceRouteCommands({
+          language: this.currentLang(),
+          referenceId: currentReference.id,
+          referenceName: currentReference.name,
+          kind: currentReference.kind
+        }))
+      );
+    });
   }
 
   ngOnInit(): void {

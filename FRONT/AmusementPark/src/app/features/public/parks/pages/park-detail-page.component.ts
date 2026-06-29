@@ -5,6 +5,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { buildPublicParkRouteCommands, buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkDetailStateFacade } from '../state/park-detail-state.facade';
 import { ParkDetailViewComponent } from '../ui/park-detail-view.component';
 import { SeoService } from '@core/seo/seo.service';
@@ -59,7 +60,16 @@ export class ParkDetailPageComponent implements OnInit {
       }
 
       this.preloadHeroImage(currentPark.heroImageId);
-      this.seoService.applyParkDetailSeo(currentPark, this.currentLang(), this.router.url);
+      this.seoService.applyParkDetailSeo(
+        currentPark,
+        this.currentLang(),
+        this.router.url,
+        buildPublicRoutePath(buildPublicParkRouteCommands({
+          language: this.currentLang(),
+          parkId: currentPark.id,
+          parkName: currentPark.name
+        }))
+      );
     });
   }
 

@@ -6,8 +6,10 @@ import { combineLatest } from 'rxjs';
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import {
+  buildPublicParkVideoRouteCommands,
   buildPublicParkRouteCommands,
-  buildPublicParkVideosRouteCommands
+  buildPublicParkVideosRouteCommands,
+  buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicVideoBackLink } from '@features/public/videos/ui/public-video-list-view.component';
@@ -50,30 +52,39 @@ export class ParkVideoPageComponent implements OnInit {
         return;
       }
 
+      const routeTarget = {
+        language: this.currentLanguage(),
+        parkId: currentPark.id,
+        parkName: currentPark.name
+      };
+
       this.backLinks.set([
         {
-          routerLink: buildPublicParkVideosRouteCommands({
-            language: this.currentLanguage(),
-            parkId: currentPark.id,
-            parkName: currentPark.name
-          }),
+          routerLink: buildPublicParkVideosRouteCommands(routeTarget),
           labelKey: 'videos.watch.backToVideos',
           iconClass: 'pi pi-list',
           variant: 'ghost'
         },
         {
-          routerLink: buildPublicParkRouteCommands({
-            language: this.currentLanguage(),
-            parkId: currentPark.id,
-            parkName: currentPark.name
-          }),
+          routerLink: buildPublicParkRouteCommands(routeTarget),
           labelKey: 'parks.videosPage.backToPark',
           labelParams: { name: currentPark.name },
           iconClass: 'pi pi-arrow-left',
           variant: 'soft'
         }
       ]);
-      this.seoService.applyParkVideoSeo(currentVideo, currentPark, this.currentLanguage(), this.router.url, this.parkImageId());
+      this.seoService.applyParkVideoSeo(
+        currentVideo,
+        currentPark,
+        this.currentLanguage(),
+        this.router.url,
+        this.parkImageId(),
+        buildPublicRoutePath(buildPublicParkVideoRouteCommands({
+          ...routeTarget,
+          videoId: currentVideo.id,
+          videoTitle: currentVideo.title
+        }))
+      );
     });
   }
 

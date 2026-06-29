@@ -6,7 +6,12 @@ import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
-import { buildPublicParkItemsRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import {
+  buildPublicParkImagesRouteCommands,
+  buildPublicParkItemsRouteCommands,
+  buildPublicParkRouteCommands,
+  buildPublicRoutePath
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkImagesStateFacade } from '../state/park-images-state.facade';
 import { ParkImagesViewComponent } from '../ui/park-images-view.component';
 
@@ -52,22 +57,21 @@ export class ParkImagesPageComponent implements OnInit {
         return;
       }
 
-      this.detailLink.set(buildPublicParkRouteCommands({
+      const routeTarget = {
         language: this.currentLanguage(),
         parkId: currentPark.id,
         parkName: currentPark.name
-      }));
-      this.itemsLink.set(buildPublicParkItemsRouteCommands({
-        language: this.currentLanguage(),
-        parkId: currentPark.id,
-        parkName: currentPark.name
-      }));
+      };
+
+      this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
+      this.itemsLink.set(buildPublicParkItemsRouteCommands(routeTarget));
       this.seoService.applyParkImagesSeo(
         currentPark,
         this.currentLanguage(),
         this.router.url,
         this.totalImages(),
-        this.stateFacade.socialImageId()
+        this.stateFacade.socialImageId(),
+        buildPublicRoutePath(buildPublicParkImagesRouteCommands(routeTarget))
       );
     });
   }

@@ -9,6 +9,7 @@ import {
   buildPublicParkZoneRouteCommands,
   buildPublicParkZonesRouteCommands,
   buildPublicParkReferenceRouteCommands,
+  buildPublicRoutePath,
   buildPublicParkRouteCommands
 } from './public-detail-route.helpers';
 
@@ -77,5 +78,13 @@ describe('public detail route helpers', () => {
 
   it('falls back to English for unsupported target languages', () => {
     expect(buildPublicParkRouteCommands({ language: 'xx', parkId: 'p1', parkName: 'Park' })?.[1]).toBe('en');
+  });
+
+  it('builds a stable absolute path from route commands', () => {
+    expect(buildPublicRoutePath(['/', 'fr', 'park', 'p1', 'demo-park', 'items']))
+      .toBe('/fr/park/p1/demo-park/items');
+    expect(buildPublicRoutePath(['/', '/fr/', 'park/', '/p1', 'demo-park/']))
+      .toBe('/fr/park/p1/demo-park');
+    expect(buildPublicRoutePath(null)).toBeNull();
   });
 });

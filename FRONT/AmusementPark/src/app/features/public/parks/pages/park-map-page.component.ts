@@ -5,7 +5,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
-import { buildPublicParkItemsRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import {
+  buildPublicParkItemsRouteCommands,
+  buildPublicParkMapRouteCommands,
+  buildPublicParkRouteCommands,
+  buildPublicRoutePath
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkMapStateFacade } from '../state/park-map-state.facade';
 import { ParkMapViewComponent } from '../ui/park-map-view.component';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
@@ -49,17 +54,21 @@ export class ParkMapPageComponent implements OnInit {
         return;
       }
 
-      this.detailLink.set(buildPublicParkRouteCommands({
+      const routeTarget = {
         language: this.currentLanguage(),
         parkId: currentPark.id,
         parkName: currentPark.name
-      }));
-      this.itemsLink.set(buildPublicParkItemsRouteCommands({
-        language: this.currentLanguage(),
-        parkId: currentPark.id,
-        parkName: currentPark.name
-      }));
-      this.seoService.applyParkMapSeo(currentPark, this.currentLanguage(), this.router.url, this.parkImageId());
+      };
+
+      this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
+      this.itemsLink.set(buildPublicParkItemsRouteCommands(routeTarget));
+      this.seoService.applyParkMapSeo(
+        currentPark,
+        this.currentLanguage(),
+        this.router.url,
+        this.parkImageId(),
+        buildPublicRoutePath(buildPublicParkMapRouteCommands(routeTarget))
+      );
     });
   }
 

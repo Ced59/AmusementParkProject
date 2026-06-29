@@ -7,7 +7,9 @@ import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import {
   buildPublicParkItemsRouteCommands,
-  buildPublicParkRouteCommands
+  buildPublicParkRouteCommands,
+  buildPublicParkVideosRouteCommands,
+  buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicVideoFilterState } from '@features/public/videos/models/public-video-view.model';
@@ -66,6 +68,12 @@ export class ParkVideosPageComponent implements OnInit {
         return;
       }
 
+      const routeTarget = {
+        language: this.currentLanguage(),
+        parkId: currentPark.id,
+        parkName: currentPark.name
+      };
+
       this.titleParams.set({
         name: currentPark.name,
         count: this.totalVideos()
@@ -78,22 +86,14 @@ export class ParkVideosPageComponent implements OnInit {
         : []);
       this.backLinks.set([
         {
-          routerLink: buildPublicParkRouteCommands({
-            language: this.currentLanguage(),
-            parkId: currentPark.id,
-            parkName: currentPark.name
-          }),
+          routerLink: buildPublicParkRouteCommands(routeTarget),
           labelKey: 'parks.videosPage.backToPark',
           labelParams: { name: currentPark.name },
           iconClass: 'pi pi-arrow-left',
           variant: 'ghost'
         },
         {
-          routerLink: buildPublicParkItemsRouteCommands({
-            language: this.currentLanguage(),
-            parkId: currentPark.id,
-            parkName: currentPark.name
-          }),
+          routerLink: buildPublicParkItemsRouteCommands(routeTarget),
           labelKey: 'parkVisitor.summary.viewAllItems',
           iconClass: 'pi pi-sitemap',
           variant: 'primary'
@@ -105,7 +105,8 @@ export class ParkVideosPageComponent implements OnInit {
         this.router.url,
         this.totalVideos(),
         this.videos()[0]?.thumbnailPathOrUrl ?? null,
-        this.parkImageId()
+        this.parkImageId(),
+        buildPublicRoutePath(buildPublicParkVideosRouteCommands(routeTarget))
       );
     });
   }

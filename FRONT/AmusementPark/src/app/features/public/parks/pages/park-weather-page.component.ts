@@ -25,7 +25,11 @@ import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
-import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import {
+  buildPublicParkRouteCommands,
+  buildPublicParkWeatherRouteCommands,
+  buildPublicRoutePath
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { UiButtonDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { resolveWeatherConditionKey, resolveWeatherIconClass } from '../ui/park-weather-card.component';
@@ -81,18 +85,21 @@ export class ParkWeatherPageComponent implements OnInit {
         return;
       }
 
-      this.detailLink.set(buildPublicParkRouteCommands({
+      const routeTarget = {
         language: this.currentLanguage(),
         parkId: currentData.park.id,
         parkName: currentData.park.name
-      }));
+      };
+
+      this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
 
       this.seoService.applyParkWeatherSeo(
         currentData.park.name ?? 'Park',
         this.currentLanguage(),
         this.router.url,
         currentData.weather.days.length,
-        currentData.parkImageId);
+        currentData.parkImageId,
+        buildPublicRoutePath(buildPublicParkWeatherRouteCommands(routeTarget)));
     });
   }
 
