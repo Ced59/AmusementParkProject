@@ -26,6 +26,7 @@ public sealed class StaticPagesSitemapSectionProvider : ISitemapSectionProvider
         new StaticSitemapPage("home", "daily", 1.0m),
         new StaticSitemapPage("parks", "daily", 0.9m),
         new StaticSitemapPage("rankings", "daily", 0.82m),
+        new StaticSitemapPage("manufacturers", "weekly", 0.66m),
         new StaticSitemapPage("about", "monthly", 0.4m),
         new StaticSitemapPage("contact", "monthly", 0.35m),
         new StaticSitemapPage("versions", "monthly", 0.3m),

@@ -90,6 +90,72 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         indexNowSubmitter.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task GenerateAsync_WhenIndexNowWouldSubmitTooManySitemapUrls_ShouldSkipBulkSubmission()
+    {
+        ISitemapSectionProvider[] providers = new ISitemapSectionProvider[]
+        {
+            new FakeSitemapSectionProvider(
+                SitemapSectionKeys.Parks,
+                "parks.xml",
+                "Parcs",
+                Enumerable.Range(1, 101)
+                    .Select(index => new SitemapUrlEntry($"/fr/park/park-{index}/park-{index}"))
+                    .ToList()),
+        };
+        SitemapSnapshot? savedSnapshot = null;
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+
+        snapshotRepository
+            .Setup(repository => repository.SaveAsync(It.IsAny<SitemapSnapshot>(), It.IsAny<CancellationToken>()))
+            .Callback<SitemapSnapshot, CancellationToken>((snapshot, _) => savedSnapshot = snapshot)
+            .Returns(Task.CompletedTask);
+        historyRepository
+            .Setup(repository => repository.WriteAsync(It.IsAny<SitemapGenerationHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        settingsRepository
+            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new SeoSitemapSettings
+            {
+                IsIndexNowEnabled = true,
+                IndexNowKey = "key",
+                IndexNowEndpoints = new[] { "https://api.indexnow.org/indexnow" },
+            });
+
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            providers,
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            new InMemorySeoSitemapRuntimeStateStore());
+
+        SitemapGenerationResult result = await orchestrator.GenerateAsync(
+            "https://example.com/",
+            new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } },
+            SitemapGenerationTrigger.Manual,
+            submitToIndexNow: true,
+            triggeredByUserId: "admin-1",
+            triggeredByUserEmail: "admin@example.com",
+            CancellationToken.None);
+
+        Assert.Equal(SitemapGenerationStatus.Succeeded, result.Status);
+        Assert.NotNull(savedSnapshot);
+        Assert.True(result.IndexNow.WasRequested);
+        Assert.True(result.IndexNow.IsEnabled);
+        Assert.False(result.IndexNow.IsSuccess);
+        Assert.Equal(0, result.IndexNow.SubmittedUrlCount);
+        Assert.Contains(result.IndexNow.Errors, static error => error.Contains("101 URLs", StringComparison.Ordinal));
+        snapshotRepository.VerifyAll();
+        historyRepository.VerifyAll();
+        settingsRepository.VerifyAll();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
     private sealed class FakeSitemapSectionProvider : ISitemapSectionProvider
     {
         private readonly IReadOnlyCollection<SitemapUrlEntry> urls;

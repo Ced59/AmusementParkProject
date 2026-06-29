@@ -6,9 +6,11 @@ import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
 import {
+  buildPublicParkItemImagesRouteCommands,
   buildPublicParkItemRouteCommands,
   buildPublicParkItemsRouteCommands,
-  buildPublicParkRouteCommands
+  buildPublicParkRouteCommands,
+  buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { ParkItemImagesStateFacade } from '../state/park-item-images-state.facade';
@@ -71,7 +73,8 @@ export class ParkItemImagesPageComponent implements OnInit {
         this.currentLanguage(),
         this.router.url,
         this.totalImages(),
-        this.photos()[0]?.imageId ?? null
+        this.photos()[0]?.imageId ?? null,
+        buildPublicRoutePath(buildPublicParkItemImagesRouteCommands(routeTarget))
       );
     });
   }

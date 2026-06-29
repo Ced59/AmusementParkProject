@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { SeoService } from './seo.service';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
+import { ParkReferenceDetailViewModel } from '@features/public/parks/models/park-reference-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
@@ -195,6 +196,89 @@ describe('SeoService', () => {
       .toBe('Browse attractions, shows, restaurants, shops and practical places at Demo Park.');
   });
 
+  it('uses a clean canonical route for stale park zone slugs', () => {
+    service.applyParkZoneSeo(
+      'Europa-Park',
+      'Monaco themed area',
+      'en',
+      '/en/park/park-1/europa-park/zone/zone-1/monaco',
+      null,
+      12,
+      '/en/park/park-1/europa-park/zone/zone-1/monaco-themed-area'
+    );
+
+    expect(documentRef.title).toBe('Monaco themed area at Europa-Park — Amusement Parks');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/en/park/park-1/europa-park/zone/zone-1/monaco-themed-area');
+    expect(readMetaContent('meta[name="description"]')).toContain('12 listed places');
+  });
+
+  it('localizes park zone list metadata', () => {
+    service.applyParkZonesSeo(
+      'Phantasialand',
+      'fr',
+      '/fr/park/park-1/phantasialand/zones',
+      null,
+      6,
+      42
+    );
+
+    expect(documentRef.title).toBe('Zones de Phantasialand — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toContain('6 zones');
+    expect(readMetaContent('meta[name="description"]')).toContain('42 lieux repertories');
+  });
+
+  it('applies specific metadata to public park reference detail pages', () => {
+    service.applyParkReferenceSeo(
+      buildParkReference({
+        id: 'manufacturer-1',
+        kind: 'manufacturer',
+        name: 'Ride Technic',
+        legalName: 'Ride Technic GmbH',
+        attractionsPagination: { totalItems: 4 } as ParkReferenceDetailViewModel['attractionsPagination']
+      }),
+      'fr',
+      '/fr/park-manufacturer/manufacturer-1/old-slug',
+      '/fr/park-manufacturer/manufacturer-1/ride-technic'
+    );
+
+    expect(documentRef.title).toBe('Ride Technic, constructeur — Amusement Parks');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park-manufacturer/manufacturer-1/ride-technic');
+    expect(readMetaContent('meta[name="description"]')).toContain('4 attractions liees');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+  });
+
+  it('uses available attraction specs in fallback descriptions', () => {
+    service.applyParkItemDetailSeo(
+      buildParkItemDetail({
+        description: null,
+        parkName: 'Phantasialand',
+        manufacturerName: 'Vekoma',
+        modelName: 'Flying Coaster',
+        zoneName: 'Rookburgh',
+        spotlightRows: [
+          { labelKey: 'speed', value: '78 km/h' }
+        ],
+        accessConditions: [
+          {
+            metrics: [
+              { labelKey: 'height', value: '1.30 m', helperKey: null, iconClass: 'pi pi-ruler' }
+            ]
+          }
+        ] as ParkItemDetailViewModel['accessConditions']
+      }),
+      'fr',
+      '/fr/park/park-1/phantasialand/item/item-1/fly',
+      '/fr/park/park-1/phantasialand/item/item-1/f-l-y'
+    );
+
+    const description: string | null = readMetaContent('meta[name="description"]');
+
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park/park-1/phantasialand/item/item-1/f-l-y');
+    expect(description).toContain('Vekoma');
+    expect(description).toContain('Flying Coaster');
+    expect(description).toContain('78 km/h');
+  });
+
   it('applies indexable localized metadata to the public rankings page', () => {
     service.applyRouteDefaults('/fr/rankings');
 
@@ -234,6 +318,10 @@ describe('SeoService', () => {
 
   function readMetaContent(selector: string): string | null {
     return documentRef.head.querySelector<HTMLMetaElement>(selector)?.content ?? null;
+  }
+
+  function readCanonicalHref(): string | null {
+    return documentRef.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href ?? null;
   }
 
   function clearManagedSeoTags(): void {
@@ -306,6 +394,30 @@ function buildParkItem(overrides: Partial<ParkItem> = {}): ParkItem {
     isVisible: true,
     ...overrides
   } as ParkItem;
+}
+
+function buildParkReference(overrides: Partial<ParkReferenceDetailViewModel> = {}): ParkReferenceDetailViewModel {
+  return {
+    id: 'reference-1',
+    kind: 'operator',
+    name: 'Demo Reference',
+    legalName: null,
+    richDescription: null,
+    badgeKey: 'badge',
+    titleKey: 'title',
+    descriptionTitleKey: 'description',
+    emptyDescriptionKey: 'empty',
+    heroIconClass: 'pi pi-building',
+    heroLogoImageId: null,
+    facts: [],
+    photos: [],
+    photoCategories: [],
+    attractions: [],
+    attractionsPagination: null,
+    adminParkGraphUpsertJson: null,
+    adminParkGraphUpsertFileName: null,
+    ...overrides
+  };
 }
 
 function buildVideo(overrides: Partial<VideoDto> = {}): VideoDto {

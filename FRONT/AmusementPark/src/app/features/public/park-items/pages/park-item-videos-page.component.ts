@@ -6,9 +6,11 @@ import { combineLatest } from 'rxjs';
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import {
+  buildPublicParkItemVideosRouteCommands,
   buildPublicParkItemRouteCommands,
   buildPublicParkItemsRouteCommands,
-  buildPublicParkRouteCommands
+  buildPublicParkRouteCommands,
+  buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicVideoFilterState } from '@features/public/videos/models/public-video-view.model';
@@ -106,7 +108,8 @@ export class ParkItemVideosPageComponent implements OnInit {
         this.totalVideos(),
         this.videos()[0]?.thumbnailPathOrUrl ?? null,
         this.itemImageId(),
-        this.parkImageId()
+        this.parkImageId(),
+        buildPublicRoutePath(buildPublicParkItemVideosRouteCommands(routeTarget))
       );
     });
   }

@@ -5,6 +5,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { buildPublicParkZoneRouteCommands, buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkZonesPageStateFacade } from '../state/park-zones-page-state.facade';
 import { ParkZoneViewComponent } from '../ui/park-zone-view.component';
 
@@ -24,6 +25,7 @@ export class ParkZonePageComponent implements OnInit {
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private currentParkId: string | null = null;
+  private currentZoneId: string | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -39,7 +41,21 @@ export class ParkZonePageComponent implements OnInit {
         return;
       }
 
-      this.seoService.applyParkZoneSeo(currentPage.parkName, currentPage.zoneName, this.currentLanguage(), this.router.url, this.parkImageId());
+      this.seoService.applyParkZoneSeo(
+        currentPage.parkName,
+        currentPage.zoneName,
+        this.currentLanguage(),
+        this.router.url,
+        this.parkImageId(),
+        currentPage.totalItems,
+        buildPublicRoutePath(buildPublicParkZoneRouteCommands({
+          language: this.currentLanguage(),
+          parkId: this.currentParkId,
+          parkName: currentPage.parkName,
+          zoneId: this.currentZoneId,
+          zoneName: currentPage.zoneName
+        }))
+      );
     });
   }
 
@@ -58,6 +74,7 @@ export class ParkZonePageComponent implements OnInit {
       const parkId: string | null = params.get('id');
       const zoneId: string | null = params.get('zoneId');
 
+      this.currentZoneId = zoneId;
       this.stateFacade.setSelectedZone(zoneId);
 
       if (!parkId || parkId === this.currentParkId) {

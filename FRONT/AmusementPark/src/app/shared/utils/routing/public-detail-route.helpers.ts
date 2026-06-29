@@ -203,6 +203,20 @@ export function buildPublicParkReferenceRouteCommands(target: PublicParkReferenc
   ];
 }
 
+export function buildPublicRoutePath(commands: string[] | null): string | null {
+  if (!commands) {
+    return null;
+  }
+
+  const segments: string[] = commands
+    .map((command: string): string => command.trim())
+    .filter((command: string): boolean => command.length > 0 && command !== '/')
+    .map((command: string): string => command.replace(/^\/+|\/+$/g, ''))
+    .filter((command: string): boolean => command.length > 0);
+
+  return `/${segments.join('/')}`;
+}
+
 function normalizeRouteValue(value: string | null | undefined): string | null {
   const normalizedValue: string = value?.trim() ?? '';
   return normalizedValue.length > 0 ? normalizedValue : null;

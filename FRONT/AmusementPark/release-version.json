@@ -1,6 +1,20 @@
 {
-  "version": "2.7.19",
+  "version": "2.7.20",
   "history": [
+    {
+      "version": "2.7.20",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les pages publiques sont plus claires.",
+        "en": "Public pages are clearer.",
+        "de": "Oeffentliche Seiten sind klarer.",
+        "nl": "Publieke pagina's zijn duidelijker.",
+        "it": "Le pagine pubbliche sono piu chiare.",
+        "es": "Las paginas publicas son mas claras.",
+        "pl": "Publiczne strony sa czytelniejsze.",
+        "pt": "As paginas publicas ficam mais claras."
+      }
+    },
     {
       "version": "2.7.19",
       "releasedAt": "2026-06-29",

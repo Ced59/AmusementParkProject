@@ -5,6 +5,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { buildPublicParkZonesRouteCommands, buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkZonesPageStateFacade } from '../state/park-zones-page-state.facade';
 import { ParkZonesViewComponent } from '../ui/park-zones-view.component';
 
@@ -39,7 +40,19 @@ export class ParkZonesPageComponent implements OnInit {
         return;
       }
 
-      this.seoService.applyParkZonesSeo(currentPage.parkName, this.currentLanguage(), this.router.url, this.parkImageId());
+      this.seoService.applyParkZonesSeo(
+        currentPage.parkName,
+        this.currentLanguage(),
+        this.router.url,
+        this.parkImageId(),
+        currentPage.zoneCount,
+        currentPage.totalItems,
+        buildPublicRoutePath(buildPublicParkZonesRouteCommands({
+          language: this.currentLanguage(),
+          parkId: this.currentParkId,
+          parkName: currentPage.parkName
+        }))
+      );
     });
   }
 
