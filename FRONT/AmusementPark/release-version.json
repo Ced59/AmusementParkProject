@@ -1,6 +1,20 @@
 {
-  "version": "2.7.25",
+  "version": "2.7.26",
   "history": [
+    {
+      "version": "2.7.26",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les icones du site sont plus faciles a trouver.",
+        "en": "Site icons are easier to find.",
+        "de": "Website-Icons sind leichter auffindbar.",
+        "nl": "Site-iconen zijn makkelijker te vinden.",
+        "it": "Le icone del sito sono piu facili da trovare.",
+        "es": "Los iconos del sitio son mas faciles de encontrar.",
+        "pl": "Ikony strony sa latwiejsze do znalezienia.",
+        "pt": "Os icones do site ficam mais faceis de encontrar."
+      }
+    },
     {
       "version": "2.7.25",
       "releasedAt": "2026-06-29",
