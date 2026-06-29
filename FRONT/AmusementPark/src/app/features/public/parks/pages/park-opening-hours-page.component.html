@@ -1,0 +1,92 @@
+<app-page-state
+  [state]="state()"
+  [messages]="{
+    loadingTitleKey: 'parkOpeningHours.page.loadingTitle',
+    loadingMessageKey: 'parkOpeningHours.page.loadingMessage',
+    emptyTitleKey: 'parkOpeningHours.page.emptyTitle',
+    emptyMessageKey: 'parkOpeningHours.page.emptyMessage',
+    errorTitleKey: 'parkOpeningHours.page.errorTitle',
+    errorMessageKey: 'parkOpeningHours.page.errorMessage'
+  }">
+  @if (state().data; as data) {
+    <section class="park-opening-hours-page">
+      <header class="park-opening-hours-hero">
+        <p class="park-opening-hours-hero__kicker">{{ 'parkOpeningHours.page.kicker' | translate }}</p>
+        <h1>{{ 'parkOpeningHours.page.title' | translate:{ name: data.park.name } }}</h1>
+        <p>{{ 'parkOpeningHours.page.lead' | translate:{ name: data.park.name } }}</p>
+
+        <div class="park-opening-hours-hero__actions">
+          @if (detailLink()) {
+            <a appUiButton="ghost" [routerLink]="detailLink()">
+              <i class="pi pi-arrow-left" aria-hidden="true"></i>
+              <span>{{ 'parkOpeningHours.page.backToPark' | translate:{ name: data.park.name } }}</span>
+            </a>
+          }
+
+          @if (data.calendar.sourceUrl) {
+            <a appUiButton="primary" [href]="data.calendar.sourceUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
+              <i class="pi pi-external-link" aria-hidden="true"></i>
+              <span>{{ 'parkOpeningHours.page.officialSite' | translate }}</span>
+            </a>
+          }
+        </div>
+      </header>
+
+      <section class="park-opening-hours-disclaimer">
+        <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+        <p>{{ 'parkOpeningHours.page.disclaimer' | translate:{ name: data.park.name } }}</p>
+      </section>
+
+      <section class="park-opening-hours-summary" [attr.aria-label]="'parkOpeningHours.page.summaryLabel' | translate">
+        <div>
+          <span>{{ 'parkOpeningHours.page.coverage' | translate }}</span>
+          <strong>
+            @if (data.calendar.firstDate && data.calendar.lastDate) {
+              {{ formatDate(data.calendar.firstDate) }} - {{ formatDate(data.calendar.lastDate) }}
+            } @else {
+              {{ 'parkOpeningHours.page.coverageUnknown' | translate }}
+            }
+          </strong>
+        </div>
+
+        <div>
+          <span>{{ 'parkOpeningHours.page.timeZone' | translate }}</span>
+          <strong>{{ data.calendar.timeZoneId }}</strong>
+        </div>
+
+        <div>
+          <span>{{ 'parkOpeningHours.page.daysCount' | translate }}</span>
+          <strong>{{ 'parkOpeningHours.page.daysCountValue' | translate:{ count: data.calendar.days.length } }}</strong>
+        </div>
+      </section>
+
+      <section class="park-opening-hours-calendar" [attr.aria-label]="'parkOpeningHours.page.calendarLabel' | translate:{ name: data.park.name }">
+        @for (group of monthGroups(data.calendar.days); track group.key) {
+          <section class="park-opening-hours-month">
+            <h2>{{ group.label }}</h2>
+
+            <div class="park-opening-hours-days">
+              @for (day of group.days; track day.localDate) {
+                <article class="park-opening-hours-day" [class.park-opening-hours-day--closed]="dayTone(day) === 'closed'">
+                  <header>
+                    <span>{{ formatShortDate(day.localDate) }}</span>
+                    <strong>{{ dayTone(day) === 'closed' ? ('parkOpeningHours.page.closed' | translate) : ('parkOpeningHours.page.open' | translate) }}</strong>
+                  </header>
+
+                  @if (dayTone(day) === 'closed') {
+                    <p>{{ day.reason || day.label || ('parkOpeningHours.page.closedNoReason' | translate) }}</p>
+                  } @else {
+                    <p>{{ formatRanges(day) }}</p>
+                    @if (day.label || day.reason) {
+                      <small>{{ day.label || day.reason }}</small>
+                    }
+                  }
+                </article>
+              }
+            </div>
+          </section>
+        }
+      </section>
+    </section>
+  }
+</app-page-state>

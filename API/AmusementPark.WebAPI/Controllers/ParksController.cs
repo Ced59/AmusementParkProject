@@ -228,6 +228,7 @@ public sealed class ParksController : ControllerBase
         [FromQuery] string? countryCode = null,
         [FromQuery] bool? hasValidCoordinates = null,
         [FromQuery] string? closedFilter = null,
+        [FromQuery] string? openingHoursStatus = null,
         [FromQuery] string? sortBy = null,
         [FromQuery] string? sortDirection = null,
         CancellationToken cancellationToken = default)
@@ -243,12 +244,13 @@ public sealed class ParksController : ControllerBase
         ParkType? parsedType = ParseParkType(type);
         ClosedEntityFilter parsedClosedFilter = ParseClosedEntityFilter(closedFilter);
         ClosedEntityFilter effectiveClosedFilter = canSeeNonVisible && !visibleOnly ? ClosedEntityFilter.All : parsedClosedFilter;
+        ParkOpeningHoursAdminFilter parsedOpeningHoursFilter = canSeeNonVisible ? ParseOpeningHoursFilter(openingHoursStatus) : ParkOpeningHoursAdminFilter.All;
         ParkAdminSortField parsedSortField = canSeeNonVisible ? ParseParkAdminSortField(sortBy) : ParkAdminSortField.Default;
         bool sortDescending = IsDescendingSort(sortDirection);
 
         ApplicationResult<PagedResult<ParkListResult>> result = string.IsNullOrWhiteSpace(effectiveQuery) && regionFilter is null
-            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedSortField, sortDescending), cancellationToken)
-            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedSortField, sortDescending), cancellationToken);
+            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedOpeningHoursFilter, parsedSortField, sortDescending), cancellationToken)
+            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedOpeningHoursFilter, parsedSortField, sortDescending), cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
         {
@@ -416,7 +418,21 @@ public sealed class ParksController : ControllerBase
             "name" => ParkAdminSortField.Name,
             "parkitemstotalcount" or "itemstotal" or "totalitems" => ParkAdminSortField.ParkItemsTotalCount,
             "parkitemsvisiblecount" or "itemsvisible" or "visibleitems" => ParkAdminSortField.ParkItemsVisibleCount,
+            "openinghoursstatus" or "openinghours" or "hoursstatus" => ParkAdminSortField.OpeningHoursStatus,
             _ => ParkAdminSortField.Default,
+        };
+    }
+
+    private static ParkOpeningHoursAdminFilter ParseOpeningHoursFilter(string? value)
+    {
+        return value?.Trim().ToLowerInvariant() switch
+        {
+            "configured" or "set" or "filled" or "hasopeninghours" => ParkOpeningHoursAdminFilter.Configured,
+            "notconfigured" or "missing" or "unset" or "noopeninghours" => ParkOpeningHoursAdminFilter.NotConfigured,
+            "uptodate" or "up-to-date" => ParkOpeningHoursAdminFilter.UpToDate,
+            "needsupdate" or "needs-update" or "stale" => ParkOpeningHoursAdminFilter.NeedsUpdate,
+            "expired" => ParkOpeningHoursAdminFilter.Expired,
+            _ => ParkOpeningHoursAdminFilter.All,
         };
     }
 

@@ -41,7 +41,7 @@ function isKnownPublicPageRoute(path: string): boolean {
     || /^\/[a-z]{2}\/(?:home|parks|rankings|manufacturers|about|contact|versions|privacy)\/?$/i.test(path)
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
-    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/images|\/videos|\/map|\/zones|\/weather|\/items)?\/?$/i.test(path)
+    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/images|\/videos|\/map|\/zones|\/weather|\/opening-hours|\/items)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/video\/(?:s\/)?[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zone\/[^/]+\/[^/]+\/?$/i.test(path)
@@ -66,7 +66,8 @@ function isNoindexPublicPageRoute(url: string): boolean {
     || (isPublicParkItemImagesRoute(path) && hasQueryString(url))
     || (isPublicParkVideosRoute(path) && hasQueryString(url))
     || (isPublicParkItemVideosRoute(path) && hasQueryString(url))
-    || (isPublicParkWeatherRoute(path) && hasQueryString(url));
+    || (isPublicParkWeatherRoute(path) && hasQueryString(url))
+    || (isPublicParkOpeningHoursRoute(path) && hasQueryString(url));
 }
 
 function isExplicitNotFoundPath(path: string): boolean {
@@ -125,6 +126,10 @@ function isPublicParkItemVideosRoute(path: string): boolean {
 
 function isPublicParkWeatherRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/weather\/?$/i.test(path);
+}
+
+function isPublicParkOpeningHoursRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/opening-hours\/?$/i.test(path);
 }
 
 function normalizeSsrPath(url: string): string {

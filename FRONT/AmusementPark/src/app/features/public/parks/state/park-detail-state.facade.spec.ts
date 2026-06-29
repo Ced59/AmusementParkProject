@@ -7,6 +7,7 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
+import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { Park } from '@app/models/parks/park';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
@@ -34,12 +35,15 @@ class FakeParksPort implements ParkDetailParksPort {
   public summaryResponse$: Observable<ParkDetailSummary> = of(createSummary());
   public nearestResponse$: Observable<ParkDistanceResponse> = of(createNearbyResponse());
   public weatherResponse$: Observable<ParkWeatherForecast> = of(createWeatherForecast());
+  public openingHoursResponse$: Observable<ParkOpeningHoursCalendar> = of(createOpeningHoursCalendar());
   public readonly summaryCalls: string[] = [];
   public readonly summaryOptions: Array<AnonymousHttpOptions | undefined> = [];
   public readonly nearestCalls: { sourceParkId: string; limit?: number; maxDistanceKilometers?: number | null }[] = [];
   public readonly nearestOptions: Array<AnonymousHttpOptions | undefined> = [];
   public readonly weatherCalls: { id: string; days?: number }[] = [];
   public readonly weatherOptions: Array<AnonymousHttpOptions | undefined> = [];
+  public readonly openingHoursCalls: { id: string; from?: string | null; to?: string | null }[] = [];
+  public readonly openingHoursOptions: Array<AnonymousHttpOptions | undefined> = [];
 
   getParkDetailSummary(id: string, options?: AnonymousHttpOptions): Observable<ParkDetailSummary> {
     this.summaryCalls.push(id);
@@ -57,6 +61,12 @@ class FakeParksPort implements ParkDetailParksPort {
     this.weatherCalls.push({ id, days });
     this.weatherOptions.push(options);
     return this.weatherResponse$;
+  }
+
+  getParkOpeningHours(id: string, from?: string | null, to?: string | null, options?: AnonymousHttpOptions): Observable<ParkOpeningHoursCalendar> {
+    this.openingHoursCalls.push({ id, from, to });
+    this.openingHoursOptions.push(options);
+    return this.openingHoursResponse$;
   }
 }
 
@@ -284,6 +294,19 @@ function createWeatherForecast(): ParkWeatherForecast {
   };
 }
 
+function createOpeningHoursCalendar(): ParkOpeningHoursCalendar {
+  return {
+    parkId: 'park-1',
+    timeZoneId: 'Europe/Paris',
+    updatedAtUtc: '2026-06-19T00:00:00Z',
+    firstDate: null,
+    lastDate: null,
+    fromDate: '2026-06-18',
+    toDate: '2026-06-20',
+    days: []
+  };
+}
+
 function configureFacade(): {
   facade: ParkDetailStateFacade;
   parksPort: FakeParksPort;
@@ -354,6 +377,8 @@ describe('ParkDetailStateFacade', () => {
     expect(context.videosPort.itemVideoCalls).toEqual([{ parkId: 'park-1', query: { page: 1, size: 1 } }]);
     expect(context.parksPort.nearestCalls).toEqual([{ sourceParkId: 'park-1', limit: 4, maxDistanceKilometers: null }]);
     expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
+    expect(context.parksPort.openingHoursCalls.length).toBe(1);
+    expect(context.parksPort.openingHoursCalls[0].id).toBe('park-1');
     expect(context.facade.nearbyState().kind).toBe('ready');
     expect(context.facade.nearbyParks().map((park) => park.id)).toEqual(['near-1']);
     expect(context.facade.weatherState().kind).toBe('ready');
@@ -409,10 +434,11 @@ describe('ParkDetailStateFacade', () => {
       ...context.parksPort.summaryOptions,
       ...context.parksPort.nearestOptions,
       ...context.parksPort.weatherOptions,
+      ...context.parksPort.openingHoursOptions,
       ...context.videosPort.options
     ];
 
-    expect(capturedOptions.length).toBe(5);
+    expect(capturedOptions.length).toBe(6);
     expect(capturedOptions.every((options: AnonymousHttpOptions | undefined) => options?.context.get(SKIP_AUTHORIZATION_HEADER) === true)).toBeTrue();
   });
 

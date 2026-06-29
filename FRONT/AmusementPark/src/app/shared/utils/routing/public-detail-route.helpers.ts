@@ -137,6 +137,16 @@ export function buildPublicParkWeatherRouteCommands(target: PublicParkRouteTarge
   return [...parkRouteCommands, 'weather'];
 }
 
+export function buildPublicParkOpeningHoursRouteCommands(target: PublicParkRouteTarget): string[] | null {
+  const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
+
+  if (!parkRouteCommands) {
+    return null;
+  }
+
+  return [...parkRouteCommands, 'opening-hours'];
+}
+
 export function buildPublicParkItemRouteCommands(target: PublicParkItemRouteTarget): string[] | null {
   const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
   const itemId: string | null = normalizeRouteValue(target.itemId);

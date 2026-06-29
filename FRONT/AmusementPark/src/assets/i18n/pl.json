@@ -429,7 +429,7 @@
       },
       "editor": {
         "title": "Dokument JSON",
-        "description": "Brakujące właściwości są zachowywane. Tablice zones/items wykonują upsert tylko zawartych wpisów."
+        "description": "Brakujace wlasciwosci sa zachowane. Sekcja openingHours jest podgladana i stosowana w tym samym globalnym JSON co park, strefy, strony i obrazy."
       },
       "export": {
         "title": "Eksport JSON parku",
@@ -690,70 +690,62 @@
         }
       }
     },
-    "parkWeather": {
-      "navTitle": "Pogoda",
-      "title": "Odswiezanie pogody",
-      "subtitle": "Monitoruj zaplanowane wykonania, widoczne parki i bledy.",
-      "loading": "Ladowanie statusu pogody...",
-      "loadError": "Nie udalo sie zaladowac statusu pogody.",
-      "startError": "Nie udalo sie uruchomic odswiezania pogody.",
-      "retryError": "Nie udalo sie ponowic odswiezania pogody.",
-      "empty": "Brak informacji pogodowych.",
-      "actions": {
-        "startManual": "Odswiez teraz",
-        "retryFailed": "Ponow bledy",
-        "retryPark": "Ponow"
+    "parks": {
+      "tabs": {
+        "openingHours": "Godziny otwarcia",
+        "general": "Ogólne",
+        "location": "Lokalizacja",
+        "descriptions": "Opisy",
+        "logos": "Logotypy",
+        "photos": "Zdjęcia",
+        "videos": "Wideo"
       },
-      "stats": {
-        "status": "Status",
-        "progress": "Postep",
-        "success": "Udane",
-        "warnings": "{{count}} ostrzezenie(a)",
-        "failed": "Bledy"
+      "sort": {
+        "openingHoursAttentionFirst": "Godziny do sprawdzenia",
+        "openingHoursReadyFirst": "Godziny kompletne",
+        "label": "Sortuj",
+        "default": "Domyślne",
+        "nameAsc": "Nazwa A-Z",
+        "totalDesc": "Elem. max",
+        "totalAsc": "Elem. min",
+        "visibleDesc": "Wid. max",
+        "visibleAsc": "Wid. min"
       },
-      "statuses": {
-        "queued": "W kolejce",
-        "running": "W toku",
-        "completed": "Zakonczone",
-        "completedWithFailures": "Zakonczone z bledami",
-        "failed": "Nieudane",
-        "skipped": "Pominiete"
-      },
-      "messages": {
-        "queued": "Odswiezanie pogody jest w kolejce.",
-        "running": "Odswiezanie pogody trwa.",
-        "completed": "Odswiezanie pogody zakonczone.",
-        "completedWithFailures": "Odswiezanie pogody zakonczone z bledami.",
-        "canceled": "Odswiezanie pogody anulowane.",
-        "skippedByManual": "Automatyczne wykonanie pominieto, bo reczne odswiezenie obejmuje juz ten cykl."
-      },
-      "values": {
-        "empty": "-"
-      },
-      "latestRun": {
-        "title": "Ostatnie wykonanie",
-        "meta": "{{trigger}} - {{scope}}",
-        "requestedAt": "Zlecone",
-        "startedAt": "Uruchomione",
-        "cancelAuto": "Automatyczne wykonanie anulowane"
-      },
-      "failures": {
-        "title": "Parki z bledem",
-        "subtitle": "Ponow wszystkie bledy albo jeden park.",
-        "empty": "Brak parkow z bledem w tym wykonaniu.",
-        "columns": {
-          "park": "Park",
-          "error": "Blad",
-          "attempts": "Proby",
-          "actions": "Akcje"
+      "openingHours": {
+        "title": "Godziny otwarcia",
+        "filterLabel": "Godziny",
+        "notConfigured": "Nie ustawiono",
+        "coverageOne": "Pelne godziny dla {{ count }} dnia, do {{ date }}",
+        "coverageMany": "Pelne godziny dla {{ count }} dni, do {{ date }}",
+        "statuses": {
+          "NotConfigured": "Nie ustawiono",
+          "Expired": "Wygasle",
+          "NeedsUpdate": "Do aktualizacji",
+          "UpToDate": "Aktualne"
+        },
+        "filters": {
+          "all": "Wszystkie godziny",
+          "configured": "Ustawione",
+          "notConfigured": "Nie ustawiono",
+          "upToDate": "Aktualne",
+          "needsUpdate": "Do aktualizacji",
+          "expired": "Wygasle"
         }
       },
-      "noRun": {
-        "title": "Brak wykonania",
-        "message": "Uruchom reczne odswiezanie albo poczekaj na kolejne zaplanowane wykonanie."
-      }
-    },
-    "parks": {
+      "openingHoursEditor": {
+        "title": "JSON godzin",
+        "subtitle": "Wklej lub edytuj JSON harmonogramu, a potem wykonaj upsert dla tego parku.",
+        "reload": "Przeladuj",
+        "format": "Formatuj",
+        "upsert": "Upsert JSON",
+        "jsonLabel": "JSON godzin",
+        "invalidJson": "JSON jest nieprawidlowy.",
+        "savedSummary": "Godziny zapisane",
+        "savedDetail": "Harmonogram zostal upsertowany.",
+        "saveError": "Nie udalo sie zapisac harmonogramu.",
+        "loadError": "Nie udalo sie zaladowac harmonogramu.",
+        "hint": "Dni zamkniete musza byc jawne, jesli maja liczyc sie jako pelna kompletacja."
+      },
       "total": "Łączna liczba parków: {{count}}",
       "empty": "Nie znaleziono parków.",
       "name": "Park",
@@ -1123,14 +1115,6 @@
       "visibilityHelp": "Określa, czy ten park jest widoczny w publicznej aplikacji.",
       "locationSectionTitle": "Lokalizacja i adres",
       "locationSectionHelp": "Tutaj określisz główny punkt parku i jego adres pocztowy.",
-      "tabs": {
-        "general": "Ogólne",
-        "location": "Lokalizacja",
-        "descriptions": "Opisy",
-        "logos": "Logotypy",
-        "photos": "Zdjęcia",
-        "videos": "Wideo"
-      },
       "editorStatus": {
         "saving": "Zapisywanie...",
         "unsavedChanges": "Niezapisane zmiany",
@@ -1219,15 +1203,69 @@
       "statuses": {
         "operating": "Otwarty",
         "closedDefinitively": "Zamknięty na stałe"
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Pogoda",
+      "title": "Odswiezanie pogody",
+      "subtitle": "Monitoruj zaplanowane wykonania, widoczne parki i bledy.",
+      "loading": "Ladowanie statusu pogody...",
+      "loadError": "Nie udalo sie zaladowac statusu pogody.",
+      "startError": "Nie udalo sie uruchomic odswiezania pogody.",
+      "retryError": "Nie udalo sie ponowic odswiezania pogody.",
+      "empty": "Brak informacji pogodowych.",
+      "actions": {
+        "startManual": "Odswiez teraz",
+        "retryFailed": "Ponow bledy",
+        "retryPark": "Ponow"
       },
-      "sort": {
-        "label": "Sortuj",
-        "default": "Domyślne",
-        "nameAsc": "Nazwa A-Z",
-        "totalDesc": "Elem. max",
-        "totalAsc": "Elem. min",
-        "visibleDesc": "Wid. max",
-        "visibleAsc": "Wid. min"
+      "stats": {
+        "status": "Status",
+        "progress": "Postep",
+        "success": "Udane",
+        "warnings": "{{count}} ostrzezenie(a)",
+        "failed": "Bledy"
+      },
+      "statuses": {
+        "queued": "W kolejce",
+        "running": "W toku",
+        "completed": "Zakonczone",
+        "completedWithFailures": "Zakonczone z bledami",
+        "failed": "Nieudane",
+        "skipped": "Pominiete"
+      },
+      "messages": {
+        "queued": "Odswiezanie pogody jest w kolejce.",
+        "running": "Odswiezanie pogody trwa.",
+        "completed": "Odswiezanie pogody zakonczone.",
+        "completedWithFailures": "Odswiezanie pogody zakonczone z bledami.",
+        "canceled": "Odswiezanie pogody anulowane.",
+        "skippedByManual": "Automatyczne wykonanie pominieto, bo reczne odswiezenie obejmuje juz ten cykl."
+      },
+      "values": {
+        "empty": "-"
+      },
+      "latestRun": {
+        "title": "Ostatnie wykonanie",
+        "meta": "{{trigger}} - {{scope}}",
+        "requestedAt": "Zlecone",
+        "startedAt": "Uruchomione",
+        "cancelAuto": "Automatyczne wykonanie anulowane"
+      },
+      "failures": {
+        "title": "Parki z bledem",
+        "subtitle": "Ponow wszystkie bledy albo jeden park.",
+        "empty": "Brak parkow z bledem w tym wykonaniu.",
+        "columns": {
+          "park": "Park",
+          "error": "Blad",
+          "attempts": "Proby",
+          "actions": "Akcje"
+        }
+      },
+      "noRun": {
+        "title": "Brak wykonania",
+        "message": "Uruchom reczne odswiezanie albo poczekaj na kolejne zaplanowane wykonanie."
       }
     },
     "publicViewToolbar": {
@@ -2806,6 +2844,46 @@
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
+    }
+  },
+  "parkOpeningHours": {
+    "card": {
+      "title": "Daty i godziny",
+      "openNow": "Teraz otwarte",
+      "closedNow": "Teraz zamkniete",
+      "openBadge": "Otwarte",
+      "closedBadge": "Zamkniete",
+      "today": "Dzisiaj",
+      "closedToday": "Dzisiaj zamkniete",
+      "notDefinedToday": "Dzisiaj nie podano",
+      "parkTimeZone": "Czas parku",
+      "visitorTimeZone": "Twoja strefa: {{ timeZone }}",
+      "viewAll": "Zobacz wszystkie daty i godziny",
+      "loading": "Ladowanie godzin"
+    },
+    "page": {
+      "kicker": "Daty i godziny",
+      "title": "Daty i godziny otwarcia {{ name }}",
+      "lead": "Sprawdz aktualnie podane daty i dzienne godziny dla {{ name }}.",
+      "backToPark": "Wroc do {{ name }}",
+      "officialSite": "Oficjalna strona",
+      "disclaimer": "Te godziny maja charakter orientacyjny. Przed wizyta zawsze sprawdz oficjalna strone {{ name }}, poniewaz wydarzenia prywatne, wyjatkowe zamkniecia, pogoda, operacje lub inne zmiany moga nie byc tutaj znane albo zaktualizowane.",
+      "summaryLabel": "Podsumowanie godzin",
+      "coverage": "Podany okres",
+      "coverageUnknown": "Nieznany okres",
+      "timeZone": "Strefa czasowa",
+      "daysCount": "Podane dni",
+      "daysCountValue": "{{ count }} dni",
+      "calendarLabel": "Daty i godziny otwarcia {{ name }}",
+      "open": "Otwarte",
+      "closed": "Zamkniete",
+      "closedNoReason": "Zamkniete",
+      "loadingTitle": "Ladowanie dat i godzin",
+      "loadingMessage": "Podany harmonogram jest ladowany.",
+      "emptyTitle": "Brak podanych dat lub godzin",
+      "emptyMessage": "Dla tego parku nie ma jeszcze harmonogramu otwarcia.",
+      "errorTitle": "Daty i godziny niedostepne",
+      "errorMessage": "Nie udalo sie zaladowac harmonogramu otwarcia."
     }
   },
   "parkVisitor": {

@@ -429,7 +429,7 @@
       },
       "editor": {
         "title": "JSON document",
-        "description": "Absent properties are preserved. Zones/items arrays upsert only the entries they contain."
+        "description": "Absent properties are preserved. The openingHours section is previewed and applied with the same global JSON as park, zones, pages and images."
       },
       "export": {
         "title": "Park JSON export",
@@ -690,70 +690,62 @@
         }
       }
     },
-    "parkWeather": {
-      "navTitle": "Weather",
-      "title": "Weather refresh",
-      "subtitle": "Track scheduled refreshes, visible park coverage and failed parks.",
-      "loading": "Loading weather refresh status...",
-      "loadError": "Unable to load weather refresh status.",
-      "startError": "Unable to start the weather refresh.",
-      "retryError": "Unable to retry the weather refresh.",
-      "empty": "No weather refresh information available.",
-      "actions": {
-        "startManual": "Refresh now",
-        "retryFailed": "Retry failed parks",
-        "retryPark": "Retry"
+    "parks": {
+      "tabs": {
+        "openingHours": "Opening hours",
+        "general": "General",
+        "location": "Location",
+        "descriptions": "Descriptions",
+        "logos": "Logos",
+        "photos": "Photos",
+        "videos": "Videos"
       },
-      "stats": {
-        "status": "Status",
-        "progress": "Progress",
-        "success": "Succeeded",
-        "warnings": "{{count}} warning(s)",
-        "failed": "Failed"
+      "sort": {
+        "openingHoursAttentionFirst": "Hours attention first",
+        "openingHoursReadyFirst": "Hours ready first",
+        "label": "Sort",
+        "default": "Default",
+        "nameAsc": "Name A-Z",
+        "totalDesc": "Items max",
+        "totalAsc": "Items min",
+        "visibleDesc": "Visible max",
+        "visibleAsc": "Visible min"
       },
-      "statuses": {
-        "queued": "Queued",
-        "running": "Running",
-        "completed": "Completed",
-        "completedWithFailures": "Completed with failures",
-        "failed": "Failed",
-        "skipped": "Skipped"
-      },
-      "messages": {
-        "queued": "Weather refresh queued.",
-        "running": "Weather refresh running.",
-        "completed": "Weather refresh completed.",
-        "completedWithFailures": "Weather refresh completed with failures.",
-        "canceled": "Weather refresh canceled.",
-        "skippedByManual": "Automatic weather refresh skipped because a manual refresh already covers this cycle."
-      },
-      "values": {
-        "empty": "-"
-      },
-      "latestRun": {
-        "title": "Latest run",
-        "meta": "{{trigger}} - {{scope}}",
-        "requestedAt": "Requested",
-        "startedAt": "Started",
-        "cancelAuto": "Auto run canceled"
-      },
-      "failures": {
-        "title": "Failed parks",
-        "subtitle": "Retry all failures in batch or refresh a single failed park.",
-        "empty": "No failed park for this run.",
-        "columns": {
-          "park": "Park",
-          "error": "Error",
-          "attempts": "Attempts",
-          "actions": "Actions"
+      "openingHours": {
+        "title": "Opening hours",
+        "filterLabel": "Hours",
+        "notConfigured": "Not configured",
+        "coverageOne": "Complete hours for {{ count }} day, until {{ date }}",
+        "coverageMany": "Complete hours for {{ count }} days, until {{ date }}",
+        "statuses": {
+          "NotConfigured": "Not configured",
+          "Expired": "Expired",
+          "NeedsUpdate": "Needs update",
+          "UpToDate": "Up to date"
+        },
+        "filters": {
+          "all": "All hours",
+          "configured": "Configured",
+          "notConfigured": "Not configured",
+          "upToDate": "Up to date",
+          "needsUpdate": "Needs update",
+          "expired": "Expired"
         }
       },
-      "noRun": {
-        "title": "No run yet",
-        "message": "Start a manual refresh or wait for the next scheduled execution."
-      }
-    },
-    "parks": {
+      "openingHoursEditor": {
+        "title": "Opening hours JSON",
+        "subtitle": "Paste or edit the schedule JSON, then upsert it for this park.",
+        "reload": "Reload",
+        "format": "Format",
+        "upsert": "Upsert JSON",
+        "jsonLabel": "Opening hours JSON",
+        "invalidJson": "The JSON is invalid.",
+        "savedSummary": "Opening hours saved",
+        "savedDetail": "The schedule was upserted.",
+        "saveError": "The schedule could not be saved.",
+        "loadError": "The schedule could not be loaded.",
+        "hint": "Closed days must be explicit when they should count as complete coverage."
+      },
       "total": "Total number of parks: {{count}}",
       "empty": "No parks found.",
       "name": "Park",
@@ -1123,14 +1115,6 @@
       "visibilityHelp": "Controls whether this park is visible in the public application.",
       "locationSectionTitle": "Location and address",
       "locationSectionHelp": "Define the park main point and postal address here.",
-      "tabs": {
-        "general": "General",
-        "location": "Location",
-        "descriptions": "Descriptions",
-        "logos": "Logos",
-        "photos": "Photos",
-        "videos": "Videos"
-      },
       "editorStatus": {
         "saving": "Saving...",
         "unsavedChanges": "Unsaved changes",
@@ -1219,15 +1203,69 @@
       "statuses": {
         "operating": "Open",
         "closedDefinitively": "Permanently closed"
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Weather",
+      "title": "Weather refresh",
+      "subtitle": "Track scheduled refreshes, visible park coverage and failed parks.",
+      "loading": "Loading weather refresh status...",
+      "loadError": "Unable to load weather refresh status.",
+      "startError": "Unable to start the weather refresh.",
+      "retryError": "Unable to retry the weather refresh.",
+      "empty": "No weather refresh information available.",
+      "actions": {
+        "startManual": "Refresh now",
+        "retryFailed": "Retry failed parks",
+        "retryPark": "Retry"
       },
-      "sort": {
-        "label": "Sort",
-        "default": "Default",
-        "nameAsc": "Name A-Z",
-        "totalDesc": "Items max",
-        "totalAsc": "Items min",
-        "visibleDesc": "Visible max",
-        "visibleAsc": "Visible min"
+      "stats": {
+        "status": "Status",
+        "progress": "Progress",
+        "success": "Succeeded",
+        "warnings": "{{count}} warning(s)",
+        "failed": "Failed"
+      },
+      "statuses": {
+        "queued": "Queued",
+        "running": "Running",
+        "completed": "Completed",
+        "completedWithFailures": "Completed with failures",
+        "failed": "Failed",
+        "skipped": "Skipped"
+      },
+      "messages": {
+        "queued": "Weather refresh queued.",
+        "running": "Weather refresh running.",
+        "completed": "Weather refresh completed.",
+        "completedWithFailures": "Weather refresh completed with failures.",
+        "canceled": "Weather refresh canceled.",
+        "skippedByManual": "Automatic weather refresh skipped because a manual refresh already covers this cycle."
+      },
+      "values": {
+        "empty": "-"
+      },
+      "latestRun": {
+        "title": "Latest run",
+        "meta": "{{trigger}} - {{scope}}",
+        "requestedAt": "Requested",
+        "startedAt": "Started",
+        "cancelAuto": "Auto run canceled"
+      },
+      "failures": {
+        "title": "Failed parks",
+        "subtitle": "Retry all failures in batch or refresh a single failed park.",
+        "empty": "No failed park for this run.",
+        "columns": {
+          "park": "Park",
+          "error": "Error",
+          "attempts": "Attempts",
+          "actions": "Actions"
+        }
+      },
+      "noRun": {
+        "title": "No run yet",
+        "message": "Start a manual refresh or wait for the next scheduled execution."
       }
     },
     "publicViewToolbar": {
@@ -2806,6 +2844,46 @@
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
+    }
+  },
+  "parkOpeningHours": {
+    "card": {
+      "title": "Dates and hours",
+      "openNow": "Open now",
+      "closedNow": "Closed now",
+      "openBadge": "Open",
+      "closedBadge": "Closed",
+      "today": "Today",
+      "closedToday": "Closed today",
+      "notDefinedToday": "Not listed today",
+      "parkTimeZone": "Park time",
+      "visitorTimeZone": "Your time zone: {{ timeZone }}",
+      "viewAll": "View all dates and hours",
+      "loading": "Loading hours"
+    },
+    "page": {
+      "kicker": "Dates and hours",
+      "title": "Dates and opening hours for {{ name }}",
+      "lead": "Browse the dates and daily hours currently listed for {{ name }}.",
+      "backToPark": "Back to {{ name }}",
+      "officialSite": "Official site",
+      "disclaimer": "These hours are provided for guidance only. Always check the official {{ name }} website before your visit, as private events, exceptional closures, weather, operations or other changes may not be known or updated here.",
+      "summaryLabel": "Opening hours summary",
+      "coverage": "Listed period",
+      "coverageUnknown": "Unknown period",
+      "timeZone": "Time zone",
+      "daysCount": "Listed days",
+      "daysCountValue": "{{ count }} days",
+      "calendarLabel": "Opening dates and hours for {{ name }}",
+      "open": "Open",
+      "closed": "Closed",
+      "closedNoReason": "Closed",
+      "loadingTitle": "Loading dates and hours",
+      "loadingMessage": "The listed schedule is loading.",
+      "emptyTitle": "No dates or hours listed",
+      "emptyMessage": "No opening schedule is available for this park yet.",
+      "errorTitle": "Dates and hours unavailable",
+      "errorMessage": "The opening schedule could not be loaded."
     }
   },
   "parkVisitor": {

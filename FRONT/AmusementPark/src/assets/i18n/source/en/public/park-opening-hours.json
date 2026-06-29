@@ -1,0 +1,42 @@
+{
+  "parkOpeningHours": {
+    "card": {
+      "title": "Dates and hours",
+      "openNow": "Open now",
+      "closedNow": "Closed now",
+      "openBadge": "Open",
+      "closedBadge": "Closed",
+      "today": "Today",
+      "closedToday": "Closed today",
+      "notDefinedToday": "Not listed today",
+      "parkTimeZone": "Park time",
+      "visitorTimeZone": "Your time zone: {{ timeZone }}",
+      "viewAll": "View all dates and hours",
+      "loading": "Loading hours"
+    },
+    "page": {
+      "kicker": "Dates and hours",
+      "title": "Dates and opening hours for {{ name }}",
+      "lead": "Browse the dates and daily hours currently listed for {{ name }}.",
+      "backToPark": "Back to {{ name }}",
+      "officialSite": "Official site",
+      "disclaimer": "These hours are provided for guidance only. Always check the official {{ name }} website before your visit, as private events, exceptional closures, weather, operations or other changes may not be known or updated here.",
+      "summaryLabel": "Opening hours summary",
+      "coverage": "Listed period",
+      "coverageUnknown": "Unknown period",
+      "timeZone": "Time zone",
+      "daysCount": "Listed days",
+      "daysCountValue": "{{ count }} days",
+      "calendarLabel": "Opening dates and hours for {{ name }}",
+      "open": "Open",
+      "closed": "Closed",
+      "closedNoReason": "Closed",
+      "loadingTitle": "Loading dates and hours",
+      "loadingMessage": "The listed schedule is loading.",
+      "emptyTitle": "No dates or hours listed",
+      "emptyMessage": "No opening schedule is available for this park yet.",
+      "errorTitle": "Dates and hours unavailable",
+      "errorMessage": "The opening schedule could not be loaded."
+    }
+  }
+}

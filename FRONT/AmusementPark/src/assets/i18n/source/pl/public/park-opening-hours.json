@@ -1,0 +1,42 @@
+{
+  "parkOpeningHours": {
+    "card": {
+      "title": "Daty i godziny",
+      "openNow": "Teraz otwarte",
+      "closedNow": "Teraz zamkniete",
+      "openBadge": "Otwarte",
+      "closedBadge": "Zamkniete",
+      "today": "Dzisiaj",
+      "closedToday": "Dzisiaj zamkniete",
+      "notDefinedToday": "Dzisiaj nie podano",
+      "parkTimeZone": "Czas parku",
+      "visitorTimeZone": "Twoja strefa: {{ timeZone }}",
+      "viewAll": "Zobacz wszystkie daty i godziny",
+      "loading": "Ladowanie godzin"
+    },
+    "page": {
+      "kicker": "Daty i godziny",
+      "title": "Daty i godziny otwarcia {{ name }}",
+      "lead": "Sprawdz aktualnie podane daty i dzienne godziny dla {{ name }}.",
+      "backToPark": "Wroc do {{ name }}",
+      "officialSite": "Oficjalna strona",
+      "disclaimer": "Te godziny maja charakter orientacyjny. Przed wizyta zawsze sprawdz oficjalna strone {{ name }}, poniewaz wydarzenia prywatne, wyjatkowe zamkniecia, pogoda, operacje lub inne zmiany moga nie byc tutaj znane albo zaktualizowane.",
+      "summaryLabel": "Podsumowanie godzin",
+      "coverage": "Podany okres",
+      "coverageUnknown": "Nieznany okres",
+      "timeZone": "Strefa czasowa",
+      "daysCount": "Podane dni",
+      "daysCountValue": "{{ count }} dni",
+      "calendarLabel": "Daty i godziny otwarcia {{ name }}",
+      "open": "Otwarte",
+      "closed": "Zamkniete",
+      "closedNoReason": "Zamkniete",
+      "loadingTitle": "Ladowanie dat i godzin",
+      "loadingMessage": "Podany harmonogram jest ladowany.",
+      "emptyTitle": "Brak podanych dat lub godzin",
+      "emptyMessage": "Dla tego parku nie ma jeszcze harmonogramu otwarcia.",
+      "errorTitle": "Daty i godziny niedostepne",
+      "errorMessage": "Nie udalo sie zaladowac harmonogramu otwarcia."
+    }
+  }
+}

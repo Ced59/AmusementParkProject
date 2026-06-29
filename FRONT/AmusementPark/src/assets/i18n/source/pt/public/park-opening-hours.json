@@ -1,0 +1,42 @@
+{
+  "parkOpeningHours": {
+    "card": {
+      "title": "Datas e horarios",
+      "openNow": "Aberto agora",
+      "closedNow": "Fechado agora",
+      "openBadge": "Aberto",
+      "closedBadge": "Fechado",
+      "today": "Hoje",
+      "closedToday": "Fechado hoje",
+      "notDefinedToday": "Nao indicado hoje",
+      "parkTimeZone": "Hora do parque",
+      "visitorTimeZone": "O teu fuso: {{ timeZone }}",
+      "viewAll": "Ver todas as datas e horarios",
+      "loading": "A carregar horarios"
+    },
+    "page": {
+      "kicker": "Datas e horarios",
+      "title": "Datas e horarios de abertura de {{ name }}",
+      "lead": "Consulta as datas e horarios diarios atualmente indicados para {{ name }}.",
+      "backToPark": "Voltar a {{ name }}",
+      "officialSite": "Site oficial",
+      "disclaimer": "Estes horarios sao apenas indicativos. Confirma sempre o site oficial de {{ name }} antes da visita, porque eventos privados, encerramentos excecionais, meteorologia, operacao ou outras alteracoes podem nao ser conhecidos ou atualizados aqui.",
+      "summaryLabel": "Resumo dos horarios",
+      "coverage": "Periodo indicado",
+      "coverageUnknown": "Periodo desconhecido",
+      "timeZone": "Fuso horario",
+      "daysCount": "Dias indicados",
+      "daysCountValue": "{{ count }} dias",
+      "calendarLabel": "Datas e horarios de {{ name }}",
+      "open": "Aberto",
+      "closed": "Fechado",
+      "closedNoReason": "Fechado",
+      "loadingTitle": "A carregar datas e horarios",
+      "loadingMessage": "O calendario indicado esta a carregar.",
+      "emptyTitle": "Sem datas ou horarios indicados",
+      "emptyMessage": "Ainda nao existe calendario de abertura para este parque.",
+      "errorTitle": "Datas e horarios indisponiveis",
+      "errorMessage": "Nao foi possivel carregar os horarios de abertura."
+    }
+  }
+}

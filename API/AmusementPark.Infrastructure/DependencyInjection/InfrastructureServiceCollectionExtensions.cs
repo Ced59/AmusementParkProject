@@ -13,6 +13,7 @@ using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.ParkWeather.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -178,6 +179,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IParkGraphUpsertHistoryRepository, ParkGraphUpsertHistoryRepository>();
         services.AddScoped<IParkWeatherRepository, ParkWeatherRepository>();
         services.AddScoped<IParkWeatherRunRepository, ParkWeatherRunRepository>();
+        services.AddScoped<IParkOpeningHoursRepository, ParkOpeningHoursRepository>();
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
         services.AddScoped<IParkWeatherProviderStrategyResolver, ParkWeatherProviderStrategyResolver>();
         services.AddSingleton<IParkWeatherRefreshQueue, ParkWeatherRefreshQueue>();
@@ -206,6 +208,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<BrandedEmailTemplateRenderer>();
         services.AddScoped<IContactNotificationService, ContactNotificationEmailService>();
         services.AddScoped<IParkWeatherNotificationService, ParkWeatherNotificationEmailService>();
+        services.AddScoped<IParkOpeningHoursNotificationService, ParkOpeningHoursNotificationEmailService>();
+        services.AddHostedService<ParkOpeningHoursCoverageNotificationBackgroundService>();
 
         if (string.Equals(emailSettings.Mode, "Smtp", StringComparison.OrdinalIgnoreCase))
         {

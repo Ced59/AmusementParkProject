@@ -110,6 +110,8 @@ public sealed class MongoDbSettings
 
     public string ParkWeatherRunItemsCollectionName { get; set; } = "parkWeatherRunItems";
 
+    public string ParkOpeningHoursCollectionName { get; set; } = "parkOpeningHours";
+
     /// <summary>
     /// Lie la configuration et applique des valeurs par défaut.
     /// </summary>

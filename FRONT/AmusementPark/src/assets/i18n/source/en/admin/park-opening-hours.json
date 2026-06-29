@@ -1,0 +1,53 @@
+{
+  "admin": {
+    "parks": {
+      "tabs": {
+        "openingHours": "Opening hours"
+      },
+      "sort": {
+        "openingHoursAttentionFirst": "Hours attention first",
+        "openingHoursReadyFirst": "Hours ready first"
+      },
+      "openingHours": {
+        "title": "Opening hours",
+        "filterLabel": "Hours",
+        "notConfigured": "Not configured",
+        "coverageOne": "Complete hours for {{ count }} day, until {{ date }}",
+        "coverageMany": "Complete hours for {{ count }} days, until {{ date }}",
+        "statuses": {
+          "NotConfigured": "Not configured",
+          "Expired": "Expired",
+          "NeedsUpdate": "Needs update",
+          "UpToDate": "Up to date"
+        },
+        "filters": {
+          "all": "All hours",
+          "configured": "Configured",
+          "notConfigured": "Not configured",
+          "upToDate": "Up to date",
+          "needsUpdate": "Needs update",
+          "expired": "Expired"
+        }
+      },
+      "openingHoursEditor": {
+        "title": "Opening hours JSON",
+        "subtitle": "Paste or edit the schedule JSON, then upsert it for this park.",
+        "reload": "Reload",
+        "format": "Format",
+        "upsert": "Upsert JSON",
+        "jsonLabel": "Opening hours JSON",
+        "invalidJson": "The JSON is invalid.",
+        "savedSummary": "Opening hours saved",
+        "savedDetail": "The schedule was upserted.",
+        "saveError": "The schedule could not be saved.",
+        "loadError": "The schedule could not be loaded.",
+        "hint": "Closed days must be explicit when they should count as complete coverage."
+      }
+    },
+    "parkGraphUpserts": {
+      "editor": {
+        "description": "Absent properties are preserved. The openingHours section is previewed and applied with the same global JSON as park, zones, pages and images."
+      }
+    }
+  }
+}

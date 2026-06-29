@@ -67,6 +67,13 @@ interface ParkWeatherSeoCopy {
   description: (parkName: string, totalDays: number) => string;
 }
 
+interface ParkOpeningHoursSeoCopy {
+  parkFallback: string;
+  breadcrumbLabel: string;
+  title: (parkName: string) => string;
+  description: (parkName: string, totalDays: number) => string;
+}
+
 interface ParkZonesSeoCopy {
   parkFallback: string;
   breadcrumbLabel: string;
@@ -435,6 +442,57 @@ const PARK_WEATHER_SEO_COPY: Record<string, ParkWeatherSeoCopy> = {
     breadcrumbLabel: 'Meteorologia 7 dias',
     title: (parkName: string): string => `Meteorologia a 7 dias de ${parkName}`,
     description: (parkName: string, totalDays: number): string => `Verifica a meteorologia de ${parkName} antes da tua visita: previsao a ${totalDays || 7} dias, temperaturas, chuva e vento.`
+  }
+};
+
+const PARK_OPENING_HOURS_SEO_COPY: Record<string, ParkOpeningHoursSeoCopy> = {
+  en: {
+    parkFallback: 'this park',
+    breadcrumbLabel: 'Opening hours',
+    title: (parkName: string): string => `Dates and opening hours for ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Browse the listed opening dates and hours for ${parkName}${totalDays > 0 ? ` across ${totalDays} days` : ''}, with daily schedules and closure notes.`
+  },
+  fr: {
+    parkFallback: 'ce parc',
+    breadcrumbLabel: 'Dates et horaires',
+    title: (parkName: string): string => `Dates et horaires de ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Parcours les dates et horaires renseignes pour ${parkName}${totalDays > 0 ? ` sur ${totalDays} jours` : ''}, avec les ouvertures, fermetures et infos utiles.`
+  },
+  es: {
+    parkFallback: 'este parque',
+    breadcrumbLabel: 'Fechas y horarios',
+    title: (parkName: string): string => `Fechas y horarios de ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Consulta las fechas y horarios publicados para ${parkName}${totalDays > 0 ? ` durante ${totalDays} dias` : ''}, con aperturas, cierres y notas practicas.`
+  },
+  de: {
+    parkFallback: 'diesem Park',
+    breadcrumbLabel: 'Termine und Zeiten',
+    title: (parkName: string): string => `Termine und Offnungszeiten von ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Sieh dir die erfassten Termine und Offnungszeiten von ${parkName}${totalDays > 0 ? ` fur ${totalDays} Tage` : ''} mit Tagesplanen und Schliesshinweisen an.`
+  },
+  it: {
+    parkFallback: 'questo parco',
+    breadcrumbLabel: 'Date e orari',
+    title: (parkName: string): string => `Date e orari di apertura di ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Consulta date e orari indicati per ${parkName}${totalDays > 0 ? ` su ${totalDays} giorni` : ''}, con aperture, chiusure e note operative.`
+  },
+  nl: {
+    parkFallback: 'dit park',
+    breadcrumbLabel: 'Datums en uren',
+    title: (parkName: string): string => `Datums en openingstijden van ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Bekijk de ingevulde datums en openingstijden van ${parkName}${totalDays > 0 ? ` voor ${totalDays} dagen` : ''}, met daguren en sluitingsnotities.`
+  },
+  pl: {
+    parkFallback: 'tym parku',
+    breadcrumbLabel: 'Daty i godziny',
+    title: (parkName: string): string => `Daty i godziny otwarcia ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Przegladaj zapisane daty i godziny otwarcia ${parkName}${totalDays > 0 ? ` dla ${totalDays} dni` : ''}, wraz z dniami zamkniecia i notatkami.`
+  },
+  pt: {
+    parkFallback: 'este parque',
+    breadcrumbLabel: 'Datas e horarios',
+    title: (parkName: string): string => `Datas e horarios de abertura de ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Consulta as datas e horarios registados para ${parkName}${totalDays > 0 ? ` em ${totalDays} dias` : ''}, com aberturas, fechos e notas uteis.`
   }
 };
 
@@ -1066,7 +1124,7 @@ export class SeoService {
       return;
     }
 
-    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url) || this.isFilteredPublicParkVideosRoute(url) || this.isFilteredPublicParkItemVideosRoute(url) || this.isFilteredPublicParkWeatherRoute(url)) {
+    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url) || this.isFilteredPublicParkVideosRoute(url) || this.isFilteredPublicParkItemVideosRoute(url) || this.isFilteredPublicParkWeatherRoute(url) || this.isFilteredPublicParkOpeningHoursRoute(url)) {
       this.apply({
         title: SITE_NAME,
         description: DEFAULT_DESCRIPTION,
@@ -1394,6 +1452,33 @@ export class SeoService {
   ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkWeatherSeoCopy = PARK_WEATHER_SEO_COPY[normalizedLanguage] ?? PARK_WEATHER_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
+    const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
+    const title: string = `${copy.title(normalizedParkName)} - ${SITE_NAME}`;
+    const description: string = copy.description(normalizedParkName, totalDays);
+
+    this.apply({
+      title,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: this.hasQueryString(url) || totalDays <= 0 ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(seoUrl),
+      imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
+      imageAlt: normalizedParkName,
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, copy.breadcrumbLabel)]
+    });
+  }
+
+  applyParkOpeningHoursSeo(
+    parkName: string,
+    language: string,
+    url: string,
+    totalDays: number = 0,
+    parkImageId: string | null = null,
+    canonicalPath: string | null = null
+  ): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: ParkOpeningHoursSeoCopy = PARK_OPENING_HOURS_SEO_COPY[normalizedLanguage] ?? PARK_OPENING_HOURS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
     const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
     const title: string = `${copy.title(normalizedParkName)} - ${SITE_NAME}`;
@@ -2408,6 +2493,11 @@ export class SeoService {
 
   private isFilteredPublicParkWeatherRoute(url: string): boolean {
     return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/weather\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
+  }
+
+  private isFilteredPublicParkOpeningHoursRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/opening-hours\/?$/i.test(this.normalizePath(url))
       && this.hasQueryString(url);
   }
 

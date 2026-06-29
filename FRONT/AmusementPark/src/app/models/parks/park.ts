@@ -2,6 +2,7 @@ import { LocalizedItem } from '../shared/localized-item';
 import { ParkType } from './park-type';
 import { ParkStatus } from './park-status';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
+import { ParkOpeningHoursAdminSummary } from './park-opening-hours';
 
 export interface Park {
   id?: string;
@@ -25,5 +26,6 @@ export interface Park {
   currentLogoImageId?: string | null;
   parkItemsTotalCount?: number | null;
   parkItemsVisibleCount?: number | null;
+  openingHours?: ParkOpeningHoursAdminSummary | null;
   descriptions?: LocalizedItem<string>[];
 }

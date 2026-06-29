@@ -1,0 +1,42 @@
+{
+  "parkOpeningHours": {
+    "card": {
+      "title": "Data en tijden",
+      "openNow": "Nu open",
+      "closedNow": "Nu gesloten",
+      "openBadge": "Open",
+      "closedBadge": "Gesloten",
+      "today": "Vandaag",
+      "closedToday": "Vandaag gesloten",
+      "notDefinedToday": "Vandaag niet vermeld",
+      "parkTimeZone": "Parktijd",
+      "visitorTimeZone": "Jouw tijdzone: {{ timeZone }}",
+      "viewAll": "Bekijk alle data en tijden",
+      "loading": "Tijden laden"
+    },
+    "page": {
+      "kicker": "Data en tijden",
+      "title": "Data en openingstijden van {{ name }}",
+      "lead": "Bekijk de momenteel vermelde data en dagtijden voor {{ name }}.",
+      "backToPark": "Terug naar {{ name }}",
+      "officialSite": "Officiele site",
+      "disclaimer": "Deze tijden zijn alleen indicatief. Controleer altijd de officiele website van {{ name }} voor je bezoek, omdat prive-evenementen, uitzonderlijke sluitingen, weer, operatie of andere wijzigingen hier mogelijk niet bekend of bijgewerkt zijn.",
+      "summaryLabel": "Samenvatting openingstijden",
+      "coverage": "Vermelde periode",
+      "coverageUnknown": "Onbekende periode",
+      "timeZone": "Tijdzone",
+      "daysCount": "Vermelde dagen",
+      "daysCountValue": "{{ count }} dagen",
+      "calendarLabel": "Data en openingstijden van {{ name }}",
+      "open": "Open",
+      "closed": "Gesloten",
+      "closedNoReason": "Gesloten",
+      "loadingTitle": "Data en tijden laden",
+      "loadingMessage": "Het vermelde schema wordt geladen.",
+      "emptyTitle": "Geen data of tijden vermeld",
+      "emptyMessage": "Er is nog geen openingsschema beschikbaar voor dit park.",
+      "errorTitle": "Data en tijden niet beschikbaar",
+      "errorMessage": "Het openingsschema kon niet worden geladen."
+    }
+  }
+}

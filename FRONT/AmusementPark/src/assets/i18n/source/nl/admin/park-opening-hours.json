@@ -1,0 +1,53 @@
+{
+  "admin": {
+    "parks": {
+      "tabs": {
+        "openingHours": "Openingstijden"
+      },
+      "sort": {
+        "openingHoursAttentionFirst": "Tijden eerst nakijken",
+        "openingHoursReadyFirst": "Tijden compleet eerst"
+      },
+      "openingHours": {
+        "title": "Openingstijden",
+        "filterLabel": "Tijden",
+        "notConfigured": "Niet ingesteld",
+        "coverageOne": "Volledige tijden voor {{ count }} dag, tot {{ date }}",
+        "coverageMany": "Volledige tijden voor {{ count }} dagen, tot {{ date }}",
+        "statuses": {
+          "NotConfigured": "Niet ingesteld",
+          "Expired": "Verlopen",
+          "NeedsUpdate": "Update nodig",
+          "UpToDate": "Actueel"
+        },
+        "filters": {
+          "all": "Alle tijden",
+          "configured": "Ingesteld",
+          "notConfigured": "Niet ingesteld",
+          "upToDate": "Actueel",
+          "needsUpdate": "Update nodig",
+          "expired": "Verlopen"
+        }
+      },
+      "openingHoursEditor": {
+        "title": "Openingstijden JSON",
+        "subtitle": "Plak of bewerk het schema-JSON en upsert het voor dit park.",
+        "reload": "Herladen",
+        "format": "Formatteren",
+        "upsert": "JSON upsert",
+        "jsonLabel": "Openingstijden JSON",
+        "invalidJson": "De JSON is ongeldig.",
+        "savedSummary": "Openingstijden opgeslagen",
+        "savedDetail": "Het schema is geupsert.",
+        "saveError": "Het schema kon niet worden opgeslagen.",
+        "loadError": "Het schema kon niet worden geladen.",
+        "hint": "Gesloten dagen moeten expliciet zijn wanneer ze als volledige dekking meetellen."
+      }
+    },
+    "parkGraphUpserts": {
+      "editor": {
+        "description": "Ontbrekende eigenschappen blijven behouden. De openingHours-sectie wordt met dezelfde globale JSON als park, zones, pagina's en afbeeldingen vooraf bekeken en toegepast."
+      }
+    }
+  }
+}

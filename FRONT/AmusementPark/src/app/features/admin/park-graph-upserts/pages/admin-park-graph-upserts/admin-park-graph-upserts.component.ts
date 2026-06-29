@@ -681,6 +681,8 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
 
     if (this.hasNonEmptyObject(document, 'identity')
       || this.hasNonEmptyObject(document, 'park')
+      || this.hasNonEmptyObject(document, 'openingHours')
+      || this.hasNonEmptyObject(document, 'parkOpeningHours')
       || this.hasNonEmptyArray(document, 'zones')
       || this.hasNonEmptyArray(document, 'items')
       || this.hasNonEmptyArray(document, 'suppr')
@@ -1139,6 +1141,15 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
         manufacturers: []
       },
       park: {},
+      openingHours: {
+        parkId: '',
+        timeZoneId: 'Europe/Paris',
+        sourceUrl: '',
+        notes: '',
+        lastVerifiedAtUtc: '',
+        regularRules: [],
+        dateOverrides: []
+      },
       zones: [],
       items: [],
       images: [],

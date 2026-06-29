@@ -429,7 +429,7 @@
       },
       "editor": {
         "title": "Documento JSON",
-        "description": "Las propiedades ausentes se conservan. Las listas de zonas/items hacen upsert solo de sus entradas presentes."
+        "description": "Las propiedades ausentes se conservan. La seccion openingHours se previsualiza y aplica con el mismo JSON global que parque, zonas, fichas e imagenes."
       },
       "export": {
         "title": "Exportar JSON del parque",
@@ -690,70 +690,62 @@
         }
       }
     },
-    "parkWeather": {
-      "navTitle": "Tiempo",
-      "title": "Actualizacion meteorologica",
-      "subtitle": "Seguimiento de ejecuciones programadas, cobertura de parques visibles y fallos.",
-      "loading": "Cargando estado meteorologico...",
-      "loadError": "No se pudo cargar el estado meteorologico.",
-      "startError": "No se pudo iniciar la actualizacion meteorologica.",
-      "retryError": "No se pudo reintentar la actualizacion meteorologica.",
-      "empty": "No hay informacion meteorologica disponible.",
-      "actions": {
-        "startManual": "Actualizar ahora",
-        "retryFailed": "Reintentar fallos",
-        "retryPark": "Reintentar"
+    "parks": {
+      "tabs": {
+        "openingHours": "Horarios",
+        "general": "General",
+        "location": "Ubicación",
+        "descriptions": "Descripciones",
+        "logos": "Logotipos",
+        "photos": "Fotos",
+        "videos": "Videos"
       },
-      "stats": {
-        "status": "Estado",
-        "progress": "Progreso",
-        "success": "Correctos",
-        "warnings": "{{count}} aviso(s)",
-        "failed": "Fallos"
+      "sort": {
+        "openingHoursAttentionFirst": "Horarios a revisar",
+        "openingHoursReadyFirst": "Horarios completos",
+        "label": "Orden",
+        "default": "Defecto",
+        "nameAsc": "Nombre A-Z",
+        "totalDesc": "Ítems máx.",
+        "totalAsc": "Ítems mín.",
+        "visibleDesc": "Vis. máx.",
+        "visibleAsc": "Vis. mín."
       },
-      "statuses": {
-        "queued": "En cola",
-        "running": "En curso",
-        "completed": "Completada",
-        "completedWithFailures": "Completada con fallos",
-        "failed": "Fallida",
-        "skipped": "Omitida"
-      },
-      "messages": {
-        "queued": "Actualizacion meteorologica en cola.",
-        "running": "Actualizacion meteorologica en curso.",
-        "completed": "Actualizacion meteorologica completada.",
-        "completedWithFailures": "Actualizacion meteorologica completada con fallos.",
-        "canceled": "Actualizacion meteorologica cancelada.",
-        "skippedByManual": "Ejecucion automatica omitida porque una actualizacion manual ya cubre este ciclo."
-      },
-      "values": {
-        "empty": "-"
-      },
-      "latestRun": {
-        "title": "Ultima ejecucion",
-        "meta": "{{trigger}} - {{scope}}",
-        "requestedAt": "Solicitada",
-        "startedAt": "Iniciada",
-        "cancelAuto": "Ejecucion auto cancelada"
-      },
-      "failures": {
-        "title": "Parques con fallo",
-        "subtitle": "Reintenta todos los fallos o un parque concreto.",
-        "empty": "No hay parques con fallo en esta ejecucion.",
-        "columns": {
-          "park": "Parque",
-          "error": "Error",
-          "attempts": "Intentos",
-          "actions": "Acciones"
+      "openingHours": {
+        "title": "Horarios",
+        "filterLabel": "Horarios",
+        "notConfigured": "No configurado",
+        "coverageOne": "Horarios completos para {{ count }} dia, hasta {{ date }}",
+        "coverageMany": "Horarios completos para {{ count }} dias, hasta {{ date }}",
+        "statuses": {
+          "NotConfigured": "No configurado",
+          "Expired": "Caducado",
+          "NeedsUpdate": "Necesita actualizacion",
+          "UpToDate": "Actualizado"
+        },
+        "filters": {
+          "all": "Todos los horarios",
+          "configured": "Configurados",
+          "notConfigured": "No configurados",
+          "upToDate": "Actualizados",
+          "needsUpdate": "Necesitan actualizacion",
+          "expired": "Caducados"
         }
       },
-      "noRun": {
-        "title": "Sin ejecucion",
-        "message": "Inicia una actualizacion manual o espera la proxima ejecucion programada."
-      }
-    },
-    "parks": {
+      "openingHoursEditor": {
+        "title": "JSON de horarios",
+        "subtitle": "Pega o edita el JSON de horarios y haz upsert para este parque.",
+        "reload": "Recargar",
+        "format": "Formatear",
+        "upsert": "Upsert JSON",
+        "jsonLabel": "JSON de horarios",
+        "invalidJson": "El JSON no es valido.",
+        "savedSummary": "Horarios guardados",
+        "savedDetail": "El calendario se actualizo.",
+        "saveError": "No se pudieron guardar los horarios.",
+        "loadError": "No se pudieron cargar los horarios.",
+        "hint": "Los dias cerrados deben ser explicitos si deben contar como cobertura completa."
+      },
       "total": "Número total de parques: {{count}}",
       "empty": "No se encontraron parques.",
       "name": "Parque",
@@ -1123,14 +1115,6 @@
       "visibilityHelp": "Controla si este parque es visible en la aplicación pública.",
       "locationSectionTitle": "Ubicación y dirección",
       "locationSectionHelp": "Define aquí el punto principal del parque y su dirección postal.",
-      "tabs": {
-        "general": "General",
-        "location": "Ubicación",
-        "descriptions": "Descripciones",
-        "logos": "Logotipos",
-        "photos": "Fotos",
-        "videos": "Videos"
-      },
       "editorStatus": {
         "saving": "Guardando...",
         "unsavedChanges": "Cambios sin guardar",
@@ -1219,15 +1203,69 @@
       "statuses": {
         "operating": "Abierto",
         "closedDefinitively": "Cerrado definitivamente"
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Tiempo",
+      "title": "Actualizacion meteorologica",
+      "subtitle": "Seguimiento de ejecuciones programadas, cobertura de parques visibles y fallos.",
+      "loading": "Cargando estado meteorologico...",
+      "loadError": "No se pudo cargar el estado meteorologico.",
+      "startError": "No se pudo iniciar la actualizacion meteorologica.",
+      "retryError": "No se pudo reintentar la actualizacion meteorologica.",
+      "empty": "No hay informacion meteorologica disponible.",
+      "actions": {
+        "startManual": "Actualizar ahora",
+        "retryFailed": "Reintentar fallos",
+        "retryPark": "Reintentar"
       },
-      "sort": {
-        "label": "Orden",
-        "default": "Defecto",
-        "nameAsc": "Nombre A-Z",
-        "totalDesc": "Ítems máx.",
-        "totalAsc": "Ítems mín.",
-        "visibleDesc": "Vis. máx.",
-        "visibleAsc": "Vis. mín."
+      "stats": {
+        "status": "Estado",
+        "progress": "Progreso",
+        "success": "Correctos",
+        "warnings": "{{count}} aviso(s)",
+        "failed": "Fallos"
+      },
+      "statuses": {
+        "queued": "En cola",
+        "running": "En curso",
+        "completed": "Completada",
+        "completedWithFailures": "Completada con fallos",
+        "failed": "Fallida",
+        "skipped": "Omitida"
+      },
+      "messages": {
+        "queued": "Actualizacion meteorologica en cola.",
+        "running": "Actualizacion meteorologica en curso.",
+        "completed": "Actualizacion meteorologica completada.",
+        "completedWithFailures": "Actualizacion meteorologica completada con fallos.",
+        "canceled": "Actualizacion meteorologica cancelada.",
+        "skippedByManual": "Ejecucion automatica omitida porque una actualizacion manual ya cubre este ciclo."
+      },
+      "values": {
+        "empty": "-"
+      },
+      "latestRun": {
+        "title": "Ultima ejecucion",
+        "meta": "{{trigger}} - {{scope}}",
+        "requestedAt": "Solicitada",
+        "startedAt": "Iniciada",
+        "cancelAuto": "Ejecucion auto cancelada"
+      },
+      "failures": {
+        "title": "Parques con fallo",
+        "subtitle": "Reintenta todos los fallos o un parque concreto.",
+        "empty": "No hay parques con fallo en esta ejecucion.",
+        "columns": {
+          "park": "Parque",
+          "error": "Error",
+          "attempts": "Intentos",
+          "actions": "Acciones"
+        }
+      },
+      "noRun": {
+        "title": "Sin ejecucion",
+        "message": "Inicia una actualizacion manual o espera la proxima ejecucion programada."
       }
     },
     "publicViewToolbar": {
@@ -2806,6 +2844,46 @@
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
+    }
+  },
+  "parkOpeningHours": {
+    "card": {
+      "title": "Fechas y horarios",
+      "openNow": "Abierto ahora",
+      "closedNow": "Cerrado ahora",
+      "openBadge": "Abierto",
+      "closedBadge": "Cerrado",
+      "today": "Hoy",
+      "closedToday": "Cerrado hoy",
+      "notDefinedToday": "No indicado hoy",
+      "parkTimeZone": "Hora del parque",
+      "visitorTimeZone": "Tu zona horaria: {{ timeZone }}",
+      "viewAll": "Ver todas las fechas y horarios",
+      "loading": "Cargando horarios"
+    },
+    "page": {
+      "kicker": "Fechas y horarios",
+      "title": "Fechas y horarios de {{ name }}",
+      "lead": "Consulta las fechas y horarios diarios indicados actualmente para {{ name }}.",
+      "backToPark": "Volver a {{ name }}",
+      "officialSite": "Sitio oficial",
+      "disclaimer": "Estos horarios se ofrecen solo como orientacion. Comprueba siempre el sitio oficial de {{ name }} antes de tu visita, porque eventos privados, cierres excepcionales, meteorologia, operaciones u otros cambios pueden no conocerse o actualizarse aqui.",
+      "summaryLabel": "Resumen de horarios",
+      "coverage": "Periodo indicado",
+      "coverageUnknown": "Periodo desconocido",
+      "timeZone": "Zona horaria",
+      "daysCount": "Dias indicados",
+      "daysCountValue": "{{ count }} dias",
+      "calendarLabel": "Fechas y horarios de {{ name }}",
+      "open": "Abierto",
+      "closed": "Cerrado",
+      "closedNoReason": "Cerrado",
+      "loadingTitle": "Cargando fechas y horarios",
+      "loadingMessage": "El calendario indicado se esta cargando.",
+      "emptyTitle": "Sin fechas ni horarios",
+      "emptyMessage": "Todavia no hay calendario de apertura para este parque.",
+      "errorTitle": "Fechas y horarios no disponibles",
+      "errorMessage": "No se pudieron cargar los horarios de apertura."
     }
   },
   "parkVisitor": {

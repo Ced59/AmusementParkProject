@@ -1,0 +1,53 @@
+{
+  "admin": {
+    "parks": {
+      "tabs": {
+        "openingHours": "Oeffnungszeiten"
+      },
+      "sort": {
+        "openingHoursAttentionFirst": "Zeiten zuerst pruefen",
+        "openingHoursReadyFirst": "Zeiten komplett zuerst"
+      },
+      "openingHours": {
+        "title": "Oeffnungszeiten",
+        "filterLabel": "Zeiten",
+        "notConfigured": "Nicht konfiguriert",
+        "coverageOne": "Vollstaendige Zeiten fuer {{ count }} Tag, bis {{ date }}",
+        "coverageMany": "Vollstaendige Zeiten fuer {{ count }} Tage, bis {{ date }}",
+        "statuses": {
+          "NotConfigured": "Nicht konfiguriert",
+          "Expired": "Abgelaufen",
+          "NeedsUpdate": "Aktualisierung noetig",
+          "UpToDate": "Aktuell"
+        },
+        "filters": {
+          "all": "Alle Zeiten",
+          "configured": "Konfiguriert",
+          "notConfigured": "Nicht konfiguriert",
+          "upToDate": "Aktuell",
+          "needsUpdate": "Aktualisierung noetig",
+          "expired": "Abgelaufen"
+        }
+      },
+      "openingHoursEditor": {
+        "title": "Oeffnungszeiten JSON",
+        "subtitle": "Fuege das Zeitplan-JSON ein oder bearbeite es und starte dann den Upsert fuer diesen Park.",
+        "reload": "Neu laden",
+        "format": "Formatieren",
+        "upsert": "JSON upserten",
+        "jsonLabel": "Oeffnungszeiten JSON",
+        "invalidJson": "Das JSON ist ungueltig.",
+        "savedSummary": "Oeffnungszeiten gespeichert",
+        "savedDetail": "Der Zeitplan wurde upserted.",
+        "saveError": "Der Zeitplan konnte nicht gespeichert werden.",
+        "loadError": "Der Zeitplan konnte nicht geladen werden.",
+        "hint": "Geschlossene Tage muessen explizit sein, wenn sie als vollstaendige Abdeckung zaehlen sollen."
+      }
+    },
+    "parkGraphUpserts": {
+      "editor": {
+        "description": "Fehlende Eigenschaften bleiben erhalten. Die openingHours-Sektion wird mit demselben globalen JSON wie Park, Zonen, Seiten und Bilder geprueft und angewendet."
+      }
+    }
+  }
+}

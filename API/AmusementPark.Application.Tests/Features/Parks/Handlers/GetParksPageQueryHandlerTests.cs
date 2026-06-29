@@ -3,6 +3,9 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.Parks.Handlers;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Queries;
@@ -21,6 +24,7 @@ public sealed class GetParksPageQueryHandlerTests
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
         List<Park> parks = new List<Park>
         {
             CreatePark("park-a", "Alpha"),
@@ -57,7 +61,7 @@ public sealed class GetParksPageQueryHandlerTests
                 ClosedEntityFilter.All,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
-                false))
+                true))
             .ReturnsAsync(new PagedResult<Park>(parks, 1, parks.Count, parks.Count));
 
         parkItemRepository
@@ -70,10 +74,17 @@ public sealed class GetParksPageQueryHandlerTests
                 ["park-b"] = new ParkItemVisibilityCounts { TotalCount = 4, VisibleCount = 4 },
                 ["park-c"] = new ParkItemVisibilityCounts { TotalCount = 6, VisibleCount = 1 },
             });
+        openingHoursRepository
+            .Setup(repository => repository.GetSummariesByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-a", "park-b", "park-c" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>(StringComparer.Ordinal));
 
         GetParksPageQueryHandler handler = new GetParksPageQueryHandler(
             parkRepository.Object,
             parkItemRepository.Object,
+            openingHoursRepository.Object,
+            new ParkOpeningHoursAdminStatusResolver(),
             new PagedQueryValidator());
 
         ApplicationResult<PagedResult<ParkListResult>> result = await handler.HandleAsync(
@@ -92,6 +103,7 @@ public sealed class GetParksPageQueryHandlerTests
 
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
+        openingHoursRepository.VerifyAll();
     }
 
     private static Park CreatePark(string id, string name)

@@ -1,0 +1,60 @@
+@let currentStatus = status();
+
+@if (hasCalendar) {
+  <section class="park-opening-hours-card">
+    <header class="park-opening-hours-card__header">
+      <span class="park-opening-hours-card__icon" aria-hidden="true">
+        <i class="pi pi-clock"></i>
+      </span>
+      <div>
+        <h2>{{ 'parkOpeningHours.card.title' | translate }}</h2>
+        <p>{{ (currentStatus.isOpen ? 'parkOpeningHours.card.openNow' : 'parkOpeningHours.card.closedNow') | translate }}</p>
+      </div>
+    </header>
+
+    <div class="park-opening-hours-card__status" [class.park-opening-hours-card__status--open]="currentStatus.isOpen">
+      <span>{{ (currentStatus.isOpen ? 'parkOpeningHours.card.openBadge' : 'parkOpeningHours.card.closedBadge') | translate }}</span>
+    </div>
+
+    <dl class="park-opening-hours-card__rows">
+      <div>
+        <dt>{{ 'parkOpeningHours.card.today' | translate }}</dt>
+        <dd>
+          @if (currentStatus.today?.isClosed) {
+            {{ 'parkOpeningHours.card.closedToday' | translate }}
+          } @else if (formatRanges(currentStatus.today)) {
+            {{ formatRanges(currentStatus.today) }}
+          } @else {
+            {{ 'parkOpeningHours.card.notDefinedToday' | translate }}
+          }
+        </dd>
+      </div>
+
+      <div>
+        <dt>{{ 'parkOpeningHours.card.parkTimeZone' | translate }}</dt>
+        <dd>{{ calendar?.timeZoneId }}</dd>
+      </div>
+    </dl>
+
+    <p class="park-opening-hours-card__visitor">
+      {{ 'parkOpeningHours.card.visitorTimeZone' | translate:{ timeZone: visitorTimeZone() } }}
+    </p>
+
+    @if (openingHoursLink) {
+      <a class="park-opening-hours-card__link" [routerLink]="openingHoursLink">
+        <span>{{ 'parkOpeningHours.card.viewAll' | translate }}</span>
+        <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+      </a>
+    }
+  </section>
+} @else if (isLoading) {
+  <section class="park-opening-hours-card park-opening-hours-card--loading" aria-busy="true">
+    <span class="park-opening-hours-card__icon" aria-hidden="true">
+      <i class="pi pi-clock"></i>
+    </span>
+    <div>
+      <h2>{{ 'parkOpeningHours.card.title' | translate }}</h2>
+      <p>{{ 'parkOpeningHours.card.loading' | translate }}</p>
+    </div>
+  </section>
+}

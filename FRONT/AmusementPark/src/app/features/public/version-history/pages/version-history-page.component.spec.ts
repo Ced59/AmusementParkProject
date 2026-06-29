@@ -55,6 +55,8 @@ describe('VersionHistoryPageComponent', () => {
 
   it('marks version milestones and fixes with separate indentation levels', async () => {
     await settleVersionHistory(fixture);
+    await expandFirstMajorWithChildren(fixture);
+    await expandFirstMinorWithChildren(fixture);
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
 
@@ -67,6 +69,9 @@ describe('VersionHistoryPageComponent', () => {
 
   it('collapses patches for an expanded milestone', async () => {
     await settleVersionHistory(fixture);
+    await expandFirstMajorWithChildren(fixture);
+    await expandFirstMinorWithChildren(fixture);
+
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     const patchVersionsBeforeCollapse: string[] = getPatchVersions(host);
 
@@ -85,6 +90,41 @@ describe('VersionHistoryPageComponent', () => {
 });
 
 async function settleVersionHistory(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
+  await waitForVersionHistorySelector(fixture, '.version-entry--major');
+}
+
+async function expandFirstMajorWithChildren(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
+  const host: HTMLElement = fixture.nativeElement as HTMLElement;
+  const majorToggle: HTMLButtonElement | null = host.querySelector<HTMLButtonElement>(
+    '.version-entry--major .version-entry__toggle'
+  );
+
+  expect(majorToggle).not.toBeNull();
+
+  majorToggle?.click();
+  fixture.detectChanges();
+
+  await waitForVersionHistorySelector(fixture, '.version-entry--minor');
+}
+
+async function expandFirstMinorWithChildren(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
+  const host: HTMLElement = fixture.nativeElement as HTMLElement;
+  const minorToggle: HTMLButtonElement | null = host.querySelector<HTMLButtonElement>(
+    '.version-entry--minor .version-entry__toggle'
+  );
+
+  expect(minorToggle).not.toBeNull();
+
+  minorToggle?.click();
+  fixture.detectChanges();
+
+  await waitForVersionHistorySelector(fixture, '.version-entry--patch');
+}
+
+async function waitForVersionHistorySelector(
+  fixture: ComponentFixture<VersionHistoryPageComponent>,
+  selector: string
+): Promise<void> {
   for (let attempt = 0; attempt < 20; attempt += 1) {
     await fixture.whenStable();
     await new Promise<void>((resolve: () => void): void => {
@@ -93,7 +133,7 @@ async function settleVersionHistory(fixture: ComponentFixture<VersionHistoryPage
     fixture.detectChanges();
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    if (host.querySelector('.version-entry--patch')) {
+    if (host.querySelector(selector)) {
       return;
     }
   }

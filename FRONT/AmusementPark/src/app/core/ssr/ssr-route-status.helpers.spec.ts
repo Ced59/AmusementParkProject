@@ -28,6 +28,7 @@ describe('SSR route status helpers', () => {
       '/fr/versions',
       '/fr/privacy',
       '/fr/park/123/parc-test',
+      '/fr/park/123/parc-test/opening-hours',
       '/fr/park/123/parc-test/images',
       '/fr/park/123/parc-test/videos/456/video-test',
       '/fr/park/123/parc-test/video/s/456/video-test',
@@ -56,9 +57,11 @@ describe('SSR route status helpers', () => {
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/map')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/items?zone=abc')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/weather?unit=celsius')).toBeTrue();
+    expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/opening-hours?from=2026-07-01')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/profile')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/admin/parks')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/parks')).toBeFalse();
+    expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/opening-hours')).toBeFalse();
     expect(shouldApplyNoindexFollowHeader('/fr/technical/chain-lift')).toBeFalse();
   });
 });

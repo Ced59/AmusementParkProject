@@ -10,6 +10,7 @@ import {
   buildPublicParkImagesRouteCommands,
   buildPublicParkItemsRouteCommands,
   buildPublicParkMapRouteCommands,
+  buildPublicParkOpeningHoursRouteCommands,
   buildPublicParkWeatherRouteCommands,
   buildPublicParkVideosRouteCommands,
   buildPublicParkZonesRouteCommands
@@ -145,6 +146,9 @@ export function mapParkToDetailViewModel(
       : null,
     weatherLink: hasIdentity
       ? buildPublicParkWeatherRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
+      : null,
+    openingHoursLink: hasIdentity
+      ? buildPublicParkOpeningHoursRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     primaryPhoto,
     identityRows,

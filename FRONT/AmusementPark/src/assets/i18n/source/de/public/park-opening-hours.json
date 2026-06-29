@@ -1,0 +1,42 @@
+{
+  "parkOpeningHours": {
+    "card": {
+      "title": "Daten und Zeiten",
+      "openNow": "Jetzt geoeffnet",
+      "closedNow": "Jetzt geschlossen",
+      "openBadge": "Geoeffnet",
+      "closedBadge": "Geschlossen",
+      "today": "Heute",
+      "closedToday": "Heute geschlossen",
+      "notDefinedToday": "Heute nicht angegeben",
+      "parkTimeZone": "Parkzeit",
+      "visitorTimeZone": "Deine Zeitzone: {{ timeZone }}",
+      "viewAll": "Alle Daten und Zeiten ansehen",
+      "loading": "Zeiten werden geladen"
+    },
+    "page": {
+      "kicker": "Daten und Zeiten",
+      "title": "Daten und Oeffnungszeiten fuer {{ name }}",
+      "lead": "Sieh dir die aktuell gepflegten Daten und Tageszeiten fuer {{ name }} an.",
+      "backToPark": "Zurueck zu {{ name }}",
+      "officialSite": "Offizielle Website",
+      "disclaimer": "Diese Zeiten dienen nur zur Orientierung. Pruefe vor deinem Besuch immer die offizielle Website von {{ name }}, da private Events, Sonderschliessungen, Wetter, Betrieb oder andere Aenderungen hier eventuell nicht bekannt oder aktualisiert sind.",
+      "summaryLabel": "Zusammenfassung der Oeffnungszeiten",
+      "coverage": "Erfasster Zeitraum",
+      "coverageUnknown": "Unbekannter Zeitraum",
+      "timeZone": "Zeitzone",
+      "daysCount": "Erfasste Tage",
+      "daysCountValue": "{{ count }} Tage",
+      "calendarLabel": "Daten und Oeffnungszeiten fuer {{ name }}",
+      "open": "Geoeffnet",
+      "closed": "Geschlossen",
+      "closedNoReason": "Geschlossen",
+      "loadingTitle": "Daten und Zeiten werden geladen",
+      "loadingMessage": "Der erfasste Plan wird geladen.",
+      "emptyTitle": "Keine Daten oder Zeiten erfasst",
+      "emptyMessage": "Fuer diesen Park ist noch kein Oeffnungsplan verfuegbar.",
+      "errorTitle": "Daten und Zeiten nicht verfuegbar",
+      "errorMessage": "Der Oeffnungsplan konnte nicht geladen werden."
+    }
+  }
+}

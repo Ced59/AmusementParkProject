@@ -69,6 +69,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         SsrPageCacheInvalidationRequest request = controllerName switch
         {
             "Parks" => await this.ResolveParksAsync(context, executedContext, includeSeoDocuments, cancellationToken),
+            "ParkOpeningHours" => this.ResolveParkOpeningHours(context, includeSeoDocuments),
             "ParkItems" => await this.ResolveParkItemsAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "ParkZones" => await this.ResolveParkZonesAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "ParkOperators" => await this.ResolveParkOperatorAsync(context, executedContext, includeSeoDocuments, cancellationToken),
@@ -82,6 +83,19 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         };
 
         return request;
+    }
+
+    private SsrPageCacheInvalidationRequest ResolveParkOpeningHours(
+        ActionExecutingContext context,
+        bool includeSeoDocuments)
+    {
+        string? parkId = GetRouteValue(context, "parkId");
+        if (string.IsNullOrWhiteSpace(parkId))
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        return BuildParkImpactRequest(new[] { parkId.Trim() }, includeSeoDocuments, includeDiscoveryPages: false);
     }
 
     private async Task<SsrPageCacheInvalidationRequest> ResolveParksAsync(

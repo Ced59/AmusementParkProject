@@ -1,0 +1,53 @@
+{
+  "admin": {
+    "parks": {
+      "tabs": {
+        "openingHours": "Horarios"
+      },
+      "sort": {
+        "openingHoursAttentionFirst": "Horarios a rever",
+        "openingHoursReadyFirst": "Horarios completos"
+      },
+      "openingHours": {
+        "title": "Horarios",
+        "filterLabel": "Horarios",
+        "notConfigured": "Nao configurado",
+        "coverageOne": "Horarios completos para {{ count }} dia, ate {{ date }}",
+        "coverageMany": "Horarios completos para {{ count }} dias, ate {{ date }}",
+        "statuses": {
+          "NotConfigured": "Nao configurado",
+          "Expired": "Expirado",
+          "NeedsUpdate": "A atualizar",
+          "UpToDate": "Atualizado"
+        },
+        "filters": {
+          "all": "Todos os horarios",
+          "configured": "Configurados",
+          "notConfigured": "Nao configurados",
+          "upToDate": "Atualizados",
+          "needsUpdate": "A atualizar",
+          "expired": "Expirados"
+        }
+      },
+      "openingHoursEditor": {
+        "title": "JSON horarios",
+        "subtitle": "Cola ou edita o JSON de horarios e faz upsert para este parque.",
+        "reload": "Recarregar",
+        "format": "Formatar",
+        "upsert": "Upsert JSON",
+        "jsonLabel": "JSON horarios",
+        "invalidJson": "O JSON e invalido.",
+        "savedSummary": "Horarios guardados",
+        "savedDetail": "O calendario foi atualizado.",
+        "saveError": "Nao foi possivel guardar os horarios.",
+        "loadError": "Nao foi possivel carregar os horarios.",
+        "hint": "Os dias fechados devem ser explicitos quando devem contar como cobertura completa."
+      }
+    },
+    "parkGraphUpserts": {
+      "editor": {
+        "description": "As propriedades ausentes sao preservadas. A seccao openingHours e pre-visualizada e aplicada com o mesmo JSON global do parque, zonas, paginas e imagens."
+      }
+    }
+  }
+}

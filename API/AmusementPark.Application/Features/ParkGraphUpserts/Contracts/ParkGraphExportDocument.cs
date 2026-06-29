@@ -25,6 +25,8 @@ public sealed class ParkGraphExportDocument
 
     public List<ParkGraphExportImage> Images { get; init; } = new List<ParkGraphExportImage>();
 
+    public ParkGraphExportOpeningHours? OpeningHours { get; init; }
+
     public ParkGraphExportMetadata Metadata { get; init; } = new ParkGraphExportMetadata();
 }
 
@@ -273,6 +275,70 @@ public sealed class ParkGraphExportImage
     public int Height { get; init; }
 
     public long SizeInBytes { get; init; }
+}
+
+public sealed class ParkGraphExportOpeningHours
+{
+    public string ParkId { get; init; } = string.Empty;
+
+    public string TimeZoneId { get; init; } = string.Empty;
+
+    public string? SourceUrl { get; init; }
+
+    public string? Notes { get; init; }
+
+    public DateTime? LastVerifiedAtUtc { get; init; }
+
+    public List<ParkGraphExportOpeningHoursRule> RegularRules { get; init; } = new List<ParkGraphExportOpeningHoursRule>();
+
+    public List<ParkGraphExportOpeningHoursDateOverride> DateOverrides { get; init; } = new List<ParkGraphExportOpeningHoursDateOverride>();
+}
+
+public sealed class ParkGraphExportOpeningHoursRule
+{
+    public string? Id { get; init; }
+
+    public string StartDate { get; init; } = string.Empty;
+
+    public string EndDate { get; init; } = string.Empty;
+
+    public List<string> DaysOfWeek { get; init; } = new List<string>();
+
+    public bool IsClosed { get; init; }
+
+    public string? Label { get; init; }
+
+    public string? Reason { get; init; }
+
+    public int SortOrder { get; init; }
+
+    public List<ParkGraphExportOpeningHoursTimeRange> TimeRanges { get; init; } = new List<ParkGraphExportOpeningHoursTimeRange>();
+}
+
+public sealed class ParkGraphExportOpeningHoursDateOverride
+{
+    public string LocalDate { get; init; } = string.Empty;
+
+    public bool IsClosed { get; init; }
+
+    public string? Label { get; init; }
+
+    public string? Reason { get; init; }
+
+    public List<ParkGraphExportOpeningHoursTimeRange> TimeRanges { get; init; } = new List<ParkGraphExportOpeningHoursTimeRange>();
+}
+
+public sealed class ParkGraphExportOpeningHoursTimeRange
+{
+    public string OpensAt { get; init; } = string.Empty;
+
+    public string ClosesAt { get; init; } = string.Empty;
+
+    public bool ClosesNextDay { get; init; }
+
+    public string? LastAdmissionAt { get; init; }
+
+    public bool LastAdmissionNextDay { get; init; }
 }
 
 public sealed class ParkGraphExportFounder

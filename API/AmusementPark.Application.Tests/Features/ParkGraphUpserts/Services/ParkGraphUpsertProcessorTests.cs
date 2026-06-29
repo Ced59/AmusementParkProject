@@ -12,6 +12,8 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.Application.Features.ParkGraphUpserts.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
@@ -1768,5 +1770,316 @@ public sealed class ParkGraphUpsertProcessorTests
         imageRepository.VerifyAll();
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenOpeningHoursAreInGlobalJson_ShouldReportScheduleChangeWithoutSaving()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Schedule Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        openingHoursRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkOpeningHoursSchedule?)null);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance,
+            openingHoursRepository.Object,
+            new ParkOpeningHoursScheduleNormalizer(),
+            new ParkOpeningHoursCoverageSegmentBuilder(),
+            Mock.Of<ISeoSitemapRefreshScheduler>(MockBehavior.Strict));
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "openingHours": {
+            "parkId": "park-1",
+            "timeZoneId": "Europe/Paris",
+            "sourceUrl": "https://example.test/hours",
+            "regularRules": [
+              {
+                "id": "summer",
+                "startDate": "2026-07-01",
+                "endDate": "2026-07-31",
+                "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "isClosed": false,
+                "sortOrder": 1,
+                "timeRanges": [
+                  {
+                    "opensAt": "10:00",
+                    "closesAt": "18:00",
+                    "closesNextDay": false,
+                    "lastAdmissionAt": "17:30",
+                    "lastAdmissionNextDay": false
+                  }
+                ]
+              }
+            ],
+            "dateOverrides": []
+          }
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.PreviewAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        ParkGraphUpsertChange openingHoursChange = Assert.Single(result.Value!.Changes, change => change.EntityType == "ParkOpeningHours");
+        Assert.Equal("Created", openingHoursChange.ChangeType);
+        Assert.Contains(openingHoursChange.Fields, field => field.Field == "openingHours.timeZoneId" && field.NewValue == "Europe/Paris");
+        Assert.Contains(openingHoursChange.Fields, field => field.Field == "openingHours.regularRules");
+        Assert.True(result.Value.CanApply);
+        openingHoursRepository.Verify(value => value.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.VerifyAll();
+        openingHoursRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenOpeningHoursInGlobalJsonAreEmpty_ShouldSkipScheduleWithoutErrors()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Schedule Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance,
+            openingHoursRepository.Object,
+            new ParkOpeningHoursScheduleNormalizer(),
+            new ParkOpeningHoursCoverageSegmentBuilder(),
+            Mock.Of<ISeoSitemapRefreshScheduler>(MockBehavior.Strict));
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "openingHours": {
+            "parkId": "",
+            "timeZoneId": "Europe/Paris",
+            "sourceUrl": "",
+            "notes": "",
+            "lastVerifiedAtUtc": "",
+            "regularRules": [],
+            "dateOverrides": []
+          }
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.PreviewAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Empty(result.Value!.Errors);
+        Assert.DoesNotContain(result.Value.Changes, change => change.EntityType == "ParkOpeningHours");
+        openingHoursRepository.Verify(value => value.GetByParkIdAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+        openingHoursRepository.Verify(value => value.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.VerifyAll();
+        openingHoursRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenOpeningHoursAreInGlobalJson_ShouldSaveScheduleAndRefreshSitemap()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Schedule Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        ParkOpeningHoursSchedule? savedSchedule = null;
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        openingHoursRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkOpeningHoursSchedule?)null);
+        openingHoursRepository
+            .Setup(value => value.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkOpeningHoursSchedule, CancellationToken>((schedule, _) => savedSchedule = schedule)
+            .ReturnsAsync((ParkOpeningHoursSchedule schedule, CancellationToken _) => schedule);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.Is<PublicSeoUpdate>(update => update.CurrentParks.Any(currentPark => currentPark.Id == "park-1")), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        sitemapRefreshScheduler
+            .Setup(value => value.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance,
+            openingHoursRepository.Object,
+            new ParkOpeningHoursScheduleNormalizer(),
+            new ParkOpeningHoursCoverageSegmentBuilder(),
+            sitemapRefreshScheduler.Object);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "openingHours": {
+            "parkId": "park-1",
+            "timeZoneId": "Europe/Paris",
+            "sourceUrl": "https://example.test/hours",
+            "regularRules": [
+              {
+                "id": "summer",
+                "startDate": "2026-07-01",
+                "endDate": "2026-07-31",
+                "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "isClosed": false,
+                "sortOrder": 1,
+                "timeRanges": [
+                  {
+                    "opensAt": "10:00",
+                    "closesAt": "18:00",
+                    "closesNextDay": false,
+                    "lastAdmissionAt": "17:30",
+                    "lastAdmissionNextDay": false
+                  }
+                ]
+              }
+            ],
+            "dateOverrides": [
+              {
+                "localDate": "2026-07-14",
+                "isClosed": true,
+                "reason": "Private event",
+                "timeRanges": []
+              }
+            ]
+          }
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(savedSchedule);
+        Assert.Equal("park-1", savedSchedule.ParkId);
+        Assert.Equal("Europe/Paris", savedSchedule.TimeZoneId);
+        Assert.Single(savedSchedule.RegularRules);
+        Assert.Single(savedSchedule.DateOverrides);
+        Assert.NotEmpty(savedSchedule.CoverageSegments);
+        ParkGraphUpsertChange openingHoursChange = Assert.Single(result.Value!.Changes, change => change.EntityType == "ParkOpeningHours");
+        Assert.Equal("Created", openingHoursChange.ChangeType);
+        parkRepository.VerifyAll();
+        openingHoursRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+        sitemapRefreshScheduler.VerifyAll();
     }
 }

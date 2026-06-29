@@ -12,6 +12,7 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Queries;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Core.Domain.Images;
@@ -23,6 +24,8 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Handlers;
 public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>
 {
     private static readonly JsonSerializerOptions ExportJsonOptions = BuildExportJsonOptions();
+    private const string OpeningHoursDateFormat = "yyyy-MM-dd";
+    private const string OpeningHoursTimeFormat = "HH:mm";
 
     private readonly IParkRepository parkRepository;
     private readonly IParkZoneRepository parkZoneRepository;
@@ -31,6 +34,7 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
     private readonly IParkOperatorRepository parkOperatorRepository;
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly IImageRepository imageRepository;
+    private readonly IParkOpeningHoursRepository? openingHoursRepository;
 
     public ExportParkGraphJsonQueryHandler(
         IParkRepository parkRepository,
@@ -39,7 +43,8 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
         IParkFounderRepository parkFounderRepository,
         IParkOperatorRepository parkOperatorRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
-        IImageRepository imageRepository)
+        IImageRepository imageRepository,
+        IParkOpeningHoursRepository? openingHoursRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -48,6 +53,7 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
         this.parkOperatorRepository = parkOperatorRepository;
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.imageRepository = imageRepository;
+        this.openingHoursRepository = openingHoursRepository;
     }
 
     public async Task<ApplicationResult<ParkGraphJsonExportResult>> HandleAsync(ExportParkGraphJsonQuery query, CancellationToken cancellationToken = default)
@@ -93,6 +99,9 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
         IReadOnlyCollection<Image> manufacturerImages = manufacturerIds.Count == 0
             ? Array.Empty<Image>()
             : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, manufacturerIds, null, cancellationToken);
+        ParkOpeningHoursSchedule? openingHours = this.openingHoursRepository is null
+            ? null
+            : await this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
 
         DateTime exportedAtUtc = DateTime.UtcNow;
         ParkGraphExportDocument document = new ParkGraphExportDocument
@@ -119,6 +128,7 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
                 .ThenBy(static image => image.OriginalFileName, StringComparer.OrdinalIgnoreCase)
                 .Select(image => MapImage(image, park.Id))
                 .ToList(),
+            OpeningHours = openingHours is null ? null : MapOpeningHours(openingHours),
             Metadata = new ParkGraphExportMetadata
             {
                 ExportedAtUtc = exportedAtUtc,
@@ -343,6 +353,57 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
         };
     }
 
+    private static ParkGraphExportOpeningHours MapOpeningHours(ParkOpeningHoursSchedule schedule)
+    {
+        return new ParkGraphExportOpeningHours
+        {
+            ParkId = schedule.ParkId,
+            TimeZoneId = schedule.TimeZoneId,
+            SourceUrl = schedule.SourceUrl,
+            Notes = schedule.Notes,
+            LastVerifiedAtUtc = schedule.LastVerifiedAtUtc,
+            RegularRules = schedule.RegularRules
+                .OrderBy(static rule => rule.SortOrder)
+                .ThenBy(static rule => rule.StartDate)
+                .Select(static rule => new ParkGraphExportOpeningHoursRule
+                {
+                    Id = rule.Id,
+                    StartDate = FormatOpeningHoursDate(rule.StartDate),
+                    EndDate = FormatOpeningHoursDate(rule.EndDate),
+                    DaysOfWeek = rule.DaysOfWeek.Select(static day => day.ToString()).ToList(),
+                    IsClosed = rule.IsClosed,
+                    Label = rule.Label,
+                    Reason = rule.Reason,
+                    SortOrder = rule.SortOrder,
+                    TimeRanges = rule.TimeRanges.Select(static timeRange => MapOpeningHoursTimeRange(timeRange)).ToList(),
+                })
+                .ToList(),
+            DateOverrides = schedule.DateOverrides
+                .OrderBy(static dateOverride => dateOverride.LocalDate)
+                .Select(static dateOverride => new ParkGraphExportOpeningHoursDateOverride
+                {
+                    LocalDate = FormatOpeningHoursDate(dateOverride.LocalDate),
+                    IsClosed = dateOverride.IsClosed,
+                    Label = dateOverride.Label,
+                    Reason = dateOverride.Reason,
+                    TimeRanges = dateOverride.TimeRanges.Select(static timeRange => MapOpeningHoursTimeRange(timeRange)).ToList(),
+                })
+                .ToList(),
+        };
+    }
+
+    private static ParkGraphExportOpeningHoursTimeRange MapOpeningHoursTimeRange(ParkOpeningHoursTimeRange timeRange)
+    {
+        return new ParkGraphExportOpeningHoursTimeRange
+        {
+            OpensAt = FormatOpeningHoursTime(timeRange.OpensAt),
+            ClosesAt = FormatOpeningHoursTime(timeRange.ClosesAt),
+            ClosesNextDay = timeRange.ClosesNextDay,
+            LastAdmissionAt = timeRange.LastAdmissionAt.HasValue ? FormatOpeningHoursTime(timeRange.LastAdmissionAt.Value) : null,
+            LastAdmissionNextDay = timeRange.LastAdmissionNextDay,
+        };
+    }
+
     private static string? BuildImageOwnerKey(Image image, string parkId)
     {
         if (image.OwnerType == ImageOwnerType.Park && string.Equals(image.OwnerId, parkId, StringComparison.Ordinal))
@@ -473,5 +534,15 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
 
         string result = builder.ToString().Trim('-');
         return string.IsNullOrWhiteSpace(result) ? "park" : result;
+    }
+
+    private static string FormatOpeningHoursDate(DateOnly date)
+    {
+        return date.ToString(OpeningHoursDateFormat, CultureInfo.InvariantCulture);
+    }
+
+    private static string FormatOpeningHoursTime(TimeOnly time)
+    {
+        return time.ToString(OpeningHoursTimeFormat, CultureInfo.InvariantCulture);
     }
 }

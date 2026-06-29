@@ -429,7 +429,7 @@
       },
       "editor": {
         "title": "JSON-document",
-        "description": "Ontbrekende eigenschappen blijven behouden. Zones/items-lijsten upserten alleen aanwezige invoer."
+        "description": "Ontbrekende eigenschappen blijven behouden. De openingHours-sectie wordt met dezelfde globale JSON als park, zones, pagina's en afbeeldingen vooraf bekeken en toegepast."
       },
       "export": {
         "title": "Park JSON exporteren",
@@ -690,70 +690,62 @@
         }
       }
     },
-    "parkWeather": {
-      "navTitle": "Weer",
-      "title": "Weerupdate",
-      "subtitle": "Volg geplande uitvoeringen, zichtbare parken en fouten.",
-      "loading": "Weerstatus wordt geladen...",
-      "loadError": "Weerstatus kon niet worden geladen.",
-      "startError": "Weerupdate kon niet worden gestart.",
-      "retryError": "Weerupdate kon niet opnieuw worden gestart.",
-      "empty": "Geen weerinformatie beschikbaar.",
-      "actions": {
-        "startManual": "Nu bijwerken",
-        "retryFailed": "Fouten opnieuw",
-        "retryPark": "Opnieuw"
+    "parks": {
+      "tabs": {
+        "openingHours": "Openingstijden",
+        "general": "Algemeen",
+        "location": "Locatie",
+        "descriptions": "Beschrijvingen",
+        "logos": "Logo’s",
+        "photos": "Foto’s",
+        "videos": "Video's"
       },
-      "stats": {
-        "status": "Status",
-        "progress": "Voortgang",
-        "success": "Geslaagd",
-        "warnings": "{{count}} waarschuwing(en)",
-        "failed": "Fouten"
+      "sort": {
+        "openingHoursAttentionFirst": "Tijden eerst nakijken",
+        "openingHoursReadyFirst": "Tijden compleet eerst",
+        "label": "Sort.",
+        "default": "Standaard",
+        "nameAsc": "Naam A-Z",
+        "totalDesc": "Items max",
+        "totalAsc": "Items min",
+        "visibleDesc": "Zichtb. max",
+        "visibleAsc": "Zichtb. min"
       },
-      "statuses": {
-        "queued": "In wachtrij",
-        "running": "Bezig",
-        "completed": "Voltooid",
-        "completedWithFailures": "Voltooid met fouten",
-        "failed": "Mislukt",
-        "skipped": "Overgeslagen"
-      },
-      "messages": {
-        "queued": "Weerverversing staat in de wachtrij.",
-        "running": "Weerverversing loopt.",
-        "completed": "Weerverversing voltooid.",
-        "completedWithFailures": "Weerverversing voltooid met fouten.",
-        "canceled": "Weerverversing geannuleerd.",
-        "skippedByManual": "Automatische uitvoering overgeslagen omdat een handmatige verversing deze cyclus al dekt."
-      },
-      "values": {
-        "empty": "-"
-      },
-      "latestRun": {
-        "title": "Laatste uitvoering",
-        "meta": "{{trigger}} - {{scope}}",
-        "requestedAt": "Aangevraagd",
-        "startedAt": "Gestart",
-        "cancelAuto": "Automatische run geannuleerd"
-      },
-      "failures": {
-        "title": "Parks met fouten",
-        "subtitle": "Probeer alle fouten of een enkel park opnieuw.",
-        "empty": "Geen park met fout voor deze uitvoering.",
-        "columns": {
-          "park": "Park",
-          "error": "Fout",
-          "attempts": "Pogingen",
-          "actions": "Acties"
+      "openingHours": {
+        "title": "Openingstijden",
+        "filterLabel": "Tijden",
+        "notConfigured": "Niet ingesteld",
+        "coverageOne": "Volledige tijden voor {{ count }} dag, tot {{ date }}",
+        "coverageMany": "Volledige tijden voor {{ count }} dagen, tot {{ date }}",
+        "statuses": {
+          "NotConfigured": "Niet ingesteld",
+          "Expired": "Verlopen",
+          "NeedsUpdate": "Update nodig",
+          "UpToDate": "Actueel"
+        },
+        "filters": {
+          "all": "Alle tijden",
+          "configured": "Ingesteld",
+          "notConfigured": "Niet ingesteld",
+          "upToDate": "Actueel",
+          "needsUpdate": "Update nodig",
+          "expired": "Verlopen"
         }
       },
-      "noRun": {
-        "title": "Nog geen uitvoering",
-        "message": "Start een handmatige update of wacht op de volgende geplande uitvoering."
-      }
-    },
-    "parks": {
+      "openingHoursEditor": {
+        "title": "Openingstijden JSON",
+        "subtitle": "Plak of bewerk het schema-JSON en upsert het voor dit park.",
+        "reload": "Herladen",
+        "format": "Formatteren",
+        "upsert": "JSON upsert",
+        "jsonLabel": "Openingstijden JSON",
+        "invalidJson": "De JSON is ongeldig.",
+        "savedSummary": "Openingstijden opgeslagen",
+        "savedDetail": "Het schema is geupsert.",
+        "saveError": "Het schema kon niet worden opgeslagen.",
+        "loadError": "Het schema kon niet worden geladen.",
+        "hint": "Gesloten dagen moeten expliciet zijn wanneer ze als volledige dekking meetellen."
+      },
       "total": "Totaal aantal parken: {{count}}",
       "empty": "Geen parken gevonden.",
       "name": "Park",
@@ -1123,14 +1115,6 @@
       "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",
       "locationSectionTitle": "Locatie en adres",
       "locationSectionHelp": "Definieer hier het hoofdpunt van het park en het postadres.",
-      "tabs": {
-        "general": "Algemeen",
-        "location": "Locatie",
-        "descriptions": "Beschrijvingen",
-        "logos": "Logo’s",
-        "photos": "Foto’s",
-        "videos": "Video's"
-      },
       "editorStatus": {
         "saving": "Opslaan...",
         "unsavedChanges": "Niet-opgeslagen wijzigingen",
@@ -1219,15 +1203,69 @@
       "statuses": {
         "operating": "Open",
         "closedDefinitively": "Definitief gesloten"
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Weer",
+      "title": "Weerupdate",
+      "subtitle": "Volg geplande uitvoeringen, zichtbare parken en fouten.",
+      "loading": "Weerstatus wordt geladen...",
+      "loadError": "Weerstatus kon niet worden geladen.",
+      "startError": "Weerupdate kon niet worden gestart.",
+      "retryError": "Weerupdate kon niet opnieuw worden gestart.",
+      "empty": "Geen weerinformatie beschikbaar.",
+      "actions": {
+        "startManual": "Nu bijwerken",
+        "retryFailed": "Fouten opnieuw",
+        "retryPark": "Opnieuw"
       },
-      "sort": {
-        "label": "Sort.",
-        "default": "Standaard",
-        "nameAsc": "Naam A-Z",
-        "totalDesc": "Items max",
-        "totalAsc": "Items min",
-        "visibleDesc": "Zichtb. max",
-        "visibleAsc": "Zichtb. min"
+      "stats": {
+        "status": "Status",
+        "progress": "Voortgang",
+        "success": "Geslaagd",
+        "warnings": "{{count}} waarschuwing(en)",
+        "failed": "Fouten"
+      },
+      "statuses": {
+        "queued": "In wachtrij",
+        "running": "Bezig",
+        "completed": "Voltooid",
+        "completedWithFailures": "Voltooid met fouten",
+        "failed": "Mislukt",
+        "skipped": "Overgeslagen"
+      },
+      "messages": {
+        "queued": "Weerverversing staat in de wachtrij.",
+        "running": "Weerverversing loopt.",
+        "completed": "Weerverversing voltooid.",
+        "completedWithFailures": "Weerverversing voltooid met fouten.",
+        "canceled": "Weerverversing geannuleerd.",
+        "skippedByManual": "Automatische uitvoering overgeslagen omdat een handmatige verversing deze cyclus al dekt."
+      },
+      "values": {
+        "empty": "-"
+      },
+      "latestRun": {
+        "title": "Laatste uitvoering",
+        "meta": "{{trigger}} - {{scope}}",
+        "requestedAt": "Aangevraagd",
+        "startedAt": "Gestart",
+        "cancelAuto": "Automatische run geannuleerd"
+      },
+      "failures": {
+        "title": "Parks met fouten",
+        "subtitle": "Probeer alle fouten of een enkel park opnieuw.",
+        "empty": "Geen park met fout voor deze uitvoering.",
+        "columns": {
+          "park": "Park",
+          "error": "Fout",
+          "attempts": "Pogingen",
+          "actions": "Acties"
+        }
+      },
+      "noRun": {
+        "title": "Nog geen uitvoering",
+        "message": "Start een handmatige update of wacht op de volgende geplande uitvoering."
       }
     },
     "publicViewToolbar": {
@@ -2806,6 +2844,46 @@
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
+    }
+  },
+  "parkOpeningHours": {
+    "card": {
+      "title": "Data en tijden",
+      "openNow": "Nu open",
+      "closedNow": "Nu gesloten",
+      "openBadge": "Open",
+      "closedBadge": "Gesloten",
+      "today": "Vandaag",
+      "closedToday": "Vandaag gesloten",
+      "notDefinedToday": "Vandaag niet vermeld",
+      "parkTimeZone": "Parktijd",
+      "visitorTimeZone": "Jouw tijdzone: {{ timeZone }}",
+      "viewAll": "Bekijk alle data en tijden",
+      "loading": "Tijden laden"
+    },
+    "page": {
+      "kicker": "Data en tijden",
+      "title": "Data en openingstijden van {{ name }}",
+      "lead": "Bekijk de momenteel vermelde data en dagtijden voor {{ name }}.",
+      "backToPark": "Terug naar {{ name }}",
+      "officialSite": "Officiele site",
+      "disclaimer": "Deze tijden zijn alleen indicatief. Controleer altijd de officiele website van {{ name }} voor je bezoek, omdat prive-evenementen, uitzonderlijke sluitingen, weer, operatie of andere wijzigingen hier mogelijk niet bekend of bijgewerkt zijn.",
+      "summaryLabel": "Samenvatting openingstijden",
+      "coverage": "Vermelde periode",
+      "coverageUnknown": "Onbekende periode",
+      "timeZone": "Tijdzone",
+      "daysCount": "Vermelde dagen",
+      "daysCountValue": "{{ count }} dagen",
+      "calendarLabel": "Data en openingstijden van {{ name }}",
+      "open": "Open",
+      "closed": "Gesloten",
+      "closedNoReason": "Gesloten",
+      "loadingTitle": "Data en tijden laden",
+      "loadingMessage": "Het vermelde schema wordt geladen.",
+      "emptyTitle": "Geen data of tijden vermeld",
+      "emptyMessage": "Er is nog geen openingsschema beschikbaar voor dit park.",
+      "errorTitle": "Data en tijden niet beschikbaar",
+      "errorMessage": "Het openingsschema kon niet worden geladen."
     }
   },
   "parkVisitor": {
