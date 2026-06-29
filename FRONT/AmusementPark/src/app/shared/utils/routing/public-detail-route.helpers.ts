@@ -82,7 +82,7 @@ export function buildPublicParkZoneRouteCommands(target: PublicParkZoneRouteTarg
     return null;
   }
 
-  return [...parkRouteCommands, 'zone', zoneId, buildEntitySlug(zoneName)];
+  return [...parkRouteCommands, 'zone', zoneId, buildEntitySlug(zoneName, 'zone')];
 }
 
 export function buildPublicParkImagesRouteCommands(target: PublicParkRouteTarget): string[] | null {
@@ -114,7 +114,7 @@ export function buildPublicParkVideoRouteCommands(target: PublicParkVideoRouteTa
     return null;
   }
 
-  return [...videosRouteCommands, videoId, buildEntitySlug(videoTitle)];
+  return [...videosRouteCommands, videoId, buildEntitySlug(videoTitle, 'video')];
 }
 
 export function buildPublicParkMapRouteCommands(target: PublicParkRouteTarget): string[] | null {
@@ -150,7 +150,7 @@ export function buildPublicParkItemRouteCommands(target: PublicParkItemRouteTarg
     ...parkRouteCommands,
     'item',
     itemId,
-    buildEntitySlug(itemName)
+    buildEntitySlug(itemName, 'item')
   ];
 }
 
@@ -183,7 +183,7 @@ export function buildPublicParkItemVideoRouteCommands(target: PublicParkItemVide
     return null;
   }
 
-  return [...videosRouteCommands, videoId, buildEntitySlug(videoTitle)];
+  return [...videosRouteCommands, videoId, buildEntitySlug(videoTitle, 'video')];
 }
 
 export function buildPublicParkReferenceRouteCommands(target: PublicParkReferenceRouteTarget): string[] | null {
@@ -199,7 +199,7 @@ export function buildPublicParkReferenceRouteCommands(target: PublicParkReferenc
     resolveSupportedLanguage(target.language),
     getPublicParkReferenceRouteSegment(target.kind),
     referenceId,
-    buildEntitySlug(referenceName)
+    buildEntitySlug(referenceName, 'reference')
   ];
 }
 

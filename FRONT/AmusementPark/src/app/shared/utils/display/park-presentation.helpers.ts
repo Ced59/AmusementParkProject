@@ -1,17 +1,19 @@
 import { Park } from '@app/models/parks/park';
 
 export function buildParkSlug(value: string | null | undefined): string {
-  return buildEntitySlug(value);
+  return buildEntitySlug(value, 'park');
 }
 
-export function buildEntitySlug(value: string | null | undefined): string {
-  return (value ?? '')
+export function buildEntitySlug(value: string | null | undefined, fallback: string = ''): string {
+  const slug: string = (value ?? '')
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .trim()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
+
+  return slug.length > 0 ? slug : fallback.trim();
 }
 
 export function buildParkLocationLine(park: Park | null | undefined, countryNameOverride: string | null = null): string | null {

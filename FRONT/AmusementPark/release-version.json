@@ -1,6 +1,20 @@
 {
-  "version": "2.7.20",
+  "version": "2.7.21",
   "history": [
+    {
+      "version": "2.7.21",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les liens publics restent valides.",
+        "en": "Public links stay valid.",
+        "de": "Oeffentliche Links bleiben gueltig.",
+        "nl": "Publieke links blijven geldig.",
+        "it": "I link pubblici restano validi.",
+        "es": "Los enlaces publicos siguen siendo validos.",
+        "pl": "Publiczne linki pozostaja poprawne.",
+        "pt": "Os links publicos continuam validos."
+      }
+    },
     {
       "version": "2.7.20",
       "releasedAt": "2026-06-29",
