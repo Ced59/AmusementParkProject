@@ -55,6 +55,14 @@
   box-shadow: var(--shadow-soft-orange);
 }
 
+.app-public-footer__logo-mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
 .app-public-footer__slogan {
   display: inline-flex;
   align-items: baseline;

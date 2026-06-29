@@ -33,6 +33,26 @@
             "assets": [
               "src/favicon.ico",
               {
+                "glob": "apple-touch-icon.png",
+                "input": "src/assets/favicon",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-32x32.png",
+                "input": "src/assets/favicon",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-16x16.png",
+                "input": "src/assets/favicon",
+                "output": "/"
+              },
+              {
+                "glob": "site.webmanifest",
+                "input": "src/assets/favicon",
+                "output": "/"
+              },
+              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets",
@@ -149,6 +169,26 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              {
+                "glob": "apple-touch-icon.png",
+                "input": "src/assets/favicon",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-32x32.png",
+                "input": "src/assets/favicon",
+                "output": "/"
+              },
+              {
+                "glob": "favicon-16x16.png",
+                "input": "src/assets/favicon",
+                "output": "/"
+              },
+              {
+                "glob": "site.webmanifest",
+                "input": "src/assets/favicon",
+                "output": "/"
+              },
               {
                 "glob": "**/*",
                 "input": "src/assets",

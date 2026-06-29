@@ -65,12 +65,14 @@ describe('PublicFooterComponent', () => {
 
   it('renders the public brand wordmark with the .fun signature', () => {
     const brandLink: HTMLAnchorElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-footer__logo');
+    const logoImage: HTMLImageElement | null = brandLink?.querySelector('.app-public-footer__logo-mark') ?? null;
     const wordmark: HTMLElement | null = brandLink?.querySelector('.app-brand-wordmark') ?? null;
     const base: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__base') ?? null;
     const dot: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__dot') ?? null;
     const fun: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__fun-text') ?? null;
 
     expect(brandLink?.getAttribute('aria-label')).toBe('AMUSEMENT-PARKS.fun');
+    expect(logoImage?.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark.png');
     expect(base?.textContent).toBe('AMUSEMENT-PARKS');
     expect(dot?.textContent).toBe('.');
     expect(fun?.textContent).toBe('fun');
