@@ -52,6 +52,14 @@ interface ParkOpeningHoursCalendarCell {
   isToday: boolean;
 }
 
+interface ParkOpeningHoursSelectedDayDetails {
+  localDate: string;
+  day: ParkOpeningHoursDay | null;
+  isToday: boolean;
+  status: 'open' | 'closed' | 'notDefined';
+  note: string | null;
+}
+
 type ParkOpeningHoursDayTone = 'empty' | 'closed' | 'short' | 'standard' | 'long';
 
 @Component({
@@ -69,6 +77,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
   protected readonly detailLink = signal<string[] | null>(null);
   protected readonly weekDayLabels = signal<string[]>([]);
   protected readonly selectedMonthKey = signal<string>(this.resolveCurrentMonthKey(null));
+  protected readonly selectedDayLocalDate = signal<string | null>(null);
   protected readonly monthLoading = signal<boolean>(false);
   protected readonly monthLoadFailed = signal<boolean>(false);
 
@@ -226,7 +235,15 @@ export class ParkOpeningHoursPageComponent implements OnInit {
   }
 
   formatRange(range: ParkOpeningHoursTimeRange): string {
-    return `${range.opensAt} - ${range.closesAt}${range.closesNextDay ? ' (+1)' : ''}`;
+    return `${range.opensAt} - ${range.closesAt}${range.closesNextDay ? ` (${this.nextDaySuffix()})` : ''}`;
+  }
+
+  formatLastAdmission(range: ParkOpeningHoursTimeRange): string {
+    if (!range.lastAdmissionAt) {
+      return '';
+    }
+
+    return `${range.lastAdmissionAt}${range.lastAdmissionNextDay ? ` (${this.nextDaySuffix()})` : ''}`;
   }
 
   formatRanges(day: ParkOpeningHoursDay | null): string {
@@ -250,7 +267,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
   }
 
   publicDayNote(day: ParkOpeningHoursDay | null): string | null {
-    if (!day || this.isClosed(day)) {
+    if (!day) {
       return null;
     }
 
@@ -260,6 +277,52 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     }
 
     return note;
+  }
+
+  hasPublicDayNote(day: ParkOpeningHoursDay | null): boolean {
+    return this.publicDayNote(day) !== null;
+  }
+
+  selectDay(cell: ParkOpeningHoursCalendarCell): void {
+    if (!cell.localDate) {
+      return;
+    }
+
+    this.selectedDayLocalDate.set(cell.localDate);
+  }
+
+  isSelectedCell(cell: ParkOpeningHoursCalendarCell): boolean {
+    return !!cell.localDate && cell.localDate === this.selectedDayLocalDate();
+  }
+
+  selectedDayDetails(calendar: ParkOpeningHoursCalendar): ParkOpeningHoursSelectedDayDetails {
+    const localDate: string = this.resolveSelectedDayLocalDate(calendar);
+    const day: ParkOpeningHoursDay | null = calendar.days.find((candidate: ParkOpeningHoursDay): boolean => candidate.localDate === localDate) ?? null;
+    const status: 'open' | 'closed' | 'notDefined' = day === null
+      ? 'notDefined'
+      : this.isClosed(day)
+        ? 'closed'
+        : 'open';
+
+    return {
+      localDate,
+      day,
+      isToday: localDate === this.resolveTodayLocalDate(calendar.timeZoneId),
+      status,
+      note: this.publicDayNote(day)
+    };
+  }
+
+  selectedDayStatusLabelKey(details: ParkOpeningHoursSelectedDayDetails): string {
+    if (details.status === 'open') {
+      return 'parkOpeningHours.page.open';
+    }
+
+    if (details.status === 'closed') {
+      return 'parkOpeningHours.page.closed';
+    }
+
+    return 'parkOpeningHours.page.notDefined';
   }
 
   dayTone(day: ParkOpeningHoursDay | null): ParkOpeningHoursDayTone {
@@ -296,7 +359,13 @@ export class ParkOpeningHoursPageComponent implements OnInit {
       ? 'parkOpeningHours.page.closed'
       : 'parkOpeningHours.page.open');
     const ranges: string = this.formatRanges(cell.day);
-    return ranges.length > 0 ? `${this.formatDate(cell.localDate)}, ${status}, ${ranges}` : `${this.formatDate(cell.localDate)}, ${status}`;
+    const information: string = this.hasPublicDayNote(cell.day)
+      ? this.ngxTranslateService.instant('parkOpeningHours.page.dayHasInformation')
+      : '';
+
+    return [this.formatDate(cell.localDate), status, ranges, information]
+      .filter((part: string): boolean => part.length > 0)
+      .join(', ');
   }
 
   private buildMonthGroup(monthKey: string, days: ParkOpeningHoursDay[], todayLocalDate: string): ParkOpeningHoursMonthGroup {
@@ -373,6 +442,10 @@ export class ParkOpeningHoursPageComponent implements OnInit {
 
   private formatCompactRange(range: ParkOpeningHoursTimeRange): string {
     return `${range.opensAt}-${range.closesAt}${range.closesNextDay ? '+1' : ''}`;
+  }
+
+  private nextDaySuffix(): string {
+    return this.ngxTranslateService.instant('parkOpeningHours.page.nextDaySuffix');
   }
 
   private isClosed(day: ParkOpeningHoursDay): boolean {
@@ -452,9 +525,11 @@ export class ParkOpeningHoursPageComponent implements OnInit {
 
     this.monthCalendarCache.clear();
     this.monthGroupCache = null;
+    this.monthLoadSequence += 1;
     this.monthLoading.set(false);
     this.monthLoadFailed.set(false);
     this.selectedMonthKey.set(requestedMonthKey);
+    this.selectedDayLocalDate.set(null);
     this.stateStore.setLoading(previousData);
 
     forkJoin({
@@ -484,6 +559,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
         }
 
         this.selectedMonthKey.set(requestedMonthKey);
+        this.selectDefaultDay(pageData.calendar);
         this.stateStore.setReady(pageData);
       },
       error: (error: unknown) => {
@@ -501,6 +577,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
   private loadInitialMonth(pageData: ParkOpeningHoursPageData, monthKey: string): void {
     const cachedCalendar: ParkOpeningHoursCalendar | undefined = this.monthCalendarCache.get(monthKey);
     if (cachedCalendar) {
+      this.selectDefaultDay(cachedCalendar);
       this.stateStore.setReady({ ...pageData, calendar: cachedCalendar });
       return;
     }
@@ -527,6 +604,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
 
     const cachedCalendar: ParkOpeningHoursCalendar | undefined = this.monthCalendarCache.get(normalizedMonthKey);
     if (cachedCalendar) {
+      this.selectDefaultDay(cachedCalendar);
       this.stateStore.setReady({ ...data, calendar: cachedCalendar });
       return;
     }
@@ -550,6 +628,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
           this.cacheCalendar(monthKey, calendar);
           this.monthLoading.set(false);
           this.monthLoadFailed.set(false);
+          this.selectDefaultDay(calendar);
           this.stateStore.setReady({ ...pageData, calendar });
         },
         error: (error: unknown) => {
@@ -588,6 +667,37 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     }
 
     return fromMonthKey;
+  }
+
+  private resolveSelectedDayLocalDate(calendar: ParkOpeningHoursCalendar): string {
+    const selectedDayLocalDate: string | null = this.selectedDayLocalDate();
+    const monthKey: string = this.resolveCalendarMonthKey(calendar);
+    if (selectedDayLocalDate && selectedDayLocalDate.startsWith(monthKey)) {
+      return selectedDayLocalDate;
+    }
+
+    return this.resolveDefaultDayLocalDate(calendar);
+  }
+
+  private selectDefaultDay(calendar: ParkOpeningHoursCalendar): void {
+    const monthKey: string = this.resolveCalendarMonthKey(calendar);
+    const selectedDayLocalDate: string | null = this.selectedDayLocalDate();
+    if (selectedDayLocalDate && selectedDayLocalDate.startsWith(monthKey)) {
+      return;
+    }
+
+    this.selectedDayLocalDate.set(this.resolveDefaultDayLocalDate(calendar));
+  }
+
+  private resolveDefaultDayLocalDate(calendar: ParkOpeningHoursCalendar): string {
+    const monthKey: string = this.resolveCalendarMonthKey(calendar);
+    const todayLocalDate: string = this.resolveTodayLocalDate(calendar.timeZoneId);
+    if (todayLocalDate.startsWith(monthKey)) {
+      return todayLocalDate;
+    }
+
+    return calendar.days.find((day: ParkOpeningHoursDay): boolean => day.localDate.startsWith(monthKey))?.localDate
+      ?? `${monthKey}-01`;
   }
 
   private cacheCalendar(monthKey: string, calendar: ParkOpeningHoursCalendar): void {
