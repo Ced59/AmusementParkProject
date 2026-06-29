@@ -1,5 +1,4 @@
 using AmusementPark.Application.Errors;
-using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.TechnicalPages.Commands;
 using AmusementPark.Application.Features.TechnicalPages.Handlers;
 using AmusementPark.Application.Features.TechnicalPages.Ports;
@@ -15,11 +14,10 @@ namespace AmusementPark.Application.Tests.Features.TechnicalPages.Handlers;
 public sealed class UpsertTechnicalPagesJsonCommandHandlerTests
 {
     [Fact]
-    public async Task HandleAsync_WhenPagesAreValid_ShouldUpsertBySlugAndRefreshSitemap()
+    public async Task HandleAsync_WhenPagesAreValid_ShouldUpsertBySlugWithoutRefreshingSitemap()
     {
         TechnicalPage page = CreatePage(" Lap Bar ", " restraint ");
         Mock<ITechnicalPageRepository> repository = new Mock<ITechnicalPageRepository>(MockBehavior.Strict);
-        Mock<ISeoSitemapRefreshScheduler> scheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
 
         repository
             .Setup(value => value.UpsertBySlugAsync(
@@ -31,11 +29,7 @@ public sealed class UpsertTechnicalPagesJsonCommandHandlerTests
                 return new TechnicalPageUpsertOutcome(candidate, true);
             });
 
-        scheduler
-            .Setup(value => value.RequestRefreshAsync(It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
-
-        UpsertTechnicalPagesJsonCommandHandler handler = new UpsertTechnicalPagesJsonCommandHandler(repository.Object, scheduler.Object);
+        UpsertTechnicalPagesJsonCommandHandler handler = new UpsertTechnicalPagesJsonCommandHandler(repository.Object);
 
         ApplicationResult<TechnicalPageJsonUpsertResult> result = await handler.HandleAsync(new UpsertTechnicalPagesJsonCommand(new[] { page }));
 
@@ -45,22 +39,19 @@ public sealed class UpsertTechnicalPagesJsonCommandHandlerTests
         Assert.Equal(0, result.Value.UpdatedCount);
         Assert.Equal("technical-1", Assert.Single(result.Value.Pages).Id);
         repository.VerifyAll();
-        scheduler.VerifyAll();
     }
 
     [Fact]
-    public async Task HandleAsync_WhenPagesAreEmpty_ShouldFailWithoutRefreshingSitemap()
+    public async Task HandleAsync_WhenPagesAreEmpty_ShouldFailWithoutRepositoryCall()
     {
         Mock<ITechnicalPageRepository> repository = new Mock<ITechnicalPageRepository>(MockBehavior.Strict);
-        Mock<ISeoSitemapRefreshScheduler> scheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
-        UpsertTechnicalPagesJsonCommandHandler handler = new UpsertTechnicalPagesJsonCommandHandler(repository.Object, scheduler.Object);
+        UpsertTechnicalPagesJsonCommandHandler handler = new UpsertTechnicalPagesJsonCommandHandler(repository.Object);
 
         ApplicationResult<TechnicalPageJsonUpsertResult> result = await handler.HandleAsync(new UpsertTechnicalPagesJsonCommand(Array.Empty<TechnicalPage>()));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "validation.required");
         repository.VerifyNoOtherCalls();
-        scheduler.VerifyNoOtherCalls();
     }
 
     private static TechnicalPage CreatePage(string title, string categoryKey)

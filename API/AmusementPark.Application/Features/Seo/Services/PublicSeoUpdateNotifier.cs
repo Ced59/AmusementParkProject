@@ -38,7 +38,10 @@ public sealed class PublicSeoUpdateNotifier : IPublicSeoUpdateNotifier
                 return;
             }
 
-            await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
+            if (!update.SuppressSitemapRefresh)
+            {
+                await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
+            }
 
             SeoSitemapSettings settings = await this.settingsRepository.GetAsync(cancellationToken);
             if (!settings.IsIndexNowEnabled)

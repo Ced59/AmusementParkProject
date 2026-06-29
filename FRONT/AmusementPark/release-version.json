@@ -1,6 +1,20 @@
 {
-  "version": "3.0.0",
+  "version": "3.0.1",
   "history": [
+    {
+      "version": "3.0.1",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Le calendrier des horaires devient plus lisible.",
+        "en": "The opening-hours calendar is easier to read.",
+        "de": "Der Oeffnungszeitenkalender wird lesbarer.",
+        "nl": "De openingstijdenkalender wordt leesbaarder.",
+        "it": "Il calendario degli orari diventa piu leggibile.",
+        "es": "El calendario de horarios es mas claro.",
+        "pl": "Kalendarz godzin otwarcia jest czytelniejszy.",
+        "pt": "O calendario de horarios fica mais claro."
+      }
+    },
     {
       "version": "3.0.0",
       "releasedAt": "2026-06-29",

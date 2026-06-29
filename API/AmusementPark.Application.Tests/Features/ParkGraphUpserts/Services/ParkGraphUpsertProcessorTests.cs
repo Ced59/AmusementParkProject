@@ -1814,8 +1814,7 @@ public sealed class ParkGraphUpsertProcessorTests
             MeasurementConversionService.Instance,
             openingHoursRepository.Object,
             new ParkOpeningHoursScheduleNormalizer(),
-            new ParkOpeningHoursCoverageSegmentBuilder(),
-            Mock.Of<ISeoSitemapRefreshScheduler>(MockBehavior.Strict));
+            new ParkOpeningHoursCoverageSegmentBuilder());
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -1910,8 +1909,7 @@ public sealed class ParkGraphUpsertProcessorTests
             MeasurementConversionService.Instance,
             openingHoursRepository.Object,
             new ParkOpeningHoursScheduleNormalizer(),
-            new ParkOpeningHoursCoverageSegmentBuilder(),
-            Mock.Of<ISeoSitemapRefreshScheduler>(MockBehavior.Strict));
+            new ParkOpeningHoursCoverageSegmentBuilder());
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -1950,7 +1948,7 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
-    public async Task ApplyAsync_WhenOpeningHoursAreInGlobalJson_ShouldSaveScheduleAndRefreshSitemap()
+    public async Task ApplyAsync_WhenOpeningHoursAreInGlobalJson_ShouldSaveScheduleWithoutRefreshingSitemap()
     {
         Park park = new Park
         {
@@ -1991,12 +1989,11 @@ public sealed class ParkGraphUpsertProcessorTests
 
         Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
         publicSeoUpdateNotifier
-            .Setup(value => value.NotifyAsync(It.Is<PublicSeoUpdate>(update => update.CurrentParks.Any(currentPark => currentPark.Id == "park-1")), It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
-
-        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
-        sitemapRefreshScheduler
-            .Setup(value => value.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Setup(value => value.NotifyAsync(
+                It.Is<PublicSeoUpdate>(update =>
+                    update.SuppressSitemapRefresh
+                    && update.CurrentParks.Any(currentPark => currentPark.Id == "park-1")),
+                It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
         ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
@@ -2014,8 +2011,7 @@ public sealed class ParkGraphUpsertProcessorTests
             MeasurementConversionService.Instance,
             openingHoursRepository.Object,
             new ParkOpeningHoursScheduleNormalizer(),
-            new ParkOpeningHoursCoverageSegmentBuilder(),
-            sitemapRefreshScheduler.Object);
+            new ParkOpeningHoursCoverageSegmentBuilder());
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -2080,6 +2076,5 @@ public sealed class ParkGraphUpsertProcessorTests
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
-        sitemapRefreshScheduler.VerifyAll();
     }
 }
