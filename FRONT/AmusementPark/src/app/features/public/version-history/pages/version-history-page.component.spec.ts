@@ -90,41 +90,65 @@ describe('VersionHistoryPageComponent', () => {
 });
 
 async function settleVersionHistory(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
-  await waitForVersionHistorySelector(fixture, '.version-entry--major');
+  expect(await waitForVersionHistorySelector(fixture, '.version-entry--major')).toBeTrue();
 }
 
 async function expandFirstMajorWithChildren(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
   const host: HTMLElement = fixture.nativeElement as HTMLElement;
-  const majorToggle: HTMLButtonElement | null = host.querySelector<HTMLButtonElement>(
-    '.version-entry--major .version-entry__toggle'
+  const majorToggles: HTMLButtonElement[] = Array.from(
+    host.querySelectorAll<HTMLButtonElement>('.version-entry--major .version-entry__toggle')
   );
 
-  expect(majorToggle).not.toBeNull();
+  for (const majorToggle of majorToggles) {
+    const majorEntry: HTMLElement | null = majorToggle.closest<HTMLElement>('.version-entry--major');
+    if (!majorEntry?.classList.contains('version-entry--expanded')) {
+      majorToggle.click();
+      fixture.detectChanges();
+    }
 
-  majorToggle?.click();
-  fixture.detectChanges();
+    if (await waitForVersionHistorySelector(fixture, '.version-entry--minor')) {
+      return;
+    }
 
-  await waitForVersionHistorySelector(fixture, '.version-entry--minor');
+    if (majorEntry?.classList.contains('version-entry--expanded')) {
+      majorToggle.click();
+      fixture.detectChanges();
+    }
+  }
+
+  expect(host.querySelector('.version-entry--minor')).not.toBeNull();
 }
 
 async function expandFirstMinorWithChildren(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
   const host: HTMLElement = fixture.nativeElement as HTMLElement;
-  const minorToggle: HTMLButtonElement | null = host.querySelector<HTMLButtonElement>(
-    '.version-entry--minor .version-entry__toggle'
+  const minorToggles: HTMLButtonElement[] = Array.from(
+    host.querySelectorAll<HTMLButtonElement>('.version-entry--minor .version-entry__toggle')
   );
 
-  expect(minorToggle).not.toBeNull();
+  for (const minorToggle of minorToggles) {
+    const minorEntry: HTMLElement | null = minorToggle.closest<HTMLElement>('.version-entry--minor');
+    if (!minorEntry?.classList.contains('version-entry--expanded')) {
+      minorToggle.click();
+      fixture.detectChanges();
+    }
 
-  minorToggle?.click();
-  fixture.detectChanges();
+    if (await waitForVersionHistorySelector(fixture, '.version-entry--patch')) {
+      return;
+    }
 
-  await waitForVersionHistorySelector(fixture, '.version-entry--patch');
+    if (minorEntry?.classList.contains('version-entry--expanded')) {
+      minorToggle.click();
+      fixture.detectChanges();
+    }
+  }
+
+  expect(host.querySelector('.version-entry--patch')).not.toBeNull();
 }
 
 async function waitForVersionHistorySelector(
   fixture: ComponentFixture<VersionHistoryPageComponent>,
   selector: string
-): Promise<void> {
+): Promise<boolean> {
   for (let attempt = 0; attempt < 20; attempt += 1) {
     await fixture.whenStable();
     await new Promise<void>((resolve: () => void): void => {
@@ -134,9 +158,11 @@ async function waitForVersionHistorySelector(
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     if (host.querySelector(selector)) {
-      return;
+      return true;
     }
   }
+
+  return false;
 }
 
 function getPatchVersions(host: HTMLElement): string[] {
