@@ -10,6 +10,7 @@ namespace AmusementPark.Application.Features.Seo.Services;
 public sealed class SeoSitemapGenerationOrchestrator
 {
     private const int MaxUrlsPerSitemapFile = 50000;
+    private const int MaxIndexNowUrlsPerSitemapGeneration = 100;
 
     private readonly IReadOnlyCollection<ISitemapSectionProvider> sectionProviders;
     private readonly ISitemapXmlWriter sitemapXmlWriter;
@@ -420,6 +421,21 @@ public sealed class SeoSitemapGenerationOrchestrator
             .Select(url => $"{normalizedPublicBaseUrl}{NormalizeRelativePath(url.RelativePath)}")
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
+
+        if (absoluteUrls.Count > MaxIndexNowUrlsPerSitemapGeneration)
+        {
+            return new IndexNowSubmissionResult
+            {
+                WasRequested = true,
+                IsEnabled = true,
+                IsSuccess = false,
+                SubmittedUrlCount = 0,
+                Errors = new[]
+                {
+                    $"Soumission IndexNow ignoree pour {absoluteUrls.Count} URLs de sitemap : les mises a jour publiques sont soumises selectivement.",
+                },
+            };
+        }
 
         return await this.indexNowSubmitter.SubmitAsync(settings, normalizedPublicBaseUrl, absoluteUrls, cancellationToken);
     }
