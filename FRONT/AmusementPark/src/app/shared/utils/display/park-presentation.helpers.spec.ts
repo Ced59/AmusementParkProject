@@ -13,6 +13,11 @@ describe('park-presentation helpers', () => {
     expect(buildEntitySlug(' --- ')).toBe('');
   });
 
+  it('uses explicit fallback slugs when normalized content is empty', () => {
+    expect(buildParkSlug('東京')).toBe('park');
+    expect(buildEntitySlug('東京', 'item')).toBe('item');
+  });
+
   it('builds location lines with an override country name when provided', () => {
     const park: Park = { name: 'Test', city: 'Brühl', countryCode: 'DE', latitude: 0, longitude: 0 };
 

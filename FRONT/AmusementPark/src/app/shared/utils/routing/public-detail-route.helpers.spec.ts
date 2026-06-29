@@ -76,6 +76,19 @@ describe('public detail route helpers', () => {
       .toEqual(['/', 'pt', 'park-founder', 'fd1', 'founder']);
   });
 
+  it('preserves required fallback slug segments in public canonical route commands', () => {
+    expect(buildPublicParkRouteCommands({ language: 'fr', parkId: 'p1', parkName: '東京' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'park']);
+    expect(buildPublicParkZoneRouteCommands({ language: 'fr', parkId: 'p1', parkName: '東京', zoneId: 'z1', zoneName: '東京' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'park', 'zone', 'z1', 'zone']);
+    expect(buildPublicParkItemRouteCommands({ language: 'fr', parkId: 'p1', parkName: '東京', itemId: 'i1', itemName: '東京' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'park', 'item', 'i1', 'item']);
+    expect(buildPublicParkItemVideoRouteCommands({ language: 'fr', parkId: 'p1', parkName: '東京', itemId: 'i1', itemName: '東京', videoId: 'v1', videoTitle: '東京' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'park', 'item', 'i1', 'item', 'videos', 'v1', 'video']);
+    expect(buildPublicParkReferenceRouteCommands({ language: 'fr', referenceId: 'r1', referenceName: '東京', kind: 'manufacturer' }))
+      .toEqual(['/', 'fr', 'park-manufacturer', 'r1', 'reference']);
+  });
+
   it('falls back to English for unsupported target languages', () => {
     expect(buildPublicParkRouteCommands({ language: 'xx', parkId: 'p1', parkName: 'Park' })?.[1]).toBe('en');
   });
