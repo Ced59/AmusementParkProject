@@ -118,6 +118,62 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
         indexNowSubmitter.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenPersistedIndexUsesLegacySectionLocations_ShouldReturnRootSectionLocations()
+    {
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            GeneratedAtUtc = new DateTime(2026, 6, 20, 10, 0, 0, DateTimeKind.Utc),
+            PublicBaseUrl = "https://example.com",
+            IndexXml = """
+                <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+                  <sitemap>
+                    <loc>https://example.com/sitemaps/static-fr.xml</loc>
+                    <lastmod>2026-06-20</lastmod>
+                  </sitemap>
+                </sitemapindex>
+                """,
+            Sections = new[]
+            {
+                new SitemapSectionStats("static-fr", "static-fr.xml", "Static FR", 1, null),
+            },
+            TotalUrlCount = 1,
+        };
+
+        snapshotRepository
+            .Setup(repository => repository.GetLatestAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(snapshot);
+
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            Array.Empty<ISitemapSectionProvider>(),
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            new InMemorySeoSitemapRuntimeStateStore());
+        GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
+            snapshotRepository.Object,
+            orchestrator);
+
+        ApplicationResult<SitemapDocumentResult> result = await handler.HandleAsync(
+            new GetPublicSitemapDocumentQuery(null, "https://example.com", new[] { "fr" }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Contains("https://example.com/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
+        Assert.DoesNotContain("https://example.com/sitemaps/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
+        snapshotRepository.VerifyAll();
+        historyRepository.VerifyNoOtherCalls();
+        settingsRepository.VerifyNoOtherCalls();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
     private sealed class FakeSitemapSectionProvider : ISitemapSectionProvider
     {
         public string Key => SitemapSectionKeys.Static;
