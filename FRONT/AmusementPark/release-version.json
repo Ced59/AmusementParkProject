@@ -1,6 +1,20 @@
 {
-  "version": "2.7.24",
+  "version": "2.7.25",
   "history": [
+    {
+      "version": "2.7.25",
+      "releasedAt": "2026-06-29",
+      "labels": {
+        "fr": "Les sitemaps restent lisibles apres mise a jour.",
+        "en": "Sitemaps stay readable after updates.",
+        "de": "Sitemaps bleiben nach Updates lesbar.",
+        "nl": "Sitemaps blijven leesbaar na updates.",
+        "it": "Le sitemap restano leggibili dopo gli aggiornamenti.",
+        "es": "Los sitemaps siguen legibles tras las actualizaciones.",
+        "pl": "Sitemapy pozostaja czytelne po aktualizacjach.",
+        "pt": "Os sitemaps continuam legiveis apos atualizacoes."
+      }
+    },
     {
       "version": "2.7.24",
       "releasedAt": "2026-06-29",

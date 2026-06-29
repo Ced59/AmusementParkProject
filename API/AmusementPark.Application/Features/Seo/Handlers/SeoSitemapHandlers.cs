@@ -1,3 +1,5 @@
+using System.Xml;
+using System.Xml.Linq;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
@@ -258,7 +260,7 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
         {
             return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
             {
-                Content = snapshot.IndexXml,
+                Content = NormalizePersistedSitemapIndexLocations(snapshot.IndexXml),
                 WasGeneratedOnDemand = wasGeneratedOnDemand,
             });
         }
@@ -286,5 +288,70 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
         }
 
         return value.ToLowerInvariant();
+    }
+
+    private static string NormalizePersistedSitemapIndexLocations(string indexXml)
+    {
+        if (string.IsNullOrWhiteSpace(indexXml))
+        {
+            return indexXml;
+        }
+
+        try
+        {
+            XDocument document = XDocument.Parse(indexXml, LoadOptions.PreserveWhitespace);
+            XNamespace sitemapNamespace = "http://www.sitemaps.org/schemas/sitemap/0.9";
+            bool changed = false;
+
+            foreach (XElement locElement in document.Descendants(sitemapNamespace + "sitemap").Elements(sitemapNamespace + "loc"))
+            {
+                string locValue = locElement.Value.Trim();
+                if (!Uri.TryCreate(locValue, UriKind.Absolute, out Uri? uri))
+                {
+                    continue;
+                }
+
+                const string legacyPrefix = "/sitemaps/";
+                string path = uri.AbsolutePath;
+                if (!path.StartsWith(legacyPrefix, StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                string fileName = path[legacyPrefix.Length..];
+                if (fileName.Length == 0 || fileName.Contains("/", StringComparison.Ordinal) || !fileName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                UriBuilder builder = new UriBuilder(uri)
+                {
+                    Path = $"/{fileName}",
+                    Query = string.Empty,
+                    Fragment = string.Empty,
+                };
+
+                string normalizedLoc = builder.Uri.AbsoluteUri;
+                if (!string.Equals(locElement.Value, normalizedLoc, StringComparison.Ordinal))
+                {
+                    locElement.Value = normalizedLoc;
+                    changed = true;
+                }
+            }
+
+            if (!changed)
+            {
+                return indexXml;
+            }
+
+            string body = document.ToString(SaveOptions.DisableFormatting);
+            return document.Declaration is null
+                ? body
+                : $"{document.Declaration}{Environment.NewLine}{body}";
+        }
+        catch (XmlException)
+        {
+            return indexXml;
+        }
     }
 }
