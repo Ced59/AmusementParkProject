@@ -24,6 +24,7 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> operatorKeys,
         Dictionary<string, string> manufacturerKeys,
         Dictionary<string, string> manufacturerIdRemaps,
+        Dictionary<string, string> imageKeys,
         ParkGraphUpsertResult result,
         bool apply,
         CancellationToken cancellationToken)
@@ -43,7 +44,8 @@ public sealed partial class ParkGraphUpsertProcessor
             string? imageId = ReadString(patch, "imageId") ?? ReadString(patch, "id");
             if (string.IsNullOrWhiteSpace(imageId))
             {
-                await this.ProcessRemoteImageAsync(patch, park, itemKeys, founderKeys, operatorKeys, manufacturerKeys, manufacturerIdRemaps, result, apply, cancellationToken);
+                string? importedImageId = await this.ProcessRemoteImageAsync(patch, park, itemKeys, founderKeys, operatorKeys, manufacturerKeys, manufacturerIdRemaps, result, apply, cancellationToken);
+                RegisterImageKey(patch, importedImageId, imageKeys);
                 continue;
             }
 
@@ -53,6 +55,8 @@ public sealed partial class ParkGraphUpsertProcessor
                 result.Warnings.Add($"Image '{imageId}' introuvable : rattachement ignoré.");
                 continue;
             }
+
+            RegisterImageKey(patch, image.Id, imageKeys);
 
             ImageOwnerType previousOwnerType = image.OwnerType;
             string? previousOwnerId = image.OwnerId;
@@ -204,7 +208,7 @@ public sealed partial class ParkGraphUpsertProcessor
         }
     }
 
-    private async Task ProcessRemoteImageAsync(
+    private async Task<string?> ProcessRemoteImageAsync(
         JsonElement patch,
         Park? park,
         Dictionary<string, string> itemKeys,
@@ -220,7 +224,7 @@ public sealed partial class ParkGraphUpsertProcessor
         if (string.IsNullOrWhiteSpace(sourceUrl))
         {
             result.Warnings.Add("Image ignored: imageId or sourceUrl is required.");
-            return;
+            return null;
         }
 
         ImageOwnerType requestedOwnerType = ResolveRequestedImageOwnerType(patch);
@@ -262,7 +266,7 @@ public sealed partial class ParkGraphUpsertProcessor
             result.Errors.Add($"Remote image sourceUrl is invalid: '{sourceUrl}'.");
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
-            return;
+            return null;
         }
 
         if (!ownerResolved || string.IsNullOrWhiteSpace(resolvedOwnerId))
@@ -270,7 +274,7 @@ public sealed partial class ParkGraphUpsertProcessor
             result.Warnings.Add($"Remote image ignored: owner could not be resolved for '{sourceUrl}'.");
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
-            return;
+            return null;
         }
 
         if (!IsRemoteImportOwnerSupported(resolvedOwnerType))
@@ -278,7 +282,7 @@ public sealed partial class ParkGraphUpsertProcessor
             result.Warnings.Add($"Remote image ignored: ownerType '{resolvedOwnerType}' is not supported by JSON upsert.");
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
-            return;
+            return null;
         }
 
         Image? duplicateImage = await this.imageRepository.GetByOwnerAndSourceUrlAsync(resolvedOwnerType, resolvedOwnerId, sourceUrl, cancellationToken);
@@ -288,9 +292,10 @@ public sealed partial class ParkGraphUpsertProcessor
             AddChange(change, "duplicateImageId", null, duplicateImage.Id);
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
-            return;
+            return duplicateImage.Id;
         }
 
+        string? importedImageId = null;
         if (apply)
         {
             RemoteImageImportRequest request = new RemoteImageImportRequest
@@ -310,9 +315,10 @@ public sealed partial class ParkGraphUpsertProcessor
                 result.Errors.Add($"Remote image was not imported: '{sourceUrl}'.");
                 change.ChangeType = "Skipped";
                 result.Changes.Add(change);
-                return;
+                return null;
             }
 
+            importedImageId = image.Id;
             change.EntityId = image.Id;
             AddChange(change, "imageId", null, image.Id);
             AddChange(change, "internalUrl", null, BuildInternalImageUrl(image.Id));
@@ -353,6 +359,7 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         result.Changes.Add(change);
+        return importedImageId;
     }
 
     private async Task SynchronizeCurrentImageOwnerAsync(Image? current, Park? targetPark, CancellationToken cancellationToken)

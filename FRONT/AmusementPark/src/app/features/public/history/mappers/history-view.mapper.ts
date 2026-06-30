@@ -94,10 +94,15 @@ export function mapHistoryTimelineToViewModel(timeline: HistoryTimeline, languag
   const yearStart: number = years.length > 0 ? Math.min(...years) : new Date().getFullYear();
   const yearEnd: number = years.length > 0 ? Math.max(...years) : yearStart;
   const range: number = Math.max(1, yearEnd - yearStart);
+  const seenYears = new Set<number>();
 
   for (const event of events) {
     event.positionPercent = ((event.year - yearStart) / range) * 100;
+    event.isFirstInYear = !seenYears.has(event.year);
+    seenYears.add(event.year);
   }
+
+  const hasParkItemTimelineEvents: boolean = timeline.hasParkItemTimelineEvents === true || (timeline.includedParkItems?.length ?? 0) > 0;
 
   return {
     entityType: timeline.entityType,
@@ -107,7 +112,7 @@ export function mapHistoryTimelineToViewModel(timeline: HistoryTimeline, languag
     park: timeline.park ?? null,
     parkItem: timeline.parkItem ?? null,
     includedParkItems: timeline.includedParkItems ?? [],
-    showParkItemControls: timeline.entityType === 'Park',
+    showParkItemControls: timeline.entityType === 'Park' && hasParkItemTimelineEvents,
     events,
     yearStart,
     yearEnd
@@ -193,7 +198,8 @@ function mapTimelineEventToViewModel(entry: HistoryTimelineEvent, timeline: Hist
     mainImage: entry.mainImage ?? null,
     articleLink: buildTimelineArticleLink(event.id ?? null, eventTitle, timeline, entry, language),
     sourceCount: event.sources?.length ?? 0,
-    positionPercent: 0
+    positionPercent: 0,
+    isFirstInYear: false
   };
 }
 

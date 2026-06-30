@@ -312,6 +312,177 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenHistoryReferencesImportedImageKey_ShouldResolveImageIds()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        Image importedImage = new Image
+        {
+            Id = "image-imported",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
+            SourceUrl = "https://example.test/mirapolis.jpg",
+            IsPublished = true,
+        };
+        List<HistoryEvent> savedEvents = new List<HistoryEvent>();
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnerAndSourceUrlAsync(ImageOwnerType.Park, "park-1", "https://example.test/mirapolis.jpg", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Image?)null);
+        imageRepository
+            .Setup(value => value.UpdateMetadataAsync("image-imported", It.IsAny<ImageMetadataUpdate>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(importedImage);
+
+        Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+        remoteImageImporter
+            .Setup(value => value.ImportAsync(It.Is<RemoteImageImportRequest>(request =>
+                request.SourceUrl == "https://example.test/mirapolis.jpg" &&
+                request.OwnerType == ImageOwnerType.Park &&
+                request.OwnerId == "park-1"), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(importedImage);
+
+        Mock<IHistoryEventRepository> historyEventRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        historyEventRepository
+            .Setup(value => value.GetByOwnerKeyAsync(HistoryEntityType.Park, "park-1", "mirapolis-opening", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoryEvent?)null);
+        historyEventRepository
+            .Setup(value => value.CreateAsync(It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()))
+            .Callback<HistoryEvent, CancellationToken>((historyEvent, _) =>
+            {
+                historyEvent.Id = $"history-{savedEvents.Count + 1}";
+                savedEvents.Add(historyEvent);
+            })
+            .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object,
+            remoteImageImporter.Object,
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance,
+            historyEventRepository: historyEventRepository.Object);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "images": [
+            {
+              "key": "mirapolis-aerial",
+              "sourceUrl": "https://example.test/mirapolis.jpg",
+              "ownerKey": "park",
+              "ownerType": "Park",
+              "category": "Photo",
+              "description": "Mirapolis aerial view",
+              "isPublished": true,
+              "altTexts": {
+                "fr": "Vue aérienne de Mirapolis"
+              }
+            }
+          ],
+          "historyEvents": [
+            {
+              "owner": "park",
+              "ownerId": "park-1",
+              "key": "mirapolis-opening",
+              "eventType": "Opening",
+              "date": "1987-05-20",
+              "mainImageKey": "mirapolis-aerial",
+              "article": {
+                "title": {
+                  "fr": "Ouverture de Mirapolis"
+                },
+                "mainImageKey": "mirapolis-aerial",
+                "blocks": [
+                  {
+                    "id": "photo",
+                    "type": "Image",
+                    "sortOrder": 1,
+                    "imageKey": "mirapolis-aerial",
+                    "captions": {
+                      "fr": "Vue aérienne de Mirapolis."
+                    }
+                  },
+                  {
+                    "id": "gallery",
+                    "type": "Gallery",
+                    "sortOrder": 2,
+                    "imageKeys": ["mirapolis-aerial"]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Empty(result.Value!.Errors);
+        HistoryEvent savedEvent = Assert.Single(savedEvents);
+        Assert.Equal("image-imported", savedEvent.MainImageId);
+        Assert.NotNull(savedEvent.Article);
+        Assert.Equal("image-imported", savedEvent.Article!.MainImageId);
+        Assert.Equal("image-imported", savedEvent.Article.Blocks[0].ImageId);
+        Assert.Equal(new[] { "image-imported" }, savedEvent.Article.Blocks[1].ImageIds);
+
+        parkRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        remoteImageImporter.VerifyAll();
+        historyEventRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenItemIsCreated_ShouldKeepItHiddenAndToReview()
     {
         Park park = new Park

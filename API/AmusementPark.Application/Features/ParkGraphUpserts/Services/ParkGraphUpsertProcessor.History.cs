@@ -13,6 +13,7 @@ public sealed partial class ParkGraphUpsertProcessor
         JsonElement root,
         Park targetPark,
         Dictionary<string, string> itemKeys,
+        Dictionary<string, string> imageKeys,
         ParkGraphUpsertResult result,
         bool apply,
         CancellationToken cancellationToken)
@@ -76,7 +77,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 existing is null ? "Created" : "Unchanged",
                 existing is null ? "key" : "ownerKey");
 
-            PatchHistoryEvent(historyEvent, patch, targetPark, entityType, ownerId, key, eventType, dateParts, change);
+            PatchHistoryEvent(historyEvent, patch, targetPark, entityType, ownerId, key, eventType, dateParts, imageKeys, result, apply, change);
 
             if (change.Fields.Count > 0 || existing is null)
             {
@@ -157,6 +158,9 @@ public sealed partial class ParkGraphUpsertProcessor
         string key,
         string eventType,
         HistoryDateParts dateParts,
+        Dictionary<string, string> imageKeys,
+        ParkGraphUpsertResult result,
+        bool apply,
         ParkGraphUpsertChange change)
     {
         AddChange(change, "key", historyEvent.Key, key);
@@ -195,7 +199,12 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchBool(patch, "isMajor", historyEvent.IsMajor, value => historyEvent.IsMajor = value, change);
         PatchBool(patch, "isVisible", historyEvent.IsVisible, value => historyEvent.IsVisible = value, change);
         PatchString(patch, "slug", historyEvent.Slug, value => historyEvent.Slug = value, change);
-        PatchString(patch, "mainImageId", historyEvent.MainImageId, value => historyEvent.MainImageId = value, change);
+        if (TryReadHistoryImageIdPatch(patch, "mainImageId", "mainImageKey", "imageKey", imageKeys, result, apply, $"l'evenement history '{key}'", out string? mainImageId))
+        {
+            AddChange(change, "mainImageId", historyEvent.MainImageId, mainImageId);
+            historyEvent.MainImageId = mainImageId;
+        }
+
         PatchString(patch, "previousName", historyEvent.PreviousName, value => historyEvent.PreviousName = value, change);
         PatchString(patch, "newName", historyEvent.NewName, value => historyEvent.NewName = value, change);
         PatchString(patch, "previousLogoImageId", historyEvent.PreviousLogoImageId, value => historyEvent.PreviousLogoImageId = value, change);
@@ -241,7 +250,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (HasProperty(patch, "article"))
         {
-            HistoryArticle? article = ReadHistoryArticle(GetObject(patch, "article"));
+            HistoryArticle? article = ReadHistoryArticle(GetObject(patch, "article"), imageKeys, result, apply, key);
             AddChange(change, "article", historyEvent.Article is null ? null : "present", article is null ? null : "present");
             historyEvent.Article = article;
             if (article is not null)
@@ -374,11 +383,22 @@ public sealed partial class ParkGraphUpsertProcessor
         return values;
     }
 
-    private static HistoryArticle? ReadHistoryArticle(JsonElement? element)
+    private static HistoryArticle? ReadHistoryArticle(
+        JsonElement? element,
+        Dictionary<string, string> imageKeys,
+        ParkGraphUpsertResult result,
+        bool apply,
+        string eventKey)
     {
         if (element is null)
         {
             return null;
+        }
+
+        string? mainImageId = null;
+        if (TryReadHistoryImageIdPatch(element.Value, "mainImageId", "mainImageKey", "imageKey", imageKeys, result, apply, $"l'article history '{eventKey}'", out string? resolvedMainImageId))
+        {
+            mainImageId = resolvedMainImageId;
         }
 
         return new HistoryArticle
@@ -387,14 +407,19 @@ public sealed partial class ParkGraphUpsertProcessor
             Titles = ReadLocalizedTextsFlexible(element.Value, "titles", "title"),
             Subtitles = ReadLocalizedTextsFlexible(element.Value, "subtitles", "subtitle"),
             Summaries = ReadLocalizedTextsFlexible(element.Value, "summaries", "summary"),
-            MainImageId = NormalizeString(ReadString(element, "mainImageId")),
-            Blocks = ReadHistoryArticleBlocks(GetArray(element, "blocks")),
+            MainImageId = mainImageId,
+            Blocks = ReadHistoryArticleBlocks(GetArray(element, "blocks"), imageKeys, result, apply, eventKey),
             Sources = ReadHistorySources(GetArray(element, "sources")),
             IsPublished = ReadBool(element, "isPublished") ?? true,
         };
     }
 
-    private static List<HistoryArticleBlock> ReadHistoryArticleBlocks(JsonElement? array)
+    private static List<HistoryArticleBlock> ReadHistoryArticleBlocks(
+        JsonElement? array,
+        Dictionary<string, string> imageKeys,
+        ParkGraphUpsertResult result,
+        bool apply,
+        string eventKey)
     {
         if (array is null)
         {
@@ -411,15 +436,22 @@ public sealed partial class ParkGraphUpsertProcessor
             }
 
             fallbackSortOrder++;
+            string blockId = NormalizeString(ReadString(item, "id")) ?? Guid.NewGuid().ToString("N");
+            string? imageId = null;
+            if (TryReadHistoryImageIdPatch(item, "imageId", "imageKey", "mainImageKey", imageKeys, result, apply, $"le bloc '{blockId}' de l'article history '{eventKey}'", out string? resolvedImageId))
+            {
+                imageId = resolvedImageId;
+            }
+
             HistoryArticleBlock block = new HistoryArticleBlock
             {
-                Id = NormalizeString(ReadString(item, "id")) ?? Guid.NewGuid().ToString("N"),
+                Id = blockId,
                 Type = ReadEnum(item, "type", HistoryArticleBlockType.Paragraph),
                 SortOrder = ReadInt(item, "sortOrder") ?? fallbackSortOrder,
                 HeadingLevel = ReadInt(item, "headingLevel"),
                 Texts = ReadLocalizedTextsFlexible(item, "texts", "text"),
-                ImageId = NormalizeString(ReadString(item, "imageId")),
-                ImageIds = ReadStringArray(GetArray(item, "imageIds")),
+                ImageId = imageId,
+                ImageIds = ReadHistoryImageIds(item, imageKeys, result, apply, $"le bloc '{blockId}' de l'article history '{eventKey}'"),
                 Captions = ReadLocalizedTextsFlexible(item, "captions", "caption"),
             };
             blocks.Add(block);

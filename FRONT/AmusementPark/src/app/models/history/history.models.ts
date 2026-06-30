@@ -80,6 +80,7 @@ export interface HistoryTimeline {
   entityType: HistoryEntityType | string;
   park?: Park | null;
   parkItem?: ParkItem | null;
+  hasParkItemTimelineEvents?: boolean;
   includedParkItems: ParkItem[];
   events: HistoryTimelineEvent[];
 }

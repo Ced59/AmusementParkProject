@@ -122,6 +122,7 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> founderKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> operatorKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> manufacturerKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, string> imageKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         if (root.TryGetProperty("references", out JsonElement references) && references.ValueKind == JsonValueKind.Object)
         {
@@ -164,7 +165,7 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 if (result.Errors.Count == 0)
                 {
-                    await this.ProcessImagesAsync(root, null, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase), founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, result, apply, cancellationToken);
+                    await this.ProcessImagesAsync(root, null, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase), founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, imageKeys, result, apply, cancellationToken);
                 }
 
                 FinalizeCounts(result);
@@ -213,8 +214,8 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> zoneKeys = await this.ProcessZonesAsync(root, targetPark, result, apply, cancellationToken);
         Dictionary<string, string> itemKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         ParkGraphUpsertItemSeoChanges itemSeoChanges = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, itemKeys, result, apply, cancellationToken);
-        await this.ProcessImagesAsync(root, targetPark, itemKeys, founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, result, apply, cancellationToken);
-        await this.ProcessHistoryEventsAsync(root, targetPark, itemKeys, result, apply, cancellationToken);
+        await this.ProcessImagesAsync(root, targetPark, itemKeys, founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, imageKeys, result, apply, cancellationToken);
+        await this.ProcessHistoryEventsAsync(root, targetPark, itemKeys, imageKeys, result, apply, cancellationToken);
         ParkGraphUpsertItemSeoChanges deletionSeoChanges = await this.ProcessDeletionsAsync(root, targetPark, result, apply, cancellationToken);
         itemSeoChanges.MergeFrom(deletionSeoChanges);
 

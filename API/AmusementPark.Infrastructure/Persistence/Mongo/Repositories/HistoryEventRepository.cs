@@ -140,6 +140,22 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
+    public async Task<bool> HasParkItemTimelineEventsAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<HistoryEventDocument> builder = Builders<HistoryEventDocument>.Filter;
+        FilterDefinition<HistoryEventDocument> filter =
+            builder.Eq(document => document.EntityType, HistoryEntityType.ParkItem) &
+            builder.Eq(document => document.ContextParkId, parkId);
+
+        if (!includeHidden)
+        {
+            filter &= builder.Eq(document => document.IsVisible, true);
+        }
+
+        long count = await this.collection.CountDocumentsAsync(filter, new CountOptions { Limit = 1 }, cancellationToken);
+        return count > 0;
+    }
+
     public async Task<IReadOnlyCollection<HistoryEvent>> GetPublicVisibleEventsAsync(int limit, CancellationToken cancellationToken)
     {
         if (limit <= 0)
