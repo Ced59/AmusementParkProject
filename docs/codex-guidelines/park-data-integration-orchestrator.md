@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-06-30-r3**
+Version : **2026-06-30-r4**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -27,6 +27,8 @@ Nommer les fichiers de façon lisible et traçable, par exemple `park-slug-step-
 Le parcours officiel est uniquement celui défini ci-dessous, de l’étape 0 à l’étape 8. Ne jamais inventer une nouvelle étape, renommer une étape, insérer une étape intermédiaire, fusionner deux étapes ou réordonner le parcours pendant l’intégration d’un parc.
 
 Quand l’utilisateur demande `Go étape N`, lire l’orchestrateur puis le fichier exact de l’étape N, et produire seulement le livrable de cette étape. Ne pas recommencer une étape précédente, ne pas anticiper une étape future et ne pas remplacer l’étape demandée par un découpage jugé plus logique.
+
+Avant de produire un JSON qui contient des enums, lire `park-graph-upsert-enums.md` et utiliser uniquement les valeurs canoniques listées. Ne jamais envoyer de valeur numérique ni d’alias legacy dans un nouveau JSON.
 
 Les références ne forment pas une étape autonome :
 
@@ -101,7 +103,9 @@ Chaque clé utilisée doit être résolue par l’une de ces deux voies :
 - la clé existe déjà clairement dans l’export actualisé fourni par l’utilisateur ;
 - la clé est créée dans le même JSON, dans la section adaptée (`references`, `zones`, `items`, `images`).
 
-Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `manufacturerKey`, `operatorKey`, `founderKey`, `zoneKey`, `itemKey` ou `ownerKey` si l’export ne prouve pas que cette valeur est bien la clé attendue. Pour les constructeurs, `manufacturerKey` doit correspondre exactement à une clé de `references.manufacturers` créée dans le même JSON ou déjà présente dans l’export. Une alerte du type “ManufacturerKey non résolue” n’est jamais acceptable dans un livrable final : corriger le JSON et régénérer le fichier avant de le livrer.
+Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `manufacturerKey`, `operatorKey`, `founderKey`, `zoneKey`, `itemKey` ou `ownerKey` si l’export ne prouve pas que cette valeur est bien la clé attendue. Pour les constructeurs, `manufacturerKey` doit correspondre exactement à une clé de `references.manufacturers` créée dans le même JSON ou déjà présente dans l’export. Pour les images, `ownerKey` doit résoudre vers le parc, un parkItem, un exploitant, un fondateur ou un constructeur existant dans l’export ou créé dans le même JSON.
+
+Les alertes suivantes ne sont jamais acceptables dans un livrable final : “ManufacturerKey non résolue” et `Remote image ignored: owner could not be resolved`. Corriger le JSON, retirer le rattachement incertain ou retirer l’image avant de régénérer le fichier.
 
 Si une clé ne peut pas être résolue :
 
@@ -139,7 +143,7 @@ Sortie attendue : un JSON upsert centré sur `zones`.
 
 Lire `park-data-integration-steps/03-park-items-inventory-upsert.md`.
 
-Objectif : intégrer les attractions, restaurants, boutiques, hôtels, services, parkings, entrées, spectacles fixes, animaux/enclos et autres éléments nommables, avec dates et statuts quand ils sont fiables.
+Objectif : intégrer les attractions, restaurants, boutiques, hôtels, services, parkings, entrées, spectacles fixes, animaux/enclos et autres éléments nommables, avec dates, statuts, conditions d’accès et contraintes structurées quand ils sont fiables.
 
 Sortie attendue : un ou plusieurs JSON upsert centrés sur `items` et `references.manufacturers`. Les longues descriptions peuvent être reportées à l’étape 4 pour éviter la saturation.
 
@@ -155,7 +159,7 @@ Sortie attendue : plusieurs JSON upsert bornés par lot de descriptions.
 
 Lire `park-data-integration-steps/05-images-and-reference-enrichment.md`.
 
-Objectif : enrichir logos, images du parc, images d’items et biographies de fondateurs, exploitants ou constructeurs, avec des sources d’image techniquement importables et éditorialement fiables.
+Objectif : enrichir logos, images du parc, images d’items, biographies de fondateurs, descriptions d’exploitants et biographies de constructeurs, avec des sources d’image techniquement importables et éditorialement fiables.
 
 Sortie attendue : JSON upsert avec `images` et/ou `references`.
 
@@ -214,9 +218,13 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Pour un parc majeur, viser un traitement complet : parc, zones, attractions, restaurants, boutiques, services, hôtels, parkings, références, images, horaires et histoire.
 - Ne pas se limiter aux coasters.
 - Résoudre toutes les clés utilisées : `zoneKey`, `manufacturerKey`, `operatorKey`, `founderKey`, `ownerKey`, `itemKey`, `imageKey`.
+- Chercher systématiquement les conditions d’accès de chaque attraction et les intégrer dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.
+- Ne livrer aucune image dont le propriétaire ne peut pas être résolu à partir de l’export actualisé ou des références/items créés dans le même JSON.
+- Vérifier les descriptions ou biographies manquantes des constructeurs, fondateurs et exploitants associés au parc ; les compléter à l’étape 5 ou signaler explicitement l’absence de source fiable.
 - Préserver les données existantes en mode `merge` : IDs, images, rattachements, coordonnées, biographies et contenus validés.
 - Garder les éléments fermés mais confirmés visibles quand ils sont pertinents pour la fiche ou l’histoire.
 - Mettre les restrictions, tailles, tarifs, horaires, dates, coordonnées et données techniques dans les champs structurés, pas dans les descriptions.
+- Utiliser uniquement les valeurs enum listées dans `park-graph-upsert-enums.md`.
 - Utiliser uniquement des images externes importables par le flux technique du projet : URL HTTP(S) publique, réponse image réelle, taille acceptée et propriétaire résolu.
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Créer un article seulement si le sujet a une vraie valeur éditoriale durable.

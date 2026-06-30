@@ -5,6 +5,7 @@ Objectif : intégrer les horaires vérifiés et les exceptions datées sans inve
 ## Lire avant de commencer
 
 - `park-data-integration-orchestrator.md`
+- `park-graph-upsert-enums.md`
 - `04-rich-descriptions-localization.md` pour les libellés publics
 
 ## Export requis
@@ -63,6 +64,7 @@ Les événements nommés liés au calendrier vont d’abord dans `openingHours.l
 - Dates au format `YYYY-MM-DD`.
 - Heures au format `HH:mm`.
 - `daysOfWeek` en valeurs anglaises compatibles enum, par exemple `Monday`.
+- Les valeurs possibles de `daysOfWeek` sont listées dans `park-graph-upsert-enums.md`.
 - `labels` et `reasons` localisés avec les 8 langues quand le libellé est public.
 - `lastVerifiedAtUtc` renseigné si la date de vérification est connue.
 - Ne pas utiliser les anciens champs singuliers `label` ou `reason` : utiliser toujours `labels` et `reasons` avec `languageCode` et `value`.
@@ -122,6 +124,7 @@ Section principale : `openingHours`.
 - Aucune saison générique n’est transformée en événement historique.
 - Les exceptions datées ont une source.
 - Les libellés publics sont localisés.
+- Les `daysOfWeek` utilisent uniquement les valeurs canoniques de `park-graph-upsert-enums.md`.
 - Le calendrier n’est pas extrapolé au-delà des sources.
 - Les fermetures exceptionnelles ne sont pas confondues avec une fermeture définitive du parc.
 

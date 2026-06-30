@@ -5,6 +5,7 @@ Objectif : créer une histoire fiable, sourcée et lisible, en séparant les év
 ## Lire avant de commencer
 
 - `park-data-integration-orchestrator.md`
+- `park-graph-upsert-enums.md`
 - `04-rich-descriptions-localization.md` pour le style public des résumés
 
 ## Export requis
@@ -186,7 +187,8 @@ Section principale : `history.events`.
 ## Contrôles avant livraison
 
 - Chaque événement a un propriétaire résolu.
-- Chaque `eventType` est compatible avec `park` ou `parkItem`.
+- Chaque `eventType` est compatible avec `park` ou `parkItem` selon les valeurs de `park-graph-upsert-enums.md`.
+- `entityType`, `datePrecision` et les types de blocs d’article utilisent les valeurs canoniques de `park-graph-upsert-enums.md`.
 - La date respecte la précision disponible : année, mois ou jour.
 - Les titres et résumés importants sont localisés dans les 8 langues quand le lot est complet.
 - Les articles ont un vrai angle éditorial.

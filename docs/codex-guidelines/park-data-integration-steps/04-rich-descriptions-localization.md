@@ -5,6 +5,7 @@ Objectif : produire les descriptions publiques longues, naturelles et utiles dan
 ## Lire avant de commencer
 
 - `park-data-integration-orchestrator.md`
+- `park-graph-upsert-enums.md` si le lot contient aussi des champs structurés
 
 ## Export requis
 
@@ -106,6 +107,8 @@ Formulations interdites :
 - Attraction : expérience ressentie, observations visibles, rythme, ambiance, place dans le parc, sensations fiables.
 - Restaurant, boutique, service : type de lieu, ambiance, utilité réelle, positionnement, particularité visible ou nommable.
 - Fondateur, exploitant, constructeur : biographie factuelle, réutilisable, prudente, non centrée artificiellement sur le parc courant.
+
+Les descriptions ou biographies de références peuvent être traitées ici seulement si le lot est explicitement consacré à du texte localisé. Sinon, les compléter à l’étape 5. Dans tous les cas, ne pas considérer une référence importante comme complète si elle n’a pas de biographie ou description fiable dans les 8 langues, sauf absence de sources documentée.
 
 ## Exactitude et anti-duplication
 

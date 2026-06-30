@@ -1,6 +1,20 @@
 {
-  "version": "3.1.11",
+  "version": "3.1.12",
   "history": [
+    {
+      "version": "3.1.12",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les consignes d’import de parcs couvrent plus de détails.",
+        "en": "Park import guidance covers more details.",
+        "de": "Die Anleitung zum Parkimport deckt mehr Details ab.",
+        "nl": "De begeleiding voor parkinvoer dekt meer details.",
+        "it": "Le istruzioni per importare i parchi coprono più dettagli.",
+        "es": "Las pautas de importación de parques cubren más detalles.",
+        "pl": "Wskazówki importu parków obejmują więcej szczegółów.",
+        "pt": "As orientações de importação de parques cobrem mais detalhes."
+      }
+    },
     {
       "version": "3.1.11",
       "releasedAt": "2026-06-30",

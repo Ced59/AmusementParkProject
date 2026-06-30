@@ -5,6 +5,7 @@ Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou
 ## Lire avant de commencer
 
 - `park-data-integration-orchestrator.md`
+- `park-graph-upsert-enums.md`
 - `04-rich-descriptions-localization.md` pour les biographies et descriptions de références
 
 ## Export requis
@@ -77,6 +78,18 @@ Si le propriétaire ne peut pas être résolu, ne pas inclure l’image.
 
 Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `ownerKey` si l’export ne prouve pas que cette valeur est acceptée. Pour un parkItem, `ownerKey` doit correspondre à la clé ou à l’identifiant réellement attendu par l’import selon l’export et le modèle du JSON. En cas de doute, ne pas inclure l’image et signaler le blocage.
 
+Avant de livrer un JSON avec des images, faire un contrôle croisé simple :
+
+- lister chaque `sourceUrl` ;
+- indiquer son `ownerType` attendu ;
+- indiquer son `ownerKey` ;
+- vérifier que `ownerKey` existe dans l’export actualisé ou dans le même JSON ;
+- retirer toute image dont le propriétaire ne peut pas être prouvé.
+
+Ne jamais utiliser le nom de fichier, le dossier de galerie, l’URL, une légende approximative ou un slug deviné comme `ownerKey`. Une image d’une galerie source doit être rattachée à `park` si elle représente vraiment le parc dans son ensemble, ou à un `ParkItem` seulement si l’item est déjà présent et que le lien est certain.
+
+Une alerte Preview du type `Remote image ignored: owner could not be resolved` indique une erreur de livrable. Ne pas demander à l’utilisateur d’appliquer quand même : corriger les `ownerKey`, créer la référence ou l’item manquant dans le même JSON si c’est fiable, ou retirer les images concernées et fournir un nouveau fichier téléchargeable.
+
 ## Métadonnées image
 
 Chaque image doit avoir, si possible :
@@ -105,6 +118,28 @@ Enrichir seulement les références utiles :
 Les biographies doivent être génériques et réutilisables. Ne pas écrire une bio de constructeur centrée uniquement sur le parc en cours.
 
 Pour les constructeurs majeurs, une bonne biographie peut couvrir l’origine, la période d’activité, les spécialités, les modèles marquants, l’influence dans l’industrie et des exemples connus. Pour une source limitée, rester prudent et plus court plutôt que remplir.
+
+Pour les fondateurs, une bonne biographie peut couvrir l’identité, le rôle dans la création du parc, le parcours public documenté, les dates de vie si fiables, la nationalité, la fonction ou occupation, et le lien réel avec le projet. Ne pas romancer une personne peu documentée.
+
+Pour les exploitants, utiliser `description` plutôt que `biography`. Une bonne description peut couvrir le nom légal, la période d’activité, le rôle exact dans le parc, les autres parcs ou activités connues, les changements de propriétaire, le site officiel et les coordonnées publiques si elles sont fiables.
+
+Avant de décider que l’étape 5 est inutile, auditer l’export actualisé :
+
+- constructeur lié à un item sans `biography` fiable ;
+- fondateur lié au parc sans `biography` fiable ;
+- exploitant lié au parc sans `description` fiable ;
+- référence avec dates, nom légal, site officiel, contact ou pays manquant alors qu’une source fiable existe ;
+- référence sans logo ou image pertinente alors qu’une source techniquement importable et créditable existe.
+
+S’il reste une référence importante incomplète et sourçable, l’étape 5 est `utile`. Si les sources manquent, l’étape 5 est au minimum `à décider`, avec la liste des références concernées.
+
+Champs utiles par type de référence :
+
+- fondateur : `key`, `name`, `occupation`, `birthDate`, `deathDate`, `birthPlace`, `nationalityCountryCode`, `websiteUrl`, `biography` ;
+- exploitant : `key`, `name`, `legalName`, `foundedYear`, `closedYear`, `contactDetails`, `description`, `adminReviewStatus` ;
+- constructeur : `key`, `name`, `legalName`, `foundedYear`, `closedYear`, `contactDetails`, `biography`, `isVisible`, `adminReviewStatus`.
+
+`contactDetails` peut contenir `websiteUrl`, `email`, `phoneNumber`, `street`, `city`, `postalCode`, `countryCode`, `latitude`, `longitude`.
 
 Ne pas modifier une biographie déjà validée explicitement, notamment Vekoma, sauf demande directe.
 
@@ -160,10 +195,15 @@ Sections possibles :
 
 - Toutes les URLs images sont techniquement importables selon les règles ci-dessus.
 - Tous les propriétaires sont résolus.
+- Aucune URL image ne peut produire `Remote image ignored: owner could not be resolved`.
+- Les constructeurs liés aux items ont une biographie ou une limite de source documentée.
+- Les fondateurs liés au parc ont une biographie ou une limite de source documentée.
+- Les exploitants liés au parc ont une description et des informations utiles ou une limite de source documentée.
 - Les crédits sont lisibles pour un visiteur.
 - Les logos ne sont pas confondus avec des photos.
 - Les images historiques ne prétendent pas montrer une date ou un état qu’elles ne montrent pas.
 - Les biographies ne créent pas de doublons de références.
+- Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
 
 ## Après Apply
 
