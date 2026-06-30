@@ -1,6 +1,20 @@
 {
-  "version": "3.0.6",
+  "version": "3.1.0",
   "history": [
+    {
+      "version": "3.1.0",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les histoires de parcs et d’attractions arrivent sur le site.",
+        "en": "Park and attraction histories arrive on the site.",
+        "de": "Geschichten von Parks und Attraktionen kommen auf die Website.",
+        "nl": "Geschiedenissen van parken en attracties komen naar de site.",
+        "it": "Le storie di parchi e attrazioni arrivano sul sito.",
+        "es": "Llegan las historias de parques y atracciones al sitio.",
+        "pl": "Historie parków i atrakcji trafiają na stronę.",
+        "pt": "As histórias de parques e atrações chegam ao site."
+      }
+    },
     {
       "version": "3.0.6",
       "releasedAt": "2026-06-30",
