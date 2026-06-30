@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -15,6 +16,7 @@ using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
@@ -35,6 +37,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly IImageRepository imageRepository;
     private readonly IParkOpeningHoursRepository? openingHoursRepository;
+    private readonly IHistoryEventRepository? historyEventRepository;
 
     public ExportParkGraphJsonQueryHandler(
         IParkRepository parkRepository,
@@ -44,7 +47,8 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
         IParkOperatorRepository parkOperatorRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         IImageRepository imageRepository,
-        IParkOpeningHoursRepository? openingHoursRepository = null)
+        IParkOpeningHoursRepository? openingHoursRepository = null,
+        IHistoryEventRepository? historyEventRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -54,6 +58,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.imageRepository = imageRepository;
         this.openingHoursRepository = openingHoursRepository;
+        this.historyEventRepository = historyEventRepository;
     }
 
     public async Task<ApplicationResult<ParkGraphJsonExportResult>> HandleAsync(ExportParkGraphJsonQuery query, CancellationToken cancellationToken = default)
@@ -102,6 +107,9 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
         ParkOpeningHoursSchedule? openingHours = this.openingHoursRepository is null
             ? null
             : await this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        IReadOnlyCollection<HistoryEvent> historyEvents = this.historyEventRepository is null
+            ? Array.Empty<HistoryEvent>()
+            : await this.historyEventRepository.GetParkTimelineAsync(park.Id, true, true, itemIds, cancellationToken);
 
         DateTime exportedAtUtc = DateTime.UtcNow;
         ParkGraphExportDocument document = new ParkGraphExportDocument
@@ -129,6 +137,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
                 .Select(image => MapImage(image, park.Id))
                 .ToList(),
             OpeningHours = openingHours is null ? null : MapOpeningHours(openingHours),
+            History = MapHistory(historyEvents),
             Metadata = new ParkGraphExportMetadata
             {
                 ExportedAtUtc = exportedAtUtc,

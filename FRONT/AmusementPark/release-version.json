@@ -1,6 +1,20 @@
 {
-  "version": "3.1.13",
+  "version": "3.1.14",
   "history": [
+    {
+      "version": "3.1.14",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "L’export de parc inclut mieux l’histoire.",
+        "en": "Park export includes history better.",
+        "de": "Der Parkexport enthält Geschichte besser.",
+        "nl": "Parkexport neemt geschiedenis beter mee.",
+        "it": "L’esportazione del parco include meglio la storia.",
+        "es": "La exportación del parque incluye mejor la historia.",
+        "pl": "Eksport parku lepiej obejmuje historię.",
+        "pt": "A exportação do parque inclui melhor a história."
+      }
+    },
     {
       "version": "3.1.13",
       "releasedAt": "2026-06-30",

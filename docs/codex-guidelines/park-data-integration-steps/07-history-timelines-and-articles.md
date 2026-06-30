@@ -109,6 +109,29 @@ Structure recommandée :
 
 Le style doit être naturel, clair, agréable à lire, documenté, orienté lecteur, non promotionnel, non mécanique et non académique.
 
+## Style des événements et articles
+
+Les titres, résumés et blocs d’articles visibles publiquement doivent se lire comme un récit utile pour un visiteur curieux, pas comme une note d’audit ou une justification interne.
+
+Pour un événement, écrire ce qui s’est passé, ce que cela change dans l’histoire du parc ou de l’attraction, et pourquoi le fait est intéressant à retenir. La prudence documentaire doit rester dans les sources, la précision de date ou les notes de livraison, pas dans le texte public.
+
+Interdits dans les résumés et articles publics :
+
+- formules mécaniques du type “à cette date, le parc présente déjà…” ;
+- “repère documentaire prudent” ;
+- “présence publique confirmée” ;
+- “sans être traité comme une date exacte” ;
+- “élément documenté officiellement” utilisé comme angle principal ;
+- mentions d’audit, d’upsert, de Preview, de source faible, de champ manquant ou de stratégie de prudence ;
+- phrases qui expliquent la méthode de recherche plutôt que l’histoire racontée.
+
+Quand une date est seulement une attestation documentaire, formuler naturellement :
+
+- bon : “La Frigate est déjà mentionnée par le parc en 2010, ce qui confirme sa présence dans l’offre de cette période.” ;
+- mauvais : “À cette date, le parc présente déjà Frigate dans ses pages d’attractions. C’est un repère documentaire prudent…”.
+
+Si l’information est trop maigre pour produire un résumé humain et intéressant, ne pas créer d’événement visible, ou garder l’événement minimal avec une source et signaler la limite dans `metadata.notes`.
+
 Pour un article historique, privilégier chronologie, fondateurs, exploitants successifs, attractions importantes, périodes de développement, transformation ou fermeture sourcée, traces actuelles et rôle patrimonial.
 
 Pour une visite terrain ou une vidéo, préciser la date, distinguer faits et ressentis, mentionner les observations réelles et ne pas transformer une observation ponctuelle en règle générale.
@@ -206,6 +229,7 @@ Section principale : `history.events`.
 - Les URLs archivées pointent vers une capture consultable de la page utile, pas seulement vers une page d’archive vide.
 - Les titres et résumés importants sont localisés dans les 8 langues quand le lot est complet.
 - Les articles ont un vrai angle éditorial.
+- Les titres, résumés et blocs d’articles ne contiennent aucune formulation d’audit interne ou justification documentaire mécanique.
 - Les images référencées existent déjà ou sont créées dans le même JSON.
 - Les événements sensibles sont factuels, sourcés et sans dramatisation.
 

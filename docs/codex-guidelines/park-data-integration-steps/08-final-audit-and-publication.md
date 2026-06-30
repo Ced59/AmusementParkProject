@@ -44,6 +44,7 @@ Vérifier :
 - titres et résumés historiques lisibles ;
 - articles utiles et non redondants.
 - les textes ne contiennent pas “upsert”, “SEO”, “contenu public” ou autre jargon interne.
+- les événements et articles ne contiennent pas “repère documentaire prudent”, “présence publique confirmée”, justification de méthode, note d’audit ou formulation mécanique équivalente.
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 
 ## Audit conditions d’accès
@@ -97,6 +98,7 @@ Vérifier :
 - timeline des parkItems majeurs cohérente ;
 - relocalisations rattachées au bon propriétaire ;
 - articles seulement quand il existe un vrai angle ;
+- résumés d’événements écrits pour les visiteurs, pas comme des notes d’audit documentaire ;
 - sources présentes sur les événements importants ;
 - toutes les URLs de sources d’articles et d’événements répondent au moment de l’audit ;
 - aucune source ne pointe vers une 404, 410, erreur serveur, soft-404, page d’accueil de remplacement ou URL inventée ;

@@ -1,6 +1,7 @@
 using System.Text.Json;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Handlers;
@@ -10,8 +11,10 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
 
@@ -152,6 +155,112 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
             SourceUrl = "https://source.example.test/manufacturer.png",
         };
 
+        HistoryEvent parkHistoryEvent = new HistoryEvent
+        {
+            Id = "history-park-1",
+            Key = "park-opening",
+            EntityType = HistoryEntityType.Park,
+            OwnerId = "park-1",
+            ParkId = "park-1",
+            Year = 1987,
+            Month = 5,
+            Day = 20,
+            DatePrecision = HistoryDatePrecision.Day,
+            EventType = ParkHistoryEventType.Opening.ToString(),
+            IsMajor = true,
+            IsVisible = true,
+            Slug = "park-opening",
+            MainImageId = "image-park-1",
+            Titles = new List<LocalizedText>
+            {
+                new LocalizedText("fr", "Ouverture du parc"),
+            },
+            Summaries = new List<LocalizedText>
+            {
+                new LocalizedText("fr", "Le parc ouvre au public avec ses premieres attractions."),
+            },
+            Sources = new List<HistorySourceReference>
+            {
+                new HistorySourceReference
+                {
+                    Label = "Archive officielle",
+                    Url = "https://source.example.test/opening",
+                    AccessedAt = "2026-06-30",
+                },
+            },
+            Article = new HistoryArticle
+            {
+                Slug = "park-opening-article",
+                Titles = new List<LocalizedText>
+                {
+                    new LocalizedText("fr", "Le parc ouvre ses portes"),
+                },
+                Subtitles = new List<LocalizedText>
+                {
+                    new LocalizedText("fr", "Une nouvelle destination de loisirs arrive en Ile-de-France."),
+                },
+                Summaries = new List<LocalizedText>
+                {
+                    new LocalizedText("fr", "L'ouverture marque le lancement du parc et de ses attractions."),
+                },
+                MainImageId = "image-park-1",
+                Blocks = new List<HistoryArticleBlock>
+                {
+                    new HistoryArticleBlock
+                    {
+                        Id = "block-1",
+                        Type = HistoryArticleBlockType.Paragraph,
+                        SortOrder = 1,
+                        Texts = new List<LocalizedText>
+                        {
+                            new LocalizedText("fr", "Le premier jour donne le ton du parc et de son offre familiale."),
+                        },
+                        ImageIds = new List<string>
+                        {
+                            "image-park-1",
+                        },
+                        Captions = new List<LocalizedText>
+                        {
+                            new LocalizedText("fr", "Vue du parc au moment de son ouverture."),
+                        },
+                    },
+                },
+                Sources = new List<HistorySourceReference>
+                {
+                    new HistorySourceReference
+                    {
+                        Label = "Dossier historique",
+                        Url = "https://source.example.test/opening-article",
+                        AccessedAt = "2026-06-30",
+                    },
+                },
+                IsPublished = true,
+            },
+        };
+
+        HistoryEvent itemHistoryEvent = new HistoryEvent
+        {
+            Id = "history-item-1",
+            Key = "item-opening",
+            EntityType = HistoryEntityType.ParkItem,
+            OwnerId = "item-1",
+            ParkItemId = "item-1",
+            ContextParkId = "park-1",
+            Year = 1988,
+            DatePrecision = HistoryDatePrecision.Year,
+            EventType = ParkItemHistoryEventType.Opening.ToString(),
+            IsMajor = false,
+            IsVisible = true,
+            Titles = new List<LocalizedText>
+            {
+                new LocalizedText("fr", "Drop tower ouvre au public"),
+            },
+            Summaries = new List<LocalizedText>
+            {
+                new LocalizedText("fr", "L'attraction rejoint l'offre du parc."),
+            },
+        };
+
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
@@ -199,6 +308,16 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
             .Setup(repository => repository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Contains("manufacturer-1")), null, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { manufacturerImage });
 
+        Mock<IHistoryEventRepository> historyEventRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        historyEventRepository
+            .Setup(repository => repository.GetParkTimelineAsync(
+                "park-1",
+                true,
+                true,
+                It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Contains("item-1")),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { parkHistoryEvent, itemHistoryEvent });
+
         ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
             parkRepository.Object,
             zoneRepository.Object,
@@ -206,7 +325,9 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
             founderRepository.Object,
             operatorRepository.Object,
             manufacturerRepository.Object,
-            imageRepository.Object);
+            imageRepository.Object,
+            null,
+            historyEventRepository.Object);
 
         ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
             new ExportParkGraphJsonQuery("park-1"),
@@ -220,6 +341,7 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         JsonElement root = document.RootElement;
 
         Assert.Equal("AmusementParkParkGraphUpsert", root.GetProperty("documentType").GetString());
+        Assert.Equal("2026-06-30", root.GetProperty("schemaVersion").GetString());
         Assert.Equal("park-1", root.GetProperty("identity").GetProperty("parkId").GetString());
         Assert.Equal("Export Park", root.GetProperty("park").GetProperty("name").GetString());
         Assert.Equal("Validated", root.GetProperty("park").GetProperty("adminReviewStatus").GetString());
@@ -245,6 +367,33 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         Assert.Equal("https://source.example.test/manufacturer.png", manufacturerExportImage.GetProperty("sourceUrl").GetString());
         Assert.Equal("/images/image-manufacturer-1", manufacturerExportImage.GetProperty("internalUrl").GetString());
         Assert.False(manufacturerExportImage.GetProperty("withWatermark").GetBoolean());
+        JsonElement historyEvents = root.GetProperty("history").GetProperty("events");
+        Assert.Equal(2, historyEvents.GetArrayLength());
+        JsonElement parkExportEvent = historyEvents.EnumerateArray().Single(historyEvent => historyEvent.GetProperty("key").GetString() == "park-opening");
+        Assert.Equal("Park", parkExportEvent.GetProperty("entityType").GetString());
+        Assert.Equal("park", parkExportEvent.GetProperty("owner").GetString());
+        Assert.Equal("park-1", parkExportEvent.GetProperty("ownerId").GetString());
+        Assert.Equal("Opening", parkExportEvent.GetProperty("eventType").GetString());
+        Assert.Equal(1987, parkExportEvent.GetProperty("year").GetInt32());
+        Assert.Equal(5, parkExportEvent.GetProperty("month").GetInt32());
+        Assert.Equal(20, parkExportEvent.GetProperty("day").GetInt32());
+        Assert.Equal("Day", parkExportEvent.GetProperty("datePrecision").GetString());
+        Assert.Equal("https://source.example.test/opening", parkExportEvent.GetProperty("sources")[0].GetProperty("url").GetString());
+        JsonElement parkExportArticle = parkExportEvent.GetProperty("article");
+        Assert.True(parkExportArticle.GetProperty("isPublished").GetBoolean());
+        Assert.Equal("park-opening-article", parkExportArticle.GetProperty("slug").GetString());
+        Assert.Equal("Paragraph", parkExportArticle.GetProperty("blocks")[0].GetProperty("type").GetString());
+        Assert.Equal("image-park-1", parkExportArticle.GetProperty("blocks")[0].GetProperty("imageIds")[0].GetString());
+        Assert.Equal("https://source.example.test/opening-article", parkExportArticle.GetProperty("sources")[0].GetProperty("url").GetString());
+        JsonElement itemExportEvent = historyEvents.EnumerateArray().Single(historyEvent => historyEvent.GetProperty("key").GetString() == "item-opening");
+        Assert.Equal("ParkItem", itemExportEvent.GetProperty("entityType").GetString());
+        Assert.Equal("parkItem", itemExportEvent.GetProperty("owner").GetString());
+        Assert.Equal("item-1", itemExportEvent.GetProperty("ownerId").GetString());
+        Assert.Equal("item-1", itemExportEvent.GetProperty("parkItemId").GetString());
+        Assert.Equal("item-1", itemExportEvent.GetProperty("itemKey").GetString());
+        Assert.Equal("item-1", itemExportEvent.GetProperty("parkItemKey").GetString());
+        Assert.Equal("park-1", itemExportEvent.GetProperty("contextParkId").GetString());
+        Assert.Equal("Year", itemExportEvent.GetProperty("datePrecision").GetString());
 
         parkRepository.VerifyAll();
         zoneRepository.VerifyAll();
@@ -253,5 +402,6 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         operatorRepository.VerifyAll();
         manufacturerRepository.VerifyAll();
         imageRepository.VerifyAll();
+        historyEventRepository.VerifyAll();
     }
 }
