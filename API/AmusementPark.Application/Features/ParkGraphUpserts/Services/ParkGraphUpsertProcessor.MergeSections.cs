@@ -55,10 +55,18 @@ public sealed partial class ParkGraphUpsertProcessor
             AddChange(change, "countryCode", target.CountryCode, source.CountryCode);
             AddChange(change, "type", target.Type, source.Type);
             AddChange(change, "status", target.Status, source.Status);
+            AddChange(change, "openingDate", target.OpeningDate, source.OpeningDate);
+            AddChange(change, "closingDate", target.ClosingDate, source.ClosingDate);
+            AddChange(change, "openingDateText", target.OpeningDateText, source.OpeningDateText);
+            AddChange(change, "closingDateText", target.ClosingDateText, source.ClosingDateText);
             target.Name = source.Name;
             target.CountryCode = source.CountryCode;
             target.Type = source.Type;
             target.Status = source.Status;
+            target.OpeningDate = source.OpeningDate;
+            target.ClosingDate = source.ClosingDate;
+            target.OpeningDateText = source.OpeningDateText;
+            target.ClosingDateText = source.ClosingDateText;
         }
 
         if (ShouldTakeSourceSection(sections, "ownership"))

@@ -13,6 +13,14 @@ public sealed class ParkCreateDto
 
     public ParkStatusDto Status { get; set; } = ParkStatusDto.Operating;
 
+    public DateTime? OpeningDate { get; set; }
+
+    public DateTime? ClosingDate { get; set; }
+
+    public string? OpeningDateText { get; set; }
+
+    public string? ClosingDateText { get; set; }
+
     public string? FounderId { get; set; }
 
     public string? OperatorId { get; set; }

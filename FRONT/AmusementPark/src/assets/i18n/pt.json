@@ -882,6 +882,12 @@
       "cityPlaceholder": "Nome da cidade",
       "postalCode": "Código postal",
       "postalCodePlaceholder": "Código postal",
+      "openingDate": "Data de abertura",
+      "openingDateText": "Precisão da abertura",
+      "openingDateTextPlaceholder": "Ex. 1987 ou maio de 1987",
+      "closingDate": "Data de encerramento definitivo",
+      "closingDateText": "Precisão do encerramento",
+      "closingDateTextPlaceholder": "Ex. 1991 ou outubro de 1991",
       "editPage": {
         "createTitle": "Criar um novo parque",
         "updateTitle": "Editar parque \"{{name}}\"",

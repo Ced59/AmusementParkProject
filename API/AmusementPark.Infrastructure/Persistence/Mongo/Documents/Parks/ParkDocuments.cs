@@ -182,6 +182,22 @@ public sealed class ParkDocument : MongoGeolocatedDocumentBase
     [BsonRepresentation(BsonType.String)]
     public ParkStatus Status { get; set; } = ParkStatus.Operating;
 
+    [BsonElement("openingDate")]
+    [BsonIgnoreIfNull]
+    public DateTime? OpeningDate { get; set; }
+
+    [BsonElement("closingDate")]
+    [BsonIgnoreIfNull]
+    public DateTime? ClosingDate { get; set; }
+
+    [BsonElement("openingDateText")]
+    [BsonIgnoreIfNull]
+    public string? OpeningDateText { get; set; }
+
+    [BsonElement("closingDateText")]
+    [BsonIgnoreIfNull]
+    public string? ClosingDateText { get; set; }
+
     [BsonElement("founderId")]
     [BsonIgnoreIfNull]
     [BsonRepresentation(BsonType.String)]

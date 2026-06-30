@@ -12,6 +12,10 @@ export interface Park {
   status?: ParkStatus;
   founderId?: string | null;
   operatorId?: string | null;
+  openingDate?: string | null;
+  closingDate?: string | null;
+  openingDateText?: string | null;
+  closingDateText?: string | null;
   latitude: number;
   longitude: number;
   isVisible?: boolean;

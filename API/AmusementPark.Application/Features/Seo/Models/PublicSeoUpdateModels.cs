@@ -30,7 +30,9 @@ public sealed record PublicSeoParkSnapshot(
     bool IsVisible,
     ParkStatus Status,
     AdminReviewStatus AdminReviewStatus,
-    DateTime? UpdatedAtUtc)
+    DateTime? UpdatedAtUtc,
+    DateTime? OpeningDate = null,
+    DateTime? ClosingDate = null)
 {
     public static PublicSeoParkSnapshot? FromPark(Park? park)
     {
@@ -45,7 +47,9 @@ public sealed record PublicSeoParkSnapshot(
             park.IsVisible,
             park.Status,
             park.AdminReviewStatus,
-            park.UpdatedAtUtc);
+            park.UpdatedAtUtc,
+            park.OpeningDate,
+            park.ClosingDate);
     }
 
     public static IReadOnlyCollection<PublicSeoParkSnapshot> FromParks(IEnumerable<Park?> parks)
@@ -124,7 +128,9 @@ public sealed record PublicSeoParkItemSnapshot(
     bool IsVisible,
     AdminReviewStatus AdminReviewStatus,
     DateTime? UpdatedAtUtc,
-    string? Status = null)
+    string? Status = null,
+    DateTime? OpeningDate = null,
+    DateTime? ClosingDate = null)
 {
     public static PublicSeoParkItemSnapshot? FromParkItem(ParkItem? item)
     {
@@ -141,7 +147,9 @@ public sealed record PublicSeoParkItemSnapshot(
             item.IsVisible,
             item.AdminReviewStatus,
             item.UpdatedAtUtc,
-            item.AttractionDetails?.Status);
+            item.AttractionDetails?.Status,
+            item.AttractionDetails?.OpeningDate,
+            item.AttractionDetails?.ClosingDate);
     }
 
     public static IReadOnlyCollection<PublicSeoParkItemSnapshot> FromParkItems(IEnumerable<ParkItem?> items)

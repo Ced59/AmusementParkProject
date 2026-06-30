@@ -25,6 +25,14 @@ public sealed class Park : GeolocatedEntityBase
 
     public ParkStatus Status { get; set; } = ParkStatus.Operating;
 
+    public DateTime? OpeningDate { get; set; }
+
+    public DateTime? ClosingDate { get; set; }
+
+    public string? OpeningDateText { get; set; }
+
+    public string? ClosingDateText { get; set; }
+
     /// <summary>
     /// Identifiant du fondateur associé.
     /// </summary>

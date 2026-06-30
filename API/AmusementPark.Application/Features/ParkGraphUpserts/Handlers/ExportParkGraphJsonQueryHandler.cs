@@ -21,7 +21,7 @@ using AmusementPark.Core.Localization;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Handlers;
 
-public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>
+public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>
 {
     private static readonly JsonSerializerOptions ExportJsonOptions = BuildExportJsonOptions();
     private const string OpeningHoursDateFormat = "yyyy-MM-dd";
@@ -209,34 +209,6 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
             Id = park.Id,
             Name = park.Name,
             CountryCode = park.CountryCode,
-        };
-    }
-
-    private static ParkGraphExportPark MapPark(Park park)
-    {
-        return new ParkGraphExportPark
-        {
-            Id = park.Id,
-            Name = park.Name,
-            CountryCode = park.CountryCode,
-            Type = park.Type,
-            Status = park.Status,
-            FounderId = park.FounderId,
-            FounderKey = park.FounderId,
-            OperatorId = park.OperatorId,
-            OperatorKey = park.OperatorId,
-            Descriptions = CopyLocalizedTexts(park.Descriptions),
-            IsVisible = park.IsVisible,
-            AdminReviewStatus = park.AdminReviewStatus,
-            IsFeaturedOnHome = park.IsFeaturedOnHome,
-            FeaturedHomeOrder = park.FeaturedHomeOrder,
-            IsFeaturedOnHomeSponsored = park.IsFeaturedOnHomeSponsored,
-            WebsiteUrl = park.WebsiteUrl,
-            Street = park.Street,
-            City = park.City,
-            PostalCode = park.PostalCode,
-            Latitude = park.Position?.Latitude,
-            Longitude = park.Position?.Longitude,
         };
     }
 

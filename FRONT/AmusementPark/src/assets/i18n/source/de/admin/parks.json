@@ -29,6 +29,12 @@
       "postalCode": "Postleitzahl",
       "postalCodePlaceholder": "PLZ",
       "countryPlaceholder": "Land auswählen",
+      "openingDate": "Eröffnungsdatum",
+      "openingDateText": "Eröffnungsangabe",
+      "openingDateTextPlaceholder": "z. B. 1987 oder Mai 1987",
+      "closingDate": "Endgültiges Schließungsdatum",
+      "closingDateText": "Schließungsangabe",
+      "closingDateTextPlaceholder": "z. B. 1991 oder Oktober 1991",
       "editPage": {
         "createTitle": "Neuen Park erstellen",
         "updateTitle": "Park „{{name}}“ bearbeiten",

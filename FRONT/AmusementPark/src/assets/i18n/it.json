@@ -882,6 +882,12 @@
       "cityPlaceholder": "Nome della città",
       "postalCode": "CAP",
       "postalCodePlaceholder": "Codice postale",
+      "openingDate": "Data di apertura",
+      "openingDateText": "Precisione apertura",
+      "openingDateTextPlaceholder": "Es. 1987 o maggio 1987",
+      "closingDate": "Data di chiusura definitiva",
+      "closingDateText": "Precisione chiusura",
+      "closingDateTextPlaceholder": "Es. 1991 o ottobre 1991",
       "editPage": {
         "createTitle": "Crea un nuovo parco",
         "updateTitle": "Modifica il parco \"{{name}}\"",

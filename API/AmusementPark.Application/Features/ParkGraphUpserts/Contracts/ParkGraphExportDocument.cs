@@ -62,6 +62,14 @@ public sealed class ParkGraphExportPark
 
     public ParkStatus Status { get; init; } = ParkStatus.Operating;
 
+    public DateTime? OpeningDate { get; init; }
+
+    public DateTime? ClosingDate { get; init; }
+
+    public string? OpeningDateText { get; init; }
+
+    public string? ClosingDateText { get; init; }
+
     public string? FounderId { get; init; }
 
     public string? FounderKey { get; init; }

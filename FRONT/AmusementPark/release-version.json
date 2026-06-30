@@ -1,6 +1,20 @@
 {
-  "version": "3.1.6",
+  "version": "3.1.7",
   "history": [
+    {
+      "version": "3.1.7",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les histoires se créent aussi avec les dates des parcs.",
+        "en": "Histories now also use park dates.",
+        "de": "Verläufe nutzen jetzt auch Parkdaten.",
+        "nl": "Geschiedenissen gebruiken nu ook parkdata.",
+        "it": "Le storie usano ora anche le date dei parchi.",
+        "es": "Las historias usan ahora también las fechas de los parques.",
+        "pl": "Historie używają teraz także dat parków.",
+        "pt": "As histórias usam agora também as datas dos parques."
+      }
+    },
     {
       "version": "3.1.6",
       "releasedAt": "2026-06-30",

@@ -51,6 +51,12 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             query.IncludeParkItemEvents,
             query.ParkItemIds,
             cancellationToken);
+        IReadOnlyCollection<HistoryEvent> automaticParkEvents = AutomaticHistoryEventFactory.CreateParkLifecycleEvents(park);
+        if (automaticParkEvents.Count > 0)
+        {
+            events = AutomaticHistoryEventFactory.MergeWithExplicitEvents(events, automaticParkEvents);
+        }
+
         IReadOnlyCollection<ParkItem> automaticParkItemCandidates = query.IncludeParkItemEvents
             ? await this.LoadAutomaticParkItemCandidatesAsync(park.Id, query.IncludeHidden, query.ParkItemIds, cancellationToken)
             : Array.Empty<ParkItem>();

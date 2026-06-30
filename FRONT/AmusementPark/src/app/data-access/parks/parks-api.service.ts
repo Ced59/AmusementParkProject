@@ -26,6 +26,10 @@ interface ParkWriteRequest {
   status?: Park['status'] | null;
   founderId?: string | null;
   operatorId?: string | null;
+  openingDate?: string | null;
+  closingDate?: string | null;
+  openingDateText?: string | null;
+  closingDateText?: string | null;
   latitude: number;
   longitude: number;
   descriptions: LocalizedItem<string>[];
@@ -201,6 +205,10 @@ export class ParksApiService {
       status: park.status ?? 'Operating',
       founderId: park.founderId ?? null,
       operatorId: park.operatorId ?? null,
+      openingDate: park.openingDate ?? null,
+      closingDate: park.closingDate ?? null,
+      openingDateText: park.openingDateText ?? null,
+      closingDateText: park.closingDateText ?? null,
       latitude: park.latitude,
       longitude: park.longitude,
       descriptions: park.descriptions ?? [],
