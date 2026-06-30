@@ -45,6 +45,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 - Tout `manufacturerKey`, `zoneKey`, `operatorKey`, `founderKey` ou `ownerKey` utilisé doit être résolu dans le même JSON ou par une identité existante sûre.
 - Les horaires, dates d’ouverture et événements datés doivent être vérifiés avec des sources actuelles et ne doivent pas être mélangés aux tarifs si les tarifs ne sont pas implémentés.
 - Les articles doivent apporter une vraie valeur éditoriale, avec des sources vérifiées, et ne doivent pas devenir des fiches techniques déguisées.
+- Les événements et articles historiques doivent être rédigés pour les visiteurs, sans phrases d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur la présence confirmée d’un élément.
 - Les sources d’articles et d’événements doivent être des URL HTTP(S) valides et joignables au moment de la génération. Ne jamais livrer de source en 404, 410, erreur serveur, soft-404 ou URL inventée.
 - Pour une intégration complète, ne jamais enchaîner deux étapes sans export actualisé du parc après l’application de l’étape précédente.
 - Les JSON upsert doivent rester bornés : une étape, un lot cohérent, aucune copie massive de l’export complet si seules quelques entités changent.
