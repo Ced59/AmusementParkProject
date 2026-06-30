@@ -136,6 +136,7 @@
         "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
         "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
         "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow.",
+        "history": "Gestire timeline, tappe documentate e articoli storici.",
         "parkWeather": "Monitorare aggiornamenti pianificati di dati pubblici."
       },
       "title": "Pannello di controllo",
@@ -165,6 +166,113 @@
       "invalidCoordinatesOnly": "Mancanti o 0,0"
     },
     "hidden": "Nascosto",
+    "history": {
+      "navTitle": "Timeline storiche",
+      "kicker": "Storia",
+      "title": "Storia di parchi e item",
+      "subtitle": "Gestisci eventi datati, vite degli item tra più parchi, tappe documentate e articoli.",
+      "entityTypes": {
+        "Park": "Parco",
+        "ParkItem": "ParkItem"
+      },
+      "precision": {
+        "Year": "Anno",
+        "Month": "Mese",
+        "Day": "Giorno"
+      },
+      "filters": {
+        "title": "Filtri",
+        "entityType": "Entità",
+        "allEntities": "Tutte le entità",
+        "ownerId": "Id proprietario",
+        "ownerIdPlaceholder": "Id parco o item",
+        "search": "Cerca",
+        "searchPlaceholder": "Titolo, chiave o fonte",
+        "includeHidden": "Includi eventi nascosti",
+        "submit": "Filtra",
+        "reset": "Reimposta"
+      },
+      "actions": {
+        "createPark": "Evento parco",
+        "createParkItem": "Evento item",
+        "edit": "Modifica",
+        "delete": "Elimina",
+        "insertArticleTemplate": "Modello articolo",
+        "save": "Salva",
+        "cancel": "Annulla"
+      },
+      "list": {
+        "title": "Eventi",
+        "count": "{{count}} evento/i",
+        "loading": "Caricamento eventi.",
+        "empty": "Nessun evento corrisponde a questi filtri.",
+        "major": "Importante",
+        "visible": "Visibile",
+        "hidden": "Nascosto",
+        "columns": {
+          "title": "Titolo",
+          "entity": "Entità",
+          "owner": "Proprietario",
+          "date": "Data",
+          "type": "Tipo",
+          "state": "Stato",
+          "actions": "Azioni"
+        }
+      },
+      "editor": {
+        "createTitle": "Nuovo evento storico",
+        "updateTitle": "Modifica evento storico",
+        "identity": "Identità",
+        "date": "Data",
+        "context": "Contesto",
+        "lifecycle": "Cambiamenti di ciclo di vita",
+        "flags": "Visibilità",
+        "localized": "Testo localizzato",
+        "relationships": "Relazioni e fonti",
+        "article": "Articolo",
+        "key": "Chiave stabile",
+        "entityType": "Tipo entità",
+        "ownerId": "Id proprietario",
+        "parkId": "Id parco",
+        "parkItemId": "Id ParkItem",
+        "contextParkId": "Id parco contesto",
+        "year": "Anno",
+        "month": "Mese",
+        "day": "Giorno",
+        "datePrecision": "Precisione",
+        "eventType": "Tipo di evento",
+        "slug": "Slug",
+        "mainImageId": "Id immagine principale",
+        "previousName": "Nome precedente",
+        "newName": "Nuovo nome",
+        "previousLogoImageId": "Id logo precedente",
+        "newLogoImageId": "Id nuovo logo",
+        "previousOperatorId": "Id operatore precedente",
+        "newOperatorId": "Id nuovo operatore",
+        "locationLabel": "Etichetta luogo",
+        "isMajor": "Evento importante con articolo",
+        "isVisible": "Visibile sulle pagine pubbliche",
+        "titlesJson": "JSON titoli",
+        "summariesJson": "JSON riepiloghi",
+        "relatedParkIdsJson": "JSON id parchi collegati",
+        "relatedParkItemIdsJson": "JSON id item collegati",
+        "sourcesJson": "JSON fonti",
+        "articleJson": "JSON articolo",
+        "articleHint": "Gli eventi importanti possono contenere un articolo pubblicato con blocchi localizzati, immagini e fonti.",
+        "jsonHint": "Campi localizzati e contenuto articolo sono modificati come JSON strutturato."
+      },
+      "messages": {
+        "saved": "Evento storico salvato.",
+        "deleted": "Evento storico eliminato."
+      },
+      "errors": {
+        "loadFailed": "Impossibile caricare gli eventi storici.",
+        "required": "Completa i campi obbligatori.",
+        "invalidJson": "Un campo JSON non è valido.",
+        "saveFailed": "Impossibile salvare questo evento.",
+        "deleteFailed": "Impossibile eliminare questo evento."
+      }
+    },
     "images": {
       "title": "Immagini",
       "kicker": "M15 - Libreria media",

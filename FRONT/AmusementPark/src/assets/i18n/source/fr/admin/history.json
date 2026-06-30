@@ -1,0 +1,111 @@
+{
+  "admin": {
+    "history": {
+      "navTitle": "Timelines historiques",
+      "kicker": "Histoire",
+      "title": "Histoire des parcs et items",
+      "subtitle": "Gère les événements datés, les vies d’items entre plusieurs parcs, les jalons sourcés et les articles.",
+      "entityTypes": {
+        "Park": "Parc",
+        "ParkItem": "ParkItem"
+      },
+      "precision": {
+        "Year": "Année",
+        "Month": "Mois",
+        "Day": "Jour"
+      },
+      "filters": {
+        "title": "Filtres",
+        "entityType": "Entité",
+        "allEntities": "Toutes les entités",
+        "ownerId": "Id propriétaire",
+        "ownerIdPlaceholder": "Id de parc ou d’item",
+        "search": "Recherche",
+        "searchPlaceholder": "Titre, clé ou source",
+        "includeHidden": "Inclure les événements masqués",
+        "submit": "Filtrer",
+        "reset": "Réinitialiser"
+      },
+      "actions": {
+        "createPark": "Événement parc",
+        "createParkItem": "Événement item",
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "insertArticleTemplate": "Modèle d’article",
+        "save": "Enregistrer",
+        "cancel": "Annuler"
+      },
+      "list": {
+        "title": "Événements",
+        "count": "{{count}} événement(s)",
+        "loading": "Chargement des événements.",
+        "empty": "Aucun événement ne correspond aux filtres.",
+        "major": "Majeur",
+        "visible": "Visible",
+        "hidden": "Masqué",
+        "columns": {
+          "title": "Titre",
+          "entity": "Entité",
+          "owner": "Propriétaire",
+          "date": "Date",
+          "type": "Type",
+          "state": "État",
+          "actions": "Actions"
+        }
+      },
+      "editor": {
+        "createTitle": "Nouvel événement historique",
+        "updateTitle": "Modifier l’événement historique",
+        "identity": "Identité",
+        "date": "Date",
+        "context": "Contexte",
+        "lifecycle": "Changements de vie",
+        "flags": "Visibilité",
+        "localized": "Texte localisé",
+        "relationships": "Relations et sources",
+        "article": "Article",
+        "key": "Clé stable",
+        "entityType": "Type d’entité",
+        "ownerId": "Id propriétaire",
+        "parkId": "Id du parc",
+        "parkItemId": "Id du parkItem",
+        "contextParkId": "Id du parc contexte",
+        "year": "Année",
+        "month": "Mois",
+        "day": "Jour",
+        "datePrecision": "Précision",
+        "eventType": "Type d’événement",
+        "slug": "Slug",
+        "mainImageId": "Id image principale",
+        "previousName": "Ancien nom",
+        "newName": "Nouveau nom",
+        "previousLogoImageId": "Id ancien logo",
+        "newLogoImageId": "Id nouveau logo",
+        "previousOperatorId": "Id ancien exploitant",
+        "newOperatorId": "Id nouvel exploitant",
+        "locationLabel": "Libellé de lieu",
+        "isMajor": "Événement majeur avec article",
+        "isVisible": "Visible sur les pages publiques",
+        "titlesJson": "JSON des titres",
+        "summariesJson": "JSON des résumés",
+        "relatedParkIdsJson": "JSON des parcs liés",
+        "relatedParkItemIdsJson": "JSON des items liés",
+        "sourcesJson": "JSON des sources",
+        "articleJson": "JSON de l’article",
+        "articleHint": "Les événements majeurs peuvent porter un article publié avec blocs localisés, images et sources.",
+        "jsonHint": "Les textes localisés et l’article sont édités en JSON structuré."
+      },
+      "messages": {
+        "saved": "Événement historique enregistré.",
+        "deleted": "Événement historique supprimé."
+      },
+      "errors": {
+        "loadFailed": "Impossible de charger les événements historiques.",
+        "required": "Complète les champs obligatoires.",
+        "invalidJson": "Un champ JSON est invalide.",
+        "saveFailed": "Impossible d’enregistrer cet événement.",
+        "deleteFailed": "Impossible de supprimer cet événement."
+      }
+    }
+  }
+}

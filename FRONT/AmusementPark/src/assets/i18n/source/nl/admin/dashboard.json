@@ -14,7 +14,8 @@
         "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld.",
         "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
         "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
-        "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow."
+        "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow.",
+        "history": "Tijdlijnen, onderbouwde mijlpalen en historische artikelen beheren."
       }
     }
   }

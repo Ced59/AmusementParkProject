@@ -136,6 +136,7 @@
         "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
         "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
         "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow.",
+        "history": "Tijdlijnen, onderbouwde mijlpalen en historische artikelen beheren.",
         "parkWeather": "Geplande updates van publieke gegevens volgen."
       },
       "title": "Beheerpaneel",
@@ -165,6 +166,113 @@
       "invalidCoordinatesOnly": "Ontbrekend of 0,0"
     },
     "hidden": "Verborgen",
+    "history": {
+      "navTitle": "Historische tijdlijnen",
+      "kicker": "Geschiedenis",
+      "title": "Geschiedenis van parken en items",
+      "subtitle": "Beheer gedateerde gebeurtenissen, itemlevens over meerdere parken, onderbouwde mijlpalen en artikelen.",
+      "entityTypes": {
+        "Park": "Park",
+        "ParkItem": "ParkItem"
+      },
+      "precision": {
+        "Year": "Jaar",
+        "Month": "Maand",
+        "Day": "Dag"
+      },
+      "filters": {
+        "title": "Filters",
+        "entityType": "Entiteit",
+        "allEntities": "Alle entiteiten",
+        "ownerId": "Eigenaar-id",
+        "ownerIdPlaceholder": "Park- of item-id",
+        "search": "Zoeken",
+        "searchPlaceholder": "Titel, sleutel of bron",
+        "includeHidden": "Verborgen gebeurtenissen opnemen",
+        "submit": "Filteren",
+        "reset": "Resetten"
+      },
+      "actions": {
+        "createPark": "Parkgebeurtenis",
+        "createParkItem": "Itemgebeurtenis",
+        "edit": "Bewerken",
+        "delete": "Verwijderen",
+        "insertArticleTemplate": "Artikelsjabloon",
+        "save": "Opslaan",
+        "cancel": "Annuleren"
+      },
+      "list": {
+        "title": "Gebeurtenissen",
+        "count": "{{count}} gebeurtenis(sen)",
+        "loading": "Gebeurtenissen laden.",
+        "empty": "Geen gebeurtenis past bij deze filters.",
+        "major": "Belangrijk",
+        "visible": "Zichtbaar",
+        "hidden": "Verborgen",
+        "columns": {
+          "title": "Titel",
+          "entity": "Entiteit",
+          "owner": "Eigenaar",
+          "date": "Datum",
+          "type": "Type",
+          "state": "Status",
+          "actions": "Acties"
+        }
+      },
+      "editor": {
+        "createTitle": "Nieuwe historische gebeurtenis",
+        "updateTitle": "Historische gebeurtenis bewerken",
+        "identity": "Identiteit",
+        "date": "Datum",
+        "context": "Context",
+        "lifecycle": "Levensloopwijzigingen",
+        "flags": "Zichtbaarheid",
+        "localized": "Gelokaliseerde tekst",
+        "relationships": "Relaties en bronnen",
+        "article": "Artikel",
+        "key": "Stabiele sleutel",
+        "entityType": "Entiteitstype",
+        "ownerId": "Eigenaar-id",
+        "parkId": "Park-id",
+        "parkItemId": "ParkItem-id",
+        "contextParkId": "Contextpark-id",
+        "year": "Jaar",
+        "month": "Maand",
+        "day": "Dag",
+        "datePrecision": "Precisie",
+        "eventType": "Gebeurtenistype",
+        "slug": "Slug",
+        "mainImageId": "Hoofdafbeelding-id",
+        "previousName": "Vorige naam",
+        "newName": "Nieuwe naam",
+        "previousLogoImageId": "Vorige logo-id",
+        "newLogoImageId": "Nieuwe logo-id",
+        "previousOperatorId": "Vorige exploitant-id",
+        "newOperatorId": "Nieuwe exploitant-id",
+        "locationLabel": "Locatielabel",
+        "isMajor": "Belangrijke gebeurtenis met artikel",
+        "isVisible": "Zichtbaar op publieke pagina’s",
+        "titlesJson": "Titels JSON",
+        "summariesJson": "Samenvattingen JSON",
+        "relatedParkIdsJson": "Gekoppelde park-id’s JSON",
+        "relatedParkItemIdsJson": "Gekoppelde item-id’s JSON",
+        "sourcesJson": "Bronnen JSON",
+        "articleJson": "Artikel JSON",
+        "articleHint": "Belangrijke gebeurtenissen kunnen een gepubliceerd artikel met gelokaliseerde blokken, beelden en bronnen dragen.",
+        "jsonHint": "Gelokaliseerde velden en artikelinhoud worden als gestructureerde JSON bewerkt."
+      },
+      "messages": {
+        "saved": "Historische gebeurtenis opgeslagen.",
+        "deleted": "Historische gebeurtenis verwijderd."
+      },
+      "errors": {
+        "loadFailed": "Historische gebeurtenissen kunnen niet worden geladen.",
+        "required": "Vul de verplichte velden in.",
+        "invalidJson": "Een JSON-veld is ongeldig.",
+        "saveFailed": "Deze gebeurtenis kan niet worden opgeslagen.",
+        "deleteFailed": "Deze gebeurtenis kan niet worden verwijderd."
+      }
+    },
     "images": {
       "title": "Afbeeldingen",
       "kicker": "M15 - Mediabibliotheek",

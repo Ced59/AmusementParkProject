@@ -82,6 +82,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/images/batch', renderMode: RenderMode.Client },
   { path: ':lang/admin/site', renderMode: RenderMode.Client },
   { path: ':lang/admin/park-graph-upserts', renderMode: RenderMode.Client },
+  { path: ':lang/admin/history', renderMode: RenderMode.Client },
 
   // Unknown public URLs render the public 404 route and are marked 404 by server.ts.
   { path: '**', renderMode: RenderMode.Server }

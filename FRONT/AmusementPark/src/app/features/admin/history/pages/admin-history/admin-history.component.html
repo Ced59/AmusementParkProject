@@ -1,0 +1,346 @@
+<section class="admin-history admin-surface">
+  <header class="admin-history__header">
+    <span class="kicker kicker--sky">{{ 'admin.history.kicker' | translate }}</span>
+    <div>
+      <h1 class="admin-page-title">{{ 'admin.history.title' | translate }}</h1>
+      <p class="admin-muted">{{ 'admin.history.subtitle' | translate }}</p>
+    </div>
+    <div class="admin-history__header-actions">
+      <button type="button" class="btn-nav btn-nav--ghost" (click)="startCreate('Park')">
+        <span class="pi pi-map" aria-hidden="true"></span>
+        {{ 'admin.history.actions.createPark' | translate }}
+      </button>
+      <button type="button" class="btn-nav" (click)="startCreate('ParkItem')">
+        <span class="pi pi-ticket" aria-hidden="true"></span>
+        {{ 'admin.history.actions.createParkItem' | translate }}
+      </button>
+    </div>
+  </header>
+
+  @if (errorKey(); as error) {
+    <p class="admin-alert admin-alert--error" role="alert">{{ error | translate }}</p>
+  }
+  @if (formErrorKey(); as error) {
+    <p class="admin-alert admin-alert--error" role="alert">{{ error | translate }}</p>
+  }
+  @if (messageKey(); as message) {
+    <p class="admin-alert admin-alert--success" role="status">{{ message | translate }}</p>
+  }
+
+  <article class="admin-card admin-history__filters">
+    <form [formGroup]="filterForm" (ngSubmit)="load()">
+      <div class="admin-history__section-head">
+        <h2>{{ 'admin.history.filters.title' | translate }}</h2>
+      </div>
+
+      <label>
+        <span>{{ 'admin.history.filters.entityType' | translate }}</span>
+        <select class="admin-input" formControlName="entityType">
+          <option value="">{{ 'admin.history.filters.allEntities' | translate }}</option>
+          <option value="Park">{{ 'admin.history.entityTypes.Park' | translate }}</option>
+          <option value="ParkItem">{{ 'admin.history.entityTypes.ParkItem' | translate }}</option>
+        </select>
+      </label>
+
+      <label>
+        <span>{{ 'admin.history.filters.ownerId' | translate }}</span>
+        <input pInputText type="text" class="admin-input" formControlName="ownerId" [placeholder]="'admin.history.filters.ownerIdPlaceholder' | translate">
+      </label>
+
+      <label>
+        <span>{{ 'admin.history.filters.search' | translate }}</span>
+        <input pInputText type="search" class="admin-input" formControlName="search" [placeholder]="'admin.history.filters.searchPlaceholder' | translate">
+      </label>
+
+      <label class="admin-history__check">
+        <input type="checkbox" formControlName="includeHidden">
+        <span>{{ 'admin.history.filters.includeHidden' | translate }}</span>
+      </label>
+
+      <div class="admin-history__actions">
+        <button type="submit" class="btn-nav">
+          <span class="pi pi-search" aria-hidden="true"></span>
+          {{ 'admin.history.filters.submit' | translate }}
+        </button>
+        <button type="button" class="btn-nav btn-nav--ghost" (click)="resetFilters()">
+          <span class="pi pi-refresh" aria-hidden="true"></span>
+          {{ 'admin.history.filters.reset' | translate }}
+        </button>
+      </div>
+    </form>
+  </article>
+
+  <div class="admin-history__workspace">
+    <article class="admin-card admin-history__list">
+      <div class="admin-history__section-head">
+        <div>
+          <h2>{{ 'admin.history.list.title' | translate }}</h2>
+          <p class="admin-muted">{{ 'admin.history.list.count' | translate: { count: totalRecords() } }}</p>
+        </div>
+      </div>
+
+      @if (loading()) {
+        <p class="admin-history__state">{{ 'admin.history.list.loading' | translate }}</p>
+      } @else if (events().length === 0) {
+        <p class="admin-history__state">{{ 'admin.history.list.empty' | translate }}</p>
+      } @else {
+        <div class="admin-history__table-wrap">
+          <table class="admin-history__table">
+            <thead>
+              <tr>
+                <th>{{ 'admin.history.list.columns.title' | translate }}</th>
+                <th>{{ 'admin.history.list.columns.entity' | translate }}</th>
+                <th>{{ 'admin.history.list.columns.owner' | translate }}</th>
+                <th>{{ 'admin.history.list.columns.date' | translate }}</th>
+                <th>{{ 'admin.history.list.columns.type' | translate }}</th>
+                <th>{{ 'admin.history.list.columns.state' | translate }}</th>
+                <th>{{ 'admin.history.list.columns.actions' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (event of events(); track eventTrackBy($index, event)) {
+                <tr [class.is-selected]="editingEvent()?.id === event.id">
+                  <td>
+                    <strong>{{ title(event) }}</strong>
+                    @if (summary(event)) {
+                      <small>{{ summary(event) }}</small>
+                    }
+                  </td>
+                  <td>{{ ('admin.history.entityTypes.' + event.entityType) | translate }}</td>
+                  <td><code>{{ event.ownerId }}</code></td>
+                  <td>
+                    <span>{{ event.year }}</span>
+                    @if (event.month) {
+                      <span>/{{ event.month }}</span>
+                    }
+                    @if (event.day) {
+                      <span>/{{ event.day }}</span>
+                    }
+                  </td>
+                  <td>{{ eventTypeLabel(event.eventType) }}</td>
+                  <td>
+                    <div class="admin-history__tags">
+                      @if (event.isMajor) {
+                        <p-tag [value]="'admin.history.list.major' | translate" severity="info"></p-tag>
+                      }
+                      <p-tag
+                        [value]="(event.isVisible ? 'admin.history.list.visible' : 'admin.history.list.hidden') | translate"
+                        [severity]="event.isVisible ? 'success' : 'warn'">
+                      </p-tag>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="admin-history__row-actions">
+                      <button type="button" class="icon-action" (click)="edit(event)" [attr.aria-label]="'admin.history.actions.edit' | translate">
+                        <span class="pi pi-pencil" aria-hidden="true"></span>
+                      </button>
+                      <button type="button" class="icon-action icon-action--danger" (click)="delete(event)" [disabled]="deleting()" [attr.aria-label]="'admin.history.actions.delete' | translate">
+                        <span class="pi pi-trash" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </article>
+
+    <article class="admin-card admin-history__editor">
+      <form [formGroup]="eventForm" (ngSubmit)="submit()">
+        <div class="admin-history__section-head">
+          <div>
+            <h2>{{ editingTitleKey() | translate }}</h2>
+            <p class="admin-muted">{{ 'admin.history.editor.jsonHint' | translate }}</p>
+          </div>
+          <button type="button" class="btn-nav btn-nav--ghost" (click)="insertArticleTemplate()">
+            <span class="pi pi-file-edit" aria-hidden="true"></span>
+            {{ 'admin.history.actions.insertArticleTemplate' | translate }}
+          </button>
+        </div>
+
+        <section class="admin-history__fieldset">
+          <h3>{{ 'admin.history.editor.identity' | translate }}</h3>
+          <div class="admin-history__grid">
+            <label>
+              <span>{{ 'admin.history.editor.entityType' | translate }}</span>
+              <select class="admin-input" formControlName="entityType" (change)="onEntityTypeChanged()">
+                <option value="Park">{{ 'admin.history.entityTypes.Park' | translate }}</option>
+                <option value="ParkItem">{{ 'admin.history.entityTypes.ParkItem' | translate }}</option>
+              </select>
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.ownerId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="ownerId">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.key' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="key">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.eventType' | translate }}</span>
+              <select class="admin-input" formControlName="eventType">
+                @for (eventType of eventTypeOptions(); track eventType) {
+                  <option [value]="eventType">{{ eventTypeLabel(eventType) }}</option>
+                }
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="admin-history__fieldset">
+          <h3>{{ 'admin.history.editor.date' | translate }}</h3>
+          <div class="admin-history__grid admin-history__grid--date">
+            <label>
+              <span>{{ 'admin.history.editor.year' | translate }}</span>
+              <input pInputText type="number" min="1" class="admin-input" formControlName="year">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.month' | translate }}</span>
+              <input pInputText type="number" min="1" max="12" class="admin-input" formControlName="month">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.day' | translate }}</span>
+              <input pInputText type="number" min="1" max="31" class="admin-input" formControlName="day">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.datePrecision' | translate }}</span>
+              <select class="admin-input" formControlName="datePrecision">
+                <option value="Year">{{ 'admin.history.precision.Year' | translate }}</option>
+                <option value="Month">{{ 'admin.history.precision.Month' | translate }}</option>
+                <option value="Day">{{ 'admin.history.precision.Day' | translate }}</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="admin-history__fieldset">
+          <h3>{{ 'admin.history.editor.context' | translate }}</h3>
+          <div class="admin-history__grid">
+            <label>
+              <span>{{ 'admin.history.editor.parkId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="parkId">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.parkItemId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="parkItemId">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.contextParkId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="contextParkId">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.slug' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="slug">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.mainImageId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="mainImageId">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.locationLabel' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="locationLabel">
+            </label>
+          </div>
+        </section>
+
+        <section class="admin-history__fieldset">
+          <h3>{{ 'admin.history.editor.lifecycle' | translate }}</h3>
+          <div class="admin-history__grid">
+            <label>
+              <span>{{ 'admin.history.editor.previousName' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="previousName">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.newName' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="newName">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.previousLogoImageId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="previousLogoImageId">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.newLogoImageId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="newLogoImageId">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.previousOperatorId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="previousOperatorId">
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.newOperatorId' | translate }}</span>
+              <input pInputText type="text" class="admin-input" formControlName="newOperatorId">
+            </label>
+          </div>
+        </section>
+
+        <section class="admin-history__fieldset">
+          <h3>{{ 'admin.history.editor.flags' | translate }}</h3>
+          <div class="admin-history__checks">
+            <label class="admin-history__check">
+              <input type="checkbox" formControlName="isMajor">
+              <span>{{ 'admin.history.editor.isMajor' | translate }}</span>
+            </label>
+            <label class="admin-history__check">
+              <input type="checkbox" formControlName="isVisible">
+              <span>{{ 'admin.history.editor.isVisible' | translate }}</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="admin-history__fieldset">
+          <h3>{{ 'admin.history.editor.localized' | translate }}</h3>
+          <div class="admin-history__json-grid">
+            <label>
+              <span>{{ 'admin.history.editor.titlesJson' | translate }}</span>
+              <textarea class="admin-history__json" formControlName="titlesJson" spellcheck="false"></textarea>
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.summariesJson' | translate }}</span>
+              <textarea class="admin-history__json" formControlName="summariesJson" spellcheck="false"></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="admin-history__fieldset">
+          <h3>{{ 'admin.history.editor.relationships' | translate }}</h3>
+          <div class="admin-history__json-grid">
+            <label>
+              <span>{{ 'admin.history.editor.relatedParkIdsJson' | translate }}</span>
+              <textarea class="admin-history__json admin-history__json--short" formControlName="relatedParkIdsJson" spellcheck="false"></textarea>
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.relatedParkItemIdsJson' | translate }}</span>
+              <textarea class="admin-history__json admin-history__json--short" formControlName="relatedParkItemIdsJson" spellcheck="false"></textarea>
+            </label>
+            <label>
+              <span>{{ 'admin.history.editor.sourcesJson' | translate }}</span>
+              <textarea class="admin-history__json" formControlName="sourcesJson" spellcheck="false"></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="admin-history__fieldset">
+          <h3>{{ 'admin.history.editor.article' | translate }}</h3>
+          <p class="admin-muted">{{ 'admin.history.editor.articleHint' | translate }}</p>
+          <label>
+            <span>{{ 'admin.history.editor.articleJson' | translate }}</span>
+            <textarea class="admin-history__json admin-history__json--article" formControlName="articleJson" spellcheck="false"></textarea>
+          </label>
+        </section>
+
+        <div class="admin-history__actions admin-history__actions--end">
+          <button type="button" class="btn-nav btn-nav--ghost" (click)="startCreate(eventForm.controls.entityType.value)">
+            <span class="pi pi-times" aria-hidden="true"></span>
+            {{ 'admin.history.actions.cancel' | translate }}
+          </button>
+          <button type="submit" class="btn-nav" [disabled]="saving()">
+            <span class="pi" [class.pi-save]="!saving()" [class.pi-spinner]="saving()" [class.pi-spin]="saving()" aria-hidden="true"></span>
+            {{ 'admin.history.actions.save' | translate }}
+          </button>
+        </div>
+      </form>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,111 @@
+{
+  "admin": {
+    "history": {
+      "navTitle": "Historische Timelines",
+      "kicker": "Geschichte",
+      "title": "Geschichte von Parks und Items",
+      "subtitle": "Verwalte datierte Ereignisse, parkübergreifende Item-Lebensläufe, belegte Meilensteine und Artikel.",
+      "entityTypes": {
+        "Park": "Park",
+        "ParkItem": "ParkItem"
+      },
+      "precision": {
+        "Year": "Jahr",
+        "Month": "Monat",
+        "Day": "Tag"
+      },
+      "filters": {
+        "title": "Filter",
+        "entityType": "Entität",
+        "allEntities": "Alle Entitäten",
+        "ownerId": "Besitzer-ID",
+        "ownerIdPlaceholder": "Park- oder Item-ID",
+        "search": "Suche",
+        "searchPlaceholder": "Titel, Schlüssel oder Quelle",
+        "includeHidden": "Ausgeblendete Ereignisse einschließen",
+        "submit": "Filtern",
+        "reset": "Zurücksetzen"
+      },
+      "actions": {
+        "createPark": "Park-Ereignis",
+        "createParkItem": "Item-Ereignis",
+        "edit": "Bearbeiten",
+        "delete": "Löschen",
+        "insertArticleTemplate": "Artikelvorlage",
+        "save": "Speichern",
+        "cancel": "Abbrechen"
+      },
+      "list": {
+        "title": "Ereignisse",
+        "count": "{{count}} Ereignis(se)",
+        "loading": "Ereignisse werden geladen.",
+        "empty": "Kein Ereignis passt zu diesen Filtern.",
+        "major": "Wichtig",
+        "visible": "Sichtbar",
+        "hidden": "Ausgeblendet",
+        "columns": {
+          "title": "Titel",
+          "entity": "Entität",
+          "owner": "Besitzer",
+          "date": "Datum",
+          "type": "Typ",
+          "state": "Status",
+          "actions": "Aktionen"
+        }
+      },
+      "editor": {
+        "createTitle": "Neues historisches Ereignis",
+        "updateTitle": "Historisches Ereignis bearbeiten",
+        "identity": "Identität",
+        "date": "Datum",
+        "context": "Kontext",
+        "lifecycle": "Lebenslaufänderungen",
+        "flags": "Sichtbarkeit",
+        "localized": "Lokalisierter Text",
+        "relationships": "Beziehungen und Quellen",
+        "article": "Artikel",
+        "key": "Stabiler Schlüssel",
+        "entityType": "Entitätstyp",
+        "ownerId": "Besitzer-ID",
+        "parkId": "Park-ID",
+        "parkItemId": "ParkItem-ID",
+        "contextParkId": "Kontext-Park-ID",
+        "year": "Jahr",
+        "month": "Monat",
+        "day": "Tag",
+        "datePrecision": "Genauigkeit",
+        "eventType": "Ereignistyp",
+        "slug": "Slug",
+        "mainImageId": "Hauptbild-ID",
+        "previousName": "Vorheriger Name",
+        "newName": "Neuer Name",
+        "previousLogoImageId": "Vorherige Logo-ID",
+        "newLogoImageId": "Neue Logo-ID",
+        "previousOperatorId": "Vorheriger Betreiber-ID",
+        "newOperatorId": "Neue Betreiber-ID",
+        "locationLabel": "Ortslabel",
+        "isMajor": "Wichtiges Ereignis mit Artikel",
+        "isVisible": "Auf öffentlichen Seiten sichtbar",
+        "titlesJson": "Titel-JSON",
+        "summariesJson": "Zusammenfassungs-JSON",
+        "relatedParkIdsJson": "Verknüpfte Park-IDs JSON",
+        "relatedParkItemIdsJson": "Verknüpfte Item-IDs JSON",
+        "sourcesJson": "Quellen-JSON",
+        "articleJson": "Artikel-JSON",
+        "articleHint": "Wichtige Ereignisse können einen veröffentlichten Artikel mit lokalisierten Blöcken, Bildern und Quellen tragen.",
+        "jsonHint": "Lokalisierte Felder und Artikelinhalte werden als strukturiertes JSON bearbeitet."
+      },
+      "messages": {
+        "saved": "Historisches Ereignis gespeichert.",
+        "deleted": "Historisches Ereignis gelöscht."
+      },
+      "errors": {
+        "loadFailed": "Historische Ereignisse können nicht geladen werden.",
+        "required": "Fülle die Pflichtfelder aus.",
+        "invalidJson": "Ein JSON-Feld ist ungültig.",
+        "saveFailed": "Dieses Ereignis kann nicht gespeichert werden.",
+        "deleteFailed": "Dieses Ereignis kann nicht gelöscht werden."
+      }
+    }
+  }
+}

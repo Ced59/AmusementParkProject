@@ -39,6 +39,15 @@ describe('App routes', () => {
       expect(route?.loadComponent).withContext(path).toBeDefined();
     }
   });
+
+  it('exposes the admin history management route behind the admin layout', () => {
+    const adminRoutes: Route[] = getAdminRoutes();
+    const route: Route | undefined = adminRoutes.find((candidate: Route): boolean => candidate.path === 'history');
+
+    expect(route).toBeDefined();
+    expect(route?.redirectTo).toBeUndefined();
+    expect(route?.loadComponent).toBeDefined();
+  });
 });
 
 function getPublicRoutes(): Route[] {
@@ -47,4 +56,11 @@ function getPublicRoutes(): Route[] {
     (route.children ?? []).some((child: Route): boolean => child.path === 'home'));
 
   return publicLayoutRoute?.children ?? [];
+}
+
+function getAdminRoutes(): Route[] {
+  const localizedRoute: Route | undefined = routes.find((route: Route): boolean => route.path === ':lang');
+  const adminRoute: Route | undefined = localizedRoute?.children?.find((route: Route): boolean => route.path === 'admin');
+
+  return adminRoute?.children ?? [];
 }
