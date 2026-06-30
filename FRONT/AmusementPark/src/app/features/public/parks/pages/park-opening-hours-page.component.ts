@@ -267,7 +267,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
   }
 
   publicDayNote(day: ParkOpeningHoursDay | null): string | null {
-    if (!day) {
+    if (!day || this.isClosed(day)) {
       return null;
     }
 

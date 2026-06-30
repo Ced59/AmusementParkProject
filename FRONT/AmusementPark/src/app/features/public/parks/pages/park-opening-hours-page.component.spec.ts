@@ -96,8 +96,10 @@ describe('ParkOpeningHoursPageComponent', () => {
       'Regle de couverture pour eviter les dates non definies'
     );
     const publicOpenDay: ParkOpeningHoursDay = createOpenDay('2026-07-03', '10:00', '18:00', 'Ouverture estivale 2026');
+    const internalClosedDay: ParkOpeningHoursDay = createClosedDay('2026-07-04', 'Maintenance equipe');
 
     expect(component.publicDayNote(technicalClosedDay)).toBeNull();
+    expect(component.publicDayNote(internalClosedDay)).toBeNull();
     expect(component.publicDayNote(technicalOpenDay)).toBeNull();
     expect(component.publicDayNote(publicOpenDay)).toBe('Ouverture estivale 2026');
   });

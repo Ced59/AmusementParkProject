@@ -1,6 +1,20 @@
 {
-  "version": "3.0.3",
+  "version": "3.0.4",
   "history": [
+    {
+      "version": "3.0.4",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les détails des horaires restent mieux maîtrisés.",
+        "en": "Opening-hour details stay better controlled.",
+        "de": "Details zu Öffnungszeiten bleiben besser kontrolliert.",
+        "nl": "Details van openingstijden blijven beter beheerst.",
+        "it": "I dettagli degli orari restano meglio controllati.",
+        "es": "Los detalles de horarios quedan mejor controlados.",
+        "pl": "Szczegóły godzin otwarcia są lepiej kontrolowane.",
+        "pt": "Os detalhes dos horários ficam melhor controlados."
+      }
+    },
     {
       "version": "3.0.3",
       "releasedAt": "2026-06-30",
