@@ -472,7 +472,7 @@ export class ParkDetailStateFacade {
       return;
     }
 
-    this.historyApiService.getParkTimeline(parkId, false, [], anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.historyApiService.getParkTimeline(parkId, true, [], anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (timeline: HistoryTimeline) => {
         this.hasHistorySignal.set((timeline.events?.length ?? 0) > 0);
       },

@@ -152,6 +152,140 @@ public sealed class HistoryHandlersTests
     }
 
     [Fact]
+    public async Task GetParkHistoryTimeline_WhenIncludingParkItemsWithLifecycleDates_ShouldReturnAutomaticEvents()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            IsVisible = true,
+        };
+        ParkItem item = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Mira Looping",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = true,
+            AttractionDetails = new AttractionDetails
+            {
+                OpeningDate = new DateTime(1988, 1, 1),
+                OpeningDateText = "1988",
+                ClosingDate = new DateTime(1991, 10, 20),
+                ClosingDateText = "1991-10-20",
+            },
+        };
+
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { item });
+        parkItemRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { item });
+        historyRepository
+            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, true, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<HistoryEvent>());
+
+        GetParkHistoryTimelineQueryHandler handler = new GetParkHistoryTimelineQueryHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+
+        ApplicationResult<HistoryTimelineResult> result = await handler.HandleAsync(new GetParkHistoryTimelineQuery(
+            "park-1",
+            false,
+            true,
+            Array.Empty<string>()));
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.HasParkItemTimelineEvents);
+        Assert.Equal(new[] { ParkItemHistoryEventType.Opening.ToString(), ParkItemHistoryEventType.DefinitiveClosure.ToString() }, result.Value.Events.Select(entry => entry.Event.EventType));
+        Assert.Equal(HistoryDatePrecision.Year, result.Value.Events.First().Event.DatePrecision);
+        Assert.Equal(HistoryDatePrecision.Day, result.Value.Events.Last().Event.DatePrecision);
+        Assert.Single(result.Value.IncludedParkItems);
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task GetParkItemHistoryTimeline_WhenItemHasLifecycleDates_ShouldReturnAutomaticEvents()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            IsVisible = true,
+        };
+        ParkItem item = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Mira Looping",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = true,
+            AttractionDetails = new AttractionDetails
+            {
+                OpeningDate = new DateTime(1988, 1, 1),
+                OpeningDateText = "1988",
+                ClosingDate = new DateTime(1991, 10, 20),
+            },
+        };
+
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(item);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { item });
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        historyRepository
+            .Setup(repository => repository.GetOwnerTimelineAsync(HistoryEntityType.ParkItem, "item-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<HistoryEvent>());
+
+        GetParkItemHistoryTimelineQueryHandler handler = new GetParkItemHistoryTimelineQueryHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+
+        ApplicationResult<HistoryTimelineResult> result = await handler.HandleAsync(new GetParkItemHistoryTimelineQuery("item-1", false));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(HistoryEntityType.ParkItem, result.Value!.EntityType);
+        Assert.Equal("item-1", result.Value.ParkItem!.Id);
+        Assert.Equal(new[] { ParkItemHistoryEventType.Opening.ToString(), ParkItemHistoryEventType.DefinitiveClosure.ToString() }, result.Value.Events.Select(entry => entry.Event.EventType));
+        Assert.All(result.Value.Events, entry => Assert.StartsWith("auto-parkitem-item-1-park-1-", entry.Event.Id, StringComparison.Ordinal));
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task GetParkHistoryTimeline_WhenParkItemEventsExistButAreNotIncluded_ShouldExposeAvailability()
     {
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);

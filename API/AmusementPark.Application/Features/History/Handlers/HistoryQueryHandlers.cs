@@ -51,6 +51,16 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             query.IncludeParkItemEvents,
             query.ParkItemIds,
             cancellationToken);
+        IReadOnlyCollection<ParkItem> automaticParkItemCandidates = query.IncludeParkItemEvents
+            ? await this.LoadAutomaticParkItemCandidatesAsync(park.Id, query.IncludeHidden, query.ParkItemIds, cancellationToken)
+            : Array.Empty<ParkItem>();
+
+        if (automaticParkItemCandidates.Count > 0)
+        {
+            events = AutomaticHistoryEventFactory.MergeWithExplicitEvents(
+                events,
+                AutomaticHistoryEventFactory.CreateParkItemLifecycleEvents(automaticParkItemCandidates));
+        }
 
         if (events.Count == 0)
         {
@@ -87,6 +97,14 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
                 park.Id,
                 query.IncludeHidden,
                 cancellationToken);
+
+            if (!hasParkItemTimelineEvents)
+            {
+                hasParkItemTimelineEvents = await this.HasAutomaticParkItemTimelineEventsAsync(
+                    park.Id,
+                    query.IncludeHidden,
+                    cancellationToken);
+            }
         }
 
         return ApplicationResult<HistoryTimelineResult>.Success(new HistoryTimelineResult
@@ -97,6 +115,44 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             IncludedParkItems = includedItems,
             Events = timelineEvents,
         });
+    }
+
+    private async Task<IReadOnlyCollection<ParkItem>> LoadAutomaticParkItemCandidatesAsync(
+        string parkId,
+        bool includeHidden,
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<ParkItem> parkItems = await this.parkItemRepository.GetByParkIdAsync(
+            parkId,
+            includeHidden,
+            cancellationToken);
+        HashSet<string> selectedParkItemIds = parkItemIds
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Select(static id => id.Trim())
+            .ToHashSet(StringComparer.Ordinal);
+
+        IEnumerable<ParkItem> candidates = parkItems;
+        if (selectedParkItemIds.Count > 0)
+        {
+            candidates = candidates.Where(item => selectedParkItemIds.Contains(item.Id));
+        }
+
+        return candidates
+            .Where(AutomaticHistoryEventFactory.HasLifecycleDate)
+            .ToList();
+    }
+
+    private async Task<bool> HasAutomaticParkItemTimelineEventsAsync(
+        string parkId,
+        bool includeHidden,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<ParkItem> parkItems = await this.parkItemRepository.GetByParkIdAsync(
+            parkId,
+            includeHidden,
+            cancellationToken);
+        return parkItems.Any(AutomaticHistoryEventFactory.HasLifecycleDate);
     }
 }
 
@@ -141,6 +197,11 @@ public sealed class GetParkItemHistoryTimelineQueryHandler : IQueryHandler<GetPa
             parkItem.Id,
             query.IncludeHidden,
             cancellationToken);
+        IReadOnlyCollection<HistoryEvent> automaticEvents = AutomaticHistoryEventFactory.CreateParkItemLifecycleEvents(parkItem);
+        if (automaticEvents.Count > 0)
+        {
+            events = AutomaticHistoryEventFactory.MergeWithExplicitEvents(events, automaticEvents);
+        }
 
         if (events.Count == 0)
         {
