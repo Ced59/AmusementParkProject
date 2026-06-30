@@ -1,5 +1,4 @@
 using System.Security.Claims;
-using System.Text;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkGraphUpserts.Commands;
@@ -67,8 +66,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        byte[] content = Encoding.UTF8.GetBytes(result.Value.Json);
-        return this.File(content, result.Value.ContentType, result.Value.FileName);
+        return this.File(result.Value.Content, result.Value.ContentType, result.Value.FileName);
     }
 
     [HttpPost("preview")]

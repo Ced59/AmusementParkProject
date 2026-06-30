@@ -27,6 +27,16 @@ public sealed partial class MongoDatabaseInitializer
                 new CreateIndexOptions { Name = "idx_history_owner_visible_date" }),
             new CreateIndexModel<HistoryEventDocument>(
                 Builders<HistoryEventDocument>.IndexKeys
+                    .Ascending(item => item.EntityType)
+                    .Ascending(item => item.OwnerId)
+                    .Ascending(item => item.Year)
+                    .Ascending(item => item.Month)
+                    .Ascending(item => item.Day)
+                    .Ascending(item => item.Key)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_history_owner_date" }),
+            new CreateIndexModel<HistoryEventDocument>(
+                Builders<HistoryEventDocument>.IndexKeys
                     .Ascending(item => item.ContextParkId)
                     .Ascending(item => item.EntityType)
                     .Ascending(item => item.IsVisible)
@@ -34,6 +44,16 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.Month)
                     .Ascending(item => item.Day),
                 new CreateIndexOptions { Name = "idx_history_context_park_visible_date" }),
+            new CreateIndexModel<HistoryEventDocument>(
+                Builders<HistoryEventDocument>.IndexKeys
+                    .Ascending(item => item.ContextParkId)
+                    .Ascending(item => item.EntityType)
+                    .Ascending(item => item.Year)
+                    .Ascending(item => item.Month)
+                    .Ascending(item => item.Day)
+                    .Ascending(item => item.Key)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_history_context_park_date" }),
             new CreateIndexModel<HistoryEventDocument>(
                 Builders<HistoryEventDocument>.IndexKeys
                     .Ascending(item => item.ParkId)

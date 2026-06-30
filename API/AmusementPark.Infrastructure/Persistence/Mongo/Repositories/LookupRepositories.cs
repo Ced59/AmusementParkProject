@@ -84,6 +84,26 @@ public abstract class MongoCrudRepositoryBase<TDomain, TDocument>
         return document is null ? default : mapper(document);
     }
 
+    protected async Task<IReadOnlyCollection<TDomain>> GetByIdsAsync(IReadOnlyCollection<string> ids, Func<TDocument, TDomain> mapper, CancellationToken cancellationToken)
+    {
+        List<string> normalizedIds = ids
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Select(static id => id.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedIds.Count == 0)
+        {
+            return Array.Empty<TDomain>();
+        }
+
+        List<TDocument> documents = await this.collection
+            .Find(Builders<TDocument>.Filter.In(document => document.Id, normalizedIds))
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(mapper).ToList();
+    }
+
     protected async Task<TDomain> CreateAsync(TDomain entity, Func<TDomain, TDocument> toDocument, Func<TDocument, TDomain> toDomain, CancellationToken cancellationToken)
     {
         TDocument document = toDocument(entity);
@@ -254,6 +274,11 @@ public sealed class AttractionManufacturerRepository : MongoCrudRepositoryBase<A
     public Task<AttractionManufacturer?> GetByIdAsync(string id, CancellationToken cancellationToken)
     {
         return base.GetByIdAsync(id, document => document.ToDomain(), cancellationToken);
+    }
+
+    public Task<IReadOnlyCollection<AttractionManufacturer>> GetByIdsAsync(IReadOnlyCollection<string> ids, CancellationToken cancellationToken)
+    {
+        return base.GetByIdsAsync(ids, document => document.ToDomain(), cancellationToken);
     }
 
     public Task<AttractionManufacturer> CreateAsync(AttractionManufacturer entity, CancellationToken cancellationToken)

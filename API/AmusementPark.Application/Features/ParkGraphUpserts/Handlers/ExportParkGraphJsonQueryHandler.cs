@@ -74,8 +74,12 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
             return ApplicationResult<ParkGraphJsonExportResult>.Failure(ApplicationErrors.EntityNotFound(nameof(Park), query.ParkId));
         }
 
-        IReadOnlyCollection<ParkZone> zones = await this.parkZoneRepository.GetByParkIdAsync(park.Id, cancellationToken);
-        IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByParkIdAsync(park.Id, true, cancellationToken);
+        Task<IReadOnlyCollection<ParkZone>> zonesTask = this.parkZoneRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        Task<IReadOnlyCollection<ParkItem>> itemsTask = this.parkItemRepository.GetByParkIdAsync(park.Id, true, cancellationToken);
+        await Task.WhenAll(zonesTask, itemsTask);
+
+        IReadOnlyCollection<ParkZone> zones = await zonesTask;
+        IReadOnlyCollection<ParkItem> items = await itemsTask;
         List<string> itemIds = items
             .Select(static item => item.Id)
             .Where(static itemId => !string.IsNullOrWhiteSpace(itemId))
@@ -91,31 +95,51 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
             .OrderBy(static manufacturerId => manufacturerId, StringComparer.Ordinal)
             .ToList();
 
-        IReadOnlyCollection<Image> parkImages = await this.imageRepository.GetByOwnersAsync(ImageOwnerType.Park, new[] { park.Id }, null, cancellationToken);
-        IReadOnlyCollection<Image> itemImages = itemIds.Count == 0
-            ? Array.Empty<Image>()
-            : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkItem, itemIds, null, cancellationToken);
-        IReadOnlyCollection<Image> founderImages = founderIds.Count == 0
-            ? Array.Empty<Image>()
-            : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkFounder, founderIds, null, cancellationToken);
-        IReadOnlyCollection<Image> operatorImages = operatorIds.Count == 0
-            ? Array.Empty<Image>()
-            : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkOperator, operatorIds, null, cancellationToken);
-        IReadOnlyCollection<Image> manufacturerImages = manufacturerIds.Count == 0
-            ? Array.Empty<Image>()
-            : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, manufacturerIds, null, cancellationToken);
-        ParkOpeningHoursSchedule? openingHours = this.openingHoursRepository is null
-            ? null
-            : await this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
-        IReadOnlyCollection<HistoryEvent> historyEvents = this.historyEventRepository is null
-            ? Array.Empty<HistoryEvent>()
-            : await this.historyEventRepository.GetParkTimelineAsync(park.Id, true, true, itemIds, cancellationToken);
+        Task<IReadOnlyCollection<Image>> parkImagesTask = this.imageRepository.GetByOwnersAsync(ImageOwnerType.Park, new[] { park.Id }, null, cancellationToken);
+        Task<IReadOnlyCollection<Image>> itemImagesTask = itemIds.Count == 0
+            ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>())
+            : this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkItem, itemIds, null, cancellationToken);
+        Task<IReadOnlyCollection<Image>> founderImagesTask = founderIds.Count == 0
+            ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>())
+            : this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkFounder, founderIds, null, cancellationToken);
+        Task<IReadOnlyCollection<Image>> operatorImagesTask = operatorIds.Count == 0
+            ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>())
+            : this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkOperator, operatorIds, null, cancellationToken);
+        Task<IReadOnlyCollection<Image>> manufacturerImagesTask = manufacturerIds.Count == 0
+            ? Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>())
+            : this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, manufacturerIds, null, cancellationToken);
+        Task<ParkOpeningHoursSchedule?> openingHoursTask = this.openingHoursRepository is null
+            ? Task.FromResult<ParkOpeningHoursSchedule?>(null)
+            : this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = this.historyEventRepository is null
+            ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>())
+            : this.historyEventRepository.GetParkTimelineAsync(park.Id, true, true, itemIds, cancellationToken);
+        Task<ParkGraphExportReferences> referencesTask = this.MapReferencesAsync(park, manufacturerIds, cancellationToken);
+
+        await Task.WhenAll(
+            parkImagesTask,
+            itemImagesTask,
+            founderImagesTask,
+            operatorImagesTask,
+            manufacturerImagesTask,
+            openingHoursTask,
+            historyEventsTask,
+            referencesTask);
+
+        IReadOnlyCollection<Image> parkImages = await parkImagesTask;
+        IReadOnlyCollection<Image> itemImages = await itemImagesTask;
+        IReadOnlyCollection<Image> founderImages = await founderImagesTask;
+        IReadOnlyCollection<Image> operatorImages = await operatorImagesTask;
+        IReadOnlyCollection<Image> manufacturerImages = await manufacturerImagesTask;
+        ParkOpeningHoursSchedule? openingHours = await openingHoursTask;
+        IReadOnlyCollection<HistoryEvent> historyEvents = await historyEventsTask;
+        ParkGraphExportReferences references = await referencesTask;
 
         DateTime exportedAtUtc = DateTime.UtcNow;
         ParkGraphExportDocument document = new ParkGraphExportDocument
         {
             Identity = MapIdentity(park),
-            References = await this.MapReferencesAsync(park, items, cancellationToken),
+            References = references,
             Park = MapPark(park),
             Zones = zones
                 .OrderBy(static zone => zone.SortOrder)
@@ -144,11 +168,11 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
             },
         };
 
-        string json = JsonSerializer.Serialize(document, ExportJsonOptions);
+        byte[] content = JsonSerializer.SerializeToUtf8Bytes(document, ExportJsonOptions);
         return ApplicationResult<ParkGraphJsonExportResult>.Success(new ParkGraphJsonExportResult
         {
             FileName = BuildFileName(park, exportedAtUtc),
-            Json = json,
+            Content = content,
         });
     }
 
@@ -162,45 +186,34 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
         return options;
     }
 
-    private async Task<ParkGraphExportReferences> MapReferencesAsync(Park park, IReadOnlyCollection<ParkItem> items, CancellationToken cancellationToken)
+    private async Task<ParkGraphExportReferences> MapReferencesAsync(Park park, IReadOnlyCollection<string> manufacturerIds, CancellationToken cancellationToken)
     {
-        List<ParkGraphExportFounder> founders = new List<ParkGraphExportFounder>();
-        if (!string.IsNullOrWhiteSpace(park.FounderId))
-        {
-            ParkFounder? founder = await this.parkFounderRepository.GetByIdAsync(park.FounderId, cancellationToken);
-            if (founder is not null)
-            {
-                founders.Add(MapFounder(founder));
-            }
-        }
+        Task<ParkFounder?> founderTask = string.IsNullOrWhiteSpace(park.FounderId)
+            ? Task.FromResult<ParkFounder?>(null)
+            : this.parkFounderRepository.GetByIdAsync(park.FounderId, cancellationToken);
+        Task<ParkOperator?> operatorTask = string.IsNullOrWhiteSpace(park.OperatorId)
+            ? Task.FromResult<ParkOperator?>(null)
+            : this.parkOperatorRepository.GetByIdAsync(park.OperatorId, cancellationToken);
+        Task<IReadOnlyCollection<AttractionManufacturer>> manufacturersTask = manufacturerIds.Count == 0
+            ? Task.FromResult<IReadOnlyCollection<AttractionManufacturer>>(Array.Empty<AttractionManufacturer>())
+            : this.attractionManufacturerRepository.GetByIdsAsync(manufacturerIds, cancellationToken);
 
-        List<ParkGraphExportOperator> operators = new List<ParkGraphExportOperator>();
-        if (!string.IsNullOrWhiteSpace(park.OperatorId))
-        {
-            ParkOperator? parkOperator = await this.parkOperatorRepository.GetByIdAsync(park.OperatorId, cancellationToken);
-            if (parkOperator is not null)
-            {
-                operators.Add(MapOperator(parkOperator));
-            }
-        }
+        await Task.WhenAll(founderTask, operatorTask, manufacturersTask);
 
-        List<string> manufacturerIds = items
-            .Select(static item => item.AttractionDetails?.ManufacturerId)
-            .Where(static manufacturerId => !string.IsNullOrWhiteSpace(manufacturerId))
-            .Select(static manufacturerId => manufacturerId ?? string.Empty)
-            .Distinct(StringComparer.Ordinal)
-            .OrderBy(static manufacturerId => manufacturerId, StringComparer.Ordinal)
+        ParkFounder? founder = await founderTask;
+        ParkOperator? parkOperator = await operatorTask;
+        IReadOnlyCollection<AttractionManufacturer> manufacturerEntities = await manufacturersTask;
+
+        List<ParkGraphExportFounder> founders = founder is null
+            ? new List<ParkGraphExportFounder>()
+            : new List<ParkGraphExportFounder> { MapFounder(founder) };
+        List<ParkGraphExportOperator> operators = parkOperator is null
+            ? new List<ParkGraphExportOperator>()
+            : new List<ParkGraphExportOperator> { MapOperator(parkOperator) };
+        List<ParkGraphExportManufacturer> manufacturers = manufacturerEntities
+            .OrderBy(static manufacturer => manufacturer.Id, StringComparer.Ordinal)
+            .Select(static manufacturer => MapManufacturer(manufacturer))
             .ToList();
-
-        List<ParkGraphExportManufacturer> manufacturers = new List<ParkGraphExportManufacturer>();
-        foreach (string manufacturerId in manufacturerIds)
-        {
-            AttractionManufacturer? manufacturer = await this.attractionManufacturerRepository.GetByIdAsync(manufacturerId, cancellationToken);
-            if (manufacturer is not null)
-            {
-                manufacturers.Add(MapManufacturer(manufacturer));
-            }
-        }
 
         return new ParkGraphExportReferences
         {

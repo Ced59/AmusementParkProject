@@ -1,6 +1,20 @@
 {
-  "version": "3.1.16",
+  "version": "3.1.17",
   "history": [
+    {
+      "version": "3.1.17",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "L’export des données de parc est plus rapide.",
+        "en": "Park data export is faster.",
+        "de": "Der Parkdatenexport ist schneller.",
+        "nl": "De export van parkgegevens is sneller.",
+        "it": "L’esportazione dei dati del parco è più veloce.",
+        "es": "La exportación de datos del parque es más rápida.",
+        "pl": "Eksport danych parku jest szybszy.",
+        "pt": "A exportação dos dados do parque está mais rápida."
+      }
+    },
     {
       "version": "3.1.16",
       "releasedAt": "2026-06-30",
