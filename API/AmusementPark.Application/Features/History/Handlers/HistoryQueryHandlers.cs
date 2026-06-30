@@ -80,10 +80,20 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
             .ToList();
 
+        bool hasParkItemTimelineEvents = includedItems.Count > 0;
+        if (!hasParkItemTimelineEvents)
+        {
+            hasParkItemTimelineEvents = await this.historyEventRepository.HasParkItemTimelineEventsAsync(
+                park.Id,
+                query.IncludeHidden,
+                cancellationToken);
+        }
+
         return ApplicationResult<HistoryTimelineResult>.Success(new HistoryTimelineResult
         {
             EntityType = HistoryEntityType.Park,
             Park = park,
+            HasParkItemTimelineEvents = hasParkItemTimelineEvents,
             IncludedParkItems = includedItems,
             Events = timelineEvents,
         });

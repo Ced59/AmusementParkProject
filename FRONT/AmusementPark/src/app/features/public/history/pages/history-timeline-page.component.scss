@@ -151,7 +151,7 @@
 
 .history-timeline {
   display: grid;
-  grid-template-columns: 6rem minmax(0, 1fr);
+  grid-template-columns: minmax(4.75rem, 5.5rem) minmax(0, 1fr);
   gap: 1.5rem;
   width: min(100%, var(--history-readable-max-width));
   margin: 1.5rem auto 0;
@@ -161,17 +161,39 @@
   position: sticky;
   top: 6rem;
   align-self: start;
-  display: grid;
-  gap: 0.65rem;
-  padding: 0.6rem 0.85rem 0.6rem 0;
-  border-right: 1px solid color-mix(in srgb, var(--app-primary) 34%, var(--app-border));
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.2rem 0.65rem 0.2rem 0;
 }
 
-.history-timeline__axis span {
+.history-timeline__year {
+  display: inline-flex;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 2.1rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 28%, var(--app-border));
+  border-radius: var(--radius-pill);
   color: color-mix(in srgb, var(--app-text-muted) 82%, var(--app-heading));
+  background: color-mix(in srgb, var(--app-surface) 70%, transparent);
   font-size: 0.82rem;
   font-weight: 900;
   text-align: right;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.history-timeline__year:hover,
+.history-timeline__year:focus-visible {
+  border-color: var(--app-primary);
+  color: var(--app-heading);
+  background: color-mix(in srgb, var(--app-primary) 12%, var(--app-surface));
+  transform: translateX(-2px);
 }
 
 .history-timeline__events {
@@ -199,6 +221,7 @@
   grid-template-columns: minmax(7.5rem, 9rem) minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
+  scroll-margin-top: 6.5rem;
 }
 
 .history-event__date {
@@ -360,12 +383,9 @@
     border-right: 0;
   }
 
-  .history-timeline__axis span {
+  .history-timeline__year {
     flex: 0 0 auto;
     padding: 0.35rem 0.65rem;
-    border: 1px solid var(--app-border);
-    border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--app-surface) 78%, transparent);
     text-align: left;
   }
 }

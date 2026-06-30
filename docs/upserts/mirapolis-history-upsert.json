@@ -1,0 +1,1291 @@
+{
+  "documentType": "AmusementParkParkGraphUpsert",
+  "schemaVersion": "2026-06-30",
+  "mode": "merge",
+  "metadata": {
+    "source": "codex-mirapolis-history",
+    "targetParkId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+    "targetParkName": "Mirapolis",
+    "notes": "Sélectionner Mirapolis dans l'écran admin d'upsert park JSON avant Preview/Apply. Les images Commons sont importées dans le stockage interne via l'upsert remote image, puis les événements history les référencent par mainImageKey/imageKey."
+  },
+  "images": [
+    {
+      "key": "mirapolis-aerial",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/Le_parc_vu_du_ciel.JPG",
+      "ownerKey": "park",
+      "category": "Park",
+      "isPublished": true,
+      "withWatermark": false,
+      "description": "Mirapolis vu du ciel - Wikimedia Commons, TGV617, CC BY-SA 3.0",
+      "altTexts": [
+        { "languageCode": "fr", "value": "Vue aérienne de Mirapolis." },
+        { "languageCode": "en", "value": "Aerial view of Mirapolis." },
+        { "languageCode": "de", "value": "Luftaufnahme von Mirapolis." },
+        { "languageCode": "nl", "value": "Luchtfoto van Mirapolis." },
+        { "languageCode": "it", "value": "Vista aerea di Mirapolis." },
+        { "languageCode": "es", "value": "Vista aérea de Mirapolis." },
+        { "languageCode": "pl", "value": "Widok Mirapolis z lotu ptaka." },
+        { "languageCode": "pt", "value": "Vista aérea de Mirapolis." }
+      ],
+      "captions": [
+        { "languageCode": "fr", "value": "Mirapolis vu du ciel." },
+        { "languageCode": "en", "value": "Mirapolis from above." },
+        { "languageCode": "de", "value": "Mirapolis von oben." },
+        { "languageCode": "nl", "value": "Mirapolis van bovenaf." },
+        { "languageCode": "it", "value": "Mirapolis dall'alto." },
+        { "languageCode": "es", "value": "Mirapolis desde el aire." },
+        { "languageCode": "pl", "value": "Mirapolis z lotu ptaka." },
+        { "languageCode": "pt", "value": "Mirapolis visto do ar." }
+      ],
+      "credits": [
+        { "languageCode": "fr", "value": "Photo : TGV617, Wikimedia Commons, CC BY-SA 3.0." },
+        { "languageCode": "en", "value": "Photo: TGV617, Wikimedia Commons, CC BY-SA 3.0." },
+        { "languageCode": "de", "value": "Foto: TGV617, Wikimedia Commons, CC BY-SA 3.0." },
+        { "languageCode": "nl", "value": "Foto: TGV617, Wikimedia Commons, CC BY-SA 3.0." },
+        { "languageCode": "it", "value": "Foto: TGV617, Wikimedia Commons, CC BY-SA 3.0." },
+        { "languageCode": "es", "value": "Foto: TGV617, Wikimedia Commons, CC BY-SA 3.0." },
+        { "languageCode": "pl", "value": "Zdjęcie: TGV617, Wikimedia Commons, CC BY-SA 3.0." },
+        { "languageCode": "pt", "value": "Foto: TGV617, Wikimedia Commons, CC BY-SA 3.0." }
+      ]
+    },
+    {
+      "key": "mirapolis-miniature",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Mirapolis_mini.jpeg",
+      "ownerKey": "park",
+      "category": "Park",
+      "isPublished": true,
+      "withWatermark": false,
+      "description": "Miniature de Mirapolis - Wikimedia Commons, Philippe Lhardy, CC BY 1.0",
+      "altTexts": [
+        { "languageCode": "fr", "value": "Miniature ou vue promotionnelle de Mirapolis." },
+        { "languageCode": "en", "value": "Miniature or promotional view of Mirapolis." },
+        { "languageCode": "de", "value": "Miniatur- oder Werbeansicht von Mirapolis." },
+        { "languageCode": "nl", "value": "Miniatuur of promotiebeeld van Mirapolis." },
+        { "languageCode": "it", "value": "Miniatura o immagine promozionale di Mirapolis." },
+        { "languageCode": "es", "value": "Miniatura o vista promocional de Mirapolis." },
+        { "languageCode": "pl", "value": "Miniatura albo widok promocyjny Mirapolis." },
+        { "languageCode": "pt", "value": "Miniatura ou imagem promocional de Mirapolis." }
+      ],
+      "captions": [
+        { "languageCode": "fr", "value": "Mirapolis en miniature." },
+        { "languageCode": "en", "value": "A miniature view of Mirapolis." },
+        { "languageCode": "de", "value": "Mirapolis als Miniaturansicht." },
+        { "languageCode": "nl", "value": "Mirapolis in miniatuur." },
+        { "languageCode": "it", "value": "Mirapolis in miniatura." },
+        { "languageCode": "es", "value": "Mirapolis en miniatura." },
+        { "languageCode": "pl", "value": "Mirapolis w miniaturze." },
+        { "languageCode": "pt", "value": "Mirapolis em miniatura." }
+      ],
+      "credits": [
+        { "languageCode": "fr", "value": "Photo : Philippe Lhardy, Wikimedia Commons, CC BY 1.0." },
+        { "languageCode": "en", "value": "Photo: Philippe Lhardy, Wikimedia Commons, CC BY 1.0." },
+        { "languageCode": "de", "value": "Foto: Philippe Lhardy, Wikimedia Commons, CC BY 1.0." },
+        { "languageCode": "nl", "value": "Foto: Philippe Lhardy, Wikimedia Commons, CC BY 1.0." },
+        { "languageCode": "it", "value": "Foto: Philippe Lhardy, Wikimedia Commons, CC BY 1.0." },
+        { "languageCode": "es", "value": "Foto: Philippe Lhardy, Wikimedia Commons, CC BY 1.0." },
+        { "languageCode": "pl", "value": "Zdjęcie: Philippe Lhardy, Wikimedia Commons, CC BY 1.0." },
+        { "languageCode": "pt", "value": "Foto: Philippe Lhardy, Wikimedia Commons, CC BY 1.0." }
+      ]
+    },
+    {
+      "key": "miralooping-euroloop-track",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Euroloop_Europark_2.JPG",
+      "ownerKey": "park",
+      "category": "Park",
+      "isPublished": true,
+      "withWatermark": false,
+      "description": "EuroLoop à Europark - Wikimedia Commons, Sam Rose, CC BY-SA 2.0",
+      "altTexts": [
+        { "languageCode": "fr", "value": "EuroLoop à Europark, ancien Miralooping de Mirapolis." },
+        { "languageCode": "en", "value": "EuroLoop at Europark, formerly Miralooping at Mirapolis." },
+        { "languageCode": "de", "value": "EuroLoop im Europark, ehemals Miralooping aus Mirapolis." },
+        { "languageCode": "nl", "value": "EuroLoop in Europark, vroeger Miralooping in Mirapolis." },
+        { "languageCode": "it", "value": "EuroLoop a Europark, ex Miralooping di Mirapolis." },
+        { "languageCode": "es", "value": "EuroLoop en Europark, antiguo Miralooping de Mirapolis." },
+        { "languageCode": "pl", "value": "EuroLoop w Europark, dawny Miralooping z Mirapolis." },
+        { "languageCode": "pt", "value": "EuroLoop no Europark, antigo Miralooping de Mirapolis." }
+      ],
+      "captions": [
+        { "languageCode": "fr", "value": "L'ancien Miralooping photographié plus tard sous le nom EuroLoop." },
+        { "languageCode": "en", "value": "The former Miralooping photographed later as EuroLoop." },
+        { "languageCode": "de", "value": "Der frühere Miralooping später als EuroLoop." },
+        { "languageCode": "nl", "value": "De voormalige Miralooping later als EuroLoop." },
+        { "languageCode": "it", "value": "L'ex Miralooping fotografato più tardi come EuroLoop." },
+        { "languageCode": "es", "value": "El antiguo Miralooping fotografiado después como EuroLoop." },
+        { "languageCode": "pl", "value": "Dawny Miralooping sfotografowany później jako EuroLoop." },
+        { "languageCode": "pt", "value": "O antigo Miralooping fotografado mais tarde como EuroLoop." }
+      ],
+      "credits": [
+        { "languageCode": "fr", "value": "Photo : Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "en", "value": "Photo: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "de", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "nl", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "it", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "es", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "pl", "value": "Zdjęcie: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "pt", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." }
+      ]
+    },
+    {
+      "key": "miralooping-euroloop-loop",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/Euroloop_inversion_Europark.JPG",
+      "ownerKey": "park",
+      "category": "Park",
+      "isPublished": true,
+      "withWatermark": false,
+      "description": "Inversion d'EuroLoop à Europark - Wikimedia Commons, Sam Rose, CC BY-SA 2.0",
+      "altTexts": [
+        { "languageCode": "fr", "value": "Looping d'EuroLoop, ancien Miralooping." },
+        { "languageCode": "en", "value": "EuroLoop inversion, formerly Miralooping." },
+        { "languageCode": "de", "value": "Inversion von EuroLoop, ehemals Miralooping." },
+        { "languageCode": "nl", "value": "Looping van EuroLoop, vroeger Miralooping." },
+        { "languageCode": "it", "value": "Inversione di EuroLoop, ex Miralooping." },
+        { "languageCode": "es", "value": "Inversión de EuroLoop, antiguo Miralooping." },
+        { "languageCode": "pl", "value": "Inwersja EuroLoop, dawniej Miralooping." },
+        { "languageCode": "pt", "value": "Inversão da EuroLoop, antigo Miralooping." }
+      ],
+      "captions": [
+        { "languageCode": "fr", "value": "Le looping de l'ancien Miralooping dans sa vie sous le nom EuroLoop." },
+        { "languageCode": "en", "value": "The former Miralooping loop during its EuroLoop life." },
+        { "languageCode": "de", "value": "Der Looping des früheren Miralooping in seiner EuroLoop-Zeit." },
+        { "languageCode": "nl", "value": "De looping van de voormalige Miralooping in zijn EuroLoop-periode." },
+        { "languageCode": "it", "value": "Il looping dell'ex Miralooping nella sua vita come EuroLoop." },
+        { "languageCode": "es", "value": "El looping del antiguo Miralooping en su etapa como EuroLoop." },
+        { "languageCode": "pl", "value": "Pętla dawnego Miraloopinga w okresie EuroLoop." },
+        { "languageCode": "pt", "value": "O looping do antigo Miralooping na sua fase EuroLoop." }
+      ],
+      "credits": [
+        { "languageCode": "fr", "value": "Photo : Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "en", "value": "Photo: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "de", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "nl", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "it", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "es", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "pl", "value": "Zdjęcie: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." },
+        { "languageCode": "pt", "value": "Foto: Sam Rose, Wikimedia Commons, CC BY-SA 2.0." }
+      ]
+    }
+  ],
+  "history": {
+    "events": [
+      {
+        "owner": "park",
+        "ownerId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "mirapolis-project-announced-1985-02",
+        "eventType": "Announcement",
+        "date": "1985-02",
+        "isVisible": true,
+        "isMajor": false,
+        "titles": {
+          "fr": "Le projet Mirapolis prend forme",
+          "en": "The Mirapolis project takes shape",
+          "de": "Das Projekt Mirapolis nimmt Gestalt an",
+          "nl": "Het project Mirapolis krijgt vorm",
+          "it": "Il progetto Mirapolis prende forma",
+          "es": "El proyecto Mirapolis toma forma",
+          "pl": "Projekt Mirapolis nabiera kształtu",
+          "pt": "O projeto Mirapolis ganha forma"
+        },
+        "summaries": {
+          "fr": "Le projet est présenté publiquement au milieu des années 1980, avant le lancement rapide du chantier à Courdimanche.",
+          "en": "The project is publicly presented in the mid-1980s before construction quickly starts in Courdimanche.",
+          "de": "Das Projekt wird Mitte der 1980er öffentlich vorgestellt, bevor die Arbeiten in Courdimanche rasch beginnen.",
+          "nl": "Het project wordt halverwege de jaren tachtig publiek voorgesteld, waarna de bouw in Courdimanche snel start.",
+          "it": "Il progetto viene presentato pubblicamente a metà degli anni Ottanta, prima del rapido avvio dei lavori a Courdimanche.",
+          "es": "El proyecto se presenta públicamente a mediados de los años ochenta antes del rápido inicio de las obras en Courdimanche.",
+          "pl": "Projekt zostaje publicznie przedstawiony w połowie lat osiemdziesiątych, a prace w Courdimanche ruszają szybko.",
+          "pt": "O projeto é apresentado publicamente em meados dos anos 1980 antes do rápido arranque das obras em Courdimanche."
+        },
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" }
+        ]
+      },
+      {
+        "owner": "park",
+        "ownerId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "mirapolis-opening-1987-05-20",
+        "eventType": "Opening",
+        "date": "1987-05-20",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageKey": "mirapolis-aerial",
+        "titles": {
+          "fr": "Ouverture de Mirapolis",
+          "en": "Mirapolis opens",
+          "de": "Mirapolis öffnet",
+          "nl": "Mirapolis opent",
+          "it": "Apre Mirapolis",
+          "es": "Abre Mirapolis",
+          "pl": "Otwarcie Mirapolis",
+          "pt": "Abertura de Mirapolis"
+        },
+        "summaries": {
+          "fr": "Mirapolis ouvre au public le 20 mai 1987 à Courdimanche, avec Gargantua comme symbole central et un lancement déjà difficile.",
+          "en": "Mirapolis opens to visitors on 20 May 1987 in Courdimanche, with Gargantua as its central icon and a difficult launch.",
+          "de": "Mirapolis öffnet am 20. Mai 1987 in Courdimanche, mit Gargantua als zentralem Symbol und einem schwierigen Start.",
+          "nl": "Mirapolis opent op 20 mei 1987 in Courdimanche, met Gargantua als centraal symbool en een moeilijke start.",
+          "it": "Mirapolis apre al pubblico il 20 maggio 1987 a Courdimanche, con Gargantua come simbolo centrale e un avvio difficile.",
+          "es": "Mirapolis abre al público el 20 de mayo de 1987 en Courdimanche, con Gargantua como símbolo central y un estreno difícil.",
+          "pl": "Mirapolis otwiera się dla gości 20 maja 1987 roku w Courdimanche, z Gargantuą jako głównym symbolem i trudnym startem.",
+          "pt": "Mirapolis abre ao público em 20 de maio de 1987 em Courdimanche, com Gargantua como símbolo central e uma estreia difícil."
+        },
+        "relatedParkItemIds": [
+          "459f2679-2ccc-431a-98cd-c4e5e3db38c0"
+        ],
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+          { "label": "Wikipédia - Gargantua (Mirapolis)", "url": "https://fr.wikipedia.org/wiki/Gargantua_(Mirapolis)", "accessedAt": "2026-06-30" }
+        ],
+        "article": {
+          "slug": "ouverture-mirapolis-1987",
+          "isPublished": true,
+          "mainImageKey": "mirapolis-aerial",
+          "titles": {
+            "fr": "20 mai 1987 : Mirapolis ouvre ses portes",
+            "en": "20 May 1987: Mirapolis opens its gates",
+            "de": "20. Mai 1987: Mirapolis öffnet seine Tore",
+            "nl": "20 mei 1987: Mirapolis opent de poorten",
+            "it": "20 maggio 1987: Mirapolis apre i cancelli",
+            "es": "20 de mayo de 1987: Mirapolis abre sus puertas",
+            "pl": "20 maja 1987: Mirapolis otwiera bramy",
+            "pt": "20 de maio de 1987: Mirapolis abre portas"
+          },
+          "subtitles": {
+            "fr": "Un lancement spectaculaire, mais déjà fragile.",
+            "en": "A spectacular launch, but already fragile.",
+            "de": "Ein spektakulärer Start, aber schon fragil.",
+            "nl": "Een spectaculaire start, maar meteen kwetsbaar.",
+            "it": "Un lancio spettacolare, ma già fragile.",
+            "es": "Un estreno espectacular, pero ya frágil.",
+            "pl": "Spektakularny start, ale od początku kruchy.",
+            "pt": "Uma estreia espetacular, mas já frágil."
+          },
+          "summaries": {
+            "fr": "Le parc ouvre à Courdimanche autour d'un symbole géant, Gargantua. Dès le premier jour, les tensions d'exploitation montrent pourtant que le projet n'est pas encore stabilisé.",
+            "en": "The park opens in Courdimanche around a giant symbol, Gargantua. From day one, operational tensions show that the project is not yet stable.",
+            "de": "Der Park öffnet in Courdimanche rund um das riesige Symbol Gargantua. Schon am ersten Tag zeigen betriebliche Spannungen, dass das Projekt noch nicht stabil ist.",
+            "nl": "Het park opent in Courdimanche rond het reusachtige symbool Gargantua. Vanaf de eerste dag tonen operationele spanningen dat het project nog niet stabiel is.",
+            "it": "Il parco apre a Courdimanche attorno al grande simbolo Gargantua. Fin dal primo giorno le tensioni operative mostrano che il progetto non è ancora stabile.",
+            "es": "El parque abre en Courdimanche alrededor del gran símbolo Gargantua. Desde el primer día, las tensiones operativas muestran que el proyecto aún no está estabilizado.",
+            "pl": "Park otwiera się w Courdimanche wokół ogromnego symbolu, Gargantui. Już pierwszego dnia napięcia operacyjne pokazują, że projekt nie jest jeszcze stabilny.",
+            "pt": "O parque abre em Courdimanche em torno do grande símbolo Gargantua. Desde o primeiro dia, as tensões operacionais mostram que o projeto ainda não está estabilizado."
+          },
+          "blocks": [
+            {
+              "id": "opening-context",
+              "type": "Paragraph",
+              "sortOrder": 1,
+              "texts": {
+                "fr": "Mirapolis ouvre au public le 20 mai 1987 à Courdimanche, dans le Val-d'Oise. Le parc porte une ambition très française : transformer contes, fables, légendes et figures populaires en un grand parc à thème capable de rivaliser avec les modèles internationaux.",
+                "en": "Mirapolis opens to the public on 20 May 1987 in Courdimanche, in Val-d'Oise. The park has a very French ambition: turning tales, fables, legends and popular figures into a large theme park able to stand beside international models.",
+                "de": "Mirapolis öffnet am 20. Mai 1987 in Courdimanche im Val-d'Oise. Der Park verfolgt eine sehr französische Ambition: Märchen, Fabeln, Legenden und bekannte Figuren in einen großen Themenpark zu verwandeln.",
+                "nl": "Mirapolis opent op 20 mei 1987 in Courdimanche, in Val-d'Oise. Het park heeft een uitgesproken Franse ambitie: sprookjes, fabels, legendes en bekende figuren vertalen naar een groot themapark.",
+                "it": "Mirapolis apre al pubblico il 20 maggio 1987 a Courdimanche, nel Val-d'Oise. Il parco porta un'ambizione molto francese: trasformare racconti, favole, leggende e figure popolari in un grande parco tematico.",
+                "es": "Mirapolis abre al público el 20 de mayo de 1987 en Courdimanche, en Val-d'Oise. El parque nace con una ambición muy francesa: convertir cuentos, fábulas, leyendas y figuras populares en un gran parque temático.",
+                "pl": "Mirapolis otwiera się dla publiczności 20 maja 1987 roku w Courdimanche, w departamencie Val-d'Oise. Park ma bardzo francuską ambicję: zamienić baśnie, bajki, legendy i popularne postacie w duży park tematyczny.",
+                "pt": "Mirapolis abre ao público em 20 de maio de 1987 em Courdimanche, no Val-d'Oise. O parque tem uma ambição muito francesa: transformar contos, fábulas, lendas e figuras populares num grande parque temático."
+              }
+            },
+            {
+              "id": "opening-gargantua",
+              "type": "Paragraph",
+              "sortOrder": 2,
+              "texts": {
+                "fr": "Gargantua devient immédiatement le repère visuel du parc. La statue abrite une attraction intérieure, mais l'ouverture se déroule alors que tout n'est pas encore parfaitement calé, ce qui installe dès le départ une tension entre ambition monumentale et réalité d'exploitation.",
+                "en": "Gargantua immediately becomes the park's visual landmark. The statue contains an indoor ride, but the opening takes place before every operational detail is fully settled, creating an early tension between monumental ambition and operating reality.",
+                "de": "Gargantua wird sofort zum visuellen Wahrzeichen des Parks. Die Statue enthält eine Indoor-Attraktion, doch die Eröffnung erfolgt, bevor alle Betriebsdetails stabil sind.",
+                "nl": "Gargantua wordt meteen het visuele herkenningspunt van het park. Het beeld bevat een indoorattractie, maar de opening vindt plaats terwijl nog niet alles operationeel op orde is.",
+                "it": "Gargantua diventa subito il punto di riferimento visivo del parco. La statua ospita un'attrazione al coperto, ma l'apertura avviene quando l'organizzazione non è ancora del tutto assestata.",
+                "es": "Gargantua se convierte de inmediato en el referente visual del parque. La estatua alberga una atracción interior, pero la apertura llega cuando la operación aún no está completamente ajustada.",
+                "pl": "Gargantua natychmiast staje się wizualnym znakiem parku. Posąg mieści atrakcję pod dachem, ale otwarcie odbywa się, zanim wszystkie elementy działania są w pełni dopracowane.",
+                "pt": "Gargantua torna-se de imediato a referência visual do parque. A estátua acolhe uma atração interior, mas a abertura acontece antes de todos os detalhes operacionais estarem totalmente estabilizados."
+              }
+            },
+            {
+              "id": "opening-first-season",
+              "type": "Paragraph",
+              "sortOrder": 3,
+              "texts": {
+                "fr": "La première saison donne à Mirapolis une visibilité nationale, mais elle ne suffit pas à effacer les coûts, les retards et les difficultés de fréquentation qui vont peser sur la suite de l'histoire du parc.",
+                "en": "The first season gives Mirapolis national visibility, but it does not erase the costs, delays and attendance difficulties that will weigh on the rest of the park's history.",
+                "de": "Die erste Saison verschafft Mirapolis nationale Aufmerksamkeit, kann aber Kosten, Verzögerungen und Besucherschwierigkeiten nicht ausgleichen.",
+                "nl": "Het eerste seizoen geeft Mirapolis nationale zichtbaarheid, maar wist de kosten, vertragingen en bezoekersproblemen niet uit.",
+                "it": "La prima stagione dà a Mirapolis visibilità nazionale, ma non cancella costi, ritardi e difficoltà di affluenza.",
+                "es": "La primera temporada da a Mirapolis visibilidad nacional, pero no borra los costes, retrasos y problemas de asistencia.",
+                "pl": "Pierwszy sezon daje Mirapolis rozpoznawalność w całym kraju, ale nie usuwa kosztów, opóźnień i problemów z frekwencją.",
+                "pt": "A primeira temporada dá visibilidade nacional a Mirapolis, mas não apaga custos, atrasos e dificuldades de afluência."
+              }
+            },
+            {
+              "id": "opening-aerial-image",
+              "type": "Image",
+              "sortOrder": 4,
+              "imageKey": "mirapolis-aerial",
+              "captions": {
+                "fr": "Vue aérienne de Mirapolis : Gargantua donne immédiatement l'échelle monumentale du projet.",
+                "en": "Aerial view of Mirapolis: Gargantua immediately shows the project's monumental scale.",
+                "de": "Luftaufnahme von Mirapolis: Gargantua zeigt sofort die monumentale Dimension des Projekts.",
+                "nl": "Luchtfoto van Mirapolis: Gargantua toont meteen de monumentale schaal van het project.",
+                "it": "Vista aerea di Mirapolis: Gargantua mostra subito la scala monumentale del progetto.",
+                "es": "Vista aérea de Mirapolis: Gargantua muestra de inmediato la escala monumental del proyecto.",
+                "pl": "Widok Mirapolis z lotu ptaka: Gargantua od razu pokazuje monumentalną skalę projektu.",
+                "pt": "Vista aérea de Mirapolis: Gargantua mostra de imediato a escala monumental do projeto."
+              }
+            }
+          ],
+          "sources": [
+            { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+            { "label": "Wikipédia - Gargantua (Mirapolis)", "url": "https://fr.wikipedia.org/wiki/Gargantua_(Mirapolis)", "accessedAt": "2026-06-30" }
+          ]
+        }
+      },
+      {
+        "owner": "parkItem",
+        "ownerId": "459f2679-2ccc-431a-98cd-c4e5e3db38c0",
+        "parkItemId": "459f2679-2ccc-431a-98cd-c4e5e3db38c0",
+        "contextParkId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "gargantua-opening-1987-05-20",
+        "eventType": "Opening",
+        "date": "1987-05-20",
+        "isVisible": true,
+        "isMajor": false,
+        "mainImageKey": "mirapolis-aerial",
+        "titles": {
+          "fr": "Gargantua accueille ses premiers visiteurs",
+          "en": "Gargantua welcomes its first visitors",
+          "de": "Gargantua empfängt seine ersten Gäste",
+          "nl": "Gargantua ontvangt zijn eerste bezoekers",
+          "it": "Gargantua accoglie i primi visitatori",
+          "es": "Gargantua recibe a sus primeros visitantes",
+          "pl": "Gargantua przyjmuje pierwszych gości",
+          "pt": "Gargantua recebe os primeiros visitantes"
+        },
+        "summaries": {
+          "fr": "La statue-attraction de 35 mètres devient le symbole immédiat de Mirapolis.",
+          "en": "The 35-metre statue ride immediately becomes the symbol of Mirapolis.",
+          "de": "Die 35 Meter hohe Statuen-Attraktion wird sofort zum Symbol von Mirapolis.",
+          "nl": "De 35 meter hoge beeldattractie wordt meteen het symbool van Mirapolis.",
+          "it": "La statua-attrazione di 35 metri diventa subito il simbolo di Mirapolis.",
+          "es": "La estatua-atracción de 35 metros se convierte de inmediato en el símbolo de Mirapolis.",
+          "pl": "Mierząca 35 metrów statua-atrakcja natychmiast staje się symbolem Mirapolis.",
+          "pt": "A estátua-atração de 35 metros torna-se de imediato o símbolo de Mirapolis."
+        },
+        "sources": [
+          { "label": "Wikipédia - Gargantua (Mirapolis)", "url": "https://fr.wikipedia.org/wiki/Gargantua_(Mirapolis)", "accessedAt": "2026-06-30" }
+        ]
+      },
+      {
+        "owner": "park",
+        "ownerId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "mirapolis-club-med-1988",
+        "eventType": "OperatorChange",
+        "date": "1988",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageKey": "miralooping-euroloop-loop",
+        "titles": {
+          "fr": "Club Med entre dans l'exploitation",
+          "en": "Club Med enters operations",
+          "de": "Club Med steigt in den Betrieb ein",
+          "nl": "Club Med stapt in de exploitatie",
+          "it": "Club Med entra nella gestione",
+          "es": "Club Med entra en la explotación",
+          "pl": "Club Med wchodzi w prowadzenie parku",
+          "pt": "Club Med entra na exploração"
+        },
+        "summaries": {
+          "fr": "En 1988, Club Med prend part à l'exploitation de Mirapolis. La même saison voit arriver Miralooping, grand huit Vekoma ajouté pour renforcer l'offre.",
+          "en": "In 1988, Club Med becomes involved in operating Mirapolis. The same season brings Miralooping, a Vekoma coaster added to strengthen the lineup.",
+          "de": "1988 beteiligt sich Club Med am Betrieb von Mirapolis. In derselben Saison kommt Miralooping, eine Vekoma-Achterbahn, hinzu.",
+          "nl": "In 1988 raakt Club Med betrokken bij de exploitatie van Mirapolis. In hetzelfde seizoen komt Miralooping, een Vekoma-achtbaan, erbij.",
+          "it": "Nel 1988 Club Med entra nella gestione di Mirapolis. Nella stessa stagione arriva Miralooping, una montagna russa Vekoma.",
+          "es": "En 1988 Club Med participa en la explotación de Mirapolis. Esa misma temporada llega Miralooping, una montaña rusa Vekoma.",
+          "pl": "W 1988 roku Club Med angażuje się w prowadzenie Mirapolis. W tym samym sezonie pojawia się Miralooping, kolejka Vekomy.",
+          "pt": "Em 1988, o Club Med passa a participar na exploração de Mirapolis. Na mesma temporada chega Miralooping, uma montanha-russa Vekoma."
+        },
+        "relatedParkItemIds": [
+          "33726991-dacc-4960-bb87-4e574a9d1728"
+        ],
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+          { "label": "Wikipédia - Euroloop", "url": "https://fr.wikipedia.org/wiki/Euroloop", "accessedAt": "2026-06-30" },
+          { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" }
+        ],
+        "article": {
+          "slug": "club-med-miralooping-1988",
+          "isPublished": true,
+          "mainImageKey": "miralooping-euroloop-loop",
+          "titles": {
+            "fr": "1988 : Club Med et l'arrivée de Miralooping",
+            "en": "1988: Club Med and the arrival of Miralooping",
+            "de": "1988: Club Med und die Ankunft von Miralooping",
+            "nl": "1988: Club Med en de komst van Miralooping",
+            "it": "1988: Club Med e l'arrivo di Miralooping",
+            "es": "1988: Club Med y la llegada de Miralooping",
+            "pl": "1988: Club Med i pojawienie się Miralooping",
+            "pt": "1988: Club Med e a chegada de Miralooping"
+          },
+          "subtitles": {
+            "fr": "La deuxième saison cherche à redonner de l'élan au parc.",
+            "en": "The second season tries to give the park new momentum.",
+            "de": "Die zweite Saison soll dem Park neuen Schwung geben.",
+            "nl": "Het tweede seizoen moet het park nieuw elan geven.",
+            "it": "La seconda stagione prova a rilanciare il parco.",
+            "es": "La segunda temporada intenta dar nuevo impulso al parque.",
+            "pl": "Drugi sezon ma nadać parkowi nowy rozpęd.",
+            "pt": "A segunda temporada tenta dar novo fôlego ao parque."
+          },
+          "summaries": {
+            "fr": "Club Med arrive dans la gestion et Miralooping devient l'ajout marquant de 1988.",
+            "en": "Club Med joins management and Miralooping becomes the standout 1988 addition.",
+            "de": "Club Med kommt in die Verwaltung und Miralooping wird zur wichtigsten Neuheit von 1988.",
+            "nl": "Club Med komt in het beheer en Miralooping wordt de opvallende nieuwigheid van 1988.",
+            "it": "Club Med entra nella gestione e Miralooping diventa la novità principale del 1988.",
+            "es": "Club Med entra en la gestión y Miralooping se convierte en la novedad destacada de 1988.",
+            "pl": "Club Med dołącza do zarządzania, a Miralooping staje się najważniejszą nowością 1988 roku.",
+            "pt": "O Club Med entra na gestão e Miralooping torna-se a grande novidade de 1988."
+          },
+          "blocks": [
+            {
+              "id": "club-med-management",
+              "type": "Paragraph",
+              "sortOrder": 1,
+              "texts": {
+                "fr": "Après une première saison compliquée, Mirapolis cherche un second souffle. L'arrivée de Club Med dans l'exploitation traduit cette volonté de professionnaliser la gestion et de redonner confiance autour du parc.",
+                "en": "After a difficult first season, Mirapolis looks for a second wind. Club Med's involvement in operations reflects the aim of professionalising management and rebuilding confidence around the park.",
+                "de": "Nach einer schwierigen ersten Saison sucht Mirapolis neuen Schwung. Die Beteiligung von Club Med soll den Betrieb professionalisieren und Vertrauen zurückbringen.",
+                "nl": "Na een moeilijk eerste seizoen zoekt Mirapolis nieuw momentum. De betrokkenheid van Club Med moet de exploitatie professioneler maken en vertrouwen herstellen.",
+                "it": "Dopo una prima stagione difficile, Mirapolis cerca nuovo slancio. L'arrivo di Club Med nella gestione indica la volontà di rendere l'operazione più professionale.",
+                "es": "Tras una primera temporada complicada, Mirapolis busca un nuevo impulso. La llegada de Club Med a la explotación refleja la voluntad de profesionalizar la gestión.",
+                "pl": "Po trudnym pierwszym sezonie Mirapolis szuka drugiego oddechu. Udział Club Med w prowadzeniu parku ma profesjonalizować zarządzanie i odbudować zaufanie.",
+                "pt": "Depois de uma primeira temporada difícil, Mirapolis procura novo fôlego. A entrada do Club Med na exploração mostra a vontade de profissionalizar a gestão."
+              }
+            },
+            {
+              "id": "miralooping-addition",
+              "type": "Paragraph",
+              "sortOrder": 2,
+              "texts": {
+                "fr": "Le signal le plus visible est Miralooping. Le grand huit Vekoma ouvre en juillet 1988 et donne au parc une attraction à sensations plus lisible, capable de parler aux amateurs de montagnes russes.",
+                "en": "The most visible signal is Miralooping. The Vekoma coaster opens in July 1988 and gives the park a clearer thrill ride for coaster fans.",
+                "de": "Das sichtbarste Signal ist Miralooping. Die Vekoma-Achterbahn öffnet im Juli 1988 und gibt dem Park eine klar erkennbare Thrill-Attraktion.",
+                "nl": "Het zichtbaarste signaal is Miralooping. De Vekoma-achtbaan opent in juli 1988 en geeft het park een duidelijke thrillride.",
+                "it": "Il segnale più visibile è Miralooping. La montagna russa Vekoma apre nel luglio 1988 e offre al parco un'attrazione più riconoscibile per gli appassionati.",
+                "es": "La señal más visible es Miralooping. La montaña rusa Vekoma abre en julio de 1988 y da al parque una atracción de sensaciones más clara.",
+                "pl": "Najbardziej widocznym sygnałem jest Miralooping. Kolejka Vekomy otwiera się w lipcu 1988 roku i daje parkowi wyraźną atrakcję dla fanów mocniejszych wrażeń.",
+                "pt": "O sinal mais visível é Miralooping. A montanha-russa Vekoma abre em julho de 1988 e dá ao parque uma atração de emoções mais evidente."
+              }
+            },
+            {
+              "id": "club-med-limits",
+              "type": "Paragraph",
+              "sortOrder": 3,
+              "texts": {
+                "fr": "Cette relance ne suffit pourtant pas à résoudre les déséquilibres structurels. Mirapolis continue de porter le poids de ses investissements, de son positionnement et d'une fréquentation insuffisante pour sécuriser durablement son modèle.",
+                "en": "The relaunch is not enough to solve the structural imbalance. Mirapolis still carries the weight of its investments, positioning and attendance that is not strong enough to secure the model long term.",
+                "de": "Diese Neuausrichtung reicht jedoch nicht aus, um die strukturellen Probleme zu lösen. Mirapolis trägt weiter die Last seiner Investitionen, Positionierung und unzureichenden Besucherzahlen.",
+                "nl": "Die herstart volstaat niet om de structurele problemen op te lossen. Mirapolis blijft gebukt gaan onder investeringen, positionering en onvoldoende bezoekersaantallen.",
+                "it": "Il rilancio non basta però a risolvere gli squilibri strutturali. Mirapolis continua a portare il peso degli investimenti, del posizionamento e di un'affluenza insufficiente.",
+                "es": "El relanzamiento no basta para resolver los desequilibrios estructurales. Mirapolis sigue cargando con inversiones, posicionamiento y una asistencia insuficiente.",
+                "pl": "To ożywienie nie wystarcza jednak do rozwiązania problemów strukturalnych. Mirapolis nadal dźwiga ciężar inwestycji, pozycjonowania i zbyt słabej frekwencji.",
+                "pt": "Este relançamento não chega para resolver os desequilíbrios estruturais. Mirapolis continua a carregar o peso dos investimentos, do posicionamento e de uma afluência insuficiente."
+              }
+            }
+          ],
+          "sources": [
+            { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+            { "label": "Wikipédia - Euroloop", "url": "https://fr.wikipedia.org/wiki/Euroloop", "accessedAt": "2026-06-30" },
+            { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" }
+          ]
+        }
+      },
+      {
+        "owner": "parkItem",
+        "ownerId": "33726991-dacc-4960-bb87-4e574a9d1728",
+        "parkItemId": "33726991-dacc-4960-bb87-4e574a9d1728",
+        "contextParkId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "miralooping-opening-1988-07",
+        "eventType": "Opening",
+        "date": "1988-07",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageKey": "miralooping-euroloop-loop",
+        "titles": {
+          "fr": "Miralooping ouvre à Mirapolis",
+          "en": "Miralooping opens at Mirapolis",
+          "de": "Miralooping öffnet in Mirapolis",
+          "nl": "Miralooping opent in Mirapolis",
+          "it": "Miralooping apre a Mirapolis",
+          "es": "Miralooping abre en Mirapolis",
+          "pl": "Miralooping otwiera się w Mirapolis",
+          "pt": "Miralooping abre em Mirapolis"
+        },
+        "summaries": {
+          "fr": "Le grand huit Vekoma MK-1200 ouvre en juillet 1988. Sa carrière dépassera largement la vie de Mirapolis.",
+          "en": "The Vekoma MK-1200 coaster opens in July 1988. Its career will extend far beyond Mirapolis itself.",
+          "de": "Die Vekoma MK-1200-Achterbahn öffnet im Juli 1988. Ihre Laufbahn wird Mirapolis deutlich überdauern.",
+          "nl": "De Vekoma MK-1200-achtbaan opent in juli 1988. Zijn loopbaan zal Mirapolis ruim overleven.",
+          "it": "La montagna russa Vekoma MK-1200 apre nel luglio 1988. La sua carriera andrà ben oltre Mirapolis.",
+          "es": "La montaña rusa Vekoma MK-1200 abre en julio de 1988. Su carrera superará ampliamente la vida de Mirapolis.",
+          "pl": "Kolejka Vekoma MK-1200 otwiera się w lipcu 1988 roku. Jej historia wykroczy daleko poza Mirapolis.",
+          "pt": "A montanha-russa Vekoma MK-1200 abre em julho de 1988. A sua carreira irá muito além de Mirapolis."
+        },
+        "sources": [
+          { "label": "Wikipédia - Euroloop", "url": "https://fr.wikipedia.org/wiki/Euroloop", "accessedAt": "2026-06-30" },
+          { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" }
+        ],
+        "article": {
+          "slug": "miralooping-naissance-1988",
+          "isPublished": true,
+          "mainImageKey": "miralooping-euroloop-loop",
+          "titles": {
+            "fr": "Miralooping, une attraction plus durable que son parc",
+            "en": "Miralooping, a ride that outlasts its park",
+            "de": "Miralooping, eine Attraktion, die ihren Park überlebt",
+            "nl": "Miralooping, een attractie die zijn park overleeft",
+            "it": "Miralooping, un'attrazione più longeva del suo parco",
+            "es": "Miralooping, una atracción más longeva que su parque",
+            "pl": "Miralooping, atrakcja trwalsza niż jej park",
+            "pt": "Miralooping, uma atração mais duradoura do que o parque"
+          },
+          "subtitles": {
+            "fr": "Né à Mirapolis, le grand huit deviendra plus tard Mega Looping Bahn puis EuroLoop.",
+            "en": "Born at Mirapolis, the coaster later becomes Mega Looping Bahn and then EuroLoop.",
+            "de": "In Mirapolis geboren, wird die Achterbahn später Mega Looping Bahn und dann EuroLoop.",
+            "nl": "Geboren in Mirapolis wordt de achtbaan later Mega Looping Bahn en daarna EuroLoop.",
+            "it": "Nata a Mirapolis, la montagna russa diventerà poi Mega Looping Bahn e quindi EuroLoop.",
+            "es": "Nacida en Mirapolis, la montaña rusa será después Mega Looping Bahn y luego EuroLoop.",
+            "pl": "Urodzona w Mirapolis kolejka stanie się później Mega Looping Bahn, a następnie EuroLoop.",
+            "pt": "Nascida em Mirapolis, a montanha-russa tornar-se-á depois Mega Looping Bahn e mais tarde EuroLoop."
+          },
+          "summaries": {
+            "fr": "Miralooping montre pourquoi l'histoire d'un parkItem ne s'arrête pas toujours à celle de son parc d'origine.",
+            "en": "Miralooping shows why a parkItem history does not always stop with its original park.",
+            "de": "Miralooping zeigt, warum die Geschichte eines ParkItems nicht immer mit seinem Ursprungspark endet.",
+            "nl": "Miralooping toont waarom de geschiedenis van een parkItem niet altijd eindigt met zijn oorspronkelijke park.",
+            "it": "Miralooping mostra perché la storia di un parkItem non finisce sempre con il parco d'origine.",
+            "es": "Miralooping muestra por qué la historia de un parkItem no siempre termina con su parque de origen.",
+            "pl": "Miralooping pokazuje, dlaczego historia parkItemu nie zawsze kończy się wraz z jego pierwotnym parkiem.",
+            "pt": "Miralooping mostra porque a história de um parkItem nem sempre termina com o parque de origem."
+          },
+          "blocks": [
+            {
+              "id": "miralooping-birth",
+              "type": "Paragraph",
+              "sortOrder": 1,
+              "texts": {
+                "fr": "Miralooping ouvre en juillet 1988 comme l'une des réponses de Mirapolis au besoin d'attractions plus fortes et plus clairement identifiables. Le coaster est un modèle MK-1200 de Vekoma.",
+                "en": "Miralooping opens in July 1988 as one answer to Mirapolis' need for stronger, clearer thrill attractions. The coaster is a Vekoma MK-1200 model.",
+                "de": "Miralooping öffnet im Juli 1988 als Antwort auf den Bedarf von Mirapolis nach stärkeren und klarer erkennbaren Thrill-Attraktionen. Die Bahn ist ein Vekoma MK-1200.",
+                "nl": "Miralooping opent in juli 1988 als antwoord op de behoefte van Mirapolis aan sterkere en duidelijkere thrillattracties. De achtbaan is een Vekoma MK-1200.",
+                "it": "Miralooping apre nel luglio 1988 come risposta al bisogno di Mirapolis di attrazioni più forti e riconoscibili. Il coaster è un modello Vekoma MK-1200.",
+                "es": "Miralooping abre en julio de 1988 como respuesta a la necesidad de Mirapolis de atracciones más intensas y reconocibles. La montaña rusa es un modelo Vekoma MK-1200.",
+                "pl": "Miralooping otwiera się w lipcu 1988 roku jako odpowiedź na potrzebę mocniejszych i bardziej rozpoznawalnych atrakcji w Mirapolis. To model Vekoma MK-1200.",
+                "pt": "Miralooping abre em julho de 1988 como resposta à necessidade de Mirapolis de atrações mais fortes e reconhecíveis. A montanha-russa é um modelo Vekoma MK-1200."
+              }
+            },
+            {
+              "id": "miralooping-afterlife",
+              "type": "Paragraph",
+              "sortOrder": 2,
+              "texts": {
+                "fr": "Après la fermeture de Mirapolis, l'attraction ne disparaît pas. Les bases de données spécialisées la suivent ensuite à Spreepark sous le nom Mega Looping Bahn, puis à Europark/Fabrikus World sous le nom EuroLoop.",
+                "en": "After Mirapolis closes, the ride does not disappear. Specialist databases then track it at Spreepark as Mega Looping Bahn, and later at Europark/Fabrikus World as EuroLoop.",
+                "de": "Nach der Schließung von Mirapolis verschwindet die Bahn nicht. Fachquellen verfolgen sie danach im Spreepark als Mega Looping Bahn und später bei Europark/Fabrikus World als EuroLoop.",
+                "nl": "Na de sluiting van Mirapolis verdwijnt de attractie niet. Specialistische bronnen volgen haar daarna in Spreepark als Mega Looping Bahn en later bij Europark/Fabrikus World als EuroLoop.",
+                "it": "Dopo la chiusura di Mirapolis l'attrazione non scompare. Le fonti specializzate la seguono poi a Spreepark come Mega Looping Bahn e quindi a Europark/Fabrikus World come EuroLoop.",
+                "es": "Tras el cierre de Mirapolis, la atracción no desaparece. Las bases de datos especializadas la siguen en Spreepark como Mega Looping Bahn y después en Europark/Fabrikus World como EuroLoop.",
+                "pl": "Po zamknięciu Mirapolis atrakcja nie znika. Specjalistyczne źródła śledzą ją później w Spreepark jako Mega Looping Bahn, a następnie w Europark/Fabrikus World jako EuroLoop.",
+                "pt": "Depois do encerramento de Mirapolis, a atração não desaparece. Fontes especializadas acompanham-na depois no Spreepark como Mega Looping Bahn e mais tarde no Europark/Fabrikus World como EuroLoop."
+              }
+            },
+            {
+              "id": "miralooping-euroloop-image",
+              "type": "Image",
+              "sortOrder": 3,
+              "imageKey": "miralooping-euroloop-loop",
+              "captions": {
+                "fr": "Le looping de l'ancien Miralooping photographié pendant sa période EuroLoop, après Mirapolis et Spreepark.",
+                "en": "The former Miralooping loop photographed during its EuroLoop period, after Mirapolis and Spreepark.",
+                "de": "Der Looping des früheren Miralooping während seiner EuroLoop-Zeit, nach Mirapolis und Spreepark.",
+                "nl": "De looping van de voormalige Miralooping tijdens zijn EuroLoop-periode, na Mirapolis en Spreepark.",
+                "it": "Il looping dell'ex Miralooping durante il periodo EuroLoop, dopo Mirapolis e Spreepark.",
+                "es": "El looping del antiguo Miralooping durante su etapa EuroLoop, tras Mirapolis y Spreepark.",
+                "pl": "Pętla dawnego Miraloopinga w okresie EuroLoop, po Mirapolis i Spreepark.",
+                "pt": "O looping do antigo Miralooping durante a fase EuroLoop, depois de Mirapolis e Spreepark."
+              }
+            }
+          ],
+          "sources": [
+            { "label": "Wikipédia - Euroloop", "url": "https://fr.wikipedia.org/wiki/Euroloop", "accessedAt": "2026-06-30" },
+            { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" },
+            { "label": "Fabrikus World - EuroLoop", "url": "https://www.fabrikusworld.com/en/attraction/euroloop/", "accessedAt": "2026-06-30" }
+          ]
+        }
+      },
+      {
+        "owner": "park",
+        "ownerId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "mirapolis-forains-bankruptcy-1989",
+        "eventType": "Bankruptcy",
+        "date": "1989",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageKey": "mirapolis-miniature",
+        "titles": {
+          "fr": "La saison des forains et le dépôt de bilan",
+          "en": "The fairground season and bankruptcy filing",
+          "de": "Die Schausteller-Saison und der Insolvenzantrag",
+          "nl": "Het kermisseizoen en de faillissementsaanvraag",
+          "it": "La stagione dei giostrai e il deposito di bilancio",
+          "es": "La temporada de feriantes y la suspensión de pagos",
+          "pl": "Sezon lunaparkowy i wniosek upadłościowy",
+          "pt": "A temporada dos feirantes e o pedido de falência"
+        },
+        "summaries": {
+          "fr": "En 1989, Mirapolis ajoute des attractions de forains, mais le retrait de son soutien financier majeur conduit au dépôt de bilan.",
+          "en": "In 1989, Mirapolis adds fairground rides, but the withdrawal of a major financial backer leads to a bankruptcy filing.",
+          "de": "1989 ergänzt Mirapolis Schausteller-Attraktionen, doch der Rückzug eines wichtigen Finanzpartners führt zur Insolvenz.",
+          "nl": "In 1989 voegt Mirapolis kermisattracties toe, maar het vertrek van een belangrijke financier leidt tot een faillissementsaanvraag.",
+          "it": "Nel 1989 Mirapolis aggiunge attrazioni da luna park, ma il ritiro di un grande sostegno finanziario porta al deposito di bilancio.",
+          "es": "En 1989 Mirapolis añade atracciones de feria, pero la retirada de un gran apoyo financiero conduce a la suspensión de pagos.",
+          "pl": "W 1989 roku Mirapolis dodaje atrakcje lunaparkowe, ale wycofanie ważnego finansowania prowadzi do wniosku upadłościowego.",
+          "pt": "Em 1989, Mirapolis adiciona atrações de feira, mas a retirada de um apoio financeiro importante leva ao pedido de falência."
+        },
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+          { "label": "L'Echo Touristique - Mirapolis, le fiasco du premier grand parc d'attractions français", "url": "https://www.lechotouristique.com/article/mirapolis-le-fiasco-du-premier-grand-parc-dattractions-francais", "accessedAt": "2026-06-30" }
+        ],
+        "article": {
+          "slug": "forains-depot-bilan-1989",
+          "isPublished": true,
+          "mainImageKey": "mirapolis-miniature",
+          "titles": {
+            "fr": "1989 : Mirapolis cherche son salut chez les forains",
+            "en": "1989: Mirapolis looks to fairground operators",
+            "de": "1989: Mirapolis sucht Hilfe bei Schaustellern",
+            "nl": "1989: Mirapolis zoekt redding bij kermisexploitanten",
+            "it": "1989: Mirapolis cerca salvezza nei giostrai",
+            "es": "1989: Mirapolis busca salida con los feriantes",
+            "pl": "1989: Mirapolis szuka ratunku u operatorów lunaparkowych",
+            "pt": "1989: Mirapolis procura salvação nos feirantes"
+          },
+          "subtitles": {
+            "fr": "Une tentative d'urgence qui ne sauve pas le parc.",
+            "en": "An emergency attempt that does not save the park.",
+            "de": "Ein Notversuch, der den Park nicht rettet.",
+            "nl": "Een noodpoging die het park niet redt.",
+            "it": "Un tentativo d'urgenza che non salva il parco.",
+            "es": "Un intento de urgencia que no salva el parque.",
+            "pl": "Awaryjna próba, która nie ratuje parku.",
+            "pt": "Uma tentativa de emergência que não salva o parque."
+          },
+          "summaries": {
+            "fr": "La saison 1989 multiplie les ajouts, mais le modèle financier de Mirapolis cède.",
+            "en": "The 1989 season multiplies additions, but Mirapolis' financial model breaks.",
+            "de": "Die Saison 1989 bringt viele Ergänzungen, doch das Finanzmodell von Mirapolis bricht.",
+            "nl": "Het seizoen 1989 brengt veel toevoegingen, maar het financiële model van Mirapolis breekt.",
+            "it": "La stagione 1989 moltiplica le aggiunte, ma il modello finanziario di Mirapolis cede.",
+            "es": "La temporada 1989 multiplica los añadidos, pero el modelo financiero de Mirapolis cede.",
+            "pl": "Sezon 1989 przynosi wiele dodatków, ale model finansowy Mirapolis załamuje się.",
+            "pt": "A temporada de 1989 multiplica os acréscimos, mas o modelo financeiro de Mirapolis cede."
+          },
+          "blocks": [
+            {
+              "id": "forains-arrive",
+              "type": "Paragraph",
+              "sortOrder": 1,
+              "texts": {
+                "fr": "En 1989, Mirapolis s'appuie sur des forains réunis autour du GIE Mira-Fêt. Des attractions venues de l'univers forain complètent l'offre, dans une logique plus opportuniste et plus rapide que les grands développements thématiques initiaux.",
+                "en": "In 1989, Mirapolis relies on fairground operators grouped around GIE Mira-Fêt. Fairground-style rides are added quickly, in a more opportunistic way than the park's original large themed developments.",
+                "de": "1989 stützt sich Mirapolis auf Schausteller rund um das GIE Mira-Fêt. Fahrgeschäfte aus der Kirmeswelt ergänzen das Angebot schneller und opportunistischer als die ursprünglichen großen Themenentwicklungen.",
+                "nl": "In 1989 steunt Mirapolis op kermisexploitanten rond GIE Mira-Fêt. Kermisattracties vullen het aanbod snel aan, pragmatischer dan de oorspronkelijke thematische ontwikkelingen.",
+                "it": "Nel 1989 Mirapolis si appoggia a giostrai riuniti attorno al GIE Mira-Fêt. Attrazioni da luna park completano rapidamente l'offerta, in modo più opportunistico rispetto ai grandi sviluppi tematici iniziali.",
+                "es": "En 1989 Mirapolis se apoya en feriantes reunidos en torno al GIE Mira-Fêt. Atracciones de feria completan rápidamente la oferta, con una lógica más oportunista que los grandes desarrollos temáticos iniciales.",
+                "pl": "W 1989 roku Mirapolis opiera się na operatorach lunaparkowych skupionych wokół GIE Mira-Fêt. Atrakcje z lunaparków szybko uzupełniają ofertę, bardziej doraźnie niż pierwotne wielkie projekty tematyczne.",
+                "pt": "Em 1989, Mirapolis apoia-se em feirantes reunidos em torno do GIE Mira-Fêt. Atrações de feira completam rapidamente a oferta, de forma mais oportunista do que os grandes desenvolvimentos temáticos iniciais."
+              }
+            },
+            {
+              "id": "financial-break",
+              "type": "Paragraph",
+              "sortOrder": 2,
+              "texts": {
+                "fr": "Cette adaptation ne règle pas le fond du problème. Le retrait de la Banque Arabe Internationale d'Investissement fragilise l'équilibre financier et mène au dépôt de bilan, puis à la liquidation de la société Paris-Parc.",
+                "en": "This adaptation does not solve the deeper problem. The withdrawal of Banque Arabe Internationale d'Investissement weakens the financial balance and leads to the bankruptcy filing, then the liquidation of Paris-Parc.",
+                "de": "Diese Anpassung löst das Grundproblem nicht. Der Rückzug der Banque Arabe Internationale d'Investissement schwächt das finanzielle Gleichgewicht und führt zum Insolvenzantrag sowie zur Liquidation von Paris-Parc.",
+                "nl": "Die aanpassing lost het kernprobleem niet op. Het vertrek van Banque Arabe Internationale d'Investissement verzwakt het financiële evenwicht en leidt tot de faillissementsaanvraag en liquidatie van Paris-Parc.",
+                "it": "Questo adattamento non risolve il problema di fondo. Il ritiro della Banque Arabe Internationale d'Investissement indebolisce l'equilibrio finanziario e porta al deposito di bilancio e alla liquidazione di Paris-Parc.",
+                "es": "Esta adaptación no resuelve el problema de fondo. La retirada de Banque Arabe Internationale d'Investissement debilita el equilibrio financiero y lleva a la suspensión de pagos y liquidación de Paris-Parc.",
+                "pl": "Ta adaptacja nie rozwiązuje głębszego problemu. Wycofanie Banque Arabe Internationale d'Investissement osłabia równowagę finansową i prowadzi do wniosku upadłościowego oraz likwidacji Paris-Parc.",
+                "pt": "Esta adaptação não resolve o problema de fundo. A retirada da Banque Arabe Internationale d'Investissement fragiliza o equilíbrio financeiro e leva ao pedido de falência e à liquidação da Paris-Parc."
+              }
+            }
+          ],
+          "sources": [
+            { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+            { "label": "L'Echo Touristique - Mirapolis, le fiasco du premier grand parc d'attractions français", "url": "https://www.lechotouristique.com/article/mirapolis-le-fiasco-du-premier-grand-parc-dattractions-francais", "accessedAt": "2026-06-30" }
+          ]
+        }
+      },
+      {
+        "owner": "park",
+        "ownerId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "mirapolis-cergy-parc-1990",
+        "eventType": "OperatorChange",
+        "date": "1990",
+        "isVisible": true,
+        "isMajor": false,
+        "titles": {
+          "fr": "Cergy-Parc reprend l'exploitation",
+          "en": "Cergy-Parc takes over operations",
+          "de": "Cergy-Parc übernimmt den Betrieb",
+          "nl": "Cergy-Parc neemt de exploitatie over",
+          "it": "Cergy-Parc rileva la gestione",
+          "es": "Cergy-Parc asume la explotación",
+          "pl": "Cergy-Parc przejmuje prowadzenie",
+          "pt": "Cergy-Parc assume a exploração"
+        },
+        "summaries": {
+          "fr": "Après la liquidation de Paris-Parc, Cergy-Parc devient la structure d'exploitation de Mirapolis pour les dernières saisons.",
+          "en": "After Paris-Parc is liquidated, Cergy-Parc becomes the operating structure for Mirapolis' final seasons.",
+          "de": "Nach der Liquidation von Paris-Parc wird Cergy-Parc zur Betreibergesellschaft der letzten Mirapolis-Saisons.",
+          "nl": "Na de liquidatie van Paris-Parc wordt Cergy-Parc de exploitant voor de laatste seizoenen van Mirapolis.",
+          "it": "Dopo la liquidazione di Paris-Parc, Cergy-Parc diventa la struttura di gestione delle ultime stagioni di Mirapolis.",
+          "es": "Tras la liquidación de Paris-Parc, Cergy-Parc se convierte en la estructura de explotación de las últimas temporadas de Mirapolis.",
+          "pl": "Po likwidacji Paris-Parc Cergy-Parc staje się strukturą prowadzącą ostatnie sezony Mirapolis.",
+          "pt": "Depois da liquidação da Paris-Parc, a Cergy-Parc torna-se a estrutura de exploração das últimas temporadas de Mirapolis."
+        },
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" }
+        ]
+      },
+      {
+        "owner": "park",
+        "ownerId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "mirapolis-definitive-closure-1991-10-20",
+        "eventType": "DefinitiveClosure",
+        "date": "1991-10-20",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageKey": "mirapolis-aerial",
+        "titles": {
+          "fr": "Dernier jour d'exploitation",
+          "en": "Final operating day",
+          "de": "Letzter Betriebstag",
+          "nl": "Laatste exploitatiedag",
+          "it": "Ultimo giorno di esercizio",
+          "es": "Último día de explotación",
+          "pl": "Ostatni dzień działania",
+          "pt": "Último dia de exploração"
+        },
+        "summaries": {
+          "fr": "Mirapolis ferme définitivement au public le 20 octobre 1991, après seulement cinq saisons d'exploitation.",
+          "en": "Mirapolis closes permanently to the public on 20 October 1991 after only five operating seasons.",
+          "de": "Mirapolis schließt am 20. Oktober 1991 nach nur fünf Betriebsjahren endgültig für Besucher.",
+          "nl": "Mirapolis sluit op 20 oktober 1991 definitief voor bezoekers na slechts vijf exploitatieseizoenen.",
+          "it": "Mirapolis chiude definitivamente al pubblico il 20 ottobre 1991 dopo solo cinque stagioni di esercizio.",
+          "es": "Mirapolis cierra definitivamente al público el 20 de octubre de 1991 tras solo cinco temporadas de explotación.",
+          "pl": "Mirapolis zostaje definitywnie zamknięty dla gości 20 października 1991 roku po zaledwie pięciu sezonach.",
+          "pt": "Mirapolis encerra definitivamente ao público em 20 de outubro de 1991 depois de apenas cinco temporadas."
+        },
+        "relatedParkItemIds": [
+          "33726991-dacc-4960-bb87-4e574a9d1728",
+          "459f2679-2ccc-431a-98cd-c4e5e3db38c0",
+          "4744d2f1-3fbe-4739-b56a-8e5faced4c44",
+          "af04cf0b-e7cb-49fd-917a-9fe05d052856"
+        ],
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" }
+        ],
+        "article": {
+          "slug": "fermeture-definitive-1991",
+          "isPublished": true,
+          "mainImageKey": "mirapolis-aerial",
+          "titles": {
+            "fr": "20 octobre 1991 : Mirapolis ferme définitivement",
+            "en": "20 October 1991: Mirapolis closes for good",
+            "de": "20. Oktober 1991: Mirapolis schließt endgültig",
+            "nl": "20 oktober 1991: Mirapolis sluit definitief",
+            "it": "20 ottobre 1991: Mirapolis chiude definitivamente",
+            "es": "20 de octubre de 1991: Mirapolis cierra definitivamente",
+            "pl": "20 października 1991: Mirapolis zamyka się na dobre",
+            "pt": "20 de outubro de 1991: Mirapolis encerra definitivamente"
+          },
+          "subtitles": {
+            "fr": "La fin de l'exploitation publique, pas encore la fin physique du parc.",
+            "en": "The end of public operation, but not yet the physical end of the park.",
+            "de": "Das Ende des Publikumsbetriebs, aber noch nicht das physische Ende des Parks.",
+            "nl": "Het einde van de publieke exploitatie, maar nog niet het fysieke einde van het park.",
+            "it": "La fine dell'esercizio pubblico, ma non ancora la fine fisica del parco.",
+            "es": "El fin de la explotación pública, pero no aún el final físico del parque.",
+            "pl": "Koniec publicznego działania, ale jeszcze nie fizyczny koniec parku.",
+            "pt": "O fim da exploração pública, mas ainda não o fim físico do parque."
+          },
+          "summaries": {
+            "fr": "La fermeture de 1991 transforme Mirapolis en parc disparu, tandis que plusieurs attractions commencent une autre histoire ailleurs.",
+            "en": "The 1991 closure turns Mirapolis into a lost park, while several rides begin another story elsewhere.",
+            "de": "Die Schließung von 1991 macht Mirapolis zu einem verschwundenen Park, während mehrere Attraktionen anderswo eine neue Geschichte beginnen.",
+            "nl": "De sluiting van 1991 maakt van Mirapolis een verdwenen park, terwijl verschillende attracties elders aan een nieuw verhaal beginnen.",
+            "it": "La chiusura del 1991 trasforma Mirapolis in un parco scomparso, mentre alcune attrazioni iniziano altrove un'altra storia.",
+            "es": "El cierre de 1991 convierte a Mirapolis en un parque desaparecido, mientras varias atracciones empiezan otra historia en otros lugares.",
+            "pl": "Zamknięcie w 1991 roku zmienia Mirapolis w zaginiony park, a kilka atrakcji zaczyna inną historię gdzie indziej.",
+            "pt": "O encerramento de 1991 transforma Mirapolis num parque desaparecido, enquanto várias atrações começam outra história noutros locais."
+          },
+          "blocks": [
+            {
+              "id": "closure-short-life",
+              "type": "Paragraph",
+              "sortOrder": 1,
+              "texts": {
+                "fr": "Le 20 octobre 1991 marque la fin de l'exploitation publique de Mirapolis. Le parc, ouvert en 1987, n'aura connu que cinq saisons avant de rejoindre la liste des grands projets de loisirs français disparus.",
+                "en": "20 October 1991 marks the end of Mirapolis as a public park. Opened in 1987, it has only five seasons before joining the list of vanished French leisure projects.",
+                "de": "Der 20. Oktober 1991 markiert das Ende des Publikumsbetriebs von Mirapolis. Der 1987 eröffnete Park erlebt nur fünf Saisons.",
+                "nl": "20 oktober 1991 markeert het einde van Mirapolis als publiek park. Het in 1987 geopende park kent slechts vijf seizoenen.",
+                "it": "Il 20 ottobre 1991 segna la fine dell'esercizio pubblico di Mirapolis. Aperto nel 1987, il parco vive solo cinque stagioni.",
+                "es": "El 20 de octubre de 1991 marca el final de Mirapolis como parque público. Abierto en 1987, vive solo cinco temporadas.",
+                "pl": "20 października 1991 roku oznacza koniec publicznego działania Mirapolis. Otwarty w 1987 roku park funkcjonuje tylko pięć sezonów.",
+                "pt": "20 de outubro de 1991 marca o fim da exploração pública de Mirapolis. Aberto em 1987, o parque vive apenas cinco temporadas."
+              }
+            },
+            {
+              "id": "closure-items",
+              "type": "Paragraph",
+              "sortOrder": 2,
+              "texts": {
+                "fr": "Pour certains équipements, la fermeture n'est pas une destruction immédiate. Miralooping est déplacé et continuera sa carrière sous d'autres noms, ce qui rend l'histoire des attractions plus longue que celle du parc lui-même.",
+                "en": "For some equipment, closure is not immediate destruction. Miralooping is relocated and continues its career under other names, making the ride's history longer than the park's own life.",
+                "de": "Für manche Anlagen bedeutet die Schließung nicht die sofortige Zerstörung. Miralooping wird versetzt und setzt seine Laufbahn unter anderen Namen fort.",
+                "nl": "Voor sommige installaties betekent sluiting geen onmiddellijke vernietiging. Miralooping wordt verplaatst en gaat onder andere namen verder.",
+                "it": "Per alcune strutture la chiusura non significa distruzione immediata. Miralooping viene trasferito e continua la carriera con altri nomi.",
+                "es": "Para algunas instalaciones, el cierre no supone destrucción inmediata. Miralooping se traslada y continúa su carrera con otros nombres.",
+                "pl": "Dla części urządzeń zamknięcie nie oznacza natychmiastowej likwidacji. Miralooping zostaje przeniesiony i kontynuuje karierę pod innymi nazwami.",
+                "pt": "Para alguns equipamentos, o encerramento não significa destruição imediata. Miralooping é transferido e continua a carreira com outros nomes."
+              }
+            }
+          ],
+          "sources": [
+            { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+            { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" }
+          ]
+        }
+      },
+      {
+        "owner": "parkItem",
+        "ownerId": "33726991-dacc-4960-bb87-4e574a9d1728",
+        "parkItemId": "33726991-dacc-4960-bb87-4e574a9d1728",
+        "contextParkId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "miralooping-closes-at-mirapolis-1991-10-20",
+        "eventType": "DefinitiveClosure",
+        "date": "1991-10-20",
+        "isVisible": true,
+        "isMajor": false,
+        "mainImageKey": "miralooping-euroloop-loop",
+        "titles": {
+          "fr": "Fin de Miralooping à Mirapolis",
+          "en": "Miralooping ends at Mirapolis",
+          "de": "Ende von Miralooping in Mirapolis",
+          "nl": "Einde van Miralooping in Mirapolis",
+          "it": "Fine di Miralooping a Mirapolis",
+          "es": "Fin de Miralooping en Mirapolis",
+          "pl": "Koniec Miralooping w Mirapolis",
+          "pt": "Fim de Miralooping em Mirapolis"
+        },
+        "summaries": {
+          "fr": "La fermeture du parc met fin à la période Mirapolis de l'attraction.",
+          "en": "The park closure ends the Mirapolis period of the ride.",
+          "de": "Die Parkschließung beendet die Mirapolis-Phase der Bahn.",
+          "nl": "De sluiting van het park beëindigt de Mirapolis-periode van de attractie.",
+          "it": "La chiusura del parco conclude il periodo Mirapolis dell'attrazione.",
+          "es": "El cierre del parque pone fin a la etapa Mirapolis de la atracción.",
+          "pl": "Zamknięcie parku kończy okres Mirapolis tej atrakcji.",
+          "pt": "O encerramento do parque termina a fase Mirapolis da atração."
+        },
+        "sources": [
+          { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" }
+        ]
+      },
+      {
+        "owner": "parkItem",
+        "ownerId": "4744d2f1-3fbe-4739-b56a-8e5faced4c44",
+        "parkItemId": "4744d2f1-3fbe-4739-b56a-8e5faced4c44",
+        "contextParkId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "mirapolis-express-closure-1991-10-20",
+        "eventType": "DefinitiveClosure",
+        "date": "1991-10-20",
+        "isVisible": true,
+        "isMajor": false,
+        "mainImageKey": "mirapolis-aerial",
+        "titles": {
+          "fr": "Fin du Mirapolis Express",
+          "en": "Mirapolis Express ends",
+          "de": "Ende des Mirapolis Express",
+          "nl": "Einde van Mirapolis Express",
+          "it": "Fine del Mirapolis Express",
+          "es": "Fin del Mirapolis Express",
+          "pl": "Koniec Mirapolis Express",
+          "pt": "Fim do Mirapolis Express"
+        },
+        "summaries": {
+          "fr": "Le train de transport est arrêté avec la fermeture définitive du parc.",
+          "en": "The transport train stops with the park's permanent closure.",
+          "de": "Die Transportbahn endet mit der endgültigen Schließung des Parks.",
+          "nl": "De transporttrein stopt met de definitieve sluiting van het park.",
+          "it": "Il trenino di trasporto si ferma con la chiusura definitiva del parco.",
+          "es": "El tren de transporte se detiene con el cierre definitivo del parque.",
+          "pl": "Kolejka transportowa kończy działanie wraz z definitywnym zamknięciem parku.",
+          "pt": "O comboio de transporte para com o encerramento definitivo do parque."
+        },
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" }
+        ]
+      },
+      {
+        "owner": "parkItem",
+        "ownerId": "af04cf0b-e7cb-49fd-917a-9fe05d052856",
+        "parkItemId": "af04cf0b-e7cb-49fd-917a-9fe05d052856",
+        "contextParkId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "grand-huit-closure-1991-10-20",
+        "eventType": "DefinitiveClosure",
+        "date": "1991-10-20",
+        "isVisible": true,
+        "isMajor": false,
+        "mainImageKey": "mirapolis-miniature",
+        "titles": {
+          "fr": "Fin du Grand Huit à Mirapolis",
+          "en": "Grand Huit ends at Mirapolis",
+          "de": "Ende des Grand Huit in Mirapolis",
+          "nl": "Einde van Grand Huit in Mirapolis",
+          "it": "Fine del Grand Huit a Mirapolis",
+          "es": "Fin de Grand Huit en Mirapolis",
+          "pl": "Koniec Grand Huit w Mirapolis",
+          "pt": "Fim do Grand Huit em Mirapolis"
+        },
+        "summaries": {
+          "fr": "Le Grand Huit cesse son activité avec la fermeture de Mirapolis.",
+          "en": "Grand Huit stops operating with Mirapolis' closure.",
+          "de": "Der Grand Huit stellt den Betrieb mit der Schließung von Mirapolis ein.",
+          "nl": "Grand Huit stopt met de sluiting van Mirapolis.",
+          "it": "Grand Huit termina l'attività con la chiusura di Mirapolis.",
+          "es": "Grand Huit cesa su actividad con el cierre de Mirapolis.",
+          "pl": "Grand Huit kończy działanie wraz z zamknięciem Mirapolis.",
+          "pt": "Grand Huit termina a atividade com o encerramento de Mirapolis."
+        },
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" }
+        ]
+      },
+      {
+        "owner": "parkItem",
+        "ownerId": "33726991-dacc-4960-bb87-4e574a9d1728",
+        "parkItemId": "33726991-dacc-4960-bb87-4e574a9d1728",
+        "contextParkId": null,
+        "key": "miralooping-spreepark-1992",
+        "eventType": "RelocationArrival",
+        "date": "1992",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageKey": "miralooping-euroloop-track",
+        "previousName": "Miralooping",
+        "newName": "Mega Looping Bahn",
+        "locationLabel": "Spreepark, Berlin",
+        "titles": {
+          "fr": "Miralooping devient Mega Looping Bahn",
+          "en": "Miralooping becomes Mega Looping Bahn",
+          "de": "Miralooping wird zu Mega Looping Bahn",
+          "nl": "Miralooping wordt Mega Looping Bahn",
+          "it": "Miralooping diventa Mega Looping Bahn",
+          "es": "Miralooping se convierte en Mega Looping Bahn",
+          "pl": "Miralooping staje się Mega Looping Bahn",
+          "pt": "Miralooping torna-se Mega Looping Bahn"
+        },
+        "summaries": {
+          "fr": "Après Mirapolis, l'attraction est remontée au Spreepark de Berlin sous le nom Mega Looping Bahn.",
+          "en": "After Mirapolis, the ride is rebuilt at Berlin's Spreepark as Mega Looping Bahn.",
+          "de": "Nach Mirapolis wird die Bahn im Berliner Spreepark als Mega Looping Bahn wieder aufgebaut.",
+          "nl": "Na Mirapolis wordt de attractie in het Berlijnse Spreepark heropgebouwd als Mega Looping Bahn.",
+          "it": "Dopo Mirapolis, l'attrazione viene rimontata allo Spreepark di Berlino come Mega Looping Bahn.",
+          "es": "Tras Mirapolis, la atracción se remonta en Spreepark, Berlín, como Mega Looping Bahn.",
+          "pl": "Po Mirapolis atrakcja zostaje ponownie zmontowana w berlińskim Spreepark jako Mega Looping Bahn.",
+          "pt": "Depois de Mirapolis, a atração é remontada no Spreepark de Berlim como Mega Looping Bahn."
+        },
+        "sources": [
+          { "label": "Wikipédia - Euroloop", "url": "https://fr.wikipedia.org/wiki/Euroloop", "accessedAt": "2026-06-30" },
+          { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" }
+        ],
+        "article": {
+          "slug": "miralooping-spreepark-1992",
+          "isPublished": true,
+          "mainImageKey": "miralooping-euroloop-track",
+          "titles": {
+            "fr": "1992 : une seconde vie à Berlin",
+            "en": "1992: a second life in Berlin",
+            "de": "1992: ein zweites Leben in Berlin",
+            "nl": "1992: een tweede leven in Berlijn",
+            "it": "1992: una seconda vita a Berlino",
+            "es": "1992: una segunda vida en Berlín",
+            "pl": "1992: drugie życie w Berlinie",
+            "pt": "1992: uma segunda vida em Berlim"
+          },
+          "subtitles": {
+            "fr": "L'événement appartient à Miralooping, pas à Mirapolis.",
+            "en": "This event belongs to Miralooping, not Mirapolis.",
+            "de": "Dieses Ereignis gehört zu Miralooping, nicht zu Mirapolis.",
+            "nl": "Dit evenement hoort bij Miralooping, niet bij Mirapolis.",
+            "it": "Questo evento appartiene a Miralooping, non a Mirapolis.",
+            "es": "Este evento pertenece a Miralooping, no a Mirapolis.",
+            "pl": "To wydarzenie należy do Miralooping, nie do Mirapolis.",
+            "pt": "Este evento pertence a Miralooping, não a Mirapolis."
+          },
+          "summaries": {
+            "fr": "La relocalisation à Spreepark montre l'intérêt d'une timeline propre aux attractions.",
+            "en": "The move to Spreepark shows why attractions need their own timelines.",
+            "de": "Der Umzug in den Spreepark zeigt, warum Attraktionen eigene Timelines brauchen.",
+            "nl": "De verhuizing naar Spreepark toont waarom attracties eigen tijdlijnen nodig hebben.",
+            "it": "Il trasferimento a Spreepark mostra perché le attrazioni hanno bisogno di timeline proprie.",
+            "es": "El traslado a Spreepark muestra por qué las atracciones necesitan sus propias cronologías.",
+            "pl": "Przeniesienie do Spreepark pokazuje, dlaczego atrakcje potrzebują własnych osi czasu.",
+            "pt": "A mudança para o Spreepark mostra porque as atrações precisam de timelines próprias."
+          },
+          "blocks": [
+            {
+              "id": "spreepark-context",
+              "type": "Paragraph",
+              "sortOrder": 1,
+              "texts": {
+                "fr": "En 1992, l'ancien Miralooping réapparaît au Spreepark de Berlin sous un nouveau nom : Mega Looping Bahn. L'événement ne concerne plus l'exploitation de Mirapolis, mais il prolonge directement la biographie de l'attraction.",
+                "en": "In 1992, the former Miralooping reappears at Berlin's Spreepark under a new name: Mega Looping Bahn. The event no longer concerns Mirapolis operations, but it directly extends the ride's biography.",
+                "de": "1992 taucht der frühere Miralooping im Berliner Spreepark unter neuem Namen auf: Mega Looping Bahn. Das Ereignis betrifft nicht mehr den Betrieb von Mirapolis, verlängert aber direkt die Biografie der Bahn.",
+                "nl": "In 1992 verschijnt de voormalige Miralooping in het Berlijnse Spreepark onder een nieuwe naam: Mega Looping Bahn. Het evenement hoort niet meer bij Mirapolis, maar wel bij de biografie van de attractie.",
+                "it": "Nel 1992 l'ex Miralooping riappare allo Spreepark di Berlino con un nuovo nome: Mega Looping Bahn. L'evento non riguarda più Mirapolis, ma prolunga direttamente la biografia dell'attrazione.",
+                "es": "En 1992 el antiguo Miralooping reaparece en el Spreepark de Berlín con un nuevo nombre: Mega Looping Bahn. El evento ya no pertenece a Mirapolis, pero prolonga la biografía de la atracción.",
+                "pl": "W 1992 roku dawny Miralooping pojawia się w berlińskim Spreepark pod nową nazwą: Mega Looping Bahn. Wydarzenie nie dotyczy już działania Mirapolis, ale bezpośrednio przedłuża biografię atrakcji.",
+                "pt": "Em 1992, o antigo Miralooping reaparece no Spreepark de Berlim com um novo nome: Mega Looping Bahn. O evento já não diz respeito à exploração de Mirapolis, mas prolonga diretamente a biografia da atração."
+              }
+            },
+            {
+              "id": "spreepark-afterlife-image",
+              "type": "Image",
+              "sortOrder": 2,
+              "imageKey": "miralooping-euroloop-track",
+              "captions": {
+                "fr": "La même machine est visible plus tard à Vias sous le nom EuroLoop ; l'image illustre la survie matérielle de l'ancien Miralooping.",
+                "en": "The same ride is later visible in Vias as EuroLoop; the image illustrates the former Miralooping's physical survival.",
+                "de": "Dieselbe Bahn ist später in Vias als EuroLoop sichtbar; das Bild zeigt das materielle Weiterleben des früheren Miralooping.",
+                "nl": "Dezelfde baan is later in Vias te zien als EuroLoop; het beeld toont het fysieke voortbestaan van de voormalige Miralooping.",
+                "it": "La stessa macchina è visibile più tardi a Vias come EuroLoop; l'immagine mostra la sopravvivenza materiale dell'ex Miralooping.",
+                "es": "La misma máquina se ve más tarde en Vias como EuroLoop; la imagen ilustra la supervivencia material del antiguo Miralooping.",
+                "pl": "Ta sama kolejka jest później widoczna w Vias jako EuroLoop; zdjęcie pokazuje fizyczne przetrwanie dawnego Miraloopinga.",
+                "pt": "A mesma máquina aparece mais tarde em Vias como EuroLoop; a imagem ilustra a sobrevivência material do antigo Miralooping."
+              }
+            }
+          ],
+          "sources": [
+            { "label": "Wikipédia - Euroloop", "url": "https://fr.wikipedia.org/wiki/Euroloop", "accessedAt": "2026-06-30" },
+            { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" }
+          ]
+        }
+      },
+      {
+        "owner": "parkItem",
+        "ownerId": "33726991-dacc-4960-bb87-4e574a9d1728",
+        "parkItemId": "33726991-dacc-4960-bb87-4e574a9d1728",
+        "contextParkId": "baf98de1-33de-44b5-8a03-c5c1b76d24ee",
+        "key": "miralooping-europark-2004",
+        "eventType": "Reinstallation",
+        "date": "2004",
+        "isVisible": true,
+        "isMajor": false,
+        "previousName": "Mega Looping Bahn",
+        "newName": "EuroLoop",
+        "locationLabel": "Europark Vias / Fabrikus World",
+        "mainImageKey": "miralooping-euroloop-track",
+        "titles": {
+          "fr": "L'attraction devient EuroLoop",
+          "en": "The ride becomes EuroLoop",
+          "de": "Die Bahn wird EuroLoop",
+          "nl": "De attractie wordt EuroLoop",
+          "it": "L'attrazione diventa EuroLoop",
+          "es": "La atracción se convierte en EuroLoop",
+          "pl": "Atrakcja staje się EuroLoop",
+          "pt": "A atração torna-se EuroLoop"
+        },
+        "summaries": {
+          "fr": "Après son passage à Berlin, l'ancien Miralooping est remonté à Vias et prend le nom EuroLoop.",
+          "en": "After its Berlin period, the former Miralooping is rebuilt in Vias and takes the name EuroLoop.",
+          "de": "Nach der Berliner Zeit wird der frühere Miralooping in Vias wieder aufgebaut und erhält den Namen EuroLoop.",
+          "nl": "Na de Berlijnse periode wordt de voormalige Miralooping in Vias heropgebouwd en krijgt hij de naam EuroLoop.",
+          "it": "Dopo il periodo berlinese, l'ex Miralooping viene rimontato a Vias e prende il nome EuroLoop.",
+          "es": "Tras su etapa berlinesa, el antiguo Miralooping se remonta en Vias y adopta el nombre EuroLoop.",
+          "pl": "Po okresie berlińskim dawny Miralooping zostaje ponownie zmontowany w Vias i otrzymuje nazwę EuroLoop.",
+          "pt": "Depois do período em Berlim, o antigo Miralooping é remontado em Vias e recebe o nome EuroLoop."
+        },
+        "sources": [
+          { "label": "Wikipédia - Euroloop", "url": "https://fr.wikipedia.org/wiki/Euroloop", "accessedAt": "2026-06-30" },
+          { "label": "RCDB - EuroLoop", "url": "https://rcdb.com/1118.htm", "accessedAt": "2026-06-30" },
+          { "label": "Fabrikus World - EuroLoop", "url": "https://www.fabrikusworld.com/en/attraction/euroloop/", "accessedAt": "2026-06-30" }
+        ]
+      },
+      {
+        "owner": "park",
+        "ownerId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "mirapolis-demolition-1995",
+        "eventType": "Demolition",
+        "date": "1995",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageKey": "mirapolis-aerial",
+        "titles": {
+          "fr": "Démantèlement et fin physique du site",
+          "en": "Dismantling and physical end of the site",
+          "de": "Rückbau und physisches Ende des Standorts",
+          "nl": "Ontmanteling en fysiek einde van de locatie",
+          "it": "Smantellamento e fine fisica del sito",
+          "es": "Desmantelamiento y final físico del recinto",
+          "pl": "Demontaż i fizyczny koniec terenu",
+          "pt": "Desmantelamento e fim físico do local"
+        },
+        "summaries": {
+          "fr": "Après la fermeture, le site est vidé et démantelé. La disparition de Gargantua en 1995 marque la fin visible de Mirapolis.",
+          "en": "After closure, the site is emptied and dismantled. Gargantua's disappearance in 1995 marks the visible end of Mirapolis.",
+          "de": "Nach der Schließung wird der Standort geleert und zurückgebaut. Das Verschwinden von Gargantua 1995 markiert das sichtbare Ende von Mirapolis.",
+          "nl": "Na de sluiting wordt de locatie leeggehaald en ontmanteld. Het verdwijnen van Gargantua in 1995 markeert het zichtbare einde van Mirapolis.",
+          "it": "Dopo la chiusura, il sito viene svuotato e smantellato. La scomparsa di Gargantua nel 1995 segna la fine visibile di Mirapolis.",
+          "es": "Tras el cierre, el recinto se vacía y se desmantela. La desaparición de Gargantua en 1995 marca el final visible de Mirapolis.",
+          "pl": "Po zamknięciu teren zostaje opróżniony i zdemontowany. Zniknięcie Gargantui w 1995 roku oznacza widoczny koniec Mirapolis.",
+          "pt": "Depois do encerramento, o local é esvaziado e desmantelado. O desaparecimento de Gargantua em 1995 marca o fim visível de Mirapolis."
+        },
+        "relatedParkItemIds": [
+          "459f2679-2ccc-431a-98cd-c4e5e3db38c0"
+        ],
+        "sources": [
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+          { "label": "Wikipédia - Gargantua (Mirapolis)", "url": "https://fr.wikipedia.org/wiki/Gargantua_(Mirapolis)", "accessedAt": "2026-06-30" }
+        ],
+        "article": {
+          "slug": "demantelement-gargantua-1995",
+          "isPublished": true,
+          "mainImageKey": "mirapolis-aerial",
+          "titles": {
+            "fr": "1995 : la disparition de Gargantua",
+            "en": "1995: Gargantua disappears",
+            "de": "1995: Gargantua verschwindet",
+            "nl": "1995: Gargantua verdwijnt",
+            "it": "1995: scompare Gargantua",
+            "es": "1995: desaparece Gargantua",
+            "pl": "1995: znika Gargantua",
+            "pt": "1995: Gargantua desaparece"
+          },
+          "subtitles": {
+            "fr": "Le symbole du parc devient celui de sa disparition.",
+            "en": "The park's symbol becomes the symbol of its disappearance.",
+            "de": "Das Symbol des Parks wird zum Symbol seines Verschwindens.",
+            "nl": "Het symbool van het park wordt het symbool van zijn verdwijning.",
+            "it": "Il simbolo del parco diventa il simbolo della sua scomparsa.",
+            "es": "El símbolo del parque se convierte en el símbolo de su desaparición.",
+            "pl": "Symbol parku staje się symbolem jego zniknięcia.",
+            "pt": "O símbolo do parque torna-se o símbolo do seu desaparecimento."
+          },
+          "summaries": {
+            "fr": "Le démantèlement de Mirapolis culmine avec la destruction de Gargantua en 1995.",
+            "en": "The dismantling of Mirapolis culminates with Gargantua's destruction in 1995.",
+            "de": "Der Rückbau von Mirapolis kulminiert 1995 mit der Zerstörung von Gargantua.",
+            "nl": "De ontmanteling van Mirapolis culmineert in 1995 met de vernietiging van Gargantua.",
+            "it": "Lo smantellamento di Mirapolis culmina con la distruzione di Gargantua nel 1995.",
+            "es": "El desmantelamiento de Mirapolis culmina con la destrucción de Gargantua en 1995.",
+            "pl": "Demontaż Mirapolis kulminuje zniszczeniem Gargantui w 1995 roku.",
+            "pt": "O desmantelamento de Mirapolis culmina com a destruição de Gargantua em 1995."
+          },
+          "blocks": [
+            {
+              "id": "demolition-site",
+              "type": "Paragraph",
+              "sortOrder": 1,
+              "texts": {
+                "fr": "Après la fermeture, Mirapolis entre dans une phase de déconstruction. Les équipements sont vendus, déplacés ou démontés selon les cas. Le site perd progressivement ce qui le rendait identifiable comme parc à thème.",
+                "en": "After closure, Mirapolis enters a deconstruction phase. Equipment is sold, relocated or dismantled depending on the case. The site gradually loses what made it recognisable as a theme park.",
+                "de": "Nach der Schließung tritt Mirapolis in eine Phase des Rückbaus ein. Anlagen werden verkauft, verlegt oder abgebaut. Der Standort verliert nach und nach, was ihn als Themenpark erkennbar machte.",
+                "nl": "Na de sluiting gaat Mirapolis een fase van ontmanteling in. Installaties worden verkocht, verplaatst of afgebroken. De locatie verliest geleidelijk wat haar als themapark herkenbaar maakte.",
+                "it": "Dopo la chiusura, Mirapolis entra in una fase di decostruzione. Gli impianti vengono venduti, trasferiti o smontati. Il sito perde progressivamente ciò che lo rendeva riconoscibile come parco tematico.",
+                "es": "Tras el cierre, Mirapolis entra en una fase de deconstrucción. Los equipos se venden, trasladan o desmontan. El recinto pierde poco a poco lo que lo hacía reconocible como parque temático.",
+                "pl": "Po zamknięciu Mirapolis wchodzi w fazę rozbiórki. Urządzenia są sprzedawane, przenoszone albo demontowane. Teren stopniowo traci cechy parku tematycznego.",
+                "pt": "Depois do encerramento, Mirapolis entra numa fase de desconstrução. Os equipamentos são vendidos, transferidos ou desmontados. O local perde gradualmente o que o tornava reconhecível como parque temático."
+              }
+            },
+            {
+              "id": "demolition-gargantua",
+              "type": "Paragraph",
+              "sortOrder": 2,
+              "texts": {
+                "fr": "La destruction de Gargantua en 1995 est l'image la plus forte de cette fin. Les sources ne formulent pas toutes la date exacte de la même manière, mais elles placent bien la disparition du géant à la fin de l'été 1995.",
+                "en": "Gargantua's destruction in 1995 is the strongest image of this end. Sources do not all phrase the exact date in the same way, but they place the giant's disappearance at the end of summer 1995.",
+                "de": "Die Zerstörung von Gargantua 1995 ist das stärkste Bild dieses Endes. Die Quellen formulieren das genaue Datum nicht alle gleich, verorten das Verschwinden des Riesen aber am Ende des Sommers 1995.",
+                "nl": "De vernietiging van Gargantua in 1995 is het sterkste beeld van dit einde. Bronnen formuleren de exacte datum niet allemaal hetzelfde, maar plaatsen de verdwijning aan het einde van de zomer van 1995.",
+                "it": "La distruzione di Gargantua nel 1995 è l'immagine più forte di questa fine. Le fonti non indicano tutte la data esatta nello stesso modo, ma collocano la scomparsa del gigante alla fine dell'estate 1995.",
+                "es": "La destrucción de Gargantua en 1995 es la imagen más fuerte de este final. Las fuentes no expresan todas la fecha exacta del mismo modo, pero sitúan la desaparición del gigante al final del verano de 1995.",
+                "pl": "Zniszczenie Gargantui w 1995 roku jest najmocniejszym obrazem tego końca. Źródła nie podają dokładnej daty w identyczny sposób, ale umieszczają zniknięcie giganta pod koniec lata 1995 roku.",
+                "pt": "A destruição de Gargantua em 1995 é a imagem mais forte deste fim. As fontes não formulam todas a data exata da mesma forma, mas situam o desaparecimento do gigante no fim do verão de 1995."
+              }
+            },
+            {
+              "id": "demolition-gargantua-before-image",
+              "type": "Image",
+              "sortOrder": 3,
+              "imageKey": "mirapolis-aerial",
+              "captions": {
+                "fr": "Gargantua avant sa destruction : aucune image de démolition librement sourcée n'est utilisée dans cet upsert.",
+                "en": "Gargantua before its destruction: no freely sourced demolition image is used in this upsert.",
+                "de": "Gargantua vor der Zerstörung: In diesem Upsert wird kein frei belegtes Abrissbild verwendet.",
+                "nl": "Gargantua vóór de vernietiging: in deze upsert wordt geen vrij gesourcet sloopbeeld gebruikt.",
+                "it": "Gargantua prima della distruzione: in questo upsert non viene usata alcuna immagine di demolizione con fonte libera.",
+                "es": "Gargantua antes de su destrucción: este upsert no usa ninguna imagen de demolición con fuente libre.",
+                "pl": "Gargantua przed zniszczeniem: ten upsert nie używa żadnego swobodnie udokumentowanego zdjęcia rozbiórki.",
+                "pt": "Gargantua antes da destruição: este upsert não usa nenhuma imagem de demolição com fonte livre."
+              }
+            }
+          ],
+          "sources": [
+            { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" },
+            { "label": "Wikipédia - Gargantua (Mirapolis)", "url": "https://fr.wikipedia.org/wiki/Gargantua_(Mirapolis)", "accessedAt": "2026-06-30" }
+          ]
+        }
+      },
+      {
+        "owner": "parkItem",
+        "ownerId": "459f2679-2ccc-431a-98cd-c4e5e3db38c0",
+        "parkItemId": "459f2679-2ccc-431a-98cd-c4e5e3db38c0",
+        "contextParkId": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+        "key": "gargantua-demolition-1995",
+        "eventType": "Demolition",
+        "date": "1995",
+        "isVisible": true,
+        "isMajor": false,
+        "mainImageKey": "mirapolis-aerial",
+        "titles": {
+          "fr": "Gargantua est détruit",
+          "en": "Gargantua is destroyed",
+          "de": "Gargantua wird zerstört",
+          "nl": "Gargantua wordt vernietigd",
+          "it": "Gargantua viene distrutto",
+          "es": "Gargantua es destruido",
+          "pl": "Gargantua zostaje zniszczony",
+          "pt": "Gargantua é destruído"
+        },
+        "summaries": {
+          "fr": "La disparition de la statue-attraction en 1995 clôt visuellement l'histoire de Mirapolis.",
+          "en": "The disappearance of the statue ride in 1995 visually closes the Mirapolis story.",
+          "de": "Das Verschwinden der Statuen-Attraktion 1995 schließt die Geschichte von Mirapolis sichtbar ab.",
+          "nl": "Het verdwijnen van de beeldattractie in 1995 sluit het verhaal van Mirapolis visueel af.",
+          "it": "La scomparsa della statua-attrazione nel 1995 chiude visivamente la storia di Mirapolis.",
+          "es": "La desaparición de la estatua-atracción en 1995 cierra visualmente la historia de Mirapolis.",
+          "pl": "Zniknięcie statuy-atrakcji w 1995 roku wizualnie zamyka historię Mirapolis.",
+          "pt": "O desaparecimento da estátua-atração em 1995 fecha visualmente a história de Mirapolis."
+        },
+        "sources": [
+          { "label": "Wikipédia - Gargantua (Mirapolis)", "url": "https://fr.wikipedia.org/wiki/Gargantua_(Mirapolis)", "accessedAt": "2026-06-30" },
+          { "label": "Wikipédia - Mirapolis", "url": "https://fr.wikipedia.org/wiki/Mirapolis", "accessedAt": "2026-06-30" }
+        ]
+      }
+    ]
+  }
+}

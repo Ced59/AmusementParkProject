@@ -8,6 +8,7 @@ describe('history-view.mapper', () => {
       entityType: 'Park',
       park: { id: 'park-1', name: 'Mirapolis' } as Park,
       parkItem: null,
+      hasParkItemTimelineEvents: false,
       includedParkItems: [],
       events: [
         {
@@ -23,6 +24,41 @@ describe('history-view.mapper', () => {
 
     expect(viewModel.events[0].title).toBe('Opening - Mirapolis');
     expect(viewModel.events[0].title).not.toBe('mirapolis-opening-1987');
+  });
+
+  it('shows park item controls from the backend availability flag and marks first events by year', () => {
+    const timeline: HistoryTimeline = {
+      entityType: 'Park',
+      park: { id: 'park-1', name: 'Mirapolis' } as Park,
+      parkItem: null,
+      hasParkItemTimelineEvents: true,
+      includedParkItems: [],
+      events: [
+        {
+          event: createHistoryEvent({ id: 'event-1987-a', key: 'opening', year: 1987 }),
+          contextPark: null,
+          parkItem: null,
+          mainImage: null
+        },
+        {
+          event: createHistoryEvent({ id: 'event-1987-b', key: 'operator', year: 1987, month: 7, day: null }),
+          contextPark: null,
+          parkItem: null,
+          mainImage: null
+        },
+        {
+          event: createHistoryEvent({ id: 'event-1988', key: 'item-opening', year: 1988, month: null, day: null }),
+          contextPark: null,
+          parkItem: null,
+          mainImage: null
+        }
+      ]
+    };
+
+    const viewModel = mapHistoryTimelineToViewModel(timeline, 'en');
+
+    expect(viewModel.showParkItemControls).toBeTrue();
+    expect(viewModel.events.map(event => event.isFirstInYear)).toEqual([true, false, true]);
   });
 
   it('filters empty article blocks and uses a readable article title fallback', () => {

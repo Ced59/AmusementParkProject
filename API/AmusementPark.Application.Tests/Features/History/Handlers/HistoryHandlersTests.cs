@@ -152,6 +152,68 @@ public sealed class HistoryHandlersTests
     }
 
     [Fact]
+    public async Task GetParkHistoryTimeline_WhenParkItemEventsExistButAreNotIncluded_ShouldExposeAvailability()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            IsVisible = true,
+        };
+        HistoryEvent openingEvent = new HistoryEvent
+        {
+            Id = "history-1",
+            Key = "mirapolis-opening",
+            EntityType = HistoryEntityType.Park,
+            OwnerId = "park-1",
+            ParkId = "park-1",
+            Year = 1987,
+            Month = 5,
+            Day = 20,
+            DatePrecision = HistoryDatePrecision.Day,
+            EventType = ParkHistoryEventType.Opening.ToString(),
+            IsVisible = true,
+        };
+
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        historyRepository
+            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { openingEvent });
+        historyRepository
+            .Setup(repository => repository.HasParkItemTimelineEventsAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+
+        GetParkHistoryTimelineQueryHandler handler = new GetParkHistoryTimelineQueryHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+
+        ApplicationResult<HistoryTimelineResult> result = await handler.HandleAsync(new GetParkHistoryTimelineQuery(
+            "park-1",
+            false,
+            false,
+            Array.Empty<string>()));
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.HasParkItemTimelineEvents);
+        Assert.Empty(result.Value.IncludedParkItems);
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task DeleteHistoryEvent_WhenEventExists_ShouldRefreshSitemap()
     {
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);

@@ -44,6 +44,7 @@ export interface HistoryTimelineEventViewModel {
   articleLink: string[] | null;
   sourceCount: number;
   positionPercent: number;
+  isFirstInYear: boolean;
 }
 
 export interface HistoryArticlePageViewModel {

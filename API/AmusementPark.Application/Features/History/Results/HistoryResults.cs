@@ -12,6 +12,8 @@ public sealed class HistoryTimelineResult
 
     public ParkItem? ParkItem { get; init; }
 
+    public bool HasParkItemTimelineEvents { get; init; }
+
     public IReadOnlyCollection<ParkItem> IncludedParkItems { get; init; } = Array.Empty<ParkItem>();
 
     public IReadOnlyCollection<HistoryTimelineEventResult> Events { get; init; } = Array.Empty<HistoryTimelineEventResult>();

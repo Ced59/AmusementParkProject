@@ -13,6 +13,8 @@ public sealed class HistoryTimelineDto
 
     public ParkItemDto? ParkItem { get; set; }
 
+    public bool HasParkItemTimelineEvents { get; set; }
+
     public List<ParkItemDto> IncludedParkItems { get; set; } = new();
 
     public List<HistoryTimelineEventDto> Events { get; set; } = new();

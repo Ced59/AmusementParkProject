@@ -16,6 +16,7 @@ internal static class HistoryHttpMappers
             EntityType = result.EntityType.ToString(),
             Park = result.Park?.ToHttp(),
             ParkItem = result.ParkItem?.ToHttp(),
+            HasParkItemTimelineEvents = result.HasParkItemTimelineEvents,
             IncludedParkItems = result.IncludedParkItems.Select(static item => item.ToHttp()).ToList(),
             Events = result.Events.Select(static item => item.ToHttp()).ToList(),
         };

@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
@@ -23,6 +24,7 @@ interface HistoryTimelinePageCopy {
   start: string;
   summaryAria: string;
   timelineAria: string;
+  yearsAria: string;
 }
 
 const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
@@ -38,7 +40,8 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     sourceSingular: 'source',
     start: 'Début',
     summaryAria: 'Résumé de la timeline',
-    timelineAria: 'Timeline historique'
+    timelineAria: 'Timeline historique',
+    yearsAria: 'Navigation par année'
   },
   en: {
     article: 'Article',
@@ -52,7 +55,8 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     sourceSingular: 'source',
     start: 'Start',
     summaryAria: 'Timeline summary',
-    timelineAria: 'History timeline'
+    timelineAria: 'History timeline',
+    yearsAria: 'Year navigation'
   },
   de: {
     article: 'Artikel',
@@ -66,7 +70,8 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     sourceSingular: 'Quelle',
     start: 'Beginn',
     summaryAria: 'Zusammenfassung der Zeitleiste',
-    timelineAria: 'Historische Zeitleiste'
+    timelineAria: 'Historische Zeitleiste',
+    yearsAria: 'Navigation nach Jahr'
   },
   nl: {
     article: 'Artikel',
@@ -80,7 +85,8 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     sourceSingular: 'bron',
     start: 'Begin',
     summaryAria: 'Samenvatting van de tijdlijn',
-    timelineAria: 'Historische tijdlijn'
+    timelineAria: 'Historische tijdlijn',
+    yearsAria: 'Navigatie per jaar'
   },
   it: {
     article: 'Articolo',
@@ -94,7 +100,8 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     sourceSingular: 'fonte',
     start: 'Inizio',
     summaryAria: 'Riepilogo della timeline',
-    timelineAria: 'Timeline storica'
+    timelineAria: 'Timeline storica',
+    yearsAria: 'Navigazione per anno'
   },
   es: {
     article: 'Artículo',
@@ -108,7 +115,8 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     sourceSingular: 'fuente',
     start: 'Inicio',
     summaryAria: 'Resumen de la cronología',
-    timelineAria: 'Cronología histórica'
+    timelineAria: 'Cronología histórica',
+    yearsAria: 'Navegación por año'
   },
   pl: {
     article: 'Artykuł',
@@ -122,7 +130,8 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     sourceSingular: 'źródło',
     start: 'Początek',
     summaryAria: 'Podsumowanie osi czasu',
-    timelineAria: 'Historyczna oś czasu'
+    timelineAria: 'Historyczna oś czasu',
+    yearsAria: 'Nawigacja według roku'
   },
   pt: {
     article: 'Artigo',
@@ -136,7 +145,8 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
     sourceSingular: 'fonte',
     start: 'Início',
     summaryAria: 'Resumo da linha do tempo',
-    timelineAria: 'Linha do tempo histórica'
+    timelineAria: 'Linha do tempo histórica',
+    yearsAria: 'Navegação por ano'
   }
 };
 
@@ -155,6 +165,7 @@ export class HistoryTimelinePageComponent implements OnInit {
   protected readonly currentLanguage = signal<string>('en');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly document: Document = inject(DOCUMENT);
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -216,20 +227,16 @@ export class HistoryTimelinePageComponent implements OnInit {
   }
 
   protected yearTicks(timeline: HistoryTimelinePageViewModel): number[] {
-    const range: number = Math.max(1, timeline.yearEnd - timeline.yearStart);
-    const rawStep: number = Math.max(1, Math.ceil(range / 5));
-    const step: number = rawStep <= 2 ? rawStep : Math.ceil(rawStep / 5) * 5;
-    const years: number[] = [];
+    return [...new Set(timeline.events.map((event: HistoryTimelineEventViewModel): number => event.year))];
+  }
 
-    for (let year: number = timeline.yearStart; year <= timeline.yearEnd; year += step) {
-      years.push(year);
-    }
+  protected yearAnchorId(year: number): string {
+    return `history-year-${year}`;
+  }
 
-    if (!years.includes(timeline.yearEnd)) {
-      years.push(timeline.yearEnd);
-    }
-
-    return years;
+  protected scrollToYear(year: number): void {
+    const target: HTMLElement | null = this.document.getElementById(this.yearAnchorId(year));
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   protected eventTrackBy(_index: number, event: HistoryTimelineEventViewModel): string {
@@ -274,6 +281,10 @@ export class HistoryTimelinePageComponent implements OnInit {
 
   protected timelineAriaLabel(): string {
     return this.resolveCopy().timelineAria;
+  }
+
+  protected yearsAriaLabel(): string {
+    return this.resolveCopy().yearsAria;
   }
 
   protected sourceLabel(event: HistoryTimelineEventViewModel): string {
