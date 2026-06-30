@@ -1,6 +1,20 @@
 {
-  "version": "3.1.14",
+  "version": "3.1.15",
   "history": [
+    {
+      "version": "3.1.15",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les consignes d’horaires gardent les événements visibles.",
+        "en": "Schedule guidance keeps events visible.",
+        "de": "Die Zeitplanhinweise halten Ereignisse sichtbar.",
+        "nl": "De richtlijnen voor openingstijden houden evenementen zichtbaar.",
+        "it": "Le indicazioni sugli orari mantengono visibili gli eventi.",
+        "es": "Las pautas de horarios mantienen visibles los eventos.",
+        "pl": "Wskazówki godzin otwarcia zachowują widoczność wydarzeń.",
+        "pt": "As orientações de horários mantêm os eventos visíveis."
+      }
+    },
     {
       "version": "3.1.14",
       "releasedAt": "2026-06-30",
