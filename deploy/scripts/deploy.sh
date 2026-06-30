@@ -189,7 +189,7 @@ compose ps
 
 wait_for_service_healthy mongodb 180
 
-if [ "${RUN_LEGACY_ENUM_MIGRATIONS:-true}" = "true" ]; then
+if [ "${RUN_LEGACY_ENUM_MIGRATIONS:-false}" = "true" ]; then
   run_legacy_enum_migrations
 else
   echo "Legacy enum MongoDB migrations are disabled. Set RUN_LEGACY_ENUM_MIGRATIONS=true to enable them."

@@ -216,6 +216,34 @@ describe('SeoService', () => {
     expect(readCanonicalHref()).toBe('http://localhost:4200/en/park/park-1/demo-park/opening-hours');
   });
 
+  it('localizes opening hours breadcrumb JSON-LD with contextual German labels', () => {
+    service.applyParkOpeningHoursSeo('Phantasialand', 'de', '/de/park/park-1/phantasialand/opening-hours', 12);
+
+    expect(readBreadcrumbNames()).toEqual([
+      'Startseite',
+      'Parkliste',
+      'Phantasialand',
+      'Öffnungszeiten von Phantasialand'
+    ]);
+  });
+
+  it('uses contextual French video breadcrumb JSON-LD labels', () => {
+    service.applyParkVideoSeo(
+      buildVideo({ title: 'La Catapulte offride' }),
+      buildPark({ name: 'Le Fleury' }),
+      'fr',
+      '/fr/park/park-1/le-fleury/videos/video-1/la-catapulte-offride'
+    );
+
+    expect(readBreadcrumbNames()).toEqual([
+      'Accueil',
+      'Liste des parcs',
+      'Le Fleury',
+      'Vidéos de Le Fleury',
+      'La Catapulte offride'
+    ]);
+  });
+
   it('uses a clean canonical route for stale park zone slugs', () => {
     service.applyParkZoneSeo(
       'Europa-Park',
@@ -342,6 +370,21 @@ describe('SeoService', () => {
 
   function readCanonicalHref(): string | null {
     return documentRef.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href ?? null;
+  }
+
+  function readBreadcrumbNames(): string[] {
+    const breadcrumb = readJsonLdScripts()
+      .find((value: Record<string, unknown>): boolean => value['@type'] === 'BreadcrumbList');
+    const elements: Array<Record<string, unknown>> = Array.isArray(breadcrumb?.['itemListElement'])
+      ? breadcrumb['itemListElement'] as Array<Record<string, unknown>>
+      : [];
+
+    return elements.map((element: Record<string, unknown>): string => String(element['name'] ?? ''));
+  }
+
+  function readJsonLdScripts(): Array<Record<string, unknown>> {
+    return Array.from(documentRef.head.querySelectorAll<HTMLScriptElement>('script[data-managed-by="amusementpark-seo"]'))
+      .map((script: HTMLScriptElement): Record<string, unknown> => JSON.parse(script.textContent ?? '{}') as Record<string, unknown>);
   }
 
   function clearManagedSeoTags(): void {

@@ -38,6 +38,7 @@
       "today": "Vandaag",
       "open": "Open",
       "closed": "Gesloten",
+      "closedCompact": "Dicht",
       "notDefined": "Niet vermeld",
       "closedNoReason": "Gesloten",
       "dayHasInformation": "Extra informatie",

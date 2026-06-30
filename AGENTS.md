@@ -68,6 +68,7 @@ The project must preserve its current architecture, SOLID principles, separation
 - Reuse existing shared components where relevant.
 - Maintain responsive behavior, especially for admin screens.
 - Preserve route localization, SEO metadata, canonical URLs, hreflang, robots/noindex, Open Graph, and SSR behavior.
+- When creating a deep public page, update the visible public breadcrumb/navigation trail and the BreadcrumbList JSON-LD with contextual, localized labels and clickable parent links. Do not leave generic labels when entity names are available.
 - Public-facing copy must use a consistent informal tone in every supported language. In French, use tutoiement instead of vouvoiement for public, auth, account, SEO and sharing texts.
 - Add or update tests for facades, mappers, guards, interceptors, ports, and edge cases.
 - Do not introduce heavy dependencies without explicit justification.

@@ -319,8 +319,8 @@ function createClosedOpeningHoursDay(localDate: string): ParkOpeningHoursDay {
     isClosed: true,
     isDefined: true,
     sourceKind: 'Rule',
-    label: null,
-    reason: null,
+    labels: [],
+    reasons: [],
     timeRanges: []
   };
 }
@@ -331,8 +331,8 @@ function createOpenOpeningHoursDay(localDate: string): ParkOpeningHoursDay {
     isClosed: false,
     isDefined: true,
     sourceKind: 'Rule',
-    label: null,
-    reason: null,
+    labels: [],
+    reasons: [],
     timeRanges: [createOpeningHoursRange('10:00', '18:00')]
   };
 }

@@ -456,19 +456,19 @@ const PARK_OPENING_HOURS_SEO_COPY: Record<string, ParkOpeningHoursSeoCopy> = {
     parkFallback: 'ce parc',
     breadcrumbLabel: 'Dates et horaires',
     title: (parkName: string): string => `Dates et horaires de ${parkName}`,
-    description: (parkName: string, totalDays: number): string => `Parcours les dates et horaires renseignes pour ${parkName}${totalDays > 0 ? ` sur ${totalDays} jours` : ''}, avec les ouvertures, fermetures et infos utiles.`
+    description: (parkName: string, totalDays: number): string => `Parcours les dates et horaires renseignés pour ${parkName}${totalDays > 0 ? ` sur ${totalDays} jours` : ''}, avec les ouvertures, fermetures et infos utiles.`
   },
   es: {
     parkFallback: 'este parque',
     breadcrumbLabel: 'Fechas y horarios',
     title: (parkName: string): string => `Fechas y horarios de ${parkName}`,
-    description: (parkName: string, totalDays: number): string => `Consulta las fechas y horarios publicados para ${parkName}${totalDays > 0 ? ` durante ${totalDays} dias` : ''}, con aperturas, cierres y notas practicas.`
+    description: (parkName: string, totalDays: number): string => `Consulta las fechas y horarios publicados para ${parkName}${totalDays > 0 ? ` durante ${totalDays} días` : ''}, con aperturas, cierres y notas prácticas.`
   },
   de: {
     parkFallback: 'diesem Park',
-    breadcrumbLabel: 'Termine und Zeiten',
-    title: (parkName: string): string => `Termine und Offnungszeiten von ${parkName}`,
-    description: (parkName: string, totalDays: number): string => `Sieh dir die erfassten Termine und Offnungszeiten von ${parkName}${totalDays > 0 ? ` fur ${totalDays} Tage` : ''} mit Tagesplanen und Schliesshinweisen an.`
+    breadcrumbLabel: 'Öffnungszeiten',
+    title: (parkName: string): string => `Termine und Öffnungszeiten von ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Sieh dir die erfassten Termine und Öffnungszeiten von ${parkName}${totalDays > 0 ? ` für ${totalDays} Tage` : ''} mit Tagesplänen und Schließhinweisen an.`
   },
   it: {
     parkFallback: 'questo parco',
@@ -486,13 +486,13 @@ const PARK_OPENING_HOURS_SEO_COPY: Record<string, ParkOpeningHoursSeoCopy> = {
     parkFallback: 'tym parku',
     breadcrumbLabel: 'Daty i godziny',
     title: (parkName: string): string => `Daty i godziny otwarcia ${parkName}`,
-    description: (parkName: string, totalDays: number): string => `Przegladaj zapisane daty i godziny otwarcia ${parkName}${totalDays > 0 ? ` dla ${totalDays} dni` : ''}, wraz z dniami zamkniecia i notatkami.`
+    description: (parkName: string, totalDays: number): string => `Przeglądaj zapisane daty i godziny otwarcia ${parkName}${totalDays > 0 ? ` dla ${totalDays} dni` : ''}, wraz z dniami zamknięcia i notatkami.`
   },
   pt: {
     parkFallback: 'este parque',
-    breadcrumbLabel: 'Datas e horarios',
-    title: (parkName: string): string => `Datas e horarios de abertura de ${parkName}`,
-    description: (parkName: string, totalDays: number): string => `Consulta as datas e horarios registados para ${parkName}${totalDays > 0 ? ` em ${totalDays} dias` : ''}, com aberturas, fechos e notas uteis.`
+    breadcrumbLabel: 'Datas e horários',
+    title: (parkName: string): string => `Datas e horários de abertura de ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Consulta as datas e horários registados para ${parkName}${totalDays > 0 ? ` em ${totalDays} dias` : ''}, com aberturas, fechos e notas úteis.`
   }
 };
 
@@ -1438,7 +1438,7 @@ export class SeoService {
       alternates: this.hreflangService.buildAlternates(seoUrl),
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: normalizedParkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, copy.breadcrumbLabel)]
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkItemsBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
     });
   }
 
@@ -1465,7 +1465,7 @@ export class SeoService {
       alternates: this.hreflangService.buildAlternates(seoUrl),
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: normalizedParkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, copy.breadcrumbLabel)]
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkWeatherBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
     });
   }
 
@@ -1492,7 +1492,7 @@ export class SeoService {
       alternates: this.hreflangService.buildAlternates(seoUrl),
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: normalizedParkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, copy.breadcrumbLabel)]
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkOpeningHoursBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
     });
   }
 
@@ -1520,7 +1520,7 @@ export class SeoService {
       alternates: this.hreflangService.buildAlternates(seoUrl),
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: normalizedParkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, copy.breadcrumbLabel)]
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkZonesBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
     });
   }
 
@@ -1583,7 +1583,7 @@ export class SeoService {
       alternates: this.hreflangService.buildAlternates(seoUrl),
       imageUrl: this.resolveImageIdAbsoluteUrl(imageId) ?? undefined,
       imageAlt: referenceName,
-      jsonLd: this.buildParkReferenceJsonLd(reference, seoUrl, referenceName, description, copy.breadcrumbLabel)
+      jsonLd: this.buildParkReferenceJsonLd(reference, seoUrl, referenceName, description)
     });
   }
 
@@ -1808,9 +1808,10 @@ export class SeoService {
 
   private buildParkDetailJsonLd(park: ParkDetailViewModel, url: string): unknown[] {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
     const jsonLd: unknown[] = [this.buildBreadcrumbJsonLd([
-      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${this.resolveLanguageFromUrl(url)}/home`) },
-      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${this.resolveLanguageFromUrl(url)}/parks`) },
+      { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveParksBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
       { name: park.name, url: canonicalUrl }
     ])];
 
@@ -1869,8 +1870,8 @@ export class SeoService {
       : `/${language}/parks`;
 
     return this.buildBreadcrumbJsonLd([
-      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
-      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveParksBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
       { name: park.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
       { name: pageLabel, url: canonicalUrl }
     ]);
@@ -1892,8 +1893,8 @@ export class SeoService {
       : parkDetailPath;
 
     return this.buildBreadcrumbJsonLd([
-      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
-      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveParksBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
       { name: park.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
       { name: item.name ?? 'Item', url: this.canonicalUrlService.buildAbsoluteUrl(itemDetailPath) },
       { name: pageLabel, url: canonicalUrl }
@@ -1902,7 +1903,7 @@ export class SeoService {
 
   private resolveParkImagesBreadcrumbLabel(language: string, parkLabel: string): string {
     const labels: Record<string, string> = {
-      fr: `Images ${parkLabel}`,
+      fr: `Images de ${parkLabel}`,
       en: `${parkLabel} images`,
       es: `Imágenes de ${parkLabel}`,
       de: `Bilder von ${parkLabel}`,
@@ -1917,7 +1918,7 @@ export class SeoService {
 
   private resolveParkItemImagesBreadcrumbLabel(language: string, itemLabel: string): string {
     const labels: Record<string, string> = {
-      fr: `Images ${itemLabel}`,
+      fr: `Images de ${itemLabel}`,
       en: `${itemLabel} images`,
       es: `Imágenes de ${itemLabel}`,
       de: `Bilder von ${itemLabel}`,
@@ -1932,8 +1933,14 @@ export class SeoService {
 
   private resolveParkVideosBreadcrumbLabel(language: string, parkLabel: string): string {
     const labels: Record<string, string> = {
-      fr: `Videos ${parkLabel}`,
-      en: `${parkLabel} videos`
+      fr: `Vidéos de ${parkLabel}`,
+      en: `${parkLabel} videos`,
+      es: `Vídeos de ${parkLabel}`,
+      de: `Videos von ${parkLabel}`,
+      it: `Video di ${parkLabel}`,
+      nl: `Video's van ${parkLabel}`,
+      pl: `Filmy z ${parkLabel}`,
+      pt: `Vídeos de ${parkLabel}`
     };
 
     return labels[language] ?? labels['en'];
@@ -1941,7 +1948,7 @@ export class SeoService {
 
   private resolveParkMapBreadcrumbLabel(language: string, parkLabel: string): string {
     const labels: Record<string, string> = {
-      fr: `Carte ${parkLabel}`,
+      fr: `Carte de ${parkLabel}`,
       en: `${parkLabel} map`,
       es: `Mapa de ${parkLabel}`,
       de: `Karte von ${parkLabel}`,
@@ -1956,8 +1963,74 @@ export class SeoService {
 
   private resolveParkItemVideosBreadcrumbLabel(language: string, itemLabel: string): string {
     const labels: Record<string, string> = {
-      fr: `Videos ${itemLabel}`,
-      en: `${itemLabel} videos`
+      fr: `Vidéos de ${itemLabel}`,
+      en: `${itemLabel} videos`,
+      es: `Vídeos de ${itemLabel}`,
+      de: `Videos von ${itemLabel}`,
+      it: `Video di ${itemLabel}`,
+      nl: `Video's van ${itemLabel}`,
+      pl: `Filmy z ${itemLabel}`,
+      pt: `Vídeos de ${itemLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkItemsBreadcrumbLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Lieux de ${parkLabel}`,
+      en: `Places at ${parkLabel}`,
+      es: `Lugares de ${parkLabel}`,
+      de: `Orte in ${parkLabel}`,
+      it: `Luoghi di ${parkLabel}`,
+      nl: `Plekken in ${parkLabel}`,
+      pl: `Miejsca w ${parkLabel}`,
+      pt: `Locais de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkWeatherBreadcrumbLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Météo de ${parkLabel}`,
+      en: `Weather for ${parkLabel}`,
+      es: `Tiempo de ${parkLabel}`,
+      de: `Wetter für ${parkLabel}`,
+      it: `Meteo di ${parkLabel}`,
+      nl: `Weer voor ${parkLabel}`,
+      pl: `Pogoda dla ${parkLabel}`,
+      pt: `Meteorologia de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkOpeningHoursBreadcrumbLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Dates et horaires de ${parkLabel}`,
+      en: `Opening hours for ${parkLabel}`,
+      es: `Fechas y horarios de ${parkLabel}`,
+      de: `Öffnungszeiten von ${parkLabel}`,
+      it: `Date e orari di ${parkLabel}`,
+      nl: `Datums en openingstijden van ${parkLabel}`,
+      pl: `Godziny otwarcia ${parkLabel}`,
+      pt: `Datas e horários de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkZonesBreadcrumbLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Zones de ${parkLabel}`,
+      en: `${parkLabel} zones`,
+      es: `Zonas de ${parkLabel}`,
+      de: `Bereiche von ${parkLabel}`,
+      it: `Zone di ${parkLabel}`,
+      nl: `Zones van ${parkLabel}`,
+      pl: `Strefy ${parkLabel}`,
+      pt: `Zonas de ${parkLabel}`
     };
 
     return labels[language] ?? labels['en'];
@@ -2048,8 +2121,8 @@ export class SeoService {
       : parkDetailPath;
 
     return this.buildBreadcrumbJsonLd([
-      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
-      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveParksBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
       { name: park.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
       { name: this.resolveParkVideosBreadcrumbLabel(language, park.name ?? 'Park'), url: this.canonicalUrlService.buildAbsoluteUrl(videosPath) },
       { name: videoLabel, url: canonicalUrl }
@@ -2071,8 +2144,8 @@ export class SeoService {
       : itemDetailPath;
 
     return this.buildBreadcrumbJsonLd([
-      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
-      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveParksBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
       { name: park.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
       { name: item.name ?? 'Item', url: this.canonicalUrlService.buildAbsoluteUrl(itemDetailPath) },
       { name: this.resolveParkItemVideosBreadcrumbLabel(language, item.name ?? 'Item'), url: this.canonicalUrlService.buildAbsoluteUrl(videosPath) },
@@ -2084,8 +2157,7 @@ export class SeoService {
     reference: ParkReferenceDetailViewModel,
     url: string,
     referenceName: string,
-    description: string,
-    pageLabel: string
+    description: string
   ): unknown[] {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
     const language: string = this.resolveLanguageFromUrl(url);
@@ -2111,8 +2183,8 @@ export class SeoService {
 
     return [
       this.buildBreadcrumbJsonLd([
-        { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
-        { name: pageLabel, url: this.canonicalUrlService.buildAbsoluteUrl(parentPath) },
+        { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+        { name: reference.kind === 'manufacturer' ? this.resolveManufacturersBreadcrumbLabel(language) : this.resolveParksBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(parentPath) },
         { name: referenceName, url: canonicalUrl }
       ]),
       referenceJsonLd
@@ -2123,8 +2195,8 @@ export class SeoService {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
     const language: string = this.resolveLanguageFromUrl(url);
     const breadcrumbItems = [
-      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
-      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) }
+      { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveParksBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) }
     ];
 
     if (detail.parkName && detail.parkLink) {
@@ -2168,10 +2240,55 @@ export class SeoService {
     const technicalPath: string = `/${language}/technical`;
 
     return this.buildBreadcrumbJsonLd([
-      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
       { name: this.resolveTechnicalBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(technicalPath) },
       { name: pageLabel, url: canonicalUrl }
     ]);
+  }
+
+  private resolveHomeBreadcrumbLabel(language: string): string {
+    const labels: Record<string, string> = {
+      fr: 'Accueil',
+      en: 'Home',
+      es: 'Inicio',
+      de: 'Startseite',
+      it: 'Home',
+      nl: 'Startpagina',
+      pl: 'Strona główna',
+      pt: 'Início'
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParksBreadcrumbLabel(language: string): string {
+    const labels: Record<string, string> = {
+      fr: 'Liste des parcs',
+      en: 'Parks list',
+      es: 'Lista de parques',
+      de: 'Parkliste',
+      it: 'Elenco dei parchi',
+      nl: 'Parkenlijst',
+      pl: 'Lista parków',
+      pt: 'Lista de parques'
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveManufacturersBreadcrumbLabel(language: string): string {
+    const labels: Record<string, string> = {
+      fr: 'Constructeurs',
+      en: 'Manufacturers',
+      es: 'Fabricantes',
+      de: 'Hersteller',
+      it: 'Costruttori',
+      nl: 'Bouwers',
+      pl: 'Producenci',
+      pt: 'Fabricantes'
+    };
+
+    return labels[language] ?? labels['en'];
   }
 
   private resolveTechnicalBreadcrumbLabel(language: string): string {

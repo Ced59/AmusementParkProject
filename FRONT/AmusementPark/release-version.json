@@ -1,6 +1,20 @@
 {
-  "version": "3.0.4",
+  "version": "3.0.5",
   "history": [
+    {
+      "version": "3.0.5",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les chemins de page et les notes d'horaires sont plus clairs.",
+        "en": "Page paths and schedule notes are clearer.",
+        "de": "Seitenpfade und Zeitplanhinweise sind klarer.",
+        "nl": "Paginapaden en roosterinfo zijn duidelijker.",
+        "it": "Percorsi pagina e note sugli orari sono più chiari.",
+        "es": "Las rutas de página y notas de horarios son más claras.",
+        "pl": "Ścieżki stron i informacje o godzinach są czytelniejsze.",
+        "pt": "Os caminhos de página e notas de horários ficam mais claros."
+      }
+    },
     {
       "version": "3.0.4",
       "releasedAt": "2026-06-30",

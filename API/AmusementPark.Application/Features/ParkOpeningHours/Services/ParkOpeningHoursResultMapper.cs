@@ -30,8 +30,8 @@ internal static class ParkOpeningHoursResultMapper
             EndDate = rule.EndDate,
             DaysOfWeek = rule.DaysOfWeek.ToList(),
             IsClosed = rule.IsClosed,
-            Label = rule.Label,
-            Reason = rule.Reason,
+            Labels = rule.Labels.ToList(),
+            Reasons = rule.Reasons.ToList(),
             SortOrder = rule.SortOrder,
             TimeRanges = rule.TimeRanges.Select(static timeRange => timeRange.ToResult()).ToList(),
         };
@@ -43,8 +43,8 @@ internal static class ParkOpeningHoursResultMapper
         {
             LocalDate = dateOverride.LocalDate,
             IsClosed = dateOverride.IsClosed,
-            Label = dateOverride.Label,
-            Reason = dateOverride.Reason,
+            Labels = dateOverride.Labels.ToList(),
+            Reasons = dateOverride.Reasons.ToList(),
             TimeRanges = dateOverride.TimeRanges.Select(static timeRange => timeRange.ToResult()).ToList(),
         };
     }

@@ -63,8 +63,8 @@ public sealed class ParkOpeningHoursCalendarBuilder
                 IsClosed = dateOverride.IsClosed || dateOverride.TimeRanges.Count == 0,
                 IsDefined = true,
                 SourceKind = "override",
-                Label = dateOverride.Label,
-                Reason = dateOverride.Reason,
+                Labels = dateOverride.Labels.ToList(),
+                Reasons = dateOverride.Reasons.ToList(),
                 TimeRanges = dateOverride.TimeRanges.Select(static timeRange => timeRange.ToResult()).ToList(),
             };
         }
@@ -86,8 +86,8 @@ public sealed class ParkOpeningHoursCalendarBuilder
             IsClosed = rule.IsClosed || rule.TimeRanges.Count == 0,
             IsDefined = true,
             SourceKind = "regular",
-            Label = rule.Label,
-            Reason = rule.Reason,
+            Labels = rule.Labels.ToList(),
+            Reasons = rule.Reasons.ToList(),
             TimeRanges = rule.TimeRanges.Select(static timeRange => timeRange.ToResult()).ToList(),
         };
     }

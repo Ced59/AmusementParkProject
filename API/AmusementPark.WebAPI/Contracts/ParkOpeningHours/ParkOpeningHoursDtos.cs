@@ -1,3 +1,5 @@
+using AmusementPark.WebAPI.Contracts.Common;
+
 namespace AmusementPark.WebAPI.Contracts.ParkOpeningHours;
 
 public sealed class ParkOpeningHoursScheduleDto
@@ -33,9 +35,9 @@ public sealed class ParkOpeningHoursRuleDto
 
     public bool IsClosed { get; set; }
 
-    public string? Label { get; set; }
+    public IReadOnlyCollection<LocalizedTextDto> Labels { get; set; } = Array.Empty<LocalizedTextDto>();
 
-    public string? Reason { get; set; }
+    public IReadOnlyCollection<LocalizedTextDto> Reasons { get; set; } = Array.Empty<LocalizedTextDto>();
 
     public int SortOrder { get; set; }
 
@@ -48,9 +50,9 @@ public sealed class ParkOpeningHoursDateOverrideDto
 
     public bool IsClosed { get; set; }
 
-    public string? Label { get; set; }
+    public IReadOnlyCollection<LocalizedTextDto> Labels { get; set; } = Array.Empty<LocalizedTextDto>();
 
-    public string? Reason { get; set; }
+    public IReadOnlyCollection<LocalizedTextDto> Reasons { get; set; } = Array.Empty<LocalizedTextDto>();
 
     public IReadOnlyCollection<ParkOpeningHoursTimeRangeDto> TimeRanges { get; set; } = Array.Empty<ParkOpeningHoursTimeRangeDto>();
 }
@@ -103,9 +105,9 @@ public sealed class ParkOpeningHoursDayDto
 
     public string SourceKind { get; set; } = string.Empty;
 
-    public string? Label { get; set; }
+    public IReadOnlyCollection<LocalizedTextDto> Labels { get; set; } = Array.Empty<LocalizedTextDto>();
 
-    public string? Reason { get; set; }
+    public IReadOnlyCollection<LocalizedTextDto> Reasons { get; set; } = Array.Empty<LocalizedTextDto>();
 
     public IReadOnlyCollection<ParkOpeningHoursTimeRangeDto> TimeRanges { get; set; } = Array.Empty<ParkOpeningHoursTimeRangeDto>();
 }

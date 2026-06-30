@@ -85,6 +85,8 @@ describe('ParkOpeningHoursPageComponent', () => {
   });
 
   it('does not expose technical or closed-day notes on the public calendar', () => {
+    component['currentLanguage'].set('fr');
+
     const technicalClosedDay: ParkOpeningHoursDay = createClosedDay(
       '2026-07-01',
       'Regle de couverture pour eviter les dates non definies'
@@ -105,6 +107,8 @@ describe('ParkOpeningHoursPageComponent', () => {
   });
 
   it('exposes public notes in the selected day details instead of expanding calendar cells', () => {
+    component['currentLanguage'].set('fr');
+
     const calendar: ParkOpeningHoursCalendar = createCalendar([
       createOpenDay('2026-07-04', '10:00', '22:00', 'Soirée Halloween')
     ]);
@@ -120,6 +124,21 @@ describe('ParkOpeningHoursPageComponent', () => {
     expect(details.localDate).toBe('2026-07-04');
     expect(details.status).toBe('open');
     expect(details.note).toBe('Soirée Halloween');
+  });
+
+  it('only exposes day notes when they are explicitly localized for the current page language', () => {
+    const frenchOnlyDay: ParkOpeningHoursDay = createOpenDay('2026-07-04', '10:00', '18:00', 'Ouverture estivale 2026');
+    const localizedGermanDay: ParkOpeningHoursDay = {
+      ...frenchOnlyDay,
+      labels: [
+        { languageCode: 'de', value: 'Sommeröffnung 2026' }
+      ]
+    };
+
+    component['currentLanguage'].set('de');
+
+    expect(component.publicDayNote(frenchOnlyDay)).toBeNull();
+    expect(component.publicDayNote(localizedGermanDay)).toBe('Sommeröffnung 2026');
   });
 
   it('classifies opening amplitudes for calendar colors', () => {
@@ -234,8 +253,8 @@ function createOpenDay(localDate: string, opensAt: string, closesAt: string, lab
     isClosed: false,
     isDefined: true,
     sourceKind: 'Rule',
-    label,
-    reason: null,
+    labels: label ? [{ languageCode: 'fr', value: label }] : [],
+    reasons: [],
     timeRanges: [createRange(opensAt, closesAt)]
   };
 }
@@ -246,8 +265,8 @@ function createClosedDay(localDate: string, reason: string | null = null): ParkO
     isClosed: true,
     isDefined: true,
     sourceKind: 'Rule',
-    label: null,
-    reason,
+    labels: [],
+    reasons: reason ? [{ languageCode: 'fr', value: reason }] : [],
     timeRanges: []
   };
 }

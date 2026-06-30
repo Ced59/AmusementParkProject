@@ -139,7 +139,7 @@
 
                                 @if (cell.day; as day) {
                                   @if (cell.tone === 'closed') {
-                                    <span class="park-opening-hours-cell__status">{{ 'parkOpeningHours.page.closed' | translate }}</span>
+                                    <span class="park-opening-hours-cell__status">{{ 'parkOpeningHours.page.closedCompact' | translate }}</span>
                                   } @else {
                                     <span class="park-opening-hours-cell__hours">{{ formatCompactRanges(day) }}</span>
                                   }

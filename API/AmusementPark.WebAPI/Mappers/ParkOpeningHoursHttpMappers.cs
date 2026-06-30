@@ -119,8 +119,8 @@ internal static class ParkOpeningHoursHttpMappers
             EndDate = ParseDateOrDefault(dto.EndDate),
             DaysOfWeek = ParseDaysOfWeek(dto.DaysOfWeek, $"{fieldPrefix}.daysOfWeek", errors),
             IsClosed = dto.IsClosed,
-            Label = NormalizeOptionalString(dto.Label),
-            Reason = NormalizeOptionalString(dto.Reason),
+            Labels = dto.Labels.ToDomain(),
+            Reasons = dto.Reasons.ToDomain(),
             SortOrder = dto.SortOrder,
             TimeRanges = (dto.TimeRanges ?? Array.Empty<ParkOpeningHoursTimeRangeDto>())
                 .Select((timeRange, index) => timeRange.ToDomain(errors, $"{fieldPrefix}.timeRanges[{index}]"))
@@ -137,8 +137,8 @@ internal static class ParkOpeningHoursHttpMappers
         {
             LocalDate = ParseDateOrDefault(dto.LocalDate),
             IsClosed = dto.IsClosed,
-            Label = NormalizeOptionalString(dto.Label),
-            Reason = NormalizeOptionalString(dto.Reason),
+            Labels = dto.Labels.ToDomain(),
+            Reasons = dto.Reasons.ToDomain(),
             TimeRanges = (dto.TimeRanges ?? Array.Empty<ParkOpeningHoursTimeRangeDto>())
                 .Select((timeRange, index) => timeRange.ToDomain(errors, $"{fieldPrefix}.timeRanges[{index}]"))
                 .ToList(),
@@ -232,8 +232,8 @@ internal static class ParkOpeningHoursHttpMappers
             EndDate = FormatDate(result.EndDate),
             DaysOfWeek = result.DaysOfWeek.Select(static day => day.ToString()).ToList(),
             IsClosed = result.IsClosed,
-            Label = result.Label,
-            Reason = result.Reason,
+            Labels = result.Labels.ToHttp(),
+            Reasons = result.Reasons.ToHttp(),
             SortOrder = result.SortOrder,
             TimeRanges = result.TimeRanges.Select(static timeRange => timeRange.ToHttp()).ToList(),
         };
@@ -245,8 +245,8 @@ internal static class ParkOpeningHoursHttpMappers
         {
             LocalDate = FormatDate(result.LocalDate),
             IsClosed = result.IsClosed,
-            Label = result.Label,
-            Reason = result.Reason,
+            Labels = result.Labels.ToHttp(),
+            Reasons = result.Reasons.ToHttp(),
             TimeRanges = result.TimeRanges.Select(static timeRange => timeRange.ToHttp()).ToList(),
         };
     }
@@ -260,8 +260,8 @@ internal static class ParkOpeningHoursHttpMappers
             EndDate = FormatDate(rule.EndDate),
             DaysOfWeek = rule.DaysOfWeek.Select(static day => day.ToString()).ToList(),
             IsClosed = rule.IsClosed,
-            Label = rule.Label,
-            Reason = rule.Reason,
+            Labels = rule.Labels.ToHttp(),
+            Reasons = rule.Reasons.ToHttp(),
             SortOrder = rule.SortOrder,
             TimeRanges = rule.TimeRanges.Select(static timeRange => timeRange.ToHttp()).ToList(),
         };
@@ -273,8 +273,8 @@ internal static class ParkOpeningHoursHttpMappers
         {
             LocalDate = FormatDate(dateOverride.LocalDate),
             IsClosed = dateOverride.IsClosed,
-            Label = dateOverride.Label,
-            Reason = dateOverride.Reason,
+            Labels = dateOverride.Labels.ToHttp(),
+            Reasons = dateOverride.Reasons.ToHttp(),
             TimeRanges = dateOverride.TimeRanges.Select(static timeRange => timeRange.ToHttp()).ToList(),
         };
     }
@@ -287,8 +287,8 @@ internal static class ParkOpeningHoursHttpMappers
             IsClosed = result.IsClosed,
             IsDefined = result.IsDefined,
             SourceKind = result.SourceKind,
-            Label = result.Label,
-            Reason = result.Reason,
+            Labels = result.Labels.ToHttp(),
+            Reasons = result.Reasons.ToHttp(),
             TimeRanges = result.TimeRanges.Select(static timeRange => timeRange.ToHttp()).ToList(),
         };
     }

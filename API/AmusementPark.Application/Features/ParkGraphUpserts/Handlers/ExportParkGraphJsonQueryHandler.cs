@@ -372,8 +372,8 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
                     EndDate = FormatOpeningHoursDate(rule.EndDate),
                     DaysOfWeek = rule.DaysOfWeek.Select(static day => day.ToString()).ToList(),
                     IsClosed = rule.IsClosed,
-                    Label = rule.Label,
-                    Reason = rule.Reason,
+                    Labels = CopyLocalizedTexts(rule.Labels),
+                    Reasons = CopyLocalizedTexts(rule.Reasons),
                     SortOrder = rule.SortOrder,
                     TimeRanges = rule.TimeRanges.Select(static timeRange => MapOpeningHoursTimeRange(timeRange)).ToList(),
                 })
@@ -384,8 +384,8 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
                 {
                     LocalDate = FormatOpeningHoursDate(dateOverride.LocalDate),
                     IsClosed = dateOverride.IsClosed,
-                    Label = dateOverride.Label,
-                    Reason = dateOverride.Reason,
+                    Labels = CopyLocalizedTexts(dateOverride.Labels),
+                    Reasons = CopyLocalizedTexts(dateOverride.Reasons),
                     TimeRanges = dateOverride.TimeRanges.Select(static timeRange => MapOpeningHoursTimeRange(timeRange)).ToList(),
                 })
                 .ToList(),

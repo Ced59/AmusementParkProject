@@ -1,3 +1,5 @@
+using AmusementPark.Core.Localization;
+
 namespace AmusementPark.Core.Domain.Parks;
 
 public sealed class ParkOpeningHoursSchedule
@@ -37,9 +39,9 @@ public sealed class ParkOpeningHoursRule
 
     public bool IsClosed { get; set; }
 
-    public string? Label { get; set; }
+    public List<LocalizedText> Labels { get; set; } = new();
 
-    public string? Reason { get; set; }
+    public List<LocalizedText> Reasons { get; set; } = new();
 
     public int SortOrder { get; set; }
 
@@ -52,9 +54,9 @@ public sealed class ParkOpeningHoursDateOverride
 
     public bool IsClosed { get; set; }
 
-    public string? Label { get; set; }
+    public List<LocalizedText> Labels { get; set; } = new();
 
-    public string? Reason { get; set; }
+    public List<LocalizedText> Reasons { get; set; } = new();
 
     public List<ParkOpeningHoursTimeRange> TimeRanges { get; set; } = new();
 }

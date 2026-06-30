@@ -2,6 +2,7 @@ import { inject, InjectionToken } from '@angular/core';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { VideosApiService } from '@data-access/videos/videos-api.service';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 export interface PublicParkNavigationTreeParkItemsApiServicePort {
@@ -29,4 +30,13 @@ export interface PublicParkNavigationTreeParksApiServicePort {
 export const PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT = new InjectionToken<PublicParkNavigationTreeParksApiServicePort>('PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT', {
   providedIn: 'root',
   factory: () => inject(ParksApiService)
+});
+
+export interface PublicParkNavigationTreeVideosApiServicePort {
+  getVideoById(id: string, options?: AnonymousHttpOptions, languageCode?: string | null): ReturnType<VideosApiService['getVideoById']>;
+}
+
+export const PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT = new InjectionToken<PublicParkNavigationTreeVideosApiServicePort>('PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT', {
+  providedIn: 'root',
+  factory: () => inject(VideosApiService)
 });
