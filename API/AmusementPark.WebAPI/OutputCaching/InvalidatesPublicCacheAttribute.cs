@@ -20,4 +20,10 @@ public sealed class InvalidatesPublicCacheAttribute : Attribute
     }
 
     public IReadOnlyCollection<PublicCacheScope> Scopes { get; }
+
+    /// <summary>
+    /// Évince les tags OutputCache API en plus de l'invalidation SSR. Les imports
+    /// massifs peuvent le désactiver pour éviter de refroidir tout le site.
+    /// </summary>
+    public bool EvictOutputCache { get; init; } = true;
 }

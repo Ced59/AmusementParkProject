@@ -90,7 +90,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
 
     [HttpPost("apply")]
     [AdminAudit("park-graph-upsert.apply", "Park")]
-    [InvalidatesPublicCache(PublicCacheScope.Data)]
+    [InvalidatesPublicCache(PublicCacheScope.Data, EvictOutputCache = false)]
     [ProducesResponseType(typeof(ParkGraphUpsertResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ApplyAsync([FromBody] ParkGraphUpsertRequestDto request, CancellationToken cancellationToken = default)
     {

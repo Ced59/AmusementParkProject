@@ -411,20 +411,19 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             return BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false);
         }
 
+        bool requiresHardPurge = changedEntities.Any(ContainsHardPurgeSignal);
         if (changedEntities.Count > MaxTargetedEntityCount)
         {
-            return BuildLargeParkGraphUpsertRequest(result);
+            return BuildLargeParkGraphUpsertRequest(result, requiresHardPurge);
         }
 
         HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> fallbackParkIds = new HashSet<string>(StringComparer.Ordinal);
         bool includeDiscoveryPages = false;
-        bool requiresHardPurge = false;
 
         foreach (ParkGraphUpsertChangeDto change in changedEntities)
         {
-            requiresHardPurge = requiresHardPurge || ContainsHardPurgeSignal(change);
             string entityType = NormalizeEntityType(change.EntityType);
             string? entityId = NormalizeTarget(change.EntityId);
 
@@ -500,7 +499,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         return requiresHardPurge ? ForceHardPurge(request) : request;
     }
 
-    private static SsrPageCacheInvalidationRequest BuildLargeParkGraphUpsertRequest(ParkGraphUpsertResultDto result)
+    private static SsrPageCacheInvalidationRequest BuildLargeParkGraphUpsertRequest(ParkGraphUpsertResultDto result, bool requiresHardPurge)
     {
         HashSet<string> parkIds = new HashSet<string>(StringComparer.Ordinal);
         AddNonEmpty(parkIds, result.TargetParkId);
@@ -513,7 +512,8 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
         AddParkPrefixes(prefixes, parkIds);
         AddDiscoveryPaths(paths);
-        return ForceHardPurge(BuildRequest(paths, prefixes, includeSeoDocuments: false));
+        SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildRequest(paths, prefixes, includeSeoDocuments: false));
+        return requiresHardPurge ? ForceHardPurge(request) : request;
     }
 
     private static SsrPageCacheInvalidationRequest BuildAllPageCachesWithoutSeoDocuments()

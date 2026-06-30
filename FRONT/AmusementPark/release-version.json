@@ -1,6 +1,20 @@
 {
-  "version": "3.1.9",
+  "version": "3.1.10",
   "history": [
+    {
+      "version": "3.1.10",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les mises à jour de données ralentissent moins le site.",
+        "en": "Data updates slow the site down less.",
+        "de": "Datenaktualisierungen bremsen die Seite weniger aus.",
+        "nl": "Gegevensupdates vertragen de site minder.",
+        "it": "Gli aggiornamenti dei dati rallentano meno il sito.",
+        "es": "Las actualizaciones de datos ralentizan menos el sitio.",
+        "pl": "Aktualizacje danych mniej spowalniają stronę.",
+        "pt": "As atualizações de dados abrandam menos o site."
+      }
+    },
     {
       "version": "3.1.9",
       "releasedAt": "2026-06-30",
