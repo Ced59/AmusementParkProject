@@ -319,10 +319,13 @@ public sealed partial class ParkGraphUpsertProcessor
 
     private static List<LocalizedText> ReadLocalizedTextsFlexible(JsonElement element, string arrayPropertyName, string compactPropertyName)
     {
-        JsonElement? array = GetArray(element, arrayPropertyName);
-        if (array is not null)
+        if (element.TryGetProperty(arrayPropertyName, out JsonElement pluralValue))
         {
-            return ReadLocalizedTexts(array);
+            List<LocalizedText> pluralValues = ReadLocalizedTextsFlexibleValue(pluralValue);
+            if (pluralValues.Count > 0)
+            {
+                return pluralValues;
+            }
         }
 
         if (!element.TryGetProperty(compactPropertyName, out JsonElement compact))
@@ -330,21 +333,31 @@ public sealed partial class ParkGraphUpsertProcessor
             return new List<LocalizedText>();
         }
 
-        if (compact.ValueKind == JsonValueKind.String)
+        return ReadLocalizedTextsFlexibleValue(compact);
+    }
+
+    private static List<LocalizedText> ReadLocalizedTextsFlexibleValue(JsonElement value)
+    {
+        if (value.ValueKind == JsonValueKind.Array)
         {
-            string? value = NormalizeString(compact.GetString());
-            return string.IsNullOrWhiteSpace(value)
-                ? new List<LocalizedText>()
-                : new List<LocalizedText> { new LocalizedText("fr", value) };
+            return ReadLocalizedTexts(value);
         }
 
-        if (compact.ValueKind != JsonValueKind.Object)
+        if (value.ValueKind == JsonValueKind.String)
+        {
+            string? text = NormalizeString(value.GetString());
+            return string.IsNullOrWhiteSpace(text)
+                ? new List<LocalizedText>()
+                : new List<LocalizedText> { new LocalizedText("fr", text) };
+        }
+
+        if (value.ValueKind != JsonValueKind.Object)
         {
             return new List<LocalizedText>();
         }
 
         List<LocalizedText> values = new List<LocalizedText>();
-        foreach (JsonProperty property in compact.EnumerateObject())
+        foreach (JsonProperty property in value.EnumerateObject())
         {
             if (property.Value.ValueKind != JsonValueKind.String)
             {

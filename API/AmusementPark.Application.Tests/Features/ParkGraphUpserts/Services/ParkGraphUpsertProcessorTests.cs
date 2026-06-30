@@ -152,6 +152,166 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenHistoryLocalizedFieldsUseCompactPluralObjects_ShouldImportTexts()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        List<HistoryEvent> savedEvents = new List<HistoryEvent>();
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IHistoryEventRepository> historyEventRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        historyEventRepository
+            .Setup(value => value.GetByOwnerKeyAsync(HistoryEntityType.Park, "park-1", "mirapolis-opening", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoryEvent?)null);
+        historyEventRepository
+            .Setup(value => value.CreateAsync(It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()))
+            .Callback<HistoryEvent, CancellationToken>((historyEvent, _) =>
+            {
+                historyEvent.Id = $"history-{savedEvents.Count + 1}";
+                savedEvents.Add(historyEvent);
+            })
+            .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance,
+            historyEventRepository: historyEventRepository.Object);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "historyEvents": [
+            {
+              "owner": "park",
+              "ownerId": "park-1",
+              "key": "mirapolis-opening",
+              "eventType": "Opening",
+              "date": "1987-05-20",
+              "isVisible": true,
+              "isMajor": true,
+              "titles": {
+                "fr": "Ouverture de Mirapolis",
+                "en": "Mirapolis opens"
+              },
+              "summaries": {
+                "fr": "Mirapolis ouvre au public."
+              },
+              "article": {
+                "slug": "ouverture-mirapolis",
+                "isPublished": true,
+                "titles": {
+                  "fr": "20 mai 1987 : Mirapolis ouvre ses portes"
+                },
+                "subtitles": {
+                  "fr": "Un lancement spectaculaire."
+                },
+                "summaries": {
+                  "fr": "Le parc ouvre autour de Gargantua."
+                },
+                "blocks": [
+                  {
+                    "id": "intro",
+                    "type": "Paragraph",
+                    "sortOrder": 1,
+                    "texts": {
+                      "fr": "Mirapolis ouvre au public le 20 mai 1987.",
+                      "en": "Mirapolis opens to the public on 20 May 1987."
+                    }
+                  },
+                  {
+                    "id": "photo",
+                    "type": "Image",
+                    "sortOrder": 2,
+                    "imageId": "image-1",
+                    "captions": {
+                      "fr": "Logo de Mirapolis."
+                    }
+                  }
+                ],
+                "sources": [
+                  {
+                    "label": "Source",
+                    "url": "https://example.test/mirapolis",
+                    "accessedAt": "2026-06-30"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Empty(result.Value!.Errors);
+
+        HistoryEvent savedEvent = Assert.Single(savedEvents);
+        Assert.Contains(savedEvent.Titles, static text => text.LanguageCode == "fr" && text.Value == "Ouverture de Mirapolis");
+        Assert.Contains(savedEvent.Summaries, static text => text.LanguageCode == "fr" && text.Value == "Mirapolis ouvre au public.");
+        Assert.NotNull(savedEvent.Article);
+        Assert.Contains(savedEvent.Article!.Titles, static text => text.LanguageCode == "fr" && text.Value == "20 mai 1987 : Mirapolis ouvre ses portes");
+        Assert.Contains(savedEvent.Article.Subtitles, static text => text.LanguageCode == "fr" && text.Value == "Un lancement spectaculaire.");
+        Assert.Contains(savedEvent.Article.Summaries, static text => text.LanguageCode == "fr" && text.Value == "Le parc ouvre autour de Gargantua.");
+        Assert.Contains(savedEvent.Article.Blocks[0].Texts, static text => text.LanguageCode == "fr" && text.Value == "Mirapolis ouvre au public le 20 mai 1987.");
+        Assert.Contains(savedEvent.Article.Blocks[1].Captions, static text => text.LanguageCode == "fr" && text.Value == "Logo de Mirapolis.");
+
+        parkRepository.VerifyAll();
+        historyEventRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenItemIsCreated_ShouldKeepItHiddenAndToReview()
     {
         Park park = new Park

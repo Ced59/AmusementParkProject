@@ -121,18 +121,20 @@ export function mapHistoryArticleToViewModel(article: HistoryArticle, language: 
     return null;
   }
 
-  const title: string = resolveLocalizedText(content.titles, language, resolveLocalizedText(article.event.titles, language, article.event.key));
+  const ownerName: string = article.parkItem?.name ?? article.park?.name ?? resolveFallbackOwnerName(article.event.entityType, language);
+  const eventTypeLabel: string = resolveHistoryEventTypeLabel(article.event.eventType, language);
+  const fallbackTitle: string = resolveHistoryEventTitle(article.event, language, eventTypeLabel, ownerName);
+  const title: string = resolveLocalizedText(content.titles, language, fallbackTitle);
   const eventSummary: string = resolveLocalizedText(article.event.summaries, language, '');
   const summary: string = resolveLocalizedText(content.summaries, language, eventSummary);
   const subtitle: string = resolveLocalizedText(content.subtitles, language, '');
-  const ownerName: string = article.parkItem?.name ?? article.park?.name ?? resolveFallbackOwnerName(article.event.entityType, language);
 
   return {
     title,
     subtitle,
     summary,
     dateLabel: formatHistoryDate(article.event.year, article.event.month ?? null, article.event.day ?? null, article.event.datePrecision, language),
-    eventTypeLabel: resolveHistoryEventTypeLabel(article.event.eventType, language),
+    eventTypeLabel,
     ownerName,
     park: article.park ?? null,
     parkItem: article.parkItem ?? null,
@@ -152,7 +154,8 @@ export function mapHistoryArticleToViewModel(article: HistoryArticle, language: 
         imageIds: block.imageIds ?? [],
         caption: resolveLocalizedText(block.captions, language, ''),
         source: block
-      })),
+      }))
+      .filter(isDisplayableArticleBlock),
     sources: [...(content.sources ?? []), ...(article.event.sources ?? [])],
     timelineLink: buildArticleTimelineLink(article, language),
     event: article.event,
@@ -162,12 +165,13 @@ export function mapHistoryArticleToViewModel(article: HistoryArticle, language: 
 
 function mapTimelineEventToViewModel(entry: HistoryTimelineEvent, timeline: HistoryTimeline, language: string): HistoryTimelineEventViewModel {
   const event = entry.event;
-  const eventTitle: string = resolveLocalizedText(event.titles, language, event.key);
   const park: Park | null = timeline.park ?? entry.contextPark ?? null;
   const parkItem: ParkItem | null = entry.parkItem ?? timeline.parkItem ?? null;
   const ownerName: string = event.entityType === 'ParkItem'
     ? parkItem?.name ?? resolveFallbackOwnerName('ParkItem', language)
     : park?.name ?? resolveFallbackOwnerName('Park', language);
+  const eventTypeLabel: string = resolveHistoryEventTypeLabel(event.eventType, language);
+  const eventTitle: string = resolveHistoryEventTitle(event, language, eventTypeLabel, ownerName);
 
   return {
     id: event.id ?? event.key,
@@ -179,7 +183,7 @@ function mapTimelineEventToViewModel(entry: HistoryTimelineEvent, timeline: Hist
     month: event.month ?? null,
     day: event.day ?? null,
     eventType: event.eventType,
-    eventTypeLabel: resolveHistoryEventTypeLabel(event.eventType, language),
+    eventTypeLabel,
     entityType: event.entityType,
     isMajor: event.isMajor,
     ownerName,
@@ -191,6 +195,21 @@ function mapTimelineEventToViewModel(entry: HistoryTimelineEvent, timeline: Hist
     sourceCount: event.sources?.length ?? 0,
     positionPercent: 0
   };
+}
+
+function resolveHistoryEventTitle(event: HistoryTimelineEvent['event'], language: string, eventTypeLabel: string, ownerName: string): string {
+  const fallbackTitle: string = ownerName.trim().length > 0
+    ? `${eventTypeLabel} - ${ownerName}`
+    : eventTypeLabel;
+  return resolveLocalizedText(event.titles, language, fallbackTitle);
+}
+
+function isDisplayableArticleBlock(block: HistoryArticleBlockViewModel): boolean {
+  const hasText: boolean = block.text.trim().length > 0;
+  const hasImage: boolean = !!block.imageId || block.imageIds.length > 0;
+  const hasCaption: boolean = block.caption.trim().length > 0;
+
+  return hasText || hasImage || hasCaption;
 }
 
 function buildTimelineArticleLink(
