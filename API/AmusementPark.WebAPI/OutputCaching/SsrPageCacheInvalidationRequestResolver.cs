@@ -400,7 +400,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         object? resultValue = ResolveResultValue(executedContext);
         if (resultValue is not ParkGraphUpsertResultDto result)
         {
-            return SsrPageCacheInvalidationRequest.AllCaches();
+            return BuildAllPageCachesWithoutSeoDocuments();
         }
 
         IReadOnlyCollection<ParkGraphUpsertChangeDto> changedEntities = result.Changes
@@ -413,7 +413,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
 
         if (changedEntities.Count > MaxTargetedEntityCount)
         {
-            return SsrPageCacheInvalidationRequest.AllCaches();
+            return BuildLargeParkGraphUpsertRequest(result);
         }
 
         HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
@@ -496,8 +496,29 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             AddDiscoveryPaths(paths);
         }
 
-        SsrPageCacheInvalidationRequest request = BuildRequest(paths, prefixes, includeSeoDocuments);
+        SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildRequest(paths, prefixes, includeSeoDocuments: false));
         return requiresHardPurge ? ForceHardPurge(request) : request;
+    }
+
+    private static SsrPageCacheInvalidationRequest BuildLargeParkGraphUpsertRequest(ParkGraphUpsertResultDto result)
+    {
+        HashSet<string> parkIds = new HashSet<string>(StringComparer.Ordinal);
+        AddNonEmpty(parkIds, result.TargetParkId);
+        if (parkIds.Count == 0)
+        {
+            return BuildAllPageCachesWithoutSeoDocuments();
+        }
+
+        HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
+        HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
+        AddParkPrefixes(prefixes, parkIds);
+        AddDiscoveryPaths(paths);
+        return ForceHardPurge(BuildRequest(paths, prefixes, includeSeoDocuments: false));
+    }
+
+    private static SsrPageCacheInvalidationRequest BuildAllPageCachesWithoutSeoDocuments()
+    {
+        return ForceHardPurge(BuildRequest(Array.Empty<string>(), new[] { "/" }, includeSeoDocuments: false));
     }
 
     private async Task<bool> AddParkItemImpactAsync(
