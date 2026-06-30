@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-06-30-r1**  
+Version : **2026-06-30-r3**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -17,6 +17,34 @@ Chaque réponse doit produire un seul livrable principal :
 - soit une analyse de blocage ;
 - soit un JSON upsert borné pour l’étape en cours ;
 - soit une checklist de validation si l’étape ne nécessite pas encore de JSON.
+
+Quand le livrable principal est un JSON upsert, le JSON doit être fourni sous forme de fichier `.json` téléchargeable, pas comme un long bloc texte à copier-coller. La réponse visible doit seulement résumer le contenu du fichier, les sources, les limites et la suite. Si l’interface ne permet pas de joindre un fichier, ne pas contourner en collant tout le JSON : prévenir l’utilisateur et demander explicitement le format de secours souhaité.
+
+Nommer les fichiers de façon lisible et traçable, par exemple `park-slug-step-03-items-lot-1-YYYYMMDD.json`.
+
+## Règle de parcours strict
+
+Le parcours officiel est uniquement celui défini ci-dessous, de l’étape 0 à l’étape 8. Ne jamais inventer une nouvelle étape, renommer une étape, insérer une étape intermédiaire, fusionner deux étapes ou réordonner le parcours pendant l’intégration d’un parc.
+
+Quand l’utilisateur demande `Go étape N`, lire l’orchestrateur puis le fichier exact de l’étape N, et produire seulement le livrable de cette étape. Ne pas recommencer une étape précédente, ne pas anticiper une étape future et ne pas remplacer l’étape demandée par un découpage jugé plus logique.
+
+Les références ne forment pas une étape autonome :
+
+- les fondateurs et exploitants nécessaires à la fiche parc se traitent à l’étape 1 ;
+- les constructeurs nécessaires aux parkItems se traitent à l’étape 3 ;
+- les biographies de références et les images de références se traitent à l’étape 5 ou dans un lot de descriptions prévu par l’étape 4 ;
+- les références utiles à l’histoire se réutilisent à l’étape 7, sans créer un nouveau bloc de workflow.
+
+Si une information utile à l’étape demandée exige une référence, résoudre cette référence dans le JSON de l’étape en cours ou vérifier qu’elle existe déjà dans l’export. Ne pas créer une étape “références” ou “pré-références”.
+
+Si la prochaine étape officielle semble peu pertinente pour le parc en cours, ne pas la sauter seul. À la fin de l’étape en cours, ajouter une section `Pertinence de la prochaine étape` avec :
+
+- le numéro et le nom de la prochaine étape officielle ;
+- un statut clair : `utile`, `probablement inutile` ou `à décider` ;
+- la raison concrète liée au parc et aux sources ;
+- la décision attendue de l’utilisateur : continuer cette étape, la sauter, ou demander un complément.
+
+Si la prochaine étape officielle est `probablement inutile`, continuer l’analyse de proche en proche jusqu’à identifier la prochaine étape officielle `utile` ou `à décider`. Lister brièvement chaque étape intermédiaire jugée peu pertinente et pourquoi. Ne pas exécuter ni sauter automatiquement ces étapes : l’utilisateur tranche.
 
 ## Règles anti-saturation
 
@@ -55,6 +83,31 @@ Utiliser le mode `merge` sauf demande contraire. Sélectionner aussi le parc cib
 Ajouter seulement les sections utiles à l’étape : `references`, `park`, `zones`, `items`, `images`, `openingHours`, `history`.
 
 Les textes localisés des upserts actuels utilisent les codes courts présents dans les exports : `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `pt`. Si un export existant utilise une autre forme, garder la forme déjà présente.
+
+## Règle de résolution des clés
+
+Avant de livrer un fichier JSON upsert, vérifier toutes les clés de rattachement :
+
+- `zoneKey` ;
+- `manufacturerKey` ;
+- `operatorKey` ;
+- `founderKey` ;
+- `ownerKey` ;
+- `itemKey` ;
+- `imageKey`.
+
+Chaque clé utilisée doit être résolue par l’une de ces deux voies :
+
+- la clé existe déjà clairement dans l’export actualisé fourni par l’utilisateur ;
+- la clé est créée dans le même JSON, dans la section adaptée (`references`, `zones`, `items`, `images`).
+
+Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `manufacturerKey`, `operatorKey`, `founderKey`, `zoneKey`, `itemKey` ou `ownerKey` si l’export ne prouve pas que cette valeur est bien la clé attendue. Pour les constructeurs, `manufacturerKey` doit correspondre exactement à une clé de `references.manufacturers` créée dans le même JSON ou déjà présente dans l’export. Une alerte du type “ManufacturerKey non résolue” n’est jamais acceptable dans un livrable final : corriger le JSON et régénérer le fichier avant de le livrer.
+
+Si une clé ne peut pas être résolue :
+
+- créer la référence minimale dans le même JSON si elle est fiable ;
+- sinon retirer le rattachement incertain ;
+- sinon livrer une analyse de blocage, pas un JSON qui produira une alerte prévisible.
 
 ## Parcours recommandé
 
@@ -142,6 +195,8 @@ Une étape est terminée seulement quand :
 
 Si l’export montre une divergence avec le JSON précédent, l’export gagne. Ne pas réutiliser un ancien `id`, `zoneKey`, `manufacturerKey`, `itemKey` ou `imageKey` qui n’existe plus dans l’état actualisé.
 
+Le passage à l’étape suivante se fait seulement après validation utilisateur. Même si une étape semble inutile pour le parc, la décision appartient à l’utilisateur après lecture de la section `Pertinence de la prochaine étape`.
+
 ## Règles de recherche
 
 - Utiliser les sources officielles quand elles existent.
@@ -172,7 +227,13 @@ Avant de livrer un JSON, appliquer le fichier d’étape concerné et les règle
 
 La réponse doit indiquer clairement :
 
-- l’étape traitée ;
+- `Étape traitée` ;
+- `Livrable`, avec le nom du fichier `.json` téléchargeable quand un upsert est généré ;
 - les sources utilisées ou les limites de source ;
-- ce qui est volontairement laissé de côté pour l’étape suivante ;
-- les points nécessitant relecture humaine.
+- `Ce qui reste volontairement hors étape` ;
+- les points nécessitant relecture humaine ;
+- `Pertinence de la prochaine étape`.
+
+La section `Ce qui reste volontairement hors étape` doit expliquer ce qui est reporté parce que cela appartient à une étape officielle future. Elle ne doit pas proposer un nouveau découpage.
+
+Ne pas coller le JSON complet dans la réponse visible quand un fichier téléchargeable a été généré. Un court extrait ou un résumé des sections incluses suffit.

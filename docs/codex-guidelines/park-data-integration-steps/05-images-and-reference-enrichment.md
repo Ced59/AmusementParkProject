@@ -75,6 +75,8 @@ Utiliser :
 
 Si le propriétaire ne peut pas être résolu, ne pas inclure l’image.
 
+Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `ownerKey` si l’export ne prouve pas que cette valeur est acceptée. Pour un parkItem, `ownerKey` doit correspondre à la clé ou à l’identifiant réellement attendu par l’import selon l’export et le modèle du JSON. En cas de doute, ne pas inclure l’image et signaler le blocage.
+
 ## Métadonnées image
 
 Chaque image doit avoir, si possible :
@@ -105,6 +107,8 @@ Les biographies doivent être génériques et réutilisables. Ne pas écrire une
 Pour les constructeurs majeurs, une bonne biographie peut couvrir l’origine, la période d’activité, les spécialités, les modèles marquants, l’influence dans l’industrie et des exemples connus. Pour une source limitée, rester prudent et plus court plutôt que remplir.
 
 Ne pas modifier une biographie déjà validée explicitement, notamment Vekoma, sauf demande directe.
+
+Ne pas transformer ces enrichissements en étape autonome. Cette étape 5 est le bloc prévu pour compléter les références déjà nécessaires au parc, aux parkItems ou aux images. Si une référence minimale manque parce qu’elle aurait dû être créée à l’étape 1 ou 3, la résoudre ici seulement si elle est indispensable au livrable d’images ou de biographies, et signaler l’écart dans `metadata.notes`.
 
 ## JSON attendu
 
@@ -164,3 +168,5 @@ Sections possibles :
 ## Après Apply
 
 Demander l’export actualisé pour récupérer les IDs d’images avant de les référencer dans l’histoire.
+
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 6 — Horaires et événements nommés. Si aucun calendrier fiable n’existe ou si le parc est fermé sans horaires utiles, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 6 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, puis attendre la décision utilisateur.

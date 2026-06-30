@@ -1,6 +1,20 @@
 {
-  "version": "3.1.10",
+  "version": "3.1.11",
   "history": [
+    {
+      "version": "3.1.11",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les consignes d’import de parcs sont plus sûres.",
+        "en": "Park import guidance is safer.",
+        "de": "Die Anleitung zum Parkimport ist sicherer.",
+        "nl": "De begeleiding voor parkinvoer is veiliger.",
+        "it": "Le istruzioni per importare i parchi sono più sicure.",
+        "es": "Las pautas de importación de parques son más seguras.",
+        "pl": "Wskazówki importu parków są bezpieczniejsze.",
+        "pt": "As orientações de importação de parques ficam mais seguras."
+      }
+    },
     {
       "version": "3.1.10",
       "releasedAt": "2026-06-30",

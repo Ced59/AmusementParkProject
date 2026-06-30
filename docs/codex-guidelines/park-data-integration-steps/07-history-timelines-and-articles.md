@@ -196,3 +196,5 @@ Section principale : `history.events`.
 ## Après Apply
 
 Demander l’export actualisé avant de créer le lot historique suivant ou avant l’audit final.
+
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 8 — Audit final. L’audit final reste utile dès qu’un JSON a été appliqué, même si certains enrichissements ont été volontairement sautés. Si l’étape 8 est exceptionnellement jugée `probablement inutile`, expliquer pourquoi et rappeler qu’elle est normalement le point de contrôle final du parcours. Attendre la validation utilisateur avant de continuer.

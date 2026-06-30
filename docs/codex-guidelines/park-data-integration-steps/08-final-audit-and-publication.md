@@ -96,3 +96,5 @@ Produire :
 - ou une décision “prêt pour publication” avec risques résiduels.
 
 Ne pas ouvrir un nouveau chantier de fond à cette étape. Les améliorations non bloquantes deviennent des lots séparés.
+
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` et indiquer qu’aucune étape officielle ne suit l’étape 8. Dire que le parcours 0 à 8 est terminé ou lister les corrections ciblées restantes. Ne pas proposer une nouvelle étape de workflow : si une correction appartient à une étape déjà parcourue, la nommer comme reprise ciblée de cette étape.

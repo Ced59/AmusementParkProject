@@ -24,7 +24,17 @@ Utiliser l’export initial ou l’export actualisé fourni par l’utilisateur.
 - Fondateur si fiable.
 - Exploitant actuel ou dernier exploitant si le parc est fermé.
 - Coordonnées GPS du parc ou de l’entrée principale.
-- Logo officiel seulement si l’image directe est disponible et fiable.
+- Logo officiel seulement si l’image est techniquement importable et fiable.
+
+## Références incluses dans cette étape
+
+Cette étape inclut les références nécessaires à la fiche parc. Ne pas créer une étape séparée pour les références.
+
+- Si un `founderKey` est utilisé dans `park`, créer ou corriger la référence dans `references.founders`, sauf si elle existe déjà sûrement dans l’export actualisé.
+- Si un `operatorKey` est utilisé dans `park`, créer ou corriger la référence dans `references.operators`, sauf si elle existe déjà sûrement dans l’export actualisé.
+- Ne jamais utiliser un UUID, un ID interne ou un nom approximatif comme `founderKey` ou `operatorKey` si l’export ne prouve pas que c’est bien la clé attendue.
+- Ne pas ajouter ici les constructeurs liés aux parkItems : ils appartiennent à l’étape 3, ou à l’étape 5 pour l’enrichissement de référence.
+- Ne pas rédiger de biographies longues ici sauf besoin minimal de désambiguïsation. Les biographies publiques complètes appartiennent à l’étape 4 ou 5 selon le lot.
 
 ## Règles dates
 
@@ -50,7 +60,7 @@ Sections possibles :
 - `park`
 - `references.founders`
 - `references.operators`
-- `images` pour le logo uniquement si l’URL est directe
+- `images` pour le logo uniquement si l’URL respecte les règles techniques de l’étape 5
 
 Exemple de forme :
 
@@ -93,9 +103,12 @@ Exemple de forme :
 - La date complète n’est utilisée que si elle est sûre.
 - Les coordonnées pointent sur le parc ou l’entrée principale, pas sur une ville.
 - Le fondateur et l’exploitant ne sont pas confondus.
+- Les `founderKey` et `operatorKey` utilisés sont résolus dans le même JSON ou déjà présents dans l’export.
 - Les descriptions longues ne sont pas forcées dans cette étape si elles risquent de saturer le lot.
 - Le parc reste masqué tant que les données publiques ne sont pas prêtes, sauf demande explicite.
 
 ## Après Apply
 
 Demander l’export actualisé avant de passer aux zones.
+
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 2 — Zones. Si aucune zone officielle ou clairement établie n’existe, indiquer `probablement inutile` avec la raison, puis appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. Attendre la décision utilisateur : ne pas passer directement à l’étape 3 sans accord.
