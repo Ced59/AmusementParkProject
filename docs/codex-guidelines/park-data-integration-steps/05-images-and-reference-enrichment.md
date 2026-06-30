@@ -1,0 +1,130 @@
+# Étape 5 — Images et enrichissement des références
+
+Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou constructeurs sans créer de doublons ni d’images indirectes.
+
+## Lire avant de commencer
+
+- `park-graph-upsert-json-guideline-r10.md`
+- `description-guidelines-r2.md` pour les biographies et descriptions de références
+
+## Export requis
+
+Utiliser l’export actualisé après les items et descriptions concernés. Les `ownerKey` doivent correspondre aux clés déjà présentes ou aux références créées dans le même JSON.
+
+## Images acceptées
+
+Une image externe doit être :
+
+- un fichier image direct ;
+- téléchargeable ;
+- fidèle au parc ou à l’item ;
+- créditable ;
+- sans watermark non autorisé, sauf logo officiel ;
+- issue d’une source fiable ou librement exploitable selon le contexte du projet.
+
+Refuser :
+
+- page HTML ;
+- preview ;
+- miniature indirecte ;
+- proxy CDN ;
+- URL `cdn-cgi/image` ;
+- URL encodée avec transformations ;
+- image générique ;
+- image dont l’élément représenté est douteux.
+
+## Propriétaires d’images
+
+Utiliser :
+
+- `ownerKey: "park"` pour le parc ;
+- `ownerType: "ParkItem"` avec `ownerKey` d’item pour un parkItem ;
+- `ownerKey: "manufacturer:key"` pour un constructeur ;
+- `ownerKey: "operator:key"` pour un exploitant ;
+- `ownerKey: "founder:key"` pour un fondateur.
+
+Si le propriétaire ne peut pas être résolu, ne pas inclure l’image.
+
+## Métadonnées image
+
+Chaque image doit avoir, si possible :
+
+- `key` ;
+- `sourceUrl` ;
+- `ownerKey` ou `ownerType` + `ownerKey` ;
+- `category` ;
+- `isPublished` ;
+- `withWatermark` ;
+- `setAsCurrent` si elle doit devenir logo ou image principale ;
+- `description` interne courte ;
+- `altTexts`, `captions`, `credits` dans les 8 langues quand l’image est publique.
+
+## Références à enrichir
+
+Enrichir seulement les références utiles :
+
+- constructeurs réellement liés à des items ;
+- exploitants du parc ;
+- fondateurs documentés ;
+- propriétaires si le modèle ou le contexte les prend en charge.
+
+Les biographies doivent être génériques et réutilisables. Ne pas écrire une bio de constructeur centrée uniquement sur le parc en cours.
+
+## JSON attendu
+
+Sections possibles :
+
+- `images`
+- `references.founders`
+- `references.operators`
+- `references.manufacturers`
+
+```json
+{
+  "documentType": "AmusementParkParkGraphUpsert",
+  "schemaVersion": "2026-06-30",
+  "mode": "merge",
+  "metadata": {
+    "source": "codex-images-references",
+    "targetParkId": "id-du-parc",
+    "targetParkName": "Nom du parc",
+    "step": "05-images",
+    "notes": "Images Wikimedia Commons directes avec crédits localisés."
+  },
+  "identity": {
+    "parkId": "id-du-parc",
+    "name": "Nom du parc"
+  },
+  "images": [
+    {
+      "key": "park-main-image",
+      "sourceUrl": "https://upload.wikimedia.org/example/image.jpg",
+      "ownerKey": "park",
+      "category": "Park",
+      "isPublished": true,
+      "withWatermark": false,
+      "setAsCurrent": true,
+      "description": "Vue du parc - source et licence.",
+      "altTexts": [
+        { "languageCode": "fr", "value": "Vue du parc." }
+      ],
+      "credits": [
+        { "languageCode": "fr", "value": "Photo : auteur, source, licence." }
+      ]
+    }
+  ]
+}
+```
+
+## Contrôles avant livraison
+
+- Toutes les URLs images sont directes.
+- Tous les propriétaires sont résolus.
+- Les crédits sont lisibles pour un visiteur.
+- Les logos ne sont pas confondus avec des photos.
+- Les images historiques ne prétendent pas montrer une date ou un état qu’elles ne montrent pas.
+- Les biographies ne créent pas de doublons de références.
+
+## Après Apply
+
+Demander l’export actualisé pour récupérer les IDs d’images avant de les référencer dans l’histoire.

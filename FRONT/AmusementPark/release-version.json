@@ -1,6 +1,20 @@
 {
-  "version": "3.1.8",
+  "version": "3.1.9",
   "history": [
+    {
+      "version": "3.1.9",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "L’intégration des données de parcs est mieux guidée.",
+        "en": "Park data integration is easier to guide.",
+        "de": "Die Integration von Parkdaten ist besser geführt.",
+        "nl": "Het invoeren van parkgegevens is beter begeleid.",
+        "it": "L’integrazione dei dati dei parchi è più guidata.",
+        "es": "La integración de datos de parques está mejor guiada.",
+        "pl": "Dodawanie danych parków jest lepiej prowadzone.",
+        "pt": "A integração dos dados dos parques fica mais orientada."
+      }
+    },
     {
       "version": "3.1.8",
       "releasedAt": "2026-06-30",

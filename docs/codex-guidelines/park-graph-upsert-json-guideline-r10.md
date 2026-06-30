@@ -7,6 +7,8 @@ Portée : Park Graph Upsert, références, images, historiques, dates, horaires 
 
 Ce document donne à Codex les règles à appliquer avant de générer, corriger ou enrichir un JSON upsert.
 
+Pour une intégration complète de parc, commencer par `park-data-integration-orchestrator.md`, puis revenir à cette guideline avant chaque JSON upsert.
+
 ---
 
 ## 1. Règle bloquante absolue : vérifier la pertinence avant tout
@@ -264,16 +266,27 @@ Les biographies doivent être assez longues pour les acteurs majeurs et traduite
 
 ## 13. Multilingue
 
-Quand un enrichissement complet est demandé, prévoir les langues :
+Quand un enrichissement complet est demandé, prévoir les 8 langues publiques :
 
-- `fr-FR` ;
-- `en-US` ;
-- `es-ES` ;
-- `de-DE` ;
-- `it-IT` ;
-- `nl-NL` ;
-- `pt-PT` ;
-- `pl-PL`.
+- français ;
+- anglais ;
+- espagnol ;
+- allemand ;
+- italien ;
+- néerlandais ;
+- portugais ;
+- polonais.
+
+Dans les JSON upsert actuels, reprendre les codes `languageCode` présents dans l’export du parc. La forme courte généralement utilisée est :
+
+- `fr` ;
+- `en` ;
+- `es` ;
+- `de` ;
+- `it` ;
+- `nl` ;
+- `pt` ;
+- `pl`.
 
 Les traductions doivent être naturelles, pas mécaniques.
 

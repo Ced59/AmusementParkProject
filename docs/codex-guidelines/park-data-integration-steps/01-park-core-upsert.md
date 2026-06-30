@@ -1,0 +1,92 @@
+# Étape 1 — Infos générales du parc
+
+Objectif : créer ou corriger la fiche parc minimale fiable avant tout enrichissement lourd.
+
+## Lire avant de commencer
+
+- `park-graph-upsert-json-guideline-r10.md`
+- `00-intake-and-export.md`
+
+## Export requis
+
+Utiliser l’export initial ou l’export actualisé fourni par l’utilisateur. Si l’export manque, le demander avant de générer le JSON.
+
+## Données à rechercher
+
+- Nom officiel actuel.
+- Anciens noms importants si utiles pour l’histoire, pas forcément dans cette étape.
+- Pays, ville, adresse et site officiel.
+- Type de parc.
+- Statut : en activité, fermé définitivement ou autre statut réellement supporté.
+- Date d’ouverture.
+- Date de fermeture si le parc est fermé.
+- Précisions textuelles si seule l’année ou le mois est fiable.
+- Fondateur si fiable.
+- Exploitant actuel ou dernier exploitant si le parc est fermé.
+- Coordonnées GPS du parc ou de l’entrée principale.
+- Logo officiel seulement si l’image directe est disponible et fiable.
+
+## Règles dates
+
+- Utiliser `openingDate` ou `closingDate` seulement avec une date complète fiable au format `YYYY-MM-DD`.
+- Si seule l’année ou le mois est fiable, utiliser `openingDateText` ou `closingDateText`.
+- Ne pas inventer `01-01` ou le premier jour d’un mois pour rendre une date compatible.
+- Pour un parc disparu, conserver la visibilité si le parc est pertinent historiquement, mais garder `adminReviewStatus: "ToReview"` tant que la fiche n’est pas auditée.
+
+## JSON attendu
+
+Sections possibles :
+
+- `identity`
+- `park`
+- `references.founders`
+- `references.operators`
+- `images` pour le logo uniquement si l’URL est directe
+
+Exemple de forme :
+
+```json
+{
+  "documentType": "AmusementParkParkGraphUpsert",
+  "schemaVersion": "2026-06-30",
+  "mode": "merge",
+  "metadata": {
+    "source": "codex-park-core",
+    "targetParkName": "Nom du parc",
+    "step": "01-park-core",
+    "notes": "Dates vérifiées sur le site officiel et une source historique."
+  },
+  "identity": {
+    "parkId": "id-si-connu",
+    "name": "Nom du parc",
+    "countryCode": "FR"
+  },
+  "park": {
+    "name": "Nom du parc",
+    "countryCode": "FR",
+    "type": "ThemePark",
+    "status": "Operating",
+    "openingDate": "1992-04-12",
+    "openingDateText": null,
+    "websiteUrl": "https://example.com",
+    "city": "Ville",
+    "latitude": 48.123456,
+    "longitude": 2.123456,
+    "isVisible": false,
+    "adminReviewStatus": "ToReview"
+  }
+}
+```
+
+## Contrôles avant livraison
+
+- Le parc est pertinent.
+- La date complète n’est utilisée que si elle est sûre.
+- Les coordonnées pointent sur le parc ou l’entrée principale, pas sur une ville.
+- Le fondateur et l’exploitant ne sont pas confondus.
+- Les descriptions longues ne sont pas forcées dans cette étape si elles risquent de saturer le lot.
+- Le parc reste masqué tant que les données publiques ne sont pas prêtes, sauf demande explicite.
+
+## Après Apply
+
+Demander l’export actualisé avant de passer aux zones.
