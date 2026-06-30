@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { HistoryTimeline } from '@app/models/history/history.models';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
@@ -17,6 +18,7 @@ import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { PagedResult } from '@shared/models/contracts';
 import {
+  PARK_ITEM_DETAIL_HISTORY_PORT,
   PARK_ITEM_DETAIL_IMAGES_PORT,
   PARK_ITEM_DETAIL_ITEMS_PORT,
   PARK_ITEM_DETAIL_MANUFACTURERS_PORT,
@@ -24,6 +26,7 @@ import {
   PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT,
   PARK_ITEM_DETAIL_VIDEOS_PORT,
   PARK_ITEM_DETAIL_ZONES_PORT,
+  ParkItemDetailHistoryPort,
   ParkItemDetailImagesPort,
   ParkItemDetailItemsPort,
   ParkItemDetailManufacturersPort,
@@ -115,6 +118,16 @@ class FakeTechnicalPagesPort implements ParkItemDetailTechnicalPagesPort {
   getPublicLinkIndex(): Observable<TechnicalPage[]> {
     this.callCount += 1;
     return this.response$;
+  }
+}
+
+class FakeHistoryPort implements ParkItemDetailHistoryPort {
+  public timelineResponse$: Observable<HistoryTimeline> = of(createHistoryTimeline(0));
+  public readonly calls: string[] = [];
+
+  getParkItemTimeline(parkItemId: string): Observable<HistoryTimeline> {
+    this.calls.push(parkItemId);
+    return this.timelineResponse$;
   }
 }
 
@@ -269,6 +282,53 @@ function createVideosPage(totalItems: number): PagedResult<VideoDto> {
   };
 }
 
+function createHistoryTimeline(totalEvents: number): HistoryTimeline {
+  return {
+    entityType: 'ParkItem',
+    park: createPark(),
+    parkItem: createParkItem(),
+    includedParkItems: [],
+    events: totalEvents > 0 ? [{
+      event: {
+        id: 'history-event-1',
+        key: 'item-opening',
+        entityType: 'ParkItem',
+        ownerId: 'item-1',
+        parkId: 'park-1',
+        parkItemId: 'item-1',
+        contextParkId: 'park-1',
+        year: 2016,
+        month: null,
+        day: null,
+        datePrecision: 'Year',
+        eventType: 'Opening',
+        isMajor: false,
+        isVisible: true,
+        slug: 'item-opening',
+        titles: [],
+        summaries: [],
+        mainImageId: null,
+        previousName: null,
+        newName: null,
+        previousLogoImageId: null,
+        newLogoImageId: null,
+        previousOperatorId: null,
+        newOperatorId: null,
+        locationLabel: null,
+        relatedParkIds: ['park-1'],
+        relatedParkItemIds: [],
+        sources: [],
+        article: null,
+        createdAtUtc: '2026-01-01T00:00:00Z',
+        updatedAtUtc: '2026-01-01T00:00:00Z'
+      },
+      contextPark: createPark(),
+      parkItem: createParkItem(),
+      mainImage: null
+    }] : []
+  };
+}
+
 function createSiblingNavigation(): ParkItemSiblingNavigation {
   return {
     parkId: 'park-1',
@@ -290,6 +350,7 @@ function configureFacade(): {
   imagesPort: FakeImagesPort;
   videosPort: FakeVideosPort;
   technicalPagesPort: FakeTechnicalPagesPort;
+  historyPort: FakeHistoryPort;
   ssrStatusService: FakeSsrHttpStatusService;
   ssrRuntimeService: FakeSsrRuntimeService;
 } {
@@ -300,6 +361,7 @@ function configureFacade(): {
   const imagesPort: FakeImagesPort = new FakeImagesPort();
   const videosPort: FakeVideosPort = new FakeVideosPort();
   const technicalPagesPort: FakeTechnicalPagesPort = new FakeTechnicalPagesPort();
+  const historyPort: FakeHistoryPort = new FakeHistoryPort();
   const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
   const ssrRuntimeService: FakeSsrRuntimeService = new FakeSsrRuntimeService();
 
@@ -313,6 +375,7 @@ function configureFacade(): {
       { provide: PARK_ITEM_DETAIL_IMAGES_PORT, useValue: imagesPort },
       { provide: PARK_ITEM_DETAIL_VIDEOS_PORT, useValue: videosPort },
       { provide: PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT, useValue: technicalPagesPort },
+      { provide: PARK_ITEM_DETAIL_HISTORY_PORT, useValue: historyPort },
       { provide: SsrHttpStatusService, useValue: ssrStatusService },
       { provide: SsrRuntimeService, useValue: ssrRuntimeService }
     ]
@@ -327,6 +390,7 @@ function configureFacade(): {
     imagesPort,
     videosPort,
     technicalPagesPort,
+    historyPort,
     ssrStatusService,
     ssrRuntimeService
   };
@@ -381,6 +445,7 @@ describe('ParkItemDetailStateFacade', () => {
       ownerType: VideoOwnerType.PARK_ITEM,
       ownerId: 'item-1'
     }]);
+    expect(context.historyPort.calls).toEqual(['item-1']);
     expect(context.technicalPagesPort.callCount).toBe(1);
   });
 
@@ -406,6 +471,16 @@ describe('ParkItemDetailStateFacade', () => {
     context.facade.loadItem('item-1');
 
     expect(context.facade.detail()?.videosLink).toBeNull();
+  });
+
+  it('exposes the park item history link when its timeline has events', () => {
+    const context = configureFacade();
+    context.historyPort.timelineResponse$ = of(createHistoryTimeline(1));
+
+    context.facade.setCurrentLanguage('fr');
+    context.facade.loadItem('item-1');
+
+    expect(context.facade.detail()?.historyLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-1', 'taron', 'history']);
   });
 
   it('sets SSR not found when the main item lookup returns 404', () => {

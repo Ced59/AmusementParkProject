@@ -1,6 +1,20 @@
 {
-  "version": "3.1.1",
+  "version": "3.1.2",
   "history": [
+    {
+      "version": "3.1.2",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les histoires sont plus faciles à retrouver.",
+        "en": "Histories are easier to find.",
+        "de": "Geschichten sind leichter zu finden.",
+        "nl": "Geschiedenissen zijn makkelijker te vinden.",
+        "it": "Le storie sono più facili da trovare.",
+        "es": "Las historias son más fáciles de encontrar.",
+        "pl": "Historie są łatwiejsze do znalezienia.",
+        "pt": "As histórias ficam mais fáceis de encontrar."
+      }
+    },
     {
       "version": "3.1.1",
       "releasedAt": "2026-06-30",

@@ -2,6 +2,7 @@ import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation, ParkItemSiblingNavigationItem } from '@app/models/parks/park-item-sibling-navigation';
 import {
+  buildPublicParkItemHistoryRouteCommands,
   buildPublicParkItemImagesRouteCommands,
   buildPublicParkItemRouteCommands,
   buildPublicParkItemVideosRouteCommands,
@@ -93,6 +94,16 @@ export function buildImagesLink(park: Park | null, item: ParkItem | null, curren
 
 export function buildVideosLink(park: Park | null, item: ParkItem | null, currentLanguage: string): string[] | null {
   return buildPublicParkItemVideosRouteCommands({
+    language: currentLanguage,
+    parkId: park?.id,
+    parkName: park?.name,
+    itemId: item?.id,
+    itemName: item?.name
+  });
+}
+
+export function buildHistoryLink(park: Park | null, item: ParkItem | null, currentLanguage: string): string[] | null {
+  return buildPublicParkItemHistoryRouteCommands({
     language: currentLanguage,
     parkId: park?.id,
     parkName: park?.name,

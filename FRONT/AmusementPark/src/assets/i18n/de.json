@@ -2698,7 +2698,8 @@
       "viewDetails": "Seite ansehen",
       "backToItems": "Zurück zu den Orten im Park",
       "backToPark": "Zurück zum Park",
-      "videos": "Videos"
+      "videos": "Videos",
+      "history": "Geschichte"
     },
     "filters": {
       "search": "Suchen",
@@ -3121,6 +3122,7 @@
       "backToList": "Zurück zur Liste",
       "images": "Bilder",
       "videos": "Videos",
+      "history": "Geschichte",
       "map": "Karte",
       "browseZones": "Alle Bereiche ansehen"
     },

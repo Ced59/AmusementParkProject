@@ -90,6 +90,7 @@ export interface ParkItemDetailViewModel {
   itemsLink: string[] | null;
   imagesLink: string[] | null;
   videosLink: string[] | null;
+  historyLink: string[] | null;
   siblingNavigation: ParkItemDetailSiblingNavigationViewModel | null;
   categoryNavigation: ParkItemDetailNavigationLinkViewModel | null;
   typeNavigation: ParkItemDetailNavigationLinkViewModel | null;
