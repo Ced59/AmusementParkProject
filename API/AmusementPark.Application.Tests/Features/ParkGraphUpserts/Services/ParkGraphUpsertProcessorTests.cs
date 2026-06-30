@@ -2,8 +2,9 @@
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
-using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -20,6 +21,7 @@ using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
@@ -30,6 +32,125 @@ namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Services;
 
 public sealed class ParkGraphUpsertProcessorTests
 {
+    [Fact]
+    public async Task ApplyAsync_WhenParkItemHistoryContainsExplicitExternalContext_ShouldNotAttachItToTargetPark()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        List<HistoryEvent> savedEvents = new List<HistoryEvent>();
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IHistoryEventRepository> historyEventRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        historyEventRepository
+            .Setup(value => value.GetByOwnerKeyAsync(HistoryEntityType.ParkItem, "item-1", It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((HistoryEvent?)null);
+        historyEventRepository
+            .Setup(value => value.CreateAsync(It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()))
+            .Callback<HistoryEvent, CancellationToken>((historyEvent, _) =>
+            {
+                historyEvent.Id = $"history-{savedEvents.Count + 1}";
+                savedEvents.Add(historyEvent);
+            })
+            .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance,
+            historyEventRepository: historyEventRepository.Object);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "historyEvents": [
+            {
+              "owner": "parkItem",
+              "ownerId": "item-1",
+              "key": "miralooping-mirapolis",
+              "eventType": "Opening",
+              "date": "1988-07"
+            },
+            {
+              "owner": "parkItem",
+              "ownerId": "item-1",
+              "key": "miralooping-spreepark",
+              "eventType": "RelocationArrival",
+              "date": "1992",
+              "contextParkId": null
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Empty(result.Value!.Errors);
+        Assert.Equal(2, savedEvents.Count);
+
+        HistoryEvent localEvent = Assert.Single(savedEvents, historyEvent => historyEvent.Key == "miralooping-mirapolis");
+        Assert.Equal("item-1", localEvent.ParkItemId);
+        Assert.Equal("park-1", localEvent.ContextParkId);
+
+        HistoryEvent externalEvent = Assert.Single(savedEvents, historyEvent => historyEvent.Key == "miralooping-spreepark");
+        Assert.Equal("item-1", externalEvent.ParkItemId);
+        Assert.Null(externalEvent.ContextParkId);
+        Assert.Null(externalEvent.ParkId);
+
+        parkRepository.VerifyAll();
+        historyEventRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
     [Fact]
     public async Task ApplyAsync_WhenItemIsCreated_ShouldKeepItHiddenAndToReview()
     {

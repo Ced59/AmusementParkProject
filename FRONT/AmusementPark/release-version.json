@@ -1,6 +1,20 @@
 {
-  "version": "3.1.0",
+  "version": "3.1.1",
   "history": [
+    {
+      "version": "3.1.1",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les histoires d’attractions restent bien rattachées à leur parcours.",
+        "en": "Attraction histories stay correctly tied to their journey.",
+        "de": "Attraktionsgeschichten bleiben korrekt mit ihrem Verlauf verbunden.",
+        "nl": "Attractiegeschiedenissen blijven correct aan hun verloop gekoppeld.",
+        "it": "Le storie delle attrazioni restano collegate correttamente al loro percorso.",
+        "es": "Las historias de atracciones quedan bien vinculadas a su recorrido.",
+        "pl": "Historie atrakcji pozostają poprawnie powiązane z ich przebiegiem.",
+        "pt": "As histórias das atrações ficam bem ligadas ao seu percurso."
+      }
+    },
     {
       "version": "3.1.0",
       "releasedAt": "2026-06-30",
