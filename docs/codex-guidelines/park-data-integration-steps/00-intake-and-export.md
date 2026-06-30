@@ -42,20 +42,22 @@ Classer le parc en niveau de profondeur :
 
 Un parc majeur ne doit jamais être traité comme une fiche minimale si les sources permettent mieux. Il doit être planifié pour recevoir descriptions longues, zones officielles, parkItems principaux et secondaires, restaurants, boutiques, services, hôtels, parkings, exploitants, fondateurs, constructeurs, images, horaires et histoire.
 
-## Plan de lots recommandé
+## Plan de sous-lots recommandé
 
-Pour un parc majeur, préparer ces lots :
+Pour un parc majeur, préparer des sous-lots à l’intérieur des étapes officielles. Cette liste aide à éviter la saturation, mais ne remplace jamais le parcours 0 à 8 de l’orchestrateur.
 
-1. Infos générales du parc.
-2. Zones officielles.
-3. Inventaire parkItems par zone ou famille.
-4. Descriptions du parc et des zones.
-5. Descriptions des parkItems par petits lots.
-6. Images et logos.
-7. Horaires et exceptions datées.
-8. Histoire du parc.
-9. Histoire des parkItems majeurs.
-10. Audit final.
+Exemples de sous-lots possibles :
+
+- étape 1 : fiche parc et références fondateurs/exploitants nécessaires ;
+- étape 2 : zones officielles, éventuellement par groupe si le parc est très grand ;
+- étape 3 : inventaire parkItems par zone ou famille ;
+- étape 4 : descriptions du parc, des zones, puis des parkItems par petits lots ;
+- étape 5 : images, logos et enrichissement de références ;
+- étape 6 : horaires et exceptions datées ;
+- étape 7 : histoire du parc, puis histoire des parkItems majeurs ;
+- étape 8 : audit final.
+
+Ne pas proposer une étape nouvelle. Si un sujet semble manquer, le rattacher à l’étape officielle où il appartient et expliquer ce rattachement.
 
 ## Règle d’export
 
@@ -76,7 +78,11 @@ Produire une réponse courte avec :
 - décision de pertinence ;
 - niveau de traitement ;
 - sources prioritaires à consulter ;
-- découpage de lots ;
-- prochaine étape à exécuter.
+- découpage de sous-lots dans les étapes officielles ;
+- prochaine étape officielle à exécuter ;
+- pertinence de la prochaine étape ;
+- si la prochaine étape officielle est probablement inutile, prochaine étape officielle jugée utile ou à décider, trouvée de proche en proche.
 
 Ne pas produire de JSON upsert massif à l’étape 0.
+
+À la fin de l’étape 0, la prochaine étape officielle est toujours l’étape 1. Si le parc est pertinent, dire si l’étape 1 est `utile`, `probablement inutile` ou `à décider`, avec la raison. Si elle est jugée `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, sans exécuter ni sauter d’étape sans validation utilisateur. Ne pas inventer une étape préparatoire avant l’étape 1.

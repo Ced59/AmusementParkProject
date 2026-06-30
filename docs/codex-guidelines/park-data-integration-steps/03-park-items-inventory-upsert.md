@@ -75,9 +75,21 @@ Pour chaque item :
 
 Si un `manufacturerKey` est utilisé, la référence doit être résolue dans le même JSON ou déjà exister sûrement dans l’export.
 
+`manufacturerKey` doit être une clé de constructeur, pas un UUID deviné ni un ID interne copié sans preuve. Si l’export ne montre pas clairement la clé existante du constructeur, créer une entrée minimale dans `references.manufacturers` avec une `key` stable et réutiliser exactement cette même valeur dans `attractionDetails.manufacturerKey`.
+
+Avant de livrer le fichier JSON, faire un contrôle croisé simple :
+
+- lister toutes les valeurs `attractionDetails.manufacturerKey` utilisées dans les items du lot ;
+- vérifier que chaque valeur existe dans `references.manufacturers[].key` du même JSON ou dans les constructeurs de l’export actualisé ;
+- corriger le fichier si une valeur manque.
+
+Une alerte Preview du type `ManufacturerKey non résolue` indique une erreur de livrable. Ne pas demander à l’utilisateur de l’appliquer quand même : corriger le JSON et fournir un nouveau fichier téléchargeable.
+
 Ne pas créer un constructeur doublon. Si un constructeur semble déjà présent sous un nom proche, documenter le doute dans `metadata.notes`.
 
 Ne pas créer `Anton Schwarzkopf` si une fiche `Schwarzkopf` doit plutôt être utilisée, renommée ou fusionnée. Ne pas modifier une biographie déjà validée explicitement, notamment Vekoma, sauf demande directe.
+
+Ne pas créer une étape séparée pour les constructeurs. Les références minimales de constructeurs nécessaires aux parkItems appartiennent à cette étape. Les biographies, images et enrichissements plus longs appartiennent à l’étape 5 ou à un lot de descriptions prévu par l’étape 4.
 
 ## JSON attendu
 
@@ -136,7 +148,7 @@ Sections possibles :
 
 - Aucun doublon évident avec l’export.
 - Toutes les `zoneKey` sont résolues.
-- Toutes les `manufacturerKey` sont résolues.
+- Toutes les `manufacturerKey` sont résolues par l’export actualisé ou par `references.manufacturers` dans le même JSON.
 - Les dates sont exactes ou restent textuelles.
 - Les anciens items importants ne sont pas supprimés.
 - Les items sans source fiable restent absents ou `ToReview`.
@@ -144,3 +156,5 @@ Sections possibles :
 ## Après Apply
 
 Demander l’export actualisé avant de rédiger les descriptions longues.
+
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 4 — Descriptions longues localisées. Si le parc est très mineur ou trop peu documenté pour des textes longs, indiquer `à décider` ou `probablement inutile` avec la raison. Si l’étape 4 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, puis attendre la décision utilisateur.

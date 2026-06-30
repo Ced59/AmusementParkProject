@@ -169,3 +169,5 @@ Sections possibles :
 ## Après Apply
 
 Demander l’export actualisé avant le lot de descriptions suivant ou avant les images.
+
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 5 — Images et références. Si aucune image fiable, créditable ou techniquement importable n’a été trouvée, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 5 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, puis attendre la décision utilisateur.
