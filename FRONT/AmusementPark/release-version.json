@@ -1,6 +1,20 @@
 {
-  "version": "3.1.7",
+  "version": "3.1.8",
   "history": [
+    {
+      "version": "3.1.8",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les mises en ligne supportent mieux les accès serveur transitoires.",
+        "en": "Site updates handle temporary server access issues better.",
+        "de": "Aktualisierungen kommen besser mit kurzzeitigen Serverzugriffen zurecht.",
+        "nl": "Site-updates gaan beter om met tijdelijke servertoegang.",
+        "it": "Gli aggiornamenti del sito gestiscono meglio gli accessi server temporanei.",
+        "es": "Las actualizaciones del sitio gestionan mejor los accesos temporales al servidor.",
+        "pl": "Aktualizacje strony lepiej obsługują chwilowy dostęp do serwera.",
+        "pt": "As atualizações do site lidam melhor com acessos temporários ao servidor."
+      }
+    },
     {
       "version": "3.1.7",
       "releasedAt": "2026-06-30",

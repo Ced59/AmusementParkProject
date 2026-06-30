@@ -482,7 +482,32 @@ jobs:
           chmod 700 ~/.ssh
           printf '%s\n' "${VPS_SSH_PRIVATE_KEY}" > ~/.ssh/amusementpark_deploy_key
           chmod 600 ~/.ssh/amusementpark_deploy_key
-          ssh-keyscan -p "${VPS_SSH_PORT}" "${VPS_HOST}" >> ~/.ssh/known_hosts
+          touch ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+          max_attempts=4
+          scan_succeeded=false
+          for attempt in $(seq 1 "${max_attempts}"); do
+            echo "Scanning SSH host key, attempt ${attempt}/${max_attempts}."
+            scan_output="$(mktemp)"
+            if ssh-keyscan -T 10 -p "${VPS_SSH_PORT}" "${VPS_HOST}" > "${scan_output}" 2>/dev/null && [ -s "${scan_output}" ]; then
+              cat "${scan_output}" >> ~/.ssh/known_hosts
+              rm -f "${scan_output}"
+              sort -u ~/.ssh/known_hosts -o ~/.ssh/known_hosts
+              scan_succeeded=true
+              break
+            fi
+
+            rm -f "${scan_output}"
+            if [ "${attempt}" -lt "${max_attempts}" ]; then
+              sleep $((attempt * 5))
+            fi
+          done
+
+          if [ "${scan_succeeded}" != "true" ]; then
+            echo "::error::Unable to scan SSH host key after ${max_attempts} attempts."
+            exit 1
+          fi
 
       - name: Upload deployment bundle
         env:
