@@ -1,15 +1,15 @@
 {
   "manufacturersPage": {
     "kicker": "Fabricantes",
-    "title": "Fabricantes de atracoes",
-    "subtitle": "Explore fabricantes de atracoes e coasters referenciados no site, com perfis publicos e links uteis.",
+    "title": "Fabricantes de atrações",
+    "subtitle": "Explore fabricantes de atrações e coasters referenciados no site, com perfis públicos e links úteis.",
     "search": {
       "label": "Pesquisa",
       "placeholder": "Nome, pais, cidade ou ano",
       "count": "{{count}} fabricante(s) encontrado(s)"
     },
     "loading": "A carregar fabricantes...",
-    "error": "Nao e possivel carregar os fabricantes agora.",
+    "error": "Não e possível carregar os fabricantes agora.",
     "empty": "Nenhum fabricante corresponde a pesquisa.",
     "noDescription": "O perfil detalhado ainda precisa de conteudo.",
     "attractionCount": "{{count}} atracao(oes)"

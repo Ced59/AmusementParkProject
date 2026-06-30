@@ -33,7 +33,7 @@
       "emptyFilteredMessage": "Rozszerz filtry albo zresetuj je, aby zobaczyć więcej miejsc.",
       "filteredResults": "Wyniki filtrowane",
       "resultsCount": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc(a)",
-      "backToPark": "Wr?? do {{name}}",
+      "backToPark": "Wróć do {{name}}",
       "titleWithPark": "Miejsca w {{name}}"
     },
     "detail": {

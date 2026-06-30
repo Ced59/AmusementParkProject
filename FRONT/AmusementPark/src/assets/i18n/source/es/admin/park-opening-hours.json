@@ -12,12 +12,12 @@
         "title": "Horarios",
         "filterLabel": "Horarios",
         "notConfigured": "No configurado",
-        "coverageOne": "Horarios completos para {{ count }} dia, hasta {{ date }}",
-        "coverageMany": "Horarios completos para {{ count }} dias, hasta {{ date }}",
+        "coverageOne": "Horarios completos para {{ count }} día, hasta {{ date }}",
+        "coverageMany": "Horarios completos para {{ count }} días, hasta {{ date }}",
         "statuses": {
           "NotConfigured": "No configurado",
           "Expired": "Caducado",
-          "NeedsUpdate": "Necesita actualizacion",
+          "NeedsUpdate": "Necesita actualización",
           "UpToDate": "Actualizado"
         },
         "filters": {
@@ -25,7 +25,7 @@
           "configured": "Configurados",
           "notConfigured": "No configurados",
           "upToDate": "Actualizados",
-          "needsUpdate": "Necesitan actualizacion",
+          "needsUpdate": "Necesitan actualización",
           "expired": "Caducados"
         }
       },
@@ -41,12 +41,12 @@
         "savedDetail": "El calendario se actualizo.",
         "saveError": "No se pudieron guardar los horarios.",
         "loadError": "No se pudieron cargar los horarios.",
-        "hint": "Los dias cerrados deben ser explicitos si deben contar como cobertura completa."
+        "hint": "Los días cerrados deben ser explícitos si deben contar como cobertura completa."
       }
     },
     "parkGraphUpserts": {
       "editor": {
-        "description": "Las propiedades ausentes se conservan. La seccion openingHours se previsualiza y aplica con el mismo JSON global que parque, zonas, fichas e imagenes."
+        "description": "Las propiedades ausentes se conservan. La sección openingHours se previsualiza y aplica con el mismo JSON global que parque, zonas, fichas e imágenes."
       }
     }
   }

@@ -8,7 +8,7 @@
       "actions": "Actions",
       "edit": "Modifier",
       "exportJson": "Export JSON",
-      "coordinates": "Coordonnees",
+      "coordinates": "Coordonnées",
       "coordinatesMissing": "Manquantes ou 0,0",
       "searchPlaceholder": "Rechercher un parc...",
       "clear": "Effacer",
@@ -121,7 +121,7 @@
         "itemName": "Nom affiché",
         "generalLocation": "Localisation générale",
         "generalLocationHelp": "Point principal de cette fiche dans le parc. Les points spécifiques de l'attraction se renseignent plus bas.",
-        "saveBeforePhotos": "Enregistre d'abord la fiche pour pouvoir lui associer des photos.",
+        "saveBeforePhotos": "Enregistre d’abord la fiche pour pouvoir lui associer des photos.",
         "attractionSectionTitle": "Configuration de l’attraction",
         "attractionSectionDescription": "Cette section n'apparaît que pour les fiches de catégorie Attraction. Tous les champs sont optionnels.",
         "locationsTitle": "Localisations spécifiques",
@@ -269,7 +269,7 @@
         },
         "sectionNav": {
           "label": "Section de l'editeur",
-          "help": "Sur petit ecran, choisis une section a la fois.",
+          "help": "Sur petit écran, choisis une section à la fois.",
           "retrySave": "Reessayer l'enregistrement",
           "saveFailedWithRetry": "Échec de l'enregistrement. Tes modifications restent dans ce formulaire."
         },

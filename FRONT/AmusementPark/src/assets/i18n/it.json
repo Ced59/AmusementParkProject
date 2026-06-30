@@ -493,14 +493,14 @@
         "previewFailed": "Anteprima non riuscita.",
         "applyFailed": "Applicazione non riuscita.",
         "exportFailed": "Export JSON non riuscito.",
-        "fileReadFailed": "Il file JSON non puo essere letto.",
+        "fileReadFailed": "Il file JSON non può essere letto.",
         "historyFailed": "Graph history loading failed."
       },
       "toasts": {
         "searchFailedTitle": "Ricerca non riuscita",
         "searchFailedDetail": "La ricerca del parco non e stata completata.",
         "previewSuccessTitle": "Anteprima pronta",
-        "previewSuccessDetail": "Il JSON puo essere applicato.",
+        "previewSuccessDetail": "Il JSON può essere applicato.",
         "previewPartialTitle": "Anteprima con avvisi",
         "previewPartialDetail": "Controlla gli avvisi prima di applicare.",
         "previewBlockedTitle": "Anteprima bloccata",
@@ -514,7 +514,7 @@
         "applyRejectedTitle": "Nessuna voce applicata",
         "applyRejectedDetail": "{{count}} voce/i sono state rifiutate. Controlla i dettagli.",
         "applyFailedTitle": "Applicazione non riuscita",
-        "applyFailedDetail": "Il JSON non puo essere applicato.",
+        "applyFailedDetail": "Il JSON non può essere applicato.",
         "applyBlockedTitle": "Applicazione bloccata",
         "applyBlockedDetail": "Correggi gli errori dell'anteprima prima di applicare.",
         "invalidJsonTitle": "JSON non valido",
@@ -1240,7 +1240,7 @@
         "completed": "Aggiornamento meteo completato.",
         "completedWithFailures": "Aggiornamento meteo completato con errori.",
         "canceled": "Aggiornamento meteo annullato.",
-        "skippedByManual": "Esecuzione automatica saltata perche un aggiornamento manuale copre gia questo ciclo."
+        "skippedByManual": "Esecuzione automatica saltata perché un aggiornamento manuale copre gia questo ciclo."
       },
       "values": {
         "empty": "-"
@@ -1999,7 +1999,7 @@
       "OPERATOR": "Foto dell'operatore",
       "MANUFACTURER": "Foto del costruttore",
       "FOUNDER": "Foto del fondatore",
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "VIDEO_THUMBNAIL": "Miniatura video"
     },
     "ownerTypes": {
       "NONE": "Nessuno",
@@ -2141,58 +2141,58 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
-      "loadMore": "Load more videos",
-      "loadingMore": "Loading..."
+      "count": "{{count}} video",
+      "views": "{{count}} visualizzazioni",
+      "loadMore": "Carica altri video",
+      "loadingMore": "Caricamento..."
     },
     "filters": {
-      "type": "Video type",
-      "allTypes": "All types",
+      "type": "Tipo di video",
+      "allTypes": "Tutti i tipi",
       "tag": "Tag",
-      "allTags": "All tags",
-      "creator": "Creator",
-      "creatorPlaceholder": "Filter by creator name",
-      "applyCreator": "Apply",
-      "clear": "Clear filters"
+      "allTags": "Tutti i tag",
+      "creator": "Creatore",
+      "creatorPlaceholder": "Filtra per nome del creatore",
+      "applyCreator": "Applica",
+      "clear": "Cancella filtri"
     },
     "providers": {
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "External video"
+      "other": "Video esterno"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Advertisement",
-      "documentary": "Documentary",
-      "review": "Review",
-      "news": "News",
-      "event": "Event",
-      "interview": "Interview",
-      "other": "Other"
+      "advertisement": "Pubblicità",
+      "documentary": "Documentario",
+      "review": "Recensione",
+      "news": "Notizia",
+      "event": "Evento",
+      "interview": "Intervista",
+      "other": "Altro"
     },
     "watch": {
-      "loadingTitle": "Loading video",
-      "loadingMessage": "The video page is being loaded.",
-      "errorTitle": "Video unavailable",
-      "errorMessage": "The requested video could not be loaded.",
-      "previous": "Previous video",
-      "next": "Next video",
-      "backToVideos": "Back to videos",
-      "creator": "Creator",
-      "category": "Category",
+      "loadingTitle": "Caricamento video",
+      "loadingMessage": "La pagina video si sta caricando.",
+      "errorTitle": "Video non disponibile",
+      "errorMessage": "Il video richiesto non può essere caricato.",
+      "previous": "Video precedente",
+      "next": "Video successivo",
+      "backToVideos": "Torna ai video",
+      "creator": "Creatore",
+      "category": "Categoria",
       "provider": "Provider",
-      "duration": "Duration",
-      "publishedAt": "Published",
-      "viewCount": "Views",
-      "views": "{{count}} views",
-      "tagsAndCategories": "Categories and tags",
-      "openExternal": "Open video",
-      "openCreator": "Open creator",
-      "openProvider": "Open provider page"
+      "duration": "Durata",
+      "publishedAt": "Pubblicato",
+      "viewCount": "Visualizzazioni",
+      "views": "{{count}} visualizzazioni",
+      "tagsAndCategories": "Categorie e tag",
+      "openExternal": "Apri video",
+      "openCreator": "Apri creatore",
+      "openProvider": "Apri pagina del provider"
     }
   },
   "aboutPage": {
@@ -2359,7 +2359,7 @@
       "help": "Scrivi il messaggio in modo semplice, senza link inutili.",
       "validation": "Inserisci un messaggio chiaro tra 10 e 2000 caratteri.",
       "success": "Il tuo messaggio e stato inviato.",
-      "error": "Il messaggio non puo essere inviato. Controlla il testo o riprova piu tardi.",
+      "error": "Il messaggio non può essere inviato. Controlla il testo o riprova più tardi.",
       "submit": "Invia",
       "submitting": "Invio"
     },
@@ -2370,7 +2370,7 @@
       "points": {
         "plainText": "Il tuo messaggio deve restare chiaro e rispettoso.",
         "ip": "Gli abusi ripetuti possono essere limitati.",
-        "admin": "Solo il team del sito puo leggere i messaggi."
+        "admin": "Solo il team del sito può leggere i messaggi."
       }
     }
   },
@@ -2503,7 +2503,7 @@
     "subtitle": "Sfoglia costruttori di attrazioni e coaster presenti sul sito, con profili pubblici e link utili.",
     "search": {
       "label": "Cerca",
-      "placeholder": "Nome, paese, citta o anno",
+      "placeholder": "Nome, paese, città o anno",
       "count": "{{count}} costruttore/i trovato/i"
     },
     "loading": "Caricamento costruttori...",
@@ -2833,17 +2833,17 @@
     },
     "videosPage": {
       "kicker": "Video del luogo",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Video di {{name}}",
+      "subtitle": "Guarda i video di {{name}} a {{park}}: onride, offride, recensioni e media ufficiali.",
+      "loadingTitle": "Caricamento video",
       "loadingMessage": "Preparazione dei video di questo luogo.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Video non disponibili",
       "errorMessage": "Impossibile caricare i video di questo luogo al momento.",
-      "backToItem": "Back to {{name}}",
+      "backToItem": "Torna a {{name}}",
       "backToItems": "Da scoprire a {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToPark": "Torna a {{name}}",
+      "emptyTitle": "Nessun video pubblicato",
+      "emptyMessage": "Non c’è ancora nessun video pubblicato per {{name}}."
     }
   },
   "parkOpeningHours": {
@@ -2868,7 +2868,7 @@
       "lead": "Consulta le date e gli orari giornalieri attualmente indicati per {{ name }}.",
       "backToPark": "Torna a {{ name }}",
       "officialSite": "Sito ufficiale",
-      "disclaimer": "Questi orari sono forniti solo a titolo indicativo. Controlla sempre il sito ufficiale di {{ name }} prima della visita, perche eventi privati, chiusure eccezionali, meteo, operativita o altri cambiamenti potrebbero non essere noti o aggiornati qui.",
+      "disclaimer": "Questi orari sono forniti solo a titolo indicativo. Controlla sempre il sito ufficiale di {{ name }} prima della visita, perché eventi privati, chiusure eccezionali, meteo, operatività o altri cambiamenti potrebbero non essere noti o aggiornati qui.",
       "summaryLabel": "Riepilogo orari",
       "coverage": "Periodo indicato",
       "coverageUnknown": "Periodo sconosciuto",
@@ -3323,11 +3323,11 @@
       "closedDefinitively": "Chiuso definitivamente"
     },
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
+      "kicker": "Video del parco",
+      "title": "Video di {{name}}",
+      "subtitle": "Guarda i video di {{name}}: onride, offride, clip ufficiali e contenuti dei creatori.",
+      "loadingTitle": "Caricamento video",
+      "loadingMessage": "Preparazione dei video del parco.",
       "loadingItemsTitle": "Caricamento dei video dei luoghi",
       "loadingItemsMessage": "Preparazione dei video dei luoghi di {{name}}.",
       "tabs": {
@@ -3335,11 +3335,11 @@
         "park": "Parco",
         "items": "Luoghi del parco"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Video non disponibili",
+      "errorMessage": "Impossibile caricare i video di questo parco al momento.",
+      "backToPark": "Torna a {{name}}",
+      "emptyTitle": "Nessun video pubblicato",
+      "emptyMessage": "Non c’è ancora nessun video pubblicato per {{name}}."
     }
   },
   "privacyPage": {
@@ -3537,7 +3537,7 @@
       "title": "Condividi con codice QR",
       "loading": "Generazione del codice QR",
       "alt": "Codice QR per {{title}}",
-      "error": "Il codice QR non puo essere creato ora."
+      "error": "Il codice QR non può essere creato ora."
     },
     "home": {
       "title": "Condividi AmusementPark",

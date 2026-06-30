@@ -59,7 +59,7 @@
       "metadataError": "Impossible d'analyser cette vidéo.",
       "createSuccess": "Vidéo créée.",
       "createError": "La vidéo n'a pas pu être créée.",
-      "saveOwnerFirstTitle": "Enregistre d'abord ce contenu",
+      "saveOwnerFirstTitle": "Enregistre d’abord ce contenu",
       "saveOwnerFirstMessage": "La vidéo pourra être ajoutée dès que l'identifiant sera disponible.",
       "listTitle": "Bibliothèque",
       "pageHint": "Thumbnails lazy, filtres serveur et pagination réelle.",

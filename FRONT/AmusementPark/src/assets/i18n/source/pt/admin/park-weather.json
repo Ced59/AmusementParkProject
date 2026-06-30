@@ -2,13 +2,13 @@
   "admin": {
     "parkWeather": {
       "navTitle": "Meteorologia",
-      "title": "Atualizacao meteorologica",
-      "subtitle": "Acompanhe execucoes programadas, cobertura dos parques visiveis e falhas.",
+      "title": "Atualizacao meteorológica",
+      "subtitle": "Acompanhe execucoes programadas, cobertura dos parques visíveis e falhas.",
       "loading": "A carregar estado meteorologico...",
-      "loadError": "Nao foi possivel carregar o estado meteorologico.",
-      "startError": "Nao foi possivel iniciar a atualizacao meteorologica.",
-      "retryError": "Nao foi possivel repetir a atualizacao meteorologica.",
-      "empty": "Sem informacao meteorologica disponivel.",
+      "loadError": "Não foi possível carregar o estado meteorologico.",
+      "startError": "Não foi possível iniciar a atualizacao meteorológica.",
+      "retryError": "Não foi possível repetir a atualizacao meteorológica.",
+      "empty": "Sem informação meteorológica disponível.",
       "actions": {
         "startManual": "Atualizar agora",
         "retryFailed": "Repetir falhas",
@@ -30,11 +30,11 @@
         "skipped": "Ignorada"
       },
       "messages": {
-        "queued": "Atualizacao meteorologica na fila.",
-        "running": "Atualizacao meteorologica em curso.",
-        "completed": "Atualizacao meteorologica concluida.",
-        "completedWithFailures": "Atualizacao meteorologica concluida com falhas.",
-        "canceled": "Atualizacao meteorologica cancelada.",
+        "queued": "Atualizacao meteorológica na fila.",
+        "running": "Atualizacao meteorológica em curso.",
+        "completed": "Atualizacao meteorológica concluida.",
+        "completedWithFailures": "Atualizacao meteorológica concluida com falhas.",
+        "canceled": "Atualizacao meteorológica cancelada.",
         "skippedByManual": "Execucao automatica ignorada porque uma atualizacao manual ja cobre este ciclo."
       },
       "values": {

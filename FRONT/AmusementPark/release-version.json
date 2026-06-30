@@ -1,6 +1,20 @@
 {
-  "version": "3.0.5",
+  "version": "3.0.6",
   "history": [
+    {
+      "version": "3.0.6",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les textes localisés utilisent de meilleurs caractères.",
+        "en": "Localized texts use clearer characters.",
+        "de": "Lokalisierte Texte nutzen klarere Zeichen.",
+        "nl": "Gelokaliseerde teksten gebruiken duidelijkere tekens.",
+        "it": "I testi localizzati usano caratteri più corretti.",
+        "es": "Los textos localizados usan caracteres más claros.",
+        "pl": "Teksty lokalizowane mają czytelniejsze znaki.",
+        "pt": "Os textos localizados usam caracteres mais claros."
+      }
+    },
     {
       "version": "3.0.5",
       "releasedAt": "2026-06-30",
@@ -35,12 +49,12 @@
       "labels": {
         "fr": "Les détails des horaires deviennent plus utiles.",
         "en": "Opening-hour details become more useful.",
-        "de": "Details zu Oeffnungszeiten werden nuetzlicher.",
+        "de": "Details zu Öffnungszeiten werden nützlicher.",
         "nl": "Details van openingstijden worden nuttiger.",
-        "it": "I dettagli degli orari diventano piu utili.",
-        "es": "Los detalles de horarios son mas utiles.",
-        "pl": "Szczegoly godzin otwarcia sa bardziej przydatne.",
-        "pt": "Os detalhes dos horarios ficam mais uteis."
+        "it": "I dettagli degli orari diventano più utili.",
+        "es": "Los detalles de horarios son más útiles.",
+        "pl": "Szczegóły godzin są bardziej przydatne.",
+        "pt": "Os detalhes dos horários ficam mais úteis."
       }
     },
     {
@@ -151,7 +165,7 @@
         "nl": "Publieke pagina's blijven bereikbaar.",
         "it": "Le pagine pubbliche restano raggiungibili.",
         "es": "Las paginas publicas siguen accesibles.",
-        "pl": "Publiczne strony pozostaja dostepne.",
+        "pl": "Publiczne strony pozostają dostępne.",
         "pt": "As paginas publicas continuam acessiveis."
       }
     },
@@ -290,7 +304,7 @@
         "de": "Die Fotoverwaltung wird klarer.",
         "nl": "Fotobeheer wordt duidelijker.",
         "it": "La gestione delle foto diventa piu chiara.",
-        "es": "La gestion de fotos queda mas clara.",
+        "es": "La gestión de fotos queda más clara.",
         "pl": "Zarzadzanie zdjeciami jest czytelniejsze.",
         "pt": "A administracao de fotos fica mais clara."
       }
@@ -305,7 +319,7 @@
         "nl": "Parkgalerijen worden vollediger.",
         "it": "Le gallerie dei parchi diventano piu complete.",
         "es": "Las galerias de parques quedan mas completas.",
-        "pl": "Galerie parkow staja sie pelniejsze.",
+        "pl": "Galerie parków stają się pełniejsze.",
         "pt": "As galerias de parques ficam mais completas."
       }
     },
@@ -341,7 +355,7 @@
       "version": "2.7.8",
       "releasedAt": "2026-06-26",
       "labels": {
-        "fr": "L'administration gere mieux les doublons.",
+        "fr": "L'administration gère mieux les doublons.",
         "en": "Admin duplicate handling improves.",
         "de": "Die Administration verarbeitet Duplikate besser.",
         "nl": "De administratie verwerkt dubbels beter.",
@@ -388,9 +402,9 @@
         "de": "Die Administration passt besser auf kleine Bildschirme.",
         "nl": "De administratie past beter op kleine schermen.",
         "it": "L'amministrazione si adatta meglio agli schermi piccoli.",
-        "es": "La administracion se adapta mejor a pantallas pequenas.",
+        "es": "La administración se adapta mejor a pantallas pequeñas.",
         "pl": "Administracja lepiej pasuje do malych ekranow.",
-        "pt": "A administracao adapta-se melhor a ecra pequenos."
+        "pt": "A administração adapta-se melhor a ecrãs pequenos."
       }
     },
     {
@@ -417,7 +431,7 @@
         "nl": "Logo's van bouwers vallen beter op.",
         "it": "I loghi dei costruttori risaltano meglio.",
         "es": "Los logotipos de fabricantes destacan mejor.",
-        "pl": "Logo producentow sa lepiej widoczne.",
+        "pl": "Logo producentów są lepiej widoczne.",
         "pt": "Os logotipos dos fabricantes ficam mais visiveis."
       }
     },
@@ -542,9 +556,9 @@
         "de": "Die Hersteller-Navigation ist korrigiert.",
         "nl": "Navigatie voor fabrikanten is opgelost.",
         "it": "La navigazione dei costruttori e corretta.",
-        "es": "La navegacion de fabricantes queda corregida.",
-        "pl": "Nawigacja producentow zostala poprawiona.",
-        "pt": "A navegacao dos fabricantes fica corrigida."
+        "es": "La navegación de fabricantes queda corregida.",
+        "pl": "Nawigacja producentów została poprawiona.",
+        "pt": "A navegação dos fabricantes fica corrigida."
       }
     },
     {
@@ -642,7 +656,7 @@
         "it": "Le mappe dei luoghi restano piu stabili.",
         "es": "Los mapas de lugar se mantienen mas estables.",
         "pl": "Mapy miejsc dzialaja stabilniej.",
-        "pt": "Os mapas de local ficam mais estaveis."
+        "pt": "Os mapas de local ficam mais estáveis."
       }
     },
     {
@@ -684,7 +698,7 @@
         "it": "Le pubblicazioni sono piu stabili.",
         "es": "Las publicaciones son mas estables.",
         "pl": "Wdrozenia sa stabilniejsze.",
-        "pt": "As publicacoes ficam mais estaveis."
+        "pt": "As publicações ficam mais estáveis."
       }
     },
     {
@@ -739,7 +753,7 @@
         "nl": "Door bouwers bladeren voelt soepeler.",
         "it": "La navigazione tra i costruttori e piu fluida.",
         "es": "Navegar por fabricantes va mas fluido.",
-        "pl": "Przegladanie producentow dziala plynniej.",
+        "pl": "Przeglądanie producentów działa płynniej.",
         "pt": "Navegar por fabricantes fica mais fluido."
       }
     },
@@ -752,8 +766,8 @@
         "de": "Die Herstellerliste laesst sich schneller durchsehen.",
         "nl": "De bouwerslijst bladert sneller.",
         "it": "La lista dei costruttori si sfoglia piu rapidamente.",
-        "es": "La lista de fabricantes se recorre mas rapido.",
-        "pl": "Lista producentow przeglada sie szybciej.",
+        "es": "La lista de fabricantes se recorre más rápido.",
+        "pl": "Lista producentów przegląda się szybciej.",
         "pt": "A lista de fabricantes navega mais depressa."
       }
     },
@@ -781,7 +795,7 @@
         "nl": "De bouwerslijst komt op de site.",
         "it": "Arriva la lista dei costruttori sul sito.",
         "es": "Llega la lista de fabricantes al sitio.",
-        "pl": "Lista producentow trafia na strone.",
+        "pl": "Lista producentów trafia na stronę.",
         "pt": "A lista de fabricantes chega ao site."
       }
     },
@@ -803,14 +817,14 @@
       "version": "2.3.26",
       "releasedAt": "2026-06-21",
       "labels": {
-        "fr": "L'administration mobile gere mieux les medias.",
+        "fr": "L'administration mobile gère mieux les médias.",
         "en": "Mobile administration handles media better.",
         "de": "Mobile Administration verwaltet Medien besser.",
         "nl": "Mobiele administratie beheert media beter.",
         "it": "L'amministrazione mobile gestisce meglio i media.",
         "es": "La administracion movil gestiona mejor los medios.",
         "pl": "Administracja mobilna lepiej obsluguje media.",
-        "pt": "A administracao movel gere melhor os media."
+        "pt": "A administração móvel gere melhor os media."
       }
     },
     {
@@ -822,9 +836,9 @@
         "de": "Mobile Administration erhaelt Standortwerkzeuge.",
         "nl": "Mobiele administratie krijgt locatietools.",
         "it": "L'amministrazione mobile aggiunge strumenti di posizione.",
-        "es": "La administracion movil suma herramientas de ubicacion.",
+        "es": "La administración móvil suma herramientas de ubicación.",
         "pl": "Administracja mobilna zyskuje narzedzia lokalizacji.",
-        "pt": "A administracao movel ganha ferramentas de localizacao."
+        "pt": "A administração móvel ganha ferramentas de localização."
       }
     },
     {
@@ -838,7 +852,7 @@
         "it": "L'amministrazione mobile diventa piu comoda.",
         "es": "La administracion movil resulta mas comoda.",
         "pl": "Administracja mobilna staje sie wygodniejsza.",
-        "pt": "A administracao movel fica mais confortavel."
+        "pt": "A administração móvel fica mais confortável."
       }
     },
     {
@@ -851,7 +865,7 @@
         "nl": "Contenttypes zijn vollediger.",
         "it": "I tipi di contenuto sono piu completi.",
         "es": "Los tipos de contenido estan mas completos.",
-        "pl": "Typy tresci sa pelniejsze.",
+        "pl": "Typy treści są pełniejsze.",
         "pt": "Os tipos de conteudo ficam mais completos."
       }
     },
@@ -866,7 +880,7 @@
         "it": "L'amministrazione mobile diventa piu sicura.",
         "es": "La administracion movil gana seguridad.",
         "pl": "Administracja mobilna staje sie bezpieczniejsza.",
-        "pt": "A administracao movel fica mais segura."
+        "pt": "A administração móvel fica mais segura."
       }
     },
     {
@@ -880,7 +894,7 @@
         "it": "L'amministrazione mobile diventa piu affidabile.",
         "es": "La administracion movil gana fiabilidad.",
         "pl": "Administracja mobilna staje sie niezawodniejsza.",
-        "pt": "A administracao movel fica mais fiavel."
+        "pt": "A administração móvel fica mais fiável."
       }
     },
     {
@@ -894,7 +908,7 @@
         "it": "L'amministrazione mobile copre piu contenuti.",
         "es": "La administracion movil cubre mas contenidos.",
         "pl": "Administracja mobilna obejmuje wiecej tresci.",
-        "pt": "A administracao movel cobre mais conteudos."
+        "pt": "A administração móvel cobre mais conteúdos."
       }
     },
     {
@@ -908,7 +922,7 @@
         "it": "L'amministrazione mobile diventa piu precisa.",
         "es": "La administracion movil gana precision.",
         "pl": "Administracja mobilna staje sie precyzyjniejsza.",
-        "pt": "A administracao movel fica mais precisa."
+        "pt": "A administração móvel fica mais precisa."
       }
     },
     {
@@ -922,7 +936,7 @@
         "it": "L'amministrazione mobile diventa piu semplice.",
         "es": "La administracion movil gana sencillez.",
         "pl": "Administracja mobilna staje sie prostsza.",
-        "pt": "A administracao movel fica mais simples."
+        "pt": "A administração móvel fica mais simples."
       }
     },
     {
@@ -936,7 +950,7 @@
         "it": "L'amministrazione mobile diventa piu fluida.",
         "es": "La administracion movil gana fluidez.",
         "pl": "Administracja mobilna dziala plynniej.",
-        "pt": "A administracao movel fica mais fluida."
+        "pt": "A administração móvel fica mais fluida."
       }
     },
     {
@@ -950,7 +964,7 @@
         "it": "L'amministrazione mobile diventa piu chiara.",
         "es": "La administracion movil gana claridad.",
         "pl": "Administracja mobilna staje sie bardziej przejrzysta.",
-        "pt": "A administracao movel fica mais clara."
+        "pt": "A administração móvel fica mais clara."
       }
     },
     {
@@ -964,7 +978,7 @@
         "it": "L'amministrazione mobile diventa piu flessibile.",
         "es": "La administracion movil gana flexibilidad.",
         "pl": "Administracja mobilna staje sie bardziej elastyczna.",
-        "pt": "A administracao movel fica mais flexivel."
+        "pt": "A administração móvel fica mais flexível."
       }
     },
     {
@@ -978,7 +992,7 @@
         "it": "L'amministrazione mobile diventa piu pratica.",
         "es": "La administracion movil resulta mas practica.",
         "pl": "Administracja mobilna staje sie wygodniejsza.",
-        "pt": "A administracao movel fica mais pratica."
+        "pt": "A administração móvel fica mais prática."
       }
     },
     {
@@ -992,7 +1006,7 @@
         "it": "L'amministrazione mobile e preparata meglio.",
         "es": "La administracion movil queda mejor preparada.",
         "pl": "Administracja mobilna jest lepiej przygotowana.",
-        "pt": "A administracao movel fica melhor preparada."
+        "pt": "A administração móvel fica melhor preparada."
       }
     },
     {
@@ -1286,7 +1300,7 @@
         "it": "Il logo mobile e regolato meglio.",
         "es": "El logo movil queda mejor ajustado.",
         "pl": "Logo mobilne jest lepiej dopasowane.",
-        "pt": "O logotipo movel fica melhor ajustado."
+        "pt": "O logotipo móvel fica melhor ajustado."
       }
     },
     {
@@ -1299,8 +1313,8 @@
         "nl": "Het .fun-logo valt beter op op elk scherm.",
         "it": "Il logo .fun risalta meglio su ogni schermo.",
         "es": "El logo .fun destaca mejor en todas las pantallas.",
-        "pl": "Logo .fun lepiej wyroznia sie na kazdym ekranie.",
-        "pt": "O logotipo .fun destaca-se melhor em todos os ecras."
+        "pl": "Logo .fun lepiej wyróżnia się na każdym ekranie.",
+        "pt": "O logotipo .fun destaca-se melhor em todos os ecrãs."
       }
     },
     {
@@ -1363,9 +1377,9 @@
       "version": "2.1.6",
       "releasedAt": "2026-06-20",
       "labels": {
-        "fr": "L'identite visuelle et l'historique sont plus clairs.",
+        "fr": "L'identité visuelle et l'historique sont plus clairs.",
         "en": "The visual identity and history are clearer.",
-        "de": "Die visuelle Identitaet und der Verlauf sind klarer.",
+        "de": "Die visuelle Identität und der Verlauf sind klarer.",
         "nl": "De visuele identiteit en geschiedenis zijn duidelijker.",
         "it": "Identita visiva e cronologia sono piu chiare.",
         "es": "La identidad visual y el historial son mas claros.",
@@ -1468,7 +1482,7 @@
         "it": "La visualizzazione mobile diventa piu comoda.",
         "es": "La vista movil es mas comoda.",
         "pl": "Widok mobilny jest wygodniejszy.",
-        "pt": "A vista movel fica mais confortavel."
+        "pt": "A vista móvel fica mais confortável."
       }
     },
     {
@@ -1550,8 +1564,8 @@
         "de": "Die Medienverwaltung ist umfassender.",
         "nl": "Mediabeheer is completer.",
         "it": "La gestione dei media e piu completa.",
-        "es": "La gestion de medios es mas completa.",
-        "pl": "Zarzadzanie mediami jest pelniejsze.",
+        "es": "La gestión de medios es más completa.",
+        "pl": "Zarządzanie mediami jest pełniejsze.",
         "pt": "A gestao de media fica mais completa."
       }
     },
@@ -1579,7 +1593,7 @@
         "nl": "Weergave-eenheden worden flexibeler.",
         "it": "Le unita visualizzate diventano piu flessibili.",
         "es": "Las unidades de visualizacion son mas flexibles.",
-        "pl": "Jednostki wyswietlania staja sie bardziej elastyczne.",
+        "pl": "Jednostki wyświetlania stają się bardziej elastyczne.",
         "pt": "As unidades apresentadas ficam mais flexiveis."
       }
     },
@@ -1593,7 +1607,7 @@
         "nl": "De beheerpreview is betrouwbaarder.",
         "it": "L'anteprima admin e piu affidabile.",
         "es": "La vista previa de administracion es mas fiable.",
-        "pl": "Podglad administracyjny jest bardziej niezawodny.",
+        "pl": "Podgląd administracyjny jest bardziej niezawodny.",
         "pt": "A pre-visualizacao da administracao fica mais fiavel."
       }
     },
@@ -1690,8 +1704,8 @@
         "de": "Footer, Kontaktseite und Versionsverlauf werden nuetzlicher.",
         "nl": "De footer, contactpagina en versiegeschiedenis worden nuttiger.",
         "it": "Footer, pagina contatto e cronologia versioni diventano piu utili.",
-        "es": "El pie de pagina, el contacto y el historial de versiones son mas utiles.",
-        "pl": "Stopka, kontakt i historia wersji staja sie bardziej przydatne.",
+        "es": "El pie de página, el contacto y el historial de versiones son más útiles.",
+        "pl": "Stopka, kontakt i historia wersji stają się bardziej przydatne.",
         "pt": "O rodape, o contacto e o historico de versoes ficam mais uteis."
       }
     },
@@ -1760,7 +1774,7 @@
         "de": "Die Videoerstellung in der Administration ist korrigiert.",
         "nl": "Video's aanmaken in beheer is gecorrigeerd.",
         "it": "La creazione dei video in amministrazione e corretta.",
-        "es": "La creacion de videos en administracion queda corregida.",
+        "es": "La creación de vídeos en administración queda corregida.",
         "pl": "Tworzenie filmow w administracji zostalo poprawione.",
         "pt": "A criacao de videos na administracao foi corrigida."
       }
@@ -1774,7 +1788,7 @@
         "de": "Die YouTube-Videoanalyse ist auf Mobilgeraeten angenehmer.",
         "nl": "YouTube-videoanalyse werkt prettiger op mobiel.",
         "it": "L'analisi dei video YouTube e piu comoda su mobile.",
-        "es": "El analisis de videos de YouTube es mas comodo en movil.",
+        "es": "El análisis de vídeos de YouTube es más cómodo en móvil.",
         "pl": "Analiza filmow YouTube jest wygodniejsza na telefonie.",
         "pt": "A analise de videos YouTube fica mais confortavel no telemovel."
       }
@@ -1788,7 +1802,7 @@
         "de": "Videos lassen sich leichter mit Parks und Attraktionen verbinden.",
         "nl": "Video's zijn makkelijker te koppelen aan parken en attracties.",
         "it": "I video si collegano piu facilmente a parchi e attrazioni.",
-        "es": "Los videos se vinculan mas facilmente a parques y atracciones.",
+        "es": "Los vídeos se vinculan más fácilmente a parques y atracciones.",
         "pl": "Filmy latwiej lacza sie z parkami i atrakcjami.",
         "pt": "Os videos ligam-se mais facilmente a parques e atracoes."
       }
@@ -1802,7 +1816,7 @@
         "de": "Die Videoverwaltung bleibt in der Administration nutzbar.",
         "nl": "Videobeheer blijft bruikbaar in de administratie.",
         "it": "La gestione video resta utilizzabile in amministrazione.",
-        "es": "La gestion de videos sigue siendo usable en administracion.",
+        "es": "La gestión de vídeos sigue siendo usable en administración.",
         "pl": "Zarzadzanie filmami pozostaje uzyteczne w administracji.",
         "pt": "A gestao de videos continua utilizavel na administracao."
       }
@@ -1887,7 +1901,7 @@
         "nl": "Publieke beeldgalerijen zijn makkelijker te verkennen.",
         "it": "Le gallerie pubbliche di immagini sono piu semplici da esplorare.",
         "es": "Las galerias publicas de imagenes son mas faciles de explorar.",
-        "pl": "Publiczne galerie zdjec sa latwiejsze do przegladania.",
+        "pl": "Publiczne galerie zdjęć są łatwiejsze do przeglądania.",
         "pt": "As galerias publicas de imagens ficam mais faceis de explorar."
       }
     },
@@ -1901,7 +1915,7 @@
         "nl": "Attracties krijgen hun eigen beeldpagina's.",
         "it": "Le attrazioni hanno pagine immagini dedicate.",
         "es": "Las atracciones tienen sus propias paginas de imagenes.",
-        "pl": "Atrakcje otrzymuja wlasne strony zdjec.",
+        "pl": "Atrakcje otrzymują własne strony zdjęć.",
         "pt": "As atracoes ganham paginas de imagens proprias."
       }
     },
@@ -1914,7 +1928,7 @@
         "de": "Oeffentliche Seiten laden auf Mobilgeraeten schneller.",
         "nl": "Publieke pagina's laden sneller op mobiel.",
         "it": "Le pagine pubbliche caricano piu velocemente su mobile.",
-        "es": "Las paginas publicas cargan mas rapido en movil.",
+        "es": "Las páginas públicas cargan más rápido en móvil.",
         "pl": "Publiczne strony laduja sie szybciej na telefonach.",
         "pt": "As paginas publicas carregam mais depressa no telemovel."
       }
@@ -1985,8 +1999,8 @@
         "nl": "Publieke beelden passen beter bij schermen.",
         "it": "Le immagini pubbliche si adattano meglio agli schermi.",
         "es": "Las imagenes publicas se adaptan mejor a las pantallas.",
-        "pl": "Publiczne obrazy lepiej dopasowuja sie do ekranow.",
-        "pt": "As imagens publicas adaptam-se melhor aos ecras."
+        "pl": "Publiczne obrazy lepiej dopasowują się do ekranów.",
+        "pt": "As imagens públicas adaptam-se melhor aos ecrãs."
       }
     },
     {
@@ -2012,7 +2026,7 @@
         "de": "Oeffentliche Schriften laden schneller.",
         "nl": "Publieke lettertypes laden sneller.",
         "it": "I font pubblici caricano piu rapidamente.",
-        "es": "Las fuentes publicas cargan mas rapido.",
+        "es": "Las fuentes públicas cargan más rápido.",
         "pl": "Publiczne czcionki laduja sie szybciej.",
         "pt": "As fontes publicas carregam mais rapidamente."
       }
@@ -2027,7 +2041,7 @@
         "nl": "De eerste lading bevat minder ongebruikte code.",
         "it": "Il primo caricamento porta meno codice inutilizzato.",
         "es": "La primera carga trae menos codigo inutil.",
-        "pl": "Pierwsze ladowanie zawiera mniej nieuzywanego kodu.",
+        "pl": "Pierwsze ładowanie zawiera mniej nieużywanego kodu.",
         "pt": "O primeiro carregamento leva menos codigo inutil."
       }
     },
@@ -2068,9 +2082,9 @@
         "de": "Die Navigation zu Abschnitten wird zuverlaessiger.",
         "nl": "Navigatie naar secties wordt betrouwbaarder.",
         "it": "La navigazione verso le sezioni diventa piu affidabile.",
-        "es": "La navegacion hacia secciones es mas fiable.",
+        "es": "La navegación hacia secciones es más fiable.",
         "pl": "Nawigacja do sekcji staje sie bardziej niezawodna.",
-        "pt": "A navegacao para secoes fica mais fiavel."
+        "pt": "A navegação para seções fica mais fiável."
       }
     },
     {
@@ -2111,7 +2125,7 @@
         "nl": "Attracties bewerken in beheer is gecorrigeerd.",
         "it": "La modifica delle attrazioni in amministrazione e corretta.",
         "es": "La edicion de atracciones en administracion queda corregida.",
-        "pl": "Edycja atrakcji w administracji zostala poprawiona.",
+        "pl": "Edycja atrakcji w administracji została poprawiona.",
         "pt": "A edicao de atracoes na administracao foi corrigida."
       }
     },
@@ -2180,9 +2194,9 @@
         "de": "Die Verwaltung des oeffentlichen Caches wird robuster.",
         "nl": "Publiek cachebeheer wordt robuuster.",
         "it": "La gestione della cache pubblica diventa piu solida.",
-        "es": "La gestion de cache publica es mas robusta.",
+        "es": "La gestión de cache pública es más robusta.",
         "pl": "Obsluga publicznej pamieci podrecznej jest solidniejsza.",
-        "pt": "A gestao da cache publica fica mais robusta."
+        "pt": "A gestão da cache pública fica mais robusta."
       }
     },
     {
@@ -2306,9 +2320,9 @@
         "de": "Der Weg zur Inhaltsveroeffentlichung ist besser gefuehrt.",
         "nl": "Het publicatiepad voor content is beter begeleid.",
         "it": "Il percorso di pubblicazione dei contenuti e piu guidato.",
-        "es": "El recorrido de publicacion de contenido esta mejor guiado.",
+        "es": "El recorrido de publicación de contenido está mejor guiado.",
         "pl": "Sciezka publikacji tresci jest lepiej prowadzona.",
-        "pt": "O percurso de publicacao de conteudo fica melhor guiado."
+        "pt": "O percurso de publicação de conteúdo fica melhor guiado."
       }
     },
     {

@@ -2,13 +2,13 @@
   "admin": {
     "parkWeather": {
       "navTitle": "Tiempo",
-      "title": "Actualizacion meteorologica",
+      "title": "Actualización meteorológica",
       "subtitle": "Seguimiento de ejecuciones programadas, cobertura de parques visibles y fallos.",
       "loading": "Cargando estado meteorologico...",
       "loadError": "No se pudo cargar el estado meteorologico.",
-      "startError": "No se pudo iniciar la actualizacion meteorologica.",
-      "retryError": "No se pudo reintentar la actualizacion meteorologica.",
-      "empty": "No hay informacion meteorologica disponible.",
+      "startError": "No se pudo iniciar la actualización meteorológica.",
+      "retryError": "No se pudo reintentar la actualización meteorológica.",
+      "empty": "No hay información meteorológica disponible.",
       "actions": {
         "startManual": "Actualizar ahora",
         "retryFailed": "Reintentar fallos",
@@ -30,12 +30,12 @@
         "skipped": "Omitida"
       },
       "messages": {
-        "queued": "Actualizacion meteorologica en cola.",
-        "running": "Actualizacion meteorologica en curso.",
-        "completed": "Actualizacion meteorologica completada.",
-        "completedWithFailures": "Actualizacion meteorologica completada con fallos.",
-        "canceled": "Actualizacion meteorologica cancelada.",
-        "skippedByManual": "Ejecucion automatica omitida porque una actualizacion manual ya cubre este ciclo."
+        "queued": "Actualización meteorológica en cola.",
+        "running": "Actualización meteorológica en curso.",
+        "completed": "Actualización meteorológica completada.",
+        "completedWithFailures": "Actualización meteorológica completada con fallos.",
+        "canceled": "Actualización meteorológica cancelada.",
+        "skippedByManual": "Ejecucion automatica omitida porque una actualización manual ya cubre este ciclo."
       },
       "values": {
         "empty": "-"
@@ -50,7 +50,7 @@
       "failures": {
         "title": "Parques con fallo",
         "subtitle": "Reintenta todos los fallos o un parque concreto.",
-        "empty": "No hay parques con fallo en esta ejecucion.",
+        "empty": "No hay parques con fallo en está ejecucion.",
         "columns": {
           "park": "Parque",
           "error": "Error",
@@ -60,7 +60,7 @@
       },
       "noRun": {
         "title": "Sin ejecucion",
-        "message": "Inicia una actualizacion manual o espera la proxima ejecucion programada."
+        "message": "Inicia una actualización manual o espera la proxima ejecucion programada."
       }
     }
   }

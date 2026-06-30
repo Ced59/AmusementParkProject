@@ -4,14 +4,14 @@
       "navTitle": "Mensagens contacto",
       "kicker": "Contacto",
       "title": "Livro de comentarios",
-      "subtitle": "Consulte mensagens publicas com contexto IP para prevenir abusos.",
+      "subtitle": "Consulte mensagens públicas com contexto IP para prevenir abusos.",
       "total": "{{count}} mensagens",
       "loading": "A carregar mensagens...",
-      "loadError": "Nao foi possivel carregar as mensagens.",
+      "loadError": "Não foi possível carregar as mensagens.",
       "empty": "Nenhuma mensagem encontrada.",
       "filters": {
         "search": "Pesquisar",
-        "ipAddress": "Endereco IP",
+        "ipAddress": "Endereço IP",
         "languageCode": "Idioma"
       },
       "columns": {

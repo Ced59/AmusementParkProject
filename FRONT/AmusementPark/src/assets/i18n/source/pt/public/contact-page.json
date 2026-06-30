@@ -6,7 +6,7 @@
     "email": {
       "badge": "Email oficial",
       "title": "Contacto direto",
-      "note": "Podes escrever diretamente para este endereco; e o contacto estavel do site."
+      "note": "Podes escrever diretamente para este endereço; e o contacto estável do site."
     },
     "form": {
       "kicker": "Livro de comentarios",
@@ -16,14 +16,14 @@
       "help": "Escreve a tua mensagem de forma simples, sem links desnecessarios.",
       "validation": "Introduz uma mensagem clara entre 10 e 2000 caracteres.",
       "success": "A tua mensagem foi enviada.",
-      "error": "Nao foi possivel enviar a mensagem. Verifique o texto ou tente mais tarde.",
+      "error": "Não foi possível enviar a mensagem. Verifique o texto ou tente mais tarde.",
       "submit": "Enviar",
       "submitting": "A enviar"
     },
     "privacy": {
       "badge": "Protecao",
       "title": "Um espaco protegido",
-      "text": "O formulario fica simples de proposito para manter trocas limpas e uteis.",
+      "text": "O formulario fica simples de propósito para manter trocas limpas e úteis.",
       "points": {
         "plainText": "A tua mensagem deve continuar clara e respeitosa.",
         "ip": "Abusos repetidos podem ser limitados.",

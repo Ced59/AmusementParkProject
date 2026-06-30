@@ -1,11 +1,11 @@
 {
   "parks": {
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
+      "kicker": "Parkvideos",
+      "title": "Videos von {{name}}",
+      "subtitle": "Sieh dir Videos von {{name}} an: Onrides, Offrides, offizielle Clips und Creator-Inhalte.",
+      "loadingTitle": "Videos werden geladen",
+      "loadingMessage": "Parkvideos werden vorbereitet.",
       "loadingItemsTitle": "Videos der Orte werden geladen",
       "loadingItemsMessage": "Videos von Orten in {{name}} werden vorbereitet.",
       "tabs": {
@@ -13,27 +13,27 @@
         "park": "Park",
         "items": "Orte im Park"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Videos nicht verfügbar",
+      "errorMessage": "Die Videos dieses Parks können derzeit nicht geladen werden.",
+      "backToPark": "Zurück zu {{name}}",
+      "emptyTitle": "Keine veröffentlichten Videos",
+      "emptyMessage": "Für {{name}} ist noch kein veröffentlichtes Video verfügbar."
     }
   },
   "parkItems": {
     "videosPage": {
       "kicker": "Videos des Ortes",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Videos von {{name}}",
+      "subtitle": "Sieh dir Videos von {{name}} in {{park}} an: Onrides, Offrides, Bewertungen und offizielle Medien.",
+      "loadingTitle": "Videos werden geladen",
       "loadingMessage": "Die Videos dieses Ortes werden vorbereitet.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Videos nicht verfügbar",
       "errorMessage": "Die Videos dieses Ortes können derzeit nicht geladen werden.",
-      "backToItem": "Back to {{name}}",
+      "backToItem": "Zurück zu {{name}}",
       "backToItems": "Mehr entdecken in {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToPark": "Zurück zu {{name}}",
+      "emptyTitle": "Keine veröffentlichten Videos",
+      "emptyMessage": "Für {{name}} ist noch kein veröffentlichtes Video verfügbar."
     }
   }
 }

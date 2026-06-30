@@ -93,7 +93,7 @@
       "markToReview": "Zu prüfen setzen",
       "markValidated": "Validieren",
       "markNotRelevant": "Nicht relevant",
-      "validCoordinatesScope": "Parks mit gueltigen Koordinaten",
+      "validCoordinatesScope": "Parks mit gültigen Koordinaten",
       "makeFilteredValidCoordinatesVisible": "Geolokalisierte Parks sichtbar machen",
       "makeVisibleShort": "Sichtbar",
       "markToReviewShort": "Prüfen",
@@ -104,8 +104,8 @@
     "contactGrievances": {
       "navTitle": "Kontaktmeldungen",
       "kicker": "Kontakt",
-      "title": "Rueckmeldebuch",
-      "subtitle": "Oeffentliche Kontaktmeldungen mit IP-Kontext gegen Missbrauch einsehen.",
+      "title": "Rückmeldebuch",
+      "subtitle": "Öffentliche Kontaktmeldungen mit IP-Kontext gegen Missbrauch einsehen.",
       "total": "{{count}} Nachrichten",
       "loading": "Kontaktmeldungen werden geladen...",
       "loadError": "Kontaktmeldungen konnten nicht geladen werden.",
@@ -161,7 +161,7 @@
       "countryCodePlaceholder": "FR",
       "coordinates": "Koordinaten",
       "coordinatesAll": "Alle Koordinaten",
-      "validCoordinatesOnly": "Gueltige Koordinaten",
+      "validCoordinatesOnly": "Gültige Koordinaten",
       "invalidCoordinatesOnly": "Fehlend oder 0,0"
     },
     "hidden": "Ausgeblendet",
@@ -429,37 +429,37 @@
       },
       "editor": {
         "title": "JSON-Dokument",
-        "description": "Fehlende Eigenschaften bleiben erhalten. Die openingHours-Sektion wird mit demselben globalen JSON wie Park, Zonen, Seiten und Bilder geprueft und angewendet."
+        "description": "Fehlende Eigenschaften bleiben erhalten. Die openingHours-Sektion wird mit demselben globalen JSON wie Park, Zonen, Seiten und Bilder geprüft und angewendet."
       },
       "export": {
         "title": "Park-JSON exportieren",
-        "description": "Den aktuellen Stand des ausgewaehlten Parks als JSON-Datei herunterladen.",
-        "selected": "Ausgewaehlter Park",
-        "noParkSelected": "Waehle vor dem Export einen bestehenden Park aus."
+        "description": "Den aktuellen Stand des ausgewählten Parks als JSON-Datei herunterladen.",
+        "selected": "Ausgewählter Park",
+        "noParkSelected": "Wähle vor dem Export einen bestehenden Park aus."
       },
       "mode": {
         "title": "Upsert-Modus",
-        "description": "Waehle vor der Vorschau, wie der Graph vorhandene Sammlungen behandelt.",
+        "description": "Wähle vor der Vorschau, wie der Graph vorhandene Sammlungen behandelt.",
         "merge": {
           "title": "Zusammenfuehren",
           "description": "Fehlende Sammlungen bleiben erhalten; nur enthaltene Entitaeten werden upserted."
         },
         "replaceCollections": {
           "title": "Sammlungen ersetzen",
-          "description": "Erlaubt kontrolliertes Ersetzen fuer die von diesem Graph gesteuerten Sammlungen."
+          "description": "Erlaubt kontrolliertes Ersetzen für die von diesem Graph gesteuerten Sammlungen."
         }
       },
       "graph": {
-        "title": "Graph-Uebersicht",
-        "description": "Pruefe die Graph-Struktur vor der Vorschau.",
-        "identity": "Identitaet",
+        "title": "Graph-Übersicht",
+        "description": "Prüfe die Graph-Struktur vor der Vorschau.",
+        "identity": "Identität",
         "country": "Land",
         "zones": "Zonen",
         "items": "Items",
         "images": "Bilder",
         "references": "Referenzen",
         "empty": "Nicht angegeben",
-        "invalidJson": "Das JSON-Dokument ist ungueltig. Oeffne Experten-JSON zur Korrektur."
+        "invalidJson": "Das JSON-Dokument ist ungültig. Öffne Experten-JSON zur Korrektur."
       },
       "actions": {
         "search": "Suchen",
@@ -468,7 +468,7 @@
         "back": "Zurueck",
         "next": "Weiter",
         "expert": "Experten-JSON",
-        "graph": "Graph-Uebersicht",
+        "graph": "Graph-Übersicht",
         "preview": "Prüfen",
         "previewing": "Prüfung…",
         "apply": "Anwenden",
@@ -502,26 +502,26 @@
         "previewSuccessTitle": "Vorschau bereit",
         "previewSuccessDetail": "Das JSON kann angewendet werden.",
         "previewPartialTitle": "Vorschau mit Hinweisen",
-        "previewPartialDetail": "Pruefe die Hinweise vor dem Anwenden.",
+        "previewPartialDetail": "Prüfe die Hinweise vor dem Anwenden.",
         "previewBlockedTitle": "Vorschau blockiert",
-        "previewBlockedDetail": "Die Vorschau enthaelt {{count}} Fehler.",
+        "previewBlockedDetail": "Die Vorschau enthält {{count}} Fehler.",
         "previewFailedTitle": "Vorschau fehlgeschlagen",
         "previewFailedDetail": "Die Vorschau konnte nicht abgeschlossen werden.",
         "applySuccessTitle": "Anwendung abgeschlossen",
         "applySuccessDetail": "Das JSON wurde angewendet.",
         "applyPartialTitle": "Teilweise angewendet",
-        "applyPartialDetail": "Einige Eintraege wurden nicht angewendet. Pruefe die Details.",
+        "applyPartialDetail": "Einige Einträge wurden nicht angewendet. Prüfe die Details.",
         "applyRejectedTitle": "Nichts angewendet",
-        "applyRejectedDetail": "{{count}} Eintrag/Eintraege wurden abgelehnt. Pruefe die Details.",
+        "applyRejectedDetail": "{{count}} Eintrag/Einträge wurden abgelehnt. Prüfe die Details.",
         "applyFailedTitle": "Anwendung fehlgeschlagen",
         "applyFailedDetail": "Das JSON konnte nicht angewendet werden.",
         "applyBlockedTitle": "Anwendung blockiert",
         "applyBlockedDetail": "Behebe die Vorschaufehler vor dem Anwenden.",
-        "invalidJsonTitle": "Ungueltiges JSON",
+        "invalidJsonTitle": "Ungültiges JSON",
         "invalidJsonDetail": "Korrigiere das JSON, bevor du fortfaehrst.",
         "blockRemovedTitle": "JSON aktualisiert",
         "blockRemovedDetail": "Der Block wurde aus dem Entwurf entfernt.",
-        "blockQueuedForDeletionDetail": "Der Block ist im Entwurf zur Loeschung vorgemerkt.",
+        "blockQueuedForDeletionDetail": "Der Block ist im Entwurf zur Löschung vorgemerkt.",
         "blockRemoveFailedTitle": "Block unveraendert",
         "blockRemoveFailedDetail": "Dieser Block konnte im JSON nicht gefunden werden.",
         "errorsCopiedTitle": "Fehler kopiert",
@@ -536,14 +536,14 @@
         "noTarget": "Kein Zielpark",
         "created": "Erstellt",
         "updated": "Geändert",
-        "deleted": "Geloescht",
+        "deleted": "Gelöscht",
         "warnings": "Warnungen",
         "errors": "Fehler",
         "errorDetails": "Fehlerdetails",
-        "pending": "Fuehre eine Vorschau aus, um Aenderungen vor dem Anwenden zu pruefen.",
+        "pending": "Führe eine Vorschau aus, um Änderungen vor dem Anwenden zu prüfen.",
         "applied": "Upsert erfolgreich angewendet.",
-        "appliedPartial": "Teilweise angewendet: {{applied}} Eintrag/Eintraege angewendet, {{failed}} Eintrag/Eintraege abgelehnt. Die Details unten zeigen die betroffenen Eintraege.",
-        "appliedNoChange": "Nichts angewendet: {{failed}} Eintrag/Eintraege abgelehnt. Pruefe die Details unten.",
+        "appliedPartial": "Teilweise angewendet: {{applied}} Eintrag/Einträge angewendet, {{failed}} Eintrag/Einträge abgelehnt. Die Details unten zeigen die betroffenen Einträge.",
+        "appliedNoChange": "Nichts angewendet: {{failed}} Eintrag/Einträge abgelehnt. Prüfe die Details unten.",
         "contentChangesDetected": "Inhaltsaenderungen erkannt ({{count}}). Sie werden aktualisiert, wenn Sie dieses JSON anwenden.",
         "field": "Feld",
         "oldValue": "Alt",
@@ -615,15 +615,15 @@
         "targetId": "Behaltene ID",
         "sections": "Abschnitte",
         "targetVersion": "Behalten",
-        "sourceVersion": "Uebernehmen",
-        "add": "Merge hinzufuegen",
+        "sourceVersion": "Übernehmen",
+        "add": "Merge hinzufügen",
         "entityTypes": {
           "AttractionManufacturer": "Hersteller",
           "Park": "Park",
           "ParkItem": "Park-Item"
         },
         "sectionLabels": {
-          "identity": "Identitaet",
+          "identity": "Identität",
           "contactDetails": "Kontakt",
           "biography": "Biografie",
           "logo": "Logo",
@@ -692,7 +692,7 @@
     },
     "parks": {
       "tabs": {
-        "openingHours": "Oeffnungszeiten",
+        "openingHours": "Öffnungszeiten",
         "general": "Allgemein",
         "location": "Standort",
         "descriptions": "Beschreibungen",
@@ -701,7 +701,7 @@
         "videos": "Videos"
       },
       "sort": {
-        "openingHoursAttentionFirst": "Zeiten zuerst pruefen",
+        "openingHoursAttentionFirst": "Zeiten zuerst prüfen",
         "openingHoursReadyFirst": "Zeiten komplett zuerst",
         "label": "Sort.",
         "default": "Standard",
@@ -712,11 +712,11 @@
         "visibleAsc": "Sichtb. min"
       },
       "openingHours": {
-        "title": "Oeffnungszeiten",
+        "title": "Öffnungszeiten",
         "filterLabel": "Zeiten",
         "notConfigured": "Nicht konfiguriert",
-        "coverageOne": "Vollstaendige Zeiten fuer {{ count }} Tag, bis {{ date }}",
-        "coverageMany": "Vollstaendige Zeiten fuer {{ count }} Tage, bis {{ date }}",
+        "coverageOne": "Vollständige Zeiten für {{ count }} Tag, bis {{ date }}",
+        "coverageMany": "Vollständige Zeiten für {{ count }} Tage, bis {{ date }}",
         "statuses": {
           "NotConfigured": "Nicht konfiguriert",
           "Expired": "Abgelaufen",
@@ -733,18 +733,18 @@
         }
       },
       "openingHoursEditor": {
-        "title": "Oeffnungszeiten JSON",
-        "subtitle": "Fuege das Zeitplan-JSON ein oder bearbeite es und starte dann den Upsert fuer diesen Park.",
+        "title": "Öffnungszeiten JSON",
+        "subtitle": "Füge das Zeitplan-JSON ein oder bearbeite es und starte dann den Upsert für diesen Park.",
         "reload": "Neu laden",
         "format": "Formatieren",
         "upsert": "JSON upserten",
-        "jsonLabel": "Oeffnungszeiten JSON",
-        "invalidJson": "Das JSON ist ungueltig.",
-        "savedSummary": "Oeffnungszeiten gespeichert",
+        "jsonLabel": "Öffnungszeiten JSON",
+        "invalidJson": "Das JSON ist ungültig.",
+        "savedSummary": "Öffnungszeiten gespeichert",
         "savedDetail": "Der Zeitplan wurde upserted.",
         "saveError": "Der Zeitplan konnte nicht gespeichert werden.",
         "loadError": "Der Zeitplan konnte nicht geladen werden.",
-        "hint": "Geschlossene Tage muessen explizit sein, wenn sie als vollstaendige Abdeckung zaehlen sollen."
+        "hint": "Geschlossene Tage müssen explizit sein, wenn sie als vollständige Abdeckung zaehlen sollen."
       },
       "total": "Gesamtzahl der Parks: {{count}}",
       "empty": "Keine Parks gefunden.",
@@ -1099,7 +1099,7 @@
         "import": {
           "open": "Per Einfuegen importieren",
           "title": "Einfuegen / CSV-Import",
-          "subtitle": "Liste oder Tabelle einfuegen, Vorschau korrigieren und nur gueltige Zeilen anwenden.",
+          "subtitle": "Liste oder Tabelle einfuegen, Vorschau korrigieren und nur gültige Zeilen anwenden.",
           "source": "Quelle",
           "placeholder": "Name\\nName;Kategorie;Typ;Zone;Hersteller;Beschreibung FR",
           "parsedRows": "{{count}} Zeile(n) erkannt",
@@ -1213,7 +1213,7 @@
       "loadError": "Wetterstatus konnte nicht geladen werden.",
       "startError": "Wetteraktualisierung konnte nicht gestartet werden.",
       "retryError": "Wetteraktualisierung konnte nicht erneut gestartet werden.",
-      "empty": "Keine Wetterinformationen verfugbar.",
+      "empty": "Keine Wetterinformationen verfügbar.",
       "actions": {
         "startManual": "Jetzt aktualisieren",
         "retryFailed": "Fehler erneut versuchen",
@@ -1269,9 +1269,9 @@
       }
     },
     "publicViewToolbar": {
-      "ariaLabel": "Admin-Leiste fuer die oeffentliche Ansicht",
-      "viewMode": "Oeffentliche Ansicht",
-      "viewModeAriaLabel": "Oeffentliche Ansicht waehlen",
+      "ariaLabel": "Admin-Leiste für die öffentliche Ansicht",
+      "viewMode": "Öffentliche Ansicht",
+      "viewModeAriaLabel": "Öffentliche Ansicht wählen",
       "editionOff": "Bearbeiten aus",
       "editionOn": "Bearbeiten an",
       "enableEditionMode": "Bearbeiten aktivieren",
@@ -1304,16 +1304,16 @@
     "contextualBlocks": {
       "editAction": "Bearbeiten",
       "drawer": {
-        "ariaLabel": "Ausgewaehlter bearbeitbarer Block",
+        "ariaLabel": "Ausgewählter bearbeitbarer Block",
         "kicker": "Kontextblock",
-        "close": "Blockdiagnose schliessen",
+        "close": "Blockdiagnose schließen",
         "type": "Blocktyp",
         "entity": "Entitaet",
         "label": "Aktuelles Element",
         "capabilities": "Faehigkeiten",
         "localizedLanguages": "Lokalisiert in",
         "jsonScope": "JSON-Bereich",
-        "openAdminEdit": "Vollstaendige Admin-Bearbeitung oeffnen",
+        "openAdminEdit": "Vollständige Admin-Bearbeitung öffnen",
         "formTitle": "Schnellformular",
         "formLoading": "Formular wird geladen...",
         "formReload": "Neu laden",
@@ -1323,15 +1323,15 @@
         "formSaveError": "Das Speichern des Formulars ist fehlgeschlagen.",
         "formSaveSucceeded": "Formular gespeichert, die Seite wird aktualisiert.",
         "formNoChanges": "Keine Aenderung zum Speichern.",
-        "formUnavailable": "Das Formular ist fuer diesen Block nicht verfuegbar.",
+        "formUnavailable": "Das Formular ist für diesen Block nicht verfügbar.",
         "localizedFieldAriaLabel": "Variante {{ languageCode }} bearbeiten",
-        "locationPickerHint": "Tippe auf die Karte, um den Punkt zu erstellen oder zu verschieben. Koordinaten bleiben als Ersatz verfuegbar.",
+        "locationPickerHint": "Tippe auf die Karte, um den Punkt zu erstellen oder zu verschieben. Koordinaten bleiben als Ersatz verfügbar.",
         "locationLatitude": "Breitengrad",
-        "locationLongitude": "Laengengrad",
+        "locationLongitude": "Längengrad",
         "locationClear": "Punkt entfernen",
-        "locationInvalid": "Breiten- und Laengengrad muessen gueltig oder beide leer sein.",
-        "addChildTitle": "Item hinzufuegen",
-        "addChildHint": "Das Item wird verborgen erstellt und vor der Veroeffentlichung geprueft.",
+        "locationInvalid": "Breiten- und Längengrad müssen gültig oder beide leer sein.",
+        "addChildTitle": "Item hinzufügen",
+        "addChildHint": "Das Item wird verborgen erstellt und vor der Veröffentlichung geprüft.",
         "addChildNameLabel": "Name",
         "addChildNamePlaceholder": "Item-Name",
         "addChildZoneLabel": "Zone",
@@ -1341,16 +1341,16 @@
         "addChildCreateBusy": "Erstellung...",
         "addChildError": "Das Item konnte nicht erstellt werden.",
         "addChildNameRequired": "Gib einen Namen ein, bevor du das Item erstellst.",
-        "addChildUnavailable": "Gezieltes Hinzufuegen ist fuer diesen Block nicht verfuegbar.",
+        "addChildUnavailable": "Gezieltes Hinzufügen ist für diesen Block nicht verfügbar.",
         "addChildSucceeded": "Verborgenes Item erstellt, die Seite wird aktualisiert.",
-        "openCreatedChild": "Item oeffnen",
+        "openCreatedChild": "Item öffnen",
         "parkGraphUpsertTitle": "Hersteller-Upsert-JSON",
         "parkGraphUpsertHint": "Kopiere, lade herunter oder importiere dieses vorausgefuellte Hersteller-JSON direkt.",
         "parkGraphUpsertDraftAriaLabel": "Vorausgefuelltes Hersteller-Upsert-JSON",
         "copyParkGraphUpsert": "JSON kopieren",
         "copyParkGraphUpsertBusy": "Kopieren...",
         "downloadParkGraphUpsert": "JSON herunterladen",
-        "openParkGraphUpsertImport": "JSON-Import oeffnen",
+        "openParkGraphUpsertImport": "JSON-Import öffnen",
         "importParkGraphUpsert": "JSON importieren",
         "importParkGraphUpsertBusy": "Import...",
         "parkGraphUpsertCopied": "JSON wurde in die Zwischenablage kopiert.",
@@ -1360,40 +1360,40 @@
         "parkGraphUpsertDownloadError": "JSON konnte nicht heruntergeladen werden.",
         "parkGraphUpsertImportError": "JSON-Import fehlgeschlagen.",
         "parkGraphUpsertImportBlocked": "Das JSON konnte nicht angewendet werden.",
-        "parkGraphUpsertImportInvalidFile": "Waehle eine .json-Datei.",
-        "parkGraphUpsertImportInvalidJson": "Die JSON-Datei ist ungueltig.",
-        "parkGraphUpsertUnavailable": "Fuer diesen Block ist kein Upsert-Entwurf verfuegbar.",
+        "parkGraphUpsertImportInvalidFile": "Wähle eine .json-Datei.",
+        "parkGraphUpsertImportInvalidJson": "Die JSON-Datei ist ungültig.",
+        "parkGraphUpsertUnavailable": "Für diesen Block ist kein Upsert-Entwurf verfügbar.",
         "downloadJson": "Block-JSON herunterladen",
-        "downloadJsonBusy": "Download laeuft...",
+        "downloadJsonBusy": "Download läuft...",
         "downloadJsonError": "JSON-Download fehlgeschlagen.",
-        "downloadJsonUnavailable": "JSON-Export ist fuer diesen Block nicht verfuegbar.",
+        "downloadJsonUnavailable": "JSON-Export ist für diesen Block nicht verfügbar.",
         "exportJsonAriaLabel": "Begrenztes JSON dieses Blocks herunterladen",
         "jsonDraft": "JSON-Entwurf",
         "jsonDraftAriaLabel": "Begrenzter JSON-Entwurf dieses Blocks",
         "previewJson": "Vorschau",
-        "previewJsonBusy": "Vorschau laeuft...",
+        "previewJsonBusy": "Vorschau läuft...",
         "clearJsonDraft": "Leeren",
-        "previewJsonInvalid": "Das eingegebene JSON ist nicht gueltig.",
+        "previewJsonInvalid": "Das eingegebene JSON ist nicht gültig.",
         "previewJsonError": "JSON-Vorschau fehlgeschlagen.",
-        "previewJsonUnavailable": "JSON-Vorschau ist fuer diesen Block nicht verfuegbar.",
-        "previewJsonCanApply": "Vorschau ist gueltig, keine Daten wurden geaendert.",
-        "previewJsonBlocked": "Vorschau ist blockiert, keine Daten wurden geaendert.",
+        "previewJsonUnavailable": "JSON-Vorschau ist für diesen Block nicht verfügbar.",
+        "previewJsonCanApply": "Vorschau ist gültig, keine Daten wurden geändert.",
+        "previewJsonBlocked": "Vorschau ist blockiert, keine Daten wurden geändert.",
         "applyJson": "Anwenden",
         "applyJsonBusy": "Wird angewendet...",
-        "applyJsonInvalid": "Das eingegebene JSON ist nicht gueltig.",
+        "applyJsonInvalid": "Das eingegebene JSON ist nicht gültig.",
         "applyJsonError": "JSON-Anwendung ist fehlgeschlagen.",
-        "applyJsonUnavailable": "JSON-Anwendung ist fuer diesen Block nicht verfuegbar.",
-        "applyJsonPreviewRequired": "Pruefe dieses JSON vor dem Anwenden.",
+        "applyJsonUnavailable": "JSON-Anwendung ist für diesen Block nicht verfügbar.",
+        "applyJsonPreviewRequired": "Prüfe dieses JSON vor dem Anwenden.",
         "applyJsonSucceeded": "JSON angewendet, die Seite wird aktualisiert.",
         "previewChanged": "Geaendert",
         "previewErrors": "Fehler",
         "previewWarnings": "Warnungen",
-        "previewChanges": "Aenderungen",
+        "previewChanges": "Änderungen",
         "previewCurrentValue": "Aktuell",
         "previewProposedValue": "Vorschlag",
         "previewJsonNoChanges": "Keine Aenderung erkannt.",
         "emptyValue": "Leer",
-        "photoAddTitle": "Foto hinzufugen",
+        "photoAddTitle": "Foto hinzufügen",
         "photoSourceFile": "Datei",
         "photoSourceRemote": "Link",
         "photoFileLabel": "Bilddatei",
@@ -1417,7 +1417,7 @@
         "photoTagsLabel": "Foto-Tags",
         "photoPublishedLabel": "Foto veroffentlichen",
         "photoSetCurrentLabel": "Als Hauptbild setzen",
-        "photoUpload": "Foto hinzufugen",
+        "photoUpload": "Foto hinzufügen",
         "photoUploading": "Wird hinzugefugt...",
         "photoSourceRequired": "Wahle eine Datei oder gib einen Bildlink ein.",
         "photoInvalidRemoteUrl": "Der Link muss eine gultige http- oder https-URL sein.",
@@ -1426,38 +1426,38 @@
         "photoTagsLoadError": "Foto-Tags konnten nicht geladen werden."
       },
       "capabilities": {
-        "fullAdminEdit": "Vollstaendige Admin-Bearbeitung verfuegbar",
-        "boundedJsonExport": "Begrenzter JSON-Export verfuegbar",
-        "boundedJsonPreview": "Begrenzte JSON-Vorschau verfuegbar",
-        "boundedJsonApply": "Begrenzte JSON-Anwendung verfuegbar",
-        "contextualFormEdit": "Kontextformular verfuegbar",
-        "targetedChildAdd": "Gezieltes Hinzufuegen verfuegbar",
-        "parkGraphUpsertDraft": "JSON-Upsert-Entwurf verfuegbar",
+        "fullAdminEdit": "Vollständige Admin-Bearbeitung verfügbar",
+        "boundedJsonExport": "Begrenzter JSON-Export verfügbar",
+        "boundedJsonPreview": "Begrenzte JSON-Vorschau verfügbar",
+        "boundedJsonApply": "Begrenzte JSON-Anwendung verfügbar",
+        "contextualFormEdit": "Kontextformular verfügbar",
+        "targetedChildAdd": "Gezieltes Hinzufügen verfügbar",
+        "parkGraphUpsertDraft": "JSON-Upsert-Entwurf verfügbar",
         "boundedJsonExportPlanned": "Begrenzter JSON-Export geplant",
         "boundedJsonUpsertPlanned": "Begrenzter JSON-Upsert geplant",
         "formEditPlanned": "Kontextformular geplant",
-        "contextualPhotoAdd": "Kontextuelles Foto-Hinzufugen verfugbar"
+        "contextualPhotoAdd": "Kontextuelles Foto-Hinzufügen verfügbar"
       },
       "blocks": {
         "parkHero": {
           "label": "Park-Hero",
-          "description": "Identitaet, visuelle Signale und zentrale Parkfelder."
+          "description": "Identität, visuelle Signale und zentrale Parkfelder."
         },
         "parkDescription": {
           "label": "Parkbeschreibung",
-          "description": "Lokalisierte oeffentliche Beschreibung fuer alle unterstuetzten Sprachen."
+          "description": "Lokalisierte öffentliche Beschreibung für alle unterstützten Sprachen."
         },
         "parkLocation": {
           "label": "Parkstandort",
-          "description": "Hauptposition des Parks auf der oeffentlichen Karte."
+          "description": "Hauptposition des Parks auf der öffentlichen Karte."
         },
         "parkPractical": {
           "label": "Praktische Infos",
-          "description": "Adresse, Referenzen, Website und nuetzliche Parkkoordinaten."
+          "description": "Adresse, Referenzen, Website und nützliche Parkkoordinaten."
         },
         "parkItemDescription": {
           "label": "Item-Beschreibung",
-          "description": "Lokalisierte oeffentliche Beschreibung fuer alle unterstuetzten Sprachen."
+          "description": "Lokalisierte öffentliche Beschreibung für alle unterstützten Sprachen."
         },
         "parkItemLocation": {
           "label": "Item-Standort",
@@ -1465,15 +1465,15 @@
         },
         "parkImages": {
           "label": "Parkfotos",
-          "description": "Offentliche Parkgalerie und gezieltes Hinzufugen von Fotos."
+          "description": "Öffentliche Parkgalerie und gezieltes Hinzufügen von Fotos."
         },
         "parkItemImages": {
           "label": "Item-Fotos",
-          "description": "Offentliche Item-Galerie und gezieltes Hinzufugen von Fotos."
+          "description": "Öffentliche Item-Galerie und gezieltes Hinzufügen von Fotos."
         },
         "manufacturerReference": {
           "label": "Hersteller",
-          "description": "Vorausgefuellter JSON-Upsert-Entwurf fuer diesen Hersteller."
+          "description": "Vorausgefüllter JSON-Upsert-Entwurf für diesen Hersteller."
         }
       }
     },
@@ -1782,7 +1782,7 @@
       "language": "Ausspiel-Sprache",
       "allLanguageFilters": "Alle Ausspiel-Sprachen",
       "allLanguagesVisibility": "Alle Sprachen",
-      "contextCreateKicker": "Kontextbezogen hinzufuegen",
+      "contextCreateKicker": "Kontextbezogen hinzufügen",
       "localizedTitles": "Lokalisierte Titel",
       "localizedDescriptions": "Lokalisierte Beschreibungen",
       "isPublished": "Video veröffentlicht",
@@ -1794,7 +1794,7 @@
       "createSuccess": "Video erstellt.",
       "createError": "Das Video konnte nicht erstellt werden.",
       "saveOwnerFirstTitle": "Speichere diesen Inhalt zuerst",
-      "saveOwnerFirstMessage": "Das Video kann hinzugefuegt werden, sobald die Kennung verfuegbar ist.",
+      "saveOwnerFirstMessage": "Das Video kann hinzugefuegt werden, sobald die Kennung verfügbar ist.",
       "listTitle": "Bibliothek",
       "pageHint": "Lazy Thumbnails, Serverfilter und echte Paginierung.",
       "emptyTitle": "Kein Video gefunden",
@@ -1998,8 +1998,8 @@
       "PARK_ITEM": "Foto eines Ortes",
       "OPERATOR": "Betreiberfoto",
       "MANUFACTURER": "Herstellerfoto",
-      "FOUNDER": "Gruenderfoto",
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "FOUNDER": "Gründerfoto",
+      "VIDEO_THUMBNAIL": "Video-Miniatur"
     },
     "ownerTypes": {
       "NONE": "Keine",
@@ -2008,7 +2008,7 @@
       "PARK_ITEM": "Parkinhalt",
       "PARK_OPERATOR": "Betreiber",
       "ATTRACTION_MANUFACTURER": "Hersteller",
-      "PARK_FOUNDER": "Gruender",
+      "PARK_FOUNDER": "Gründer",
       "VIDEO": "Video"
     }
   },
@@ -2048,7 +2048,7 @@
       "remoteSourceUrlPlaceholder": "URL des Quellbilds",
       "remoteImport": "Aus URL importieren",
       "remotePreviewAlt": "Vorschau des Quellbilds",
-      "withWatermark": "Watermark hinzufuegen"
+      "withWatermark": "Watermark hinzufügen"
     }
   },
   "sidebar": {
@@ -2141,58 +2141,58 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
-      "loadMore": "Load more videos",
-      "loadingMore": "Loading..."
+      "count": "{{count}} Videos",
+      "views": "{{count}} Aufrufe",
+      "loadMore": "Mehr Videos laden",
+      "loadingMore": "Wird geladen..."
     },
     "filters": {
-      "type": "Video type",
-      "allTypes": "All types",
+      "type": "Videotyp",
+      "allTypes": "Alle Typen",
       "tag": "Tag",
-      "allTags": "All tags",
-      "creator": "Creator",
-      "creatorPlaceholder": "Filter by creator name",
-      "applyCreator": "Apply",
-      "clear": "Clear filters"
+      "allTags": "Alle Tags",
+      "creator": "Ersteller",
+      "creatorPlaceholder": "Nach Erstellername filtern",
+      "applyCreator": "Anwenden",
+      "clear": "Filter löschen"
     },
     "providers": {
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "External video"
+      "other": "Externes Video"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Advertisement",
-      "documentary": "Documentary",
-      "review": "Review",
-      "news": "News",
+      "advertisement": "Werbung",
+      "documentary": "Dokumentation",
+      "review": "Bewertung",
+      "news": "Neuigkeit",
       "event": "Event",
       "interview": "Interview",
-      "other": "Other"
+      "other": "Sonstiges"
     },
     "watch": {
-      "loadingTitle": "Loading video",
-      "loadingMessage": "The video page is being loaded.",
-      "errorTitle": "Video unavailable",
-      "errorMessage": "The requested video could not be loaded.",
-      "previous": "Previous video",
-      "next": "Next video",
-      "backToVideos": "Back to videos",
-      "creator": "Creator",
-      "category": "Category",
-      "provider": "Provider",
-      "duration": "Duration",
-      "publishedAt": "Published",
-      "viewCount": "Views",
-      "views": "{{count}} views",
-      "tagsAndCategories": "Categories and tags",
-      "openExternal": "Open video",
-      "openCreator": "Open creator",
-      "openProvider": "Open provider page"
+      "loadingTitle": "Video wird geladen",
+      "loadingMessage": "Die Videoseite wird geladen.",
+      "errorTitle": "Video nicht verfügbar",
+      "errorMessage": "Das angefragte Video konnte nicht geladen werden.",
+      "previous": "Vorheriges Video",
+      "next": "Nächstes Video",
+      "backToVideos": "Zurück zu den Videos",
+      "creator": "Ersteller",
+      "category": "Kategorie",
+      "provider": "Anbieter",
+      "duration": "Dauer",
+      "publishedAt": "Veröffentlicht",
+      "viewCount": "Aufrufe",
+      "views": "{{count}} Aufrufe",
+      "tagsAndCategories": "Kategorien und Tags",
+      "openExternal": "Video öffnen",
+      "openCreator": "Ersteller öffnen",
+      "openProvider": "Anbieterseite öffnen"
     }
   },
   "aboutPage": {
@@ -2352,21 +2352,21 @@
       "note": "Du kannst direkt an diese Adresse schreiben; sie ist der feste Kontakt der Website."
     },
     "form": {
-      "kicker": "Rueckmeldebuch",
+      "kicker": "Rückmeldebuch",
       "title": "Nachricht hinterlassen",
       "description": "Hinterlasse einen Hinweis, eine Korrektur oder eine Verbesserungsidee.",
       "messageLabel": "Deine Nachricht",
-      "help": "Schreibe deine Nachricht einfach und ohne unnoetige Links.",
+      "help": "Schreibe deine Nachricht einfach und ohne unnötige Links.",
       "validation": "Gib eine klare Nachricht mit 10 bis 2000 Zeichen ein.",
       "success": "Deine Nachricht wurde gesendet.",
-      "error": "Die Nachricht konnte nicht gesendet werden. Pruefe den Text oder versuche es spaeter erneut.",
+      "error": "Die Nachricht konnte nicht gesendet werden. Prüfe den Text oder versuche es später erneut.",
       "submit": "Senden",
       "submitting": "Senden"
     },
     "privacy": {
       "badge": "Schutz",
       "title": "Geschuetzter Bereich",
-      "text": "Das Formular bleibt bewusst einfach, damit der Austausch sauber und nuetzlich bleibt.",
+      "text": "Das Formular bleibt bewusst einfach, damit der Austausch sauber und nützlich bleibt.",
       "points": {
         "plainText": "Deine Nachricht soll klar und respektvoll bleiben.",
         "ip": "Wiederholter Missbrauch kann begrenzt werden.",
@@ -2500,14 +2500,14 @@
   "manufacturersPage": {
     "kicker": "Hersteller",
     "title": "Hersteller von Attraktionen",
-    "subtitle": "Durchsuche Hersteller von Attraktionen und Coastern, die auf der Website referenziert sind, mit Profilen und nuetzlichen Links.",
+    "subtitle": "Durchsuche Hersteller von Attraktionen und Coastern, die auf der Website referenziert sind, mit Profilen und nützlichen Links.",
     "search": {
       "label": "Suche",
       "placeholder": "Name, Land, Stadt oder Jahr",
       "count": "{{count}} Hersteller gefunden"
     },
     "loading": "Hersteller werden geladen...",
-    "error": "Hersteller koennen gerade nicht geladen werden.",
+    "error": "Hersteller können gerade nicht geladen werden.",
     "empty": "Kein Hersteller passt zu deiner Suche.",
     "noDescription": "Das Detailprofil muss noch ergaenzt werden.",
     "attractionCount": "{{count}} Attraktion(en)"
@@ -2833,17 +2833,17 @@
     },
     "videosPage": {
       "kicker": "Videos des Ortes",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Videos von {{name}}",
+      "subtitle": "Sieh dir Videos von {{name}} in {{park}} an: Onrides, Offrides, Bewertungen und offizielle Medien.",
+      "loadingTitle": "Videos werden geladen",
       "loadingMessage": "Die Videos dieses Ortes werden vorbereitet.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Videos nicht verfügbar",
       "errorMessage": "Die Videos dieses Ortes können derzeit nicht geladen werden.",
-      "backToItem": "Back to {{name}}",
+      "backToItem": "Zurück zu {{name}}",
       "backToItems": "Mehr entdecken in {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToPark": "Zurück zu {{name}}",
+      "emptyTitle": "Keine veröffentlichten Videos",
+      "emptyMessage": "Für {{name}} ist noch kein veröffentlichtes Video verfügbar."
     }
   },
   "parkOpeningHours": {
@@ -2939,7 +2939,7 @@
       "rain": "Regen",
       "snow": "Schnee",
       "thunderstorm": "Gewitter",
-      "unknown": "Wetter nicht verfugbar"
+      "unknown": "Wetter nicht verfügbar"
     },
     "fields": {
       "precipitationProbability": "Regenrisiko",
@@ -2957,7 +2957,7 @@
       "title": "Mit Vorjahren vergleichen",
       "subtitle": "Vergleiche dieselben Daten aus früheren Jahren, bevor du deinen Besuch planst.",
       "loading": "Wettervergleiche werden geladen.",
-      "empty": "Fur diese Daten ist keine historische Beobachtung verfugbar.",
+      "empty": "Für diese Daten ist keine historische Beobachtung verfügbar.",
       "errorMessage": "Wettervergleiche konnten nicht geladen werden.",
       "yearSingular": "Vor {{count}} Jahr",
       "yearPlural": "Vor {{count}} Jahren",
@@ -2974,9 +2974,9 @@
       "lead": "Prüfe das Wetter für {{name}} vor deinem Besuch.",
       "loadingTitle": "Wetter wird geladen",
       "loadingMessage": "Die Vorhersage wird geladen.",
-      "emptyTitle": "Keine Vorhersage verfugbar",
-      "emptyMessage": "Fur diesen Park sind noch keine Wetterdaten verfugbar.",
-      "errorTitle": "Wetter nicht verfugbar",
+      "emptyTitle": "Keine Vorhersage verfügbar",
+      "emptyMessage": "Für diesen Park sind noch keine Wetterdaten verfügbar.",
+      "errorTitle": "Wetter nicht verfügbar",
       "backToPark": "Zuruck zu {{name}}",
       "forecastLabel": "7-Tage-Wettervorhersage"
     }
@@ -3268,7 +3268,7 @@
       "loadingItemsMessage": "Die Fotos der Orte von {{name}} werden vorbereitet.",
       "emptyTitle": "Keine veröffentlichten Bilder",
       "emptyMessage": "Für {{name}} sind noch keine veröffentlichten Bilder verfügbar.",
-      "emptyItemsMessage": "Fuer {{name}} sind noch keine veroeffentlichten Fotos der Orte verfuegbar."
+      "emptyItemsMessage": "Für {{name}} sind noch keine veröffentlichten Fotos der Orte verfügbar."
     },
     "mapPage": {
       "kicker": "Parkkarte",
@@ -3323,11 +3323,11 @@
       "closedDefinitively": "Dauerhaft geschlossen"
     },
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
+      "kicker": "Parkvideos",
+      "title": "Videos von {{name}}",
+      "subtitle": "Sieh dir Videos von {{name}} an: Onrides, Offrides, offizielle Clips und Creator-Inhalte.",
+      "loadingTitle": "Videos werden geladen",
+      "loadingMessage": "Parkvideos werden vorbereitet.",
       "loadingItemsTitle": "Videos der Orte werden geladen",
       "loadingItemsMessage": "Videos von Orten in {{name}} werden vorbereitet.",
       "tabs": {
@@ -3335,11 +3335,11 @@
         "park": "Park",
         "items": "Orte im Park"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Videos nicht verfügbar",
+      "errorMessage": "Die Videos dieses Parks können derzeit nicht geladen werden.",
+      "backToPark": "Zurück zu {{name}}",
+      "emptyTitle": "Keine veröffentlichten Videos",
+      "emptyMessage": "Für {{name}} ist noch kein veröffentlichtes Video verfügbar."
     }
   },
   "privacyPage": {
@@ -3603,7 +3603,7 @@
   },
   "versionHistoryPage": {
     "kicker": "Versionsverlauf",
-    "title": "Was sich geaendert hat",
+    "title": "Was sich geändert hat",
     "lead": "Aktuelle Version: {{version}}. Folge den sichtbaren Verbesserungen der Website im Laufe der Zeit.",
     "timelineAriaLabel": "Zeitleiste des Versionsverlaufs",
     "loading": "Versionen werden geladen...",

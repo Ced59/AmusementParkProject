@@ -265,11 +265,11 @@
           "accessConditions": "Condiciones de acceso",
           "locations": "Ubicaciones específicas",
           "photos": "Fotos",
-          "videos": "Videos"
+          "videos": "Vídeos"
         },
         "sectionNav": {
-          "label": "Seccion del editor",
-          "help": "En pantallas pequenas, elige una seccion cada vez.",
+          "label": "Sección del editor",
+        "help": "En pantallas pequeñas, elige una sección cada vez.",
           "retrySave": "Reintentar guardado",
           "saveFailedWithRetry": "No se pudo guardar. Tus cambios siguen en este formulario."
         },
@@ -310,15 +310,15 @@
           "fields": {
             "minHeightCm": {
               "label": "Altura mínima",
-              "help": "Acceso permitido desde esta altura."
+              "help": "Acceso permitido desde está altura."
             },
             "minHeightAccompaniedCm": {
               "label": "Altura mínima acompañado",
-              "help": "Desde esta altura se permite el acceso con un adulto."
+              "help": "Desde está altura se permite el acceso con un adulto."
             },
             "maxHeightCm": {
               "label": "Altura máxima",
-              "help": "Acceso prohibido por encima de esta altura."
+              "help": "Acceso prohibido por encima de está altura."
             }
           }
         },
@@ -360,7 +360,7 @@
           "parsedRows": "{{count}} fila(s) detectada(s)",
           "preview": "Previsualizar",
           "apply": "Aplicar",
-          "error": "No se pudo procesar esta importacion.",
+          "error": "No se pudo procesar está importacion.",
           "descriptionFr": "Descripcion FR",
           "previewSummary": "{{ready}} listas, {{warnings}} con advertencias, {{errors}} con error"
         },
@@ -376,7 +376,7 @@
         "descriptions": "Descripciones",
         "logos": "Logotipos",
         "photos": "Fotos",
-        "videos": "Videos"
+        "videos": "Vídeos"
       },
       "editorStatus": {
         "saving": "Guardando...",
@@ -408,7 +408,7 @@
       "featuredHomeOrder": "Orden destacado",
       "featuredHomeOrderPlaceholder": "Ej. 1",
       "featuredSponsoredField": "Aviso de patrocinio",
-      "featuredSponsoredHelp": "Muestra un aviso de patrocinio en la tarjeta pública cuando esta promoción corresponde a una colaboración.",
+      "featuredSponsoredHelp": "Muestra un aviso de patrocinio en la tarjeta pública cuando está promoción corresponde a una colaboración.",
       "featuredSponsoredEnabled": "Patrocinado",
       "featuredSponsoredDisabled": "No patrocinado",
       "photos": {

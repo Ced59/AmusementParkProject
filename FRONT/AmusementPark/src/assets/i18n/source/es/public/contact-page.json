@@ -6,24 +6,24 @@
     "email": {
       "badge": "Correo oficial",
       "title": "Contacto directo",
-      "note": "Puedes escribir directamente a esta direccion; es el contacto estable del sitio."
+      "note": "Puedes escribir directamente a está direccion; es el contacto estable del sitio."
     },
     "form": {
       "kicker": "Cuaderno de comentarios",
       "title": "Dejar un mensaje",
-      "description": "Deja una nota, una correccion o una idea de mejora.",
+      "description": "Deja una nota, una corrección o una idea de mejora.",
       "messageLabel": "Tu mensaje",
       "help": "Escribe tu mensaje de forma sencilla, sin enlaces innecesarios.",
       "validation": "Escribe un mensaje claro entre 10 y 2000 caracteres.",
       "success": "Tu mensaje se ha enviado.",
-      "error": "No se pudo enviar el mensaje. Revisa el texto o intentalo mas tarde.",
+      "error": "No se pudo enviar el mensaje. Revisa el texto o inténtalo más tarde.",
       "submit": "Enviar",
       "submitting": "Enviando"
     },
     "privacy": {
       "badge": "Proteccion",
       "title": "Un espacio protegido",
-      "text": "El formulario se mantiene sencillo para que los intercambios sigan siendo limpios y utiles.",
+      "text": "El formulario se mantiene sencillo para que los intercambios sigan siendo limpios y útiles.",
       "points": {
         "plainText": "Tu mensaje debe ser claro y respetuoso.",
         "ip": "Los abusos repetidos pueden limitarse.",

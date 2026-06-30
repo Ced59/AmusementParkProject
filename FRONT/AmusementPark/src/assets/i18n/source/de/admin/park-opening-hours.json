@@ -2,18 +2,18 @@
   "admin": {
     "parks": {
       "tabs": {
-        "openingHours": "Oeffnungszeiten"
+        "openingHours": "Öffnungszeiten"
       },
       "sort": {
-        "openingHoursAttentionFirst": "Zeiten zuerst pruefen",
+        "openingHoursAttentionFirst": "Zeiten zuerst prüfen",
         "openingHoursReadyFirst": "Zeiten komplett zuerst"
       },
       "openingHours": {
-        "title": "Oeffnungszeiten",
+        "title": "Öffnungszeiten",
         "filterLabel": "Zeiten",
         "notConfigured": "Nicht konfiguriert",
-        "coverageOne": "Vollstaendige Zeiten fuer {{ count }} Tag, bis {{ date }}",
-        "coverageMany": "Vollstaendige Zeiten fuer {{ count }} Tage, bis {{ date }}",
+        "coverageOne": "Vollständige Zeiten für {{ count }} Tag, bis {{ date }}",
+        "coverageMany": "Vollständige Zeiten für {{ count }} Tage, bis {{ date }}",
         "statuses": {
           "NotConfigured": "Nicht konfiguriert",
           "Expired": "Abgelaufen",
@@ -30,23 +30,23 @@
         }
       },
       "openingHoursEditor": {
-        "title": "Oeffnungszeiten JSON",
-        "subtitle": "Fuege das Zeitplan-JSON ein oder bearbeite es und starte dann den Upsert fuer diesen Park.",
+        "title": "Öffnungszeiten JSON",
+        "subtitle": "Füge das Zeitplan-JSON ein oder bearbeite es und starte dann den Upsert für diesen Park.",
         "reload": "Neu laden",
         "format": "Formatieren",
         "upsert": "JSON upserten",
-        "jsonLabel": "Oeffnungszeiten JSON",
-        "invalidJson": "Das JSON ist ungueltig.",
-        "savedSummary": "Oeffnungszeiten gespeichert",
+        "jsonLabel": "Öffnungszeiten JSON",
+        "invalidJson": "Das JSON ist ungültig.",
+        "savedSummary": "Öffnungszeiten gespeichert",
         "savedDetail": "Der Zeitplan wurde upserted.",
         "saveError": "Der Zeitplan konnte nicht gespeichert werden.",
         "loadError": "Der Zeitplan konnte nicht geladen werden.",
-        "hint": "Geschlossene Tage muessen explizit sein, wenn sie als vollstaendige Abdeckung zaehlen sollen."
+        "hint": "Geschlossene Tage müssen explizit sein, wenn sie als vollständige Abdeckung zaehlen sollen."
       }
     },
     "parkGraphUpserts": {
       "editor": {
-        "description": "Fehlende Eigenschaften bleiben erhalten. Die openingHours-Sektion wird mit demselben globalen JSON wie Park, Zonen, Seiten und Bilder geprueft und angewendet."
+        "description": "Fehlende Eigenschaften bleiben erhalten. Die openingHours-Sektion wird mit demselben globalen JSON wie Park, Zonen, Seiten und Bilder geprüft und angewendet."
       }
     }
   }

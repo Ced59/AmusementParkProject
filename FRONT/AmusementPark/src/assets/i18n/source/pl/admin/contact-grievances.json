@@ -1,14 +1,14 @@
 {
   "admin": {
     "contactGrievances": {
-      "navTitle": "Wiadomosci kontaktowe",
+      "navTitle": "Wiadomości kontaktowe",
       "kicker": "Kontakt",
       "title": "Ksiega uwag",
-      "subtitle": "Przegladaj publiczne wiadomosci z kontekstem IP przeciw naduzyciom.",
-      "total": "{{count}} wiadomosci",
-      "loading": "Ladowanie wiadomosci...",
-      "loadError": "Nie mozna zaladowac wiadomosci.",
-      "empty": "Nie znaleziono wiadomosci.",
+      "subtitle": "Przeglądaj publiczne wiadomości z kontekstem IP przeciw nadużyciom.",
+      "total": "{{count}} wiadomości",
+      "loading": "Ładowanie wiadomości...",
+      "loadError": "Nie można załadować wiadomości.",
+      "empty": "Nie znaleziono wiadomości.",
       "filters": {
         "search": "Szukaj",
         "ipAddress": "Adres IP",
@@ -23,7 +23,7 @@
     },
     "dashboard": {
       "shortcuts": {
-        "contactGrievances": "Przegladaj wiadomosci kontaktowe i kontekst antynaduzyciowy."
+        "contactGrievances": "Przeglądaj wiadomości kontaktowe i kontekst antynadużyciowy."
       }
     }
   }

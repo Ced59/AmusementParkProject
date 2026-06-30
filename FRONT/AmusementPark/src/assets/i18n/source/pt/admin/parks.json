@@ -186,7 +186,7 @@
           "metadataAnalyzing": "A verificar metadados",
           "metadataGeoFound": "GPS detetado",
           "metadataGeoMissing": "Sem GPS",
-          "metadataGeoMissingWarning": "{{count}} foto(s) selecionada(s) nao contêm coordenadas GPS.",
+          "metadataGeoMissingWarning": "{{count}} foto(s) selecionada(s) não contêm coordenadas GPS.",
           "removeSelectedPhoto": "Remover foto selecionada",
           "uploadProgress": "{{completed}} / {{total}} foto(s) carregadas",
           "categories": {
@@ -265,13 +265,13 @@
           "accessConditions": "Condições de acesso",
           "locations": "Localizações específicas",
           "photos": "Fotos",
-          "videos": "Videos"
+          "videos": "Vídeos"
         },
         "sectionNav": {
-          "label": "Secao do editor",
-          "help": "Em ecra pequeno, escolha uma secao de cada vez.",
+          "label": "Secção do editor",
+          "help": "Em ecrã pequeno, escolha uma secção de cada vez.",
           "retrySave": "Tentar gravar novamente",
-          "saveFailedWithRetry": "Falha ao gravar. As alteracoes continuam neste formulario."
+          "saveFailedWithRetry": "Falha ao gravar. As alterações continuam neste formulario."
         },
         "accessConditionsCount": "{{count}} condição(ões) de acesso",
         "accessConditionsSummary": "Gerencie aqui as regras detalhadas em vez de sobrecarregar o formulário principal.",
@@ -293,7 +293,7 @@
           "backToItems": "Voltar à lista de fichas",
           "saveAll": "Guardar tudo",
           "saveAndClose": "Guardar e terminar",
-          "saveSection": "Guardar esta secção",
+          "saveSection": "Guardar está secção",
           "useParkLocation": "Usar a localização do parque"
         },
         "saveMessages": {
@@ -360,7 +360,7 @@
           "parsedRows": "{{count}} linha(s) detetada(s)",
           "preview": "Pre-visualizar",
           "apply": "Aplicar",
-          "error": "Nao foi possivel processar esta importacao.",
+          "error": "Não foi possível processar está importacao.",
           "descriptionFr": "Descricao FR",
           "previewSummary": "{{ready}} prontas, {{warnings}} com aviso, {{errors}} com erro"
         },
@@ -376,7 +376,7 @@
         "descriptions": "Descrições",
         "logos": "Logótipos",
         "photos": "Fotos",
-        "videos": "Videos"
+        "videos": "Vídeos"
       },
       "editorStatus": {
         "saving": "A guardar...",
@@ -387,7 +387,7 @@
         "backToParks": "Voltar à lista de parques",
         "saveAll": "Guardar tudo",
         "saveAndClose": "Guardar e terminar",
-        "saveSection": "Guardar esta secção"
+        "saveSection": "Guardar está secção"
       },
       "saveMessages": {
         "successSummary": "Guardado",

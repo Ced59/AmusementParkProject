@@ -1,39 +1,39 @@
 {
   "parks": {
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
-      "loadingItemsTitle": "A carregar videos de locais",
-      "loadingItemsMessage": "A preparar videos dos locais de {{name}}.",
+      "kicker": "Vídeos do parque",
+      "title": "Vídeos de {{name}}",
+      "subtitle": "Vê vídeos de {{name}}: onrides, offrides, clips oficiais e conteúdos de criadores.",
+      "loadingTitle": "A carregar vídeos",
+      "loadingMessage": "A preparar os vídeos do parque.",
+      "loadingItemsTitle": "A carregar vídeos de locais",
+      "loadingItemsMessage": "A preparar vídeos dos locais de {{name}}.",
       "tabs": {
-        "label": "Secoes de videos",
+        "label": "Secções de vídeos",
         "park": "Parque",
         "items": "Locais do parque"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Vídeos indisponíveis",
+      "errorMessage": "Não foi possível carregar os vídeos deste parque de momento.",
+      "backToPark": "Voltar a {{name}}",
+      "emptyTitle": "Sem vídeos publicados",
+      "emptyMessage": "Ainda não há nenhum vídeo publicado para {{name}}."
     }
   },
   "parkItems": {
     "videosPage": {
       "kicker": "Vídeos do local",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparação dos vídeos deste local.",
-      "errorTitle": "Videos unavailable",
+      "title": "Vídeos de {{name}}",
+      "subtitle": "Vê vídeos de {{name}} em {{park}}: onrides, offrides, análises e media oficiais.",
+      "loadingTitle": "A carregar vídeos",
+      "loadingMessage": "A preparar os vídeos deste local.",
+      "errorTitle": "Vídeos indisponíveis",
       "errorMessage": "Não foi possível carregar os vídeos deste local de momento.",
-      "backToItem": "Back to {{name}}",
+      "backToItem": "Voltar a {{name}}",
       "backToItems": "A descobrir em {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToPark": "Voltar a {{name}}",
+      "emptyTitle": "Sem vídeos publicados",
+      "emptyMessage": "Ainda não há nenhum vídeo publicado para {{name}}."
     }
   }
 }

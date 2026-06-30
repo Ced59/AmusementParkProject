@@ -4,7 +4,7 @@
       "navTitle": "Mensajes contacto",
       "kicker": "Contacto",
       "title": "Cuaderno de comentarios",
-      "subtitle": "Consulta mensajes publicos con contexto IP para prevenir abusos.",
+      "subtitle": "Consulta mensajes públicos con contexto IP para prevenir abusos.",
       "total": "{{count}} mensajes",
       "loading": "Cargando mensajes...",
       "loadError": "No se pueden cargar los mensajes.",

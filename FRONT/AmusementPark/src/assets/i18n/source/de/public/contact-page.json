@@ -9,21 +9,21 @@
       "note": "Du kannst direkt an diese Adresse schreiben; sie ist der feste Kontakt der Website."
     },
     "form": {
-      "kicker": "Rueckmeldebuch",
+      "kicker": "Rückmeldebuch",
       "title": "Nachricht hinterlassen",
       "description": "Hinterlasse einen Hinweis, eine Korrektur oder eine Verbesserungsidee.",
       "messageLabel": "Deine Nachricht",
-      "help": "Schreibe deine Nachricht einfach und ohne unnoetige Links.",
+      "help": "Schreibe deine Nachricht einfach und ohne unnötige Links.",
       "validation": "Gib eine klare Nachricht mit 10 bis 2000 Zeichen ein.",
       "success": "Deine Nachricht wurde gesendet.",
-      "error": "Die Nachricht konnte nicht gesendet werden. Pruefe den Text oder versuche es spaeter erneut.",
+      "error": "Die Nachricht konnte nicht gesendet werden. Prüfe den Text oder versuche es später erneut.",
       "submit": "Senden",
       "submitting": "Senden"
     },
     "privacy": {
       "badge": "Schutz",
       "title": "Geschuetzter Bereich",
-      "text": "Das Formular bleibt bewusst einfach, damit der Austausch sauber und nuetzlich bleibt.",
+      "text": "Das Formular bleibt bewusst einfach, damit der Austausch sauber und nützlich bleibt.",
       "points": {
         "plainText": "Deine Nachricht soll klar und respektvoll bleiben.",
         "ip": "Wiederholter Missbrauch kann begrenzt werden.",

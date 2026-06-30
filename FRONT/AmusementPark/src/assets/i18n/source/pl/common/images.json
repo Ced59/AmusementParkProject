@@ -7,13 +7,13 @@
       "PARK_ITEM": "Zdjecie miejsca",
       "OPERATOR": "Zdjecie operatora",
       "MANUFACTURER": "Zdjecie producenta",
-      "FOUNDER": "Zdjecie zalozyciela",
+      "FOUNDER": "Zdjęcie założyciela",
       "VIDEO_THUMBNAIL": "Miniatura wideo"
     },
     "ownerTypes": {
       "NONE": "Brak",
       "PARK": "Park",
-      "USER": "Uzytkownik",
+      "USER": "Użytkownik",
       "PARK_ITEM": "Wpis parku",
       "PARK_OPERATOR": "Operator",
       "ATTRACTION_MANUFACTURER": "Producent",

@@ -1,7 +1,7 @@
 {
   "images": {
     "categories": {
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "VIDEO_THUMBNAIL": "Videominiatuur"
     },
     "ownerTypes": {
       "VIDEO": "Video"
@@ -9,58 +9,58 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
-      "loadMore": "Load more videos",
-      "loadingMore": "Loading..."
+      "count": "{{count}} video's",
+      "views": "{{count}} weergaven",
+      "loadMore": "Meer video's laden",
+      "loadingMore": "Laden..."
     },
     "filters": {
-      "type": "Video type",
-      "allTypes": "All types",
+      "type": "Videotype",
+      "allTypes": "Alle types",
       "tag": "Tag",
-      "allTags": "All tags",
-      "creator": "Creator",
-      "creatorPlaceholder": "Filter by creator name",
-      "applyCreator": "Apply",
-      "clear": "Clear filters"
+      "allTags": "Alle tags",
+      "creator": "Maker",
+      "creatorPlaceholder": "Filter op makernaam",
+      "applyCreator": "Toepassen",
+      "clear": "Filters wissen"
     },
     "providers": {
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "External video"
+      "other": "Externe video"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Advertisement",
-      "documentary": "Documentary",
+      "advertisement": "Advertentie",
+      "documentary": "Documentaire",
       "review": "Review",
-      "news": "News",
-      "event": "Event",
+      "news": "Nieuws",
+      "event": "Evenement",
       "interview": "Interview",
-      "other": "Other"
+      "other": "Overig"
     },
     "watch": {
-      "loadingTitle": "Loading video",
-      "loadingMessage": "The video page is being loaded.",
-      "errorTitle": "Video unavailable",
-      "errorMessage": "The requested video could not be loaded.",
-      "previous": "Previous video",
-      "next": "Next video",
-      "backToVideos": "Back to videos",
-      "creator": "Creator",
-      "category": "Category",
+      "loadingTitle": "Video laden",
+      "loadingMessage": "De videopagina wordt geladen.",
+      "errorTitle": "Video niet beschikbaar",
+      "errorMessage": "De gevraagde video kon niet worden geladen.",
+      "previous": "Vorige video",
+      "next": "Volgende video",
+      "backToVideos": "Terug naar video's",
+      "creator": "Maker",
+      "category": "Categorie",
       "provider": "Provider",
-      "duration": "Duration",
-      "publishedAt": "Published",
-      "viewCount": "Views",
-      "views": "{{count}} views",
-      "tagsAndCategories": "Categories and tags",
-      "openExternal": "Open video",
-      "openCreator": "Open creator",
-      "openProvider": "Open provider page"
+      "duration": "Duur",
+      "publishedAt": "Gepubliceerd",
+      "viewCount": "Weergaven",
+      "views": "{{count}} weergaven",
+      "tagsAndCategories": "Categorieën en tags",
+      "openExternal": "Video openen",
+      "openCreator": "Maker openen",
+      "openProvider": "Providerpagina openen"
     }
   }
 }

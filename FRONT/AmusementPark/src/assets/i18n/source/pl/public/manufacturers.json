@@ -2,14 +2,14 @@
   "manufacturersPage": {
     "kicker": "Producenci",
     "title": "Producenci atrakcji",
-    "subtitle": "Przegladaj producentow atrakcji i coasterow zarejestrowanych na stronie, z publicznymi profilami i przydatnymi linkami.",
+    "subtitle": "Przeglądaj producentów atrakcji i coasterów zarejestrowanych na stronie, z publicznymi profilami i przydatnymi linkami.",
     "search": {
       "label": "Szukaj",
       "placeholder": "Nazwa, kraj, miasto lub rok",
-      "count": "{{count}} producentow znalezionych"
+      "count": "{{count}} producentów znalezionych"
     },
-    "loading": "Ladowanie producentow...",
-    "error": "Nie mozna teraz zaladowac producentow.",
+    "loading": "Ładowanie producentów...",
+    "error": "Nie można teraz załadować producentów.",
     "empty": "Zaden producent nie pasuje do wyszukiwania.",
     "noDescription": "Profil szczegolowy wymaga jeszcze uzupelnienia.",
     "attractionCount": "{{count}} atrakcji"

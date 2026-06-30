@@ -16,7 +16,7 @@
       "help": "Scrivi il messaggio in modo semplice, senza link inutili.",
       "validation": "Inserisci un messaggio chiaro tra 10 e 2000 caratteri.",
       "success": "Il tuo messaggio e stato inviato.",
-      "error": "Il messaggio non puo essere inviato. Controlla il testo o riprova piu tardi.",
+      "error": "Il messaggio non può essere inviato. Controlla il testo o riprova più tardi.",
       "submit": "Invia",
       "submitting": "Invio"
     },
@@ -27,7 +27,7 @@
       "points": {
         "plainText": "Il tuo messaggio deve restare chiaro e rispettoso.",
         "ip": "Gli abusi ripetuti possono essere limitati.",
-        "admin": "Solo il team del sito puo leggere i messaggi."
+        "admin": "Solo il team del sito può leggere i messaggi."
       }
     }
   }

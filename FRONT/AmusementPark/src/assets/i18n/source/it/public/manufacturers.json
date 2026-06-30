@@ -5,7 +5,7 @@
     "subtitle": "Sfoglia costruttori di attrazioni e coaster presenti sul sito, con profili pubblici e link utili.",
     "search": {
       "label": "Cerca",
-      "placeholder": "Nome, paese, citta o anno",
+      "placeholder": "Nome, paese, città o anno",
       "count": "{{count}} costruttore/i trovato/i"
     },
     "loading": "Caricamento costruttori...",

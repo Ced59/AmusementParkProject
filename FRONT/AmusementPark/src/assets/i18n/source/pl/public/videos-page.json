@@ -1,39 +1,39 @@
 {
   "parks": {
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
-      "loadingItemsTitle": "Ladowanie filmow miejsc",
-      "loadingItemsMessage": "Przygotowywanie filmow miejsc w {{name}}.",
+      "kicker": "Filmy parku",
+      "title": "Filmy z {{name}}",
+      "subtitle": "Oglądaj filmy z {{name}}: onride’y, offride’y, oficjalne klipy i treści twórców.",
+      "loadingTitle": "Ładowanie filmów",
+      "loadingMessage": "Przygotowywanie filmów parku.",
+      "loadingItemsTitle": "Ładowanie filmów miejsc",
+      "loadingItemsMessage": "Przygotowywanie filmów miejsc w {{name}}.",
       "tabs": {
-        "label": "Sekcje filmow",
+        "label": "Sekcje filmów",
         "park": "Park",
         "items": "Miejsca w parku"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Filmy niedostępne",
+      "errorMessage": "Nie można teraz wczytać filmów tego parku.",
+      "backToPark": "Wróć do {{name}}",
+      "emptyTitle": "Brak opublikowanych filmów",
+      "emptyMessage": "Dla {{name}} nie ma jeszcze opublikowanego filmu."
     }
   },
   "parkItems": {
     "videosPage": {
       "kicker": "Filmy miejsca",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Filmy z {{name}}",
+      "subtitle": "Oglądaj filmy z {{name}} w {{park}}: onride’y, offride’y, recenzje i oficjalne materiały.",
+      "loadingTitle": "Ładowanie filmów",
       "loadingMessage": "Przygotowywanie filmów tego miejsca.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Filmy niedostępne",
       "errorMessage": "Nie można teraz wczytać filmów tego miejsca.",
-      "backToItem": "Back to {{name}}",
+      "backToItem": "Wróć do {{name}}",
       "backToItems": "Odkrywaj więcej w {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToPark": "Wróć do {{name}}",
+      "emptyTitle": "Brak opublikowanych filmów",
+      "emptyMessage": "Dla {{name}} nie ma jeszcze opublikowanego filmu."
     }
   }
 }

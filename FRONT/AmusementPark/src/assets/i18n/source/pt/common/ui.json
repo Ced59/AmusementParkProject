@@ -37,7 +37,7 @@
       },
       "selection": {
         "count": "{{count}} fotos",
-        "empty": "Nenhuma foto corresponde a esta seleção."
+        "empty": "Nenhuma foto corresponde a está seleção."
       },
       "metadata": {
         "title": "Foto selecionada",
@@ -55,7 +55,7 @@
       "map": {
         "title": "Mapa das fotos",
         "subtitle": "Fotos geolocalizadas correspondentes aos filtros ativos.",
-        "empty": "Nenhuma foto geolocalizada para esta seleção."
+        "empty": "Nenhuma foto geolocalizada para está seleção."
       },
       "lightbox": {
         "title": "Foto em ecrã inteiro"

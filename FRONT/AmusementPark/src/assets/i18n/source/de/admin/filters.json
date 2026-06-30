@@ -17,7 +17,7 @@
       "countryCodePlaceholder": "FR",
       "coordinates": "Koordinaten",
       "coordinatesAll": "Alle Koordinaten",
-      "validCoordinatesOnly": "Gueltige Koordinaten",
+      "validCoordinatesOnly": "Gültige Koordinaten",
       "invalidCoordinatesOnly": "Fehlend oder 0,0"
     }
   }

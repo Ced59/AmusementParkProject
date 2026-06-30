@@ -22,7 +22,7 @@
       "title": "Compartir con código QR",
       "loading": "Generando código QR",
       "alt": "Código QR para {{title}}",
-      "error": "El codigo QR no se puede crear ahora."
+      "error": "El código QR no se puede crear ahora."
     },
     "home": {
       "title": "Compartir AmusementPark",
@@ -55,9 +55,9 @@
       "text": "Descubre {{title}} en AmusementPark."
     },
     "videos": {
-      "title": "Compartir estos videos",
-      "description": "Envía estos videos a alguien que quiera una vista previa.",
-      "text": "Mira videos de {{title}} en AmusementPark."
+      "title": "Compartir estos vídeos",
+      "description": "Envía estos vídeos a alguien que quiera una vista previa.",
+      "text": "Mira vídeos de {{title}} en AmusementPark."
     },
     "video": {
       "title": "Compartir este video",
