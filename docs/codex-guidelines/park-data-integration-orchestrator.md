@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-06-30-r7**
+Version : **2026-06-30-r8**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -208,6 +208,7 @@ Le passage à l’étape suivante se fait seulement après validation utilisateu
 - Vérifier les informations récentes ou changeantes au moment de l’étape.
 - Vérifier réellement chaque URL utilisée comme source d’article ou d’événement avant livraison. La page finale après redirection doit répondre et rester pertinente ; ne jamais livrer de source 404, 410, erreur serveur, soft-404, page d’accueil utilisée comme remplacement, ou URL inventée.
 - Ne jamais inventer une date complète quand seule l’année ou le mois est fiable.
+- Si seule l’année est fiable pour une ouverture ou fermeture, renseigner l’année seule dans le JSON plutôt que laisser vide ou inventer un jour.
 - Ne jamais transformer une rumeur, une page non sourcée ou une mention isolée en donnée publique validée.
 
 ## Règles globales intégrées
@@ -224,6 +225,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Vérifier les descriptions ou biographies manquantes des constructeurs, fondateurs et exploitants associés au parc ; les compléter à l’étape 5 ou signaler explicitement l’absence de source fiable.
 - Préserver les données existantes en mode `merge` : IDs, images, rattachements, coordonnées, biographies et contenus validés.
 - Garder les éléments fermés mais confirmés visibles quand ils sont pertinents pour la fiche ou l’histoire.
+- Renseigner une année seule quand c’est la seule précision fiable pour une date d’ouverture ou de fermeture ; ne jamais fabriquer `01-01` ou un premier jour de mois.
 - Mettre les restrictions, tailles, tarifs, horaires, dates, coordonnées et données techniques dans les champs structurés, pas dans les descriptions.
 - Utiliser uniquement les valeurs enum listées dans `park-graph-upsert-enums.md`.
 - Utiliser uniquement des images externes importables par le flux technique du projet : URL HTTP(S) publique, réponse image réelle, taille acceptée et propriétaire résolu.

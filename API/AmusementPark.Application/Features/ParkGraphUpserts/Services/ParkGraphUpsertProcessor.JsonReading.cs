@@ -178,9 +178,31 @@ public sealed partial class ParkGraphUpsertProcessor
             return null;
         }
 
+        if (!StartsWithCompleteIsoDate(value))
+        {
+            return null;
+        }
+
         return DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out DateTime parsed)
             ? parsed
             : null;
+    }
+
+    private static bool StartsWithCompleteIsoDate(string value)
+    {
+        string trimmed = value.Trim();
+        return trimmed.Length >= 10
+            && char.IsDigit(trimmed[0])
+            && char.IsDigit(trimmed[1])
+            && char.IsDigit(trimmed[2])
+            && char.IsDigit(trimmed[3])
+            && trimmed[4] == '-'
+            && char.IsDigit(trimmed[5])
+            && char.IsDigit(trimmed[6])
+            && trimmed[7] == '-'
+            && char.IsDigit(trimmed[8])
+            && char.IsDigit(trimmed[9])
+            && (trimmed.Length == 10 || trimmed[10] == 'T' || trimmed[10] == ' ');
     }
     private static T ReadEnum<T>(JsonElement? element, string propertyName, T fallback)
         where T : struct, Enum

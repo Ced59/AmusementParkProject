@@ -117,6 +117,102 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, fieldName, current?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture), next?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
         assign(next);
     }
+    private static void PatchLifecycleDate(
+        JsonElement? patch,
+        string datePropertyName,
+        string dateTextPropertyName,
+        DateTime? currentDate,
+        string? currentDateText,
+        Action<DateTime?> assignDate,
+        Action<string?> assignDateText,
+        ParkGraphUpsertChange change,
+        string dateFieldName,
+        string dateTextFieldName)
+    {
+        bool hasDate = HasProperty(patch, datePropertyName);
+        bool hasDateText = HasProperty(patch, dateTextPropertyName);
+        if (hasDate)
+        {
+            string? rawDate = ReadStringAllowNull(patch, datePropertyName)?.Trim();
+            if (string.IsNullOrWhiteSpace(rawDate))
+            {
+                PatchLifecycleDateValues(null, null, currentDate, currentDateText, assignDate, assignDateText, change, dateFieldName, dateTextFieldName, hasDateText);
+            }
+            else
+            {
+                DateTime? exactDate = ReadDate(patch, datePropertyName);
+                if (exactDate.HasValue)
+                {
+                    string normalizedDateText = exactDate.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    PatchLifecycleDateValues(exactDate.Value, normalizedDateText, currentDate, currentDateText, assignDate, assignDateText, change, dateFieldName, dateTextFieldName, hasDateText);
+                }
+                else if (TryNormalizePartialLifecycleDateText(rawDate, out string? normalizedPartialDateText))
+                {
+                    PatchLifecycleDateValues(null, normalizedPartialDateText, currentDate, currentDateText, assignDate, assignDateText, change, dateFieldName, dateTextFieldName, hasDateText);
+                }
+                else
+                {
+                    PatchLifecycleDateValues(null, null, currentDate, currentDateText, assignDate, assignDateText, change, dateFieldName, dateTextFieldName, hasDateText);
+                }
+            }
+        }
+
+        if (hasDateText)
+        {
+            PatchString(patch, dateTextPropertyName, currentDateText, assignDateText, change, dateTextFieldName);
+        }
+    }
+
+    private static void PatchLifecycleDateValues(
+        DateTime? nextDate,
+        string? inferredDateText,
+        DateTime? currentDate,
+        string? currentDateText,
+        Action<DateTime?> assignDate,
+        Action<string?> assignDateText,
+        ParkGraphUpsertChange change,
+        string dateFieldName,
+        string dateTextFieldName,
+        bool hasExplicitDateText)
+    {
+        AddChange(change, dateFieldName, currentDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture), nextDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+        assignDate(nextDate);
+
+        if (!hasExplicitDateText)
+        {
+            AddChange(change, dateTextFieldName, currentDateText, inferredDateText);
+            assignDateText(inferredDateText);
+        }
+    }
+
+    private static bool TryNormalizePartialLifecycleDateText(string value, out string? normalized)
+    {
+        string trimmed = value.Trim();
+        normalized = null;
+        if (trimmed.Length == 4
+            && trimmed.All(static character => char.IsDigit(character))
+            && int.TryParse(trimmed, NumberStyles.Integer, CultureInfo.InvariantCulture, out int year)
+            && year is >= 1800 and <= 2100)
+        {
+            normalized = trimmed;
+            return true;
+        }
+
+        string[] parts = trimmed.Split('-', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        if (parts.Length == 2
+            && parts[0].Length == 4
+            && parts[0].All(static character => char.IsDigit(character))
+            && int.TryParse(parts[0], NumberStyles.Integer, CultureInfo.InvariantCulture, out int monthYear)
+            && int.TryParse(parts[1], NumberStyles.Integer, CultureInfo.InvariantCulture, out int month)
+            && monthYear is >= 1800 and <= 2100
+            && month is >= 1 and <= 12)
+        {
+            normalized = string.Create(CultureInfo.InvariantCulture, $"{monthYear:0000}-{month:00}");
+            return true;
+        }
+
+        return false;
+    }
     private static void PatchEnum<T>(JsonElement? patch, string propertyName, T current, Action<T> assign, ParkGraphUpsertChange change)
         where T : struct, Enum
     {

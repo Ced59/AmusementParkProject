@@ -25,6 +25,7 @@ Vérifier :
 - aucune donnée existante fiable écrasée ;
 - toutes les clés sont résolues ;
 - toutes les dates complètes sont sourcées ;
+- les années seules fiables sont renseignées comme années seules, sans `01-01` ni premier jour de mois inventé ;
 - les notes expliquent les incertitudes.
 - aucun champ obligatoire n’est cassé ;
 - aucun tarif n’est ajouté si les tarifs ne sont pas implémentés ;
