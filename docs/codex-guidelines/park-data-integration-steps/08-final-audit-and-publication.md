@@ -97,7 +97,10 @@ Vérifier :
 - timeline des parkItems majeurs cohérente ;
 - relocalisations rattachées au bon propriétaire ;
 - articles seulement quand il existe un vrai angle ;
-- sources présentes sur les événements importants.
+- sources présentes sur les événements importants ;
+- toutes les URLs de sources d’articles et d’événements répondent au moment de l’audit ;
+- aucune source ne pointe vers une 404, 410, erreur serveur, soft-404, page d’accueil de remplacement ou URL inventée ;
+- les archives utilisées sont consultables et correspondent bien au contenu cité.
 
 ## Décision publication
 

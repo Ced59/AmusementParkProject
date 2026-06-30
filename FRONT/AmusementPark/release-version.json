@@ -1,6 +1,20 @@
 {
-  "version": "3.1.12",
+  "version": "3.1.13",
   "history": [
+    {
+      "version": "3.1.13",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les consignes d’import vérifient mieux les sources.",
+        "en": "Import guidance checks sources better.",
+        "de": "Die Importanleitung prüft Quellen besser.",
+        "nl": "De importrichtlijnen controleren bronnen beter.",
+        "it": "Le istruzioni di importazione controllano meglio le fonti.",
+        "es": "Las pautas de importación verifican mejor las fuentes.",
+        "pl": "Wskazówki importu lepiej sprawdzają źródła.",
+        "pt": "As orientações de importação verificam melhor as fontes."
+      }
+    },
     {
       "version": "3.1.12",
       "releasedAt": "2026-06-30",

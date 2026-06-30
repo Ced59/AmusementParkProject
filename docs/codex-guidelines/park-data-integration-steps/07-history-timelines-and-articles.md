@@ -119,6 +119,18 @@ Chaque événement important doit avoir des sources. Les dates, exploitants, rel
 
 Utiliser `accessedAt` avec la date de consultation.
 
+Chaque `sources[].url` doit être vérifiée juste avant livraison :
+
+- URL absolue `http` ou `https` ;
+- page qui répond réellement après redirections ;
+- pas de statut 404, 410, 5xx ou erreur réseau ;
+- pas de soft-404, page vide, page d’accueil générique utilisée à la place d’un article disparu, ni page sans rapport avec l’affirmation sourcée ;
+- pas d’URL inventée ou reconstruite à partir d’un titre ;
+- si la page d’origine a disparu, utiliser une archive publique fiable ou une autre source valide ;
+- si aucune source joignable n’existe, ne pas créer l’article et ne pas transformer la donnée en fait certain.
+
+Une source non joignable n’est pas un warning acceptable : c’est une erreur de livrable à corriger avant de fournir le fichier JSON.
+
 Sources possibles :
 
 - site officiel du parc ;
@@ -190,6 +202,8 @@ Section principale : `history.events`.
 - Chaque `eventType` est compatible avec `park` ou `parkItem` selon les valeurs de `park-graph-upsert-enums.md`.
 - `entityType`, `datePrecision` et les types de blocs d’article utilisent les valeurs canoniques de `park-graph-upsert-enums.md`.
 - La date respecte la précision disponible : année, mois ou jour.
+- Toutes les URLs de `sources` ont été testées et répondent sans 404, 410, 5xx, soft-404 ou remplacement trompeur.
+- Les URLs archivées pointent vers une capture consultable de la page utile, pas seulement vers une page d’archive vide.
 - Les titres et résumés importants sont localisés dans les 8 langues quand le lot est complet.
 - Les articles ont un vrai angle éditorial.
 - Les images référencées existent déjà ou sont créées dans le même JSON.

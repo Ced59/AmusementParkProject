@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-06-30-r4**
+Version : **2026-06-30-r5**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -206,6 +206,7 @@ Le passage à l’étape suivante se fait seulement après validation utilisateu
 - Utiliser les sources officielles quand elles existent.
 - Croiser les données historiques avec des sources spécialisées ou archivées quand les sources officielles sont incomplètes.
 - Vérifier les informations récentes ou changeantes au moment de l’étape.
+- Vérifier réellement chaque URL utilisée comme source d’article ou d’événement avant livraison. La page finale après redirection doit répondre et rester pertinente ; ne jamais livrer de source 404, 410, erreur serveur, soft-404, page d’accueil utilisée comme remplacement, ou URL inventée.
 - Ne jamais inventer une date complète quand seule l’année ou le mois est fiable.
 - Ne jamais transformer une rumeur, une page non sourcée ou une mention isolée en donnée publique validée.
 
@@ -228,6 +229,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Utiliser uniquement des images externes importables par le flux technique du projet : URL HTTP(S) publique, réponse image réelle, taille acceptée et propriétaire résolu.
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Créer un article seulement si le sujet a une vraie valeur éditoriale durable.
+- Pour les articles et événements historiques, utiliser uniquement des sources dont les liens répondent au moment de la génération. Si la page d’origine ne répond plus, utiliser une archive fiable ou une autre source valide ; sinon retirer la source et documenter la limite.
 
 ## Règles de livraison
 
