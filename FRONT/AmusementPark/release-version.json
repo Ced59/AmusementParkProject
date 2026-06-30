@@ -1,6 +1,20 @@
 {
-  "version": "3.1.4",
+  "version": "3.1.5",
   "history": [
+    {
+      "version": "3.1.5",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les imports d'histoire sollicitent moins les sitemaps.",
+        "en": "History imports put less pressure on sitemaps.",
+        "de": "Verlaufsimporte belasten Sitemaps weniger.",
+        "nl": "Geschiedenisimports belasten sitemaps minder.",
+        "it": "Le importazioni delle storie pesano meno sulle sitemap.",
+        "es": "Las importaciones de historias cargan menos los sitemaps.",
+        "pl": "Importy historii mniej obciążają sitemapy.",
+        "pt": "As importações de histórias carregam menos os sitemaps."
+      }
+    },
     {
       "version": "3.1.4",
       "releasedAt": "2026-06-30",
