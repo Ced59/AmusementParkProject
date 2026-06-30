@@ -483,6 +483,105 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenParkLifecycleDatesAreProvided_ShouldPersistAndNotifySeo()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        Park? updatedPark = null;
+        PublicSeoUpdate? seoUpdate = null;
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .Callback<string, Park, CancellationToken>((id, value, cancellationToken) => updatedPark = value)
+            .ReturnsAsync((string id, Park value, CancellationToken cancellationToken) => value);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Callback<PublicSeoUpdate, CancellationToken>((update, _) => seoUpdate = update)
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "park": {
+            "openingDate": "1987-05-20",
+            "closingDate": "1991-10-20",
+            "openingDateText": "1987-05-20",
+            "closingDateText": "1991-10-20"
+          }
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(updatedPark);
+        Assert.Equal(new DateTime(1987, 5, 20), updatedPark!.OpeningDate?.Date);
+        Assert.Equal(new DateTime(1991, 10, 20), updatedPark.ClosingDate?.Date);
+        Assert.Equal("1987-05-20", updatedPark.OpeningDateText);
+        Assert.Equal("1991-10-20", updatedPark.ClosingDateText);
+        ParkGraphUpsertChange parkChange = Assert.Single(result.Value!.Changes, change => change.EntityType == "Park");
+        Assert.Equal("Updated", parkChange.ChangeType);
+        Assert.Contains(parkChange.Fields, field => field.Field == "openingDate");
+        Assert.Contains(parkChange.Fields, field => field.Field == "closingDate");
+        Assert.NotNull(seoUpdate);
+        Assert.True(seoUpdate!.SuppressSitemapRefresh);
+        Assert.Contains(seoUpdate.PreviousParks, previousPark => previousPark.Id == "park-1" && previousPark.OpeningDate == null && previousPark.ClosingDate == null);
+        Assert.Contains(seoUpdate.CurrentParks, currentPark =>
+            currentPark.Id == "park-1" &&
+            currentPark.OpeningDate?.Date == new DateTime(1987, 5, 20) &&
+            currentPark.ClosingDate?.Date == new DateTime(1991, 10, 20));
+        parkRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenItemIsCreated_ShouldKeepItHiddenAndToReview()
     {
         Park park = new Park

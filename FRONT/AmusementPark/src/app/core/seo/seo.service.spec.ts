@@ -5,6 +5,7 @@ import { SeoService } from './seo.service';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
 import { ParkReferenceDetailViewModel } from '@features/public/parks/models/park-reference-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
+import { HistoryTimelinePageViewModel } from '@features/public/history/models/history-view.model';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
@@ -214,6 +215,33 @@ describe('SeoService', () => {
     expect(documentRef.title).not.toBe(frenchTitle);
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
     expect(readCanonicalHref()).toBe('http://localhost:4200/en/park/park-1/demo-park/opening-hours');
+  });
+
+  it('keeps history timeline SEO titles and descriptions unique between public languages', () => {
+    const cases: Array<{ language: string; title: string; url: string }> = [
+      { language: 'fr', title: 'Histoire de Mirapolis', url: '/fr/park/park-1/mirapolis/history' },
+      { language: 'en', title: 'Mirapolis history', url: '/en/park/park-1/mirapolis/history' },
+      { language: 'de', title: 'Geschichte von Mirapolis', url: '/de/park/park-1/mirapolis/history' },
+      { language: 'nl', title: 'Geschiedenis van Mirapolis', url: '/nl/park/park-1/mirapolis/history' },
+      { language: 'it', title: 'Storia di Mirapolis', url: '/it/park/park-1/mirapolis/history' },
+      { language: 'es', title: 'Historia de Mirapolis', url: '/es/park/park-1/mirapolis/history' },
+      { language: 'pl', title: 'Historia Mirapolis', url: '/pl/park/park-1/mirapolis/history' },
+      { language: 'pt', title: 'História de Mirapolis', url: '/pt/park/park-1/mirapolis/history' }
+    ];
+    const titles = new Set<string>();
+    const descriptions = new Set<string>();
+
+    for (const entry of cases) {
+      service.applyHistoryTimelineSeo(buildHistoryTimeline({ title: entry.title }), entry.language, entry.url);
+
+      titles.add(documentRef.title);
+      descriptions.add(readMetaContent('meta[name="description"]') ?? '');
+      expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+      expect(readCanonicalHref()).toBe(`http://localhost:4200${entry.url}`);
+    }
+
+    expect(titles.size).toBe(cases.length);
+    expect(descriptions.size).toBe(cases.length);
   });
 
   it('localizes opening hours breadcrumb JSON-LD with contextual German labels', () => {
@@ -431,6 +459,47 @@ function buildParkItemDetail(overrides: Partial<ParkItemDetailViewModel> = {}): 
     heroPhoto: null,
     ...overrides
   } as ParkItemDetailViewModel;
+}
+
+function buildHistoryTimeline(overrides: Partial<HistoryTimelinePageViewModel> = {}): HistoryTimelinePageViewModel {
+  return {
+    entityType: 'Park',
+    title: 'Mirapolis history',
+    subtitle: '1 milestone tracing the story of Mirapolis.',
+    ownerName: 'Mirapolis',
+    park: buildPark({ name: 'Mirapolis' }),
+    parkItem: null,
+    includedParkItems: [],
+    showParkItemControls: false,
+    yearStart: 1987,
+    yearEnd: 1987,
+    events: [
+      {
+        id: 'event-1',
+        key: 'opening',
+        title: 'Opening',
+        summary: 'Mirapolis opens to visitors.',
+        dateLabel: '1987',
+        year: 1987,
+        month: 5,
+        day: 20,
+        eventType: 'Opening',
+        eventTypeLabel: 'Opening',
+        entityType: 'Park',
+        isMajor: false,
+        ownerName: 'Mirapolis',
+        contextParkName: null,
+        parkItemName: null,
+        mainImageId: null,
+        mainImage: null,
+        articleLink: null,
+        sourceCount: 0,
+        positionPercent: 0,
+        isFirstInYear: true
+      }
+    ],
+    ...overrides
+  };
 }
 
 function buildPark(overrides: Partial<Park> = {}): Park {

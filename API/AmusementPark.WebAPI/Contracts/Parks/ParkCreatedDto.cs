@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AmusementPark.WebAPI.Contracts.Common;
 
@@ -14,6 +15,14 @@ public sealed class ParkCreatedDto
     public ParkTypeDto? Type { get; set; }
 
     public ParkStatusDto Status { get; set; } = ParkStatusDto.Operating;
+
+    public DateTime? OpeningDate { get; set; }
+
+    public DateTime? ClosingDate { get; set; }
+
+    public string? OpeningDateText { get; set; }
+
+    public string? ClosingDateText { get; set; }
 
     public string? FounderId { get; set; }
 

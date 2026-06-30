@@ -29,6 +29,12 @@
       "cityPlaceholder": "Nazwa miasta",
       "postalCode": "Kod pocztowy",
       "postalCodePlaceholder": "Kod pocztowy",
+      "openingDate": "Data otwarcia",
+      "openingDateText": "Dokładność otwarcia",
+      "openingDateTextPlaceholder": "Np. 1987 albo maj 1987",
+      "closingDate": "Data ostatecznego zamknięcia",
+      "closingDateText": "Dokładność zamknięcia",
+      "closingDateTextPlaceholder": "Np. 1991 albo październik 1991",
       "editPage": {
         "createTitle": "Utwórz nowy park",
         "updateTitle": "Edytuj park „{{name}}”",

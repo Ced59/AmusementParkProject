@@ -110,6 +110,38 @@
   </div>
 
   <div class="grid formgrid">
+    <div class="field col-12 md:col-3">
+      <label for="openingDate">{{ 'admin.parks.openingDate' | translate }}</label>
+      <input id="openingDate" type="date" pInputText formControlName="openingDate" />
+    </div>
+
+    <div class="field col-12 md:col-3">
+      <label for="openingDateText">{{ 'admin.parks.openingDateText' | translate }}</label>
+      <input
+        id="openingDateText"
+        type="text"
+        pInputText
+        formControlName="openingDateText"
+        [placeholder]="'admin.parks.openingDateTextPlaceholder' | translate" />
+    </div>
+
+    <div class="field col-12 md:col-3">
+      <label for="closingDate">{{ 'admin.parks.closingDate' | translate }}</label>
+      <input id="closingDate" type="date" pInputText formControlName="closingDate" />
+    </div>
+
+    <div class="field col-12 md:col-3">
+      <label for="closingDateText">{{ 'admin.parks.closingDateText' | translate }}</label>
+      <input
+        id="closingDateText"
+        type="text"
+        pInputText
+        formControlName="closingDateText"
+        [placeholder]="'admin.parks.closingDateTextPlaceholder' | translate" />
+    </div>
+  </div>
+
+  <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <app-entity-select
         formControlName="founderId"

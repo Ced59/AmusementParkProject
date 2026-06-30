@@ -128,6 +128,159 @@ public sealed class PublicSeoUpdateNotifierTests
     }
 
     [Fact]
+    public async Task ResolveAsync_WhenPublicParkHasLifecycleDate_ShouldReturnParkHistoryUrl()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = CreateEmptyImageRepository();
+
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkZoneRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+
+        PublicSeoUrlResolver resolver = new PublicSeoUrlResolver(
+            parkItemRepository.Object,
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            imageRepository.Object);
+
+        IReadOnlyCollection<string> urls = await resolver.ResolveAsync(
+            new PublicSeoUpdate
+            {
+                CurrentParks = new[]
+                {
+                    new PublicSeoParkSnapshot(
+                        "park-1",
+                        "Magic Park",
+                        true,
+                        ParkStatus.Operating,
+                        AdminReviewStatus.Validated,
+                        null,
+                        OpeningDate: new DateTime(1987, 5, 20)),
+                },
+            },
+            new[] { "fr" },
+            CancellationToken.None);
+
+        Assert.Contains("/fr/park/park-1/magic-park", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/history", urls);
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        imageRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_WhenClosedPublicParkHasLifecycleDate_ShouldReturnHistoryUrlOnly()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkZoneRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+
+        PublicSeoUrlResolver resolver = new PublicSeoUrlResolver(
+            parkItemRepository.Object,
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            imageRepository.Object);
+
+        IReadOnlyCollection<string> urls = await resolver.ResolveAsync(
+            new PublicSeoUpdate
+            {
+                CurrentParks = new[]
+                {
+                    new PublicSeoParkSnapshot(
+                        "park-1",
+                        "Closed Park",
+                        true,
+                        ParkStatus.ClosedDefinitively,
+                        AdminReviewStatus.Validated,
+                        null,
+                        OpeningDate: new DateTime(1987, 5, 20)),
+                },
+            },
+            new[] { "fr" },
+            CancellationToken.None);
+
+        Assert.Contains("/fr/park/park-1/closed-park/history", urls);
+        Assert.DoesNotContain("/fr/park/park-1/closed-park", urls);
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_WhenPublicItemHasLifecycleDate_ShouldReturnItemAndParentParkHistoryUrls()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = CreateEmptyImageRepository();
+
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park
+                {
+                    Id = "park-1",
+                    Name = "Magic Park",
+                    IsVisible = true,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                },
+            });
+        parkZoneRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+
+        PublicSeoUrlResolver resolver = new PublicSeoUrlResolver(
+            parkItemRepository.Object,
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            imageRepository.Object);
+
+        IReadOnlyCollection<string> urls = await resolver.ResolveAsync(
+            new PublicSeoUpdate
+            {
+                CurrentParkItems = new[]
+                {
+                    new PublicSeoParkItemSnapshot(
+                        "item-1",
+                        "park-1",
+                        null,
+                        "Big Coaster",
+                        true,
+                        AdminReviewStatus.Validated,
+                        null,
+                        OpeningDate: new DateTime(2001, 4, 1)),
+                },
+            },
+            new[] { "fr" },
+            CancellationToken.None);
+
+        Assert.Contains("/fr/park/park-1/magic-park/history", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/item/item-1/big-coaster/history", urls);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        parkZoneRepository.VerifyAll();
+        imageRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task NotifyAsync_WhenIndexNowIsEnabled_ShouldScheduleSitemapRefreshAndSubmitImpactedUrls()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

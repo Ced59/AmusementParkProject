@@ -1,3 +1,6 @@
+using AmusementPark.Application.Common.Requests;
+using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -38,6 +41,18 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
         ArgumentNullException.ThrowIfNull(context);
 
         IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetPublicVisibleEventsAsync(PublicHistoryEventLimit, cancellationToken);
+        IReadOnlyCollection<Park> automaticParkCandidates = await LoadPublicHistoryParksAsync(this.parkRepository, cancellationToken);
+        IReadOnlyCollection<ParkItem> automaticItemCandidates = await LoadPublicHistoryItemsAsync(this.parkItemRepository, cancellationToken);
+        IReadOnlyCollection<HistoryEvent> automaticEvents = AutomaticHistoryEventFactory
+            .CreateParkLifecycleEvents(automaticParkCandidates)
+            .Concat(AutomaticHistoryEventFactory.CreateParkItemLifecycleEvents(automaticItemCandidates))
+            .ToList();
+
+        if (automaticEvents.Count > 0)
+        {
+            events = AutomaticHistoryEventFactory.MergeWithExplicitEvents(events, automaticEvents);
+        }
+
         HistorySitemapResolvedData resolvedData = await HistorySitemapCandidateResolver.ResolveAsync(
             events,
             context.SupportedLanguages,
@@ -54,10 +69,87 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
                 continue;
             }
 
+            AddParentParkTimelineUrls(urlsByPath, resolvedData, historyEvent);
             AddParkItemTimelineUrls(urlsByPath, resolvedData, historyEvent);
         }
 
         return urlsByPath.Values.OrderBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase).ToList();
+    }
+
+    private static async Task<IReadOnlyCollection<Park>> LoadPublicHistoryParksAsync(
+        IParkRepository parkRepository,
+        CancellationToken cancellationToken)
+    {
+        List<Park> parks = new List<Park>();
+        int pageNumber = 1;
+
+        while (true)
+        {
+            PagedResult<Park> page = await parkRepository.GetPageAsync(
+                pageNumber,
+                SitemapPublicCandidateLoader.PageSize,
+                includeHidden: false,
+                isVisible: true,
+                adminReviewStatus: null,
+                type: null,
+                countryCode: null,
+                hasValidCoordinates: null,
+                closedFilter: ClosedEntityFilter.All,
+                cancellationToken);
+
+            parks.AddRange(page.Items.Where(static park =>
+                HistorySitemapCandidateResolver.IsPublicHistoryPark(park) &&
+                AutomaticHistoryEventFactory.HasLifecycleDate(park)));
+
+            if (page.Items.Count == 0 || page.Page >= page.TotalPages)
+            {
+                break;
+            }
+
+            pageNumber++;
+        }
+
+        return parks;
+    }
+
+    private static async Task<IReadOnlyCollection<ParkItem>> LoadPublicHistoryItemsAsync(
+        IParkItemRepository parkItemRepository,
+        CancellationToken cancellationToken)
+    {
+        List<ParkItem> items = new List<ParkItem>();
+        int pageNumber = 1;
+
+        while (true)
+        {
+            PagedResult<ParkItem> page = await parkItemRepository.GetPageAsync(
+                pageNumber,
+                SitemapPublicCandidateLoader.PageSize,
+                parkId: null,
+                search: null,
+                includeHidden: false,
+                isVisible: true,
+                adminReviewStatus: null,
+                category: null,
+                type: null,
+                zoneId: null,
+                manufacturerId: null,
+                contentBacklogFilter: null,
+                cancellationToken: cancellationToken,
+                sortField: ParkItemAdminSortField.ParkId);
+
+            items.AddRange(page.Items.Where(static item =>
+                HistorySitemapCandidateResolver.IsPublicHistoryItem(item) &&
+                AutomaticHistoryEventFactory.HasLifecycleDate(item)));
+
+            if (page.Items.Count == 0 || page.Page >= page.TotalPages)
+            {
+                break;
+            }
+
+            pageNumber++;
+        }
+
+        return items;
     }
 
     private static void AddParkTimelineUrls(
@@ -109,6 +201,38 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
                 historyEvent.UpdatedAtUtc,
                 "monthly",
                 0.70m);
+        }
+    }
+
+    private static void AddParentParkTimelineUrls(
+        Dictionary<string, SitemapUrlEntry> urlsByPath,
+        HistorySitemapResolvedData resolvedData,
+        HistoryEvent historyEvent)
+    {
+        if (!resolvedData.PublicItemById.TryGetValue(historyEvent.OwnerId, out ParkItem? item))
+        {
+            return;
+        }
+
+        string? parkId = HistorySitemapCandidateResolver.NormalizeId(historyEvent.ContextParkId)
+            ?? HistorySitemapCandidateResolver.NormalizeId(historyEvent.ParkId)
+            ?? item.ParkId;
+        if (string.IsNullOrWhiteSpace(parkId) ||
+            !resolvedData.PublicParkById.TryGetValue(parkId, out Park? park))
+        {
+            return;
+        }
+
+        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
+        string pathWithoutLanguage = $"park/{park.Id}/{parkSlug}/history";
+        foreach (string language in resolvedData.Languages)
+        {
+            HistorySitemapCandidateResolver.AddOrRefreshUrl(
+                urlsByPath,
+                $"/{language}/{pathWithoutLanguage}",
+                historyEvent.UpdatedAtUtc,
+                "monthly",
+                0.71m);
         }
     }
 }
@@ -337,7 +461,7 @@ internal static class HistorySitemapCandidateResolver
         return parkIds;
     }
 
-    private static bool IsPublicHistoryPark(Park park)
+    public static bool IsPublicHistoryPark(Park park)
     {
         return !string.IsNullOrWhiteSpace(park.Id) &&
                !string.IsNullOrWhiteSpace(park.Name) &&
@@ -345,7 +469,7 @@ internal static class HistorySitemapCandidateResolver
                park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 
-    private static bool IsPublicHistoryItem(ParkItem item)
+    public static bool IsPublicHistoryItem(ParkItem item)
     {
         return !string.IsNullOrWhiteSpace(item.Id) &&
                !string.IsNullOrWhiteSpace(item.ParkId) &&

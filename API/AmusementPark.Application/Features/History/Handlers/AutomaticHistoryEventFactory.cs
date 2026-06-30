@@ -26,6 +26,54 @@ internal static class AutomaticHistoryEventFactory
         return details?.OpeningDate is not null || details?.ClosingDate is not null;
     }
 
+    public static bool HasLifecycleDate(Park park)
+    {
+        return park.OpeningDate is not null || park.ClosingDate is not null;
+    }
+
+    public static IReadOnlyCollection<HistoryEvent> CreateParkLifecycleEvents(Park park)
+    {
+        if (string.IsNullOrWhiteSpace(park.Id) || !HasLifecycleDate(park))
+        {
+            return Array.Empty<HistoryEvent>();
+        }
+
+        List<HistoryEvent> events = new List<HistoryEvent>();
+
+        if (park.OpeningDate.HasValue)
+        {
+            HistoryDateParts dateParts = ResolveDateParts(park.OpeningDate.Value, park.OpeningDateText);
+            events.Add(CreateLifecycleEvent(
+                park,
+                dateParts,
+                ParkHistoryEventType.Opening.ToString(),
+                "opening"));
+        }
+
+        if (park.ClosingDate.HasValue)
+        {
+            HistoryDateParts dateParts = ResolveDateParts(park.ClosingDate.Value, park.ClosingDateText);
+            events.Add(CreateLifecycleEvent(
+                park,
+                dateParts,
+                ParkHistoryEventType.DefinitiveClosure.ToString(),
+                "closure"));
+        }
+
+        return events;
+    }
+
+    public static IReadOnlyCollection<HistoryEvent> CreateParkLifecycleEvents(IEnumerable<Park> parks)
+    {
+        List<HistoryEvent> events = new List<HistoryEvent>();
+        foreach (Park park in parks)
+        {
+            events.AddRange(CreateParkLifecycleEvents(park));
+        }
+
+        return events;
+    }
+
     public static IReadOnlyCollection<HistoryEvent> CreateParkItemLifecycleEvents(ParkItem parkItem)
     {
         if (string.IsNullOrWhiteSpace(parkItem.Id) || !HasLifecycleDate(parkItem))
@@ -89,6 +137,39 @@ internal static class AutomaticHistoryEventFactory
     }
 
     private static HistoryEvent CreateLifecycleEvent(
+        Park park,
+        HistoryDateParts dateParts,
+        string eventType,
+        string keySuffix)
+    {
+        string key = BuildParkKey(park.Id, keySuffix, dateParts);
+        DateTime timestamp = park.UpdatedAtUtc == default ? DateTime.UtcNow : park.UpdatedAtUtc;
+        string parkName = string.IsNullOrWhiteSpace(park.Name) ? park.Id : park.Name.Trim();
+
+        return new HistoryEvent
+        {
+            Id = key,
+            Key = key,
+            EntityType = HistoryEntityType.Park,
+            OwnerId = park.Id,
+            ParkId = park.Id,
+            ParkItemId = null,
+            ContextParkId = null,
+            Year = dateParts.Year,
+            Month = dateParts.Precision == HistoryDatePrecision.Year ? null : dateParts.Month,
+            Day = dateParts.Precision == HistoryDatePrecision.Day ? dateParts.Day : null,
+            DatePrecision = dateParts.Precision,
+            EventType = eventType,
+            IsMajor = false,
+            IsVisible = park.IsVisible,
+            Slug = key,
+            Titles = BuildParkTitles(parkName, eventType),
+            CreatedAtUtc = timestamp,
+            UpdatedAtUtc = timestamp,
+        };
+    }
+
+    private static HistoryEvent CreateLifecycleEvent(
         ParkItem parkItem,
         HistoryDateParts dateParts,
         string eventType,
@@ -122,7 +203,20 @@ internal static class AutomaticHistoryEventFactory
         };
     }
 
+    private static string BuildParkKey(string parkId, string suffix, HistoryDateParts dateParts)
+    {
+        string dateKey = BuildDateKey(dateParts);
+        return $"auto-park-{parkId.Trim()}-{suffix}-{dateKey}";
+    }
+
     private static string BuildKey(string parkItemId, string parkId, string suffix, HistoryDateParts dateParts)
+    {
+        string dateKey = BuildDateKey(dateParts);
+        string contextPart = string.IsNullOrWhiteSpace(parkId) ? "unknown-park" : parkId.Trim();
+        return $"auto-parkitem-{parkItemId.Trim()}-{contextPart}-{suffix}-{dateKey}";
+    }
+
+    private static string BuildDateKey(HistoryDateParts dateParts)
     {
         string dateKey = dateParts.Precision switch
         {
@@ -135,8 +229,36 @@ internal static class AutomaticHistoryEventFactory
             _ => dateParts.Year.ToString("0000", CultureInfo.InvariantCulture),
         };
 
-        string contextPart = string.IsNullOrWhiteSpace(parkId) ? "unknown-park" : parkId.Trim();
-        return $"auto-parkitem-{parkItemId.Trim()}-{contextPart}-{suffix}-{dateKey}";
+        return dateKey;
+    }
+
+    private static List<LocalizedText> BuildParkTitles(string parkName, string eventType)
+    {
+        Dictionary<string, string> templates = eventType == ParkHistoryEventType.Opening.ToString()
+            ? new Dictionary<string, string>(StringComparer.Ordinal)
+            {
+                ["fr"] = "Ouverture de {0}",
+                ["en"] = "{0} opens",
+                ["de"] = "Eröffnung von {0}",
+                ["nl"] = "Opening van {0}",
+                ["it"] = "Apertura di {0}",
+                ["es"] = "Apertura de {0}",
+                ["pl"] = "Otwarcie {0}",
+                ["pt"] = "Abertura de {0}",
+            }
+            : new Dictionary<string, string>(StringComparer.Ordinal)
+            {
+                ["fr"] = "Fermeture définitive de {0}",
+                ["en"] = "{0} closes definitively",
+                ["de"] = "Endgültige Schließung von {0}",
+                ["nl"] = "Definitieve sluiting van {0}",
+                ["it"] = "Chiusura definitiva di {0}",
+                ["es"] = "Cierre definitivo de {0}",
+                ["pl"] = "Ostateczne zamknięcie {0}",
+                ["pt"] = "Encerramento definitivo de {0}",
+            };
+
+        return BuildLocalizedTitles(parkName, templates);
     }
 
     private static List<LocalizedText> BuildTitles(string itemName, string eventType)
@@ -165,13 +287,18 @@ internal static class AutomaticHistoryEventFactory
                 ["pt"] = "Encerramento de {0}",
             };
 
+        return BuildLocalizedTitles(itemName, templates);
+    }
+
+    private static List<LocalizedText> BuildLocalizedTitles(string ownerName, IReadOnlyDictionary<string, string> templates)
+    {
         List<LocalizedText> titles = new List<LocalizedText>();
         foreach (string language in SupportedLanguages)
         {
             string template = templates.TryGetValue(language, out string? localizedTemplate)
                 ? localizedTemplate
                 : templates["en"];
-            titles.Add(new LocalizedText(language, string.Format(CultureInfo.InvariantCulture, template, itemName)));
+            titles.Add(new LocalizedText(language, string.Format(CultureInfo.InvariantCulture, template, ownerName)));
         }
 
         return titles;

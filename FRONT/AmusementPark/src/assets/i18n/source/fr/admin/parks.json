@@ -30,6 +30,12 @@
       "postalCode": "Code postal",
       "visibleField": "Visibilité",
       "postalCodePlaceholder": "Code postal",
+      "openingDate": "Date d’ouverture",
+      "openingDateText": "Précision d’ouverture",
+      "openingDateTextPlaceholder": "Ex. 1987 ou mai 1987",
+      "closingDate": "Date de fermeture définitive",
+      "closingDateText": "Précision de fermeture",
+      "closingDateTextPlaceholder": "Ex. 1991 ou octobre 1991",
       "editPage": {
         "createTitle": "Créer un nouveau parc",
         "updateTitle": "Modifier le parc « {{name}} »",

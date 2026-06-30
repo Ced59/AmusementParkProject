@@ -60,6 +60,10 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchString(patch, "countryCode", park.CountryCode, value => park.CountryCode = value?.ToUpperInvariant(), change);
         PatchEnumNullable(patch, "type", park.Type, value => park.Type = value, change, "type");
         PatchParkStatus(patch, park, change);
+        PatchDateNullable(patch, "openingDate", park.OpeningDate, value => park.OpeningDate = value, change, "openingDate");
+        PatchDateNullable(patch, "closingDate", park.ClosingDate, value => park.ClosingDate = value, change, "closingDate");
+        PatchString(patch, "openingDateText", park.OpeningDateText, value => park.OpeningDateText = value, change);
+        PatchString(patch, "closingDateText", park.ClosingDateText, value => park.ClosingDateText = value, change);
         PatchString(patch, "founderId", park.FounderId, value => park.FounderId = value, change);
         PatchString(patch, "operatorId", park.OperatorId, value => park.OperatorId = value, change);
         PatchString(patch, "websiteUrl", park.WebsiteUrl, value => park.WebsiteUrl = value, change);

@@ -129,6 +129,10 @@ describe('ParksApiService', () => {
       isFeaturedOnHome: true,
       isFeaturedOnHomeSponsored: true,
       featuredHomeOrder: 0,
+      openingDate: '1987-05-20',
+      closingDate: '1991-10-20',
+      openingDateText: '1987-05-20',
+      closingDateText: '1991-10-20',
       webSiteUrl: 'https://park.test'
     });
 
@@ -142,6 +146,10 @@ describe('ParksApiService', () => {
     expect(createRequest.request.body.isVisible).toBeTrue();
     expect(createRequest.request.body.adminReviewStatus).toBe('Validated');
     expect(createRequest.request.body.isFeaturedOnHomeSponsored).toBeTrue();
+    expect(createRequest.request.body.openingDate).toBe('1987-05-20');
+    expect(createRequest.request.body.closingDate).toBe('1991-10-20');
+    expect(createRequest.request.body.openingDateText).toBe('1987-05-20');
+    expect(createRequest.request.body.closingDateText).toBe('1991-10-20');
     createRequest.flush(park);
 
     const updateRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/park-1`);

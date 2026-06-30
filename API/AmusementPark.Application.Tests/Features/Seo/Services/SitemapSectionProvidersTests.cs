@@ -720,6 +720,8 @@ public sealed class SitemapSectionProvidersTests
         parkRepository
             .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.OrderBy(id => id).SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(parks);
+        SetupPublicHistorySitemapParks(parkRepository, parks);
+        SetupPublicSitemapItems(itemRepository, items);
         HistoryTimelinesSitemapSectionProvider provider = new HistoryTimelinesSitemapSectionProvider(
             historyRepository.Object,
             parkRepository.Object,
@@ -733,6 +735,108 @@ public sealed class SitemapSectionProvidersTests
         Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/mirapolis/history");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/mirapolis/item/item-1/mira-looping/history");
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("park-major", StringComparison.OrdinalIgnoreCase));
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HistoryTimelinesProvider_WhenPublicParkHasLifecycleDates_ShouldReturnAutomaticTimelineUrls()
+    {
+        DateTime updatedAtUtc = new DateTime(2026, 4, 5, 0, 0, 0, DateTimeKind.Utc);
+        Park[] parks = new[]
+        {
+            new Park
+            {
+                Id = "park-1",
+                Name = "Mirapolis",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+                OpeningDate = new DateTime(1987, 5, 20),
+                OpeningDateText = "1987-05-20",
+                UpdatedAtUtc = updatedAtUtc,
+            },
+        };
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(repository => repository.GetPublicVisibleEventsAsync(50000, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<HistoryEvent>());
+        SetupPublicHistorySitemapParks(parkRepository, parks);
+        SetupPublicSitemapItems(itemRepository, Array.Empty<ParkItem>());
+        itemRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(parks);
+        HistoryTimelinesSitemapSectionProvider provider = new HistoryTimelinesSitemapSectionProvider(
+            historyRepository.Object,
+            parkRepository.Object,
+            itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/history" && url.LastModifiedUtc == updatedAtUtc);
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/mirapolis/history");
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HistoryTimelinesProvider_WhenPublicItemHasLifecycleDates_ShouldReturnItemAndParentParkTimelineUrls()
+    {
+        DateTime updatedAtUtc = new DateTime(2026, 4, 6, 0, 0, 0, DateTimeKind.Utc);
+        Park[] parks = new[]
+        {
+            new Park { Id = "park-1", Name = "Mirapolis", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        };
+        ParkItem[] items = new[]
+        {
+            new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Mira Looping",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+                UpdatedAtUtc = updatedAtUtc,
+                AttractionDetails = new AttractionDetails
+                {
+                    OpeningDate = new DateTime(1988, 1, 1),
+                    OpeningDateText = "1988",
+                },
+            },
+        };
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(repository => repository.GetPublicVisibleEventsAsync(50000, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<HistoryEvent>());
+        SetupPublicHistorySitemapParks(parkRepository, parks);
+        SetupPublicSitemapItems(itemRepository, items);
+        itemRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(items);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(parks);
+        HistoryTimelinesSitemapSectionProvider provider = new HistoryTimelinesSitemapSectionProvider(
+            historyRepository.Object,
+            parkRepository.Object,
+            itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/history" && url.LastModifiedUtc == updatedAtUtc);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/item/item-1/mira-looping/history" && url.LastModifiedUtc == updatedAtUtc);
         historyRepository.VerifyAll();
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
@@ -823,6 +927,45 @@ public sealed class SitemapSectionProvidersTests
         historyRepository.VerifyAll();
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
+    }
+
+    private static void SetupPublicHistorySitemapParks(Mock<IParkRepository> repository, IReadOnlyCollection<Park> parks)
+    {
+        repository
+            .Setup(item => item.GetPageAsync(
+                It.IsAny<int>(),
+                It.IsAny<int>(),
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                ClosedEntityFilter.All,
+                It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Default,
+                false))
+            .Returns((
+                int page,
+                int pageSize,
+                bool includeHidden,
+                bool? isVisible,
+                AdminReviewStatus? adminReviewStatus,
+                ParkType? type,
+                string? countryCode,
+                bool? hasValidCoordinates,
+                ClosedEntityFilter closedFilter,
+                CancellationToken cancellationToken,
+                ParkAdminSortField sortField,
+                bool sortDescending) =>
+            {
+                IReadOnlyCollection<Park> pageItems = parks
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                return Task.FromResult(new PagedResult<Park>(pageItems, page, pageSize, parks.Count));
+            });
     }
 
     private static void SetupPublicSitemapParks(Mock<IParkRepository> repository, IReadOnlyCollection<Park> parks)

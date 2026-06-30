@@ -882,6 +882,12 @@
       "cityPlaceholder": "Naam van de stad",
       "postalCode": "Postcode",
       "postalCodePlaceholder": "Postcode",
+      "openingDate": "Openingsdatum",
+      "openingDateText": "Openingsprecisie",
+      "openingDateTextPlaceholder": "Bijv. 1987 of mei 1987",
+      "closingDate": "Definitieve sluitingsdatum",
+      "closingDateText": "Sluitingsprecisie",
+      "closingDateTextPlaceholder": "Bijv. 1991 of oktober 1991",
       "editPage": {
         "createTitle": "Nieuw park aanmaken",
         "updateTitle": "Park \"{{name}}\" bewerken",

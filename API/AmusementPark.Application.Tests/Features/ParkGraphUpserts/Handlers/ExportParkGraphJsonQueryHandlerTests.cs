@@ -60,6 +60,10 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
             AdminReviewStatus = AdminReviewStatus.Validated,
             WebsiteUrl = "https://example.test",
             City = "Paris",
+            OpeningDate = new DateTime(1987, 5, 20),
+            ClosingDate = new DateTime(1991, 10, 20),
+            OpeningDateText = "1987-05-20",
+            ClosingDateText = "1991-10-20",
         };
         park.SetPosition(48.85, 2.35);
 
@@ -219,6 +223,10 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         Assert.Equal("park-1", root.GetProperty("identity").GetProperty("parkId").GetString());
         Assert.Equal("Export Park", root.GetProperty("park").GetProperty("name").GetString());
         Assert.Equal("Validated", root.GetProperty("park").GetProperty("adminReviewStatus").GetString());
+        Assert.Equal("1987-05-20T00:00:00", root.GetProperty("park").GetProperty("openingDate").GetString());
+        Assert.Equal("1991-10-20T00:00:00", root.GetProperty("park").GetProperty("closingDate").GetString());
+        Assert.Equal("1987-05-20", root.GetProperty("park").GetProperty("openingDateText").GetString());
+        Assert.Equal("1991-10-20", root.GetProperty("park").GetProperty("closingDateText").GetString());
         Assert.Equal("zone-1", root.GetProperty("zones")[0].GetProperty("key").GetString());
         Assert.Equal("DropTower", root.GetProperty("items")[0].GetProperty("type").GetString());
         Assert.Equal("zone-1", root.GetProperty("items")[0].GetProperty("zoneKey").GetString());

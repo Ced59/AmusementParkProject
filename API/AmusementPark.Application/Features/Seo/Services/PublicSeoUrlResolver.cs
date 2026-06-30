@@ -11,7 +11,7 @@ using AmusementPark.Core.Domain.Videos;
 
 namespace AmusementPark.Application.Features.Seo.Services;
 
-public sealed class PublicSeoUrlResolver
+public sealed partial class PublicSeoUrlResolver
 {
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkRepository parkRepository;
@@ -51,8 +51,19 @@ public sealed class PublicSeoUrlResolver
 
         foreach (PublicSeoParkSnapshot park in parkSnapshots)
         {
+            if (!IsPublicPark(park) && !IsPublicHistoryPark(park))
+            {
+                continue;
+            }
+
+            IReadOnlyCollection<PublicSeoParkItemSnapshot> currentPublicItems = currentPublicItemsByParkId.GetValueOrDefault(park.Id) ?? new List<PublicSeoParkItemSnapshot>();
             if (!IsPublicPark(park))
             {
+                if (HasParkLifecycleDate(park) || currentPublicItems.Any(HasParkItemLifecycleDate))
+                {
+                    AddParkHistoryUrls(relativePaths, languages, park);
+                }
+
                 continue;
             }
 
@@ -60,7 +71,7 @@ public sealed class PublicSeoUrlResolver
                 relativePaths,
                 languages,
                 park,
-                currentPublicItemsByParkId.GetValueOrDefault(park.Id) ?? new List<PublicSeoParkItemSnapshot>(),
+                currentPublicItems,
                 zonesByParkId.GetValueOrDefault(park.Id) ?? Array.Empty<ParkZone>(),
                 imagePresenceByKey,
                 cancellationToken);
@@ -73,7 +84,7 @@ public sealed class PublicSeoUrlResolver
 
         IReadOnlyCollection<PublicSeoParkItemSnapshot> itemSnapshots = MergeItemSnapshots(update.PreviousParkItems, update.CurrentParkItems);
         IReadOnlyCollection<string> parentParkIds = itemSnapshots
-            .Where(IsPublicItem)
+            .Where(static item => IsPublicItem(item) || IsPublicHistoryItem(item))
             .Select(static item => item.ParkId)
             .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
             .Distinct(StringComparer.OrdinalIgnoreCase)
@@ -83,12 +94,25 @@ public sealed class PublicSeoUrlResolver
 
         foreach (PublicSeoParkItemSnapshot item in itemSnapshots)
         {
-            if (!parentParkById.TryGetValue(item.ParkId, out PublicSeoParkSnapshot? parentPark) || !IsPublicPark(parentPark))
+            if (!parentParkById.TryGetValue(item.ParkId, out PublicSeoParkSnapshot? parentPark) || !IsPublicHistoryPark(parentPark))
             {
                 continue;
             }
 
-            if (!IsPublicItem(item))
+            bool isPublicItem = IsPublicItem(item);
+            bool isPublicHistoryItem = IsPublicHistoryItem(item);
+            if (!isPublicItem && !isPublicHistoryItem)
+            {
+                continue;
+            }
+
+            if (isPublicHistoryItem && HasParkItemLifecycleDate(item))
+            {
+                AddParkHistoryUrls(relativePaths, languages, parentPark);
+                AddParkItemHistoryUrls(relativePaths, languages, parentPark, item);
+            }
+
+            if (!IsPublicPark(parentPark) || !isPublicItem)
             {
                 continue;
             }
@@ -125,6 +149,11 @@ public sealed class PublicSeoUrlResolver
     {
         AddParkDetailUrls(relativePaths, languages, park);
 
+        if (HasParkLifecycleDate(park) || currentPublicItems.Any(HasParkItemLifecycleDate))
+        {
+            AddParkHistoryUrls(relativePaths, languages, park);
+        }
+
         if (await this.HasPublishedParkOrItemImagesAsync(park.Id, currentPublicItems, imagePresenceByKey, cancellationToken))
         {
             AddParkImageUrls(relativePaths, languages, park);
@@ -140,6 +169,11 @@ public sealed class PublicSeoUrlResolver
         foreach (PublicSeoParkItemSnapshot item in currentPublicItems)
         {
             AddParkItemDetailUrls(relativePaths, languages, park, item);
+            if (HasParkItemLifecycleDate(item))
+            {
+                AddParkItemHistoryUrls(relativePaths, languages, park, item);
+            }
+
             if (await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken))
             {
                 AddParkItemImageUrls(relativePaths, languages, park, item);
@@ -403,164 +437,6 @@ public sealed class PublicSeoUrlResolver
             .ToList();
     }
 
-    private static void AddDiscoveryUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages)
-    {
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/home");
-            relativePaths.Add($"/{language}/parks");
-        }
-    }
-
-    private static void AddParkDetailUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages, PublicSeoParkSnapshot park)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}");
-        }
-    }
-
-    private static void AddParkImageUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages, PublicSeoParkSnapshot park)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/images");
-        }
-    }
-
-    private static void AddParkVideoUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages, PublicSeoParkSnapshot park)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/videos");
-        }
-    }
-
-    private static void AddParkVideoDetailUrls(
-        HashSet<string> relativePaths,
-        IReadOnlyCollection<string> languages,
-        PublicSeoParkSnapshot park,
-        PublicSeoVideoSnapshot video)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        string videoSlug = SeoSlugService.ToSlug(video.Title, "video");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/videos/{video.Id}/{videoSlug}");
-        }
-    }
-
-    private static void AddParkItemListUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages, PublicSeoParkSnapshot park)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/items");
-        }
-    }
-
-    private static void AddParkItemDetailUrls(
-        HashSet<string> relativePaths,
-        IReadOnlyCollection<string> languages,
-        PublicSeoParkSnapshot park,
-        PublicSeoParkItemSnapshot item)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/item/{item.Id}/{itemSlug}");
-        }
-    }
-
-    private static void AddParkItemImageUrls(
-        HashSet<string> relativePaths,
-        IReadOnlyCollection<string> languages,
-        PublicSeoParkSnapshot park,
-        PublicSeoParkItemSnapshot item)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/images");
-        }
-    }
-
-    private static void AddParkItemVideoUrls(
-        HashSet<string> relativePaths,
-        IReadOnlyCollection<string> languages,
-        PublicSeoParkSnapshot park,
-        PublicSeoParkItemSnapshot item)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/videos");
-        }
-    }
-
-    private static void AddParkItemVideoDetailUrls(
-        HashSet<string> relativePaths,
-        IReadOnlyCollection<string> languages,
-        PublicSeoParkSnapshot park,
-        PublicSeoParkItemSnapshot item,
-        PublicSeoVideoSnapshot video)
-    {
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
-        string videoSlug = SeoSlugService.ToSlug(video.Title, "video");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/videos/{video.Id}/{videoSlug}");
-        }
-    }
-
-    private static void AddZoneImpactUrls(
-        HashSet<string> relativePaths,
-        IReadOnlyCollection<string> languages,
-        PublicSeoParkSnapshot park,
-        IReadOnlyCollection<PublicSeoParkItemSnapshot> publicItems,
-        IReadOnlyCollection<ParkZone> zones)
-    {
-        HashSet<string> impactedZoneIds = publicItems
-            .Select(static item => item.ZoneId)
-            .Where(static zoneId => !string.IsNullOrWhiteSpace(zoneId))
-            .Select(static zoneId => zoneId!)
-            .ToHashSet(StringComparer.OrdinalIgnoreCase);
-        if (impactedZoneIds.Count == 0)
-        {
-            return;
-        }
-
-        List<ParkZone> impactedZones = zones
-            .Where(zone => !string.IsNullOrWhiteSpace(zone.Id) && impactedZoneIds.Contains(zone.Id) && ParkZonesSitemapSectionProvider.IsPublicZone(zone))
-            .ToList();
-        if (impactedZones.Count == 0)
-        {
-            return;
-        }
-
-        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        foreach (string language in languages)
-        {
-            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/zones");
-        }
-
-        foreach (ParkZone zone in impactedZones)
-        {
-            string zoneSlug = SeoSlugService.ToSlug(zone.Name, "zone");
-            foreach (string language in languages)
-            {
-                relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/zone/{zone.Id}/{zoneSlug}");
-            }
-        }
-    }
-
     private static bool IsPublicPark(PublicSeoParkSnapshot park)
     {
         return !string.IsNullOrWhiteSpace(park.Id) &&
@@ -580,6 +456,23 @@ public sealed class PublicSeoUrlResolver
                item.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 
+    private static bool IsPublicHistoryPark(PublicSeoParkSnapshot park)
+    {
+        return !string.IsNullOrWhiteSpace(park.Id) &&
+               !string.IsNullOrWhiteSpace(park.Name) &&
+               park.IsVisible &&
+               park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+    }
+
+    private static bool IsPublicHistoryItem(PublicSeoParkItemSnapshot item)
+    {
+        return !string.IsNullOrWhiteSpace(item.Id) &&
+               !string.IsNullOrWhiteSpace(item.ParkId) &&
+               !string.IsNullOrWhiteSpace(item.Name) &&
+               item.IsVisible &&
+               item.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+    }
+
     private static bool IsPublicVideo(PublicSeoVideoSnapshot video)
     {
         return !string.IsNullOrWhiteSpace(video.Id) &&
@@ -588,14 +481,24 @@ public sealed class PublicSeoUrlResolver
                video.IsPublished;
     }
 
+    private static bool HasParkLifecycleDate(PublicSeoParkSnapshot park)
+    {
+        return park.OpeningDate.HasValue || park.ClosingDate.HasValue;
+    }
+
+    private static bool HasParkItemLifecycleDate(PublicSeoParkItemSnapshot item)
+    {
+        return item.OpeningDate.HasValue || item.ClosingDate.HasValue;
+    }
+
     private static string BuildParkRouteKey(PublicSeoParkSnapshot park)
     {
-        return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.Status}:{park.AdminReviewStatus}";
+        return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.Status}:{park.AdminReviewStatus}:{park.OpeningDate?.Ticks}:{park.ClosingDate?.Ticks}";
     }
 
     private static string BuildItemRouteKey(PublicSeoParkItemSnapshot item)
     {
-        return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.Status}:{item.AdminReviewStatus}";
+        return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.Status}:{item.AdminReviewStatus}:{item.OpeningDate?.Ticks}:{item.ClosingDate?.Ticks}";
     }
 
     private static string BuildVideoRouteKey(PublicSeoVideoSnapshot video)
