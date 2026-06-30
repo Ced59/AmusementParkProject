@@ -4,8 +4,8 @@ Objectif : intégrer tous les contenus visiteurs nommables et fiables, avec date
 
 ## Lire avant de commencer
 
-- `park-graph-upsert-json-guideline-r10.md`
-- `description-guidelines-r2.md` seulement si des descriptions sont incluses dans ce lot
+- `park-data-integration-orchestrator.md`
+- `04-rich-descriptions-localization.md` seulement si des descriptions sont incluses dans ce lot
 
 ## Export requis
 
@@ -60,16 +60,24 @@ Pour chaque item :
 ## Règles dates et statuts
 
 - Un item fermé mais confirmé reste visible si son intérêt public ou historique est réel.
+- Ajouter un statut de fermeture définitive quand il est fiable, et un tag ou une note `closed-definitively` si le modèle ou le lot le prévoit.
 - Ne pas utiliser une date complète sans source complète.
 - Ne pas confondre annonce, soft opening, ouverture publique et réouverture.
 - Pour une attraction déplacée, renseigner l’état dans le parc courant et réserver les autres vies à l’étape histoire.
 - Les restrictions d’accès vont dans `accessConditions`, jamais dans la description.
+- Ne pas supprimer une attraction fermée simplement parce qu’elle n’existe plus physiquement.
+- Utiliser une suppression contrôlée seulement pour un doublon, une erreur ou une entité hors cible déjà identifiée.
+- Ne pas inventer un constructeur, un modèle ou une zone à partir d’une supposition.
+- Ne pas transformer une information saisonnière en statut permanent.
+- Ne pas ajouter de données techniques brutes sans source fiable.
 
 ## Références constructeurs
 
 Si un `manufacturerKey` est utilisé, la référence doit être résolue dans le même JSON ou déjà exister sûrement dans l’export.
 
 Ne pas créer un constructeur doublon. Si un constructeur semble déjà présent sous un nom proche, documenter le doute dans `metadata.notes`.
+
+Ne pas créer `Anton Schwarzkopf` si une fiche `Schwarzkopf` doit plutôt être utilisée, renommée ou fusionnée. Ne pas modifier une biographie déjà validée explicitement, notamment Vekoma, sauf demande directe.
 
 ## JSON attendu
 

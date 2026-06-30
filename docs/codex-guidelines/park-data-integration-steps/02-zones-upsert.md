@@ -4,8 +4,8 @@ Objectif : structurer le parc avec ses zones officielles ou clairement établies
 
 ## Lire avant de commencer
 
-- `park-graph-upsert-json-guideline-r10.md`
-- `description-guidelines-r2.md` si des descriptions de zones sont rédigées
+- `park-data-integration-orchestrator.md`
+- `04-rich-descriptions-localization.md` si des descriptions de zones sont rédigées
 
 ## Export requis
 
@@ -27,6 +27,9 @@ Utiliser l’export actualisé après l’étape 1. Ne pas continuer avec l’ex
 - Ne pas créer de zone à partir d’une catégorie inventée comme “zone restaurants” ou “zone familiale” si le parc ne l’emploie pas.
 - Ne pas placer un hôtel dans une zone sauf rattachement officiel.
 - Si le parc n’a pas de zones publiques fiables, ne pas inventer de structure : passer à l’inventaire sans `zoneKey`.
+- Ne pas déduire une zone d’une localisation approximative.
+- Ne pas renommer une zone existante sans source claire.
+- Garder les zones fermées ou historiques si elles sont utiles à l’histoire du parc et documentées.
 
 ## JSON attendu
 

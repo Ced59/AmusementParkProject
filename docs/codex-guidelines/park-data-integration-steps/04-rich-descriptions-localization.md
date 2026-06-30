@@ -4,8 +4,7 @@ Objectif : produire les descriptions publiques longues, naturelles et utiles dan
 
 ## Lire avant de commencer
 
-- `description-guidelines-r2.md`
-- `park-graph-upsert-json-guideline-r10.md`
+- `park-data-integration-orchestrator.md`
 
 ## Export requis
 
@@ -51,6 +50,22 @@ Ne pas rédiger toutes les descriptions d’un grand parc en une seule réponse.
 
 Ne pas modifier la charte pour rendre les textes techniques. Les descriptions restent publiques, naturelles et user friendly.
 
+Une description doit aider un visiteur réel à comprendre ce qu’il va voir, l’ambiance du lieu, le type d’expérience proposée, l’identité propre de l’entité et pourquoi elle mérite d’être remarquée.
+
+Avant de valider une description, se demander : est-ce qu’un visiteur du parc pourrait lire ce texte sur son téléphone et le trouver utile, naturel et agréable ? Si la réponse est non, réécrire.
+
+Priorités en cas de doute :
+
+1. Exactitude factuelle.
+2. Utilité visiteur.
+3. Clarté mobile.
+4. Ton naturel.
+5. SEO discret.
+6. Structure HTML propre.
+7. Cohérence multilingue.
+
+Le style attendu est naturel, éditorial, spécifique au lieu, agréable à lire, orienté visiteur, non mécanique, non cloné d’un parc à l’autre et sans remplissage.
+
 Interdit dans les descriptions :
 
 - restrictions d’accès ;
@@ -62,6 +77,39 @@ Interdit dans les descriptions :
 - notes de complétude ;
 - jargon admin ;
 - explication d’upsert, de SEO ou de base de données.
+
+Formulations interdites :
+
+- “ce que ça apporte à la journée” ;
+- “ce que ça apporte au groupe” ;
+- “comment l’intégrer dans la journée” ;
+- “quand cela devient utile” ;
+- “pour une fiche visiteur” ;
+- “à référencer” ;
+- “contenu public” ;
+- “élément de parc” ;
+- “dans la base” ;
+- “upsert” ;
+- “SEO” dans un texte public.
+
+Éviter aussi les introductions répétitives : “Situé dans…”, “Cette attraction propose…”, “Idéal pour…”, “Cette zone permet…”.
+
+## Règles par type de description
+
+- Parc majeur : introduction immersive, identité du parc, grandes familles d’expériences, ambiance générale, intérêt pour différents profils de visiteurs, conclusion naturelle.
+- Parc local : texte spécifique et utile sans inventer une importance excessive.
+- Zone : espace vécu, ambiance, décor, rôle dans la visite, points d’intérêt, logique de circulation si utile.
+- Attraction : expérience ressentie, observations visibles, rythme, ambiance, place dans le parc, sensations fiables.
+- Restaurant, boutique, service : type de lieu, ambiance, utilité réelle, positionnement, particularité visible ou nommable.
+- Fondateur, exploitant, constructeur : biographie factuelle, réutilisable, prudente, non centrée artificiellement sur le parc courant.
+
+## Exactitude et anti-duplication
+
+- Ne jamais présenter comme certaine une date, un constructeur, une zone, une attraction, une ouverture, une fermeture ou une photo non vérifiée.
+- Si une information est incertaine, la documenter dans `metadata.notes` ou l’omettre.
+- Ne jamais copier-coller une description d’un parc à l’autre.
+- Même pour deux attractions de même type, varier l’angle, le vocabulaire, le rythme, les détails spécifiques et le contexte.
+- Le SEO doit rester discret et naturel.
 
 ## JSON attendu
 
@@ -110,6 +158,8 @@ Sections possibles :
 - Aucun texte ne réemploie mécaniquement la même structure d’un item à l’autre.
 - Le HTML reste simple : `<p>`, `<h2>`, `<h3>`, `<ul>`, `<li>`, `<strong>` si utile.
 - Aucune information structurée ne pollue la narration.
+- Le texte donne envie de lire sans survente.
+- Le texte ne ressemble pas à une fiche interne.
 
 ## Après Apply
 

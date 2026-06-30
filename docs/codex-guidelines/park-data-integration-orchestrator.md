@@ -92,7 +92,7 @@ Sortie attendue : un ou plusieurs JSON upsert centrés sur `items` et `reference
 
 ### Étape 4 — Descriptions longues localisées
 
-Lire `park-data-integration-steps/04-rich-descriptions-localization.md` et `description-guidelines-r2.md`.
+Lire `park-data-integration-steps/04-rich-descriptions-localization.md`.
 
 Objectif : produire les descriptions longues du parc, des zones et des parkItems dans les 8 langues, avec un style public naturel, spécifique et non technique.
 
@@ -116,7 +116,7 @@ Sortie attendue : JSON upsert centré sur `openingHours`, et éventuellement que
 
 ### Étape 7 — Histoire du parc et des parkItems
 
-Lire `park-data-integration-steps/07-history-timelines-and-articles.md` et `articles-guideline-r2-live-sources.md`.
+Lire `park-data-integration-steps/07-history-timelines-and-articles.md`.
 
 Objectif : créer la timeline du parc, puis les timelines des parkItems importants, avec articles seulement quand le sujet le mérite.
 
@@ -150,14 +150,25 @@ Si l’export montre une divergence avec le JSON précédent, l’export gagne. 
 - Ne jamais inventer une date complète quand seule l’année ou le mois est fiable.
 - Ne jamais transformer une rumeur, une page non sourcée ou une mention isolée en donnée publique validée.
 
+## Règles globales intégrées
+
+Ces règles remplacent les anciennes guidelines séparées et s’appliquent à toutes les étapes.
+
+- Vérifier la pertinence avant tout enrichissement.
+- Ne jamais enrichir artificiellement une entité douteuse.
+- Pour un parc majeur, viser un traitement complet : parc, zones, attractions, restaurants, boutiques, services, hôtels, parkings, références, images, horaires et histoire.
+- Ne pas se limiter aux coasters.
+- Résoudre toutes les clés utilisées : `zoneKey`, `manufacturerKey`, `operatorKey`, `founderKey`, `ownerKey`, `itemKey`, `imageKey`.
+- Préserver les données existantes en mode `merge` : IDs, images, rattachements, coordonnées, biographies et contenus validés.
+- Garder les éléments fermés mais confirmés visibles quand ils sont pertinents pour la fiche ou l’histoire.
+- Mettre les restrictions, tailles, tarifs, horaires, dates, coordonnées et données techniques dans les champs structurés, pas dans les descriptions.
+- Utiliser uniquement des images externes directes vers de vrais fichiers image.
+- Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
+- Créer un article seulement si le sujet a une vraie valeur éditoriale durable.
+
 ## Règles de livraison
 
-Avant de livrer un JSON, appliquer :
-
-- `park-graph-upsert-json-guideline-r10.md` pour la validité JSON et les règles d’upsert ;
-- `description-guidelines-r2.md` pour tout texte public ;
-- `articles-guideline-r2-live-sources.md` pour tout article ;
-- le fichier d’étape concerné.
+Avant de livrer un JSON, appliquer le fichier d’étape concerné et les règles globales intégrées ci-dessus.
 
 La réponse doit indiquer clairement :
 

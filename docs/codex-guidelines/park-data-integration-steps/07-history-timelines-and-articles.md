@@ -4,9 +4,8 @@ Objectif : créer une histoire fiable, sourcée et lisible, en séparant les év
 
 ## Lire avant de commencer
 
-- `park-graph-upsert-json-guideline-r10.md`
-- `articles-guideline-r2-live-sources.md`
-- `description-guidelines-r2.md` pour le style public des résumés
+- `park-data-integration-orchestrator.md`
+- `04-rich-descriptions-localization.md` pour le style public des résumés
 
 ## Export requis
 
@@ -82,11 +81,50 @@ Créer un article uniquement si le sujet mérite un développement durable :
 
 Un article ne doit pas répéter la description ni devenir une fiche technique.
 
+Mauvais sujets :
+
+- micro-changement sans intérêt durable ;
+- article qui répète la description ;
+- texte sans source ;
+- contenu promotionnel vide ;
+- fiche technique transformée en article ;
+- sujet artificiel créé pour remplir le site.
+
+Structure recommandée :
+
+1. Introduction courte.
+2. Contexte du parc, de l’attraction ou de l’événement.
+3. Développement chronologique ou thématique.
+4. Informations vérifiées et sources.
+5. Impact sur l’histoire, la visite ou la page du parc.
+6. Conclusion naturelle.
+
+Le style doit être naturel, clair, agréable à lire, documenté, orienté lecteur, non promotionnel, non mécanique et non académique.
+
+Pour un article historique, privilégier chronologie, fondateurs, exploitants successifs, attractions importantes, périodes de développement, transformation ou fermeture sourcée, traces actuelles et rôle patrimonial.
+
+Pour une visite terrain ou une vidéo, préciser la date, distinguer faits et ressentis, mentionner les observations réelles et ne pas transformer une observation ponctuelle en règle générale.
+
 ## Sources
 
 Chaque événement important doit avoir des sources. Les dates, exploitants, relocalisations et fermetures doivent être vérifiés.
 
 Utiliser `accessedAt` avec la date de consultation.
+
+Sources possibles :
+
+- site officiel du parc ;
+- communiqué officiel ;
+- presse locale ou nationale ;
+- archives de presse ;
+- documents historiques ;
+- bases spécialisées fiables ;
+- vidéos ou photos originales ;
+- documents administratifs publics.
+
+Les titres d’articles doivent être clairs, spécifiques et humains. Éviter titre générique, clickbait, promesse non tenue et sur-optimisation. Les liens internes doivent aider le lecteur vers parc, attraction, constructeur, opérateur, fondateur, vidéo, galerie ou article lié.
+
+La méta description doit résumer le sujet et donner envie de lire, sans promesse non tenue ni répétition artificielle de mots-clés.
 
 ## JSON attendu
 

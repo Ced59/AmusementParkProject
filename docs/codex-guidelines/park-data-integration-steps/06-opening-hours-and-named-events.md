@@ -4,8 +4,8 @@ Objectif : intégrer les horaires vérifiés et les exceptions datées sans inve
 
 ## Lire avant de commencer
 
-- `park-graph-upsert-json-guideline-r10.md`
-- `description-guidelines-r2.md` pour les libellés publics
+- `park-data-integration-orchestrator.md`
+- `04-rich-descriptions-localization.md` pour les libellés publics
 
 ## Export requis
 
@@ -33,6 +33,8 @@ Utiliser `openingHours` pour :
 - libellés et raisons localisés.
 
 Ne pas mettre ces informations dans les descriptions du parc.
+
+Ne pas inventer un calendrier complet à partir d’une information partielle. Distinguer période d’ouverture, jours d’ouverture, horaires, dernières admissions et fermetures exceptionnelles. Documenter les incertitudes dans `metadata.notes`.
 
 ## Événements nommés
 
@@ -63,6 +65,7 @@ Les événements nommés liés au calendrier vont d’abord dans `openingHours.l
 - `daysOfWeek` en valeurs anglaises compatibles enum, par exemple `Monday`.
 - `labels` et `reasons` localisés avec les 8 langues quand le libellé est public.
 - `lastVerifiedAtUtc` renseigné si la date de vérification est connue.
+- Ne pas utiliser les anciens champs singuliers `label` ou `reason` : utiliser toujours `labels` et `reasons` avec `languageCode` et `value`.
 
 ## JSON attendu
 

@@ -26,6 +26,10 @@ Vérifier :
 - toutes les clés sont résolues ;
 - toutes les dates complètes sont sourcées ;
 - les notes expliquent les incertitudes.
+- aucun champ obligatoire n’est cassé ;
+- aucun tarif n’est ajouté si les tarifs ne sont pas implémentés ;
+- aucun doublon constructeur, exploitant ou fondateur n’est créé ;
+- les données existantes fiables sont préservées en mode `merge`.
 
 ## Audit contenu public
 
@@ -37,6 +41,8 @@ Vérifier :
 - pas de formulations interdites ;
 - titres et résumés historiques lisibles ;
 - articles utiles et non redondants.
+- les textes ne contiennent pas “upsert”, “SEO”, “contenu public” ou autre jargon interne.
+- les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 
 ## Audit images
 

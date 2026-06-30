@@ -4,8 +4,8 @@ Objectif : créer ou corriger la fiche parc minimale fiable avant tout enrichiss
 
 ## Lire avant de commencer
 
-- `park-graph-upsert-json-guideline-r10.md`
 - `00-intake-and-export.md`
+- `park-data-integration-orchestrator.md`
 
 ## Export requis
 
@@ -32,6 +32,15 @@ Utiliser l’export initial ou l’export actualisé fourni par l’utilisateur.
 - Si seule l’année ou le mois est fiable, utiliser `openingDateText` ou `closingDateText`.
 - Ne pas inventer `01-01` ou le premier jour d’un mois pour rendre une date compatible.
 - Pour un parc disparu, conserver la visibilité si le parc est pertinent historiquement, mais garder `adminReviewStatus: "ToReview"` tant que la fiche n’est pas auditée.
+
+## Règles merge et prudence
+
+- Ne pas effacer une donnée existante fiable en mode `merge`.
+- Préserver les IDs, rattachements, images, coordonnées et contenus validés.
+- Si une correction remplace une donnée existante, expliquer la raison dans `metadata.notes`.
+- Ne pas confondre fondateur, exploitant, propriétaire et opérateur historique.
+- Ne pas ajouter de tarif, même si la source consultée contient des prix.
+- Ne pas inclure de descriptions longues dans cette étape si le parc est dense.
 
 ## JSON attendu
 

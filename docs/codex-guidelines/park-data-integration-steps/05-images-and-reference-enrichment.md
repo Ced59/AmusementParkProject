@@ -4,8 +4,8 @@ Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou
 
 ## Lire avant de commencer
 
-- `park-graph-upsert-json-guideline-r10.md`
-- `description-guidelines-r2.md` pour les biographies et descriptions de références
+- `park-data-integration-orchestrator.md`
+- `04-rich-descriptions-localization.md` pour les biographies et descriptions de références
 
 ## Export requis
 
@@ -16,6 +16,7 @@ Utiliser l’export actualisé après les items et descriptions concernés. Les 
 Une image externe doit être :
 
 - un fichier image direct ;
+- une URL directe `.jpg`, `.jpeg`, `.png` ou `.webp` quand c’est possible ;
 - téléchargeable ;
 - fidèle au parc ou à l’item ;
 - créditable ;
@@ -29,9 +30,14 @@ Refuser :
 - miniature indirecte ;
 - proxy CDN ;
 - URL `cdn-cgi/image` ;
+- URL encodée contenant `__im` ;
+- URL avec paramètres de transformation comme `?width=` ou `?format=` ;
 - URL encodée avec transformations ;
 - image générique ;
 - image dont l’élément représenté est douteux.
+- image avec watermark, sauf logo officiel.
+
+Ne pas utiliser de lien CDN interne du site comme source externe.
 
 ## Propriétaires d’images
 
@@ -69,6 +75,10 @@ Enrichir seulement les références utiles :
 - propriétaires si le modèle ou le contexte les prend en charge.
 
 Les biographies doivent être génériques et réutilisables. Ne pas écrire une bio de constructeur centrée uniquement sur le parc en cours.
+
+Pour les constructeurs majeurs, une bonne biographie peut couvrir l’origine, la période d’activité, les spécialités, les modèles marquants, l’influence dans l’industrie et des exemples connus. Pour une source limitée, rester prudent et plus court plutôt que remplir.
+
+Ne pas modifier une biographie déjà validée explicitement, notamment Vekoma, sauf demande directe.
 
 ## JSON attendu
 

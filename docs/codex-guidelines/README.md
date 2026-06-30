@@ -12,9 +12,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 
 ## Documents disponibles
 
-- `park-graph-upsert-json-guideline-r10.md` : règles de génération, correction et enrichissement des Park Graph Upsert JSON.
-- `description-guidelines-r2.md` : charte obligatoire pour les descriptions publiques des parcs, zones, parkItems et références.
-- `articles-guideline-r2-live-sources.md` : règles éditoriales pour les articles historiques, de visite, médias et actualités durables.
+- `park-data-integration-orchestrator.md` : orchestrateur principal du parcours complet.
 - `park-data-integration-steps/00-intake-and-export.md` : cadrage, pertinence, export et découpage anti-saturation.
 - `park-data-integration-steps/01-park-core-upsert.md` : identité du parc, dates principales, coordonnées, statut, exploitant et fondateur.
 - `park-data-integration-steps/02-zones-upsert.md` : zones officielles et structure de visite.
@@ -30,9 +28,6 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 1. Lire ce `README.md`.
 2. Lire `park-data-integration-orchestrator.md` pour une intégration complète de parc.
 3. Lire le fichier d’étape correspondant dans `park-data-integration-steps/`.
-4. Lire `park-graph-upsert-json-guideline-r10.md` avant toute modification JSON.
-5. Lire `description-guidelines-r2.md` avant toute rédaction ou réécriture de description.
-6. Lire `articles-guideline-r2-live-sources.md` avant toute création ou modification d’article.
 
 ## Règles globales non négociables
 
@@ -48,6 +43,10 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 - Les articles doivent apporter une vraie valeur éditoriale, avec des sources vérifiées, et ne doivent pas devenir des fiches techniques déguisées.
 - Pour une intégration complète, ne jamais enchaîner deux étapes sans export actualisé du parc après l’application de l’étape précédente.
 - Les JSON upsert doivent rester bornés : une étape, un lot cohérent, aucune copie massive de l’export complet si seules quelques entités changent.
+
+## Anciennes guidelines
+
+Les anciennes guidelines séparées JSON, descriptions et articles ont été consolidées dans l’orchestrateur et les fichiers d’étapes. Ne pas recréer de règles parallèles : toute évolution doit enrichir le fichier d’étape concerné.
 
 ## Usage attendu
 
