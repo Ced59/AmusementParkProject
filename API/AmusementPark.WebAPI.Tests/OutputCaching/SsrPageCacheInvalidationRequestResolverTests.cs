@@ -386,7 +386,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     }
 
     [Fact]
-    public async Task ResolveAsync_ForLargeParkGraphUpsert_ShouldTargetParkWithoutSeoDocuments()
+    public async Task ResolveAsync_ForLargeParkGraphUpsert_ShouldTargetParkWithoutSeoDocumentsOrHardPurge()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
         ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
@@ -414,6 +414,43 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Contains("/fr/park/park-1/", request.Prefixes);
         Assert.Contains("/fr/home", request.Paths);
         Assert.False(request.IncludeSeoDocuments);
+        Assert.True(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForLargeParkGraphUpsertWithVisibilityRemoval_ShouldForceHardPurge()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        List<ParkGraphUpsertChangeDto> changes = Enumerable.Range(1, 101)
+            .Select(index => new ParkGraphUpsertChangeDto
+            {
+                EntityType = "ParkItem",
+                EntityId = $"item-{index}",
+                ChangeType = "Updated",
+                Fields = index == 1
+                    ? new List<ParkGraphUpsertFieldChangeDto>
+                    {
+                        new ParkGraphUpsertFieldChangeDto { Field = "isVisible", OldValue = "true", NewValue = "false" },
+                    }
+                    : new List<ParkGraphUpsertFieldChangeDto>(),
+            })
+            .ToList();
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetParkId = "park-1",
+            Changes = changes,
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/", request.Prefixes);
         Assert.False(request.AllowStale);
         Assert.False(request.Refresh);
     }

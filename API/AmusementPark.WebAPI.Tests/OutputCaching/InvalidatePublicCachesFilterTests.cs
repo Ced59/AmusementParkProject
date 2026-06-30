@@ -106,6 +106,28 @@ public sealed class InvalidatePublicCachesFilterTests
     }
 
     [Fact]
+    public async Task OnActionExecutionAsync_WhenOutputCacheEvictionIsDisabled_ShouldOnlyInvalidateSsr()
+    {
+        Mock<IOutputCacheStore> outputCacheStore = new Mock<IOutputCacheStore>(MockBehavior.Strict);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        ssrPageCacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver(CreateTargetedRequest());
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Post,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.Data) { EvictOutputCache = false });
+
+        await filter.OnActionExecutionAsync(context, () => Task.FromResult(CreateExecutedContext(context)));
+
+        outputCacheStore.Verify(
+            store => store.EvictByTagAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        ssrPageCacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
     public async Task OnActionExecutionAsync_WhenRequestIsAborted_ShouldUseIndependentInvalidationToken()
     {
         CancellationToken outputCacheCancellationToken = CancellationToken.None;

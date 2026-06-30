@@ -44,12 +44,14 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         ArgumentNullException.ThrowIfNull(context);
         ArgumentNullException.ThrowIfNull(next);
 
-        if (!TryResolveScopes(context, out IReadOnlyCollection<PublicCacheScope> scopes))
+        if (!TryResolveAttribute(context, out InvalidatesPublicCacheAttribute? resolvedAttribute))
         {
             await next();
             return;
         }
 
+        InvalidatesPublicCacheAttribute attribute = resolvedAttribute ?? throw new InvalidOperationException("Public cache invalidation attribute was not resolved.");
+        IReadOnlyCollection<PublicCacheScope> scopes = attribute.Scopes;
         SsrPageCacheInvalidationRequest preExecutionSsrInvalidation = await this.ResolveSsrInvalidationAsync(context, null, scopes);
 
         ActionExecutedContext executedContext = await next();
@@ -59,15 +61,18 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
             return;
         }
 
-        foreach (string tag in ResolveTags(scopes))
+        if (attribute.EvictOutputCache)
         {
-            try
+            foreach (string tag in ResolveTags(scopes))
             {
-                await this.outputCacheStore.EvictByTagAsync(tag, CancellationToken.None);
-            }
-            catch (Exception exception)
-            {
-                this.logger.LogWarning(exception, "Public output cache eviction failed for tag {Tag}.", tag);
+                try
+                {
+                    await this.outputCacheStore.EvictByTagAsync(tag, CancellationToken.None);
+                }
+                catch (Exception exception)
+                {
+                    this.logger.LogWarning(exception, "Public output cache eviction failed for tag {Tag}.", tag);
+                }
             }
         }
 
@@ -211,18 +216,18 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         return string.Equals(adminReviewStatusProperty?.GetValue(value)?.ToString(), "NotRelevant", StringComparison.OrdinalIgnoreCase);
     }
 
-    private static bool TryResolveScopes(
+    private static bool TryResolveAttribute(
         ActionExecutingContext context,
-        out IReadOnlyCollection<PublicCacheScope> scopes)
+        out InvalidatesPublicCacheAttribute? attribute)
     {
-        scopes = Array.Empty<PublicCacheScope>();
+        attribute = null;
 
         if (!IsMutatingMethod(context.HttpContext.Request.Method))
         {
             return false;
         }
 
-        InvalidatesPublicCacheAttribute? attribute = context.ActionDescriptor.EndpointMetadata
+        attribute = context.ActionDescriptor.EndpointMetadata
             .OfType<InvalidatesPublicCacheAttribute>()
             .FirstOrDefault();
 
@@ -231,7 +236,6 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
             return false;
         }
 
-        scopes = attribute.Scopes;
         return true;
     }
 
