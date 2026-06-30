@@ -168,8 +168,8 @@ public sealed partial class ParkGraphUpsertProcessor
 
         string? parkId = entityType == HistoryEntityType.Park ? ownerId : NormalizeString(ReadString(patch, "parkId"));
         string? parkItemId = entityType == HistoryEntityType.ParkItem ? ownerId : NormalizeString(ReadString(patch, "parkItemId"));
-        string? contextParkId = NormalizeString(ReadString(patch, "contextParkId") ?? ReadString(patch, "contextPark") ?? ReadString(patch, "parkContextId"));
-        if (entityType == HistoryEntityType.ParkItem)
+        string? contextParkId = ReadHistoryContextParkId(patch);
+        if (entityType == HistoryEntityType.ParkItem && !HasHistoryContextParkProperty(patch))
         {
             contextParkId ??= parkId ?? targetPark.Id;
         }
@@ -249,6 +249,27 @@ public sealed partial class ParkGraphUpsertProcessor
                 historyEvent.IsMajor = true;
             }
         }
+    }
+
+    private static bool HasHistoryContextParkProperty(JsonElement patch)
+    {
+        return HasProperty(patch, "contextParkId")
+            || HasProperty(patch, "contextPark")
+            || HasProperty(patch, "parkContextId");
+    }
+
+    private static string? ReadHistoryContextParkId(JsonElement patch)
+    {
+        string? contextParkId = NormalizeString(ReadString(patch, "contextParkId") ?? ReadString(patch, "contextPark") ?? ReadString(patch, "parkContextId"));
+        return IsExternalHistoryContextMarker(contextParkId) ? null : contextParkId;
+    }
+
+    private static bool IsExternalHistoryContextMarker(string? contextParkId)
+    {
+        return string.Equals(contextParkId, "external", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(contextParkId, "outside", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(contextParkId, "none", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(contextParkId, "null", StringComparison.OrdinalIgnoreCase);
     }
 
     private static HistoryDateParts? ReadHistoryDate(JsonElement patch)
