@@ -1,39 +1,39 @@
 {
   "parks": {
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
-      "loadingItemsTitle": "Cargando videos de lugares",
-      "loadingItemsMessage": "Preparando videos de lugares de {{name}}.",
+      "kicker": "Vídeos del parque",
+      "title": "Vídeos de {{name}}",
+      "subtitle": "Mira vídeos de {{name}}: onrides, offrides, clips oficiales y contenido de creadores.",
+      "loadingTitle": "Cargando vídeos",
+      "loadingMessage": "Preparando los vídeos del parque.",
+      "loadingItemsTitle": "Cargando vídeos de lugares",
+      "loadingItemsMessage": "Preparando vídeos de lugares de {{name}}.",
       "tabs": {
-        "label": "Secciones de videos",
+        "label": "Secciones de vídeos",
         "park": "Parque",
         "items": "Lugares del parque"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Vídeos no disponibles",
+      "errorMessage": "No se pueden cargar los vídeos de este parque por ahora.",
+      "backToPark": "Volver a {{name}}",
+      "emptyTitle": "No hay vídeos publicados",
+      "emptyMessage": "Todavía no hay ningún vídeo publicado para {{name}}."
     }
   },
   "parkItems": {
     "videosPage": {
       "kicker": "Vídeos del lugar",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Vídeos de {{name}}",
+      "subtitle": "Mira vídeos de {{name}} en {{park}}: onrides, offrides, reseñas y contenido oficial.",
+      "loadingTitle": "Cargando vídeos",
       "loadingMessage": "Preparando los vídeos de este lugar.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Vídeos no disponibles",
       "errorMessage": "No se pueden cargar los vídeos de este lugar por ahora.",
-      "backToItem": "Back to {{name}}",
-      "backToItems": "Por descubrir en {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToItem": "Volver a {{name}}",
+      "backToItems": "Descubrir más en {{name}}",
+      "backToPark": "Volver a {{name}}",
+      "emptyTitle": "No hay vídeos publicados",
+      "emptyMessage": "Todavía no hay ningún vídeo publicado para {{name}}."
     }
   }
 }

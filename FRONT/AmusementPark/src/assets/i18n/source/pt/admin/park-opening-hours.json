@@ -2,51 +2,51 @@
   "admin": {
     "parks": {
       "tabs": {
-        "openingHours": "Horarios"
+        "openingHours": "Horários"
       },
       "sort": {
-        "openingHoursAttentionFirst": "Horarios a rever",
-        "openingHoursReadyFirst": "Horarios completos"
+        "openingHoursAttentionFirst": "Horários a rever",
+        "openingHoursReadyFirst": "Horários completos"
       },
       "openingHours": {
-        "title": "Horarios",
-        "filterLabel": "Horarios",
-        "notConfigured": "Nao configurado",
-        "coverageOne": "Horarios completos para {{ count }} dia, ate {{ date }}",
-        "coverageMany": "Horarios completos para {{ count }} dias, ate {{ date }}",
+        "title": "Horários",
+        "filterLabel": "Horários",
+        "notConfigured": "Não configurado",
+        "coverageOne": "Horários completos para {{ count }} dia, até {{ date }}",
+        "coverageMany": "Horários completos para {{ count }} dias, até {{ date }}",
         "statuses": {
-          "NotConfigured": "Nao configurado",
+          "NotConfigured": "Não configurado",
           "Expired": "Expirado",
           "NeedsUpdate": "A atualizar",
           "UpToDate": "Atualizado"
         },
         "filters": {
-          "all": "Todos os horarios",
+          "all": "Todos os horários",
           "configured": "Configurados",
-          "notConfigured": "Nao configurados",
+          "notConfigured": "Não configurados",
           "upToDate": "Atualizados",
           "needsUpdate": "A atualizar",
           "expired": "Expirados"
         }
       },
       "openingHoursEditor": {
-        "title": "JSON horarios",
-        "subtitle": "Cola ou edita o JSON de horarios e faz upsert para este parque.",
+        "title": "JSON horários",
+        "subtitle": "Cola ou edita o JSON de horários e faz upsert para este parque.",
         "reload": "Recarregar",
         "format": "Formatar",
         "upsert": "Upsert JSON",
-        "jsonLabel": "JSON horarios",
+        "jsonLabel": "JSON horários",
         "invalidJson": "O JSON e invalido.",
-        "savedSummary": "Horarios guardados",
-        "savedDetail": "O calendario foi atualizado.",
-        "saveError": "Nao foi possivel guardar os horarios.",
-        "loadError": "Nao foi possivel carregar os horarios.",
-        "hint": "Os dias fechados devem ser explicitos quando devem contar como cobertura completa."
+        "savedSummary": "Horários guardados",
+        "savedDetail": "O calendário foi atualizado.",
+        "saveError": "Não foi possível guardar os horários.",
+        "loadError": "Não foi possível carregar os horários.",
+        "hint": "Os dias fechados devem ser explícitos quando devem contar como cobertura completa."
       }
     },
     "parkGraphUpserts": {
       "editor": {
-        "description": "As propriedades ausentes sao preservadas. A seccao openingHours e pre-visualizada e aplicada com o mesmo JSON global do parque, zonas, paginas e imagens."
+        "description": "As propriedades ausentes são preservadas. A seccao openingHours e pre-visualizada e aplicada com o mesmo JSON global do parque, zonas, paginas e imagens."
       }
     }
   }

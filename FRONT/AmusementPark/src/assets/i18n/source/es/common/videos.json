@@ -1,66 +1,66 @@
 {
   "images": {
     "categories": {
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "VIDEO_THUMBNAIL": "Miniatura de vídeo"
     },
     "ownerTypes": {
-      "VIDEO": "Video"
+      "VIDEO": "Vídeo"
     }
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
-      "loadMore": "Load more videos",
-      "loadingMore": "Loading..."
+      "count": "{{count}} vídeos",
+      "views": "{{count}} visualizaciones",
+      "loadMore": "Cargar más vídeos",
+      "loadingMore": "Cargando..."
     },
     "filters": {
-      "type": "Video type",
-      "allTypes": "All types",
-      "tag": "Tag",
-      "allTags": "All tags",
-      "creator": "Creator",
-      "creatorPlaceholder": "Filter by creator name",
-      "applyCreator": "Apply",
-      "clear": "Clear filters"
+      "type": "Tipo de vídeo",
+      "allTypes": "Todos los tipos",
+      "tag": "Etiqueta",
+      "allTags": "Todas las etiquetas",
+      "creator": "Creador",
+      "creatorPlaceholder": "Filtrar por nombre de creador",
+      "applyCreator": "Aplicar",
+      "clear": "Borrar filtros"
     },
     "providers": {
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "External video"
+      "other": "Vídeo externo"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Advertisement",
-      "documentary": "Documentary",
-      "review": "Review",
-      "news": "News",
-      "event": "Event",
-      "interview": "Interview",
-      "other": "Other"
+      "advertisement": "Publicidad",
+      "documentary": "Documental",
+      "review": "Reseña",
+      "news": "Noticias",
+      "event": "Evento",
+      "interview": "Entrevista",
+      "other": "Otro"
     },
     "watch": {
-      "loadingTitle": "Loading video",
-      "loadingMessage": "The video page is being loaded.",
-      "errorTitle": "Video unavailable",
-      "errorMessage": "The requested video could not be loaded.",
-      "previous": "Previous video",
-      "next": "Next video",
-      "backToVideos": "Back to videos",
-      "creator": "Creator",
-      "category": "Category",
-      "provider": "Provider",
-      "duration": "Duration",
-      "publishedAt": "Published",
-      "viewCount": "Views",
-      "views": "{{count}} views",
-      "tagsAndCategories": "Categories and tags",
-      "openExternal": "Open video",
-      "openCreator": "Open creator",
-      "openProvider": "Open provider page"
+      "loadingTitle": "Cargando vídeo",
+      "loadingMessage": "La página del vídeo se está cargando.",
+      "errorTitle": "Vídeo no disponible",
+      "errorMessage": "No se pudo cargar el vídeo solicitado.",
+      "previous": "Vídeo anterior",
+      "next": "Vídeo siguiente",
+      "backToVideos": "Volver a los vídeos",
+      "creator": "Creador",
+      "category": "Categoría",
+      "provider": "Proveedor",
+      "duration": "Duración",
+      "publishedAt": "Publicado",
+      "viewCount": "Visualizaciones",
+      "views": "{{count}} visualizaciones",
+      "tagsAndCategories": "Categorías y etiquetas",
+      "openExternal": "Abrir vídeo",
+      "openCreator": "Abrir creador",
+      "openProvider": "Abrir página del proveedor"
     }
   }
 }

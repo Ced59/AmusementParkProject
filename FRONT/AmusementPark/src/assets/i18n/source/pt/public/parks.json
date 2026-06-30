@@ -94,7 +94,7 @@
         "visible": "Visível",
         "hidden": "Oculta",
         "open": "Ver os locais da zona",
-        "noDescription": "Ainda não há descrição disponível para esta zona.",
+        "noDescription": "Ainda não há descrição disponível para está zona.",
         "slug": "Slug",
         "sortOrder": "Ordem",
         "sortOrderShort": "Ordem {{order}}"
@@ -145,7 +145,7 @@
       "errorTitle": "Mapa indisponível",
       "errorMessage": "Não foi possível carregar os pontos do mapa.",
       "emptyTitle": "Nenhum ponto disponível",
-      "emptyMessage": "Nenhum parque com coordenadas corresponde a esta pesquisa.",
+      "emptyMessage": "Nenhum parque com coordenadas corresponde a está pesquisa.",
       "navigate": "Ir para lá",
       "openDetail": "Abrir ficha",
       "regionFilters": {
@@ -286,7 +286,7 @@
       "loadingItemsMessage": "A preparar as fotos dos locais de {{name}}.",
       "emptyTitle": "Sem imagens publicadas",
       "emptyMessage": "Ainda não há imagens publicadas disponíveis para {{name}}.",
-      "emptyItemsMessage": "Ainda nao ha fotos publicadas dos locais disponiveis para {{name}}."
+      "emptyItemsMessage": "Ainda não há fotos publicadas dos locais disponíveis para {{name}}."
     },
     "mapPage": {
       "kicker": "Mapa do parque",
@@ -308,7 +308,7 @@
       "errorMessage": "Não foi possível carregar as zonas do parque.",
       "emptyTitle": "Nenhuma zona disponível",
       "emptyMessage": "Não há atualmente nenhuma zona pública disponível para este parque.",
-      "noDescription": "Ainda não há descrição disponível para esta zona.",
+      "noDescription": "Ainda não há descrição disponível para está zona.",
       "openZone": "Abrir zona",
       "backToZones": "Voltar às zonas"
     },
@@ -329,7 +329,7 @@
       "itemsBadge": "A descobrir",
       "itemsTitle": "Locais a descobrir nesta zona",
       "emptyItemsTitle": "Nenhum local nesta zona",
-      "emptyItemsMessage": "Nenhum local público está atualmente ligado a esta zona."
+      "emptyItemsMessage": "Nenhum local público está atualmente ligado a está zona."
     },
     "closedFilters": {
       "label": "Abertura",

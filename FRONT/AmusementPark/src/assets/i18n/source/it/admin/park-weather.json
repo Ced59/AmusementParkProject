@@ -35,7 +35,7 @@
         "completed": "Aggiornamento meteo completato.",
         "completedWithFailures": "Aggiornamento meteo completato con errori.",
         "canceled": "Aggiornamento meteo annullato.",
-        "skippedByManual": "Esecuzione automatica saltata perche un aggiornamento manuale copre gia questo ciclo."
+        "skippedByManual": "Esecuzione automatica saltata perché un aggiornamento manuale copre gia questo ciclo."
       },
       "values": {
         "empty": "-"

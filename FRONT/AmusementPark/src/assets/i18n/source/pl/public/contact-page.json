@@ -15,9 +15,9 @@
       "messageLabel": "Twoja wiadomosc",
       "help": "Napisz wiadomosc prosto, bez niepotrzebnych linkow.",
       "validation": "Wpisz jasna wiadomosc od 10 do 2000 znakow.",
-      "success": "Twoja wiadomosc zostala wyslana.",
-      "error": "Nie udalo sie wyslac wiadomosci. Sprawdz tekst albo sprobuj pozniej.",
-      "submit": "Wyslij",
+      "success": "Twoja wiadomość została wysłana.",
+      "error": "Nie udało się wysłać wiadomości. Sprawdź tekst albo spróbuj później.",
+      "submit": "Wyślij",
       "submitting": "Wysylanie"
     },
     "privacy": {
@@ -25,9 +25,9 @@
       "title": "Chroniona przestrzen",
       "text": "Formularz pozostaje prosty, aby rozmowy byly czyste i przydatne.",
       "points": {
-        "plainText": "Twoja wiadomosc powinna byc jasna i z szacunkiem.",
-        "ip": "Powtarzajace sie naduzycia moga byc ograniczane.",
-        "admin": "Tylko zespol strony moze czytac wiadomosci."
+        "plainText": "Twoja wiadomość powinna być jasna i z szacunkiem.",
+        "ip": "Powtarzające się nadużycia mogą być ograniczane.",
+        "admin": "Tylko zespół strony może czytać wiadomości."
       }
     }
   }

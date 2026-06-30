@@ -1,7 +1,7 @@
 {
   "images": {
     "categories": {
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "VIDEO_THUMBNAIL": "Miniatura video"
     },
     "ownerTypes": {
       "VIDEO": "Video"
@@ -9,58 +9,58 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
-      "loadMore": "Load more videos",
-      "loadingMore": "Loading..."
+      "count": "{{count}} video",
+      "views": "{{count}} visualizzazioni",
+      "loadMore": "Carica altri video",
+      "loadingMore": "Caricamento..."
     },
     "filters": {
-      "type": "Video type",
-      "allTypes": "All types",
+      "type": "Tipo di video",
+      "allTypes": "Tutti i tipi",
       "tag": "Tag",
-      "allTags": "All tags",
-      "creator": "Creator",
-      "creatorPlaceholder": "Filter by creator name",
-      "applyCreator": "Apply",
-      "clear": "Clear filters"
+      "allTags": "Tutti i tag",
+      "creator": "Creatore",
+      "creatorPlaceholder": "Filtra per nome del creatore",
+      "applyCreator": "Applica",
+      "clear": "Cancella filtri"
     },
     "providers": {
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "External video"
+      "other": "Video esterno"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Advertisement",
-      "documentary": "Documentary",
-      "review": "Review",
-      "news": "News",
-      "event": "Event",
-      "interview": "Interview",
-      "other": "Other"
+      "advertisement": "Pubblicità",
+      "documentary": "Documentario",
+      "review": "Recensione",
+      "news": "Notizia",
+      "event": "Evento",
+      "interview": "Intervista",
+      "other": "Altro"
     },
     "watch": {
-      "loadingTitle": "Loading video",
-      "loadingMessage": "The video page is being loaded.",
-      "errorTitle": "Video unavailable",
-      "errorMessage": "The requested video could not be loaded.",
-      "previous": "Previous video",
-      "next": "Next video",
-      "backToVideos": "Back to videos",
-      "creator": "Creator",
-      "category": "Category",
+      "loadingTitle": "Caricamento video",
+      "loadingMessage": "La pagina video si sta caricando.",
+      "errorTitle": "Video non disponibile",
+      "errorMessage": "Il video richiesto non può essere caricato.",
+      "previous": "Video precedente",
+      "next": "Video successivo",
+      "backToVideos": "Torna ai video",
+      "creator": "Creatore",
+      "category": "Categoria",
       "provider": "Provider",
-      "duration": "Duration",
-      "publishedAt": "Published",
-      "viewCount": "Views",
-      "views": "{{count}} views",
-      "tagsAndCategories": "Categories and tags",
-      "openExternal": "Open video",
-      "openCreator": "Open creator",
-      "openProvider": "Open provider page"
+      "duration": "Durata",
+      "publishedAt": "Pubblicato",
+      "viewCount": "Visualizzazioni",
+      "views": "{{count}} visualizzazioni",
+      "tagsAndCategories": "Categorie e tag",
+      "openExternal": "Apri video",
+      "openCreator": "Apri creatore",
+      "openProvider": "Apri pagina del provider"
     }
   }
 }

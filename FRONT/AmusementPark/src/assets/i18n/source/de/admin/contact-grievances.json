@@ -3,8 +3,8 @@
     "contactGrievances": {
       "navTitle": "Kontaktmeldungen",
       "kicker": "Kontakt",
-      "title": "Rueckmeldebuch",
-      "subtitle": "Oeffentliche Kontaktmeldungen mit IP-Kontext gegen Missbrauch einsehen.",
+    "title": "Rückmeldebuch",
+      "subtitle": "Öffentliche Kontaktmeldungen mit IP-Kontext gegen Missbrauch einsehen.",
       "total": "{{count}} Nachrichten",
       "loading": "Kontaktmeldungen werden geladen...",
       "loadError": "Kontaktmeldungen konnten nicht geladen werden.",

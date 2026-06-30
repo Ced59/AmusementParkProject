@@ -1,9 +1,9 @@
 {
   "admin": {
     "publicViewToolbar": {
-      "ariaLabel": "Admin-Leiste fuer die oeffentliche Ansicht",
-      "viewMode": "Oeffentliche Ansicht",
-      "viewModeAriaLabel": "Oeffentliche Ansicht waehlen",
+      "ariaLabel": "Admin-Leiste für die öffentliche Ansicht",
+      "viewMode": "Öffentliche Ansicht",
+      "viewModeAriaLabel": "Öffentliche Ansicht wählen",
       "editionOff": "Bearbeiten aus",
       "editionOn": "Bearbeiten an",
       "enableEditionMode": "Bearbeiten aktivieren",
@@ -36,16 +36,16 @@
     "contextualBlocks": {
       "editAction": "Bearbeiten",
       "drawer": {
-        "ariaLabel": "Ausgewaehlter bearbeitbarer Block",
+        "ariaLabel": "Ausgewählter bearbeitbarer Block",
         "kicker": "Kontextblock",
-        "close": "Blockdiagnose schliessen",
+        "close": "Blockdiagnose schließen",
         "type": "Blocktyp",
         "entity": "Entitaet",
         "label": "Aktuelles Element",
         "capabilities": "Faehigkeiten",
         "localizedLanguages": "Lokalisiert in",
         "jsonScope": "JSON-Bereich",
-        "openAdminEdit": "Vollstaendige Admin-Bearbeitung oeffnen",
+        "openAdminEdit": "Vollständige Admin-Bearbeitung öffnen",
         "formTitle": "Schnellformular",
         "formLoading": "Formular wird geladen...",
         "formReload": "Neu laden",
@@ -55,15 +55,15 @@
         "formSaveError": "Das Speichern des Formulars ist fehlgeschlagen.",
         "formSaveSucceeded": "Formular gespeichert, die Seite wird aktualisiert.",
         "formNoChanges": "Keine Aenderung zum Speichern.",
-        "formUnavailable": "Das Formular ist fuer diesen Block nicht verfuegbar.",
+        "formUnavailable": "Das Formular ist für diesen Block nicht verfügbar.",
         "localizedFieldAriaLabel": "Variante {{ languageCode }} bearbeiten",
-        "locationPickerHint": "Tippe auf die Karte, um den Punkt zu erstellen oder zu verschieben. Koordinaten bleiben als Ersatz verfuegbar.",
+        "locationPickerHint": "Tippe auf die Karte, um den Punkt zu erstellen oder zu verschieben. Koordinaten bleiben als Ersatz verfügbar.",
         "locationLatitude": "Breitengrad",
-        "locationLongitude": "Laengengrad",
+        "locationLongitude": "Längengrad",
         "locationClear": "Punkt entfernen",
-        "locationInvalid": "Breiten- und Laengengrad muessen gueltig oder beide leer sein.",
-        "addChildTitle": "Item hinzufuegen",
-        "addChildHint": "Das Item wird verborgen erstellt und vor der Veroeffentlichung geprueft.",
+        "locationInvalid": "Breiten- und Längengrad müssen gültig oder beide leer sein.",
+        "addChildTitle": "Item hinzufügen",
+        "addChildHint": "Das Item wird verborgen erstellt und vor der Veröffentlichung geprüft.",
         "addChildNameLabel": "Name",
         "addChildNamePlaceholder": "Item-Name",
         "addChildZoneLabel": "Zone",
@@ -73,16 +73,16 @@
         "addChildCreateBusy": "Erstellung...",
         "addChildError": "Das Item konnte nicht erstellt werden.",
         "addChildNameRequired": "Gib einen Namen ein, bevor du das Item erstellst.",
-        "addChildUnavailable": "Gezieltes Hinzufuegen ist fuer diesen Block nicht verfuegbar.",
+        "addChildUnavailable": "Gezieltes Hinzufügen ist für diesen Block nicht verfügbar.",
         "addChildSucceeded": "Verborgenes Item erstellt, die Seite wird aktualisiert.",
-        "openCreatedChild": "Item oeffnen",
+        "openCreatedChild": "Item öffnen",
         "parkGraphUpsertTitle": "Hersteller-Upsert-JSON",
         "parkGraphUpsertHint": "Kopiere, lade herunter oder importiere dieses vorausgefuellte Hersteller-JSON direkt.",
         "parkGraphUpsertDraftAriaLabel": "Vorausgefuelltes Hersteller-Upsert-JSON",
         "copyParkGraphUpsert": "JSON kopieren",
         "copyParkGraphUpsertBusy": "Kopieren...",
         "downloadParkGraphUpsert": "JSON herunterladen",
-        "openParkGraphUpsertImport": "JSON-Import oeffnen",
+        "openParkGraphUpsertImport": "JSON-Import öffnen",
         "importParkGraphUpsert": "JSON importieren",
         "importParkGraphUpsertBusy": "Import...",
         "parkGraphUpsertCopied": "JSON wurde in die Zwischenablage kopiert.",
@@ -92,40 +92,40 @@
         "parkGraphUpsertDownloadError": "JSON konnte nicht heruntergeladen werden.",
         "parkGraphUpsertImportError": "JSON-Import fehlgeschlagen.",
         "parkGraphUpsertImportBlocked": "Das JSON konnte nicht angewendet werden.",
-        "parkGraphUpsertImportInvalidFile": "Waehle eine .json-Datei.",
-        "parkGraphUpsertImportInvalidJson": "Die JSON-Datei ist ungueltig.",
-        "parkGraphUpsertUnavailable": "Fuer diesen Block ist kein Upsert-Entwurf verfuegbar.",
+        "parkGraphUpsertImportInvalidFile": "Wähle eine .json-Datei.",
+        "parkGraphUpsertImportInvalidJson": "Die JSON-Datei ist ungültig.",
+        "parkGraphUpsertUnavailable": "Für diesen Block ist kein Upsert-Entwurf verfügbar.",
         "downloadJson": "Block-JSON herunterladen",
-        "downloadJsonBusy": "Download laeuft...",
+        "downloadJsonBusy": "Download läuft...",
         "downloadJsonError": "JSON-Download fehlgeschlagen.",
-        "downloadJsonUnavailable": "JSON-Export ist fuer diesen Block nicht verfuegbar.",
+        "downloadJsonUnavailable": "JSON-Export ist für diesen Block nicht verfügbar.",
         "exportJsonAriaLabel": "Begrenztes JSON dieses Blocks herunterladen",
         "jsonDraft": "JSON-Entwurf",
         "jsonDraftAriaLabel": "Begrenzter JSON-Entwurf dieses Blocks",
         "previewJson": "Vorschau",
-        "previewJsonBusy": "Vorschau laeuft...",
+        "previewJsonBusy": "Vorschau läuft...",
         "clearJsonDraft": "Leeren",
-        "previewJsonInvalid": "Das eingegebene JSON ist nicht gueltig.",
+        "previewJsonInvalid": "Das eingegebene JSON ist nicht gültig.",
         "previewJsonError": "JSON-Vorschau fehlgeschlagen.",
-        "previewJsonUnavailable": "JSON-Vorschau ist fuer diesen Block nicht verfuegbar.",
-        "previewJsonCanApply": "Vorschau ist gueltig, keine Daten wurden geaendert.",
-        "previewJsonBlocked": "Vorschau ist blockiert, keine Daten wurden geaendert.",
+        "previewJsonUnavailable": "JSON-Vorschau ist für diesen Block nicht verfügbar.",
+        "previewJsonCanApply": "Vorschau ist gültig, keine Daten wurden geändert.",
+        "previewJsonBlocked": "Vorschau ist blockiert, keine Daten wurden geändert.",
         "applyJson": "Anwenden",
         "applyJsonBusy": "Wird angewendet...",
-        "applyJsonInvalid": "Das eingegebene JSON ist nicht gueltig.",
+        "applyJsonInvalid": "Das eingegebene JSON ist nicht gültig.",
         "applyJsonError": "JSON-Anwendung ist fehlgeschlagen.",
-        "applyJsonUnavailable": "JSON-Anwendung ist fuer diesen Block nicht verfuegbar.",
-        "applyJsonPreviewRequired": "Pruefe dieses JSON vor dem Anwenden.",
+        "applyJsonUnavailable": "JSON-Anwendung ist für diesen Block nicht verfügbar.",
+        "applyJsonPreviewRequired": "Prüfe dieses JSON vor dem Anwenden.",
         "applyJsonSucceeded": "JSON angewendet, die Seite wird aktualisiert.",
         "previewChanged": "Geaendert",
         "previewErrors": "Fehler",
         "previewWarnings": "Warnungen",
-        "previewChanges": "Aenderungen",
+        "previewChanges": "Änderungen",
         "previewCurrentValue": "Aktuell",
         "previewProposedValue": "Vorschlag",
         "previewJsonNoChanges": "Keine Aenderung erkannt.",
         "emptyValue": "Leer",
-        "photoAddTitle": "Foto hinzufugen",
+        "photoAddTitle": "Foto hinzufügen",
         "photoSourceFile": "Datei",
         "photoSourceRemote": "Link",
         "photoFileLabel": "Bilddatei",
@@ -149,7 +149,7 @@
         "photoTagsLabel": "Foto-Tags",
         "photoPublishedLabel": "Foto veroffentlichen",
         "photoSetCurrentLabel": "Als Hauptbild setzen",
-        "photoUpload": "Foto hinzufugen",
+        "photoUpload": "Foto hinzufügen",
         "photoUploading": "Wird hinzugefugt...",
         "photoSourceRequired": "Wahle eine Datei oder gib einen Bildlink ein.",
         "photoInvalidRemoteUrl": "Der Link muss eine gultige http- oder https-URL sein.",
@@ -158,38 +158,38 @@
         "photoTagsLoadError": "Foto-Tags konnten nicht geladen werden."
       },
       "capabilities": {
-        "fullAdminEdit": "Vollstaendige Admin-Bearbeitung verfuegbar",
-        "boundedJsonExport": "Begrenzter JSON-Export verfuegbar",
-        "boundedJsonPreview": "Begrenzte JSON-Vorschau verfuegbar",
-        "boundedJsonApply": "Begrenzte JSON-Anwendung verfuegbar",
-        "contextualFormEdit": "Kontextformular verfuegbar",
-        "targetedChildAdd": "Gezieltes Hinzufuegen verfuegbar",
-        "parkGraphUpsertDraft": "JSON-Upsert-Entwurf verfuegbar",
+        "fullAdminEdit": "Vollständige Admin-Bearbeitung verfügbar",
+        "boundedJsonExport": "Begrenzter JSON-Export verfügbar",
+        "boundedJsonPreview": "Begrenzte JSON-Vorschau verfügbar",
+        "boundedJsonApply": "Begrenzte JSON-Anwendung verfügbar",
+        "contextualFormEdit": "Kontextformular verfügbar",
+        "targetedChildAdd": "Gezieltes Hinzufügen verfügbar",
+        "parkGraphUpsertDraft": "JSON-Upsert-Entwurf verfügbar",
         "boundedJsonExportPlanned": "Begrenzter JSON-Export geplant",
         "boundedJsonUpsertPlanned": "Begrenzter JSON-Upsert geplant",
         "formEditPlanned": "Kontextformular geplant",
-        "contextualPhotoAdd": "Kontextuelles Foto-Hinzufugen verfugbar"
+        "contextualPhotoAdd": "Kontextuelles Foto-Hinzufügen verfügbar"
       },
       "blocks": {
         "parkHero": {
           "label": "Park-Hero",
-          "description": "Identitaet, visuelle Signale und zentrale Parkfelder."
+          "description": "Identität, visuelle Signale und zentrale Parkfelder."
         },
         "parkDescription": {
           "label": "Parkbeschreibung",
-          "description": "Lokalisierte oeffentliche Beschreibung fuer alle unterstuetzten Sprachen."
+          "description": "Lokalisierte öffentliche Beschreibung für alle unterstützten Sprachen."
         },
         "parkLocation": {
           "label": "Parkstandort",
-          "description": "Hauptposition des Parks auf der oeffentlichen Karte."
+          "description": "Hauptposition des Parks auf der öffentlichen Karte."
         },
         "parkPractical": {
           "label": "Praktische Infos",
-          "description": "Adresse, Referenzen, Website und nuetzliche Parkkoordinaten."
+          "description": "Adresse, Referenzen, Website und nützliche Parkkoordinaten."
         },
         "parkItemDescription": {
           "label": "Item-Beschreibung",
-          "description": "Lokalisierte oeffentliche Beschreibung fuer alle unterstuetzten Sprachen."
+          "description": "Lokalisierte öffentliche Beschreibung für alle unterstützten Sprachen."
         },
         "parkItemLocation": {
           "label": "Item-Standort",
@@ -197,15 +197,15 @@
         },
         "parkImages": {
           "label": "Parkfotos",
-          "description": "Offentliche Parkgalerie und gezieltes Hinzufugen von Fotos."
+          "description": "Öffentliche Parkgalerie und gezieltes Hinzufügen von Fotos."
         },
         "parkItemImages": {
           "label": "Item-Fotos",
-          "description": "Offentliche Item-Galerie und gezieltes Hinzufugen von Fotos."
+          "description": "Öffentliche Item-Galerie und gezieltes Hinzufügen von Fotos."
         },
         "manufacturerReference": {
           "label": "Hersteller",
-          "description": "Vorausgefuellter JSON-Upsert-Entwurf fuer diesen Hersteller."
+          "description": "Vorausgefüllter JSON-Upsert-Entwurf für diesen Hersteller."
         }
       }
     }

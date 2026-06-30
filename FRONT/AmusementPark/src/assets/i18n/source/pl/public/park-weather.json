@@ -1,7 +1,7 @@
 {
   "parkWeather": {
-    "loading": "Ladowanie pogody",
-    "errorMessage": "Nie udalo sie zaladowac danych pogodowych.",
+    "loading": "Ładowanie pogody",
+    "errorMessage": "Nie udało się załadować danych pogodowych.",
     "today": {
       "title": "Pogoda dzisiaj",
       "precipitationProbability": "{{value}}% ryzyka deszczu",
@@ -32,9 +32,9 @@
     "history": {
       "title": "Porownaj z poprzednimi latami",
       "subtitle": "Porównaj te same daty z poprzednich lat, zanim zaplanujesz wizytę.",
-      "loading": "Ladowanie porownan pogody.",
+      "loading": "Ładowanie porownan pogody.",
       "empty": "Brak historycznej obserwacji dla tych dat.",
-      "errorMessage": "Nie udalo sie zaladowac porownan pogody.",
+      "errorMessage": "Nie udało się załadować porownan pogody.",
       "yearSingular": "{{count}} rok temu",
       "yearPlural": "{{count}} lata temu",
       "rain": "Deszcz {{value}}",
@@ -48,7 +48,7 @@
       "kicker": "Pogoda",
       "title": "Pogoda na 7 dni dla {{name}}",
       "lead": "Sprawdź pogodę w {{name}} przed swoją wizytą.",
-      "loadingTitle": "Ladowanie pogody",
+      "loadingTitle": "Ładowanie pogody",
       "loadingMessage": "Prognoza jest ladowana.",
       "emptyTitle": "Brak prognozy",
       "emptyMessage": "Dla tego parku nie ma jeszcze danych pogodowych.",

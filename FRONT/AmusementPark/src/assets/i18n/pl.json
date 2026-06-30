@@ -97,19 +97,19 @@
       "makeFilteredValidCoordinatesVisible": "Pokaz parki geolokalizowane",
       "makeVisibleShort": "Widoczne",
       "markToReviewShort": "Do sprawd.",
-      "processLaterShort": "P??niej",
-      "clearSelectionShort": "Wyczy??",
-      "showItems": "Poka? itemy"
+      "processLaterShort": "Później",
+      "clearSelectionShort": "Wyczyść",
+      "showItems": "Pokaż itemy"
     },
     "contactGrievances": {
-      "navTitle": "Wiadomosci kontaktowe",
+      "navTitle": "Wiadomości kontaktowe",
       "kicker": "Kontakt",
       "title": "Ksiega uwag",
-      "subtitle": "Przegladaj publiczne wiadomosci z kontekstem IP przeciw naduzyciom.",
-      "total": "{{count}} wiadomosci",
-      "loading": "Ladowanie wiadomosci...",
-      "loadError": "Nie mozna zaladowac wiadomosci.",
-      "empty": "Nie znaleziono wiadomosci.",
+      "subtitle": "Przeglądaj publiczne wiadomości z kontekstem IP przeciw nadużyciom.",
+      "total": "{{count}} wiadomości",
+      "loading": "Ładowanie wiadomości...",
+      "loadError": "Nie można załadować wiadomości.",
+      "empty": "Nie znaleziono wiadomości.",
       "filters": {
         "search": "Szukaj",
         "ipAddress": "Adres IP",
@@ -124,7 +124,7 @@
     },
     "dashboard": {
       "shortcuts": {
-        "contactGrievances": "Przegladaj wiadomosci kontaktowe i kontekst antynaduzyciowy.",
+        "contactGrievances": "Przeglądaj wiadomości kontaktowe i kontekst antynadużyciowy.",
         "users": "Zarządzanie kontami, rolami i dostępem.",
         "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
         "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
@@ -136,7 +136,7 @@
         "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
         "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
         "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
-        "parkWeather": "Monitoruj zaplanowane odswiezanie danych publicznych."
+        "parkWeather": "Monitoruj zaplanowane odświeżanie danych publicznych."
       },
       "title": "Panel",
       "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej."
@@ -334,7 +334,7 @@
           "visibilityError": "Nie można zmienić widoczności.",
           "deleteSummary": "Zdjęcie usunięte",
           "deleteDetail": "Zdjęcie zostało usunięte.",
-          "deleteError": "Nie można usunąć zdjęcia."
+          "deleteError": "Nie można usuńąć zdjęcia."
         }
       }
     },
@@ -411,7 +411,7 @@
           "target": "Park",
           "mode": "Tryb",
           "graph": "Graph",
-          "preview": "Podglad",
+          "preview": "Podgląd",
           "export": "Eksport JSON",
           "expert": "JSON ekspert",
           "history": "History"
@@ -429,7 +429,7 @@
       },
       "editor": {
         "title": "Dokument JSON",
-        "description": "Brakujace wlasciwosci sa zachowane. Sekcja openingHours jest podgladana i stosowana w tym samym globalnym JSON co park, strefy, strony i obrazy."
+        "description": "Brakujace wlasciwosci są zachowane. Sekcja openingHours jest podgladana i stosowana w tym samym globalnym JSON co park, strefy, strony i obrazy."
       },
       "export": {
         "title": "Eksport JSON parku",
@@ -439,10 +439,10 @@
       },
       "mode": {
         "title": "Tryb upsert",
-        "description": "Wybierz, jak graph ma traktowac istniejace kolekcje przed podgladem.",
+        "description": "Wybierz, jak graph ma traktowac istniejace kolekcje przed podglądem.",
         "merge": {
           "title": "Scal",
-          "description": "Zachowuje brakujace kolekcje i upsertuje tylko encje obecne w graph."
+          "description": "Zachowuje brakujące kolekcje i upsertuje tylko encje obecne w graph."
         },
         "replaceCollections": {
           "title": "Zastap kolekcje",
@@ -451,7 +451,7 @@
       },
       "graph": {
         "title": "Widok graph",
-        "description": "Sprawdz strukture graph przed podgladem.",
+        "description": "Sprawdź strukturę graph przed podglądem.",
         "identity": "Tozsamosc",
         "country": "Kraj",
         "zones": "Strefy",
@@ -478,7 +478,7 @@
         "exportingJson": "Przygotowanie JSON...",
         "uploadJsonFile": "Importuj plik JSON",
         "copyErrors": "Kopiuj bledy",
-        "removeBlock": "Usun blok",
+        "removeBlock": "Usuń blok",
         "scrollBottom": "Przejdz na dol",
         "scrollTop": "Przejdz na gore",
         "loadingHistory": "Loading history...",
@@ -492,42 +492,42 @@
         "searchFailed": "Wyszukiwanie parku nie powiodło się.",
         "previewFailed": "Podgląd nie powiódł się.",
         "applyFailed": "Zastosowanie nie powiodło się.",
-        "exportFailed": "Eksport JSON nie powiodl sie.",
-        "fileReadFailed": "Nie mozna odczytac pliku JSON.",
+        "exportFailed": "Eksport JSON nie powiódł się.",
+        "fileReadFailed": "Nie można odczytać pliku JSON.",
         "historyFailed": "Graph history loading failed."
       },
       "toasts": {
         "searchFailedTitle": "Wyszukiwanie nieudane",
-        "searchFailedDetail": "Nie udalo sie zakonczyc wyszukiwania parku.",
-        "previewSuccessTitle": "Podglad gotowy",
-        "previewSuccessDetail": "JSON mozna zastosowac.",
-        "previewPartialTitle": "Podglad z ostrzezeniami",
-        "previewPartialDetail": "Sprawdz ostrzezenia przed zastosowaniem.",
-        "previewBlockedTitle": "Podglad zablokowany",
-        "previewBlockedDetail": "Podglad zawiera {{count}} bledow.",
-        "previewFailedTitle": "Podglad nieudany",
-        "previewFailedDetail": "Nie udalo sie zakonczyc podgladu.",
+        "searchFailedDetail": "Nie udało się zakonczyc wyszukiwania parku.",
+        "previewSuccessTitle": "Podgląd gotowy",
+        "previewSuccessDetail": "JSON można zastosować.",
+        "previewPartialTitle": "Podgląd z ostrzeżeniami",
+        "previewPartialDetail": "Sprawdź ostrzezenia przed zastosowaniem.",
+        "previewBlockedTitle": "Podgląd zablokowany",
+        "previewBlockedDetail": "Podgląd zawiera {{count}} błędów.",
+        "previewFailedTitle": "Podgląd nieudany",
+        "previewFailedDetail": "Nie udało się zakonczyc podgladu.",
         "applySuccessTitle": "Zastosowano",
         "applySuccessDetail": "JSON zostal zastosowany.",
         "applyPartialTitle": "Zastosowano czesciowo",
-        "applyPartialDetail": "Niektore pozycje nie zostaly zastosowane. Sprawdz szczegoly.",
+        "applyPartialDetail": "Niektore pozycje nie zostaly zastosowane. Sprawdź szczegóły.",
         "applyRejectedTitle": "Nic nie zastosowano",
-        "applyRejectedDetail": "{{count}} pozycja/pozycje zostaly odrzucone. Sprawdz szczegoly.",
+        "applyRejectedDetail": "{{count}} pozycja/pozycje zostaly odrzucone. Sprawdź szczegóły.",
         "applyFailedTitle": "Zastosowanie nieudane",
-        "applyFailedDetail": "Nie mozna zastosowac JSON.",
+        "applyFailedDetail": "Nie można zastosować JSON.",
         "applyBlockedTitle": "Zastosowanie zablokowane",
-        "applyBlockedDetail": "Popraw bledy podgladu przed zastosowaniem.",
+        "applyBlockedDetail": "Popraw błędy podglądu przed zastosowaniem.",
         "invalidJsonTitle": "Nieprawidlowy JSON",
         "invalidJsonDetail": "Popraw JSON przed kontynuacja.",
         "blockRemovedTitle": "JSON zaktualizowany",
         "blockRemovedDetail": "Blok usunieto ze szkicu.",
-        "blockQueuedForDeletionDetail": "Blok oznaczono do usuniecia w szkicu.",
+        "blockQueuedForDeletionDetail": "Blok oznaczono do usunięcia w szkicu.",
         "blockRemoveFailedTitle": "Blok bez zmian",
         "blockRemoveFailedDetail": "Nie znaleziono tego bloku w JSON.",
         "errorsCopiedTitle": "Bledy skopiowane",
-        "errorsCopiedDetail": "Szczegoly sa w schowku.",
+        "errorsCopiedDetail": "Szczegóły są w schowku.",
         "copyFailedTitle": "Kopiowanie nieudane",
-        "copyFailedDetail": "Nie mozna skopiowac szczegolow.",
+        "copyFailedDetail": "Nie można skopiować szczegółów.",
         "mergeDraftUpdatedTitle": "Scalanie dodane",
         "mergeDraftUpdatedDetail": "Szkic JSON zostal zaktualizowany."
       },
@@ -536,15 +536,15 @@
         "noTarget": "Brak parku docelowego",
         "created": "Utworzone",
         "updated": "Zmienione",
-        "deleted": "Usuniete",
+        "deleted": "Usunięte",
         "warnings": "Ostrzeżenia",
         "errors": "Błędy",
-        "errorDetails": "Szczegoly bledow",
-        "pending": "Uruchom podglad, aby sprawdzic zmiany przed zastosowaniem.",
+        "errorDetails": "Szczegóły błędów",
+        "pending": "Uruchom podgląd, aby sprawdzić zmiany przed zastosowaniem.",
         "applied": "Upsert zastosowany pomyślnie.",
-        "appliedPartial": "Zastosowano czesciowo: {{applied}} pozycja/pozycje zastosowane, {{failed}} pozycja/pozycje odrzucone. Szczegoly ponizej wskazuja dotkniete elementy.",
-        "appliedNoChange": "Nic nie zastosowano: {{failed}} pozycja/pozycje odrzucone. Sprawdz szczegoly ponizej.",
-        "contentChangesDetected": "Wykryto zmiany tresci ({{count}}). Zostana zaktualizowane po zastosowaniu tego JSON.",
+        "appliedPartial": "Zastosowano częściowo: {{applied}} pozycja/pozycje zastosowane, {{failed}} pozycja/pozycje odrzucone. Szczegóły poniżej wskazują dotknięte elementy.",
+        "appliedNoChange": "Nic nie zastosowano: {{failed}} pozycja/pozycje odrzucone. Sprawdź szczegóły poniżej.",
+        "contentChangesDetected": "Wykryto zmiany treści ({{count}}). Zostana zaktualizowane po zastosowaniu tego JSON.",
         "field": "Pole",
         "oldValue": "Stare",
         "newValue": "Nowe",
@@ -635,7 +635,7 @@
           "visibility": "Widocznosc",
           "homeFeature": "Strona glowna",
           "zone": "Strefa",
-          "attractionDetails": "Szczegoly atrakcji",
+          "attractionDetails": "Szczegóły atrakcji",
           "attractionLocations": "Dostepy atrakcji"
         }
       },
@@ -742,9 +742,9 @@
         "invalidJson": "JSON jest nieprawidlowy.",
         "savedSummary": "Godziny zapisane",
         "savedDetail": "Harmonogram zostal upsertowany.",
-        "saveError": "Nie udalo sie zapisac harmonogramu.",
-        "loadError": "Nie udalo sie zaladowac harmonogramu.",
-        "hint": "Dni zamkniete musza byc jawne, jesli maja liczyc sie jako pelna kompletacja."
+        "saveError": "Nie udało się zapisac harmonogramu.",
+        "loadError": "Nie udało się załadować harmonogramu.",
+        "hint": "Dni zamknięte muszą być jawne, jeśli mają liczyć się jako pełna kompletacja."
       },
       "total": "Łączna liczba parków: {{count}}",
       "empty": "Nie znaleziono parków.",
@@ -1014,9 +1014,9 @@
         },
         "sectionNav": {
           "label": "Sekcja edytora",
-          "help": "Na malych ekranach wybierz jedna sekcje naraz.",
+          "help": "Na małych ekranach wybierz jedna sekcje naraz.",
           "retrySave": "Ponow zapis",
-          "saveFailedWithRetry": "Zapis sie nie udal. Zmiany pozostaja w tym formularzu."
+          "saveFailedWithRetry": "Zapis się nie udal. Zmiany pozostaja w tym formularzu."
         },
         "accessConditionsCount": "{{count}} warunek/warunki dostępu",
         "accessConditionsSummary": "Szczegółowe zasady są teraz zarządzane w osobnej sekcji.",
@@ -1099,15 +1099,15 @@
         "import": {
           "open": "Import przez wklejenie",
           "title": "Import wklejania / CSV",
-          "subtitle": "Wklej liste lub tabele, popraw podglad i zastosuj tylko prawidlowe wiersze.",
+          "subtitle": "Wklej listę lub tabelę, popraw podgląd i zastosuj tylko prawidłowe wiersze.",
           "source": "Zrodlo",
           "placeholder": "Nazwa\\nNazwa;Kategoria;Typ;Strefa;Producent;Opis FR",
           "parsedRows": "Wykryto {{count}} wiersz(y)",
-          "preview": "Podglad",
+          "preview": "Podgląd",
           "apply": "Zastosuj",
-          "error": "Nie mozna przetworzyc tego importu.",
+          "error": "Nie można przetworzyć tego importu.",
           "descriptionFr": "Opis FR",
-          "previewSummary": "{{ready}} gotowe, {{warnings}} z ostrzezeniem, {{errors}} z bledem"
+          "previewSummary": "{{ready}} gotowe, {{warnings}} z ostrzeżeniem, {{errors}} z błędem"
         },
         "empty": "Nie znaleziono wpisu dla tego parku."
       },
@@ -1207,15 +1207,15 @@
     },
     "parkWeather": {
       "navTitle": "Pogoda",
-      "title": "Odswiezanie pogody",
+      "title": "Odświeżanie pogody",
       "subtitle": "Monitoruj zaplanowane wykonania, widoczne parki i bledy.",
-      "loading": "Ladowanie statusu pogody...",
-      "loadError": "Nie udalo sie zaladowac statusu pogody.",
-      "startError": "Nie udalo sie uruchomic odswiezania pogody.",
-      "retryError": "Nie udalo sie ponowic odswiezania pogody.",
+      "loading": "Ładowanie statusu pogody...",
+      "loadError": "Nie udało się załadować statusu pogody.",
+      "startError": "Nie udało się uruchomic odświeżania pogody.",
+      "retryError": "Nie udało się ponowic odświeżania pogody.",
       "empty": "Brak informacji pogodowych.",
       "actions": {
-        "startManual": "Odswiez teraz",
+        "startManual": "Odśwież teraz",
         "retryFailed": "Ponow bledy",
         "retryPark": "Ponow"
       },
@@ -1230,17 +1230,17 @@
         "queued": "W kolejce",
         "running": "W toku",
         "completed": "Zakonczone",
-        "completedWithFailures": "Zakonczone z bledami",
+        "completedWithFailures": "Zakonczone z błędami",
         "failed": "Nieudane",
         "skipped": "Pominiete"
       },
       "messages": {
-        "queued": "Odswiezanie pogody jest w kolejce.",
-        "running": "Odswiezanie pogody trwa.",
-        "completed": "Odswiezanie pogody zakonczone.",
-        "completedWithFailures": "Odswiezanie pogody zakonczone z bledami.",
-        "canceled": "Odswiezanie pogody anulowane.",
-        "skippedByManual": "Automatyczne wykonanie pominieto, bo reczne odswiezenie obejmuje juz ten cykl."
+        "queued": "Odświeżanie pogody jest w kolejce.",
+        "running": "Odświeżanie pogody trwa.",
+        "completed": "Odświeżanie pogody zakończone.",
+        "completedWithFailures": "Odświeżanie pogody zakończone z błędami.",
+        "canceled": "Odświeżanie pogody anulowane.",
+        "skippedByManual": "Automatyczne wykonanie pominieto, bo ręczne odświeżenie obejmuje juz ten cykl."
       },
       "values": {
         "empty": "-"
@@ -1255,17 +1255,17 @@
       "failures": {
         "title": "Parki z bledem",
         "subtitle": "Ponow wszystkie bledy albo jeden park.",
-        "empty": "Brak parkow z bledem w tym wykonaniu.",
+        "empty": "Brak parków z bledem w tym wykonaniu.",
         "columns": {
           "park": "Park",
-          "error": "Blad",
+          "error": "Błąd",
           "attempts": "Proby",
           "actions": "Akcje"
         }
       },
       "noRun": {
         "title": "Brak wykonania",
-        "message": "Uruchom reczne odswiezanie albo poczekaj na kolejne zaplanowane wykonanie."
+        "message": "Uruchom ręczne odświeżanie albo poczekaj na kolejne zaplanowane wykonanie."
       }
     },
     "publicViewToolbar": {
@@ -1313,36 +1313,36 @@
         "capabilities": "Mozliwosci",
         "localizedLanguages": "Zlokalizowane w",
         "jsonScope": "Zakres JSON",
-        "openAdminEdit": "Otworz pelna edycje admin",
+        "openAdminEdit": "Otwórz pełną edycję admin",
         "formTitle": "Szybki formularz",
-        "formLoading": "Ladowanie formularza...",
+        "formLoading": "Ładowanie formularza...",
         "formReload": "Zaladuj ponownie",
         "formSave": "Zapisz",
         "formSaveBusy": "Zapisywanie...",
-        "formLoadError": "Nie udalo sie zaladowac formularza.",
-        "formSaveError": "Nie udalo sie zapisac formularza.",
-        "formSaveSucceeded": "Formularz zapisany, strona sie aktualizuje.",
+        "formLoadError": "Nie udało się załadować formularza.",
+        "formSaveError": "Nie udało się zapisac formularza.",
+        "formSaveSucceeded": "Formularz zapisany, strona się aktualizuje.",
         "formNoChanges": "Brak zmian do zapisania.",
         "formUnavailable": "Formularz nie jest dostepny dla tego bloku.",
         "localizedFieldAriaLabel": "Edytuj wariant {{ languageCode }}",
-        "locationPickerHint": "Dotknij mapy, aby utworzyc lub przesunac punkt. Wspolrzedne pozostaja dostepne jako opcja zapasowa.",
+        "locationPickerHint": "Dotknij mapy, aby utworzyć lub przesunąć punkt. Współrzędne pozostają dostępne jako opcja zapasowa.",
         "locationLatitude": "Szerokosc",
         "locationLongitude": "Dlugosc",
-        "locationClear": "Usun punkt",
-        "locationInvalid": "Szerokosc i dlugosc musza byc poprawne albo obie puste.",
+        "locationClear": "Usuń punkt",
+        "locationInvalid": "Szerokość i długość muszą być poprawne albo obie puste.",
         "addChildTitle": "Dodaj item",
         "addChildHint": "Item jest tworzony jako ukryty i do sprawdzenia przed publikacja.",
         "addChildNameLabel": "Nazwa",
         "addChildNamePlaceholder": "Nazwa itemu",
         "addChildZoneLabel": "Strefa",
         "addChildNoZoneOption": "Bez strefy",
-        "addChildZonesLoading": "Ladowanie stref...",
+        "addChildZonesLoading": "Ładowanie stref...",
         "addChildCreate": "Utworz item",
         "addChildCreateBusy": "Tworzenie...",
-        "addChildError": "Nie udalo sie utworzyc itemu.",
+        "addChildError": "Nie udało się utworzyc itemu.",
         "addChildNameRequired": "Dodaj nazwe przed utworzeniem itemu.",
-        "addChildUnavailable": "Ukierunkowane dodawanie nie jest dostepne dla tego bloku.",
-        "addChildSucceeded": "Ukryty item utworzony, strona sie aktualizuje.",
+        "addChildUnavailable": "Ukierunkowane dodawanie nie jest dostępne dla tego bloku.",
+        "addChildSucceeded": "Ukryty item utworzony, strona się aktualizuje.",
         "openCreatedChild": "Otworz item",
         "parkGraphUpsertTitle": "JSON upsert producenta",
         "parkGraphUpsertHint": "Skopiuj, pobierz albo bezposrednio zaimportuj ten wypelniony JSON producenta.",
@@ -1356,35 +1356,35 @@
         "parkGraphUpsertCopied": "JSON skopiowany do schowka.",
         "parkGraphUpsertDownloaded": "Pobieranie JSON rozpoczete.",
         "parkGraphUpsertImported": "JSON producenta zaimportowany.",
-        "parkGraphUpsertCopyError": "Kopiowanie JSON nie powiodlo sie.",
-        "parkGraphUpsertDownloadError": "Pobieranie JSON nie powiodlo sie.",
-        "parkGraphUpsertImportError": "Import JSON nie powiodl sie.",
-        "parkGraphUpsertImportBlocked": "Nie mozna bylo zastosowac JSON.",
+        "parkGraphUpsertCopyError": "Kopiowanie JSON nie powiodlo się.",
+        "parkGraphUpsertDownloadError": "Pobieranie JSON nie powiodło się.",
+        "parkGraphUpsertImportError": "Import JSON nie powiódł się.",
+        "parkGraphUpsertImportBlocked": "Nie można było zastosować JSON.",
         "parkGraphUpsertImportInvalidFile": "Wybierz plik .json.",
-        "parkGraphUpsertImportInvalidJson": "Plik JSON jest nieprawidlowy.",
+        "parkGraphUpsertImportInvalidJson": "Plik JSON jest nieprawidłowy.",
         "parkGraphUpsertUnavailable": "Brak szkicu upsert dla tego bloku.",
         "downloadJson": "Pobierz JSON bloku",
         "downloadJsonBusy": "Pobieranie...",
-        "downloadJsonError": "Pobieranie JSON nie powiodlo sie.",
+        "downloadJsonError": "Pobieranie JSON nie powiodlo się.",
         "downloadJsonUnavailable": "Eksport JSON nie jest dostepny dla tego bloku.",
         "exportJsonAriaLabel": "Pobierz ograniczony JSON tego bloku",
         "jsonDraft": "Szkic JSON",
         "jsonDraftAriaLabel": "Ograniczony szkic JSON tego bloku",
-        "previewJson": "Podglad",
-        "previewJsonBusy": "Podglad...",
-        "clearJsonDraft": "Wyczysc",
-        "previewJsonInvalid": "Wprowadzony JSON jest nieprawidlowy.",
-        "previewJsonError": "Podglad JSON nie powiodl sie.",
-        "previewJsonUnavailable": "Podglad JSON nie jest dostepny dla tego bloku.",
-        "previewJsonCanApply": "Podglad jest prawidlowy, zadne dane nie zostaly zmienione.",
-        "previewJsonBlocked": "Podglad jest zablokowany, zadne dane nie zostaly zmienione.",
+        "previewJson": "Podgląd",
+        "previewJsonBusy": "Podgląd...",
+        "clearJsonDraft": "Wyczyść",
+        "previewJsonInvalid": "Wprowadzony JSON jest nieprawidłowy.",
+        "previewJsonError": "Podgląd JSON nie powiódł się.",
+        "previewJsonUnavailable": "Podgląd JSON nie jest dostępny dla tego bloku.",
+        "previewJsonCanApply": "Podgląd jest prawidłowy, żadne dane nie zostały zmienione.",
+        "previewJsonBlocked": "Podgląd jest zablokowany, żadne dane nie zostały zmienione.",
         "applyJson": "Zastosuj",
         "applyJsonBusy": "Stosowanie...",
         "applyJsonInvalid": "Wprowadzony JSON jest nieprawidlowy.",
-        "applyJsonError": "Zastosowanie JSON sie nie powiodlo.",
-        "applyJsonUnavailable": "Zastosowanie JSON nie jest dostepne dla tego bloku.",
-        "applyJsonPreviewRequired": "Najpierw sprawdz podglad tego JSON.",
-        "applyJsonSucceeded": "JSON zastosowany, strona sie odswieza.",
+        "applyJsonError": "Zastosowanie JSON się nie powiodło.",
+        "applyJsonUnavailable": "Zastosowanie JSON nie jest dostępne dla tego bloku.",
+        "applyJsonPreviewRequired": "Najpierw sprawdź podgląd tego JSON.",
+        "applyJsonSucceeded": "JSON zastosowany, strona się odświeża.",
         "previewChanged": "Zmienione",
         "previewErrors": "Bledy",
         "previewWarnings": "Ostrzezenia",
@@ -1400,8 +1400,8 @@
         "photoSelectedFile": "Plik: {{ fileName }}",
         "photoRemoteUrlLabel": "URL obrazu",
         "photoRemoteUrlPlaceholder": "https://...",
-        "photoPreviewRemote": "Podglad linku",
-        "photoPreviewAlt": "Podglad zdjecia",
+        "photoPreviewRemote": "Podgląd linku",
+        "photoPreviewAlt": "Podgląd zdjęcia",
         "photoMetadataReading": "Odczyt metadanych...",
         "photoMetadataFileName": "Nazwa",
         "photoMetadataContentType": "Typ",
@@ -1413,30 +1413,30 @@
         "photoDescriptionLabel": "Opis",
         "photoDescriptionPlaceholder": "Krotki opis",
         "photoCategoryLabel": "Kategoria",
-        "photoTagsLoading": "Ladowanie tagow...",
+        "photoTagsLoading": "Ładowanie tagów...",
         "photoTagsLabel": "Tagi zdjecia",
         "photoPublishedLabel": "Opublikuj zdjecie",
         "photoSetCurrentLabel": "Ustaw jako glowne zdjecie",
         "photoUpload": "Dodaj zdjecie",
         "photoUploading": "Dodawanie...",
         "photoSourceRequired": "Wybierz plik albo podaj link obrazu.",
-        "photoInvalidRemoteUrl": "Link musi byc poprawnym adresem http lub https.",
-        "photoUploadError": "Nie udalo sie dodac zdjecia.",
-        "photoUploadSucceeded": "Zdjecie dodane, strona sie aktualizuje.",
-        "photoTagsLoadError": "Nie udalo sie zaladowac tagow zdjec."
+        "photoInvalidRemoteUrl": "Link musi być poprawnym adresem http lub https.",
+        "photoUploadError": "Nie udało się dodać zdjęcia.",
+        "photoUploadSucceeded": "Zdjęcie dodane, strona się aktualizuje.",
+        "photoTagsLoadError": "Nie udało się załadować tagów zdjęć."
       },
       "capabilities": {
-        "fullAdminEdit": "Pelna edycja admin dostepna",
+        "fullAdminEdit": "Pełna edycja admin dostępna",
         "boundedJsonExport": "Ograniczony eksport JSON dostepny",
-        "boundedJsonPreview": "Ograniczony podglad JSON dostepny",
-        "boundedJsonApply": "Ograniczone zastosowanie JSON dostepne",
+        "boundedJsonPreview": "Ograniczony podgląd JSON dostępny",
+        "boundedJsonApply": "Ograniczone zastosowanie JSON dostępne",
         "contextualFormEdit": "Formularz kontekstowy dostepny",
-        "targetedChildAdd": "Ukierunkowane dodawanie dostepne",
+        "targetedChildAdd": "Ukierunkowane dodawanie dostępne",
         "parkGraphUpsertDraft": "Szkic upsert JSON dostepny",
         "boundedJsonExportPlanned": "Ograniczony eksport JSON zaplanowany",
         "boundedJsonUpsertPlanned": "Ograniczony upsert JSON zaplanowany",
         "formEditPlanned": "Formularz kontekstowy zaplanowany",
-        "contextualPhotoAdd": "Kontekstowe dodawanie zdjec dostepne"
+        "contextualPhotoAdd": "Kontekstowe dodawanie zdjęć dostępne"
       },
       "blocks": {
         "parkHero": {
@@ -1464,12 +1464,12 @@
           "description": "Ogolna pozycja tego itemu w parku."
         },
         "parkImages": {
-          "label": "Zdjecia parku",
-          "description": "Publiczna galeria parku i celowane dodawanie zdjec."
+          "label": "Zdjęcia parku",
+          "description": "Publiczna galeria parku i celowane dodawanie zdjęć."
         },
         "parkItemImages": {
-          "label": "Zdjecia itemu",
-          "description": "Publiczna galeria itemu i celowane dodawanie zdjec."
+          "label": "Zdjęcia itemu",
+          "description": "Publiczna galeria itemu i celowane dodawanie zdjęć."
         },
         "manufacturerReference": {
           "label": "Producent",
@@ -1789,12 +1789,12 @@
       "tags": "Tagi",
       "resolve": "Analizuj",
       "create": "Utwórz film",
-      "tagsLoadError": "Nie udalo sie zaladowac tagow wideo.",
-      "metadataError": "Nie udalo sie przeanalizowac tego wideo.",
+      "tagsLoadError": "Nie udało się załadować tagów wideo.",
+      "metadataError": "Nie udało się przeanalizowac tego wideo.",
       "createSuccess": "Wideo utworzone.",
-      "createError": "Nie udalo sie utworzyc wideo.",
+      "createError": "Nie udało się utworzyc wideo.",
       "saveOwnerFirstTitle": "Najpierw zapisz ta zawartosc",
-      "saveOwnerFirstMessage": "Wideo bedzie mozna dodac, gdy identyfikator bedzie dostepny.",
+      "saveOwnerFirstMessage": "Wideo będzie można dodać, gdy identyfikator będzie dostępny.",
       "listTitle": "Biblioteka",
       "pageHint": "Lazy thumbnails, filtry serwera i rzeczywista paginacja.",
       "emptyTitle": "Nie znaleziono filmu",
@@ -1998,18 +1998,18 @@
       "PARK_ITEM": "Zdjecie miejsca",
       "OPERATOR": "Zdjecie operatora",
       "MANUFACTURER": "Zdjecie producenta",
-      "FOUNDER": "Zdjecie zalozyciela",
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "FOUNDER": "Zdjęcie założyciela",
+      "VIDEO_THUMBNAIL": "Miniatura filmu"
     },
     "ownerTypes": {
       "NONE": "Brak",
       "PARK": "Park",
-      "USER": "Uzytkownik",
+      "USER": "Użytkownik",
       "PARK_ITEM": "Wpis parku",
       "PARK_OPERATOR": "Operator",
       "ATTRACTION_MANUFACTURER": "Producent",
       "PARK_FOUNDER": "Zalozyciel",
-      "VIDEO": "Video"
+      "VIDEO": "Film"
     }
   },
   "languageModal": {
@@ -2045,9 +2045,9 @@
       "uploading": "Prześlijing...",
       "uploadError": "Wystąpił błąd podczas przesyłania obrazu.",
       "descriptionPlaceholder": "Opis",
-      "remoteSourceUrlPlaceholder": "URL obrazu zrodlowego",
+      "remoteSourceUrlPlaceholder": "URL obrazu źródłowego",
       "remoteImport": "Importuj z URL",
-      "remotePreviewAlt": "Podglad obrazu zrodlowego",
+      "remotePreviewAlt": "Podgląd obrazu źródłowego",
       "withWatermark": "Dodaj watermark"
     }
   },
@@ -2141,58 +2141,58 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
-      "loadMore": "Load more videos",
-      "loadingMore": "Loading..."
+      "count": "{{count}} filmów",
+      "views": "{{count}} wyświetleń",
+      "loadMore": "Załaduj więcej filmów",
+      "loadingMore": "Ładowanie..."
     },
     "filters": {
-      "type": "Video type",
-      "allTypes": "All types",
+      "type": "Typ filmu",
+      "allTypes": "Wszystkie typy",
       "tag": "Tag",
-      "allTags": "All tags",
-      "creator": "Creator",
-      "creatorPlaceholder": "Filter by creator name",
-      "applyCreator": "Apply",
-      "clear": "Clear filters"
+      "allTags": "Wszystkie tagi",
+      "creator": "Twórca",
+      "creatorPlaceholder": "Filtruj po nazwie twórcy",
+      "applyCreator": "Zastosuj",
+      "clear": "Wyczyść filtry"
     },
     "providers": {
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "External video"
+      "other": "Film zewnętrzny"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Advertisement",
-      "documentary": "Documentary",
-      "review": "Review",
-      "news": "News",
-      "event": "Event",
-      "interview": "Interview",
-      "other": "Other"
+      "advertisement": "Reklama",
+      "documentary": "Dokument",
+      "review": "Recenzja",
+      "news": "Aktualności",
+      "event": "Wydarzenie",
+      "interview": "Wywiad",
+      "other": "Inne"
     },
     "watch": {
-      "loadingTitle": "Loading video",
-      "loadingMessage": "The video page is being loaded.",
-      "errorTitle": "Video unavailable",
-      "errorMessage": "The requested video could not be loaded.",
-      "previous": "Previous video",
-      "next": "Next video",
-      "backToVideos": "Back to videos",
-      "creator": "Creator",
-      "category": "Category",
-      "provider": "Provider",
-      "duration": "Duration",
-      "publishedAt": "Published",
-      "viewCount": "Views",
-      "views": "{{count}} views",
-      "tagsAndCategories": "Categories and tags",
-      "openExternal": "Open video",
-      "openCreator": "Open creator",
-      "openProvider": "Open provider page"
+      "loadingTitle": "Ładowanie filmu",
+      "loadingMessage": "Strona filmu jest ładowana.",
+      "errorTitle": "Film niedostępny",
+      "errorMessage": "Nie udało się wczytać wybranego filmu.",
+      "previous": "Poprzedni film",
+      "next": "Następny film",
+      "backToVideos": "Wróć do filmów",
+      "creator": "Twórca",
+      "category": "Kategoria",
+      "provider": "Dostawca",
+      "duration": "Czas trwania",
+      "publishedAt": "Opublikowano",
+      "viewCount": "Wyświetlenia",
+      "views": "{{count}} wyświetleń",
+      "tagsAndCategories": "Kategorie i tagi",
+      "openExternal": "Otwórz film",
+      "openCreator": "Otwórz twórcę",
+      "openProvider": "Otwórz stronę dostawcy"
     }
   },
   "aboutPage": {
@@ -2358,9 +2358,9 @@
       "messageLabel": "Twoja wiadomosc",
       "help": "Napisz wiadomosc prosto, bez niepotrzebnych linkow.",
       "validation": "Wpisz jasna wiadomosc od 10 do 2000 znakow.",
-      "success": "Twoja wiadomosc zostala wyslana.",
-      "error": "Nie udalo sie wyslac wiadomosci. Sprawdz tekst albo sprobuj pozniej.",
-      "submit": "Wyslij",
+      "success": "Twoja wiadomość została wysłana.",
+      "error": "Nie udało się wysłać wiadomości. Sprawdź tekst albo spróbuj później.",
+      "submit": "Wyślij",
       "submitting": "Wysylanie"
     },
     "privacy": {
@@ -2368,9 +2368,9 @@
       "title": "Chroniona przestrzen",
       "text": "Formularz pozostaje prosty, aby rozmowy byly czyste i przydatne.",
       "points": {
-        "plainText": "Twoja wiadomosc powinna byc jasna i z szacunkiem.",
-        "ip": "Powtarzajace sie naduzycia moga byc ograniczane.",
-        "admin": "Tylko zespol strony moze czytac wiadomosci."
+        "plainText": "Twoja wiadomość powinna być jasna i z szacunkiem.",
+        "ip": "Powtarzające się nadużycia mogą być ograniczane.",
+        "admin": "Tylko zespół strony może czytać wiadomości."
       }
     }
   },
@@ -2500,14 +2500,14 @@
   "manufacturersPage": {
     "kicker": "Producenci",
     "title": "Producenci atrakcji",
-    "subtitle": "Przegladaj producentow atrakcji i coasterow zarejestrowanych na stronie, z publicznymi profilami i przydatnymi linkami.",
+    "subtitle": "Przeglądaj producentów atrakcji i coasterów zarejestrowanych na stronie, z publicznymi profilami i przydatnymi linkami.",
     "search": {
       "label": "Szukaj",
       "placeholder": "Nazwa, kraj, miasto lub rok",
-      "count": "{{count}} producentow znalezionych"
+      "count": "{{count}} producentów znalezionych"
     },
-    "loading": "Ladowanie producentow...",
-    "error": "Nie mozna teraz zaladowac producentow.",
+    "loading": "Ładowanie producentów...",
+    "error": "Nie można teraz załadować producentów.",
     "empty": "Zaden producent nie pasuje do wyszukiwania.",
     "noDescription": "Profil szczegolowy wymaga jeszcze uzupelnienia.",
     "attractionCount": "{{count}} atrakcji"
@@ -2619,7 +2619,7 @@
       "emptyFilteredMessage": "Rozszerz filtry albo zresetuj je, aby zobaczyć więcej miejsc.",
       "filteredResults": "Wyniki filtrowane",
       "resultsCount": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc(a)",
-      "backToPark": "Wr?? do {{name}}",
+      "backToPark": "Wróć do {{name}}",
       "titleWithPark": "Miejsca w {{name}}"
     },
     "detail": {
@@ -2833,42 +2833,42 @@
     },
     "videosPage": {
       "kicker": "Filmy miejsca",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Filmy z {{name}}",
+      "subtitle": "Oglądaj filmy z {{name}} w {{park}}: onride’y, offride’y, recenzje i oficjalne materiały.",
+      "loadingTitle": "Ładowanie filmów",
       "loadingMessage": "Przygotowywanie filmów tego miejsca.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Filmy niedostępne",
       "errorMessage": "Nie można teraz wczytać filmów tego miejsca.",
-      "backToItem": "Back to {{name}}",
+      "backToItem": "Wróć do {{name}}",
       "backToItems": "Odkrywaj więcej w {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToPark": "Wróć do {{name}}",
+      "emptyTitle": "Brak opublikowanych filmów",
+      "emptyMessage": "Dla {{name}} nie ma jeszcze opublikowanego filmu."
     }
   },
   "parkOpeningHours": {
     "card": {
       "title": "Daty i godziny",
       "openNow": "Teraz otwarte",
-      "closedNow": "Teraz zamkniete",
+      "closedNow": "Teraz zamknięte",
       "opensIn": "Otwiera za {{ duration }}",
       "openBadge": "Otwarte",
-      "closedBadge": "Zamkniete",
+      "closedBadge": "Zamknięte",
       "today": "Dzisiaj",
-      "closedToday": "Dzisiaj zamkniete",
+      "closedToday": "Dzisiaj zamknięte",
       "notDefinedToday": "Dzisiaj nie podano",
       "parkTimeZone": "Czas parku",
       "visitorTimeZone": "Twoja strefa: {{ timeZone }}",
       "viewAll": "Zobacz wszystkie daty i godziny",
-      "loading": "Ladowanie godzin"
+      "loading": "Ładowanie godzin"
     },
     "page": {
       "kicker": "Daty i godziny",
       "title": "Daty i godziny otwarcia {{ name }}",
-      "lead": "Sprawdz aktualnie podane daty i dzienne godziny dla {{ name }}.",
+      "lead": "Sprawdź aktualnie podane daty i dzienne godziny dla {{ name }}.",
       "backToPark": "Wroc do {{ name }}",
       "officialSite": "Oficjalna strona",
-      "disclaimer": "Te godziny maja charakter orientacyjny. Przed wizyta zawsze sprawdz oficjalna strone {{ name }}, poniewaz wydarzenia prywatne, wyjatkowe zamkniecia, pogoda, operacje lub inne zmiany moga nie byc tutaj znane albo zaktualizowane.",
+      "disclaimer": "Te godziny mają charakter orientacyjny. Przed wizytą zawsze sprawdź oficjalną stronę {{ name }}, ponieważ wydarzenia prywatne, wyjątkowe zamknięcia, pogoda, operacje lub inne zmiany mogą nie być tutaj znane albo zaktualizowane.",
       "summaryLabel": "Podsumowanie godzin",
       "coverage": "Podany okres",
       "coverageUnknown": "Nieznany okres",
@@ -2876,24 +2876,24 @@
       "daysCount": "Podane dni",
       "daysCountValue": "{{ count }} dni",
       "calendarLabel": "Daty i godziny otwarcia {{ name }}",
-      "monthNavigationLabel": "Nawigacja po miesiacach",
+      "monthNavigationLabel": "Nawigacja po miesiącach",
       "previousMonth": "Poprzedni miesiac",
       "nextMonth": "Nastepny miesiac",
       "currentMonth": "Biezacy miesiac",
-      "monthLoading": "Ladowanie miesiaca...",
-      "monthLoadError": "Nie udalo sie zaladowac tego miesiaca.",
+      "monthLoading": "Ładowanie miesiąca...",
+      "monthLoadError": "Nie udało się załadować tego miesiąca.",
       "today": "Dzisiaj",
       "open": "Otwarte",
-      "closed": "Zamkniete",
+      "closed": "Zamknięte",
       "closedCompact": "Zamk.",
       "notDefined": "Nie podano",
-      "closedNoReason": "Zamkniete",
+      "closedNoReason": "Zamknięte",
       "dayHasInformation": "Dodatkowa informacja",
       "shortOpening": "Krotkie otwarcie",
       "standardOpening": "Standardowe otwarcie",
       "longOpening": "Dlugie otwarcie",
       "selectedDay": "Wybrany dzien",
-      "dayDetailAriaLabel": "Szczegoly wybranego dnia",
+      "dayDetailAriaLabel": "Szczegóły wybranego dnia",
       "dayHoursTitle": "Godziny",
       "lastAdmission": "Ostatnie wejscie: {{ time }}",
       "dayClosedMessage": "Park jest oznaczony jako zamkniety w tym dniu.",
@@ -2905,12 +2905,12 @@
       "monthClosedOne": "{{ closed }} dzien zamkniety",
       "monthClosedMany": "{{ closed }} dni zamknietych",
       "monthMixed": "{{ open }} dni otwartych, {{ closed }} dni zamknietych",
-      "loadingTitle": "Ladowanie dat i godzin",
+      "loadingTitle": "Ładowanie dat i godzin",
       "loadingMessage": "Podany harmonogram jest ladowany.",
       "emptyTitle": "Brak podanych dat lub godzin",
       "emptyMessage": "Dla tego parku nie ma jeszcze harmonogramu otwarcia.",
       "errorTitle": "Daty i godziny niedostepne",
-      "errorMessage": "Nie udalo sie zaladowac harmonogramu otwarcia."
+      "errorMessage": "Nie udało się załadować harmonogramu otwarcia."
     }
   },
   "parkVisitor": {
@@ -2924,8 +2924,8 @@
     }
   },
   "parkWeather": {
-    "loading": "Ladowanie pogody",
-    "errorMessage": "Nie udalo sie zaladowac danych pogodowych.",
+    "loading": "Ładowanie pogody",
+    "errorMessage": "Nie udało się załadować danych pogodowych.",
     "today": {
       "title": "Pogoda dzisiaj",
       "precipitationProbability": "{{value}}% ryzyka deszczu",
@@ -2956,9 +2956,9 @@
     "history": {
       "title": "Porownaj z poprzednimi latami",
       "subtitle": "Porównaj te same daty z poprzednich lat, zanim zaplanujesz wizytę.",
-      "loading": "Ladowanie porownan pogody.",
+      "loading": "Ładowanie porownan pogody.",
       "empty": "Brak historycznej obserwacji dla tych dat.",
-      "errorMessage": "Nie udalo sie zaladowac porownan pogody.",
+      "errorMessage": "Nie udało się załadować porownan pogody.",
       "yearSingular": "{{count}} rok temu",
       "yearPlural": "{{count}} lata temu",
       "rain": "Deszcz {{value}}",
@@ -2972,7 +2972,7 @@
       "kicker": "Pogoda",
       "title": "Pogoda na 7 dni dla {{name}}",
       "lead": "Sprawdź pogodę w {{name}} przed swoją wizytą.",
-      "loadingTitle": "Ladowanie pogody",
+      "loadingTitle": "Ładowanie pogody",
       "loadingMessage": "Prognoza jest ladowana.",
       "emptyTitle": "Brak prognozy",
       "emptyMessage": "Dla tego parku nie ma jeszcze danych pogodowych.",
@@ -3264,11 +3264,11 @@
       },
       "loadMore": "Załaduj więcej zdjęć",
       "loadingMore": "Ładowanie…",
-      "loadingItemsTitle": "Ladowanie zdjec miejsc",
-      "loadingItemsMessage": "Przygotowywanie zdjec miejsc w {{name}}.",
+      "loadingItemsTitle": "Ładowanie zdjęć miejsc",
+      "loadingItemsMessage": "Przygotowywanie zdjęć miejsc w {{name}}.",
       "emptyTitle": "Brak opublikowanych zdjęć",
       "emptyMessage": "Dla {{name}} nie ma jeszcze dostępnych opublikowanych zdjęć.",
-      "emptyItemsMessage": "Dla {{name}} nie ma jeszcze dostepnych opublikowanych zdjec miejsc."
+      "emptyItemsMessage": "Dla {{name}} nie ma jeszcze dostępnych opublikowanych zdjęć miejsc."
     },
     "mapPage": {
       "kicker": "Mapa parku",
@@ -3323,23 +3323,23 @@
       "closedDefinitively": "Zamknięty na stałe"
     },
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
-      "loadingItemsTitle": "Ladowanie filmow miejsc",
-      "loadingItemsMessage": "Przygotowywanie filmow miejsc w {{name}}.",
+      "kicker": "Filmy parku",
+      "title": "Filmy z {{name}}",
+      "subtitle": "Oglądaj filmy z {{name}}: onride’y, offride’y, oficjalne klipy i treści twórców.",
+      "loadingTitle": "Ładowanie filmów",
+      "loadingMessage": "Przygotowywanie filmów parku.",
+      "loadingItemsTitle": "Ładowanie filmów miejsc",
+      "loadingItemsMessage": "Przygotowywanie filmów miejsc w {{name}}.",
       "tabs": {
-        "label": "Sekcje filmow",
+        "label": "Sekcje filmów",
         "park": "Park",
         "items": "Miejsca w parku"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Filmy niedostępne",
+      "errorMessage": "Nie można teraz wczytać filmów tego parku.",
+      "backToPark": "Wróć do {{name}}",
+      "emptyTitle": "Brak opublikowanych filmów",
+      "emptyMessage": "Dla {{name}} nie ma jeszcze opublikowanego filmu."
     }
   },
   "privacyPage": {
@@ -3537,7 +3537,7 @@
       "title": "Udostępnij kodem QR",
       "loading": "Tworzenie kodu QR",
       "alt": "Kod QR dla {{title}}",
-      "error": "Nie mozna teraz utworzyc kodu QR."
+      "error": "Nie można teraz utworzyć kodu QR."
     },
     "home": {
       "title": "Udostępnij AmusementPark",
@@ -3603,11 +3603,11 @@
   },
   "versionHistoryPage": {
     "kicker": "Historia wersji",
-    "title": "Co sie zmienilo",
-    "lead": "Aktualna wersja: {{version}}. Sledz widoczne ulepszenia strony w kolejnych aktualizacjach.",
+    "title": "Co się zmienilo",
+    "lead": "Aktualna wersja: {{version}}. Śledź widoczne ulepszenia strony w kolejnych aktualizacjach.",
     "timelineAriaLabel": "Os czasu historii wersji",
-    "loading": "Ladowanie wersji...",
-    "loadError": "Nie udalo sie zaladowac historii.",
+    "loading": "Ładowanie wersji...",
+    "loadError": "Nie udało się załadować historii.",
     "actions": {
       "expand": "Pokaz {{count}}",
       "collapse": "Zwin"

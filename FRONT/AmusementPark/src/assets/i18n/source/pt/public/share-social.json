@@ -22,7 +22,7 @@
       "title": "Partilhar por código QR",
       "loading": "A gerar código QR",
       "alt": "Código QR para {{title}}",
-      "error": "Nao e possivel criar o codigo QR agora."
+      "error": "Não e possível criar o codigo QR agora."
     },
     "home": {
       "title": "Partilhar AmusementPark",
@@ -36,7 +36,7 @@
     },
     "park": {
       "title": "Partilhar este parque",
-      "description": "Envia esta página a alguém que possa querer visitar {{title}}.",
+      "description": "Envia está página a alguém que possa querer visitar {{title}}.",
       "text": "Vê {{title}} no AmusementPark."
     },
     "weather": {

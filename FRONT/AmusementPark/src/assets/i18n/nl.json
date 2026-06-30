@@ -1999,7 +1999,7 @@
       "OPERATOR": "Exploitantfoto",
       "MANUFACTURER": "Bouwerfoto",
       "FOUNDER": "Oprichterfoto",
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "VIDEO_THUMBNAIL": "Videominiatuur"
     },
     "ownerTypes": {
       "NONE": "Geen",
@@ -2141,58 +2141,58 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
-      "loadMore": "Load more videos",
-      "loadingMore": "Loading..."
+      "count": "{{count}} video's",
+      "views": "{{count}} weergaven",
+      "loadMore": "Meer video's laden",
+      "loadingMore": "Laden..."
     },
     "filters": {
-      "type": "Video type",
-      "allTypes": "All types",
+      "type": "Videotype",
+      "allTypes": "Alle types",
       "tag": "Tag",
-      "allTags": "All tags",
-      "creator": "Creator",
-      "creatorPlaceholder": "Filter by creator name",
-      "applyCreator": "Apply",
-      "clear": "Clear filters"
+      "allTags": "Alle tags",
+      "creator": "Maker",
+      "creatorPlaceholder": "Filter op makernaam",
+      "applyCreator": "Toepassen",
+      "clear": "Filters wissen"
     },
     "providers": {
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "External video"
+      "other": "Externe video"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Advertisement",
-      "documentary": "Documentary",
+      "advertisement": "Advertentie",
+      "documentary": "Documentaire",
       "review": "Review",
-      "news": "News",
-      "event": "Event",
+      "news": "Nieuws",
+      "event": "Evenement",
       "interview": "Interview",
-      "other": "Other"
+      "other": "Overig"
     },
     "watch": {
-      "loadingTitle": "Loading video",
-      "loadingMessage": "The video page is being loaded.",
-      "errorTitle": "Video unavailable",
-      "errorMessage": "The requested video could not be loaded.",
-      "previous": "Previous video",
-      "next": "Next video",
-      "backToVideos": "Back to videos",
-      "creator": "Creator",
-      "category": "Category",
+      "loadingTitle": "Video laden",
+      "loadingMessage": "De videopagina wordt geladen.",
+      "errorTitle": "Video niet beschikbaar",
+      "errorMessage": "De gevraagde video kon niet worden geladen.",
+      "previous": "Vorige video",
+      "next": "Volgende video",
+      "backToVideos": "Terug naar video's",
+      "creator": "Maker",
+      "category": "Categorie",
       "provider": "Provider",
-      "duration": "Duration",
-      "publishedAt": "Published",
-      "viewCount": "Views",
-      "views": "{{count}} views",
-      "tagsAndCategories": "Categories and tags",
-      "openExternal": "Open video",
-      "openCreator": "Open creator",
-      "openProvider": "Open provider page"
+      "duration": "Duur",
+      "publishedAt": "Gepubliceerd",
+      "viewCount": "Weergaven",
+      "views": "{{count}} weergaven",
+      "tagsAndCategories": "Categorieën en tags",
+      "openExternal": "Video openen",
+      "openCreator": "Maker openen",
+      "openProvider": "Providerpagina openen"
     }
   },
   "aboutPage": {
@@ -2833,17 +2833,17 @@
     },
     "videosPage": {
       "kicker": "Video's van de plek",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Video's van {{name}}",
+      "subtitle": "Bekijk video's van {{name}} in {{park}}: onrides, offrides, reviews en officiële media.",
+      "loadingTitle": "Video's laden",
       "loadingMessage": "De video's van deze plek worden voorbereid.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Video's niet beschikbaar",
       "errorMessage": "De video's van deze plek kunnen momenteel niet worden geladen.",
-      "backToItem": "Back to {{name}}",
+      "backToItem": "Terug naar {{name}}",
       "backToItems": "Meer ontdekken in {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToPark": "Terug naar {{name}}",
+      "emptyTitle": "Geen gepubliceerde video's",
+      "emptyMessage": "Er is nog geen gepubliceerde video beschikbaar voor {{name}}."
     }
   },
   "parkOpeningHours": {
@@ -2867,8 +2867,8 @@
       "title": "Data en openingstijden van {{ name }}",
       "lead": "Bekijk de momenteel vermelde data en dagtijden voor {{ name }}.",
       "backToPark": "Terug naar {{ name }}",
-      "officialSite": "Officiele site",
-      "disclaimer": "Deze tijden zijn alleen indicatief. Controleer altijd de officiele website van {{ name }} voor je bezoek, omdat prive-evenementen, uitzonderlijke sluitingen, weer, operatie of andere wijzigingen hier mogelijk niet bekend of bijgewerkt zijn.",
+      "officialSite": "Officiële site",
+      "disclaimer": "Deze tijden zijn alleen indicatief. Controleer altijd de officiële website van {{ name }} voor je bezoek, omdat privé-evenementen, uitzonderlijke sluitingen, weer, operatie of andere wijzigingen hier mogelijk niet bekend of bijgewerkt zijn.",
       "summaryLabel": "Samenvatting openingstijden",
       "coverage": "Vermelde periode",
       "coverageUnknown": "Onbekende periode",
@@ -3323,11 +3323,11 @@
       "closedDefinitively": "Definitief gesloten"
     },
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
+      "kicker": "Parkvideo's",
+      "title": "Video's van {{name}}",
+      "subtitle": "Bekijk video's van {{name}}: onrides, offrides, officiële clips en content van makers.",
+      "loadingTitle": "Video's laden",
+      "loadingMessage": "Parkvideo's worden voorbereid.",
       "loadingItemsTitle": "Plekvideo's laden",
       "loadingItemsMessage": "Video's van plekken in {{name}} worden voorbereid.",
       "tabs": {
@@ -3335,11 +3335,11 @@
         "park": "Park",
         "items": "Plekken in het park"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Video's niet beschikbaar",
+      "errorMessage": "De video's van dit park kunnen momenteel niet worden geladen.",
+      "backToPark": "Terug naar {{name}}",
+      "emptyTitle": "Geen gepubliceerde video's",
+      "emptyMessage": "Er is nog geen gepubliceerde video beschikbaar voor {{name}}."
     }
   },
   "privacyPage": {

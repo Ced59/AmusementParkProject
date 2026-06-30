@@ -7,7 +7,7 @@
       "PARK_ITEM": "Foto eines Ortes",
       "OPERATOR": "Betreiberfoto",
       "MANUFACTURER": "Herstellerfoto",
-      "FOUNDER": "Gruenderfoto",
+      "FOUNDER": "Gründerfoto",
       "VIDEO_THUMBNAIL": "Video-Vorschaubild"
     },
     "ownerTypes": {
@@ -17,7 +17,7 @@
       "PARK_ITEM": "Parkinhalt",
       "PARK_OPERATOR": "Betreiber",
       "ATTRACTION_MANUFACTURER": "Hersteller",
-      "PARK_FOUNDER": "Gruender",
+      "PARK_FOUNDER": "Gründer",
       "VIDEO": "Video"
     }
   }

@@ -207,11 +207,11 @@
       "height": {
         "title": "Requisitos de altura",
         "minHeight": "Altura mínima",
-        "minHeightHelp": "Permitido desde esta altura.",
+        "minHeightHelp": "Permitido desde está altura.",
         "minHeightAccompanied": "Altura con adulto",
-        "minHeightAccompaniedHelp": "Permitido con un adulto desde esta altura.",
+        "minHeightAccompaniedHelp": "Permitido con un adulto desde está altura.",
         "maxHeight": "Altura máxima",
-        "maxHeightHelp": "Acceso prohibido por encima de esta altura."
+        "maxHeightHelp": "Acceso prohibido por encima de está altura."
       }
     },
     "zoneFocus": {

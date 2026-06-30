@@ -8,7 +8,7 @@
       "loadError": "Wetterstatus konnte nicht geladen werden.",
       "startError": "Wetteraktualisierung konnte nicht gestartet werden.",
       "retryError": "Wetteraktualisierung konnte nicht erneut gestartet werden.",
-      "empty": "Keine Wetterinformationen verfugbar.",
+      "empty": "Keine Wetterinformationen verfügbar.",
       "actions": {
         "startManual": "Jetzt aktualisieren",
         "retryFailed": "Fehler erneut versuchen",

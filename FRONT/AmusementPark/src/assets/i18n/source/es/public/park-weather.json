@@ -5,7 +5,7 @@
     "today": {
       "title": "Tiempo de hoy",
       "precipitationProbability": "{{value}}% de riesgo de lluvia",
-      "viewSevenDays": "Prevision a 7 dias"
+      "viewSevenDays": "Previsión a 7 días"
     },
     "conditions": {
       "clear": "Cielo despejado",
@@ -32,9 +32,9 @@
     "history": {
       "title": "Comparar con anos anteriores",
       "subtitle": "Compara las mismas fechas de años anteriores antes de planear tu visita.",
-      "loading": "Cargando comparaciones meteorologicas.",
-      "empty": "No hay observacion historica disponible para estas fechas.",
-      "errorMessage": "No se pudieron cargar las comparaciones meteorologicas.",
+      "loading": "Cargando comparaciones meteorológicas.",
+      "empty": "No hay observación histórica disponible para estas fechas.",
+      "errorMessage": "No se pudieron cargar las comparaciones meteorológicas.",
       "yearSingular": "Hace {{count}} ano",
       "yearPlural": "Hace {{count}} anos",
       "rain": "Lluvia {{value}}",
@@ -46,15 +46,15 @@
     },
     "page": {
       "kicker": "Tiempo",
-      "title": "Tiempo a 7 dias de {{name}}",
+      "title": "Tiempo a 7 días de {{name}}",
       "lead": "Consulta el tiempo de {{name}} antes de tu visita.",
       "loadingTitle": "Cargando el tiempo",
-      "loadingMessage": "La prevision se esta cargando.",
-      "emptyTitle": "Sin prevision disponible",
+      "loadingMessage": "La previsión se está cargando.",
+      "emptyTitle": "Sin previsión disponible",
       "emptyMessage": "Aun no hay datos meteorologicos para este parque.",
       "errorTitle": "Tiempo no disponible",
       "backToPark": "Volver a {{name}}",
-      "forecastLabel": "Prevision meteorologica a 7 dias"
+      "forecastLabel": "Previsión meteorológica a 7 días"
     }
   }
 }

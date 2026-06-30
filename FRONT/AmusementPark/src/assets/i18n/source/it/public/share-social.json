@@ -22,7 +22,7 @@
       "title": "Condividi con codice QR",
       "loading": "Generazione del codice QR",
       "alt": "Codice QR per {{title}}",
-      "error": "Il codice QR non puo essere creato ora."
+      "error": "Il codice QR non può essere creato ora."
     },
     "home": {
       "title": "Condividi AmusementPark",

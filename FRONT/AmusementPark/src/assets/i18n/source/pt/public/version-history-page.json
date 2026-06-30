@@ -1,11 +1,11 @@
 {
   "versionHistoryPage": {
-    "kicker": "Historico",
+    "kicker": "Histórico",
     "title": "O que mudou",
-    "lead": "Versao atual: {{version}}. Acompanhe as melhorias visiveis do site ao longo das atualizacoes.",
-    "timelineAriaLabel": "Linha temporal do historico de versoes",
-    "loading": "A carregar versoes...",
-    "loadError": "Nao foi possivel carregar o historico.",
+    "lead": "Versao atual: {{version}}. Acompanhe as melhorias visíveis do site ao longo das atualizações.",
+    "timelineAriaLabel": "Linha temporal do histórico de versões",
+    "loading": "A carregar versões...",
+    "loadError": "Não foi possível carregar o histórico.",
     "actions": {
       "expand": "Ver {{count}}",
       "collapse": "Recolher"

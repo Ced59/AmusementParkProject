@@ -15,7 +15,7 @@
       "rain": "Regen",
       "snow": "Schnee",
       "thunderstorm": "Gewitter",
-      "unknown": "Wetter nicht verfugbar"
+      "unknown": "Wetter nicht verfügbar"
     },
     "fields": {
       "precipitationProbability": "Regenrisiko",
@@ -33,7 +33,7 @@
       "title": "Mit Vorjahren vergleichen",
       "subtitle": "Vergleiche dieselben Daten aus früheren Jahren, bevor du deinen Besuch planst.",
       "loading": "Wettervergleiche werden geladen.",
-      "empty": "Fur diese Daten ist keine historische Beobachtung verfugbar.",
+      "empty": "Für diese Daten ist keine historische Beobachtung verfügbar.",
       "errorMessage": "Wettervergleiche konnten nicht geladen werden.",
       "yearSingular": "Vor {{count}} Jahr",
       "yearPlural": "Vor {{count}} Jahren",
@@ -50,9 +50,9 @@
       "lead": "Prüfe das Wetter für {{name}} vor deinem Besuch.",
       "loadingTitle": "Wetter wird geladen",
       "loadingMessage": "Die Vorhersage wird geladen.",
-      "emptyTitle": "Keine Vorhersage verfugbar",
-      "emptyMessage": "Fur diesen Park sind noch keine Wetterdaten verfugbar.",
-      "errorTitle": "Wetter nicht verfugbar",
+      "emptyTitle": "Keine Vorhersage verfügbar",
+      "emptyMessage": "Für diesen Park sind noch keine Wetterdaten verfügbar.",
+      "errorTitle": "Wetter nicht verfügbar",
       "backToPark": "Zuruck zu {{name}}",
       "forecastLabel": "7-Tage-Wettervorhersage"
     }

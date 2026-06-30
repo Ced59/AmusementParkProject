@@ -269,9 +269,9 @@
         },
         "sectionNav": {
           "label": "Sekcja edytora",
-          "help": "Na malych ekranach wybierz jedna sekcje naraz.",
+          "help": "Na małych ekranach wybierz jedna sekcje naraz.",
           "retrySave": "Ponow zapis",
-          "saveFailedWithRetry": "Zapis sie nie udal. Zmiany pozostaja w tym formularzu."
+          "saveFailedWithRetry": "Zapis się nie udal. Zmiany pozostaja w tym formularzu."
         },
         "accessConditionsCount": "{{count}} warunek/warunki dostępu",
         "accessConditionsSummary": "Szczegółowe zasady są teraz zarządzane w osobnej sekcji.",
@@ -354,15 +354,15 @@
         "import": {
           "open": "Import przez wklejenie",
           "title": "Import wklejania / CSV",
-          "subtitle": "Wklej liste lub tabele, popraw podglad i zastosuj tylko prawidlowe wiersze.",
+        "subtitle": "Wklej listę lub tabelę, popraw podgląd i zastosuj tylko prawidłowe wiersze.",
           "source": "Zrodlo",
           "placeholder": "Nazwa\\nNazwa;Kategoria;Typ;Strefa;Producent;Opis FR",
           "parsedRows": "Wykryto {{count}} wiersz(y)",
-          "preview": "Podglad",
+          "preview": "Podgląd",
           "apply": "Zastosuj",
-          "error": "Nie mozna przetworzyc tego importu.",
+          "error": "Nie można przetworzyć tego importu.",
           "descriptionFr": "Opis FR",
-          "previewSummary": "{{ready}} gotowe, {{warnings}} z ostrzezeniem, {{errors}} z bledem"
+          "previewSummary": "{{ready}} gotowe, {{warnings}} z ostrzeżeniem, {{errors}} z błędem"
         },
         "empty": "Nie znaleziono wpisu dla tego parku."
       },

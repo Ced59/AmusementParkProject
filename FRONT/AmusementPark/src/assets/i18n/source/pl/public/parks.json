@@ -282,11 +282,11 @@
       },
       "loadMore": "Załaduj więcej zdjęć",
       "loadingMore": "Ładowanie…",
-      "loadingItemsTitle": "Ladowanie zdjec miejsc",
-      "loadingItemsMessage": "Przygotowywanie zdjec miejsc w {{name}}.",
+      "loadingItemsTitle": "Ładowanie zdjęć miejsc",
+      "loadingItemsMessage": "Przygotowywanie zdjęć miejsc w {{name}}.",
       "emptyTitle": "Brak opublikowanych zdjęć",
       "emptyMessage": "Dla {{name}} nie ma jeszcze dostępnych opublikowanych zdjęć.",
-      "emptyItemsMessage": "Dla {{name}} nie ma jeszcze dostepnych opublikowanych zdjec miejsc."
+      "emptyItemsMessage": "Dla {{name}} nie ma jeszcze dostępnych opublikowanych zdjęć miejsc."
     },
     "mapPage": {
       "kicker": "Mapa parku",

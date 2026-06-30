@@ -1,11 +1,11 @@
 {
   "versionHistoryPage": {
     "kicker": "Historia wersji",
-    "title": "Co sie zmienilo",
-    "lead": "Aktualna wersja: {{version}}. Sledz widoczne ulepszenia strony w kolejnych aktualizacjach.",
+    "title": "Co się zmienilo",
+    "lead": "Aktualna wersja: {{version}}. Śledź widoczne ulepszenia strony w kolejnych aktualizacjach.",
     "timelineAriaLabel": "Os czasu historii wersji",
-    "loading": "Ladowanie wersji...",
-    "loadError": "Nie udalo sie zaladowac historii.",
+    "loading": "Ładowanie wersji...",
+    "loadError": "Nie udało się załadować historii.",
     "actions": {
       "expand": "Pokaz {{count}}",
       "collapse": "Zwin"

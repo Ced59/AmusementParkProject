@@ -39,14 +39,14 @@
         "invalidJson": "JSON jest nieprawidlowy.",
         "savedSummary": "Godziny zapisane",
         "savedDetail": "Harmonogram zostal upsertowany.",
-        "saveError": "Nie udalo sie zapisac harmonogramu.",
-        "loadError": "Nie udalo sie zaladowac harmonogramu.",
-        "hint": "Dni zamkniete musza byc jawne, jesli maja liczyc sie jako pelna kompletacja."
+        "saveError": "Nie udało się zapisac harmonogramu.",
+        "loadError": "Nie udało się załadować harmonogramu.",
+        "hint": "Dni zamknięte muszą być jawne, jeśli mają liczyć się jako pełna kompletacja."
       }
     },
     "parkGraphUpserts": {
       "editor": {
-        "description": "Brakujace wlasciwosci sa zachowane. Sekcja openingHours jest podgladana i stosowana w tym samym globalnym JSON co park, strefy, strony i obrazy."
+        "description": "Brakujace wlasciwosci są zachowane. Sekcja openingHours jest podgladana i stosowana w tym samym globalnym JSON co park, strefy, strony i obrazy."
       }
     }
   }

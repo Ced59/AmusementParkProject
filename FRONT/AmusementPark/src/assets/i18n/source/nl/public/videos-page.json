@@ -1,11 +1,11 @@
 {
   "parks": {
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
+      "kicker": "Parkvideo's",
+      "title": "Video's van {{name}}",
+      "subtitle": "Bekijk video's van {{name}}: onrides, offrides, officiële clips en content van makers.",
+      "loadingTitle": "Video's laden",
+      "loadingMessage": "Parkvideo's worden voorbereid.",
       "loadingItemsTitle": "Plekvideo's laden",
       "loadingItemsMessage": "Video's van plekken in {{name}} worden voorbereid.",
       "tabs": {
@@ -13,27 +13,27 @@
         "park": "Park",
         "items": "Plekken in het park"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Video's niet beschikbaar",
+      "errorMessage": "De video's van dit park kunnen momenteel niet worden geladen.",
+      "backToPark": "Terug naar {{name}}",
+      "emptyTitle": "Geen gepubliceerde video's",
+      "emptyMessage": "Er is nog geen gepubliceerde video beschikbaar voor {{name}}."
     }
   },
   "parkItems": {
     "videosPage": {
       "kicker": "Video's van de plek",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Video's van {{name}}",
+      "subtitle": "Bekijk video's van {{name}} in {{park}}: onrides, offrides, reviews en officiële media.",
+      "loadingTitle": "Video's laden",
       "loadingMessage": "De video's van deze plek worden voorbereid.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Video's niet beschikbaar",
       "errorMessage": "De video's van deze plek kunnen momenteel niet worden geladen.",
-      "backToItem": "Back to {{name}}",
+      "backToItem": "Terug naar {{name}}",
       "backToItems": "Meer ontdekken in {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToPark": "Terug naar {{name}}",
+      "emptyTitle": "Geen gepubliceerde video's",
+      "emptyMessage": "Er is nog geen gepubliceerde video beschikbaar voor {{name}}."
     }
   }
 }

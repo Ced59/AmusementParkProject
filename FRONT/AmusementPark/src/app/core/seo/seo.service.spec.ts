@@ -272,7 +272,7 @@ describe('SeoService', () => {
 
     expect(documentRef.title).toBe('Zones de Phantasialand — Amusement Parks');
     expect(readMetaContent('meta[name="description"]')).toContain('6 zones');
-    expect(readMetaContent('meta[name="description"]')).toContain('42 lieux repertories');
+    expect(readMetaContent('meta[name="description"]')).toContain('42 lieux répertoriés');
   });
 
   it('applies specific metadata to public park reference detail pages', () => {
@@ -291,7 +291,7 @@ describe('SeoService', () => {
 
     expect(documentRef.title).toBe('Ride Technic, constructeur — Amusement Parks');
     expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park-manufacturer/manufacturer-1/ride-technic');
-    expect(readMetaContent('meta[name="description"]')).toContain('4 attractions liees');
+    expect(readMetaContent('meta[name="description"]')).toContain('4 attractions liées');
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
@@ -358,9 +358,9 @@ describe('SeoService', () => {
   it('applies indexable localized metadata to the public manufacturers page', () => {
     service.applyRouteDefaults('/fr/manufacturers');
 
-    expect(documentRef.title).toBe('Constructeurs d attractions - Amusement Parks');
+    expect(documentRef.title).toBe("Constructeurs d'attractions - Amusement Parks");
     expect(readMetaContent('meta[name="description"]'))
-      .toBe('Parcours les constructeurs d attractions et de coasters avec leur fiche publique, leur histoire et leurs liens utiles.');
+      .toBe("Parcours les constructeurs d'attractions et de coasters avec leur fiche publique, leur histoire et leurs liens utiles.");
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 

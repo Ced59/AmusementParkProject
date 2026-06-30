@@ -1,7 +1,7 @@
 {
   "versionHistoryPage": {
     "kicker": "Versionsverlauf",
-    "title": "Was sich geaendert hat",
+    "title": "Was sich geändert hat",
     "lead": "Aktuelle Version: {{version}}. Folge den sichtbaren Verbesserungen der Website im Laufe der Zeit.",
     "timelineAriaLabel": "Zeitleiste des Versionsverlaufs",
     "loading": "Versionen werden geladen...",

@@ -21,7 +21,7 @@
       "lead": "Consulta le date e gli orari giornalieri attualmente indicati per {{ name }}.",
       "backToPark": "Torna a {{ name }}",
       "officialSite": "Sito ufficiale",
-      "disclaimer": "Questi orari sono forniti solo a titolo indicativo. Controlla sempre il sito ufficiale di {{ name }} prima della visita, perche eventi privati, chiusure eccezionali, meteo, operativita o altri cambiamenti potrebbero non essere noti o aggiornati qui.",
+      "disclaimer": "Questi orari sono forniti solo a titolo indicativo. Controlla sempre il sito ufficiale di {{ name }} prima della visita, perché eventi privati, chiusure eccezionali, meteo, operatività o altri cambiamenti potrebbero non essere noti o aggiornati qui.",
       "summaryLabel": "Riepilogo orari",
       "coverage": "Periodo indicato",
       "coverageUnknown": "Periodo sconosciuto",

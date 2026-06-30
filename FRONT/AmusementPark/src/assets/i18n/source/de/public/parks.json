@@ -286,7 +286,7 @@
       "loadingItemsMessage": "Die Fotos der Orte von {{name}} werden vorbereitet.",
       "emptyTitle": "Keine veröffentlichten Bilder",
       "emptyMessage": "Für {{name}} sind noch keine veröffentlichten Bilder verfügbar.",
-      "emptyItemsMessage": "Fuer {{name}} sind noch keine veroeffentlichten Fotos der Orte verfuegbar."
+      "emptyItemsMessage": "Für {{name}} sind noch keine veröffentlichten Fotos der Orte verfügbar."
     },
     "mapPage": {
       "kicker": "Parkkarte",

@@ -1,9 +1,9 @@
 {
   "admin": {
     "publicViewToolbar": {
-      "ariaLabel": "Barra admin de vista publica",
-      "viewMode": "Vista publica",
-      "viewModeAriaLabel": "Elegir la vista publica",
+      "ariaLabel": "Barra admin de vista pública",
+      "viewMode": "Vista pública",
+      "viewModeAriaLabel": "Elegir la vista pública",
       "editionOff": "Edicion off",
       "editionOn": "Edicion on",
       "enableEditionMode": "Activar edicion",
@@ -38,7 +38,7 @@
       "drawer": {
         "ariaLabel": "Bloque editable seleccionado",
         "kicker": "Bloque contextual",
-        "close": "Cerrar diagnostico del bloque",
+        "close": "Cerrar diagnóstico del bloque",
         "type": "Tipo de bloque",
         "entity": "Entidad",
         "label": "Elemento actual",
@@ -46,16 +46,16 @@
         "localizedLanguages": "Localizado en",
         "jsonScope": "Alcance JSON",
         "openAdminEdit": "Abrir edicion admin completa",
-        "formTitle": "Formulario rapido",
+        "formTitle": "Formulario rápido",
         "formLoading": "Cargando formulario...",
         "formReload": "Recargar",
         "formSave": "Guardar",
         "formSaveBusy": "Guardando...",
         "formLoadError": "No se pudo cargar el formulario.",
         "formSaveError": "Error al guardar el formulario.",
-        "formSaveSucceeded": "Formulario guardado, la pagina se actualiza.",
+        "formSaveSucceeded": "Formulario guardado, la página se actualiza.",
         "formNoChanges": "No hay cambios que guardar.",
-        "formUnavailable": "El formulario no esta disponible para este bloque.",
+        "formUnavailable": "El formulario no está disponible para este bloque.",
         "localizedFieldAriaLabel": "Editar variante {{ languageCode }}",
         "locationPickerHint": "Toca el mapa para crear o mover el punto. Las coordenadas siguen disponibles como apoyo.",
         "locationLatitude": "Latitud",
@@ -73,8 +73,8 @@
         "addChildCreateBusy": "Creando...",
         "addChildError": "No se pudo crear el item.",
         "addChildNameRequired": "Anade un nombre antes de crear el item.",
-        "addChildUnavailable": "La adicion dirigida no esta disponible para este bloque.",
-        "addChildSucceeded": "Item oculto creado, la pagina se actualiza.",
+        "addChildUnavailable": "La adicion dirigida no está disponible para este bloque.",
+        "addChildSucceeded": "Item oculto creado, la página se actualiza.",
         "openCreatedChild": "Abrir item",
         "parkGraphUpsertTitle": "JSON upsert de fabricante",
         "parkGraphUpsertHint": "Copia, descarga o importa directamente este JSON prerrellenado del fabricante.",
@@ -98,7 +98,7 @@
         "downloadJson": "Descargar JSON del bloque",
         "downloadJsonBusy": "Descargando...",
         "downloadJsonError": "La descarga JSON ha fallado.",
-        "downloadJsonUnavailable": "La exportacion JSON no esta disponible para este bloque.",
+        "downloadJsonUnavailable": "La exportacion JSON no está disponible para este bloque.",
         "exportJsonAriaLabel": "Descargar el JSON acotado de este bloque",
         "jsonDraft": "Borrador JSON",
         "jsonDraftAriaLabel": "Borrador JSON acotado del bloque",
@@ -107,16 +107,16 @@
         "clearJsonDraft": "Borrar",
         "previewJsonInvalid": "El JSON introducido no es valido.",
         "previewJsonError": "La previsualizacion JSON ha fallado.",
-        "previewJsonUnavailable": "La previsualizacion JSON no esta disponible para este bloque.",
+        "previewJsonUnavailable": "La previsualizacion JSON no está disponible para este bloque.",
         "previewJsonCanApply": "Previsualizacion valida, no se modifico ningun dato.",
         "previewJsonBlocked": "Previsualizacion bloqueada, no se modifico ningun dato.",
         "applyJson": "Aplicar",
         "applyJsonBusy": "Aplicando...",
         "applyJsonInvalid": "El JSON introducido no es valido.",
         "applyJsonError": "La aplicacion JSON ha fallado.",
-        "applyJsonUnavailable": "La aplicacion JSON no esta disponible para este bloque.",
+        "applyJsonUnavailable": "La aplicacion JSON no está disponible para este bloque.",
         "applyJsonPreviewRequired": "Previsualiza este JSON antes de aplicarlo.",
-        "applyJsonSucceeded": "JSON aplicado, la pagina se actualiza.",
+        "applyJsonSucceeded": "JSON aplicado, la página se actualiza.",
         "previewChanged": "Cambiados",
         "previewErrors": "Errores",
         "previewWarnings": "Avisos",
@@ -154,7 +154,7 @@
         "photoSourceRequired": "Elige un archivo o indica un enlace de imagen.",
         "photoInvalidRemoteUrl": "El enlace debe ser una URL http o https valida.",
         "photoUploadError": "No se pudo anadir la foto.",
-        "photoUploadSucceeded": "Foto anadida, la pagina se actualiza.",
+        "photoUploadSucceeded": "Foto anadida, la página se actualiza.",
         "photoTagsLoadError": "No se pudieron cargar las etiquetas."
       },
       "capabilities": {
@@ -177,31 +177,31 @@
         },
         "parkDescription": {
           "label": "Descripcion del parque",
-          "description": "Descripcion publica localizada para todos los idiomas soportados."
+          "description": "Descripcion pública localizada para todos los idiomas soportados."
         },
         "parkLocation": {
-          "label": "Ubicacion del parque",
-          "description": "Posicion principal del parque en el mapa publico."
+          "label": "Ubicación del parque",
+          "description": "Posición principal del parque en el mapa público."
         },
         "parkPractical": {
           "label": "Info practica",
-          "description": "Direccion, referencias, sitio web y coordenadas utiles del parque."
+          "description": "Direccion, referencias, sitio web y coordenadas útiles del parque."
         },
         "parkItemDescription": {
           "label": "Descripcion del item",
-          "description": "Descripcion publica localizada para todos los idiomas soportados."
+          "description": "Descripcion pública localizada para todos los idiomas soportados."
         },
         "parkItemLocation": {
-          "label": "Ubicacion del item",
-          "description": "Posicion general de este item en el parque."
+          "label": "Ubicación del item",
+          "description": "Posición general de este item en el parque."
         },
         "parkImages": {
           "label": "Fotos del parque",
-          "description": "Galeria publica del parque y adicion dirigida de fotos."
+          "description": "Galeria pública del parque y adicion dirigida de fotos."
         },
         "parkItemImages": {
           "label": "Fotos del item",
-          "description": "Galeria publica del item y adicion dirigida de fotos."
+          "description": "Galeria pública del item y adicion dirigida de fotos."
         },
         "manufacturerReference": {
           "label": "Fabricante",

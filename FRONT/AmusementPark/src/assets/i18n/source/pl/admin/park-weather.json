@@ -2,15 +2,15 @@
   "admin": {
     "parkWeather": {
       "navTitle": "Pogoda",
-      "title": "Odswiezanie pogody",
+      "title": "Odświeżanie pogody",
       "subtitle": "Monitoruj zaplanowane wykonania, widoczne parki i bledy.",
-      "loading": "Ladowanie statusu pogody...",
-      "loadError": "Nie udalo sie zaladowac statusu pogody.",
-      "startError": "Nie udalo sie uruchomic odswiezania pogody.",
-      "retryError": "Nie udalo sie ponowic odswiezania pogody.",
+      "loading": "Ładowanie statusu pogody...",
+      "loadError": "Nie udało się załadować statusu pogody.",
+      "startError": "Nie udało się uruchomic odświeżania pogody.",
+      "retryError": "Nie udało się ponowic odświeżania pogody.",
       "empty": "Brak informacji pogodowych.",
       "actions": {
-        "startManual": "Odswiez teraz",
+        "startManual": "Odśwież teraz",
         "retryFailed": "Ponow bledy",
         "retryPark": "Ponow"
       },
@@ -25,17 +25,17 @@
         "queued": "W kolejce",
         "running": "W toku",
         "completed": "Zakonczone",
-        "completedWithFailures": "Zakonczone z bledami",
+        "completedWithFailures": "Zakonczone z błędami",
         "failed": "Nieudane",
         "skipped": "Pominiete"
       },
       "messages": {
-        "queued": "Odswiezanie pogody jest w kolejce.",
-        "running": "Odswiezanie pogody trwa.",
-        "completed": "Odswiezanie pogody zakonczone.",
-        "completedWithFailures": "Odswiezanie pogody zakonczone z bledami.",
-        "canceled": "Odswiezanie pogody anulowane.",
-        "skippedByManual": "Automatyczne wykonanie pominieto, bo reczne odswiezenie obejmuje juz ten cykl."
+        "queued": "Odświeżanie pogody jest w kolejce.",
+        "running": "Odświeżanie pogody trwa.",
+        "completed": "Odświeżanie pogody zakończone.",
+        "completedWithFailures": "Odświeżanie pogody zakończone z błędami.",
+        "canceled": "Odświeżanie pogody anulowane.",
+        "skippedByManual": "Automatyczne wykonanie pominieto, bo ręczne odświeżenie obejmuje juz ten cykl."
       },
       "values": {
         "empty": "-"
@@ -50,17 +50,17 @@
       "failures": {
         "title": "Parki z bledem",
         "subtitle": "Ponow wszystkie bledy albo jeden park.",
-        "empty": "Brak parkow z bledem w tym wykonaniu.",
+        "empty": "Brak parków z bledem w tym wykonaniu.",
         "columns": {
           "park": "Park",
-          "error": "Blad",
+          "error": "Błąd",
           "attempts": "Proby",
           "actions": "Akcje"
         }
       },
       "noRun": {
         "title": "Brak wykonania",
-        "message": "Uruchom reczne odswiezanie albo poczekaj na kolejne zaplanowane wykonanie."
+        "message": "Uruchom ręczne odświeżanie albo poczekaj na kolejne zaplanowane wykonanie."
       }
     }
   }

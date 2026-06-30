@@ -13,9 +13,9 @@
       "uploading": "Prześlijing...",
       "uploadError": "Wystąpił błąd podczas przesyłania obrazu.",
       "descriptionPlaceholder": "Opis",
-      "remoteSourceUrlPlaceholder": "URL obrazu zrodlowego",
+      "remoteSourceUrlPlaceholder": "URL obrazu źródłowego",
       "remoteImport": "Importuj z URL",
-      "remotePreviewAlt": "Podglad obrazu zrodlowego",
+    "remotePreviewAlt": "Podgląd obrazu źródłowego",
       "withWatermark": "Dodaj watermark"
     }
   }

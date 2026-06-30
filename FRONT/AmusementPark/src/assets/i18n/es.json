@@ -105,7 +105,7 @@
       "navTitle": "Mensajes contacto",
       "kicker": "Contacto",
       "title": "Cuaderno de comentarios",
-      "subtitle": "Consulta mensajes publicos con contexto IP para prevenir abusos.",
+      "subtitle": "Consulta mensajes públicos con contexto IP para prevenir abusos.",
       "total": "{{count}} mensajes",
       "loading": "Cargando mensajes...",
       "loadError": "No se pueden cargar los mensajes.",
@@ -136,7 +136,7 @@
         "auditLogs": "Revisar acciones administrativas sensibles registradas.",
         "parkGraphUpserts": "Previsualizar y aplicar un JSON completo o parcial de parque.",
         "seoSitemaps": "Gestionar el índice sitemap, secciones XML, estadísticas e IndexNow.",
-        "parkWeather": "Supervisar actualizaciones programadas de datos publicos."
+        "parkWeather": "Supervisar actualizaciónes programadas de datos públicos."
       },
       "title": "Panel",
       "subtitle": "Punto de entrada del back-office: elige una sección en el menú izquierdo o en los accesos directos."
@@ -429,7 +429,7 @@
       },
       "editor": {
         "title": "Documento JSON",
-        "description": "Las propiedades ausentes se conservan. La seccion openingHours se previsualiza y aplica con el mismo JSON global que parque, zonas, fichas e imagenes."
+        "description": "Las propiedades ausentes se conservan. La sección openingHours se previsualiza y aplica con el mismo JSON global que parque, zonas, fichas e imágenes."
       },
       "export": {
         "title": "Exportar JSON del parque",
@@ -456,7 +456,7 @@
         "country": "Pais",
         "zones": "Zonas",
         "items": "Items",
-        "images": "Imagenes",
+        "images": "Imágenes",
         "references": "Referencias",
         "empty": "No indicado",
         "invalidJson": "El documento JSON no es valido. Abre JSON experto para corregirlo."
@@ -525,7 +525,7 @@
         "blockRemoveFailedTitle": "Bloque sin cambios",
         "blockRemoveFailedDetail": "No se pudo encontrar este bloque en el JSON.",
         "errorsCopiedTitle": "Errores copiados",
-        "errorsCopiedDetail": "Los detalles estan en el portapapeles.",
+        "errorsCopiedDetail": "Los detalles están en el portapapeles.",
         "copyFailedTitle": "Copia fallida",
         "copyFailedDetail": "No se pudieron copiar los detalles.",
         "mergeDraftUpdatedTitle": "Fusion anadida",
@@ -631,7 +631,7 @@
           "ownership": "Propiedad",
           "contact": "Contacto",
           "descriptions": "Descripciones",
-          "location": "Ubicacion",
+          "location": "Ubicación",
           "visibility": "Visibilidad",
           "homeFeature": "Inicio",
           "zone": "Zona",
@@ -698,7 +698,7 @@
         "descriptions": "Descripciones",
         "logos": "Logotipos",
         "photos": "Fotos",
-        "videos": "Videos"
+        "videos": "Vídeos"
       },
       "sort": {
         "openingHoursAttentionFirst": "Horarios a revisar",
@@ -715,12 +715,12 @@
         "title": "Horarios",
         "filterLabel": "Horarios",
         "notConfigured": "No configurado",
-        "coverageOne": "Horarios completos para {{ count }} dia, hasta {{ date }}",
-        "coverageMany": "Horarios completos para {{ count }} dias, hasta {{ date }}",
+        "coverageOne": "Horarios completos para {{ count }} día, hasta {{ date }}",
+        "coverageMany": "Horarios completos para {{ count }} días, hasta {{ date }}",
         "statuses": {
           "NotConfigured": "No configurado",
           "Expired": "Caducado",
-          "NeedsUpdate": "Necesita actualizacion",
+          "NeedsUpdate": "Necesita actualización",
           "UpToDate": "Actualizado"
         },
         "filters": {
@@ -728,7 +728,7 @@
           "configured": "Configurados",
           "notConfigured": "No configurados",
           "upToDate": "Actualizados",
-          "needsUpdate": "Necesitan actualizacion",
+          "needsUpdate": "Necesitan actualización",
           "expired": "Caducados"
         }
       },
@@ -744,7 +744,7 @@
         "savedDetail": "El calendario se actualizo.",
         "saveError": "No se pudieron guardar los horarios.",
         "loadError": "No se pudieron cargar los horarios.",
-        "hint": "Los dias cerrados deben ser explicitos si deben contar como cobertura completa."
+        "hint": "Los días cerrados deben ser explícitos si deben contar como cobertura completa."
       },
       "total": "Número total de parques: {{count}}",
       "empty": "No se encontraron parques.",
@@ -1010,11 +1010,11 @@
           "accessConditions": "Condiciones de acceso",
           "locations": "Ubicaciones específicas",
           "photos": "Fotos",
-          "videos": "Videos"
+          "videos": "Vídeos"
         },
         "sectionNav": {
-          "label": "Seccion del editor",
-          "help": "En pantallas pequenas, elige una seccion cada vez.",
+          "label": "Sección del editor",
+          "help": "En pantallas pequeñas, elige una sección cada vez.",
           "retrySave": "Reintentar guardado",
           "saveFailedWithRetry": "No se pudo guardar. Tus cambios siguen en este formulario."
         },
@@ -1055,15 +1055,15 @@
           "fields": {
             "minHeightCm": {
               "label": "Altura mínima",
-              "help": "Acceso permitido desde esta altura."
+              "help": "Acceso permitido desde está altura."
             },
             "minHeightAccompaniedCm": {
               "label": "Altura mínima acompañado",
-              "help": "Desde esta altura se permite el acceso con un adulto."
+              "help": "Desde está altura se permite el acceso con un adulto."
             },
             "maxHeightCm": {
               "label": "Altura máxima",
-              "help": "Acceso prohibido por encima de esta altura."
+              "help": "Acceso prohibido por encima de está altura."
             }
           }
         },
@@ -1105,7 +1105,7 @@
           "parsedRows": "{{count}} fila(s) detectada(s)",
           "preview": "Previsualizar",
           "apply": "Aplicar",
-          "error": "No se pudo procesar esta importacion.",
+          "error": "No se pudo procesar está importacion.",
           "descriptionFr": "Descripcion FR",
           "previewSummary": "{{ready}} listas, {{warnings}} con advertencias, {{errors}} con error"
         },
@@ -1145,7 +1145,7 @@
       "featuredHomeOrder": "Orden destacado",
       "featuredHomeOrderPlaceholder": "Ej. 1",
       "featuredSponsoredField": "Aviso de patrocinio",
-      "featuredSponsoredHelp": "Muestra un aviso de patrocinio en la tarjeta pública cuando esta promoción corresponde a una colaboración.",
+      "featuredSponsoredHelp": "Muestra un aviso de patrocinio en la tarjeta pública cuando está promoción corresponde a una colaboración.",
       "featuredSponsoredEnabled": "Patrocinado",
       "featuredSponsoredDisabled": "No patrocinado",
       "photos": {
@@ -1207,13 +1207,13 @@
     },
     "parkWeather": {
       "navTitle": "Tiempo",
-      "title": "Actualizacion meteorologica",
+      "title": "Actualización meteorológica",
       "subtitle": "Seguimiento de ejecuciones programadas, cobertura de parques visibles y fallos.",
       "loading": "Cargando estado meteorologico...",
       "loadError": "No se pudo cargar el estado meteorologico.",
-      "startError": "No se pudo iniciar la actualizacion meteorologica.",
-      "retryError": "No se pudo reintentar la actualizacion meteorologica.",
-      "empty": "No hay informacion meteorologica disponible.",
+      "startError": "No se pudo iniciar la actualización meteorológica.",
+      "retryError": "No se pudo reintentar la actualización meteorológica.",
+      "empty": "No hay información meteorológica disponible.",
       "actions": {
         "startManual": "Actualizar ahora",
         "retryFailed": "Reintentar fallos",
@@ -1235,12 +1235,12 @@
         "skipped": "Omitida"
       },
       "messages": {
-        "queued": "Actualizacion meteorologica en cola.",
-        "running": "Actualizacion meteorologica en curso.",
-        "completed": "Actualizacion meteorologica completada.",
-        "completedWithFailures": "Actualizacion meteorologica completada con fallos.",
-        "canceled": "Actualizacion meteorologica cancelada.",
-        "skippedByManual": "Ejecucion automatica omitida porque una actualizacion manual ya cubre este ciclo."
+        "queued": "Actualización meteorológica en cola.",
+        "running": "Actualización meteorológica en curso.",
+        "completed": "Actualización meteorológica completada.",
+        "completedWithFailures": "Actualización meteorológica completada con fallos.",
+        "canceled": "Actualización meteorológica cancelada.",
+        "skippedByManual": "Ejecucion automatica omitida porque una actualización manual ya cubre este ciclo."
       },
       "values": {
         "empty": "-"
@@ -1255,7 +1255,7 @@
       "failures": {
         "title": "Parques con fallo",
         "subtitle": "Reintenta todos los fallos o un parque concreto.",
-        "empty": "No hay parques con fallo en esta ejecucion.",
+        "empty": "No hay parques con fallo en está ejecucion.",
         "columns": {
           "park": "Parque",
           "error": "Error",
@@ -1265,13 +1265,13 @@
       },
       "noRun": {
         "title": "Sin ejecucion",
-        "message": "Inicia una actualizacion manual o espera la proxima ejecucion programada."
+        "message": "Inicia una actualización manual o espera la proxima ejecucion programada."
       }
     },
     "publicViewToolbar": {
-      "ariaLabel": "Barra admin de vista publica",
-      "viewMode": "Vista publica",
-      "viewModeAriaLabel": "Elegir la vista publica",
+      "ariaLabel": "Barra admin de vista pública",
+      "viewMode": "Vista pública",
+      "viewModeAriaLabel": "Elegir la vista pública",
       "editionOff": "Edicion off",
       "editionOn": "Edicion on",
       "enableEditionMode": "Activar edicion",
@@ -1306,7 +1306,7 @@
       "drawer": {
         "ariaLabel": "Bloque editable seleccionado",
         "kicker": "Bloque contextual",
-        "close": "Cerrar diagnostico del bloque",
+        "close": "Cerrar diagnóstico del bloque",
         "type": "Tipo de bloque",
         "entity": "Entidad",
         "label": "Elemento actual",
@@ -1314,16 +1314,16 @@
         "localizedLanguages": "Localizado en",
         "jsonScope": "Alcance JSON",
         "openAdminEdit": "Abrir edicion admin completa",
-        "formTitle": "Formulario rapido",
+        "formTitle": "Formulario rápido",
         "formLoading": "Cargando formulario...",
         "formReload": "Recargar",
         "formSave": "Guardar",
         "formSaveBusy": "Guardando...",
         "formLoadError": "No se pudo cargar el formulario.",
         "formSaveError": "Error al guardar el formulario.",
-        "formSaveSucceeded": "Formulario guardado, la pagina se actualiza.",
+        "formSaveSucceeded": "Formulario guardado, la página se actualiza.",
         "formNoChanges": "No hay cambios que guardar.",
-        "formUnavailable": "El formulario no esta disponible para este bloque.",
+        "formUnavailable": "El formulario no está disponible para este bloque.",
         "localizedFieldAriaLabel": "Editar variante {{ languageCode }}",
         "locationPickerHint": "Toca el mapa para crear o mover el punto. Las coordenadas siguen disponibles como apoyo.",
         "locationLatitude": "Latitud",
@@ -1341,8 +1341,8 @@
         "addChildCreateBusy": "Creando...",
         "addChildError": "No se pudo crear el item.",
         "addChildNameRequired": "Anade un nombre antes de crear el item.",
-        "addChildUnavailable": "La adicion dirigida no esta disponible para este bloque.",
-        "addChildSucceeded": "Item oculto creado, la pagina se actualiza.",
+        "addChildUnavailable": "La adicion dirigida no está disponible para este bloque.",
+        "addChildSucceeded": "Item oculto creado, la página se actualiza.",
         "openCreatedChild": "Abrir item",
         "parkGraphUpsertTitle": "JSON upsert de fabricante",
         "parkGraphUpsertHint": "Copia, descarga o importa directamente este JSON prerrellenado del fabricante.",
@@ -1366,7 +1366,7 @@
         "downloadJson": "Descargar JSON del bloque",
         "downloadJsonBusy": "Descargando...",
         "downloadJsonError": "La descarga JSON ha fallado.",
-        "downloadJsonUnavailable": "La exportacion JSON no esta disponible para este bloque.",
+        "downloadJsonUnavailable": "La exportacion JSON no está disponible para este bloque.",
         "exportJsonAriaLabel": "Descargar el JSON acotado de este bloque",
         "jsonDraft": "Borrador JSON",
         "jsonDraftAriaLabel": "Borrador JSON acotado del bloque",
@@ -1375,16 +1375,16 @@
         "clearJsonDraft": "Borrar",
         "previewJsonInvalid": "El JSON introducido no es valido.",
         "previewJsonError": "La previsualizacion JSON ha fallado.",
-        "previewJsonUnavailable": "La previsualizacion JSON no esta disponible para este bloque.",
+        "previewJsonUnavailable": "La previsualizacion JSON no está disponible para este bloque.",
         "previewJsonCanApply": "Previsualizacion valida, no se modifico ningun dato.",
         "previewJsonBlocked": "Previsualizacion bloqueada, no se modifico ningun dato.",
         "applyJson": "Aplicar",
         "applyJsonBusy": "Aplicando...",
         "applyJsonInvalid": "El JSON introducido no es valido.",
         "applyJsonError": "La aplicacion JSON ha fallado.",
-        "applyJsonUnavailable": "La aplicacion JSON no esta disponible para este bloque.",
+        "applyJsonUnavailable": "La aplicacion JSON no está disponible para este bloque.",
         "applyJsonPreviewRequired": "Previsualiza este JSON antes de aplicarlo.",
-        "applyJsonSucceeded": "JSON aplicado, la pagina se actualiza.",
+        "applyJsonSucceeded": "JSON aplicado, la página se actualiza.",
         "previewChanged": "Cambiados",
         "previewErrors": "Errores",
         "previewWarnings": "Avisos",
@@ -1422,7 +1422,7 @@
         "photoSourceRequired": "Elige un archivo o indica un enlace de imagen.",
         "photoInvalidRemoteUrl": "El enlace debe ser una URL http o https valida.",
         "photoUploadError": "No se pudo anadir la foto.",
-        "photoUploadSucceeded": "Foto anadida, la pagina se actualiza.",
+        "photoUploadSucceeded": "Foto anadida, la página se actualiza.",
         "photoTagsLoadError": "No se pudieron cargar las etiquetas."
       },
       "capabilities": {
@@ -1445,31 +1445,31 @@
         },
         "parkDescription": {
           "label": "Descripcion del parque",
-          "description": "Descripcion publica localizada para todos los idiomas soportados."
+          "description": "Descripcion pública localizada para todos los idiomas soportados."
         },
         "parkLocation": {
-          "label": "Ubicacion del parque",
-          "description": "Posicion principal del parque en el mapa publico."
+          "label": "Ubicación del parque",
+          "description": "Posición principal del parque en el mapa público."
         },
         "parkPractical": {
           "label": "Info practica",
-          "description": "Direccion, referencias, sitio web y coordenadas utiles del parque."
+          "description": "Direccion, referencias, sitio web y coordenadas útiles del parque."
         },
         "parkItemDescription": {
           "label": "Descripcion del item",
-          "description": "Descripcion publica localizada para todos los idiomas soportados."
+          "description": "Descripcion pública localizada para todos los idiomas soportados."
         },
         "parkItemLocation": {
-          "label": "Ubicacion del item",
-          "description": "Posicion general de este item en el parque."
+          "label": "Ubicación del item",
+          "description": "Posición general de este item en el parque."
         },
         "parkImages": {
           "label": "Fotos del parque",
-          "description": "Galeria publica del parque y adicion dirigida de fotos."
+          "description": "Galeria pública del parque y adicion dirigida de fotos."
         },
         "parkItemImages": {
           "label": "Fotos del item",
-          "description": "Galeria publica del item y adicion dirigida de fotos."
+          "description": "Galeria pública del item y adicion dirigida de fotos."
         },
         "manufacturerReference": {
           "label": "Fabricante",
@@ -1999,7 +1999,7 @@
       "OPERATOR": "Foto de operador",
       "MANUFACTURER": "Foto de fabricante",
       "FOUNDER": "Foto de fundador",
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "VIDEO_THUMBNAIL": "Miniatura de vídeo"
     },
     "ownerTypes": {
       "NONE": "Ninguno",
@@ -2009,7 +2009,7 @@
       "PARK_OPERATOR": "Operador",
       "ATTRACTION_MANUFACTURER": "Fabricante",
       "PARK_FOUNDER": "Fundador",
-      "VIDEO": "Video"
+      "VIDEO": "Vídeo"
     }
   },
   "languageModal": {
@@ -2111,7 +2111,7 @@
       },
       "selection": {
         "count": "{{count}} fotos",
-        "empty": "Ninguna foto coincide con esta selección."
+        "empty": "Ninguna foto coincide con está selección."
       },
       "metadata": {
         "title": "Foto seleccionada",
@@ -2129,7 +2129,7 @@
       "map": {
         "title": "Mapa de fotos",
         "subtitle": "Fotos geolocalizadas que coinciden con los filtros activos.",
-        "empty": "No hay ninguna foto geolocalizada para esta selección."
+        "empty": "No hay ninguna foto geolocalizada para está selección."
       },
       "lightbox": {
         "title": "Foto en pantalla completa"
@@ -2141,58 +2141,58 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
-      "loadMore": "Load more videos",
-      "loadingMore": "Loading..."
+      "count": "{{count}} vídeos",
+      "views": "{{count}} visualizaciones",
+      "loadMore": "Cargar más vídeos",
+      "loadingMore": "Cargando..."
     },
     "filters": {
-      "type": "Video type",
-      "allTypes": "All types",
-      "tag": "Tag",
-      "allTags": "All tags",
-      "creator": "Creator",
-      "creatorPlaceholder": "Filter by creator name",
-      "applyCreator": "Apply",
-      "clear": "Clear filters"
+      "type": "Tipo de vídeo",
+      "allTypes": "Todos los tipos",
+      "tag": "Etiqueta",
+      "allTags": "Todas las etiquetas",
+      "creator": "Creador",
+      "creatorPlaceholder": "Filtrar por nombre de creador",
+      "applyCreator": "Aplicar",
+      "clear": "Borrar filtros"
     },
     "providers": {
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "External video"
+      "other": "Vídeo externo"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Advertisement",
-      "documentary": "Documentary",
-      "review": "Review",
-      "news": "News",
-      "event": "Event",
-      "interview": "Interview",
-      "other": "Other"
+      "advertisement": "Publicidad",
+      "documentary": "Documental",
+      "review": "Reseña",
+      "news": "Noticias",
+      "event": "Evento",
+      "interview": "Entrevista",
+      "other": "Otro"
     },
     "watch": {
-      "loadingTitle": "Loading video",
-      "loadingMessage": "The video page is being loaded.",
-      "errorTitle": "Video unavailable",
-      "errorMessage": "The requested video could not be loaded.",
-      "previous": "Previous video",
-      "next": "Next video",
-      "backToVideos": "Back to videos",
-      "creator": "Creator",
-      "category": "Category",
-      "provider": "Provider",
-      "duration": "Duration",
-      "publishedAt": "Published",
-      "viewCount": "Views",
-      "views": "{{count}} views",
-      "tagsAndCategories": "Categories and tags",
-      "openExternal": "Open video",
-      "openCreator": "Open creator",
-      "openProvider": "Open provider page"
+      "loadingTitle": "Cargando vídeo",
+      "loadingMessage": "La página del vídeo se está cargando.",
+      "errorTitle": "Vídeo no disponible",
+      "errorMessage": "No se pudo cargar el vídeo solicitado.",
+      "previous": "Vídeo anterior",
+      "next": "Vídeo siguiente",
+      "backToVideos": "Volver a los vídeos",
+      "creator": "Creador",
+      "category": "Categoría",
+      "provider": "Proveedor",
+      "duration": "Duración",
+      "publishedAt": "Publicado",
+      "viewCount": "Visualizaciones",
+      "views": "{{count}} visualizaciones",
+      "tagsAndCategories": "Categorías y etiquetas",
+      "openExternal": "Abrir vídeo",
+      "openCreator": "Abrir creador",
+      "openProvider": "Abrir página del proveedor"
     }
   },
   "aboutPage": {
@@ -2349,24 +2349,24 @@
     "email": {
       "badge": "Correo oficial",
       "title": "Contacto directo",
-      "note": "Puedes escribir directamente a esta direccion; es el contacto estable del sitio."
+      "note": "Puedes escribir directamente a está direccion; es el contacto estable del sitio."
     },
     "form": {
       "kicker": "Cuaderno de comentarios",
       "title": "Dejar un mensaje",
-      "description": "Deja una nota, una correccion o una idea de mejora.",
+      "description": "Deja una nota, una corrección o una idea de mejora.",
       "messageLabel": "Tu mensaje",
       "help": "Escribe tu mensaje de forma sencilla, sin enlaces innecesarios.",
       "validation": "Escribe un mensaje claro entre 10 y 2000 caracteres.",
       "success": "Tu mensaje se ha enviado.",
-      "error": "No se pudo enviar el mensaje. Revisa el texto o intentalo mas tarde.",
+      "error": "No se pudo enviar el mensaje. Revisa el texto o inténtalo más tarde.",
       "submit": "Enviar",
       "submitting": "Enviando"
     },
     "privacy": {
       "badge": "Proteccion",
       "title": "Un espacio protegido",
-      "text": "El formulario se mantiene sencillo para que los intercambios sigan siendo limpios y utiles.",
+      "text": "El formulario se mantiene sencillo para que los intercambios sigan siendo limpios y útiles.",
       "points": {
         "plainText": "Tu mensaje debe ser claro y respetuoso.",
         "ip": "Los abusos repetidos pueden limitarse.",
@@ -2405,7 +2405,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Hecho con ❤️ y adrenalina",
-      "version": "Versión {{version}}"
+      "version": "Versión {{versión}}"
     }
   },
   "home": {
@@ -2500,7 +2500,7 @@
   "manufacturersPage": {
     "kicker": "Fabricantes",
     "title": "Fabricantes de atracciones",
-    "subtitle": "Explora fabricantes de atracciones y coasters referenciados en el sitio, con perfiles publicos y enlaces utiles.",
+    "subtitle": "Explora fabricantes de atracciones y coasters referenciados en el sitio, con perfiles públicos y enlaces útiles.",
     "search": {
       "label": "Busqueda",
       "placeholder": "Nombre, pais, ciudad o ano",
@@ -2793,11 +2793,11 @@
       "height": {
         "title": "Requisitos de altura",
         "minHeight": "Altura mínima",
-        "minHeightHelp": "Permitido desde esta altura.",
+        "minHeightHelp": "Permitido desde está altura.",
         "minHeightAccompanied": "Altura con adulto",
-        "minHeightAccompaniedHelp": "Permitido con un adulto desde esta altura.",
+        "minHeightAccompaniedHelp": "Permitido con un adulto desde está altura.",
         "maxHeight": "Altura máxima",
-        "maxHeightHelp": "Acceso prohibido por encima de esta altura."
+        "maxHeightHelp": "Acceso prohibido por encima de está altura."
       }
     },
     "zoneFocus": {
@@ -2833,17 +2833,17 @@
     },
     "videosPage": {
       "kicker": "Vídeos del lugar",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
-      "loadingTitle": "Loading videos",
+      "title": "Vídeos de {{name}}",
+      "subtitle": "Mira vídeos de {{name}} en {{park}}: onrides, offrides, reseñas y contenido oficial.",
+      "loadingTitle": "Cargando vídeos",
       "loadingMessage": "Preparando los vídeos de este lugar.",
-      "errorTitle": "Videos unavailable",
+      "errorTitle": "Vídeos no disponibles",
       "errorMessage": "No se pueden cargar los vídeos de este lugar por ahora.",
-      "backToItem": "Back to {{name}}",
-      "backToItems": "Por descubrir en {{name}}",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "backToItem": "Volver a {{name}}",
+      "backToItems": "Descubrir más en {{name}}",
+      "backToPark": "Volver a {{name}}",
+      "emptyTitle": "No hay vídeos publicados",
+      "emptyMessage": "Todavía no hay ningún vídeo publicado para {{name}}."
     }
   },
   "parkOpeningHours": {
@@ -2868,15 +2868,15 @@
       "lead": "Consulta las fechas y horarios diarios indicados actualmente para {{ name }}.",
       "backToPark": "Volver a {{ name }}",
       "officialSite": "Sitio oficial",
-      "disclaimer": "Estos horarios se ofrecen solo como orientacion. Comprueba siempre el sitio oficial de {{ name }} antes de tu visita, porque eventos privados, cierres excepcionales, meteorologia, operaciones u otros cambios pueden no conocerse o actualizarse aqui.",
+      "disclaimer": "Estos horarios se ofrecen solo como orientación. Comprueba siempre el sitio oficial de {{ name }} antes de tu visita, porque eventos privados, cierres excepcionales, meteorología, operaciones u otros cambios pueden no conocerse o actualizarse aquí.",
       "summaryLabel": "Resumen de horarios",
       "coverage": "Periodo indicado",
       "coverageUnknown": "Periodo desconocido",
       "timeZone": "Zona horaria",
-      "daysCount": "Dias indicados",
-      "daysCountValue": "{{ count }} dias",
+      "daysCount": "Días indicados",
+      "daysCountValue": "{{ count }} días",
       "calendarLabel": "Fechas y horarios de {{ name }}",
-      "monthNavigationLabel": "Navegacion por meses",
+      "monthNavigationLabel": "Navegación por meses",
       "previousMonth": "Mes anterior",
       "nextMonth": "Mes siguiente",
       "currentMonth": "Mes actual",
@@ -2888,25 +2888,25 @@
       "closedCompact": "Cerrado",
       "notDefined": "No indicado",
       "closedNoReason": "Cerrado",
-      "dayHasInformation": "Informacion adicional",
+      "dayHasInformation": "Información adicional",
       "shortOpening": "Apertura corta",
       "standardOpening": "Apertura normal",
       "longOpening": "Apertura amplia",
-      "selectedDay": "Dia seleccionado",
-      "dayDetailAriaLabel": "Detalles del dia seleccionado",
+      "selectedDay": "Día seleccionado",
+      "dayDetailAriaLabel": "Detalles del día seleccionado",
       "dayHoursTitle": "Horarios",
       "lastAdmission": "Ultima admision: {{ time }}",
       "dayClosedMessage": "El parque figura como cerrado en esta fecha.",
       "dayNotDefinedMessage": "No hay horarios indicados para esta fecha.",
-      "dayInformationTitle": "Informacion",
-      "nextDaySuffix": "dia siguiente",
-      "monthOpenOne": "{{ open }} dia abierto",
-      "monthOpenMany": "{{ open }} dias abiertos",
-      "monthClosedOne": "{{ closed }} dia cerrado",
-      "monthClosedMany": "{{ closed }} dias cerrados",
-      "monthMixed": "{{ open }} dias abiertos, {{ closed }} dias cerrados",
+      "dayInformationTitle": "Información",
+      "nextDaySuffix": "día siguiente",
+      "monthOpenOne": "{{ open }} día abierto",
+      "monthOpenMany": "{{ open }} días abiertos",
+      "monthClosedOne": "{{ closed }} día cerrado",
+      "monthClosedMany": "{{ closed }} días cerrados",
+      "monthMixed": "{{ open }} días abiertos, {{ closed }} días cerrados",
       "loadingTitle": "Cargando fechas y horarios",
-      "loadingMessage": "El calendario indicado se esta cargando.",
+      "loadingMessage": "El calendario indicado se está cargando.",
       "emptyTitle": "Sin fechas ni horarios",
       "emptyMessage": "Todavia no hay calendario de apertura para este parque.",
       "errorTitle": "Fechas y horarios no disponibles",
@@ -2929,7 +2929,7 @@
     "today": {
       "title": "Tiempo de hoy",
       "precipitationProbability": "{{value}}% de riesgo de lluvia",
-      "viewSevenDays": "Prevision a 7 dias"
+      "viewSevenDays": "Previsión a 7 días"
     },
     "conditions": {
       "clear": "Cielo despejado",
@@ -2956,9 +2956,9 @@
     "history": {
       "title": "Comparar con anos anteriores",
       "subtitle": "Compara las mismas fechas de años anteriores antes de planear tu visita.",
-      "loading": "Cargando comparaciones meteorologicas.",
-      "empty": "No hay observacion historica disponible para estas fechas.",
-      "errorMessage": "No se pudieron cargar las comparaciones meteorologicas.",
+      "loading": "Cargando comparaciones meteorológicas.",
+      "empty": "No hay observación histórica disponible para estas fechas.",
+      "errorMessage": "No se pudieron cargar las comparaciones meteorológicas.",
       "yearSingular": "Hace {{count}} ano",
       "yearPlural": "Hace {{count}} anos",
       "rain": "Lluvia {{value}}",
@@ -2970,15 +2970,15 @@
     },
     "page": {
       "kicker": "Tiempo",
-      "title": "Tiempo a 7 dias de {{name}}",
+      "title": "Tiempo a 7 días de {{name}}",
       "lead": "Consulta el tiempo de {{name}} antes de tu visita.",
       "loadingTitle": "Cargando el tiempo",
-      "loadingMessage": "La prevision se esta cargando.",
-      "emptyTitle": "Sin prevision disponible",
+      "loadingMessage": "La previsión se está cargando.",
+      "emptyTitle": "Sin previsión disponible",
       "emptyMessage": "Aun no hay datos meteorologicos para este parque.",
       "errorTitle": "Tiempo no disponible",
       "backToPark": "Volver a {{name}}",
-      "forecastLabel": "Prevision meteorologica a 7 dias"
+      "forecastLabel": "Previsión meteorológica a 7 días"
     }
   },
   "parks": {
@@ -3127,7 +3127,7 @@
       "errorTitle": "Mapa no disponible",
       "errorMessage": "No se pudieron cargar los puntos del mapa.",
       "emptyTitle": "No hay puntos disponibles",
-      "emptyMessage": "Ningún parque con coordenadas coincide con esta búsqueda.",
+      "emptyMessage": "Ningún parque con coordenadas coincide con está búsqueda.",
       "navigate": "Cómo llegar",
       "openDetail": "Ir a la ficha",
       "regionFilters": {
@@ -3323,23 +3323,23 @@
       "closedDefinitively": "Cerrado definitivamente"
     },
     "videosPage": {
-      "kicker": "Park videos",
-      "title": "Videos of {{name}}",
-      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
-      "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the park videos.",
-      "loadingItemsTitle": "Cargando videos de lugares",
-      "loadingItemsMessage": "Preparando videos de lugares de {{name}}.",
+      "kicker": "Vídeos del parque",
+      "title": "Vídeos de {{name}}",
+      "subtitle": "Mira vídeos de {{name}}: onrides, offrides, clips oficiales y contenido de creadores.",
+      "loadingTitle": "Cargando vídeos",
+      "loadingMessage": "Preparando los vídeos del parque.",
+      "loadingItemsTitle": "Cargando vídeos de lugares",
+      "loadingItemsMessage": "Preparando vídeos de lugares de {{name}}.",
       "tabs": {
-        "label": "Secciones de videos",
+        "label": "Secciones de vídeos",
         "park": "Parque",
         "items": "Lugares del parque"
       },
-      "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this park cannot be loaded right now.",
-      "backToPark": "Back to {{name}}",
-      "emptyTitle": "No published videos",
-      "emptyMessage": "No published video is available for {{name}} yet."
+      "errorTitle": "Vídeos no disponibles",
+      "errorMessage": "No se pueden cargar los vídeos de este parque por ahora.",
+      "backToPark": "Volver a {{name}}",
+      "emptyTitle": "No hay vídeos publicados",
+      "emptyMessage": "Todavía no hay ningún vídeo publicado para {{name}}."
     }
   },
   "privacyPage": {
@@ -3537,7 +3537,7 @@
       "title": "Compartir con código QR",
       "loading": "Generando código QR",
       "alt": "Código QR para {{title}}",
-      "error": "El codigo QR no se puede crear ahora."
+      "error": "El código QR no se puede crear ahora."
     },
     "home": {
       "title": "Compartir AmusementPark",
@@ -3570,9 +3570,9 @@
       "text": "Descubre {{title}} en AmusementPark."
     },
     "videos": {
-      "title": "Compartir estos videos",
-      "description": "Envía estos videos a alguien que quiera una vista previa.",
-      "text": "Mira videos de {{title}} en AmusementPark."
+      "title": "Compartir estos vídeos",
+      "description": "Envía estos vídeos a alguien que quiera una vista previa.",
+      "text": "Mira vídeos de {{title}} en AmusementPark."
     },
     "video": {
       "title": "Compartir este video",
@@ -3604,8 +3604,8 @@
   "versionHistoryPage": {
     "kicker": "Historial",
     "title": "Que ha cambiado",
-    "lead": "Version actual: {{version}}. Sigue las mejoras visibles del sitio con cada actualizacion.",
-    "timelineAriaLabel": "Linea temporal del historial de versiones",
+    "lead": "Version actual: {{versión}}. Sigue las mejoras visibles del sitio con cada actualización.",
+    "timelineAriaLabel": "Línea temporal del historial de versiones",
     "loading": "Cargando versiones...",
     "loadError": "No se pudo cargar el historial.",
     "actions": {
@@ -3615,7 +3615,7 @@
     "levels": {
       "major": "Mayor",
       "minor": "Hito",
-      "patch": "Actualizacion"
+      "patch": "Actualización"
     }
   }
 }

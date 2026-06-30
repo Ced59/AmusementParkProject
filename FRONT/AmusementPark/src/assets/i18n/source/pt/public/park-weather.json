@@ -1,11 +1,11 @@
 {
   "parkWeather": {
     "loading": "A carregar meteorologia",
-    "errorMessage": "Nao foi possivel carregar os dados meteorologicos.",
+    "errorMessage": "Não foi possível carregar os dados meteorologicos.",
     "today": {
       "title": "Meteorologia de hoje",
       "precipitationProbability": "{{value}}% risco de chuva",
-      "viewSevenDays": "Previsao a 7 dias"
+      "viewSevenDays": "Previsão a 7 dias"
     },
     "conditions": {
       "clear": "Ceu limpo",
@@ -15,7 +15,7 @@
       "rain": "Chuva",
       "snow": "Neve",
       "thunderstorm": "Trovoada",
-      "unknown": "Meteorologia indisponivel"
+      "unknown": "Meteorologia indisponível"
     },
     "fields": {
       "precipitationProbability": "Risco de chuva",
@@ -33,8 +33,8 @@
       "title": "Comparar com anos anteriores",
       "subtitle": "Compara as mesmas datas de anos anteriores antes de planeares a tua visita.",
       "loading": "A carregar comparacoes meteorologicas.",
-      "empty": "Nao existe observacao historica para estas datas.",
-      "errorMessage": "Nao foi possivel carregar as comparacoes meteorologicas.",
+      "empty": "Não existe observação histórica para estas datas.",
+      "errorMessage": "Não foi possível carregar as comparacoes meteorologicas.",
       "yearSingular": "Ha {{count}} ano",
       "yearPlural": "Ha {{count}} anos",
       "rain": "Chuva {{value}}",
@@ -49,12 +49,12 @@
       "title": "Meteorologia a 7 dias de {{name}}",
       "lead": "Verifica a meteorologia de {{name}} antes da tua visita.",
       "loadingTitle": "A carregar meteorologia",
-      "loadingMessage": "A previsao esta a carregar.",
-      "emptyTitle": "Sem previsao disponivel",
-      "emptyMessage": "Ainda nao existem dados meteorologicos para este parque.",
-      "errorTitle": "Meteorologia indisponivel",
+      "loadingMessage": "A previsão está a carregar.",
+      "emptyTitle": "Sem previsão disponível",
+      "emptyMessage": "Ainda não existem dados meteorologicos para este parque.",
+      "errorTitle": "Meteorologia indisponível",
       "backToPark": "Voltar a {{name}}",
-      "forecastLabel": "Previsao meteorologica a 7 dias"
+      "forecastLabel": "Previsão meteorológica a 7 dias"
     }
   }
 }

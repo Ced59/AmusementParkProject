@@ -354,7 +354,7 @@
         "import": {
           "open": "Per Einfuegen importieren",
           "title": "Einfuegen / CSV-Import",
-          "subtitle": "Liste oder Tabelle einfuegen, Vorschau korrigieren und nur gueltige Zeilen anwenden.",
+          "subtitle": "Liste oder Tabelle einfuegen, Vorschau korrigieren und nur gültige Zeilen anwenden.",
           "source": "Quelle",
           "placeholder": "Name\\nName;Kategorie;Typ;Zone;Hersteller;Beschreibung FR",
           "parsedRows": "{{count}} Zeile(n) erkannt",

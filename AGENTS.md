@@ -70,6 +70,7 @@ The project must preserve its current architecture, SOLID principles, separation
 - Preserve route localization, SEO metadata, canonical URLs, hreflang, robots/noindex, Open Graph, and SSR behavior.
 - When creating a deep public page, update the visible public breadcrumb/navigation trail and the BreadcrumbList JSON-LD with contextual, localized labels and clickable parent links. Do not leave generic labels when entity names are available.
 - Public-facing copy must use a consistent informal tone in every supported language. In French, use tutoiement instead of vouvoiement for public, auth, account, SEO and sharing texts.
+- Localized copy, SEO metadata, JSON-LD labels, release notes, and admin-visible labels must use proper accents, diacritics, punctuation, and language-specific characters. Do not leave ASCII transliterations such as `Oeff`, `fuer`, `piu`, `mas`, `publica`, `parkow`, or French text without accents unless the word is intentionally technical, a route segment, an identifier, or a product name.
 - Add or update tests for facades, mappers, guards, interceptors, ports, and edge cases.
 - Do not introduce heavy dependencies without explicit justification.
 - Do not move admin-only code into the public initial bundle.
