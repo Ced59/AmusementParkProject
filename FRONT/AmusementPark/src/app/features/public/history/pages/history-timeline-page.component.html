@@ -22,13 +22,13 @@
         </div>
 
         <div class="history-hero__actions">
-          <a class="history-button history-button--ghost" [routerLink]="backLink(currentTimeline)">
+          <a class="app-button app-button--ghost history-button" [routerLink]="backLink(currentTimeline)">
             <i class="pi pi-arrow-left" aria-hidden="true"></i>
             <span>{{ backLabel() }}</span>
           </a>
 
           @if (currentTimeline.showParkItemControls && currentTimeline.includedParkItems.length > 0) {
-            <button class="history-button history-button--toggle" type="button" [class.history-button--active]="includeParkItems()" (click)="toggleParkItems()">
+            <button class="app-button history-button" type="button" [class.app-button--primary]="includeParkItems()" [class.app-button--ghost]="!includeParkItems()" (click)="toggleParkItems()">
               <i class="pi pi-sitemap" aria-hidden="true"></i>
               <span>{{ includeParkItemsLabel() }}</span>
             </button>
@@ -68,7 +68,7 @@
 
               <span class="history-event__dot" aria-hidden="true"></span>
 
-              <article class="history-event__body">
+              <article class="history-event__body" [class.history-event__body--with-image]="event.mainImageId">
                 @if (event.mainImageId) {
                   <div class="history-event__image">
                     <app-image-display

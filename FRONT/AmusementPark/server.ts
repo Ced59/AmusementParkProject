@@ -1579,6 +1579,8 @@ function isPublicSsrCacheRoute(url: string): boolean {
   return isPublicStaticSsrRoute(path)
     || isPublicParkDetailRoute(path)
     || isPublicParkImagesRoute(path)
+    || isPublicParkHistoryRoute(path)
+    || isPublicParkHistoryArticleRoute(path)
     || isPublicParkVideosRoute(path)
     || isPublicParkVideoDetailRoute(path)
     || isPublicParkWeatherRoute(path)
@@ -1587,6 +1589,8 @@ function isPublicSsrCacheRoute(url: string): boolean {
     || isPublicParkItemsRoute(path)
     || isPublicParkItemDetailRoute(path)
     || isPublicParkItemImagesRoute(path)
+    || isPublicParkItemHistoryRoute(path)
+    || isPublicParkItemHistoryArticleRoute(path)
     || isPublicParkItemVideosRoute(path)
     || isPublicParkItemVideoDetailRoute(path)
     || isPublicReferenceRoute(path);
@@ -1598,6 +1602,8 @@ function isCriticalPublicSsrRoute(url: string): boolean {
   return isPublicStaticSsrRoute(path)
     || isPublicParkDetailRoute(path)
     || (isPublicParkImagesRoute(path) && !hasQueryString(url))
+    || (isPublicParkHistoryRoute(path) && !hasQueryString(url))
+    || isPublicParkHistoryArticleRoute(path)
     || (isPublicParkVideosRoute(path) && !hasQueryString(url))
     || isPublicParkVideoDetailRoute(path)
     || (isPublicParkWeatherRoute(path) && !hasQueryString(url))
@@ -1606,6 +1612,8 @@ function isCriticalPublicSsrRoute(url: string): boolean {
     || (isPublicParkItemsRoute(path) && !hasQueryString(url))
     || isPublicParkItemDetailRoute(path)
     || (isPublicParkItemImagesRoute(path) && !hasQueryString(url))
+    || (isPublicParkItemHistoryRoute(path) && !hasQueryString(url))
+    || isPublicParkItemHistoryArticleRoute(path)
     || (isPublicParkItemVideosRoute(path) && !hasQueryString(url))
     || isPublicParkItemVideoDetailRoute(path)
     || isPublicReferenceRoute(path);
@@ -1631,6 +1639,14 @@ function isPublicParkDetailRoute(path: string): boolean {
 
 function isPublicParkImagesRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/images\/?$/i.test(path);
+}
+
+function isPublicParkHistoryRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/history\/?$/i.test(path);
+}
+
+function isPublicParkHistoryArticleRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/history\/[^/]+\/[^/]+\/?$/i.test(path);
 }
 
 function isPublicParkVideosRoute(path: string): boolean {
@@ -1663,6 +1679,14 @@ function isPublicParkItemDetailRoute(path: string): boolean {
 
 function isPublicParkItemImagesRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/images\/?$/i.test(path);
+}
+
+function isPublicParkItemHistoryRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/history\/?$/i.test(path);
+}
+
+function isPublicParkItemHistoryArticleRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/history\/[^/]+\/[^/]+\/?$/i.test(path);
 }
 
 function isPublicParkItemVideosRoute(path: string): boolean {

@@ -15,7 +15,7 @@
         <div class="history-article__hero-copy">
           <p class="history-article__kicker">
             <i class="pi pi-history" aria-hidden="true"></i>
-            <span>{{ currentArticle.dateLabel }} · {{ currentArticle.eventTypeLabel }}</span>
+            <span>{{ currentArticle.dateLabel }} - {{ currentArticle.eventTypeLabel }}</span>
           </p>
           <h1>{{ currentArticle.title }}</h1>
           @if (currentArticle.subtitle) {
@@ -26,7 +26,7 @@
           }
 
           @if (currentArticle.timelineLink) {
-            <a class="history-article__back" [routerLink]="currentArticle.timelineLink">
+            <a class="app-button app-button--primary history-article__back" [routerLink]="currentArticle.timelineLink">
               <i class="pi pi-arrow-left" aria-hidden="true"></i>
               <span>{{ backLabel() }}</span>
             </a>
