@@ -112,6 +112,13 @@
               </a>
             }
 
+            @if (currentPark.historyLink) {
+              <a appUiButton="ghost" [routerLink]="currentPark.historyLink">
+                <i class="pi pi-history" aria-hidden="true"></i>
+                <span>{{ 'parks.actions.history' | translate }}</span>
+              </a>
+            }
+
             @if (currentPark.mapLink) {
               <a appUiButton="ghost" [routerLink]="currentPark.mapLink">
                 <i class="pi pi-map" aria-hidden="true"></i>

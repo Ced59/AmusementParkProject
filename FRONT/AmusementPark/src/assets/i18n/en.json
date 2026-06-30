@@ -2698,7 +2698,8 @@
       "viewDetails": "View page",
       "backToItems": "Back to places in the park",
       "backToPark": "Back to park",
-      "videos": "Videos"
+      "videos": "Videos",
+      "history": "History"
     },
     "filters": {
       "search": "Search",
@@ -3121,6 +3122,7 @@
       "backToList": "Back to list",
       "images": "Images",
       "videos": "Videos",
+      "history": "History",
       "map": "Map",
       "browseZones": "Browse all zones"
     },

@@ -12,6 +12,7 @@ import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRang
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
+import { HistoryTimeline } from '@app/models/history/history.models';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
@@ -32,9 +33,11 @@ import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
 import {
+  PARK_DETAIL_HISTORY_PORT,
   PARK_DETAIL_PARKS_PORT,
   PARK_DETAIL_VIDEOS_PORT,
   PARK_DETAIL_IMAGES_PORT,
+  ParkDetailHistoryPort,
   ParkDetailImagesPort,
   ParkDetailParksPort,
   ParkDetailVideosPort
@@ -54,6 +57,7 @@ export class ParkDetailStateFacade {
   private readonly currentLanguageSignal = signal('en');
   private readonly hasVideosSignal = signal(false);
   private readonly hasImagesSignal = signal(false);
+  private readonly hasHistorySignal = signal(false);
 
   public readonly state = this.screenStateStore.state;
   public readonly nearbyState = this.nearbyStateStore.state;
@@ -80,7 +84,8 @@ export class ParkDetailStateFacade {
         [],
         currentSummary.rating ?? null,
         this.hasVideosSignal(),
-        this.hasImagesSignal()
+        this.hasImagesSignal(),
+        this.hasHistorySignal()
       );
     });
   });
@@ -107,6 +112,7 @@ export class ParkDetailStateFacade {
     @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
     @Inject(PARK_DETAIL_VIDEOS_PORT) private readonly videosApiService: ParkDetailVideosPort,
     @Inject(PARK_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkDetailImagesPort,
+    @Inject(PARK_DETAIL_HISTORY_PORT) private readonly historyApiService: ParkDetailHistoryPort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly textTruncator: NaturalTextTruncatorService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
@@ -131,6 +137,7 @@ export class ParkDetailStateFacade {
     this.openingHoursStateStore.setLoading(previousOpeningHoursData);
     this.hasVideosSignal.set(false);
     this.hasImagesSignal.set(false);
+    this.hasHistorySignal.set(false);
 
     this.parksApiService.getParkDetailSummary(id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (summary: ParkDetailSummary) => {
@@ -141,6 +148,7 @@ export class ParkDetailStateFacade {
         this.loadOpeningHours(summary.park);
         this.loadVideoAvailability(summary.park);
         this.loadImageAvailability(summary);
+        this.loadHistoryAvailability(summary.park);
       },
       error: (error: unknown) => {
         console.error('Error loading park detail summary', error);
@@ -452,6 +460,24 @@ export class ParkDetailStateFacade {
       },
       error: () => {
         this.hasImagesSignal.set(false);
+      }
+    });
+  }
+
+  private loadHistoryAvailability(park: Park): void {
+    const parkId: string | null = park.id?.trim() ?? null;
+
+    if (!parkId) {
+      this.hasHistorySignal.set(false);
+      return;
+    }
+
+    this.historyApiService.getParkTimeline(parkId, false, [], anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (timeline: HistoryTimeline) => {
+        this.hasHistorySignal.set((timeline.events?.length ?? 0) > 0);
+      },
+      error: () => {
+        this.hasHistorySignal.set(false);
       }
     });
   }

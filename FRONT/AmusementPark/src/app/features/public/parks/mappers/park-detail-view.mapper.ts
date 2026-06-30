@@ -10,6 +10,7 @@ import {
   buildPublicParkImagesRouteCommands,
   buildPublicParkItemsRouteCommands,
   buildPublicParkMapRouteCommands,
+  buildPublicParkHistoryRouteCommands,
   buildPublicParkOpeningHoursRouteCommands,
   buildPublicParkWeatherRouteCommands,
   buildPublicParkVideosRouteCommands,
@@ -44,7 +45,8 @@ export function mapParkToDetailViewModel(
   imageTags: ImageTagDto[] = [],
   rating: RatingSummary | null = null,
   hasVideos: boolean = false,
-  hasImages: boolean = false
+  hasImages: boolean = false,
+  hasHistory: boolean = false
 ): ParkDetailViewModel {
   const hasLocationInfo: boolean = Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   const websiteUrl: string | null = normalizeOptionalString(park.webSiteUrl);
@@ -140,6 +142,9 @@ export function mapParkToDetailViewModel(
       : null,
     videosLink: hasIdentity && hasVideos
       ? buildPublicParkVideosRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
+      : null,
+    historyLink: hasIdentity && hasHistory
+      ? buildPublicParkHistoryRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     mapLink: hasIdentity
       ? buildPublicParkMapRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })

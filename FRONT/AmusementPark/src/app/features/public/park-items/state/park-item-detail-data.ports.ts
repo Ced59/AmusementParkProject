@@ -7,9 +7,11 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
+import { HistoryTimeline } from '@app/models/history/history.models';
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
+import { HistoryApiService } from '@data-access/history/history-api.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
@@ -50,6 +52,10 @@ export interface ParkItemDetailTechnicalPagesPort {
   getPublicLinkIndex(): Observable<TechnicalPage[]>;
 }
 
+export interface ParkItemDetailHistoryPort {
+  getParkItemTimeline(parkItemId: string, options?: AnonymousHttpOptions): Observable<HistoryTimeline>;
+}
+
 export const PARK_ITEM_DETAIL_ITEMS_PORT = new InjectionToken<ParkItemDetailItemsPort>('PARK_ITEM_DETAIL_ITEMS_PORT', {
   providedIn: 'root',
   factory: () => inject(ParkItemsApiService)
@@ -83,4 +89,9 @@ export const PARK_ITEM_DETAIL_VIDEOS_PORT = new InjectionToken<ParkItemDetailVid
 export const PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT = new InjectionToken<ParkItemDetailTechnicalPagesPort>('PARK_ITEM_DETAIL_TECHNICAL_PAGES_PORT', {
   providedIn: 'root',
   factory: () => inject(TechnicalPagesApiService)
+});
+
+export const PARK_ITEM_DETAIL_HISTORY_PORT = new InjectionToken<ParkItemDetailHistoryPort>('PARK_ITEM_DETAIL_HISTORY_PORT', {
+  providedIn: 'root',
+  factory: () => inject(HistoryApiService)
 });

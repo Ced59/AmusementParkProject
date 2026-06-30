@@ -23,6 +23,7 @@ import { trimOrNull } from './park-item-detail-formatters';
 import { buildLocationPoints, buildMapMarkers, resolveMapCenter } from './park-item-detail-location.mapper';
 import {
   buildCategoryNavigation,
+  buildHistoryLink,
   buildImagesLink,
   buildItemsLink,
   buildParkLink,
@@ -57,7 +58,8 @@ export function mapParkItemToDetailViewModel(
   measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
   measurementConversionService: MeasurementConversionService = new MeasurementConversionService(),
   hasVideos: boolean = false,
-  technicalPages: TechnicalPage[] = []
+  technicalPages: TechnicalPage[] = [],
+  hasHistory: boolean = false
 ): ParkItemDetailViewModel | null {
   if (!item) {
     return null;
@@ -84,6 +86,7 @@ export function mapParkItemToDetailViewModel(
   const parkLink: string[] | null = buildParkLink(park, currentLanguage);
   const imagesLink: string[] | null = heroPhoto ? buildImagesLink(park, item, currentLanguage) : null;
   const videosLink: string[] | null = hasVideos ? buildVideosLink(park, item, currentLanguage) : null;
+  const historyLink: string[] | null = hasHistory ? buildHistoryLink(park, item, currentLanguage) : null;
 
   return {
     id: item.id ?? null,
@@ -99,6 +102,7 @@ export function mapParkItemToDetailViewModel(
     itemsLink,
     imagesLink,
     videosLink,
+    historyLink,
     siblingNavigation: buildSiblingNavigation(siblingNavigation, park, currentLanguage),
     categoryNavigation: buildCategoryNavigation(itemsLink, item.category),
     typeNavigation: buildTypeNavigation(itemsLink, item.type),

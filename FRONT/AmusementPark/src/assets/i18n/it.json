@@ -2698,7 +2698,8 @@
       "viewDetails": "Vedi scheda",
       "backToItems": "Torna ai luoghi del parco",
       "backToPark": "Torna al parco",
-      "videos": "Video"
+      "videos": "Video",
+      "history": "Storia"
     },
     "filters": {
       "search": "Cerca",
@@ -3121,6 +3122,7 @@
       "backToList": "Torna alla lista",
       "images": "Immagini",
       "videos": "Video",
+      "history": "Storia",
       "map": "Mappa",
       "browseZones": "Sfoglia tutte le zone"
     },
