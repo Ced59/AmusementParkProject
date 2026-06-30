@@ -1,3 +1,5 @@
+using AmusementPark.Core.Localization;
+
 namespace AmusementPark.Application.Features.ParkOpeningHours.Results;
 
 public sealed class ParkOpeningHoursScheduleResult
@@ -33,9 +35,9 @@ public sealed class ParkOpeningHoursRuleResult
 
     public bool IsClosed { get; init; }
 
-    public string? Label { get; init; }
+    public IReadOnlyCollection<LocalizedText> Labels { get; init; } = Array.Empty<LocalizedText>();
 
-    public string? Reason { get; init; }
+    public IReadOnlyCollection<LocalizedText> Reasons { get; init; } = Array.Empty<LocalizedText>();
 
     public int SortOrder { get; init; }
 
@@ -48,9 +50,9 @@ public sealed class ParkOpeningHoursDateOverrideResult
 
     public bool IsClosed { get; init; }
 
-    public string? Label { get; init; }
+    public IReadOnlyCollection<LocalizedText> Labels { get; init; } = Array.Empty<LocalizedText>();
 
-    public string? Reason { get; init; }
+    public IReadOnlyCollection<LocalizedText> Reasons { get; init; } = Array.Empty<LocalizedText>();
 
     public IReadOnlyCollection<ParkOpeningHoursTimeRangeResult> TimeRanges { get; init; } = Array.Empty<ParkOpeningHoursTimeRangeResult>();
 }
@@ -103,9 +105,9 @@ public sealed class ParkOpeningHoursDayResult
 
     public string SourceKind { get; init; } = string.Empty;
 
-    public string? Label { get; init; }
+    public IReadOnlyCollection<LocalizedText> Labels { get; init; } = Array.Empty<LocalizedText>();
 
-    public string? Reason { get; init; }
+    public IReadOnlyCollection<LocalizedText> Reasons { get; init; } = Array.Empty<LocalizedText>();
 
     public IReadOnlyCollection<ParkOpeningHoursTimeRangeResult> TimeRanges { get; init; } = Array.Empty<ParkOpeningHoursTimeRangeResult>();
 }

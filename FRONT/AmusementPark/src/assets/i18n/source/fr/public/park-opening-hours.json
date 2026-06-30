@@ -38,6 +38,7 @@
       "today": "Aujourd'hui",
       "open": "Ouvert",
       "closed": "Fermé",
+      "closedCompact": "Fermé",
       "notDefined": "Non renseigné",
       "closedNoReason": "Fermé",
       "dayHasInformation": "Information ajoutée",

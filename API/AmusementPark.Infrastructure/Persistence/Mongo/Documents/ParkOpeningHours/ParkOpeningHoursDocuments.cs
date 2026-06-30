@@ -81,13 +81,11 @@ public sealed class ParkOpeningHoursRuleDocument
     [BsonElement("isClosed")]
     public bool IsClosed { get; set; }
 
-    [BsonElement("label")]
-    [BsonIgnoreIfNull]
-    public string? Label { get; set; }
+    [BsonElement("labels")]
+    public List<LocalizedTextDocument> Labels { get; set; } = new();
 
-    [BsonElement("reason")]
-    [BsonIgnoreIfNull]
-    public string? Reason { get; set; }
+    [BsonElement("reasons")]
+    public List<LocalizedTextDocument> Reasons { get; set; } = new();
 
     [BsonElement("sortOrder")]
     public int SortOrder { get; set; }
@@ -105,13 +103,11 @@ public sealed class ParkOpeningHoursDateOverrideDocument
     [BsonElement("isClosed")]
     public bool IsClosed { get; set; }
 
-    [BsonElement("label")]
-    [BsonIgnoreIfNull]
-    public string? Label { get; set; }
+    [BsonElement("labels")]
+    public List<LocalizedTextDocument> Labels { get; set; } = new();
 
-    [BsonElement("reason")]
-    [BsonIgnoreIfNull]
-    public string? Reason { get; set; }
+    [BsonElement("reasons")]
+    public List<LocalizedTextDocument> Reasons { get; set; } = new();
 
     [BsonElement("timeRanges")]
     public List<ParkOpeningHoursTimeRangeDocument> TimeRanges { get; set; } = new();

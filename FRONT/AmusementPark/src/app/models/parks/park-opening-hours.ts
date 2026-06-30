@@ -1,3 +1,5 @@
+import { LocalizedItemDto } from '../shared/localized-item-dto';
+
 export interface ParkOpeningHoursTimeRange {
   opensAt: string;
   closesAt: string;
@@ -12,8 +14,8 @@ export interface ParkOpeningHoursRule {
   endDate: string;
   daysOfWeek: string[];
   isClosed: boolean;
-  label?: string | null;
-  reason?: string | null;
+  labels?: LocalizedItemDto<string>[] | null;
+  reasons?: LocalizedItemDto<string>[] | null;
   sortOrder: number;
   timeRanges: ParkOpeningHoursTimeRange[];
 }
@@ -21,8 +23,8 @@ export interface ParkOpeningHoursRule {
 export interface ParkOpeningHoursDateOverride {
   localDate: string;
   isClosed: boolean;
-  label?: string | null;
-  reason?: string | null;
+  labels?: LocalizedItemDto<string>[] | null;
+  reasons?: LocalizedItemDto<string>[] | null;
   timeRanges: ParkOpeningHoursTimeRange[];
 }
 
@@ -43,8 +45,8 @@ export interface ParkOpeningHoursDay {
   isClosed: boolean;
   isDefined: boolean;
   sourceKind: string;
-  label?: string | null;
-  reason?: string | null;
+  labels?: LocalizedItemDto<string>[] | null;
+  reasons?: LocalizedItemDto<string>[] | null;
   timeRanges: ParkOpeningHoursTimeRange[];
 }
 

@@ -306,9 +306,9 @@ public sealed class ParkGraphExportOpeningHoursRule
 
     public bool IsClosed { get; init; }
 
-    public string? Label { get; init; }
+    public List<LocalizedText> Labels { get; init; } = new List<LocalizedText>();
 
-    public string? Reason { get; init; }
+    public List<LocalizedText> Reasons { get; init; } = new List<LocalizedText>();
 
     public int SortOrder { get; init; }
 
@@ -321,9 +321,9 @@ public sealed class ParkGraphExportOpeningHoursDateOverride
 
     public bool IsClosed { get; init; }
 
-    public string? Label { get; init; }
+    public List<LocalizedText> Labels { get; init; } = new List<LocalizedText>();
 
-    public string? Reason { get; init; }
+    public List<LocalizedText> Reasons { get; init; } = new List<LocalizedText>();
 
     public List<ParkGraphExportOpeningHoursTimeRange> TimeRanges { get; init; } = new List<ParkGraphExportOpeningHoursTimeRange>();
 }

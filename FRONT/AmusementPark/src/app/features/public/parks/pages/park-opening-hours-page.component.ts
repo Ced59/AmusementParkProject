@@ -7,6 +7,7 @@ import { TranslateModule, TranslateService as NgxTranslateService } from '@ngx-t
 import { Park } from '@app/models/parks/park';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRange } from '@app/models/parks/park-opening-hours';
+import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
@@ -271,12 +272,15 @@ export class ParkOpeningHoursPageComponent implements OnInit {
       return null;
     }
 
-    const note: string | null = (day.label || day.reason || '').trim() || null;
-    if (!note || this.isTechnicalPublicNote(note)) {
-      return null;
+    const language: string = this.currentLanguage();
+    const localizedNote: string | null = this.normalizePublicDayNote(
+      this.resolveStrictLocalizedNote(day.labels, language) ?? this.resolveStrictLocalizedNote(day.reasons, language)
+    );
+    if (localizedNote) {
+      return localizedNote;
     }
 
-    return note;
+    return null;
   }
 
   hasPublicDayNote(day: ParkOpeningHoursDay | null): boolean {
@@ -516,6 +520,32 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     ];
 
     return technicalFragments.some((fragment: string): boolean => normalizedNote.includes(fragment));
+  }
+
+  private normalizePublicDayNote(note: string | null | undefined): string | null {
+    const normalizedNote: string = note?.trim() ?? '';
+    if (!normalizedNote || this.isTechnicalPublicNote(normalizedNote)) {
+      return null;
+    }
+
+    return normalizedNote;
+  }
+
+  private resolveStrictLocalizedNote(values: ReadonlyArray<LocalizedItemDto<string>> | null | undefined, language: string): string | null {
+    const normalizedLanguage: string = this.normalizeNoteLanguageCode(language);
+    if (!values || normalizedLanguage.length === 0) {
+      return null;
+    }
+
+    const match: LocalizedItemDto<string> | undefined = values.find((value: LocalizedItemDto<string>): boolean =>
+      this.normalizeNoteLanguageCode(value.languageCode) === normalizedLanguage);
+    const normalizedValue: string = match?.value?.trim() ?? '';
+
+    return normalizedValue.length > 0 ? normalizedValue : null;
+  }
+
+  private normalizeNoteLanguageCode(value: string | null | undefined): string {
+    return (value ?? '').trim().toLowerCase().slice(0, 2);
   }
 
   private loadOpeningHoursPage(parkId: string): void {

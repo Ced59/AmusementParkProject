@@ -34,7 +34,7 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
-            result.Errors.Add("openingHours doit etre un objet JSON.");
+            result.Errors.Add("openingHours doit être un objet JSON.");
             return;
         }
 
@@ -147,7 +147,7 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             if (HasProperty(patch, "regularRules"))
             {
-                errors.Add("openingHours.regularRules doit etre un tableau.");
+                errors.Add("openingHours.regularRules doit être un tableau.");
             }
 
             return rules;
@@ -159,10 +159,12 @@ public sealed partial class ParkGraphUpsertProcessor
             string prefix = $"openingHours.regularRules[{index}]";
             if (ruleElement.ValueKind != JsonValueKind.Object)
             {
-                errors.Add($"{prefix} doit etre un objet.");
+                errors.Add($"{prefix} doit être un objet.");
                 index += 1;
                 continue;
             }
+
+            AddLegacyLocalizedOpeningHoursErrors(ruleElement, prefix, errors);
 
             ParkOpeningHoursRule rule = new ParkOpeningHoursRule
             {
@@ -171,8 +173,8 @@ public sealed partial class ParkGraphUpsertProcessor
                 EndDate = ReadDateOnly(ruleElement, "endDate", $"{prefix}.endDate", errors),
                 DaysOfWeek = ReadDaysOfWeek(ruleElement, $"{prefix}.daysOfWeek", errors),
                 IsClosed = ReadBool(ruleElement, "isClosed") ?? false,
-                Label = ReadString(ruleElement, "label"),
-                Reason = ReadString(ruleElement, "reason"),
+                Labels = ReadLocalizedTexts(GetArray(ruleElement, "labels")),
+                Reasons = ReadLocalizedTexts(GetArray(ruleElement, "reasons")),
                 SortOrder = ReadInt(ruleElement, "sortOrder") ?? index + 1,
                 TimeRanges = ReadOpeningHoursTimeRanges(ruleElement, $"{prefix}.timeRanges", errors),
             };
@@ -192,7 +194,7 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             if (HasProperty(patch, "dateOverrides"))
             {
-                errors.Add("openingHours.dateOverrides doit etre un tableau.");
+                errors.Add("openingHours.dateOverrides doit être un tableau.");
             }
 
             return overrides;
@@ -204,17 +206,19 @@ public sealed partial class ParkGraphUpsertProcessor
             string prefix = $"openingHours.dateOverrides[{index}]";
             if (overrideElement.ValueKind != JsonValueKind.Object)
             {
-                errors.Add($"{prefix} doit etre un objet.");
+                errors.Add($"{prefix} doit être un objet.");
                 index += 1;
                 continue;
             }
+
+            AddLegacyLocalizedOpeningHoursErrors(overrideElement, prefix, errors);
 
             ParkOpeningHoursDateOverride dateOverride = new ParkOpeningHoursDateOverride
             {
                 LocalDate = ReadDateOnly(overrideElement, "localDate", $"{prefix}.localDate", errors),
                 IsClosed = ReadBool(overrideElement, "isClosed") ?? false,
-                Label = ReadString(overrideElement, "label"),
-                Reason = ReadString(overrideElement, "reason"),
+                Labels = ReadLocalizedTexts(GetArray(overrideElement, "labels")),
+                Reasons = ReadLocalizedTexts(GetArray(overrideElement, "reasons")),
                 TimeRanges = ReadOpeningHoursTimeRanges(overrideElement, $"{prefix}.timeRanges", errors),
             };
 
@@ -225,6 +229,19 @@ public sealed partial class ParkGraphUpsertProcessor
         return overrides;
     }
 
+    private static void AddLegacyLocalizedOpeningHoursErrors(JsonElement element, string prefix, List<string> errors)
+    {
+        if (HasProperty(element, "label"))
+        {
+            errors.Add($"{prefix}.label n'est plus accepté. Utilise labels avec des objets languageCode/value.");
+        }
+
+        if (HasProperty(element, "reason"))
+        {
+            errors.Add($"{prefix}.reason n'est plus accepté. Utilise reasons avec des objets languageCode/value.");
+        }
+    }
+
     private static List<ParkOpeningHoursTimeRange> ReadOpeningHoursTimeRanges(JsonElement patch, string fieldPrefix, List<string> errors)
     {
         List<ParkOpeningHoursTimeRange> timeRanges = new List<ParkOpeningHoursTimeRange>();
@@ -233,7 +250,7 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             if (HasProperty(patch, "timeRanges"))
             {
-                errors.Add($"{fieldPrefix} doit etre un tableau.");
+                errors.Add($"{fieldPrefix} doit être un tableau.");
             }
 
             return timeRanges;
@@ -245,7 +262,7 @@ public sealed partial class ParkGraphUpsertProcessor
             string prefix = $"{fieldPrefix}[{index}]";
             if (rangeElement.ValueKind != JsonValueKind.Object)
             {
-                errors.Add($"{prefix} doit etre un objet.");
+                errors.Add($"{prefix} doit être un objet.");
                 index += 1;
                 continue;
             }
@@ -274,7 +291,7 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             if (HasProperty(patch, "daysOfWeek"))
             {
-                errors.Add($"{fieldName} doit etre un tableau.");
+                errors.Add($"{fieldName} doit être un tableau.");
             }
 
             return daysOfWeek;
@@ -388,8 +405,8 @@ public sealed partial class ParkGraphUpsertProcessor
                     FormatOpeningHoursDate(rule.EndDate),
                     days,
                     FormatValue(rule.IsClosed) ?? string.Empty,
-                    rule.Label ?? string.Empty,
-                    rule.Reason ?? string.Empty,
+                    DescribeLocalizedTextsForDiff(rule.Labels),
+                    DescribeLocalizedTextsForDiff(rule.Reasons),
                     FormatValue(rule.SortOrder) ?? string.Empty,
                     DescribeOpeningHoursTimeRanges(rule.TimeRanges),
                 });
@@ -409,8 +426,8 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 FormatOpeningHoursDate(dateOverride.LocalDate),
                 FormatValue(dateOverride.IsClosed) ?? string.Empty,
-                dateOverride.Label ?? string.Empty,
-                dateOverride.Reason ?? string.Empty,
+                DescribeLocalizedTextsForDiff(dateOverride.Labels),
+                DescribeLocalizedTextsForDiff(dateOverride.Reasons),
                 DescribeOpeningHoursTimeRanges(dateOverride.TimeRanges),
             })));
     }

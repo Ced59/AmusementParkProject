@@ -77,8 +77,8 @@ internal static partial class EntityMongoMappers
             EndDate = FormatDate(rule.EndDate),
             DaysOfWeek = rule.DaysOfWeek.Select(static day => day.ToString()).ToList(),
             IsClosed = rule.IsClosed,
-            Label = rule.Label,
-            Reason = rule.Reason,
+            Labels = CommonMongoMappers.ToDocuments(rule.Labels),
+            Reasons = CommonMongoMappers.ToDocuments(rule.Reasons),
             SortOrder = rule.SortOrder,
             TimeRanges = rule.TimeRanges.Select(static timeRange => timeRange.ToDocument()).ToList(),
         };
@@ -97,8 +97,8 @@ internal static partial class EntityMongoMappers
                 .Select(static value => value!.Value)
                 .ToList(),
             IsClosed = document.IsClosed,
-            Label = document.Label,
-            Reason = document.Reason,
+            Labels = CommonMongoMappers.ToDomain(document.Labels),
+            Reasons = CommonMongoMappers.ToDomain(document.Reasons),
             SortOrder = document.SortOrder,
             TimeRanges = document.TimeRanges.Select(static timeRange => timeRange.ToDomain()).ToList(),
         };
@@ -110,8 +110,8 @@ internal static partial class EntityMongoMappers
         {
             LocalDate = FormatDate(dateOverride.LocalDate),
             IsClosed = dateOverride.IsClosed,
-            Label = dateOverride.Label,
-            Reason = dateOverride.Reason,
+            Labels = CommonMongoMappers.ToDocuments(dateOverride.Labels),
+            Reasons = CommonMongoMappers.ToDocuments(dateOverride.Reasons),
             TimeRanges = dateOverride.TimeRanges.Select(static timeRange => timeRange.ToDocument()).ToList(),
         };
     }
@@ -122,8 +122,8 @@ internal static partial class EntityMongoMappers
         {
             LocalDate = ParseDate(document.LocalDate),
             IsClosed = document.IsClosed,
-            Label = document.Label,
-            Reason = document.Reason,
+            Labels = CommonMongoMappers.ToDomain(document.Labels),
+            Reasons = CommonMongoMappers.ToDomain(document.Reasons),
             TimeRanges = document.TimeRanges.Select(static timeRange => timeRange.ToDomain()).ToList(),
         };
     }

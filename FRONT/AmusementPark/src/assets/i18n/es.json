@@ -2885,6 +2885,7 @@
       "today": "Hoy",
       "open": "Abierto",
       "closed": "Cerrado",
+      "closedCompact": "Cerrado",
       "notDefined": "No indicado",
       "closedNoReason": "Cerrado",
       "dayHasInformation": "Informacion adicional",

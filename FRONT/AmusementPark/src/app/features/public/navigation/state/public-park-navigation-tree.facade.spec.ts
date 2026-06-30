@@ -13,9 +13,13 @@ import {
   PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT,
   PublicParkNavigationTreeParkItemsApiServicePort,
   PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT,
-  PublicParkNavigationTreeParkZonesApiServicePort
+  PublicParkNavigationTreeParkZonesApiServicePort,
+  PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT,
+  PublicParkNavigationTreeVideosApiServicePort
 } from './public-park-navigation-tree-data.ports';
 import { PublicParkNavigationTreeFacade } from './public-park-navigation-tree.facade';
+import { PublicParkNavigationTreeItem } from '../models/public-park-navigation-tree.model';
+import { VideoDto } from '@app/models/videos/video-dto';
 
 interface PublicParkRouteContextForTest {
   readonly language: string;
@@ -23,12 +27,28 @@ interface PublicParkRouteContextForTest {
   readonly parkSlug: string;
   readonly itemId: string | null;
   readonly itemSlug: string | null;
+  readonly zoneId: string | null;
+  readonly zoneSlug: string | null;
   readonly selectedZoneId: string | null;
-  readonly pageKind: 'park-detail' | 'park-items' | 'park-item-detail' | 'park-item-images' | 'park-images' | 'park-map';
+  readonly videoId: string | null;
+  readonly videoSlug: string | null;
+  readonly pageKind:
+    | 'park-detail'
+    | 'park-items'
+    | 'park-item-detail'
+    | 'park-item-images'
+    | 'park-images'
+    | 'park-map'
+    | 'park-video'
+    | 'park-item-video';
 }
 
 interface PublicParkNavigationSourceDataForTest {
+  readonly context: PublicParkRouteContextForTest;
   readonly park: { name?: string } | null;
+  readonly item: { name?: string } | null;
+  readonly zone: null;
+  readonly video: Pick<VideoDto, 'title' | 'titles'> | null;
 }
 
 class FakeParksPort implements PublicParkNavigationTreeParksApiServicePort {
@@ -49,6 +69,12 @@ class FakeParkItemsPort implements PublicParkNavigationTreeParkItemsApiServicePo
 class FakeParkZonesPort implements PublicParkNavigationTreeParkZonesApiServicePort {
   getParkZoneById(): Observable<ParkZone> {
     throw new Error('Park zone should not be loaded for park detail navigation.');
+  }
+}
+
+class FakeVideosPort implements PublicParkNavigationTreeVideosApiServicePort {
+  getVideoById(): Observable<VideoDto> {
+    throw new Error('Video should not be loaded for park detail navigation.');
   }
 }
 
@@ -114,7 +140,8 @@ describe('PublicParkNavigationTreeFacade', () => {
         provideRouter([]),
         { provide: PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT, useValue: parksPort },
         { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT, useClass: FakeParkItemsPort },
-        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT, useClass: FakeParkZonesPort }
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT, useClass: FakeParkZonesPort },
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT, useClass: FakeVideosPort }
       ]
     });
 
@@ -130,7 +157,11 @@ describe('PublicParkNavigationTreeFacade', () => {
       parkSlug: 'bellewaerde',
       itemId: null,
       itemSlug: null,
+      zoneId: null,
+      zoneSlug: null,
       selectedZoneId: null,
+      videoId: null,
+      videoSlug: null,
       pageKind: 'park-detail'
     }));
 
@@ -145,16 +176,65 @@ describe('PublicParkNavigationTreeFacade', () => {
         provideRouter([]),
         { provide: PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT, useClass: FakeParksPort },
         { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT, useClass: FakeParkItemsPort },
-        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT, useClass: FakeParkZonesPort }
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT, useClass: FakeParkZonesPort },
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT, useClass: FakeVideosPort }
       ]
     });
 
     const facade: PublicParkNavigationTreeFacade = TestBed.inject(PublicParkNavigationTreeFacade);
     const resolveParkItemsListLabel = (facade as unknown as {
-      resolveParkItemsListLabel(language: string): string;
+      resolveParkItemsListLabel(language: string, parkLabel: string): string;
     }).resolveParkItemsListLabel.bind(facade);
 
-    expect(resolveParkItemsListLabel('fr')).toBe('Lieux du parc');
-    expect(resolveParkItemsListLabel('en')).toBe('Places in the park');
+    expect(resolveParkItemsListLabel('fr', 'Bellewaerde')).toBe('Lieux de Bellewaerde');
+    expect(resolveParkItemsListLabel('en', 'Bellewaerde')).toBe('Places at Bellewaerde');
+  });
+
+  it('builds contextual park video breadcrumbs with the localized video title', () => {
+    TestBed.configureTestingModule({
+      providers: [
+        PublicParkNavigationTreeFacade,
+        provideRouter([]),
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT, useClass: FakeParksPort },
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT, useClass: FakeParkItemsPort },
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT, useClass: FakeParkZonesPort },
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT, useClass: FakeVideosPort }
+      ]
+    });
+
+    const facade: PublicParkNavigationTreeFacade = TestBed.inject(PublicParkNavigationTreeFacade);
+    const buildTreeItems = (facade as unknown as {
+      buildTreeItems(sourceData: PublicParkNavigationSourceDataForTest): PublicParkNavigationTreeItem[];
+    }).buildTreeItems.bind(facade);
+
+    const items: PublicParkNavigationTreeItem[] = buildTreeItems({
+      context: {
+        language: 'fr',
+        parkId: 'park-1',
+        parkSlug: 'bellewaerde',
+        itemId: null,
+        itemSlug: null,
+        zoneId: null,
+        zoneSlug: null,
+        selectedZoneId: null,
+        videoId: 'video-1',
+        videoSlug: 'provider-title',
+        pageKind: 'park-video'
+      },
+      park: { name: 'Bellewaerde' },
+      item: null,
+      zone: null,
+      video: {
+        title: 'Provider title',
+        titles: [{ languageCode: 'fr', value: 'Belle vidéo' }]
+      }
+    });
+
+    expect(items.map((item: PublicParkNavigationTreeItem): string => item.label)).toEqual([
+      'Liste des parcs',
+      'Bellewaerde',
+      'Vidéos de Bellewaerde',
+      'Belle vidéo'
+    ]);
   });
 });

@@ -1,5 +1,6 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.ParkOpeningHours;
 using AmusementPark.WebAPI.Mappers;
 using Xunit;
@@ -57,6 +58,23 @@ public sealed class ParkOpeningHoursHttpMappersTests
         Assert.Equal(new TimeOnly(0, 0), mappedTimeRange.OpensAt);
         Assert.Equal(new TimeOnly(2, 0), mappedTimeRange.ClosesAt);
         Assert.Equal(new TimeOnly(1, 30), mappedTimeRange.LastAdmissionAt);
+    }
+
+    [Fact]
+    public void ToDomainResult_WhenLocalizedLabelsAreSubmitted_ShouldMapThem()
+    {
+        ParkOpeningHoursScheduleDto dto = CreateValidSchedule();
+        ParkOpeningHoursRuleDto rule = dto.RegularRules.Single();
+        rule.Labels = new[]
+        {
+            new LocalizedTextDto { LanguageCode = "de", Value = "Sommeröffnung 2026" },
+        };
+
+        ApplicationResult<ParkOpeningHoursSchedule> result = dto.ToDomainResult("park-1");
+
+        Assert.True(result.IsSuccess);
+        ParkOpeningHoursRule mappedRule = result.Value!.RegularRules.Single();
+        Assert.Contains(mappedRule.Labels, static label => label.LanguageCode == "de" && label.Value == "Sommeröffnung 2026");
     }
 
     private static ParkOpeningHoursScheduleDto CreateValidSchedule()

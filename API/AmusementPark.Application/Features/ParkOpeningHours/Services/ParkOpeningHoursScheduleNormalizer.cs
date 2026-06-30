@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Core.Localization;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkOpeningHours.Services;
@@ -77,8 +78,8 @@ public sealed class ParkOpeningHoursScheduleNormalizer
                 EndDate = rule.EndDate,
                 DaysOfWeek = rule.DaysOfWeek.Distinct().OrderBy(static day => day).ToList(),
                 IsClosed = rule.IsClosed,
-                Label = NormalizeOptionalString(rule.Label),
-                Reason = NormalizeOptionalString(rule.Reason),
+                Labels = NormalizeLocalizedTexts(rule.Labels),
+                Reasons = NormalizeLocalizedTexts(rule.Reasons),
                 SortOrder = rule.SortOrder > 0 ? rule.SortOrder : index + 1,
             };
 
@@ -125,8 +126,8 @@ public sealed class ParkOpeningHoursScheduleNormalizer
             {
                 LocalDate = dateOverride.LocalDate,
                 IsClosed = dateOverride.IsClosed,
-                Label = NormalizeOptionalString(dateOverride.Label),
-                Reason = NormalizeOptionalString(dateOverride.Reason),
+                Labels = NormalizeLocalizedTexts(dateOverride.Labels),
+                Reasons = NormalizeLocalizedTexts(dateOverride.Reasons),
             };
 
             if (normalizedOverride.LocalDate == default)
@@ -254,5 +255,30 @@ public sealed class ParkOpeningHoursScheduleNormalizer
     private static string? NormalizeOptionalString(string? value)
     {
         return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+    }
+
+    private static List<LocalizedText> NormalizeLocalizedTexts(IReadOnlyCollection<LocalizedText>? values)
+    {
+        Dictionary<string, LocalizedText> result = new Dictionary<string, LocalizedText>(StringComparer.OrdinalIgnoreCase);
+        if (values is null)
+        {
+            return new List<LocalizedText>();
+        }
+
+        foreach (LocalizedText value in values)
+        {
+            string languageCode = NormalizeOptionalString(value.LanguageCode)?.ToLowerInvariant() ?? string.Empty;
+            string text = NormalizeOptionalString(value.Value) ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(languageCode) || string.IsNullOrWhiteSpace(text))
+            {
+                continue;
+            }
+
+            result[languageCode] = new LocalizedText(languageCode, text);
+        }
+
+        return result.Values
+            .OrderBy(static value => value.LanguageCode)
+            .ToList();
     }
 }

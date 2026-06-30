@@ -99,8 +99,8 @@ function createOpenDay(localDate: string, opensAt: string, closesAt: string): Pa
     isClosed: false,
     isDefined: true,
     sourceKind: 'Rule',
-    label: null,
-    reason: null,
+    labels: [],
+    reasons: [],
     timeRanges: [createRange(opensAt, closesAt)]
   };
 }
