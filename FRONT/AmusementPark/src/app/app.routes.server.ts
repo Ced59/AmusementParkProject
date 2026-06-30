@@ -26,6 +26,8 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/park-founder/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park-manufacturer/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/images', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/history/:eventId/:eventSlug', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/history', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/video/s/:videoId/:videoSlug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/video/:videoId/:videoSlug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/videos/:videoId/:videoSlug', renderMode: RenderMode.Server },
@@ -37,6 +39,8 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/park/:id/:slug/opening-hours', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/items', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug/images', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug/history/:eventId/:eventSlug', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug/history', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug/video/s/:videoId/:videoSlug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug/video/:videoId/:videoSlug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', renderMode: RenderMode.Server },
@@ -78,6 +82,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/images/batch', renderMode: RenderMode.Client },
   { path: ':lang/admin/site', renderMode: RenderMode.Client },
   { path: ':lang/admin/park-graph-upserts', renderMode: RenderMode.Client },
+  { path: ':lang/admin/history', renderMode: RenderMode.Client },
 
   // Unknown public URLs render the public 404 route and are marked 404 by server.ts.
   { path: '**', renderMode: RenderMode.Server }

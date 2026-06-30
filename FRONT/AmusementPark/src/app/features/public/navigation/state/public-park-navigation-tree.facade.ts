@@ -14,10 +14,15 @@ import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
+import { HistoryArticle } from '@app/models/history/history.models';
 import { VideoDto } from '@app/models/videos/video-dto';
-import { resolveLocalizedValue } from '@shared/utils/localization';
+import { resolveLocalizedText, resolveLocalizedValue } from '@shared/utils/localization';
 import {
   buildPublicParkImagesRouteCommands,
+  buildPublicParkHistoryArticleRouteCommands,
+  buildPublicParkHistoryRouteCommands,
+  buildPublicParkItemHistoryArticleRouteCommands,
+  buildPublicParkItemHistoryRouteCommands,
   buildPublicParkItemImagesRouteCommands,
   buildPublicParkItemVideoRouteCommands,
   buildPublicParkItemVideosRouteCommands,
@@ -45,7 +50,9 @@ import {
   PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT,
   PublicParkNavigationTreeParksApiServicePort,
   PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT,
-  PublicParkNavigationTreeVideosApiServicePort
+  PublicParkNavigationTreeVideosApiServicePort,
+  PUBLIC_PARK_NAVIGATION_TREE_HISTORY_API_SERVICE_PORT,
+  PublicParkNavigationTreeHistoryApiServicePort
 } from './public-park-navigation-tree-data.ports';
 
 type PublicParkRoutePageKind =
@@ -59,10 +66,14 @@ type PublicParkRoutePageKind =
   | 'park-zone'
   | 'park-weather'
   | 'park-opening-hours'
+  | 'park-history'
+  | 'park-history-article'
   | 'park-item-detail'
   | 'park-item-images'
   | 'park-item-videos'
-  | 'park-item-video';
+  | 'park-item-video'
+  | 'park-item-history'
+  | 'park-item-history-article';
 
 interface PublicParkRouteContext {
   readonly language: string;
@@ -75,6 +86,8 @@ interface PublicParkRouteContext {
   readonly selectedZoneId: string | null;
   readonly videoId: string | null;
   readonly videoSlug: string | null;
+  readonly historyEventId?: string | null;
+  readonly historyEventSlug?: string | null;
   readonly pageKind: PublicParkRoutePageKind;
 }
 
@@ -84,6 +97,7 @@ interface PublicParkNavigationSourceData {
   readonly item: ParkItem | null;
   readonly zone: ParkZone | null;
   readonly video: VideoDto | null;
+  readonly historyArticle: HistoryArticle | null;
 }
 
 @Injectable()
@@ -103,6 +117,7 @@ export class PublicParkNavigationTreeFacade {
     @Inject(PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: PublicParkNavigationTreeParkItemsApiServicePort,
     @Inject(PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT) private readonly parkZonesApiService: PublicParkNavigationTreeParkZonesApiServicePort,
     @Inject(PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT) private readonly videosApiService: PublicParkNavigationTreeVideosApiServicePort,
+    @Inject(PUBLIC_PARK_NAVIGATION_TREE_HISTORY_API_SERVICE_PORT) private readonly historyApiService: PublicParkNavigationTreeHistoryApiServicePort,
     private readonly router: Router,
     private readonly destroyRef: DestroyRef
   ) {
@@ -181,9 +196,12 @@ export class PublicParkNavigationTreeFacade {
         : of(null as ParkItem | null),
       video: context.videoId
         ? this.videosApiService.getVideoById(context.videoId, anonymousHttpOptions(), context.language).pipe(catchError(() => of(null as VideoDto | null)))
-        : of(null as VideoDto | null)
+        : of(null as VideoDto | null),
+      historyArticle: context.historyEventId
+        ? this.historyApiService.getArticle(context.historyEventId, anonymousHttpOptions()).pipe(catchError(() => of(null as HistoryArticle | null)))
+        : of(null as HistoryArticle | null)
     }).pipe(
-      switchMap(({ park, item, video }: { park: Park | null; item: ParkItem | null; video: VideoDto | null }) => {
+      switchMap(({ park, item, video, historyArticle }: { park: Park | null; item: ParkItem | null; video: VideoDto | null; historyArticle: HistoryArticle | null }) => {
         const zoneId: string | null = context.zoneId ?? context.selectedZoneId ?? item?.zoneId ?? null;
         const zone$: Observable<ParkZone | null> = zoneId
           ? this.parkZonesApiService.getParkZoneById(zoneId, anonymousHttpOptions()).pipe(catchError(() => of(null as ParkZone | null)))
@@ -195,7 +213,8 @@ export class PublicParkNavigationTreeFacade {
             park,
             item,
             zone,
-            video
+            video,
+            historyArticle
           }))
         );
       })
@@ -209,6 +228,7 @@ export class PublicParkNavigationTreeFacade {
     const zoneLabel: string | null = sourceData.zone ? this.resolveZoneLabel(sourceData.zone, context.language) : context.zoneSlug;
     const itemLabel: string | null = sourceData.item?.name ?? context.itemSlug;
     const videoLabel: string | null = this.resolveVideoLabel(sourceData.video, context.language, context.videoSlug ?? context.videoId);
+    const historyEventLabel: string | null = this.resolveHistoryArticleLabel(sourceData.historyArticle, context.language, context.historyEventSlug ?? context.historyEventId);
     const parkRoute: string[] = this.buildParkRoute(sourceData);
     const parkItemsRoute: string[] = this.buildParkItemsRoute(sourceData);
     const parkImagesRoute: string[] = this.buildParkImagesRoute(sourceData);
@@ -336,6 +356,28 @@ export class PublicParkNavigationTreeFacade {
       });
     }
 
+    if (context.pageKind === 'park-history' || context.pageKind === 'park-history-article') {
+      items.push({
+        id: `park-history-${context.parkId}`,
+        label: this.resolveHistoryLabel(context.language, parkLabel),
+        icon: 'pi pi-history',
+        routeCommands: this.buildParkHistoryRoute(sourceData),
+        level: 2,
+        isCurrent: context.pageKind === 'park-history'
+      });
+    }
+
+    if (context.pageKind === 'park-history-article' && context.historyEventId && historyEventLabel) {
+      items.push({
+        id: `park-history-event-${context.historyEventId}`,
+        label: historyEventLabel,
+        icon: 'pi pi-book',
+        routeCommands: this.buildParkHistoryArticleRoute(sourceData),
+        level: 3,
+        isCurrent: true
+      });
+    }
+
     if (context.itemId && context.itemSlug) {
       const itemLevel: number = zoneId ? 3 : 2;
       items.push({
@@ -379,6 +421,28 @@ export class PublicParkNavigationTreeFacade {
           isCurrent: true
         });
       }
+
+      if (context.pageKind === 'park-item-history' || context.pageKind === 'park-item-history-article') {
+        items.push({
+          id: `item-history-${context.itemId}`,
+          label: this.resolveHistoryLabel(context.language, itemLabel ?? context.itemSlug),
+          icon: 'pi pi-history',
+          routeCommands: this.buildParkItemHistoryRoute(sourceData),
+          level: itemLevel + 1,
+          isCurrent: context.pageKind === 'park-item-history'
+        });
+      }
+
+      if (context.pageKind === 'park-item-history-article' && context.historyEventId && historyEventLabel) {
+        items.push({
+          id: `item-history-event-${context.historyEventId}`,
+          label: historyEventLabel,
+          icon: 'pi pi-book',
+          routeCommands: this.buildParkItemHistoryArticleRoute(sourceData),
+          level: itemLevel + 2,
+          isCurrent: true
+        });
+      }
     }
 
     return items;
@@ -389,6 +453,7 @@ export class PublicParkNavigationTreeFacade {
     const zoneLabel: string | null = context.zoneSlug;
     const itemLabel: string | null = context.itemSlug;
     const videoLabel: string | null = context.videoSlug;
+    const historyEventLabel: string | null = context.historyEventSlug ?? context.historyEventId ?? null;
     const items: PublicParkNavigationTreeItem[] = [
       {
         id: 'parks-list',
@@ -508,6 +573,28 @@ export class PublicParkNavigationTreeFacade {
       });
     }
 
+    if (context.pageKind === 'park-history' || context.pageKind === 'park-history-article') {
+      items.push({
+        id: `park-history-${context.parkId}`,
+        label: this.resolveHistoryLabel(context.language, parkLabel),
+        icon: 'pi pi-history',
+        routeCommands: this.buildFallbackParkHistoryRoute(context),
+        level: 2,
+        isCurrent: context.pageKind === 'park-history'
+      });
+    }
+
+    if (context.pageKind === 'park-history-article' && context.historyEventId && historyEventLabel) {
+      items.push({
+        id: `park-history-event-${context.historyEventId}`,
+        label: historyEventLabel,
+        icon: 'pi pi-book',
+        routeCommands: this.buildFallbackParkHistoryArticleRoute(context),
+        level: 3,
+        isCurrent: true
+      });
+    }
+
     if (context.itemId && context.itemSlug) {
       const itemLevel: number = context.zoneId ? 3 : 2;
       items.push({
@@ -547,6 +634,28 @@ export class PublicParkNavigationTreeFacade {
           label: videoLabel,
           icon: 'pi pi-play-circle',
           routeCommands: this.buildFallbackParkItemVideoRoute(context),
+          level: itemLevel + 2,
+          isCurrent: true
+        });
+      }
+
+      if (context.pageKind === 'park-item-history' || context.pageKind === 'park-item-history-article') {
+        items.push({
+          id: `item-history-${context.itemId}`,
+          label: this.resolveHistoryLabel(context.language, itemLabel ?? context.itemSlug),
+          icon: 'pi pi-history',
+          routeCommands: this.buildFallbackParkItemHistoryRoute(context),
+          level: itemLevel + 1,
+          isCurrent: context.pageKind === 'park-item-history'
+        });
+      }
+
+      if (context.pageKind === 'park-item-history-article' && context.historyEventId && historyEventLabel) {
+        items.push({
+          id: `item-history-event-${context.historyEventId}`,
+          label: historyEventLabel,
+          icon: 'pi pi-book',
+          routeCommands: this.buildFallbackParkItemHistoryArticleRoute(context),
           level: itemLevel + 2,
           isCurrent: true
         });
@@ -651,6 +760,26 @@ export class PublicParkNavigationTreeFacade {
     }) ?? this.buildFallbackParkOpeningHoursRoute(context);
   }
 
+  private buildParkHistoryRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkHistoryRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug
+    }) ?? this.buildFallbackParkHistoryRoute(context);
+  }
+
+  private buildParkHistoryArticleRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkHistoryArticleRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug,
+      eventId: context.historyEventId,
+      eventTitle: this.resolveHistoryArticleLabel(sourceData.historyArticle, context.language, context.historyEventSlug)
+    }) ?? this.buildFallbackParkHistoryArticleRoute(context);
+  }
+
   private buildParkItemRoute(sourceData: PublicParkNavigationSourceData): string[] {
     const context: PublicParkRouteContext = sourceData.context;
     return buildPublicParkItemRouteCommands({
@@ -682,6 +811,30 @@ export class PublicParkNavigationTreeFacade {
       itemId: context.itemId,
       itemName: sourceData.item?.name ?? context.itemSlug
     }) ?? this.buildFallbackParkItemVideosRoute(context);
+  }
+
+  private buildParkItemHistoryRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkItemHistoryRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug,
+      itemId: context.itemId,
+      itemName: sourceData.item?.name ?? context.itemSlug
+    }) ?? this.buildFallbackParkItemHistoryRoute(context);
+  }
+
+  private buildParkItemHistoryArticleRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkItemHistoryArticleRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug,
+      itemId: context.itemId,
+      itemName: sourceData.item?.name ?? context.itemSlug,
+      eventId: context.historyEventId,
+      eventTitle: this.resolveHistoryArticleLabel(sourceData.historyArticle, context.language, context.historyEventSlug)
+    }) ?? this.buildFallbackParkItemHistoryArticleRoute(context);
   }
 
   private buildParkItemVideoRoute(sourceData: PublicParkNavigationSourceData): string[] {
@@ -737,6 +890,14 @@ export class PublicParkNavigationTreeFacade {
     return [...this.buildFallbackParkRoute(context), 'opening-hours'];
   }
 
+  private buildFallbackParkHistoryRoute(context: PublicParkRouteContext): string[] {
+    return [...this.buildFallbackParkRoute(context), 'history'];
+  }
+
+  private buildFallbackParkHistoryArticleRoute(context: PublicParkRouteContext): string[] {
+    return [...this.buildFallbackParkHistoryRoute(context), context.historyEventId ?? '', context.historyEventSlug ?? ''];
+  }
+
   private buildFallbackParkItemRoute(context: PublicParkRouteContext): string[] {
     return [...this.buildFallbackParkRoute(context), 'item', context.itemId ?? '', context.itemSlug ?? ''];
   }
@@ -747,6 +908,14 @@ export class PublicParkNavigationTreeFacade {
 
   private buildFallbackParkItemVideosRoute(context: PublicParkRouteContext): string[] {
     return [...this.buildFallbackParkItemRoute(context), 'videos'];
+  }
+
+  private buildFallbackParkItemHistoryRoute(context: PublicParkRouteContext): string[] {
+    return [...this.buildFallbackParkItemRoute(context), 'history'];
+  }
+
+  private buildFallbackParkItemHistoryArticleRoute(context: PublicParkRouteContext): string[] {
+    return [...this.buildFallbackParkItemHistoryRoute(context), context.historyEventId ?? '', context.historyEventSlug ?? ''];
   }
 
   private buildFallbackParkItemVideoRoute(context: PublicParkRouteContext): string[] {
@@ -782,6 +951,28 @@ export class PublicParkNavigationTreeFacade {
         selectedZoneId: null
       };
 
+      if (paths[7] === 'history' && paths[8] && paths[9]) {
+        return {
+          ...baseItemContext,
+          videoId: null,
+          videoSlug: null,
+          historyEventId: paths[8],
+          historyEventSlug: paths[9],
+          pageKind: 'park-item-history-article'
+        };
+      }
+
+      if (paths[7] === 'history') {
+        return {
+          ...baseItemContext,
+          videoId: null,
+          videoSlug: null,
+          historyEventId: null,
+          historyEventSlug: null,
+          pageKind: 'park-item-history'
+        };
+      }
+
       if (paths[7] === 'images') {
         return {
           ...baseItemContext,
@@ -814,6 +1005,42 @@ export class PublicParkNavigationTreeFacade {
         videoId: null,
         videoSlug: null,
         pageKind: 'park-item-detail'
+      };
+    }
+
+    if (paths[4] === 'history' && paths[5] && paths[6]) {
+      return {
+        language,
+        parkId,
+        parkSlug,
+        itemId: null,
+        itemSlug: null,
+        zoneId: null,
+        zoneSlug: null,
+        selectedZoneId: null,
+        videoId: null,
+        videoSlug: null,
+        historyEventId: paths[5],
+        historyEventSlug: paths[6],
+        pageKind: 'park-history-article'
+      };
+    }
+
+    if (paths[4] === 'history') {
+      return {
+        language,
+        parkId,
+        parkSlug,
+        itemId: null,
+        itemSlug: null,
+        zoneId: null,
+        zoneSlug: null,
+        selectedZoneId: null,
+        videoId: null,
+        videoSlug: null,
+        historyEventId: null,
+        historyEventSlug: null,
+        pageKind: 'park-history'
       };
     }
 
@@ -1142,6 +1369,38 @@ export class PublicParkNavigationTreeFacade {
     };
 
     return labels[language] ?? labels['en'];
+  }
+
+  private resolveHistoryLabel(language: string, ownerLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Histoire de ${ownerLabel}`,
+      en: `${ownerLabel} history`,
+      es: `Historia de ${ownerLabel}`,
+      de: `Geschichte von ${ownerLabel}`,
+      it: `Storia di ${ownerLabel}`,
+      nl: `Geschiedenis van ${ownerLabel}`,
+      pl: `Historia ${ownerLabel}`,
+      pt: `História de ${ownerLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveHistoryArticleLabel(article: HistoryArticle | null, language: string, fallback: string | null | undefined): string | null {
+    if (article) {
+      const articleTitle: string = resolveLocalizedText(article.event.article?.titles, language, '');
+      if (articleTitle.trim().length > 0) {
+        return articleTitle;
+      }
+
+      const eventTitle: string = resolveLocalizedText(article.event.titles, language, '');
+      if (eventTitle.trim().length > 0) {
+        return eventTitle;
+      }
+    }
+
+    const normalizedFallback: string = fallback?.trim() ?? '';
+    return normalizedFallback.length > 0 ? normalizedFallback : null;
   }
 
   private resolveVideoLabel(video: VideoDto | null, language: string, fallback: string | null | undefined): string | null {

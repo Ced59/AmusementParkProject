@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.Images.Contracts;
@@ -13,9 +14,11 @@ using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Videos.Ports;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Videos;
+using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
 
@@ -647,6 +650,179 @@ public sealed class SitemapSectionProvidersTests
         operatorRepository.VerifyAll();
         founderRepository.VerifyAll();
         manufacturerRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HistoryTimelinesProvider_WhenVisibleEventsExist_ShouldReturnTimelineUrlsOnly()
+    {
+        DateTime olderUpdate = new DateTime(2026, 1, 2, 0, 0, 0, DateTimeKind.Utc);
+        DateTime newerUpdate = new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc);
+        HistoryEvent[] events = new[]
+        {
+            new HistoryEvent
+            {
+                Id = "park-opening",
+                Key = "park-opening",
+                EntityType = HistoryEntityType.Park,
+                OwnerId = "park-1",
+                ParkId = "park-1",
+                Year = 1987,
+                EventType = ParkHistoryEventType.Opening.ToString(),
+                IsVisible = true,
+                UpdatedAtUtc = olderUpdate,
+            },
+            new HistoryEvent
+            {
+                Id = "park-major",
+                Key = "park-major",
+                EntityType = HistoryEntityType.Park,
+                OwnerId = "park-1",
+                ParkId = "park-1",
+                Year = 1988,
+                EventType = ParkHistoryEventType.OperatorChange.ToString(),
+                IsMajor = true,
+                IsVisible = true,
+                UpdatedAtUtc = newerUpdate,
+                Article = new HistoryArticle { IsPublished = true },
+            },
+            new HistoryEvent
+            {
+                Id = "item-opening",
+                Key = "item-opening",
+                EntityType = HistoryEntityType.ParkItem,
+                OwnerId = "item-1",
+                ParkId = "park-1",
+                ParkItemId = "item-1",
+                ContextParkId = "park-1",
+                Year = 1987,
+                EventType = ParkItemHistoryEventType.Opening.ToString(),
+                IsVisible = true,
+                UpdatedAtUtc = olderUpdate,
+            },
+        };
+        Park[] parks = new[]
+        {
+            new Park { Id = "park-1", Name = "Mirapolis", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        };
+        ParkItem[] items = new[]
+        {
+            new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Mira Looping", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        };
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(repository => repository.GetPublicVisibleEventsAsync(50000, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(events);
+        itemRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(items);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.OrderBy(id => id).SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(parks);
+        HistoryTimelinesSitemapSectionProvider provider = new HistoryTimelinesSitemapSectionProvider(
+            historyRepository.Object,
+            parkRepository.Object,
+            itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(4, urls.Count);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/history" && url.LastModifiedUtc == newerUpdate);
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/mirapolis/history");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/mirapolis/item/item-1/mira-looping/history");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("park-major", StringComparison.OrdinalIgnoreCase));
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HistoryArticlesProvider_WhenPublishedArticlesExist_ShouldReturnArticleUrlsOnly()
+    {
+        DateTime updatedAtUtc = new DateTime(2026, 3, 4, 0, 0, 0, DateTimeKind.Utc);
+        HistoryEvent[] events = new[]
+        {
+            new HistoryEvent
+            {
+                Id = "park-opening",
+                Key = "park-opening",
+                EntityType = HistoryEntityType.Park,
+                OwnerId = "park-1",
+                ParkId = "park-1",
+                Year = 1987,
+                EventType = ParkHistoryEventType.Opening.ToString(),
+                IsVisible = true,
+                UpdatedAtUtc = updatedAtUtc,
+            },
+            new HistoryEvent
+            {
+                Id = "park-major",
+                Key = "park-major",
+                EntityType = HistoryEntityType.Park,
+                OwnerId = "park-1",
+                ParkId = "park-1",
+                Year = 1988,
+                EventType = ParkHistoryEventType.OperatorChange.ToString(),
+                IsMajor = true,
+                IsVisible = true,
+                Titles = new List<LocalizedText> { new LocalizedText("fr", "Changement d'exploitant") },
+                UpdatedAtUtc = updatedAtUtc,
+                Article = new HistoryArticle { Slug = "changement-exploitant", IsPublished = true },
+            },
+            new HistoryEvent
+            {
+                Id = "item-major",
+                Key = "item-major",
+                EntityType = HistoryEntityType.ParkItem,
+                OwnerId = "item-1",
+                ParkId = "park-1",
+                ParkItemId = "item-1",
+                ContextParkId = "park-1",
+                Year = 1987,
+                EventType = ParkItemHistoryEventType.Opening.ToString(),
+                IsMajor = true,
+                IsVisible = true,
+                UpdatedAtUtc = updatedAtUtc,
+                Article = new HistoryArticle { Slug = "ouverture-mira-looping", IsPublished = true },
+            },
+        };
+        Park[] parks = new[]
+        {
+            new Park { Id = "park-1", Name = "Mirapolis", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        };
+        ParkItem[] items = new[]
+        {
+            new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Mira Looping", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        };
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(repository => repository.GetPublicSitemapCandidatesAsync(50000, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(events);
+        itemRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(items);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.OrderBy(id => id).SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(parks);
+        HistoryArticlesSitemapSectionProvider provider = new HistoryArticlesSitemapSectionProvider(
+            historyRepository.Object,
+            parkRepository.Object,
+            itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/mirapolis/history/park-major/changement-exploitant");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/mirapolis/item/item-1/mira-looping/history/item-major/ouverture-mira-looping");
+        Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-1/mirapolis/history");
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
     }
 
     private static void SetupPublicSitemapParks(Mock<IParkRepository> repository, IReadOnlyCollection<Park> parks)

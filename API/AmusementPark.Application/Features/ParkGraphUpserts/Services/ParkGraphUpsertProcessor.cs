@@ -6,6 +6,7 @@ using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -45,6 +46,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly IParkOpeningHoursRepository? parkOpeningHoursRepository;
     private readonly ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer;
     private readonly ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder;
+    private readonly IHistoryEventRepository? historyEventRepository;
 
     public ParkGraphUpsertProcessor(
         IParkRepository parkRepository,
@@ -61,7 +63,8 @@ public sealed partial class ParkGraphUpsertProcessor
         IMeasurementConversionService measurementConversionService,
         IParkOpeningHoursRepository? parkOpeningHoursRepository = null,
         ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null,
-        ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null)
+        ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null,
+        IHistoryEventRepository? historyEventRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -78,6 +81,7 @@ public sealed partial class ParkGraphUpsertProcessor
         this.parkOpeningHoursRepository = parkOpeningHoursRepository;
         this.parkOpeningHoursScheduleNormalizer = parkOpeningHoursScheduleNormalizer;
         this.parkOpeningHoursCoverageSegmentBuilder = parkOpeningHoursCoverageSegmentBuilder;
+        this.historyEventRepository = historyEventRepository;
     }
 
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)
@@ -210,6 +214,7 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> itemKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         ParkGraphUpsertItemSeoChanges itemSeoChanges = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, itemKeys, result, apply, cancellationToken);
         await this.ProcessImagesAsync(root, targetPark, itemKeys, founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, result, apply, cancellationToken);
+        await this.ProcessHistoryEventsAsync(root, targetPark, itemKeys, result, apply, cancellationToken);
         ParkGraphUpsertItemSeoChanges deletionSeoChanges = await this.ProcessDeletionsAsync(root, targetPark, result, apply, cancellationToken);
         itemSeoChanges.MergeFrom(deletionSeoChanges);
 
@@ -250,6 +255,7 @@ public sealed partial class ParkGraphUpsertProcessor
         if (HasNonEmptyObject(root, "identity")
             || HasNonEmptyObject(root, "park")
             || HasOpeningHoursPatch(root)
+            || HasHistoryPatch(root)
             || HasNonEmptyArray(root, "zones")
             || HasNonEmptyArray(root, "items")
             || HasNonEmptyArray(root, "suppr")
@@ -316,6 +322,13 @@ public sealed partial class ParkGraphUpsertProcessor
     {
         JsonElement? value = GetArray(root, propertyName);
         return value is not null && value.Value.GetArrayLength() > 0;
+    }
+
+    private static bool HasHistoryPatch(JsonElement root)
+    {
+        JsonElement? history = GetObject(root, "history");
+        return HasNonEmptyArray(root, "historyEvents")
+            || (history is not null && HasNonEmptyArray(history.Value, "events"));
     }
 
     private async Task SaveHistoryAsync(ParkGraphUpsertRequest request, string? requestedByUserId, bool apply, ParkGraphUpsertResult result, CancellationToken cancellationToken)

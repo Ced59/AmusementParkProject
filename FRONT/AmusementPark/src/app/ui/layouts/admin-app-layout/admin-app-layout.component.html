@@ -86,6 +86,10 @@
           <i class="pi pi-sitemap" aria-hidden="true"></i>
           <span>{{ 'admin.parkGraphUpserts.navTitle' | translate }}</span>
         </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'history']" routerLinkActive="active">
+          <i class="pi pi-history" aria-hidden="true"></i>
+          <span>{{ 'admin.history.navTitle' | translate }}</span>
+        </a>
         <a [routerLink]="['/', currentLang, 'admin', 'audit-logs']" routerLinkActive="active">
           <i class="pi pi-shield" aria-hidden="true"></i>
           <span>{{ 'admin.auditLogs.title' | translate }}</span>

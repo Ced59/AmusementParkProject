@@ -14,7 +14,8 @@
         "founders": "Gründer und Biografien verwalten, die mit Parks verknüpft sind.",
         "auditLogs": "Protokollierte sensible Verwaltungsaktionen prüfen.",
         "parkGraphUpserts": "Ein vollständiges oder teilweises Park-JSON prüfen und anwenden.",
-        "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten."
+        "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten.",
+        "history": "Timelines, belegte Meilensteine und historische Artikel verwalten."
       }
     }
   }

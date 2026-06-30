@@ -55,8 +55,7 @@ describe('VersionHistoryPageComponent', () => {
 
   it('marks version milestones and fixes with separate indentation levels', async () => {
     await settleVersionHistory(fixture);
-    await expandFirstMajorWithChildren(fixture);
-    await expandFirstMinorWithChildren(fixture);
+    await expandFirstMinorWithPatchChildren(fixture);
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
 
@@ -69,8 +68,7 @@ describe('VersionHistoryPageComponent', () => {
 
   it('collapses patches for an expanded milestone', async () => {
     await settleVersionHistory(fixture);
-    await expandFirstMajorWithChildren(fixture);
-    await expandFirstMinorWithChildren(fixture);
+    await expandFirstMinorWithPatchChildren(fixture);
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     const patchVersionsBeforeCollapse: string[] = getPatchVersions(host);
@@ -93,7 +91,7 @@ async function settleVersionHistory(fixture: ComponentFixture<VersionHistoryPage
   expect(await waitForVersionHistorySelector(fixture, '.version-entry--major')).toBeTrue();
 }
 
-async function expandFirstMajorWithChildren(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
+async function expandFirstMinorWithPatchChildren(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
   const host: HTMLElement = fixture.nativeElement as HTMLElement;
   const majorToggles: HTMLButtonElement[] = Array.from(
     host.querySelectorAll<HTMLButtonElement>('.version-entry--major .version-entry__toggle')
@@ -107,37 +105,30 @@ async function expandFirstMajorWithChildren(fixture: ComponentFixture<VersionHis
     }
 
     if (await waitForVersionHistorySelector(fixture, '.version-entry--minor')) {
-      return;
+      const minorToggles: HTMLButtonElement[] = Array.from(
+        host.querySelectorAll<HTMLButtonElement>('.version-entry--minor .version-entry__toggle')
+      );
+
+      for (const minorToggle of minorToggles) {
+        const minorEntry: HTMLElement | null = minorToggle.closest<HTMLElement>('.version-entry--minor');
+        if (!minorEntry?.classList.contains('version-entry--expanded')) {
+          minorToggle.click();
+          fixture.detectChanges();
+        }
+
+        if (await waitForVersionHistorySelector(fixture, '.version-entry--patch')) {
+          return;
+        }
+
+        if (minorEntry?.classList.contains('version-entry--expanded')) {
+          minorToggle.click();
+          fixture.detectChanges();
+        }
+      }
     }
 
     if (majorEntry?.classList.contains('version-entry--expanded')) {
       majorToggle.click();
-      fixture.detectChanges();
-    }
-  }
-
-  expect(host.querySelector('.version-entry--minor')).not.toBeNull();
-}
-
-async function expandFirstMinorWithChildren(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
-  const host: HTMLElement = fixture.nativeElement as HTMLElement;
-  const minorToggles: HTMLButtonElement[] = Array.from(
-    host.querySelectorAll<HTMLButtonElement>('.version-entry--minor .version-entry__toggle')
-  );
-
-  for (const minorToggle of minorToggles) {
-    const minorEntry: HTMLElement | null = minorToggle.closest<HTMLElement>('.version-entry--minor');
-    if (!minorEntry?.classList.contains('version-entry--expanded')) {
-      minorToggle.click();
-      fixture.detectChanges();
-    }
-
-    if (await waitForVersionHistorySelector(fixture, '.version-entry--patch')) {
-      return;
-    }
-
-    if (minorEntry?.classList.contains('version-entry--expanded')) {
-      minorToggle.click();
       fixture.detectChanges();
     }
   }

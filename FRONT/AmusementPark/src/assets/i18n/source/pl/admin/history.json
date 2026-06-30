@@ -1,0 +1,111 @@
+{
+  "admin": {
+    "history": {
+      "navTitle": "Historyczne osie czasu",
+      "kicker": "Historia",
+      "title": "Historia parków i itemów",
+      "subtitle": "Zarządzaj datowanymi wydarzeniami, życiem itemów między parkami, udokumentowanymi kamieniami milowymi i artykułami.",
+      "entityTypes": {
+        "Park": "Park",
+        "ParkItem": "ParkItem"
+      },
+      "precision": {
+        "Year": "Rok",
+        "Month": "Miesiąc",
+        "Day": "Dzień"
+      },
+      "filters": {
+        "title": "Filtry",
+        "entityType": "Encja",
+        "allEntities": "Wszystkie encje",
+        "ownerId": "Id właściciela",
+        "ownerIdPlaceholder": "Id parku lub itemu",
+        "search": "Szukaj",
+        "searchPlaceholder": "Tytuł, klucz lub źródło",
+        "includeHidden": "Uwzględnij ukryte wydarzenia",
+        "submit": "Filtruj",
+        "reset": "Resetuj"
+      },
+      "actions": {
+        "createPark": "Wydarzenie parku",
+        "createParkItem": "Wydarzenie itemu",
+        "edit": "Edytuj",
+        "delete": "Usuń",
+        "insertArticleTemplate": "Szablon artykułu",
+        "save": "Zapisz",
+        "cancel": "Anuluj"
+      },
+      "list": {
+        "title": "Wydarzenia",
+        "count": "{{count}} wydarzenie(a)",
+        "loading": "Ładowanie wydarzeń.",
+        "empty": "Żadne wydarzenie nie pasuje do tych filtrów.",
+        "major": "Ważne",
+        "visible": "Widoczne",
+        "hidden": "Ukryte",
+        "columns": {
+          "title": "Tytuł",
+          "entity": "Encja",
+          "owner": "Właściciel",
+          "date": "Data",
+          "type": "Typ",
+          "state": "Stan",
+          "actions": "Akcje"
+        }
+      },
+      "editor": {
+        "createTitle": "Nowe wydarzenie historyczne",
+        "updateTitle": "Edytuj wydarzenie historyczne",
+        "identity": "Tożsamość",
+        "date": "Data",
+        "context": "Kontekst",
+        "lifecycle": "Zmiany cyklu życia",
+        "flags": "Widoczność",
+        "localized": "Tekst lokalizowany",
+        "relationships": "Relacje i źródła",
+        "article": "Artykuł",
+        "key": "Stały klucz",
+        "entityType": "Typ encji",
+        "ownerId": "Id właściciela",
+        "parkId": "Id parku",
+        "parkItemId": "Id ParkItem",
+        "contextParkId": "Id parku kontekstu",
+        "year": "Rok",
+        "month": "Miesiąc",
+        "day": "Dzień",
+        "datePrecision": "Dokładność",
+        "eventType": "Typ wydarzenia",
+        "slug": "Slug",
+        "mainImageId": "Id obrazu głównego",
+        "previousName": "Poprzednia nazwa",
+        "newName": "Nowa nazwa",
+        "previousLogoImageId": "Id poprzedniego logo",
+        "newLogoImageId": "Id nowego logo",
+        "previousOperatorId": "Id poprzedniego operatora",
+        "newOperatorId": "Id nowego operatora",
+        "locationLabel": "Etykieta miejsca",
+        "isMajor": "Ważne wydarzenie z artykułem",
+        "isVisible": "Widoczne na stronach publicznych",
+        "titlesJson": "JSON tytułów",
+        "summariesJson": "JSON streszczeń",
+        "relatedParkIdsJson": "JSON id powiązanych parków",
+        "relatedParkItemIdsJson": "JSON id powiązanych itemów",
+        "sourcesJson": "JSON źródeł",
+        "articleJson": "JSON artykułu",
+        "articleHint": "Ważne wydarzenia mogą mieć opublikowany artykuł z lokalizowanymi blokami, obrazami i źródłami.",
+        "jsonHint": "Pola lokalizowane i treść artykułu są edytowane jako uporządkowany JSON."
+      },
+      "messages": {
+        "saved": "Wydarzenie historyczne zapisane.",
+        "deleted": "Wydarzenie historyczne usunięte."
+      },
+      "errors": {
+        "loadFailed": "Nie można załadować wydarzeń historycznych.",
+        "required": "Uzupełnij wymagane pola.",
+        "invalidJson": "Jedno pole JSON jest nieprawidłowe.",
+        "saveFailed": "Nie można zapisać tego wydarzenia.",
+        "deleteFailed": "Nie można usunąć tego wydarzenia."
+      }
+    }
+  }
+}

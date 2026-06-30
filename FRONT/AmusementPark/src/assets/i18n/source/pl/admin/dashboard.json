@@ -14,7 +14,8 @@
         "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
         "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
         "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
-        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
+        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
+        "history": "Zarządzaj osiami czasu, udokumentowanymi kamieniami milowymi i artykułami historycznymi."
       }
     }
   }

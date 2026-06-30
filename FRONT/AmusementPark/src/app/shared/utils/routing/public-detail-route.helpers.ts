@@ -27,6 +27,16 @@ export interface PublicParkItemVideoRouteTarget extends PublicParkItemRouteTarge
   videoTitle: string | null | undefined;
 }
 
+export interface PublicHistoryArticleRouteTarget extends PublicParkRouteTarget {
+  eventId: string | null | undefined;
+  eventTitle: string | null | undefined;
+}
+
+export interface PublicParkItemHistoryArticleRouteTarget extends PublicParkItemRouteTarget {
+  eventId: string | null | undefined;
+  eventTitle: string | null | undefined;
+}
+
 export type PublicParkReferenceKind = 'operator' | 'founder' | 'manufacturer';
 
 export interface PublicParkReferenceRouteTarget {
@@ -147,6 +157,28 @@ export function buildPublicParkOpeningHoursRouteCommands(target: PublicParkRoute
   return [...parkRouteCommands, 'opening-hours'];
 }
 
+export function buildPublicParkHistoryRouteCommands(target: PublicParkRouteTarget): string[] | null {
+  const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
+
+  if (!parkRouteCommands) {
+    return null;
+  }
+
+  return [...parkRouteCommands, 'history'];
+}
+
+export function buildPublicParkHistoryArticleRouteCommands(target: PublicHistoryArticleRouteTarget): string[] | null {
+  const historyRouteCommands: string[] | null = buildPublicParkHistoryRouteCommands(target);
+  const eventId: string | null = normalizeRouteValue(target.eventId);
+  const eventTitle: string | null = normalizeRouteValue(target.eventTitle);
+
+  if (!historyRouteCommands || !eventId || !eventTitle) {
+    return null;
+  }
+
+  return [...historyRouteCommands, eventId, buildEntitySlug(eventTitle, 'history')];
+}
+
 export function buildPublicParkItemRouteCommands(target: PublicParkItemRouteTarget): string[] | null {
   const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
   const itemId: string | null = normalizeRouteValue(target.itemId);
@@ -182,6 +214,28 @@ export function buildPublicParkItemVideosRouteCommands(target: PublicParkItemRou
   }
 
   return [...itemRouteCommands, 'videos'];
+}
+
+export function buildPublicParkItemHistoryRouteCommands(target: PublicParkItemRouteTarget): string[] | null {
+  const itemRouteCommands: string[] | null = buildPublicParkItemRouteCommands(target);
+
+  if (!itemRouteCommands) {
+    return null;
+  }
+
+  return [...itemRouteCommands, 'history'];
+}
+
+export function buildPublicParkItemHistoryArticleRouteCommands(target: PublicParkItemHistoryArticleRouteTarget): string[] | null {
+  const historyRouteCommands: string[] | null = buildPublicParkItemHistoryRouteCommands(target);
+  const eventId: string | null = normalizeRouteValue(target.eventId);
+  const eventTitle: string | null = normalizeRouteValue(target.eventTitle);
+
+  if (!historyRouteCommands || !eventId || !eventTitle) {
+    return null;
+  }
+
+  return [...historyRouteCommands, eventId, buildEntitySlug(eventTitle, 'history')];
 }
 
 export function buildPublicParkItemVideoRouteCommands(target: PublicParkItemVideoRouteTarget): string[] | null {

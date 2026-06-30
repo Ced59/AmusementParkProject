@@ -1,0 +1,111 @@
+{
+  "admin": {
+    "history": {
+      "navTitle": "History timelines",
+      "kicker": "History",
+      "title": "Park and item history",
+      "subtitle": "Manage dated events, cross-park item lives, sourced milestones and article content.",
+      "entityTypes": {
+        "Park": "Park",
+        "ParkItem": "Park item"
+      },
+      "precision": {
+        "Year": "Year",
+        "Month": "Month",
+        "Day": "Day"
+      },
+      "filters": {
+        "title": "Filters",
+        "entityType": "Entity",
+        "allEntities": "All entities",
+        "ownerId": "Owner id",
+        "ownerIdPlaceholder": "Park or item id",
+        "search": "Search",
+        "searchPlaceholder": "Title, key or source",
+        "includeHidden": "Include hidden events",
+        "submit": "Filter",
+        "reset": "Reset"
+      },
+      "actions": {
+        "createPark": "Park event",
+        "createParkItem": "Item event",
+        "edit": "Edit",
+        "delete": "Delete",
+        "insertArticleTemplate": "Article template",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "list": {
+        "title": "Events",
+        "count": "{{count}} event(s)",
+        "loading": "Loading events.",
+        "empty": "No event matches these filters.",
+        "major": "Major",
+        "visible": "Visible",
+        "hidden": "Hidden",
+        "columns": {
+          "title": "Title",
+          "entity": "Entity",
+          "owner": "Owner",
+          "date": "Date",
+          "type": "Type",
+          "state": "State",
+          "actions": "Actions"
+        }
+      },
+      "editor": {
+        "createTitle": "New history event",
+        "updateTitle": "Edit history event",
+        "identity": "Identity",
+        "date": "Date",
+        "context": "Context",
+        "lifecycle": "Lifecycle changes",
+        "flags": "Visibility",
+        "localized": "Localized text",
+        "relationships": "Relations and sources",
+        "article": "Article",
+        "key": "Stable key",
+        "entityType": "Entity type",
+        "ownerId": "Owner id",
+        "parkId": "Park id",
+        "parkItemId": "Park item id",
+        "contextParkId": "Context park id",
+        "year": "Year",
+        "month": "Month",
+        "day": "Day",
+        "datePrecision": "Precision",
+        "eventType": "Event type",
+        "slug": "Slug",
+        "mainImageId": "Main image id",
+        "previousName": "Previous name",
+        "newName": "New name",
+        "previousLogoImageId": "Previous logo image id",
+        "newLogoImageId": "New logo image id",
+        "previousOperatorId": "Previous operator id",
+        "newOperatorId": "New operator id",
+        "locationLabel": "Location label",
+        "isMajor": "Major event with article",
+        "isVisible": "Visible on public pages",
+        "titlesJson": "Titles JSON",
+        "summariesJson": "Summaries JSON",
+        "relatedParkIdsJson": "Related park ids JSON",
+        "relatedParkItemIdsJson": "Related item ids JSON",
+        "sourcesJson": "Sources JSON",
+        "articleJson": "Article JSON",
+        "articleHint": "Major events can carry a published article with localized blocks, images and sources.",
+        "jsonHint": "Localized fields and article content are edited as structured JSON."
+      },
+      "messages": {
+        "saved": "History event saved.",
+        "deleted": "History event deleted."
+      },
+      "errors": {
+        "loadFailed": "Unable to load history events.",
+        "required": "Complete the required fields.",
+        "invalidJson": "One JSON field is invalid.",
+        "saveFailed": "Unable to save this event.",
+        "deleteFailed": "Unable to delete this event."
+      }
+    }
+  }
+}

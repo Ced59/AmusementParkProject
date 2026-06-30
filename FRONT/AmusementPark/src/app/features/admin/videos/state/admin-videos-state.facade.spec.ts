@@ -109,6 +109,7 @@ describe('AdminVideosStateFacade', () => {
   });
 
   it('keeps the admin video screen usable when the videos page fails to load', () => {
+    spyOn(console, 'error');
     port.pageResponse$ = throwError(() => new Error('network'));
 
     facade.reload();
@@ -117,9 +118,11 @@ describe('AdminVideosStateFacade', () => {
     expect(facade.videos()).toEqual([]);
     expect(facade.tags().map((tag: VideoTagDto) => tag.id)).toEqual(['tag-1']);
     expect(facade.operationErrorKey()).toBeNull();
+    expect(console.error).toHaveBeenCalledWith('Error loading admin videos', jasmine.any(Error));
   });
 
   it('keeps the admin video screen usable when tags fail to load', () => {
+    spyOn(console, 'error');
     port.tagsResponse$ = throwError(() => new Error('network'));
 
     facade.reload();
@@ -128,6 +131,7 @@ describe('AdminVideosStateFacade', () => {
     expect(facade.videos().map((video: VideoDto) => video.id)).toEqual(['video-1']);
     expect(facade.tags()).toEqual([]);
     expect(facade.operationErrorKey()).toBeNull();
+    expect(console.error).toHaveBeenCalledWith('Error loading admin video tags', jasmine.any(Error));
   });
 
   it('keeps current data visible when a write action reports an error', () => {

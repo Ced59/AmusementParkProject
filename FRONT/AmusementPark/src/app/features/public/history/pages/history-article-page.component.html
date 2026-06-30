@@ -1,0 +1,108 @@
+@let currentState = state();
+@let currentArticle = article();
+
+<app-page-state
+  [state]="currentState"
+  [messages]="{
+    loadingTitleKey: 'history.article.loadingTitle',
+    loadingMessageKey: 'history.article.loadingMessage',
+    errorTitleKey: 'history.article.errorTitle',
+    errorMessageKey: 'history.article.errorMessage'
+  }">
+  @if (currentArticle) {
+    <article class="history-article">
+      <header class="history-article__hero">
+        <div class="history-article__hero-copy">
+          <p class="history-article__kicker">
+            <i class="pi pi-history" aria-hidden="true"></i>
+            <span>{{ currentArticle.dateLabel }} · {{ currentArticle.eventTypeLabel }}</span>
+          </p>
+          <h1>{{ currentArticle.title }}</h1>
+          @if (currentArticle.subtitle) {
+            <p class="history-article__subtitle">{{ currentArticle.subtitle }}</p>
+          }
+          @if (currentArticle.summary) {
+            <p class="history-article__summary">{{ currentArticle.summary }}</p>
+          }
+
+          @if (currentArticle.timelineLink) {
+            <a class="history-article__back" [routerLink]="currentArticle.timelineLink">
+              <i class="pi pi-arrow-left" aria-hidden="true"></i>
+              <span>{{ backLabel() }}</span>
+            </a>
+          }
+        </div>
+
+        @if (currentArticle.mainImageId) {
+          <div class="history-article__hero-image">
+            <app-image-display
+              [imageId]="currentArticle.mainImageId"
+              [alt]="currentArticle.title"
+              loading="eager"
+              fetchPriority="high"
+              sizes="(max-width: 900px) 100vw, 720px"
+              [srcWidth]="900"
+              imgClass="history-article__hero-img"
+              placeholderClass="history-article__hero-placeholder"
+              placeholderKind="photo">
+            </app-image-display>
+          </div>
+        }
+      </header>
+
+      <div class="history-article__body">
+        <main class="history-article__content">
+          @for (block of currentArticle.blocks; track block.id) {
+            @if (isHeading(block)) {
+              @if (block.headingLevel === 3) {
+                <h3>{{ block.text }}</h3>
+              } @else {
+                <h2>{{ block.text }}</h2>
+              }
+            } @else if (isImage(block)) {
+              <figure class="history-article__figure">
+                @if (block.imageId) {
+                  <app-image-display
+                    [imageId]="block.imageId"
+                    [alt]="block.caption || currentArticle.title"
+                    loading="lazy"
+                    fetchPriority="low"
+                    sizes="(max-width: 900px) 100vw, 820px"
+                    [srcWidth]="900"
+                    imgClass="history-article__figure-img"
+                    placeholderClass="history-article__figure-placeholder"
+                    placeholderKind="photo">
+                  </app-image-display>
+                }
+                @if (block.caption) {
+                  <figcaption>{{ block.caption }}</figcaption>
+                }
+              </figure>
+            } @else if (isQuote(block)) {
+              <blockquote>{{ block.text }}</blockquote>
+            } @else if (isFactBox(block)) {
+              <aside class="history-article__fact">{{ block.text }}</aside>
+            } @else {
+              <p>{{ block.text }}</p>
+            }
+          }
+        </main>
+
+        @if (currentArticle.sources.length > 0) {
+          <aside class="history-article__sources">
+            <h2>{{ sourcesLabel() }}</h2>
+            <ol>
+              @for (source of currentArticle.sources; track source.url) {
+                <li>
+                  <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                    {{ source.label || source.url }}
+                  </a>
+                </li>
+              }
+            </ol>
+          </aside>
+        }
+      </div>
+    </article>
+  }
+</app-page-state>

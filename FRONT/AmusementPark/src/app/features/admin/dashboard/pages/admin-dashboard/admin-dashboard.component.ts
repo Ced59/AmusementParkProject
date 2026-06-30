@@ -73,6 +73,12 @@ export class AdminDashboardComponent {
       segment: 'park-graph-upserts'
     },
     {
+      iconClass: 'pi pi-history',
+      titleKey: 'admin.history.navTitle',
+      descriptionKey: 'admin.dashboard.shortcuts.history',
+      segment: 'history'
+    },
+    {
       iconClass: 'pi pi-shield',
       titleKey: 'admin.auditLogs.title',
       descriptionKey: 'admin.dashboard.shortcuts.auditLogs',

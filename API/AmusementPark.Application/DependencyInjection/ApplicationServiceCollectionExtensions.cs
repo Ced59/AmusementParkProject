@@ -64,6 +64,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkOpeningHoursSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, HistoryTimelinesSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, HistoryArticlesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkImagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkVideosSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemListsSitemapSectionProvider>();

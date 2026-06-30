@@ -85,6 +85,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/park-graph-upserts/pages/admin-park-graph-upserts/admin-park-graph-upserts.component').then((m) => m.AdminParkGraphUpsertsComponent)
           },
           {
+            path: 'history',
+            loadComponent: () => import('@features/admin/history/pages/admin-history/admin-history.component').then((m) => m.AdminHistoryComponent)
+          },
+          {
             path: 'audit-logs',
             loadComponent: () => import('@features/admin/audit-logs/pages/admin-audit-logs/admin-audit-logs.component').then((m) => m.AdminAuditLogsComponent)
           },
@@ -155,6 +159,8 @@ export const routes: Routes = [
           { path: 'park-founder/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'founder' } },
           { path: 'park-manufacturer/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'manufacturer' } },
           { path: 'park/:id/:slug/images', loadComponent: () => import('./features/public/parks/pages/park-images-page.component').then((m) => m.ParkImagesPageComponent) },
+          { path: 'park/:id/:slug/history/:eventId/:eventSlug', loadComponent: () => import('./features/public/history/pages/history-article-page.component').then((m) => m.HistoryArticlePageComponent) },
+          { path: 'park/:id/:slug/history', loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent) },
           { path: 'park/:id/:slug/video/s/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/videos/:videoId/:videoSlug', pathMatch: 'full' },
           { path: 'park/:id/:slug/video/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/videos/:videoId/:videoSlug', pathMatch: 'full' },
           { path: 'park/:id/:slug/videos/:videoId/:videoSlug', loadComponent: () => import('./features/public/parks/pages/park-video-page.component').then((m) => m.ParkVideoPageComponent) },
@@ -166,6 +172,8 @@ export const routes: Routes = [
           { path: 'park/:id/:slug/opening-hours', loadComponent: () => import('./features/public/parks/pages/park-opening-hours-page.component').then((m) => m.ParkOpeningHoursPageComponent) },
           { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/images', loadComponent: () => import('./features/public/park-items/pages/park-item-images-page.component').then((m) => m.ParkItemImagesPageComponent) },
+          { path: 'park/:id/:slug/item/:itemId/:itemSlug/history/:eventId/:eventSlug', loadComponent: () => import('./features/public/history/pages/history-article-page.component').then((m) => m.HistoryArticlePageComponent) },
+          { path: 'park/:id/:slug/item/:itemId/:itemSlug/history', loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/video/s/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', pathMatch: 'full' },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/video/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', pathMatch: 'full' },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', loadComponent: () => import('./features/public/park-items/pages/park-item-video-page.component').then((m) => m.ParkItemVideoPageComponent) },
