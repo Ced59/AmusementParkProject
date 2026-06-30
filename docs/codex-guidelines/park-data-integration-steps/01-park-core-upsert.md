@@ -6,6 +6,7 @@ Objectif : créer ou corriger la fiche parc minimale fiable avant tout enrichiss
 
 - `00-intake-and-export.md`
 - `park-data-integration-orchestrator.md`
+- `park-graph-upsert-enums.md`
 
 ## Export requis
 
@@ -104,6 +105,7 @@ Exemple de forme :
 - Les coordonnées pointent sur le parc ou l’entrée principale, pas sur une ville.
 - Le fondateur et l’exploitant ne sont pas confondus.
 - Les `founderKey` et `operatorKey` utilisés sont résolus dans le même JSON ou déjà présents dans l’export.
+- `park.type`, `park.status` et `adminReviewStatus` utilisent les valeurs canoniques de `park-graph-upsert-enums.md`.
 - Les descriptions longues ne sont pas forcées dans cette étape si elles risquent de saturer le lot.
 - Le parc reste masqué tant que les données publiques ne sont pas prêtes, sauf demande explicite.
 

@@ -30,6 +30,8 @@ Vérifier :
 - aucun tarif n’est ajouté si les tarifs ne sont pas implémentés ;
 - aucun doublon constructeur, exploitant ou fondateur n’est créé ;
 - les données existantes fiables sont préservées en mode `merge`.
+- toutes les valeurs enum utilisées existent dans `park-graph-upsert-enums.md` ;
+- aucun alias legacy ou nombre enum n’est utilisé.
 
 ## Audit contenu public
 
@@ -44,12 +46,34 @@ Vérifier :
 - les textes ne contiennent pas “upsert”, “SEO”, “contenu public” ou autre jargon interne.
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 
+## Audit conditions d’accès
+
+Vérifier :
+
+- chaque attraction a été contrôlée pour les conditions d’accès ;
+- les conditions trouvées sont dans `items[].attractionDetails.accessConditions[]` ;
+- les types et unités utilisent les enums canoniques ;
+- les conditions avec accompagnement sont distinguées des tailles ou âges minimum simples ;
+- les conditions absentes sont justifiées par une absence de source, pas par un oubli.
+
+## Audit références
+
+Vérifier :
+
+- chaque constructeur lié à un item important a une biographie ou une limite de source documentée ;
+- chaque fondateur lié au parc a une biographie ou une limite de source documentée ;
+- chaque exploitant lié au parc a une description, des dates ou informations utiles quand elles sont sourçables ;
+- les références existantes validées n’ont pas été écrasées ;
+- aucun constructeur, exploitant ou fondateur doublon n’a été créé.
+
 ## Audit images
 
 Vérifier :
 
 - URLs externes techniquement importables par le flux remote image ;
 - propriétaires résolus ;
+- aucun warning Preview du type `Remote image ignored: owner could not be resolved` ;
+- aucun `ownerKey` basé sur une URL, un nom de fichier, un dossier de galerie ou une valeur devinée ;
 - alt texts et crédits localisés ;
 - pas de page HTML, preview non téléchargeable, image trompeuse ou watermark non autorisé ;
 - images historiques correctement contextualisées.

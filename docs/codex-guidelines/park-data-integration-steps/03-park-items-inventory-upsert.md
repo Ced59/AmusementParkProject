@@ -5,6 +5,7 @@ Objectif : intégrer tous les contenus visiteurs nommables et fiables, avec date
 ## Lire avant de commencer
 
 - `park-data-integration-orchestrator.md`
+- `park-graph-upsert-enums.md`
 - `04-rich-descriptions-localization.md` seulement si des descriptions sont incluses dans ce lot
 
 ## Export requis
@@ -55,7 +56,30 @@ Pour chaque item :
 - `attractionDetails.closingDate` ou `closingDateText` ;
 - constructeur via `manufacturerKey` si fiable ;
 - modèle, source externe, dimensions ou contraintes seulement si les sources sont fiables ;
+- conditions d’accès dans `attractionDetails.accessConditions` si elles sont disponibles ;
 - coordonnées uniquement si l’emplacement est précis.
+
+## Conditions d’accès des attractions
+
+Pour chaque attraction, rechercher systématiquement les conditions d’accès publiées par le parc ou une source fiable. Ces données sont importantes et ne doivent pas être oubliées.
+
+Inclure dans `attractionDetails.accessConditions` quand c’est fiable :
+
+- taille minimum ;
+- taille minimum avec accompagnement ;
+- taille maximum ;
+- âge minimum ;
+- âge minimum avec accompagnement ;
+- restrictions grossesse ;
+- restrictions cardiaques ;
+- restrictions dos/cou ;
+- transfert fauteuil requis ;
+- accès spécial ou pass d’accessibilité requis ;
+- condition spécifique en `Custom` seulement si aucune enum dédiée ne convient.
+
+Utiliser les types et unités listés dans `park-graph-upsert-enums.md`. Pour une taille, utiliser `Centimeter` ou `Inch` selon la source. Pour un âge, utiliser `Year`. Si la source exprime une condition avec accompagnant, renseigner `requiresAccompaniment` et `minimumCompanionAge` quand l’âge de l’accompagnant est connu.
+
+Ne jamais mettre ces conditions dans les descriptions longues. Si les conditions d’accès ne sont pas trouvées, ne pas les inventer : indiquer dans `metadata.notes` que les conditions n’ont pas été trouvées ou restent à vérifier.
 
 ## Règles dates et statuts
 
@@ -137,6 +161,14 @@ Sections possibles :
         "manufacturerKey": "manufacturer-key",
         "status": "Operating",
         "openingDate": "2001-04-07",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 120,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ],
         "sourceUrl": "https://source.example/item"
       }
     }
@@ -149,6 +181,8 @@ Sections possibles :
 - Aucun doublon évident avec l’export.
 - Toutes les `zoneKey` sont résolues.
 - Toutes les `manufacturerKey` sont résolues par l’export actualisé ou par `references.manufacturers` dans le même JSON.
+- Les conditions d’accès trouvées sont dans `attractionDetails.accessConditions`, pas dans les descriptions.
+- Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
 - Les dates sont exactes ou restent textuelles.
 - Les anciens items importants ne sont pas supprimés.
 - Les items sans source fiable restent absents ou `ToReview`.

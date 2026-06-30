@@ -13,6 +13,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 ## Documents disponibles
 
 - `park-data-integration-orchestrator.md` : orchestrateur principal du parcours complet.
+- `park-graph-upsert-enums.md` : liste des enums et valeurs autorisées dans les JSON Park Graph Upsert.
 - `park-data-integration-steps/00-intake-and-export.md` : cadrage, pertinence, export et découpage anti-saturation.
 - `park-data-integration-steps/01-park-core-upsert.md` : identité du parc, dates principales, coordonnées, statut, exploitant et fondateur.
 - `park-data-integration-steps/02-zones-upsert.md` : zones officielles et structure de visite.
@@ -37,7 +38,10 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 - Les descriptions doivent être naturelles, spécifiques au lieu, agréables à lire, orientées visiteur et non mécaniques.
 - Ne jamais écrire de formulations du type “ce que ça apporte à la journée”, “au groupe”, “comment l’intégrer dans la journée” ou “quand cela devient utile”.
 - Ne pas mettre les conditions d’accès, restrictions, tailles, tarifs ou informations purement techniques dans les descriptions : ces données doivent aller dans les champs JSON prévus.
+- Les conditions d’accès de chaque attraction doivent être recherchées systématiquement et intégrées dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.
+- Les enums utilisées dans un JSON upsert doivent venir de `park-graph-upsert-enums.md`, avec les valeurs canoniques exactes.
 - Les images externes doivent pointer vers une URL HTTP(S) publique que l’importeur peut télécharger et reconnaître comme image réelle. Un CDN est accepté s’il renvoie bien des octets d’image importables.
+- Une image ne doit jamais être livrée si son propriétaire n’est pas résolu. Un warning Preview du type `Remote image ignored: owner could not be resolved` est une erreur de livrable à corriger avant import.
 - Tout `manufacturerKey`, `zoneKey`, `operatorKey`, `founderKey` ou `ownerKey` utilisé doit être résolu dans le même JSON ou par une identité existante sûre.
 - Les horaires, dates d’ouverture et événements datés doivent être vérifiés avec des sources actuelles et ne doivent pas être mélangés aux tarifs si les tarifs ne sont pas implémentés.
 - Les articles doivent apporter une vraie valeur éditoriale, avec des sources vérifiées, et ne doivent pas devenir des fiches techniques déguisées.
