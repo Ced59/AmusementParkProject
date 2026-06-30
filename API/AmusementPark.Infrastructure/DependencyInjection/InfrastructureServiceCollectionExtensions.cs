@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Contact.Ports;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.DataSources.Ports;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -180,6 +181,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IParkWeatherRepository, ParkWeatherRepository>();
         services.AddScoped<IParkWeatherRunRepository, ParkWeatherRunRepository>();
         services.AddScoped<IParkOpeningHoursRepository, ParkOpeningHoursRepository>();
+        services.AddScoped<IHistoryEventRepository, HistoryEventRepository>();
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
         services.AddScoped<IParkWeatherProviderStrategyResolver, ParkWeatherProviderStrategyResolver>();
         services.AddSingleton<IParkWeatherRefreshQueue, ParkWeatherRefreshQueue>();

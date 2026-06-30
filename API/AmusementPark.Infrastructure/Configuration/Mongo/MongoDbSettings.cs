@@ -112,6 +112,8 @@ public sealed class MongoDbSettings
 
     public string ParkOpeningHoursCollectionName { get; set; } = "parkOpeningHours";
 
+    public string HistoryEventsCollectionName { get; set; } = "historyEvents";
+
     /// <summary>
     /// Lie la configuration et applique des valeurs par défaut.
     /// </summary>

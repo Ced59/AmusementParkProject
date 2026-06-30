@@ -25,6 +25,7 @@ namespace AmusementPark.Application.Architecture
             new FeatureSlice("AdminAudit", 13, "Journalisation et consultation des actions d'administration sensibles."),
             new FeatureSlice("Ratings", 14, "Notes utilisateurs authentifies, agregats publics et classements."),
             new FeatureSlice("TechnicalPages", 15, "Pages techniques publiques et administration editoriale."),
+            new FeatureSlice("History", 16, "Timelines historiques des parcs, park items et articles associes."),
         };
     }
 }

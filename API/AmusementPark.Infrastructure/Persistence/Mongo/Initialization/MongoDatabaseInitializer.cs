@@ -9,6 +9,7 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.TechnicalPages;
@@ -87,6 +88,9 @@ public sealed partial class MongoDatabaseInitializer
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkOpeningHoursCollectionName, cancellationToken);
         await this.InitializeParkOpeningHoursIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.HistoryEventsCollectionName, cancellationToken);
+        await this.InitializeHistoryEventsIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkFoundersCollectionName, cancellationToken);
         await this.InitializeParkFoundersIndexesAsync(cancellationToken);
