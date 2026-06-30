@@ -48,10 +48,10 @@ Vérifier :
 
 Vérifier :
 
-- URLs externes directes ;
+- URLs externes techniquement importables par le flux remote image ;
 - propriétaires résolus ;
 - alt texts et crédits localisés ;
-- pas de preview, CDN transformé ou watermark non autorisé ;
+- pas de page HTML, preview non téléchargeable, image trompeuse ou watermark non autorisé ;
 - images historiques correctement contextualisées.
 
 ## Audit horaires et événements

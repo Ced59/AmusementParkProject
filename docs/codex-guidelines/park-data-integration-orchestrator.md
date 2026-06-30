@@ -102,7 +102,7 @@ Sortie attendue : plusieurs JSON upsert bornés par lot de descriptions.
 
 Lire `park-data-integration-steps/05-images-and-reference-enrichment.md`.
 
-Objectif : enrichir logos, images du parc, images d’items et biographies de fondateurs, exploitants ou constructeurs, sans lien image indirect.
+Objectif : enrichir logos, images du parc, images d’items et biographies de fondateurs, exploitants ou constructeurs, avec des sources d’image techniquement importables et éditorialement fiables.
 
 Sortie attendue : JSON upsert avec `images` et/ou `references`.
 
@@ -162,7 +162,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Préserver les données existantes en mode `merge` : IDs, images, rattachements, coordonnées, biographies et contenus validés.
 - Garder les éléments fermés mais confirmés visibles quand ils sont pertinents pour la fiche ou l’histoire.
 - Mettre les restrictions, tailles, tarifs, horaires, dates, coordonnées et données techniques dans les champs structurés, pas dans les descriptions.
-- Utiliser uniquement des images externes directes vers de vrais fichiers image.
+- Utiliser uniquement des images externes importables par le flux technique du projet : URL HTTP(S) publique, réponse image réelle, taille acceptée et propriétaire résolu.
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Créer un article seulement si le sujet a une vraie valeur éditoriale durable.
 

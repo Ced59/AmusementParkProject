@@ -76,8 +76,15 @@ Créer un article uniquement si le sujet mérite un développement durable :
 - démolition ;
 - relocalisation complexe ;
 - attraction emblématique ;
+- nouveauté importante ;
+- fermeture ou transformation marquante ;
+- constructeur ou exploitant majeur ;
 - transformation historique ;
 - visite ou média original.
+- captation photo ou vidéo originale ;
+- page de patrimoine de loisirs ;
+- actualité durable ;
+- comparaison historique documentée.
 
 Un article ne doit pas répéter la description ni devenir une fiche technique.
 

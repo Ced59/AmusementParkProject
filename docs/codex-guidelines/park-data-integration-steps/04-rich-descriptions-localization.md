@@ -70,10 +70,13 @@ Interdit dans les descriptions :
 
 - restrictions d’accès ;
 - tailles ;
+- âge conseillé sous forme réglementaire ;
 - tarifs ;
 - horaires ;
 - dates d’ouverture ;
+- détails techniques bruts ;
 - coordonnées GPS ;
+- notes d’administration ;
 - notes de complétude ;
 - jargon admin ;
 - explication d’upsert, de SEO ou de base de données.
@@ -98,6 +101,7 @@ Formulations interdites :
 
 - Parc majeur : introduction immersive, identité du parc, grandes familles d’expériences, ambiance générale, intérêt pour différents profils de visiteurs, conclusion naturelle.
 - Parc local : texte spécifique et utile sans inventer une importance excessive.
+- Parc ou item en général : éviter les superlatifs non sourcés, ne pas masquer les incertitudes et ne jamais promettre une expérience non vérifiée.
 - Zone : espace vécu, ambiance, décor, rôle dans la visite, points d’intérêt, logique de circulation si utile.
 - Attraction : expérience ressentie, observations visibles, rythme, ambiance, place dans le parc, sensations fiables.
 - Restaurant, boutique, service : type de lieu, ambiance, utilité réelle, positionnement, particularité visible ou nommable.
@@ -155,8 +159,9 @@ Sections possibles :
 - Les 8 langues sont présentes pour chaque entité du lot, sauf décision explicitement documentée.
 - Les traductions sont naturelles, pas mot à mot.
 - Le français public utilise un ton direct et informel quand le contexte s’y prête.
+- Les textes localisés utilisent les accents, diacritiques, ponctuations et caractères propres à chaque langue.
 - Aucun texte ne réemploie mécaniquement la même structure d’un item à l’autre.
-- Le HTML reste simple : `<p>`, `<h2>`, `<h3>`, `<ul>`, `<li>`, `<strong>` si utile.
+- Le HTML reste simple : `<p>`, `<h2>`, `<h3>`, `<ul>`, `<li>`, `<strong>` si utile, sans structure lourde ou décorative.
 - Aucune information structurée ne pollue la narration.
 - Le texte donne envie de lire sans survente.
 - Le texte ne ressemble pas à une fiche interne.

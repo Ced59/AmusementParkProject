@@ -1,6 +1,6 @@
 # Étape 5 — Images et enrichissement des références
 
-Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou constructeurs sans créer de doublons ni d’images indirectes.
+Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou constructeurs sans créer de doublons ni d’images non importables.
 
 ## Lire avant de commencer
 
@@ -11,33 +11,57 @@ Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou
 
 Utiliser l’export actualisé après les items et descriptions concernés. Les `ownerKey` doivent correspondre aux clés déjà présentes ou aux références créées dans le même JSON.
 
-## Images acceptées
+## Ce que l’import permet techniquement
+
+Le flux d’import d’images remote accepte plus qu’une URL de fichier “directe” classique. D’après le code actuel, une image peut être importée si toutes ces conditions sont vraies :
+
+- `sourceUrl` est une URL absolue `http` ou `https` ;
+- l’URL ne contient pas d’identifiants dans `UserInfo` ;
+- l’hôte n’est pas `localhost` ;
+- le DNS ou l’adresse IP résout vers une adresse publique ;
+- les adresses loopback, privées, link-local, multicast, réservées ou équivalentes sont rejetées ;
+- les redirections HTTP(S) sont acceptées jusqu’à 5 redirections ;
+- chaque URL de redirection doit rester publique et HTTP(S) ;
+- la réponse finale est un succès HTTP ;
+- `Content-Length`, s’il est fourni, est strictement positif et inférieur ou égal à 10 Mo ;
+- le flux téléchargé ne dépasse pas 10 Mo ;
+- le contenu téléchargé n’est pas vide ;
+- ImageSharp détecte un vrai format d’image dans les octets téléchargés ;
+- l’extension de l’URL n’est pas obligatoire : le format détecté peut corriger ou ajouter l’extension ;
+- le `Content-Type` peut être imprécis, par exemple `application/octet-stream`, si les octets sont bien une image ;
+- les serveurs CDN, URLs signées, URLs avec paramètres ou URLs de transformation peuvent passer si elles respectent les conditions ci-dessus ;
+- l’import envoie des headers proches d’un navigateur, mais une protection anti-hotlinking peut quand même bloquer le téléchargement ;
+- les logos ne reçoivent jamais de watermark, même si `withWatermark` est demandé.
+
+Les propriétaires importables par JSON upsert sont :
+
+- `Park` ;
+- `ParkItem` ;
+- `ParkOperator` ;
+- `AttractionManufacturer` ;
+- `ParkFounder`.
+
+## Images à privilégier éditorialement
 
 Une image externe doit être :
 
-- un fichier image direct ;
-- une URL directe `.jpg`, `.jpeg`, `.png` ou `.webp` quand c’est possible ;
+- une URL stable quand c’est possible ;
 - téléchargeable ;
 - fidèle au parc ou à l’item ;
 - créditable ;
 - sans watermark non autorisé, sauf logo officiel ;
 - issue d’une source fiable ou librement exploitable selon le contexte du projet.
 
-Refuser :
+Refuser ou éviter :
 
-- page HTML ;
-- preview ;
-- miniature indirecte ;
-- proxy CDN ;
-- URL `cdn-cgi/image` ;
-- URL encodée contenant `__im` ;
-- URL avec paramètres de transformation comme `?width=` ou `?format=` ;
-- URL encodée avec transformations ;
+- page HTML qui ne renvoie pas directement une image au téléchargement ;
+- preview qui ne renvoie pas les octets de l’image finale ;
+- miniature trop petite quand une image de meilleure qualité est disponible ;
 - image générique ;
 - image dont l’élément représenté est douteux.
 - image avec watermark, sauf logo officiel.
 
-Ne pas utiliser de lien CDN interne du site comme source externe.
+Ne pas utiliser de lien CDN interne du site comme source externe pour réimporter une image déjà stockée. Utiliser l’ID d’image existant dans ce cas.
 
 ## Propriétaires d’images
 
@@ -64,6 +88,8 @@ Chaque image doit avoir, si possible :
 - `setAsCurrent` si elle doit devenir logo ou image principale ;
 - `description` interne courte ;
 - `altTexts`, `captions`, `credits` dans les 8 langues quand l’image est publique.
+
+Si une image est techniquement importable mais éditorialement fragile, ne pas l’ajouter : préférer une absence d’image à une image trompeuse, instable ou mal créditée.
 
 ## Références à enrichir
 
@@ -128,7 +154,7 @@ Sections possibles :
 
 ## Contrôles avant livraison
 
-- Toutes les URLs images sont directes.
+- Toutes les URLs images sont techniquement importables selon les règles ci-dessus.
 - Tous les propriétaires sont résolus.
 - Les crédits sont lisibles pour un visiteur.
 - Les logos ne sont pas confondus avec des photos.
