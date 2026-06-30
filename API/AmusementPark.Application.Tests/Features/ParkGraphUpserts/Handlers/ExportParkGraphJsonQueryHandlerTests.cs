@@ -288,8 +288,10 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
 
         Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         manufacturerRepository
-            .Setup(repository => repository.GetByIdAsync("manufacturer-1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(manufacturer);
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Contains("manufacturer-1")),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { manufacturer });
 
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         imageRepository

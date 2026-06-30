@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Results;
 
 public sealed class ParkGraphJsonExportResult
@@ -6,5 +8,7 @@ public sealed class ParkGraphJsonExportResult
 
     public string ContentType { get; init; } = "application/json";
 
-    public string Json { get; init; } = string.Empty;
+    public byte[] Content { get; init; } = Array.Empty<byte>();
+
+    public string Json => Encoding.UTF8.GetString(this.Content);
 }

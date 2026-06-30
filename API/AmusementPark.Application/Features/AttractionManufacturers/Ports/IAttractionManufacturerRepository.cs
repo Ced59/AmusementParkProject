@@ -24,6 +24,11 @@ public interface IAttractionManufacturerRepository
     Task<AttractionManufacturer?> GetByIdAsync(string id, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne les attraction manufacturers par identifiants.
+    /// </summary>
+    Task<IReadOnlyCollection<AttractionManufacturer>> GetByIdsAsync(IReadOnlyCollection<string> ids, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Crée un attraction manufacturer.
     /// </summary>
     Task<AttractionManufacturer> CreateAsync(AttractionManufacturer entity, CancellationToken cancellationToken);
