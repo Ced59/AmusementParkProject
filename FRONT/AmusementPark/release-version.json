@@ -1,6 +1,20 @@
 {
-  "version": "3.1.5",
+  "version": "3.1.6",
   "history": [
+    {
+      "version": "3.1.6",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les histoires se complètent automatiquement avec les dates des attractions.",
+        "en": "Histories now use attraction dates automatically.",
+        "de": "Verläufe nutzen Attraktionsdaten jetzt automatisch.",
+        "nl": "Geschiedenissen gebruiken attractiedata nu automatisch.",
+        "it": "Le storie usano automaticamente le date delle attrazioni.",
+        "es": "Las historias usan automáticamente las fechas de las atracciones.",
+        "pl": "Historie automatycznie używają dat atrakcji.",
+        "pt": "As histórias usam automaticamente as datas das atrações."
+      }
+    },
     {
       "version": "3.1.5",
       "releasedAt": "2026-06-30",

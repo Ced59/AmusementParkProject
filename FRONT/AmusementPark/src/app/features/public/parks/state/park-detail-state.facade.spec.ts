@@ -500,7 +500,7 @@ describe('ParkDetailStateFacade', () => {
     expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
     expect(context.parksPort.openingHoursCalls.length).toBe(1);
     expect(context.parksPort.openingHoursCalls[0].id).toBe('park-1');
-    expect(context.historyPort.calls).toEqual([{ parkId: 'park-1', includeParkItems: false, parkItemIds: [] }]);
+    expect(context.historyPort.calls).toEqual([{ parkId: 'park-1', includeParkItems: true, parkItemIds: [] }]);
     expect(context.facade.nearbyState().kind).toBe('ready');
     expect(context.facade.nearbyParks().map((park) => park.id)).toEqual(['near-1']);
     expect(context.facade.weatherState().kind).toBe('ready');

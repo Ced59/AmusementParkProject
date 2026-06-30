@@ -49,6 +49,11 @@ export class HistoryTimelineStateFacade {
         this.screenStateStore.setReady(timeline);
       },
       error: (error: unknown) => {
+        if (!includeParkItems && hasHttpStatus(error, 404)) {
+          this.loadParkTimeline(parkId, true);
+          return;
+        }
+
         if (hasHttpStatus(error, 404)) {
           this.ssrHttpStatusService.setNotFound();
         }
