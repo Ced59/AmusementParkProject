@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.History.Contracts;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 
@@ -16,15 +17,18 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
     private readonly IHistoryEventRepository historyEventRepository;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
     public UpsertHistoryEventCommandHandler(
         IHistoryEventRepository historyEventRepository,
         IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository)
+        IParkItemRepository parkItemRepository,
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.historyEventRepository = historyEventRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
+        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
     public async Task<ApplicationResult<HistoryEvent>> HandleAsync(UpsertHistoryEventCommand command, CancellationToken cancellationToken = default)
@@ -51,6 +55,7 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
             ? await this.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
             : await this.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken) ?? historyEvent;
 
+        await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<HistoryEvent>.Success(saved);
     }
 
@@ -170,10 +175,14 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
 public sealed class DeleteHistoryEventCommandHandler : ICommandHandler<DeleteHistoryEventCommand, ApplicationResult>
 {
     private readonly IHistoryEventRepository historyEventRepository;
+    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
-    public DeleteHistoryEventCommandHandler(IHistoryEventRepository historyEventRepository)
+    public DeleteHistoryEventCommandHandler(
+        IHistoryEventRepository historyEventRepository,
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.historyEventRepository = historyEventRepository;
+        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
     public async Task<ApplicationResult> HandleAsync(DeleteHistoryEventCommand command, CancellationToken cancellationToken = default)
@@ -184,8 +193,12 @@ public sealed class DeleteHistoryEventCommandHandler : ICommandHandler<DeleteHis
         }
 
         bool deleted = await this.historyEventRepository.DeleteAsync(command.EventId.Trim(), cancellationToken);
-        return deleted
-            ? ApplicationResult.Success()
-            : ApplicationResult.Failure(ApplicationErrors.EntityNotFound(nameof(HistoryEvent), command.EventId));
+        if (!deleted)
+        {
+            return ApplicationResult.Failure(ApplicationErrors.EntityNotFound(nameof(HistoryEvent), command.EventId));
+        }
+
+        await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
+        return ApplicationResult.Success();
     }
 }

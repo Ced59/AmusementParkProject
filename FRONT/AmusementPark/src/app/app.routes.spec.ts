@@ -21,6 +21,24 @@ describe('App routes', () => {
       expect(route?.loadComponent).withContext(legacyPath).toBeUndefined();
     }
   });
+
+  it('exposes canonical public history routes without redirects', () => {
+    const publicRoutes: Route[] = getPublicRoutes();
+    const expectedPaths: string[] = [
+      'park/:id/:slug/history',
+      'park/:id/:slug/history/:eventId/:eventSlug',
+      'park/:id/:slug/item/:itemId/:itemSlug/history',
+      'park/:id/:slug/item/:itemId/:itemSlug/history/:eventId/:eventSlug'
+    ];
+
+    for (const path of expectedPaths) {
+      const route: Route | undefined = publicRoutes.find((candidate: Route): boolean => candidate.path === path);
+
+      expect(route).withContext(path).toBeDefined();
+      expect(route?.redirectTo).withContext(path).toBeUndefined();
+      expect(route?.loadComponent).withContext(path).toBeDefined();
+    }
+  });
 });
 
 function getPublicRoutes(): Route[] {

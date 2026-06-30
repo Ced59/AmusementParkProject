@@ -140,6 +140,23 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetPublicVisibleEventsAsync(int limit, CancellationToken cancellationToken)
+    {
+        if (limit <= 0)
+        {
+            return Array.Empty<HistoryEvent>();
+        }
+
+        FilterDefinition<HistoryEventDocument> filter = Builders<HistoryEventDocument>.Filter.Eq(document => document.IsVisible, true);
+
+        List<HistoryEventDocument> documents = await this.collection.Find(filter)
+            .Sort(BuildTimelineSort())
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<IReadOnlyCollection<HistoryEvent>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken)
     {
         if (limit <= 0)

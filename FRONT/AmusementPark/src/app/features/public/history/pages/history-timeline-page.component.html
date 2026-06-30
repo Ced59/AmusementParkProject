@@ -1,0 +1,120 @@
+@let currentState = state();
+@let currentTimeline = timeline();
+
+<app-page-state
+  [state]="currentState"
+  [messages]="{
+    loadingTitleKey: 'history.timeline.loadingTitle',
+    loadingMessageKey: 'history.timeline.loadingMessage',
+    errorTitleKey: 'history.timeline.errorTitle',
+    errorMessageKey: 'history.timeline.errorMessage'
+  }">
+  @if (currentTimeline) {
+    <section class="history-page">
+      <header class="history-hero">
+        <div class="history-hero__copy">
+          <p class="history-hero__kicker">
+            <i class="pi pi-history" aria-hidden="true"></i>
+            <span>{{ kickerLabel() }}</span>
+          </p>
+          <h1>{{ currentTimeline.title }}</h1>
+          <p>{{ currentTimeline.subtitle }}</p>
+        </div>
+
+        <div class="history-hero__actions">
+          <a class="history-button history-button--ghost" [routerLink]="backLink(currentTimeline)">
+            <i class="pi pi-arrow-left" aria-hidden="true"></i>
+            <span>{{ backLabel() }}</span>
+          </a>
+
+          @if (currentTimeline.showParkItemControls && currentTimeline.includedParkItems.length > 0) {
+            <button class="history-button history-button--toggle" type="button" [class.history-button--active]="includeParkItems()" (click)="toggleParkItems()">
+              <i class="pi pi-sitemap" aria-hidden="true"></i>
+              <span>{{ includeParkItemsLabel() }}</span>
+            </button>
+          }
+        </div>
+      </header>
+
+      <section class="history-summary" [attr.aria-label]="summaryAriaLabel()">
+        <div>
+          <span>{{ currentTimeline.events.length }}</span>
+          <strong>{{ eventsLabel() }}</strong>
+        </div>
+        <div>
+          <span>{{ currentTimeline.yearStart }}</span>
+          <strong>{{ startLabel() }}</strong>
+        </div>
+        <div>
+          <span>{{ currentTimeline.yearEnd }}</span>
+          <strong>{{ latestLabel() }}</strong>
+        </div>
+      </section>
+
+      <section class="history-timeline" [attr.aria-label]="timelineAriaLabel()">
+        <div class="history-timeline__axis" aria-hidden="true">
+          @for (year of yearTicks(currentTimeline); track year) {
+            <span>{{ year }}</span>
+          }
+        </div>
+
+        <ol class="history-timeline__events">
+          @for (event of currentTimeline.events; track eventTrackBy($index, event)) {
+            <li class="history-event" [class.history-event--major]="event.isMajor">
+              <div class="history-event__date">
+                <strong>{{ event.dateLabel }}</strong>
+                <span>{{ event.eventTypeLabel }}</span>
+              </div>
+
+              <span class="history-event__dot" aria-hidden="true"></span>
+
+              <article class="history-event__body">
+                @if (event.mainImageId) {
+                  <div class="history-event__image">
+                    <app-image-display
+                      [imageId]="event.mainImageId"
+                      [alt]="event.title"
+                      loading="lazy"
+                      fetchPriority="low"
+                      sizes="(max-width: 720px) 100vw, 300px"
+                      [srcWidth]="360"
+                      imgClass="history-event__img"
+                      placeholderClass="history-event__placeholder"
+                      placeholderKind="photo">
+                    </app-image-display>
+                  </div>
+                }
+
+                <div class="history-event__content">
+                  <div class="history-event__meta">
+                    @if (event.parkItemName && currentTimeline.entityType !== 'ParkItem') {
+                      <span><i class="pi pi-star" aria-hidden="true"></i>{{ event.parkItemName }}</span>
+                    }
+                    @if (event.contextParkName && currentTimeline.entityType === 'ParkItem') {
+                      <span><i class="pi pi-map-marker" aria-hidden="true"></i>{{ event.contextParkName }}</span>
+                    }
+                    @if (event.sourceCount > 0) {
+                      <span><i class="pi pi-link" aria-hidden="true"></i>{{ sourceLabel(event) }}</span>
+                    }
+                  </div>
+
+                  <h2>{{ event.title }}</h2>
+                  @if (event.summary) {
+                    <p>{{ event.summary }}</p>
+                  }
+
+                  @if (event.articleLink) {
+                    <a class="history-event__article-link" [routerLink]="event.articleLink" [attr.aria-label]="articleAriaLabel(event)">
+                      <span>{{ articleLabel() }}</span>
+                      <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                  }
+                </div>
+              </article>
+            </li>
+          }
+        </ol>
+      </section>
+    </section>
+  }
+</app-page-state>

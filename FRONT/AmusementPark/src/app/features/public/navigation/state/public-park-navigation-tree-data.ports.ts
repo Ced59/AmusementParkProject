@@ -2,6 +2,7 @@ import { inject, InjectionToken } from '@angular/core';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { HistoryApiService } from '@data-access/history/history-api.service';
 import { VideosApiService } from '@data-access/videos/videos-api.service';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
@@ -39,4 +40,13 @@ export interface PublicParkNavigationTreeVideosApiServicePort {
 export const PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT = new InjectionToken<PublicParkNavigationTreeVideosApiServicePort>('PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT', {
   providedIn: 'root',
   factory: () => inject(VideosApiService)
+});
+
+export interface PublicParkNavigationTreeHistoryApiServicePort {
+  getArticle(id: string, options?: AnonymousHttpOptions): ReturnType<HistoryApiService['getArticle']>;
+}
+
+export const PUBLIC_PARK_NAVIGATION_TREE_HISTORY_API_SERVICE_PORT = new InjectionToken<PublicParkNavigationTreeHistoryApiServicePort>('PUBLIC_PARK_NAVIGATION_TREE_HISTORY_API_SERVICE_PORT', {
+  providedIn: 'root',
+  factory: () => inject(HistoryApiService)
 });

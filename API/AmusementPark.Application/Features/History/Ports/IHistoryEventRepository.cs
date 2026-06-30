@@ -15,6 +15,8 @@ public interface IHistoryEventRepository
 
     Task<IReadOnlyCollection<HistoryEvent>> GetParkTimelineAsync(string parkId, bool includeHidden, bool includeParkItemEvents, IReadOnlyCollection<string> parkItemIds, CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<HistoryEvent>> GetPublicVisibleEventsAsync(int limit, CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<HistoryEvent>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken);
 
     Task<HistoryEvent> CreateAsync(HistoryEvent historyEvent, CancellationToken cancellationToken);

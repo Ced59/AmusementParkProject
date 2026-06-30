@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
@@ -24,10 +25,12 @@ public sealed class HistoryHandlersTests
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         UpsertHistoryEventCommandHandler handler = new UpsertHistoryEventCommandHandler(
             historyRepository.Object,
             parkRepository.Object,
-            parkItemRepository.Object);
+            parkItemRepository.Object,
+            sitemapRefreshScheduler.Object);
 
         ApplicationResult<HistoryEvent> result = await handler.HandleAsync(new UpsertHistoryEventCommand(new HistoryEventWriteModel
         {
@@ -43,6 +46,7 @@ public sealed class HistoryHandlersTests
         historyRepository.VerifyNoOtherCalls();
         parkRepository.VerifyNoOtherCalls();
         parkItemRepository.VerifyNoOtherCalls();
+        sitemapRefreshScheduler.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -51,6 +55,7 @@ public sealed class HistoryHandlersTests
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         ParkItem item = new ParkItem
         {
             Id = "item-1",
@@ -75,11 +80,15 @@ public sealed class HistoryHandlersTests
                 historyEvent.ContextParkId == "park-1" &&
                 historyEvent.EventType == ParkItemHistoryEventType.Retrack.ToString()), It.IsAny<CancellationToken>()))
             .ReturnsAsync((HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        sitemapRefreshScheduler
+            .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
 
         UpsertHistoryEventCommandHandler handler = new UpsertHistoryEventCommandHandler(
             historyRepository.Object,
             parkRepository.Object,
-            parkItemRepository.Object);
+            parkItemRepository.Object,
+            sitemapRefreshScheduler.Object);
 
         ApplicationResult<HistoryEvent> result = await handler.HandleAsync(new UpsertHistoryEventCommand(new HistoryEventWriteModel
         {
@@ -98,6 +107,7 @@ public sealed class HistoryHandlersTests
         historyRepository.VerifyAll();
         parkRepository.VerifyNoOtherCalls();
         parkItemRepository.VerifyAll();
+        sitemapRefreshScheduler.VerifyAll();
     }
 
     [Fact]
@@ -139,5 +149,27 @@ public sealed class HistoryHandlersTests
         parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
         imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task DeleteHistoryEvent_WhenEventExists_ShouldRefreshSitemap()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        historyRepository
+            .Setup(repository => repository.DeleteAsync("event-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        sitemapRefreshScheduler
+            .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        DeleteHistoryEventCommandHandler handler = new DeleteHistoryEventCommandHandler(
+            historyRepository.Object,
+            sitemapRefreshScheduler.Object);
+
+        ApplicationResult result = await handler.HandleAsync(new DeleteHistoryEventCommand("event-1"));
+
+        Assert.True(result.IsSuccess);
+        historyRepository.VerifyAll();
+        sitemapRefreshScheduler.VerifyAll();
     }
 }

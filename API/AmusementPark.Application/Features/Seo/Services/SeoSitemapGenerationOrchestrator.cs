@@ -351,52 +351,62 @@ public sealed class SeoSitemapGenerationOrchestrator
 
         if (string.Equals(key, SitemapSectionKeys.ParkImages, StringComparison.OrdinalIgnoreCase))
         {
-            return 3;
+            return 5;
         }
 
         if (string.Equals(key, SitemapSectionKeys.ParkVideos, StringComparison.OrdinalIgnoreCase))
         {
-            return 4;
+            return 6;
         }
 
         if (string.Equals(key, SitemapSectionKeys.ParkItemLists, StringComparison.OrdinalIgnoreCase))
         {
-            return 5;
+            return 7;
         }
 
         if (string.Equals(key, SitemapSectionKeys.ParkZones, StringComparison.OrdinalIgnoreCase))
         {
-            return 6;
+            return 8;
         }
 
         if (string.Equals(key, SitemapSectionKeys.ParkItems, StringComparison.OrdinalIgnoreCase))
         {
-            return 7;
+            return 9;
         }
 
         if (string.Equals(key, SitemapSectionKeys.ParkItemImages, StringComparison.OrdinalIgnoreCase))
         {
-            return 8;
+            return 10;
         }
 
         if (string.Equals(key, SitemapSectionKeys.ParkItemVideos, StringComparison.OrdinalIgnoreCase))
         {
-            return 9;
+            return 11;
         }
 
         if (string.Equals(key, SitemapSectionKeys.References, StringComparison.OrdinalIgnoreCase))
         {
-            return 10;
+            return 12;
         }
 
         if (string.Equals(key, SitemapSectionKeys.TechnicalPages, StringComparison.OrdinalIgnoreCase))
         {
-            return 11;
+            return 13;
         }
 
         if (string.Equals(key, SitemapSectionKeys.ParkOpeningHours, StringComparison.OrdinalIgnoreCase))
         {
             return 2;
+        }
+
+        if (string.Equals(key, SitemapSectionKeys.History, StringComparison.OrdinalIgnoreCase))
+        {
+            return 3;
+        }
+
+        if (string.Equals(key, SitemapSectionKeys.HistoryArticles, StringComparison.OrdinalIgnoreCase))
+        {
+            return 4;
         }
 
         return 100;

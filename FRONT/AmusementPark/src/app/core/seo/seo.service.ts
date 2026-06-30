@@ -9,6 +9,7 @@ import { VideoDto } from '@app/models/videos/video-dto';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
 import { ParkReferenceDetailViewModel, ParkReferenceKind } from '@features/public/parks/models/park-reference-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
+import { HistoryArticlePageViewModel, HistoryTimelinePageViewModel } from '@features/public/history/models/history-view.model';
 import { environment } from '../../../environments/environment';
 import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/localized-text.helpers';
 import { CanonicalUrlService } from './canonical-url.service';
@@ -74,6 +75,12 @@ interface ParkOpeningHoursSeoCopy {
   description: (parkName: string, totalDays: number) => string;
 }
 
+interface HistorySeoCopy {
+  breadcrumbLabel: (ownerName: string) => string;
+  timelineDescription: (ownerName: string) => string;
+  articleDescription: (ownerName: string, dateLabel: string) => string;
+}
+
 interface ParkZonesSeoCopy {
   parkFallback: string;
   breadcrumbLabel: string;
@@ -126,6 +133,49 @@ const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpa
 const SOCIAL_IMAGE_WIDTH: number = 1200;
 const SOCIAL_IMAGE_HEIGHT: number = 630;
 const RESPONSIVE_IMAGE_VERSION: string = '2';
+
+const HISTORY_SEO_COPY: Record<string, HistorySeoCopy> = {
+  fr: {
+    breadcrumbLabel: (ownerName: string): string => `Histoire de ${ownerName}`,
+    timelineDescription: (ownerName: string): string => `Explore les dates clés, changements, incidents et grands jalons de ${ownerName}.`,
+    articleDescription: (ownerName: string, dateLabel: string): string => `Article historique sur ${ownerName}, autour de ${dateLabel}.`
+  },
+  en: {
+    breadcrumbLabel: (ownerName: string): string => `${ownerName} history`,
+    timelineDescription: (ownerName: string): string => `Explore key dates, changes, incidents and major milestones for ${ownerName}.`,
+    articleDescription: (ownerName: string, dateLabel: string): string => `History article about ${ownerName}, around ${dateLabel}.`
+  },
+  de: {
+    breadcrumbLabel: (ownerName: string): string => `Geschichte von ${ownerName}`,
+    timelineDescription: (ownerName: string): string => `Entdecke die Schlüsseldaten, Änderungen, Vorfälle und großen Meilensteine von ${ownerName}.`,
+    articleDescription: (ownerName: string, dateLabel: string): string => `Historischer Artikel über ${ownerName}, rund um ${dateLabel}.`
+  },
+  nl: {
+    breadcrumbLabel: (ownerName: string): string => `Geschiedenis van ${ownerName}`,
+    timelineDescription: (ownerName: string): string => `Ontdek de sleuteldatums, veranderingen, incidenten en grote mijlpalen van ${ownerName}.`,
+    articleDescription: (ownerName: string, dateLabel: string): string => `Historisch artikel over ${ownerName}, rond ${dateLabel}.`
+  },
+  it: {
+    breadcrumbLabel: (ownerName: string): string => `Storia di ${ownerName}`,
+    timelineDescription: (ownerName: string): string => `Esplora le date chiave, i cambiamenti, gli incidenti e le grandi tappe di ${ownerName}.`,
+    articleDescription: (ownerName: string, dateLabel: string): string => `Articolo storico su ${ownerName}, intorno al ${dateLabel}.`
+  },
+  es: {
+    breadcrumbLabel: (ownerName: string): string => `Historia de ${ownerName}`,
+    timelineDescription: (ownerName: string): string => `Explora las fechas clave, cambios, incidentes y grandes hitos de ${ownerName}.`,
+    articleDescription: (ownerName: string, dateLabel: string): string => `Artículo histórico sobre ${ownerName}, alrededor de ${dateLabel}.`
+  },
+  pl: {
+    breadcrumbLabel: (ownerName: string): string => `Historia ${ownerName}`,
+    timelineDescription: (ownerName: string): string => `Poznaj kluczowe daty, zmiany, incydenty i najważniejsze punkty historii ${ownerName}.`,
+    articleDescription: (ownerName: string, dateLabel: string): string => `Artykuł historyczny o ${ownerName}, wokół daty ${dateLabel}.`
+  },
+  pt: {
+    breadcrumbLabel: (ownerName: string): string => `História de ${ownerName}`,
+    timelineDescription: (ownerName: string): string => `Explora as datas-chave, mudanças, incidentes e grandes marcos de ${ownerName}.`,
+    articleDescription: (ownerName: string, dateLabel: string): string => `Artigo histórico sobre ${ownerName}, por volta de ${dateLabel}.`
+  }
+};
 
 const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
   en: {
@@ -1610,6 +1660,51 @@ export class SeoService {
     });
   }
 
+  applyHistoryTimelineSeo(timeline: HistoryTimelinePageViewModel, language: string, url: string, canonicalPath: string | null = null): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: HistorySeoCopy = HISTORY_SEO_COPY[normalizedLanguage] ?? HISTORY_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
+    const title: string = `${timeline.title} — ${SITE_NAME}`;
+    const description: string = copy.timelineDescription(timeline.ownerName);
+    const imageId: string | null = timeline.events.find((event) => !!event.mainImageId)?.mainImageId ?? null;
+
+    this.apply({
+      title,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: timeline.events.length > 0 ? 'index,follow' : 'noindex,follow',
+      alternates: this.hreflangService.buildAlternates(seoUrl),
+      imageUrl: this.resolveImageIdAbsoluteUrl(imageId) ?? undefined,
+      imageAlt: timeline.ownerName,
+      jsonLd: [
+        this.buildHistoryTimelineBreadcrumbJsonLd(timeline, seoUrl),
+        this.buildHistoryTimelineJsonLd(timeline, seoUrl, description)
+      ]
+    });
+  }
+
+  applyHistoryArticleSeo(article: HistoryArticlePageViewModel, language: string, url: string, canonicalPath: string | null = null): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: HistorySeoCopy = HISTORY_SEO_COPY[normalizedLanguage] ?? HISTORY_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
+    const descriptionFallback: string = copy.articleDescription(article.ownerName, article.dateLabel);
+    const description: string = truncateSeoText(normalizeSeoText(article.summary, descriptionFallback), 160);
+
+    this.apply({
+      title: `${article.title} — ${SITE_NAME}`,
+      description,
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: 'index,follow',
+      alternates: this.hreflangService.buildAlternates(seoUrl),
+      imageUrl: this.resolveImageIdAbsoluteUrl(article.mainImageId) ?? undefined,
+      imageAlt: article.title,
+      jsonLd: [
+        this.buildHistoryArticleBreadcrumbJsonLd(article, seoUrl),
+        this.buildHistoryArticleJsonLd(article, seoUrl, description)
+      ]
+    });
+  }
+
   setHtmlLanguage(language: string): void {
     const normalizedLanguage: string = language?.trim() || SEO_DEFAULT_LANGUAGE;
     this.document.documentElement.lang = normalizedLanguage;
@@ -1899,6 +1994,109 @@ export class SeoService {
       { name: item.name ?? 'Item', url: this.canonicalUrlService.buildAbsoluteUrl(itemDetailPath) },
       { name: pageLabel, url: canonicalUrl }
     ]);
+  }
+
+  private buildHistoryTimelineBreadcrumbJsonLd(timeline: HistoryTimelinePageViewModel, url: string): unknown {
+    const language: string = this.resolveLanguageFromUrl(url);
+    const label: string = this.resolveHistoryBreadcrumbLabel(language, timeline.ownerName);
+
+    if (timeline.parkItem && timeline.park) {
+      return this.buildParkItemSubpageBreadcrumbJsonLd(timeline.parkItem, timeline.park, url, label);
+    }
+
+    return this.buildParkSubpageBreadcrumbJsonLd(timeline.park ?? { name: timeline.ownerName } as Park, url, label);
+  }
+
+  private buildHistoryArticleBreadcrumbJsonLd(article: HistoryArticlePageViewModel, url: string): unknown {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
+    const segments: string[] = this.getPathSegments(url);
+    const parkDetailPath: string = segments.length >= 4
+      ? `/${segments.slice(0, 4).join('/')}`
+      : `/${language}/parks`;
+    const isItemArticle: boolean = !!article.parkItem;
+    const itemDetailPath: string = isItemArticle && segments.length >= 7
+      ? `/${segments.slice(0, 7).join('/')}`
+      : parkDetailPath;
+    const timelinePath: string = isItemArticle && segments.length >= 8
+      ? `/${segments.slice(0, 8).join('/')}`
+      : segments.length >= 5
+        ? `/${segments.slice(0, 5).join('/')}`
+        : parkDetailPath;
+    const items: Array<{ name: string; url: string }> = [
+      { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: this.resolveParksBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: article.park?.name ?? article.contextPark?.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) }
+    ];
+
+    if (article.parkItem) {
+      items.push({
+        name: article.parkItem.name,
+        url: this.canonicalUrlService.buildAbsoluteUrl(itemDetailPath)
+      });
+    }
+
+    items.push(
+      { name: this.resolveHistoryBreadcrumbLabel(language, article.ownerName), url: this.canonicalUrlService.buildAbsoluteUrl(timelinePath) },
+      { name: article.title, url: canonicalUrl }
+    );
+
+    return this.buildBreadcrumbJsonLd(items);
+  }
+
+  private buildHistoryTimelineJsonLd(timeline: HistoryTimelinePageViewModel, url: string, description: string): unknown {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: timeline.title,
+      description,
+      url: canonicalUrl,
+      numberOfItems: timeline.events.length,
+      itemListElement: timeline.events.map((event, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: event.title,
+        description: event.summary || event.eventTypeLabel,
+        url: event.articleLink
+          ? this.canonicalUrlService.buildAbsoluteUrl(event.articleLink.join('/'))
+          : canonicalUrl
+      }))
+    };
+  }
+
+  private buildHistoryArticleJsonLd(article: HistoryArticlePageViewModel, url: string, description: string): unknown {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const articleJsonLd: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: article.title,
+      description,
+      url: canonicalUrl,
+      datePublished: this.resolveHistoryEventDatePublished(article),
+      dateModified: article.event.updatedAtUtc,
+      about: article.ownerName
+    };
+
+    const imageUrl: string | null = this.resolveImageIdAbsoluteUrl(article.mainImageId);
+    if (imageUrl) {
+      articleJsonLd['image'] = imageUrl;
+    }
+
+    return articleJsonLd;
+  }
+
+  private resolveHistoryEventDatePublished(article: HistoryArticlePageViewModel): string {
+    const month: number = article.event.month ?? 1;
+    const day: number = article.event.day ?? 1;
+    return new Date(Date.UTC(article.event.year, month - 1, day)).toISOString();
+  }
+
+  private resolveHistoryBreadcrumbLabel(language: string, ownerName: string): string {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: HistorySeoCopy = HISTORY_SEO_COPY[normalizedLanguage] ?? HISTORY_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    return copy.breadcrumbLabel(ownerName);
   }
 
   private resolveParkImagesBreadcrumbLabel(language: string, parkLabel: string): string {
