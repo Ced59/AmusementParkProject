@@ -40,6 +40,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 - Ne pas mettre les conditions d’accès, restrictions, tailles, tarifs ou informations purement techniques dans les descriptions : ces données doivent aller dans les champs JSON prévus.
 - Les conditions d’accès de chaque attraction doivent être recherchées systématiquement et intégrées dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.
 - Les enums utilisées dans un JSON upsert doivent venir de `park-graph-upsert-enums.md`, avec les valeurs canoniques exactes.
+- Les dates ne doivent jamais être inventées. Si seule l’année d’ouverture ou de fermeture est fiable, renseigner l’année seule dans le JSON ; ne jamais fabriquer un `01-01` ou un premier jour de mois.
 - Les images externes doivent pointer vers une URL HTTP(S) publique que l’importeur peut télécharger et reconnaître comme image réelle. Un CDN est accepté s’il renvoie bien des octets d’image importables.
 - Une image ne doit jamais être livrée si son propriétaire n’est pas résolu. Un warning Preview du type `Remote image ignored: owner could not be resolved` est une erreur de livrable à corriger avant import.
 - Tout `manufacturerKey`, `zoneKey`, `operatorKey`, `founderKey` ou `ownerKey` utilisé doit être résolu dans le même JSON ou par une identité existante sûre.

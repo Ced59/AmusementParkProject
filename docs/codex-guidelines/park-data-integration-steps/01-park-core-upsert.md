@@ -39,8 +39,10 @@ Cette étape inclut les références nécessaires à la fiche parc. Ne pas crée
 
 ## Règles dates
 
-- Utiliser `openingDate` ou `closingDate` seulement avec une date complète fiable au format `YYYY-MM-DD`.
-- Si seule l’année ou le mois est fiable, utiliser `openingDateText` ou `closingDateText`.
+- Utiliser `openingDate` ou `closingDate` avec une date complète fiable au format `YYYY-MM-DD`.
+- Si seule l’année est fiable, renseigner l’année seule, par exemple `"openingDate": "1987"` ou `"closingDate": "1991"`. L’import la conserve comme précision textuelle et ne doit jamais l’interpréter comme le 1er janvier.
+- Si seul le mois est fiable, utiliser une précision textuelle, par exemple `openingDateText: "mai 1987"` ou `openingDate: "1987-05"` si le mois numérique est sûr.
+- Ne pas laisser une date vide si l’année est fiable : l’année seule est une information utile.
 - Ne pas inventer `01-01` ou le premier jour d’un mois pour rendre une date compatible.
 - Pour un parc disparu, conserver la visibilité si le parc est pertinent historiquement, mais garder `adminReviewStatus: "ToReview"` tant que la fiche n’est pas auditée.
 
@@ -87,7 +89,6 @@ Exemple de forme :
     "type": "ThemePark",
     "status": "Operating",
     "openingDate": "1992-04-12",
-    "openingDateText": null,
     "websiteUrl": "https://example.com",
     "city": "Ville",
     "latitude": 48.123456,
@@ -101,7 +102,8 @@ Exemple de forme :
 ## Contrôles avant livraison
 
 - Le parc est pertinent.
-- La date complète n’est utilisée que si elle est sûre.
+- Une date complète n’est utilisée que si elle est sûre.
+- Une année fiable est renseignée seule, sans jour ou mois inventé.
 - Les coordonnées pointent sur le parc ou l’entrée principale, pas sur une ville.
 - Le fondateur et l’exploitant ne sont pas confondus.
 - Les `founderKey` et `operatorKey` utilisés sont résolus dans le même JSON ou déjà présents dans l’export.

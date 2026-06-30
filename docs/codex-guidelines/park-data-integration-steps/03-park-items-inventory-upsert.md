@@ -85,6 +85,10 @@ Ne jamais mettre ces conditions dans les descriptions longues. Si les conditions
 
 - Un item fermé mais confirmé reste visible si son intérêt public ou historique est réel.
 - Ajouter un statut de fermeture définitive quand il est fiable, et un tag ou une note `closed-definitively` si le modèle ou le lot le prévoit.
+- Utiliser `attractionDetails.openingDate` ou `attractionDetails.closingDate` avec une date complète fiable au format `YYYY-MM-DD`.
+- Si seule l’année est fiable, renseigner l’année seule dans le champ date, par exemple `"openingDate": "1988"`. L’import la conserve comme précision textuelle et ne doit jamais l’interpréter comme le 1er janvier.
+- Si seul le mois est fiable, utiliser une précision textuelle, par exemple `openingDateText: "mai 1988"` ou `openingDate: "1988-05"` si le mois numérique est sûr.
+- Ne pas laisser une date vide si l’année est fiable : l’année seule est une information utile.
 - Ne pas utiliser une date complète sans source complète.
 - Ne pas confondre annonce, soft opening, ouverture publique et réouverture.
 - Pour une attraction déplacée, renseigner l’état dans le parc courant et réserver les autres vies à l’étape histoire.
@@ -183,7 +187,7 @@ Sections possibles :
 - Toutes les `manufacturerKey` sont résolues par l’export actualisé ou par `references.manufacturers` dans le même JSON.
 - Les conditions d’accès trouvées sont dans `attractionDetails.accessConditions`, pas dans les descriptions.
 - Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
-- Les dates sont exactes ou restent textuelles.
+- Les dates sont exactes ou restent textuelles ; aucune année seule n’est transformée en date complète inventée.
 - Les anciens items importants ne sont pas supprimés.
 - Les items sans source fiable restent absents ou `ToReview`.
 

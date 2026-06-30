@@ -1,6 +1,20 @@
 {
-  "version": "3.1.15",
+  "version": "3.1.16",
   "history": [
+    {
+      "version": "3.1.16",
+      "releasedAt": "2026-06-30",
+      "labels": {
+        "fr": "Les dates partielles restent plus fidèles.",
+        "en": "Partial dates stay more faithful.",
+        "de": "Teilweise Daten bleiben genauer erhalten.",
+        "nl": "Gedeeltelijke datums blijven betrouwbaarder.",
+        "it": "Le date parziali restano più fedeli.",
+        "es": "Las fechas parciales se conservan mejor.",
+        "pl": "Daty częściowe pozostają wierniejsze.",
+        "pt": "As datas parciais ficam mais fiéis."
+      }
+    },
     {
       "version": "3.1.15",
       "releasedAt": "2026-06-30",

@@ -60,10 +60,28 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchString(patch, "countryCode", park.CountryCode, value => park.CountryCode = value?.ToUpperInvariant(), change);
         PatchEnumNullable(patch, "type", park.Type, value => park.Type = value, change, "type");
         PatchParkStatus(patch, park, change);
-        PatchDateNullable(patch, "openingDate", park.OpeningDate, value => park.OpeningDate = value, change, "openingDate");
-        PatchDateNullable(patch, "closingDate", park.ClosingDate, value => park.ClosingDate = value, change, "closingDate");
-        PatchString(patch, "openingDateText", park.OpeningDateText, value => park.OpeningDateText = value, change);
-        PatchString(patch, "closingDateText", park.ClosingDateText, value => park.ClosingDateText = value, change);
+        PatchLifecycleDate(
+            patch,
+            "openingDate",
+            "openingDateText",
+            park.OpeningDate,
+            park.OpeningDateText,
+            value => park.OpeningDate = value,
+            value => park.OpeningDateText = value,
+            change,
+            "openingDate",
+            "openingDateText");
+        PatchLifecycleDate(
+            patch,
+            "closingDate",
+            "closingDateText",
+            park.ClosingDate,
+            park.ClosingDateText,
+            value => park.ClosingDate = value,
+            value => park.ClosingDateText = value,
+            change,
+            "closingDate",
+            "closingDateText");
         PatchString(patch, "founderId", park.FounderId, value => park.FounderId = value, change);
         PatchString(patch, "operatorId", park.OperatorId, value => park.OperatorId = value, change);
         PatchString(patch, "websiteUrl", park.WebsiteUrl, value => park.WebsiteUrl = value, change);
@@ -288,10 +306,28 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchString(patch, "launchType", details.LaunchType, value => details.LaunchType = value, change, "attractionDetails.launchType");
         PatchString(patch, "restraintType", details.RestraintType, value => details.RestraintType = value, change, "attractionDetails.restraintType");
         PatchBoolNullable(patch, "isLaunched", details.IsLaunched, value => details.IsLaunched = value, change, "attractionDetails.isLaunched");
-        PatchDateNullable(patch, "openingDate", details.OpeningDate, value => details.OpeningDate = value, change, "attractionDetails.openingDate");
-        PatchDateNullable(patch, "closingDate", details.ClosingDate, value => details.ClosingDate = value, change, "attractionDetails.closingDate");
-        PatchString(patch, "openingDateText", details.OpeningDateText, value => details.OpeningDateText = value, change, "attractionDetails.openingDateText");
-        PatchString(patch, "closingDateText", details.ClosingDateText, value => details.ClosingDateText = value, change, "attractionDetails.closingDateText");
+        PatchLifecycleDate(
+            patch,
+            "openingDate",
+            "openingDateText",
+            details.OpeningDate,
+            details.OpeningDateText,
+            value => details.OpeningDate = value,
+            value => details.OpeningDateText = value,
+            change,
+            "attractionDetails.openingDate",
+            "attractionDetails.openingDateText");
+        PatchLifecycleDate(
+            patch,
+            "closingDate",
+            "closingDateText",
+            details.ClosingDate,
+            details.ClosingDateText,
+            value => details.ClosingDate = value,
+            value => details.ClosingDateText = value,
+            change,
+            "attractionDetails.closingDate",
+            "attractionDetails.closingDateText");
         PatchIntNullable(patch, "durationInSeconds", details.DurationInSeconds, value => details.DurationInSeconds = value, change, "attractionDetails.durationInSeconds");
         PatchIntNullable(patch, "capacityPerHour", details.CapacityPerHour, value => details.CapacityPerHour = value, change, "attractionDetails.capacityPerHour");
         PatchDoubleNullable(patch, "heightInFeet", details.HeightInFeet, value => details.HeightInFeet = value, change, "attractionDetails.heightInFeet");
