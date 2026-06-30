@@ -44,6 +44,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 - Une image ne doit jamais être livrée si son propriétaire n’est pas résolu. Un warning Preview du type `Remote image ignored: owner could not be resolved` est une erreur de livrable à corriger avant import.
 - Tout `manufacturerKey`, `zoneKey`, `operatorKey`, `founderKey` ou `ownerKey` utilisé doit être résolu dans le même JSON ou par une identité existante sûre.
 - Les horaires, dates d’ouverture et événements datés doivent être vérifiés avec des sources actuelles et ne doivent pas être mélangés aux tarifs si les tarifs ne sont pas implémentés.
+- Les libellés et raisons visibles dans le calendrier doivent être réservés aux événements nommés, exceptions datées ou informations temporaires utiles. Ne jamais y répéter des commentaires généraux sur tous les jours normaux.
 - Les articles doivent apporter une vraie valeur éditoriale, avec des sources vérifiées, et ne doivent pas devenir des fiches techniques déguisées.
 - Les événements et articles historiques doivent être rédigés pour les visiteurs, sans phrases d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur la présence confirmée d’un élément.
 - Les sources d’articles et d’événements doivent être des URL HTTP(S) valides et joignables au moment de la génération. Ne jamais livrer de source en 404, 410, erreur serveur, soft-404 ou URL inventée.

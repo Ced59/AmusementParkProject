@@ -37,6 +37,35 @@ Ne pas mettre ces informations dans les descriptions du parc.
 
 Ne pas inventer un calendrier complet à partir d’une information partielle. Distinguer période d’ouverture, jours d’ouverture, horaires, dernières admissions et fermetures exceptionnelles. Documenter les incertitudes dans `metadata.notes`.
 
+## Libellés visibles dans le calendrier
+
+Les champs `openingHours.regularRules[].labels`, `openingHours.regularRules[].reasons`, `openingHours.dateOverrides[].labels` et `openingHours.dateOverrides[].reasons` alimentent les informations visibles sur les jours du calendrier public.
+
+Ils doivent servir à faire ressortir une information spéciale utile au visiteur :
+
+- événement nommé ;
+- nocturne nommée ;
+- horaires Halloween, Noël ou festival identifié ;
+- fermeture exceptionnelle datée ;
+- ouverture exceptionnelle datée ;
+- condition temporaire vraiment spécifique à la période affichée.
+
+Ne jamais remplir ces champs avec des commentaires généraux répétés sur tous les jours ou sur une longue période normale. Ces commentaires noient les vrais événements dans le calendrier.
+
+Interdits dans `labels` et `reasons` :
+
+- “horaires officiels actuels” ;
+- “horaires officiels des attractions” ;
+- “parc ouvert selon le calendrier officiel” ;
+- “période renseignée” ;
+- “haute saison” ou “saison estivale” sans nom d’événement ;
+- commentaire de source, d’audit ou de prudence ;
+- information qui serait identique sur presque tous les jours d’ouverture.
+
+Si une règle ne fait que décrire les horaires normaux, laisser `labels` et `reasons` vides. Mettre les remarques de source ou de prudence dans `openingHours.notes` ou `metadata.notes`, pas dans les informations affichées par jour.
+
+Si un libellé apparaît sur de nombreux jours, il doit correspondre à un événement nommé ou à une exception clairement identifiable. Sinon, le retirer.
+
 ## Événements nommés
 
 Un événement nommé peut être intégré s’il est clairement identifié par le parc ou une source fiable :
@@ -124,6 +153,8 @@ Section principale : `openingHours`.
 - Aucune saison générique n’est transformée en événement historique.
 - Les exceptions datées ont une source.
 - Les libellés publics sont localisés.
+- `labels` et `reasons` ne contiennent que des événements nommés, exceptions datées ou informations temporaires vraiment utiles sur le jour affiché.
+- Aucun commentaire général n’est répété sur les jours normaux du calendrier.
 - Les `daysOfWeek` utilisent uniquement les valeurs canoniques de `park-graph-upsert-enums.md`.
 - Le calendrier n’est pas extrapolé au-delà des sources.
 - Les fermetures exceptionnelles ne sont pas confondues avec une fermeture définitive du parc.

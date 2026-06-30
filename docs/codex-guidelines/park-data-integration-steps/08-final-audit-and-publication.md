@@ -88,6 +88,8 @@ Vérifier :
 - événements nommés seulement ;
 - pas de “ouverture estivale” générique transformée en événement ;
 - labels et raisons localisés ;
+- `openingHours.labels` et `openingHours.reasons` réservés aux événements nommés, exceptions datées ou informations temporaires vraiment utiles ;
+- aucun commentaire général répété sur tous les jours normaux du calendrier ;
 - fermetures exceptionnelles distinctes des fermetures définitives.
 
 ## Audit histoire
