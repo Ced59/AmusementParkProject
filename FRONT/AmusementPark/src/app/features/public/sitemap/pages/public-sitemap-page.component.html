@@ -1,0 +1,100 @@
+<section class="sitemap-page public-page">
+  <header class="sitemap-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <div class="sitemap-hero__content">
+      <app-ui-kicker tone="sky" iconClass="pi pi-sitemap">
+        {{ 'sitemapPage.kicker' | translate }}
+      </app-ui-kicker>
+      <h1>{{ 'sitemapPage.title' | translate }}</h1>
+      <p>{{ 'sitemapPage.subtitle' | translate }}</p>
+    </div>
+    <div class="sitemap-hero__visual" aria-hidden="true">
+      <span class="sitemap-hero__node sitemap-hero__node--main"></span>
+      <span class="sitemap-hero__line sitemap-hero__line--one"></span>
+      <span class="sitemap-hero__line sitemap-hero__line--two"></span>
+      <span class="sitemap-hero__node sitemap-hero__node--sky"></span>
+      <span class="sitemap-hero__node sitemap-hero__node--lime"></span>
+      <span class="sitemap-hero__node sitemap-hero__node--gold"></span>
+    </div>
+  </header>
+
+  <section class="sitemap-shell" appUiSurface="shell" appUiSurfacePadding="regular" [attr.aria-busy]="loading()">
+    <div class="sitemap-shell__head">
+      <div>
+        <h2>{{ 'sitemapPage.treeTitle' | translate }}</h2>
+        <p>{{ 'sitemapPage.treeSubtitle' | translate }}</p>
+      </div>
+      <span class="sitemap-shell__language">{{ currentLang() | uppercase }}</span>
+    </div>
+
+    @if (loading()) {
+      <div class="sitemap-state">
+        <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+        <span>{{ 'sitemapPage.loading' | translate }}</span>
+      </div>
+    } @else if (errorKey(); as error) {
+      <div class="sitemap-state sitemap-state--error">
+        <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+        <span>{{ error | translate }}</span>
+      </div>
+    } @else if (rootNodes().length === 0) {
+      <div class="sitemap-state">
+        <i class="pi pi-inbox" aria-hidden="true"></i>
+        <span>{{ 'sitemapPage.empty' | translate }}</span>
+      </div>
+    } @else {
+      <ng-container
+        *ngTemplateOutlet="nodeList; context: { $implicit: rootNodes(), level: 1 }">
+      </ng-container>
+    }
+  </section>
+</section>
+
+<ng-template #nodeList let-nodes let-level="level">
+  <ul class="sitemap-tree" [class.sitemap-tree--root]="level === 1">
+    @for (node of nodes; track trackNode($index, node)) {
+      <li class="sitemap-tree__item" [style.--tree-level]="level">
+        <div class="sitemap-tree__row">
+          @if (node.hasChildren) {
+            <button
+              class="sitemap-tree__toggle"
+              type="button"
+              [attr.aria-expanded]="isExpanded(node.id)"
+              [attr.aria-label]="(isExpanded(node.id) ? 'sitemapPage.collapse' : 'sitemapPage.expand') | translate:{ label: node.label }"
+              (click)="toggleNode(node)">
+              <i class="pi" [class.pi-chevron-down]="isExpanded(node.id)" [class.pi-chevron-right]="!isExpanded(node.id)" aria-hidden="true"></i>
+            </button>
+          } @else {
+            <span class="sitemap-tree__spacer" aria-hidden="true"></span>
+          }
+
+          @if (node.relativeUrl; as relativeUrl) {
+            <a class="sitemap-tree__link" [routerLink]="relativeUrl">
+              <span>{{ node.label }}</span>
+              <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          } @else {
+            <span class="sitemap-tree__label">{{ node.label }}</span>
+          }
+        </div>
+
+        @if (node.hasChildren && isExpanded(node.id)) {
+          @if (isNodeLoading(node.id)) {
+            <div class="sitemap-tree__status">
+              <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              <span>{{ 'sitemapPage.childrenLoading' | translate }}</span>
+            </div>
+          } @else if (hasNodeError(node.id)) {
+            <div class="sitemap-tree__status sitemap-tree__status--error">
+              <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+              <span>{{ 'sitemapPage.childrenError' | translate }}</span>
+            </div>
+          } @else {
+            <ng-container
+              *ngTemplateOutlet="nodeList; context: { $implicit: childrenFor(node.id), level: level + 1 }">
+            </ng-container>
+          }
+        }
+      </li>
+    }
+  </ul>
+</ng-template>

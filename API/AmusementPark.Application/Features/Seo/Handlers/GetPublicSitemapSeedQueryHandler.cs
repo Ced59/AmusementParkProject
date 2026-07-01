@@ -26,6 +26,9 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
     {
         "home",
         "parks",
+        "sitemap",
+        "manufacturers",
+        "technical",
         "rankings",
         "about",
         "contact",
@@ -83,6 +86,11 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         IReadOnlyCollection<ParkItem> publicItems = await SitemapPublicCandidateLoader.LoadPublicItemsAsync(
             this.parkItemRepository,
             cancellationToken);
+        HashSet<string> parkIdsWithMapMarkers = publicItems
+            .Where(ParksSitemapSectionProvider.HasPublicMapMarker)
+            .Select(static item => item.ParkId)
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
         HashSet<string> parkIdsWithPublishedItemImages = publicItems
             .Where(item => !string.IsNullOrWhiteSpace(item.Id) && itemIdsWithPublishedImages.Contains(item.Id))
             .Select(static item => item.ParkId)
@@ -99,7 +107,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
                 VideoOwnerType.ParkItem,
                 cancellationToken));
 
-        this.AddParkUrls(urls, visibleParks, languages, parkIdsWithPublishedImages, parkIdsWithPublishedItemImages, videosByParkId);
+        this.AddParkUrls(urls, visibleParks, languages, parkIdsWithPublishedImages, parkIdsWithPublishedItemImages, parkIdsWithMapMarkers, videosByParkId);
         this.AddParkItemUrls(urls, visibleParkById, languages, publicItems, itemIdsWithPublishedImages, videosByItemId);
 
         await this.AddReferenceUrlsAsync(urls, languages, cancellationToken);
@@ -146,6 +154,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         IReadOnlyCollection<string> languages,
         HashSet<string> parkIdsWithPublishedImages,
         HashSet<string> parkIdsWithPublishedItemImages,
+        HashSet<string> parkIdsWithMapMarkers,
         IReadOnlyDictionary<string, List<Video>> videosByParkId)
     {
         foreach (Park park in parks)
@@ -159,6 +168,11 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             foreach (string language in languages)
             {
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc));
+                if (parkIdsWithMapMarkers.Contains(park.Id))
+                {
+                    urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/map", park.UpdatedAtUtc));
+                }
+
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/weather", park.UpdatedAtUtc));
                 if (parkIdsWithPublishedImages.Contains(park.Id) || parkIdsWithPublishedItemImages.Contains(park.Id))
                 {

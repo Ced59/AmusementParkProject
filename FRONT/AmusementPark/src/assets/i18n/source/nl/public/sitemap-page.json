@@ -1,0 +1,16 @@
+{
+  "sitemapPage": {
+    "kicker": "Sitemap",
+    "title": "Publieke sitemap",
+    "subtitle": "Vind parken, interactieve kaarten, technische gidsen en publieke referentiepagina's in de huidige taal.",
+    "treeTitle": "Publieke pagina's",
+    "treeSubtitle": "De boom volgt dezelfde publieke routes als de zichtbare pagina's van de site.",
+    "loading": "Sitemap laden",
+    "error": "De sitemap kon niet worden geladen.",
+    "empty": "Er is nog geen publieke pagina beschikbaar.",
+    "childrenLoading": "Laden",
+    "childrenError": "Deze tak kon niet worden geladen.",
+    "expand": "{{label}} openen",
+    "collapse": "{{label}} sluiten"
+  }
+}

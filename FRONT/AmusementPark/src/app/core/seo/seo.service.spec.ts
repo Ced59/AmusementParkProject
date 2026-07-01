@@ -392,6 +392,31 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
+  it('applies indexable localized metadata to the public sitemap page', () => {
+    service.applyRouteDefaults('/fr/sitemap');
+
+    expect(documentRef.title).toBe('Plan du site - Amusement Parks');
+    expect(readMetaContent('meta[name="description"]'))
+      .toBe('Explore le plan public d’Amusement Parks avec les parcs, cartes interactives, dossiers techniques et pages de référence.');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/sitemap');
+  });
+
+  it('applies indexable interactive map metadata to public park map pages', () => {
+    service.applyParkMapSeo(buildPark({ name: 'Parc Demo' }), 'fr', '/fr/park/park-1/parc-demo/map');
+
+    expect(documentRef.title).toBe('Carte interactive de Parc Demo — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toBe('Carte interactive de Parc Demo.');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park/park-1/parc-demo/map');
+  });
+
+  it('keeps public park map pages noindex when no map marker is available', () => {
+    service.applyParkMapSeo(buildPark({ name: 'Parc Demo' }), 'fr', '/fr/park/park-1/parc-demo/map', null, null, false);
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+  });
+
   function readMetaContent(selector: string): string | null {
     return documentRef.head.querySelector<HTMLMetaElement>(selector)?.content ?? null;
   }

@@ -29,17 +29,20 @@ public sealed class SeoController : ControllerBase
     private readonly IWebHostEnvironment environment;
     private readonly ISeoSitemapSettingsRepository sitemapSettingsRepository;
     private readonly IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>> getPublicSitemapDocumentQueryHandler;
+    private readonly IQueryHandler<GetPublicHtmlSitemapNodesQuery, ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>> getPublicHtmlSitemapNodesQueryHandler;
 
     public SeoController(
         IOptions<SeoSettings> settings,
         IWebHostEnvironment environment,
         ISeoSitemapSettingsRepository sitemapSettingsRepository,
-        IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>> getPublicSitemapDocumentQueryHandler)
+        IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>> getPublicSitemapDocumentQueryHandler,
+        IQueryHandler<GetPublicHtmlSitemapNodesQuery, ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>> getPublicHtmlSitemapNodesQueryHandler)
     {
         this.settings = settings.Value;
         this.environment = environment;
         this.sitemapSettingsRepository = sitemapSettingsRepository;
         this.getPublicSitemapDocumentQueryHandler = getPublicSitemapDocumentQueryHandler;
+        this.getPublicHtmlSitemapNodesQueryHandler = getPublicHtmlSitemapNodesQueryHandler;
     }
 
     [HttpGet("/robots.txt")]
@@ -105,6 +108,27 @@ public sealed class SeoController : ControllerBase
     public async Task<IActionResult> HeadSitemapSectionXml([FromRoute] string sectionFileName, CancellationToken cancellationToken = default)
     {
         return await this.GetSitemapDocumentHeadAsync(sectionFileName, cancellationToken);
+    }
+
+    [HttpGet("/seo/html-sitemap/nodes")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
+    [Produces("application/json")]
+    [ProducesResponseType(typeof(IReadOnlyCollection<PublicHtmlSitemapNode>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetPublicHtmlSitemapNodesAsync(
+        [FromQuery] string language,
+        [FromQuery] string? parentNodeId,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await this.getPublicHtmlSitemapNodesQueryHandler.HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery(language, parentNodeId, this.settings.SupportedLanguages),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value);
     }
 
     [HttpGet("/{key}.txt")]

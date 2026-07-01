@@ -32,6 +32,15 @@ public sealed partial class PublicSeoUrlResolver
         }
     }
 
+    private static void AddParkMapUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages, PublicSeoParkSnapshot park)
+    {
+        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
+        foreach (string language in languages)
+        {
+            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/map");
+        }
+    }
+
     private static void AddParkHistoryUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages, PublicSeoParkSnapshot park)
     {
         string parkSlug = SeoSlugService.ToSlug(park.Name, "park");

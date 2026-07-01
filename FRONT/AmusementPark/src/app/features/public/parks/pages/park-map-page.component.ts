@@ -50,7 +50,8 @@ export class ParkMapPageComponent implements OnInit {
   ) {
     effect((): void => {
       const currentPark = this.park();
-      if (!currentPark) {
+      const currentMap = this.map();
+      if (!currentPark || !currentMap) {
         return;
       }
 
@@ -67,7 +68,8 @@ export class ParkMapPageComponent implements OnInit {
         this.currentLanguage(),
         this.router.url,
         this.parkImageId(),
-        buildPublicRoutePath(buildPublicParkMapRouteCommands(routeTarget))
+        buildPublicRoutePath(buildPublicParkMapRouteCommands(routeTarget)),
+        currentMap.hasItemMarkers
       );
     });
   }

@@ -2505,7 +2505,8 @@
     "explore": {
       "title": "Explore",
       "allParks": "All parks",
-      "interactiveMap": "Interactive map"
+      "interactiveMap": "Interactive map",
+      "sitemap": "Sitemap"
     },
     "about": {
       "title": "About",
@@ -3695,6 +3696,20 @@
       "description": "Send this video to someone who may enjoy it.",
       "text": "Watch {{title}} on AmusementPark."
     }
+  },
+  "sitemapPage": {
+    "kicker": "Sitemap",
+    "title": "Public site map",
+    "subtitle": "Find parks, interactive maps, technical guides and public reference pages in the current language.",
+    "treeTitle": "Public pages",
+    "treeSubtitle": "The tree follows the same public routes as the searchable site pages.",
+    "loading": "Loading the sitemap",
+    "error": "Unable to load the sitemap.",
+    "empty": "No public page is available yet.",
+    "childrenLoading": "Loading",
+    "childrenError": "This branch could not be loaded.",
+    "expand": "Open {{label}}",
+    "collapse": "Close {{label}}"
   },
   "technicalPages": {
     "list": {

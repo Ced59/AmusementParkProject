@@ -119,6 +119,10 @@ public sealed partial class PublicSeoUrlResolver
 
             AddParkDetailUrls(relativePaths, languages, parentPark);
             AddParkItemListUrls(relativePaths, languages, parentPark);
+            if (HasPublicMapMarker(item))
+            {
+                AddParkMapUrls(relativePaths, languages, parentPark);
+            }
 
             IReadOnlyCollection<ParkZone> parentZones = parentZonesByParkId.GetValueOrDefault(item.ParkId) ?? Array.Empty<ParkZone>();
             AddZoneImpactUrls(relativePaths, languages, parentPark, new[] { item }, parentZones);
@@ -148,6 +152,11 @@ public sealed partial class PublicSeoUrlResolver
         CancellationToken cancellationToken)
     {
         AddParkDetailUrls(relativePaths, languages, park);
+
+        if (currentPublicItems.Any(HasPublicMapMarker))
+        {
+            AddParkMapUrls(relativePaths, languages, park);
+        }
 
         if (HasParkLifecycleDate(park) || currentPublicItems.Any(HasParkItemLifecycleDate))
         {
@@ -491,6 +500,11 @@ public sealed partial class PublicSeoUrlResolver
         return item.OpeningDate.HasValue || item.ClosingDate.HasValue;
     }
 
+    private static bool HasPublicMapMarker(PublicSeoParkItemSnapshot item)
+    {
+        return IsPublicItem(item) && item.HasPosition;
+    }
+
     private static string BuildParkRouteKey(PublicSeoParkSnapshot park)
     {
         return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.Status}:{park.AdminReviewStatus}:{park.OpeningDate?.Ticks}:{park.ClosingDate?.Ticks}";
@@ -498,7 +512,7 @@ public sealed partial class PublicSeoUrlResolver
 
     private static string BuildItemRouteKey(PublicSeoParkItemSnapshot item)
     {
-        return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.Status}:{item.AdminReviewStatus}:{item.OpeningDate?.Ticks}:{item.ClosingDate?.Ticks}";
+        return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.Status}:{item.AdminReviewStatus}:{item.OpeningDate?.Ticks}:{item.ClosingDate?.Ticks}:{item.HasPosition}";
     }
 
     private static string BuildVideoRouteKey(PublicSeoVideoSnapshot video)

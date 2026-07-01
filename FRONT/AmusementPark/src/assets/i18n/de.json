@@ -2505,7 +2505,8 @@
     "explore": {
       "title": "Entdecken",
       "allParks": "Alle Parks",
-      "interactiveMap": "Interaktive Karte"
+      "interactiveMap": "Interaktive Karte",
+      "sitemap": "Sitemap"
     },
     "about": {
       "title": "Über uns",
@@ -3695,6 +3696,20 @@
       "description": "Sende dieses Video an jemanden, dem es gefallen könnte.",
       "text": "Sieh dir {{title}} auf AmusementPark an."
     }
+  },
+  "sitemapPage": {
+    "kicker": "Sitemap",
+    "title": "Öffentliche Sitemap",
+    "subtitle": "Finde Parks, interaktive Karten, Technik-Guides und öffentliche Referenzseiten in der aktuellen Sprache.",
+    "treeTitle": "Öffentliche Seiten",
+    "treeSubtitle": "Der Baum folgt denselben öffentlichen Routen wie die sichtbaren Seiten der Website.",
+    "loading": "Sitemap wird geladen",
+    "error": "Die Sitemap konnte nicht geladen werden.",
+    "empty": "Derzeit ist keine öffentliche Seite verfügbar.",
+    "childrenLoading": "Wird geladen",
+    "childrenError": "Dieser Zweig konnte nicht geladen werden.",
+    "expand": "{{label}} öffnen",
+    "collapse": "{{label}} schließen"
   },
   "technicalPages": {
     "list": {

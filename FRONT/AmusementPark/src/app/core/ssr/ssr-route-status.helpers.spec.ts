@@ -19,6 +19,7 @@ describe('SSR route status helpers', () => {
       '/fr',
       '/fr/home',
       '/fr/parks',
+      '/fr/sitemap',
       '/fr/rankings',
       '/fr/manufacturers',
       '/fr/technical',
@@ -28,6 +29,7 @@ describe('SSR route status helpers', () => {
       '/fr/versions',
       '/fr/privacy',
       '/fr/park/123/parc-test',
+      '/fr/park/123/parc-test/map',
       '/fr/park/123/parc-test/opening-hours',
       '/fr/park/123/parc-test/images',
       '/fr/park/123/parc-test/history',
@@ -58,13 +60,14 @@ describe('SSR route status helpers', () => {
   it('applies noindex follow to public 404 and filtered exploration routes', () => {
     expect(shouldApplyNoindexFollowHeader('/fr/page-qui-nexiste-pas-123456')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/not-found')).toBeTrue();
-    expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/map')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/items?zone=abc')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/weather?unit=celsius')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/opening-hours?from=2026-07-01')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/profile')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/admin/parks')).toBeTrue();
     expect(shouldApplyNoindexFollowHeader('/fr/parks')).toBeFalse();
+    expect(shouldApplyNoindexFollowHeader('/fr/sitemap')).toBeFalse();
+    expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/map')).toBeFalse();
     expect(shouldApplyNoindexFollowHeader('/fr/park/123/parc-test/opening-hours')).toBeFalse();
     expect(shouldApplyNoindexFollowHeader('/fr/technical/chain-lift')).toBeFalse();
   });

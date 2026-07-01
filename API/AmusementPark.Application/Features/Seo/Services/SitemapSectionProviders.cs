@@ -25,6 +25,7 @@ public sealed class StaticPagesSitemapSectionProvider : ISitemapSectionProvider
     {
         new StaticSitemapPage("home", "daily", 1.0m),
         new StaticSitemapPage("parks", "daily", 0.9m),
+        new StaticSitemapPage("sitemap", "weekly", 0.84m),
         new StaticSitemapPage("rankings", "daily", 0.82m),
         new StaticSitemapPage("manufacturers", "weekly", 0.66m),
         new StaticSitemapPage("about", "monthly", 0.4m),
@@ -77,10 +78,12 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
     private const int PublicSitemapImagePageSize = 100;
 
     private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
 
-    public ParksSitemapSectionProvider(IParkRepository parkRepository)
+    public ParksSitemapSectionProvider(IParkRepository parkRepository, IParkItemRepository parkItemRepository)
     {
         this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
     }
 
     public string Key => SitemapSectionKeys.Parks;
@@ -97,6 +100,14 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
         IReadOnlyCollection<Park> publicParks = await SitemapPublicCandidateLoader.LoadPublicParksAsync(
             this.parkRepository,
             cancellationToken);
+        IReadOnlyCollection<ParkItem> publicItems = await SitemapPublicCandidateLoader.LoadPublicItemsAsync(
+            this.parkItemRepository,
+            cancellationToken);
+        HashSet<string> parkIdsWithMapMarkers = publicItems
+            .Where(HasPublicMapMarker)
+            .Select(static item => item.ParkId)
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in publicParks)
@@ -105,6 +116,11 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc, "weekly", 0.85m));
+                if (parkIdsWithMapMarkers.Contains(park.Id!))
+                {
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/map", park.UpdatedAtUtc, "weekly", 0.78m));
+                }
+
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/weather", park.UpdatedAtUtc, "daily", 0.76m));
             }
         }
@@ -119,6 +135,13 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
                park.IsVisible &&
                park.Status != ParkStatus.ClosedDefinitively &&
                park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+    }
+
+    internal static bool HasPublicMapMarker(ParkItem item)
+    {
+        return ParkItemsSitemapSectionProvider.IsPublicItem(item)
+               && item.Position is not null
+               && !(Math.Abs(item.Position.Latitude) < double.Epsilon && Math.Abs(item.Position.Longitude) < double.Epsilon);
     }
 
     internal static IReadOnlyCollection<string> NormalizeLanguages(IReadOnlyCollection<string> languages)

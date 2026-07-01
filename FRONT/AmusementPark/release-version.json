@@ -1,6 +1,20 @@
 {
-  "version": "3.1.17",
+  "version": "3.1.18",
   "history": [
+    {
+      "version": "3.1.18",
+      "releasedAt": "2026-07-01",
+      "labels": {
+        "fr": "Le plan du site aide à explorer les pages publiques.",
+        "en": "The sitemap helps explore public pages.",
+        "de": "Die Sitemap hilft beim Erkunden öffentlicher Seiten.",
+        "nl": "De sitemap helpt publieke pagina's verkennen.",
+        "it": "La mappa del sito aiuta a esplorare le pagine pubbliche.",
+        "es": "El mapa del sitio ayuda a explorar páginas públicas.",
+        "pl": "Mapa strony ułatwia odkrywanie publicznych stron.",
+        "pt": "O mapa do site ajuda a explorar páginas públicas."
+      }
+    },
     {
       "version": "3.1.17",
       "releasedAt": "2026-06-30",
