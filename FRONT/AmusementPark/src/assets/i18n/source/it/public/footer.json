@@ -8,7 +8,8 @@
     "explore": {
       "title": "Esplora",
       "allParks": "Tutti i parchi",
-      "interactiveMap": "Mappa interattiva"
+      "interactiveMap": "Mappa interattiva",
+      "sitemap": "Mappa del sito"
     },
     "about": {
       "title": "Informazioni",

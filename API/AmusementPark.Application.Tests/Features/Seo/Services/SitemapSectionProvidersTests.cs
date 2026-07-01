@@ -33,8 +33,9 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(new SitemapGenerationContext(), CancellationToken.None);
 
-        Assert.Equal(8, urls.Count);
+        Assert.Equal(9, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/en/home" && url.Priority == 1.0m);
+        Assert.Contains(urls, static url => url.RelativePath == "/en/sitemap" && url.ChangeFrequency == "weekly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/rankings" && url.Priority == 0.82m);
         Assert.Contains(urls, static url => url.RelativePath == "/en/manufacturers" && url.ChangeFrequency == "weekly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/privacy" && url.ChangeFrequency == "yearly");
@@ -53,8 +54,9 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(16, urls.Count);
+        Assert.Equal(18, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/home");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/sitemap");
         Assert.Contains(urls, static url => url.RelativePath == "/en/home");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/rankings");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/manufacturers");
@@ -108,8 +110,10 @@ public sealed class SitemapSectionProvidersTests
             new Park { Id = "hidden", Name = "Hidden", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
         };
         Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         SetupPublicSitemapParks(repository, parks);
-        ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object);
+        SetupPublicSitemapItems(itemRepository, Array.Empty<ParkItem>());
+        ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, cancellationToken);
@@ -121,6 +125,50 @@ public sealed class SitemapSectionProvidersTests
         Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/images", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
         repository.VerifyAll();
+        itemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParksProvider_WhenPublicParkHasLocatedPublicItem_ShouldReturnMapUrl()
+    {
+        Park parkWithMapMarker = new Park
+        {
+            Id = "park-1",
+            Name = "Visible Park",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            UpdatedAtUtc = new DateTime(2026, 1, 2, 0, 0, 0, DateTimeKind.Utc),
+        };
+        Park parkWithoutMapMarker = new Park
+        {
+            Id = "park-2",
+            Name = "No Map Park",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        parkWithoutMapMarker.SetPosition(48.86, 2.35);
+        ParkItem locatedItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Located attraction",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        locatedItem.SetPosition(48.87, 2.36);
+        Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        SetupPublicSitemapParks(repository, new[] { parkWithMapMarker, parkWithoutMapMarker });
+        SetupPublicSitemapItems(itemRepository, new[] { locatedItem });
+        ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object, itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/map" && url.Priority == 0.78m);
+        Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-2/no-map-park/map");
+        repository.VerifyAll();
+        itemRepository.VerifyAll();
     }
 
     [Fact]

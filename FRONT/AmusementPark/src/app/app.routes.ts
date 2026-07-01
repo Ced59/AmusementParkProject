@@ -145,6 +145,7 @@ export const routes: Routes = [
         children: [
           { path: 'home', loadComponent: () => import('@features/public/home/pages/home.component').then((m) => m.HomeComponent) },
           { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
+          { path: 'sitemap', loadComponent: () => import('./features/public/sitemap/pages/public-sitemap-page.component').then((m) => m.PublicSitemapPageComponent) },
           { path: 'technical', loadComponent: () => import('./features/public/technical-pages/pages/technical-pages-page.component').then((m) => m.TechnicalPagesPageComponent) },
           { path: 'technical/:slug', loadComponent: () => import('./features/public/technical-pages/pages/technical-page-detail-page.component').then((m) => m.TechnicalPageDetailPageComponent) },
           { path: 'manufacturers', loadComponent: () => import('@features/public/manufacturers/pages/manufacturers-page.component').then((m) => m.ManufacturersPageComponent) },

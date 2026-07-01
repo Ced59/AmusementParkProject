@@ -352,42 +352,42 @@ const PARK_ITEM_VIDEOS_SEO_COPY: Record<string, ParkItemVideosSeoCopy> = {
 
 const PARK_MAP_SEO_COPY: Record<string, ParkMapSeoCopy> = {
   en: {
-    titlePrefix: 'Map of',
+    titlePrefix: 'Interactive map of',
     parkFallback: 'this park',
     description: (parkName: string, locationLabel: string): string => `Interactive map of ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
   },
   fr: {
-    titlePrefix: 'Carte de',
+    titlePrefix: 'Carte interactive de',
     parkFallback: 'ce parc',
     description: (parkName: string, locationLabel: string): string => `Carte interactive de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`
   },
   es: {
-    titlePrefix: 'Mapa de',
+    titlePrefix: 'Mapa interactivo de',
     parkFallback: 'este parque',
     description: (parkName: string, locationLabel: string): string => `Mapa interactivo de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}.`
   },
   de: {
-    titlePrefix: 'Karte von',
+    titlePrefix: 'Interaktive Karte von',
     parkFallback: 'diesem Park',
     description: (parkName: string, locationLabel: string): string => `Interaktive Karte von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
   },
   it: {
-    titlePrefix: 'Mappa di',
+    titlePrefix: 'Mappa interattiva di',
     parkFallback: 'questo parco',
     description: (parkName: string, locationLabel: string): string => `Mappa interattiva di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}.`
   },
   nl: {
-    titlePrefix: 'Kaart van',
+    titlePrefix: 'Interactieve kaart van',
     parkFallback: 'dit park',
     description: (parkName: string, locationLabel: string): string => `Interactieve kaart van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
   },
   pl: {
-    titlePrefix: 'Mapa',
+    titlePrefix: 'Interaktywna mapa',
     parkFallback: 'tego parku',
     description: (parkName: string, locationLabel: string): string => `Interaktywna mapa parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}.`
   },
   pt: {
-    titlePrefix: 'Mapa de',
+    titlePrefix: 'Mapa interativo de',
     parkFallback: 'este parque',
     description: (parkName: string, locationLabel: string): string => `Mapa interativo de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`
   }
@@ -966,6 +966,10 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       title: 'Amusement parks around the world — Amusement Parks',
       description: 'Browse visible amusement parks, theme parks, water parks, zoos and resorts with public details and map exploration.',
     },
+    sitemap: {
+      title: 'Sitemap - Amusement Parks',
+      description: 'Explore the public sitemap for Amusement Parks with parks, interactive maps, technical guides and reference pages.',
+    },
     rankings: {
       title: 'Rankings — Amusement Parks',
       description: 'Discover parks, attractions, restaurants, hotels and services that visitors consistently rate highly.',
@@ -1020,6 +1024,10 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       title: 'Parcs de loisirs dans le monde — Amusement Parks',
       description: 'Parcours les parcs visibles, parcs à thèmes, parcs aquatiques, zoos et resorts avec leurs informations publiques et leur carte.',
     },
+    sitemap: {
+      title: 'Plan du site - Amusement Parks',
+      description: 'Explore le plan public d’Amusement Parks avec les parcs, cartes interactives, dossiers techniques et pages de référence.',
+    },
     rankings: {
       title: 'Classements — Amusement Parks',
       description: 'Découvre les parcs, attractions, restaurants, hôtels et services les plus régulièrement appréciés des visiteurs.',
@@ -1062,6 +1070,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     manufacturers: { title: 'Fabricantes de atracciones - Amusement Parks', description: 'Explora fabricantes de atracciones y coasters con su ficha pública, historia y enlaces útiles.' },
     home: { title: 'Amusement Parks — Explora parques, atracciones y destinos', description: 'Explora parques de ocio, atracciones, restaurantes, hoteles y referencias del sector en todo el mundo.' },
     parks: { title: 'Parques de ocio del mundo — Amusement Parks', description: 'Consulta parques visibles, parques temáticos, acuáticos, zoológicos y resorts con información pública y mapa.' },
+    sitemap: { title: 'Mapa del sitio - Amusement Parks', description: 'Explora el mapa público de Amusement Parks con parques, mapas interactivos, guías técnicas y páginas de referencia.' },
     rankings: { title: 'Rankings — Amusement Parks', description: 'Descubre parques, atracciones, restaurantes, hoteles y servicios valorados de forma constante por visitantes.' },
     technical: { title: 'Guías técnicas - Amusement Parks', description: 'Explora lifts, sujeciones, trenes, materiales y otros sistemas técnicos de las atracciones.' },
     about: { title: 'Acerca de Amusement Parks — Proyecto y datos', description: 'Conoce el proyecto Amusement Parks, su objetivo y su enfoque cuidadoso de publicación de datos.' },
@@ -1076,6 +1085,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     manufacturers: { title: 'Hersteller von Attraktionen - Amusement Parks', description: 'Durchsuche Hersteller von Attraktionen und Coastern mit Profil, Geschichte und nützlichen Links.' },
     home: { title: 'Amusement Parks — Parks, Attraktionen und Reiseziele entdecken', description: 'Entdecke Freizeitparks, Attraktionen, Restaurants, Hotels und Branchenreferenzen weltweit.' },
     parks: { title: 'Freizeitparks weltweit — Amusement Parks', description: 'Durchsuche sichtbare Freizeitparks, Themenparks, Wasserparks, Zoos und Resorts mit öffentlichen Details und Karte.' },
+    sitemap: { title: 'Sitemap - Amusement Parks', description: 'Erkunde die öffentliche Sitemap von Amusement Parks mit Parks, interaktiven Karten, Technik-Guides und Referenzseiten.' },
     rankings: { title: 'Ranglisten — Amusement Parks', description: 'Entdecke Parks, Attraktionen, Restaurants, Hotels und Services, die Besucher dauerhaft hoch bewerten.' },
     technical: { title: 'Technik-Guides - Amusement Parks', description: 'Entdecke Lifts, Rückhaltesysteme, Züge, Materialien und weitere technische Systeme von Attraktionen.' },
     about: { title: 'Über Amusement Parks — Projekt und Datenansatz', description: 'Erfahre mehr über das Projekt Amusement Parks, seinen Zweck und seine sorgfältige Veröffentlichung von Daten.' },
@@ -1090,6 +1100,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     manufacturers: { title: 'Costruttori di attrazioni - Amusement Parks', description: 'Sfoglia costruttori di attrazioni e coaster con scheda pubblica, storia e link utili.' },
     home: { title: 'Amusement Parks — Esplora parchi, attrazioni e destinazioni', description: 'Esplora parchi divertimento, attrazioni, ristoranti, hotel e riferimenti del settore in tutto il mondo.' },
     parks: { title: 'Parchi divertimento nel mondo — Amusement Parks', description: 'Sfoglia parchi visibili, parchi a tema, acquatici, zoo e resort con informazioni pubbliche e mappa.' },
+    sitemap: { title: 'Mappa del sito - Amusement Parks', description: 'Esplora la mappa pubblica di Amusement Parks con parchi, mappe interattive, guide tecniche e pagine di riferimento.' },
     rankings: { title: 'Classifiche — Amusement Parks', description: 'Scopri parchi, attrazioni, ristoranti, hotel e servizi valutati con continuità dai visitatori.' },
     technical: { title: 'Guide tecniche - Amusement Parks', description: 'Esplora lift, sistemi di ritenuta, treni, materiali e altri sistemi tecnici delle attrazioni.' },
     about: { title: 'Informazioni su Amusement Parks — Progetto e dati', description: 'Scopri il progetto Amusement Parks, il suo obiettivo e il suo approccio prudente alla pubblicazione dei dati.' },
@@ -1104,6 +1115,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     manufacturers: { title: 'Producenci atrakcji - Amusement Parks', description: 'Przeglądaj producentów atrakcji i coasterów z publicznym profilem, historią i przydatnymi linkami.' },
     home: { title: 'Amusement Parks — Odkrywaj parki, atrakcje i kierunki', description: 'Odkrywaj parki rozrywki, atrakcje, restauracje, hotele i referencje branżowe na całym świecie.' },
     parks: { title: 'Parki rozrywki na świecie — Amusement Parks', description: 'Przeglądaj widoczne parki rozrywki, parki tematyczne, wodne, zoo i resorty z publicznymi informacjami oraz mapą.' },
+    sitemap: { title: 'Mapa strony - Amusement Parks', description: 'Przeglądaj publiczną mapę Amusement Parks z parkami, interaktywnymi mapami, przewodnikami technicznymi i stronami referencyjnymi.' },
     rankings: { title: 'Rankingi — Amusement Parks', description: 'Odkrywaj parki, atrakcje, restauracje, hotele i usługi stale wysoko oceniane przez odwiedzających.' },
     technical: { title: 'Przewodniki techniczne - Amusement Parks', description: 'Poznaj windy, zabezpieczenia, pociagi, materialy i inne systemy techniczne atrakcji.' },
     about: { title: 'O Amusement Parks — Projekt i dane', description: 'Poznaj projekt Amusement Parks, jego cel oraz ostrożne podejście do publikacji danych.' },
@@ -1118,6 +1130,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     manufacturers: { title: 'Attractiebouwers - Amusement Parks', description: 'Bekijk attractie- en coasterbouwers met publiek profiel, geschiedenis en nuttige links.' },
     home: { title: 'Amusement Parks — Ontdek parken, attracties en bestemmingen', description: 'Ontdek pretparken, attracties, restaurants, hotels en brancheverwijzingen over de hele wereld.' },
     parks: { title: 'Pretparken wereldwijd — Amusement Parks', description: 'Bekijk zichtbare pretparken, themaparken, waterparken, dierentuinen en resorts met publieke info en kaart.' },
+    sitemap: { title: 'Sitemap - Amusement Parks', description: 'Bekijk de publieke sitemap van Amusement Parks met parken, interactieve kaarten, technische gidsen en referentiepagina’s.' },
     rankings: { title: 'Ranglijsten — Amusement Parks', description: 'Ontdek parken, attracties, restaurants, hotels en services die bezoekers blijvend hoog beoordelen.' },
     technical: { title: 'Technische gidsen - Amusement Parks', description: 'Ontdek liften, beugels, treinen, materialen en andere technische systemen van attracties.' },
     about: { title: 'Over Amusement Parks — Project en data-aanpak', description: 'Lees meer over het Amusement Parks-project, het doel en de zorgvuldige aanpak voor datapublicatie.' },
@@ -1132,6 +1145,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     manufacturers: { title: 'Fabricantes de atrações - Amusement Parks', description: 'Explore fabricantes de atrações e coasters com perfil público, história e links úteis.' },
     home: { title: 'Amusement Parks — Explore parques, atrações e destinos', description: 'Explore parques de diversão, atrações, restaurantes, hotéis e referências do setor em todo o mundo.' },
     parks: { title: 'Parques de diversão no mundo — Amusement Parks', description: 'Veja parques visíveis, parques temáticos, aquáticos, zoológicos e resorts com informações públicas e mapa.' },
+    sitemap: { title: 'Mapa do site - Amusement Parks', description: 'Explora o mapa público do Amusement Parks com parques, mapas interativos, guias técnicos e páginas de referência.' },
     rankings: { title: 'Rankings — Amusement Parks', description: 'Descubra parques, atrações, restaurantes, hotéis e serviços avaliados de forma consistente pelos visitantes.' },
     technical: { title: 'Guias técnicos - Amusement Parks', description: 'Explora lifts, retenções, trens, materiais e outros sistemas técnicos das atrações.' },
     about: { title: 'Sobre o Amusement Parks — Projeto e dados', description: 'Conheça o projeto Amusement Parks, seu objetivo e sua abordagem cuidadosa de publicação de dados.' },
@@ -1174,7 +1188,7 @@ export class SeoService {
       return;
     }
 
-    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url) || this.isFilteredPublicParkVideosRoute(url) || this.isFilteredPublicParkItemVideosRoute(url) || this.isFilteredPublicParkWeatherRoute(url) || this.isFilteredPublicParkOpeningHoursRoute(url)) {
+    if (this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url) || this.isFilteredPublicParkVideosRoute(url) || this.isFilteredPublicParkItemVideosRoute(url) || this.isFilteredPublicParkWeatherRoute(url) || this.isFilteredPublicParkOpeningHoursRoute(url)) {
       this.apply({
         title: SITE_NAME,
         description: DEFAULT_DESCRIPTION,
@@ -1451,7 +1465,14 @@ export class SeoService {
     });
   }
 
-  applyParkMapSeo(park: Park, language: string, url: string, parkImageId: string | null = null, canonicalPath: string | null = null): void {
+  applyParkMapSeo(
+    park: Park,
+    language: string,
+    url: string,
+    parkImageId: string | null = null,
+    canonicalPath: string | null = null,
+    isIndexable: boolean = true
+  ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkMapSeoCopy = PARK_MAP_SEO_COPY[normalizedLanguage] ?? PARK_MAP_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
@@ -1464,7 +1485,7 @@ export class SeoService {
       title: `${copy.titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
-      robots: 'noindex,follow',
+      robots: isIndexable ? 'index,follow' : 'noindex,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: parkName,
@@ -2744,6 +2765,10 @@ export class SeoService {
       return 'parks';
     }
 
+    if (routeSegment === 'sitemap') {
+      return 'sitemap';
+    }
+
     if (routeSegment === 'rankings') {
       return 'rankings';
     }
@@ -2785,10 +2810,6 @@ export class SeoService {
 
   private isAccountRoute(url: string): boolean {
     return /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/|$)/i.test(this.normalizePath(url));
-  }
-
-  private isPublicParkMapRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/map\/?$/i.test(this.normalizePath(url));
   }
 
   private isFilteredPublicParkItemsRoute(url: string): boolean {

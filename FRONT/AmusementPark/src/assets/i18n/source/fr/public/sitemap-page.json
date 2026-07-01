@@ -1,0 +1,16 @@
+{
+  "sitemapPage": {
+    "kicker": "Plan du site",
+    "title": "Plan public du site",
+    "subtitle": "Retrouve les parcs, cartes interactives, dossiers techniques et pages publiques de référence dans la langue courante.",
+    "treeTitle": "Pages publiques",
+    "treeSubtitle": "L’arbre suit les mêmes routes publiques que les pages consultables du site.",
+    "loading": "Chargement du plan du site",
+    "error": "Impossible de charger le plan du site.",
+    "empty": "Aucune page publique n’est disponible pour le moment.",
+    "childrenLoading": "Chargement",
+    "childrenError": "Cette branche n’a pas pu être chargée.",
+    "expand": "Ouvrir {{label}}",
+    "collapse": "Fermer {{label}}"
+  }
+}

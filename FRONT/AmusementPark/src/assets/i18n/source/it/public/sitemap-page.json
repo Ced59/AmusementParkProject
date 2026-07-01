@@ -1,0 +1,16 @@
+{
+  "sitemapPage": {
+    "kicker": "Mappa del sito",
+    "title": "Mappa pubblica del sito",
+    "subtitle": "Trova parchi, mappe interattive, guide tecniche e pagine pubbliche di riferimento nella lingua corrente.",
+    "treeTitle": "Pagine pubbliche",
+    "treeSubtitle": "L’albero segue le stesse rotte pubbliche delle pagine visibili del sito.",
+    "loading": "Caricamento della mappa del sito",
+    "error": "Impossibile caricare la mappa del sito.",
+    "empty": "Nessuna pagina pubblica è ancora disponibile.",
+    "childrenLoading": "Caricamento",
+    "childrenError": "Questo ramo non ha potuto essere caricato.",
+    "expand": "Apri {{label}}",
+    "collapse": "Chiudi {{label}}"
+  }
+}

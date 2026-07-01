@@ -2505,7 +2505,8 @@
     "explore": {
       "title": "Explorar",
       "allParks": "Todos los parques",
-      "interactiveMap": "Mapa interactivo"
+      "interactiveMap": "Mapa interactivo",
+      "sitemap": "Mapa del sitio"
     },
     "about": {
       "title": "Acerca de",
@@ -3695,6 +3696,20 @@
       "description": "Envía este video a alguien que pueda disfrutarlo.",
       "text": "Mira {{title}} en AmusementPark."
     }
+  },
+  "sitemapPage": {
+    "kicker": "Mapa del sitio",
+    "title": "Mapa público del sitio",
+    "subtitle": "Encuentra parques, mapas interactivos, guías técnicas y páginas públicas de referencia en el idioma actual.",
+    "treeTitle": "Páginas públicas",
+    "treeSubtitle": "El árbol sigue las mismas rutas públicas que las páginas visibles del sitio.",
+    "loading": "Cargando el mapa del sitio",
+    "error": "No se ha podido cargar el mapa del sitio.",
+    "empty": "Todavía no hay ninguna página pública disponible.",
+    "childrenLoading": "Cargando",
+    "childrenError": "No se ha podido cargar esta rama.",
+    "expand": "Abrir {{label}}",
+    "collapse": "Cerrar {{label}}"
   },
   "technicalPages": {
     "list": {

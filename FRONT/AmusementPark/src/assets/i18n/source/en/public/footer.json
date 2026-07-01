@@ -8,7 +8,8 @@
     "explore": {
       "title": "Explore",
       "allParks": "All parks",
-      "interactiveMap": "Interactive map"
+      "interactiveMap": "Interactive map",
+      "sitemap": "Sitemap"
     },
     "about": {
       "title": "About",

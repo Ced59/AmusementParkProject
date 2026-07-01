@@ -38,7 +38,7 @@ function isKnownLocalizedPageRoute(path: string): boolean {
 
 function isKnownPublicPageRoute(path: string): boolean {
   return /^\/[a-z]{2}\/?$/i.test(path)
-    || /^\/[a-z]{2}\/(?:home|parks|rankings|manufacturers|about|contact|versions|privacy)\/?$/i.test(path)
+    || /^\/[a-z]{2}\/(?:home|parks|sitemap|rankings|manufacturers|about|contact|versions|privacy)\/?$/i.test(path)
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/images|\/videos|\/map|\/zones|\/weather|\/opening-hours|\/items)?\/?$/i.test(path)
@@ -60,8 +60,7 @@ function isKnownPrivateClientRoute(path: string): boolean {
 function isNoindexPublicPageRoute(url: string): boolean {
   const path: string = normalizeSsrPath(url);
 
-  return isPublicParkMapRoute(path)
-    || (isPublicParkItemsRoute(path) && hasQueryString(url))
+  return (isPublicParkItemsRoute(path) && hasQueryString(url))
     || (isPublicParkZonesRoute(path) && hasQueryString(url))
     || (isPublicParkZoneDetailRoute(path) && hasQueryString(url))
     || (isPublicParkImagesRoute(path) && hasQueryString(url))
@@ -92,10 +91,6 @@ function getFirstPathSegment(path: string): string | null {
 
 function hasQueryString(url: string): boolean {
   return url.includes('?');
-}
-
-function isPublicParkMapRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/map\/?$/i.test(path);
 }
 
 function isPublicParkItemsRoute(path: string): boolean {

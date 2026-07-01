@@ -130,7 +130,8 @@ public sealed record PublicSeoParkItemSnapshot(
     DateTime? UpdatedAtUtc,
     string? Status = null,
     DateTime? OpeningDate = null,
-    DateTime? ClosingDate = null)
+    DateTime? ClosingDate = null,
+    bool HasPosition = false)
 {
     public static PublicSeoParkItemSnapshot? FromParkItem(ParkItem? item)
     {
@@ -149,7 +150,9 @@ public sealed record PublicSeoParkItemSnapshot(
             item.UpdatedAtUtc,
             item.AttractionDetails?.Status,
             item.AttractionDetails?.OpeningDate,
-            item.AttractionDetails?.ClosingDate);
+            item.AttractionDetails?.ClosingDate,
+            item.Position is not null
+                && !(Math.Abs(item.Position.Latitude) < double.Epsilon && Math.Abs(item.Position.Longitude) < double.Epsilon));
     }
 
     public static IReadOnlyCollection<PublicSeoParkItemSnapshot> FromParkItems(IEnumerable<ParkItem?> items)
