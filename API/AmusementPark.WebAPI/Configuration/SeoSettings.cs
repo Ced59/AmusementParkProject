@@ -27,6 +27,11 @@ public sealed class SeoSettings
         "pt",
     };
 
+    public List<string> RobotsAllowPaths { get; set; } = new()
+    {
+        "/api/images/",
+    };
+
     public List<string> RobotsDisallowPaths { get; set; } = new()
     {
         "/api/",
