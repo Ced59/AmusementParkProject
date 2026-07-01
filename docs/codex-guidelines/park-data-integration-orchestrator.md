@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-06-30-r8**
+Version : **2026-07-01-r1**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -21,6 +21,18 @@ Chaque réponse doit produire un seul livrable principal :
 Quand le livrable principal est un JSON upsert, le JSON doit être fourni sous forme de fichier `.json` téléchargeable, pas comme un long bloc texte à copier-coller. La réponse visible doit seulement résumer le contenu du fichier, les sources, les limites et la suite. Si l’interface ne permet pas de joindre un fichier, ne pas contourner en collant tout le JSON : prévenir l’utilisateur et demander explicitement le format de secours souhaité.
 
 Nommer les fichiers de façon lisible et traçable, par exemple `park-slug-step-03-items-lot-1-YYYYMMDD.json`.
+
+## Règle de livraison visible
+
+Avant chaque fichier JSON upsert livré, la réponse visible doit récapituler :
+
+- les ajouts, corrections, suppressions contrôlées, éléments masqués et éléments explicitement conservés ;
+- le périmètre du lot, avec les entités incluses et les entités exclues ou reportées ;
+- un compteur d’avancement de l’étape au format traité / total, même si le lot est complet ;
+- le reste à traiter avant le prochain lot ou la prochaine étape officielle ;
+- les sources principales et les limites connues, sans noyer la réponse dans le JSON.
+
+Pour l’étape 3, distinguer au minimum le compteur de tous les parkItems et, quand c’est utile, le sous-compteur des attractions. Ne pas annoncer le passage à l’étape suivante si le compteur ou les éléments restants montrent que l’étape en cours n’est pas terminée.
 
 ## Règle de parcours strict
 
@@ -103,9 +115,17 @@ Chaque clé utilisée doit être résolue par l’une de ces deux voies :
 - la clé existe déjà clairement dans l’export actualisé fourni par l’utilisateur ;
 - la clé est créée dans le même JSON, dans la section adaptée (`references`, `zones`, `items`, `images`).
 
-Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `manufacturerKey`, `operatorKey`, `founderKey`, `zoneKey`, `itemKey` ou `ownerKey` si l’export ne prouve pas que cette valeur est bien la clé attendue. Pour les constructeurs, `manufacturerKey` doit correspondre exactement à une clé de `references.manufacturers` créée dans le même JSON ou déjà présente dans l’export. Pour les images, `ownerKey` doit résoudre vers le parc, un parkItem, un exploitant, un fondateur ou un constructeur existant dans l’export ou créé dans le même JSON.
+Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `manufacturerKey`, `operatorKey`, `founderKey`, `zoneKey`, `itemKey` ou `ownerKey` si l’export ne prouve pas que cette valeur est bien la clé attendue. Une valeur visible, un nom localisé ou un slug probable ne suffit pas.
 
-Les alertes suivantes ne sont jamais acceptables dans un livrable final : “ManufacturerKey non résolue” et `Remote image ignored: owner could not be resolved`. Corriger le JSON, retirer le rattachement incertain ou retirer l’image avant de régénérer le fichier.
+Pour les zones, `zoneKey` doit correspondre exactement à une clé de `zones` déjà présente dans l’export actualisé ou créée dans le même JSON. Si une zone fiable est nécessaire au rattachement et n’existe pas encore, ajouter une entrée minimale dans `zones` avec cette `key` avant de l’utiliser dans `items[].zoneKey`. Si la zone n’est pas fiable, retirer `zoneKey`.
+
+Pour les constructeurs, `manufacturerKey` doit correspondre exactement à une clé de `references.manufacturers` créée dans le même JSON ou déjà présente dans l’export actualisé. Si un constructeur fiable est nécessaire et absent de l’export, ajouter une entrée minimale dans `references.manufacturers` avec cette `key` avant de l’utiliser dans `attractionDetails.manufacturerKey`. Si le constructeur n’est pas fiable, retirer `manufacturerKey`.
+
+Les zones minimales et constructeurs minimaux nécessaires au lot doivent être embarqués dans le même JSON que les parkItems qui les utilisent. Ne pas livrer un fichier qui dépend d’un futur lot pour résoudre ses `zoneKey` ou `manufacturerKey`.
+
+Les alertes suivantes ne sont jamais acceptables dans un livrable final : `ZoneKey non résolue`, `ManufacturerKey non résolue` et `Remote image ignored: owner could not be resolved`. Corriger le JSON, retirer le rattachement incertain ou retirer l’image avant de régénérer le fichier.
+
+Si une Preview signale une clé non résolue après livraison, arrêter le flux courant : ne pas commencer le lot suivant et ne pas passer à l’étape suivante. Fournir d’abord une nouvelle version du même JSON, avec un nom traçable de type `v2-resolved-keys`, puis récapituler précisément les clés ajoutées, retirées ou corrigées.
 
 Si une clé ne peut pas être résolue :
 
