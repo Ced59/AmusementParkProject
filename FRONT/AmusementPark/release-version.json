@@ -1,6 +1,20 @@
 {
-  "version": "3.1.18",
+  "version": "3.1.19",
   "history": [
+    {
+      "version": "3.1.19",
+      "releasedAt": "2026-07-01",
+      "labels": {
+        "fr": "Les imports de données sont mieux guidés.",
+        "en": "Data imports are better guided.",
+        "de": "Datenimporte werden besser geführt.",
+        "nl": "Gegevensimports zijn beter begeleid.",
+        "it": "Le importazioni dei dati sono meglio guidate.",
+        "es": "Las importaciones de datos están mejor guiadas.",
+        "pl": "Importy danych są lepiej prowadzone.",
+        "pt": "As importações de dados ficam mais orientadas."
+      }
+    },
     {
       "version": "3.1.18",
       "releasedAt": "2026-07-01",

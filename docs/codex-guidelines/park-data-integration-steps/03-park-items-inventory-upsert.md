@@ -10,7 +10,7 @@ Objectif : intégrer tous les contenus visiteurs nommables et fiables, avec date
 
 ## Export requis
 
-Utiliser l’export actualisé après les zones. Vérifier les `zone.key`, les IDs existants et les items déjà présents pour éviter les doublons.
+Utiliser l’export actualisé après les zones. Vérifier les `zone.key`, les `references.manufacturers[].key`, les IDs existants et les items déjà présents pour éviter les doublons et les rattachements non résolus.
 
 ## Contenus à rechercher
 
@@ -48,7 +48,7 @@ Pour chaque item :
 - `key` stable ;
 - `name` ;
 - `category` et `type` cohérents avec l’export existant ;
-- `zoneKey` si la zone est sûre ;
+- `zoneKey` seulement si la clé exacte est déjà présente dans l’export ou créée dans le même JSON ;
 - `isVisible` pour les éléments confirmés, même fermés ;
 - `adminReviewStatus` prudent ;
 - `attractionDetails.status` si l’état est connu ;
@@ -99,6 +99,24 @@ Ne jamais mettre ces conditions dans les descriptions longues. Si les conditions
 - Ne pas transformer une information saisonnière en statut permanent.
 - Ne pas ajouter de données techniques brutes sans source fiable.
 
+## Règles `zoneKey` et `manufacturerKey`
+
+Avant de livrer un lot de parkItems, faire un contrôle croisé explicite des rattachements :
+
+- lister toutes les valeurs `items[].zoneKey` utilisées dans le lot ;
+- vérifier que chaque `zoneKey` existe dans les `zones[].key` de l’export actualisé ou dans les `zones[].key` du même JSON ;
+- lister toutes les valeurs `attractionDetails.manufacturerKey` utilisées dans les items du lot ;
+- vérifier que chaque `manufacturerKey` existe dans les constructeurs de l’export actualisé ou dans `references.manufacturers[].key` du même JSON ;
+- corriger le fichier avant livraison si une clé manque.
+
+Si une zone fiable est nécessaire mais absente de l’export, ajouter une zone minimale dans le même JSON avec `key`, `name`, `isVisible`, `adminReviewStatus` et, si possible, `displayOrder`. Si la zone n’est pas fiable, ne pas renseigner `zoneKey`.
+
+Si un constructeur fiable est nécessaire mais absent de l’export, ajouter un constructeur minimal dans le même JSON avec `key`, `name`, `isVisible` et `adminReviewStatus`. Si le constructeur n’est pas fiable, ne pas renseigner `manufacturerKey`.
+
+Ne jamais livrer un lot d’items qui suppose qu’une zone ou un constructeur sera créé dans un futur JSON. Le Preview doit pouvoir résoudre toutes les clés avec l’export actualisé et le fichier courant seulement.
+
+Une alerte Preview du type `ZoneKey non résolue` ou `ManufacturerKey non résolue` indique une erreur de livrable. Corriger immédiatement le JSON, fournir une version corrigée et ne pas continuer le lot suivant tant que cette alerte existe.
+
 ## Références constructeurs
 
 Si un `manufacturerKey` est utilisé, la référence doit être résolue dans le même JSON ou déjà exister sûrement dans l’export.
@@ -123,6 +141,7 @@ Ne pas créer une étape séparée pour les constructeurs. Les références mini
 
 Sections possibles :
 
+- `zones`
 - `references.manufacturers`
 - `items`
 
@@ -142,6 +161,15 @@ Sections possibles :
     "parkId": "id-du-parc",
     "name": "Nom du parc"
   },
+  "zones": [
+    {
+      "key": "zone-official-name",
+      "name": "Zone officielle",
+      "isVisible": true,
+      "adminReviewStatus": "ToReview",
+      "displayOrder": 1
+    }
+  ],
   "references": {
     "manufacturers": [
       {
@@ -183,13 +211,25 @@ Sections possibles :
 ## Contrôles avant livraison
 
 - Aucun doublon évident avec l’export.
-- Toutes les `zoneKey` sont résolues.
+- Toutes les `zoneKey` sont résolues par l’export actualisé ou par `zones` dans le même JSON.
 - Toutes les `manufacturerKey` sont résolues par l’export actualisé ou par `references.manufacturers` dans le même JSON.
 - Les conditions d’accès trouvées sont dans `attractionDetails.accessConditions`, pas dans les descriptions.
 - Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
 - Les dates sont exactes ou restent textuelles ; aucune année seule n’est transformée en date complète inventée.
 - Les anciens items importants ne sont pas supprimés.
 - Les items sans source fiable restent absents ou `ToReview`.
+
+## Récap avant livraison
+
+Avant le fichier JSON, résumer systématiquement :
+
+- ce qui est ajouté, corrigé, masqué et conservé ;
+- les parkItems inclus dans le lot, avec leur type principal quand le lot porte sur l’inventaire ;
+- le compteur d’avancement de l’étape 3, par exemple `parkItems : 30 / 147` et `attractions uniquement : 30 / 49` quand ces totaux sont connus ;
+- le reste à traiter avant l’étape 4, notamment les lots d’items non encore intégrés ;
+- les sources principales et les limites du lot.
+
+Si un JSON est une correction d’un lot déjà livré, le récap doit préciser les seules modifications structurelles apportées, par exemple ajout de zones minimales, ajout de constructeurs minimaux, retrait d’un `zoneKey` incertain ou correction d’une clé.
 
 ## Après Apply
 
