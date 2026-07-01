@@ -54,7 +54,11 @@ public sealed class SeoController : ControllerBase
         string publicBaseUrl = this.GetPublicBaseUrl();
         StringBuilder builder = new StringBuilder();
         builder.AppendLine("User-agent: *");
-        builder.AppendLine("Allow: /");
+
+        foreach (string allowPath in this.BuildRobotsAllowPaths())
+        {
+            builder.Append("Allow: ").AppendLine(allowPath);
+        }
 
         foreach (string disallowPath in this.BuildRobotsDisallowPaths())
         {
@@ -204,14 +208,24 @@ public sealed class SeoController : ControllerBase
         return this.settings.GetNormalizedPublicBaseUrl(requireHttps: !this.environment.IsDevelopment());
     }
 
+    private IReadOnlyCollection<string> BuildRobotsAllowPaths()
+    {
+        return this.BuildRobotsPaths(new[] { "/" }.Concat(this.settings.RobotsAllowPaths));
+    }
+
     private IReadOnlyCollection<string> BuildRobotsDisallowPaths()
+    {
+        return this.BuildRobotsPaths(this.settings.RobotsDisallowPaths);
+    }
+
+    private IReadOnlyCollection<string> BuildRobotsPaths(IEnumerable<string> configuredPaths)
     {
         List<string> paths = new List<string>();
         IReadOnlyCollection<string> languages = this.settings.SupportedLanguages.Count > 0
             ? this.settings.SupportedLanguages
             : new[] { this.settings.DefaultLanguage };
 
-        foreach (string configuredPath in this.settings.RobotsDisallowPaths)
+        foreach (string configuredPath in configuredPaths)
         {
             if (!configuredPath.Contains("{lang}", StringComparison.OrdinalIgnoreCase))
             {

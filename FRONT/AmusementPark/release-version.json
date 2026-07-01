@@ -1,6 +1,20 @@
 {
-  "version": "3.1.19",
+  "version": "3.1.20",
   "history": [
+    {
+      "version": "3.1.20",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Les images publiques sont mieux accessibles aux moteurs.",
+        "en": "Public images are easier for search engines to access.",
+        "de": "Öffentliche Bilder sind für Suchmaschinen besser erreichbar.",
+        "nl": "Publieke beelden zijn beter bereikbaar voor zoekmachines.",
+        "it": "Le immagini pubbliche sono più accessibili ai motori di ricerca.",
+        "es": "Las imágenes públicas son más accesibles para buscadores.",
+        "pl": "Publiczne obrazy są łatwiej dostępne dla wyszukiwarek.",
+        "pt": "As imagens públicas ficam mais acessíveis aos motores de busca."
+      }
+    },
     {
       "version": "3.1.19",
       "releasedAt": "2026-07-01",

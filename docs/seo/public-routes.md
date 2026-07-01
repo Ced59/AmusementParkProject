@@ -71,7 +71,8 @@ Langues servies : `en`, `fr`, `es`, `de`, `it`, `pl`, `nl`, `pt`.
 | `/:lang/confirm-account` | `noindex,nofollow` | Parcours auth/email. |
 | `/:lang/forgot-password` | `noindex,nofollow` | Parcours auth/email. |
 | `/:lang/reset-password` | `noindex,nofollow` | Parcours auth/email. |
-| `/api/**` | `Disallow` dans `robots.txt` | API technique consommee par le front. |
+| `/api/images/**` | `Allow` dans `robots.txt` | Images publiques utilisées par les pages indexables. |
+| `/api/**` | `Disallow` dans `robots.txt` | API technique consommée par le front, hors images publiques. |
 | `/robots.txt` | Non applicable | Fichier technique public. |
 | `/sitemap.xml` | Non applicable | Sitemap index public, proxifie vers l'API. |
 | `/sitemaps/*.xml` | Non applicable | Sections techniques du sitemap, proxifiees vers l'API. |
@@ -82,4 +83,4 @@ Langues servies : `en`, `fr`, `es`, `de`, `it`, `pl`, `nl`, `pt`.
 - Les pages publiques indexables dynamiques doivent etre rendues en SSR sur cache miss pour eviter que les robots ne voient uniquement le shell `<app-root>`.
 - Les pages privees recoivent `robots=noindex,nofollow`.
 - La page 404 publique recoit `robots=noindex,follow`.
-- `robots.txt` reference `/sitemap.xml` et exclut `/api/`, admin et compte/auth.
+- `robots.txt` reference `/sitemap.xml`, autorise `/api/images/` et exclut le reste de `/api/`, admin et compte/auth.
