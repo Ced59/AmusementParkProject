@@ -1,3 +1,5 @@
+using System.Xml;
+using System.Xml.Linq;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
@@ -10,6 +12,7 @@ using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Queries;
 using AmusementPark.Application.Features.TechnicalPages.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
@@ -33,6 +36,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
     private readonly IParkFounderRepository parkFounderRepository;
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly ITechnicalPageRepository technicalPageRepository;
+    private readonly ISeoSitemapSnapshotRepository sitemapSnapshotRepository;
 
     public GetPublicHtmlSitemapNodesQueryHandler(
         IParkRepository parkRepository,
@@ -45,7 +49,8 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
         IParkOperatorRepository parkOperatorRepository,
         IParkFounderRepository parkFounderRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
-        ITechnicalPageRepository technicalPageRepository)
+        ITechnicalPageRepository technicalPageRepository,
+        ISeoSitemapSnapshotRepository sitemapSnapshotRepository)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
@@ -58,6 +63,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
         this.parkFounderRepository = parkFounderRepository;
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.technicalPageRepository = technicalPageRepository;
+        this.sitemapSnapshotRepository = sitemapSnapshotRepository;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>> HandleAsync(
@@ -72,11 +78,13 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
         }
 
         string parentNodeId = NormalizeParentNodeId(query.ParentNodeId);
-        IReadOnlyCollection<PublicHtmlSitemapNode> nodes = await this.BuildNodesForParentAsync(language, parentNodeId, cancellationToken);
-        if (query.IncludeDescendants)
+        if (query.IncludeDescendants && string.Equals(parentNodeId, "root", StringComparison.OrdinalIgnoreCase))
         {
-            nodes = await this.BuildNodesWithDescendantsAsync(language, nodes, cancellationToken);
+            IReadOnlyCollection<PublicHtmlSitemapNode> sitemapNodes = await this.BuildSnapshotLinkNodesAsync(language, query.SupportedLanguages, cancellationToken);
+            return ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>.Success(sitemapNodes);
         }
+
+        IReadOnlyCollection<PublicHtmlSitemapNode> nodes = await this.BuildNodesForParentAsync(language, parentNodeId, cancellationToken);
 
         return ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>.Success(nodes);
     }
@@ -99,33 +107,164 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
         };
     }
 
-    private async Task<IReadOnlyCollection<PublicHtmlSitemapNode>> BuildNodesWithDescendantsAsync(
+    private async Task<IReadOnlyCollection<PublicHtmlSitemapNode>> BuildSnapshotLinkNodesAsync(
         string language,
-        IReadOnlyCollection<PublicHtmlSitemapNode> nodes,
+        IReadOnlyCollection<string> supportedLanguages,
         CancellationToken cancellationToken)
     {
-        List<PublicHtmlSitemapNode> enrichedNodes = new List<PublicHtmlSitemapNode>(nodes.Count);
-        foreach (PublicHtmlSitemapNode node in nodes)
+        SitemapSnapshot? snapshot = await this.sitemapSnapshotRepository.GetLatestAsync(cancellationToken);
+        if (snapshot is null || snapshot.Sections.Count == 0)
         {
-            if (!node.HasChildren)
+            return BuildRootNodes(language);
+        }
+
+        List<PublicHtmlSitemapNode> sectionNodes = new List<PublicHtmlSitemapNode>();
+        HashSet<string> emittedUrls = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        IReadOnlyCollection<string> normalizedSupportedLanguages = NormalizeSupportedLanguages(supportedLanguages);
+        foreach (SitemapSectionStats section in snapshot.Sections
+                     .Where(section => IsSnapshotSectionRelevantForLanguage(section.Key, language, normalizedSupportedLanguages))
+                     .OrderBy(static section => section.DisplayName, StringComparer.OrdinalIgnoreCase))
+        {
+            string? sectionXml = await this.sitemapSnapshotRepository.GetSectionXmlAsync(section.Key, cancellationToken);
+            if (string.IsNullOrWhiteSpace(sectionXml))
             {
-                enrichedNodes.Add(node);
                 continue;
             }
 
-            IReadOnlyCollection<PublicHtmlSitemapNode> childNodes = await this.BuildNodesForParentAsync(language, node.Id, cancellationToken);
-            IReadOnlyCollection<PublicHtmlSitemapNode> descendantNodes = await this.BuildNodesWithDescendantsAsync(language, childNodes, cancellationToken);
-            enrichedNodes.Add(new PublicHtmlSitemapNode
+            IReadOnlyCollection<PublicHtmlSitemapNode> linkNodes = ExtractSitemapLinkNodes(section.Key, sectionXml, language, emittedUrls);
+            if (linkNodes.Count == 0)
             {
-                Id = node.Id,
-                Label = node.Label,
-                RelativeUrl = node.RelativeUrl,
-                HasChildren = node.HasChildren,
-                Children = descendantNodes,
+                continue;
+            }
+
+            sectionNodes.Add(new PublicHtmlSitemapNode
+            {
+                Id = $"sitemap-section:{section.Key}",
+                Label = section.DisplayName,
+                HasChildren = true,
+                Children = linkNodes,
             });
         }
 
-        return enrichedNodes;
+        return sectionNodes.Count == 0 ? BuildRootNodes(language) : sectionNodes;
+    }
+
+    private static IReadOnlyCollection<string> NormalizeSupportedLanguages(IReadOnlyCollection<string> supportedLanguages)
+    {
+        return supportedLanguages.Count == 0
+            ? new[] { "en" }
+            : supportedLanguages
+                .Where(static supportedLanguage => !string.IsNullOrWhiteSpace(supportedLanguage))
+                .Select(static supportedLanguage => supportedLanguage.Trim().ToLowerInvariant())
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToList();
+    }
+
+    private static bool IsSnapshotSectionRelevantForLanguage(
+        string sectionKey,
+        string language,
+        IReadOnlyCollection<string> supportedLanguages)
+    {
+        string normalizedKey = sectionKey.Trim();
+        if (normalizedKey.Length == 0)
+        {
+            return false;
+        }
+
+        if (HasLanguageScopedSectionSuffix(normalizedKey, language))
+        {
+            return true;
+        }
+
+        foreach (string supportedLanguage in supportedLanguages)
+        {
+            if (!string.Equals(supportedLanguage, language, StringComparison.OrdinalIgnoreCase)
+                && HasLanguageScopedSectionSuffix(normalizedKey, supportedLanguage))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static bool HasLanguageScopedSectionSuffix(string sectionKey, string language)
+    {
+        string languageSuffix = $"-{language}";
+        if (sectionKey.EndsWith(languageSuffix, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        string chunkedLanguageSuffix = $"{languageSuffix}-";
+        int index = sectionKey.LastIndexOf(chunkedLanguageSuffix, StringComparison.OrdinalIgnoreCase);
+        if (index < 0)
+        {
+            return false;
+        }
+
+        string chunkNumber = sectionKey[(index + chunkedLanguageSuffix.Length)..];
+        return chunkNumber.Length > 0 && chunkNumber.All(static value => value >= '0' && value <= '9');
+    }
+
+    private static IReadOnlyCollection<PublicHtmlSitemapNode> ExtractSitemapLinkNodes(
+        string sectionKey,
+        string sectionXml,
+        string language,
+        HashSet<string> emittedUrls)
+    {
+        try
+        {
+            XDocument document = XDocument.Parse(sectionXml, LoadOptions.None);
+            XNamespace sitemapNamespace = "http://www.sitemaps.org/schemas/sitemap/0.9";
+            string languagePrefix = $"/{language}/";
+            List<PublicHtmlSitemapNode> nodes = new List<PublicHtmlSitemapNode>();
+            int index = 0;
+
+            foreach (XElement locElement in document.Descendants(sitemapNamespace + "url").Elements(sitemapNamespace + "loc"))
+            {
+                string? relativeUrl = TryCreateCurrentLanguageRelativeUrl(locElement.Value, languagePrefix);
+                if (relativeUrl is null || !emittedUrls.Add(relativeUrl))
+                {
+                    continue;
+                }
+
+                nodes.Add(CreateLeaf(
+                    $"sitemap-link:{sectionKey}:{index}",
+                    CreateLinkLabel(relativeUrl, languagePrefix),
+                    relativeUrl));
+                index++;
+            }
+
+            return nodes
+                .OrderBy(static node => node.RelativeUrl, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+        }
+        catch (XmlException)
+        {
+            return Array.Empty<PublicHtmlSitemapNode>();
+        }
+    }
+
+    private static string? TryCreateCurrentLanguageRelativeUrl(string value, string languagePrefix)
+    {
+        string locValue = value.Trim();
+        if (!Uri.TryCreate(locValue, UriKind.Absolute, out Uri? absoluteUri))
+        {
+            return null;
+        }
+
+        string relativeUrl = absoluteUri.AbsolutePath;
+        return relativeUrl.StartsWith(languagePrefix, StringComparison.OrdinalIgnoreCase) ? relativeUrl : null;
+    }
+
+    private static string CreateLinkLabel(string relativeUrl, string languagePrefix)
+    {
+        string label = relativeUrl.StartsWith(languagePrefix, StringComparison.OrdinalIgnoreCase)
+            ? relativeUrl[languagePrefix.Length..]
+            : relativeUrl.TrimStart('/');
+
+        return label.Length == 0 ? relativeUrl : label.Replace('/', ' ');
     }
 
     private async Task<IReadOnlyCollection<PublicHtmlSitemapNode>> BuildDynamicNodesAsync(

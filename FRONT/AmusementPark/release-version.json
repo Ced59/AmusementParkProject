@@ -1,6 +1,20 @@
 {
-  "version": "3.1.37",
+  "version": "3.1.38",
   "history": [
+    {
+      "version": "3.1.38",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le plan du site se charge plus vite.",
+        "en": "The sitemap loads faster.",
+        "de": "Die Sitemap lädt schneller.",
+        "nl": "De sitemap laadt sneller.",
+        "it": "La mappa del sito si carica più in fretta.",
+        "es": "El mapa del sitio carga más rápido.",
+        "pl": "Mapa strony ładuje się szybciej.",
+        "pt": "O mapa do site carrega mais depressa."
+      }
+    },
     {
       "version": "3.1.37",
       "releasedAt": "2026-07-03",

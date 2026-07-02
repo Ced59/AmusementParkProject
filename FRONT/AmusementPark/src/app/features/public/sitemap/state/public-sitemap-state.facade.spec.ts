@@ -58,32 +58,40 @@ describe('PublicSitemapStateFacade', () => {
     expect(facade.isExpanded('parks')).toBeTrue();
   });
 
-  it('exposes embedded descendants without lazy loading them again', () => {
+  it('loads embedded descendants in the background without blocking root display', () => {
     const parkNode: PublicHtmlSitemapNode = {
       id: 'park:park-1',
       label: 'Parc Demo',
       relativeUrl: '/fr/park/park-1/parc-demo',
       hasChildren: false
     };
-    const parksNode: PublicHtmlSitemapNode = {
+    const rootParksNode: PublicHtmlSitemapNode = {
       id: 'parks',
       label: 'Parcs',
       relativeUrl: '/fr/parks',
+      hasChildren: true
+    };
+    const parksNode: PublicHtmlSitemapNode = {
+      id: 'sitemap-section:parks',
+      label: 'Parcs',
+      relativeUrl: null,
       hasChildren: true,
       children: [parkNode]
     };
-    dataPort.getNodes.and.returnValue(of([parksNode]));
+    dataPort.getNodes.and.callFake((_: string, __: string | null, includeDescendants?: boolean) => {
+      return of(includeDescendants ? [parksNode] : [rootParksNode]);
+    });
 
     facade.loadRoot('fr', true);
-    facade.toggleNode(parksNode);
-    facade.toggleNode(parksNode);
 
     expect(dataPort.getNodes.calls.allArgs()).toEqual([
+      ['fr', null, false],
       ['fr', null, true]
     ]);
-    expect(facade.rootNodes()).toEqual([parksNode]);
-    expect(facade.childrenFor('parks')).toEqual([parkNode]);
-    expect(facade.isExpanded('parks')).toBeTrue();
+    expect(facade.loading()).toBeFalse();
+    expect(facade.rootNodes()).toEqual([rootParksNode, parksNode]);
+    expect(facade.childrenFor('sitemap-section:parks')).toEqual([parkNode]);
+    expect(facade.isExpanded('sitemap-section:parks')).toBeTrue();
   });
 
   it('exposes an error key when root loading fails', () => {

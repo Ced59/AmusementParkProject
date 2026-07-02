@@ -41,7 +41,7 @@ export class PublicSitemapStateFacade {
     this.loadingSignal.set(true);
     this.errorKeySignal.set(null);
 
-    this.dataPort.getNodes(normalizedLanguage, null, includeDescendants)
+    this.dataPort.getNodes(normalizedLanguage, null, false)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (nodes: PublicHtmlSitemapNode[]): void => {
@@ -52,6 +52,10 @@ export class PublicSitemapStateFacade {
           this.rootNodesSignal.set(nodes);
           this.applyEmbeddedChildren(nodes);
           this.loadingSignal.set(false);
+
+          if (includeDescendants) {
+            this.loadEmbeddedDescendants(normalizedLanguage, sequence);
+          }
         },
         error: (error: unknown): void => {
           if (sequence !== this.rootLoadSequence) {
@@ -62,6 +66,28 @@ export class PublicSitemapStateFacade {
           this.rootNodesSignal.set([]);
           this.loadingSignal.set(false);
           this.errorKeySignal.set('sitemapPage.error');
+        }
+      });
+  }
+
+  private loadEmbeddedDescendants(language: string, sequence: number): void {
+    this.dataPort.getNodes(language, null, true)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (nodes: PublicHtmlSitemapNode[]): void => {
+          if (sequence !== this.rootLoadSequence || nodes.length === 0) {
+            return;
+          }
+
+          this.rootNodesSignal.set([...this.rootNodesSignal(), ...nodes]);
+          this.applyEmbeddedChildren(this.rootNodesSignal());
+        },
+        error: (error: unknown): void => {
+          if (sequence !== this.rootLoadSequence) {
+            return;
+          }
+
+          console.error('Error loading public sitemap crawl links', error);
         }
       });
   }
