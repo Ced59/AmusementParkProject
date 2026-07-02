@@ -1,6 +1,20 @@
 {
-  "version": "3.1.20",
+  "version": "3.1.21",
   "history": [
+    {
+      "version": "3.1.21",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Les images gagnent des textes utiles.",
+        "en": "Images get useful descriptions.",
+        "de": "Bilder erhalten hilfreiche Beschreibungen.",
+        "nl": "Afbeeldingen krijgen nuttige beschrijvingen.",
+        "it": "Le immagini ricevono descrizioni utili.",
+        "es": "Las imágenes ganan descripciones útiles.",
+        "pl": "Obrazy zyskują pomocne opisy.",
+        "pt": "As imagens ganham descrições úteis."
+      }
+    },
     {
       "version": "3.1.20",
       "releasedAt": "2026-07-02",

@@ -52,4 +52,15 @@ describe('ImageDisplayViewComponent', () => {
     expect(image.hasAttribute('srcset')).toBeFalse();
     expect(image.hasAttribute('sizes')).toBeFalse();
   });
+
+  it('falls back to a non-empty alt text when the provided alt is blank', () => {
+    component.showImage = true;
+    component.resolvedImageUrl = 'https://example.com/image.png';
+    component.alt = '   ';
+
+    fixture.detectChanges();
+
+    const image: HTMLImageElement = fixture.debugElement.query(By.css('img')).nativeElement;
+    expect(image.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun image');
+  });
 });

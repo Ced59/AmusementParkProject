@@ -73,6 +73,7 @@ describe('PublicFooterComponent', () => {
 
     expect(brandLink?.getAttribute('aria-label')).toBe('AMUSEMENT-PARKS.fun');
     expect(logoImage?.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark.png');
+    expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
     expect(base?.textContent).toBe('AMUSEMENT-PARKS');
     expect(dot?.textContent).toBe('.');
     expect(fun?.textContent).toBe('fun');
@@ -106,5 +107,6 @@ describe('PublicFooterComponent', () => {
     expect(activeLanguageLink).not.toBeNull();
     expect(activeLanguageLink?.textContent).toContain('English');
     expect(activeLanguageLink?.getAttribute('aria-current')).toBe('page');
+    expect(activeLanguageLink?.querySelector('img')?.getAttribute('alt')).toBe('English');
   });
 });
