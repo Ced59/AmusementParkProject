@@ -45,6 +45,11 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             return ApplicationResult<HistoryTimelineResult>.Failure(ApplicationErrors.EntityNotFound(nameof(Park), query.ParkId));
         }
 
+        if (!query.IncludeHidden && !HistoryPublicVisibility.IsPublicPark(park))
+        {
+            return ApplicationResult<HistoryTimelineResult>.Failure(ApplicationErrors.EntityNotFound(nameof(Park), query.ParkId));
+        }
+
         IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetParkTimelineAsync(
             park.Id,
             query.IncludeHidden,
@@ -86,7 +91,13 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             .ThenBy(static item => item.Day ?? 0)
             .ThenBy(static item => item.Key, StringComparer.Ordinal)
             .Select(hydration.ToTimelineEvent)
+            .Where(entry => query.IncludeHidden || HistoryPublicVisibility.CanExposeTimelineEvent(entry, park))
             .ToList();
+
+        if (timelineEvents.Count == 0)
+        {
+            return ApplicationResult<HistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
+        }
 
         List<ParkItem> includedItems = timelineEvents
             .Select(static item => item.ParkItem)
@@ -145,6 +156,7 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
         }
 
         return candidates
+            .Where(item => includeHidden || HistoryPublicVisibility.IsPublicParkItem(item))
             .Where(AutomaticHistoryEventFactory.HasLifecycleDate)
             .ToList();
     }
@@ -158,7 +170,9 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             parkId,
             includeHidden,
             cancellationToken);
-        return parkItems.Any(AutomaticHistoryEventFactory.HasLifecycleDate);
+        return parkItems.Any(item =>
+            (includeHidden || HistoryPublicVisibility.IsPublicParkItem(item)) &&
+            AutomaticHistoryEventFactory.HasLifecycleDate(item));
     }
 }
 
@@ -198,6 +212,12 @@ public sealed class GetParkItemHistoryTimelineQueryHandler : IQueryHandler<GetPa
             ? null
             : await this.parkRepository.GetByIdAsync(parkItem.ParkId, query.IncludeHidden, cancellationToken);
 
+        if (!query.IncludeHidden &&
+            (!HistoryPublicVisibility.IsPublicParkItem(parkItem) || !HistoryPublicVisibility.IsPublicPark(park)))
+        {
+            return ApplicationResult<HistoryTimelineResult>.Failure(ApplicationErrors.EntityNotFound(nameof(ParkItem), query.ParkItemId));
+        }
+
         IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineAsync(
             HistoryEntityType.ParkItem,
             parkItem.Id,
@@ -227,7 +247,13 @@ public sealed class GetParkItemHistoryTimelineQueryHandler : IQueryHandler<GetPa
             .ThenBy(static item => item.Day ?? 0)
             .ThenBy(static item => item.Key, StringComparer.Ordinal)
             .Select(hydration.ToTimelineEvent)
+            .Where(entry => query.IncludeHidden || HistoryPublicVisibility.CanExposeTimelineEvent(entry, park))
             .ToList();
+
+        if (timelineEvents.Count == 0)
+        {
+            return ApplicationResult<HistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
+        }
 
         return ApplicationResult<HistoryTimelineResult>.Success(new HistoryTimelineResult
         {
@@ -284,10 +310,20 @@ public sealed class GetHistoryArticleQueryHandler : IQueryHandler<GetHistoryArti
             cancellationToken);
 
         HistoryTimelineEventResult hydratedEvent = hydration.ToTimelineEvent(historyEvent);
-        Park? park = historyEvent.EntityType == HistoryEntityType.Park ? hydratedEvent.ContextPark : null;
+        Park? park = hydratedEvent.ContextPark;
+        if (park is null && historyEvent.EntityType == HistoryEntityType.Park && !string.IsNullOrWhiteSpace(historyEvent.OwnerId))
+        {
+            park = await this.parkRepository.GetByIdAsync(historyEvent.OwnerId, query.IncludeHidden, cancellationToken);
+        }
+
         if (park is null && hydratedEvent.ParkItem is not null && !string.IsNullOrWhiteSpace(hydratedEvent.ParkItem.ParkId))
         {
             park = await this.parkRepository.GetByIdAsync(hydratedEvent.ParkItem.ParkId, query.IncludeHidden, cancellationToken);
+        }
+
+        if (!query.IncludeHidden && !HistoryPublicVisibility.CanExposeTimelineEvent(hydratedEvent, park))
+        {
+            return ApplicationResult<HistoryArticleResult>.Failure(HistoryApplicationErrors.ArticleNotFound());
         }
 
         return ApplicationResult<HistoryArticleResult>.Success(new HistoryArticleResult
@@ -344,6 +380,40 @@ public sealed class GetHistoryEventsPageQueryHandler : IQueryHandler<GetHistoryE
             page.TotalItems);
 
         return ApplicationResult<PagedResult<HistoryTimelineEventResult>>.Success(result);
+    }
+}
+
+internal static class HistoryPublicVisibility
+{
+    public static bool CanExposeTimelineEvent(HistoryTimelineEventResult entry, Park? fallbackContextPark)
+    {
+        if (entry.Event.EntityType == HistoryEntityType.Park)
+        {
+            Park? park = entry.ContextPark ?? fallbackContextPark;
+            return IsPublicPark(park);
+        }
+
+        if (entry.Event.EntityType == HistoryEntityType.ParkItem)
+        {
+            Park? contextPark = entry.ContextPark ?? fallbackContextPark;
+            return IsPublicPark(contextPark) && IsPublicParkItem(entry.ParkItem);
+        }
+
+        return false;
+    }
+
+    public static bool IsPublicPark(Park? park)
+    {
+        return park is not null &&
+               park.IsVisible &&
+               park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+    }
+
+    public static bool IsPublicParkItem(ParkItem? parkItem)
+    {
+        return parkItem is not null &&
+               parkItem.IsVisible &&
+               parkItem.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 }
 

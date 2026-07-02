@@ -60,10 +60,27 @@
                 <h2>{{ block.text }}</h2>
               }
             } @else if (isImage(block)) {
+              @let figureImageIds = imageIds(block);
               <figure class="history-article__figure">
-                @if (block.imageId) {
+                @if (figureImageIds.length > 1) {
+                  <div class="history-article__gallery">
+                    @for (imageId of figureImageIds; track imageId) {
+                      <app-image-display
+                        [imageId]="imageId"
+                        [alt]="block.caption || currentArticle.title"
+                        loading="lazy"
+                        fetchPriority="low"
+                        sizes="(max-width: 900px) 100vw, 420px"
+                        [srcWidth]="640"
+                        imgClass="history-article__gallery-img"
+                        placeholderClass="history-article__gallery-placeholder"
+                        placeholderKind="photo">
+                      </app-image-display>
+                    }
+                  </div>
+                } @else if (figureImageIds.length === 1) {
                   <app-image-display
-                    [imageId]="block.imageId"
+                    [imageId]="figureImageIds[0]"
                     [alt]="block.caption || currentArticle.title"
                     loading="lazy"
                     fetchPriority="low"

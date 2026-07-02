@@ -106,6 +106,69 @@ describe('history-view.mapper', () => {
     expect(viewModel!.title).toBe('Opening - Mirapolis');
     expect(viewModel!.blocks.map(block => block.id)).toEqual(['content-block']);
   });
+
+  it('builds a canonical article path from resolved owner data', () => {
+    const article: HistoryArticle = {
+      event: createHistoryEvent({
+        article: {
+          slug: 'opening-article',
+          titles: [{ languageCode: 'en', value: 'Opening day' }],
+          subtitles: [],
+          summaries: [],
+          mainImageId: null,
+          isPublished: true,
+          sources: [],
+          blocks: []
+        }
+      }),
+      park: { id: 'park-1', name: 'Mirapolis' } as Park,
+      parkItem: null,
+      contextPark: null,
+      mainImage: null
+    };
+
+    const viewModel = mapHistoryArticleToViewModel(article, 'en');
+
+    expect(viewModel).not.toBeNull();
+    expect(viewModel!.canonicalPath).toBe('/en/park/park-1/mirapolis/history/event-1/opening-article');
+  });
+
+  it('keeps gallery image ids on article blocks', () => {
+    const article: HistoryArticle = {
+      event: createHistoryEvent({
+        article: {
+          slug: 'gallery-article',
+          titles: [{ languageCode: 'en', value: 'Gallery' }],
+          subtitles: [],
+          summaries: [],
+          mainImageId: null,
+          isPublished: true,
+          sources: [],
+          blocks: [
+            {
+              id: 'gallery-block',
+              type: 'Gallery',
+              sortOrder: 1,
+              texts: [],
+              imageId: null,
+              imageIds: ['image-1', 'image-2'],
+              captions: [{ languageCode: 'en', value: 'Opening photos' }]
+            }
+          ]
+        }
+      }),
+      park: { id: 'park-1', name: 'Mirapolis' } as Park,
+      parkItem: null,
+      contextPark: null,
+      mainImage: null
+    };
+
+    const viewModel = mapHistoryArticleToViewModel(article, 'en');
+
+    expect(viewModel).not.toBeNull();
+    expect(viewModel!.blocks[0].imageIds).toEqual(['image-1', 'image-2']);
+    expect(viewModel!.blocks[0].caption).toBe('Opening photos');
+  });
 });
 
 function createHistoryEvent(overrides: Partial<HistoryEvent> = {}): HistoryEvent {

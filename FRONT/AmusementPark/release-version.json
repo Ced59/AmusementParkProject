@@ -1,6 +1,20 @@
 {
-  "version": "3.1.31",
+  "version": "3.1.32",
   "history": [
+    {
+      "version": "3.1.32",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Les pages d'histoire restent mieux protégées.",
+        "en": "History pages stay better protected.",
+        "de": "Historienseiten bleiben besser geschützt.",
+        "nl": "Geschiedenispagina's blijven beter beschermd.",
+        "it": "Le pagine della storia restano più protette.",
+        "es": "Las páginas de historia siguen mejor protegidas.",
+        "pl": "Strony historii pozostają lepiej chronione.",
+        "pt": "As páginas de história continuam melhor protegidas."
+      }
+    },
     {
       "version": "3.1.31",
       "releasedAt": "2026-07-02",

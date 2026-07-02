@@ -4,7 +4,8 @@ import {
   buildPublicParkHistoryArticleRouteCommands,
   buildPublicParkHistoryRouteCommands,
   buildPublicParkItemHistoryArticleRouteCommands,
-  buildPublicParkItemHistoryRouteCommands
+  buildPublicParkItemHistoryRouteCommands,
+  buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { HistoryArticle, HistoryTimeline, HistoryTimelineEvent } from '@app/models/history/history.models';
 import { Park } from '@app/models/parks/park';
@@ -163,6 +164,7 @@ export function mapHistoryArticleToViewModel(article: HistoryArticle, language: 
       .filter(isDisplayableArticleBlock),
     sources: [...(content.sources ?? []), ...(article.event.sources ?? [])],
     timelineLink: buildArticleTimelineLink(article, language),
+    canonicalPath: buildArticleCanonicalPath(article, title, language),
     event: article.event,
     article: content
   };
@@ -269,6 +271,35 @@ function buildArticleTimelineLink(article: HistoryArticle, language: string): st
     language,
     parkId: article.park?.id ?? article.event.parkId,
     parkName: article.park?.name ?? 'park'
+  });
+}
+
+function buildArticleCanonicalPath(article: HistoryArticle, eventTitle: string, language: string): string | null {
+  return buildPublicRoutePath(buildArticleCanonicalLink(article, eventTitle, language));
+}
+
+function buildArticleCanonicalLink(article: HistoryArticle, eventTitle: string, language: string): string[] | null {
+  const resolvedEventTitle: string = article.event.article?.slug ?? eventTitle;
+  const eventId: string | null = article.event.id ?? null;
+
+  if (article.event.entityType === 'ParkItem') {
+    return buildPublicParkItemHistoryArticleRouteCommands({
+      language,
+      parkId: article.contextPark?.id ?? article.park?.id ?? article.event.contextParkId ?? article.event.parkId,
+      parkName: article.contextPark?.name ?? article.park?.name ?? 'park',
+      itemId: article.parkItem?.id ?? article.event.parkItemId,
+      itemName: article.parkItem?.name ?? 'item',
+      eventId,
+      eventTitle: resolvedEventTitle
+    });
+  }
+
+  return buildPublicParkHistoryArticleRouteCommands({
+    language,
+    parkId: article.park?.id ?? article.contextPark?.id ?? article.event.parkId ?? article.event.contextParkId,
+    parkName: article.park?.name ?? article.contextPark?.name ?? 'park',
+    eventId,
+    eventTitle: resolvedEventTitle
   });
 }
 
