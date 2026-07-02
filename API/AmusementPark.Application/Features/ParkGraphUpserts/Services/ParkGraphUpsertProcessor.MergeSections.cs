@@ -54,6 +54,7 @@ public sealed partial class ParkGraphUpsertProcessor
             AddChange(change, "name", target.Name, source.Name);
             AddChange(change, "countryCode", target.CountryCode, source.CountryCode);
             AddChange(change, "type", target.Type, source.Type);
+            AddChange(change, "audienceClassification", target.AudienceClassification, source.AudienceClassification);
             AddChange(change, "status", target.Status, source.Status);
             AddChange(change, "openingDate", target.OpeningDate, source.OpeningDate);
             AddChange(change, "closingDate", target.ClosingDate, source.ClosingDate);
@@ -62,6 +63,7 @@ public sealed partial class ParkGraphUpsertProcessor
             target.Name = source.Name;
             target.CountryCode = source.CountryCode;
             target.Type = source.Type;
+            target.AudienceClassification = source.AudienceClassification;
             target.Status = source.Status;
             target.OpeningDate = source.OpeningDate;
             target.ClosingDate = source.ClosingDate;

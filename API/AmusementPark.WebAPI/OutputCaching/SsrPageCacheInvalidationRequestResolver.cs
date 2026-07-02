@@ -2,6 +2,7 @@ using System.Reflection;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Ports;
@@ -137,10 +138,12 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         bool? isVisible = GetNullableBooleanProperty(request, "FilterIsVisible");
         string? adminReviewStatusText = GetStringProperty(request, "FilterAdminReviewStatus");
         string? typeText = GetStringProperty(request, "FilterType");
+        string? audienceClassificationText = GetStringProperty(request, "FilterAudienceClassification");
         string? countryCode = GetStringProperty(request, "FilterCountryCode");
         bool? hasValidCoordinates = GetNullableBooleanProperty(request, "FilterHasValidCoordinates");
         AdminReviewStatus? adminReviewStatus = ParseEnum<AdminReviewStatus>(adminReviewStatusText);
         ParkType? type = ParseEnum<ParkType>(typeText);
+        ParkAudienceClassificationFilter? audienceClassificationFilter = ParkAudienceClassificationFilterParser.Parse(audienceClassificationText);
 
         return await this.parkRepository.GetAdministrationIdsAsync(
             includeHidden: true,
@@ -149,7 +152,8 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             type,
             countryCode,
             hasValidCoordinates,
-            cancellationToken);
+            cancellationToken,
+            audienceClassificationFilter);
     }
 
     private async Task<SsrPageCacheInvalidationRequest> ResolveParkItemsAsync(

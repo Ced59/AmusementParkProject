@@ -156,6 +156,8 @@
       "statusAll": "Alle statussen",
       "type": "Type",
       "typeAll": "Alle types",
+      "audienceClassification": "Bereik",
+      "audienceClassificationAll": "Alle bereiken",
       "category": "Categorie",
       "categoryAll": "Alle categorieën",
       "countryCode": "Land",
@@ -900,6 +902,8 @@
       },
       "type": "Type",
       "typePlaceholder": "Selecteer een parktype",
+      "audienceClassification": "Bereik",
+      "audienceClassificationPlaceholder": "Bereik selecteren",
       "founder": "Oprichter",
       "founderPlaceholder": "Selecteer een oprichter",
       "addFounder": "Oprichter toevoegen",
@@ -915,6 +919,13 @@
         "amusementPark": "Pretpark",
         "resort": "Resort",
         "notSpecified": "Niet opgegeven"
+      },
+      "audienceClassifications": {
+        "international": "Internationaal bereik",
+        "national": "Nationaal bereik",
+        "regional": "Regionaal bereik",
+        "local": "Lokaal bereik",
+        "notSpecified": "Niet ingevuld"
       },
       "logos": {
         "sectionTitle": "Parklogo's",
@@ -3436,6 +3447,15 @@
       "openOnly": "Open",
       "withClosed": "Met gesloten",
       "closedOnly": "Gesloten"
+    },
+    "audienceFilters": {
+      "label": "Bereik",
+      "all": "Alle",
+      "international": "Internationaal",
+      "national": "Nationaal",
+      "regional": "Regionaal",
+      "local": "Lokaal",
+      "notSpecified": "Niet ingevuld"
     },
     "statuses": {
       "closedDefinitively": "Definitief gesloten"

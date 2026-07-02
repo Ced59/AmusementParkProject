@@ -156,6 +156,8 @@
       "statusAll": "Tutti gli stati",
       "type": "Tipo",
       "typeAll": "Tutti i tipi",
+      "audienceClassification": "Rilevanza",
+      "audienceClassificationAll": "Tutte le rilevanze",
       "category": "Categoria",
       "categoryAll": "Tutte le categorie",
       "countryCode": "Paese",
@@ -900,6 +902,8 @@
       },
       "type": "Tipo",
       "typePlaceholder": "Seleziona un tipo di parco",
+      "audienceClassification": "Rilevanza",
+      "audienceClassificationPlaceholder": "Seleziona una rilevanza",
       "founder": "Fondatore",
       "founderPlaceholder": "Seleziona un fondatore",
       "addFounder": "Aggiungi un fondatore",
@@ -915,6 +919,13 @@
         "amusementPark": "Parco divertimenti",
         "resort": "Resort",
         "notSpecified": "Non specificato"
+      },
+      "audienceClassifications": {
+        "international": "Rilevanza internazionale",
+        "national": "Rilevanza nazionale",
+        "regional": "Rilevanza regionale",
+        "local": "Rilevanza locale",
+        "notSpecified": "Non indicata"
       },
       "logos": {
         "sectionTitle": "Loghi del parco",
@@ -3436,6 +3447,15 @@
       "openOnly": "Aperti",
       "withClosed": "Con chiusi",
       "closedOnly": "Chiusi"
+    },
+    "audienceFilters": {
+      "label": "Rilevanza",
+      "all": "Tutti",
+      "international": "Internazionale",
+      "national": "Nazionale",
+      "regional": "Regionale",
+      "local": "Locale",
+      "notSpecified": "Non indicato"
     },
     "statuses": {
       "closedDefinitively": "Chiuso definitivamente"

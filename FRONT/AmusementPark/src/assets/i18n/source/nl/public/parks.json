@@ -338,6 +338,15 @@
       "withClosed": "Met gesloten",
       "closedOnly": "Gesloten"
     },
+    "audienceFilters": {
+      "label": "Bereik",
+      "all": "Alle",
+      "international": "Internationaal",
+      "national": "Nationaal",
+      "regional": "Regionaal",
+      "local": "Lokaal",
+      "notSpecified": "Niet ingevuld"
+    },
     "statuses": {
       "closedDefinitively": "Definitief gesloten"
     }

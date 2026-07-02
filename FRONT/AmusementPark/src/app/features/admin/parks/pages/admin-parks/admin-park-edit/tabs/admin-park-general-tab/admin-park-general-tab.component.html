@@ -49,7 +49,7 @@
   </div>
 
   <div class="grid formgrid">
-    <div class="field col-12 md:col-6">
+    <div class="field col-12 md:col-4">
       <label for="parkType">{{ 'admin.parks.type' | translate }}</label>
       <app-ui-select
         inputId="parkType"
@@ -72,7 +72,30 @@
       </app-ui-select>
     </div>
 
-    <div class="field col-12 md:col-6">
+    <div class="field col-12 md:col-4">
+      <label for="parkAudienceClassification">{{ 'admin.parks.audienceClassification' | translate }}</label>
+      <app-ui-select
+        inputId="parkAudienceClassification"
+        formControlName="audienceClassification"
+        [options]="parkAudienceClassificationOptions"
+        optionValue="value"
+        [showClear]="true"
+        [appendTo]="'body'"
+        [placeholder]="'admin.parks.audienceClassificationPlaceholder' | translate">
+        <ng-template let-option #item>
+          {{ option.labelKey | translate }}
+        </ng-template>
+        <ng-template let-option #selectedItem>
+          @if (option) {
+            {{ option.labelKey | translate }}
+          } @else {
+            {{ 'admin.parks.audienceClassificationPlaceholder' | translate }}
+          }
+        </ng-template>
+      </app-ui-select>
+    </div>
+
+    <div class="field col-12 md:col-4">
       <label for="countryCode">{{ 'admin.parks.country' | translate }}</label>
       <app-ui-select
         inputId="countryCode"

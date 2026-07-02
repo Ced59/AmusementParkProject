@@ -63,6 +63,8 @@ public sealed class ParkGraphExportPark
 
     public ParkType? Type { get; init; }
 
+    public ParkAudienceClassification? AudienceClassification { get; init; }
+
     public ParkStatus Status { get; init; } = ParkStatus.Operating;
 
     public DateTime? OpeningDate { get; init; }

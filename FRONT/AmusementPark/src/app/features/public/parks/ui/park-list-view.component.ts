@@ -12,6 +12,7 @@ import { UiSearchPanelComponent, UiSearchPanelSelectFilterModel, UiSelectOptionM
 import { UiParkCardComponent } from '@ui/cards';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkListMapComponent } from './park-list-map.component';
 
@@ -33,7 +34,9 @@ export class ParkListViewComponent {
   @Input() selectedParkCard!: Signal<ParkCardModel | null>;
   @Input() selectedRegion!: Signal<ParkRegionFilter | null>;
   @Input() selectedClosedFilter!: Signal<string>;
+  @Input() selectedAudienceClassificationFilter!: Signal<ParkAudienceClassificationFilter | null>;
   @Input() closedFilterOptions!: Signal<UiSelectOptionModel[]>;
+  @Input() audienceClassificationFilterOptions!: Signal<UiSelectOptionModel[]>;
   @Input() currentLang!: Signal<string>;
   @Input() searchTerm!: Signal<string>;
 
@@ -42,6 +45,7 @@ export class ParkListViewComponent {
   @Output() mapParkSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() regionFilterChanged: EventEmitter<ParkRegionFilter | null> = new EventEmitter<ParkRegionFilter | null>();
   @Output() closedFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
+  @Output() audienceClassificationFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() resultParkFocused: EventEmitter<ParkCardModel> = new EventEmitter<ParkCardModel>();
   @Output() selectedParkCleared: EventEmitter<void> = new EventEmitter<void>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
@@ -52,6 +56,12 @@ export class ParkListViewComponent {
       labelKey: 'parks.closedFilters.label',
       selectedValue: this.selectedClosedFilter(),
       options: this.closedFilterOptions()
+    },
+    {
+      id: 'audienceClassification',
+      labelKey: 'parks.audienceFilters.label',
+      selectedValue: this.selectedAudienceClassificationFilter(),
+      options: this.audienceClassificationFilterOptions()
     }
   ]);
 
@@ -82,6 +92,10 @@ export class ParkListViewComponent {
   onFilterChanged(event: { id: string; value: string | null }): void {
     if (event.id === 'closed') {
       this.closedFilterChanged.emit(event.value);
+    }
+
+    if (event.id === 'audienceClassification') {
+      this.audienceClassificationFilterChanged.emit(event.value);
     }
   }
 

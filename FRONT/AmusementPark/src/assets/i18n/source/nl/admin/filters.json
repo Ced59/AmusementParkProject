@@ -11,6 +11,8 @@
       "statusAll": "Alle statussen",
       "type": "Type",
       "typeAll": "Alle types",
+      "audienceClassification": "Bereik",
+      "audienceClassificationAll": "Alle bereiken",
       "category": "Categorie",
       "categoryAll": "Alle categorieën",
       "countryCode": "Land",

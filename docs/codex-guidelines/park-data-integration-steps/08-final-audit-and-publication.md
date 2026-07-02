@@ -26,6 +26,7 @@ Vérifier :
 - toutes les clés sont résolues ;
 - toutes les dates complètes sont sourcées ;
 - les années seules fiables sont renseignées comme années seules, sans `01-01` ni premier jour de mois inventé ;
+- `park.audienceClassification` est renseigné avec une valeur canonique, sauf reprise volontaire d’un parc legacy explicitement listé comme correction restante ;
 - les notes expliquent les incertitudes.
 - aucun champ obligatoire n’est cassé ;
 - aucun tarif n’est ajouté si les tarifs ne sont pas implémentés ;

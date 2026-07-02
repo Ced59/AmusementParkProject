@@ -61,7 +61,8 @@ public sealed class UpdateParksBulkAdministrationCommandHandler : ICommandHandle
                 command.FilterType,
                 command.FilterCountryCode,
                 command.FilterHasValidCoordinates,
-                cancellationToken);
+                cancellationToken,
+                command.FilterAudienceClassification);
 
             normalizedParkIds = filteredParkIds
                 .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
@@ -114,6 +115,7 @@ public sealed class UpdateParksBulkAdministrationCommandHandler : ICommandHandle
             || command.FilterAdminReviewStatus.HasValue
             || command.FilterType.HasValue
             || !string.IsNullOrWhiteSpace(command.FilterCountryCode)
-            || command.FilterHasValidCoordinates.HasValue;
+            || command.FilterHasValidCoordinates.HasValue
+            || command.FilterAudienceClassification.HasValue;
     }
 }

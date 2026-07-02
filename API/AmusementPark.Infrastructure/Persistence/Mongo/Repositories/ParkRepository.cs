@@ -58,9 +58,9 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, CancellationToken cancellationToken, ParkAdminSortField sortField = ParkAdminSortField.Default, bool sortDescending = false)
+    public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, CancellationToken cancellationToken, ParkAdminSortField sortField = ParkAdminSortField.Default, bool sortDescending = false, ParkAudienceClassificationFilter? audienceClassificationFilter = null)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates, closedFilter);
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates, closedFilter, audienceClassificationFilter);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
@@ -387,9 +387,9 @@ public sealed class ParkRepository : IParkRepository
         return checked((int)result.ModifiedCount);
     }
 
-    public async Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken, ParkAudienceClassificationFilter? audienceClassificationFilter = null)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates, ClosedEntityFilter.All);
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates, ClosedEntityFilter.All, audienceClassificationFilter);
 
         List<string> parkIds = await this.collection.Find(filter)
             .Project(document => document.Id)
@@ -420,6 +420,7 @@ public sealed class ParkRepository : IParkRepository
             Id = document.Id,
             Name = document.Name,
             CountryCode = document.CountryCode,
+            AudienceClassification = document.AudienceClassification,
             Street = document.Street,
             City = document.City,
             PostalCode = document.PostalCode,
@@ -531,6 +532,12 @@ public sealed class ParkRepository : IParkRepository
             filter &= Builders<ParkDocument>.Filter.In(document => document.CountryCode, regionCountryCodes);
         }
 
+        FilterDefinition<ParkDocument>? audienceClassificationFilter = BuildAudienceClassificationFilter(criteria.AudienceClassificationFilter);
+        if (audienceClassificationFilter is not null)
+        {
+            filter &= audienceClassificationFilter;
+        }
+
         FilterDefinition<ParkDocument>? searchFilter = this.BuildSearchTermFilter(criteria);
         if (searchFilter is not null)
         {
@@ -582,7 +589,7 @@ public sealed class ParkRepository : IParkRepository
             .ToList();
     }
 
-    private FilterDefinition<ParkDocument> BuildAdminListFilter(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter)
+    private FilterDefinition<ParkDocument> BuildAdminListFilter(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, ParkAudienceClassificationFilter? audienceClassificationFilter = null)
     {
         FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden) & BuildClosedFilter(closedFilter);
 
@@ -601,6 +608,12 @@ public sealed class ParkRepository : IParkRepository
             filter &= Builders<ParkDocument>.Filter.Eq(document => document.Type, type.Value);
         }
 
+        FilterDefinition<ParkDocument>? audienceFilter = BuildAudienceClassificationFilter(audienceClassificationFilter);
+        if (audienceFilter is not null)
+        {
+            filter &= audienceFilter;
+        }
+
         string normalizedCountryCode = (countryCode ?? string.Empty).Trim().ToUpperInvariant();
         if (normalizedCountryCode.Length > 0)
         {
@@ -615,6 +628,32 @@ public sealed class ParkRepository : IParkRepository
         }
 
         return filter;
+    }
+
+    private static FilterDefinition<ParkDocument>? BuildAudienceClassificationFilter(ParkAudienceClassificationFilter? audienceClassificationFilter)
+    {
+        if (!audienceClassificationFilter.HasValue)
+        {
+            return null;
+        }
+
+        if (audienceClassificationFilter.Value == ParkAudienceClassificationFilter.Unspecified)
+        {
+            return Builders<ParkDocument>.Filter.Or(
+                Builders<ParkDocument>.Filter.Exists(document => document.AudienceClassification, false),
+                Builders<ParkDocument>.Filter.Eq(document => document.AudienceClassification, null));
+        }
+
+        ParkAudienceClassification audienceClassification = audienceClassificationFilter.Value switch
+        {
+            ParkAudienceClassificationFilter.International => ParkAudienceClassification.International,
+            ParkAudienceClassificationFilter.National => ParkAudienceClassification.National,
+            ParkAudienceClassificationFilter.Regional => ParkAudienceClassification.Regional,
+            ParkAudienceClassificationFilter.Local => ParkAudienceClassification.Local,
+            _ => throw new ArgumentOutOfRangeException(nameof(audienceClassificationFilter), audienceClassificationFilter, "Unsupported audience classification filter."),
+        };
+
+        return Builders<ParkDocument>.Filter.Eq(document => document.AudienceClassification, audienceClassification);
     }
 
     private static FilterDefinition<ParkDocument> BuildValidCoordinatesFilter()

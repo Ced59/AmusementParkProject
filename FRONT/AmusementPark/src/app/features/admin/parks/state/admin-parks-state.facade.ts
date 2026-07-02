@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult, AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkOpeningHoursAdminFilter } from '@app/models/parks/park-opening-hours';
 import { ParkType } from '@app/models/parks/park-type';
 import { Pagination } from '@app/models/shared/pagination';
@@ -40,6 +41,7 @@ export class AdminParksStateFacade {
   private readonly visibilityFilterSignal = signal<boolean | null>(null);
   private readonly adminReviewStatusFilterSignal = signal<AdminReviewStatus | null>(null);
   private readonly typeFilterSignal = signal<ParkType | null>(null);
+  private readonly audienceClassificationFilterSignal = signal<ParkAudienceClassificationFilter | null>(null);
   private readonly countryCodeFilterSignal = signal('');
   private readonly validCoordinatesFilterSignal = signal<boolean | null>(null);
   private readonly openingHoursFilterSignal = signal<ParkOpeningHoursAdminFilter>('all');
@@ -56,6 +58,7 @@ export class AdminParksStateFacade {
   public readonly visibilityFilter = this.visibilityFilterSignal.asReadonly();
   public readonly adminReviewStatusFilter = this.adminReviewStatusFilterSignal.asReadonly();
   public readonly typeFilter = this.typeFilterSignal.asReadonly();
+  public readonly audienceClassificationFilter = this.audienceClassificationFilterSignal.asReadonly();
   public readonly countryCodeFilter = this.countryCodeFilterSignal.asReadonly();
   public readonly validCoordinatesFilter = this.validCoordinatesFilterSignal.asReadonly();
   public readonly openingHoursFilter = this.openingHoursFilterSignal.asReadonly();
@@ -65,6 +68,7 @@ export class AdminParksStateFacade {
     isVisible: this.visibilityFilterSignal(),
     adminReviewStatus: this.adminReviewStatusFilterSignal(),
     type: this.typeFilterSignal(),
+    audienceClassification: this.audienceClassificationFilterSignal(),
     countryCode: this.countryCodeFilterSignal().trim() || null,
     hasValidCoordinates: this.validCoordinatesFilterSignal(),
     openingHoursStatus: this.openingHoursFilterSignal()
@@ -152,6 +156,7 @@ export class AdminParksStateFacade {
     this.visibilityFilterSignal.set(filters.isVisible ?? null);
     this.adminReviewStatusFilterSignal.set(filters.adminReviewStatus ?? null);
     this.typeFilterSignal.set(filters.type ?? null);
+    this.audienceClassificationFilterSignal.set(filters.audienceClassification ?? null);
     this.countryCodeFilterSignal.set(filters.countryCode ?? '');
     this.validCoordinatesFilterSignal.set(filters.hasValidCoordinates ?? null);
     this.openingHoursFilterSignal.set(filters.openingHoursStatus ?? 'all');
@@ -179,6 +184,7 @@ export class AdminParksStateFacade {
       filterIsVisible: null,
       filterAdminReviewStatus: filters.adminReviewStatus,
       filterType: filters.type,
+      filterAudienceClassification: filters.audienceClassification,
       filterCountryCode: filters.countryCode,
       filterHasValidCoordinates: true
     });

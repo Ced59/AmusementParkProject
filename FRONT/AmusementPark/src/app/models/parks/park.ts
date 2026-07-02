@@ -3,12 +3,14 @@ import { ParkType } from './park-type';
 import { ParkStatus } from './park-status';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkOpeningHoursAdminSummary } from './park-opening-hours';
+import { ParkAudienceClassification } from './park-audience-classification';
 
 export interface Park {
   id?: string;
   name?: string;
   countryCode?: string;
   type?: ParkType | null;
+  audienceClassification?: ParkAudienceClassification | null;
   status?: ParkStatus;
   founderId?: string | null;
   operatorId?: string | null;

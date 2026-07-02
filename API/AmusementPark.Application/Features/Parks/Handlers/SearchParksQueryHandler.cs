@@ -86,7 +86,10 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         return new ParkSearchCriteria(
             query.SearchTerm,
             matchingCountryCodes,
-            regionCountryCodes);
+            regionCountryCodes)
+        {
+            AudienceClassificationFilter = query.AudienceClassificationFilter,
+        };
     }
 
     private async Task<PagedResult<ParkListResult>> LoadApplicationLevelPageAsync(SearchParksQuery query, ParkSearchCriteria criteria, CancellationToken cancellationToken)

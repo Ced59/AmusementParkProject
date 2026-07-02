@@ -23,6 +23,11 @@ public sealed class Park : GeolocatedEntityBase
     /// </summary>
     public ParkType? Type { get; set; }
 
+    /// <summary>
+    /// Classification du rayonnement visiteur du parc.
+    /// </summary>
+    public ParkAudienceClassification? AudienceClassification { get; set; }
+
     public ParkStatus Status { get; set; } = ParkStatus.Operating;
 
     public DateTime? OpeningDate { get; set; }

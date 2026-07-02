@@ -338,6 +338,15 @@
       "withClosed": "Avec fermés",
       "closedOnly": "Fermés"
     },
+    "audienceFilters": {
+      "label": "Rayonnement",
+      "all": "Tous",
+      "international": "International",
+      "national": "National",
+      "regional": "Régional",
+      "local": "Local",
+      "notSpecified": "Non renseigné"
+    },
     "statuses": {
       "closedDefinitively": "Fermé définitivement"
     }

@@ -47,6 +47,8 @@
       },
       "type": "Type",
       "typePlaceholder": "Selecteer een parktype",
+      "audienceClassification": "Bereik",
+      "audienceClassificationPlaceholder": "Bereik selecteren",
       "founder": "Oprichter",
       "founderPlaceholder": "Selecteer een oprichter",
       "addFounder": "Oprichter toevoegen",
@@ -62,6 +64,13 @@
         "amusementPark": "Pretpark",
         "resort": "Resort",
         "notSpecified": "Niet opgegeven"
+      },
+      "audienceClassifications": {
+        "international": "Internationaal bereik",
+        "national": "Nationaal bereik",
+        "regional": "Regionaal bereik",
+        "local": "Lokaal bereik",
+        "notSpecified": "Niet ingevuld"
       },
       "logos": {
         "sectionTitle": "Parklogo's",

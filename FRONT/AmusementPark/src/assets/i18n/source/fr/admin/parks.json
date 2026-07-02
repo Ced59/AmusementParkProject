@@ -71,6 +71,8 @@
       },
       "type": "Type",
       "typePlaceholder": "Sélectionner un type de parc",
+      "audienceClassification": "Rayonnement",
+      "audienceClassificationPlaceholder": "Sélectionner un rayonnement",
       "founder": "Fondateur",
       "founderPlaceholder": "Sélectionner un fondateur",
       "addFounder": "Ajouter un fondateur",
@@ -85,6 +87,13 @@
         "amusementPark": "Parc d’attractions",
         "resort": "Resort",
         "notSpecified": "Non défini"
+      },
+      "audienceClassifications": {
+        "international": "Rayonnement international",
+        "national": "Rayonnement national",
+        "regional": "Rayonnement régional",
+        "local": "Rayonnement local",
+        "notSpecified": "Non renseigné"
       },
       "zones": {
         "manage": "Gérer les zones",

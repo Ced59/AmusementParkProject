@@ -1,10 +1,16 @@
 import { PARK_PHOTO_CATEGORIES, ParkPhotoCategoryDefinition } from '@app/models/images/park-photo-category';
+import { ParkAudienceClassification } from '@app/models/parks/park-audience-classification';
 import { ParkType } from '@app/models/parks/park-type';
 import { ParkStatus } from '@app/models/parks/park-status';
 
 export interface AdminParkTypeOption {
   labelKey: string;
   value: ParkType;
+}
+
+export interface AdminParkAudienceClassificationOption {
+  labelKey: string;
+  value: ParkAudienceClassification;
 }
 
 export interface AdminParkStatusOption {

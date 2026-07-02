@@ -178,6 +178,11 @@ public sealed class ParkDocument : MongoGeolocatedDocumentBase
     [BsonRepresentation(BsonType.String)]
     public ParkType? Type { get; set; }
 
+    [BsonElement("audienceClassification")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public ParkAudienceClassification? AudienceClassification { get; set; }
+
     [BsonElement("status")]
     [BsonRepresentation(BsonType.String)]
     public ParkStatus Status { get; set; } = ParkStatus.Operating;

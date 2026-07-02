@@ -11,6 +11,8 @@
       "statusAll": "Tous les statuts",
       "type": "Type",
       "typeAll": "Tous les types",
+      "audienceClassification": "Rayonnement",
+      "audienceClassificationAll": "Tous les rayonnements",
       "category": "Catégorie",
       "categoryAll": "Toutes les catégories",
       "countryCode": "Pays",

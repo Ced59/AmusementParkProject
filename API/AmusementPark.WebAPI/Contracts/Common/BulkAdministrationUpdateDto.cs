@@ -19,6 +19,8 @@ public sealed class BulkAdministrationUpdateDto
 
     public string? FilterType { get; set; }
 
+    public string? FilterAudienceClassification { get; set; }
+
     public string? FilterCountryCode { get; set; }
 
     public bool? FilterHasValidCoordinates { get; set; }

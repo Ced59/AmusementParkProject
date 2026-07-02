@@ -11,6 +11,8 @@
       "statusAll": "Wszystkie statusy",
       "type": "Typ",
       "typeAll": "Wszystkie typy",
+      "audienceClassification": "Zasięg",
+      "audienceClassificationAll": "Wszystkie zasięgi",
       "category": "Kategoria",
       "categoryAll": "Wszystkie kategorie",
       "countryCode": "Kraj",

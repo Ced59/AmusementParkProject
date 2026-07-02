@@ -47,6 +47,8 @@
       },
       "type": "Type",
       "typePlaceholder": "Select a park type",
+      "audienceClassification": "Audience",
+      "audienceClassificationPlaceholder": "Select an audience scope",
       "founder": "Founder",
       "founderPlaceholder": "Select a founder",
       "addFounder": "Add founder",
@@ -61,6 +63,13 @@
         "animalPark": "Animal park",
         "amusementPark": "Amusement park",
         "resort": "Resort",
+        "notSpecified": "Not specified"
+      },
+      "audienceClassifications": {
+        "international": "International audience",
+        "national": "National audience",
+        "regional": "Regional audience",
+        "local": "Local audience",
         "notSpecified": "Not specified"
       },
       "logos": {

@@ -6,12 +6,13 @@ describe('PARKS_API_ENDPOINTS', () => {
       isVisible: false,
       adminReviewStatus: 'ToReview',
       type: 'ThemePark',
+      audienceClassification: 'National',
       countryCode: ' be ',
       hasValidCoordinates: true,
       openingHoursStatus: 'needsUpdate'
     });
 
-    expect(endpoint).toBe('parks?page=2&size=25&visibleOnly=true&region=europe&isVisible=false&adminReviewStatus=ToReview&type=ThemePark&countryCode=be&hasValidCoordinates=true&openingHoursStatus=needsUpdate');
+    expect(endpoint).toBe('parks?page=2&size=25&visibleOnly=true&region=europe&isVisible=false&adminReviewStatus=ToReview&type=ThemePark&audienceClassification=National&countryCode=be&hasValidCoordinates=true&openingHoursStatus=needsUpdate');
   });
 
   it('omits empty optional filters', () => {
@@ -39,6 +40,7 @@ describe('PARKS_API_ENDPOINTS', () => {
     expect(PARKS_API_ENDPOINTS.getVisibleParkMapPoints()).toBe('parks/map-visible');
     expect(PARKS_API_ENDPOINTS.getVisibleParkMapPoints(' parc ', 'europe')).toBe('parks/map-visible?query=%20parc%20&region=europe');
     expect(PARKS_API_ENDPOINTS.getVisibleParkMapPoints(null, null, 'closedOnly')).toBe('parks/map-visible?closedFilter=closedOnly');
+    expect(PARKS_API_ENDPOINTS.getVisibleParkMapPoints(null, null, null, 'Unspecified')).toBe('parks/map-visible?audienceClassification=Unspecified');
   });
 
   it('adds closed filters only when they differ from the default public scope', () => {

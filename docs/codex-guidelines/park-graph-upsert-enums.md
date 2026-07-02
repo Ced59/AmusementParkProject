@@ -17,6 +17,7 @@ Règles :
 | Champ JSON | Enum | Valeurs |
 | --- | --- | --- |
 | `park.type` | `ParkType` | `ThemePark`, `WaterPark`, `Zoo`, `AnimalPark`, `AmusementPark`, `Resort` |
+| `park.audienceClassification` | `ParkAudienceClassification` | `International`, `National`, `Regional`, `Local` |
 | `park.status` | `ParkStatus` | `Operating`, `ClosedDefinitively` |
 | `park.adminReviewStatus` | `AdminReviewStatus` | `ToReview`, `Validated`, `ToProcessLater`, `NotRelevant` |
 

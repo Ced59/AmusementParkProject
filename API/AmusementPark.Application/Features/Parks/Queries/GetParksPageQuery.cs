@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Core.Domain.Parks;
 
@@ -15,6 +16,7 @@ namespace AmusementPark.Application.Features.Parks.Queries;
 /// <param name="IsVisible">Filtre explicite sur la visibilite.</param>
 /// <param name="AdminReviewStatus">Filtre sur le statut de revue admin.</param>
 /// <param name="Type">Filtre sur le type de parc.</param>
+/// <param name="AudienceClassificationFilter">Filtre sur le rayonnement du parc.</param>
 /// <param name="CountryCode">Filtre sur le code pays.</param>
 /// <param name="HasValidCoordinates">Filtre les parcs selon la presence de coordonnees valides.</param>
 /// <param name="ClosedFilter">Filtre les parcs ouverts ou fermes.</param>
@@ -27,6 +29,7 @@ public sealed record GetParksPageQuery(
     bool? IsVisible = null,
     AdminReviewStatus? AdminReviewStatus = null,
     ParkType? Type = null,
+    ParkAudienceClassificationFilter? AudienceClassificationFilter = null,
     string? CountryCode = null,
     bool? HasValidCoordinates = null,
     ClosedEntityFilter ClosedFilter = ClosedEntityFilter.OpenOnly,

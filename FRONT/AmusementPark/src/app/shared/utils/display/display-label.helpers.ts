@@ -1,9 +1,15 @@
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
+import { ParkAudienceClassification, ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkType } from '@app/models/parks/park-type';
 
 export function getParkTypeTranslationKey(type: ParkType | string | null | undefined): string {
   return `admin.parks.types.${normalizeTranslationSegment(type, 'notSpecified')}`;
+}
+
+export function getParkAudienceClassificationTranslationKey(classification: ParkAudienceClassification | ParkAudienceClassificationFilter | string | null | undefined): string {
+  const normalizedSegment: string = normalizeTranslationSegment(classification, 'notSpecified');
+  return `admin.parks.audienceClassifications.${normalizedSegment === 'unspecified' ? 'notSpecified' : normalizedSegment}`;
 }
 
 export function getParkItemCategoryTranslationKey(category: ParkItemCategory | string | null | undefined): string {

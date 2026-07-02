@@ -1,6 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Commands;
@@ -16,4 +17,5 @@ public sealed record UpdateParksBulkAdministrationCommand(
     AdminReviewStatus? FilterAdminReviewStatus = null,
     ParkType? FilterType = null,
     string? FilterCountryCode = null,
-    bool? FilterHasValidCoordinates = null) : ICommand<ApplicationResult<BulkAdministrationUpdateResult>>;
+    bool? FilterHasValidCoordinates = null,
+    ParkAudienceClassificationFilter? FilterAudienceClassification = null) : ICommand<ApplicationResult<BulkAdministrationUpdateResult>>;

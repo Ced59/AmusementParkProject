@@ -18,10 +18,12 @@ import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { mapParkMapPointToViewModel } from '../mappers/park-map-point-view.mapper';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
+import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
 
 import {
   PARK_LIST_STATE_PARKS_API_SERVICE_PORT,
@@ -43,6 +45,7 @@ export class ParkListStateFacade {
   private readonly selectedParkCardSignal = signal<ParkCardModel | null>(null);
   private readonly selectedRegionSignal = signal<ParkRegionFilter | null>(null);
   private readonly selectedClosedFilterSignal = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
+  private readonly selectedAudienceClassificationFilterSignal = signal<ParkAudienceClassificationFilter | null>(null);
 
   public readonly state = this.screenStateStore.state;
   public readonly mapState = this.mapStateStore.state;
@@ -78,6 +81,7 @@ export class ParkListStateFacade {
   public readonly selectedParkCard = this.selectedParkCardSignal.asReadonly();
   public readonly selectedRegion = this.selectedRegionSignal.asReadonly();
   public readonly selectedClosedFilter = this.selectedClosedFilterSignal.asReadonly();
+  public readonly selectedAudienceClassificationFilter = this.selectedAudienceClassificationFilterSignal.asReadonly();
 
   constructor(
     @Inject(PARK_LIST_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: ParkListStateParksApiServicePort,
@@ -97,6 +101,10 @@ export class ParkListStateFacade {
 
   setClosedFilter(closedFilter: ClosedEntityFilter): void {
     this.selectedClosedFilterSignal.set(closedFilter);
+  }
+
+  setAudienceClassificationFilter(audienceClassificationFilter: ParkAudienceClassificationFilter | null): void {
+    this.selectedAudienceClassificationFilterSignal.set(audienceClassificationFilter);
   }
 
   clearSelectedPark(): void {
@@ -155,14 +163,15 @@ export class ParkListStateFacade {
   loadParks(page: number, size: number, term: string, region: ParkRegionFilter | null): void {
     const normalizedTerm: string = term.trim();
     const previousData: ParkListSourceData | undefined = this.screenStateStore.data();
+    const filters: ParkAdminListFilters | null = this.buildAudienceClassificationFilters();
 
     this.currentPageSignal.set(page);
     this.pageSizeSignal.set(size);
     this.screenStateStore.setLoading(previousData);
 
     const request$ = normalizedTerm
-      ? this.parksApiService.searchParks(normalizedTerm, page, size, true, region, null, { ...anonymousHttpOptions(), closedFilter: this.selectedClosedFilterSignal() })
-      : this.parksApiService.getParksPaginated(page, size, true, region, null, { ...anonymousHttpOptions(), closedFilter: this.selectedClosedFilterSignal() });
+      ? this.parksApiService.searchParks(normalizedTerm, page, size, true, region, filters, { ...anonymousHttpOptions(), closedFilter: this.selectedClosedFilterSignal() })
+      : this.parksApiService.getParksPaginated(page, size, true, region, filters, { ...anonymousHttpOptions(), closedFilter: this.selectedClosedFilterSignal() });
 
     request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
@@ -190,7 +199,11 @@ export class ParkListStateFacade {
     const previousData: ParkMapPointViewModel[] | undefined = this.mapStateStore.data();
     this.mapStateStore.setLoading(previousData);
 
-    this.parksApiService.getVisibleParkMapPoints(term, region, { ...anonymousHttpOptions(), closedFilter: this.selectedClosedFilterSignal() })
+    this.parksApiService.getVisibleParkMapPoints(term, region, {
+      ...anonymousHttpOptions(),
+      closedFilter: this.selectedClosedFilterSignal(),
+      audienceClassificationFilter: this.selectedAudienceClassificationFilterSignal()
+    })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (points: ParkMapPoint[]) => {
@@ -229,5 +242,12 @@ export class ParkListStateFacade {
       shortDescription: null,
       isClosedDefinitively: false
     };
+  }
+
+  private buildAudienceClassificationFilters(): ParkAdminListFilters | null {
+    const audienceClassification: ParkAudienceClassificationFilter | null = this.selectedAudienceClassificationFilterSignal();
+    return audienceClassification
+      ? { audienceClassification }
+      : null;
   }
 }

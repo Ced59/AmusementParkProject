@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Handlers;
 using AmusementPark.Application.Features.Seo.Models;
@@ -199,7 +200,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
                 ClosedEntityFilter.OpenOnly,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
-                false))
+                false,
+                null))
             .Returns((
                 int page,
                 int pageSize,
@@ -212,7 +214,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
                 ClosedEntityFilter closedFilter,
                 CancellationToken cancellationToken,
                 ParkAdminSortField sortField,
-                bool sortDescending) =>
+                bool sortDescending,
+                ParkAudienceClassificationFilter? audienceClassificationFilter) =>
             {
                 IReadOnlyCollection<Park> pageItems = parks
                     .Skip((page - 1) * pageSize)

@@ -10,11 +10,15 @@ public sealed record ParkSearchCriteria(
 {
     public static ParkSearchCriteria Empty { get; } = new ParkSearchCriteria(null, Array.Empty<string>(), Array.Empty<string>());
 
+    public ParkAudienceClassificationFilter? AudienceClassificationFilter { get; init; }
+
     public bool HasSearchTerm => !string.IsNullOrWhiteSpace(SearchTerm);
 
     public bool HasMatchingCountryCodes => MatchingCountryCodes.Count > 0;
 
     public bool HasRegionCountryCodes => RegionCountryCodes.Count > 0;
 
-    public bool HasAnyFilter => HasSearchTerm || HasMatchingCountryCodes || HasRegionCountryCodes;
+    public bool HasAudienceClassification => AudienceClassificationFilter.HasValue;
+
+    public bool HasAnyFilter => HasSearchTerm || HasMatchingCountryCodes || HasRegionCountryCodes || HasAudienceClassification;
 }

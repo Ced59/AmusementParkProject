@@ -129,6 +129,7 @@ describe('ParksApiService', () => {
       isFeaturedOnHome: true,
       isFeaturedOnHomeSponsored: true,
       featuredHomeOrder: 0,
+      audienceClassification: 'Regional',
       openingDate: '1987-05-20',
       closingDate: '1991-10-20',
       openingDateText: '1987-05-20',
@@ -145,6 +146,7 @@ describe('ParksApiService', () => {
     expect(createRequest.request.body.featuredHomeOrder).toBeNull();
     expect(createRequest.request.body.isVisible).toBeTrue();
     expect(createRequest.request.body.adminReviewStatus).toBe('Validated');
+    expect(createRequest.request.body.audienceClassification).toBe('Regional');
     expect(createRequest.request.body.isFeaturedOnHomeSponsored).toBeTrue();
     expect(createRequest.request.body.openingDate).toBe('1987-05-20');
     expect(createRequest.request.body.closingDate).toBe('1991-10-20');
