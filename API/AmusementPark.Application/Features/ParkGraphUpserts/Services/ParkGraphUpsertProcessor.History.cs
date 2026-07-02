@@ -173,7 +173,7 @@ public sealed partial class ParkGraphUpsertProcessor
         string? parkId = entityType == HistoryEntityType.Park ? ownerId : NormalizeString(ReadString(patch, "parkId"));
         string? parkItemId = entityType == HistoryEntityType.ParkItem ? ownerId : NormalizeString(ReadString(patch, "parkItemId"));
         string? contextParkId = ReadHistoryContextParkId(patch);
-        if (entityType == HistoryEntityType.ParkItem && !HasHistoryContextParkProperty(patch))
+        if (entityType == HistoryEntityType.ParkItem && !HasExplicitHistoryContextParkProperty(patch))
         {
             contextParkId ??= parkId ?? targetPark.Id;
         }
@@ -260,11 +260,27 @@ public sealed partial class ParkGraphUpsertProcessor
         }
     }
 
-    private static bool HasHistoryContextParkProperty(JsonElement patch)
+    private static bool HasExplicitHistoryContextParkProperty(JsonElement patch)
     {
-        return HasProperty(patch, "contextParkId")
-            || HasProperty(patch, "contextPark")
-            || HasProperty(patch, "parkContextId");
+        return HasExplicitHistoryContextParkValue(patch, "contextParkId")
+            || HasExplicitHistoryContextParkValue(patch, "contextPark")
+            || HasExplicitHistoryContextParkValue(patch, "parkContextId");
+    }
+
+    private static bool HasExplicitHistoryContextParkValue(JsonElement patch, string propertyName)
+    {
+        if (patch.ValueKind != JsonValueKind.Object || !patch.TryGetProperty(propertyName, out JsonElement property))
+        {
+            return false;
+        }
+
+        if (property.ValueKind == JsonValueKind.Null)
+        {
+            return false;
+        }
+
+        string? rawValue = property.ValueKind == JsonValueKind.String ? property.GetString() : property.ToString();
+        return NormalizeString(rawValue) is not null;
     }
 
     private static string? ReadHistoryContextParkId(JsonElement patch)

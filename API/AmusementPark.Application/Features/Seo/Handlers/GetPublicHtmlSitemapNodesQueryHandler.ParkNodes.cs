@@ -41,6 +41,8 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
 
         string parkPath = BuildParkPath(language, park);
         IReadOnlyCollection<ParkItem> publicItems = await this.GetPublicParkItemsAsync(park.Id!, cancellationToken);
+        IReadOnlyCollection<ParkItem> publicHistoryItems = await this.GetPublicHistoryParkItemsAsync(park.Id!, cancellationToken);
+        IReadOnlyCollection<string>? itemIdsWithExplicitHistory = null;
         List<PublicHtmlSitemapNode> nodes = new List<PublicHtmlSitemapNode>();
 
         if (publicItems.Any(ParksSitemapSectionProvider.HasPublicMapMarker))
@@ -85,7 +87,15 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             });
         }
 
-        if (publicItems.Count > 0)
+        bool hasItemBranch = publicItems.Count > 0
+                             || publicHistoryItems.Any(AutomaticHistoryEventFactory.HasLifecycleDate);
+        if (!hasItemBranch)
+        {
+            itemIdsWithExplicitHistory = await this.ResolveItemIdsWithExplicitHistoryAsync(park.Id!, publicHistoryItems, cancellationToken);
+            hasItemBranch = itemIdsWithExplicitHistory.Count > 0;
+        }
+
+        if (hasItemBranch)
         {
             nodes.Add(new PublicHtmlSitemapNode
             {
@@ -96,8 +106,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             });
         }
 
-        IReadOnlyCollection<ParkItem> publicHistoryItems = await this.GetPublicHistoryParkItemsAsync(park.Id!, cancellationToken);
-        if (await this.HasParkHistoryAsync(park, publicHistoryItems, cancellationToken))
+        if (await this.HasParkHistoryAsync(park, publicHistoryItems, itemIdsWithExplicitHistory, cancellationToken))
         {
             nodes.Add(new PublicHtmlSitemapNode
             {

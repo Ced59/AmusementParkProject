@@ -210,11 +210,17 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
     private async Task<bool> HasParkHistoryAsync(
         Park park,
         IReadOnlyCollection<ParkItem> publicItems,
+        IReadOnlyCollection<string>? itemIdsWithExplicitHistory,
         CancellationToken cancellationToken)
     {
         if (AutomaticHistoryEventFactory.HasLifecycleDate(park) || publicItems.Any(AutomaticHistoryEventFactory.HasLifecycleDate))
         {
             return true;
+        }
+
+        if (itemIdsWithExplicitHistory is not null)
+        {
+            return itemIdsWithExplicitHistory.Count > 0;
         }
 
         IReadOnlyCollection<string> itemIds = publicItems

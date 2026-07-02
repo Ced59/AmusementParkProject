@@ -160,6 +160,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
+        Assert.Contains(result.Value, static node => node.Id == "park-items:park-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/items");
         Assert.Contains(result.Value, static node => node.Id == "park-history:park-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/history");
 
         ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> itemNodesResult = await handler.HandleAsync(
