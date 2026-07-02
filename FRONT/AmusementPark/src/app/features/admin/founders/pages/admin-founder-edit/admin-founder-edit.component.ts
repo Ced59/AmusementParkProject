@@ -4,9 +4,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { InputText } from '@shared/primeless/inputtext';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
@@ -15,6 +12,8 @@ import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.ser
 import { commitViewUpdate } from '@shared/utils/angular';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
 import { AdminReferenceImagesComponent } from '@features/admin/shared/ui/admin-reference-images/admin-reference-images.component';
+import { AdminButtonDirective } from '@features/admin/shared/ui/admin-button/admin-button.directive';
+import { AdminCardComponent } from '@features/admin/shared/ui/admin-card/admin-card.component';
 
 @Component({
   selector: 'app-admin-founder-edit',
@@ -23,12 +22,11 @@ import { AdminReferenceImagesComponent } from '@features/admin/shared/ui/admin-r
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
-    Card,
+    AdminCardComponent,
     FormsModule,
     ReactiveFormsModule,
-    InputText,
     LocalizedRichTextEditorComponent,
-    ButtonDirective,
+    AdminButtonDirective,
     TranslateModule,
     AdminReferenceImagesComponent
   ]

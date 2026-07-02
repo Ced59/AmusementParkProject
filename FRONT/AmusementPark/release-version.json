@@ -1,6 +1,20 @@
 {
-  "version": "3.1.23",
+  "version": "3.1.24",
   "history": [
+    {
+      "version": "3.1.24",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "L’administration gagne en ergonomie.",
+        "en": "Admin ergonomics improve.",
+        "de": "Die Admin-Ergonomie verbessert sich.",
+        "nl": "De admin-ergonomie verbetert.",
+        "it": "L’ergonomia admin migliora.",
+        "es": "La ergonomía de administración mejora.",
+        "pl": "Ergonomia administracji się poprawia.",
+        "pt": "A ergonomia da administração melhora."
+      }
+    },
     {
       "version": "3.1.23",
       "releasedAt": "2026-07-02",

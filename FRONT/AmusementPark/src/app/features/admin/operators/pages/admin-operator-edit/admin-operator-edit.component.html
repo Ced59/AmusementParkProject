@@ -1,5 +1,5 @@
 <div class="reference-edit-page">
-  <p-card styleClass="admin-editor-card reference-editor-card">
+  <app-admin-card class="admin-editor-card reference-editor-card">
     <h2>
       {{
         (isEditMode
@@ -14,22 +14,22 @@
         <div class="form-grid">
           <div class="field">
             <label for="name">{{ 'admin.operators.editPage.name' | translate }}</label>
-            <input id="name" pInputText type="text" formControlName="name" />
+            <input id="name" type="text" formControlName="name" />
           </div>
 
           <div class="field">
             <label for="legalName">{{ 'admin.references.fields.legalName' | translate }}</label>
-            <input id="legalName" pInputText type="text" formControlName="legalName" />
+            <input id="legalName" type="text" formControlName="legalName" />
           </div>
 
           <div class="field">
             <label for="foundedYear">{{ 'admin.references.fields.foundedYear' | translate }}</label>
-            <input id="foundedYear" pInputText type="number" formControlName="foundedYear" />
+            <input id="foundedYear" type="number" formControlName="foundedYear" />
           </div>
 
           <div class="field">
             <label for="closedYear">{{ 'admin.references.fields.closedYear' | translate }}</label>
-            <input id="closedYear" pInputText type="number" formControlName="closedYear" />
+            <input id="closedYear" type="number" formControlName="closedYear" />
           </div>
         </div>
       </section>
@@ -39,47 +39,47 @@
         <div class="form-grid">
           <div class="field field--wide">
             <label for="websiteUrl">{{ 'admin.references.fields.websiteUrl' | translate }}</label>
-            <input id="websiteUrl" pInputText type="url" formControlName="websiteUrl" />
+            <input id="websiteUrl" type="url" formControlName="websiteUrl" />
           </div>
 
           <div class="field">
             <label for="email">{{ 'admin.references.fields.email' | translate }}</label>
-            <input id="email" pInputText type="email" formControlName="email" />
+            <input id="email" type="email" formControlName="email" />
           </div>
 
           <div class="field">
             <label for="phoneNumber">{{ 'admin.references.fields.phoneNumber' | translate }}</label>
-            <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber" />
+            <input id="phoneNumber" type="text" formControlName="phoneNumber" />
           </div>
 
           <div class="field field--wide">
             <label for="street">{{ 'admin.references.fields.street' | translate }}</label>
-            <input id="street" pInputText type="text" formControlName="street" />
+            <input id="street" type="text" formControlName="street" />
           </div>
 
           <div class="field">
             <label for="city">{{ 'admin.references.fields.city' | translate }}</label>
-            <input id="city" pInputText type="text" formControlName="city" />
+            <input id="city" type="text" formControlName="city" />
           </div>
 
           <div class="field">
             <label for="postalCode">{{ 'admin.references.fields.postalCode' | translate }}</label>
-            <input id="postalCode" pInputText type="text" formControlName="postalCode" />
+            <input id="postalCode" type="text" formControlName="postalCode" />
           </div>
 
           <div class="field">
             <label for="countryCode">{{ 'admin.references.fields.countryCode' | translate }}</label>
-            <input id="countryCode" pInputText type="text" formControlName="countryCode" />
+            <input id="countryCode" type="text" formControlName="countryCode" />
           </div>
 
           <div class="field">
             <label for="latitude">{{ 'admin.references.fields.latitude' | translate }}</label>
-            <input id="latitude" pInputText type="number" formControlName="latitude" />
+            <input id="latitude" type="number" formControlName="latitude" />
           </div>
 
           <div class="field">
             <label for="longitude">{{ 'admin.references.fields.longitude' | translate }}</label>
-            <input id="longitude" pInputText type="number" formControlName="longitude" />
+            <input id="longitude" type="number" formControlName="longitude" />
           </div>
         </div>
       </section>
@@ -114,9 +114,9 @@
       </app-admin-reference-images>
 
       <div class="form-actions">
-        <button pButton type="button" class="p-button-secondary" (click)="onCancel()" [label]="'actions.cancel' | translate"></button>
-        <button pButton type="submit" class="p-button-primary" [label]="'actions.save' | translate"></button>
+        <button appAdminButton type="button" tone="secondary" (click)="onCancel()">{{ 'actions.cancel' | translate }}</button>
+        <button appAdminButton type="submit">{{ 'actions.save' | translate }}</button>
       </div>
     </form>
-  </p-card>
+  </app-admin-card>
 </div>
