@@ -477,6 +477,191 @@ public sealed class HistoryHandlersTests
     }
 
     [Fact]
+    public async Task GetParkHistoryTimeline_WhenIncludedParkItemOwnerIsNotPublic_ShouldReturnNotFound()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            IsVisible = true,
+        };
+        ParkItem parkItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Hidden ride",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.NotRelevant,
+        };
+        HistoryEvent parkItemEvent = new HistoryEvent
+        {
+            Id = "history-1",
+            Key = "hidden-ride-opening",
+            EntityType = HistoryEntityType.ParkItem,
+            OwnerId = "item-1",
+            ParkId = "park-1",
+            ParkItemId = "item-1",
+            ContextParkId = "park-1",
+            Year = 1988,
+            EventType = ParkItemHistoryEventType.Opening.ToString(),
+            IsVisible = true,
+        };
+
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkItemRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { parkItem });
+        historyRepository
+            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, true, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { parkItemEvent });
+
+        GetParkHistoryTimelineQueryHandler handler = new GetParkHistoryTimelineQueryHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+
+        ApplicationResult<HistoryTimelineResult> result = await handler.HandleAsync(new GetParkHistoryTimelineQuery(
+            "park-1",
+            false,
+            true,
+            Array.Empty<string>()));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "history.not-found");
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task GetParkItemHistoryTimeline_WhenParentParkIsNotPublic_ShouldReturnNotFound()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.NotRelevant,
+        };
+        ParkItem item = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Mira Looping",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            IsVisible = true,
+        };
+
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(item);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        GetParkItemHistoryTimelineQueryHandler handler = new GetParkItemHistoryTimelineQueryHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+
+        ApplicationResult<HistoryTimelineResult> result = await handler.HandleAsync(new GetParkItemHistoryTimelineQuery("item-1", false));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "parkitem.not-found");
+        historyRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task GetHistoryArticle_WhenParkItemOwnerIsNotPublic_ShouldReturnNotFound()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            IsVisible = true,
+        };
+        ParkItem parkItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Hidden ride",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.NotRelevant,
+        };
+        HistoryEvent historyEvent = new HistoryEvent
+        {
+            Id = "history-1",
+            Key = "hidden-ride-opening",
+            EntityType = HistoryEntityType.ParkItem,
+            OwnerId = "item-1",
+            ParkId = "park-1",
+            ParkItemId = "item-1",
+            ContextParkId = "park-1",
+            Year = 1988,
+            EventType = ParkItemHistoryEventType.Opening.ToString(),
+            IsMajor = true,
+            IsVisible = true,
+            Article = new HistoryArticle
+            {
+                Slug = "hidden-ride-opening",
+                IsPublished = true,
+            },
+        };
+
+        historyRepository
+            .Setup(repository => repository.GetByIdAsync("history-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(historyEvent);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        parkItemRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { parkItem });
+
+        GetHistoryArticleQueryHandler handler = new GetHistoryArticleQueryHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+
+        ApplicationResult<HistoryArticleResult> result = await handler.HandleAsync(new GetHistoryArticleQuery("history-1", false));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "history.article.not-found");
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task DeleteHistoryEvent_WhenEventExists_ShouldRefreshSitemap()
     {
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);

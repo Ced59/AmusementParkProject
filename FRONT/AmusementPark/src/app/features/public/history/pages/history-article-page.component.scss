@@ -195,11 +195,32 @@
   margin: 1.75rem 0;
 }
 
-.history-article__figure-img,
-.history-article__figure-placeholder {
+:host ::ng-deep .history-article__figure-img,
+:host ::ng-deep .history-article__figure-placeholder {
   width: 100%;
   max-height: 32rem;
   border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+.history-article__gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 0.75rem;
+}
+
+.history-article__gallery app-image-display {
+  display: block;
+  min-height: 12rem;
+}
+
+:host ::ng-deep .history-article__gallery-img,
+:host ::ng-deep .history-article__gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  max-height: 20rem;
+  border-radius: var(--radius-md);
   object-fit: cover;
 }
 

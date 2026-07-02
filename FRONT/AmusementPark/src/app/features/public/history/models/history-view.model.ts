@@ -62,6 +62,7 @@ export interface HistoryArticlePageViewModel {
   blocks: HistoryArticleBlockViewModel[];
   sources: HistorySourceReference[];
   timelineLink: string[] | null;
+  canonicalPath: string | null;
   event: HistoryEvent;
   article: HistoryArticleContent;
 }

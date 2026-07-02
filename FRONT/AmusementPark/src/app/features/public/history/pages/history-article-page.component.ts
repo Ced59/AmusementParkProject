@@ -55,7 +55,7 @@ export class HistoryArticlePageComponent implements OnInit {
         return;
       }
 
-      this.seoService.applyHistoryArticleSeo(currentArticle, this.currentLanguage(), this.router.url);
+      this.seoService.applyHistoryArticleSeo(currentArticle, this.currentLanguage(), this.router.url, currentArticle.canonicalPath);
     });
   }
 
@@ -94,6 +94,24 @@ export class HistoryArticlePageComponent implements OnInit {
 
   protected isFactBox(block: HistoryArticleBlockViewModel): boolean {
     return block.type === 'FactBox';
+  }
+
+  protected imageIds(block: HistoryArticleBlockViewModel): string[] {
+    const imageIds: string[] = [];
+    const primaryImageId: string = block.imageId?.trim() ?? '';
+
+    if (primaryImageId.length > 0) {
+      imageIds.push(primaryImageId);
+    }
+
+    for (const imageId of block.imageIds) {
+      const normalizedImageId: string = imageId?.trim() ?? '';
+      if (normalizedImageId.length > 0 && !imageIds.includes(normalizedImageId)) {
+        imageIds.push(normalizedImageId);
+      }
+    }
+
+    return imageIds;
   }
 
   protected backLabel(): string {
