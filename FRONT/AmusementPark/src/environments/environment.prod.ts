@@ -3,9 +3,9 @@ export const environment = {
   apiBaseUrl: '/api/',
   ssrApiBaseUrl: 'http://api:8080/',
   baseUrl: 'https://amusement-parks.fun/',
-  apiImagePath: '/api/images/',
+  apiImagePath: '/api/images/binary/',
   googleClientId: '678420134254-0mluleuue5fdoq93ndanhcciouq4f470.apps.googleusercontent.com',
-  imagesBaseUrl: '/api/images',
+  imagesBaseUrl: '/api/images/binary',
   analytics: {
     matomoEnabled: true,
     consentBannerEnabled: true,

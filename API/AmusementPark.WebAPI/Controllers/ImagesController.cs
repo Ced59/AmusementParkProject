@@ -423,6 +423,8 @@ public sealed class ImagesController : ControllerBase
         return this.Ok(result.Value.ToHttp());
     }
 
+    [HttpGet("binary/{imageId}")]
+    [HttpHead("binary/{imageId}")]
     [HttpGet("{imageId}")]
     [HttpHead("{imageId}")]
     [AllowAnonymous]

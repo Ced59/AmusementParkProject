@@ -6,8 +6,10 @@ using AmusementPark.Application.Features.Seo.Queries;
 using AmusementPark.Application.Features.Seo.Results;
 using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Controllers;
+using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -18,13 +20,13 @@ namespace AmusementPark.WebAPI.Tests.Controllers;
 public sealed class SeoControllerTests
 {
     [Fact]
-    public void GetRobotsTxt_WhenPublicImageAllowPathIsConfigured_ShouldAllowImagesAndKeepApiDisallowed()
+    public void GetRobotsTxt_WhenPublicImageAllowPathIsConfigured_ShouldAllowBinaryImagesAndKeepApiDisallowed()
     {
         SeoController controller = CreateController(new SeoSettings
         {
             PublicBaseUrl = "https://amusement-parks.fun",
             SupportedLanguages = new List<string> { "en", "fr" },
-            RobotsAllowPaths = new List<string> { "/api/images/" },
+            RobotsAllowPaths = new List<string> { "/api/images/binary/" },
             RobotsDisallowPaths = new List<string> { "/api/", "/{lang}/admin/" },
         });
 
@@ -33,12 +35,25 @@ public sealed class SeoControllerTests
         string[] lines = content.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
         Assert.Contains("Allow: /", lines);
-        Assert.Contains("Allow: /api/images/", lines);
+        Assert.Contains("Allow: /api/images/binary/", lines);
+        Assert.DoesNotContain("Allow: /api/images/", lines);
         Assert.Contains("Disallow: /api/", lines);
         Assert.Contains("Disallow: /en/admin/", lines);
         Assert.Contains("Disallow: /fr/admin/", lines);
         Assert.Contains("Sitemap: https://amusement-parks.fun/sitemap.xml", lines);
-        Assert.True(content.IndexOf("Allow: /api/images/", StringComparison.Ordinal) < content.IndexOf("Disallow: /api/", StringComparison.Ordinal));
+        Assert.True(content.IndexOf("Allow: /api/images/binary/", StringComparison.Ordinal) < content.IndexOf("Disallow: /api/", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void GetPublicHtmlSitemapNodesAsync_ShouldUseDataInvalidatedCachePolicy()
+    {
+        OutputCacheAttribute attribute = Assert.Single(
+            typeof(SeoController)
+                .GetMethod(nameof(SeoController.GetPublicHtmlSitemapNodesAsync))!
+                .GetCustomAttributes(typeof(OutputCacheAttribute), inherit: false)
+                .Cast<OutputCacheAttribute>());
+
+        Assert.Equal(ApiOutputCachePolicyNames.PublicHtmlSitemapNodes, attribute.PolicyName);
     }
 
     private static SeoController CreateController(SeoSettings settings)

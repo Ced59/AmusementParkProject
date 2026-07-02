@@ -29,7 +29,7 @@ public sealed class SeoSettings
 
     public List<string> RobotsAllowPaths { get; set; } = new()
     {
-        "/api/images/",
+        "/api/images/binary/",
     };
 
     public List<string> RobotsDisallowPaths { get; set; } = new()

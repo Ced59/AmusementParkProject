@@ -3,9 +3,9 @@ export const environment = {
   apiBaseUrl: 'https://localhost:44391/',
   baseUrl: 'http://localhost:4200/',
   ssrApiBaseUrl: 'http://localhost:60445/',
-  apiImagePath: 'https://localhost:44391/images/',
+  apiImagePath: 'https://localhost:44391/images/binary/',
   googleClientId: '819235253823-lj2de5lllhlngr4rpt5iq0m5mgmmltaj.apps.googleusercontent.com',
-  imagesBaseUrl: 'https://localhost:44391/images',
+  imagesBaseUrl: 'https://localhost:44391/images/binary',
   analytics: {
     matomoEnabled: false,
     consentBannerEnabled: true,

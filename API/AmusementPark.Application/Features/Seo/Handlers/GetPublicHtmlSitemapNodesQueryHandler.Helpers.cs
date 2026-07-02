@@ -56,6 +56,40 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
         return items;
     }
 
+    private async Task<IReadOnlyCollection<ParkItem>> GetPublicHistoryParkItemsAsync(
+        string parkId,
+        CancellationToken cancellationToken)
+    {
+        List<ParkItem> items = new List<ParkItem>();
+        int pageNumber = 1;
+
+        while (true)
+        {
+            PagedResult<ParkItem> page = await this.parkItemRepository.GetPublicPageByParkIdAsync(
+                pageNumber,
+                PublicListPageSize,
+                parkId,
+                search: null,
+                includeHidden: false,
+                ClosedEntityFilter.All,
+                category: null,
+                type: null,
+                zoneId: null,
+                cancellationToken);
+
+            items.AddRange(page.Items.Where(HistorySitemapCandidateResolver.IsPublicHistoryItem));
+
+            if (page.Items.Count == 0 || page.Page >= page.TotalPages)
+            {
+                break;
+            }
+
+            pageNumber++;
+        }
+
+        return items;
+    }
+
     private async Task<bool> HasOpeningHoursAsync(string parkId, CancellationToken cancellationToken)
     {
         IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary> summaries =
@@ -176,11 +210,17 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
     private async Task<bool> HasParkHistoryAsync(
         Park park,
         IReadOnlyCollection<ParkItem> publicItems,
+        IReadOnlyCollection<string>? itemIdsWithExplicitHistory,
         CancellationToken cancellationToken)
     {
         if (AutomaticHistoryEventFactory.HasLifecycleDate(park) || publicItems.Any(AutomaticHistoryEventFactory.HasLifecycleDate))
         {
             return true;
+        }
+
+        if (itemIdsWithExplicitHistory is not null)
+        {
+            return itemIdsWithExplicitHistory.Count > 0;
         }
 
         IReadOnlyCollection<string> itemIds = publicItems
@@ -211,6 +251,36 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             cancellationToken);
 
         return events.Any(static historyEvent => historyEvent.IsVisible);
+    }
+
+    private async Task<HashSet<string>> ResolveItemIdsWithExplicitHistoryAsync(
+        string parkId,
+        IReadOnlyCollection<ParkItem> items,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<string> closedItemIdsWithoutLifecycleHistory = items
+            .Where(static item => !ParkItemsSitemapSectionProvider.IsPublicItem(item))
+            .Where(static item => !AutomaticHistoryEventFactory.HasLifecycleDate(item))
+            .Where(static item => !string.IsNullOrWhiteSpace(item.Id))
+            .Select(static item => item.Id!)
+            .ToList();
+        if (closedItemIdsWithoutLifecycleHistory.Count == 0)
+        {
+            return new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        }
+
+        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetParkTimelineAsync(
+            parkId,
+            includeHidden: false,
+            includeParkItemEvents: true,
+            closedItemIdsWithoutLifecycleHistory,
+            cancellationToken);
+
+        return events
+            .Where(static historyEvent => historyEvent.IsVisible && historyEvent.EntityType == HistoryEntityType.ParkItem)
+            .Select(static historyEvent => historyEvent.OwnerId)
+            .Where(static ownerId => !string.IsNullOrWhiteSpace(ownerId))
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
     }
 
     private static bool IsPublicVideo(Video video, VideoOwnerType ownerType, string ownerId)

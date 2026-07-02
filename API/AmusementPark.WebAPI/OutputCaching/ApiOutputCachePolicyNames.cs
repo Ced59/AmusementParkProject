@@ -6,6 +6,7 @@ namespace AmusementPark.WebAPI.OutputCaching;
 public static class ApiOutputCachePolicyNames
 {
     public const string PublicSeoDocuments = "public-seo-documents";
+    public const string PublicHtmlSitemapNodes = "public-html-sitemap-nodes";
     public const string PublicDataShort = "public-data-short";
     public const string PublicDataMedium = "public-data-medium";
     public const string PublicWeatherDataShort = "public-weather-data-short";

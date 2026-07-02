@@ -25,6 +25,16 @@ public static class OutputCacheServiceCollectionExtensions
                 .SetVaryByQuery("*")
                 .Tag(ApiOutputCachePolicyNames.PublicSeoTag));
 
+            options.AddPolicy(ApiOutputCachePolicyNames.PublicHtmlSitemapNodes, policy => policy
+                .With(IsAnonymousCacheCandidate)
+                .Cache()
+                .Expire(TimeSpan.FromHours(6))
+                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto")
+                .SetVaryByQuery("*")
+                .Tag(ApiOutputCachePolicyNames.PublicSeoTag)
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
+                .Tag(ApiOutputCachePolicyNames.PublicReferenceDataTag));
+
             options.AddPolicy(ApiOutputCachePolicyNames.PublicDataShort, policy => policy
                 .With(IsAnonymousCacheCandidate)
                 .Cache()

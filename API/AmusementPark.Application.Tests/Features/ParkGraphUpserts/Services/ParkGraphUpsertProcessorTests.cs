@@ -33,7 +33,7 @@ namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Services;
 public sealed class ParkGraphUpsertProcessorTests
 {
     [Fact]
-    public async Task ApplyAsync_WhenParkItemHistoryContainsExplicitExternalContext_ShouldNotAttachItToTargetPark()
+    public async Task ApplyAsync_WhenParkItemHistoryContextIsNull_ShouldFallbackUnlessExplicitExternal()
     {
         Park park = new Park
         {
@@ -114,6 +114,14 @@ public sealed class ParkGraphUpsertProcessorTests
               "key": "miralooping-spreepark",
               "eventType": "RelocationArrival",
               "date": "1992",
+              "contextParkId": "none"
+            },
+            {
+              "owner": "parkItem",
+              "ownerId": "item-1",
+              "key": "miralooping-imported-null-context",
+              "eventType": "ThemeChange",
+              "date": "1993",
               "contextParkId": null
             }
           ]
@@ -133,7 +141,7 @@ public sealed class ParkGraphUpsertProcessorTests
 
         Assert.True(result.IsSuccess);
         Assert.Empty(result.Value!.Errors);
-        Assert.Equal(2, savedEvents.Count);
+        Assert.Equal(3, savedEvents.Count);
 
         HistoryEvent localEvent = Assert.Single(savedEvents, historyEvent => historyEvent.Key == "miralooping-mirapolis");
         Assert.Equal("item-1", localEvent.ParkItemId);
@@ -143,6 +151,10 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Equal("item-1", externalEvent.ParkItemId);
         Assert.Null(externalEvent.ContextParkId);
         Assert.Null(externalEvent.ParkId);
+
+        HistoryEvent nullContextEvent = Assert.Single(savedEvents, historyEvent => historyEvent.Key == "miralooping-imported-null-context");
+        Assert.Equal("item-1", nullContextEvent.ParkItemId);
+        Assert.Equal("park-1", nullContextEvent.ContextParkId);
 
         parkRepository.VerifyAll();
         historyEventRepository.VerifyAll();
