@@ -10,13 +10,11 @@ import { ParkOpeningHoursSchedule } from '@app/models/parks/park-opening-hours';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
-import { Bind } from 'primeng/bind';
-import { Tag } from 'primeng/tag';
-import { ButtonDirective } from 'primeng/button';
+import { Tag } from '@shared/primeless/tag';
+import { ButtonDirective } from '@shared/primeless/button';
 import { EditorSaveToolbarComponent } from '@shared/components/editor-save-toolbar/editor-save-toolbar.component';
-import { Card } from 'primeng/card';
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
-import { Ripple } from 'primeng/ripple';
+import { Card } from '@shared/primeless/card';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@shared/primeless/tabs';
 import { AdminParkGeneralTabComponent } from './tabs/admin-park-general-tab/admin-park-general-tab.component';
 import { AdminParkLocationTabComponent } from './tabs/admin-park-location-tab/admin-park-location-tab.component';
 import { AdminParkDescriptionsTabComponent } from './tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
@@ -55,7 +53,6 @@ type SaveScope = 'section' | 'all';
     AdminParkEditStateFacade
   ],
   imports: [
-    Bind,
     Tag,
     ButtonDirective,
     RouterLink,
@@ -65,7 +62,6 @@ type SaveScope = 'section' | 'all';
     ReactiveFormsModule,
     Tabs,
     TabList,
-    Ripple,
     Tab,
     TabPanels,
     TabPanel,

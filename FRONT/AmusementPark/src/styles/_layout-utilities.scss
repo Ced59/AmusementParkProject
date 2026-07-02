@@ -1,4 +1,4 @@
-/* Minimal subset for utility classes used by the app. Keep this small to avoid shipping PrimeFlex globally. */
+/* Minimal subset for utility classes used by the app. Keep this small to avoid shipping unused global CSS. */
 .grid {
   display: flex;
   flex-wrap: wrap;

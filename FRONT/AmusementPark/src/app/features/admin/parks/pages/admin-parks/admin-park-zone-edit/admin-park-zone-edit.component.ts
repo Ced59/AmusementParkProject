@@ -6,13 +6,12 @@ import { LocalizedItem } from '@app/models/shared/localized-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { commitViewUpdate } from '@shared/utils/angular';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
+import { Card } from '@shared/primeless/card';
 import { LocalizedTextInputComponent } from '@shared/components/localized-text-input/localized-text-input.component';
-import { InputText } from 'primeng/inputtext';
-import { ToggleSwitch } from 'primeng/toggleswitch';
+import { InputText } from '@shared/primeless/inputtext';
+import { ToggleSwitch } from '@shared/primeless/toggleswitch';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
-import { ButtonDirective } from 'primeng/button';
+import { ButtonDirective } from '@shared/primeless/button';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -20,7 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     templateUrl: './admin-park-zone-edit.component.html',
     styleUrls: ['./admin-park-zone-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [Bind, Card, FormsModule, ReactiveFormsModule, LocalizedTextInputComponent, InputText, ToggleSwitch, LocalizedRichTextEditorComponent, ButtonDirective, TranslateModule]
+    imports: [Card, FormsModule, ReactiveFormsModule, LocalizedTextInputComponent, InputText, ToggleSwitch, LocalizedRichTextEditorComponent, ButtonDirective, TranslateModule]
 })
 export class AdminParkZoneEditComponent implements OnInit {
   form!: FormGroup;

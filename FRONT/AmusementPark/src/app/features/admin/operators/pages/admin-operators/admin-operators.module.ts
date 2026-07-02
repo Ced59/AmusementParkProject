@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { TableModule } from 'primeng/table';
+import { ButtonModule } from '@shared/primeless/button';
+import { CardModule } from '@shared/primeless/card';
+import { InputTextModule } from '@shared/primeless/inputtext';
+import { TableModule } from '@shared/primeless/table';
 
 
 import { AdminOperatorsRoutingModule } from './admin-operators-routing.module';

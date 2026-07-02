@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@a
 import { firstValueFrom } from 'rxjs';
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
-import { TableLazyLoadEvent } from 'primeng/table';
+import { TableLazyLoadEvent } from '@shared/primeless/table';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkAdminListFilters, ParkAdminListSortDirection, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
 import { ParksApiService } from '@data-access/parks/parks-api.service';

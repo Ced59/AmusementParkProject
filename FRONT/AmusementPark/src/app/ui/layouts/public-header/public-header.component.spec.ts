@@ -15,7 +15,7 @@ import { PublicParkNavigationTreeFacade } from '@features/public/navigation/stat
 import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/models/public-park-navigation-tree.model';
 import { AuthModalComponent } from '@features/auth/ui/auth-modal/auth-modal.component';
 import { PublicHeaderComponent } from './public-header.component';
-import { Dialog } from 'primeng/dialog';
+import { Dialog } from '@shared/primeless/dialog';
 import { UserDto } from '@app/models/users/user_dto';
 
 class PublicParkNavigationTreeFacadeStub {

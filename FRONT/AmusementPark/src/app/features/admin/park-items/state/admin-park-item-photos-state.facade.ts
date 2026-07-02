@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorState } from '@shared/primeless/paginator';
 import { TranslateService } from '@ngx-translate/core';
 
 import { ToastMessageService } from '@app/services/messages/toast-message.service';

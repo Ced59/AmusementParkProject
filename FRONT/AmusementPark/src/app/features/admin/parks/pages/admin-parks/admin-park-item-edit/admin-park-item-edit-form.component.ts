@@ -1,13 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorState } from '@shared/primeless/paginator';
 
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
-import { Card } from 'primeng/card';
-import { Ripple } from 'primeng/ripple';
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from 'primeng/tabs';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/primeless/card';
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@shared/primeless/tabs';
 import { EditorSaveToolbarComponent } from '@shared/components/editor-save-toolbar/editor-save-toolbar.component';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
@@ -51,7 +49,6 @@ interface AdminParkItemEditorSectionOption {
   styleUrls: ['./admin-park-item-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    Bind,
     ButtonDirective,
     Card,
     EditorSaveToolbarComponent,
@@ -59,7 +56,6 @@ interface AdminParkItemEditorSectionOption {
     ReactiveFormsModule,
     Tabs,
     TabList,
-    Ripple,
     Tab,
     TabPanels,
     TabPanel,

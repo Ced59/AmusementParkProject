@@ -7,12 +7,11 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageDto } from '@app/models/images/image-dto';
 import { UploadedImage } from '@app/models/images/uploaded-image';
-import { Bind } from 'primeng/bind';
-import { Dialog } from 'primeng/dialog';
-import { ButtonDirective } from 'primeng/button';
+import { Dialog } from '@shared/primeless/dialog';
+import { ButtonDirective } from '@shared/primeless/button';
 import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { PrimeTemplate } from 'primeng/api';
+import { InputText } from '@shared/primeless/inputtext';
+import { PrimeTemplate } from '@shared/primeless/api';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageDisplayComponent } from '../image-display/image-display.component';
 import { ImageUploadSecurityService } from '@shared/utils/security';
@@ -22,7 +21,7 @@ import { ImageUploadSecurityService } from '@shared/utils/security';
     templateUrl: './owner-image-upload-dialog.component.html',
     styleUrls: ['./owner-image-upload-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [Bind, Dialog, ButtonDirective, FormsModule, InputText, PrimeTemplate, TranslateModule, ImageDisplayComponent]
+    imports: [Dialog, ButtonDirective, FormsModule, InputText, PrimeTemplate, TranslateModule, ImageDisplayComponent]
 })
 export class OwnerImageUploadDialogComponent implements OnChanges, OnDestroy {
   @Input() visible: boolean = false;

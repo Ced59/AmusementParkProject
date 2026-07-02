@@ -1,14 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
+import { ButtonDirective } from '@shared/primeless/button';
 
 @Component({
     selector: 'app-editor-save-toolbar',
     templateUrl: './editor-save-toolbar.component.html',
     styleUrls: ['./editor-save-toolbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgClass, Bind, ButtonDirective]
+    imports: [NgClass, ButtonDirective]
 })
 export class EditorSaveToolbarComponent {
   @Input() statusLabel: string = '';

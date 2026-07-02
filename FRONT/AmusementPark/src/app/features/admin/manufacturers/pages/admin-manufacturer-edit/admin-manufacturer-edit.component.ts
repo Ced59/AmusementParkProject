@@ -4,9 +4,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from 'primeng/button';
-import { Card } from 'primeng/card';
-import { InputText } from 'primeng/inputtext';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/primeless/card';
+import { InputText } from '@shared/primeless/inputtext';
 
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ImageCategory } from '@app/models/images/image-category';
@@ -15,7 +15,6 @@ import { AttractionManufacturer } from '@app/models/parks/attraction-manufacture
 import { ParkReferenceContactDetails } from '@app/models/parks/park-reference-contact-details';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { commitViewUpdate } from '@shared/utils/angular';
-import { Bind } from 'primeng/bind';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
 import { AdminReferenceImagesComponent } from '@features/admin/shared/ui/admin-reference-images/admin-reference-images.component';
 
@@ -26,7 +25,6 @@ import { AdminReferenceImagesComponent } from '@features/admin/shared/ui/admin-r
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
-    Bind,
     Card,
     FormsModule,
     ReactiveFormsModule,

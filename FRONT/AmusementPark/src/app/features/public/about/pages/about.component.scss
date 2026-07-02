@@ -312,13 +312,15 @@
 }
 
 .about-future__list li::before {
-  content: "\e909";
+  content: "";
   position: absolute;
-  top: 0.82rem;
+  top: 1.16rem;
   left: 0.9rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: currentColor;
   color: var(--c-lime);
-  font-family: "primeicons";
-  font-size: 0.9rem;
 }
 
 .about-final-cta {

@@ -3,7 +3,7 @@
 @use "styles/theme-dark";
 @use "styles/theme-light";
 @use "styles/mixins";
-@use "styles/primeflex-lite";
+@use "styles/layout-utilities";
 @use "styles/base";
 @use "styles/layout";
 @use "styles/public-experience";
@@ -20,5 +20,6 @@
 @use "styles/states";
 @use "styles/accessibility-polish";
 @use "styles/utilities";
-@use "styles/primeng-overrides";
+@use "styles/lucide-icon-compat";
+@use "styles/primeless-components";
 @use "styles/admin-contextual-blocks";

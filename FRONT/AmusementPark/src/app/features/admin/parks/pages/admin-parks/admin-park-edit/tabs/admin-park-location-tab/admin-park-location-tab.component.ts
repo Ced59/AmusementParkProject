@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapMarker } from '@app/models/map/map-marker';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
-import { Bind } from 'primeng/bind';
-import { InputText } from 'primeng/inputtext';
-import { ButtonDirective } from 'primeng/button';
+import { InputText } from '@shared/primeless/inputtext';
+import { ButtonDirective } from '@shared/primeless/button';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -12,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
     templateUrl: './admin-park-location-tab.component.html',
     styleUrls: ['./admin-park-location-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [FormsModule, ReactiveFormsModule, LeafletMapComponent, Bind, InputText, ButtonDirective, TranslateModule]
+    imports: [FormsModule, ReactiveFormsModule, LeafletMapComponent, InputText, ButtonDirective, TranslateModule]
 })
 export class AdminParkLocationTabComponent {
   @Input({ required: true }) form!: FormGroup;

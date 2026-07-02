@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from 'primeng/button';
+import { ButtonDirective } from '@shared/primeless/button';
 
 import {
   AdminParkItemSequentialNavigationState,

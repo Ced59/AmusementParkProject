@@ -17,13 +17,12 @@ import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { UserAdminApiService } from '@data-access/users/user-admin-api.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
+import { ButtonDirective } from '@shared/primeless/button';
 import { NgIf, NgFor } from '@angular/common';
-import { Card } from 'primeng/card';
-import { Tag } from 'primeng/tag';
-import { InputText } from 'primeng/inputtext';
-import { Select } from 'primeng/select';
+import { Card } from '@shared/primeless/card';
+import { Tag } from '@shared/primeless/tag';
+import { InputText } from '@shared/primeless/inputtext';
+import { Select } from '@shared/primeless/select';
 import { OwnerImageUploadDialogComponent } from '@shared/components/owner-image-upload-dialog/owner-image-upload-dialog.component';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -35,7 +34,7 @@ import { AdminUserManagementStateFacade } from '@features/admin/users/state/admi
     styleUrls: ['./admin-user-management.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [AdminUserManagementStateFacade],
-    imports: [PageStateComponent, Bind, ButtonDirective, NgIf, Card, Tag, NgFor, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule, ImageDisplayComponent]
+    imports: [PageStateComponent, ButtonDirective, NgIf, Card, Tag, NgFor, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule, ImageDisplayComponent]
 })
 export class AdminUserManagementComponent implements OnInit {
   readonly roleOptions: AppRole[] = APP_ROLES;

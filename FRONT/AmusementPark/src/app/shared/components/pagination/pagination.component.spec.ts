@@ -1,5 +1,5 @@
 import { ElementRef } from '@angular/core';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorState } from '@shared/primeless/paginator';
 
 import { ScrollAnchorService } from '@shared/services/scroll/scroll-anchor.service';
 import { PaginationComponent } from './pagination.component';

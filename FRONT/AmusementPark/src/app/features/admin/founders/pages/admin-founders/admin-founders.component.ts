@@ -1,14 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { PrimeTemplate } from 'primeng/api';
+import { Card } from '@shared/primeless/card';
+import { PrimeTemplate } from '@shared/primeless/api';
 import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { ButtonDirective } from 'primeng/button';
-import { TableModule } from 'primeng/table';
-import { Tag } from 'primeng/tag';
-import { PaginatorState } from 'primeng/paginator';
+import { InputText } from '@shared/primeless/inputtext';
+import { ButtonDirective } from '@shared/primeless/button';
+import { TableModule } from '@shared/primeless/table';
+import { Tag } from '@shared/primeless/tag';
+import { PaginatorState } from '@shared/primeless/paginator';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ParkFounder } from '@app/models/parks/park-founder';
@@ -22,7 +21,7 @@ import { AdminFoundersStateFacade } from '@features/admin/founders/state/admin-f
   styleUrls: ['./admin-founders.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AdminFoundersStateFacade],
-  imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, Tag, TranslateModule, EmptyStateComponent, PaginationComponent]
+  imports: [Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, Tag, TranslateModule, EmptyStateComponent, PaginationComponent]
 })
 export class AdminFoundersComponent implements OnInit {
   protected readonly founders = this.stateFacade.pagedFounders;

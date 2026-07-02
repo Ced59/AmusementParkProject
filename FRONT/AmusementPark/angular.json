@@ -62,9 +62,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/primeicons/primeicons.css",
-              "src/styles/primeicons-font-display.scss"
+              "src/styles.scss"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -199,8 +197,6 @@
               }
             ],
             "styles": [
-              "node_modules/primeicons/primeicons.css",
-              "src/styles/primeicons-font-display.scss",
               "src/styles.scss"
             ],
             "scripts": []

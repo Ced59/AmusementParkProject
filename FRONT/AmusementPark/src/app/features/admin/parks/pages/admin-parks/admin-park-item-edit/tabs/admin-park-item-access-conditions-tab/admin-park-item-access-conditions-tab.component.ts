@@ -18,14 +18,13 @@ import {
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
 import { LocalizedItem } from '@app/models/shared/localized-item';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { Select } from 'primeng/select';
-import { ButtonDirective } from 'primeng/button';
+import { Card } from '@shared/primeless/card';
+import { Select } from '@shared/primeless/select';
+import { ButtonDirective } from '@shared/primeless/button';
 import { NgIf, NgFor } from '@angular/common';
-import { PrimeTemplate } from 'primeng/api';
-import { InputText } from 'primeng/inputtext';
-import { ToggleSwitch } from 'primeng/toggleswitch';
+import { PrimeTemplate } from '@shared/primeless/api';
+import { InputText } from '@shared/primeless/inputtext';
+import { ToggleSwitch } from '@shared/primeless/toggleswitch';
 import { LocalizedTextInputComponent } from '@shared/components/localized-text-input/localized-text-input.component';
 
 @Component({
@@ -33,7 +32,7 @@ import { LocalizedTextInputComponent } from '@shared/components/localized-text-i
     templateUrl: './admin-park-item-access-conditions-tab.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./admin-park-item-access-conditions-tab.component.scss'],
-    imports: [FormsModule, ReactiveFormsModule, Bind, Card, Select, ButtonDirective, NgIf, NgFor, PrimeTemplate, InputText, ToggleSwitch, LocalizedTextInputComponent, TranslateModule]
+    imports: [FormsModule, ReactiveFormsModule, Card, Select, ButtonDirective, NgIf, NgFor, PrimeTemplate, InputText, ToggleSwitch, LocalizedTextInputComponent, TranslateModule]
 })
 export class AdminParkItemAccessConditionsTabComponent {
   public readonly heightRequirementFields: AdminParkItemHeightRequirementField[] = ADMIN_PARK_ITEM_HEIGHT_REQUIREMENT_FIELDS;

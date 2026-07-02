@@ -4,14 +4,13 @@ import { MapMarker } from '@app/models/map/map-marker';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { ParkItemType } from '@app/models/parks/park-item-type';
-import { Bind } from 'primeng/bind';
-import { InputText } from 'primeng/inputtext';
-import { Select } from 'primeng/select';
-import { Card } from 'primeng/card';
+import { InputText } from '@shared/primeless/inputtext';
+import { Select } from '@shared/primeless/select';
+import { Card } from '@shared/primeless/card';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
-import { ButtonDirective } from 'primeng/button';
+import { ButtonDirective } from '@shared/primeless/button';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
-import { ToggleSwitch } from 'primeng/toggleswitch';
+import { ToggleSwitch } from '@shared/primeless/toggleswitch';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface Option<T> {
@@ -24,7 +23,7 @@ interface Option<T> {
     templateUrl: './admin-park-item-general-tab.component.html',
     styleUrls: ['./admin-park-item-general-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [FormsModule, ReactiveFormsModule, Bind, InputText, Select, Card, LeafletMapComponent, ButtonDirective, LocalizedRichTextEditorComponent, ToggleSwitch, TranslateModule]
+    imports: [FormsModule, ReactiveFormsModule, InputText, Select, Card, LeafletMapComponent, ButtonDirective, LocalizedRichTextEditorComponent, ToggleSwitch, TranslateModule]
 })
 export class AdminParkItemGeneralTabComponent {
   @Input({ required: true }) form!: FormGroup;

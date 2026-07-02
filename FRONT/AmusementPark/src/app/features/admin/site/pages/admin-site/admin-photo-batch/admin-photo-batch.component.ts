@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { ProgressBar } from 'primeng/progressbar';
+import { ProgressBar } from '@shared/primeless/progressbar';
 
 import {
   AdminPhotoBatchOwnerKind,

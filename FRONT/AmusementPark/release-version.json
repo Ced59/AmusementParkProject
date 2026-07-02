@@ -1,6 +1,20 @@
 {
-  "version": "3.1.22",
+  "version": "3.1.23",
   "history": [
+    {
+      "version": "3.1.23",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "L’interface devient plus légère.",
+        "en": "The interface becomes lighter.",
+        "de": "Die Oberfläche wird leichter.",
+        "nl": "De interface wordt lichter.",
+        "it": "L’interfaccia diventa più leggera.",
+        "es": "La interfaz se vuelve más ligera.",
+        "pl": "Interfejs staje się lżejszy.",
+        "pt": "A interface fica mais leve."
+      }
+    },
     {
       "version": "3.1.22",
       "releasedAt": "2026-07-02",
