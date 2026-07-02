@@ -2105,6 +2105,7 @@
   },
   "description": "Explore amusement parks, attractions and practical information around the world.",
   "images": {
+    "fallbackAlt": "AMUSEMENT-PARKS.fun image",
     "categories": {
       "LOGO": "Logo",
       "AVATAR": "Avatar",

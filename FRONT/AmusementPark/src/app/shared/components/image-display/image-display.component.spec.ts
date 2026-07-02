@@ -1,5 +1,9 @@
 import { SimpleChange } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
+import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ImageDisplayComponent } from './image-display.component';
 
@@ -63,5 +67,43 @@ describe('ImageDisplayComponent', () => {
 
     expect(component.resolvedImageSrcSet).toBeNull();
     expect(component.resolvedImageSizes).toBeNull();
+  });
+
+  it('renders localized fallback alt text through the view component', async () => {
+    const imagesApiService: jasmine.SpyObj<ImagesApiService> = jasmine.createSpyObj<ImagesApiService>('ImagesApiService', [
+      'resolveImageUrl',
+      'buildImageSrcSet'
+    ]);
+    imagesApiService.resolveImageUrl.and.returnValue('/api/images/img-1');
+    imagesApiService.buildImageSrcSet.and.returnValue(null);
+
+    await TestBed.configureTestingModule({
+      imports: [...COMMON_TEST_IMPORTS, ImageDisplayComponent],
+      providers: [
+        ...provideCommonTestDependencies(),
+        { provide: ImagesApiService, useValue: imagesApiService }
+      ]
+    }).compileComponents();
+
+    const translateService: TranslateService = TestBed.inject(TranslateService);
+    translateService.setTranslation('fr', {
+      images: {
+        fallbackAlt: 'Image AMUSEMENT-PARKS.fun'
+      }
+    });
+    translateService.use('fr');
+
+    const fixture: ComponentFixture<ImageDisplayComponent> = TestBed.createComponent(ImageDisplayComponent);
+    const component: ImageDisplayComponent = fixture.componentInstance;
+    component.imagePathOrUrl = 'img-1';
+    component.alt = ' ';
+    component.ngOnChanges({
+      imagePathOrUrl: new SimpleChange(null, 'img-1', true)
+    });
+
+    fixture.detectChanges();
+
+    const image: HTMLImageElement = fixture.debugElement.query(By.css('img')).nativeElement;
+    expect(image.getAttribute('alt')).toBe('Image AMUSEMENT-PARKS.fun');
   });
 });

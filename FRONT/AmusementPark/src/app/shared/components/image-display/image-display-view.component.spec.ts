@@ -57,10 +57,11 @@ describe('ImageDisplayViewComponent', () => {
     component.showImage = true;
     component.resolvedImageUrl = 'https://example.com/image.png';
     component.alt = '   ';
+    component.fallbackAlt = 'Image AMUSEMENT-PARKS.fun';
 
     fixture.detectChanges();
 
     const image: HTMLImageElement = fixture.debugElement.query(By.css('img')).nativeElement;
-    expect(image.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun image');
+    expect(image.getAttribute('alt')).toBe('Image AMUSEMENT-PARKS.fun');
   });
 });

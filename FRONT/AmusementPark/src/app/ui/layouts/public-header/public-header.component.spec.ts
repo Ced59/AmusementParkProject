@@ -134,6 +134,7 @@ describe('PublicHeaderComponent', () => {
 
     expect(languageFlag).not.toBeNull();
     expect(languageFlag?.getAttribute('alt')).toBe('Fran\u00e7ais');
+    expect(languageFlag?.getAttribute('aria-hidden')).toBe('true');
   });
 
   it('renders the public brand wordmark with the .fun signature', () => {

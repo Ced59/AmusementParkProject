@@ -1,5 +1,6 @@
 {
   "images": {
+    "fallbackAlt": "Image AMUSEMENT-PARKS.fun",
     "categories": {
       "LOGO": "Logo",
       "AVATAR": "Avatar",

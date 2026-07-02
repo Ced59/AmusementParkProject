@@ -151,7 +151,7 @@
       }
 
       <button type="button" class="btn-nav btn-nav--ghost app-public-nav__language" (click)="openModal('languageModal')" [attr.aria-label]="'topbar.choose_language' | translate">
-        <img [src]="flagAssetPath(selectedLanguage())" class="app-public-nav__flag" [alt]="languageLabel(selectedLanguage())" />
+        <img [src]="flagAssetPath(selectedLanguage())" class="app-public-nav__flag" [alt]="languageLabel(selectedLanguage())" aria-hidden="true" />
       </button>
 
       <app-theme-switcher></app-theme-switcher>
@@ -190,7 +190,7 @@
           [attr.aria-selected]="isSelectedLanguage(language)"
           role="option"
           (click)="selectLanguage(language.value)">
-          <img [src]="flagAssetPath(language.value)" class="flag flag-large" [alt]="language.label" />
+          <img [src]="flagAssetPath(language.value)" class="flag flag-large" [alt]="language.label" aria-hidden="true" />
           <span class="language-option__copy">
             <strong>{{ language.label }}</strong>
             <small>{{ getLanguageShortCode(language) }}</small>
