@@ -1,6 +1,20 @@
 {
-  "version": "3.1.39",
+  "version": "3.1.40",
   "history": [
+    {
+      "version": "3.1.40",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les textes publics restent plus fiables.",
+        "en": "Public text stays more reliable.",
+        "de": "Öffentliche Texte bleiben zuverlässiger.",
+        "nl": "Publieke teksten blijven betrouwbaarder.",
+        "it": "I testi pubblici restano più affidabili.",
+        "es": "Los textos públicos siguen siendo más fiables.",
+        "pl": "Teksty publiczne pozostają bardziej niezawodne.",
+        "pt": "Os textos públicos continuam mais fiáveis."
+      }
+    },
     {
       "version": "3.1.39",
       "releasedAt": "2026-07-03",

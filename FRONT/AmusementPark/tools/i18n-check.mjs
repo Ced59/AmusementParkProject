@@ -112,6 +112,37 @@ for (const key of usedKeys) {
 }
 
 const sameAsEnglishCandidates = [];
+function extractPlaceholders(value) {
+  if (typeof value !== 'string') {
+    return [];
+  }
+
+  return [...value.matchAll(/\{\{\s*([A-Za-z0-9_.-]+)\s*\}\}/g)]
+    .map((match) => match[1])
+    .sort((left, right) => left.localeCompare(right, 'en'));
+}
+
+function placeholdersKey(placeholders) {
+  return placeholders.join('|');
+}
+
+for (const [key, englishValue] of english) {
+  const englishPlaceholders = extractPlaceholders(englishValue);
+  if (englishPlaceholders.length === 0) {
+    continue;
+  }
+
+  const expectedPlaceholders = placeholdersKey(englishPlaceholders);
+  for (const language of languages.filter((item) => item !== 'en')) {
+    const entries = flattenedByLanguage.get(language) ?? new Map();
+    const value = entries.get(key);
+    const actualPlaceholders = extractPlaceholders(value);
+    if (placeholdersKey(actualPlaceholders) !== expectedPlaceholders) {
+      errors.push(`${language}: placeholder mismatch for ${key}; expected ${englishPlaceholders.join(', ')}, got ${actualPlaceholders.join(', ') || 'none'}`);
+    }
+  }
+}
+
 for (const language of languages.filter((item) => item !== 'en')) {
   const entries = flattenedByLanguage.get(language) ?? new Map();
 

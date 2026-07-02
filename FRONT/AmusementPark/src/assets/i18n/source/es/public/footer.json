@@ -23,7 +23,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Hecho con ❤️ y adrenalina",
-      "version": "Versión {{versión}}"
+      "version": "Versión {{version}}"
     }
   }
 }

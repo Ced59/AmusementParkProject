@@ -1,8 +1,8 @@
 {
   "versionHistoryPage": {
     "kicker": "Historial",
-    "title": "Que ha cambiado",
-    "lead": "Version actual: {{versión}}. Sigue las mejoras visibles del sitio con cada actualización.",
+    "title": "Qué ha cambiado",
+    "lead": "Versión actual: {{version}}. Sigue las mejoras visibles del sitio con cada actualización.",
     "timelineAriaLabel": "Línea temporal del historial de versiones",
     "loading": "Cargando versiones...",
     "loadError": "No se pudo cargar el historial.",
