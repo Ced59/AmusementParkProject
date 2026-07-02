@@ -91,6 +91,7 @@ let pendingTargetedInvalidationRequest: NormalizedCacheInvalidationRequest | nul
 let pendingTargetedInvalidationTimer: ReturnType<typeof setTimeout> | null = null;
 let targetedInvalidationInProgress = false;
 let activeTargetedInvalidationRequest: NormalizedCacheInvalidationRequest | null = null;
+let immediateTargetedInvalidationRequests: NormalizedCacheInvalidationRequest[] = [];
 
 type SsrPageResponseStatus =
   'HIT'
@@ -301,22 +302,7 @@ export function app(): express.Express {
   });
 
   server.post('/internal/cache/invalidate', express.json({ limit: '64kb', type: ['application/json', 'application/*+json'] }), (req: Request, res: Response) => {
-    if (!authorizeInternalCacheRequest(req, res)) {
-      return;
-    }
-
-    const invalidationRequest = normalizeCacheInvalidationRequest(req.body);
-    if (invalidationRequest.all) {
-      clearPendingTargetedSsrCacheInvalidation();
-    }
-
-    const result = invalidationRequest.all
-      ? clearAllSsrCaches()
-      : enqueueTargetedSsrCacheInvalidation(invalidationRequest);
-
-    recordCacheInvalidation(invalidationRequest, result);
-
-    res.status(200).type('application/json').send(JSON.stringify(result));
+    void handleInternalCacheInvalidationRequest(req, res);
   });
 
   server.use(redirectHttpToHttps);
@@ -456,6 +442,36 @@ export function app(): express.Express {
   });
 
   return server;
+}
+
+async function handleInternalCacheInvalidationRequest(req: Request, res: Response): Promise<void> {
+  if (!authorizeInternalCacheRequest(req, res)) {
+    return;
+  }
+
+  try {
+    const invalidationRequest = normalizeCacheInvalidationRequest(req.body);
+    const result = await executeCacheInvalidationRequest(invalidationRequest);
+    recordCacheInvalidation(invalidationRequest, result);
+
+    res.status(200).type('application/json').send(JSON.stringify(result));
+  } catch (error: unknown) {
+    console.warn('SSR cache invalidation request failed', error);
+    res.status(500).type('application/json').send(JSON.stringify({ error: 'cache_invalidation_failed' }));
+  }
+}
+
+async function executeCacheInvalidationRequest(invalidationRequest: NormalizedCacheInvalidationRequest): Promise<CacheInvalidationResult> {
+  if (invalidationRequest.all) {
+    clearPendingTargetedSsrCacheInvalidation();
+    return clearAllSsrCaches();
+  }
+
+  if (!invalidationRequest.allowStale) {
+    return await clearImmediateTargetedSsrCaches(invalidationRequest);
+  }
+
+  return enqueueTargetedSsrCacheInvalidation(invalidationRequest);
 }
 
 function redirectLegacyVideoShareRoute(req: Request, res: Response, next: NextFunction): void {
@@ -1955,6 +1971,18 @@ async function clearTargetedSsrCaches(request: NormalizedCacheInvalidationReques
   };
 }
 
+async function clearImmediateTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): Promise<CacheInvalidationResult> {
+  immediateTargetedInvalidationRequests.push(request);
+
+  try {
+    return await clearTargetedSsrCaches(request);
+  } finally {
+    immediateTargetedInvalidationRequests = immediateTargetedInvalidationRequests.filter(
+      (candidate: NormalizedCacheInvalidationRequest): boolean => candidate !== request
+    );
+  }
+}
+
 function enqueueTargetedSsrCacheInvalidation(request: NormalizedCacheInvalidationRequest): CacheInvalidationResult {
   pendingTargetedInvalidationRequest = pendingTargetedInvalidationRequest === null
     ? request
@@ -2159,6 +2187,12 @@ function findActiveTargetedInvalidationRequest(cacheKey: string): NormalizedCach
 
   if (activeTargetedInvalidationRequest !== null && isPageCacheKeyMatched(cacheKey, activeTargetedInvalidationRequest)) {
     matchedRequest = activeTargetedInvalidationRequest;
+  }
+
+  for (const immediateInvalidationRequest of immediateTargetedInvalidationRequests) {
+    if (isPageCacheKeyMatched(cacheKey, immediateInvalidationRequest)) {
+      matchedRequest = immediateInvalidationRequest;
+    }
   }
 
   if (pendingTargetedInvalidationRequest !== null && isPageCacheKeyMatched(cacheKey, pendingTargetedInvalidationRequest)) {

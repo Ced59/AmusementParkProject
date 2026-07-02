@@ -1,5 +1,4 @@
 using AmusementPark.Application.Features.Seo.Models;
-using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Seo.Services;
 
@@ -159,7 +158,7 @@ public sealed partial class PublicSeoUrlResolver
         IReadOnlyCollection<string> languages,
         PublicSeoParkSnapshot park,
         IReadOnlyCollection<PublicSeoParkItemSnapshot> publicItems,
-        IReadOnlyCollection<ParkZone> zones)
+        IReadOnlyCollection<PublicSeoParkZoneSnapshot> zones)
     {
         HashSet<string> impactedZoneIds = publicItems
             .Select(static item => item.ZoneId)
@@ -171,8 +170,8 @@ public sealed partial class PublicSeoUrlResolver
             return;
         }
 
-        List<ParkZone> impactedZones = zones
-            .Where(zone => !string.IsNullOrWhiteSpace(zone.Id) && impactedZoneIds.Contains(zone.Id) && ParkZonesSitemapSectionProvider.IsPublicZone(zone))
+        List<PublicSeoParkZoneSnapshot> impactedZones = zones
+            .Where(zone => impactedZoneIds.Contains(zone.Id) && IsPublicZone(zone))
             .ToList();
         if (impactedZones.Count == 0)
         {
@@ -185,7 +184,7 @@ public sealed partial class PublicSeoUrlResolver
             relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/zones");
         }
 
-        foreach (ParkZone zone in impactedZones)
+        foreach (PublicSeoParkZoneSnapshot zone in impactedZones)
         {
             string zoneSlug = SeoSlugService.ToSlug(zone.Name, "zone");
             foreach (string language in languages)
@@ -193,5 +192,13 @@ public sealed partial class PublicSeoUrlResolver
                 relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/zone/{zone.Id}/{zoneSlug}");
             }
         }
+    }
+
+    private static bool IsPublicZone(PublicSeoParkZoneSnapshot zone)
+    {
+        return !string.IsNullOrWhiteSpace(zone.Id)
+            && !string.IsNullOrWhiteSpace(zone.ParkId)
+            && !string.IsNullOrWhiteSpace(zone.Name)
+            && zone.IsVisible;
     }
 }

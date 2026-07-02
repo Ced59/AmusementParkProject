@@ -441,7 +441,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
 
             if (string.Equals(entityType, "parkitem", StringComparison.Ordinal) || string.Equals(entityType, "attraction", StringComparison.Ordinal))
             {
-                bool resolved = await this.AddParkItemImpactAsync(paths, prefixes, entityId, cancellationToken);
+                bool resolved = await this.AddParkItemImpactAsync(paths, prefixes, entityId, cancellationToken, ResolveChangedZoneIds(change));
                 if (!resolved)
                 {
                     AddNonEmpty(fallbackParkIds, result.TargetParkId);
@@ -533,7 +533,8 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         ISet<string> paths,
         ISet<string> prefixes,
         string? itemId,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        IReadOnlyCollection<string>? changedZoneIds = null)
     {
         if (string.IsNullOrWhiteSpace(itemId))
         {
@@ -556,17 +557,47 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         AddParkItemListPaths(paths, park);
         AddParkItemPrefixes(prefixes, park, item);
 
-        if (!string.IsNullOrWhiteSpace(item.ZoneId))
+        HashSet<string> zoneIds = new HashSet<string>(StringComparer.Ordinal);
+        AddNonEmpty(zoneIds, item.ZoneId);
+        if (changedZoneIds is not null)
         {
-            ParkZone? zone = await this.parkZoneRepository.GetByIdAsync(item.ZoneId, cancellationToken);
-            if (zone is not null)
+            AddRange(zoneIds, changedZoneIds);
+        }
+
+        foreach (string zoneId in zoneIds)
+        {
+            ParkZone? zone = await this.parkZoneRepository.GetByIdAsync(zoneId, cancellationToken);
+            if (zone is not null && !string.IsNullOrWhiteSpace(zone.ParkId))
             {
-                AddParkZoneListPaths(paths, park);
-                AddParkZonePrefixes(prefixes, park, zone);
+                Park? zonePark = string.Equals(zone.ParkId, park.Id, StringComparison.Ordinal)
+                    ? park
+                    : await this.parkRepository.GetByIdAsync(zone.ParkId, true, cancellationToken);
+                if (zonePark is not null)
+                {
+                    AddParkZoneListPaths(paths, zonePark);
+                    AddParkZonePrefixes(prefixes, zonePark, zone);
+                }
             }
         }
 
         return true;
+    }
+
+    private static IReadOnlyCollection<string> ResolveChangedZoneIds(ParkGraphUpsertChangeDto change)
+    {
+        HashSet<string> zoneIds = new HashSet<string>(StringComparer.Ordinal);
+        foreach (ParkGraphUpsertFieldChangeDto field in change.Fields)
+        {
+            if (!string.Equals(field.Field, "zoneId", StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            AddNonEmpty(zoneIds, field.OldValue);
+            AddNonEmpty(zoneIds, field.NewValue);
+        }
+
+        return zoneIds.ToList();
     }
 
     private async Task<bool> AddParkZoneImpactAsync(

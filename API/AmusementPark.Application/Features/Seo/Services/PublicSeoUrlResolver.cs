@@ -48,7 +48,7 @@ public sealed partial class PublicSeoUrlResolver
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
         PublicSeoParkItemsByParkId currentItemsByParkId = await this.LoadCurrentItemsByParkIdAsync(changedParkIds, cancellationToken);
-        IReadOnlyDictionary<string, IReadOnlyCollection<ParkZone>> zonesByParkId = await this.LoadZonesByParkIdAsync(changedParkIds, cancellationToken);
+        IReadOnlyDictionary<string, IReadOnlyCollection<PublicSeoParkZoneSnapshot>> zonesByParkId = await this.LoadZonesByParkIdAsync(changedParkIds, cancellationToken);
 
         foreach (PublicSeoParkSnapshot park in parkSnapshots)
         {
@@ -83,7 +83,10 @@ public sealed partial class PublicSeoUrlResolver
                 park,
                 currentPublicItems,
                 currentHistoryItems,
-                zonesByParkId.GetValueOrDefault(park.Id) ?? Array.Empty<ParkZone>(),
+                MergeZoneSnapshots(
+                    zonesByParkId.GetValueOrDefault(park.Id) ?? Array.Empty<PublicSeoParkZoneSnapshot>(),
+                    update.PreviousParkZones.Where(zone => string.Equals(zone.ParkId, park.Id, StringComparison.OrdinalIgnoreCase)),
+                    update.CurrentParkZones.Where(zone => string.Equals(zone.ParkId, park.Id, StringComparison.OrdinalIgnoreCase))),
                 imagePresenceByKey,
                 cancellationToken);
         }
@@ -101,7 +104,7 @@ public sealed partial class PublicSeoUrlResolver
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
         IReadOnlyDictionary<string, PublicSeoParkSnapshot> parentParkById = await this.LoadParentParksAsync(parentParkIds, update, cancellationToken);
-        IReadOnlyDictionary<string, IReadOnlyCollection<ParkZone>> parentZonesByParkId = await this.LoadZonesByParkIdAsync(parentParkIds, cancellationToken);
+        IReadOnlyDictionary<string, IReadOnlyCollection<PublicSeoParkZoneSnapshot>> parentZonesByParkId = await this.LoadZonesByParkIdAsync(parentParkIds, cancellationToken);
 
         foreach (PublicSeoParkItemSnapshot item in itemSnapshots)
         {
@@ -135,7 +138,10 @@ public sealed partial class PublicSeoUrlResolver
                 AddParkMapUrls(relativePaths, languages, parentPark);
             }
 
-            IReadOnlyCollection<ParkZone> parentZones = parentZonesByParkId.GetValueOrDefault(item.ParkId) ?? Array.Empty<ParkZone>();
+            IReadOnlyCollection<PublicSeoParkZoneSnapshot> parentZones = MergeZoneSnapshots(
+                parentZonesByParkId.GetValueOrDefault(item.ParkId) ?? Array.Empty<PublicSeoParkZoneSnapshot>(),
+                update.PreviousParkZones.Where(zone => string.Equals(zone.ParkId, item.ParkId, StringComparison.OrdinalIgnoreCase)),
+                update.CurrentParkZones.Where(zone => string.Equals(zone.ParkId, item.ParkId, StringComparison.OrdinalIgnoreCase)));
             AddZoneImpactUrls(relativePaths, languages, parentPark, new[] { item }, parentZones);
 
             AddParkItemDetailUrls(relativePaths, languages, parentPark, item);
@@ -159,7 +165,7 @@ public sealed partial class PublicSeoUrlResolver
         PublicSeoParkSnapshot park,
         IReadOnlyCollection<PublicSeoParkItemSnapshot> currentPublicItems,
         IReadOnlyCollection<PublicSeoParkItemSnapshot> currentHistoryItems,
-        IReadOnlyCollection<ParkZone> zones,
+        IReadOnlyCollection<PublicSeoParkZoneSnapshot> zones,
         Dictionary<string, bool> imagePresenceByKey,
         CancellationToken cancellationToken)
     {
@@ -380,15 +386,35 @@ public sealed partial class PublicSeoUrlResolver
         return parentParkById;
     }
 
-    private async Task<IReadOnlyDictionary<string, IReadOnlyCollection<ParkZone>>> LoadZonesByParkIdAsync(
+    private static IReadOnlyCollection<PublicSeoParkZoneSnapshot> MergeZoneSnapshots(params IEnumerable<PublicSeoParkZoneSnapshot>[] snapshotGroups)
+    {
+        List<PublicSeoParkZoneSnapshot> snapshots = new List<PublicSeoParkZoneSnapshot>();
+        HashSet<string> keys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (IEnumerable<PublicSeoParkZoneSnapshot> snapshotGroup in snapshotGroups)
+        {
+            foreach (PublicSeoParkZoneSnapshot snapshot in snapshotGroup)
+            {
+                string key = $"{snapshot.Id}|{snapshot.ParkId}|{snapshot.Name}|{snapshot.IsVisible}";
+                if (keys.Add(key))
+                {
+                    snapshots.Add(snapshot);
+                }
+            }
+        }
+
+        return snapshots;
+    }
+
+    private async Task<IReadOnlyDictionary<string, IReadOnlyCollection<PublicSeoParkZoneSnapshot>>> LoadZonesByParkIdAsync(
         IReadOnlyCollection<string> parkIds,
         CancellationToken cancellationToken)
     {
-        Dictionary<string, IReadOnlyCollection<ParkZone>> zonesByParkId = new Dictionary<string, IReadOnlyCollection<ParkZone>>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, IReadOnlyCollection<PublicSeoParkZoneSnapshot>> zonesByParkId = new Dictionary<string, IReadOnlyCollection<PublicSeoParkZoneSnapshot>>(StringComparer.OrdinalIgnoreCase);
         foreach (string parkId in parkIds)
         {
             IReadOnlyCollection<ParkZone> zones = await this.parkZoneRepository.GetByParkIdAsync(parkId, cancellationToken);
-            zonesByParkId[parkId] = zones;
+            zonesByParkId[parkId] = PublicSeoParkZoneSnapshot.FromParkZones(zones);
         }
 
         return zonesByParkId;
