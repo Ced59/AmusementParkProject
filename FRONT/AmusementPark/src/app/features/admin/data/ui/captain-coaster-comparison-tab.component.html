@@ -1,9 +1,9 @@
-<p-card data-pagination-scroll-target>
-  <ng-template pTemplate="header">
+<app-ui-card data-pagination-scroll-target>
+  <ng-template appUiTemplate="header">
     <div class="card-header-row">
       <span>Résultats de comparaison</span>
       <button
-        pButton
+        appUiButton
         type="button"
         [label]="isLoaded() ? 'Actualiser' : 'Charger les résultats'"
         [icon]="isLoadingPage() ? 'pi pi-spin pi-spinner' : (isLoaded() ? 'pi pi-refresh' : 'pi pi-download')"
@@ -31,7 +31,7 @@
     </div>
 
     <div class="filters-bar">
-      <p-select
+      <app-ui-select
         [options]="entityTypeOptions"
         [ngModel]="filters().entityType"
         (ngModelChange)="captainCoasterComparisonFacade.setEntityTypeFilter($event)"
@@ -39,8 +39,8 @@
         optionValue="value"
         placeholder="Type"
         class="filter-select">
-      </p-select>
-      <p-select
+      </app-ui-select>
+      <app-ui-select
         [options]="changeTypeOptions"
         [ngModel]="filters().changeType"
         (ngModelChange)="captainCoasterComparisonFacade.setChangeTypeFilter($event)"
@@ -48,8 +48,8 @@
         optionValue="value"
         placeholder="Changement"
         class="filter-select">
-      </p-select>
-      <p-select
+      </app-ui-select>
+      <app-ui-select
         [options]="appliedOptions"
         [ngModel]="filters().isApplied"
         (ngModelChange)="captainCoasterComparisonFacade.setAppliedFilter($event)"
@@ -57,7 +57,7 @@
         optionValue="value"
         placeholder="Appliqué"
         class="filter-select">
-      </p-select>
+      </app-ui-select>
       <span class="filter-total">{{ totalCount() | number }} résultats filtrés</span>
     </div>
 
@@ -69,12 +69,12 @@
     } @else {
     <div class="bulk-actions">
       <div class="bulk-actions__selection">
-        <p-checkbox
+        <app-ui-checkbox
           [binary]="true"
           [ngModel]="allPageSelected()"
           (ngModelChange)="captainCoasterComparisonFacade.toggleSelectPage($event)"
           inputId="selectPage">
-        </p-checkbox>
+        </app-ui-checkbox>
         <label for="selectPage">Page ({{ currentItems().length }})</label>
         <span *ngIf="selectedCount() > 0" class="selected-count">
           {{ selectedCount() }} sélectionné(s)
@@ -82,7 +82,7 @@
       </div>
       <div class="bulk-actions__buttons">
         <button
-          pButton
+          appUiButton
           type="button"
           label="Appliquer la sélection"
           icon="pi pi-check"
@@ -91,7 +91,7 @@
           (click)="captainCoasterComparisonFacade.applySelectionAsync()">
         </button>
         <button
-          pButton
+          appUiButton
           type="button"
           label="Tout appliquer (filtre actuel)"
           icon="pi pi-check-circle"
@@ -103,8 +103,8 @@
     </div>
 
     <div class="table-wrapper" [class.table-wrapper--loading]="isLoadingPage()">
-      <p-table [value]="currentItems()" responsiveLayout="scroll" styleClass="admin-data-table p-datatable-sm admin-comparison-table">
-        <ng-template pTemplate="header">
+      <app-ui-table [value]="currentItems()" responsiveLayout="scroll" styleClass="admin-data-table p-datatable-sm admin-comparison-table">
+        <ng-template appUiTemplate="header">
           <tr>
             <th style="width:3rem"></th>
             <th style="width:6rem">Type</th>
@@ -115,19 +115,19 @@
             <th style="width:4rem">Fait</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-row>
+        <ng-template appUiTemplate="body" let-row>
           <tr [class.row--applied]="row.isApplied" [class.row--duplicate]="captainCoasterComparisonFacade.isDuplicateRow(row)">
             <td>
-              <p-checkbox
+              <app-ui-checkbox
                 [binary]="true"
                 [ngModel]="captainCoasterComparisonFacade.isSelected(row.id)"
                 (ngModelChange)="captainCoasterComparisonFacade.toggleSelection(row.id, $event)"
                 [disabled]="row.isApplied">
-              </p-checkbox>
+              </app-ui-checkbox>
             </td>
-            <td data-label="Type"><p-tag [value]="row.entityType" severity="secondary"></p-tag></td>
+            <td data-label="Type"><app-ui-tag [value]="row.entityType" severity="secondary"></app-ui-tag></td>
             <td class="col-name" data-label="Nom" [title]="row.displayName">{{ row.displayName }}</td>
-            <td data-label="Changement"><p-tag [value]="row.changeType" [severity]="captainCoasterComparisonFacade.getChangeTypeSeverity(row.changeType)"></p-tag></td>
+            <td data-label="Changement"><app-ui-tag [value]="row.changeType" [severity]="captainCoasterComparisonFacade.getChangeTypeSeverity(row.changeType)"></app-ui-tag></td>
             <td class="col-confidence" data-label="Confiance">{{ row.matchConfidence }}</td>
             <td data-label="Analyse / résolution">
               <app-captain-coaster-comparison-analysis [row]="row"></app-captain-coaster-comparison-analysis>
@@ -135,7 +135,7 @@
             <td data-label="Fait"><i [class]="row.isApplied ? 'pi pi-check-circle applied-icon' : 'pi pi-circle pending-icon'"></i></td>
           </tr>
         </ng-template>
-      </p-table>
+      </app-ui-table>
     </div>
 
     <app-pagination
@@ -148,4 +148,4 @@
     </app-pagination>
     }
   </ng-container>
-</p-card>
+</app-ui-card>

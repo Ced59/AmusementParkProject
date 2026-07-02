@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapMarker } from '@app/models/map/map-marker';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
-import { Card } from '@shared/primeless/card';
-import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/ui/primitives/card';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { NgClass } from '@angular/common';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
-import { InputText } from '@shared/primeless/inputtext';
+import { InputText } from '@shared/ui/primitives/inputtext';
 import { TranslateModule } from '@ngx-translate/core';
 
 export type AttractionLocationKey = 'entrance' | 'exit' | 'fastPassEntrance' | 'reducedMobilityEntrance';

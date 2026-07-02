@@ -13,7 +13,7 @@
   @if (isEditMode) {
     <div class="grid">
       <div class="col-12 md:col-4">
-        <p-card styleClass="photo-card">
+        <app-ui-card styleClass="photo-card">
           <div class="photo-card__header">
             <h4>{{ 'admin.parks.photos.currentTitle' | translate }}</h4>
           </div>
@@ -40,11 +40,11 @@
               }
             </div>
           </div>
-        </p-card>
+        </app-ui-card>
       </div>
 
       <div class="col-12 md:col-8">
-        <p-card styleClass="photo-card">
+        <app-ui-card styleClass="photo-card">
           <div class="photo-card__header">
             <h4>{{ 'admin.parks.photos.uploadTitle' | translate }}</h4>
           </div>
@@ -73,7 +73,7 @@
               </label>
 
               <input
-                pInputText
+                appUiInputText
                 type="url"
                 [ngModel]="remotePhotoSourceUrl"
                 (ngModelChange)="remotePhotoSourceUrlChange.emit($event)"
@@ -104,7 +104,7 @@
               <div class="photo-upload-grid">
                 <div class="field">
                   <label class="block mb-2">{{ 'admin.parks.photos.categoryLabel' | translate }}</label>
-                  <p-select
+                  <app-ui-select
                     [ngModel]="selectedPhotoCategorySlug"
                     (ngModelChange)="selectedPhotoCategorySlugChange.emit($event)"
                     [ngModelOptions]="{ standalone: true }"
@@ -114,13 +114,13 @@
                     [appendTo]="'body'">
                     <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
                     <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
-                  </p-select>
+                  </app-ui-select>
                 </div>
 
                 <div class="field">
                   <label class="block mb-2">{{ 'admin.parks.photos.descriptionLabel' | translate }}</label>
                   <input
-                    pInputText
+                    appUiInputText
                     type="text"
                     [ngModel]="newPhotoDescription"
                     (ngModelChange)="newPhotoDescriptionChange.emit($event)"
@@ -131,7 +131,7 @@
 
               <div class="flex justify-content-end gap-2 flex-wrap">
                 <button
-                  pButton
+                  appUiButton
                   type="button"
                   (click)="uploadPhoto.emit()"
                   [disabled]="selectedPhotoCount === 0 || photosUploading">
@@ -143,7 +143,7 @@
                   }
                 </button>
                 <button
-                  pButton
+                  appUiButton
                   type="button"
                   class="p-button-outlined"
                   icon="pi pi-link"
@@ -154,16 +154,16 @@
               </div>
             </div>
           </div>
-        </p-card>
+        </app-ui-card>
       </div>
     </div>
   }
 
   @if (isEditMode) {
-    <p-panel [toggleable]="true" [collapsed]="true" header="{{ 'admin.parks.photos.historyTitle' | translate }}">
+    <app-ui-panel [toggleable]="true" [collapsed]="true" header="{{ 'admin.parks.photos.historyTitle' | translate }}">
       @if (photosLoading) {
         <div class="text-center py-3">
-          <p-progressSpinner styleClass="w-2rem h-2rem"></p-progressSpinner>
+          <app-ui-progress-spinner styleClass="w-2rem h-2rem"></app-ui-progress-spinner>
         </div>
       }
 
@@ -178,7 +178,7 @@
           <div class="grid">
             @for (photo of pagedPhotos; track photo) {
               <div class="col-12 md:col-4 lg:col-3">
-                <p-card [ngClass]="{ 'border-primary': photo.isCurrent }">
+                <app-ui-card [ngClass]="{ 'border-primary': photo.isCurrent }">
                   <div class="flex flex-column align-items-center">
                     <app-image-display
                       [imageId]="photo.imageId"
@@ -188,11 +188,11 @@
                       placeholderIconClass="pi pi-image">
                     </app-image-display>
                     @if (photo.isCurrent) {
-                      <p-tag
+                      <app-ui-tag
                         [value]="'admin.parks.photos.currentLabel' | translate"
                         severity="success"
                         class="mb-2">
-                      </p-tag>
+                      </app-ui-tag>
                     }
                     <small class="text-color-secondary mb-2">
                       {{ photo.createdAt | date:'short' }}
@@ -207,7 +207,7 @@
                     }
                     <div class="flex gap-2">
                       <button
-                        pButton
+                        appUiButton
                         type="button"
                         icon="pi pi-check"
                         class="p-button-sm p-button-success"
@@ -215,7 +215,7 @@
                         [disabled]="photo.isCurrent">
                       </button>
                       <button
-                        pButton
+                        appUiButton
                         type="button"
                         icon="pi pi-trash"
                         class="p-button-sm p-button-danger"
@@ -223,7 +223,7 @@
                       </button>
                     </div>
                   </div>
-                </p-card>
+                </app-ui-card>
               </div>
             }
           </div>
@@ -234,12 +234,12 @@
           </app-pagination>
         </div>
       }
-    </p-panel>
+    </app-ui-panel>
   }
 
   <div class="section-actions">
     <button
-      pButton
+      appUiButton
       type="button"
       class="p-button-secondary p-button-outlined"
       icon="pi pi-save"

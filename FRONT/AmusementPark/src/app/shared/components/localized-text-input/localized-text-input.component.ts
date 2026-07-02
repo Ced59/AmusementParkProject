@@ -3,9 +3,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/f
 
 import { LANGUAGES } from '@shared/models/localization';
 import { LocalizedItem } from '@app/models/shared/localized-item';
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@shared/primeless/tabs';
-import { InputText } from '@shared/primeless/inputtext';
-import { ButtonDirective } from '@shared/primeless/button';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@shared/ui/primitives/tabs';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface LocalizedTextEntry {

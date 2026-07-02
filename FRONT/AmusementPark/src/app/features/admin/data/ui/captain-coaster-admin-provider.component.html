@@ -1,6 +1,6 @@
 <div class="page-header">
   <button
-    pButton
+    appUiButton
     type="button"
     label="Retour aux sources"
     icon="pi pi-arrow-left"
@@ -15,28 +15,28 @@
   <p class="message message--success" *ngIf="successMessage()">{{ successMessage() }}</p>
 </div>
 
-<p-tabs value="0">
-  <p-tablist>
-    <p-tab value="0"><i class="pi pi-cog"></i> Acquisition</p-tab>
-    <p-tab value="1" [disabled]="session() === null">
+<app-ui-tabs value="0">
+  <app-ui-tab-list>
+    <app-ui-tab value="0"><i class="pi pi-cog"></i> Acquisition</app-ui-tab>
+    <app-ui-tab value="1" [disabled]="session() === null">
       <i class="pi pi-chart-bar"></i> Progression
       <span *ngIf="isSessionRunning()" class="tab-pulse">●</span>
-    </p-tab>
-    <p-tab value="2">
+    </app-ui-tab>
+    <app-ui-tab value="2">
       <i class="pi pi-list"></i> Comparaison
       <span *ngIf="totalCount() > 0" class="tab-badge">{{ totalCount() }}</span>
-    </p-tab>
-  </p-tablist>
+    </app-ui-tab>
+  </app-ui-tab-list>
 
-  <p-tabpanels>
-    <p-tabpanel value="0">
+  <app-ui-tab-panels>
+    <app-ui-tab-panel value="0">
       <app-captain-coaster-import-tab></app-captain-coaster-import-tab>
-    </p-tabpanel>
-    <p-tabpanel value="1">
+    </app-ui-tab-panel>
+    <app-ui-tab-panel value="1">
       <app-captain-coaster-progress-tab></app-captain-coaster-progress-tab>
-    </p-tabpanel>
-    <p-tabpanel value="2">
+    </app-ui-tab-panel>
+    <app-ui-tab-panel value="2">
       <app-captain-coaster-comparison-tab></app-captain-coaster-comparison-tab>
-    </p-tabpanel>
-  </p-tabpanels>
-</p-tabs>
+    </app-ui-tab-panel>
+  </app-ui-tab-panels>
+</app-ui-tabs>

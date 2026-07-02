@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { forkJoin } from 'rxjs';
 
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';

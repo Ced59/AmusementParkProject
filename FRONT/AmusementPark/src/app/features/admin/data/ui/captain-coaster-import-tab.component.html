@@ -1,4 +1,4 @@
-<p-card header="Configurer et lancer le pipeline Captain Coaster">
+<app-ui-card header="Configurer et lancer le pipeline Captain Coaster">
   <p class="import-description">
     Le pipeline récupère automatiquement les URLs depuis le sitemap ou une liste ciblée,
     télécharge chaque page à la volée, l'analyse, enrichit les coordonnées des parcs depuis la carte,
@@ -23,11 +23,11 @@
         <span class="file-label__hint">Désactivez la source pour empêcher les lancements.</span>
       </label>
       <div class="file-input-row">
-        <p-checkbox
+        <app-ui-checkbox
           [binary]="true"
           [ngModel]="currentSettings.isEnabled"
           (ngModelChange)="captainCoasterPipelineFacade.setSettingsEnabled($event)">
-        </p-checkbox>
+        </app-ui-checkbox>
         <span class="file-selected">{{ currentSettings.isEnabled ? 'Activée' : 'Désactivée' }}</span>
       </div>
     </div>
@@ -80,11 +80,11 @@
           <option *ngFor="let option of scrapingStepOptions" [ngValue]="option.value">{{ option.label }}</option>
         </select>
         <label class="checkbox-inline">
-          <p-checkbox
+          <app-ui-checkbox
             [binary]="true"
             [ngModel]="resumeLatestSession()"
             (ngModelChange)="captainCoasterPipelineFacade.setResumeLatestSession($event)">
-          </p-checkbox>
+          </app-ui-checkbox>
           <span>Reprendre la dernière session si possible</span>
         </label>
       </div>
@@ -149,11 +149,11 @@
         <div class="setting-card setting-card--checkbox">
           <label class="setting-card__label">Enrichir automatiquement les coordonnées des parcs</label>
           <label class="checkbox-inline">
-            <p-checkbox
+            <app-ui-checkbox
               [binary]="true"
               [ngModel]="captainCoasterPipelineFacade.getSettingValue('enrichParkCoordinates') === 'True' || captainCoasterPipelineFacade.getSettingValue('enrichParkCoordinates') === 'true'"
               (ngModelChange)="captainCoasterPipelineFacade.setSettingValue('enrichParkCoordinates', $event ? 'true' : 'false')">
-            </p-checkbox>
+            </app-ui-checkbox>
             <span>Active la lecture de la page carte pour compléter latitude et longitude.</span>
           </label>
         </div>
@@ -162,7 +162,7 @@
 
     <div class="bulk-actions__buttons">
       <button
-        pButton
+        appUiButton
         type="button"
         label="Enregistrer les paramètres"
         icon="pi pi-save"
@@ -171,7 +171,7 @@
         (click)="captainCoasterPipelineFacade.saveSettingsAsync()">
       </button>
       <button
-        pButton
+        appUiButton
         type="button"
         label="Lancer le pipeline"
         icon="pi pi-play"
@@ -181,4 +181,4 @@
       </button>
     </div>
   </div>
-</p-card>
+</app-ui-card>

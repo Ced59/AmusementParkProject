@@ -1,5 +1,5 @@
-<p-card styleClass="admin-list-card admin-seo-sitemaps-card">
-  <ng-template pTemplate="header">
+<app-ui-card styleClass="admin-list-card admin-seo-sitemaps-card">
+  <ng-template appUiTemplate="header">
     <div class="admin-list-header admin-seo-sitemaps-header">
       <div>
         <span class="admin-kicker">M21-M22 · SEO</span>
@@ -8,8 +8,8 @@
       </div>
 
       <div class="admin-seo-sitemaps-header__actions">
-        <button pButton type="button" class="p-button-secondary" icon="pi pi-refresh" [label]="'actions.refresh' | translate" [disabled]="loading()" (click)="refresh()"></button>
-        <button pButton type="button" class="p-button-secondary" icon="pi pi-sitemap" [label]="'admin.seoSitemaps.actions.generate' | translate" [loading]="generating()" (click)="generate(canSubmitIndexNow())"></button>
+        <button appUiButton type="button" class="p-button-secondary" icon="pi pi-refresh" [label]="'actions.refresh' | translate" [disabled]="loading()" (click)="refresh()"></button>
+        <button appUiButton type="button" class="p-button-secondary" icon="pi pi-sitemap" [label]="'admin.seoSitemaps.actions.generate' | translate" [loading]="generating()" (click)="generate(canSubmitIndexNow())"></button>
       </div>
     </div>
   </ng-template>
@@ -46,8 +46,8 @@
             <strong>{{ 'admin.seoSitemaps.lastResult.title' | translate }}</strong>
             <span>{{ generation.completedAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC' }} UTC · {{ generation.durationMs }} ms</span>
           </div>
-          <p-tag [value]="generation.status" [severity]="statusSeverity(generation.status)"></p-tag>
-          <p-tag [value]="generation.indexNow.wasRequested ? ('IndexNow ' + generation.indexNow.submittedUrlCount) : 'IndexNow off'" [severity]="indexNowSeverity(generation.indexNow.isSuccess, generation.indexNow.wasRequested)"></p-tag>
+          <app-ui-tag [value]="generation.status" [severity]="statusSeverity(generation.status)"></app-ui-tag>
+          <app-ui-tag [value]="generation.indexNow.wasRequested ? ('IndexNow ' + generation.indexNow.submittedUrlCount) : 'IndexNow off'" [severity]="indexNowSeverity(generation.indexNow.isSuccess, generation.indexNow.wasRequested)"></app-ui-tag>
         </section>
       }
 
@@ -104,15 +104,15 @@
 
         <div class="admin-seo-settings__toggles">
           <label class="admin-seo-checkbox">
-            <p-checkbox formControlName="isIndexNowEnabled" [binary]="true"></p-checkbox>
+            <app-ui-checkbox formControlName="isIndexNowEnabled" [binary]="true"></app-ui-checkbox>
             <span>{{ 'admin.seoSitemaps.settings.indexNowEnabled' | translate }}</span>
           </label>
           <label class="admin-seo-checkbox">
-            <p-checkbox formControlName="submitToIndexNowAfterManualGeneration" [binary]="true"></p-checkbox>
+            <app-ui-checkbox formControlName="submitToIndexNowAfterManualGeneration" [binary]="true"></app-ui-checkbox>
             <span>{{ 'admin.seoSitemaps.settings.submitManual' | translate }}</span>
           </label>
           <label class="admin-seo-checkbox">
-            <p-checkbox formControlName="submitToIndexNowAfterAutomaticGeneration" [binary]="true"></p-checkbox>
+            <app-ui-checkbox formControlName="submitToIndexNowAfterAutomaticGeneration" [binary]="true"></app-ui-checkbox>
             <span>{{ 'admin.seoSitemaps.settings.submitAutomatic' | translate }}</span>
           </label>
         </div>
@@ -120,11 +120,11 @@
         <div class="admin-seo-settings__fields">
           <label>
             <span>{{ 'admin.seoSitemaps.settings.indexNowKey' | translate }}</span>
-            <input pInputText type="text" formControlName="indexNowKey" autocomplete="off" />
+            <input appUiInputText type="text" formControlName="indexNowKey" autocomplete="off" />
           </label>
           <label>
             <span>{{ 'admin.seoSitemaps.settings.indexNowKeyLocation' | translate }}</span>
-            <input pInputText type="text" formControlName="indexNowKeyLocation" autocomplete="off" placeholder="/your-key.txt" />
+            <input appUiInputText type="text" formControlName="indexNowKeyLocation" autocomplete="off" placeholder="/your-key.txt" />
           </label>
           <label class="admin-seo-settings__endpoints">
             <span>{{ 'admin.seoSitemaps.settings.indexNowEndpoints' | translate }}</span>
@@ -133,8 +133,8 @@
         </div>
 
         <div class="admin-seo-settings__actions">
-          <button pButton type="submit" icon="pi pi-save" [label]="'actions.save' | translate" [loading]="savingSettings()"></button>
-          <button pButton type="button" class="p-button-secondary" icon="pi pi-send" [label]="'admin.seoSitemaps.actions.generateWithoutIndexNow' | translate" [loading]="generating()" (click)="generate(false)"></button>
+          <button appUiButton type="submit" icon="pi pi-save" [label]="'actions.save' | translate" [loading]="savingSettings()"></button>
+          <button appUiButton type="button" class="p-button-secondary" icon="pi pi-send" [label]="'admin.seoSitemaps.actions.generateWithoutIndexNow' | translate" [loading]="generating()" (click)="generate(false)"></button>
         </div>
       </form>
 
@@ -144,7 +144,7 @@
           <p>{{ 'admin.seoSitemaps.history.subtitle' | translate }}</p>
         </header>
 
-        <p-table
+        <app-ui-table
           [value]="history()"
           [loading]="loading()"
           [paginator]="true"
@@ -154,7 +154,7 @@
           (onLazyLoad)="onHistoryPageChanged($event)"
           [responsiveLayout]="'scroll'"
           styleClass="admin-data-table admin-seo-history-table">
-          <ng-template pTemplate="header">
+          <ng-template appUiTemplate="header">
             <tr>
               <th>{{ 'admin.seoSitemaps.history.columns.date' | translate }}</th>
               <th>{{ 'admin.seoSitemaps.history.columns.status' | translate }}</th>
@@ -165,14 +165,14 @@
             </tr>
           </ng-template>
 
-          <ng-template pTemplate="body" let-item>
+          <ng-template appUiTemplate="body" let-item>
             <tr>
               <td [attr.data-label]="'admin.seoSitemaps.history.columns.date' | translate">
                 <strong>{{ item.startedAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC' }}</strong>
                 <span class="admin-seo-history-table__muted">{{ item.trigger }}</span>
               </td>
               <td [attr.data-label]="'admin.seoSitemaps.history.columns.status' | translate">
-                <p-tag [value]="item.status" [severity]="statusSeverity(item.status)"></p-tag>
+                <app-ui-tag [value]="item.status" [severity]="statusSeverity(item.status)"></app-ui-tag>
                 @if (item.errors.length > 0) {
                   <div class="admin-seo-history-table__muted">{{ item.errors[0] }}</div>
                 }
@@ -180,15 +180,15 @@
               <td [attr.data-label]="'admin.seoSitemaps.history.columns.urls' | translate">{{ item.totalUrlCount }}</td>
               <td [attr.data-label]="'admin.seoSitemaps.history.columns.duration' | translate">{{ item.durationMs }} ms</td>
               <td [attr.data-label]="'admin.seoSitemaps.history.columns.indexNow' | translate">
-                <p-tag [value]="item.indexNow.wasRequested ? item.indexNow.submittedUrlCount.toString() : '—'" [severity]="indexNowSeverity(item.indexNow.isSuccess, item.indexNow.wasRequested)"></p-tag>
+                <app-ui-tag [value]="item.indexNow.wasRequested ? item.indexNow.submittedUrlCount.toString() : '—'" [severity]="indexNowSeverity(item.indexNow.isSuccess, item.indexNow.wasRequested)"></app-ui-tag>
               </td>
               <td [attr.data-label]="'admin.seoSitemaps.history.columns.actor' | translate">
                 {{ item.triggeredByUserEmail || item.triggeredByUserId || '—' }}
               </td>
             </tr>
           </ng-template>
-        </p-table>
+        </app-ui-table>
       </section>
     }
   </app-page-state>
-</p-card>
+</app-ui-card>

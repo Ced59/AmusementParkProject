@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { TableLazyLoadEvent, TableModule } from '@shared/primeless/table';
-import { Card } from '@shared/primeless/card';
-import { PrimeTemplate } from '@shared/primeless/api';
-import { InputText } from '@shared/primeless/inputtext';
-import { ButtonDirective } from '@shared/primeless/button';
-import { ToggleSwitch } from '@shared/primeless/toggleswitch';
-import { Tag } from '@shared/primeless/tag';
+import { TableLazyLoadEvent, TableModule } from '@shared/ui/primitives/table';
+import { Card } from '@shared/ui/primitives/card';
+import { UiTemplate } from '@shared/ui/primitives/api';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { ToggleSwitch } from '@shared/ui/primitives/toggleswitch';
+import { Tag } from '@shared/ui/primitives/tag';
 import { TranslateModule } from '@ngx-translate/core';
 import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
@@ -23,7 +23,7 @@ type AdminParkSortOptionValue = `${ParkAdminListSortField}:${ParkAdminListSortDi
   templateUrl: './admin-parks-view.component.html',
   styleUrls: ['./admin-parks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, TableModule, ToggleSwitch, Tag, RouterLink, TranslateModule, EmptyStateComponent]
+  imports: [Card, UiTemplate, FormsModule, InputText, ButtonDirective, TableModule, ToggleSwitch, Tag, RouterLink, TranslateModule, EmptyStateComponent]
 })
 export class AdminParksViewComponent {
   @Input() parks!: Signal<Park[]>;

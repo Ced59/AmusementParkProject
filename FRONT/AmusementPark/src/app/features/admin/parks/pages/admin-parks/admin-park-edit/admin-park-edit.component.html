@@ -20,7 +20,7 @@
       @if (isEditMode()) {
         <div class="admin-park-edit__quick-links">
           <button
-            pButton
+            appUiButton
             type="button"
             icon="pi pi-map-marker"
             class="p-button-sm p-button-secondary"
@@ -28,7 +28,7 @@
             [routerLink]="['/', currentLang(), 'admin', 'parks', 'edit', parkId(), 'zones']">
           </button>
           <button
-            pButton
+            appUiButton
             type="button"
             icon="pi pi-list-check"
             class="p-button-sm p-button-success"
@@ -41,16 +41,16 @@
       @if (form) {
         <div>
           @if (isVisibleControl?.value) {
-            <p-tag
+            <app-ui-tag
               severity="success"
               [value]="'admin.parks.visible' | translate">
-            </p-tag>
+            </app-ui-tag>
           }
           @if (!isVisibleControl?.value) {
-            <p-tag
+            <app-ui-tag
               severity="warn"
               [value]="'admin.parks.hidden' | translate">
-            </p-tag>
+            </app-ui-tag>
           }
         </div>
       }
@@ -69,23 +69,23 @@
     </div>
   </div>
 
-  <p-card styleClass="admin-editor-card">
+  <app-ui-card styleClass="admin-editor-card">
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
-      <p-tabs [value]="activeTabIndex()" (valueChange)="onTabChange($event)">
-        <p-tablist>
-          <p-tab [value]="0">{{ 'admin.parks.tabs.general' | translate }}</p-tab>
-          <p-tab [value]="1">{{ 'admin.parks.tabs.location' | translate }}</p-tab>
-          <p-tab [value]="2">{{ 'admin.parks.tabs.descriptions' | translate }}</p-tab>
-          <p-tab [value]="3">{{ 'admin.parks.tabs.logos' | translate }}</p-tab>
-          <p-tab [value]="4">{{ 'admin.parks.tabs.photos' | translate }}</p-tab>
+      <app-ui-tabs [value]="activeTabIndex()" (valueChange)="onTabChange($event)">
+        <app-ui-tab-list>
+          <app-ui-tab [value]="0">{{ 'admin.parks.tabs.general' | translate }}</app-ui-tab>
+          <app-ui-tab [value]="1">{{ 'admin.parks.tabs.location' | translate }}</app-ui-tab>
+          <app-ui-tab [value]="2">{{ 'admin.parks.tabs.descriptions' | translate }}</app-ui-tab>
+          <app-ui-tab [value]="3">{{ 'admin.parks.tabs.logos' | translate }}</app-ui-tab>
+          <app-ui-tab [value]="4">{{ 'admin.parks.tabs.photos' | translate }}</app-ui-tab>
           @if (isEditMode()) {
-            <p-tab [value]="5">{{ 'admin.parks.tabs.openingHours' | translate }}</p-tab>
-            <p-tab [value]="6">{{ 'admin.parks.tabs.videos' | translate }}</p-tab>
+            <app-ui-tab [value]="5">{{ 'admin.parks.tabs.openingHours' | translate }}</app-ui-tab>
+            <app-ui-tab [value]="6">{{ 'admin.parks.tabs.videos' | translate }}</app-ui-tab>
           }
-        </p-tablist>
+        </app-ui-tab-list>
 
-        <p-tabpanels>
-          <p-tabpanel [value]="0">
+        <app-ui-tab-panels>
+          <app-ui-tab-panel [value]="0">
             @if (activeTabIndex() === 0) {
               <app-admin-park-general-tab
                 [form]="form"
@@ -107,9 +107,9 @@
                 (saveSection)="saveSection()">
               </app-admin-park-general-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
 
-          <p-tabpanel [value]="1">
+          <app-ui-tab-panel [value]="1">
             @if (activeTabIndex() === 1) {
               <app-admin-park-location-tab
                 [form]="form"
@@ -121,9 +121,9 @@
                 (saveSection)="saveSection()">
               </app-admin-park-location-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
 
-          <p-tabpanel [value]="2">
+          <app-ui-tab-panel [value]="2">
             @if (activeTabIndex() === 2) {
               <app-admin-park-descriptions-tab
                 [form]="form"
@@ -131,9 +131,9 @@
                 (saveSection)="saveSection()">
               </app-admin-park-descriptions-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
 
-          <p-tabpanel [value]="3">
+          <app-ui-tab-panel [value]="3">
             @if (activeTabIndex() === 3) {
               <app-admin-park-logos-tab
                 [isEditMode]="isEditMode()"
@@ -159,9 +159,9 @@
                 (saveSection)="saveSection()">
               </app-admin-park-logos-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
 
-          <p-tabpanel [value]="4">
+          <app-ui-tab-panel [value]="4">
             @if (activeTabIndex() === 4) {
               <app-admin-park-photos-tab
                 [isEditMode]="isEditMode()"
@@ -194,10 +194,10 @@
                 (saveSection)="saveSection()">
               </app-admin-park-photos-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
 
           @if (isEditMode()) {
-            <p-tabpanel [value]="5">
+            <app-ui-tab-panel [value]="5">
               @if (activeTabIndex() === 5) {
                 <section class="admin-opening-hours-editor">
                   <header class="admin-opening-hours-editor__header">
@@ -208,7 +208,7 @@
 
                     <div class="admin-opening-hours-editor__actions">
                       <button
-                        pButton
+                        appUiButton
                         type="button"
                         icon="pi pi-refresh"
                         class="p-button-sm p-button-secondary"
@@ -217,7 +217,7 @@
                         (click)="reloadOpeningHoursJson()">
                       </button>
                       <button
-                        pButton
+                        appUiButton
                         type="button"
                         icon="pi pi-align-left"
                         class="p-button-sm p-button-secondary"
@@ -226,7 +226,7 @@
                         (click)="formatOpeningHoursJson()">
                       </button>
                       <button
-                        pButton
+                        appUiButton
                         type="button"
                         icon="pi pi-save"
                         class="p-button-sm p-button-success"
@@ -253,9 +253,9 @@
                   }
                 </section>
               }
-            </p-tabpanel>
+            </app-ui-tab-panel>
 
-            <p-tabpanel [value]="6">
+            <app-ui-tab-panel [value]="6">
               @if (activeTabIndex() === 6) {
                 <app-admin-video-create-panel
                   [ownerType]="videoOwnerType"
@@ -263,11 +263,11 @@
                   [ownerName]="nameControl?.value || null">
                 </app-admin-video-create-panel>
               }
-            </p-tabpanel>
+            </app-ui-tab-panel>
           }
 
-        </p-tabpanels>
-      </p-tabs>
+        </app-ui-tab-panels>
+      </app-ui-tabs>
     </form>
-  </p-card>
+  </app-ui-card>
 </div>

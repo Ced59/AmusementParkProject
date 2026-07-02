@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { PrimeTemplate } from '@shared/primeless/api';
-import { Tag } from '@shared/primeless/tag';
-import { Tooltip } from '@shared/primeless/tooltip';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { Card } from '@shared/ui/primitives/card';
+import { UiTemplate } from '@shared/ui/primitives/api';
+import { Tag } from '@shared/ui/primitives/tag';
+import { Tooltip } from '@shared/ui/primitives/tooltip';
 
 import {
   TechnicalStatsCount,
@@ -218,7 +218,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
     FormsModule,
     ButtonDirective,
     Card,
-    PrimeTemplate,
+    UiTemplate,
     Tag,
     Tooltip
   ]

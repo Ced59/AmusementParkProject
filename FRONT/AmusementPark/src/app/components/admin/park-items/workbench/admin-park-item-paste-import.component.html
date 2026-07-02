@@ -1,6 +1,6 @@
 <div class="paste-import">
   <button
-    pButton
+    appUiButton
     type="button"
     icon="pi pi-file-import"
     class="p-button-sm p-button-secondary"
@@ -16,7 +16,7 @@
           <p>{{ 'admin.parks.items.import.subtitle' | translate }}</p>
         </div>
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-times"
           class="p-button-sm p-button-text"
@@ -38,7 +38,7 @@
       <div class="paste-import__actions">
         <span>{{ 'admin.parks.items.import.parsedRows' | translate:{ count: draftRows().length } }}</span>
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-eye"
           class="p-button-sm"
@@ -47,7 +47,7 @@
           (click)="previewRows()">
         </button>
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-check"
           class="p-button-sm p-button-success"
@@ -120,7 +120,7 @@
                   </td>
                   <td>
                     <button
-                      pButton
+                      appUiButton
                       type="button"
                       icon="pi pi-trash"
                       class="p-button-sm p-button-danger p-button-text"

@@ -4,15 +4,15 @@
     <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionsHelp' | translate }}</small>
   </div>
 
-  <p-card styleClass="inner-card mb-3">
+  <app-ui-card styleClass="inner-card mb-3">
     <div class="access-summary">
       <strong>{{ 'admin.parks.items.accessConditionsCount' | translate:{ count: accessConditions.length } }}</strong>
       <span class="text-color-secondary">{{ 'admin.parks.items.accessConditionsSummary' | translate }}</span>
     </div>
-  </p-card>
+  </app-ui-card>
 
-  <p-card styleClass="inner-card access-height-card mb-3">
-    <ng-template pTemplate="header">
+  <app-ui-card styleClass="inner-card access-height-card mb-3">
+    <ng-template appUiTemplate="header">
       <div class="access-height-card__header">
         <span class="access-height-card__icon"><i class="pi pi-arrows-v" aria-hidden="true"></i></span>
         <div>
@@ -31,7 +31,7 @@
 
         <div class="height-requirement-field__input">
           <input
-            pInputText
+            appUiInputText
             [id]="field.key"
             type="number"
             min="0"
@@ -45,7 +45,7 @@
         <small>{{ field.helpKey | translate }}</small>
       </div>
     </div>
-  </p-card>
+  </app-ui-card>
 
   <div class="access-advanced-head">
     <div>
@@ -57,7 +57,7 @@
   <div class="grid formgrid mb-3 access-condition-add-row">
     <div class="field col-12 md:col-8 lg:col-6">
       <label>{{ 'admin.parks.items.accessConditionsPreset' | translate }}</label>
-      <p-select
+      <app-ui-select
         [ngModel]="safeSelectedAccessConditionPreset"
         (ngModelChange)="onSelectedAccessConditionPresetChange($event)"
         [ngModelOptions]="{ standalone: true }"
@@ -67,11 +67,11 @@
         [appendTo]="'body'">
         <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
         <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
-      </p-select>
+      </app-ui-select>
     </div>
     <div class="field col-12 md:col-4 lg:col-3 flex align-items-end">
       <button
-        pButton
+        appUiButton
         type="button"
         icon="pi pi-plus"
         (click)="onAddStandaloneAccessCondition()"
@@ -80,8 +80,8 @@
     </div>
   </div>
 
-  <p-card styleClass="inner-card mb-3">
-    <ng-template pTemplate="header">
+  <app-ui-card styleClass="inner-card mb-3">
+    <ng-template appUiTemplate="header">
       <div class="access-condition-type-create__header">
         <span><i class="pi pi-tags" aria-hidden="true"></i></span>
         <div>
@@ -94,19 +94,19 @@
     <div class="grid formgrid access-condition-type-create">
       <div class="field col-12 md:col-4">
         <label>{{ 'admin.parks.items.accessConditionTypesAdmin.key' | translate }}</label>
-        <input pInputText type="text" [(ngModel)]="newAccessConditionTypeKey" [ngModelOptions]="{ standalone: true }" placeholder="no-smoking" />
+        <input appUiInputText type="text" [(ngModel)]="newAccessConditionTypeKey" [ngModelOptions]="{ standalone: true }" placeholder="no-smoking" />
       </div>
       <div class="field col-12 md:col-4">
         <label>{{ 'admin.parks.items.accessConditionTypesAdmin.frLabel' | translate }}</label>
-        <input pInputText type="text" [(ngModel)]="newAccessConditionTypeFrLabel" [ngModelOptions]="{ standalone: true }" />
+        <input appUiInputText type="text" [(ngModel)]="newAccessConditionTypeFrLabel" [ngModelOptions]="{ standalone: true }" />
       </div>
       <div class="field col-12 md:col-4">
         <label>{{ 'admin.parks.items.accessConditionTypesAdmin.enLabel' | translate }}</label>
-        <input pInputText type="text" [(ngModel)]="newAccessConditionTypeEnLabel" [ngModelOptions]="{ standalone: true }" />
+        <input appUiInputText type="text" [(ngModel)]="newAccessConditionTypeEnLabel" [ngModelOptions]="{ standalone: true }" />
       </div>
       <div class="field col-12 flex justify-content-end">
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-plus-circle"
           class="p-button-secondary p-button-outlined"
@@ -116,7 +116,7 @@
         </button>
       </div>
     </div>
-  </p-card>
+  </app-ui-card>
 
   <div formArrayName="accessConditions">
     <div *ngIf="standaloneAccessConditionEntries.length === 0" class="text-color-secondary mb-3">
@@ -128,8 +128,8 @@
         class="access-condition-card"
         *ngFor="let accessCondition of standaloneAccessConditionEntries; let visibleIndex = index; trackBy: trackByAccessConditionEntry"
         [formGroupName]="accessCondition.index">
-        <p-card>
-          <ng-template pTemplate="header">
+        <app-ui-card>
+          <ng-template appUiTemplate="header">
             <div class="access-condition-card__header">
               <div>
                 <h4>{{ getAccessConditionTitle(accessCondition.index) }}</h4>
@@ -137,9 +137,9 @@
               </div>
 
               <div class="access-condition-card__actions">
-                <button pButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp.emit(accessCondition.index)" [disabled]="visibleIndex === 0"></button>
-                <button pButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown.emit(accessCondition.index)" [disabled]="visibleIndex === standaloneAccessConditionEntries.length - 1"></button>
-                <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition.emit(accessCondition.index)"></button>
+                <button appUiButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp.emit(accessCondition.index)" [disabled]="visibleIndex === 0"></button>
+                <button appUiButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown.emit(accessCondition.index)" [disabled]="visibleIndex === standaloneAccessConditionEntries.length - 1"></button>
+                <button appUiButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition.emit(accessCondition.index)"></button>
               </div>
             </div>
           </ng-template>
@@ -147,7 +147,7 @@
           <div class="grid formgrid">
             <div class="field col-12 md:col-6 lg:col-4">
               <label>{{ 'admin.parks.items.accessConditionFields.type' | translate }}</label>
-              <p-select
+              <app-ui-select
                 formControlName="typeKey"
                 [options]="standaloneAccessConditionPresetOptions"
                 optionLabel="labelKey"
@@ -156,17 +156,17 @@
                 (onChange)="accessConditionTypeChanged.emit(accessCondition.index)">
                 <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
                 <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
-              </p-select>
+              </app-ui-select>
             </div>
 
             <div class="field col-12 md:col-6 lg:col-4">
               <label>{{ 'admin.parks.items.accessConditionFields.value' | translate }}</label>
-              <input pInputText type="number" formControlName="value" />
+              <input appUiInputText type="number" formControlName="value" />
             </div>
 
             <div class="field col-12 md:col-6 lg:col-4">
               <label>{{ 'admin.parks.items.accessConditionFields.unit' | translate }}</label>
-              <p-select
+              <app-ui-select
                 formControlName="unit"
                 [options]="accessConditionUnitOptions"
                 optionLabel="labelKey"
@@ -175,17 +175,17 @@
                 [appendTo]="'body'">
                 <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
                 <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
-              </p-select>
+              </app-ui-select>
             </div>
 
             <div class="field col-12 md:col-6 lg:col-4 switch-field">
               <label>{{ 'admin.parks.items.accessConditionFields.requiresAccompaniment' | translate }}</label>
-              <p-toggleswitch formControlName="requiresAccompaniment"></p-toggleswitch>
+              <app-ui-toggle-switch formControlName="requiresAccompaniment"></app-ui-toggle-switch>
             </div>
 
             <div class="field col-12 md:col-6 lg:col-4">
               <label>{{ 'admin.parks.items.accessConditionFields.minimumCompanionAge' | translate }}</label>
-              <input pInputText type="number" formControlName="minimumCompanionAge" />
+              <input appUiInputText type="number" formControlName="minimumCompanionAge" />
             </div>
 
             <div class="field col-12">
@@ -204,14 +204,14 @@
               </app-localized-text-input>
             </div>
           </div>
-        </p-card>
+        </app-ui-card>
       </div>
     </div>
   </div>
 
   <div class="section-actions">
     <button
-      pButton
+      appUiButton
       type="button"
       class="p-button-secondary p-button-outlined"
       icon="pi pi-save"

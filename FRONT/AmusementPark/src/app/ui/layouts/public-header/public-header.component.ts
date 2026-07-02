@@ -5,7 +5,7 @@ import { EMPTY, switchMap } from 'rxjs';
 import { catchError, filter, tap } from 'rxjs/operators';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { Dialog } from '@shared/primeless/dialog';
+import { Dialog } from '@shared/ui/primitives/dialog';
 
 import { UserDto } from '@app/models/users/user_dto';
 import { AuthModalComponent } from '@features/auth/ui/auth-modal/auth-modal.component';

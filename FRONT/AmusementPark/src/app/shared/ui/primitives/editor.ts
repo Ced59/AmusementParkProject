@@ -14,10 +14,10 @@ import {
 import { NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import Quill from 'quill';
-import { PrimeTemplate } from './api';
+import { UiTemplate } from './api';
 
 @Component({
-  selector: 'p-editor',
+  selector: 'app-ui-editor',
   standalone: true,
   imports: [NgIf, NgStyle, NgTemplateOutlet],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => Editor), multi: true }],
@@ -35,7 +35,7 @@ export class Editor implements AfterViewInit, AfterContentInit, ControlValueAcce
   @Input() readonly: boolean = false;
   @Input() style: Record<string, string> | null = null;
   @Input() placeholder: string | null = null;
-  @ContentChildren(PrimeTemplate) templates!: QueryList<PrimeTemplate>;
+  @ContentChildren(UiTemplate) templates!: QueryList<UiTemplate>;
   @ViewChild('editor') private editorElement?: ElementRef<HTMLElement>;
   @ViewChild('toolbar') private toolbarElement?: ElementRef<HTMLElement>;
 
@@ -86,6 +86,6 @@ export class Editor implements AfterViewInit, AfterContentInit, ControlValueAcce
   }
 
   template(name: string): TemplateRef<unknown> | null {
-    return this.templates?.find((template: PrimeTemplate) => template.name === name)?.template ?? null;
+    return this.templates?.find((template: UiTemplate) => template.name === name)?.template ?? null;
   }
 }

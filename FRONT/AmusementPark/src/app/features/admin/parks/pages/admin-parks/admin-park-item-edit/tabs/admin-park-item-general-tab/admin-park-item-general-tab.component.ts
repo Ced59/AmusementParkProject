@@ -4,13 +4,13 @@ import { MapMarker } from '@app/models/map/map-marker';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { ParkItemType } from '@app/models/parks/park-item-type';
-import { InputText } from '@shared/primeless/inputtext';
-import { Select } from '@shared/primeless/select';
-import { Card } from '@shared/primeless/card';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { Select } from '@shared/ui/primitives/select';
+import { Card } from '@shared/ui/primitives/card';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
-import { ButtonDirective } from '@shared/primeless/button';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
-import { ToggleSwitch } from '@shared/primeless/toggleswitch';
+import { ToggleSwitch } from '@shared/ui/primitives/toggleswitch';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface Option<T> {

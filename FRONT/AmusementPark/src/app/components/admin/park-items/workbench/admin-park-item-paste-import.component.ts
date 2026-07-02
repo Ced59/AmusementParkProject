@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 
 import {
   ParkItemBulkCreateDraft,

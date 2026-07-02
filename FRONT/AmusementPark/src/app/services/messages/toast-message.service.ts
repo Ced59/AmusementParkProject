@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MessageService } from '@shared/primeless/api';
+import { MessageService } from '@shared/ui/primitives/api';
 
 import { sanitizeDisplayMessage } from '@shared/utils/security';
 

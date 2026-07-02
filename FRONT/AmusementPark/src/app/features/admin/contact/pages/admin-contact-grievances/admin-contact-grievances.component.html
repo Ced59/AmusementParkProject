@@ -1,5 +1,5 @@
-<p-card styleClass="admin-list-card admin-contact-grievances-card" data-pagination-scroll-target="admin-contact-grievances">
-  <ng-template pTemplate="header">
+<app-ui-card styleClass="admin-list-card admin-contact-grievances-card" data-pagination-scroll-target="admin-contact-grievances">
+  <ng-template appUiTemplate="header">
     <div class="admin-list-header admin-contact-grievances-header">
       <div>
         <span class="admin-kicker">{{ 'admin.contactGrievances.kicker' | translate }}</span>
@@ -18,22 +18,22 @@
   <form class="admin-contact-grievances-filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
     <label>
       <span>{{ 'admin.contactGrievances.filters.search' | translate }}</span>
-      <input pInputText type="text" formControlName="search" autocomplete="off" />
+      <input appUiInputText type="text" formControlName="search" autocomplete="off" />
     </label>
 
     <label>
       <span>{{ 'admin.contactGrievances.filters.ipAddress' | translate }}</span>
-      <input pInputText type="text" formControlName="ipAddress" autocomplete="off" />
+      <input appUiInputText type="text" formControlName="ipAddress" autocomplete="off" />
     </label>
 
     <label>
       <span>{{ 'admin.contactGrievances.filters.languageCode' | translate }}</span>
-      <input pInputText type="text" formControlName="languageCode" autocomplete="off" maxlength="5" />
+      <input appUiInputText type="text" formControlName="languageCode" autocomplete="off" maxlength="5" />
     </label>
 
     <div class="admin-contact-grievances-filters__actions">
-      <button pButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
-      <button pButton type="button" class="p-button-secondary" icon="pi pi-filter-slash" [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
+      <button appUiButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
+      <button appUiButton type="button" class="p-button-secondary" icon="pi pi-filter-slash" [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
     </div>
   </form>
 
@@ -42,7 +42,7 @@
     loadingMessageKey="admin.contactGrievances.loading"
     errorMessageKey="admin.contactGrievances.loadError"
     emptyMessageKey="admin.contactGrievances.empty">
-    <p-table
+    <app-ui-table
       [value]="grievances()"
       [loading]="loading()"
       [paginator]="true"
@@ -52,7 +52,7 @@
       (onLazyLoad)="onPageChanged($event)"
       [responsiveLayout]="'scroll'"
       styleClass="admin-data-table admin-contact-grievances-table">
-      <ng-template pTemplate="header">
+      <ng-template appUiTemplate="header">
         <tr>
           <th>{{ 'admin.contactGrievances.columns.date' | translate }}</th>
           <th>{{ 'admin.contactGrievances.columns.message' | translate }}</th>
@@ -61,7 +61,7 @@
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-grievance>
+      <ng-template appUiTemplate="body" let-grievance>
         <tr>
           <td class="admin-contact-grievances-table__date" [attr.data-label]="'admin.contactGrievances.columns.date' | translate">
             <strong>{{ grievance.createdAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC' }}</strong>
@@ -72,8 +72,8 @@
           </td>
           <td [attr.data-label]="'admin.contactGrievances.columns.context' | translate">
             <div class="admin-contact-grievances-table__tags">
-              <p-tag [value]="grievance.languageCode || 'n/a'" severity="info"></p-tag>
-              <p-tag [value]="grievance.ipAddress || 'unknown'" severity="secondary"></p-tag>
+              <app-ui-tag [value]="grievance.languageCode || 'n/a'" severity="info"></app-ui-tag>
+              <app-ui-tag [value]="grievance.ipAddress || 'unknown'" severity="secondary"></app-ui-tag>
             </div>
           </td>
           <td class="admin-contact-grievances-table__user-agent" [attr.data-label]="'admin.contactGrievances.columns.userAgent' | translate">
@@ -82,7 +82,7 @@
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="emptymessage">
+      <ng-template appUiTemplate="emptymessage">
         <tr>
           <td colspan="4">
             <app-empty-state
@@ -93,6 +93,6 @@
           </td>
         </tr>
       </ng-template>
-    </p-table>
+    </app-ui-table>
   </app-page-state>
-</p-card>
+</app-ui-card>

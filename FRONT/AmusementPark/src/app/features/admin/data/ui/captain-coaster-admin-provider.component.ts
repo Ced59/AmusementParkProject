@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { ButtonDirective } from '@shared/primeless/button';
-import { TabsModule } from '@shared/primeless/tabs';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { TabsModule } from '@shared/ui/primitives/tabs';
 
 import { CaptainCoasterComparisonFacade } from '@features/admin/data/state/captain-coaster-comparison.facade';
 import { CaptainCoasterPipelineFacade } from '@features/admin/data/state/captain-coaster-pipeline.facade';

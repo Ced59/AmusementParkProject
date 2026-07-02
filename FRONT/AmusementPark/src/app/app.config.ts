@@ -10,7 +10,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { MessageService } from '@shared/primeless/api';
+import { MessageService } from '@shared/ui/primitives/api';
 
 import { routes } from './app.routes';
 import { initializeApp, HttpLoaderFactory } from './app.module';

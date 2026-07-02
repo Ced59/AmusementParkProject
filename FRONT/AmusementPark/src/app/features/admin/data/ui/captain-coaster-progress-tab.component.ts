@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { Card } from '@shared/primeless/card';
-import { ProgressBar } from '@shared/primeless/progressbar';
-import { Tag } from '@shared/primeless/tag';
+import { Card } from '@shared/ui/primitives/card';
+import { ProgressBar } from '@shared/ui/primitives/progressbar';
+import { Tag } from '@shared/ui/primitives/tag';
 
 import { CaptainCoasterPipelineFacade } from '@features/admin/data/state/captain-coaster-pipeline.facade';
 import { CaptainCoasterSessionLogsComponent } from './captain-coaster-session-logs.component';

@@ -21,9 +21,9 @@ import {
 import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { NgClass, NgFor, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
-import { PrimeTemplate } from './api';
+import { UiTemplate } from './api';
 
-export { MessageService, PrimeTemplate, ToastMessage } from './api';
+export { MessageService, UiTemplate, ToastMessage } from './api';
 
 export interface PaginatorState {
   page?: number;
@@ -45,14 +45,14 @@ export interface TableSortEvent {
 }
 
 @Directive({
-  selector: '[pBind]',
+  selector: '[appUiBind]',
   standalone: true
 })
 export class Bind {
 }
 
 @Directive({
-  selector: '[pRipple]',
+  selector: '[appUiRipple]',
   standalone: true
 })
 export class Ripple {
@@ -60,7 +60,7 @@ export class Ripple {
 }
 
 @Directive({
-  selector: 'input[pInputText], textarea[pInputText]',
+  selector: 'input[appUiInputText], textarea[appUiInputText]',
   standalone: true
 })
 export class InputText {
@@ -69,11 +69,11 @@ export class InputText {
 }
 
 @Directive({
-  selector: '[pTooltip]',
+  selector: '[appUiTooltip]',
   standalone: true
 })
 export class Tooltip implements OnChanges {
-  @Input('pTooltip') text: string | null = null;
+  @Input('appUiTooltip') text: string | null = null;
 
   constructor(private readonly elementRef: ElementRef<HTMLElement>) {
   }
@@ -88,7 +88,7 @@ export class Tooltip implements OnChanges {
 }
 
 @Directive({
-  selector: 'button[pButton], a[pButton]',
+  selector: 'button[appUiButton], a[appUiButton]',
   standalone: true
 })
 export class ButtonDirective implements OnChanges, AfterViewInit {
@@ -202,7 +202,7 @@ export class ButtonDirective implements OnChanges, AfterViewInit {
 }
 
 @Component({
-  selector: 'p-card',
+  selector: 'app-ui-card',
   standalone: true,
   imports: [NgIf, NgTemplateOutlet],
   template: `
@@ -232,7 +232,7 @@ export class Card implements AfterContentInit {
   @Input() header: string | null = null;
   @Input() subheader: string | null = null;
   @Input() styleClass: string | null = null;
-  @ContentChildren(PrimeTemplate) templates!: QueryList<PrimeTemplate>;
+  @ContentChildren(UiTemplate) templates!: QueryList<UiTemplate>;
 
   @HostBinding('class') protected get hostClasses(): string {
     return `p-card ${this.styleClass ?? ''}`.trim();
@@ -242,12 +242,12 @@ export class Card implements AfterContentInit {
   }
 
   template(name: string): TemplateRef<unknown> | null {
-    return this.templates?.find((template: PrimeTemplate) => template.name === name)?.template ?? null;
+    return this.templates?.find((template: UiTemplate) => template.name === name)?.template ?? null;
   }
 }
 
 @Component({
-  selector: 'p-tag',
+  selector: 'app-ui-tag',
   standalone: true,
   template: `<span class="p-tag-value">{{ value }}</span><ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -262,7 +262,7 @@ export class Tag {
 }
 
 @Component({
-  selector: 'p-progressSpinner',
+  selector: 'app-ui-progress-spinner',
   standalone: true,
   template: `<span class="pi pi-spin pi-spinner" aria-hidden="true"></span>`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -276,7 +276,7 @@ export class ProgressSpinner {
 }
 
 @Component({
-  selector: 'p-progressBar',
+  selector: 'app-ui-progress-bar',
   standalone: true,
   template: `<div class="p-progressbar-value" [style.width.%]="normalizedValue"></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -293,7 +293,7 @@ export class ProgressBar {
 }
 
 @Component({
-  selector: 'p-panel',
+  selector: 'app-ui-panel',
   standalone: true,
   imports: [NgIf],
   template: `
@@ -324,7 +324,7 @@ export class Panel {
 }
 
 @Component({
-  selector: 'p-paginator',
+  selector: 'app-ui-paginator',
   standalone: true,
   imports: [NgFor, FormsModule],
   template: `
@@ -391,7 +391,7 @@ export class Paginator {
 }
 
 @Component({
-  selector: 'p-table',
+  selector: 'app-ui-table',
   standalone: true,
   imports: [NgFor, NgIf, NgTemplateOutlet, Paginator],
   template: `
@@ -419,7 +419,7 @@ export class Paginator {
         </tbody>
       </table>
     </div>
-    <p-paginator *ngIf="paginator" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPageOptions" (onPageChange)="onPaginatorChange($event)"></p-paginator>
+    <app-ui-paginator *ngIf="paginator" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPageOptions" (onPageChange)="onPaginatorChange($event)"></app-ui-paginator>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -437,7 +437,7 @@ export class Table implements AfterContentInit {
   @Input() rowsPerPageOptions: number[] = [10, 20, 50];
   @Output() onLazyLoad: EventEmitter<TableLazyLoadEvent> = new EventEmitter<TableLazyLoadEvent>();
   @Output() onSort: EventEmitter<TableSortEvent> = new EventEmitter<TableSortEvent>();
-  @ContentChildren(PrimeTemplate) templates!: QueryList<PrimeTemplate>;
+  @ContentChildren(UiTemplate) templates!: QueryList<UiTemplate>;
 
   first: number = 0;
 
@@ -449,7 +449,7 @@ export class Table implements AfterContentInit {
   }
 
   template(name: string): TemplateRef<unknown> | null {
-    return this.templates?.find((template: PrimeTemplate) => template.name === name)?.template ?? null;
+    return this.templates?.find((template: UiTemplate) => template.name === name)?.template ?? null;
   }
 
   onPaginatorChange(event: PaginatorState): void {
@@ -464,12 +464,12 @@ export class Table implements AfterContentInit {
 
   onTableClick(event: Event): void {
     const target: HTMLElement | null = event.target instanceof HTMLElement ? event.target : null;
-    const sortableHeader: HTMLElement | null = target?.closest('[pSortableColumn]') ?? null;
+    const sortableHeader: HTMLElement | null = target?.closest('[appUiSortableColumn]') ?? null;
     if (!sortableHeader) {
       return;
     }
 
-    const field: string | null = sortableHeader.getAttribute('pSortableColumn');
+    const field: string | null = sortableHeader.getAttribute('appUiSortableColumn');
     if (!field) {
       return;
     }
@@ -492,7 +492,7 @@ export class Table implements AfterContentInit {
 }
 
 @Component({
-  selector: 'p-sortIcon',
+  selector: 'app-ui-sort-icon',
   standalone: true,
   template: `<span class="pi pi-sort-alt" aria-hidden="true"></span>`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -502,16 +502,16 @@ export class SortIcon {
 }
 
 @Directive({
-  selector: '[pSortableColumn]',
+  selector: '[appUiSortableColumn]',
   standalone: true
 })
 export class SortableColumn {
-  @Input('pSortableColumn') field: string = '';
+  @Input('appUiSortableColumn') field: string = '';
   @HostBinding('class.p-sortable-column') protected readonly sortableClass: boolean = true;
 }
 
 @Component({
-  selector: 'p-select',
+  selector: 'app-ui-select',
   standalone: true,
   imports: [FormsModule, NgFor, NgIf],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => Select), multi: true }],
@@ -613,7 +613,7 @@ export class Select implements ControlValueAccessor {
 }
 
 @Component({
-  selector: 'p-checkbox',
+  selector: 'app-ui-checkbox',
   standalone: true,
   imports: [FormsModule],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => Checkbox), multi: true }],
@@ -654,7 +654,7 @@ export class Checkbox implements ControlValueAccessor {
 }
 
 @Component({
-  selector: 'p-toggleswitch',
+  selector: 'app-ui-toggle-switch',
   standalone: true,
   imports: [FormsModule],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ToggleSwitch), multi: true }],
@@ -701,7 +701,7 @@ export class ToggleSwitch implements ControlValueAccessor {
 }
 
 @Component({
-  selector: 'p-inputnumber',
+  selector: 'app-ui-input-number',
   standalone: true,
   imports: [FormsModule],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputNumber), multi: true }],
@@ -747,7 +747,7 @@ export class InputNumber implements ControlValueAccessor {
 }
 
 @Component({
-  selector: 'p-tabs',
+  selector: 'app-ui-tabs',
   standalone: true,
   template: `<ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -765,7 +765,7 @@ export class Tabs {
 }
 
 @Component({
-  selector: 'p-tablist',
+  selector: 'app-ui-tab-list',
   standalone: true,
   template: `<div class="p-tablist-tab-list"><ng-content></ng-content></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -775,7 +775,7 @@ export class TabList {
 }
 
 @Component({
-  selector: 'p-tab',
+  selector: 'app-ui-tab',
   standalone: true,
   template: `<button type="button" class="p-tab-button" [disabled]="disabled" (click)="select()"><ng-content></ng-content></button>`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -800,7 +800,7 @@ export class Tab {
 }
 
 @Component({
-  selector: 'p-tabpanels',
+  selector: 'app-ui-tab-panels',
   standalone: true,
   template: `<ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -810,7 +810,7 @@ export class TabPanels {
 }
 
 @Component({
-  selector: 'p-tabpanel',
+  selector: 'app-ui-tab-panel',
   standalone: true,
   imports: [NgIf],
   template: `<ng-container *ngIf="tabs.value === value"><ng-content></ng-content></ng-container>`,
@@ -825,7 +825,7 @@ export class TabPanel {
 }
 
 @Component({
-  selector: 'p-dialog',
+  selector: 'app-ui-dialog',
   standalone: true,
   imports: [NgIf, NgStyle, NgClass, NgTemplateOutlet],
   template: `
@@ -857,7 +857,7 @@ export class Dialog implements AfterContentInit {
   @Input() styleClass: string | null = null;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onHide: EventEmitter<void> = new EventEmitter<void>();
-  @ContentChildren(PrimeTemplate) templates!: QueryList<PrimeTemplate>;
+  @ContentChildren(UiTemplate) templates!: QueryList<UiTemplate>;
 
   ngAfterContentInit(): void {
   }
@@ -875,7 +875,7 @@ export class Dialog implements AfterContentInit {
   }
 
   template(name: string): TemplateRef<unknown> | null {
-    return this.templates?.find((template: PrimeTemplate) => template.name === name)?.template ?? null;
+    return this.templates?.find((template: UiTemplate) => template.name === name)?.template ?? null;
   }
 }
 
@@ -894,7 +894,7 @@ export class SelectModule {}
 @NgModule({ imports: [Paginator], exports: [Paginator] })
 export class PaginatorModule {}
 
-@NgModule({ imports: [Table, SortIcon, SortableColumn, PrimeTemplate], exports: [Table, SortIcon, SortableColumn, PrimeTemplate] })
+@NgModule({ imports: [Table, SortIcon, SortableColumn, UiTemplate], exports: [Table, SortIcon, SortableColumn, UiTemplate] })
 export class TableModule {}
 
 @NgModule({ imports: [Tag], exports: [Tag] })

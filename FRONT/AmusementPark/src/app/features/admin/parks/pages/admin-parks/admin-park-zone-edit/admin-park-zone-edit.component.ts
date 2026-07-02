@@ -6,12 +6,12 @@ import { LocalizedItem } from '@app/models/shared/localized-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { commitViewUpdate } from '@shared/utils/angular';
-import { Card } from '@shared/primeless/card';
+import { Card } from '@shared/ui/primitives/card';
 import { LocalizedTextInputComponent } from '@shared/components/localized-text-input/localized-text-input.component';
-import { InputText } from '@shared/primeless/inputtext';
-import { ToggleSwitch } from '@shared/primeless/toggleswitch';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { ToggleSwitch } from '@shared/ui/primitives/toggleswitch';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
-import { ButtonDirective } from '@shared/primeless/button';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

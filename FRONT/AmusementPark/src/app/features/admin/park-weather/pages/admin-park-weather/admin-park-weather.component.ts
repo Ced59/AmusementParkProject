@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { PrimeTemplate } from '@shared/primeless/api';
-import { TableModule } from '@shared/primeless/table';
-import { Tag } from '@shared/primeless/tag';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { Card } from '@shared/ui/primitives/card';
+import { UiTemplate } from '@shared/ui/primitives/api';
+import { TableModule } from '@shared/ui/primitives/table';
+import { Tag } from '@shared/ui/primitives/tag';
 
 import { ParkWeatherRun, ParkWeatherRunItem } from '@app/models/admin/park-weather/park-weather-admin.models';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -22,7 +22,7 @@ import { AdminParkWeatherStateFacade } from '../../state/admin-park-weather-stat
     TranslateModule,
     ButtonDirective,
     Card,
-    PrimeTemplate,
+    UiTemplate,
     TableModule,
     Tag,
     PageStateComponent

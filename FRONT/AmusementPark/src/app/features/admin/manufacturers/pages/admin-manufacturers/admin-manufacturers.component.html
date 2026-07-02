@@ -1,5 +1,5 @@
-<p-card styleClass="admin-list-card" data-pagination-scroll-target>
-  <ng-template pTemplate="header">
+<app-ui-card styleClass="admin-list-card" data-pagination-scroll-target>
+  <ng-template appUiTemplate="header">
     <div class="admin-list-header">
       <div>
         <span class="admin-kicker">M14 · Admin</span>
@@ -20,7 +20,7 @@
         <span class="pi pi-search" aria-hidden="true"></span>
         <input
           id="admin-manufacturers-search"
-          pInputText
+          appUiInputText
           type="text"
           [ngModel]="stateFacade.searchQuery()"
           (ngModelChange)="onSearchQueryChanged($event)"
@@ -30,7 +30,7 @@
 
     <div class="admin-toolbar__actions">
       <a
-        pButton
+        appUiButton
         type="button"
         icon="pi pi-plus"
         class="p-button-sm"
@@ -57,21 +57,21 @@
     <div class="admin-bulk-bar">
       <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
       <div class="admin-bulk-bar__actions">
-        <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
-        <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
-        <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
-        <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
-        <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
+        <button appUiButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
       </div>
     </div>
   }
 
-  <p-table
+  <app-ui-table
     [value]="manufacturers()"
     [loading]="loading()"
     [responsiveLayout]="'scroll'"
     styleClass="admin-data-table">
-    <ng-template pTemplate="header">
+    <ng-template appUiTemplate="header">
       <tr>
         <th class="admin-selection-column">
           <input type="checkbox" [checked]="areAllCurrentManufacturersSelected()" (change)="onAllSelectionChange($event)" aria-label="Select all manufacturers" />
@@ -84,7 +84,7 @@
       </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-manufacturer>
+    <ng-template appUiTemplate="body" let-manufacturer>
       <tr [class.admin-row--later]="manufacturer.adminReviewStatus === 'ToProcessLater' || manufacturer.adminReviewStatus === 'NotRelevant'">
         <td class="admin-selection-column">
           <input type="checkbox" [checked]="isManufacturerSelected(manufacturer)" (change)="onManufacturerSelectionChange(manufacturer, $event)" [attr.aria-label]="manufacturer.name" />
@@ -94,20 +94,20 @@
           <span class="admin-count-chip">{{ manufacturer.attractionCount ?? 0 }}</span>
         </td>
         <td [attr.data-label]="'admin.filters.visibility' | translate">
-          <p-tag
+          <app-ui-tag
             [value]="((manufacturer.isVisible ?? true) ? 'admin.visible.visible' : 'admin.hidden.hidden') | translate"
             [severity]="(manufacturer.isVisible ?? true) ? 'success' : 'warn'">
-          </p-tag>
+          </app-ui-tag>
         </td>
         <td [attr.data-label]="'admin.manufacturers.reviewStatus' | translate">
-          <p-tag
+          <app-ui-tag
             [value]="getStatusLabelKey(manufacturer.adminReviewStatus) | translate"
             [severity]="getStatusSeverity(manufacturer.adminReviewStatus)">
-          </p-tag>
+          </app-ui-tag>
         </td>
         <td [attr.data-label]="'admin.manufacturers.actions' | translate">
           <a
-            pButton
+            appUiButton
             type="button"
             icon="pi pi-pencil"
             class="p-button-sm"
@@ -117,7 +117,7 @@
         </td>
       </tr>
     </ng-template>
-    <ng-template pTemplate="emptymessage">
+    <ng-template appUiTemplate="emptymessage">
       <tr>
         <td colspan="6">
           <app-empty-state
@@ -128,7 +128,7 @@
         </td>
       </tr>
     </ng-template>
-  </p-table>
+  </app-ui-table>
 
   <app-pagination
     [rows]="pageSize()"
@@ -137,4 +137,4 @@
     [rowsPerPageOptions]="[10, 20, 50, 100]"
     (pageChanged)="onPageChanged($event)">
   </app-pagination>
-</p-card>
+</app-ui-card>

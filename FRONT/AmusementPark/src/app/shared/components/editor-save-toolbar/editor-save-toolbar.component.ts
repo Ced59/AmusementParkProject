@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { ButtonDirective } from '@shared/primeless/button';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 
 @Component({
     selector: 'app-editor-save-toolbar',

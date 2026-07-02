@@ -1,5 +1,5 @@
 <section class="admin-technical-edit">
-  <p-card styleClass="admin-editor-card">
+  <app-ui-card styleClass="admin-editor-card">
     <div class="admin-technical-edit__head">
       <div>
         <span class="kicker kicker--sky">{{ 'admin.technicalPages.kicker' | translate }}</span>
@@ -13,17 +13,17 @@
         <div class="admin-technical-edit__grid">
           <div class="field">
             <label for="categoryKey">{{ 'admin.technicalPages.edit.categoryKey' | translate }}</label>
-            <input id="categoryKey" pInputText type="text" formControlName="categoryKey" />
+            <input id="categoryKey" appUiInputText type="text" formControlName="categoryKey" />
           </div>
 
           <div class="field">
             <label for="slug">{{ 'admin.technicalPages.edit.slug' | translate }}</label>
-            <input id="slug" pInputText type="text" formControlName="slug" />
+            <input id="slug" appUiInputText type="text" formControlName="slug" />
           </div>
 
           <div class="field">
             <label for="sortOrder">{{ 'admin.technicalPages.edit.sortOrder' | translate }}</label>
-            <input id="sortOrder" pInputText type="number" formControlName="sortOrder" />
+            <input id="sortOrder" appUiInputText type="number" formControlName="sortOrder" />
           </div>
 
           <div class="field">
@@ -81,15 +81,15 @@
       }
 
       <div class="admin-technical-edit__actions">
-        <button pButton type="button" class="p-button-secondary" (click)="cancel()">
+        <button appUiButton type="button" class="p-button-secondary" (click)="cancel()">
           <i class="pi pi-times" aria-hidden="true"></i>
           <span>{{ 'actions.cancel' | translate }}</span>
         </button>
-        <button pButton type="submit">
+        <button appUiButton type="submit">
           <i class="pi pi-save" aria-hidden="true"></i>
           <span>{{ 'actions.save' | translate }}</span>
         </button>
       </div>
     </form>
-  </p-card>
+  </app-ui-card>
 </section>

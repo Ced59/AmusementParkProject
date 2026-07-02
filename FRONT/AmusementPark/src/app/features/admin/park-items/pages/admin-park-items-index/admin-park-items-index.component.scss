@@ -123,7 +123,7 @@
     color: var(--text-faint);
   }
 
-  input[pInputText] {
+  input[appUiInputText] {
     width: 100%;
     padding-left: 2.45rem;
   }
@@ -137,8 +137,8 @@
 }
 
 .admin-field select,
-.admin-field input[pInputText],
-.admin-search-field input[pInputText] {
+.admin-field input[appUiInputText],
+.admin-search-field input[appUiInputText] {
   min-height: 2.55rem;
   border: 1px solid var(--border-2);
   border-radius: var(--radius-md);
@@ -160,8 +160,8 @@
 }
 
 .admin-field select:focus,
-.admin-field input[pInputText]:focus,
-.admin-search-field input[pInputText]:focus {
+.admin-field input[appUiInputText]:focus,
+.admin-search-field input[appUiInputText]:focus {
   border-color: rgba(255, 90, 31, 0.42);
   box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.08);
 }

@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { DatePipe, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { PaginatorState } from '@shared/primeless/paginator';
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { InputText } from '@shared/primeless/inputtext';
-import { Panel } from '@shared/primeless/panel';
-import { ProgressSpinner } from '@shared/primeless/progressspinner';
-import { Select } from '@shared/primeless/select';
-import { Tag } from '@shared/primeless/tag';
+import { PaginatorState } from '@shared/ui/primitives/paginator';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { Card } from '@shared/ui/primitives/card';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { Panel } from '@shared/ui/primitives/panel';
+import { ProgressSpinner } from '@shared/ui/primitives/progressspinner';
+import { Select } from '@shared/ui/primitives/select';
+import { Tag } from '@shared/ui/primitives/tag';
 
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';

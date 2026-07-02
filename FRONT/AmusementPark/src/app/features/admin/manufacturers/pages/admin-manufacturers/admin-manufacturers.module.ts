@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from '@shared/primeless/button';
-import { CardModule } from '@shared/primeless/card';
-import { InputTextModule } from '@shared/primeless/inputtext';
-import { TableModule } from '@shared/primeless/table';
+import { ButtonModule } from '@shared/ui/primitives/button';
+import { CardModule } from '@shared/ui/primitives/card';
+import { InputTextModule } from '@shared/ui/primitives/inputtext';
+import { TableModule } from '@shared/ui/primitives/table';
 
 
 import { TranslateModule } from '@ngx-translate/core';

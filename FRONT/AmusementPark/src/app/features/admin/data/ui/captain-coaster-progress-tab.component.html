@@ -1,10 +1,10 @@
-<p-card header="Progression du pipeline">
+<app-ui-card header="Progression du pipeline">
   <div *ngIf="session() as currentSession" class="session-panel">
     <div class="session-topline">
-      <p-tag
+      <app-ui-tag
         [value]="currentSession.status"
         [severity]="captainCoasterPipelineFacade.getSessionStatusSeverity(currentSession.status)">
-      </p-tag>
+      </app-ui-tag>
       <span>{{ currentSession.currentStep }}</span>
       <span class="running-hint" *ngIf="currentSession.importKind">
         Mode : {{ currentSession.importKind }}
@@ -14,7 +14,7 @@
       </span>
     </div>
 
-    <p-progressBar [value]="currentSession.progressPercentage"></p-progressBar>
+    <app-ui-progress-bar [value]="currentSession.progressPercentage"></app-ui-progress-bar>
     <p class="session-message">{{ currentSession.message }}</p>
 
     <div class="metrics-grid">
@@ -45,4 +45,4 @@
       [logs]="currentSession.logs">
     </app-captain-coaster-session-logs>
   </div>
-</p-card>
+</app-ui-card>

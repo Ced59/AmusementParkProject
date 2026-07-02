@@ -15,7 +15,7 @@
   <div class="grid formgrid mt-3">
     <div class="field col-12 md:col-6">
       <label for="latitude">{{ 'admin.parks.latitude' | translate }}</label>
-      <input id="latitude" type="number" pInputText formControlName="latitude" step="0.000001" />
+      <input id="latitude" type="number" appUiInputText formControlName="latitude" step="0.000001" />
       @if (latitudeControl?.invalid && (latitudeControl?.dirty || latitudeControl?.touched)) {
         <small class="p-error">
           {{ 'validation.required' | translate }}
@@ -25,7 +25,7 @@
 
     <div class="field col-12 md:col-6">
       <label for="longitude">{{ 'admin.parks.longitude' | translate }}</label>
-      <input id="longitude" type="number" pInputText formControlName="longitude" step="0.000001" />
+      <input id="longitude" type="number" appUiInputText formControlName="longitude" step="0.000001" />
       @if (longitudeControl?.invalid && (longitudeControl?.dirty || longitudeControl?.touched)) {
         <small class="p-error">
           {{ 'validation.required' | translate }}
@@ -40,7 +40,7 @@
       <input
         id="street"
         type="text"
-        pInputText
+        appUiInputText
         formControlName="street"
         [placeholder]="'admin.parks.streetPlaceholder' | translate" />
     </div>
@@ -50,7 +50,7 @@
       <input
         id="postalCode"
         type="text"
-        pInputText
+        appUiInputText
         formControlName="postalCode"
         [placeholder]="'admin.parks.postalCodePlaceholder' | translate" />
     </div>
@@ -60,7 +60,7 @@
       <input
         id="city"
         type="text"
-        pInputText
+        appUiInputText
         formControlName="city"
         [placeholder]="'admin.parks.cityPlaceholder' | translate" />
     </div>
@@ -68,7 +68,7 @@
 
   <div class="section-actions">
     <button
-      pButton
+      appUiButton
       type="button"
       class="p-button-secondary p-button-outlined"
       icon="pi pi-save"

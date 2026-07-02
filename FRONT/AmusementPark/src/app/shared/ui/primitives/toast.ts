@@ -3,7 +3,7 @@ import { NgFor } from '@angular/common';
 import { MessageService, ToastMessage } from './api';
 
 @Component({
-  selector: 'p-toast',
+  selector: 'app-ui-toast',
   standalone: true,
   imports: [NgFor],
   template: `

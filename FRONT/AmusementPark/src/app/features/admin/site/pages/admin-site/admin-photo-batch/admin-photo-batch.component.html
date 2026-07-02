@@ -96,7 +96,7 @@
           <strong>{{ 'admin.images.batch.uploadProgress' | translate: { current: progress.activeIndex, total: progress.total } }}</strong>
           <span>{{ progress.currentFileName }}</span>
         </div>
-        <p-progressBar [value]="uploadPercent()"></p-progressBar>
+        <app-ui-progress-bar [value]="uploadPercent()"></app-ui-progress-bar>
       </div>
     }
 

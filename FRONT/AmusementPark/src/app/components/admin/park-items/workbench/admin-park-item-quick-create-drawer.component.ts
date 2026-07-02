@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
-import { InputText } from '@shared/primeless/inputtext';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { InputText } from '@shared/ui/primitives/inputtext';
 
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';

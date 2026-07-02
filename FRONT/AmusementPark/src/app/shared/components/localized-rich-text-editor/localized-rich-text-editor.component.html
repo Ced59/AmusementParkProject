@@ -1,25 +1,25 @@
 <div class="localized-rich-text-editor">
-  <p-tabs [(value)]="activeTabIndex">
-    <p-tablist>
+  <app-ui-tabs [(value)]="activeTabIndex">
+    <app-ui-tab-list>
       @for (entry of entries; track trackByLanguageCode(index, entry); let index = $index) {
-        <p-tab [value]="index">
+        <app-ui-tab [value]="index">
           {{ entry.languageLabel }}
-        </p-tab>
+        </app-ui-tab>
       }
-    </p-tablist>
+    </app-ui-tab-list>
 
-    <p-tabpanels>
+    <app-ui-tab-panels>
       @for (entry of entries; track trackByLanguageCode(index, entry); let index = $index) {
-        <p-tabpanel [value]="index">
+        <app-ui-tab-panel [value]="index">
           <div class="localized-rich-text-editor__panel">
-            <p-editor
+            <app-ui-editor
               [(ngModel)]="entry.value"
               [ngModelOptions]="{ standalone: true }"
               [readonly]="isDisabled"
               [style]="{ height: editorHeight }"
               [placeholder]="placeholderKey | translate:{ language: entry.languageLabel }"
               (ngModelChange)="onEntryValueChange()">
-              <ng-template pTemplate="header">
+              <ng-template appUiTemplate="header">
                 <span class="ql-formats">
                   <button type="button" class="ql-bold" aria-label="Bold"></button>
                   <button type="button" class="ql-italic" aria-label="Italic"></button>
@@ -36,10 +36,10 @@
                   <button type="button" class="ql-clean" aria-label="Clear formatting"></button>
                 </span>
               </ng-template>
-            </p-editor>
+            </app-ui-editor>
           </div>
-        </p-tabpanel>
+        </app-ui-tab-panel>
       }
-    </p-tabpanels>
-  </p-tabs>
+    </app-ui-tab-panels>
+  </app-ui-tabs>
 </div>

@@ -1,5 +1,5 @@
-<p-card styleClass="admin-list-card admin-park-weather-card">
-  <ng-template pTemplate="header">
+<app-ui-card styleClass="admin-list-card admin-park-weather-card">
+  <ng-template appUiTemplate="header">
     <div class="admin-list-header admin-park-weather-header">
       <div>
         <span class="admin-kicker">2.1.0 - Weather</span>
@@ -8,8 +8,8 @@
       </div>
 
       <div class="admin-park-weather-header__actions">
-        <button pButton type="button" class="p-button-secondary" icon="pi pi-refresh" [label]="'actions.refresh' | translate" [disabled]="loading()" (click)="refresh()"></button>
-        <button pButton type="button" icon="pi pi-cloud-download" [label]="'admin.parkWeather.actions.startManual' | translate" [loading]="startingManualRefresh()" [disabled]="isRunActive()" (click)="startManualRefresh()"></button>
+        <button appUiButton type="button" class="p-button-secondary" icon="pi pi-refresh" [label]="'actions.refresh' | translate" [disabled]="loading()" (click)="refresh()"></button>
+        <button appUiButton type="button" icon="pi pi-cloud-download" [label]="'admin.parkWeather.actions.startManual' | translate" [loading]="startingManualRefresh()" [disabled]="isRunActive()" (click)="startManualRefresh()"></button>
       </div>
     </div>
   </ng-template>
@@ -24,7 +24,7 @@
         <section class="admin-park-weather__summary">
           <article class="admin-weather-stat-card">
             <span>{{ 'admin.parkWeather.stats.status' | translate }}</span>
-            <p-tag [value]="statusLabelKey(run.status) | translate" [severity]="statusSeverity(run.status)"></p-tag>
+            <app-ui-tag [value]="statusLabelKey(run.status) | translate" [severity]="statusSeverity(run.status)"></app-ui-tag>
             <small>{{ messageLabelKey(run.message) | translate }}</small>
           </article>
           <article class="admin-weather-stat-card">
@@ -72,7 +72,7 @@
               <p>{{ 'admin.parkWeather.failures.subtitle' | translate }}</p>
             </div>
             <button
-              pButton
+              appUiButton
               type="button"
               class="p-button-secondary"
               icon="pi pi-replay"
@@ -83,11 +83,11 @@
             </button>
           </header>
 
-          <p-table
+          <app-ui-table
             [value]="failedItems()"
             [responsiveLayout]="'scroll'"
             styleClass="admin-data-table admin-weather-failures-table">
-            <ng-template pTemplate="header">
+            <ng-template appUiTemplate="header">
               <tr>
                 <th>{{ 'admin.parkWeather.failures.columns.park' | translate }}</th>
                 <th>{{ 'admin.parkWeather.failures.columns.error' | translate }}</th>
@@ -96,7 +96,7 @@
               </tr>
             </ng-template>
 
-            <ng-template pTemplate="body" let-item>
+            <ng-template appUiTemplate="body" let-item>
               <tr>
                 <td [attr.data-label]="'admin.parkWeather.failures.columns.park' | translate">
                   <strong>{{ item.parkName || item.parkId }}</strong>
@@ -106,7 +106,7 @@
                 <td [attr.data-label]="'admin.parkWeather.failures.columns.attempts' | translate">{{ item.attemptCount }}</td>
                 <td [attr.data-label]="'admin.parkWeather.failures.columns.actions' | translate">
                   <button
-                    pButton
+                    appUiButton
                     type="button"
                     class="p-button-secondary p-button-sm"
                     icon="pi pi-refresh"
@@ -119,12 +119,12 @@
               </tr>
             </ng-template>
 
-            <ng-template pTemplate="emptymessage">
+            <ng-template appUiTemplate="emptymessage">
               <tr>
                 <td colspan="4">{{ 'admin.parkWeather.failures.empty' | translate }}</td>
               </tr>
             </ng-template>
-          </p-table>
+          </app-ui-table>
         </section>
       } @else {
         <section class="admin-park-weather__empty">
@@ -135,4 +135,4 @@
       }
     </section>
   </app-page-state>
-</p-card>
+</app-ui-card>

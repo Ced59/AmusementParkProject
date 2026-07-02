@@ -1,5 +1,5 @@
-<p-card styleClass="admin-list-card admin-parks-card" data-pagination-scroll-target="admin-parks">
-  <ng-template pTemplate="header">
+<app-ui-card styleClass="admin-list-card admin-parks-card" data-pagination-scroll-target="admin-parks">
+  <ng-template appUiTemplate="header">
     <div class="admin-list-header">
       <div>
         <span class="admin-kicker">M14 · Admin</span>
@@ -22,7 +22,7 @@
         <span class="pi pi-search" aria-hidden="true"></span>
         <input
           id="admin-parks-search"
-          pInputText
+          appUiInputText
           type="text"
           [ngModel]="searchQuery()"
           (ngModelChange)="onSearchQueryChanged($event)"
@@ -33,7 +33,7 @@
 
     <div class="admin-toolbar__actions">
       <button
-        pButton
+        appUiButton
         type="button"
         icon="pi pi-search"
         class="p-button-sm"
@@ -43,7 +43,7 @@
 
       @if (canClearSearch()) {
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-times"
           class="p-button-text p-button-sm"
@@ -91,7 +91,7 @@
     <label class="admin-field">
       <span class="admin-field-label">{{ 'admin.filters.countryCode' | translate }}</span>
       <input
-        pInputText
+        appUiInputText
         type="text"
         maxlength="2"
         [(ngModel)]="localCountryCodeFilter"
@@ -135,7 +135,7 @@
   <div class="admin-coordinate-bulk-bar">
     <span>{{ 'admin.bulk.validCoordinatesScope' | translate }}</span>
     <button
-      pButton
+      appUiButton
       type="button"
       class="p-button-sm p-button-success"
       icon="pi pi-map-marker"
@@ -145,7 +145,7 @@
     </button>
   </div>
 
-  <p-table
+  <app-ui-table
     [value]="parks()"
     [loading]="loading()"
     [paginator]="true"
@@ -157,30 +157,30 @@
     [sortOrder]="sortOrder()"
     [responsiveLayout]="'scroll'"
     styleClass="admin-data-table">
-    <ng-template pTemplate="header">
+    <ng-template appUiTemplate="header">
       <tr>
         <th class="admin-selection-column">
           <input type="checkbox" [checked]="areAllCurrentParksSelected()" (change)="onAllSelectionChange($event)" aria-label="Select all parks" />
         </th>
-        <th pSortableColumn="name">
+        <th appUiSortableColumn="name">
           {{ 'admin.parks.name' | translate }}
-          <p-sortIcon field="name"></p-sortIcon>
+          <app-ui-sort-icon field="name"></app-ui-sort-icon>
         </th>
         <th>{{ 'admin.parks.type' | translate }}</th>
         <th>{{ 'admin.parks.country' | translate }}</th>
         <th>{{ 'admin.parks.city' | translate }}</th>
         <th>{{ 'admin.parks.coordinates' | translate }}</th>
-        <th pSortableColumn="parkItemsTotalCount">
+        <th appUiSortableColumn="parkItemsTotalCount">
           {{ 'admin.parks.itemsTotalCount' | translate }}
-          <p-sortIcon field="parkItemsTotalCount"></p-sortIcon>
+          <app-ui-sort-icon field="parkItemsTotalCount"></app-ui-sort-icon>
         </th>
-        <th pSortableColumn="parkItemsVisibleCount">
+        <th appUiSortableColumn="parkItemsVisibleCount">
           {{ 'admin.parks.itemsVisibleCount' | translate }}
-          <p-sortIcon field="parkItemsVisibleCount"></p-sortIcon>
+          <app-ui-sort-icon field="parkItemsVisibleCount"></app-ui-sort-icon>
         </th>
-        <th pSortableColumn="openingHoursStatus">
+        <th appUiSortableColumn="openingHoursStatus">
           {{ 'admin.parks.openingHours.title' | translate }}
-          <p-sortIcon field="openingHoursStatus"></p-sortIcon>
+          <app-ui-sort-icon field="openingHoursStatus"></app-ui-sort-icon>
         </th>
         <th>{{ 'admin.parks.reviewStatus' | translate }}</th>
         <th>{{ 'admin.parks.visible' | translate }}</th>
@@ -188,21 +188,21 @@
       </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-park>
+    <ng-template appUiTemplate="body" let-park>
       @if (isParkSelected(park)) {
         <tr class="admin-bulk-row">
           <td colspan="12">
             <div class="admin-bulk-bar">
               <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
               <div class="admin-bulk-bar__actions">
-                <button pButton type="button" class="p-button-sm" icon="pi pi-eye" [label]="'admin.bulk.makeVisibleShort' | translate" (click)="makeSelectedVisible()"></button>
-                <button pButton type="button" class="p-button-sm p-button-secondary" icon="pi pi-eye-slash" [label]="'admin.bulk.hide' | translate" (click)="hideSelected()"></button>
-                <button pButton type="button" class="p-button-sm p-button-help" icon="pi pi-sitemap" [label]="'admin.bulk.showItems' | translate" (click)="makeSelectedParkItemsVisible()"></button>
-                <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReviewShort' | translate" (click)="markSelectedToReview()"></button>
-                <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
-                <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLaterShort' | translate" (click)="markSelectedLater()"></button>
-                <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
-                <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelectionShort' | translate" (click)="clearSelection()"></button>
+                <button appUiButton type="button" class="p-button-sm" icon="pi pi-eye" [label]="'admin.bulk.makeVisibleShort' | translate" (click)="makeSelectedVisible()"></button>
+                <button appUiButton type="button" class="p-button-sm p-button-secondary" icon="pi pi-eye-slash" [label]="'admin.bulk.hide' | translate" (click)="hideSelected()"></button>
+                <button appUiButton type="button" class="p-button-sm p-button-help" icon="pi pi-sitemap" [label]="'admin.bulk.showItems' | translate" (click)="makeSelectedParkItemsVisible()"></button>
+                <button appUiButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReviewShort' | translate" (click)="markSelectedToReview()"></button>
+                <button appUiButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
+                <button appUiButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLaterShort' | translate" (click)="markSelectedLater()"></button>
+                <button appUiButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
+                <button appUiButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelectionShort' | translate" (click)="clearSelection()"></button>
               </div>
             </div>
           </td>
@@ -233,30 +233,30 @@
         </td>
         <td [attr.data-label]="'admin.parks.openingHours.title' | translate">
           <div class="admin-opening-hours-status">
-            <p-tag
+            <app-ui-tag
               [value]="getOpeningHoursStatusLabelKey(park.openingHours?.status) | translate"
               [severity]="getOpeningHoursStatusSeverity(park.openingHours?.status)">
-            </p-tag>
+            </app-ui-tag>
             <span>{{ getOpeningHoursCoverageLabelKey(park) | translate:getOpeningHoursCoverageParams(park) }}</span>
           </div>
         </td>
         <td [attr.data-label]="'admin.parks.reviewStatus' | translate">
-          <p-tag
+          <app-ui-tag
             [value]="getStatusLabelKey(park.adminReviewStatus) | translate"
             [severity]="getStatusSeverity(park.adminReviewStatus)">
-          </p-tag>
+          </app-ui-tag>
         </td>
         <td [attr.data-label]="'admin.parks.visible' | translate">
-          <p-toggleswitch
+          <app-ui-toggle-switch
             [(ngModel)]="park.isVisible"
             (ngModelChange)="onVisibilityChange(park)">
-          </p-toggleswitch>
+          </app-ui-toggle-switch>
         </td>
         <td [attr.data-label]="'admin.parks.actions' | translate">
           <div class="admin-row-actions">
             @if (park.id) {
               <a
-                pButton
+                appUiButton
                 icon="pi pi-download"
                 class="p-button-text p-button-sm p-button-secondary"
                 [label]="'admin.parks.exportJson' | translate"
@@ -265,7 +265,7 @@
               </a>
             }
             <button
-              pButton
+              appUiButton
               type="button"
               icon="pi pi-pencil"
               class="p-button-text p-button-sm"
@@ -276,7 +276,7 @@
         </td>
       </tr>
     </ng-template>
-    <ng-template pTemplate="emptymessage">
+    <ng-template appUiTemplate="emptymessage">
       <tr>
         <td colspan="12">
           <app-empty-state
@@ -287,11 +287,11 @@
         </td>
       </tr>
     </ng-template>
-  </p-table>
+  </app-ui-table>
 
   <div class="create-park-container">
     <button
-      pButton
+      appUiButton
       type="button"
       icon="pi pi-plus"
       class="p-button-primary"
@@ -299,4 +299,4 @@
       [routerLink]="['./new']">
     </button>
   </div>
-</p-card>
+</app-ui-card>

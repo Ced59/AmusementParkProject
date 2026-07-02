@@ -70,15 +70,15 @@
         </div>
       </div>
       <div class="admin-toolbar__actions admin-field-mode__filters" aria-label="Filtres terrain">
-        <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'unprocessed'" (click)="setProcessedFilter('unprocessed')">{{ text('À traiter', 'Todo') }}</button>
-        <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'processed'" (click)="setProcessedFilter('processed')">{{ text('Traités', 'Processed') }}</button>
-        <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'all'" (click)="setProcessedFilter('all')">{{ text('Tous', 'All') }}</button>
+        <button appUiButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'unprocessed'" (click)="setProcessedFilter('unprocessed')">{{ text('À traiter', 'Todo') }}</button>
+        <button appUiButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'processed'" (click)="setProcessedFilter('processed')">{{ text('Traités', 'Processed') }}</button>
+        <button appUiButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.processedFilter() === 'all'" (click)="setProcessedFilter('all')">{{ text('Tous', 'All') }}</button>
       </div>
       <div class="admin-toolbar__actions admin-field-mode__filters" aria-label="Filtres qualité">
-        <button pButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.filter() === 'all'" (click)="setFilter('all')">{{ text('Tout', 'All') }}</button>
-        <button pButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingPhotos'" (click)="setFilter('missingPhotos')">{{ text('Photos', 'Photos') }}</button>
-        <button pButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingGeneralLocation'" (click)="setFilter('missingGeneralLocation')">{{ text('Position', 'Position') }}</button>
-        <button pButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingPreciseLocation'" (click)="setFilter('missingPreciseLocation')">{{ text('Accès', 'Access') }}</button>
+        <button appUiButton type="button" class="p-button-sm" [class.admin-field-mode__filter--active]="state.filter() === 'all'" (click)="setFilter('all')">{{ text('Tout', 'All') }}</button>
+        <button appUiButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingPhotos'" (click)="setFilter('missingPhotos')">{{ text('Photos', 'Photos') }}</button>
+        <button appUiButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingGeneralLocation'" (click)="setFilter('missingGeneralLocation')">{{ text('Position', 'Position') }}</button>
+        <button appUiButton type="button" class="p-button-sm p-button-warning" [class.admin-field-mode__filter--active]="state.filter() === 'missingPreciseLocation'" (click)="setFilter('missingPreciseLocation')">{{ text('Accès', 'Access') }}</button>
       </div>
     </section>
 
@@ -95,7 +95,7 @@
             <span class="admin-badge" [class.admin-badge--warning]="!row.hasGeneralLocation">📍 {{ row.hasGeneralLocation ? text('OK', 'OK') : text('À faire', 'Todo') }}</span>
             <span class="admin-badge" [class.admin-badge--warning]="!row.hasAnyPreciseLocation">🎯 {{ row.preciseLocationCount }}</span>
           </span>
-          <button pButton type="button" class="p-button-sm p-button-text admin-field-mode__processed-toggle" (click)="toggleProcessed(row, $event)">
+          <button appUiButton type="button" class="p-button-sm p-button-text admin-field-mode__processed-toggle" (click)="toggleProcessed(row, $event)">
             {{ row.isProcessed ? text('Remettre à traiter', 'Mark todo') : text('Marquer traité', 'Mark processed') }}
           </button>
         </article>
@@ -107,10 +107,10 @@
             <span class="admin-kicker">{{ text('Édition rapide', 'Quick edit') }}</span>
             <h2>{{ item.name }}</h2>
           </div>
-          <button pButton type="button" class="p-button-sm" *ngIf="selectedRow() as row" (click)="toggleProcessed(row, $event)">
+          <button appUiButton type="button" class="p-button-sm" *ngIf="selectedRow() as row" (click)="toggleProcessed(row, $event)">
             {{ row.isProcessed ? text('Remettre à traiter', 'Mark todo') : text('Marquer traité', 'Mark processed') }}
           </button>
-          <button pButton type="button" class="p-button-sm p-button-text" *ngIf="isDetailMode()" (click)="goBackToList()">
+          <button appUiButton type="button" class="p-button-sm p-button-text" *ngIf="isDetailMode()" (click)="goBackToList()">
             {{ text('Retour liste', 'Back to list') }}
           </button>
         </header>
@@ -121,7 +121,7 @@
             <p *ngIf="actions.position() as position">{{ position.latitude | number:'1.6-6' }}, {{ position.longitude | number:'1.6-6' }} · ±{{ position.accuracy ?? '?' }} m</p>
             <p *ngIf="!actions.position()">{{ text('Aucune position fraîche capturée.', 'No fresh position captured.') }}</p>
           </div>
-          <button pButton type="button" (click)="actions.refreshPosition()" [disabled]="actions.busy()">
+          <button appUiButton type="button" (click)="actions.refreshPosition()" [disabled]="actions.busy()">
             {{ actions.status() === 'checking' ? text('Capture GPS…', 'Capturing GPS…') : text('Actualiser GPS', 'Refresh GPS') }}
           </button>
         </section>
@@ -134,7 +134,7 @@
               <option *ngFor="let option of state.locationOptions()" [ngValue]="option.key">{{ text(option.labelFr, option.labelEn) }}</option>
             </select>
           </div>
-          <button pButton type="button" (click)="saveLocation()" [disabled]="actions.busy()">
+          <button appUiButton type="button" (click)="saveLocation()" [disabled]="actions.busy()">
             {{ text('Enregistrer ici', 'Save here') }}
           </button>
         </section>
@@ -171,12 +171,12 @@
                 <span>{{ photo.file.name }}</span>
                 <small>{{ photo.position.latitude | number:'1.5-5' }}, {{ photo.position.longitude | number:'1.5-5' }}</small>
               </figcaption>
-              <button pButton type="button" class="p-button-sm p-button-text" (click)="actions.removeSelectedPhoto(photo.id)">
+              <button appUiButton type="button" class="p-button-sm p-button-text" (click)="actions.removeSelectedPhoto(photo.id)">
                 {{ text('Retirer', 'Remove') }}
               </button>
             </figure>
           </div>
-          <button pButton type="button" (click)="addPhoto()" [disabled]="!actions.readyForPhoto()">
+          <button appUiButton type="button" (click)="addPhoto()" [disabled]="!actions.readyForPhoto()">
             {{ actions.uploadingCount() > 0 ? text('Envoi en cours en arrière-plan', 'Uploading in background') : text('Envoyer la sélection', 'Upload selection') }}
           </button>
         </section>
