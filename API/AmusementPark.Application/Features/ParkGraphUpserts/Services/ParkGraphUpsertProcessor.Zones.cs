@@ -40,7 +40,7 @@ public sealed partial class ParkGraphUpsertProcessor
             ParkZone? zone = FindZone(mutableZones, id, slug, name);
             bool isNew = zone is null;
             zone ??= new ParkZone { ParkId = park.Id, Name = name ?? string.Empty };
-            PublicSeoParkZoneSnapshot? previousZoneSnapshot = PublicSeoParkZoneSnapshot.FromParkZone(zone);
+            PublicSeoParkZoneSnapshot? previousZoneSnapshot = isNew ? null : PublicSeoParkZoneSnapshot.FromParkZone(zone);
 
             ParkGraphUpsertChange change = BuildEntityChange("ParkZone", zone.Id, key, zone.Name, isNew ? "Created" : "Unchanged", isNew ? "name" : MatchMode(id, name));
             PatchZone(zone, patch, change);
