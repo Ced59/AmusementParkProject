@@ -25,6 +25,12 @@
   box-shadow: var(--shadow-card);
 }
 
+.admin-card {
+  display: block;
+  color: var(--app-text);
+  overflow: hidden;
+}
+
 .admin-page-title,
 .admin-list-header h2,
 .admin-dashboard__shortcut strong,
@@ -124,7 +130,8 @@
 
 .admin-shell .p-card .p-card-body,
 .admin-list-card .p-card-body,
-.admin-editor-card .p-card-body {
+.admin-editor-card .p-card-body,
+.admin-card__body {
   padding: 1rem;
 }
 
@@ -291,9 +298,21 @@
 
 .admin-shell .p-button,
 .admin-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   min-height: 2.45rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--app-primary);
   border-radius: var(--admin-radius);
+  background: var(--app-primary);
+  color: #fff;
   font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
   transition:
     transform var(--transition-fast),
     border-color var(--transition-fast),
@@ -304,6 +323,13 @@
 .admin-shell .p-button:hover,
 .admin-button:hover {
   transform: translateY(-1px);
+}
+
+.admin-button:disabled,
+.admin-button[disabled] {
+  opacity: 0.58;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .admin-shell .p-button.p-button-sm,
