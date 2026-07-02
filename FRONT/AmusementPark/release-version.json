@@ -1,6 +1,20 @@
 {
-  "version": "3.1.30",
+  "version": "3.1.31",
   "history": [
+    {
+      "version": "3.1.31",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Les notifications restent bien visibles.",
+        "en": "Notifications stay clearly visible.",
+        "de": "Benachrichtigungen erscheinen zuverlässiger.",
+        "nl": "Meldingen blijven goed zichtbaar.",
+        "it": "Le notifiche restano ben visibili.",
+        "es": "Las notificaciones siguen bien visibles.",
+        "pl": "Powiadomienia pozostają dobrze widoczne.",
+        "pt": "As notificações continuam bem visíveis."
+      }
+    },
     {
       "version": "3.1.30",
       "releasedAt": "2026-07-02",
