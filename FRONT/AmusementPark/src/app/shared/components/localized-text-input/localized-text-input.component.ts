@@ -3,11 +3,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/f
 
 import { LANGUAGES } from '@shared/models/localization';
 import { LocalizedItem } from '@app/models/shared/localized-item';
-import { Bind } from 'primeng/bind';
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
-import { Ripple } from 'primeng/ripple';
-import { InputText } from 'primeng/inputtext';
-import { ButtonDirective } from 'primeng/button';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@shared/primeless/tabs';
+import { InputText } from '@shared/primeless/inputtext';
+import { ButtonDirective } from '@shared/primeless/button';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface LocalizedTextEntry {
@@ -28,7 +26,7 @@ interface LocalizedTextEntry {
             multi: true
         }
     ],
-    imports: [Bind, Tabs, TabList, Ripple, Tab, TabPanels, TabPanel, FormsModule, InputText, ButtonDirective, TranslateModule]
+    imports: [Tabs, TabList, Tab, TabPanels, TabPanel, FormsModule, InputText, ButtonDirective, TranslateModule]
 })
 export class LocalizedTextInputComponent implements ControlValueAccessor {
   @Input() placeholderKey: string = 'admin.parks.zones.namePlaceholder';

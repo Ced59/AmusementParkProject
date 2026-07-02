@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from 'primeng/button';
-import { Card } from 'primeng/card';
-import { InputText } from 'primeng/inputtext';
-import { PrimeTemplate } from 'primeng/api';
-import { TableLazyLoadEvent, TableModule } from 'primeng/table';
-import { Tag } from 'primeng/tag';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/primeless/card';
+import { InputText } from '@shared/primeless/inputtext';
+import { PrimeTemplate } from '@shared/primeless/api';
+import { TableLazyLoadEvent, TableModule } from '@shared/primeless/table';
+import { Tag } from '@shared/primeless/tag';
 
 import { AdminAuditLog, AdminAuditLogQuery, AdminAuditMetadataEntry } from '@app/models/admin/audit/admin-audit-log.models';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';

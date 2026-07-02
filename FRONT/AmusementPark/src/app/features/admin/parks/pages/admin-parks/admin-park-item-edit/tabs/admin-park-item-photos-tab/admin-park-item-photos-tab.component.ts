@@ -1,16 +1,15 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaginatorState } from 'primeng/paginator';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
+import { PaginatorState } from '@shared/primeless/paginator';
+import { Card } from '@shared/primeless/card';
 import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { Select } from 'primeng/select';
-import { ButtonDirective } from 'primeng/button';
-import { Panel } from 'primeng/panel';
-import { ProgressSpinner } from 'primeng/progressspinner';
-import { ProgressBar } from 'primeng/progressbar';
+import { InputText } from '@shared/primeless/inputtext';
+import { Select } from '@shared/primeless/select';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Panel } from '@shared/primeless/panel';
+import { ProgressSpinner } from '@shared/primeless/progressspinner';
+import { ProgressBar } from '@shared/primeless/progressbar';
 import { NgClass, DatePipe } from '@angular/common';
-import { Tag } from 'primeng/tag';
+import { Tag } from '@shared/primeless/tag';
 import { TranslateModule } from '@ngx-translate/core';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
@@ -26,7 +25,7 @@ import {
     templateUrl: './admin-park-item-photos-tab.component.html',
     styleUrls: ['./admin-park-item-photos-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [Bind, Card, FormsModule, InputText, Select, ButtonDirective, Panel, ProgressSpinner, ProgressBar, NgClass, Tag, DatePipe, TranslateModule, PaginationComponent, ImageDisplayComponent]
+    imports: [Card, FormsModule, InputText, Select, ButtonDirective, Panel, ProgressSpinner, ProgressBar, NgClass, Tag, DatePipe, TranslateModule, PaginationComponent, ImageDisplayComponent]
 })
 export class AdminParkItemPhotosTabComponent {
   @Input() isEditMode: boolean = false;

@@ -4,11 +4,10 @@ import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water
 import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { EntitySelectComponent } from '@shared/components/entity-select/entity-select.component';
-import { Bind } from 'primeng/bind';
-import { InputText } from 'primeng/inputtext';
-import { ToggleSwitch } from 'primeng/toggleswitch';
-import { Select } from 'primeng/select';
-import { ButtonDirective } from 'primeng/button';
+import { InputText } from '@shared/primeless/inputtext';
+import { ToggleSwitch } from '@shared/primeless/toggleswitch';
+import { Select } from '@shared/primeless/select';
+import { ButtonDirective } from '@shared/primeless/button';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -16,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
     templateUrl: './admin-park-item-details-tab.component.html',
     styleUrls: ['./admin-park-item-details-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [FormsModule, ReactiveFormsModule, EntitySelectComponent, Bind, InputText, ToggleSwitch, Select, ButtonDirective, TranslateModule]
+    imports: [FormsModule, ReactiveFormsModule, EntitySelectComponent, InputText, ToggleSwitch, Select, ButtonDirective, TranslateModule]
 })
 export class AdminParkItemDetailsTabComponent {
   @Input({ required: true }) formGroup!: FormGroup;

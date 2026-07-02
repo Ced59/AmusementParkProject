@@ -10,8 +10,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { MessageService } from 'primeng/api';
-import { providePrimeNG } from 'primeng/config';
+import { MessageService } from '@shared/primeless/api';
 
 import { routes } from './app.routes';
 import { initializeApp, HttpLoaderFactory } from './app.module';
@@ -20,7 +19,6 @@ import { AuthService } from './services/auth/auth.service';
 import { LanguageInterceptor } from '@core/http/interceptors/language.interceptor';
 import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
 import { AdminPublicViewSimulationInterceptor } from '@features/admin/contextual-editing/http/admin-public-view-simulation.interceptor';
-import AmusementParkPreset from './config/primeng-preset';
 import { DeploymentVersionService } from '@core/deployment/deployment-version.service';
 import { MatomoPageViewTrackingService } from '@core/analytics/matomo-page-view-tracking.service';
 import { MicrosoftClarityTrackingService } from '@core/analytics/microsoft-clarity-tracking.service';
@@ -79,15 +77,6 @@ export const appConfig: ApplicationConfig = {
       multi: true
     },
 
-    MessageService,
-
-    providePrimeNG({
-      theme: {
-        preset: AmusementParkPreset,
-        options: {
-          darkModeSelector: '.dark-mode'
-        }
-      }
-    })
+    MessageService
   ]
 };

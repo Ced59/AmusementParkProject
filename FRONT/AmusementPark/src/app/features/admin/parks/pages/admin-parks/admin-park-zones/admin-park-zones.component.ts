@@ -6,11 +6,10 @@ import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { PrimeTemplate } from 'primeng/api';
-import { ButtonDirective } from 'primeng/button';
-import { TableModule } from 'primeng/table';
+import { Card } from '@shared/primeless/card';
+import { PrimeTemplate } from '@shared/primeless/api';
+import { ButtonDirective } from '@shared/primeless/button';
+import { TableModule } from '@shared/primeless/table';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { AdminParkZonesStateFacade } from '@features/admin/parks/state/admin-park-zones-state.facade';
 
@@ -20,7 +19,7 @@ import { AdminParkZonesStateFacade } from '@features/admin/parks/state/admin-par
     styleUrls: ['./admin-park-zones.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [AdminParkZonesStateFacade],
-    imports: [Bind, Card, PrimeTemplate, ButtonDirective, RouterLink, TableModule, TranslateModule, PageStateComponent, EmptyStateComponent]
+    imports: [Card, PrimeTemplate, ButtonDirective, RouterLink, TableModule, TranslateModule, PageStateComponent, EmptyStateComponent]
 })
 export class AdminParkZonesComponent implements OnInit {
   parkId: string = '';

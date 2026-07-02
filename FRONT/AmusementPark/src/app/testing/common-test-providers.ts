@@ -4,7 +4,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { MessageService } from 'primeng/api';
+import { MessageService } from '@shared/primeless/api';
 
 export const COMMON_TEST_IMPORTS: Array<Type<unknown> | ModuleWithProviders<unknown>> = [
   NoopAnimationsModule,

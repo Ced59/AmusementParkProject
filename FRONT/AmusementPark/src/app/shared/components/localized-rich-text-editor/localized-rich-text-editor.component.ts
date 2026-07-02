@@ -5,11 +5,9 @@ import { LANGUAGES } from '@shared/models/localization';
 import { isRichTextEmpty } from '@shared/utils/localization';
 import { HtmlSecurityService } from '@shared/utils/security';
 import { LocalizedItem } from '@app/models/shared/localized-item';
-import { Bind } from 'primeng/bind';
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
-import { Ripple } from 'primeng/ripple';
-import { Editor } from 'primeng/editor';
-import { PrimeTemplate } from 'primeng/api';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@shared/primeless/tabs';
+import { Editor } from '@shared/primeless/editor';
+import { PrimeTemplate } from '@shared/primeless/api';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface LocalizedRichTextEntry {
@@ -31,7 +29,7 @@ interface LocalizedRichTextEntry {
       multi: true
     }
   ],
-  imports: [Bind, Tabs, TabList, Ripple, Tab, TabPanels, TabPanel, Editor, FormsModule, PrimeTemplate, TranslateModule]
+  imports: [Tabs, TabList, Tab, TabPanels, TabPanel, Editor, FormsModule, PrimeTemplate, TranslateModule]
 })
 export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
   @Input() placeholderKey: string = 'admin.parks.descriptions.placeholder';

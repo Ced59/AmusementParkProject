@@ -4,8 +4,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { InputText } from 'primeng/inputtext';
-import { Tag } from 'primeng/tag';
+import { InputText } from '@shared/primeless/inputtext';
+import { Tag } from '@shared/primeless/tag';
 
 import { HistoryArticleContent, HistoryDatePrecision, HistoryEntityType, HistoryEvent, HistoryEventWriteModel, HistorySourceReference } from '@app/models/history/history.models';
 import { LocalizedItem } from '@app/models/shared/localized-item';

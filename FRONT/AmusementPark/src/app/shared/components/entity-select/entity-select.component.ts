@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component, Input, forwardRef } from '@angular/
 import { UrlTree } from '@angular/router';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
-import { Bind } from 'primeng/bind';
-import { Select } from 'primeng/select';
-import { ButtonDirective } from 'primeng/button';
+import { Select } from '@shared/primeless/select';
+import { ButtonDirective } from '@shared/primeless/button';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -19,7 +18,7 @@ import { RouterLink } from '@angular/router';
             multi: true
         }
     ],
-    imports: [Bind, Select, FormsModule, ButtonDirective, RouterLink]
+    imports: [Select, FormsModule, ButtonDirective, RouterLink]
 })
 export class EntitySelectComponent implements ControlValueAccessor {
   @Input() label: string = '';

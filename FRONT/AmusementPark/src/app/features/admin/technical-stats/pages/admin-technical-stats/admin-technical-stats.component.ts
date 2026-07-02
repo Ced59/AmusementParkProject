@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonDirective } from 'primeng/button';
-import { Card } from 'primeng/card';
-import { PrimeTemplate } from 'primeng/api';
-import { Tag } from 'primeng/tag';
-import { Tooltip } from 'primeng/tooltip';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/primeless/card';
+import { PrimeTemplate } from '@shared/primeless/api';
+import { Tag } from '@shared/primeless/tag';
+import { Tooltip } from '@shared/primeless/tooltip';
 
 import {
   TechnicalStatsCount,

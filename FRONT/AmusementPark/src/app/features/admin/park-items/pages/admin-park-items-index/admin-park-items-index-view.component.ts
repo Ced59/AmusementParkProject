@@ -11,14 +11,13 @@ import {
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { InputText } from 'primeng/inputtext';
-import { Select } from 'primeng/select';
-import { TableModule } from 'primeng/table';
-import { PrimeTemplate } from 'primeng/api';
-import { Tag } from 'primeng/tag';
-import { ButtonDirective } from 'primeng/button';
+import { Card } from '@shared/primeless/card';
+import { InputText } from '@shared/primeless/inputtext';
+import { Select } from '@shared/primeless/select';
+import { TableModule } from '@shared/primeless/table';
+import { PrimeTemplate } from '@shared/primeless/api';
+import { Tag } from '@shared/primeless/tag';
+import { ButtonDirective } from '@shared/primeless/button';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
 import {
@@ -53,7 +52,6 @@ interface PrimeSortEventLike {
   styleUrls: ['./admin-park-items-index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    Bind,
     Card,
     FormsModule,
     InputText,

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { Tag } from 'primeng/tag';
+import { Tag } from '@shared/primeless/tag';
 
 import { CaptainCoasterComparisonResultResponse } from '@app/models/admin/data/data-management.models';
 import { CaptainCoasterComparisonFacade } from '@features/admin/data/state/captain-coaster-comparison.facade';

@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from 'primeng/button';
-import { Card } from 'primeng/card';
-import { InputText } from 'primeng/inputtext';
-import { PrimeTemplate } from 'primeng/api';
-import { Tag } from 'primeng/tag';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/primeless/card';
+import { InputText } from '@shared/primeless/inputtext';
+import { PrimeTemplate } from '@shared/primeless/api';
+import { Tag } from '@shared/primeless/tag';
 
 import {
   SocialShareDailyStatsPoint,

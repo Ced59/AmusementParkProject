@@ -1,15 +1,14 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaginatorState } from 'primeng/paginator';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
+import { PaginatorState } from '@shared/primeless/paginator';
+import { Card } from '@shared/primeless/card';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { ButtonDirective } from 'primeng/button';
-import { Panel } from 'primeng/panel';
-import { ProgressSpinner } from 'primeng/progressspinner';
+import { InputText } from '@shared/primeless/inputtext';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Panel } from '@shared/primeless/panel';
+import { ProgressSpinner } from '@shared/primeless/progressspinner';
 import { NgClass, DatePipe } from '@angular/common';
-import { Tag } from 'primeng/tag';
+import { Tag } from '@shared/primeless/tag';
 import { TranslateModule } from '@ngx-translate/core';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
@@ -19,7 +18,7 @@ import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
     templateUrl: './admin-park-logos-tab.component.html',
     styleUrls: ['./admin-park-logos-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [Bind, Card, ImageDisplayComponent, FormsModule, InputText, ButtonDirective, Panel, ProgressSpinner, NgClass, Tag, DatePipe, TranslateModule, PaginationComponent]
+    imports: [Card, ImageDisplayComponent, FormsModule, InputText, ButtonDirective, Panel, ProgressSpinner, NgClass, Tag, DatePipe, TranslateModule, PaginationComponent]
 })
 export class AdminParkLogosTabComponent {
   @Input() isEditMode: boolean = false;

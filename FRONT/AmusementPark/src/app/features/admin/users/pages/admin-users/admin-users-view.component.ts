@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
-import { TableLazyLoadEvent, TableModule } from 'primeng/table';
+import { TableLazyLoadEvent, TableModule } from '@shared/primeless/table';
 import { UserDto } from '@app/models/users/user_dto';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { PrimeTemplate } from 'primeng/api';
-import { Tag } from 'primeng/tag';
-import { ButtonDirective } from 'primeng/button';
-import { Tooltip } from 'primeng/tooltip';
+import { Card } from '@shared/primeless/card';
+import { PrimeTemplate } from '@shared/primeless/api';
+import { Tag } from '@shared/primeless/tag';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Tooltip } from '@shared/primeless/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
 
@@ -15,7 +14,7 @@ import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.
   templateUrl: './admin-users-view.component.html',
   styleUrls: ['./admin-users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, Card, PrimeTemplate, TableModule, Tag, ButtonDirective, Tooltip, TranslateModule, EmptyStateComponent]
+  imports: [Card, PrimeTemplate, TableModule, Tag, ButtonDirective, Tooltip, TranslateModule, EmptyStateComponent]
 })
 export class AdminUsersViewComponent {
   @Input() users!: Signal<UserDto[]>;

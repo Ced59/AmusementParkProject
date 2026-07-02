@@ -6,14 +6,14 @@ import { AdminUsersRoutingModule } from './admin-users-routing.module';
 import { AdminUsersComponent } from './admin-users.component';
 import { AdminUserManagementComponent } from '../admin-user-management/admin-user-management.component';
 
-import { TableModule } from 'primeng/table';
+import { TableModule } from '@shared/primeless/table';
 import { TranslateModule } from '@ngx-translate/core';
-import { TagModule } from 'primeng/tag';
-import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
-import { TooltipModule } from 'primeng/tooltip';
-import { InputTextModule } from 'primeng/inputtext';
-import { SelectModule } from 'primeng/select';
+import { TagModule } from '@shared/primeless/tag';
+import { CardModule } from '@shared/primeless/card';
+import { ButtonModule } from '@shared/primeless/button';
+import { TooltipModule } from '@shared/primeless/tooltip';
+import { InputTextModule } from '@shared/primeless/inputtext';
+import { SelectModule } from '@shared/primeless/select';
 
 @NgModule({
     imports: [

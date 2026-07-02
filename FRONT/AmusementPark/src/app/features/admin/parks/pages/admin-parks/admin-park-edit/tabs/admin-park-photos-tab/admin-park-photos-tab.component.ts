@@ -2,15 +2,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { DatePipe, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { PaginatorState } from 'primeng/paginator';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
-import { Card } from 'primeng/card';
-import { InputText } from 'primeng/inputtext';
-import { Panel } from 'primeng/panel';
-import { ProgressSpinner } from 'primeng/progressspinner';
-import { Select } from 'primeng/select';
-import { Tag } from 'primeng/tag';
+import { PaginatorState } from '@shared/primeless/paginator';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/primeless/card';
+import { InputText } from '@shared/primeless/inputtext';
+import { Panel } from '@shared/primeless/panel';
+import { ProgressSpinner } from '@shared/primeless/progressspinner';
+import { Select } from '@shared/primeless/select';
+import { Tag } from '@shared/primeless/tag';
 
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
@@ -23,7 +22,6 @@ import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
   styleUrls: ['./admin-park-photos-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    Bind,
     Card,
     FormsModule,
     InputText,

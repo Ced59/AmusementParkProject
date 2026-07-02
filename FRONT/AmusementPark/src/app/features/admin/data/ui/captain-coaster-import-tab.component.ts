@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ButtonDirective } from 'primeng/button';
-import { Card } from 'primeng/card';
-import { Checkbox } from 'primeng/checkbox';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/primeless/card';
+import { Checkbox } from '@shared/primeless/checkbox';
 
 import { CaptainCoasterPipelineFacade } from '@features/admin/data/state/captain-coaster-pipeline.facade';
 

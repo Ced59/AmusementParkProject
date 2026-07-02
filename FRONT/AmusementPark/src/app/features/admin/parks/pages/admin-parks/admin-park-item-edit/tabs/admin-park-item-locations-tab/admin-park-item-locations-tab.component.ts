@@ -2,12 +2,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapMarker } from '@app/models/map/map-marker';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { ButtonDirective } from 'primeng/button';
+import { Card } from '@shared/primeless/card';
+import { ButtonDirective } from '@shared/primeless/button';
 import { NgClass } from '@angular/common';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
-import { InputText } from 'primeng/inputtext';
+import { InputText } from '@shared/primeless/inputtext';
 import { TranslateModule } from '@ngx-translate/core';
 
 export type AttractionLocationKey = 'entrance' | 'exit' | 'fastPassEntrance' | 'reducedMobilityEntrance';
@@ -22,7 +21,7 @@ interface AttractionLocationOption {
     templateUrl: './admin-park-item-locations-tab.component.html',
     styleUrls: ['./admin-park-item-locations-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [FormsModule, ReactiveFormsModule, Bind, Card, ButtonDirective, NgClass, LeafletMapComponent, InputText, TranslateModule]
+    imports: [FormsModule, ReactiveFormsModule, Card, ButtonDirective, NgClass, LeafletMapComponent, InputText, TranslateModule]
 })
 export class AdminParkItemLocationsTabComponent {
   @Input({ required: true }) formGroup!: FormGroup;

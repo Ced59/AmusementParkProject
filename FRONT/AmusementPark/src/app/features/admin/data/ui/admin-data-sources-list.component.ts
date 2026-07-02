@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { ButtonDirective } from 'primeng/button';
-import { Card } from 'primeng/card';
-import { TableModule } from 'primeng/table';
-import { Tag } from 'primeng/tag';
+import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/primeless/card';
+import { TableModule } from '@shared/primeless/table';
+import { Tag } from '@shared/primeless/tag';
 
 import { DataSourceSummary } from '@app/models/admin/data/data-management.models';
 

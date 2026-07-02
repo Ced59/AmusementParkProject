@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { TableLazyLoadEvent } from 'primeng/table';
+import { TableLazyLoadEvent } from '@shared/primeless/table';
 
 import { UserDto } from '@app/models/users/user_dto';
 import { ImagesApiService } from '@data-access/images/images-api.service';

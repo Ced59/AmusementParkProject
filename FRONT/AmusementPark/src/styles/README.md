@@ -10,7 +10,7 @@ Ce dossier porte le socle visuel centralisé de la refonte design MVP.
 4. `_base.scss` / `_layout.scss` / `_typography.scss` : socle transversal.
 5. `_navigation.scss`, `_buttons.scss`, `_chips.scss`, `_surfaces.scss`, `_cards.scss`, `_forms.scss`, `_maps.scss`, `_states.scss` : primitives design réutilisables.
 6. `_admin-skin.scss` : déclinaison admin dense, sans polluer le public.
-7. `_primeng-overrides.scss` : adaptations PrimeNG uniquement.
+7. `_primeless-components.scss` : adaptations des composants internes de compatibilité.
 
 ## Règle de migration
 

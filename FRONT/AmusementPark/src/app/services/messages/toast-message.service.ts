@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MessageService as PrimeNgMessageService } from 'primeng/api';
+import { MessageService } from '@shared/primeless/api';
 
 import { sanitizeDisplayMessage } from '@shared/utils/security';
 
@@ -8,10 +8,10 @@ import { sanitizeDisplayMessage } from '@shared/utils/security';
 })
 export class ToastMessageService {
 
-  constructor(private primeNgMessageService: PrimeNgMessageService) {}
+  constructor(private readonly messageService: MessageService) {}
 
   add(severity: 'success' | 'info' | 'warn' | 'error', summary: string, detail: string): void {
-    this.primeNgMessageService.add({
+    this.messageService.add({
       severity,
       summary: sanitizeDisplayMessage(summary, 'Information'),
       detail: sanitizeDisplayMessage(detail, severity === 'error' ? 'Une erreur est survenue.' : '')
