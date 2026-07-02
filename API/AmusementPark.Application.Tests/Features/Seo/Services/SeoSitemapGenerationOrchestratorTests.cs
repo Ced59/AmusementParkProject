@@ -156,6 +156,47 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         indexNowSubmitter.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task GenerateAsync_WhenGenerationIsCanceled_ShouldReleaseRuntimeState()
+    {
+        ISitemapSectionProvider[] providers = new ISitemapSectionProvider[]
+        {
+            new CancelingSitemapSectionProvider(),
+        };
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+        InMemorySeoSitemapRuntimeStateStore runtimeStateStore = new InMemorySeoSitemapRuntimeStateStore();
+
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            providers,
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            runtimeStateStore);
+
+        await Assert.ThrowsAsync<OperationCanceledException>(() => orchestrator.GenerateAsync(
+            "https://example.com/",
+            new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } },
+            SitemapGenerationTrigger.Manual,
+            submitToIndexNow: false,
+            triggeredByUserId: "admin-1",
+            triggeredByUserEmail: "admin@example.com",
+            CancellationToken.None));
+
+        SitemapRuntimeState runtimeState = runtimeStateStore.GetCurrent();
+        Assert.Equal(SitemapGenerationStatus.Failed, runtimeState.Status);
+        Assert.Equal("canceled", runtimeState.CurrentStep);
+        Assert.True(runtimeStateStore.TryStart("retry"));
+        snapshotRepository.VerifyNoOtherCalls();
+        historyRepository.VerifyNoOtherCalls();
+        settingsRepository.VerifyNoOtherCalls();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
     private sealed class FakeSitemapSectionProvider : ISitemapSectionProvider
     {
         private readonly IReadOnlyCollection<SitemapUrlEntry> urls;
@@ -177,6 +218,20 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         public Task<IReadOnlyCollection<SitemapUrlEntry>> GetUrlsAsync(SitemapGenerationContext context, CancellationToken cancellationToken)
         {
             return Task.FromResult(this.urls);
+        }
+    }
+
+    private sealed class CancelingSitemapSectionProvider : ISitemapSectionProvider
+    {
+        public string Key => SitemapSectionKeys.Parks;
+
+        public string FileName => "parks.xml";
+
+        public string DisplayName => "Parcs";
+
+        public Task<IReadOnlyCollection<SitemapUrlEntry>> GetUrlsAsync(SitemapGenerationContext context, CancellationToken cancellationToken)
+        {
+            throw new OperationCanceledException();
         }
     }
 }

@@ -56,19 +56,43 @@ public sealed class SeoControllerTests
         Assert.Equal(ApiOutputCachePolicyNames.PublicHtmlSitemapNodes, attribute.PolicyName);
     }
 
-    private static SeoController CreateController(SeoSettings settings)
+    [Fact]
+    public async Task GetIndexNowKeyFileAsync_WhenCustomRootLocationIsConfigured_ShouldServeKey()
+    {
+        Mock<ISeoSitemapSettingsRepository> sitemapSettingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        sitemapSettingsRepository
+            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new SeoSitemapSettings
+            {
+                IsIndexNowEnabled = true,
+                IndexNowKey = "secret-key",
+                IndexNowKeyLocation = "/indexnow-key.txt",
+            });
+        SeoController controller = CreateController(
+            new SeoSettings { PublicBaseUrl = "https://amusement-parks.fun" },
+            sitemapSettingsRepository.Object);
+
+        IActionResult actionResult = await controller.GetIndexNowKeyFileAsync("indexnow-key");
+
+        ContentResult result = Assert.IsType<ContentResult>(actionResult);
+        Assert.Equal("secret-key", result.Content);
+        Assert.Equal("text/plain; charset=utf-8", result.ContentType);
+        sitemapSettingsRepository.VerifyAll();
+    }
+
+    private static SeoController CreateController(SeoSettings settings, ISeoSitemapSettingsRepository? sitemapSettingsRepository = null)
     {
         Mock<IWebHostEnvironment> environment = new Mock<IWebHostEnvironment>();
         environment.SetupGet(static candidate => candidate.EnvironmentName).Returns(Environments.Production);
 
-        Mock<ISeoSitemapSettingsRepository> sitemapSettingsRepository = new Mock<ISeoSitemapSettingsRepository>();
+        ISeoSitemapSettingsRepository resolvedSitemapSettingsRepository = sitemapSettingsRepository ?? new Mock<ISeoSitemapSettingsRepository>().Object;
         Mock<IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>>> sitemapDocumentHandler = new Mock<IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>>>();
         Mock<IQueryHandler<GetPublicHtmlSitemapNodesQuery, ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>>> htmlSitemapNodesHandler = new Mock<IQueryHandler<GetPublicHtmlSitemapNodesQuery, ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>>>();
 
         return new SeoController(
             Options.Create(settings),
             environment.Object,
-            sitemapSettingsRepository.Object,
+            resolvedSitemapSettingsRepository,
             sitemapDocumentHandler.Object,
             htmlSitemapNodesHandler.Object);
     }
