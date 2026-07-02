@@ -203,10 +203,12 @@ public sealed class UpdateTechnicalPageCommandHandler : ICommandHandler<UpdateTe
 public sealed class UpsertTechnicalPagesJsonCommandHandler : ICommandHandler<UpsertTechnicalPagesJsonCommand, ApplicationResult<TechnicalPageJsonUpsertResult>>
 {
     private readonly ITechnicalPageRepository repository;
+    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
-    public UpsertTechnicalPagesJsonCommandHandler(ITechnicalPageRepository repository)
+    public UpsertTechnicalPagesJsonCommandHandler(ITechnicalPageRepository repository, ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.repository = repository;
+        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
     public async Task<ApplicationResult<TechnicalPageJsonUpsertResult>> HandleAsync(UpsertTechnicalPagesJsonCommand command, CancellationToken cancellationToken = default)
@@ -241,6 +243,7 @@ public sealed class UpsertTechnicalPagesJsonCommandHandler : ICommandHandler<Ups
             pages.Add(TechnicalPageResult.FromDomain(outcome.Page));
         }
 
+        await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<TechnicalPageJsonUpsertResult>.Success(new TechnicalPageJsonUpsertResult
         {
             CreatedCount = createdCount,

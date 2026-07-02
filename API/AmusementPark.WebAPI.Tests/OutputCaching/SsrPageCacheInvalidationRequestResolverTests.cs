@@ -80,6 +80,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
             CancellationToken.None);
 
         Assert.False(request.All);
+        Assert.Contains("/fr/manufacturers", request.Paths);
         Assert.Contains("/fr/park-manufacturer/manufacturer-1/", request.Prefixes);
         Assert.Contains("/fr/park/park-1/", request.Prefixes);
         Assert.Contains("/fr/park/park-2/", request.Prefixes);
@@ -343,7 +344,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Contains("/fr/park/park-1/target-park/zone/zone-1/", request.Prefixes);
         Assert.DoesNotContain("/fr/park/park-1/", request.Prefixes);
         Assert.DoesNotContain("/fr/home", request.Paths);
-        Assert.False(request.IncludeSeoDocuments);
+        Assert.True(request.IncludeSeoDocuments);
         Assert.False(request.Refresh);
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
@@ -384,11 +385,11 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Contains("/fr/home", request.Paths);
         Assert.False(request.AllowStale);
         Assert.False(request.Refresh);
-        Assert.False(request.IncludeSeoDocuments);
+        Assert.True(request.IncludeSeoDocuments);
     }
 
     [Fact]
-    public async Task ResolveAsync_ForLargeParkGraphUpsert_ShouldTargetParkWithoutSeoDocumentsOrHardPurge()
+    public async Task ResolveAsync_ForLargeParkGraphUpsert_ShouldTargetParkWithSeoDocumentsWithoutHardPurge()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
         ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
@@ -415,7 +416,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.False(request.All);
         Assert.Contains("/fr/park/park-1/", request.Prefixes);
         Assert.Contains("/fr/home", request.Paths);
-        Assert.False(request.IncludeSeoDocuments);
+        Assert.True(request.IncludeSeoDocuments);
         Assert.True(request.AllowStale);
         Assert.False(request.Refresh);
     }
@@ -542,7 +543,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Contains("/fr/park/park-1/target-park/item/item-1/", request.Prefixes);
         Assert.Contains("/fr/park/park-1/target-park/item/item-2/", request.Prefixes);
         Assert.DoesNotContain("/fr/park/park-1/", request.Prefixes);
-        Assert.False(request.IncludeSeoDocuments);
+        Assert.True(request.IncludeSeoDocuments);
         Assert.False(request.Refresh);
         parkRepository.Verify(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()), Times.Exactly(2));
         parkItemRepository.VerifyAll();

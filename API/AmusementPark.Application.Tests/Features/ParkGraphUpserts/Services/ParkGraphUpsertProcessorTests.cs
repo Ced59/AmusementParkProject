@@ -581,7 +581,7 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(parkChange.Fields, field => field.Field == "openingDate");
         Assert.Contains(parkChange.Fields, field => field.Field == "closingDate");
         Assert.NotNull(seoUpdate);
-        Assert.True(seoUpdate!.SuppressSitemapRefresh);
+        Assert.False(seoUpdate!.SuppressSitemapRefresh);
         Assert.Contains(seoUpdate.PreviousParks, previousPark => previousPark.Id == "park-1" && previousPark.OpeningDate == null && previousPark.ClosingDate == null);
         Assert.Contains(seoUpdate.CurrentParks, currentPark =>
             currentPark.Id == "park-1" &&
@@ -2697,7 +2697,7 @@ public sealed class ParkGraphUpsertProcessorTests
         publicSeoUpdateNotifier
             .Setup(value => value.NotifyAsync(
                 It.Is<PublicSeoUpdate>(update =>
-                    update.SuppressSitemapRefresh
+                    !update.SuppressSitemapRefresh
                     && update.CurrentParks.Any(currentPark => currentPark.Id == "park-1")),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);

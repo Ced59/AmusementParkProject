@@ -240,7 +240,6 @@ public sealed partial class ParkGraphUpsertProcessor
                         PreviousParkItems = itemSeoChanges.PreviousItems.Concat(mergeSummary.PreviousParkItems).ToList(),
                         CurrentParkItems = itemSeoChanges.CurrentItems.Concat(mergeSummary.CurrentParkItems).ToList(),
                         IncludeDiscoveryPages = true,
-                        SuppressSitemapRefresh = true,
                     },
                     cancellationToken);
             }

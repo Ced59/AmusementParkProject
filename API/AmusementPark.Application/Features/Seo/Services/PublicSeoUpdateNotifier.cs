@@ -33,14 +33,14 @@ public sealed class PublicSeoUpdateNotifier : IPublicSeoUpdateNotifier
         {
             PublicSeoContext context = await this.contextProvider.GetAsync(cancellationToken);
             IReadOnlyCollection<string> relativeUrls = await this.urlResolver.ResolveAsync(update, context.SupportedLanguages, cancellationToken);
-            if (relativeUrls.Count == 0)
-            {
-                return;
-            }
-
             if (!update.SuppressSitemapRefresh)
             {
                 await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
+            }
+
+            if (relativeUrls.Count == 0)
+            {
+                return;
             }
 
             SeoSitemapSettings settings = await this.settingsRepository.GetAsync(cancellationToken);

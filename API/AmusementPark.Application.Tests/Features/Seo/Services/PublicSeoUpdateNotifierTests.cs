@@ -511,6 +511,49 @@ public sealed class PublicSeoUpdateNotifierTests
     }
 
     [Fact]
+    public async Task NotifyAsync_WhenNoIndexNowUrlIsResolved_ShouldStillScheduleSitemapRefresh()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IPublicSeoContextProvider> contextProvider = new Mock<IPublicSeoContextProvider>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> refreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+
+        contextProvider
+            .Setup(provider => provider.GetAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PublicSeoContext("https://example.com/", new[] { "fr" }));
+        refreshScheduler
+            .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        PublicSeoUrlResolver resolver = new PublicSeoUrlResolver(
+            parkItemRepository.Object,
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            imageRepository.Object);
+        PublicSeoUpdateNotifier notifier = new PublicSeoUpdateNotifier(
+            resolver,
+            contextProvider.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            refreshScheduler.Object);
+
+        await notifier.NotifyAsync(new PublicSeoUpdate(), CancellationToken.None);
+
+        contextProvider.VerifyAll();
+        refreshScheduler.VerifyAll();
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+        parkZoneRepository.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
+        settingsRepository.VerifyNoOtherCalls();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task ResolveAsync_WhenPublishedParkVideoChanges_ShouldReturnParkVideoListAndWatchUrls()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

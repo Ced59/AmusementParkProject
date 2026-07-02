@@ -27,7 +27,6 @@ public sealed partial class ParkGraphUpsertProcessor
                 PreviousParkItems = summary.PreviousParkItems,
                 CurrentParkItems = summary.CurrentParkItems,
                 IncludeDiscoveryPages = true,
-                SuppressSitemapRefresh = true,
             },
             cancellationToken);
     }

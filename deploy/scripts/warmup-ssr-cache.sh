@@ -199,7 +199,7 @@ def collect_seo_document_paths(root: ET.Element) -> list[str]:
     paths: list[str] = ['/robots.txt', '/sitemap.xml']
     for url in locs(root):
         path = get_path(url)
-        if path.startswith('/sitemaps/'):
+        if path.endswith('.xml') and path != '/sitemap.xml':
             paths.append(path)
 
     ordered: list[str] = []

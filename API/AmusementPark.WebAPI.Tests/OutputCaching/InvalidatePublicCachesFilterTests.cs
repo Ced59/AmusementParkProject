@@ -128,6 +128,29 @@ public sealed class InvalidatePublicCachesFilterTests
     }
 
     [Fact]
+    public async Task OnActionExecutionAsync_WhenOutputCacheEvictionIsDisabledButSeoDocumentsAreIncluded_ShouldEvictOnlySeoTag()
+    {
+        Mock<IOutputCacheStore> outputCacheStore = CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicSeoTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        ssrPageCacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver(CreateTargetedRequest());
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Post,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.Data, PublicCacheScope.Seo) { EvictOutputCache = false });
+
+        await filter.OnActionExecutionAsync(context, () => Task.FromResult(CreateExecutedContext(context)));
+
+        outputCacheStore.Verify(
+            store => store.EvictByTagAsync(ApiOutputCachePolicyNames.PublicDataTag, It.IsAny<CancellationToken>()),
+            Times.Never);
+        outputCacheStore.VerifyAll();
+        ssrPageCacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
     public async Task OnActionExecutionAsync_WhenOutputCacheEvictionIsDisabledButHardPurgeIsResolved_ShouldEvictTags()
     {
         SsrPageCacheInvalidationRequest capturedRequest = null!;

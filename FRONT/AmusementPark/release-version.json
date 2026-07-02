@@ -1,6 +1,20 @@
 {
-  "version": "3.1.36",
+  "version": "3.1.37",
   "history": [
+    {
+      "version": "3.1.37",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le référencement reste plus à jour.",
+        "en": "Search indexing stays fresher.",
+        "de": "Die Suchindexierung bleibt aktueller.",
+        "nl": "Zoekindexering blijft actueler.",
+        "it": "L'indicizzazione resta più aggiornata.",
+        "es": "La indexación sigue más actualizada.",
+        "pl": "Indeksowanie pozostaje bardziej aktualne.",
+        "pt": "A indexação continua mais atualizada."
+      }
+    },
     {
       "version": "3.1.36",
       "releasedAt": "2026-07-03",

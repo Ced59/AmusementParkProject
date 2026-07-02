@@ -87,12 +87,13 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         IReadOnlyCollection<PublicCacheScope> scopes,
         SsrPageCacheInvalidationRequest ssrInvalidation)
     {
-        if (!RequiresOutputCacheEviction(attribute, ssrInvalidation))
+        IReadOnlyCollection<string> tags = ResolveOutputCacheTags(attribute, scopes, ssrInvalidation);
+        if (tags.Count == 0)
         {
             return;
         }
 
-        foreach (string tag in ResolveTags(scopes))
+        foreach (string tag in tags)
         {
             try
             {
@@ -172,6 +173,24 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         SsrPageCacheInvalidationRequest request)
     {
         return attribute.EvictOutputCache || request.All || !request.AllowStale;
+    }
+
+    private static IReadOnlyCollection<string> ResolveOutputCacheTags(
+        InvalidatesPublicCacheAttribute attribute,
+        IReadOnlyCollection<PublicCacheScope> scopes,
+        SsrPageCacheInvalidationRequest request)
+    {
+        if (RequiresOutputCacheEviction(attribute, request))
+        {
+            return ResolveTags(scopes);
+        }
+
+        if (request.IncludeSeoDocuments && scopes.Contains(PublicCacheScope.Seo))
+        {
+            return new[] { ApiOutputCachePolicyNames.PublicSeoTag };
+        }
+
+        return Array.Empty<string>();
     }
 
     private static SsrPageCacheInvalidationRequest ApplySafetyMode(
