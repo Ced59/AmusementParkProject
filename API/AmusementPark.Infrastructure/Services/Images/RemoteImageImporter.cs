@@ -291,6 +291,11 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
 
     private static bool IsBlockedAddress(IPAddress address)
     {
+        if (address.IsIPv4MappedToIPv6)
+        {
+            address = address.MapToIPv4();
+        }
+
         if (IPAddress.IsLoopback(address))
         {
             return true;

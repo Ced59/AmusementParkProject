@@ -35,7 +35,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("images")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
-[InvalidatesPublicCache(PublicCacheScope.Data)]
+[InvalidatesPublicCache(PublicCacheScope.Data, PublicCacheScope.ReferenceData)]
 public sealed class ImagesController : ControllerBase
 {
     private readonly ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>> uploadImageCommandHandler;
@@ -349,7 +349,8 @@ public sealed class ImagesController : ControllerBase
     [ProducesResponseType(typeof(PagedResponseDto<ImageTagDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetTagsAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<IReadOnlyCollection<ImageTag>> result = await this.listImageTagsQueryHandler.HandleAsync(new ListImageTagsQuery(), cancellationToken);
+        bool includeInactive = this.User.IsInRole(AuthorizationRoleGroups.Admin);
+        ApplicationResult<IReadOnlyCollection<ImageTag>> result = await this.listImageTagsQueryHandler.HandleAsync(new ListImageTagsQuery(includeInactive), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);

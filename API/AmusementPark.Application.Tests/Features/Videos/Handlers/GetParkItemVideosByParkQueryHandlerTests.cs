@@ -79,7 +79,7 @@ public sealed class GetParkItemVideosByParkQueryHandlerTests
     [Fact]
     public async Task HandleAsync_WhenIncludeHiddenIsTrue_ShouldUseAllClosedFilterAndKeepPublicationFilterOpen()
     {
-        Mock<IParkRepository> parkRepository = CreateParkRepository();
+        Mock<IParkRepository> parkRepository = CreateParkRepository(expectedIncludeHidden: true);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IVideoRepository> videoRepository = new Mock<IVideoRepository>(MockBehavior.Strict);
         ParkItem item = CreateParkItem("item-1", "Draft Ride");
@@ -165,6 +165,31 @@ public sealed class GetParkItemVideosByParkQueryHandlerTests
         videoRepository.VerifyNoOtherCalls();
     }
 
+    [Theory]
+    [InlineData(false, AdminReviewStatus.Validated, ParkStatus.Operating)]
+    [InlineData(true, AdminReviewStatus.NotRelevant, ParkStatus.Operating)]
+    [InlineData(true, AdminReviewStatus.Validated, ParkStatus.ClosedDefinitively)]
+    public async Task HandleAsync_WhenPublicParentParkIsNotPublic_ShouldReturnNotFoundWithoutQueryingItems(
+        bool isVisible,
+        AdminReviewStatus adminReviewStatus,
+        ParkStatus status)
+    {
+        Mock<IParkRepository> parkRepository = CreateParkRepository(isVisible, adminReviewStatus, status);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IVideoRepository> videoRepository = new Mock<IVideoRepository>(MockBehavior.Strict);
+        GetParkItemVideosByParkQueryHandler handler = CreateHandler(parkRepository, parkItemRepository, videoRepository);
+
+        ApplicationResult<PagedResult<ParkItemVideoResult>> result = await handler.HandleAsync(
+            new GetParkItemVideosByParkQuery(new PagedQuery(1, 20), "park-1", new VideoSearchCriteria()),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "park.not-found");
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        videoRepository.VerifyNoOtherCalls();
+    }
+
     private static GetParkItemVideosByParkQueryHandler CreateHandler(
         Mock<IParkRepository> parkRepository,
         Mock<IParkItemRepository> parkItemRepository,
@@ -178,12 +203,18 @@ public sealed class GetParkItemVideosByParkQueryHandlerTests
         return new GetParkItemVideosByParkQueryHandler(parkItemRepository.Object, videoRepository.Object, validator);
     }
 
-    private static Mock<IParkRepository> CreateParkRepository()
+    private static Mock<IParkRepository> CreateParkRepository(
+        bool isVisible = true,
+        AdminReviewStatus adminReviewStatus = AdminReviewStatus.Validated,
+        ParkStatus status = ParkStatus.Operating,
+        bool expectedIncludeHidden = false)
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
-            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated });
+            .Setup(repository => repository.GetByIdAsync("park-1", expectedIncludeHidden, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(expectedIncludeHidden || isVisible
+                ? new Park { Id = "park-1", Name = "Visible Park", IsVisible = isVisible, AdminReviewStatus = adminReviewStatus, Status = status }
+                : null);
         return parkRepository;
     }
 

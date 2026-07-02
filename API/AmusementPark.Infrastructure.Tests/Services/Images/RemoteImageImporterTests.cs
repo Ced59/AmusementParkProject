@@ -99,6 +99,28 @@ public sealed class RemoteImageImporterTests
         Assert.Equal(expected, result);
     }
 
+    [Fact]
+    public async Task ImportAsync_WhenSourceUsesIpv4MappedPrivateAddress_ShouldRejectBeforeSending()
+    {
+        CapturingHttpMessageHandler httpMessageHandler = new CapturingHttpMessageHandler(PngBytes);
+        RemoteImageImporter importer = CreateImporter(httpMessageHandler, out Mock<IImageRepository> imageRepository, out Mock<IImageProcessingPipeline> imageProcessingPipeline, out Mock<IImageBinaryStorage> imageBinaryStorage);
+
+        Image? image = await importer.ImportAsync(new RemoteImageImportRequest
+        {
+            SourceUrl = "http://[::ffff:10.0.0.1]/image.png",
+            Category = ImageCategory.Park,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            WithWatermark = true,
+        }, CancellationToken.None);
+
+        Assert.Null(image);
+        Assert.Null(httpMessageHandler.Request);
+        imageRepository.VerifyNoOtherCalls();
+        imageProcessingPipeline.VerifyNoOtherCalls();
+        imageBinaryStorage.VerifyNoOtherCalls();
+    }
+
     private static RemoteImageImporter CreateImporter(
         HttpMessageHandler httpMessageHandler,
         out Mock<IImageRepository> imageRepository,

@@ -21,6 +21,11 @@ public sealed class ListImageTagsQueryHandler : IQueryHandler<ListImageTagsQuery
     public async Task<ApplicationResult<IReadOnlyCollection<ImageTag>>> HandleAsync(ListImageTagsQuery query, CancellationToken cancellationToken = default)
     {
         IReadOnlyCollection<ImageTag> tags = await this.imageTagRepository.GetAllAsync(cancellationToken);
+        if (!query.IncludeInactive)
+        {
+            tags = tags.Where(static tag => tag.IsActive).ToList();
+        }
+
         return ApplicationResult<IReadOnlyCollection<ImageTag>>.Success(tags);
     }
 }
