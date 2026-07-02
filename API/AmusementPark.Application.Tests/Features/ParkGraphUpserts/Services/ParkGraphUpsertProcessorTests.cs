@@ -594,6 +594,108 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenZoneNameChanges_ShouldNotifySeoWithPreviousAndCurrentZoneSnapshots()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Magic Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        ParkZone zone = new ParkZone
+        {
+            Id = "zone-1",
+            ParkId = "park-1",
+            Name = "Old Zone",
+            IsVisible = true,
+        };
+        PublicSeoUpdate? seoUpdate = null;
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string id, Park value, CancellationToken cancellationToken) => value);
+
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        parkZoneRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { zone });
+        parkZoneRepository
+            .Setup(value => value.UpdateAsync("zone-1", It.IsAny<ParkZone>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string id, ParkZone value, CancellationToken cancellationToken) => value);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Callback<PublicSeoUpdate, CancellationToken>((update, _) => seoUpdate = update)
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "zones": [
+            {
+              "id": "zone-1",
+              "name": "New Zone"
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        ParkGraphUpsertChange zoneChange = Assert.Single(result.Value!.Changes, change => change.EntityType == "ParkZone");
+        Assert.Equal("Updated", zoneChange.ChangeType);
+        Assert.NotNull(seoUpdate);
+        Assert.Contains(seoUpdate!.PreviousParkZones, previousZone => previousZone.Id == "zone-1" && previousZone.Name == "Old Zone" && previousZone.IsVisible);
+        Assert.Contains(seoUpdate.CurrentParkZones, currentZone => currentZone.Id == "zone-1" && currentZone.Name == "New Zone" && currentZone.IsVisible);
+        parkRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenLifecycleDatesUseYearOnly_ShouldStoreDateTextWithoutInventingExactDate()
     {
         Park park = new Park

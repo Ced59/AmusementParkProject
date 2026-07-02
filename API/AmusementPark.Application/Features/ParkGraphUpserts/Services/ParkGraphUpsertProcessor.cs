@@ -211,7 +211,8 @@ public sealed partial class ParkGraphUpsertProcessor
         result.TargetParkName = targetPark.Name;
 
         await this.ProcessOpeningHoursAsync(root, targetPark, result, apply, cancellationToken);
-        Dictionary<string, string> zoneKeys = await this.ProcessZonesAsync(root, targetPark, result, apply, cancellationToken);
+        ParkGraphUpsertZoneSeoChanges zoneSeoChanges = await this.ProcessZonesAsync(root, targetPark, result, apply, cancellationToken);
+        Dictionary<string, string> zoneKeys = zoneSeoChanges.ZoneKeys;
         Dictionary<string, string> itemKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         ParkGraphUpsertItemSeoChanges itemSeoChanges = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, itemKeys, result, apply, cancellationToken);
         await this.ProcessImagesAsync(root, targetPark, itemKeys, founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, imageKeys, result, apply, cancellationToken);
@@ -239,6 +240,8 @@ public sealed partial class ParkGraphUpsertProcessor
                         CurrentParks = PublicSeoParkSnapshot.FromParks(new[] { targetPark }).Concat(mergeSummary.CurrentParks).ToList(),
                         PreviousParkItems = itemSeoChanges.PreviousItems.Concat(mergeSummary.PreviousParkItems).ToList(),
                         CurrentParkItems = itemSeoChanges.CurrentItems.Concat(mergeSummary.CurrentParkItems).ToList(),
+                        PreviousParkZones = zoneSeoChanges.PreviousZones,
+                        CurrentParkZones = zoneSeoChanges.CurrentZones,
                         IncludeDiscoveryPages = true,
                     },
                     cancellationToken);

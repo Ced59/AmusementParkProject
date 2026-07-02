@@ -554,6 +554,75 @@ public sealed class PublicSeoUpdateNotifierTests
     }
 
     [Fact]
+    public async Task ResolveAsync_WhenZoneSnapshotNameChanges_ShouldReturnPreviousAndCurrentZoneUrls()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = CreateEmptyImageRepository();
+
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new ParkItem
+                {
+                    Id = "item-1",
+                    ParkId = "park-1",
+                    ZoneId = "zone-1",
+                    Name = "Big Coaster",
+                    IsVisible = true,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                },
+            });
+        parkZoneRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new ParkZone
+                {
+                    Id = "zone-1",
+                    ParkId = "park-1",
+                    Name = "New Zone",
+                    IsVisible = true,
+                },
+            });
+
+        PublicSeoUrlResolver resolver = new PublicSeoUrlResolver(
+            parkItemRepository.Object,
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            imageRepository.Object);
+
+        IReadOnlyCollection<string> urls = await resolver.ResolveAsync(
+            new PublicSeoUpdate
+            {
+                CurrentParks = new[]
+                {
+                    new PublicSeoParkSnapshot("park-1", "Magic Park", true, ParkStatus.Operating, AdminReviewStatus.Validated, null),
+                },
+                PreviousParkZones = new[]
+                {
+                    new PublicSeoParkZoneSnapshot("zone-1", "park-1", "Old Zone", true),
+                },
+                CurrentParkZones = new[]
+                {
+                    new PublicSeoParkZoneSnapshot("zone-1", "park-1", "New Zone", true),
+                },
+            },
+            new[] { "fr" },
+            CancellationToken.None);
+
+        Assert.Contains("/fr/park/park-1/magic-park/zones", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/zone/zone-1/old-zone", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/zone/zone-1/new-zone", urls);
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        imageRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task ResolveAsync_WhenPublishedParkVideoChanges_ShouldReturnParkVideoListAndWatchUrls()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

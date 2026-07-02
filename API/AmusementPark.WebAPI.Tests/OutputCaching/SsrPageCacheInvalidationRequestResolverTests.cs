@@ -352,6 +352,67 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     }
 
     [Fact]
+    public async Task ResolveAsync_ForParkGraphUpsertItemZoneChange_ShouldTargetPreviousAndCurrentZones()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Target Park" });
+
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Wakala", ZoneId = "zone-new" });
+
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        parkZoneRepository
+            .Setup(repository => repository.GetByIdAsync("zone-new", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkZone { Id = "zone-new", ParkId = "park-1", Name = "New Zone" });
+        parkZoneRepository
+            .Setup(repository => repository.GetByIdAsync("zone-old", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkZone { Id = "zone-old", ParkId = "park-1", Name = "Old Zone" });
+
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver(
+            parkRepository: parkRepository,
+            parkItemRepository: parkItemRepository,
+            parkZoneRepository: parkZoneRepository);
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetParkId = "park-1",
+            Changes = new List<ParkGraphUpsertChangeDto>
+            {
+                new ParkGraphUpsertChangeDto
+                {
+                    EntityType = "ParkItem",
+                    EntityId = "item-1",
+                    ChangeType = "Updated",
+                    Fields = new List<ParkGraphUpsertFieldChangeDto>
+                    {
+                        new ParkGraphUpsertFieldChangeDto { Field = "zoneId", OldValue = "zone-old", NewValue = "zone-new" },
+                    },
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/target-park/zones", request.Paths);
+        Assert.Contains("/fr/park/park-1/target-park/zone/zone-old/", request.Prefixes);
+        Assert.Contains("/fr/park/park-1/target-park/zone/zone-new/", request.Prefixes);
+        Assert.True(request.IncludeSeoDocuments);
+        Assert.False(request.Refresh);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task ResolveAsync_ForParkGraphUpsertParkChange_ShouldTargetParkAndDiscoveryPages()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();

@@ -5,6 +5,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
+using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -15,12 +16,12 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
 public sealed partial class ParkGraphUpsertProcessor
 {
-    private async Task<Dictionary<string, string>> ProcessZonesAsync(JsonElement root, Park park, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
+    private async Task<ParkGraphUpsertZoneSeoChanges> ProcessZonesAsync(JsonElement root, Park park, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
     {
-        Dictionary<string, string> zoneKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        ParkGraphUpsertZoneSeoChanges seoChanges = new ParkGraphUpsertZoneSeoChanges();
         if (!root.TryGetProperty("zones", out JsonElement zones) || zones.ValueKind != JsonValueKind.Array)
         {
-            return zoneKeys;
+            return seoChanges;
         }
 
         IReadOnlyCollection<ParkZone> existingZones = await this.parkZoneRepository.GetByParkIdAsync(park.Id, cancellationToken);
@@ -39,22 +40,37 @@ public sealed partial class ParkGraphUpsertProcessor
             ParkZone? zone = FindZone(mutableZones, id, slug, name);
             bool isNew = zone is null;
             zone ??= new ParkZone { ParkId = park.Id, Name = name ?? string.Empty };
+            PublicSeoParkZoneSnapshot? previousZoneSnapshot = PublicSeoParkZoneSnapshot.FromParkZone(zone);
 
             ParkGraphUpsertChange change = BuildEntityChange("ParkZone", zone.Id, key, zone.Name, isNew ? "Created" : "Unchanged", isNew ? "name" : MatchMode(id, name));
             PatchZone(zone, patch, change);
             zone.ParkId = park.Id;
 
-            if (change.Fields.Count > 0 || isNew)
+            bool zoneChanged = change.Fields.Count > 0 || isNew;
+            if (zoneChanged)
             {
                 change.ChangeType = isNew ? "Created" : "Updated";
+                if (previousZoneSnapshot is not null)
+                {
+                    seoChanges.PreviousZones.Add(previousZoneSnapshot);
+                }
             }
 
-            if (apply && (change.Fields.Count > 0 || isNew))
+            if (apply && zoneChanged)
             {
                 zone = isNew
                     ? await this.parkZoneRepository.CreateAsync(zone, cancellationToken)
                     : await this.parkZoneRepository.UpdateAsync(zone.Id, zone, cancellationToken) ?? zone;
                 change.EntityId = zone.Id;
+            }
+
+            if (zoneChanged)
+            {
+                PublicSeoParkZoneSnapshot? currentZoneSnapshot = PublicSeoParkZoneSnapshot.FromParkZone(zone);
+                if (currentZoneSnapshot is not null)
+                {
+                    seoChanges.CurrentZones.Add(currentZoneSnapshot);
+                }
             }
 
             if (isNew)
@@ -64,17 +80,26 @@ public sealed partial class ParkGraphUpsertProcessor
 
             if (!string.IsNullOrWhiteSpace(key))
             {
-                zoneKeys[key] = zone.Id;
+                seoChanges.ZoneKeys[key] = zone.Id;
             }
 
             if (!string.IsNullOrWhiteSpace(zone.Name))
             {
-                zoneKeys[$"zone:{NormalizeKey(zone.Name)}"] = zone.Id;
+                seoChanges.ZoneKeys[$"zone:{NormalizeKey(zone.Name)}"] = zone.Id;
             }
 
             result.Changes.Add(change);
         }
 
-        return zoneKeys;
+        return seoChanges;
+    }
+
+    private sealed class ParkGraphUpsertZoneSeoChanges
+    {
+        public Dictionary<string, string> ZoneKeys { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        public List<PublicSeoParkZoneSnapshot> PreviousZones { get; } = new List<PublicSeoParkZoneSnapshot>();
+
+        public List<PublicSeoParkZoneSnapshot> CurrentZones { get; } = new List<PublicSeoParkZoneSnapshot>();
     }
 }
