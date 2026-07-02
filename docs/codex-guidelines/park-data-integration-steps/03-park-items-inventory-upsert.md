@@ -48,13 +48,13 @@ Pour chaque item :
 - `key` stable ;
 - `name` ;
 - `category` et `type` cohérents avec l’export existant ;
-- `zoneKey` seulement si la clé exacte est déjà présente dans l’export ou créée dans le même JSON ;
+- `zoneId` pour rattacher une zone déjà exportée, ou `zoneKey` seulement si la zone est créée/redéclarée dans le même JSON ;
 - `isVisible` pour les éléments confirmés, même fermés ;
 - `adminReviewStatus` prudent ;
 - `attractionDetails.status` si l’état est connu ;
 - `attractionDetails.openingDate` ou `openingDateText` ;
 - `attractionDetails.closingDate` ou `closingDateText` ;
-- constructeur via `manufacturerKey` si fiable ;
+- constructeur via `attractionDetails.manufacturerId` s’il existe déjà dans l’export, ou via `manufacturerKey` seulement si la référence est créée/redéclarée dans le même JSON ;
 - modèle, source externe, dimensions ou contraintes seulement si les sources sont fiables ;
 - conditions d’accès dans `attractionDetails.accessConditions` si elles sont disponibles ;
 - coordonnées uniquement si l’emplacement est précis.
@@ -103,15 +103,17 @@ Ne jamais mettre ces conditions dans les descriptions longues. Si les conditions
 
 Avant de livrer un lot de parkItems, faire un contrôle croisé explicite des rattachements :
 
-- lister toutes les valeurs `items[].zoneKey` utilisées dans le lot ;
-- vérifier que chaque `zoneKey` existe dans les `zones[].key` de l’export actualisé ou dans les `zones[].key` du même JSON ;
+- lister toutes les valeurs `items[].zoneId` et `items[].zoneKey` utilisées dans le lot ;
+- utiliser `zoneId` pour une zone déjà présente dans l’export actualisé ;
+- vérifier que chaque `zoneKey` existe dans les `zones[].key` du même JSON ;
 - lister toutes les valeurs `attractionDetails.manufacturerKey` utilisées dans les items du lot ;
-- vérifier que chaque `manufacturerKey` existe dans les constructeurs de l’export actualisé ou dans `references.manufacturers[].key` du même JSON ;
+- utiliser `attractionDetails.manufacturerId` pour un constructeur déjà présent dans l’export actualisé ;
+- vérifier que chaque `manufacturerKey` existe dans `references.manufacturers[].key` du même JSON ;
 - corriger le fichier avant livraison si une clé manque.
 
-Si une zone fiable est nécessaire mais absente de l’export, ajouter une zone minimale dans le même JSON avec `key`, `name`, `isVisible`, `adminReviewStatus` et, si possible, `displayOrder`. Si la zone n’est pas fiable, ne pas renseigner `zoneKey`.
+Si une zone fiable est nécessaire mais absente de l’export, ajouter une zone minimale dans le même JSON avec `key`, `name`, `isVisible`, `adminReviewStatus` et, si possible, `displayOrder`. Si la zone existe déjà dans l’export, préférer `zoneId` dans l’item plutôt que `zoneKey` isolé. Si la zone n’est pas fiable, ne pas renseigner de rattachement de zone.
 
-Si un constructeur fiable est nécessaire mais absent de l’export, ajouter un constructeur minimal dans le même JSON avec `key`, `name`, `isVisible` et `adminReviewStatus`. Si le constructeur n’est pas fiable, ne pas renseigner `manufacturerKey`.
+Si un constructeur fiable est nécessaire mais absent de l’export, ajouter un constructeur minimal dans le même JSON avec `key`, `name`, `isVisible` et `adminReviewStatus`. Si le constructeur existe déjà dans l’export, préférer `attractionDetails.manufacturerId` plutôt que `manufacturerKey` isolé. Si le constructeur n’est pas fiable, ne pas renseigner de rattachement constructeur.
 
 Ne jamais livrer un lot d’items qui suppose qu’une zone ou un constructeur sera créé dans un futur JSON. Le Preview doit pouvoir résoudre toutes les clés avec l’export actualisé et le fichier courant seulement.
 
@@ -119,14 +121,14 @@ Une alerte Preview du type `ZoneKey non résolue` ou `ManufacturerKey non résol
 
 ## Références constructeurs
 
-Si un `manufacturerKey` est utilisé, la référence doit être résolue dans le même JSON ou déjà exister sûrement dans l’export.
+Si un `manufacturerKey` est utilisé, la référence doit être résolue dans le même JSON. Pour réutiliser un constructeur déjà exporté sans redéclarer la référence, utiliser `attractionDetails.manufacturerId`.
 
-`manufacturerKey` doit être une clé de constructeur, pas un UUID deviné ni un ID interne copié sans preuve. Si l’export ne montre pas clairement la clé existante du constructeur, créer une entrée minimale dans `references.manufacturers` avec une `key` stable et réutiliser exactement cette même valeur dans `attractionDetails.manufacturerKey`.
+`manufacturerKey` doit être une clé de constructeur déclarée dans `references.manufacturers` du même JSON, pas un UUID deviné ni un ID interne copié sans preuve. Si l’export montre un constructeur existant, utiliser son `manufacturerId`; si la référence doit être créée ou redéclarée dans le lot, créer une entrée minimale dans `references.manufacturers` avec une `key` stable et réutiliser exactement cette même valeur dans `attractionDetails.manufacturerKey`.
 
 Avant de livrer le fichier JSON, faire un contrôle croisé simple :
 
 - lister toutes les valeurs `attractionDetails.manufacturerKey` utilisées dans les items du lot ;
-- vérifier que chaque valeur existe dans `references.manufacturers[].key` du même JSON ou dans les constructeurs de l’export actualisé ;
+- vérifier que chaque valeur existe dans `references.manufacturers[].key` du même JSON ;
 - corriger le fichier si une valeur manque.
 
 Une alerte Preview du type `ManufacturerKey non résolue` indique une erreur de livrable. Ne pas demander à l’utilisateur de l’appliquer quand même : corriger le JSON et fournir un nouveau fichier téléchargeable.
@@ -186,7 +188,7 @@ Sections possibles :
       "name": "Nom de l’item",
       "category": "Attraction",
       "type": "RollerCoaster",
-      "zoneKey": "zone-official-name",
+      "zoneId": "zone-id-from-export-or-null",
       "isVisible": true,
       "adminReviewStatus": "ToReview",
       "attractionDetails": {
@@ -211,8 +213,8 @@ Sections possibles :
 ## Contrôles avant livraison
 
 - Aucun doublon évident avec l’export.
-- Toutes les `zoneKey` sont résolues par l’export actualisé ou par `zones` dans le même JSON.
-- Toutes les `manufacturerKey` sont résolues par l’export actualisé ou par `references.manufacturers` dans le même JSON.
+- Tous les `zoneId` réutilisés proviennent de l’export actualisé, et toutes les `zoneKey` sont résolues par `zones` dans le même JSON.
+- Tous les `manufacturerId` réutilisés proviennent de l’export actualisé, et toutes les `manufacturerKey` sont résolues par `references.manufacturers` dans le même JSON.
 - Les conditions d’accès trouvées sont dans `attractionDetails.accessConditions`, pas dans les descriptions.
 - Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
 - Les dates sont exactes ou restent textuelles ; aucune année seule n’est transformée en date complète inventée.

@@ -1,6 +1,20 @@
 {
-  "version": "3.1.29",
+  "version": "3.1.30",
   "history": [
+    {
+      "version": "3.1.30",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Les pages d’histoire restent plus fiables.",
+        "en": "History pages stay more reliable.",
+        "de": "Historienseiten bleiben zuverlässiger.",
+        "nl": "Geschiedenispagina’s blijven betrouwbaarder.",
+        "it": "Le pagine della storia restano più affidabili.",
+        "es": "Las páginas de historia siguen siendo más fiables.",
+        "pl": "Strony historii pozostają bardziej niezawodne.",
+        "pt": "As páginas de história continuam mais fiáveis."
+      }
+    },
     {
       "version": "3.1.29",
       "releasedAt": "2026-07-02",

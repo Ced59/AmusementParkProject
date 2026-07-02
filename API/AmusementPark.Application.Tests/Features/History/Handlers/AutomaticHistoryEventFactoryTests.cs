@@ -30,6 +30,48 @@ public sealed class AutomaticHistoryEventFactoryTests
     }
 
     [Fact]
+    public void CreateParkLifecycleEvents_WhenOpeningDateTextUsesMonthName_ShouldCreateMonthPrecisionEvent()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Magic Park",
+            OpeningDate = null,
+            OpeningDateText = "juin 1998",
+            IsVisible = true,
+        };
+
+        IReadOnlyCollection<HistoryEvent> events = AutomaticHistoryEventFactory.CreateParkLifecycleEvents(park);
+
+        HistoryEvent historyEvent = Assert.Single(events);
+        Assert.Equal(1998, historyEvent.Year);
+        Assert.Equal(6, historyEvent.Month);
+        Assert.Null(historyEvent.Day);
+        Assert.Equal(HistoryDatePrecision.Month, historyEvent.DatePrecision);
+    }
+
+    [Fact]
+    public void CreateParkLifecycleEvents_WhenDateTextKeepsMonthPrecision_ShouldNotPromoteToDay()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Magic Park",
+            OpeningDate = new DateTime(1998, 6, 1),
+            OpeningDateText = "June 1998",
+            IsVisible = true,
+        };
+
+        IReadOnlyCollection<HistoryEvent> events = AutomaticHistoryEventFactory.CreateParkLifecycleEvents(park);
+
+        HistoryEvent historyEvent = Assert.Single(events);
+        Assert.Equal(1998, historyEvent.Year);
+        Assert.Equal(6, historyEvent.Month);
+        Assert.Null(historyEvent.Day);
+        Assert.Equal(HistoryDatePrecision.Month, historyEvent.DatePrecision);
+    }
+
+    [Fact]
     public void CreateParkItemLifecycleEvents_WhenClosingDateIsTextOnlyYear_ShouldCreateYearPrecisionEvent()
     {
         ParkItem item = new ParkItem

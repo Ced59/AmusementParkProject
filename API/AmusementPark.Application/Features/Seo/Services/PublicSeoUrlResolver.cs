@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -46,7 +47,7 @@ public sealed partial class PublicSeoUrlResolver
             .Select(static park => park.Id)
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
-        IReadOnlyDictionary<string, List<PublicSeoParkItemSnapshot>> currentPublicItemsByParkId = await this.LoadCurrentPublicItemsByParkIdAsync(changedParkIds, cancellationToken);
+        PublicSeoParkItemsByParkId currentItemsByParkId = await this.LoadCurrentItemsByParkIdAsync(changedParkIds, cancellationToken);
         IReadOnlyDictionary<string, IReadOnlyCollection<ParkZone>> zonesByParkId = await this.LoadZonesByParkIdAsync(changedParkIds, cancellationToken);
 
         foreach (PublicSeoParkSnapshot park in parkSnapshots)
@@ -56,12 +57,21 @@ public sealed partial class PublicSeoUrlResolver
                 continue;
             }
 
-            IReadOnlyCollection<PublicSeoParkItemSnapshot> currentPublicItems = currentPublicItemsByParkId.GetValueOrDefault(park.Id) ?? new List<PublicSeoParkItemSnapshot>();
+            IReadOnlyCollection<PublicSeoParkItemSnapshot> currentPublicItems = currentItemsByParkId.PublicItemsByParkId.GetValueOrDefault(park.Id) ?? new List<PublicSeoParkItemSnapshot>();
+            IReadOnlyCollection<PublicSeoParkItemSnapshot> currentHistoryItems = currentItemsByParkId.HistoryItemsByParkId.GetValueOrDefault(park.Id) ?? new List<PublicSeoParkItemSnapshot>();
             if (!IsPublicPark(park))
             {
-                if (HasParkLifecycleDate(park) || currentPublicItems.Any(HasParkItemLifecycleDate))
+                if (HasParkLifecycleDate(park) || currentHistoryItems.Any(HasParkItemLifecycleDate))
                 {
                     AddParkHistoryUrls(relativePaths, languages, park);
+                }
+
+                foreach (PublicSeoParkItemSnapshot item in currentHistoryItems)
+                {
+                    if (HasParkItemLifecycleDate(item))
+                    {
+                        AddParkItemHistoryUrls(relativePaths, languages, park, item);
+                    }
                 }
 
                 continue;
@@ -72,6 +82,7 @@ public sealed partial class PublicSeoUrlResolver
                 languages,
                 park,
                 currentPublicItems,
+                currentHistoryItems,
                 zonesByParkId.GetValueOrDefault(park.Id) ?? Array.Empty<ParkZone>(),
                 imagePresenceByKey,
                 cancellationToken);
@@ -147,6 +158,7 @@ public sealed partial class PublicSeoUrlResolver
         IReadOnlyCollection<string> languages,
         PublicSeoParkSnapshot park,
         IReadOnlyCollection<PublicSeoParkItemSnapshot> currentPublicItems,
+        IReadOnlyCollection<PublicSeoParkItemSnapshot> currentHistoryItems,
         IReadOnlyCollection<ParkZone> zones,
         Dictionary<string, bool> imagePresenceByKey,
         CancellationToken cancellationToken)
@@ -158,7 +170,7 @@ public sealed partial class PublicSeoUrlResolver
             AddParkMapUrls(relativePaths, languages, park);
         }
 
-        if (HasParkLifecycleDate(park) || currentPublicItems.Any(HasParkItemLifecycleDate))
+        if (HasParkLifecycleDate(park) || currentHistoryItems.Any(HasParkItemLifecycleDate))
         {
             AddParkHistoryUrls(relativePaths, languages, park);
         }
@@ -178,45 +190,64 @@ public sealed partial class PublicSeoUrlResolver
         foreach (PublicSeoParkItemSnapshot item in currentPublicItems)
         {
             AddParkItemDetailUrls(relativePaths, languages, park, item);
-            if (HasParkItemLifecycleDate(item))
-            {
-                AddParkItemHistoryUrls(relativePaths, languages, park, item);
-            }
-
             if (await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken))
             {
                 AddParkItemImageUrls(relativePaths, languages, park, item);
             }
         }
+
+        foreach (PublicSeoParkItemSnapshot item in currentHistoryItems)
+        {
+            if (HasParkItemLifecycleDate(item))
+            {
+                AddParkItemHistoryUrls(relativePaths, languages, park, item);
+            }
+        }
     }
 
-    private async Task<IReadOnlyDictionary<string, List<PublicSeoParkItemSnapshot>>> LoadCurrentPublicItemsByParkIdAsync(
+    private async Task<PublicSeoParkItemsByParkId> LoadCurrentItemsByParkIdAsync(
         IReadOnlyCollection<string> parkIds,
         CancellationToken cancellationToken)
     {
-        Dictionary<string, List<PublicSeoParkItemSnapshot>> itemsByParkId = new Dictionary<string, List<PublicSeoParkItemSnapshot>>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, List<PublicSeoParkItemSnapshot>> publicItemsByParkId = new Dictionary<string, List<PublicSeoParkItemSnapshot>>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, List<PublicSeoParkItemSnapshot>> historyItemsByParkId = new Dictionary<string, List<PublicSeoParkItemSnapshot>>(StringComparer.OrdinalIgnoreCase);
         foreach (string parkId in parkIds)
         {
             IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByParkIdAsync(parkId, true, cancellationToken);
             foreach (ParkItem item in items)
             {
                 PublicSeoParkItemSnapshot? snapshot = PublicSeoParkItemSnapshot.FromParkItem(item);
-                if (snapshot is null || !IsPublicItem(snapshot))
+                if (snapshot is null)
                 {
                     continue;
                 }
 
-                if (!itemsByParkId.TryGetValue(snapshot.ParkId, out List<PublicSeoParkItemSnapshot>? parkItems))
+                if (IsPublicItem(snapshot))
                 {
-                    parkItems = new List<PublicSeoParkItemSnapshot>();
-                    itemsByParkId[snapshot.ParkId] = parkItems;
+                    AddItemSnapshot(publicItemsByParkId, snapshot);
                 }
 
-                parkItems.Add(snapshot);
+                if (IsPublicHistoryItem(snapshot))
+                {
+                    AddItemSnapshot(historyItemsByParkId, snapshot);
+                }
             }
         }
 
-        return itemsByParkId;
+        return new PublicSeoParkItemsByParkId(publicItemsByParkId, historyItemsByParkId);
+    }
+
+    private static void AddItemSnapshot(
+        IDictionary<string, List<PublicSeoParkItemSnapshot>> itemsByParkId,
+        PublicSeoParkItemSnapshot snapshot)
+    {
+        if (!itemsByParkId.TryGetValue(snapshot.ParkId, out List<PublicSeoParkItemSnapshot>? parkItems))
+        {
+            parkItems = new List<PublicSeoParkItemSnapshot>();
+            itemsByParkId[snapshot.ParkId] = parkItems;
+        }
+
+        parkItems.Add(snapshot);
     }
 
     private async Task AddVideoImpactUrlsAsync(
@@ -492,12 +523,18 @@ public sealed partial class PublicSeoUrlResolver
 
     private static bool HasParkLifecycleDate(PublicSeoParkSnapshot park)
     {
-        return park.OpeningDate.HasValue || park.ClosingDate.HasValue;
+        return park.OpeningDate.HasValue ||
+               park.ClosingDate.HasValue ||
+               AutomaticHistoryEventFactory.HasLifecycleDateText(park.OpeningDateText) ||
+               AutomaticHistoryEventFactory.HasLifecycleDateText(park.ClosingDateText);
     }
 
     private static bool HasParkItemLifecycleDate(PublicSeoParkItemSnapshot item)
     {
-        return item.OpeningDate.HasValue || item.ClosingDate.HasValue;
+        return item.OpeningDate.HasValue ||
+               item.ClosingDate.HasValue ||
+               AutomaticHistoryEventFactory.HasLifecycleDateText(item.OpeningDateText) ||
+               AutomaticHistoryEventFactory.HasLifecycleDateText(item.ClosingDateText);
     }
 
     private static bool HasPublicMapMarker(PublicSeoParkItemSnapshot item)
@@ -507,12 +544,12 @@ public sealed partial class PublicSeoUrlResolver
 
     private static string BuildParkRouteKey(PublicSeoParkSnapshot park)
     {
-        return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.Status}:{park.AdminReviewStatus}:{park.OpeningDate?.Ticks}:{park.ClosingDate?.Ticks}";
+        return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.Status}:{park.AdminReviewStatus}:{park.OpeningDate?.Ticks}:{park.ClosingDate?.Ticks}:{park.OpeningDateText}:{park.ClosingDateText}";
     }
 
     private static string BuildItemRouteKey(PublicSeoParkItemSnapshot item)
     {
-        return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.Status}:{item.AdminReviewStatus}:{item.OpeningDate?.Ticks}:{item.ClosingDate?.Ticks}:{item.HasPosition}";
+        return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.Status}:{item.AdminReviewStatus}:{item.OpeningDate?.Ticks}:{item.ClosingDate?.Ticks}:{item.OpeningDateText}:{item.ClosingDateText}:{item.HasPosition}";
     }
 
     private static string BuildVideoRouteKey(PublicSeoVideoSnapshot video)
@@ -548,4 +585,8 @@ public sealed partial class PublicSeoUrlResolver
         string normalizedLanguageCode = languageCode.Trim().ToLowerInvariant();
         return normalizedLanguageCode.Length >= 2 ? normalizedLanguageCode[..2] : normalizedLanguageCode;
     }
+
+    private sealed record PublicSeoParkItemsByParkId(
+        IReadOnlyDictionary<string, List<PublicSeoParkItemSnapshot>> PublicItemsByParkId,
+        IReadOnlyDictionary<string, List<PublicSeoParkItemSnapshot>> HistoryItemsByParkId);
 }

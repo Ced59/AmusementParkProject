@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text;
 using System.Text.RegularExpressions;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
@@ -20,6 +21,113 @@ internal static class AutomaticHistoryEventFactory
         "pt",
     };
 
+    private static readonly IReadOnlyDictionary<string, int> MonthNumbersByToken = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
+    {
+        ["jan"] = 1,
+        ["january"] = 1,
+        ["janvier"] = 1,
+        ["januar"] = 1,
+        ["januari"] = 1,
+        ["gennaio"] = 1,
+        ["enero"] = 1,
+        ["janeiro"] = 1,
+        ["styczen"] = 1,
+        ["stycznia"] = 1,
+        ["feb"] = 2,
+        ["february"] = 2,
+        ["fevrier"] = 2,
+        ["februar"] = 2,
+        ["februari"] = 2,
+        ["febbraio"] = 2,
+        ["febrero"] = 2,
+        ["fevereiro"] = 2,
+        ["luty"] = 2,
+        ["lutego"] = 2,
+        ["mar"] = 3,
+        ["march"] = 3,
+        ["mars"] = 3,
+        ["marz"] = 3,
+        ["maart"] = 3,
+        ["marzo"] = 3,
+        ["marco"] = 3,
+        ["marzec"] = 3,
+        ["marca"] = 3,
+        ["apr"] = 4,
+        ["april"] = 4,
+        ["avril"] = 4,
+        ["aprile"] = 4,
+        ["abril"] = 4,
+        ["kwiecien"] = 4,
+        ["kwietnia"] = 4,
+        ["may"] = 5,
+        ["mai"] = 5,
+        ["mei"] = 5,
+        ["maggio"] = 5,
+        ["mayo"] = 5,
+        ["maio"] = 5,
+        ["maj"] = 5,
+        ["maja"] = 5,
+        ["jun"] = 6,
+        ["june"] = 6,
+        ["juin"] = 6,
+        ["juni"] = 6,
+        ["giugno"] = 6,
+        ["junio"] = 6,
+        ["junho"] = 6,
+        ["czerwiec"] = 6,
+        ["czerwca"] = 6,
+        ["jul"] = 7,
+        ["july"] = 7,
+        ["juillet"] = 7,
+        ["juli"] = 7,
+        ["luglio"] = 7,
+        ["julio"] = 7,
+        ["julho"] = 7,
+        ["lipiec"] = 7,
+        ["lipca"] = 7,
+        ["aug"] = 8,
+        ["august"] = 8,
+        ["aout"] = 8,
+        ["augustus"] = 8,
+        ["agosto"] = 8,
+        ["sierpien"] = 8,
+        ["sierpnia"] = 8,
+        ["sep"] = 9,
+        ["sept"] = 9,
+        ["september"] = 9,
+        ["septembre"] = 9,
+        ["settembre"] = 9,
+        ["septiembre"] = 9,
+        ["setembro"] = 9,
+        ["wrzesien"] = 9,
+        ["wrzesnia"] = 9,
+        ["oct"] = 10,
+        ["october"] = 10,
+        ["octobre"] = 10,
+        ["oktober"] = 10,
+        ["ottobre"] = 10,
+        ["octubre"] = 10,
+        ["outubro"] = 10,
+        ["pazdziernik"] = 10,
+        ["pazdziernika"] = 10,
+        ["nov"] = 11,
+        ["november"] = 11,
+        ["novembre"] = 11,
+        ["noviembre"] = 11,
+        ["novembro"] = 11,
+        ["listopad"] = 11,
+        ["listopada"] = 11,
+        ["dec"] = 12,
+        ["december"] = 12,
+        ["decembre"] = 12,
+        ["dezember"] = 12,
+        ["dicembre"] = 12,
+        ["diciembre"] = 12,
+        ["dezembro"] = 12,
+        ["grudzien"] = 12,
+        ["grudnia"] = 12,
+    };
+
     public static bool HasLifecycleDate(ParkItem parkItem)
     {
         AttractionDetails? details = parkItem.AttractionDetails;
@@ -35,6 +143,11 @@ internal static class AutomaticHistoryEventFactory
                park.ClosingDate is not null ||
                TryResolveTextDateParts(park.OpeningDateText, out _) ||
                TryResolveTextDateParts(park.ClosingDateText, out _);
+    }
+
+    public static bool HasLifecycleDateText(string? dateText)
+    {
+        return TryResolveTextDateParts(dateText, out _);
     }
 
     public static IReadOnlyCollection<HistoryEvent> CreateParkLifecycleEvents(Park park)
@@ -322,6 +435,12 @@ internal static class AutomaticHistoryEventFactory
             return new HistoryDateParts(normalizedDate.Year, normalizedDate.Month, null, HistoryDatePrecision.Month);
         }
 
+        if (TryResolveTextDateParts(normalizedText, out HistoryDateParts textDateParts) &&
+            textDateParts.Precision == HistoryDatePrecision.Month)
+        {
+            return new HistoryDateParts(normalizedDate.Year, normalizedDate.Month, null, HistoryDatePrecision.Month);
+        }
+
         return new HistoryDateParts(normalizedDate.Year, normalizedDate.Month, normalizedDate.Day, HistoryDatePrecision.Day);
     }
 
@@ -375,7 +494,71 @@ internal static class AutomaticHistoryEventFactory
             return true;
         }
 
+        if (TryResolveMonthNameTextDateParts(normalizedText, out dateParts))
+        {
+            return true;
+        }
+
         return false;
+    }
+
+    private static bool TryResolveMonthNameTextDateParts(string normalizedText, out HistoryDateParts dateParts)
+    {
+        dateParts = new HistoryDateParts(0, null, null, HistoryDatePrecision.Year);
+
+        string comparableText = NormalizeDateTextForMonthLookup(normalizedText);
+        Match yearMatch = Regex.Match(comparableText, @"\b(?<year>\d{4})\b");
+        if (!yearMatch.Success ||
+            !int.TryParse(yearMatch.Groups["year"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int year))
+        {
+            return false;
+        }
+
+        string textWithoutYear = Regex.Replace(comparableText, @"\b\d{4}\b", " ");
+        if (Regex.IsMatch(textWithoutYear, @"\d"))
+        {
+            return false;
+        }
+
+        HashSet<int> matchedMonths = new HashSet<int>();
+        foreach (string token in Regex.Split(textWithoutYear, @"[^a-z]+"))
+        {
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                continue;
+            }
+
+            if (MonthNumbersByToken.TryGetValue(token, out int month))
+            {
+                matchedMonths.Add(month);
+            }
+        }
+
+        if (matchedMonths.Count != 1)
+        {
+            return false;
+        }
+
+        dateParts = new HistoryDateParts(year, matchedMonths.Single(), null, HistoryDatePrecision.Month);
+        return true;
+    }
+
+    private static string NormalizeDateTextForMonthLookup(string text)
+    {
+        string normalized = text.Trim().Normalize(NormalizationForm.FormD);
+        StringBuilder builder = new StringBuilder(normalized.Length);
+        foreach (char character in normalized)
+        {
+            UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(character);
+            if (category == UnicodeCategory.NonSpacingMark)
+            {
+                continue;
+            }
+
+            builder.Append(char.ToLowerInvariant(character));
+        }
+
+        return builder.ToString().Normalize(NormalizationForm.FormC);
     }
 
     private static bool CoversAutomaticEvent(HistoryEvent existingEvent, HistoryEvent automaticEvent)

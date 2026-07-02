@@ -377,6 +377,7 @@
   .history-timeline__axis {
     position: static;
     display: flex;
+    flex-direction: row;
     gap: 0.6rem;
     overflow-x: auto;
     padding: 0 0 0.35rem;

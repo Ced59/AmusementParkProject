@@ -32,7 +32,9 @@ public sealed record PublicSeoParkSnapshot(
     AdminReviewStatus AdminReviewStatus,
     DateTime? UpdatedAtUtc,
     DateTime? OpeningDate = null,
-    DateTime? ClosingDate = null)
+    DateTime? ClosingDate = null,
+    string? OpeningDateText = null,
+    string? ClosingDateText = null)
 {
     public static PublicSeoParkSnapshot? FromPark(Park? park)
     {
@@ -49,7 +51,9 @@ public sealed record PublicSeoParkSnapshot(
             park.AdminReviewStatus,
             park.UpdatedAtUtc,
             park.OpeningDate,
-            park.ClosingDate);
+            park.ClosingDate,
+            park.OpeningDateText,
+            park.ClosingDateText);
     }
 
     public static IReadOnlyCollection<PublicSeoParkSnapshot> FromParks(IEnumerable<Park?> parks)
@@ -131,7 +135,9 @@ public sealed record PublicSeoParkItemSnapshot(
     string? Status = null,
     DateTime? OpeningDate = null,
     DateTime? ClosingDate = null,
-    bool HasPosition = false)
+    bool HasPosition = false,
+    string? OpeningDateText = null,
+    string? ClosingDateText = null)
 {
     public static PublicSeoParkItemSnapshot? FromParkItem(ParkItem? item)
     {
@@ -152,7 +158,9 @@ public sealed record PublicSeoParkItemSnapshot(
             item.AttractionDetails?.OpeningDate,
             item.AttractionDetails?.ClosingDate,
             item.Position is not null
-                && !(Math.Abs(item.Position.Latitude) < double.Epsilon && Math.Abs(item.Position.Longitude) < double.Epsilon));
+                && !(Math.Abs(item.Position.Latitude) < double.Epsilon && Math.Abs(item.Position.Longitude) < double.Epsilon),
+            item.AttractionDetails?.OpeningDateText,
+            item.AttractionDetails?.ClosingDateText);
     }
 
     public static IReadOnlyCollection<PublicSeoParkItemSnapshot> FromParkItems(IEnumerable<ParkItem?> items)

@@ -398,7 +398,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
     {
         if (executedContext is null)
         {
-            return BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false);
+            return WithoutRefresh(BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false));
         }
 
         object? resultValue = ResolveResultValue(executedContext);
@@ -412,7 +412,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             .ToList();
         if (changedEntities.Count == 0)
         {
-            return BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false);
+            return WithoutRefresh(BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false));
         }
 
         bool requiresHardPurge = changedEntities.Any(ContainsHardPurgeSignal);

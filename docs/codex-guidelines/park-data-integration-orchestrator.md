@@ -110,16 +110,19 @@ Avant de livrer un fichier JSON upsert, vérifier toutes les clés de rattacheme
 - `itemKey` ;
 - `imageKey`.
 
-Chaque clé utilisée doit être résolue par l’une de ces deux voies :
+Chaque clé utilisée doit être résolue par l’importeur pendant le traitement du JSON courant. Une clé vue seulement dans l’export actualisé sert à identifier la bonne entité, mais elle ne suffit pas toujours comme clé de rattachement si la section qui construit le dictionnaire n’est pas présente dans le JSON courant.
 
-- la clé existe déjà clairement dans l’export actualisé fourni par l’utilisateur ;
-- la clé est créée dans le même JSON, dans la section adaptée (`references`, `zones`, `items`, `images`).
+Résoudre une clé par l’une de ces voies :
+
+- la clé est créée ou redéclarée dans le même JSON, dans la section adaptée (`references`, `zones`, `items`, `images`) ;
+- la clé appartient à une entité déjà présente dans une section du même JSON ;
+- un champ d’ID direct supporté par le contrat est utilisé à la place, par exemple `zoneId` ou `attractionDetails.manufacturerId` pour rattacher un parkItem à une entité déjà exportée.
 
 Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `manufacturerKey`, `operatorKey`, `founderKey`, `zoneKey`, `itemKey` ou `ownerKey` si l’export ne prouve pas que cette valeur est bien la clé attendue. Une valeur visible, un nom localisé ou un slug probable ne suffit pas.
 
-Pour les zones, `zoneKey` doit correspondre exactement à une clé de `zones` déjà présente dans l’export actualisé ou créée dans le même JSON. Si une zone fiable est nécessaire au rattachement et n’existe pas encore, ajouter une entrée minimale dans `zones` avec cette `key` avant de l’utiliser dans `items[].zoneKey`. Si la zone n’est pas fiable, retirer `zoneKey`.
+Pour les zones, ne pas utiliser `items[].zoneKey` uniquement parce que la clé existe dans l’export actualisé. Dans un lot d’items, utiliser `zoneId` pour une zone déjà exportée, ou ajouter dans le même JSON une entrée minimale `zones` avec cette `key` avant de l’utiliser dans `items[].zoneKey`. Si la zone n’est pas fiable, retirer tout rattachement de zone.
 
-Pour les constructeurs, `manufacturerKey` doit correspondre exactement à une clé de `references.manufacturers` créée dans le même JSON ou déjà présente dans l’export actualisé. Si un constructeur fiable est nécessaire et absent de l’export, ajouter une entrée minimale dans `references.manufacturers` avec cette `key` avant de l’utiliser dans `attractionDetails.manufacturerKey`. Si le constructeur n’est pas fiable, retirer `manufacturerKey`.
+Pour les constructeurs, ne pas utiliser `attractionDetails.manufacturerKey` uniquement parce que la clé existe dans l’export actualisé. Dans un lot d’items, utiliser `attractionDetails.manufacturerId` pour un constructeur déjà exporté, ou ajouter dans le même JSON une entrée minimale dans `references.manufacturers` avec cette `key` avant de l’utiliser dans `attractionDetails.manufacturerKey`. Si le constructeur n’est pas fiable, retirer tout rattachement constructeur.
 
 Les zones minimales et constructeurs minimaux nécessaires au lot doivent être embarqués dans le même JSON que les parkItems qui les utilisent. Ne pas livrer un fichier qui dépend d’un futur lot pour résoudre ses `zoneKey` ou `manufacturerKey`.
 
