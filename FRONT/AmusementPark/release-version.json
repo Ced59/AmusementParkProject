@@ -1,6 +1,20 @@
 {
-  "version": "3.1.32",
+  "version": "3.1.33",
   "history": [
+    {
+      "version": "3.1.33",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Le référencement reste plus fiable.",
+        "en": "Search indexing stays more reliable.",
+        "de": "Die Suchindexierung bleibt zuverlässiger.",
+        "nl": "Zoekindexering blijft betrouwbaarder.",
+        "it": "L'indicizzazione resta più affidabile.",
+        "es": "La indexación sigue siendo más fiable.",
+        "pl": "Indeksowanie pozostaje bardziej niezawodne.",
+        "pt": "A indexação continua mais fiável."
+      }
+    },
     {
       "version": "3.1.32",
       "releasedAt": "2026-07-02",

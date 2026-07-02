@@ -141,12 +141,7 @@ public sealed class SeoController : ControllerBase
     public async Task<IActionResult> GetIndexNowKeyFileAsync([FromRoute] string key, CancellationToken cancellationToken = default)
     {
         SeoSitemapSettings sitemapSettings = await this.sitemapSettingsRepository.GetAsync(cancellationToken);
-        if (!sitemapSettings.IsIndexNowEnabled || string.IsNullOrWhiteSpace(sitemapSettings.IndexNowKey))
-        {
-            return this.NotFound();
-        }
-
-        if (!string.Equals(key, sitemapSettings.IndexNowKey, StringComparison.Ordinal))
+        if (!IsIndexNowKeyFileRequest($"/{key}.txt", sitemapSettings))
         {
             return this.NotFound();
         }
@@ -159,12 +154,7 @@ public sealed class SeoController : ControllerBase
     public async Task<IActionResult> HeadIndexNowKeyFileAsync([FromRoute] string key, CancellationToken cancellationToken = default)
     {
         SeoSitemapSettings sitemapSettings = await this.sitemapSettingsRepository.GetAsync(cancellationToken);
-        if (!sitemapSettings.IsIndexNowEnabled || string.IsNullOrWhiteSpace(sitemapSettings.IndexNowKey))
-        {
-            return this.NotFound();
-        }
-
-        if (!string.Equals(key, sitemapSettings.IndexNowKey, StringComparison.Ordinal))
+        if (!IsIndexNowKeyFileRequest($"/{key}.txt", sitemapSettings))
         {
             return this.NotFound();
         }
@@ -245,5 +235,52 @@ public sealed class SeoController : ControllerBase
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .OrderBy(static path => path, StringComparer.OrdinalIgnoreCase)
             .ToList();
+    }
+
+    private static bool IsIndexNowKeyFileRequest(string requestedPath, SeoSitemapSettings sitemapSettings)
+    {
+        if (!sitemapSettings.IsIndexNowEnabled || string.IsNullOrWhiteSpace(sitemapSettings.IndexNowKey))
+        {
+            return false;
+        }
+
+        string normalizedRequestedPath = NormalizeIndexNowKeyPath(requestedPath);
+        string defaultKeyPath = NormalizeIndexNowKeyPath($"{sitemapSettings.IndexNowKey.Trim()}.txt");
+        if (string.Equals(normalizedRequestedPath, defaultKeyPath, StringComparison.Ordinal))
+        {
+            return true;
+        }
+
+        string configuredKeyLocationPath = NormalizeConfiguredIndexNowKeyLocationPath(sitemapSettings.IndexNowKeyLocation);
+        return configuredKeyLocationPath.Length > 0 &&
+               string.Equals(normalizedRequestedPath, configuredKeyLocationPath, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string NormalizeConfiguredIndexNowKeyLocationPath(string? value)
+    {
+        string normalizedValue = value?.Trim() ?? string.Empty;
+        if (normalizedValue.Length == 0)
+        {
+            return string.Empty;
+        }
+
+        if (Uri.TryCreate(normalizedValue, UriKind.Absolute, out Uri? absoluteUri))
+        {
+            return NormalizeIndexNowKeyPath(absoluteUri.AbsolutePath);
+        }
+
+        return NormalizeIndexNowKeyPath(normalizedValue);
+    }
+
+    private static string NormalizeIndexNowKeyPath(string value)
+    {
+        string normalizedValue = value.Trim();
+        int queryIndex = normalizedValue.IndexOfAny(new[] { '?', '#' });
+        if (queryIndex >= 0)
+        {
+            normalizedValue = normalizedValue[..queryIndex];
+        }
+
+        return normalizedValue.StartsWith('/') ? normalizedValue : $"/{normalizedValue}";
     }
 }

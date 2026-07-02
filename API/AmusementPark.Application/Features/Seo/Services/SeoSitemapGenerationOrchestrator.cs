@@ -133,6 +133,12 @@ public sealed class SeoSitemapGenerationOrchestrator
             this.runtimeStateStore.Complete("completed", $"Sitemap généré : {snapshot.TotalUrlCount} URLs.");
             return result;
         }
+        catch (OperationCanceledException)
+        {
+            stopwatch.Stop();
+            this.runtimeStateStore.Fail("canceled", "Génération sitemap annulée.");
+            throw;
+        }
         catch (Exception exception) when (exception is not OperationCanceledException)
         {
             stopwatch.Stop();
