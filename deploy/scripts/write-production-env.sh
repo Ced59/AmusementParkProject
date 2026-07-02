@@ -218,6 +218,8 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line ADMIN_USER_EMAIL "$(value_or_default ADMIN_USER_EMAIL '')"
   write_line ADMIN_USER_PASSWORD "$(value_or_default ADMIN_USER_PASSWORD '')"
   write_line BACKUP_BEFORE_DEPLOY "$(value_or_default BACKUP_BEFORE_DEPLOY 'true')"
+  write_line RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION "$(value_or_default RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION 'true')"
+  write_line OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN "$(value_or_default OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN 'false')"
   write_line RUN_LEGACY_ENUM_MIGRATIONS "$(value_or_default RUN_LEGACY_ENUM_MIGRATIONS 'false')"
   write_line LEGACY_ENUM_MIGRATIONS_DRY_RUN "$(value_or_default LEGACY_ENUM_MIGRATIONS_DRY_RUN 'false')"
 } > "${output_file}"
