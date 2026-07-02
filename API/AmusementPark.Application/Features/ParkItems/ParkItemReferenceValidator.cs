@@ -38,6 +38,25 @@ public sealed class ParkItemReferenceValidator
         return park is null ? ParkApplicationErrors.ParkNotExists() : null;
     }
 
+    public async Task<ApplicationError?> EnsurePublicParkExistsAsync(string parkId, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(parkId))
+        {
+            return ParkApplicationErrors.ParkNotExists();
+        }
+
+        Park? park = await this.parkRepository.GetByIdAsync(parkId.Trim(), false, cancellationToken);
+        if (park is null ||
+            !park.IsVisible ||
+            park.Status == ParkStatus.ClosedDefinitively ||
+            park.AdminReviewStatus == AdminReviewStatus.NotRelevant)
+        {
+            return ParkApplicationErrors.ParkNotExists();
+        }
+
+        return null;
+    }
+
     public async Task<ApplicationError?> ValidateForWriteAsync(ParkItem parkItem, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(parkItem);

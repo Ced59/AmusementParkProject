@@ -42,7 +42,9 @@ public sealed class GetParkItemImagesByParkQueryHandler : IQueryHandler<GetParkI
         }
 
         string parkId = query.ParkId.Trim();
-        ApplicationError? parkError = await this.parkItemReferenceValidator.EnsureParkExistsAsync(parkId, cancellationToken);
+        ApplicationError? parkError = query.IncludeHidden
+            ? await this.parkItemReferenceValidator.EnsureParkExistsAsync(parkId, cancellationToken)
+            : await this.parkItemReferenceValidator.EnsurePublicParkExistsAsync(parkId, cancellationToken);
         if (parkError is not null)
         {
             return ApplicationResult<PagedResult<ParkItemImageResult>>.Failure(parkError);

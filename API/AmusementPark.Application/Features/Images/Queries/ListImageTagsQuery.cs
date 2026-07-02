@@ -7,4 +7,4 @@ namespace AmusementPark.Application.Features.Images.Queries;
 /// <summary>
 /// Retourne la liste des tags d'image.
 /// </summary>
-public sealed record ListImageTagsQuery : IQuery<ApplicationResult<IReadOnlyCollection<ImageTag>>>;
+public sealed record ListImageTagsQuery(bool IncludeInactive = true) : IQuery<ApplicationResult<IReadOnlyCollection<ImageTag>>>;
