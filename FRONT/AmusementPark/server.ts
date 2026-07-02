@@ -1345,8 +1345,33 @@ function prepareHtmlForResponse(req: Request, res: Response, html: string): stri
   res.setHeader('X-AmusementPark-Robot-Html', 'no-js');
   res.setHeader('X-AmusementPark-Robot-Html-Scripts-Removed', optimizationResult.removedScriptCount.toString());
   res.setHeader('X-AmusementPark-Robot-Html-Links-Removed', optimizationResult.removedScriptLikeLinkCount.toString());
+  appendVaryHeader(res, 'User-Agent');
 
   return optimizationResult.html;
+}
+
+function appendVaryHeader(res: Response, value: string): void {
+  const currentHeader = res.getHeader('Vary');
+  const headerValues = Array.isArray(currentHeader)
+    ? currentHeader
+    : typeof currentHeader === 'string'
+      ? [currentHeader]
+      : [];
+  const currentValues: string[] = [];
+  for (const headerValue of headerValues) {
+    currentValues.push(...headerValue.split(','));
+  }
+
+  const normalizedValues = currentValues
+    .map((entry: string): string => entry.trim())
+    .filter((entry: string): boolean => entry.length > 0);
+
+  if (normalizedValues.some((entry: string): boolean => entry === '*' || entry.toLowerCase() === value.toLowerCase())) {
+    return;
+  }
+
+  normalizedValues.push(value);
+  res.setHeader('Vary', normalizedValues.join(', '));
 }
 
 function toCsrFallbackStatus(mode: string): SsrPageResponseStatus {

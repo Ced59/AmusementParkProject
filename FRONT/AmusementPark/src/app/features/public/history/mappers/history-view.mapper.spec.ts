@@ -133,6 +133,33 @@ describe('history-view.mapper', () => {
     expect(viewModel!.canonicalPath).toBe('/en/park/park-1/mirapolis/history/event-1/opening-article');
   });
 
+  it('uses the event slug fallback for article canonical paths', () => {
+    const article: HistoryArticle = {
+      event: createHistoryEvent({
+        slug: 'opening-event',
+        article: {
+          slug: null,
+          titles: [{ languageCode: 'en', value: 'Opening day' }],
+          subtitles: [],
+          summaries: [],
+          mainImageId: null,
+          isPublished: true,
+          sources: [],
+          blocks: []
+        }
+      }),
+      park: { id: 'park-1', name: 'Mirapolis' } as Park,
+      parkItem: null,
+      contextPark: null,
+      mainImage: null
+    };
+
+    const viewModel = mapHistoryArticleToViewModel(article, 'en');
+
+    expect(viewModel).not.toBeNull();
+    expect(viewModel!.canonicalPath).toBe('/en/park/park-1/mirapolis/history/event-1/opening-event');
+  });
+
   it('keeps gallery image ids on article blocks', () => {
     const article: HistoryArticle = {
       event: createHistoryEvent({

@@ -279,7 +279,7 @@ function buildArticleCanonicalPath(article: HistoryArticle, eventTitle: string, 
 }
 
 function buildArticleCanonicalLink(article: HistoryArticle, eventTitle: string, language: string): string[] | null {
-  const resolvedEventTitle: string = article.event.article?.slug ?? eventTitle;
+  const resolvedEventTitle: string = article.event.article?.slug ?? article.event.slug ?? eventTitle;
   const eventId: string | null = article.event.id ?? null;
 
   if (article.event.entityType === 'ParkItem') {

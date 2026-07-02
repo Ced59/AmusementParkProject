@@ -289,6 +289,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         foreach (string referenceId in referenceIds)
         {
             AddReferencePrefixes(prefixes, referenceKind, referenceId);
+            AddReferenceListPaths(paths, referenceKind);
             IReadOnlyCollection<string> resolvedParkIds = await parkIdsResolver(referenceId);
             AddRange(parkIds, resolvedParkIds);
         }
@@ -404,7 +405,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         object? resultValue = ResolveResultValue(executedContext);
         if (resultValue is not ParkGraphUpsertResultDto result)
         {
-            return BuildAllPageCachesWithoutSeoDocuments();
+            return BuildAllPageCaches(includeSeoDocuments);
         }
 
         IReadOnlyCollection<ParkGraphUpsertChangeDto> changedEntities = result.Changes
@@ -418,7 +419,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         bool requiresHardPurge = changedEntities.Any(ContainsHardPurgeSignal);
         if (changedEntities.Count > MaxTargetedEntityCount)
         {
-            return BuildLargeParkGraphUpsertRequest(result, requiresHardPurge);
+            return BuildLargeParkGraphUpsertRequest(result, requiresHardPurge, includeSeoDocuments);
         }
 
         HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
@@ -499,30 +500,33 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             AddDiscoveryPaths(paths);
         }
 
-        SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildRequest(paths, prefixes, includeSeoDocuments: false));
+        SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildRequest(paths, prefixes, includeSeoDocuments));
         return requiresHardPurge ? ForceHardPurge(request) : request;
     }
 
-    private static SsrPageCacheInvalidationRequest BuildLargeParkGraphUpsertRequest(ParkGraphUpsertResultDto result, bool requiresHardPurge)
+    private static SsrPageCacheInvalidationRequest BuildLargeParkGraphUpsertRequest(
+        ParkGraphUpsertResultDto result,
+        bool requiresHardPurge,
+        bool includeSeoDocuments)
     {
         HashSet<string> parkIds = new HashSet<string>(StringComparer.Ordinal);
         AddNonEmpty(parkIds, result.TargetParkId);
         if (parkIds.Count == 0)
         {
-            return BuildAllPageCachesWithoutSeoDocuments();
+            return BuildAllPageCaches(includeSeoDocuments);
         }
 
         HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
         AddParkPrefixes(prefixes, parkIds);
         AddDiscoveryPaths(paths);
-        SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildRequest(paths, prefixes, includeSeoDocuments: false));
+        SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildRequest(paths, prefixes, includeSeoDocuments));
         return requiresHardPurge ? ForceHardPurge(request) : request;
     }
 
-    private static SsrPageCacheInvalidationRequest BuildAllPageCachesWithoutSeoDocuments()
+    private static SsrPageCacheInvalidationRequest BuildAllPageCaches(bool includeSeoDocuments)
     {
-        return ForceHardPurge(BuildRequest(Array.Empty<string>(), new[] { "/" }, includeSeoDocuments: false));
+        return ForceHardPurge(BuildRequest(Array.Empty<string>(), new[] { "/" }, includeSeoDocuments));
     }
 
     private async Task<bool> AddParkItemImpactAsync(
@@ -671,6 +675,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         }
 
         AddReferencePrefixes(prefixes, referenceKind, referenceId);
+        AddReferenceListPaths(paths, referenceKind);
         IReadOnlyCollection<string> parkIds = await parkIdsResolver(referenceId);
         AddParkPrefixes(prefixes, parkIds);
     }
@@ -910,6 +915,19 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         foreach (string language in PublicLanguages)
         {
             prefixes.Add($"/{language}/park-{referenceKind}/{referenceId}/");
+        }
+    }
+
+    private static void AddReferenceListPaths(ISet<string> paths, string referenceKind)
+    {
+        if (!string.Equals(referenceKind, "manufacturer", StringComparison.Ordinal))
+        {
+            return;
+        }
+
+        foreach (string language in PublicLanguages)
+        {
+            paths.Add($"/{language}/manufacturers");
         }
     }
 
