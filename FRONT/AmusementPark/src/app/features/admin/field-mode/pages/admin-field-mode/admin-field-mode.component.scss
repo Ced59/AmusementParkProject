@@ -320,6 +320,108 @@
   opacity: 0.56;
 }
 
+.admin-field-mode__photo-inspections {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.admin-field-mode__photo-inspection {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--admin-radius);
+  background: var(--admin-row-bg);
+  padding: 0.65rem;
+}
+
+.admin-field-mode__photo-inspection--accepted {
+  border-color: color-mix(in srgb, var(--app-success, #2fb344) 46%, var(--app-border));
+}
+
+.admin-field-mode__photo-inspection--missing-gps,
+.admin-field-mode__photo-inspection--invalid {
+  border-color: color-mix(in srgb, var(--app-danger, #dc3545) 48%, var(--app-border));
+}
+
+.admin-field-mode__photo-inspection-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+  overflow: hidden;
+  border-radius: calc(var(--admin-radius) - 0.25rem);
+  background: color-mix(in srgb, var(--admin-surface) 82%, var(--app-border));
+  color: var(--app-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.admin-field-mode__photo-inspection-preview img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.admin-field-mode__photo-inspection-body {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.admin-field-mode__photo-inspection-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.admin-field-mode__photo-inspection-heading strong {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--app-heading);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-field-mode__photo-inspection-heading span {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--app-primary-soft);
+  color: var(--app-heading);
+  padding: 0.15rem 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.admin-field-mode__photo-inspection dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 0.6rem;
+  margin: 0;
+}
+
+.admin-field-mode__photo-inspection dl div {
+  min-width: 0;
+}
+
+.admin-field-mode__photo-inspection dt {
+  color: var(--app-muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.admin-field-mode__photo-inspection dd {
+  min-width: 0;
+  margin: 0.1rem 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .admin-field-mode__photo-preview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
@@ -389,6 +491,10 @@
 
   .admin-field-mode__processed-toggle {
     justify-self: stretch;
+  }
+
+  .admin-field-mode__photo-inspection {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
