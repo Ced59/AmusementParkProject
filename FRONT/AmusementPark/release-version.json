@@ -1,6 +1,20 @@
 {
-  "version": "3.1.21",
+  "version": "3.1.22",
   "history": [
+    {
+      "version": "3.1.22",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Les descriptions d’images restent mieux adaptées.",
+        "en": "Image descriptions stay better adapted.",
+        "de": "Bildbeschreibungen bleiben besser angepasst.",
+        "nl": "Afbeeldingsbeschrijvingen blijven beter afgestemd.",
+        "it": "Le descrizioni delle immagini restano più adatte.",
+        "es": "Las descripciones de imágenes quedan mejor adaptadas.",
+        "pl": "Opisy obrazów pozostają lepiej dopasowane.",
+        "pt": "As descrições das imagens ficam mais ajustadas."
+      }
+    },
     {
       "version": "3.1.21",
       "releasedAt": "2026-07-02",

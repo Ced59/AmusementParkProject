@@ -2105,6 +2105,7 @@
   },
   "description": "Entdecke Freizeitparks, Attraktionen und praktische Informationen auf der ganzen Welt.",
   "images": {
+    "fallbackAlt": "Bild von AMUSEMENT-PARKS.fun",
     "categories": {
       "LOGO": "Logo",
       "AVATAR": "Avatar",

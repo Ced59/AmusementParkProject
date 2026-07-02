@@ -9,13 +9,12 @@ import { NgClass, NgIf } from '@angular/common';
   imports: [NgIf, NgClass]
 })
 export class ImageDisplayViewComponent {
-  private static readonly DefaultAltText: string = 'AMUSEMENT-PARKS.fun image';
-
   @Input() showImage: boolean = false;
   @Input() resolvedImageUrl: string | null = null;
   @Input() resolvedImageSrcSet: string | null = null;
   @Input() resolvedImageSizes: string | null = null;
   @Input() alt: string = '';
+  @Input() fallbackAlt: string = 'AMUSEMENT-PARKS.fun';
   @Input() imgClass: string = '';
   @Input() placeholderClass: string = '';
   @Input() placeholderIconClass: string = 'pi pi-image';
@@ -26,7 +25,12 @@ export class ImageDisplayViewComponent {
 
   get resolvedAlt(): string {
     const normalizedAlt: string = this.alt?.trim() ?? '';
-    return normalizedAlt.length > 0 ? normalizedAlt : ImageDisplayViewComponent.DefaultAltText;
+    if (normalizedAlt.length > 0) {
+      return normalizedAlt;
+    }
+
+    const normalizedFallbackAlt: string = this.fallbackAlt?.trim() ?? '';
+    return normalizedFallbackAlt.length > 0 ? normalizedFallbackAlt : 'AMUSEMENT-PARKS.fun';
   }
 
   onImageError(): void {

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ImageDisplayViewComponent } from './image-display-view.component';
 import { ImageFallbackKind, resolveImageFallbackIconClass } from '@shared/utils/images/image-fallback.helpers';
@@ -8,7 +9,7 @@ import { ImageFallbackKind, resolveImageFallbackIconClass } from '@shared/utils/
   templateUrl: './image-display.component.html',
   styleUrls: ['./image-display.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ImageDisplayViewComponent]
+  imports: [ImageDisplayViewComponent, TranslateModule]
 })
 export class ImageDisplayComponent implements OnChanges {
   @Input() imageId: string | null = null;
