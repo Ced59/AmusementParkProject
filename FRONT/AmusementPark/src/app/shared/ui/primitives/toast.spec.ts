@@ -39,6 +39,8 @@ describe('Toast', () => {
       const toastElement: HTMLElement = fixture.debugElement.query(By.css('.p-toast-message')).nativeElement;
       expect(toastElement.textContent).toContain('Saved');
       expect(toastElement.textContent).toContain('Your change was saved.');
+      expect(toastElement.getAttribute('role')).toBe('status');
+      expect(toastElement.querySelector('.pi')).toBeNull();
 
       jasmine.clock().tick(5000);
       fixture.detectChanges();
@@ -47,5 +49,15 @@ describe('Toast', () => {
     } finally {
       jasmine.clock().uninstall();
     }
+  });
+
+  it('announces error messages assertively', () => {
+    messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to save.' });
+    fixture.detectChanges();
+
+    const toastElement: HTMLElement = fixture.debugElement.query(By.css('.p-toast-message')).nativeElement;
+
+    expect(toastElement.getAttribute('role')).toBe('alert');
+    expect(toastElement.getAttribute('aria-live')).toBe('assertive');
   });
 });

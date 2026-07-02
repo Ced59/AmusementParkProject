@@ -7,10 +7,21 @@ import { MessageService, ToastMessage } from './api';
   standalone: true,
   imports: [NgFor],
   template: `
-    <div *ngFor="let message of messages" class="p-toast-message" [class.p-toast-message-success]="message.severity === 'success'" [class.p-toast-message-info]="message.severity === 'info'" [class.p-toast-message-warn]="message.severity === 'warn'" [class.p-toast-message-error]="message.severity === 'error'">
-      <strong>{{ message.summary }}</strong>
-      <span>{{ message.detail }}</span>
-      <button type="button" (click)="dismiss(message)" aria-label="Close"><span class="pi pi-times" aria-hidden="true"></span></button>
+    <div
+      *ngFor="let message of messages"
+      class="p-toast-message"
+      [class.p-toast-message-success]="message.severity === 'success'"
+      [class.p-toast-message-info]="message.severity === 'info'"
+      [class.p-toast-message-warn]="message.severity === 'warn'"
+      [class.p-toast-message-error]="message.severity === 'error'"
+      [attr.role]="resolveMessageRole(message)"
+      [attr.aria-live]="resolveMessageLiveRegion(message)"
+      aria-atomic="true">
+      <strong class="p-toast-message__summary">{{ message.summary }}</strong>
+      <span class="p-toast-message__detail">{{ message.detail }}</span>
+      <button class="p-toast-message__close" type="button" (click)="dismiss(message)" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -61,6 +72,14 @@ export class Toast implements OnDestroy {
     if (message.id) {
       this.messageService.remove(message.id);
     }
+  }
+
+  protected resolveMessageRole(message: ToastMessage): 'alert' | 'status' {
+    return message.severity === 'error' ? 'alert' : 'status';
+  }
+
+  protected resolveMessageLiveRegion(message: ToastMessage): 'assertive' | 'polite' {
+    return message.severity === 'error' ? 'assertive' : 'polite';
   }
 
   private scheduleDismiss(id: number): void {

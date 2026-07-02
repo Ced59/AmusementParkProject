@@ -571,21 +571,29 @@
   pointer-events: auto;
 }
 
-.p-toast-message strong {
+.p-toast-message__summary {
   color: var(--app-heading);
 }
 
-.p-toast-message span {
+.p-toast-message__detail {
   grid-column: 1;
   color: var(--app-text-muted);
 }
 
-.p-toast-message button {
+.p-toast-message__close {
   grid-column: 2;
   grid-row: 1 / span 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
   border: 0;
+  border-radius: 999px;
   background: transparent;
   color: inherit;
+  font-size: 1.35rem;
+  line-height: 1;
   cursor: pointer;
 }
 
