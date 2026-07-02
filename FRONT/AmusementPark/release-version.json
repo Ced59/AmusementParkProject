@@ -1,6 +1,20 @@
 {
-  "version": "3.1.26",
+  "version": "3.1.27",
   "history": [
+    {
+      "version": "3.1.27",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Les notifications restent visibles.",
+        "en": "Notifications stay visible.",
+        "de": "Benachrichtigungen bleiben sichtbar.",
+        "nl": "Meldingen blijven zichtbaar.",
+        "it": "Le notifiche restano visibili.",
+        "es": "Las notificaciones siguen visibles.",
+        "pl": "Powiadomienia pozostają widoczne.",
+        "pt": "As notificações continuam visíveis."
+      }
+    },
     {
       "version": "3.1.26",
       "releasedAt": "2026-07-02",

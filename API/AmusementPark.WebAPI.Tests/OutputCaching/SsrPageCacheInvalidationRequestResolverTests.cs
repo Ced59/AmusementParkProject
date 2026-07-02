@@ -456,6 +456,37 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     }
 
     [Fact]
+    public async Task ResolveAsync_ForLargeParkGraphUpsertWithDeletedEntities_ShouldForceHardPurge()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        List<ParkGraphUpsertChangeDto> changes = Enumerable.Range(1, 101)
+            .Select(index => new ParkGraphUpsertChangeDto
+            {
+                EntityType = "ParkItem",
+                EntityId = $"item-{index}",
+                ChangeType = "Deleted",
+            })
+            .ToList();
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetParkId = "park-1",
+            Changes = changes,
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/", request.Prefixes);
+        Assert.False(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
     public async Task ResolveAsync_ForParkGraphUpsertImageOwnerChange_ShouldTargetOldAndNewOwners()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

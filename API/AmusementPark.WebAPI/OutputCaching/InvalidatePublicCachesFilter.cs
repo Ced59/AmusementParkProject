@@ -61,26 +61,14 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
             return;
         }
 
-        if (attribute.EvictOutputCache)
-        {
-            foreach (string tag in ResolveTags(scopes))
-            {
-                try
-                {
-                    await this.outputCacheStore.EvictByTagAsync(tag, CancellationToken.None);
-                }
-                catch (Exception exception)
-                {
-                    this.logger.LogWarning(exception, "Public output cache eviction failed for tag {Tag}.", tag);
-                }
-            }
-        }
-
         try
         {
             SsrPageCacheInvalidationRequest postExecutionSsrInvalidation = await this.ResolveSsrInvalidationAsync(context, executedContext, scopes);
             SsrPageCacheInvalidationRequest ssrInvalidation = MergeSsrInvalidation(preExecutionSsrInvalidation, postExecutionSsrInvalidation);
             ssrInvalidation = ApplySafetyMode(context, ssrInvalidation);
+
+            await this.EvictOutputCacheIfNeededAsync(attribute, scopes, ssrInvalidation);
+
             if (IsNoOpSsrInvalidation(ssrInvalidation))
             {
                 return;
@@ -91,6 +79,29 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         catch (Exception exception)
         {
             this.logger.LogWarning(exception, "SSR page cache invalidation failed.");
+        }
+    }
+
+    private async Task EvictOutputCacheIfNeededAsync(
+        InvalidatesPublicCacheAttribute attribute,
+        IReadOnlyCollection<PublicCacheScope> scopes,
+        SsrPageCacheInvalidationRequest ssrInvalidation)
+    {
+        if (!RequiresOutputCacheEviction(attribute, ssrInvalidation))
+        {
+            return;
+        }
+
+        foreach (string tag in ResolveTags(scopes))
+        {
+            try
+            {
+                await this.outputCacheStore.EvictByTagAsync(tag, CancellationToken.None);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogWarning(exception, "Public output cache eviction failed for tag {Tag}.", tag);
+            }
         }
     }
 
@@ -154,6 +165,13 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
             && request.Paths.Count == 0
             && request.Prefixes.Count == 0
             && !request.IncludeSeoDocuments;
+    }
+
+    private static bool RequiresOutputCacheEviction(
+        InvalidatesPublicCacheAttribute attribute,
+        SsrPageCacheInvalidationRequest request)
+    {
+        return attribute.EvictOutputCache || request.All || !request.AllowStale;
     }
 
     private static SsrPageCacheInvalidationRequest ApplySafetyMode(
