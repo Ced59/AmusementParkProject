@@ -1744,7 +1744,10 @@ function getCachedPage(cacheKey: string): PageCacheEntry | null {
 
   if (memoryEntry) {
     if (isUsablePageCacheEntry(memoryEntry)) {
-      return memoryEntry;
+      const activeInvalidationRequest = findActiveTargetedInvalidationRequest(cacheKey);
+      return activeInvalidationRequest === null
+        ? memoryEntry
+        : applyActiveTargetedInvalidationToPageCacheEntry(cacheKey, memoryEntry, activeInvalidationRequest);
     }
 
     pageCache.delete(cacheKey);
@@ -1818,15 +1821,7 @@ function getDiskCachedPage(cacheKey: string): PageCacheEntry | null {
 
     const activeInvalidationRequest = findActiveTargetedInvalidationRequest(cacheKey);
     if (activeInvalidationRequest !== null) {
-      if (activeInvalidationRequest.allowStale && stalePageCacheSeconds > 0) {
-        const staleEntry = markPageCacheEntryStale(cacheKey, parsedEntry);
-        pageCache.set(cacheKey, staleEntry);
-        setDiskCachedPage(cacheKey, staleEntry);
-        return staleEntry;
-      }
-
-      removeDiskPageCacheFile(cacheFilePath);
-      return null;
+      return applyActiveTargetedInvalidationToPageCacheEntry(cacheKey, parsedEntry, activeInvalidationRequest);
     }
 
     pageCache.set(cacheKey, parsedEntry);
@@ -1911,12 +1906,13 @@ function clearAllSsrCaches(): CacheInvalidationResult {
 async function clearTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): Promise<CacheInvalidationResult> {
   const matchedCacheKeys = new Set<string>();
   const pageMemoryEntries = clearMatchingMemoryPageCache(request, matchedCacheKeys);
-  const pageDiskEntries = await clearMatchingDiskPageCache(request, matchedCacheKeys);
   const seoDocumentEntries = request.includeSeoDocuments ? seoDocumentCache.size : 0;
 
   if (request.includeSeoDocuments) {
     seoDocumentCache.clear();
   }
+
+  const pageDiskEntries = await clearMatchingDiskPageCache(request, matchedCacheKeys);
 
   const stalePageEntries = request.allowStale && stalePageCacheSeconds > 0 ? pageMemoryEntries + pageDiskEntries : 0;
   const queuedRefreshes = request.allowStale && request.refresh
@@ -2059,6 +2055,23 @@ function clearMatchingMemoryPageCache(request: NormalizedCacheInvalidationReques
   }
 
   return affected;
+}
+
+function applyActiveTargetedInvalidationToPageCacheEntry(
+  cacheKey: string,
+  entry: PageCacheEntry,
+  request: NormalizedCacheInvalidationRequest
+): PageCacheEntry | null {
+  if (request.allowStale && stalePageCacheSeconds > 0) {
+    const staleEntry = markPageCacheEntryStale(cacheKey, entry);
+    pageCache.set(cacheKey, staleEntry);
+    setDiskCachedPage(cacheKey, staleEntry);
+    return staleEntry;
+  }
+
+  pageCache.delete(cacheKey);
+  removeDiskPageCacheFile(getDiskPageCacheFilePath(cacheKey));
+  return null;
 }
 
 async function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRequest, matchedCacheKeys: Set<string>): Promise<number> {
