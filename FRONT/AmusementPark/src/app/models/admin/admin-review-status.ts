@@ -1,3 +1,5 @@
+import { ParkAudienceClassificationFilter } from '../parks/park-audience-classification';
+
 export type AdminReviewStatus = 'ToReview' | 'Validated' | 'ToProcessLater' | 'NotRelevant';
 
 export interface BulkAdministrationUpdateRequest {
@@ -7,6 +9,7 @@ export interface BulkAdministrationUpdateRequest {
   filterIsVisible?: boolean | null;
   filterAdminReviewStatus?: AdminReviewStatus | null;
   filterType?: string | null;
+  filterAudienceClassification?: ParkAudienceClassificationFilter | null;
   filterCountryCode?: string | null;
   filterHasValidCoordinates?: boolean | null;
 }

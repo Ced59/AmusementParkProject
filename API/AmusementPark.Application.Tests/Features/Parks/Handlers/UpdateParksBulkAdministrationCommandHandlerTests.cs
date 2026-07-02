@@ -36,20 +36,22 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
             new UpdateParksBulkAdministrationCommand(
-                Array.Empty<string>(),
-                true,
-                null,
-                null,
-                AdminReviewStatus.ToReview,
-                ParkType.ThemePark,
-                "FR",
-                true));
+                ParkIds: Array.Empty<string>(),
+                IsVisible: true,
+                AdminReviewStatus: null,
+                FilterIsVisible: null,
+                FilterAdminReviewStatus: AdminReviewStatus.ToReview,
+                FilterType: ParkType.ThemePark,
+                FilterCountryCode: "FR",
+                FilterHasValidCoordinates: true,
+                FilterAudienceClassification: ParkAudienceClassificationFilter.Unspecified));
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
         Assert.Equal(2, result.Value.RequestedCount);
         Assert.Equal(2, result.Value.UpdatedCount);
         Assert.Single(parkRepository.GetAdministrationIdsCalls);
+        Assert.Equal(ParkAudienceClassificationFilter.Unspecified, parkRepository.GetAdministrationIdsCalls.Single().AudienceClassificationFilter);
         Assert.Equal(new[] { "park-1", "park-2" }, parkRepository.UpdateCalls.Single().ParkIds);
         Assert.Equal(new[] { "parks:park-1", "parks:park-2" }, searchProjectionWriter.UpsertCalls);
     }
@@ -78,7 +80,8 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         AdminReviewStatus? AdminReviewStatus,
         ParkType? Type,
         string? CountryCode,
-        bool? HasValidCoordinates);
+        bool? HasValidCoordinates,
+        ParkAudienceClassificationFilter? AudienceClassificationFilter);
 
     private sealed record UpdateBulkCall(IReadOnlyCollection<string> ParkIds, bool? IsVisible, AdminReviewStatus? AdminReviewStatus);
 
@@ -90,9 +93,9 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         public List<UpdateBulkCall> UpdateCalls { get; } = new List<UpdateBulkCall>();
         public List<IReadOnlyCollection<string>> GetByIdsCalls { get; } = new List<IReadOnlyCollection<string>>();
 
-        public Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
+        public Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken, ParkAudienceClassificationFilter? audienceClassificationFilter = null)
         {
-            this.GetAdministrationIdsCalls.Add(new GetAdministrationIdsCall(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates));
+            this.GetAdministrationIdsCalls.Add(new GetAdministrationIdsCall(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates, audienceClassificationFilter));
             return Task.FromResult(this.AdministrationIds);
         }
 
@@ -128,7 +131,7 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
             throw new NotImplementedException();
         }
 
-        public Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, CancellationToken cancellationToken, ParkAdminSortField sortField = ParkAdminSortField.Default, bool sortDescending = false)
+        public Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, CancellationToken cancellationToken, ParkAdminSortField sortField = ParkAdminSortField.Default, bool sortDescending = false, ParkAudienceClassificationFilter? audienceClassificationFilter = null)
         {
             throw new NotImplementedException();
         }

@@ -11,6 +11,8 @@
       "statusAll": "Todos los estados",
       "type": "Tipo",
       "typeAll": "Todos los tipos",
+      "audienceClassification": "Alcance",
+      "audienceClassificationAll": "Todos los alcances",
       "category": "Categoría",
       "categoryAll": "Todas las categorías",
       "countryCode": "País",

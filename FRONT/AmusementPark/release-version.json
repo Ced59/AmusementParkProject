@@ -1,6 +1,20 @@
 {
-  "version": "3.1.28",
+  "version": "3.1.29",
   "history": [
+    {
+      "version": "3.1.29",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Les parcs se filtrent par rayonnement.",
+        "en": "Parks can be filtered by reach.",
+        "de": "Parks lassen sich nach Reichweite filtern.",
+        "nl": "Parken zijn te filteren op bereik.",
+        "it": "I parchi si filtrano per rilevanza.",
+        "es": "Los parques se filtran por alcance.",
+        "pl": "Parki można filtrować według zasięgu.",
+        "pt": "Os parques podem ser filtrados por alcance."
+      }
+    },
     {
       "version": "3.1.28",
       "releasedAt": "2026-07-02",

@@ -24,6 +24,7 @@ describe('admin park edit form mapper', () => {
     expect(form.get('latitude')?.value).toBe(DEFAULT_ADMIN_PARK_COORDINATES[0]);
     expect(form.get('longitude')?.value).toBe(DEFAULT_ADMIN_PARK_COORDINATES[1]);
     expect(form.get('status')?.value).toBe('Operating');
+    expect(form.get('audienceClassification')?.value).toBeNull();
     expect(form.get('isVisible')?.value).toBeTrue();
     expect(form.get('adminReviewStatus')?.value).toBe('Validated');
     expect(form.get('openingDate')?.value).toBe('');
@@ -39,6 +40,7 @@ describe('admin park edit form mapper', () => {
       name: 'Walibi',
       countryCode: null as unknown as string,
       type: 'ThemePark',
+      audienceClassification: 'International',
       latitude: 50.1,
       longitude: 3.2,
       isVisible: undefined,
@@ -56,6 +58,7 @@ describe('admin park edit form mapper', () => {
 
     expect(form.get('id')?.value).toBe('park-1');
     expect(form.get('countryCode')?.value).toBe('');
+    expect(form.get('audienceClassification')?.value).toBe('International');
     expect(form.get('isVisible')?.value).toBeTrue();
     expect(form.get('status')?.value).toBe('Operating');
     expect(form.get('adminReviewStatus')?.value).toBe('Validated');
@@ -73,6 +76,7 @@ describe('admin park edit form mapper', () => {
       id: 'park-1',
       name: '  Bellewaerde  ',
       countryCode: ' BE ',
+      audienceClassification: 'Local',
       founderId: '  founder-1 ',
       operatorId: ' ',
       latitude: '50.846',
@@ -94,6 +98,7 @@ describe('admin park edit form mapper', () => {
 
     expect(park.name).toBe('  Bellewaerde  ');
     expect(park.countryCode).toBe('BE');
+    expect(park.audienceClassification).toBe('Local');
     expect(park.founderId).toBe('founder-1');
     expect(park.operatorId).toBeNull();
     expect(park.latitude).toBe(50.846);

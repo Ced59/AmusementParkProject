@@ -156,6 +156,8 @@
       "statusAll": "Alle Status",
       "type": "Typ",
       "typeAll": "Alle Typen",
+      "audienceClassification": "Reichweite",
+      "audienceClassificationAll": "Alle Reichweiten",
       "category": "Kategorie",
       "categoryAll": "Alle Kategorien",
       "countryCode": "Land",
@@ -900,6 +902,8 @@
       },
       "type": "Typ",
       "typePlaceholder": "Parktyp auswählen",
+      "audienceClassification": "Reichweite",
+      "audienceClassificationPlaceholder": "Reichweite auswählen",
       "founder": "Gründer",
       "founderPlaceholder": "Einen Gründer auswählen",
       "addFounder": "Gründer hinzufügen",
@@ -914,6 +918,13 @@
         "animalPark": "Tierpark",
         "amusementPark": "Vergnügungspark",
         "resort": "Resort",
+        "notSpecified": "Nicht angegeben"
+      },
+      "audienceClassifications": {
+        "international": "Internationale Reichweite",
+        "national": "Nationale Reichweite",
+        "regional": "Regionale Reichweite",
+        "local": "Lokale Reichweite",
         "notSpecified": "Nicht angegeben"
       },
       "logos": {
@@ -3436,6 +3447,15 @@
       "openOnly": "Offen",
       "withClosed": "Mit geschl.",
       "closedOnly": "Geschlossen"
+    },
+    "audienceFilters": {
+      "label": "Reichweite",
+      "all": "Alle",
+      "international": "International",
+      "national": "National",
+      "regional": "Regional",
+      "local": "Lokal",
+      "notSpecified": "Nicht angegeben"
     },
     "statuses": {
       "closedDefinitively": "Dauerhaft geschlossen"

@@ -6,7 +6,9 @@ import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ParkStatus } from '@app/models/parks/park-status';
 import { ParkType } from '@app/models/parks/park-type';
+import { ParkAudienceClassification } from '@app/models/parks/park-audience-classification';
 import {
+  getParkAudienceClassificationTranslationKey,
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
   getParkTypeTranslationKey
@@ -24,6 +26,13 @@ export const PARK_TYPE_OPTIONS: ReadonlyArray<TranslationOption<ParkType>> = [
   buildTranslationOption('AnimalPark', getParkTypeTranslationKey),
   buildTranslationOption('AmusementPark', getParkTypeTranslationKey),
   buildTranslationOption('Resort', getParkTypeTranslationKey)
+];
+
+export const PARK_AUDIENCE_CLASSIFICATION_OPTIONS: ReadonlyArray<TranslationOption<ParkAudienceClassification>> = [
+  buildTranslationOption('International', getParkAudienceClassificationTranslationKey),
+  buildTranslationOption('National', getParkAudienceClassificationTranslationKey),
+  buildTranslationOption('Regional', getParkAudienceClassificationTranslationKey),
+  buildTranslationOption('Local', getParkAudienceClassificationTranslationKey)
 ];
 
 export const PARK_STATUS_OPTIONS: ReadonlyArray<TranslationOption<ParkStatus>> = [

@@ -47,6 +47,8 @@
       },
       "type": "Typ",
       "typePlaceholder": "Wybierz typ parku",
+      "audienceClassification": "Zasięg",
+      "audienceClassificationPlaceholder": "Wybierz zasięg",
       "founder": "Założyciel",
       "founderPlaceholder": "Wybierz założyciela",
       "addFounder": "Dodaj założyciela",
@@ -62,6 +64,13 @@
         "amusementPark": "Park rozrywki",
         "resort": "Resort",
         "notSpecified": "Nie określono"
+      },
+      "audienceClassifications": {
+        "international": "Zasięg międzynarodowy",
+        "national": "Zasięg krajowy",
+        "regional": "Zasięg regionalny",
+        "local": "Zasięg lokalny",
+        "notSpecified": "Nieuzupełnione"
       },
       "logos": {
         "sectionTitle": "Logo parku",

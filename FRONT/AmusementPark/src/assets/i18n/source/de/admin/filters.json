@@ -11,6 +11,8 @@
       "statusAll": "Alle Status",
       "type": "Typ",
       "typeAll": "Alle Typen",
+      "audienceClassification": "Reichweite",
+      "audienceClassificationAll": "Alle Reichweiten",
       "category": "Kategorie",
       "categoryAll": "Alle Kategorien",
       "countryCode": "Land",

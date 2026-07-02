@@ -9,7 +9,9 @@
   [selectedParkCard]="selectedParkCard"
   [selectedRegion]="selectedRegion"
   [selectedClosedFilter]="selectedClosedFilter"
+  [selectedAudienceClassificationFilter]="selectedAudienceClassificationFilter"
   [closedFilterOptions]="closedFilterOptions"
+  [audienceClassificationFilterOptions]="audienceClassificationFilterOptions"
   [currentLang]="currentLang"
   [searchTerm]="searchTerm"
   (searchInputChanged)="onSearchInput($event)"
@@ -17,6 +19,7 @@
   (mapParkSelected)="onMapParkSelected($event)"
   (regionFilterChanged)="onRegionFilterChanged($event)"
   (closedFilterChanged)="onClosedFilterChanged($event)"
+  (audienceClassificationFilterChanged)="onAudienceClassificationFilterChanged($event)"
   (resultParkFocused)="onResultParkFocused($event)"
   (selectedParkCleared)="clearSelectedPark()"
   (pageChanged)="onPageChange($event)">

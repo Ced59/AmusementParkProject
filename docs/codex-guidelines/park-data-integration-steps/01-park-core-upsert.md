@@ -18,6 +18,7 @@ Utiliser l’export initial ou l’export actualisé fourni par l’utilisateur.
 - Anciens noms importants si utiles pour l’histoire, pas forcément dans cette étape.
 - Pays, ville, adresse et site officiel.
 - Type de parc.
+- Rayonnement du parc : international, national, régional ou local.
 - Statut : en activité, fermé définitivement ou autre statut réellement supporté.
 - Date d’ouverture.
 - Date de fermeture si le parc est fermé.
@@ -45,6 +46,16 @@ Cette étape inclut les références nécessaires à la fiche parc. Ne pas crée
 - Ne pas laisser une date vide si l’année est fiable : l’année seule est une information utile.
 - Ne pas inventer `01-01` ou le premier jour d’un mois pour rendre une date compatible.
 - Pour un parc disparu, conserver la visibilité si le parc est pertinent historiquement, mais garder `adminReviewStatus: "ToReview"` tant que la fiche n’est pas auditée.
+
+## Règles rayonnement
+
+- Renseigner `park.audienceClassification` dans chaque nouveau JSON d’infos générales de parc.
+- Utiliser uniquement les valeurs canoniques `International`, `National`, `Regional` ou `Local`.
+- Choisir `International` pour un parc dont la notoriété ou la fréquentation dépasse clairement le pays et attire un public international.
+- Choisir `National` pour un parc majeur à l’échelle de son pays, même si quelques visiteurs étrangers existent.
+- Choisir `Regional` pour un parc structurant à l’échelle d’une région, d’un bassin touristique ou d’une zone transfrontalière proche.
+- Choisir `Local` pour un parc surtout connu et fréquenté localement.
+- Si le niveau est incertain, choisir la valeur la plus prudente supportée par les sources et expliquer l’incertitude dans `metadata.notes`. Ne pas omettre le champ dans un nouvel upsert d’étape 1.
 
 ## Règles merge et prudence
 
@@ -87,6 +98,7 @@ Exemple de forme :
     "name": "Nom du parc",
     "countryCode": "FR",
     "type": "ThemePark",
+    "audienceClassification": "Regional",
     "status": "Operating",
     "openingDate": "1992-04-12",
     "websiteUrl": "https://example.com",
@@ -108,6 +120,7 @@ Exemple de forme :
 - Le fondateur et l’exploitant ne sont pas confondus.
 - Les `founderKey` et `operatorKey` utilisés sont résolus dans le même JSON ou déjà présents dans l’export.
 - `park.type`, `park.status` et `adminReviewStatus` utilisent les valeurs canoniques de `park-graph-upsert-enums.md`.
+- `park.audienceClassification` est renseigné et utilise une valeur canonique de `park-graph-upsert-enums.md`.
 - Les descriptions longues ne sont pas forcées dans cette étape si elles risquent de saturer le lot.
 - Le parc reste masqué tant que les données publiques ne sont pas prêtes, sauf demande explicite.
 

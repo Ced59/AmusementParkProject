@@ -156,6 +156,8 @@
       "statusAll": "Todos os estados",
       "type": "Tipo",
       "typeAll": "Todos os tipos",
+      "audienceClassification": "Alcance",
+      "audienceClassificationAll": "Todos os alcances",
       "category": "Categoria",
       "categoryAll": "Todas as categorias",
       "countryCode": "País",
@@ -900,6 +902,8 @@
       },
       "type": "Tipo",
       "typePlaceholder": "Selecionar um tipo de parque",
+      "audienceClassification": "Alcance",
+      "audienceClassificationPlaceholder": "Selecionar um alcance",
       "founder": "Fundador",
       "founderPlaceholder": "Selecionar um fundador",
       "addFounder": "Adicionar fundador",
@@ -915,6 +919,13 @@
         "amusementPark": "Parque de diversões",
         "resort": "Resort",
         "notSpecified": "Não definido"
+      },
+      "audienceClassifications": {
+        "international": "Alcance internacional",
+        "national": "Alcance nacional",
+        "regional": "Alcance regional",
+        "local": "Alcance local",
+        "notSpecified": "Não informado"
       },
       "logos": {
         "sectionTitle": "Logótipos do parque",
@@ -3436,6 +3447,15 @@
       "openOnly": "Abertos",
       "withClosed": "Com fechados",
       "closedOnly": "Fechados"
+    },
+    "audienceFilters": {
+      "label": "Alcance",
+      "all": "Todos",
+      "international": "Internacional",
+      "national": "Nacional",
+      "regional": "Regional",
+      "local": "Local",
+      "notSpecified": "Não informado"
     },
     "statuses": {
       "closedDefinitively": "Fechado definitivamente"

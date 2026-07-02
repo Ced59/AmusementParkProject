@@ -47,6 +47,8 @@
       },
       "type": "Typ",
       "typePlaceholder": "Parktyp auswählen",
+      "audienceClassification": "Reichweite",
+      "audienceClassificationPlaceholder": "Reichweite auswählen",
       "founder": "Gründer",
       "founderPlaceholder": "Einen Gründer auswählen",
       "addFounder": "Gründer hinzufügen",
@@ -61,6 +63,13 @@
         "animalPark": "Tierpark",
         "amusementPark": "Vergnügungspark",
         "resort": "Resort",
+        "notSpecified": "Nicht angegeben"
+      },
+      "audienceClassifications": {
+        "international": "Internationale Reichweite",
+        "national": "Nationale Reichweite",
+        "regional": "Regionale Reichweite",
+        "local": "Lokale Reichweite",
         "notSpecified": "Nicht angegeben"
       },
       "logos": {

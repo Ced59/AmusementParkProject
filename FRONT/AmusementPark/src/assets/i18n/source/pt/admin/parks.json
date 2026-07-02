@@ -47,6 +47,8 @@
       },
       "type": "Tipo",
       "typePlaceholder": "Selecionar um tipo de parque",
+      "audienceClassification": "Alcance",
+      "audienceClassificationPlaceholder": "Selecionar um alcance",
       "founder": "Fundador",
       "founderPlaceholder": "Selecionar um fundador",
       "addFounder": "Adicionar fundador",
@@ -62,6 +64,13 @@
         "amusementPark": "Parque de diversões",
         "resort": "Resort",
         "notSpecified": "Não definido"
+      },
+      "audienceClassifications": {
+        "international": "Alcance internacional",
+        "national": "Alcance nacional",
+        "regional": "Alcance regional",
+        "local": "Alcance local",
+        "notSpecified": "Não informado"
       },
       "logos": {
         "sectionTitle": "Logótipos do parque",

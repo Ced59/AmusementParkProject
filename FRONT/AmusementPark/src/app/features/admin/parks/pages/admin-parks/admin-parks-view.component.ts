@@ -11,6 +11,7 @@ import { Tag } from '@shared/ui/primitives/tag';
 import { TranslateModule } from '@ngx-translate/core';
 import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkOpeningHoursAdminFilter, ParkOpeningHoursAdminStatus } from '@app/models/parks/park-opening-hours';
 import { ParkType } from '@app/models/parks/park-type';
 import { ParkAdminListFilters, ParkAdminListSortDirection, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
@@ -35,6 +36,7 @@ export class AdminParksViewComponent {
   @Input() visibilityFilter!: Signal<boolean | null>;
   @Input() adminReviewStatusFilter!: Signal<AdminReviewStatus | null>;
   @Input() typeFilter!: Signal<ParkType | null>;
+  @Input() audienceClassificationFilter!: Signal<ParkAudienceClassificationFilter | null>;
   @Input() countryCodeFilter!: Signal<string>;
   @Input() validCoordinatesFilter!: Signal<boolean | null>;
   @Input() openingHoursFilter!: Signal<ParkOpeningHoursAdminFilter>;
@@ -46,6 +48,7 @@ export class AdminParksViewComponent {
   @Input() canShowHeaderTotal!: Signal<boolean>;
   @Input() canClearSearch!: Signal<boolean>;
   @Input() getTypeTranslationKeyFn: (type: string | null | undefined) => string = () => 'admin.parks.types.notSpecified';
+  @Input() getAudienceClassificationTranslationKeyFn: (classification: string | null | undefined) => string = () => 'admin.parks.audienceClassifications.notSpecified';
 
   @Output() searchQueryChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() searchClicked: EventEmitter<void> = new EventEmitter<void>();
@@ -76,6 +79,7 @@ export class AdminParksViewComponent {
   protected localVisibilityFilter: boolean | null = null;
   protected localAdminReviewStatusFilter: AdminReviewStatus | null = null;
   protected localTypeFilter: ParkType | null = null;
+  protected localAudienceClassificationFilter: ParkAudienceClassificationFilter | null = null;
   protected localCountryCodeFilter: string = '';
   protected localValidCoordinatesFilter: boolean | null = null;
   protected localOpeningHoursFilter: ParkOpeningHoursAdminFilter = 'all';
@@ -97,6 +101,7 @@ export class AdminParksViewComponent {
       isVisible: this.localVisibilityFilter,
       adminReviewStatus: this.localAdminReviewStatusFilter,
       type: this.localTypeFilter,
+      audienceClassification: this.localAudienceClassificationFilter,
       countryCode: this.localCountryCodeFilter,
       hasValidCoordinates: this.localValidCoordinatesFilter,
       openingHoursStatus: this.localOpeningHoursFilter
@@ -183,6 +188,10 @@ export class AdminParksViewComponent {
 
   getTypeTranslationKey(type: string | null | undefined): string {
     return this.getTypeTranslationKeyFn(type);
+  }
+
+  getAudienceClassificationTranslationKey(classification: string | null | undefined): string {
+    return this.getAudienceClassificationTranslationKeyFn(classification);
   }
 
   getStatusSeverity(status: AdminReviewStatus | null | undefined): 'success' | 'info' | 'warn' | 'danger' {

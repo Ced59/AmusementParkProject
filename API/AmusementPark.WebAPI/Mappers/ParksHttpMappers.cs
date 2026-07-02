@@ -26,6 +26,7 @@ internal static class ParksHttpMappers
             Name = dto.Name?.Trim(),
             CountryCode = NormalizeOptionalString(dto.CountryCode),
             Type = dto.Type.ToDomain(),
+            AudienceClassification = dto.AudienceClassification.ToDomain(),
             Status = dto.Status.ToDomain(),
             OpeningDate = dto.OpeningDate?.Date,
             ClosingDate = dto.ClosingDate?.Date,
@@ -58,6 +59,7 @@ internal static class ParksHttpMappers
             Name = dto.Name.Trim(),
             CountryCode = NormalizeOptionalString(dto.CountryCode),
             Type = dto.Type.ToDomain(),
+            AudienceClassification = dto.AudienceClassification.ToDomain(),
             Status = dto.Status.ToDomain(),
             OpeningDate = dto.OpeningDate?.Date,
             ClosingDate = dto.ClosingDate?.Date,
@@ -91,6 +93,7 @@ internal static class ParksHttpMappers
             Name = value.Name,
             CountryCode = value.CountryCode,
             Type = value.Type.ToHttp(),
+            AudienceClassification = value.AudienceClassification.ToHttp(),
             Status = value.Status.ToHttp(),
             OpeningDate = value.OpeningDate,
             ClosingDate = value.ClosingDate,
@@ -123,6 +126,7 @@ internal static class ParksHttpMappers
             Name = value.Name,
             CountryCode = value.CountryCode,
             Type = value.Type.ToHttp(),
+            AudienceClassification = value.AudienceClassification.ToHttp(),
             Status = value.Status.ToHttp(),
             OpeningDate = value.OpeningDate,
             ClosingDate = value.ClosingDate,
@@ -234,6 +238,7 @@ internal static class ParksHttpMappers
             Id = value.Id ?? string.Empty,
             Name = value.Name ?? string.Empty,
             CountryCode = value.CountryCode,
+            AudienceClassification = value.AudienceClassification.ToHttp(),
             City = value.City,
             Street = value.Street,
             PostalCode = value.PostalCode,
@@ -575,6 +580,26 @@ internal static class ParksHttpMappers
         }
 
         return Enum.TryParse(value.Value.ToString(), out ParkTypeDto parsed) ? parsed : null;
+    }
+
+    private static ParkAudienceClassification? ToDomain(this ParkAudienceClassificationDto? value)
+    {
+        if (!value.HasValue)
+        {
+            return null;
+        }
+
+        return Enum.TryParse(value.Value.ToString(), out ParkAudienceClassification parsed) ? parsed : null;
+    }
+
+    private static ParkAudienceClassificationDto? ToHttp(this ParkAudienceClassification? value)
+    {
+        if (!value.HasValue)
+        {
+            return null;
+        }
+
+        return Enum.TryParse(value.Value.ToString(), out ParkAudienceClassificationDto parsed) ? parsed : null;
     }
 
     private static ParkStatus ToDomain(this ParkStatusDto value)

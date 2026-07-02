@@ -156,6 +156,8 @@
       "statusAll": "Wszystkie statusy",
       "type": "Typ",
       "typeAll": "Wszystkie typy",
+      "audienceClassification": "Zasięg",
+      "audienceClassificationAll": "Wszystkie zasięgi",
       "category": "Kategoria",
       "categoryAll": "Wszystkie kategorie",
       "countryCode": "Kraj",
@@ -900,6 +902,8 @@
       },
       "type": "Typ",
       "typePlaceholder": "Wybierz typ parku",
+      "audienceClassification": "Zasięg",
+      "audienceClassificationPlaceholder": "Wybierz zasięg",
       "founder": "Założyciel",
       "founderPlaceholder": "Wybierz założyciela",
       "addFounder": "Dodaj założyciela",
@@ -915,6 +919,13 @@
         "amusementPark": "Park rozrywki",
         "resort": "Resort",
         "notSpecified": "Nie określono"
+      },
+      "audienceClassifications": {
+        "international": "Zasięg międzynarodowy",
+        "national": "Zasięg krajowy",
+        "regional": "Zasięg regionalny",
+        "local": "Zasięg lokalny",
+        "notSpecified": "Nieuzupełnione"
       },
       "logos": {
         "sectionTitle": "Logo parku",
@@ -3436,6 +3447,15 @@
       "openOnly": "Otwarte",
       "withClosed": "Z zamkn.",
       "closedOnly": "Zamknięte"
+    },
+    "audienceFilters": {
+      "label": "Zasięg",
+      "all": "Wszystkie",
+      "international": "Międzynarodowy",
+      "national": "Krajowy",
+      "regional": "Regionalny",
+      "local": "Lokalny",
+      "notSpecified": "Nie uzupełniono"
     },
     "statuses": {
       "closedDefinitively": "Zamknięty na stałe"

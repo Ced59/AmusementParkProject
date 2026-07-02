@@ -9,6 +9,7 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Countries;
 using AmusementPark.Application.Features.Parks.Commands;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Application.Features.Parks.Results;
@@ -145,13 +146,14 @@ public sealed class ParksController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkMapPointDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetVisibleParkMapPointsAsync([FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetVisibleParkMapPointsAsync([FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, [FromQuery] string? audienceClassification = null, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)
     {
         string? effectiveQuery = string.IsNullOrWhiteSpace(query) ? name : query;
         WorldRegionFilter? regionFilter = WorldRegionFilterParser.Parse(region);
+        ParkAudienceClassificationFilter? parsedAudienceClassificationFilter = ParkAudienceClassificationFilterParser.Parse(audienceClassification);
 
         ApplicationResult<IReadOnlyCollection<Park>> result = await this.getVisibleParkMapPointsQueryHandler.HandleAsync(
-            new GetVisibleParkMapPointsQuery(effectiveQuery, regionFilter, ParseClosedEntityFilter(closedFilter)),
+            new GetVisibleParkMapPointsQuery(effectiveQuery, regionFilter, parsedAudienceClassificationFilter, ParseClosedEntityFilter(closedFilter)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -225,6 +227,7 @@ public sealed class ParksController : ControllerBase
         [FromQuery] bool? isVisible = null,
         [FromQuery] string? adminReviewStatus = null,
         [FromQuery] string? type = null,
+        [FromQuery] string? audienceClassification = null,
         [FromQuery] string? countryCode = null,
         [FromQuery] bool? hasValidCoordinates = null,
         [FromQuery] string? closedFilter = null,
@@ -242,6 +245,7 @@ public sealed class ParksController : ControllerBase
         bool? effectiveIsVisible = canSeeNonVisible ? isVisible : true;
         AdminReviewStatus? parsedAdminReviewStatus = canSeeNonVisible ? ParseAdminReviewStatus(adminReviewStatus) : null;
         ParkType? parsedType = ParseParkType(type);
+        ParkAudienceClassificationFilter? parsedAudienceClassificationFilter = ParkAudienceClassificationFilterParser.Parse(audienceClassification);
         ClosedEntityFilter parsedClosedFilter = ParseClosedEntityFilter(closedFilter);
         ClosedEntityFilter effectiveClosedFilter = canSeeNonVisible && !visibleOnly ? ClosedEntityFilter.All : parsedClosedFilter;
         ParkOpeningHoursAdminFilter parsedOpeningHoursFilter = canSeeNonVisible ? ParseOpeningHoursFilter(openingHoursStatus) : ParkOpeningHoursAdminFilter.All;
@@ -249,8 +253,8 @@ public sealed class ParksController : ControllerBase
         bool sortDescending = IsDescendingSort(sortDirection);
 
         ApplicationResult<PagedResult<ParkListResult>> result = string.IsNullOrWhiteSpace(effectiveQuery) && regionFilter is null
-            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedOpeningHoursFilter, parsedSortField, sortDescending), cancellationToken)
-            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedOpeningHoursFilter, parsedSortField, sortDescending), cancellationToken);
+            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, parsedAudienceClassificationFilter, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedOpeningHoursFilter, parsedSortField, sortDescending), cancellationToken)
+            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, parsedAudienceClassificationFilter, countryCode, hasValidCoordinates, effectiveClosedFilter, parsedOpeningHoursFilter, parsedSortField, sortDescending), cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
         {
@@ -341,14 +345,15 @@ public sealed class ParksController : ControllerBase
     {
         ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParksBulkAdministrationCommandHandler.HandleAsync(
             new UpdateParksBulkAdministrationCommand(
-                request.Ids,
-                request.IsVisible,
-                request.AdminReviewStatus.ToOptionalDomain(),
-                request.FilterIsVisible,
-                request.FilterAdminReviewStatus.ToOptionalDomain(),
-                ParseParkType(request.FilterType),
-                request.FilterCountryCode,
-                request.FilterHasValidCoordinates),
+                ParkIds: request.Ids,
+                IsVisible: request.IsVisible,
+                AdminReviewStatus: request.AdminReviewStatus.ToOptionalDomain(),
+                FilterIsVisible: request.FilterIsVisible,
+                FilterAdminReviewStatus: request.FilterAdminReviewStatus.ToOptionalDomain(),
+                FilterType: ParseParkType(request.FilterType),
+                FilterCountryCode: request.FilterCountryCode,
+                FilterHasValidCoordinates: request.FilterHasValidCoordinates,
+                FilterAudienceClassification: ParkAudienceClassificationFilterParser.Parse(request.FilterAudienceClassification)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

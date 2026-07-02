@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
@@ -615,7 +616,7 @@ public sealed class SitemapSectionProvidersTests
 
         Assert.Single(urls);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-99/late-park/item/item-99/late-attraction");
-        parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<bool?>(), It.IsAny<ClosedEntityFilter>(), It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<bool?>(), It.IsAny<ClosedEntityFilter>(), It.IsAny<CancellationToken>(), It.IsAny<ParkAdminSortField>(), It.IsAny<bool>(), It.IsAny<ParkAudienceClassificationFilter?>()), Times.Never);
     }
 
     [Fact]
@@ -992,7 +993,8 @@ public sealed class SitemapSectionProvidersTests
                 ClosedEntityFilter.All,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
-                false))
+                false,
+                null))
             .Returns((
                 int page,
                 int pageSize,
@@ -1005,7 +1007,8 @@ public sealed class SitemapSectionProvidersTests
                 ClosedEntityFilter closedFilter,
                 CancellationToken cancellationToken,
                 ParkAdminSortField sortField,
-                bool sortDescending) =>
+                bool sortDescending,
+                ParkAudienceClassificationFilter? audienceClassificationFilter) =>
             {
                 IReadOnlyCollection<Park> pageItems = parks
                     .Skip((page - 1) * pageSize)
@@ -1031,7 +1034,8 @@ public sealed class SitemapSectionProvidersTests
                 ClosedEntityFilter.OpenOnly,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
-                false))
+                false,
+                null))
             .Returns((
                 int page,
                 int pageSize,
@@ -1044,7 +1048,8 @@ public sealed class SitemapSectionProvidersTests
                 ClosedEntityFilter closedFilter,
                 CancellationToken cancellationToken,
                 ParkAdminSortField sortField,
-                bool sortDescending) =>
+                bool sortDescending,
+                ParkAudienceClassificationFilter? audienceClassificationFilter) =>
             {
                 IReadOnlyCollection<Park> pageItems = parks
                     .Skip((page - 1) * pageSize)

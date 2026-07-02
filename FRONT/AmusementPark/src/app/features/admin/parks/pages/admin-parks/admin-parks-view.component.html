@@ -89,6 +89,18 @@
     </label>
 
     <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.filters.audienceClassification' | translate }}</span>
+      <select [(ngModel)]="localAudienceClassificationFilter" (ngModelChange)="onFilterChanged()">
+        <option [ngValue]="null">{{ 'admin.filters.audienceClassificationAll' | translate }}</option>
+        <option [ngValue]="'International'">{{ 'admin.parks.audienceClassifications.international' | translate }}</option>
+        <option [ngValue]="'National'">{{ 'admin.parks.audienceClassifications.national' | translate }}</option>
+        <option [ngValue]="'Regional'">{{ 'admin.parks.audienceClassifications.regional' | translate }}</option>
+        <option [ngValue]="'Local'">{{ 'admin.parks.audienceClassifications.local' | translate }}</option>
+        <option [ngValue]="'Unspecified'">{{ 'admin.parks.audienceClassifications.notSpecified' | translate }}</option>
+      </select>
+    </label>
+
+    <label class="admin-field">
       <span class="admin-field-label">{{ 'admin.filters.countryCode' | translate }}</span>
       <input
         appUiInputText
@@ -167,6 +179,7 @@
           <app-ui-sort-icon field="name"></app-ui-sort-icon>
         </th>
         <th>{{ 'admin.parks.type' | translate }}</th>
+        <th>{{ 'admin.parks.audienceClassification' | translate }}</th>
         <th>{{ 'admin.parks.country' | translate }}</th>
         <th>{{ 'admin.parks.city' | translate }}</th>
         <th>{{ 'admin.parks.coordinates' | translate }}</th>
@@ -191,7 +204,7 @@
     <ng-template appUiTemplate="body" let-park>
       @if (isParkSelected(park)) {
         <tr class="admin-bulk-row">
-          <td colspan="12">
+          <td colspan="13">
             <div class="admin-bulk-bar">
               <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
               <div class="admin-bulk-bar__actions">
@@ -216,6 +229,7 @@
           <strong class="admin-row-title">{{ park.name }}</strong>
         </td>
         <td [attr.data-label]="'admin.parks.type' | translate">{{ getTypeTranslationKey(park.type) | translate }}</td>
+        <td [attr.data-label]="'admin.parks.audienceClassification' | translate">{{ getAudienceClassificationTranslationKey(park.audienceClassification) | translate }}</td>
         <td [attr.data-label]="'admin.parks.country' | translate">{{ park.countryCode || '—' }}</td>
         <td [attr.data-label]="'admin.parks.city' | translate">{{ park.city || '—' }}</td>
         <td [attr.data-label]="'admin.parks.coordinates' | translate">
@@ -278,7 +292,7 @@
     </ng-template>
     <ng-template appUiTemplate="emptymessage">
       <tr>
-        <td colspan="12">
+        <td colspan="13">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"

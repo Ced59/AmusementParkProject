@@ -13,6 +13,8 @@ public sealed class ParkDto
 
     public ParkTypeDto? Type { get; set; }
 
+    public ParkAudienceClassificationDto? AudienceClassification { get; set; }
+
     public ParkStatusDto Status { get; set; } = ParkStatusDto.Operating;
 
     public DateTime? OpeningDate { get; set; }

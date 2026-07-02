@@ -11,6 +11,7 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
 import { ParkListViewComponent } from '../ui/park-list-view.component';
 import { SeoService } from '@core/seo/seo.service';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 
 @Component({
@@ -33,12 +34,21 @@ export class ParkListPageComponent implements OnInit {
   protected readonly selectedParkCard = this.stateFacade.selectedParkCard;
   protected readonly selectedRegion = this.stateFacade.selectedRegion;
   protected readonly selectedClosedFilter = this.stateFacade.selectedClosedFilter;
+  protected readonly selectedAudienceClassificationFilter = this.stateFacade.selectedAudienceClassificationFilter;
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
   protected readonly closedFilterOptions = signal([
     { labelKey: 'parks.closedFilters.openOnly', value: DEFAULT_CLOSED_ENTITY_FILTER },
     { labelKey: 'parks.closedFilters.withClosed', value: 'all' },
     { labelKey: 'parks.closedFilters.closedOnly', value: 'closedOnly' }
+  ]);
+  protected readonly audienceClassificationFilterOptions = signal([
+    { labelKey: 'parks.audienceFilters.all', value: null },
+    { labelKey: 'parks.audienceFilters.international', value: 'International' },
+    { labelKey: 'parks.audienceFilters.national', value: 'National' },
+    { labelKey: 'parks.audienceFilters.regional', value: 'Regional' },
+    { labelKey: 'parks.audienceFilters.local', value: 'Local' },
+    { labelKey: 'parks.audienceFilters.notSpecified', value: 'Unspecified' }
   ]);
 
   private readonly searchSubject: Subject<string> = new Subject<string>();
@@ -137,6 +147,15 @@ export class ParkListPageComponent implements OnInit {
     this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
   }
 
+  onAudienceClassificationFilterChanged(value: string | null): void {
+    const audienceClassificationFilter: ParkAudienceClassificationFilter | null = normalizeAudienceClassificationFilter(value);
+
+    this.stateFacade.setAudienceClassificationFilter(audienceClassificationFilter);
+    this.stateFacade.clearSelectedPark();
+    this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
+    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
+  }
+
   onMapParkSelected(parkId: string | null): void {
     this.stateFacade.selectParkFromMap(parkId);
   }
@@ -156,4 +175,17 @@ function normalizeClosedFilter(value: string | null): ClosedEntityFilter {
   }
 
   return DEFAULT_CLOSED_ENTITY_FILTER;
+}
+
+function normalizeAudienceClassificationFilter(value: string | null): ParkAudienceClassificationFilter | null {
+  switch (value) {
+    case 'International':
+    case 'National':
+    case 'Regional':
+    case 'Local':
+    case 'Unspecified':
+      return value;
+    default:
+      return null;
+  }
 }

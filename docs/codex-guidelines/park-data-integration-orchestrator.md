@@ -147,7 +147,7 @@ Sortie attendue : une décision de pertinence et un plan de lots. Pas de JSON ma
 
 Lire `park-data-integration-steps/01-park-core-upsert.md`.
 
-Objectif : créer ou corriger le parc avec ses données stables : nom, pays, type, statut, dates d’ouverture et de fermeture, adresse, coordonnées, site officiel, fondateur, exploitant et visibilité prudente.
+Objectif : créer ou corriger le parc avec ses données stables : nom, pays, type, rayonnement, statut, dates d’ouverture et de fermeture, adresse, coordonnées, site officiel, fondateur, exploitant et visibilité prudente.
 
 Sortie attendue : un JSON upsert centré sur `park` et, si nécessaire, `references.founders` ou `references.operators`.
 
@@ -248,6 +248,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Renseigner une année seule quand c’est la seule précision fiable pour une date d’ouverture ou de fermeture ; ne jamais fabriquer `01-01` ou un premier jour de mois.
 - Mettre les restrictions, tailles, tarifs, horaires, dates, coordonnées et données techniques dans les champs structurés, pas dans les descriptions.
 - Utiliser uniquement les valeurs enum listées dans `park-graph-upsert-enums.md`.
+- Renseigner `park.audienceClassification` dans les nouveaux JSON d’infos générales de parc et vérifier son absence uniquement comme dette legacy à corriger.
 - Utiliser uniquement des images externes importables par le flux technique du projet : URL HTTP(S) publique, réponse image réelle, taille acceptée et propriétaire résolu.
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Réserver les libellés et raisons visibles dans le calendrier aux événements nommés, exceptions datées ou informations temporaires utiles ; ne jamais répéter un commentaire général sur tous les jours normaux.

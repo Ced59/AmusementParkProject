@@ -65,7 +65,8 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
             query.ClosedFilter,
             cancellationToken,
             query.SortField,
-            query.SortDescending);
+            query.SortDescending,
+            query.AudienceClassificationFilter);
 
         PagedResult<ParkListResult> result = await this.EnrichAsync(page, query.IncludeHidden, query.IncludeHidden, cancellationToken);
         return ApplicationResult<PagedResult<ParkListResult>>.Success(result);
@@ -83,7 +84,8 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
             query.CountryCode,
             query.HasValidCoordinates,
             query.ClosedFilter,
-            cancellationToken);
+            cancellationToken,
+            audienceClassificationFilter: query.AudienceClassificationFilter);
 
         if (countProbe.TotalItems == 0)
         {
@@ -106,7 +108,8 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
             query.ClosedFilter,
             cancellationToken,
             repositorySortField,
-            query.SortDescending);
+            query.SortDescending,
+            query.AudienceClassificationFilter);
         PagedResult<ParkListResult> enrichedPage = await this.EnrichAsync(allParks, true, true, cancellationToken);
         List<ParkListResult> filteredItems = ApplyOpeningHoursFilter(enrichedPage.Items, query.OpeningHoursFilter);
         List<ParkListResult> sortedItems = RequiresApplicationLevelSort(query.SortField)

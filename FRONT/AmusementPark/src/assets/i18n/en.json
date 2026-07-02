@@ -156,6 +156,8 @@
       "statusAll": "All statuses",
       "type": "Type",
       "typeAll": "All types",
+      "audienceClassification": "Audience",
+      "audienceClassificationAll": "All audience scopes",
       "category": "Category",
       "categoryAll": "All categories",
       "countryCode": "Country",
@@ -900,6 +902,8 @@
       },
       "type": "Type",
       "typePlaceholder": "Select a park type",
+      "audienceClassification": "Audience",
+      "audienceClassificationPlaceholder": "Select an audience scope",
       "founder": "Founder",
       "founderPlaceholder": "Select a founder",
       "addFounder": "Add founder",
@@ -914,6 +918,13 @@
         "animalPark": "Animal park",
         "amusementPark": "Amusement park",
         "resort": "Resort",
+        "notSpecified": "Not specified"
+      },
+      "audienceClassifications": {
+        "international": "International audience",
+        "national": "National audience",
+        "regional": "Regional audience",
+        "local": "Local audience",
         "notSpecified": "Not specified"
       },
       "logos": {
@@ -3436,6 +3447,15 @@
       "openOnly": "Open",
       "withClosed": "With closed",
       "closedOnly": "Closed"
+    },
+    "audienceFilters": {
+      "label": "Reach",
+      "all": "All",
+      "international": "International",
+      "national": "National",
+      "regional": "Regional",
+      "local": "Local",
+      "notSpecified": "Not specified"
     },
     "statuses": {
       "closedDefinitively": "Permanently closed"

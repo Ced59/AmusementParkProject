@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Handlers;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Queries;
@@ -19,6 +20,51 @@ namespace AmusementPark.Application.Tests.Features.Parks.Handlers;
 
 public sealed class GetParksPageQueryHandlerTests
 {
+    [Fact]
+    public async Task HandleAsync_WhenAudienceClassificationFilterIsProvided_ShouldPassItToRepository()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetPageAsync(
+                1,
+                12,
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                ClosedEntityFilter.OpenOnly,
+                It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Default,
+                false,
+                ParkAudienceClassificationFilter.Unspecified))
+            .ReturnsAsync(new PagedResult<Park>(Array.Empty<Park>(), 1, 12, 0));
+
+        GetParksPageQueryHandler handler = new GetParksPageQueryHandler(
+            parkRepository.Object,
+            parkItemRepository.Object,
+            openingHoursRepository.Object,
+            new ParkOpeningHoursAdminStatusResolver(),
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<ParkListResult>> result = await handler.HandleAsync(
+            new GetParksPageQuery(
+                new PagedQuery(1, 12),
+                IsVisible: true,
+                AudienceClassificationFilter: ParkAudienceClassificationFilter.Unspecified));
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Equal(0, result.Value.TotalItems);
+
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        openingHoursRepository.VerifyNoOtherCalls();
+    }
+
     [Fact]
     public async Task HandleAsync_WhenSortingByVisibleParkItems_ShouldSortCountsBeforePaging()
     {
@@ -45,7 +91,8 @@ public sealed class GetParksPageQueryHandlerTests
                 ClosedEntityFilter.All,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
-                false))
+                false,
+                null))
             .ReturnsAsync(new PagedResult<Park>(parks.Take(1).ToList(), 1, 1, parks.Count));
 
         parkRepository
@@ -61,7 +108,8 @@ public sealed class GetParksPageQueryHandlerTests
                 ClosedEntityFilter.All,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
-                true))
+                true,
+                null))
             .ReturnsAsync(new PagedResult<Park>(parks, 1, parks.Count, parks.Count));
 
         parkItemRepository

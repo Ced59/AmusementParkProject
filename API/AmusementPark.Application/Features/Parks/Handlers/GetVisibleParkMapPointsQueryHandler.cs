@@ -27,7 +27,10 @@ public sealed class GetVisibleParkMapPointsQueryHandler : IQueryHandler<GetVisib
     {
         IReadOnlyCollection<string> matchingCountryCodes = await this.countryReferenceService.FindCountryCodesByLocalizedSearchAsync(query.SearchTerm, cancellationToken);
         IReadOnlyCollection<string> regionCountryCodes = this.countryReferenceService.GetCountryCodesForRegion(query.Region);
-        ParkSearchCriteria criteria = new ParkSearchCriteria(query.SearchTerm, matchingCountryCodes, regionCountryCodes);
+        ParkSearchCriteria criteria = new ParkSearchCriteria(query.SearchTerm, matchingCountryCodes, regionCountryCodes)
+        {
+            AudienceClassificationFilter = query.AudienceClassificationFilter,
+        };
 
         IReadOnlyCollection<Park> parks = await this.parkRepository.GetVisibleMapPointsAsync(criteria, query.ClosedFilter, cancellationToken);
         return ApplicationResult<IReadOnlyCollection<Park>>.Success(parks);

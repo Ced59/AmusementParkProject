@@ -11,6 +11,8 @@ public sealed class ParkMapPointDto
 
     public string? CountryCode { get; set; }
 
+    public ParkAudienceClassificationDto? AudienceClassification { get; set; }
+
     public string? City { get; set; }
 
     public string? Street { get; set; }

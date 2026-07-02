@@ -101,7 +101,7 @@ describe('AdminParksStateFacade', () => {
   });
 
   it('applies filters and resets to the first page', () => {
-    facade.updateFilters({ isVisible: true, countryCode: 'DE', hasValidCoordinates: true });
+    facade.updateFilters({ isVisible: true, countryCode: 'DE', hasValidCoordinates: true, audienceClassification: 'Unspecified' });
 
     expect(facade.visibilityFilter()).toBeTrue();
     expect(facade.countryCodeFilter()).toBe('DE');
@@ -111,6 +111,7 @@ describe('AdminParksStateFacade', () => {
       isVisible: true,
       adminReviewStatus: null,
       type: null,
+      audienceClassification: 'Unspecified',
       countryCode: 'DE',
       hasValidCoordinates: true,
       openingHoursStatus: 'all'
@@ -141,7 +142,7 @@ describe('AdminParksStateFacade', () => {
   });
 
   it('makes filtered valid-coordinate parks visible through criteria bulk update', () => {
-    facade.updateFilters({ adminReviewStatus: 'ToReview', type: 'ThemePark', countryCode: 'FR', hasValidCoordinates: false });
+    facade.updateFilters({ adminReviewStatus: 'ToReview', type: 'ThemePark', countryCode: 'FR', hasValidCoordinates: false, audienceClassification: 'National' });
     port.bulkCalls.length = 0;
 
     facade.makeFilteredValidCoordinateParksVisible().subscribe((result: BulkAdministrationUpdateResult) => {
@@ -155,6 +156,7 @@ describe('AdminParksStateFacade', () => {
       filterIsVisible: null,
       filterAdminReviewStatus: 'ToReview',
       filterType: 'ThemePark',
+      filterAudienceClassification: 'National',
       filterCountryCode: 'FR',
       filterHasValidCoordinates: true
     }]);

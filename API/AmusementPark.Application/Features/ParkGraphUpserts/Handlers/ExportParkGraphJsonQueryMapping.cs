@@ -13,6 +13,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler
             Name = park.Name,
             CountryCode = park.CountryCode,
             Type = park.Type,
+            AudienceClassification = park.AudienceClassification,
             Status = park.Status,
             OpeningDate = park.OpeningDate,
             ClosingDate = park.ClosingDate,

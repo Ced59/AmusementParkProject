@@ -1,5 +1,6 @@
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkType } from '@app/models/parks/park-type';
 import { ParkOpeningHoursAdminFilter } from '@app/models/parks/park-opening-hours';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
@@ -9,6 +10,7 @@ export interface ParkAdminListFilters {
   isVisible?: boolean | null;
   adminReviewStatus?: AdminReviewStatus | null;
   type?: ParkType | null;
+  audienceClassification?: ParkAudienceClassificationFilter | null;
   countryCode?: string | null;
   hasValidCoordinates?: boolean | null;
   openingHoursStatus?: ParkOpeningHoursAdminFilter | null;
@@ -36,6 +38,9 @@ function buildAdminListQuery(filters: ParkAdminListFilters | null = null): strin
   }
   if (filters.type) {
     params.push(`type=${encodeURIComponent(filters.type)}`);
+  }
+  if (filters.audienceClassification) {
+    params.push(`audienceClassification=${encodeURIComponent(filters.audienceClassification)}`);
   }
   if (filters.countryCode?.trim()) {
     params.push(`countryCode=${encodeURIComponent(filters.countryCode.trim())}`);
@@ -75,7 +80,7 @@ export const PARKS_API_ENDPOINTS = {
   getParksPaginated: (page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, sort: ParkAdminListSort | null = null, closedFilter?: ClosedEntityFilter | null) =>
     `parks?page=${page}&size=${size}${visibleOnly ? '&visibleOnly=true' : ''}${buildRegionQuery(region)}${buildAdminListQuery(filters)}${buildAdminSortQuery(sort)}${buildClosedFilterQuery(closedFilter)}`,
   getRandomVisibleParks: (limit: number) => `parks/random-visible?limit=${limit}`,
-  getVisibleParkMapPoints: (query: string | null = null, region: ParkRegionFilter | null = null, closedFilter?: ClosedEntityFilter | null) => {
+  getVisibleParkMapPoints: (query: string | null = null, region: ParkRegionFilter | null = null, closedFilter?: ClosedEntityFilter | null, audienceClassification?: ParkAudienceClassificationFilter | null) => {
     const params: string[] = [];
     if (query) {
       params.push(`query=${encodeURIComponent(query)}`);
@@ -85,6 +90,9 @@ export const PARKS_API_ENDPOINTS = {
     }
     if (closedFilter && closedFilter !== DEFAULT_CLOSED_ENTITY_FILTER) {
       params.push(`closedFilter=${encodeURIComponent(closedFilter)}`);
+    }
+    if (audienceClassification) {
+      params.push(`audienceClassification=${encodeURIComponent(audienceClassification)}`);
     }
 
     return `parks/map-visible${params.length > 0 ? `?${params.join('&')}` : ''}`;

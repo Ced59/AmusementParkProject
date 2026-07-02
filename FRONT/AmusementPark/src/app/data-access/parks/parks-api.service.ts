@@ -10,6 +10,7 @@ import { ParkWeatherForecast, ParkWeatherHistoricalComparisons } from '@app/mode
 import { ParkOpeningHoursCalendar, ParkOpeningHoursSchedule } from '@app/models/parks/park-opening-hours';
 import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { LocalizedItem } from '@app/models/shared/localized-item';
@@ -23,6 +24,7 @@ interface ParkWriteRequest {
   name?: string;
   countryCode?: string | null;
   type?: Park['type'] | null;
+  audienceClassification?: Park['audienceClassification'] | null;
   status?: Park['status'] | null;
   founderId?: string | null;
   operatorId?: string | null;
@@ -47,6 +49,7 @@ interface ParkWriteRequest {
 interface ParksHttpOptions {
   context?: HttpContext;
   closedFilter?: ClosedEntityFilter;
+  audienceClassificationFilter?: ParkAudienceClassificationFilter | null;
   sort?: ParkAdminListSort;
 }
 
@@ -78,7 +81,7 @@ export class ParksApiService {
 
   getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null, options: ParksHttpOptions = {}): Observable<ParkMapPoint[]> {
     const normalizedQuery: string | null = query?.trim() || null;
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region, options.closedFilter)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region, options.closedFilter, options.audienceClassificationFilter)}`;
     return this.http.get<ParkMapPoint[]>(url, options);
   }
 
@@ -202,6 +205,7 @@ export class ParksApiService {
       name: park.name,
       countryCode: park.countryCode ?? null,
       type: park.type ?? null,
+      audienceClassification: park.audienceClassification ?? null,
       status: park.status ?? 'Operating',
       founderId: park.founderId ?? null,
       operatorId: park.operatorId ?? null,

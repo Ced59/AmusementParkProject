@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Park } from '@app/models/parks/park';
+import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkType } from '@app/models/parks/park-type';
 import { TableLazyLoadEvent } from '@shared/ui/primitives/table';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
@@ -9,7 +10,7 @@ import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { AdminParksStateFacade } from '@features/admin/parks/state/admin-parks-state.facade';
 import { AdminParksViewComponent } from './admin-parks-view.component';
-import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { getParkAudienceClassificationTranslationKey, getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { ScrollAnchorService } from '@shared/services/scroll/scroll-anchor.service';
 
 @Component({
@@ -30,6 +31,7 @@ export class AdminParksComponent implements OnInit {
   protected readonly visibilityFilter = this.stateFacade.visibilityFilter;
   protected readonly adminReviewStatusFilter = this.stateFacade.adminReviewStatusFilter;
   protected readonly typeFilter = this.stateFacade.typeFilter;
+  protected readonly audienceClassificationFilter = this.stateFacade.audienceClassificationFilter;
   protected readonly countryCodeFilter = this.stateFacade.countryCodeFilter;
   protected readonly validCoordinatesFilter = this.stateFacade.validCoordinatesFilter;
   protected readonly openingHoursFilter = this.stateFacade.openingHoursFilter;
@@ -191,6 +193,10 @@ export class AdminParksComponent implements OnInit {
 
   getTypeTranslationKey(type: string | null | undefined): string {
     return getParkTypeTranslationKey(type);
+  }
+
+  getAudienceClassificationTranslationKey(classification: ParkAudienceClassificationFilter | string | null | undefined): string {
+    return getParkAudienceClassificationTranslationKey(classification);
   }
 
   private async applyBulkAdministration(change: { isVisible?: boolean; adminReviewStatus?: AdminReviewStatus }): Promise<void> {
