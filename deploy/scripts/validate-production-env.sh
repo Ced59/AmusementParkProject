@@ -184,9 +184,6 @@ required_names=(
   JWT_KEY
   JWT_ISSUER
   JWT_AUDIENCE
-  GOOGLE_CLIENT_ID
-  GOOGLE_CLIENT_SECRET
-  GOOGLE_REDIRECT_URI
 )
 
 for required_name in "${required_names[@]}"; do
@@ -233,6 +230,12 @@ validate_port MINIO_CONSOLE_PORT
 validate_boolean RUN_LEGACY_ENUM_MIGRATIONS
 validate_boolean LEGACY_ENUM_MIGRATIONS_DRY_RUN
 
+if [ -n "${GOOGLE_CLIENT_ID:-}" ] || [ -n "${GOOGLE_CLIENT_SECRET:-}" ]; then
+  for google_name in GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET GOOGLE_REDIRECT_URI; do
+    require_value "${google_name}"
+    reject_placeholder "${google_name}"
+  done
+fi
 
 jwt_value="${JWT_KEY:-}"
 jwt_length="${#jwt_value}"
