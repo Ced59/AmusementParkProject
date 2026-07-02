@@ -2,7 +2,7 @@
   <div class="app-public-nav__inner">
     <a class="app-public-nav__logo" [routerLink]="['/', selectedLanguage(), 'home']" aria-label="AMUSEMENT-PARKS.fun">
       <span class="app-public-nav__logo-icon" aria-hidden="true">
-        <img class="app-public-nav__logo-mark" src="/assets/general-icon/logo-amusementpark.png" alt="" width="36" height="36" />
+        <img class="app-public-nav__logo-mark" src="/assets/general-icon/logo-amusementpark.png" alt="AMUSEMENT-PARKS.fun" width="36" height="36" />
       </span>
       <span class="app-brand-wordmark app-public-nav__logo-text" aria-hidden="true">
         <span class="app-brand-wordmark__base">AMUSEMENT-PARKS</span>
@@ -119,7 +119,14 @@
             <span class="app-public-nav__profile-name">{{ userProfile()?.firstName || userProfile()?.email }}</span>
           </span>
           @if (userAvatarUrl()) {
-            <p-avatar [image]="userAvatarUrl() || undefined" shape="circle" styleClass="app-public-nav__profile-avatar"></p-avatar>
+            <img
+              class="app-public-nav__profile-avatar"
+              [src]="userAvatarUrl() || ''"
+              [alt]="userAvatarAlt()"
+              width="44"
+              height="44"
+              loading="lazy"
+              decoding="async" />
           } @else {
             <span class="app-public-nav__profile-fallback" aria-hidden="true">
               <i class="pi pi-user"></i>
@@ -144,7 +151,7 @@
       }
 
       <button type="button" class="btn-nav btn-nav--ghost app-public-nav__language" (click)="openModal('languageModal')" [attr.aria-label]="'topbar.choose_language' | translate">
-        <img [src]="flagAssetPath(selectedLanguage())" class="app-public-nav__flag" alt="" />
+        <img [src]="flagAssetPath(selectedLanguage())" class="app-public-nav__flag" [alt]="languageLabel(selectedLanguage())" />
       </button>
 
       <app-theme-switcher></app-theme-switcher>
@@ -183,7 +190,7 @@
           [attr.aria-selected]="isSelectedLanguage(language)"
           role="option"
           (click)="selectLanguage(language.value)">
-          <img [src]="flagAssetPath(language.value)" class="flag flag-large" alt="" />
+          <img [src]="flagAssetPath(language.value)" class="flag flag-large" [alt]="language.label" />
           <span class="language-option__copy">
             <strong>{{ language.label }}</strong>
             <small>{{ getLanguageShortCode(language) }}</small>

@@ -41,11 +41,14 @@
     <ng-template pTemplate="body" let-user>
       <tr class="clickable-row" (click)="openUserProfile(user.id)">
         <td class="col-avatar">
-          <p-avatar
-            [image]="resolveAvatarUrl(user.avatarUrl)"
-            shape="circle"
-            size="normal">
-          </p-avatar>
+          <img
+            class="admin-users-avatar"
+            [src]="resolveAvatarUrl(user.avatarUrl)"
+            [alt]="userAvatarAlt(user)"
+            width="40"
+            height="40"
+            loading="lazy"
+            decoding="async">
         </td>
         <td [attr.data-label]="'admin.users.columns.email' | translate"><strong class="admin-row-title">{{ user.email }}</strong></td>
         <td [attr.data-label]="'admin.users.columns.firstName' | translate">{{ user.firstName }}</td>

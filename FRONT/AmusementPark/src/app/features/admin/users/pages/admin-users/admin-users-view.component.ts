@@ -4,7 +4,6 @@ import { UserDto } from '@app/models/users/user_dto';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
-import { Avatar } from 'primeng/avatar';
 import { Tag } from 'primeng/tag';
 import { ButtonDirective } from 'primeng/button';
 import { Tooltip } from 'primeng/tooltip';
@@ -16,7 +15,7 @@ import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.
   templateUrl: './admin-users-view.component.html',
   styleUrls: ['./admin-users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, Card, PrimeTemplate, TableModule, Avatar, Tag, ButtonDirective, Tooltip, TranslateModule, EmptyStateComponent]
+  imports: [Bind, Card, PrimeTemplate, TableModule, Tag, ButtonDirective, Tooltip, TranslateModule, EmptyStateComponent]
 })
 export class AdminUsersViewComponent {
   @Input() users!: Signal<UserDto[]>;
@@ -41,6 +40,17 @@ export class AdminUsersViewComponent {
 
   resolveAvatarUrl(avatarUrl: string | null | undefined): string {
     return this.resolveAvatarUrlFn(avatarUrl);
+  }
+
+  userAvatarAlt(user: UserDto): string {
+    const displayName: string = [user.firstName, user.lastName]
+      .map((value: string | undefined): string => value?.trim() ?? '')
+      .filter((value: string): boolean => value.length > 0)
+      .join(' ')
+      || user.email?.trim()
+      || user.id;
+
+    return `${displayName} avatar`;
   }
 
   trackByUserId(index: number, user: UserDto): string {

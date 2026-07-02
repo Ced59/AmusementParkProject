@@ -9,6 +9,8 @@ import { NgClass, NgIf } from '@angular/common';
   imports: [NgIf, NgClass]
 })
 export class ImageDisplayViewComponent {
+  private static readonly DefaultAltText: string = 'AMUSEMENT-PARKS.fun image';
+
   @Input() showImage: boolean = false;
   @Input() resolvedImageUrl: string | null = null;
   @Input() resolvedImageSrcSet: string | null = null;
@@ -21,6 +23,11 @@ export class ImageDisplayViewComponent {
   @Input() fetchPriority: 'high' | 'low' | 'auto' | null = null;
 
   @Output() imageError: EventEmitter<void> = new EventEmitter<void>();
+
+  get resolvedAlt(): string {
+    const normalizedAlt: string = this.alt?.trim() ?? '';
+    return normalizedAlt.length > 0 ? normalizedAlt : ImageDisplayViewComponent.DefaultAltText;
+  }
 
   onImageError(): void {
     this.imageError.emit();

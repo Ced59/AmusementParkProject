@@ -11,7 +11,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { AvatarModule } from 'primeng/avatar';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
@@ -26,7 +25,6 @@ import { SelectModule } from 'primeng/select';
     TagModule,
     CardModule,
     ButtonModule,
-    AvatarModule,
     TooltipModule,
     InputTextModule,
     SelectModule,

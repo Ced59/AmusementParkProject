@@ -36,6 +36,15 @@ p-card {
   text-align: center;
 }
 
+.admin-users-avatar {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
 .col-actions {
   width: 80px;
   text-align: center;

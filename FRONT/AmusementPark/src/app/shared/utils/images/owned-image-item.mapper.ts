@@ -1,21 +1,29 @@
-import { resolveLocalizedValue } from '@shared/utils/localization';
+import { resolveLocalizedText } from '@shared/utils/localization';
 import { ImageDto } from '@app/models/images/image-dto';
 import { OwnedImageItem } from '../../models/images/owned-image-item.model';
 
 export function mapImageDtoToOwnedImageItem(image: ImageDto, languageCode: string = 'en'): OwnedImageItem {
-  const resolvedAlt: string | undefined =
-    resolveLocalizedValue<string>(image.altTexts, languageCode)
-    ?? resolveLocalizedValue<string>(image.captions, languageCode);
+  const resolvedAlt: string | null = normalizeOptionalString(resolveLocalizedText(image.altTexts, languageCode, ''));
+  const resolvedCaption: string | null = normalizeOptionalString(resolveLocalizedText(image.captions, languageCode, ''));
 
   return {
     id: image.id,
     imageId: image.id,
     category: image.category,
     tagIds: image.tagIds ?? [],
-    description: image.description ?? null,
+    description: normalizeOptionalString(image.description),
     sourceUrl: image.sourceUrl ?? null,
-    alt: resolvedAlt ?? image.description ?? image.originalFileName ?? image.id,
+    alt: resolvedAlt
+      ?? resolvedCaption
+      ?? normalizeOptionalString(image.description)
+      ?? normalizeOptionalString(image.originalFileName)
+      ?? image.id,
     isCurrent: image.isCurrent,
     createdAt: image.createdAt
   };
+}
+
+function normalizeOptionalString(value: string | null | undefined): string | null {
+  const normalizedValue: string = value?.trim() ?? '';
+  return normalizedValue.length > 0 ? normalizedValue : null;
 }

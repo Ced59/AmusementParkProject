@@ -5,7 +5,6 @@ import { EMPTY, switchMap } from 'rxjs';
 import { catchError, filter, tap } from 'rxjs/operators';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { Avatar } from 'primeng/avatar';
 import { Dialog } from 'primeng/dialog';
 
 import { UserDto } from '@app/models/users/user_dto';
@@ -31,7 +30,6 @@ import { MeasurementSystem } from '@shared/models/measurements/measurement-syste
   templateUrl: './public-header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    Avatar,
     AuthModalComponent,
     Dialog,
     RouterLink,
@@ -175,6 +173,23 @@ export class PublicHeaderComponent implements OnInit {
 
   protected flagAssetPath(language: string): string {
     return resolveFlagAssetPath(language);
+  }
+
+  protected userAvatarAlt(): string {
+    const profile: UserDto | null = this.userProfile();
+    const displayName: string = [profile?.firstName, profile?.lastName]
+      .map((value: string | undefined): string => value?.trim() ?? '')
+      .filter((value: string): boolean => value.length > 0)
+      .join(' ')
+      || profile?.email?.trim()
+      || 'User';
+
+    return `${displayName} avatar`;
+  }
+
+  protected languageLabel(language: string): string {
+    return this.languages.find((languageOption: LanguageOption): boolean => languageOption.value === language)?.label
+      ?? language.toUpperCase();
   }
 
   protected onLanguageDialogVisibleChanged(visible: boolean): void {
