@@ -123,6 +123,27 @@ run_legacy_enum_migrations() {
       "${mongo_database_name}" < "${migration_script}"
 }
 
+run_opening_hours_localized_notes_migration() {
+  local migration_script="./scripts/migrate-opening-hours-localized-notes-3.0.5.js"
+  local mongo_database_name="${MONGO_DATABASE_NAME:-AmusementPark}"
+  local dry_run="${OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN:-false}"
+
+  if [ ! -f "${migration_script}" ]; then
+    echo "Missing opening-hours localized notes migration script: ${migration_script}" >&2
+    return 1
+  fi
+
+  echo "Running opening-hours localized notes MongoDB migration..."
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${mongo_database_name}" \
+    -e DRY_RUN="${dry_run}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_APP_USERNAME:?MONGO_APP_USERNAME is required}" \
+      --password "${MONGO_APP_PASSWORD:?MONGO_APP_PASSWORD is required}" \
+      --authenticationDatabase "${mongo_database_name}" \
+      "${mongo_database_name}" < "${migration_script}"
+}
+
 curl_with_retry() {
   local label="$1"
   local url="$2"
@@ -188,6 +209,12 @@ fi
 compose ps
 
 wait_for_service_healthy mongodb 180
+
+if [ "${RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION:-true}" = "true" ]; then
+  run_opening_hours_localized_notes_migration
+else
+  echo "Opening-hours localized notes MongoDB migration is disabled. Set RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION=true to enable it."
+fi
 
 if [ "${RUN_LEGACY_ENUM_MIGRATIONS:-false}" = "true" ]; then
   run_legacy_enum_migrations

@@ -1,6 +1,20 @@
 {
-  "version": "3.1.41",
+  "version": "3.1.42",
   "history": [
+    {
+      "version": "3.1.42",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le déploiement reste plus fiable.",
+        "en": "Deployment stays more reliable.",
+        "de": "Das Deployment bleibt zuverlässiger.",
+        "nl": "De deployment blijft betrouwbaarder.",
+        "it": "Il deploy resta più affidabile.",
+        "es": "El despliegue sigue siendo más fiable.",
+        "pl": "Wdrożenie pozostaje bardziej niezawodne.",
+        "pt": "O deploy continua mais fiável."
+      }
+    },
     {
       "version": "3.1.41",
       "releasedAt": "2026-07-03",

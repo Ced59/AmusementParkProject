@@ -179,6 +179,13 @@ Recommandation : activer le seed admin seulement au premier déploiement, puis r
 |---|---|
 | `BACKUP_BEFORE_DEPLOY` | `true` |
 
+### Migrations MongoDB de déploiement
+
+| Variable | Valeur recommandée |
+|---|---|
+| `RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION` | `true` |
+| `OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN` | `false` |
+
 ## Génération locale d’une clé JWT
 
 Exemple PowerShell :
