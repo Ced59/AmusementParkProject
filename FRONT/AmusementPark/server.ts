@@ -61,6 +61,8 @@ const targetedRefreshConcurrency = Math.max(1, Number(process.env['SSR_TARGETED_
 const targetedRefreshDelayMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_REFRESH_DELAY_MILLISECONDS'] ?? 1500));
 const targetedRefreshTimeoutSeconds = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_TIMEOUT_SECONDS'] ?? 45));
 const targetedInvalidationDebounceMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_INVALIDATION_DEBOUNCE_MILLISECONDS'] ?? 250));
+const targetedInvalidationDiskBatchSize = normalizeInteger(process.env['SSR_TARGETED_INVALIDATION_DISK_BATCH_SIZE'], 25, 1, 1000);
+const targetedInvalidationDiskYieldMilliseconds = normalizeInteger(process.env['SSR_TARGETED_INVALIDATION_DISK_YIELD_MILLISECONDS'], 0, 0, 1000);
 const technicalStatsPersistenceEnabled = (process.env['SSR_TECHNICAL_STATS_PERSISTENCE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const technicalStatsPersistenceDirectory = process.env['SSR_TECHNICAL_STATS_PERSISTENCE_DIR'] ?? join(diskPageCacheDirectory, 'technical-stats');
 const technicalStatsSettingsFilePath = join(technicalStatsPersistenceDirectory, 'settings.json');
@@ -88,6 +90,7 @@ let activeTargetedRefreshCount = 0;
 let pendingTargetedInvalidationRequest: NormalizedCacheInvalidationRequest | null = null;
 let pendingTargetedInvalidationTimer: ReturnType<typeof setTimeout> | null = null;
 let targetedInvalidationInProgress = false;
+let activeTargetedInvalidationRequest: NormalizedCacheInvalidationRequest | null = null;
 
 type SsrPageResponseStatus =
   'HIT'
@@ -1224,6 +1227,7 @@ function run(): void {
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
     console.log(`SSR SEO document browser Cache-Control: ${seoDocumentBrowserCacheControl}`);
     console.log(`SSR stale page cache: ${stalePageCacheSeconds}s / targeted refresh=${targetedRefreshEnabled} / max=${targetedRefreshMaxUrls} / concurrency=${targetedRefreshConcurrency}`);
+    console.log(`SSR targeted invalidation disk scan: batch=${targetedInvalidationDiskBatchSize} / yield=${targetedInvalidationDiskYieldMilliseconds}ms`);
     console.log(`SSR render enabled: ${ssrRenderEnabled}`);
     console.log(`SSR render on cache miss: ${renderOnCacheMiss}`);
     console.log(`SSR render critical routes on cache miss: ${renderCriticalRoutesOnCacheMiss}`);
@@ -1740,7 +1744,10 @@ function getCachedPage(cacheKey: string): PageCacheEntry | null {
 
   if (memoryEntry) {
     if (isUsablePageCacheEntry(memoryEntry)) {
-      return memoryEntry;
+      const activeInvalidationRequest = findActiveTargetedInvalidationRequest(cacheKey);
+      return activeInvalidationRequest === null
+        ? memoryEntry
+        : applyActiveTargetedInvalidationToPageCacheEntry(cacheKey, memoryEntry, activeInvalidationRequest);
     }
 
     pageCache.delete(cacheKey);
@@ -1808,8 +1815,13 @@ function getDiskCachedPage(cacheKey: string): PageCacheEntry | null {
     const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
 
     if (!isUsablePageCacheEntry(parsedEntry) || typeof parsedEntry.html !== 'string') {
-      unlinkSync(cacheFilePath);
+      removeDiskPageCacheFile(cacheFilePath);
       return null;
+    }
+
+    const activeInvalidationRequest = findActiveTargetedInvalidationRequest(cacheKey);
+    if (activeInvalidationRequest !== null) {
+      return applyActiveTargetedInvalidationToPageCacheEntry(cacheKey, parsedEntry, activeInvalidationRequest);
     }
 
     pageCache.set(cacheKey, parsedEntry);
@@ -1891,15 +1903,16 @@ function clearAllSsrCaches(): CacheInvalidationResult {
   };
 }
 
-function clearTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): CacheInvalidationResult {
+async function clearTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): Promise<CacheInvalidationResult> {
   const matchedCacheKeys = new Set<string>();
   const pageMemoryEntries = clearMatchingMemoryPageCache(request, matchedCacheKeys);
-  const pageDiskEntries = clearMatchingDiskPageCache(request, matchedCacheKeys);
   const seoDocumentEntries = request.includeSeoDocuments ? seoDocumentCache.size : 0;
 
   if (request.includeSeoDocuments) {
     seoDocumentCache.clear();
   }
+
+  const pageDiskEntries = await clearMatchingDiskPageCache(request, matchedCacheKeys);
 
   const stalePageEntries = request.allowStale && stalePageCacheSeconds > 0 ? pageMemoryEntries + pageDiskEntries : 0;
   const queuedRefreshes = request.allowStale && request.refresh
@@ -1954,19 +1967,23 @@ function processPendingTargetedSsrCacheInvalidation(): void {
   const request = pendingTargetedInvalidationRequest;
   pendingTargetedInvalidationRequest = null;
   targetedInvalidationInProgress = true;
+  activeTargetedInvalidationRequest = request;
 
-  try {
-    const result = clearTargetedSsrCaches(request);
-    recordCacheInvalidationResult(result);
-  } catch (error: unknown) {
-    console.warn('SSR targeted cache invalidation failed', error);
-  } finally {
-    targetedInvalidationInProgress = false;
+  void clearTargetedSsrCaches(request)
+    .then((result: CacheInvalidationResult): void => {
+      recordCacheInvalidationResult(result);
+    })
+    .catch((error: unknown): void => {
+      console.warn('SSR targeted cache invalidation failed', error);
+    })
+    .finally((): void => {
+      targetedInvalidationInProgress = false;
+      activeTargetedInvalidationRequest = null;
 
-    if (pendingTargetedInvalidationRequest !== null) {
-      scheduleTargetedSsrCacheInvalidation();
-    }
-  }
+      if (pendingTargetedInvalidationRequest !== null) {
+        scheduleTargetedSsrCacheInvalidation();
+      }
+    });
 }
 
 function clearPendingTargetedSsrCacheInvalidation(): void {
@@ -2040,57 +2057,107 @@ function clearMatchingMemoryPageCache(request: NormalizedCacheInvalidationReques
   return affected;
 }
 
-function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRequest, matchedCacheKeys: Set<string>): number {
+function applyActiveTargetedInvalidationToPageCacheEntry(
+  cacheKey: string,
+  entry: PageCacheEntry,
+  request: NormalizedCacheInvalidationRequest
+): PageCacheEntry | null {
+  if (request.allowStale && stalePageCacheSeconds > 0) {
+    const staleEntry = markPageCacheEntryStale(cacheKey, entry);
+    pageCache.set(cacheKey, staleEntry);
+    setDiskCachedPage(cacheKey, staleEntry);
+    return staleEntry;
+  }
+
+  pageCache.delete(cacheKey);
+  removeDiskPageCacheFile(getDiskPageCacheFilePath(cacheKey));
+  return null;
+}
+
+async function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRequest, matchedCacheKeys: Set<string>): Promise<number> {
   if (!diskPageCacheEnabled || !existsSync(diskPageCacheDirectory)) {
     return 0;
   }
 
   let affected = 0;
+  let processed = 0;
+  let fileNames: string[] = [];
 
   try {
-    for (const fileName of readdirSync(diskPageCacheDirectory)) {
-      if (!fileName.endsWith('.json')) {
-        continue;
-      }
+    fileNames = readdirSync(diskPageCacheDirectory);
+  } catch (error: unknown) {
+    console.warn('SSR disk page cache targeted clear failed', error);
+    return 0;
+  }
 
-      const filePath = join(diskPageCacheDirectory, fileName);
+  for (const fileName of fileNames) {
+    if (!fileName.endsWith('.json')) {
+      continue;
+    }
 
-      try {
-        const serializedEntry: string = readFileSync(filePath, 'utf8');
-        const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
+    const filePath = join(diskPageCacheDirectory, fileName);
 
-        if (!parsedEntry.cacheKey || isPageCacheKeyMatched(parsedEntry.cacheKey, request)) {
-          if (parsedEntry.cacheKey && request.allowStale && stalePageCacheSeconds > 0 && typeof parsedEntry.html === 'string') {
-            const staleEntry = markPageCacheEntryStale(parsedEntry.cacheKey, parsedEntry);
-            writeFileSync(filePath, JSON.stringify(staleEntry), 'utf8');
-            pageCache.set(parsedEntry.cacheKey, staleEntry);
-            matchedCacheKeys.add(parsedEntry.cacheKey);
-          } else {
-            unlinkSync(filePath);
+    try {
+      const serializedEntry: string = readFileSync(filePath, 'utf8');
+      const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
+
+      if (!parsedEntry.cacheKey || isPageCacheKeyMatched(parsedEntry.cacheKey, request)) {
+        if (parsedEntry.cacheKey && request.allowStale && stalePageCacheSeconds > 0 && typeof parsedEntry.html === 'string') {
+          const staleEntry = markPageCacheEntryStale(parsedEntry.cacheKey, parsedEntry);
+          writeFileSync(filePath, JSON.stringify(staleEntry), 'utf8');
+          matchedCacheKeys.add(parsedEntry.cacheKey);
+        } else if (removeDiskPageCacheFile(filePath)) {
+          if (parsedEntry.cacheKey) {
+            pageCache.delete(parsedEntry.cacheKey);
           }
-
-          affected += 1;
         }
-      } catch {
-        unlinkSync(filePath);
+
+        affected += 1;
+      }
+    } catch {
+      if (removeDiskPageCacheFile(filePath)) {
         affected += 1;
       }
     }
-  } catch (error: unknown) {
-    console.warn('SSR disk page cache targeted clear failed', error);
+
+    processed += 1;
+    if (processed % targetedInvalidationDiskBatchSize === 0) {
+      await waitForTargetedInvalidationDiskYield();
+    }
   }
 
   return affected;
 }
 
-function markPageCacheEntryStale(cacheKey: string, entry: PageCacheEntry): PageCacheEntry {
-  const now = Date.now();
-  return {
-    ...entry,
-    cacheKey,
-    expiresAt: Math.min(entry.expiresAt, now),
-    staleUntil: Math.max(entry.staleUntil ?? 0, now + stalePageCacheSeconds * 1000)
-  };
+function findActiveTargetedInvalidationRequest(cacheKey: string): NormalizedCacheInvalidationRequest | null {
+  let matchedRequest: NormalizedCacheInvalidationRequest | null = null;
+
+  if (activeTargetedInvalidationRequest !== null && isPageCacheKeyMatched(cacheKey, activeTargetedInvalidationRequest)) {
+    matchedRequest = activeTargetedInvalidationRequest;
+  }
+
+  if (pendingTargetedInvalidationRequest !== null && isPageCacheKeyMatched(cacheKey, pendingTargetedInvalidationRequest)) {
+    if (matchedRequest === null || !pendingTargetedInvalidationRequest.allowStale) {
+      matchedRequest = pendingTargetedInvalidationRequest;
+    }
+  }
+
+  return matchedRequest;
+}
+
+function waitForTargetedInvalidationDiskYield(): Promise<void> {
+  return new Promise((resolvePromise: () => void): void => {
+    setTimeout(resolvePromise, targetedInvalidationDiskYieldMilliseconds);
+  });
+}
+
+function removeDiskPageCacheFile(filePath: string): boolean {
+  try {
+    unlinkSync(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function clearDiskPageCache(): number {
@@ -2106,11 +2173,8 @@ function clearDiskPageCache(): number {
         continue;
       }
 
-      try {
-        unlinkSync(join(diskPageCacheDirectory, fileName));
+      if (removeDiskPageCacheFile(join(diskPageCacheDirectory, fileName))) {
         removed += 1;
-      } catch {
-        // Best effort cleanup only.
       }
     }
   } catch (error: unknown) {
@@ -2118,6 +2182,16 @@ function clearDiskPageCache(): number {
   }
 
   return removed;
+}
+
+function markPageCacheEntryStale(cacheKey: string, entry: PageCacheEntry): PageCacheEntry {
+  const now = Date.now();
+  return {
+    ...entry,
+    cacheKey,
+    expiresAt: Math.min(entry.expiresAt, now),
+    staleUntil: Math.max(entry.staleUntil ?? 0, now + stalePageCacheSeconds * 1000)
+  };
 }
 
 function normalizeCacheInvalidationRequest(body: unknown): NormalizedCacheInvalidationRequest {
