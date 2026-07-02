@@ -3,9 +3,9 @@ export const environment = {
   apiBaseUrl: '/api/',
   ssrApiBaseUrl: 'http://api:8080/',
   baseUrl: 'http://amusement.localhost:18080/',
-  apiImagePath: '/api/images/',
+  apiImagePath: '/api/images/binary/',
   googleClientId: '819235253823-lj2de5lllhlngr4rpt5iq0m5mgmmltaj.apps.googleusercontent.com',
-  imagesBaseUrl: '/api/images',
+  imagesBaseUrl: '/api/images/binary',
   analytics: {
     matomoEnabled: true,
     consentBannerEnabled: true,

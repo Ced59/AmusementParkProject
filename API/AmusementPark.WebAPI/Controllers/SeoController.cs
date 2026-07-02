@@ -115,7 +115,7 @@ public sealed class SeoController : ControllerBase
     }
 
     [HttpGet("/seo/html-sitemap/nodes")]
-    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicHtmlSitemapNodes)]
     [Produces("application/json")]
     [ProducesResponseType(typeof(IReadOnlyCollection<PublicHtmlSitemapNode>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPublicHtmlSitemapNodesAsync(

@@ -23,12 +23,18 @@ internal static class AutomaticHistoryEventFactory
     public static bool HasLifecycleDate(ParkItem parkItem)
     {
         AttractionDetails? details = parkItem.AttractionDetails;
-        return details?.OpeningDate is not null || details?.ClosingDate is not null;
+        return details?.OpeningDate is not null ||
+               details?.ClosingDate is not null ||
+               TryResolveTextDateParts(details?.OpeningDateText, out _) ||
+               TryResolveTextDateParts(details?.ClosingDateText, out _);
     }
 
     public static bool HasLifecycleDate(Park park)
     {
-        return park.OpeningDate is not null || park.ClosingDate is not null;
+        return park.OpeningDate is not null ||
+               park.ClosingDate is not null ||
+               TryResolveTextDateParts(park.OpeningDateText, out _) ||
+               TryResolveTextDateParts(park.ClosingDateText, out _);
     }
 
     public static IReadOnlyCollection<HistoryEvent> CreateParkLifecycleEvents(Park park)
@@ -40,22 +46,20 @@ internal static class AutomaticHistoryEventFactory
 
         List<HistoryEvent> events = new List<HistoryEvent>();
 
-        if (park.OpeningDate.HasValue)
+        if (TryResolveDateParts(park.OpeningDate, park.OpeningDateText, out HistoryDateParts openingDateParts))
         {
-            HistoryDateParts dateParts = ResolveDateParts(park.OpeningDate.Value, park.OpeningDateText);
             events.Add(CreateLifecycleEvent(
                 park,
-                dateParts,
+                openingDateParts,
                 ParkHistoryEventType.Opening.ToString(),
                 "opening"));
         }
 
-        if (park.ClosingDate.HasValue)
+        if (TryResolveDateParts(park.ClosingDate, park.ClosingDateText, out HistoryDateParts closingDateParts))
         {
-            HistoryDateParts dateParts = ResolveDateParts(park.ClosingDate.Value, park.ClosingDateText);
             events.Add(CreateLifecycleEvent(
                 park,
-                dateParts,
+                closingDateParts,
                 ParkHistoryEventType.DefinitiveClosure.ToString(),
                 "closure"));
         }
@@ -84,22 +88,20 @@ internal static class AutomaticHistoryEventFactory
         List<HistoryEvent> events = new List<HistoryEvent>();
         AttractionDetails details = parkItem.AttractionDetails!;
 
-        if (details.OpeningDate.HasValue)
+        if (TryResolveDateParts(details.OpeningDate, details.OpeningDateText, out HistoryDateParts openingDateParts))
         {
-            HistoryDateParts dateParts = ResolveDateParts(details.OpeningDate.Value, details.OpeningDateText);
             events.Add(CreateLifecycleEvent(
                 parkItem,
-                dateParts,
+                openingDateParts,
                 ParkItemHistoryEventType.Opening.ToString(),
                 "opening"));
         }
 
-        if (details.ClosingDate.HasValue)
+        if (TryResolveDateParts(details.ClosingDate, details.ClosingDateText, out HistoryDateParts closingDateParts))
         {
-            HistoryDateParts dateParts = ResolveDateParts(details.ClosingDate.Value, details.ClosingDateText);
             events.Add(CreateLifecycleEvent(
                 parkItem,
-                dateParts,
+                closingDateParts,
                 ParkItemHistoryEventType.DefinitiveClosure.ToString(),
                 "closure"));
         }
@@ -321,6 +323,59 @@ internal static class AutomaticHistoryEventFactory
         }
 
         return new HistoryDateParts(normalizedDate.Year, normalizedDate.Month, normalizedDate.Day, HistoryDatePrecision.Day);
+    }
+
+    private static bool TryResolveDateParts(DateTime? date, string? dateText, out HistoryDateParts dateParts)
+    {
+        if (date.HasValue)
+        {
+            dateParts = ResolveDateParts(date.Value, dateText);
+            return true;
+        }
+
+        return TryResolveTextDateParts(dateText, out dateParts);
+    }
+
+    private static bool TryResolveTextDateParts(string? dateText, out HistoryDateParts dateParts)
+    {
+        string normalizedText = dateText?.Trim() ?? string.Empty;
+        dateParts = new HistoryDateParts(0, null, null, HistoryDatePrecision.Year);
+
+        Match yearMatch = Regex.Match(normalizedText, @"^(?<year>\d{4})$");
+        if (yearMatch.Success &&
+            int.TryParse(yearMatch.Groups["year"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int year))
+        {
+            dateParts = new HistoryDateParts(year, null, null, HistoryDatePrecision.Year);
+            return true;
+        }
+
+        Match monthMatch = Regex.Match(normalizedText, @"^(?<year>\d{4})[-/](?<month>\d{1,2})$");
+        if (monthMatch.Success &&
+            int.TryParse(monthMatch.Groups["year"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out year) &&
+            int.TryParse(monthMatch.Groups["month"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int month) &&
+            month is >= 1 and <= 12)
+        {
+            dateParts = new HistoryDateParts(year, month, null, HistoryDatePrecision.Month);
+            return true;
+        }
+
+        Match dayMatch = Regex.Match(normalizedText, @"^(?<year>\d{4})[-/](?<month>\d{1,2})[-/](?<day>\d{1,2})$");
+        if (dayMatch.Success &&
+            int.TryParse(dayMatch.Groups["year"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out year) &&
+            int.TryParse(dayMatch.Groups["month"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out month) &&
+            int.TryParse(dayMatch.Groups["day"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int day) &&
+            DateTime.TryParseExact(
+                string.Create(CultureInfo.InvariantCulture, $"{year:0000}-{month:00}-{day:00}"),
+                "yyyy-MM-dd",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out _))
+        {
+            dateParts = new HistoryDateParts(year, month, day, HistoryDatePrecision.Day);
+            return true;
+        }
+
+        return false;
     }
 
     private static bool CoversAutomaticEvent(HistoryEvent existingEvent, HistoryEvent automaticEvent)
