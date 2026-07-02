@@ -472,11 +472,20 @@ export class ParkDetailStateFacade {
       return;
     }
 
-    this.historyApiService.getParkTimeline(parkId, true, [], anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.loadHistoryAvailabilityTimeline(parkId, false);
+  }
+
+  private loadHistoryAvailabilityTimeline(parkId: string, includeParkItems: boolean): void {
+    this.historyApiService.getParkTimeline(parkId, includeParkItems, [], anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (timeline: HistoryTimeline) => {
         this.hasHistorySignal.set((timeline.events?.length ?? 0) > 0);
       },
-      error: () => {
+      error: (error: unknown) => {
+        if (!includeParkItems && hasHttpStatus(error, 404)) {
+          this.loadHistoryAvailabilityTimeline(parkId, true);
+          return;
+        }
+
         this.hasHistorySignal.set(false);
       }
     });

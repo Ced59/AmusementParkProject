@@ -127,6 +127,7 @@ class FakeImagesPort implements ParkDetailImagesPort {
 
 class FakeHistoryPort implements ParkDetailHistoryPort {
   public timelineResponse$: Observable<HistoryTimeline> = of(createHistoryTimeline(0));
+  public timelineResponses$: Observable<HistoryTimeline>[] = [];
   public readonly calls: { parkId: string; includeParkItems?: boolean; parkItemIds?: readonly string[] }[] = [];
   public readonly options: Array<AnonymousHttpOptions | undefined> = [];
 
@@ -138,6 +139,11 @@ class FakeHistoryPort implements ParkDetailHistoryPort {
   ): Observable<HistoryTimeline> {
     this.calls.push({ parkId, includeParkItems, parkItemIds });
     this.options.push(options);
+    const queuedResponse$: Observable<HistoryTimeline> | undefined = this.timelineResponses$.shift();
+    if (queuedResponse$) {
+      return queuedResponse$;
+    }
+
     return this.timelineResponse$;
   }
 }
@@ -500,7 +506,7 @@ describe('ParkDetailStateFacade', () => {
     expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
     expect(context.parksPort.openingHoursCalls.length).toBe(1);
     expect(context.parksPort.openingHoursCalls[0].id).toBe('park-1');
-    expect(context.historyPort.calls).toEqual([{ parkId: 'park-1', includeParkItems: true, parkItemIds: [] }]);
+    expect(context.historyPort.calls).toEqual([{ parkId: 'park-1', includeParkItems: false, parkItemIds: [] }]);
     expect(context.facade.nearbyState().kind).toBe('ready');
     expect(context.facade.nearbyParks().map((park) => park.id)).toEqual(['near-1']);
     expect(context.facade.weatherState().kind).toBe('ready');
@@ -572,6 +578,23 @@ describe('ParkDetailStateFacade', () => {
     context.facade.setCurrentLanguage('fr');
     context.facade.loadPark('park-1');
 
+    expect(context.facade.park()?.historyLink).toEqual(['/', 'fr', 'park', 'park-1', 'bellewaerde', 'history']);
+  });
+
+  it('falls back to item timelines when the park-only history check returns not found', () => {
+    const context = configureFacade();
+    context.historyPort.timelineResponses$ = [
+      throwError(() => ({ status: 404 })),
+      of(createHistoryTimeline(1))
+    ];
+
+    context.facade.setCurrentLanguage('fr');
+    context.facade.loadPark('park-1');
+
+    expect(context.historyPort.calls).toEqual([
+      { parkId: 'park-1', includeParkItems: false, parkItemIds: [] },
+      { parkId: 'park-1', includeParkItems: true, parkItemIds: [] }
+    ]);
     expect(context.facade.park()?.historyLink).toEqual(['/', 'fr', 'park', 'park-1', 'bellewaerde', 'history']);
   });
 

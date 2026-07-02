@@ -102,6 +102,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Empty(request.Paths);
         Assert.Empty(request.Prefixes);
         Assert.False(request.IncludeSeoDocuments);
+        Assert.False(request.Refresh);
     }
 
     [Fact]
@@ -284,6 +285,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Empty(request.Paths);
         Assert.Empty(request.Prefixes);
         Assert.False(request.IncludeSeoDocuments);
+        Assert.False(request.Refresh);
     }
 
     [Fact]
