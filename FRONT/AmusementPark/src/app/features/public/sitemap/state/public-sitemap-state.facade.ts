@@ -27,7 +27,7 @@ export class PublicSitemapStateFacade {
   ) {
   }
 
-  loadRoot(language: string): void {
+  loadRoot(language: string, includeDescendants: boolean = false): void {
     const normalizedLanguage: string = language || 'en';
     const sequence: number = this.rootLoadSequence + 1;
     this.rootLoadSequence = sequence;
@@ -41,7 +41,7 @@ export class PublicSitemapStateFacade {
     this.loadingSignal.set(true);
     this.errorKeySignal.set(null);
 
-    this.dataPort.getNodes(normalizedLanguage, null)
+    this.dataPort.getNodes(normalizedLanguage, null, includeDescendants)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (nodes: PublicHtmlSitemapNode[]): void => {
@@ -50,6 +50,7 @@ export class PublicSitemapStateFacade {
           }
 
           this.rootNodesSignal.set(nodes);
+          this.applyEmbeddedChildren(nodes);
           this.loadingSignal.set(false);
         },
         error: (error: unknown): void => {
@@ -111,7 +112,7 @@ export class PublicSitemapStateFacade {
       return next;
     });
 
-    this.dataPort.getNodes(languageSnapshot, nodeId)
+    this.dataPort.getNodes(languageSnapshot, nodeId, false)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (nodes: PublicHtmlSitemapNode[]): void => {
@@ -144,5 +145,39 @@ export class PublicSitemapStateFacade {
           this.errorNodeIdsSignal.update((errorNodeIds: ReadonlySet<string>) => new Set<string>(errorNodeIds).add(nodeId));
         }
       });
+  }
+
+  private applyEmbeddedChildren(nodes: readonly PublicHtmlSitemapNode[]): void {
+    const childrenByNodeId: Record<string, PublicHtmlSitemapNode[]> = {};
+    const loadedNodeIds: Set<string> = new Set<string>();
+    const expandedNodeIds: Set<string> = new Set<string>();
+
+    this.collectEmbeddedChildren(nodes, childrenByNodeId, loadedNodeIds, expandedNodeIds);
+
+    this.childrenByNodeIdSignal.set(childrenByNodeId);
+    this.loadedNodeIdsSignal.set(loadedNodeIds);
+    this.expandedNodeIdsSignal.set(expandedNodeIds);
+  }
+
+  private collectEmbeddedChildren(
+    nodes: readonly PublicHtmlSitemapNode[],
+    childrenByNodeId: Record<string, PublicHtmlSitemapNode[]>,
+    loadedNodeIds: Set<string>,
+    expandedNodeIds: Set<string>
+  ): void {
+    for (const node of nodes) {
+      if (!node.hasChildren || !Array.isArray(node.children)) {
+        continue;
+      }
+
+      const children: PublicHtmlSitemapNode[] = [...node.children];
+      childrenByNodeId[node.id] = children;
+      loadedNodeIds.add(node.id);
+
+      if (children.length > 0) {
+        expandedNodeIds.add(node.id);
+        this.collectEmbeddedChildren(children, childrenByNodeId, loadedNodeIds, expandedNodeIds);
+      }
+    }
   }
 }

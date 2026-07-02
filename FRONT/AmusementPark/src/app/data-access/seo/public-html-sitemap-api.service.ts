@@ -14,12 +14,16 @@ export class PublicHtmlSitemapApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getNodes(language: string, parentNodeId: string | null = null): Observable<PublicHtmlSitemapNode[]> {
+  getNodes(language: string, parentNodeId: string | null = null, includeDescendants: boolean = false): Observable<PublicHtmlSitemapNode[]> {
     const url: string = `${environment.apiBaseUrl}${PUBLIC_HTML_SITEMAP_API_ENDPOINTS.nodes}`;
     let params: HttpParams = new HttpParams().set('language', language);
 
     if (parentNodeId) {
       params = params.set('parentNodeId', parentNodeId);
+    }
+
+    if (includeDescendants) {
+      params = params.set('includeDescendants', 'true');
     }
 
     return this.http.get<PublicHtmlSitemapNode[]>(url, { params }).pipe(

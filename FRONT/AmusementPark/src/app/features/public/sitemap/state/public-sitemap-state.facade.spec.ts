@@ -50,11 +50,39 @@ describe('PublicSitemapStateFacade', () => {
     facade.toggleNode(parksNode);
 
     expect(dataPort.getNodes.calls.allArgs()).toEqual([
-      ['fr', null],
-      ['fr', 'parks']
+      ['fr', null, false],
+      ['fr', 'parks', false]
     ]);
     expect(facade.rootNodes()).toEqual([parksNode]);
     expect(facade.childrenFor('parks')[0].relativeUrl).toBe('/fr/park/park-1/parc-demo');
+    expect(facade.isExpanded('parks')).toBeTrue();
+  });
+
+  it('exposes embedded descendants without lazy loading them again', () => {
+    const parkNode: PublicHtmlSitemapNode = {
+      id: 'park:park-1',
+      label: 'Parc Demo',
+      relativeUrl: '/fr/park/park-1/parc-demo',
+      hasChildren: false
+    };
+    const parksNode: PublicHtmlSitemapNode = {
+      id: 'parks',
+      label: 'Parcs',
+      relativeUrl: '/fr/parks',
+      hasChildren: true,
+      children: [parkNode]
+    };
+    dataPort.getNodes.and.returnValue(of([parksNode]));
+
+    facade.loadRoot('fr', true);
+    facade.toggleNode(parksNode);
+    facade.toggleNode(parksNode);
+
+    expect(dataPort.getNodes.calls.allArgs()).toEqual([
+      ['fr', null, true]
+    ]);
+    expect(facade.rootNodes()).toEqual([parksNode]);
+    expect(facade.childrenFor('parks')).toEqual([parkNode]);
     expect(facade.isExpanded('parks')).toBeTrue();
   });
 

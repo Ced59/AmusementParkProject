@@ -96,6 +96,6 @@ export class PublicSitemapPageComponent implements OnInit {
     this.activeLanguage = language;
     this.currentLang.set(language);
     this.seoService.applyRouteDefaults(this.router.url);
-    this.stateFacade.loadRoot(language);
+    this.stateFacade.loadRoot(language, true);
   }
 }
