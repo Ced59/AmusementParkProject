@@ -44,12 +44,12 @@
 
       <label>
         <span>{{ 'admin.history.filters.ownerId' | translate }}</span>
-        <input pInputText type="text" class="admin-input" formControlName="ownerId" [placeholder]="'admin.history.filters.ownerIdPlaceholder' | translate">
+        <input appUiInputText type="text" class="admin-input" formControlName="ownerId" [placeholder]="'admin.history.filters.ownerIdPlaceholder' | translate">
       </label>
 
       <label>
         <span>{{ 'admin.history.filters.search' | translate }}</span>
-        <input pInputText type="search" class="admin-input" formControlName="search" [placeholder]="'admin.history.filters.searchPlaceholder' | translate">
+        <input appUiInputText type="search" class="admin-input" formControlName="search" [placeholder]="'admin.history.filters.searchPlaceholder' | translate">
       </label>
 
       <label class="admin-history__check">
@@ -121,12 +121,12 @@
                   <td>
                     <div class="admin-history__tags">
                       @if (event.isMajor) {
-                        <p-tag [value]="'admin.history.list.major' | translate" severity="info"></p-tag>
+                        <app-ui-tag [value]="'admin.history.list.major' | translate" severity="info"></app-ui-tag>
                       }
-                      <p-tag
+                      <app-ui-tag
                         [value]="(event.isVisible ? 'admin.history.list.visible' : 'admin.history.list.hidden') | translate"
                         [severity]="event.isVisible ? 'success' : 'warn'">
-                      </p-tag>
+                      </app-ui-tag>
                     </div>
                   </td>
                   <td>
@@ -172,11 +172,11 @@
             </label>
             <label>
               <span>{{ 'admin.history.editor.ownerId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="ownerId">
+              <input appUiInputText type="text" class="admin-input" formControlName="ownerId">
             </label>
             <label>
               <span>{{ 'admin.history.editor.key' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="key">
+              <input appUiInputText type="text" class="admin-input" formControlName="key">
             </label>
             <label>
               <span>{{ 'admin.history.editor.eventType' | translate }}</span>
@@ -194,15 +194,15 @@
           <div class="admin-history__grid admin-history__grid--date">
             <label>
               <span>{{ 'admin.history.editor.year' | translate }}</span>
-              <input pInputText type="number" min="1" class="admin-input" formControlName="year">
+              <input appUiInputText type="number" min="1" class="admin-input" formControlName="year">
             </label>
             <label>
               <span>{{ 'admin.history.editor.month' | translate }}</span>
-              <input pInputText type="number" min="1" max="12" class="admin-input" formControlName="month">
+              <input appUiInputText type="number" min="1" max="12" class="admin-input" formControlName="month">
             </label>
             <label>
               <span>{{ 'admin.history.editor.day' | translate }}</span>
-              <input pInputText type="number" min="1" max="31" class="admin-input" formControlName="day">
+              <input appUiInputText type="number" min="1" max="31" class="admin-input" formControlName="day">
             </label>
             <label>
               <span>{{ 'admin.history.editor.datePrecision' | translate }}</span>
@@ -220,27 +220,27 @@
           <div class="admin-history__grid">
             <label>
               <span>{{ 'admin.history.editor.parkId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="parkId">
+              <input appUiInputText type="text" class="admin-input" formControlName="parkId">
             </label>
             <label>
               <span>{{ 'admin.history.editor.parkItemId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="parkItemId">
+              <input appUiInputText type="text" class="admin-input" formControlName="parkItemId">
             </label>
             <label>
               <span>{{ 'admin.history.editor.contextParkId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="contextParkId">
+              <input appUiInputText type="text" class="admin-input" formControlName="contextParkId">
             </label>
             <label>
               <span>{{ 'admin.history.editor.slug' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="slug">
+              <input appUiInputText type="text" class="admin-input" formControlName="slug">
             </label>
             <label>
               <span>{{ 'admin.history.editor.mainImageId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="mainImageId">
+              <input appUiInputText type="text" class="admin-input" formControlName="mainImageId">
             </label>
             <label>
               <span>{{ 'admin.history.editor.locationLabel' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="locationLabel">
+              <input appUiInputText type="text" class="admin-input" formControlName="locationLabel">
             </label>
           </div>
         </section>
@@ -250,27 +250,27 @@
           <div class="admin-history__grid">
             <label>
               <span>{{ 'admin.history.editor.previousName' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="previousName">
+              <input appUiInputText type="text" class="admin-input" formControlName="previousName">
             </label>
             <label>
               <span>{{ 'admin.history.editor.newName' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="newName">
+              <input appUiInputText type="text" class="admin-input" formControlName="newName">
             </label>
             <label>
               <span>{{ 'admin.history.editor.previousLogoImageId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="previousLogoImageId">
+              <input appUiInputText type="text" class="admin-input" formControlName="previousLogoImageId">
             </label>
             <label>
               <span>{{ 'admin.history.editor.newLogoImageId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="newLogoImageId">
+              <input appUiInputText type="text" class="admin-input" formControlName="newLogoImageId">
             </label>
             <label>
               <span>{{ 'admin.history.editor.previousOperatorId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="previousOperatorId">
+              <input appUiInputText type="text" class="admin-input" formControlName="previousOperatorId">
             </label>
             <label>
               <span>{{ 'admin.history.editor.newOperatorId' | translate }}</span>
-              <input pInputText type="text" class="admin-input" formControlName="newOperatorId">
+              <input appUiInputText type="text" class="admin-input" formControlName="newOperatorId">
             </label>
           </div>
         </section>

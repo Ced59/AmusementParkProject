@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { InputText } from '@shared/primeless/inputtext';
-import { PrimeTemplate } from '@shared/primeless/api';
-import { TableLazyLoadEvent, TableModule } from '@shared/primeless/table';
-import { Tag } from '@shared/primeless/tag';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { Card } from '@shared/ui/primitives/card';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { UiTemplate } from '@shared/ui/primitives/api';
+import { TableLazyLoadEvent, TableModule } from '@shared/ui/primitives/table';
+import { Tag } from '@shared/ui/primitives/tag';
 
 import { AdminContactGrievance, AdminContactGrievanceQuery } from '@app/models/contact/contact-grievance.models';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
@@ -34,7 +34,7 @@ interface AdminContactGrievanceFiltersForm {
     ButtonDirective,
     Card,
     InputText,
-    PrimeTemplate,
+    UiTemplate,
     TableModule,
     Tag,
     EmptyStateComponent,

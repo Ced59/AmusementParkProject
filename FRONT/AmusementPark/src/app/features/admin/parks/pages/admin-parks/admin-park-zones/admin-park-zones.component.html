@@ -1,10 +1,10 @@
 <app-page-state [state]="state().kind">
-  <p-card>
-    <ng-template pTemplate="header">
+  <app-ui-card>
+    <ng-template appUiTemplate="header">
       <div class="header-row">
         <h2>{{ 'admin.parks.zones.title' | translate }}</h2>
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-plus"
           [label]="'admin.parks.zones.create' | translate"
@@ -13,8 +13,8 @@
       </div>
     </ng-template>
 
-    <p-table [value]="zones()" [loading]="state().kind === 'loading'" [responsiveLayout]="'scroll'" styleClass="admin-data-table">
-      <ng-template pTemplate="header">
+    <app-ui-table [value]="zones()" [loading]="state().kind === 'loading'" [responsiveLayout]="'scroll'" styleClass="admin-data-table">
+      <ng-template appUiTemplate="header">
         <tr>
           <th>{{ 'admin.parks.zones.name' | translate }}</th>
           <th>{{ 'admin.parks.visible' | translate }}</th>
@@ -23,21 +23,21 @@
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-zone>
+      <ng-template appUiTemplate="body" let-zone>
         <tr>
           <td [attr.data-label]="'admin.parks.zones.name' | translate">{{ getZoneDisplayName(zone) }}</td>
           <td [attr.data-label]="'admin.parks.visible' | translate">{{ (zone.isVisible ? 'admin.parks.visible' : 'admin.parks.hidden') | translate }}</td>
           <td [attr.data-label]="'admin.parks.zones.sortOrder' | translate">{{ zone.sortOrder ?? 0 }}</td>
           <td class="actions-cell" [attr.data-label]="'admin.parks.actions' | translate">
             <button
-              pButton
+              appUiButton
               type="button"
               icon="pi pi-pencil"
               class="p-button-text"
               [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'zones', zone.id]">
             </button>
             <button
-              pButton
+              appUiButton
               type="button"
               icon="pi pi-trash"
               class="p-button-text p-button-danger"
@@ -46,7 +46,7 @@
           </td>
         </tr>
       </ng-template>
-    <ng-template pTemplate="emptymessage">
+    <ng-template appUiTemplate="emptymessage">
       <tr>
         <td colspan="4">
           <app-empty-state
@@ -57,6 +57,6 @@
         </td>
       </tr>
     </ng-template>
-    </p-table>
-  </p-card>
+    </app-ui-table>
+  </app-ui-card>
 </app-page-state>

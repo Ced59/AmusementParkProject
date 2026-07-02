@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, Input, forwardRef } from '@angular/
 import { UrlTree } from '@angular/router';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
-import { Select } from '@shared/primeless/select';
-import { ButtonDirective } from '@shared/primeless/button';
+import { Select } from '@shared/ui/primitives/select';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { RouterLink } from '@angular/router';
 
 @Component({

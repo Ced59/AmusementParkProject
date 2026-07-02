@@ -1,1 +1,0 @@
-export { DividerModule } from './primeless';

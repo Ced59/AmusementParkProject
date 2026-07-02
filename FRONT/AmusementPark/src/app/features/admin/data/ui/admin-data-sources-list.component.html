@@ -1,5 +1,5 @@
-<p-card styleClass="admin-list-card">
-  <ng-template pTemplate="header">
+<app-ui-card styleClass="admin-list-card">
+  <ng-template appUiTemplate="header">
     <div class="admin-list-header">
       <div>
         <span class="admin-kicker">M14 · Admin</span>
@@ -10,8 +10,8 @@
     </div>
   </ng-template>
 
-  <p-table [value]="sources" responsiveLayout="scroll" styleClass="admin-data-table">
-    <ng-template pTemplate="header">
+  <app-ui-table [value]="sources" responsiveLayout="scroll" styleClass="admin-data-table">
+    <ng-template appUiTemplate="header">
       <tr>
         <th>Source</th>
         <th>Description</th>
@@ -21,7 +21,7 @@
         <th>Actions</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-source>
+    <ng-template appUiTemplate="body" let-source>
       <tr>
         <td data-label="Source">
           <div class="source-label">
@@ -33,11 +33,11 @@
         <td data-label="Dernier import">{{ source.lastImportUtc ? (source.lastImportUtc | date:'short') : 'Jamais' }}</td>
         <td data-label="Sessions"><span class="admin-count-chip">{{ source.totalSessions }}</span></td>
         <td data-label="Statut">
-          <p-tag [value]="source.statusLabel" [severity]="getSeverity(source)"></p-tag>
+          <app-ui-tag [value]="source.statusLabel" [severity]="getSeverity(source)"></app-ui-tag>
         </td>
         <td data-label="Actions">
           <button
-            pButton
+            appUiButton
             type="button"
             label="Gérer"
             icon="pi pi-cog"
@@ -47,5 +47,5 @@
         </td>
       </tr>
     </ng-template>
-  </p-table>
-</p-card>
+  </app-ui-table>
+</app-ui-card>

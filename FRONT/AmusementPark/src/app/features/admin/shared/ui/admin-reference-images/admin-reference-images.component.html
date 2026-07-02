@@ -6,7 +6,7 @@
     </div>
 
     <button
-      pButton
+      appUiButton
       type="button"
       icon="pi pi-upload"
       class="p-button-sm"
@@ -41,7 +41,7 @@
         <strong>{{ image.description || image.originalFileName || ('admin.references.images.untitled' | translate) }}</strong>
         <span class="admin-reference-images__category">{{ ('images.categories.' + image.category) | translate }}</span>
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-trash"
           class="p-button-text p-button-danger p-button-sm"

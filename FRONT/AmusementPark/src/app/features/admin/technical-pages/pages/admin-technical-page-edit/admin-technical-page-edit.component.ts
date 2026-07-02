@@ -4,9 +4,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { InputText } from '@shared/primeless/inputtext';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { Card } from '@shared/ui/primitives/card';
+import { InputText } from '@shared/ui/primitives/inputtext';
 
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { TechnicalContentBlock, TechnicalPage, TechnicalPageAlias } from '@app/models/technical-pages/technical-page';

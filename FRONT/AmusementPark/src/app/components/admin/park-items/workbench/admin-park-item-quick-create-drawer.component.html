@@ -13,7 +13,7 @@
         <p>{{ 'admin.parks.items.quickCreate.subtitle' | translate }}</p>
       </div>
       <button
-        pButton
+        appUiButton
         type="button"
         icon="pi pi-times"
         class="p-button-rounded p-button-text"
@@ -27,7 +27,7 @@
         <span class="admin-field-label">{{ 'admin.parks.items.itemName' | translate }}</span>
         <input
           #nameInput
-          pInputText
+          appUiInputText
           type="text"
           name="quickCreateName"
           [ngModel]="localDraft.name"
@@ -104,7 +104,7 @@
 
       <footer class="quick-create-drawer__footer">
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-check"
           class="p-button-sm"
@@ -113,7 +113,7 @@
           (click)="emitCreate()">
         </button>
         <button
-          pButton
+          appUiButton
           type="submit"
           icon="pi pi-plus"
           class="p-button-sm p-button-success"
@@ -121,7 +121,7 @@
           [label]="'admin.parks.items.quickCreate.createAndNew' | translate">
         </button>
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-external-link"
           class="p-button-sm p-button-secondary"

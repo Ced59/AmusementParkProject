@@ -31,11 +31,11 @@ export class MessageService {
 }
 
 @Directive({
-  selector: '[pTemplate]',
+  selector: '[appUiTemplate]',
   standalone: true
 })
-export class PrimeTemplate {
-  @Input('pTemplate') name: string = '';
+export class UiTemplate {
+  @Input('appUiTemplate') name: string = '';
 
   constructor(public readonly template: TemplateRef<unknown>) {
   }

@@ -4,10 +4,10 @@ import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water
 import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { EntitySelectComponent } from '@shared/components/entity-select/entity-select.component';
-import { InputText } from '@shared/primeless/inputtext';
-import { ToggleSwitch } from '@shared/primeless/toggleswitch';
-import { Select } from '@shared/primeless/select';
-import { ButtonDirective } from '@shared/primeless/button';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { ToggleSwitch } from '@shared/ui/primitives/toggleswitch';
+import { Select } from '@shared/ui/primitives/select';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

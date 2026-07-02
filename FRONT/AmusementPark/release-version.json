@@ -1,6 +1,20 @@
 {
-  "version": "3.1.24",
+  "version": "3.1.25",
   "history": [
+    {
+      "version": "3.1.25",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "L’administration devient plus indépendante.",
+        "en": "Admin becomes more independent.",
+        "de": "Die Administration wird unabhängiger.",
+        "nl": "De administratie wordt onafhankelijker.",
+        "it": "L’amministrazione diventa più indipendente.",
+        "es": "La administración gana independencia.",
+        "pl": "Administracja staje się bardziej niezależna.",
+        "pt": "A administração fica mais independente."
+      }
+    },
     {
       "version": "3.1.24",
       "releasedAt": "2026-07-02",

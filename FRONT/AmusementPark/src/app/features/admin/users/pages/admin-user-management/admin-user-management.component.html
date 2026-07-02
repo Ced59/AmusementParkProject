@@ -10,7 +10,7 @@
   <div class="admin-user-page">
     <div class="admin-user-toolbar">
       <button
-        pButton
+        appUiButton
         type="button"
         icon="pi pi-arrow-left"
         class="p-button-text"
@@ -19,7 +19,7 @@
       </button>
     </div>
 
-    <p-card
+    <app-ui-card
       *ngIf="user() as currentUser"
       [header]="'admin.users.profileTitle' | translate"
       class="admin-user-card">
@@ -34,7 +34,7 @@
             placeholderIconClass="pi pi-user">
           </app-image-display>
           <button
-            pButton
+            appUiButton
             type="button"
             [label]="'user-profile.modify' | translate"
             class="p-button-text p-button-sm"
@@ -49,12 +49,12 @@
           </div>
 
           <div class="profile-badges">
-            <p-tag
+            <app-ui-tag
               [severity]="currentUser.isBlocked ? 'danger' : 'success'"
               [value]="(currentUser.isBlocked ? 'admin.users.status.blocked' : 'admin.users.status.active') | translate">
-            </p-tag>
+            </app-ui-tag>
             <ng-container *ngFor="let role of currentUser.roles">
-              <p-tag [value]="role"></p-tag>
+              <app-ui-tag [value]="role"></app-ui-tag>
             </ng-container>
           </div>
         </div>
@@ -64,55 +64,55 @@
         <div class="form-grid">
           <div class="field">
             <label for="admin-email">{{ 'user-profile.email' | translate }}</label>
-            <input id="admin-email" type="email" pInputText formControlName="email">
+            <input id="admin-email" type="email" appUiInputText formControlName="email">
           </div>
 
           <div class="field">
             <label for="admin-newEmail">{{ 'admin.users.newEmail' | translate }}</label>
-            <input id="admin-newEmail" type="email" pInputText formControlName="newEmail">
+            <input id="admin-newEmail" type="email" appUiInputText formControlName="newEmail">
           </div>
 
           <div class="field">
             <label for="admin-firstName">{{ 'user-profile.firstname' | translate }}</label>
-            <input id="admin-firstName" type="text" pInputText formControlName="firstName">
+            <input id="admin-firstName" type="text" appUiInputText formControlName="firstName">
           </div>
 
           <div class="field">
             <label for="admin-lastName">{{ 'user-profile.name' | translate }}</label>
-            <input id="admin-lastName" type="text" pInputText formControlName="lastName">
+            <input id="admin-lastName" type="text" appUiInputText formControlName="lastName">
           </div>
 
           <div class="field">
             <label for="admin-preferredLanguage">{{ 'user-profile.preferred_language' | translate }}</label>
-            <p-select
+            <app-ui-select
               inputId="admin-preferredLanguage"
               [options]="languageOptions"
               optionLabel="label"
               optionValue="value"
               formControlName="preferredLanguage">
-            </p-select>
+            </app-ui-select>
           </div>
 
           <div class="field">
             <label for="admin-preferredMeasurementSystem">{{ 'user-profile.preferred_measurement_system' | translate }}</label>
-            <p-select
+            <app-ui-select
               inputId="admin-preferredMeasurementSystem"
               [options]="measurementSystemOptions"
               optionValue="value"
               formControlName="preferredMeasurementSystem">
-              <ng-template let-option pTemplate="item">
+              <ng-template let-option appUiTemplate="item">
                 {{ option.labelKey | translate }}
               </ng-template>
-              <ng-template let-option pTemplate="selectedItem">
+              <ng-template let-option appUiTemplate="selectedItem">
                 {{ option.labelKey | translate }}
               </ng-template>
-            </p-select>
+            </app-ui-select>
           </div>
         </div>
 
         <div class="form-actions">
           <button
-            pButton
+            appUiButton
             type="submit"
             icon="pi pi-save"
             [label]="'actions.save' | translate"
@@ -120,13 +120,13 @@
           </button>
         </div>
       </form>
-    </p-card>
+    </app-ui-card>
 
-    <p-card *ngIf="user() as currentUser" [header]="'admin.users.rolesTitle' | translate" class="admin-user-card">
+    <app-ui-card *ngIf="user() as currentUser" [header]="'admin.users.rolesTitle' | translate" class="admin-user-card">
       <div class="roles-grid">
         <button
           *ngFor="let role of roleOptions"
-          pButton
+          appUiButton
           type="button"
           class="p-button-outlined"
           [severity]="hasRole(role) ? 'success' : 'secondary'"
@@ -135,9 +135,9 @@
           (click)="toggleRole(role)">
         </button>
       </div>
-    </p-card>
+    </app-ui-card>
 
-    <p-card *ngIf="user() as currentUser" [header]="'admin.users.securityTitle' | translate" class="admin-user-card">
+    <app-ui-card *ngIf="user() as currentUser" [header]="'admin.users.securityTitle' | translate" class="admin-user-card">
       <div class="security-grid">
         <div class="security-row" *ngIf="canBlockUser">
           <div>
@@ -147,7 +147,7 @@
             </p>
           </div>
           <button
-            pButton
+            appUiButton
             type="button"
             [severity]="currentUser.isBlocked ? 'success' : 'danger'"
             [label]="(currentUser.isBlocked ? 'admin.users.unblockAction' : 'admin.users.blockAction') | translate"
@@ -160,18 +160,18 @@
           <div class="form-grid">
             <div class="field">
               <label for="admin-newPassword">{{ 'admin.users.newPassword' | translate }}</label>
-              <input id="admin-newPassword" type="password" pInputText formControlName="newPassword">
+              <input id="admin-newPassword" type="password" appUiInputText formControlName="newPassword">
             </div>
 
             <div class="field">
               <label for="admin-newPasswordConfirm">{{ 'admin.users.confirmPassword' | translate }}</label>
-              <input id="admin-newPasswordConfirm" type="password" pInputText formControlName="newPasswordConfirm">
+              <input id="admin-newPasswordConfirm" type="password" appUiInputText formControlName="newPasswordConfirm">
             </div>
           </div>
 
           <div class="form-actions">
             <button
-              pButton
+              appUiButton
               type="submit"
               icon="pi pi-key"
               [label]="'admin.users.changePassword' | translate"
@@ -180,7 +180,7 @@
           </div>
         </form>
       </div>
-    </p-card>
+    </app-ui-card>
   </div>
 </app-page-state>
 

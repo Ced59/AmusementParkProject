@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { AdminParkStatusOption, AdminParkTypeOption } from '@features/admin/parks/models/admin-park-edit.model';
-import { ButtonDirective } from '@shared/primeless/button';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { RouterLink } from '@angular/router';
-import { InputText } from '@shared/primeless/inputtext';
-import { Select } from '@shared/primeless/select';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { Select } from '@shared/ui/primitives/select';
 import { EntitySelectComponent } from '@shared/components/entity-select/entity-select.component';
-import { ToggleSwitch } from '@shared/primeless/toggleswitch';
-import { InputNumber } from '@shared/primeless/inputnumber';
+import { ToggleSwitch } from '@shared/ui/primitives/toggleswitch';
+import { InputNumber } from '@shared/ui/primitives/inputnumber';
 import { TranslateModule } from '@ngx-translate/core';
 
 

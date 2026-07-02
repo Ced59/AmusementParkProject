@@ -1,4 +1,4 @@
-<p-dialog
+<app-ui-dialog
   header="{{ titleKey | translate }}"
   [(visible)]="visible"
   [modal]="true"
@@ -41,7 +41,7 @@
           <i class="pi pi-image drop-zone__icon"></i>
           <div>{{ dragAndDropHintKey | translate }}</div>
           <button
-            pButton
+            appUiButton
             type="button"
             class="p-button-outlined"
             [label]="chooseButtonKey | translate"
@@ -73,7 +73,7 @@
     @if (allowRemoteImport) {
       <div class="remote-import">
         <input
-          pInputText
+          appUiInputText
           type="url"
           [ngModel]="remoteSourceUrl"
           (ngModelChange)="setRemoteSourceUrl($event)"
@@ -96,7 +96,7 @@
 
     @if (showDescription) {
       <input
-        pInputText
+        appUiInputText
         type="text"
         [(ngModel)]="description"
         [placeholder]="descriptionPlaceholderKey | translate"
@@ -121,10 +121,10 @@
     }
   </div>
 
-  <ng-template pTemplate="footer">
+  <ng-template appUiTemplate="footer">
     <div class="dialog-footer">
       <button
-        pButton
+        appUiButton
         type="button"
         class="p-button-text"
         [label]="cancelButtonKey | translate"
@@ -133,7 +133,7 @@
       </button>
 
       <button
-        pButton
+        appUiButton
         type="button"
         [label]="(isUploading ? uploadingKey : (remotePreviewUrl ? remoteImportButtonKey : uploadButtonKey)) | translate"
         [loading]="isUploading"
@@ -142,4 +142,4 @@
       </button>
     </div>
   </ng-template>
-</p-dialog>
+</app-ui-dialog>

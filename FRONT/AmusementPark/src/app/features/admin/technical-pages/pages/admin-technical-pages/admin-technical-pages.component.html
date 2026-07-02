@@ -1,5 +1,5 @@
 <section class="admin-technical-pages">
-  <p-card styleClass="admin-editor-card">
+  <app-ui-card styleClass="admin-editor-card">
     <div class="admin-technical-pages__head">
       <div>
         <span class="kicker kicker--sky">{{ 'admin.technicalPages.kicker' | translate }}</span>
@@ -7,7 +7,7 @@
         <p>{{ 'admin.technicalPages.subtitle' | translate }}</p>
       </div>
 
-      <a pButton [routerLink]="['/', currentLang, 'admin', 'technical-pages', 'new']">
+      <a appUiButton [routerLink]="['/', currentLang, 'admin', 'technical-pages', 'new']">
         <i class="pi pi-plus" aria-hidden="true"></i>
         <span>{{ 'admin.technicalPages.create' | translate }}</span>
       </a>
@@ -22,7 +22,7 @@
         rows="8"
         spellcheck="false"></textarea>
       <div class="admin-technical-pages__import-actions">
-        <button pButton type="button" (click)="upsertJson()" [disabled]="!importJson().trim()">
+        <button appUiButton type="button" (click)="upsertJson()" [disabled]="!importJson().trim()">
           <i class="pi pi-upload" aria-hidden="true"></i>
           <span>{{ 'admin.technicalPages.import.submit' | translate }}</span>
         </button>
@@ -61,11 +61,11 @@
                 <td>{{ categoryName(page) }}</td>
                 <td><code>{{ page.slug }}</code></td>
                 <td>
-                  <p-tag [severity]="getStatusSeverity(page.adminReviewStatus)" [value]="getStatusLabelKey(page.adminReviewStatus) | translate"></p-tag>
+                  <app-ui-tag [severity]="getStatusSeverity(page.adminReviewStatus)" [value]="getStatusLabelKey(page.adminReviewStatus) | translate"></app-ui-tag>
                 </td>
                 <td>
                   @if (page.id) {
-                    <a pButton class="p-button-text" [routerLink]="['/', currentLang, 'admin', 'technical-pages', 'edit', page.id]">
+                    <a appUiButton class="p-button-text" [routerLink]="['/', currentLang, 'admin', 'technical-pages', 'edit', page.id]">
                       <i class="pi pi-pencil" aria-hidden="true"></i>
                       <span>{{ 'actions.edit' | translate }}</span>
                     </a>
@@ -77,5 +77,5 @@
         </table>
       }
     </div>
-  </p-card>
+  </app-ui-card>
 </section>

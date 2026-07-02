@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Card } from '@shared/primeless/card';
-import { PrimeTemplate } from '@shared/primeless/api';
+import { Card } from '@shared/ui/primitives/card';
+import { UiTemplate } from '@shared/ui/primitives/api';
 import { FormsModule } from '@angular/forms';
-import { InputText } from '@shared/primeless/inputtext';
-import { ButtonDirective } from '@shared/primeless/button';
-import { TableModule } from '@shared/primeless/table';
-import { Tag } from '@shared/primeless/tag';
-import { PaginatorState } from '@shared/primeless/paginator';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { TableModule } from '@shared/ui/primitives/table';
+import { Tag } from '@shared/ui/primitives/tag';
+import { PaginatorState } from '@shared/ui/primitives/paginator';
 import { TranslateModule } from '@ngx-translate/core';
 import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
@@ -21,7 +21,7 @@ import { AdminManufacturersStateFacade } from '@features/admin/manufacturers/sta
   styleUrls: ['./admin-manufacturers.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AdminManufacturersStateFacade],
-  imports: [Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, Tag, TranslateModule, EmptyStateComponent, PaginationComponent]
+  imports: [Card, UiTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, Tag, TranslateModule, EmptyStateComponent, PaginationComponent]
 })
 export class AdminManufacturersComponent implements OnInit {
   protected readonly manufacturers = this.stateFacade.pagedManufacturers;

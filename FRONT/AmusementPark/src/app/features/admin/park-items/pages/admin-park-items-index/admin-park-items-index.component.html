@@ -39,7 +39,7 @@
         <h3>{{ 'admin.parkItems.content.quickDescriptionsTitle' | translate:{ name: item.name } }}</h3>
       </div>
       <button
-        pButton
+        appUiButton
         type="button"
         icon="pi pi-times"
         class="p-button-text p-button-sm"
@@ -56,7 +56,7 @@
 
     <div class="admin-quick-description-panel__actions">
       <button
-        pButton
+        appUiButton
         type="button"
         icon="pi pi-save"
         [disabled]="isSavingQuickDescription()"

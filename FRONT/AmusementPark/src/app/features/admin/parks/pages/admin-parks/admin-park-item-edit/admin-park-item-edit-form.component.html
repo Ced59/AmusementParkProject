@@ -1,4 +1,4 @@
-<p-card styleClass="admin-editor-card admin-park-item-editor-card">
+<app-ui-card styleClass="admin-editor-card admin-park-item-editor-card">
   <div class="page-header">
     <div>
       <h2>{{ (isEditMode ? 'admin.parks.items.editTitle' : 'admin.parks.items.createTitle') | translate }}</h2>
@@ -33,7 +33,7 @@
         <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
         <span>{{ 'admin.parks.items.sectionNav.saveFailedWithRetry' | translate }}</span>
         <button
-          pButton
+          appUiButton
           type="button"
           class="p-button-sm p-button-danger p-button-outlined"
           icon="pi pi-refresh"
@@ -60,28 +60,28 @@
       <small id="park-item-editor-section-help">{{ 'admin.parks.items.sectionNav.help' | translate }}</small>
     </div>
 
-    <p-tabs class="admin-park-item-main-tabs" [value]="activeTabIndex" (valueChange)="tabChanged.emit($event)">
-      <p-tablist class="admin-park-item-main-tablist">
-        <p-tab [value]="0">{{ 'admin.parks.items.tabs.general' | translate }}</p-tab>
+    <app-ui-tabs class="admin-park-item-main-tabs" [value]="activeTabIndex" (valueChange)="tabChanged.emit($event)">
+      <app-ui-tab-list class="admin-park-item-main-tablist">
+        <app-ui-tab [value]="0">{{ 'admin.parks.items.tabs.general' | translate }}</app-ui-tab>
         @if (isAttractionCategory) {
-          <p-tab [value]="1">{{ 'admin.parks.items.tabs.details' | translate }}</p-tab>
+          <app-ui-tab [value]="1">{{ 'admin.parks.items.tabs.details' | translate }}</app-ui-tab>
         }
         @if (isAttractionCategory) {
-          <p-tab [value]="2">{{ 'admin.parks.items.tabs.accessConditions' | translate }}</p-tab>
+          <app-ui-tab [value]="2">{{ 'admin.parks.items.tabs.accessConditions' | translate }}</app-ui-tab>
         }
         @if (isAttractionCategory) {
-          <p-tab [value]="3">{{ 'admin.parks.items.tabs.locations' | translate }}</p-tab>
+          <app-ui-tab [value]="3">{{ 'admin.parks.items.tabs.locations' | translate }}</app-ui-tab>
         }
         @if (isAttractionCategory) {
-          <p-tab [value]="4">{{ 'admin.parks.items.tabs.photos' | translate }}</p-tab>
+          <app-ui-tab [value]="4">{{ 'admin.parks.items.tabs.photos' | translate }}</app-ui-tab>
         }
         @if (isEditMode) {
-          <p-tab [value]="5">{{ 'admin.parks.items.tabs.videos' | translate }}</p-tab>
+          <app-ui-tab [value]="5">{{ 'admin.parks.items.tabs.videos' | translate }}</app-ui-tab>
         }
-      </p-tablist>
+      </app-ui-tab-list>
 
-      <p-tabpanels>
-        <p-tabpanel [value]="0">
+      <app-ui-tab-panels>
+        <app-ui-tab-panel [value]="0">
           @if (activeTabIndex === 0) {
             <app-admin-park-item-general-tab
               [form]="form"
@@ -102,10 +102,10 @@
               (saveSection)="saveSection.emit()">
             </app-admin-park-item-general-tab>
           }
-        </p-tabpanel>
+        </app-ui-tab-panel>
 
         @if (isAttractionCategory) {
-          <p-tabpanel [value]="1">
+          <app-ui-tab-panel [value]="1">
             @if (activeTabIndex === 1) {
               <app-admin-park-item-details-tab
                 [formGroup]="attractionDetailsGroup"
@@ -119,11 +119,11 @@
                 (saveSection)="saveSection.emit()">
               </app-admin-park-item-details-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
         }
 
         @if (isAttractionCategory) {
-          <p-tabpanel [value]="2">
+          <app-ui-tab-panel [value]="2">
             @if (activeTabIndex === 2) {
               <app-admin-park-item-access-conditions-tab
                 [formGroup]="attractionDetailsGroup"
@@ -142,11 +142,11 @@
                 (saveSection)="saveSection.emit()">
               </app-admin-park-item-access-conditions-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
         }
 
         @if (isAttractionCategory) {
-          <p-tabpanel [value]="3">
+          <app-ui-tab-panel [value]="3">
             @if (activeTabIndex === 3) {
               <app-admin-park-item-locations-tab
                 [formGroup]="attractionLocationsGroup"
@@ -164,11 +164,11 @@
                 (saveSection)="saveSection.emit()">
               </app-admin-park-item-locations-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
         }
 
         @if (isAttractionCategory) {
-          <p-tabpanel [value]="4">
+          <app-ui-tab-panel [value]="4">
             @if (activeTabIndex === 4) {
               <app-admin-park-item-photos-tab
                 [isEditMode]="isEditMode"
@@ -207,11 +207,11 @@
                 (saveSection)="saveSection.emit()">
               </app-admin-park-item-photos-tab>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
         }
 
         @if (isEditMode) {
-          <p-tabpanel [value]="5">
+          <app-ui-tab-panel [value]="5">
             @if (activeTabIndex === 5) {
               <app-admin-video-create-panel
                 [ownerType]="videoOwnerType"
@@ -219,10 +219,10 @@
                 [ownerName]="itemName">
               </app-admin-video-create-panel>
             }
-          </p-tabpanel>
+          </app-ui-tab-panel>
         }
 
-      </p-tabpanels>
-    </p-tabs>
+      </app-ui-tab-panels>
+    </app-ui-tabs>
   </form>
-</p-card>
+</app-ui-card>

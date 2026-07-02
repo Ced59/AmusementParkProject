@@ -1,5 +1,5 @@
-<p-card styleClass="admin-list-card" data-pagination-scroll-target="admin-users">
-  <ng-template pTemplate="header">
+<app-ui-card styleClass="admin-list-card" data-pagination-scroll-target="admin-users">
+  <ng-template appUiTemplate="header">
     <div class="admin-list-header">
       <div>
         <span class="admin-kicker">M14 · Admin</span>
@@ -15,7 +15,7 @@
     </div>
   </ng-template>
 
-  <p-table
+  <app-ui-table
     [value]="users()"
     [loading]="loading()"
     [paginator]="true"
@@ -26,7 +26,7 @@
     [responsiveLayout]="'scroll'"
     selectionMode="single"
     styleClass="admin-data-table">
-    <ng-template pTemplate="header">
+    <ng-template appUiTemplate="header">
       <tr>
         <th class="col-avatar"></th>
         <th>{{ 'admin.users.columns.email' | translate }}</th>
@@ -38,7 +38,7 @@
       </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-user>
+    <ng-template appUiTemplate="body" let-user>
       <tr class="clickable-row" (click)="openUserProfile(user.id)">
         <td class="col-avatar">
           <img
@@ -55,32 +55,32 @@
         <td [attr.data-label]="'admin.users.columns.lastName' | translate">{{ user.lastName }}</td>
         <td [attr.data-label]="'admin.users.columns.roles' | translate">
           @for (role of user.roles; track role) {
-            <p-tag
+            <app-ui-tag
               [value]="role"
               class="mr-1">
-            </p-tag>
+            </app-ui-tag>
           }
         </td>
         <td [attr.data-label]="'admin.users.columns.status' | translate">
-          <p-tag
+          <app-ui-tag
             [severity]="user.isBlocked ? 'danger' : 'success'"
             [value]="(user.isBlocked ? 'admin.users.status.blocked' : 'admin.users.status.active') | translate">
-          </p-tag>
+          </app-ui-tag>
         </td>
         <td class="col-actions" [attr.data-label]="'admin.users.columns.actions' | translate">
           <button
-            pButton
+            appUiButton
             type="button"
             icon="pi pi-pencil"
             class="p-button-sm"
-            [pTooltip]="'admin.users.manage' | translate"
+            [appUiTooltip]="'admin.users.manage' | translate"
             [label]="'actions.edit' | translate"
             (click)="openUserProfile(user.id); $event.stopPropagation()">
           </button>
         </td>
       </tr>
     </ng-template>
-    <ng-template pTemplate="emptymessage">
+    <ng-template appUiTemplate="emptymessage">
       <tr>
         <td colspan="7">
           <app-empty-state
@@ -91,5 +91,5 @@
         </td>
       </tr>
     </ng-template>
-  </p-table>
-</p-card>
+  </app-ui-table>
+</app-ui-card>

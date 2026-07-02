@@ -1,4 +1,4 @@
-<p-card styleClass="admin-list-card admin-items-card" data-pagination-scroll-target>
+<app-ui-card styleClass="admin-list-card admin-items-card" data-pagination-scroll-target>
   <div class="admin-list-header">
     <div>
       <span class="admin-kicker">M14 · Admin</span>
@@ -11,7 +11,7 @@
       </span>
       @if (showQuickCreateButton) {
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-bolt"
           class="p-button-sm p-button-success"
@@ -21,7 +21,7 @@
       }
       @if (showCreateButton && createButtonRouterLink) {
         <button
-          pButton
+          appUiButton
           type="button"
           icon="pi pi-plus"
           class="p-button-sm"
@@ -39,7 +39,7 @@
         <span class="pi pi-search" aria-hidden="true"></span>
         <input
           id="admin-items-search"
-          pInputText
+          appUiInputText
           type="text"
           [(ngModel)]="localSearchTerm"
           (keyup.enter)="applyFilters()"
@@ -49,7 +49,7 @@
 
     <div class="admin-toolbar__actions">
       <button
-        pButton
+        appUiButton
         type="button"
         icon="pi pi-search"
         class="p-button-sm"
@@ -63,7 +63,7 @@
     @if (showParkFilter) {
       <label class="admin-field">
         <span class="admin-field-label">{{ 'admin.parkItems.parkFilter' | translate }}</span>
-        <p-select
+        <app-ui-select
           [(ngModel)]="localSelectedParkId"
           [options]="parkOptions()"
           optionLabel="label"
@@ -71,7 +71,7 @@
           [showClear]="true"
           (ngModelChange)="onImmediateFilterChanged()"
           [placeholder]="'admin.parkItems.parkFilter' | translate">
-        </p-select>
+        </app-ui-select>
       </label>
     }
 
@@ -142,12 +142,12 @@
     <div class="admin-bulk-bar">
       <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
       <div class="admin-bulk-bar__actions">
-        <button pButton type="button" class="p-button-sm" icon="pi pi-eye" [label]="'admin.bulk.makeVisible' | translate" (click)="makeSelectedVisible()"></button>
-        <button pButton type="button" class="p-button-sm p-button-secondary" icon="pi pi-eye-slash" [label]="'admin.bulk.hide' | translate" (click)="hideSelected()"></button>
-        <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
-        <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
-        <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
-        <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
+        <button appUiButton type="button" class="p-button-sm" icon="pi pi-eye" [label]="'admin.bulk.makeVisible' | translate" (click)="makeSelectedVisible()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-secondary" icon="pi pi-eye-slash" [label]="'admin.bulk.hide' | translate" (click)="hideSelected()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
+        <button appUiButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
         @if (showFieldBulkActions) {
           <select [(ngModel)]="bulkZoneId" [attr.aria-label]="'admin.parks.items.zone' | translate">
             <option [ngValue]="null">{{ 'admin.parks.items.quickCreate.noZone' | translate }}</option>
@@ -155,35 +155,35 @@
               <option [ngValue]="option.value">{{ option.label }}</option>
             }
           </select>
-          <button pButton type="button" class="p-button-sm" icon="pi pi-map-marker" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkZone()"></button>
+          <button appUiButton type="button" class="p-button-sm" icon="pi pi-map-marker" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkZone()"></button>
           <select [(ngModel)]="bulkCategory" [attr.aria-label]="'admin.filters.category' | translate">
             <option [ngValue]="null">{{ 'admin.filters.category' | translate }}</option>
             @for (option of categoryOptions; track option.value) {
               <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
             }
           </select>
-          <button pButton type="button" class="p-button-sm" icon="pi pi-tags" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkCategory()"></button>
+          <button appUiButton type="button" class="p-button-sm" icon="pi pi-tags" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkCategory()"></button>
           <select [(ngModel)]="bulkType" [attr.aria-label]="'admin.filters.type' | translate">
             <option [ngValue]="null">{{ 'admin.filters.type' | translate }}</option>
             @for (option of typeOptions; track option.value) {
               <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
             }
           </select>
-          <button pButton type="button" class="p-button-sm" icon="pi pi-wrench" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkType()"></button>
+          <button appUiButton type="button" class="p-button-sm" icon="pi pi-wrench" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkType()"></button>
           <select [(ngModel)]="bulkManufacturerId" [attr.aria-label]="'admin.parks.items.details.manufacturer' | translate">
             <option [ngValue]="null">{{ 'admin.parks.items.quickCreate.noManufacturer' | translate }}</option>
             @for (option of manufacturerOptions?.() ?? []; track option.id) {
               <option [ngValue]="option.id">{{ option.label }}</option>
             }
           </select>
-          <button pButton type="button" class="p-button-sm" icon="pi pi-building" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkManufacturer()"></button>
+          <button appUiButton type="button" class="p-button-sm" icon="pi pi-building" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkManufacturer()"></button>
         }
-        <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
+        <button appUiButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
       </div>
     </div>
   }
 
-  <p-table
+  <app-ui-table
     [value]="rows()"
     [loading]="loading()"
     responsiveLayout="scroll"
@@ -191,49 +191,49 @@
     [sortOrder]="sortOrder"
     (onSort)="onSortChange($event)"
     styleClass="admin-data-table">
-    <ng-template pTemplate="header">
+    <ng-template appUiTemplate="header">
       <tr>
         <th class="admin-selection-column">
           <input type="checkbox" [checked]="areAllCurrentItemsSelected()" (change)="onAllSelectionChange($event)" aria-label="Select all park items" />
         </th>
         @if (showParkColumn) {
-          <th pSortableColumn="parkName">
+          <th appUiSortableColumn="parkName">
             {{ 'admin.parkItems.columns.park' | translate }}
-            <p-sortIcon field="parkName"></p-sortIcon>
+            <app-ui-sort-icon field="parkName"></app-ui-sort-icon>
           </th>
         }
-        <th pSortableColumn="name">
+        <th appUiSortableColumn="name">
           {{ 'admin.parkItems.columns.item' | translate }}
-          <p-sortIcon field="name"></p-sortIcon>
+          <app-ui-sort-icon field="name"></app-ui-sort-icon>
         </th>
-        <th pSortableColumn="type">
+        <th appUiSortableColumn="type">
           {{ 'admin.parkItems.columns.type' | translate }}
-          <p-sortIcon field="type"></p-sortIcon>
+          <app-ui-sort-icon field="type"></app-ui-sort-icon>
         </th>
-        <th pSortableColumn="category">
+        <th appUiSortableColumn="category">
           {{ 'admin.parkItems.columns.category' | translate }}
-          <p-sortIcon field="category"></p-sortIcon>
+          <app-ui-sort-icon field="category"></app-ui-sort-icon>
         </th>
         @if (showZoneColumn) {
-          <th pSortableColumn="zoneId">
+          <th appUiSortableColumn="zoneId">
             {{ 'admin.parks.items.zone' | translate }}
-            <p-sortIcon field="zoneId"></p-sortIcon>
+            <app-ui-sort-icon field="zoneId"></app-ui-sort-icon>
           </th>
         }
-        <th pSortableColumn="adminReviewStatus">
+        <th appUiSortableColumn="adminReviewStatus">
           {{ 'admin.parkItems.columns.reviewStatus' | translate }}
-          <p-sortIcon field="adminReviewStatus"></p-sortIcon>
+          <app-ui-sort-icon field="adminReviewStatus"></app-ui-sort-icon>
         </th>
         <th>{{ 'admin.parkItems.columns.contentQuality' | translate }}</th>
-        <th pSortableColumn="isVisible">
+        <th appUiSortableColumn="isVisible">
           {{ 'admin.parkItems.columns.visibility' | translate }}
-          <p-sortIcon field="isVisible"></p-sortIcon>
+          <app-ui-sort-icon field="isVisible"></app-ui-sort-icon>
         </th>
         <th>{{ 'admin.parkItems.columns.actions' | translate }}</th>
       </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-row>
+    <ng-template appUiTemplate="body" let-row>
       <tr [class.admin-row--later]="row.adminReviewStatus === 'ToProcessLater' || row.adminReviewStatus === 'NotRelevant'">
         <td class="admin-selection-column">
           <input type="checkbox" [checked]="isItemSelected(row)" (change)="onItemSelectionChange(row, $event)" [attr.aria-label]="row.name" />
@@ -287,18 +287,18 @@
               <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
             </select>
           } @else {
-            <p-tag
+            <app-ui-tag
               [value]="getStatusLabelKey(row.adminReviewStatus) | translate"
               [severity]="getStatusSeverity(row.adminReviewStatus)">
-            </p-tag>
+            </app-ui-tag>
           }
         </td>
         <td [attr.data-label]="'admin.parkItems.columns.contentQuality' | translate">
           <div class="admin-content-quality">
-            <p-tag
+            <app-ui-tag
               [value]="getQualityLabelKey(row) | translate"
               [severity]="getQualitySeverity(row)">
-            </p-tag>
+            </app-ui-tag>
             <span class="admin-language-coverage">
               {{ 'admin.parkItems.content.languages' | translate }} {{ getLanguageCoverage(row) }}
             </span>
@@ -318,16 +318,16 @@
               <span>{{ row.isVisible ? ('admin.visible' | translate) : ('admin.hidden' | translate) }}</span>
             </label>
           } @else {
-            <p-tag
+            <app-ui-tag
               [value]="row.isVisible ? ('admin.visible' | translate) : ('admin.hidden' | translate)"
               [severity]="row.isVisible ? 'success' : 'warn'">
-            </p-tag>
+            </app-ui-tag>
           }
         </td>
         <td [attr.data-label]="'admin.parkItems.columns.actions' | translate">
           <div class="admin-row-actions">
             <button
-              pButton
+              appUiButton
               type="button"
               icon="pi pi-pencil"
               class="p-button-sm"
@@ -335,7 +335,7 @@
               [label]="'actions.edit' | translate">
             </button>
             <button
-              pButton
+              appUiButton
               type="button"
               icon="pi pi-align-left"
               class="p-button-sm p-button-secondary"
@@ -344,7 +344,7 @@
             </button>
             @if (showQuickCreateButton) {
               <button
-                pButton
+                appUiButton
                 type="button"
                 icon="pi pi-copy"
                 class="p-button-sm p-button-secondary"
@@ -354,7 +354,7 @@
             }
             @if (showDeleteAction) {
               <button
-                pButton
+                appUiButton
                 type="button"
                 icon="pi pi-trash"
                 class="p-button-sm p-button-danger p-button-outlined"
@@ -366,7 +366,7 @@
         </td>
       </tr>
     </ng-template>
-    <ng-template pTemplate="emptymessage">
+    <ng-template appUiTemplate="emptymessage">
       <tr>
         <td [attr.colspan]="getColumnSpan()">
           <app-empty-state
@@ -377,7 +377,7 @@
         </td>
       </tr>
     </ng-template>
-  </p-table>
+  </app-ui-table>
 
   <app-pagination
     [first]="getPaginationFirst()"
@@ -386,4 +386,4 @@
     [rowsPerPageOptions]="[10, 20, 50, 100]"
     (pageChanged)="onPageChange($event)">
   </app-pagination>
-</p-card>
+</app-ui-card>

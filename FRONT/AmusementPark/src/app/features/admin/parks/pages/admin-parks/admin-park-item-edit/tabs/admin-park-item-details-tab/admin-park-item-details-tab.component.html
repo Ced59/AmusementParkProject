@@ -19,11 +19,11 @@
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.model' | translate }}</label>
-      <input pInputText formControlName="model" />
+      <input appUiInputText formControlName="model" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.status' | translate }}</label>
-      <p-select
+      <app-ui-select
         formControlName="status"
         [options]="statusOptions"
         optionLabel="labelKey"
@@ -37,78 +37,78 @@
         <ng-template let-selected #selectedItem>
           {{ selected?.labelKey ? (selected.labelKey | translate) : ('admin.parks.items.details.statusPlaceholder' | translate) }}
         </ng-template>
-      </p-select>
+      </app-ui-select>
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.openingDate' | translate }}</label>
-      <input pInputText type="date" formControlName="openingDate" />
+      <input appUiInputText type="date" formControlName="openingDate" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.closingDate' | translate }}</label>
-      <input pInputText type="date" formControlName="closingDate" />
+      <input appUiInputText type="date" formControlName="closingDate" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.durationInSeconds' | translate }}</label>
-      <input pInputText type="number" formControlName="durationInSeconds" />
+      <input appUiInputText type="number" formControlName="durationInSeconds" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.capacityPerHour' | translate }}</label>
-      <input pInputText type="number" formControlName="capacityPerHour" />
+      <input appUiInputText type="number" formControlName="capacityPerHour" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.heightInMeters' | translate }}</label>
-      <input pInputText type="number" formControlName="heightInMeters" />
+      <input appUiInputText type="number" formControlName="heightInMeters" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.lengthInMeters' | translate }}</label>
-      <input pInputText type="number" formControlName="lengthInMeters" />
+      <input appUiInputText type="number" formControlName="lengthInMeters" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.speedInKmH' | translate }}</label>
-      <input pInputText type="number" formControlName="speedInKmH" />
+      <input appUiInputText type="number" formControlName="speedInKmH" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.dropInMeters' | translate }}</label>
-      <input pInputText type="number" formControlName="dropInMeters" />
+      <input appUiInputText type="number" formControlName="dropInMeters" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.inversionCount' | translate }}</label>
-      <input pInputText type="number" formControlName="inversionCount" />
+      <input appUiInputText type="number" formControlName="inversionCount" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.trainCount' | translate }}</label>
-      <input pInputText type="number" formControlName="trainCount" />
+      <input appUiInputText type="number" formControlName="trainCount" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.carsPerTrain' | translate }}</label>
-      <input pInputText type="number" formControlName="carsPerTrain" />
+      <input appUiInputText type="number" formControlName="carsPerTrain" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.ridersPerVehicle' | translate }}</label>
-      <input pInputText type="number" formControlName="ridersPerVehicle" />
+      <input appUiInputText type="number" formControlName="ridersPerVehicle" />
     </div>
   </div>
 
   <div class="grid formgrid switches-grid">
     <div class="field col-12 md:col-6 lg:col-4 switch-field">
       <label>{{ 'admin.parks.items.details.hasSingleRider' | translate }}</label>
-      <p-toggleswitch formControlName="hasSingleRider"></p-toggleswitch>
+      <app-ui-toggle-switch formControlName="hasSingleRider"></app-ui-toggle-switch>
     </div>
     <div class="field col-12 md:col-6 lg:col-4 switch-field">
       <label>{{ 'admin.parks.items.details.hasFastPass' | translate }}</label>
-      <p-toggleswitch formControlName="hasFastPass"></p-toggleswitch>
+      <app-ui-toggle-switch formControlName="hasFastPass"></app-ui-toggle-switch>
     </div>
     <div class="field col-12 md:col-6 lg:col-4 switch-field">
       <label>{{ 'admin.parks.items.details.isAccessibleForReducedMobility' | translate }}</label>
-      <p-toggleswitch formControlName="isAccessibleForReducedMobility"></p-toggleswitch>
+      <app-ui-toggle-switch formControlName="isAccessibleForReducedMobility"></app-ui-toggle-switch>
     </div>
     <div class="field col-12 md:col-6 lg:col-4 switch-field">
       <label>{{ 'admin.parks.items.details.isIndoor' | translate }}</label>
-      <p-toggleswitch formControlName="isIndoor"></p-toggleswitch>
+      <app-ui-toggle-switch formControlName="isIndoor"></app-ui-toggle-switch>
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.waterExposureLevel' | translate }}</label>
-      <p-select
+      <app-ui-select
         formControlName="waterExposureLevel"
         [options]="waterExposureLevelOptions"
         optionLabel="labelKey"
@@ -122,13 +122,13 @@
         <ng-template let-selected #selectedItem>
           {{ selected?.labelKey ? (selected.labelKey | translate) : ('admin.parks.items.details.waterExposureLevelPlaceholder' | translate) }}
         </ng-template>
-      </p-select>
+      </app-ui-select>
     </div>
   </div>
 
   <div class="section-actions">
     <button
-      pButton
+      appUiButton
       type="button"
       class="p-button-secondary p-button-outlined"
       icon="pi pi-save"

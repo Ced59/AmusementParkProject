@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { Paginator, PaginatorState } from '@shared/primeless/paginator';
+import { Paginator, PaginatorState } from '@shared/ui/primitives/paginator';
 import { PaginationContract } from '@shared/models/contracts';
 import { ScrollAnchorService } from '@shared/services/scroll/scroll-anchor.service';
 

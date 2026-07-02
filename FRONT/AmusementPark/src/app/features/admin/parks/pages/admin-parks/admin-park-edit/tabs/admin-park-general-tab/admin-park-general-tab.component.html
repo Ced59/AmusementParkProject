@@ -7,7 +7,7 @@
       </div>
       <div class="management-links">
         <button
-          pButton
+          appUiButton
           type="button"
           class="p-button-outlined"
           icon="pi pi-sitemap"
@@ -15,7 +15,7 @@
           [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'zones']">
         </button>
         <button
-          pButton
+          appUiButton
           type="button"
           class="p-button-outlined"
           icon="pi pi-map-marker"
@@ -29,7 +29,7 @@
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label for="name">{{ 'admin.parks.name' | translate }}</label>
-      <input id="name" type="text" pInputText formControlName="name" />
+      <input id="name" type="text" appUiInputText formControlName="name" />
       @if (nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)) {
         <small class="p-error">
           {{ 'validation.required' | translate }}
@@ -42,7 +42,7 @@
       <input
         id="websiteUrl"
         type="url"
-        pInputText
+        appUiInputText
         formControlName="websiteUrl"
         [placeholder]="'admin.parks.websitePlaceholder' | translate" />
     </div>
@@ -51,7 +51,7 @@
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label for="parkType">{{ 'admin.parks.type' | translate }}</label>
-      <p-select
+      <app-ui-select
         inputId="parkType"
         formControlName="type"
         [options]="parkTypeOptions"
@@ -69,12 +69,12 @@
             {{ 'admin.parks.typePlaceholder' | translate }}
           }
         </ng-template>
-      </p-select>
+      </app-ui-select>
     </div>
 
     <div class="field col-12 md:col-6">
       <label for="countryCode">{{ 'admin.parks.country' | translate }}</label>
-      <p-select
+      <app-ui-select
         inputId="countryCode"
         formControlName="countryCode"
         [options]="countryOptions"
@@ -84,14 +84,14 @@
         [filter]="true"
         [appendTo]="'body'"
         [placeholder]="'admin.parks.countryPlaceholder' | translate">
-      </p-select>
+      </app-ui-select>
     </div>
   </div>
 
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label for="parkStatus">{{ 'admin.parks.status' | translate }}</label>
-      <p-select
+      <app-ui-select
         inputId="parkStatus"
         formControlName="status"
         [options]="parkStatusOptions"
@@ -105,14 +105,14 @@
             {{ option.labelKey | translate }}
           }
         </ng-template>
-      </p-select>
+      </app-ui-select>
     </div>
   </div>
 
   <div class="grid formgrid">
     <div class="field col-12 md:col-3">
       <label for="openingDate">{{ 'admin.parks.openingDate' | translate }}</label>
-      <input id="openingDate" type="date" pInputText formControlName="openingDate" />
+      <input id="openingDate" type="date" appUiInputText formControlName="openingDate" />
     </div>
 
     <div class="field col-12 md:col-3">
@@ -120,14 +120,14 @@
       <input
         id="openingDateText"
         type="text"
-        pInputText
+        appUiInputText
         formControlName="openingDateText"
         [placeholder]="'admin.parks.openingDateTextPlaceholder' | translate" />
     </div>
 
     <div class="field col-12 md:col-3">
       <label for="closingDate">{{ 'admin.parks.closingDate' | translate }}</label>
-      <input id="closingDate" type="date" pInputText formControlName="closingDate" />
+      <input id="closingDate" type="date" appUiInputText formControlName="closingDate" />
     </div>
 
     <div class="field col-12 md:col-3">
@@ -135,7 +135,7 @@
       <input
         id="closingDateText"
         type="text"
-        pInputText
+        appUiInputText
         formControlName="closingDateText"
         [placeholder]="'admin.parks.closingDateTextPlaceholder' | translate" />
     </div>
@@ -176,7 +176,7 @@
     </div>
 
     <div class="visibility-card__toggle">
-      <p-toggleswitch formControlName="isVisible"></p-toggleswitch>
+      <app-ui-toggle-switch formControlName="isVisible"></app-ui-toggle-switch>
       @if (isVisibleControl?.value) {
         <span>{{ 'admin.parks.visible' | translate }}</span>
       }
@@ -194,7 +194,7 @@
     </div>
 
     <div class="visibility-card__toggle">
-      <p-toggleswitch formControlName="isFeaturedOnHome"></p-toggleswitch>
+      <app-ui-toggle-switch formControlName="isFeaturedOnHome"></app-ui-toggle-switch>
       @if (isFeaturedOnHomeControl?.value) {
         <span>{{ 'admin.parks.featuredOnHomeEnabled' | translate }}</span>
       }
@@ -208,13 +208,13 @@
     <div class="grid formgrid">
       <div class="field col-12 md:col-4">
         <label for="featuredHomeOrder">{{ 'admin.parks.featuredHomeOrder' | translate }}</label>
-        <p-inputnumber
+        <app-ui-input-number
           inputId="featuredHomeOrder"
           formControlName="featuredHomeOrder"
           [min]="1"
           [showButtons]="true"
           [placeholder]="'admin.parks.featuredHomeOrderPlaceholder' | translate">
-        </p-inputnumber>
+        </app-ui-input-number>
       </div>
     </div>
 
@@ -225,7 +225,7 @@
       </div>
 
       <div class="visibility-card__toggle">
-        <p-toggleswitch formControlName="isFeaturedOnHomeSponsored"></p-toggleswitch>
+        <app-ui-toggle-switch formControlName="isFeaturedOnHomeSponsored"></app-ui-toggle-switch>
         @if (isFeaturedOnHomeSponsoredControl?.value) {
           <span>{{ 'admin.parks.featuredSponsoredEnabled' | translate }}</span>
         }
@@ -238,7 +238,7 @@
 
   <div class="section-actions">
     <button
-      pButton
+      appUiButton
       type="button"
       class="p-button-secondary p-button-outlined"
       icon="pi pi-save"

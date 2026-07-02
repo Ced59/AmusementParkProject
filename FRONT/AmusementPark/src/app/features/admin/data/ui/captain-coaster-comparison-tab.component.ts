@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { Checkbox } from '@shared/primeless/checkbox';
-import { SelectModule } from '@shared/primeless/select';
-import { TableModule } from '@shared/primeless/table';
-import { Tag } from '@shared/primeless/tag';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { Card } from '@shared/ui/primitives/card';
+import { Checkbox } from '@shared/ui/primitives/checkbox';
+import { SelectModule } from '@shared/ui/primitives/select';
+import { TableModule } from '@shared/ui/primitives/table';
+import { Tag } from '@shared/ui/primitives/tag';
 
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { CaptainCoasterComparisonFacade } from '@features/admin/data/state/captain-coaster-comparison.facade';

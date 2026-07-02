@@ -23,7 +23,7 @@ import { AdminParkItemsIndexStateFacade } from '@features/admin/park-items/state
 import { AdminParkItemsIndexViewComponent } from './admin-park-items-index-view.component';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
-import { ButtonDirective } from '@shared/primeless/button';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   getParkItemCategoryTranslationKey,

@@ -11,13 +11,13 @@ import {
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { Card } from '@shared/primeless/card';
-import { InputText } from '@shared/primeless/inputtext';
-import { Select } from '@shared/primeless/select';
-import { TableModule } from '@shared/primeless/table';
-import { PrimeTemplate } from '@shared/primeless/api';
-import { Tag } from '@shared/primeless/tag';
-import { ButtonDirective } from '@shared/primeless/button';
+import { Card } from '@shared/ui/primitives/card';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { Select } from '@shared/ui/primitives/select';
+import { TableModule } from '@shared/ui/primitives/table';
+import { UiTemplate } from '@shared/ui/primitives/api';
+import { Tag } from '@shared/ui/primitives/tag';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
 import {
@@ -41,7 +41,7 @@ import {
   ParkItemContentBacklogFilter,
 } from '@data-access/park-items/park-items-api-endpoints';
 
-interface PrimeSortEventLike {
+interface TableSortEventLike {
   field?: string | string[] | null;
   order?: number | null;
 }
@@ -57,7 +57,7 @@ interface PrimeSortEventLike {
     InputText,
     Select,
     TableModule,
-    PrimeTemplate,
+    UiTemplate,
     Tag,
     ButtonDirective,
     RouterLink,
@@ -283,7 +283,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     });
   }
 
-  onSortChange(event: PrimeSortEventLike): void {
+  onSortChange(event: TableSortEventLike): void {
     const sortBy: ParkItemAdminSortField = this.mapTableSortField(event.field);
     const sortOrder: 1 | -1 = event.order === -1 ? -1 : 1;
 

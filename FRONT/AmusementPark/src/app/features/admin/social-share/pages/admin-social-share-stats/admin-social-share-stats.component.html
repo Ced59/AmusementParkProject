@@ -1,5 +1,5 @@
-<p-card styleClass="admin-list-card admin-social-share-card">
-  <ng-template pTemplate="header">
+<app-ui-card styleClass="admin-list-card admin-social-share-card">
+  <ng-template appUiTemplate="header">
     <div class="admin-list-header admin-social-share-header">
       <div>
         <span class="admin-kicker">{{ 'admin.socialShare.kicker' | translate }}</span>
@@ -18,17 +18,17 @@
   <form class="admin-social-share-filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
     <label>
       <span>{{ 'admin.socialShare.filters.fromUtc' | translate }}</span>
-      <input pInputText type="datetime-local" formControlName="fromUtc" />
+      <input appUiInputText type="datetime-local" formControlName="fromUtc" />
     </label>
 
     <label>
       <span>{{ 'admin.socialShare.filters.toUtc' | translate }}</span>
-      <input pInputText type="datetime-local" formControlName="toUtc" />
+      <input appUiInputText type="datetime-local" formControlName="toUtc" />
     </label>
 
     <div class="admin-social-share-filters__actions">
-      <button pButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
-      <button pButton type="button" class="p-button-secondary" icon="pi pi-filter-slash" [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
+      <button appUiButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
+      <button appUiButton type="button" class="p-button-secondary" icon="pi pi-filter-slash" [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
     </div>
   </form>
 
@@ -116,7 +116,7 @@
         @for (target of topTargets(); track trackByTarget($index, target)) {
           <article>
             <div>
-              <p-tag [value]="targetTypeLabel(target) | translate" severity="info"></p-tag>
+              <app-ui-tag [value]="targetTypeLabel(target) | translate" severity="info"></app-ui-tag>
               <h4>{{ targetLabel(target) }}</h4>
               <a [href]="target.url" target="_blank" rel="noopener noreferrer">{{ target.url }}</a>
             </div>
@@ -126,4 +126,4 @@
       </div>
     </section>
   </app-page-state>
-</p-card>
+</app-ui-card>

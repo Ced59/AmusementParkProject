@@ -1,10 +1,10 @@
 <div class="app-pagination" *ngIf="shouldRender">
-  <p-paginator
+  <app-ui-paginator
     [first]="resolvedFirst"
     [rows]="resolvedRows"
     [totalRecords]="resolvedTotalRecords"
     [rowsPerPageOptions]="rowsPerPageOptions"
     [pageLinkSize]="pageLinkSize"
     (onPageChange)="onPageChange($event)">
-  </p-paginator>
+  </app-ui-paginator>
 </div>

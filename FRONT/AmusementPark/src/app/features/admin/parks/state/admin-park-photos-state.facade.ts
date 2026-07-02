@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
-import { PaginatorState } from '@shared/primeless/paginator';
+import { PaginatorState } from '@shared/ui/primitives/paginator';
 import { TranslateService } from '@ngx-translate/core';
 
 import { ImageCategory } from '@app/models/images/image-category';

@@ -12,7 +12,7 @@
 <ng-container *ngIf="captainCoasterComparisonFacade.isDuplicateRow(row)">
   <div class="duplicate-panel">
     <div class="duplicate-panel__intro">
-      <p-tag value="Arbitrage requis" severity="danger"></p-tag>
+      <app-ui-tag value="Arbitrage requis" severity="danger"></app-ui-tag>
       <span>{{ row.externalVariants.length }} variante(s) conservent le même identifiant externe.</span>
     </div>
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 
 import {
   AdminParkItemSequentialNavigationState,
@@ -13,7 +13,7 @@ import {
     @if (shouldDisplay) {
       <div class="admin-park-item-sequential-navigation" aria-live="polite">
         <button
-          pButton
+          appUiButton
           type="button"
           class="p-button-sm p-button-outlined p-button-secondary"
           icon="pi pi-chevron-left"
@@ -34,7 +34,7 @@ import {
         </span>
 
         <button
-          pButton
+          appUiButton
           type="button"
           class="p-button-sm p-button-outlined p-button-secondary"
           icon="pi pi-chevron-right"

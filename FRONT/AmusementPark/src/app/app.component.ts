@@ -5,7 +5,7 @@ import { EMPTY, Observable, switchMap } from 'rxjs';
 import { catchError, filter, tap } from 'rxjs/operators';
 
 import { TranslationService } from '@app/services/translation.service';
-import { Toast } from '@shared/primeless/toast';
+import { Toast } from '@shared/ui/primitives/toast';
 import { CookieConsentBannerComponent } from '@ui/layouts/cookie-consent-banner/cookie-consent-banner.component';
 import { SeoService } from '@core/seo/seo.service';
 import { resolveLanguageFromActivatedRoute, resolveLanguageFromUrl } from '@shared/utils/routing/route-language.utils';

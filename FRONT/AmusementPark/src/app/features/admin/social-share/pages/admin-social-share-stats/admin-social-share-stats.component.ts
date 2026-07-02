@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { InputText } from '@shared/primeless/inputtext';
-import { PrimeTemplate } from '@shared/primeless/api';
-import { Tag } from '@shared/primeless/tag';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { Card } from '@shared/ui/primitives/card';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { UiTemplate } from '@shared/ui/primitives/api';
+import { Tag } from '@shared/ui/primitives/tag';
 
 import {
   SocialShareDailyStatsPoint,
@@ -39,7 +39,7 @@ interface AdminSocialShareChartPoint extends SocialShareDailyStatsPoint {
     ButtonDirective,
     Card,
     InputText,
-    PrimeTemplate,
+    UiTemplate,
     Tag,
     PageStateComponent
   ]

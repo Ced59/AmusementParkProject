@@ -159,7 +159,7 @@
   </div>
 </header>
 
-<p-dialog
+<app-ui-dialog
   [visible]="displayLanguageModal()"
   (visibleChange)="onLanguageDialogVisibleChanged($event)"
   [modal]="true"
@@ -202,9 +202,9 @@
       }
     </div>
   </section>
-</p-dialog>
+</app-ui-dialog>
 
-<p-dialog
+<app-ui-dialog
   [header]="'topbar.login_header' | translate"
   [visible]="displayLoginModal()"
   (visibleChange)="closeModal('loginModal')"
@@ -213,4 +213,4 @@
   [resizable]="false"
   [style]="{ width: 'min(96vw, 64rem)' }">
   <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
-</p-dialog>
+</app-ui-dialog>

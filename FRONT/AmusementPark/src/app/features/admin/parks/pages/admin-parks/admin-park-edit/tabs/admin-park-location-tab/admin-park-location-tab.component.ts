@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapMarker } from '@app/models/map/map-marker';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
-import { InputText } from '@shared/primeless/inputtext';
-import { ButtonDirective } from '@shared/primeless/button';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { ButtonDirective } from '@shared/ui/primitives/button';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

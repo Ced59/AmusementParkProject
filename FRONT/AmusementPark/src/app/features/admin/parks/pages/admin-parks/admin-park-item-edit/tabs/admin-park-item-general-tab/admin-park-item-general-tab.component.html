@@ -1,12 +1,12 @@
 <div class="tab-section" [formGroup]="form">
   <div class="field">
     <label for="name">{{ 'admin.parks.items.itemName' | translate }}</label>
-    <input id="name" pInputText formControlName="name" />
+    <input id="name" appUiInputText formControlName="name" />
   </div>
 
   <div class="field">
     <label>{{ 'admin.parks.items.park' | translate }}</label>
-    <p-select
+    <app-ui-select
       formControlName="parkId"
       [options]="parkOptions"
       optionLabel="label"
@@ -16,39 +16,39 @@
       [appendTo]="'body'"
       (onShow)="parkOptionsRequested.emit()"
       (onChange)="onParkSelectionChanged($event.value)">
-    </p-select>
+    </app-ui-select>
     <small class="text-color-secondary">{{ 'admin.parks.items.parkHelp' | translate }}</small>
   </div>
 
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label>{{ 'admin.parks.items.category' | translate }}</label>
-      <p-select formControlName="category" [options]="categoryOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
+      <app-ui-select formControlName="category" [options]="categoryOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
         <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
         <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
-      </p-select>
+      </app-ui-select>
     </div>
     <div class="field col-12 md:col-6">
       <label>{{ 'admin.parks.items.type' | translate }}</label>
-      <p-select formControlName="type" [options]="filteredTypeOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
+      <app-ui-select formControlName="type" [options]="filteredTypeOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
         <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
         <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
-      </p-select>
+      </app-ui-select>
     </div>
   </div>
 
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label>{{ 'admin.parks.items.subtype' | translate }}</label>
-      <input pInputText formControlName="subtype" />
+      <input appUiInputText formControlName="subtype" />
     </div>
     <div class="field col-12 md:col-6">
       <label>{{ 'admin.parks.items.zone' | translate }}</label>
-      <p-select formControlName="zoneId" [options]="zones" optionLabel="label" optionValue="id" [showClear]="true" [appendTo]="'body'"></p-select>
+      <app-ui-select formControlName="zoneId" [options]="zones" optionLabel="label" optionValue="id" [showClear]="true" [appendTo]="'body'"></app-ui-select>
     </div>
   </div>
 
-  <p-card styleClass="inner-card">
+  <app-ui-card styleClass="inner-card">
     <div class="section-header mb-3">
       <h3>{{ 'admin.parks.items.generalLocation' | translate }}</h3>
       <small class="text-color-secondary">{{ 'admin.parks.items.generalLocationHelp' | translate }}</small>
@@ -65,17 +65,17 @@
     <div class="grid formgrid mt-3">
       <div class="field col-12 md:col-6">
         <label>{{ 'admin.parks.latitude' | translate }}</label>
-        <input pInputText type="number" formControlName="latitude" step="0.000001" />
+        <input appUiInputText type="number" formControlName="latitude" step="0.000001" />
       </div>
       <div class="field col-12 md:col-6">
         <label>{{ 'admin.parks.longitude' | translate }}</label>
-        <input pInputText type="number" formControlName="longitude" step="0.000001" />
+        <input appUiInputText type="number" formControlName="longitude" step="0.000001" />
       </div>
     </div>
 
     <div class="section-inline-actions mt-2">
       <button
-        pButton
+        appUiButton
         type="button"
         class="p-button-outlined"
         icon="pi pi-map-marker"
@@ -84,7 +84,7 @@
         [label]="'admin.parks.items.editorActions.useParkLocation' | translate">
       </button>
     </div>
-  </p-card>
+  </app-ui-card>
 
   <div id="park-item-descriptions" class="field mt-3" tabindex="-1">
     <label>{{ 'admin.parks.descriptions.sectionTitle' | translate }}</label>
@@ -93,12 +93,12 @@
 
   <div class="field visibility-field">
     <label>{{ 'admin.parks.visibleField' | translate }}</label>
-    <p-toggleswitch formControlName="isVisible"></p-toggleswitch>
+    <app-ui-toggle-switch formControlName="isVisible"></app-ui-toggle-switch>
   </div>
 
   <div class="section-actions">
     <button
-      pButton
+      appUiButton
       type="button"
       class="p-button-secondary p-button-outlined"
       icon="pi pi-save"

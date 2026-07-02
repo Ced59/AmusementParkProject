@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, computed, effect } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/primeless/button';
-import { Card } from '@shared/primeless/card';
-import { Checkbox } from '@shared/primeless/checkbox';
-import { InputText } from '@shared/primeless/inputtext';
-import { PrimeTemplate } from '@shared/primeless/api';
-import { TableLazyLoadEvent, TableModule } from '@shared/primeless/table';
-import { Tag } from '@shared/primeless/tag';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import { Card } from '@shared/ui/primitives/card';
+import { Checkbox } from '@shared/ui/primitives/checkbox';
+import { InputText } from '@shared/ui/primitives/inputtext';
+import { UiTemplate } from '@shared/ui/primitives/api';
+import { TableLazyLoadEvent, TableModule } from '@shared/ui/primitives/table';
+import { Tag } from '@shared/ui/primitives/tag';
 
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { AdminSeoSitemapsStateFacade } from '@features/admin/seo-sitemaps/state/admin-seo-sitemaps-state.facade';
@@ -43,7 +43,7 @@ interface SeoSitemapSettingsForm {
     Card,
     Checkbox,
     InputText,
-    PrimeTemplate,
+    UiTemplate,
     TableModule,
     Tag,
     PageStateComponent

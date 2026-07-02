@@ -4,18 +4,18 @@
     <small class="text-color-secondary">{{ 'admin.parks.items.locationsHelp' | translate }}</small>
   </div>
 
-  <p-card styleClass="inner-card mb-3">
+  <app-ui-card styleClass="inner-card mb-3">
     <div class="locations-summary">
       <strong>{{ 'admin.parks.items.locationSummary' | translate:{ count: getDefinedLocationCount(), total: attractionLocationOptions.length } }}</strong>
       <span class="text-color-secondary">{{ 'admin.parks.items.locationSummaryHelp' | translate }}</span>
     </div>
-  </p-card>
+  </app-ui-card>
 
   <div class="locations-layout">
     <div class="locations-sidebar">
       @for (locationOption of attractionLocationOptions; track locationOption) {
         <div class="location-card-wrapper">
-          <p-card [styleClass]="selectedLocationKey === locationOption.key ? 'location-card location-card--active' : 'location-card'">
+          <app-ui-card [styleClass]="selectedLocationKey === locationOption.key ? 'location-card location-card--active' : 'location-card'">
             <div class="location-card__header">
               <div>
                 <h4>{{ locationOption.labelKey | translate }}</h4>
@@ -23,14 +23,14 @@
               </div>
               <div class="location-card__actions">
                 <button
-                  pButton
+                  appUiButton
                   type="button"
                   class="p-button-text p-button-sm"
                   icon="pi pi-map-marker"
                   (click)="selectedLocationKeyChange.emit(locationOption.key)">
                 </button>
                 <button
-                  pButton
+                  appUiButton
                   type="button"
                   class="p-button-text p-button-danger p-button-sm"
                   icon="pi pi-times"
@@ -44,13 +44,13 @@
                 {{ hasLocationPoint(locationOption.key) ? ('admin.parks.items.locationDefined' | translate) : ('admin.parks.items.locationNotDefined' | translate) }}
               </span>
             </div>
-          </p-card>
+          </app-ui-card>
         </div>
       }
     </div>
 
     <div class="locations-editor">
-      <p-card styleClass="inner-card">
+      <app-ui-card styleClass="inner-card">
         <div class="section-header mb-3">
           <h3>
             {{ 'admin.parks.items.locationEditorTitle' | translate:{ location: (getSelectedLocationLabelKey() | translate) } }}
@@ -68,7 +68,7 @@
 
         <div class="location-editor-actions mt-3">
           <button
-            pButton
+            appUiButton
             type="button"
             icon="pi pi-compass"
             class="p-button-secondary"
@@ -76,7 +76,7 @@
             [label]="'admin.parks.items.useGeneralLocation' | translate">
           </button>
           <button
-            pButton
+            appUiButton
             type="button"
             icon="pi pi-trash"
             class="p-button-outlined p-button-danger"
@@ -89,20 +89,20 @@
         <div class="grid formgrid mt-3" [formGroupName]="selectedLocationKey">
           <div class="field col-12 md:col-6">
             <label>{{ 'admin.parks.latitude' | translate }}</label>
-            <input pInputText type="number" formControlName="latitude" step="0.000001" />
+            <input appUiInputText type="number" formControlName="latitude" step="0.000001" />
           </div>
           <div class="field col-12 md:col-6">
             <label>{{ 'admin.parks.longitude' | translate }}</label>
-            <input pInputText type="number" formControlName="longitude" step="0.000001" />
+            <input appUiInputText type="number" formControlName="longitude" step="0.000001" />
           </div>
         </div>
-      </p-card>
+      </app-ui-card>
     </div>
   </div>
 
   <div class="section-actions">
     <button
-      pButton
+      appUiButton
       type="button"
       class="p-button-secondary p-button-outlined"
       icon="pi pi-save"
