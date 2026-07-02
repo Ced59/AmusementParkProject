@@ -1,6 +1,20 @@
 {
-  "version": "3.1.33",
+  "version": "3.1.34",
   "history": [
+    {
+      "version": "3.1.34",
+      "releasedAt": "2026-07-02",
+      "labels": {
+        "fr": "Le déploiement reste plus souple.",
+        "en": "Deployment stays more flexible.",
+        "de": "Das Deployment bleibt flexibler.",
+        "nl": "De deployment blijft flexibeler.",
+        "it": "Il deploy resta più flessibile.",
+        "es": "El despliegue sigue siendo más flexible.",
+        "pl": "Wdrożenie pozostaje bardziej elastyczne.",
+        "pt": "A publicação continua mais flexível."
+      }
+    },
     {
       "version": "3.1.33",
       "releasedAt": "2026-07-02",
