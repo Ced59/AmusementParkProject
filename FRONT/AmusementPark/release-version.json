@@ -1,6 +1,20 @@
 {
-  "version": "3.1.40",
+  "version": "3.1.41",
   "history": [
+    {
+      "version": "3.1.41",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les mises à jour de zones restent plus justes.",
+        "en": "Zone updates stay more accurate.",
+        "de": "Zonenaktualisierungen bleiben genauer.",
+        "nl": "Zone-updates blijven nauwkeuriger.",
+        "it": "Gli aggiornamenti delle zone restano più precisi.",
+        "es": "Las actualizaciones de zonas siguen siendo más precisas.",
+        "pl": "Aktualizacje stref pozostają dokładniejsze.",
+        "pt": "As atualizações de zonas continuam mais precisas."
+      }
+    },
     {
       "version": "3.1.40",
       "releasedAt": "2026-07-03",
