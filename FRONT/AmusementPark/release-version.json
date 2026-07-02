@@ -1,6 +1,20 @@
 {
-  "version": "3.1.35",
+  "version": "3.1.36",
   "history": [
+    {
+      "version": "3.1.36",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le plan du site aide mieux les moteurs.",
+        "en": "The sitemap helps search engines better.",
+        "de": "Die Sitemap hilft Suchmaschinen besser.",
+        "nl": "De sitemap helpt zoekmachines beter.",
+        "it": "La mappa del sito aiuta meglio i motori.",
+        "es": "El mapa del sitio ayuda mejor a buscadores.",
+        "pl": "Mapa strony lepiej pomaga wyszukiwarkom.",
+        "pt": "O mapa do site ajuda melhor os motores."
+      }
+    },
     {
       "version": "3.1.35",
       "releasedAt": "2026-07-02",

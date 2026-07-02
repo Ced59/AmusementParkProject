@@ -3,4 +3,5 @@ export interface PublicHtmlSitemapNode {
   readonly label: string;
   readonly relativeUrl: string | null;
   readonly hasChildren: boolean;
+  readonly children?: readonly PublicHtmlSitemapNode[];
 }

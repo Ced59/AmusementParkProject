@@ -7,5 +7,6 @@ namespace AmusementPark.Application.Features.Seo.Queries;
 public sealed record GetPublicHtmlSitemapNodesQuery(
     string Language,
     string? ParentNodeId,
-    IReadOnlyCollection<string> SupportedLanguages)
+    IReadOnlyCollection<string> SupportedLanguages,
+    bool IncludeDescendants = false)
     : IQuery<ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>>;

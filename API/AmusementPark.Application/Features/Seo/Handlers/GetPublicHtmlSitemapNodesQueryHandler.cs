@@ -71,8 +71,22 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
                 ApplicationError.Validation("seo.html-sitemap.language.invalid", "The requested language is not served publicly."));
         }
 
-        string parentNodeId = string.IsNullOrWhiteSpace(query.ParentNodeId) ? "root" : query.ParentNodeId.Trim();
-        IReadOnlyCollection<PublicHtmlSitemapNode> nodes = parentNodeId switch
+        string parentNodeId = NormalizeParentNodeId(query.ParentNodeId);
+        IReadOnlyCollection<PublicHtmlSitemapNode> nodes = await this.BuildNodesForParentAsync(language, parentNodeId, cancellationToken);
+        if (query.IncludeDescendants)
+        {
+            nodes = await this.BuildNodesWithDescendantsAsync(language, nodes, cancellationToken);
+        }
+
+        return ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>.Success(nodes);
+    }
+
+    private async Task<IReadOnlyCollection<PublicHtmlSitemapNode>> BuildNodesForParentAsync(
+        string language,
+        string parentNodeId,
+        CancellationToken cancellationToken)
+    {
+        return parentNodeId switch
         {
             "root" => BuildRootNodes(language),
             "parks" => await this.BuildParkNodesAsync(language, cancellationToken),
@@ -83,8 +97,35 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             "reference-manufacturers" => await this.BuildManufacturerNodesAsync(language, cancellationToken),
             _ => await this.BuildDynamicNodesAsync(language, parentNodeId, cancellationToken),
         };
+    }
 
-        return ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>.Success(nodes);
+    private async Task<IReadOnlyCollection<PublicHtmlSitemapNode>> BuildNodesWithDescendantsAsync(
+        string language,
+        IReadOnlyCollection<PublicHtmlSitemapNode> nodes,
+        CancellationToken cancellationToken)
+    {
+        List<PublicHtmlSitemapNode> enrichedNodes = new List<PublicHtmlSitemapNode>(nodes.Count);
+        foreach (PublicHtmlSitemapNode node in nodes)
+        {
+            if (!node.HasChildren)
+            {
+                enrichedNodes.Add(node);
+                continue;
+            }
+
+            IReadOnlyCollection<PublicHtmlSitemapNode> childNodes = await this.BuildNodesForParentAsync(language, node.Id, cancellationToken);
+            IReadOnlyCollection<PublicHtmlSitemapNode> descendantNodes = await this.BuildNodesWithDescendantsAsync(language, childNodes, cancellationToken);
+            enrichedNodes.Add(new PublicHtmlSitemapNode
+            {
+                Id = node.Id,
+                Label = node.Label,
+                RelativeUrl = node.RelativeUrl,
+                HasChildren = node.HasChildren,
+                Children = descendantNodes,
+            });
+        }
+
+        return enrichedNodes;
     }
 
     private async Task<IReadOnlyCollection<PublicHtmlSitemapNode>> BuildDynamicNodesAsync(
@@ -158,5 +199,10 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             CreateLeaf("privacy", Label(language, "privacy"), $"/{language}/privacy"),
             CreateLeaf("sitemap", Label(language, "sitemap"), $"/{language}/sitemap"),
         };
+    }
+
+    private static string NormalizeParentNodeId(string? parentNodeId)
+    {
+        return string.IsNullOrWhiteSpace(parentNodeId) ? "root" : parentNodeId.Trim();
     }
 }

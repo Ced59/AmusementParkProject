@@ -21,6 +21,7 @@ using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.TechnicalPages;
 using AmusementPark.Core.Domain.Videos;
 using Moq;
 using Xunit;
@@ -59,6 +60,137 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "seo.html-sitemap.language.invalid");
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenIncludeDescendants_ShouldEmbedPublicChildLinks()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Magic Park",
+            IsVisible = true,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetPageAsync(
+                1,
+                It.IsAny<int>(),
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                ClosedEntityFilter.OpenOnly,
+                It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Default,
+                false,
+                null))
+            .ReturnsAsync(new PagedResult<Park>(new[] { park }, 1, 500, 1));
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        itemRepository
+            .Setup(repository => repository.GetPublicPageByParkIdAsync(
+                1,
+                It.IsAny<int>(),
+                "park-1",
+                null,
+                false,
+                ClosedEntityFilter.OpenOnly,
+                null,
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<ParkItem>(Array.Empty<ParkItem>(), 1, 500, 0));
+        itemRepository
+            .Setup(repository => repository.GetPublicPageByParkIdAsync(
+                1,
+                It.IsAny<int>(),
+                "park-1",
+                null,
+                false,
+                ClosedEntityFilter.All,
+                null,
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<ParkItem>(Array.Empty<ParkItem>(), 1, 500, 0));
+
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        openingHoursRepository
+            .Setup(repository => repository.GetSummariesByParkIdsAsync(It.IsAny<IReadOnlyCollection<string>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>(StringComparer.OrdinalIgnoreCase));
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetPageAsync(1, 1, It.IsAny<ImageSearchCriteria>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<Image>(Array.Empty<Image>(), 1, 1, 0));
+
+        Mock<IVideoRepository> videoRepository = new Mock<IVideoRepository>(MockBehavior.Strict);
+        videoRepository
+            .Setup(repository => repository.GetPageAsync(1, It.IsAny<int>(), It.IsAny<VideoSearchCriteria>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<Video>(Array.Empty<Video>(), 1, 1, 0));
+
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+
+        Mock<IParkOperatorRepository> operatorRepository = new Mock<IParkOperatorRepository>(MockBehavior.Strict);
+        operatorRepository
+            .Setup(repository => repository.GetAllAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkOperator>());
+
+        Mock<IParkFounderRepository> founderRepository = new Mock<IParkFounderRepository>(MockBehavior.Strict);
+        founderRepository
+            .Setup(repository => repository.GetAllAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkFounder>());
+
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+        manufacturerRepository
+            .Setup(repository => repository.GetAllAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<AttractionManufacturer>());
+
+        Mock<ITechnicalPageRepository> technicalPageRepository = new Mock<ITechnicalPageRepository>(MockBehavior.Strict);
+        technicalPageRepository
+            .Setup(repository => repository.GetPublicLinkIndexAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<TechnicalPage>());
+
+        GetPublicHtmlSitemapNodesQueryHandler handler = CreateHandler(
+            parkRepository,
+            itemRepository,
+            openingHoursRepository,
+            imageRepository,
+            videoRepository,
+            historyRepository,
+            parkOperatorRepository: operatorRepository,
+            parkFounderRepository: founderRepository,
+            attractionManufacturerRepository: manufacturerRepository,
+            technicalPageRepository: technicalPageRepository);
+
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await handler.HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery("fr", null, new[] { "fr", "en" }, IncludeDescendants: true),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        PublicHtmlSitemapNode parksNode = Assert.Single(result.Value, static node => node.Id == "parks");
+        IReadOnlyCollection<PublicHtmlSitemapNode> parkChildren = parksNode.Children ?? throw new InvalidOperationException();
+        PublicHtmlSitemapNode parkNode = Assert.Single(parkChildren);
+        Assert.Equal("park:park-1", parkNode.Id);
+        Assert.Equal("/fr/park/park-1/magic-park", parkNode.RelativeUrl);
+        Assert.NotNull(parkNode.Children);
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+        openingHoursRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        videoRepository.VerifyAll();
+        operatorRepository.VerifyAll();
+        founderRepository.VerifyAll();
+        manufacturerRepository.VerifyAll();
+        technicalPageRepository.VerifyAll();
     }
 
     [Fact]
@@ -191,19 +323,24 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Mock<IParkOpeningHoursRepository> openingHoursRepository,
         Mock<IImageRepository> imageRepository,
         Mock<IVideoRepository> videoRepository,
-        Mock<IHistoryEventRepository> historyEventRepository)
+        Mock<IHistoryEventRepository> historyEventRepository,
+        Mock<IParkZoneRepository>? parkZoneRepository = null,
+        Mock<IParkOperatorRepository>? parkOperatorRepository = null,
+        Mock<IParkFounderRepository>? parkFounderRepository = null,
+        Mock<IAttractionManufacturerRepository>? attractionManufacturerRepository = null,
+        Mock<ITechnicalPageRepository>? technicalPageRepository = null)
     {
         return new GetPublicHtmlSitemapNodesQueryHandler(
             parkRepository.Object,
             parkItemRepository.Object,
-            Mock.Of<IParkZoneRepository>(),
+            parkZoneRepository?.Object ?? Mock.Of<IParkZoneRepository>(),
             openingHoursRepository.Object,
             imageRepository.Object,
             videoRepository.Object,
             historyEventRepository.Object,
-            Mock.Of<IParkOperatorRepository>(),
-            Mock.Of<IParkFounderRepository>(),
-            Mock.Of<IAttractionManufacturerRepository>(),
-            Mock.Of<ITechnicalPageRepository>());
+            parkOperatorRepository?.Object ?? Mock.Of<IParkOperatorRepository>(),
+            parkFounderRepository?.Object ?? Mock.Of<IParkFounderRepository>(),
+            attractionManufacturerRepository?.Object ?? Mock.Of<IAttractionManufacturerRepository>(),
+            technicalPageRepository?.Object ?? Mock.Of<ITechnicalPageRepository>());
     }
 }

@@ -121,10 +121,11 @@ public sealed class SeoController : ControllerBase
     public async Task<IActionResult> GetPublicHtmlSitemapNodesAsync(
         [FromQuery] string language,
         [FromQuery] string? parentNodeId,
+        [FromQuery] bool includeDescendants = false,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await this.getPublicHtmlSitemapNodesQueryHandler.HandleAsync(
-            new GetPublicHtmlSitemapNodesQuery(language, parentNodeId, this.settings.SupportedLanguages),
+            new GetPublicHtmlSitemapNodesQuery(language, parentNodeId, this.settings.SupportedLanguages, includeDescendants),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
