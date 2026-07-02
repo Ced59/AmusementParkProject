@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnDestroy } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { MessageService, ToastMessage } from './api';
 
@@ -18,13 +18,24 @@ import { MessageService, ToastMessage } from './api';
 export class Toast implements OnDestroy {
   @Input() position: string = 'bottom-right';
   messages: ToastMessage[] = [];
-  private readonly timers: number[] = [];
+  private readonly timers: Map<number, ReturnType<typeof setTimeout>> = new Map<number, ReturnType<typeof setTimeout>>();
   private readonly subscription = this.messageService.messages$.subscribe((messages: ToastMessage[]): void => {
     this.messages = messages;
-    const latestMessage: ToastMessage | undefined = messages[messages.length - 1];
-    if (latestMessage?.id) {
-      const timeoutId: number = window.setTimeout((): void => this.messageService.remove(latestMessage.id ?? 0), 5000);
-      this.timers.push(timeoutId);
+    this.changeDetectorRef.markForCheck();
+
+    const activeIds: Set<number> = new Set<number>();
+    for (const message of messages) {
+      if (message.id) {
+        activeIds.add(message.id);
+        this.scheduleDismiss(message.id);
+      }
+    }
+
+    for (const [id, timer] of this.timers) {
+      if (!activeIds.has(id)) {
+        clearTimeout(timer);
+        this.timers.delete(id);
+      }
     }
   });
 
@@ -32,19 +43,35 @@ export class Toast implements OnDestroy {
     return `p-toast p-toast-${this.position}`;
   }
 
-  constructor(private readonly messageService: MessageService) {
+  constructor(
+    private readonly messageService: MessageService,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    for (const timer of this.timers) {
-      window.clearTimeout(timer);
+    for (const timer of this.timers.values()) {
+      clearTimeout(timer);
     }
+    this.timers.clear();
   }
 
   dismiss(message: ToastMessage): void {
     if (message.id) {
       this.messageService.remove(message.id);
     }
+  }
+
+  private scheduleDismiss(id: number): void {
+    if (this.timers.has(id) || typeof setTimeout !== 'function') {
+      return;
+    }
+
+    const timeoutId: ReturnType<typeof setTimeout> = setTimeout((): void => {
+      this.timers.delete(id);
+      this.messageService.remove(id);
+    }, 5000);
+    this.timers.set(id, timeoutId);
   }
 }

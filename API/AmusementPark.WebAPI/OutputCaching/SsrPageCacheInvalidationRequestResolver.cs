@@ -825,6 +825,11 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
 
     private static bool ContainsHardPurgeSignal(ParkGraphUpsertChangeDto change)
     {
+        if (string.Equals(change.ChangeType, "Deleted", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
         return change.Fields.Any(static field =>
             (string.Equals(field.Field, "isVisible", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, "false", StringComparison.OrdinalIgnoreCase))
             || (string.Equals(field.Field, "adminReviewStatus", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, AdminReviewStatus.NotRelevant.ToString(), StringComparison.OrdinalIgnoreCase)));

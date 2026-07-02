@@ -128,6 +128,35 @@ public sealed class InvalidatePublicCachesFilterTests
     }
 
     [Fact]
+    public async Task OnActionExecutionAsync_WhenOutputCacheEvictionIsDisabledButHardPurgeIsResolved_ShouldEvictTags()
+    {
+        SsrPageCacheInvalidationRequest capturedRequest = null!;
+        Mock<IOutputCacheStore> outputCacheStore = CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicDataTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        ssrPageCacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
+            .Callback<SsrPageCacheInvalidationRequest, CancellationToken>((request, _) => capturedRequest = request)
+            .Returns(Task.CompletedTask);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver(new SsrPageCacheInvalidationRequest
+        {
+            Paths = new[] { "/fr/home" },
+            AllowStale = false,
+            Refresh = false,
+        });
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Post,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.Data) { EvictOutputCache = false });
+
+        await filter.OnActionExecutionAsync(context, () => Task.FromResult(CreateExecutedContext(context)));
+
+        Assert.False(capturedRequest.AllowStale);
+        Assert.False(capturedRequest.Refresh);
+        outputCacheStore.VerifyAll();
+        ssrPageCacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
     public async Task OnActionExecutionAsync_WhenRequestIsAborted_ShouldUseIndependentInvalidationToken()
     {
         CancellationToken outputCacheCancellationToken = CancellationToken.None;
