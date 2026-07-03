@@ -12,7 +12,7 @@ public interface IParkItemRepository
 {
     Task<IReadOnlyCollection<ParkItem>> GetByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<ParkItem>> GetByParkIdAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
-    Task<PagedResult<ParkItem>> GetPublicPageByParkIdAsync(int page, int pageSize, string parkId, string? search, bool includeHidden, ClosedEntityFilter closedFilter, ParkItemCategory? category, ParkItemType? type, string? zoneId, CancellationToken cancellationToken);
+    Task<PagedResult<ParkItem>> GetPublicPageByParkIdAsync(int page, int pageSize, string parkId, string? search, bool includeHidden, ClosedEntityFilter closedFilter, ParkItemCategory? category, ParkItemType? type, string? zoneId, IReadOnlyCollection<string> manufacturerIds, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken);
     Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken);
     Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);

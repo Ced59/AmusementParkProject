@@ -433,13 +433,17 @@ export class ParkItemsPageStateFacade {
           ? manufacturersById[item.attractionDetails.manufacturerId] ?? null
           : null;
         const zoneName: string | null = item.zoneId ? zonesById[item.zoneId] ?? null : null;
+        const descriptions: string[] = (item.descriptions ?? [])
+          .map(description => description.value)
+          .filter((value: string | null | undefined): value is string => !!value);
         const haystack: string = [
           item.name,
           item.subtype,
           manufacturerName,
           item.attractionDetails?.model,
           item.attractionDetails?.status,
-          zoneName
+          zoneName,
+          ...descriptions
         ]
           .filter((value: string | null | undefined): value is string => !!value)
           .join(' ')
@@ -554,8 +558,8 @@ function mapParkMapItemToParkItem(
     subtype: item.subtype ?? null,
     latitude,
     longitude,
-    descriptions: [],
-    attractionDetails: null,
+    descriptions: item.descriptions ?? [],
+    attractionDetails: item.attractionDetails ?? null,
     attractionLocations: null,
     isVisible: true,
     adminReviewStatus: 'Validated'

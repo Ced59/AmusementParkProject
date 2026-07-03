@@ -299,7 +299,7 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
             return this.GetByParkIdAsync(parkId, includeHidden, cancellationToken);
         }
 
-        public Task<PagedResult<ParkItem>> GetPublicPageByParkIdAsync(int page, int pageSize, string parkId, string? search, bool includeHidden, ClosedEntityFilter closedFilter, ParkItemCategory? category, ParkItemType? type, string? zoneId, CancellationToken cancellationToken)
+        public Task<PagedResult<ParkItem>> GetPublicPageByParkIdAsync(int page, int pageSize, string parkId, string? search, bool includeHidden, ClosedEntityFilter closedFilter, ParkItemCategory? category, ParkItemType? type, string? zoneId, IReadOnlyCollection<string> manufacturerIds, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

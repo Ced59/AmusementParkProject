@@ -29,6 +29,11 @@ public interface IAttractionManufacturerRepository
     Task<IReadOnlyCollection<AttractionManufacturer>> GetByIdsAsync(IReadOnlyCollection<string> ids, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Recherche des identifiants de constructeurs par nom.
+    /// </summary>
+    Task<IReadOnlyCollection<string>> SearchIdsAsync(string search, bool includeHidden, int limit, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Crée un attraction manufacturer.
     /// </summary>
     Task<AttractionManufacturer> CreateAsync(AttractionManufacturer entity, CancellationToken cancellationToken);

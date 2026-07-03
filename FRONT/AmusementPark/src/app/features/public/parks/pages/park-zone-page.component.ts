@@ -75,7 +75,7 @@ export class ParkZonePageComponent implements OnInit {
       const zoneId: string | null = params.get('zoneId');
 
       this.currentZoneId = zoneId;
-      this.stateFacade.setSelectedZone(zoneId);
+      this.stateFacade.setSelectedZone(zoneId, parkId);
 
       if (!parkId || parkId === this.currentParkId) {
         return;

@@ -174,12 +174,13 @@ export class ParkZonesPageStateFacade {
     this.currentLanguageSignal.set(language || 'en');
   }
 
-  setSelectedZone(zoneId: string | null): void {
+  setSelectedZone(zoneId: string | null, routeParkId: string | null = null): void {
     const previousZoneId: string | null = this.selectedZoneIdSignal();
     this.selectedZoneIdSignal.set(zoneId);
+    const currentParkId: string | null | undefined = this.park()?.id;
 
-    if (previousZoneId !== zoneId && this.park()?.id) {
-      this.reloadZoneItemsPage();
+    if (previousZoneId !== zoneId && currentParkId && (!routeParkId || routeParkId === currentParkId)) {
+      this.reloadZoneItemsPage(currentParkId);
     }
   }
 
@@ -218,11 +219,8 @@ export class ParkZonesPageStateFacade {
     });
   }
 
-  private reloadZoneItemsPage(): void {
-    const parkId: string | null | undefined = this.park()?.id;
-    const previousData: ParkZonesPageSourceData | undefined = this.screenStateStore.data();
-
-    if (!parkId || !previousData) {
+  private reloadZoneItemsPage(parkId: string): void {
+    if (!this.screenStateStore.data()) {
       return;
     }
 
@@ -234,8 +232,13 @@ export class ParkZonesPageStateFacade {
       anonymousHttpOptions()
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (itemsPage: PagedResult<ParkItem>) => {
+        const currentData: ParkZonesPageSourceData | undefined = this.screenStateStore.data();
+        if (!currentData || currentData.park.id !== parkId) {
+          return;
+        }
+
         this.screenStateStore.setReady({
-          ...previousData,
+          ...currentData,
           itemsPage
         });
       },
@@ -384,8 +387,8 @@ function mapParkMapItemToParkItem(
     subtype: item.subtype ?? null,
     latitude,
     longitude,
-    descriptions: [],
-    attractionDetails: null,
+    descriptions: item.descriptions ?? [],
+    attractionDetails: item.attractionDetails ?? null,
     attractionLocations: null,
     isVisible: true,
     adminReviewStatus: 'Validated'

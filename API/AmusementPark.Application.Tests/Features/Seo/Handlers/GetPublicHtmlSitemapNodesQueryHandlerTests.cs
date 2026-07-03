@@ -158,6 +158,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
                 null,
                 null,
                 null,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new PagedResult<ParkItem>(Array.Empty<ParkItem>(), 1, 500, 0));
         itemRepository
@@ -171,6 +172,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
                 null,
                 null,
                 null,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new PagedResult<ParkItem>(new[] { closedItem }, 1, 500, 1));
 

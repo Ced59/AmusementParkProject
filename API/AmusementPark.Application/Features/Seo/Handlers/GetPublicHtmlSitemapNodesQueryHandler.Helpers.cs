@@ -41,6 +41,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
                 category: null,
                 type: null,
                 zoneId: null,
+                manufacturerIds: Array.Empty<string>(),
                 cancellationToken);
 
             items.AddRange(page.Items.Where(ParkItemsSitemapSectionProvider.IsPublicItem));
@@ -75,6 +76,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
                 category: null,
                 type: null,
                 zoneId: null,
+                manufacturerIds: Array.Empty<string>(),
                 cancellationToken);
 
             items.AddRange(page.Items.Where(HistorySitemapCandidateResolver.IsPublicHistoryItem));

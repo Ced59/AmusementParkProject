@@ -65,9 +65,10 @@ public sealed class ParkItemRepository : IParkItemRepository
         ParkItemCategory? category,
         ParkItemType? type,
         string? zoneId,
+        IReadOnlyCollection<string> manufacturerIds,
         CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkItemDocument> filter = BuildPublicParkItemsFilter(parkId, search, includeHidden, closedFilter, category, type, zoneId);
+        FilterDefinition<ParkItemDocument> filter = BuildPublicParkItemsFilter(parkId, search, includeHidden, closedFilter, category, type, zoneId, manufacturerIds);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
@@ -756,7 +757,8 @@ public sealed class ParkItemRepository : IParkItemRepository
         ClosedEntityFilter closedFilter,
         ParkItemCategory? category,
         ParkItemType? type,
-        string? zoneId)
+        string? zoneId,
+        IReadOnlyCollection<string> manufacturerIds)
     {
         FilterDefinition<ParkItemDocument> filter =
             Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
@@ -788,12 +790,27 @@ public sealed class ParkItemRepository : IParkItemRepository
         {
             string escapedSearch = Regex.Escape(search.Trim());
             BsonRegularExpression regex = new BsonRegularExpression(escapedSearch, "i");
-            filter &= Builders<ParkItemDocument>.Filter.Or(
+            List<FilterDefinition<ParkItemDocument>> searchFilters = new List<FilterDefinition<ParkItemDocument>>
+            {
                 Builders<ParkItemDocument>.Filter.Regex(document => document.Name, regex),
                 Builders<ParkItemDocument>.Filter.Regex(document => document.Subtype, regex),
                 Builders<ParkItemDocument>.Filter.Regex("descriptions.value", regex),
                 Builders<ParkItemDocument>.Filter.Regex("attractionDetails.model", regex),
-                Builders<ParkItemDocument>.Filter.Regex("attractionDetails.status", regex));
+                Builders<ParkItemDocument>.Filter.Regex("attractionDetails.status", regex),
+            };
+
+            List<string> normalizedManufacturerIds = manufacturerIds
+                .Where(static manufacturerId => !string.IsNullOrWhiteSpace(manufacturerId))
+                .Select(static manufacturerId => manufacturerId.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+
+            if (normalizedManufacturerIds.Count > 0)
+            {
+                searchFilters.Add(Builders<ParkItemDocument>.Filter.In("attractionDetails.manufacturerId", normalizedManufacturerIds));
+            }
+
+            filter &= Builders<ParkItemDocument>.Filter.Or(searchFilters);
         }
 
         return filter;
