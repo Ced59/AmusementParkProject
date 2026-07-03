@@ -60,7 +60,7 @@ internal static class ParksHttpMappers
             CountryCode = NormalizeOptionalString(dto.CountryCode),
             Type = dto.Type.ToDomain(),
             AudienceClassification = dto.AudienceClassification.ToDomain(),
-            Status = dto.Status.ToDomain(),
+            Status = dto.Status.HasValue ? dto.Status.Value.ToDomain() : ParkStatus.Operating,
             OpeningDate = dto.OpeningDate?.Date,
             ClosingDate = dto.ClosingDate?.Date,
             OpeningDateText = NormalizeOptionalString(dto.OpeningDateText),

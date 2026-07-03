@@ -17,7 +17,7 @@ public sealed class ParkUpdateDto
 
     public ParkAudienceClassificationDto? AudienceClassification { get; set; }
 
-    public ParkStatusDto Status { get; set; } = ParkStatusDto.Operating;
+    public ParkStatusDto? Status { get; set; }
 
     public DateTime? OpeningDate { get; set; }
 

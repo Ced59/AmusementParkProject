@@ -387,7 +387,9 @@ public sealed class ParksController : ControllerBase
     [ProducesResponseType(typeof(ParkDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateParkAsync([FromRoute] string id, [FromBody] ParkUpdateDto park, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<Park> result = await this.updateParkCommandHandler.HandleAsync(new UpdateParkCommand(id, park.ToDomain()), cancellationToken);
+        ApplicationResult<Park> result = await this.updateParkCommandHandler.HandleAsync(
+            new UpdateParkCommand(id, park.ToDomain(), PreserveExistingStatus: !park.Status.HasValue),
+            cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);

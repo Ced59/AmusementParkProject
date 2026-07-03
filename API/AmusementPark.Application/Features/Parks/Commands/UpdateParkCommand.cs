@@ -9,4 +9,5 @@ namespace AmusementPark.Application.Features.Parks.Commands;
 /// </summary>
 /// <param name="ParkId">Identifiant du parc.</param>
 /// <param name="Park">État cible du parc.</param>
-public sealed record UpdateParkCommand(string ParkId, Park Park) : ICommand<ApplicationResult<Park>>;
+/// <param name="PreserveExistingStatus">Indique si le statut courant doit être conservé.</param>
+public sealed record UpdateParkCommand(string ParkId, Park Park, bool PreserveExistingStatus = false) : ICommand<ApplicationResult<Park>>;
