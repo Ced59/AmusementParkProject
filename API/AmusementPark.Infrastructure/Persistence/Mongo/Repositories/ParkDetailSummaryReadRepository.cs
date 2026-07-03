@@ -224,7 +224,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
     {
         FilterDefinition<ParkItemDocument> closedFilterDefinition = Builders<ParkItemDocument>.Filter.Regex(
             "attractionDetails.status",
-            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermedefinitivement)$", "i"));
+            new BsonRegularExpression("^(closed\\s*definitively|closed-definitively|closed_definitively|closeddefinitively|permanently\\s*closed|permanently-closed|permanently_closed|permanentlyclosed|definitively\\s*closed|definitively-closed|definitively_closed|definitivelyclosed|ferme\\s*definitivement|fermé\\s*définitivement|fermedefinitivement)$", "i"));
 
         return closedFilter switch
         {

@@ -1,6 +1,20 @@
 {
-  "version": "3.1.67",
+  "version": "3.1.68",
   "history": [
+    {
+      "version": "3.1.68",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les statuts des parcs restent plus fiables.",
+        "en": "Park statuses stay more reliable.",
+        "de": "Parkstatus bleiben zuverlässiger.",
+        "nl": "Parkstatussen blijven betrouwbaarder.",
+        "it": "Gli stati dei parchi restano più affidabili.",
+        "es": "Los estados de los parques siguen siendo más fiables.",
+        "pl": "Statusy parków pozostają bardziej niezawodne.",
+        "pt": "Os estados dos parques continuam mais fiáveis."
+      }
+    },
     {
       "version": "3.1.67",
       "releasedAt": "2026-07-03",
