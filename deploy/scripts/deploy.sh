@@ -18,6 +18,7 @@ npm_docker_network_name="${NPM_DOCKER_NETWORK_NAME:-nginx-proxy-network}"
 public_domain="${PUBLIC_DOMAIN:-amusement-parks.fun}"
 deploy_lock_file="${DEPLOY_LOCK_FILE:-/tmp/amusementpark-deploy.lock}"
 deploy_lock_timeout_seconds="${DEPLOY_LOCK_TIMEOUT_SECONDS:-900}"
+deploy_lock_wait_log_interval_seconds="${DEPLOY_LOCK_WAIT_LOG_INTERVAL_SECONDS:-30}"
 deploy_compose_log_timeout_seconds="${DEPLOY_COMPOSE_LOG_TIMEOUT_SECONDS:-30}"
 deploy_compose_up_timeout_seconds="${DEPLOY_COMPOSE_UP_TIMEOUT_SECONDS:-300}"
 deploy_docker_prune_timeout_seconds="${DEPLOY_DOCKER_PRUNE_TIMEOUT_SECONDS:-120}"
@@ -57,12 +58,38 @@ if ! command -v flock >/dev/null 2>&1; then
 fi
 
 exec 9>"${deploy_lock_file}"
-echo "Acquiring deployment lock ${deploy_lock_file}..."
-if ! flock -w "${deploy_lock_timeout_seconds}" 9; then
-  echo "Timed out while waiting for deployment lock after ${deploy_lock_timeout_seconds}s." >&2
-  exit 1
-fi
-echo "Deployment lock acquired."
+
+acquire_deployment_lock() {
+  local started_seconds="${SECONDS}"
+  local elapsed_seconds=0
+  local sleep_seconds=0
+
+  echo "Acquiring deployment lock ${deploy_lock_file}..."
+
+  while ! flock -n 9; do
+    elapsed_seconds=$((SECONDS - started_seconds))
+
+    if [ "${elapsed_seconds}" -ge "${deploy_lock_timeout_seconds}" ]; then
+      echo "Timed out while waiting for deployment lock after ${deploy_lock_timeout_seconds}s." >&2
+      return 1
+    fi
+
+    echo "Deployment lock is still held after ${elapsed_seconds}s; waiting up to ${deploy_lock_timeout_seconds}s..."
+    sleep_seconds="${deploy_lock_wait_log_interval_seconds}"
+    if [ "${sleep_seconds}" -lt 1 ]; then
+      sleep_seconds=1
+    fi
+    if [ $((elapsed_seconds + sleep_seconds)) -gt "${deploy_lock_timeout_seconds}" ]; then
+      sleep_seconds=$((deploy_lock_timeout_seconds - elapsed_seconds))
+    fi
+
+    sleep "${sleep_seconds}"
+  done
+
+  echo "Deployment lock acquired."
+}
+
+acquire_deployment_lock
 
 wait_for_service_healthy() {
   local service_name="$1"

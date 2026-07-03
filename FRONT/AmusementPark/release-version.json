@@ -1,6 +1,20 @@
 {
-  "version": "3.2.11",
+  "version": "3.2.12",
   "history": [
+    {
+      "version": "3.2.12",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les mises en ligne sont plus faciles à suivre.",
+        "en": "Deployments are easier to follow.",
+        "de": "Bereitstellungen sind leichter nachzuverfolgen.",
+        "nl": "Publicaties zijn makkelijker te volgen.",
+        "it": "Le pubblicazioni sono più facili da seguire.",
+        "es": "Las publicaciones son más fáciles de seguir.",
+        "pl": "Wdrożenia są łatwiejsze do śledzenia.",
+        "pt": "As publicações ficam mais fáceis de acompanhar."
+      }
+    },
     {
       "version": "3.2.11",
       "releasedAt": "2026-07-03",
