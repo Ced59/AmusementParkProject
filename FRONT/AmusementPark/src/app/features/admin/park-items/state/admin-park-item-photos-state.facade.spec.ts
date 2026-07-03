@@ -1,7 +1,7 @@
 import { DestroyRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -47,6 +47,7 @@ describe('AdminParkItemPhotosStateFacade', () => {
     imagesPort.getAdminImageTags.and.returnValue(of([{ id: 'tag-gallery', slug: 'park-item-gallery', labels: [], descriptions: [], isActive: true, createdAt: '', updatedAt: '' }]));
     imagesPort.createAdminImageTag.and.callFake((request) => of({ id: `${request.slug}-tag`, slug: request.slug, labels: request.labels, descriptions: request.descriptions, isActive: true, createdAt: '', updatedAt: '' }));
     imagesPort.linkImage.and.returnValue(of(createImageDto()));
+    imagesPort.setCurrentImage.and.callFake((imageId: string) => of(createImageDto({ id: imageId, isCurrent: true })));
     imagesPort.updateAdminImage.and.callFake((imageId, request) => of(createImageDto({ id: imageId, geoLocation: request.geoLocation })));
 
     TestBed.configureTestingModule({
@@ -112,10 +113,39 @@ describe('AdminParkItemPhotosStateFacade', () => {
     }));
     expect(toastMessageService.add.calls.allArgs().some((args: unknown[]) => args[0] === 'warn')).toBeFalse();
   });
+
+  it('persists the first successful upload as current when the first selected file fails', async () => {
+    imagesPort.uploadImage.and.returnValues(
+      throwError(() => new Error('upload failed')),
+      of({ id: 'uploaded-2' })
+    );
+    imagesPort.linkImage.and.returnValue(of(createImageDto({ id: 'image-2', isCurrent: false })));
+    imagesPort.updateAdminImage.and.callFake((imageId, request) => of(createImageDto({
+      id: imageId,
+      geoLocation: request.geoLocation,
+      isCurrent: false,
+      tagIds: request.tagIds
+    })));
+    imagesPort.setCurrentImage.and.returnValue(of(createImageDto({ id: 'image-2', isCurrent: true })));
+
+    facade.selectPhotoFiles(createFileInputEvent([
+      new File(['broken'], 'broken.jpg', { type: 'image/jpeg' }),
+      new File(['image'], 'photo.jpg', { type: 'image/jpeg' })
+    ]));
+    await flushAsyncWork();
+    await facade.uploadSelectedPhotos('item-1', 'Ride');
+
+    expect(imagesPort.linkImage).toHaveBeenCalledWith(jasmine.objectContaining({
+      imageId: 'uploaded-2',
+      setAsCurrent: false
+    }));
+    expect(imagesPort.setCurrentImage).toHaveBeenCalledWith('image-2');
+    expect(facade.currentPhoto()?.id).toBe('image-2');
+  });
 });
 
-function createFileInputEvent(file: File): Event {
-  return { target: { files: [file], value: '' } } as unknown as Event;
+function createFileInputEvent(file: File | File[]): Event {
+  return { target: { files: Array.isArray(file) ? file : [file], value: '' } } as unknown as Event;
 }
 
 async function flushAsyncWork(): Promise<void> {

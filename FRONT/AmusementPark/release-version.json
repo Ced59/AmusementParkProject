@@ -1,6 +1,20 @@
 {
-  "version": "3.1.42",
+  "version": "3.1.43",
   "history": [
+    {
+      "version": "3.1.43",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "L’administration des photos reste plus fiable.",
+        "en": "Photo administration stays more reliable.",
+        "de": "Die Fotoverwaltung bleibt zuverlässiger.",
+        "nl": "Het fotobeheer blijft betrouwbaarder.",
+        "it": "La gestione delle foto resta più affidabile.",
+        "es": "La administración de fotos sigue siendo más fiable.",
+        "pl": "Administracja zdjęciami pozostaje bardziej niezawodna.",
+        "pt": "A administração de fotos continua mais fiável."
+      }
+    },
     {
       "version": "3.1.42",
       "releasedAt": "2026-07-03",

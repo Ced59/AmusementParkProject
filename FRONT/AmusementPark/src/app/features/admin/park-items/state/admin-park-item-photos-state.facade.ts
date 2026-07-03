@@ -237,6 +237,7 @@ export class AdminParkItemPhotosStateFacade {
     let failedCount: number = 0;
     let completedCount: number = 0;
     let nextIndex: number = 0;
+    const uploadedPhotos: Array<{ selectionIndex: number; photo: OwnedImageItem }> = [];
     this.photoUploadProgressSignal.set({ completed: 0, total: selections.length });
 
     try {
@@ -245,9 +246,9 @@ export class AdminParkItemPhotosStateFacade {
           const selectionIndex: number = nextIndex;
           nextIndex++;
 
-          const shouldSetCurrent: boolean = hadNoPhotoInitially && selectionIndex === 0;
           try {
-            await this.uploadPhotoAsync(selections[selectionIndex], itemId, itemName, shouldSetCurrent);
+            const uploadedPhoto: OwnedImageItem = await this.uploadPhotoAsync(selections[selectionIndex], itemId, itemName, false);
+            uploadedPhotos.push({ selectionIndex, photo: uploadedPhoto });
             uploadedCount++;
           } catch (error: unknown) {
             failedCount++;
@@ -264,6 +265,10 @@ export class AdminParkItemPhotosStateFacade {
         () => uploadWorker()
       );
       await Promise.all(workers);
+
+      if (hadNoPhotoInitially && uploadedPhotos.length > 0) {
+        await this.setFirstSuccessfulUploadAsCurrentAsync(uploadedPhotos);
+      }
 
       this.clearSelectedPhotoSelection();
       this.remotePhotoSourceUrlSignal.set('');
@@ -496,7 +501,7 @@ export class AdminParkItemPhotosStateFacade {
     }));
   }
 
-  private async uploadPhotoAsync(selection: AdminParkItemPhotoFileSelection, itemId: string, itemName: string, setAsCurrent: boolean): Promise<void> {
+  private async uploadPhotoAsync(selection: AdminParkItemPhotoFileSelection, itemId: string, itemName: string, setAsCurrent: boolean): Promise<OwnedImageItem> {
     const uploadedImage: UploadedImage = await firstValueFrom(
       this.imagesApiService.uploadImage(
         selection.file,
@@ -521,7 +526,27 @@ export class AdminParkItemPhotosStateFacade {
     );
 
     const taggedImage: ImageDto = await this.applySelectedPhotoCategoryAsync(linkedImage, uploadedGeoLocation);
-    this.upsertPhoto(this.toOwnedImageItem(taggedImage));
+    const photo: OwnedImageItem = this.toOwnedImageItem(taggedImage);
+    this.upsertPhoto(photo);
+    return photo;
+  }
+
+  private async setFirstSuccessfulUploadAsCurrentAsync(uploadedPhotos: Array<{ selectionIndex: number; photo: OwnedImageItem }>): Promise<void> {
+    const firstSuccessfulUpload = [...uploadedPhotos].sort((left, right) => left.selectionIndex - right.selectionIndex)[0];
+
+    try {
+      const currentImage: ImageDto = await firstValueFrom(this.imagesApiService.setCurrentImage(firstSuccessfulUpload.photo.id));
+      const currentPhoto: OwnedImageItem = this.toOwnedImageItem(currentImage);
+      const updatedItems: OwnedImageItem[] = this.attractionPhotosSignal().map((photo: OwnedImageItem) => ({
+        ...photo,
+        isCurrent: photo.id === currentPhoto.id
+      }));
+
+      this.attractionPhotosSignal.set(updatedItems);
+      this.currentPhotoSignal.set(currentPhoto);
+    } catch (error: unknown) {
+      console.error('Error setting first successful attraction image as current', error);
+    }
   }
 
   private showUploadResultMessage(uploadedCount: number, failedCount: number): void {
@@ -577,7 +602,7 @@ export class AdminParkItemPhotosStateFacade {
     }
 
     this.attractionPhotosSignal.set(normalizedItems);
-    this.currentPhotoSignal.set(normalizedItems.find((photo: OwnedImageItem) => photo.isCurrent) ?? item);
+    this.currentPhotoSignal.set(normalizedItems.find((photo: OwnedImageItem) => photo.isCurrent) ?? null);
     this.photosPageSignal.set(0);
   }
 

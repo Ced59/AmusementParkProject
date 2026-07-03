@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AdminImageSearchQuery } from '@app/models/images/admin-image-search-query';
@@ -173,6 +173,9 @@ describe('AdminPhotoBatchStateFacade', () => {
     await prepareSelectedParkAsync(facade);
     facade.selectFiles(createFileInputEvent(new File(['image'], 'entrance.jpg', { type: 'image/jpeg' })));
     await flushAsyncWork();
+    imagesPort.parkImagesPage$ = of(createPagedResult<ImageDto>([
+      createImage('image-1', { isPublished: false })
+    ]));
 
     await facade.uploadSelectedFiles();
 
@@ -258,6 +261,10 @@ describe('AdminPhotoBatchStateFacade', () => {
       createImage('image-1', { isPublished: false, tagIds: [] })
     ]));
     await prepareSelectedParkAsync(facade);
+    imagesPort.parkImagesPage$ = of(createPagedResult<ImageDto>([]));
+    imagesPort.parkItemImagesPage$ = of(createPagedResult<ParkItemImageDto>([
+      createParkItemImage('image-1', 'item-1', 'Demo Coaster')
+    ]));
 
     facade.setPhotoDraftOwnerKind('image-1', 'parkItem');
     facade.setPhotoDraftParkItemId('image-1', 'item-1');
@@ -307,6 +314,7 @@ describe('AdminPhotoBatchStateFacade', () => {
       createImage('image-1', { isPublished: false, tagIds: [] })
     ]));
     await prepareSelectedParkAsync(facade);
+    imagesPort.parkImagesPage$ = of(createPagedResult<ImageDto>([]));
 
     await facade.deletePhoto('image-1');
 
@@ -317,6 +325,67 @@ describe('AdminPhotoBatchStateFacade', () => {
       'admin.images.batch.toasts.deleteSummary',
       'admin.images.batch.toasts.deleteDetail'
     );
+  });
+
+  it('resets workspace loaders when category tag setup fails', async () => {
+    imagesPort.tagsResponse$ = throwError(() => new Error('tags unavailable'));
+
+    facade.loadParks();
+    await flushAsyncWork();
+    facade.selectPark('park-1');
+    await flushAsyncWork();
+
+    expect(facade.parkItemsLoading()).toBeFalse();
+    expect(facade.photosLoading()).toBeFalse();
+    expect(toastMessageService.add).toHaveBeenCalledWith(
+      'error',
+      'common.errorTitle',
+      'admin.images.batch.toasts.workspaceLoadError'
+    );
+  });
+
+  it('resets upload state and keeps selected files when category tag setup fails', async () => {
+    imagesPort.tagsResponse$ = throwError(() => new Error('tags unavailable'));
+
+    facade.loadParks();
+    await flushAsyncWork();
+    facade.selectPark('park-1');
+    await flushAsyncWork();
+    facade.selectFiles(createFileInputEvent(new File(['image'], 'entrance.jpg', { type: 'image/jpeg' })));
+    await flushAsyncWork();
+
+    await facade.uploadSelectedFiles();
+
+    expect(facade.uploading()).toBeFalse();
+    expect(facade.uploadProgress()).toBeNull();
+    expect(facade.selectedFileCount()).toBe(1);
+    expect(imagesPort.uploadCalls).toEqual([]);
+    expect(toastMessageService.add).toHaveBeenCalledWith(
+      'error',
+      'common.errorTitle',
+      'common.shared.imageUpload.uploadError'
+    );
+  });
+
+  it('reloads the workspace after deleting a photo so the next page is not skipped', async () => {
+    imagesPort.parkImagesPages = {
+      1: createPagedResult<ImageDto>([
+        createImage('image-1', { isPublished: false, tagIds: [] })
+      ], createPagination(2, 1, 2, 100)),
+      2: createPagedResult<ImageDto>([
+        createImage('image-3', { isPublished: false, tagIds: [] })
+      ], createPagination(2, 2, 2, 100))
+    };
+    await prepareSelectedParkAsync(facade);
+    imagesPort.parkImagesPages[1] = createPagedResult<ImageDto>([
+      createImage('image-2', { isPublished: false, tagIds: [] })
+    ], createPagination(2, 1, 2, 100));
+
+    await facade.deletePhoto('image-1');
+    await facade.loadMoreParkPhotos();
+
+    expect(imagesPort.adminImageQueries.map((query) => query.page)).toEqual([1, 1, 2]);
+    expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual(['image-2', 'image-3']);
   });
 });
 
