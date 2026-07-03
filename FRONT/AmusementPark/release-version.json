@@ -1,6 +1,20 @@
 {
-  "version": "3.1.69",
+  "version": "3.1.70",
   "history": [
+    {
+      "version": "3.1.70",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "L'administration devient plus régulière.",
+        "en": "Administration feels more consistent.",
+        "de": "Die Administration bleibt konsistenter.",
+        "nl": "Het beheer blijft consistenter.",
+        "it": "L'amministrazione resta più coerente.",
+        "es": "La administración sigue siendo más coherente.",
+        "pl": "Administracja pozostaje bardziej spójna.",
+        "pt": "A administração continua mais consistente."
+      }
+    },
     {
       "version": "3.1.69",
       "releasedAt": "2026-07-03",

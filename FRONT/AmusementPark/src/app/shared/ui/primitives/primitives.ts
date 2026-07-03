@@ -432,15 +432,13 @@ export class Table implements AfterContentInit {
   @Input() lazy: boolean = false;
   @Input() sortField: string | string[] | null | undefined = null;
   @Input() sortOrder: number | null | undefined = null;
+  @Input() first: number = 0;
   @Input() responsiveLayout: string | null = null;
   @Input() styleClass: string | null = null;
   @Input() rowsPerPageOptions: number[] = [10, 20, 50];
   @Output() onLazyLoad: EventEmitter<TableLazyLoadEvent> = new EventEmitter<TableLazyLoadEvent>();
   @Output() onSort: EventEmitter<TableSortEvent> = new EventEmitter<TableSortEvent>();
   @ContentChildren(UiTemplate) templates!: QueryList<UiTemplate>;
-
-  first: number = 0;
-
   @HostBinding('class') protected get hostClasses(): string {
     return `p-datatable ${this.styleClass ?? ''}`.trim();
   }
