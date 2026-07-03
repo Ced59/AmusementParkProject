@@ -1,6 +1,20 @@
 {
-  "version": "3.1.48",
+  "version": "3.1.49",
   "history": [
+    {
+      "version": "3.1.49",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les vidéos publiques suivent mieux la langue choisie.",
+        "en": "Public videos follow the selected language better.",
+        "de": "Öffentliche Videos folgen der gewählten Sprache besser.",
+        "nl": "Publieke video's volgen de gekozen taal beter.",
+        "it": "I video pubblici seguono meglio la lingua scelta.",
+        "es": "Los vídeos públicos siguen mejor el idioma elegido.",
+        "pl": "Publiczne filmy lepiej podążają za wybranym językiem.",
+        "pt": "Os vídeos públicos seguem melhor o idioma escolhido."
+      }
+    },
     {
       "version": "3.1.48",
       "releasedAt": "2026-07-03",

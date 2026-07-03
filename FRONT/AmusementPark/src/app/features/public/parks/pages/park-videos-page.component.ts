@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { combineLatest } from 'rxjs';
+import { combineLatest, startWith } from 'rxjs';
 
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
@@ -114,17 +114,16 @@ export class ParkVideosPageComponent implements OnInit {
   ngOnInit(): void {
     const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
 
-    this.currentLanguage.set(initialLanguage);
-    this.stateFacade.setCurrentLanguage(initialLanguage);
-
-    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
-      this.currentLanguage.set(language);
-      this.stateFacade.setCurrentLanguage(language);
-    });
-
-    combineLatest([this.route.paramMap, this.route.queryParamMap])
+    combineLatest([
+      this.route.paramMap,
+      this.route.queryParamMap,
+      this.translationService.languageChanged.pipe(startWith(initialLanguage))
+    ])
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(([params, queryParams]: [ParamMap, ParamMap]) => {
+      .subscribe(([params, queryParams, language]: [ParamMap, ParamMap, string]) => {
+        this.currentLanguage.set(language);
+        this.stateFacade.setCurrentLanguage(language);
+
         const parkId: string | null = params.get('id');
         if (!parkId) {
           return;
@@ -136,7 +135,7 @@ export class ParkVideosPageComponent implements OnInit {
         }
 
         const filters: PublicVideoFilterState = parsePublicVideoFilters(queryParams);
-        const loadKey: string = `${parkId}|${buildPublicVideoFilterKey(filters)}`;
+        const loadKey: string = `${language}|${parkId}|${buildPublicVideoFilterKey(filters)}`;
         if (loadKey === this.currentLoadKey) {
           return;
         }
