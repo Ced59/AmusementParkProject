@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { Subject, of, throwError } from 'rxjs';
 
 import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import { ContextualBlocksApiService } from '@data-access/admin/contextual-blocks-api.service';
@@ -76,6 +76,25 @@ describe('AdminContextualBlockPreviewFacade', () => {
     expect(facade.jsonDraft()).toBe('{ "block": { "parkId": "park-1" } }');
     expect(facade.previewResult()).toBeNull();
     expect(facade.errorKey()).toBe('admin.contextualBlocks.drawer.previewJsonError');
+    expect(facade.isPreviewing()).toBeFalse();
+  });
+
+  it('ignores stale preview responses after the draft changes', () => {
+    const previewResponse = new Subject<ContextualBlockPreviewResult>();
+    const previewResult: ContextualBlockPreviewResult = createPreviewResult(true);
+    contextualBlocksApi.previewBlock.and.returnValue(previewResponse.asObservable());
+    facade.resetForBlock(createBlock(['boundedJsonPreview']));
+    facade.setJsonDraft('{ "block": { "parkId": "park-1" } }');
+
+    facade.previewBlock(createBlock(['boundedJsonPreview']));
+    expect(facade.isPreviewing()).toBeTrue();
+
+    facade.setJsonDraft('{ "block": { "parkId": "park-1", "city": "Paris" } }');
+    previewResponse.next(previewResult);
+    previewResponse.complete();
+
+    expect(facade.previewResult()).toBeNull();
+    expect(facade.errorKey()).toBeNull();
     expect(facade.isPreviewing()).toBeFalse();
   });
 

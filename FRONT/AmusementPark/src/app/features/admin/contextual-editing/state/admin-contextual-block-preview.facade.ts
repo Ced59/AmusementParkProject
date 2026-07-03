@@ -17,6 +17,7 @@ export class AdminContextualBlockPreviewFacade {
   private readonly isPreviewingSignal = signal<boolean>(false);
   private readonly errorKeySignal = signal<string | null>(null);
   private activeBlockId: string | null = null;
+  private previewRequestVersion: number = 0;
 
   public readonly jsonDraft: Signal<string> = this.jsonDraftSignal.asReadonly();
   public readonly previewResult: Signal<ContextualBlockPreviewResult | null> = this.previewResultSignal.asReadonly();
@@ -37,25 +38,28 @@ export class AdminContextualBlockPreviewFacade {
     }
 
     this.activeBlockId = nextBlockId;
+    this.invalidatePreviewRequest();
     this.jsonDraftSignal.set('');
     this.previewResultSignal.set(null);
     this.errorKeySignal.set(null);
-    this.isPreviewingSignal.set(false);
   }
 
   setJsonDraft(value: string): void {
+    this.invalidatePreviewRequest();
     this.jsonDraftSignal.set(value);
     this.previewResultSignal.set(null);
     this.errorKeySignal.set(null);
   }
 
   clearDraft(): void {
+    this.invalidatePreviewRequest();
     this.jsonDraftSignal.set('');
     this.previewResultSignal.set(null);
     this.errorKeySignal.set(null);
   }
 
   useServerResult(result: ContextualBlockPreviewResult): void {
+    this.invalidatePreviewRequest();
     this.previewResultSignal.set(result);
     this.errorKeySignal.set(null);
   }
@@ -89,15 +93,38 @@ export class AdminContextualBlockPreviewFacade {
     }
 
     this.isPreviewingSignal.set(true);
+    const requestVersion: number = ++this.previewRequestVersion;
+    const requestBlockId: string = block.id;
     this.contextualBlocksApi.previewBlock(block.type, block.entityId, parsedDocument)
-      .pipe(finalize((): void => this.isPreviewingSignal.set(false)))
+      .pipe(finalize((): void => {
+        if (this.isCurrentPreviewRequest(requestVersion, requestBlockId)) {
+          this.isPreviewingSignal.set(false);
+        }
+      }))
       .subscribe({
         next: (result: ContextualBlockPreviewResult): void => {
+          if (!this.isCurrentPreviewRequest(requestVersion, requestBlockId)) {
+            return;
+          }
+
           this.previewResultSignal.set(result);
         },
         error: (): void => {
+          if (!this.isCurrentPreviewRequest(requestVersion, requestBlockId)) {
+            return;
+          }
+
           this.errorKeySignal.set('admin.contextualBlocks.drawer.previewJsonError');
         }
       });
+  }
+
+  private invalidatePreviewRequest(): void {
+    this.previewRequestVersion++;
+    this.isPreviewingSignal.set(false);
+  }
+
+  private isCurrentPreviewRequest(requestVersion: number, blockId: string): boolean {
+    return this.previewRequestVersion === requestVersion && this.activeBlockId === blockId;
   }
 }
