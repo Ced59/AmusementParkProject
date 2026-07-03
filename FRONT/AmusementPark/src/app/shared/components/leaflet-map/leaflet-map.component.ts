@@ -823,7 +823,9 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     if (this.markers.length === 0 || this.markers.length === 1) {
       const pos = event.latlng;
-      this.positionChange.emit({ lat: pos.lat, lng: pos.lng });
+      this.ngZone.run((): void => {
+        this.positionChange.emit({ lat: pos.lat, lng: pos.lng });
+      });
     }
   }
 }

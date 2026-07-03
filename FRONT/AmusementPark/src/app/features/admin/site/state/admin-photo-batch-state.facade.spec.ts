@@ -363,7 +363,7 @@ describe('AdminPhotoBatchStateFacade', () => {
     expect(toastMessageService.add).toHaveBeenCalledWith(
       'error',
       'common.errorTitle',
-      'common.shared.imageUpload.uploadError'
+      'shared.imageUpload.uploadError'
     );
   });
 

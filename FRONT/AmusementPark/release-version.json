@@ -1,6 +1,20 @@
 {
-  "version": "3.1.76",
+  "version": "3.2.0",
   "history": [
+    {
+      "version": "3.2.0",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "L'administration retrouve des contrôles plus fiables.",
+        "en": "Administration controls are more reliable.",
+        "de": "Die Administrationssteuerung ist zuverlässiger.",
+        "nl": "Beheercontroles zijn betrouwbaarder.",
+        "it": "I controlli di amministrazione sono più affidabili.",
+        "es": "Los controles de administración son más fiables.",
+        "pl": "Kontrolki administracji są bardziej niezawodne.",
+        "pt": "Os controlos de administração ficam mais fiáveis."
+      }
+    },
     {
       "version": "3.1.76",
       "releasedAt": "2026-07-03",

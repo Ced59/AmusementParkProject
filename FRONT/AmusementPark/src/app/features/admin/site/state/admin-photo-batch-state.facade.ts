@@ -371,7 +371,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       this.toastMessageService.add(
         'error',
         this.translateService.instant('common.errorTitle'),
-        this.translateService.instant('common.shared.imageUpload.uploadError')
+        this.translateService.instant('shared.imageUpload.uploadError')
       );
     } finally {
       this.uploadingSignal.set(false);

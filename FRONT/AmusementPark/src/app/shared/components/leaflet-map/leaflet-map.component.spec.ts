@@ -16,6 +16,7 @@ type LeafletTestMap = {
 
 type LeafletMapComponentInternals = {
   addSingleMarker: (marker: MapMarker) => void;
+  handleMapClick: (event: { latlng: { lat: number; lng: number } }) => void;
   handleMapViewportChange: () => void;
   focusSelectedMarker: () => boolean;
   openPendingSelectedMarkerPopup: () => void;
@@ -384,6 +385,22 @@ describe('LeafletMapComponent', () => {
 
     expect(internals.scheduleViewportUpdate).not.toHaveBeenCalled();
     expect(map.setView).toHaveBeenCalledWith([46.8, 2.2], 6);
+  });
+
+  it('emits editable map click positions inside Angular zone', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const ngZone = (component as unknown as { ngZone: { run(fn: () => void): void } }).ngZone;
+    const positionChangeSpy: jasmine.Spy = jasmine.createSpy('positionChange');
+    const zoneRunSpy: jasmine.Spy = spyOn(ngZone, 'run').and.callFake((fn: () => void): void => fn());
+
+    component.editable = true;
+    component.markers = [];
+    component.positionChange.subscribe(positionChangeSpy);
+
+    internals.handleMapClick({ latlng: { lat: 50.632, lng: 3.057 } });
+
+    expect(zoneRunSpy).toHaveBeenCalled();
+    expect(positionChangeSpy).toHaveBeenCalledWith({ lat: 50.632, lng: 3.057 });
   });
 
   it('keeps fitted bounds at the configured minimum zoom', () => {

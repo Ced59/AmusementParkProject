@@ -597,9 +597,7 @@ export class Select implements ControlValueAccessor {
   }
 
   resolveOptionLabel(option: unknown): string {
-    const rawValue: unknown = option && typeof option === 'object' && this.optionLabel in option
-      ? (option as Record<string, unknown>)[this.optionLabel]
-      : option;
+    const rawValue: unknown = this.resolveOptionLabelValue(option);
 
     if (typeof rawValue !== 'string') {
       return rawValue === null || rawValue === undefined ? '' : String(rawValue);
@@ -607,6 +605,31 @@ export class Select implements ControlValueAccessor {
 
     const translatedValue: string = this.translateService.instant(rawValue);
     return translatedValue || rawValue;
+  }
+
+  private resolveOptionLabelValue(option: unknown): unknown {
+    if (!option || typeof option !== 'object') {
+      return option;
+    }
+
+    const record: Record<string, unknown> = option as Record<string, unknown>;
+    if (this.optionLabel in record) {
+      return record[this.optionLabel];
+    }
+
+    if ('labelKey' in record) {
+      return record['labelKey'];
+    }
+
+    if ('name' in record) {
+      return record['name'];
+    }
+
+    if (this.optionValue in record) {
+      return record[this.optionValue];
+    }
+
+    return '';
   }
 }
 
@@ -760,6 +783,14 @@ export class Tabs {
     this.value = value;
     this.valueChange.emit(value);
   }
+
+  isValueActive(value: string | number): boolean {
+    return this.normalizeValue(this.value) === this.normalizeValue(value);
+  }
+
+  private normalizeValue(value: string | number): string {
+    return String(value);
+  }
 }
 
 @Component({
@@ -784,7 +815,7 @@ export class Tab {
 
   @HostBinding('class.p-tab') protected readonly tabClass: boolean = true;
   @HostBinding('class.p-tab-active') protected get activeClass(): boolean {
-    return this.tabs.value === this.value;
+    return this.tabs.isValueActive(this.value);
   }
 
   constructor(private readonly tabs: Tabs) {
@@ -811,7 +842,7 @@ export class TabPanels {
   selector: 'app-ui-tab-panel',
   standalone: true,
   imports: [NgIf],
-  template: `<ng-container *ngIf="tabs.value === value"><ng-content></ng-content></ng-container>`,
+  template: `<ng-container *ngIf="isActive"><ng-content></ng-content></ng-container>`,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabPanel {
@@ -819,6 +850,10 @@ export class TabPanel {
   @HostBinding('class.p-tabpanel') protected readonly tabPanelClass: boolean = true;
 
   constructor(protected readonly tabs: Tabs) {
+  }
+
+  get isActive(): boolean {
+    return this.tabs.isValueActive(this.value);
   }
 }
 
