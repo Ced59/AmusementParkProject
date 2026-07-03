@@ -1,6 +1,7 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, forkJoin, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { MapMarker } from '@app/models/map/map-marker';
 import { Park } from '@app/models/parks/park';
@@ -19,6 +20,7 @@ import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-lab
 import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
+import { resolvePublicParkItemsClosedFilter } from '@shared/utils/parks/public-park-items-closed-filter.helper';
 import {
   buildPublicParkItemsRouteCommands,
   buildPublicParkRouteCommands,
@@ -43,6 +45,7 @@ import {
   ParkZonesPageStateParkZonesApiServicePort,
   ParkZonesPageStateParksApiServicePort
 } from './park-zones-page-state-data.ports';
+import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 
 interface ParkZonesPageSourceData {
   park: Park;
@@ -64,6 +67,7 @@ export class ParkZonesPageStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<ParkZonesPageSourceData>();
   private readonly currentLanguageSignal = signal('en');
   private readonly selectedZoneIdSignal = signal<string | null>(null);
+  private readonly selectedClosedFilterSignal = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
 
   public readonly state = this.screenStateStore.state;
   public readonly parkImageId: Signal<string | null> = computed(() => this.screenStateStore.data()?.parkImageId ?? null);
@@ -188,20 +192,43 @@ export class ParkZonesPageStateFacade {
     this.currentLanguageSignal.set(currentLanguage);
 
     const previousData: ParkZonesPageSourceData | undefined = this.screenStateStore.data();
+    const requestedClosedFilter: ClosedEntityFilter = this.selectedClosedFilterSignal();
     this.screenStateStore.setLoading(previousData);
 
     forkJoin({
-      summary: this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()),
-      explorer: this.parksApiService.getParkExplorer(parkId, anonymousHttpOptions()),
-      mapItems: this.parksApiService.getParkMapItems(parkId, anonymousHttpOptions()),
+      summary: this.parksApiService.getParkDetailSummary(parkId, { ...anonymousHttpOptions(), closedFilter: requestedClosedFilter }),
+      explorer: this.parksApiService.getParkExplorer(parkId, { ...anonymousHttpOptions(), closedFilter: requestedClosedFilter }),
+      mapItems: this.parksApiService.getParkMapItems(parkId, { ...anonymousHttpOptions(), closedFilter: requestedClosedFilter }),
       zones: this.parkZonesApiService.getParkZonesByParkId(parkId, anonymousHttpOptions()).pipe(catchError(() => of([] as ParkZone[]))),
       itemsPage: this.parkItemsApiService.getParkItemsByParkIdPage(
         parkId,
         1,
         ZONE_ITEMS_PREVIEW_SIZE,
-        { zoneId: this.selectedZoneIdSignal() },
+        { zoneId: this.selectedZoneIdSignal(), closedFilter: requestedClosedFilter },
         anonymousHttpOptions())
-    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    }).pipe(
+      switchMap((data: { summary: ParkDetailSummary; explorer: ParkExplorer; mapItems: ParkMapItems; zones: ParkZone[]; itemsPage: PagedResult<ParkItem> }) => {
+        const effectiveClosedFilter: ClosedEntityFilter = this.normalizeClosedFilterForPark(data.summary.park);
+
+        if (effectiveClosedFilter === requestedClosedFilter) {
+          return of(data);
+        }
+
+        return forkJoin({
+          summary: this.parksApiService.getParkDetailSummary(parkId, { ...anonymousHttpOptions(), closedFilter: effectiveClosedFilter }),
+          explorer: this.parksApiService.getParkExplorer(parkId, { ...anonymousHttpOptions(), closedFilter: effectiveClosedFilter }),
+          mapItems: this.parksApiService.getParkMapItems(parkId, { ...anonymousHttpOptions(), closedFilter: effectiveClosedFilter }),
+          zones: of(data.zones),
+          itemsPage: this.parkItemsApiService.getParkItemsByParkIdPage(
+            parkId,
+            1,
+            ZONE_ITEMS_PREVIEW_SIZE,
+            { zoneId: this.selectedZoneIdSignal(), closedFilter: effectiveClosedFilter },
+            anonymousHttpOptions())
+        });
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
       next: (data: { summary: ParkDetailSummary; explorer: ParkExplorer; mapItems: ParkMapItems; zones: ParkZone[]; itemsPage: PagedResult<ParkItem> }) => {
         this.screenStateStore.setReady({
           park: data.summary.park,
@@ -228,7 +255,7 @@ export class ParkZonesPageStateFacade {
       parkId,
       1,
       ZONE_ITEMS_PREVIEW_SIZE,
-      { zoneId: this.selectedZoneIdSignal() },
+      { zoneId: this.selectedZoneIdSignal(), closedFilter: this.selectedClosedFilterSignal() },
       anonymousHttpOptions()
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (itemsPage: PagedResult<ParkItem>) => {
@@ -360,6 +387,16 @@ export class ParkZonesPageStateFacade {
   private normalizeOptionalString(value: string | null | undefined): string | null {
     const trimmedValue: string = value?.trim() ?? '';
     return trimmedValue.length > 0 ? trimmedValue : null;
+  }
+
+  private normalizeClosedFilterForPark(park: Park | null | undefined): ClosedEntityFilter {
+    const effectiveClosedFilter: ClosedEntityFilter = resolvePublicParkItemsClosedFilter(park, this.selectedClosedFilterSignal());
+
+    if (effectiveClosedFilter !== this.selectedClosedFilterSignal()) {
+      this.selectedClosedFilterSignal.set(effectiveClosedFilter);
+    }
+
+    return effectiveClosedFilter;
   }
 }
 

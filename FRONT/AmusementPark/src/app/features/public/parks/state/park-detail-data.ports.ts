@@ -19,9 +19,14 @@ import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { VideosApiService } from '@data-access/videos/videos-api.service';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { PagedResult } from '@shared/models/contracts';
+import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
+
+export interface ParkDetailHttpOptions extends AnonymousHttpOptions {
+  closedFilter?: ClosedEntityFilter;
+}
 
 export interface ParkDetailParksPort {
-  getParkDetailSummary(id: string, options?: AnonymousHttpOptions): Observable<ParkDetailSummary>;
+  getParkDetailSummary(id: string, options?: ParkDetailHttpOptions): Observable<ParkDetailSummary>;
   getNearestParks(sourceParkId: string, limit?: number, maxDistanceKilometers?: number | null, options?: AnonymousHttpOptions): Observable<ParkDistanceResponse>;
   getParkWeather(id: string, days?: number, options?: AnonymousHttpOptions): Observable<ParkWeatherForecast>;
   getParkOpeningHours(id: string, from?: string | null, to?: string | null, options?: AnonymousHttpOptions): Observable<ParkOpeningHoursCalendar>;

@@ -1,6 +1,20 @@
 {
-  "version": "3.1.74",
+  "version": "3.1.75",
   "history": [
+    {
+      "version": "3.1.75",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les parcs fermés affichent mieux leurs contenus.",
+        "en": "Closed parks show their content better.",
+        "de": "Geschlossene Parks zeigen ihre Inhalte besser.",
+        "nl": "Gesloten parken tonen hun inhoud beter.",
+        "it": "I parchi chiusi mostrano meglio i contenuti.",
+        "es": "Los parques cerrados muestran mejor sus contenidos.",
+        "pl": "Zamknięte parki lepiej pokazują swoje treści.",
+        "pt": "Os parques fechados mostram melhor os seus conteúdos."
+      }
+    },
     {
       "version": "3.1.74",
       "releasedAt": "2026-07-03",

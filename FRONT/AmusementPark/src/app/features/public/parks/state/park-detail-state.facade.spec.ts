@@ -26,6 +26,7 @@ import {
   PARK_DETAIL_HISTORY_PORT,
   PARK_DETAIL_IMAGES_PORT,
   PARK_DETAIL_PARKS_PORT,
+  ParkDetailHttpOptions,
   PARK_DETAIL_VIDEOS_PORT,
   ParkDetailHistoryPort,
   ParkDetailImagesPort,
@@ -36,12 +37,13 @@ import { ParkDetailStateFacade } from './park-detail-state.facade';
 
 class FakeParksPort implements ParkDetailParksPort {
   public summaryResponse$: Observable<ParkDetailSummary> = of(createSummary());
+  public summaryResponses$: Observable<ParkDetailSummary>[] = [];
   public nearestResponse$: Observable<ParkDistanceResponse> = of(createNearbyResponse());
   public weatherResponse$: Observable<ParkWeatherForecast> = of(createWeatherForecast());
   public openingHoursResponse$: Observable<ParkOpeningHoursCalendar> = of(createOpeningHoursCalendar());
   public openingHoursResponses$: Observable<ParkOpeningHoursCalendar>[] = [];
   public readonly summaryCalls: string[] = [];
-  public readonly summaryOptions: Array<AnonymousHttpOptions | undefined> = [];
+  public readonly summaryOptions: Array<ParkDetailHttpOptions | undefined> = [];
   public readonly nearestCalls: { sourceParkId: string; limit?: number; maxDistanceKilometers?: number | null }[] = [];
   public readonly nearestOptions: Array<AnonymousHttpOptions | undefined> = [];
   public readonly weatherCalls: { id: string; days?: number }[] = [];
@@ -49,10 +51,10 @@ class FakeParksPort implements ParkDetailParksPort {
   public readonly openingHoursCalls: { id: string; from?: string | null; to?: string | null }[] = [];
   public readonly openingHoursOptions: Array<AnonymousHttpOptions | undefined> = [];
 
-  getParkDetailSummary(id: string, options?: AnonymousHttpOptions): Observable<ParkDetailSummary> {
+  getParkDetailSummary(id: string, options?: ParkDetailHttpOptions): Observable<ParkDetailSummary> {
     this.summaryCalls.push(id);
     this.summaryOptions.push(options);
-    return this.summaryResponse$;
+    return this.summaryResponses$.shift() ?? this.summaryResponse$;
   }
 
   getNearestParks(sourceParkId: string, limit?: number, maxDistanceKilometers?: number | null, options?: AnonymousHttpOptions): Observable<ParkDistanceResponse> {
@@ -148,10 +150,11 @@ class FakeHistoryPort implements ParkDetailHistoryPort {
   }
 }
 
-function createPark(hasLogo: boolean = true): Park {
+function createPark(hasLogo: boolean = true, status: Park['status'] = 'Operating'): Park {
   return {
     id: 'park-1',
     name: 'Bellewaerde',
+    status,
     countryCode: 'BE',
     latitude: 50.845,
     longitude: 2.945,
@@ -165,9 +168,14 @@ function createPark(hasLogo: boolean = true): Park {
   };
 }
 
-function createSummary(totalItems: number = 3, hasMainImage: boolean = true, hasLogo: boolean = true): ParkDetailSummary {
+function createSummary(
+  totalItems: number = 3,
+  hasMainImage: boolean = true,
+  hasLogo: boolean = true,
+  status: Park['status'] = 'Operating'
+): ParkDetailSummary {
   return {
-    park: createPark(hasLogo),
+    park: createPark(hasLogo, status),
     mainImage: hasMainImage ? {
       id: 'main-image-1',
       category: ImageCategory.PARK,
@@ -512,6 +520,21 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.weatherState().kind).toBe('ready');
     expect(context.facade.weather()?.days.length).toBe(1);
     expect(context.facade.nearbyParks()[0].shortDescription?.length).toBeLessThanOrEqual(140);
+  });
+
+  it('reloads the park detail summary with all items for definitively closed parks', () => {
+    const context = configureFacade();
+    context.parksPort.summaryResponses$ = [
+      of(createSummary(0, true, true, 'ClosedDefinitively')),
+      of(createSummary(3, true, true, 'ClosedDefinitively'))
+    ];
+
+    context.facade.loadPark('park-1');
+
+    expect(context.facade.park()?.stats[0].value).toBe(3);
+    expect(context.parksPort.summaryCalls).toEqual(['park-1', 'park-1']);
+    expect(context.parksPort.summaryOptions[0]?.closedFilter).toBeUndefined();
+    expect(context.parksPort.summaryOptions[1]?.closedFilter).toBe('all');
   });
 
   it('clears stale secondary park data while another park is loading', () => {

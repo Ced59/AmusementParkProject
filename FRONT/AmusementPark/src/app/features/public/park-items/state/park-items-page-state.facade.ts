@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, forkJoin, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -31,6 +32,7 @@ import { resolveLocalizedValue } from '@shared/utils/localization';
 import { buildTranslationOptions } from '@shared/utils/display/display-options';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveParkSocialImageId } from '@shared/utils/images/park-social-image.helpers';
+import { resolvePublicParkItemsClosedFilter } from '@shared/utils/parks/public-park-items-closed-filter.helper';
 import { mapParkItemToCardViewModel } from '../mappers/park-item-card.mapper';
 import {
   mapParkExplorerBucketToZoneCardViewModel,
@@ -328,7 +330,41 @@ export class ParkItemsPageStateFacade {
       parkPhotos: useMinimalSsrData
         ? of([] as ImageDto[])
         : this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 24, anonymousHttpOptions()).pipe(catchError(() => of([] as ImageDto[])))
-    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    }).pipe(
+      switchMap((data: {
+        park: Park;
+        explorer: ParkExplorer;
+        mapItems: ParkMapItems;
+        itemsPage: PagedResult<ParkItem>;
+        manufacturers: AttractionManufacturer[];
+        zones: ParkZone[];
+        parkPhotos: ImageDto[];
+      }) => {
+        const effectiveClosedFilter: ClosedEntityFilter = this.normalizeClosedFilterForPark(data.park);
+
+        if (effectiveClosedFilter === closedFilter) {
+          return of(data);
+        }
+
+        const effectiveItemsFilters: ParkItemsByParkIdFilters = this.buildItemsRequestFilters();
+
+        return forkJoin({
+          park: of(data.park),
+          explorer: this.parksApiService.getParkExplorer(parkId, { ...anonymousHttpOptions(), closedFilter: effectiveClosedFilter }),
+          mapItems: this.parksApiService.getParkMapItems(parkId, { ...anonymousHttpOptions(), closedFilter: effectiveClosedFilter }),
+          itemsPage: this.parkItemsApiService.getParkItemsByParkIdPage(
+            parkId,
+            this.currentPageSignal(),
+            this.pageSizeSignal(),
+            effectiveItemsFilters,
+            anonymousHttpOptions()),
+          manufacturers: of(data.manufacturers),
+          zones: of(data.zones),
+          parkPhotos: of(data.parkPhotos)
+        });
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
       next: ({
         park,
         explorer,
@@ -514,6 +550,8 @@ export class ParkItemsPageStateFacade {
     const sourceData: ParkItemsPageSourceData | undefined = this.screenStateStore.data();
     const availableZoneIds: string[] = Object.keys(this.zonesById());
 
+    this.normalizeClosedFilterForPark(sourceData?.park ?? null);
+
     if (selectedZoneId && sourceData && (availableZoneIds.length === 0 || !this.zonesById()[selectedZoneId])) {
       this.selectedZoneIdSignal.set(null);
     }
@@ -526,6 +564,16 @@ export class ParkItemsPageStateFacade {
     }
 
     return previousItemsRequestKey !== this.buildItemsRequestKey();
+  }
+
+  private normalizeClosedFilterForPark(park: Park | null | undefined): ClosedEntityFilter {
+    const effectiveClosedFilter: ClosedEntityFilter = resolvePublicParkItemsClosedFilter(park, this.selectedClosedFilterSignal());
+
+    if (effectiveClosedFilter !== this.selectedClosedFilterSignal()) {
+      this.selectedClosedFilterSignal.set(effectiveClosedFilter);
+    }
+
+    return effectiveClosedFilter;
   }
 }
 
