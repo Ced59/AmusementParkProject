@@ -25,6 +25,12 @@ interface StaticSeoCopy {
   description: string;
 }
 
+interface SocialImageMetadata {
+  url: string;
+  width: number | null;
+  height: number | null;
+}
+
 interface ParkImagesSeoCopy {
   titlePrefix: string;
   parkFallback: string;
@@ -132,7 +138,8 @@ const SITE_NAME: string = 'Amusement Parks';
 const DEFAULT_DESCRIPTION: string = 'Explore amusement parks, attractions, restaurants, hotels and park references around the world.';
 const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpark.png';
 const SOCIAL_IMAGE_WIDTH: number = 1200;
-const SOCIAL_IMAGE_HEIGHT: number = 630;
+const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
+const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
 const RESPONSIVE_IMAGE_VERSION: string = '2';
 
 const HISTORY_SEO_COPY: Record<string, HistorySeoCopy> = {
@@ -1737,7 +1744,7 @@ export class SeoService {
     this.meta.updateTag({ name: 'description', content: data.description });
     this.meta.updateTag({ name: 'robots', content: data.robots });
     this.meta.updateTag({ name: 'googlebot', content: data.robots });
-    const socialImageUrl: string = this.buildSocialImageUrl(data.imageUrl);
+    const socialImage: SocialImageMetadata = this.buildSocialImage(data.imageUrl);
     const socialImageAlt: string = this.resolveSocialImageAlt(data);
     const locale: string = this.resolveOpenGraphLocale(data.canonicalUrl);
 
@@ -1747,38 +1754,72 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:url', content: data.canonicalUrl });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:locale', content: locale });
-    this.meta.updateTag({ property: 'og:image', content: socialImageUrl });
-    this.meta.updateTag({ property: 'og:image:secure_url', content: socialImageUrl });
-    this.meta.updateTag({ property: 'og:image:width', content: String(SOCIAL_IMAGE_WIDTH) });
-    this.meta.updateTag({ property: 'og:image:height', content: String(SOCIAL_IMAGE_HEIGHT) });
+    this.meta.updateTag({ property: 'og:image', content: socialImage.url });
+    this.meta.updateTag({ property: 'og:image:secure_url', content: socialImage.url });
+    this.updateOpenGraphImageDimension('width', socialImage.width);
+    this.updateOpenGraphImageDimension('height', socialImage.height);
     this.meta.updateTag({ property: 'og:image:alt', content: socialImageAlt });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: data.title });
     this.meta.updateTag({ name: 'twitter:description', content: data.description });
-    this.meta.updateTag({ name: 'twitter:image', content: socialImageUrl });
+    this.meta.updateTag({ name: 'twitter:image', content: socialImage.url });
     this.meta.updateTag({ name: 'twitter:image:alt', content: socialImageAlt });
     this.setCanonical(data.canonicalUrl);
     this.setAlternates(data.alternates);
     this.jsonLdService.setJsonLd(data.jsonLd ?? []);
   }
 
-  private buildSocialImageUrl(imageUrl: string | undefined): string {
-    const fallbackImageUrl: string = this.canonicalUrlService.buildAbsoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH);
-    const normalizedImageUrl: string = this.normalizeOptionalText(imageUrl) ?? fallbackImageUrl;
+  private buildSocialImage(imageUrl: string | undefined): SocialImageMetadata {
+    const fallbackImage: SocialImageMetadata = {
+      url: this.canonicalUrlService.buildAbsoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH),
+      width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+      height: DEFAULT_SOCIAL_IMAGE_HEIGHT
+    };
+    const normalizedImageUrl: string | null = this.normalizeOptionalText(imageUrl);
+
+    if (normalizedImageUrl === null) {
+      return fallbackImage;
+    }
 
     try {
       const parsedUrl: URL = new URL(normalizedImageUrl);
       const normalizedPath: string = parsedUrl.pathname.toLowerCase();
 
+      if (normalizedPath === DEFAULT_SOCIAL_IMAGE_PATH) {
+        return {
+          ...fallbackImage,
+          url: parsedUrl.href
+        };
+      }
+
       if (normalizedPath.startsWith('/images/') || normalizedPath.startsWith('/api/images/')) {
         parsedUrl.searchParams.set('width', String(SOCIAL_IMAGE_WIDTH));
         parsedUrl.searchParams.set('v', RESPONSIVE_IMAGE_VERSION);
+
+        return {
+          url: parsedUrl.href,
+          width: SOCIAL_IMAGE_WIDTH,
+          height: null
+        };
       }
 
-      return parsedUrl.href;
+      return {
+        url: parsedUrl.href,
+        width: null,
+        height: null
+      };
     } catch {
-      return fallbackImageUrl;
+      return fallbackImage;
     }
+  }
+
+  private updateOpenGraphImageDimension(dimension: 'width' | 'height', value: number | null): void {
+    if (value === null) {
+      this.meta.removeTag(`property="og:image:${dimension}"`);
+      return;
+    }
+
+    this.meta.updateTag({ property: `og:image:${dimension}`, content: String(value) });
   }
 
   private resolveSocialImageAlt(data: SeoRouteData): string {
