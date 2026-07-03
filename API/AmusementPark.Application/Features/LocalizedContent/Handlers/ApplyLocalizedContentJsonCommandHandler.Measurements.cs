@@ -18,6 +18,7 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler
             .Select(static condition => (condition.Value, condition.Unit))
             .ToList();
 
+        PreferUpdatedImperialMeasurements(details, updatedFields);
         this.measurementConversionService.NormalizeAttractionDetails(details);
 
         AddUpdatedFieldIfChanged(updatedFields, "attractionDetails.heightInMeters", previousHeightInMeters, details.HeightInMeters);
@@ -36,6 +37,52 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler
             AddUpdatedFieldIfChanged(updatedFields, $"accessConditions[{index}].value", previousValue, condition.Value);
             AddUpdatedFieldIfChanged(updatedFields, $"accessConditions[{index}].unit", previousUnit, condition.Unit);
         }
+    }
+
+    private static void PreferUpdatedImperialMeasurements(AttractionDetails details, List<string> updatedFields)
+    {
+        if (ShouldPreferUpdatedImperialMeasurement(updatedFields, "heightinfeet", new[] { "height", "heightinmeters" }, details.HeightInFeet))
+        {
+            details.HeightInMeters = null;
+        }
+
+        if (ShouldPreferUpdatedImperialMeasurement(updatedFields, "lengthinfeet", new[] { "length", "lengthinmeters" }, details.LengthInFeet))
+        {
+            details.LengthInMeters = null;
+        }
+
+        if (ShouldPreferUpdatedImperialMeasurement(updatedFields, "speedinmph", new[] { "speed", "speedinkmh" }, details.SpeedInMph))
+        {
+            details.SpeedInKmH = null;
+        }
+
+        if (ShouldPreferUpdatedImperialMeasurement(updatedFields, "dropinfeet", new[] { "drop", "dropinmeters" }, details.DropInFeet))
+        {
+            details.DropInMeters = null;
+        }
+    }
+
+    private static bool ShouldPreferUpdatedImperialMeasurement(List<string> updatedFields, string imperialFieldName, IReadOnlyCollection<string> metricFieldNames, double? imperialValue)
+    {
+        return imperialValue.HasValue
+            && HasUpdatedAttractionDetailsField(updatedFields, imperialFieldName)
+            && !metricFieldNames.Any(metricFieldName => HasUpdatedAttractionDetailsField(updatedFields, metricFieldName));
+    }
+
+    private static bool HasUpdatedAttractionDetailsField(List<string> updatedFields, string normalizedFieldName)
+    {
+        foreach (string updatedField in updatedFields)
+        {
+            string candidate = updatedField.StartsWith("attractionDetails.", StringComparison.OrdinalIgnoreCase)
+                ? updatedField["attractionDetails.".Length..]
+                : updatedField;
+            if (string.Equals(NormalizeField(candidate), normalizedFieldName, StringComparison.Ordinal))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static void AddUpdatedFieldIfChanged<TValue>(List<string> updatedFields, string fieldName, TValue previousValue, TValue currentValue)

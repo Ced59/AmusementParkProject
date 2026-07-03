@@ -361,10 +361,10 @@ public sealed partial class ParkGraphUpsertProcessor
             details.AccessConditions = conditions;
         }
 
-        NormalizeAttractionDetailsAfterPatch(details, change);
+        NormalizeAttractionDetailsAfterPatch(details, change, patch.Value);
     }
 
-    private void NormalizeAttractionDetailsAfterPatch(AttractionDetails details, ParkGraphUpsertChange change)
+    private void NormalizeAttractionDetailsAfterPatch(AttractionDetails details, ParkGraphUpsertChange change, JsonElement patch)
     {
         double? currentHeightInFeet = details.HeightInFeet;
         double? currentHeightInMeters = details.HeightInMeters;
@@ -376,6 +376,7 @@ public sealed partial class ParkGraphUpsertProcessor
         double? currentDropInMeters = details.DropInMeters;
         string currentAccessConditions = DescribeAccessConditions(details.AccessConditions);
 
+        PreferPatchedImperialMeasurements(details, patch);
         this.measurementConversionService.NormalizeAttractionDetails(details);
 
         AddChange(change, "attractionDetails.heightInFeet", currentHeightInFeet, details.HeightInFeet);
@@ -387,6 +388,34 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, "attractionDetails.dropInFeet", currentDropInFeet, details.DropInFeet);
         AddChange(change, "attractionDetails.dropInMeters", currentDropInMeters, details.DropInMeters);
         AddChange(change, "attractionDetails.accessConditions", currentAccessConditions, DescribeAccessConditions(details.AccessConditions));
+    }
+
+    private static void PreferPatchedImperialMeasurements(AttractionDetails details, JsonElement patch)
+    {
+        if (ShouldPreferPatchedImperialMeasurement(patch, "heightInFeet", "heightInMeters", details.HeightInFeet))
+        {
+            details.HeightInMeters = null;
+        }
+
+        if (ShouldPreferPatchedImperialMeasurement(patch, "lengthInFeet", "lengthInMeters", details.LengthInFeet))
+        {
+            details.LengthInMeters = null;
+        }
+
+        if (ShouldPreferPatchedImperialMeasurement(patch, "speedInMph", "speedInKmH", details.SpeedInMph))
+        {
+            details.SpeedInKmH = null;
+        }
+
+        if (ShouldPreferPatchedImperialMeasurement(patch, "dropInFeet", "dropInMeters", details.DropInFeet))
+        {
+            details.DropInMeters = null;
+        }
+    }
+
+    private static bool ShouldPreferPatchedImperialMeasurement(JsonElement patch, string imperialPropertyName, string metricPropertyName, double? imperialValue)
+    {
+        return imperialValue.HasValue && HasProperty(patch, imperialPropertyName) && !HasProperty(patch, metricPropertyName);
     }
     private static void PatchAttractionLocations(AttractionLocations locations, JsonElement? patch, ParkGraphUpsertChange change)
     {

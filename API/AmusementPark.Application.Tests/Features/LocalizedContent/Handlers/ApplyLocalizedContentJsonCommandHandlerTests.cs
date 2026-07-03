@@ -97,6 +97,62 @@ public sealed class ApplyLocalizedContentJsonCommandHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenExistingParkItemGetsImperialOnlyPatch_ShouldUpdateMetricTruth()
+    {
+        CancellationToken cancellationToken = new CancellationTokenSource().Token;
+        ParkItem existingItem = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "American coaster",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            AttractionDetails = new AttractionDetails
+            {
+                HeightInMeters = 50d,
+                HeightInFeet = 164.04d,
+            },
+        };
+        HandlerFixture fixture = new HandlerFixture();
+        fixture.ParkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", true, cancellationToken))
+            .ReturnsAsync(existingItem);
+        fixture.ParkItemRepository
+            .Setup(repository => repository.UpdateAsync(
+                "item-1",
+                It.Is<ParkItem>(item =>
+                    item.AttractionDetails != null
+                    && item.AttractionDetails.HeightInMeters == 60.96d
+                    && item.AttractionDetails.HeightInFeet == 200d),
+                cancellationToken))
+            .ReturnsAsync((string itemId, ParkItem item, CancellationToken token) => item);
+        fixture.SearchProjectionWriter
+            .Setup(writer => writer.UpsertAsync(SearchProjectionResourceTypes.ParkItems, "item-1", cancellationToken))
+            .Returns(Task.CompletedTask);
+        fixture.SearchProjectionWriter
+            .Setup(writer => writer.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", cancellationToken))
+            .Returns(Task.CompletedTask);
+        ApplyLocalizedContentJsonCommandHandler handler = fixture.CreateHandler();
+        string json = """
+        {
+          "heightInFeet": 200
+        }
+        """;
+
+        ApplicationResult<LocalizedContentApplyResult> result = await handler.HandleAsync(new ApplyLocalizedContentJsonCommand(
+            "park_item",
+            "item-1",
+            json), cancellationToken);
+
+        Assert.True(result.IsSuccess);
+        LocalizedContentApplyResult value = Assert.IsType<LocalizedContentApplyResult>(result.Value);
+        Assert.Contains("attractionDetails.heightInMeters", value.UpdatedFields);
+        Assert.Contains("attractionDetails.heightInFeet", value.UpdatedFields);
+        fixture.VerifyAll();
+        fixture.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenParkDescriptionJsonIsValid_ShouldMergeDescriptionsAndRefreshSearchProjections()
     {
         CancellationToken cancellationToken = new CancellationTokenSource().Token;
