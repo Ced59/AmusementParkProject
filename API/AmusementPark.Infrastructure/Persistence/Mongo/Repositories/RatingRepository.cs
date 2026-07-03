@@ -154,8 +154,8 @@ public sealed class RatingRepository : IRatingRepository
                 .ToListAsync(cancellationToken);
 
             IReadOnlyCollection<UserRatingListItemResult> enrichedRatings = await this.EnrichUserRatingsAsync(searchDocuments, cancellationToken);
-            IReadOnlyCollection<UserRatingListItemResult> searchItems = BuildUserRatingSearchWindow(enrichedRatings, parkSearch.Trim());
-            return new PagedResult<UserRatingListItemResult>(searchItems, 1, Math.Max(searchItems.Count, 1), searchItems.Count);
+            IReadOnlyCollection<UserRatingListItemResult> searchItems = BuildUserRatingSearchWindow(enrichedRatings, parkSearch.Trim(), pageSize);
+            return new PagedResult<UserRatingListItemResult>(searchItems, 1, pageSize, searchItems.Count);
         }
 
         long totalItems = await this.userRatingsCollection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
@@ -428,7 +428,10 @@ public sealed class RatingRepository : IRatingRepository
         return filter & parkItemFilter;
     }
 
-    private static IReadOnlyCollection<UserRatingListItemResult> BuildUserRatingSearchWindow(IReadOnlyCollection<UserRatingListItemResult> ratings, string parkSearch)
+    internal static IReadOnlyCollection<UserRatingListItemResult> BuildUserRatingSearchWindow(
+        IReadOnlyCollection<UserRatingListItemResult> ratings,
+        string parkSearch,
+        int pageSize)
     {
         if (ratings.Count == 0)
         {
@@ -452,12 +455,32 @@ public sealed class RatingRepository : IRatingRepository
         const int contextSize = 5;
         int startIndex = Math.Max(0, matchIndex - contextSize);
         int endIndex = Math.Min(groups.Count - 1, matchIndex + contextSize);
+        IGrouping<string, UserRatingListItemResult> matchingGroup = groups[matchIndex];
 
-        return groups
+        List<UserRatingListItemResult> matchingItems = OrderUserRatingSearchGroup(matchingGroup)
+            .Take(pageSize)
+            .ToList();
+        if (matchingItems.Count >= pageSize)
+        {
+            return matchingItems;
+        }
+
+        List<UserRatingListItemResult> contextItems = groups
             .Skip(startIndex)
             .Take(endIndex - startIndex + 1)
-            .SelectMany(static group => group.OrderByDescending(static rating => rating.Value).ThenBy(static rating => rating.TargetName, StringComparer.OrdinalIgnoreCase))
+            .Where(group => !string.Equals(group.Key, matchingGroup.Key, StringComparison.Ordinal))
+            .SelectMany(static group => OrderUserRatingSearchGroup(group))
+            .Take(pageSize - matchingItems.Count)
             .ToList();
+
+        return matchingItems.Concat(contextItems).ToList();
+    }
+
+    private static IOrderedEnumerable<UserRatingListItemResult> OrderUserRatingSearchGroup(IEnumerable<UserRatingListItemResult> group)
+    {
+        return group
+            .OrderByDescending(static rating => rating.Value)
+            .ThenBy(static rating => rating.TargetName, StringComparer.OrdinalIgnoreCase);
     }
 
     private static SortDefinition<RatingAggregateDocument> BuildRankingSort()

@@ -1,6 +1,20 @@
 {
-  "version": "3.1.56",
+  "version": "3.1.57",
   "history": [
+    {
+      "version": "3.1.57",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Tes recherches de notes restent plus rapides.",
+        "en": "Your rating searches stay faster.",
+        "de": "Deine Bewertungssuche bleibt schneller.",
+        "nl": "Je zoekopdrachten in beoordelingen blijven sneller.",
+        "it": "Le tue ricerche nelle valutazioni restano più rapide.",
+        "es": "Tus búsquedas de valoraciones siguen siendo más rápidas.",
+        "pl": "Wyszukiwanie ocen pozostaje szybsze.",
+        "pt": "As tuas pesquisas de avaliações continuam mais rápidas."
+      }
+    },
     {
       "version": "3.1.56",
       "releasedAt": "2026-07-03",
