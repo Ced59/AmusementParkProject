@@ -272,6 +272,42 @@ describe('SeoService', () => {
     ]);
   });
 
+  it('normalizes legacy park video URLs before building breadcrumb JSON-LD items', () => {
+    service.applyParkVideoSeo(
+      buildVideo({ title: 'Demo video' }),
+      buildPark({ name: 'Demo Park' }),
+      'fr',
+      '/fr/park/park-1/demo-park/video/s/video-1/demo-video'
+    );
+
+    expect(readBreadcrumbUrls()).toEqual([
+      'http://localhost:4200/fr/home',
+      'http://localhost:4200/fr/parks',
+      'http://localhost:4200/fr/park/park-1/demo-park',
+      'http://localhost:4200/fr/park/park-1/demo-park/videos',
+      'http://localhost:4200/fr/park/park-1/demo-park/videos/video-1/demo-video'
+    ]);
+  });
+
+  it('normalizes legacy park item video URLs before building breadcrumb JSON-LD items', () => {
+    service.applyParkItemVideoSeo(
+      buildVideo({ ownerType: VideoOwnerType.PARK_ITEM, ownerId: 'item-1', title: 'Demo item video' }),
+      buildParkItem({ name: 'Demo Item' }),
+      buildPark({ name: 'Demo Park' }),
+      'fr',
+      '/fr/park/park-1/demo-park/item/item-1/demo-item/video/s/video-1/demo-video'
+    );
+
+    expect(readBreadcrumbUrls()).toEqual([
+      'http://localhost:4200/fr/home',
+      'http://localhost:4200/fr/parks',
+      'http://localhost:4200/fr/park/park-1/demo-park',
+      'http://localhost:4200/fr/park/park-1/demo-park/item/item-1/demo-item',
+      'http://localhost:4200/fr/park/park-1/demo-park/item/item-1/demo-item/videos',
+      'http://localhost:4200/fr/park/park-1/demo-park/item/item-1/demo-item/videos/video-1/demo-video'
+    ]);
+  });
+
   it('uses a clean canonical route for stale park zone slugs', () => {
     service.applyParkZoneSeo(
       'Europa-Park',
@@ -426,13 +462,24 @@ describe('SeoService', () => {
   }
 
   function readBreadcrumbNames(): string[] {
-    const breadcrumb = readJsonLdScripts()
-      .find((value: Record<string, unknown>): boolean => value['@type'] === 'BreadcrumbList');
-    const elements: Array<Record<string, unknown>> = Array.isArray(breadcrumb?.['itemListElement'])
-      ? breadcrumb['itemListElement'] as Array<Record<string, unknown>>
-      : [];
+    const elements: Array<Record<string, unknown>> = readBreadcrumbElements();
 
     return elements.map((element: Record<string, unknown>): string => String(element['name'] ?? ''));
+  }
+
+  function readBreadcrumbUrls(): string[] {
+    const elements: Array<Record<string, unknown>> = readBreadcrumbElements();
+
+    return elements.map((element: Record<string, unknown>): string => String(element['item'] ?? ''));
+  }
+
+  function readBreadcrumbElements(): Array<Record<string, unknown>> {
+    const breadcrumb = readJsonLdScripts()
+      .find((value: Record<string, unknown>): boolean => value['@type'] === 'BreadcrumbList');
+
+    return Array.isArray(breadcrumb?.['itemListElement'])
+      ? breadcrumb['itemListElement'] as Array<Record<string, unknown>>
+      : [];
   }
 
   function readJsonLdScripts(): Array<Record<string, unknown>> {
