@@ -77,6 +77,7 @@ describe('AdminTechnicalStatsApiService', () => {
         robotHtmlBlockedNotSeoReady: 0,
         robotHtmlNotAllowed: 0,
         robotSsrUnavailableResponses: 0,
+        robotCacheOnlyMissResponses: 0,
         robotPageResponses: 5,
         robotCacheHitResponses: 4,
         robotHitRatePercent: 80,

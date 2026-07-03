@@ -1,6 +1,20 @@
 {
-  "version": "3.2.13",
+  "version": "3.2.14",
   "history": [
+    {
+      "version": "3.2.14",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les moteurs secondaires sollicitent moins le serveur.",
+        "en": "Secondary crawlers put less load on the server.",
+        "de": "Sekundäre Crawler belasten den Server weniger.",
+        "nl": "Secundaire crawlers belasten de server minder.",
+        "it": "I crawler secondari pesano meno sul server.",
+        "es": "Los rastreadores secundarios cargan menos el servidor.",
+        "pl": "Drugorzędne crawlery mniej obciążają serwer.",
+        "pt": "Os rastreadores secundários pesam menos no servidor."
+      }
+    },
     {
       "version": "3.2.13",
       "releasedAt": "2026-07-03",

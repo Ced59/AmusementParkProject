@@ -145,6 +145,15 @@
             <strong>{{ currentStats.seo.robotSsrUnavailableResponses | number }}</strong>
             <small>{{ t('robotHitRate') }} {{ currentStats.seo.robotHitRatePercent | number:'1.0-1' }}%</small>
           </article>
+
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('robotCacheOnlyMiss') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('robotCacheOnlyMissHelp')" [attr.aria-label]="t('robotCacheOnlyMissHelp')">?</button>
+            </div>
+            <strong>{{ currentStats.seo.robotCacheOnlyMissResponses | number }}</strong>
+            <small>{{ t('robotUnavailable') }} {{ currentStats.seo.robotSsrUnavailableResponses | number }}</small>
+          </article>
         </section>
 
         <section class="admin-technical-stats-grid">

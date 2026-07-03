@@ -59,6 +59,7 @@ export interface TechnicalStatsSeoSummary {
   robotHtmlBlockedNotSeoReady: number;
   robotHtmlNotAllowed: number;
   robotSsrUnavailableResponses: number;
+  robotCacheOnlyMissResponses: number;
   robotPageResponses: number;
   robotCacheHitResponses: number;
   robotHitRatePercent: number;

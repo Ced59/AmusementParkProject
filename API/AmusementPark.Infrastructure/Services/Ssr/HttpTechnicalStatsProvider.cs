@@ -212,6 +212,7 @@ public sealed class HttpTechnicalStatsProvider : ITechnicalStatsProvider
                 RobotHtmlBlockedNotSeoReady = ReadLong(seo, "robotHtmlBlockedNotSeoReady"),
                 RobotHtmlNotAllowed = ReadLong(seo, "robotHtmlNotAllowed"),
                 RobotSsrUnavailableResponses = ReadLong(seo, "robotSsrUnavailableResponses"),
+                RobotCacheOnlyMissResponses = ReadLong(seo, "robotCacheOnlyMissResponses"),
                 RobotPageResponses = ReadLong(seo, "robotPageResponses"),
                 RobotCacheHitResponses = ReadLong(seo, "robotCacheHitResponses"),
                 RobotHitRatePercent = ReadDouble(seo, "robotHitRatePercent"),

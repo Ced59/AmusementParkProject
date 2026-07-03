@@ -126,6 +126,8 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     robotBlockedHelp: 'Réponses robots où le retrait JS a été refusé parce que le HTML n’était pas SEO-ready.',
     robotUnavailable: 'SSR robot indisponible',
     robotUnavailableHelp: 'Réponses 503 envoyées aux robots quand un 200 CSR vide aurait été dangereux.',
+    robotCacheOnlyMiss: 'Robots cache-only',
+    robotCacheOnlyMissHelp: 'Réponses 503 envoyées aux robots secondaires lorsqu’aucun HTML SSR n’est déjà en cache.',
     robotFallbackBlocked: 'Fallback non autorisé',
     robotFallbackBlockedHelp: 'Réponses robots où le fallback CSR a été conservé avec scripts parce que le no-JS n’était pas autorisé.',
     seoDocsHitRate: 'Hit rate documents SEO',
@@ -246,6 +248,8 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     robotBlockedHelp: 'Robot responses where JS removal was refused because the HTML was not SEO-ready.',
     robotUnavailable: 'Robot SSR unavailable',
     robotUnavailableHelp: '503 responses sent to robots when a blank CSR 200 would be dangerous.',
+    robotCacheOnlyMiss: 'Cache-only robots',
+    robotCacheOnlyMissHelp: '503 responses sent to secondary robots when no SSR HTML is already cached.',
     robotFallbackBlocked: 'Fallback not allowed',
     robotFallbackBlockedHelp: 'Robot responses where CSR fallback kept scripts because no-JS was not allowed.',
     seoDocsHitRate: 'SEO documents hit rate',
@@ -284,6 +288,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
     'WARMUP-STALE': 'Warmup stale',
     'SSR-UNCACHED': 'SSR non cache',
     'SSR-BOT-UNAVAILABLE': 'Bot SSR indisponible',
+    'SSR-BOT-CACHE-ONLY-MISS': 'Bot cache-only sans cache',
     'CSR-CACHE-MISS-FALLBACK': 'Fallback CSR',
     'CSR-OVERLOAD-FALLBACK': 'Fallback surcharge',
     'CSR-WARMUP-SKIPPED': 'Warmup ignore'
@@ -297,6 +302,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
     'WARMUP-STALE': 'Warmup stale',
     'SSR-UNCACHED': 'Uncached SSR',
     'SSR-BOT-UNAVAILABLE': 'Bot SSR unavailable',
+    'SSR-BOT-CACHE-ONLY-MISS': 'Cache-only bot miss',
     'CSR-CACHE-MISS-FALLBACK': 'CSR fallback',
     'CSR-OVERLOAD-FALLBACK': 'Overload fallback',
     'CSR-WARMUP-SKIPPED': 'Warmup skipped'
@@ -433,6 +439,11 @@ export class AdminTechnicalStatsComponent implements OnInit {
         label: this.t('robotUnavailable'),
         value: `${stats.seo.robotSsrUnavailableResponses}`,
         help: this.t('robotUnavailableHelp')
+      },
+      {
+        label: this.t('robotCacheOnlyMiss'),
+        value: `${stats.seo.robotCacheOnlyMissResponses}`,
+        help: this.t('robotCacheOnlyMissHelp')
       },
       {
         label: this.t('robotFallbackBlocked'),

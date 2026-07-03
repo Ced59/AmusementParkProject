@@ -83,6 +83,7 @@ public static class TechnicalStatsHttpMappers
             RobotHtmlBlockedNotSeoReady = summary.RobotHtmlBlockedNotSeoReady,
             RobotHtmlNotAllowed = summary.RobotHtmlNotAllowed,
             RobotSsrUnavailableResponses = summary.RobotSsrUnavailableResponses,
+            RobotCacheOnlyMissResponses = summary.RobotCacheOnlyMissResponses,
             RobotPageResponses = summary.RobotPageResponses,
             RobotCacheHitResponses = summary.RobotCacheHitResponses,
             RobotHitRatePercent = summary.RobotHitRatePercent,

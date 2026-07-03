@@ -58,6 +58,7 @@ public sealed class HttpTechnicalStatsProviderTests
             "robotHtmlBlockedNotSeoReady": 0,
             "robotHtmlNotAllowed": 0,
             "robotSsrUnavailableResponses": 1,
+            "robotCacheOnlyMissResponses": 1,
             "robotPageResponses": 4,
             "robotCacheHitResponses": 3,
             "robotHitRatePercent": 75,
@@ -80,6 +81,7 @@ public sealed class HttpTechnicalStatsProviderTests
         Assert.True(snapshot.Seo.RobotNoJsHtmlEnabled);
         Assert.Equal(9, snapshot.Seo.SeoReadyHtmlResponses);
         Assert.Equal(1, snapshot.Seo.RobotSsrUnavailableResponses);
+        Assert.Equal(1, snapshot.Seo.RobotCacheOnlyMissResponses);
         Assert.Equal(2, snapshot.Seo.QueueFullRejections);
         TechnicalStatsRobotFamily family = Assert.Single(snapshot.Cache.RobotFamilies);
         Assert.Equal("Googlebot", family.Key);

@@ -136,6 +136,7 @@ function createStats(): TechnicalStatsSnapshot {
       robotHtmlBlockedNotSeoReady: 0,
       robotHtmlNotAllowed: 0,
       robotSsrUnavailableResponses: 0,
+      robotCacheOnlyMissResponses: 0,
       robotPageResponses: 4,
       robotCacheHitResponses: 2,
       robotHitRatePercent: 50,
