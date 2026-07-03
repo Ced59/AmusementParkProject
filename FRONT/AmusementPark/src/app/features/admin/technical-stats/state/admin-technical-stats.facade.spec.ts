@@ -89,7 +89,20 @@ function createStats(): TechnicalStatsSnapshot {
       robotCacheHitResponses: 2,
       robotHitRatePercent: 50,
       statuses: [{ key: 'HIT', count: 6, percent: 75 }],
-      robotFamilies: [{ key: 'Googlebot', count: 4, cacheHits: 2, hitRatePercent: 50 }]
+      robotFamilies: [{
+        key: 'Googlebot',
+        category: 'google',
+        count: 4,
+        cacheHits: 2,
+        hitRatePercent: 50,
+        seoReadyResponses: 4,
+        seoNotReadyResponses: 0,
+        seoReadyRatePercent: 100,
+        noJsResponses: 4,
+        blockedNotSeoReadyResponses: 0,
+        htmlNotAllowedResponses: 0,
+        ssrUnavailableResponses: 0
+      }]
     },
     storage: {
       memoryEntries: 1,
@@ -108,6 +121,29 @@ function createStats(): TechnicalStatsSnapshot {
       seoDocumentHits: 0,
       seoDocumentMisses: 0,
       assetMisses: 0
+    },
+    seo: {
+      robotNoJsHtmlEnabled: true,
+      htmlResponses: 8,
+      seoReadyHtmlResponses: 8,
+      seoNotReadyHtmlResponses: 0,
+      seoReadyRatePercent: 100,
+      robotHtmlResponses: 4,
+      robotSeoReadyHtmlResponses: 4,
+      robotSeoNotReadyHtmlResponses: 0,
+      robotSeoReadyRatePercent: 100,
+      robotNoJsHtmlResponses: 4,
+      robotHtmlBlockedNotSeoReady: 0,
+      robotHtmlNotAllowed: 0,
+      robotSsrUnavailableResponses: 0,
+      robotPageResponses: 4,
+      robotCacheHitResponses: 2,
+      robotHitRatePercent: 50,
+      seoDocumentRequests: 0,
+      seoDocumentHits: 0,
+      seoDocumentMisses: 0,
+      seoDocumentHitRatePercent: 0,
+      queueFullRejections: 0
     },
     rendering: {
       ssrRenderEnabled: true,

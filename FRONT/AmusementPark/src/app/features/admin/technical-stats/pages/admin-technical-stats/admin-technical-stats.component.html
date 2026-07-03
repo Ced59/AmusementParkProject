@@ -37,6 +37,20 @@
       <span>{{ t('build') }}: <strong>{{ currentStats.buildVersion }}</strong></span>
     </section>
 
+    <nav class="admin-technical-stats-tabs" aria-label="Technical stats sections">
+      @for (tab of tabOptions; track trackTab($index, tab)) {
+        <button
+          type="button"
+          class="admin-technical-stats-tab"
+          [class.admin-technical-stats-tab--active]="activeTab() === tab.key"
+          [attr.aria-current]="activeTab() === tab.key ? 'page' : null"
+          (click)="setActiveTab(tab.key)">
+          {{ t(tab.labelKey) }}
+        </button>
+      }
+    </nav>
+
+    @if (activeTab() === 'overview') {
     <section class="admin-technical-stats-kpis" aria-label="Technical KPIs">
       <article class="admin-technical-stats-kpi admin-technical-stats-kpi--gauge">
         <div class="admin-technical-stats-kpi__head">
@@ -259,5 +273,121 @@
         </form>
       </article>
     </section>
+    } @else {
+      <section class="admin-technical-stats-seo-head">
+        <div>
+          <h3>{{ t('seoTitle') }}</h3>
+          <p>{{ t('seoSubtitle') }}</p>
+        </div>
+        <app-ui-tag [value]="boolLabel(currentStats.seo.robotNoJsHtmlEnabled)" [severity]="currentStats.seo.robotNoJsHtmlEnabled ? 'success' : 'warn'"></app-ui-tag>
+      </section>
+
+      <section class="admin-technical-stats-kpis admin-technical-stats-kpis--seo" aria-label="SEO technical KPIs">
+        <article class="admin-technical-stats-kpi admin-technical-stats-kpi--gauge">
+          <div class="admin-technical-stats-kpi__head">
+            <span>{{ t('seoRobotHtmlReady') }}</span>
+            <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('seoRobotHtmlReadyHelp')" tooltipPosition="top" aria-label="Help">?</button>
+          </div>
+          <div class="admin-technical-stats-gauge" [style.background]="gaugeBackground(currentStats.seo.robotSeoReadyRatePercent)">
+            <strong>{{ currentStats.seo.robotSeoReadyRatePercent | number:'1.0-1' }}%</strong>
+          </div>
+          <small>{{ currentStats.seo.robotSeoReadyHtmlResponses | number }} / {{ currentStats.seo.robotHtmlResponses | number }}</small>
+        </article>
+
+        <article class="admin-technical-stats-kpi">
+          <div class="admin-technical-stats-kpi__head">
+            <span>{{ t('robotNoJs') }}</span>
+            <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('robotNoJsHelp')" tooltipPosition="top" aria-label="Help">?</button>
+          </div>
+          <strong>{{ currentStats.seo.robotNoJsHtmlResponses | number }}</strong>
+          <small>{{ t('seoHtmlReady') }} {{ currentStats.seo.seoReadyRatePercent | number:'1.0-1' }}%</small>
+        </article>
+
+        <article class="admin-technical-stats-kpi">
+          <div class="admin-technical-stats-kpi__head">
+            <span>{{ t('robotBlocked') }}</span>
+            <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('robotBlockedHelp')" tooltipPosition="top" aria-label="Help">?</button>
+          </div>
+          <strong>{{ currentStats.seo.robotHtmlBlockedNotSeoReady | number }}</strong>
+          <small>{{ t('robotFallbackBlocked') }} {{ currentStats.seo.robotHtmlNotAllowed | number }}</small>
+        </article>
+
+        <article class="admin-technical-stats-kpi">
+          <div class="admin-technical-stats-kpi__head">
+            <span>{{ t('robotUnavailable') }}</span>
+            <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('robotUnavailableHelp')" tooltipPosition="top" aria-label="Help">?</button>
+          </div>
+          <strong>{{ currentStats.seo.robotSsrUnavailableResponses | number }}</strong>
+          <small>{{ t('robotHitRate') }} {{ currentStats.seo.robotHitRatePercent | number:'1.0-1' }}%</small>
+        </article>
+      </section>
+
+      <section class="admin-technical-stats-grid">
+        <article class="admin-technical-stats-panel">
+          <div class="admin-technical-stats-section-head">
+            <h3>{{ t('seoTitle') }}</h3>
+          </div>
+
+          <div class="admin-technical-stats-metrics">
+            @for (metric of seoMetricRows(); track trackMetric($index, metric)) {
+              <div>
+                <span>
+                  {{ metric.label }}
+                  <button type="button" class="admin-technical-stats-help" [appUiTooltip]="metric.help" tooltipPosition="top" aria-label="Help">?</button>
+                </span>
+                <strong>{{ metric.value }}</strong>
+              </div>
+            }
+          </div>
+        </article>
+
+        <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
+          <div class="admin-technical-stats-section-head">
+            <h3>{{ t('robotsTitle') }}</h3>
+          </div>
+
+          <div class="admin-technical-stats-filter" role="group" [attr.aria-label]="t('seoRobotFilters')">
+            @for (filter of robotFilterOptions; track trackRobotFilter($index, filter)) {
+              <button
+                type="button"
+                class="admin-technical-stats-filter__button"
+                [class.admin-technical-stats-filter__button--active]="robotFamilyFilter() === filter.key"
+                (click)="setRobotFamilyFilter(filter.key)">
+                {{ t(filter.labelKey) }}
+              </button>
+            }
+          </div>
+
+          @if (visibleSeoRobotFamilies().length > 0) {
+            <div class="admin-technical-stats-robot-table">
+              <div class="admin-technical-stats-robot-table__head" aria-hidden="true">
+                <span>{{ t('robotFamily') }}</span>
+                <span>{{ t('robotGroup') }}</span>
+                <span>{{ t('robotRequests') }}</span>
+                <span>{{ t('robotCache') }}</span>
+                <span>{{ t('robotSeoReady') }}</span>
+                <span>{{ t('robotNoJsShort') }}</span>
+                <span>{{ t('robotBlockedShort') }}</span>
+                <span>{{ t('robotUnavailableShort') }}</span>
+              </div>
+              @for (robot of visibleSeoRobotFamilies(); track trackRobot($index, robot)) {
+                <div class="admin-technical-stats-robot-table__row">
+                  <strong>{{ robot.key }}</strong>
+                  <span>{{ robotCategoryLabel(robot.category) }}</span>
+                  <span>{{ robot.count | number }}</span>
+                  <span>{{ robot.hitRatePercent | number:'1.0-1' }}%</span>
+                  <span>{{ robot.seoReadyRatePercent | number:'1.0-1' }}%</span>
+                  <span>{{ robot.noJsResponses | number }}</span>
+                  <span>{{ robot.blockedNotSeoReadyResponses | number }}</span>
+                  <span>{{ robot.ssrUnavailableResponses | number }}</span>
+                </div>
+              }
+            </div>
+          } @else {
+            <p class="admin-technical-stats-empty">{{ t('noData') }}</p>
+          }
+        </article>
+      </section>
+    }
   }
 </app-ui-card>
