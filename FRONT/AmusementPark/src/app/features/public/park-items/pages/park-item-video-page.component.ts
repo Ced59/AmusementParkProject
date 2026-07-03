@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { combineLatest } from 'rxjs';
+import { combineLatest, startWith } from 'rxjs';
 
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
@@ -106,24 +106,23 @@ export class ParkItemVideoPageComponent implements OnInit {
   ngOnInit(): void {
     const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
 
-    this.currentLanguage.set(initialLanguage);
-    this.stateFacade.setCurrentLanguage(initialLanguage);
-
-    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
-      this.currentLanguage.set(language);
-      this.stateFacade.setCurrentLanguage(language);
-    });
-
-    combineLatest([this.route.paramMap, this.route.queryParamMap])
+    combineLatest([
+      this.route.paramMap,
+      this.route.queryParamMap,
+      this.translationService.languageChanged.pipe(startWith(initialLanguage))
+    ])
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(([params]: [ParamMap, ParamMap]) => {
+      .subscribe(([params, _queryParams, language]: [ParamMap, ParamMap, string]) => {
+        this.currentLanguage.set(language);
+        this.stateFacade.setCurrentLanguage(language);
+
         const itemId: string | null = params.get('itemId');
         const videoId: string | null = params.get('videoId');
         if (!itemId || !videoId) {
           return;
         }
 
-        const loadKey: string = `${itemId}|${videoId}`;
+        const loadKey: string = `${language}|${itemId}|${videoId}`;
         if (loadKey === this.currentLoadKey) {
           return;
         }
