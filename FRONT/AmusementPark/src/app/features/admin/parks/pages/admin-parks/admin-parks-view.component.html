@@ -162,6 +162,7 @@
     [loading]="loading()"
     [paginator]="true"
     [rows]="pageSize()"
+    [first]="(currentPage() - 1) * pageSize()"
     [totalRecords]="totalRecords()"
     [lazy]="true"
     (onLazyLoad)="onPageChanged($event)"
