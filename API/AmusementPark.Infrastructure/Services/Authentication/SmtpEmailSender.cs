@@ -14,6 +14,30 @@ namespace AmusementPark.Infrastructure.Services.Authentication;
 /// </summary>
 public sealed class SmtpEmailSender : IEmailSender
 {
+    private static readonly Regex AnchorWithHrefRegex = new Regex(
+        @"<\s*a\b(?=[^>]*\bhref\s*=\s*(?:""(?<href>[^""]*)""|'(?<href>[^']*)'|(?<href>[^\s>]+)))[^>]*>(?<label>.*?)<\s*/\s*a\s*>",
+        RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+
+    private static readonly Regex LineBreakTagRegex = new Regex(
+        @"<\s*br\s*/?\s*>",
+        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+
+    private static readonly Regex BlockClosingTagRegex = new Regex(
+        @"<\s*/\s*(p|div|h1|h2|h3|li|tr)\s*>",
+        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+
+    private static readonly Regex HtmlTagRegex = new Regex(
+        "<.*?>",
+        RegexOptions.CultureInvariant);
+
+    private static readonly Regex InlineWhitespaceRegex = new Regex(
+        @"[ \t]+",
+        RegexOptions.CultureInvariant);
+
+    private static readonly Regex ExcessiveLineBreakRegex = new Regex(
+        @"\n{3,}",
+        RegexOptions.CultureInvariant);
+
     private readonly EmailSettings emailSettings;
     private readonly ILogger<SmtpEmailSender> logger;
 
@@ -67,14 +91,42 @@ public sealed class SmtpEmailSender : IEmailSender
         return SecureSocketOptions.Auto;
     }
 
-    private static string BuildTextBody(string htmlBody)
+    internal static string BuildTextBody(string htmlBody)
     {
-        string withLineBreaks = Regex.Replace(htmlBody, @"<\s*br\s*/?\s*>", "\n", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
-        string withParagraphBreaks = Regex.Replace(withLineBreaks, @"<\s*/\s*(p|div|h1|h2|h3|li|tr)\s*>", "\n", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
-        string withoutTags = Regex.Replace(withParagraphBreaks, "<.*?>", " ", RegexOptions.CultureInvariant);
+        string withActionLinks = AnchorWithHrefRegex.Replace(htmlBody, PreserveAnchorTextAndHref);
+        string withLineBreaks = LineBreakTagRegex.Replace(withActionLinks, "\n");
+        string withParagraphBreaks = BlockClosingTagRegex.Replace(withLineBreaks, "\n");
+        string withoutTags = HtmlTagRegex.Replace(withParagraphBreaks, " ");
         string decoded = WebUtility.HtmlDecode(withoutTags);
-        string normalizedWhitespace = Regex.Replace(decoded, @"[ \t]+", " ", RegexOptions.CultureInvariant);
-        string normalizedLineBreaks = Regex.Replace(normalizedWhitespace, @"\n{3,}", "\n\n", RegexOptions.CultureInvariant);
+        string normalizedWhitespace = InlineWhitespaceRegex.Replace(decoded, " ");
+        string normalizedLineBreaks = ExcessiveLineBreakRegex.Replace(normalizedWhitespace, "\n\n");
         return normalizedLineBreaks.Trim();
+    }
+
+    private static string PreserveAnchorTextAndHref(Match match)
+    {
+        string href = WebUtility.HtmlDecode(match.Groups["href"].Value).Trim();
+        string label = StripHtmlFragmentToText(match.Groups["label"].Value);
+
+        if (string.IsNullOrWhiteSpace(href))
+        {
+            return WebUtility.HtmlEncode(label);
+        }
+
+        if (string.IsNullOrWhiteSpace(label) || string.Equals(label, href, StringComparison.Ordinal))
+        {
+            return WebUtility.HtmlEncode(href);
+        }
+
+        return $"{WebUtility.HtmlEncode(label)}\n{WebUtility.HtmlEncode(href)}";
+    }
+
+    private static string StripHtmlFragmentToText(string htmlFragment)
+    {
+        string withLineBreaks = LineBreakTagRegex.Replace(htmlFragment, "\n");
+        string withoutTags = HtmlTagRegex.Replace(withLineBreaks, " ");
+        string decoded = WebUtility.HtmlDecode(withoutTags);
+        string normalizedWhitespace = InlineWhitespaceRegex.Replace(decoded, " ");
+        return normalizedWhitespace.Trim();
     }
 }

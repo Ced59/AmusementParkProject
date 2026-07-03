@@ -201,7 +201,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line GOOGLE_REDIRECT_URI "$(value_or_default GOOGLE_REDIRECT_URI "${public_base_url%/}/api/auth/external/google/callback")"
   write_line FACEBOOK_APP_ID "$(value_or_default FACEBOOK_APP_ID '')"
   write_line FACEBOOK_APP_SECRET "$(value_or_default FACEBOOK_APP_SECRET '')"
-  write_line EMAIL_MODE "$(value_or_default EMAIL_MODE 'Console')"
+  write_line EMAIL_MODE "$(value_or_default EMAIL_MODE 'Smtp')"
   write_line EMAIL_HOST "$(value_or_default EMAIL_HOST '')"
   write_line EMAIL_PORT "$(value_or_default EMAIL_PORT '587')"
   write_line EMAIL_USE_SSL "$(value_or_default EMAIL_USE_SSL 'false')"
