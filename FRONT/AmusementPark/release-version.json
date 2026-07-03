@@ -1,6 +1,20 @@
 {
-  "version": "3.2.12",
+  "version": "3.2.13",
   "history": [
+    {
+      "version": "3.2.13",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les mises en ligne se terminent plus proprement.",
+        "en": "Deployments finish more cleanly.",
+        "de": "Bereitstellungen schließen sauberer ab.",
+        "nl": "Publicaties ronden netter af.",
+        "it": "Le pubblicazioni si chiudono in modo più pulito.",
+        "es": "Las publicaciones terminan de forma más limpia.",
+        "pl": "Wdrożenia kończą się czyściej.",
+        "pt": "As publicações terminam de forma mais limpa."
+      }
+    },
     {
       "version": "3.2.12",
       "releasedAt": "2026-07-03",
