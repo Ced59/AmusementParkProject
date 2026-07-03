@@ -44,11 +44,11 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
 
         IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { query.Id }, cancellationToken, includeHidden: false);
         int attractionCount = counts.TryGetValue(query.Id, out int value) ? value : 0;
+        IReadOnlyCollection<Image> logoImages = await this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, new[] { query.Id }, ImageCategory.Logo, cancellationToken);
+        Dictionary<string, HashSet<string>> publishedLogoImageIdsByOwner = AttractionManufacturerImageSelection.BuildPublishedLogoImageIdsByOwner(logoImages);
         IReadOnlyDictionary<string, string> logoImageIds = await this.imageRepository.GetMainImageIdsByOwnersAsync(ImageOwnerType.AttractionManufacturer, new[] { query.Id }, ImageCategory.Logo, publishedOnly: true, cancellationToken);
         IReadOnlyDictionary<string, string> manufacturerImageIds = await this.imageRepository.GetMainImageIdsByOwnersAsync(ImageOwnerType.AttractionManufacturer, new[] { query.Id }, ImageCategory.Manufacturer, publishedOnly: true, cancellationToken);
-        string? currentLogoImageId = !string.IsNullOrWhiteSpace(entity.CurrentLogoImageId)
-            ? entity.CurrentLogoImageId
-            : logoImageIds.GetValueOrDefault(query.Id);
+        string? currentLogoImageId = AttractionManufacturerImageSelection.ResolveLogoImageId(entity, logoImageIds, publishedLogoImageIdsByOwner);
         string? mainImageId = !string.IsNullOrWhiteSpace(currentLogoImageId)
             ? currentLogoImageId
             : manufacturerImageIds.GetValueOrDefault(query.Id);

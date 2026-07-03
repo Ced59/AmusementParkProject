@@ -55,6 +55,8 @@ public sealed class GetAttractionManufacturersQueryHandler : IQueryHandler<GetAt
 
         List<string> ids = page.Items.Where(static entity => !string.IsNullOrWhiteSpace(entity.Id)).Select(static entity => entity.Id).Cast<string>().ToList();
         IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(ids, cancellationToken, includeHidden: false);
+        IReadOnlyCollection<Image> logoImages = await this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, ids, ImageCategory.Logo, cancellationToken);
+        Dictionary<string, HashSet<string>> publishedLogoImageIdsByOwner = AttractionManufacturerImageSelection.BuildPublishedLogoImageIdsByOwner(logoImages);
         IReadOnlyDictionary<string, string> logoImageIds = await this.imageRepository.GetMainImageIdsByOwnersAsync(ImageOwnerType.AttractionManufacturer, ids, ImageCategory.Logo, publishedOnly: true, cancellationToken);
         IReadOnlyDictionary<string, string> manufacturerImageIds = await this.imageRepository.GetMainImageIdsByOwnersAsync(ImageOwnerType.AttractionManufacturer, ids, ImageCategory.Manufacturer, publishedOnly: true, cancellationToken);
 
@@ -67,8 +69,8 @@ public sealed class GetAttractionManufacturersQueryHandler : IQueryHandler<GetAt
             ClosedYear = entity.ClosedYear,
             ContactDetails = entity.ContactDetails,
             Biography = entity.Biography,
-            CurrentLogoImageId = ResolveLogoImageId(entity, logoImageIds),
-            MainImageId = ResolveMainImageId(entity, logoImageIds, manufacturerImageIds),
+            CurrentLogoImageId = AttractionManufacturerImageSelection.ResolveLogoImageId(entity, logoImageIds, publishedLogoImageIdsByOwner),
+            MainImageId = AttractionManufacturerImageSelection.ResolveMainImageId(entity, logoImageIds, manufacturerImageIds, publishedLogoImageIdsByOwner),
             IsVisible = entity.IsVisible,
             AdminReviewStatus = entity.AdminReviewStatus,
             AttractionCount = !string.IsNullOrWhiteSpace(entity.Id) && counts.TryGetValue(entity.Id, out int value) ? value : 0,
@@ -81,33 +83,5 @@ public sealed class GetAttractionManufacturersQueryHandler : IQueryHandler<GetAt
             page.TotalItems);
 
         return ApplicationResult<PagedResult<AttractionManufacturerResult>>.Success(result);
-    }
-
-    private static string? ResolveLogoImageId(AttractionManufacturer entity, IReadOnlyDictionary<string, string> logoImageIds)
-    {
-        if (!string.IsNullOrWhiteSpace(entity.CurrentLogoImageId))
-        {
-            return entity.CurrentLogoImageId;
-        }
-
-        return !string.IsNullOrWhiteSpace(entity.Id) && logoImageIds.TryGetValue(entity.Id, out string? logoImageId)
-            ? logoImageId
-            : null;
-    }
-
-    private static string? ResolveMainImageId(
-        AttractionManufacturer entity,
-        IReadOnlyDictionary<string, string> logoImageIds,
-        IReadOnlyDictionary<string, string> manufacturerImageIds)
-    {
-        string? logoImageId = ResolveLogoImageId(entity, logoImageIds);
-        if (!string.IsNullOrWhiteSpace(logoImageId))
-        {
-            return logoImageId;
-        }
-
-        return !string.IsNullOrWhiteSpace(entity.Id) && manufacturerImageIds.TryGetValue(entity.Id, out string? imageId)
-            ? imageId
-            : null;
     }
 }
