@@ -1,6 +1,20 @@
 {
-  "version": "3.1.50",
+  "version": "3.1.51",
   "history": [
+    {
+      "version": "3.1.51",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les opérations d’administration restent plus fiables.",
+        "en": "Administration operations stay more reliable.",
+        "de": "Administrationsabläufe bleiben zuverlässiger.",
+        "nl": "Administratiebewerkingen blijven betrouwbaarder.",
+        "it": "Le operazioni di amministrazione restano più affidabili.",
+        "es": "Las operaciones de administración siguen siendo más fiables.",
+        "pl": "Operacje administracyjne pozostają bardziej niezawodne.",
+        "pt": "As operações de administração continuam mais fiáveis."
+      }
+    },
     {
       "version": "3.1.50",
       "releasedAt": "2026-07-03",
