@@ -73,6 +73,48 @@ public sealed class ParkWeatherRefreshStarterTests
         queue.Verify(refreshQueue => refreshQueue.EnqueueAsync(It.IsAny<ParkWeatherRefreshJob>(), It.IsAny<CancellationToken>()), Times.Never);
     }
 
+    [Fact]
+    public async Task StartManualFullRefreshAsync_WhenQueueFailsAfterRunCreation_ShouldMarkRunFailed()
+    {
+        ParkWeatherRun createdRun = null!;
+        ParkWeatherRun updatedRun = null!;
+        Mock<IParkWeatherRunRepository> runRepository = new Mock<IParkWeatherRunRepository>(MockBehavior.Strict);
+        runRepository
+            .Setup(repository => repository.HasActiveRunAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        runRepository
+            .Setup(repository => repository.CreateAsync(It.IsAny<ParkWeatherRun>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkWeatherRun run, CancellationToken _) =>
+            {
+                run.Id = "run-1";
+                createdRun = run;
+                return run;
+            });
+        runRepository
+            .Setup(repository => repository.UpdateAsync(It.IsAny<ParkWeatherRun>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkWeatherRun, CancellationToken>((run, _) => updatedRun = run)
+            .Returns(Task.CompletedTask);
+        Mock<IParkWeatherRefreshQueue> queue = new Mock<IParkWeatherRefreshQueue>(MockBehavior.Strict);
+        queue
+            .Setup(refreshQueue => refreshQueue.EnqueueAsync(It.IsAny<ParkWeatherRefreshJob>(), It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new InvalidOperationException("Queue is unavailable."));
+        ParkWeatherRefreshStarter starter = new ParkWeatherRefreshStarter(
+            runRepository.Object,
+            queue.Object,
+            new TestRefreshSettings());
+
+        ApplicationResult<ParkWeatherRunResult> result = await starter.StartManualFullRefreshAsync(CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "park-weather.queue-unavailable");
+        Assert.Same(createdRun, updatedRun);
+        Assert.Equal(ParkWeatherRunStatus.Failed, updatedRun.Status);
+        Assert.NotNull(updatedRun.CompletedAtUtc);
+        Assert.Equal("Weather refresh could not be queued.", updatedRun.Message);
+        runRepository.VerifyAll();
+        queue.VerifyAll();
+    }
+
     private sealed class TestRefreshSettings : IParkWeatherRefreshSettings
     {
         public bool IsAutomaticRefreshEnabled => true;

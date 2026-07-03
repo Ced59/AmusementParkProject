@@ -121,7 +121,10 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
                     urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/map", park.UpdatedAtUtc, "weekly", 0.78m));
                 }
 
-                urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/weather", park.UpdatedAtUtc, "daily", 0.76m));
+                if (HasWeatherCoordinates(park))
+                {
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/weather", park.UpdatedAtUtc, "daily", 0.76m));
+                }
             }
         }
 
@@ -142,6 +145,12 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
         return ParkItemsSitemapSectionProvider.IsPublicItem(item)
                && item.Position is not null
                && !(Math.Abs(item.Position.Latitude) < double.Epsilon && Math.Abs(item.Position.Longitude) < double.Epsilon);
+    }
+
+    internal static bool HasWeatherCoordinates(Park park)
+    {
+        return park.Position is not null
+               && !(Math.Abs(park.Position.Latitude) < double.Epsilon && Math.Abs(park.Position.Longitude) < double.Epsilon);
     }
 
     internal static IReadOnlyCollection<string> NormalizeLanguages(IReadOnlyCollection<string> languages)

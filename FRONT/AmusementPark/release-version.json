@@ -1,6 +1,20 @@
 {
-  "version": "3.1.57",
+  "version": "3.1.58",
   "history": [
+    {
+      "version": "3.1.58",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "La météo des parcs reste plus fiable.",
+        "en": "Park weather stays more reliable.",
+        "de": "Das Parkwetter bleibt zuverlässiger.",
+        "nl": "Het parkweer blijft betrouwbaarder.",
+        "it": "Il meteo dei parchi resta più affidabile.",
+        "es": "La meteorología de los parques sigue siendo más fiable.",
+        "pl": "Pogoda parków pozostaje bardziej niezawodna.",
+        "pt": "A meteorologia dos parques continua mais fiável."
+      }
+    },
     {
       "version": "3.1.57",
       "releasedAt": "2026-07-03",

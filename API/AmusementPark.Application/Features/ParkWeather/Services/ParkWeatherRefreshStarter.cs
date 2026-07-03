@@ -116,8 +116,19 @@ public sealed class ParkWeatherRefreshStarter
         };
 
         ParkWeatherRun createdRun = await this.runRepository.CreateAsync(run, cancellationToken);
-        await this.queue.EnqueueAsync(new ParkWeatherRefreshJob(createdRun.Id ?? string.Empty), cancellationToken);
-        return ApplicationResult<ParkWeatherRunResult>.Success(createdRun.ToResult());
+        try
+        {
+            await this.queue.EnqueueAsync(new ParkWeatherRefreshJob(createdRun.Id ?? string.Empty), cancellationToken);
+            return ApplicationResult<ParkWeatherRunResult>.Success(createdRun.ToResult());
+        }
+        catch (Exception)
+        {
+            createdRun.Status = ParkWeatherRunStatus.Failed;
+            createdRun.CompletedAtUtc = DateTime.UtcNow;
+            createdRun.Message = "Weather refresh could not be queued.";
+            await this.runRepository.UpdateAsync(createdRun, CancellationToken.None);
+            return ApplicationResult<ParkWeatherRunResult>.Failure(ParkWeatherApplicationErrors.QueueUnavailable());
+        }
     }
 
     private DateOnly ResolveNextAutomaticRunLocalDate(DateTime utcNow)
