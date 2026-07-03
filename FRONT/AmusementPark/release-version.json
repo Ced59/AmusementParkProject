@@ -1,6 +1,20 @@
 {
-  "version": "3.1.51",
+  "version": "3.1.52",
   "history": [
+    {
+      "version": "3.1.52",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le formulaire de contact préserve mieux ton message.",
+        "en": "The contact form preserves your message better.",
+        "de": "Das Kontaktformular bewahrt deine Nachricht besser.",
+        "nl": "Het contactformulier bewaart je bericht beter.",
+        "it": "Il modulo di contatto conserva meglio il tuo messaggio.",
+        "es": "El formulario de contacto conserva mejor tu mensaje.",
+        "pl": "Formularz kontaktowy lepiej zachowuje Twoją wiadomość.",
+        "pt": "O formulário de contacto preserva melhor a tua mensagem."
+      }
+    },
     {
       "version": "3.1.51",
       "releasedAt": "2026-07-03",
