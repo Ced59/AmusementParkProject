@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.Core.Domain.Images;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
@@ -24,5 +25,14 @@ public sealed partial class ParkGraphUpsertProcessor
             ImageOwnerType.ParkFounder => ImageCategory.Founder,
             _ => ImageCategory.Park,
         };
+    }
+
+    private static void AddSkippedUnresolvedImageOwnerChange(Image image, ImageOwnerType requestedOwnerType, string? resolvedOwnerId, ParkGraphUpsertResult result)
+    {
+        ParkGraphUpsertChange change = BuildEntityChange("Image", image.Id, null, image.OriginalFileName ?? image.Id, "Skipped", "ownerKey");
+        AddChange(change, "ownerType", image.OwnerType.ToString(), requestedOwnerType.ToString());
+        AddChange(change, "ownerId", image.OwnerId, resolvedOwnerId);
+        result.Warnings.Add($"Image '{image.Id}' ignored: owner could not be resolved.");
+        result.Changes.Add(change);
     }
 }

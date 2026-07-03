@@ -18,6 +18,7 @@ public sealed partial class ParkGraphUpsertProcessor
             return seoChanges;
         }
 
+        List<ParkGraphResolvedDeletion> resolvedDeletions = new List<ParkGraphResolvedDeletion>();
         foreach (ParkGraphDeletionRequest request in requests)
         {
             ParkGraphDeletionTarget? target = await this.ResolveDeletionTargetAsync(request, result, cancellationToken);
@@ -26,6 +27,23 @@ public sealed partial class ParkGraphUpsertProcessor
                 continue;
             }
 
+            if (!await this.IsDeletionTargetInTargetParkAsync(target, targetPark, cancellationToken))
+            {
+                this.AddSkippedDeletionChange(
+                    result,
+                    target.EntityType,
+                    target.Id,
+                    $"Suppression {target.EntityType} '{target.Id}' refusée : l'élément n'appartient pas au parc cible '{targetPark.Id}'.");
+                continue;
+            }
+
+            resolvedDeletions.Add(new ParkGraphResolvedDeletion(request, target));
+        }
+
+        foreach (ParkGraphResolvedDeletion deletion in resolvedDeletions)
+        {
+            ParkGraphDeletionRequest request = deletion.Request;
+            ParkGraphDeletionTarget target = deletion.Target;
             ParkGraphUpsertChange change = BuildEntityChange(target.EntityType, target.Id, null, target.DisplayName, "Deleted", request.MatchedBy);
             AddChange(change, "suppr", "present", "deleted");
             result.Changes.Add(change);
@@ -195,6 +213,42 @@ public sealed partial class ParkGraphUpsertProcessor
         if (target.ParkZone is not null)
         {
             return await this.parkZoneRepository.DeleteAsync(target.ParkZone.Id, cancellationToken);
+        }
+
+        return false;
+    }
+
+    private async Task<bool> IsDeletionTargetInTargetParkAsync(ParkGraphDeletionTarget target, Park targetPark, CancellationToken cancellationToken)
+    {
+        if (target.ParkItem is not null)
+        {
+            return string.Equals(target.ParkItem.ParkId, targetPark.Id, StringComparison.Ordinal);
+        }
+
+        if (target.ParkZone is not null)
+        {
+            return string.Equals(target.ParkZone.ParkId, targetPark.Id, StringComparison.Ordinal);
+        }
+
+        if (target.Image is not null)
+        {
+            return await this.IsImageDeletionTargetInTargetParkAsync(target.Image, targetPark, cancellationToken);
+        }
+
+        return false;
+    }
+
+    private async Task<bool> IsImageDeletionTargetInTargetParkAsync(Image image, Park targetPark, CancellationToken cancellationToken)
+    {
+        if (image.OwnerType == ImageOwnerType.Park)
+        {
+            return string.Equals(image.OwnerId, targetPark.Id, StringComparison.Ordinal);
+        }
+
+        if (image.OwnerType == ImageOwnerType.ParkItem && !string.IsNullOrWhiteSpace(image.OwnerId))
+        {
+            ParkItem? ownerItem = await this.parkItemRepository.GetByIdAsync(image.OwnerId, true, cancellationToken);
+            return string.Equals(ownerItem?.ParkId, targetPark.Id, StringComparison.Ordinal);
         }
 
         return false;
@@ -409,6 +463,8 @@ public sealed partial class ParkGraphUpsertProcessor
     }
 
     private sealed record ParkGraphDeletionRequest(string? EntityType, string? Id, string MatchedBy);
+
+    private sealed record ParkGraphResolvedDeletion(ParkGraphDeletionRequest Request, ParkGraphDeletionTarget Target);
 
     private sealed class ParkGraphDeletionTarget
     {

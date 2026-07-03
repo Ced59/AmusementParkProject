@@ -66,10 +66,11 @@ public sealed partial class ParkGraphUpsertProcessor
             bool hasOwnerPatch = HasProperty(patch, "ownerType") || HasProperty(patch, "ownerId") || HasProperty(patch, "ownerKey");
             ImageOwnerType ownerType = image.OwnerType;
             string? resolvedOwnerId = image.OwnerId;
+            bool ownerResolved = true;
             if (hasOwnerPatch)
             {
                 string? ownerId = ReadString(patch, "ownerId");
-                ResolveGraphImageOwner(
+                ownerResolved = ResolveGraphImageOwner(
                     patch,
                     park,
                     itemKeys,
@@ -83,6 +84,12 @@ public sealed partial class ParkGraphUpsertProcessor
                 if (ownerType == ImageOwnerType.AttractionManufacturer)
                 {
                     resolvedOwnerId = RemapId(manufacturerIdRemaps, resolvedOwnerId);
+                }
+
+                if (!ownerResolved || string.IsNullOrWhiteSpace(resolvedOwnerId))
+                {
+                    AddSkippedUnresolvedImageOwnerChange(image, ownerType, resolvedOwnerId, result);
+                    continue;
                 }
             }
 

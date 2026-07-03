@@ -358,6 +358,8 @@ public sealed partial class ParkGraphUpsertProcessor
     {
         public Dictionary<string, string> ManufacturerIdRemaps { get; } = new Dictionary<string, string>(StringComparer.Ordinal);
 
+        public Dictionary<string, string> ParkIdRemaps { get; } = new Dictionary<string, string>(StringComparer.Ordinal);
+
         public HashSet<string> ChangedParkIds { get; } = new HashSet<string>(StringComparer.Ordinal);
 
         public HashSet<string> ChangedParkItemIds { get; } = new HashSet<string>(StringComparer.Ordinal);

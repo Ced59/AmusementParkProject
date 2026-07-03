@@ -118,20 +118,14 @@ public sealed partial class ParkGraphUpsertProcessor
         JsonElement? parkPatch = GetObject(root, "park");
         JsonElement? identity = GetObject(root, "identity");
         JsonElement? openingHoursPatch = ResolveOpeningHoursPatch(root);
+        JsonElement? references = root.TryGetProperty("references", out JsonElement referencesElement) && referencesElement.ValueKind == JsonValueKind.Object
+            ? referencesElement
+            : null;
         bool requiresParkContext = RequiresParkContext(root);
         Dictionary<string, string> founderKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> operatorKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> manufacturerKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> imageKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
-        if (root.TryGetProperty("references", out JsonElement references) && references.ValueKind == JsonValueKind.Object)
-        {
-            await this.ProcessFoundersAsync(references, founderKeys, result, apply, cancellationToken);
-            await this.ProcessOperatorsAsync(references, operatorKeys, result, apply, cancellationToken);
-            await this.ProcessManufacturersAsync(references, manufacturerKeys, result, apply, cancellationToken);
-        }
-
-        ParkGraphUpsertMergeSummary mergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
 
         string? targetParkId = NormalizeString(request.TargetParkId)
             ?? ReadString(identity, "parkId")
@@ -163,15 +157,18 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             if (!requiresParkContext)
             {
+                await this.ProcessReferencesAsync(references, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
+                ParkGraphUpsertMergeSummary referenceFreeMergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
+
                 if (result.Errors.Count == 0)
                 {
-                    await this.ProcessImagesAsync(root, null, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase), founderKeys, operatorKeys, manufacturerKeys, mergeSummary.ManufacturerIdRemaps, imageKeys, result, apply, cancellationToken);
+                    await this.ProcessImagesAsync(root, null, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase), founderKeys, operatorKeys, manufacturerKeys, referenceFreeMergeSummary.ManufacturerIdRemaps, imageKeys, result, apply, cancellationToken);
                 }
 
                 FinalizeCounts(result);
                 if (apply && result.Errors.Count == 0)
                 {
-                    await this.NotifyMergeSeoAsync(mergeSummary, cancellationToken);
+                    await this.NotifyMergeSeoAsync(referenceFreeMergeSummary, cancellationToken);
                 }
 
                 await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
@@ -186,6 +183,17 @@ public sealed partial class ParkGraphUpsertProcessor
             return apply
                 ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car aucun parc cible fiable n'a été résolu."))
             : ApplicationResult<ParkGraphUpsertResult>.Success(result);
+        }
+
+        await this.ProcessReferencesAsync(references, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
+        ParkGraphUpsertMergeSummary mergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
+        targetPark = await this.RefreshTargetParkAfterAppliedMergesAsync(targetPark, mergeSummary, apply, cancellationToken);
+        if (targetPark is null)
+        {
+            result.CanApply = false;
+            FinalizeCounts(result);
+            await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+            return ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car le parc cible n'est plus disponible après les fusions."));
         }
 
         PublicSeoParkSnapshot? previousParkSnapshot = PublicSeoParkSnapshot.FromPark(targetPark);
@@ -251,6 +259,25 @@ public sealed partial class ParkGraphUpsertProcessor
         FinalizeCounts(result);
         await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
         return ApplicationResult<ParkGraphUpsertResult>.Success(result);
+    }
+
+    private async Task ProcessReferencesAsync(
+        JsonElement? references,
+        Dictionary<string, string> founderKeys,
+        Dictionary<string, string> operatorKeys,
+        Dictionary<string, string> manufacturerKeys,
+        ParkGraphUpsertResult result,
+        bool apply,
+        CancellationToken cancellationToken)
+    {
+        if (references is null)
+        {
+            return;
+        }
+
+        await this.ProcessFoundersAsync(references.Value, founderKeys, result, apply, cancellationToken);
+        await this.ProcessOperatorsAsync(references.Value, operatorKeys, result, apply, cancellationToken);
+        await this.ProcessManufacturersAsync(references.Value, manufacturerKeys, result, apply, cancellationToken);
     }
 
     private static bool RequiresParkContext(JsonElement root)
