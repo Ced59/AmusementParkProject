@@ -1,6 +1,20 @@
 {
-  "version": "3.2.9",
+  "version": "3.2.10",
   "history": [
+    {
+      "version": "3.2.10",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les réglages techniques sont mieux appliqués.",
+        "en": "Technical settings are applied more reliably.",
+        "de": "Technische Einstellungen werden zuverlässiger angewendet.",
+        "nl": "Technische instellingen worden betrouwbaarder toegepast.",
+        "it": "Le impostazioni tecniche sono applicate in modo più affidabile.",
+        "es": "Los ajustes técnicos se aplican con más fiabilidad.",
+        "pl": "Ustawienia techniczne są stosowane bardziej niezawodnie.",
+        "pt": "As definições técnicas são aplicadas de forma mais fiável."
+      }
+    },
     {
       "version": "3.2.9",
       "releasedAt": "2026-07-03",
