@@ -2955,6 +2955,118 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenImperialOnlyPatchUpdatesExistingAttraction_ShouldUpdateMetricTruth()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Park",
+            CountryCode = "US",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        ParkItem item = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Existing Coaster",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            AttractionDetails = new AttractionDetails
+            {
+                HeightInMeters = 50d,
+                HeightInFeet = 164.04d,
+            },
+        };
+        ParkItem? updatedItem = null;
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { item });
+        parkItemRepository
+            .Setup(value => value.UpdateAsync("item-1", It.IsAny<ParkItem>(), It.IsAny<CancellationToken>()))
+            .Callback<string, ParkItem, CancellationToken>((_, value, _) => updatedItem = value)
+            .ReturnsAsync((string _, ParkItem value, CancellationToken _) => value);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        searchProjectionWriter
+            .Setup(value => value.UpsertManyAsync(SearchProjectionResourceTypes.ParkItems, It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            parkItemRepository.Object,
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "items": [
+            {
+              "id": "item-1",
+              "attractionDetails": {
+                "heightInFeet": 200
+              }
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(updatedItem?.AttractionDetails);
+        Assert.Equal(60.96d, updatedItem.AttractionDetails.HeightInMeters);
+        Assert.Equal(200d, updatedItem.AttractionDetails.HeightInFeet);
+        Assert.Contains(result.Value!.Changes.SelectMany(change => change.Fields), field => field.Field == "attractionDetails.heightInMeters" && field.NewValue == "60.96");
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
     public async Task PreviewAsync_WhenManufacturerMergeHasNoParkTarget_ShouldReturnAutonomousDiff()
     {
         AttractionManufacturer source = new AttractionManufacturer
