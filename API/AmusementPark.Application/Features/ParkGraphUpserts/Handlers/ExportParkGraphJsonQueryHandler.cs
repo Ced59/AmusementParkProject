@@ -75,14 +75,24 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
             return ApplicationResult<ParkGraphJsonExportResult>.Failure(ApplicationErrors.EntityNotFound(nameof(Park), query.ParkId));
         }
 
-        IReadOnlySet<ParkGraphExportSection> sections = ResolveSections(query.Sections);
+        return await this.ExportResolvedParkAsync(park, query.Sections, cancellationToken);
+    }
+
+    private async Task<ApplicationResult<ParkGraphJsonExportResult>> ExportResolvedParkAsync(
+        Park park,
+        IReadOnlyCollection<ParkGraphExportSection>? requestedSections,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(park);
+
+        IReadOnlySet<ParkGraphExportSection> sections = ResolveSections(requestedSections);
         bool includeZones = sections.Contains(ParkGraphExportSection.Zones);
         bool includeItems = sections.Contains(ParkGraphExportSection.Items);
         bool includeReferences = sections.Contains(ParkGraphExportSection.References);
         bool includeImages = sections.Contains(ParkGraphExportSection.Images);
         bool includeOpeningHours = sections.Contains(ParkGraphExportSection.OpeningHours);
         bool includeHistory = sections.Contains(ParkGraphExportSection.History);
-        bool needsItems = includeItems || includeReferences || includeImages || includeHistory;
+        bool needsItems = includeItems || includeReferences || includeHistory;
 
         Task<IReadOnlyCollection<ParkZone>> zonesTask = includeZones
             ? this.parkZoneRepository.GetByParkIdAsync(park.Id, cancellationToken)
@@ -112,16 +122,16 @@ public sealed partial class ExportParkGraphJsonQueryHandler : IQueryHandler<Expo
         Task<IReadOnlyCollection<Image>> parkImagesTask = includeImages
             ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.Park, new[] { park.Id }, null, cancellationToken)
             : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<IReadOnlyCollection<Image>> itemImagesTask = includeImages && itemIds.Count > 0
+        Task<IReadOnlyCollection<Image>> itemImagesTask = includeImages && includeItems && itemIds.Count > 0
             ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkItem, itemIds, null, cancellationToken)
             : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<IReadOnlyCollection<Image>> founderImagesTask = includeImages && founderIds.Count > 0
+        Task<IReadOnlyCollection<Image>> founderImagesTask = includeImages && includeReferences && founderIds.Count > 0
             ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkFounder, founderIds, null, cancellationToken)
             : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<IReadOnlyCollection<Image>> operatorImagesTask = includeImages && operatorIds.Count > 0
+        Task<IReadOnlyCollection<Image>> operatorImagesTask = includeImages && includeReferences && operatorIds.Count > 0
             ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkOperator, operatorIds, null, cancellationToken)
             : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<IReadOnlyCollection<Image>> manufacturerImagesTask = includeImages && manufacturerIds.Count > 0
+        Task<IReadOnlyCollection<Image>> manufacturerImagesTask = includeImages && includeReferences && manufacturerIds.Count > 0
             ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, manufacturerIds, null, cancellationToken)
             : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
         Task<ParkOpeningHoursSchedule?> openingHoursTask = !includeOpeningHours || this.openingHoursRepository is null

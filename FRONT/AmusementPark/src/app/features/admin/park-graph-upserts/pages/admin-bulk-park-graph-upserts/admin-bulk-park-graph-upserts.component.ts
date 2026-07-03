@@ -244,6 +244,8 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
     this.uiError = null;
     this.operationErrorDetail = null;
     this.isExporting = true;
+    this.changeDetectorRef.detectChanges();
+
     this.parkGraphUpsertsApi.downloadBulkParkExport(this.buildExportRequest())
       .pipe(finalize((): void => {
         this.isExporting = false;
@@ -746,14 +748,18 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
       return;
     }
 
-    const objectUrl: string = URL.createObjectURL(blob);
+    const urlFactory: typeof URL = URL;
+    const objectUrl: string = urlFactory.createObjectURL(blob);
     const link: HTMLAnchorElement = this.document.createElement('a');
     link.href = objectUrl;
     link.download = fileName;
+    link.rel = 'noopener';
     this.document.body.appendChild(link);
     link.click();
     this.document.body.removeChild(link);
-    URL.revokeObjectURL(objectUrl);
+    defaultView.setTimeout((): void => {
+      urlFactory.revokeObjectURL(objectUrl);
+    }, 30000);
   }
 
   private notifyPreviewResult(result: BulkParkGraphUpsertResult): void {
