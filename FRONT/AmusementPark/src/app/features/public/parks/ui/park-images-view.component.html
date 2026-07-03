@@ -89,7 +89,7 @@
           [photos]="photos"
           [categories]="categories"
           [language]="language"
-          [appAdminContextualBlock]="getImagesContextualBlock(currentPark)"
+          [appPublicContextualBlock]="getImagesContextualBlock(currentPark)"
           [displayLimits]="[6, 12, 24, 0]"
           [defaultDisplayLimit]="0"
           tone="sky"
@@ -124,7 +124,7 @@
           class="park-images-empty"
           appUiSurface="soft"
           appUiSurfacePadding="spacious"
-          [appAdminContextualBlock]="getImagesContextualBlock(currentPark)">
+          [appPublicContextualBlock]="getImagesContextualBlock(currentPark)">
           <i class="pi pi-image" aria-hidden="true"></i>
           <h2>{{ 'parks.imagesPage.emptyTitle' | translate }}</h2>
           <p>{{ (activeTab === 'items' ? 'parks.imagesPage.emptyItemsMessage' : 'parks.imagesPage.emptyMessage') | translate:{ name: currentPark.name } }}</p>

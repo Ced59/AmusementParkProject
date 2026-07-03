@@ -220,7 +220,7 @@
           class="detail-panel detail-panel--description"
           appUiSurface="detail"
           appUiSurfacePadding="regular"
-          [appAdminContextualBlock]="getDescriptionContextualBlock(currentDetail)"
+          [appPublicContextualBlock]="getDescriptionContextualBlock(currentDetail)"
           *ngIf="currentDetail.description">
           <app-ui-section-header
             kickerIconClass="pi pi-align-left"
@@ -237,7 +237,7 @@
           kickerLabelKey="parkItems.detail.locationKicker"
           titleKey="parkItems.detail.locationTitle"
           subtitleKey="parkItems.detail.locationSubtitle"
-          [appAdminContextualBlock]="getLocationContextualBlock(currentDetail)">
+          [appPublicContextualBlock]="getLocationContextualBlock(currentDetail)">
           <app-ui-map-slot [available]="locationMapMarkers().length > 0" minHeight="340px">
             <app-leaflet-static-map
               [center]="currentDetail.mapCenter"
@@ -271,7 +271,7 @@
           class="detail-panel spec-panel"
           appUiSurface="detail"
           appUiSurfacePadding="regular"
-          [appAdminContextualBlock]="getSpecGroupContextualBlock(group, currentDetail)"
+          [appPublicContextualBlock]="getSpecGroupContextualBlock(group, currentDetail)"
           *ngFor="let group of currentDetail.specGroups">
           <app-ui-section-header
             [kickerIconClass]="group.iconClass"

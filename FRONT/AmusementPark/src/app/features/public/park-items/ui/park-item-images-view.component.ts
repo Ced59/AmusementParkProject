@@ -2,11 +2,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { AdminContextualBlockDirective } from '@features/admin/contextual-editing/ui/admin-contextual-block/admin-contextual-block.directive';
-import { AdminContextualBlockInstance } from '@features/admin/contextual-editing/models/admin-contextual-block.model';
-import { AdminContextualBlockRegistryService } from '@features/admin/contextual-editing/services/admin-contextual-block-registry.service';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { PublicContextualBlockMarker } from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
+import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselComponent, UiPhotoCarouselImage } from '@ui/media';
@@ -26,7 +25,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirecti
     UiKickerComponent,
     UiSurfaceDirective,
     UiPhotoCarouselComponent,
-    AdminContextualBlockDirective
+    PublicContextualBlockDirective
   ]
 })
 export class ParkItemImagesViewComponent {
@@ -45,20 +44,17 @@ export class ParkItemImagesViewComponent {
 
   @Output() loadMoreClicked: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private readonly contextualBlockRegistry: AdminContextualBlockRegistryService) {
-  }
-
   loadMore(): void {
     this.loadMoreClicked.emit();
   }
 
-  protected getImagesContextualBlock(currentItem: ParkItem): AdminContextualBlockInstance | null {
-    return this.contextualBlockRegistry.createParkItemBlock(
-      'parkItem.images',
-      currentItem.id,
-      currentItem.parkId,
-      currentItem.name,
-      this.language
-    );
+  protected getImagesContextualBlock(currentItem: ParkItem): PublicContextualBlockMarker {
+    return {
+      type: 'parkItem.images',
+      parkItemId: currentItem.id,
+      parkId: currentItem.parkId,
+      contextLabel: currentItem.name,
+      languageCode: this.language
+    };
   }
 }

@@ -95,6 +95,19 @@ describe('AdminContextualBlockDirective', () => {
     expect(selectionFacade.selectedBlock()).toBeNull();
   });
 
+  it('keeps keyboard activation on visitor links usable instead of selecting the block', () => {
+    enableEditionMode(publicViewModeFacade);
+    fixture.detectChanges();
+
+    const link: HTMLAnchorElement = getHostElement(fixture).querySelector('a') as HTMLAnchorElement;
+    const event = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true });
+    link.dispatchEvent(event);
+    fixture.detectChanges();
+
+    expect(event.defaultPrevented).toBeFalse();
+    expect(selectionFacade.selectedBlock()).toBeNull();
+  });
+
   it('removes admin controls when edition mode is disabled again', () => {
     enableEditionMode(publicViewModeFacade);
     fixture.detectChanges();

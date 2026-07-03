@@ -17,9 +17,8 @@ import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.component';
-import { AdminContextualBlockDirective } from '@features/admin/contextual-editing/ui/admin-contextual-block/admin-contextual-block.directive';
-import { AdminContextualBlockInstance } from '@features/admin/contextual-editing/models/admin-contextual-block.model';
-import { AdminContextualBlockRegistryService } from '@features/admin/contextual-editing/services/admin-contextual-block-registry.service';
+import { PublicContextualBlockMarker } from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
+import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
 
 @Component({
   selector: 'app-park-item-detail-view',
@@ -44,7 +43,7 @@ import { AdminContextualBlockRegistryService } from '@features/admin/contextual-
     UiSurfaceDirective,
     PublicSharePanelComponent,
     RatingStarsComponent,
-    AdminContextualBlockDirective
+    PublicContextualBlockDirective
   ]
 })
 export class ParkItemDetailViewComponent {
@@ -89,8 +88,7 @@ export class ParkItemDetailViewComponent {
 
   constructor(
     private readonly mapDirectionsUrlService: MapDirectionsUrlService,
-    private readonly translateService: TranslateService,
-    private readonly contextualBlockRegistry: AdminContextualBlockRegistryService
+    private readonly translateService: TranslateService
   ) {
   }
 
@@ -139,31 +137,31 @@ export class ParkItemDetailViewComponent {
     this.selectedLocationPointId.set(marker.id);
   }
 
-  protected getDescriptionContextualBlock(currentDetail: ParkItemDetailViewModel): AdminContextualBlockInstance | null {
-    return this.contextualBlockRegistry.createParkItemBlock(
-      'parkItem.description',
-      currentDetail.id,
-      currentDetail.parkId,
-      currentDetail.name,
-      this.currentLang
-    );
+  protected getDescriptionContextualBlock(currentDetail: ParkItemDetailViewModel): PublicContextualBlockMarker {
+    return {
+      type: 'parkItem.description',
+      parkItemId: currentDetail.id,
+      parkId: currentDetail.parkId,
+      contextLabel: currentDetail.name,
+      languageCode: this.currentLang
+    };
   }
 
-  protected getLocationContextualBlock(currentDetail: ParkItemDetailViewModel): AdminContextualBlockInstance | null {
-    return this.contextualBlockRegistry.createParkItemBlock(
-      'parkItem.location',
-      currentDetail.id,
-      currentDetail.parkId,
-      currentDetail.name,
-      this.currentLang,
-      currentDetail.mapCenter
-    );
+  protected getLocationContextualBlock(currentDetail: ParkItemDetailViewModel): PublicContextualBlockMarker {
+    return {
+      type: 'parkItem.location',
+      parkItemId: currentDetail.id,
+      parkId: currentDetail.parkId,
+      contextLabel: currentDetail.name,
+      languageCode: this.currentLang,
+      locationFallbackCenter: currentDetail.mapCenter
+    };
   }
 
   protected getSpecGroupContextualBlock(
     group: { titleKey: string },
     currentDetail: ParkItemDetailViewModel
-  ): AdminContextualBlockInstance | null {
+  ): PublicContextualBlockMarker | null {
     return group.titleKey === 'parkItems.detail.locationTitle'
       ? this.getLocationContextualBlock(currentDetail)
       : null;

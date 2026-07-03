@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { AdminContextualBlockDirective } from '@features/admin/contextual-editing/ui/admin-contextual-block/admin-contextual-block.directive';
-import { AdminContextualBlockInstance } from '@features/admin/contextual-editing/models/admin-contextual-block.model';
-import { AdminContextualBlockRegistryService } from '@features/admin/contextual-editing/services/admin-contextual-block-registry.service';
+import { PublicContextualBlockMarker } from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
+import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
@@ -30,7 +29,7 @@ import { ParkReferenceDetailViewModel } from '../models/park-reference-detail-vi
     UiChipComponent,
     UiKickerComponent,
     UiPhotoCarouselComponent,
-    AdminContextualBlockDirective
+    PublicContextualBlockDirective
   ]
 })
 export class ParkReferenceDetailViewComponent {
@@ -45,9 +44,6 @@ export class ParkReferenceDetailViewComponent {
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() attractionsPageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
 
-  constructor(private readonly contextualBlockRegistry: AdminContextualBlockRegistryService) {
-  }
-
   goBack(): void {
     this.backClicked.emit();
   }
@@ -56,17 +52,18 @@ export class ParkReferenceDetailViewComponent {
     this.attractionsPageChanged.emit(event);
   }
 
-  protected getManufacturerContextualBlock(currentReference: ParkReferenceDetailViewModel): AdminContextualBlockInstance | null {
+  protected getManufacturerContextualBlock(currentReference: ParkReferenceDetailViewModel): PublicContextualBlockMarker | null {
     if (currentReference.kind !== 'manufacturer') {
       return null;
     }
 
-    return this.contextualBlockRegistry.createManufacturerBlock(
-      currentReference.id,
-      currentReference.name,
-      this.currentLang,
-      currentReference.adminParkGraphUpsertJson,
-      currentReference.adminParkGraphUpsertFileName
-    );
+    return {
+      type: 'reference.manufacturer',
+      manufacturerId: currentReference.id,
+      contextLabel: currentReference.name,
+      languageCode: this.currentLang,
+      parkGraphUpsertDraftJson: currentReference.adminParkGraphUpsertJson,
+      parkGraphUpsertFileName: currentReference.adminParkGraphUpsertFileName
+    };
   }
 }

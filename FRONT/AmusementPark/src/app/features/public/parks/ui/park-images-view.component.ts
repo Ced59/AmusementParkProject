@@ -2,10 +2,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { AdminContextualBlockDirective } from '@features/admin/contextual-editing/ui/admin-contextual-block/admin-contextual-block.directive';
-import { AdminContextualBlockInstance } from '@features/admin/contextual-editing/models/admin-contextual-block.model';
-import { AdminContextualBlockRegistryService } from '@features/admin/contextual-editing/services/admin-contextual-block-registry.service';
 import { Park } from '@app/models/parks/park';
+import { PublicContextualBlockMarker } from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
+import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
@@ -26,7 +25,7 @@ import { ParkImagesGalleryTab } from '../models/park-images-view.model';
     UiKickerComponent,
     UiSurfaceDirective,
     UiPhotoCarouselComponent,
-    AdminContextualBlockDirective
+    PublicContextualBlockDirective
   ]
 })
 export class ParkImagesViewComponent {
@@ -49,9 +48,6 @@ export class ParkImagesViewComponent {
   @Output() tabSelected: EventEmitter<ParkImagesGalleryTab> = new EventEmitter<ParkImagesGalleryTab>();
   @Output() loadMoreClicked: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private readonly contextualBlockRegistry: AdminContextualBlockRegistryService) {
-  }
-
   loadMore(): void {
     this.loadMoreClicked.emit();
   }
@@ -60,12 +56,12 @@ export class ParkImagesViewComponent {
     this.tabSelected.emit(tab);
   }
 
-  protected getImagesContextualBlock(currentPark: Park): AdminContextualBlockInstance | null {
-    return this.contextualBlockRegistry.createParkBlock(
-      'park.images',
-      currentPark.id,
-      currentPark.name,
-      this.language
-    );
+  protected getImagesContextualBlock(currentPark: Park): PublicContextualBlockMarker {
+    return {
+      type: 'park.images',
+      parkId: currentPark.id,
+      contextLabel: currentPark.name,
+      languageCode: this.language
+    };
   }
 }

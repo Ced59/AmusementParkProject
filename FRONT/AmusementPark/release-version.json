@@ -1,6 +1,20 @@
 {
-  "version": "3.1.71",
+  "version": "3.1.72",
   "history": [
+    {
+      "version": "3.1.72",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "L'édition publique admin se charge plus légèrement.",
+        "en": "Admin public editing loads more lightly.",
+        "de": "Die öffentliche Admin-Bearbeitung lädt schlanker.",
+        "nl": "Openbare adminbewerking laadt lichter.",
+        "it": "La modifica pubblica admin si carica più leggera.",
+        "es": "La edición pública admin carga de forma más ligera.",
+        "pl": "Publiczna edycja administracyjna ładuje się lżej.",
+        "pt": "A edição pública administrativa carrega de forma mais leve."
+      }
+    },
     {
       "version": "3.1.71",
       "releasedAt": "2026-07-03",
