@@ -21,10 +21,12 @@ output_dir="${SSR_WARMUP_OUTPUT_DIR:-$(pwd)/warmup}"
 progress_every="${SSR_WARMUP_PROGRESS_EVERY:-25}"
 url_filter_regex="${SSR_WARMUP_URL_FILTER_REGEX:-}"
 sitemap_filter_regex="${SSR_WARMUP_SITEMAP_FILTER_REGEX:-}"
+url_file_configured="${SSR_WARMUP_URL_FILE+x}"
 
 mkdir -p "${output_dir}"
 log_file="${SSR_WARMUP_LOG_FILE:-${output_dir}/ssr-warmup-$(date -u +%Y%m%dT%H%M%SZ).log}"
 url_file="${SSR_WARMUP_URL_FILE:-${output_dir}/urls-${profile}.txt}"
+report_file="${SSR_WARMUP_REPORT_FILE:-${output_dir}/ssr-warmup-report-$(date -u +%Y%m%dT%H%M%SZ).csv}"
 
 export SSR_WARMUP_PUBLIC_BASE_URL="${public_base_url%/}"
 export SSR_WARMUP_PROFILE_VALUE="${profile}"
@@ -36,13 +38,19 @@ export SSR_WARMUP_MAX_URLS_VALUE="${max_urls}"
 export SSR_WARMUP_REFRESH_VALUE="${refresh}"
 export SSR_WARMUP_LOG_FILE_VALUE="${log_file}"
 export SSR_WARMUP_URL_FILE_VALUE="${url_file}"
+export SSR_WARMUP_URL_FILE_CONFIGURED_VALUE="${url_file_configured:-}"
+export SSR_WARMUP_REPORT_FILE_VALUE="${report_file}"
 export SSR_WARMUP_PROGRESS_EVERY_VALUE="${progress_every}"
 export SSR_WARMUP_URL_FILTER_REGEX_VALUE="${url_filter_regex}"
 export SSR_WARMUP_SITEMAP_FILTER_REGEX_VALUE="${sitemap_filter_regex}"
 export SSR_WARMUP_SEO_DOCUMENTS_VALUE="${SSR_WARMUP_SEO_DOCUMENTS:-true}"
+export SSR_WARMUP_VALIDATE_BOT_VALUE="${SSR_WARMUP_VALIDATE_BOT:-true}"
+export SSR_WARMUP_FAIL_ON_BOT_VALIDATION_VALUE="${SSR_WARMUP_FAIL_ON_BOT_VALIDATION:-true}"
+export SSR_WARMUP_BOT_USER_AGENT_VALUE="${SSR_WARMUP_BOT_USER_AGENT:-Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)}"
 
 python3 - <<'PY'
 import os
+import csv
 import re
 import ssl
 import sys
@@ -67,15 +75,20 @@ max_urls = max(0, int(os.environ['SSR_WARMUP_MAX_URLS_VALUE']))
 refresh = os.environ['SSR_WARMUP_REFRESH_VALUE'].lower() in {'1', 'true', 'yes', 'y'}
 log_file = Path(os.environ['SSR_WARMUP_LOG_FILE_VALUE'])
 url_file = Path(os.environ['SSR_WARMUP_URL_FILE_VALUE'])
+url_file_configured = bool(os.environ['SSR_WARMUP_URL_FILE_CONFIGURED_VALUE'])
+report_file = Path(os.environ['SSR_WARMUP_REPORT_FILE_VALUE'])
 progress_every = max(1, int(os.environ['SSR_WARMUP_PROGRESS_EVERY_VALUE']))
 url_filter_regex = os.environ['SSR_WARMUP_URL_FILTER_REGEX_VALUE'].strip()
 sitemap_filter_regex = os.environ['SSR_WARMUP_SITEMAP_FILTER_REGEX_VALUE'].strip()
 url_filter = re.compile(url_filter_regex) if url_filter_regex else None
 sitemap_filter = re.compile(sitemap_filter_regex) if sitemap_filter_regex else None
 warmup_seo_documents_enabled = os.environ['SSR_WARMUP_SEO_DOCUMENTS_VALUE'].strip().lower() in {'1', 'true', 'yes', 'y'}
+bot_validation_enabled = os.environ['SSR_WARMUP_VALIDATE_BOT_VALUE'].strip().lower() in {'1', 'true', 'yes', 'y'}
+fail_on_bot_validation = os.environ['SSR_WARMUP_FAIL_ON_BOT_VALIDATION_VALUE'].strip().lower() in {'1', 'true', 'yes', 'y'}
+bot_user_agent = os.environ['SSR_WARMUP_BOT_USER_AGENT_VALUE'].strip()
 
 # Keep the deploy script simple: fail loudly on unsupported modes.
-allowed_profiles = {'critical', 'static', 'parks', 'references', 'items', 'full'}
+allowed_profiles = {'critical', 'static', 'parks', 'references', 'items', 'seo-important', 'full'}
 if profile not in allowed_profiles:
     raise SystemExit(f"Unsupported SSR_WARMUP_PROFILE={profile!r}. Allowed: {', '.join(sorted(allowed_profiles))}")
 
@@ -120,6 +133,14 @@ def get_path(url: str) -> str:
     return parsed.path or '/'
 
 
+def normalize_configured_url(value: str) -> str:
+    if value.startswith('http://') or value.startswith('https://'):
+        return value
+    if value.startswith('/'):
+        return base_url + value
+    return base_url + '/' + value
+
+
 def language_matches(path: str) -> bool:
     if not languages:
         return True
@@ -137,6 +158,15 @@ def sitemap_matches(url: str) -> bool:
         return True
     if profile == 'critical':
         return filename.startswith('static-')
+    if profile == 'seo-important':
+        return (
+            filename.startswith('static-')
+            or filename.startswith('parks-')
+            or filename.startswith('park-items-')
+            or filename.startswith('park-history-')
+            or filename.startswith('park-item-history-')
+            or filename.startswith('references-')
+        )
     if profile == 'static':
         return filename.startswith('static-')
     if profile == 'parks':
@@ -230,6 +260,18 @@ def warmup_seo_documents(root: ET.Element) -> None:
 
 
 def collect_urls(root: ET.Element) -> list[str]:
+    if url_file_configured and url_file.exists():
+        configured_urls = [
+            normalize_configured_url(line.strip())
+            for line in url_file.read_text(encoding='utf-8').splitlines()
+            if line.strip() and not line.strip().startswith('#')
+        ]
+        unique_configured_urls = sorted(set(configured_urls))
+        if max_urls > 0:
+            unique_configured_urls = unique_configured_urls[:max_urls]
+        log(f"Using configured warmup URL file: {url_file} -> {len(unique_configured_urls)} URL(s)")
+        return unique_configured_urls
+
     sitemap_urls = [url for url in locs(root) if sitemap_matches(url)]
     page_urls: list[str] = []
 
@@ -307,7 +349,7 @@ def warmup(urls: list[str]) -> None:
                 hit += 1
             elif cache_status == 'WARMED':
                 warmed += 1
-            elif cache_status.startswith('CSR-'):
+            elif cache_status.startswith('CSR'):
                 fallback += 1
 
             if index <= 20 or index % progress_every == 0 or status < 200 or status >= 300:
@@ -317,6 +359,189 @@ def warmup(urls: list[str]) -> None:
     log(f"Warmup finished: total={total}, success={success}, failed={failed}, hit={hit}, warmed={warmed}, fallback={fallback}, duration={elapsed_total:.1f}s")
 
 
+def has_title(html: str) -> bool:
+    match = re.search(r'<title\b[^>]*>([\s\S]*?)</title>', html, re.I)
+    return bool(match and re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', match.group(1))).strip())
+
+
+def has_meta_description(html: str) -> bool:
+    for tag in re.findall(r'<meta\b[^>]*>', html, re.I):
+        name = get_attribute(tag, 'name').lower()
+        content = get_attribute(tag, 'content').strip()
+        if name == 'description' and content:
+            return True
+    return False
+
+
+def has_canonical(html: str) -> bool:
+    for tag in re.findall(r'<link\b[^>]*>', html, re.I):
+        rel_values = {value for value in get_attribute(tag, 'rel').lower().split() if value}
+        href = get_attribute(tag, 'href').strip()
+        if 'canonical' in rel_values and href:
+            return True
+    return False
+
+
+def has_json_ld(html: str) -> bool:
+    return bool(re.search(r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>', html, re.I))
+
+
+def has_bare_app_root(html: str) -> bool:
+    return bool(
+        re.search(r'<app-root\b[^>]*>\s*</app-root>', html, re.I)
+        or re.search(r'<app-root\b[^>]*>\s*</body>', html, re.I)
+    )
+
+
+def get_attribute(tag: str, name: str) -> str:
+    escaped_name = re.escape(name)
+    match = re.search(rf'\s{escaped_name}\s*=\s*([\'"])(.*?)\1', tag, re.I)
+    return match.group(2) if match else ''
+
+
+def validate_bot_url(url: str) -> dict[str, str]:
+    headers = {
+        'Accept': 'text/html,*/*',
+        'User-Agent': bot_user_agent,
+    }
+    started = time.monotonic()
+    request = urllib.request.Request(url, headers=headers, method='GET')
+    body = b''
+    response_headers = {}
+    status = 0
+    error = ''
+
+    try:
+        with urllib.request.urlopen(request, timeout=timeout_seconds, context=ssl.create_default_context()) as response:
+            body = response.read()
+            status = int(response.status)
+            response_headers = response.headers
+    except urllib.error.HTTPError as exc:
+        status = int(exc.code)
+        response_headers = exc.headers
+        body = exc.read()
+    except Exception as exc:  # noqa: BLE001
+        error = str(exc)
+
+    html = body.decode('utf-8', errors='replace')
+    ssr_mode = response_headers.get('X-AmusementPark-SSR-Mode', '') if response_headers else ''
+    ssr_cache = response_headers.get('X-AmusementPark-SSR-Cache', '') if response_headers else ''
+    seo_ready = response_headers.get('X-AmusementPark-Seo-Ready', '') if response_headers else ''
+    seo_ready_reason = response_headers.get('X-AmusementPark-Seo-Ready-Reason', '') if response_headers else ''
+    robot_html = response_headers.get('X-AmusementPark-Robot-Html', '') if response_headers else ''
+    retry_after = response_headers.get('Retry-After', '') if response_headers else ''
+
+    title = has_title(html)
+    meta_description = has_meta_description(html)
+    canonical = has_canonical(html)
+    json_ld = has_json_ld(html)
+    bare_app_root = has_bare_app_root(html)
+    failure_reasons: list[str] = []
+
+    if error:
+        failure_reasons.append('request-error')
+    elif status != 200:
+        failure_reasons.append(f'http-{status}')
+    else:
+        if seo_ready.lower() != 'true':
+            failure_reasons.append(f"seo-ready-{seo_ready_reason or 'false'}")
+        if ssr_mode.upper().startswith('CSR') or ssr_cache.upper().startswith('CSR'):
+            failure_reasons.append('csr-fallback')
+        if robot_html.lower() != 'no-js':
+            failure_reasons.append(f"robot-html-{robot_html or 'missing'}")
+        if not title:
+            failure_reasons.append('missing-title')
+        if not meta_description:
+            failure_reasons.append('missing-meta-description')
+        if not canonical:
+            failure_reasons.append('missing-canonical')
+        if bare_app_root:
+            failure_reasons.append('bare-angular-shell')
+
+    return {
+        'url': url,
+        'status': str(status),
+        'ssr_mode': ssr_mode,
+        'ssr_cache': ssr_cache,
+        'seo_ready': seo_ready,
+        'seo_ready_reason': seo_ready_reason,
+        'robot_html': robot_html,
+        'retry_after': retry_after,
+        'body_bytes': str(len(body)),
+        'has_title': str(title).lower(),
+        'has_meta_description': str(meta_description).lower(),
+        'has_canonical': str(canonical).lower(),
+        'has_json_ld': str(json_ld).lower(),
+        'bare_app_root': str(bare_app_root).lower(),
+        'elapsed_seconds': f"{time.monotonic() - started:.3f}",
+        'ok': str(len(failure_reasons) == 0).lower(),
+        'failure_reasons': ';'.join(failure_reasons),
+        'error': error,
+    }
+
+
+def validate_bot_urls(urls: list[str]) -> None:
+    if not bot_validation_enabled:
+        log('Bot validation skipped because SSR_WARMUP_VALIDATE_BOT is false.')
+        return
+
+    if not urls:
+        log('Bot validation skipped because no URL was selected.')
+        return
+
+    report_file.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        'url',
+        'status',
+        'ssr_mode',
+        'ssr_cache',
+        'seo_ready',
+        'seo_ready_reason',
+        'robot_html',
+        'retry_after',
+        'body_bytes',
+        'has_title',
+        'has_meta_description',
+        'has_canonical',
+        'has_json_ld',
+        'bare_app_root',
+        'elapsed_seconds',
+        'ok',
+        'failure_reasons',
+        'error',
+    ]
+
+    log(f"Bot validation started: total={len(urls)}, report={report_file}")
+    rows: list[dict[str, str]] = []
+    failed_rows: list[dict[str, str]] = []
+    with ThreadPoolExecutor(max_workers=concurrency) as executor:
+        futures = [executor.submit(validate_bot_url, url) for url in urls]
+        for index, future in enumerate(as_completed(futures), start=1):
+            row = future.result()
+            rows.append(row)
+            if row['ok'] != 'true':
+                failed_rows.append(row)
+
+            if index <= 20 or index % progress_every == 0 or row['ok'] != 'true':
+                log(
+                    "BOT "
+                    f"{index}/{len(urls)} status={row['status']} seo={row['seo_ready'] or '-'} "
+                    f"robot={row['robot_html'] or '-'} mode={row['ssr_mode'] or '-'} "
+                    f"ok={row['ok']} url={row['url']}"
+                )
+
+    rows.sort(key=lambda item: item['url'])
+    with report_file.open('w', encoding='utf-8', newline='') as stream:
+        writer = csv.DictWriter(stream, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+    log(f"Bot validation finished: total={len(rows)}, failed={len(failed_rows)}, report={report_file}")
+    if failed_rows and fail_on_bot_validation:
+        examples = ', '.join(row['url'] for row in failed_rows[:5])
+        raise SystemExit(f"Bot validation failed for {len(failed_rows)} URL(s). Examples: {examples}")
+
+
 log(f"SSR warmup configuration: base={base_url}, profile={profile}, concurrency={concurrency}, max_urls={max_urls}, refresh={refresh}")
 
 sitemap_index_root = read_xml(base_url + '/sitemap.xml')
@@ -324,5 +549,7 @@ sitemap_index_root = read_xml(base_url + '/sitemap.xml')
 if warmup_seo_documents_enabled:
     warmup_seo_documents(sitemap_index_root)
 
-warmup(collect_urls(sitemap_index_root))
+selected_urls = collect_urls(sitemap_index_root)
+warmup(selected_urls)
+validate_bot_urls(selected_urls)
 PY

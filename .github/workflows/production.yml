@@ -443,14 +443,20 @@ jobs:
       SSR_WARMUP_BACKGROUND: ${{ vars.SSR_WARMUP_BACKGROUND || 'true' }}
       SSR_WARMUP_REQUIRED: ${{ vars.SSR_WARMUP_REQUIRED || 'false' }}
       SSR_WARMUP_PROFILE: ${{ vars.SSR_WARMUP_PROFILE || 'critical' }}
+      SSR_WARMUP_SEO_DOCUMENTS: ${{ vars.SSR_WARMUP_SEO_DOCUMENTS || 'true' }}
       SSR_WARMUP_CONCURRENCY: ${{ vars.SSR_WARMUP_CONCURRENCY || '1' }}
       SSR_WARMUP_TIMEOUT_SECONDS: ${{ vars.SSR_WARMUP_TIMEOUT_SECONDS || '90' }}
       SSR_WARMUP_SLEEP_SECONDS: ${{ vars.SSR_WARMUP_SLEEP_SECONDS || '0' }}
       SSR_WARMUP_MAX_URLS: ${{ vars.SSR_WARMUP_MAX_URLS || '0' }}
       SSR_WARMUP_REFRESH: ${{ vars.SSR_WARMUP_REFRESH || 'false' }}
       SSR_WARMUP_LANGS: ${{ vars.SSR_WARMUP_LANGS }}
+      SSR_WARMUP_URL_FILE: ${{ vars.SSR_WARMUP_URL_FILE }}
+      SSR_WARMUP_REPORT_FILE: ${{ vars.SSR_WARMUP_REPORT_FILE }}
       SSR_WARMUP_URL_FILTER_REGEX: ${{ vars.SSR_WARMUP_URL_FILTER_REGEX }}
       SSR_WARMUP_SITEMAP_FILTER_REGEX: ${{ vars.SSR_WARMUP_SITEMAP_FILTER_REGEX }}
+      SSR_WARMUP_VALIDATE_BOT: ${{ vars.SSR_WARMUP_VALIDATE_BOT || 'true' }}
+      SSR_WARMUP_FAIL_ON_BOT_VALIDATION: ${{ vars.SSR_WARMUP_FAIL_ON_BOT_VALIDATION || 'true' }}
+      SSR_WARMUP_BOT_USER_AGENT: ${{ vars.SSR_WARMUP_BOT_USER_AGENT || 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
