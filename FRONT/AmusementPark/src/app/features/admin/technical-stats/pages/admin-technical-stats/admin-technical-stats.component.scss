@@ -1,5 +1,36 @@
+.admin-technical-stats-card {
+  display: block;
+  padding: 1.1rem;
+}
+
 .admin-technical-stats-header {
+  display: flex;
   align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-technical-stats-refresh {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.35rem;
+  border: 1px solid rgba(56, 189, 248, 0.42);
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.85rem;
+  color: var(--app-heading);
+  background: rgba(56, 189, 248, 0.12);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 850;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.62;
+  }
 }
 
 .admin-technical-stats-state {
@@ -184,33 +215,6 @@
   cursor: help;
 }
 
-.admin-technical-stats-kpi--gauge {
-  justify-items: start;
-}
-
-.admin-technical-stats-gauge {
-  display: grid;
-  place-items: center;
-  width: 7.25rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0.75rem;
-    border-radius: 50%;
-    background: var(--app-surface);
-  }
-
-  strong {
-    position: relative;
-    z-index: 1;
-    font-size: 1.55rem;
-  }
-}
-
 .admin-technical-stats-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -270,7 +274,8 @@
 }
 
 .admin-technical-stats-row__bar,
-.admin-technical-stats-progress {
+.admin-technical-stats-progress,
+.admin-technical-stats-meter {
   height: 0.7rem;
   overflow: hidden;
   border-radius: 999px;
@@ -333,6 +338,43 @@
   strong {
     color: var(--app-heading);
   }
+}
+
+.admin-technical-stats-meter {
+  width: 100%;
+}
+
+.admin-technical-stats-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  color: var(--app-text-muted);
+  background: rgba(148, 163, 184, 0.12);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.admin-technical-stats-pill--success {
+  border-color: rgba(34, 197, 94, 0.62);
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.admin-technical-stats-pill--warn {
+  border-color: rgba(245, 158, 11, 0.62);
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.admin-technical-stats-pill--secondary {
+  border-color: rgba(148, 163, 184, 0.45);
+  color: var(--app-text-muted);
+  background: rgba(148, 163, 184, 0.1);
 }
 
 .admin-technical-stats-empty {
