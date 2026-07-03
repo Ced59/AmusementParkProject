@@ -1,6 +1,20 @@
 {
-  "version": "3.1.65",
+  "version": "3.1.66",
   "history": [
+    {
+      "version": "3.1.66",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les partages vidéo publics restent plus cohérents.",
+        "en": "Public video sharing stays more consistent.",
+        "de": "Öffentliches Teilen von Videos bleibt stimmiger.",
+        "nl": "Publiek delen van video’s blijft consistenter.",
+        "it": "La condivisione pubblica dei video resta più coerente.",
+        "es": "El uso compartido público de vídeos sigue más coherente.",
+        "pl": "Publiczne udostępnianie filmów pozostaje spójniejsze.",
+        "pt": "A partilha pública de vídeos continua mais coerente."
+      }
+    },
     {
       "version": "3.1.65",
       "releasedAt": "2026-07-03",

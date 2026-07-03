@@ -15,6 +15,7 @@ import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/loca
 import { CanonicalUrlService } from './canonical-url.service';
 import { HreflangService } from './hreflang.service';
 import { JsonLdService } from './json-ld.service';
+import { buildCanonicalVideoRouteRedirectPath } from './legacy-video-route.helpers';
 import { SeoAlternateLink, SeoRouteData } from './models/seo-route-data.model';
 import { SEO_DEFAULT_LANGUAGE } from './seo-languages';
 import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
@@ -2331,7 +2332,8 @@ export class SeoService {
   private buildParkVideoBreadcrumbJsonLd(park: Park, url: string, videoLabel: string): unknown {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
     const language: string = this.resolveLanguageFromUrl(url);
-    const segments: string[] = this.getPathSegments(url);
+    const breadcrumbUrl: string = buildCanonicalVideoRouteRedirectPath(url) ?? url;
+    const segments: string[] = this.getPathSegments(breadcrumbUrl);
     const parkDetailPath: string = segments.length >= 4
       ? `/${segments.slice(0, 4).join('/')}`
       : `/${language}/parks`;
@@ -2351,7 +2353,8 @@ export class SeoService {
   private buildParkItemVideoBreadcrumbJsonLd(item: ParkItem, park: Park, url: string, videoLabel: string): unknown {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
     const language: string = this.resolveLanguageFromUrl(url);
-    const segments: string[] = this.getPathSegments(url);
+    const breadcrumbUrl: string = buildCanonicalVideoRouteRedirectPath(url) ?? url;
+    const segments: string[] = this.getPathSegments(breadcrumbUrl);
     const parkDetailPath: string = segments.length >= 4
       ? `/${segments.slice(0, 4).join('/')}`
       : `/${language}/parks`;
