@@ -1,6 +1,20 @@
 {
-  "version": "3.1.43",
+  "version": "3.1.44",
   "history": [
+    {
+      "version": "3.1.44",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les imports d’administration restent plus sûrs.",
+        "en": "Administration imports stay safer.",
+        "de": "Administrationsimporte bleiben sicherer.",
+        "nl": "Administratie-imports blijven veiliger.",
+        "it": "Gli import di amministrazione restano più sicuri.",
+        "es": "Las importaciones de administración siguen siendo más seguras.",
+        "pl": "Importy administracyjne pozostają bezpieczniejsze.",
+        "pt": "As importações de administração continuam mais seguras."
+      }
+    },
     {
       "version": "3.1.43",
       "releasedAt": "2026-07-03",
