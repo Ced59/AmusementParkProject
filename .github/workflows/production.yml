@@ -535,9 +535,9 @@ jobs:
           VPS_DEPLOY_PATH: ${{ vars.VPS_DEPLOY_PATH || '/opt/amusementpark' }}
         run: |
           set -euo pipefail
-          ssh -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "mkdir -p '${VPS_DEPLOY_PATH}'"
-          scp -i ~/.ssh/amusementpark_deploy_key -P "${VPS_SSH_PORT}" amusementpark-deploy.tgz "${VPS_SSH_USER}@${VPS_HOST}:/tmp/amusementpark-deploy.tgz"
-          ssh -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "tar -xzf /tmp/amusementpark-deploy.tgz -C '${VPS_DEPLOY_PATH}' && rm /tmp/amusementpark-deploy.tgz && chmod +x '${VPS_DEPLOY_PATH}'/scripts/*.sh"
+          ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "mkdir -p '${VPS_DEPLOY_PATH}'"
+          scp -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -P "${VPS_SSH_PORT}" amusementpark-deploy.tgz "${VPS_SSH_USER}@${VPS_HOST}:/tmp/amusementpark-deploy.tgz"
+          ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "tar -xzf /tmp/amusementpark-deploy.tgz -C '${VPS_DEPLOY_PATH}' && rm /tmp/amusementpark-deploy.tgz && chmod +x '${VPS_DEPLOY_PATH}'/scripts/*.sh"
 
       - name: Deploy on VPS
         env:
@@ -552,7 +552,7 @@ jobs:
           {
             printf '%s\n' "${GHCR_USERNAME}"
             printf '%s\n' "${GHCR_TOKEN}"
-          } | ssh -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
+          } | ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
             "set -euo pipefail; \
              read -r GHCR_USERNAME; \
              read -r GHCR_TOKEN; \
