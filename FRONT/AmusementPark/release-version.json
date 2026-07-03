@@ -1,6 +1,20 @@
 {
-  "version": "3.1.46",
+  "version": "3.1.47",
   "history": [
+    {
+      "version": "3.1.47",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les imports d’administration restent plus fiables.",
+        "en": "Administration imports stay more reliable.",
+        "de": "Administrationsimporte bleiben zuverlässiger.",
+        "nl": "Administratie-imports blijven betrouwbaarder.",
+        "it": "Gli import di amministrazione restano più affidabili.",
+        "es": "Las importaciones de administración siguen siendo más fiables.",
+        "pl": "Importy administracyjne pozostają bardziej niezawodne.",
+        "pt": "As importações de administração continuam mais fiáveis."
+      }
+    },
     {
       "version": "3.1.46",
       "releasedAt": "2026-07-03",
