@@ -316,54 +316,70 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     let completedCount: number = 0;
     let failedCount: number = 0;
     let missingGeoCount: number = 0;
+    let shouldReloadWorkspace: boolean = false;
 
-    await this.ensureCategoryTagsAsync();
-    await this.runWithConcurrency(selections, async (selection: AdminPhotoBatchUploadSelection, index: number): Promise<void> => {
-      this.uploadProgressSignal.set({
-        completed: completedCount,
-        total: selections.length,
-        activeIndex: index + 1,
-        currentFileName: selection.fileName
-      });
-
-      try {
-        const uploadedPhoto: ImageDto = await this.uploadSelectionAsync(selection, parkId, parkName);
-        if (!uploadedPhoto.geoLocation) {
-          missingGeoCount++;
-        }
-        this.upsertPhoto(this.toBatchPhoto(uploadedPhoto));
-      } catch (error: unknown) {
-        failedCount++;
-        console.error('Error uploading photo batch selection', error);
-      } finally {
-        completedCount++;
+    try {
+      await this.ensureCategoryTagsAsync();
+      await this.runWithConcurrency(selections, async (selection: AdminPhotoBatchUploadSelection, index: number): Promise<void> => {
         this.uploadProgressSignal.set({
           completed: completedCount,
           total: selections.length,
-          activeIndex: Math.min(completedCount + 1, selections.length),
+          activeIndex: index + 1,
           currentFileName: selection.fileName
         });
-      }
-    });
 
-    this.uploadingSignal.set(false);
-    this.uploadProgressSignal.set(null);
-    this.clearSelectedFiles();
-    this.toastMessageService.add(
-      failedCount === 0 ? 'success' : 'warn',
-      this.translateService.instant(failedCount === 0 ? 'admin.images.batch.toasts.uploadFinishedSummary' : 'admin.images.batch.toasts.uploadPartialSummary'),
-      this.translateService.instant(
-        failedCount === 0 ? 'admin.images.batch.toasts.uploadFinishedDetail' : 'admin.images.batch.toasts.uploadPartialDetail',
-        { count: completedCount - failedCount, failed: failedCount }
-      )
-    );
+        try {
+          const uploadedPhoto: ImageDto = await this.uploadSelectionAsync(selection, parkId, parkName);
+          if (!uploadedPhoto.geoLocation) {
+            missingGeoCount++;
+          }
+          this.upsertPhoto(this.toBatchPhoto(uploadedPhoto));
+        } catch (error: unknown) {
+          failedCount++;
+          console.error('Error uploading photo batch selection', error);
+        } finally {
+          completedCount++;
+          this.uploadProgressSignal.set({
+            completed: completedCount,
+            total: selections.length,
+            activeIndex: Math.min(completedCount + 1, selections.length),
+            currentFileName: selection.fileName
+          });
+        }
+      });
 
-    if (missingGeoCount > 0) {
+      shouldReloadWorkspace = completedCount > failedCount;
+      this.clearSelectedFiles();
       this.toastMessageService.add(
-        'warn',
-        this.translateService.instant('common.warning'),
-        this.translateService.instant('admin.images.batch.toasts.missingGeoDetail', { count: missingGeoCount })
+        failedCount === 0 ? 'success' : 'warn',
+        this.translateService.instant(failedCount === 0 ? 'admin.images.batch.toasts.uploadFinishedSummary' : 'admin.images.batch.toasts.uploadPartialSummary'),
+        this.translateService.instant(
+          failedCount === 0 ? 'admin.images.batch.toasts.uploadFinishedDetail' : 'admin.images.batch.toasts.uploadPartialDetail',
+          { count: completedCount - failedCount, failed: failedCount }
+        )
       );
+
+      if (missingGeoCount > 0) {
+        this.toastMessageService.add(
+          'warn',
+          this.translateService.instant('common.warning'),
+          this.translateService.instant('admin.images.batch.toasts.missingGeoDetail', { count: missingGeoCount })
+        );
+      }
+    } catch (error: unknown) {
+      console.error('Error preparing photo batch upload', error);
+      this.toastMessageService.add(
+        'error',
+        this.translateService.instant('common.errorTitle'),
+        this.translateService.instant('common.shared.imageUpload.uploadError')
+      );
+    } finally {
+      this.uploadingSignal.set(false);
+      this.uploadProgressSignal.set(null);
+    }
+
+    if (shouldReloadWorkspace) {
+      await this.reloadParkWorkspaceAsync(parkId);
     }
   }
 
@@ -511,6 +527,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         this.translateService.instant('admin.images.batch.toasts.categorizedSummary'),
         this.translateService.instant('admin.images.batch.toasts.categorizedDetail')
       );
+      await this.reloadParkWorkspaceAsync(parkId);
     } catch (error: unknown) {
       console.error('Error categorizing batch photo', error);
       this.patchPhoto(photoId, { isSaving: false });
@@ -554,6 +571,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         this.translateService.instant('admin.images.batch.toasts.uncategorizedSummary'),
         this.translateService.instant('admin.images.batch.toasts.uncategorizedDetail')
       );
+      await this.reloadParkWorkspaceAsync(parkId);
     } catch (error: unknown) {
       console.error('Error moving batch photo to uncategorized', error);
       this.patchPhoto(photoId, { isSaving: false });
@@ -615,6 +633,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
   }
 
   async deletePhoto(photoId: string): Promise<void> {
+    const parkId: string | null = this.selectedParkIdSignal();
     const photo: AdminPhotoBatchPhoto | undefined = this.photosSignal().find((item: AdminPhotoBatchPhoto) => item.id === photoId);
     if (!photo || photo.isSaving) {
       return;
@@ -634,6 +653,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         this.translateService.instant('admin.images.batch.toasts.deleteSummary'),
         this.translateService.instant('admin.images.batch.toasts.deleteDetail')
       );
+      await this.reloadParkWorkspaceAsync(parkId);
     } catch (error: unknown) {
       console.error('Error deleting batch photo', error);
       this.patchPhoto(photoId, { isSaving: false });
@@ -648,9 +668,9 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
   private async loadParkWorkspaceAsync(parkId: string): Promise<void> {
     this.parkItemsLoadingSignal.set(true);
     this.photosLoadingSignal.set(true);
-    await this.ensureCategoryTagsAsync();
 
     try {
+      await this.ensureCategoryTagsAsync();
       const [parkItemRows, parkImagesPage, parkItemImagesPage]: [
         ParkItemAdminRow[],
         WorkspaceImagePage<ImageDto>,
@@ -697,6 +717,15 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       this.parkItemsLoadingSignal.set(false);
       this.photosLoadingSignal.set(false);
     }
+  }
+
+  private async reloadParkWorkspaceAsync(parkId: string | null): Promise<void> {
+    if (!parkId || this.selectedParkIdSignal() !== parkId) {
+      return;
+    }
+
+    this.resetPhotoPagination();
+    await this.loadParkWorkspaceAsync(parkId);
   }
 
   private async loadAllParkItemsAsync(parkId: string): Promise<ParkItemAdminRow[]> {
