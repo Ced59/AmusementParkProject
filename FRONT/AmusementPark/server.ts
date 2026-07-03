@@ -136,6 +136,14 @@ interface TechnicalStatsCounters {
   cacheHitResponses: number;
   robotPageResponses: number;
   robotCacheHitResponses: number;
+  seoReadyHtmlResponses: number;
+  seoNotReadyHtmlResponses: number;
+  robotSeoReadyHtmlResponses: number;
+  robotSeoNotReadyHtmlResponses: number;
+  robotNoJsHtmlResponses: number;
+  robotHtmlBlockedNotSeoReady: number;
+  robotHtmlNotAllowed: number;
+  robotSsrUnavailableResponses: number;
   totalRenders: number;
   totalRenderMilliseconds: number;
   maxRenderMilliseconds: number;
@@ -164,9 +172,17 @@ interface TechnicalStatsCount {
 
 interface TechnicalStatsRobotFamily {
   readonly key: string;
+  readonly category: string;
   readonly count: number;
   readonly cacheHits: number;
   readonly hitRatePercent: number;
+  readonly seoReadyResponses: number;
+  readonly seoNotReadyResponses: number;
+  readonly seoReadyRatePercent: number;
+  readonly noJsResponses: number;
+  readonly blockedNotSeoReadyResponses: number;
+  readonly htmlNotAllowedResponses: number;
+  readonly ssrUnavailableResponses: number;
 }
 
 interface DiskPageCacheStats {
@@ -183,6 +199,12 @@ interface TechnicalStatsPersistentBucket {
   readonly pageResponseStatusCounts: Record<string, number>;
   readonly robotFamilyCounts: Record<string, number>;
   readonly robotFamilyCacheHitCounts: Record<string, number>;
+  readonly robotFamilySeoReadyCounts: Record<string, number>;
+  readonly robotFamilySeoNotReadyCounts: Record<string, number>;
+  readonly robotFamilyNoJsCounts: Record<string, number>;
+  readonly robotFamilyBlockedNotSeoReadyCounts: Record<string, number>;
+  readonly robotFamilyHtmlNotAllowedCounts: Record<string, number>;
+  readonly robotFamilySsrUnavailableCounts: Record<string, number>;
 }
 
 interface TechnicalStatsPersistenceSettings {
@@ -196,6 +218,14 @@ const technicalStatsCounters: TechnicalStatsCounters = {
   cacheHitResponses: 0,
   robotPageResponses: 0,
   robotCacheHitResponses: 0,
+  seoReadyHtmlResponses: 0,
+  seoNotReadyHtmlResponses: 0,
+  robotSeoReadyHtmlResponses: 0,
+  robotSeoNotReadyHtmlResponses: 0,
+  robotNoJsHtmlResponses: 0,
+  robotHtmlBlockedNotSeoReady: 0,
+  robotHtmlNotAllowed: 0,
+  robotSsrUnavailableResponses: 0,
   totalRenders: 0,
   totalRenderMilliseconds: 0,
   maxRenderMilliseconds: 0,
@@ -219,10 +249,22 @@ const technicalStatsCounters: TechnicalStatsCounters = {
 const pageResponseStatusCounts = new Map<SsrPageResponseStatus, number>();
 const robotFamilyCounts = new Map<string, number>();
 const robotFamilyCacheHitCounts = new Map<string, number>();
+const robotFamilySeoReadyCounts = new Map<string, number>();
+const robotFamilySeoNotReadyCounts = new Map<string, number>();
+const robotFamilyNoJsCounts = new Map<string, number>();
+const robotFamilyBlockedNotSeoReadyCounts = new Map<string, number>();
+const robotFamilyHtmlNotAllowedCounts = new Map<string, number>();
+const robotFamilySsrUnavailableCounts = new Map<string, number>();
 let lastPersistedTechnicalStatsCounters = cloneTechnicalStatsCounters(technicalStatsCounters);
 let lastPersistedPageResponseStatusCounts = cloneNumberMap(pageResponseStatusCounts);
 let lastPersistedRobotFamilyCounts = cloneNumberMap(robotFamilyCounts);
 let lastPersistedRobotFamilyCacheHitCounts = cloneNumberMap(robotFamilyCacheHitCounts);
+let lastPersistedRobotFamilySeoReadyCounts = cloneNumberMap(robotFamilySeoReadyCounts);
+let lastPersistedRobotFamilySeoNotReadyCounts = cloneNumberMap(robotFamilySeoNotReadyCounts);
+let lastPersistedRobotFamilyNoJsCounts = cloneNumberMap(robotFamilyNoJsCounts);
+let lastPersistedRobotFamilyBlockedNotSeoReadyCounts = cloneNumberMap(robotFamilyBlockedNotSeoReadyCounts);
+let lastPersistedRobotFamilyHtmlNotAllowedCounts = cloneNumberMap(robotFamilyHtmlNotAllowedCounts);
+let lastPersistedRobotFamilySsrUnavailableCounts = cloneNumberMap(robotFamilySsrUnavailableCounts);
 
 initializeTechnicalStatsPersistence();
 
@@ -538,6 +580,8 @@ function buildTechnicalStatsSnapshot(): Record<string, unknown> {
   const uptimeSeconds = Math.max(0, Math.round((generatedAtUtc.getTime() - technicalStatsStartedAtUtc.getTime()) / 1000));
   const diskStats = getDiskPageCacheStatsSnapshot();
   const totalRenders = technicalStatsCounters.totalRenders;
+  const htmlResponses = technicalStatsCounters.seoReadyHtmlResponses + technicalStatsCounters.seoNotReadyHtmlResponses;
+  const robotHtmlResponses = technicalStatsCounters.robotSeoReadyHtmlResponses + technicalStatsCounters.robotSeoNotReadyHtmlResponses;
 
   return {
     isAvailable: true,
@@ -574,6 +618,29 @@ function buildTechnicalStatsSnapshot(): Record<string, unknown> {
       seoDocumentHits: technicalStatsCounters.seoDocumentHits,
       seoDocumentMisses: technicalStatsCounters.seoDocumentMisses,
       assetMisses: assetMissCount
+    },
+    seo: {
+      robotNoJsHtmlEnabled,
+      htmlResponses,
+      seoReadyHtmlResponses: technicalStatsCounters.seoReadyHtmlResponses,
+      seoNotReadyHtmlResponses: technicalStatsCounters.seoNotReadyHtmlResponses,
+      seoReadyRatePercent: toPercent(technicalStatsCounters.seoReadyHtmlResponses, htmlResponses),
+      robotHtmlResponses,
+      robotSeoReadyHtmlResponses: technicalStatsCounters.robotSeoReadyHtmlResponses,
+      robotSeoNotReadyHtmlResponses: technicalStatsCounters.robotSeoNotReadyHtmlResponses,
+      robotSeoReadyRatePercent: toPercent(technicalStatsCounters.robotSeoReadyHtmlResponses, robotHtmlResponses),
+      robotNoJsHtmlResponses: technicalStatsCounters.robotNoJsHtmlResponses,
+      robotHtmlBlockedNotSeoReady: technicalStatsCounters.robotHtmlBlockedNotSeoReady,
+      robotHtmlNotAllowed: technicalStatsCounters.robotHtmlNotAllowed,
+      robotSsrUnavailableResponses: technicalStatsCounters.robotSsrUnavailableResponses,
+      robotPageResponses: technicalStatsCounters.robotPageResponses,
+      robotCacheHitResponses: technicalStatsCounters.robotCacheHitResponses,
+      robotHitRatePercent: toPercent(technicalStatsCounters.robotCacheHitResponses, technicalStatsCounters.robotPageResponses),
+      seoDocumentRequests: technicalStatsCounters.seoDocumentRequests,
+      seoDocumentHits: technicalStatsCounters.seoDocumentHits,
+      seoDocumentMisses: technicalStatsCounters.seoDocumentMisses,
+      seoDocumentHitRatePercent: toPercent(technicalStatsCounters.seoDocumentHits, technicalStatsCounters.seoDocumentRequests),
+      queueFullRejections: technicalStatsCounters.renderQueueFullRejections
     },
     rendering: {
       ssrRenderEnabled,
@@ -643,15 +710,38 @@ function buildRobotFamilyRows(): TechnicalStatsRobotFamily[] {
   return Array.from(robotFamilyCounts.entries())
     .map(([key, count]: [string, number]): TechnicalStatsRobotFamily => {
       const cacheHits = robotFamilyCacheHitCounts.get(key) ?? 0;
+      const seoReadyResponses = robotFamilySeoReadyCounts.get(key) ?? 0;
+      const seoNotReadyResponses = robotFamilySeoNotReadyCounts.get(key) ?? 0;
+      const htmlResponses = seoReadyResponses + seoNotReadyResponses;
       return {
         key,
+        category: getRobotFamilyCategory(key),
         count,
         cacheHits,
-        hitRatePercent: toPercent(cacheHits, count)
+        hitRatePercent: toPercent(cacheHits, count),
+        seoReadyResponses,
+        seoNotReadyResponses,
+        seoReadyRatePercent: toPercent(seoReadyResponses, htmlResponses),
+        noJsResponses: robotFamilyNoJsCounts.get(key) ?? 0,
+        blockedNotSeoReadyResponses: robotFamilyBlockedNotSeoReadyCounts.get(key) ?? 0,
+        htmlNotAllowedResponses: robotFamilyHtmlNotAllowedCounts.get(key) ?? 0,
+        ssrUnavailableResponses: robotFamilySsrUnavailableCounts.get(key) ?? 0
       };
     })
-    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key))
-    .slice(0, technicalStatsDistributionRowLimit);
+    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key));
+}
+
+function getRobotFamilyCategory(robotFamily: string): string {
+  switch (robotFamily) {
+    case 'Googlebot':
+      return 'google';
+    case 'Bingbot':
+      return 'bing';
+    case 'YandexBot':
+      return 'yandex';
+    default:
+      return 'other';
+  }
 }
 
 function toPercent(value: number, total: number): number {
@@ -826,10 +916,22 @@ function persistTechnicalStatsBucket(): void {
     const deltaStatusCounts = diffNumberMaps(pageResponseStatusCounts, lastPersistedPageResponseStatusCounts);
     const deltaRobotCounts = diffNumberMaps(robotFamilyCounts, lastPersistedRobotFamilyCounts);
     const deltaRobotCacheHitCounts = diffNumberMaps(robotFamilyCacheHitCounts, lastPersistedRobotFamilyCacheHitCounts);
+    const deltaRobotSeoReadyCounts = diffNumberMaps(robotFamilySeoReadyCounts, lastPersistedRobotFamilySeoReadyCounts);
+    const deltaRobotSeoNotReadyCounts = diffNumberMaps(robotFamilySeoNotReadyCounts, lastPersistedRobotFamilySeoNotReadyCounts);
+    const deltaRobotNoJsCounts = diffNumberMaps(robotFamilyNoJsCounts, lastPersistedRobotFamilyNoJsCounts);
+    const deltaRobotBlockedNotSeoReadyCounts = diffNumberMaps(robotFamilyBlockedNotSeoReadyCounts, lastPersistedRobotFamilyBlockedNotSeoReadyCounts);
+    const deltaRobotHtmlNotAllowedCounts = diffNumberMaps(robotFamilyHtmlNotAllowedCounts, lastPersistedRobotFamilyHtmlNotAllowedCounts);
+    const deltaRobotSsrUnavailableCounts = diffNumberMaps(robotFamilySsrUnavailableCounts, lastPersistedRobotFamilySsrUnavailableCounts);
     const hasDelta = hasTechnicalStatsCountersDelta(deltaCounters)
       || deltaStatusCounts.size > 0
       || deltaRobotCounts.size > 0
-      || deltaRobotCacheHitCounts.size > 0;
+      || deltaRobotCacheHitCounts.size > 0
+      || deltaRobotSeoReadyCounts.size > 0
+      || deltaRobotSeoNotReadyCounts.size > 0
+      || deltaRobotNoJsCounts.size > 0
+      || deltaRobotBlockedNotSeoReadyCounts.size > 0
+      || deltaRobotHtmlNotAllowedCounts.size > 0
+      || deltaRobotSsrUnavailableCounts.size > 0;
 
     if (!hasDelta) {
       return;
@@ -843,7 +945,13 @@ function persistTechnicalStatsBucket(): void {
       counters: mergeTechnicalStatsCounters(existingBucket?.counters ?? createEmptyTechnicalStatsCounters(), deltaCounters),
       pageResponseStatusCounts: mergeRecordCounts(existingBucket?.pageResponseStatusCounts ?? {}, mapToRecord(deltaStatusCounts)),
       robotFamilyCounts: mergeRecordCounts(existingBucket?.robotFamilyCounts ?? {}, mapToRecord(deltaRobotCounts)),
-      robotFamilyCacheHitCounts: mergeRecordCounts(existingBucket?.robotFamilyCacheHitCounts ?? {}, mapToRecord(deltaRobotCacheHitCounts))
+      robotFamilyCacheHitCounts: mergeRecordCounts(existingBucket?.robotFamilyCacheHitCounts ?? {}, mapToRecord(deltaRobotCacheHitCounts)),
+      robotFamilySeoReadyCounts: mergeRecordCounts(existingBucket?.robotFamilySeoReadyCounts ?? {}, mapToRecord(deltaRobotSeoReadyCounts)),
+      robotFamilySeoNotReadyCounts: mergeRecordCounts(existingBucket?.robotFamilySeoNotReadyCounts ?? {}, mapToRecord(deltaRobotSeoNotReadyCounts)),
+      robotFamilyNoJsCounts: mergeRecordCounts(existingBucket?.robotFamilyNoJsCounts ?? {}, mapToRecord(deltaRobotNoJsCounts)),
+      robotFamilyBlockedNotSeoReadyCounts: mergeRecordCounts(existingBucket?.robotFamilyBlockedNotSeoReadyCounts ?? {}, mapToRecord(deltaRobotBlockedNotSeoReadyCounts)),
+      robotFamilyHtmlNotAllowedCounts: mergeRecordCounts(existingBucket?.robotFamilyHtmlNotAllowedCounts ?? {}, mapToRecord(deltaRobotHtmlNotAllowedCounts)),
+      robotFamilySsrUnavailableCounts: mergeRecordCounts(existingBucket?.robotFamilySsrUnavailableCounts ?? {}, mapToRecord(deltaRobotSsrUnavailableCounts))
     };
 
     writeTechnicalStatsBucket(bucket);
@@ -941,6 +1049,12 @@ function loadPersistedTechnicalStatsBuckets(): void {
   pageResponseStatusCounts.clear();
   robotFamilyCounts.clear();
   robotFamilyCacheHitCounts.clear();
+  robotFamilySeoReadyCounts.clear();
+  robotFamilySeoNotReadyCounts.clear();
+  robotFamilyNoJsCounts.clear();
+  robotFamilyBlockedNotSeoReadyCounts.clear();
+  robotFamilyHtmlNotAllowedCounts.clear();
+  robotFamilySsrUnavailableCounts.clear();
 
   if (buckets.length === 0) {
     technicalStatsStartedAtUtc = new Date();
@@ -954,6 +1068,12 @@ function loadPersistedTechnicalStatsBuckets(): void {
     mergeRecordIntoMap(bucket.pageResponseStatusCounts, pageResponseStatusCounts);
     mergeRecordIntoMap(bucket.robotFamilyCounts, robotFamilyCounts);
     mergeRecordIntoMap(bucket.robotFamilyCacheHitCounts, robotFamilyCacheHitCounts);
+    mergeRecordIntoMap(bucket.robotFamilySeoReadyCounts, robotFamilySeoReadyCounts);
+    mergeRecordIntoMap(bucket.robotFamilySeoNotReadyCounts, robotFamilySeoNotReadyCounts);
+    mergeRecordIntoMap(bucket.robotFamilyNoJsCounts, robotFamilyNoJsCounts);
+    mergeRecordIntoMap(bucket.robotFamilyBlockedNotSeoReadyCounts, robotFamilyBlockedNotSeoReadyCounts);
+    mergeRecordIntoMap(bucket.robotFamilyHtmlNotAllowedCounts, robotFamilyHtmlNotAllowedCounts);
+    mergeRecordIntoMap(bucket.robotFamilySsrUnavailableCounts, robotFamilySsrUnavailableCounts);
 
     if (earliestStartedAtUtc === null || bucket.startedAtUtc < earliestStartedAtUtc) {
       earliestStartedAtUtc = bucket.startedAtUtc;
@@ -1008,7 +1128,13 @@ function readTechnicalStatsBucket(dateKey: string): TechnicalStatsPersistentBuck
       counters: normalizeTechnicalStatsCounters(parsed.counters),
       pageResponseStatusCounts: normalizeCountRecord(parsed.pageResponseStatusCounts),
       robotFamilyCounts: normalizeCountRecord(parsed.robotFamilyCounts),
-      robotFamilyCacheHitCounts: normalizeCountRecord(parsed.robotFamilyCacheHitCounts)
+      robotFamilyCacheHitCounts: normalizeCountRecord(parsed.robotFamilyCacheHitCounts),
+      robotFamilySeoReadyCounts: normalizeCountRecord(parsed.robotFamilySeoReadyCounts),
+      robotFamilySeoNotReadyCounts: normalizeCountRecord(parsed.robotFamilySeoNotReadyCounts),
+      robotFamilyNoJsCounts: normalizeCountRecord(parsed.robotFamilyNoJsCounts),
+      robotFamilyBlockedNotSeoReadyCounts: normalizeCountRecord(parsed.robotFamilyBlockedNotSeoReadyCounts),
+      robotFamilyHtmlNotAllowedCounts: normalizeCountRecord(parsed.robotFamilyHtmlNotAllowedCounts),
+      robotFamilySsrUnavailableCounts: normalizeCountRecord(parsed.robotFamilySsrUnavailableCounts)
     };
   } catch (error: unknown) {
     console.warn(`SSR technical stats bucket read failed: ${dateKey}`, error);
@@ -1114,6 +1240,12 @@ function rememberPersistedTechnicalStatsBaseline(): void {
   lastPersistedPageResponseStatusCounts = cloneNumberMap(pageResponseStatusCounts);
   lastPersistedRobotFamilyCounts = cloneNumberMap(robotFamilyCounts);
   lastPersistedRobotFamilyCacheHitCounts = cloneNumberMap(robotFamilyCacheHitCounts);
+  lastPersistedRobotFamilySeoReadyCounts = cloneNumberMap(robotFamilySeoReadyCounts);
+  lastPersistedRobotFamilySeoNotReadyCounts = cloneNumberMap(robotFamilySeoNotReadyCounts);
+  lastPersistedRobotFamilyNoJsCounts = cloneNumberMap(robotFamilyNoJsCounts);
+  lastPersistedRobotFamilyBlockedNotSeoReadyCounts = cloneNumberMap(robotFamilyBlockedNotSeoReadyCounts);
+  lastPersistedRobotFamilyHtmlNotAllowedCounts = cloneNumberMap(robotFamilyHtmlNotAllowedCounts);
+  lastPersistedRobotFamilySsrUnavailableCounts = cloneNumberMap(robotFamilySsrUnavailableCounts);
 }
 
 function createEmptyTechnicalStatsCounters(): TechnicalStatsCounters {
@@ -1123,6 +1255,14 @@ function createEmptyTechnicalStatsCounters(): TechnicalStatsCounters {
     cacheHitResponses: 0,
     robotPageResponses: 0,
     robotCacheHitResponses: 0,
+    seoReadyHtmlResponses: 0,
+    seoNotReadyHtmlResponses: 0,
+    robotSeoReadyHtmlResponses: 0,
+    robotSeoNotReadyHtmlResponses: 0,
+    robotNoJsHtmlResponses: 0,
+    robotHtmlBlockedNotSeoReady: 0,
+    robotHtmlNotAllowed: 0,
+    robotSsrUnavailableResponses: 0,
     totalRenders: 0,
     totalRenderMilliseconds: 0,
     maxRenderMilliseconds: 0,
@@ -1177,6 +1317,14 @@ function diffTechnicalStatsCounters(current: TechnicalStatsCounters, baseline: T
     cacheHitResponses: Math.max(0, current.cacheHitResponses - baseline.cacheHitResponses),
     robotPageResponses: Math.max(0, current.robotPageResponses - baseline.robotPageResponses),
     robotCacheHitResponses: Math.max(0, current.robotCacheHitResponses - baseline.robotCacheHitResponses),
+    seoReadyHtmlResponses: Math.max(0, current.seoReadyHtmlResponses - baseline.seoReadyHtmlResponses),
+    seoNotReadyHtmlResponses: Math.max(0, current.seoNotReadyHtmlResponses - baseline.seoNotReadyHtmlResponses),
+    robotSeoReadyHtmlResponses: Math.max(0, current.robotSeoReadyHtmlResponses - baseline.robotSeoReadyHtmlResponses),
+    robotSeoNotReadyHtmlResponses: Math.max(0, current.robotSeoNotReadyHtmlResponses - baseline.robotSeoNotReadyHtmlResponses),
+    robotNoJsHtmlResponses: Math.max(0, current.robotNoJsHtmlResponses - baseline.robotNoJsHtmlResponses),
+    robotHtmlBlockedNotSeoReady: Math.max(0, current.robotHtmlBlockedNotSeoReady - baseline.robotHtmlBlockedNotSeoReady),
+    robotHtmlNotAllowed: Math.max(0, current.robotHtmlNotAllowed - baseline.robotHtmlNotAllowed),
+    robotSsrUnavailableResponses: Math.max(0, current.robotSsrUnavailableResponses - baseline.robotSsrUnavailableResponses),
     totalRenders: Math.max(0, current.totalRenders - baseline.totalRenders),
     totalRenderMilliseconds: Math.max(0, current.totalRenderMilliseconds - baseline.totalRenderMilliseconds),
     maxRenderMilliseconds: current.maxRenderMilliseconds > baseline.maxRenderMilliseconds ? current.maxRenderMilliseconds : 0,
@@ -1204,6 +1352,14 @@ function hasTechnicalStatsCountersDelta(counters: TechnicalStatsCounters): boole
     || counters.cacheHitResponses > 0
     || counters.robotPageResponses > 0
     || counters.robotCacheHitResponses > 0
+    || counters.seoReadyHtmlResponses > 0
+    || counters.seoNotReadyHtmlResponses > 0
+    || counters.robotSeoReadyHtmlResponses > 0
+    || counters.robotSeoNotReadyHtmlResponses > 0
+    || counters.robotNoJsHtmlResponses > 0
+    || counters.robotHtmlBlockedNotSeoReady > 0
+    || counters.robotHtmlNotAllowed > 0
+    || counters.robotSsrUnavailableResponses > 0
     || counters.totalRenders > 0
     || counters.totalRenderMilliseconds > 0
     || counters.maxRenderMilliseconds > 0
@@ -1231,6 +1387,14 @@ function mergeTechnicalStatsCounters(left: TechnicalStatsCounters, right: Techni
     cacheHitResponses: left.cacheHitResponses + right.cacheHitResponses,
     robotPageResponses: left.robotPageResponses + right.robotPageResponses,
     robotCacheHitResponses: left.robotCacheHitResponses + right.robotCacheHitResponses,
+    seoReadyHtmlResponses: left.seoReadyHtmlResponses + right.seoReadyHtmlResponses,
+    seoNotReadyHtmlResponses: left.seoNotReadyHtmlResponses + right.seoNotReadyHtmlResponses,
+    robotSeoReadyHtmlResponses: left.robotSeoReadyHtmlResponses + right.robotSeoReadyHtmlResponses,
+    robotSeoNotReadyHtmlResponses: left.robotSeoNotReadyHtmlResponses + right.robotSeoNotReadyHtmlResponses,
+    robotNoJsHtmlResponses: left.robotNoJsHtmlResponses + right.robotNoJsHtmlResponses,
+    robotHtmlBlockedNotSeoReady: left.robotHtmlBlockedNotSeoReady + right.robotHtmlBlockedNotSeoReady,
+    robotHtmlNotAllowed: left.robotHtmlNotAllowed + right.robotHtmlNotAllowed,
+    robotSsrUnavailableResponses: left.robotSsrUnavailableResponses + right.robotSsrUnavailableResponses,
     totalRenders: left.totalRenders + right.totalRenders,
     totalRenderMilliseconds: left.totalRenderMilliseconds + right.totalRenderMilliseconds,
     maxRenderMilliseconds: Math.max(left.maxRenderMilliseconds, right.maxRenderMilliseconds),
@@ -1463,6 +1627,7 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
 
 function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string | null): void {
   recordPageResponse(req, 'SSR-BOT-UNAVAILABLE', buildPageCacheKey(req));
+  technicalStatsCounters.robotSsrUnavailableResponses += 1;
 
   res.setHeader('Retry-After', '60');
   res.setHeader('X-AmusementPark-SSR-Mode', 'SSR-BOT-UNAVAILABLE');
@@ -1472,6 +1637,7 @@ function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string
   res.setHeader('X-AmusementPark-Robot-Html', 'blocked-ssr-unavailable');
   res.setHeader('Cache-Control', 'no-store');
   if (robotFamily !== null) {
+    incrementCount(robotFamilySsrUnavailableCounts, robotFamily);
     res.setHeader('X-AmusementPark-Robot-Family', robotFamily);
     appendVaryHeader(res, 'User-Agent');
   }
@@ -1491,6 +1657,7 @@ function prepareHtmlForResponse(req: Request, res: Response, html: string, optio
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('X-AmusementPark-Seo-Ready', preparationResult.seoReady.isReady ? 'true' : 'false');
   res.setHeader('X-AmusementPark-Seo-Ready-Reason', preparationResult.seoReady.reason);
+  recordHtmlPreparationStats(robotFamily, preparationResult);
 
   if (robotFamily !== null) {
     res.setHeader('X-AmusementPark-Robot-Family', robotFamily);
@@ -1507,6 +1674,43 @@ function prepareHtmlForResponse(req: Request, res: Response, html: string, optio
   }
 
   return preparationResult.html;
+}
+
+function recordHtmlPreparationStats(robotFamily: string | null, preparationResult: RobotHtmlPreparationResult): void {
+  if (preparationResult.seoReady.isReady) {
+    technicalStatsCounters.seoReadyHtmlResponses += 1;
+  } else {
+    technicalStatsCounters.seoNotReadyHtmlResponses += 1;
+  }
+
+  if (robotFamily === null) {
+    return;
+  }
+
+  if (preparationResult.seoReady.isReady) {
+    technicalStatsCounters.robotSeoReadyHtmlResponses += 1;
+    incrementCount(robotFamilySeoReadyCounts, robotFamily);
+  } else {
+    technicalStatsCounters.robotSeoNotReadyHtmlResponses += 1;
+    incrementCount(robotFamilySeoNotReadyCounts, robotFamily);
+  }
+
+  switch (preparationResult.robotHtmlStatus) {
+    case 'no-js':
+      technicalStatsCounters.robotNoJsHtmlResponses += 1;
+      incrementCount(robotFamilyNoJsCounts, robotFamily);
+      break;
+    case 'blocked-not-seo-ready':
+      technicalStatsCounters.robotHtmlBlockedNotSeoReady += 1;
+      incrementCount(robotFamilyBlockedNotSeoReadyCounts, robotFamily);
+      break;
+    case 'not-allowed':
+      technicalStatsCounters.robotHtmlNotAllowed += 1;
+      incrementCount(robotFamilyHtmlNotAllowedCounts, robotFamily);
+      break;
+    default:
+      break;
+  }
 }
 
 function appendVaryHeader(res: Response, value: string): void {
@@ -1606,6 +1810,62 @@ function detectRobotFamily(req: Request): string | null {
 
   if (userAgent.includes('semrushbot')) {
     return 'SemrushBot';
+  }
+
+  if (userAgent.includes('baiduspider')) {
+    return 'BaiduSpider';
+  }
+
+  if (userAgent.includes('slurp')) {
+    return 'Yahoo Slurp';
+  }
+
+  if (userAgent.includes('applebot')) {
+    return 'Applebot';
+  }
+
+  if (userAgent.includes('petalbot')) {
+    return 'PetalBot';
+  }
+
+  if (userAgent.includes('mj12bot')) {
+    return 'MJ12bot';
+  }
+
+  if (userAgent.includes('dotbot')) {
+    return 'DotBot';
+  }
+
+  if (userAgent.includes('bytespider')) {
+    return 'ByteSpider';
+  }
+
+  if (userAgent.includes('facebookexternalhit')) {
+    return 'Facebook external hit';
+  }
+
+  if (userAgent.includes('whatsapp')) {
+    return 'WhatsApp';
+  }
+
+  if (userAgent.includes('telegrambot')) {
+    return 'TelegramBot';
+  }
+
+  if (userAgent.includes('linkedinbot')) {
+    return 'LinkedInBot';
+  }
+
+  if (userAgent.includes('pinterest')) {
+    return 'PinterestBot';
+  }
+
+  if (userAgent.includes('discordbot')) {
+    return 'DiscordBot';
+  }
+
+  if (userAgent.includes('twitterbot')) {
+    return 'TwitterBot';
   }
 
   if (/(?:bot|crawler|spider|slurp|facebookexternalhit|whatsapp|telegrambot|linkedinbot|pinterest|discordbot|twitterbot)/i.test(userAgent)) {
