@@ -6,7 +6,11 @@ namespace AmusementPark.Application.Features.ParkWeather.Queries;
 
 public sealed record GetParkWeatherForecastQuery(string ParkId, int DayCount) : IQuery<ApplicationResult<ParkWeatherForecastResult>>;
 
-public sealed record GetParkWeatherHistoricalComparisonsQuery(string ParkId, int DayCount, int YearsLimit) : IQuery<ApplicationResult<ParkWeatherHistoricalComparisonsResult>>;
+public sealed record GetParkWeatherHistoricalComparisonsQuery(
+    string ParkId,
+    int DayCount,
+    int YearsLimit,
+    IReadOnlyCollection<DateOnly>? ForecastDates = null) : IQuery<ApplicationResult<ParkWeatherHistoricalComparisonsResult>>;
 
 public sealed record GetLatestParkWeatherRunQuery() : IQuery<ApplicationResult<ParkWeatherRunResult?>>;
 

@@ -101,13 +101,21 @@ public sealed class GetParkWeatherHistoricalComparisonsQueryHandler : IQueryHand
             return ApplicationResult<ParkWeatherHistoricalComparisonsResult>.Failure(ParkWeatherApplicationErrors.ParkHasNoCoordinates(park.Id));
         }
 
-        int dayCount = Math.Clamp(query.DayCount, 1, 7);
-        ParkWeatherDailySnapshot? latestForecastSnapshot = await this.weatherRepository.GetLatestForecastSnapshotAsync(park.Id, cancellationToken);
-        DateOnly parkLocalToday = this.localDateResolver.ResolveCurrentLocalDate(latestForecastSnapshot);
-        IReadOnlyCollection<ParkWeatherDailySnapshot> snapshots = await this.weatherRepository.GetForecastAsync(park.Id, parkLocalToday, dayCount, cancellationToken);
+        IReadOnlyCollection<DateOnly> forecastDates = NormalizeForecastDates(query.ForecastDates);
+        if (forecastDates.Count == 0)
+        {
+            int dayCount = Math.Clamp(query.DayCount, 1, 7);
+            ParkWeatherDailySnapshot? latestForecastSnapshot = await this.weatherRepository.GetLatestForecastSnapshotAsync(park.Id, cancellationToken);
+            DateOnly parkLocalToday = this.localDateResolver.ResolveCurrentLocalDate(latestForecastSnapshot);
+            IReadOnlyCollection<ParkWeatherDailySnapshot> snapshots = await this.weatherRepository.GetForecastAsync(park.Id, parkLocalToday, dayCount, cancellationToken);
+            forecastDates = snapshots
+                .Select(static snapshot => snapshot.LocalDate)
+                .ToList();
+        }
+
         IReadOnlyCollection<ParkWeatherHistoricalComparisonResult> historicalComparisons = await this.GetHistoricalComparisonsAsync(
             park.Id,
-            snapshots.OrderBy(static snapshot => snapshot.LocalDate).ToList(),
+            forecastDates,
             Math.Min(query.YearsLimit, this.settings.HistoricalComparisonYearsLimit),
             cancellationToken);
 
@@ -120,25 +128,21 @@ public sealed class GetParkWeatherHistoricalComparisonsQueryHandler : IQueryHand
 
     private async Task<IReadOnlyCollection<ParkWeatherHistoricalComparisonResult>> GetHistoricalComparisonsAsync(
         string parkId,
-        IReadOnlyCollection<ParkWeatherDailySnapshot> forecastSnapshots,
+        IReadOnlyCollection<DateOnly> forecastDates,
         int requestedYearsLimit,
         CancellationToken cancellationToken)
     {
         int yearsLimit = Math.Clamp(requestedYearsLimit, 0, 10);
-        if (forecastSnapshots.Count == 0 || yearsLimit == 0)
+        List<DateOnly> normalizedForecastDates = NormalizeForecastDates(forecastDates);
+        if (normalizedForecastDates.Count == 0 || yearsLimit == 0)
         {
             return Array.Empty<ParkWeatherHistoricalComparisonResult>();
         }
 
-        List<DateOnly> forecastDates = forecastSnapshots
-            .Select(static snapshot => snapshot.LocalDate)
-            .Distinct()
-            .OrderBy(static date => date)
-            .ToList();
         Dictionary<HistoricalComparisonKey, DateOnly> comparisonDatesByKey = new Dictionary<HistoricalComparisonKey, DateOnly>();
         List<DateOnly> comparisonDates = new List<DateOnly>();
 
-        foreach (DateOnly forecastDate in forecastDates)
+        foreach (DateOnly forecastDate in normalizedForecastDates)
         {
             for (int yearsBack = 1; yearsBack <= yearsLimit; yearsBack += 1)
             {
@@ -160,7 +164,7 @@ public sealed class GetParkWeatherHistoricalComparisonsQueryHandler : IQueryHand
         for (int yearsBack = 1; yearsBack <= yearsLimit; yearsBack += 1)
         {
             List<ParkWeatherHistoricalComparisonDayResult> days = new List<ParkWeatherHistoricalComparisonDayResult>();
-            foreach (DateOnly forecastDate in forecastDates)
+            foreach (DateOnly forecastDate in normalizedForecastDates)
             {
                 HistoricalComparisonKey key = new HistoricalComparisonKey(yearsBack, forecastDate);
                 DateOnly comparisonDate = comparisonDatesByKey[key];
@@ -195,6 +199,21 @@ public sealed class GetParkWeatherHistoricalComparisonsQueryHandler : IQueryHand
         }
 
         return comparisons;
+    }
+
+    private static List<DateOnly> NormalizeForecastDates(IReadOnlyCollection<DateOnly>? forecastDates)
+    {
+        if (forecastDates is null || forecastDates.Count == 0)
+        {
+            return new List<DateOnly>();
+        }
+
+        return forecastDates
+            .Where(static date => date != default)
+            .Distinct()
+            .OrderBy(static date => date)
+            .Take(7)
+            .ToList();
     }
 
     private readonly record struct HistoricalComparisonKey(int YearsBack, DateOnly ForecastDate);

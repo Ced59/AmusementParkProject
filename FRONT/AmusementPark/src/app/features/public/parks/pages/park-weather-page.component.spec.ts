@@ -166,6 +166,21 @@ describe('ParkWeatherPageComponent', () => {
     expect(sharePanel.descriptionKey).toBe('shareSocial.weather.description');
     expect(sharePanel.textKey).toBe('shareSocial.weather.text');
   });
+
+  it('requests historical comparisons for the displayed forecast dates', () => {
+    const details: HTMLDetailsElement | null = (fixture.nativeElement as HTMLElement).querySelector('details.park-weather-history');
+
+    expect(details).not.toBeNull();
+    details!.open = true;
+    details!.dispatchEvent(new Event('toggle'));
+    fixture.detectChanges();
+
+    const args: Parameters<ParksApiService['getParkWeatherHistoricalComparisons']> = parksApiService.getParkWeatherHistoricalComparisons.calls.mostRecent().args;
+    expect(args[0]).toBe('park-1');
+    expect(args[1]).toBe(2);
+    expect(args[2]).toBe(10);
+    expect(args[3]).toEqual(['2026-06-20', '2026-06-21']);
+  });
 });
 
 function createSummary(): ParkDetailSummary {
@@ -210,6 +225,17 @@ function createForecast(): ParkWeatherForecast {
         precipitationProbabilityMaxPercent: 22,
         precipitationSumMillimeters: 0,
         windSpeedMaxKilometersPerHour: 12.6,
+        fetchedAtUtc: '2026-06-20T08:00:00Z'
+      },
+      {
+        localDate: '2026-06-21',
+        dataKind: 'Forecast',
+        weatherCode: 2,
+        temperatureMinCelsius: 16,
+        temperatureMaxCelsius: 24,
+        precipitationProbabilityMaxPercent: 12,
+        precipitationSumMillimeters: 0,
+        windSpeedMaxKilometersPerHour: 10.1,
         fetchedAtUtc: '2026-06-20T08:00:00Z'
       }
     ],

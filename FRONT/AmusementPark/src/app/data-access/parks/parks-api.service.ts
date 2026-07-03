@@ -95,8 +95,8 @@ export class ParksApiService {
     return this.http.get<ParkWeatherForecast>(url, options);
   }
 
-  getParkWeatherHistoricalComparisons(id: string, days: number = 7, years: number = 10, options: ParksHttpOptions = {}): Observable<ParkWeatherHistoricalComparisons> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkWeatherHistoricalComparisons(id, days, years)}`;
+  getParkWeatherHistoricalComparisons(id: string, days: number = 7, years: number = 10, forecastDates: readonly string[] = [], options: ParksHttpOptions = {}): Observable<ParkWeatherHistoricalComparisons> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkWeatherHistoricalComparisons(id, days, years, forecastDates)}`;
     return this.http.get<ParkWeatherHistoricalComparisons>(url, options);
   }
 

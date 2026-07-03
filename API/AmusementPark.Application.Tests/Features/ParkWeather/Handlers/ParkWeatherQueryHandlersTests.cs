@@ -115,6 +115,51 @@ public sealed class ParkWeatherQueryHandlersTests
         weatherRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenForecastDatesAreProvided_ShouldUseDisplayedForecastDates()
+    {
+        Park park = CreatePark("park-1");
+        IReadOnlyCollection<DateOnly> requestedObservationDates = Array.Empty<DateOnly>();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        weatherRepository
+            .Setup(repository => repository.GetObservationsByDatesAsync("park-1", It.IsAny<IReadOnlyCollection<DateOnly>>(), It.IsAny<CancellationToken>()))
+            .Callback<string, IReadOnlyCollection<DateOnly>, CancellationToken>((_, dates, _) => requestedObservationDates = dates)
+            .ReturnsAsync(new[]
+            {
+                CreateObservation("park-1", new DateOnly(2025, 6, 30), 6d, 12d),
+            });
+        GetParkWeatherHistoricalComparisonsQueryHandler handler = new GetParkWeatherHistoricalComparisonsQueryHandler(
+            parkRepository.Object,
+            weatherRepository.Object,
+            new ParkWeatherLocalDateResolver(new FixedTimeProvider(new DateTimeOffset(2026, 6, 29, 22, 0, 0, TimeSpan.Zero))),
+            new ParkWeatherHistoricalComparisonDateResolver(),
+            new TestRefreshSettings());
+
+        ApplicationResult<ParkWeatherHistoricalComparisonsResult> result = await handler.HandleAsync(
+            new GetParkWeatherHistoricalComparisonsQuery(
+                "park-1",
+                7,
+                1,
+                new[] { new DateOnly(2026, 6, 30), new DateOnly(2026, 7, 1) }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Contains(new DateOnly(2025, 6, 30), requestedObservationDates);
+        Assert.Contains(new DateOnly(2025, 7, 1), requestedObservationDates);
+        weatherRepository.Verify(
+            repository => repository.GetLatestForecastSnapshotAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        weatherRepository.Verify(
+            repository => repository.GetForecastAsync(It.IsAny<string>(), It.IsAny<DateOnly>(), It.IsAny<int>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        parkRepository.VerifyAll();
+        weatherRepository.VerifyAll();
+    }
+
     private static Park CreatePark(string id)
     {
         Park park = new Park

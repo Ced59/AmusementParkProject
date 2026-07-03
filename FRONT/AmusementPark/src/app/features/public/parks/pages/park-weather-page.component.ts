@@ -68,6 +68,7 @@ export class ParkWeatherPageComponent implements OnInit {
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private currentParkId: string | null = null;
   private loadedHistoricalComparisonParkId: string | null = null;
+  private loadedHistoricalComparisonForecastDateKey: string | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -246,11 +247,16 @@ export class ParkWeatherPageComponent implements OnInit {
       ? event.currentTarget
       : null;
 
-    if (!details?.open || this.loadedHistoricalComparisonParkId === normalizedParkId) {
+    const forecastDates: string[] = this.currentForecastDates();
+    const forecastDateKey: string = this.buildForecastDateKey(forecastDates);
+    if (!details?.open || forecastDates.length === 0 || (
+      this.loadedHistoricalComparisonParkId === normalizedParkId &&
+      this.loadedHistoricalComparisonForecastDateKey === forecastDateKey
+    )) {
       return;
     }
 
-    this.loadHistoricalComparisons(normalizedParkId);
+    this.loadHistoricalComparisons(normalizedParkId, forecastDates, forecastDateKey);
   }
 
   private loadWeatherPage(parkId: string): void {
@@ -258,6 +264,7 @@ export class ParkWeatherPageComponent implements OnInit {
     this.stateStore.setLoading(previousData);
     this.historicalComparisonRequested.set(false);
     this.loadedHistoricalComparisonParkId = null;
+    this.loadedHistoricalComparisonForecastDateKey = null;
 
     forkJoin({
       summary: this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()),
@@ -289,15 +296,20 @@ export class ParkWeatherPageComponent implements OnInit {
     });
   }
 
-  private loadHistoricalComparisons(parkId: string): void {
+  private loadHistoricalComparisons(parkId: string, forecastDates: readonly string[], forecastDateKey: string): void {
     this.historicalComparisonRequested.set(true);
     this.historicalComparisonStore.setLoading();
 
-    this.parksApiService.getParkWeatherHistoricalComparisons(parkId, 7, 10, anonymousHttpOptions())
+    this.parksApiService.getParkWeatherHistoricalComparisons(parkId, forecastDates.length, 10, forecastDates, anonymousHttpOptions())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (comparisons: ParkWeatherHistoricalComparisons) => {
+          if (this.currentParkId !== parkId || this.buildForecastDateKey(this.currentForecastDates()) !== forecastDateKey) {
+            return;
+          }
+
           this.loadedHistoricalComparisonParkId = parkId;
+          this.loadedHistoricalComparisonForecastDateKey = forecastDateKey;
           if (!comparisons.years || comparisons.years.length === 0) {
             this.historicalComparisonStore.setEmpty(comparisons);
             return;
@@ -310,6 +322,17 @@ export class ParkWeatherPageComponent implements OnInit {
           this.historicalComparisonStore.setError('parkWeather.history.errorMessage');
         }
       });
+  }
+
+  private currentForecastDates(): string[] {
+    return this.stateStore.data()?.weather.days
+      .map((day: ParkWeatherDay) => day.localDate)
+      .filter((date: string | null | undefined): date is string => Boolean(date?.trim()))
+      .slice(0, 7) ?? [];
+  }
+
+  private buildForecastDateKey(forecastDates: readonly string[]): string {
+    return forecastDates.join('|');
   }
 
   private formatTemperature(value: number | null | undefined): string | null {
