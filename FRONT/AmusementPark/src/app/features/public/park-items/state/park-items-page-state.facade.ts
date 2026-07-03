@@ -30,6 +30,7 @@ import { MeasurementConversionService } from '@shared/services/measurements/meas
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { buildTranslationOptions } from '@shared/utils/display/display-options';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { resolveParkSocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { mapParkItemToCardViewModel } from '../mappers/park-item-card.mapper';
 import {
   mapParkExplorerBucketToZoneCardViewModel,
@@ -524,33 +525,17 @@ export class ParkItemsPageStateFacade {
   }
 }
 
-function resolveParkSocialImageId(parkPhotos: ImageDto[]): string | null {
-  const currentPhoto: ImageDto | undefined = parkPhotos.find((photo: ImageDto) => {
-    return photo.isCurrent && photo.isPublished !== false && normalizeOptionalImageId(photo.id) !== null;
-  });
-
-  if (currentPhoto) {
-    return normalizeOptionalImageId(currentPhoto.id);
-  }
-
-  const fallbackPhoto: ImageDto | undefined = parkPhotos.find((photo: ImageDto) => {
-    return photo.isPublished !== false && normalizeOptionalImageId(photo.id) !== null;
-  });
-
-  return normalizeOptionalImageId(fallbackPhoto?.id);
-}
-
-function normalizeOptionalImageId(value: string | null | undefined): string | null {
-  const normalizedValue: string = value?.trim() ?? '';
-  return normalizedValue.length > 0 ? normalizedValue : null;
-}
-
 function mapParkMapItemsToParkItems(mapItems: ParkMapItems): ParkItem[] {
   const parkId: string = mapItems.park.id ?? '';
   const locatedItems: ParkItem[] = mapItems.items.map((item: ParkMapItem) => mapParkMapItemToParkItem(parkId, item, item.latitude, item.longitude));
   const unlocatedItems: ParkItem[] = (mapItems.unlocatedItems ?? []).map((item: ParkMapUnlocatedItem) => mapParkMapItemToParkItem(parkId, item, null, null));
 
   return locatedItems.concat(unlocatedItems);
+}
+
+function normalizeOptionalImageId(value: string | null | undefined): string | null {
+  const normalizedValue: string = value?.trim() ?? '';
+  return normalizedValue.length > 0 ? normalizedValue : null;
 }
 
 function mapParkMapItemToParkItem(

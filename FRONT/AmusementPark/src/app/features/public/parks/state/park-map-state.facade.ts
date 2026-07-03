@@ -8,6 +8,7 @@ import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { mapParkMapItemsToViewModel } from '../mappers/park-map-items-view.mapper';
 import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { PARK_MAP_PARKS_PORT, ParkMapParksPort } from './park-map-data.ports';
@@ -57,7 +58,7 @@ export class ParkMapStateFacade {
       next: (data: { mapItems: ParkMapItems; summary: ParkDetailSummary }) => {
         this.screenStateStore.setReady({
           mapItems: data.mapItems,
-          parkImageId: data.summary.mainImage?.id ?? null
+          parkImageId: resolveParkSummarySocialImageId(data.summary)
         });
       },
       error: (error: unknown) => {

@@ -24,6 +24,7 @@ import { PageStateComponent } from '@shared/components/page-state/page-state.com
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import {
   buildPublicParkRouteCommands,
@@ -273,7 +274,7 @@ export class ParkWeatherPageComponent implements OnInit {
       next: (data: { summary: ParkDetailSummary; weather: ParkWeatherForecast }) => {
         const pageData: ParkWeatherPageData = {
           park: data.summary.park,
-          parkImageId: data.summary.mainImage?.id ?? null,
+          parkImageId: resolveParkSummarySocialImageId(data.summary),
           weather: data.weather
         };
 

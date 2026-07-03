@@ -16,6 +16,7 @@ import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { TranslationService } from '@app/services/translation.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import {
   buildPublicParkOpeningHoursRouteCommands,
@@ -569,7 +570,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
       next: (data: { summary: ParkDetailSummary; calendar: ParkOpeningHoursCalendar }) => {
         const pageData: ParkOpeningHoursPageData = {
           park: data.summary.park,
-          parkImageId: data.summary.mainImage?.id ?? null,
+          parkImageId: resolveParkSummarySocialImageId(data.summary),
           calendar: data.calendar
         };
 

@@ -1,6 +1,20 @@
 {
-  "version": "3.1.63",
+  "version": "3.1.64",
   "history": [
+    {
+      "version": "3.1.64",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les images de partage public restent plus justes.",
+        "en": "Public sharing images stay more accurate.",
+        "de": "Öffentliche Teilen-Bilder bleiben treffender.",
+        "nl": "Publieke deelafbeeldingen blijven nauwkeuriger.",
+        "it": "Le immagini di condivisione pubblica restano più corrette.",
+        "es": "Las imágenes públicas para compartir siguen siendo más precisas.",
+        "pl": "Publiczne obrazy udostępniania pozostają trafniejsze.",
+        "pt": "As imagens públicas de partilha continuam mais corretas."
+      }
+    },
     {
       "version": "3.1.63",
       "releasedAt": "2026-07-03",

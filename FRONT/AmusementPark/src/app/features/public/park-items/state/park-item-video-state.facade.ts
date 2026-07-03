@@ -15,6 +15,7 @@ import { VideoTagDto } from '@app/models/videos/video-tag-dto';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { buildPublicParkItemVideoRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { PagedResult } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -141,7 +142,7 @@ export class ParkItemVideoStateFacade {
           item: response.item,
           park: response.summary.park,
           itemImageId: resolveItemSocialImageId(response.itemImages),
-          parkImageId: response.summary.mainImage?.id ?? null,
+          parkImageId: resolveParkSummarySocialImageId(response.summary),
           video: response.video,
           videos: response.videoPage.items,
           videoTags: response.videoTags
