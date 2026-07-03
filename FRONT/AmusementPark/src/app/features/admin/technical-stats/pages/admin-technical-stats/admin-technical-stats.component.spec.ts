@@ -1,0 +1,138 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Observable, of } from 'rxjs';
+
+import { TechnicalStatsSettings, TechnicalStatsSnapshot } from '@app/models/admin/technical-stats/technical-stats.models';
+import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import { ADMIN_TECHNICAL_STATS_DATA_PORT, AdminTechnicalStatsDataPort } from '../../state/admin-technical-stats-state-data.ports';
+import { AdminTechnicalStatsComponent } from './admin-technical-stats.component';
+
+describe('AdminTechnicalStatsComponent', () => {
+  let port: jasmine.SpyObj<AdminTechnicalStatsDataPort>;
+
+  beforeEach(async () => {
+    port = jasmine.createSpyObj<AdminTechnicalStatsDataPort>('AdminTechnicalStatsDataPort', ['getStats', 'updateSettings']);
+    port.getStats.and.returnValue(of(createStats(30)));
+    port.updateSettings.and.returnValue(of({ persistenceRetentionDays: 15 }) as Observable<TechnicalStatsSettings>);
+
+    await TestBed.configureTestingModule({
+      imports: [...COMMON_TEST_IMPORTS, AdminTechnicalStatsComponent],
+      providers: [
+        ...provideCommonTestDependencies(),
+        { provide: ADMIN_TECHNICAL_STATS_DATA_PORT, useValue: port }
+      ]
+    }).compileComponents();
+  });
+
+  it('caps distribution rows rendered from large technical stats snapshots', () => {
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    fixture.detectChanges();
+
+    const statusRows = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-panel--wide .admin-technical-stats-row'))
+      .filter((row) => !row.nativeElement.classList.contains('admin-technical-stats-row--robot'));
+    const robotRows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-row--robot'));
+
+    expect(statusRows.length).toBe(12);
+    expect(robotRows.length).toBe(12);
+  });
+});
+
+function createStats(rowCount: number): TechnicalStatsSnapshot {
+  return {
+    isAvailable: true,
+    unavailableReason: null,
+    generatedAtUtc: '2026-07-03T10:00:00.000Z',
+    startedAtUtc: '2026-07-03T09:00:00.000Z',
+    uptimeSeconds: 3600,
+    buildVersion: '3.2.2',
+    cache: {
+      pageResponses: 1000,
+      cacheablePageResponses: 900,
+      cacheHitResponses: 800,
+      hitRatePercent: 80,
+      robotPageResponses: 400,
+      robotCacheHitResponses: 200,
+      robotHitRatePercent: 50,
+      statuses: Array.from({ length: rowCount }, (_, index: number) => ({
+        key: `STATUS-${index}`,
+        count: rowCount - index,
+        percent: 10
+      })),
+      robotFamilies: Array.from({ length: rowCount }, (_, index: number) => ({
+        key: `Robot-${index}`,
+        count: rowCount - index,
+        cacheHits: index,
+        hitRatePercent: 25
+      }))
+    },
+    storage: {
+      memoryEntries: 10,
+      memoryMaxEntries: 100,
+      diskEnabled: true,
+      diskEntries: 20,
+      diskBytes: 4096,
+      diskMaxBytes: 8192,
+      diskWrites: 5,
+      technicalStatsPersistenceEntries: 1,
+      technicalStatsPersistenceBytes: 512,
+      technicalStatsPersistencePurgedBuckets: 0,
+      seoDocumentEntries: 2,
+      seoDocumentMaxEntries: 10,
+      seoDocumentRequests: 6,
+      seoDocumentHits: 4,
+      seoDocumentMisses: 2,
+      assetMisses: 1
+    },
+    rendering: {
+      ssrRenderEnabled: true,
+      renderOnCacheMiss: false,
+      renderCriticalRoutesOnCacheMiss: true,
+      activeRenders: 0,
+      queuedRenders: 0,
+      maxConcurrency: 1,
+      maxQueueEntries: 8,
+      totalRenders: 10,
+      averageRenderMilliseconds: 120,
+      maxRenderMilliseconds: 500,
+      slowRenders: 1,
+      slowRenderThresholdMilliseconds: 3000,
+      queueFullRejections: 0
+    },
+    refresh: {
+      enabled: true,
+      pendingRefreshes: 0,
+      activeRefreshes: 0,
+      deduplicatedRefreshKeys: 0,
+      queuedRefreshes: 0,
+      succeededRefreshes: 0,
+      failedRefreshes: 0,
+      maxUrls: 24,
+      concurrency: 1,
+      delayMilliseconds: 1500,
+      timeoutSeconds: 45
+    },
+    invalidation: {
+      requests: 0,
+      allRequests: 0,
+      targetedRequests: 0,
+      clearedEntries: 0,
+      staleEntries: 0,
+      queuedRefreshes: 0,
+      lastInvalidationUtc: null
+    },
+    config: {
+      pageCacheTtlSeconds: 86400,
+      stalePageCacheSeconds: 600,
+      pageCacheMaxHtmlBytes: 2097152,
+      pageCacheBrowserCacheControl: 'no-cache',
+      csrFallbackCacheControl: 'public, max-age=60',
+      seoDocumentBrowserCacheControl: 'no-cache',
+      technicalStatsPersistenceEnabled: true,
+      technicalStatsPersistenceRetentionDays: 15,
+      technicalStatsPersistenceFlushIntervalSeconds: 60,
+      technicalStatsPersistenceLastFlushUtc: null,
+      technicalStatsPersistenceLastCleanupUtc: null
+    }
+  };
+}

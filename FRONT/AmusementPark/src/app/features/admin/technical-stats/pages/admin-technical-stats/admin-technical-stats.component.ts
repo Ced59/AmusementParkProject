@@ -17,6 +17,8 @@ import { AdminTechnicalStatsFacade } from '../../state/admin-technical-stats.fac
 
 type TechnicalStatsLanguage = 'fr' | 'en';
 
+const MAX_DISTRIBUTION_ROWS = 12;
+
 const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
   fr: {
     nav: 'Stats techniques',
@@ -233,6 +235,47 @@ export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly robotHitRatePercent = this.facade.robotHitRatePercent;
   protected readonly hasUnavailableStats = computed(() => (this.state().kind === 'error' || this.stats()?.isAvailable === false) && !this.loading());
   protected readonly retentionDaysDraft = signal<number | null>(null);
+  protected readonly visibleStatuses = computed(() => this.limitRows(this.stats()?.cache.statuses ?? []));
+  protected readonly visibleRobotFamilies = computed(() => this.limitRows(this.stats()?.cache.robotFamilies ?? []));
+  protected readonly renderingMetricRows = computed(() => {
+    const stats: TechnicalStatsSnapshot | null = this.stats();
+    if (stats === null) {
+      return [];
+    }
+
+    return [
+      {
+        label: this.t('activeQueued'),
+        value: `${stats.rendering.activeRenders} / ${stats.rendering.queuedRenders}`,
+        help: this.t('activeQueuedHelp')
+      },
+      {
+        label: this.t('concurrency'),
+        value: `${stats.rendering.maxConcurrency} / ${stats.rendering.maxQueueEntries}`,
+        help: this.t('concurrencyHelp')
+      },
+      {
+        label: this.t('averageRender'),
+        value: this.formatMilliseconds(stats.rendering.averageRenderMilliseconds),
+        help: this.t('averageRenderHelp')
+      },
+      {
+        label: this.t('maxRender'),
+        value: this.formatMilliseconds(stats.rendering.maxRenderMilliseconds),
+        help: this.t('maxRenderHelp')
+      },
+      {
+        label: this.t('slowRenders'),
+        value: `${stats.rendering.slowRenders}`,
+        help: `${this.t('slowRendersHelp')} (${stats.rendering.slowRenderThresholdMilliseconds} ms).`
+      },
+      {
+        label: this.t('queueFull'),
+        value: `${stats.rendering.queueFullRejections}`,
+        help: this.t('queueFullHelp')
+      }
+    ];
+  });
 
   constructor(
     private readonly facade: AdminTechnicalStatsFacade,
@@ -364,41 +407,6 @@ export class AdminTechnicalStatsComponent implements OnInit {
     return this.router.url.split('/')[1] === 'fr' ? 'fr' : 'en';
   }
 
-  protected renderingMetrics(stats: TechnicalStatsSnapshot): Array<{ readonly label: string; readonly value: string; readonly help: string }> {
-    return [
-      {
-        label: this.t('activeQueued'),
-        value: `${stats.rendering.activeRenders} / ${stats.rendering.queuedRenders}`,
-        help: this.t('activeQueuedHelp')
-      },
-      {
-        label: this.t('concurrency'),
-        value: `${stats.rendering.maxConcurrency} / ${stats.rendering.maxQueueEntries}`,
-        help: this.t('concurrencyHelp')
-      },
-      {
-        label: this.t('averageRender'),
-        value: this.formatMilliseconds(stats.rendering.averageRenderMilliseconds),
-        help: this.t('averageRenderHelp')
-      },
-      {
-        label: this.t('maxRender'),
-        value: this.formatMilliseconds(stats.rendering.maxRenderMilliseconds),
-        help: this.t('maxRenderHelp')
-      },
-      {
-        label: this.t('slowRenders'),
-        value: `${stats.rendering.slowRenders}`,
-        help: `${this.t('slowRendersHelp')} (${stats.rendering.slowRenderThresholdMilliseconds} ms).`
-      },
-      {
-        label: this.t('queueFull'),
-        value: `${stats.rendering.queueFullRejections}`,
-        help: this.t('queueFullHelp')
-      }
-    ];
-  }
-
   private clampPercent(value: number): number {
     if (!Number.isFinite(value)) {
       return 0;
@@ -414,5 +422,9 @@ export class AdminTechnicalStatsComponent implements OnInit {
     }
 
     return Math.min(365, Math.max(1, Math.round(parsed)));
+  }
+
+  private limitRows<TRow>(rows: TRow[]): TRow[] {
+    return rows.length > MAX_DISTRIBUTION_ROWS ? rows.slice(0, MAX_DISTRIBUTION_ROWS) : rows;
   }
 }
