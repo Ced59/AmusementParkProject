@@ -1,6 +1,20 @@
 {
-  "version": "3.1.54",
+  "version": "3.1.55",
   "history": [
+    {
+      "version": "3.1.55",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "L’administration gagne en fiabilité.",
+        "en": "Admin reliability improves.",
+        "de": "Die Administration wird zuverlässiger.",
+        "nl": "De administratie wordt betrouwbaarder.",
+        "it": "L’amministrazione diventa più affidabile.",
+        "es": "La administración gana fiabilidad.",
+        "pl": "Administracja staje się bardziej niezawodna.",
+        "pt": "A administração fica mais fiável."
+      }
+    },
     {
       "version": "3.1.54",
       "releasedAt": "2026-07-03",
