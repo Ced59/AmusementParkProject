@@ -1,22 +1,20 @@
-<app-ui-card styleClass="admin-list-card admin-technical-stats-card">
-  <ng-template appUiTemplate="header">
-    <div class="admin-list-header admin-technical-stats-header">
-      <div>
-        <span class="admin-kicker">{{ t('kicker') }}</span>
-        <h2>{{ t('title') }}</h2>
-        <p>{{ t('subtitle') }}</p>
-      </div>
-
-      <button
-        appUiButton
-        type="button"
-        icon="pi pi-refresh"
-        [label]="t('refresh')"
-        [loading]="loading()"
-        (click)="refresh()">
-      </button>
+<section class="admin-list-card admin-technical-stats-card">
+  <header class="admin-list-header admin-technical-stats-header">
+    <div>
+      <span class="admin-kicker">{{ t('kicker') }}</span>
+      <h2>{{ t('title') }}</h2>
+      <p>{{ t('subtitle') }}</p>
     </div>
-  </ng-template>
+
+    <button
+      type="button"
+      class="admin-technical-stats-refresh"
+      [disabled]="loading()"
+      (click)="refresh()">
+      <i class="pi pi-refresh" [class.pi-spin]="loading()" aria-hidden="true"></i>
+      <span>{{ t('refresh') }}</span>
+    </button>
+  </header>
 
   @if (loading() && !stats()) {
     <section class="admin-technical-stats-state" role="status" aria-live="polite">
@@ -50,344 +48,366 @@
       }
     </nav>
 
-    @if (activeTab() === 'overview') {
-    <section class="admin-technical-stats-kpis" aria-label="Technical KPIs">
-      <article class="admin-technical-stats-kpi admin-technical-stats-kpi--gauge">
-        <div class="admin-technical-stats-kpi__head">
-          <span>{{ t('hitRate') }}</span>
-          <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('hitRateHelp')" tooltipPosition="top" aria-label="Help">?</button>
-        </div>
-        <div class="admin-technical-stats-gauge" [style.background]="gaugeBackground(hitRatePercent())">
-          <strong>{{ hitRatePercent() | number:'1.0-1' }}%</strong>
-        </div>
-        <small>{{ currentStats.cache.cacheHitResponses | number }} / {{ currentStats.cache.pageResponses | number }}</small>
-      </article>
-
-      <article class="admin-technical-stats-kpi admin-technical-stats-kpi--gauge">
-        <div class="admin-technical-stats-kpi__head">
-          <span>{{ t('robotHitRate') }}</span>
-          <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('robotHitRateHelp')" tooltipPosition="top" aria-label="Help">?</button>
-        </div>
-        <div class="admin-technical-stats-gauge" [style.background]="gaugeBackground(robotHitRatePercent())">
-          <strong>{{ robotHitRatePercent() | number:'1.0-1' }}%</strong>
-        </div>
-        <small>{{ currentStats.cache.robotCacheHitResponses | number }} / {{ currentStats.cache.robotPageResponses | number }}</small>
-      </article>
-
-      <article class="admin-technical-stats-kpi">
-        <div class="admin-technical-stats-kpi__head">
-          <span>{{ t('pageResponses') }}</span>
-          <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('pageResponsesHelp')" tooltipPosition="top" aria-label="Help">?</button>
-        </div>
-        <strong>{{ currentStats.cache.pageResponses | number }}</strong>
-        <small>{{ currentStats.cache.cacheablePageResponses | number }} cacheable</small>
-      </article>
-
-      <article class="admin-technical-stats-kpi">
-        <div class="admin-technical-stats-kpi__head">
-          <span>{{ t('renders') }}</span>
-          <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('rendersHelp')" tooltipPosition="top" aria-label="Help">?</button>
-        </div>
-        <strong>{{ currentStats.rendering.totalRenders | number }}</strong>
-        <small>{{ t('averageRender') }} {{ formatMilliseconds(currentStats.rendering.averageRenderMilliseconds) }}</small>
-      </article>
-    </section>
-
-    <section class="admin-technical-stats-grid">
-      <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
-        <div class="admin-technical-stats-section-head">
-          <h3>{{ t('cacheStatusTitle') }}</h3>
-        </div>
-
-        @if (visibleStatuses().length > 0) {
-          <div class="admin-technical-stats-bars">
-            @for (status of visibleStatuses(); track trackStatus($index, status)) {
-              <div class="admin-technical-stats-row">
-                <span>{{ statusLabel(status) }}</span>
-                <div class="admin-technical-stats-row__bar" aria-hidden="true">
-                  <span [style.width.%]="barWidth(status.percent)"></span>
-                </div>
-                <strong>{{ status.count | number }}</strong>
-                <small>{{ status.percent | number:'1.0-1' }}%</small>
-              </div>
-            }
-          </div>
-        } @else {
-          <p class="admin-technical-stats-empty">{{ t('noData') }}</p>
-        }
-      </article>
-
-      <article class="admin-technical-stats-panel">
-        <div class="admin-technical-stats-section-head">
-          <h3>{{ t('robotsTitle') }}</h3>
-        </div>
-
-        @if (visibleRobotFamilies().length > 0) {
-          <div class="admin-technical-stats-bars">
-            @for (robot of visibleRobotFamilies(); track trackRobot($index, robot)) {
-              <div class="admin-technical-stats-row admin-technical-stats-row--robot">
-                <span>{{ robot.key }}</span>
-                <div class="admin-technical-stats-row__bar admin-technical-stats-row__bar--robot" aria-hidden="true">
-                  <span [style.width.%]="barWidth(robot.hitRatePercent)"></span>
-                </div>
-                <strong>{{ robot.count | number }}</strong>
-                <small>{{ robot.hitRatePercent | number:'1.0-1' }}%</small>
-              </div>
-            }
-          </div>
-        } @else {
-          <p class="admin-technical-stats-empty">{{ t('noData') }}</p>
-        }
-      </article>
-
-      <article class="admin-technical-stats-panel">
-        <div class="admin-technical-stats-section-head">
-          <h3>{{ t('storageTitle') }}</h3>
-        </div>
-
-        <div class="admin-technical-stats-stack">
-          <div class="admin-technical-stats-storage">
-            <span>{{ t('memory') }}</span>
-            <strong>{{ currentStats.storage.memoryEntries | number }} / {{ currentStats.storage.memoryMaxEntries | number }}</strong>
-            <div class="admin-technical-stats-progress" aria-hidden="true">
-              <span [style.width.%]="storagePercent(currentStats.storage.memoryEntries, currentStats.storage.memoryMaxEntries)"></span>
+    @switch (activeTab()) {
+      @case ('summary') {
+        <section class="admin-technical-stats-kpis" aria-label="Technical KPIs">
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('hitRate') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('hitRateHelp')" [attr.aria-label]="t('hitRateHelp')">?</button>
             </div>
-          </div>
-          <div class="admin-technical-stats-storage">
-            <span>{{ t('disk') }}</span>
-            <strong>{{ formatBytes(currentStats.storage.diskBytes) }} / {{ formatBytes(currentStats.storage.diskMaxBytes) }}</strong>
-            <div class="admin-technical-stats-progress" aria-hidden="true">
-              <span [style.width.%]="storagePercent(currentStats.storage.diskBytes, currentStats.storage.diskMaxBytes)"></span>
+            <strong>{{ hitRatePercent() | number:'1.0-1' }}%</strong>
+            <div class="admin-technical-stats-meter" aria-hidden="true">
+              <span [style.width.%]="barWidth(hitRatePercent())"></span>
             </div>
-            <small>{{ currentStats.storage.diskEntries | number }} entries - {{ boolLabel(currentStats.storage.diskEnabled) }}</small>
-          </div>
-          <div class="admin-technical-stats-mini-grid">
-            <span>{{ t('seoDocs') }} <strong>{{ currentStats.storage.seoDocumentEntries | number }} / {{ currentStats.storage.seoDocumentMaxEntries | number }}</strong></span>
-            <span>{{ t('diskWrites') }} <strong>{{ currentStats.storage.diskWrites | number }}</strong></span>
-            <span>
-              {{ t('technicalStatsStorage') }}
-              <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('technicalStatsStorageHelp')" tooltipPosition="top" aria-label="Help">?</button>
-              <strong>{{ formatBytes(currentStats.storage.technicalStatsPersistenceBytes) }} / {{ currentStats.storage.technicalStatsPersistenceEntries | number }}</strong>
-            </span>
-            <span>{{ t('assetMisses') }} <strong>{{ currentStats.storage.assetMisses | number }}</strong></span>
-          </div>
-        </div>
-      </article>
+            <small>{{ currentStats.cache.cacheHitResponses | number }} / {{ currentStats.cache.pageResponses | number }}</small>
+          </article>
 
-      <article class="admin-technical-stats-panel">
-        <div class="admin-technical-stats-section-head">
-          <h3>{{ t('renderingTitle') }}</h3>
-          <app-ui-tag [value]="boolLabel(currentStats.rendering.ssrRenderEnabled)" [severity]="currentStats.rendering.ssrRenderEnabled ? 'success' : 'warn'"></app-ui-tag>
-        </div>
-
-        <div class="admin-technical-stats-metrics">
-          @for (metric of renderingMetricRows(); track trackMetric($index, metric)) {
-            <div>
-              <span>
-                {{ metric.label }}
-                <button type="button" class="admin-technical-stats-help" [appUiTooltip]="metric.help" tooltipPosition="top" aria-label="Help">?</button>
-              </span>
-              <strong>{{ metric.value }}</strong>
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('robotHitRate') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('robotHitRateHelp')" [attr.aria-label]="t('robotHitRateHelp')">?</button>
             </div>
-          }
-        </div>
-      </article>
+            <strong>{{ robotHitRatePercent() | number:'1.0-1' }}%</strong>
+            <div class="admin-technical-stats-meter" aria-hidden="true">
+              <span [style.width.%]="barWidth(robotHitRatePercent())"></span>
+            </div>
+            <small>{{ currentStats.cache.robotCacheHitResponses | number }} / {{ currentStats.cache.robotPageResponses | number }}</small>
+          </article>
 
-      <article class="admin-technical-stats-panel">
-        <div class="admin-technical-stats-section-head">
-          <h3>{{ t('refreshTitle') }}</h3>
-          <app-ui-tag [value]="boolLabel(currentStats.refresh.enabled)" [severity]="currentStats.refresh.enabled ? 'success' : 'secondary'"></app-ui-tag>
-        </div>
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('pageResponses') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('pageResponsesHelp')" [attr.aria-label]="t('pageResponsesHelp')">?</button>
+            </div>
+            <strong>{{ currentStats.cache.pageResponses | number }}</strong>
+            <small>{{ currentStats.cache.cacheablePageResponses | number }} cacheable</small>
+          </article>
 
-        <div class="admin-technical-stats-metrics admin-technical-stats-metrics--compact">
-          <div><span>{{ t('refreshPending') }}</span><strong>{{ currentStats.refresh.pendingRefreshes | number }}</strong></div>
-          <div><span>{{ t('activeQueued') }}</span><strong>{{ currentStats.refresh.activeRefreshes | number }} / {{ currentStats.refresh.deduplicatedRefreshKeys | number }}</strong></div>
-          <div><span>{{ t('refreshDone') }}</span><strong>{{ currentStats.refresh.succeededRefreshes | number }}</strong></div>
-          <div><span>{{ t('refreshFailed') }}</span><strong>{{ currentStats.refresh.failedRefreshes | number }}</strong></div>
-        </div>
-      </article>
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('renders') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('rendersHelp')" [attr.aria-label]="t('rendersHelp')">?</button>
+            </div>
+            <strong>{{ currentStats.rendering.totalRenders | number }}</strong>
+            <small>{{ t('averageRender') }} {{ formatMilliseconds(currentStats.rendering.averageRenderMilliseconds) }}</small>
+          </article>
+        </section>
+      }
 
-      <article class="admin-technical-stats-panel">
-        <div class="admin-technical-stats-section-head">
-          <h3>{{ t('invalidationTitle') }}</h3>
-        </div>
-
-        <div class="admin-technical-stats-metrics admin-technical-stats-metrics--compact">
-          <div><span>{{ t('invalidationRequests') }}</span><strong>{{ currentStats.invalidation.requests | number }}</strong></div>
-          <div><span>{{ t('invalidationTargeted') }}</span><strong>{{ currentStats.invalidation.targetedRequests | number }}</strong></div>
-          <div><span>{{ t('invalidationCleared') }}</span><strong>{{ currentStats.invalidation.clearedEntries | number }}</strong></div>
+      @case ('seo') {
+        <section class="admin-technical-stats-seo-head">
           <div>
-            <span>{{ t('invalidationLast') }}</span>
-            <strong>
-              {{ currentStats.invalidation.lastInvalidationUtc ? (currentStats.invalidation.lastInvalidationUtc | date:'yyyy-MM-dd HH:mm':'UTC') : t('never') }}
-            </strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
-        <div class="admin-technical-stats-section-head">
-          <h3>{{ t('configTitle') }}</h3>
-        </div>
-
-        <div class="admin-technical-stats-config">
-          <span>{{ t('pageTtl') }} <strong>{{ formatDuration(currentStats.config.pageCacheTtlSeconds) }}</strong></span>
-          <span>{{ t('staleTtl') }} <strong>{{ formatDuration(currentStats.config.stalePageCacheSeconds) }}</strong></span>
-          <span>{{ t('htmlLimit') }} <strong>{{ formatBytes(currentStats.config.pageCacheMaxHtmlBytes) }}</strong></span>
-          <span>{{ t('browserCache') }} <strong>{{ currentStats.config.pageCacheBrowserCacheControl }}</strong></span>
-          <span>{{ t('persistence') }} <strong>{{ boolLabel(currentStats.config.technicalStatsPersistenceEnabled) }}</strong></span>
-          <span>{{ t('flushInterval') }} <strong>{{ formatDuration(currentStats.config.technicalStatsPersistenceFlushIntervalSeconds) }}</strong></span>
-          <span>
-            {{ t('lastFlush') }}
-            <strong>{{ currentStats.config.technicalStatsPersistenceLastFlushUtc ? (currentStats.config.technicalStatsPersistenceLastFlushUtc | date:'yyyy-MM-dd HH:mm':'UTC') : t('never') }}</strong>
-          </span>
-          <span>
-            {{ t('lastCleanup') }}
-            <strong>{{ currentStats.config.technicalStatsPersistenceLastCleanupUtc ? (currentStats.config.technicalStatsPersistenceLastCleanupUtc | date:'yyyy-MM-dd HH:mm':'UTC') : t('never') }}</strong>
-          </span>
-        </div>
-
-        <form class="admin-technical-stats-retention" (submit)="saveRetentionDays($event, currentStats)">
-          <label>
-            <span>{{ t('retentionDays') }}</span>
-            <input
-              type="number"
-              name="technicalStatsRetentionDays"
-              min="1"
-              max="365"
-              [ngModel]="currentRetentionDays(currentStats)"
-              (ngModelChange)="setRetentionDaysDraft($event)">
-          </label>
-          <button
-            appUiButton
-            type="submit"
-            icon="pi pi-save"
-            [label]="t('save')"
-            [loading]="settingsSaving()"
-            [disabled]="settingsSaving() || !currentStats.config.technicalStatsPersistenceEnabled">
-          </button>
-          <small>{{ t('retentionHelp') }}</small>
-          @if (settingsError()) {
-            <p class="admin-technical-stats-save-error">{{ t('saveError') }}</p>
-          }
-        </form>
-      </article>
-    </section>
-    } @else {
-      <section class="admin-technical-stats-seo-head">
-        <div>
-          <h3>{{ t('seoTitle') }}</h3>
-          <p>{{ t('seoSubtitle') }}</p>
-        </div>
-        <app-ui-tag [value]="boolLabel(currentStats.seo.robotNoJsHtmlEnabled)" [severity]="currentStats.seo.robotNoJsHtmlEnabled ? 'success' : 'warn'"></app-ui-tag>
-      </section>
-
-      <section class="admin-technical-stats-kpis admin-technical-stats-kpis--seo" aria-label="SEO technical KPIs">
-        <article class="admin-technical-stats-kpi admin-technical-stats-kpi--gauge">
-          <div class="admin-technical-stats-kpi__head">
-            <span>{{ t('seoRobotHtmlReady') }}</span>
-            <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('seoRobotHtmlReadyHelp')" tooltipPosition="top" aria-label="Help">?</button>
-          </div>
-          <div class="admin-technical-stats-gauge" [style.background]="gaugeBackground(currentStats.seo.robotSeoReadyRatePercent)">
-            <strong>{{ currentStats.seo.robotSeoReadyRatePercent | number:'1.0-1' }}%</strong>
-          </div>
-          <small>{{ currentStats.seo.robotSeoReadyHtmlResponses | number }} / {{ currentStats.seo.robotHtmlResponses | number }}</small>
-        </article>
-
-        <article class="admin-technical-stats-kpi">
-          <div class="admin-technical-stats-kpi__head">
-            <span>{{ t('robotNoJs') }}</span>
-            <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('robotNoJsHelp')" tooltipPosition="top" aria-label="Help">?</button>
-          </div>
-          <strong>{{ currentStats.seo.robotNoJsHtmlResponses | number }}</strong>
-          <small>{{ t('seoHtmlReady') }} {{ currentStats.seo.seoReadyRatePercent | number:'1.0-1' }}%</small>
-        </article>
-
-        <article class="admin-technical-stats-kpi">
-          <div class="admin-technical-stats-kpi__head">
-            <span>{{ t('robotBlocked') }}</span>
-            <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('robotBlockedHelp')" tooltipPosition="top" aria-label="Help">?</button>
-          </div>
-          <strong>{{ currentStats.seo.robotHtmlBlockedNotSeoReady | number }}</strong>
-          <small>{{ t('robotFallbackBlocked') }} {{ currentStats.seo.robotHtmlNotAllowed | number }}</small>
-        </article>
-
-        <article class="admin-technical-stats-kpi">
-          <div class="admin-technical-stats-kpi__head">
-            <span>{{ t('robotUnavailable') }}</span>
-            <button type="button" class="admin-technical-stats-help" [appUiTooltip]="t('robotUnavailableHelp')" tooltipPosition="top" aria-label="Help">?</button>
-          </div>
-          <strong>{{ currentStats.seo.robotSsrUnavailableResponses | number }}</strong>
-          <small>{{ t('robotHitRate') }} {{ currentStats.seo.robotHitRatePercent | number:'1.0-1' }}%</small>
-        </article>
-      </section>
-
-      <section class="admin-technical-stats-grid">
-        <article class="admin-technical-stats-panel">
-          <div class="admin-technical-stats-section-head">
             <h3>{{ t('seoTitle') }}</h3>
+            <p>{{ t('seoSubtitle') }}</p>
           </div>
+          <span class="admin-technical-stats-pill" [class.admin-technical-stats-pill--success]="currentStats.seo.robotNoJsHtmlEnabled" [class.admin-technical-stats-pill--warn]="!currentStats.seo.robotNoJsHtmlEnabled">
+            {{ boolLabel(currentStats.seo.robotNoJsHtmlEnabled) }}
+          </span>
+        </section>
 
-          <div class="admin-technical-stats-metrics">
-            @for (metric of seoMetricRows(); track trackMetric($index, metric)) {
-              <div>
-                <span>
-                  {{ metric.label }}
-                  <button type="button" class="admin-technical-stats-help" [appUiTooltip]="metric.help" tooltipPosition="top" aria-label="Help">?</button>
-                </span>
-                <strong>{{ metric.value }}</strong>
-              </div>
-            }
-          </div>
-        </article>
+        <section class="admin-technical-stats-kpis admin-technical-stats-kpis--seo" aria-label="SEO technical KPIs">
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('seoRobotHtmlReady') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('seoRobotHtmlReadyHelp')" [attr.aria-label]="t('seoRobotHtmlReadyHelp')">?</button>
+            </div>
+            <strong>{{ currentStats.seo.robotSeoReadyRatePercent | number:'1.0-1' }}%</strong>
+            <div class="admin-technical-stats-meter" aria-hidden="true">
+              <span [style.width.%]="barWidth(currentStats.seo.robotSeoReadyRatePercent)"></span>
+            </div>
+            <small>{{ currentStats.seo.robotSeoReadyHtmlResponses | number }} / {{ currentStats.seo.robotHtmlResponses | number }}</small>
+          </article>
 
-        <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
-          <div class="admin-technical-stats-section-head">
-            <h3>{{ t('robotsTitle') }}</h3>
-          </div>
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('robotNoJs') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('robotNoJsHelp')" [attr.aria-label]="t('robotNoJsHelp')">?</button>
+            </div>
+            <strong>{{ currentStats.seo.robotNoJsHtmlResponses | number }}</strong>
+            <small>{{ t('seoHtmlReady') }} {{ currentStats.seo.seoReadyRatePercent | number:'1.0-1' }}%</small>
+          </article>
 
-          <div class="admin-technical-stats-filter" role="group" [attr.aria-label]="t('seoRobotFilters')">
-            @for (filter of robotFilterOptions; track trackRobotFilter($index, filter)) {
-              <button
-                type="button"
-                class="admin-technical-stats-filter__button"
-                [class.admin-technical-stats-filter__button--active]="robotFamilyFilter() === filter.key"
-                (click)="setRobotFamilyFilter(filter.key)">
-                {{ t(filter.labelKey) }}
-              </button>
-            }
-          </div>
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('robotBlocked') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('robotBlockedHelp')" [attr.aria-label]="t('robotBlockedHelp')">?</button>
+            </div>
+            <strong>{{ currentStats.seo.robotHtmlBlockedNotSeoReady | number }}</strong>
+            <small>{{ t('robotFallbackBlocked') }} {{ currentStats.seo.robotHtmlNotAllowed | number }}</small>
+          </article>
 
-          @if (visibleSeoRobotFamilies().length > 0) {
-            <div class="admin-technical-stats-robot-table">
-              <div class="admin-technical-stats-robot-table__head" aria-hidden="true">
-                <span>{{ t('robotFamily') }}</span>
-                <span>{{ t('robotGroup') }}</span>
-                <span>{{ t('robotRequests') }}</span>
-                <span>{{ t('robotCache') }}</span>
-                <span>{{ t('robotSeoReady') }}</span>
-                <span>{{ t('robotNoJsShort') }}</span>
-                <span>{{ t('robotBlockedShort') }}</span>
-                <span>{{ t('robotUnavailableShort') }}</span>
-              </div>
-              @for (robot of visibleSeoRobotFamilies(); track trackRobot($index, robot)) {
-                <div class="admin-technical-stats-robot-table__row">
-                  <strong>{{ robot.key }}</strong>
-                  <span>{{ robotCategoryLabel(robot.category) }}</span>
-                  <span>{{ robot.count | number }}</span>
-                  <span>{{ robot.hitRatePercent | number:'1.0-1' }}%</span>
-                  <span>{{ robot.seoReadyRatePercent | number:'1.0-1' }}%</span>
-                  <span>{{ robot.noJsResponses | number }}</span>
-                  <span>{{ robot.blockedNotSeoReadyResponses | number }}</span>
-                  <span>{{ robot.ssrUnavailableResponses | number }}</span>
+          <article class="admin-technical-stats-kpi">
+            <div class="admin-technical-stats-kpi__head">
+              <span>{{ t('robotUnavailable') }}</span>
+              <button type="button" class="admin-technical-stats-help" [attr.title]="t('robotUnavailableHelp')" [attr.aria-label]="t('robotUnavailableHelp')">?</button>
+            </div>
+            <strong>{{ currentStats.seo.robotSsrUnavailableResponses | number }}</strong>
+            <small>{{ t('robotHitRate') }} {{ currentStats.seo.robotHitRatePercent | number:'1.0-1' }}%</small>
+          </article>
+        </section>
+
+        <section class="admin-technical-stats-grid">
+          <article class="admin-technical-stats-panel">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('seoTitle') }}</h3>
+            </div>
+
+            <div class="admin-technical-stats-metrics">
+              @for (metric of seoMetricRows(); track trackMetric($index, metric)) {
+                <div>
+                  <span>
+                    {{ metric.label }}
+                    <button type="button" class="admin-technical-stats-help" [attr.title]="metric.help" [attr.aria-label]="metric.help">?</button>
+                  </span>
+                  <strong>{{ metric.value }}</strong>
                 </div>
               }
             </div>
-          } @else {
-            <p class="admin-technical-stats-empty">{{ t('noData') }}</p>
-          }
-        </article>
-      </section>
+          </article>
+
+          <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('robotsTitle') }}</h3>
+            </div>
+
+            <div class="admin-technical-stats-filter" role="group" [attr.aria-label]="t('seoRobotFilters')">
+              @for (filter of robotFilterOptions; track trackRobotFilter($index, filter)) {
+                <button
+                  type="button"
+                  class="admin-technical-stats-filter__button"
+                  [class.admin-technical-stats-filter__button--active]="robotFamilyFilter() === filter.key"
+                  (click)="setRobotFamilyFilter(filter.key)">
+                  {{ t(filter.labelKey) }}
+                </button>
+              }
+            </div>
+
+            @if (visibleSeoRobotFamilies().length > 0) {
+              <div class="admin-technical-stats-robot-table">
+                <div class="admin-technical-stats-robot-table__head" aria-hidden="true">
+                  <span>{{ t('robotFamily') }}</span>
+                  <span>{{ t('robotGroup') }}</span>
+                  <span>{{ t('robotRequests') }}</span>
+                  <span>{{ t('robotCache') }}</span>
+                  <span>{{ t('robotSeoReady') }}</span>
+                  <span>{{ t('robotNoJsShort') }}</span>
+                  <span>{{ t('robotBlockedShort') }}</span>
+                  <span>{{ t('robotUnavailableShort') }}</span>
+                </div>
+                @for (robot of visibleSeoRobotFamilies(); track trackRobot($index, robot)) {
+                  <div class="admin-technical-stats-robot-table__row">
+                    <strong>{{ robot.key }}</strong>
+                    <span>{{ robotCategoryLabel(robot.category) }}</span>
+                    <span>{{ robot.count | number }}</span>
+                    <span>{{ robot.hitRatePercent | number:'1.0-1' }}%</span>
+                    <span>{{ robot.seoReadyRatePercent | number:'1.0-1' }}%</span>
+                    <span>{{ robot.noJsResponses | number }}</span>
+                    <span>{{ robot.blockedNotSeoReadyResponses | number }}</span>
+                    <span>{{ robot.ssrUnavailableResponses | number }}</span>
+                  </div>
+                }
+              </div>
+            } @else {
+              <p class="admin-technical-stats-empty">{{ t('noData') }}</p>
+            }
+          </article>
+        </section>
+      }
+
+      @case ('cache') {
+        <section class="admin-technical-stats-grid">
+          <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('cacheStatusTitle') }}</h3>
+            </div>
+
+            @if (visibleStatuses().length > 0) {
+              <div class="admin-technical-stats-bars">
+                @for (status of visibleStatuses(); track trackStatus($index, status)) {
+                  <div class="admin-technical-stats-row">
+                    <span>{{ statusLabel(status) }}</span>
+                    <div class="admin-technical-stats-row__bar" aria-hidden="true">
+                      <span [style.width.%]="barWidth(status.percent)"></span>
+                    </div>
+                    <strong>{{ status.count | number }}</strong>
+                    <small>{{ status.percent | number:'1.0-1' }}%</small>
+                  </div>
+                }
+              </div>
+            } @else {
+              <p class="admin-technical-stats-empty">{{ t('noData') }}</p>
+            }
+          </article>
+
+          <article class="admin-technical-stats-panel">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('robotsTitle') }}</h3>
+            </div>
+
+            @if (visibleRobotFamilies().length > 0) {
+              <div class="admin-technical-stats-bars">
+                @for (robot of visibleRobotFamilies(); track trackRobot($index, robot)) {
+                  <div class="admin-technical-stats-row admin-technical-stats-row--robot">
+                    <span>{{ robot.key }}</span>
+                    <div class="admin-technical-stats-row__bar admin-technical-stats-row__bar--robot" aria-hidden="true">
+                      <span [style.width.%]="barWidth(robot.hitRatePercent)"></span>
+                    </div>
+                    <strong>{{ robot.count | number }}</strong>
+                    <small>{{ robot.hitRatePercent | number:'1.0-1' }}%</small>
+                  </div>
+                }
+              </div>
+            } @else {
+              <p class="admin-technical-stats-empty">{{ t('noData') }}</p>
+            }
+          </article>
+
+          <article class="admin-technical-stats-panel">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('storageTitle') }}</h3>
+            </div>
+
+            <div class="admin-technical-stats-stack">
+              <div class="admin-technical-stats-storage">
+                <span>{{ t('memory') }}</span>
+                <strong>{{ currentStats.storage.memoryEntries | number }} / {{ currentStats.storage.memoryMaxEntries | number }}</strong>
+                <div class="admin-technical-stats-progress" aria-hidden="true">
+                  <span [style.width.%]="storagePercent(currentStats.storage.memoryEntries, currentStats.storage.memoryMaxEntries)"></span>
+                </div>
+              </div>
+              <div class="admin-technical-stats-storage">
+                <span>{{ t('disk') }}</span>
+                <strong>{{ formatBytes(currentStats.storage.diskBytes) }} / {{ formatBytes(currentStats.storage.diskMaxBytes) }}</strong>
+                <div class="admin-technical-stats-progress" aria-hidden="true">
+                  <span [style.width.%]="storagePercent(currentStats.storage.diskBytes, currentStats.storage.diskMaxBytes)"></span>
+                </div>
+                <small>{{ currentStats.storage.diskEntries | number }} entries - {{ boolLabel(currentStats.storage.diskEnabled) }}</small>
+              </div>
+              <div class="admin-technical-stats-mini-grid">
+                <span>{{ t('seoDocs') }} <strong>{{ currentStats.storage.seoDocumentEntries | number }} / {{ currentStats.storage.seoDocumentMaxEntries | number }}</strong></span>
+                <span>{{ t('diskWrites') }} <strong>{{ currentStats.storage.diskWrites | number }}</strong></span>
+                <span>
+                  {{ t('technicalStatsStorage') }}
+                  <button type="button" class="admin-technical-stats-help" [attr.title]="t('technicalStatsStorageHelp')" [attr.aria-label]="t('technicalStatsStorageHelp')">?</button>
+                  <strong>{{ formatBytes(currentStats.storage.technicalStatsPersistenceBytes) }} / {{ currentStats.storage.technicalStatsPersistenceEntries | number }}</strong>
+                </span>
+                <span>{{ t('assetMisses') }} <strong>{{ currentStats.storage.assetMisses | number }}</strong></span>
+              </div>
+            </div>
+          </article>
+        </section>
+      }
+
+      @case ('rendering') {
+        <section class="admin-technical-stats-grid">
+          <article class="admin-technical-stats-panel">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('renderingTitle') }}</h3>
+              <span class="admin-technical-stats-pill" [class.admin-technical-stats-pill--success]="currentStats.rendering.ssrRenderEnabled" [class.admin-technical-stats-pill--warn]="!currentStats.rendering.ssrRenderEnabled">
+                {{ boolLabel(currentStats.rendering.ssrRenderEnabled) }}
+              </span>
+            </div>
+
+            <div class="admin-technical-stats-metrics">
+              @for (metric of renderingMetricRows(); track trackMetric($index, metric)) {
+                <div>
+                  <span>
+                    {{ metric.label }}
+                    <button type="button" class="admin-technical-stats-help" [attr.title]="metric.help" [attr.aria-label]="metric.help">?</button>
+                  </span>
+                  <strong>{{ metric.value }}</strong>
+                </div>
+              }
+            </div>
+          </article>
+
+          <article class="admin-technical-stats-panel">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('refreshTitle') }}</h3>
+              <span class="admin-technical-stats-pill" [class.admin-technical-stats-pill--success]="currentStats.refresh.enabled" [class.admin-technical-stats-pill--secondary]="!currentStats.refresh.enabled">
+                {{ boolLabel(currentStats.refresh.enabled) }}
+              </span>
+            </div>
+
+            <div class="admin-technical-stats-metrics admin-technical-stats-metrics--compact">
+              <div><span>{{ t('refreshPending') }}</span><strong>{{ currentStats.refresh.pendingRefreshes | number }}</strong></div>
+              <div><span>{{ t('activeQueued') }}</span><strong>{{ currentStats.refresh.activeRefreshes | number }} / {{ currentStats.refresh.deduplicatedRefreshKeys | number }}</strong></div>
+              <div><span>{{ t('refreshDone') }}</span><strong>{{ currentStats.refresh.succeededRefreshes | number }}</strong></div>
+              <div><span>{{ t('refreshFailed') }}</span><strong>{{ currentStats.refresh.failedRefreshes | number }}</strong></div>
+            </div>
+          </article>
+
+          <article class="admin-technical-stats-panel">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('invalidationTitle') }}</h3>
+            </div>
+
+            <div class="admin-technical-stats-metrics admin-technical-stats-metrics--compact">
+              <div><span>{{ t('invalidationRequests') }}</span><strong>{{ currentStats.invalidation.requests | number }}</strong></div>
+              <div><span>{{ t('invalidationTargeted') }}</span><strong>{{ currentStats.invalidation.targetedRequests | number }}</strong></div>
+              <div><span>{{ t('invalidationCleared') }}</span><strong>{{ currentStats.invalidation.clearedEntries | number }}</strong></div>
+              <div>
+                <span>{{ t('invalidationLast') }}</span>
+                <strong>
+                  {{ currentStats.invalidation.lastInvalidationUtc ? (currentStats.invalidation.lastInvalidationUtc | date:'yyyy-MM-dd HH:mm':'UTC') : t('never') }}
+                </strong>
+              </div>
+            </div>
+          </article>
+        </section>
+      }
+
+      @case ('config') {
+        <section class="admin-technical-stats-grid">
+          <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
+            <div class="admin-technical-stats-section-head">
+              <h3>{{ t('configTitle') }}</h3>
+            </div>
+
+            <div class="admin-technical-stats-config">
+              <span>{{ t('pageTtl') }} <strong>{{ formatDuration(currentStats.config.pageCacheTtlSeconds) }}</strong></span>
+              <span>{{ t('staleTtl') }} <strong>{{ formatDuration(currentStats.config.stalePageCacheSeconds) }}</strong></span>
+              <span>{{ t('htmlLimit') }} <strong>{{ formatBytes(currentStats.config.pageCacheMaxHtmlBytes) }}</strong></span>
+              <span>{{ t('browserCache') }} <strong>{{ currentStats.config.pageCacheBrowserCacheControl }}</strong></span>
+              <span>{{ t('persistence') }} <strong>{{ boolLabel(currentStats.config.technicalStatsPersistenceEnabled) }}</strong></span>
+              <span>{{ t('flushInterval') }} <strong>{{ formatDuration(currentStats.config.technicalStatsPersistenceFlushIntervalSeconds) }}</strong></span>
+              <span>
+                {{ t('lastFlush') }}
+                <strong>{{ currentStats.config.technicalStatsPersistenceLastFlushUtc ? (currentStats.config.technicalStatsPersistenceLastFlushUtc | date:'yyyy-MM-dd HH:mm':'UTC') : t('never') }}</strong>
+              </span>
+              <span>
+                {{ t('lastCleanup') }}
+                <strong>{{ currentStats.config.technicalStatsPersistenceLastCleanupUtc ? (currentStats.config.technicalStatsPersistenceLastCleanupUtc | date:'yyyy-MM-dd HH:mm':'UTC') : t('never') }}</strong>
+              </span>
+            </div>
+
+            <form class="admin-technical-stats-retention" (submit)="saveRetentionDays($event, currentStats)">
+              <label>
+                <span>{{ t('retentionDays') }}</span>
+                <input
+                  type="number"
+                  name="technicalStatsRetentionDays"
+                  min="1"
+                  max="365"
+                  [value]="currentRetentionDays(currentStats)"
+                  (input)="setRetentionDaysDraft(readInputValue($event))">
+              </label>
+              <button
+                type="submit"
+                class="admin-technical-stats-refresh"
+                [disabled]="settingsSaving() || !currentStats.config.technicalStatsPersistenceEnabled">
+                <i class="pi pi-save" aria-hidden="true"></i>
+                <span>{{ t('save') }}</span>
+              </button>
+              <small>{{ t('retentionHelp') }}</small>
+              @if (settingsError()) {
+                <p class="admin-technical-stats-save-error">{{ t('saveError') }}</p>
+              }
+            </form>
+          </article>
+        </section>
+      }
     }
   }
-</app-ui-card>
+</section>

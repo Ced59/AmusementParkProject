@@ -1,12 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonDirective } from '@shared/ui/primitives/button';
-import { Card } from '@shared/ui/primitives/card';
-import { UiTemplate } from '@shared/ui/primitives/api';
-import { Tag } from '@shared/ui/primitives/tag';
-import { Tooltip } from '@shared/ui/primitives/tooltip';
 
 import {
   TechnicalStatsCount,
@@ -16,7 +10,7 @@ import {
 import { AdminTechnicalStatsFacade } from '../../state/admin-technical-stats.facade';
 
 type TechnicalStatsLanguage = 'fr' | 'en';
-type TechnicalStatsTab = 'overview' | 'seo';
+type TechnicalStatsTab = 'summary' | 'cache' | 'rendering' | 'seo' | 'config';
 type RobotFamilyFilter = 'all' | 'google' | 'bing' | 'yandex' | 'other';
 
 const MAX_DISTRIBUTION_ROWS = 12;
@@ -54,8 +48,11 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     unavailableRequestFailed: 'Le back ne joint pas le service front SSR sur le réseau Docker interne.',
     unavailableEmpty: 'Le serveur SSR a répondu sans snapshot exploitable.',
     unavailableUnexpected: 'Le provider SSR a rencontré une erreur inattendue.',
-    tabOverview: 'Vue technique',
+    tabSummary: 'Résumé',
+    tabCache: 'Cache',
+    tabRendering: 'Rendu',
     tabSeo: 'SEO robots',
+    tabConfig: 'Config',
     lastRefresh: 'Snapshot généré',
     startedAt: 'Fenêtre commencée',
     uptime: 'Durée fenêtre',
@@ -170,8 +167,11 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     unavailableRequestFailed: 'The backend cannot reach the frontend SSR service on the internal Docker network.',
     unavailableEmpty: 'The SSR server answered without a usable snapshot.',
     unavailableUnexpected: 'The SSR provider hit an unexpected error.',
-    tabOverview: 'Technical view',
+    tabSummary: 'Summary',
+    tabCache: 'Cache',
+    tabRendering: 'Rendering',
     tabSeo: 'SEO robots',
+    tabConfig: 'Config',
     lastRefresh: 'Snapshot generated',
     startedAt: 'Window started',
     uptime: 'Window duration',
@@ -308,19 +308,16 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AdminTechnicalStatsFacade],
   imports: [
-    CommonModule,
-    FormsModule,
-    ButtonDirective,
-    Card,
-    UiTemplate,
-    Tag,
-    Tooltip
+    CommonModule
   ]
 })
 export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly tabOptions: readonly TechnicalStatsTabOption[] = [
-    { key: 'overview', labelKey: 'tabOverview' },
-    { key: 'seo', labelKey: 'tabSeo' }
+    { key: 'summary', labelKey: 'tabSummary' },
+    { key: 'seo', labelKey: 'tabSeo' },
+    { key: 'cache', labelKey: 'tabCache' },
+    { key: 'rendering', labelKey: 'tabRendering' },
+    { key: 'config', labelKey: 'tabConfig' }
   ];
   protected readonly robotFilterOptions: readonly RobotFamilyFilterOption[] = [
     { key: 'all', labelKey: 'allRobots' },
@@ -338,10 +335,10 @@ export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly robotHitRatePercent = this.facade.robotHitRatePercent;
   protected readonly hasUnavailableStats = computed(() => (this.state().kind === 'error' || this.stats()?.isAvailable === false) && !this.loading());
   protected readonly retentionDaysDraft = signal<number | null>(null);
-  protected readonly activeTab = signal<TechnicalStatsTab>('overview');
+  protected readonly activeTab = signal<TechnicalStatsTab>('summary');
   protected readonly robotFamilyFilter = signal<RobotFamilyFilter>('all');
-  protected readonly visibleStatuses = computed(() => this.limitRows(this.stats()?.cache.statuses ?? []));
-  protected readonly visibleRobotFamilies = computed(() => this.limitRows(this.stats()?.cache.robotFamilies ?? []));
+  protected readonly visibleStatuses = computed(() => this.activeTab() === 'cache' ? this.limitRows(this.stats()?.cache.statuses ?? []) : []);
+  protected readonly visibleRobotFamilies = computed(() => this.activeTab() === 'cache' ? this.limitRows(this.stats()?.cache.robotFamilies ?? []) : []);
   protected readonly visibleSeoRobotFamilies = computed(() => {
     if (this.activeTab() !== 'seo') {
       return [];
@@ -357,6 +354,10 @@ export class AdminTechnicalStatsComponent implements OnInit {
     return this.limitRows(families.filter((family: TechnicalStatsRobotFamily): boolean => family.category === filter));
   });
   protected readonly renderingMetricRows = computed((): TechnicalStatsMetricRow[] => {
+    if (this.activeTab() !== 'rendering') {
+      return [];
+    }
+
     const stats: TechnicalStatsSnapshot | null = this.stats();
     if (stats === null) {
       return [];
@@ -396,6 +397,10 @@ export class AdminTechnicalStatsComponent implements OnInit {
     ];
   });
   protected readonly seoMetricRows = computed((): TechnicalStatsMetricRow[] => {
+    if (this.activeTab() !== 'seo') {
+      return [];
+    }
+
     const stats: TechnicalStatsSnapshot | null = this.stats();
     if (stats === null) {
       return [];
@@ -478,6 +483,10 @@ export class AdminTechnicalStatsComponent implements OnInit {
     this.retentionDaysDraft.set(this.clampRetentionDays(value));
   }
 
+  protected readInputValue(event: Event): string {
+    return event.target instanceof HTMLInputElement ? event.target.value : '';
+  }
+
   protected currentRetentionDays(stats: TechnicalStatsSnapshot): number {
     return this.retentionDaysDraft() ?? stats.config.technicalStatsPersistenceRetentionDays;
   }
@@ -501,12 +510,6 @@ export class AdminTechnicalStatsComponent implements OnInit {
       default:
         return this.t('groupOther');
     }
-  }
-
-  protected gaugeBackground(percent: number): string {
-    const clampedPercent: number = this.clampPercent(percent);
-    const degrees: number = Math.round((clampedPercent / 100) * 360);
-    return `conic-gradient(#22c55e 0deg ${degrees}deg, #38bdf8 ${degrees}deg ${Math.min(360, degrees + 24)}deg, rgba(148, 163, 184, 0.2) ${Math.min(360, degrees + 24)}deg 360deg)`;
   }
 
   protected barWidth(percent: number): number {

@@ -1,6 +1,20 @@
 {
-  "version": "3.2.7",
+  "version": "3.2.8",
   "history": [
+    {
+      "version": "3.2.8",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "L'administration charge plus vite.",
+        "en": "Administration loads faster.",
+        "de": "Die Administration lädt schneller.",
+        "nl": "De administratie laadt sneller.",
+        "it": "L'amministrazione si carica più velocemente.",
+        "es": "La administración carga más rápido.",
+        "pl": "Administracja ładuje się szybciej.",
+        "pt": "A administração carrega mais rapidamente."
+      }
+    },
     {
       "version": "3.2.7",
       "releasedAt": "2026-07-03",

@@ -28,6 +28,12 @@ describe('AdminTechnicalStatsComponent', () => {
     const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
+    const cacheTab = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-tab'))
+      .find((button) => button.nativeElement.textContent.includes('Cache'));
+    cacheTab?.nativeElement.click();
+    fixture.detectChanges();
+
     const statusRows = fixture.debugElement
       .queryAll(By.css('.admin-technical-stats-panel--wide .admin-technical-stats-row'))
       .filter((row) => !row.nativeElement.classList.contains('admin-technical-stats-row--robot'));
@@ -35,6 +41,19 @@ describe('AdminTechnicalStatsComponent', () => {
 
     expect(statusRows.length).toBe(12);
     expect(robotRows.length).toBe(12);
+  });
+
+  it('renders only the summary tab by default', () => {
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    fixture.detectChanges();
+
+    const kpis = fixture.debugElement.queryAll(By.css('.admin-technical-stats-kpi'));
+    const statusRows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-row'));
+    const seoRows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-robot-table__row'));
+
+    expect(kpis.length).toBe(4);
+    expect(statusRows.length).toBe(0);
+    expect(seoRows.length).toBe(0);
   });
 
   it('filters SEO robot stats by robot family category', () => {
