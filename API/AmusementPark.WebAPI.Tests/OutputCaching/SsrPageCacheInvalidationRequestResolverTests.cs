@@ -34,6 +34,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.False(request.All);
         Assert.Contains("/fr/park/park-1/", request.Prefixes);
         Assert.Contains("/fr/home", request.Paths);
+        Assert.Contains("/fr/rankings", request.Paths);
         Assert.True(request.IncludeSeoDocuments);
     }
 
