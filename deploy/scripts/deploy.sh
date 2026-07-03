@@ -271,7 +271,8 @@ if [ "${SSR_WARMUP_AFTER_DEPLOY:-false}" = "true" ]; then
   if [ "${SSR_WARMUP_BACKGROUND:-true}" = "true" ]; then
     warmup_log="./warmup/ssr-warmup-deploy-$(date -u +%Y%m%dT%H%M%SZ).log"
     echo "Starting optional SSR cache warmup in background. Log: ${warmup_log}"
-    nohup ./scripts/warmup-ssr-cache.sh > "${warmup_log}" 2>&1 &
+    # Do not let the optional background warmup keep the deployment lock open.
+    nohup ./scripts/warmup-ssr-cache.sh > "${warmup_log}" 2>&1 9>&- &
   else
     echo "Running optional SSR cache warmup in foreground..."
     if ! ./scripts/warmup-ssr-cache.sh; then
