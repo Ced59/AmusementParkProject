@@ -1,0 +1,228 @@
+using System.Text.Json;
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
+using AmusementPark.Application.Features.ParkGraphUpserts.Handlers;
+using AmusementPark.Application.Features.ParkGraphUpserts.Queries;
+using AmusementPark.Application.Features.ParkGraphUpserts.Results;
+using AmusementPark.Application.Features.ParkGraphUpserts.Services;
+using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Parks.Queries;
+using AmusementPark.Application.Features.Parks.Results;
+using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Core.Domain.Images;
+using AmusementPark.Core.Domain.Parks;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Handlers;
+
+public sealed class ExportBulkParkGraphJsonQueryHandlerTests
+{
+    [Fact]
+    public async Task HandleAsync_WhenSectionsAreParkOnly_ShouldExportWithoutPerParkGraphExport()
+    {
+        Park firstPark = new Park
+        {
+            Id = "park-1",
+            Name = "First Park",
+            CountryCode = "FR",
+            Type = ParkType.ThemePark,
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        Park secondPark = new Park
+        {
+            Id = "park-2",
+            Name = "Second Park",
+            CountryCode = "BE",
+            Type = ParkType.WaterPark,
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.ToReview,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1", "park-2" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { firstPark, secondPark });
+
+        ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
+            parkRepository.Object);
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportBulkParkGraphJsonQuery(new ParkGraphBulkExportRequest
+            {
+                SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
+                ParkIds = new[] { "park-1", "park-2" },
+                Sections = new[] { ParkGraphExportSection.ParkBasics },
+            }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Content);
+        JsonElement root = document.RootElement;
+        JsonElement parks = root.GetProperty("parks");
+
+        Assert.Equal(2, parks.GetArrayLength());
+        Assert.Equal("park-1", parks[0].GetProperty("identity").GetProperty("parkId").GetString());
+        Assert.Equal("First Park", parks[0].GetProperty("park").GetProperty("name").GetString());
+        Assert.Equal("ThemePark", parks[0].GetProperty("park").GetProperty("type").GetString());
+        Assert.Equal(JsonValueKind.Null, parks[0].GetProperty("park").GetProperty("websiteUrl").ValueKind);
+        Assert.Equal("park-2", parks[1].GetProperty("identity").GetProperty("parkId").GetString());
+        Assert.Equal(2, root.GetProperty("selection").GetProperty("exportedParkCount").GetInt32());
+        Assert.Equal("ParkBasics", root.GetProperty("selection").GetProperty("sections")[0].GetString());
+
+        parkRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenSectionsNeedGraphExport_ShouldUseBulkRepositoriesWithoutUnitParkQuery()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Graph Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+
+        ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
+            parkRepository.Object,
+            parkItemRepository: parkItemRepository.Object);
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportBulkParkGraphJsonQuery(new ParkGraphBulkExportRequest
+            {
+                SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
+                ParkIds = new[] { "park-1" },
+                Sections = new[] { ParkGraphExportSection.Items },
+            }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Content);
+
+        Assert.Equal("park-1", document.RootElement.GetProperty("parks")[0].GetProperty("identity").GetProperty("parkId").GetString());
+        Assert.True(document.RootElement.GetProperty("parks")[0].TryGetProperty("items", out JsonElement items));
+        Assert.Equal(JsonValueKind.Array, items.ValueKind);
+
+        parkRepository.VerifyAll();
+        parkRepository.Verify(repository => repository.GetByIdAsync(It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<CancellationToken>()), Times.Never);
+        parkItemRepository.VerifyAll();
+        parkItemRepository.Verify(repository => repository.GetByParkIdAsync(It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenOnlyImagesAreSelected_ShouldNotLoadItemOwners()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Images Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        Image parkImage = new Image
+        {
+            Id = "image-park-1",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
+            IsPublished = true,
+            OriginalFileName = "park.jpg",
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetByOwnersAsync(
+                ImageOwnerType.Park,
+                It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.SequenceEqual(new[] { "park-1" })),
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { parkImage });
+
+        ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
+            parkRepository.Object,
+            parkItemRepository: parkItemRepository.Object,
+            imageRepository: imageRepository.Object);
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportBulkParkGraphJsonQuery(new ParkGraphBulkExportRequest
+            {
+                SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
+                ParkIds = new[] { "park-1" },
+                Sections = new[] { ParkGraphExportSection.Images },
+            }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Content);
+        JsonElement images = document.RootElement.GetProperty("parks")[0].GetProperty("images");
+
+        Assert.Equal(1, images.GetArrayLength());
+        Assert.Equal("image-park-1", images[0].GetProperty("imageId").GetString());
+        Assert.Equal("park", images[0].GetProperty("ownerKey").GetString());
+        parkRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        parkItemRepository.Verify(repository => repository.GetByParkIdsAsync(It.IsAny<IReadOnlyCollection<string>>(), It.IsAny<bool>(), It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    private static ExportBulkParkGraphJsonQueryHandler CreateHandler(
+        IParkRepository parkRepository,
+        IParkItemRepository? parkItemRepository = null,
+        IImageRepository? imageRepository = null)
+    {
+        return new ExportBulkParkGraphJsonQueryHandler(
+            parkRepository,
+            Mock.Of<IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
+            Mock.Of<IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
+            new BulkParkGraphJsonExportDataLoader(
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            parkItemRepository ?? Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository ?? Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOpeningHoursRepository>(MockBehavior.Strict),
+            Mock.Of<IHistoryEventRepository>(MockBehavior.Strict)));
+    }
+}

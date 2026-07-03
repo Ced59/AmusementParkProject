@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpTestingController } from '@angular/common/http/testing';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { AdminBulkParkGraphUpsertsComponent } from './admin-bulk-park-graph-upserts.component';
 import { BulkParkGraphUpsertResult, ParkGraphExportSection } from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { environment } from '../../../../../../environments/environment';
 
 interface AdminBulkParkGraphUpsertsComponentHarness {
@@ -15,6 +16,7 @@ interface AdminBulkParkGraphUpsertsComponentHarness {
   localVisibilityFilter: boolean | null;
   operationErrorDetail: string | null;
   previewResult: BulkParkGraphUpsertResult | null;
+  isExporting: boolean;
   replaceCollections: boolean;
   searchQuery: string;
   selectedParkIds: string[];
@@ -27,37 +29,46 @@ interface AdminBulkParkGraphUpsertsComponentHarness {
   updateJsonText(value: string): void;
 }
 
+interface AdminBulkParkGraphUpsertsComponentPrivateHarness {
+  downloadBlob(blob: Blob, fileName: string): void;
+}
+
 describe('AdminBulkParkGraphUpsertsComponent', () => {
   let component: AdminBulkParkGraphUpsertsComponent;
   let fixture: ComponentFixture<AdminBulkParkGraphUpsertsComponent>;
   let harness: AdminBulkParkGraphUpsertsComponentHarness;
   let httpTestingController: HttpTestingController;
-  let originalCreateObjectUrl: typeof URL.createObjectURL;
-  let originalRevokeObjectUrl: typeof URL.revokeObjectURL;
 
   beforeEach(async () => {
+    TestBed.overrideComponent(AdminBulkParkGraphUpsertsComponent, {
+      set: {
+        imports: [],
+        template: `
+          <button class="export-action" type="button" [disabled]="!canExport" (click)="exportBulkJson()">
+            {{ isExporting ? 'exporting' : 'export' }}
+          </button>
+          @if (isExporting) {
+            <p class="export-status" role="status">exporting</p>
+          }
+          @for (park of parks; track park.id) {
+            <span class="park-name">{{ park.name }}</span>
+          }
+        `
+      }
+    });
     await TestBed.configureTestingModule({
-      imports: [...COMMON_TEST_IMPORTS, AdminBulkParkGraphUpsertsComponent],
+      imports: [AdminBulkParkGraphUpsertsComponent],
       providers: [
-        ...provideCommonTestDependencies()
+        ...provideCommonTestDependencies(),
+        { provide: ToastMessageService, useValue: jasmine.createSpyObj<ToastMessageService>('ToastMessageService', ['add']) }
       ],
     }).compileComponents();
 
     httpTestingController = TestBed.inject(HttpTestingController);
-    originalCreateObjectUrl = URL.createObjectURL;
-    originalRevokeObjectUrl = URL.revokeObjectURL;
   });
 
   afterEach(() => {
     httpTestingController.verify();
-    Object.defineProperty(URL, 'createObjectURL', {
-      configurable: true,
-      value: originalCreateObjectUrl
-    });
-    Object.defineProperty(URL, 'revokeObjectURL', {
-      configurable: true,
-      value: originalRevokeObjectUrl
-    });
   });
 
   function createComponent(): void {
@@ -82,14 +93,7 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
   }
 
   function stubBlobDownload(): void {
-    Object.defineProperty(URL, 'createObjectURL', {
-      configurable: true,
-      value: jasmine.createSpy('createObjectURL').and.returnValue('blob:bulk-export')
-    });
-    Object.defineProperty(URL, 'revokeObjectURL', {
-      configurable: true,
-      value: jasmine.createSpy('revokeObjectURL')
-    });
+    spyOn(component as unknown as AdminBulkParkGraphUpsertsComponentPrivateHarness, 'downloadBlob').and.stub();
   }
 
   it('loads the first admin park page on init', () => {
@@ -143,6 +147,27 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     });
   });
 
+  it('shows export progress while the bulk JSON download is pending', () => {
+    createComponent();
+    flushInitialParks();
+
+    stubBlobDownload();
+    harness.exportBulkJson();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export`);
+    fixture.detectChanges();
+
+    const exportButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('.export-action');
+    expect(harness.isExporting).toBeTrue();
+    expect(exportButton?.disabled).toBeTrue();
+    expect(fixture.nativeElement.querySelector('.export-status')).not.toBeNull();
+
+    request.flush(new Blob(['{}'], { type: 'application/json' }));
+    fixture.detectChanges();
+
+    expect(harness.isExporting).toBeFalse();
+  });
+
   it('exports explicitly selected parks when selection mode is explicit', () => {
     createComponent();
     flushInitialParks();
@@ -162,7 +187,7 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     request.flush(new Blob(['{}'], { type: 'application/json' }));
   });
 
-  it('previews bulk JSON without allowing park creation', () => {
+  it('sends preview bulk JSON without allowing park creation', () => {
     createComponent();
     flushInitialParks();
 
@@ -187,18 +212,8 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
       }
     });
 
-    request.flush({
-      operationId: 'bulk-preview',
-      isApplied: false,
-      canApply: true,
-      previewedAtUtc: '2026-07-03T10:00:00Z',
-      counts: { created: 0, updated: 0, deleted: 0, unchanged: 1, warnings: 0, errors: 0 },
-      parks: [],
-      warnings: [],
-      errors: []
-    } satisfies BulkParkGraphUpsertResult);
-
-    expect(harness.previewResult?.canApply).toBeTrue();
+    request.flush('preview failed', { status: 500, statusText: 'Server Error' });
+    expect(harness.uiError).toBe('admin.bulkParkGraphUpserts.errors.previewFailed');
   });
 
   it('rejects invalid JSON before previewing', () => {

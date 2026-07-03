@@ -143,6 +143,70 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenOnlyImagesAreSelected_ShouldExportOnlyParkImages()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Images Park",
+            CountryCode = "FR",
+            FounderId = "founder-1",
+            OperatorId = "operator-1",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        Image parkImage = new Image
+        {
+            Id = "image-park-1",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
+            IsPublished = true,
+            OriginalFileName = "park.jpg",
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetByOwnersAsync(
+                ImageOwnerType.Park,
+                It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.SequenceEqual(new[] { "park-1" })),
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { parkImage });
+
+        ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object);
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportParkGraphJsonQuery("park-1", new[] { ParkGraphExportSection.Images }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Json);
+        JsonElement images = document.RootElement.GetProperty("images");
+
+        Assert.Equal(1, images.GetArrayLength());
+        Assert.Equal("image-park-1", images[0].GetProperty("imageId").GetString());
+        Assert.Equal("park", images[0].GetProperty("ownerKey").GetString());
+        Assert.False(document.RootElement.TryGetProperty("items", out _));
+        Assert.False(document.RootElement.TryGetProperty("references", out _));
+        parkRepository.VerifyAll();
+        imageRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenParkExists_ShouldExportCurrentGraphAsUpsertJson()
     {
         Park park = new Park

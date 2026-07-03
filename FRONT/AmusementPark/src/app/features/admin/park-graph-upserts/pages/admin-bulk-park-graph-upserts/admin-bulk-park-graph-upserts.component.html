@@ -292,7 +292,10 @@
     </section>
 
     <div class="wizard-actions">
-      <button appUiButton type="button" icon="pi pi-download" [label]="(isExporting ? 'admin.bulkParkGraphUpserts.actions.exporting' : 'admin.bulkParkGraphUpserts.actions.export') | translate" [disabled]="!canExport" (click)="exportBulkJson()"></button>
+      <button appUiButton type="button" [icon]="isExporting ? 'pi pi-spinner pi-spin' : 'pi pi-download'" [label]="(isExporting ? 'admin.bulkParkGraphUpserts.actions.exporting' : 'admin.bulkParkGraphUpserts.actions.export') | translate" [disabled]="!canExport" (click)="exportBulkJson()"></button>
+      @if (isExporting) {
+        <p class="export-status" role="status">{{ 'admin.bulkParkGraphUpserts.actions.exporting' | translate }}</p>
+      }
     </div>
   </article>
 

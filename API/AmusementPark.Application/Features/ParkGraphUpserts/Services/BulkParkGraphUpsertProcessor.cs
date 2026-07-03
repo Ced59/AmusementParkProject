@@ -38,6 +38,47 @@ public sealed class BulkParkGraphUpsertProcessor
             return ApplicationResult<BulkParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.InvalidDocument("Le mode bulk est limité aux mises à jour de parcs existants : createIfMissing doit rester désactivé."));
         }
 
+        List<JsonElement> parkDocuments = parks.Value.EnumerateArray()
+            .Select(static parkDocument => parkDocument.Clone())
+            .ToList();
+        if (apply)
+        {
+            BulkParkGraphUpsertResult preflightResult = await this.ProcessParksAsync(
+                parkDocuments,
+                request,
+                requestedByUserId,
+                apply: false,
+                cancellationToken);
+            if (!preflightResult.CanApply)
+            {
+                return ApplicationResult<BulkParkGraphUpsertResult>.Success(preflightResult);
+            }
+
+            BulkParkGraphUpsertResult applyResult = await this.ProcessParksAsync(
+                parkDocuments,
+                request,
+                requestedByUserId,
+                apply: true,
+                cancellationToken);
+            return ApplicationResult<BulkParkGraphUpsertResult>.Success(applyResult);
+        }
+
+        BulkParkGraphUpsertResult previewResult = await this.ProcessParksAsync(
+            parkDocuments,
+            request,
+            requestedByUserId,
+            apply: false,
+            cancellationToken);
+        return ApplicationResult<BulkParkGraphUpsertResult>.Success(previewResult);
+    }
+
+    private async Task<BulkParkGraphUpsertResult> ProcessParksAsync(
+        IReadOnlyCollection<JsonElement> parkDocuments,
+        BulkParkGraphUpsertRequest request,
+        string? requestedByUserId,
+        bool apply,
+        CancellationToken cancellationToken)
+    {
         BulkParkGraphUpsertResult aggregate = new BulkParkGraphUpsertResult
         {
             IsApplied = apply,
@@ -45,7 +86,7 @@ public sealed class BulkParkGraphUpsertProcessor
         };
 
         int index = 0;
-        foreach (JsonElement parkDocument in parks.Value.EnumerateArray())
+        foreach (JsonElement parkDocument in parkDocuments)
         {
             BulkParkGraphUpsertParkResult parkResult = await this.ProcessParkAsync(
                 parkDocument,
@@ -71,7 +112,7 @@ public sealed class BulkParkGraphUpsertProcessor
         aggregate.Counts.Warnings = aggregate.Warnings.Count;
         aggregate.Counts.Errors = aggregate.Errors.Count;
 
-        return ApplicationResult<BulkParkGraphUpsertResult>.Success(aggregate);
+        return aggregate;
     }
 
     private async Task<BulkParkGraphUpsertParkResult> ProcessParkAsync(
@@ -102,30 +143,9 @@ public sealed class BulkParkGraphUpsertProcessor
             RawJson = parkDocument.GetRawText(),
         };
 
-        ApplicationResult<ParkGraphUpsertResult> result;
-        if (apply)
-        {
-            ApplicationResult<ParkGraphUpsertResult> previewResult = await this.processor.PreviewAsync(singleRequest, requestedByUserId, cancellationToken);
-            ParkGraphUpsertResult previewItemResult = previewResult.Value ?? BuildFailureResult(previewResult.Errors, false);
-            RejectCreatedChanges(previewItemResult, index);
-            if (!previewItemResult.CanApply || previewItemResult.Errors.Count > 0)
-            {
-                return new BulkParkGraphUpsertParkResult
-                {
-                    Index = index,
-                    TargetParkId = previewItemResult.TargetParkId ?? targetParkId,
-                    TargetParkName = previewItemResult.TargetParkName ?? ResolveTargetParkName(parkDocument),
-                    Result = previewItemResult,
-                };
-            }
-
-            result = await this.processor.ApplyAsync(singleRequest, requestedByUserId, cancellationToken);
-        }
-        else
-        {
-            result = await this.processor.PreviewAsync(singleRequest, requestedByUserId, cancellationToken);
-        }
-
+        ApplicationResult<ParkGraphUpsertResult> result = apply
+            ? await this.processor.ApplyAsync(singleRequest, requestedByUserId, cancellationToken)
+            : await this.processor.PreviewAsync(singleRequest, requestedByUserId, cancellationToken);
         ParkGraphUpsertResult itemResult = result.Value ?? BuildFailureResult(result.Errors, apply);
         RejectCreatedChanges(itemResult, index);
 
