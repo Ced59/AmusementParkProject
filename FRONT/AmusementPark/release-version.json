@@ -1,6 +1,20 @@
 {
-  "version": "3.1.73",
+  "version": "3.1.74",
   "history": [
+    {
+      "version": "3.1.74",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Ajustements d'expérience admin.",
+        "en": "Admin experience adjustments.",
+        "de": "Anpassungen der Admin-Erfahrung.",
+        "nl": "Aanpassingen aan de adminervaring.",
+        "it": "Regolazioni dell'esperienza admin.",
+        "es": "Ajustes de experiencia admin.",
+        "pl": "Dostosowania doświadczenia administracji.",
+        "pt": "Ajustes na experiência administrativa."
+      }
+    },
     {
       "version": "3.1.73",
       "releasedAt": "2026-07-03",
