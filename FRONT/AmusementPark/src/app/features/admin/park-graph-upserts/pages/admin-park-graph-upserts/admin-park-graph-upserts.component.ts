@@ -228,12 +228,30 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     input.value = '';
   }
 
+  protected updateJsonText(value: string): void {
+    if (value === this.jsonText) {
+      return;
+    }
+
+    this.jsonText = value;
+    this.previewResult = null;
+    this.lastAppliedResult = null;
+    this.uiError = null;
+    this.operationErrorDetail = null;
+    this.changeDetectorRef.markForCheck();
+  }
+
   protected preview(): void {
+    if (!this.canPreview) {
+      return;
+    }
+
     const request: ParkGraphUpsertRequest | null = this.buildRequest();
     if (!request) {
       return;
     }
 
+    const previewedJsonText: string = this.jsonText;
     this.isPreviewing = true;
     this.previewResult = null;
     this.lastAppliedResult = null;
@@ -245,6 +263,10 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
       }))
       .subscribe({
         next: (result: ParkGraphUpsertResult): void => {
+          if (this.jsonText !== previewedJsonText) {
+            return;
+          }
+
           this.previewResult = result;
           this.notifyPreviewResult(result);
         },
@@ -418,6 +440,10 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
 
   protected get hasJsonDraft(): boolean {
     return this.jsonText.trim().length > 0;
+  }
+
+  protected get canPreview(): boolean {
+    return this.hasJsonDraft && !this.isPreviewing;
   }
 
   protected get mergeSections(): readonly string[] {

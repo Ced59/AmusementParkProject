@@ -17,6 +17,8 @@ interface ActivatedRouteStub {
 interface AdminParkGraphUpsertsComponentHarness {
   appliedResultMessageKey: string | null;
   appliedResultMessageParams: Record<string, number>;
+  canApply: boolean;
+  canPreview: boolean;
   contentChangeCount: number;
   hasJsonDraft: boolean;
   jsonText: string;
@@ -37,6 +39,7 @@ interface AdminParkGraphUpsertsComponentHarness {
   removePreviewBlock(change: ParkGraphUpsertResult['changes'][number]): void;
   selectMergeEntityType(entityType: string): void;
   setMergeSectionChoice(section: string, choice: string): void;
+  updateJsonText(value: string): void;
 }
 
 describe('AdminParkGraphUpsertsComponent', () => {
@@ -90,6 +93,22 @@ describe('AdminParkGraphUpsertsComponent', () => {
     expect(editor).not.toBeNull();
     expect(editor.value).toBe('');
     expect(editor.placeholder).toContain('AmusementParkParkGraphUpsert');
+  });
+
+  it('keeps preview disabled until a JSON draft exists', () => {
+    createComponent();
+
+    const previewButton: HTMLButtonElement = fixture.nativeElement.querySelector('.editor-actions button') as HTMLButtonElement;
+    expect(harness.canPreview).toBeFalse();
+    expect(previewButton.disabled).toBeTrue();
+
+    harness.updateJsonText('{"merges":[]}');
+    fixture.detectChanges();
+
+    expect(harness.hasJsonDraft).toBeTrue();
+    expect(harness.canPreview).toBeTrue();
+    const enabledPreviewButton: HTMLButtonElement = fixture.nativeElement.querySelector('.editor-actions button') as HTMLButtonElement;
+    expect(enabledPreviewButton.disabled).toBeFalse();
   });
 
   it('preselects the park received from the export shortcut query params', () => {
@@ -189,6 +208,40 @@ describe('AdminParkGraphUpsertsComponent', () => {
 
     expect(harness.previewResult?.targetParkId).toBe('park-1');
     expect(harness.previewResult?.canApply).toBeTrue();
+  });
+
+  it('invalidates preview results when the JSON draft changes', () => {
+    createComponent({
+      parkId: 'park-1',
+      parkName: 'Selected Park'
+    });
+
+    harness.jsonText = '{"park":{"name":"Selected Park"}}';
+    harness.preview();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    request.flush({
+      operationId: 'operation-1',
+      mode: 'merge',
+      isApplied: false,
+      canApply: true,
+      previewedAtUtc: '2026-06-18T10:00:00Z',
+      targetParkId: 'park-1',
+      targetParkName: 'Selected Park',
+      counts: { created: 0, updated: 1, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      changes: [],
+      warnings: [],
+      errors: []
+    } satisfies ParkGraphUpsertResult);
+
+    expect(harness.previewResult?.canApply).toBeTrue();
+    expect(harness.canApply).toBeTrue();
+
+    harness.updateJsonText('{"park":{"name":"Changed Park"}}');
+
+    expect(harness.previewResult).toBeNull();
+    expect(harness.lastAppliedResult).toBeNull();
+    expect(harness.canApply).toBeFalse();
   });
 
   it('previews a manufacturer merge without a selected park', () => {

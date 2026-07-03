@@ -90,7 +90,7 @@
             {{ 'admin.parkGraphUpserts.actions.uploadJsonFile' | translate }}
             <input type="file" accept=".json,application/json" (change)="loadExpertJsonFile($event)">
           </label>
-          <button type="button" class="btn-nav" (click)="preview()" [disabled]="isPreviewing">
+          <button type="button" class="btn-nav" (click)="preview()" [disabled]="!canPreview">
             <span class="pi pi-eye" aria-hidden="true"></span>
             {{ (isPreviewing ? 'admin.parkGraphUpserts.actions.previewing' : 'admin.parkGraphUpserts.actions.preview') | translate }}
           </button>
@@ -148,7 +148,7 @@
         </div>
       </section>
 
-      <textarea class="json-editor" [(ngModel)]="jsonText" [placeholder]="expertJsonPlaceholder" spellcheck="false" aria-label="JSON"></textarea>
+      <textarea class="json-editor" [ngModel]="jsonText" (ngModelChange)="updateJsonText($event)" [placeholder]="expertJsonPlaceholder" spellcheck="false" aria-label="JSON"></textarea>
     </section>
   </article>
 
