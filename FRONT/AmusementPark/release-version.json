@@ -1,6 +1,20 @@
 {
-  "version": "3.1.47",
+  "version": "3.1.48",
   "history": [
+    {
+      "version": "3.1.48",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les pages parc gardent des informations plus justes.",
+        "en": "Park pages keep information more accurate.",
+        "de": "Parkseiten halten Informationen genauer.",
+        "nl": "Parkpagina's tonen informatie juister.",
+        "it": "Le pagine dei parchi mantengono informazioni più corrette.",
+        "es": "Las páginas de parques mantienen información más precisa.",
+        "pl": "Strony parków pokazują dokładniejsze informacje.",
+        "pt": "As páginas dos parques mantêm informações mais corretas."
+      }
+    },
     {
       "version": "3.1.47",
       "releasedAt": "2026-07-03",
