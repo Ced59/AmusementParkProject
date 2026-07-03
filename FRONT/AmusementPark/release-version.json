@@ -1,6 +1,20 @@
 {
-  "version": "3.1.62",
+  "version": "3.1.63",
   "history": [
+    {
+      "version": "3.1.63",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le slogan public respire mieux sur mobile.",
+        "en": "The public slogan breathes better on mobile.",
+        "de": "Der öffentliche Slogan wirkt auf Mobilgeräten luftiger.",
+        "nl": "De publieke slogan krijgt meer ruimte op mobiel.",
+        "it": "Lo slogan pubblico respira meglio su mobile.",
+        "es": "El eslogan público respira mejor en móvil.",
+        "pl": "Publiczny slogan ma więcej miejsca na telefonie.",
+        "pt": "O slogan público ganha mais espaço no telemóvel."
+      }
+    },
     {
       "version": "3.1.62",
       "releasedAt": "2026-07-03",
