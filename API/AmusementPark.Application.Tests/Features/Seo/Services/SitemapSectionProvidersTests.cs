@@ -107,7 +107,7 @@ public sealed class SitemapSectionProvidersTests
         CancellationToken cancellationToken = new CancellationTokenSource().Token;
         Park[] parks = new[]
         {
-            new Park { Id = "park-1", Name = "Parc Astérix", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
+            CreateLocatedPark("park-1", "Parc Astérix", new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc)),
             new Park { Id = "hidden", Name = "Hidden", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
         };
         Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -125,6 +125,40 @@ public sealed class SitemapSectionProvidersTests
         Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/items");
         Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/images", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
+        repository.VerifyAll();
+        itemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParksProvider_WhenPublicParkHasNoUsableCoordinates_ShouldNotReturnWeatherUrl()
+    {
+        Park parkWithoutCoordinates = new Park
+        {
+            Id = "park-1",
+            Name = "No Coordinates Park",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        Park parkWithZeroCoordinates = new Park
+        {
+            Id = "park-2",
+            Name = "Zero Coordinates Park",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        parkWithZeroCoordinates.SetPosition(0d, 0d);
+        Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        SetupPublicSitemapParks(repository, new[] { parkWithoutCoordinates, parkWithZeroCoordinates });
+        SetupPublicSitemapItems(itemRepository, Array.Empty<ParkItem>());
+        ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object, itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/no-coordinates-park");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-2/zero-coordinates-park");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/weather", StringComparison.OrdinalIgnoreCase));
         repository.VerifyAll();
         itemRepository.VerifyAll();
     }
@@ -976,6 +1010,20 @@ public sealed class SitemapSectionProvidersTests
         historyRepository.VerifyAll();
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
+    }
+
+    private static Park CreateLocatedPark(string id, string name, DateTime updatedAtUtc)
+    {
+        Park park = new Park
+        {
+            Id = id,
+            Name = name,
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+            UpdatedAtUtc = updatedAtUtc,
+        };
+        park.SetPosition(48.86, 2.35);
+        return park;
     }
 
     private static void SetupPublicHistorySitemapParks(Mock<IParkRepository> repository, IReadOnlyCollection<Park> parks)

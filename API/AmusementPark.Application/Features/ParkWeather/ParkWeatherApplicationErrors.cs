@@ -39,4 +39,9 @@ internal static class ParkWeatherApplicationErrors
     {
         return ApplicationError.RuleViolation("park-weather.no-failed-park", "No failed park is available for retry.");
     }
+
+    public static ApplicationError QueueUnavailable()
+    {
+        return ApplicationError.Technical("park-weather.queue-unavailable", "Weather refresh could not be queued.");
+    }
 }
