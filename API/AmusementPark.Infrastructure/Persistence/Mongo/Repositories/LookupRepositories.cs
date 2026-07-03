@@ -281,6 +281,25 @@ public sealed class AttractionManufacturerRepository : MongoCrudRepositoryBase<A
         return base.GetByIdsAsync(ids, document => document.ToDomain(), cancellationToken);
     }
 
+    public async Task<IReadOnlyCollection<string>> SearchIdsAsync(string search, bool includeHidden, int limit, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(search) || limit <= 0)
+        {
+            return Array.Empty<string>();
+        }
+
+        FilterDefinition<AttractionManufacturerDocument> filter = BuildManufacturerFilter(search, includeHidden);
+        List<string> ids = await this.Collection.Find(filter)
+            .Project(static document => document.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+
+        return ids
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+    }
+
     public Task<AttractionManufacturer> CreateAsync(AttractionManufacturer entity, CancellationToken cancellationToken)
     {
         return base.CreateAsync(entity, value => value.ToDocument(), document => document.ToDomain(), cancellationToken);

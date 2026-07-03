@@ -1,4 +1,6 @@
 import { Park } from './park';
+import { AttractionDetails } from './attraction-details';
+import { LocalizedItem } from '../shared/localized-item';
 
 export interface ParkMapItems {
   park: Park;
@@ -14,6 +16,8 @@ export interface ParkMapItem {
   type: string;
   subtype?: string | null;
   zoneId?: string | null;
+  descriptions?: LocalizedItem<string>[];
+  attractionDetails?: AttractionDetails | null;
   latitude: number;
   longitude: number;
 }
@@ -25,6 +29,8 @@ export interface ParkMapUnlocatedItem {
   type: string;
   subtype?: string | null;
   zoneId?: string | null;
+  descriptions?: LocalizedItem<string>[];
+  attractionDetails?: AttractionDetails | null;
 }
 
 export interface ParkMapZone {

@@ -72,6 +72,8 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
                     Type = document.Type,
                     Subtype = document.Subtype,
                     ZoneId = string.IsNullOrWhiteSpace(document.ZoneId) ? null : document.ZoneId,
+                    Descriptions = CommonMongoMappers.ToDomain(document.Descriptions),
+                    AttractionDetails = ToMapAttractionDetails(document.AttractionDetails),
                     Latitude = document.Latitude!.Value,
                     Longitude = document.Longitude!.Value,
                 })
@@ -85,6 +87,8 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
                     Type = document.Type,
                     Subtype = document.Subtype,
                     ZoneId = string.IsNullOrWhiteSpace(document.ZoneId) ? null : document.ZoneId,
+                    Descriptions = CommonMongoMappers.ToDomain(document.Descriptions),
+                    AttractionDetails = ToMapAttractionDetails(document.AttractionDetails),
                 })
                 .ToList(),
         };
@@ -134,6 +138,8 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
                 Category = document.Category,
                 Type = document.Type,
                 Subtype = document.Subtype,
+                Descriptions = document.Descriptions,
+                AttractionDetails = document.AttractionDetails,
                 Latitude = document.Latitude,
                 Longitude = document.Longitude,
                 IsVisible = document.IsVisible,
@@ -167,6 +173,21 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
             ClosedEntityFilter.All => Builders<ParkItemDocument>.Filter.Empty,
             ClosedEntityFilter.ClosedOnly => closedFilterDefinition,
             _ => Builders<ParkItemDocument>.Filter.Not(closedFilterDefinition),
+        };
+    }
+
+    private static ParkMapAttractionDetailsResult? ToMapAttractionDetails(AttractionDetailsDocument? document)
+    {
+        if (document is null)
+        {
+            return null;
+        }
+
+        return new ParkMapAttractionDetailsResult
+        {
+            ManufacturerId = string.IsNullOrWhiteSpace(document.ManufacturerId) ? null : document.ManufacturerId,
+            Model = string.IsNullOrWhiteSpace(document.Model) ? null : document.Model,
+            Status = string.IsNullOrWhiteSpace(document.Status) ? null : document.Status,
         };
     }
 }

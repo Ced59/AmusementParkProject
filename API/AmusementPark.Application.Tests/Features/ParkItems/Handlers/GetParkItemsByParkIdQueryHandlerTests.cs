@@ -25,6 +25,7 @@ public sealed class GetParkItemsByParkIdQueryHandlerTests
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
 
         ParkItem firstItem = new ParkItem
         {
@@ -46,6 +47,9 @@ public sealed class GetParkItemsByParkIdQueryHandlerTests
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Park { Id = "park-1" });
+        manufacturerRepository
+            .Setup(repository => repository.SearchIdsAsync("coaster", false, It.IsAny<int>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<string>());
         parkItemRepository
             .Setup(repository => repository.GetPublicPageByParkIdAsync(
                 2,
@@ -57,6 +61,7 @@ public sealed class GetParkItemsByParkIdQueryHandlerTests
                 ParkItemCategory.Attraction,
                 ParkItemType.RollerCoaster,
                 "zone-1",
+                It.Is<IReadOnlyCollection<string>>(manufacturerIds => manufacturerIds.Count == 0),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new PagedResult<ParkItem>(
                 new[] { firstItem, secondItem },
@@ -78,10 +83,11 @@ public sealed class GetParkItemsByParkIdQueryHandlerTests
         GetParkItemsByParkIdQueryHandler handler = new GetParkItemsByParkIdQueryHandler(
             parkItemRepository.Object,
             imageRepository.Object,
+            manufacturerRepository.Object,
             new ParkItemReferenceValidator(
                 parkRepository.Object,
                 Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
-                Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict)));
+                manufacturerRepository.Object));
 
         ApplicationResult<PagedResult<ParkItemListResult>> result = await handler.HandleAsync(
             new GetParkItemsByParkIdQuery(
@@ -116,5 +122,67 @@ public sealed class GetParkItemsByParkIdQueryHandlerTests
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
         imageRepository.VerifyAll();
+        manufacturerRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenSearchMatchesManufacturer_ShouldPassManufacturerIdsToRepository()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IAttractionManufacturerRepository> manufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
+
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1" });
+        manufacturerRepository
+            .Setup(repository => repository.SearchIdsAsync("B&M", false, It.IsAny<int>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { "manufacturer-1" });
+        parkItemRepository
+            .Setup(repository => repository.GetPublicPageByParkIdAsync(
+                1,
+                12,
+                "park-1",
+                " B&M ",
+                false,
+                ClosedEntityFilter.OpenOnly,
+                null,
+                null,
+                null,
+                It.Is<IReadOnlyCollection<string>>(manufacturerIds => manufacturerIds.SequenceEqual(new[] { "manufacturer-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<ParkItem>(Array.Empty<ParkItem>(), 1, 12, 0));
+        imageRepository
+            .Setup(repository => repository.GetMainImageIdsByOwnersAsync(
+                ImageOwnerType.ParkItem,
+                It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Count == 0),
+                ImageCategory.ParkItem,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, string>());
+
+        GetParkItemsByParkIdQueryHandler handler = new GetParkItemsByParkIdQueryHandler(
+            parkItemRepository.Object,
+            imageRepository.Object,
+            manufacturerRepository.Object,
+            new ParkItemReferenceValidator(
+                parkRepository.Object,
+                Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+                manufacturerRepository.Object));
+
+        ApplicationResult<PagedResult<ParkItemListResult>> result = await handler.HandleAsync(
+            new GetParkItemsByParkIdQuery(
+                " park-1 ",
+                new PagedQuery(1, 12),
+                IncludeHidden: false,
+                Search: " B&M "),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        manufacturerRepository.VerifyAll();
     }
 }

@@ -1,3 +1,5 @@
+using AmusementPark.WebAPI.Contracts.Common;
+
 namespace AmusementPark.WebAPI.Contracts.Parks;
 
 /// <summary>
@@ -28,6 +30,10 @@ public sealed class ParkMapItemDto
 
     public string? ZoneId { get; set; }
 
+    public List<LocalizedTextDto> Descriptions { get; set; } = new();
+
+    public ParkMapAttractionDetailsDto? AttractionDetails { get; set; }
+
     public double Latitude { get; set; }
 
     public double Longitude { get; set; }
@@ -46,6 +52,19 @@ public sealed class ParkMapUnlocatedItemDto
     public string? Subtype { get; set; }
 
     public string? ZoneId { get; set; }
+
+    public List<LocalizedTextDto> Descriptions { get; set; } = new();
+
+    public ParkMapAttractionDetailsDto? AttractionDetails { get; set; }
+}
+
+public sealed class ParkMapAttractionDetailsDto
+{
+    public string? ManufacturerId { get; set; }
+
+    public string? Model { get; set; }
+
+    public string? Status { get; set; }
 }
 
 public sealed class ParkMapZoneDto

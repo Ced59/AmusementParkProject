@@ -208,6 +208,8 @@ internal static class ParksHttpMappers
                 Type = item.Type.ToString(),
                 Subtype = item.Subtype,
                 ZoneId = item.ZoneId,
+                Descriptions = item.Descriptions.ToHttp(),
+                AttractionDetails = item.AttractionDetails.ToMapHttp(),
                 Latitude = item.Latitude,
                 Longitude = item.Longitude,
             }).ToList(),
@@ -219,6 +221,8 @@ internal static class ParksHttpMappers
                 Type = item.Type.ToString(),
                 Subtype = item.Subtype,
                 ZoneId = item.ZoneId,
+                Descriptions = item.Descriptions.ToHttp(),
+                AttractionDetails = item.AttractionDetails.ToMapHttp(),
             }).ToList(),
             Zones = value.Zones.Select(static zone => new ParkMapZoneDto
             {
@@ -502,6 +506,21 @@ internal static class ParksHttpMappers
                 Count = count.Value,
             })
             .ToList();
+    }
+
+    private static ParkMapAttractionDetailsDto? ToMapHttp(this ParkMapAttractionDetailsResult? value)
+    {
+        if (value is null)
+        {
+            return null;
+        }
+
+        return new ParkMapAttractionDetailsDto
+        {
+            ManufacturerId = value.ManufacturerId,
+            Model = value.Model,
+            Status = value.Status,
+        };
     }
 
     private static string ResolveDisplayName(IEnumerable<AmusementPark.Core.Localization.LocalizedText>? names, string? fallback)
