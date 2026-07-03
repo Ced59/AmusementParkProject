@@ -9,6 +9,7 @@ import { VideoTagDto } from '@app/models/videos/video-tag-dto';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { buildPublicParkVideoRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { PagedResult } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -44,7 +45,7 @@ export class ParkVideoStateFacade {
   public readonly state = this.screenStateStore.state;
   public readonly data = this.screenStateStore.data;
   public readonly park = computed(() => this.screenStateStore.data()?.summary.park ?? null);
-  public readonly parkImageId = computed(() => this.screenStateStore.data()?.summary.mainImage?.id ?? null);
+  public readonly parkImageId = computed(() => resolveParkSummarySocialImageId(this.screenStateStore.data()?.summary));
   public readonly rawVideo = computed(() => this.screenStateStore.data()?.video ?? null);
   public readonly video: Signal<PublicVideoWatchViewModel | null> = computed(() => {
     const currentData: ParkVideoPageData | undefined = this.screenStateStore.data();

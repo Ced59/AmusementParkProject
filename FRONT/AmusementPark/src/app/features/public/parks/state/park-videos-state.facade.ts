@@ -13,6 +13,7 @@ import { VideoTagDto } from '@app/models/videos/video-tag-dto';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { buildPublicParkItemVideoRouteCommands, buildPublicParkVideoRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -71,7 +72,7 @@ export class ParkVideosStateFacade {
   public readonly itemVideosLoading: Signal<boolean> = this.itemVideosLoadingSignal.asReadonly();
   public readonly activeTab: Signal<ParkVideosGalleryTab> = this.activeTabSignal.asReadonly();
   public readonly park = computed(() => this.screenStateStore.data()?.summary.park ?? null);
-  public readonly parkImageId = computed(() => this.screenStateStore.data()?.summary.mainImage?.id ?? null);
+  public readonly parkImageId = computed(() => resolveParkSummarySocialImageId(this.screenStateStore.data()?.summary));
   public readonly parkTabVideoCount = computed(() => this.screenStateStore.data()?.parkPagination.totalItems ?? 0);
   public readonly itemTabVideoCount = computed(() => this.screenStateStore.data()?.itemPagination.totalItems ?? 0);
   public readonly totalVideos = computed(() => this.parkTabVideoCount() + this.itemTabVideoCount());

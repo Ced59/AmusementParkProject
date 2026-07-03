@@ -16,6 +16,7 @@ import { MeasurementConversionService } from '@shared/services/measurements/meas
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import {
@@ -203,7 +204,7 @@ export class ParkZonesPageStateFacade {
       next: (data: { summary: ParkDetailSummary; explorer: ParkExplorer; mapItems: ParkMapItems; zones: ParkZone[]; itemsPage: PagedResult<ParkItem> }) => {
         this.screenStateStore.setReady({
           park: data.summary.park,
-          parkImageId: data.summary.mainImage?.id ?? null,
+          parkImageId: resolveParkSummarySocialImageId(data.summary),
           explorer: data.explorer,
           zones: data.zones,
           mapItems: mapParkMapItemsToParkItems(data.mapItems),
