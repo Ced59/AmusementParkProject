@@ -1,6 +1,20 @@
 {
-  "version": "3.2.0",
+  "version": "3.2.1",
   "history": [
+    {
+      "version": "3.2.1",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les onglets d'administration affichent de nouveau leur contenu.",
+        "en": "Administration tabs show their content again.",
+        "de": "Administrationsregister zeigen ihre Inhalte wieder an.",
+        "nl": "Beheertabbladen tonen hun inhoud weer.",
+        "it": "Le schede di amministrazione mostrano di nuovo i contenuti.",
+        "es": "Las pestañas de administración vuelven a mostrar su contenido.",
+        "pl": "Karty administracji znów pokazują swoją zawartość.",
+        "pt": "Os separadores de administração voltam a mostrar o conteúdo."
+      }
+    },
     {
       "version": "3.2.0",
       "releasedAt": "2026-07-03",
