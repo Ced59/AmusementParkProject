@@ -32,39 +32,39 @@ const renderOnCacheMiss = (process.env['SSR_RENDER_ON_CACHE_MISS'] ?? 'false').t
 const renderCriticalRoutesOnCacheMiss = (process.env['SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS'] ?? 'true').toLowerCase() !== 'false';
 const robotNoJsHtmlEnabled = (process.env['SSR_ROBOT_NO_JS_HTML_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 'false').toLowerCase() === 'true';
-const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 86400));
-const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 2000));
+const pageCacheTtlSeconds = normalizeInteger(process.env['SSR_PAGE_CACHE_SECONDS'], 86400, 0, 31_536_000);
+const pageCacheMaxEntries = normalizeInteger(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'], 2000, 0, Number.MAX_SAFE_INTEGER);
 const pageCache = new Map<string, PageCacheEntry>();
 const pageCacheAllowAuthenticatedPublicHtml = (process.env['SSR_PUBLIC_PAGE_CACHE_ALLOW_AUTH_COOKIES'] ?? 'true').toLowerCase() !== 'false';
 const diskPageCacheEnabled = (process.env['SSR_DISK_PAGE_CACHE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const diskPageCacheDirectory = process.env['SSR_DISK_PAGE_CACHE_DIR'] ?? '/tmp/amusementpark-ssr-page-cache';
-const diskPageCacheMaxBytes = Math.max(0, Number(process.env['SSR_DISK_PAGE_CACHE_MAX_BYTES'] ?? 4 * 1024 * 1024 * 1024));
-const diskPageCacheBudgetCheckEveryWrites = Math.max(1, Number(process.env['SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES'] ?? 100));
-const pageCacheMaxHtmlBytes = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_HTML_BYTES'] ?? 2 * 1024 * 1024));
-const seoDocumentCacheTtlSeconds = Number(process.env['SSR_SEO_DOCUMENT_CACHE_SECONDS'] ?? 0);
-const seoDocumentCacheMaxEntries = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'] ?? 128));
+const diskPageCacheMaxBytes = normalizeInteger(process.env['SSR_DISK_PAGE_CACHE_MAX_BYTES'], 4 * 1024 * 1024 * 1024, 0, Number.MAX_SAFE_INTEGER);
+const diskPageCacheBudgetCheckEveryWrites = normalizeInteger(process.env['SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES'], 100, 1, Number.MAX_SAFE_INTEGER);
+const pageCacheMaxHtmlBytes = normalizeInteger(process.env['SSR_PAGE_CACHE_MAX_HTML_BYTES'], 2 * 1024 * 1024, 0, Number.MAX_SAFE_INTEGER);
+const seoDocumentCacheTtlSeconds = normalizeInteger(process.env['SSR_SEO_DOCUMENT_CACHE_SECONDS'], 0, 0, 31_536_000);
+const seoDocumentCacheMaxEntries = normalizeInteger(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'], 128, 0, Number.MAX_SAFE_INTEGER);
 const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
 const pendingSeoDocumentCacheRequests = new Map<string, Array<SeoDocumentCacheCallback>>();
 const internalSsrHeaderName = 'X-AmusementPark-Internal-SSR';
-const renderMaxConcurrency = Math.max(1, Number(process.env['SSR_RENDER_MAX_CONCURRENCY'] ?? 1));
-const renderQueueMaxEntries = Math.max(0, Number(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'] ?? 8));
-const slowRenderThresholdMilliseconds = Math.max(0, Number(process.env['SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS'] ?? 3000));
-const renderQueueWarningThreshold = Math.max(1, Number(process.env['SSR_RENDER_QUEUE_WARNING_THRESHOLD'] ?? Math.max(1, Math.floor(Math.max(1, renderQueueMaxEntries) * 0.75))));
-const assetMissLogSampleRate = Math.max(0, Number(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'] ?? 25));
-const csrFallbackLogSampleRate = Math.max(0, Number(process.env['SSR_CSR_FALLBACK_LOG_SAMPLE_RATE'] ?? 100));
+const renderMaxConcurrency = normalizeInteger(process.env['SSR_RENDER_MAX_CONCURRENCY'], 1, 1, Number.MAX_SAFE_INTEGER);
+const renderQueueMaxEntries = normalizeInteger(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'], 8, 0, Number.MAX_SAFE_INTEGER);
+const slowRenderThresholdMilliseconds = normalizeInteger(process.env['SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS'], 3000, 0, Number.MAX_SAFE_INTEGER);
+const renderQueueWarningThreshold = normalizeInteger(process.env['SSR_RENDER_QUEUE_WARNING_THRESHOLD'], Math.max(1, Math.floor(Math.max(1, renderQueueMaxEntries) * 0.75)), 1, Number.MAX_SAFE_INTEGER);
+const assetMissLogSampleRate = normalizeInteger(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'], 25, 0, Number.MAX_SAFE_INTEGER);
+const csrFallbackLogSampleRate = normalizeInteger(process.env['SSR_CSR_FALLBACK_LOG_SAMPLE_RATE'], 100, 0, Number.MAX_SAFE_INTEGER);
 const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ?? 'public, max-age=60, stale-while-revalidate=300';
 const pageCacheBrowserCacheControl = process.env['SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
 const seoDocumentBrowserCacheControl = process.env['SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
 const immutableBuildAssetCacheControl = 'public, max-age=31536000, immutable';
 const revalidatedStaticAssetCacheControl = 'no-cache, max-age=0, must-revalidate';
 const cacheInvalidationToken = process.env['SSR_CACHE_INVALIDATION_TOKEN'] ?? '';
-const stalePageCacheSeconds = Math.max(0, Number(process.env['SSR_STALE_PAGE_CACHE_SECONDS'] ?? 600));
+const stalePageCacheSeconds = normalizeInteger(process.env['SSR_STALE_PAGE_CACHE_SECONDS'], 600, 0, 31_536_000);
 const targetedRefreshEnabled = (process.env['SSR_TARGETED_REFRESH_ENABLED'] ?? 'true').toLowerCase() !== 'false';
-const targetedRefreshMaxUrls = Math.max(0, Number(process.env['SSR_TARGETED_REFRESH_MAX_URLS'] ?? 24));
-const targetedRefreshConcurrency = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_CONCURRENCY'] ?? 1));
-const targetedRefreshDelayMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_REFRESH_DELAY_MILLISECONDS'] ?? 1500));
-const targetedRefreshTimeoutSeconds = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_TIMEOUT_SECONDS'] ?? 45));
-const targetedInvalidationDebounceMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_INVALIDATION_DEBOUNCE_MILLISECONDS'] ?? 250));
+const targetedRefreshMaxUrls = normalizeInteger(process.env['SSR_TARGETED_REFRESH_MAX_URLS'], 24, 0, Number.MAX_SAFE_INTEGER);
+const targetedRefreshConcurrency = normalizeInteger(process.env['SSR_TARGETED_REFRESH_CONCURRENCY'], 1, 1, Number.MAX_SAFE_INTEGER);
+const targetedRefreshDelayMilliseconds = normalizeInteger(process.env['SSR_TARGETED_REFRESH_DELAY_MILLISECONDS'], 1500, 0, Number.MAX_SAFE_INTEGER);
+const targetedRefreshTimeoutSeconds = normalizeInteger(process.env['SSR_TARGETED_REFRESH_TIMEOUT_SECONDS'], 45, 1, Number.MAX_SAFE_INTEGER);
+const targetedInvalidationDebounceMilliseconds = normalizeInteger(process.env['SSR_TARGETED_INVALIDATION_DEBOUNCE_MILLISECONDS'], 250, 0, Number.MAX_SAFE_INTEGER);
 const targetedInvalidationDiskBatchSize = normalizeInteger(process.env['SSR_TARGETED_INVALIDATION_DISK_BATCH_SIZE'], 25, 1, 1000);
 const targetedInvalidationDiskYieldMilliseconds = normalizeInteger(process.env['SSR_TARGETED_INVALIDATION_DISK_YIELD_MILLISECONDS'], 0, 0, 1000);
 const technicalStatsPersistenceEnabled = (process.env['SSR_TECHNICAL_STATS_PERSISTENCE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
@@ -746,15 +746,18 @@ function getRobotFamilyCategory(robotFamily: string): string {
 }
 
 function toPercent(value: number, total: number): number {
-  if (total <= 0) {
+  if (!Number.isFinite(value) || !Number.isFinite(total) || total <= 0) {
     return 0;
   }
 
-  return Math.round((value / total) * 1000) / 10;
+  const percent = Math.round((value / total) * 1000) / 10;
+  return Number.isFinite(percent) && percent >= 0 ? percent : 0;
 }
 
-function normalizeInteger(value: number | string | null | undefined, fallback: number, min: number, max: number): number {
-  const parsed = typeof value === 'number' ? value : Number(value);
+function normalizeInteger(value: unknown, fallback: number, min: number, max: number): number {
+  const parsed = typeof value === 'number' || typeof value === 'string'
+    ? Number(value)
+    : fallback;
 
   if (!Number.isFinite(parsed)) {
     return fallback;
@@ -1301,7 +1304,7 @@ function normalizeTechnicalStatsCounters(source: unknown): TechnicalStatsCounter
       continue;
     }
 
-    counters[key] = Math.max(0, Number(source[key] ?? 0)) as never;
+    counters[key] = normalizeInteger(source[key], 0, 0, Number.MAX_SAFE_INTEGER) as never;
   }
 
   return counters;
@@ -1493,7 +1496,7 @@ function mergeRecordIntoMap<TKey extends string>(source: Record<string, number>,
 }
 
 function run(): void {
-  const port = Number(process.env['PORT'] ?? 4000);
+  const port = normalizeInteger(process.env['PORT'], 4000, 1, 65535);
   const server = app();
 
   startTechnicalStatsPersistenceTimers();
@@ -2765,7 +2768,7 @@ function drainTargetedRefreshQueue(): void {
 
 function refreshTargetedCacheKey(cacheKey: string): Promise<void> {
   const originalUrl = new URL(cacheKey);
-  const localPort = Number(process.env['PORT'] ?? 4000);
+  const localPort = normalizeInteger(process.env['PORT'], 4000, 1, 65535);
   const refreshUrl = new URL(`${originalUrl.pathname}${originalUrl.search}`, `http://127.0.0.1:${localPort}`);
   const client = refreshUrl.protocol === 'https:' ? https : http;
 

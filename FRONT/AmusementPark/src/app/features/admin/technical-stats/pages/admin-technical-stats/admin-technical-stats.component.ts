@@ -47,6 +47,7 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     unavailableTimeout: 'Le serveur SSR ne répond pas dans le délai attendu.',
     unavailableRequestFailed: 'Le back ne joint pas le service front SSR sur le réseau Docker interne.',
     unavailableEmpty: 'Le serveur SSR a répondu sans snapshot exploitable.',
+    unavailableInvalidJson: 'Le serveur SSR a répondu avec un snapshot technique illisible.',
     unavailableUnexpected: 'Le provider SSR a rencontré une erreur inattendue.',
     tabSummary: 'Résumé',
     tabCache: 'Cache',
@@ -166,6 +167,7 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     unavailableTimeout: 'The SSR server did not answer within the expected timeout.',
     unavailableRequestFailed: 'The backend cannot reach the frontend SSR service on the internal Docker network.',
     unavailableEmpty: 'The SSR server answered without a usable snapshot.',
+    unavailableInvalidJson: 'The SSR server returned an unreadable technical snapshot.',
     unavailableUnexpected: 'The SSR provider hit an unexpected error.',
     tabSummary: 'Summary',
     tabCache: 'Cache',
@@ -576,6 +578,8 @@ export class AdminTechnicalStatsComponent implements OnInit {
         return this.t('unavailableRequestFailed');
       case 'empty-response':
         return this.t('unavailableEmpty');
+      case 'invalid-json':
+        return this.t('unavailableInvalidJson');
       case 'unexpected-error':
         return this.t('unavailableUnexpected');
       default:
