@@ -1,6 +1,20 @@
 {
-  "version": "3.2.1",
+  "version": "3.2.2",
   "history": [
+    {
+      "version": "3.2.2",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "L'administration devient plus fluide.",
+        "en": "Administration becomes smoother.",
+        "de": "Die Administration wird flüssiger.",
+        "nl": "Het beheer wordt soepeler.",
+        "it": "L'amministrazione diventa più fluida.",
+        "es": "La administración gana fluidez.",
+        "pl": "Administracja działa płynniej.",
+        "pt": "A administração fica mais fluida."
+      }
+    },
     {
       "version": "3.2.1",
       "releasedAt": "2026-07-03",

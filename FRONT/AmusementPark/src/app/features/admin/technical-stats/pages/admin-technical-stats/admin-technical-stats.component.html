@@ -85,9 +85,9 @@
           <h3>{{ t('cacheStatusTitle') }}</h3>
         </div>
 
-        @if (currentStats.cache.statuses.length > 0) {
+        @if (visibleStatuses().length > 0) {
           <div class="admin-technical-stats-bars">
-            @for (status of currentStats.cache.statuses; track trackStatus($index, status)) {
+            @for (status of visibleStatuses(); track trackStatus($index, status)) {
               <div class="admin-technical-stats-row">
                 <span>{{ statusLabel(status) }}</span>
                 <div class="admin-technical-stats-row__bar" aria-hidden="true">
@@ -108,9 +108,9 @@
           <h3>{{ t('robotsTitle') }}</h3>
         </div>
 
-        @if (currentStats.cache.robotFamilies.length > 0) {
+        @if (visibleRobotFamilies().length > 0) {
           <div class="admin-technical-stats-bars">
-            @for (robot of currentStats.cache.robotFamilies; track trackRobot($index, robot)) {
+            @for (robot of visibleRobotFamilies(); track trackRobot($index, robot)) {
               <div class="admin-technical-stats-row admin-technical-stats-row--robot">
                 <span>{{ robot.key }}</span>
                 <div class="admin-technical-stats-row__bar admin-technical-stats-row__bar--robot" aria-hidden="true">
@@ -167,7 +167,7 @@
         </div>
 
         <div class="admin-technical-stats-metrics">
-          @for (metric of renderingMetrics(currentStats); track trackMetric($index, metric)) {
+          @for (metric of renderingMetricRows(); track trackMetric($index, metric)) {
             <div>
               <span>
                 {{ metric.label }}

@@ -70,6 +70,10 @@ const technicalStatsMinRetentionDays = 1;
 const technicalStatsMaxRetentionDays = 365;
 const technicalStatsDefaultRetentionDays = normalizeInteger(process.env['SSR_TECHNICAL_STATS_RETENTION_DAYS'], 15, technicalStatsMinRetentionDays, technicalStatsMaxRetentionDays);
 const technicalStatsPersistenceFlushIntervalSeconds = normalizeInteger(process.env['SSR_TECHNICAL_STATS_FLUSH_INTERVAL_SECONDS'], 60, 5, 3600);
+const technicalStatsDistributionRowLimit = normalizeInteger(process.env['SSR_TECHNICAL_STATS_DISTRIBUTION_ROW_LIMIT'], 12, 1, 50);
+const diskPageCacheStatsIntervalSeconds = normalizeInteger(process.env['SSR_DISK_PAGE_CACHE_STATS_INTERVAL_SECONDS'], 300, 30, 86400);
+const diskPageCacheStatsBatchSize = normalizeInteger(process.env['SSR_DISK_PAGE_CACHE_STATS_BATCH_SIZE'], 100, 10, 5000);
+const diskPageCacheStatsYieldMilliseconds = normalizeInteger(process.env['SSR_DISK_PAGE_CACHE_STATS_YIELD_MILLISECONDS'], 0, 0, 1000);
 let technicalStatsStartedAtUtc = new Date();
 let technicalStatsRetentionDays = technicalStatsDefaultRetentionDays;
 let technicalStatsPersistenceLastFlushUtc: string | null = null;
@@ -78,6 +82,10 @@ let technicalStatsPersistencePurgedBuckets = 0;
 let technicalStatsPersistenceEntries = 0;
 let technicalStatsPersistenceBytes = 0;
 let technicalStatsPersistenceTimerStarted = false;
+let diskPageCacheMeasuredEntries = 0;
+let diskPageCacheMeasuredBytes = 0;
+let diskPageCacheStatsLastMeasuredAt = 0;
+let diskPageCacheStatsMeasurementInProgress = false;
 let activeRenderCount = 0;
 let assetMissCount = 0;
 let csrFallbackCount = 0;
@@ -505,7 +513,7 @@ function authorizeInternalCacheRequest(req: Request, res: Response): boolean {
 function buildTechnicalStatsSnapshot(): Record<string, unknown> {
   const generatedAtUtc = new Date();
   const uptimeSeconds = Math.max(0, Math.round((generatedAtUtc.getTime() - technicalStatsStartedAtUtc.getTime()) / 1000));
-  const diskStats = measureDiskPageCache();
+  const diskStats = getDiskPageCacheStatsSnapshot();
   const totalRenders = technicalStatsCounters.totalRenders;
 
   return {
@@ -604,7 +612,8 @@ function buildCountRows<TKey>(map: Map<TKey, number>, total: number): TechnicalS
       count,
       percent: toPercent(count, total)
     }))
-    .sort((left: TechnicalStatsCount, right: TechnicalStatsCount): number => right.count - left.count || left.key.localeCompare(right.key));
+    .sort((left: TechnicalStatsCount, right: TechnicalStatsCount): number => right.count - left.count || left.key.localeCompare(right.key))
+    .slice(0, technicalStatsDistributionRowLimit);
 }
 
 function buildRobotFamilyRows(): TechnicalStatsRobotFamily[] {
@@ -618,7 +627,8 @@ function buildRobotFamilyRows(): TechnicalStatsRobotFamily[] {
         hitRatePercent: toPercent(cacheHits, count)
       };
     })
-    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key));
+    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key))
+    .slice(0, technicalStatsDistributionRowLimit);
 }
 
 function toPercent(value: number, total: number): number {
@@ -639,16 +649,66 @@ function normalizeInteger(value: number | string | null | undefined, fallback: n
   return Math.min(max, Math.max(min, Math.round(parsed)));
 }
 
-function measureDiskPageCache(): DiskPageCacheStats {
+function getDiskPageCacheStatsSnapshot(): DiskPageCacheStats {
   if (!diskPageCacheEnabled || !existsSync(diskPageCacheDirectory)) {
+    diskPageCacheMeasuredEntries = 0;
+    diskPageCacheMeasuredBytes = 0;
     return { entries: 0, bytes: 0 };
   }
 
+  scheduleDiskPageCacheStatsMeasurement();
+
+  return {
+    entries: diskPageCacheMeasuredEntries,
+    bytes: diskPageCacheMeasuredBytes
+  };
+}
+
+function scheduleDiskPageCacheStatsMeasurement(): void {
+  if (diskPageCacheStatsMeasurementInProgress) {
+    return;
+  }
+
+  const now = Date.now();
+  if (diskPageCacheStatsLastMeasuredAt > 0 && now - diskPageCacheStatsLastMeasuredAt < diskPageCacheStatsIntervalSeconds * 1000) {
+    return;
+  }
+
+  diskPageCacheStatsMeasurementInProgress = true;
+  const timer = setTimeout((): void => {
+    measureDiskPageCacheInBatches();
+  }, 0);
+  timer.unref();
+}
+
+function measureDiskPageCacheInBatches(): void {
+  if (!diskPageCacheEnabled || !existsSync(diskPageCacheDirectory)) {
+    diskPageCacheMeasuredEntries = 0;
+    diskPageCacheMeasuredBytes = 0;
+    diskPageCacheStatsLastMeasuredAt = Date.now();
+    diskPageCacheStatsMeasurementInProgress = false;
+    return;
+  }
+
+  let fileNames: string[];
+
+  try {
+    fileNames = readdirSync(diskPageCacheDirectory).filter((fileName: string): boolean => fileName.endsWith('.json'));
+  } catch (error: unknown) {
+    console.warn('SSR disk page cache stats failed', error);
+    diskPageCacheStatsMeasurementInProgress = false;
+    return;
+  }
+
+  let index = 0;
   let entries = 0;
   let bytes = 0;
 
-  try {
-    for (const fileName of readdirSync(diskPageCacheDirectory)) {
+  const processBatch = (): void => {
+    const end = Math.min(index + diskPageCacheStatsBatchSize, fileNames.length);
+
+    for (; index < end; index += 1) {
+      const fileName = fileNames[index];
       if (!fileName.endsWith('.json')) {
         continue;
       }
@@ -665,11 +725,32 @@ function measureDiskPageCache(): DiskPageCacheStats {
         // Best effort technical snapshot only.
       }
     }
-  } catch (error: unknown) {
-    console.warn('SSR disk page cache stats failed', error);
-  }
 
-  return { entries, bytes };
+    if (index < fileNames.length) {
+      const timer = setTimeout(processBatch, diskPageCacheStatsYieldMilliseconds);
+      timer.unref();
+      return;
+    }
+
+    diskPageCacheMeasuredEntries = entries;
+    diskPageCacheMeasuredBytes = bytes;
+    diskPageCacheStatsLastMeasuredAt = Date.now();
+    diskPageCacheStatsMeasurementInProgress = false;
+  };
+
+  processBatch();
+}
+
+function rememberDiskPageCacheMeasurement(entries: number, bytes: number): void {
+  diskPageCacheMeasuredEntries = Math.max(0, Math.round(entries));
+  diskPageCacheMeasuredBytes = Math.max(0, Math.round(bytes));
+  diskPageCacheStatsLastMeasuredAt = Date.now();
+}
+
+function addDiskPageCacheMeasurementDelta(entryDelta: number, byteDelta: number): void {
+  rememberDiskPageCacheMeasurement(
+    diskPageCacheMeasuredEntries + entryDelta,
+    diskPageCacheMeasuredBytes + byteDelta);
 }
 
 function initializeTechnicalStatsPersistence(): void {
@@ -1880,7 +1961,12 @@ function setDiskCachedPage(cacheKey: string, entry: PageCacheEntry): void {
 
   try {
     mkdirSync(diskPageCacheDirectory, { recursive: true });
-    writeFileSync(getDiskPageCacheFilePath(cacheKey), JSON.stringify(entry), 'utf8');
+    const cacheFilePath = getDiskPageCacheFilePath(cacheKey);
+    const previousSize = existsSync(cacheFilePath) ? statSync(cacheFilePath).size : null;
+    const serializedEntry = JSON.stringify(entry);
+    writeFileSync(cacheFilePath, serializedEntry, 'utf8');
+    const nextSize = Buffer.byteLength(serializedEntry, 'utf8');
+    addDiskPageCacheMeasurementDelta(previousSize === null ? 1 : 0, nextSize - (previousSize ?? 0));
     diskPageCacheWriteCount += 1;
     if (diskPageCacheWriteCount % diskPageCacheBudgetCheckEveryWrites === 0) {
       enforceDiskPageCacheBudget();
@@ -1910,6 +1996,7 @@ function enforceDiskPageCacheBudget(): void {
     .sort((left, right) => left.mtimeMs - right.mtimeMs);
 
   let totalBytes: number = files.reduce((sum: number, file) => sum + file.size, 0);
+  let totalEntries: number = files.length;
 
   for (const file of files) {
     if (totalBytes <= diskPageCacheMaxBytes) {
@@ -1919,10 +2006,13 @@ function enforceDiskPageCacheBudget(): void {
     try {
       unlinkSync(file.filePath);
       totalBytes -= file.size;
+      totalEntries = Math.max(0, totalEntries - 1);
     } catch {
       // Best effort cleanup only.
     }
   }
+
+  rememberDiskPageCacheMeasurement(totalEntries, totalBytes);
 }
 
 function clearAllSsrCaches(): CacheInvalidationResult {
@@ -2211,8 +2301,20 @@ function waitForTargetedInvalidationDiskYield(): Promise<void> {
 }
 
 function removeDiskPageCacheFile(filePath: string): boolean {
+  let fileSize: number | null = null;
+
+  try {
+    const fileStats = statSync(filePath);
+    if (fileStats.isFile()) {
+      fileSize = fileStats.size;
+    }
+  } catch {
+    fileSize = null;
+  }
+
   try {
     unlinkSync(filePath);
+    addDiskPageCacheMeasurementDelta(fileSize === null ? 0 : -1, -(fileSize ?? 0));
     return true;
   } catch {
     return false;
