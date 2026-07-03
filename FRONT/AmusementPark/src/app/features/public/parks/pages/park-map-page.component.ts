@@ -31,7 +31,7 @@ export class ParkMapPageComponent implements OnInit {
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
   protected readonly itemsLink = signal<string[] | null>(null);
-  protected readonly selectedClosedFilter = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
+  protected readonly selectedClosedFilter = this.stateFacade.selectedClosedFilter;
   protected readonly closedFilterOptions = signal([
     { labelKey: 'parkItems.filters.openOnly', value: DEFAULT_CLOSED_ENTITY_FILTER },
     { labelKey: 'parkItems.filters.withClosed', value: 'all' },
@@ -98,8 +98,6 @@ export class ParkMapPageComponent implements OnInit {
 
   onClosedFilterChanged(value: string | null): void {
     const closedFilter: ClosedEntityFilter = normalizeClosedFilter(value);
-
-    this.selectedClosedFilter.set(closedFilter);
 
     if (this.currentParkId) {
       this.stateFacade.loadParkMap(this.currentParkId, closedFilter);

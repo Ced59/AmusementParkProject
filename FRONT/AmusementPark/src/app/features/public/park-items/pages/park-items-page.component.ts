@@ -41,7 +41,7 @@ export class ParkItemsPageComponent implements OnInit {
   protected readonly selectedCategory = signal<string | null>(null);
   protected readonly selectedType = signal<string | null>(null);
   protected readonly selectedZoneId = signal<string | null>(null);
-  protected readonly selectedClosedFilter = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
+  protected readonly selectedClosedFilter = this.stateFacade.selectedClosedFilter;
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly searchChanges: Subject<string> = new Subject<string>();
@@ -128,7 +128,6 @@ export class ParkItemsPageComponent implements OnInit {
       this.selectedCategory.set(selectedCategory);
       this.selectedType.set(selectedType);
       this.selectedZoneId.set(selectedZoneId);
-      this.selectedClosedFilter.set(selectedClosedFilter);
 
       this.stateFacade.setFilters({
         searchTerm,
@@ -211,13 +210,14 @@ export class ParkItemsPageComponent implements OnInit {
   }
 
   onClosedFilterChanged(value: string | null): void {
-    this.selectedClosedFilter.set(normalizeClosedFilter(value));
+    const selectedClosedFilter: ClosedEntityFilter = normalizeClosedFilter(value);
+
     this.updateQueryParams({
       search: this.searchTerm(),
       category: this.selectedCategory(),
       type: this.selectedType(),
       zone: this.selectedZoneId(),
-      closed: this.selectedClosedFilter(),
+      closed: selectedClosedFilter,
       page: 1,
       size: this.pageSize()
     });
@@ -228,7 +228,6 @@ export class ParkItemsPageComponent implements OnInit {
     this.selectedCategory.set(null);
     this.selectedType.set(null);
     this.selectedZoneId.set(null);
-    this.selectedClosedFilter.set(DEFAULT_CLOSED_ENTITY_FILTER);
     this.searchChanges.next('');
 
     this.updateQueryParams({

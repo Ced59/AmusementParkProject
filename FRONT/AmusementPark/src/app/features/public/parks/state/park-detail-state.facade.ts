@@ -1,6 +1,7 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { forkJoin } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -27,6 +28,8 @@ import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store'
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { mapNullable } from '@shared/utils/mapping';
+import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
+import { resolvePublicParkItemsClosedFilter } from '@shared/utils/parks/public-park-items-closed-filter.helper';
 import { mapParkDistanceTargetToCardModel } from '../mappers/park-distance-card.mapper';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
 import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
@@ -141,7 +144,18 @@ export class ParkDetailStateFacade {
     this.hasImagesSignal.set(false);
     this.hasHistorySignal.set(false);
 
-    this.parksApiService.getParkDetailSummary(id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getParkDetailSummary(id, anonymousHttpOptions()).pipe(
+      switchMap((summary: ParkDetailSummary) => {
+        const effectiveClosedFilter: ClosedEntityFilter = resolvePublicParkItemsClosedFilter(summary.park);
+
+        if (effectiveClosedFilter === DEFAULT_CLOSED_ENTITY_FILTER) {
+          return of(summary);
+        }
+
+        return this.parksApiService.getParkDetailSummary(id, { ...anonymousHttpOptions(), closedFilter: effectiveClosedFilter });
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
       next: (summary: ParkDetailSummary) => {
         this.screenStateStore.setReady(summary);
         this.hasImagesSignal.set(this.hasKnownImage(summary));
