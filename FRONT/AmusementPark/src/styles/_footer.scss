@@ -224,15 +224,25 @@
   }
 
   .app-public-footer__slogan {
+    flex-wrap: wrap;
     gap: 0.36rem;
+    row-gap: 0.14rem;
+    width: calc(100% - var(--app-public-footer-logo-icon-size) - var(--app-public-footer-logo-gap));
     max-width: calc(100% - var(--app-public-footer-logo-icon-size) - var(--app-public-footer-logo-gap));
+    white-space: normal;
   }
 
   .app-public-footer__slogan-base {
+    min-width: 0;
+    max-width: 100%;
     font-size: clamp(0.98rem, 4.2vw, 1.12rem);
+    overflow-wrap: anywhere;
   }
 
   .app-public-footer__slogan-fun {
+    min-width: 0;
+    max-width: 100%;
     font-size: clamp(1.12rem, 4.7vw, 1.3rem);
+    overflow-wrap: anywhere;
   }
 }
