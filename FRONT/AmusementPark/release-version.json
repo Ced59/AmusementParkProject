@@ -1,6 +1,20 @@
 {
-  "version": "3.1.58",
+  "version": "3.1.59",
   "history": [
+    {
+      "version": "3.1.59",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les comparaisons météo restent mieux alignées.",
+        "en": "Weather comparisons stay better aligned.",
+        "de": "Wettervergleiche bleiben besser abgestimmt.",
+        "nl": "Weervergelijkingen blijven beter afgestemd.",
+        "it": "I confronti meteo restano più allineati.",
+        "es": "Las comparaciones meteorológicas siguen mejor alineadas.",
+        "pl": "Porównania pogody pozostają lepiej dopasowane.",
+        "pt": "As comparações meteorológicas continuam mais alinhadas."
+      }
+    },
     {
       "version": "3.1.58",
       "releasedAt": "2026-07-03",

@@ -99,7 +99,14 @@ export const PARKS_API_ENDPOINTS = {
   },
   getParkById: (id: string) => `parks/${id}`,
   getParkWeather: (id: string, days: number = 7) => `parks/${encodeURIComponent(id)}/weather?days=${days}`,
-  getParkWeatherHistoricalComparisons: (id: string, days: number = 7, years: number = 10) => `parks/${encodeURIComponent(id)}/weather/historical-comparisons?days=${days}&years=${years}`,
+  getParkWeatherHistoricalComparisons: (id: string, days: number = 7, years: number = 10, forecastDates: readonly string[] = []) => {
+    const params: string[] = [`days=${days}`, `years=${years}`];
+    if (forecastDates.length > 0) {
+      params.push(`forecastDates=${encodeURIComponent(forecastDates.join(','))}`);
+    }
+
+    return `parks/${encodeURIComponent(id)}/weather/historical-comparisons?${params.join('&')}`;
+  },
   getParkOpeningHours: (id: string, from?: string | null, to?: string | null) => {
     const params: string[] = [];
     if (from) {

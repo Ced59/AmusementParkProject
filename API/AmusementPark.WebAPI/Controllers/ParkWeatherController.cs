@@ -1,3 +1,4 @@
+using System.Globalization;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkWeather.Commands;
@@ -77,10 +78,11 @@ public sealed class ParkWeatherController : ControllerBase
         [FromRoute] string parkId,
         [FromQuery] int days = 7,
         [FromQuery] int years = 10,
+        [FromQuery] string? forecastDates = null,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<ParkWeatherHistoricalComparisonsResult> result = await this.getParkWeatherHistoricalComparisonsQueryHandler.HandleAsync(
-            new GetParkWeatherHistoricalComparisonsQuery(parkId, days, years),
+            new GetParkWeatherHistoricalComparisonsQuery(parkId, days, years, ParseForecastDates(forecastDates)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -191,5 +193,22 @@ public sealed class ParkWeatherController : ControllerBase
         }
 
         return this.Accepted(result.Value.ToHttp());
+    }
+
+    private static IReadOnlyCollection<DateOnly> ParseForecastDates(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return Array.Empty<DateOnly>();
+        }
+
+        return value
+            .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Select(static token => DateOnly.TryParseExact(token, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateOnly date) ? date : default)
+            .Where(static date => date != default)
+            .Distinct()
+            .OrderBy(static date => date)
+            .Take(7)
+            .ToList();
     }
 }

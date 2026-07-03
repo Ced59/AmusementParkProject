@@ -67,6 +67,11 @@ describe('PARKS_API_ENDPOINTS', () => {
     expect(PARKS_API_ENDPOINTS.upsertAdminParkOpeningHours('park 1')).toBe('admin/parks/park%201/opening-hours');
   });
 
+  it('adds displayed forecast dates to historical weather comparison urls', () => {
+    expect(PARKS_API_ENDPOINTS.getParkWeatherHistoricalComparisons('park 1', 2, 5, ['2026-06-20', '2026-06-21']))
+      .toBe('parks/park%201/weather/historical-comparisons?days=2&years=5&forecastDates=2026-06-20%2C2026-06-21');
+  });
+
   it('builds distance urls with encoded ids and no empty query when targets are missing', () => {
     expect(PARKS_API_ENDPOINTS.getParkDistances('source park', ['target 1', 'target/2']))
       .toBe('parks/source%20park/distances?targetParkIds=target%201&targetParkIds=target%2F2');
