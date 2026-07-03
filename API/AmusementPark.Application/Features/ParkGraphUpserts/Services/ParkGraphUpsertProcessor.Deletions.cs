@@ -18,6 +18,7 @@ public sealed partial class ParkGraphUpsertProcessor
             return seoChanges;
         }
 
+        List<ParkGraphResolvedDeletion> resolvedDeletions = new List<ParkGraphResolvedDeletion>();
         foreach (ParkGraphDeletionRequest request in requests)
         {
             ParkGraphDeletionTarget? target = await this.ResolveDeletionTargetAsync(request, result, cancellationToken);
@@ -36,6 +37,13 @@ public sealed partial class ParkGraphUpsertProcessor
                 continue;
             }
 
+            resolvedDeletions.Add(new ParkGraphResolvedDeletion(request, target));
+        }
+
+        foreach (ParkGraphResolvedDeletion deletion in resolvedDeletions)
+        {
+            ParkGraphDeletionRequest request = deletion.Request;
+            ParkGraphDeletionTarget target = deletion.Target;
             ParkGraphUpsertChange change = BuildEntityChange(target.EntityType, target.Id, null, target.DisplayName, "Deleted", request.MatchedBy);
             AddChange(change, "suppr", "present", "deleted");
             result.Changes.Add(change);
@@ -455,6 +463,8 @@ public sealed partial class ParkGraphUpsertProcessor
     }
 
     private sealed record ParkGraphDeletionRequest(string? EntityType, string? Id, string MatchedBy);
+
+    private sealed record ParkGraphResolvedDeletion(ParkGraphDeletionRequest Request, ParkGraphDeletionTarget Target);
 
     private sealed class ParkGraphDeletionTarget
     {

@@ -283,6 +283,8 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         summary.ChangedParkIds.Add(merged.Id);
+        summary.ChangedParkIds.Add(source.Id);
+        summary.ParkIdRemaps[source.Id] = merged.Id;
         result.Changes.Add(targetChange);
         result.Changes.Add(sourceChange);
     }

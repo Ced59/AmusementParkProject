@@ -187,6 +187,14 @@ public sealed partial class ParkGraphUpsertProcessor
 
         await this.ProcessReferencesAsync(references, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
         ParkGraphUpsertMergeSummary mergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
+        targetPark = await this.RefreshTargetParkAfterAppliedMergesAsync(targetPark, mergeSummary, apply, cancellationToken);
+        if (targetPark is null)
+        {
+            result.CanApply = false;
+            FinalizeCounts(result);
+            await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+            return ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car le parc cible n'est plus disponible après les fusions."));
+        }
 
         PublicSeoParkSnapshot? previousParkSnapshot = PublicSeoParkSnapshot.FromPark(targetPark);
 
