@@ -1,6 +1,20 @@
 {
-  "version": "3.1.60",
+  "version": "3.1.61",
   "history": [
+    {
+      "version": "3.1.61",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le logo public tient mieux sur mobile.",
+        "en": "The public logo fits better on mobile.",
+        "de": "Das öffentliche Logo passt besser auf Mobilgeräten.",
+        "nl": "Het publieke logo past beter op mobiel.",
+        "it": "Il logo pubblico si adatta meglio su mobile.",
+        "es": "El logo público encaja mejor en móvil.",
+        "pl": "Publiczne logo lepiej mieści się na telefonie.",
+        "pt": "O logótipo público ajusta-se melhor no telemóvel."
+      }
+    },
     {
       "version": "3.1.60",
       "releasedAt": "2026-07-03",
