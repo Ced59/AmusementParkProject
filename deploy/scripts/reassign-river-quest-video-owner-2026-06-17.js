@@ -24,7 +24,15 @@ function formatOwner(ownerType, ownerId) {
 }
 
 function localizedName(document) {
-  if (!document || !Array.isArray(document.names)) {
+  if (!document) {
+    return null;
+  }
+
+  if (typeof document.name === 'string' && document.name.trim()) {
+    return document.name.trim();
+  }
+
+  if (!Array.isArray(document.names)) {
     return null;
   }
 
