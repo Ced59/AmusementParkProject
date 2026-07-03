@@ -191,6 +191,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
     STALE: 'Cache stale',
     'WARMUP-STALE': 'Warmup stale',
     'SSR-UNCACHED': 'SSR non cache',
+    'SSR-BOT-UNAVAILABLE': 'Bot SSR indisponible',
     'CSR-CACHE-MISS-FALLBACK': 'Fallback CSR',
     'CSR-OVERLOAD-FALLBACK': 'Fallback surcharge',
     'CSR-WARMUP-SKIPPED': 'Warmup ignore'
@@ -203,6 +204,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
     STALE: 'Stale cache',
     'WARMUP-STALE': 'Warmup stale',
     'SSR-UNCACHED': 'Uncached SSR',
+    'SSR-BOT-UNAVAILABLE': 'Bot SSR unavailable',
     'CSR-CACHE-MISS-FALLBACK': 'CSR fallback',
     'CSR-OVERLOAD-FALLBACK': 'Overload fallback',
     'CSR-WARMUP-SKIPPED': 'Warmup skipped'

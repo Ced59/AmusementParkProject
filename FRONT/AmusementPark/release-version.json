@@ -1,6 +1,20 @@
 {
-  "version": "3.2.2",
+  "version": "3.2.3",
   "history": [
+    {
+      "version": "3.2.3",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les pages publiques restent lisibles pour les moteurs.",
+        "en": "Public pages stay readable for search engines.",
+        "de": "Öffentliche Seiten bleiben für Suchmaschinen lesbar.",
+        "nl": "Publieke pagina's blijven leesbaar voor zoekmachines.",
+        "it": "Le pagine pubbliche restano leggibili per i motori di ricerca.",
+        "es": "Las páginas públicas siguen siendo legibles para los buscadores.",
+        "pl": "Strony publiczne pozostają czytelne dla wyszukiwarek.",
+        "pt": "As páginas públicas continuam legíveis para os motores de pesquisa."
+      }
+    },
     {
       "version": "3.2.2",
       "releasedAt": "2026-07-03",

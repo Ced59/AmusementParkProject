@@ -12,7 +12,11 @@ import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
 import { isApiHeaderHiddenFromPublicProxy } from './src/app/core/ssr/public-api-header-policy';
 import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
-import { optimizeHtmlForRobotNoJs, RobotHtmlOptimizationResult } from './src/app/core/ssr/robot-html-optimizer';
+import {
+  prepareRobotHtmlForResponse,
+  RobotHtmlPreparationResult,
+  shouldReturnBotSsrUnavailable
+} from './src/app/core/ssr/robot-html-optimizer';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { siteVersion } from './src/environments/version.generated';
 
@@ -109,9 +113,22 @@ type SsrPageResponseStatus =
   | 'STALE'
   | 'WARMUP-STALE'
   | 'SSR-UNCACHED'
+  | 'SSR-BOT-UNAVAILABLE'
   | 'CSR-CACHE-MISS-FALLBACK'
   | 'CSR-OVERLOAD-FALLBACK'
   | 'CSR-WARMUP-SKIPPED';
+
+type SsrHtmlResponseMode =
+  'SSR_CACHE_HIT'
+  | 'SSR_RENDERED'
+  | 'SSR_STALE'
+  | 'CSR_FALLBACK'
+  | 'SSR-BOT-UNAVAILABLE';
+
+interface HtmlResponsePreparationOptions {
+  readonly allowRobotNoJsOptimization: boolean;
+  readonly responseMode: SsrHtmlResponseMode;
+}
 
 interface TechnicalStatsCounters {
   pageResponses: number;
@@ -401,7 +418,10 @@ export function app(): express.Express {
       if (staleEntry && cacheKey !== null && !warmupRequest) {
         enqueueTargetedRefreshes([cacheKey]);
       }
-      res.type('html').send(prepareHtmlForResponse(req, res, cachedEntry.html));
+      res.type('html').send(prepareHtmlForResponse(req, res, cachedEntry.html, {
+        allowRobotNoJsOptimization: true,
+        responseMode: staleEntry ? 'SSR_STALE' : 'SSR_CACHE_HIT'
+      }));
       return;
     }
 
@@ -436,7 +456,10 @@ export function app(): express.Express {
           recordPageResponse(req, 'SSR-UNCACHED', cacheKey);
         }
 
-        res.send(prepareHtmlForResponse(req, res, html));
+        res.type('html').send(prepareHtmlForResponse(req, res, html, {
+          allowRobotNoJsOptimization: true,
+          responseMode: 'SSR_RENDERED'
+        }));
       })
       .catch((err: unknown) => {
         if (err instanceof SsrRenderQueueFullError) {
@@ -1413,6 +1436,12 @@ function shouldRenderCacheMiss(req: Request, warmupRequest: boolean): boolean {
 
 function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: string | null, mode: string): void {
   const statusCode: number = resolveSsrRouteStatusCode(req.originalUrl);
+  const robotFamily: string | null = detectRobotFamily(req);
+  if (shouldReturnBotSsrUnavailable(robotFamily !== null, statusCode)) {
+    serveBotSsrUnavailable(req, res, robotFamily);
+    return;
+  }
+
   if (statusCode !== 200) {
     res.status(statusCode);
   }
@@ -1423,28 +1452,61 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
     console.warn(`SSR CSR fallback sample: count=${csrFallbackCount}, mode=${mode}, url=${req.originalUrl}`);
   }
 
-  res.setHeader('X-AmusementPark-SSR-Mode', mode);
+  res.setHeader('X-AmusementPark-SSR-Fallback', mode);
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('Cache-Control', csrFallbackCacheControl);
-  res.type('html').send(prepareHtmlForResponse(req, res, readCsrShellHtml(csrIndexHtmlPath)));
+  res.type('html').send(prepareHtmlForResponse(req, res, readCsrShellHtml(csrIndexHtmlPath), {
+    allowRobotNoJsOptimization: false,
+    responseMode: 'CSR_FALLBACK'
+  }));
 }
 
-function prepareHtmlForResponse(req: Request, res: Response, html: string): string {
-  if (!robotNoJsHtmlEnabled || detectRobotFamily(req) === null) {
-    return html;
+function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string | null): void {
+  recordPageResponse(req, 'SSR-BOT-UNAVAILABLE', buildPageCacheKey(req));
+
+  res.setHeader('Retry-After', '60');
+  res.setHeader('X-AmusementPark-SSR-Mode', 'SSR-BOT-UNAVAILABLE');
+  res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
+  res.setHeader('X-AmusementPark-Seo-Ready', 'false');
+  res.setHeader('X-AmusementPark-Seo-Ready-Reason', 'ssr-unavailable');
+  res.setHeader('X-AmusementPark-Robot-Html', 'blocked-ssr-unavailable');
+  res.setHeader('Cache-Control', 'no-store');
+  if (robotFamily !== null) {
+    res.setHeader('X-AmusementPark-Robot-Family', robotFamily);
+    appendVaryHeader(res, 'User-Agent');
   }
 
-  const optimizationResult: RobotHtmlOptimizationResult = optimizeHtmlForRobotNoJs(html);
-  if (optimizationResult.removedScriptCount === 0 && optimizationResult.removedScriptLikeLinkCount === 0) {
-    return optimizationResult.html;
+  res.status(503).type('text/plain').send('SSR temporarily unavailable');
+}
+
+function prepareHtmlForResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): string {
+  const robotFamily: string | null = detectRobotFamily(req);
+  const preparationResult: RobotHtmlPreparationResult = prepareRobotHtmlForResponse(html, {
+    allowRobotNoJsOptimization: options.allowRobotNoJsOptimization,
+    robotNoJsHtmlEnabled,
+    isRobotRequest: robotFamily !== null
+  });
+
+  res.setHeader('X-AmusementPark-SSR-Mode', options.responseMode);
+  res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
+  res.setHeader('X-AmusementPark-Seo-Ready', preparationResult.seoReady.isReady ? 'true' : 'false');
+  res.setHeader('X-AmusementPark-Seo-Ready-Reason', preparationResult.seoReady.reason);
+
+  if (robotFamily !== null) {
+    res.setHeader('X-AmusementPark-Robot-Family', robotFamily);
+    appendVaryHeader(res, 'User-Agent');
+
+    if (preparationResult.robotHtmlStatus !== null) {
+      res.setHeader('X-AmusementPark-Robot-Html', preparationResult.robotHtmlStatus);
+    }
   }
 
-  res.setHeader('X-AmusementPark-Robot-Html', 'no-js');
-  res.setHeader('X-AmusementPark-Robot-Html-Scripts-Removed', optimizationResult.removedScriptCount.toString());
-  res.setHeader('X-AmusementPark-Robot-Html-Links-Removed', optimizationResult.removedScriptLikeLinkCount.toString());
-  appendVaryHeader(res, 'User-Agent');
+  if (preparationResult.robotHtmlStatus === 'no-js') {
+    res.setHeader('X-AmusementPark-Robot-Html-Scripts-Removed', preparationResult.removedScriptCount.toString());
+    res.setHeader('X-AmusementPark-Robot-Html-Links-Removed', preparationResult.removedScriptLikeLinkCount.toString());
+  }
 
-  return optimizationResult.html;
+  return preparationResult.html;
 }
 
 function appendVaryHeader(res: Response, value: string): void {

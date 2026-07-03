@@ -1,4 +1,11 @@
-import { optimizeHtmlForRobotNoJs } from './robot-html-optimizer';
+import {
+  inspectSeoReadyHtml,
+  isBareAngularShell,
+  isSeoReadyHtml,
+  optimizeHtmlForRobotNoJs,
+  prepareRobotHtmlForResponse,
+  shouldReturnBotSsrUnavailable
+} from './robot-html-optimizer';
 
 describe('robot HTML optimizer', () => {
   it('removes executable scripts and Angular transfer state while preserving JSON-LD', () => {
@@ -53,4 +60,97 @@ describe('robot HTML optimizer', () => {
     expect(result.removedScriptCount).toBe(0);
     expect(result.removedScriptLikeLinkCount).toBe(0);
   });
+
+  it('marks complete SSR HTML as SEO-ready', () => {
+    const html: string = buildSeoReadyHtml();
+
+    const result = inspectSeoReadyHtml(html);
+
+    expect(result.isReady).toBeTrue();
+    expect(result.reason).toBe('ready');
+    expect(isSeoReadyHtml(html)).toBeTrue();
+  });
+
+  it('detects bare Angular shells before other SEO checks', () => {
+    const html: string = [
+      '<html><head>',
+      '<title>Public page</title>',
+      '<meta name="description" content="A useful public description for the page.">',
+      '<link rel="canonical" href="https://amusement-parks.fun/en/home">',
+      '</head><body><app-root></app-root></body></html>'
+    ].join('');
+
+    const result = inspectSeoReadyHtml(html);
+
+    expect(isBareAngularShell(html)).toBeTrue();
+    expect(result.isReady).toBeFalse();
+    expect(result.reason).toBe('bare-angular-shell');
+  });
+
+  it('removes scripts for robot responses only when SSR HTML is SEO-ready', () => {
+    const html: string = buildSeoReadyHtml([
+      '<script type="module" src="main.js"></script>',
+      '<script type="application/ld+json">{"@context":"https://schema.org"}</script>'
+    ].join(''));
+
+    const result = prepareRobotHtmlForResponse(html, {
+      allowRobotNoJsOptimization: true,
+      robotNoJsHtmlEnabled: true,
+      isRobotRequest: true
+    });
+
+    expect(result.robotHtmlStatus).toBe('no-js');
+    expect(result.seoReady.isReady).toBeTrue();
+    expect(result.removedScriptCount).toBe(1);
+    expect(result.html).not.toContain('main.js');
+    expect(result.html).toContain('application/ld+json');
+  });
+
+  it('keeps scripts when robot no-JS optimization is not allowed for a CSR fallback', () => {
+    const html: string = '<html><head><script src="main.js"></script></head><body><app-root></app-root></body></html>';
+
+    const result = prepareRobotHtmlForResponse(html, {
+      allowRobotNoJsOptimization: false,
+      robotNoJsHtmlEnabled: true,
+      isRobotRequest: true
+    });
+
+    expect(result.robotHtmlStatus).toBe('not-allowed');
+    expect(result.seoReady.reason).toBe('bare-angular-shell');
+    expect(result.html).toContain('main.js');
+  });
+
+  it('blocks robot no-JS optimization when SSR HTML is not SEO-ready', () => {
+    const html: string = '<html><head><title>Short page</title><script src="main.js"></script></head><body><main>Short</main></body></html>';
+
+    const result = prepareRobotHtmlForResponse(html, {
+      allowRobotNoJsOptimization: true,
+      robotNoJsHtmlEnabled: true,
+      isRobotRequest: true
+    });
+
+    expect(result.robotHtmlStatus).toBe('blocked-not-seo-ready');
+    expect(result.html).toContain('main.js');
+  });
+
+  it('returns bot SSR unavailable only for robot requests that would otherwise be 200', () => {
+    expect(shouldReturnBotSsrUnavailable(true, 200)).toBeTrue();
+    expect(shouldReturnBotSsrUnavailable(true, 404)).toBeFalse();
+    expect(shouldReturnBotSsrUnavailable(false, 200)).toBeFalse();
+  });
 });
+
+function buildSeoReadyHtml(extraHead: string = ''): string {
+  const bodyText: string = 'Helpful amusement park content with practical details for visitors. '.repeat(12);
+
+  return [
+    '<html><head>',
+    '<title>Amusement park guide</title>',
+    '<meta name="description" content="A useful public description for amusement park visitors.">',
+    '<link rel="canonical" href="https://amusement-parks.fun/en/home">',
+    extraHead,
+    '</head><body><app-root><main>',
+    bodyText,
+    '</main></app-root></body></html>'
+  ].join('');
+}
