@@ -3,9 +3,11 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeExternalUrlPipe, SafeRichHtmlPipe } from '@shared/pipes';
 
-import { AdminContextualBlockDirective } from '@features/admin/contextual-editing/ui/admin-contextual-block/admin-contextual-block.directive';
-import { AdminContextualBlockInstance, AdminContextualBlockType } from '@features/admin/contextual-editing/models/admin-contextual-block.model';
-import { AdminContextualBlockRegistryService } from '@features/admin/contextual-editing/services/admin-contextual-block-registry.service';
+import {
+  PublicContextualBlockMarker,
+  PublicContextualBlockType
+} from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
+import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
@@ -46,7 +48,7 @@ import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.c
     UiStatCardComponent,
     PublicSharePanelComponent,
     RatingStarsComponent,
-    AdminContextualBlockDirective
+    PublicContextualBlockDirective
   ]
 })
 export class ParkDetailViewComponent {
@@ -66,9 +68,6 @@ export class ParkDetailViewComponent {
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() exploreClicked: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private readonly contextualBlockRegistry: AdminContextualBlockRegistryService) {
-  }
-
   goBack(): void {
     this.backClicked.emit();
   }
@@ -77,14 +76,14 @@ export class ParkDetailViewComponent {
     this.exploreClicked.emit();
   }
 
-  protected getContextualBlock(type: AdminContextualBlockType, currentPark: ParkDetailViewModel): AdminContextualBlockInstance | null {
-    return this.contextualBlockRegistry.createParkBlock(
+  protected getContextualBlock(type: PublicContextualBlockType, currentPark: ParkDetailViewModel): PublicContextualBlockMarker {
+    return {
       type,
-      currentPark.id,
-      currentPark.name,
-      this.currentLang,
-      this.resolveLocationFallbackCenter(currentPark)
-    );
+      parkId: currentPark.id,
+      contextLabel: currentPark.name,
+      languageCode: this.currentLang,
+      locationFallbackCenter: this.resolveLocationFallbackCenter(currentPark)
+    };
   }
 
   private resolveLocationFallbackCenter(currentPark: ParkDetailViewModel): readonly [number, number] | null {

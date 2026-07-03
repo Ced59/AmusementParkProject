@@ -57,7 +57,9 @@ export class AdminContextualBlockDirective implements OnDestroy {
 
   @HostListener('keydown', ['$event'])
   onHostKeydown(event: KeyboardEvent): void {
-    if (!this.canSelectCurrentBlock() || (event.key !== 'Enter' && event.key !== ' ')) {
+    if (!this.canSelectCurrentBlock()
+      || (event.key !== 'Enter' && event.key !== ' ')
+      || this.isInteractiveTarget(event.target)) {
       return;
     }
 

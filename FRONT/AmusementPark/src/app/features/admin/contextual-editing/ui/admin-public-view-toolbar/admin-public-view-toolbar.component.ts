@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, Signal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, Signal, ViewEncapsulation, signal } from '@angular/core';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -7,6 +7,7 @@ import {
   AdminPublicViewMode,
   AdminPublicViewModeDefinition
 } from '../../models/admin-public-view-mode.model';
+import { AdminContextualBlockDomControllerService } from '../../services/admin-contextual-block-dom-controller.service';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
 import { AdminContextualBlockDrawerComponent } from '../admin-contextual-block-drawer/admin-contextual-block-drawer.component';
 
@@ -15,6 +16,7 @@ import { AdminContextualBlockDrawerComponent } from '../admin-contextual-block-d
   templateUrl: './admin-public-view-toolbar.component.html',
   styleUrl: './admin-public-view-toolbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [AdminContextualBlockDrawerComponent, TranslateModule]
 })
 export class AdminPublicViewToolbarComponent implements OnDestroy {
@@ -26,11 +28,16 @@ export class AdminPublicViewToolbarComponent implements OnDestroy {
 
   private readonly isCollapsedSignal = signal<boolean>(false);
 
-  constructor(private readonly adminPublicViewModeFacade: AdminPublicViewModeFacade) {
+  constructor(
+    private readonly adminPublicViewModeFacade: AdminPublicViewModeFacade,
+    private readonly contextualBlockDomController: AdminContextualBlockDomControllerService
+  ) {
     this.isCollapsed = this.isCollapsedSignal.asReadonly();
+    this.contextualBlockDomController.start();
   }
 
   ngOnDestroy(): void {
+    this.contextualBlockDomController.stop();
     this.adminPublicViewModeFacade.reset();
   }
 
