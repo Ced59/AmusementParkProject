@@ -21,7 +21,10 @@ output_dir="${SSR_WARMUP_OUTPUT_DIR:-$(pwd)/warmup}"
 progress_every="${SSR_WARMUP_PROGRESS_EVERY:-25}"
 url_filter_regex="${SSR_WARMUP_URL_FILTER_REGEX:-}"
 sitemap_filter_regex="${SSR_WARMUP_SITEMAP_FILTER_REGEX:-}"
-url_file_configured="${SSR_WARMUP_URL_FILE+x}"
+url_file_configured="false"
+if [ -n "${SSR_WARMUP_URL_FILE:-}" ]; then
+  url_file_configured="true"
+fi
 
 mkdir -p "${output_dir}"
 log_file="${SSR_WARMUP_LOG_FILE:-${output_dir}/ssr-warmup-$(date -u +%Y%m%dT%H%M%SZ).log}"
@@ -75,7 +78,7 @@ max_urls = max(0, int(os.environ['SSR_WARMUP_MAX_URLS_VALUE']))
 refresh = os.environ['SSR_WARMUP_REFRESH_VALUE'].lower() in {'1', 'true', 'yes', 'y'}
 log_file = Path(os.environ['SSR_WARMUP_LOG_FILE_VALUE'])
 url_file = Path(os.environ['SSR_WARMUP_URL_FILE_VALUE'])
-url_file_configured = bool(os.environ['SSR_WARMUP_URL_FILE_CONFIGURED_VALUE'])
+url_file_configured = os.environ['SSR_WARMUP_URL_FILE_CONFIGURED_VALUE'].strip().lower() in {'1', 'true', 'yes', 'y'}
 report_file = Path(os.environ['SSR_WARMUP_REPORT_FILE_VALUE'])
 progress_every = max(1, int(os.environ['SSR_WARMUP_PROGRESS_EVERY_VALUE']))
 url_filter_regex = os.environ['SSR_WARMUP_URL_FILTER_REGEX_VALUE'].strip()
@@ -162,9 +165,10 @@ def sitemap_matches(url: str) -> bool:
         return (
             filename.startswith('static-')
             or filename.startswith('parks-')
+            or filename.startswith('park-opening-hours-')
             or filename.startswith('park-items-')
-            or filename.startswith('park-history-')
-            or filename.startswith('park-item-history-')
+            or filename.startswith('history-')
+            or filename.startswith('history-articles-')
             or filename.startswith('references-')
         )
     if profile == 'static':
@@ -260,7 +264,10 @@ def warmup_seo_documents(root: ET.Element) -> None:
 
 
 def collect_urls(root: ET.Element) -> list[str]:
-    if url_file_configured and url_file.exists():
+    if url_file_configured and not url_file.exists():
+        raise SystemExit(f"Configured SSR_WARMUP_URL_FILE does not exist: {url_file}")
+
+    if url_file_configured:
         configured_urls = [
             normalize_configured_url(line.strip())
             for line in url_file.read_text(encoding='utf-8').splitlines()

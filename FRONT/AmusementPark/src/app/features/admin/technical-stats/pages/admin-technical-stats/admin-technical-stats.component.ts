@@ -343,14 +343,18 @@ export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly visibleStatuses = computed(() => this.limitRows(this.stats()?.cache.statuses ?? []));
   protected readonly visibleRobotFamilies = computed(() => this.limitRows(this.stats()?.cache.robotFamilies ?? []));
   protected readonly visibleSeoRobotFamilies = computed(() => {
+    if (this.activeTab() !== 'seo') {
+      return [];
+    }
+
     const stats: TechnicalStatsSnapshot | null = this.stats();
     const filter: RobotFamilyFilter = this.robotFamilyFilter();
     const families: TechnicalStatsRobotFamily[] = stats?.cache.robotFamilies ?? [];
     if (filter === 'all') {
-      return families;
+      return this.limitRows(families);
     }
 
-    return families.filter((family: TechnicalStatsRobotFamily): boolean => family.category === filter);
+    return this.limitRows(families.filter((family: TechnicalStatsRobotFamily): boolean => family.category === filter));
   });
   protected readonly renderingMetricRows = computed((): TechnicalStatsMetricRow[] => {
     const stats: TechnicalStatsSnapshot | null = this.stats();

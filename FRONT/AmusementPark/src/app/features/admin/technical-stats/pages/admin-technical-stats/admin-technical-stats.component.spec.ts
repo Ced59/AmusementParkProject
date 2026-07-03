@@ -58,6 +58,21 @@ describe('AdminTechnicalStatsComponent', () => {
     expect(rows.length).toBe(1);
     expect(rows[0].nativeElement.textContent).toContain('Bingbot');
   });
+
+  it('caps SEO robot rows rendered from large technical stats snapshots', () => {
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    fixture.detectChanges();
+
+    const seoTab = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-tab'))
+      .find((button) => button.nativeElement.textContent.includes('SEO robots'));
+    seoTab?.nativeElement.click();
+    fixture.detectChanges();
+
+    const rows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-robot-table__row'));
+
+    expect(rows.length).toBe(12);
+  });
 });
 
 function createStats(rowCount: number): TechnicalStatsSnapshot {

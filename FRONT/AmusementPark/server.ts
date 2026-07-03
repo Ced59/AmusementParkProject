@@ -728,7 +728,8 @@ function buildRobotFamilyRows(): TechnicalStatsRobotFamily[] {
         ssrUnavailableResponses: robotFamilySsrUnavailableCounts.get(key) ?? 0
       };
     })
-    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key));
+    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key))
+    .slice(0, technicalStatsDistributionRowLimit);
 }
 
 function getRobotFamilyCategory(robotFamily: string): string {
@@ -2031,7 +2032,9 @@ function isPublicSsrCacheRoute(url: string): boolean {
     || isPublicParkHistoryArticleRoute(path)
     || isPublicParkVideosRoute(path)
     || isPublicParkVideoDetailRoute(path)
+    || isPublicParkMapRoute(path)
     || isPublicParkWeatherRoute(path)
+    || isPublicParkOpeningHoursRoute(path)
     || isPublicParkZonesRoute(path)
     || isPublicParkZoneDetailRoute(path)
     || isPublicParkItemsRoute(path)
@@ -2054,7 +2057,9 @@ function isCriticalPublicSsrRoute(url: string): boolean {
     || isPublicParkHistoryArticleRoute(path)
     || (isPublicParkVideosRoute(path) && !hasQueryString(url))
     || isPublicParkVideoDetailRoute(path)
+    || isPublicParkMapRoute(path)
     || (isPublicParkWeatherRoute(path) && !hasQueryString(url))
+    || (isPublicParkOpeningHoursRoute(path) && !hasQueryString(url))
     || isPublicParkZonesRoute(path)
     || isPublicParkZoneDetailRoute(path)
     || (isPublicParkItemsRoute(path) && !hasQueryString(url))
@@ -2072,6 +2077,7 @@ function isPublicStaticSsrRoute(path: string): boolean {
     || /^\/[a-z]{2}\/?$/i.test(path)
     || /^\/[a-z]{2}\/home\/?$/i.test(path)
     || /^\/[a-z]{2}\/parks\/?$/i.test(path)
+    || /^\/[a-z]{2}\/sitemap\/?$/i.test(path)
     || /^\/[a-z]{2}\/rankings\/?$/i.test(path)
     || /^\/[a-z]{2}\/manufacturers\/?$/i.test(path)
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
@@ -2105,8 +2111,16 @@ function isPublicParkVideoDetailRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/(?:videos\/[^/]+\/[^/]+|video\/(?:s\/)?[^/]+\/[^/]+)\/?$/i.test(path);
 }
 
+function isPublicParkMapRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/map\/?$/i.test(path);
+}
+
 function isPublicParkWeatherRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/weather\/?$/i.test(path);
+}
+
+function isPublicParkOpeningHoursRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/opening-hours\/?$/i.test(path);
 }
 
 function isPublicParkZonesRoute(path: string): boolean {
