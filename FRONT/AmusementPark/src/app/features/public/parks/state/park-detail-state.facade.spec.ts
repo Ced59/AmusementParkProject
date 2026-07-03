@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, Subject, of, throwError } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -512,6 +512,26 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.weatherState().kind).toBe('ready');
     expect(context.facade.weather()?.days.length).toBe(1);
     expect(context.facade.nearbyParks()[0].shortDescription?.length).toBeLessThanOrEqual(140);
+  });
+
+  it('clears stale secondary park data while another park is loading', () => {
+    const context = configureFacade();
+    context.facade.loadPark('park-1');
+
+    expect(context.facade.nearbyParks().map((park) => park.id)).toEqual(['near-1']);
+    expect(context.facade.weather()?.parkId).toBe('park-1');
+    expect(context.facade.openingHours()?.parkId).toBe('park-1');
+
+    context.parksPort.summaryResponse$ = new Subject<ParkDetailSummary>();
+
+    context.facade.loadPark('park-2');
+
+    expect(context.facade.nearbyState().kind).toBe('loading');
+    expect(context.facade.nearbyParks()).toEqual([]);
+    expect(context.facade.weatherState().kind).toBe('loading');
+    expect(context.facade.weather()).toBeNull();
+    expect(context.facade.openingHoursState().kind).toBe('loading');
+    expect(context.facade.openingHours()).toBeNull();
   });
 
   it('hides the videos link when the park has no published videos', () => {

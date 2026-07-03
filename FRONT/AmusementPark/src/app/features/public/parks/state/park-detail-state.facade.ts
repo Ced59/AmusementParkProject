@@ -131,10 +131,12 @@ export class ParkDetailStateFacade {
     const previousNearbyData: ParkDistanceTarget[] | undefined = this.nearbyStateStore.data();
     const previousWeatherData: ParkWeatherForecast | undefined = this.weatherStateStore.data();
     const previousOpeningHoursData: ParkOpeningHoursCalendar | undefined = this.openingHoursStateStore.data();
+    const targetParkId: string = id.trim();
+    const isReloadingCurrentPark: boolean = !!targetParkId && previousData?.park.id?.trim() === targetParkId;
     this.screenStateStore.setLoading(previousData);
-    this.nearbyStateStore.setLoading(previousNearbyData);
-    this.weatherStateStore.setLoading(previousWeatherData);
-    this.openingHoursStateStore.setLoading(previousOpeningHoursData);
+    this.nearbyStateStore.setLoading(isReloadingCurrentPark ? previousNearbyData : undefined);
+    this.weatherStateStore.setLoading(isReloadingCurrentPark ? previousWeatherData : undefined);
+    this.openingHoursStateStore.setLoading(isReloadingCurrentPark ? previousOpeningHoursData : undefined);
     this.hasVideosSignal.set(false);
     this.hasImagesSignal.set(false);
     this.hasHistorySignal.set(false);
