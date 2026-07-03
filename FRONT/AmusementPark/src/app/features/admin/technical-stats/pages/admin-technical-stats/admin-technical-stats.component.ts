@@ -16,48 +16,68 @@ import {
 import { AdminTechnicalStatsFacade } from '../../state/admin-technical-stats.facade';
 
 type TechnicalStatsLanguage = 'fr' | 'en';
+type TechnicalStatsTab = 'overview' | 'seo';
+type RobotFamilyFilter = 'all' | 'google' | 'bing' | 'yandex' | 'other';
 
 const MAX_DISTRIBUTION_ROWS = 12;
+
+interface TechnicalStatsMetricRow {
+  readonly label: string;
+  readonly value: string;
+  readonly help: string;
+}
+
+interface TechnicalStatsTabOption {
+  readonly key: TechnicalStatsTab;
+  readonly labelKey: string;
+}
+
+interface RobotFamilyFilterOption {
+  readonly key: RobotFamilyFilter;
+  readonly labelKey: string;
+}
 
 const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
   fr: {
     nav: 'Stats techniques',
-    kicker: 'Observabilite SSR',
+    kicker: 'Observabilité SSR',
     title: 'Stats techniques',
-    subtitle: 'Suivi du cache SSR applicatif, des robots, du rendu et des purges sur la fenetre retenue.',
-    refresh: 'Rafraichir',
+    subtitle: 'Suivi du cache SSR applicatif, des robots, du rendu et des purges sur la fenêtre retenue.',
+    refresh: 'Rafraîchir',
     loading: 'Chargement des stats techniques...',
     errorTitle: 'Stats indisponibles',
-    errorMessage: 'Le serveur SSR ne repond pas encore aux stats techniques internes.',
-    unavailableMissingSettings: 'La configuration interne SSR du back est incomplete : URL interne ou token partage absent.',
-    unavailableForbidden: 'Le serveur SSR repond 403 : le token partage entre back et front SSR ne correspond pas.',
-    unavailableNotFound: 'Le serveur SSR repond 404 : endpoint interne absent ou token SSR non configure cote front.',
-    unavailableTimeout: 'Le serveur SSR ne repond pas dans le delai attendu.',
-    unavailableRequestFailed: 'Le back ne joint pas le service front SSR sur le reseau Docker interne.',
-    unavailableEmpty: 'Le serveur SSR a repondu sans snapshot exploitable.',
-    unavailableUnexpected: 'Le provider SSR a rencontre une erreur inattendue.',
-    lastRefresh: 'Snapshot genere',
-    startedAt: 'Fenetre commencee',
-    uptime: 'Duree fenetre',
+    errorMessage: 'Le serveur SSR ne répond pas encore aux stats techniques internes.',
+    unavailableMissingSettings: 'La configuration interne SSR du back est incomplète : URL interne ou token partagé absent.',
+    unavailableForbidden: 'Le serveur SSR répond 403 : le token partagé entre back et front SSR ne correspond pas.',
+    unavailableNotFound: 'Le serveur SSR répond 404 : endpoint interne absent ou token SSR non configuré côté front.',
+    unavailableTimeout: 'Le serveur SSR ne répond pas dans le délai attendu.',
+    unavailableRequestFailed: 'Le back ne joint pas le service front SSR sur le réseau Docker interne.',
+    unavailableEmpty: 'Le serveur SSR a répondu sans snapshot exploitable.',
+    unavailableUnexpected: 'Le provider SSR a rencontré une erreur inattendue.',
+    tabOverview: 'Vue technique',
+    tabSeo: 'SEO robots',
+    lastRefresh: 'Snapshot généré',
+    startedAt: 'Fenêtre commencée',
+    uptime: 'Durée fenêtre',
     build: 'Version',
     hitRate: 'Hit rate',
     hitRateHelp: 'Part des pages HTML servies directement depuis le cache SSR, y compris le cache stale encore utilisable.',
     robotHitRate: 'Hit rate robots',
-    robotHitRateHelp: 'Part des pages demandees par les robots identifiables et servies depuis le cache.',
+    robotHitRateHelp: 'Part des pages demandées par les robots identifiables et servies depuis le cache.',
     pageResponses: 'Pages vues SSR',
-    pageResponsesHelp: 'Nombre de reponses HTML traitees par le serveur SSR depuis le dernier demarrage.',
+    pageResponsesHelp: 'Nombre de réponses HTML traitées par le serveur SSR depuis le dernier démarrage.',
     renders: 'Rendus SSR',
-    rendersHelp: 'Nombre de rendus Angular SSR reels executes apres un cache miss ou un warmup.',
-    cacheStatusTitle: 'Repartition des statuts cache',
-    robotsTitle: 'Robots detectes',
-    noData: 'Aucune donnee pour le moment.',
+    rendersHelp: 'Nombre de rendus Angular SSR réels exécutés après un cache miss ou un warmup.',
+    cacheStatusTitle: 'Répartition des statuts cache',
+    robotsTitle: 'Robots détectés',
+    noData: 'Aucune donnée pour le moment.',
     storageTitle: 'Stockage cache',
-    memory: 'Memoire',
+    memory: 'Mémoire',
     disk: 'Disque',
     technicalStatsStorage: 'Stats persistantes',
-    technicalStatsStorageHelp: 'Buckets journaliers conserves dans le volume SSR. Les fichiers plus vieux que la retention sont purges automatiquement.',
+    technicalStatsStorageHelp: 'Buckets journaliers conservés dans le volume SSR. Les fichiers plus vieux que la rétention sont purgés automatiquement.',
     seoDocs: 'SEO docs',
-    diskWrites: 'Ecritures disque',
+    diskWrites: 'Écritures disque',
     assetMisses: 'Assets 404',
     renderingTitle: 'Rendu SSR',
     activeQueued: 'Actifs / file',
@@ -67,35 +87,69 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     slowRenders: 'Rendus lents',
     queueFull: 'File pleine',
     activeQueuedHelp: 'Rendus SSR en cours et rendus en attente dans la file interne.',
-    concurrencyHelp: 'Maximum configure de rendus simultanes et maximum de rendus en file avant fallback CSR.',
-    averageRenderHelp: 'Duree moyenne des rendus Angular SSR termines depuis le demarrage du processus.',
-    maxRenderHelp: 'Rendu Angular SSR le plus lent observe depuis le demarrage du processus.',
-    slowRendersHelp: 'Rendus qui depassent le seuil lent configure.',
-    queueFullHelp: 'Requetes qui n ont pas pu entrer dans la file de rendu SSR et ont recu le shell CSR.',
-    refreshTitle: 'Refresh cible',
+    concurrencyHelp: 'Maximum configuré de rendus simultanés et maximum de rendus en file avant fallback CSR.',
+    averageRenderHelp: 'Durée moyenne des rendus Angular SSR terminés depuis le démarrage du processus.',
+    maxRenderHelp: 'Rendu Angular SSR le plus lent observé depuis le démarrage du processus.',
+    slowRendersHelp: 'Rendus qui dépassent le seuil lent configuré.',
+    queueFullHelp: 'Requêtes qui n’ont pas pu entrer dans la file de rendu SSR et ont reçu le shell CSR.',
+    refreshTitle: 'Refresh ciblé',
     refreshEnabled: 'Actif',
     refreshPending: 'En attente',
-    refreshDone: 'Reussis',
-    refreshFailed: 'Echecs',
+    refreshDone: 'Réussis',
+    refreshFailed: 'Échecs',
     invalidationTitle: 'Invalidations',
-    invalidationRequests: 'Requetes',
-    invalidationTargeted: 'Ciblees',
-    invalidationCleared: 'Entrees purgees',
-    invalidationLast: 'Derniere purge',
+    invalidationRequests: 'Requêtes',
+    invalidationTargeted: 'Ciblées',
+    invalidationCleared: 'Entrées purgées',
+    invalidationLast: 'Dernière purge',
     configTitle: 'Configuration',
     pageTtl: 'TTL pages',
     staleTtl: 'Stale TTL',
     htmlLimit: 'Limite HTML',
     browserCache: 'Cache-Control pages',
     retentionTitle: 'Retention stats',
-    retentionHelp: 'Nombre de jours de buckets SSR conserves sur disque. Par defaut : 15 jours.',
-    retentionDays: 'Jours conserves',
+    retentionHelp: 'Nombre de jours de buckets SSR conservés sur disque. Par défaut : 15 jours.',
+    retentionDays: 'Jours conservés',
     persistence: 'Persistance',
     flushInterval: 'Flush stats',
     lastFlush: 'Dernier flush',
-    lastCleanup: 'Derniere purge',
+    lastCleanup: 'Dernière purge',
     save: 'Enregistrer',
-    saveError: 'Impossible de sauvegarder le reglage pour le moment.',
+    saveError: 'Impossible de sauvegarder le réglage pour le moment.',
+    seoTitle: 'Stats techniques SEO',
+    seoSubtitle: 'Contrôle rapide de ce que les robots reçoivent : HTML prêt, no-JS sûr, fallback bloqué et cache robots.',
+    seoHtmlReady: 'HTML SEO-ready',
+    seoHtmlReadyHelp: 'Part des réponses HTML dont le titre, la description, la canonical et le contenu serveur sont exploitables.',
+    seoRobotHtmlReady: 'HTML robots prêt',
+    seoRobotHtmlReadyHelp: 'Part des réponses HTML servies à des robots qui sont validées SEO-ready.',
+    robotNoJs: 'No-JS robots',
+    robotNoJsHelp: 'Réponses robots où les scripts ont été retirés après validation SEO-ready.',
+    robotBlocked: 'HTML robots bloqué',
+    robotBlockedHelp: 'Réponses robots où le retrait JS a été refusé parce que le HTML n’était pas SEO-ready.',
+    robotUnavailable: 'SSR robot indisponible',
+    robotUnavailableHelp: 'Réponses 503 envoyées aux robots quand un 200 CSR vide aurait été dangereux.',
+    robotFallbackBlocked: 'Fallback non autorisé',
+    robotFallbackBlockedHelp: 'Réponses robots où le fallback CSR a été conservé avec scripts parce que le no-JS n’était pas autorisé.',
+    seoDocsHitRate: 'Hit rate documents SEO',
+    seoDocsHitRateHelp: 'Part des robots.txt et sitemaps servis depuis le cache de documents SEO.',
+    seoRobotFilters: 'Filtrer les robots',
+    allRobots: 'Tous',
+    googleRobots: 'Google',
+    bingRobots: 'Bing',
+    yandexRobots: 'Yandex',
+    otherRobots: 'Autres',
+    robotFamily: 'Robot',
+    robotGroup: 'Groupe',
+    robotRequests: 'Requêtes',
+    robotCache: 'Cache',
+    robotSeoReady: 'SEO-ready',
+    robotNoJsShort: 'No-JS',
+    robotBlockedShort: 'Bloqués',
+    robotUnavailableShort: '503',
+    groupGoogle: 'Google',
+    groupBing: 'Bing',
+    groupYandex: 'Yandex',
+    groupOther: 'Autres',
     yes: 'Oui',
     no: 'Non',
     never: 'Jamais'
@@ -116,6 +170,8 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     unavailableRequestFailed: 'The backend cannot reach the frontend SSR service on the internal Docker network.',
     unavailableEmpty: 'The SSR server answered without a usable snapshot.',
     unavailableUnexpected: 'The SSR provider hit an unexpected error.',
+    tabOverview: 'Technical view',
+    tabSeo: 'SEO robots',
     lastRefresh: 'Snapshot generated',
     startedAt: 'Window started',
     uptime: 'Window duration',
@@ -176,6 +232,40 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     lastCleanup: 'Last cleanup',
     save: 'Save',
     saveError: 'Unable to save this setting right now.',
+    seoTitle: 'Technical SEO stats',
+    seoSubtitle: 'Fast check of what robots receive: ready HTML, safe no-JS, blocked fallback and robot cache.',
+    seoHtmlReady: 'SEO-ready HTML',
+    seoHtmlReadyHelp: 'Share of HTML responses whose title, description, canonical and server content are usable.',
+    seoRobotHtmlReady: 'Robot-ready HTML',
+    seoRobotHtmlReadyHelp: 'Share of HTML responses served to robots that passed the SEO-ready guard.',
+    robotNoJs: 'Robot no-JS',
+    robotNoJsHelp: 'Robot responses where scripts were removed after SEO-ready validation.',
+    robotBlocked: 'Robot HTML blocked',
+    robotBlockedHelp: 'Robot responses where JS removal was refused because the HTML was not SEO-ready.',
+    robotUnavailable: 'Robot SSR unavailable',
+    robotUnavailableHelp: '503 responses sent to robots when a blank CSR 200 would be dangerous.',
+    robotFallbackBlocked: 'Fallback not allowed',
+    robotFallbackBlockedHelp: 'Robot responses where CSR fallback kept scripts because no-JS was not allowed.',
+    seoDocsHitRate: 'SEO documents hit rate',
+    seoDocsHitRateHelp: 'Share of robots.txt and sitemap responses served from the SEO document cache.',
+    seoRobotFilters: 'Filter robots',
+    allRobots: 'All',
+    googleRobots: 'Google',
+    bingRobots: 'Bing',
+    yandexRobots: 'Yandex',
+    otherRobots: 'Other',
+    robotFamily: 'Robot',
+    robotGroup: 'Group',
+    robotRequests: 'Requests',
+    robotCache: 'Cache',
+    robotSeoReady: 'SEO-ready',
+    robotNoJsShort: 'No-JS',
+    robotBlockedShort: 'Blocked',
+    robotUnavailableShort: '503',
+    groupGoogle: 'Google',
+    groupBing: 'Bing',
+    groupYandex: 'Yandex',
+    groupOther: 'Other',
     yes: 'Yes',
     no: 'No',
     never: 'Never'
@@ -191,6 +281,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
     STALE: 'Cache stale',
     'WARMUP-STALE': 'Warmup stale',
     'SSR-UNCACHED': 'SSR non cache',
+    'SSR-BOT-UNAVAILABLE': 'Bot SSR indisponible',
     'CSR-CACHE-MISS-FALLBACK': 'Fallback CSR',
     'CSR-OVERLOAD-FALLBACK': 'Fallback surcharge',
     'CSR-WARMUP-SKIPPED': 'Warmup ignore'
@@ -203,6 +294,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
     STALE: 'Stale cache',
     'WARMUP-STALE': 'Warmup stale',
     'SSR-UNCACHED': 'Uncached SSR',
+    'SSR-BOT-UNAVAILABLE': 'Bot SSR unavailable',
     'CSR-CACHE-MISS-FALLBACK': 'CSR fallback',
     'CSR-OVERLOAD-FALLBACK': 'Overload fallback',
     'CSR-WARMUP-SKIPPED': 'Warmup skipped'
@@ -226,6 +318,17 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
   ]
 })
 export class AdminTechnicalStatsComponent implements OnInit {
+  protected readonly tabOptions: readonly TechnicalStatsTabOption[] = [
+    { key: 'overview', labelKey: 'tabOverview' },
+    { key: 'seo', labelKey: 'tabSeo' }
+  ];
+  protected readonly robotFilterOptions: readonly RobotFamilyFilterOption[] = [
+    { key: 'all', labelKey: 'allRobots' },
+    { key: 'bing', labelKey: 'bingRobots' },
+    { key: 'google', labelKey: 'googleRobots' },
+    { key: 'yandex', labelKey: 'yandexRobots' },
+    { key: 'other', labelKey: 'otherRobots' }
+  ];
   protected readonly state = this.facade.state;
   protected readonly loading = this.facade.loading;
   protected readonly stats = this.facade.stats;
@@ -235,9 +338,21 @@ export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly robotHitRatePercent = this.facade.robotHitRatePercent;
   protected readonly hasUnavailableStats = computed(() => (this.state().kind === 'error' || this.stats()?.isAvailable === false) && !this.loading());
   protected readonly retentionDaysDraft = signal<number | null>(null);
+  protected readonly activeTab = signal<TechnicalStatsTab>('overview');
+  protected readonly robotFamilyFilter = signal<RobotFamilyFilter>('all');
   protected readonly visibleStatuses = computed(() => this.limitRows(this.stats()?.cache.statuses ?? []));
   protected readonly visibleRobotFamilies = computed(() => this.limitRows(this.stats()?.cache.robotFamilies ?? []));
-  protected readonly renderingMetricRows = computed(() => {
+  protected readonly visibleSeoRobotFamilies = computed(() => {
+    const stats: TechnicalStatsSnapshot | null = this.stats();
+    const filter: RobotFamilyFilter = this.robotFamilyFilter();
+    const families: TechnicalStatsRobotFamily[] = stats?.cache.robotFamilies ?? [];
+    if (filter === 'all') {
+      return families;
+    }
+
+    return families.filter((family: TechnicalStatsRobotFamily): boolean => family.category === filter);
+  });
+  protected readonly renderingMetricRows = computed((): TechnicalStatsMetricRow[] => {
     const stats: TechnicalStatsSnapshot | null = this.stats();
     if (stats === null) {
       return [];
@@ -276,6 +391,55 @@ export class AdminTechnicalStatsComponent implements OnInit {
       }
     ];
   });
+  protected readonly seoMetricRows = computed((): TechnicalStatsMetricRow[] => {
+    const stats: TechnicalStatsSnapshot | null = this.stats();
+    if (stats === null) {
+      return [];
+    }
+
+    return [
+      {
+        label: this.t('seoHtmlReady'),
+        value: `${stats.seo.seoReadyRatePercent.toFixed(1)}% (${stats.seo.seoReadyHtmlResponses} / ${stats.seo.htmlResponses})`,
+        help: this.t('seoHtmlReadyHelp')
+      },
+      {
+        label: this.t('seoRobotHtmlReady'),
+        value: `${stats.seo.robotSeoReadyRatePercent.toFixed(1)}% (${stats.seo.robotSeoReadyHtmlResponses} / ${stats.seo.robotHtmlResponses})`,
+        help: this.t('seoRobotHtmlReadyHelp')
+      },
+      {
+        label: this.t('robotNoJs'),
+        value: `${stats.seo.robotNoJsHtmlResponses}`,
+        help: this.t('robotNoJsHelp')
+      },
+      {
+        label: this.t('robotBlocked'),
+        value: `${stats.seo.robotHtmlBlockedNotSeoReady}`,
+        help: this.t('robotBlockedHelp')
+      },
+      {
+        label: this.t('robotUnavailable'),
+        value: `${stats.seo.robotSsrUnavailableResponses}`,
+        help: this.t('robotUnavailableHelp')
+      },
+      {
+        label: this.t('robotFallbackBlocked'),
+        value: `${stats.seo.robotHtmlNotAllowed}`,
+        help: this.t('robotFallbackBlockedHelp')
+      },
+      {
+        label: this.t('seoDocsHitRate'),
+        value: `${stats.seo.seoDocumentHitRatePercent.toFixed(1)}% (${stats.seo.seoDocumentHits} / ${stats.seo.seoDocumentRequests})`,
+        help: this.t('seoDocsHitRateHelp')
+      },
+      {
+        label: this.t('queueFull'),
+        value: `${stats.seo.queueFullRejections}`,
+        help: this.t('queueFullHelp')
+      }
+    ];
+  });
 
   constructor(
     private readonly facade: AdminTechnicalStatsFacade,
@@ -289,6 +453,14 @@ export class AdminTechnicalStatsComponent implements OnInit {
 
   protected refresh(): void {
     this.facade.load();
+  }
+
+  protected setActiveTab(tab: TechnicalStatsTab): void {
+    this.activeTab.set(tab);
+  }
+
+  protected setRobotFamilyFilter(filter: RobotFamilyFilter): void {
+    this.robotFamilyFilter.set(filter);
   }
 
   protected saveRetentionDays(event: Event, stats: TechnicalStatsSnapshot): void {
@@ -312,6 +484,19 @@ export class AdminTechnicalStatsComponent implements OnInit {
 
   protected statusLabel(status: TechnicalStatsCount): string {
     return STATUS_LABELS[this.currentLanguage][status.key] ?? STATUS_LABELS.en[status.key] ?? status.key;
+  }
+
+  protected robotCategoryLabel(category: string): string {
+    switch (category) {
+      case 'google':
+        return this.t('groupGoogle');
+      case 'bing':
+        return this.t('groupBing');
+      case 'yandex':
+        return this.t('groupYandex');
+      default:
+        return this.t('groupOther');
+    }
   }
 
   protected gaugeBackground(percent: number): string {
@@ -399,8 +584,16 @@ export class AdminTechnicalStatsComponent implements OnInit {
     return item.key;
   }
 
-  protected trackMetric(_: number, item: { readonly label: string }): string {
+  protected trackMetric(_: number, item: TechnicalStatsMetricRow): string {
     return item.label;
+  }
+
+  protected trackTab(_: number, item: TechnicalStatsTabOption): string {
+    return item.key;
+  }
+
+  protected trackRobotFilter(_: number, item: RobotFamilyFilterOption): string {
+    return item.key;
   }
 
   protected get currentLanguage(): TechnicalStatsLanguage {

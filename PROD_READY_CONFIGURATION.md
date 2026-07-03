@@ -211,6 +211,7 @@ MINIO_CONSOLE_PORT=19001
 SSR_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
 SSR_FORCE_HTTPS=true
 SSR_CSP_ALLOW_LOCAL_DEV_SOURCES=false
+SSR_ROBOT_NO_JS_HTML_ENABLED=true
 ```
 
 Le VPS conserve son Nginx Proxy Manager existant. Le compose production AmusementPark n’installe pas NPM : il publie uniquement le front SSR sur `127.0.0.1:18080`, puis NPM doit router `amusement-parks.fun` vers ce port avec SSL + Force SSL.

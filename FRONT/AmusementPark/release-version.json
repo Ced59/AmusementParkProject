@@ -1,6 +1,62 @@
 {
-  "version": "3.2.2",
+  "version": "3.2.6",
   "history": [
+    {
+      "version": "3.2.6",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les statistiques SEO sont plus lisibles.",
+        "en": "SEO stats are easier to read.",
+        "de": "SEO-Statistiken sind leichter lesbar.",
+        "nl": "SEO-statistieken zijn beter leesbaar.",
+        "it": "Le statistiche SEO sono più leggibili.",
+        "es": "Las estadísticas SEO son más claras.",
+        "pl": "Statystyki SEO są czytelniejsze.",
+        "pt": "As estatísticas SEO ficam mais fáceis de ler."
+      }
+    },
+    {
+      "version": "3.2.5",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les pages publiques sont mieux préparées pour les moteurs.",
+        "en": "Public pages are better prepared for search engines.",
+        "de": "Öffentliche Seiten sind besser für Suchmaschinen vorbereitet.",
+        "nl": "Publieke pagina's zijn beter voorbereid voor zoekmachines.",
+        "it": "Le pagine pubbliche sono preparate meglio per i motori di ricerca.",
+        "es": "Las páginas públicas están mejor preparadas para los buscadores.",
+        "pl": "Strony publiczne są lepiej przygotowane dla wyszukiwarek.",
+        "pt": "As páginas públicas ficam melhor preparadas para os motores de pesquisa."
+      }
+    },
+    {
+      "version": "3.2.4",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les réglages SEO sont mieux préparés.",
+        "en": "SEO settings are better prepared.",
+        "de": "SEO-Einstellungen sind besser vorbereitet.",
+        "nl": "SEO-instellingen zijn beter voorbereid.",
+        "it": "Le impostazioni SEO sono preparate meglio.",
+        "es": "Los ajustes SEO están mejor preparados.",
+        "pl": "Ustawienia SEO są lepiej przygotowane.",
+        "pt": "As definições SEO ficam melhor preparadas."
+      }
+    },
+    {
+      "version": "3.2.3",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les pages publiques restent lisibles pour les moteurs.",
+        "en": "Public pages stay readable for search engines.",
+        "de": "Öffentliche Seiten bleiben für Suchmaschinen lesbar.",
+        "nl": "Publieke pagina's blijven leesbaar voor zoekmachines.",
+        "it": "Le pagine pubbliche restano leggibili per i motori di ricerca.",
+        "es": "Las páginas públicas siguen siendo legibles para los buscadores.",
+        "pl": "Strony publiczne pozostają czytelne dla wyszukiwarek.",
+        "pt": "As páginas públicas continuam legíveis para os motores de pesquisa."
+      }
+    },
     {
       "version": "3.2.2",
       "releasedAt": "2026-07-03",
