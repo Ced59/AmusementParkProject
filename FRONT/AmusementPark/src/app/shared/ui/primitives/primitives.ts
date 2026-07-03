@@ -16,7 +16,9 @@ import {
   Output,
   QueryList,
   Renderer2,
+  signal,
   TemplateRef,
+  WritableSignal,
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { NgClass, NgFor, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
@@ -774,18 +776,38 @@ export class InputNumber implements ControlValueAccessor {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Tabs {
-  @Input() value: string | number = 0;
+  private readonly valueSignal: WritableSignal<string | number> = signal(0);
+
+  @Input()
+  set value(value: string | number) {
+    this.valueSignal.set(value);
+  }
+
+  get value(): string | number {
+    return this.valueSignal();
+  }
+
   @Output() valueChange: EventEmitter<string | number> = new EventEmitter<string | number>();
 
   @HostBinding('class.p-tabs') protected readonly tabsClass: boolean = true;
 
   setValue(value: string | number): void {
-    this.value = value;
-    this.valueChange.emit(value);
+    const normalizedValue: string | number = this.normalizeSelectedValue(value);
+    this.valueSignal.set(normalizedValue);
+    this.valueChange.emit(normalizedValue);
   }
 
   isValueActive(value: string | number): boolean {
     return this.normalizeValue(this.value) === this.normalizeValue(value);
+  }
+
+  private normalizeSelectedValue(value: string | number): string | number {
+    if (typeof this.value === 'number') {
+      const numericValue: number = typeof value === 'number' ? value : Number(value);
+      return Number.isFinite(numericValue) ? numericValue : value;
+    }
+
+    return String(value);
   }
 
   private normalizeValue(value: string | number): string {
@@ -806,7 +828,7 @@ export class TabList {
 @Component({
   selector: 'app-ui-tab',
   standalone: true,
-  template: `<button type="button" class="p-tab-button" [disabled]="disabled" (click)="select()"><ng-content></ng-content></button>`,
+  template: `<button type="button" class="p-tab-button" [disabled]="disabled" (click)="select($event)"><ng-content></ng-content></button>`,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Tab {
@@ -821,7 +843,19 @@ export class Tab {
   constructor(private readonly tabs: Tabs) {
   }
 
-  select(): void {
+  @HostListener('click', ['$event'])
+  selectFromHost(event: MouseEvent): void {
+    const target: EventTarget | null = event.target;
+    if (target instanceof HTMLElement && target.closest('.p-tab-button')) {
+      return;
+    }
+
+    this.select();
+  }
+
+  select(event?: MouseEvent): void {
+    event?.stopPropagation();
+
     if (!this.disabled) {
       this.tabs.setValue(this.value);
     }

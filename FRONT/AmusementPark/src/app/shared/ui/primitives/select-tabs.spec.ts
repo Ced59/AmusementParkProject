@@ -36,6 +36,28 @@ class NumericTabHostComponent {
   activeTab: number = 1;
 }
 
+@Component({
+  standalone: true,
+  imports: [Tabs, TabList, Tab, TabPanels, TabPanel],
+  template: `
+    <app-ui-tabs [value]="activeTab" (valueChange)="activeTab = $event">
+      <app-ui-tab-list>
+        <app-ui-tab value="1">Location</app-ui-tab>
+      </app-ui-tab-list>
+      <app-ui-tab-panels>
+        <app-ui-tab-panel value="1">
+          @if (activeTab === 1) {
+            <span class="active-panel">Location panel</span>
+          }
+        </app-ui-tab-panel>
+      </app-ui-tab-panels>
+    </app-ui-tabs>
+  `
+})
+class ClickableNumericTabHostComponent {
+  activeTab: string | number = 0;
+}
+
 describe('Select primitive', () => {
   it('uses labelKey as a safe label fallback for translated option objects', async () => {
     await TestBed.configureTestingModule({
@@ -65,5 +87,37 @@ describe('Tabs primitive', () => {
 
     expect(fixture.debugElement.query(By.css('.active-panel'))).not.toBeNull();
     expect(fixture.debugElement.query(By.css('app-ui-tab')).nativeElement.classList).toContain('p-tab-active');
+  });
+
+  it('emits numeric tab values when the controlled input is numeric', async () => {
+    await TestBed.configureTestingModule({
+      imports: [...COMMON_TEST_IMPORTS, ClickableNumericTabHostComponent],
+      providers: provideCommonTestDependencies()
+    }).compileComponents();
+
+    const fixture: ComponentFixture<ClickableNumericTabHostComponent> = TestBed.createComponent(ClickableNumericTabHostComponent);
+    fixture.detectChanges();
+
+    fixture.debugElement.query(By.css('.p-tab-button')).nativeElement.click();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.activeTab).toBe(1);
+    expect(fixture.debugElement.query(By.css('.active-panel'))).not.toBeNull();
+  });
+
+  it('selects a tab when the visual tab host is clicked', async () => {
+    await TestBed.configureTestingModule({
+      imports: [...COMMON_TEST_IMPORTS, ClickableNumericTabHostComponent],
+      providers: provideCommonTestDependencies()
+    }).compileComponents();
+
+    const fixture: ComponentFixture<ClickableNumericTabHostComponent> = TestBed.createComponent(ClickableNumericTabHostComponent);
+    fixture.detectChanges();
+
+    fixture.debugElement.query(By.css('app-ui-tab')).nativeElement.click();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.activeTab).toBe(1);
+    expect(fixture.debugElement.query(By.css('.active-panel'))).not.toBeNull();
   });
 });
