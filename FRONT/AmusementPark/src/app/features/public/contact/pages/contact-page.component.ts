@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -44,6 +44,11 @@ export class ContactPageComponent {
   });
 
   constructor(private readonly contactPageFacade: ContactPageFacade) {
+    effect(() => {
+      if (this.contactPageFacade.submitted()) {
+        this.contactForm.controls.message.reset('');
+      }
+    });
   }
 
   protected submit(): void {
@@ -54,7 +59,6 @@ export class ContactPageComponent {
 
     const value = this.contactForm.getRawValue();
     this.contactPageFacade.submit(value.message, value.website);
-    this.contactForm.controls.message.reset('');
   }
 
   protected get remainingCharacters(): number {
