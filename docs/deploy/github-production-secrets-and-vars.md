@@ -137,6 +137,11 @@ Recommandation : activer le seed admin seulement au premier déploiement, puis r
 | Variable | Valeur recommandée |
 |---|---|
 | `SSR_ROBOT_NO_JS_HTML_ENABLED` | `true`, uniquement avec le garde-fou SSR qui renvoie `503 Retry-After` aux robots quand aucun HTML serveur exploitable n'est disponible |
+| `SSR_WARMUP_PROFILE` | `seo-important` pour préchauffer les pages publiques importantes avant reprise IndexNow |
+| `SSR_WARMUP_URL_FILE` | chemin optionnel vers une liste d'URLs à préchauffer et valider exactement |
+| `SSR_WARMUP_REPORT_FILE` | chemin optionnel du rapport CSV post-warmup |
+| `SSR_WARMUP_VALIDATE_BOT` | `true` pour vérifier le rendu reçu par Bingbot après warmup |
+| `SSR_WARMUP_FAIL_ON_BOT_VALIDATION` | `true` pour bloquer le warmup si une URL importante n'est pas SEO-ready |
 
 ### CSP
 
