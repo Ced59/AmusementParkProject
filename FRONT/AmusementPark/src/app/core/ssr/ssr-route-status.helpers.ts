@@ -21,6 +21,10 @@ export function isSsrNotFoundRoute(url: string): boolean {
     return false;
   }
 
+  if (isUnsupportedLanguageRedirectPath(path)) {
+    return false;
+  }
+
   if (isExplicitNotFoundPath(path)) {
     return true;
   }
@@ -79,6 +83,14 @@ function hasSupportedLanguagePrefix(path: string): boolean {
   const language: string | null = getFirstPathSegment(path);
 
   return language !== null && SUPPORTED_ROUTE_LANGUAGES.has(language.toLowerCase());
+}
+
+function isUnsupportedLanguageRedirectPath(path: string): boolean {
+  const language: string | null = getFirstPathSegment(path);
+
+  return language !== null
+    && /^[a-z]{2}$/i.test(language)
+    && !SUPPORTED_ROUTE_LANGUAGES.has(language.toLowerCase());
 }
 
 function getFirstPathSegment(path: string): string | null {

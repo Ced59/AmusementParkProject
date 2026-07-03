@@ -45,6 +45,15 @@ describe('languageGuard', () => {
     expect(translationService.useLang).not.toHaveBeenCalled();
   });
 
+  it('redirects malformed language segments to English not found', async () => {
+    translationService.isValidLang.and.returnValue(false);
+
+    const result: boolean | UrlTree = await runGuard(convertToParamMap({ lang: 'route-inconnue' }));
+
+    expect(router.serializeUrl(result as UrlTree)).toBe('/en/not-found');
+    expect(translationService.useLang).not.toHaveBeenCalled();
+  });
+
   it('redirects to English home when language activation fails', async () => {
     translationService.isValidLang.and.returnValue(true);
     translationService.useLang.and.returnValue(throwError(() => new Error('load failed')));
