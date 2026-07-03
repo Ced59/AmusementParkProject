@@ -132,6 +132,12 @@ Recommandation : activer le seed admin seulement au premier déploiement, puis r
 |---|---|
 | `SEO_MAX_DYNAMIC_URLS_PER_TYPE` | `50` pour M19/M20, optimisation gros volume plus tard |
 
+### SEO / SSR robots
+
+| Variable | Valeur recommandée |
+|---|---|
+| `SSR_ROBOT_NO_JS_HTML_ENABLED` | `true`, uniquement avec le garde-fou SSR qui renvoie `503 Retry-After` aux robots quand aucun HTML serveur exploitable n'est disponible |
+
 ### CSP
 
 | Variable | Valeur recommandée |

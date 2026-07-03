@@ -356,6 +356,7 @@ Les valeurs recommandées sont donc :
 PUBLIC_HTTP_PORT=18080
 SSR_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
 SSR_CSP_ALLOW_LOCAL_DEV_SOURCES=false
+SSR_ROBOT_NO_JS_HTML_ENABLED=true
 MINIO_API_PORT=19000
 MINIO_CONSOLE_PORT=19001
 ```

@@ -1,6 +1,20 @@
 {
-  "version": "3.2.3",
+  "version": "3.2.4",
   "history": [
+    {
+      "version": "3.2.4",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les réglages SEO sont mieux préparés.",
+        "en": "SEO settings are better prepared.",
+        "de": "SEO-Einstellungen sind besser vorbereitet.",
+        "nl": "SEO-instellingen zijn beter voorbereid.",
+        "it": "Le impostazioni SEO sono preparate meglio.",
+        "es": "Los ajustes SEO están mejor preparados.",
+        "pl": "Ustawienia SEO są lepiej przygotowane.",
+        "pt": "As definições SEO ficam melhor preparadas."
+      }
+    },
     {
       "version": "3.2.3",
       "releasedAt": "2026-07-03",
