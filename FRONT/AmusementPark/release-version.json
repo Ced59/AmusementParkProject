@@ -1,6 +1,20 @@
 {
-  "version": "3.1.49",
+  "version": "3.1.50",
   "history": [
+    {
+      "version": "3.1.50",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "L’administration gagne en ergonomie mobile.",
+        "en": "Admin mobile ergonomics improve.",
+        "de": "Die mobile Admin-Ergonomie verbessert sich.",
+        "nl": "De mobiele admin-ergonomie verbetert.",
+        "it": "L’ergonomia mobile admin migliora.",
+        "es": "La ergonomía móvil de administración mejora.",
+        "pl": "Mobilna ergonomia administracji się poprawia.",
+        "pt": "A ergonomia móvel da administração melhora."
+      }
+    },
     {
       "version": "3.1.49",
       "releasedAt": "2026-07-03",
