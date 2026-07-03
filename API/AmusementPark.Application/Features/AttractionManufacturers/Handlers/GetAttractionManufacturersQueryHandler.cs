@@ -85,11 +85,6 @@ public sealed class GetAttractionManufacturersQueryHandler : IQueryHandler<GetAt
 
     private static string? ResolveLogoImageId(AttractionManufacturer entity, IReadOnlyDictionary<string, string> logoImageIds)
     {
-        if (!string.IsNullOrWhiteSpace(entity.CurrentLogoImageId))
-        {
-            return entity.CurrentLogoImageId;
-        }
-
         return !string.IsNullOrWhiteSpace(entity.Id) && logoImageIds.TryGetValue(entity.Id, out string? logoImageId)
             ? logoImageId
             : null;

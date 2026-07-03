@@ -1,6 +1,20 @@
 {
-  "version": "3.1.44",
+  "version": "3.1.45",
   "history": [
+    {
+      "version": "3.1.45",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les images publiques restent plus fiables.",
+        "en": "Public images stay more reliable.",
+        "de": "Öffentliche Bilder bleiben zuverlässiger.",
+        "nl": "Publieke beelden blijven betrouwbaarder.",
+        "it": "Le immagini pubbliche restano più affidabili.",
+        "es": "Las imágenes públicas siguen siendo más fiables.",
+        "pl": "Obrazy publiczne pozostają bardziej niezawodne.",
+        "pt": "As imagens públicas continuam mais fiáveis."
+      }
+    },
     {
       "version": "3.1.44",
       "releasedAt": "2026-07-03",

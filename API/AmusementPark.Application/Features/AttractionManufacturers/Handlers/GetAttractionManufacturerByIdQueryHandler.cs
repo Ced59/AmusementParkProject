@@ -46,9 +46,7 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
         int attractionCount = counts.TryGetValue(query.Id, out int value) ? value : 0;
         IReadOnlyDictionary<string, string> logoImageIds = await this.imageRepository.GetMainImageIdsByOwnersAsync(ImageOwnerType.AttractionManufacturer, new[] { query.Id }, ImageCategory.Logo, publishedOnly: true, cancellationToken);
         IReadOnlyDictionary<string, string> manufacturerImageIds = await this.imageRepository.GetMainImageIdsByOwnersAsync(ImageOwnerType.AttractionManufacturer, new[] { query.Id }, ImageCategory.Manufacturer, publishedOnly: true, cancellationToken);
-        string? currentLogoImageId = !string.IsNullOrWhiteSpace(entity.CurrentLogoImageId)
-            ? entity.CurrentLogoImageId
-            : logoImageIds.GetValueOrDefault(query.Id);
+        string? currentLogoImageId = logoImageIds.GetValueOrDefault(query.Id);
         string? mainImageId = !string.IsNullOrWhiteSpace(currentLogoImageId)
             ? currentLogoImageId
             : manufacturerImageIds.GetValueOrDefault(query.Id);
