@@ -1,6 +1,20 @@
 {
-  "version": "3.1.75",
+  "version": "3.1.76",
   "history": [
+    {
+      "version": "3.1.76",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Ajustements d'administration.",
+        "en": "Administration adjustments.",
+        "de": "Anpassungen der Administration.",
+        "nl": "Aanpassingen aan het beheer.",
+        "it": "Regolazioni dell'amministrazione.",
+        "es": "Ajustes de administración.",
+        "pl": "Dostosowania administracji.",
+        "pt": "Ajustes na administração."
+      }
+    },
     {
       "version": "3.1.75",
       "releasedAt": "2026-07-03",
