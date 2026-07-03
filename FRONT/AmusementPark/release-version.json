@@ -1,6 +1,20 @@
 {
-  "version": "3.1.66",
+  "version": "3.1.67",
   "history": [
+    {
+      "version": "3.1.67",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les aperçus publics restent mieux ajustés.",
+        "en": "Public previews stay better adjusted.",
+        "de": "Öffentliche Vorschauen bleiben besser abgestimmt.",
+        "nl": "Publieke previews blijven beter afgestemd.",
+        "it": "Le anteprime pubbliche restano più adatte.",
+        "es": "Las vistas previas públicas siguen mejor ajustadas.",
+        "pl": "Publiczne podglądy pozostają lepiej dopasowane.",
+        "pt": "As pré-visualizações públicas continuam melhor ajustadas."
+      }
+    },
     {
       "version": "3.1.66",
       "releasedAt": "2026-07-03",

@@ -42,7 +42,7 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
     expect(readMetaContent('meta[property="og:image:secure_url"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
     expect(readMetaContent('meta[property="og:image:width"]')).toBe('1200');
-    expect(readMetaContent('meta[property="og:image:height"]')).toBe('630');
+    expect(readMetaContent('meta[property="og:image:height"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo Park');
     expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
   });
@@ -68,7 +68,24 @@ describe('SeoService', () => {
     service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
 
     expect(readMetaContent('meta[property="og:image"]')).toBe('http://localhost:4200/assets/general-icon/logo-amusementpark.png');
+    expect(readMetaContent('meta[property="og:image:width"]')).toBe('1024');
+    expect(readMetaContent('meta[property="og:image:height"]')).toBe('1024');
     expect(readMetaContent('meta[name="twitter:image"]')).toBe('http://localhost:4200/assets/general-icon/logo-amusementpark.png');
+  });
+
+  it('removes stale social image height when a resized image replaces the fallback', () => {
+    service.applyParkDetailSeo(buildParkDetail({ primaryPhoto: null }), 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:image:height"]')).toBe('1024');
+
+    service.applyParkDetailSeo(buildParkDetail({
+      primaryPhoto: {
+        imageId: 'park-photo-1',
+      } as ParkDetailViewModel['primaryPhoto']
+    }), 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:image:width"]')).toBe('1200');
+    expect(readMetaContent('meta[property="og:image:height"]')).toBeNull();
   });
 
   it('uses the park gallery photo as the Open Graph image without falling back to the park logo', () => {
