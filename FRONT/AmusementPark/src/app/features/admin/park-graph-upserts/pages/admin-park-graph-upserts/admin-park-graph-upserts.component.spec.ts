@@ -491,4 +491,49 @@ describe('AdminParkGraphUpsertsComponent', () => {
     expect(nextDocument.suppr).toEqual([{ entityType: 'Image', id: 'image-1' }]);
     expect(harness.previewResult?.changes).toEqual([]);
   });
+
+  it('removes a newly created preview block without queuing a deletion', () => {
+    createComponent({
+      parkId: 'park-1',
+      parkName: 'Selected Park'
+    });
+
+    harness.jsonText = JSON.stringify({
+      items: [
+        {
+          key: 'new-ride',
+          name: 'Draft Ride'
+        }
+      ]
+    });
+    const change: ParkGraphUpsertResult['changes'][number] = {
+      entityType: 'ParkItem',
+      entityId: 'generated-preview-id',
+      entityKey: 'new-ride',
+      displayName: 'Draft Ride',
+      changeType: 'Created',
+      matchedBy: 'name',
+      fields: []
+    };
+    harness.previewResult = {
+      operationId: 'operation-1',
+      mode: 'merge',
+      isApplied: false,
+      canApply: true,
+      previewedAtUtc: '2026-06-18T10:00:00Z',
+      targetParkId: 'park-1',
+      targetParkName: 'Selected Park',
+      counts: { created: 1, updated: 0, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      changes: [change],
+      warnings: [],
+      errors: []
+    };
+
+    harness.removePreviewBlock(change);
+
+    const nextDocument: { items: unknown[]; suppr?: unknown } = JSON.parse(harness.jsonText);
+    expect(nextDocument.items).toEqual([]);
+    expect(nextDocument.suppr).toBeUndefined();
+    expect(harness.previewResult?.changes).toEqual([]);
+  });
 });

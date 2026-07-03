@@ -295,7 +295,9 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
       return;
     }
 
-    const deletionQueued: boolean = this.queueDeletionIfSupported(document, change);
+    const deletionQueued: boolean = change.changeType === 'Created'
+      ? false
+      : this.queueDeletionIfSupported(document, change);
     const sourceRemoved: boolean = this.removeSourceBlock(document, change);
     if (!deletionQueued && !sourceRemoved) {
       this.showToast('error', 'admin.parkGraphUpserts.toasts.blockRemoveFailedTitle', 'admin.parkGraphUpserts.toasts.blockRemoveFailedDetail');
