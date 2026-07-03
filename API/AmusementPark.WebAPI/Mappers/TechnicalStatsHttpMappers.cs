@@ -19,6 +19,7 @@ public static class TechnicalStatsHttpMappers
             BuildVersion = snapshot.BuildVersion,
             Cache = snapshot.Cache.ToHttp(),
             Storage = snapshot.Storage.ToHttp(),
+            Seo = snapshot.Seo.ToHttp(),
             Rendering = snapshot.Rendering.ToHttp(),
             Refresh = snapshot.Refresh.ToHttp(),
             Invalidation = snapshot.Invalidation.ToHttp(),
@@ -62,6 +63,34 @@ public static class TechnicalStatsHttpMappers
             SeoDocumentHits = summary.SeoDocumentHits,
             SeoDocumentMisses = summary.SeoDocumentMisses,
             AssetMisses = summary.AssetMisses
+        };
+    }
+
+    private static TechnicalStatsSeoSummaryDto ToHttp(this TechnicalStatsSeoSummary summary)
+    {
+        return new TechnicalStatsSeoSummaryDto
+        {
+            RobotNoJsHtmlEnabled = summary.RobotNoJsHtmlEnabled,
+            HtmlResponses = summary.HtmlResponses,
+            SeoReadyHtmlResponses = summary.SeoReadyHtmlResponses,
+            SeoNotReadyHtmlResponses = summary.SeoNotReadyHtmlResponses,
+            SeoReadyRatePercent = summary.SeoReadyRatePercent,
+            RobotHtmlResponses = summary.RobotHtmlResponses,
+            RobotSeoReadyHtmlResponses = summary.RobotSeoReadyHtmlResponses,
+            RobotSeoNotReadyHtmlResponses = summary.RobotSeoNotReadyHtmlResponses,
+            RobotSeoReadyRatePercent = summary.RobotSeoReadyRatePercent,
+            RobotNoJsHtmlResponses = summary.RobotNoJsHtmlResponses,
+            RobotHtmlBlockedNotSeoReady = summary.RobotHtmlBlockedNotSeoReady,
+            RobotHtmlNotAllowed = summary.RobotHtmlNotAllowed,
+            RobotSsrUnavailableResponses = summary.RobotSsrUnavailableResponses,
+            RobotPageResponses = summary.RobotPageResponses,
+            RobotCacheHitResponses = summary.RobotCacheHitResponses,
+            RobotHitRatePercent = summary.RobotHitRatePercent,
+            SeoDocumentRequests = summary.SeoDocumentRequests,
+            SeoDocumentHits = summary.SeoDocumentHits,
+            SeoDocumentMisses = summary.SeoDocumentMisses,
+            SeoDocumentHitRatePercent = summary.SeoDocumentHitRatePercent,
+            QueueFullRejections = summary.QueueFullRejections
         };
     }
 
@@ -170,9 +199,17 @@ public static class TechnicalStatsHttpMappers
         return new TechnicalStatsRobotFamilyDto
         {
             Key = family.Key,
+            Category = family.Category,
             Count = family.Count,
             CacheHits = family.CacheHits,
-            HitRatePercent = family.HitRatePercent
+            HitRatePercent = family.HitRatePercent,
+            SeoReadyResponses = family.SeoReadyResponses,
+            SeoNotReadyResponses = family.SeoNotReadyResponses,
+            SeoReadyRatePercent = family.SeoReadyRatePercent,
+            NoJsResponses = family.NoJsResponses,
+            BlockedNotSeoReadyResponses = family.BlockedNotSeoReadyResponses,
+            HtmlNotAllowedResponses = family.HtmlNotAllowedResponses,
+            SsrUnavailableResponses = family.SsrUnavailableResponses
         };
     }
 }

@@ -1,6 +1,20 @@
 {
-  "version": "3.2.6",
+  "version": "3.2.7",
   "history": [
+    {
+      "version": "3.2.7",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les réglages SEO sont stabilisés.",
+        "en": "SEO settings are stabilized.",
+        "de": "SEO-Einstellungen sind stabilisiert.",
+        "nl": "SEO-instellingen zijn gestabiliseerd.",
+        "it": "Le impostazioni SEO sono stabilizzate.",
+        "es": "Los ajustes SEO quedan estabilizados.",
+        "pl": "Ustawienia SEO są stabilniejsze.",
+        "pt": "As definições SEO ficam estabilizadas."
+      }
+    },
     {
       "version": "3.2.6",
       "releasedAt": "2026-07-03",

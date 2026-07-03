@@ -29,7 +29,43 @@ public sealed class HttpTechnicalStatsProviderTests
             "robotCacheHitResponses": 3,
             "robotHitRatePercent": 75,
             "statuses": [{ "key": "HIT", "count": 7, "percent": 70 }],
-            "robotFamilies": [{ "key": "Googlebot", "count": 4, "cacheHits": 3, "hitRatePercent": 75 }]
+            "robotFamilies": [{
+              "key": "Googlebot",
+              "category": "google",
+              "count": 4,
+              "cacheHits": 3,
+              "hitRatePercent": 75,
+              "seoReadyResponses": 4,
+              "seoNotReadyResponses": 0,
+              "seoReadyRatePercent": 100,
+              "noJsResponses": 4,
+              "blockedNotSeoReadyResponses": 0,
+              "htmlNotAllowedResponses": 0,
+              "ssrUnavailableResponses": 1
+            }]
+          },
+          "seo": {
+            "robotNoJsHtmlEnabled": true,
+            "htmlResponses": 10,
+            "seoReadyHtmlResponses": 9,
+            "seoNotReadyHtmlResponses": 1,
+            "seoReadyRatePercent": 90,
+            "robotHtmlResponses": 4,
+            "robotSeoReadyHtmlResponses": 4,
+            "robotSeoNotReadyHtmlResponses": 0,
+            "robotSeoReadyRatePercent": 100,
+            "robotNoJsHtmlResponses": 4,
+            "robotHtmlBlockedNotSeoReady": 0,
+            "robotHtmlNotAllowed": 0,
+            "robotSsrUnavailableResponses": 1,
+            "robotPageResponses": 4,
+            "robotCacheHitResponses": 3,
+            "robotHitRatePercent": 75,
+            "seoDocumentRequests": 5,
+            "seoDocumentHits": 4,
+            "seoDocumentMisses": 1,
+            "seoDocumentHitRatePercent": 80,
+            "queueFullRejections": 2
           }
         }
         """);
@@ -41,6 +77,15 @@ public sealed class HttpTechnicalStatsProviderTests
         Assert.NotNull(snapshot);
         Assert.Equal("2.6.18", snapshot.BuildVersion);
         Assert.Equal(70, snapshot.Cache.HitRatePercent);
+        Assert.True(snapshot.Seo.RobotNoJsHtmlEnabled);
+        Assert.Equal(9, snapshot.Seo.SeoReadyHtmlResponses);
+        Assert.Equal(1, snapshot.Seo.RobotSsrUnavailableResponses);
+        Assert.Equal(2, snapshot.Seo.QueueFullRejections);
+        TechnicalStatsRobotFamily family = Assert.Single(snapshot.Cache.RobotFamilies);
+        Assert.Equal("Googlebot", family.Key);
+        Assert.Equal("google", family.Category);
+        Assert.Equal(4, family.NoJsResponses);
+        Assert.Equal(1, family.SsrUnavailableResponses);
         Assert.Equal("https://front.test/internal/technical-stats", handler.RequestUri?.ToString());
         Assert.Contains("secret-token", handler.CacheTokenHeaderValues);
     }
