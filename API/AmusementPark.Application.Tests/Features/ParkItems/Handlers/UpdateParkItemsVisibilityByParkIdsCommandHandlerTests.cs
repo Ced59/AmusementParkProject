@@ -3,11 +3,13 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Handlers;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
 
@@ -16,7 +18,7 @@ namespace AmusementPark.Application.Tests.Features.ParkItems.Handlers;
 public sealed class UpdateParkItemsVisibilityByParkIdsCommandHandlerTests
 {
     [Fact]
-    public async Task HandleAsync_WhenMakingParkItemsVisible_ShouldUpdateIncompleteItemsToo()
+    public async Task HandleAsync_WhenMakingParkItemsVisible_ShouldUpdatePublishableItems()
     {
         Mock<IParkItemRepository> repository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
@@ -29,18 +31,26 @@ public sealed class UpdateParkItemsVisibilityByParkIdsCommandHandlerTests
             {
                 Id = "item-1",
                 ParkId = "park-1",
-                Name = "Incomplete service",
-                Category = ParkItemCategory.Service,
-                Type = ParkItemType.Other,
+                Name = "Complete service",
+                Category = ParkItemCategory.Attraction,
+                Type = ParkItemType.RollerCoaster,
+                Descriptions = new List<LocalizedText>
+                {
+                    new LocalizedText("fr", "Description FR"),
+                },
                 IsVisible = false,
             },
             new ParkItem
             {
                 Id = "item-2",
                 ParkId = "park-1",
-                Name = "Incomplete attraction",
+                Name = "Complete attraction",
                 Category = ParkItemCategory.Attraction,
-                Type = ParkItemType.Attraction,
+                Type = ParkItemType.DarkRide,
+                Descriptions = new List<LocalizedText>
+                {
+                    new LocalizedText("fr", "Description FR"),
+                },
                 IsVisible = false,
             },
         };
@@ -93,6 +103,7 @@ public sealed class UpdateParkItemsVisibilityByParkIdsCommandHandlerTests
         UpdateParkItemsVisibilityByParkIdsCommandHandler handler = new UpdateParkItemsVisibilityByParkIdsCommandHandler(
             repository.Object,
             searchProjectionWriter.Object,
+            new ParkItemContentQualityService(),
             publicSeoUpdateNotifier.Object);
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
@@ -106,5 +117,49 @@ public sealed class UpdateParkItemsVisibilityByParkIdsCommandHandlerTests
         repository.VerifyAll();
         searchProjectionWriter.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenMakingIncompleteParkItemsVisible_ShouldReturnPublicationFailure()
+    {
+        Mock<IParkItemRepository> repository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        IReadOnlyCollection<string> expectedParkIds = new[] { "park-1" };
+        IReadOnlyCollection<ParkItem> previousItems = new[]
+        {
+            new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Incomplete attraction",
+                Category = ParkItemCategory.Attraction,
+                Type = ParkItemType.Attraction,
+                IsVisible = false,
+            },
+        };
+
+        repository
+            .Setup(item => item.GetByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(expectedParkIds)),
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(previousItems);
+
+        UpdateParkItemsVisibilityByParkIdsCommandHandler handler = new UpdateParkItemsVisibilityByParkIdsCommandHandler(
+            repository.Object,
+            searchProjectionWriter.Object,
+            new ParkItemContentQualityService(),
+            publicSeoUpdateNotifier.Object);
+
+        ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
+            new UpdateParkItemsVisibilityByParkIdsCommand(new[] { " park-1 ", "park-1", " " }, true),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error => error.Code == "park-item.publication.incomplete");
+        repository.VerifyAll();
+        searchProjectionWriter.VerifyNoOtherCalls();
+        publicSeoUpdateNotifier.VerifyNoOtherCalls();
     }
 }

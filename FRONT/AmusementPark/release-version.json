@@ -1,6 +1,20 @@
 {
-  "version": "3.1.68",
+  "version": "3.1.69",
   "history": [
+    {
+      "version": "3.1.69",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les publications restent mieux protégées.",
+        "en": "Publishing stays better protected.",
+        "de": "Veröffentlichungen bleiben besser geschützt.",
+        "nl": "Publicaties blijven beter beschermd.",
+        "it": "Le pubblicazioni restano meglio protette.",
+        "es": "Las publicaciones siguen mejor protegidas.",
+        "pl": "Publikacje pozostają lepiej chronione.",
+        "pt": "As publicações continuam melhor protegidas."
+      }
+    },
     {
       "version": "3.1.68",
       "releasedAt": "2026-07-03",
