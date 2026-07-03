@@ -37,7 +37,7 @@ public sealed class ContextualBlocksController : ControllerBase
     }
 
     [HttpGet("{blockType}/{entityId}/export")]
-    [AdminAudit("contextual-block.export", "ContextualBlock")]
+    [AdminAudit("contextual-block.export", "ContextualBlock", TargetIdRouteKey = "entityId")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> ExportBlockJsonAsync([FromRoute] string blockType, [FromRoute] string entityId, CancellationToken cancellationToken = default)
     {
