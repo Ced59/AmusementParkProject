@@ -1,6 +1,20 @@
 {
-  "version": "3.2.10",
+  "version": "3.2.11",
   "history": [
+    {
+      "version": "3.2.11",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les réglages techniques locaux sont mieux alignés.",
+        "en": "Local technical settings are better aligned.",
+        "de": "Lokale technische Einstellungen sind besser abgestimmt.",
+        "nl": "Lokale technische instellingen zijn beter afgestemd.",
+        "it": "Le impostazioni tecniche locali sono più allineate.",
+        "es": "Los ajustes técnicos locales quedan mejor alineados.",
+        "pl": "Lokalne ustawienia techniczne są lepiej dopasowane.",
+        "pt": "As definições técnicas locais ficam mais alinhadas."
+      }
+    },
     {
       "version": "3.2.10",
       "releasedAt": "2026-07-03",
