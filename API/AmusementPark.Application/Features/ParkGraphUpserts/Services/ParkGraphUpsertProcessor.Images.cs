@@ -88,11 +88,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
                 if (!ownerResolved || string.IsNullOrWhiteSpace(resolvedOwnerId))
                 {
-                    ParkGraphUpsertChange skippedOwnerChange = BuildEntityChange("Image", image.Id, null, image.OriginalFileName ?? image.Id, "Skipped", "ownerKey");
-                    AddChange(skippedOwnerChange, "ownerType", image.OwnerType.ToString(), ownerType.ToString());
-                    AddChange(skippedOwnerChange, "ownerId", image.OwnerId, resolvedOwnerId);
-                    result.Warnings.Add($"Image '{image.Id}' ignored: owner could not be resolved.");
-                    result.Changes.Add(skippedOwnerChange);
+                    AddSkippedUnresolvedImageOwnerChange(image, ownerType, resolvedOwnerId, result);
                     continue;
                 }
             }
