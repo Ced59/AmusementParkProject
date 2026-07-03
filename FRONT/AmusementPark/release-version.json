@@ -1,6 +1,20 @@
 {
-  "version": "3.1.61",
+  "version": "3.1.62",
   "history": [
+    {
+      "version": "3.1.62",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le slogan public garde une typo plus régulière.",
+        "en": "The public slogan keeps a more consistent type style.",
+        "de": "Der öffentliche Slogan bleibt typografisch einheitlicher.",
+        "nl": "De publieke slogan houdt een consistenter letterbeeld.",
+        "it": "Lo slogan pubblico mantiene una tipografia più coerente.",
+        "es": "El eslogan público mantiene una tipografía más uniforme.",
+        "pl": "Publiczny slogan zachowuje spójniejszą typografię.",
+        "pt": "O slogan público mantém uma tipografia mais consistente."
+      }
+    },
     {
       "version": "3.1.61",
       "releasedAt": "2026-07-03",
