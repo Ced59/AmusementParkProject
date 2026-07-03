@@ -1,6 +1,20 @@
 {
-  "version": "3.1.59",
+  "version": "3.1.60",
   "history": [
+    {
+      "version": "3.1.60",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les redirections publiques restent mieux alignées.",
+        "en": "Public redirects stay better aligned.",
+        "de": "Öffentliche Weiterleitungen bleiben besser abgestimmt.",
+        "nl": "Publieke omleidingen blijven beter afgestemd.",
+        "it": "I reindirizzamenti pubblici restano più allineati.",
+        "es": "Las redirecciones públicas siguen mejor alineadas.",
+        "pl": "Publiczne przekierowania pozostają lepiej dopasowane.",
+        "pt": "Os redirecionamentos públicos continuam mais alinhados."
+      }
+    },
     {
       "version": "3.1.59",
       "releasedAt": "2026-07-03",

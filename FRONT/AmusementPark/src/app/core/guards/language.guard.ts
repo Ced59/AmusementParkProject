@@ -10,7 +10,7 @@ export const languageGuard: CanActivateFn = (route): Observable<boolean | UrlTre
   const lang: string = route.paramMap.get('lang') || 'en';
 
   if (!translationService.isValidLang(lang)) {
-    return router.createUrlTree(['/en/home']);
+    return router.createUrlTree(isUnsupportedLanguageCode(lang) ? ['/en/home'] : ['/en/not-found']);
   }
 
   return translationService.useLang(lang).pipe(
@@ -18,3 +18,7 @@ export const languageGuard: CanActivateFn = (route): Observable<boolean | UrlTre
     catchError((): Observable<UrlTree> => of(router.createUrlTree(['/en/home'])))
   );
 };
+
+function isUnsupportedLanguageCode(value: string): boolean {
+  return /^[a-z]{2}$/i.test(value);
+}

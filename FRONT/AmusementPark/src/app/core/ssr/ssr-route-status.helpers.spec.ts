@@ -4,8 +4,13 @@ describe('SSR route status helpers', () => {
   it('marks unknown localized routes as 404', () => {
     expect(resolveSsrRouteStatusCode('/fr/page-qui-nexiste-pas-123456')).toBe(404);
     expect(resolveSsrRouteStatusCode('/fr/page-qui-nexiste-pas-123456?from=test')).toBe(404);
-    expect(resolveSsrRouteStatusCode('/zz/home')).toBe(404);
     expect(resolveSsrRouteStatusCode('/route-inconnue')).toBe(404);
+  });
+
+  it('keeps unsupported language code redirects successful', () => {
+    expect(resolveSsrRouteStatusCode('/zz/home')).toBe(200);
+    expect(resolveSsrRouteStatusCode('/zz/page-qui-nexiste-pas-123456')).toBe(200);
+    expect(shouldApplyNoindexFollowHeader('/zz/home')).toBeFalse();
   });
 
   it('marks explicit not found pages as 404', () => {
