@@ -1,6 +1,20 @@
 {
-  "version": "3.1.53",
+  "version": "3.1.54",
   "history": [
+    {
+      "version": "3.1.54",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Le logo public se charge plus vite.",
+        "en": "The public logo loads faster.",
+        "de": "Das öffentliche Logo lädt schneller.",
+        "nl": "Het publieke logo laadt sneller.",
+        "it": "Il logo pubblico si carica più in fretta.",
+        "es": "El logo público carga más rápido.",
+        "pl": "Publiczne logo ładuje się szybciej.",
+        "pt": "O logótipo público carrega mais depressa."
+      }
+    },
     {
       "version": "3.1.53",
       "releasedAt": "2026-07-03",

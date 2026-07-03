@@ -72,7 +72,7 @@ describe('PublicFooterComponent', () => {
     const fun: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__fun-text') ?? null;
 
     expect(brandLink?.getAttribute('aria-label')).toBe('AMUSEMENT-PARKS.fun');
-    expect(logoImage?.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark.png');
+    expect(logoImage?.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark-ui.png');
     expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
     expect(base?.textContent).toBe('AMUSEMENT-PARKS');
     expect(dot?.textContent).toBe('.');

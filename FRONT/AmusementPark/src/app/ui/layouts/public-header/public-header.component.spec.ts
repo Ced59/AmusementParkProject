@@ -125,7 +125,7 @@ describe('PublicHeaderComponent', () => {
     const logoImage: HTMLImageElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-nav__logo-mark');
 
     expect(logoImage).not.toBeNull();
-    expect(logoImage?.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark.png');
+    expect(logoImage?.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark-ui.png');
     expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
   });
 
