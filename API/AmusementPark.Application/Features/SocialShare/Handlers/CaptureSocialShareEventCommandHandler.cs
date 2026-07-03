@@ -1,5 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialShare.Commands;
 using AmusementPark.Application.Features.SocialShare.Contracts;
 using AmusementPark.Application.Features.SocialShare.Ports;
@@ -16,10 +18,14 @@ public sealed class CaptureSocialShareEventCommandHandler
     private const int MaximumUserIdLength = 128;
 
     private readonly ISocialShareEventRepository repository;
+    private readonly IPublicSeoContextProvider publicSeoContextProvider;
 
-    public CaptureSocialShareEventCommandHandler(ISocialShareEventRepository repository)
+    public CaptureSocialShareEventCommandHandler(
+        ISocialShareEventRepository repository,
+        IPublicSeoContextProvider publicSeoContextProvider)
     {
         this.repository = repository;
+        this.publicSeoContextProvider = publicSeoContextProvider;
     }
 
     public async Task<ApplicationResult<SocialShareEventCaptureResult>> HandleAsync(
@@ -41,7 +47,8 @@ public sealed class CaptureSocialShareEventCommandHandler
             validationErrors["channel"] = new[] { "invalid" };
         }
 
-        string normalizedUrl = NormalizeUrl(capture.Url, validationErrors);
+        PublicSeoContext publicSeoContext = await this.publicSeoContextProvider.GetAsync(cancellationToken);
+        string normalizedUrl = NormalizeUrl(capture.Url, publicSeoContext.PublicBaseUrl, validationErrors);
 
         if (validationErrors.Count > 0)
         {
@@ -89,7 +96,10 @@ public sealed class CaptureSocialShareEventCommandHandler
         return Enum.TryParse(normalizedValue, true, out parsed);
     }
 
-    private static string NormalizeUrl(string? value, IDictionary<string, IReadOnlyCollection<string>> validationErrors)
+    private static string NormalizeUrl(
+        string? value,
+        string publicBaseUrl,
+        IDictionary<string, IReadOnlyCollection<string>> validationErrors)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
@@ -111,7 +121,26 @@ public sealed class CaptureSocialShareEventCommandHandler
             return string.Empty;
         }
 
+        if (!IsPublicSiteUrl(uri, publicBaseUrl))
+        {
+            validationErrors["url"] = new[] { "invalid" };
+            return string.Empty;
+        }
+
         return uri.AbsoluteUri;
+    }
+
+    private static bool IsPublicSiteUrl(Uri uri, string publicBaseUrl)
+    {
+        if (!Uri.TryCreate(publicBaseUrl, UriKind.Absolute, out Uri? publicUri)
+            || (publicUri.Scheme != Uri.UriSchemeHttps && publicUri.Scheme != Uri.UriSchemeHttp))
+        {
+            return false;
+        }
+
+        return string.Equals(uri.Scheme, publicUri.Scheme, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(uri.IdnHost, publicUri.IdnHost, StringComparison.OrdinalIgnoreCase)
+            && uri.Port == publicUri.Port;
     }
 
     private static bool ContainsControlCharacter(string value)

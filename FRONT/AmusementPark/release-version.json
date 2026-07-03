@@ -1,6 +1,20 @@
 {
-  "version": "3.1.52",
+  "version": "3.1.53",
   "history": [
+    {
+      "version": "3.1.53",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les partages publics restent mieux protégés.",
+        "en": "Public sharing stays better protected.",
+        "de": "Öffentliches Teilen bleibt besser geschützt.",
+        "nl": "Publiek delen blijft beter beschermd.",
+        "it": "La condivisione pubblica resta più protetta.",
+        "es": "El uso compartido público sigue mejor protegido.",
+        "pl": "Publiczne udostępnianie pozostaje lepiej chronione.",
+        "pt": "A partilha pública continua mais protegida."
+      }
+    },
     {
       "version": "3.1.52",
       "releasedAt": "2026-07-03",

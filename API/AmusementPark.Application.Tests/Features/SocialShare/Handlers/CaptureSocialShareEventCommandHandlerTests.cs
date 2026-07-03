@@ -1,4 +1,6 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialShare.Commands;
 using AmusementPark.Application.Features.SocialShare.Contracts;
 using AmusementPark.Application.Features.SocialShare.Handlers;
@@ -15,7 +17,7 @@ public sealed class CaptureSocialShareEventCommandHandlerTests
     public async Task HandleAsync_WhenChannelIsInvalid_ShouldRejectWithoutPersisting()
     {
         Mock<ISocialShareEventRepository> repository = new Mock<ISocialShareEventRepository>(MockBehavior.Strict);
-        CaptureSocialShareEventCommandHandler handler = new CaptureSocialShareEventCommandHandler(repository.Object);
+        CaptureSocialShareEventCommandHandler handler = CreateHandler(repository.Object);
 
         ApplicationResult<SocialShareEventCaptureResult> result = await handler.HandleAsync(new CaptureSocialShareEventCommand(
             new SocialShareEventCapture("Park", "park-1", "Demo Park", "https://example.test/fr/park/park-1/demo", "fr", "BadChannel", null)));
@@ -29,10 +31,24 @@ public sealed class CaptureSocialShareEventCommandHandlerTests
     public async Task HandleAsync_WhenUrlIsNotHttp_ShouldRejectWithoutPersisting()
     {
         Mock<ISocialShareEventRepository> repository = new Mock<ISocialShareEventRepository>(MockBehavior.Strict);
-        CaptureSocialShareEventCommandHandler handler = new CaptureSocialShareEventCommandHandler(repository.Object);
+        CaptureSocialShareEventCommandHandler handler = CreateHandler(repository.Object);
 
         ApplicationResult<SocialShareEventCaptureResult> result = await handler.HandleAsync(new CaptureSocialShareEventCommand(
             new SocialShareEventCapture("Park", "park-1", "Demo Park", "javascript:alert(1)", "fr", "Copy", null)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "social-share.event.invalid");
+        repository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenUrlTargetsAnotherOrigin_ShouldRejectWithoutPersisting()
+    {
+        Mock<ISocialShareEventRepository> repository = new Mock<ISocialShareEventRepository>(MockBehavior.Strict);
+        CaptureSocialShareEventCommandHandler handler = CreateHandler(repository.Object);
+
+        ApplicationResult<SocialShareEventCaptureResult> result = await handler.HandleAsync(new CaptureSocialShareEventCommand(
+            new SocialShareEventCapture("Park", "park-1", "Demo Park", "https://external.test/fr/park/park-1/demo", "fr", "Copy", null)));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "social-share.event.invalid");
@@ -52,7 +68,7 @@ public sealed class CaptureSocialShareEventCommandHandlerTests
                 return shareEvent;
             });
 
-        CaptureSocialShareEventCommandHandler handler = new CaptureSocialShareEventCommandHandler(repository.Object);
+        CaptureSocialShareEventCommandHandler handler = CreateHandler(repository.Object);
 
         ApplicationResult<SocialShareEventCaptureResult> result = await handler.HandleAsync(new CaptureSocialShareEventCommand(
             new SocialShareEventCapture("ParkItem", " item-1 ", "  Demo Attraction  ", "https://example.test/fr/park/p/item/item-1/demo", "fr-FR", "LinkedIn", "user-1")));
@@ -80,7 +96,7 @@ public sealed class CaptureSocialShareEventCommandHandlerTests
             .Setup(repo => repo.CreateAsync(It.IsAny<SocialShareEvent>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync((SocialShareEvent shareEvent, CancellationToken _) => shareEvent);
 
-        CaptureSocialShareEventCommandHandler handler = new CaptureSocialShareEventCommandHandler(repository.Object);
+        CaptureSocialShareEventCommandHandler handler = CreateHandler(repository.Object);
 
         ApplicationResult<SocialShareEventCaptureResult> result = await handler.HandleAsync(new CaptureSocialShareEventCommand(
             new SocialShareEventCapture("Home", null, null, "https://example.test/fr/home", "fr", "Native", null)));
@@ -92,5 +108,28 @@ public sealed class CaptureSocialShareEventCommandHandlerTests
             shareEvent.VisitorKind == SocialShareVisitorKind.Anonymous &&
             shareEvent.UserId == null), It.IsAny<CancellationToken>()), Times.Once);
         repository.VerifyAll();
+    }
+
+    private static CaptureSocialShareEventCommandHandler CreateHandler(ISocialShareEventRepository repository)
+    {
+        return new CaptureSocialShareEventCommandHandler(
+            repository,
+            new StaticPublicSeoContextProvider("https://example.test"));
+    }
+
+    private sealed class StaticPublicSeoContextProvider : IPublicSeoContextProvider
+    {
+        private readonly string publicBaseUrl;
+
+        public StaticPublicSeoContextProvider(string publicBaseUrl)
+        {
+            this.publicBaseUrl = publicBaseUrl;
+        }
+
+        public Task<PublicSeoContext> GetAsync(CancellationToken cancellationToken)
+        {
+            PublicSeoContext context = new PublicSeoContext(this.publicBaseUrl, Array.Empty<string>());
+            return Task.FromResult(context);
+        }
     }
 }
