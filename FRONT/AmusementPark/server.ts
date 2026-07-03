@@ -728,7 +728,8 @@ function buildRobotFamilyRows(): TechnicalStatsRobotFamily[] {
         ssrUnavailableResponses: robotFamilySsrUnavailableCounts.get(key) ?? 0
       };
     })
-    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key));
+    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key))
+    .slice(0, technicalStatsDistributionRowLimit);
 }
 
 function getRobotFamilyCategory(robotFamily: string): string {
@@ -2058,7 +2059,7 @@ function isCriticalPublicSsrRoute(url: string): boolean {
     || isPublicParkVideoDetailRoute(path)
     || isPublicParkMapRoute(path)
     || (isPublicParkWeatherRoute(path) && !hasQueryString(url))
-    || isPublicParkOpeningHoursRoute(path)
+    || (isPublicParkOpeningHoursRoute(path) && !hasQueryString(url))
     || isPublicParkZonesRoute(path)
     || isPublicParkZoneDetailRoute(path)
     || (isPublicParkItemsRoute(path) && !hasQueryString(url))
