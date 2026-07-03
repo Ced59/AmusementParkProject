@@ -7,6 +7,7 @@ export interface TechnicalStatsSnapshot {
   buildVersion: string;
   cache: TechnicalStatsCacheSummary;
   storage: TechnicalStatsStorageSummary;
+  seo: TechnicalStatsSeoSummary;
   rendering: TechnicalStatsRenderingSummary;
   refresh: TechnicalStatsRefreshSummary;
   invalidation: TechnicalStatsInvalidationSummary;
@@ -42,6 +43,30 @@ export interface TechnicalStatsStorageSummary {
   seoDocumentHits: number;
   seoDocumentMisses: number;
   assetMisses: number;
+}
+
+export interface TechnicalStatsSeoSummary {
+  robotNoJsHtmlEnabled: boolean;
+  htmlResponses: number;
+  seoReadyHtmlResponses: number;
+  seoNotReadyHtmlResponses: number;
+  seoReadyRatePercent: number;
+  robotHtmlResponses: number;
+  robotSeoReadyHtmlResponses: number;
+  robotSeoNotReadyHtmlResponses: number;
+  robotSeoReadyRatePercent: number;
+  robotNoJsHtmlResponses: number;
+  robotHtmlBlockedNotSeoReady: number;
+  robotHtmlNotAllowed: number;
+  robotSsrUnavailableResponses: number;
+  robotPageResponses: number;
+  robotCacheHitResponses: number;
+  robotHitRatePercent: number;
+  seoDocumentRequests: number;
+  seoDocumentHits: number;
+  seoDocumentMisses: number;
+  seoDocumentHitRatePercent: number;
+  queueFullRejections: number;
 }
 
 export interface TechnicalStatsRenderingSummary {
@@ -114,7 +139,15 @@ export interface TechnicalStatsCount {
 
 export interface TechnicalStatsRobotFamily {
   key: string;
+  category: string;
   count: number;
   cacheHits: number;
   hitRatePercent: number;
+  seoReadyResponses: number;
+  seoNotReadyResponses: number;
+  seoReadyRatePercent: number;
+  noJsResponses: number;
+  blockedNotSeoReadyResponses: number;
+  htmlNotAllowedResponses: number;
+  ssrUnavailableResponses: number;
 }

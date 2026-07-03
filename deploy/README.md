@@ -356,11 +356,14 @@ Les valeurs recommandées sont donc :
 PUBLIC_HTTP_PORT=18080
 SSR_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
 SSR_CSP_ALLOW_LOCAL_DEV_SOURCES=false
+SSR_ROBOT_NO_JS_HTML_ENABLED=true
 MINIO_API_PORT=19000
 MINIO_CONSOLE_PORT=19001
 ```
 
 Le workflow `.github/workflows/production.yml` génère le `.env` de prod depuis les GitHub Secrets/Variables, valide ce fichier, pousse les images GHCR, copie le bundle sur le VPS puis lance `scripts/deploy.sh`.
+
+Pour les reprises SEO/Bing, le warmup SSR peut utiliser `SSR_WARMUP_PROFILE=seo-important` ou un fichier exact via `SSR_WARMUP_URL_FILE=/chemin/urls-to-warm.txt`. Après le warmup, `deploy/scripts/warmup-ssr-cache.sh` peut valider les mêmes URLs avec un user-agent Bingbot et produire `SSR_WARMUP_REPORT_FILE` en CSV.
 
 Le déploiement automatique sur `main`/`master` est protégé par la variable GitHub :
 

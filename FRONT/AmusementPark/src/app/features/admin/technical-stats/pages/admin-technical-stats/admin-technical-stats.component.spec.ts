@@ -36,6 +36,28 @@ describe('AdminTechnicalStatsComponent', () => {
     expect(statusRows.length).toBe(12);
     expect(robotRows.length).toBe(12);
   });
+
+  it('filters SEO robot stats by robot family category', () => {
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    fixture.detectChanges();
+
+    const seoTab = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-tab'))
+      .find((button) => button.nativeElement.textContent.includes('SEO robots'));
+    seoTab?.nativeElement.click();
+    fixture.detectChanges();
+
+    const bingFilter = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-filter__button'))
+      .find((button) => button.nativeElement.textContent.includes('Bing'));
+    bingFilter?.nativeElement.click();
+    fixture.detectChanges();
+
+    const rows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-robot-table__row'));
+
+    expect(rows.length).toBe(1);
+    expect(rows[0].nativeElement.textContent).toContain('Bingbot');
+  });
 });
 
 function createStats(rowCount: number): TechnicalStatsSnapshot {
@@ -60,10 +82,18 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
         percent: 10
       })),
       robotFamilies: Array.from({ length: rowCount }, (_, index: number) => ({
-        key: `Robot-${index}`,
+        key: index === 0 ? 'Bingbot' : `Robot-${index}`,
+        category: index === 0 ? 'bing' : 'other',
         count: rowCount - index,
         cacheHits: index,
-        hitRatePercent: 25
+        hitRatePercent: 25,
+        seoReadyResponses: rowCount - index,
+        seoNotReadyResponses: 0,
+        seoReadyRatePercent: 100,
+        noJsResponses: rowCount - index,
+        blockedNotSeoReadyResponses: 0,
+        htmlNotAllowedResponses: 0,
+        ssrUnavailableResponses: 0
       }))
     },
     storage: {
@@ -83,6 +113,29 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       seoDocumentHits: 4,
       seoDocumentMisses: 2,
       assetMisses: 1
+    },
+    seo: {
+      robotNoJsHtmlEnabled: true,
+      htmlResponses: 1000,
+      seoReadyHtmlResponses: 990,
+      seoNotReadyHtmlResponses: 10,
+      seoReadyRatePercent: 99,
+      robotHtmlResponses: 400,
+      robotSeoReadyHtmlResponses: 390,
+      robotSeoNotReadyHtmlResponses: 10,
+      robotSeoReadyRatePercent: 97.5,
+      robotNoJsHtmlResponses: 390,
+      robotHtmlBlockedNotSeoReady: 10,
+      robotHtmlNotAllowed: 0,
+      robotSsrUnavailableResponses: 0,
+      robotPageResponses: 400,
+      robotCacheHitResponses: 200,
+      robotHitRatePercent: 50,
+      seoDocumentRequests: 6,
+      seoDocumentHits: 4,
+      seoDocumentMisses: 2,
+      seoDocumentHitRatePercent: 66.7,
+      queueFullRejections: 0
     },
     rendering: {
       ssrRenderEnabled: true,
