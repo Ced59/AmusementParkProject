@@ -122,6 +122,111 @@ public sealed class HttpTechnicalStatsProviderTests
     }
 
     [Fact]
+    public async Task GetSnapshotAsyncSanitizesNullNumericValuesFromSsrSnapshot()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, """
+        {
+          "isAvailable": true,
+          "unavailableReason": null,
+          "generatedAtUtc": "2026-06-23T10:00:00Z",
+          "startedAtUtc": "2026-06-23T09:00:00Z",
+          "uptimeSeconds": null,
+          "buildVersion": "2.6.18",
+          "cache": {
+            "pageResponses": null,
+            "cacheHitResponses": "4",
+            "hitRatePercent": null,
+            "statuses": [{ "key": "HIT", "count": null, "percent": null }],
+            "robotFamilies": [{
+              "key": "Bingbot",
+              "category": null,
+              "count": null,
+              "cacheHits": null,
+              "hitRatePercent": null,
+              "seoReadyResponses": null,
+              "seoNotReadyResponses": null,
+              "seoReadyRatePercent": null,
+              "noJsResponses": null,
+              "blockedNotSeoReadyResponses": null,
+              "htmlNotAllowedResponses": null,
+              "ssrUnavailableResponses": null
+            }]
+          },
+          "storage": {
+            "diskEnabled": "true",
+            "diskBytes": null,
+            "technicalStatsPersistenceEntries": null
+          },
+          "seo": {
+            "robotNoJsHtmlEnabled": true,
+            "seoReadyRatePercent": null,
+            "robotHitRatePercent": null
+          },
+          "rendering": {
+            "ssrRenderEnabled": true,
+            "maxConcurrency": null
+          },
+          "refresh": {
+            "enabled": true,
+            "maxUrls": null
+          },
+          "invalidation": {
+            "lastInvalidationUtc": null
+          },
+          "config": {
+            "pageCacheTtlSeconds": null,
+            "pageCacheBrowserCacheControl": null,
+            "technicalStatsPersistenceLastFlushUtc": null
+          }
+        }
+        """);
+        HttpClient httpClient = new HttpClient(handler);
+        HttpTechnicalStatsProvider provider = CreateProvider(httpClient);
+
+        TechnicalStatsSnapshot? snapshot = await provider.GetSnapshotAsync();
+
+        Assert.NotNull(snapshot);
+        Assert.True(snapshot.IsAvailable);
+        Assert.Null(snapshot.UnavailableReason);
+        Assert.Equal(0, snapshot.UptimeSeconds);
+        Assert.Equal(0, snapshot.Cache.PageResponses);
+        Assert.Equal(4, snapshot.Cache.CacheHitResponses);
+        TechnicalStatsCount status = Assert.Single(snapshot.Cache.Statuses);
+        Assert.Equal("HIT", status.Key);
+        Assert.Equal(0, status.Count);
+        Assert.Equal(0, status.Percent);
+        TechnicalStatsRobotFamily family = Assert.Single(snapshot.Cache.RobotFamilies);
+        Assert.Equal("Bingbot", family.Key);
+        Assert.Equal(string.Empty, family.Category);
+        Assert.Equal(0, family.Count);
+        Assert.True(snapshot.Storage.DiskEnabled);
+        Assert.Equal(0, snapshot.Storage.DiskBytes);
+        Assert.True(snapshot.Seo.RobotNoJsHtmlEnabled);
+        Assert.Equal(0, snapshot.Seo.SeoReadyRatePercent);
+        Assert.True(snapshot.Rendering.SsrRenderEnabled);
+        Assert.Equal(0, snapshot.Rendering.MaxConcurrency);
+        Assert.True(snapshot.Refresh.Enabled);
+        Assert.Equal(0, snapshot.Refresh.MaxUrls);
+        Assert.Null(snapshot.Invalidation.LastInvalidationUtc);
+        Assert.Equal(0, snapshot.Config.PageCacheTtlSeconds);
+        Assert.Equal(string.Empty, snapshot.Config.PageCacheBrowserCacheControl);
+    }
+
+    [Fact]
+    public async Task GetSnapshotAsyncReturnsInvalidJsonWhenSsrSnapshotIsMalformed()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, "not-json");
+        HttpClient httpClient = new HttpClient(handler);
+        HttpTechnicalStatsProvider provider = CreateProvider(httpClient);
+
+        TechnicalStatsSnapshot? snapshot = await provider.GetSnapshotAsync();
+
+        Assert.NotNull(snapshot);
+        Assert.False(snapshot.IsAvailable);
+        Assert.Equal("invalid-json", snapshot.UnavailableReason);
+    }
+
+    [Fact]
     public async Task UpdateSettingsAsyncCallsInternalEndpointWithSharedTokenAndBody()
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, """
