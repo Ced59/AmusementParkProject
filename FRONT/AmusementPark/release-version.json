@@ -1,6 +1,20 @@
 {
-  "version": "3.1.55",
+  "version": "3.1.56",
   "history": [
+    {
+      "version": "3.1.56",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les pages publiques restent plus fraîches.",
+        "en": "Public pages stay fresher.",
+        "de": "Öffentliche Seiten bleiben aktueller.",
+        "nl": "Publieke pagina's blijven actueler.",
+        "it": "Le pagine pubbliche restano più aggiornate.",
+        "es": "Las páginas públicas se mantienen más actualizadas.",
+        "pl": "Strony publiczne pozostają bardziej aktualne.",
+        "pt": "As páginas públicas continuam mais atualizadas."
+      }
+    },
     {
       "version": "3.1.55",
       "releasedAt": "2026-07-03",

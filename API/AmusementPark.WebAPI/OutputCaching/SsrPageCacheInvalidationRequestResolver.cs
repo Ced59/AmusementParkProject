@@ -927,6 +927,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             paths.Add($"/{language}");
             paths.Add($"/{language}/home");
             paths.Add($"/{language}/parks");
+            paths.Add($"/{language}/rankings");
         }
     }
 
