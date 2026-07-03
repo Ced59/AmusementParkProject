@@ -201,6 +201,7 @@
 .admin-technical-stats-help {
   display: inline-grid;
   place-items: center;
+  position: relative;
   flex: 0 0 auto;
   width: 1.35rem;
   height: 1.35rem;
@@ -213,6 +214,45 @@
   font-weight: 900;
   line-height: 1;
   cursor: help;
+
+  &::after {
+    content: attr(aria-label);
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    right: -0.25rem;
+    z-index: 20;
+    width: max-content;
+    max-width: min(18rem, calc(100vw - 2rem));
+    padding: 0.6rem 0.7rem;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    border-radius: var(--radius-md);
+    color: var(--app-heading);
+    background: rgba(15, 23, 42, 0.96);
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.28);
+    font-size: 0.75rem;
+    font-weight: 750;
+    line-height: 1.35;
+    opacity: 0;
+    pointer-events: none;
+    text-align: left;
+    text-transform: none;
+    transform: translateY(-0.2rem);
+    transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s ease;
+    visibility: hidden;
+    white-space: normal;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(56, 189, 248, 0.7);
+    outline-offset: 2px;
+  }
 }
 
 .admin-technical-stats-grid {

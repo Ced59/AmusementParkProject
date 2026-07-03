@@ -56,6 +56,15 @@ describe('AdminTechnicalStatsComponent', () => {
     expect(seoRows.length).toBe(0);
   });
 
+  it('exposes help text on help buttons for the custom tooltip', () => {
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    fixture.detectChanges();
+
+    const helpButton = fixture.debugElement.query(By.css('.admin-technical-stats-help'));
+
+    expect(helpButton.attributes['aria-label']).toContain('Share of HTML pages');
+  });
+
   it('filters SEO robot stats by robot family category', () => {
     const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
@@ -162,6 +171,7 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       robotHtmlBlockedNotSeoReady: 10,
       robotHtmlNotAllowed: 0,
       robotSsrUnavailableResponses: 0,
+      robotCacheOnlyMissResponses: 0,
       robotPageResponses: 400,
       robotCacheHitResponses: 200,
       robotHitRatePercent: 50,

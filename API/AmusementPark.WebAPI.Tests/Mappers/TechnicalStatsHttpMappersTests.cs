@@ -28,6 +28,7 @@ public sealed class TechnicalStatsHttpMappersTests
                 RobotHtmlBlockedNotSeoReady = 2,
                 RobotHtmlNotAllowed = 1,
                 RobotSsrUnavailableResponses = 3,
+                RobotCacheOnlyMissResponses = 2,
                 RobotPageResponses = 22,
                 RobotCacheHitResponses = 17,
                 RobotHitRatePercent = 77.3,
@@ -76,6 +77,7 @@ public sealed class TechnicalStatsHttpMappersTests
         Assert.Equal(2, dto.Seo.RobotHtmlBlockedNotSeoReady);
         Assert.Equal(1, dto.Seo.RobotHtmlNotAllowed);
         Assert.Equal(3, dto.Seo.RobotSsrUnavailableResponses);
+        Assert.Equal(2, dto.Seo.RobotCacheOnlyMissResponses);
         Assert.Equal(22, dto.Seo.RobotPageResponses);
         Assert.Equal(17, dto.Seo.RobotCacheHitResponses);
         Assert.Equal(77.3, dto.Seo.RobotHitRatePercent);

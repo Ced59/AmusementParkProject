@@ -17,6 +17,12 @@ import {
   RobotHtmlPreparationResult,
   shouldReturnBotSsrUnavailable
 } from './src/app/core/ssr/robot-html-optimizer';
+import {
+  detectRobotFamilyFromUserAgent,
+  getRobotFamilyCategory,
+  shouldAllowRobotCacheMissSsrRender
+} from './src/app/core/ssr/robot-ssr-policy';
+import type { RobotFamily } from './src/app/core/ssr/robot-ssr-policy';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { siteVersion } from './src/environments/version.generated';
 
@@ -114,6 +120,7 @@ type SsrPageResponseStatus =
   | 'WARMUP-STALE'
   | 'SSR-UNCACHED'
   | 'SSR-BOT-UNAVAILABLE'
+  | 'SSR-BOT-CACHE-ONLY-MISS'
   | 'CSR-CACHE-MISS-FALLBACK'
   | 'CSR-OVERLOAD-FALLBACK'
   | 'CSR-WARMUP-SKIPPED';
@@ -130,6 +137,11 @@ interface HtmlResponsePreparationOptions {
   readonly responseMode: SsrHtmlResponseMode;
 }
 
+interface CacheMissRenderDecision {
+  readonly shouldRender: boolean;
+  readonly fallbackStatus: SsrPageResponseStatus;
+}
+
 interface TechnicalStatsCounters {
   pageResponses: number;
   cacheablePageResponses: number;
@@ -144,6 +156,7 @@ interface TechnicalStatsCounters {
   robotHtmlBlockedNotSeoReady: number;
   robotHtmlNotAllowed: number;
   robotSsrUnavailableResponses: number;
+  robotCacheOnlyMissResponses: number;
   totalRenders: number;
   totalRenderMilliseconds: number;
   maxRenderMilliseconds: number;
@@ -226,6 +239,7 @@ const technicalStatsCounters: TechnicalStatsCounters = {
   robotHtmlBlockedNotSeoReady: 0,
   robotHtmlNotAllowed: 0,
   robotSsrUnavailableResponses: 0,
+  robotCacheOnlyMissResponses: 0,
   totalRenders: 0,
   totalRenderMilliseconds: 0,
   maxRenderMilliseconds: 0,
@@ -467,8 +481,9 @@ export function app(): express.Express {
       return;
     }
 
-    if (!ssrRenderEnabled || !shouldRenderCacheMiss(req, warmupRequest)) {
-      serveCsrFallbackPage(req, res, csrIndexHtml, warmupRequest ? 'CSR-WARMUP-SKIPPED' : 'CSR-CACHE-MISS-FALLBACK');
+    const renderDecision: CacheMissRenderDecision = resolveCacheMissRenderDecision(req, warmupRequest);
+    if (!ssrRenderEnabled || !renderDecision.shouldRender) {
+      serveCsrFallbackPage(req, res, csrIndexHtml, renderDecision.fallbackStatus);
       return;
     }
 
@@ -633,6 +648,7 @@ function buildTechnicalStatsSnapshot(): Record<string, unknown> {
       robotHtmlBlockedNotSeoReady: technicalStatsCounters.robotHtmlBlockedNotSeoReady,
       robotHtmlNotAllowed: technicalStatsCounters.robotHtmlNotAllowed,
       robotSsrUnavailableResponses: technicalStatsCounters.robotSsrUnavailableResponses,
+      robotCacheOnlyMissResponses: technicalStatsCounters.robotCacheOnlyMissResponses,
       robotPageResponses: technicalStatsCounters.robotPageResponses,
       robotCacheHitResponses: technicalStatsCounters.robotCacheHitResponses,
       robotHitRatePercent: toPercent(technicalStatsCounters.robotCacheHitResponses, technicalStatsCounters.robotPageResponses),
@@ -730,19 +746,6 @@ function buildRobotFamilyRows(): TechnicalStatsRobotFamily[] {
     })
     .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key))
     .slice(0, technicalStatsDistributionRowLimit);
-}
-
-function getRobotFamilyCategory(robotFamily: string): string {
-  switch (robotFamily) {
-    case 'Googlebot':
-      return 'google';
-    case 'Bingbot':
-      return 'bing';
-    case 'YandexBot':
-      return 'yandex';
-    default:
-      return 'other';
-  }
 }
 
 function toPercent(value: number, total: number): number {
@@ -1267,6 +1270,7 @@ function createEmptyTechnicalStatsCounters(): TechnicalStatsCounters {
     robotHtmlBlockedNotSeoReady: 0,
     robotHtmlNotAllowed: 0,
     robotSsrUnavailableResponses: 0,
+    robotCacheOnlyMissResponses: 0,
     totalRenders: 0,
     totalRenderMilliseconds: 0,
     maxRenderMilliseconds: 0,
@@ -1329,6 +1333,7 @@ function diffTechnicalStatsCounters(current: TechnicalStatsCounters, baseline: T
     robotHtmlBlockedNotSeoReady: Math.max(0, current.robotHtmlBlockedNotSeoReady - baseline.robotHtmlBlockedNotSeoReady),
     robotHtmlNotAllowed: Math.max(0, current.robotHtmlNotAllowed - baseline.robotHtmlNotAllowed),
     robotSsrUnavailableResponses: Math.max(0, current.robotSsrUnavailableResponses - baseline.robotSsrUnavailableResponses),
+    robotCacheOnlyMissResponses: Math.max(0, current.robotCacheOnlyMissResponses - baseline.robotCacheOnlyMissResponses),
     totalRenders: Math.max(0, current.totalRenders - baseline.totalRenders),
     totalRenderMilliseconds: Math.max(0, current.totalRenderMilliseconds - baseline.totalRenderMilliseconds),
     maxRenderMilliseconds: current.maxRenderMilliseconds > baseline.maxRenderMilliseconds ? current.maxRenderMilliseconds : 0,
@@ -1364,6 +1369,7 @@ function hasTechnicalStatsCountersDelta(counters: TechnicalStatsCounters): boole
     || counters.robotHtmlBlockedNotSeoReady > 0
     || counters.robotHtmlNotAllowed > 0
     || counters.robotSsrUnavailableResponses > 0
+    || counters.robotCacheOnlyMissResponses > 0
     || counters.totalRenders > 0
     || counters.totalRenderMilliseconds > 0
     || counters.maxRenderMilliseconds > 0
@@ -1399,6 +1405,7 @@ function mergeTechnicalStatsCounters(left: TechnicalStatsCounters, right: Techni
     robotHtmlBlockedNotSeoReady: left.robotHtmlBlockedNotSeoReady + right.robotHtmlBlockedNotSeoReady,
     robotHtmlNotAllowed: left.robotHtmlNotAllowed + right.robotHtmlNotAllowed,
     robotSsrUnavailableResponses: left.robotSsrUnavailableResponses + right.robotSsrUnavailableResponses,
+    robotCacheOnlyMissResponses: left.robotCacheOnlyMissResponses + right.robotCacheOnlyMissResponses,
     totalRenders: left.totalRenders + right.totalRenders,
     totalRenderMilliseconds: left.totalRenderMilliseconds + right.totalRenderMilliseconds,
     maxRenderMilliseconds: Math.max(left.maxRenderMilliseconds, right.maxRenderMilliseconds),
@@ -1586,27 +1593,48 @@ function applySearchRobotsHeaders(req: Request, res: Response): void {
   }
 }
 
-function shouldRenderCacheMiss(req: Request, warmupRequest: boolean): boolean {
+function resolveCacheMissRenderDecision(req: Request, warmupRequest: boolean): CacheMissRenderDecision {
   if (!isCacheablePageRequest(req)) {
-    return false;
+    return {
+      shouldRender: false,
+      fallbackStatus: warmupRequest ? 'CSR-WARMUP-SKIPPED' : 'CSR-CACHE-MISS-FALLBACK'
+    };
+  }
+
+  const robotFamily: RobotFamily | null = detectRobotFamily(req);
+  if (!shouldAllowRobotCacheMissSsrRender(robotFamily)) {
+    return {
+      shouldRender: false,
+      fallbackStatus: 'SSR-BOT-CACHE-ONLY-MISS'
+    };
   }
 
   if (warmupRequest) {
-    return true;
+    return {
+      shouldRender: true,
+      fallbackStatus: 'CSR-WARMUP-SKIPPED'
+    };
   }
 
   if (renderOnCacheMiss) {
-    return true;
+    return {
+      shouldRender: true,
+      fallbackStatus: 'CSR-CACHE-MISS-FALLBACK'
+    };
   }
 
-  return renderCriticalRoutesOnCacheMiss && isCriticalPublicSsrRoute(req.originalUrl);
+  return {
+    shouldRender: renderCriticalRoutesOnCacheMiss && isCriticalPublicSsrRoute(req.originalUrl),
+    fallbackStatus: 'CSR-CACHE-MISS-FALLBACK'
+  };
 }
 
-function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: string | null, mode: string): void {
+function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: string | null, mode: SsrPageResponseStatus): void {
   const statusCode: number = resolveSsrRouteStatusCode(req.originalUrl);
   const robotFamily: string | null = detectRobotFamily(req);
   if (shouldReturnBotSsrUnavailable(robotFamily !== null, statusCode)) {
-    serveBotSsrUnavailable(req, res, robotFamily);
+    const unavailableStatus: SsrPageResponseStatus = mode === 'SSR-BOT-CACHE-ONLY-MISS' ? mode : 'SSR-BOT-UNAVAILABLE';
+    serveBotSsrUnavailable(req, res, robotFamily, unavailableStatus);
     return;
   }
 
@@ -1615,7 +1643,8 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   }
 
   csrFallbackCount += 1;
-  recordPageResponse(req, toCsrFallbackStatus(mode), buildPageCacheKey(req));
+  const fallbackStatus: SsrPageResponseStatus = mode === 'SSR-BOT-CACHE-ONLY-MISS' && statusCode !== 200 ? 'CSR-CACHE-MISS-FALLBACK' : mode;
+  recordPageResponse(req, fallbackStatus, buildPageCacheKey(req));
   if (csrFallbackLogSampleRate > 0 && csrFallbackCount % csrFallbackLogSampleRate === 0) {
     console.warn(`SSR CSR fallback sample: count=${csrFallbackCount}, mode=${mode}, url=${req.originalUrl}`);
   }
@@ -1629,12 +1658,16 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   }));
 }
 
-function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string | null): void {
-  recordPageResponse(req, 'SSR-BOT-UNAVAILABLE', buildPageCacheKey(req));
+function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string | null, status: SsrPageResponseStatus): void {
+  recordPageResponse(req, status, buildPageCacheKey(req));
   technicalStatsCounters.robotSsrUnavailableResponses += 1;
+  if (status === 'SSR-BOT-CACHE-ONLY-MISS') {
+    technicalStatsCounters.robotCacheOnlyMissResponses += 1;
+    res.setHeader('X-AmusementPark-Robot-Policy', 'cache-only');
+  }
 
   res.setHeader('Retry-After', '60');
-  res.setHeader('X-AmusementPark-SSR-Mode', 'SSR-BOT-UNAVAILABLE');
+  res.setHeader('X-AmusementPark-SSR-Mode', status);
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('X-AmusementPark-Seo-Ready', 'false');
   res.setHeader('X-AmusementPark-Seo-Ready-Reason', 'ssr-unavailable');
@@ -1741,17 +1774,6 @@ function appendVaryHeader(res: Response, value: string): void {
   res.setHeader('Vary', normalizedValues.join(', '));
 }
 
-function toCsrFallbackStatus(mode: string): SsrPageResponseStatus {
-  switch (mode) {
-    case 'CSR-OVERLOAD-FALLBACK':
-      return 'CSR-OVERLOAD-FALLBACK';
-    case 'CSR-WARMUP-SKIPPED':
-      return 'CSR-WARMUP-SKIPPED';
-    default:
-      return 'CSR-CACHE-MISS-FALLBACK';
-  }
-}
-
 function recordPageResponse(req: Request, status: SsrPageResponseStatus, cacheKey: string | null): void {
   technicalStatsCounters.pageResponses += 1;
   incrementCount(pageResponseStatusCounts, status);
@@ -1786,97 +1808,8 @@ function isCacheHitStatus(status: SsrPageResponseStatus): boolean {
     || status === 'WARMUP-STALE';
 }
 
-function detectRobotFamily(req: Request): string | null {
-  const userAgent = getHeaderValue(req, 'user-agent').toLowerCase();
-  if (userAgent.length === 0 || userAgent.includes('amusementpark-ssr-targetedrefresh')) {
-    return null;
-  }
-
-  if (userAgent.includes('googlebot') || userAgent.includes('adsbot-google') || userAgent.includes('mediapartners-google')) {
-    return 'Googlebot';
-  }
-
-  if (userAgent.includes('bingbot') || userAgent.includes('msnbot')) {
-    return 'Bingbot';
-  }
-
-  if (userAgent.includes('duckduckbot')) {
-    return 'DuckDuckBot';
-  }
-
-  if (userAgent.includes('yandexbot')) {
-    return 'YandexBot';
-  }
-
-  if (userAgent.includes('ahrefsbot')) {
-    return 'AhrefsBot';
-  }
-
-  if (userAgent.includes('semrushbot')) {
-    return 'SemrushBot';
-  }
-
-  if (userAgent.includes('baiduspider')) {
-    return 'BaiduSpider';
-  }
-
-  if (userAgent.includes('slurp')) {
-    return 'Yahoo Slurp';
-  }
-
-  if (userAgent.includes('applebot')) {
-    return 'Applebot';
-  }
-
-  if (userAgent.includes('petalbot')) {
-    return 'PetalBot';
-  }
-
-  if (userAgent.includes('mj12bot')) {
-    return 'MJ12bot';
-  }
-
-  if (userAgent.includes('dotbot')) {
-    return 'DotBot';
-  }
-
-  if (userAgent.includes('bytespider')) {
-    return 'ByteSpider';
-  }
-
-  if (userAgent.includes('facebookexternalhit')) {
-    return 'Facebook external hit';
-  }
-
-  if (userAgent.includes('whatsapp')) {
-    return 'WhatsApp';
-  }
-
-  if (userAgent.includes('telegrambot')) {
-    return 'TelegramBot';
-  }
-
-  if (userAgent.includes('linkedinbot')) {
-    return 'LinkedInBot';
-  }
-
-  if (userAgent.includes('pinterest')) {
-    return 'PinterestBot';
-  }
-
-  if (userAgent.includes('discordbot')) {
-    return 'DiscordBot';
-  }
-
-  if (userAgent.includes('twitterbot')) {
-    return 'TwitterBot';
-  }
-
-  if (/(?:bot|crawler|spider|slurp|facebookexternalhit|whatsapp|telegrambot|linkedinbot|pinterest|discordbot|twitterbot)/i.test(userAgent)) {
-    return 'Other bot';
-  }
-
-  return null;
+function detectRobotFamily(req: Request): RobotFamily | null {
+  return detectRobotFamilyFromUserAgent(getHeaderValue(req, 'user-agent'));
 }
 
 function getHeaderValue(req: Request, headerName: string): string {

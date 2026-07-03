@@ -113,6 +113,8 @@ public sealed class TechnicalStatsSeoSummary
 
     public long RobotSsrUnavailableResponses { get; set; }
 
+    public long RobotCacheOnlyMissResponses { get; set; }
+
     public long RobotPageResponses { get; set; }
 
     public long RobotCacheHitResponses { get; set; }
