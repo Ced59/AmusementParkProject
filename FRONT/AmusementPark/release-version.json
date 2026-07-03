@@ -1,6 +1,20 @@
 {
-  "version": "3.1.64",
+  "version": "3.1.65",
   "history": [
+    {
+      "version": "3.1.65",
+      "releasedAt": "2026-07-03",
+      "labels": {
+        "fr": "Les emails applicatifs restent plus complets.",
+        "en": "Application emails stay more complete.",
+        "de": "Anwendungs-E-Mails bleiben vollständiger.",
+        "nl": "Applicatie-e-mails blijven vollediger.",
+        "it": "Le email applicative restano più complete.",
+        "es": "Los correos de la aplicación siguen siendo más completos.",
+        "pl": "Wiadomości aplikacyjne pozostają pełniejsze.",
+        "pt": "Os emails da aplicação continuam mais completos."
+      }
+    },
     {
       "version": "3.1.64",
       "releasedAt": "2026-07-03",

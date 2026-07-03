@@ -246,7 +246,7 @@ if [ "${jwt_length}" -lt 32 ]; then
   errors=$((errors + 1))
 fi
 
-case "${EMAIL_MODE:-Console}" in
+case "${EMAIL_MODE:-Smtp}" in
   Console)
     echo "WARNING: EMAIL_MODE=Console. This is acceptable for a discreet MVP smoke test, but SMTP should be configured before real users." >&2
     warnings=$((warnings + 1))
