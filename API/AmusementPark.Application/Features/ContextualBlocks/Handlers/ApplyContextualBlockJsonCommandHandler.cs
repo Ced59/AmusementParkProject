@@ -181,7 +181,7 @@ public sealed class ApplyContextualBlockJsonCommandHandler
 
     private static void ApplyPracticalBlock(Park park, JsonElement block)
     {
-        ApplyStringField(block, "countryCode", value => park.CountryCode = value);
+        ApplyStringField(block, "countryCode", value => park.CountryCode = NormalizeCountryCode(value));
         ApplyStringField(block, "city", value => park.City = value);
         ApplyStringField(block, "street", value => park.Street = value);
         ApplyStringField(block, "postalCode", value => park.PostalCode = value);
@@ -200,6 +200,11 @@ public sealed class ApplyContextualBlockJsonCommandHandler
 
         string? value = valueElement.ValueKind == JsonValueKind.Null ? null : valueElement.GetString();
         assign(value);
+    }
+
+    private static string? NormalizeCountryCode(string? value)
+    {
+        return string.IsNullOrWhiteSpace(value) ? null : value.Trim().ToUpperInvariant();
     }
 
     private static void ApplyRequiredPositionBlock(GeolocatedEntityBase entity, JsonElement block)
@@ -221,6 +226,20 @@ public sealed class ApplyContextualBlockJsonCommandHandler
         bool hasLatitude = block.TryGetProperty("latitude", out JsonElement latitudeElement);
         bool hasLongitude = block.TryGetProperty("longitude", out JsonElement longitudeElement);
         if (!hasLatitude && !hasLongitude)
+        {
+            return;
+        }
+
+        if (hasLatitude != hasLongitude)
+        {
+            JsonElement existingElement = hasLatitude ? latitudeElement : longitudeElement;
+            if (existingElement.ValueKind == JsonValueKind.Null || entity.Position is null)
+            {
+                return;
+            }
+        }
+
+        if (hasLatitude && hasLongitude && ((latitudeElement.ValueKind == JsonValueKind.Null) != (longitudeElement.ValueKind == JsonValueKind.Null)))
         {
             return;
         }

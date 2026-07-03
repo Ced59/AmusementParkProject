@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Text.Json;
 using AmusementPark.Application.Features.ContextualBlocks.Results;
 using AmusementPark.Core.Domain.Parks;
@@ -225,7 +224,7 @@ internal static class ContextualBlockJsonPreviewBuilder
         ValidateParkId(ids, "ids.parkId", park.Id, result);
         ValidateParkId(block, "block.parkId", park.Id, result);
 
-        List<ContextualBlockPreviewChange> changes = PreviewPracticalBlock(park, block, result);
+        List<ContextualBlockPreviewChange> changes = ContextualBlockPracticalPreviewBuilder.PreviewPracticalBlock(park, block, result);
         AddChanges(result, changes);
         FinalizeResult(result, PracticalBlockAllowedProperties.Count - 1);
         return result;
@@ -413,87 +412,6 @@ internal static class ContextualBlockJsonPreviewBuilder
         return result.Errors.Count > 0 ? new List<ContextualBlockPreviewChange>() : changes;
     }
 
-    private static List<ContextualBlockPreviewChange> PreviewPracticalBlock(Park park, JsonElement block, ContextualBlockPreviewResult result)
-    {
-        List<ContextualBlockPreviewChange> changes = new List<ContextualBlockPreviewChange>();
-
-        PreviewStringField(park, block, "countryCode", park.CountryCode, result, changes);
-        PreviewStringField(park, block, "city", park.City, result, changes);
-        PreviewStringField(park, block, "street", park.Street, result, changes);
-        PreviewStringField(park, block, "postalCode", park.PostalCode, result, changes);
-        PreviewStringField(park, block, "websiteUrl", park.WebsiteUrl, result, changes);
-        PreviewStringField(park, block, "founderId", park.FounderId, result, changes);
-        PreviewStringField(park, block, "operatorId", park.OperatorId, result, changes);
-        PreviewNumberField(park, block, "latitude", park.Position?.Latitude, result, changes);
-        PreviewNumberField(park, block, "longitude", park.Position?.Longitude, result, changes);
-
-        return result.Errors.Count > 0 ? new List<ContextualBlockPreviewChange>() : changes;
-    }
-
-    private static void PreviewStringField(
-        Park park,
-        JsonElement block,
-        string fieldName,
-        string? currentValue,
-        ContextualBlockPreviewResult result,
-        List<ContextualBlockPreviewChange> changes)
-    {
-        if (!block.TryGetProperty(fieldName, out JsonElement value))
-        {
-            return;
-        }
-
-        if (value.ValueKind != JsonValueKind.String && value.ValueKind != JsonValueKind.Null)
-        {
-            result.Errors.Add($"block.{fieldName} doit etre une chaine ou null.");
-            return;
-        }
-
-        string? newValue = value.ValueKind == JsonValueKind.Null ? null : value.GetString();
-        if (!string.Equals(currentValue, newValue, StringComparison.Ordinal))
-        {
-            changes.Add(BuildChange(park, fieldName, null, currentValue, newValue));
-        }
-    }
-
-    private static void PreviewNumberField(
-        Park park,
-        JsonElement block,
-        string fieldName,
-        double? currentValue,
-        ContextualBlockPreviewResult result,
-        List<ContextualBlockPreviewChange> changes)
-    {
-        if (!block.TryGetProperty(fieldName, out JsonElement value))
-        {
-            return;
-        }
-
-        if (value.ValueKind != JsonValueKind.Number && value.ValueKind != JsonValueKind.Null)
-        {
-            result.Errors.Add($"block.{fieldName} doit etre un nombre ou null.");
-            return;
-        }
-
-        double? newValue = value.ValueKind == JsonValueKind.Null ? null : value.GetDouble();
-        if (newValue.HasValue && string.Equals(fieldName, "latitude", StringComparison.Ordinal) && (newValue.Value < -90 || newValue.Value > 90))
-        {
-            result.Errors.Add("block.latitude doit etre compris entre -90 et 90.");
-            return;
-        }
-
-        if (newValue.HasValue && string.Equals(fieldName, "longitude", StringComparison.Ordinal) && (newValue.Value < -180 || newValue.Value > 180))
-        {
-            result.Errors.Add("block.longitude doit etre compris entre -180 et 180.");
-            return;
-        }
-
-        if (currentValue != newValue)
-        {
-            changes.Add(BuildChange(park, fieldName, null, FormatNumber(currentValue), FormatNumber(newValue)));
-        }
-    }
-
     private static void AddChanges(ContextualBlockPreviewResult result, List<ContextualBlockPreviewChange> changes)
     {
         if (result.Errors.Count > 0)
@@ -502,11 +420,6 @@ internal static class ContextualBlockJsonPreviewBuilder
         }
 
         result.Changes.AddRange(changes);
-    }
-
-    private static ContextualBlockPreviewChange BuildChange(Park park, string fieldName, string? languageCode, string? oldValue, string? newValue)
-    {
-        return BuildChange(nameof(Park), park.Id, park.Name, fieldName, languageCode, oldValue, newValue);
     }
 
     private static ContextualBlockPreviewChange BuildChange(
@@ -631,11 +544,6 @@ internal static class ContextualBlockJsonPreviewBuilder
     private static string NormalizeLanguageCode(string? value)
     {
         return string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim().ToLowerInvariant();
-    }
-
-    private static string? FormatNumber(double? value)
-    {
-        return value?.ToString("G17", CultureInfo.InvariantCulture);
     }
 
     private static void FinalizeResult(ContextualBlockPreviewResult result, int inspectedFieldCount)

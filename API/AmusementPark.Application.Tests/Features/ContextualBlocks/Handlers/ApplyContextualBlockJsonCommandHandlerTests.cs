@@ -181,7 +181,7 @@ public sealed class ApplyContextualBlockJsonCommandHandlerTests
               "ids": { "parkId": "park-1", "founderId": "founder-1", "operatorId": "operator-1" },
               "block": {
                 "parkId": "park-1",
-                "countryCode": "BE",
+                "countryCode": " be ",
                 "city": "Bruxelles",
                 "street": null,
                 "postalCode": "1000",
@@ -219,6 +219,97 @@ public sealed class ApplyContextualBlockJsonCommandHandlerTests
             Times.Exactly(2));
         parkRepository.VerifyAll();
         updateParkHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenPracticalJsonClearsSingleCoordinate_ShouldRejectBeforeApply()
+    {
+        Park park = CreatePark();
+        Mock<IParkRepository> parkRepository = CreateRepository(park);
+        Mock<ICommandHandler<UpdateParkCommand, ApplicationResult<Park>>> updateParkHandler = CreateUpdateHandler();
+        ApplyContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository, updateParkHandler);
+
+        using JsonDocument document = JsonDocument.Parse(
+            """
+            {
+              "documentType": "AmusementParkContextualBlockUpsert",
+              "schemaVersion": "2026-06-21",
+              "blockType": "park.practical",
+              "target": { "entityType": "Park", "entityId": "park-1" },
+              "ids": { "parkId": "park-1", "founderId": "founder-1", "operatorId": "operator-1" },
+              "block": {
+                "parkId": "park-1",
+                "city": "Lyon",
+                "latitude": null
+              }
+            }
+            """);
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new ApplyContextualBlockJsonCommand("park.practical", "park-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.False(result.Value.CanApply);
+        Assert.False(result.Value.IsApplied);
+        Assert.Contains(result.Value.Errors, static error => error.Contains("block.longitude", StringComparison.Ordinal));
+        Assert.Equal("Paris", park.City);
+        Assert.NotNull(park.Position);
+        Assert.Equal(48.85, park.Position.Latitude);
+        Assert.Equal(2.35, park.Position.Longitude);
+        updateParkHandler.Verify(
+            handlerMock => handlerMock.HandleAsync(It.IsAny<UpdateParkCommand>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        parkRepository.Verify(
+            repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()),
+            Times.Once);
+        parkRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenPracticalJsonSetsSingleCoordinateWithoutExistingPosition_ShouldRejectBeforeApply()
+    {
+        Park park = CreatePark();
+        park.ClearPosition();
+        Mock<IParkRepository> parkRepository = CreateRepository(park);
+        Mock<ICommandHandler<UpdateParkCommand, ApplicationResult<Park>>> updateParkHandler = CreateUpdateHandler();
+        ApplyContextualBlockJsonCommandHandler handler = CreateHandler(parkRepository, updateParkHandler);
+
+        using JsonDocument document = JsonDocument.Parse(
+            """
+            {
+              "documentType": "AmusementParkContextualBlockUpsert",
+              "schemaVersion": "2026-06-21",
+              "blockType": "park.practical",
+              "target": { "entityType": "Park", "entityId": "park-1" },
+              "ids": { "parkId": "park-1", "founderId": "founder-1", "operatorId": "operator-1" },
+              "block": {
+                "parkId": "park-1",
+                "city": "Lyon",
+                "latitude": 50.85
+              }
+            }
+            """);
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new ApplyContextualBlockJsonCommand("park.practical", "park-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.False(result.Value.CanApply);
+        Assert.False(result.Value.IsApplied);
+        Assert.Contains(result.Value.Errors, static error => error.Contains("block.longitude", StringComparison.Ordinal));
+        Assert.Equal("Paris", park.City);
+        Assert.Null(park.Position);
+        updateParkHandler.Verify(
+            handlerMock => handlerMock.HandleAsync(It.IsAny<UpdateParkCommand>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        parkRepository.Verify(
+            repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()),
+            Times.Once);
+        parkRepository.VerifyAll();
     }
 
     [Fact]
