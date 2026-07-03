@@ -83,6 +83,126 @@
         "show": "Tonen"
       }
     },
+    "bulkParkGraphUpserts": {
+      "navTitle": "Bulk JSON-upserts",
+      "title": "Bulk JSON-upserts voor parken",
+      "kicker": "Configureerbare export · Admin",
+      "subtitle": "Filter parken, kies de eigenschappen die je exporteert en importeer de JSON opnieuw om bulkupdates op aanwezige eigenschappen toe te passen.",
+      "export": {
+        "title": "Configureerbare JSON-export",
+        "description": "De velden id, name en countryCode zijn altijd aanwezig. Aangevinkte secties voegen hun eigenschappen toe, ook wanneer ze leeg of null zijn."
+      },
+      "selection": {
+        "mode": "Geëxporteerde selectie",
+        "filtered": "Alle gefilterde resultaten",
+        "explicit": "Alleen aangevinkte parken",
+        "filteredScope": "{{count}} gefilterde park(en) worden geëxporteerd.",
+        "explicitScope": "{{count}} geselecteerde park(en) worden geëxporteerd.",
+        "selectPage": "Zichtbare parken selecteren"
+      },
+      "sections": {
+        "title": "Geëxporteerde eigenschappen",
+        "identityIncluded": "Zonder aangevinkte sectie bevat de export alleen de minimale identiteit van de gefilterde parken.",
+        "ParkBasics": "Algemene informatie",
+        "ParkAudience": "Bereik",
+        "ParkLocation": "Coördinaten en adres",
+        "ParkAdministration": "Administratie",
+        "ParkDescriptions": "Beschrijvingen",
+        "ParkHomeFeature": "Home-uitgelicht",
+        "References": "Referenties",
+        "Zones": "Zones",
+        "Items": "ParkItems",
+        "Images": "Afbeeldingen",
+        "OpeningHours": "Openingstijden",
+        "History": "Geschiedenis"
+      },
+      "import": {
+        "title": "Bulk JSON-import",
+        "description": "Bulkmodus is bedoeld voor updates van bestaande parken. Gedetecteerde creaties blokkeren de preview.",
+        "placeholder": "Sleep of plak hier een bulk JSON-export."
+      },
+      "actions": {
+        "copyErrors": "Fouten kopiëren",
+        "clearSelection": "Selectie wissen",
+        "selectAllSections": "Alles selecteren",
+        "clearSections": "Alles wissen",
+        "export": "Bulk JSON downloaden",
+        "exporting": "JSON voorbereiden...",
+        "uploadJsonFile": "JSON-bestand importeren",
+        "preview": "Preview",
+        "previewing": "Preview bezig...",
+        "apply": "Bulk toepassen",
+        "applying": "Toepassen..."
+      },
+      "errors": {
+        "loadParksFailed": "Het laden van parken is mislukt.",
+        "exportFailed": "De bulk JSON-export is mislukt.",
+        "fileReadFailed": "Het JSON-bestand kon niet worden gelezen.",
+        "invalidJson": "De bulk JSON is ongeldig.",
+        "previewFailed": "De bulkpreview is mislukt.",
+        "applyFailed": "Het toepassen van de bulk is mislukt."
+      },
+      "toasts": {
+        "exportSuccessTitle": "Export klaar",
+        "exportSuccessDetail": "De bulk JSON is gedownload.",
+        "exportFailedTitle": "Export mislukt",
+        "exportFailedDetail": "De bulk JSON kon niet worden voorbereid.",
+        "previewSuccessTitle": "Preview klaar",
+        "previewSuccessDetail": "De bulk JSON kan worden toegepast.",
+        "previewPartialTitle": "Preview met waarschuwingen",
+        "previewPartialDetail": "Controleer de waarschuwingen voor je toepast.",
+        "previewBlockedTitle": "Preview geblokkeerd",
+        "previewBlockedDetail": "De preview bevat {{count}} fout(en).",
+        "previewFailedTitle": "Preview mislukt",
+        "previewFailedDetail": "De bulkpreview kon niet worden voltooid.",
+        "applySuccessTitle": "Toepassing voltooid",
+        "applySuccessDetail": "De bulk JSON is toegepast.",
+        "applyPartialTitle": "Gedeeltelijk toegepast",
+        "applyPartialDetail": "Sommige items zijn niet toegepast. Controleer de details.",
+        "applyRejectedTitle": "Geen item toegepast",
+        "applyRejectedDetail": "{{count}} item(s) zijn geweigerd. Controleer de details.",
+        "applyFailedTitle": "Toepassen mislukt",
+        "applyFailedDetail": "De bulk JSON kon niet worden toegepast.",
+        "applyBlockedTitle": "Toepassen geblokkeerd",
+        "applyBlockedDetail": "Los de previewfouten op voordat je toepast.",
+        "invalidJsonTitle": "Ongeldige JSON",
+        "invalidJsonDetail": "Corrigeer de JSON voordat je doorgaat.",
+        "errorsCopiedTitle": "Fouten gekopieerd",
+        "errorsCopiedDetail": "De details staan op het klembord.",
+        "copyFailedTitle": "Kopiëren mislukt",
+        "copyFailedDetail": "De details konden niet worden gekopieerd."
+      },
+      "result": {
+        "title": "Bulkpreview",
+        "parks": "{{count}} park(en) in het document.",
+        "pending": "Start een preview om wijzigingen te controleren voordat je toepast.",
+        "applied": "Bulk-upsert succesvol toegepast.",
+        "appliedPartial": "Gedeeltelijk toegepast: {{applied}} item(s) toegepast, {{failed}} geweigerd.",
+        "appliedNoChange": "Geen item toegepast: {{failed}} geweigerd.",
+        "unnamedPark": "Park zonder naam"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "bulkParkGraphUpserts": "Configureerbare bulk JSON-bestanden exporteren en importeren.",
+        "contactGrievances": "Bekijk contactberichten en anti-misbruikcontext.",
+        "users": "Accounts, rollen en toegang beheren.",
+        "parks": "Parken filteren, prioriteren en publiceren.",
+        "parkItems": "Attracties, winkels, restaurants en diensten beheren.",
+        "operators": "Exploitanten gekoppeld aan parken onderhouden.",
+        "manufacturers": "Constructeurs en attractiebouwers onderhouden.",
+        "images": "Media, logo’s en sitebeelden controleren.",
+        "data": "Imports, bronnen en gegevensverwerking volgen.",
+        "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld.",
+        "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
+        "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
+        "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow.",
+        "history": "Tijdlijnen, onderbouwde mijlpalen en historische artikelen beheren.",
+        "parkWeather": "Geplande updates van publieke gegevens volgen."
+      },
+      "title": "Beheerpaneel",
+      "subtitle": "Startpunt van de backoffice: kies een rubriek in het linkermenu of via de snelkoppelingen hieronder."
+    },
     "bulk": {
       "selected": "{{count}} geselecteerd",
       "makeVisible": "Zichtbaar maken",
@@ -121,26 +241,6 @@
         "context": "Context",
         "userAgent": "User-agent"
       }
-    },
-    "dashboard": {
-      "shortcuts": {
-        "contactGrievances": "Bekijk contactberichten en anti-misbruikcontext.",
-        "users": "Accounts, rollen en toegang beheren.",
-        "parks": "Parken filteren, prioriteren en publiceren.",
-        "parkItems": "Attracties, winkels, restaurants en diensten beheren.",
-        "operators": "Exploitanten gekoppeld aan parken onderhouden.",
-        "manufacturers": "Constructeurs en attractiebouwers onderhouden.",
-        "images": "Media, logo’s en sitebeelden controleren.",
-        "data": "Imports, bronnen en gegevensverwerking volgen.",
-        "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld.",
-        "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
-        "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
-        "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow.",
-        "history": "Tijdlijnen, onderbouwde mijlpalen en historische artikelen beheren.",
-        "parkWeather": "Geplande updates van publieke gegevens volgen."
-      },
-      "title": "Beheerpaneel",
-      "subtitle": "Startpunt van de backoffice: kies een rubriek in het linkermenu of via de snelkoppelingen hieronder."
     },
     "dataSources": {
       "title": "Databronnen"

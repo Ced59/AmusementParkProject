@@ -1,0 +1,108 @@
+{
+  "admin": {
+    "bulkParkGraphUpserts": {
+      "navTitle": "Bulk-JSON-Upserts",
+      "title": "Bulk-JSON-Upserts für Parks",
+      "kicker": "Konfigurierter Export · Admin",
+      "subtitle": "Filtere Parks, wähle die zu exportierenden Eigenschaften und importiere das JSON erneut, um Bulk-Aktualisierungen auf vorhandene Eigenschaften anzuwenden.",
+      "export": {
+        "title": "Konfigurierter JSON-Export",
+        "description": "Die Felder id, name und countryCode sind immer vorhanden. Ausgewählte Abschnitte ergänzen ihre Eigenschaften, auch wenn sie leer oder null sind."
+      },
+      "selection": {
+        "mode": "Exportierte Auswahl",
+        "filtered": "Alle gefilterten Ergebnisse",
+        "explicit": "Nur ausgewählte Parks",
+        "filteredScope": "{{count}} gefilterte(r) Park(s) wird/werden exportiert.",
+        "explicitScope": "{{count}} ausgewählte(r) Park(s) wird/werden exportiert.",
+        "selectPage": "Sichtbare Parks auswählen"
+      },
+      "sections": {
+        "title": "Exportierte Eigenschaften",
+        "identityIncluded": "Ohne ausgewählten Abschnitt enthält der Export nur die minimale Identität der gefilterten Parks.",
+        "ParkBasics": "Allgemeine Informationen",
+        "ParkAudience": "Reichweite",
+        "ParkLocation": "Koordinaten und Adresse",
+        "ParkAdministration": "Administration",
+        "ParkDescriptions": "Beschreibungen",
+        "ParkHomeFeature": "Startseiten-Hervorhebung",
+        "References": "Referenzen",
+        "Zones": "Zonen",
+        "Items": "ParkItems",
+        "Images": "Bilder",
+        "OpeningHours": "Öffnungszeiten",
+        "History": "Geschichte"
+      },
+      "import": {
+        "title": "Bulk-JSON-Import",
+        "description": "Der Bulk-Modus ist für Aktualisierungen bestehender Parks reserviert. Erkannte Erstellungen blockieren die Preview.",
+        "placeholder": "Bulk-JSON-Export hier ablegen oder einfügen."
+      },
+      "actions": {
+        "copyErrors": "Fehler kopieren",
+        "clearSelection": "Auswahl leeren",
+        "selectAllSections": "Alle auswählen",
+        "clearSections": "Alle abwählen",
+        "export": "Bulk-JSON herunterladen",
+        "exporting": "JSON wird vorbereitet...",
+        "uploadJsonFile": "JSON-Datei importieren",
+        "preview": "Preview",
+        "previewing": "Preview läuft...",
+        "apply": "Bulk anwenden",
+        "applying": "Anwendung läuft..."
+      },
+      "errors": {
+        "loadParksFailed": "Die Parks konnten nicht geladen werden.",
+        "exportFailed": "Der Bulk-JSON-Export ist fehlgeschlagen.",
+        "fileReadFailed": "Die JSON-Datei konnte nicht gelesen werden.",
+        "invalidJson": "Das Bulk-JSON ist ungültig.",
+        "previewFailed": "Die Bulk-Preview ist fehlgeschlagen.",
+        "applyFailed": "Die Bulk-Anwendung ist fehlgeschlagen."
+      },
+      "toasts": {
+        "exportSuccessTitle": "Export bereit",
+        "exportSuccessDetail": "Das Bulk-JSON wurde heruntergeladen.",
+        "exportFailedTitle": "Export fehlgeschlagen",
+        "exportFailedDetail": "Das Bulk-JSON konnte nicht vorbereitet werden.",
+        "previewSuccessTitle": "Preview bereit",
+        "previewSuccessDetail": "Das Bulk-JSON kann angewendet werden.",
+        "previewPartialTitle": "Preview mit Warnungen",
+        "previewPartialDetail": "Prüfe die Warnungen vor der Anwendung.",
+        "previewBlockedTitle": "Preview blockiert",
+        "previewBlockedDetail": "Die Preview enthält {{count}} Fehler.",
+        "previewFailedTitle": "Preview fehlgeschlagen",
+        "previewFailedDetail": "Die Bulk-Preview konnte nicht abgeschlossen werden.",
+        "applySuccessTitle": "Anwendung abgeschlossen",
+        "applySuccessDetail": "Das Bulk-JSON wurde angewendet.",
+        "applyPartialTitle": "Teilweise Anwendung",
+        "applyPartialDetail": "Einige Einträge wurden nicht angewendet. Prüfe die Details.",
+        "applyRejectedTitle": "Kein Eintrag angewendet",
+        "applyRejectedDetail": "{{count}} Eintrag/Einträge wurde(n) abgelehnt. Prüfe die Details.",
+        "applyFailedTitle": "Anwendung fehlgeschlagen",
+        "applyFailedDetail": "Das Bulk-JSON konnte nicht angewendet werden.",
+        "applyBlockedTitle": "Anwendung blockiert",
+        "applyBlockedDetail": "Behebe die Preview-Fehler vor der Anwendung.",
+        "invalidJsonTitle": "Ungültiges JSON",
+        "invalidJsonDetail": "Korrigiere das JSON, bevor du fortfährst.",
+        "errorsCopiedTitle": "Fehler kopiert",
+        "errorsCopiedDetail": "Die Details befinden sich in der Zwischenablage.",
+        "copyFailedTitle": "Kopieren fehlgeschlagen",
+        "copyFailedDetail": "Die Details konnten nicht kopiert werden."
+      },
+      "result": {
+        "title": "Bulk-Preview",
+        "parks": "{{count}} Park(s) im Dokument.",
+        "pending": "Starte eine Preview, um Änderungen vor der Anwendung zu prüfen.",
+        "applied": "Bulk-Upsert erfolgreich angewendet.",
+        "appliedPartial": "Teilweise Anwendung: {{applied}} Eintrag/Einträge angewendet, {{failed}} abgelehnt.",
+        "appliedNoChange": "Kein Eintrag angewendet: {{failed}} abgelehnt.",
+        "unnamedPark": "Park ohne Namen"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "bulkParkGraphUpserts": "Konfigurierte Bulk-JSON-Dateien exportieren und importieren."
+      }
+    }
+  }
+}

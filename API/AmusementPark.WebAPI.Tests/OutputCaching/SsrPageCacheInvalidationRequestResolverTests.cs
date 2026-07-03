@@ -451,6 +451,110 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     }
 
     [Fact]
+    public async Task ResolveAsync_ForBulkParkGraphUpsertPreview_ShouldReturnNoOp()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new BulkParkGraphUpsertResultDto
+        {
+            IsApplied = false,
+            Parks = new List<BulkParkGraphUpsertParkResultDto>
+            {
+                new BulkParkGraphUpsertParkResultDto
+                {
+                    TargetParkId = "park-1",
+                    Result = new ParkGraphUpsertResultDto
+                    {
+                        TargetParkId = "park-1",
+                        Changes = new List<ParkGraphUpsertChangeDto>
+                        {
+                            new ParkGraphUpsertChangeDto
+                            {
+                                EntityType = "Park",
+                                EntityId = "park-1",
+                                ChangeType = "Updated",
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Empty(request.Paths);
+        Assert.Empty(request.Prefixes);
+        Assert.False(request.IncludeSeoDocuments);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForBulkParkGraphUpsertParkChanges_ShouldTargetImpactedParks()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new BulkParkGraphUpsertResultDto
+        {
+            IsApplied = true,
+            Parks = new List<BulkParkGraphUpsertParkResultDto>
+            {
+                new BulkParkGraphUpsertParkResultDto
+                {
+                    TargetParkId = "park-1",
+                    Result = new ParkGraphUpsertResultDto
+                    {
+                        TargetParkId = "park-1",
+                        Changes = new List<ParkGraphUpsertChangeDto>
+                        {
+                            new ParkGraphUpsertChangeDto
+                            {
+                                EntityType = "Park",
+                                EntityId = "park-1",
+                                ChangeType = "Updated",
+                            },
+                        },
+                    },
+                },
+                new BulkParkGraphUpsertParkResultDto
+                {
+                    Result = new ParkGraphUpsertResultDto
+                    {
+                        TargetParkId = "park-2",
+                        Changes = new List<ParkGraphUpsertChangeDto>
+                        {
+                            new ParkGraphUpsertChangeDto
+                            {
+                                EntityType = "Park",
+                                EntityId = "park-2",
+                                ChangeType = "Updated",
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/", request.Prefixes);
+        Assert.Contains("/fr/park/park-2/", request.Prefixes);
+        Assert.Contains("/fr/home", request.Paths);
+        Assert.Contains("/fr/rankings", request.Paths);
+        Assert.True(request.IncludeSeoDocuments);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
     public async Task ResolveAsync_ForLargeParkGraphUpsert_ShouldTargetParkWithSeoDocumentsWithoutHardPurge()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();

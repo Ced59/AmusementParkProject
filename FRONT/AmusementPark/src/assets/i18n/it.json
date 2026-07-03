@@ -83,6 +83,126 @@
         "show": "Mostra"
       }
     },
+    "bulkParkGraphUpserts": {
+      "navTitle": "Upsert JSON bulk",
+      "title": "Upsert JSON bulk dei parchi",
+      "kicker": "Export configurabile · Admin",
+      "subtitle": "Filtra i parchi, scegli le proprietà da esportare e reimporta il JSON per applicare aggiornamenti bulk sulle proprietà presenti.",
+      "export": {
+        "title": "Export JSON configurabile",
+        "description": "I campi id, name e countryCode sono sempre presenti. Le sezioni selezionate aggiungono le loro proprietà, anche quando sono vuote o null."
+      },
+      "selection": {
+        "mode": "Selezione esportata",
+        "filtered": "Tutti i risultati filtrati",
+        "explicit": "Solo parchi selezionati",
+        "filteredScope": "{{count}} parco/parchi filtrati saranno esportati.",
+        "explicitScope": "{{count}} parco/parchi selezionati saranno esportati.",
+        "selectPage": "Seleziona i parchi visibili"
+      },
+      "sections": {
+        "title": "Proprietà esportate",
+        "identityIncluded": "Senza sezioni selezionate, l'export contiene solo l'identità minima dei parchi filtrati.",
+        "ParkBasics": "Informazioni generali",
+        "ParkAudience": "Rilevanza",
+        "ParkLocation": "Coordinate e indirizzo",
+        "ParkAdministration": "Amministrazione",
+        "ParkDescriptions": "Descrizioni",
+        "ParkHomeFeature": "In evidenza in home",
+        "References": "Riferimenti",
+        "Zones": "Zone",
+        "Items": "ParkItems",
+        "Images": "Immagini",
+        "OpeningHours": "Orari",
+        "History": "Storia"
+      },
+      "import": {
+        "title": "Import JSON bulk",
+        "description": "La modalità bulk è riservata agli aggiornamenti di parchi esistenti. Le creazioni rilevate bloccano la preview.",
+        "placeholder": "Trascina o incolla qui un export JSON bulk."
+      },
+      "actions": {
+        "copyErrors": "Copia errori",
+        "clearSelection": "Svuota selezione",
+        "selectAllSections": "Seleziona tutto",
+        "clearSections": "Deseleziona tutto",
+        "export": "Scarica JSON bulk",
+        "exporting": "Preparazione JSON...",
+        "uploadJsonFile": "Importa file JSON",
+        "preview": "Preview",
+        "previewing": "Preview in corso...",
+        "apply": "Applica bulk",
+        "applying": "Applicazione..."
+      },
+      "errors": {
+        "loadParksFailed": "Il caricamento dei parchi non è riuscito.",
+        "exportFailed": "L'export JSON bulk non è riuscito.",
+        "fileReadFailed": "Il file JSON non può essere letto.",
+        "invalidJson": "Il JSON bulk non è valido.",
+        "previewFailed": "La preview bulk non è riuscita.",
+        "applyFailed": "L'applicazione bulk non è riuscita."
+      },
+      "toasts": {
+        "exportSuccessTitle": "Export pronto",
+        "exportSuccessDetail": "Il JSON bulk è stato scaricato.",
+        "exportFailedTitle": "Export non riuscito",
+        "exportFailedDetail": "Il JSON bulk non può essere preparato.",
+        "previewSuccessTitle": "Preview pronta",
+        "previewSuccessDetail": "Il JSON bulk può essere applicato.",
+        "previewPartialTitle": "Preview con avvisi",
+        "previewPartialDetail": "Controlla gli avvisi prima dell'applicazione.",
+        "previewBlockedTitle": "Preview bloccata",
+        "previewBlockedDetail": "La preview contiene {{count}} errore/i.",
+        "previewFailedTitle": "Preview non riuscita",
+        "previewFailedDetail": "La preview bulk non può essere completata.",
+        "applySuccessTitle": "Applicazione completata",
+        "applySuccessDetail": "Il JSON bulk è stato applicato.",
+        "applyPartialTitle": "Applicazione parziale",
+        "applyPartialDetail": "Alcune voci non sono state applicate. Controlla i dettagli.",
+        "applyRejectedTitle": "Nessuna voce applicata",
+        "applyRejectedDetail": "{{count}} voce/i sono state rifiutate. Controlla i dettagli.",
+        "applyFailedTitle": "Applicazione non riuscita",
+        "applyFailedDetail": "Il JSON bulk non può essere applicato.",
+        "applyBlockedTitle": "Applicazione bloccata",
+        "applyBlockedDetail": "Correggi gli errori di preview prima di applicare.",
+        "invalidJsonTitle": "JSON non valido",
+        "invalidJsonDetail": "Correggi il JSON prima di continuare.",
+        "errorsCopiedTitle": "Errori copiati",
+        "errorsCopiedDetail": "I dettagli sono negli appunti.",
+        "copyFailedTitle": "Copia non riuscita",
+        "copyFailedDetail": "I dettagli non possono essere copiati."
+      },
+      "result": {
+        "title": "Preview bulk",
+        "parks": "{{count}} parco/parchi nel documento.",
+        "pending": "Avvia una preview per controllare le modifiche prima dell'applicazione.",
+        "applied": "Upsert bulk applicato con successo.",
+        "appliedPartial": "Applicazione parziale: {{applied}} voce/i applicate, {{failed}} rifiutate.",
+        "appliedNoChange": "Nessuna voce applicata: {{failed}} rifiutate.",
+        "unnamedPark": "Parco senza nome"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "bulkParkGraphUpserts": "Esportare e importare file JSON bulk configurabili.",
+        "contactGrievances": "Consulta messaggi di contatto e contesto antiabuso.",
+        "users": "Gestire account, ruoli e accessi.",
+        "parks": "Filtrare, prioritizzare e pubblicare i parchi.",
+        "parkItems": "Amministrare attrazioni, negozi, ristoranti e servizi.",
+        "operators": "Gestire gli operatori collegati ai parchi.",
+        "manufacturers": "Gestire costruttori e produttori di attrazioni.",
+        "images": "Controllare media, loghi e immagini del sito.",
+        "data": "Monitorare importazioni, fonti e processi dati.",
+        "founders": "Gestire fondatori e biografie collegati ai parchi.",
+        "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
+        "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
+        "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow.",
+        "history": "Gestire timeline, tappe documentate e articoli storici.",
+        "parkWeather": "Monitorare aggiornamenti pianificati di dati pubblici."
+      },
+      "title": "Pannello di controllo",
+      "subtitle": "Punto di ingresso del back-office: scegli una sezione dal menu a sinistra o dalle scorciatoie qui sotto."
+    },
     "bulk": {
       "selected": "{{count}} selezionato/i",
       "makeVisible": "Rendi visibile",
@@ -121,26 +241,6 @@
         "context": "Contesto",
         "userAgent": "User-agent"
       }
-    },
-    "dashboard": {
-      "shortcuts": {
-        "contactGrievances": "Consulta messaggi di contatto e contesto antiabuso.",
-        "users": "Gestire account, ruoli e accessi.",
-        "parks": "Filtrare, prioritizzare e pubblicare i parchi.",
-        "parkItems": "Amministrare attrazioni, negozi, ristoranti e servizi.",
-        "operators": "Gestire gli operatori collegati ai parchi.",
-        "manufacturers": "Gestire costruttori e produttori di attrazioni.",
-        "images": "Controllare media, loghi e immagini del sito.",
-        "data": "Monitorare importazioni, fonti e processi dati.",
-        "founders": "Gestire fondatori e biografie collegati ai parchi.",
-        "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
-        "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
-        "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow.",
-        "history": "Gestire timeline, tappe documentate e articoli storici.",
-        "parkWeather": "Monitorare aggiornamenti pianificati di dati pubblici."
-      },
-      "title": "Pannello di controllo",
-      "subtitle": "Punto di ingresso del back-office: scegli una sezione dal menu a sinistra o dalle scorciatoie qui sotto."
     },
     "dataSources": {
       "title": "Fonti dati"

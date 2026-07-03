@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-07-01-r1**
+Version : **2026-07-03-r1**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -97,6 +97,20 @@ Utiliser le mode `merge` sauf demande contraire. Sélectionner aussi le parc cib
 Ajouter seulement les sections utiles à l’étape : `references`, `park`, `zones`, `items`, `images`, `openingHours`, `history`.
 
 Les textes localisés des upserts actuels utilisent les codes courts présents dans les exports : `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `pt`. Si un export existant utilise une autre forme, garder la forme déjà présente.
+
+## Mode bulk JSON upsert
+
+Le mode bulk utilise une enveloppe racine `AmusementParkBulkParkGraphUpsert` avec un tableau `parks`. Chaque entrée de `parks` est un document `AmusementParkParkGraphUpsert` normal, avec son `identity` minimal (`id`/`parkId`, `name`, `countryCode`) et les sections exportées explicitement.
+
+Toutes les règles de cet orchestrateur restent valables en mode bulk : enums canoniques, sources fiables, résolution des clés, previews obligatoires, lots bornés, prudence sur les images, horaires et historiques, et interdiction de copier un export complet quand seules quelques propriétés doivent changer.
+
+Règle spécifique bulk : ne jamais ajouter de propriété absente du JSON exporté. Le travail consiste à vérifier, corriger ou renseigner uniquement les propriétés déjà présentes dans le JSON fourni par l'export bulk. Si une propriété utile n'est pas dans l'export, demander un nouvel export qui inclut la section correspondante au lieu d'inventer ou d'ajouter la propriété manuellement.
+
+Un champ demandé à l'export doit rester visible même lorsqu'il n'est pas renseigné : valeur vide, tableau vide ou `null` selon le contrat. Ce `null` est le signal attendu pour pouvoir renseigner ce champ sans ajouter une propriété nouvelle.
+
+Le bulk est un flux de mise à jour de parcs existants. Ne pas créer de parc, zone, parkItem, référence, image ou événement nouveau dans un JSON bulk, sauf demande explicite de sortir du mode bulk update-only et de revenir à un upsert ciblé classique. Si la preview signale une création (`Created`), corriger le JSON pour ne garder que les entités présentes dans l'export ou demander un autre flux.
+
+L'enveloppe bulk doit rester cohérente : elle peut venir d'une sélection explicite de parcs ou d'un filtre admin documenté, mais elle ne doit pas devenir un dump massif non borné sans demande explicite. Pour des mises à jour larges, préférer plusieurs exports bulk par critère lisible : par exemple par statut, pays, rayonnement, visibilité ou état d'horaires.
 
 ## Règle de résolution des clés
 

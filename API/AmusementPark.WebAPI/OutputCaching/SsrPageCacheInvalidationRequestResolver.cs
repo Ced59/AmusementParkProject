@@ -403,6 +403,11 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         }
 
         object? resultValue = ResolveResultValue(executedContext);
+        if (resultValue is BulkParkGraphUpsertResultDto bulkResult)
+        {
+            return this.ResolveBulkParkGraphUpsert(bulkResult, includeSeoDocuments);
+        }
+
         if (resultValue is not ParkGraphUpsertResultDto result)
         {
             return BuildAllPageCaches(includeSeoDocuments);
@@ -501,6 +506,42 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         }
 
         SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildRequest(paths, prefixes, includeSeoDocuments));
+        return requiresHardPurge ? ForceHardPurge(request) : request;
+    }
+
+    private SsrPageCacheInvalidationRequest ResolveBulkParkGraphUpsert(
+        BulkParkGraphUpsertResultDto result,
+        bool includeSeoDocuments)
+    {
+        if (!result.IsApplied)
+        {
+            return WithoutRefresh(BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false));
+        }
+
+        IReadOnlyCollection<BulkParkGraphUpsertParkResultDto> changedParks = result.Parks
+            .Where(static park => park.Result.Changes.Any(static change => !string.Equals(change.ChangeType, "Unchanged", StringComparison.OrdinalIgnoreCase)))
+            .ToList();
+        if (changedParks.Count == 0)
+        {
+            return WithoutRefresh(BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false));
+        }
+
+        bool requiresHardPurge = changedParks
+            .SelectMany(static park => park.Result.Changes)
+            .Any(ContainsHardPurgeSignal);
+        IReadOnlyCollection<string> parkIds = changedParks
+            .Select(static park => park.TargetParkId ?? park.Result.TargetParkId)
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId!.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (parkIds.Count == 0 || parkIds.Count > MaxTargetedEntityCount)
+        {
+            return BuildAllPageCaches(includeSeoDocuments);
+        }
+
+        SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildParkImpactRequest(parkIds, includeSeoDocuments, includeDiscoveryPages: true));
         return requiresHardPurge ? ForceHardPurge(request) : request;
     }
 

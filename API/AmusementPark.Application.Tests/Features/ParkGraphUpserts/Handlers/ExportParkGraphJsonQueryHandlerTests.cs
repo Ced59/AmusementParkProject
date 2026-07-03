@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Application.Features.ParkGraphUpserts.Handlers;
 using AmusementPark.Application.Features.ParkGraphUpserts.Queries;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
@@ -45,6 +46,99 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
 
         Assert.False(result.IsSuccess);
         Assert.Equal(ApplicationErrorType.NotFound, result.Errors.Single().Type);
+        parkRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenNoSectionIsSelected_ShouldExportIdentityOnly()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Identity Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict));
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportParkGraphJsonQuery("park-1", Array.Empty<ParkGraphExportSection>()),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Json);
+        JsonElement root = document.RootElement;
+
+        Assert.Equal("park-1", root.GetProperty("identity").GetProperty("parkId").GetString());
+        Assert.Equal("Identity Park", root.GetProperty("identity").GetProperty("name").GetString());
+        Assert.Equal("FR", root.GetProperty("identity").GetProperty("countryCode").GetString());
+        Assert.False(root.TryGetProperty("park", out _));
+        Assert.False(root.TryGetProperty("items", out _));
+        Assert.False(root.TryGetProperty("zones", out _));
+        Assert.False(root.TryGetProperty("references", out _));
+        Assert.True(root.TryGetProperty("metadata", out _));
+        parkRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenSelectedParkFieldIsEmpty_ShouldKeepNullPropertyInExport()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Null Field Park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict));
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportParkGraphJsonQuery("park-1", new[] { ParkGraphExportSection.ParkLocation }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Json);
+        JsonElement parkPatch = document.RootElement.GetProperty("park");
+
+        Assert.Equal("FR", parkPatch.GetProperty("countryCode").GetString());
+        Assert.Equal(JsonValueKind.Null, parkPatch.GetProperty("street").ValueKind);
+        Assert.Equal(JsonValueKind.Null, parkPatch.GetProperty("city").ValueKind);
+        Assert.Equal(JsonValueKind.Null, parkPatch.GetProperty("postalCode").ValueKind);
+        Assert.Equal(JsonValueKind.Null, parkPatch.GetProperty("latitude").ValueKind);
+        Assert.Equal(JsonValueKind.Null, parkPatch.GetProperty("longitude").ValueKind);
+        Assert.False(parkPatch.TryGetProperty("name", out _));
         parkRepository.VerifyAll();
     }
 

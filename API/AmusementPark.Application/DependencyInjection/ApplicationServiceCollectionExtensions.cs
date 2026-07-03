@@ -46,6 +46,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ParkItemContentQualityService>();
         services.AddScoped<ParkItemsBulkCreatePreviewService>();
         services.AddScoped<ParkGraphUpsertProcessor>();
+        services.AddScoped<BulkParkGraphUpsertProcessor>();
         services.AddScoped<ParkOpeningHoursScheduleNormalizer>();
         services.AddSingleton<ParkOpeningHoursCoverageSegmentBuilder>();
         services.AddSingleton<ParkOpeningHoursAdminStatusResolver>();

@@ -5,6 +5,45 @@ export interface ParkGraphUpsertRequest {
   document: unknown;
 }
 
+export type ParkGraphBulkSelectionMode = 'filtered' | 'explicit';
+
+export type ParkGraphExportSection =
+  | 'ParkBasics'
+  | 'ParkAudience'
+  | 'ParkLocation'
+  | 'ParkAdministration'
+  | 'ParkDescriptions'
+  | 'ParkHomeFeature'
+  | 'References'
+  | 'Zones'
+  | 'Items'
+  | 'Images'
+  | 'OpeningHours'
+  | 'History';
+
+export interface ParkGraphBulkExportRequest {
+  selectionMode: ParkGraphBulkSelectionMode;
+  parkIds: string[];
+  searchTerm?: string | null;
+  isVisible?: boolean | null;
+  adminReviewStatus?: string | null;
+  type?: string | null;
+  audienceClassification?: string | null;
+  countryCode?: string | null;
+  hasValidCoordinates?: boolean | null;
+  closedFilter?: string | null;
+  openingHoursStatus?: string | null;
+  sortBy?: string | null;
+  sortDirection?: string | null;
+  sections: ParkGraphExportSection[];
+}
+
+export interface BulkParkGraphUpsertRequest {
+  createIfMissing: boolean;
+  replaceCollections: boolean;
+  document: unknown;
+}
+
 export interface ParkGraphUpsertHistoryEntry {
   id: string;
   operationKind: string;
@@ -29,6 +68,25 @@ export interface ParkGraphUpsertResult {
   changes: ParkGraphUpsertChange[];
   warnings: string[];
   errors: string[];
+}
+
+export interface BulkParkGraphUpsertResult {
+  operationId: string;
+  isApplied: boolean;
+  canApply: boolean;
+  previewedAtUtc: string;
+  appliedAtUtc?: string | null;
+  counts: ParkGraphUpsertCounts;
+  parks: BulkParkGraphUpsertParkResult[];
+  warnings: string[];
+  errors: string[];
+}
+
+export interface BulkParkGraphUpsertParkResult {
+  index: number;
+  targetParkId?: string | null;
+  targetParkName?: string | null;
+  result: ParkGraphUpsertResult;
 }
 
 export interface ParkGraphUpsertCounts {
