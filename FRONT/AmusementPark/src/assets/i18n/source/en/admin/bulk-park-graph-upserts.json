@@ -1,0 +1,108 @@
+{
+  "admin": {
+    "bulkParkGraphUpserts": {
+      "navTitle": "Bulk JSON upserts",
+      "title": "Bulk park JSON upserts",
+      "kicker": "Configured export · Admin",
+      "subtitle": "Filter parks, choose the properties to export, then import the JSON again to apply bulk updates to present properties.",
+      "export": {
+        "title": "Configured JSON export",
+        "description": "The id, name, and countryCode fields are always present. Checked sections add their properties, even when they are empty or null."
+      },
+      "selection": {
+        "mode": "Exported selection",
+        "filtered": "All filtered results",
+        "explicit": "Checked parks only",
+        "filteredScope": "{{count}} filtered park(s) will be exported.",
+        "explicitScope": "{{count}} selected park(s) will be exported.",
+        "selectPage": "Select visible parks"
+      },
+      "sections": {
+        "title": "Exported properties",
+        "identityIncluded": "With no checked section, the export only contains the filtered parks' minimal identity.",
+        "ParkBasics": "General information",
+        "ParkAudience": "Audience reach",
+        "ParkLocation": "Coordinates and address",
+        "ParkAdministration": "Administration",
+        "ParkDescriptions": "Descriptions",
+        "ParkHomeFeature": "Home feature",
+        "References": "References",
+        "Zones": "Zones",
+        "Items": "ParkItems",
+        "Images": "Images",
+        "OpeningHours": "Opening hours",
+        "History": "History"
+      },
+      "import": {
+        "title": "Bulk JSON import",
+        "description": "Bulk mode is reserved for updates to existing parks. Detected creations block the preview.",
+        "placeholder": "Drop or paste a bulk JSON export here."
+      },
+      "actions": {
+        "copyErrors": "Copy errors",
+        "clearSelection": "Clear selection",
+        "selectAllSections": "Select all",
+        "clearSections": "Clear all",
+        "export": "Download bulk JSON",
+        "exporting": "Preparing JSON...",
+        "uploadJsonFile": "Import JSON file",
+        "preview": "Preview",
+        "previewing": "Previewing...",
+        "apply": "Apply bulk",
+        "applying": "Applying..."
+      },
+      "errors": {
+        "loadParksFailed": "Park loading failed.",
+        "exportFailed": "Bulk JSON export failed.",
+        "fileReadFailed": "The JSON file could not be read.",
+        "invalidJson": "The bulk JSON is invalid.",
+        "previewFailed": "Bulk preview failed.",
+        "applyFailed": "Bulk apply failed."
+      },
+      "toasts": {
+        "exportSuccessTitle": "Export ready",
+        "exportSuccessDetail": "The bulk JSON was downloaded.",
+        "exportFailedTitle": "Export failed",
+        "exportFailedDetail": "The bulk JSON could not be prepared.",
+        "previewSuccessTitle": "Preview ready",
+        "previewSuccessDetail": "The bulk JSON can be applied.",
+        "previewPartialTitle": "Preview with warnings",
+        "previewPartialDetail": "Check the warnings before applying.",
+        "previewBlockedTitle": "Preview blocked",
+        "previewBlockedDetail": "The preview contains {{count}} error(s).",
+        "previewFailedTitle": "Preview failed",
+        "previewFailedDetail": "The bulk preview could not complete.",
+        "applySuccessTitle": "Apply complete",
+        "applySuccessDetail": "The bulk JSON was applied.",
+        "applyPartialTitle": "Partial apply",
+        "applyPartialDetail": "Some entries were not applied. Check the details.",
+        "applyRejectedTitle": "No entry applied",
+        "applyRejectedDetail": "{{count}} entry or entries were rejected. Check the details.",
+        "applyFailedTitle": "Apply failed",
+        "applyFailedDetail": "The bulk JSON could not be applied.",
+        "applyBlockedTitle": "Apply blocked",
+        "applyBlockedDetail": "Fix preview errors before applying.",
+        "invalidJsonTitle": "Invalid JSON",
+        "invalidJsonDetail": "Fix the JSON before continuing.",
+        "errorsCopiedTitle": "Errors copied",
+        "errorsCopiedDetail": "The details are in the clipboard.",
+        "copyFailedTitle": "Copy failed",
+        "copyFailedDetail": "The details could not be copied."
+      },
+      "result": {
+        "title": "Bulk preview",
+        "parks": "{{count}} park(s) in the document.",
+        "pending": "Run a preview to inspect changes before applying.",
+        "applied": "Bulk upsert applied successfully.",
+        "appliedPartial": "Partial apply: {{applied}} entry or entries applied, {{failed}} rejected.",
+        "appliedNoChange": "No entry applied: {{failed}} rejected.",
+        "unnamedPark": "Unnamed park"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "bulkParkGraphUpserts": "Export and import configured bulk JSON files."
+      }
+    }
+  }
+}

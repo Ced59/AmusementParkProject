@@ -3,7 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { ParkGraphUpsertHistoryEntry, ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
+import {
+  BulkParkGraphUpsertRequest,
+  BulkParkGraphUpsertResult,
+  ParkGraphBulkExportRequest,
+  ParkGraphUpsertHistoryEntry,
+  ParkGraphUpsertRequest,
+  ParkGraphUpsertResult
+} from '@app/models/admin/park-graph-upsert.models';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +35,16 @@ export class ParkGraphUpsertsApiService {
     return this.http.post<ParkGraphUpsertResult>(url, request, this.jsonHttpOptions);
   }
 
+  previewBulk(request: BulkParkGraphUpsertRequest): Observable<BulkParkGraphUpsertResult> {
+    const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/preview`;
+    return this.http.post<BulkParkGraphUpsertResult>(url, request, this.jsonHttpOptions);
+  }
+
+  applyBulk(request: BulkParkGraphUpsertRequest): Observable<BulkParkGraphUpsertResult> {
+    const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/apply`;
+    return this.http.post<BulkParkGraphUpsertResult>(url, request, this.jsonHttpOptions);
+  }
+
   getHistory(targetParkId: string | null, limit: number): Observable<ParkGraphUpsertHistoryEntry[]> {
     const params: string[] = [`limit=${encodeURIComponent(limit)}`];
     if (targetParkId) {
@@ -41,6 +58,15 @@ export class ParkGraphUpsertsApiService {
   downloadParkExport(parkId: string): Observable<HttpResponse<Blob>> {
     const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/parks/${encodeURIComponent(parkId)}/export`;
     return this.http.get(url, {
+      observe: 'response',
+      responseType: 'blob'
+    });
+  }
+
+  downloadBulkParkExport(request: ParkGraphBulkExportRequest): Observable<HttpResponse<Blob>> {
+    const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export`;
+    return this.http.post(url, request, {
+      ...this.jsonHttpOptions,
       observe: 'response',
       responseType: 'blob'
     });

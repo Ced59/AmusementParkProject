@@ -26,19 +26,28 @@ public sealed class ParkGraphUpsertsController : ControllerBase
 {
     private readonly ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler;
     private readonly ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler;
+    private readonly ICommandHandler<PreviewBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>> bulkPreviewHandler;
+    private readonly ICommandHandler<ApplyBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>> bulkApplyHandler;
     private readonly IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler;
     private readonly IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler;
+    private readonly IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> bulkExportHandler;
 
     public ParkGraphUpsertsController(
         ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler,
         ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler,
+        ICommandHandler<PreviewBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>> bulkPreviewHandler,
+        ICommandHandler<ApplyBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>> bulkApplyHandler,
         IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler,
-        IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler)
+        IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler,
+        IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> bulkExportHandler)
     {
         this.previewHandler = previewHandler;
         this.applyHandler = applyHandler;
+        this.bulkPreviewHandler = bulkPreviewHandler;
+        this.bulkApplyHandler = bulkApplyHandler;
         this.historyHandler = historyHandler;
         this.exportHandler = exportHandler;
+        this.bulkExportHandler = bulkExportHandler;
     }
 
     [HttpGet("history")]
@@ -69,6 +78,23 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         return this.File(result.Value.Content, result.Value.ContentType, result.Value.FileName);
     }
 
+    [HttpPost("bulk/export")]
+    [AdminAudit("park-graph-upsert.bulk-export", "Park", StaticTargetId = "bulk")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportBulkParkJsonAsync([FromBody] ParkGraphBulkExportRequestDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkGraphJsonExportResult> result = await this.bulkExportHandler.HandleAsync(
+            new ExportBulkParkGraphJsonQuery(request.ToApplication()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.File(result.Value.Content, result.Value.ContentType, result.Value.FileName);
+    }
+
     [HttpPost("preview")]
     [AdminAudit("park-graph-upsert.preview", "Park")]
     [ProducesResponseType(typeof(ParkGraphUpsertResultDto), StatusCodes.Status200OK)]
@@ -76,6 +102,23 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     {
         ApplicationResult<ParkGraphUpsertResult> result = await this.previewHandler.HandleAsync(
             new PreviewParkGraphUpsertCommand(request.ToApplication(), this.GetCurrentUserId()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("bulk/preview")]
+    [AdminAudit("park-graph-upsert.bulk-preview", "Park", StaticTargetId = "bulk")]
+    [ProducesResponseType(typeof(BulkParkGraphUpsertResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> PreviewBulkAsync([FromBody] BulkParkGraphUpsertRequestDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<BulkParkGraphUpsertResult> result = await this.bulkPreviewHandler.HandleAsync(
+            new PreviewBulkParkGraphUpsertCommand(request.ToApplication(), this.GetCurrentUserId()),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -94,6 +137,24 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     {
         ApplicationResult<ParkGraphUpsertResult> result = await this.applyHandler.HandleAsync(
             new ApplyParkGraphUpsertCommand(request.ToApplication(), this.GetCurrentUserId()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("bulk/apply")]
+    [AdminAudit("park-graph-upsert.bulk-apply", "Park", StaticTargetId = "bulk")]
+    [InvalidatesPublicCache(PublicCacheScope.Data, PublicCacheScope.Seo, EvictOutputCache = false)]
+    [ProducesResponseType(typeof(BulkParkGraphUpsertResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ApplyBulkAsync([FromBody] BulkParkGraphUpsertRequestDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<BulkParkGraphUpsertResult> result = await this.bulkApplyHandler.HandleAsync(
+            new ApplyBulkParkGraphUpsertCommand(request.ToApplication(), this.GetCurrentUserId()),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

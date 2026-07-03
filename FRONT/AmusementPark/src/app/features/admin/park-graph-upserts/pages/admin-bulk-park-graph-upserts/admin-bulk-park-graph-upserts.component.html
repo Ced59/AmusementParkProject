@@ -1,0 +1,450 @@
+<section class="bulk-park-graph-upserts admin-surface">
+  <header class="bulk-park-graph-upserts__header">
+    <span class="kicker kicker--sky">{{ 'admin.bulkParkGraphUpserts.kicker' | translate }}</span>
+    <div>
+      <h1 class="admin-page-title">{{ 'admin.bulkParkGraphUpserts.title' | translate }}</h1>
+      <p class="admin-muted">{{ 'admin.bulkParkGraphUpserts.subtitle' | translate }}</p>
+    </div>
+  </header>
+
+  @if (uiError) {
+    <div class="admin-alert admin-alert--error operation-alert" role="alert">
+      <span>{{ uiError | translate }}</span>
+      @if (operationErrorDetail) {
+        <small>{{ operationErrorDetail }}</small>
+      }
+      @if (hasOperationErrors) {
+        <button type="button" class="icon-action" (click)="copyOperationErrors()" [attr.aria-label]="'admin.bulkParkGraphUpserts.actions.copyErrors' | translate">
+          <span class="pi pi-copy" aria-hidden="true"></span>
+        </button>
+      }
+    </div>
+  }
+
+  <article class="admin-card bulk-park-graph-upserts__export">
+    <header class="section-head">
+      <div>
+        <h2>{{ 'admin.bulkParkGraphUpserts.export.title' | translate }}</h2>
+        <p class="admin-muted">{{ 'admin.bulkParkGraphUpserts.export.description' | translate }}</p>
+      </div>
+      <span class="admin-total-pill">{{ 'admin.parks.total' | translate:{ count: totalRecords } }}</span>
+    </header>
+
+    <div class="admin-toolbar">
+      <div class="admin-toolbar__search">
+        <label class="admin-field-label" for="bulk-park-graph-search">{{ 'admin.filters.search' | translate }}</label>
+        <div class="admin-search-field">
+          <span class="pi pi-search" aria-hidden="true"></span>
+          <input
+            id="bulk-park-graph-search"
+            appUiInputText
+            type="text"
+            [(ngModel)]="searchQuery"
+            (keyup.enter)="search()"
+            [placeholder]="'admin.parks.searchPlaceholder' | translate" />
+        </div>
+      </div>
+
+      <div class="admin-toolbar__actions">
+        <button appUiButton type="button" icon="pi pi-search" class="p-button-sm" [label]="'admin.filters.applySearch' | translate" (click)="search()"></button>
+        @if (canClearSearch) {
+          <button appUiButton type="button" icon="pi pi-times" class="p-button-text p-button-sm" [label]="'admin.parks.clear' | translate" (click)="clearSearch()"></button>
+        }
+      </div>
+    </div>
+
+    <div class="admin-filters-grid">
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.filters.visibility' | translate }}</span>
+        <select [(ngModel)]="localVisibilityFilter" (ngModelChange)="onFiltersChanged()">
+          <option [ngValue]="null">{{ 'admin.filters.visibilityAll' | translate }}</option>
+          <option [ngValue]="true">{{ 'admin.filters.visibleOnly' | translate }}</option>
+          <option [ngValue]="false">{{ 'admin.filters.hiddenOnly' | translate }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.filters.reviewStatus' | translate }}</span>
+        <select [(ngModel)]="localAdminReviewStatusFilter" (ngModelChange)="onFiltersChanged()">
+          <option [ngValue]="null">{{ 'admin.filters.statusAll' | translate }}</option>
+          <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>
+          <option [ngValue]="'Validated'">{{ 'admin.reviewStatus.validated' | translate }}</option>
+          <option [ngValue]="'ToProcessLater'">{{ 'admin.reviewStatus.toProcessLater' | translate }}</option>
+          <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.filters.type' | translate }}</span>
+        <select [(ngModel)]="localTypeFilter" (ngModelChange)="onFiltersChanged()">
+          <option [ngValue]="null">{{ 'admin.filters.typeAll' | translate }}</option>
+          <option [ngValue]="'ThemePark'">{{ 'admin.parks.types.themePark' | translate }}</option>
+          <option [ngValue]="'WaterPark'">{{ 'admin.parks.types.waterPark' | translate }}</option>
+          <option [ngValue]="'Zoo'">{{ 'admin.parks.types.zoo' | translate }}</option>
+          <option [ngValue]="'AnimalPark'">{{ 'admin.parks.types.animalPark' | translate }}</option>
+          <option [ngValue]="'AmusementPark'">{{ 'admin.parks.types.amusementPark' | translate }}</option>
+          <option [ngValue]="'Resort'">{{ 'admin.parks.types.resort' | translate }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.filters.audienceClassification' | translate }}</span>
+        <select [(ngModel)]="localAudienceClassificationFilter" (ngModelChange)="onFiltersChanged()">
+          <option [ngValue]="null">{{ 'admin.filters.audienceClassificationAll' | translate }}</option>
+          <option [ngValue]="'International'">{{ 'admin.parks.audienceClassifications.international' | translate }}</option>
+          <option [ngValue]="'National'">{{ 'admin.parks.audienceClassifications.national' | translate }}</option>
+          <option [ngValue]="'Regional'">{{ 'admin.parks.audienceClassifications.regional' | translate }}</option>
+          <option [ngValue]="'Local'">{{ 'admin.parks.audienceClassifications.local' | translate }}</option>
+          <option [ngValue]="'Unspecified'">{{ 'admin.parks.audienceClassifications.notSpecified' | translate }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.filters.countryCode' | translate }}</span>
+        <input
+          appUiInputText
+          type="text"
+          maxlength="2"
+          [(ngModel)]="localCountryCodeFilter"
+          (keyup.enter)="onFiltersChanged()"
+          [placeholder]="'admin.filters.countryCodePlaceholder' | translate" />
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.filters.coordinates' | translate }}</span>
+        <select [(ngModel)]="localValidCoordinatesFilter" (ngModelChange)="onFiltersChanged()">
+          <option [ngValue]="null">{{ 'admin.filters.coordinatesAll' | translate }}</option>
+          <option [ngValue]="true">{{ 'admin.filters.validCoordinatesOnly' | translate }}</option>
+          <option [ngValue]="false">{{ 'admin.filters.invalidCoordinatesOnly' | translate }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.parks.openingHours.filterLabel' | translate }}</span>
+        <select [(ngModel)]="localOpeningHoursFilter" (ngModelChange)="onFiltersChanged()">
+          <option [ngValue]="'all'">{{ 'admin.parks.openingHours.filters.all' | translate }}</option>
+          <option [ngValue]="'configured'">{{ 'admin.parks.openingHours.filters.configured' | translate }}</option>
+          <option [ngValue]="'notConfigured'">{{ 'admin.parks.openingHours.filters.notConfigured' | translate }}</option>
+          <option [ngValue]="'upToDate'">{{ 'admin.parks.openingHours.filters.upToDate' | translate }}</option>
+          <option [ngValue]="'needsUpdate'">{{ 'admin.parks.openingHours.filters.needsUpdate' | translate }}</option>
+          <option [ngValue]="'expired'">{{ 'admin.parks.openingHours.filters.expired' | translate }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'parks.closedFilters.label' | translate }}</span>
+        <select [(ngModel)]="localClosedFilter" (ngModelChange)="onFiltersChanged()">
+          <option [ngValue]="'openOnly'">{{ 'parks.closedFilters.openOnly' | translate }}</option>
+          <option [ngValue]="'all'">{{ 'parks.closedFilters.withClosed' | translate }}</option>
+          <option [ngValue]="'closedOnly'">{{ 'parks.closedFilters.closedOnly' | translate }}</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="admin-mobile-sort-bar">
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.parks.sort.label' | translate }}</span>
+        <select [ngModel]="sortValue" (ngModelChange)="onMobileSortChanged($event)">
+          @for (option of mobileSortOptions; track option.value) {
+            <option [value]="option.value">{{ option.labelKey | translate }}</option>
+          }
+        </select>
+      </label>
+    </div>
+
+    <div class="selection-toolbar">
+      <label class="admin-field selection-toolbar__mode">
+        <span class="admin-field-label">{{ 'admin.bulkParkGraphUpserts.selection.mode' | translate }}</span>
+        <select [(ngModel)]="selectionMode">
+          <option [ngValue]="'filtered'">{{ 'admin.bulkParkGraphUpserts.selection.filtered' | translate }}</option>
+          <option [ngValue]="'explicit'">{{ 'admin.bulkParkGraphUpserts.selection.explicit' | translate }}</option>
+        </select>
+      </label>
+
+      <div class="selection-toolbar__summary">
+        <strong>{{ exportedScopeLabelKey | translate:{ count: selectionMode === 'explicit' ? selectedCount : totalRecords } }}</strong>
+        @if (selectedCount > 0) {
+          <button type="button" class="icon-action" (click)="clearSelection()" [attr.aria-label]="'admin.bulkParkGraphUpserts.actions.clearSelection' | translate">
+            <span class="pi pi-times" aria-hidden="true"></span>
+          </button>
+        }
+      </div>
+    </div>
+
+    <app-ui-table
+      [value]="parks"
+      [loading]="loading"
+      [paginator]="true"
+      [rows]="pageSize"
+      [first]="(currentPage - 1) * pageSize"
+      [totalRecords]="totalRecords"
+      [lazy]="true"
+      (onLazyLoad)="onPageChanged($event)"
+      [sortField]="sortField === 'default' ? undefined : sortField"
+      [sortOrder]="sortOrder"
+      [responsiveLayout]="'scroll'"
+      styleClass="admin-data-table">
+      <ng-template appUiTemplate="header">
+        <tr>
+          <th class="admin-selection-column">
+            <input type="checkbox" [checked]="areAllCurrentParksSelected()" (change)="onAllSelectionChange($event)" [attr.aria-label]="'admin.bulkParkGraphUpserts.selection.selectPage' | translate" />
+          </th>
+          <th appUiSortableColumn="name">
+            {{ 'admin.parks.name' | translate }}
+            <app-ui-sort-icon field="name"></app-ui-sort-icon>
+          </th>
+          <th>{{ 'admin.parks.type' | translate }}</th>
+          <th>{{ 'admin.parks.audienceClassification' | translate }}</th>
+          <th>{{ 'admin.parks.country' | translate }}</th>
+          <th>{{ 'admin.parks.city' | translate }}</th>
+          <th>{{ 'admin.parks.coordinates' | translate }}</th>
+          <th appUiSortableColumn="parkItemsTotalCount">
+            {{ 'admin.parks.itemsTotalCount' | translate }}
+            <app-ui-sort-icon field="parkItemsTotalCount"></app-ui-sort-icon>
+          </th>
+          <th appUiSortableColumn="parkItemsVisibleCount">
+            {{ 'admin.parks.itemsVisibleCount' | translate }}
+            <app-ui-sort-icon field="parkItemsVisibleCount"></app-ui-sort-icon>
+          </th>
+          <th appUiSortableColumn="openingHoursStatus">
+            {{ 'admin.parks.openingHours.title' | translate }}
+            <app-ui-sort-icon field="openingHoursStatus"></app-ui-sort-icon>
+          </th>
+          <th>{{ 'admin.parks.reviewStatus' | translate }}</th>
+        </tr>
+      </ng-template>
+
+      <ng-template appUiTemplate="body" let-park>
+        <tr [class.admin-row--later]="park.adminReviewStatus === 'ToProcessLater' || park.adminReviewStatus === 'NotRelevant'">
+          <td class="admin-selection-column">
+            <input type="checkbox" [checked]="isParkSelected(park)" (change)="onParkSelectionChange(park, $event)" [attr.aria-label]="park.name" />
+          </td>
+          <td [attr.data-label]="'admin.parks.name' | translate">
+            <strong class="admin-row-title">{{ park.name }}</strong>
+            @if (park.id) {
+              <code>{{ park.id }}</code>
+            }
+          </td>
+          <td [attr.data-label]="'admin.parks.type' | translate">{{ getTypeTranslationKey(park.type) | translate }}</td>
+          <td [attr.data-label]="'admin.parks.audienceClassification' | translate">{{ getAudienceClassificationTranslationKey(park.audienceClassification) | translate }}</td>
+          <td [attr.data-label]="'admin.parks.country' | translate">{{ park.countryCode || '-' }}</td>
+          <td [attr.data-label]="'admin.parks.city' | translate">{{ park.city || '-' }}</td>
+          <td [attr.data-label]="'admin.parks.coordinates' | translate">
+            @if (hasValidCoordinates(park)) {
+              <span class="admin-coordinate-value">{{ getCoordinatesLabel(park) }}</span>
+            } @else {
+              <span class="admin-coordinate-value admin-coordinate-value--missing">{{ 'admin.parks.coordinatesMissing' | translate }}</span>
+            }
+          </td>
+          <td [attr.data-label]="'admin.parks.itemsTotalCount' | translate">
+            <span class="admin-coordinate-value">{{ getParkItemsTotalCountLabel(park) }}</span>
+          </td>
+          <td [attr.data-label]="'admin.parks.itemsVisibleCount' | translate">
+            <span class="admin-coordinate-value">{{ getParkItemsVisibleCountLabel(park) }}</span>
+          </td>
+          <td [attr.data-label]="'admin.parks.openingHours.title' | translate">
+            <div class="admin-opening-hours-status">
+              <app-ui-tag
+                [value]="getOpeningHoursStatusLabelKey(park.openingHours?.status) | translate"
+                [severity]="getOpeningHoursStatusSeverity(park.openingHours?.status)">
+              </app-ui-tag>
+              <span>{{ getOpeningHoursCoverageLabelKey(park) | translate:getOpeningHoursCoverageParams(park) }}</span>
+            </div>
+          </td>
+          <td [attr.data-label]="'admin.parks.reviewStatus' | translate">
+            <app-ui-tag
+              [value]="getStatusLabelKey(park.adminReviewStatus) | translate"
+              [severity]="getStatusSeverity(park.adminReviewStatus)">
+            </app-ui-tag>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template appUiTemplate="emptymessage">
+        <tr>
+          <td colspan="11">
+            <app-empty-state [compact]="true" titleKey="common.emptyTitle" messageKey="admin.parks.empty"></app-empty-state>
+          </td>
+        </tr>
+      </ng-template>
+    </app-ui-table>
+
+    <section class="section-picker">
+      <div class="section-picker__head">
+        <div>
+          <h3>{{ 'admin.bulkParkGraphUpserts.sections.title' | translate }}</h3>
+          <p class="admin-muted">{{ 'admin.bulkParkGraphUpserts.sections.identityIncluded' | translate }}</p>
+        </div>
+        <div class="section-picker__actions">
+          <button appUiButton type="button" class="p-button-text p-button-sm" icon="pi pi-check-square" [label]="'admin.bulkParkGraphUpserts.actions.selectAllSections' | translate" (click)="selectAllSections()"></button>
+          <button appUiButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulkParkGraphUpserts.actions.clearSections' | translate" (click)="clearSections()"></button>
+        </div>
+      </div>
+
+      <div class="section-options">
+        @for (option of sectionOptions; track trackSection($index, option)) {
+          <label class="section-option">
+            <input type="checkbox" [checked]="isSectionSelected(option.value)" (change)="toggleSection(option.value, $event)" />
+            <span>{{ option.labelKey | translate }}</span>
+          </label>
+        }
+      </div>
+    </section>
+
+    <div class="wizard-actions">
+      <button appUiButton type="button" icon="pi pi-download" [label]="(isExporting ? 'admin.bulkParkGraphUpserts.actions.exporting' : 'admin.bulkParkGraphUpserts.actions.export') | translate" [disabled]="!canExport" (click)="exportBulkJson()"></button>
+    </div>
+  </article>
+
+  <article class="admin-card bulk-park-graph-upserts__import">
+    <header class="editor-head">
+      <div>
+        <h2>{{ 'admin.bulkParkGraphUpserts.import.title' | translate }}</h2>
+        <p class="admin-muted">{{ 'admin.bulkParkGraphUpserts.import.description' | translate }}</p>
+      </div>
+      <div class="editor-actions">
+        <label class="btn-nav btn-nav--ghost file-upload-action">
+          <span class="pi pi-upload" aria-hidden="true"></span>
+          {{ 'admin.bulkParkGraphUpserts.actions.uploadJsonFile' | translate }}
+          <input type="file" accept=".json,application/json" (change)="loadJsonFile($event)">
+        </label>
+        <button type="button" class="btn-nav" (click)="preview()" [disabled]="!canPreview">
+          <span class="pi pi-eye" aria-hidden="true"></span>
+          {{ (isPreviewing ? 'admin.bulkParkGraphUpserts.actions.previewing' : 'admin.bulkParkGraphUpserts.actions.preview') | translate }}
+        </button>
+      </div>
+    </header>
+
+    <div class="import-options">
+      <label class="check-option">
+        <input type="checkbox" [(ngModel)]="replaceCollections">
+        <span>{{ 'admin.parkGraphUpserts.options.replaceCollections' | translate }}</span>
+      </label>
+    </div>
+
+    <textarea class="json-editor" [ngModel]="jsonText" (ngModelChange)="updateJsonText($event)" [placeholder]="'admin.bulkParkGraphUpserts.import.placeholder' | translate" spellcheck="false" aria-label="JSON"></textarea>
+  </article>
+
+  @if (previewResult || isPreviewing) {
+    <article class="admin-card bulk-park-graph-upserts__result">
+      <header class="result-head">
+        <div>
+          <h2>{{ 'admin.bulkParkGraphUpserts.result.title' | translate }}</h2>
+          @if (previewResult) {
+            <p class="admin-muted">{{ 'admin.bulkParkGraphUpserts.result.parks' | translate:{ count: previewResult.parks.length } }}</p>
+          } @else {
+            <p class="admin-muted">{{ 'admin.bulkParkGraphUpserts.result.pending' | translate }}</p>
+          }
+        </div>
+
+        @if (previewResult) {
+          <div class="result-counts">
+            <span>{{ 'admin.parkGraphUpserts.result.created' | translate }} <strong>{{ previewResult.counts.created }}</strong></span>
+            <span>{{ 'admin.parkGraphUpserts.result.updated' | translate }} <strong>{{ previewResult.counts.updated }}</strong></span>
+            <span>{{ 'admin.parkGraphUpserts.result.deleted' | translate }} <strong>{{ previewResult.counts.deleted }}</strong></span>
+            <span>{{ 'admin.parkGraphUpserts.result.warnings' | translate }} <strong>{{ previewResult.counts.warnings }}</strong></span>
+            <span>{{ 'admin.parkGraphUpserts.result.errors' | translate }} <strong>{{ previewResult.counts.errors }}</strong></span>
+          </div>
+        }
+      </header>
+
+      @if (appliedResultMessageKey) {
+        <p
+          class="admin-alert"
+          [class.admin-alert--success]="isAppliedResultSuccess"
+          [class.admin-alert--warning]="isAppliedResultPartial"
+          [class.admin-alert--error]="isAppliedResultRejected">
+          {{ appliedResultMessageKey | translate: appliedResultMessageParams }}
+        </p>
+      }
+
+      @if (previewResult) {
+        @if (groupedErrors.length > 0) {
+          <div class="message-list message-list--error">
+            <div class="message-list__head">
+              <strong>{{ 'admin.parkGraphUpserts.result.errorDetails' | translate }}</strong>
+              <button type="button" class="icon-action" (click)="copyResultErrors()" [attr.aria-label]="'admin.bulkParkGraphUpserts.actions.copyErrors' | translate">
+                <span class="pi pi-copy" aria-hidden="true"></span>
+              </button>
+            </div>
+            @for (group of groupedErrors; track trackMessageGroup($index, group)) {
+              <section class="message-group">
+                <strong>{{ group.entityType }} - {{ group.displayName }}</strong>
+                @for (message of group.messages; track trackString($index, message)) {
+                  <p>{{ message }}</p>
+                }
+              </section>
+            }
+          </div>
+        }
+
+        @if (groupedWarnings.length > 0) {
+          <div class="message-list message-list--warning">
+            @for (group of groupedWarnings; track trackMessageGroup($index, group)) {
+              <section class="message-group">
+                <strong>{{ group.entityType }} - {{ group.displayName }}</strong>
+                @for (message of group.messages; track trackString($index, message)) {
+                  <p>{{ message }}</p>
+                }
+              </section>
+            }
+          </div>
+        }
+
+        <div class="bulk-result-list">
+          @for (parkResult of previewResult.parks; track trackBulkParkResult($index, parkResult)) {
+            <details class="bulk-result-card" [open]="countParkChanges(parkResult.result.counts) > 0 || parkResult.result.errors.length > 0">
+              <summary>
+                <span>
+                  <strong>{{ parkResult.targetParkName || ('admin.bulkParkGraphUpserts.result.unnamedPark' | translate) }}</strong>
+                  @if (parkResult.targetParkId) {
+                    <code>{{ parkResult.targetParkId }}</code>
+                  }
+                </span>
+                <span class="park-result-counts">
+                  <em>{{ 'admin.parkGraphUpserts.result.created' | translate }} {{ parkResult.result.counts.created }}</em>
+                  <em>{{ 'admin.parkGraphUpserts.result.updated' | translate }} {{ parkResult.result.counts.updated }}</em>
+                  <em>{{ 'admin.parkGraphUpserts.result.deleted' | translate }} {{ parkResult.result.counts.deleted }}</em>
+                  <em>{{ 'admin.parkGraphUpserts.result.errors' | translate }} {{ parkResult.result.counts.errors }}</em>
+                </span>
+              </summary>
+
+              @if (parkResult.result.changes.length > 0) {
+                <table class="admin-mini-table">
+                  <thead>
+                    <tr>
+                      <th>{{ 'admin.parkGraphUpserts.result.entityTypeFilter' | translate }}</th>
+                      <th>{{ 'admin.parkGraphUpserts.result.field' | translate }}</th>
+                      <th>{{ 'admin.parkGraphUpserts.result.matchedBy' | translate }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (change of parkResult.result.changes; track change.entityType + ':' + (change.entityId || change.entityKey || change.displayName)) {
+                      <tr>
+                        <td [attr.data-label]="'admin.parkGraphUpserts.result.entityTypeFilter' | translate">
+                          <span class="change-status" [class]="'change-status change-status--' + change.changeType.toLowerCase()">{{ change.changeType }}</span>
+                          <strong>{{ change.entityType }}</strong>
+                        </td>
+                        <td [attr.data-label]="'admin.parkGraphUpserts.result.field' | translate">{{ change.displayName }}</td>
+                        <td [attr.data-label]="'admin.parkGraphUpserts.result.matchedBy' | translate">{{ change.matchedBy }}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              } @else {
+                <p class="admin-muted">{{ 'admin.parkGraphUpserts.result.noFieldChange' | translate }}</p>
+              }
+            </details>
+          }
+        </div>
+      }
+
+      <div class="wizard-actions">
+        <button type="button" class="btn-nav" (click)="apply()" [disabled]="!canApply">
+          <span class="pi pi-check" aria-hidden="true"></span>
+          {{ (isApplying ? 'admin.bulkParkGraphUpserts.actions.applying' : 'admin.bulkParkGraphUpserts.actions.apply') | translate }}
+        </button>
+      </div>
+    </article>
+  }
+</section>

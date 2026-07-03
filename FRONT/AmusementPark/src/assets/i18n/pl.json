@@ -83,6 +83,126 @@
         "show": "Pokaż"
       }
     },
+    "bulkParkGraphUpserts": {
+      "navTitle": "Bulk upsert JSON",
+      "title": "Bulk upsert JSON parków",
+      "kicker": "Konfigurowalny eksport · Admin",
+      "subtitle": "Filtruj parki, wybierz właściwości do eksportu, a potem zaimportuj JSON ponownie, aby zastosować aktualizacje bulk na obecnych właściwościach.",
+      "export": {
+        "title": "Konfigurowalny eksport JSON",
+        "description": "Pola id, name i countryCode są zawsze obecne. Zaznaczone sekcje dodają swoje właściwości, nawet gdy są puste albo null."
+      },
+      "selection": {
+        "mode": "Eksportowany wybór",
+        "filtered": "Wszystkie filtrowane wyniki",
+        "explicit": "Tylko zaznaczone parki",
+        "filteredScope": "{{count}} filtrowany(-e) park(i) zostanie(-ą) wyeksportowany(-e).",
+        "explicitScope": "{{count}} wybrany(-e) park(i) zostanie(-ą) wyeksportowany(-e).",
+        "selectPage": "Zaznacz widoczne parki"
+      },
+      "sections": {
+        "title": "Eksportowane właściwości",
+        "identityIncluded": "Bez zaznaczonej sekcji eksport zawiera tylko minimalną tożsamość filtrowanych parków.",
+        "ParkBasics": "Informacje ogólne",
+        "ParkAudience": "Zasięg",
+        "ParkLocation": "Współrzędne i adres",
+        "ParkAdministration": "Administracja",
+        "ParkDescriptions": "Opisy",
+        "ParkHomeFeature": "Wyróżnienie na stronie głównej",
+        "References": "Referencje",
+        "Zones": "Strefy",
+        "Items": "ParkItems",
+        "Images": "Obrazy",
+        "OpeningHours": "Godziny otwarcia",
+        "History": "Historia"
+      },
+      "import": {
+        "title": "Import JSON bulk",
+        "description": "Tryb bulk służy do aktualizacji istniejących parków. Wykryte tworzenie blokuje preview.",
+        "placeholder": "Upuść albo wklej tutaj eksport JSON bulk."
+      },
+      "actions": {
+        "copyErrors": "Kopiuj błędy",
+        "clearSelection": "Wyczyść wybór",
+        "selectAllSections": "Zaznacz wszystko",
+        "clearSections": "Odznacz wszystko",
+        "export": "Pobierz JSON bulk",
+        "exporting": "Przygotowywanie JSON...",
+        "uploadJsonFile": "Importuj plik JSON",
+        "preview": "Preview",
+        "previewing": "Preview w toku...",
+        "apply": "Zastosuj bulk",
+        "applying": "Stosowanie..."
+      },
+      "errors": {
+        "loadParksFailed": "Ładowanie parków nie powiodło się.",
+        "exportFailed": "Eksport JSON bulk nie powiódł się.",
+        "fileReadFailed": "Nie udało się odczytać pliku JSON.",
+        "invalidJson": "JSON bulk jest nieprawidłowy.",
+        "previewFailed": "Preview bulk nie powiodło się.",
+        "applyFailed": "Zastosowanie bulk nie powiodło się."
+      },
+      "toasts": {
+        "exportSuccessTitle": "Eksport gotowy",
+        "exportSuccessDetail": "JSON bulk został pobrany.",
+        "exportFailedTitle": "Eksport nieudany",
+        "exportFailedDetail": "Nie udało się przygotować JSON bulk.",
+        "previewSuccessTitle": "Preview gotowe",
+        "previewSuccessDetail": "JSON bulk można zastosować.",
+        "previewPartialTitle": "Preview z ostrzeżeniami",
+        "previewPartialDetail": "Sprawdź ostrzeżenia przed zastosowaniem.",
+        "previewBlockedTitle": "Preview zablokowane",
+        "previewBlockedDetail": "Preview zawiera {{count}} błąd/błędy.",
+        "previewFailedTitle": "Preview nieudane",
+        "previewFailedDetail": "Nie udało się zakończyć preview bulk.",
+        "applySuccessTitle": "Zastosowanie zakończone",
+        "applySuccessDetail": "JSON bulk został zastosowany.",
+        "applyPartialTitle": "Częściowe zastosowanie",
+        "applyPartialDetail": "Niektóre wpisy nie zostały zastosowane. Sprawdź szczegóły.",
+        "applyRejectedTitle": "Nie zastosowano żadnego wpisu",
+        "applyRejectedDetail": "{{count}} wpis(y) odrzucono. Sprawdź szczegóły.",
+        "applyFailedTitle": "Zastosowanie nieudane",
+        "applyFailedDetail": "Nie udało się zastosować JSON bulk.",
+        "applyBlockedTitle": "Zastosowanie zablokowane",
+        "applyBlockedDetail": "Popraw błędy preview przed zastosowaniem.",
+        "invalidJsonTitle": "Nieprawidłowy JSON",
+        "invalidJsonDetail": "Popraw JSON przed kontynuacją.",
+        "errorsCopiedTitle": "Błędy skopiowane",
+        "errorsCopiedDetail": "Szczegóły są w schowku.",
+        "copyFailedTitle": "Kopiowanie nieudane",
+        "copyFailedDetail": "Nie udało się skopiować szczegółów."
+      },
+      "result": {
+        "title": "Preview bulk",
+        "parks": "{{count}} park(i) w dokumencie.",
+        "pending": "Uruchom preview, aby sprawdzić zmiany przed zastosowaniem.",
+        "applied": "Bulk upsert zastosowany pomyślnie.",
+        "appliedPartial": "Częściowe zastosowanie: {{applied}} wpis(y) zastosowano, {{failed}} odrzucono.",
+        "appliedNoChange": "Nie zastosowano żadnego wpisu: {{failed}} odrzucono.",
+        "unnamedPark": "Park bez nazwy"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "bulkParkGraphUpserts": "Eksportuj i importuj konfigurowalne pliki JSON bulk.",
+        "contactGrievances": "Przeglądaj wiadomości kontaktowe i kontekst antynadużyciowy.",
+        "users": "Zarządzanie kontami, rolami i dostępem.",
+        "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
+        "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
+        "operators": "Utrzymywanie operatorów powiązanych z parkami.",
+        "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
+        "images": "Kontrola mediów, logo i grafik strony.",
+        "data": "Monitorowanie importów, źródeł i przetwarzania danych.",
+        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
+        "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
+        "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
+        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
+        "history": "Zarządzaj osiami czasu, udokumentowanymi kamieniami milowymi i artykułami historycznymi.",
+        "parkWeather": "Monitoruj zaplanowane odświeżanie danych publicznych."
+      },
+      "title": "Panel",
+      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej."
+    },
     "bulk": {
       "selected": "Wybrano: {{count}}",
       "makeVisible": "Ustaw jako widoczne",
@@ -121,26 +241,6 @@
         "context": "Kontekst",
         "userAgent": "User-agent"
       }
-    },
-    "dashboard": {
-      "shortcuts": {
-        "contactGrievances": "Przeglądaj wiadomości kontaktowe i kontekst antynadużyciowy.",
-        "users": "Zarządzanie kontami, rolami i dostępem.",
-        "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
-        "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
-        "operators": "Utrzymywanie operatorów powiązanych z parkami.",
-        "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
-        "images": "Kontrola mediów, logo i grafik strony.",
-        "data": "Monitorowanie importów, źródeł i przetwarzania danych.",
-        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
-        "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
-        "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
-        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
-        "history": "Zarządzaj osiami czasu, udokumentowanymi kamieniami milowymi i artykułami historycznymi.",
-        "parkWeather": "Monitoruj zaplanowane odświeżanie danych publicznych."
-      },
-      "title": "Panel",
-      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej."
     },
     "dataSources": {
       "title": "Źródła danych"

@@ -73,6 +73,12 @@ export class AdminDashboardComponent {
       segment: 'park-graph-upserts'
     },
     {
+      iconClass: 'pi pi-download',
+      titleKey: 'admin.bulkParkGraphUpserts.title',
+      descriptionKey: 'admin.dashboard.shortcuts.bulkParkGraphUpserts',
+      segment: 'bulk-park-graph-upserts'
+    },
+    {
       iconClass: 'pi pi-history',
       titleKey: 'admin.history.navTitle',
       descriptionKey: 'admin.dashboard.shortcuts.history',

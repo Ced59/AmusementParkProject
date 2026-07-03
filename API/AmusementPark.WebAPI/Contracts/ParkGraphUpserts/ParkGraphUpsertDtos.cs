@@ -13,6 +13,46 @@ public sealed class ParkGraphUpsertRequestDto
     public JsonElement Document { get; set; }
 }
 
+public sealed class ParkGraphBulkExportRequestDto
+{
+    public string SelectionMode { get; set; } = "filtered";
+
+    public List<string> ParkIds { get; set; } = new List<string>();
+
+    public string? SearchTerm { get; set; }
+
+    public bool? IsVisible { get; set; }
+
+    public string? AdminReviewStatus { get; set; }
+
+    public string? Type { get; set; }
+
+    public string? AudienceClassification { get; set; }
+
+    public string? CountryCode { get; set; }
+
+    public bool? HasValidCoordinates { get; set; }
+
+    public string? ClosedFilter { get; set; }
+
+    public string? OpeningHoursStatus { get; set; }
+
+    public string? SortBy { get; set; }
+
+    public string? SortDirection { get; set; }
+
+    public List<string> Sections { get; set; } = new List<string>();
+}
+
+public sealed class BulkParkGraphUpsertRequestDto
+{
+    public bool CreateIfMissing { get; set; }
+
+    public bool ReplaceCollections { get; set; }
+
+    public JsonElement Document { get; set; }
+}
+
 public sealed class ParkGraphUpsertHistoryEntryDto
 {
     public string Id { get; set; } = string.Empty;
@@ -57,6 +97,38 @@ public sealed class ParkGraphUpsertResultDto
     public List<string> Warnings { get; set; } = new List<string>();
 
     public List<string> Errors { get; set; } = new List<string>();
+}
+
+public sealed class BulkParkGraphUpsertResultDto
+{
+    public string OperationId { get; set; } = string.Empty;
+
+    public bool IsApplied { get; set; }
+
+    public bool CanApply { get; set; }
+
+    public DateTime PreviewedAtUtc { get; set; }
+
+    public DateTime? AppliedAtUtc { get; set; }
+
+    public ParkGraphUpsertCountsDto Counts { get; set; } = new ParkGraphUpsertCountsDto();
+
+    public List<BulkParkGraphUpsertParkResultDto> Parks { get; set; } = new List<BulkParkGraphUpsertParkResultDto>();
+
+    public List<string> Warnings { get; set; } = new List<string>();
+
+    public List<string> Errors { get; set; } = new List<string>();
+}
+
+public sealed class BulkParkGraphUpsertParkResultDto
+{
+    public int Index { get; set; }
+
+    public string? TargetParkId { get; set; }
+
+    public string? TargetParkName { get; set; }
+
+    public ParkGraphUpsertResultDto Result { get; set; } = new ParkGraphUpsertResultDto();
 }
 
 public sealed class ParkGraphUpsertCountsDto

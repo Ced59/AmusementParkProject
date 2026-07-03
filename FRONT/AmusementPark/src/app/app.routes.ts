@@ -85,6 +85,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/park-graph-upserts/pages/admin-park-graph-upserts/admin-park-graph-upserts.component').then((m) => m.AdminParkGraphUpsertsComponent)
           },
           {
+            path: 'bulk-park-graph-upserts',
+            loadComponent: () => import('@features/admin/park-graph-upserts/pages/admin-bulk-park-graph-upserts/admin-bulk-park-graph-upserts.component').then((m) => m.AdminBulkParkGraphUpsertsComponent)
+          },
+          {
             path: 'history',
             loadComponent: () => import('@features/admin/history/pages/admin-history/admin-history.component').then((m) => m.AdminHistoryComponent)
           },
