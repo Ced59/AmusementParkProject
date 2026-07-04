@@ -44,6 +44,8 @@
         "selectAllSections": "Alles selecteren",
         "clearSections": "Alles wissen",
         "export": "Bulk JSON downloaden",
+        "prepareExport": "Bulk JSON voorbereiden",
+        "downloadExport": "Klaar bestand downloaden",
         "exporting": "JSON voorbereiden...",
         "uploadJsonFile": "JSON-bestand importeren",
         "preview": "Preview",
@@ -61,7 +63,7 @@
       },
       "toasts": {
         "exportSuccessTitle": "Export klaar",
-        "exportSuccessDetail": "De bulk JSON is gedownload.",
+        "exportSuccessDetail": "De bulk JSON is klaar om te downloaden.",
         "exportFailedTitle": "Export mislukt",
         "exportFailedDetail": "De bulk JSON kon niet worden voorbereid.",
         "previewSuccessTitle": "Preview klaar",

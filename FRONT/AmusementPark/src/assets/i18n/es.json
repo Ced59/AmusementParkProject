@@ -127,6 +127,8 @@
         "selectAllSections": "Seleccionar todo",
         "clearSections": "Desmarcar todo",
         "export": "Descargar JSON bulk",
+        "prepareExport": "Preparar JSON bulk",
+        "downloadExport": "Descargar archivo listo",
         "exporting": "Preparando JSON...",
         "uploadJsonFile": "Importar archivo JSON",
         "preview": "Preview",
@@ -144,7 +146,7 @@
       },
       "toasts": {
         "exportSuccessTitle": "Exportación lista",
-        "exportSuccessDetail": "El JSON bulk se ha descargado.",
+        "exportSuccessDetail": "El JSON bulk está listo para descargar.",
         "exportFailedTitle": "Exportación fallida",
         "exportFailedDetail": "No se ha podido preparar el JSON bulk.",
         "previewSuccessTitle": "Preview lista",

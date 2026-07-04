@@ -56,73 +56,81 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
         IReadOnlySet<ParkGraphExportSection> sections = query.Request.Sections.Distinct().ToHashSet();
         DateTime exportedAtUtc = DateTime.UtcNow;
         ReportProgress(query.Progress, "selection", 5, parks.Count, 0, "Sélection des parcs préparée.");
-        await using MemoryStream output = new MemoryStream();
-        await using (Utf8JsonWriter writer = new Utf8JsonWriter(output, ExportWriterOptions))
+        MemoryStream? memoryOutput = query.OutputStream is null ? new MemoryStream() : null;
+        Stream output = query.OutputStream ?? memoryOutput ?? throw new InvalidOperationException("An export output stream is required.");
+        try
         {
-            writer.WriteStartObject();
-            writer.WriteString("documentType", "AmusementParkBulkParkGraphUpsert");
-            writer.WriteString("schemaVersion", "2026-07-03");
-            writer.WriteString("mode", "merge");
-            WriteSelection(writer, query.Request, parks.Count);
-            writer.WritePropertyName("parks");
-            writer.WriteStartArray();
+            await using (Utf8JsonWriter writer = new Utf8JsonWriter(output, ExportWriterOptions))
+            {
+                writer.WriteStartObject();
+                writer.WriteString("documentType", "AmusementParkBulkParkGraphUpsert");
+                writer.WriteString("schemaVersion", "2026-07-03");
+                writer.WriteString("mode", "merge");
+                WriteSelection(writer, query.Request, parks.Count);
+                writer.WritePropertyName("parks");
+                writer.WriteStartArray();
 
-            if (CanUseParkOnlyExport(query.Request.Sections))
-            {
-                int processedParkCount = 0;
-                ReportProgress(query.Progress, "writing", 10, parks.Count, processedParkCount, "Écriture du JSON bulk.");
-                foreach (Park park in parks)
+                if (CanUseParkOnlyExport(query.Request.Sections))
                 {
-                    WriteParkOnlyDocument(writer, park, query.Request.Sections, exportedAtUtc);
-                    processedParkCount++;
-                    ReportWritingProgress(query.Progress, parks.Count, processedParkCount, 10);
-                }
-            }
-            else
-            {
-                ReportProgress(query.Progress, "loading-graph", 15, parks.Count, 0, "Chargement bulk des données liées.");
-                BulkParkGraphJsonExportData graphData = await this.graphDataLoader.LoadAsync(parks, sections, cancellationToken);
-                int processedParkCount = 0;
-                ReportProgress(query.Progress, "writing", 40, parks.Count, processedParkCount, "Écriture du JSON bulk.");
-                foreach (Park park in parks)
-                {
-                    string parkId = park.Id;
-                    ParkGraphJsonParkExportData parkData = new ParkGraphJsonParkExportData
+                    int processedParkCount = 0;
+                    ReportProgress(query.Progress, "writing", 10, parks.Count, processedParkCount, "Écriture du JSON bulk.");
+                    foreach (Park park in parks)
                     {
-                        Park = park,
-                        References = ResolveValue(graphData.ReferencesByParkId, parkId),
-                        Zones = ResolveCollection(graphData.ZonesByParkId, parkId),
-                        Items = ResolveCollection(graphData.ItemsByParkId, parkId),
-                        Images = ResolveCollection(graphData.ImagesByParkId, parkId),
-                        OpeningHours = ResolveValue(graphData.OpeningHoursByParkId, parkId),
-                        HistoryEvents = ResolveCollection(graphData.HistoryEventsByParkId, parkId),
-                    };
-                    Dictionary<string, object?> document = ParkGraphJsonExportDocumentFactory.BuildDocument(
-                        parkData,
-                        sections,
-                        exportedAtUtc,
-                        "admin-bulk-park-graph-export");
-                    JsonSerializer.Serialize(writer, document, ExportJsonOptions);
-                    processedParkCount++;
-                    ReportWritingProgress(query.Progress, parks.Count, processedParkCount, 40);
+                        WriteParkOnlyDocument(writer, park, query.Request.Sections, exportedAtUtc);
+                        processedParkCount++;
+                        ReportWritingProgress(query.Progress, parks.Count, processedParkCount, 10);
+                    }
                 }
+                else
+                {
+                    ReportProgress(query.Progress, "loading-graph", 15, parks.Count, 0, "Chargement bulk des données liées.");
+                    BulkParkGraphJsonExportData graphData = await this.graphDataLoader.LoadAsync(parks, sections, cancellationToken);
+                    int processedParkCount = 0;
+                    ReportProgress(query.Progress, "writing", 40, parks.Count, processedParkCount, "Écriture du JSON bulk.");
+                    foreach (Park park in parks)
+                    {
+                        string parkId = park.Id;
+                        ParkGraphJsonParkExportData parkData = new ParkGraphJsonParkExportData
+                        {
+                            Park = park,
+                            References = ResolveValue(graphData.ReferencesByParkId, parkId),
+                            Zones = ResolveCollection(graphData.ZonesByParkId, parkId),
+                            Items = ResolveCollection(graphData.ItemsByParkId, parkId),
+                            Images = ResolveCollection(graphData.ImagesByParkId, parkId),
+                            OpeningHours = ResolveValue(graphData.OpeningHoursByParkId, parkId),
+                            HistoryEvents = ResolveCollection(graphData.HistoryEventsByParkId, parkId),
+                        };
+                        Dictionary<string, object?> document = ParkGraphJsonExportDocumentFactory.BuildDocument(
+                            parkData,
+                            sections,
+                            exportedAtUtc,
+                            "admin-bulk-park-graph-export");
+                        JsonSerializer.Serialize(writer, document, ExportJsonOptions);
+                        processedParkCount++;
+                        ReportWritingProgress(query.Progress, parks.Count, processedParkCount, 40);
+                    }
+                }
+
+                writer.WriteEndArray();
+                writer.WritePropertyName("metadata");
+                writer.WriteStartObject();
+                writer.WriteString("source", "admin-bulk-park-graph-export");
+                writer.WriteString("exportedAtUtc", exportedAtUtc);
+                writer.WriteEndObject();
+                writer.WriteEndObject();
             }
 
-            writer.WriteEndArray();
-            writer.WritePropertyName("metadata");
-            writer.WriteStartObject();
-            writer.WriteString("source", "admin-bulk-park-graph-export");
-            writer.WriteString("exportedAtUtc", exportedAtUtc);
-            writer.WriteEndObject();
-            writer.WriteEndObject();
+            ReportProgress(query.Progress, "completed", 100, parks.Count, parks.Count, "JSON bulk prêt.");
+            return ApplicationResult<ParkGraphJsonExportResult>.Success(new ParkGraphJsonExportResult
+            {
+                FileName = BuildFileName(exportedAtUtc),
+                Content = memoryOutput?.ToArray() ?? Array.Empty<byte>(),
+            });
         }
-
-        ReportProgress(query.Progress, "completed", 100, parks.Count, parks.Count, "JSON bulk prêt.");
-        return ApplicationResult<ParkGraphJsonExportResult>.Success(new ParkGraphJsonExportResult
+        finally
         {
-            FileName = BuildFileName(exportedAtUtc),
-            Content = output.ToArray(),
-        });
+            memoryOutput?.Dispose();
+        }
     }
 
     private async Task<IReadOnlyCollection<Park>> ResolveParksAsync(ParkGraphBulkExportRequest request, CancellationToken cancellationToken)
