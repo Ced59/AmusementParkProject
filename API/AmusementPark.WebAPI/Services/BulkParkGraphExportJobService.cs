@@ -80,12 +80,11 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
 
     public BulkParkGraphExportJobService(
         IServiceScopeFactory serviceScopeFactory,
-        ILogger<BulkParkGraphExportJobService> logger,
-        IWebHostEnvironment environment)
+        ILogger<BulkParkGraphExportJobService> logger)
     {
         this.serviceScopeFactory = serviceScopeFactory;
         this.logger = logger;
-        this.workDirectory = Path.Combine(environment.ContentRootPath, "App_Data", "bulk-park-graph-exports");
+        this.workDirectory = Path.Combine(Path.GetTempPath(), "amusement-park", "bulk-park-graph-exports");
     }
 
     public Task<BulkParkGraphExportJobSnapshot> StartAsync(ParkGraphBulkExportRequest request, string requestedByUserId, CancellationToken cancellationToken = default)
