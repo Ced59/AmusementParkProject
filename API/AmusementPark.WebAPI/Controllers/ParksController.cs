@@ -51,6 +51,7 @@ public sealed class ParksController : ControllerBase
     private readonly IQueryHandler<GetVisibleParkMapPointsQuery, ApplicationResult<IReadOnlyCollection<Park>>> getVisibleParkMapPointsQueryHandler;
     private readonly IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler;
     private readonly IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler;
+    private readonly IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> getParkDataCompletenessScoreQueryHandler;
     private readonly ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler;
     private readonly ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler;
     private readonly ICommandHandler<UpdateParksBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParksBulkAdministrationCommandHandler;
@@ -68,6 +69,7 @@ public sealed class ParksController : ControllerBase
         IQueryHandler<GetVisibleParkMapPointsQuery, ApplicationResult<IReadOnlyCollection<Park>>> getVisibleParkMapPointsQueryHandler,
         IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler,
         IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler,
+        IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> getParkDataCompletenessScoreQueryHandler,
         ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler,
         ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler,
         ICommandHandler<UpdateParksBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParksBulkAdministrationCommandHandler)
@@ -84,6 +86,7 @@ public sealed class ParksController : ControllerBase
         this.getVisibleParkMapPointsQueryHandler = getVisibleParkMapPointsQueryHandler;
         this.getRandomVisibleParksQueryHandler = getRandomVisibleParksQueryHandler;
         this.getHomeFeaturedParksQueryHandler = getHomeFeaturedParksQueryHandler;
+        this.getParkDataCompletenessScoreQueryHandler = getParkDataCompletenessScoreQueryHandler;
         this.updateParkCommandHandler = updateParkCommandHandler;
         this.updateParkVisibilityCommandHandler = updateParkVisibilityCommandHandler;
         this.updateParksBulkAdministrationCommandHandler = updateParksBulkAdministrationCommandHandler;
@@ -426,8 +429,24 @@ public sealed class ParksController : ControllerBase
             "parkitemstotalcount" or "itemstotal" or "totalitems" => ParkAdminSortField.ParkItemsTotalCount,
             "parkitemsvisiblecount" or "itemsvisible" or "visibleitems" => ParkAdminSortField.ParkItemsVisibleCount,
             "openinghoursstatus" or "openinghours" or "hoursstatus" => ParkAdminSortField.OpeningHoursStatus,
+            "datacompletenessscore" or "datacompleteness" or "completeness" or "completenessscore" => ParkAdminSortField.DataCompletenessScore,
             _ => ParkAdminSortField.Default,
         };
+    }
+
+    [HttpGet("{id}/data-completeness")]
+    [ProducesResponseType(typeof(DataCompletenessScoreDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetParkDataCompletenessAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<DataCompletenessScore> result = await this.getParkDataCompletenessScoreQueryHandler.HandleAsync(
+            new GetParkDataCompletenessScoreQuery(id, IncludeHidden: true),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
     }
 
     private static ParkOpeningHoursAdminFilter ParseOpeningHoursFilter(string? value)

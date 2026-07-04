@@ -46,10 +46,12 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
             {
                 ParkId = item.ParkId,
                 TimeZoneId = item.TimeZoneId,
+                SourceUrl = item.SourceUrl,
                 LastVerifiedAtUtc = item.LastVerifiedAtUtc,
                 FirstDate = item.FirstDate,
                 LastDate = item.LastDate,
                 HasScheduleData = item.HasScheduleData,
+                DateOverrides = item.DateOverrides,
                 CoverageSegments = item.CoverageSegments,
                 UpdatedAt = item.UpdatedAt,
             })
@@ -76,10 +78,12 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
             {
                 ParkId = item.ParkId,
                 TimeZoneId = item.TimeZoneId,
+                SourceUrl = item.SourceUrl,
                 LastVerifiedAtUtc = item.LastVerifiedAtUtc,
                 FirstDate = item.FirstDate,
                 LastDate = item.LastDate,
                 HasScheduleData = item.HasScheduleData,
+                DateOverrides = item.DateOverrides,
                 CoverageSegments = item.CoverageSegments,
                 UpdatedAt = item.UpdatedAt,
             })
@@ -158,11 +162,13 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
         {
             ParkId = document.ParkId,
             TimeZoneId = document.TimeZoneId,
+            SourceUrl = document.SourceUrl,
             FirstDate = ParseDateOrNull(document.FirstDate),
             LastDate = ParseDateOrNull(document.LastDate),
             LastVerifiedAtUtc = document.LastVerifiedAtUtc,
             UpdatedAtUtc = document.UpdatedAt,
             HasScheduleData = document.HasScheduleData,
+            HasDateOverrides = document.DateOverrides.Count > 0,
             CoverageSegments = document.CoverageSegments
                 .Select(static segment => ToSummary(segment))
                 .Where(static segment => segment is not null)

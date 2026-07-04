@@ -2,15 +2,19 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Countries.Ports;
+using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
+using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
+using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
 
@@ -27,6 +31,9 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
     private readonly ParkOpeningHoursAdminStatusResolver openingHoursStatusResolver;
     private readonly ICountryReferenceService countryReferenceService;
     private readonly PagedQueryValidator pagedQueryValidator;
+    private readonly IParkZoneRepository? parkZoneRepository;
+    private readonly IImageRepository? imageRepository;
+    private readonly IHistoryEventRepository? historyEventRepository;
 
     public SearchParksQueryHandler(
         IParkRepository parkRepository,
@@ -34,7 +41,10 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         IParkOpeningHoursRepository parkOpeningHoursRepository,
         ParkOpeningHoursAdminStatusResolver openingHoursStatusResolver,
         ICountryReferenceService countryReferenceService,
-        PagedQueryValidator pagedQueryValidator)
+        PagedQueryValidator pagedQueryValidator,
+        IParkZoneRepository? parkZoneRepository = null,
+        IImageRepository? imageRepository = null,
+        IHistoryEventRepository? historyEventRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
@@ -42,6 +52,9 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         this.openingHoursStatusResolver = openingHoursStatusResolver;
         this.countryReferenceService = countryReferenceService;
         this.pagedQueryValidator = pagedQueryValidator;
+        this.parkZoneRepository = parkZoneRepository;
+        this.imageRepository = imageRepository;
+        this.historyEventRepository = historyEventRepository;
     }
 
     public async Task<ApplicationResult<PagedResult<ParkListResult>>> HandleAsync(SearchParksQuery query, CancellationToken cancellationToken = default)
@@ -74,7 +87,7 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
             query.SortField,
             query.SortDescending);
 
-        PagedResult<ParkListResult> result = await this.EnrichAsync(page, query.IncludeHidden, query.IncludeHidden, cancellationToken);
+        PagedResult<ParkListResult> result = await this.EnrichAsync(page, query.IncludeHidden, query.IncludeHidden, query.IncludeHidden, cancellationToken);
         return ApplicationResult<PagedResult<ParkListResult>>.Success(result);
     }
 
@@ -130,7 +143,7 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
             cancellationToken,
             repositorySortField,
             query.SortDescending);
-        PagedResult<ParkListResult> enrichedPage = await this.EnrichAsync(allParks, true, true, cancellationToken);
+        PagedResult<ParkListResult> enrichedPage = await this.EnrichAsync(allParks, true, true, query.IncludeHidden, cancellationToken);
         List<ParkListResult> filteredItems = ApplyOpeningHoursFilter(enrichedPage.Items, query.OpeningHoursFilter);
         List<ParkListResult> sortedItems = RequiresApplicationLevelSort(query.SortField)
             ? SortApplicationLevel(filteredItems, query.SortField, query.SortDescending)
@@ -143,9 +156,9 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         return new PagedResult<ParkListResult>(pagedItems, query.Paging.Page, query.Paging.PageSize, filteredItems.Count);
     }
 
-    private async Task<PagedResult<ParkListResult>> EnrichAsync(PagedResult<Park> page, bool includeCounts, bool includeOpeningHours, CancellationToken cancellationToken)
+    private async Task<PagedResult<ParkListResult>> EnrichAsync(PagedResult<Park> page, bool includeCounts, bool includeOpeningHours, bool includeDataCompleteness, CancellationToken cancellationToken)
     {
-        if (!includeCounts && !includeOpeningHours)
+        if (!includeCounts && !includeOpeningHours && !includeDataCompleteness)
         {
             return new PagedResult<ParkListResult>(
                 page.Items.Select(static park => new ParkListResult { Park = park }).ToList(),
@@ -160,12 +173,26 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
             .Select(static parkId => parkId!)
             .ToList();
 
-        IReadOnlyDictionary<string, ParkItemVisibilityCounts> counts = includeCounts
+        bool loadCounts = includeCounts || includeDataCompleteness;
+        bool loadOpeningHours = includeOpeningHours || includeDataCompleteness;
+        IReadOnlyDictionary<string, ParkItemVisibilityCounts> counts = loadCounts
             ? await this.parkItemRepository.GetVisibilityCountsByParkIdsAsync(parkIds, cancellationToken)
             : new Dictionary<string, ParkItemVisibilityCounts>(StringComparer.Ordinal);
-        IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary> openingHoursSummaries = includeOpeningHours
+        IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary> openingHoursSummaries = loadOpeningHours
             ? await this.parkOpeningHoursRepository.GetSummariesByParkIdsAsync(parkIds, cancellationToken)
             : new Dictionary<string, ParkOpeningHoursScheduleSummary>(StringComparer.Ordinal);
+        IReadOnlyDictionary<string, ParkDataCompletenessContext> dataCompletenessContexts = includeDataCompleteness
+            ? await DataCompletenessContextFactory.BuildParkContextsAsync(
+                page.Items,
+                counts,
+                openingHoursSummaries,
+                new ParkOpeningHoursAdminStatusResolverAccessor(summary => this.openingHoursStatusResolver.ResolveCoverage(summary).Status),
+                this.parkItemRepository,
+                this.parkZoneRepository,
+                this.imageRepository,
+                this.historyEventRepository,
+                cancellationToken)
+            : new Dictionary<string, ParkDataCompletenessContext>(StringComparer.Ordinal);
         List<ParkListResult> items = page.Items
             .Select(park =>
             {
@@ -175,6 +202,9 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
                 ParkOpeningHoursScheduleSummary? openingHoursSummary = !string.IsNullOrWhiteSpace(park.Id) && openingHoursSummaries.TryGetValue(park.Id, out ParkOpeningHoursScheduleSummary? resolvedSummary)
                     ? resolvedSummary
                     : null;
+                ParkDataCompletenessContext? dataCompletenessContext = !string.IsNullOrWhiteSpace(park.Id) && dataCompletenessContexts.TryGetValue(park.Id, out ParkDataCompletenessContext? resolvedContext)
+                    ? resolvedContext
+                    : null;
 
                 return new ParkListResult
                 {
@@ -182,6 +212,7 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
                     ParkItemsTotalCount = itemCounts?.TotalCount ?? 0,
                     ParkItemsVisibleCount = itemCounts?.VisibleCount ?? 0,
                     OpeningHours = includeOpeningHours ? this.ToOpeningHoursSummaryResult(openingHoursSummary) : null,
+                    DataCompleteness = includeDataCompleteness ? park.CalculateDataCompletenessScore(dataCompletenessContext) : null,
                 };
             })
             .ToList();
@@ -216,7 +247,8 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
     {
         return sortField == ParkAdminSortField.ParkItemsTotalCount
             || sortField == ParkAdminSortField.ParkItemsVisibleCount
-            || sortField == ParkAdminSortField.OpeningHoursStatus;
+            || sortField == ParkAdminSortField.OpeningHoursStatus
+            || sortField == ParkAdminSortField.DataCompletenessScore;
     }
 
     private static List<ParkListResult> SortApplicationLevel(IReadOnlyCollection<ParkListResult> items, ParkAdminSortField sortField, bool sortDescending)
@@ -225,6 +257,7 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         {
             ParkAdminSortField.ParkItemsVisibleCount => static item => item.ParkItemsVisibleCount ?? 0,
             ParkAdminSortField.OpeningHoursStatus => static item => (int)(item.OpeningHours?.Status ?? ParkOpeningHoursAdminStatus.NotConfigured),
+            ParkAdminSortField.DataCompletenessScore => static item => item.DataCompleteness?.CompletenessScore ?? 0,
             _ => static item => item.ParkItemsTotalCount ?? 0,
         };
 

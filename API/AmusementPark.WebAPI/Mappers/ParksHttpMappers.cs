@@ -158,6 +158,7 @@ internal static class ParksHttpMappers
         dto.ParkItemsTotalCount = value.ParkItemsTotalCount;
         dto.ParkItemsVisibleCount = value.ParkItemsVisibleCount;
         dto.OpeningHours = value.OpeningHours?.ToHttp();
+        dto.DataCompleteness = value.DataCompleteness?.ToHttp();
         return dto;
     }
 
@@ -572,6 +573,17 @@ internal static class ParksHttpMappers
             WarningThresholdDays = value.WarningThresholdDays,
             LastVerifiedAtUtc = value.LastVerifiedAtUtc,
             UpdatedAtUtc = value.UpdatedAtUtc,
+        };
+    }
+
+    public static DataCompletenessScoreDto ToHttp(this DataCompletenessScore value)
+    {
+        return new DataCompletenessScoreDto
+        {
+            CompletenessScore = value.CompletenessScore,
+            DataQualityLevel = value.DataQualityLevel.ToString(),
+            ApplicableMaxPoints = value.ApplicableMaxPoints,
+            EarnedPoints = value.EarnedPoints,
         };
     }
 

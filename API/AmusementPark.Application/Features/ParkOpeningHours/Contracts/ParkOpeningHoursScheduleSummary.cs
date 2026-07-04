@@ -8,6 +8,8 @@ public sealed class ParkOpeningHoursScheduleSummary
 
     public string TimeZoneId { get; init; } = string.Empty;
 
+    public string? SourceUrl { get; init; }
+
     public DateOnly? FirstDate { get; init; }
 
     public DateOnly? LastDate { get; init; }
@@ -17,6 +19,8 @@ public sealed class ParkOpeningHoursScheduleSummary
     public DateTime UpdatedAtUtc { get; init; }
 
     public bool HasScheduleData { get; init; }
+
+    public bool HasDateOverrides { get; init; }
 
     public IReadOnlyCollection<ParkOpeningHoursCoverageSegmentSummary> CoverageSegments { get; init; } = Array.Empty<ParkOpeningHoursCoverageSegmentSummary>();
 }

@@ -10,6 +10,7 @@ public enum ParkAdminSortField
     ParkItemsTotalCount = 2,
     ParkItemsVisibleCount = 3,
     OpeningHoursStatus = 4,
+    DataCompletenessScore = 5,
 }
 
 public enum ParkOpeningHoursAdminStatus

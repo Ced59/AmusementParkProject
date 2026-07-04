@@ -13,4 +13,5 @@ public enum ParkItemAdminSortField
     AdminReviewStatus = 5,
     ParkId = 6,
     ZoneId = 7,
+    DataCompletenessScore = 8,
 }

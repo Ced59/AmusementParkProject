@@ -55,4 +55,6 @@ public sealed class ParkItemAdminListResult
     public ParkItemContentQualityResult ContentQuality { get; init; } = new ParkItemContentQualityResult();
 
     public ParkItemAdminPublicationSignalsResult PublicationSignals { get; init; } = new ParkItemAdminPublicationSignalsResult();
+
+    public DataCompletenessScore? DataCompleteness { get; init; }
 }
