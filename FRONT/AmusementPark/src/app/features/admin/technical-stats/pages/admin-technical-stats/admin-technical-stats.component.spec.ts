@@ -87,6 +87,32 @@ describe('AdminTechnicalStatsComponent', () => {
     expect(rows[0].nativeElement.textContent).toContain('Bingbot');
   });
 
+  it('exposes labels on SEO robot cells for compact layouts', () => {
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    fixture.detectChanges();
+
+    const seoTab = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-tab'))
+      .find((button) => button.nativeElement.textContent.includes('SEO robots'));
+    seoTab?.nativeElement.click();
+    fixture.detectChanges();
+
+    const row = fixture.debugElement.query(By.css('.admin-technical-stats-robot-table__row'));
+    const cells: Element[] = Array.from(row.nativeElement.children as HTMLCollectionOf<Element>);
+    const labels: Array<string | null> = cells.map((cell: Element): string | null => cell.getAttribute('data-label'));
+
+    expect(labels).toEqual([
+      'Robot',
+      'Group',
+      'Requests',
+      'Cache hit rate',
+      'SEO-ready',
+      'No-JS',
+      'Blocked',
+      '503'
+    ]);
+  });
+
   it('caps SEO robot rows rendered from large technical stats snapshots', () => {
     const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();

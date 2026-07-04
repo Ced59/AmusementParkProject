@@ -206,14 +206,14 @@
                 </div>
                 @for (robot of visibleSeoRobotFamilies(); track trackRobot($index, robot)) {
                   <div class="admin-technical-stats-robot-table__row">
-                    <strong>{{ robot.key }}</strong>
-                    <span>{{ robotCategoryLabel(robot.category) }}</span>
-                    <span>{{ robot.count | number }}</span>
-                    <span>{{ robot.hitRatePercent | number:'1.0-1' }}%</span>
-                    <span>{{ robot.seoReadyRatePercent | number:'1.0-1' }}%</span>
-                    <span>{{ robot.noJsResponses | number }}</span>
-                    <span>{{ robot.blockedNotSeoReadyResponses | number }}</span>
-                    <span>{{ robot.ssrUnavailableResponses | number }}</span>
+                    <strong [attr.data-label]="t('robotFamily')">{{ robot.key }}</strong>
+                    <span [attr.data-label]="t('robotGroup')">{{ robotCategoryLabel(robot.category) }}</span>
+                    <span [attr.data-label]="t('robotRequests')">{{ robot.count | number }}</span>
+                    <span [attr.data-label]="t('robotCache')">{{ robot.hitRatePercent | number:'1.0-1' }}%</span>
+                    <span [attr.data-label]="t('robotSeoReady')">{{ robot.seoReadyRatePercent | number:'1.0-1' }}%</span>
+                    <span [attr.data-label]="t('robotNoJsShort')">{{ robot.noJsResponses | number }}</span>
+                    <span [attr.data-label]="t('robotBlockedShort')">{{ robot.blockedNotSeoReadyResponses | number }}</span>
+                    <span [attr.data-label]="t('robotUnavailableShort')">{{ robot.ssrUnavailableResponses | number }}</span>
                   </div>
                 }
               </div>
