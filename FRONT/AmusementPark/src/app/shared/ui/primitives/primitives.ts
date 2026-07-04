@@ -213,7 +213,7 @@ export class Tooltip implements OnChanges, OnDestroy {
   selector: 'button[appUiButton], a[appUiButton]',
   standalone: true
 })
-export class ButtonDirective implements OnChanges, AfterViewInit {
+export class ButtonDirective implements OnChanges, AfterViewInit, OnDestroy {
   @Input() label: string | null = null;
   @Input() icon: string | null = null;
   @Input() iconPos: 'left' | 'right' | 'top' | 'bottom' = 'left';
@@ -262,6 +262,9 @@ export class ButtonDirective implements OnChanges, AfterViewInit {
   }
 
   private hasView: boolean = false;
+  private isDestroyed: boolean = false;
+  private renderScheduled: boolean = false;
+  private readonly generatedNodes: Node[] = [];
 
   constructor(
     private readonly elementRef: ElementRef<HTMLElement>,
@@ -276,18 +279,38 @@ export class ButtonDirective implements OnChanges, AfterViewInit {
 
   ngOnChanges(): void {
     if (this.hasView) {
-      this.renderContent();
+      this.scheduleRender();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.isDestroyed = true;
+    this.renderScheduled = false;
+    this.generatedNodes.length = 0;
+  }
+
+  private scheduleRender(): void {
+    if (this.renderScheduled) {
+      return;
+    }
+
+    this.renderScheduled = true;
+    void Promise.resolve().then((): void => {
+      this.renderScheduled = false;
+
+      if (!this.isDestroyed) {
+        this.renderContent();
+      }
+    });
   }
 
   private renderContent(): void {
     const host: HTMLElement = this.elementRef.nativeElement;
+
+    this.clearGeneratedContent(host);
+
     if (!this.label && !this.icon && !this.loading) {
       return;
-    }
-
-    while (host.firstChild) {
-      this.renderer.removeChild(host, host.firstChild);
     }
 
     const resolvedIcon: string | null = this.loading ? 'pi pi-spin pi-spinner' : this.icon;
@@ -300,6 +323,7 @@ export class ButtonDirective implements OnChanges, AfterViewInit {
       this.renderer.addClass(labelElement, 'p-button-label');
       this.renderer.appendChild(labelElement, this.renderer.createText(this.label));
       this.renderer.appendChild(host, labelElement);
+      this.generatedNodes.push(labelElement);
     }
 
     if (resolvedIcon && (this.iconPos === 'right' || this.iconPos === 'bottom')) {
@@ -316,6 +340,16 @@ export class ButtonDirective implements OnChanges, AfterViewInit {
     }
     this.renderer.setAttribute(iconElement, 'aria-hidden', 'true');
     this.renderer.appendChild(host, iconElement);
+    this.generatedNodes.push(iconElement);
+  }
+
+  private clearGeneratedContent(host: HTMLElement): void {
+    while (this.generatedNodes.length > 0) {
+      const node: Node | undefined = this.generatedNodes.pop();
+      if (node?.parentNode === host) {
+        this.renderer.removeChild(host, node);
+      }
+    }
   }
 
   private asBoolean(value: boolean | string): boolean {
