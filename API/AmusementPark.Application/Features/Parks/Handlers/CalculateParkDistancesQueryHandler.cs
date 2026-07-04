@@ -3,8 +3,8 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
-using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Geo;
 
 namespace AmusementPark.Application.Features.Parks.Handlers;
 
@@ -17,12 +17,10 @@ public sealed class CalculateParkDistancesQueryHandler : IQueryHandler<Calculate
     private const string CalculationKind = "great-circle";
 
     private readonly IParkRepository parkRepository;
-    private readonly IParkDistanceCalculator distanceCalculator;
 
-    public CalculateParkDistancesQueryHandler(IParkRepository parkRepository, IParkDistanceCalculator distanceCalculator)
+    public CalculateParkDistancesQueryHandler(IParkRepository parkRepository)
     {
         this.parkRepository = parkRepository;
-        this.distanceCalculator = distanceCalculator;
     }
 
     public async Task<ApplicationResult<ParkDistanceResult>> HandleAsync(CalculateParkDistancesQuery query, CancellationToken cancellationToken = default)
@@ -89,8 +87,8 @@ public sealed class CalculateParkDistancesQueryHandler : IQueryHandler<Calculate
 
     private ParkDistanceTargetResult BuildTarget(Park sourcePark, Park targetPark, int proximityRank)
     {
-        double distanceKilometers = Math.Round(this.distanceCalculator.CalculateKilometers(sourcePark.Position!, targetPark.Position!), 2, MidpointRounding.AwayFromZero);
-        int estimatedTravelDurationMinutes = this.distanceCalculator.EstimateTravelDurationMinutes(distanceKilometers);
+        double distanceKilometers = Math.Round(GeoDistanceCalculator.CalculateKilometers(sourcePark.Position!, targetPark.Position!), 2, MidpointRounding.AwayFromZero);
+        int estimatedTravelDurationMinutes = GeoDistanceCalculator.EstimateTravelDurationMinutes(distanceKilometers);
         return new ParkDistanceTargetResult(targetPark, distanceKilometers, estimatedTravelDurationMinutes, proximityRank);
     }
 

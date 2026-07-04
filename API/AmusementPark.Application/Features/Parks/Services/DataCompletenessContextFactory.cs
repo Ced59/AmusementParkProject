@@ -2,7 +2,6 @@ using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;

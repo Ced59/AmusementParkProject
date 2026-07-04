@@ -1,7 +1,4 @@
-using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
-using AmusementPark.Core.Domain.Parks;
-
-namespace AmusementPark.Application.Features.ParkOpeningHours.Services;
+namespace AmusementPark.Core.Domain.Parks;
 
 public sealed class ParkOpeningHoursAdminStatusResolver
 {
@@ -12,7 +9,7 @@ public sealed class ParkOpeningHoursAdminStatusResolver
         return this.ResolveCoverage(summary, DateTime.UtcNow).Status;
     }
 
-    internal ParkOpeningHoursAdminStatus Resolve(ParkOpeningHoursScheduleSummary? summary, DateTime utcNow)
+    public ParkOpeningHoursAdminStatus Resolve(ParkOpeningHoursScheduleSummary? summary, DateTime utcNow)
     {
         return this.ResolveCoverage(summary, utcNow).Status;
     }
@@ -22,7 +19,7 @@ public sealed class ParkOpeningHoursAdminStatusResolver
         return this.ResolveCoverage(summary, DateTime.UtcNow);
     }
 
-    internal ParkOpeningHoursAdminCoverage ResolveCoverage(ParkOpeningHoursScheduleSummary? summary, DateTime utcNow)
+    public ParkOpeningHoursAdminCoverage ResolveCoverage(ParkOpeningHoursScheduleSummary? summary, DateTime utcNow)
     {
         if (summary is null || !summary.HasScheduleData || !summary.LastDate.HasValue)
         {
@@ -33,7 +30,7 @@ public sealed class ParkOpeningHoursAdminStatusResolver
             };
         }
 
-        DateOnly today = ResolveToday(summary.TimeZoneId, utcNow);
+        DateOnly today = ParkOpeningHoursTimeZoneResolver.ResolveLocalDate(summary.TimeZoneId, utcNow);
         DateOnly? completeUntilDate = ResolveCompleteUntilDate(summary, today);
         int completeForDays = completeUntilDate.HasValue && completeUntilDate.Value >= today
             ? completeUntilDate.Value.DayNumber - today.DayNumber + 1
@@ -66,7 +63,7 @@ public sealed class ParkOpeningHoursAdminStatusResolver
 
         if (thresholdDays == 0)
         {
-            DateOnly today = ResolveToday(summary.TimeZoneId, utcNow);
+            DateOnly today = ParkOpeningHoursTimeZoneResolver.ResolveLocalDate(summary.TimeZoneId, utcNow);
             return coverage.CompleteForDays.Value == 0
                 && summary.LastDate.HasValue
                 && summary.LastDate.Value == today.AddDays(-1);
@@ -77,7 +74,7 @@ public sealed class ParkOpeningHoursAdminStatusResolver
 
     public DateOnly ResolveLocalDate(string timeZoneId, DateTime utcNow)
     {
-        return ResolveToday(timeZoneId, utcNow);
+        return ParkOpeningHoursTimeZoneResolver.ResolveLocalDate(timeZoneId, utcNow);
     }
 
     private static DateOnly? ResolveCompleteUntilDate(ParkOpeningHoursScheduleSummary summary, DateOnly today)
@@ -110,38 +107,5 @@ public sealed class ParkOpeningHoursAdminStatusResolver
         }
 
         return ParkOpeningHoursAdminStatus.UpToDate;
-    }
-
-    private static DateOnly ResolveToday(string timeZoneId, DateTime utcNow)
-    {
-        TimeZoneInfo timeZone = ResolveTimeZone(timeZoneId);
-        DateTime localNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.SpecifyKind(utcNow, DateTimeKind.Utc), timeZone);
-        return DateOnly.FromDateTime(localNow);
-    }
-
-    private static TimeZoneInfo ResolveTimeZone(string timeZoneId)
-    {
-        if (!string.IsNullOrWhiteSpace(timeZoneId) && TimeZoneInfo.TryFindSystemTimeZoneById(timeZoneId.Trim(), out TimeZoneInfo? directTimeZone))
-        {
-            return directTimeZone;
-        }
-
-        if (!string.IsNullOrWhiteSpace(timeZoneId)
-            && TimeZoneInfo.TryConvertIanaIdToWindowsId(timeZoneId.Trim(), out string? windowsTimeZoneId)
-            && !string.IsNullOrWhiteSpace(windowsTimeZoneId)
-            && TimeZoneInfo.TryFindSystemTimeZoneById(windowsTimeZoneId, out TimeZoneInfo? windowsTimeZone))
-        {
-            return windowsTimeZone;
-        }
-
-        if (!string.IsNullOrWhiteSpace(timeZoneId)
-            && TimeZoneInfo.TryConvertWindowsIdToIanaId(timeZoneId.Trim(), out string? ianaTimeZoneId)
-            && !string.IsNullOrWhiteSpace(ianaTimeZoneId)
-            && TimeZoneInfo.TryFindSystemTimeZoneById(ianaTimeZoneId, out TimeZoneInfo? ianaTimeZone))
-        {
-            return ianaTimeZone;
-        }
-
-        return TimeZoneInfo.Utc;
     }
 }

@@ -1,6 +1,4 @@
-using AmusementPark.Core.Domain.Parks;
-
-namespace AmusementPark.Application.Features.ParkOpeningHours.Contracts;
+namespace AmusementPark.Core.Domain.Parks;
 
 public sealed class ParkOpeningHoursScheduleSummary
 {

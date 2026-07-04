@@ -1,11 +1,10 @@
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
 
-namespace AmusementPark.Application.Features.ParkItems.Services;
+namespace AmusementPark.Core.Domain.Parks;
 
 /// <summary>
-/// Valeurs par defaut des flux d'administration rapides des park items.
+/// Valeurs par defaut metier des flux d'administration rapides des park items.
 /// </summary>
 public static class ParkItemAdministrationDefaults
 {

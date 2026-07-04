@@ -1,16 +1,14 @@
-using AmusementPark.Core.Geo;
-
-namespace AmusementPark.Application.Features.Parks.Services;
+namespace AmusementPark.Core.Geo;
 
 /// <summary>
-/// Implémentation Haversine centralisée pour éviter les calculs de distance dispersés dans les composants.
+/// Calculs geographiques metier partages.
 /// </summary>
-public sealed class ParkDistanceCalculator : IParkDistanceCalculator
+public static class GeoDistanceCalculator
 {
     private const double EarthRadiusKilometers = 6371.0088d;
     private const double EstimatedRoadSpeedKilometersPerHour = 70d;
 
-    public double CalculateKilometers(GeoPoint source, GeoPoint target)
+    public static double CalculateKilometers(GeoPoint source, GeoPoint target)
     {
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(target);
@@ -27,7 +25,7 @@ public sealed class ParkDistanceCalculator : IParkDistanceCalculator
         return EarthRadiusKilometers * angularDistance;
     }
 
-    public int EstimateTravelDurationMinutes(double distanceKilometers)
+    public static int EstimateTravelDurationMinutes(double distanceKilometers)
     {
         if (!double.IsFinite(distanceKilometers) || distanceKilometers <= 0d)
         {

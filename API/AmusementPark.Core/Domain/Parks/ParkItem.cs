@@ -63,6 +63,68 @@ public sealed class ParkItem : GeolocatedEntityBase
     /// </summary>
     public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
 
+    public ParkItemContentQuality EvaluateContentQuality()
+    {
+        List<string> availableLanguageCodes = this.Descriptions
+            .Where(static description => !string.IsNullOrWhiteSpace(description.LanguageCode) && !string.IsNullOrWhiteSpace(description.Value))
+            .Select(static description => description.LanguageCode.Trim().ToLowerInvariant())
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(static languageCode => languageCode, StringComparer.Ordinal)
+            .ToList();
+
+        bool structureComplete = !string.IsNullOrWhiteSpace(this.ParkId)
+            && !string.IsNullOrWhiteSpace(this.Name)
+            && this.Category != ParkItemCategory.Other;
+        bool hasAnyDescription = availableLanguageCodes.Count > 0;
+        bool hasFrenchDescription = HasDescription(this.Descriptions, "fr");
+        bool hasEnglishDescription = HasDescription(this.Descriptions, "en");
+        bool hasZone = !string.IsNullOrWhiteSpace(this.ZoneId);
+        bool hasPreciseType = this.Type != ParkItemType.Other && this.Type != ParkItemType.Attraction;
+        bool hasLocation = this.Position is not null || this.AttractionLocations?.Entrance is not null;
+        bool hasAccessConditions = this.Category != ParkItemCategory.Attraction || this.AttractionDetails?.AccessConditions.Count > 0;
+
+        List<string> missingRequirementKeys = new List<string>();
+        AddMissing(missingRequirementKeys, structureComplete, "structure");
+        AddMissing(missingRequirementKeys, hasAnyDescription, "descriptionAny");
+        AddMissing(missingRequirementKeys, hasFrenchDescription, "descriptionFr");
+        AddMissing(missingRequirementKeys, hasEnglishDescription, "descriptionEn");
+        AddMissing(missingRequirementKeys, hasZone, "zone");
+        AddMissing(missingRequirementKeys, hasPreciseType, "typePrecise");
+
+        bool isPublishable = structureComplete
+            && hasAnyDescription
+            && hasPreciseType;
+
+        return new ParkItemContentQuality
+        {
+            StructureComplete = structureComplete,
+            HasAnyDescription = hasAnyDescription,
+            HasFrenchDescription = hasFrenchDescription,
+            HasEnglishDescription = hasEnglishDescription,
+            HasZone = hasZone,
+            HasPreciseType = hasPreciseType,
+            HasLocation = hasLocation,
+            HasAccessConditions = hasAccessConditions,
+            IsPublishable = isPublishable,
+            AvailableLanguageCodes = availableLanguageCodes,
+            MissingRequirementKeys = missingRequirementKeys,
+        };
+    }
+
+    public ParkItemPublicationSignals BuildPublicationSignals()
+    {
+        ParkItemContentQuality quality = this.EvaluateContentQuality();
+
+        return new ParkItemPublicationSignals
+        {
+            IsVisible = this.IsVisible,
+            AdminReviewStatus = this.AdminReviewStatus,
+            LastUpdatedAtUtc = this.UpdatedAtUtc,
+            AvailableLanguageCodes = quality.AvailableLanguageCodes,
+            IsPublishable = quality.IsPublishable,
+        };
+    }
+
     public DataCompletenessScore CalculateDataCompletenessScore(ParkItemDataCompletenessContext? context = null)
     {
         ParkItemDataCompletenessContext scoreContext = context ?? new ParkItemDataCompletenessContext();
@@ -141,6 +203,21 @@ public sealed class ParkItem : GeolocatedEntityBase
         score.AddIfApplicable(this.IsVisible, scoreContext.HasHumanReviewOrDocumentedDebt || this.AdminReviewStatus == AdminReviewStatus.Validated, 1);
 
         return score.Build();
+    }
+
+    private static bool HasDescription(IEnumerable<LocalizedText> descriptions, string languageCode)
+    {
+        return descriptions.Any(description =>
+            string.Equals(description.LanguageCode?.Trim(), languageCode, StringComparison.OrdinalIgnoreCase)
+            && !string.IsNullOrWhiteSpace(description.Value));
+    }
+
+    private static void AddMissing(List<string> missingRequirementKeys, bool condition, string requirementKey)
+    {
+        if (!condition)
+        {
+            missingRequirementKeys.Add(requirementKey);
+        }
     }
 
     private bool HasPreciseType()

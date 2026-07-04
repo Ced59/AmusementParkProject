@@ -1,13 +1,10 @@
-using AmusementPark.Application.Features.ParkOpeningHours.Results;
-using AmusementPark.Core.Domain.Parks;
-
-namespace AmusementPark.Application.Features.ParkOpeningHours.Services;
+namespace AmusementPark.Core.Domain.Parks;
 
 public sealed class ParkOpeningHoursCalendarBuilder
 {
     private const int MaximumCalendarDayCount = 1096;
 
-    public ParkOpeningHoursCalendarResult BuildCalendar(ParkOpeningHoursSchedule schedule, DateOnly? fromDate, DateOnly? toDate)
+    public ParkOpeningHoursCalendar BuildCalendar(ParkOpeningHoursSchedule schedule, DateOnly? fromDate, DateOnly? toDate)
     {
         ArgumentNullException.ThrowIfNull(schedule);
 
@@ -26,17 +23,17 @@ public sealed class ParkOpeningHoursCalendarBuilder
             effectiveToDate = DateOnly.FromDayNumber(effectiveFromDate.DayNumber + MaximumCalendarDayCount - 1);
         }
 
-        List<ParkOpeningHoursDayResult> days = new List<ParkOpeningHoursDayResult>();
+        List<ParkOpeningHoursDay> days = new List<ParkOpeningHoursDay>();
         for (DateOnly date = effectiveFromDate; date <= effectiveToDate; date = date.AddDays(1))
         {
-            ParkOpeningHoursDayResult? day = ResolveDay(schedule, date);
+            ParkOpeningHoursDay? day = ResolveDay(schedule, date);
             if (day is not null)
             {
                 days.Add(day);
             }
         }
 
-        return new ParkOpeningHoursCalendarResult
+        return new ParkOpeningHoursCalendar
         {
             ParkId = schedule.ParkId,
             TimeZoneId = schedule.TimeZoneId,
@@ -52,12 +49,12 @@ public sealed class ParkOpeningHoursCalendarBuilder
         };
     }
 
-    private static ParkOpeningHoursDayResult? ResolveDay(ParkOpeningHoursSchedule schedule, DateOnly date)
+    private static ParkOpeningHoursDay? ResolveDay(ParkOpeningHoursSchedule schedule, DateOnly date)
     {
         ParkOpeningHoursDateOverride? dateOverride = schedule.DateOverrides.FirstOrDefault(dateOverride => dateOverride.LocalDate == date);
         if (dateOverride is not null)
         {
-            return new ParkOpeningHoursDayResult
+            return new ParkOpeningHoursDay
             {
                 LocalDate = date,
                 IsClosed = dateOverride.IsClosed || dateOverride.TimeRanges.Count == 0,
@@ -65,7 +62,7 @@ public sealed class ParkOpeningHoursCalendarBuilder
                 SourceKind = "override",
                 Labels = dateOverride.Labels.ToList(),
                 Reasons = dateOverride.Reasons.ToList(),
-                TimeRanges = dateOverride.TimeRanges.Select(static timeRange => timeRange.ToResult()).ToList(),
+                TimeRanges = dateOverride.TimeRanges.ToList(),
             };
         }
 
@@ -80,7 +77,7 @@ public sealed class ParkOpeningHoursCalendarBuilder
             return null;
         }
 
-        return new ParkOpeningHoursDayResult
+        return new ParkOpeningHoursDay
         {
             LocalDate = date,
             IsClosed = rule.IsClosed || rule.TimeRanges.Count == 0,
@@ -88,7 +85,7 @@ public sealed class ParkOpeningHoursCalendarBuilder
             SourceKind = "regular",
             Labels = rule.Labels.ToList(),
             Reasons = rule.Reasons.ToList(),
-            TimeRanges = rule.TimeRanges.Select(static timeRange => timeRange.ToResult()).ToList(),
+            TimeRanges = rule.TimeRanges.ToList(),
         };
     }
 

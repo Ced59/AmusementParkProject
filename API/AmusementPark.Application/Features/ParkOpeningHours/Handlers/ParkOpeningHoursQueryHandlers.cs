@@ -82,7 +82,7 @@ public sealed class GetParkOpeningHoursCalendarQueryHandler : IQueryHandler<GetP
             return ApplicationResult<ParkOpeningHoursCalendarResult>.Failure(ParkOpeningHoursApplicationErrors.ScheduleNotFound());
         }
 
-        ParkOpeningHoursCalendarResult calendar = this.calendarBuilder.BuildCalendar(schedule, query.FromDate, query.ToDate);
-        return ApplicationResult<ParkOpeningHoursCalendarResult>.Success(calendar);
+        ParkOpeningHoursCalendar calendar = this.calendarBuilder.BuildCalendar(schedule, query.FromDate, query.ToDate);
+        return ApplicationResult<ParkOpeningHoursCalendarResult>.Success(calendar.ToCalendarResult());
     }
 }

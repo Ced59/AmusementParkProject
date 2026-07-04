@@ -52,9 +52,9 @@ public sealed class ParkItemAdminListResult
     /// </summary>
     public AdminReviewStatus AdminReviewStatus { get; init; }
 
-    public ParkItemContentQualityResult ContentQuality { get; init; } = new ParkItemContentQualityResult();
+    public ParkItemContentQuality ContentQuality { get; init; } = new ParkItemContentQuality();
 
-    public ParkItemAdminPublicationSignalsResult PublicationSignals { get; init; } = new ParkItemAdminPublicationSignalsResult();
+    public ParkItemPublicationSignals PublicationSignals { get; init; } = new ParkItemPublicationSignals();
 
     public DataCompletenessScore? DataCompleteness { get; init; }
 }
