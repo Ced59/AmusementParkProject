@@ -42,10 +42,8 @@ describe('ParkGraphUpsertsApiService', () => {
     });
   });
 
-  it('downloads bulk park graph exports as blobs', () => {
-    const responseBlob: Blob = new Blob(['{}'], { type: 'application/json' });
-
-    service.downloadBulkParkExport({
+  it('starts and reads bulk park graph export jobs', () => {
+    service.startBulkParkExportJob({
       selectionMode: 'filtered',
       parkIds: [],
       searchTerm: 'closed',
@@ -53,20 +51,37 @@ describe('ParkGraphUpsertsApiService', () => {
       closedFilter: 'closedOnly',
       sections: ['ParkAudience', 'ParkLocation']
     }).subscribe(response => {
-      expect(response.body).toBe(responseBlob);
-      expect(response.headers.get('content-disposition')).toContain('bulk.json');
+      expect(response.jobId).toBe('job-1');
+      expect(response.status).toBe('Running');
     });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export`);
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
     expect(request.request.method).toBe('POST');
-    expect(request.request.responseType).toBe('blob');
     expect(request.request.body.selectionMode).toBe('filtered');
     expect(request.request.body.sections).toEqual(['ParkAudience', 'ParkLocation']);
+    request.flush({
+      jobId: 'job-1',
+      status: 'Running',
+      progressPercentage: 25,
+      createdAtUtc: '2026-07-04T00:00:00Z',
+      expiresAtUtc: '2026-07-04T00:30:00Z'
+    });
 
-    request.flush(responseBlob, {
-      headers: {
-        'content-disposition': 'attachment; filename="bulk.json"'
-      }
+    service.getBulkParkExportJob('job 1').subscribe(response => {
+      expect(response.status).toBe('Completed');
+      expect(response.downloadUrl).toContain('/download?token=');
+    });
+
+    const statusRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job%201`);
+    expect(statusRequest.request.method).toBe('GET');
+    statusRequest.flush({
+      jobId: 'job 1',
+      status: 'Completed',
+      progressPercentage: 100,
+      fileName: 'bulk.json',
+      downloadUrl: 'https://api.test/admin/park-graph-upserts/bulk/export-jobs/job%201/download?token=abc',
+      createdAtUtc: '2026-07-04T00:00:00Z',
+      expiresAtUtc: '2026-07-04T00:30:00Z'
     });
   });
 

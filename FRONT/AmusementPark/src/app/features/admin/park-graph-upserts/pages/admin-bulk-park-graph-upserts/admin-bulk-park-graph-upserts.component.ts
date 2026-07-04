@@ -1,9 +1,8 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { HttpResponse } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { finalize } from 'rxjs';
+import { concat, concatMap, finalize, interval, of, Subscription } from 'rxjs';
 
 import { ParkGraphUpsertsApiService } from '@data-access/admin/park-graph-upserts-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
@@ -12,6 +11,7 @@ import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTr
 import {
   BulkParkGraphUpsertRequest,
   BulkParkGraphUpsertResult,
+  ParkGraphBulkExportJob,
   ParkGraphBulkExportRequest,
   ParkGraphBulkSelectionMode,
   ParkGraphExportSection,
@@ -67,7 +67,7 @@ interface BulkParkGraphUpsertMessageGroup {
   styleUrl: './admin-bulk-park-graph-upserts.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminBulkParkGraphUpsertsComponent implements OnInit {
+export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
   protected readonly sectionOptions: readonly ParkGraphExportSectionOption[] = [
     { value: 'ParkBasics', labelKey: 'admin.bulkParkGraphUpserts.sections.ParkBasics' },
     { value: 'ParkAudience', labelKey: 'admin.bulkParkGraphUpserts.sections.ParkAudience' },
@@ -117,6 +117,7 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
   protected replaceCollections: boolean = false;
   protected previewResult: BulkParkGraphUpsertResult | null = null;
   protected lastAppliedResult: BulkParkGraphUpsertResult | null = null;
+  protected exportJob: ParkGraphBulkExportJob | null = null;
   protected isExporting: boolean = false;
   protected isPreviewing: boolean = false;
   protected isApplying: boolean = false;
@@ -124,6 +125,8 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
   protected operationErrorDetail: string | null = null;
 
   private listRequestId: number = 0;
+  private exportPollingSubscription: Subscription | null = null;
+  private lastDownloadedExportJobId: string | null = null;
 
   constructor(
     private readonly parksApi: ParksApiService,
@@ -137,6 +140,10 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadParks(1, this.pageSize);
+  }
+
+  ngOnDestroy(): void {
+    this.stopExportPolling();
   }
 
   protected search(): void {
@@ -243,28 +250,25 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
 
     this.uiError = null;
     this.operationErrorDetail = null;
+    this.exportJob = null;
+    this.lastDownloadedExportJobId = null;
     this.isExporting = true;
     this.changeDetectorRef.detectChanges();
 
-    this.parkGraphUpsertsApi.downloadBulkParkExport(this.buildExportRequest())
-      .pipe(finalize((): void => {
-        this.isExporting = false;
-        this.changeDetectorRef.markForCheck();
-      }))
+    this.parkGraphUpsertsApi.startBulkParkExportJob(this.buildExportRequest())
       .subscribe({
-        next: (response: HttpResponse<Blob>): void => {
-          if (!response.body) {
-            this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
-            return;
+        next: (job: ParkGraphBulkExportJob): void => {
+          this.handleExportJobUpdate(job);
+          if (!this.isTerminalExportJob(job)) {
+            this.startExportPolling(job.jobId);
           }
-
-          this.downloadBlob(response.body, this.resolveDownloadFileName(response));
-          this.showToast('success', 'admin.bulkParkGraphUpserts.toasts.exportSuccessTitle', 'admin.bulkParkGraphUpserts.toasts.exportSuccessDetail');
         },
         error: (error: unknown): void => {
+          this.isExporting = false;
           this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
           this.operationErrorDetail = extractSafeDisplayErrorMessage(error, this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.'));
           this.showToast('error', 'admin.bulkParkGraphUpserts.toasts.exportFailedTitle', 'admin.bulkParkGraphUpserts.toasts.exportFailedDetail');
+          this.changeDetectorRef.markForCheck();
         }
       });
   }
@@ -386,6 +390,17 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
 
   protected get canExport(): boolean {
     return !this.isExporting && (this.selectionMode === 'filtered' || this.selectedParkIds.length > 0);
+  }
+
+  protected get exportProgressPercentage(): number {
+    return Math.max(0, Math.min(100, this.exportJob?.progressPercentage ?? (this.isExporting ? 1 : 0)));
+  }
+
+  protected get exportHasProgressCount(): boolean {
+    return this.exportJob?.processedParkCount !== null
+      && this.exportJob?.processedParkCount !== undefined
+      && this.exportJob?.exportedParkCount !== null
+      && this.exportJob?.exportedParkCount !== undefined;
   }
 
   protected get canPreview(): boolean {
@@ -695,6 +710,77 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
     };
   }
 
+  private startExportPolling(jobId: string): void {
+    this.stopExportPolling();
+    this.exportPollingSubscription = concat(of(0), interval(1000))
+      .pipe(concatMap(() => this.parkGraphUpsertsApi.getBulkParkExportJob(jobId)))
+      .subscribe({
+        next: (job: ParkGraphBulkExportJob): void => this.handleExportJobUpdate(job),
+        error: (error: unknown): void => {
+          this.isExporting = false;
+          this.stopExportPolling();
+          this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
+          this.operationErrorDetail = extractSafeDisplayErrorMessage(error, this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.'));
+          this.showToast('error', 'admin.bulkParkGraphUpserts.toasts.exportFailedTitle', 'admin.bulkParkGraphUpserts.toasts.exportFailedDetail');
+          this.changeDetectorRef.markForCheck();
+        }
+      });
+  }
+
+  private handleExportJobUpdate(job: ParkGraphBulkExportJob): void {
+    this.exportJob = job;
+    if (job.status === 'Completed') {
+      this.isExporting = false;
+      this.stopExportPolling();
+      this.downloadCompletedExportJob(job);
+      this.changeDetectorRef.markForCheck();
+      return;
+    }
+
+    if (job.status === 'Failed' || job.status === 'Expired') {
+      this.isExporting = false;
+      this.stopExportPolling();
+      this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
+      this.operationErrorDetail = job.error ?? job.message ?? this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.');
+      this.showToast('error', 'admin.bulkParkGraphUpserts.toasts.exportFailedTitle', 'admin.bulkParkGraphUpserts.toasts.exportFailedDetail');
+      this.changeDetectorRef.markForCheck();
+      return;
+    }
+
+    this.changeDetectorRef.markForCheck();
+  }
+
+  private downloadCompletedExportJob(job: ParkGraphBulkExportJob): void {
+    if (this.lastDownloadedExportJobId === job.jobId) {
+      return;
+    }
+
+    this.lastDownloadedExportJobId = job.jobId;
+    if (!job.downloadUrl) {
+      this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
+      this.operationErrorDetail = this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.');
+      return;
+    }
+
+    const link: HTMLAnchorElement = this.document.createElement('a');
+    link.href = job.downloadUrl;
+    link.download = job.fileName ?? 'bulk-park-graph-export.json';
+    link.rel = 'noopener';
+    this.document.body.appendChild(link);
+    link.click();
+    this.document.body.removeChild(link);
+    this.showToast('success', 'admin.bulkParkGraphUpserts.toasts.exportSuccessTitle', 'admin.bulkParkGraphUpserts.toasts.exportSuccessDetail');
+  }
+
+  private isTerminalExportJob(job: ParkGraphBulkExportJob): boolean {
+    return job.status === 'Completed' || job.status === 'Failed' || job.status === 'Expired';
+  }
+
+  private stopExportPolling(): void {
+    this.exportPollingSubscription?.unsubscribe();
+    this.exportPollingSubscription = null;
+  }
+
   private updateSort(sortField: ParkAdminListSortField, sortDirection: ParkAdminListSortDirection): boolean {
     const sortChanged: boolean = this.sortField !== sortField || this.sortDirection !== sortDirection;
     this.sortField = sortField;
@@ -721,45 +807,6 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit {
 
   private normalizeSortDirection(sortOrder: number | null | undefined): ParkAdminListSortDirection {
     return sortOrder === -1 ? 'desc' : 'asc';
-  }
-
-  private resolveDownloadFileName(response: HttpResponse<Blob>): string {
-    const contentDisposition: string | null = response.headers.get('content-disposition');
-    if (!contentDisposition) {
-      return 'bulk-park-graph-export.json';
-    }
-
-    const encodedMatch: RegExpMatchArray | null = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i);
-    if (encodedMatch?.[1]) {
-      return decodeURIComponent(encodedMatch[1]);
-    }
-
-    const fallbackMatch: RegExpMatchArray | null = contentDisposition.match(/filename="?([^";]+)"?/i);
-    if (fallbackMatch?.[1]) {
-      return fallbackMatch[1];
-    }
-
-    return 'bulk-park-graph-export.json';
-  }
-
-  private downloadBlob(blob: Blob, fileName: string): void {
-    const defaultView: Window | null = this.document.defaultView;
-    if (!defaultView) {
-      return;
-    }
-
-    const urlFactory: typeof URL = URL;
-    const objectUrl: string = urlFactory.createObjectURL(blob);
-    const link: HTMLAnchorElement = this.document.createElement('a');
-    link.href = objectUrl;
-    link.download = fileName;
-    link.rel = 'noopener';
-    this.document.body.appendChild(link);
-    link.click();
-    this.document.body.removeChild(link);
-    defaultView.setTimeout((): void => {
-      urlFactory.revokeObjectURL(objectUrl);
-    }, 30000);
   }
 
   private notifyPreviewResult(result: BulkParkGraphUpsertResult): void {

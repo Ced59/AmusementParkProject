@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.WebAPI.Diagnostics;
 using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing;
@@ -61,6 +62,7 @@ public static class HttpApiServiceCollectionExtensions
         services.AddApiOutputCaching();
         services.AddScoped<ISsrPageCacheInvalidationRequestResolver, SsrPageCacheInvalidationRequestResolver>();
         services.AddScoped<IParkWeatherCacheInvalidator, ParkWeatherPublicCacheInvalidator>();
+        services.AddSingleton<IBulkParkGraphExportJobService, BulkParkGraphExportJobService>();
         services.AddControllers(static options =>
         {
             options.Filters.Add<InvalidatePublicCachesFilter>();

@@ -3,7 +3,7 @@ import { HttpTestingController } from '@angular/common/http/testing';
 
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { AdminBulkParkGraphUpsertsComponent } from './admin-bulk-park-graph-upserts.component';
-import { BulkParkGraphUpsertResult, ParkGraphExportSection } from '@app/models/admin/park-graph-upsert.models';
+import { BulkParkGraphUpsertResult, ParkGraphBulkExportJob, ParkGraphExportSection } from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { environment } from '../../../../../../environments/environment';
@@ -24,13 +24,14 @@ interface AdminBulkParkGraphUpsertsComponentHarness {
   selectionMode: string;
   totalRecords: number;
   uiError: string | null;
+  exportJob: ParkGraphBulkExportJob | null;
   exportBulkJson(): void;
   preview(): void;
   updateJsonText(value: string): void;
 }
 
 interface AdminBulkParkGraphUpsertsComponentPrivateHarness {
-  downloadBlob(blob: Blob, fileName: string): void;
+  downloadCompletedExportJob(job: ParkGraphBulkExportJob): void;
 }
 
 describe('AdminBulkParkGraphUpsertsComponent', () => {
@@ -47,8 +48,8 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
           <button class="export-action" type="button" [disabled]="!canExport" (click)="exportBulkJson()">
             {{ isExporting ? 'exporting' : 'export' }}
           </button>
-          @if (isExporting) {
-            <p class="export-status" role="status">exporting</p>
+          @if (isExporting || exportJob) {
+            <p class="export-progress" role="status">{{ exportProgressPercentage }}%</p>
           }
           @for (park of parks; track park.id) {
             <span class="park-name">{{ park.name }}</span>
@@ -68,6 +69,7 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
   });
 
   afterEach(() => {
+    fixture?.destroy();
     httpTestingController.verify();
   });
 
@@ -92,8 +94,33 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     });
   }
 
-  function stubBlobDownload(): void {
-    spyOn(component as unknown as AdminBulkParkGraphUpsertsComponentPrivateHarness, 'downloadBlob').and.stub();
+  function stubJobDownload(): jasmine.Spy {
+    return spyOn(component as unknown as AdminBulkParkGraphUpsertsComponentPrivateHarness, 'downloadCompletedExportJob').and.stub();
+  }
+
+  function createRunningJob(jobId: string = 'job-1'): ParkGraphBulkExportJob {
+    return {
+      jobId,
+      status: 'Running',
+      progressPercentage: 25,
+      message: 'Export JSON bulk en cours.',
+      exportedParkCount: 2,
+      processedParkCount: 0,
+      createdAtUtc: '2026-07-04T00:00:00Z',
+      expiresAtUtc: '2026-07-04T00:30:00Z'
+    };
+  }
+
+  function createCompletedJob(jobId: string = 'job-1'): ParkGraphBulkExportJob {
+    return {
+      ...createRunningJob(jobId),
+      status: 'Completed',
+      progressPercentage: 100,
+      processedParkCount: 2,
+      fileName: 'bulk.json',
+      downloadUrl: 'https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc',
+      completedAtUtc: '2026-07-04T00:01:00Z'
+    };
   }
 
   it('loads the first admin park page on init', () => {
@@ -118,7 +145,7 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     createComponent();
     flushInitialParks();
 
-    stubBlobDownload();
+    stubJobDownload();
     harness.searchQuery = 'closed';
     harness.localVisibilityFilter = false;
     harness.localAdminReviewStatusFilter = 'Validated';
@@ -127,7 +154,7 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     harness.selectedSections = [];
     harness.exportBulkJson();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export`);
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual(jasmine.objectContaining({
       selectionMode: 'filtered',
@@ -140,51 +167,82 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
       sections: []
     }));
 
-    request.flush(new Blob(['{}'], { type: 'application/json' }), {
-      headers: {
-        'content-disposition': 'attachment; filename="bulk.json"'
-      }
-    });
+    request.flush(createCompletedJob());
   });
 
-  it('shows export progress while the bulk JSON download is pending', () => {
+  it('shows export progress while the bulk JSON job is pending', () => {
     createComponent();
     flushInitialParks();
 
-    stubBlobDownload();
+    stubJobDownload();
     harness.exportBulkJson();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export`);
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
+    request.flush(createRunningJob());
+    const statusRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+    statusRequest.flush(createRunningJob());
     fixture.detectChanges();
 
     const exportButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('.export-action');
     expect(harness.isExporting).toBeTrue();
     expect(exportButton?.disabled).toBeTrue();
-    expect(fixture.nativeElement.querySelector('.export-status')).not.toBeNull();
-
-    request.flush(new Blob(['{}'], { type: 'application/json' }));
-    fixture.detectChanges();
-
-    expect(harness.isExporting).toBeFalse();
+    expect(fixture.nativeElement.querySelector('.export-progress')).not.toBeNull();
+    expect(harness.exportJob?.progressPercentage).toBe(25);
   });
 
-  it('exports explicitly selected parks when selection mode is explicit', () => {
+  it('does not start another status request while a slow export poll is pending', () => {
+    jasmine.clock().install();
+    try {
+      createComponent();
+      flushInitialParks();
+
+      stubJobDownload();
+      harness.exportBulkJson();
+
+      const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
+      request.flush(createRunningJob('job-1'));
+      const pendingStatusRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+
+      jasmine.clock().tick(1000);
+      httpTestingController.expectNone(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+
+      pendingStatusRequest.flush(createCompletedJob('job-1'));
+      jasmine.clock().tick(0);
+      httpTestingController.expectNone(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+    } finally {
+      jasmine.clock().uninstall();
+    }
+  });
+
+  it('polls and downloads explicitly selected parks when the export job completes', () => {
     createComponent();
     flushInitialParks();
 
-    stubBlobDownload();
+    const downloadSpy: jasmine.Spy = stubJobDownload();
     harness.selectionMode = 'explicit';
     harness.selectedParkIds = ['park-1', 'park-2'];
     harness.selectedSections = ['ParkAudience', 'ParkLocation'];
     harness.exportBulkJson();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export`);
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
     expect(request.request.body).toEqual(jasmine.objectContaining({
       selectionMode: 'explicit',
       parkIds: ['park-1', 'park-2'],
       sections: ['ParkAudience', 'ParkLocation']
     }));
-    request.flush(new Blob(['{}'], { type: 'application/json' }));
+    request.flush(createRunningJob('job-1'));
+
+    const statusRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+    expect(statusRequest.request.method).toBe('GET');
+    statusRequest.flush(createCompletedJob('job-1'));
+
+    expect(harness.isExporting).toBeFalse();
+    expect(harness.exportJob?.status).toBe('Completed');
+    expect(downloadSpy).toHaveBeenCalledWith(jasmine.objectContaining({
+      jobId: 'job-1',
+      status: 'Completed',
+      downloadUrl: 'https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc'
+    }));
   });
 
   it('sends preview bulk JSON without allowing park creation', () => {

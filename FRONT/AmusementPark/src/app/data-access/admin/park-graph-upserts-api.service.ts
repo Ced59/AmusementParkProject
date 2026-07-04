@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import {
   BulkParkGraphUpsertRequest,
   BulkParkGraphUpsertResult,
+  ParkGraphBulkExportJob,
   ParkGraphBulkExportRequest,
   ParkGraphUpsertHistoryEntry,
   ParkGraphUpsertRequest,
@@ -63,12 +64,13 @@ export class ParkGraphUpsertsApiService {
     });
   }
 
-  downloadBulkParkExport(request: ParkGraphBulkExportRequest): Observable<HttpResponse<Blob>> {
-    const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export`;
-    return this.http.post(url, request, {
-      ...this.jsonHttpOptions,
-      observe: 'response',
-      responseType: 'blob'
-    });
+  startBulkParkExportJob(request: ParkGraphBulkExportRequest): Observable<ParkGraphBulkExportJob> {
+    const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`;
+    return this.http.post<ParkGraphBulkExportJob>(url, request, this.jsonHttpOptions);
+  }
+
+  getBulkParkExportJob(jobId: string): Observable<ParkGraphBulkExportJob> {
+    const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/${encodeURIComponent(jobId)}`;
+    return this.http.get<ParkGraphBulkExportJob>(url);
   }
 }
