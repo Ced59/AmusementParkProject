@@ -16,6 +16,7 @@ using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Validation;
+using AmusementPark.Core.Domain.Parks;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AmusementPark.Application.DependencyInjection;
@@ -43,7 +44,6 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<PagedQueryValidator>();
         services.AddSingleton<IApplicationValidator<AmusementPark.Application.Common.Requests.PagedQuery>, PagedQueryValidator>();
         services.AddScoped<ParkItemReferenceValidator>();
-        services.AddScoped<ParkItemContentQualityService>();
         services.AddScoped<ParkItemsBulkCreatePreviewService>();
         services.AddScoped<BulkParkGraphJsonExportDataLoader>();
         services.AddScoped<ParkGraphUpsertProcessor>();
@@ -62,7 +62,6 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IParkOpeningHoursNotificationService, NoOpParkOpeningHoursNotificationService>();
         services.AddSingleton<IMeasurementConversionService>(MeasurementConversionService.Instance);
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
-        services.AddSingleton<IParkDistanceCalculator, ParkDistanceCalculator>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkOpeningHoursSitemapSectionProvider>();

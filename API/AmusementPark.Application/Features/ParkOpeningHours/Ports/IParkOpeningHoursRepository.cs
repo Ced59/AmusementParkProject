@@ -1,5 +1,4 @@
 using AmusementPark.Core.Domain.Parks;
-using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
 
 namespace AmusementPark.Application.Features.ParkOpeningHours.Ports;
 

@@ -1,6 +1,4 @@
-using AmusementPark.Core.Domain.Parks;
-
-namespace AmusementPark.Application.Features.ParkOpeningHours.Services;
+namespace AmusementPark.Core.Domain.Parks;
 
 public sealed class ParkOpeningHoursCoverageSegmentBuilder
 {
@@ -11,7 +9,7 @@ public sealed class ParkOpeningHoursCoverageSegmentBuilder
         return this.BuildSegments(schedule, DateTime.UtcNow);
     }
 
-    internal IReadOnlyCollection<ParkOpeningHoursCoverageSegment> BuildSegments(ParkOpeningHoursSchedule schedule, DateTime utcNow)
+    public IReadOnlyCollection<ParkOpeningHoursCoverageSegment> BuildSegments(ParkOpeningHoursSchedule schedule, DateTime utcNow)
     {
         ArgumentNullException.ThrowIfNull(schedule);
 
@@ -22,7 +20,7 @@ public sealed class ParkOpeningHoursCoverageSegmentBuilder
             return Array.Empty<ParkOpeningHoursCoverageSegment>();
         }
 
-        DateOnly today = ResolveToday(schedule.TimeZoneId, utcNow);
+        DateOnly today = ParkOpeningHoursTimeZoneResolver.ResolveLocalDate(schedule.TimeZoneId, utcNow);
         DateOnly yesterday = today.AddDays(-1);
         DateOnly effectiveFromDate = firstDate.Value > yesterday ? firstDate.Value : yesterday;
         if (lastDate.Value < effectiveFromDate)
@@ -102,38 +100,5 @@ public sealed class ParkOpeningHoursCoverageSegmentBuilder
         dates.AddRange(schedule.RegularRules.Select(static rule => rule.EndDate));
         dates.AddRange(schedule.DateOverrides.Select(static dateOverride => dateOverride.LocalDate));
         return dates.Count == 0 ? null : dates.Max();
-    }
-
-    private static DateOnly ResolveToday(string timeZoneId, DateTime utcNow)
-    {
-        TimeZoneInfo timeZone = ResolveTimeZone(timeZoneId);
-        DateTime localNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.SpecifyKind(utcNow, DateTimeKind.Utc), timeZone);
-        return DateOnly.FromDateTime(localNow);
-    }
-
-    private static TimeZoneInfo ResolveTimeZone(string timeZoneId)
-    {
-        if (!string.IsNullOrWhiteSpace(timeZoneId) && TimeZoneInfo.TryFindSystemTimeZoneById(timeZoneId.Trim(), out TimeZoneInfo? directTimeZone))
-        {
-            return directTimeZone;
-        }
-
-        if (!string.IsNullOrWhiteSpace(timeZoneId)
-            && TimeZoneInfo.TryConvertIanaIdToWindowsId(timeZoneId.Trim(), out string? windowsTimeZoneId)
-            && !string.IsNullOrWhiteSpace(windowsTimeZoneId)
-            && TimeZoneInfo.TryFindSystemTimeZoneById(windowsTimeZoneId, out TimeZoneInfo? windowsTimeZone))
-        {
-            return windowsTimeZone;
-        }
-
-        if (!string.IsNullOrWhiteSpace(timeZoneId)
-            && TimeZoneInfo.TryConvertWindowsIdToIanaId(timeZoneId.Trim(), out string? ianaTimeZoneId)
-            && !string.IsNullOrWhiteSpace(ianaTimeZoneId)
-            && TimeZoneInfo.TryFindSystemTimeZoneById(ianaTimeZoneId, out TimeZoneInfo? ianaTimeZone))
-        {
-            return ianaTimeZone;
-        }
-
-        return TimeZoneInfo.Utc;
     }
 }

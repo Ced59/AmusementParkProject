@@ -4,7 +4,6 @@ using System.Linq;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Contracts;
-using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.ParkItems.Results;
 using AmusementPark.Application.Features.Ratings.Results;
@@ -242,7 +241,7 @@ internal static class ParkItemsHttpMappers
         };
     }
 
-    private static ParkItemContentQualityDto ToHttp(this ParkItemContentQualityResult value)
+    private static ParkItemContentQualityDto ToHttp(this ParkItemContentQuality value)
     {
         return new ParkItemContentQualityDto
         {
@@ -260,7 +259,7 @@ internal static class ParkItemsHttpMappers
         };
     }
 
-    private static ParkItemAdminPublicationSignalsDto ToHttp(this ParkItemAdminPublicationSignalsResult value)
+    private static ParkItemAdminPublicationSignalsDto ToHttp(this ParkItemPublicationSignals value)
     {
         return new ParkItemAdminPublicationSignalsDto
         {

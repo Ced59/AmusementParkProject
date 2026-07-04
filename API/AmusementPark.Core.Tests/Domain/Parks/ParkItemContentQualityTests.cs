@@ -1,14 +1,13 @@
-using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
 using Xunit;
 
-namespace AmusementPark.Application.Tests.Features.ParkItems.Services;
+namespace AmusementPark.Core.Tests.Domain.Parks;
 
-public sealed class ParkItemContentQualityServiceTests
+public sealed class ParkItemContentQualityTests
 {
     [Fact]
-    public void Evaluate_WhenItemHasRequiredPublicFields_ShouldBePublishable()
+    public void EvaluateContentQuality_WhenItemHasRequiredPublicFields_ShouldBePublishable()
     {
         ParkItem item = new ParkItem
         {
@@ -24,9 +23,7 @@ public sealed class ParkItemContentQualityServiceTests
             },
         };
 
-        ParkItemContentQualityService service = new ParkItemContentQualityService();
-
-        AmusementPark.Application.Features.ParkItems.Results.ParkItemContentQualityResult result = service.Evaluate(item);
+        ParkItemContentQuality result = item.EvaluateContentQuality();
 
         Assert.True(result.IsPublishable);
         Assert.True(result.HasFrenchDescription);
@@ -35,7 +32,7 @@ public sealed class ParkItemContentQualityServiceTests
     }
 
     [Fact]
-    public void Evaluate_WhenItemHasContentButNoZone_ShouldRemainPublishableWithMissingZoneSignal()
+    public void EvaluateContentQuality_WhenItemHasContentButNoZone_ShouldRemainPublishableWithMissingZoneSignal()
     {
         ParkItem item = new ParkItem
         {
@@ -50,9 +47,7 @@ public sealed class ParkItemContentQualityServiceTests
             },
         };
 
-        ParkItemContentQualityService service = new ParkItemContentQualityService();
-
-        AmusementPark.Application.Features.ParkItems.Results.ParkItemContentQualityResult result = service.Evaluate(item);
+        ParkItemContentQuality result = item.EvaluateContentQuality();
 
         Assert.True(result.IsPublishable);
         Assert.Contains("zone", result.MissingRequirementKeys);
@@ -61,7 +56,7 @@ public sealed class ParkItemContentQualityServiceTests
     }
 
     [Fact]
-    public void Evaluate_WhenItemMissesPublicFields_ShouldExposeMissingRequirementKeys()
+    public void EvaluateContentQuality_WhenItemMissesPublicFields_ShouldExposeMissingRequirementKeys()
     {
         ParkItem item = new ParkItem
         {
@@ -72,9 +67,7 @@ public sealed class ParkItemContentQualityServiceTests
             Descriptions = new List<LocalizedText>(),
         };
 
-        ParkItemContentQualityService service = new ParkItemContentQualityService();
-
-        AmusementPark.Application.Features.ParkItems.Results.ParkItemContentQualityResult result = service.Evaluate(item);
+        ParkItemContentQuality result = item.EvaluateContentQuality();
 
         Assert.False(result.IsPublishable);
         Assert.Contains("descriptionAny", result.MissingRequirementKeys);

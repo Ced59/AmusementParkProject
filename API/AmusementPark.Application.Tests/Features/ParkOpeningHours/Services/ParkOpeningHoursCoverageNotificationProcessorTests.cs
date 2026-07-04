@@ -1,4 +1,3 @@
-using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.Parks.Ports;

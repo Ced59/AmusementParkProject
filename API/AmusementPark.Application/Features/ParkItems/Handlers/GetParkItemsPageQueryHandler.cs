@@ -6,7 +6,6 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkItems.Queries;
 using AmusementPark.Application.Features.ParkItems.Results;
-using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Services;
@@ -20,7 +19,6 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkRepository parkRepository;
     private readonly PagedQueryValidator pagedQueryValidator;
-    private readonly ParkItemContentQualityService contentQualityService;
     private readonly IParkZoneRepository? parkZoneRepository;
     private readonly IImageRepository? imageRepository;
     private readonly IHistoryEventRepository? historyEventRepository;
@@ -29,7 +27,6 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
         IParkItemRepository parkItemRepository,
         IParkRepository parkRepository,
         PagedQueryValidator pagedQueryValidator,
-        ParkItemContentQualityService contentQualityService,
         IParkZoneRepository? parkZoneRepository = null,
         IImageRepository? imageRepository = null,
         IHistoryEventRepository? historyEventRepository = null)
@@ -37,7 +34,6 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
         this.parkItemRepository = parkItemRepository;
         this.parkRepository = parkRepository;
         this.pagedQueryValidator = pagedQueryValidator;
-        this.contentQualityService = contentQualityService;
         this.parkZoneRepository = parkZoneRepository;
         this.imageRepository = imageRepository;
         this.historyEventRepository = historyEventRepository;
@@ -171,8 +167,8 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
                     Type = item.Type,
                     IsVisible = item.IsVisible,
                     AdminReviewStatus = item.AdminReviewStatus,
-                    ContentQuality = this.contentQualityService.Evaluate(item),
-                    PublicationSignals = this.contentQualityService.BuildPublicationSignals(item),
+                    ContentQuality = item.EvaluateContentQuality(),
+                    PublicationSignals = item.BuildPublicationSignals(),
                     DataCompleteness = includeDataCompleteness ? item.CalculateDataCompletenessScore(dataCompletenessContext) : null,
                 };
             })

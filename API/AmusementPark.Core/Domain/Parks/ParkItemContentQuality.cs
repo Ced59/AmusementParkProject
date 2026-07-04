@@ -1,8 +1,6 @@
-using AmusementPark.Core.Domain.Parks;
+namespace AmusementPark.Core.Domain.Parks;
 
-namespace AmusementPark.Application.Features.ParkItems.Results;
-
-public sealed class ParkItemContentQualityResult
+public sealed class ParkItemContentQuality
 {
     public bool StructureComplete { get; init; }
 
@@ -27,7 +25,7 @@ public sealed class ParkItemContentQualityResult
     public IReadOnlyCollection<string> MissingRequirementKeys { get; init; } = Array.Empty<string>();
 }
 
-public sealed class ParkItemAdminPublicationSignalsResult
+public sealed class ParkItemPublicationSignals
 {
     public bool IsVisible { get; init; }
 

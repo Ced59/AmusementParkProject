@@ -1,4 +1,3 @@
-using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;

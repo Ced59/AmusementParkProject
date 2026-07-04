@@ -4,7 +4,6 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkItems.Results;
-using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Models;
@@ -20,18 +19,15 @@ public sealed class UpdateParkItemsBulkAdministrationCommandHandler : ICommandHa
 {
     private readonly IParkItemRepository parkItemRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
-    private readonly ParkItemContentQualityService contentQualityService;
     private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
     public UpdateParkItemsBulkAdministrationCommandHandler(
         IParkItemRepository parkItemRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        ParkItemContentQualityService contentQualityService,
         IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.parkItemRepository = parkItemRepository;
         this.searchProjectionWriter = searchProjectionWriter;
-        this.contentQualityService = contentQualityService;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
@@ -95,7 +91,7 @@ public sealed class UpdateParkItemsBulkAdministrationCommandHandler : ICommandHa
     {
         IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByIdsAsync(parkItemIds, cancellationToken);
         List<string> missingRequirementKeys = items
-            .Select(this.contentQualityService.Evaluate)
+            .Select(static item => item.EvaluateContentQuality())
             .Where(static quality => !quality.IsPublishable)
             .SelectMany(static quality => quality.MissingRequirementKeys)
             .Distinct(StringComparer.Ordinal)

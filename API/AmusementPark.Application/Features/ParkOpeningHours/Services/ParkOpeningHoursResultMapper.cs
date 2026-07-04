@@ -5,6 +5,24 @@ namespace AmusementPark.Application.Features.ParkOpeningHours.Services;
 
 internal static class ParkOpeningHoursResultMapper
 {
+    public static ParkOpeningHoursCalendarResult ToCalendarResult(this ParkOpeningHoursCalendar calendar)
+    {
+        return new ParkOpeningHoursCalendarResult
+        {
+            ParkId = calendar.ParkId,
+            TimeZoneId = calendar.TimeZoneId,
+            SourceUrl = calendar.SourceUrl,
+            Notes = calendar.Notes,
+            LastVerifiedAtUtc = calendar.LastVerifiedAtUtc,
+            UpdatedAtUtc = calendar.UpdatedAtUtc,
+            FirstDate = calendar.FirstDate,
+            LastDate = calendar.LastDate,
+            FromDate = calendar.FromDate,
+            ToDate = calendar.ToDate,
+            Days = calendar.Days.Select(static day => day.ToResult()).ToList(),
+        };
+    }
+
     public static ParkOpeningHoursScheduleResult ToScheduleResult(this ParkOpeningHoursSchedule schedule)
     {
         return new ParkOpeningHoursScheduleResult
@@ -58,6 +76,20 @@ internal static class ParkOpeningHoursResultMapper
             ClosesNextDay = timeRange.ClosesNextDay,
             LastAdmissionAt = timeRange.LastAdmissionAt,
             LastAdmissionNextDay = timeRange.LastAdmissionNextDay,
+        };
+    }
+
+    private static ParkOpeningHoursDayResult ToResult(this ParkOpeningHoursDay day)
+    {
+        return new ParkOpeningHoursDayResult
+        {
+            LocalDate = day.LocalDate,
+            IsClosed = day.IsClosed,
+            IsDefined = day.IsDefined,
+            SourceKind = day.SourceKind,
+            Labels = day.Labels.ToList(),
+            Reasons = day.Reasons.ToList(),
+            TimeRanges = day.TimeRanges.Select(static timeRange => timeRange.ToResult()).ToList(),
         };
     }
 }
