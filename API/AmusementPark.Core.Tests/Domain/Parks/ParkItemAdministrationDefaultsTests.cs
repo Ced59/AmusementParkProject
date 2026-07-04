@@ -1,9 +1,8 @@
-using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
 using Xunit;
 
-namespace AmusementPark.Application.Tests.Features.ParkItems.Services;
+namespace AmusementPark.Core.Tests.Domain.Parks;
 
 public sealed class ParkItemAdministrationDefaultsTests
 {

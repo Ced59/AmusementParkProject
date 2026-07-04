@@ -1,9 +1,7 @@
-using AmusementPark.Application.Features.ParkOpeningHours.Contracts;
-using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Core.Domain.Parks;
 using Xunit;
 
-namespace AmusementPark.Application.Tests.Features.ParkOpeningHours.Services;
+namespace AmusementPark.Core.Tests.Domain.Parks;
 
 public sealed class ParkOpeningHoursAdminStatusResolverTests
 {

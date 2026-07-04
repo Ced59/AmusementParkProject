@@ -3,7 +3,6 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Handlers;
 using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Models;
@@ -103,7 +102,6 @@ public sealed class UpdateParkItemsVisibilityByParkIdsCommandHandlerTests
         UpdateParkItemsVisibilityByParkIdsCommandHandler handler = new UpdateParkItemsVisibilityByParkIdsCommandHandler(
             repository.Object,
             searchProjectionWriter.Object,
-            new ParkItemContentQualityService(),
             publicSeoUpdateNotifier.Object);
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
@@ -149,7 +147,6 @@ public sealed class UpdateParkItemsVisibilityByParkIdsCommandHandlerTests
         UpdateParkItemsVisibilityByParkIdsCommandHandler handler = new UpdateParkItemsVisibilityByParkIdsCommandHandler(
             repository.Object,
             searchProjectionWriter.Object,
-            new ParkItemContentQualityService(),
             publicSeoUpdateNotifier.Object);
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
