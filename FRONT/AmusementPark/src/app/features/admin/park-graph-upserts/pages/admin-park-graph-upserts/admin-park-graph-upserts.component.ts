@@ -1,6 +1,6 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { HttpResponse } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -103,7 +103,6 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   protected isLoadingSelectedParkScore: boolean = false;
   protected uiError: string | null = null;
   protected operationErrorDetail: string | null = null;
-  protected isNearPageBottom: boolean = false;
   protected mergeEntityType: ParkGraphUpsertMergeEntityType = 'AttractionManufacturer';
   protected mergeSourceId: string = '';
   protected mergeTargetId: string = '';
@@ -122,12 +121,6 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectParkFromQueryParams(this.route.snapshot.queryParamMap);
-    this.updatePageScrollState();
-  }
-
-  @HostListener('window:scroll')
-  protected onWindowScroll(): void {
-    this.updatePageScrollState();
   }
 
   protected searchParks(): void {
@@ -348,20 +341,6 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   protected async copyResultErrors(): Promise<void> {
     const messages: string[] = this.previewResult?.errors ?? [];
     await this.copyMessages(messages, 'admin.parkGraphUpserts.toasts.errorsCopiedTitle', 'admin.parkGraphUpserts.toasts.errorsCopiedDetail');
-  }
-
-  protected togglePageScroll(): void {
-    const defaultView: Window | null = this.document.defaultView;
-    if (!defaultView) {
-      return;
-    }
-
-    const documentElement: HTMLElement = this.document.documentElement;
-    const targetTop: number = this.isNearPageBottom ? 0 : documentElement.scrollHeight;
-    defaultView.scrollTo({
-      top: targetTop,
-      behavior: 'smooth'
-    });
   }
 
   protected get changes(): ParkGraphUpsertChange[] {
@@ -1164,21 +1143,6 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     textArea.select();
     this.document.execCommand('copy');
     this.document.body.removeChild(textArea);
-  }
-
-  private updatePageScrollState(): void {
-    const defaultView: Window | null = this.document.defaultView;
-    if (!defaultView) {
-      return;
-    }
-
-    const documentElement: HTMLElement = this.document.documentElement;
-    const viewportBottom: number = defaultView.scrollY + defaultView.innerHeight;
-    const nextIsNearBottom: boolean = documentElement.scrollHeight - viewportBottom < 140;
-    if (nextIsNearBottom !== this.isNearPageBottom) {
-      this.isNearPageBottom = nextIsNearBottom;
-      this.changeDetectorRef.markForCheck();
-    }
   }
 
   private showToast(severity: ToastSeverity, summaryKey: string, detailKey: string, params: Record<string, number | string> = {}): void {

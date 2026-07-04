@@ -11,6 +11,8 @@
     "delete": "Usuń",
     "search": "Szukaj",
     "reset": "Resetuj",
-    "refresh": "Odśwież"
+    "refresh": "Odśwież",
+    "scrollTop": "Przejdź na górę",
+    "scrollBottom": "Przejdź na dół"
   }
 }

@@ -11,6 +11,8 @@
     "delete": "Elimina",
     "search": "Cerca",
     "reset": "Reimposta",
-    "refresh": "Aggiorna"
+    "refresh": "Aggiorna",
+    "scrollTop": "Vai in alto",
+    "scrollBottom": "Vai in basso"
   }
 }

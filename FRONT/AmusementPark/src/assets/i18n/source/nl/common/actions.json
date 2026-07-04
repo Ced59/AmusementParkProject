@@ -11,6 +11,8 @@
     "delete": "Verwijderen",
     "search": "Zoeken",
     "reset": "Resetten",
-    "refresh": "Vernieuwen"
+    "refresh": "Vernieuwen",
+    "scrollTop": "Naar boven",
+    "scrollBottom": "Naar beneden"
   }
 }

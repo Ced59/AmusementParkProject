@@ -333,13 +333,4 @@
       </div>
     </article>
   }
-
-  <button
-    type="button"
-    class="page-jump-button"
-    (click)="togglePageScroll()"
-    [attr.aria-label]="(isNearPageBottom ? 'admin.parkGraphUpserts.actions.scrollTop' : 'admin.parkGraphUpserts.actions.scrollBottom') | translate"
-    [title]="(isNearPageBottom ? 'admin.parkGraphUpserts.actions.scrollTop' : 'admin.parkGraphUpserts.actions.scrollBottom') | translate">
-    <span class="pi" [class.pi-arrow-up]="isNearPageBottom" [class.pi-arrow-down]="!isNearPageBottom" aria-hidden="true"></span>
-  </button>
 </section>

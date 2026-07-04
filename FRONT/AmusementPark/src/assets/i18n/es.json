@@ -2195,7 +2195,9 @@
     "delete": "Eliminar",
     "search": "Buscar",
     "reset": "Restablecer",
-    "refresh": "Actualizar"
+    "refresh": "Actualizar",
+    "scrollTop": "Ir arriba",
+    "scrollBottom": "Ir abajo"
   },
   "common": {
     "loadingTitle": "Cargando",
