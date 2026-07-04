@@ -52,8 +52,27 @@ public sealed class BulkParkGraphExportJobServiceTests
         Assert.Equal("bulk-test.json", download.FileName);
         Assert.True(File.Exists(download.FilePath));
         Assert.Contains("\"documentType\":\"AmusementParkBulkParkGraphUpsert\"", await File.ReadAllTextAsync(download.FilePath));
+        AssertPrivateUnixPermissions(expectedDirectory, download.FilePath);
 
         File.Delete(download.FilePath);
+    }
+
+    private static void AssertPrivateUnixPermissions(string directoryPath, string filePath)
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            return;
+        }
+
+        DirectoryInfo directory = new DirectoryInfo(directoryPath);
+        FileInfo file = new FileInfo(filePath);
+
+        Assert.Equal(
+            UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute,
+            directory.UnixFileMode);
+        Assert.Equal(
+            UnixFileMode.UserRead | UnixFileMode.UserWrite,
+            file.UnixFileMode);
     }
 
     private static async Task<BulkParkGraphExportJobSnapshot> WaitForTerminalSnapshotAsync(
