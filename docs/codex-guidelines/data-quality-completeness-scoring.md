@@ -156,6 +156,7 @@ Les bloqueurs suivants forcent `isVisible: false` même si le score brut est él
 ## Scoring des parcs
 
 Le score parc recommandé vaut 100 points normalisés. Les catégories non applicables sont retirées du dénominateur.
+Les catégories ci-dessous totalisent **116 points bruts** avant normalisation ; `completenessScore` reste donc toujours ramené sur 0..100 via la formule générale, et `applicableMaxPoints` peut valoir 116 avant retrait des critères non applicables.
 
 ### 1. Identité, pertinence et administration — 10 points
 

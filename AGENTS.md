@@ -45,6 +45,7 @@ The project must preserve its current architecture, SOLID principles, separation
 ## Backend rules
 
 - Respect clean architecture boundaries.
+- Keep pure business logic and pure domain-calculated data in `API/AmusementPark.Core` entities, value objects, or domain services. Application, WebAPI, Infrastructure and frontend layers may collect facts, orchestrate use cases, persist data, map DTOs, or display results, but must not own business rules that belong to the domain.
 - Keep domain logic out of controllers.
 - Keep infrastructure details out of Core and Application.
 - Use application services, handlers, ports, and abstractions for orchestration.
