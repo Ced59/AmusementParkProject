@@ -71,6 +71,8 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
 {
     private static readonly TimeSpan PendingJobLifetime = TimeSpan.FromHours(1);
     private static readonly TimeSpan CompletedJobLifetime = TimeSpan.FromMinutes(30);
+    private const UnixFileMode PrivateDirectoryMode = UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute;
+    private const UnixFileMode PrivateFileMode = UnixFileMode.UserRead | UnixFileMode.UserWrite;
 
     private readonly ConcurrentDictionary<string, BulkParkGraphExportJobState> jobs = new ConcurrentDictionary<string, BulkParkGraphExportJobState>(StringComparer.Ordinal);
     private readonly SemaphoreSlim exportSemaphore = new SemaphoreSlim(1, 1);
@@ -80,12 +82,11 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
 
     public BulkParkGraphExportJobService(
         IServiceScopeFactory serviceScopeFactory,
-        ILogger<BulkParkGraphExportJobService> logger,
-        IWebHostEnvironment environment)
+        ILogger<BulkParkGraphExportJobService> logger)
     {
         this.serviceScopeFactory = serviceScopeFactory;
         this.logger = logger;
-        this.workDirectory = Path.Combine(environment.ContentRootPath, "App_Data", "bulk-park-graph-exports");
+        this.workDirectory = Path.Combine(Path.GetTempPath(), "amusement-park", "bulk-park-graph-exports");
     }
 
     public Task<BulkParkGraphExportJobSnapshot> StartAsync(ParkGraphBulkExportRequest request, string requestedByUserId, CancellationToken cancellationToken = default)
@@ -100,7 +101,7 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
         cancellationToken.ThrowIfCancellationRequested();
         DateTime now = DateTime.UtcNow;
         this.CleanupExpired(now);
-        Directory.CreateDirectory(this.workDirectory);
+        EnsurePrivateDirectory(this.workDirectory);
 
         BulkParkGraphExportJobState state = new BulkParkGraphExportJobState
         {
@@ -199,12 +200,9 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
             ApplicationResult<ParkGraphJsonExportResult> result;
             await using (FileStream output = new FileStream(
                 state.FilePath,
-                FileMode.Create,
-                FileAccess.Write,
-                FileShare.Read,
-                bufferSize: 65536,
-                useAsync: true))
+                CreatePrivateFileStreamOptions()))
             {
+                EnsurePrivateFile(state.FilePath);
                 result = await handler.HandleAsync(
                     new ExportBulkParkGraphJsonQuery(state.Request, progress, output),
                     cancellationToken);
@@ -367,6 +365,45 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
             SortDescending = request.SortDescending,
             Sections = request.Sections.ToList(),
         };
+    }
+
+    private static void EnsurePrivateDirectory(string directoryPath)
+    {
+        DirectoryInfo directory = !OperatingSystem.IsWindows()
+            ? Directory.CreateDirectory(directoryPath, PrivateDirectoryMode)
+            : Directory.CreateDirectory(directoryPath);
+
+        if (!OperatingSystem.IsWindows())
+        {
+            directory.UnixFileMode = PrivateDirectoryMode;
+        }
+    }
+
+    private static FileStreamOptions CreatePrivateFileStreamOptions()
+    {
+        FileStreamOptions options = new FileStreamOptions
+        {
+            Mode = FileMode.Create,
+            Access = FileAccess.Write,
+            Share = FileShare.Read,
+            BufferSize = 65536,
+            Options = FileOptions.Asynchronous,
+        };
+
+        if (!OperatingSystem.IsWindows())
+        {
+            options.UnixCreateMode = PrivateFileMode;
+        }
+
+        return options;
+    }
+
+    private static void EnsurePrivateFile(string filePath)
+    {
+        if (!OperatingSystem.IsWindows())
+        {
+            File.SetUnixFileMode(filePath, PrivateFileMode);
+        }
     }
 
     private static string CreateToken(int byteCount)
