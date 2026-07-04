@@ -572,27 +572,6 @@
   }
 }
 
-.page-jump-button {
-  position: fixed;
-  right: clamp(1rem, 2vw, 1.5rem);
-  bottom: clamp(1rem, 2vw, 1.5rem);
-  z-index: 20;
-  display: inline-grid;
-  width: 2.85rem;
-  height: 2.85rem;
-  place-items: center;
-  border: 1px solid rgba(56, 197, 245, 0.34);
-  border-radius: 999px;
-  background: rgba(15, 11, 6, 0.82);
-  color: var(--color-sky, #38c5f5);
-  box-shadow: var(--shadow-card);
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(56, 197, 245, 0.14);
-  }
-}
-
 @media (max-width: 1100px) {
   .park-graph-upserts__workspace {
     grid-template-columns: 1fr;

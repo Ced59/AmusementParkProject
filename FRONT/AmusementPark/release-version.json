@@ -1,6 +1,20 @@
 {
-  "version": "3.3.11",
+  "version": "3.3.12",
   "history": [
+    {
+      "version": "3.3.12",
+      "releasedAt": "2026-07-04",
+      "labels": {
+        "fr": "La navigation dans les longues pages est plus rapide.",
+        "en": "Long pages are easier to navigate.",
+        "de": "Lange Seiten lassen sich leichter navigieren.",
+        "nl": "Lange pagina's zijn makkelijker te navigeren.",
+        "it": "Le pagine lunghe sono più facili da navigare.",
+        "es": "Las páginas largas son más fáciles de recorrer.",
+        "pl": "Długie strony są łatwiejsze w obsłudze.",
+        "pt": "As páginas longas ficam mais fáceis de percorrer."
+      }
+    },
     {
       "version": "3.3.11",
       "releasedAt": "2026-07-04",

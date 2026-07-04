@@ -9,12 +9,13 @@ import { Toast } from '@shared/ui/primitives/toast';
 import { CookieConsentBannerComponent } from '@ui/layouts/cookie-consent-banner/cookie-consent-banner.component';
 import { SeoService } from '@core/seo/seo.service';
 import { resolveLanguageFromActivatedRoute, resolveLanguageFromUrl } from '@shared/utils/routing/route-language.utils';
+import { PageJumpButtonComponent } from '@shared/components/page-jump-button/page-jump-button.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterOutlet, Toast, CookieConsentBannerComponent]
+  imports: [RouterOutlet, Toast, CookieConsentBannerComponent, PageJumpButtonComponent]
 })
 export class AppComponent implements OnInit {
   title: string = 'Amusement Parks';

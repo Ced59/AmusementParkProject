@@ -2195,7 +2195,9 @@
     "delete": "Delete",
     "search": "Search",
     "reset": "Reset",
-    "refresh": "Refresh"
+    "refresh": "Refresh",
+    "scrollTop": "Go to top",
+    "scrollBottom": "Go to bottom"
   },
   "common": {
     "loadingTitle": "Loading",

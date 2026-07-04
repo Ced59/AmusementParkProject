@@ -1,0 +1,10 @@
+@if (isVisible) {
+  <button
+    type="button"
+    class="page-jump-button"
+    (click)="togglePageScroll()"
+    [attr.aria-label]="labelKey | translate"
+    [title]="labelKey | translate">
+    <span class="pi" [class.pi-arrow-up]="isNearPageBottom" [class.pi-arrow-down]="!isNearPageBottom" aria-hidden="true"></span>
+  </button>
+}

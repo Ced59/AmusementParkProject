@@ -2195,7 +2195,9 @@
     "delete": "Löschen",
     "search": "Suchen",
     "reset": "Zurücksetzen",
-    "refresh": "Aktualisieren"
+    "refresh": "Aktualisieren",
+    "scrollTop": "Nach oben",
+    "scrollBottom": "Nach unten"
   },
   "common": {
     "loadingTitle": "Wird geladen",
