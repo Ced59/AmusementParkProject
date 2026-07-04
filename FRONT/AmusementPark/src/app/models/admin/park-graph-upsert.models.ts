@@ -38,6 +38,25 @@ export interface ParkGraphBulkExportRequest {
   sections: ParkGraphExportSection[];
 }
 
+export type ParkGraphBulkExportJobStatus = 'Queued' | 'Running' | 'Completed' | 'Failed' | 'Expired';
+
+export interface ParkGraphBulkExportJob {
+  jobId: string;
+  status: ParkGraphBulkExportJobStatus;
+  progressPercentage: number;
+  message?: string | null;
+  exportedParkCount?: number | null;
+  processedParkCount?: number | null;
+  fileName?: string | null;
+  contentLength?: number | null;
+  downloadUrl?: string | null;
+  createdAtUtc: string;
+  startedAtUtc?: string | null;
+  completedAtUtc?: string | null;
+  expiresAtUtc: string;
+  error?: string | null;
+}
+
 export interface BulkParkGraphUpsertRequest {
   createIfMissing: boolean;
   replaceCollections: boolean;

@@ -55,6 +55,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
         IReadOnlyCollection<Park> parks = await this.ResolveParksAsync(query.Request, cancellationToken);
         IReadOnlySet<ParkGraphExportSection> sections = query.Request.Sections.Distinct().ToHashSet();
         DateTime exportedAtUtc = DateTime.UtcNow;
+        ReportProgress(query.Progress, "selection", 5, parks.Count, 0, "Sélection des parcs préparée.");
         await using MemoryStream output = new MemoryStream();
         await using (Utf8JsonWriter writer = new Utf8JsonWriter(output, ExportWriterOptions))
         {
@@ -68,14 +69,21 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
 
             if (CanUseParkOnlyExport(query.Request.Sections))
             {
+                int processedParkCount = 0;
+                ReportProgress(query.Progress, "writing", 10, parks.Count, processedParkCount, "Écriture du JSON bulk.");
                 foreach (Park park in parks)
                 {
                     WriteParkOnlyDocument(writer, park, query.Request.Sections, exportedAtUtc);
+                    processedParkCount++;
+                    ReportWritingProgress(query.Progress, parks.Count, processedParkCount, 10);
                 }
             }
             else
             {
+                ReportProgress(query.Progress, "loading-graph", 15, parks.Count, 0, "Chargement bulk des données liées.");
                 BulkParkGraphJsonExportData graphData = await this.graphDataLoader.LoadAsync(parks, sections, cancellationToken);
+                int processedParkCount = 0;
+                ReportProgress(query.Progress, "writing", 40, parks.Count, processedParkCount, "Écriture du JSON bulk.");
                 foreach (Park park in parks)
                 {
                     string parkId = park.Id;
@@ -95,6 +103,8 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
                         exportedAtUtc,
                         "admin-bulk-park-graph-export");
                     JsonSerializer.Serialize(writer, document, ExportJsonOptions);
+                    processedParkCount++;
+                    ReportWritingProgress(query.Progress, parks.Count, processedParkCount, 40);
                 }
             }
 
@@ -107,6 +117,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
             writer.WriteEndObject();
         }
 
+        ReportProgress(query.Progress, "completed", 100, parks.Count, parks.Count, "JSON bulk prêt.");
         return ApplicationResult<ParkGraphJsonExportResult>.Success(new ParkGraphJsonExportResult
         {
             FileName = BuildFileName(exportedAtUtc),
@@ -203,6 +214,49 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
     private static bool CanUseParkOnlyExport(IReadOnlyCollection<ParkGraphExportSection> sections)
     {
         return sections.All(ParkOnlySections.Contains);
+    }
+
+    private static void ReportWritingProgress(IProgress<ParkGraphJsonExportProgress>? progress, int exportedParkCount, int processedParkCount, int startPercentage)
+    {
+        if (progress is null)
+        {
+            return;
+        }
+
+        if (exportedParkCount > 20 && processedParkCount < exportedParkCount && processedParkCount % 25 != 0)
+        {
+            return;
+        }
+
+        int availablePercentage = 95 - startPercentage;
+        int progressPercentage = exportedParkCount == 0
+            ? 95
+            : startPercentage + (int)Math.Floor(processedParkCount / (double)exportedParkCount * availablePercentage);
+        ReportProgress(
+            progress,
+            "writing",
+            Math.Min(95, progressPercentage),
+            exportedParkCount,
+            processedParkCount,
+            "Écriture du JSON bulk.");
+    }
+
+    private static void ReportProgress(
+        IProgress<ParkGraphJsonExportProgress>? progress,
+        string step,
+        int progressPercentage,
+        int exportedParkCount,
+        int processedParkCount,
+        string message)
+    {
+        progress?.Report(new ParkGraphJsonExportProgress
+        {
+            Step = step,
+            ProgressPercentage = Math.Max(0, Math.Min(100, progressPercentage)),
+            ExportedParkCount = exportedParkCount,
+            ProcessedParkCount = processedParkCount,
+            Message = message,
+        });
     }
 
     private static IReadOnlyCollection<TValue> ResolveCollection<TValue>(

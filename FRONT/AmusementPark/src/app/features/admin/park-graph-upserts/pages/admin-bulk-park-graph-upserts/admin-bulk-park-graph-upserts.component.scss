@@ -93,13 +93,68 @@
   justify-content: flex-end;
 }
 
-.export-status {
+.export-progress {
+  display: grid;
+  gap: 0.45rem;
   width: 100%;
-  min-height: 1.25rem;
-  margin: 0;
+  min-width: min(100%, 18rem);
+  max-width: 32rem;
+  margin-left: auto;
   color: var(--text-faint, var(--app-text-muted));
   font-size: 0.875rem;
-  text-align: right;
+}
+
+.export-progress__summary {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+
+  span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  strong {
+    color: var(--app-heading);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.export-progress__bar {
+  position: relative;
+  height: 0.5rem;
+  border: 1px solid rgba(56, 197, 245, 0.2);
+  border-radius: 999px;
+  background: rgba(56, 197, 245, 0.08);
+  overflow: hidden;
+
+  span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    min-width: 0.4rem;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--c-orange, #ff5a1f), var(--c-sky, #38c5f5));
+    transition: width 0.24s ease;
+  }
+}
+
+.export-progress__download {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(77, 223, 138, 0.28);
+  border-radius: var(--radius-md);
+  color: var(--app-heading);
+  background: rgba(77, 223, 138, 0.1);
+  font-weight: 800;
+  text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 .admin-search-field {
@@ -548,6 +603,10 @@ td code,
   .wizard-actions,
   .selection-toolbar__summary {
     justify-content: flex-start;
+  }
+
+  .export-progress {
+    margin-left: 0;
   }
 
   .result-counts {

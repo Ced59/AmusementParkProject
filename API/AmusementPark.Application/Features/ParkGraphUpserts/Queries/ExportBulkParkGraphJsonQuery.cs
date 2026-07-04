@@ -5,4 +5,6 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Queries;
 
-public sealed record ExportBulkParkGraphJsonQuery(ParkGraphBulkExportRequest Request) : IQuery<ApplicationResult<ParkGraphJsonExportResult>>;
+public sealed record ExportBulkParkGraphJsonQuery(
+    ParkGraphBulkExportRequest Request,
+    IProgress<ParkGraphJsonExportProgress>? Progress = null) : IQuery<ApplicationResult<ParkGraphJsonExportResult>>;

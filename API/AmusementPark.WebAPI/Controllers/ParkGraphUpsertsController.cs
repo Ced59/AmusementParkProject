@@ -10,9 +10,11 @@ using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
 using AmusementPark.WebAPI.OutputCaching;
 
@@ -24,6 +26,8 @@ namespace AmusementPark.WebAPI.Controllers;
 [RequireActivatedUnblockedUser]
 public sealed class ParkGraphUpsertsController : ControllerBase
 {
+    internal const string ForwardedPrefixHeaderName = "X-Forwarded-Prefix";
+
     private readonly ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler;
     private readonly ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler;
     private readonly ICommandHandler<PreviewBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>> bulkPreviewHandler;
@@ -31,6 +35,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     private readonly IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler;
     private readonly IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler;
     private readonly IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> bulkExportHandler;
+    private readonly IBulkParkGraphExportJobService bulkExportJobService;
 
     public ParkGraphUpsertsController(
         ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler,
@@ -39,7 +44,8 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         ICommandHandler<ApplyBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>> bulkApplyHandler,
         IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler,
         IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler,
-        IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> bulkExportHandler)
+        IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> bulkExportHandler,
+        IBulkParkGraphExportJobService bulkExportJobService)
     {
         this.previewHandler = previewHandler;
         this.applyHandler = applyHandler;
@@ -48,6 +54,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         this.historyHandler = historyHandler;
         this.exportHandler = exportHandler;
         this.bulkExportHandler = bulkExportHandler;
+        this.bulkExportJobService = bulkExportJobService;
     }
 
     [HttpGet("history")]
@@ -93,6 +100,64 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         }
 
         return this.File(result.Value.Content, result.Value.ContentType, result.Value.FileName);
+    }
+
+    [HttpPost("bulk/export-jobs")]
+    [AdminAudit("park-graph-upsert.bulk-export-job", "Park", StaticTargetId = "bulk")]
+    [ProducesResponseType(typeof(ParkGraphBulkExportJobDto), StatusCodes.Status202Accepted)]
+    public async Task<IActionResult> StartBulkParkJsonExportJobAsync([FromBody] ParkGraphBulkExportRequestDto request, CancellationToken cancellationToken = default)
+    {
+        string? currentUserId = this.GetCurrentUserId();
+        if (string.IsNullOrWhiteSpace(currentUserId))
+        {
+            return this.Unauthorized();
+        }
+
+        BulkParkGraphExportJobSnapshot snapshot = await this.bulkExportJobService.StartAsync(
+            request.ToApplication(),
+            currentUserId,
+            cancellationToken);
+
+        return this.Accepted(this.ToHttp(snapshot));
+    }
+
+    [HttpGet("bulk/export-jobs/{jobId}")]
+    [ProducesResponseType(typeof(ParkGraphBulkExportJobDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public IActionResult GetBulkParkJsonExportJobAsync([FromRoute] string jobId)
+    {
+        string? currentUserId = this.GetCurrentUserId();
+        if (string.IsNullOrWhiteSpace(currentUserId))
+        {
+            return this.Unauthorized();
+        }
+
+        BulkParkGraphExportJobSnapshot? snapshot = this.bulkExportJobService.GetSnapshot(jobId, currentUserId);
+        if (snapshot is null)
+        {
+            return this.NotFound();
+        }
+
+        return this.Ok(this.ToHttp(snapshot));
+    }
+
+    [HttpGet("bulk/export-jobs/{jobId}/download")]
+    [AllowAnonymous]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public IActionResult DownloadBulkParkJsonExportJobAsync([FromRoute] string jobId, [FromQuery] string token)
+    {
+        BulkParkGraphExportDownload? download = this.bulkExportJobService.GetDownload(jobId, token);
+        if (download is null)
+        {
+            return this.NotFound();
+        }
+
+        this.Response.Headers.CacheControl = "no-store, max-age=0";
+        this.Response.Headers.Pragma = "no-cache";
+        this.Response.Headers.Expires = "0";
+        return this.PhysicalFile(download.FilePath, download.ContentType, download.FileName);
     }
 
     [HttpPost("preview")]
@@ -170,5 +235,96 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         return this.User.FindFirstValue(ClaimTypes.NameIdentifier)
             ?? this.User.FindFirstValue("sub")
             ?? this.User.FindFirstValue("id");
+    }
+
+    private ParkGraphBulkExportJobDto ToHttp(BulkParkGraphExportJobSnapshot snapshot)
+    {
+        return new ParkGraphBulkExportJobDto
+        {
+            JobId = snapshot.JobId,
+            Status = snapshot.Status.ToString(),
+            ProgressPercentage = snapshot.ProgressPercentage,
+            Message = snapshot.Message,
+            ExportedParkCount = snapshot.ExportedParkCount,
+            ProcessedParkCount = snapshot.ProcessedParkCount,
+            FileName = snapshot.FileName,
+            ContentLength = snapshot.ContentLength,
+            DownloadUrl = this.BuildBulkExportDownloadUrl(snapshot),
+            CreatedAtUtc = snapshot.CreatedAtUtc,
+            StartedAtUtc = snapshot.StartedAtUtc,
+            CompletedAtUtc = snapshot.CompletedAtUtc,
+            ExpiresAtUtc = snapshot.ExpiresAtUtc,
+            Error = snapshot.Error,
+        };
+    }
+
+    internal static string BuildBulkExportDownloadUrl(HttpRequest request, string jobId, string token)
+    {
+        string pathPrefix = GetPublicPathPrefix(request);
+        string escapedJobId = Uri.EscapeDataString(jobId);
+        string escapedToken = Uri.EscapeDataString(token);
+        return $"{request.Scheme}://{request.Host}{pathPrefix}/admin/park-graph-upserts/bulk/export-jobs/{escapedJobId}/download?token={escapedToken}";
+    }
+
+    private string? BuildBulkExportDownloadUrl(BulkParkGraphExportJobSnapshot snapshot)
+    {
+        if (string.IsNullOrWhiteSpace(snapshot.DownloadToken))
+        {
+            return null;
+        }
+
+        return BuildBulkExportDownloadUrl(this.Request, snapshot.JobId, snapshot.DownloadToken);
+    }
+
+    private static string GetPublicPathPrefix(HttpRequest request)
+    {
+        if (request.Headers.TryGetValue(ForwardedPrefixHeaderName, out StringValues forwardedPrefixValues))
+        {
+            foreach (string? rawForwardedPrefix in forwardedPrefixValues)
+            {
+                if (string.IsNullOrWhiteSpace(rawForwardedPrefix))
+                {
+                    continue;
+                }
+
+                string[] candidates = rawForwardedPrefix.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                foreach (string candidate in candidates)
+                {
+                    string? normalizedPrefix = NormalizePublicPathPrefix(candidate);
+                    if (normalizedPrefix is not null)
+                    {
+                        return normalizedPrefix;
+                    }
+                }
+            }
+        }
+
+        if (!request.PathBase.HasValue)
+        {
+            return string.Empty;
+        }
+
+        return NormalizePublicPathPrefix(request.PathBase.Value ?? string.Empty) ?? string.Empty;
+    }
+
+    private static string? NormalizePublicPathPrefix(string value)
+    {
+        string trimmedValue = value.Trim().TrimEnd('/');
+        if (trimmedValue.Length == 0 || string.Equals(trimmedValue, "/", StringComparison.Ordinal))
+        {
+            return string.Empty;
+        }
+
+        if (!trimmedValue.StartsWith("/", StringComparison.Ordinal)
+            || trimmedValue.StartsWith("//", StringComparison.Ordinal)
+            || trimmedValue.Contains('\\', StringComparison.Ordinal)
+            || trimmedValue.Contains(':', StringComparison.Ordinal)
+            || trimmedValue.Contains('?', StringComparison.Ordinal)
+            || trimmedValue.Contains('#', StringComparison.Ordinal))
+        {
+            return null;
+        }
+
+        return trimmedValue;
     }
 }

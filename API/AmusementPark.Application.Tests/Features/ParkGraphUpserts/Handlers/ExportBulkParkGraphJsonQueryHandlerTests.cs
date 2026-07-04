@@ -206,6 +206,50 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
         parkItemRepository.Verify(repository => repository.GetByParkIdsAsync(It.IsAny<IReadOnlyCollection<string>>(), It.IsAny<bool>(), It.IsAny<CancellationToken>()), Times.Never);
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenProgressIsProvided_ShouldReportCompletedProgress()
+    {
+        Park firstPark = new Park
+        {
+            Id = "park-1",
+            Name = "First Park",
+            CountryCode = "FR",
+        };
+        Park secondPark = new Park
+        {
+            Id = "park-2",
+            Name = "Second Park",
+            CountryCode = "BE",
+        };
+        List<ParkGraphJsonExportProgress> progressReports = new List<ParkGraphJsonExportProgress>();
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1", "park-2" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { firstPark, secondPark });
+
+        ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
+            parkRepository.Object);
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportBulkParkGraphJsonQuery(
+                new ParkGraphBulkExportRequest
+                {
+                    SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
+                    ParkIds = new[] { "park-1", "park-2" },
+                    Sections = Array.Empty<ParkGraphExportSection>(),
+                },
+                new CollectingProgress<ParkGraphJsonExportProgress>(progressReports)),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Contains(progressReports, report => report.ProgressPercentage == 100 && report.ProcessedParkCount == 2 && report.ExportedParkCount == 2);
+        Assert.Contains(progressReports, report => report.Step == "selection" && report.ExportedParkCount == 2);
+        parkRepository.VerifyAll();
+    }
+
     private static ExportBulkParkGraphJsonQueryHandler CreateHandler(
         IParkRepository parkRepository,
         IParkItemRepository? parkItemRepository = null,
@@ -224,5 +268,20 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             imageRepository ?? Mock.Of<IImageRepository>(MockBehavior.Strict),
             Mock.Of<IParkOpeningHoursRepository>(MockBehavior.Strict),
             Mock.Of<IHistoryEventRepository>(MockBehavior.Strict)));
+    }
+
+    private sealed class CollectingProgress<TProgress> : IProgress<TProgress>
+    {
+        private readonly ICollection<TProgress> reports;
+
+        public CollectingProgress(ICollection<TProgress> reports)
+        {
+            this.reports = reports;
+        }
+
+        public void Report(TProgress value)
+        {
+            this.reports.Add(value);
+        }
     }
 }
