@@ -221,6 +221,7 @@
     top: calc(100% + 0.45rem);
     right: -0.25rem;
     z-index: 20;
+    box-sizing: border-box;
     width: max-content;
     max-width: min(18rem, calc(100vw - 2rem));
     padding: 0.6rem 0.7rem;
@@ -573,8 +574,48 @@
   .admin-technical-stats-robot-table__row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
+    strong,
+    span {
+      display: grid;
+      gap: 0.18rem;
+      align-content: start;
+    }
+
     strong {
       grid-column: 1 / -1;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--app-border);
+    }
+
+    strong::before,
+    span::before {
+      content: attr(data-label);
+      color: var(--app-text-muted);
+      font-size: 0.66rem;
+      font-weight: 900;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+  }
+
+  .admin-technical-stats-help::after {
+    position: fixed;
+    inset: auto 1rem calc(env(safe-area-inset-bottom) + 1rem) 1rem;
+    width: auto;
+    max-width: none;
+    max-height: min(12rem, calc(100vh - 2rem));
+    overflow: auto;
+    transform: translateY(0.2rem);
+  }
+
+  .admin-technical-stats-help:hover::after,
+  .admin-technical-stats-help:focus::after {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 390px) {
+    .admin-technical-stats-robot-table__row {
+      grid-template-columns: 1fr;
     }
   }
 }
