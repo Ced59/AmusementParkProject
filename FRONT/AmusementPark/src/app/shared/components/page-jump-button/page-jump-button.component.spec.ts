@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgZone } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -94,6 +95,32 @@ describe('PageJumpButtonComponent', () => {
       behavior: 'smooth'
     } as ScrollToOptions);
   });
+
+  it('registers passive viewport listeners outside Angular and cleans them up', () => {
+    const ngZone: NgZone = TestBed.inject(NgZone);
+    const runOutsideAngularSpy = spyOn(ngZone, 'runOutsideAngular').and.callThrough();
+    const addEventListenerSpy = spyOn(window, 'addEventListener').and.callThrough();
+    const removeEventListenerSpy = spyOn(window, 'removeEventListener').and.callThrough();
+    const context = createComponent();
+
+    context.fixture.detectChanges();
+
+    const scrollListener: EventListenerOrEventListenerObject = findWindowListener(addEventListenerSpy, 'scroll');
+    const resizeListener: EventListenerOrEventListenerObject = findWindowListener(addEventListenerSpy, 'resize');
+
+    expect(runOutsideAngularSpy).toHaveBeenCalled();
+    expect(findWindowListenerOptions(addEventListenerSpy, 'scroll')).toEqual({ passive: true });
+    expect(findWindowListenerOptions(addEventListenerSpy, 'resize')).toEqual({ passive: true });
+
+    context.fixture.destroy();
+
+    const scrollRemoveArgs: Parameters<typeof window.removeEventListener> = findWindowRemoveListenerArgs(removeEventListenerSpy, 'scroll');
+    const resizeRemoveArgs: Parameters<typeof window.removeEventListener> = findWindowRemoveListenerArgs(removeEventListenerSpy, 'resize');
+    expect(scrollRemoveArgs[1]).toBe(scrollListener);
+    expect(scrollRemoveArgs[2] as unknown).toEqual({ passive: true } as AddEventListenerOptions);
+    expect(resizeRemoveArgs[1]).toBe(resizeListener);
+    expect(resizeRemoveArgs[2] as unknown).toEqual({ passive: true } as AddEventListenerOptions);
+  });
 });
 
 function createComponent(): {
@@ -133,4 +160,37 @@ function restoreProperty(target: object, propertyName: string, descriptor: Prope
   }
 
   delete (target as Record<string, unknown>)[propertyName];
+}
+
+function findWindowListener(spy: jasmine.Spy<typeof window.addEventListener>, eventName: string): EventListenerOrEventListenerObject {
+  const args: Parameters<typeof window.addEventListener> | undefined = spy.calls.allArgs()
+    .find((callArgs: Parameters<typeof window.addEventListener>): boolean => callArgs[0] === eventName);
+
+  if (!args) {
+    throw new Error(`Missing ${eventName} listener.`);
+  }
+
+  return args[1];
+}
+
+function findWindowListenerOptions(spy: jasmine.Spy<typeof window.addEventListener>, eventName: string): boolean | AddEventListenerOptions | undefined {
+  const args: Parameters<typeof window.addEventListener> | undefined = spy.calls.allArgs()
+    .find((callArgs: Parameters<typeof window.addEventListener>): boolean => callArgs[0] === eventName);
+
+  if (!args) {
+    throw new Error(`Missing ${eventName} listener options.`);
+  }
+
+  return args[2];
+}
+
+function findWindowRemoveListenerArgs(spy: jasmine.Spy<typeof window.removeEventListener>, eventName: string): Parameters<typeof window.removeEventListener> {
+  const args: Parameters<typeof window.removeEventListener> | undefined = spy.calls.allArgs()
+    .find((callArgs: Parameters<typeof window.removeEventListener>): boolean => callArgs[0] === eventName);
+
+  if (!args) {
+    throw new Error(`Missing ${eventName} remove listener.`);
+  }
+
+  return args;
 }

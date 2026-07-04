@@ -1,5 +1,5 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, HostListener, Inject, OnDestroy, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, Inject, NgZone, OnDestroy, PLATFORM_ID } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -19,6 +19,9 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
   protected isVisible: boolean = false;
   protected isNearPageBottom: boolean = false;
 
+  private readonly viewportEventOptions: AddEventListenerOptions = { passive: true };
+  private readonly viewportChangeListener: () => void = (): void => this.scheduleStateUpdate();
+
   private animationFrameId: number | null = null;
   private resizeObserver: ResizeObserver | null = null;
 
@@ -26,6 +29,7 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
     private readonly router: Router,
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly destroyRef: DestroyRef,
+    private readonly ngZone: NgZone,
     @Inject(DOCUMENT) private readonly document: Document,
     @Inject(PLATFORM_ID) private readonly platformId: object
   ) {
@@ -36,30 +40,37 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    this.installResizeObserver();
+    const defaultView: Window | null = this.document.defaultView;
+    if (!defaultView) {
+      return;
+    }
+
+    this.ngZone.runOutsideAngular((): void => {
+      this.installResizeObserver();
+      this.addViewportListeners(defaultView);
+      this.scheduleStateUpdate();
+    });
+
     this.router.events.pipe(
       filter((event: unknown): event is NavigationEnd => event instanceof NavigationEnd),
       takeUntilDestroyed(this.destroyRef)
-    ).subscribe((): void => this.scheduleStateUpdate());
-
-    this.scheduleStateUpdate();
+    ).subscribe((): void => {
+      this.ngZone.runOutsideAngular((): void => this.scheduleStateUpdate());
+    });
   }
 
   ngOnDestroy(): void {
     const defaultView: Window | null = this.document.defaultView;
-    if (defaultView && this.animationFrameId !== null) {
-      defaultView.cancelAnimationFrame(this.animationFrameId);
-      this.animationFrameId = null;
+    if (defaultView) {
+      this.removeViewportListeners(defaultView);
+      if (this.animationFrameId !== null) {
+        defaultView.cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = null;
+      }
     }
 
     this.resizeObserver?.disconnect();
     this.resizeObserver = null;
-  }
-
-  @HostListener('window:scroll')
-  @HostListener('window:resize')
-  protected onViewportChanged(): void {
-    this.scheduleStateUpdate();
   }
 
   protected get labelKey(): string {
@@ -82,6 +93,16 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
       top: targetTop,
       behavior: 'smooth'
     });
+  }
+
+  private addViewportListeners(defaultView: Window): void {
+    defaultView.addEventListener('scroll', this.viewportChangeListener, this.viewportEventOptions);
+    defaultView.addEventListener('resize', this.viewportChangeListener, this.viewportEventOptions);
+  }
+
+  private removeViewportListeners(defaultView: Window): void {
+    defaultView.removeEventListener('scroll', this.viewportChangeListener, this.viewportEventOptions);
+    defaultView.removeEventListener('resize', this.viewportChangeListener, this.viewportEventOptions);
   }
 
   private installResizeObserver(): void {
@@ -129,9 +150,11 @@ export class PageJumpButtonComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    this.isVisible = nextIsVisible;
-    this.isNearPageBottom = nextIsNearPageBottom;
-    this.changeDetectorRef.markForCheck();
+    this.ngZone.run((): void => {
+      this.isVisible = nextIsVisible;
+      this.isNearPageBottom = nextIsNearPageBottom;
+      this.changeDetectorRef.markForCheck();
+    });
   }
 
   private resolveScrollingElement(): HTMLElement {
