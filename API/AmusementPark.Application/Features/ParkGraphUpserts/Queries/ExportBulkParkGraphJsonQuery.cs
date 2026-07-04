@@ -7,4 +7,5 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Queries;
 
 public sealed record ExportBulkParkGraphJsonQuery(
     ParkGraphBulkExportRequest Request,
-    IProgress<ParkGraphJsonExportProgress>? Progress = null) : IQuery<ApplicationResult<ParkGraphJsonExportResult>>;
+    IProgress<ParkGraphJsonExportProgress>? Progress = null,
+    Stream? OutputStream = null) : IQuery<ApplicationResult<ParkGraphJsonExportResult>>;

@@ -55,7 +55,7 @@ public sealed class BulkParkGraphExportDownload
 
     public string FileName { get; init; } = string.Empty;
 
-    public string ContentType { get; init; } = "application/json";
+    public string ContentType { get; init; } = "application/octet-stream";
 }
 
 public interface IBulkParkGraphExportJobService
@@ -176,7 +176,7 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
             {
                 FilePath = state.FilePath,
                 FileName = state.FileName ?? "bulk-park-graph-export.json",
-                ContentType = "application/json",
+                ContentType = "application/octet-stream",
             };
         }
     }
@@ -196,28 +196,40 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
             IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> handler =
                 scope.ServiceProvider.GetRequiredService<IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>>();
             InlineProgress<ParkGraphJsonExportProgress> progress = new InlineProgress<ParkGraphJsonExportProgress>(value => this.UpdateProgress(state, value));
-            ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
-                new ExportBulkParkGraphJsonQuery(state.Request, progress),
-                cancellationToken);
+            ApplicationResult<ParkGraphJsonExportResult> result;
+            await using (FileStream output = new FileStream(
+                state.FilePath,
+                FileMode.Create,
+                FileAccess.Write,
+                FileShare.Read,
+                bufferSize: 65536,
+                useAsync: true))
+            {
+                result = await handler.HandleAsync(
+                    new ExportBulkParkGraphJsonQuery(state.Request, progress, output),
+                    cancellationToken);
+            }
 
             if (!result.IsSuccess || result.Value is null)
             {
                 string errorMessage = result.Errors.FirstOrDefault()?.Message ?? "L'export JSON bulk a échoué.";
+                TryDeleteFile(state.FilePath);
                 this.MarkFailed(state, errorMessage);
                 return;
             }
 
-            await File.WriteAllBytesAsync(state.FilePath, result.Value.Content, cancellationToken);
             FileInfo fileInfo = new FileInfo(state.FilePath);
             this.MarkCompleted(state, result.Value.FileName, fileInfo.Length);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
+            TryDeleteFile(state.FilePath);
             this.MarkFailed(state, "L'export JSON bulk a été interrompu.");
         }
         catch (Exception exception)
         {
             this.logger.LogError(exception, "Bulk park graph export job {JobId} failed.", jobId);
+            TryDeleteFile(state.FilePath);
             this.MarkFailed(state, "L'export JSON bulk a échoué.");
         }
         finally

@@ -250,6 +250,50 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
         parkRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenOutputStreamIsProvided_ShouldWriteJsonToStreamWithoutBufferingContent()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Stream Park",
+            CountryCode = "FR",
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+
+        ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
+            parkRepository.Object);
+        await using MemoryStream output = new MemoryStream();
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportBulkParkGraphJsonQuery(
+                new ParkGraphBulkExportRequest
+                {
+                    SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
+                    ParkIds = new[] { "park-1" },
+                    Sections = Array.Empty<ParkGraphExportSection>(),
+                },
+                null,
+                output),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Empty(result.Value.Content);
+
+        output.Position = 0;
+        using JsonDocument document = await JsonDocument.ParseAsync(output);
+
+        Assert.Equal("park-1", document.RootElement.GetProperty("parks")[0].GetProperty("identity").GetProperty("parkId").GetString());
+        parkRepository.VerifyAll();
+    }
+
     private static ExportBulkParkGraphJsonQueryHandler CreateHandler(
         IParkRepository parkRepository,
         IParkItemRepository? parkItemRepository = null,

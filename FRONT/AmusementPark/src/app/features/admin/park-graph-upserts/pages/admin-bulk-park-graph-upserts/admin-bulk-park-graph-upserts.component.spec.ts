@@ -30,10 +30,6 @@ interface AdminBulkParkGraphUpsertsComponentHarness {
   updateJsonText(value: string): void;
 }
 
-interface AdminBulkParkGraphUpsertsComponentPrivateHarness {
-  downloadCompletedExportJob(job: ParkGraphBulkExportJob): void;
-}
-
 describe('AdminBulkParkGraphUpsertsComponent', () => {
   let component: AdminBulkParkGraphUpsertsComponent;
   let fixture: ComponentFixture<AdminBulkParkGraphUpsertsComponent>;
@@ -50,6 +46,9 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
           </button>
           @if (isExporting || exportJob) {
             <p class="export-progress" role="status">{{ exportProgressPercentage }}%</p>
+          }
+          @if (exportJob?.status === 'Completed' && exportJob?.downloadUrl) {
+            <a class="download-link" [href]="exportJob?.downloadUrl" [download]="exportJob?.fileName || 'bulk-park-graph-export.json'" target="_blank">download</a>
           }
           @for (park of parks; track park.id) {
             <span class="park-name">{{ park.name }}</span>
@@ -92,10 +91,6 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
         itemsPerPage: 10
       }
     });
-  }
-
-  function stubJobDownload(): jasmine.Spy {
-    return spyOn(component as unknown as AdminBulkParkGraphUpsertsComponentPrivateHarness, 'downloadCompletedExportJob').and.stub();
   }
 
   function createRunningJob(jobId: string = 'job-1'): ParkGraphBulkExportJob {
@@ -145,7 +140,6 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     createComponent();
     flushInitialParks();
 
-    stubJobDownload();
     harness.searchQuery = 'closed';
     harness.localVisibilityFilter = false;
     harness.localAdminReviewStatusFilter = 'Validated';
@@ -174,7 +168,6 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     createComponent();
     flushInitialParks();
 
-    stubJobDownload();
     harness.exportBulkJson();
 
     const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
@@ -196,7 +189,6 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
       createComponent();
       flushInitialParks();
 
-      stubJobDownload();
       harness.exportBulkJson();
 
       const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
@@ -214,11 +206,10 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     }
   });
 
-  it('polls and downloads explicitly selected parks when the export job completes', () => {
+  it('polls and exposes the generated download link when the export job completes', () => {
     createComponent();
     flushInitialParks();
 
-    const downloadSpy: jasmine.Spy = stubJobDownload();
     harness.selectionMode = 'explicit';
     harness.selectedParkIds = ['park-1', 'park-2'];
     harness.selectedSections = ['ParkAudience', 'ParkLocation'];
@@ -238,11 +229,12 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
 
     expect(harness.isExporting).toBeFalse();
     expect(harness.exportJob?.status).toBe('Completed');
-    expect(downloadSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-      jobId: 'job-1',
-      status: 'Completed',
-      downloadUrl: 'https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc'
-    }));
+    fixture.detectChanges();
+
+    const downloadLink: HTMLAnchorElement | null = fixture.nativeElement.querySelector('.download-link');
+    expect(downloadLink?.href).toBe('https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc');
+    expect(downloadLink?.download).toBe('bulk.json');
+    expect(downloadLink?.target).toBe('_blank');
   });
 
   it('sends preview bulk JSON without allowing park creation', () => {

@@ -292,7 +292,7 @@
     </section>
 
     <div class="wizard-actions">
-      <button appUiButton type="button" [icon]="isExporting ? 'pi pi-spinner pi-spin' : 'pi pi-download'" [label]="(isExporting ? 'admin.bulkParkGraphUpserts.actions.exporting' : 'admin.bulkParkGraphUpserts.actions.export') | translate" [disabled]="!canExport" (click)="exportBulkJson()"></button>
+      <button appUiButton type="button" [icon]="isExporting ? 'pi pi-spinner pi-spin' : 'pi pi-cog'" [label]="(isExporting ? 'admin.bulkParkGraphUpserts.actions.exporting' : 'admin.bulkParkGraphUpserts.actions.prepareExport') | translate" [disabled]="!canExport" (click)="exportBulkJson()"></button>
       @if (isExporting || exportJob) {
         <div class="export-progress" role="status" aria-live="polite">
           <div class="export-progress__summary">
@@ -306,9 +306,9 @@
             <small>{{ exportJob?.processedParkCount }} / {{ exportJob?.exportedParkCount }}</small>
           }
           @if (exportJob?.status === 'Completed' && exportJob?.downloadUrl) {
-            <a class="export-progress__download" [href]="exportJob?.downloadUrl" [download]="exportJob?.fileName || 'bulk-park-graph-export.json'" rel="noopener">
+            <a class="export-progress__download" [href]="exportJob?.downloadUrl" [download]="exportJob?.fileName || 'bulk-park-graph-export.json'" target="_blank" rel="noopener">
               <span class="pi pi-download" aria-hidden="true"></span>
-              {{ 'admin.bulkParkGraphUpserts.actions.export' | translate }}
+              {{ 'admin.bulkParkGraphUpserts.actions.downloadExport' | translate }}
             </a>
           }
         </div>

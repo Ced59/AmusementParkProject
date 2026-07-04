@@ -126,7 +126,6 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
 
   private listRequestId: number = 0;
   private exportPollingSubscription: Subscription | null = null;
-  private lastDownloadedExportJobId: string | null = null;
 
   constructor(
     private readonly parksApi: ParksApiService,
@@ -251,9 +250,8 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
     this.uiError = null;
     this.operationErrorDetail = null;
     this.exportJob = null;
-    this.lastDownloadedExportJobId = null;
     this.isExporting = true;
-    this.changeDetectorRef.detectChanges();
+    this.changeDetectorRef.markForCheck();
 
     this.parkGraphUpsertsApi.startBulkParkExportJob(this.buildExportRequest())
       .subscribe({
@@ -732,7 +730,14 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
     if (job.status === 'Completed') {
       this.isExporting = false;
       this.stopExportPolling();
-      this.downloadCompletedExportJob(job);
+      if (!job.downloadUrl) {
+        this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
+        this.operationErrorDetail = this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.');
+        this.showToast('error', 'admin.bulkParkGraphUpserts.toasts.exportFailedTitle', 'admin.bulkParkGraphUpserts.toasts.exportFailedDetail');
+      } else {
+        this.showToast('success', 'admin.bulkParkGraphUpserts.toasts.exportSuccessTitle', 'admin.bulkParkGraphUpserts.toasts.exportSuccessDetail');
+      }
+
       this.changeDetectorRef.markForCheck();
       return;
     }
@@ -748,28 +753,6 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
     }
 
     this.changeDetectorRef.markForCheck();
-  }
-
-  private downloadCompletedExportJob(job: ParkGraphBulkExportJob): void {
-    if (this.lastDownloadedExportJobId === job.jobId) {
-      return;
-    }
-
-    this.lastDownloadedExportJobId = job.jobId;
-    if (!job.downloadUrl) {
-      this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
-      this.operationErrorDetail = this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.');
-      return;
-    }
-
-    const link: HTMLAnchorElement = this.document.createElement('a');
-    link.href = job.downloadUrl;
-    link.download = job.fileName ?? 'bulk-park-graph-export.json';
-    link.rel = 'noopener';
-    this.document.body.appendChild(link);
-    link.click();
-    this.document.body.removeChild(link);
-    this.showToast('success', 'admin.bulkParkGraphUpserts.toasts.exportSuccessTitle', 'admin.bulkParkGraphUpserts.toasts.exportSuccessDetail');
   }
 
   private isTerminalExportJob(job: ParkGraphBulkExportJob): boolean {
