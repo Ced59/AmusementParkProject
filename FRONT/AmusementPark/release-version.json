@@ -1,6 +1,20 @@
 {
-  "version": "3.3.9",
+  "version": "3.3.10",
   "history": [
+    {
+      "version": "3.3.10",
+      "releasedAt": "2026-07-04",
+      "labels": {
+        "fr": "Améliorations internes de fiabilité.",
+        "en": "Internal reliability improvements.",
+        "de": "Interne Zuverlässigkeitsverbesserungen.",
+        "nl": "Interne betrouwbaarheidsverbeteringen.",
+        "it": "Miglioramenti interni dell'affidabilità.",
+        "es": "Mejoras internas de fiabilidad.",
+        "pl": "Wewnętrzne usprawnienia niezawodności.",
+        "pt": "Melhorias internas de fiabilidade."
+      }
+    },
     {
       "version": "3.3.9",
       "releasedAt": "2026-07-04",
