@@ -871,7 +871,8 @@
         "actions": "Actions",
         "category": "Catégorie",
         "reviewStatus": "Statut admin",
-        "contentQuality": "Content"
+        "contentQuality": "Content",
+        "dataCompleteness": "Complétude data"
       },
       "allParks": "Tous les parcs",
       "total": "{{count}} fiche(s)",
@@ -921,7 +922,9 @@
         "totalDesc": "Items max",
         "totalAsc": "Items min",
         "visibleDesc": "Vis. max",
-        "visibleAsc": "Vis. min"
+        "visibleAsc": "Vis. min",
+        "dataCompletenessLowFirst": "Complétude min",
+        "dataCompletenessHighFirst": "Complétude max"
       },
       "openingHours": {
         "title": "Horaires",
@@ -1427,6 +1430,7 @@
       "status": "Statut",
       "itemsTotalCount": "Items",
       "itemsVisibleCount": "Vis.",
+      "dataCompleteness": "Complétude data",
       "statuses": {
         "operating": "Ouvert",
         "closedDefinitively": "Fermé définitivement"

@@ -127,6 +127,18 @@ public sealed class GetParksPageQueryHandlerTests
                 It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-a", "park-b", "park-c" })),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>(StringComparer.Ordinal));
+        parkItemRepository
+            .Setup(repository => repository.GetCountsByCategoryForParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-a", "park-b", "park-c" })),
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, IReadOnlyDictionary<ParkItemCategory, int>>(StringComparer.Ordinal));
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-a", "park-b", "park-c" })),
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
 
         GetParksPageQueryHandler handler = new GetParksPageQueryHandler(
             parkRepository.Object,

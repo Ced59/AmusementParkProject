@@ -13,7 +13,7 @@ export interface ParkItemAdminListFilters {
   contentBacklogFilter?: ParkItemContentBacklogFilter | null;
 }
 
-export type ParkItemAdminSortField = 'default' | 'name' | 'category' | 'type' | 'isVisible' | 'adminReviewStatus' | 'parkId' | 'zoneId';
+export type ParkItemAdminSortField = 'default' | 'name' | 'category' | 'type' | 'isVisible' | 'adminReviewStatus' | 'parkId' | 'zoneId' | 'dataCompletenessScore';
 export type ParkItemAdminSortDirection = 'asc' | 'desc';
 export type ParkItemContentBacklogFilter = 'MissingDescriptionFr' | 'MissingDescriptionEn' | 'MissingAnyDescription' | 'MissingZone' | 'MissingPreciseType' | 'VisibleIncomplete';
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using AmusementPark.WebAPI.Contracts.Common;
 
 namespace AmusementPark.WebAPI.Contracts.Parks;
@@ -60,6 +61,9 @@ public sealed class ParkDto
     public int? ParkItemsVisibleCount { get; set; }
 
     public ParkOpeningHoursAdminSummaryDto? OpeningHours { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public DataCompletenessScoreDto? DataCompleteness { get; set; }
 }
 
 public sealed class ParkOpeningHoursAdminSummaryDto

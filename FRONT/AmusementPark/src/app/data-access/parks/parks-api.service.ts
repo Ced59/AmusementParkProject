@@ -19,6 +19,7 @@ import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { PARKS_API_ENDPOINTS, ParkAdminListFilters, ParkAdminListSort } from './parks-api-endpoints';
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
+import { DataCompletenessScore } from '@app/models/shared/data-completeness-score';
 
 interface ParkWriteRequest {
   name?: string;
@@ -88,6 +89,11 @@ export class ParksApiService {
   getParkById(id: string, options: ParksHttpOptions = {}): Observable<Park> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkById(id)}`;
     return this.http.get<Park>(url, options);
+  }
+
+  getParkDataCompletenessScore(id: string): Observable<DataCompletenessScore> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDataCompletenessScore(id)}`;
+    return this.http.get<DataCompletenessScore>(url);
   }
 
   getParkWeather(id: string, days: number = 7, options: ParksHttpOptions = {}): Observable<ParkWeatherForecast> {

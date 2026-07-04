@@ -100,6 +100,35 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetOwnerTimelinesAsync(HistoryEntityType entityType, IReadOnlyCollection<string> ownerIds, bool includeHidden, CancellationToken cancellationToken)
+    {
+        List<string> normalizedOwnerIds = ownerIds
+            .Where(static ownerId => !string.IsNullOrWhiteSpace(ownerId))
+            .Select(static ownerId => ownerId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedOwnerIds.Count == 0)
+        {
+            return Array.Empty<HistoryEvent>();
+        }
+
+        FilterDefinition<HistoryEventDocument> filter =
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.EntityType, entityType) &
+            Builders<HistoryEventDocument>.Filter.In(document => document.OwnerId, normalizedOwnerIds);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<HistoryEventDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        List<HistoryEventDocument> documents = await this.collection.Find(filter)
+            .Sort(BuildTimelineSort())
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<IReadOnlyCollection<HistoryEvent>> GetParkTimelineAsync(string parkId, bool includeHidden, bool includeParkItemEvents, IReadOnlyCollection<string> parkItemIds, CancellationToken cancellationToken)
     {
         FilterDefinitionBuilder<HistoryEventDocument> builder = Builders<HistoryEventDocument>.Filter;

@@ -478,6 +478,7 @@
       "status": "Status",
       "itemsTotalCount": "Items",
       "itemsVisibleCount": "Vis.",
+      "dataCompleteness": "Data completeness",
       "statuses": {
         "operating": "Open",
         "closedDefinitively": "Permanently closed"
@@ -489,7 +490,9 @@
         "totalDesc": "Items max",
         "totalAsc": "Items min",
         "visibleDesc": "Visible max",
-        "visibleAsc": "Visible min"
+        "visibleAsc": "Visible min",
+        "dataCompletenessLowFirst": "Completeness low",
+        "dataCompletenessHighFirst": "Completeness high"
       }
     }
   }

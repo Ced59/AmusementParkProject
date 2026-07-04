@@ -4,6 +4,7 @@ import { ParkStatus } from './park-status';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkOpeningHoursAdminSummary } from './park-opening-hours';
 import { ParkAudienceClassification } from './park-audience-classification';
+import { DataCompletenessScore } from '../shared/data-completeness-score';
 
 export interface Park {
   id?: string;
@@ -33,5 +34,6 @@ export interface Park {
   parkItemsTotalCount?: number | null;
   parkItemsVisibleCount?: number | null;
   openingHours?: ParkOpeningHoursAdminSummary | null;
+  dataCompleteness?: DataCompletenessScore | null;
   descriptions?: LocalizedItem<string>[];
 }

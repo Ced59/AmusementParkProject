@@ -211,6 +211,7 @@ internal static class ParkGraphUpsertHttpMappers
             "parkitemstotalcount" => ParkAdminSortField.ParkItemsTotalCount,
             "parkitemsvisiblecount" => ParkAdminSortField.ParkItemsVisibleCount,
             "openinghoursstatus" => ParkAdminSortField.OpeningHoursStatus,
+            "datacompletenessscore" or "datacompleteness" or "completeness" or "completenessscore" => ParkAdminSortField.DataCompletenessScore,
             _ => ParkAdminSortField.Default,
         };
     }

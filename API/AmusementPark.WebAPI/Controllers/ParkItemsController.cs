@@ -144,6 +144,7 @@ public sealed class ParkItemsController : ControllerBase
         bool canSeeNonVisible = this.UserCanSeeNonVisible();
         bool? effectiveIsVisible = canSeeNonVisible ? isVisible : true;
         AdminReviewStatus? effectiveAdminReviewStatus = canSeeNonVisible ? ParseAdminReviewStatus(adminReviewStatus) : null;
+        ParkItemAdminSortField parsedSortField = canSeeNonVisible ? ParseParkItemAdminSortField(sortBy) : ParkItemAdminSortField.Default;
         PagedQuery paging = pagination.ToApplication();
         ApplicationResult<PagedResult<ParkItemAdminListResult>> result = await this.getParkItemsPageQueryHandler.HandleAsync(
             new GetParkItemsPageQuery(
@@ -158,7 +159,7 @@ public sealed class ParkItemsController : ControllerBase
                 zoneId,
                 manufacturerId,
                 ParseParkItemContentBacklogFilter(contentBacklogFilter),
-                ParseParkItemAdminSortField(sortBy),
+                parsedSortField,
                 IsSortDescending(sortDirection)),
             cancellationToken);
 
@@ -385,6 +386,10 @@ public sealed class ParkItemsController : ControllerBase
             "status" => ParkItemAdminSortField.AdminReviewStatus,
             "parkid" => ParkItemAdminSortField.ParkId,
             "zoneid" => ParkItemAdminSortField.ZoneId,
+            "datacompletenessscore" => ParkItemAdminSortField.DataCompletenessScore,
+            "datacompleteness" => ParkItemAdminSortField.DataCompletenessScore,
+            "completeness" => ParkItemAdminSortField.DataCompletenessScore,
+            "completenessscore" => ParkItemAdminSortField.DataCompletenessScore,
             _ => ParkItemAdminSortField.Default,
         };
     }

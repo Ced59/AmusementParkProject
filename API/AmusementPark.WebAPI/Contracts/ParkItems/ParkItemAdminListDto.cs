@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using AmusementPark.WebAPI.Contracts.Common;
 
 namespace AmusementPark.WebAPI.Contracts.ParkItems;
@@ -30,6 +31,9 @@ public sealed class ParkItemAdminListDto
     public ParkItemContentQualityDto ContentQuality { get; set; } = new();
 
     public ParkItemAdminPublicationSignalsDto PublicationSignals { get; set; } = new();
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public DataCompletenessScoreDto? DataCompleteness { get; set; }
 }
 
 public sealed class ParkItemContentQualityDto

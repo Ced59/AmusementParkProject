@@ -213,6 +213,7 @@ internal static class ParkItemsHttpMappers
             AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
             ContentQuality = value.ContentQuality.ToHttp(),
             PublicationSignals = value.PublicationSignals.ToHttp(),
+            DataCompleteness = value.DataCompleteness is null ? null : ParksHttpMappers.ToHttp(value.DataCompleteness),
         };
     }
 

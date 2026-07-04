@@ -14,7 +14,8 @@
         "actions": "Akcje",
         "category": "Kategoria",
         "reviewStatus": "Status admin",
-        "contentQuality": "Content"
+        "contentQuality": "Content",
+        "dataCompleteness": "Kompletność danych"
       },
       "allParks": "Wszystkie parki",
       "total": "{{count}} wpis(y)",

@@ -225,6 +225,10 @@
           <app-ui-sort-icon field="adminReviewStatus"></app-ui-sort-icon>
         </th>
         <th>{{ 'admin.parkItems.columns.contentQuality' | translate }}</th>
+        <th appUiSortableColumn="dataCompletenessScore">
+          {{ 'admin.parkItems.columns.dataCompleteness' | translate }}
+          <app-ui-sort-icon field="dataCompletenessScore"></app-ui-sort-icon>
+        </th>
         <th appUiSortableColumn="isVisible">
           {{ 'admin.parkItems.columns.visibility' | translate }}
           <app-ui-sort-icon field="isVisible"></app-ui-sort-icon>
@@ -310,6 +314,12 @@
               </div>
             }
           </div>
+        </td>
+        <td [attr.data-label]="'admin.parkItems.columns.dataCompleteness' | translate">
+          <app-ui-tag
+            [value]="getDataCompletenessLabel(row.dataCompleteness)"
+            [severity]="getDataCompletenessSeverity(row.dataCompleteness)">
+          </app-ui-tag>
         </td>
         <td [attr.data-label]="'admin.parkItems.columns.visibility' | translate">
           @if (allowInlineEditing) {

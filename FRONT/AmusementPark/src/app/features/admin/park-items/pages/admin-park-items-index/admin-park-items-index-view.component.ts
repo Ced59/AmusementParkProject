@@ -29,6 +29,7 @@ import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemBulkFieldsUpdateRequest } from '@app/models/parks/park-item-bulk-fields-update-request';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
+import { DataCompletenessScore, getDataCompletenessLabel, getDataCompletenessSeverity } from '@app/models/shared/data-completeness-score';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import {
@@ -499,6 +500,14 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
       : '-';
   }
 
+  getDataCompletenessLabel(score: DataCompletenessScore | null | undefined): string {
+    return getDataCompletenessLabel(score);
+  }
+
+  getDataCompletenessSeverity(score: DataCompletenessScore | null | undefined): 'success' | 'info' | 'warn' | 'danger' {
+    return getDataCompletenessSeverity(score);
+  }
+
   getMissingRequirementKeys(row: ParkItemAdminRow): string[] {
     return row.contentQuality?.missingRequirementKeys ?? [];
   }
@@ -512,7 +521,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   }
 
   getColumnSpan(): number {
-    let columnCount: number = 8;
+    let columnCount: number = 9;
 
     if (this.showParkColumn) {
       columnCount += 1;
@@ -547,6 +556,8 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
         return 'parkId';
       case 'zoneId':
         return 'zoneId';
+      case 'dataCompletenessScore':
+        return 'dataCompletenessScore';
       default:
         return 'default';
     }

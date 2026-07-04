@@ -871,7 +871,8 @@
         "actions": "Akcje",
         "category": "Kategoria",
         "reviewStatus": "Status admin",
-        "contentQuality": "Content"
+        "contentQuality": "Content",
+        "dataCompleteness": "Kompletność danych"
       },
       "allParks": "Wszystkie parki",
       "total": "{{count}} wpis(y)",
@@ -921,7 +922,9 @@
         "totalDesc": "Elem. max",
         "totalAsc": "Elem. min",
         "visibleDesc": "Wid. max",
-        "visibleAsc": "Wid. min"
+        "visibleAsc": "Wid. min",
+        "dataCompletenessLowFirst": "Kompletność min",
+        "dataCompletenessHighFirst": "Kompletność maks."
       },
       "openingHours": {
         "title": "Godziny otwarcia",
@@ -1427,6 +1430,7 @@
       "status": "Status",
       "itemsTotalCount": "Itemy",
       "itemsVisibleCount": "Wid.",
+      "dataCompleteness": "Kompletność danych",
       "statuses": {
         "operating": "Otwarty",
         "closedDefinitively": "Zamknięty na stałe"

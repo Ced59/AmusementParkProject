@@ -226,6 +226,8 @@ export class AdminParksComponent implements OnInit {
         return 'parkItemsVisibleCount';
       case 'openingHoursStatus':
         return 'openingHoursStatus';
+      case 'dataCompletenessScore':
+        return 'dataCompletenessScore';
       default:
         return 'default';
     }

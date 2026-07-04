@@ -11,6 +11,8 @@ public sealed class ParkListResult
     public int? ParkItemsVisibleCount { get; init; }
 
     public ParkOpeningHoursAdminSummaryResult? OpeningHours { get; init; }
+
+    public DataCompletenessScore? DataCompleteness { get; init; }
 }
 
 public sealed class ParkOpeningHoursAdminSummaryResult

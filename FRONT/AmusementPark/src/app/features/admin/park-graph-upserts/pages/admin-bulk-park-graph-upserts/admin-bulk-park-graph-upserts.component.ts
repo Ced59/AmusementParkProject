@@ -25,6 +25,7 @@ import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { ParkType } from '@app/models/parks/park-type';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
+import { DataCompletenessScore, getDataCompletenessLabel, getDataCompletenessSeverity } from '@app/models/shared/data-completeness-score';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { getParkAudienceClassificationTranslationKey, getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
@@ -92,7 +93,9 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
     { value: 'parkItemsVisibleCount:desc', labelKey: 'admin.parks.sort.visibleDesc' },
     { value: 'parkItemsVisibleCount:asc', labelKey: 'admin.parks.sort.visibleAsc' },
     { value: 'openingHoursStatus:asc', labelKey: 'admin.parks.sort.openingHoursAttentionFirst' },
-    { value: 'openingHoursStatus:desc', labelKey: 'admin.parks.sort.openingHoursReadyFirst' }
+    { value: 'openingHoursStatus:desc', labelKey: 'admin.parks.sort.openingHoursReadyFirst' },
+    { value: 'dataCompletenessScore:asc', labelKey: 'admin.parks.sort.dataCompletenessLowFirst' },
+    { value: 'dataCompletenessScore:desc', labelKey: 'admin.parks.sort.dataCompletenessHighFirst' }
   ];
 
   protected parks: Park[] = [];
@@ -612,6 +615,14 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
     };
   }
 
+  protected getDataCompletenessLabel(score: DataCompletenessScore | null | undefined): string {
+    return getDataCompletenessLabel(score);
+  }
+
+  protected getDataCompletenessSeverity(score: DataCompletenessScore | null | undefined): 'success' | 'info' | 'warn' | 'danger' {
+    return getDataCompletenessSeverity(score);
+  }
+
   protected trackPark(_: number, park: Park): string {
     return park.id ?? park.name ?? `${park.latitude}-${park.longitude}`;
   }
@@ -857,6 +868,8 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
         return 'parkItemsVisibleCount';
       case 'openingHoursStatus':
         return 'openingHoursStatus';
+      case 'dataCompletenessScore':
+        return 'dataCompletenessScore';
       default:
         return 'default';
     }
