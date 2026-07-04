@@ -1,4 +1,5 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { HttpResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -119,6 +120,7 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
   protected lastAppliedResult: BulkParkGraphUpsertResult | null = null;
   protected exportJob: ParkGraphBulkExportJob | null = null;
   protected isExporting: boolean = false;
+  protected isDownloadingExport: boolean = false;
   protected isPreviewing: boolean = false;
   protected isApplying: boolean = false;
   protected uiError: string | null = null;
@@ -126,6 +128,7 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
 
   private listRequestId: number = 0;
   private exportPollingSubscription: Subscription | null = null;
+  private bulkDownloadSubscription: Subscription | null = null;
 
   constructor(
     private readonly parksApi: ParksApiService,
@@ -143,6 +146,7 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.stopExportPolling();
+    this.bulkDownloadSubscription?.unsubscribe();
   }
 
   protected search(): void {
@@ -253,7 +257,8 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
     this.isExporting = true;
     this.changeDetectorRef.markForCheck();
 
-    this.parkGraphUpsertsApi.startBulkParkExportJob(this.buildExportRequest())
+    const request: ParkGraphBulkExportRequest = this.buildExportRequest();
+    this.parkGraphUpsertsApi.startBulkParkExportJob(request)
       .subscribe({
         next: (job: ParkGraphBulkExportJob): void => {
           this.handleExportJobUpdate(job);
@@ -267,6 +272,42 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
           this.operationErrorDetail = extractSafeDisplayErrorMessage(error, this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.'));
           this.showToast('error', 'admin.bulkParkGraphUpserts.toasts.exportFailedTitle', 'admin.bulkParkGraphUpserts.toasts.exportFailedDetail');
           this.changeDetectorRef.markForCheck();
+        }
+      });
+  }
+
+  protected downloadPreparedBulkJson(): void {
+    const job: ParkGraphBulkExportJob | null = this.exportJob;
+    if (!job?.downloadUrl || this.isDownloadingExport) {
+      return;
+    }
+
+    this.isDownloadingExport = true;
+    this.uiError = null;
+    this.operationErrorDetail = null;
+    this.changeDetectorRef.markForCheck();
+
+    this.bulkDownloadSubscription?.unsubscribe();
+    this.bulkDownloadSubscription = this.parkGraphUpsertsApi.downloadBulkParkExport(job.downloadUrl)
+      .pipe(finalize((): void => {
+        this.isDownloadingExport = false;
+        this.bulkDownloadSubscription = null;
+        this.changeDetectorRef.markForCheck();
+      }))
+      .subscribe({
+        next: (response: HttpResponse<Blob>): void => {
+          if (!response.body) {
+            this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
+            this.operationErrorDetail = this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.');
+            return;
+          }
+
+          this.downloadBlob(response.body, this.resolveDownloadFileName(response, job.fileName ?? 'bulk-park-graph-export.json'));
+        },
+        error: (error: unknown): void => {
+          this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
+          this.operationErrorDetail = extractSafeDisplayErrorMessage(error, this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.'));
+          this.showToast('error', 'admin.bulkParkGraphUpserts.toasts.exportFailedTitle', 'admin.bulkParkGraphUpserts.toasts.exportFailedDetail');
         }
       });
   }
@@ -646,7 +687,7 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
     const filters: ParkAdminListFilters = this.buildFilters();
     return {
       selectionMode: this.selectionMode,
-      parkIds: this.selectionMode === 'explicit' ? this.selectedParkIds : [],
+      parkIds: this.selectionMode === 'explicit' ? [...this.selectedParkIds] : [],
       searchTerm: this.searchQuery.trim() || null,
       isVisible: filters.isVisible ?? null,
       adminReviewStatus: filters.adminReviewStatus ?? null,
@@ -658,7 +699,7 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
       openingHoursStatus: filters.openingHoursStatus ?? 'all',
       sortBy: this.sortField,
       sortDirection: this.sortDirection,
-      sections: this.selectedSections
+      sections: [...this.selectedSections]
     };
   }
 
@@ -762,6 +803,39 @@ export class AdminBulkParkGraphUpsertsComponent implements OnInit, OnDestroy {
   private stopExportPolling(): void {
     this.exportPollingSubscription?.unsubscribe();
     this.exportPollingSubscription = null;
+  }
+
+  private downloadBlob(blob: Blob, fileName: string): void {
+    if (!this.document.defaultView || typeof URL === 'undefined' || typeof URL.createObjectURL !== 'function') {
+      this.uiError = 'admin.bulkParkGraphUpserts.errors.exportFailed';
+      this.operationErrorDetail = this.translate('admin.bulkParkGraphUpserts.errors.exportFailed', 'Bulk JSON export failed.');
+      return;
+    }
+
+    const objectUrl: string = URL.createObjectURL(blob);
+    const anchor: HTMLAnchorElement = this.document.createElement('a');
+    anchor.href = objectUrl;
+    anchor.download = fileName;
+    anchor.rel = 'noopener';
+    this.document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(objectUrl);
+  }
+
+  private resolveDownloadFileName(response: HttpResponse<Blob>, fallbackFileName: string): string {
+    const contentDisposition: string = response.headers.get('content-disposition') ?? '';
+    const utf8Match: RegExpMatchArray | null = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i);
+    if (utf8Match?.[1]) {
+      return decodeURIComponent(utf8Match[1].replace(/"/g, ''));
+    }
+
+    const fallbackMatch: RegExpMatchArray | null = contentDisposition.match(/filename="?([^";]+)"?/i);
+    if (fallbackMatch?.[1]) {
+      return fallbackMatch[1];
+    }
+
+    return fallbackFileName;
   }
 
   private updateSort(sortField: ParkAdminListSortField, sortDirection: ParkAdminListSortDirection): boolean {

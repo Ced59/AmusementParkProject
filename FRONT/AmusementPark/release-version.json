@@ -1,6 +1,20 @@
 {
-  "version": "3.3.5",
+  "version": "3.3.6",
   "history": [
+    {
+      "version": "3.3.6",
+      "releasedAt": "2026-07-04",
+      "labels": {
+        "fr": "Améliorations d'ergonomie admin.",
+        "en": "Admin ergonomics improvements.",
+        "de": "Verbesserte Admin-Ergonomie.",
+        "nl": "Verbeteringen in de adminergonomie.",
+        "it": "Miglioramenti all'ergonomia admin.",
+        "es": "Mejoras de ergonomía admin.",
+        "pl": "Ulepszenia ergonomii administracji.",
+        "pt": "Melhorias na ergonomia administrativa."
+      }
+    },
     {
       "version": "3.3.5",
       "releasedAt": "2026-07-04",

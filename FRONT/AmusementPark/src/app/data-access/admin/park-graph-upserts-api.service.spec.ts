@@ -42,6 +42,26 @@ describe('ParkGraphUpsertsApiService', () => {
     });
   });
 
+  it('downloads completed bulk park graph exports as blobs', () => {
+    const responseBlob: Blob = new Blob(['{}'], { type: 'application/json' });
+    const downloadUrl: string = 'https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc';
+
+    service.downloadBulkParkExport(downloadUrl).subscribe(response => {
+      expect(response.body).toBe(responseBlob);
+      expect(response.headers.get('content-disposition')).toContain('bulk.json');
+    });
+
+    const request = httpTestingController.expectOne(downloadUrl);
+    expect(request.request.method).toBe('GET');
+    expect(request.request.responseType).toBe('blob');
+
+    request.flush(responseBlob, {
+      headers: {
+        'content-disposition': 'attachment; filename="bulk.json"'
+      }
+    });
+  });
+
   it('starts and reads bulk park graph export jobs', () => {
     service.startBulkParkExportJob({
       selectionMode: 'filtered',

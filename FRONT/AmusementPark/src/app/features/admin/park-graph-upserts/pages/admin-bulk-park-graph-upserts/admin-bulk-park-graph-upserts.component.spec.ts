@@ -25,6 +25,8 @@ interface AdminBulkParkGraphUpsertsComponentHarness {
   totalRecords: number;
   uiError: string | null;
   exportJob: ParkGraphBulkExportJob | null;
+  isDownloadingExport: boolean;
+  downloadPreparedBulkJson(): void;
   exportBulkJson(): void;
   preview(): void;
   updateJsonText(value: string): void;
@@ -35,8 +37,27 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
   let fixture: ComponentFixture<AdminBulkParkGraphUpsertsComponent>;
   let harness: AdminBulkParkGraphUpsertsComponentHarness;
   let httpTestingController: HttpTestingController;
+  let createObjectUrlSpy: jasmine.Spy;
+  let revokeObjectUrlSpy: jasmine.Spy;
+  let anchorClickSpy: jasmine.Spy;
+  let originalCreateObjectUrl: typeof URL.createObjectURL;
+  let originalRevokeObjectUrl: typeof URL.revokeObjectURL;
 
   beforeEach(async () => {
+    originalCreateObjectUrl = URL.createObjectURL;
+    originalRevokeObjectUrl = URL.revokeObjectURL;
+    createObjectUrlSpy = jasmine.createSpy('createObjectURL').and.returnValue('blob:bulk-export');
+    revokeObjectUrlSpy = jasmine.createSpy('revokeObjectURL');
+    Object.defineProperty(URL, 'createObjectURL', {
+      configurable: true,
+      value: createObjectUrlSpy
+    });
+    Object.defineProperty(URL, 'revokeObjectURL', {
+      configurable: true,
+      value: revokeObjectUrlSpy
+    });
+    anchorClickSpy = spyOn(HTMLAnchorElement.prototype, 'click').and.stub();
+
     TestBed.overrideComponent(AdminBulkParkGraphUpsertsComponent, {
       set: {
         imports: [],
@@ -48,7 +69,7 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
             <p class="export-progress" role="status">{{ exportProgressPercentage }}%</p>
           }
           @if (exportJob?.status === 'Completed' && exportJob?.downloadUrl) {
-            <a class="download-link" [href]="exportJob?.downloadUrl" [download]="exportJob?.fileName || 'bulk-park-graph-export.json'" target="_blank">download</a>
+            <button class="download-link" type="button" [disabled]="isDownloadingExport" (click)="downloadPreparedBulkJson()">download</button>
           }
           @for (park of parks; track park.id) {
             <span class="park-name">{{ park.name }}</span>
@@ -70,6 +91,14 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
   afterEach(() => {
     fixture?.destroy();
     httpTestingController.verify();
+    Object.defineProperty(URL, 'createObjectURL', {
+      configurable: true,
+      value: originalCreateObjectUrl
+    });
+    Object.defineProperty(URL, 'revokeObjectURL', {
+      configurable: true,
+      value: originalRevokeObjectUrl
+    });
   });
 
   function createComponent(): void {
@@ -206,7 +235,7 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     }
   });
 
-  it('polls and exposes the generated download link when the export job completes', () => {
+  it('polls and downloads the generated bulk JSON as a blob when the export job completes', () => {
     createComponent();
     flushInitialParks();
 
@@ -231,10 +260,27 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     expect(harness.exportJob?.status).toBe('Completed');
     fixture.detectChanges();
 
-    const downloadLink: HTMLAnchorElement | null = fixture.nativeElement.querySelector('.download-link');
-    expect(downloadLink?.href).toBe('https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc');
-    expect(downloadLink?.download).toBe('bulk.json');
-    expect(downloadLink?.target).toBe('_blank');
+    const downloadButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('.download-link');
+    expect(downloadButton).not.toBeNull();
+    expect(downloadButton?.disabled).toBeFalse();
+
+    downloadButton?.click();
+
+    const downloadRequest = httpTestingController.expectOne('https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc');
+    expect(downloadRequest.request.method).toBe('GET');
+    expect(downloadRequest.request.responseType).toBe('blob');
+
+    const blob: Blob = new Blob(['{}'], { type: 'application/json' });
+    downloadRequest.flush(blob, {
+      headers: {
+        'content-disposition': 'attachment; filename="bulk-from-server.json"'
+      }
+    });
+
+    expect(createObjectUrlSpy).toHaveBeenCalledOnceWith(blob);
+    expect(anchorClickSpy).toHaveBeenCalled();
+    expect(revokeObjectUrlSpy).toHaveBeenCalledOnceWith('blob:bulk-export');
+    expect(harness.isDownloadingExport).toBeFalse();
   });
 
   it('sends preview bulk JSON without allowing park creation', () => {
