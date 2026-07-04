@@ -64,6 +64,13 @@ export class ParkGraphUpsertsApiService {
     });
   }
 
+  downloadBulkParkExport(downloadUrl: string): Observable<HttpResponse<Blob>> {
+    return this.http.get(downloadUrl, {
+      observe: 'response',
+      responseType: 'blob'
+    });
+  }
+
   startBulkParkExportJob(request: ParkGraphBulkExportRequest): Observable<ParkGraphBulkExportJob> {
     const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`;
     return this.http.post<ParkGraphBulkExportJob>(url, request, this.jsonHttpOptions);

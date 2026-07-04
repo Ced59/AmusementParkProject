@@ -152,9 +152,15 @@
   border-radius: var(--radius-md);
   color: var(--app-heading);
   background: rgba(77, 223, 138, 0.1);
+  font: inherit;
   font-weight: 800;
-  text-decoration: none;
+  cursor: pointer;
   overflow-wrap: anywhere;
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.72;
+  }
 }
 
 .admin-search-field {
