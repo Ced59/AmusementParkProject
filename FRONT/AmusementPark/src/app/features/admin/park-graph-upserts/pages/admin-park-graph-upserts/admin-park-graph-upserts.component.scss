@@ -179,6 +179,45 @@
   }
 }
 
+.selected-park__score {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  margin-top: 0.45rem;
+}
+
+.selected-park__score-value {
+  display: inline-flex !important;
+  align-items: center;
+  min-height: 1.7rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid rgba(56, 197, 245, 0.24);
+  border-radius: 999px;
+  color: var(--app-heading);
+  font-size: 0.82rem;
+}
+
+.selected-park__score-value--success {
+  border-color: rgba(77, 223, 138, 0.32);
+  background: rgba(77, 223, 138, 0.1);
+}
+
+.selected-park__score-value--info {
+  border-color: rgba(56, 197, 245, 0.32);
+  background: rgba(56, 197, 245, 0.1);
+}
+
+.selected-park__score-value--warn {
+  border-color: rgba(255, 182, 39, 0.32);
+  background: rgba(255, 182, 39, 0.1);
+}
+
+.selected-park__score-value--danger {
+  border-color: rgba(255, 77, 139, 0.32);
+  background: rgba(255, 77, 139, 0.1);
+}
+
 .park-results {
   display: grid;
   gap: 0.55rem;

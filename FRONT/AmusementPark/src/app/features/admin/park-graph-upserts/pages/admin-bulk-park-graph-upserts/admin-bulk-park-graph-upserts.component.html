@@ -210,6 +210,10 @@
             {{ 'admin.parks.openingHours.title' | translate }}
             <app-ui-sort-icon field="openingHoursStatus"></app-ui-sort-icon>
           </th>
+          <th appUiSortableColumn="dataCompletenessScore">
+            {{ 'admin.parks.dataCompleteness' | translate }}
+            <app-ui-sort-icon field="dataCompletenessScore"></app-ui-sort-icon>
+          </th>
           <th>{{ 'admin.parks.reviewStatus' | translate }}</th>
         </tr>
       </ng-template>
@@ -251,6 +255,12 @@
               <span>{{ getOpeningHoursCoverageLabelKey(park) | translate:getOpeningHoursCoverageParams(park) }}</span>
             </div>
           </td>
+          <td [attr.data-label]="'admin.parks.dataCompleteness' | translate">
+            <app-ui-tag
+              [value]="getDataCompletenessLabel(park.dataCompleteness)"
+              [severity]="getDataCompletenessSeverity(park.dataCompleteness)">
+            </app-ui-tag>
+          </td>
           <td [attr.data-label]="'admin.parks.reviewStatus' | translate">
             <app-ui-tag
               [value]="getStatusLabelKey(park.adminReviewStatus) | translate"
@@ -262,7 +272,7 @@
 
       <ng-template appUiTemplate="emptymessage">
         <tr>
-          <td colspan="11">
+          <td colspan="12">
             <app-empty-state [compact]="true" titleKey="common.emptyTitle" messageKey="admin.parks.empty"></app-empty-state>
           </td>
         </tr>

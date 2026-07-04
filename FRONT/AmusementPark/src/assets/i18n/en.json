@@ -871,7 +871,8 @@
         "actions": "Actions",
         "category": "Category",
         "reviewStatus": "Admin status",
-        "contentQuality": "Content"
+        "contentQuality": "Content",
+        "dataCompleteness": "Data completeness"
       },
       "allParks": "All parks",
       "total": "{{count}} page(s)",
@@ -921,7 +922,9 @@
         "totalDesc": "Items max",
         "totalAsc": "Items min",
         "visibleDesc": "Visible max",
-        "visibleAsc": "Visible min"
+        "visibleAsc": "Visible min",
+        "dataCompletenessLowFirst": "Completeness low",
+        "dataCompletenessHighFirst": "Completeness high"
       },
       "openingHours": {
         "title": "Opening hours",
@@ -1427,6 +1430,7 @@
       "status": "Status",
       "itemsTotalCount": "Items",
       "itemsVisibleCount": "Vis.",
+      "dataCompleteness": "Data completeness",
       "statuses": {
         "operating": "Open",
         "closedDefinitively": "Permanently closed"

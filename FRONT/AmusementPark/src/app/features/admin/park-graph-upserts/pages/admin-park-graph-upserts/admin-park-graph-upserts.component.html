@@ -47,6 +47,12 @@
             <span>{{ 'admin.parkGraphUpserts.target.selected' | translate }}</span>
             <strong>{{ selectedPark.name }}</strong>
             <code>{{ selectedPark.id }}</code>
+            <span class="selected-park__score">
+              {{ 'admin.parks.dataCompleteness' | translate }}
+              <strong class="selected-park__score-value" [ngClass]="getSelectedParkDataCompletenessSeverity()">
+                {{ getSelectedParkDataCompletenessLabel() }}
+              </strong>
+            </span>
           </div>
           <div class="selected-park__actions">
             <button type="button" class="btn-nav" (click)="exportSelectedParkJson()" [disabled]="!selectedPark.id || isExporting">
@@ -69,7 +75,7 @@
             <button type="button" role="listitem" class="park-result" [class.active]="selectedPark?.id === park.id" (click)="selectPark(park)">
               <span>
                 <strong>{{ park.name }}</strong>
-                <small>{{ park.city || '-' }} - {{ park.countryCode || '-' }}</small>
+                <small>{{ park.city || '-' }} - {{ park.countryCode || '-' }} - {{ 'admin.parks.dataCompleteness' | translate }} {{ getParkDataCompletenessLabel(park) }}</small>
               </span>
               <code>{{ park.id }}</code>
             </button>

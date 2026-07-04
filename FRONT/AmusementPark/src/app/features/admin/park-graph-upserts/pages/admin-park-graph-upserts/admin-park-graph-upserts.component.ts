@@ -11,6 +11,7 @@ import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkGraphUpsertChange, ParkGraphUpsertCounts, ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
+import { DataCompletenessScore, getDataCompletenessLabel, getDataCompletenessSeverity } from '@app/models/shared/data-completeness-score';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { SafeExternalUrlPipe } from '@shared/pipes';
@@ -89,6 +90,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   protected searchTerm: string = '';
   protected searchResults: Park[] = [];
   protected selectedPark: Park | null = null;
+  protected selectedParkDataCompleteness: DataCompletenessScore | null = null;
   protected jsonText: string = '';
   protected previewResult: ParkGraphUpsertResult | null = null;
   protected lastAppliedResult: ParkGraphUpsertResult | null = null;
@@ -98,6 +100,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   protected isPreviewing: boolean = false;
   protected isApplying: boolean = false;
   protected isExporting: boolean = false;
+  protected isLoadingSelectedParkScore: boolean = false;
   protected uiError: string | null = null;
   protected operationErrorDetail: string | null = null;
   protected isNearPageBottom: boolean = false;
@@ -158,14 +161,17 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
 
   protected selectPark(park: Park): void {
     this.selectedPark = park;
+    this.selectedParkDataCompleteness = park.dataCompleteness ?? null;
     this.previewResult = null;
     this.lastAppliedResult = null;
     this.uiError = null;
     this.operationErrorDetail = null;
+    this.refreshSelectedParkDataCompleteness();
   }
 
   protected clearSelectedPark(): void {
     this.selectedPark = null;
+    this.selectedParkDataCompleteness = null;
     this.previewResult = null;
     this.lastAppliedResult = null;
     this.operationErrorDetail = null;
@@ -302,6 +308,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
           this.lastAppliedResult = result;
           this.previewResult = result;
           this.notifyApplyResult(result);
+          this.refreshSelectedParkDataCompleteness();
         },
         error: (error: unknown): void => {
           this.uiError = 'admin.parkGraphUpserts.errors.applyFailed';
@@ -550,6 +557,20 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     return this.findFieldValue(change, 'sourceUrl');
   }
 
+  protected getParkDataCompletenessLabel(park: Park): string {
+    return getDataCompletenessLabel(park.dataCompleteness);
+  }
+
+  protected getSelectedParkDataCompletenessLabel(): string {
+    return this.isLoadingSelectedParkScore
+      ? '...'
+      : getDataCompletenessLabel(this.selectedParkDataCompleteness);
+  }
+
+  protected getSelectedParkDataCompletenessSeverity(): string {
+    return `selected-park__score-value--${getDataCompletenessSeverity(this.selectedParkDataCompleteness)}`;
+  }
+
   protected canRemovePreviewBlock(change: ParkGraphUpsertChange): boolean {
     return change.entityType === 'Park'
       || Boolean(AdminParkGraphUpsertsComponent.removableSourceLocations[change.entityType])
@@ -572,9 +593,67 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
       countryCode: params.get('parkCountryCode')?.trim() ?? '',
       city: params.get('parkCity')?.trim() ?? '',
       latitude: Number.isFinite(latitude) ? latitude : 0,
-      longitude: Number.isFinite(longitude) ? longitude : 0
+      longitude: Number.isFinite(longitude) ? longitude : 0,
+      dataCompleteness: this.parseDataCompletenessFromQueryParams(params)
     };
+    this.selectedParkDataCompleteness = this.selectedPark.dataCompleteness ?? null;
     this.searchTerm = name;
+    this.refreshSelectedParkDataCompleteness();
+  }
+
+  private refreshSelectedParkDataCompleteness(): void {
+    if (!this.selectedPark?.id) {
+      this.selectedParkDataCompleteness = null;
+      return;
+    }
+
+    this.isLoadingSelectedParkScore = true;
+    this.parksApi.getParkDataCompletenessScore(this.selectedPark.id)
+      .pipe(finalize((): void => {
+        this.isLoadingSelectedParkScore = false;
+        this.changeDetectorRef.markForCheck();
+      }))
+      .subscribe({
+        next: (score: DataCompletenessScore): void => {
+          this.selectedParkDataCompleteness = score;
+          if (this.selectedPark) {
+            this.selectedPark = {
+              ...this.selectedPark,
+              dataCompleteness: score
+            };
+          }
+        },
+        error: (error: unknown): void => {
+          console.error('Error loading park data completeness score', error);
+        }
+      });
+  }
+
+  private parseDataCompletenessFromQueryParams(params: ParamMap): DataCompletenessScore | null {
+    const completenessScore: number = Number(params.get('parkDataCompletenessScore'));
+    const earnedPoints: number = Number(params.get('parkDataCompletenessEarnedPoints'));
+    const applicableMaxPoints: number = Number(params.get('parkDataCompletenessMaxPoints'));
+    const dataQualityLevel: string = params.get('parkDataQualityLevel')?.trim() ?? '';
+
+    if (!Number.isFinite(completenessScore) || !this.isDataQualityLevel(dataQualityLevel)) {
+      return null;
+    }
+
+    return {
+      completenessScore,
+      dataQualityLevel,
+      earnedPoints: Number.isFinite(earnedPoints) ? earnedPoints : 0,
+      applicableMaxPoints: Number.isFinite(applicableMaxPoints) ? applicableMaxPoints : 0
+    };
+  }
+
+  private isDataQualityLevel(value: string): value is DataCompletenessScore['dataQualityLevel'] {
+    return value === 'Critical'
+      || value === 'Weak'
+      || value === 'Partial'
+      || value === 'Publishable'
+      || value === 'Good'
+      || value === 'Excellent';
   }
 
   private buildRequest(): ParkGraphUpsertRequest | null {

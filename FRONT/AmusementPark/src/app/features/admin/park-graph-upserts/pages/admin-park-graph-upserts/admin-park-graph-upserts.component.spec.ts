@@ -30,6 +30,7 @@ interface AdminParkGraphUpsertsComponentHarness {
   previewResult: ParkGraphUpsertResult | null;
   searchTerm: string;
   selectedPark: Park | null;
+  selectedParkDataCompleteness: { completenessScore: number } | null;
   uiError: string | null;
   addMergeDraft(): void;
   apply(): void;
@@ -77,6 +78,22 @@ describe('AdminParkGraphUpsertsComponent', () => {
     component = fixture.componentInstance;
     harness = component as unknown as AdminParkGraphUpsertsComponentHarness;
     fixture.detectChanges();
+
+    if (queryParams['parkId']) {
+      flushParkDataCompleteness(queryParams['parkId']);
+      fixture.detectChanges();
+    }
+  }
+
+  function flushParkDataCompleteness(parkId: string, completenessScore: number = 72): void {
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/${encodeURIComponent(parkId)}/data-completeness`);
+    expect(request.request.method).toBe('GET');
+    request.flush({
+      completenessScore,
+      dataQualityLevel: completenessScore >= 70 ? 'Publishable' : 'Partial',
+      applicableMaxPoints: 116,
+      earnedPoints: Math.round(116 * completenessScore / 100)
+    });
   }
 
   it('renders the simplified JSON workspace without the removed wizard screens', () => {
@@ -118,7 +135,11 @@ describe('AdminParkGraphUpsertsComponent', () => {
       parkCountryCode: 'FR',
       parkCity: 'Paris',
       parkLatitude: '48.5',
-      parkLongitude: '2.3'
+      parkLongitude: '2.3',
+      parkDataCompletenessScore: '64',
+      parkDataQualityLevel: 'Partial',
+      parkDataCompletenessEarnedPoints: '74',
+      parkDataCompletenessMaxPoints: '116'
     });
 
     expect(harness.selectedPark?.id).toBe('park-1');
@@ -127,8 +148,10 @@ describe('AdminParkGraphUpsertsComponent', () => {
     expect(harness.selectedPark?.city).toBe('Paris');
     expect(harness.selectedPark?.latitude).toBe(48.5);
     expect(harness.selectedPark?.longitude).toBe(2.3);
+    expect(harness.selectedParkDataCompleteness?.completenessScore).toBe(72);
     expect(harness.searchTerm).toBe('Export Park');
     expect(fixture.nativeElement.textContent).toContain('Export Park');
+    expect(fixture.nativeElement.textContent).toContain('72%');
   });
 
   it('requires a selected existing park before previewing or exporting', () => {
@@ -438,12 +461,14 @@ describe('AdminParkGraphUpsertsComponent', () => {
       warnings: [],
       errors: ["Remote image was not imported: 'https://cdn.example.test/photo.webp'."]
     } satisfies ParkGraphUpsertResult);
+    flushParkDataCompleteness('park-1', 81);
     fixture.detectChanges();
 
     expect(harness.appliedResultMessageKey).toBe('admin.parkGraphUpserts.result.appliedPartial');
     expect(harness.appliedResultMessageParams).toEqual({ applied: 1, failed: 1 });
     expect(fixture.nativeElement.querySelector('.admin-alert--warning')).not.toBeNull();
     expect(fixture.nativeElement.textContent).toContain('https://cdn.example.test/photo.webp');
+    expect(harness.selectedParkDataCompleteness?.completenessScore).toBe(81);
   });
 
   it('wraps long preview warnings inside the result panel', () => {

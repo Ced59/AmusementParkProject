@@ -47,7 +47,11 @@ describe('AdminParksViewComponent', () => {
       parkCountryCode: 'FR',
       parkCity: 'Paris',
       parkLatitude: '48.5',
-      parkLongitude: '2.3'
+      parkLongitude: '2.3',
+      parkDataCompletenessScore: '',
+      parkDataQualityLevel: '',
+      parkDataCompletenessEarnedPoints: '',
+      parkDataCompletenessMaxPoints: ''
     });
   });
 
@@ -66,6 +70,10 @@ describe('AdminParksViewComponent', () => {
     testApi.onMobileSortChanged('parkItemsVisibleCount:desc');
 
     expect(received).toEqual([{ sortField: 'parkItemsVisibleCount', sortDirection: 'desc' }]);
+
+    testApi.onMobileSortChanged('dataCompletenessScore:asc');
+
+    expect(received[1]).toEqual({ sortField: 'dataCompletenessScore', sortDirection: 'asc' });
   });
 
   it('binds the table paginator offset to the current page', () => {

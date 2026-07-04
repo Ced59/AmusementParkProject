@@ -1,6 +1,7 @@
 import { ParkItemCategory } from './park-item-category';
 import { ParkItemType } from './park-item-type';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
+import { DataCompletenessScore } from '@app/models/shared/data-completeness-score';
 
 export interface ParkItemAdminRow {
   id: string;
@@ -13,6 +14,7 @@ export interface ParkItemAdminRow {
   isVisible: boolean;
   adminReviewStatus: AdminReviewStatus;
   contentQuality?: ParkItemContentQuality;
+  dataCompleteness?: DataCompletenessScore | null;
   publicationSignals?: ParkItemAdminPublicationSignals;
 }
 

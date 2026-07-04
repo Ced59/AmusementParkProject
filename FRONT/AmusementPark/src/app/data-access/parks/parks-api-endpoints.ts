@@ -16,7 +16,7 @@ export interface ParkAdminListFilters {
   openingHoursStatus?: ParkOpeningHoursAdminFilter | null;
 }
 
-export type ParkAdminListSortField = 'default' | 'name' | 'parkItemsTotalCount' | 'parkItemsVisibleCount' | 'openingHoursStatus';
+export type ParkAdminListSortField = 'default' | 'name' | 'parkItemsTotalCount' | 'parkItemsVisibleCount' | 'openingHoursStatus' | 'dataCompletenessScore';
 export type ParkAdminListSortDirection = 'asc' | 'desc';
 
 export interface ParkAdminListSort {
@@ -98,6 +98,7 @@ export const PARKS_API_ENDPOINTS = {
     return `parks/map-visible${params.length > 0 ? `?${params.join('&')}` : ''}`;
   },
   getParkById: (id: string) => `parks/${id}`,
+  getParkDataCompletenessScore: (id: string) => `parks/${encodeURIComponent(id)}/data-completeness`,
   getParkWeather: (id: string, days: number = 7) => `parks/${encodeURIComponent(id)}/weather?days=${days}`,
   getParkWeatherHistoricalComparisons: (id: string, days: number = 7, years: number = 10, forecastDates: readonly string[] = []) => {
     const params: string[] = [`days=${days}`, `years=${years}`];

@@ -14,7 +14,8 @@
         "actions": "Actions",
         "category": "Category",
         "reviewStatus": "Admin status",
-        "contentQuality": "Content"
+        "contentQuality": "Content",
+        "dataCompleteness": "Data completeness"
       },
       "allParks": "All parks",
       "total": "{{count}} page(s)",

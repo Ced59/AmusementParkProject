@@ -14,6 +14,7 @@ import { Park } from '@app/models/parks/park';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkOpeningHoursAdminFilter, ParkOpeningHoursAdminStatus } from '@app/models/parks/park-opening-hours';
 import { ParkType } from '@app/models/parks/park-type';
+import { DataCompletenessScore, getDataCompletenessLabel, getDataCompletenessSeverity } from '@app/models/shared/data-completeness-score';
 import { ParkAdminListFilters, ParkAdminListSortDirection, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
 
@@ -74,6 +75,8 @@ export class AdminParksViewComponent {
     { value: 'parkItemsVisibleCount:asc', labelKey: 'admin.parks.sort.visibleAsc' },
     { value: 'openingHoursStatus:asc', labelKey: 'admin.parks.sort.openingHoursAttentionFirst' },
     { value: 'openingHoursStatus:desc', labelKey: 'admin.parks.sort.openingHoursReadyFirst' },
+    { value: 'dataCompletenessScore:asc', labelKey: 'admin.parks.sort.dataCompletenessLowFirst' },
+    { value: 'dataCompletenessScore:desc', labelKey: 'admin.parks.sort.dataCompletenessHighFirst' },
   ];
 
   protected localVisibilityFilter: boolean | null = null;
@@ -209,7 +212,11 @@ export class AdminParksViewComponent {
       parkCountryCode: park.countryCode ?? '',
       parkCity: park.city ?? '',
       parkLatitude: String(park.latitude),
-      parkLongitude: String(park.longitude)
+      parkLongitude: String(park.longitude),
+      parkDataCompletenessScore: String(park.dataCompleteness?.completenessScore ?? ''),
+      parkDataQualityLevel: park.dataCompleteness?.dataQualityLevel ?? '',
+      parkDataCompletenessEarnedPoints: String(park.dataCompleteness?.earnedPoints ?? ''),
+      parkDataCompletenessMaxPoints: String(park.dataCompleteness?.applicableMaxPoints ?? '')
     };
   }
 
@@ -273,6 +280,14 @@ export class AdminParksViewComponent {
     };
   }
 
+  getDataCompletenessLabel(score: DataCompletenessScore | null | undefined): string {
+    return getDataCompletenessLabel(score);
+  }
+
+  getDataCompletenessSeverity(score: DataCompletenessScore | null | undefined): 'success' | 'info' | 'warn' | 'danger' {
+    return getDataCompletenessSeverity(score);
+  }
+
   private formatCount(count: number | null | undefined): string {
     return count === null || count === undefined ? '-' : String(count);
   }
@@ -287,6 +302,8 @@ export class AdminParksViewComponent {
         return 'parkItemsVisibleCount';
       case 'openingHoursStatus':
         return 'openingHoursStatus';
+      case 'dataCompletenessScore':
+        return 'dataCompletenessScore';
       default:
         return 'default';
     }

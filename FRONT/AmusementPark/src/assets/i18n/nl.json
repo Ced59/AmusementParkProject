@@ -871,7 +871,8 @@
         "actions": "Acties",
         "category": "Categorie",
         "reviewStatus": "Adminstatus",
-        "contentQuality": "Content"
+        "contentQuality": "Content",
+        "dataCompleteness": "Datavolledigheid"
       },
       "allParks": "Alle parken",
       "total": "{{count}} pagina('s)",
@@ -921,7 +922,9 @@
         "totalDesc": "Items max",
         "totalAsc": "Items min",
         "visibleDesc": "Zichtb. max",
-        "visibleAsc": "Zichtb. min"
+        "visibleAsc": "Zichtb. min",
+        "dataCompletenessLowFirst": "Volledigheid min",
+        "dataCompletenessHighFirst": "Volledigheid max"
       },
       "openingHours": {
         "title": "Openingstijden",
@@ -1427,6 +1430,7 @@
       "status": "Status",
       "itemsTotalCount": "Items",
       "itemsVisibleCount": "Zicht.",
+      "dataCompleteness": "Datavolledigheid",
       "statuses": {
         "operating": "Open",
         "closedDefinitively": "Definitief gesloten"

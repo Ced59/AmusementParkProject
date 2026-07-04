@@ -478,6 +478,7 @@
       "status": "Status",
       "itemsTotalCount": "Items",
       "itemsVisibleCount": "Zicht.",
+      "dataCompleteness": "Datavolledigheid",
       "statuses": {
         "operating": "Open",
         "closedDefinitively": "Definitief gesloten"
@@ -489,7 +490,9 @@
         "totalDesc": "Items max",
         "totalAsc": "Items min",
         "visibleDesc": "Zichtb. max",
-        "visibleAsc": "Zichtb. min"
+        "visibleAsc": "Zichtb. min",
+        "dataCompletenessLowFirst": "Volledigheid min",
+        "dataCompletenessHighFirst": "Volledigheid max"
       }
     }
   }
