@@ -137,6 +137,7 @@ Recommandation : activer le seed admin seulement au premier déploiement, puis r
 | Variable | Valeur recommandée |
 |---|---|
 | `SSR_ROBOT_NO_JS_HTML_ENABLED` | `true`, uniquement avec le garde-fou SSR qui renvoie `503 Retry-After` aux robots quand aucun HTML serveur exploitable n'est disponible |
+| `SSR_PUBLIC_HTML_SITEMAP_PAGE_CACHE_MAX_HTML_BYTES` | `10485760` pour autoriser la page HTML `/xx/sitemap` complète à entrer dans le cache SSR sans relever la limite générale |
 | `SSR_WARMUP_PROFILE` | `seo-important` pour préchauffer les pages publiques importantes avant reprise IndexNow |
 | `SSR_WARMUP_URL_FILE` | chemin optionnel vers une liste d'URLs à préchauffer et valider exactement |
 | `SSR_WARMUP_REPORT_FILE` | chemin optionnel du rapport CSV post-warmup |

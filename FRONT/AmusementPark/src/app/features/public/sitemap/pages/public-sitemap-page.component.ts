@@ -7,6 +7,7 @@ import { skip } from 'rxjs/operators';
 
 import { PublicHtmlSitemapNode } from '@app/models/seo/public-html-sitemap-node';
 import { TranslationService } from '@app/services/translation.service';
+import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { SeoService } from '@core/seo/seo.service';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
 import { UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
@@ -38,6 +39,7 @@ export class PublicSitemapPageComponent implements OnInit {
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly seoService: SeoService,
+    private readonly ssrRuntimeService: SsrRuntimeService,
     private readonly stateFacade: PublicSitemapStateFacade,
     private readonly destroyRef: DestroyRef
   ) {
@@ -96,6 +98,7 @@ export class PublicSitemapPageComponent implements OnInit {
     this.activeLanguage = language;
     this.currentLang.set(language);
     this.seoService.applyRouteDefaults(this.router.url);
-    this.stateFacade.loadRoot(language, true);
+    const loadDescendantsInInitialRequest: boolean = this.ssrRuntimeService.isServerSideRender();
+    this.stateFacade.loadRoot(language, true, loadDescendantsInInitialRequest);
   }
 }
