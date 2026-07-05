@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { languageGuard } from '@core/guards/language.guard';
 import { authGuard } from '@core/guards/auth.guard';
 import { adminGuard } from '@core/guards/admin.guard';
+import { HISTORY_ARTICLE_ROUTE_DATA_KEY, historyArticleResolver } from '@features/public/history/state/history-article.resolver';
 
 export const routes: Routes = [
   {
@@ -164,7 +165,11 @@ export const routes: Routes = [
           { path: 'park-founder/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'founder' } },
           { path: 'park-manufacturer/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'manufacturer' } },
           { path: 'park/:id/:slug/images', loadComponent: () => import('./features/public/parks/pages/park-images-page.component').then((m) => m.ParkImagesPageComponent) },
-          { path: 'park/:id/:slug/history/:eventId/:eventSlug', loadComponent: () => import('./features/public/history/pages/history-article-page.component').then((m) => m.HistoryArticlePageComponent) },
+          {
+            path: 'park/:id/:slug/history/:eventId/:eventSlug',
+            resolve: { [HISTORY_ARTICLE_ROUTE_DATA_KEY]: historyArticleResolver },
+            loadComponent: () => import('./features/public/history/pages/history-article-page.component').then((m) => m.HistoryArticlePageComponent)
+          },
           { path: 'park/:id/:slug/history', loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent) },
           { path: 'park/:id/:slug/video/s/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/videos/:videoId/:videoSlug', pathMatch: 'full' },
           { path: 'park/:id/:slug/video/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/videos/:videoId/:videoSlug', pathMatch: 'full' },
@@ -177,7 +182,11 @@ export const routes: Routes = [
           { path: 'park/:id/:slug/opening-hours', loadComponent: () => import('./features/public/parks/pages/park-opening-hours-page.component').then((m) => m.ParkOpeningHoursPageComponent) },
           { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/images', loadComponent: () => import('./features/public/park-items/pages/park-item-images-page.component').then((m) => m.ParkItemImagesPageComponent) },
-          { path: 'park/:id/:slug/item/:itemId/:itemSlug/history/:eventId/:eventSlug', loadComponent: () => import('./features/public/history/pages/history-article-page.component').then((m) => m.HistoryArticlePageComponent) },
+          {
+            path: 'park/:id/:slug/item/:itemId/:itemSlug/history/:eventId/:eventSlug',
+            resolve: { [HISTORY_ARTICLE_ROUTE_DATA_KEY]: historyArticleResolver },
+            loadComponent: () => import('./features/public/history/pages/history-article-page.component').then((m) => m.HistoryArticlePageComponent)
+          },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/history', loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/video/s/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', pathMatch: 'full' },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/video/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', pathMatch: 'full' },

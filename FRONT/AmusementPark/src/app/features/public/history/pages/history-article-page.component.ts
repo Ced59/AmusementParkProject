@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
+import { combineLatest } from 'rxjs';
 
+import { HistoryArticle } from '@app/models/history/history.models';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
@@ -10,6 +12,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { UiChipComponent } from '@ui/primitives';
 import { HistoryArticleBlockViewModel, HistoryArticlePageViewModel } from '../models/history-view.model';
+import { HISTORY_ARTICLE_ROUTE_DATA_KEY } from '../state/history-article.resolver';
 import { HistoryArticleStateFacade } from '../state/history-article-state.facade';
 
 interface HistoryArticlePageCopy {
@@ -66,10 +69,16 @@ export class HistoryArticlePageComponent implements OnInit {
     this.currentLanguage.set(initialLanguage);
     this.stateFacade.setCurrentLanguage(initialLanguage);
 
-    this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap): void => {
+    combineLatest([this.route.paramMap, this.route.data]).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(([params, routeData]: [ParamMap, Data]): void => {
       const eventId: string | null = params.get('eventId');
 
       if (!eventId) {
+        return;
+      }
+
+      const resolvedArticle: HistoryArticle | null | undefined = this.resolveRouteDataArticle(routeData);
+      if (resolvedArticle !== undefined) {
+        this.stateFacade.setResolvedArticle(resolvedArticle);
         return;
       }
 
@@ -145,6 +154,20 @@ export class HistoryArticlePageComponent implements OnInit {
 
   private resolveCopy(): HistoryArticlePageCopy {
     return HISTORY_ARTICLE_PAGE_COPY[this.currentLanguage()] ?? HISTORY_ARTICLE_PAGE_COPY['en'];
+  }
+
+  private resolveRouteDataArticle(routeData: Data): HistoryArticle | null | undefined {
+    if (!(HISTORY_ARTICLE_ROUTE_DATA_KEY in routeData)) {
+      return undefined;
+    }
+
+    const resolvedArticle: unknown = routeData[HISTORY_ARTICLE_ROUTE_DATA_KEY];
+
+    return this.isHistoryArticle(resolvedArticle) ? resolvedArticle : null;
+  }
+
+  private isHistoryArticle(value: unknown): value is HistoryArticle {
+    return typeof value === 'object' && value !== null && 'event' in value;
   }
 
   private appendUniqueContextName(names: string[], value: string | null, title: string): void {

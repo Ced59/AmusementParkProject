@@ -1,6 +1,20 @@
 {
-  "version": "3.3.18",
+  "version": "3.3.19",
   "history": [
+    {
+      "version": "3.3.19",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Les aperçus de partage des articles chargent mieux.",
+        "en": "Article share previews load better.",
+        "de": "Artikelvorschauen beim Teilen laden besser.",
+        "nl": "Voorvertoningen bij het delen van artikelen laden beter.",
+        "it": "Le anteprime di condivisione degli articoli si caricano meglio.",
+        "es": "Las vistas previas al compartir artículos cargan mejor.",
+        "pl": "Podglądy udostępnianych artykułów ładują się lepiej.",
+        "pt": "As pré-visualizações de partilha dos artigos carregam melhor."
+      }
+    },
     {
       "version": "3.3.18",
       "releasedAt": "2026-07-05",

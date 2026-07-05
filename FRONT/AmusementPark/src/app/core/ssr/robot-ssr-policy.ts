@@ -28,6 +28,16 @@ const primarySearchRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily
   'DuckDuckBot'
 ]);
 
+const socialPreviewRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily>([
+  'Facebook external hit',
+  'WhatsApp',
+  'TelegramBot',
+  'LinkedInBot',
+  'PinterestBot',
+  'DiscordBot',
+  'TwitterBot'
+]);
+
 export function detectRobotFamilyFromUserAgent(userAgentHeader: string): RobotFamily | null {
   const userAgent: string = userAgentHeader.toLowerCase();
   if (userAgent.length === 0 || userAgent.includes('amusementpark-ssr-targetedrefresh')) {
@@ -122,7 +132,9 @@ export function detectRobotFamilyFromUserAgent(userAgentHeader: string): RobotFa
 }
 
 export function shouldAllowRobotCacheMissSsrRender(robotFamily: RobotFamily | null): boolean {
-  return robotFamily === null || primarySearchRobotFamilies.has(robotFamily);
+  return robotFamily === null
+    || primarySearchRobotFamilies.has(robotFamily)
+    || socialPreviewRobotFamilies.has(robotFamily);
 }
 
 export function getRobotFamilyCategory(robotFamily: string): string {
