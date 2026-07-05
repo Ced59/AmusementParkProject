@@ -44,6 +44,31 @@
       "description": "Wyślij prognozę dla {{title}} komuś, kto planuje wizytę.",
       "text": "Sprawdź pogodę dla {{title}} w AmusementPark."
     },
+    "openingHours": {
+      "title": "Udostępnij te godziny otwarcia",
+      "description": "Wyślij godziny otwarcia {{title}} komuś, kto planuje wizytę.",
+      "text": "Sprawdź godziny otwarcia {{title}} w AmusementPark."
+    },
+    "parkMap": {
+      "title": "Udostępnij tę mapę",
+      "description": "Wyślij mapę {{title}} komuś, kto planuje trasę.",
+      "text": "Otwórz mapę {{title}} w AmusementPark."
+    },
+    "parkImages": {
+      "title": "Udostępnij te zdjęcia",
+      "description": "Wyślij zdjęcia {{title}} komuś, kto chce poczuć klimat tego miejsca.",
+      "text": "Zobacz zdjęcia {{title}} w AmusementPark."
+    },
+    "parkZones": {
+      "title": "Udostępnij te strefy",
+      "description": "Wyślij strefy {{title}} komuś, kto planuje wizytę.",
+      "text": "Odkryj strefy {{title}} w AmusementPark."
+    },
+    "parkZone": {
+      "title": "Udostępnij tę strefę",
+      "description": "Wyślij tę strefę komuś, kto planuje swoją trasę.",
+      "text": "Odkryj {{title}} w AmusementPark."
+    },
     "parkItems": {
       "title": "Udostępnij te atrakcje i miejsca",
       "description": "Wyślij ten przewodnik komuś, kto planuje wizytę.",
@@ -52,6 +77,26 @@
     "parkItem": {
       "title": "Udostępnij tę kartę",
       "description": "Wyślij tę stronę komuś zainteresowanemu {{title}}.",
+      "text": "Odkryj {{title}} w AmusementPark."
+    },
+    "itemImages": {
+      "title": "Udostępnij te zdjęcia",
+      "description": "Wyślij zdjęcia {{title}} komuś, kto chce to odkryć.",
+      "text": "Zobacz zdjęcia {{title}} w AmusementPark."
+    },
+    "historyTimeline": {
+      "title": "Udostępnij tę oś czasu",
+      "description": "Wyślij historię {{title}} komuś, kto lubi śledzić ważne etapy.",
+      "text": "Poznaj historię {{title}} w AmusementPark."
+    },
+    "historyArticle": {
+      "title": "Udostępnij ten artykuł",
+      "description": "Wyślij ten artykuł komuś zainteresowanemu {{title}}.",
+      "text": "Przeczytaj {{title}} w AmusementPark."
+    },
+    "reference": {
+      "title": "Udostępnij ten profil",
+      "description": "Wyślij ten profil komuś, kto chce dowiedzieć się więcej o {{title}}.",
       "text": "Odkryj {{title}} w AmusementPark."
     },
     "videos": {

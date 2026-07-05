@@ -3805,6 +3805,31 @@
       "description": "Stuur de weersverwachting voor {{title}} naar iemand die een bezoek plant.",
       "text": "Bekijk het weer voor {{title}} op AmusementPark."
     },
+    "openingHours": {
+      "title": "Deze openingstijden delen",
+      "description": "Stuur de openingstijden van {{title}} naar iemand die een bezoek plant.",
+      "text": "Bekijk de openingstijden van {{title}} op AmusementPark."
+    },
+    "parkMap": {
+      "title": "Deze kaart delen",
+      "description": "Stuur de kaart van {{title}} naar iemand die zijn route plant.",
+      "text": "Open de kaart van {{title}} op AmusementPark."
+    },
+    "parkImages": {
+      "title": "Deze beelden delen",
+      "description": "Stuur beelden van {{title}} naar iemand die de plek wil ontdekken.",
+      "text": "Bekijk beelden van {{title}} op AmusementPark."
+    },
+    "parkZones": {
+      "title": "Deze zones delen",
+      "description": "Stuur de zones van {{title}} naar iemand die een bezoek plant.",
+      "text": "Ontdek de zones van {{title}} op AmusementPark."
+    },
+    "parkZone": {
+      "title": "Deze zone delen",
+      "description": "Stuur deze zone naar iemand die zijn route plant.",
+      "text": "Ontdek {{title}} op AmusementPark."
+    },
     "parkItems": {
       "title": "Deze attracties en plekken delen",
       "description": "Stuur deze gids naar iemand die een bezoek plant.",
@@ -3813,6 +3838,26 @@
     "parkItem": {
       "title": "Deze fiche delen",
       "description": "Stuur deze pagina naar iemand met interesse in {{title}}.",
+      "text": "Ontdek {{title}} op AmusementPark."
+    },
+    "itemImages": {
+      "title": "Deze beelden delen",
+      "description": "Stuur beelden van {{title}} naar iemand die het wil ontdekken.",
+      "text": "Bekijk beelden van {{title}} op AmusementPark."
+    },
+    "historyTimeline": {
+      "title": "Deze tijdlijn delen",
+      "description": "Stuur de geschiedenis van {{title}} naar iemand die belangrijke mijlpalen volgt.",
+      "text": "Ontdek de geschiedenis van {{title}} op AmusementPark."
+    },
+    "historyArticle": {
+      "title": "Dit artikel delen",
+      "description": "Stuur dit artikel naar iemand met interesse in {{title}}.",
+      "text": "Lees {{title}} op AmusementPark."
+    },
+    "reference": {
+      "title": "Dit profiel delen",
+      "description": "Stuur dit profiel naar iemand die meer wil weten over {{title}}.",
       "text": "Ontdek {{title}} op AmusementPark."
     },
     "videos": {

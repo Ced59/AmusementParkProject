@@ -5,7 +5,7 @@ import { SeoService } from './seo.service';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
 import { ParkReferenceDetailViewModel } from '@features/public/parks/models/park-reference-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
-import { HistoryTimelinePageViewModel } from '@features/public/history/models/history-view.model';
+import { HistoryArticlePageViewModel, HistoryTimelinePageViewModel } from '@features/public/history/models/history-view.model';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
@@ -259,6 +259,176 @@ describe('SeoService', () => {
 
     expect(titles.size).toBe(cases.length);
     expect(descriptions.size).toBe(cases.length);
+  });
+
+  it('applies article Open Graph metadata to history articles and resets the type on regular pages', () => {
+    service.applyHistoryArticleSeo(
+      buildHistoryArticle({
+        title: 'Opening of Mirapolis',
+        summary: 'Article detaille sur l ouverture de Mirapolis.',
+        mainImageId: 'history-photo-1'
+      }),
+      'fr',
+      '/fr/park/park-1/mirapolis/history/event-1/opening'
+    );
+
+    expect(readMetaContent('meta[property="og:type"]')).toBe('article');
+    expect(readMetaContent('meta[property="og:title"]')).toContain('Opening of Mirapolis');
+    expect(readMetaContent('meta[property="og:description"]')).toBe('Article detaille sur l ouverture de Mirapolis.');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/history-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Opening of Mirapolis');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/history-photo-1?width=1200&v=2');
+
+    service.applyParkDetailSeo(buildParkDetail(), 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:type"]')).toBe('website');
+  });
+
+  it('keeps Open Graph titles and descriptions distinct across languages for shareable public pages', () => {
+    const languages: readonly string[] = ['en', 'fr', 'de', 'nl', 'it', 'es', 'pl', 'pt'];
+    const localizedArticleTitles: Record<string, string> = {
+      en: 'Opening of Mirapolis',
+      fr: 'Ouverture de Mirapolis',
+      de: 'Eröffnung von Mirapolis',
+      nl: 'Opening van Mirapolis',
+      it: 'Apertura di Mirapolis',
+      es: 'Apertura de Mirapolis',
+      pl: 'Otwarcie Mirapolis',
+      pt: 'Abertura de Mirapolis'
+    };
+    const cases: Array<{ name: string; apply: (language: string) => void }> = [
+      {
+        name: 'park images',
+        apply: (language: string): void => service.applyParkImagesSeo(
+          buildPark({ name: 'Demo Park', countryCode: 'FR' }),
+          language,
+          `/${language}/park/park-1/demo-park/images`,
+          4,
+          'park-image-1')
+      },
+      {
+        name: 'park item images',
+        apply: (language: string): void => service.applyParkItemImagesSeo(
+          buildParkItem({ name: 'Demo Item' }),
+          buildPark({ name: 'Demo Park', countryCode: 'FR' }),
+          language,
+          `/${language}/park/park-1/demo-park/item/item-1/demo-item/images`,
+          4,
+          'item-image-1')
+      },
+      {
+        name: 'park videos',
+        apply: (language: string): void => service.applyParkVideosSeo(
+          buildPark({ name: 'Demo Park', countryCode: 'FR' }),
+          language,
+          `/${language}/park/park-1/demo-park/videos`,
+          3,
+          'video-thumb-1',
+          'park-image-1')
+      },
+      {
+        name: 'park item videos',
+        apply: (language: string): void => service.applyParkItemVideosSeo(
+          buildParkItem({ name: 'Demo Item' }),
+          buildPark({ name: 'Demo Park', countryCode: 'FR' }),
+          language,
+          `/${language}/park/park-1/demo-park/item/item-1/demo-item/videos`,
+          3,
+          'video-thumb-1',
+          'item-image-1',
+          'park-image-1')
+      },
+      {
+        name: 'park map',
+        apply: (language: string): void => service.applyParkMapSeo(
+          buildPark({ name: 'Demo Park', countryCode: 'FR' }),
+          language,
+          `/${language}/park/park-1/demo-park/map`,
+          'park-image-1')
+      },
+      {
+        name: 'park weather',
+        apply: (language: string): void => service.applyParkWeatherSeo(
+          'Demo Park',
+          language,
+          `/${language}/park/park-1/demo-park/weather`,
+          7,
+          'park-image-1')
+      },
+      {
+        name: 'park opening hours',
+        apply: (language: string): void => service.applyParkOpeningHoursSeo(
+          'Demo Park',
+          language,
+          `/${language}/park/park-1/demo-park/opening-hours`,
+          30,
+          'park-image-1')
+      },
+      {
+        name: 'park zones',
+        apply: (language: string): void => service.applyParkZonesSeo(
+          'Demo Park',
+          language,
+          `/${language}/park/park-1/demo-park/zones`,
+          'park-image-1',
+          5,
+          42)
+      },
+      {
+        name: 'park zone',
+        apply: (language: string): void => service.applyParkZoneSeo(
+          'Demo Park',
+          'Old West',
+          language,
+          `/${language}/park/park-1/demo-park/zone/zone-1/old-west`,
+          'park-image-1',
+          12)
+      },
+      {
+        name: 'history timeline',
+        apply: (language: string): void => service.applyHistoryTimelineSeo(
+          buildHistoryTimeline({ title: localizedArticleTitles[language] }),
+          language,
+          `/${language}/park/park-1/mirapolis/history`)
+      },
+      {
+        name: 'history article',
+        apply: (language: string): void => service.applyHistoryArticleSeo(
+          buildHistoryArticle({
+            title: localizedArticleTitles[language],
+            summary: ''
+          }),
+          language,
+          `/${language}/park/park-1/mirapolis/history/event-1/opening`)
+      },
+      {
+        name: 'park reference',
+        apply: (language: string): void => service.applyParkReferenceSeo(
+          buildParkReference({
+            id: 'manufacturer-1',
+            kind: 'manufacturer',
+            name: 'Ride Technic',
+            attractionsPagination: { totalItems: 4 } as ParkReferenceDetailViewModel['attractionsPagination']
+          }),
+          language,
+          `/${language}/park-manufacturer/manufacturer-1/ride-technic`)
+      }
+    ];
+
+    for (const routeCase of cases) {
+      const titles: string[] = [];
+      const descriptions: string[] = [];
+
+      for (const language of languages) {
+        routeCase.apply(language);
+
+        titles.push(readMetaContent('meta[property="og:title"]') ?? '');
+        descriptions.push(readMetaContent('meta[property="og:description"]') ?? '');
+      }
+
+      expect(new Set(titles).size).withContext(`${routeCase.name} og:title`).toBe(languages.length);
+      expect(new Set(descriptions).size).withContext(`${routeCase.name} og:description`).toBe(languages.length);
+    }
   });
 
   it('localizes opening hours breadcrumb JSON-LD with contextual German labels', () => {
@@ -587,6 +757,63 @@ function buildHistoryTimeline(overrides: Partial<HistoryTimelinePageViewModel> =
         isFirstInYear: true
       }
     ],
+    ...overrides
+  };
+}
+
+function buildHistoryArticle(overrides: Partial<HistoryArticlePageViewModel> = {}): HistoryArticlePageViewModel {
+  return {
+    title: 'Opening of Mirapolis',
+    subtitle: '',
+    summary: 'Article detaille sur l ouverture de Mirapolis.',
+    dateLabel: '1987',
+    eventTypeLabel: 'Opening',
+    ownerName: 'Mirapolis',
+    park: buildPark({ name: 'Mirapolis' }),
+    parkItem: null,
+    contextPark: null,
+    mainImageId: null,
+    mainImage: null,
+    blocks: [],
+    sources: [],
+    timelineLink: ['/fr', 'park', 'park-1', 'mirapolis', 'history'],
+    canonicalPath: null,
+    event: {
+      id: 'event-1',
+      key: 'opening',
+      entityType: 'Park',
+      ownerId: 'park-1',
+      parkId: 'park-1',
+      parkItemId: null,
+      contextParkId: 'park-1',
+      year: 1987,
+      month: 5,
+      day: 20,
+      datePrecision: 'Day',
+      eventType: 'Opening',
+      isMajor: true,
+      isVisible: true,
+      slug: 'opening',
+      titles: [],
+      summaries: [],
+      mainImageId: null,
+      relatedParkIds: [],
+      relatedParkItemIds: [],
+      sources: [],
+      article: null,
+      createdAtUtc: '2026-01-01T00:00:00Z',
+      updatedAtUtc: '2026-01-02T00:00:00Z'
+    },
+    article: {
+      slug: 'opening',
+      titles: [],
+      subtitles: [],
+      summaries: [],
+      mainImageId: null,
+      blocks: [],
+      sources: [],
+      isPublished: true
+    },
     ...overrides
   };
 }

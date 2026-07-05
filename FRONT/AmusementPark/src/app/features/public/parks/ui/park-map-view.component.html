@@ -60,6 +60,15 @@
       @if (map) {
         <app-park-items-map-section [map]="map"></app-park-items-map-section>
       }
+
+      <app-public-share-panel
+        targetType="Park"
+        [targetId]="currentPark.id ?? null"
+        [targetTitle]="currentPark.name ?? null"
+        titleKey="shareSocial.parkMap.title"
+        descriptionKey="shareSocial.parkMap.description"
+        textKey="shareSocial.parkMap.text">
+      </app-public-share-panel>
     </section>
   }
 </app-page-state>

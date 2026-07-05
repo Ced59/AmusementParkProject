@@ -64,5 +64,13 @@
         messageKey="parks.zones.emptyMessage">
       </app-empty-state>
     </ng-template>
+
+    <app-public-share-panel
+      targetType="Page"
+      [targetTitle]="currentPage.parkName"
+      titleKey="shareSocial.parkZones.title"
+      descriptionKey="shareSocial.parkZones.description"
+      textKey="shareSocial.parkZones.text">
+    </app-public-share-panel>
   </section>
 </app-page-state>

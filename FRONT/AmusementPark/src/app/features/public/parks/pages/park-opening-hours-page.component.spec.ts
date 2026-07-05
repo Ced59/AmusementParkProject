@@ -1,5 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap, convertToParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject, of } from 'rxjs';
@@ -11,6 +12,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkOpeningHoursPageComponent } from './park-opening-hours-page.component';
 
 class FakeTranslationService {
@@ -146,6 +148,28 @@ describe('ParkOpeningHoursPageComponent', () => {
     expect(component.dayTone(createOpenDay('2026-07-02', '10:00', '15:00'))).toBe('short');
     expect(component.dayTone(createOpenDay('2026-07-03', '10:00', '18:00'))).toBe('standard');
     expect(component.dayTone(createOpenDay('2026-07-04', '09:00', '20:00'))).toBe('long');
+  });
+
+  it('renders the opening hours sharing panel for the park', () => {
+    parksApiService.getParkDetailSummary.and.returnValue(of(createSummary('park-1')));
+    parksApiService.getParkOpeningHours.and.returnValue(of(createCalendar([
+      createOpenDay('2026-07-04', '10:00', '18:00')
+    ])));
+
+    fixture.detectChanges();
+    paramMapSubject.next(convertToParamMap({ id: 'park-1', lang: 'fr' }));
+    fixture.detectChanges();
+
+    const sharePanel: PublicSharePanelComponent = fixture.debugElement
+      .query(By.directive(PublicSharePanelComponent))
+      .componentInstance as PublicSharePanelComponent;
+
+    expect(sharePanel.targetType).toBe('Park');
+    expect(sharePanel.targetId).toBe('park-1');
+    expect(sharePanel.targetTitle).toBe('First Park');
+    expect(sharePanel.titleKey).toBe('shareSocial.openingHours.title');
+    expect(sharePanel.descriptionKey).toBe('shareSocial.openingHours.description');
+    expect(sharePanel.textKey).toBe('shareSocial.openingHours.text');
   });
 
   it('ignores pending month responses from a previously loaded park', () => {

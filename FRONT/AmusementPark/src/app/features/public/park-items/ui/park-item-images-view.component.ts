@@ -10,6 +10,7 @@ import { PageStateComponent } from '@shared/components/page-state/page-state.com
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselComponent, UiPhotoCarouselImage } from '@ui/media';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 
 @Component({
   selector: 'app-park-item-images-view',
@@ -25,6 +26,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirecti
     UiKickerComponent,
     UiSurfaceDirective,
     UiPhotoCarouselComponent,
+    PublicSharePanelComponent,
     PublicContextualBlockDirective
   ]
 })

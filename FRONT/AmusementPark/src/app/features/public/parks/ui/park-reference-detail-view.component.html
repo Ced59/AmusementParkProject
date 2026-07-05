@@ -158,6 +158,15 @@
             }
           </section>
         }
+
+        <app-public-share-panel
+          targetType="Page"
+          [targetId]="currentReference.id ?? null"
+          [targetTitle]="currentReference.name"
+          titleKey="shareSocial.reference.title"
+          descriptionKey="shareSocial.reference.description"
+          textKey="shareSocial.reference.text">
+        </app-public-share-panel>
       </main>
     </section>
   }

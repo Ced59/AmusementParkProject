@@ -9,6 +9,7 @@ import { PageStateComponent } from '@shared/components/page-state/page-state.com
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselComponent, UiPhotoCarouselImage } from '@ui/media';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkImagesGalleryTab } from '../models/park-images-view.model';
 
 @Component({
@@ -25,6 +26,7 @@ import { ParkImagesGalleryTab } from '../models/park-images-view.model';
     UiKickerComponent,
     UiSurfaceDirective,
     UiPhotoCarouselComponent,
+    PublicSharePanelComponent,
     PublicContextualBlockDirective
   ]
 })
