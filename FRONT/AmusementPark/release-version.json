@@ -1,6 +1,20 @@
 {
-  "version": "3.4.0",
+  "version": "3.4.1",
   "history": [
+    {
+      "version": "3.4.1",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Les aperçus publics sont mieux maîtrisés.",
+        "en": "Public previews are better controlled.",
+        "de": "Öffentliche Vorschauen sind besser abgestimmt.",
+        "nl": "Publieke previews zijn beter beheerst.",
+        "it": "Le anteprime pubbliche sono gestite meglio.",
+        "es": "Las vistas previas públicas se controlan mejor.",
+        "pl": "Publiczne podglądy są lepiej dopracowane.",
+        "pt": "As pré-visualizações públicas ficam melhor controladas."
+      }
+    },
     {
       "version": "3.4.0",
       "releasedAt": "2026-07-05",

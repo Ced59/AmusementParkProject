@@ -41,7 +41,7 @@ describe('SeoService', () => {
 
     expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
     expect(readMetaContent('meta[property="og:image:secure_url"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
-    expect(readMetaContent('meta[property="og:image:width"]')).toBe('1200');
+    expect(readMetaContent('meta[property="og:image:width"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:height"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo Park');
     expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
@@ -73,9 +73,28 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="twitter:image"]')).toBe('http://localhost:4200/assets/general-icon/logo-amusementpark.png');
   });
 
-  it('removes stale social image height when a resized image replaces the fallback', () => {
+  it('uses the park hero then logo image before falling back to the site social image', () => {
+    service.applyParkDetailSeo(buildParkDetail({
+      primaryPhoto: null,
+      heroImageId: 'park-hero-1',
+      logoImageId: 'park-logo-1'
+    }), 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-hero-1?width=1200&v=2');
+
+    service.applyParkDetailSeo(buildParkDetail({
+      primaryPhoto: null,
+      heroImageId: null,
+      logoImageId: 'park-logo-1'
+    }), 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-logo-1?width=1200&v=2');
+  });
+
+  it('removes stale social image dimensions when a responsive image replaces the fallback', () => {
     service.applyParkDetailSeo(buildParkDetail({ primaryPhoto: null }), 'fr', '/fr/park/park-1/demo-park');
 
+    expect(readMetaContent('meta[property="og:image:width"]')).toBe('1024');
     expect(readMetaContent('meta[property="og:image:height"]')).toBe('1024');
 
     service.applyParkDetailSeo(buildParkDetail({
@@ -84,7 +103,7 @@ describe('SeoService', () => {
       } as ParkDetailViewModel['primaryPhoto']
     }), 'fr', '/fr/park/park-1/demo-park');
 
-    expect(readMetaContent('meta[property="og:image:width"]')).toBe('1200');
+    expect(readMetaContent('meta[property="og:image:width"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:height"]')).toBeNull();
   });
 
@@ -382,6 +401,28 @@ describe('SeoService', () => {
       'nl_NL',
       'pt_PT'
     ]);
+  });
+
+  it('keeps missing dynamic public routes noindex without canonical or social metadata', () => {
+    service.applyParkDetailSeo(buildParkDetail({
+      primaryPhoto: {
+        imageId: 'park-photo-1',
+      } as ParkDetailViewModel['primaryPhoto']
+    }), 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park/park-1/demo-park');
+    expect(readMetaContent('meta[property="og:title"]')).toContain('Demo Park');
+
+    service.applyRouteDefaults('/fr/park/00000000-0000-0000-0000-000000000000/parc-manquant');
+
+    expect(documentRef.title).toBe('Page introuvable — Amusement Parks');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readMetaContent('meta[name="googlebot"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBeNull();
+    expect(readMetaContent('meta[property="og:title"]')).toBeNull();
+    expect(readMetaContent('meta[property="og:image"]')).toBeNull();
+    expect(readMetaContent('meta[name="twitter:title"]')).toBeNull();
+    expect(readOpenGraphLocaleAlternates()).toEqual([]);
   });
 
   it('keeps static route titles and descriptions distinct across public languages', () => {
@@ -812,7 +853,7 @@ describe('SeoService', () => {
 
     expect(documentRef.title).toBe('Dossiers techniques - Amusement Parks');
     expect(readMetaContent('meta[name="description"]'))
-      .toBe('Explore les lifts, retenues, trains, materiaux et autres systemes techniques des attractions.');
+      .toBe('Explore les lifts, retenues, trains, matériaux et autres systèmes techniques des attractions.');
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
     expect(readMetaContent('meta[property="og:locale"]')).toBe('fr_FR');
   });
