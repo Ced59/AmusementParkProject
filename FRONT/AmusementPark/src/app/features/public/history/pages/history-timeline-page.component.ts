@@ -1,7 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
+import { combineLatest } from 'rxjs';
 
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
@@ -11,6 +12,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { HistoryTimelineEventViewModel, HistoryTimelinePageViewModel } from '../models/history-view.model';
 import { HistoryTimelineStateFacade } from '../state/history-timeline-state.facade';
+import { HISTORY_TIMELINE_ROUTE_DATA_KEY, ResolvedHistoryTimelineRouteData } from '../state/history-timeline.resolver';
 
 interface HistoryTimelinePageCopy {
   article: string;
@@ -191,16 +193,27 @@ export class HistoryTimelinePageComponent implements OnInit {
     this.currentLanguage.set(initialLanguage);
     this.stateFacade.setCurrentLanguage(initialLanguage);
 
-    this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap): void => {
+    combineLatest([this.route.paramMap, this.route.data]).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(([params, routeData]: [ParamMap, Data]): void => {
       const parkItemId: string | null = params.get('itemId');
       const parkId: string | null = params.get('id');
+      const resolvedTimeline: ResolvedHistoryTimelineRouteData | undefined = this.resolveRouteDataTimeline(routeData);
 
       if (parkItemId) {
+        if (resolvedTimeline !== undefined) {
+          this.stateFacade.setResolvedParkItemTimeline(parkItemId, resolvedTimeline.timeline);
+          return;
+        }
+
         this.stateFacade.loadParkItemTimeline(parkItemId);
         return;
       }
 
       if (parkId) {
+        if (resolvedTimeline !== undefined) {
+          this.stateFacade.setResolvedParkTimeline(parkId, resolvedTimeline.timeline, resolvedTimeline.includeParkItems);
+          return;
+        }
+
         this.stateFacade.loadParkTimeline(parkId, this.includeParkItems());
       }
     });
@@ -294,8 +307,42 @@ export class HistoryTimelinePageComponent implements OnInit {
     return `${event.sourceCount} ${label}`;
   }
 
+  protected shareTitle(timeline: HistoryTimelinePageViewModel): string {
+    const parkName: string | null = this.normalizeOptionalText(timeline.park?.name);
+
+    if (!timeline.parkItem || !parkName || timeline.title.toLocaleLowerCase().includes(parkName.toLocaleLowerCase())) {
+      return timeline.title;
+    }
+
+    return `${timeline.title} - ${parkName}`;
+  }
+
   private resolveCopy(): HistoryTimelinePageCopy {
     return HISTORY_TIMELINE_PAGE_COPY[this.currentLanguage()] ?? HISTORY_TIMELINE_PAGE_COPY['en'];
+  }
+
+  private resolveRouteDataTimeline(routeData: Data): ResolvedHistoryTimelineRouteData | undefined {
+    if (!(HISTORY_TIMELINE_ROUTE_DATA_KEY in routeData)) {
+      return undefined;
+    }
+
+    const resolvedTimeline: unknown = routeData[HISTORY_TIMELINE_ROUTE_DATA_KEY];
+
+    return this.isResolvedHistoryTimelineRouteData(resolvedTimeline)
+      ? resolvedTimeline
+      : { timeline: null, includeParkItems: false };
+  }
+
+  private isResolvedHistoryTimelineRouteData(value: unknown): value is ResolvedHistoryTimelineRouteData {
+    return typeof value === 'object'
+      && value !== null
+      && 'timeline' in value
+      && 'includeParkItems' in value;
+  }
+
+  private normalizeOptionalText(value: string | null | undefined): string | null {
+    const normalizedValue: string = value?.trim() ?? '';
+    return normalizedValue.length > 0 ? normalizedValue : null;
   }
 
   private slugOrFallback(value: string | null | undefined, fallback: string): string {

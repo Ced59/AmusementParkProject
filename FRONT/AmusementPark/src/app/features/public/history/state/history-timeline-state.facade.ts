@@ -37,6 +37,20 @@ export class HistoryTimelineStateFacade {
     this.currentLanguageSignal.set(language || 'en');
   }
 
+  setResolvedParkTimeline(parkId: string, timeline: HistoryTimeline | null, includeParkItems: boolean): void {
+    this.currentParkId = parkId;
+    this.currentParkItemId = null;
+    this.includeParkItemsSignal.set(includeParkItems);
+    this.setResolvedTimeline(timeline);
+  }
+
+  setResolvedParkItemTimeline(parkItemId: string, timeline: HistoryTimeline | null): void {
+    this.currentParkItemId = parkItemId;
+    this.currentParkId = null;
+    this.includeParkItemsSignal.set(false);
+    this.setResolvedTimeline(timeline);
+  }
+
   loadParkTimeline(parkId: string, includeParkItems: boolean = this.includeParkItemsSignal()): void {
     this.currentParkId = parkId;
     this.currentParkItemId = null;
@@ -98,5 +112,14 @@ export class HistoryTimelineStateFacade {
     if (this.currentParkItemId) {
       this.loadParkItemTimeline(this.currentParkItemId);
     }
+  }
+
+  private setResolvedTimeline(timeline: HistoryTimeline | null): void {
+    if (timeline) {
+      this.screenStateStore.setReady(timeline);
+      return;
+    }
+
+    this.screenStateStore.setError('history.timeline.errorMessage', this.screenStateStore.data());
   }
 }

@@ -121,7 +121,7 @@
       <app-public-share-panel
         targetType="Page"
         [targetId]="currentTimeline.parkItem?.id ?? currentTimeline.park?.id ?? null"
-        [targetTitle]="currentTimeline.title"
+        [targetTitle]="shareTitle(currentTimeline)"
         titleKey="shareSocial.historyTimeline.title"
         descriptionKey="shareSocial.historyTimeline.description"
         textKey="shareSocial.historyTimeline.text">

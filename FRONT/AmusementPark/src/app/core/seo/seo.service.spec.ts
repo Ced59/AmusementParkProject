@@ -253,12 +253,48 @@ describe('SeoService', () => {
 
       titles.add(documentRef.title);
       descriptions.add(readMetaContent('meta[name="description"]') ?? '');
+      if (entry.language === 'fr') {
+        expect(documentRef.title).toBe('Histoire de Mirapolis — Amusement Parks');
+      }
       expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
       expect(readCanonicalHref()).toBe(`http://localhost:4200${entry.url}`);
     }
 
     expect(titles.size).toBe(cases.length);
     expect(descriptions.size).toBe(cases.length);
+  });
+
+  it('adds park item context and image fallbacks to history timeline social metadata', () => {
+    service.applyHistoryTimelineSeo(
+      buildHistoryTimeline({
+        entityType: 'ParkItem',
+        title: 'Histoire de Le Nitro',
+        ownerName: 'Le Nitro',
+        park: buildPark({ name: 'Dennlys Parc', currentLogoImageId: 'dennlys-logo-1' }),
+        parkItem: buildParkItem({ name: 'Le Nitro', mainImageId: 'nitro-photo-1' }),
+        events: [
+          {
+            ...buildHistoryTimeline().events[0],
+            entityType: 'ParkItem',
+            ownerName: 'Le Nitro',
+            contextParkName: 'Dennlys Parc',
+            parkItemName: 'Le Nitro',
+            mainImageId: null,
+            mainImage: null
+          }
+        ]
+      }),
+      'fr',
+      '/fr/park/park-1/dennlys-parc/item/item-1/le-nitro/history'
+    );
+
+    expect(documentRef.title).toBe('Histoire de Le Nitro - Dennlys Parc — Amusement Parks');
+    expect(readMetaContent('meta[property="og:title"]')).toBe('Histoire de Le Nitro - Dennlys Parc — Amusement Parks');
+    expect(readMetaContent('meta[property="og:title"]')).not.toContain('Chronologie');
+    expect(readMetaContent('meta[property="og:title"]')).not.toContain('historique');
+    expect(readMetaContent('meta[property="og:description"]')).toContain('Le Nitro - Dennlys Parc');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Le Nitro - Dennlys Parc');
   });
 
   it('applies article Open Graph metadata to history articles and resets the type on regular pages', () => {
@@ -274,6 +310,8 @@ describe('SeoService', () => {
 
     expect(readMetaContent('meta[property="og:type"]')).toBe('article');
     expect(readMetaContent('meta[property="og:title"]')).toContain('Opening of Mirapolis');
+    expect(readMetaContent('meta[property="og:title"]')).not.toContain('Article historique');
+    expect(readMetaContent('meta[property="og:title"]')).toContain('Article : Opening of Mirapolis');
     expect(readMetaContent('meta[property="og:description"]')).toBe('Article detaille sur l ouverture de Mirapolis.');
     expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/history-photo-1?width=1200&v=2');
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Opening of Mirapolis');
@@ -311,7 +349,8 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:title"]')).toContain('Arret de Nitro - Le Nitro - Dennlys Parc');
-    expect(readMetaContent('meta[property="og:description"]')).toBe('Article historique sur Le Nitro - Dennlys Parc, autour de 1987.');
+    expect(readMetaContent('meta[property="og:title"]')).not.toContain('Article historique');
+    expect(readMetaContent('meta[property="og:description"]')).toBe('Article sur Le Nitro - Dennlys Parc, autour de 1987.');
     expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=2');
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Arret de Nitro - Le Nitro - Dennlys Parc');
     expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=2');
@@ -381,6 +420,16 @@ describe('SeoService', () => {
 
   it('keeps dynamic detail titles and descriptions distinct when entity names are shared across languages', () => {
     const languages: readonly string[] = ['en', 'fr', 'de', 'nl', 'it', 'es', 'pl', 'pt'];
+    const localizedTimelineTitles: Record<string, string> = {
+      en: 'Mirapolis history',
+      fr: 'Histoire de Mirapolis',
+      de: 'Geschichte von Mirapolis',
+      nl: 'Geschiedenis van Mirapolis',
+      it: 'Storia di Mirapolis',
+      es: 'Historia de Mirapolis',
+      pl: 'Historia Mirapolis',
+      pt: 'História de Mirapolis'
+    };
     const cases: Array<{ name: string; apply: (language: string) => void }> = [
       {
         name: 'park detail',
@@ -426,7 +475,7 @@ describe('SeoService', () => {
       {
         name: 'history timeline',
         apply: (language: string): void => service.applyHistoryTimelineSeo(
-          buildHistoryTimeline({ title: 'Mirapolis' }),
+          buildHistoryTimeline({ title: localizedTimelineTitles[language] }),
           language,
           `/${language}/park/park-1/mirapolis/history`)
       },
