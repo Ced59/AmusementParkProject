@@ -45,6 +45,8 @@ export class HomeViewComponent {
   constructor(private readonly translateService: TranslateService) {
   }
 
+  private readonly maxParkAutocompleteSuggestions: number = 3;
+
   protected readonly heroCardStyles: { tone: string; iconClass: string; tagKey: string }[] = [
     { tone: 'primary', iconClass: 'pi pi-map-marker', tagKey: 'home.heroCards.featured' },
     { tone: 'lime', iconClass: 'pi pi-compass', tagKey: 'home.heroCards.sensations' },
@@ -82,26 +84,28 @@ export class HomeViewComponent {
     return this.hasPerformedSearch() || this.searchTerm().trim().length > 0;
   }
 
-  protected get parkAutocompleteSuggestion(): string | null {
+  protected get parkAutocompleteSuggestions(): string[] {
     if (this.searchState().kind !== 'ready') {
-      return null;
+      return [];
     }
 
     const term: string = this.searchTerm().trim();
     if (term.length < 2) {
-      return null;
+      return [];
     }
 
     const normalizedTerm: string = this.normalizeAutocompleteValue(term);
     if (normalizedTerm.length < 2) {
-      return null;
+      return [];
     }
 
     const candidates: string[] = this.buildParkAutocompleteCandidates();
-    return candidates.find((candidate: string) => {
-      const normalizedCandidate: string = this.normalizeAutocompleteValue(candidate);
-      return normalizedCandidate !== normalizedTerm && normalizedCandidate.startsWith(normalizedTerm);
-    }) ?? null;
+    return candidates
+      .filter((candidate: string) => {
+        const normalizedCandidate: string = this.normalizeAutocompleteValue(candidate);
+        return normalizedCandidate !== normalizedTerm && normalizedCandidate.startsWith(normalizedTerm);
+      })
+      .slice(0, this.maxParkAutocompleteSuggestions);
   }
 
   protected getHeroCardStyle(index: number): { tone: string; iconClass: string; tagKey: string } {
@@ -340,7 +344,7 @@ export class HomeViewComponent {
   }
 
   onSearchKeyDown(event: KeyboardEvent): void {
-    const suggestion: string | null = this.parkAutocompleteSuggestion;
+    const suggestion: string | undefined = this.parkAutocompleteSuggestions[0];
     if (!suggestion || event.isComposing) {
       return;
     }

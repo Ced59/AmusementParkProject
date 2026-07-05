@@ -1,6 +1,20 @@
 {
-  "version": "3.4.4",
+  "version": "3.4.5",
   "history": [
+    {
+      "version": "3.4.5",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "La recherche propose plusieurs noms de parcs.",
+        "en": "Search suggests several park names.",
+        "de": "Die Suche schlägt mehrere Parknamen vor.",
+        "nl": "Zoeken stelt meerdere parknamen voor.",
+        "it": "La ricerca suggerisce più nomi di parchi.",
+        "es": "La búsqueda sugiere varios nombres de parques.",
+        "pl": "Wyszukiwanie podpowiada kilka nazw parków.",
+        "pt": "A pesquisa sugere vários nomes de parques."
+      }
+    },
     {
       "version": "3.4.4",
       "releasedAt": "2026-07-05",

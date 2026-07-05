@@ -61,6 +61,28 @@ describe('HomeViewComponent', () => {
     expect(selectedTitle).toBe('Boudewijn Seapark');
   });
 
+  it('shows up to three park autocomplete names from current results', () => {
+    const fixture: ComponentFixture<HomeViewComponent> = createComponent([
+      createSearchResult('park_1', 'Park', 'Boudewijn Seapark'),
+      createSearchResult('parkItem_1', 'Attraction', 'Boud Hotel', { parentParkName: 'Boud Parent Park' }),
+      createSearchResult('park_2', 'Park', 'Boud Adventure World'),
+      createSearchResult('park_3', 'Park', 'Boud Family Park'),
+      createSearchResult('park_4', 'Park', 'Boud Park Four')
+    ], 'Boud');
+
+    fixture.detectChanges();
+
+    const autocompleteButtons: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll('button.home-search-autocomplete');
+    const autocompleteTexts: string[] = Array.from(autocompleteButtons).map((button: HTMLButtonElement) => button.textContent ?? '');
+
+    expect(autocompleteButtons.length).toBe(3);
+    expect(autocompleteTexts.some((text: string) => text.includes('Boudewijn Seapark'))).toBeTrue();
+    expect(autocompleteTexts.some((text: string) => text.includes('Boud Parent Park'))).toBeTrue();
+    expect(autocompleteTexts.some((text: string) => text.includes('Boud Adventure World'))).toBeTrue();
+    expect(autocompleteTexts.some((text: string) => text.includes('Boud Hotel'))).toBeFalse();
+    expect(autocompleteTexts.some((text: string) => text.includes('Boud Park Four'))).toBeFalse();
+  });
+
   it('accepts the park autocomplete from the search input with tab', () => {
     const fixture: ComponentFixture<HomeViewComponent> = createComponent([
       createSearchResult('park_1', 'Park', 'Boudewijn Seapark')

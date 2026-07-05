@@ -150,16 +150,20 @@
         {{ 'home.search.commandSubtitle' | translate }}
       </p>
 
-      @if (parkAutocompleteSuggestion; as autocompleteSuggestion) {
-        <button
-          uiSearchPanelAutocomplete
-          class="home-search-autocomplete"
-          type="button"
-          (click)="onAutocompleteSelected(autocompleteSuggestion)">
-          <span class="home-search-autocomplete__label">{{ 'home.search.autocompleteLabel' | translate }}</span>
-          <strong>{{ autocompleteSuggestion }}</strong>
-        </button>
-      }
+      <div
+        uiSearchPanelAutocomplete
+        class="home-search-autocomplete-list"
+        [hidden]="parkAutocompleteSuggestions.length === 0">
+        @for (autocompleteSuggestion of parkAutocompleteSuggestions; track autocompleteSuggestion) {
+          <button
+            class="home-search-autocomplete"
+            type="button"
+            (click)="onAutocompleteSelected(autocompleteSuggestion)">
+            <span class="home-search-autocomplete__label">{{ 'home.search.autocompleteLabel' | translate }}</span>
+            <strong>{{ autocompleteSuggestion }}</strong>
+          </button>
+        }
+      </div>
     </app-ui-search-panel>
 
     @if (hasPerformedSearch() && searchState().kind === 'ready' && searchSuggestions.length > 0) {
