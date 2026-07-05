@@ -8,6 +8,7 @@ import { ImageDisplayComponent } from '@shared/components/image-display/image-di
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { UiChipComponent } from '@ui/primitives';
 import { HistoryArticleBlockViewModel, HistoryArticlePageViewModel } from '../models/history-view.model';
 import { HistoryArticleStateFacade } from '../state/history-article-state.facade';
 
@@ -33,7 +34,7 @@ const HISTORY_ARTICLE_PAGE_COPY: Record<string, HistoryArticlePageCopy> = {
   styleUrls: ['./history-article-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HistoryArticleStateFacade],
-  imports: [PageStateComponent, ImageDisplayComponent, PublicSharePanelComponent, RouterLink]
+  imports: [PageStateComponent, ImageDisplayComponent, PublicSharePanelComponent, RouterLink, UiChipComponent]
 })
 export class HistoryArticlePageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
@@ -123,7 +124,47 @@ export class HistoryArticlePageComponent implements OnInit {
     return this.resolveCopy().sources;
   }
 
+  protected contextParkItemName(article: HistoryArticlePageViewModel): string | null {
+    return this.normalizeOptionalText(article.parkItem?.name);
+  }
+
+  protected contextParkName(article: HistoryArticlePageViewModel): string | null {
+    return this.normalizeOptionalText(article.contextPark?.name)
+      ?? this.normalizeOptionalText(article.park?.name);
+  }
+
+  protected shareTitle(article: HistoryArticlePageViewModel): string {
+    const contextNames: string[] = [];
+    this.appendUniqueContextName(contextNames, this.contextParkItemName(article), article.title);
+    this.appendUniqueContextName(contextNames, this.contextParkName(article), article.title);
+
+    return contextNames.length > 0
+      ? `${article.title} - ${contextNames.join(' - ')}`
+      : article.title;
+  }
+
   private resolveCopy(): HistoryArticlePageCopy {
     return HISTORY_ARTICLE_PAGE_COPY[this.currentLanguage()] ?? HISTORY_ARTICLE_PAGE_COPY['en'];
+  }
+
+  private appendUniqueContextName(names: string[], value: string | null, title: string): void {
+    const normalizedValue: string | null = this.normalizeOptionalText(value);
+
+    if (!normalizedValue) {
+      return;
+    }
+
+    if (title.toLocaleLowerCase().includes(normalizedValue.toLocaleLowerCase())) {
+      return;
+    }
+
+    if (!names.some((existingValue: string): boolean => existingValue.toLocaleLowerCase() === normalizedValue.toLocaleLowerCase())) {
+      names.push(normalizedValue);
+    }
+  }
+
+  private normalizeOptionalText(value: string | null | undefined): string | null {
+    const normalizedValue: string = value?.trim() ?? '';
+    return normalizedValue.length > 0 ? normalizedValue : null;
   }
 }

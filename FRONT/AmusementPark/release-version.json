@@ -1,6 +1,20 @@
 {
-  "version": "3.3.17",
+  "version": "3.3.18",
   "history": [
+    {
+      "version": "3.3.18",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Le partage des articles devient plus clair.",
+        "en": "Article sharing is clearer.",
+        "de": "Das Teilen von Artikeln ist klarer.",
+        "nl": "Artikelen delen is duidelijker.",
+        "it": "La condivisione degli articoli è più chiara.",
+        "es": "Compartir artículos es más claro.",
+        "pl": "Udostępnianie artykułów jest czytelniejsze.",
+        "pt": "A partilha de artigos fica mais clara."
+      }
+    },
     {
       "version": "3.3.17",
       "releasedAt": "2026-07-05",

@@ -284,6 +284,39 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:type"]')).toBe('website');
   });
 
+  it('adds park item context and image fallbacks to history article social metadata', () => {
+    const baseArticle: HistoryArticlePageViewModel = buildHistoryArticle();
+
+    service.applyHistoryArticleSeo(
+      buildHistoryArticle({
+        title: 'Arret de Nitro',
+        summary: '',
+        ownerName: 'Le Nitro',
+        park: buildPark({ name: 'Dennlys Parc', currentLogoImageId: 'dennlys-logo-1' }),
+        parkItem: buildParkItem({ name: 'Le Nitro', mainImageId: 'nitro-photo-1' }),
+        contextPark: buildPark({ name: 'Dennlys Parc', currentLogoImageId: 'dennlys-logo-1' }),
+        mainImageId: null,
+        mainImage: null,
+        event: {
+          ...baseArticle.event,
+          entityType: 'ParkItem',
+          ownerId: 'item-1',
+          parkId: 'park-1',
+          parkItemId: 'item-1',
+          contextParkId: 'park-1'
+        }
+      }),
+      'fr',
+      '/fr/park/park-1/dennlys-parc/item/item-1/le-nitro/history/event-1/arret-de-nitro'
+    );
+
+    expect(readMetaContent('meta[property="og:title"]')).toContain('Arret de Nitro - Le Nitro - Dennlys Parc');
+    expect(readMetaContent('meta[property="og:description"]')).toBe('Article historique sur Le Nitro - Dennlys Parc, autour de 1987.');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Arret de Nitro - Le Nitro - Dennlys Parc');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=2');
+  });
+
   it('emits managed Open Graph locale alternates for localized public pages', () => {
     service.applyParkDetailSeo(buildParkDetail(), 'fr', '/fr/park/park-1/demo-park');
 

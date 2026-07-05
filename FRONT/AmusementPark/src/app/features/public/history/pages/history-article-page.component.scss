@@ -52,6 +52,21 @@
   min-width: 0;
 }
 
+.history-article__context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  margin: 0 0 0.85rem;
+}
+
+.history-article__context app-ui-chip {
+  max-width: min(100%, 22rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .history-article__kicker {
   display: inline-flex;
   align-items: center;
