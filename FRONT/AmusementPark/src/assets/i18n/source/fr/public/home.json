@@ -53,6 +53,7 @@
       "hintTitle": "Lance ta recherche",
       "hintMessage": "Tape le nom d’un parc, d’une attraction ou choisis une catégorie pour commencer.",
       "openResult": "Ouvrir",
+      "autocompleteLabel": "Compléter avec",
       "suggestionsTitle": "Suggestions rapides",
       "kicker": "Recherche rapide",
       "commandTitle": "Trouve rapidement où aller",

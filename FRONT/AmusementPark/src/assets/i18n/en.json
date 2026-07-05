@@ -2697,6 +2697,7 @@
       "hintTitle": "Start your search",
       "hintMessage": "Type a park or attraction name, or choose a category to begin.",
       "openResult": "Open",
+      "autocompleteLabel": "Complete with",
       "suggestionsTitle": "Quick suggestions",
       "kicker": "Quick search",
       "commandTitle": "Find where to go faster",

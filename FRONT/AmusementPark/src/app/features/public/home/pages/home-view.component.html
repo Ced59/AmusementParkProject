@@ -141,12 +141,25 @@
       clearActionLabelKey="parks.search.clear"
       [searchTerm]="searchTerm()"
       [filters]="searchFilters()"
+      [compactMobile]="hasActiveSearch"
       (searchTermChange)="onSearchInput($event)"
+      (searchKeyDown)="onSearchKeyDown($event)"
       (filterChanged)="onFilterChanged($event)"
       (clearClicked)="onClearSearch()">
       <p filters-subtitle class="home-command-center__subtitle">
         {{ 'home.search.commandSubtitle' | translate }}
       </p>
+
+      @if (parkAutocompleteSuggestion; as autocompleteSuggestion) {
+        <button
+          uiSearchPanelAutocomplete
+          class="home-search-autocomplete"
+          type="button"
+          (click)="onAutocompleteSelected(autocompleteSuggestion)">
+          <span class="home-search-autocomplete__label">{{ 'home.search.autocompleteLabel' | translate }}</span>
+          <strong>{{ autocompleteSuggestion }}</strong>
+        </button>
+      }
     </app-ui-search-panel>
 
     @if (hasPerformedSearch() && searchState().kind === 'ready' && searchSuggestions.length > 0) {

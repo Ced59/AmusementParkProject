@@ -2697,6 +2697,7 @@
       "hintTitle": "Inicia a tua pesquisa",
       "hintMessage": "Escreve o nome de um parque ou atração, ou escolhe uma categoria para começar.",
       "openResult": "Abrir",
+      "autocompleteLabel": "Completar com",
       "suggestionsTitle": "Sugestões rápidas",
       "kicker": "Pesquisa rápida",
       "commandTitle": "Encontra mais depressa para onde ir",

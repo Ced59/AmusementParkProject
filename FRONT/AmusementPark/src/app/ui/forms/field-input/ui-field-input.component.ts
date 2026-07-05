@@ -23,6 +23,7 @@ export class UiFieldInputComponent {
   @Input() disabled: boolean = false;
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() inputKeyDown: EventEmitter<KeyboardEvent> = new EventEmitter<KeyboardEvent>();
 
   protected get hasLabel(): boolean {
     return !!this.labelKey || !!this.labelText;
@@ -34,5 +35,9 @@ export class UiFieldInputComponent {
 
   protected onValueChanged(value: string): void {
     this.valueChange.emit(value ?? '');
+  }
+
+  protected onKeyDown(event: KeyboardEvent): void {
+    this.inputKeyDown.emit(event);
   }
 }

@@ -127,6 +127,12 @@
   align-items: end;
 }
 
+.app-search-panel__search-field {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
 .app-search-panel__clear {
   display: flex;
   align-items: end;
@@ -194,6 +200,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .app-search-panel__search-field,
   .app-search-panel__search {
     grid-column: 1 / -1;
   }
@@ -209,6 +216,49 @@
   .app-search-panel__clear,
   .app-search-panel__clear .app-button {
     width: 100%;
+  }
+
+  .app-search-panel--compact-mobile {
+    gap: 0.65rem;
+    padding: 0.85rem;
+  }
+
+  .app-search-panel--compact-mobile .app-search-panel__header {
+    display: block;
+  }
+
+  .app-search-panel--compact-mobile .app-search-panel__heading {
+    gap: 0.35rem;
+  }
+
+  .app-search-panel--compact-mobile app-ui-kicker,
+  .app-search-panel--compact-mobile .app-search-panel__title,
+  .app-search-panel--compact-mobile [uiSearchPanelSubtitle],
+  .app-search-panel--compact-mobile [filters-subtitle] {
+    display: none;
+  }
+
+  .app-search-panel--compact-mobile .app-search-panel__grid {
+    gap: 0.55rem;
+  }
+
+  .app-search-panel--compact-mobile .app-search-panel__search-field {
+    gap: 0.35rem;
+  }
+
+  .app-search-panel--compact-mobile .app-input,
+  .app-search-panel--compact-mobile .app-select {
+    min-height: 2.75rem;
+    padding-block: 0.65rem;
+  }
+
+  .app-search-panel--compact-mobile .app-search-panel__clear {
+    min-height: auto;
+  }
+
+  .app-search-panel--compact-mobile .app-search-panel__clear .app-button {
+    min-height: 2.5rem;
+    padding-block: 0.55rem;
   }
 }
 

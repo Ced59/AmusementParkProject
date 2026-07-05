@@ -1,4 +1,4 @@
-<section class="app-search-panel" [id]="panelId">
+<section class="app-search-panel" [class.app-search-panel--compact-mobile]="compactMobile" [id]="panelId">
   @if (hasHeader) {
     <div class="app-search-panel__header">
       <div class="app-search-panel__heading">
@@ -32,17 +32,22 @@
   }
 
   <div class="app-search-panel__grid">
-    <app-ui-field-input
-      class="app-search-panel__search"
-      [inputId]="searchInputId"
-      [labelKey]="searchLabelKey"
-      [labelText]="searchLabelText"
-      [placeholderKey]="searchPlaceholderKey"
-      [placeholderText]="searchPlaceholderText"
-      [value]="searchTerm"
-      iconClass="pi pi-search"
-      (valueChange)="onSearchTermChanged($event)">
-    </app-ui-field-input>
+    <div class="app-search-panel__search-field">
+      <app-ui-field-input
+        class="app-search-panel__search"
+        [inputId]="searchInputId"
+        [labelKey]="searchLabelKey"
+        [labelText]="searchLabelText"
+        [placeholderKey]="searchPlaceholderKey"
+        [placeholderText]="searchPlaceholderText"
+        [value]="searchTerm"
+        iconClass="pi pi-search"
+        (valueChange)="onSearchTermChanged($event)"
+        (inputKeyDown)="onSearchKeyDown($event)">
+      </app-ui-field-input>
+
+      <ng-content select="[uiSearchPanelAutocomplete]"></ng-content>
+    </div>
 
     @for (filter of visibleFilters; track filter.id) {
       <div class="app-field app-search-panel__select-field">
