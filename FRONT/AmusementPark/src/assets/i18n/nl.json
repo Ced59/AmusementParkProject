@@ -2697,6 +2697,7 @@
       "hintTitle": "Start je zoekopdracht",
       "hintMessage": "Typ de naam van een park of attractie, of kies een categorie om te beginnen.",
       "openResult": "Openen",
+      "autocompleteLabel": "Aanvullen met",
       "suggestionsTitle": "Snelle suggesties",
       "kicker": "Snel zoeken",
       "commandTitle": "Vind sneller waar je heen wilt",

@@ -71,10 +71,37 @@ export class HomeViewComponent {
   @Output() categoryChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() searchCleared: EventEmitter<void> = new EventEmitter<void>();
   @Output() suggestionSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() autocompleteSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
 
   protected get searchSuggestions(): SearchResultItem[] {
     return this.results().slice(0, 5);
+  }
+
+  protected get hasActiveSearch(): boolean {
+    return this.hasPerformedSearch() || this.searchTerm().trim().length > 0;
+  }
+
+  protected get parkAutocompleteSuggestion(): string | null {
+    if (this.searchState().kind !== 'ready') {
+      return null;
+    }
+
+    const term: string = this.searchTerm().trim();
+    if (term.length < 2) {
+      return null;
+    }
+
+    const normalizedTerm: string = this.normalizeAutocompleteValue(term);
+    if (normalizedTerm.length < 2) {
+      return null;
+    }
+
+    const candidates: string[] = this.buildParkAutocompleteCandidates();
+    return candidates.find((candidate: string) => {
+      const normalizedCandidate: string = this.normalizeAutocompleteValue(candidate);
+      return normalizedCandidate !== normalizedTerm && normalizedCandidate.startsWith(normalizedTerm);
+    }) ?? null;
   }
 
   protected getHeroCardStyle(index: number): { tone: string; iconClass: string; tagKey: string } {
@@ -236,6 +263,42 @@ export class HomeViewComponent {
       || this.normalizeSearchResultCategory(item.resourceType) === 'parks';
   }
 
+  private buildParkAutocompleteCandidates(): string[] {
+    const candidates: string[] = [];
+
+    this.results().forEach((item: SearchResultItem) => {
+      if (this.isParkSearchResult(item)) {
+        this.addParkAutocompleteCandidate(candidates, item.title);
+      }
+
+      this.addParkAutocompleteCandidate(candidates, item.parentParkName);
+    });
+
+    return candidates;
+  }
+
+  private addParkAutocompleteCandidate(candidates: string[], value: string | null | undefined): void {
+    const candidate: string = value?.trim() ?? '';
+    if (candidate.length === 0) {
+      return;
+    }
+
+    const normalizedCandidate: string = this.normalizeAutocompleteValue(candidate);
+    const alreadyAdded: boolean = candidates.some((existingCandidate: string) =>
+      this.normalizeAutocompleteValue(existingCandidate) === normalizedCandidate);
+    if (!alreadyAdded) {
+      candidates.push(candidate);
+    }
+  }
+
+  private normalizeAutocompleteValue(value: string): string {
+    return value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .trim()
+      .toLowerCase();
+  }
+
   private normalizeSearchResultCategory(value: string | null | undefined): string {
     return (value ?? '')
       .trim()
@@ -270,6 +333,24 @@ export class HomeViewComponent {
 
   onClearSearch(): void {
     this.searchCleared.emit();
+  }
+
+  onAutocompleteSelected(title: string): void {
+    this.autocompleteSelected.emit(title);
+  }
+
+  onSearchKeyDown(event: KeyboardEvent): void {
+    const suggestion: string | null = this.parkAutocompleteSuggestion;
+    if (!suggestion || event.isComposing) {
+      return;
+    }
+
+    if (event.key !== 'Enter' && (event.key !== 'Tab' || event.shiftKey)) {
+      return;
+    }
+
+    event.preventDefault();
+    this.autocompleteSelected.emit(suggestion);
   }
 
   onSuggestionSelected(title: string): void {

@@ -43,15 +43,63 @@ describe('HomeViewComponent', () => {
 
     expect(selectedTitle).toBe('Mack Rides');
   });
+
+  it('emits the park autocomplete title when the autocomplete is clicked', () => {
+    const fixture: ComponentFixture<HomeViewComponent> = createComponent([
+      createSearchResult('park_1', 'Park', 'Boudewijn Seapark')
+    ], 'Boud');
+    let selectedTitle: string = '';
+
+    fixture.componentInstance.autocompleteSelected.subscribe((title: string) => {
+      selectedTitle = title;
+    });
+    fixture.detectChanges();
+
+    const autocompleteButton: HTMLButtonElement = fixture.debugElement.query(By.css('button.home-search-autocomplete')).nativeElement;
+    autocompleteButton.click();
+
+    expect(selectedTitle).toBe('Boudewijn Seapark');
+  });
+
+  it('accepts the park autocomplete from the search input with tab', () => {
+    const fixture: ComponentFixture<HomeViewComponent> = createComponent([
+      createSearchResult('park_1', 'Park', 'Boudewijn Seapark')
+    ], 'Boud');
+    let selectedTitle: string = '';
+
+    fixture.componentInstance.autocompleteSelected.subscribe((title: string) => {
+      selectedTitle = title;
+    });
+    fixture.detectChanges();
+
+    const searchInput: HTMLInputElement = fixture.nativeElement.querySelector('#home-search-input') as HTMLInputElement;
+    const tabEvent: KeyboardEvent = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+    searchInput.dispatchEvent(tabEvent);
+
+    expect(selectedTitle).toBe('Boudewijn Seapark');
+    expect(tabEvent.defaultPrevented).toBeTrue();
+  });
+
+  it('uses parent park names as autocomplete candidates for broad search results', () => {
+    const fixture: ComponentFixture<HomeViewComponent> = createComponent([
+      createSearchResult('parkItem_1', 'Attraction', 'Taron', { parentParkName: 'Phantasialand' })
+    ], 'Phan');
+
+    fixture.detectChanges();
+
+    const autocompleteButton: HTMLButtonElement = fixture.debugElement.query(By.css('button.home-search-autocomplete')).nativeElement;
+
+    expect(autocompleteButton.textContent).toContain('Phantasialand');
+  });
 });
 
-function createComponent(results: SearchResultItem[]): ComponentFixture<HomeViewComponent> {
+function createComponent(results: SearchResultItem[], searchTerm: string = 'parc'): ComponentFixture<HomeViewComponent> {
   const fixture: ComponentFixture<HomeViewComponent> = TestBed.createComponent(HomeViewComponent);
   const component: HomeViewComponent = fixture.componentInstance;
   const readyState: Signal<ScreenState<unknown, string>> = signal<ScreenState<unknown, string>>({ kind: 'ready' }).asReadonly();
 
   component.currentLang = signal('en').asReadonly();
-  component.searchTerm = signal('parc').asReadonly();
+  component.searchTerm = signal(searchTerm).asReadonly();
   component.searchFilters = signal([]).asReadonly();
   component.statsState = readyState;
   component.homeStats = signal(null).asReadonly();
@@ -73,13 +121,14 @@ function createSearchResults(count: number): SearchResultItem[] {
     createSearchResult(`park_${index + 1}`, 'Park', `Result ${index + 1}`));
 }
 
-function createSearchResult(originalId: string, category: string, title: string): SearchResultItem {
+function createSearchResult(originalId: string, category: string, title: string, overrides: Partial<SearchResultItem> = {}): SearchResultItem {
   return {
     originalId,
     category,
     title,
     description: 'Description',
     city: 'Paris',
-    countryCode: 'FR'
+    countryCode: 'FR',
+    ...overrides
   };
 }
