@@ -122,6 +122,18 @@ Les dates d’horaires utilisent `yyyy-MM-dd`. Les heures utilisent `HH:mm`.
 | `history.events[].datePrecision` ou `precision` | `HistoryDatePrecision` | `Year`, `Month`, `Day` |
 | `history.events[].article.blocks[].type` | `HistoryArticleBlockType` | `Heading`, `Paragraph`, `Quote`, `Image`, `Gallery`, `FactBox`, `SourceNote` |
 
+## Rappel — enums vs résolution
+
+Ce fichier liste les valeurs enum canoniques. Il ne garantit pas la résolution des propriétaires.
+
+Même avec un enum valide (`ParkItem`, `Incident`, `Image`, etc.), le JSON doit fournir les IDs ou clés nécessaires :
+
+- `ownerId` / `parkItemId` / `itemId` pour les événements de parkItems existants ;
+- `ownerId` pour les images d’entités existantes ;
+- `imageId` pour les images déjà présentes dans l’export.
+
+Ne pas confondre une valeur enum valide avec une relation résolue.
+
 Pour `history.events[].eventType`, utiliser la liste correspondant au propriétaire de l’événement.
 
 ### Événement d’histoire du parc
