@@ -110,6 +110,10 @@ export class HomeComponent implements OnInit {
     this.stateFacade.clearSearch();
   }
 
+  onSuggestionSelect(value: string): void {
+    this.onSearchInput(value);
+  }
+
   onPageChange(event: { page?: number; rows?: number }): void {
     const page: number = (event.page ?? 0) + 1;
     const rows: number = event.rows ?? this.stateFacade.pageSize();

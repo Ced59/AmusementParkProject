@@ -70,7 +70,12 @@ export class HomeViewComponent {
   @Output() searchInputChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() categoryChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() searchCleared: EventEmitter<void> = new EventEmitter<void>();
+  @Output() suggestionSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
+
+  protected get searchSuggestions(): SearchResultItem[] {
+    return this.results().slice(0, 5);
+  }
 
   protected getHeroCardStyle(index: number): { tone: string; iconClass: string; tagKey: string } {
     return this.heroCardStyles[index % this.heroCardStyles.length];
@@ -265,6 +270,10 @@ export class HomeViewComponent {
 
   onClearSearch(): void {
     this.searchCleared.emit();
+  }
+
+  onSuggestionSelected(title: string): void {
+    this.suggestionSelected.emit(title);
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {
