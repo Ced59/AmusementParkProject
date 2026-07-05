@@ -191,6 +191,49 @@ Sections possibles :
 }
 ```
 
+## Propriétaires d’images — règle stricte
+
+Pour les images distantes, le propriétaire doit être résolu avant livraison.
+
+Pour une image rattachée à un parkItem déjà présent dans l’export :
+
+```json
+{
+  "ownerType": "ParkItem",
+  "ownerId": "id-du-parkItem",
+  "ownerKey": "id-du-parkItem"
+}
+```
+
+Ne pas utiliser seulement `ownerKey` si le JSON ne contient pas aussi une section `items[]` minimale pour enregistrer la clé du parkItem. Le processeur ne doit pas avoir à deviner le propriétaire depuis une URL, un nom de fichier, une légende, un titre ou un nom affiché.
+
+Pour une image de parc :
+
+```json
+{
+  "ownerType": "Park",
+  "ownerId": "id-du-parc",
+  "ownerKey": "park"
+}
+```
+
+Pour une image constructeur :
+
+```json
+{
+  "ownerType": "AttractionManufacturer",
+  "ownerId": "id-du-constructeur"
+}
+```
+
+ou `ownerKey: "manufacturer:<key>"` seulement si la référence est déjà résolue ou incluse dans le même JSON.
+
+Contrôle bloquant :
+
+- aucune image distante ne doit produire `Remote image ignored: owner could not be resolved` ;
+- aucune image ne doit avoir un `ownerKey` basé sur une URL, un chemin CDN, un nom de fichier ou une valeur reconstruite ;
+- si le JSON ajoute des images de parkItems sans modifier les parkItems, utiliser `ownerId` explicite ou ajouter des `items[]` minimaux.
+
 ## Contrôles avant livraison
 
 - Toutes les URLs images sont techniquement importables selon les règles ci-dessus.

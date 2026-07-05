@@ -70,6 +70,35 @@ Si la prochaine étape officielle est `probablement inutile`, continuer l’anal
 - Ne jamais mélanger horaires, inventaire d’items, descriptions longues, images et histoire détaillée dans un même JSON si le parc est dense.
 - Conserver une section `metadata.notes` claire avec les incertitudes, les sources faibles et les décisions de prudence.
 
+## Contrôle bloquant — propriétaires et clés résolues
+
+Avant de livrer un JSON upsert, vérifier toutes les relations qui dépendent d’un propriétaire ou d’une clé indirecte.
+
+Règle générale : quand l’entité existe déjà dans l’export actualisé, préférer l’ID explicite plutôt qu’une clé indirecte :
+
+- image de parc existant : `ownerType: "Park"` + `ownerId` ou `ownerKey: "park"` ;
+- image de parkItem existant : `ownerType: "ParkItem"` + `ownerId` égal à l’ID du parkItem, et éventuellement `ownerKey` égal au même ID ;
+- image de constructeur existant : `ownerType: "AttractionManufacturer"` + `ownerId`, ou `ownerKey: "manufacturer:<id-or-key>"` seulement si la référence est dans le JSON ou déjà résolue ;
+- événement d’histoire de parkItem existant : `owner: "parkItem"` + `entityType: "ParkItem"` + `ownerId` + `parkItemId` + `itemId`, tous égaux à l’ID du parkItem ciblé ;
+- événement d’histoire de parc : `owner: "park"` + `entityType: "Park"` + `ownerId` ou `parkId` égal à l’ID du parc.
+
+Ne jamais compter sur `itemKey`, `parkItemKey`, `ownerKey` ou `imageKey` seuls quand le JSON ne contient pas aussi la section qui enregistre cette clé pendant le traitement.
+
+Cas autorisé pour les clés :
+
+- `itemKey` / `parkItemKey` peut être utilisé seulement si le même JSON contient aussi une section `items[]` minimale qui permet de remplir le dictionnaire des parkItems avant le traitement dépendant ;
+- `imageKey` peut être utilisé dans un article seulement si l’image est créée ou mise à jour dans le même JSON avec un `key` stable ;
+- sinon utiliser `imageId` depuis l’export actualisé.
+
+Tout Preview qui retourne :
+
+- `owner could not be resolved`,
+- `Remote image ignored: owner could not be resolved`,
+- `clé image introuvable`,
+- `Impossible de résoudre le propriétaire de l’événement history`,
+
+est bloquant. Ne pas appliquer. Corriger le JSON et relivrer une version numérotée.
+
 ## Structure JSON commune
 
 Utiliser le mode `merge` sauf demande contraire. Sélectionner aussi le parc cible dans l’écran admin quand il existe.
@@ -270,6 +299,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Réserver les libellés et raisons visibles dans le calendrier aux événements nommés, exceptions datées ou informations temporaires utiles ; ne jamais répéter un commentaire général sur tous les jours normaux.
 - Créer un article seulement si le sujet a une vraie valeur éditoriale durable.
+- Pour un incident ou accident trouvé sur un parkItem, créer obligatoirement un article associé quand l’événement est sourcé et retenu, avec une photo contextualisée si une image acceptable est trouvable.
 - Rédiger les événements et articles historiques pour les visiteurs, sans note d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur une présence seulement documentée.
 - Pour les articles et événements historiques, utiliser uniquement des sources dont les liens répondent au moment de la génération. Si la page d’origine ne répond plus, utiliser une archive fiable ou une autre source valide ; sinon retirer la source et documenter la limite.
 

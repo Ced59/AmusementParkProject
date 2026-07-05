@@ -49,6 +49,22 @@ Vérifier :
 - les événements et articles ne contiennent pas “repère documentaire prudent”, “présence publique confirmée”, justification de méthode, note d’audit ou formulation mécanique équivalente.
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 
+### Audit articles historiques
+
+Pour chaque article publié ou prêt à publier, vérifier :
+
+- titre spécifique et lisible sur mobile ;
+- sous-titre naturel, sans formule générique ;
+- résumé éditorial utile, pas une note de méthode ;
+- paragraphes fluides, factuels et non redondants ;
+- aucune phrase défensive ou méta du type “l’article n’a pas pour but”, “sans dramatisation”, “image contextuelle faute de mieux”, “source faible”, “repère documentaire prudent” ;
+- aucune répétition de la description du parc ou du parkItem ;
+- les termes sensibles sont nécessaires, sourcés et formulés sobrement ;
+- les légendes décrivent l’image affichée et son rapport au sujet, sans justifier l’absence d’une autre image ;
+- les incidents ou accidents retenus sur un parkItem ont un article associé et une photo contextualisée quand une image acceptable est trouvable.
+
+Si un article semble écrit comme une note d’audit, une justification de prudence ou une réponse au reviewer, l’étape 8 doit exiger un JSON de correction ciblé avant publication.
+
 ## Audit conditions d’accès
 
 Vérifier :
@@ -81,6 +97,18 @@ Vérifier :
 - pas de page HTML, preview non téléchargeable, image trompeuse ou watermark non autorisé ;
 - images historiques correctement contextualisées.
 
+### Audit images utilisées dans les articles
+
+Pour chaque article avec image :
+
+- l’image existe déjà dans l’export ou est créée dans le même JSON ;
+- l’article utilise `imageId` quand l’image vient de l’export ;
+- `imageKey` est réservé aux images créées dans le même JSON avec un `key` stable ;
+- la légende est localisée dans les langues du lot ;
+- la légende ne contient pas de justification technique, juridique ou documentaire ;
+- pour incident/accident, une photo réelle non graphique et juridiquement réutilisable doit être privilégiée si disponible ;
+- si l’image est seulement contextuelle, elle doit situer le lieu ou l’attraction sans faire croire qu’elle montre l’événement.
+
 ## Audit horaires et événements
 
 Vérifier :
@@ -107,6 +135,16 @@ Vérifier :
 - toutes les URLs de sources d’articles et d’événements répondent au moment de l’audit ;
 - aucune source ne pointe vers une 404, 410, erreur serveur, soft-404, page d’accueil de remplacement ou URL inventée ;
 - les archives utilisées sont consultables et correspondent bien au contenu cité.
+
+### Audit résolution history
+
+Avant publication :
+
+- aucun événement `ParkItem` ne doit dépendre uniquement de `itemKey` ou `parkItemKey` ;
+- les événements de parkItem existants doivent contenir `ownerId`, `parkItemId`, `itemId` et `contextParkId` explicites ;
+- aucun article ne doit référencer une image par `imageKey` si cette clé n’est pas créée ou enregistrée dans le même JSON ;
+- Preview doit retourner 0 erreur et 0 warning bloquant avant Apply ;
+- les corrections d’articles après audit restent des reprises ciblées de l’étape 7, pas une nouvelle étape.
 
 ## Décision publication
 

@@ -1,6 +1,20 @@
 {
-  "version": "3.4.5",
+  "version": "3.4.6",
   "history": [
+    {
+      "version": "3.4.6",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Les consignes de contenu sont mieux cadrées.",
+        "en": "Content guidelines are clearer.",
+        "de": "Die Inhaltsrichtlinien sind klarer.",
+        "nl": "De inhoudsrichtlijnen zijn duidelijker.",
+        "it": "Le linee guida dei contenuti sono più chiare.",
+        "es": "Las pautas de contenido son más claras.",
+        "pl": "Wytyczne dotyczące treści są jaśniejsze.",
+        "pt": "As orientações de conteúdo ficam mais claras."
+      }
+    },
     {
       "version": "3.4.5",
       "releasedAt": "2026-07-05",

@@ -67,6 +67,39 @@ Créer des événements pour :
 
 Pour une attraction déplacée, la timeline du parkItem peut continuer hors du parc d’origine. Utiliser `contextParkId` quand l’événement se déroule dans un autre parc connu, ou un marqueur externe seulement si le modèle l’accepte et que le contexte est clair.
 
+## Résolution des propriétaires d’événements history
+
+Pour un événement d’histoire rattaché à un parkItem existant, ne jamais livrer seulement `itemKey` ou `parkItemKey`.
+
+Format obligatoire recommandé :
+
+```json
+{
+  "entityType": "ParkItem",
+  "owner": "parkItem",
+  "ownerId": "id-du-parkItem",
+  "parkItemId": "id-du-parkItem",
+  "itemId": "id-du-parkItem",
+  "parkId": "id-du-parc",
+  "contextParkId": "id-du-parc"
+}
+```
+
+`itemKey` / `parkItemKey` est toléré uniquement en complément, pas comme seul mécanisme de résolution, sauf si le même JSON contient une section `items[]` minimale qui enregistre explicitement le parkItem.
+
+Pour un événement de parc :
+
+```json
+{
+  "entityType": "Park",
+  "owner": "park",
+  "ownerId": "id-du-parc",
+  "parkId": "id-du-parc"
+}
+```
+
+Un Preview avec `Impossible de résoudre le propriétaire de l’événement history` ou `Impossible de resoudre le proprietaire de l'evenement history` est bloquant.
+
 ## Articles
 
 Créer un article uniquement si le sujet mérite un développement durable :
@@ -108,6 +141,49 @@ Structure recommandée :
 6. Conclusion naturelle.
 
 Le style doit être naturel, clair, agréable à lire, documenté, orienté lecteur, non promotionnel, non mécanique et non académique.
+
+## Style obligatoire des articles historiques
+
+Un article historique doit raconter le fait comme un contenu éditorial public, pas comme une justification de méthode.
+
+Interdits dans les titres, sous-titres, résumés, paragraphes et légendes :
+
+- “l’article n’a pas pour but…” ;
+- “sans dramatisation” ;
+- “ce n’est pas du sensationnalisme” ;
+- “aucune image de scène non graphique et réutilisable n’a été retenue” ;
+- “image contextuelle” comme excuse principale ;
+- “repère documentaire prudent” ;
+- “présence publique confirmée” ;
+- “source faible” ;
+- “selon la stratégie de prudence” ;
+- toute phrase expliquant pourquoi le rédacteur a choisi d’écrire ou de ne pas écrire quelque chose.
+
+Bon style :
+
+- titre clair, humain, spécifique ;
+- résumé qui raconte le fait et son intérêt historique ;
+- paragraphes narratifs courts, factuels, sans effet dramatique ;
+- les limites documentaires restent dans `metadata.notes` ou dans les sources, pas dans le texte public ;
+- les événements sensibles sont factuels, sobres et précis, mais pas défensifs.
+
+Pour un incident ou accident :
+
+- créer un article si l’événement est sourcé, durable et utile à l’histoire du parc ou du parkItem ;
+- tout incident ou accident trouvé sur un parkItem doit obligatoirement faire l’objet d’un article quand l’événement est sourcé et retenu dans la timeline ;
+- associer une photo contextualisée si une image acceptable est trouvable ;
+- utiliser le type `Accident` ou `Incident` selon les sources et les enums disponibles ;
+- distinguer les faits établis, les suites opérationnelles et les zones non établies sans transformer l’article en note d’audit ;
+- éviter les détails médicaux ou personnels non nécessaires ;
+- si un détail personnel public est central pour comprendre une décision d’exploitation ou d’accessibilité, le mentionner sobrement et uniquement avec source solide.
+
+Images d’incident ou accident :
+
+- chercher d’abord une photo réelle de l’événement, du lieu ou de l’intervention, si elle existe, si elle est non graphique et si ses droits permettent l’import ;
+- ne jamais utiliser d’image gore, humiliante, intrusive, sensationnaliste ou centrée sur une victime identifiable ;
+- si aucune photo réelle réutilisable n’existe, utiliser une image de contexte de l’attraction ou du lieu, mais la légende doit rester naturelle ;
+- ne pas écrire une légende défensive du type “aucune image de scène non graphique…” ;
+- écrire plutôt une légende factuelle : “El Loco dans Adventuredome. La vue permet de situer la montagne russe concernée par l’incident de 2019.”
 
 ## Style des événements et articles
 
@@ -231,6 +307,13 @@ Section principale : `history.events`.
 - Les articles ont un vrai angle éditorial.
 - Les titres, résumés et blocs d’articles ne contiennent aucune formulation d’audit interne ou justification documentaire mécanique.
 - Les images référencées existent déjà ou sont créées dans le même JSON.
+- Chaque événement `ParkItem` contient `ownerId`, `parkItemId` et `itemId` explicites quand le parkItem existe déjà dans l’export.
+- Chaque article qui référence une image existante utilise `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` depuis l’export actualisé.
+- `mainImageKey`, `imageKey` et `imageKeys` ne sont utilisés que pour des images créées dans le même JSON ou dont la clé est démontrée résolue.
+- Les titres, sous-titres, résumés, paragraphes et légendes sont relus en affichage public mobile.
+- Aucune légende ne doit expliquer l’absence d’une autre image ; elle doit décrire l’image affichée et son lien avec le sujet.
+- Les articles d’incidents ou accidents ne doivent contenir ni dramatisation, ni langage défensif, ni justification de méthode.
+- Les incidents ou accidents retenus sur un parkItem ont un article associé et une photo contextualisée quand une image acceptable est trouvable.
 - Les événements sensibles sont factuels, sourcés et sans dramatisation.
 
 ## Après Apply
