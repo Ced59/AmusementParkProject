@@ -25,6 +25,11 @@ interface StaticSeoCopy {
   description: string;
 }
 
+interface TechnicalPageSeoCopy {
+  title: (pageTitle: string) => string;
+  description: (pageTitle: string) => string;
+}
+
 interface SocialImageMetadata {
   url: string;
   width: number | null;
@@ -83,6 +88,8 @@ interface ParkOpeningHoursSeoCopy {
 }
 
 interface HistorySeoCopy {
+  timelineTitle: (title: string) => string;
+  articleTitle: (title: string) => string;
   breadcrumbLabel: (ownerName: string) => string;
   timelineDescription: (ownerName: string) => string;
   articleDescription: (ownerName: string, dateLabel: string) => string;
@@ -110,11 +117,13 @@ interface ParkReferenceSeoCopy {
 }
 
 interface ParkDetailSeoCopy {
+  title: (parkName: string, locationLabel: string) => string;
   description: (parkName: string, locationLabel: string) => string;
 }
 
 interface ParkItemDetailSeoCopy {
   parkContextPrefix: string;
+  title: (itemName: string, parkLabel: string) => string;
   description: (itemName: string, parkLabel: string, specSummary: string) => string;
 }
 
@@ -122,6 +131,8 @@ interface VideoDetailSeoCopy {
   parkFallback: string;
   itemFallback: string;
   videoFallback: string;
+  parkTitle: (videoTitle: string, parkName: string) => string;
+  itemTitle: (videoTitle: string, itemName: string, parkName: string) => string;
   parkDescription: (videoTitle: string, parkName: string) => string;
   itemDescription: (videoTitle: string, itemName: string, parkName: string) => string;
 }
@@ -144,44 +155,95 @@ const RESPONSIVE_IMAGE_VERSION: string = '2';
 
 const HISTORY_SEO_COPY: Record<string, HistorySeoCopy> = {
   fr: {
+    timelineTitle: (title: string): string => `Chronologie historique : ${title}`,
+    articleTitle: (title: string): string => `Article historique : ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Histoire de ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Explore les dates clés, changements, incidents et grands jalons de ${ownerName}.`,
     articleDescription: (ownerName: string, dateLabel: string): string => `Article historique sur ${ownerName}, autour de ${dateLabel}.`
   },
   en: {
+    timelineTitle: (title: string): string => `History timeline: ${title}`,
+    articleTitle: (title: string): string => `History article: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `${ownerName} history`,
     timelineDescription: (ownerName: string): string => `Explore key dates, changes, incidents and major milestones for ${ownerName}.`,
     articleDescription: (ownerName: string, dateLabel: string): string => `History article about ${ownerName}, around ${dateLabel}.`
   },
   de: {
+    timelineTitle: (title: string): string => `Historische Zeitleiste: ${title}`,
+    articleTitle: (title: string): string => `Historischer Artikel: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Geschichte von ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Entdecke die Schlüsseldaten, Änderungen, Vorfälle und großen Meilensteine von ${ownerName}.`,
     articleDescription: (ownerName: string, dateLabel: string): string => `Historischer Artikel über ${ownerName}, rund um ${dateLabel}.`
   },
   nl: {
+    timelineTitle: (title: string): string => `Historische tijdlijn: ${title}`,
+    articleTitle: (title: string): string => `Historisch artikel: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Geschiedenis van ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Ontdek de sleuteldatums, veranderingen, incidenten en grote mijlpalen van ${ownerName}.`,
     articleDescription: (ownerName: string, dateLabel: string): string => `Historisch artikel over ${ownerName}, rond ${dateLabel}.`
   },
   it: {
+    timelineTitle: (title: string): string => `Cronologia storica: ${title}`,
+    articleTitle: (title: string): string => `Articolo storico: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Storia di ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Esplora le date chiave, i cambiamenti, gli incidenti e le grandi tappe di ${ownerName}.`,
     articleDescription: (ownerName: string, dateLabel: string): string => `Articolo storico su ${ownerName}, intorno al ${dateLabel}.`
   },
   es: {
+    timelineTitle: (title: string): string => `Cronología histórica: ${title}`,
+    articleTitle: (title: string): string => `Artículo histórico: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Historia de ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Explora las fechas clave, cambios, incidentes y grandes hitos de ${ownerName}.`,
     articleDescription: (ownerName: string, dateLabel: string): string => `Artículo histórico sobre ${ownerName}, alrededor de ${dateLabel}.`
   },
   pl: {
+    timelineTitle: (title: string): string => `Oś historii: ${title}`,
+    articleTitle: (title: string): string => `Artykuł historyczny: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Historia ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Poznaj kluczowe daty, zmiany, incydenty i najważniejsze punkty historii ${ownerName}.`,
     articleDescription: (ownerName: string, dateLabel: string): string => `Artykuł historyczny o ${ownerName}, wokół daty ${dateLabel}.`
   },
   pt: {
+    timelineTitle: (title: string): string => `Cronologia histórica: ${title}`,
+    articleTitle: (title: string): string => `Artigo histórico: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `História de ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Explora as datas-chave, mudanças, incidentes e grandes marcos de ${ownerName}.`,
     articleDescription: (ownerName: string, dateLabel: string): string => `Artigo histórico sobre ${ownerName}, por volta de ${dateLabel}.`
+  }
+};
+
+const TECHNICAL_PAGE_SEO_COPY: Record<string, TechnicalPageSeoCopy> = {
+  en: {
+    title: (pageTitle: string): string => `Technical guide: ${pageTitle}`,
+    description: (pageTitle: string): string => `Understand ${pageTitle}: role, vocabulary and technical context for amusement park attractions.`
+  },
+  fr: {
+    title: (pageTitle: string): string => `Dossier technique : ${pageTitle}`,
+    description: (pageTitle: string): string => `Comprends ${pageTitle} : rôle, vocabulaire et contexte technique dans les attractions.`
+  },
+  es: {
+    title: (pageTitle: string): string => `Guía técnica: ${pageTitle}`,
+    description: (pageTitle: string): string => `Entiende ${pageTitle}: función, vocabulario y contexto técnico en las atracciones.`
+  },
+  de: {
+    title: (pageTitle: string): string => `Technik-Guide: ${pageTitle}`,
+    description: (pageTitle: string): string => `Verstehe ${pageTitle}: Rolle, Begriffe und technischen Kontext bei Attraktionen.`
+  },
+  it: {
+    title: (pageTitle: string): string => `Guida tecnica: ${pageTitle}`,
+    description: (pageTitle: string): string => `Capisci ${pageTitle}: ruolo, vocabolario e contesto tecnico nelle attrazioni.`
+  },
+  pl: {
+    title: (pageTitle: string): string => `Przewodnik techniczny: ${pageTitle}`,
+    description: (pageTitle: string): string => `Poznaj ${pageTitle}: rolę, słownictwo i kontekst techniczny atrakcji.`
+  },
+  nl: {
+    title: (pageTitle: string): string => `Technische gids: ${pageTitle}`,
+    description: (pageTitle: string): string => `Begrijp ${pageTitle}: rol, woordenschat en technische context bij attracties.`
+  },
+  pt: {
+    title: (pageTitle: string): string => `Guia técnico: ${pageTitle}`,
+    description: (pageTitle: string): string => `Compreende ${pageTitle}: função, vocabulário e contexto técnico nas atrações.`
   }
 };
 
@@ -925,34 +987,42 @@ const PARK_REFERENCE_SEO_COPY: Record<string, ParkReferenceSeoCopy> = {
 
 const PARK_DETAIL_SEO_COPY: Record<string, ParkDetailSeoCopy> = {
   en: {
+    title: (parkName: string, locationLabel: string): string => `Park guide: ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}`,
     description: (parkName: string, locationLabel: string): string =>
       `Explore ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: practical information, attractions, restaurants, hotels and park map.`
   },
   fr: {
+    title: (parkName: string, locationLabel: string): string => `Guide de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}`,
     description: (parkName: string, locationLabel: string): string =>
       `Découvre ${parkName}${locationLabel ? ` à ${locationLabel}` : ''} : infos pratiques, attractions, restaurants, hôtels et carte du parc.`
   },
   es: {
+    title: (parkName: string, locationLabel: string): string => `Guía de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}`,
     description: (parkName: string, locationLabel: string): string =>
       `Explora ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}: información práctica, atracciones, restaurantes, hoteles y mapa del parque.`
   },
   de: {
+    title: (parkName: string, locationLabel: string): string => `Parkprofil ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}`,
     description: (parkName: string, locationLabel: string): string =>
       `Entdecke ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: praktische Infos, Attraktionen, Restaurants, Hotels und Parkkarte.`
   },
   it: {
+    title: (parkName: string, locationLabel: string): string => `Scheda di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}`,
     description: (parkName: string, locationLabel: string): string =>
       `Scopri ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}: informazioni pratiche, attrazioni, ristoranti, hotel e mappa del parco.`
   },
   pl: {
+    title: (parkName: string, locationLabel: string): string => `Przewodnik po ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}`,
     description: (parkName: string, locationLabel: string): string =>
       `Poznaj ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}: informacje praktyczne, atrakcje, restauracje, hotele i mapa parku.`
   },
   nl: {
+    title: (parkName: string, locationLabel: string): string => `Parkgids voor ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}`,
     description: (parkName: string, locationLabel: string): string =>
       `Ontdek ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: praktische info, attracties, restaurants, hotels en parkkaart.`
   },
   pt: {
+    title: (parkName: string, locationLabel: string): string => `Guia de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}`,
     description: (parkName: string, locationLabel: string): string =>
       `Explora ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}: informação prática, atrações, restaurantes, hotéis e mapa do parque.`
   }
@@ -961,41 +1031,49 @@ const PARK_DETAIL_SEO_COPY: Record<string, ParkDetailSeoCopy> = {
 const PARK_ITEM_DETAIL_SEO_COPY: Record<string, ParkItemDetailSeoCopy> = {
   en: {
     parkContextPrefix: 'at',
+    title: (itemName: string, parkLabel: string): string => `Attraction guide: ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel}: category, type, practical details, photos and map information.`
   },
   fr: {
     parkContextPrefix: 'à',
+    title: (itemName: string, parkLabel: string): string => `Guide de ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel} : catégorie, type, infos pratiques, photos et repères sur la carte.`
   },
   es: {
     parkContextPrefix: 'en',
+    title: (itemName: string, parkLabel: string): string => `Ficha de ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel}: categoría, tipo, datos prácticos, fotos e información en el mapa.`
   },
   de: {
     parkContextPrefix: 'in',
+    title: (itemName: string, parkLabel: string): string => `Detailseite ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel}: Kategorie, Typ, praktische Details, Fotos und Karteninfos.`
   },
   it: {
     parkContextPrefix: 'a',
+    title: (itemName: string, parkLabel: string): string => `Scheda di ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel}: categoria, tipo, dettagli pratici, foto e informazioni sulla mappa.`
   },
   pl: {
     parkContextPrefix: 'w',
+    title: (itemName: string, parkLabel: string): string => `Przewodnik po ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel}: kategoria, typ, praktyczne szczegóły, zdjęcia i informacje na mapie.`
   },
   nl: {
     parkContextPrefix: 'in',
+    title: (itemName: string, parkLabel: string): string => `Gids voor ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel}: categorie, type, praktische details, foto's en kaartinformatie.`
   },
   pt: {
     parkContextPrefix: 'em',
+    title: (itemName: string, parkLabel: string): string => `Perfil de ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel}: categoria, tipo, detalhes práticos, fotos e informação no mapa.`
   }
@@ -1006,6 +1084,8 @@ const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
     parkFallback: 'Park',
     itemFallback: 'Item',
     videoFallback: 'Video',
+    parkTitle: (videoTitle: string, parkName: string): string => `Video: ${videoTitle} at ${parkName}`,
+    itemTitle: (videoTitle: string, itemName: string, parkName: string): string => `Video: ${videoTitle} for ${itemName} at ${parkName}`,
     parkDescription: (videoTitle: string, parkName: string): string => `Watch ${videoTitle} from ${parkName}.`,
     itemDescription: (videoTitle: string, itemName: string, parkName: string): string => `Watch ${videoTitle} for ${itemName} at ${parkName}.`
   },
@@ -1013,6 +1093,8 @@ const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
     parkFallback: 'Parc',
     itemFallback: 'Lieu',
     videoFallback: 'Vidéo',
+    parkTitle: (videoTitle: string, parkName: string): string => `Vidéo : ${videoTitle} à ${parkName}`,
+    itemTitle: (videoTitle: string, itemName: string, parkName: string): string => `Vidéo : ${videoTitle} pour ${itemName} à ${parkName}`,
     parkDescription: (videoTitle: string, parkName: string): string => `Regarde ${videoTitle} de ${parkName}.`,
     itemDescription: (videoTitle: string, itemName: string, parkName: string): string => `Regarde ${videoTitle} pour ${itemName} à ${parkName}.`
   },
@@ -1020,6 +1102,8 @@ const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
     parkFallback: 'Parque',
     itemFallback: 'Lugar',
     videoFallback: 'Vídeo',
+    parkTitle: (videoTitle: string, parkName: string): string => `Vídeo de ${videoTitle} en ${parkName}`,
+    itemTitle: (videoTitle: string, itemName: string, parkName: string): string => `Vídeo de ${videoTitle} para ${itemName} en ${parkName}`,
     parkDescription: (videoTitle: string, parkName: string): string => `Mira ${videoTitle} de ${parkName}.`,
     itemDescription: (videoTitle: string, itemName: string, parkName: string): string => `Mira ${videoTitle} de ${itemName} en ${parkName}.`
   },
@@ -1027,6 +1111,8 @@ const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
     parkFallback: 'Park',
     itemFallback: 'Ort',
     videoFallback: 'Video',
+    parkTitle: (videoTitle: string, parkName: string): string => `Parkvideo ${videoTitle} von ${parkName}`,
+    itemTitle: (videoTitle: string, itemName: string, parkName: string): string => `Video ${videoTitle} zu ${itemName} in ${parkName}`,
     parkDescription: (videoTitle: string, parkName: string): string => `Sieh dir ${videoTitle} von ${parkName} an.`,
     itemDescription: (videoTitle: string, itemName: string, parkName: string): string => `Sieh dir ${videoTitle} zu ${itemName} in ${parkName} an.`
   },
@@ -1034,6 +1120,8 @@ const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
     parkFallback: 'Parco',
     itemFallback: 'Luogo',
     videoFallback: 'Video',
+    parkTitle: (videoTitle: string, parkName: string): string => `Video ${videoTitle} di ${parkName}`,
+    itemTitle: (videoTitle: string, itemName: string, parkName: string): string => `Video ${videoTitle} per ${itemName} a ${parkName}`,
     parkDescription: (videoTitle: string, parkName: string): string => `Guarda ${videoTitle} di ${parkName}.`,
     itemDescription: (videoTitle: string, itemName: string, parkName: string): string => `Guarda ${videoTitle} per ${itemName} a ${parkName}.`
   },
@@ -1041,6 +1129,8 @@ const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
     parkFallback: 'Park',
     itemFallback: 'Miejsce',
     videoFallback: 'Wideo',
+    parkTitle: (videoTitle: string, parkName: string): string => `Wideo: ${videoTitle} z ${parkName}`,
+    itemTitle: (videoTitle: string, itemName: string, parkName: string): string => `Wideo: ${videoTitle} dla ${itemName} w ${parkName}`,
     parkDescription: (videoTitle: string, parkName: string): string => `Obejrzyj ${videoTitle} z ${parkName}.`,
     itemDescription: (videoTitle: string, itemName: string, parkName: string): string => `Obejrzyj ${videoTitle} dla ${itemName} w ${parkName}.`
   },
@@ -1048,6 +1138,8 @@ const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
     parkFallback: 'Park',
     itemFallback: 'Plek',
     videoFallback: 'Video',
+    parkTitle: (videoTitle: string, parkName: string): string => `Videobeeld: ${videoTitle} van ${parkName}`,
+    itemTitle: (videoTitle: string, itemName: string, parkName: string): string => `Videobeeld: ${videoTitle} voor ${itemName} in ${parkName}`,
     parkDescription: (videoTitle: string, parkName: string): string => `Bekijk ${videoTitle} van ${parkName}.`,
     itemDescription: (videoTitle: string, itemName: string, parkName: string): string => `Bekijk ${videoTitle} voor ${itemName} in ${parkName}.`
   },
@@ -1055,6 +1147,8 @@ const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
     parkFallback: 'Parque',
     itemFallback: 'Local',
     videoFallback: 'Vídeo',
+    parkTitle: (videoTitle: string, parkName: string): string => `Vídeo sobre ${videoTitle} em ${parkName}`,
+    itemTitle: (videoTitle: string, itemName: string, parkName: string): string => `Vídeo sobre ${videoTitle} para ${itemName} em ${parkName}`,
     parkDescription: (videoTitle: string, parkName: string): string => `Vê ${videoTitle} de ${parkName}.`,
     itemDescription: (videoTitle: string, itemName: string, parkName: string): string => `Vê ${videoTitle} para ${itemName} em ${parkName}.`
   }
@@ -1071,11 +1165,11 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       description: 'Browse visible amusement parks, theme parks, water parks, zoos and resorts with public details and map exploration.',
     },
     sitemap: {
-      title: 'Sitemap - Amusement Parks',
+      title: 'Site map - Amusement Parks',
       description: 'Explore the public sitemap for Amusement Parks with parks, interactive maps, technical guides and reference pages.',
     },
     rankings: {
-      title: 'Rankings — Amusement Parks',
+      title: 'Visitor rankings — Amusement Parks',
       description: 'Discover parks, attractions, restaurants, hotels and services that visitors consistently rate highly.',
     },
     technical: {
@@ -1091,7 +1185,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       description: 'Learn about the Amusement Parks project, its purpose, its public park portfolio and its careful data publication approach.',
     },
     contact: {
-      title: 'Contact Amusement Parks — Feedback and requests',
+      title: 'Contact and requests — Amusement Parks',
       description: 'Contact Amusement Parks by email or leave a short protected message for the project administrators.',
     },
     versions: {
@@ -1107,11 +1201,11 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       description: 'The requested page does not exist or is no longer available on Amusement Parks.',
     },
     account: {
-      title: 'Account — Amusement Parks',
+      title: 'Private account — Amusement Parks',
       description: 'Private account page for Amusement Parks users.',
     },
     admin: {
-      title: 'Administration — Amusement Parks',
+      title: 'Private administration — Amusement Parks',
       description: 'Private administration page for Amusement Parks.',
     },
   },
@@ -1145,7 +1239,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       description: 'Découvre le projet Amusement Parks, son objectif, son portefeuille public de parcs et sa démarche de publication des données.',
     },
     contact: {
-      title: 'Contact — Amusement Parks',
+      title: 'Contact et demandes — Amusement Parks',
       description: 'Contacte Amusement Parks par email ou laisse un message court et protege aux administrateurs du projet.',
     },
     versions: {
@@ -1161,11 +1255,11 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       description: 'La page demandée n’existe pas ou n’est plus disponible sur Amusement Parks.',
     },
     account: {
-      title: 'Compte — Amusement Parks',
+      title: 'Compte privé — Amusement Parks',
       description: 'Page privée de compte utilisateur Amusement Parks.',
     },
     admin: {
-      title: 'Administration — Amusement Parks',
+      title: 'Administration privée — Amusement Parks',
       description: 'Page privée d’administration Amusement Parks.',
     },
   },
@@ -1175,10 +1269,10 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Explora parques, atracciones y destinos', description: 'Explora parques de ocio, atracciones, restaurantes, hoteles y referencias del sector en todo el mundo.' },
     parks: { title: 'Parques de ocio del mundo — Amusement Parks', description: 'Consulta parques visibles, parques temáticos, acuáticos, zoológicos y resorts con información pública y mapa.' },
     sitemap: { title: 'Mapa del sitio - Amusement Parks', description: 'Explora el mapa público de Amusement Parks con parques, mapas interactivos, guías técnicas y páginas de referencia.' },
-    rankings: { title: 'Rankings — Amusement Parks', description: 'Descubre parques, atracciones, restaurantes, hoteles y servicios valorados de forma constante por visitantes.' },
+    rankings: { title: 'Clasificaciones — Amusement Parks', description: 'Descubre parques, atracciones, restaurantes, hoteles y servicios valorados de forma constante por visitantes.' },
     technical: { title: 'Guías técnicas - Amusement Parks', description: 'Explora lifts, sujeciones, trenes, materiales y otros sistemas técnicos de las atracciones.' },
     about: { title: 'Acerca de Amusement Parks — Proyecto y datos', description: 'Conoce el proyecto Amusement Parks, su objetivo y su enfoque cuidadoso de publicación de datos.' },
-    contact: { title: 'Contacto — Amusement Parks', description: 'Contacta con Amusement Parks por correo o deja un mensaje breve y protegido para los administradores.' },
+    contact: { title: 'Contacto y solicitudes — Amusement Parks', description: 'Contacta con Amusement Parks por correo o deja un mensaje breve y protegido para los administradores.' },
     versions: { title: 'Historial de versiones — Amusement Parks', description: 'Sigue el historial público de versiones de Amusement Parks con una nota breve por lanzamiento.' },
     privacy: { title: 'Política de privacidad — Amusement Parks', description: 'Consulta cómo Amusement Parks gestiona privacidad, cookies, datos de autenticación y consentimiento analítico.' },
     notFound: { title: 'Página no encontrada — Amusement Parks', description: 'La página solicitada no existe o ya no está disponible en Amusement Parks.' },
@@ -1189,16 +1283,16 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     manufacturers: { title: 'Hersteller von Attraktionen - Amusement Parks', description: 'Durchsuche Hersteller von Attraktionen und Coastern mit Profil, Geschichte und nützlichen Links.' },
     home: { title: 'Amusement Parks — Parks, Attraktionen und Reiseziele entdecken', description: 'Entdecke Freizeitparks, Attraktionen, Restaurants, Hotels und Branchenreferenzen weltweit.' },
     parks: { title: 'Freizeitparks weltweit — Amusement Parks', description: 'Durchsuche sichtbare Freizeitparks, Themenparks, Wasserparks, Zoos und Resorts mit öffentlichen Details und Karte.' },
-    sitemap: { title: 'Sitemap - Amusement Parks', description: 'Erkunde die öffentliche Sitemap von Amusement Parks mit Parks, interaktiven Karten, Technik-Guides und Referenzseiten.' },
+    sitemap: { title: 'Seitenübersicht - Amusement Parks', description: 'Erkunde die öffentliche Sitemap von Amusement Parks mit Parks, interaktiven Karten, Technik-Guides und Referenzseiten.' },
     rankings: { title: 'Ranglisten — Amusement Parks', description: 'Entdecke Parks, Attraktionen, Restaurants, Hotels und Services, die Besucher dauerhaft hoch bewerten.' },
     technical: { title: 'Technik-Guides - Amusement Parks', description: 'Entdecke Lifts, Rückhaltesysteme, Züge, Materialien und weitere technische Systeme von Attraktionen.' },
     about: { title: 'Über Amusement Parks — Projekt und Datenansatz', description: 'Erfahre mehr über das Projekt Amusement Parks, seinen Zweck und seine sorgfältige Veröffentlichung von Daten.' },
-    contact: { title: 'Kontakt — Amusement Parks', description: 'Kontaktiere Amusement Parks per E-Mail oder sende eine kurze geschützte Nachricht an die Administration.' },
+    contact: { title: 'Kontakt und Anfragen — Amusement Parks', description: 'Kontaktiere Amusement Parks per E-Mail oder sende eine kurze geschützte Nachricht an die Administration.' },
     versions: { title: 'Versionsverlauf — Amusement Parks', description: 'Verfolge den öffentlichen Versionsverlauf von Amusement Parks mit kurzen Hinweisen je Version.' },
     privacy: { title: 'Datenschutzerklärung — Amusement Parks', description: 'Lies, wie Amusement Parks Datenschutz, Cookies, Anmeldedaten und Analytics-Zustimmung verarbeitet.' },
     notFound: { title: 'Seite nicht gefunden — Amusement Parks', description: 'Die angeforderte Seite existiert nicht oder ist auf Amusement Parks nicht mehr verfügbar.' },
     account: { title: 'Konto — Amusement Parks', description: 'Private Kontoseite für Benutzer von Amusement Parks.' },
-    admin: { title: 'Administration — Amusement Parks', description: 'Private Administrationsseite von Amusement Parks.' },
+    admin: { title: 'Adminbereich — Amusement Parks', description: 'Private Administrationsseite von Amusement Parks.' },
   },
   it: {
     manufacturers: { title: 'Costruttori di attrazioni - Amusement Parks', description: 'Sfoglia costruttori di attrazioni e coaster con scheda pubblica, storia e link utili.' },
@@ -1212,7 +1306,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     versions: { title: 'Cronologia versioni — Amusement Parks', description: 'Segui la cronologia pubblica delle versioni di Amusement Parks con brevi note per ogni rilascio.' },
     privacy: { title: 'Informativa sulla privacy — Amusement Parks', description: 'Leggi come Amusement Parks gestisce privacy, cookie, dati di autenticazione e consenso analytics.' },
     notFound: { title: 'Pagina non trovata — Amusement Parks', description: 'La pagina richiesta non esiste o non è più disponibile su Amusement Parks.' },
-    account: { title: 'Account — Amusement Parks', description: 'Pagina privata dell’account utente Amusement Parks.' },
+    account: { title: 'Area account — Amusement Parks', description: 'Pagina privata dell’account utente Amusement Parks.' },
     admin: { title: 'Amministrazione — Amusement Parks', description: 'Pagina privata di amministrazione Amusement Parks.' },
   },
   pl: {
@@ -1223,26 +1317,26 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     rankings: { title: 'Rankingi — Amusement Parks', description: 'Odkrywaj parki, atrakcje, restauracje, hotele i usługi stale wysoko oceniane przez odwiedzających.' },
     technical: { title: 'Przewodniki techniczne - Amusement Parks', description: 'Poznaj windy, zabezpieczenia, pociagi, materialy i inne systemy techniczne atrakcji.' },
     about: { title: 'O Amusement Parks — Projekt i dane', description: 'Poznaj projekt Amusement Parks, jego cel oraz ostrożne podejście do publikacji danych.' },
-    contact: { title: 'Kontakt — Amusement Parks', description: 'Skontaktuj się z Amusement Parks e-mailem lub zostaw krótką chronioną wiadomość dla administratorów.' },
+    contact: { title: 'Kontakt i zgłoszenia — Amusement Parks', description: 'Skontaktuj się z Amusement Parks e-mailem lub zostaw krótką chronioną wiadomość dla administratorów.' },
     versions: { title: 'Historia wersji — Amusement Parks', description: 'Śledź publiczną historię wersji Amusement Parks z krótkimi notatkami dla każdego wydania.' },
     privacy: { title: 'Polityka prywatności — Amusement Parks', description: 'Sprawdź, jak Amusement Parks zarządza prywatnością, cookies, danymi logowania i zgodą analityczną.' },
     notFound: { title: 'Nie znaleziono strony — Amusement Parks', description: 'Żądana strona nie istnieje albo nie jest już dostępna w Amusement Parks.' },
-    account: { title: 'Konto — Amusement Parks', description: 'Prywatna strona konta użytkownika Amusement Parks.' },
+    account: { title: 'Konto użytkownika — Amusement Parks', description: 'Prywatna strona konta użytkownika Amusement Parks.' },
     admin: { title: 'Administracja — Amusement Parks', description: 'Prywatna strona administracyjna Amusement Parks.' },
   },
   nl: {
     manufacturers: { title: 'Attractiebouwers - Amusement Parks', description: 'Bekijk attractie- en coasterbouwers met publiek profiel, geschiedenis en nuttige links.' },
     home: { title: 'Amusement Parks — Ontdek parken, attracties en bestemmingen', description: 'Ontdek pretparken, attracties, restaurants, hotels en brancheverwijzingen over de hele wereld.' },
     parks: { title: 'Pretparken wereldwijd — Amusement Parks', description: 'Bekijk zichtbare pretparken, themaparken, waterparken, dierentuinen en resorts met publieke info en kaart.' },
-    sitemap: { title: 'Sitemap - Amusement Parks', description: 'Bekijk de publieke sitemap van Amusement Parks met parken, interactieve kaarten, technische gidsen en referentiepagina’s.' },
+    sitemap: { title: 'Websitekaart - Amusement Parks', description: 'Bekijk de publieke sitemap van Amusement Parks met parken, interactieve kaarten, technische gidsen en referentiepagina’s.' },
     rankings: { title: 'Ranglijsten — Amusement Parks', description: 'Ontdek parken, attracties, restaurants, hotels en services die bezoekers blijvend hoog beoordelen.' },
     technical: { title: 'Technische gidsen - Amusement Parks', description: 'Ontdek liften, beugels, treinen, materialen en andere technische systemen van attracties.' },
     about: { title: 'Over Amusement Parks — Project en data-aanpak', description: 'Lees meer over het Amusement Parks-project, het doel en de zorgvuldige aanpak voor datapublicatie.' },
-    contact: { title: 'Contact — Amusement Parks', description: 'Neem contact op met Amusement Parks per e-mail of laat een kort beschermd bericht achter voor de beheerders.' },
+    contact: { title: 'Contact opnemen — Amusement Parks', description: 'Neem contact op met Amusement Parks per e-mail of laat een kort beschermd bericht achter voor de beheerders.' },
     versions: { title: 'Versiegeschiedenis — Amusement Parks', description: 'Volg de publieke versiegeschiedenis van Amusement Parks met korte notities per release.' },
     privacy: { title: 'Privacybeleid — Amusement Parks', description: 'Lees hoe Amusement Parks omgaat met privacy, cookies, authenticatiegegevens en analytics-toestemming.' },
     notFound: { title: 'Pagina niet gevonden — Amusement Parks', description: 'De gevraagde pagina bestaat niet of is niet meer beschikbaar op Amusement Parks.' },
-    account: { title: 'Account — Amusement Parks', description: 'Privé-accountpagina voor gebruikers van Amusement Parks.' },
+    account: { title: 'Gebruikersaccount — Amusement Parks', description: 'Privé-accountpagina voor gebruikers van Amusement Parks.' },
     admin: { title: 'Administratie — Amusement Parks', description: 'Privé-administratiepagina van Amusement Parks.' },
   },
   pt: {
@@ -1250,10 +1344,10 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Explore parques, atrações e destinos', description: 'Explore parques de diversão, atrações, restaurantes, hotéis e referências do setor em todo o mundo.' },
     parks: { title: 'Parques de diversão no mundo — Amusement Parks', description: 'Veja parques visíveis, parques temáticos, aquáticos, zoológicos e resorts com informações públicas e mapa.' },
     sitemap: { title: 'Mapa do site - Amusement Parks', description: 'Explora o mapa público do Amusement Parks com parques, mapas interativos, guias técnicos e páginas de referência.' },
-    rankings: { title: 'Rankings — Amusement Parks', description: 'Descubra parques, atrações, restaurantes, hotéis e serviços avaliados de forma consistente pelos visitantes.' },
+    rankings: { title: 'Classificações — Amusement Parks', description: 'Descubra parques, atrações, restaurantes, hotéis e serviços avaliados de forma consistente pelos visitantes.' },
     technical: { title: 'Guias técnicos - Amusement Parks', description: 'Explora lifts, retenções, trens, materiais e outros sistemas técnicos das atrações.' },
     about: { title: 'Sobre o Amusement Parks — Projeto e dados', description: 'Conheça o projeto Amusement Parks, seu objetivo e sua abordagem cuidadosa de publicação de dados.' },
-    contact: { title: 'Contacto — Amusement Parks', description: 'Contacte o Amusement Parks por email ou deixe uma mensagem curta e protegida para a administração.' },
+    contact: { title: 'Contacto e pedidos — Amusement Parks', description: 'Contacte o Amusement Parks por email ou deixe uma mensagem curta e protegida para a administração.' },
     versions: { title: 'Histórico de versões — Amusement Parks', description: 'Acompanhe o histórico público de versões do Amusement Parks com notas curtas por lançamento.' },
     privacy: { title: 'Política de privacidade — Amusement Parks', description: 'Leia como o Amusement Parks trata privacidade, cookies, dados de autenticação e consentimento analítico.' },
     notFound: { title: 'Página não encontrada — Amusement Parks', description: 'A página solicitada não existe ou já não está disponível no Amusement Parks.' },
@@ -1267,6 +1361,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
 })
 export class SeoService {
   private readonly managedAlternateSelector: string = 'link[rel="alternate"][data-managed-by="amusementpark-seo"]';
+  private readonly managedOpenGraphLocaleAlternateSelector: string = 'meta[property="og:locale:alternate"][data-managed-by="amusementpark-seo"]';
   private readonly canonicalSelector: string = 'link[rel="canonical"]';
 
   constructor(
@@ -1333,11 +1428,13 @@ export class SeoService {
 
   applyTechnicalPageSeo(page: TechnicalPage, language: string, url: string): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: TechnicalPageSeoCopy = TECHNICAL_PAGE_SEO_COPY[normalizedLanguage] ?? TECHNICAL_PAGE_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const pageTitle: string = this.normalizeOptionalText(resolveLocalizedText(page.titles, normalizedLanguage, page.slug)) ?? page.slug;
-    const pageDescription: string = this.normalizeOptionalText(resolveLocalizedText(page.summaries, normalizedLanguage, DEFAULT_DESCRIPTION)) ?? DEFAULT_DESCRIPTION;
+    const pageDescription: string = this.resolveExactLocalizedText(page.summaries, normalizedLanguage)
+      ?? copy.description(pageTitle);
 
     this.apply({
-      title: `${pageTitle} - ${SITE_NAME}`,
+      title: `${copy.title(pageTitle)} - ${SITE_NAME}`,
       description: truncateSeoText(pageDescription, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'index,follow',
@@ -1364,11 +1461,10 @@ export class SeoService {
     const locationLabel: string = [park.city, park.countryName ?? park.countryCode]
       .filter((value: string | null | undefined): value is string => !!value)
       .join(', ');
-    const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
     const descriptionFallback: string = copy.description(park.name, locationLabel);
 
     this.apply({
-      title: `${park.name}${titleSuffix} — ${SITE_NAME}`,
+      title: `${copy.title(park.name, locationLabel)} — ${SITE_NAME}`,
       description: truncateSeoText(normalizeSeoText(park.description, descriptionFallback), 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
@@ -1522,7 +1618,7 @@ export class SeoService {
       ?? copy.parkDescription(videoTitle, parkName);
 
     this.apply({
-      title: `${videoTitle} — ${parkName} — ${SITE_NAME}`,
+      title: `${copy.parkTitle(videoTitle, parkName)} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
@@ -1555,7 +1651,7 @@ export class SeoService {
       ?? copy.itemDescription(videoTitle, itemName, parkName);
 
     this.apply({
-      title: `${videoTitle} — ${itemName} — ${SITE_NAME}`,
+      title: `${copy.itemTitle(videoTitle, itemName, parkName)} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
@@ -1767,7 +1863,7 @@ export class SeoService {
     const copy: ParkItemDetailSeoCopy = PARK_ITEM_DETAIL_SEO_COPY[normalizedLanguage] ?? PARK_ITEM_DETAIL_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
     const parkLabel: string = detail.parkName ? ` ${copy.parkContextPrefix} ${detail.parkName}` : '';
-    const title: string = `${detail.name}${parkLabel} — ${SITE_NAME}`;
+    const title: string = `${copy.title(detail.name, parkLabel)} — ${SITE_NAME}`;
     const specSummary: string = this.buildParkItemSpecSummary(detail);
     const descriptionFallback: string = specSummary
       ? this.buildParkItemSpecDescription(normalizedLanguage, detail.name, parkLabel, specSummary)
@@ -1789,7 +1885,7 @@ export class SeoService {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: HistorySeoCopy = HISTORY_SEO_COPY[normalizedLanguage] ?? HISTORY_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
-    const title: string = `${timeline.title} — ${SITE_NAME}`;
+    const title: string = `${copy.timelineTitle(timeline.title)} — ${SITE_NAME}`;
     const description: string = copy.timelineDescription(timeline.ownerName);
     const imageId: string | null = timeline.events.find((event) => !!event.mainImageId)?.mainImageId ?? null;
 
@@ -1816,7 +1912,7 @@ export class SeoService {
     const description: string = truncateSeoText(normalizeSeoText(article.summary, descriptionFallback), 160);
 
     this.apply({
-      title: `${article.title} — ${SITE_NAME}`,
+      title: `${copy.articleTitle(article.title)} — ${SITE_NAME}`,
       description,
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
@@ -1851,6 +1947,7 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:url', content: data.canonicalUrl });
     this.meta.updateTag({ property: 'og:type', content: data.openGraphType ?? 'website' });
     this.meta.updateTag({ property: 'og:locale', content: locale });
+    this.setOpenGraphLocaleAlternates(data.alternates, locale);
     this.meta.updateTag({ property: 'og:image', content: socialImage.url });
     this.meta.updateTag({ property: 'og:image:secure_url', content: socialImage.url });
     this.updateOpenGraphImageDimension('width', socialImage.width);
@@ -1979,6 +2076,17 @@ export class SeoService {
   private normalizeOptionalText(value: string | null | undefined): string | null {
     const normalized: string = value?.trim() ?? '';
     return normalized.length > 0 ? normalized : null;
+  }
+
+  private resolveExactLocalizedText(
+    items: readonly { languageCode?: string | null; value?: string | null }[] | null | undefined,
+    language: string
+  ): string | null {
+    return this.normalizeOptionalText(
+      items?.find((item: { languageCode?: string | null; value?: string | null }): boolean =>
+        item.languageCode?.trim().toLowerCase() === language
+      )?.value
+    );
   }
 
   private normalizeLanguage(language: string | null | undefined): string {
@@ -2886,6 +2994,26 @@ export class SeoService {
       linkElement.setAttribute('href', alternate.href);
       linkElement.setAttribute('data-managed-by', 'amusementpark-seo');
       this.document.head.appendChild(linkElement);
+    }
+  }
+
+  private setOpenGraphLocaleAlternates(alternates: SeoAlternateLink[], currentLocale: string): void {
+    this.document.head.querySelectorAll<HTMLMetaElement>(this.managedOpenGraphLocaleAlternateSelector)
+      .forEach((element: HTMLMetaElement): void => element.remove());
+
+    const alternateLocales: string[] = Array.from(new Set<string>(
+      alternates
+        .filter((alternate: SeoAlternateLink): boolean => alternate.hreflang !== 'x-default')
+        .map((alternate: SeoAlternateLink): string => this.resolveOpenGraphLocale(alternate.href))
+        .filter((locale: string): boolean => locale !== currentLocale)
+    ));
+
+    for (const alternateLocale of alternateLocales) {
+      const metaElement: HTMLMetaElement = this.document.createElement('meta');
+      metaElement.setAttribute('property', 'og:locale:alternate');
+      metaElement.setAttribute('content', alternateLocale);
+      metaElement.setAttribute('data-managed-by', 'amusementpark-seo');
+      this.document.head.appendChild(metaElement);
     }
   }
 
