@@ -1232,7 +1232,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     },
     technical: {
       title: 'Dossiers techniques - Amusement Parks',
-      description: 'Explore les lifts, retenues, trains, materiaux et autres systemes techniques des attractions.',
+      description: 'Explore les lifts, retenues, trains, matériaux et autres systèmes techniques des attractions.',
     },
     about: {
       title: 'À propos — Amusement Parks',
@@ -1240,7 +1240,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     },
     contact: {
       title: 'Contact et demandes — Amusement Parks',
-      description: 'Contacte Amusement Parks par email ou laisse un message court et protege aux administrateurs du projet.',
+      description: 'Contacte Amusement Parks par email ou laisse un message court et protégé aux administrateurs du projet.',
     },
     versions: {
       title: 'Historique des versions — Amusement Parks',
@@ -1315,7 +1315,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     parks: { title: 'Parki rozrywki na świecie — Amusement Parks', description: 'Przeglądaj widoczne parki rozrywki, parki tematyczne, wodne, zoo i resorty z publicznymi informacjami oraz mapą.' },
     sitemap: { title: 'Mapa strony - Amusement Parks', description: 'Przeglądaj publiczną mapę Amusement Parks z parkami, interaktywnymi mapami, przewodnikami technicznymi i stronami referencyjnymi.' },
     rankings: { title: 'Rankingi — Amusement Parks', description: 'Odkrywaj parki, atrakcje, restauracje, hotele i usługi stale wysoko oceniane przez odwiedzających.' },
-    technical: { title: 'Przewodniki techniczne - Amusement Parks', description: 'Poznaj windy, zabezpieczenia, pociagi, materialy i inne systemy techniczne atrakcji.' },
+    technical: { title: 'Przewodniki techniczne - Amusement Parks', description: 'Poznaj windy, zabezpieczenia, pociągi, materiały i inne systemy techniczne atrakcji.' },
     about: { title: 'O Amusement Parks — Projekt i dane', description: 'Poznaj projekt Amusement Parks, jego cel oraz ostrożne podejście do publikacji danych.' },
     contact: { title: 'Kontakt i zgłoszenia — Amusement Parks', description: 'Skontaktuj się z Amusement Parks e-mailem lub zostaw krótką chronioną wiadomość dla administratorów.' },
     versions: { title: 'Historia wersji — Amusement Parks', description: 'Śledź publiczną historię wersji Amusement Parks z krótkimi notatkami dla każdego wydania.' },
@@ -1400,7 +1400,7 @@ export class SeoService {
 
     const staticRouteKey: string | null = this.resolveStaticRouteKey(url);
     if (staticRouteKey === 'notFound') {
-      this.apply(this.buildStaticRouteData(staticRouteKey, language, url, 'noindex,follow'));
+      this.applyNoindexFallbackSeo(staticRouteKey, language);
       return;
     }
 
@@ -1409,13 +1409,7 @@ export class SeoService {
       return;
     }
 
-    this.apply({
-      title: SITE_NAME,
-      description: DEFAULT_DESCRIPTION,
-      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
-      robots: 'index,follow',
-      alternates: this.hreflangService.buildAlternates(url),
-    });
+    this.applyNoindexFallbackSeo('notFound', language);
   }
 
   applyHomeSeo(language: string, url: string): void {
@@ -1451,7 +1445,7 @@ export class SeoService {
       return;
     }
 
-    this.apply(this.buildStaticRouteData('notFound', language, url, 'noindex,follow'));
+    this.applyNoindexFallbackSeo('notFound', language);
   }
 
   applyParkDetailSeo(park: ParkDetailViewModel, language: string, url: string, canonicalPath: string | null = null): void {
@@ -1469,7 +1463,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
-      imageUrl: this.resolveImageIdAbsoluteUrl(park.primaryPhoto?.imageId) ?? undefined,
+      imageUrl: this.resolveImageIdAbsoluteUrl(this.resolveParkDetailSocialImageId(park)) ?? undefined,
       imageAlt: park.name,
       jsonLd: this.buildParkDetailJsonLd(park, seoUrl)
     });
@@ -1970,6 +1964,19 @@ export class SeoService {
     this.jsonLdService.setJsonLd(data.jsonLd ?? []);
   }
 
+  private applyNoindexFallbackSeo(routeKey: string, language: string): void {
+    const copy: StaticSeoCopy = this.resolveStaticCopy(routeKey, language);
+
+    this.title.setTitle(copy.title);
+    this.meta.updateTag({ name: 'description', content: copy.description });
+    this.meta.updateTag({ name: 'robots', content: 'noindex,follow' });
+    this.meta.updateTag({ name: 'googlebot', content: 'noindex,follow' });
+    this.removeCanonical();
+    this.setAlternates([]);
+    this.removeSocialMetadata();
+    this.jsonLdService.setJsonLd([]);
+  }
+
   private buildSocialImage(imageUrl: string | undefined): SocialImageMetadata {
     const fallbackImage: SocialImageMetadata = {
       url: this.canonicalUrlService.buildAbsoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH),
@@ -1999,7 +2006,7 @@ export class SeoService {
 
         return {
           url: parsedUrl.href,
-          width: SOCIAL_IMAGE_WIDTH,
+          width: null,
           height: null
         };
       }
@@ -2174,6 +2181,12 @@ export class SeoService {
     }
 
     return `${itemName}${parkLabel}: ${specSummary}. Photos, location and visit details.`;
+  }
+
+  private resolveParkDetailSocialImageId(park: ParkDetailViewModel): string | null {
+    return this.normalizeOptionalText(park.primaryPhoto?.imageId)
+      ?? this.normalizeOptionalText(park.heroImageId)
+      ?? this.normalizeOptionalText(park.logoImageId);
   }
 
   private buildParkDetailJsonLd(park: ParkDetailViewModel, url: string): unknown[] {
@@ -3057,6 +3070,10 @@ export class SeoService {
     linkElement.setAttribute('href', url);
   }
 
+  private removeCanonical(): void {
+    this.document.head.querySelector<HTMLLinkElement>(this.canonicalSelector)?.remove();
+  }
+
   private setAlternates(alternates: SeoAlternateLink[]): void {
     this.document.head.querySelectorAll<HTMLLinkElement>(this.managedAlternateSelector)
       .forEach((element: HTMLLinkElement): void => element.remove());
@@ -3089,6 +3106,30 @@ export class SeoService {
       metaElement.setAttribute('data-managed-by', 'amusementpark-seo');
       this.document.head.appendChild(metaElement);
     }
+  }
+
+  private removeSocialMetadata(): void {
+    [
+      'property="og:site_name"',
+      'property="og:title"',
+      'property="og:description"',
+      'property="og:url"',
+      'property="og:type"',
+      'property="og:locale"',
+      'property="og:image"',
+      'property="og:image:secure_url"',
+      'property="og:image:width"',
+      'property="og:image:height"',
+      'property="og:image:alt"',
+      'name="twitter:card"',
+      'name="twitter:title"',
+      'name="twitter:description"',
+      'name="twitter:image"',
+      'name="twitter:image:alt"'
+    ].forEach((selector: string): void => this.meta.removeTag(selector));
+
+    this.document.head.querySelectorAll<HTMLMetaElement>(this.managedOpenGraphLocaleAlternateSelector)
+      .forEach((element: HTMLMetaElement): void => element.remove());
   }
 
   private resolveLanguageFromUrl(url: string): string {
