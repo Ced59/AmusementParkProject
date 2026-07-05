@@ -401,6 +401,11 @@ body.light-mode .home-hero__title-line--outline {
   display: none;
 }
 
+.home-search-autocomplete-list {
+  display: grid;
+  gap: 0.35rem;
+}
+
 .home-search-autocomplete {
   width: 100%;
   min-height: 2.35rem;
