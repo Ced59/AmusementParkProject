@@ -335,6 +335,54 @@ const PARK_VIDEOS_SEO_COPY: Record<string, ParkVideosSeoCopy> = {
       const countLabel: string = totalVideos > 0 ? `${totalVideos} vidéos publiées` : 'les vidéos publiées';
       return `Regarde ${countLabel} de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''} : onrides, offrides, vidéos officielles et contenus créateurs.`;
     }
+  },
+  es: {
+    titlePrefix: 'Vídeos de',
+    parkFallback: 'este parque',
+    description: (parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} vídeos publicados` : 'los vídeos publicados';
+      return `Mira ${countLabel} de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}: onrides, offrides, vídeos oficiales y contenido de creadores.`;
+    }
+  },
+  de: {
+    titlePrefix: 'Videos von',
+    parkFallback: 'diesem Park',
+    description: (parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} veröffentlichte Videos` : 'die veröffentlichten Videos';
+      return `Sieh dir ${countLabel} von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''} an: Onrides, Offrides, offizielle Videos und Creator-Inhalte.`;
+    }
+  },
+  it: {
+    titlePrefix: 'Video di',
+    parkFallback: 'questo parco',
+    description: (parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} video pubblicati` : 'i video pubblicati';
+      return `Guarda ${countLabel} di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}: onride, offride, video ufficiali e contenuti dei creator.`;
+    }
+  },
+  nl: {
+    titlePrefix: "Video's van",
+    parkFallback: 'dit park',
+    description: (parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} gepubliceerde video's` : "de gepubliceerde video's";
+      return `Bekijk ${countLabel} van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: onrides, offrides, officiële video's en creatorcontent.`;
+    }
+  },
+  pl: {
+    titlePrefix: 'Filmy z',
+    parkFallback: 'tego parku',
+    description: (parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} opublikowanych filmów` : 'opublikowane filmy';
+      return `Oglądaj ${countLabel} z ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}: onride’y, offride’y, filmy oficjalne i treści twórców.`;
+    }
+  },
+  pt: {
+    titlePrefix: 'Vídeos sobre',
+    parkFallback: 'este parque',
+    description: (parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} vídeos publicados` : 'os vídeos publicados';
+      return `Vê ${countLabel} de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}: onrides, offrides, vídeos oficiais e conteúdo de criadores.`;
+    }
   }
 };
 
@@ -353,6 +401,54 @@ const PARK_ITEM_VIDEOS_SEO_COPY: Record<string, ParkItemVideosSeoCopy> = {
     description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
       const countLabel: string = totalVideos > 0 ? `${totalVideos} vidéos publiées` : 'les vidéos publiées';
       return `Regarde ${countLabel} de ${itemName}${parkName ? ` à ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  es: {
+    titlePrefix: 'Vídeos de',
+    itemFallback: 'este elemento',
+    description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} vídeos publicados` : 'los vídeos publicados';
+      return `Mira ${countLabel} de ${itemName}${parkName ? ` en ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  de: {
+    titlePrefix: 'Videos von',
+    itemFallback: 'diesem Element',
+    description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} veröffentlichte Videos` : 'die veröffentlichten Videos';
+      return `Sieh dir ${countLabel} von ${itemName}${parkName ? ` in ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''} an.`;
+    }
+  },
+  it: {
+    titlePrefix: 'Video di',
+    itemFallback: 'questo elemento',
+    description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} video pubblicati` : 'i video pubblicati';
+      return `Guarda ${countLabel} di ${itemName}${parkName ? ` a ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  nl: {
+    titlePrefix: "Video's van",
+    itemFallback: 'dit onderdeel',
+    description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} gepubliceerde video's` : "de gepubliceerde video's";
+      return `Bekijk ${countLabel} van ${itemName}${parkName ? ` in ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  pl: {
+    titlePrefix: 'Filmy z',
+    itemFallback: 'tego elementu',
+    description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} opublikowanych filmów` : 'opublikowane filmy';
+      return `Oglądaj ${countLabel} z ${itemName}${parkName ? ` w ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  pt: {
+    titlePrefix: 'Vídeos sobre',
+    itemFallback: 'este elemento',
+    description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} vídeos publicados` : 'os vídeos publicados';
+      return `Vê ${countLabel} de ${itemName}${parkName ? ` em ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
     }
   }
 };
@@ -628,7 +724,7 @@ const PARK_ZONES_SEO_COPY: Record<string, ParkZonesSeoCopy> = {
   pt: {
     parkFallback: 'este parque',
     breadcrumbLabel: 'Zonas',
-    title: (parkName: string): string => `Zonas de ${parkName}`,
+    title: (parkName: string): string => `Áreas de ${parkName}`,
     description: (parkName: string, zoneCount: number, totalItems: number): string => {
       const zoneLabel: string = zoneCount > 0 ? `${zoneCount} zonas` : 'as zonas';
       const itemLabel: string = totalItems > 0 ? ` com ${totalItems} locais listados` : '';
@@ -686,7 +782,7 @@ const PARK_ZONE_SEO_COPY: Record<string, ParkZoneSeoCopy> = {
   nl: {
     parkFallback: 'dit park',
     zoneFallback: 'deze zone',
-    title: (zoneName: string, parkName: string): string => `${zoneName} in ${parkName}`,
+    title: (zoneName: string, parkName: string): string => `${zoneName} bij ${parkName}`,
     description: (zoneName: string, parkName: string, totalItems: number): string => {
       const itemLabel: string = totalItems > 0 ? `${totalItems} plekken` : 'attracties, restaurants en plekken';
       return `Bekijk ${zoneName} in ${parkName}: ${itemLabel} in deze parkzone.`;
@@ -818,7 +914,7 @@ const PARK_REFERENCE_SEO_COPY: Record<string, ParkReferenceSeoCopy> = {
       operator: 'operador',
       manufacturer: 'fabricante'
     },
-    title: (referenceName: string, kindLabel: string): string => `${referenceName}, ${kindLabel}`,
+    title: (referenceName: string, kindLabel: string): string => `Perfil de ${referenceName}, ${kindLabel}`,
     description: (referenceName: string, kindLabel: string, legalName: string | null, attractionCount: number): string => {
       const legalLabel: string = legalName ? ` também conhecido como ${legalName}` : '';
       const attractionLabel: string = attractionCount > 0 ? ` e ${attractionCount} atrações ligadas` : '';
@@ -1725,6 +1821,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
+      openGraphType: 'article',
       imageUrl: this.resolveImageIdAbsoluteUrl(article.mainImageId) ?? undefined,
       imageAlt: article.title,
       jsonLd: [
@@ -1752,7 +1849,7 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:title', content: data.title });
     this.meta.updateTag({ property: 'og:description', content: data.description });
     this.meta.updateTag({ property: 'og:url', content: data.canonicalUrl });
-    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({ property: 'og:type', content: data.openGraphType ?? 'website' });
     this.meta.updateTag({ property: 'og:locale', content: locale });
     this.meta.updateTag({ property: 'og:image', content: socialImage.url });
     this.meta.updateTag({ property: 'og:image:secure_url', content: socialImage.url });

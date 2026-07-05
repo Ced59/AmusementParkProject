@@ -3805,6 +3805,31 @@
       "description": "Send the {{title}} forecast to someone planning a visit.",
       "text": "Check the weather for {{title}} on AmusementPark."
     },
+    "openingHours": {
+      "title": "Share these opening hours",
+      "description": "Send the {{title}} opening hours to someone planning a visit.",
+      "text": "Check the opening hours for {{title}} on AmusementPark."
+    },
+    "parkMap": {
+      "title": "Share this map",
+      "description": "Send the {{title}} map to someone planning their route.",
+      "text": "Open the {{title}} map on AmusementPark."
+    },
+    "parkImages": {
+      "title": "Share these images",
+      "description": "Send images of {{title}} to someone who wants a feel for the place.",
+      "text": "Look at images of {{title}} on AmusementPark."
+    },
+    "parkZones": {
+      "title": "Share these zones",
+      "description": "Send the {{title}} zones to someone planning a visit.",
+      "text": "Explore the zones of {{title}} on AmusementPark."
+    },
+    "parkZone": {
+      "title": "Share this zone",
+      "description": "Send this zone to someone planning their route.",
+      "text": "Discover {{title}} on AmusementPark."
+    },
     "parkItems": {
       "title": "Share these attractions and places",
       "description": "Send this park guide to someone planning what to do.",
@@ -3813,6 +3838,26 @@
     "parkItem": {
       "title": "Share this place",
       "description": "Send this page to someone interested in {{title}}.",
+      "text": "Discover {{title}} on AmusementPark."
+    },
+    "itemImages": {
+      "title": "Share these images",
+      "description": "Send images of {{title}} to someone who wants to discover it.",
+      "text": "Look at images of {{title}} on AmusementPark."
+    },
+    "historyTimeline": {
+      "title": "Share this timeline",
+      "description": "Send the history of {{title}} to someone who enjoys key milestones.",
+      "text": "Explore the history of {{title}} on AmusementPark."
+    },
+    "historyArticle": {
+      "title": "Share this article",
+      "description": "Send this article to someone interested in {{title}}.",
+      "text": "Read {{title}} on AmusementPark."
+    },
+    "reference": {
+      "title": "Share this profile",
+      "description": "Send this profile to someone who wants to know more about {{title}}.",
       "text": "Discover {{title}} on AmusementPark."
     },
     "videos": {

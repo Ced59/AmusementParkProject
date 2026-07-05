@@ -11,6 +11,7 @@ import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiPhotoCarouselComponent } from '@ui/media';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkReferenceDetailViewModel } from '../models/park-reference-detail-view.model';
 
 @Component({
@@ -29,6 +30,7 @@ import { ParkReferenceDetailViewModel } from '../models/park-reference-detail-vi
     UiChipComponent,
     UiKickerComponent,
     UiPhotoCarouselComponent,
+    PublicSharePanelComponent,
     PublicContextualBlockDirective
   ]
 })

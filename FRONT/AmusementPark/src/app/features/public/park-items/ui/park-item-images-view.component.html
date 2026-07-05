@@ -100,6 +100,15 @@
           <p>{{ 'parkItems.imagesPage.emptyMessage' | translate:{ name: currentItem.name } }}</p>
         </section>
       }
+
+      <app-public-share-panel
+        targetType="ParkItem"
+        [targetId]="currentItem.id ?? null"
+        [targetTitle]="currentItem.name ?? null"
+        titleKey="shareSocial.itemImages.title"
+        descriptionKey="shareSocial.itemImages.description"
+        textKey="shareSocial.itemImages.text">
+      </app-public-share-panel>
     </section>
   }
 </app-page-state>

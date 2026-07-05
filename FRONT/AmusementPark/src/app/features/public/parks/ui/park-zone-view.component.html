@@ -105,6 +105,14 @@
         </app-empty-state>
       </ng-template>
     </section>
+
+    <app-public-share-panel
+      targetType="Page"
+      [targetTitle]="currentPage.zoneName"
+      titleKey="shareSocial.parkZone.title"
+      descriptionKey="shareSocial.parkZone.description"
+      textKey="shareSocial.parkZone.text">
+    </app-public-share-panel>
   </section>
 
   <ng-template #missingZone>

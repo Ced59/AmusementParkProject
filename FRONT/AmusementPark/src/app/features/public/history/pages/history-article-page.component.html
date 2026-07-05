@@ -120,6 +120,15 @@
           </aside>
         }
       </div>
+
+      <app-public-share-panel
+        targetType="Page"
+        [targetId]="currentArticle.event.id ?? null"
+        [targetTitle]="currentArticle.title"
+        titleKey="shareSocial.historyArticle.title"
+        descriptionKey="shareSocial.historyArticle.description"
+        textKey="shareSocial.historyArticle.text">
+      </app-public-share-panel>
     </article>
   }
 </app-page-state>

@@ -1,6 +1,20 @@
 {
-  "version": "3.3.13",
+  "version": "3.3.14",
   "history": [
+    {
+      "version": "3.3.14",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Les pages publiques se partagent mieux.",
+        "en": "Public pages are easier to share.",
+        "de": "Öffentliche Seiten lassen sich besser teilen.",
+        "nl": "Publieke pagina's zijn makkelijker te delen.",
+        "it": "Le pagine pubbliche sono più facili da condividere.",
+        "es": "Las páginas públicas se comparten mejor.",
+        "pl": "Strony publiczne łatwiej udostępniać.",
+        "pt": "As páginas públicas ficam mais fáceis de partilhar."
+      }
+    },
     {
       "version": "3.3.13",
       "releasedAt": "2026-07-04",

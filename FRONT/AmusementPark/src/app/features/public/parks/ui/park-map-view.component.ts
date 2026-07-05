@@ -6,6 +6,7 @@ import { Park } from '@app/models/parks/park';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { UiSelectOptionModel } from '@ui/forms';
 import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { ParkItemsMapSectionComponent } from './park-items-map-section.component';
@@ -23,6 +24,7 @@ import { ParkItemsMapSectionComponent } from './park-items-map-section.component
     UiChipComponent,
     UiKickerComponent,
     UiSurfaceDirective,
+    PublicSharePanelComponent,
     ParkItemsMapSectionComponent
   ]
 })

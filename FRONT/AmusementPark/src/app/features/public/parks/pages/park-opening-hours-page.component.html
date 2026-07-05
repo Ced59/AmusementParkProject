@@ -229,6 +229,15 @@
           <strong>{{ 'parkOpeningHours.page.daysCountValue' | translate:{ count: data.calendar.days.length } }}</strong>
         </div>
       </section>
+
+      <app-public-share-panel
+        targetType="Park"
+        [targetId]="data.park.id ?? null"
+        [targetTitle]="data.park.name ?? null"
+        titleKey="shareSocial.openingHours.title"
+        descriptionKey="shareSocial.openingHours.description"
+        textKey="shareSocial.openingHours.text">
+      </app-public-share-panel>
     </section>
   }
 </app-page-state>

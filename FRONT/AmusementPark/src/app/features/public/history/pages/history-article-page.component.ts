@@ -7,6 +7,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { HistoryArticleBlockViewModel, HistoryArticlePageViewModel } from '../models/history-view.model';
 import { HistoryArticleStateFacade } from '../state/history-article-state.facade';
 
@@ -32,7 +33,7 @@ const HISTORY_ARTICLE_PAGE_COPY: Record<string, HistoryArticlePageCopy> = {
   styleUrls: ['./history-article-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HistoryArticleStateFacade],
-  imports: [PageStateComponent, ImageDisplayComponent, RouterLink]
+  imports: [PageStateComponent, ImageDisplayComponent, PublicSharePanelComponent, RouterLink]
 })
 export class HistoryArticlePageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

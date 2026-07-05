@@ -12,6 +12,7 @@ import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
 import { UiMapSlotComponent } from '@ui/maps';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkItemCardComponent } from '../../park-items/ui/park-item-card.component';
 import { ParkZonePageViewModel } from '../models/park-zone-page.model';
 
@@ -34,6 +35,7 @@ import { ParkZonePageViewModel } from '../models/park-zone-page.model';
     UiChipComponent,
     UiKickerComponent,
     UiMapSlotComponent,
+    PublicSharePanelComponent,
     UiStatCardComponent,
     UiSurfaceDirective
   ]

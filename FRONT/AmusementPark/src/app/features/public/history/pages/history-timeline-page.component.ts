@@ -8,6 +8,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { HistoryTimelineEventViewModel, HistoryTimelinePageViewModel } from '../models/history-view.model';
 import { HistoryTimelineStateFacade } from '../state/history-timeline-state.facade';
 
@@ -156,7 +157,7 @@ const HISTORY_TIMELINE_PAGE_COPY: Record<string, HistoryTimelinePageCopy> = {
   styleUrls: ['./history-timeline-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HistoryTimelineStateFacade],
-  imports: [PageStateComponent, ImageDisplayComponent, RouterLink]
+  imports: [PageStateComponent, ImageDisplayComponent, PublicSharePanelComponent, RouterLink]
 })
 export class HistoryTimelinePageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

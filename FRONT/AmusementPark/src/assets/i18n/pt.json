@@ -3805,6 +3805,31 @@
       "description": "Envia a previsão de {{title}} a alguém que esteja a preparar a visita.",
       "text": "Verifica a meteorologia de {{title}} no AmusementPark."
     },
+    "openingHours": {
+      "title": "Partilhar estes horários",
+      "description": "Envia os horários de {{title}} a alguém que esteja a preparar a visita.",
+      "text": "Verifica os horários de {{title}} no AmusementPark."
+    },
+    "parkMap": {
+      "title": "Partilhar este mapa",
+      "description": "Envia o mapa de {{title}} a alguém que esteja a planear o percurso.",
+      "text": "Abre o mapa de {{title}} no AmusementPark."
+    },
+    "parkImages": {
+      "title": "Partilhar estas imagens",
+      "description": "Envia imagens de {{title}} a alguém que queira sentir o ambiente do lugar.",
+      "text": "Vê imagens de {{title}} no AmusementPark."
+    },
+    "parkZones": {
+      "title": "Partilhar estas zonas",
+      "description": "Envia as zonas de {{title}} a alguém que esteja a preparar a visita.",
+      "text": "Explora as zonas de {{title}} no AmusementPark."
+    },
+    "parkZone": {
+      "title": "Partilhar esta zona",
+      "description": "Envia esta zona a alguém que esteja a organizar o percurso.",
+      "text": "Descobre {{title}} no AmusementPark."
+    },
     "parkItems": {
       "title": "Partilhar estas atrações e locais",
       "description": "Envia este guia a alguém que esteja a preparar a visita.",
@@ -3813,6 +3838,26 @@
     "parkItem": {
       "title": "Partilhar esta ficha",
       "description": "Envia esta página a alguém interessado em {{title}}.",
+      "text": "Descobre {{title}} no AmusementPark."
+    },
+    "itemImages": {
+      "title": "Partilhar estas imagens",
+      "description": "Envia imagens de {{title}} a alguém que queira descobri-lo.",
+      "text": "Vê imagens de {{title}} no AmusementPark."
+    },
+    "historyTimeline": {
+      "title": "Partilhar esta linha do tempo",
+      "description": "Envia a história de {{title}} a alguém que goste de seguir marcos importantes.",
+      "text": "Explora a história de {{title}} no AmusementPark."
+    },
+    "historyArticle": {
+      "title": "Partilhar este artigo",
+      "description": "Envia este artigo a alguém interessado em {{title}}.",
+      "text": "Lê {{title}} no AmusementPark."
+    },
+    "reference": {
+      "title": "Partilhar este perfil",
+      "description": "Envia este perfil a alguém que queira saber mais sobre {{title}}.",
       "text": "Descobre {{title}} no AmusementPark."
     },
     "videos": {

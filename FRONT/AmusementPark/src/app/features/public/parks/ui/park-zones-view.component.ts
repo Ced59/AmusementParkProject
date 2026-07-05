@@ -8,6 +8,7 @@ import { PageStateComponent } from '@shared/components/page-state/page-state.com
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkZonesPageViewModel } from '../models/park-zone-page.model';
 
 @Component({
@@ -26,6 +27,7 @@ import { ParkZonesPageViewModel } from '../models/park-zone-page.model';
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
+    PublicSharePanelComponent,
     UiSurfaceDirective
   ]
 })

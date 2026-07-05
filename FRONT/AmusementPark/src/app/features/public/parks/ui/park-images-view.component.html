@@ -131,6 +131,15 @@
         </section>
       }
       </div>
+
+      <app-public-share-panel
+        targetType="Park"
+        [targetId]="currentPark.id ?? null"
+        [targetTitle]="currentPark.name ?? null"
+        titleKey="shareSocial.parkImages.title"
+        descriptionKey="shareSocial.parkImages.description"
+        textKey="shareSocial.parkImages.text">
+      </app-public-share-panel>
     </section>
   }
 </app-page-state>
