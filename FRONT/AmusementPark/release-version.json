@@ -1,6 +1,20 @@
 {
-  "version": "3.4.2",
+  "version": "3.4.3",
   "history": [
+    {
+      "version": "3.4.3",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Les rendus de partage en production sont mieux alignés.",
+        "en": "Production share renders are better aligned.",
+        "de": "Produktionsvorschauen beim Teilen sind besser abgestimmt.",
+        "nl": "Productieweergaven voor delen zijn beter afgestemd.",
+        "it": "I rendering di condivisione in produzione sono meglio allineati.",
+        "es": "Los renderizados de compartición en producción quedan mejor alineados.",
+        "pl": "Produkcyjne rendery udostępniania są lepiej dopasowane.",
+        "pt": "As renderizações de partilha em produção ficam melhor alinhadas."
+      }
+    },
     {
       "version": "3.4.2",
       "releasedAt": "2026-07-05",
