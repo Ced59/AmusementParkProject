@@ -1,6 +1,20 @@
 {
-  "version": "3.3.19",
+  "version": "3.3.20",
   "history": [
+    {
+      "version": "3.3.20",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Les titres de partage sont ajustés.",
+        "en": "Share titles are adjusted.",
+        "de": "Titel beim Teilen sind angepasst.",
+        "nl": "Titels bij het delen zijn aangepast.",
+        "it": "I titoli di condivisione sono regolati.",
+        "es": "Los títulos al compartir se ajustan.",
+        "pl": "Tytuły udostępniania zostały dopasowane.",
+        "pt": "Os títulos de partilha foram ajustados."
+      }
+    },
     {
       "version": "3.3.19",
       "releasedAt": "2026-07-05",

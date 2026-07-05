@@ -155,60 +155,60 @@ const RESPONSIVE_IMAGE_VERSION: string = '2';
 
 const HISTORY_SEO_COPY: Record<string, HistorySeoCopy> = {
   fr: {
-    timelineTitle: (title: string): string => `Chronologie historique : ${title}`,
-    articleTitle: (title: string): string => `Article historique : ${title}`,
+    timelineTitle: (title: string): string => title,
+    articleTitle: (title: string): string => `Article : ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Histoire de ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Explore les dates clés, changements, incidents et grands jalons de ${ownerName}.`,
-    articleDescription: (ownerName: string, dateLabel: string): string => `Article historique sur ${ownerName}, autour de ${dateLabel}.`
+    articleDescription: (ownerName: string, dateLabel: string): string => `Article sur ${ownerName}, autour de ${dateLabel}.`
   },
   en: {
-    timelineTitle: (title: string): string => `History timeline: ${title}`,
-    articleTitle: (title: string): string => `History article: ${title}`,
+    timelineTitle: (title: string): string => title,
+    articleTitle: (title: string): string => `Article: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `${ownerName} history`,
     timelineDescription: (ownerName: string): string => `Explore key dates, changes, incidents and major milestones for ${ownerName}.`,
-    articleDescription: (ownerName: string, dateLabel: string): string => `History article about ${ownerName}, around ${dateLabel}.`
+    articleDescription: (ownerName: string, dateLabel: string): string => `Article about ${ownerName}, around ${dateLabel}.`
   },
   de: {
-    timelineTitle: (title: string): string => `Historische Zeitleiste: ${title}`,
-    articleTitle: (title: string): string => `Historischer Artikel: ${title}`,
+    timelineTitle: (title: string): string => title,
+    articleTitle: (title: string): string => `Artikel: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Geschichte von ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Entdecke die Schlüsseldaten, Änderungen, Vorfälle und großen Meilensteine von ${ownerName}.`,
-    articleDescription: (ownerName: string, dateLabel: string): string => `Historischer Artikel über ${ownerName}, rund um ${dateLabel}.`
+    articleDescription: (ownerName: string, dateLabel: string): string => `Artikel über ${ownerName}, rund um ${dateLabel}.`
   },
   nl: {
-    timelineTitle: (title: string): string => `Historische tijdlijn: ${title}`,
-    articleTitle: (title: string): string => `Historisch artikel: ${title}`,
+    timelineTitle: (title: string): string => title,
+    articleTitle: (title: string): string => `Artikelpagina: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Geschiedenis van ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Ontdek de sleuteldatums, veranderingen, incidenten en grote mijlpalen van ${ownerName}.`,
-    articleDescription: (ownerName: string, dateLabel: string): string => `Historisch artikel over ${ownerName}, rond ${dateLabel}.`
+    articleDescription: (ownerName: string, dateLabel: string): string => `Artikel over ${ownerName}, rond ${dateLabel}.`
   },
   it: {
-    timelineTitle: (title: string): string => `Cronologia storica: ${title}`,
-    articleTitle: (title: string): string => `Articolo storico: ${title}`,
+    timelineTitle: (title: string): string => title,
+    articleTitle: (title: string): string => `Articolo: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Storia di ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Esplora le date chiave, i cambiamenti, gli incidenti e le grandi tappe di ${ownerName}.`,
-    articleDescription: (ownerName: string, dateLabel: string): string => `Articolo storico su ${ownerName}, intorno al ${dateLabel}.`
+    articleDescription: (ownerName: string, dateLabel: string): string => `Articolo su ${ownerName}, intorno al ${dateLabel}.`
   },
   es: {
-    timelineTitle: (title: string): string => `Cronología histórica: ${title}`,
-    articleTitle: (title: string): string => `Artículo histórico: ${title}`,
+    timelineTitle: (title: string): string => title,
+    articleTitle: (title: string): string => `Artículo: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Historia de ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Explora las fechas clave, cambios, incidentes y grandes hitos de ${ownerName}.`,
-    articleDescription: (ownerName: string, dateLabel: string): string => `Artículo histórico sobre ${ownerName}, alrededor de ${dateLabel}.`
+    articleDescription: (ownerName: string, dateLabel: string): string => `Artículo sobre ${ownerName}, alrededor de ${dateLabel}.`
   },
   pl: {
-    timelineTitle: (title: string): string => `Oś historii: ${title}`,
-    articleTitle: (title: string): string => `Artykuł historyczny: ${title}`,
+    timelineTitle: (title: string): string => title,
+    articleTitle: (title: string): string => `Artykuł: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `Historia ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Poznaj kluczowe daty, zmiany, incydenty i najważniejsze punkty historii ${ownerName}.`,
-    articleDescription: (ownerName: string, dateLabel: string): string => `Artykuł historyczny o ${ownerName}, wokół daty ${dateLabel}.`
+    articleDescription: (ownerName: string, dateLabel: string): string => `Artykuł o ${ownerName}, w okolicach daty ${dateLabel}.`
   },
   pt: {
-    timelineTitle: (title: string): string => `Cronologia histórica: ${title}`,
-    articleTitle: (title: string): string => `Artigo histórico: ${title}`,
+    timelineTitle: (title: string): string => title,
+    articleTitle: (title: string): string => `Artigo: ${title}`,
     breadcrumbLabel: (ownerName: string): string => `História de ${ownerName}`,
     timelineDescription: (ownerName: string): string => `Explora as datas-chave, mudanças, incidentes e grandes marcos de ${ownerName}.`,
-    articleDescription: (ownerName: string, dateLabel: string): string => `Artigo histórico sobre ${ownerName}, por volta de ${dateLabel}.`
+    articleDescription: (ownerName: string, dateLabel: string): string => `Artigo sobre ${ownerName}, por volta de ${dateLabel}.`
   }
 };
 
@@ -1885,9 +1885,11 @@ export class SeoService {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: HistorySeoCopy = HISTORY_SEO_COPY[normalizedLanguage] ?? HISTORY_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
-    const title: string = `${copy.timelineTitle(timeline.title)} — ${SITE_NAME}`;
-    const description: string = copy.timelineDescription(timeline.ownerName);
-    const imageId: string | null = timeline.events.find((event) => !!event.mainImageId)?.mainImageId ?? null;
+    const titleSubject: string = this.resolveHistoryTimelineTitleSubject(timeline);
+    const contextLabel: string = this.resolveHistoryTimelineContextLabel(timeline) ?? timeline.ownerName;
+    const title: string = `${copy.timelineTitle(titleSubject)} — ${SITE_NAME}`;
+    const description: string = copy.timelineDescription(contextLabel);
+    const imageId: string | null = this.resolveHistoryTimelineSocialImageId(timeline);
 
     this.apply({
       title,
@@ -1896,7 +1898,7 @@ export class SeoService {
       robots: timeline.events.length > 0 ? 'index,follow' : 'noindex,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
       imageUrl: this.resolveImageIdAbsoluteUrl(imageId) ?? undefined,
-      imageAlt: timeline.ownerName,
+      imageAlt: contextLabel,
       jsonLd: [
         this.buildHistoryTimelineBreadcrumbJsonLd(timeline, seoUrl),
         this.buildHistoryTimelineJsonLd(timeline, seoUrl, description)
@@ -2359,6 +2361,39 @@ export class SeoService {
     }
 
     return articleJsonLd;
+  }
+
+  private resolveHistoryTimelineTitleSubject(timeline: HistoryTimelinePageViewModel): string {
+    const title: string = this.normalizeOptionalText(timeline.title) ?? timeline.ownerName;
+    const contextLabel: string | null = this.resolveHistoryTimelineContextLabel(timeline, true);
+    return contextLabel ? `${title} - ${contextLabel}` : title;
+  }
+
+  private resolveHistoryTimelineContextLabel(timeline: HistoryTimelinePageViewModel, omitNamesAlreadyInTitle: boolean = false): string | null {
+    const names: string[] = [];
+    const title: string | null = omitNamesAlreadyInTitle ? timeline.title : null;
+    this.appendUniqueHistoryContextName(names, timeline.parkItem?.name, title);
+    this.appendUniqueHistoryContextName(names, timeline.park?.name, title);
+
+    if (names.length > 0) {
+      return names.join(' - ');
+    }
+
+    return omitNamesAlreadyInTitle ? null : timeline.ownerName;
+  }
+
+  private resolveHistoryTimelineSocialImageId(timeline: HistoryTimelinePageViewModel): string | null {
+    for (const event of timeline.events) {
+      const eventImageId: string | null = this.normalizeOptionalText(event.mainImageId)
+        ?? this.normalizeOptionalText(event.mainImage?.id);
+
+      if (eventImageId) {
+        return eventImageId;
+      }
+    }
+
+    return this.normalizeOptionalText(timeline.parkItem?.mainImageId)
+      ?? this.normalizeOptionalText(timeline.park?.currentLogoImageId);
   }
 
   private resolveHistoryArticleContextLabel(article: HistoryArticlePageViewModel, omitNamesAlreadyInTitle: boolean): string | null {
