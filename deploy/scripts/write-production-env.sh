@@ -130,7 +130,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line SSR_INTERNAL_BASE_URL "$(value_or_default SSR_INTERNAL_BASE_URL 'http://front:4000')"
   write_line SSR_PAGE_CACHE_SECONDS "$(value_or_default SSR_PAGE_CACHE_SECONDS '86400')"
   write_line SSR_PAGE_CACHE_MAX_ENTRIES "$(value_or_default SSR_PAGE_CACHE_MAX_ENTRIES '2000')"
-  write_line SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL "$(value_or_default SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL 'no-cache, max-age=0, must-revalidate')"
+  write_line SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL "$(value_or_default SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL 'no-store, max-age=0')"
   write_line SSR_PAGE_CACHE_MAX_HTML_BYTES "$(value_or_default SSR_PAGE_CACHE_MAX_HTML_BYTES '2097152')"
   write_line SSR_PUBLIC_HTML_SITEMAP_PAGE_CACHE_MAX_HTML_BYTES "$(value_or_default SSR_PUBLIC_HTML_SITEMAP_PAGE_CACHE_MAX_HTML_BYTES '10485760')"
   write_line SSR_STALE_PAGE_CACHE_SECONDS "$(value_or_default SSR_STALE_PAGE_CACHE_SECONDS '600')"

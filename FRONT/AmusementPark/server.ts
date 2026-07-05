@@ -60,7 +60,7 @@ const renderQueueWarningThreshold = normalizeInteger(process.env['SSR_RENDER_QUE
 const assetMissLogSampleRate = normalizeInteger(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'], 25, 0, Number.MAX_SAFE_INTEGER);
 const csrFallbackLogSampleRate = normalizeInteger(process.env['SSR_CSR_FALLBACK_LOG_SAMPLE_RATE'], 100, 0, Number.MAX_SAFE_INTEGER);
 const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ?? 'public, max-age=60, stale-while-revalidate=300';
-const pageCacheBrowserCacheControl = process.env['SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
+const pageCacheBrowserCacheControl = process.env['SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL'] ?? 'no-store, max-age=0';
 const seoDocumentBrowserCacheControl = process.env['SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
 const immutableBuildAssetCacheControl = 'public, max-age=31536000, immutable';
 const revalidatedStaticAssetCacheControl = 'no-cache, max-age=0, must-revalidate';

@@ -1,6 +1,20 @@
 {
-  "version": "3.4.1",
+  "version": "3.4.2",
   "history": [
+    {
+      "version": "3.4.2",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Les aperçus partagés évitent mieux les anciens rendus.",
+        "en": "Shared previews avoid stale renders more reliably.",
+        "de": "Geteilte Vorschauen vermeiden veraltete Darstellungen zuverlässiger.",
+        "nl": "Gedeelde previews vermijden oude weergaven betrouwbaarder.",
+        "it": "Le anteprime condivise evitano meglio i vecchi rendering.",
+        "es": "Las vistas previas compartidas evitan mejor renderizados antiguos.",
+        "pl": "Udostępniane podglądy skuteczniej unikają starych renderów.",
+        "pt": "As pré-visualizações partilhadas evitam melhor renderizações antigas."
+      }
+    },
     {
       "version": "3.4.1",
       "releasedAt": "2026-07-05",
