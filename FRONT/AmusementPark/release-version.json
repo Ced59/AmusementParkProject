@@ -1,6 +1,20 @@
 {
-  "version": "3.3.16",
+  "version": "3.3.17",
   "history": [
+    {
+      "version": "3.3.17",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Les mises en ligne restent plus fiables.",
+        "en": "Deployments stay more reliable.",
+        "de": "Bereitstellungen bleiben zuverlässiger.",
+        "nl": "Publicaties blijven betrouwbaarder.",
+        "it": "Le pubblicazioni restano più affidabili.",
+        "es": "Las publicaciones siguen siendo más fiables.",
+        "pl": "Wdrożenia pozostają bardziej niezawodne.",
+        "pt": "As publicações continuam mais fiáveis."
+      }
+    },
     {
       "version": "3.3.16",
       "releasedAt": "2026-07-05",
