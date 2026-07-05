@@ -47,6 +47,7 @@ const diskPageCacheDirectory = process.env['SSR_DISK_PAGE_CACHE_DIR'] ?? '/tmp/a
 const diskPageCacheMaxBytes = normalizeInteger(process.env['SSR_DISK_PAGE_CACHE_MAX_BYTES'], 4 * 1024 * 1024 * 1024, 0, Number.MAX_SAFE_INTEGER);
 const diskPageCacheBudgetCheckEveryWrites = normalizeInteger(process.env['SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES'], 100, 1, Number.MAX_SAFE_INTEGER);
 const pageCacheMaxHtmlBytes = normalizeInteger(process.env['SSR_PAGE_CACHE_MAX_HTML_BYTES'], 2 * 1024 * 1024, 0, Number.MAX_SAFE_INTEGER);
+const publicHtmlSitemapPageCacheMaxHtmlBytes = normalizeInteger(process.env['SSR_PUBLIC_HTML_SITEMAP_PAGE_CACHE_MAX_HTML_BYTES'], 10 * 1024 * 1024, 0, Number.MAX_SAFE_INTEGER);
 const seoDocumentCacheTtlSeconds = normalizeInteger(process.env['SSR_SEO_DOCUMENT_CACHE_SECONDS'], 0, 0, 31_536_000);
 const seoDocumentCacheMaxEntries = normalizeInteger(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'], 128, 0, Number.MAX_SAFE_INTEGER);
 const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
@@ -1516,6 +1517,7 @@ function run(): void {
     console.log(`SSR disk page cache: ${diskPageCacheEnabled ? 'enabled' : 'disabled'} / ${diskPageCacheDirectory} / ${diskPageCacheMaxBytes} bytes`);
     console.log(`SSR disk page cache budget check: every ${diskPageCacheBudgetCheckEveryWrites} writes`);
     console.log(`SSR page cache max HTML bytes: ${pageCacheMaxHtmlBytes}`);
+    console.log(`SSR public HTML sitemap page cache max HTML bytes: ${publicHtmlSitemapPageCacheMaxHtmlBytes}`);
     console.log(`SSR public page cache ignores analytics cookies: ${pageCacheAllowAuthenticatedPublicHtml}`);
     console.log(`SSR technical stats persistence: ${technicalStatsPersistenceEnabled ? 'enabled' : 'disabled'} / ${technicalStatsPersistenceDirectory} / retention=${technicalStatsRetentionDays}d / flush=${technicalStatsPersistenceFlushIntervalSeconds}s`);
     console.log(`SSR page browser Cache-Control: ${pageCacheBrowserCacheControl}`);
@@ -2152,8 +2154,9 @@ function getCachedPage(cacheKey: string): PageCacheEntry | null {
 
 function setCachedPage(cacheKey: string, statusCode: number, html: string): void {
   const htmlByteLength: number = Buffer.byteLength(html, 'utf8');
-  if (pageCacheMaxHtmlBytes > 0 && htmlByteLength > pageCacheMaxHtmlBytes) {
-    console.warn(`SSR page cache skipped: htmlSize=${htmlByteLength}, max=${pageCacheMaxHtmlBytes}, key=${cacheKey}`);
+  const maxHtmlBytes: number = resolvePageCacheMaxHtmlBytes(cacheKey);
+  if (maxHtmlBytes > 0 && htmlByteLength > maxHtmlBytes) {
+    console.warn(`SSR page cache skipped: htmlSize=${htmlByteLength}, max=${maxHtmlBytes}, key=${cacheKey}`);
     return;
   }
 
@@ -2175,6 +2178,27 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
     }
 
     pageCache.delete(oldestKey);
+  }
+}
+
+function resolvePageCacheMaxHtmlBytes(cacheKey: string): number {
+  if (pageCacheMaxHtmlBytes <= 0) {
+    return 0;
+  }
+
+  if (isPublicHtmlSitemapPageCacheKey(cacheKey)) {
+    return publicHtmlSitemapPageCacheMaxHtmlBytes;
+  }
+
+  return pageCacheMaxHtmlBytes;
+}
+
+function isPublicHtmlSitemapPageCacheKey(cacheKey: string): boolean {
+  try {
+    const cacheUrl = new URL(cacheKey);
+    return /^\/[a-z]{2}\/sitemap\/?$/i.test(cacheUrl.pathname);
+  } catch {
+    return /^https?:\/\/[^/]+\/[a-z]{2}\/sitemap\/?$/i.test(cacheKey);
   }
 }
 

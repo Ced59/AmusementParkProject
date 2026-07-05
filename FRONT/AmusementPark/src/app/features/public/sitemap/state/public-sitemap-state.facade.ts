@@ -27,8 +27,9 @@ export class PublicSitemapStateFacade {
   ) {
   }
 
-  loadRoot(language: string, includeDescendants: boolean = false): void {
+  loadRoot(language: string, includeDescendants: boolean = false, loadDescendantsInInitialRequest: boolean = false): void {
     const normalizedLanguage: string = language || 'en';
+    const includeDescendantsInRootRequest: boolean = includeDescendants && loadDescendantsInInitialRequest;
     const sequence: number = this.rootLoadSequence + 1;
     this.rootLoadSequence = sequence;
     this.currentLanguage = normalizedLanguage;
@@ -41,7 +42,7 @@ export class PublicSitemapStateFacade {
     this.loadingSignal.set(true);
     this.errorKeySignal.set(null);
 
-    this.dataPort.getNodes(normalizedLanguage, null, false)
+    this.dataPort.getNodes(normalizedLanguage, null, includeDescendantsInRootRequest)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (nodes: PublicHtmlSitemapNode[]): void => {
@@ -53,7 +54,7 @@ export class PublicSitemapStateFacade {
           this.applyEmbeddedChildren(nodes);
           this.loadingSignal.set(false);
 
-          if (includeDescendants) {
+          if (includeDescendants && !includeDescendantsInRootRequest) {
             this.loadEmbeddedDescendants(normalizedLanguage, sequence);
           }
         },

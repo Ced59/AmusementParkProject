@@ -1,6 +1,20 @@
 {
-  "version": "3.3.15",
+  "version": "3.3.16",
   "history": [
+    {
+      "version": "3.3.16",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Le plan du site reste mieux lisible pour les moteurs.",
+        "en": "The sitemap stays easier for search engines to read.",
+        "de": "Die Sitemap bleibt für Suchmaschinen besser lesbar.",
+        "nl": "De sitemap blijft beter leesbaar voor zoekmachines.",
+        "it": "La sitemap resta più leggibile per i motori di ricerca.",
+        "es": "El mapa del sitio sigue siendo más legible para los buscadores.",
+        "pl": "Mapa strony pozostaje czytelniejsza dla wyszukiwarek.",
+        "pt": "O mapa do site continua mais legível para os motores de pesquisa."
+      }
+    },
     {
       "version": "3.3.15",
       "releasedAt": "2026-07-05",
