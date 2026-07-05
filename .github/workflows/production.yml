@@ -346,7 +346,7 @@ jobs:
       - dependency-security
     concurrency:
       group: production-deploy-${{ github.ref_name }}
-      cancel-in-progress: false
+      cancel-in-progress: true
     if: >-
       ${{
         github.event_name != 'pull_request' &&
@@ -470,18 +470,44 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check deployment freshness
+        id: deployment-freshness
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ "${GITHUB_REF_NAME}" != "master" ] && [ "${GITHUB_REF_NAME}" != "main" ]; then
+            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          git fetch --no-tags --prune origin "${GITHUB_REF_NAME}"
+          latest_sha="$(git rev-parse "origin/${GITHUB_REF_NAME}")"
+          if [ "${GITHUB_SHA}" != "${latest_sha}" ]; then
+            echo "::notice::Skipping stale production deploy for ${GITHUB_SHA}; latest ${GITHUB_REF_NAME} is ${latest_sha}."
+            echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
 
       - name: Confirm deployment context
+        if: steps.deployment-freshness.outputs.should_deploy == 'true'
         run: |
           echo "Deployment authorized for event=${{ github.event_name }} ref=${{ github.ref_name }}"
 
       - name: Generate production .env
+        if: steps.deployment-freshness.outputs.should_deploy == 'true'
         run: |
           chmod +x deploy/scripts/write-production-env.sh deploy/scripts/validate-production-env.sh deploy/scripts/env-loader.sh
           deploy/scripts/write-production-env.sh deploy/.env
           deploy/scripts/validate-production-env.sh deploy/.env
 
       - name: Prepare deployment bundle
+        if: steps.deployment-freshness.outputs.should_deploy == 'true'
         run: |
           tar -czf amusementpark-deploy.tgz \
             -C deploy \
@@ -491,6 +517,7 @@ jobs:
             scripts
 
       - name: Configure SSH
+        if: steps.deployment-freshness.outputs.should_deploy == 'true'
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT || '22' }}
@@ -529,6 +556,7 @@ jobs:
           fi
 
       - name: Upload deployment bundle
+        if: steps.deployment-freshness.outputs.should_deploy == 'true'
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_SSH_USER: ${{ secrets.VPS_SSH_USER }}
@@ -541,6 +569,7 @@ jobs:
           ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "tar -xzf /tmp/amusementpark-deploy.tgz -C '${VPS_DEPLOY_PATH}' && rm /tmp/amusementpark-deploy.tgz && chmod +x '${VPS_DEPLOY_PATH}'/scripts/*.sh"
 
       - name: Deploy on VPS
+        if: steps.deployment-freshness.outputs.should_deploy == 'true'
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_SSH_USER: ${{ secrets.VPS_SSH_USER }}
