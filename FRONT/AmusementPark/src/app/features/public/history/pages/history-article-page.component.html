@@ -13,6 +13,19 @@
     <article class="history-article">
       <header class="history-article__hero">
         <div class="history-article__hero-copy">
+          @let currentParkItemName = contextParkItemName(currentArticle);
+          @let currentParkName = contextParkName(currentArticle);
+          @if (currentParkItemName || currentParkName) {
+            <div class="history-article__context">
+              @if (currentParkItemName) {
+                <app-ui-chip tone="sky" iconClass="pi pi-star">{{ currentParkItemName }}</app-ui-chip>
+              }
+              @if (currentParkName) {
+                <app-ui-chip tone="gold" iconClass="pi pi-map-marker">{{ currentParkName }}</app-ui-chip>
+              }
+            </div>
+          }
+
           <p class="history-article__kicker">
             <i class="pi pi-history" aria-hidden="true"></i>
             <span>{{ currentArticle.dateLabel }} - {{ currentArticle.eventTypeLabel }}</span>
@@ -124,7 +137,7 @@
       <app-public-share-panel
         targetType="Page"
         [targetId]="currentArticle.event.id ?? null"
-        [targetTitle]="currentArticle.title"
+        [targetTitle]="shareTitle(currentArticle)"
         titleKey="shareSocial.historyArticle.title"
         descriptionKey="shareSocial.historyArticle.description"
         textKey="shareSocial.historyArticle.text">

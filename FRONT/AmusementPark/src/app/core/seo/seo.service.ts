@@ -1908,18 +1908,23 @@ export class SeoService {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: HistorySeoCopy = HISTORY_SEO_COPY[normalizedLanguage] ?? HISTORY_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
-    const descriptionFallback: string = copy.articleDescription(article.ownerName, article.dateLabel);
+    const titleContextLabel: string | null = this.resolveHistoryArticleContextLabel(article, true);
+    const descriptionContextLabel: string | null = this.resolveHistoryArticleContextLabel(article, false);
+    const titleSubject: string = titleContextLabel ? `${article.title} - ${titleContextLabel}` : article.title;
+    const descriptionOwner: string = descriptionContextLabel ?? article.ownerName;
+    const descriptionFallback: string = copy.articleDescription(descriptionOwner, article.dateLabel);
     const description: string = truncateSeoText(normalizeSeoText(article.summary, descriptionFallback), 160);
+    const imageId: string | null = this.resolveHistoryArticleSocialImageId(article);
 
     this.apply({
-      title: `${copy.articleTitle(article.title)} — ${SITE_NAME}`,
+      title: `${copy.articleTitle(titleSubject)} — ${SITE_NAME}`,
       description,
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
       openGraphType: 'article',
-      imageUrl: this.resolveImageIdAbsoluteUrl(article.mainImageId) ?? undefined,
-      imageAlt: article.title,
+      imageUrl: this.resolveImageIdAbsoluteUrl(imageId) ?? undefined,
+      imageAlt: titleSubject,
       jsonLd: [
         this.buildHistoryArticleBreadcrumbJsonLd(article, seoUrl),
         this.buildHistoryArticleJsonLd(article, seoUrl, description)
@@ -2336,6 +2341,7 @@ export class SeoService {
 
   private buildHistoryArticleJsonLd(article: HistoryArticlePageViewModel, url: string, description: string): unknown {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const contextLabel: string | null = this.resolveHistoryArticleContextLabel(article, false);
     const articleJsonLd: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'Article',
@@ -2344,15 +2350,48 @@ export class SeoService {
       url: canonicalUrl,
       datePublished: this.resolveHistoryEventDatePublished(article),
       dateModified: article.event.updatedAtUtc,
-      about: article.ownerName
+      about: contextLabel ?? article.ownerName
     };
 
-    const imageUrl: string | null = this.resolveImageIdAbsoluteUrl(article.mainImageId);
+    const imageUrl: string | null = this.resolveImageIdAbsoluteUrl(this.resolveHistoryArticleSocialImageId(article));
     if (imageUrl) {
       articleJsonLd['image'] = imageUrl;
     }
 
     return articleJsonLd;
+  }
+
+  private resolveHistoryArticleContextLabel(article: HistoryArticlePageViewModel, omitNamesAlreadyInTitle: boolean): string | null {
+    const names: string[] = [];
+    this.appendUniqueHistoryContextName(names, article.parkItem?.name, omitNamesAlreadyInTitle ? article.title : null);
+    this.appendUniqueHistoryContextName(names, article.contextPark?.name, omitNamesAlreadyInTitle ? article.title : null);
+    this.appendUniqueHistoryContextName(names, article.park?.name, omitNamesAlreadyInTitle ? article.title : null);
+
+    return names.length > 0 ? names.join(' - ') : null;
+  }
+
+  private resolveHistoryArticleSocialImageId(article: HistoryArticlePageViewModel): string | null {
+    return this.normalizeOptionalText(article.mainImageId)
+      ?? this.normalizeOptionalText(article.mainImage?.id)
+      ?? this.normalizeOptionalText(article.parkItem?.mainImageId)
+      ?? this.normalizeOptionalText(article.contextPark?.currentLogoImageId)
+      ?? this.normalizeOptionalText(article.park?.currentLogoImageId);
+  }
+
+  private appendUniqueHistoryContextName(names: string[], value: string | null | undefined, title: string | null): void {
+    const normalizedValue: string | null = this.normalizeOptionalText(value);
+
+    if (!normalizedValue) {
+      return;
+    }
+
+    if (title && title.toLocaleLowerCase().includes(normalizedValue.toLocaleLowerCase())) {
+      return;
+    }
+
+    if (!names.some((existingValue: string): boolean => existingValue.toLocaleLowerCase() === normalizedValue.toLocaleLowerCase())) {
+      names.push(normalizedValue);
+    }
   }
 
   private resolveHistoryEventDatePublished(article: HistoryArticlePageViewModel): string {
