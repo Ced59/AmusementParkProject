@@ -1,6 +1,20 @@
 {
-  "version": "3.3.21",
+  "version": "3.4.0",
   "history": [
+    {
+      "version": "3.4.0",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "La recherche mobile propose plus vite les bons résultats.",
+        "en": "Mobile search suggests helpful results faster.",
+        "de": "Die mobile Suche schlägt passende Ergebnisse schneller vor.",
+        "nl": "Mobiel zoeken toont sneller passende suggesties.",
+        "it": "La ricerca mobile propone più rapidamente risultati utili.",
+        "es": "La búsqueda móvil sugiere antes resultados útiles.",
+        "pl": "Wyszukiwanie mobilne szybciej podpowiada trafne wyniki.",
+        "pt": "A pesquisa móvel sugere resultados úteis mais depressa."
+      }
+    },
     {
       "version": "3.3.21",
       "releasedAt": "2026-07-05",

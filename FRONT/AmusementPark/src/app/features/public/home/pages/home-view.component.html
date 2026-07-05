@@ -127,26 +127,91 @@
     </div>
   </section>
 
-  <app-ui-search-panel
-    id="home-search-panel"
-    class="home-command-center"
-    panelId="home-search-results"
-    searchInputId="home-search-input"
-    kickerIconClass="pi pi-search"
-    kickerLabelKey="home.search.kicker"
-    titleKey="home.search.commandTitle"
-    searchLabelKey="home.placeholder_search"
-    searchPlaceholderKey="home.placeholder_search"
-    clearActionLabelKey="parks.search.clear"
-    [searchTerm]="searchTerm()"
-    [filters]="searchFilters()"
-    (searchTermChange)="onSearchInput($event)"
-    (filterChanged)="onFilterChanged($event)"
-    (clearClicked)="onClearSearch()">
-    <p filters-subtitle class="home-command-center__subtitle">
-      {{ 'home.search.commandSubtitle' | translate }}
-    </p>
-  </app-ui-search-panel>
+  <div class="home-command-center-shell">
+    <app-ui-search-panel
+      id="home-search-panel"
+      class="home-command-center"
+      panelId="home-search-results"
+      searchInputId="home-search-input"
+      kickerIconClass="pi pi-search"
+      kickerLabelKey="home.search.kicker"
+      titleKey="home.search.commandTitle"
+      searchLabelKey="home.placeholder_search"
+      searchPlaceholderKey="home.placeholder_search"
+      clearActionLabelKey="parks.search.clear"
+      [searchTerm]="searchTerm()"
+      [filters]="searchFilters()"
+      (searchTermChange)="onSearchInput($event)"
+      (filterChanged)="onFilterChanged($event)"
+      (clearClicked)="onClearSearch()">
+      <p filters-subtitle class="home-command-center__subtitle">
+        {{ 'home.search.commandSubtitle' | translate }}
+      </p>
+    </app-ui-search-panel>
+
+    @if (hasPerformedSearch() && searchState().kind === 'ready' && searchSuggestions.length > 0) {
+      <section class="home-search-suggestions" aria-labelledby="home-search-suggestions-title">
+        <div class="home-search-suggestions__header">
+          <i class="pi pi-bolt" aria-hidden="true"></i>
+          <h2 id="home-search-suggestions-title">{{ 'home.search.suggestionsTitle' | translate }}</h2>
+        </div>
+
+        <ul class="home-search-suggestions__list">
+          @for (item of searchSuggestions; track item.originalId) {
+            @if (buildSearchResultCard(item); as suggestionCard) {
+              <li>
+                @if (suggestionCard.detailLink; as link) {
+                  <a
+                    [class]="'home-search-suggestion home-search-suggestion--' + suggestionCard.tone"
+                    [routerLink]="link"
+                    [attr.aria-label]="suggestionCard.title">
+                    <span class="home-search-suggestion__icon">
+                      <i [class]="suggestionCard.iconClass" aria-hidden="true"></i>
+                    </span>
+
+                    <span class="home-search-suggestion__content">
+                      <strong>{{ suggestionCard.title }}</strong>
+                      @if (suggestionCard.metaParts.length > 0) {
+                        <span class="home-search-suggestion__meta">
+                          @for (metaPart of suggestionCard.metaParts; track metaPart) {
+                            <span>{{ metaPart }}</span>
+                          }
+                        </span>
+                      }
+                    </span>
+
+                    <span class="home-search-suggestion__category">{{ suggestionCard.categoryLabelKey | translate }}</span>
+                  </a>
+                } @else {
+                  <button
+                    [class]="'home-search-suggestion home-search-suggestion--' + suggestionCard.tone"
+                    type="button"
+                    (click)="onSuggestionSelected(suggestionCard.title)">
+                    <span class="home-search-suggestion__icon">
+                      <i [class]="suggestionCard.iconClass" aria-hidden="true"></i>
+                    </span>
+
+                    <span class="home-search-suggestion__content">
+                      <strong>{{ suggestionCard.title }}</strong>
+                      @if (suggestionCard.metaParts.length > 0) {
+                        <span class="home-search-suggestion__meta">
+                          @for (metaPart of suggestionCard.metaParts; track metaPart) {
+                            <span>{{ metaPart }}</span>
+                          }
+                        </span>
+                      }
+                    </span>
+
+                    <span class="home-search-suggestion__category">{{ suggestionCard.categoryLabelKey | translate }}</span>
+                  </button>
+                }
+              </li>
+            }
+          }
+        </ul>
+      </section>
+    }
+  </div>
 
   @if (!hasPerformedSearch()) {
     <app-empty-state
