@@ -1,6 +1,20 @@
 {
-  "version": "3.3.20",
+  "version": "3.3.21",
   "history": [
+    {
+      "version": "3.3.21",
+      "releasedAt": "2026-07-05",
+      "labels": {
+        "fr": "Un rapport de suivi SEO est ajouté.",
+        "en": "An SEO follow-up report is added.",
+        "de": "Ein SEO-Nachverfolgungsbericht wird ergänzt.",
+        "nl": "Een SEO-opvolgrapport is toegevoegd.",
+        "it": "Viene aggiunto un report di follow-up SEO.",
+        "es": "Se añade un informe de seguimiento SEO.",
+        "pl": "Dodano raport kontrolny SEO.",
+        "pt": "É adicionado um relatório de acompanhamento SEO."
+      }
+    },
     {
       "version": "3.3.20",
       "releasedAt": "2026-07-05",

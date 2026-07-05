@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audit production SEO et partage - 5 juillet 2026</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f4ee;
+      --panel: #fffaf2;
+      --panel-strong: #ffffff;
+      --text: #201915;
+      --muted: #6c5d52;
+      --border: #dfd3c5;
+      --accent: #d94b20;
+      --accent-2: #007f8f;
+      --good: #147a3f;
+      --warn: #a05a00;
+      --bad: #a32121;
+      --code: #251f1b;
+      --code-bg: #efe6d9;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #16120f;
+        --panel: #211914;
+        --panel-strong: #2a211c;
+        --text: #f4eee6;
+        --muted: #c9b9aa;
+        --border: #4a3a31;
+        --accent: #ff7a3c;
+        --accent-2: #40c4d8;
+        --good: #51c27a;
+        --warn: #f0b24d;
+        --bad: #ff7979;
+        --code: #f7efe5;
+        --code-bg: #332820;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    main {
+      width: min(100% - 32px, 1180px);
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+
+    header,
+    section {
+      margin: 0 0 22px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 12px 30px rgb(0 0 0 / .06);
+    }
+
+    header {
+      padding: clamp(24px, 4vw, 42px);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--accent) 13%, transparent), transparent 46%),
+        linear-gradient(180deg, var(--panel-strong), var(--panel));
+    }
+
+    section {
+      padding: clamp(18px, 3vw, 28px);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 920px;
+      font-size: clamp(2rem, 4.2vw, 3.5rem);
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 10px 0 0;
+    }
+
+    a {
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    code {
+      padding: .12rem .35rem;
+      border-radius: 5px;
+      background: var(--code-bg);
+      color: var(--code);
+      font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: .92em;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--panel-strong) 88%, transparent);
+      color: var(--muted);
+      font-weight: 800;
+      font-size: .86rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      min-height: 110px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--panel-strong);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--accent);
+      font-size: 1.65rem;
+      line-height: 1.05;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: .82rem;
+      white-space: nowrap;
+    }
+
+    .ok {
+      background: color-mix(in srgb, var(--good) 14%, transparent);
+      color: var(--good);
+    }
+
+    .watch {
+      background: color-mix(in srgb, var(--warn) 16%, transparent);
+      color: var(--warn);
+    }
+
+    .issue {
+      background: color-mix(in srgb, var(--bad) 14%, transparent);
+      color: var(--bad);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--panel-strong);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th,
+    td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+      font-size: .94rem;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--panel) 72%, var(--panel-strong));
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .note {
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent-2);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--accent-2) 9%, transparent);
+    }
+
+    .critical {
+      border-left-color: var(--bad);
+      background: color-mix(in srgb, var(--bad) 8%, transparent);
+    }
+
+    .mono {
+      overflow-wrap: anywhere;
+      font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: .88rem;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Audit production SEO, Open Graph et baisse d'impressions Google</h1>
+    <p>Audit réalisé le <strong>5 juillet 2026</strong> après les déploiements <strong>3.3.16 à 3.3.20</strong>, avec tests depuis le PC local et depuis le VPS en SSH root.</p>
+    <div class="meta">
+      <span class="pill">Production: amusement-parks.fun</span>
+      <span class="pill">Version active: 3.3.20</span>
+      <span class="pill">Commit prod: 04d72ddf</span>
+      <span class="pill">VPS: root@srv486819</span>
+      <span class="pill">Date: 2026-07-05</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Conclusion</h2>
+    <div class="note">
+      <p><strong>La baisse d'impressions Google ne vient pas principalement du déplacement des sitemaps XML à la racine.</strong> Les sitemaps racine sont en 200, les anciens chemins <code>/sitemaps/*.xml</code> redirigent en 308 permanent, et <code>robots.txt</code> pointe bien vers <code>https://amusement-parks.fun/sitemap.xml</code>.</p>
+      <p>La cause la plus probable identifiée est le <strong>cache SSR obsolète du plan de site HTML public</strong> : Googlebot recevait une version très pauvre de <code>/fr/sitemap</code> au lieu de la version complète avec les liens profonds. Cette cause a été corrigée par la PR #360, puis sécurisée par la PR #361 qui empêche un ancien run de redéployer une version obsolète après une version plus récente.</p>
+    </div>
+
+    <div class="grid">
+      <div class="metric">
+        <strong>8 275</strong>
+        <span>liens HTML SSR dans <code>/fr/sitemap</code> en prod 3.3.20</span>
+      </div>
+      <div class="metric">
+        <strong>104/104</strong>
+        <span>sitemaps XML enfants en HTTP 200</span>
+      </div>
+      <div class="metric">
+        <strong>65 968</strong>
+        <span>URLs comptées dans les sitemaps XML</span>
+      </div>
+      <div class="metric">
+        <strong>3.3.20</strong>
+        <span>version confirmée PC, VPS externe et loopback</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cause Racine</h2>
+    <h3>Ce qui n'est pas la cause principale</h3>
+    <ul>
+      <li><code>/sitemap.xml</code> répond en 200 et liste 104 sitemaps enfants, tous à la racine du domaine.</li>
+      <li>Les anciens chemins testés <code>/sitemaps/sitemap.xml</code>, <code>/sitemaps/history-articles-fr.xml</code> et <code>/sitemaps/parks-fr.xml</code> répondent en <code>308 Permanent Redirect</code> vers leur équivalent racine.</li>
+      <li>Google peut suivre ces redirections permanentes. Il peut y avoir un délai de recrawl, mais ce point ne suffit pas à expliquer une chute forte si les pages restent découvertes autrement.</li>
+    </ul>
+
+    <h3>Ce qui explique la chute</h3>
+    <ul>
+      <li>Avant correction, <code>/fr/sitemap</code> avait servi un cache SSR ancien et incomplet à Googlebot : environ 67 Ko et seulement quelques dizaines de liens, au lieu du rendu complet.</li>
+      <li>La page HTML de plan de site est une source d'interliens importante. Si Googlebot reçoit une version sans liens profonds, il perd un signal de découverte interne pour les parcs, items, timelines et articles.</li>
+      <li>Un ancien déploiement production a ensuite pu repasser après un déploiement plus récent, ce qui a remis la prod sur une version antérieure et entretenu le symptôme. La PR #361 bloque maintenant ce scénario.</li>
+    </ul>
+
+    <h3>État après correction</h3>
+    <ul>
+      <li><code>/fr/sitemap</code> sert maintenant 5 702 145 octets et 8 275 liens HTML SSR.</li>
+      <li>Les liens profonds Dennlys Parc, Le Nitro, timeline Nitro et article Nitro sont présents dans le HTML SSR.</li>
+      <li>Les sitemaps XML contiennent la timeline Nitro dans les fichiers <code>history-*.xml</code> et l'article Nitro dans les fichiers <code>history-articles-*.xml</code> pour les 8 langues.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tests PC</h2>
+    <p>Tests faits avec <code>curl.exe</code> depuis le PC local, avec user-agent Googlebot ou Facebook selon le cas.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th>URL testée</th>
+          <th>HTTP</th>
+          <th>SSR</th>
+          <th>Robots</th>
+          <th>OG / Canonical</th>
+          <th>Constat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><code>/fr/home</code></td>
+          <td>200</td>
+          <td><span class="status ok">SSR_CACHE_HIT</span></td>
+          <td><code>index,follow</code></td>
+          <td><code>fr_FR</code>, canonical OK, logo par défaut</td>
+          <td><span class="status ok">OK</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/parks</code></td>
+          <td>200</td>
+          <td><span class="status ok">SSR_CACHE_HIT</span></td>
+          <td><code>index,follow</code></td>
+          <td><code>fr_FR</code>, canonical OK, logo par défaut</td>
+          <td><span class="status ok">OK</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/park/.../dennlys-parc</code></td>
+          <td>200</td>
+          <td><span class="status ok">SSR_CACHE_HIT</span></td>
+          <td><code>index,follow</code></td>
+          <td>Canonical OK, OG title contextualisé, logo par défaut</td>
+          <td><span class="status watch">OG améliorable</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/park/.../le-nitro</code></td>
+          <td>200</td>
+          <td><span class="status ok">SSR_RENDERED</span></td>
+          <td><code>index,follow</code></td>
+          <td>Canonical OK, image API Nitro</td>
+          <td><span class="status ok">OK</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/park/.../le-nitro/history</code> avec Facebook UA</td>
+          <td>200</td>
+          <td><span class="status ok">SSR_CACHE_HIT</span></td>
+          <td><code>index,follow</code></td>
+          <td><code>og:title=Histoire de Le Nitro - Dennlys Parc — Amusement Parks</code>, image API</td>
+          <td><span class="status ok">OK après PR #364</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/park/.../nitro-incident-pigeon-procedures-securite-2026</code> avec Facebook UA</td>
+          <td>200</td>
+          <td><span class="status ok">SSR_CACHE_HIT</span></td>
+          <td><code>index,follow</code></td>
+          <td><code>og:title=Article : Arrêt de Nitro... - Le Nitro - Dennlys Parc</code>, image API</td>
+          <td><span class="status ok">OK après PR #363/#364</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/sitemap</code></td>
+          <td>200</td>
+          <td><span class="status ok">SSR_RENDERED puis SSR_CACHE_HIT</span></td>
+          <td><code>index,follow</code></td>
+          <td>Canonical OK, 8 275 liens HTML</td>
+          <td><span class="status ok">Cause corrigée</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/technical</code></td>
+          <td>200</td>
+          <td><span class="status ok">SSR_RENDERED</span></td>
+          <td><code>index,follow</code></td>
+          <td>Canonical OK, logo par défaut</td>
+          <td><span class="status watch">Copie FR à accentuer</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/not-found</code></td>
+          <td>404</td>
+          <td><span class="status watch">CSR_FALLBACK</span></td>
+          <td><code>X-Robots-Tag: noindex, follow</code></td>
+          <td>Pas de canonical, pas d'OG</td>
+          <td><span class="status ok">OK</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/park/0000.../parc-manquant</code></td>
+          <td>404</td>
+          <td><span class="status ok">SSR_RENDERED</span></td>
+          <td><code>meta robots=index,follow</code></td>
+          <td>Canonical et OG génériques malgré 404</td>
+          <td><span class="status issue">À corriger</span></td>
+        </tr>
+        <tr>
+          <td><code>/fr/admin</code> avec Googlebot UA</td>
+          <td>503</td>
+          <td><span class="status watch">SSR-BOT-UNAVAILABLE</span></td>
+          <td><code>X-Robots-Tag: noindex, follow</code></td>
+          <td>Pas de canonical, pas d'OG</td>
+          <td><span class="status ok">Protégé / non indexable</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sitemaps</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th>Contrôle</th>
+          <th>Résultat</th>
+          <th>Interprétation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><code>GET /sitemap.xml</code></td>
+          <td>200, 12 801 octets, 104 enfants</td>
+          <td><span class="status ok">OK</span> index racine valide.</td>
+        </tr>
+        <tr>
+          <td>104 sitemaps enfants</td>
+          <td>104 en HTTP 200, 65 968 URLs cumulées</td>
+          <td><span class="status ok">OK</span> pas de sitemap enfant cassé.</td>
+        </tr>
+        <tr>
+          <td><code>/sitemaps/sitemap.xml</code></td>
+          <td>308 vers <code>/sitemap.xml</code></td>
+          <td><span class="status ok">OK</span> l'ancien chemin est redirigé proprement.</td>
+        </tr>
+        <tr>
+          <td><code>/sitemaps/history-articles-fr.xml</code></td>
+          <td>308 vers <code>/history-articles-fr.xml</code></td>
+          <td><span class="status ok">OK</span> pas besoin de remettre les fichiers sous <code>/sitemaps</code>.</td>
+        </tr>
+        <tr>
+          <td>Article Nitro</td>
+          <td>Présent dans <code>history-articles-en/fr/es/de/it/pl/nl/pt.xml</code></td>
+          <td><span class="status ok">OK</span> découverte XML multilingue.</td>
+        </tr>
+        <tr>
+          <td>Timeline Nitro</td>
+          <td>Présente dans <code>history-en/fr/es/de/it/pl/nl/pt.xml</code></td>
+          <td><span class="status ok">OK</span> découverte XML multilingue.</td>
+        </tr>
+        <tr>
+          <td><code>/fr/sitemap</code></td>
+          <td>5 702 145 octets, 8 275 liens, liens profonds présents</td>
+          <td><span class="status ok">OK</span> l'ancien symptôme à très faible nombre de liens n'est plus présent.</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tests VPS Root</h2>
+    <p>Connexion SSH root confirmée sur <code>srv486819</code>. Les containers production sont alignés sur le merge #364.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th>Service</th>
+          <th>Image</th>
+          <th>État</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><code>amusementpark-api</code></td>
+          <td class="mono">ghcr.io/ced59/amusementpark-api:04d72ddf223013e05d65143252d09910a63100b2</td>
+          <td><span class="status ok">Up / healthy</span></td>
+        </tr>
+        <tr>
+          <td><code>amusementpark-front</code></td>
+          <td class="mono">ghcr.io/ced59/amusementpark-front:04d72ddf223013e05d65143252d09910a63100b2</td>
+          <td><span class="status ok">Up / healthy</span></td>
+        </tr>
+        <tr>
+          <td><code>version.json</code></td>
+          <td>Externe et loopback</td>
+          <td><span class="status ok">3.3.20</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>URLs critiques depuis le VPS</h3>
+    <ul>
+      <li>Article Nitro : <code>SSR_CACHE_HIT</code>, <code>Seo-Ready=true</code>, <code>og:title=Article : Arrêt de Nitro... - Le Nitro - Dennlys Parc</code>.</li>
+      <li>Timeline Nitro : <code>SSR_CACHE_HIT</code>, <code>Seo-Ready=true</code>, <code>og:title=Histoire de Le Nitro - Dennlys Parc</code>.</li>
+      <li>Plan du site HTML : <code>SSR_CACHE_HIT</code>, <code>Seo-Ready=true</code>, 8 275 liens, article Nitro présent.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Open Graph et Partage</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th>Page</th>
+          <th>Résultat</th>
+          <th>Statut</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Article Nitro</td>
+          <td>Titre contextualisé, image API réelle, type <code>article</code>, locale <code>fr_FR</code>, aucun <code>Article historique</code>.</td>
+          <td><span class="status ok">OK</span></td>
+        </tr>
+        <tr>
+          <td>Timeline Nitro</td>
+          <td>Titre <code>Histoire de Le Nitro - Dennlys Parc</code>, image API réelle, aucun <code>Chronologie historique</code>.</td>
+          <td><span class="status ok">OK</span></td>
+        </tr>
+        <tr>
+          <td>Images OG Nitro</td>
+          <td>URL absolue HTTPS, <code>Content-Type: image/jpeg</code>, cache immutable. L'image renvoyée mesure 586x390 alors que la meta annonce largeur 1200.</td>
+          <td><span class="status watch">À améliorer</span></td>
+        </tr>
+        <tr>
+          <td>Pages génériques</td>
+          <td>Home, liste des parcs, plan du site et dossiers techniques utilisent le logo par défaut.</td>
+          <td><span class="status watch">Acceptable, moins qualitatif</span></td>
+        </tr>
+        <tr>
+          <td>Park detail Dennlys</td>
+          <td>Le titre et la description sont bons, mais l'image OG reste le logo par défaut.</td>
+          <td><span class="status watch">À prioriser après les corrections bloquantes</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>PR Récentes</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th>PR</th>
+          <th>Version</th>
+          <th>But</th>
+          <th>Impact production</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><a href="https://github.com/Ced59/AmusementParkProject/pull/360">#360</a></td>
+          <td>3.3.16</td>
+          <td>Corriger le rendu SSR du plan du site public et autoriser son cache complet.</td>
+          <td><span class="status ok">Correction principale</span> contre la perte de liens internes visibles par Googlebot.</td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/Ced59/AmusementParkProject/pull/361">#361</a></td>
+          <td>3.3.17</td>
+          <td>Empêcher un ancien run <code>master</code> de redéployer une image obsolète.</td>
+          <td><span class="status ok">Correction de fiabilité</span> contre le retour involontaire à une ancienne version.</td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/Ced59/AmusementParkProject/pull/362">#362</a></td>
+          <td>3.3.18</td>
+          <td>Ajouter parc/parkItem et fallback image aux métadonnées sociales des articles.</td>
+          <td><span class="status ok">Partage amélioré</span>, mais encore dépendant du timing SSR.</td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/Ced59/AmusementParkProject/pull/363">#363</a></td>
+          <td>3.3.19</td>
+          <td>Précharger les articles via resolver SSR et autoriser les robots sociaux sur pages froides.</td>
+          <td><span class="status ok">Partage article corrigé</span> même sur cache froid.</td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/Ced59/AmusementParkProject/pull/364">#364</a></td>
+          <td>3.3.20</td>
+          <td>Retirer "historique" des articles et corriger les timelines de partage.</td>
+          <td><span class="status ok">Partage timeline corrigé</span> avec "Histoire de ..." et image réelle.</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Problèmes Restants</h2>
+    <ol>
+      <li>
+        <strong>Pages d'entités manquantes : signaux SEO contradictoires.</strong>
+        <br>Exemple testé : <code>/fr/park/00000000-0000-0000-0000-000000000000/parc-manquant</code> répond bien en HTTP 404, mais le HTML SSR contient <code>meta robots=index,follow</code>, une canonical vers l'URL manquante et des OG génériques. Google devrait respecter le 404, mais il vaut mieux émettre explicitement <code>noindex,follow</code> et éviter une canonical indexable sur une entité absente.
+      </li>
+      <li>
+        <strong>Image OG : dimensions annoncées trop optimistes.</strong>
+        <br>L'image Nitro <code>b50fc41...</code> est servie en 586x390 malgré <code>?width=1200</code> et la meta <code>og:image:width=1200</code>. Ce n'est pas bloquant pour l'indexation, mais ça peut réduire la qualité ou la cohérence des previews sociales.
+      </li>
+      <li>
+        <strong>Images OG génériques sur plusieurs pages publiques.</strong>
+        <br>Home, liste des parcs, plan du site, dossiers techniques et la fiche Dennlys Parc utilisent encore le logo par défaut. Ce n'est pas une cause de baisse Google, mais c'est moins bon pour les partages.
+      </li>
+      <li>
+        <strong>Plan du site HTML volumineux.</strong>
+        <br>Le rendu complet est nécessaire pour restaurer les liens, mais il pèse 5,7 Mo. Le cache corrige le coût récurrent, avec un premier rendu observé à 13,73 s depuis le PC puis un cache hit à environ 0,30 s. À surveiller sur VPS modeste.
+      </li>
+      <li>
+        <strong>Copie technique FR sans accents.</strong>
+        <br>La meta description de <code>/fr/technical</code> contient <code>materiaux</code> et <code>systemes</code>. C'est faible priorité, mais contraire à la règle i18n du projet.
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Actions Recommandées</h2>
+    <ol>
+      <li><strong>Surveiller Search Console</strong> pendant le recrawl de <code>/fr/sitemap</code>, <code>/sitemap.xml</code> et des sitemaps <code>history-*.xml</code> / <code>history-articles-*.xml</code>. Le code côté prod est maintenant cohérent ; il faut laisser Google réexplorer les liens.</li>
+      <li><strong>Créer une petite PR SEO 404</strong> pour que toutes les entités publiques absentes émettent <code>noindex,follow</code>, sans canonical indexable ni OG génériques indexables.</li>
+      <li><strong>Créer une PR OG images</strong> pour utiliser les logos/photos de parc quand disponibles sur les fiches parc et éviter le logo générique sur les pages à fort partage.</li>
+      <li><strong>Corriger les dimensions OG</strong> : soit produire réellement une image 1200 px, soit ne pas annoncer une largeur fixe quand le binaire servi est plus petit.</li>
+      <li><strong>Corriger la copie FR technique</strong> avec accents et diacritiques.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Commandes et Sources de Vérification</h2>
+    <ul>
+      <li>PC : <code>curl.exe -sS -L -A "Googlebot/2.1 (+http://www.google.com/bot.html)"</code> et <code>curl.exe -sS -L -A "facebookexternalhit/1.1"</code>.</li>
+      <li>VPS : SSH <code>root@185.158.107.198</code>, <code>docker compose -f /opt/amusementpark/compose.prod.yml --env-file /opt/amusementpark/.env ps</code>, puis <code>curl</code> externe et loopback.</li>
+      <li>GitHub Actions : run production <a href="https://github.com/Ced59/AmusementParkProject/actions/runs/28737072961">28737072961</a>, conclusion <code>success</code>.</li>
+      <li>PRs auditées : <a href="https://github.com/Ced59/AmusementParkProject/pull/360">#360</a>, <a href="https://github.com/Ced59/AmusementParkProject/pull/361">#361</a>, <a href="https://github.com/Ced59/AmusementParkProject/pull/362">#362</a>, <a href="https://github.com/Ced59/AmusementParkProject/pull/363">#363</a>, <a href="https://github.com/Ced59/AmusementParkProject/pull/364">#364</a>.</li>
+      <li>Aucune variable GitHub ou valeur secrète n'a été modifiée pendant cet audit. Les changements de configuration de déploiement liés à la limite de cache SSR sont documentés dans la PR #360.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
