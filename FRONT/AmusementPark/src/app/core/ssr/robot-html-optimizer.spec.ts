@@ -133,6 +133,27 @@ describe('robot HTML optimizer', () => {
     expect(result.html).toContain('main.js');
   });
 
+  it('keeps executable scripts when SSR HTML has metadata but not enough body content', () => {
+    const html: string = [
+      '<html><head>',
+      '<title>Thin public page</title>',
+      '<meta name="description" content="A valid description is not enough when the SSR body is thin.">',
+      '<link rel="canonical" href="https://amusement-parks.fun/en/thin">',
+      '<script type="module" src="main.js"></script>',
+      '</head><body><app-root><main>Short content</main></app-root></body></html>'
+    ].join('');
+
+    const result = prepareRobotHtmlForResponse(html, {
+      allowRobotNoJsOptimization: true,
+      robotNoJsHtmlEnabled: true,
+      isRobotRequest: true
+    });
+
+    expect(result.robotHtmlStatus).toBe('blocked-not-seo-ready');
+    expect(result.seoReady.reason).toBe('insufficient-body-content');
+    expect(result.html).toContain('main.js');
+  });
+
   it('returns bot SSR unavailable only for robot requests that would otherwise be 200', () => {
     expect(shouldReturnBotSsrUnavailable(true, 200)).toBeTrue();
     expect(shouldReturnBotSsrUnavailable(true, 404)).toBeFalse();

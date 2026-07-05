@@ -107,7 +107,7 @@ describe('PublicFooterComponent', () => {
     expect(activeLanguageLink).not.toBeNull();
     expect(activeLanguageLink?.textContent).toContain('English');
     expect(activeLanguageLink?.getAttribute('aria-current')).toBe('page');
-    expect(activeLanguageLink?.querySelector('img')?.getAttribute('alt')).toBe('');
-    expect(activeLanguageLink?.querySelector('img')?.getAttribute('aria-hidden')).toBe('true');
+    expect(activeLanguageLink?.querySelector('img')?.getAttribute('alt')).toBe('English');
+    expect(activeLanguageLink?.querySelector('img')?.hasAttribute('aria-hidden')).toBeFalse();
   });
 });

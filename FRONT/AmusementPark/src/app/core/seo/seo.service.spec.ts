@@ -284,6 +284,144 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:type"]')).toBe('website');
   });
 
+  it('emits managed Open Graph locale alternates for localized public pages', () => {
+    service.applyParkDetailSeo(buildParkDetail(), 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:locale"]')).toBe('fr_FR');
+    expect(readOpenGraphLocaleAlternates()).toEqual([
+      'en_US',
+      'es_ES',
+      'de_DE',
+      'it_IT',
+      'pl_PL',
+      'nl_NL',
+      'pt_PT'
+    ]);
+
+    service.applyParkDetailSeo(buildParkDetail(), 'en', '/en/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:locale"]')).toBe('en_US');
+    expect(readOpenGraphLocaleAlternates()).toEqual([
+      'fr_FR',
+      'es_ES',
+      'de_DE',
+      'it_IT',
+      'pl_PL',
+      'nl_NL',
+      'pt_PT'
+    ]);
+  });
+
+  it('keeps static route titles and descriptions distinct across public languages', () => {
+    const languages: readonly string[] = ['en', 'fr', 'de', 'nl', 'it', 'es', 'pl', 'pt'];
+    const routeCases: Array<{ name: string; path: string }> = [
+      { name: 'home', path: 'home' },
+      { name: 'parks', path: 'parks' },
+      { name: 'sitemap', path: 'sitemap' },
+      { name: 'rankings', path: 'rankings' },
+      { name: 'technical', path: 'technical' },
+      { name: 'manufacturers', path: 'manufacturers' },
+      { name: 'about', path: 'about' },
+      { name: 'contact', path: 'contact' },
+      { name: 'versions', path: 'versions' },
+      { name: 'privacy', path: 'privacy' },
+      { name: 'not found', path: 'not-found' },
+      { name: 'account', path: 'profile' },
+      { name: 'admin', path: 'admin' }
+    ];
+
+    for (const routeCase of routeCases) {
+      const titles: string[] = [];
+      const descriptions: string[] = [];
+
+      for (const language of languages) {
+        service.applyRouteDefaults(`/${language}/${routeCase.path}`);
+
+        titles.push(documentRef.title);
+        descriptions.push(readMetaContent('meta[name="description"]') ?? '');
+      }
+
+      expect(new Set(titles).size).withContext(`${routeCase.name} title`).toBe(languages.length);
+      expect(new Set(descriptions).size).withContext(`${routeCase.name} description`).toBe(languages.length);
+    }
+  });
+
+  it('keeps dynamic detail titles and descriptions distinct when entity names are shared across languages', () => {
+    const languages: readonly string[] = ['en', 'fr', 'de', 'nl', 'it', 'es', 'pl', 'pt'];
+    const cases: Array<{ name: string; apply: (language: string) => void }> = [
+      {
+        name: 'park detail',
+        apply: (language: string): void => service.applyParkDetailSeo(
+          buildParkDetail({ description: null, city: 'Bruehl', countryName: 'Germany' }),
+          language,
+          `/${language}/park/park-1/demo-park`)
+      },
+      {
+        name: 'park item detail',
+        apply: (language: string): void => service.applyParkItemDetailSeo(
+          buildParkItemDetail({ description: null, parkName: 'Demo Park' }),
+          language,
+          `/${language}/park/park-1/demo-park/item/item-1/demo-item`)
+      },
+      {
+        name: 'park video detail',
+        apply: (language: string): void => service.applyParkVideoSeo(
+          buildVideo({ description: null, descriptions: [], titles: [] }),
+          buildPark({ name: 'Demo Park' }),
+          language,
+          `/${language}/park/park-1/demo-park/videos/video-1/demo-video`)
+      },
+      {
+        name: 'park item video detail',
+        apply: (language: string): void => service.applyParkItemVideoSeo(
+          buildVideo({ ownerType: VideoOwnerType.PARK_ITEM, ownerId: 'item-1', description: null, descriptions: [], titles: [] }),
+          buildParkItem({ name: 'Demo Item' }),
+          buildPark({ name: 'Demo Park' }),
+          language,
+          `/${language}/park/park-1/demo-park/item/item-1/demo-item/videos/video-1/demo-video`)
+      },
+      {
+        name: 'technical detail',
+        apply: (language: string): void => service.applyTechnicalPageSeo(
+          buildTechnicalPage({
+            titles: [{ languageCode: 'en', value: 'Lap bar' }],
+            summaries: []
+          }),
+          language,
+          `/${language}/technical/lap-bar`)
+      },
+      {
+        name: 'history timeline',
+        apply: (language: string): void => service.applyHistoryTimelineSeo(
+          buildHistoryTimeline({ title: 'Mirapolis' }),
+          language,
+          `/${language}/park/park-1/mirapolis/history`)
+      },
+      {
+        name: 'history article',
+        apply: (language: string): void => service.applyHistoryArticleSeo(
+          buildHistoryArticle({ title: 'Opening', summary: '' }),
+          language,
+          `/${language}/park/park-1/mirapolis/history/event-1/opening`)
+      }
+    ];
+
+    for (const routeCase of cases) {
+      const titles: string[] = [];
+      const descriptions: string[] = [];
+
+      for (const language of languages) {
+        routeCase.apply(language);
+
+        titles.push(documentRef.title);
+        descriptions.push(readMetaContent('meta[name="description"]') ?? '');
+      }
+
+      expect(new Set(titles).size).withContext(`${routeCase.name} title`).toBe(languages.length);
+      expect(new Set(descriptions).size).withContext(`${routeCase.name} description`).toBe(languages.length);
+    }
+  });
+
   it('keeps Open Graph titles and descriptions distinct across languages for shareable public pages', () => {
     const languages: readonly string[] = ['en', 'fr', 'de', 'nl', 'it', 'es', 'pl', 'pt'];
     const localizedArticleTitles: Record<string, string> = {
@@ -600,7 +738,7 @@ describe('SeoService', () => {
   it('applies localized metadata to a technical detail page', () => {
     service.applyTechnicalPageSeo(buildTechnicalPage(), 'fr', '/fr/technical/lap-bar');
 
-    expect(documentRef.title).toBe('Lap bar - Amusement Parks');
+    expect(documentRef.title).toBe('Dossier technique : Lap bar - Amusement Parks');
     expect(readMetaContent('meta[name="description"]')).toBe('Explication technique de la lap bar.');
     expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/technical-photo-1?width=1200&v=2');
     expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/fr/technical/lap-bar');
@@ -646,6 +784,11 @@ describe('SeoService', () => {
 
   function readCanonicalHref(): string | null {
     return documentRef.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href ?? null;
+  }
+
+  function readOpenGraphLocaleAlternates(): string[] {
+    return Array.from(documentRef.head.querySelectorAll<HTMLMetaElement>('meta[property="og:locale:alternate"]'))
+      .map((element: HTMLMetaElement): string => element.content);
   }
 
   function readBreadcrumbNames(): string[] {
