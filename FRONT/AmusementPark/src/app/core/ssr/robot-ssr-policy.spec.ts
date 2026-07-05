@@ -5,13 +5,20 @@ import {
 import type { RobotFamily } from './robot-ssr-policy';
 
 describe('robot SSR policy', () => {
-  it('allows cold SSR only for primary search robots and non-robot requests', () => {
+  it('allows cold SSR for primary search robots, social preview robots and non-robot requests', () => {
     const allowedFamilies: Array<RobotFamily | null> = [
       null,
       'Googlebot',
       'Bingbot',
       'YandexBot',
-      'DuckDuckBot'
+      'DuckDuckBot',
+      'Facebook external hit',
+      'WhatsApp',
+      'TelegramBot',
+      'LinkedInBot',
+      'PinterestBot',
+      'DiscordBot',
+      'TwitterBot'
     ];
 
     allowedFamilies.forEach((family: RobotFamily | null) => {
@@ -19,7 +26,7 @@ describe('robot SSR policy', () => {
     });
   });
 
-  it('keeps secondary robots cache-only on cache misses', () => {
+  it('keeps secondary crawler robots cache-only on cache misses', () => {
     const cacheOnlyFamilies: RobotFamily[] = [
       'Applebot',
       'BaiduSpider',
@@ -28,6 +35,7 @@ describe('robot SSR policy', () => {
       'SemrushBot',
       'MJ12bot',
       'DotBot',
+      'ByteSpider',
       'Other bot'
     ];
 
@@ -41,6 +49,8 @@ describe('robot SSR policy', () => {
     expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 (compatible; Baiduspider/2.0)')).toBe('BaiduSpider');
     expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 PetalBot')).toBe('PetalBot');
     expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 AhrefsBot')).toBe('AhrefsBot');
+    expect(detectRobotFamilyFromUserAgent('facebookexternalhit/1.1')).toBe('Facebook external hit');
+    expect(detectRobotFamilyFromUserAgent('WhatsApp/2.24')).toBe('WhatsApp');
     expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 SomeCrawler')).toBe('Other bot');
   });
 

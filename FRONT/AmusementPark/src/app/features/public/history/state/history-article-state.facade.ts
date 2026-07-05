@@ -32,6 +32,15 @@ export class HistoryArticleStateFacade {
     this.currentLanguageSignal.set(language || 'en');
   }
 
+  setResolvedArticle(article: HistoryArticle | null): void {
+    if (article) {
+      this.screenStateStore.setReady(article);
+      return;
+    }
+
+    this.screenStateStore.setError('history.article.errorMessage', this.screenStateStore.data());
+  }
+
   loadArticle(eventId: string): void {
     const previousData: HistoryArticle | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
