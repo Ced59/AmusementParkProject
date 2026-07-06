@@ -1,6 +1,20 @@
 {
-  "version": "3.4.10",
+  "version": "3.4.11",
   "history": [
+    {
+      "version": "3.4.11",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Le plan du site reste plus léger.",
+        "en": "The sitemap stays lighter.",
+        "de": "Die Sitemap bleibt schlanker.",
+        "nl": "De sitemap blijft lichter.",
+        "it": "La mappa del sito resta più leggera.",
+        "es": "El mapa del sitio se mantiene más ligero.",
+        "pl": "Mapa strony pozostaje lżejsza.",
+        "pt": "O mapa do site fica mais leve."
+      }
+    },
     {
       "version": "3.4.10",
       "releasedAt": "2026-07-06",
