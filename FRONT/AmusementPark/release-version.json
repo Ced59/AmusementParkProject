@@ -1,6 +1,20 @@
 {
-  "version": "3.4.9",
+  "version": "3.4.10",
   "history": [
+    {
+      "version": "3.4.10",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Les pages publiques restent plus accessibles.",
+        "en": "Public pages stay more accessible.",
+        "de": "Öffentliche Seiten bleiben besser zugänglich.",
+        "nl": "Publieke pagina’s blijven beter toegankelijk.",
+        "it": "Le pagine pubbliche restano più accessibili.",
+        "es": "Las páginas públicas siguen siendo más accesibles.",
+        "pl": "Publiczne strony pozostają bardziej dostępne.",
+        "pt": "As páginas públicas ficam mais acessíveis."
+      }
+    },
     {
       "version": "3.4.9",
       "releasedAt": "2026-07-06",

@@ -51,6 +51,47 @@ describe('robot HTML optimizer', () => {
     expect(result.html).toContain('as="image"');
   });
 
+  it('compacts presentational Angular SSR markup while preserving SEO content and links', () => {
+    const repeatedContent: string = 'Helpful ranking content for visitors. '.repeat(20);
+    const html: string = [
+      '<html ng-server-context="ssr"><head>',
+      '<title>Rankings</title>',
+      '<meta name="description" content="Useful ranking page.">',
+      '<link rel="canonical" href="https://amusement-parks.fun/fr/rankings">',
+      '<link rel="stylesheet" href="styles.css">',
+      '<style ng-app-id="ng">.ranking-card{color:red}</style>',
+      '<script type="application/ld+json">{"@context":"https://schema.org"}</script>',
+      '</head><body><app-root _nghost-ng-c123 ngh="1">',
+      '<main _ngcontent-ng-c123 class="ranking-page" style="display:grid">',
+      '<a _ngcontent-ng-c123 class="ranking-card__link" href="/fr/parks">Parcs</a>',
+      '<i class="pi pi-star" aria-hidden="true"></i>',
+      '<section _ngcontent-ng-c123 class="ranking-card"><span class="ranking-card__text">',
+      repeatedContent,
+      '</span></section>',
+      '</main><app-page-jump-button _nghost-ng-c456></app-page-jump-button>',
+      '</app-root></body></html>'
+    ].join('');
+
+    const result = optimizeHtmlForRobotNoJs(html);
+
+    expect(result.html.length).toBeLessThan(html.length);
+    expect(result.html).toContain('<title>Rankings</title>');
+    expect(result.html).toContain('name="description"');
+    expect(result.html).toContain('rel="canonical"');
+    expect(result.html).toContain('application/ld+json');
+    expect(result.html).toContain('href="/fr/parks"');
+    expect(result.html).toContain('Parcs');
+    expect(result.html).toContain(repeatedContent.trim());
+    expect(result.html).not.toContain('<style');
+    expect(result.html).not.toContain('_ngcontent');
+    expect(result.html).not.toContain('_nghost');
+    expect(result.html).not.toContain('ngh=');
+    expect(result.html).not.toContain('class=');
+    expect(result.html).not.toContain('style=');
+    expect(result.html).not.toContain('pi pi-star');
+    expect(result.html).not.toContain('app-page-jump-button');
+  });
+
   it('keeps ordinary SSR HTML unchanged when no script-like tags are present', () => {
     const html: string = '<html><head><title>Page</title></head><body><main>Content</main></body></html>';
 
