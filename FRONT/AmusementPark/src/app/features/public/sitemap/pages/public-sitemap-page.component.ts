@@ -12,6 +12,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
 import { UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSitemapStateFacade } from '../state/public-sitemap-state.facade';
+import { PublicSitemapLoadOptions, resolvePublicSitemapLoadOptions } from './public-sitemap-load-options';
 
 @Component({
   selector: 'app-public-sitemap-page',
@@ -98,7 +99,7 @@ export class PublicSitemapPageComponent implements OnInit {
     this.activeLanguage = language;
     this.currentLang.set(language);
     this.seoService.applyRouteDefaults(this.router.url);
-    const loadDescendantsInInitialRequest: boolean = this.ssrRuntimeService.isServerSideRender();
-    this.stateFacade.loadRoot(language, true, loadDescendantsInInitialRequest);
+    const loadOptions: PublicSitemapLoadOptions = resolvePublicSitemapLoadOptions(this.ssrRuntimeService.isServerSideRender());
+    this.stateFacade.loadRoot(language, loadOptions.includeDescendants, loadOptions.loadDescendantsInInitialRequest);
   }
 }
