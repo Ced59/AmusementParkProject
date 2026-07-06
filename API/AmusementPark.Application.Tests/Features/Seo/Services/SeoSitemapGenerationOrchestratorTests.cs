@@ -157,6 +157,69 @@ public sealed class SeoSitemapGenerationOrchestratorTests
     }
 
     [Fact]
+    public async Task GenerateAsync_WhenSectionHasMoreThanPublicChunkLimit_ShouldPersistChunkedSections()
+    {
+        ISitemapSectionProvider[] providers = new ISitemapSectionProvider[]
+        {
+            new FakeSitemapSectionProvider(
+                SitemapSectionKeys.ParkItems,
+                "park-items.xml",
+                "Items",
+                Enumerable.Range(1, SitemapSectionChunker.MaxUrlsPerPublicSitemapFile + 1)
+                    .Select(index => new SitemapUrlEntry($"/fr/park/park-1/item/item-{index}/item-{index}"))
+                    .ToList()),
+        };
+        SitemapSnapshot? savedSnapshot = null;
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+
+        snapshotRepository
+            .Setup(repository => repository.SaveAsync(It.IsAny<SitemapSnapshot>(), It.IsAny<CancellationToken>()))
+            .Callback<SitemapSnapshot, CancellationToken>((snapshot, _) => savedSnapshot = snapshot)
+            .Returns(Task.CompletedTask);
+        historyRepository
+            .Setup(repository => repository.WriteAsync(It.IsAny<SitemapGenerationHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        settingsRepository
+            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new SeoSitemapSettings());
+
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            providers,
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            new InMemorySeoSitemapRuntimeStateStore());
+
+        SitemapGenerationResult result = await orchestrator.GenerateAsync(
+            "https://example.com/",
+            new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } },
+            SitemapGenerationTrigger.Manual,
+            submitToIndexNow: false,
+            triggeredByUserId: "admin-1",
+            triggeredByUserEmail: "admin@example.com",
+            CancellationToken.None);
+
+        Assert.Equal(SitemapGenerationStatus.Succeeded, result.Status);
+        Assert.NotNull(savedSnapshot);
+        SitemapSnapshot snapshot = savedSnapshot!;
+        Assert.Contains(snapshot.Sections, static section => section.Key == "park-items-fr-1" && section.FileName == "park-items-fr-1.xml" && section.UrlCount == SitemapSectionChunker.MaxUrlsPerPublicSitemapFile);
+        Assert.Contains(snapshot.Sections, static section => section.Key == "park-items-fr-2" && section.FileName == "park-items-fr-2.xml" && section.UrlCount == 1);
+        Assert.Contains("https://example.com/park-items-fr-1.xml", snapshot.IndexXml, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/park-items-fr-2.xml", snapshot.IndexXml, StringComparison.Ordinal);
+        Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-items-fr-1"));
+        Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-items-fr-2"));
+        snapshotRepository.VerifyAll();
+        historyRepository.VerifyAll();
+        settingsRepository.VerifyAll();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task GenerateAsync_WhenGenerationIsCanceled_ShouldReleaseRuntimeState()
     {
         ISitemapSectionProvider[] providers = new ISitemapSectionProvider[]

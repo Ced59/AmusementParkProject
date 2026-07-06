@@ -329,6 +329,8 @@ interface SeoDocumentCacheEntry {
   readonly expiresAt: number | null;
 }
 
+type SeoDocumentCacheStatus = 'HIT' | 'MISS' | 'BYPASS';
+
 type SeoDocumentCacheCallback = (error: Error | null, entry: SeoDocumentCacheEntry | null) => void;
 
 class SsrRenderQueueFullError extends Error {
@@ -2957,23 +2959,43 @@ function joinCspDirective(name: string, sources: string[]): string {
 
 function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, targetPath: string): void {
   const normalizedMethod = req.method.toUpperCase();
-  if (!isSeoDocumentCacheEnabled() || !isSeoDocumentCacheableMethod(normalizedMethod)) {
+  if (!isSeoDocumentCacheableMethod(normalizedMethod)) {
     proxyToApi(req, res, next, targetPath);
     return;
   }
 
   technicalStatsCounters.seoDocumentRequests += 1;
   const cacheKey = buildSeoDocumentCacheKey(targetPath);
-  const cachedEntry = getCachedSeoDocument(cacheKey);
+  if (isSeoDocumentCacheEnabled()) {
+    const cachedEntry = getCachedSeoDocument(cacheKey);
 
-  if (cachedEntry !== null) {
-    technicalStatsCounters.seoDocumentHits += 1;
-    writeCachedSeoDocument(req, res, cachedEntry, 'HIT');
-    return;
+    if (cachedEntry !== null) {
+      technicalStatsCounters.seoDocumentHits += 1;
+      writeCachedSeoDocument(req, res, cachedEntry, 'HIT');
+      return;
+    }
   }
 
   if (normalizedMethod === 'HEAD') {
     proxyToApi(req, res, next, targetPath);
+    return;
+  }
+
+  if (!isSeoDocumentCacheEnabled()) {
+    fetchSeoDocumentFromApi(req, targetPath, (error: Error | null, entry: SeoDocumentCacheEntry | null) => {
+      if (error !== null) {
+        next(error);
+        return;
+      }
+
+      if (entry === null) {
+        proxyToApi(req, res, next, targetPath);
+        return;
+      }
+
+      technicalStatsCounters.seoDocumentMisses += 1;
+      writeCachedSeoDocument(req, res, entry, 'BYPASS');
+    });
     return;
   }
 
@@ -3063,6 +3085,15 @@ function fetchSeoDocumentFromApi(
   const targetUrl = new URL(targetPath, apiInternalOrigin);
   const client = targetUrl.protocol === 'https:' ? https : http;
   const headers = buildSeoDocumentFetchHeaders(req, targetUrl);
+  let isSettled = false;
+  const complete = (error: Error | null, entry: SeoDocumentCacheEntry | null): void => {
+    if (isSettled) {
+      return;
+    }
+
+    isSettled = true;
+    callback(error, entry);
+  };
 
   const proxyRequest = client.request(
     targetUrl,
@@ -3087,12 +3118,20 @@ function fetchSeoDocumentFromApi(
           expiresAt: seoDocumentCacheTtlSeconds === 0 ? null : Date.now() + seoDocumentCacheTtlSeconds * 1000
         };
 
-        callback(null, entry);
+        complete(null, entry);
+      });
+
+      proxyResponse.on('aborted', () => {
+        complete(new Error(`SEO document API response aborted for ${targetPath}`), null);
+      });
+
+      proxyResponse.on('error', (error: Error) => {
+        complete(error, null);
       });
     }
   );
 
-  proxyRequest.on('error', (error: Error) => callback(error, null));
+  proxyRequest.on('error', (error: Error) => complete(error, null));
   proxyRequest.end();
 }
 
@@ -3105,7 +3144,7 @@ function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLe
     }
 
     const normalizedName = name.toLowerCase();
-    if (normalizedName === 'cache-control' || normalizedName === 'vary') {
+    if (normalizedName === 'cache-control' || normalizedName === 'content-length' || normalizedName === 'vary') {
       return;
     }
 
@@ -3119,7 +3158,7 @@ function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLe
   return responseHeaders;
 }
 
-function writeCachedSeoDocument(req: Request, res: Response, entry: SeoDocumentCacheEntry, cacheStatus: 'HIT' | 'MISS'): void {
+function writeCachedSeoDocument(req: Request, res: Response, entry: SeoDocumentCacheEntry, cacheStatus: SeoDocumentCacheStatus): void {
   res.status(entry.statusCode);
 
   Object.entries(entry.headers).forEach(([name, value]: [string, string | string[]]) => {
@@ -3133,7 +3172,7 @@ function writeCachedSeoDocument(req: Request, res: Response, entry: SeoDocumentC
     return;
   }
 
-  res.send(entry.body);
+  res.end(entry.body);
 }
 
 function proxyRootSitemapSectionToApi(req: Request, res: Response, next: NextFunction): void {

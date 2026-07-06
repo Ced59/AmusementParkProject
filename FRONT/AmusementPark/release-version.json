@@ -1,6 +1,20 @@
 {
-  "version": "3.4.11",
+  "version": "3.4.12",
   "history": [
+    {
+      "version": "3.4.12",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Les sitemaps restent plus faciles \u00e0 lire.",
+        "en": "Sitemaps stay easier to read.",
+        "de": "Sitemaps bleiben leichter lesbar.",
+        "nl": "Sitemaps blijven makkelijker leesbaar.",
+        "it": "Le sitemap restano pi\u00f9 facili da leggere.",
+        "es": "Los mapas del sitio siguen siendo m\u00e1s f\u00e1ciles de leer.",
+        "pl": "Mapy strony pozostaj\u0105 \u0142atwiejsze do odczytania.",
+        "pt": "Os mapas do site ficam mais f\u00e1ceis de ler."
+      }
+    },
     {
       "version": "3.4.11",
       "releasedAt": "2026-07-06",
