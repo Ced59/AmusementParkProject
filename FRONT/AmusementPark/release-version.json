@@ -1,6 +1,20 @@
 {
-  "version": "3.4.7",
+  "version": "3.4.8",
   "history": [
+    {
+      "version": "3.4.8",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Les pages publiques se chargent plus régulièrement.",
+        "en": "Public pages load more consistently.",
+        "de": "Öffentliche Seiten laden gleichmäßiger.",
+        "nl": "Publieke pagina's laden consistenter.",
+        "it": "Le pagine pubbliche si caricano con più regolarità.",
+        "es": "Las páginas públicas cargan con más regularidad.",
+        "pl": "Publiczne strony ładują się bardziej stabilnie.",
+        "pt": "As páginas públicas carregam de forma mais consistente."
+      }
+    },
     {
       "version": "3.4.7",
       "releasedAt": "2026-07-06",
