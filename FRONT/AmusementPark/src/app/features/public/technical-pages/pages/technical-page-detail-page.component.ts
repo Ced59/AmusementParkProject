@@ -16,9 +16,9 @@ import {
   TechnicalPage
 } from '@app/models/technical-pages/technical-page';
 import { TranslationService } from '@app/services/translation.service';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { resolveLocalizedText } from '@shared/utils/localization';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
@@ -152,10 +152,8 @@ export class TechnicalPageDetailPageComponent implements OnInit {
           this.isLoading.set(false);
         },
         error: (error: unknown): void => {
-          if (hasHttpStatus(error, 404)) {
-            this.ssrHttpStatusService.setNotFound();
-            this.seoService.applyNotFoundSeo(this.currentLang(), this.router.url);
-          }
+          applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
+          this.seoService.applyNotFoundSeo(this.currentLang(), this.router.url);
 
           this.errorMessage.set('technicalPages.detail.errorMessage');
           this.isLoading.set(false);

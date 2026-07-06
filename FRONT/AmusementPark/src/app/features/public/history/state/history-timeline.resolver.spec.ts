@@ -60,6 +60,26 @@ describe('historyTimelineResolver', () => {
     ]);
     expect(ssrHttpStatusService.setNotFound).not.toHaveBeenCalled();
   });
+
+  it('marks transient park item timeline errors as unavailable during SSR', async () => {
+    historyDataPort.getParkItemTimeline.and.returnValue(throwError(() => new HttpErrorResponse({ status: 503 })));
+
+    const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1', itemId: 'item-1' });
+
+    expect(resolvedData).toEqual({ timeline: null, includeParkItems: false });
+    expect(ssrHttpStatusService.setNotFound).not.toHaveBeenCalled();
+    expect(ssrHttpStatusService.setStatus).toHaveBeenCalledOnceWith(503);
+  });
+
+  it('does not try the park item fallback when the park timeline fails transiently', async () => {
+    historyDataPort.getParkTimeline.and.returnValue(throwError(() => new HttpErrorResponse({ status: 503 })));
+
+    const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1' });
+
+    expect(resolvedData).toEqual({ timeline: null, includeParkItems: false });
+    expect(historyDataPort.getParkTimeline).toHaveBeenCalledTimes(1);
+    expect(ssrHttpStatusService.setStatus).toHaveBeenCalledOnceWith(503);
+  });
 });
 
 async function resolveTimeline(params: Record<string, string>): Promise<ResolvedHistoryTimelineRouteData> {

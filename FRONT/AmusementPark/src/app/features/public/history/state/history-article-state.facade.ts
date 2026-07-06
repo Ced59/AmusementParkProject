@@ -3,8 +3,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { HistoryArticle } from '@app/models/history/history.models';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { HistoryArticlePageViewModel } from '../models/history-view.model';
 import { mapHistoryArticleToViewModel } from '../mappers/history-view.mapper';
@@ -50,10 +50,7 @@ export class HistoryArticleStateFacade {
         this.screenStateStore.setReady(article);
       },
       error: (error: unknown) => {
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
-
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
         this.screenStateStore.setError('history.article.errorMessage', previousData);
       }
     });

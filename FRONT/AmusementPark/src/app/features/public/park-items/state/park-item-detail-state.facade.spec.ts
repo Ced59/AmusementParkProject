@@ -141,9 +141,14 @@ class FakeSsrRuntimeService {
 
 class FakeSsrHttpStatusService {
   public notFoundCallCount = 0;
+  public readonly statusCodes: number[] = [];
 
   setNotFound(): void {
     this.notFoundCallCount += 1;
+  }
+
+  setStatus(statusCode: number): void {
+    this.statusCodes.push(statusCode);
   }
 }
 
@@ -491,6 +496,18 @@ describe('ParkItemDetailStateFacade', () => {
 
     expect(context.facade.state().kind).toBe('error');
     expect(context.ssrStatusService.notFoundCallCount).toBe(1);
+  });
+
+  it('sets SSR unavailable when the main item lookup fails transiently', () => {
+    spyOn(console, 'error');
+    const context = configureFacade();
+    context.itemsPort.itemResponse$ = throwError(() => ({ status: 503 }));
+
+    context.facade.loadItem('item-1');
+
+    expect(context.facade.state().kind).toBe('error');
+    expect(context.ssrStatusService.notFoundCallCount).toBe(0);
+    expect(context.ssrStatusService.statusCodes).toEqual([503]);
   });
 
   it('keeps the primary detail ready when optional related data fails', () => {

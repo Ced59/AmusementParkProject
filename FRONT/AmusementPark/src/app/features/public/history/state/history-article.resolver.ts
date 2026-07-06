@@ -4,8 +4,8 @@ import { Observable, catchError, of } from 'rxjs';
 
 import { HistoryArticle } from '@app/models/history/history.models';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { HISTORY_DATA_PORT, HistoryDataPort } from './history-data.ports';
 
 export const HISTORY_ARTICLE_ROUTE_DATA_KEY = 'historyArticle';
@@ -23,10 +23,7 @@ export const historyArticleResolver: ResolveFn<HistoryArticle | null> = (route: 
 
   return historyDataPort.getArticle(eventId, anonymousHttpOptions()).pipe(
     catchError((error: unknown): Observable<null> => {
-      if (hasHttpStatus(error, 404)) {
-        ssrHttpStatusService.setNotFound();
-      }
-
+      applySsrPublicDataErrorStatus(error, ssrHttpStatusService);
       return of(null);
     })
   );

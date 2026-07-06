@@ -11,8 +11,8 @@ import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { TranslationService } from '@app/services/translation.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -596,10 +596,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
       },
       error: (error: unknown) => {
         console.error('Error loading park opening hours page', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.stateStore.setError('parkOpeningHours.page.errorMessage', previousData);
       }

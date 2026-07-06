@@ -6,8 +6,8 @@ import { switchMap } from 'rxjs/operators';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { resolvePublicParkItemsClosedFilter } from '@shared/utils/parks/public-park-items-closed-filter.helper';
@@ -84,10 +84,7 @@ export class ParkMapStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park map items', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parks.mapPage.errorMessage', previousData);
       }

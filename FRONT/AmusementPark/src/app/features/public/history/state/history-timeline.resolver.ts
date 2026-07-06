@@ -6,6 +6,7 @@ import { HistoryTimeline } from '@app/models/history/history.models';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { HISTORY_DATA_PORT, HistoryDataPort } from './history-data.ports';
 
 export const HISTORY_TIMELINE_ROUTE_DATA_KEY = 'historyTimeline';
@@ -25,10 +26,7 @@ export const historyTimelineResolver: ResolveFn<ResolvedHistoryTimelineRouteData
     return historyDataPort.getParkItemTimeline(parkItemId, anonymousHttpOptions()).pipe(
       map((timeline: HistoryTimeline): ResolvedHistoryTimelineRouteData => ({ timeline, includeParkItems: false })),
       catchError((error: unknown): Observable<ResolvedHistoryTimelineRouteData> => {
-        if (hasHttpStatus(error, 404)) {
-          ssrHttpStatusService.setNotFound();
-        }
-
+        applySsrPublicDataErrorStatus(error, ssrHttpStatusService);
         return of({ timeline: null, includeParkItems: false });
       })
     );
@@ -43,16 +41,14 @@ export const historyTimelineResolver: ResolveFn<ResolvedHistoryTimelineRouteData
     map((timeline: HistoryTimeline): ResolvedHistoryTimelineRouteData => ({ timeline, includeParkItems: false })),
     catchError((error: unknown): Observable<ResolvedHistoryTimelineRouteData> => {
       if (!hasHttpStatus(error, 404)) {
+        ssrHttpStatusService.setStatus(503);
         return of({ timeline: null, includeParkItems: false });
       }
 
       return historyDataPort.getParkTimeline(parkId, true, [], anonymousHttpOptions()).pipe(
         map((timeline: HistoryTimeline): ResolvedHistoryTimelineRouteData => ({ timeline, includeParkItems: true })),
         catchError((fallbackError: unknown): Observable<ResolvedHistoryTimelineRouteData> => {
-          if (hasHttpStatus(fallbackError, 404)) {
-            ssrHttpStatusService.setNotFound();
-          }
-
+          applySsrPublicDataErrorStatus(fallbackError, ssrHttpStatusService);
           return of({ timeline: null, includeParkItems: true });
         })
       );

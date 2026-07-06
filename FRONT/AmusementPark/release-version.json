@@ -1,6 +1,20 @@
 {
-  "version": "3.4.13",
+  "version": "3.4.14",
   "history": [
+    {
+      "version": "3.4.14",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Les pages publiques g\u00e8rent mieux les indisponibilit\u00e9s.",
+        "en": "Public pages handle outages better.",
+        "de": "\u00d6ffentliche Seiten gehen besser mit Ausf\u00e4llen um.",
+        "nl": "Publieke pagina's gaan beter om met storingen.",
+        "it": "Le pagine pubbliche gestiscono meglio le indisponibilit\u00e0.",
+        "es": "Las p\u00e1ginas p\u00fablicas gestionan mejor las interrupciones.",
+        "pl": "Publiczne strony lepiej obs\u0142uguj\u0105 przerwy.",
+        "pt": "As p\u00e1ginas p\u00fablicas lidam melhor com indisponibilidades."
+      }
+    },
     {
       "version": "3.4.13",
       "releasedAt": "2026-07-06",
