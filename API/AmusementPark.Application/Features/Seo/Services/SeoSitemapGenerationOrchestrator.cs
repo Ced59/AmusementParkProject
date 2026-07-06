@@ -9,7 +9,6 @@ namespace AmusementPark.Application.Features.Seo.Services;
 /// </summary>
 public sealed class SeoSitemapGenerationOrchestrator
 {
-    private const int MaxUrlsPerSitemapFile = 50000;
     private const int MaxIndexNowUrlsPerSitemapGeneration = 100;
 
     private readonly IReadOnlyCollection<ISitemapSectionProvider> sectionProviders;
@@ -265,7 +264,7 @@ public sealed class SeoSitemapGenerationOrchestrator
         string displayName,
         IReadOnlyCollection<SitemapUrlEntry> urls)
     {
-        if (urls.Count <= MaxUrlsPerSitemapFile)
+        if (urls.Count <= SitemapSectionChunker.MaxUrlsPerPublicSitemapFile)
         {
             sections.Add(new SitemapSectionBuildResult(
                 baseKey,
@@ -276,10 +275,7 @@ public sealed class SeoSitemapGenerationOrchestrator
         }
 
         int chunkIndex = 1;
-        foreach (IReadOnlyCollection<SitemapUrlEntry> chunk in urls
-                     .Select((url, index) => new { url, index })
-                     .GroupBy(item => item.index / MaxUrlsPerSitemapFile)
-                     .Select(group => (IReadOnlyCollection<SitemapUrlEntry>)group.Select(item => item.url).ToList()))
+        foreach (IReadOnlyCollection<SitemapUrlEntry> chunk in SitemapSectionChunker.SplitUrls(urls))
         {
             sections.Add(new SitemapSectionBuildResult(
                 $"{baseKey}-{chunkIndex}",

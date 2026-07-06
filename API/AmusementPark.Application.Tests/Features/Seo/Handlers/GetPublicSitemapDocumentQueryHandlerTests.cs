@@ -49,7 +49,8 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             new InMemorySeoSitemapRuntimeStateStore());
         GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
             snapshotRepository.Object,
-            orchestrator);
+            orchestrator,
+            new SitemapXmlWriter());
 
         ApplicationResult<SitemapDocumentResult> result = await handler.HandleAsync(
             new GetPublicSitemapDocumentQuery("static-fr.xml", "https://example.com", new[] { "fr" }),
@@ -99,7 +100,8 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             new InMemorySeoSitemapRuntimeStateStore());
         GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
             snapshotRepository.Object,
-            orchestrator);
+            orchestrator,
+            new SitemapXmlWriter());
 
         ApplicationResult<SitemapDocumentResult> result = await handler.HandleAsync(
             new GetPublicSitemapDocumentQuery(null, "https://example.com", new[] { "fr" }),
@@ -158,7 +160,8 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
             new InMemorySeoSitemapRuntimeStateStore());
         GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
             snapshotRepository.Object,
-            orchestrator);
+            orchestrator,
+            new SitemapXmlWriter());
 
         ApplicationResult<SitemapDocumentResult> result = await handler.HandleAsync(
             new GetPublicSitemapDocumentQuery(null, "https://example.com", new[] { "fr" }),
@@ -168,6 +171,119 @@ public sealed class GetPublicSitemapDocumentQueryHandlerTests
         Assert.NotNull(result.Value);
         Assert.Contains("https://example.com/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
         Assert.DoesNotContain("https://example.com/sitemaps/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
+        snapshotRepository.VerifyAll();
+        historyRepository.VerifyNoOtherCalls();
+        settingsRepository.VerifyNoOtherCalls();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenIndexContainsLargeSection_ShouldExposeChunkLocations()
+    {
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            GeneratedAtUtc = new DateTime(2026, 6, 20, 10, 0, 0, DateTimeKind.Utc),
+            PublicBaseUrl = "https://example.com",
+            IndexXml = "<sitemapindex />",
+            Sections = new[]
+            {
+                new SitemapSectionStats("park-items-fr", "park-items-fr.xml", "Items FR", 401, new DateTime(2026, 6, 20, 0, 0, 0, DateTimeKind.Utc)),
+            },
+            TotalUrlCount = 401,
+        };
+
+        snapshotRepository
+            .Setup(repository => repository.GetLatestAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(snapshot);
+
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            Array.Empty<ISitemapSectionProvider>(),
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            new InMemorySeoSitemapRuntimeStateStore());
+        GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
+            snapshotRepository.Object,
+            orchestrator,
+            new SitemapXmlWriter());
+
+        ApplicationResult<SitemapDocumentResult> result = await handler.HandleAsync(
+            new GetPublicSitemapDocumentQuery(null, "https://example.com", new[] { "fr" }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Contains("https://example.com/park-items-fr-1.xml", result.Value.Content, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/park-items-fr-2.xml", result.Value.Content, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/park-items-fr-3.xml", result.Value.Content, StringComparison.Ordinal);
+        Assert.DoesNotContain("https://example.com/park-items-fr.xml", result.Value.Content, StringComparison.Ordinal);
+        snapshotRepository.VerifyAll();
+        historyRepository.VerifyNoOtherCalls();
+        settingsRepository.VerifyNoOtherCalls();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenVirtualChunkIsRequested_ShouldReturnOnlyThatChunk()
+    {
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            GeneratedAtUtc = new DateTime(2026, 6, 20, 10, 0, 0, DateTimeKind.Utc),
+            PublicBaseUrl = "https://example.com",
+            IndexXml = "<sitemapindex />",
+            Sections = new[]
+            {
+                new SitemapSectionStats("park-items-fr", "park-items-fr.xml", "Items FR", 201, null),
+            },
+            TotalUrlCount = 201,
+        };
+        string baseXml = new SitemapXmlWriter().WriteUrlSet(
+            "https://example.com",
+            Enumerable.Range(1, 201)
+                .Select(index => new SitemapUrlEntry($"/fr/park/item-{index:000}"))
+                .ToList());
+
+        snapshotRepository
+            .Setup(repository => repository.GetLatestAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(snapshot);
+        snapshotRepository
+            .Setup(repository => repository.GetSectionXmlAsync("park-items-fr-2", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string?)null);
+        snapshotRepository
+            .Setup(repository => repository.GetSectionXmlAsync("park-items-fr", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(baseXml);
+
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            Array.Empty<ISitemapSectionProvider>(),
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            new InMemorySeoSitemapRuntimeStateStore());
+        GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
+            snapshotRepository.Object,
+            orchestrator,
+            new SitemapXmlWriter());
+
+        ApplicationResult<SitemapDocumentResult> result = await handler.HandleAsync(
+            new GetPublicSitemapDocumentQuery("park-items-fr-2.xml", "https://example.com", new[] { "fr" }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Contains("https://example.com/fr/park/item-201", result.Value.Content, StringComparison.Ordinal);
+        Assert.DoesNotContain("https://example.com/fr/park/item-200", result.Value.Content, StringComparison.Ordinal);
         snapshotRepository.VerifyAll();
         historyRepository.VerifyNoOtherCalls();
         settingsRepository.VerifyNoOtherCalls();

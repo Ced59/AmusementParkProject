@@ -1,5 +1,3 @@
-using System.Xml;
-using System.Xml.Linq;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
@@ -214,13 +212,16 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
 {
     private readonly ISeoSitemapSnapshotRepository snapshotRepository;
     private readonly SeoSitemapGenerationOrchestrator orchestrator;
+    private readonly ISitemapXmlWriter sitemapXmlWriter;
 
     public GetPublicSitemapDocumentQueryHandler(
         ISeoSitemapSnapshotRepository snapshotRepository,
-        SeoSitemapGenerationOrchestrator orchestrator)
+        SeoSitemapGenerationOrchestrator orchestrator,
+        ISitemapXmlWriter sitemapXmlWriter)
     {
         this.snapshotRepository = snapshotRepository;
         this.orchestrator = orchestrator;
+        this.sitemapXmlWriter = sitemapXmlWriter;
     }
 
     public async Task<ApplicationResult<SitemapDocumentResult>> HandleAsync(GetPublicSitemapDocumentQuery query, CancellationToken cancellationToken = default)
@@ -260,23 +261,54 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
         {
             return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
             {
-                Content = NormalizePersistedSitemapIndexLocations(snapshot.IndexXml),
+                Content = this.sitemapXmlWriter.WriteSitemapIndex(
+                    query.PublicBaseUrl,
+                    SitemapSectionChunker.ExpandSections(snapshot.Sections)),
                 WasGeneratedOnDemand = wasGeneratedOnDemand,
             });
         }
 
         string normalizedSectionKey = NormalizeSectionKey(query.SectionKey);
+        SitemapSectionStats? directSection = FindSection(snapshot.Sections, normalizedSectionKey);
         string? sectionXml = await this.snapshotRepository.GetSectionXmlAsync(normalizedSectionKey, cancellationToken);
-        if (sectionXml is null)
+        if (sectionXml is not null)
         {
-            return ApplicationResult<SitemapDocumentResult>.Failure(ApplicationError.NotFound("seo.sitemap-section.not-found", $"La section sitemap '{query.SectionKey}' est introuvable."));
+            if (directSection is not null && directSection.UrlCount > SitemapSectionChunker.MaxUrlsPerPublicSitemapFile)
+            {
+                return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
+                {
+                    Content = this.sitemapXmlWriter.WriteSitemapIndex(
+                        query.PublicBaseUrl,
+                        SitemapSectionChunker.ExpandSections(new[] { directSection })),
+                    WasGeneratedOnDemand = wasGeneratedOnDemand,
+                });
+            }
+
+            return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
+            {
+                Content = sectionXml,
+                WasGeneratedOnDemand = wasGeneratedOnDemand,
+            });
         }
 
-        return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
+        if (SitemapSectionChunker.TryResolveChunkRequest(
+                normalizedSectionKey,
+                snapshot.Sections,
+                out SitemapSectionStats baseSection,
+                out int chunkIndex))
         {
-            Content = sectionXml,
-            WasGeneratedOnDemand = wasGeneratedOnDemand,
-        });
+            string? baseSectionXml = await this.snapshotRepository.GetSectionXmlAsync(baseSection.Key, cancellationToken);
+            if (baseSectionXml is not null)
+            {
+                return ApplicationResult<SitemapDocumentResult>.Success(new SitemapDocumentResult
+                {
+                    Content = SitemapSectionChunker.BuildChunkXml(baseSectionXml, chunkIndex),
+                    WasGeneratedOnDemand = wasGeneratedOnDemand,
+                });
+            }
+        }
+
+        return ApplicationResult<SitemapDocumentResult>.Failure(ApplicationError.NotFound("seo.sitemap-section.not-found", $"La section sitemap '{query.SectionKey}' est introuvable."));
     }
 
     private static string NormalizeSectionKey(string sectionKeyOrFileName)
@@ -290,68 +322,10 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
         return value.ToLowerInvariant();
     }
 
-    private static string NormalizePersistedSitemapIndexLocations(string indexXml)
+    private static SitemapSectionStats? FindSection(IReadOnlyCollection<SitemapSectionStats> sections, string normalizedSectionKey)
     {
-        if (string.IsNullOrWhiteSpace(indexXml))
-        {
-            return indexXml;
-        }
-
-        try
-        {
-            XDocument document = XDocument.Parse(indexXml, LoadOptions.PreserveWhitespace);
-            XNamespace sitemapNamespace = "http://www.sitemaps.org/schemas/sitemap/0.9";
-            bool changed = false;
-
-            foreach (XElement locElement in document.Descendants(sitemapNamespace + "sitemap").Elements(sitemapNamespace + "loc"))
-            {
-                string locValue = locElement.Value.Trim();
-                if (!Uri.TryCreate(locValue, UriKind.Absolute, out Uri? uri))
-                {
-                    continue;
-                }
-
-                const string legacyPrefix = "/sitemaps/";
-                string path = uri.AbsolutePath;
-                if (!path.StartsWith(legacyPrefix, StringComparison.OrdinalIgnoreCase))
-                {
-                    continue;
-                }
-
-                string fileName = path[legacyPrefix.Length..];
-                if (fileName.Length == 0 || fileName.Contains("/", StringComparison.Ordinal) || !fileName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
-                {
-                    continue;
-                }
-
-                UriBuilder builder = new UriBuilder(uri)
-                {
-                    Path = $"/{fileName}",
-                    Query = string.Empty,
-                    Fragment = string.Empty,
-                };
-
-                string normalizedLoc = builder.Uri.AbsoluteUri;
-                if (!string.Equals(locElement.Value, normalizedLoc, StringComparison.Ordinal))
-                {
-                    locElement.Value = normalizedLoc;
-                    changed = true;
-                }
-            }
-
-            if (!changed)
-            {
-                return indexXml;
-            }
-
-            string body = document.ToString(SaveOptions.DisableFormatting);
-            return document.Declaration is null
-                ? body
-                : $"{document.Declaration}{Environment.NewLine}{body}";
-        }
-        catch (XmlException)
-        {
-            return indexXml;
-        }
+        return sections.FirstOrDefault(section =>
+            string.Equals(section.Key, normalizedSectionKey, StringComparison.OrdinalIgnoreCase));
     }
+
 }
