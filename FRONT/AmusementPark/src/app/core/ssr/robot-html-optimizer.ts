@@ -43,9 +43,10 @@ const minimumSeoReadyBodyTextLength = 500;
 export function optimizeHtmlForRobotNoJs(html: string): RobotHtmlOptimizationResult {
   const scriptResult: ScriptStripResult = stripExecutableScripts(html);
   const linkResult: ScriptLikeLinkStripResult = stripScriptLikeLinks(scriptResult.html);
+  const compactHtml: string = compactPresentationalRobotHtml(linkResult.html);
 
   return {
-    html: linkResult.html,
+    html: compactHtml,
     removedScriptCount: scriptResult.removedScriptCount,
     removedScriptLikeLinkCount: linkResult.removedScriptLikeLinkCount
   };
@@ -226,6 +227,24 @@ function stripScriptLikeLinks(html: string): ScriptLikeLinkStripResult {
     html: optimizedHtml,
     removedScriptLikeLinkCount
   };
+}
+
+function compactPresentationalRobotHtml(html: string): string {
+  let optimizedHtml: string = html
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, '')
+    .replace(/<!---->/g, '')
+    .replace(/\s(?:_ngcontent|_nghost)-[^\s=>]+(?:=(?:"[^"]*"|'[^']*'))?/gi, '')
+    .replace(/\s(?:ngh|ng-server-context|ng-version)=(?:"[^"]*"|'[^']*')/gi, '')
+    .replace(/\s(?:class|style|role|tabindex|aria-hidden|width|height|loading|decoding|fetchpriority)=(?:"[^"]*"|'[^']*')/gi, '')
+    .replace(/<i\b[^>]*>\s*<\/i>/gi, '')
+    .replace(/<svg\b[^>]*>[\s\S]*?<\/svg>/gi, '');
+
+  for (let pass: number = 0; pass < 6; pass += 1) {
+    optimizedHtml = optimizedHtml.replace(/<([a-z][a-z0-9-]*)\b[^>]*>\s*<\/\1>/gi, '');
+  }
+
+  return optimizedHtml.replace(/>\s+</g, '><');
 }
 
 function isJsonLdScriptTag(scriptTag: string): boolean {
