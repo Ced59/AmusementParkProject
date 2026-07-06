@@ -20,8 +20,8 @@ import { ApiResponse } from '@app/models/shared/api_reponse';
 import { PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { mapNullable } from '@shared/utils/mapping';
 import {
   mapAttractionManufacturerToReferenceDetailViewModel,
@@ -142,10 +142,7 @@ export class ParkReferenceDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park founder', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parks.reference.errorMessage', previousData);
       }
@@ -173,10 +170,7 @@ export class ParkReferenceDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park operator', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parks.reference.errorMessage', previousData);
       }
@@ -206,10 +200,7 @@ export class ParkReferenceDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading attraction manufacturer', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.attractionsLoadingSignal.set(false);
         this.screenStateStore.setError('parks.reference.errorMessage', previousData);

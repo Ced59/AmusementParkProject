@@ -10,8 +10,8 @@ import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselImage } from '@ui/media';
@@ -183,10 +183,7 @@ export class ParkImagesStateFacade {
       error: (error: unknown) => {
         console.error('Error loading park images page', error);
         this.itemImagesLoadingSignal.set(false);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parks.imagesPage.errorMessage', previousData);
       }

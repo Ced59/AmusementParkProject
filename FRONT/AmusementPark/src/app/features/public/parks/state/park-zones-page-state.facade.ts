@@ -11,6 +11,8 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { ParkMapItem, ParkMapItems, ParkMapUnlocatedItem } from '@app/models/parks/park-map-items';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { PagedResult, DEFAULT_PAGINATION } from '@shared/models/contracts';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
@@ -170,7 +172,8 @@ export class ParkZonesPageStateFacade {
     private readonly textTruncator: NaturalTextTruncatorService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly measurementConversionService: MeasurementConversionService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
   }
 
@@ -241,6 +244,7 @@ export class ParkZonesPageStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park zones page', error);
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
         this.screenStateStore.setError('parks.zones.errorMessage', previousData);
       }
     });

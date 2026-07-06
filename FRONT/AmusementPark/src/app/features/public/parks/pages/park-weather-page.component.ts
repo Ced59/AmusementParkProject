@@ -18,8 +18,8 @@ import { TranslationService } from '@app/services/translation.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
@@ -287,10 +287,7 @@ export class ParkWeatherPageComponent implements OnInit {
       },
       error: (error: unknown) => {
         console.error('Error loading park weather page', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.stateStore.setError('parkWeather.errorMessage', previousData);
       }

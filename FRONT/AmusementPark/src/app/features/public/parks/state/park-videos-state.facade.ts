@@ -11,8 +11,8 @@ import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
 import { VideoTagDto } from '@app/models/videos/video-tag-dto';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { buildPublicParkItemVideoRouteCommands, buildPublicParkVideoRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
@@ -155,10 +155,7 @@ export class ParkVideosStateFacade {
       error: (error: unknown) => {
         console.error('Error loading park videos page', error);
         this.itemVideosLoadingSignal.set(false);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('videos.list.errorMessage', previousData);
       }

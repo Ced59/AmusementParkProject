@@ -27,6 +27,7 @@ import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { mapNullable } from '@shared/utils/mapping';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 import { resolvePublicParkItemsClosedFilter } from '@shared/utils/parks/public-park-items-closed-filter.helper';
@@ -168,10 +169,7 @@ export class ParkDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park detail summary', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parks.detail.errorMessage', previousData);
         this.nearbyStateStore.setError('parks.detail.nearby.errorMessage', previousNearbyData);

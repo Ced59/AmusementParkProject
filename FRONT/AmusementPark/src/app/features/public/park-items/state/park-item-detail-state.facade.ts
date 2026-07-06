@@ -14,8 +14,8 @@ import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { PagedResult } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
@@ -126,10 +126,7 @@ export class ParkItemDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park item', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parkItems.detail.errorMessage', previousData);
       }
@@ -146,10 +143,7 @@ export class ParkItemDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park for item', error);
-
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parkItems.detail.errorMessage', this.screenStateStore.data());
       }

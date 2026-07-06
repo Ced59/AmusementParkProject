@@ -54,6 +54,16 @@ describe('historyArticleResolver', () => {
     expect(ssrHttpStatusService.setNotFound).toHaveBeenCalled();
   });
 
+  it('marks transient article load errors as unavailable during SSR', async () => {
+    historyDataPort.getArticle.and.returnValue(throwError(() => new HttpErrorResponse({ status: 503 })));
+
+    const resolvedArticle: HistoryArticle | null = await resolveArticle('event-1');
+
+    expect(resolvedArticle).toBeNull();
+    expect(ssrHttpStatusService.setNotFound).not.toHaveBeenCalled();
+    expect(ssrHttpStatusService.setStatus).toHaveBeenCalledOnceWith(503);
+  });
+
   it('does not call the API when the route has no event id', async () => {
     const resolvedArticle: HistoryArticle | null = await resolveArticle(null);
 

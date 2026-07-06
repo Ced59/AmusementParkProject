@@ -83,9 +83,14 @@ class FakeParksPort implements ParkDetailParksPort {
 
 class FakeSsrHttpStatusService {
   public notFoundCallCount = 0;
+  public readonly statusCodes: number[] = [];
 
   setNotFound(): void {
     this.notFoundCallCount += 1;
+  }
+
+  setStatus(statusCode: number): void {
+    this.statusCodes.push(statusCode);
   }
 }
 
@@ -733,5 +738,17 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.state().error).toBe('parks.detail.errorMessage');
     expect(context.facade.park()?.id).toBe('park-1');
     expect(context.ssrStatusService.notFoundCallCount).toBe(1);
+  });
+
+  it('sets the SSR 503 status when the summary lookup fails transiently', () => {
+    spyOn(console, 'error');
+    const context = configureFacade();
+    context.parksPort.summaryResponse$ = throwError(() => ({ status: 503 }));
+
+    context.facade.loadPark('park-1');
+
+    expect(context.facade.state().kind).toBe('error');
+    expect(context.ssrStatusService.notFoundCallCount).toBe(0);
+    expect(context.ssrStatusService.statusCodes).toEqual([503]);
   });
 });

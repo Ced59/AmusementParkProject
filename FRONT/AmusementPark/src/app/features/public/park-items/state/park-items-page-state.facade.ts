@@ -24,6 +24,8 @@ import { ParkZone } from '@app/models/parks/park-zone';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { ParkItemsByParkIdFilters } from '@data-access/park-items/park-items-api-endpoints';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
@@ -258,7 +260,8 @@ export class ParkItemsPageStateFacade {
     private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly measurementConversionService: MeasurementConversionService,
     private readonly destroyRef: DestroyRef,
-    private readonly ssrRuntimeService: SsrRuntimeService
+    private readonly ssrRuntimeService: SsrRuntimeService,
+    private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
   }
 
@@ -397,6 +400,7 @@ export class ParkItemsPageStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park items page', error);
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
         this.screenStateStore.setError('parkItems.list.errorMessage', previousData);
       }
     });

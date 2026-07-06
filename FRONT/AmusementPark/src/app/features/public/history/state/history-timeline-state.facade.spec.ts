@@ -32,9 +32,14 @@ class FakeHistoryDataPort implements HistoryDataPort {
 
 class FakeSsrHttpStatusService {
   public notFoundCallCount = 0;
+  public readonly statusCodes: number[] = [];
 
   setNotFound(): void {
     this.notFoundCallCount += 1;
+  }
+
+  setStatus(statusCode: number): void {
+    this.statusCodes.push(statusCode);
   }
 }
 
@@ -136,5 +141,18 @@ describe('HistoryTimelineStateFacade', () => {
     expect(context.facade.state().kind).toBe('ready');
     expect(context.facade.includeParkItems()).toBeTrue();
     expect(context.ssrStatusService.notFoundCallCount).toBe(0);
+  });
+
+  it('sets SSR unavailable when the timeline lookup fails transiently', () => {
+    const context = configureFacade();
+    context.historyDataPort.parkTimelineResponses$ = [
+      throwError(() => ({ status: 503 }))
+    ];
+
+    context.facade.loadParkTimeline('park-1', false);
+
+    expect(context.facade.state().kind).toBe('error');
+    expect(context.ssrStatusService.notFoundCallCount).toBe(0);
+    expect(context.ssrStatusService.statusCodes).toEqual([503]);
   });
 });

@@ -5,6 +5,7 @@ import { HistoryTimeline } from '@app/models/history/history.models';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { HistoryTimelinePageViewModel } from '../models/history-view.model';
 import { mapHistoryTimelineToViewModel } from '../mappers/history-view.mapper';
@@ -68,10 +69,7 @@ export class HistoryTimelineStateFacade {
           return;
         }
 
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
-
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
         this.screenStateStore.setError('history.timeline.errorMessage', previousData);
       }
     });
@@ -88,10 +86,7 @@ export class HistoryTimelineStateFacade {
         this.screenStateStore.setReady(timeline);
       },
       error: (error: unknown) => {
-        if (hasHttpStatus(error, 404)) {
-          this.ssrHttpStatusService.setNotFound();
-        }
-
+        applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
         this.screenStateStore.setError('history.timeline.errorMessage', previousData);
       }
     });
