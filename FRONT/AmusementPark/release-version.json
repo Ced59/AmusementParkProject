@@ -1,6 +1,20 @@
 {
-  "version": "3.4.6",
+  "version": "3.4.7",
   "history": [
+    {
+      "version": "3.4.7",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Les réponses publiques sont plus fiables.",
+        "en": "Public responses are more reliable.",
+        "de": "Öffentliche Antworten sind zuverlässiger.",
+        "nl": "Publieke antwoorden zijn betrouwbaarder.",
+        "it": "Le risposte pubbliche sono più affidabili.",
+        "es": "Las respuestas públicas son más fiables.",
+        "pl": "Publiczne odpowiedzi są bardziej niezawodne.",
+        "pt": "As respostas públicas ficam mais fiáveis."
+      }
+    },
     {
       "version": "3.4.6",
       "releasedAt": "2026-07-05",

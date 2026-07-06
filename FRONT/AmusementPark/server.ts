@@ -24,6 +24,7 @@ import {
 } from './src/app/core/ssr/robot-ssr-policy';
 import type { RobotFamily } from './src/app/core/ssr/robot-ssr-policy';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
+import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-writer';
 import { siteVersion } from './src/environments/version.generated';
 
 const defaultApiInternalOrigin = 'http://api:8080';
@@ -475,10 +476,10 @@ export function app(): express.Express {
       if (staleEntry && cacheKey !== null && !warmupRequest) {
         enqueueTargetedRefreshes([cacheKey]);
       }
-      res.type('html').send(prepareHtmlForResponse(req, res, cachedEntry.html, {
+      sendPreparedHtmlResponse(req, res, cachedEntry.html, {
         allowRobotNoJsOptimization: true,
         responseMode: staleEntry ? 'SSR_STALE' : 'SSR_CACHE_HIT'
-      }));
+      });
       return;
     }
 
@@ -514,10 +515,10 @@ export function app(): express.Express {
           recordPageResponse(req, 'SSR-UNCACHED', cacheKey);
         }
 
-        res.type('html').send(prepareHtmlForResponse(req, res, html, {
+        sendPreparedHtmlResponse(req, res, html, {
           allowRobotNoJsOptimization: true,
           responseMode: 'SSR_RENDERED'
-        }));
+        });
       })
       .catch((err: unknown) => {
         if (err instanceof SsrRenderQueueFullError) {
@@ -1654,10 +1655,10 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   res.setHeader('X-AmusementPark-SSR-Fallback', mode);
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('Cache-Control', csrFallbackCacheControl);
-  res.type('html').send(prepareHtmlForResponse(req, res, readCsrShellHtml(csrIndexHtmlPath), {
+  sendPreparedHtmlResponse(req, res, readCsrShellHtml(csrIndexHtmlPath), {
     allowRobotNoJsOptimization: false,
     responseMode: 'CSR_FALLBACK'
-  }));
+  });
 }
 
 function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string | null, status: SsrPageResponseStatus): void {
@@ -1713,6 +1714,11 @@ function prepareHtmlForResponse(req: Request, res: Response, html: string, optio
   }
 
   return preparationResult.html;
+}
+
+function sendPreparedHtmlResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): void {
+  const preparedHtml: string = prepareHtmlForResponse(req, res, html, options);
+  writeSsrHtmlResponse(req.method, res, preparedHtml);
 }
 
 function recordHtmlPreparationStats(robotFamily: string | null, preparationResult: RobotHtmlPreparationResult): void {
