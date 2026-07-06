@@ -1,6 +1,20 @@
 {
-  "version": "3.4.12",
+  "version": "3.4.13",
   "history": [
+    {
+      "version": "3.4.13",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Les pages publiques restent plus fiables.",
+        "en": "Public pages stay more reliable.",
+        "de": "\u00d6ffentliche Seiten bleiben zuverl\u00e4ssiger.",
+        "nl": "Publieke pagina's blijven betrouwbaarder.",
+        "it": "Le pagine pubbliche restano pi\u00f9 affidabili.",
+        "es": "Las p\u00e1ginas p\u00fablicas siguen siendo m\u00e1s fiables.",
+        "pl": "Publiczne strony pozostaj\u0105 bardziej niezawodne.",
+        "pt": "As p\u00e1ginas p\u00fablicas ficam mais fi\u00e1veis."
+      }
+    },
     {
       "version": "3.4.12",
       "releasedAt": "2026-07-06",

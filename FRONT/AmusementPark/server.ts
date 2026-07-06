@@ -25,6 +25,7 @@ import {
 import type { RobotFamily } from './src/app/core/ssr/robot-ssr-policy';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-writer';
+import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-policy';
 import { siteVersion } from './src/environments/version.generated';
 
 const defaultApiInternalOrigin = 'http://api:8080';
@@ -289,6 +290,7 @@ interface PageCacheEntry {
   readonly cacheKey?: string;
   readonly statusCode: number;
   readonly html: string;
+  readonly seoReady?: boolean;
   readonly expiresAt: number;
   readonly staleUntil?: number;
 }
@@ -508,8 +510,7 @@ export function app(): express.Express {
       ],
     }), req.originalUrl)
       .then((html: string) => {
-        if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300) {
-          setCachedPage(cacheKey, res.statusCode, html);
+        if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300 && setCachedPage(cacheKey, res.statusCode, html)) {
           const cacheStatus: SsrPageResponseStatus = warmupRequest ? 'WARMED' : 'MISS';
           setPageCacheResponseHeaders(res, cacheStatus);
           recordPageResponse(req, cacheStatus, cacheKey);
@@ -2160,12 +2161,18 @@ function getCachedPage(cacheKey: string): PageCacheEntry | null {
   return getDiskCachedPage(cacheKey);
 }
 
-function setCachedPage(cacheKey: string, statusCode: number, html: string): void {
+function setCachedPage(cacheKey: string, statusCode: number, html: string): boolean {
+  const htmlCacheDecision = shouldCacheSsrRenderedHtml(html);
+  if (!htmlCacheDecision.canCache) {
+    console.warn(`SSR page cache skipped: seoReady=${htmlCacheDecision.reason}, bodyTextLength=${htmlCacheDecision.bodyTextLength}, key=${cacheKey}`);
+    return false;
+  }
+
   const htmlByteLength: number = Buffer.byteLength(html, 'utf8');
   const maxHtmlBytes: number = resolvePageCacheMaxHtmlBytes(cacheKey);
   if (maxHtmlBytes > 0 && htmlByteLength > maxHtmlBytes) {
     console.warn(`SSR page cache skipped: htmlSize=${htmlByteLength}, max=${maxHtmlBytes}, key=${cacheKey}`);
-    return;
+    return false;
   }
 
   const entry: PageCacheEntry = {
@@ -2173,6 +2180,7 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
     cacheKey,
     statusCode,
     html,
+    seoReady: true,
     expiresAt: Date.now() + pageCacheTtlSeconds * 1000
   };
 
@@ -2187,6 +2195,8 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
 
     pageCache.delete(oldestKey);
   }
+
+  return true;
 }
 
 function resolvePageCacheMaxHtmlBytes(cacheKey: string): number {
@@ -2212,7 +2222,9 @@ function isPublicHtmlSitemapPageCacheKey(cacheKey: string): boolean {
 
 function isUsablePageCacheEntry(entry: PageCacheEntry): boolean {
   const now = Date.now();
-  return entry.buildVersion === currentBuildVersion && (entry.expiresAt > now || (entry.staleUntil ?? 0) > now);
+  return entry.buildVersion === currentBuildVersion
+    && entry.seoReady === true
+    && (entry.expiresAt > now || (entry.staleUntil ?? 0) > now);
 }
 
 function isStalePageCacheEntry(entry: PageCacheEntry): boolean {
