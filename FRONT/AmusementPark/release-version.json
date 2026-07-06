@@ -1,6 +1,20 @@
 {
-  "version": "3.4.8",
+  "version": "3.4.9",
   "history": [
+    {
+      "version": "3.4.9",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Les pages publiques s’ouvrent entièrement.",
+        "en": "Public pages open completely.",
+        "de": "Öffentliche Seiten öffnen sich vollständig.",
+        "nl": "Publieke pagina’s openen volledig.",
+        "it": "Le pagine pubbliche si aprono completamente.",
+        "es": "Las páginas públicas se abren por completo.",
+        "pl": "Publiczne strony otwierają się w całości.",
+        "pt": "As páginas públicas abrem por completo."
+      }
+    },
     {
       "version": "3.4.8",
       "releasedAt": "2026-07-06",
