@@ -1,6 +1,20 @@
 {
-  "version": "3.4.14",
+  "version": "3.4.15",
   "history": [
+    {
+      "version": "3.4.15",
+      "releasedAt": "2026-07-06",
+      "labels": {
+        "fr": "Les pages publiques r\u00e9essaient mieux les erreurs passag\u00e8res.",
+        "en": "Public pages retry temporary errors better.",
+        "de": "\u00d6ffentliche Seiten wiederholen vor\u00fcbergehende Fehler besser.",
+        "nl": "Publieke pagina's proberen tijdelijke fouten beter opnieuw.",
+        "it": "Le pagine pubbliche ritentano meglio gli errori temporanei.",
+        "es": "Las p\u00e1ginas p\u00fablicas reintentan mejor los errores temporales.",
+        "pl": "Publiczne strony lepiej ponawiaj\u0105 chwilowe b\u0142\u0119dy.",
+        "pt": "As p\u00e1ginas p\u00fablicas repetem melhor erros tempor\u00e1rios."
+      }
+    },
     {
       "version": "3.4.14",
       "releasedAt": "2026-07-06",
