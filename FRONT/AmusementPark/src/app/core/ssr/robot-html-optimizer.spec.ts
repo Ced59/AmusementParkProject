@@ -4,6 +4,7 @@ import {
   isSeoReadyHtml,
   optimizeHtmlForRobotNoJs,
   prepareRobotHtmlForResponse,
+  shouldRetrySeoReadyHtmlRender,
   shouldReturnBotSsrUnavailable
 } from './robot-html-optimizer';
 
@@ -126,6 +127,31 @@ describe('robot HTML optimizer', () => {
     expect(isBareAngularShell(html)).toBeTrue();
     expect(result.isReady).toBeFalse();
     expect(result.reason).toBe('bare-angular-shell');
+  });
+
+  it('asks SSR to retry transiently incomplete SEO metadata', () => {
+    const missingCanonical = inspectSeoReadyHtml([
+      '<html><head>',
+      '<title>Public page</title>',
+      '<meta name="description" content="A useful public description for the page.">',
+      '</head><body><app-root><main>',
+      'Helpful amusement park content with practical details for visitors. '.repeat(12),
+      '</main></app-root></body></html>'
+    ].join(''));
+    const thinContent = inspectSeoReadyHtml([
+      '<html><head>',
+      '<title>Thin public page</title>',
+      '<meta name="description" content="A valid description.">',
+      '<link rel="canonical" href="https://amusement-parks.fun/en/thin">',
+      '</head><body><app-root><main>Short</main></app-root></body></html>'
+    ].join(''));
+    const ready = inspectSeoReadyHtml(buildSeoReadyHtml());
+
+    expect(missingCanonical.reason).toBe('missing-canonical');
+    expect(shouldRetrySeoReadyHtmlRender(missingCanonical)).toBeTrue();
+    expect(thinContent.reason).toBe('insufficient-body-content');
+    expect(shouldRetrySeoReadyHtmlRender(thinContent)).toBeFalse();
+    expect(shouldRetrySeoReadyHtmlRender(ready)).toBeFalse();
   });
 
   it('removes scripts for robot responses only when SSR HTML is SEO-ready', () => {
