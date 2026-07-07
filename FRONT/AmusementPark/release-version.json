@@ -1,6 +1,20 @@
 {
-  "version": "3.4.17",
+  "version": "3.4.18",
   "history": [
+    {
+      "version": "3.4.18",
+      "releasedAt": "2026-07-07",
+      "labels": {
+        "fr": "Les pages publiques attendent mieux les rendus SEO.",
+        "en": "Public pages wait better for SEO renders.",
+        "de": "\u00d6ffentliche Seiten warten besser auf SEO-Renderings.",
+        "nl": "Publieke pagina's wachten beter op SEO-renders.",
+        "it": "Le pagine pubbliche attendono meglio i rendering SEO.",
+        "es": "Las p\u00e1ginas p\u00fablicas esperan mejor los renderizados SEO.",
+        "pl": "Publiczne strony lepiej czekaj\u0105 na renderowanie SEO.",
+        "pt": "As p\u00e1ginas p\u00fablicas aguardam melhor as renderiza\u00e7\u00f5es SEO."
+      }
+    },
     {
       "version": "3.4.17",
       "releasedAt": "2026-07-07",
