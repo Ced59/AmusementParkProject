@@ -1,6 +1,20 @@
 {
-  "version": "3.4.15",
+  "version": "3.4.16",
   "history": [
+    {
+      "version": "3.4.16",
+      "releasedAt": "2026-07-07",
+      "labels": {
+        "fr": "Les pages publiques restent plus stables pour les moteurs.",
+        "en": "Public pages stay more stable for search engines.",
+        "de": "\u00d6ffentliche Seiten bleiben f\u00fcr Suchmaschinen stabiler.",
+        "nl": "Publieke pagina's blijven stabieler voor zoekmachines.",
+        "it": "Le pagine pubbliche restano pi\u00f9 stabili per i motori di ricerca.",
+        "es": "Las p\u00e1ginas p\u00fablicas son m\u00e1s estables para los buscadores.",
+        "pl": "Publiczne strony s\u0105 stabilniejsze dla wyszukiwarek.",
+        "pt": "As p\u00e1ginas p\u00fablicas ficam mais est\u00e1veis para os motores de pesquisa."
+      }
+    },
     {
       "version": "3.4.15",
       "releasedAt": "2026-07-06",
