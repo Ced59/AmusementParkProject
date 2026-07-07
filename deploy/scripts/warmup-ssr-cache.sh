@@ -30,6 +30,87 @@ mkdir -p "${output_dir}"
 log_file="${SSR_WARMUP_LOG_FILE:-${output_dir}/ssr-warmup-$(date -u +%Y%m%dT%H%M%SZ).log}"
 url_file="${SSR_WARMUP_URL_FILE:-${output_dir}/urls-${profile}.txt}"
 report_file="${SSR_WARMUP_REPORT_FILE:-${output_dir}/ssr-warmup-report-$(date -u +%Y%m%dT%H%M%SZ).csv}"
+lock_dir="${SSR_WARMUP_LOCK_DIR:-${output_dir}/.ssr-warmup.lock}"
+
+mkdir -p "$(dirname "${log_file}")"
+
+is_true() {
+  local value
+  value="$(printf '%s' "${1:-}" | tr '[:upper:]' '[:lower:]')"
+  case "${value}" in
+    1|true|yes|y)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+write_lock_log() {
+  printf '%s | %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$1" | tee -a "${log_file}" >&2
+}
+
+cleanup_warmup_lock() {
+  rm -f "${lock_dir}/pid"
+  rmdir "${lock_dir}" 2>/dev/null || true
+}
+
+acquire_warmup_lock() {
+  local existing_pid
+  local should_fail_if_locked
+
+  if mkdir "${lock_dir}" 2>/dev/null; then
+    printf '%s\n' "$$" > "${lock_dir}/pid"
+    trap cleanup_warmup_lock EXIT
+    trap 'cleanup_warmup_lock; exit 130' INT
+    trap 'cleanup_warmup_lock; exit 143' TERM
+    return 0
+  fi
+
+  existing_pid=""
+  if [ -f "${lock_dir}/pid" ]; then
+    existing_pid="$(cat "${lock_dir}/pid" 2>/dev/null || true)"
+  fi
+
+  case "${existing_pid}" in
+    ''|*[!0-9]*)
+      existing_pid=""
+      ;;
+  esac
+
+  if [ -n "${existing_pid}" ] && kill -0 "${existing_pid}" 2>/dev/null; then
+    write_lock_log "SSR warmup already running with pid=${existing_pid}; skipping this run."
+    should_fail_if_locked="${SSR_WARMUP_FAIL_IF_LOCKED:-${SSR_WARMUP_REQUIRED:-false}}"
+    if is_true "${should_fail_if_locked}"; then
+      exit 1
+    fi
+
+    exit 0
+  fi
+
+  write_lock_log "Removing stale SSR warmup lock at ${lock_dir}."
+  rm -f "${lock_dir}/pid"
+  rmdir "${lock_dir}" 2>/dev/null || true
+
+  if mkdir "${lock_dir}" 2>/dev/null; then
+    printf '%s\n' "$$" > "${lock_dir}/pid"
+    trap cleanup_warmup_lock EXIT
+    trap 'cleanup_warmup_lock; exit 130' INT
+    trap 'cleanup_warmup_lock; exit 143' TERM
+    return 0
+  fi
+
+  write_lock_log "Unable to acquire SSR warmup lock at ${lock_dir}; skipping this run."
+  should_fail_if_locked="${SSR_WARMUP_FAIL_IF_LOCKED:-${SSR_WARMUP_REQUIRED:-false}}"
+  if is_true "${should_fail_if_locked}"; then
+    exit 1
+  fi
+
+  exit 0
+}
+
+acquire_warmup_lock
 
 export SSR_WARMUP_PUBLIC_BASE_URL="${public_base_url%/}"
 export SSR_WARMUP_PROFILE_VALUE="${profile}"
@@ -142,6 +223,19 @@ def normalize_configured_url(value: str) -> str:
     if value.startswith('/'):
         return base_url + value
     return base_url + '/' + value
+
+
+def unique_preserving_order(values: Iterable[str]) -> list[str]:
+    ordered: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        if value in seen:
+            continue
+
+        seen.add(value)
+        ordered.append(value)
+
+    return ordered
 
 
 def language_matches(path: str) -> bool:
@@ -273,7 +367,7 @@ def collect_urls(root: ET.Element) -> list[str]:
             for line in url_file.read_text(encoding='utf-8').splitlines()
             if line.strip() and not line.strip().startswith('#')
         ]
-        unique_configured_urls = sorted(set(configured_urls))
+        unique_configured_urls = unique_preserving_order(configured_urls)
         if max_urls > 0:
             unique_configured_urls = unique_configured_urls[:max_urls]
         log(f"Using configured warmup URL file: {url_file} -> {len(unique_configured_urls)} URL(s)")
@@ -293,7 +387,7 @@ def collect_urls(root: ET.Element) -> list[str]:
         except Exception as exc:  # noqa: BLE001 - deployment script needs resilient logging.
             log(f"ERROR sitemap {sitemap_url} -> {exc}")
 
-    unique_urls = sorted(set(page_urls))
+    unique_urls = unique_preserving_order(page_urls)
     if max_urls > 0:
         unique_urls = unique_urls[:max_urls]
 

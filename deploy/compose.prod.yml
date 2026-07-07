@@ -16,6 +16,7 @@ services:
     pids_limit: ${FRONT_PIDS_LIMIT:-256}
     environment:
       NODE_ENV: production
+      NODE_OPTIONS: ${FRONT_NODE_OPTIONS:---max-old-space-size=1024}
       PORT: 4000
       SSR_API_INTERNAL_URL: ${FRONT_SSR_API_INTERNAL_URL:-http://api:8080}
       SSR_CSP_ENABLED: ${CSP_ENABLED:-true}

@@ -374,6 +374,7 @@ jobs:
       SSR_FORCE_HTTPS: ${{ vars.SSR_FORCE_HTTPS || 'true' }}
       CSP_ENABLED: ${{ vars.CSP_ENABLED || 'true' }}
       CSP_REPORT_ONLY: ${{ vars.CSP_REPORT_ONLY || 'true' }}
+      FRONT_NODE_OPTIONS: ${{ vars.FRONT_NODE_OPTIONS || '--max-old-space-size=1024' }}
       SEO_MAX_DYNAMIC_URLS_PER_TYPE: ${{ vars.SEO_MAX_DYNAMIC_URLS_PER_TYPE || '50' }}
       MONGO_DATABASE_NAME: ${{ vars.PROD_MONGO_DATABASE_NAME || 'AmusementPark' }}
       MONGO_INITDB_ROOT_USERNAME: ${{ secrets.PROD_MONGO_ROOT_USERNAME }}
@@ -450,14 +451,14 @@ jobs:
       SSR_CSR_FALLBACK_LOG_SAMPLE_RATE: ${{ vars.SSR_CSR_FALLBACK_LOG_SAMPLE_RATE || '100' }}
       SSR_CSR_FALLBACK_CACHE_CONTROL: ${{ vars.SSR_CSR_FALLBACK_CACHE_CONTROL || 'public, max-age=60, stale-while-revalidate=300' }}
       SSR_WARMUP_AFTER_DEPLOY: ${{ vars.SSR_WARMUP_AFTER_DEPLOY || 'false' }}
-      SSR_WARMUP_BACKGROUND: ${{ vars.SSR_WARMUP_BACKGROUND || 'true' }}
-      SSR_WARMUP_REQUIRED: ${{ vars.SSR_WARMUP_REQUIRED || 'false' }}
+      SSR_WARMUP_BACKGROUND: ${{ vars.SSR_WARMUP_BACKGROUND || 'false' }}
+      SSR_WARMUP_REQUIRED: ${{ vars.SSR_WARMUP_REQUIRED || 'true' }}
       SSR_WARMUP_PROFILE: ${{ vars.SSR_WARMUP_PROFILE || 'critical' }}
       SSR_WARMUP_SEO_DOCUMENTS: ${{ vars.SSR_WARMUP_SEO_DOCUMENTS || 'true' }}
       SSR_WARMUP_CONCURRENCY: ${{ vars.SSR_WARMUP_CONCURRENCY || '1' }}
       SSR_WARMUP_TIMEOUT_SECONDS: ${{ vars.SSR_WARMUP_TIMEOUT_SECONDS || '90' }}
       SSR_WARMUP_SLEEP_SECONDS: ${{ vars.SSR_WARMUP_SLEEP_SECONDS || '0' }}
-      SSR_WARMUP_MAX_URLS: ${{ vars.SSR_WARMUP_MAX_URLS || '0' }}
+      SSR_WARMUP_MAX_URLS: ${{ vars.SSR_WARMUP_MAX_URLS || '500' }}
       SSR_WARMUP_REFRESH: ${{ vars.SSR_WARMUP_REFRESH || 'false' }}
       SSR_WARMUP_LANGS: ${{ vars.SSR_WARMUP_LANGS }}
       SSR_WARMUP_URL_FILE: ${{ vars.SSR_WARMUP_URL_FILE }}
@@ -466,6 +467,7 @@ jobs:
       SSR_WARMUP_SITEMAP_FILTER_REGEX: ${{ vars.SSR_WARMUP_SITEMAP_FILTER_REGEX }}
       SSR_WARMUP_VALIDATE_BOT: ${{ vars.SSR_WARMUP_VALIDATE_BOT || 'true' }}
       SSR_WARMUP_FAIL_ON_BOT_VALIDATION: ${{ vars.SSR_WARMUP_FAIL_ON_BOT_VALIDATION || 'true' }}
+      SSR_WARMUP_FAIL_IF_LOCKED: ${{ vars.SSR_WARMUP_FAIL_IF_LOCKED || 'true' }}
       SSR_WARMUP_BOT_USER_AGENT: ${{ vars.SSR_WARMUP_BOT_USER_AGENT || 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' }}
     steps:
       - name: Checkout

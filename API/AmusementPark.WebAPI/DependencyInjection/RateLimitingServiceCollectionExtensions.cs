@@ -1,8 +1,6 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.RateLimiting;
@@ -11,7 +9,6 @@ using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Configuration;
@@ -24,8 +21,6 @@ namespace AmusementPark.WebAPI.DependencyInjection;
 /// </summary>
 public static class RateLimitingServiceCollectionExtensions
 {
-    private const string InternalSsrHeaderName = "X-AmusementPark-Internal-SSR";
-    private const string InternalSsrHeaderValue = "1";
     private const int InternalSsrPermitLimit = 300;
     private const int InternalSsrWindowSeconds = 1;
 
@@ -56,7 +51,7 @@ public static class RateLimitingServiceCollectionExtensions
 
             options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
             {
-                if (IsInternalSsrRequest(context))
+                if (InternalSsrRateLimitClassifier.IsInternalSsrRequest(context))
                 {
                     return RateLimitPartition.GetFixedWindowLimiter(
                         partitionKey: "internal-ssr",
@@ -122,52 +117,6 @@ public static class RateLimitingServiceCollectionExtensions
         options.AddPolicy(policyName, context => RateLimitPartition.GetFixedWindowLimiter(
             partitionKey: GetRemoteIpPartitionKey(context),
             factory: _ => CreateFixedWindowOptions(settings)));
-    }
-
-    private static bool IsInternalSsrRequest(HttpContext context)
-    {
-        if (!context.Request.Headers.TryGetValue(InternalSsrHeaderName, out StringValues headerValues))
-        {
-            return false;
-        }
-
-        if (!headerValues.Any(value => string.Equals(value, InternalSsrHeaderValue, StringComparison.Ordinal)))
-        {
-            return false;
-        }
-
-        return IsTrustedInternalAddress(context.Connection.RemoteIpAddress);
-    }
-
-    private static bool IsTrustedInternalAddress(IPAddress? ipAddress)
-    {
-        if (ipAddress is null)
-        {
-            return false;
-        }
-
-        if (IPAddress.IsLoopback(ipAddress))
-        {
-            return true;
-        }
-
-        IPAddress normalizedAddress = ipAddress.IsIPv4MappedToIPv6 ? ipAddress.MapToIPv4() : ipAddress;
-
-        if (normalizedAddress.AddressFamily == AddressFamily.InterNetwork)
-        {
-            byte[] bytes = normalizedAddress.GetAddressBytes();
-            return bytes[0] == 10
-                || (bytes[0] == 172 && bytes[1] >= 16 && bytes[1] <= 31)
-                || (bytes[0] == 192 && bytes[1] == 168);
-        }
-
-        if (normalizedAddress.AddressFamily == AddressFamily.InterNetworkV6)
-        {
-            byte[] bytes = normalizedAddress.GetAddressBytes();
-            return (bytes[0] & 0xfe) == 0xfc;
-        }
-
-        return false;
     }
 
     private static FixedWindowRateLimiterOptions CreateFixedWindowOptions(FixedWindowRateLimitSettings settings)
