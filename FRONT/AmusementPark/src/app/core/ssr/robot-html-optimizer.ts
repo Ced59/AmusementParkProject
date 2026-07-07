@@ -90,6 +90,17 @@ export function isSeoReadyHtml(html: string): boolean {
   return inspectSeoReadyHtml(html).isReady;
 }
 
+export function shouldRetrySeoReadyHtmlRender(seoReady: SeoReadyHtmlCheckResult): boolean {
+  if (seoReady.isReady) {
+    return false;
+  }
+
+  return seoReady.reason === 'bare-angular-shell'
+    || seoReady.reason === 'missing-title'
+    || seoReady.reason === 'missing-meta-description'
+    || seoReady.reason === 'missing-canonical';
+}
+
 export function inspectSeoReadyHtml(html: string): SeoReadyHtmlCheckResult {
   const bodyTextLength: number = getMeaningfulBodyTextLength(html);
 

@@ -13,10 +13,13 @@ import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
 import { isApiHeaderHiddenFromPublicProxy } from './src/app/core/ssr/public-api-header-policy';
 import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
 import {
+  inspectSeoReadyHtml,
   prepareRobotHtmlForResponse,
   RobotHtmlPreparationResult,
+  shouldRetrySeoReadyHtmlRender,
   shouldReturnBotSsrUnavailable
 } from './src/app/core/ssr/robot-html-optimizer';
+import type { SeoReadyHtmlCheckResult } from './src/app/core/ssr/robot-html-optimizer';
 import {
   detectRobotFamilyFromUserAgent,
   getRobotFamilyCategory,
@@ -59,6 +62,8 @@ const renderMaxConcurrency = normalizeInteger(process.env['SSR_RENDER_MAX_CONCUR
 const renderQueueMaxEntries = normalizeInteger(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'], 8, 0, Number.MAX_SAFE_INTEGER);
 const slowRenderThresholdMilliseconds = normalizeInteger(process.env['SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS'], 3000, 0, Number.MAX_SAFE_INTEGER);
 const renderQueueWarningThreshold = normalizeInteger(process.env['SSR_RENDER_QUEUE_WARNING_THRESHOLD'], Math.max(1, Math.floor(Math.max(1, renderQueueMaxEntries) * 0.75)), 1, Number.MAX_SAFE_INTEGER);
+const seoReadyRenderRetryCount = normalizeInteger(process.env['SSR_RENDER_SEO_READY_RETRY_COUNT'], 1, 0, 3);
+const seoReadyRenderRetryDelayMilliseconds = normalizeInteger(process.env['SSR_RENDER_SEO_READY_RETRY_DELAY_MILLISECONDS'], 150, 0, 5000);
 const assetMissLogSampleRate = normalizeInteger(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'], 25, 0, Number.MAX_SAFE_INTEGER);
 const csrFallbackLogSampleRate = normalizeInteger(process.env['SSR_CSR_FALLBACK_LOG_SAMPLE_RATE'], 100, 0, Number.MAX_SAFE_INTEGER);
 const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ?? 'public, max-age=60, stale-while-revalidate=300';
@@ -499,7 +504,7 @@ export function app(): express.Express {
     }
 
     const publicUrl = getPublicRequestUrl(req);
-    scheduleSsrRender(() => commonEngine.render({
+    const renderHtml = (): Promise<string> => commonEngine.render({
       bootstrap: AppServerModule,
       documentFilePath: indexHtml,
       url: publicUrl,
@@ -508,7 +513,9 @@ export function app(): express.Express {
         { provide: APP_BASE_HREF, useValue: req.baseUrl },
         { provide: SSR_RESPONSE, useValue: res }
       ],
-    }), req.originalUrl)
+    });
+
+    scheduleSsrRender(() => renderSsrHtmlWithSeoReadyRetries(renderHtml, res, statusCode, req.originalUrl), req.originalUrl)
       .then((html: string) => {
         if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300 && setCachedPage(cacheKey, res.statusCode, html)) {
           const cacheStatus: SsrPageResponseStatus = warmupRequest ? 'WARMED' : 'MISS';
@@ -1533,7 +1540,52 @@ function run(): void {
     console.log(`SSR render on cache miss: ${renderOnCacheMiss}`);
     console.log(`SSR render critical routes on cache miss: ${renderCriticalRoutesOnCacheMiss}`);
     console.log(`SSR render concurrency: ${renderMaxConcurrency} active / ${renderQueueMaxEntries} queued`);
+    console.log(`SSR SEO-ready render retry: count=${seoReadyRenderRetryCount} / delay=${seoReadyRenderRetryDelayMilliseconds}ms`);
     console.log(`SSR slow render threshold: ${slowRenderThresholdMilliseconds}ms`);
+  });
+}
+
+async function renderSsrHtmlWithSeoReadyRetries(
+  render: () => Promise<string>,
+  res: Response,
+  expectedStatusCode: number,
+  requestUrl: string
+): Promise<string> {
+  let html: string = await render();
+
+  for (let retryIndex: number = 1; retryIndex <= seoReadyRenderRetryCount; retryIndex += 1) {
+    const seoReady: SeoReadyHtmlCheckResult = inspectSeoReadyHtml(html);
+    if (!shouldRetrySsrRender(expectedStatusCode, res.statusCode, seoReady) || res.headersSent) {
+      return html;
+    }
+
+    console.warn(
+      `SSR SEO-ready render retry: attempt=${retryIndex}/${seoReadyRenderRetryCount}, `
+      + `status=${res.statusCode}, reason=${seoReady.reason}, bodyTextLength=${seoReady.bodyTextLength}, url=${requestUrl}`
+    );
+
+    if (seoReadyRenderRetryDelayMilliseconds > 0) {
+      await sleep(seoReadyRenderRetryDelayMilliseconds);
+    }
+
+    res.status(expectedStatusCode);
+    html = await render();
+  }
+
+  return html;
+}
+
+function shouldRetrySsrRender(expectedStatusCode: number, actualStatusCode: number, seoReady: SeoReadyHtmlCheckResult): boolean {
+  if (expectedStatusCode !== 200) {
+    return false;
+  }
+
+  return actualStatusCode >= 500 || shouldRetrySeoReadyHtmlRender(seoReady);
+}
+
+function sleep(milliseconds: number): Promise<void> {
+  return new Promise<void>((resolveDelay: () => void): void => {
+    setTimeout(resolveDelay, milliseconds);
   });
 }
 
@@ -2928,7 +2980,7 @@ function applySecurityHeaders(_req: Request, res: Response, next: NextFunction):
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(self)');
 
   if (cspEnabled) {
     const cspHeaderName = cspReportOnly ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';

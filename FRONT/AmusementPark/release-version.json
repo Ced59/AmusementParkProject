@@ -1,6 +1,20 @@
 {
-  "version": "3.4.16",
+  "version": "3.4.17",
   "history": [
+    {
+      "version": "3.4.17",
+      "releasedAt": "2026-07-07",
+      "labels": {
+        "fr": "Les pages publiques g\u00e8rent mieux les rendus incomplets.",
+        "en": "Public pages handle incomplete renders better.",
+        "de": "\u00d6ffentliche Seiten gehen besser mit unvollst\u00e4ndigen Renderings um.",
+        "nl": "Publieke pagina's gaan beter om met onvolledige renders.",
+        "it": "Le pagine pubbliche gestiscono meglio i rendering incompleti.",
+        "es": "Las p\u00e1ginas p\u00fablicas gestionan mejor los renderizados incompletos.",
+        "pl": "Publiczne strony lepiej obs\u0142uguj\u0105 niepe\u0142ne renderowanie.",
+        "pt": "As p\u00e1ginas p\u00fablicas lidam melhor com renderiza\u00e7\u00f5es incompletas."
+      }
+    },
     {
       "version": "3.4.16",
       "releasedAt": "2026-07-07",
