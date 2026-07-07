@@ -62,8 +62,8 @@ const renderMaxConcurrency = normalizeInteger(process.env['SSR_RENDER_MAX_CONCUR
 const renderQueueMaxEntries = normalizeInteger(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'], 8, 0, Number.MAX_SAFE_INTEGER);
 const slowRenderThresholdMilliseconds = normalizeInteger(process.env['SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS'], 3000, 0, Number.MAX_SAFE_INTEGER);
 const renderQueueWarningThreshold = normalizeInteger(process.env['SSR_RENDER_QUEUE_WARNING_THRESHOLD'], Math.max(1, Math.floor(Math.max(1, renderQueueMaxEntries) * 0.75)), 1, Number.MAX_SAFE_INTEGER);
-const seoReadyRenderRetryCount = normalizeInteger(process.env['SSR_RENDER_SEO_READY_RETRY_COUNT'], 1, 0, 3);
-const seoReadyRenderRetryDelayMilliseconds = normalizeInteger(process.env['SSR_RENDER_SEO_READY_RETRY_DELAY_MILLISECONDS'], 150, 0, 5000);
+const seoReadyRenderRetryCount = normalizeInteger(process.env['SSR_RENDER_SEO_READY_RETRY_COUNT'], 3, 0, 3);
+const seoReadyRenderRetryDelayMilliseconds = normalizeInteger(process.env['SSR_RENDER_SEO_READY_RETRY_DELAY_MILLISECONDS'], 500, 0, 5000);
 const assetMissLogSampleRate = normalizeInteger(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'], 25, 0, Number.MAX_SAFE_INTEGER);
 const csrFallbackLogSampleRate = normalizeInteger(process.env['SSR_CSR_FALLBACK_LOG_SAMPLE_RATE'], 100, 0, Number.MAX_SAFE_INTEGER);
 const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ?? 'public, max-age=60, stale-while-revalidate=300';
