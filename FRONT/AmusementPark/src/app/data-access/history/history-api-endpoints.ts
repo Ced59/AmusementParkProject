@@ -22,11 +22,15 @@ function buildQuery(params: Record<string, string | number | boolean | null | un
 }
 
 export const HISTORY_API_ENDPOINTS = {
-  getParkTimeline: (parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = []) => {
+  getParkTimeline: (parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = [], page: number = 1) => {
     const params: string[] = [];
 
     if (includeParkItems) {
       params.push('includeParkItems=true');
+    }
+
+    if (page > 1) {
+      params.push(`page=${encodeURIComponent(String(page))}`);
     }
 
     for (const parkItemId of parkItemIds) {
@@ -37,7 +41,7 @@ export const HISTORY_API_ENDPOINTS = {
 
     return `history/parks/${encodeURIComponent(parkId)}${params.length > 0 ? `?${params.join('&')}` : ''}`;
   },
-  getParkItemTimeline: (parkItemId: string) => `history/park-items/${encodeURIComponent(parkItemId)}`,
+  getParkItemTimeline: (parkItemId: string, page: number = 1) => `history/park-items/${encodeURIComponent(parkItemId)}${page > 1 ? `?page=${encodeURIComponent(String(page))}` : ''}`,
   getArticle: (eventId: string) => `history/articles/${encodeURIComponent(eventId)}`,
   getAdminEvents: (query: AdminHistoryEventListQuery) => `admin/history/events${buildQuery({
     page: query.page ?? 1,

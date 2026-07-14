@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap, Params, Router, RouterLink } from '@angular/router';
 import { combineLatest } from 'rxjs';
 
 import { TranslationService } from '@app/services/translation.service';
@@ -10,7 +10,7 @@ import { ImageDisplayComponent } from '@shared/components/image-display/image-di
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
-import { HistoryTimelineEventViewModel, HistoryTimelinePageViewModel } from '../models/history-view.model';
+import { HistoryTimelineEventViewModel, HistoryTimelinePageRangeViewModel, HistoryTimelinePageViewModel } from '../models/history-view.model';
 import { HistoryTimelineStateFacade } from '../state/history-timeline-state.facade';
 import { HISTORY_TIMELINE_ROUTE_DATA_KEY, ResolvedHistoryTimelineRouteData } from '../state/history-timeline.resolver';
 
@@ -26,6 +26,7 @@ interface HistoryTimelinePageCopy {
   sourceSingular: string;
   start: string;
   summaryAria: string;
+  timelinePagesAria?: string;
   timelineAria: string;
   yearsAria: string;
 }
@@ -200,21 +201,21 @@ export class HistoryTimelinePageComponent implements OnInit {
 
       if (parkItemId) {
         if (resolvedTimeline !== undefined) {
-          this.stateFacade.setResolvedParkItemTimeline(parkItemId, resolvedTimeline.timeline);
+          this.stateFacade.setResolvedParkItemTimeline(parkItemId, resolvedTimeline.timeline, resolvedTimeline.page);
           return;
         }
 
-        this.stateFacade.loadParkItemTimeline(parkItemId);
+        this.stateFacade.loadParkItemTimeline(parkItemId, this.resolvePageParam(params));
         return;
       }
 
       if (parkId) {
         if (resolvedTimeline !== undefined) {
-          this.stateFacade.setResolvedParkTimeline(parkId, resolvedTimeline.timeline, resolvedTimeline.includeParkItems);
+          this.stateFacade.setResolvedParkTimeline(parkId, resolvedTimeline.timeline, resolvedTimeline.includeParkItems, resolvedTimeline.page);
           return;
         }
 
-        this.stateFacade.loadParkTimeline(parkId, this.includeParkItems());
+        this.stateFacade.loadParkTimeline(parkId, this.includeParkItems(), this.resolvePageParam(params));
       }
     });
 
@@ -225,7 +226,17 @@ export class HistoryTimelinePageComponent implements OnInit {
   }
 
   protected toggleParkItems(): void {
-    this.stateFacade.setIncludeParkItems(!this.includeParkItems());
+    const currentTimeline: HistoryTimelinePageViewModel | null = this.timeline();
+    const nextIncludeParkItems: boolean = !this.includeParkItems();
+
+    if (currentTimeline?.entityType === 'Park') {
+      this.router.navigate(this.pageLink(currentTimeline, 1), {
+        queryParams: nextIncludeParkItems ? { includeParkItems: 'true' } : null
+      });
+      return;
+    }
+
+    this.stateFacade.setIncludeParkItems(nextIncludeParkItems);
   }
 
   protected backLink(timeline: HistoryTimelinePageViewModel): string[] {
@@ -301,6 +312,24 @@ export class HistoryTimelinePageComponent implements OnInit {
     return this.resolveCopy().yearsAria;
   }
 
+  protected timelinePagesAriaLabel(): string {
+    const copy: HistoryTimelinePageCopy = this.resolveCopy();
+    return copy.timelinePagesAria ?? copy.yearsAria;
+  }
+
+  protected pageLink(timeline: HistoryTimelinePageViewModel, page: number): string[] {
+    const baseLink: string[] = this.timelineBaseLink(timeline);
+    return page <= 1 ? baseLink : [...baseLink, 'page', String(page)];
+  }
+
+  protected pageAriaCurrent(range: HistoryTimelinePageRangeViewModel): 'page' | null {
+    return range.isCurrent ? 'page' : null;
+  }
+
+  protected pageQueryParams(): Params | null {
+    return this.includeParkItems() ? { includeParkItems: 'true' } : null;
+  }
+
   protected sourceLabel(event: HistoryTimelineEventViewModel): string {
     const copy: HistoryTimelinePageCopy = this.resolveCopy();
     const label: string = event.sourceCount === 1 ? copy.sourceSingular : copy.sourcePlural;
@@ -330,14 +359,33 @@ export class HistoryTimelinePageComponent implements OnInit {
 
     return this.isResolvedHistoryTimelineRouteData(resolvedTimeline)
       ? resolvedTimeline
-      : { timeline: null, includeParkItems: false };
+      : { timeline: null, includeParkItems: false, page: 1 };
   }
 
   private isResolvedHistoryTimelineRouteData(value: unknown): value is ResolvedHistoryTimelineRouteData {
     return typeof value === 'object'
       && value !== null
       && 'timeline' in value
-      && 'includeParkItems' in value;
+      && 'includeParkItems' in value
+      && 'page' in value;
+  }
+
+  private resolvePageParam(params: ParamMap): number {
+    const rawPage: string | null = params.get('page');
+    const page: number = Number(rawPage ?? '1');
+    return Number.isInteger(page) && page > 0 ? page : 1;
+  }
+
+  private timelineBaseLink(timeline: HistoryTimelinePageViewModel): string[] {
+    if (timeline.parkItem && timeline.park) {
+      return ['/', this.currentLanguage(), 'park', timeline.park.id ?? '', this.slugOrFallback(timeline.park.name, 'park'), 'item', timeline.parkItem.id ?? '', this.slugOrFallback(timeline.parkItem.name, 'item'), 'history'];
+    }
+
+    if (timeline.park) {
+      return ['/', this.currentLanguage(), 'park', timeline.park.id ?? '', this.slugOrFallback(timeline.park.name, 'park'), 'history'];
+    }
+
+    return ['/', this.currentLanguage(), 'parks'];
   }
 
   private normalizeOptionalText(value: string | null | undefined): string | null {

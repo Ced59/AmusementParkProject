@@ -36,10 +36,10 @@ describe('historyTimelineResolver', () => {
 
     const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1', itemId: 'item-1' });
 
-    expect(resolvedData).toEqual({ timeline, includeParkItems: false });
+    expect(resolvedData).toEqual({ timeline, includeParkItems: false, page: 1 });
     expect(historyDataPort.getParkItemTimeline).toHaveBeenCalledOnceWith('item-1', jasmine.objectContaining({
       context: jasmine.any(HttpContext)
-    }));
+    }), 1);
     expect(historyDataPort.getParkTimeline).not.toHaveBeenCalled();
     expect(ssrHttpStatusService.setNotFound).not.toHaveBeenCalled();
   });
@@ -53,10 +53,10 @@ describe('historyTimelineResolver', () => {
 
     const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1' });
 
-    expect(resolvedData).toEqual({ timeline, includeParkItems: true });
+    expect(resolvedData).toEqual({ timeline, includeParkItems: true, page: 1 });
     expect(historyDataPort.getParkTimeline.calls.allArgs()).toEqual([
-      ['park-1', false, [], jasmine.objectContaining({ context: jasmine.any(HttpContext) })],
-      ['park-1', true, [], jasmine.objectContaining({ context: jasmine.any(HttpContext) })]
+      ['park-1', false, [], jasmine.objectContaining({ context: jasmine.any(HttpContext) }), 1],
+      ['park-1', true, [], jasmine.objectContaining({ context: jasmine.any(HttpContext) }), 1]
     ]);
     expect(ssrHttpStatusService.setNotFound).not.toHaveBeenCalled();
   });
@@ -66,7 +66,7 @@ describe('historyTimelineResolver', () => {
 
     const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1', itemId: 'item-1' });
 
-    expect(resolvedData).toEqual({ timeline: null, includeParkItems: false });
+    expect(resolvedData).toEqual({ timeline: null, includeParkItems: false, page: 1 });
     expect(ssrHttpStatusService.setNotFound).not.toHaveBeenCalled();
     expect(ssrHttpStatusService.setStatus).toHaveBeenCalledOnceWith(503);
   });
@@ -76,23 +76,64 @@ describe('historyTimelineResolver', () => {
 
     const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1' });
 
-    expect(resolvedData).toEqual({ timeline: null, includeParkItems: false });
+    expect(resolvedData).toEqual({ timeline: null, includeParkItems: false, page: 1 });
     expect(historyDataPort.getParkTimeline).toHaveBeenCalledTimes(1);
     expect(ssrHttpStatusService.setStatus).toHaveBeenCalledOnceWith(503);
   });
+
+  it('loads the requested timeline page from the route parameter', async () => {
+    const timeline: HistoryTimeline = createTimeline('Park');
+    historyDataPort.getParkTimeline.and.returnValue(of(timeline));
+
+    const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1', page: '2' });
+
+    expect(resolvedData).toEqual({ timeline, includeParkItems: false, page: 2 });
+    expect(historyDataPort.getParkTimeline).toHaveBeenCalledOnceWith(
+      'park-1',
+      false,
+      [],
+      jasmine.objectContaining({ context: jasmine.any(HttpContext) }),
+      2
+    );
+  });
+
+  it('loads included park item events directly when requested by query string', async () => {
+    const timeline: HistoryTimeline = createTimeline('Park');
+    historyDataPort.getParkTimeline.and.returnValue(of(timeline));
+
+    const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1' }, { includeParkItems: 'true' });
+
+    expect(resolvedData).toEqual({ timeline, includeParkItems: true, page: 1 });
+    expect(historyDataPort.getParkTimeline).toHaveBeenCalledOnceWith(
+      'park-1',
+      true,
+      [],
+      jasmine.objectContaining({ context: jasmine.any(HttpContext) }),
+      1
+    );
+  });
+
+  it('marks invalid timeline pages as not found during SSR', async () => {
+    const resolvedData: ResolvedHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1', page: 'zero' });
+
+    expect(resolvedData).toEqual({ timeline: null, includeParkItems: false, page: 1 });
+    expect(historyDataPort.getParkTimeline).not.toHaveBeenCalled();
+    expect(ssrHttpStatusService.setNotFound).toHaveBeenCalled();
+  });
 });
 
-async function resolveTimeline(params: Record<string, string>): Promise<ResolvedHistoryTimelineRouteData> {
+async function resolveTimeline(params: Record<string, string>, queryParams: Record<string, string> = {}): Promise<ResolvedHistoryTimelineRouteData> {
   const result: Observable<ResolvedHistoryTimelineRouteData> = TestBed.runInInjectionContext((): Observable<ResolvedHistoryTimelineRouteData> => {
-    return historyTimelineResolver(createRoute(params), {} as RouterStateSnapshot) as Observable<ResolvedHistoryTimelineRouteData>;
+    return historyTimelineResolver(createRoute(params, queryParams), {} as RouterStateSnapshot) as Observable<ResolvedHistoryTimelineRouteData>;
   });
 
   return firstValueFrom(result);
 }
 
-function createRoute(params: Record<string, string>): ActivatedRouteSnapshot {
+function createRoute(params: Record<string, string>, queryParams: Record<string, string>): ActivatedRouteSnapshot {
   return {
-    paramMap: convertToParamMap(params)
+    paramMap: convertToParamMap(params),
+    queryParamMap: convertToParamMap(queryParams)
   } as ActivatedRouteSnapshot;
 }
 

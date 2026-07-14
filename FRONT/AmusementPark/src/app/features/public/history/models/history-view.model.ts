@@ -1,6 +1,7 @@
 import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { PaginationContract } from '@shared/models/contracts';
 import {
   HistoryArticleBlock,
   HistoryArticleContent,
@@ -19,8 +20,19 @@ export interface HistoryTimelinePageViewModel {
   includedParkItems: ParkItem[];
   showParkItemControls: boolean;
   events: HistoryTimelineEventViewModel[];
+  pagination: PaginationContract | null;
+  pageRanges: HistoryTimelinePageRangeViewModel[];
   yearStart: number;
   yearEnd: number;
+}
+
+export interface HistoryTimelinePageRangeViewModel {
+  page: number;
+  label: string;
+  startYear: number;
+  endYear: number;
+  eventCount: number;
+  isCurrent: boolean;
 }
 
 export interface HistoryTimelineEventViewModel {

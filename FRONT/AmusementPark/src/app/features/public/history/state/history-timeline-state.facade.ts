@@ -16,6 +16,7 @@ export class HistoryTimelineStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<HistoryTimeline>();
   private readonly currentLanguageSignal = signal('en');
   private readonly includeParkItemsSignal = signal(false);
+  private readonly currentPageSignal = signal(1);
 
   public readonly state = this.screenStateStore.state;
   public readonly timeline: Signal<HistoryTimelinePageViewModel | null> = computed(() => {
@@ -38,34 +39,38 @@ export class HistoryTimelineStateFacade {
     this.currentLanguageSignal.set(language || 'en');
   }
 
-  setResolvedParkTimeline(parkId: string, timeline: HistoryTimeline | null, includeParkItems: boolean): void {
+  setResolvedParkTimeline(parkId: string, timeline: HistoryTimeline | null, includeParkItems: boolean, page: number = 1): void {
     this.currentParkId = parkId;
     this.currentParkItemId = null;
     this.includeParkItemsSignal.set(includeParkItems);
+    this.currentPageSignal.set(this.normalizePage(page));
     this.setResolvedTimeline(timeline);
   }
 
-  setResolvedParkItemTimeline(parkItemId: string, timeline: HistoryTimeline | null): void {
+  setResolvedParkItemTimeline(parkItemId: string, timeline: HistoryTimeline | null, page: number = 1): void {
     this.currentParkItemId = parkItemId;
     this.currentParkId = null;
     this.includeParkItemsSignal.set(false);
+    this.currentPageSignal.set(this.normalizePage(page));
     this.setResolvedTimeline(timeline);
   }
 
-  loadParkTimeline(parkId: string, includeParkItems: boolean = this.includeParkItemsSignal()): void {
+  loadParkTimeline(parkId: string, includeParkItems: boolean = this.includeParkItemsSignal(), page: number = this.currentPageSignal()): void {
     this.currentParkId = parkId;
     this.currentParkItemId = null;
+    const normalizedPage: number = this.normalizePage(page);
     this.includeParkItemsSignal.set(includeParkItems);
+    this.currentPageSignal.set(normalizedPage);
     const previousData: HistoryTimeline | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.historyApiService.getParkTimeline(parkId, includeParkItems, [], anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.historyApiService.getParkTimeline(parkId, includeParkItems, [], anonymousHttpOptions(), normalizedPage).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (timeline: HistoryTimeline) => {
         this.screenStateStore.setReady(timeline);
       },
       error: (error: unknown) => {
         if (!includeParkItems && hasHttpStatus(error, 404)) {
-          this.loadParkTimeline(parkId, true);
+          this.loadParkTimeline(parkId, true, normalizedPage);
           return;
         }
 
@@ -75,13 +80,15 @@ export class HistoryTimelineStateFacade {
     });
   }
 
-  loadParkItemTimeline(parkItemId: string): void {
+  loadParkItemTimeline(parkItemId: string, page: number = this.currentPageSignal()): void {
     this.currentParkItemId = parkItemId;
     this.currentParkId = null;
+    const normalizedPage: number = this.normalizePage(page);
+    this.currentPageSignal.set(normalizedPage);
     const previousData: HistoryTimeline | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.historyApiService.getParkItemTimeline(parkItemId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.historyApiService.getParkItemTimeline(parkItemId, anonymousHttpOptions(), normalizedPage).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (timeline: HistoryTimeline) => {
         this.screenStateStore.setReady(timeline);
       },
@@ -100,13 +107,17 @@ export class HistoryTimelineStateFacade {
     this.includeParkItemsSignal.set(includeParkItems);
 
     if (this.currentParkId) {
-      this.loadParkTimeline(this.currentParkId, includeParkItems);
+      this.loadParkTimeline(this.currentParkId, includeParkItems, 1);
       return;
     }
 
     if (this.currentParkItemId) {
-      this.loadParkItemTimeline(this.currentParkItemId);
+      this.loadParkItemTimeline(this.currentParkItemId, 1);
     }
+  }
+
+  private normalizePage(page: number): number {
+    return Number.isInteger(page) && page > 0 ? page : 1;
   }
 
   private setResolvedTimeline(timeline: HistoryTimeline | null): void {

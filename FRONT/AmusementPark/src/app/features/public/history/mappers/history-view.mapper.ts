@@ -14,6 +14,7 @@ import {
   HistoryArticleBlockViewModel,
   HistoryArticlePageViewModel,
   HistoryTimelineEventViewModel,
+  HistoryTimelinePageRangeViewModel,
   HistoryTimelinePageViewModel
 } from '../models/history-view.model';
 import { resolveHistoryEventTypeLabel } from '../utils/history-event-labels';
@@ -92,8 +93,9 @@ export function mapHistoryTimelineToViewModel(timeline: HistoryTimeline, languag
       return (left.day ?? 0) - (right.day ?? 0);
     });
   const years: number[] = events.map((event: HistoryTimelineEventViewModel) => event.year);
-  const yearStart: number = years.length > 0 ? Math.min(...years) : new Date().getFullYear();
-  const yearEnd: number = years.length > 0 ? Math.max(...years) : yearStart;
+  const pageRanges: HistoryTimelinePageRangeViewModel[] = mapTimelinePageRanges(timeline);
+  const yearStart: number = pageRanges.length > 0 ? pageRanges[0].startYear : years.length > 0 ? Math.min(...years) : new Date().getFullYear();
+  const yearEnd: number = pageRanges.length > 0 ? pageRanges[pageRanges.length - 1].endYear : years.length > 0 ? Math.max(...years) : yearStart;
   const range: number = Math.max(1, yearEnd - yearStart);
   const seenYears = new Set<number>();
 
@@ -104,20 +106,37 @@ export function mapHistoryTimelineToViewModel(timeline: HistoryTimeline, languag
   }
 
   const hasParkItemTimelineEvents: boolean = timeline.hasParkItemTimelineEvents === true || (timeline.includedParkItems?.length ?? 0) > 0;
+  const totalEventCount: number = timeline.pagination?.totalItems ?? events.length;
 
   return {
     entityType: timeline.entityType,
     title: resolveTimelineTitle(ownerName, timeline.entityType, language),
-    subtitle: resolveTimelineSubtitle(ownerName, timeline.entityType, events.length, language),
+    subtitle: resolveTimelineSubtitle(ownerName, timeline.entityType, totalEventCount, language),
     ownerName,
     park: timeline.park ?? null,
     parkItem: timeline.parkItem ?? null,
     includedParkItems: timeline.includedParkItems ?? [],
     showParkItemControls: timeline.entityType === 'Park' && hasParkItemTimelineEvents,
     events,
+    pagination: timeline.pagination ?? null,
+    pageRanges,
     yearStart,
     yearEnd
   };
+}
+
+function mapTimelinePageRanges(timeline: HistoryTimeline): HistoryTimelinePageRangeViewModel[] {
+  const currentPage: number = timeline.pagination?.currentPage ?? 1;
+
+  return (timeline.pageRanges ?? [])
+    .map((range): HistoryTimelinePageRangeViewModel => ({
+      page: range.page,
+      label: range.startYear === range.endYear ? String(range.startYear) : `${range.startYear} à ${range.endYear}`,
+      startYear: range.startYear,
+      endYear: range.endYear,
+      eventCount: range.eventCount,
+      isCurrent: range.page === currentPage
+    }));
 }
 
 export function mapHistoryArticleToViewModel(article: HistoryArticle, language: string): HistoryArticlePageViewModel | null {

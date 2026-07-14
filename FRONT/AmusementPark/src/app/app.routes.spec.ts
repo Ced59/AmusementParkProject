@@ -26,8 +26,10 @@ describe('App routes', () => {
     const publicRoutes: Route[] = getPublicRoutes();
     const expectedPaths: string[] = [
       'park/:id/:slug/history',
+      'park/:id/:slug/history/page/:page',
       'park/:id/:slug/history/:eventId/:eventSlug',
       'park/:id/:slug/item/:itemId/:itemSlug/history',
+      'park/:id/:slug/item/:itemId/:itemSlug/history/page/:page',
       'park/:id/:slug/item/:itemId/:itemSlug/history/:eventId/:eventSlug'
     ];
 
@@ -38,6 +40,11 @@ describe('App routes', () => {
       expect(route?.redirectTo).withContext(path).toBeUndefined();
       expect(route?.loadComponent).withContext(path).toBeDefined();
     }
+
+    expect(publicRoutes.findIndex((candidate: Route): boolean => candidate.path === 'park/:id/:slug/history/page/:page'))
+      .toBeLessThan(publicRoutes.findIndex((candidate: Route): boolean => candidate.path === 'park/:id/:slug/history/:eventId/:eventSlug'));
+    expect(publicRoutes.findIndex((candidate: Route): boolean => candidate.path === 'park/:id/:slug/item/:itemId/:itemSlug/history/page/:page'))
+      .toBeLessThan(publicRoutes.findIndex((candidate: Route): boolean => candidate.path === 'park/:id/:slug/item/:itemId/:itemSlug/history/:eventId/:eventSlug'));
   });
 
   it('exposes the admin history management route behind the admin layout', () => {

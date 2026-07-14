@@ -951,6 +951,17 @@ export class PublicParkNavigationTreeFacade {
         selectedZoneId: null
       };
 
+      if (paths[7] === 'history' && paths[8] === 'page') {
+        return {
+          ...baseItemContext,
+          videoId: null,
+          videoSlug: null,
+          historyEventId: null,
+          historyEventSlug: null,
+          pageKind: 'park-item-history'
+        };
+      }
+
       if (paths[7] === 'history' && paths[8] && paths[9]) {
         return {
           ...baseItemContext,
@@ -1005,6 +1016,24 @@ export class PublicParkNavigationTreeFacade {
         videoId: null,
         videoSlug: null,
         pageKind: 'park-item-detail'
+      };
+    }
+
+    if (paths[4] === 'history' && paths[5] === 'page') {
+      return {
+        language,
+        parkId,
+        parkSlug,
+        itemId: null,
+        itemSlug: null,
+        zoneId: null,
+        zoneSlug: null,
+        selectedZoneId: null,
+        videoId: null,
+        videoSlug: null,
+        historyEventId: null,
+        historyEventSlug: null,
+        pageKind: 'park-history'
       };
     }
 

@@ -2643,6 +2643,14 @@
       "version": "Versie {{version}}"
     }
   },
+  "history": {
+    "timeline": {
+      "loadingTitle": "Geschiedenis laden",
+      "loadingMessage": "De tijdlijn wordt geladen.",
+      "errorTitle": "Geschiedenis niet beschikbaar",
+      "errorMessage": "De tijdlijn kan nu niet worden geladen."
+    }
+  },
   "home": {
     "home_title": "Vind het juiste park voor je volgende uitstap",
     "placeholder_search": "Zoek een park, attractie, hotel…",

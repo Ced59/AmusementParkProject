@@ -477,6 +477,68 @@ public sealed class HistoryHandlersTests
     }
 
     [Fact]
+    public async Task GetParkHistoryTimeline_WhenTimelineIsPaged_ShouldReturnRequestedPageAndRanges()
+    {
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Mirapolis",
+            IsVisible = true,
+        };
+        HistoryEvent firstEvent = CreateParkHistoryEvent("event-1980", 1980);
+        HistoryEvent secondEvent = CreateParkHistoryEvent("event-1985", 1985);
+        HistoryEvent thirdEvent = CreateParkHistoryEvent("event-1990", 1990);
+
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        historyRepository
+            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { firstEvent, secondEvent, thirdEvent });
+        historyRepository
+            .Setup(repository => repository.HasParkItemTimelineEventsAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+
+        GetParkHistoryTimelineQueryHandler handler = new GetParkHistoryTimelineQueryHandler(
+            historyRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+
+        ApplicationResult<HistoryTimelineResult> result = await handler.HandleAsync(new GetParkHistoryTimelineQuery(
+            "park-1",
+            false,
+            false,
+            Array.Empty<string>(),
+            Page: 2,
+            PageSize: 2));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(new[] { "event-1990" }, result.Value!.Events.Select(entry => entry.Event.Id));
+        Assert.Equal(3, result.Value.Pagination.TotalItems);
+        Assert.Equal(2, result.Value.Pagination.TotalPages);
+        Assert.Equal(2, result.Value.Pagination.CurrentPage);
+        Assert.Equal(2, result.Value.Pagination.ItemsPerPage);
+        Assert.Equal(new[] { 1, 2 }, result.Value.PageRanges.Select(range => range.Page));
+        Assert.Equal(new[] { 1980, 1990 }, result.Value.PageRanges.Select(range => range.StartYear));
+        Assert.Equal(new[] { 1985, 1990 }, result.Value.PageRanges.Select(range => range.EndYear));
+        historyRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task GetParkHistoryTimeline_WhenIncludedParkItemOwnerIsNotPublic_ShouldReturnNotFound()
     {
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
@@ -681,5 +743,21 @@ public sealed class HistoryHandlersTests
         Assert.True(result.IsSuccess);
         historyRepository.VerifyAll();
         sitemapRefreshScheduler.VerifyAll();
+    }
+
+    private static HistoryEvent CreateParkHistoryEvent(string id, int year)
+    {
+        return new HistoryEvent
+        {
+            Id = id,
+            Key = id,
+            EntityType = HistoryEntityType.Park,
+            OwnerId = "park-1",
+            ParkId = "park-1",
+            Year = year,
+            DatePrecision = HistoryDatePrecision.Year,
+            EventType = ParkHistoryEventType.Redevelopment.ToString(),
+            IsVisible = true,
+        };
     }
 }

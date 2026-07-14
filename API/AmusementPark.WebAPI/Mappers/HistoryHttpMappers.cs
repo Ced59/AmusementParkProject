@@ -19,6 +19,30 @@ internal static class HistoryHttpMappers
             HasParkItemTimelineEvents = result.HasParkItemTimelineEvents,
             IncludedParkItems = result.IncludedParkItems.Select(static item => item.ToHttp()).ToList(),
             Events = result.Events.Select(static item => item.ToHttp()).ToList(),
+            Pagination = result.Pagination.ToHttp(),
+            PageRanges = result.PageRanges.Select(static item => item.ToHttp()).ToList(),
+        };
+    }
+
+    public static PaginationDto ToHttp(this HistoryTimelinePaginationResult result)
+    {
+        return new PaginationDto
+        {
+            TotalItems = result.TotalItems,
+            TotalPages = result.TotalPages,
+            CurrentPage = result.CurrentPage,
+            ItemsPerPage = result.ItemsPerPage,
+        };
+    }
+
+    public static HistoryTimelinePageRangeDto ToHttp(this HistoryTimelinePageRangeResult result)
+    {
+        return new HistoryTimelinePageRangeDto
+        {
+            Page = result.Page,
+            StartYear = result.StartYear,
+            EndYear = result.EndYear,
+            EventCount = result.EventCount,
         };
     }
 

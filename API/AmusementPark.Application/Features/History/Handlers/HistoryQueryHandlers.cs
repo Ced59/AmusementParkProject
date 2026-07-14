@@ -1,6 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.History;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
@@ -99,7 +100,13 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             return ApplicationResult<HistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
         }
 
-        List<ParkItem> includedItems = timelineEvents
+        HistoryTimelinePageSlice? page = HistoryTimelinePageSlice.Create(timelineEvents, query.Page, query.PageSize);
+        if (page is null)
+        {
+            return ApplicationResult<HistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
+        }
+
+        List<ParkItem> includedItems = page.Events
             .Select(static item => item.ParkItem)
             .Where(static item => item is not null)
             .Select(static item => item!)
@@ -130,7 +137,9 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             Park = park,
             HasParkItemTimelineEvents = hasParkItemTimelineEvents,
             IncludedParkItems = includedItems,
-            Events = timelineEvents,
+            Events = page.Events,
+            Pagination = page.Pagination,
+            PageRanges = page.PageRanges,
         });
     }
 
@@ -255,12 +264,20 @@ public sealed class GetParkItemHistoryTimelineQueryHandler : IQueryHandler<GetPa
             return ApplicationResult<HistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
         }
 
+        HistoryTimelinePageSlice? page = HistoryTimelinePageSlice.Create(timelineEvents, query.Page, query.PageSize);
+        if (page is null)
+        {
+            return ApplicationResult<HistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
+        }
+
         return ApplicationResult<HistoryTimelineResult>.Success(new HistoryTimelineResult
         {
             EntityType = HistoryEntityType.ParkItem,
             Park = park,
             ParkItem = parkItem,
-            Events = timelineEvents,
+            Events = page.Events,
+            Pagination = page.Pagination,
+            PageRanges = page.PageRanges,
         });
     }
 }

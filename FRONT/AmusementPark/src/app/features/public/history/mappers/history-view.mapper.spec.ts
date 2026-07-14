@@ -61,6 +61,43 @@ describe('history-view.mapper', () => {
     expect(viewModel.events.map(event => event.isFirstInYear)).toEqual([true, false, true]);
   });
 
+  it('maps timeline pagination ranges to readable period labels and global year bounds', () => {
+    const timeline: HistoryTimeline = {
+      entityType: 'Park',
+      park: { id: 'park-1', name: 'Mirapolis' } as Park,
+      parkItem: null,
+      hasParkItemTimelineEvents: false,
+      includedParkItems: [],
+      pagination: {
+        currentPage: 2,
+        itemsPerPage: 2,
+        totalItems: 4,
+        totalPages: 2
+      },
+      pageRanges: [
+        { page: 1, startYear: 1970, endYear: 1980, eventCount: 2 },
+        { page: 2, startYear: 1981, endYear: 1990, eventCount: 2 }
+      ],
+      events: [
+        {
+          event: createHistoryEvent({ id: 'event-1981', key: 'event-1981', year: 1981 }),
+          contextPark: null,
+          parkItem: null,
+          mainImage: null
+        }
+      ]
+    };
+
+    const viewModel = mapHistoryTimelineToViewModel(timeline, 'fr');
+
+    expect(viewModel.yearStart).toBe(1970);
+    expect(viewModel.yearEnd).toBe(1990);
+    expect(viewModel.pageRanges.map(range => ({ label: range.label, isCurrent: range.isCurrent }))).toEqual([
+      { label: '1970 à 1980', isCurrent: false },
+      { label: '1981 à 1990', isCurrent: true }
+    ]);
+  });
+
   it('filters empty article blocks and uses a readable article title fallback', () => {
     const article: HistoryArticle = {
       event: createHistoryEvent({

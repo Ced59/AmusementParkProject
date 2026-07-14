@@ -2643,6 +2643,14 @@
       "version": "Versión {{version}}"
     }
   },
+  "history": {
+    "timeline": {
+      "loadingTitle": "Cargando la historia",
+      "loadingMessage": "La cronología se está cargando.",
+      "errorTitle": "Historia no disponible",
+      "errorMessage": "La cronología no se puede cargar ahora mismo."
+    }
+  },
   "home": {
     "home_title": "Encuentra el parque ideal para tu próxima salida",
     "placeholder_search": "Buscar un parque, una atracción, un hotel…",

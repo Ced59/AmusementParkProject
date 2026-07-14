@@ -1,0 +1,10 @@
+{
+  "history": {
+    "timeline": {
+      "loadingTitle": "A carregar a história",
+      "loadingMessage": "A linha do tempo está a carregar.",
+      "errorTitle": "História indisponível",
+      "errorMessage": "A linha do tempo não pode ser carregada agora."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "history": {
+    "timeline": {
+      "loadingTitle": "Caricamento della storia",
+      "loadingMessage": "La timeline è in caricamento.",
+      "errorTitle": "Storia non disponibile",
+      "errorMessage": "La timeline non può essere caricata in questo momento."
+    }
+  }
+}
