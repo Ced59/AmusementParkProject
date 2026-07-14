@@ -31,13 +31,13 @@ export class HistoryApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getParkTimeline(parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = [], options: HistoryHttpOptions = {}): Observable<HistoryTimeline> {
-    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkTimeline(parkId, includeParkItems, parkItemIds)}`;
+  getParkTimeline(parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = [], options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkTimeline(parkId, includeParkItems, parkItemIds, page)}`;
     return this.http.get<HistoryTimeline>(url, options);
   }
 
-  getParkItemTimeline(parkItemId: string, options: HistoryHttpOptions = {}): Observable<HistoryTimeline> {
-    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkItemTimeline(parkItemId)}`;
+  getParkItemTimeline(parkItemId: string, options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkItemTimeline(parkItemId, page)}`;
     return this.http.get<HistoryTimeline>(url, options);
   }
 

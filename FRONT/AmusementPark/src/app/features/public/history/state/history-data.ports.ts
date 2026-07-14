@@ -6,8 +6,8 @@ import { HistoryArticle, HistoryTimeline } from '@app/models/history/history.mod
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 export interface HistoryDataPort {
-  getParkTimeline(parkId: string, includeParkItems?: boolean, parkItemIds?: readonly string[], options?: AnonymousHttpOptions): Observable<HistoryTimeline>;
-  getParkItemTimeline(parkItemId: string, options?: AnonymousHttpOptions): Observable<HistoryTimeline>;
+  getParkTimeline(parkId: string, includeParkItems?: boolean, parkItemIds?: readonly string[], options?: AnonymousHttpOptions, page?: number): Observable<HistoryTimeline>;
+  getParkItemTimeline(parkItemId: string, options?: AnonymousHttpOptions, page?: number): Observable<HistoryTimeline>;
   getArticle(eventId: string, options?: AnonymousHttpOptions): Observable<HistoryArticle>;
 }
 

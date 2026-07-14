@@ -38,7 +38,7 @@
 
       <section class="history-summary" [attr.aria-label]="summaryAriaLabel()">
         <div>
-          <span>{{ currentTimeline.events.length }}</span>
+          <span>{{ currentTimeline.pagination?.totalItems ?? currentTimeline.events.length }}</span>
           <strong>{{ eventsLabel() }}</strong>
         </div>
         <div>
@@ -50,6 +50,21 @@
           <strong>{{ latestLabel() }}</strong>
         </div>
       </section>
+
+      @if (currentTimeline.pageRanges.length > 1) {
+        <nav class="history-pagination" [attr.aria-label]="timelinePagesAriaLabel()">
+          @for (range of currentTimeline.pageRanges; track range.page) {
+            <a
+              class="history-pagination__link"
+              [class.history-pagination__link--current]="range.isCurrent"
+              [routerLink]="pageLink(currentTimeline, range.page)"
+              [queryParams]="pageQueryParams()"
+              [attr.aria-current]="pageAriaCurrent(range)">
+              <span>{{ range.label }}</span>
+            </a>
+          }
+        </nav>
+      }
 
       <section class="history-timeline" [attr.aria-label]="timelineAriaLabel()">
         <nav class="history-timeline__axis" [attr.aria-label]="yearsAriaLabel()">

@@ -18,6 +18,21 @@ public sealed class HistoryTimelineDto
     public List<ParkItemDto> IncludedParkItems { get; set; } = new();
 
     public List<HistoryTimelineEventDto> Events { get; set; } = new();
+
+    public PaginationDto? Pagination { get; set; }
+
+    public List<HistoryTimelinePageRangeDto> PageRanges { get; set; } = new();
+}
+
+public sealed class HistoryTimelinePageRangeDto
+{
+    public int Page { get; set; }
+
+    public int StartYear { get; set; }
+
+    public int EndYear { get; set; }
+
+    public int EventCount { get; set; }
 }
 
 public sealed class HistoryTimelineEventDto

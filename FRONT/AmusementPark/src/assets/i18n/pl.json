@@ -2643,6 +2643,14 @@
       "version": "Wersja {{version}}"
     }
   },
+  "history": {
+    "timeline": {
+      "loadingTitle": "Ładowanie historii",
+      "loadingMessage": "Oś czasu jest ładowana.",
+      "errorTitle": "Historia niedostępna",
+      "errorMessage": "Nie można teraz wczytać osi czasu."
+    }
+  },
   "home": {
     "home_title": "Znajdź odpowiedni park na następną wycieczkę",
     "placeholder_search": "Szukaj parku, atrakcji, hotelu…",

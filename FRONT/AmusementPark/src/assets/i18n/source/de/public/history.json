@@ -1,0 +1,10 @@
+{
+  "history": {
+    "timeline": {
+      "loadingTitle": "Geschichte wird geladen",
+      "loadingMessage": "Die Zeitleiste wird geladen.",
+      "errorTitle": "Geschichte nicht verfügbar",
+      "errorMessage": "Die Zeitleiste konnte im Moment nicht geladen werden."
+    }
+  }
+}

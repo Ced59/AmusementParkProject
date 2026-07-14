@@ -2334,6 +2334,9 @@ export class SeoService {
 
   private buildHistoryTimelineJsonLd(timeline: HistoryTimelinePageViewModel, url: string, description: string): unknown {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const itemOffset: number = timeline.pagination
+      ? Math.max(0, (timeline.pagination.currentPage - 1) * timeline.pagination.itemsPerPage)
+      : 0;
 
     return {
       '@context': 'https://schema.org',
@@ -2341,10 +2344,10 @@ export class SeoService {
       name: timeline.title,
       description,
       url: canonicalUrl,
-      numberOfItems: timeline.events.length,
+      numberOfItems: timeline.pagination?.totalItems ?? timeline.events.length,
       itemListElement: timeline.events.map((event, index) => ({
         '@type': 'ListItem',
-        position: index + 1,
+        position: itemOffset + index + 1,
         name: event.title,
         description: event.summary || event.eventTypeLabel,
         url: event.articleLink

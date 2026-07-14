@@ -1,6 +1,20 @@
 {
-  "version": "3.4.18",
+  "version": "3.4.19",
   "history": [
+    {
+      "version": "3.4.19",
+      "releasedAt": "2026-07-14",
+      "labels": {
+        "fr": "Les timelines longues se parcourent plus facilement.",
+        "en": "Long timelines are easier to browse.",
+        "de": "Lange Zeitleisten lassen sich leichter durchsuchen.",
+        "nl": "Lange tijdlijnen zijn makkelijker te bekijken.",
+        "it": "Le timeline lunghe sono più facili da sfogliare.",
+        "es": "Las cronologías largas son más fáciles de recorrer.",
+        "pl": "Długie osie czasu są łatwiejsze do przeglądania.",
+        "pt": "As linhas do tempo longas ficam mais fáceis de percorrer."
+      }
+    },
     {
       "version": "3.4.18",
       "releasedAt": "2026-07-07",

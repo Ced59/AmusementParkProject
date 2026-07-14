@@ -2643,6 +2643,14 @@
       "version": "Version {{version}}"
     }
   },
+  "history": {
+    "timeline": {
+      "loadingTitle": "Loading history",
+      "loadingMessage": "The timeline is loading.",
+      "errorTitle": "History unavailable",
+      "errorMessage": "The timeline could not be loaded right now."
+    }
+  },
   "home": {
     "home_title": "Find the right park for your next outing",
     "placeholder_search": "Search for a park, attraction, hotel…",

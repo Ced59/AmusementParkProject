@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.History;
 using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
@@ -56,6 +57,7 @@ public sealed class HistoryController : ControllerBase
         [FromRoute] string parkId,
         [FromQuery] bool includeParkItems = false,
         [FromQuery] string[]? parkItemIds = null,
+        [FromQuery] int page = HistoryTimelinePaging.DefaultPage,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<HistoryTimelineResult> result = await this.getParkTimelineHandler.HandleAsync(
@@ -63,7 +65,9 @@ public sealed class HistoryController : ControllerBase
                 parkId,
                 this.UserCanSeeNonVisible(),
                 includeParkItems,
-                parkItemIds ?? Array.Empty<string>()),
+                parkItemIds ?? Array.Empty<string>(),
+                page,
+                HistoryTimelinePaging.DefaultPageSize),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -78,10 +82,17 @@ public sealed class HistoryController : ControllerBase
     [AllowAnonymous]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [ProducesResponseType(typeof(HistoryTimelineDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetParkItemTimelineAsync([FromRoute] string parkItemId, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetParkItemTimelineAsync(
+        [FromRoute] string parkItemId,
+        [FromQuery] int page = HistoryTimelinePaging.DefaultPage,
+        CancellationToken cancellationToken = default)
     {
         ApplicationResult<HistoryTimelineResult> result = await this.getParkItemTimelineHandler.HandleAsync(
-            new GetParkItemHistoryTimelineQuery(parkItemId, this.UserCanSeeNonVisible()),
+            new GetParkItemHistoryTimelineQuery(
+                parkItemId,
+                this.UserCanSeeNonVisible(),
+                page,
+                HistoryTimelinePaging.DefaultPageSize),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

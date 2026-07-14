@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.History;
 using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Core.Domain.History;
 
@@ -11,11 +12,15 @@ public sealed record GetParkHistoryTimelineQuery(
     string ParkId,
     bool IncludeHidden,
     bool IncludeParkItemEvents,
-    IReadOnlyCollection<string> ParkItemIds) : IQuery<ApplicationResult<HistoryTimelineResult>>;
+    IReadOnlyCollection<string> ParkItemIds,
+    int Page = HistoryTimelinePaging.DefaultPage,
+    int PageSize = HistoryTimelinePaging.DefaultPageSize) : IQuery<ApplicationResult<HistoryTimelineResult>>;
 
 public sealed record GetParkItemHistoryTimelineQuery(
     string ParkItemId,
-    bool IncludeHidden) : IQuery<ApplicationResult<HistoryTimelineResult>>;
+    bool IncludeHidden,
+    int Page = HistoryTimelinePaging.DefaultPage,
+    int PageSize = HistoryTimelinePaging.DefaultPageSize) : IQuery<ApplicationResult<HistoryTimelineResult>>;
 
 public sealed record GetHistoryArticleQuery(
     string EventId,

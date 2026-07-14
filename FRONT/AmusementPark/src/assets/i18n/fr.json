@@ -2643,6 +2643,14 @@
       "version": "Version {{version}}"
     }
   },
+  "history": {
+    "timeline": {
+      "loadingTitle": "Chargement de l'histoire",
+      "loadingMessage": "La timeline est en cours de chargement.",
+      "errorTitle": "Histoire indisponible",
+      "errorMessage": "La timeline n'a pas pu être chargée pour le moment."
+    }
+  },
   "home": {
     "home_title": "Trouve le parc idéal pour ta prochaine sortie",
     "placeholder_search": "Rechercher un parc, une attraction, un hôtel…",

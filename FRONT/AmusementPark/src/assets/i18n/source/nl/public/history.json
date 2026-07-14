@@ -1,0 +1,10 @@
+{
+  "history": {
+    "timeline": {
+      "loadingTitle": "Geschiedenis laden",
+      "loadingMessage": "De tijdlijn wordt geladen.",
+      "errorTitle": "Geschiedenis niet beschikbaar",
+      "errorMessage": "De tijdlijn kan nu niet worden geladen."
+    }
+  }
+}

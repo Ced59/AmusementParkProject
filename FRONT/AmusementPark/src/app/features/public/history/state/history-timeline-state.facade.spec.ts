@@ -9,15 +9,16 @@ import { HistoryTimelineStateFacade } from './history-timeline-state.facade';
 
 class FakeHistoryDataPort implements HistoryDataPort {
   public parkTimelineResponses$: Observable<HistoryTimeline>[] = [of(createTimeline())];
-  public readonly parkTimelineCalls: { parkId: string; includeParkItems?: boolean; parkItemIds?: readonly string[] }[] = [];
+  public readonly parkTimelineCalls: { parkId: string; includeParkItems?: boolean; parkItemIds?: readonly string[]; page?: number }[] = [];
 
   getParkTimeline(
     parkId: string,
     includeParkItems?: boolean,
     parkItemIds?: readonly string[],
-    _options?: AnonymousHttpOptions
+    _options?: AnonymousHttpOptions,
+    page?: number
   ): Observable<HistoryTimeline> {
-    this.parkTimelineCalls.push({ parkId, includeParkItems, parkItemIds });
+    this.parkTimelineCalls.push({ parkId, includeParkItems, parkItemIds, page });
     return this.parkTimelineResponses$.shift() ?? of(createTimeline());
   }
 
@@ -135,8 +136,8 @@ describe('HistoryTimelineStateFacade', () => {
     context.facade.loadParkTimeline('park-1', false);
 
     expect(context.historyDataPort.parkTimelineCalls).toEqual([
-      { parkId: 'park-1', includeParkItems: false, parkItemIds: [] },
-      { parkId: 'park-1', includeParkItems: true, parkItemIds: [] }
+      { parkId: 'park-1', includeParkItems: false, parkItemIds: [], page: 1 },
+      { parkId: 'park-1', includeParkItems: true, parkItemIds: [], page: 1 }
     ]);
     expect(context.facade.state().kind).toBe('ready');
     expect(context.facade.includeParkItems()).toBeTrue();
@@ -154,5 +155,17 @@ describe('HistoryTimelineStateFacade', () => {
     expect(context.facade.state().kind).toBe('error');
     expect(context.ssrStatusService.notFoundCallCount).toBe(0);
     expect(context.ssrStatusService.statusCodes).toEqual([503]);
+  });
+
+  it('loads the requested page and resets to page one when park item inclusion changes', () => {
+    const context = configureFacade();
+
+    context.facade.loadParkTimeline('park-1', false, 2);
+    context.facade.setIncludeParkItems(true);
+
+    expect(context.historyDataPort.parkTimelineCalls).toEqual([
+      { parkId: 'park-1', includeParkItems: false, parkItemIds: [], page: 2 },
+      { parkId: 'park-1', includeParkItems: true, parkItemIds: [], page: 1 }
+    ]);
   });
 });

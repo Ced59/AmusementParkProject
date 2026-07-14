@@ -2,6 +2,7 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { LocalizedItem } from '@app/models/shared/localized-item';
+import { PaginationContract } from '@shared/models/contracts';
 
 export type HistoryEntityType = 'Park' | 'ParkItem';
 export type HistoryDatePrecision = 'Year' | 'Month' | 'Day';
@@ -83,6 +84,15 @@ export interface HistoryTimeline {
   hasParkItemTimelineEvents?: boolean;
   includedParkItems: ParkItem[];
   events: HistoryTimelineEvent[];
+  pagination?: PaginationContract | null;
+  pageRanges?: HistoryTimelinePageRange[];
+}
+
+export interface HistoryTimelinePageRange {
+  page: number;
+  startYear: number;
+  endYear: number;
+  eventCount: number;
 }
 
 export interface HistoryArticle {

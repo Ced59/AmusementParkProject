@@ -996,6 +996,8 @@ function buildHistoryTimeline(overrides: Partial<HistoryTimelinePageViewModel> =
     parkItem: null,
     includedParkItems: [],
     showParkItemControls: false,
+    pagination: null,
+    pageRanges: [],
     yearStart: 1987,
     yearEnd: 1987,
     events: [

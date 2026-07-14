@@ -2643,6 +2643,14 @@
       "version": "Version {{version}}"
     }
   },
+  "history": {
+    "timeline": {
+      "loadingTitle": "Geschichte wird geladen",
+      "loadingMessage": "Die Zeitleiste wird geladen.",
+      "errorTitle": "Geschichte nicht verfügbar",
+      "errorMessage": "Die Zeitleiste konnte im Moment nicht geladen werden."
+    }
+  },
   "home": {
     "home_title": "Finde den passenden Park für deinen nächsten Ausflug",
     "placeholder_search": "Suche nach einem Park, einer Attraktion, einem Hotel…",
