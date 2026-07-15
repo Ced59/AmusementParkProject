@@ -8,6 +8,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import { buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { HistoryTimelineEventViewModel, HistoryTimelinePageRangeViewModel, HistoryTimelinePageViewModel } from '../models/history-view.model';
@@ -185,7 +186,7 @@ export class HistoryTimelinePageComponent implements OnInit {
         return;
       }
 
-      this.seoService.applyHistoryTimelineSeo(currentTimeline, this.currentLanguage(), this.router.url);
+      this.seoService.applyHistoryTimelineSeo(currentTimeline, this.currentLanguage(), this.router.url, this.timelineCanonicalPath(currentTimeline));
     });
   }
 
@@ -348,6 +349,11 @@ export class HistoryTimelinePageComponent implements OnInit {
 
   private resolveCopy(): HistoryTimelinePageCopy {
     return HISTORY_TIMELINE_PAGE_COPY[this.currentLanguage()] ?? HISTORY_TIMELINE_PAGE_COPY['en'];
+  }
+
+  private timelineCanonicalPath(timeline: HistoryTimelinePageViewModel): string | null {
+    const currentPage: number = timeline.pagination?.currentPage ?? 1;
+    return buildPublicRoutePath(this.pageLink(timeline, currentPage));
   }
 
   private resolveRouteDataTimeline(routeData: Data): ResolvedHistoryTimelineRouteData | undefined {

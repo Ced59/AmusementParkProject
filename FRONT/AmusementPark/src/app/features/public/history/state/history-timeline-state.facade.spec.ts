@@ -157,6 +157,22 @@ describe('HistoryTimelineStateFacade', () => {
     expect(context.ssrStatusService.statusCodes).toEqual([503]);
   });
 
+  it('keeps the previous timeline visible when a subsequent lookup fails transiently', () => {
+    const context = configureFacade();
+    const previousTimeline: HistoryTimeline = createTimeline();
+    context.historyDataPort.parkTimelineResponses$ = [
+      of(previousTimeline),
+      throwError(() => ({ status: 503 }))
+    ];
+
+    context.facade.loadParkTimeline('park-1', false, 1);
+    context.facade.loadParkTimeline('park-1', true, 2);
+
+    expect(context.facade.state().kind).toBe('ready');
+    expect(context.facade.state().data).toBe(previousTimeline);
+    expect(context.ssrStatusService.statusCodes).toEqual([503]);
+  });
+
   it('loads the requested page and resets to page one when park item inclusion changes', () => {
     const context = configureFacade();
 

@@ -95,6 +95,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
 
         List<HistoryEventDocument> documents = await this.collection.Find(filter)
             .Sort(BuildTimelineSort())
+            .Project<HistoryEventDocument>(BuildTimelineProjection())
             .ToListAsync(cancellationToken);
 
         return documents.Select(static document => document.ToDomain()).ToList();
@@ -124,6 +125,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
 
         List<HistoryEventDocument> documents = await this.collection.Find(filter)
             .Sort(BuildTimelineSort())
+            .Project<HistoryEventDocument>(BuildTimelineProjection())
             .ToListAsync(cancellationToken);
 
         return documents.Select(static document => document.ToDomain()).ToList();
@@ -164,6 +166,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
 
         List<HistoryEventDocument> documents = await this.collection.Find(filter)
             .Sort(BuildTimelineSort())
+            .Project<HistoryEventDocument>(BuildTimelineProjection())
             .ToListAsync(cancellationToken);
 
         return documents.Select(static document => document.ToDomain()).ToList();
@@ -196,6 +199,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
 
         List<HistoryEventDocument> documents = await this.collection.Find(filter)
             .Sort(BuildTimelineSort())
+            .Project<HistoryEventDocument>(BuildTimelineProjection())
             .Limit(limit)
             .ToListAsync(cancellationToken);
 
@@ -217,6 +221,7 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
 
         List<HistoryEventDocument> documents = await this.collection.Find(filter)
             .Sort(BuildTimelineSort())
+            .Project<HistoryEventDocument>(BuildTimelineProjection())
             .Limit(limit)
             .ToListAsync(cancellationToken);
 
@@ -275,5 +280,12 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             .Ascending(document => document.Day)
             .Ascending(document => document.Key)
             .Ascending(document => document.Id);
+    }
+
+    private static ProjectionDefinition<HistoryEventDocument> BuildTimelineProjection()
+    {
+        return Builders<HistoryEventDocument>.Projection
+            .Exclude("article.blocks")
+            .Exclude("article.sources");
     }
 }

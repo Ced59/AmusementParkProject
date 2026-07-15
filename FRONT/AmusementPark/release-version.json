@@ -1,6 +1,20 @@
 {
-  "version": "3.4.19",
+  "version": "3.4.20",
   "history": [
+    {
+      "version": "3.4.20",
+      "releasedAt": "2026-07-15",
+      "labels": {
+        "fr": "Les timelines chargent de façon plus fiable.",
+        "en": "Timelines load more reliably.",
+        "de": "Zeitleisten laden zuverlässiger.",
+        "nl": "Tijdlijnen laden betrouwbaarder.",
+        "it": "Le timeline si caricano in modo più affidabile.",
+        "es": "Las cronologías cargan de forma más fiable.",
+        "pl": "Osie czasu ładują się bardziej niezawodnie.",
+        "pt": "As linhas do tempo carregam com mais fiabilidade."
+      }
+    },
     {
       "version": "3.4.19",
       "releasedAt": "2026-07-14",

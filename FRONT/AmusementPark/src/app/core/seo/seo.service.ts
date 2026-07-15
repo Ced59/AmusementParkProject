@@ -1880,9 +1880,11 @@ export class SeoService {
     const copy: HistorySeoCopy = HISTORY_SEO_COPY[normalizedLanguage] ?? HISTORY_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
     const titleSubject: string = this.resolveHistoryTimelineTitleSubject(timeline);
+    const pageLabel: string | null = this.resolveHistoryTimelinePaginationLabel(timeline, normalizedLanguage);
+    const paginatedTitleSubject: string = pageLabel ? `${titleSubject} - ${pageLabel}` : titleSubject;
     const contextLabel: string = this.resolveHistoryTimelineContextLabel(timeline) ?? timeline.ownerName;
-    const title: string = `${copy.timelineTitle(titleSubject)} — ${SITE_NAME}`;
-    const description: string = copy.timelineDescription(contextLabel);
+    const title: string = `${copy.timelineTitle(paginatedTitleSubject)} — ${SITE_NAME}`;
+    const description: string = `${copy.timelineDescription(contextLabel)}${this.resolveHistoryTimelinePaginationDescriptionSuffix(timeline, normalizedLanguage)}`;
     const imageId: string | null = this.resolveHistoryTimelineSocialImageId(timeline);
 
     this.apply({
@@ -2383,6 +2385,100 @@ export class SeoService {
     const title: string = this.normalizeOptionalText(timeline.title) ?? timeline.ownerName;
     const contextLabel: string | null = this.resolveHistoryTimelineContextLabel(timeline, true);
     return contextLabel ? `${title} - ${contextLabel}` : title;
+  }
+
+  private resolveHistoryTimelinePaginationLabel(timeline: HistoryTimelinePageViewModel, language: string): string | null {
+    const currentPage: number | null = this.resolveHistoryTimelineSeoPage(timeline);
+    if (currentPage === null) {
+      return null;
+    }
+
+    const range: string | null = this.resolveHistoryTimelineSeoYearRange(timeline);
+    const pageWord: string = this.resolveHistoryTimelineSeoPageWord(language);
+    return range ? `${pageWord} ${currentPage}, ${range}` : `${pageWord} ${currentPage}`;
+  }
+
+  private resolveHistoryTimelinePaginationDescriptionSuffix(timeline: HistoryTimelinePageViewModel, language: string): string {
+    const currentPage: number | null = this.resolveHistoryTimelineSeoPage(timeline);
+    if (currentPage === null) {
+      return '';
+    }
+
+    const range: string | null = this.resolveHistoryTimelineSeoYearRange(timeline);
+    if (!range) {
+      return ` ${this.resolveHistoryTimelineSeoPageWord(language)} ${currentPage}.`;
+    }
+
+    if (language === 'fr') {
+      return ` Page ${currentPage} : repères ${range}.`;
+    }
+
+    if (language === 'de') {
+      return ` Seite ${currentPage}: Meilensteine ${range}.`;
+    }
+
+    if (language === 'nl') {
+      return ` Pagina ${currentPage}: mijlpalen ${range}.`;
+    }
+
+    if (language === 'it') {
+      return ` Pagina ${currentPage}: tappe ${range}.`;
+    }
+
+    if (language === 'es') {
+      return ` Página ${currentPage}: hitos ${range}.`;
+    }
+
+    if (language === 'pl') {
+      return ` Strona ${currentPage}: wydarzenia ${range}.`;
+    }
+
+    if (language === 'pt') {
+      return ` Página ${currentPage}: marcos ${range}.`;
+    }
+
+    return ` Page ${currentPage}: milestones from ${range}.`;
+  }
+
+  private resolveHistoryTimelineSeoPage(timeline: HistoryTimelinePageViewModel): number | null {
+    const pagination = timeline.pagination;
+    if (!pagination || pagination.totalPages <= 1) {
+      return null;
+    }
+
+    return Math.max(1, pagination.currentPage);
+  }
+
+  private resolveHistoryTimelineSeoYearRange(timeline: HistoryTimelinePageViewModel): string | null {
+    const currentPage: number = timeline.pagination?.currentPage ?? 1;
+    const currentRange = timeline.pageRanges.find(range => range.page === currentPage || range.isCurrent);
+    if (!currentRange) {
+      return null;
+    }
+
+    return currentRange.startYear === currentRange.endYear
+      ? String(currentRange.startYear)
+      : `${currentRange.startYear}-${currentRange.endYear}`;
+  }
+
+  private resolveHistoryTimelineSeoPageWord(language: string): string {
+    if (language === 'de') {
+      return 'Seite';
+    }
+
+    if (language === 'pl') {
+      return 'strona';
+    }
+
+    if (language === 'es' || language === 'pt') {
+      return 'página';
+    }
+
+    if (language === 'it' || language === 'nl') {
+      return 'pagina';
+    }
+
+    return 'page';
   }
 
   private resolveHistoryTimelineContextLabel(timeline: HistoryTimelinePageViewModel, omitNamesAlreadyInTitle: boolean = false): string | null {

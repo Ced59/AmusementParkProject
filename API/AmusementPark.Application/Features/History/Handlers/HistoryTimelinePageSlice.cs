@@ -17,15 +17,11 @@ internal sealed class HistoryTimelinePageSlice
             return null;
         }
 
-        int safePage = Math.Max(HistoryTimelinePaging.DefaultPage, page);
+        int requestedPage = Math.Max(HistoryTimelinePaging.DefaultPage, page);
         int safePageSize = Math.Clamp(pageSize, 1, 100);
         int totalItems = events.Count;
         int totalPages = (int)Math.Ceiling(totalItems / (double)safePageSize);
-
-        if (safePage > totalPages)
-        {
-            return null;
-        }
+        int safePage = Math.Min(requestedPage, totalPages);
 
         List<HistoryTimelineEventResult> orderedEvents = events.ToList();
         List<HistoryTimelinePageRangeResult> pageRanges = new List<HistoryTimelinePageRangeResult>();

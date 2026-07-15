@@ -9,7 +9,6 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.History;
-using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.History.Handlers;
@@ -84,6 +83,7 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             this.parkRepository,
             this.parkItemRepository,
             this.imageRepository,
+            false,
             cancellationToken);
 
         List<HistoryTimelineEventResult> timelineEvents = events
@@ -106,7 +106,17 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             return ApplicationResult<HistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
         }
 
-        List<ParkItem> includedItems = page.Events
+        HistoryTimelineHydration pageHydration = await HistoryTimelineHydration.LoadAsync(
+            page.Events.Select(static item => item.Event).ToList(),
+            this.parkRepository,
+            this.parkItemRepository,
+            this.imageRepository,
+            cancellationToken);
+        List<HistoryTimelineEventResult> pageEvents = page.Events
+            .Select(item => pageHydration.ToTimelineEvent(item.Event))
+            .ToList();
+
+        List<ParkItem> includedItems = pageEvents
             .Select(static item => item.ParkItem)
             .Where(static item => item is not null)
             .Select(static item => item!)
@@ -137,7 +147,7 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             Park = park,
             HasParkItemTimelineEvents = hasParkItemTimelineEvents,
             IncludedParkItems = includedItems,
-            Events = page.Events,
+            Events = pageEvents,
             Pagination = page.Pagination,
             PageRanges = page.PageRanges,
         });
@@ -248,6 +258,7 @@ public sealed class GetParkItemHistoryTimelineQueryHandler : IQueryHandler<GetPa
             this.parkRepository,
             this.parkItemRepository,
             this.imageRepository,
+            false,
             cancellationToken);
 
         List<HistoryTimelineEventResult> timelineEvents = events
@@ -270,12 +281,22 @@ public sealed class GetParkItemHistoryTimelineQueryHandler : IQueryHandler<GetPa
             return ApplicationResult<HistoryTimelineResult>.Failure(HistoryApplicationErrors.HistoryNotFound());
         }
 
+        HistoryTimelineHydration pageHydration = await HistoryTimelineHydration.LoadAsync(
+            page.Events.Select(static item => item.Event).ToList(),
+            this.parkRepository,
+            this.parkItemRepository,
+            this.imageRepository,
+            cancellationToken);
+        List<HistoryTimelineEventResult> pageEvents = page.Events
+            .Select(item => pageHydration.ToTimelineEvent(item.Event))
+            .ToList();
+
         return ApplicationResult<HistoryTimelineResult>.Success(new HistoryTimelineResult
         {
             EntityType = HistoryEntityType.ParkItem,
             Park = park,
             ParkItem = parkItem,
-            Events = page.Events,
+            Events = pageEvents,
             Pagination = page.Pagination,
             PageRanges = page.PageRanges,
         });
@@ -431,104 +452,5 @@ internal static class HistoryPublicVisibility
         return parkItem is not null &&
                parkItem.IsVisible &&
                parkItem.AdminReviewStatus != AdminReviewStatus.NotRelevant;
-    }
-}
-
-internal sealed class HistoryTimelineHydration
-{
-    private readonly IReadOnlyDictionary<string, Park> parksById;
-    private readonly IReadOnlyDictionary<string, ParkItem> parkItemsById;
-    private readonly IReadOnlyDictionary<string, Image> imagesById;
-
-    private HistoryTimelineHydration(
-        IReadOnlyDictionary<string, Park> parksById,
-        IReadOnlyDictionary<string, ParkItem> parkItemsById,
-        IReadOnlyDictionary<string, Image> imagesById)
-    {
-        this.parksById = parksById;
-        this.parkItemsById = parkItemsById;
-        this.imagesById = imagesById;
-    }
-
-    public static async Task<HistoryTimelineHydration> LoadAsync(
-        IReadOnlyCollection<HistoryEvent> events,
-        IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository,
-        IImageRepository imageRepository,
-        CancellationToken cancellationToken)
-    {
-        List<string> parkIds = events
-            .SelectMany(static item => new[] { item.ParkId, item.ContextParkId }.Concat(item.RelatedParkIds))
-            .Where(static id => !string.IsNullOrWhiteSpace(id))
-            .Select(static id => id!)
-            .Distinct(StringComparer.Ordinal)
-            .ToList();
-
-        List<string> parkItemIds = events
-            .SelectMany(static item => new[] { item.ParkItemId }.Concat(item.RelatedParkItemIds))
-            .Where(static id => !string.IsNullOrWhiteSpace(id))
-            .Select(static id => id!)
-            .Distinct(StringComparer.Ordinal)
-            .ToList();
-
-        List<string> imageIds = events
-            .Select(static item => item.Article?.MainImageId ?? item.MainImageId)
-            .Where(static id => !string.IsNullOrWhiteSpace(id))
-            .Select(static id => id!)
-            .Distinct(StringComparer.Ordinal)
-            .ToList();
-
-        IReadOnlyCollection<Park> parks = parkIds.Count == 0
-            ? Array.Empty<Park>()
-            : await parkRepository.GetByIdsAsync(parkIds, cancellationToken);
-
-        IReadOnlyCollection<ParkItem> parkItems = parkItemIds.Count == 0
-            ? Array.Empty<ParkItem>()
-            : await parkItemRepository.GetByIdsAsync(parkItemIds, cancellationToken);
-
-        Dictionary<string, Image> imagesById = new Dictionary<string, Image>(StringComparer.Ordinal);
-        foreach (string imageId in imageIds)
-        {
-            Image? image = await imageRepository.GetByIdAsync(imageId, cancellationToken);
-            if (image is not null)
-            {
-                imagesById[image.Id] = image;
-            }
-        }
-
-        return new HistoryTimelineHydration(
-            parks
-                .Where(static item => !string.IsNullOrWhiteSpace(item.Id))
-                .ToDictionary(static item => item.Id, StringComparer.Ordinal),
-            parkItems
-                .Where(static item => !string.IsNullOrWhiteSpace(item.Id))
-                .ToDictionary(static item => item.Id, StringComparer.Ordinal),
-            imagesById);
-    }
-
-    public HistoryTimelineEventResult ToTimelineEvent(HistoryEvent historyEvent)
-    {
-        string? contextParkId = historyEvent.ContextParkId ?? historyEvent.ParkId;
-        Park? contextPark = !string.IsNullOrWhiteSpace(contextParkId) && this.parksById.TryGetValue(contextParkId, out Park? resolvedPark)
-            ? resolvedPark
-            : null;
-
-        string? parkItemId = historyEvent.ParkItemId;
-        ParkItem? parkItem = !string.IsNullOrWhiteSpace(parkItemId) && this.parkItemsById.TryGetValue(parkItemId, out ParkItem? resolvedParkItem)
-            ? resolvedParkItem
-            : null;
-
-        string? mainImageId = historyEvent.Article?.MainImageId ?? historyEvent.MainImageId;
-        Image? mainImage = !string.IsNullOrWhiteSpace(mainImageId) && this.imagesById.TryGetValue(mainImageId, out Image? resolvedImage)
-            ? resolvedImage
-            : null;
-
-        return new HistoryTimelineEventResult
-        {
-            Event = historyEvent,
-            ContextPark = contextPark,
-            ParkItem = parkItem,
-            MainImage = mainImage,
-        };
     }
 }

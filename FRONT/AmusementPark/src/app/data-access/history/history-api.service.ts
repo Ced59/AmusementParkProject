@@ -1,6 +1,6 @@
-import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, retry, throwError, timer } from 'rxjs';
 
 import {
   HistoryArticle,
@@ -22,6 +22,9 @@ interface HistoryHttpOptions {
   providedIn: 'root'
 })
 export class HistoryApiService {
+  private static readonly TimelineReadRetryCount: number = 1;
+  private static readonly TimelineReadRetryDelayMilliseconds: number = 300;
+
   private readonly jsonHttpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -33,12 +36,12 @@ export class HistoryApiService {
 
   getParkTimeline(parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = [], options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {
     const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkTimeline(parkId, includeParkItems, parkItemIds, page)}`;
-    return this.http.get<HistoryTimeline>(url, options);
+    return this.getTimeline(url, options);
   }
 
   getParkItemTimeline(parkItemId: string, options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {
     const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkItemTimeline(parkItemId, page)}`;
-    return this.http.get<HistoryTimeline>(url, options);
+    return this.getTimeline(url, options);
   }
 
   getArticle(eventId: string, options: HistoryHttpOptions = {}): Observable<HistoryArticle> {
@@ -82,5 +85,36 @@ export class HistoryApiService {
   deleteAdminEvent(eventId: string): Observable<boolean> {
     const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.deleteAdminEvent(eventId)}`;
     return this.http.delete<boolean>(url);
+  }
+
+  private getTimeline(url: string, options: HistoryHttpOptions): Observable<HistoryTimeline> {
+    return this.http.get<HistoryTimeline>(url, options).pipe(
+      retry({
+        count: HistoryApiService.TimelineReadRetryCount,
+        delay: (error: unknown) => this.resolveTimelineRetryDelay(error)
+      })
+    );
+  }
+
+  private resolveTimelineRetryDelay(error: unknown): Observable<number> {
+    if (!this.shouldRetryTimelineRead(error)) {
+      return throwError(() => error);
+    }
+
+    return timer(HistoryApiService.TimelineReadRetryDelayMilliseconds);
+  }
+
+  private shouldRetryTimelineRead(error: unknown): boolean {
+    if (!(error instanceof HttpErrorResponse)) {
+      return true;
+    }
+
+    return error.status === 0
+      || error.status === 408
+      || error.status === 429
+      || error.status === 500
+      || error.status === 502
+      || error.status === 503
+      || error.status === 504;
   }
 }

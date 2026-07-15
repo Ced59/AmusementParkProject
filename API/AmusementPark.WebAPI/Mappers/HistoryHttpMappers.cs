@@ -18,7 +18,7 @@ internal static class HistoryHttpMappers
             ParkItem = result.ParkItem?.ToHttp(),
             HasParkItemTimelineEvents = result.HasParkItemTimelineEvents,
             IncludedParkItems = result.IncludedParkItems.Select(static item => item.ToHttp()).ToList(),
-            Events = result.Events.Select(static item => item.ToHttp()).ToList(),
+            Events = result.Events.Select(static item => item.ToPublicTimelineHttp()).ToList(),
             Pagination = result.Pagination.ToHttp(),
             PageRanges = result.PageRanges.Select(static item => item.ToHttp()).ToList(),
         };
@@ -57,6 +57,17 @@ internal static class HistoryHttpMappers
         };
     }
 
+    private static HistoryTimelineEventDto ToPublicTimelineHttp(this HistoryTimelineEventResult result)
+    {
+        return new HistoryTimelineEventDto
+        {
+            Event = result.Event.ToTimelineHttp(),
+            ContextPark = result.ContextPark?.ToHttp(),
+            ParkItem = result.ParkItem?.ToHttp(),
+            MainImage = result.MainImage?.ToHttp(),
+        };
+    }
+
     public static HistoryArticleDto ToHttp(this HistoryArticleResult result)
     {
         return new HistoryArticleDto
@@ -70,6 +81,16 @@ internal static class HistoryHttpMappers
     }
 
     public static HistoryEventDto ToHttp(this HistoryEvent historyEvent)
+    {
+        return historyEvent.ToHttp(includeArticleDetails: true);
+    }
+
+    private static HistoryEventDto ToTimelineHttp(this HistoryEvent historyEvent)
+    {
+        return historyEvent.ToHttp(includeArticleDetails: false);
+    }
+
+    private static HistoryEventDto ToHttp(this HistoryEvent historyEvent, bool includeArticleDetails)
     {
         return new HistoryEventDto
         {
@@ -101,7 +122,7 @@ internal static class HistoryHttpMappers
             RelatedParkIds = historyEvent.RelatedParkIds.ToList(),
             RelatedParkItemIds = historyEvent.RelatedParkItemIds.ToList(),
             Sources = historyEvent.Sources.Select(static source => source.ToHttp()).ToList(),
-            Article = historyEvent.Article?.ToHttp(),
+            Article = includeArticleDetails ? historyEvent.Article?.ToHttp() : historyEvent.Article?.ToTimelineHttp(),
             CreatedAtUtc = historyEvent.CreatedAtUtc,
             UpdatedAtUtc = historyEvent.UpdatedAtUtc,
         };
@@ -180,6 +201,16 @@ internal static class HistoryHttpMappers
             MainImageId = article.MainImageId,
             Blocks = article.Blocks.OrderBy(static block => block.SortOrder).Select(static block => block.ToHttp()).ToList(),
             Sources = article.Sources.Select(static source => source.ToHttp()).ToList(),
+            IsPublished = article.IsPublished,
+        };
+    }
+
+    private static HistoryArticleContentDto ToTimelineHttp(this HistoryArticle article)
+    {
+        return new HistoryArticleContentDto
+        {
+            Slug = article.Slug,
+            MainImageId = article.MainImageId,
             IsPublished = article.IsPublished,
         };
     }
