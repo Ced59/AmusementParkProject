@@ -316,6 +316,32 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Le Nitro - Dennlys Parc');
   });
 
+  it('adds pagination context to history timeline metadata and canonical URLs', () => {
+    service.applyHistoryTimelineSeo(
+      buildHistoryTimeline({
+        pagination: {
+          totalItems: 60,
+          totalPages: 3,
+          currentPage: 2,
+          itemsPerPage: 24
+        },
+        pageRanges: [
+          { page: 1, label: '1980-1989', startYear: 1980, endYear: 1989, eventCount: 24, isCurrent: false },
+          { page: 2, label: '1990-1999', startYear: 1990, endYear: 1999, eventCount: 24, isCurrent: true },
+          { page: 3, label: '2000-2005', startYear: 2000, endYear: 2005, eventCount: 12, isCurrent: false }
+        ]
+      }),
+      'fr',
+      '/fr/park/park-1/mirapolis/history/page/99?includeParkItems=true',
+      '/fr/park/park-1/mirapolis/history/page/2'
+    );
+
+    expect(documentRef.title).toContain('page 2, 1990-1999');
+    expect(readMetaContent('meta[name="description"]')).toContain('Page 2 : repères 1990-1999.');
+    expect(readMetaContent('meta[property="og:description"]')).toContain('Page 2 : repères 1990-1999.');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park/park-1/mirapolis/history/page/2');
+  });
+
   it('applies article Open Graph metadata to history articles and resets the type on regular pages', () => {
     service.applyHistoryArticleSeo(
       buildHistoryArticle({

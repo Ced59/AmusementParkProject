@@ -75,6 +75,11 @@ export class HistoryTimelineStateFacade {
         }
 
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
+        if (previousData) {
+          this.screenStateStore.setReady(previousData);
+          return;
+        }
+
         this.screenStateStore.setError('history.timeline.errorMessage', previousData);
       }
     });
@@ -94,6 +99,11 @@ export class HistoryTimelineStateFacade {
       },
       error: (error: unknown) => {
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
+        if (previousData) {
+          this.screenStateStore.setReady(previousData);
+          return;
+        }
+
         this.screenStateStore.setError('history.timeline.errorMessage', previousData);
       }
     });
