@@ -192,7 +192,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
 
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync(
+            .Setup(repository => repository.GetParkTimelineSummaryAsync(
                 "park-1",
                 false,
                 true,

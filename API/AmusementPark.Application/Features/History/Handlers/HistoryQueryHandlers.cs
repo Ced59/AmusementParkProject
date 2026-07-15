@@ -50,7 +50,7 @@ public sealed class GetParkHistoryTimelineQueryHandler : IQueryHandler<GetParkHi
             return ApplicationResult<HistoryTimelineResult>.Failure(ApplicationErrors.EntityNotFound(nameof(Park), query.ParkId));
         }
 
-        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetParkTimelineAsync(
+        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetParkTimelineSummaryAsync(
             park.Id,
             query.IncludeHidden,
             query.IncludeParkItemEvents,
@@ -237,7 +237,7 @@ public sealed class GetParkItemHistoryTimelineQueryHandler : IQueryHandler<GetPa
             return ApplicationResult<HistoryTimelineResult>.Failure(ApplicationErrors.EntityNotFound(nameof(ParkItem), query.ParkItemId));
         }
 
-        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineAsync(
+        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineSummaryAsync(
             HistoryEntityType.ParkItem,
             parkItem.Id,
             query.IncludeHidden,

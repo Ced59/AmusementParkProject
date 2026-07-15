@@ -228,7 +228,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             .Where(static item => !string.IsNullOrWhiteSpace(item.Id))
             .Select(static item => item.Id!)
             .ToList();
-        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetParkTimelineAsync(
+        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetParkTimelineSummaryAsync(
             park.Id!,
             includeHidden: false,
             includeParkItemEvents: true,
@@ -245,7 +245,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             return true;
         }
 
-        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineAsync(
+        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineSummaryAsync(
             HistoryEntityType.ParkItem,
             item.Id!,
             includeHidden: false,
@@ -270,7 +270,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             return new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         }
 
-        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetParkTimelineAsync(
+        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetParkTimelineSummaryAsync(
             parkId,
             includeHidden: false,
             includeParkItemEvents: true,

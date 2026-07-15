@@ -93,12 +93,21 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             filter &= Builders<HistoryEventDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        List<HistoryEventDocument> documents = await this.collection.Find(filter)
-            .Sort(BuildTimelineSort())
-            .Project<HistoryEventDocument>(BuildTimelineProjection())
-            .ToListAsync(cancellationToken);
+        return await this.GetTimelineAsync(filter, true, cancellationToken);
+    }
 
-        return documents.Select(static document => document.ToDomain()).ToList();
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetOwnerTimelineSummaryAsync(HistoryEntityType entityType, string ownerId, bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinition<HistoryEventDocument> filter =
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.EntityType, entityType) &
+            Builders<HistoryEventDocument>.Filter.Eq(document => document.OwnerId, ownerId);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<HistoryEventDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        return await this.GetTimelineAsync(filter, false, cancellationToken);
     }
 
     public async Task<IReadOnlyCollection<HistoryEvent>> GetOwnerTimelinesAsync(HistoryEntityType entityType, IReadOnlyCollection<string> ownerIds, bool includeHidden, CancellationToken cancellationToken)
@@ -123,53 +132,19 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             filter &= Builders<HistoryEventDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        List<HistoryEventDocument> documents = await this.collection.Find(filter)
-            .Sort(BuildTimelineSort())
-            .Project<HistoryEventDocument>(BuildTimelineProjection())
-            .ToListAsync(cancellationToken);
-
-        return documents.Select(static document => document.ToDomain()).ToList();
+        return await this.GetTimelineAsync(filter, true, cancellationToken);
     }
 
     public async Task<IReadOnlyCollection<HistoryEvent>> GetParkTimelineAsync(string parkId, bool includeHidden, bool includeParkItemEvents, IReadOnlyCollection<string> parkItemIds, CancellationToken cancellationToken)
     {
-        FilterDefinitionBuilder<HistoryEventDocument> builder = Builders<HistoryEventDocument>.Filter;
-        FilterDefinition<HistoryEventDocument> parkEventsFilter =
-            builder.Eq(document => document.EntityType, HistoryEntityType.Park) &
-            builder.Eq(document => document.OwnerId, parkId);
+        FilterDefinition<HistoryEventDocument> filter = BuildParkTimelineFilter(parkId, includeHidden, includeParkItemEvents, parkItemIds);
+        return await this.GetTimelineAsync(filter, true, cancellationToken);
+    }
 
-        FilterDefinition<HistoryEventDocument> filter = parkEventsFilter;
-        if (includeParkItemEvents)
-        {
-            FilterDefinition<HistoryEventDocument> parkItemEventsFilter =
-                builder.Eq(document => document.EntityType, HistoryEntityType.ParkItem) &
-                builder.Eq(document => document.ContextParkId, parkId);
-
-            List<string> normalizedParkItemIds = parkItemIds
-                .Where(static id => !string.IsNullOrWhiteSpace(id))
-                .Select(static id => id.Trim())
-                .Distinct(StringComparer.Ordinal)
-                .ToList();
-
-            if (normalizedParkItemIds.Count > 0)
-            {
-                parkItemEventsFilter &= builder.In(document => document.OwnerId, normalizedParkItemIds);
-            }
-
-            filter = builder.Or(parkEventsFilter, parkItemEventsFilter);
-        }
-
-        if (!includeHidden)
-        {
-            filter &= builder.Eq(document => document.IsVisible, true);
-        }
-
-        List<HistoryEventDocument> documents = await this.collection.Find(filter)
-            .Sort(BuildTimelineSort())
-            .Project<HistoryEventDocument>(BuildTimelineProjection())
-            .ToListAsync(cancellationToken);
-
-        return documents.Select(static document => document.ToDomain()).ToList();
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetParkTimelineSummaryAsync(string parkId, bool includeHidden, bool includeParkItemEvents, IReadOnlyCollection<string> parkItemIds, CancellationToken cancellationToken)
+    {
+        FilterDefinition<HistoryEventDocument> filter = BuildParkTimelineFilter(parkId, includeHidden, includeParkItemEvents, parkItemIds);
+        return await this.GetTimelineAsync(filter, false, cancellationToken);
     }
 
     public async Task<bool> HasParkItemTimelineEventsAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
@@ -280,6 +255,60 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             .Ascending(document => document.Day)
             .Ascending(document => document.Key)
             .Ascending(document => document.Id);
+    }
+
+    private async Task<IReadOnlyCollection<HistoryEvent>> GetTimelineAsync(FilterDefinition<HistoryEventDocument> filter, bool includeArticleDetails, CancellationToken cancellationToken)
+    {
+        IFindFluent<HistoryEventDocument, HistoryEventDocument> find = this.collection.Find(filter)
+            .Sort(BuildTimelineSort());
+
+        if (!includeArticleDetails)
+        {
+            find = find.Project<HistoryEventDocument>(BuildTimelineProjection());
+        }
+
+        List<HistoryEventDocument> documents = await find.ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
+    private static FilterDefinition<HistoryEventDocument> BuildParkTimelineFilter(
+        string parkId,
+        bool includeHidden,
+        bool includeParkItemEvents,
+        IReadOnlyCollection<string> parkItemIds)
+    {
+        FilterDefinitionBuilder<HistoryEventDocument> builder = Builders<HistoryEventDocument>.Filter;
+        FilterDefinition<HistoryEventDocument> parkEventsFilter =
+            builder.Eq(document => document.EntityType, HistoryEntityType.Park) &
+            builder.Eq(document => document.OwnerId, parkId);
+
+        FilterDefinition<HistoryEventDocument> filter = parkEventsFilter;
+        if (includeParkItemEvents)
+        {
+            FilterDefinition<HistoryEventDocument> parkItemEventsFilter =
+                builder.Eq(document => document.EntityType, HistoryEntityType.ParkItem) &
+                builder.Eq(document => document.ContextParkId, parkId);
+
+            List<string> normalizedParkItemIds = parkItemIds
+                .Where(static id => !string.IsNullOrWhiteSpace(id))
+                .Select(static id => id.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+
+            if (normalizedParkItemIds.Count > 0)
+            {
+                parkItemEventsFilter &= builder.In(document => document.OwnerId, normalizedParkItemIds);
+            }
+
+            filter = builder.Or(parkEventsFilter, parkItemEventsFilter);
+        }
+
+        if (!includeHidden)
+        {
+            filter &= builder.Eq(document => document.IsVisible, true);
+        }
+
+        return filter;
     }
 
     private static ProjectionDefinition<HistoryEventDocument> BuildTimelineProjection()

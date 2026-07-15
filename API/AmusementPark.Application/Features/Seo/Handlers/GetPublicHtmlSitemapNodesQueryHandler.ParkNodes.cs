@@ -303,7 +303,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             return Array.Empty<PublicHtmlSitemapNode>();
         }
 
-        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineAsync(
+        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineSummaryAsync(
             HistoryEntityType.Park,
             park.Id!,
             includeHidden: false,
@@ -338,7 +338,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             return Array.Empty<PublicHtmlSitemapNode>();
         }
 
-        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineAsync(
+        IReadOnlyCollection<HistoryEvent> events = await this.historyEventRepository.GetOwnerTimelineSummaryAsync(
             HistoryEntityType.ParkItem,
             item.Id!,
             includeHidden: false,
