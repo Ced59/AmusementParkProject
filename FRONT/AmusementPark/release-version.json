@@ -1,6 +1,20 @@
 {
-  "version": "3.4.20",
+  "version": "3.4.21",
   "history": [
+    {
+      "version": "3.4.21",
+      "releasedAt": "2026-07-15",
+      "labels": {
+        "fr": "Les exports conservent mieux les contenus d’histoire.",
+        "en": "Exports keep history content more reliably.",
+        "de": "Exporte behalten Verlaufsinhalte zuverlässiger.",
+        "nl": "Exports bewaren geschiedenisinformatie betrouwbaarder.",
+        "it": "Gli export mantengono meglio i contenuti storici.",
+        "es": "Las exportaciones conservan mejor el contenido histórico.",
+        "pl": "Eksporty lepiej zachowują treści historii.",
+        "pt": "As exportações preservam melhor os conteúdos históricos."
+      }
+    },
     {
       "version": "3.4.20",
       "releasedAt": "2026-07-15",

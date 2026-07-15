@@ -136,7 +136,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { park });
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<HistoryEvent>());
         historyRepository
             .Setup(repository => repository.HasParkItemTimelineEventsAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -208,7 +208,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { park });
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { manualOpening });
         historyRepository
             .Setup(repository => repository.HasParkItemTimelineEventsAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -258,7 +258,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<HistoryEvent>());
 
         GetParkHistoryTimelineQueryHandler handler = new GetParkHistoryTimelineQueryHandler(
@@ -324,7 +324,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { item });
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, true, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, true, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<HistoryEvent>());
 
         GetParkHistoryTimelineQueryHandler handler = new GetParkHistoryTimelineQueryHandler(
@@ -393,7 +393,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { park });
         historyRepository
-            .Setup(repository => repository.GetOwnerTimelineAsync(HistoryEntityType.ParkItem, "item-1", false, It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetOwnerTimelineSummaryAsync(HistoryEntityType.ParkItem, "item-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<HistoryEvent>());
 
         GetParkItemHistoryTimelineQueryHandler handler = new GetParkItemHistoryTimelineQueryHandler(
@@ -450,7 +450,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { park });
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { openingEvent });
         historyRepository
             .Setup(repository => repository.HasParkItemTimelineEventsAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -501,7 +501,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { park });
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { firstEvent, secondEvent, thirdEvent });
         historyRepository
             .Setup(repository => repository.HasParkItemTimelineEventsAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -572,7 +572,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { park });
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { firstEvent, secondEvent, thirdEvent });
         historyRepository
             .Setup(repository => repository.HasParkItemTimelineEventsAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -632,7 +632,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { park });
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, false, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { firstEvent, secondEvent, thirdEvent });
         historyRepository
             .Setup(repository => repository.HasParkItemTimelineEventsAsync("park-1", false, It.IsAny<CancellationToken>()))
@@ -713,7 +713,7 @@ public sealed class HistoryHandlersTests
             .Setup(repository => repository.GetByIdsAsync(It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { parkItem });
         historyRepository
-            .Setup(repository => repository.GetParkTimelineAsync("park-1", false, true, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetParkTimelineSummaryAsync("park-1", false, true, It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { parkItemEvent });
 
         GetParkHistoryTimelineQueryHandler handler = new GetParkHistoryTimelineQueryHandler(
