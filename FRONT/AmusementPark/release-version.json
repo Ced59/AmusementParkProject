@@ -1,6 +1,20 @@
 {
-  "version": "3.4.22",
+  "version": "3.4.23",
   "history": [
+    {
+      "version": "3.4.23",
+      "releasedAt": "2026-07-16",
+      "labels": {
+        "fr": "L’administration gagne en ergonomie.",
+        "en": "Admin ergonomics are improved.",
+        "de": "Die Verwaltung wird benutzerfreundlicher.",
+        "nl": "Het beheer is gebruiksvriendelijker.",
+        "it": "L’amministrazione è più pratica.",
+        "es": "La administración es más cómoda.",
+        "pl": "Administracja jest wygodniejsza.",
+        "pt": "A administração fica mais prática."
+      }
+    },
     {
       "version": "3.4.22",
       "releasedAt": "2026-07-16",

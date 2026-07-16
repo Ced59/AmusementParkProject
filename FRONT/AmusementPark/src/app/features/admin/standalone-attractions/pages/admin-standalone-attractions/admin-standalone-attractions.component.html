@@ -8,7 +8,7 @@
     <span class="admin-total-pill">{{ pagination().totalItems || 0 }} {{ t('total') }}</span>
   </header>
 
-  <div class="admin-standalone-feedback" *ngIf="loading() || message() || error()" [class.admin-standalone-feedback--error]="error()">
+  <div class="admin-standalone-feedback" *ngIf="loading() || legacyParkLoading() || message() || error()" [class.admin-standalone-feedback--error]="error()">
     {{ error() || message() || t('loading') }}
   </div>
 
@@ -103,6 +103,10 @@
       <div class="admin-standalone-empty" *ngIf="!loading() && rows().length === 0">
         <i class="pi pi-ticket" aria-hidden="true"></i>
         <strong>{{ t('empty') }}</strong>
+        <button type="button" class="btn btn--ghost btn--sm" *ngIf="search.trim()" (click)="searchLegacyParksFromFilters()" [disabled]="legacyParkLoading()">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          {{ t('searchLegacyFromFilters') }}
+        </button>
       </div>
 
       <div class="admin-standalone-table" *ngIf="rows().length > 0">
@@ -285,6 +289,43 @@
 
       <section class="admin-standalone-editor__section admin-standalone-migration">
         <span class="admin-kicker">{{ t('migrationTitle') }}</span>
+        <p class="admin-standalone-migration__hint">{{ t('legacyParkSearchHint') }}</p>
+        <div class="admin-standalone-legacy-search">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('legacyParkSearch') }}</span>
+            <input type="search" [(ngModel)]="legacyParkSearch" (keydown.enter)="searchLegacyParks()" [placeholder]="t('legacyParkSearchPlaceholder')">
+          </label>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="searchLegacyParks()" [disabled]="loading() || legacyParkLoading()">
+            <i class="pi pi-search" aria-hidden="true"></i>
+            {{ t('searchLegacyParks') }}
+          </button>
+        </div>
+
+        <div class="admin-standalone-legacy-results" *ngIf="legacyParkRows().length > 0">
+          <span class="admin-standalone-legacy-results__count">{{ legacyParkRows().length }} {{ t('legacyParkResultCount') }}</span>
+          <button
+            type="button"
+            class="admin-standalone-legacy-result"
+            *ngFor="let legacyPark of legacyParkRows(); trackBy: trackByParkId"
+            [class.admin-standalone-legacy-result--active]="selectedLegacyPark()?.id === legacyPark.id"
+            (click)="selectLegacyParkForMigration(legacyPark)">
+            <span>
+              <strong>{{ legacyPark.name || legacyPark.id }}</strong>
+              <small>{{ formatLegacyParkSecondary(legacyPark) }}</small>
+            </span>
+            <em>{{ formatLegacyParkCounts(legacyPark) }}</em>
+          </button>
+        </div>
+
+        <p class="admin-standalone-legacy-empty" *ngIf="hasSearchedLegacyParks() && !legacyParkLoading() && legacyParkRows().length === 0">
+          {{ t('legacyParkEmpty') }}
+        </p>
+
+        <div class="admin-standalone-legacy-selected" *ngIf="selectedLegacyPark() as legacyPark">
+          <span>{{ t('selectedLegacyPark') }}</span>
+          <strong>{{ legacyPark.name || legacyPark.id }}</strong>
+        </div>
+
         <label class="admin-field">
           <span class="admin-field-label">{{ t('legacyParkId') }}</span>
           <input [(ngModel)]="migrationLegacyParkId" placeholder="b2ddc5c4-bfa5-430b-bcbb-5ba8c6a183cb">

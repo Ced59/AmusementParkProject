@@ -5,10 +5,15 @@ import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 import { AdminReviewStatus, ADMIN_REVIEW_STATUSES } from '@app/models/admin/admin-review-status';
+import { Park } from '@app/models/parks/park';
 import { ParkItemType } from '@app/models/parks/park-item-type';
+import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { StandaloneAttraction, StandaloneAttractionMigrationRequest } from '@app/models/standalone-attractions/standalone-attraction';
+import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { StandaloneAttractionListFilters, StandaloneAttractionsApiService } from '@data-access/standalone-attractions/standalone-attractions-api.service';
 import { PaginationContract } from '@shared/models/contracts';
+import { extractSafeDisplayErrorMessage } from '@shared/utils/security/error-display.helpers';
 
 type StandaloneAttractionSortField = 'created' | 'updated' | 'name' | 'type' | 'countryCode' | 'isVisible' | 'adminReviewStatus';
 type StandaloneAttractionSortDirection = 'asc' | 'desc';
@@ -33,6 +38,16 @@ interface StandaloneAttractionsAdminCopy {
   exportJson: string;
   migrate: string;
   migrationTitle: string;
+  legacyParkSearch: string;
+  legacyParkSearchPlaceholder: string;
+  legacyParkSearchHint: string;
+  searchLegacyParks: string;
+  searchLegacyFromFilters: string;
+  legacyParkResultCount: string;
+  legacyParkEmpty: string;
+  legacyParkItems: string;
+  selectedLegacyPark: string;
+  legacyParkLoaded: string;
   legacyParkId: string;
   legacyParkItemId: string;
   targetStandaloneAttractionId: string;
@@ -66,6 +81,7 @@ interface StandaloneAttractionsAdminCopy {
   saved: string;
   migrated: string;
   bulkUpdated: string;
+  missingLegacyParkSearch: string;
   missingMigrationPark: string;
   missingName: string;
   actionFailed: string;
@@ -92,6 +108,16 @@ const COPY: Record<string, StandaloneAttractionsAdminCopy> = {
     exportJson: 'Exporter JSON',
     migrate: 'Migrer',
     migrationTitle: 'Migration depuis un parc legacy',
+    legacyParkSearch: 'Parc legacy à migrer',
+    legacyParkSearchPlaceholder: 'Bardonecchia ou ID du parc legacy',
+    legacyParkSearchHint: 'Cherche l’ancienne fiche parc, puis sélectionne-la pour remplir les champs de migration.',
+    searchLegacyParks: 'Chercher les parcs',
+    searchLegacyFromFilters: 'Chercher côté parcs legacy',
+    legacyParkResultCount: 'parcs trouvés',
+    legacyParkEmpty: 'Aucun parc legacy trouvé.',
+    legacyParkItems: 'items',
+    selectedLegacyPark: 'Parc sélectionné',
+    legacyParkLoaded: 'Parc legacy chargé pour migration.',
     legacyParkId: 'ID parc legacy',
     legacyParkItemId: 'ID attraction legacy',
     targetStandaloneAttractionId: 'ID fiche autonome cible',
@@ -125,6 +151,7 @@ const COPY: Record<string, StandaloneAttractionsAdminCopy> = {
     saved: 'Fiche enregistrée.',
     migrated: 'Migration terminée.',
     bulkUpdated: 'Mise à jour groupée terminée.',
+    missingLegacyParkSearch: 'Saisis un nom ou un ID de parc legacy à rechercher.',
     missingMigrationPark: 'L’ID du parc legacy est obligatoire.',
     missingName: 'Le nom est obligatoire.',
     actionFailed: 'Action impossible. Vérifie les champs et réessaie.'
@@ -149,6 +176,16 @@ const COPY: Record<string, StandaloneAttractionsAdminCopy> = {
     exportJson: 'Export JSON',
     migrate: 'Migrate',
     migrationTitle: 'Migration from a legacy park',
+    legacyParkSearch: 'Legacy park to migrate',
+    legacyParkSearchPlaceholder: 'Bardonecchia or legacy park ID',
+    legacyParkSearchHint: 'Search the old park record, then select it to fill the migration fields.',
+    searchLegacyParks: 'Search parks',
+    searchLegacyFromFilters: 'Search legacy parks',
+    legacyParkResultCount: 'parks found',
+    legacyParkEmpty: 'No legacy park found.',
+    legacyParkItems: 'items',
+    selectedLegacyPark: 'Selected park',
+    legacyParkLoaded: 'Legacy park loaded for migration.',
     legacyParkId: 'Legacy park ID',
     legacyParkItemId: 'Legacy attraction ID',
     targetStandaloneAttractionId: 'Target standalone ID',
@@ -182,6 +219,7 @@ const COPY: Record<string, StandaloneAttractionsAdminCopy> = {
     saved: 'Record saved.',
     migrated: 'Migration completed.',
     bulkUpdated: 'Bulk update completed.',
+    missingLegacyParkSearch: 'Enter a legacy park name or ID to search.',
     missingMigrationPark: 'The legacy park ID is required.',
     missingName: 'The name is required.',
     actionFailed: 'Action failed. Check the fields and try again.'
@@ -204,6 +242,10 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
 
   protected readonly rows = signal<StandaloneAttraction[]>([]);
   protected readonly loading = signal<boolean>(false);
+  protected readonly legacyParkLoading = signal<boolean>(false);
+  protected readonly hasSearchedLegacyParks = signal<boolean>(false);
+  protected readonly legacyParkRows = signal<Park[]>([]);
+  protected readonly selectedLegacyPark = signal<Park | null>(null);
   protected readonly message = signal<string | null>(null);
   protected readonly error = signal<string | null>(null);
   protected readonly selectedIds = signal<Set<string>>(new Set<string>());
@@ -232,9 +274,11 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
   protected migrationTargetStandaloneAttractionId: string = '';
   protected migrationRetireLegacyPark: boolean = true;
   protected migrationRetireLegacyParkItem: boolean = true;
+  protected legacyParkSearch: string = '';
 
   constructor(
     private readonly apiService: StandaloneAttractionsApiService,
+    private readonly parksApiService: ParksApiService,
     private readonly router: Router
   ) {
   }
@@ -261,14 +305,20 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       this.rows.set(result.items);
       this.pagination.set(result.pagination);
       this.syncSelectedAfterReload(result.items);
-    } catch {
-      this.error.set(this.t('actionFailed'));
+    } catch (error: unknown) {
+      this.setErrorFromUnknown(error);
     } finally {
       this.loading.set(false);
     }
   }
 
   protected async applyFilters(): Promise<void> {
+    const trimmedSearch: string = this.search.trim();
+
+    if (trimmedSearch && !this.legacyParkSearch.trim()) {
+      this.legacyParkSearch = trimmedSearch;
+    }
+
     await this.load(1);
   }
 
@@ -286,6 +336,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
   protected select(row: StandaloneAttraction): void {
     this.selected.set(row);
     this.draft.set(this.cloneAttraction(row));
+    this.syncMigrationTargetFromDraft(row);
     this.message.set(null);
     this.error.set(null);
   }
@@ -294,6 +345,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     const empty: StandaloneAttraction = this.createEmptyAttraction();
     this.selected.set(null);
     this.draft.set(empty);
+    this.syncMigrationTargetFromDraft(null);
     this.message.set(null);
     this.error.set(null);
   }
@@ -354,12 +406,77 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
 
       this.selected.set(saved);
       this.draft.set(this.cloneAttraction(saved));
+      this.syncMigrationTargetFromDraft(saved);
       this.message.set(this.t('saved'));
       await this.load(this.pagination().currentPage || 1);
-    } catch {
-      this.error.set(this.t('actionFailed'));
+    } catch (error: unknown) {
+      this.setErrorFromUnknown(error);
     } finally {
       this.loading.set(false);
+    }
+  }
+
+  protected async searchLegacyParksFromFilters(): Promise<void> {
+    const trimmedSearch: string = this.search.trim();
+
+    if (trimmedSearch) {
+      this.legacyParkSearch = trimmedSearch;
+    }
+
+    await this.searchLegacyParks();
+  }
+
+  protected async searchLegacyParks(): Promise<void> {
+    const query: string = this.legacyParkSearch.trim() || this.search.trim();
+
+    if (!query) {
+      this.error.set(this.t('missingLegacyParkSearch'));
+      return;
+    }
+
+    this.legacyParkSearch = query;
+    this.legacyParkLoading.set(true);
+    this.hasSearchedLegacyParks.set(true);
+    this.error.set(null);
+    this.message.set(null);
+
+    try {
+      const parks: Park[] = await this.loadLegacyParks(query);
+      this.legacyParkRows.set(parks);
+
+      if (parks.length === 0) {
+        this.selectedLegacyPark.set(null);
+        return;
+      }
+
+      if (parks.length === 1) {
+        this.selectLegacyParkForMigration(parks[0], false);
+        this.message.set(this.t('legacyParkLoaded'));
+      }
+    } catch (error: unknown) {
+      this.setErrorFromUnknown(error);
+    } finally {
+      this.legacyParkLoading.set(false);
+    }
+  }
+
+  protected selectLegacyParkForMigration(park: Park, showMessage: boolean = true): void {
+    if (!park.id) {
+      return;
+    }
+
+    this.selectedLegacyPark.set(park);
+    this.migrationLegacyParkId = park.id;
+
+    const currentDraftId: string | null | undefined = this.draft().id;
+    if (currentDraftId) {
+      this.migrationTargetStandaloneAttractionId = currentDraftId;
+    }
+
+    this.error.set(null);
+
+    if (showMessage) {
+      this.message.set(`${this.t('selectedLegacyPark')}: ${park.name ?? park.id}`);
     }
   }
 
@@ -388,8 +505,8 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       this.draft.set(this.cloneAttraction(migrated));
       this.message.set(this.t('migrated'));
       await this.load(1);
-    } catch {
-      this.error.set(this.t('actionFailed'));
+    } catch (error: unknown) {
+      this.setErrorFromUnknown(error);
     } finally {
       this.loading.set(false);
     }
@@ -473,6 +590,31 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     return item.id ?? item.name;
   }
 
+  protected trackByParkId(_: number, park: Park): string {
+    return park.id ?? park.name ?? `${park.latitude}:${park.longitude}`;
+  }
+
+  protected formatLegacyParkSecondary(park: Park): string {
+    const parts: string[] = [
+      park.countryCode?.trim().toUpperCase() || null,
+      park.city?.trim() || null,
+      park.type?.trim() || null
+    ].filter((part: string | null): part is string => !!part);
+
+    return parts.length > 0 ? parts.join(' · ') : '-';
+  }
+
+  protected formatLegacyParkCounts(park: Park): string {
+    const totalCount: number | null = park.parkItemsTotalCount ?? null;
+
+    if (totalCount === null) {
+      return '-';
+    }
+
+    const visibleCount: number = park.parkItemsVisibleCount ?? 0;
+    return `${visibleCount}/${totalCount} ${this.t('legacyParkItems')}`;
+  }
+
   private async runBulkUpdate(patch: { isVisible?: boolean; adminReviewStatus?: AdminReviewStatus }): Promise<void> {
     const ids: string[] = Array.from(this.selectedIds());
 
@@ -492,8 +634,8 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       }));
       this.message.set(this.t('bulkUpdated'));
       await this.load(this.pagination().currentPage || 1);
-    } catch {
-      this.error.set(this.t('actionFailed'));
+    } catch (error: unknown) {
+      this.setErrorFromUnknown(error);
     } finally {
       this.loading.set(false);
     }
@@ -511,6 +653,52 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     };
   }
 
+  private async loadLegacyParks(query: string): Promise<Park[]> {
+    if (this.isLikelyIdentifier(query)) {
+      const park: Park = await firstValueFrom(this.parksApiService.getParkById(query));
+      return [park];
+    }
+
+    const response: ParksApiResponse = await firstValueFrom(this.parksApiService.searchParks(
+      query,
+      1,
+      10,
+      false,
+      null,
+      this.buildLegacyParkFilters(),
+      {
+        closedFilter: 'all',
+        sort: { sortBy: 'name', sortDirection: 'asc' }
+      }
+    ));
+
+    return response.data ?? [];
+  }
+
+  private buildLegacyParkFilters(): ParkAdminListFilters | null {
+    const countryCode: string = this.countryCode.trim().toUpperCase();
+
+    return countryCode
+      ? {
+          isVisible: null,
+          adminReviewStatus: null,
+          type: null,
+          audienceClassification: null,
+          countryCode,
+          hasValidCoordinates: null,
+          openingHoursStatus: 'all'
+        }
+      : null;
+  }
+
+  private isLikelyIdentifier(value: string): boolean {
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value.trim());
+  }
+
+  private setErrorFromUnknown(error: unknown): void {
+    this.error.set(extractSafeDisplayErrorMessage(error, this.t('actionFailed')));
+  }
+
   private syncSelectedAfterReload(rows: StandaloneAttraction[]): void {
     const currentId: string | null | undefined = this.selected()?.id;
 
@@ -524,6 +712,10 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       this.selected.set(refreshed);
       this.draft.set(this.cloneAttraction(refreshed));
     }
+  }
+
+  private syncMigrationTargetFromDraft(attraction: StandaloneAttraction | null): void {
+    this.migrationTargetStandaloneAttractionId = attraction?.id ?? '';
   }
 
   private createEmptyAttraction(): StandaloneAttraction {
