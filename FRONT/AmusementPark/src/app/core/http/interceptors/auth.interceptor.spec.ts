@@ -51,6 +51,16 @@ describe('AuthInterceptor', () => {
     expect(authService.ensureValidAccessToken).toHaveBeenCalledOnceWith();
   });
 
+  it('adds the bearer token for standalone JSON export downloads', async () => {
+    const authService: jasmine.SpyObj<AuthService> = createAuthService('access-token');
+    const interceptor = new AuthInterceptor(authService, 'browser' as unknown as object);
+
+    const authorizationHeader: string | null = await captureHeaders(interceptor, '/api/admin/park-graph-upserts/standalone-attractions/standalone-1/export');
+
+    expect(authorizationHeader).toBe('Bearer access-token');
+    expect(authService.ensureValidAccessToken).toHaveBeenCalledOnceWith();
+  });
+
   it('does not add an Authorization header when no token is available', async () => {
     const authService: jasmine.SpyObj<AuthService> = createAuthService(null);
     const interceptor = new AuthInterceptor(authService, 'browser' as unknown as object);

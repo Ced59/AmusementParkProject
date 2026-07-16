@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
@@ -19,8 +19,12 @@ class FakeStandaloneAttractionsApiService {
     pagination: createPagination()
   });
   public migrateResponse$: Observable<StandaloneAttraction> = of(createAttraction('standalone-1'));
+  public exportResponse$: Observable<HttpResponse<Blob>> = of(new HttpResponse({
+    body: new Blob(['{}'], { type: 'application/json' })
+  }));
   public readonly pageCalls: Array<{ page: number; size: number; filters: unknown }> = [];
   public readonly migrationCalls: StandaloneAttractionMigrationRequest[] = [];
+  public readonly exportCalls: string[] = [];
 
   getAdminPage(page: number, size: number, filters: unknown): Observable<PagedResult<StandaloneAttraction>> {
     this.pageCalls.push({ page, size, filters });
@@ -44,8 +48,9 @@ class FakeStandaloneAttractionsApiService {
     return this.migrateResponse$;
   }
 
-  buildExportUrl(id: string): string {
-    return `/admin/export/${id}`;
+  downloadExport(id: string): Observable<HttpResponse<Blob>> {
+    this.exportCalls.push(id);
+    return this.exportResponse$;
   }
 }
 
@@ -290,5 +295,33 @@ describe('AdminStandaloneAttractionsComponent', () => {
     await componentAccessor.migrateFromPark();
 
     expect(componentAccessor.error()).toBe('Le parc legacy contient plusieurs attractions.');
+  });
+
+  it('downloads standalone JSON exports through the authenticated API service', async () => {
+    const responseBlob: Blob = new Blob(['{}'], { type: 'application/json' });
+    const createObjectUrlSpy = spyOn(URL, 'createObjectURL').and.returnValue('blob:standalone-export');
+    const revokeObjectUrlSpy = spyOn(URL, 'revokeObjectURL').and.stub();
+    const clickSpy = spyOn(HTMLAnchorElement.prototype, 'click').and.stub();
+    standaloneApiService.exportResponse$ = of(new HttpResponse({
+      body: responseBlob,
+      headers: new HttpHeaders({
+        'content-disposition': 'attachment; filename="standalone-export.json"'
+      })
+    }));
+    const componentAccessor = component as unknown as {
+      draft: { set: (value: StandaloneAttraction) => void };
+      exportDraft: () => Promise<void>;
+      error: () => string | null;
+    };
+
+    componentAccessor.draft.set(createAttraction('standalone-1'));
+
+    await componentAccessor.exportDraft();
+
+    expect(standaloneApiService.exportCalls).toEqual(['standalone-1']);
+    expect(createObjectUrlSpy).toHaveBeenCalledOnceWith(responseBlob);
+    expect(clickSpy).toHaveBeenCalled();
+    expect(revokeObjectUrlSpy).toHaveBeenCalledOnceWith('blob:standalone-export');
+    expect(componentAccessor.error()).toBeNull();
   });
 });

@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -251,6 +252,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
   protected readonly selectedIds = signal<Set<string>>(new Set<string>());
   protected readonly selected = signal<StandaloneAttraction | null>(null);
   protected readonly draft = signal<StandaloneAttraction>(this.createEmptyAttraction());
+  protected readonly isExporting = signal<boolean>(false);
   protected readonly pagination = signal<PaginationContract>({
     currentPage: 1,
     itemsPerPage: 20,
@@ -258,7 +260,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     totalPages: 1
   });
   protected readonly selectedCount = computed<number>(() => this.selectedIds().size);
-  protected readonly canExport = computed<boolean>(() => !!this.draft().id);
+  protected readonly canExport = computed<boolean>(() => !!this.draft().id && !this.isExporting());
 
   protected search: string = '';
   protected countryCode: string = '';
@@ -570,14 +572,29 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     await this.load(1);
   }
 
-  protected exportDraft(): void {
+  protected async exportDraft(): Promise<void> {
     const id: string | null | undefined = this.draft().id;
 
-    if (!id || typeof window === 'undefined') {
+    if (!id) {
       return;
     }
 
-    window.open(this.apiService.buildExportUrl(id), '_blank', 'noopener');
+    this.isExporting.set(true);
+    this.error.set(null);
+
+    try {
+      const response: HttpResponse<Blob> = await firstValueFrom(this.apiService.downloadExport(id));
+      if (!response.body) {
+        this.error.set(this.t('actionFailed'));
+        return;
+      }
+
+      this.downloadBlob(response.body, this.resolveDownloadFileName(response));
+    } catch (error: unknown) {
+      this.setErrorFromUnknown(error);
+    } finally {
+      this.isExporting.set(false);
+    }
   }
 
   protected toNullableNumber(value: string | number | null | undefined): number | null {
@@ -642,6 +659,38 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     } finally {
       this.loading.set(false);
     }
+  }
+
+  private downloadBlob(blob: Blob, fileName: string): void {
+    if (typeof document === 'undefined' || typeof URL === 'undefined') {
+      this.error.set(this.t('actionFailed'));
+      return;
+    }
+
+    const objectUrl: string = URL.createObjectURL(blob);
+    const anchor: HTMLAnchorElement = document.createElement('a');
+    anchor.href = objectUrl;
+    anchor.download = fileName;
+    anchor.rel = 'noopener';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(objectUrl);
+  }
+
+  private resolveDownloadFileName(response: HttpResponse<Blob>): string {
+    const contentDisposition: string = response.headers.get('content-disposition') ?? '';
+    const utf8Match: RegExpMatchArray | null = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i);
+    if (utf8Match?.[1]) {
+      return decodeURIComponent(utf8Match[1].replace(/"/g, ''));
+    }
+
+    const fallbackMatch: RegExpMatchArray | null = contentDisposition.match(/filename="?([^";]+)"?/i);
+    if (fallbackMatch?.[1]) {
+      return fallbackMatch[1];
+    }
+
+    return 'standalone-attraction-upsert.json';
   }
 
   private buildFilters(): StandaloneAttractionListFilters {

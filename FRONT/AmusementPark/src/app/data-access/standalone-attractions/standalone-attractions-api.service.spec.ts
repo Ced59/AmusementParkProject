@@ -63,4 +63,23 @@ describe('StandaloneAttractionsApiService', () => {
     expect(adminRequest.request.method).toBe('GET');
     adminRequest.flush({ id: 'admin id' });
   });
+
+  it('downloads standalone export through HttpClient as a blob', () => {
+    const responseBlob: Blob = new Blob(['{}'], { type: 'application/json' });
+
+    service.downloadExport('standalone 1').subscribe((response) => {
+      expect(response.body).toBe(responseBlob);
+      expect(response.headers.get('content-disposition')).toContain('standalone.json');
+    });
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/standalone-attractions/standalone%201/export`);
+    expect(request.request.method).toBe('GET');
+    expect(request.request.responseType).toBe('blob');
+
+    request.flush(responseBlob, {
+      headers: {
+        'content-disposition': 'attachment; filename="standalone.json"'
+      }
+    });
+  });
 });
