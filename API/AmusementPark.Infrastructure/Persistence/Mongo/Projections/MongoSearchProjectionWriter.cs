@@ -1,9 +1,11 @@
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Search;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Driver;
 
@@ -17,6 +19,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
     private readonly IMongoCollection<SearchItemDocument> searchCollection;
     private readonly IMongoCollection<ParkDocument> parksCollection;
     private readonly IMongoCollection<ParkItemDocument> parkItemsCollection;
+    private readonly IMongoCollection<StandaloneAttractionDocument> standaloneAttractionsCollection;
     private readonly IMongoCollection<ParkFounderDocument> parkFoundersCollection;
     private readonly IMongoCollection<ParkOperatorDocument> parkOperatorsCollection;
     private readonly IMongoCollection<AttractionManufacturerDocument> attractionManufacturersCollection;
@@ -29,6 +32,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         this.searchCollection = database.GetCollection<SearchItemDocument>(settings.SearchItemCollectionName);
         this.parksCollection = database.GetCollection<ParkDocument>(settings.ParksCollectionName);
         this.parkItemsCollection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
+        this.standaloneAttractionsCollection = database.GetCollection<StandaloneAttractionDocument>(settings.StandaloneAttractionsCollectionName);
         this.parkFoundersCollection = database.GetCollection<ParkFounderDocument>(settings.ParkFoundersCollectionName);
         this.parkOperatorsCollection = database.GetCollection<ParkOperatorDocument>(settings.ParkOperatorsCollectionName);
         this.attractionManufacturersCollection = database.GetCollection<AttractionManufacturerDocument>(settings.AttractionManufacturersCollectionName);
@@ -51,6 +55,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         {
             SearchProjectionResourceTypes.Parks => await this.BuildParkSearchItemAsync(resourceId, cancellationToken),
             SearchProjectionResourceTypes.ParkItems => await this.BuildParkItemSearchItemAsync(resourceId, cancellationToken),
+            SearchProjectionResourceTypes.StandaloneAttractions => await this.BuildStandaloneAttractionSearchItemAsync(resourceId, cancellationToken),
             SearchProjectionResourceTypes.Operators => await this.BuildParkOperatorSearchItemAsync(resourceId, cancellationToken),
             SearchProjectionResourceTypes.Manufacturers => await this.BuildAttractionManufacturerSearchItemAsync(resourceId, cancellationToken),
             SearchProjectionResourceTypes.Founders => await this.BuildParkFounderSearchItemAsync(resourceId, cancellationToken),
@@ -101,6 +106,12 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             return;
         }
 
+        if (string.Equals(resourceType, SearchProjectionResourceTypes.StandaloneAttractions, StringComparison.Ordinal))
+        {
+            await this.UpsertManyStandaloneAttractionsAsync(distinctIds, cancellationToken);
+            return;
+        }
+
         foreach (string resourceId in distinctIds)
         {
             await this.UpsertAsync(resourceType, resourceId, cancellationToken);
@@ -119,6 +130,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         {
             SearchProjectionResourceTypes.Parks => $"park_{resourceId}",
             SearchProjectionResourceTypes.ParkItems => $"parkItem_{resourceId}",
+            SearchProjectionResourceTypes.StandaloneAttractions => $"standaloneAttraction_{resourceId}",
             SearchProjectionResourceTypes.Operators => $"operator_{resourceId}",
             SearchProjectionResourceTypes.Manufacturers => $"manufacturer_{resourceId}",
             SearchProjectionResourceTypes.Founders => $"founder_{resourceId}",
@@ -222,6 +234,43 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         await this.searchCollection.BulkWriteAsync(writes, new BulkWriteOptions { IsOrdered = false }, cancellationToken);
     }
 
+    private async Task UpsertManyStandaloneAttractionsAsync(IReadOnlyCollection<string> resourceIds, CancellationToken cancellationToken)
+    {
+        List<StandaloneAttractionDocument> attractions = await this.standaloneAttractionsCollection
+            .Find(item => resourceIds.Contains(item.Id))
+            .ToListAsync(cancellationToken);
+
+        if (attractions.Count == 0)
+        {
+            return;
+        }
+
+        List<string> originalIds = attractions.Select(item => $"standaloneAttraction_{item.Id}").ToList();
+        Dictionary<string, SearchItemDocument> existingByOriginalId = await this.LoadExistingSearchItemsByOriginalIdsAsync(originalIds, cancellationToken);
+        List<WriteModel<SearchItemDocument>> writes = new List<WriteModel<SearchItemDocument>>(attractions.Count);
+
+        foreach (StandaloneAttractionDocument attraction in attractions)
+        {
+            SearchItemDocument document = this.BuildStandaloneAttractionSearchItem(attraction);
+            if (existingByOriginalId.TryGetValue(document.OriginalId, out SearchItemDocument? existing))
+            {
+                document.Id = existing.Id;
+                document.CreatedAt = existing.CreatedAt;
+            }
+
+            document.RefreshLocation();
+            writes.Add(
+                new ReplaceOneModel<SearchItemDocument>(
+                    Builders<SearchItemDocument>.Filter.Eq(item => item.OriginalId, document.OriginalId),
+                    document)
+                {
+                    IsUpsert = true,
+                });
+        }
+
+        await this.searchCollection.BulkWriteAsync(writes, new BulkWriteOptions { IsOrdered = false }, cancellationToken);
+    }
+
     private async Task<Dictionary<string, int>> LoadAttractionCountsByParkIdsAsync(
         IReadOnlyCollection<string> parkIds,
         CancellationToken cancellationToken)
@@ -232,7 +281,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         }
 
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.In(item => item.ParkId, parkIds)
-            & Builders<ParkItemDocument>.Filter.Eq(item => item.Category, AmusementPark.Core.Domain.Parks.ParkItemCategory.Attraction)
+            & Builders<ParkItemDocument>.Filter.Eq(item => item.Category, ParkItemCategory.Attraction)
             & Builders<ParkItemDocument>.Filter.Eq(item => item.IsVisible, true);
 
         List<ParkItemDocument> attractions = await this.parkItemsCollection
@@ -318,6 +367,33 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         };
     }
 
+    private SearchItemDocument BuildStandaloneAttractionSearchItem(StandaloneAttractionDocument source)
+    {
+        string typeTag = HumanizeValue(source.Type.ToString());
+        string fallbackDescription = BuildStandaloneAttractionFallbackDescription(source, typeTag);
+
+        return new SearchItemDocument
+        {
+            Id = Guid.NewGuid().ToString(),
+            OriginalId = $"standaloneAttraction_{source.Id}",
+            Category = "standaloneAttraction",
+            ResourceType = SearchProjectionResourceTypes.StandaloneAttractions,
+            Title = source.Name,
+            Subtitle = BuildStandaloneAttractionSubtitle(source),
+            Description = SearchLocalizedTextResolver.Resolve(source.Descriptions, "en") ?? fallbackDescription,
+            LocalizedDescriptions = SearchLocalizedTextResolver.Normalize(source.Descriptions),
+            City = source.City,
+            CountryCode = source.CountryCode,
+            Keywords = this.BuildKeywords(source.Name, source.Subtype, source.Type.ToString(), typeTag, source.AttractionDetails?.Model, "standalone attraction", "isolated attraction", "attraction isolee"),
+            CompositeScore = 0.0,
+            Latitude = source.Latitude,
+            Longitude = source.Longitude,
+            CreatedAt = source.CreatedAt,
+            UpdatedAt = source.UpdatedAt,
+            IsVisible = IsPublicStandaloneAttraction(source),
+        };
+    }
+
     private async Task<SearchItemDocument> BuildParkSearchItemAsync(string resourceId, CancellationToken cancellationToken)
     {
         ParkDocument? source = await this.parksCollection.Find(value => value.Id == resourceId).FirstOrDefaultAsync(cancellationToken);
@@ -341,6 +417,17 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
 
         ParkDocument? park = await this.parksCollection.Find(value => value.Id == source.ParkId).FirstOrDefaultAsync(cancellationToken);
         return this.BuildParkItemSearchItem(source, park);
+    }
+
+    private async Task<SearchItemDocument> BuildStandaloneAttractionSearchItemAsync(string resourceId, CancellationToken cancellationToken)
+    {
+        StandaloneAttractionDocument? source = await this.standaloneAttractionsCollection.Find(value => value.Id == resourceId).FirstOrDefaultAsync(cancellationToken);
+        if (source is null)
+        {
+            throw new InvalidOperationException($"Standalone attraction '{resourceId}' not found for search projection.");
+        }
+
+        return this.BuildStandaloneAttractionSearchItem(source);
     }
 
     private async Task<SearchItemDocument> BuildParkFounderSearchItemAsync(string resourceId, CancellationToken cancellationToken)
@@ -526,6 +613,57 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         }
 
         return string.Join(" • ", parts);
+    }
+
+    private static string BuildStandaloneAttractionFallbackDescription(StandaloneAttractionDocument attraction, string typeTag)
+    {
+        List<string> parts = new List<string> { "standalone attraction", typeTag };
+
+        if (!string.IsNullOrWhiteSpace(attraction.Subtype))
+        {
+            parts.Add(attraction.Subtype.Trim());
+        }
+
+        if (!string.IsNullOrWhiteSpace(attraction.City))
+        {
+            parts.Add(attraction.City.Trim());
+        }
+
+        if (!string.IsNullOrWhiteSpace(attraction.CountryCode))
+        {
+            parts.Add(attraction.CountryCode.Trim().ToUpperInvariant());
+        }
+
+        return string.Join(" - ", parts);
+    }
+
+    private static string? BuildStandaloneAttractionSubtitle(StandaloneAttractionDocument source)
+    {
+        List<string> parts = new List<string>();
+
+        if (!string.IsNullOrWhiteSpace(source.City))
+        {
+            parts.Add(source.City.Trim());
+        }
+
+        if (!string.IsNullOrWhiteSpace(source.CountryCode))
+        {
+            parts.Add(source.CountryCode.Trim().ToUpperInvariant());
+        }
+
+        if (parts.Count == 0)
+        {
+            return "Standalone attraction";
+        }
+
+        return string.Join(" - ", parts);
+    }
+
+    private static bool IsPublicStandaloneAttraction(StandaloneAttractionDocument source)
+    {
+        return source.IsVisible
+            && source.AdminReviewStatus != AdminReviewStatus.NotRelevant
+            && !ParkItemStatusNormalizer.IsClosedDefinitively(source.AttractionDetails?.Status);
     }
 
     private static string ToSearchCategory(string value)

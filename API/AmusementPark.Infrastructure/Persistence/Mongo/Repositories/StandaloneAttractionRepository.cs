@@ -101,7 +101,7 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
         List<StandaloneAttractionDocument> documents = await this.collection.Find(filter)
-            .Sort(this.BuildSort(sortField, sortDescending))
+            .Sort(StandaloneAttractionListOrdering.Build(sortField, sortDescending))
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -269,25 +269,6 @@ public sealed class StandaloneAttractionRepository : IStandaloneAttractionReposi
         }
 
         return filter;
-    }
-
-    private SortDefinition<StandaloneAttractionDocument> BuildSort(StandaloneAttractionAdminSortField sortField, bool sortDescending)
-    {
-        SortDefinitionBuilder<StandaloneAttractionDocument> sortBuilder = Builders<StandaloneAttractionDocument>.Sort;
-        SortDefinition<StandaloneAttractionDocument> primarySort = sortField switch
-        {
-            StandaloneAttractionAdminSortField.Name => sortDescending ? sortBuilder.Descending(document => document.Name) : sortBuilder.Ascending(document => document.Name),
-            StandaloneAttractionAdminSortField.Type => sortDescending ? sortBuilder.Descending(document => document.Type) : sortBuilder.Ascending(document => document.Type),
-            StandaloneAttractionAdminSortField.CountryCode => sortDescending ? sortBuilder.Descending(document => document.CountryCode) : sortBuilder.Ascending(document => document.CountryCode),
-            StandaloneAttractionAdminSortField.IsVisible => sortDescending ? sortBuilder.Descending(document => document.IsVisible) : sortBuilder.Ascending(document => document.IsVisible),
-            StandaloneAttractionAdminSortField.AdminReviewStatus => sortDescending ? sortBuilder.Descending(document => document.AdminReviewPriority) : sortBuilder.Ascending(document => document.AdminReviewPriority),
-            _ => sortBuilder.Ascending(document => document.AdminReviewPriority),
-        };
-
-        return sortBuilder.Combine(
-            primarySort,
-            sortBuilder.Ascending(document => document.Name),
-            sortBuilder.Ascending(document => document.Id));
     }
 
     private static FilterDefinition<StandaloneAttractionDocument> BuildPublicFilter()

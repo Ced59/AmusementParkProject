@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Search;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -98,12 +99,14 @@ public sealed class MongoSearchProjectionInitializer
     {
         IMongoCollection<ParkDocument> parksCollection = this.database.GetCollection<ParkDocument>(this.settings.ParksCollectionName);
         IMongoCollection<ParkItemDocument> parkItemsCollection = this.database.GetCollection<ParkItemDocument>(this.settings.ParkItemsCollectionName);
+        IMongoCollection<StandaloneAttractionDocument> standaloneAttractionsCollection = this.database.GetCollection<StandaloneAttractionDocument>(this.settings.StandaloneAttractionsCollectionName);
         IMongoCollection<ParkFounderDocument> parkFoundersCollection = this.database.GetCollection<ParkFounderDocument>(this.settings.ParkFoundersCollectionName);
         IMongoCollection<ParkOperatorDocument> parkOperatorsCollection = this.database.GetCollection<ParkOperatorDocument>(this.settings.ParkOperatorsCollectionName);
         IMongoCollection<AttractionManufacturerDocument> attractionManufacturerCollection = this.database.GetCollection<AttractionManufacturerDocument>(this.settings.AttractionManufacturersCollectionName);
 
         await this.UpsertAllAsync(parksCollection, document => document.Id, SearchProjectionResourceTypes.Parks, cancellationToken);
         await this.UpsertAllAsync(parkItemsCollection, document => document.Id, SearchProjectionResourceTypes.ParkItems, cancellationToken);
+        await this.UpsertAllAsync(standaloneAttractionsCollection, document => document.Id, SearchProjectionResourceTypes.StandaloneAttractions, cancellationToken);
         await this.UpsertAllAsync(parkFoundersCollection, document => document.Id, SearchProjectionResourceTypes.Founders, cancellationToken);
         await this.UpsertAllAsync(parkOperatorsCollection, document => document.Id, SearchProjectionResourceTypes.Operators, cancellationToken);
         await this.UpsertAllAsync(attractionManufacturerCollection, document => document.Id, SearchProjectionResourceTypes.Manufacturers, cancellationToken);
@@ -224,6 +227,11 @@ public sealed class MongoSearchProjectionInitializer
     private static bool TryResolveProjectionResource(SearchItemDocument document, out string resourceType, out string resourceId)
     {
         if (TryResolveOriginalId(document.OriginalId, "parkItem_", SearchProjectionResourceTypes.ParkItems, out resourceType, out resourceId))
+        {
+            return true;
+        }
+
+        if (TryResolveOriginalId(document.OriginalId, "standaloneAttraction_", SearchProjectionResourceTypes.StandaloneAttractions, out resourceType, out resourceId))
         {
             return true;
         }

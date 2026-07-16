@@ -30,6 +30,12 @@ export function getSearchCategoryTranslationKey(category: string | null | undefi
       return 'home.categories.park';
     case 'parkitems':
       return 'home.categories.parkItems';
+    case 'attractionswithstandalone':
+    case 'attractionwithstandalone':
+      return 'home.categories.attractionsWithStandalone';
+    case 'standaloneattractions':
+    case 'standaloneattraction':
+      return 'home.categories.standaloneAttractions';
     case 'attractions':
       return 'home.categories.attraction';
     case 'restaurants':

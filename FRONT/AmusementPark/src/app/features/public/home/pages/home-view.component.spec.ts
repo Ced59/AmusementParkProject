@@ -44,6 +44,18 @@ describe('HomeViewComponent', () => {
     expect(selectedTitle).toBe('Mack Rides');
   });
 
+  it('links standalone attraction suggestions to their public detail page', () => {
+    const fixture: ComponentFixture<HomeViewComponent> = createComponent([
+      createSearchResult('standaloneAttraction_standalone-1', 'Standalone Attraction', 'Bardonecchia Alpine Coaster')
+    ]);
+
+    fixture.detectChanges();
+
+    const suggestionLink: HTMLAnchorElement = fixture.debugElement.query(By.css('a.home-search-suggestion')).nativeElement;
+
+    expect(suggestionLink.getAttribute('href')).toContain('/en/attraction/standalone-1/bardonecchia-alpine-coaster');
+  });
+
   it('emits the park autocomplete title when the autocomplete is clicked', () => {
     const fixture: ComponentFixture<HomeViewComponent> = createComponent([
       createSearchResult('park_1', 'Park', 'Boudewijn Seapark')

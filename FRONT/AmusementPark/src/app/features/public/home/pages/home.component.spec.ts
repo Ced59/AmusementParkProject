@@ -20,4 +20,14 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('exposes standalone attraction search options', () => {
+    const filters = (component as unknown as {
+      searchFilters: () => Array<{ options: Array<{ value: string | null }> }>;
+    }).searchFilters();
+    const values: Array<string | null> = filters[0].options.map((option: { value: string | null }) => option.value);
+
+    expect(values).toContain('attractionsWithStandalone');
+    expect(values).toContain('standaloneAttractions');
+  });
 });

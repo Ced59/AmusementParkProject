@@ -68,19 +68,75 @@ public sealed class StandaloneAttractionsController : ControllerBase
         CancellationToken cancellationToken = default)
     {
         bool canSeeNonVisible = this.UserCanSeeNonVisible();
+        return await this.GetPageAsync(
+            pagination,
+            search,
+            canSeeNonVisible,
+            canSeeNonVisible ? isVisible : true,
+            canSeeNonVisible ? ParseAdminReviewStatus(adminReviewStatus) : null,
+            ParseParkItemType(type),
+            countryCode,
+            manufacturerId,
+            canSeeNonVisible ? ParseSortField(sortBy) : StandaloneAttractionAdminSortField.Default,
+            IsSortDescending(sortDirection),
+            cancellationToken);
+    }
+
+    [HttpGet("~/admin/standalone-attractions")]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    [ProducesResponseType(typeof(PagedResponseDto<StandaloneAttractionDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAdminPaginatedAsync(
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? search = null,
+        [FromQuery] bool? isVisible = null,
+        [FromQuery] string? adminReviewStatus = null,
+        [FromQuery] string? type = null,
+        [FromQuery] string? countryCode = null,
+        [FromQuery] string? manufacturerId = null,
+        [FromQuery] string? sortBy = null,
+        [FromQuery] string? sortDirection = null,
+        CancellationToken cancellationToken = default)
+    {
+        return await this.GetPageAsync(
+            pagination,
+            search,
+            includeHidden: true,
+            isVisible,
+            ParseAdminReviewStatus(adminReviewStatus),
+            ParseParkItemType(type),
+            countryCode,
+            manufacturerId,
+            ParseSortField(sortBy),
+            IsSortDescending(sortDirection),
+            cancellationToken);
+    }
+
+    private async Task<IActionResult> GetPageAsync(
+        PaginationRequestDto pagination,
+        string? search,
+        bool includeHidden,
+        bool? isVisible,
+        AdminReviewStatus? adminReviewStatus,
+        ParkItemType? type,
+        string? countryCode,
+        string? manufacturerId,
+        StandaloneAttractionAdminSortField sortField,
+        bool sortDescending,
+        CancellationToken cancellationToken)
+    {
         PagedQuery paging = pagination.ToApplication();
         ApplicationResult<PagedResult<StandaloneAttraction>> result = await this.getPageQueryHandler.HandleAsync(
             new GetStandaloneAttractionsPageQuery(
                 paging,
                 search,
-                canSeeNonVisible,
-                canSeeNonVisible ? isVisible : true,
-                canSeeNonVisible ? ParseAdminReviewStatus(adminReviewStatus) : null,
-                ParseParkItemType(type),
+                includeHidden,
+                isVisible,
+                adminReviewStatus,
+                type,
                 countryCode,
                 manufacturerId,
-                canSeeNonVisible ? ParseSortField(sortBy) : StandaloneAttractionAdminSortField.Default,
-                IsSortDescending(sortDirection)),
+                sortField,
+                sortDescending),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -99,6 +155,23 @@ public sealed class StandaloneAttractionsController : ControllerBase
     {
         ApplicationResult<StandaloneAttraction> result = await this.getByIdQueryHandler.HandleAsync(
             new GetStandaloneAttractionByIdQuery(id, this.UserCanSeeNonVisible()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpGet("~/admin/standalone-attractions/{id}")]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    [ProducesResponseType(typeof(StandaloneAttractionDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAdminByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<StandaloneAttraction> result = await this.getByIdQueryHandler.HandleAsync(
+            new GetStandaloneAttractionByIdQuery(id, IncludeHidden: true),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -208,6 +281,8 @@ public sealed class StandaloneAttractionsController : ControllerBase
             "countrycode" or "country" => StandaloneAttractionAdminSortField.CountryCode,
             "isvisible" or "visibility" => StandaloneAttractionAdminSortField.IsVisible,
             "adminreviewstatus" or "status" => StandaloneAttractionAdminSortField.AdminReviewStatus,
+            "created" or "createdat" => StandaloneAttractionAdminSortField.CreatedAt,
+            "updated" or "updatedat" => StandaloneAttractionAdminSortField.UpdatedAt,
             _ => StandaloneAttractionAdminSortField.Default,
         };
     }

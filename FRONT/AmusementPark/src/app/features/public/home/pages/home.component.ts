@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
     { labelKey: 'home.categories.everywhere', value: '' },
     { labelKey: 'home.categories.park', value: 'park' },
     { labelKey: 'home.categories.parkItems', value: 'parkItems' },
+    { labelKey: 'home.categories.attractionsWithStandalone', value: 'attractionsWithStandalone' },
+    { labelKey: 'home.categories.standaloneAttractions', value: 'standaloneAttractions' },
     { labelKey: 'home.categories.operators', value: 'operators' },
     { labelKey: 'home.categories.manufacturers', value: 'manufacturers' }
   ];

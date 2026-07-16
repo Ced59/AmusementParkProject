@@ -19,9 +19,11 @@ class FakeStandaloneAttractionsApiService {
     pagination: createPagination()
   });
   public migrateResponse$: Observable<StandaloneAttraction> = of(createAttraction('standalone-1'));
+  public readonly pageCalls: Array<{ page: number; size: number; filters: unknown }> = [];
   public readonly migrationCalls: StandaloneAttractionMigrationRequest[] = [];
 
-  getPage(): Observable<PagedResult<StandaloneAttraction>> {
+  getAdminPage(page: number, size: number, filters: unknown): Observable<PagedResult<StandaloneAttraction>> {
+    this.pageCalls.push({ page, size, filters });
     return this.pageResponse$;
   }
 
@@ -178,6 +180,78 @@ describe('AdminStandaloneAttractionsComponent', () => {
     expect(parksApiService.searchCalls[0].options.closedFilter).toBe('all');
     expect(componentAccessor.migrationLegacyParkId).toBe('legacy-park-1');
     expect(componentAccessor.selectedLegacyPark()?.id).toBe('legacy-park-1');
+  });
+
+  it('creates a new draft from the active filters', () => {
+    const componentAccessor = component as unknown as {
+      search: string;
+      countryCode: string;
+      typeFilter: string;
+      draft: () => StandaloneAttraction;
+      newAttraction: () => void;
+    };
+
+    componentAccessor.search = 'Bardonecchia';
+    componentAccessor.countryCode = 'it';
+    componentAccessor.typeFilter = 'RollerCoaster';
+
+    componentAccessor.newAttraction();
+
+    expect(componentAccessor.draft().name).toBe('Bardonecchia');
+    expect(componentAccessor.draft().countryCode).toBe('IT');
+    expect(componentAccessor.draft().type).toBe('RollerCoaster');
+  });
+
+  it('keeps the saved attraction reachable when filters would hide it', async () => {
+    const componentAccessor = component as unknown as {
+      search: string;
+      countryCode: string;
+      typeFilter: string;
+      isVisibleFilter: string;
+      reviewStatusFilter: string;
+      draft: { set: (value: StandaloneAttraction) => void };
+      selected: () => StandaloneAttraction | null;
+      saveDraft: () => Promise<void>;
+    };
+
+    componentAccessor.search = 'Legacy name';
+    componentAccessor.countryCode = 'fr';
+    componentAccessor.typeFilter = 'WaterRide';
+    componentAccessor.isVisibleFilter = 'true';
+    componentAccessor.reviewStatusFilter = 'Validated';
+    componentAccessor.draft.set({
+      ...createAttraction(null),
+      name: 'Bardonecchia Alpine Coaster',
+      countryCode: 'IT',
+      type: 'RollerCoaster',
+      isVisible: false,
+      adminReviewStatus: 'ToReview'
+    });
+
+    await componentAccessor.saveDraft();
+
+    const lastPageCall = standaloneApiService.pageCalls[standaloneApiService.pageCalls.length - 1] as {
+      page: number;
+      filters: {
+        search?: string | null;
+        countryCode?: string | null;
+        type?: string | null;
+        isVisible?: boolean | null;
+        adminReviewStatus?: string | null;
+        sortBy?: string | null;
+        sortDirection?: string | null;
+      };
+    };
+
+    expect(componentAccessor.selected()?.id).toBe('created-standalone');
+    expect(lastPageCall.page).toBe(1);
+    expect(lastPageCall.filters.search).toBe('Bardonecchia Alpine Coaster');
+    expect(lastPageCall.filters.countryCode).toBe('IT');
+    expect(lastPageCall.filters.type).toBe('RollerCoaster');
+    expect(lastPageCall.filters.isVisible).toBeNull();
+    expect(lastPageCall.filters.adminReviewStatus).toBe('ToReview');
+    expect(lastPageCall.filters.sortBy).toBe('updated');
+    expect(lastPageCall.filters.sortDirection).toBe('desc');
   });
 
   it('uses the selected standalone attraction as migration target when available', () => {

@@ -1,6 +1,20 @@
 {
-  "version": "3.4.23",
+  "version": "3.4.24",
   "history": [
+    {
+      "version": "3.4.24",
+      "releasedAt": "2026-07-16",
+      "labels": {
+        "fr": "Les attractions isolées se trouvent plus facilement.",
+        "en": "Standalone attractions are easier to find.",
+        "de": "Einzelne Attraktionen sind leichter zu finden.",
+        "nl": "Losse attracties zijn makkelijker te vinden.",
+        "it": "Le attrazioni isolate sono più facili da trovare.",
+        "es": "Las atracciones aisladas son más fáciles de encontrar.",
+        "pl": "Samodzielne atrakcje łatwiej znaleźć.",
+        "pt": "As atrações isoladas ficam mais fáceis de encontrar."
+      }
+    },
     {
       "version": "3.4.23",
       "releasedAt": "2026-07-16",

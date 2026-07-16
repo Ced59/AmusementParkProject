@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text.Json;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
+using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.Parks;
@@ -87,6 +88,11 @@ public sealed partial class ParkGraphUpsertProcessor
         if (migration is not null)
         {
             await this.RetireMigratedParkEntitiesAsync(migration.Value, result, apply, cancellationToken);
+        }
+
+        if (apply && !string.IsNullOrWhiteSpace(attraction.Id))
+        {
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.StandaloneAttractions, attraction.Id, cancellationToken);
         }
     }
 
@@ -328,6 +334,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 sourcePark.IsVisible = false;
                 sourcePark.AdminReviewStatus = AdminReviewStatus.NotRelevant;
                 await this.parkRepository.UpdateAsync(sourcePark.Id, sourcePark, cancellationToken);
+                await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, sourcePark.Id, cancellationToken);
                 ParkGraphUpsertChange parkChange = BuildEntityChange("Park", sourcePark.Id, "legacyPark", sourcePark.Name ?? sourcePark.Id, "Updated", "legacyParkId");
                 AddChange(parkChange, "isVisible", true, false);
                 AddChange(parkChange, "adminReviewStatus", null, AdminReviewStatus.NotRelevant);
@@ -354,6 +361,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 sourceItem.IsVisible = false;
                 sourceItem.AdminReviewStatus = AdminReviewStatus.NotRelevant;
                 await this.parkItemRepository.UpdateAsync(sourceItem.Id, sourceItem, cancellationToken);
+                await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, sourceItem.Id, cancellationToken);
                 ParkGraphUpsertChange itemChange = BuildEntityChange("ParkItem", sourceItem.Id, "legacyParkItem", sourceItem.Name, "Updated", "legacyParkItemId");
                 AddChange(itemChange, "isVisible", true, false);
                 AddChange(itemChange, "adminReviewStatus", null, AdminReviewStatus.NotRelevant);

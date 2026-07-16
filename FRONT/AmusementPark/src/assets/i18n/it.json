@@ -2667,6 +2667,8 @@
       "attractions": "Attrazioni",
       "everywhere": "Tutto",
       "parkItems": "Attrazioni, spettacoli e luoghi",
+      "attractionsWithStandalone": "Attrazioni + isolate",
+      "standaloneAttractions": "Solo attrazioni isolate",
       "operators": "Operatori",
       "manufacturers": "Costruttori",
       "attraction": "Attrazione",

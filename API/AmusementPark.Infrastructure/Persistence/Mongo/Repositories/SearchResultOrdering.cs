@@ -10,6 +10,7 @@ internal static class SearchResultOrdering
     {
         new SearchResultPriorityRule(10, new[] { "parks" }, new[] { "park" }),
         new SearchResultPriorityRule(20, new[] { "parkitems" }, new[] { "attraction" }),
+        new SearchResultPriorityRule(25, new[] { "standaloneattractions" }, new[] { "standaloneattraction" }),
         new SearchResultPriorityRule(30, new[] { "parkitems" }, new[] { "restaurant" }),
         new SearchResultPriorityRule(40, new[] { "parkitems" }, new[] { "hotel" }),
         new SearchResultPriorityRule(50, new[] { "parkitems" }, new[] { "show" }),

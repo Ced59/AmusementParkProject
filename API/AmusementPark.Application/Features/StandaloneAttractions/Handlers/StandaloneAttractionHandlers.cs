@@ -4,6 +4,8 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Commands;
 using AmusementPark.Application.Features.StandaloneAttractions.Contracts;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
@@ -81,10 +83,12 @@ public sealed class CreateStandaloneAttractionCommandHandler
     : ICommandHandler<CreateStandaloneAttractionCommand, ApplicationResult<StandaloneAttraction>>
 {
     private readonly IStandaloneAttractionRepository repository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
-    public CreateStandaloneAttractionCommandHandler(IStandaloneAttractionRepository repository)
+    public CreateStandaloneAttractionCommandHandler(IStandaloneAttractionRepository repository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.repository = repository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     public async Task<ApplicationResult<StandaloneAttraction>> HandleAsync(CreateStandaloneAttractionCommand command, CancellationToken cancellationToken = default)
@@ -101,6 +105,11 @@ public sealed class CreateStandaloneAttractionCommandHandler
         }
 
         StandaloneAttraction created = await this.repository.CreateAsync(command.Attraction, cancellationToken);
+        if (!string.IsNullOrWhiteSpace(created.Id))
+        {
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.StandaloneAttractions, created.Id, cancellationToken);
+        }
+
         return ApplicationResult<StandaloneAttraction>.Success(created);
     }
 
@@ -144,10 +153,12 @@ public sealed class UpdateStandaloneAttractionCommandHandler
     : ICommandHandler<UpdateStandaloneAttractionCommand, ApplicationResult<StandaloneAttraction>>
 {
     private readonly IStandaloneAttractionRepository repository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
-    public UpdateStandaloneAttractionCommandHandler(IStandaloneAttractionRepository repository)
+    public UpdateStandaloneAttractionCommandHandler(IStandaloneAttractionRepository repository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.repository = repository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     public async Task<ApplicationResult<StandaloneAttraction>> HandleAsync(UpdateStandaloneAttractionCommand command, CancellationToken cancellationToken = default)
@@ -164,9 +175,17 @@ public sealed class UpdateStandaloneAttractionCommandHandler
 
         CreateStandaloneAttractionCommandHandler.Normalize(command.Attraction);
         StandaloneAttraction? updated = await this.repository.UpdateAsync(command.Id.Trim(), command.Attraction, cancellationToken);
-        return updated is null
-            ? ApplicationResult<StandaloneAttraction>.Failure(ApplicationErrors.EntityNotFound(nameof(StandaloneAttraction), command.Id))
-            : ApplicationResult<StandaloneAttraction>.Success(updated);
+        if (updated is null)
+        {
+            return ApplicationResult<StandaloneAttraction>.Failure(ApplicationErrors.EntityNotFound(nameof(StandaloneAttraction), command.Id));
+        }
+
+        if (!string.IsNullOrWhiteSpace(updated.Id))
+        {
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.StandaloneAttractions, updated.Id, cancellationToken);
+        }
+
+        return ApplicationResult<StandaloneAttraction>.Success(updated);
     }
 }
 
@@ -174,10 +193,12 @@ public sealed class UpdateStandaloneAttractionsBulkAdministrationCommandHandler
     : ICommandHandler<UpdateStandaloneAttractionsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>>
 {
     private readonly IStandaloneAttractionRepository repository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
-    public UpdateStandaloneAttractionsBulkAdministrationCommandHandler(IStandaloneAttractionRepository repository)
+    public UpdateStandaloneAttractionsBulkAdministrationCommandHandler(IStandaloneAttractionRepository repository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.repository = repository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     public async Task<ApplicationResult<BulkAdministrationUpdateResult>> HandleAsync(UpdateStandaloneAttractionsBulkAdministrationCommand command, CancellationToken cancellationToken = default)
@@ -199,6 +220,11 @@ public sealed class UpdateStandaloneAttractionsBulkAdministrationCommandHandler
         }
 
         int updatedCount = await this.repository.UpdateBulkAdministrationAsync(ids, command.IsVisible, command.AdminReviewStatus, cancellationToken);
+        if (updatedCount > 0)
+        {
+            await this.searchProjectionWriter.UpsertManyAsync(SearchProjectionResourceTypes.StandaloneAttractions, ids, cancellationToken);
+        }
+
         return ApplicationResult<BulkAdministrationUpdateResult>.Success(new BulkAdministrationUpdateResult
         {
             RequestedCount = ids.Count,
@@ -213,15 +239,18 @@ public sealed class MigrateParkToStandaloneAttractionCommandHandler
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IStandaloneAttractionRepository standaloneAttractionRepository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
     public MigrateParkToStandaloneAttractionCommandHandler(
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
-        IStandaloneAttractionRepository standaloneAttractionRepository)
+        IStandaloneAttractionRepository standaloneAttractionRepository,
+        ISearchProjectionWriter searchProjectionWriter)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     public async Task<ApplicationResult<StandaloneAttraction>> HandleAsync(MigrateParkToStandaloneAttractionCommand command, CancellationToken cancellationToken = default)
@@ -264,6 +293,17 @@ public sealed class MigrateParkToStandaloneAttractionCommandHandler
             : await this.UpsertWithIdAsync(attraction, cancellationToken);
 
         await this.RetireLegacyEntitiesAsync(sourcePark, sourceItem, request, cancellationToken);
+        if (!string.IsNullOrWhiteSpace(saved.Id))
+        {
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.StandaloneAttractions, saved.Id, cancellationToken);
+        }
+
+        await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, sourcePark.Id, cancellationToken);
+        if (!string.IsNullOrWhiteSpace(sourceItem?.Id))
+        {
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, sourceItem.Id, cancellationToken);
+        }
+
         return ApplicationResult<StandaloneAttraction>.Success(saved);
     }
 

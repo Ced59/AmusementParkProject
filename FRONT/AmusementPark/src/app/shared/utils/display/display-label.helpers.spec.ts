@@ -23,6 +23,8 @@ describe('display-label helpers', () => {
   it('maps known search category plural names to public translation keys', () => {
     expect(getSearchCategoryTranslationKey('Parks')).toBe('home.categories.park');
     expect(getSearchCategoryTranslationKey('Park Items')).toBe('home.categories.parkItems');
+    expect(getSearchCategoryTranslationKey('Standalone Attraction')).toBe('home.categories.standaloneAttractions');
+    expect(getSearchCategoryTranslationKey('attractionsWithStandalone')).toBe('home.categories.attractionsWithStandalone');
     expect(getSearchCategoryTranslationKey('Manufacturers')).toBe('home.categories.manufacturers');
   });
 
