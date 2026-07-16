@@ -1,6 +1,20 @@
 {
-  "version": "3.4.25",
+  "version": "3.4.26",
   "history": [
+    {
+      "version": "3.4.26",
+      "releasedAt": "2026-07-16",
+      "labels": {
+        "fr": "L’administration reste plus fiable.",
+        "en": "Administration stays more reliable.",
+        "de": "Die Verwaltung bleibt zuverlässiger.",
+        "nl": "Het beheer blijft betrouwbaarder.",
+        "it": "L’amministrazione resta più affidabile.",
+        "es": "La administración sigue siendo más fiable.",
+        "pl": "Administracja działa bardziej niezawodnie.",
+        "pt": "A administração fica mais fiável."
+      }
+    },
     {
       "version": "3.4.25",
       "releasedAt": "2026-07-16",

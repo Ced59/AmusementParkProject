@@ -160,7 +160,7 @@
             <span class="admin-kicker">Record</span>
             <h3>{{ draft().name || t('newAttraction') }}</h3>
           </div>
-          <button type="button" class="btn btn--ghost btn--sm" (click)="exportDraft()" [disabled]="!canExport()">
+          <button type="button" class="btn btn--ghost btn--sm" (click)="exportDraft()" [disabled]="!canExport() || loading()">
             <i class="pi pi-download" aria-hidden="true"></i>
             {{ t('exportJson') }}
           </button>

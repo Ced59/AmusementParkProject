@@ -1,4 +1,4 @@
-import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -73,8 +73,12 @@ export class StandaloneAttractionsApiService {
     return this.http.post<StandaloneAttraction>(`${this.baseUrl}/migrate-from-park`, request);
   }
 
-  buildExportUrl(id: string): string {
-    return `${this.upsertBaseUrl}/standalone-attractions/${encodeURIComponent(id)}/export`;
+  downloadExport(id: string): Observable<HttpResponse<Blob>> {
+    const url: string = `${this.upsertBaseUrl}/standalone-attractions/${encodeURIComponent(id)}/export`;
+    return this.http.get(url, {
+      observe: 'response',
+      responseType: 'blob'
+    });
   }
 
   private buildListParams(page: number, size: number, filters: StandaloneAttractionListFilters): HttpParams {
