@@ -1,6 +1,20 @@
 {
-  "version": "3.4.21",
+  "version": "3.4.22",
   "history": [
+    {
+      "version": "3.4.22",
+      "releasedAt": "2026-07-16",
+      "labels": {
+        "fr": "Les attractions isolées sont mieux prises en charge.",
+        "en": "Standalone attractions are handled more clearly.",
+        "de": "Einzelne Attraktionen werden klarer unterstützt.",
+        "nl": "Losse attracties worden duidelijker ondersteund.",
+        "it": "Le attrazioni isolate sono gestite in modo più chiaro.",
+        "es": "Las atracciones aisladas se gestionan con más claridad.",
+        "pl": "Samodzielne atrakcje są obsługiwane czytelniej.",
+        "pt": "As atrações isoladas são geridas com mais clareza."
+      }
+    },
     {
       "version": "3.4.21",
       "releasedAt": "2026-07-15",

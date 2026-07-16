@@ -1873,6 +1873,9 @@
         "Authenticated": "Signed in"
       }
     },
+    "standaloneAttractions": {
+      "title": "Standalone attractions"
+    },
     "tabs": {
       "users": "Users",
       "parks": "Parks",
@@ -2233,7 +2236,8 @@
       "OPERATOR": "Operator photo",
       "MANUFACTURER": "Manufacturer photo",
       "FOUNDER": "Founder photo",
-      "VIDEO_THUMBNAIL": "Video thumbnail"
+      "VIDEO_THUMBNAIL": "Video thumbnail",
+      "STANDALONE_ATTRACTION": "Standalone attraction photo"
     },
     "ownerTypes": {
       "NONE": "None",
@@ -2243,7 +2247,8 @@
       "PARK_OPERATOR": "Operator",
       "ATTRACTION_MANUFACTURER": "Manufacturer",
       "PARK_FOUNDER": "Founder",
-      "VIDEO": "Video"
+      "VIDEO": "Video",
+      "STANDALONE_ATTRACTION": "Standalone attraction"
     }
   },
   "languageModal": {

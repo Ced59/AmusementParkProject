@@ -15,4 +15,5 @@ public enum ImageCategory
     Manufacturer = 5,
     Founder = 6,
     VideoThumbnail = 7,
+    StandaloneAttraction = 8,
 }

@@ -1,0 +1,315 @@
+<div class="admin-standalone-page admin-list-card">
+  <header class="admin-list-header admin-standalone-header">
+    <div>
+      <span class="admin-kicker">Standalone</span>
+      <h2>{{ t('title') }}</h2>
+      <p>{{ t('subtitle') }}</p>
+    </div>
+    <span class="admin-total-pill">{{ pagination().totalItems || 0 }} {{ t('total') }}</span>
+  </header>
+
+  <div class="admin-standalone-feedback" *ngIf="loading() || message() || error()" [class.admin-standalone-feedback--error]="error()">
+    {{ error() || message() || t('loading') }}
+  </div>
+
+  <section class="admin-standalone-controls" aria-label="Standalone attraction filters">
+    <div class="admin-toolbar">
+      <label class="admin-toolbar__search">
+        <span class="admin-field-label">{{ t('search') }}</span>
+        <span class="admin-search-field">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          <input type="search" [(ngModel)]="search" (keydown.enter)="applyFilters()" [placeholder]="t('searchPlaceholder')">
+        </span>
+      </label>
+
+      <div class="admin-toolbar__actions">
+        <button type="button" class="btn btn--primary btn--sm" (click)="applyFilters()" [disabled]="loading()">
+          <i class="pi pi-filter" aria-hidden="true"></i>
+          {{ t('apply') }}
+        </button>
+        <button type="button" class="btn btn--ghost btn--sm" (click)="clearFilters()" [disabled]="loading()">
+          <i class="pi pi-times" aria-hidden="true"></i>
+          {{ t('clear') }}
+        </button>
+        <button type="button" class="btn btn--ghost btn--sm" (click)="newAttraction()">
+          <i class="pi pi-plus" aria-hidden="true"></i>
+          {{ t('newAttraction') }}
+        </button>
+      </div>
+    </div>
+
+    <div class="admin-filters-grid admin-standalone-filters">
+      <label class="admin-field">
+        <span class="admin-field-label">{{ t('country') }}</span>
+        <input type="text" [(ngModel)]="countryCode" maxlength="2" placeholder="IT">
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ t('type') }}</span>
+        <select [(ngModel)]="typeFilter">
+          <option value="">{{ t('all') }}</option>
+          <option *ngFor="let type of attractionTypes" [value]="type">{{ type }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ t('visibility') }}</span>
+        <select [(ngModel)]="isVisibleFilter">
+          <option value="">{{ t('all') }}</option>
+          <option value="true">{{ t('visible') }}</option>
+          <option value="false">{{ t('hidden') }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">{{ t('review') }}</span>
+        <select [(ngModel)]="reviewStatusFilter">
+          <option value="">{{ t('all') }}</option>
+          <option *ngFor="let status of adminReviewStatuses" [value]="status">{{ status }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">Sort</span>
+        <select [(ngModel)]="sortBy">
+          <option *ngFor="let sortField of sortFields" [value]="sortField">{{ sortField }}</option>
+        </select>
+      </label>
+
+      <label class="admin-field">
+        <span class="admin-field-label">Direction</span>
+        <select [(ngModel)]="sortDirection">
+          <option value="desc">desc</option>
+          <option value="asc">asc</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <div class="admin-standalone-workbench">
+    <section class="admin-standalone-list">
+      <div class="admin-standalone-list__head">
+        <label class="admin-standalone-check">
+          <input type="checkbox" [checked]="isAllPageSelected()" (change)="toggleAll($any($event.target).checked)">
+          <span>{{ selectedCount() }} {{ t('selected') }}</span>
+        </label>
+        <div class="admin-standalone-bulk">
+          <button type="button" class="btn btn--ghost btn--sm" (click)="bulkSetVisible(true)" [disabled]="selectedCount() === 0 || loading()">{{ t('bulkVisible') }}</button>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="bulkSetVisible(false)" [disabled]="selectedCount() === 0 || loading()">{{ t('bulkHidden') }}</button>
+          <button type="button" class="btn btn--primary btn--sm" (click)="bulkValidate()" [disabled]="selectedCount() === 0 || loading()">{{ t('bulkValidated') }}</button>
+        </div>
+      </div>
+
+      <div class="admin-standalone-empty" *ngIf="!loading() && rows().length === 0">
+        <i class="pi pi-ticket" aria-hidden="true"></i>
+        <strong>{{ t('empty') }}</strong>
+      </div>
+
+      <div class="admin-standalone-table" *ngIf="rows().length > 0">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>{{ t('name') }}</th>
+              <th>{{ t('country') }}</th>
+              <th>{{ t('type') }}</th>
+              <th>{{ t('visibility') }}</th>
+              <th>{{ t('review') }}</th>
+              <th>{{ t('legacy') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of rows(); trackBy: trackById" [class.admin-standalone-row--active]="selected()?.id === row.id" (click)="select(row)">
+              <td>
+                <input type="checkbox" [checked]="isSelected(row.id)" (click)="$event.stopPropagation()" (change)="toggleSelected(row.id, $any($event.target).checked)">
+              </td>
+              <td>
+                <strong>{{ row.name }}</strong>
+                <span>{{ row.city || '-' }}</span>
+              </td>
+              <td>{{ row.countryCode || '-' }}</td>
+              <td>{{ row.type }}</td>
+              <td>{{ row.isVisible ? t('visible') : t('hidden') }}</td>
+              <td>{{ row.adminReviewStatus }}</td>
+              <td>{{ row.legacyParkId || '-' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <footer class="admin-standalone-pagination">
+        <span>{{ pagination().currentPage || 1 }} / {{ pagination().totalPages || 1 }}</span>
+        <div>
+          <select [ngModel]="pageSize" (ngModelChange)="changePageSize($event)">
+            <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+          </select>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="changePage((pagination().currentPage || 1) - 1)" [disabled]="(pagination().currentPage || 1) <= 1">{{ '<' }}</button>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="changePage((pagination().currentPage || 1) + 1)" [disabled]="(pagination().currentPage || 1) >= (pagination().totalPages || 1)">{{ '>' }}</button>
+        </div>
+      </footer>
+    </section>
+
+    <aside class="admin-standalone-editor">
+      <section class="admin-standalone-editor__section">
+        <div class="admin-standalone-editor__head">
+          <div>
+            <span class="admin-kicker">Record</span>
+            <h3>{{ draft().name || t('newAttraction') }}</h3>
+          </div>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="exportDraft()" [disabled]="!canExport()">
+            <i class="pi pi-download" aria-hidden="true"></i>
+            {{ t('exportJson') }}
+          </button>
+        </div>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ t('name') }}</span>
+          <input [ngModel]="draft().name" (ngModelChange)="patchDraft({ name: $event })">
+        </label>
+
+        <div class="admin-standalone-two">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('type') }}</span>
+            <select [ngModel]="draft().type" (ngModelChange)="patchDraft({ type: $event })">
+              <option *ngFor="let type of attractionTypes" [value]="type">{{ type }}</option>
+            </select>
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('subtype') }}</span>
+            <input [ngModel]="draft().subtype || ''" (ngModelChange)="patchDraft({ subtype: $event })">
+          </label>
+        </div>
+
+        <div class="admin-standalone-two">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('country') }}</span>
+            <input [ngModel]="draft().countryCode || ''" (ngModelChange)="patchDraft({ countryCode: $event })" maxlength="2">
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('city') }}</span>
+            <input [ngModel]="draft().city || ''" (ngModelChange)="patchDraft({ city: $event })">
+          </label>
+        </div>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ t('street') }}</span>
+          <input [ngModel]="draft().street || ''" (ngModelChange)="patchDraft({ street: $event })">
+        </label>
+
+        <div class="admin-standalone-two">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('postalCode') }}</span>
+            <input [ngModel]="draft().postalCode || ''" (ngModelChange)="patchDraft({ postalCode: $event })">
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('operatorId') }}</span>
+            <input [ngModel]="draft().operatorId || ''" (ngModelChange)="patchDraft({ operatorId: $event })">
+          </label>
+        </div>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ t('website') }}</span>
+          <input [ngModel]="draft().websiteUrl || ''" (ngModelChange)="patchDraft({ websiteUrl: $event })">
+        </label>
+
+        <div class="admin-standalone-two">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('latitude') }}</span>
+            <input type="number" [ngModel]="draft().latitude ?? ''" (ngModelChange)="patchDraft({ latitude: toNullableNumber($event) })">
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('longitude') }}</span>
+            <input type="number" [ngModel]="draft().longitude ?? ''" (ngModelChange)="patchDraft({ longitude: toNullableNumber($event) })">
+          </label>
+        </div>
+
+        <div class="admin-standalone-two">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('visibility') }}</span>
+            <select [ngModel]="draft().isVisible" (ngModelChange)="patchDraft({ isVisible: $event === true || $event === 'true' })">
+              <option [ngValue]="true">{{ t('visible') }}</option>
+              <option [ngValue]="false">{{ t('hidden') }}</option>
+            </select>
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('review') }}</span>
+            <select [ngModel]="draft().adminReviewStatus" (ngModelChange)="patchDraft({ adminReviewStatus: $event })">
+              <option *ngFor="let status of adminReviewStatuses" [value]="status">{{ status }}</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="admin-standalone-two">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('model') }}</span>
+            <input [ngModel]="draft().attractionDetails?.model || ''" (ngModelChange)="patchDetails({ model: $event })">
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('manufacturerId') }}</span>
+            <input [ngModel]="draft().attractionDetails?.manufacturerId || ''" (ngModelChange)="patchDetails({ manufacturerId: $event })">
+          </label>
+        </div>
+
+        <div class="admin-standalone-three">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('lengthMeters') }}</span>
+            <input type="number" [ngModel]="draft().attractionDetails?.lengthInMeters ?? ''" (ngModelChange)="patchDetails({ lengthInMeters: toNullableNumber($event) })">
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('speedKmh') }}</span>
+            <input type="number" [ngModel]="draft().attractionDetails?.speedInKmH ?? ''" (ngModelChange)="patchDetails({ speedInKmH: toNullableNumber($event) })">
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ t('durationSeconds') }}</span>
+            <input type="number" [ngModel]="draft().attractionDetails?.durationInSeconds ?? ''" (ngModelChange)="patchDetails({ durationInSeconds: toNullableNumber($event) })">
+          </label>
+        </div>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ t('descriptionFr') }}</span>
+          <textarea [ngModel]="getDescription('fr')" (ngModelChange)="updateDescription('fr', $event)"></textarea>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ t('descriptionEn') }}</span>
+          <textarea [ngModel]="getDescription('en')" (ngModelChange)="updateDescription('en', $event)"></textarea>
+        </label>
+
+        <div class="admin-standalone-actions">
+          <button type="button" class="btn btn--primary" (click)="saveDraft()" [disabled]="loading()">
+            <i class="pi pi-save" aria-hidden="true"></i>
+            {{ t('save') }}
+          </button>
+        </div>
+      </section>
+
+      <section class="admin-standalone-editor__section admin-standalone-migration">
+        <span class="admin-kicker">{{ t('migrationTitle') }}</span>
+        <label class="admin-field">
+          <span class="admin-field-label">{{ t('legacyParkId') }}</span>
+          <input [(ngModel)]="migrationLegacyParkId" placeholder="b2ddc5c4-bfa5-430b-bcbb-5ba8c6a183cb">
+        </label>
+        <label class="admin-field">
+          <span class="admin-field-label">{{ t('legacyParkItemId') }}</span>
+          <input [(ngModel)]="migrationLegacyParkItemId" placeholder="bb146495-2321-454b-9f02-f2f71c6becf6">
+        </label>
+        <label class="admin-field">
+          <span class="admin-field-label">{{ t('targetStandaloneAttractionId') }}</span>
+          <input [(ngModel)]="migrationTargetStandaloneAttractionId">
+        </label>
+        <label class="admin-standalone-switch">
+          <input type="checkbox" [(ngModel)]="migrationRetireLegacyPark">
+          <span>{{ t('retireLegacyPark') }}</span>
+        </label>
+        <label class="admin-standalone-switch">
+          <input type="checkbox" [(ngModel)]="migrationRetireLegacyParkItem">
+          <span>{{ t('retireLegacyParkItem') }}</span>
+        </label>
+        <button type="button" class="btn btn--primary" (click)="migrateFromPark()" [disabled]="loading()">
+          <i class="pi pi-arrow-right-arrow-left" aria-hidden="true"></i>
+          {{ t('migrate') }}
+        </button>
+      </section>
+    </aside>
+  </div>
+</div>

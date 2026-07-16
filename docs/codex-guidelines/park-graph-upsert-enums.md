@@ -2,7 +2,7 @@
 
 Version : **2026-06-30**
 
-Ce fichier liste les valeurs enum à utiliser dans les JSON `AmusementParkParkGraphUpsert`.
+Ce fichier liste les valeurs enum à utiliser dans les JSON `AmusementParkParkGraphUpsert` et `standaloneAttractionGraph`.
 
 Règles :
 
@@ -55,6 +55,18 @@ Champs acceptés dans une condition :
 
 Utiliser `Centimeter` pour une taille en centimètres, `Inch` pour une taille en pouces et `Year` pour un âge. Le flux normalise les mesures, mais le JSON doit rester clair et sourcé.
 
+## Champs standaloneAttraction
+
+Les attractions fixes isolées utilisent les mêmes valeurs techniques qu’un parkItem attraction, mais dans `standaloneAttraction`.
+
+| Champ JSON | Enum | Valeurs |
+| --- | --- | --- |
+| `standaloneAttraction.type` | `ParkItemType` | `Attraction`, `RollerCoaster`, `WaterRide`, `FlatRide`, `DarkRide`, `FamilyRide`, `ThrillRide`, `TransportRide`, `WalkThrough`, `Playground`, `InteractiveExperience`, `ObservationRide`, `AnimalExhibit`, `Other`, `Cinema`, `DropTower` |
+| `standaloneAttraction.adminReviewStatus` | `AdminReviewStatus` | `ToReview`, `Validated`, `ToProcessLater`, `NotRelevant` |
+| `standaloneAttraction.attractionDetails.waterExposureLevel` | `AttractionWaterExposureLevel` | `None`, `Splash`, `Moderate`, `Soaking`, `ExtremeSoaking` |
+| `standaloneAttraction.attractionDetails.accessConditions[].type` | `AttractionAccessConditionType` | `MinHeight`, `MinHeightAccompanied`, `MaxHeight`, `MinAge`, `MinAgeAccompanied`, `PregnancyRestriction`, `HeartRestriction`, `BackNeckRestriction`, `WheelchairTransferRequired`, `AccessPassRequired`, `Custom` |
+| `standaloneAttraction.attractionDetails.accessConditions[].unit` | `AttractionAccessConditionUnit` | `Centimeter`, `Inch`, `Year` |
+
 Exemples :
 
 ```json
@@ -99,10 +111,10 @@ Exemples :
 
 | Champ JSON | Enum | Valeurs à utiliser dans le Park Graph Upsert |
 | --- | --- | --- |
-| `images[].ownerType` | `ImageOwnerType` | `Park`, `ParkItem`, `ParkOperator`, `AttractionManufacturer`, `ParkFounder` |
-| `images[].category` | `ImageCategory` | `Avatar`, `Logo`, `Park`, `ParkItem`, `Operator`, `Manufacturer`, `Founder`, `VideoThumbnail` |
+| `images[].ownerType` | `ImageOwnerType` | `Park`, `ParkItem`, `ParkOperator`, `AttractionManufacturer`, `ParkFounder`, `StandaloneAttraction` |
+| `images[].category` | `ImageCategory` | `Avatar`, `Logo`, `Park`, `ParkItem`, `Operator`, `Manufacturer`, `Founder`, `VideoThumbnail`, `StandaloneAttraction` |
 
-`ImageOwnerType.None`, `User`, `Video` et l’alias legacy `Attraction` existent côté domaine, mais ne doivent pas être utilisés dans ce flux d’intégration de parc.
+`ImageOwnerType.None`, `User`, `Video` et l’alias legacy `Attraction` existent côté domaine, mais ne doivent pas être utilisés dans ce flux d’intégration de parc ou d’attraction isolée.
 
 `ImageCategory.Attraction` existe comme alias legacy de `ParkItem`, mais les nouveaux JSON doivent utiliser `ParkItem`.
 

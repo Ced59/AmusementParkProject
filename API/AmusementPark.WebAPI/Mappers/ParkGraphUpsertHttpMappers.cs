@@ -83,6 +83,8 @@ internal static class ParkGraphUpsertHttpMappers
             AppliedAtUtc = result.AppliedAtUtc,
             TargetParkId = result.TargetParkId,
             TargetParkName = result.TargetParkName,
+            TargetStandaloneAttractionId = result.TargetStandaloneAttractionId,
+            TargetStandaloneAttractionName = result.TargetStandaloneAttractionName,
             Counts = new ParkGraphUpsertCountsDto
             {
                 Created = result.Counts.Created,

@@ -1,0 +1,82 @@
+<app-page-state
+  [state]="state().kind"
+  loadingTitleKey="common.loadingTitle"
+  loadingMessageKey="common.loadingMessage"
+  errorTitleKey="common.errorTitle"
+  errorMessageKey="common.errorMessage">
+  <section class="standalone-attraction-page public-page" *ngIf="attraction() as current">
+    <section class="standalone-hero">
+      <div class="standalone-hero__media" *ngIf="heroImage() as image">
+        <app-image-display
+          [imageId]="image.id"
+          [alt]="current.name"
+          loading="eager"
+          fetchPriority="high"
+          imgClass="standalone-hero__image"
+          placeholderClass="standalone-hero__placeholder"
+          placeholderKind="photo">
+        </app-image-display>
+      </div>
+
+      <div class="standalone-hero__content">
+        <span class="standalone-kicker">{{ t('standalone') }}</span>
+        <h1>{{ current.name }}</h1>
+        <p>{{ getHeroLocation(current) || t('visibleDataOnly') }}</p>
+
+        <div class="standalone-hero__chips">
+          <span>{{ current.type }}</span>
+          <span *ngIf="current.subtype">{{ current.subtype }}</span>
+          <span *ngIf="current.attractionDetails?.status">{{ current.attractionDetails?.status }}</span>
+        </div>
+
+        <div class="standalone-hero__actions">
+          <a class="btn btn--ghost" [routerLink]="['/', currentLanguage(), 'parks']">
+            <i class="pi pi-arrow-left" aria-hidden="true"></i>
+            <span>{{ t('backToParks') }}</span>
+          </a>
+          <a class="btn btn--primary" *ngIf="getWebsiteUrl(current) as websiteUrl" [href]="websiteUrl" target="_blank" rel="noopener">
+            <i class="pi pi-external-link" aria-hidden="true"></i>
+            <span>{{ t('officialWebsite') }}</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="standalone-body">
+      <main class="standalone-main">
+        <section class="standalone-panel" *ngIf="description(); else noDescription">
+          <span class="standalone-kicker">{{ t('description') }}</span>
+          <div class="standalone-rich-text" [innerHTML]="description() | safeRichHtml"></div>
+        </section>
+        <ng-template #noDescription>
+          <section class="standalone-panel">
+            <span class="standalone-kicker">{{ t('description') }}</span>
+            <p>{{ t('noDescription') }}</p>
+          </section>
+        </ng-template>
+
+        <section class="standalone-panel" *ngIf="detailsRows().length > 0">
+          <span class="standalone-kicker">{{ t('details') }}</span>
+          <div class="standalone-data-grid">
+            <div class="standalone-data-row" *ngFor="let row of detailsRows()">
+              <span>{{ row.label }}</span>
+              <strong>{{ row.value }}</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="standalone-sidebar">
+        <section class="standalone-panel">
+          <span class="standalone-kicker">{{ t('location') }}</span>
+          <div class="standalone-data-grid">
+            <div class="standalone-data-row" *ngFor="let row of getLocationRows(current)">
+              <span>{{ row.label }}</span>
+              <strong>{{ row.value }}</strong>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </section>
+</app-page-state>

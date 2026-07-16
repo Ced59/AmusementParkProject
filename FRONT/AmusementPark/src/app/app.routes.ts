@@ -45,6 +45,10 @@ export const routes: Routes = [
                 .then((m) => m.AdminParkItemsIndexModule)
           },
           {
+            path: 'standalone-attractions',
+            loadComponent: () => import('@features/admin/standalone-attractions/pages/admin-standalone-attractions/admin-standalone-attractions.component').then((m) => m.AdminStandaloneAttractionsComponent)
+          },
+          {
             path: 'field-mode/item/:itemId',
             loadComponent: () => import('@features/admin/field-mode/pages/admin-field-mode/admin-field-mode.component').then((m) => m.AdminFieldModeComponent)
           },
@@ -165,6 +169,7 @@ export const routes: Routes = [
           { path: 'park-operator/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'operator' } },
           { path: 'park-founder/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'founder' } },
           { path: 'park-manufacturer/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'manufacturer' } },
+          { path: 'attraction/:id/:slug', loadComponent: () => import('./features/public/standalone-attractions/pages/standalone-attraction-detail-page.component').then((m) => m.StandaloneAttractionDetailPageComponent) },
           { path: 'park/:id/:slug/images', loadComponent: () => import('./features/public/parks/pages/park-images-page.component').then((m) => m.ParkImagesPageComponent) },
           {
             path: 'park/:id/:slug/history/page/:page',

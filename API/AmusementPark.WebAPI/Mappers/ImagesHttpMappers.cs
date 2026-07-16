@@ -26,6 +26,7 @@ internal static class ImagesHttpMappers
             ImageCategoryDto.MANUFACTURER => ImageCategory.Manufacturer,
             ImageCategoryDto.FOUNDER => ImageCategory.Founder,
             ImageCategoryDto.VIDEO_THUMBNAIL => ImageCategory.VideoThumbnail,
+            ImageCategoryDto.STANDALONE_ATTRACTION => ImageCategory.StandaloneAttraction,
             _ => ImageCategory.Park,
         };
     }
@@ -41,6 +42,7 @@ internal static class ImagesHttpMappers
             ImageOwnerTypeDto.ATTRACTION_MANUFACTURER => ImageOwnerType.AttractionManufacturer,
             ImageOwnerTypeDto.PARK_FOUNDER => ImageOwnerType.ParkFounder,
             ImageOwnerTypeDto.VIDEO => ImageOwnerType.Video,
+            ImageOwnerTypeDto.STANDALONE_ATTRACTION => ImageOwnerType.StandaloneAttraction,
             _ => ImageOwnerType.None,
         };
     }
@@ -110,6 +112,7 @@ internal static class ImagesHttpMappers
             ImageCategory.Manufacturer => ImageCategoryDto.MANUFACTURER,
             ImageCategory.Founder => ImageCategoryDto.FOUNDER,
             ImageCategory.VideoThumbnail => ImageCategoryDto.VIDEO_THUMBNAIL,
+            ImageCategory.StandaloneAttraction => ImageCategoryDto.STANDALONE_ATTRACTION,
             _ => ImageCategoryDto.PARK,
         };
     }
@@ -125,6 +128,7 @@ internal static class ImagesHttpMappers
             ImageOwnerType.AttractionManufacturer => ImageOwnerTypeDto.ATTRACTION_MANUFACTURER,
             ImageOwnerType.ParkFounder => ImageOwnerTypeDto.PARK_FOUNDER,
             ImageOwnerType.Video => ImageOwnerTypeDto.VIDEO,
+            ImageOwnerType.StandaloneAttraction => ImageOwnerTypeDto.STANDALONE_ATTRACTION,
             _ => ImageOwnerTypeDto.NONE,
         };
     }

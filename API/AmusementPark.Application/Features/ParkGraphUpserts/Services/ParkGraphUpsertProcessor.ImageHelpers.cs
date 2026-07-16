@@ -11,7 +11,8 @@ public sealed partial class ParkGraphUpsertProcessor
             or ImageOwnerType.ParkItem
             or ImageOwnerType.ParkOperator
             or ImageOwnerType.AttractionManufacturer
-            or ImageOwnerType.ParkFounder;
+            or ImageOwnerType.ParkFounder
+            or ImageOwnerType.StandaloneAttraction;
     }
 
     private static ImageCategory ResolveDefaultImageCategory(ImageOwnerType ownerType)
@@ -23,6 +24,7 @@ public sealed partial class ParkGraphUpsertProcessor
             ImageOwnerType.ParkOperator => ImageCategory.Operator,
             ImageOwnerType.AttractionManufacturer => ImageCategory.Manufacturer,
             ImageOwnerType.ParkFounder => ImageCategory.Founder,
+            ImageOwnerType.StandaloneAttraction => ImageCategory.StandaloneAttraction,
             _ => ImageCategory.Park,
         };
     }

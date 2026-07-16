@@ -376,24 +376,29 @@ public sealed class SeoSitemapGenerationOrchestrator
             return 9;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.ParkItemImages, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.StandaloneAttractions, StringComparison.OrdinalIgnoreCase))
         {
             return 10;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.ParkItemVideos, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.ParkItemImages, StringComparison.OrdinalIgnoreCase))
         {
             return 11;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.References, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.ParkItemVideos, StringComparison.OrdinalIgnoreCase))
         {
             return 12;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.TechnicalPages, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.References, StringComparison.OrdinalIgnoreCase))
         {
             return 13;
+        }
+
+        if (string.Equals(key, SitemapSectionKeys.TechnicalPages, StringComparison.OrdinalIgnoreCase))
+        {
+            return 14;
         }
 
         if (string.Equals(key, SitemapSectionKeys.ParkOpeningHours, StringComparison.OrdinalIgnoreCase))

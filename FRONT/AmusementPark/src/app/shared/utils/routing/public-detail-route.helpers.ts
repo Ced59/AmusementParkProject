@@ -22,6 +22,12 @@ export interface PublicParkVideoRouteTarget extends PublicParkRouteTarget {
   videoTitle: string | null | undefined;
 }
 
+export interface PublicStandaloneAttractionRouteTarget {
+  language: string | null | undefined;
+  attractionId: string | null | undefined;
+  attractionName: string | null | undefined;
+}
+
 export interface PublicParkItemVideoRouteTarget extends PublicParkItemRouteTarget {
   videoId: string | null | undefined;
   videoTitle: string | null | undefined;
@@ -60,6 +66,23 @@ export function buildPublicParkRouteCommands(target: PublicParkRouteTarget): str
     'park',
     parkId,
     buildParkSlug(parkName)
+  ];
+}
+
+export function buildPublicStandaloneAttractionRouteCommands(target: PublicStandaloneAttractionRouteTarget): string[] | null {
+  const attractionId: string | null = normalizeRouteValue(target.attractionId);
+  const attractionName: string | null = normalizeRouteValue(target.attractionName);
+
+  if (!attractionId || !attractionName) {
+    return null;
+  }
+
+  return [
+    '/',
+    resolveSupportedLanguage(target.language),
+    'attraction',
+    attractionId,
+    buildEntitySlug(attractionName, 'attraction')
   ];
 }
 

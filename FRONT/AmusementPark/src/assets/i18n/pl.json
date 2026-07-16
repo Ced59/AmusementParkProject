@@ -1873,6 +1873,9 @@
         "Authenticated": "Zalogowany"
       }
     },
+    "standaloneAttractions": {
+      "title": "Samodzielne atrakcje"
+    },
     "tabs": {
       "users": "Użytkownicy",
       "parks": "Parki",
@@ -2233,7 +2236,8 @@
       "OPERATOR": "Zdjecie operatora",
       "MANUFACTURER": "Zdjecie producenta",
       "FOUNDER": "Zdjęcie założyciela",
-      "VIDEO_THUMBNAIL": "Miniatura filmu"
+      "VIDEO_THUMBNAIL": "Miniatura filmu",
+      "STANDALONE_ATTRACTION": "Zdjęcie samodzielnej atrakcji"
     },
     "ownerTypes": {
       "NONE": "Brak",
@@ -2243,7 +2247,8 @@
       "PARK_OPERATOR": "Operator",
       "ATTRACTION_MANUFACTURER": "Producent",
       "PARK_FOUNDER": "Zalozyciel",
-      "VIDEO": "Film"
+      "VIDEO": "Film",
+      "STANDALONE_ATTRACTION": "Samodzielna atrakcja"
     }
   },
   "languageModal": {

@@ -83,6 +83,8 @@ export interface ParkGraphUpsertResult {
   appliedAtUtc?: string | null;
   targetParkId?: string | null;
   targetParkName?: string | null;
+  targetStandaloneAttractionId?: string | null;
+  targetStandaloneAttractionName?: string | null;
   counts: ParkGraphUpsertCounts;
   changes: ParkGraphUpsertChange[];
   warnings: string[];

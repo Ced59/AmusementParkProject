@@ -15,4 +15,5 @@ public enum ImageOwnerType
     AttractionManufacturer = 5,
     ParkFounder = 6,
     Video = 7,
+    StandaloneAttraction = 8,
 }

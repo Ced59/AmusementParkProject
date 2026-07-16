@@ -41,7 +41,8 @@ export class AdminSiteComponent implements OnInit {
     ImageCategory.OPERATOR,
     ImageCategory.MANUFACTURER,
     ImageCategory.FOUNDER,
-    ImageCategory.VIDEO_THUMBNAIL
+    ImageCategory.VIDEO_THUMBNAIL,
+    ImageCategory.STANDALONE_ATTRACTION
   ];
   protected readonly ownerTypes: ImageOwnerType[] = [
     ImageOwnerType.NONE,
@@ -51,7 +52,8 @@ export class AdminSiteComponent implements OnInit {
     ImageOwnerType.PARK_OPERATOR,
     ImageOwnerType.ATTRACTION_MANUFACTURER,
     ImageOwnerType.PARK_FOUNDER,
-    ImageOwnerType.VIDEO
+    ImageOwnerType.VIDEO,
+    ImageOwnerType.STANDALONE_ATTRACTION
   ];
   protected readonly sortFields: AdminImageSortField[] = ['created', 'updated', 'filename', 'size', 'dimensions'];
   protected readonly pageSizes: number[] = [20, 40, 60, 100];

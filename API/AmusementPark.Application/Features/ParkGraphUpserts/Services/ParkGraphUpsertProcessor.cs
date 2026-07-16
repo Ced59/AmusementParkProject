@@ -22,6 +22,7 @@ using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
@@ -42,6 +43,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IParkGraphUpsertHistoryRepository historyRepository;
     private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
+    private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
     private readonly IMeasurementConversionService measurementConversionService;
     private readonly IParkOpeningHoursRepository? parkOpeningHoursRepository;
     private readonly ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer;
@@ -64,7 +66,8 @@ public sealed partial class ParkGraphUpsertProcessor
         IParkOpeningHoursRepository? parkOpeningHoursRepository = null,
         ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null,
         ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null,
-        IHistoryEventRepository? historyEventRepository = null)
+        IHistoryEventRepository? historyEventRepository = null,
+        IStandaloneAttractionRepository? standaloneAttractionRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -82,6 +85,7 @@ public sealed partial class ParkGraphUpsertProcessor
         this.parkOpeningHoursScheduleNormalizer = parkOpeningHoursScheduleNormalizer;
         this.parkOpeningHoursCoverageSegmentBuilder = parkOpeningHoursCoverageSegmentBuilder;
         this.historyEventRepository = historyEventRepository;
+        this.standaloneAttractionRepository = standaloneAttractionRepository;
     }
 
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)
@@ -126,6 +130,39 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> operatorKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> manufacturerKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> imageKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        if (RequiresStandaloneAttractionContext(root))
+        {
+            await this.ProcessReferencesAsync(references, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
+            ParkGraphUpsertMergeSummary standaloneMergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
+            Dictionary<string, string> standaloneAttractionKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            await this.ProcessStandaloneAttractionAsync(
+                root,
+                request.CreateIfMissing,
+                operatorKeys,
+                manufacturerKeys,
+                standaloneMergeSummary.ManufacturerIdRemaps,
+                standaloneAttractionKeys,
+                result,
+                apply,
+                cancellationToken);
+
+            if (result.Errors.Count == 0)
+            {
+                await this.ProcessImagesAsync(root, null, standaloneAttractionKeys, founderKeys, operatorKeys, manufacturerKeys, standaloneMergeSummary.ManufacturerIdRemaps, imageKeys, result, apply, cancellationToken);
+            }
+
+            FinalizeCounts(result);
+            if (apply && result.Errors.Count == 0)
+            {
+                await this.NotifyMergeSeoAsync(standaloneMergeSummary, cancellationToken);
+            }
+
+            await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+            return apply && result.Errors.Count > 0
+                ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas etre applique car l'attraction autonome est invalide."))
+                : ApplicationResult<ParkGraphUpsertResult>.Success(result);
+        }
 
         string? targetParkId = NormalizeString(request.TargetParkId)
             ?? ReadString(identity, "parkId")
@@ -311,6 +348,23 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         return false;
+    }
+
+    private static bool RequiresStandaloneAttractionContext(JsonElement root)
+    {
+        string? documentType = ReadString(root, "documentType") ?? ReadString(root, "entityType");
+        if (string.Equals(documentType, "standaloneAttraction", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(documentType, "standalone-attraction", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(documentType, "standaloneAttractionGraph", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(documentType, "standalone-attraction-graph", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        return HasNonEmptyObject(root, "standaloneAttraction")
+            || HasNonEmptyArray(root, "standaloneAttractions")
+            || HasNonEmptyObject(root, "migration")
+            || HasNonEmptyObject(root, "standaloneAttractionMigration");
     }
 
     private static bool ImageRequiresParkContext(JsonElement patch)

@@ -9,7 +9,8 @@
       "OPERATOR": "Exploitantfoto",
       "MANUFACTURER": "Bouwerfoto",
       "FOUNDER": "Oprichterfoto",
-      "VIDEO_THUMBNAIL": "Videominiatuur"
+      "VIDEO_THUMBNAIL": "Videominiatuur",
+      "STANDALONE_ATTRACTION": "Foto van losstaande attractie"
     },
     "ownerTypes": {
       "NONE": "Geen",
@@ -19,7 +20,8 @@
       "PARK_OPERATOR": "Exploitant",
       "ATTRACTION_MANUFACTURER": "Bouwer",
       "PARK_FOUNDER": "Oprichter",
-      "VIDEO": "Video"
+      "VIDEO": "Video",
+      "STANDALONE_ATTRACTION": "Losstaande attractie"
     }
   }
 }
