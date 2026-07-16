@@ -1,6 +1,8 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Commands;
 using AmusementPark.Application.Features.StandaloneAttractions.Contracts;
 using AmusementPark.Application.Features.StandaloneAttractions.Handlers;
@@ -74,12 +76,27 @@ public sealed class MigrateParkToStandaloneAttractionCommandHandlerTests
             .ReturnsAsync((StandaloneAttraction?)null);
         standaloneAttractionRepository
             .Setup(repository => repository.CreateAsync(It.IsAny<StandaloneAttraction>(), It.IsAny<CancellationToken>()))
-            .Callback<StandaloneAttraction, CancellationToken>((attraction, _) => createdAttraction = attraction)
+            .Callback<StandaloneAttraction, CancellationToken>((attraction, _) =>
+            {
+                attraction.Id = "standalone-1";
+                createdAttraction = attraction;
+            })
             .ReturnsAsync((StandaloneAttraction attraction, CancellationToken _) => attraction);
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(writer => writer.UpsertAsync(SearchProjectionResourceTypes.StandaloneAttractions, "standalone-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        searchProjectionWriter
+            .Setup(writer => writer.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        searchProjectionWriter
+            .Setup(writer => writer.UpsertAsync(SearchProjectionResourceTypes.ParkItems, "item-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
         MigrateParkToStandaloneAttractionCommandHandler handler = new MigrateParkToStandaloneAttractionCommandHandler(
             parkRepository.Object,
             parkItemRepository.Object,
-            standaloneAttractionRepository.Object);
+            standaloneAttractionRepository.Object,
+            searchProjectionWriter.Object);
 
         ApplicationResult<StandaloneAttraction> result = await handler.HandleAsync(
             new MigrateParkToStandaloneAttractionCommand(new StandaloneAttractionMigrationRequest
@@ -113,5 +130,6 @@ public sealed class MigrateParkToStandaloneAttractionCommandHandlerTests
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
         standaloneAttractionRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
     }
 }

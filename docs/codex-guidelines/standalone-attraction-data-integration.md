@@ -135,6 +135,18 @@ Tant que le modèle d’horaires autonome n’est pas disponible :
 - ne pas publier une route d’horaires autonome ;
 - ne pas dupliquer un calendrier de domaine touristique comme s’il appartenait à l’attraction seule.
 
+## Découverte Publique
+
+Une attraction autonome visible et validée est cherchable hors de tout parc parent.
+
+Elle doit apparaître :
+
+- dans la recherche globale ;
+- dans le filtre public `standaloneAttractions` affiché comme `Attractions isolées seules` ;
+- dans le filtre public `attractionsWithStandalone` affiché comme `Attractions + isolées`, qui mélange les parkItems d’attraction et les attractions autonomes.
+
+Ne pas créer un parc parent artificiel pour rendre l’attraction découvrable. Si l’attraction ne sort pas dans la recherche après application, contrôler la projection de recherche plutôt que de réintroduire un lien parc factice.
+
 ## Sortie Attendue
 
 Chaque livraison doit indiquer :

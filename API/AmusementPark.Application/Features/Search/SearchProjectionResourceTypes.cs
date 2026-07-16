@@ -7,6 +7,7 @@ public static class SearchProjectionResourceTypes
 {
     public const string Parks = "parks";
     public const string ParkItems = "parkItems";
+    public const string StandaloneAttractions = "standaloneAttractions";
     public const string Operators = "operators";
     public const string Manufacturers = "manufacturers";
     public const string Founders = "founders";

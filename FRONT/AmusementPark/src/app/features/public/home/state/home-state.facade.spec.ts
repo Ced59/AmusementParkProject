@@ -166,6 +166,13 @@ describe('HomeStateFacade', () => {
     expect(facade.searchResults().map((result: SearchResultItem) => result.originalId)).toEqual(['park-1']);
   });
 
+  it('passes the attractions with standalone category to the search port', () => {
+    facade.search('', 'attractionsWithStandalone', 1, 10);
+
+    expect(searchPort.calls).toEqual([{ term: '', categories: ['attractionsWithStandalone'], page: 1, size: 10 }]);
+    expect(facade.hasPerformedSearch()).toBeTrue();
+  });
+
   it('clears search without calling the search port when no criteria are provided', () => {
     facade.search('   ', '', 3, 10);
 

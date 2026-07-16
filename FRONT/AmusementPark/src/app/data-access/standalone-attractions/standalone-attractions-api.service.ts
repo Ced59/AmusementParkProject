@@ -28,8 +28,9 @@ interface StandaloneAttractionsHttpOptions {
   providedIn: 'root'
 })
 export class StandaloneAttractionsApiService {
-  private readonly baseUrl: string = `${environment.apiBaseUrl}/standalone-attractions`;
-  private readonly upsertBaseUrl: string = `${environment.apiBaseUrl}/admin/park-graph-upserts`;
+  private readonly baseUrl: string = `${environment.apiBaseUrl}standalone-attractions`;
+  private readonly adminBaseUrl: string = `${environment.apiBaseUrl}admin/standalone-attractions`;
+  private readonly upsertBaseUrl: string = `${environment.apiBaseUrl}admin/park-graph-upserts`;
 
   constructor(private readonly http: HttpClient) {
   }
@@ -41,8 +42,19 @@ export class StandaloneAttractionsApiService {
     );
   }
 
+  getAdminPage(page: number, size: number, filters: StandaloneAttractionListFilters = {}): Observable<PagedResult<StandaloneAttraction>> {
+    const params: HttpParams = this.buildListParams(page, size, filters);
+    return this.http.get<PagedCollectionResponse<StandaloneAttraction>>(this.adminBaseUrl, { params }).pipe(
+      map((response: PagedCollectionResponse<StandaloneAttraction>) => unwrapPagedCollection<StandaloneAttraction>(response))
+    );
+  }
+
   getById(id: string, options: StandaloneAttractionsHttpOptions = {}): Observable<StandaloneAttraction> {
     return this.http.get<StandaloneAttraction>(`${this.baseUrl}/${encodeURIComponent(id)}`, options);
+  }
+
+  getAdminById(id: string, options: StandaloneAttractionsHttpOptions = {}): Observable<StandaloneAttraction> {
+    return this.http.get<StandaloneAttraction>(`${this.adminBaseUrl}/${encodeURIComponent(id)}`, options);
   }
 
   create(attraction: StandaloneAttraction): Observable<StandaloneAttraction> {

@@ -301,7 +301,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     this.error.set(null);
 
     try {
-      const result = await firstValueFrom(this.apiService.getPage(page, this.pageSize, this.buildFilters()));
+      const result = await firstValueFrom(this.apiService.getAdminPage(page, this.pageSize, this.buildFilters()));
       this.rows.set(result.items);
       this.pagination.set(result.pagination);
       this.syncSelectedAfterReload(result.items);
@@ -342,7 +342,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
   }
 
   protected newAttraction(): void {
-    const empty: StandaloneAttraction = this.createEmptyAttraction();
+    const empty: StandaloneAttraction = this.createEmptyAttraction(true);
     this.selected.set(null);
     this.draft.set(empty);
     this.syncMigrationTargetFromDraft(null);
@@ -408,7 +408,8 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       this.draft.set(this.cloneAttraction(saved));
       this.syncMigrationTargetFromDraft(saved);
       this.message.set(this.t('saved'));
-      await this.load(this.pagination().currentPage || 1);
+      this.alignFiltersWithSavedAttraction(saved);
+      await this.load(1);
     } catch (error: unknown) {
       this.setErrorFromUnknown(error);
     } finally {
@@ -473,6 +474,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       this.migrationTargetStandaloneAttractionId = currentDraftId;
     }
 
+    this.seedDraftFromLegacyPark(park);
     this.error.set(null);
 
     if (showMessage) {
@@ -504,6 +506,7 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
       this.selected.set(migrated);
       this.draft.set(this.cloneAttraction(migrated));
       this.message.set(this.t('migrated'));
+      this.alignFiltersWithSavedAttraction(migrated);
       await this.load(1);
     } catch (error: unknown) {
       this.setErrorFromUnknown(error);
@@ -718,11 +721,70 @@ export class AdminStandaloneAttractionsComponent implements OnInit {
     this.migrationTargetStandaloneAttractionId = attraction?.id ?? '';
   }
 
-  private createEmptyAttraction(): StandaloneAttraction {
+  private alignFiltersWithSavedAttraction(attraction: StandaloneAttraction): void {
+    const savedCountryCode: string = attraction.countryCode?.trim().toUpperCase() ?? '';
+    const currentCountryCode: string = this.countryCode.trim().toUpperCase();
+
+    if (currentCountryCode && currentCountryCode !== savedCountryCode) {
+      this.countryCode = savedCountryCode;
+    }
+
+    if (this.typeFilter && this.typeFilter !== attraction.type) {
+      this.typeFilter = attraction.type;
+    }
+
+    if (this.isVisibleFilter && (this.isVisibleFilter === 'true') !== attraction.isVisible) {
+      this.isVisibleFilter = '';
+    }
+
+    if (this.reviewStatusFilter && this.reviewStatusFilter !== attraction.adminReviewStatus) {
+      this.reviewStatusFilter = attraction.adminReviewStatus;
+    }
+
+    const normalizedSearch: string = this.search.trim().toLowerCase();
+    if (normalizedSearch && !this.savedAttractionMatchesSearch(attraction, normalizedSearch)) {
+      this.search = attraction.name;
+    }
+
+    this.sortBy = 'updated';
+    this.sortDirection = 'desc';
+  }
+
+  private savedAttractionMatchesSearch(attraction: StandaloneAttraction, normalizedSearch: string): boolean {
+    const searchableValues: string[] = [
+      attraction.name,
+      attraction.city ?? '',
+      attraction.subtype ?? '',
+      attraction.attractionDetails?.model ?? '',
+      ...(attraction.descriptions ?? []).map((description) => description.value)
+    ];
+
+    return searchableValues.some((value: string) => value.toLowerCase().includes(normalizedSearch));
+  }
+
+  private seedDraftFromLegacyPark(park: Park): void {
+    this.draft.update((current: StandaloneAttraction) => ({
+      ...current,
+      name: current.name.trim() || park.name || '',
+      countryCode: current.countryCode?.trim() || park.countryCode?.trim().toUpperCase() || null,
+      city: current.city?.trim() || park.city?.trim() || null,
+      latitude: current.latitude ?? park.latitude ?? null,
+      longitude: current.longitude ?? park.longitude ?? null,
+      legacyParkId: current.legacyParkId?.trim() || park.id || null
+    }));
+  }
+
+  private createEmptyAttraction(seedFromFilters: boolean = false): StandaloneAttraction {
+    const seededCountryCode: string | null = seedFromFilters
+      ? this.countryCode?.trim().toUpperCase() || null
+      : null;
+    const seededName: string = seedFromFilters ? this.search?.trim() || '' : '';
+    const seededType: ParkItemType = seedFromFilters && this.typeFilter ? this.typeFilter : 'Attraction';
+
     return {
-      name: '',
-      countryCode: null,
-      type: 'Attraction',
+      name: seededName,
+      countryCode: seededCountryCode,
+      type: seededType,
       subtype: null,
       operatorId: null,
       websiteUrl: null,

@@ -13,7 +13,11 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { HomeFeaturedParkCardModel } from '@app/models/home/home-featured-park-card.model';
 import { getSearchCategoryTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedCountryName } from '@shared/utils/display/country-display.helpers';
-import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import {
+  buildPublicParkItemRouteCommands,
+  buildPublicParkRouteCommands,
+  buildPublicStandaloneAttractionRouteCommands
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { UiSearchPanelSelectFilterModel } from '@ui/forms/models/ui-search-panel.model';
 import { UiSearchPanelComponent } from '@ui/forms';
 import { UiButtonDirective, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
@@ -185,6 +189,15 @@ export class HomeViewComponent {
       });
     }
 
+    const standaloneAttractionPrefix: string = 'standaloneAttraction_';
+    if (originalId.startsWith(standaloneAttractionPrefix)) {
+      return buildPublicStandaloneAttractionRouteCommands({
+        language: this.currentLang(),
+        attractionId: originalId.substring(standaloneAttractionPrefix.length),
+        attractionName: title
+      });
+    }
+
     return null;
   }
 
@@ -201,7 +214,7 @@ export class HomeViewComponent {
   private resolveSearchResultIconClass(item: SearchResultItem): string {
     const category: string = this.normalizeSearchResultCategory(item.category);
 
-    if (category === 'attraction' || category.includes('item')) {
+    if (category === 'attraction' || category === 'standaloneattraction' || category.includes('item')) {
       return 'pi pi-bolt';
     }
 
@@ -239,7 +252,7 @@ export class HomeViewComponent {
   private resolveSearchResultTone(item: SearchResultItem): UiPrimitiveTone {
     const category: string = this.normalizeSearchResultCategory(item.category);
 
-    if (category === 'attraction' || category.includes('item')) {
+    if (category === 'attraction' || category === 'standaloneattraction' || category.includes('item')) {
       return 'sky';
     }
 

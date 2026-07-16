@@ -9,6 +9,7 @@ public sealed class SearchResultOrderingTests
     [Theory]
     [InlineData("parks", "park", 10)]
     [InlineData("parkItems", "attraction", 20)]
+    [InlineData("standaloneAttractions", "standaloneAttraction", 25)]
     [InlineData("parkItems", "restaurant", 30)]
     [InlineData("parkItems", "service", 70)]
     [InlineData("manufacturers", "manufacturers", 100)]
@@ -27,6 +28,7 @@ public sealed class SearchResultOrderingTests
 
         Assert.Contains(SearchResultOrdering.PriorityFieldName, stage, StringComparison.Ordinal);
         Assert.Contains("parkitems", stage, StringComparison.Ordinal);
+        Assert.Contains("standaloneattractions", stage, StringComparison.Ordinal);
         Assert.Contains("restaurant", stage, StringComparison.Ordinal);
     }
 }

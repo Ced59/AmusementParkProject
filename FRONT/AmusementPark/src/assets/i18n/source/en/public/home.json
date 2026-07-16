@@ -10,6 +10,8 @@
       "attractions": "Attractions",
       "everywhere": "All",
       "parkItems": "Attractions, shows and places",
+      "attractionsWithStandalone": "Attractions + standalone",
+      "standaloneAttractions": "Standalone attractions only",
       "operators": "Operators",
       "manufacturers": "Manufacturers",
       "attraction": "Attraction",

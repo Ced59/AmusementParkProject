@@ -8,5 +8,6 @@ public enum StandaloneAttractionAdminSortField
     CountryCode = 3,
     IsVisible = 4,
     AdminReviewStatus = 5,
+    CreatedAt = 6,
+    UpdatedAt = 7,
 }
-

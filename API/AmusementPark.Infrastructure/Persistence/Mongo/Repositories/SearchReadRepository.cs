@@ -149,7 +149,23 @@ public sealed class SearchReadRepository : ISearchReadRepository
                 case "attraction":
                 case "attractions":
                     normalizedCategories.Add("attraction");
-                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "attractionswithstandalone":
+                case "attractionsincludingstandalone":
+                case "withstandaloneattractions":
+                    normalizedCategories.Add("attraction");
+                    normalizedCategories.Add("standaloneAttraction");
+                    break;
+
+                case "standaloneattraction":
+                case "standaloneattractions":
+                case "isolatedattraction":
+                case "isolatedattractions":
+                case "attractionsisolees":
+                case "attractionisolee":
+                    normalizedCategories.Add("standaloneAttraction");
+                    normalizedResourceTypes.Add("standaloneAttractions");
                     break;
 
                 case "restaurant":
@@ -157,49 +173,41 @@ public sealed class SearchReadRepository : ISearchReadRepository
                 case "resto":
                 case "restos":
                     normalizedCategories.Add("restaurant");
-                    normalizedResourceTypes.Add("parkItems");
                     break;
 
                 case "hotel":
                 case "hotels":
                     normalizedCategories.Add("hotel");
-                    normalizedResourceTypes.Add("parkItems");
                     break;
 
                 case "animal":
                 case "animals":
                     normalizedCategories.Add("animal");
-                    normalizedResourceTypes.Add("parkItems");
                     break;
 
                 case "show":
                 case "shows":
                     normalizedCategories.Add("show");
-                    normalizedResourceTypes.Add("parkItems");
                     break;
 
                 case "shop":
                 case "shops":
                     normalizedCategories.Add("shop");
-                    normalizedResourceTypes.Add("parkItems");
                     break;
 
                 case "service":
                 case "services":
                     normalizedCategories.Add("service");
-                    normalizedResourceTypes.Add("parkItems");
                     break;
 
                 case "transport":
                 case "transports":
                     normalizedCategories.Add("transport");
-                    normalizedResourceTypes.Add("parkItems");
                     break;
 
                 case "other":
                 case "others":
                     normalizedCategories.Add("other");
-                    normalizedResourceTypes.Add("parkItems");
                     break;
 
                 case "operator":
