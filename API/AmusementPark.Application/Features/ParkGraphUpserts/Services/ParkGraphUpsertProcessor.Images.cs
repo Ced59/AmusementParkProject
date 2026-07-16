@@ -487,107 +487,25 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 return ImageOwnerType.AttractionManufacturer;
             }
+
+            if (ownerKey.StartsWith("standalone-attraction:", StringComparison.OrdinalIgnoreCase)
+                || ownerKey.StartsWith("standaloneAttraction:", StringComparison.OrdinalIgnoreCase))
+            {
+                return ImageOwnerType.StandaloneAttraction;
+            }
         }
 
         return ImageOwnerType.Park;
     }
 
-    private static bool ResolveGraphImageOwner(
-        JsonElement patch,
-        Park? park,
-        Dictionary<string, string> itemKeys,
-        Dictionary<string, string> founderKeys,
-        Dictionary<string, string> operatorKeys,
-        Dictionary<string, string> manufacturerKeys,
-        ImageOwnerType requestedOwnerType,
-        string? ownerId,
-        out ImageOwnerType ownerType,
-        out string? resolvedOwnerId)
-    {
-        ownerType = requestedOwnerType;
-        resolvedOwnerId = NormalizeString(ownerId);
-        string? ownerKey = ReadString(patch, "ownerKey");
-
-        if (string.Equals(ownerKey, "park", StringComparison.OrdinalIgnoreCase))
-        {
-            if (park is null)
-            {
-                return false;
-            }
-
-            ownerType = ImageOwnerType.Park;
-            resolvedOwnerId = park.Id;
-            return true;
-        }
-
-        if (!string.IsNullOrWhiteSpace(ownerKey))
-        {
-            if (TryResolvePrefixedOwnerKey(ownerKey, "operator:", operatorKeys, out string? operatorId))
-            {
-                ownerType = ImageOwnerType.ParkOperator;
-                resolvedOwnerId = operatorId;
-                return true;
-            }
-
-            if (TryResolvePrefixedOwnerKey(ownerKey, "founder:", founderKeys, out string? founderId))
-            {
-                ownerType = ImageOwnerType.ParkFounder;
-                resolvedOwnerId = founderId;
-                return true;
-            }
-
-            if (TryResolvePrefixedOwnerKey(ownerKey, "manufacturer:", manufacturerKeys, out string? manufacturerId))
-            {
-                ownerType = ImageOwnerType.AttractionManufacturer;
-                resolvedOwnerId = manufacturerId;
-                return true;
-            }
-        }
-
-        if (requestedOwnerType == ImageOwnerType.ParkItem)
-        {
-            return TryResolveOwnerKey(ownerKey, itemKeys, BuildItemNameKey(ownerKey), out resolvedOwnerId);
-        }
-
-        if (requestedOwnerType == ImageOwnerType.ParkOperator)
-        {
-            return TryResolveOwnerKey(ownerKey, operatorKeys, null, out resolvedOwnerId);
-        }
-
-        if (requestedOwnerType == ImageOwnerType.ParkFounder)
-        {
-            return TryResolveOwnerKey(ownerKey, founderKeys, null, out resolvedOwnerId);
-        }
-
-        if (requestedOwnerType == ImageOwnerType.AttractionManufacturer)
-        {
-            return TryResolveOwnerKey(ownerKey, manufacturerKeys, null, out resolvedOwnerId);
-        }
-
-        if (!string.IsNullOrWhiteSpace(ownerKey) && TryResolveOwnerKey(ownerKey, itemKeys, BuildItemNameKey(ownerKey), out string? itemId))
-        {
-            ownerType = ImageOwnerType.ParkItem;
-            resolvedOwnerId = itemId;
-            return true;
-        }
-
-        if (string.IsNullOrWhiteSpace(resolvedOwnerId))
-        {
-            if (park is null)
-            {
-                return false;
-            }
-
-            ownerType = ImageOwnerType.Park;
-            resolvedOwnerId = park.Id;
-        }
-
-        return !string.IsNullOrWhiteSpace(resolvedOwnerId);
-    }
-
     private static string? BuildItemNameKey(string? ownerKey)
     {
         return string.IsNullOrWhiteSpace(ownerKey) ? null : $"item:{NormalizeKey(ownerKey)}";
+    }
+
+    private static string? BuildStandaloneAttractionNameKey(string? ownerKey)
+    {
+        return string.IsNullOrWhiteSpace(ownerKey) ? null : $"standalone-attraction:{NormalizeKey(ownerKey)}";
     }
 
     private static bool TryResolveOwnerKey(string? ownerKey, Dictionary<string, string> ownerKeys, string? fallbackKey, out string? ownerId)

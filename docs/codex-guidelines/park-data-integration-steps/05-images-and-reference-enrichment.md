@@ -40,7 +40,8 @@ Les propriétaires importables par JSON upsert sont :
 - `ParkItem` ;
 - `ParkOperator` ;
 - `AttractionManufacturer` ;
-- `ParkFounder`.
+- `ParkFounder` ;
+- `StandaloneAttraction` pour une attraction fixe isolée traitée hors parc.
 
 ## Images à privilégier éditorialement
 

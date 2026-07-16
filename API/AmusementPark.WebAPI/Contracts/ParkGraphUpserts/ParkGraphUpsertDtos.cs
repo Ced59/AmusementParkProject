@@ -121,6 +121,10 @@ public sealed class ParkGraphUpsertResultDto
 
     public string? TargetParkName { get; set; }
 
+    public string? TargetStandaloneAttractionId { get; set; }
+
+    public string? TargetStandaloneAttractionName { get; set; }
+
     public ParkGraphUpsertCountsDto Counts { get; set; } = new ParkGraphUpsertCountsDto();
 
     public List<ParkGraphUpsertChangeDto> Changes { get; set; } = new List<ParkGraphUpsertChangeDto>();

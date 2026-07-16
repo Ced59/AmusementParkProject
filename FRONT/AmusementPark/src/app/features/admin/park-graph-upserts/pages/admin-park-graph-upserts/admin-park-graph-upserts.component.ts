@@ -377,6 +377,18 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     return Boolean(this.previewResult?.canApply) && !this.isApplying && !this.isPreviewing;
   }
 
+  protected get previewTargetName(): string | null {
+    return this.previewResult?.targetStandaloneAttractionName
+      ?? this.previewResult?.targetParkName
+      ?? null;
+  }
+
+  protected get previewTargetId(): string | null {
+    return this.previewResult?.targetStandaloneAttractionId
+      ?? this.previewResult?.targetParkId
+      ?? null;
+  }
+
   protected get appliedResultMessageKey(): string | null {
     const result: ParkGraphUpsertResult | null = this.lastAppliedResult;
     if (!result) {
@@ -765,6 +777,10 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
       return true;
     }
 
+    if (this.isStandaloneAttractionGraph(document)) {
+      return false;
+    }
+
     if (this.hasNonEmptyObject(document, 'identity')
       || this.hasNonEmptyObject(document, 'park')
       || this.hasNonEmptyObject(document, 'openingHours')
@@ -788,11 +804,21 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     }
 
     const ownerKey: string | null = this.readNestedString(image, 'ownerKey');
-    if (ownerKey?.trim().toLocaleLowerCase() === 'park') {
+    const normalizedOwnerKey: string = ownerKey?.trim().toLocaleLowerCase() ?? '';
+
+    if (this.isStandaloneAttractionOwnerKey(normalizedOwnerKey)) {
+      return false;
+    }
+
+    if (normalizedOwnerKey === 'park') {
       return true;
     }
 
     const ownerType: string = this.resolveImageOwnerType(image, ownerKey);
+    if (ownerType === 'StandaloneAttraction') {
+      return false;
+    }
+
     if (ownerType === 'Park' || ownerType === 'ParkItem') {
       return true;
     }
@@ -811,6 +837,10 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     }
 
     const normalizedOwnerKey: string = ownerKey?.trim().toLocaleLowerCase() ?? '';
+    if (this.isStandaloneAttractionOwnerKey(normalizedOwnerKey)) {
+      return 'StandaloneAttraction';
+    }
+
     if (normalizedOwnerKey.startsWith('operator:')) {
       return 'ParkOperator';
     }
@@ -844,6 +874,10 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
       return 'ParkItem';
     }
 
+    if (normalizedValue === 'standaloneattraction' || normalizedValue === 'standalone') {
+      return 'StandaloneAttraction';
+    }
+
     if (normalizedValue === 'park') {
       return 'Park';
     }
@@ -854,6 +888,28 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   private hasNonEmptyObject(document: JsonObject, propertyName: string): boolean {
     const value: unknown = document[propertyName];
     return this.isJsonObject(value) && Object.keys(value).length > 0;
+  }
+
+  private isStandaloneAttractionGraph(document: JsonObject): boolean {
+    const documentType: string | null = this.readNestedString(document, 'documentType') ?? this.readNestedString(document, 'entityType');
+    const normalizedDocumentType: string = documentType?.trim().toLocaleLowerCase().replace(/[^a-z0-9]/g, '') ?? '';
+
+    if (normalizedDocumentType === 'standaloneattraction' || normalizedDocumentType === 'standaloneattractiongraph') {
+      return true;
+    }
+
+    return this.hasNonEmptyObject(document, 'standaloneAttraction')
+      || this.hasNonEmptyObject(document, 'standalone-attraction')
+      || this.hasNonEmptyObject(document, 'standaloneAttractionMigration')
+      || this.hasNonEmptyObject(document, 'standalone-attraction-migration');
+  }
+
+  private isStandaloneAttractionOwnerKey(normalizedOwnerKey: string): boolean {
+    return normalizedOwnerKey === 'standaloneattraction'
+      || normalizedOwnerKey === 'standalone-attraction'
+      || normalizedOwnerKey === 'attraction'
+      || normalizedOwnerKey.startsWith('standaloneattraction:')
+      || normalizedOwnerKey.startsWith('standalone-attraction:');
   }
 
   private hasNonEmptyArray(document: JsonObject, propertyName: string): boolean {

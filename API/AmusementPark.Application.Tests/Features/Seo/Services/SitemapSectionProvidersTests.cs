@@ -13,6 +13,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Services;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Core.Domain.History;
@@ -651,6 +652,33 @@ public sealed class SitemapSectionProvidersTests
         Assert.Single(urls);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-99/late-park/item/item-99/late-attraction");
         parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<bool?>(), It.IsAny<ClosedEntityFilter>(), It.IsAny<CancellationToken>(), It.IsAny<ParkAdminSortField>(), It.IsAny<bool>(), It.IsAny<ParkAudienceClassificationFilter?>()), Times.Never);
+    }
+
+    [Fact]
+    public async Task StandaloneAttractionsProvider_WhenRepositoryReturnsMixedCandidates_ShouldReturnOnlyPublicStandaloneAttractions()
+    {
+        DateTime updatedAtUtc = new DateTime(2026, 7, 16, 0, 0, 0, DateTimeKind.Utc);
+        StandaloneAttraction[] attractions = new[]
+        {
+            new StandaloneAttraction { Id = "standalone-1", Name = "Bardonecchia Alpine Coaster", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = updatedAtUtc },
+            new StandaloneAttraction { Id = "hidden", Name = "Hidden Alpine Coaster", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
+            new StandaloneAttraction { Id = "closed", Name = "Closed Alpine Coaster", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, AttractionDetails = new AttractionDetails { Status = ParkItemStatusNormalizer.ClosedDefinitively } },
+        };
+        Mock<IStandaloneAttractionRepository> repository = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        repository
+            .Setup(item => item.GetPublicSitemapCandidatesAsync(50000, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(attractions);
+        StandaloneAttractionsSitemapSectionProvider provider = new StandaloneAttractionsSitemapSectionProvider(repository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/attraction/standalone-1/bardonecchia-alpine-coaster" && url.LastModifiedUtc == updatedAtUtc && url.Priority == 0.72m);
+        Assert.Contains(urls, static url => url.RelativePath == "/en/attraction/standalone-1/bardonecchia-alpine-coaster");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("closed", StringComparison.OrdinalIgnoreCase));
+        repository.VerifyAll();
     }
 
     [Fact]

@@ -18,6 +18,10 @@ public sealed class ParkGraphUpsertResult
 
     public string? TargetParkName { get; set; }
 
+    public string? TargetStandaloneAttractionId { get; set; }
+
+    public string? TargetStandaloneAttractionName { get; set; }
+
     public ParkGraphUpsertCounts Counts { get; set; } = new ParkGraphUpsertCounts();
 
     public List<ParkGraphUpsertChange> Changes { get; set; } = new List<ParkGraphUpsertChange>();

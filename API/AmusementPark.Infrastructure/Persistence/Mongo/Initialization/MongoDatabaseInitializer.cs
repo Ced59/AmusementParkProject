@@ -12,6 +12,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.TechnicalPages;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Videos;
@@ -110,6 +111,9 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.ParkItemsCollectionName, cancellationToken);
         await this.InitializeParkItemsIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.StandaloneAttractionsCollectionName, cancellationToken);
+        await this.InitializeStandaloneAttractionsIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(AdminFieldModeItemProgressCollectionName, cancellationToken);
         await this.InitializeAdminFieldModeItemProgressAsync(cancellationToken);
 
@@ -185,5 +189,32 @@ public sealed partial class MongoDatabaseInitializer
         {
             await collection.Indexes.DropOneAsync(indexName, cancellationToken);
         }
+    }
+
+    private async Task InitializeStandaloneAttractionsIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<StandaloneAttractionDocument> collection = this.database.GetCollection<StandaloneAttractionDocument>(this.settings.StandaloneAttractionsCollectionName);
+        CreateIndexModel<StandaloneAttractionDocument>[] indexes =
+        {
+            new CreateIndexModel<StandaloneAttractionDocument>(
+                Builders<StandaloneAttractionDocument>.IndexKeys.Ascending(document => document.Name),
+                new CreateIndexOptions { Name = "standaloneAttractions_name" }),
+            new CreateIndexModel<StandaloneAttractionDocument>(
+                Builders<StandaloneAttractionDocument>.IndexKeys
+                    .Ascending(document => document.IsVisible)
+                    .Ascending(document => document.AdminReviewPriority)
+                    .Ascending(document => document.Name),
+                new CreateIndexOptions { Name = "standaloneAttractions_adminList" }),
+            new CreateIndexModel<StandaloneAttractionDocument>(
+                Builders<StandaloneAttractionDocument>.IndexKeys
+                    .Ascending(document => document.LegacyParkId)
+                    .Ascending(document => document.LegacyParkItemId),
+                new CreateIndexOptions { Name = "standaloneAttractions_legacy" }),
+            new CreateIndexModel<StandaloneAttractionDocument>(
+                Builders<StandaloneAttractionDocument>.IndexKeys.Geo2DSphere(document => document.Location),
+                new CreateIndexOptions { Name = "standaloneAttractions_location" }),
+        };
+
+        await collection.Indexes.CreateManyAsync(indexes, cancellationToken);
     }
 }

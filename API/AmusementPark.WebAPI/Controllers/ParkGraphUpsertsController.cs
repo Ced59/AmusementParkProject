@@ -34,6 +34,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     private readonly ICommandHandler<ApplyBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>> bulkApplyHandler;
     private readonly IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler;
     private readonly IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler;
+    private readonly IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> standaloneAttractionExportHandler;
     private readonly IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> bulkExportHandler;
     private readonly IBulkParkGraphExportJobService bulkExportJobService;
 
@@ -44,6 +45,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         ICommandHandler<ApplyBulkParkGraphUpsertCommand, ApplicationResult<BulkParkGraphUpsertResult>> bulkApplyHandler,
         IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler,
         IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler,
+        IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> standaloneAttractionExportHandler,
         IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> bulkExportHandler,
         IBulkParkGraphExportJobService bulkExportJobService)
     {
@@ -53,6 +55,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         this.bulkApplyHandler = bulkApplyHandler;
         this.historyHandler = historyHandler;
         this.exportHandler = exportHandler;
+        this.standaloneAttractionExportHandler = standaloneAttractionExportHandler;
         this.bulkExportHandler = bulkExportHandler;
         this.bulkExportJobService = bulkExportJobService;
     }
@@ -159,6 +162,23 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         this.Response.Headers.Expires = "0";
         this.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
         return this.PhysicalFile(download.FilePath, download.ContentType, download.FileName);
+    }
+
+    [HttpGet("standalone-attractions/{standaloneAttractionId}/export")]
+    [AdminAudit("park-graph-upsert.standalone-attraction.export", "StandaloneAttraction")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportStandaloneAttractionJsonAsync([FromRoute] string standaloneAttractionId, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkGraphJsonExportResult> result = await this.standaloneAttractionExportHandler.HandleAsync(
+            new ExportStandaloneAttractionGraphJsonQuery(standaloneAttractionId),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.File(result.Value.Content, result.Value.ContentType, result.Value.FileName);
     }
 
     [HttpPost("preview")]

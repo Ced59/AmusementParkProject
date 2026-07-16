@@ -1873,6 +1873,9 @@
         "Authenticated": "Autenticado"
       }
     },
+    "standaloneAttractions": {
+      "title": "Atrações isoladas"
+    },
     "tabs": {
       "users": "Utilizadores",
       "parks": "Parques",
@@ -2233,7 +2236,8 @@
       "OPERATOR": "Foto do operador",
       "MANUFACTURER": "Foto do fabricante",
       "FOUNDER": "Foto do fundador",
-      "VIDEO_THUMBNAIL": "Miniatura de vídeo"
+      "VIDEO_THUMBNAIL": "Miniatura de vídeo",
+      "STANDALONE_ATTRACTION": "Foto da atração isolada"
     },
     "ownerTypes": {
       "NONE": "Nenhum",
@@ -2243,7 +2247,8 @@
       "PARK_OPERATOR": "Operador",
       "ATTRACTION_MANUFACTURER": "Fabricante",
       "PARK_FOUNDER": "Fundador",
-      "VIDEO": "Vídeo"
+      "VIDEO": "Vídeo",
+      "STANDALONE_ATTRACTION": "Atração isolada"
     }
   },
   "languageModal": {

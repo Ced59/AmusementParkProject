@@ -9,6 +9,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Search;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
@@ -170,6 +171,65 @@ internal static partial class EntityMongoMappers
             IsVisible = entity.IsVisible,
             AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
             AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
+            CreatedAt = entity.CreatedAtUtc,
+            UpdatedAt = entity.UpdatedAtUtc,
+        };
+
+        CommonMongoMappers.ApplyPosition(document, entity.Position);
+        return document;
+    }
+
+    public static StandaloneAttraction ToDomain(this StandaloneAttractionDocument document)
+    {
+        StandaloneAttraction entity = new StandaloneAttraction
+        {
+            Id = document.Id,
+            Name = document.Name,
+            CountryCode = document.CountryCode,
+            Type = document.Type,
+            Subtype = document.Subtype,
+            OperatorId = document.OperatorId,
+            WebsiteUrl = document.WebsiteUrl,
+            Street = document.Street,
+            City = document.City,
+            PostalCode = document.PostalCode,
+            Descriptions = CommonMongoMappers.ToDomain(document.Descriptions),
+            AttractionDetails = document.AttractionDetails?.ToDomain(),
+            AttractionLocations = document.AttractionLocations?.ToDomain(),
+            IsVisible = document.IsVisible,
+            AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
+            LegacyParkId = document.LegacyParkId,
+            LegacyParkItemId = document.LegacyParkItemId,
+        };
+
+        CommonMongoMappers.ApplyPosition(entity, document.Latitude, document.Longitude);
+        entity.CreatedAtUtc = document.CreatedAt;
+        entity.UpdatedAtUtc = document.UpdatedAt;
+        return entity;
+    }
+
+    public static StandaloneAttractionDocument ToDocument(this StandaloneAttraction entity)
+    {
+        StandaloneAttractionDocument document = new StandaloneAttractionDocument
+        {
+            Id = entity.Id,
+            Name = entity.Name,
+            CountryCode = entity.CountryCode,
+            Type = entity.Type,
+            Subtype = entity.Subtype,
+            OperatorId = entity.OperatorId,
+            WebsiteUrl = entity.WebsiteUrl,
+            Street = entity.Street,
+            City = entity.City,
+            PostalCode = entity.PostalCode,
+            Descriptions = CommonMongoMappers.ToDocuments(entity.Descriptions),
+            AttractionDetails = entity.AttractionDetails?.ToDocument(),
+            AttractionLocations = entity.AttractionLocations?.ToDocument(),
+            IsVisible = entity.IsVisible,
+            AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
+            AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
+            LegacyParkId = entity.LegacyParkId,
+            LegacyParkItemId = entity.LegacyParkItemId,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

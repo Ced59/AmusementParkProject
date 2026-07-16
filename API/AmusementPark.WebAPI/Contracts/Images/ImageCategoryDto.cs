@@ -16,4 +16,5 @@ public enum ImageCategoryDto
     MANUFACTURER = 5,
     FOUNDER = 6,
     VIDEO_THUMBNAIL = 7,
+    STANDALONE_ATTRACTION = 8,
 }

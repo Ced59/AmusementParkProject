@@ -165,9 +165,9 @@
           <h2>{{ 'admin.parkGraphUpserts.result.title' | translate }}</h2>
           @if (previewResult) {
             <p class="admin-muted">
-              {{ previewResult.targetParkName || ('admin.parkGraphUpserts.result.noTarget' | translate) }}
-              @if (previewResult.targetParkId) {
-                <code>{{ previewResult.targetParkId }}</code>
+              {{ previewTargetName || ('admin.parkGraphUpserts.result.noTarget' | translate) }}
+              @if (previewTargetId) {
+                <code>{{ previewTargetId }}</code>
               }
             </p>
           } @else {

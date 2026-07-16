@@ -4,6 +4,7 @@ import { Meta, Title } from '@angular/platform-browser';
 
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { TechnicalContentBlock, TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
@@ -125,6 +126,12 @@ interface ParkItemDetailSeoCopy {
   parkContextPrefix: string;
   title: (itemName: string, parkLabel: string) => string;
   description: (itemName: string, parkLabel: string, specSummary: string) => string;
+}
+
+interface StandaloneAttractionSeoCopy {
+  fallbackName: string;
+  title: (attractionName: string, locationLabel: string) => string;
+  description: (attractionName: string, locationLabel: string) => string;
 }
 
 interface VideoDetailSeoCopy {
@@ -1079,6 +1086,57 @@ const PARK_ITEM_DETAIL_SEO_COPY: Record<string, ParkItemDetailSeoCopy> = {
   }
 };
 
+const STANDALONE_ATTRACTION_SEO_COPY: Record<string, StandaloneAttractionSeoCopy> = {
+  en: {
+    fallbackName: 'Standalone attraction',
+    title: (attractionName: string, locationLabel: string): string => `Attraction guide: ${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}`,
+    description: (attractionName: string, locationLabel: string): string =>
+      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: standalone fixed attraction profile with public details, location and technical information.`
+  },
+  fr: {
+    fallbackName: 'Attraction isolée',
+    title: (attractionName: string, locationLabel: string): string => `Guide de ${attractionName}${locationLabel ? ` à ${locationLabel}` : ''}`,
+    description: (attractionName: string, locationLabel: string): string =>
+      `${attractionName}${locationLabel ? ` à ${locationLabel}` : ''} : fiche d’attraction fixe isolée avec infos publiques, localisation et données techniques.`
+  },
+  es: {
+    fallbackName: 'Atracción aislada',
+    title: (attractionName: string, locationLabel: string): string => `Ficha de ${attractionName}${locationLabel ? ` en ${locationLabel}` : ''}`,
+    description: (attractionName: string, locationLabel: string): string =>
+      `${attractionName}${locationLabel ? ` en ${locationLabel}` : ''}: ficha de atracción fija aislada con datos públicos, ubicación e información técnica.`
+  },
+  de: {
+    fallbackName: 'Eigenständige Attraktion',
+    title: (attractionName: string, locationLabel: string): string => `Attraktionsprofil ${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}`,
+    description: (attractionName: string, locationLabel: string): string =>
+      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: eigenständige feste Attraktion mit öffentlichen Details, Standort und technischen Daten.`
+  },
+  it: {
+    fallbackName: 'Attrazione isolata',
+    title: (attractionName: string, locationLabel: string): string => `Scheda di ${attractionName}${locationLabel ? ` a ${locationLabel}` : ''}`,
+    description: (attractionName: string, locationLabel: string): string =>
+      `${attractionName}${locationLabel ? ` a ${locationLabel}` : ''}: attrazione fissa isolata con dati pubblici, posizione e informazioni tecniche.`
+  },
+  pl: {
+    fallbackName: 'Samodzielna atrakcja',
+    title: (attractionName: string, locationLabel: string): string => `Przewodnik po ${attractionName}${locationLabel ? ` w ${locationLabel}` : ''}`,
+    description: (attractionName: string, locationLabel: string): string =>
+      `${attractionName}${locationLabel ? ` w ${locationLabel}` : ''}: samodzielna stała atrakcja z publicznymi danymi, lokalizacją i informacjami technicznymi.`
+  },
+  nl: {
+    fallbackName: 'Losstaande attractie',
+    title: (attractionName: string, locationLabel: string): string => `Gids voor ${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}`,
+    description: (attractionName: string, locationLabel: string): string =>
+      `${attractionName}${locationLabel ? ` in ${locationLabel}` : ''}: losstaande vaste attractie met openbare details, locatie en technische gegevens.`
+  },
+  pt: {
+    fallbackName: 'Atração isolada',
+    title: (attractionName: string, locationLabel: string): string => `Perfil de ${attractionName}${locationLabel ? ` em ${locationLabel}` : ''}`,
+    description: (attractionName: string, locationLabel: string): string =>
+      `${attractionName}${locationLabel ? ` em ${locationLabel}` : ''}: atração fixa isolada com dados públicos, localização e informação técnica.`
+  }
+};
+
 const VIDEO_DETAIL_SEO_COPY: Record<string, VideoDetailSeoCopy> = {
   en: {
     parkFallback: 'Park',
@@ -1872,6 +1930,36 @@ export class SeoService {
       imageUrl: this.resolveImageIdAbsoluteUrl(detail.heroPhoto?.imageId) ?? undefined,
       imageAlt: detail.name,
       jsonLd: this.buildParkItemDetailJsonLd(detail, seoUrl)
+    });
+  }
+
+  applyStandaloneAttractionSeo(
+    attraction: StandaloneAttraction,
+    language: string,
+    url: string,
+    canonicalPath: string | null = null,
+    socialImageId: string | null = null
+  ): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: StandaloneAttractionSeoCopy = STANDALONE_ATTRACTION_SEO_COPY[normalizedLanguage] ?? STANDALONE_ATTRACTION_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
+    const attractionName: string = this.normalizeOptionalText(attraction.name) ?? copy.fallbackName;
+    const locationLabel: string = [attraction.city, attraction.countryCode]
+      .filter((value: string | null | undefined): value is string => !!this.normalizeOptionalText(value))
+      .join(', ');
+    const fallbackDescription: string = copy.description(attractionName, locationLabel);
+    const localizedDescription: string = resolveLocalizedText(attraction.descriptions, normalizedLanguage, '');
+    const description: string = normalizeSeoText(stripHtml(localizedDescription), fallbackDescription);
+
+    this.apply({
+      title: `${copy.title(attractionName, locationLabel)} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: 'index,follow',
+      alternates: this.hreflangService.buildAlternates(seoUrl),
+      imageUrl: this.resolveImageIdAbsoluteUrl(socialImageId) ?? undefined,
+      imageAlt: attractionName,
+      jsonLd: this.buildStandaloneAttractionJsonLd(attraction, seoUrl, attractionName, description)
     });
   }
 
@@ -2886,6 +2974,55 @@ export class SeoService {
     }
 
     return [this.buildBreadcrumbJsonLd(breadcrumbItems), itemJsonLd];
+  }
+
+  private buildStandaloneAttractionJsonLd(attraction: StandaloneAttraction, url: string, attractionName: string, description: string): unknown[] {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
+    const itemJsonLd: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      name: attractionName,
+      url: canonicalUrl
+    };
+
+    const normalizedDescription: string | null = this.normalizeOptionalText(description);
+    if (normalizedDescription) {
+      itemJsonLd['description'] = truncateSeoText(normalizedDescription, 300);
+    }
+
+    if (attraction.latitude !== null && attraction.latitude !== undefined && attraction.longitude !== null && attraction.longitude !== undefined) {
+      itemJsonLd['geo'] = {
+        '@type': 'GeoCoordinates',
+        latitude: attraction.latitude,
+        longitude: attraction.longitude
+      };
+    }
+
+    const hasAddress: boolean = !!(
+      this.normalizeOptionalText(attraction.street)
+      || this.normalizeOptionalText(attraction.city)
+      || this.normalizeOptionalText(attraction.postalCode)
+      || this.normalizeOptionalText(attraction.countryCode)
+    );
+
+    if (hasAddress) {
+      itemJsonLd['address'] = {
+        '@type': 'PostalAddress',
+        streetAddress: this.normalizeOptionalText(attraction.street) ?? undefined,
+        addressLocality: this.normalizeOptionalText(attraction.city) ?? undefined,
+        postalCode: this.normalizeOptionalText(attraction.postalCode) ?? undefined,
+        addressCountry: this.normalizeOptionalText(attraction.countryCode) ?? undefined
+      };
+    }
+
+    return [
+      this.buildBreadcrumbJsonLd([
+        { name: this.resolveHomeBreadcrumbLabel(language), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+        { name: attractionName, url: canonicalUrl }
+      ]),
+      itemJsonLd
+    ];
   }
 
   private buildTechnicalPageBreadcrumbJsonLd(pageLabel: string, url: string): unknown {

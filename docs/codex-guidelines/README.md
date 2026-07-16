@@ -9,10 +9,12 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 ## Entrée recommandée
 
 - `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’export initial, l’export actualisé avant chaque nouvelle étape, les limites de lots et les fichiers de règles à lire selon l’étape.
+- `standalone-attraction-data-integration.md` : fichier à utiliser quand l’entité pertinente est une attraction fixe isolée et non un parc.
 
 ## Documents disponibles
 
 - `park-data-integration-orchestrator.md` : orchestrateur principal du parcours complet.
+- `standalone-attraction-data-integration.md` : flux d’intégration et de migration des attractions fixes isolées.
 - `park-graph-upsert-enums.md` : liste des enums et valeurs autorisées dans les JSON Park Graph Upsert.
 - `park-data-integration-steps/00-intake-and-export.md` : cadrage, pertinence, export et découpage anti-saturation.
 - `park-data-integration-steps/01-park-core-upsert.md` : identité du parc, dates principales, coordonnées, statut, exploitant et fondateur.
@@ -35,6 +37,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 - Toujours vérifier la pertinence de l’entité pour `amusement-parks.fun` avant d’enrichir ou de formater un JSON.
 - Ne jamais enrichir artificiellement une entité douteuse.
 - Ne pas se limiter aux coasters : référencer les attractions, zones, restaurants, boutiques, hôtels, parkings, services, points d’accès, spectacles fixes, animaux/enclos et autres contenus visiteurs nommables quand ils sont fiables.
+- Une attraction fixe isolée pertinente ne doit pas être transformée en faux parc. Utiliser le flux `StandaloneAttraction` et migrer l’ancien parc mono-attraction si une fiche legacy existe.
 - Les descriptions doivent être naturelles, spécifiques au lieu, agréables à lire, orientées visiteur et non mécaniques.
 - Ne jamais écrire de formulations du type “ce que ça apporte à la journée”, “au groupe”, “comment l’intégrer dans la journée” ou “quand cela devient utile”.
 - Ne pas mettre les conditions d’accès, restrictions, tailles, tarifs ou informations purement techniques dans les descriptions : ces données doivent aller dans les champs JSON prévus.

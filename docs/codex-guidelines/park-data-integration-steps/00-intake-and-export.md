@@ -31,6 +31,8 @@ Si la pertinence est incertaine :
 
 Les attractions réellement itinérantes hors parc fixe ne sont pas des parcs à créer. Elles sont pertinentes seulement si elles documentent une relocalisation, une installation durable dans un parc, un constructeur ou un événement historique.
 
+Une attraction fixe isolée pertinente doit être orientée vers le flux `StandaloneAttraction`, pas vers une fiche parc artificielle. Ne pas créer ou enrichir un parc contenant un seul parkItem si le lieu est uniquement une attraction durable isolée. Si une ancienne fiche parc mono-attraction existe déjà, conserver ses IDs dans la décision d’étape 0 et prévoir une migration vers `standaloneAttraction`, via l’interface admin ou via un JSON `standaloneAttractionGraph`.
+
 ## Niveau de traitement
 
 Classer le parc en niveau de profondeur :
@@ -85,4 +87,6 @@ Produire une réponse courte avec :
 
 Ne pas produire de JSON upsert massif à l’étape 0.
 
-À la fin de l’étape 0, la prochaine étape officielle est toujours l’étape 1. Si le parc est pertinent, dire si l’étape 1 est `utile`, `probablement inutile` ou `à décider`, avec la raison. Si elle est jugée `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, sans exécuter ni sauter d’étape sans validation utilisateur. Ne pas inventer une étape préparatoire avant l’étape 1.
+À la fin de l’étape 0, la prochaine étape officielle est toujours l’étape 1 pour un vrai parc. Si le parc est pertinent, dire si l’étape 1 est `utile`, `probablement inutile` ou `à décider`, avec la raison. Si elle est jugée `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, sans exécuter ni sauter d’étape sans validation utilisateur. Ne pas inventer une étape préparatoire avant l’étape 1.
+
+Exception : si l’étape 0 conclut que le bon modèle est `StandaloneAttraction`, suspendre le parcours parc 1 à 8 et basculer vers `standalone-attraction-data-integration.md`.

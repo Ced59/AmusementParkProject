@@ -15,6 +15,7 @@ public static class SitemapSectionKeys
     public const string ParkItemLists = "park-item-lists";
     public const string ParkZones = "park-zones";
     public const string ParkItems = "park-items";
+    public const string StandaloneAttractions = "standalone-attractions";
     public const string ParkItemImages = "park-item-images";
     public const string ParkItemVideos = "park-item-videos";
     public const string References = "references";
@@ -32,6 +33,7 @@ public static class SitemapSectionKeys
         ParkItemLists,
         ParkZones,
         ParkItems,
+        StandaloneAttractions,
         ParkItemImages,
         ParkItemVideos,
         References,

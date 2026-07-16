@@ -15,6 +15,7 @@ using AmusementPark.Application.Features.ParkWeather.Services;
 using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Services;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
 using Microsoft.Extensions.DependencyInjection;
@@ -72,6 +73,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ISitemapSectionProvider, ParkItemListsSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkZonesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemsSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, StandaloneAttractionsSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemImagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemVideosSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ReferencesSitemapSectionProvider>();

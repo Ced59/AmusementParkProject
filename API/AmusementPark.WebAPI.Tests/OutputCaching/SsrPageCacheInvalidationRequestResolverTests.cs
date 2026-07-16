@@ -2,6 +2,7 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.ContextualBlocks;
@@ -70,8 +71,14 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         parkItemRepository
             .Setup(repository => repository.GetParkIdsByManufacturerIdAsync("manufacturer-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { "park-1", "park-2" });
+        Mock<IStandaloneAttractionRepository> standaloneAttractionRepository = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneAttractionRepository
+            .Setup(repository => repository.GetIdsByManufacturerIdAsync("manufacturer-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { "standalone-1" });
 
-        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver(parkItemRepository: parkItemRepository);
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver(
+            parkItemRepository: parkItemRepository,
+            standaloneAttractionRepository: standaloneAttractionRepository);
         ActionExecutingContext context = CreateContext("AttractionManufacturers", new Dictionary<string, object?> { ["id"] = "manufacturer-1" });
 
         AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
@@ -85,7 +92,27 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Contains("/fr/park-manufacturer/manufacturer-1/", request.Prefixes);
         Assert.Contains("/fr/park/park-1/", request.Prefixes);
         Assert.Contains("/fr/park/park-2/", request.Prefixes);
+        Assert.Contains("/fr/attraction/standalone-1/", request.Prefixes);
         parkItemRepository.VerifyAll();
+        standaloneAttractionRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForStandaloneAttractionMutation_ShouldTargetStandaloneAttractionPages()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("StandaloneAttractions", new Dictionary<string, object?> { ["id"] = "standalone-1" });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            null,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/attraction/standalone-1/", request.Prefixes);
+        Assert.DoesNotContain("/fr/home", request.Paths);
+        Assert.True(request.IncludeSeoDocuments);
     }
 
     [Fact]
@@ -451,6 +478,43 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     }
 
     [Fact]
+    public async Task ResolveAsync_ForParkGraphUpsertStandaloneAttractionChange_ShouldTargetStandaloneAttractionPages()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetStandaloneAttractionId = "standalone-1",
+            Changes = new List<ParkGraphUpsertChangeDto>
+            {
+                new ParkGraphUpsertChangeDto
+                {
+                    EntityType = "StandaloneAttraction",
+                    EntityId = "standalone-1",
+                    ChangeType = "Updated",
+                    Fields = new List<ParkGraphUpsertFieldChangeDto>
+                    {
+                        new ParkGraphUpsertFieldChangeDto { Field = "name", OldValue = "Old", NewValue = "New" },
+                    },
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/attraction/standalone-1/", request.Prefixes);
+        Assert.DoesNotContain("/fr/park/standalone-1/", request.Prefixes);
+        Assert.DoesNotContain("/fr/home", request.Paths);
+        Assert.True(request.IncludeSeoDocuments);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
     public async Task ResolveAsync_ForBulkParkGraphUpsertPreview_ShouldReturnNoOp()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
@@ -742,17 +806,45 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.False(request.Refresh);
     }
 
+    [Fact]
+    public async Task ResolveAsync_ForStandaloneAttractionImageMutation_ShouldTargetStandaloneAttractionWithoutImmediateRefresh()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("Images", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new Image
+        {
+            Id = "image-1",
+            OwnerType = ImageOwnerType.StandaloneAttraction,
+            OwnerId = "standalone-1",
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/attraction/standalone-1/", request.Prefixes);
+        Assert.DoesNotContain("/fr/home", request.Paths);
+        Assert.True(request.IncludeSeoDocuments);
+        Assert.True(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
     private static SsrPageCacheInvalidationRequestResolver CreateResolver(
         Mock<IParkRepository>? parkRepository = null,
         Mock<IParkItemRepository>? parkItemRepository = null,
         Mock<IParkZoneRepository>? parkZoneRepository = null,
-        Mock<IImageRepository>? imageRepository = null)
+        Mock<IImageRepository>? imageRepository = null,
+        Mock<IStandaloneAttractionRepository>? standaloneAttractionRepository = null)
     {
         return new SsrPageCacheInvalidationRequestResolver(
             (parkRepository ?? new Mock<IParkRepository>(MockBehavior.Strict)).Object,
             (parkItemRepository ?? new Mock<IParkItemRepository>(MockBehavior.Strict)).Object,
             (parkZoneRepository ?? new Mock<IParkZoneRepository>(MockBehavior.Strict)).Object,
-            (imageRepository ?? new Mock<IImageRepository>(MockBehavior.Strict)).Object);
+            (imageRepository ?? new Mock<IImageRepository>(MockBehavior.Strict)).Object,
+            (standaloneAttractionRepository ?? new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict)).Object);
     }
 
     private static ActionExecutingContext CreateContext(string controllerName, IDictionary<string, object?> routeValues)

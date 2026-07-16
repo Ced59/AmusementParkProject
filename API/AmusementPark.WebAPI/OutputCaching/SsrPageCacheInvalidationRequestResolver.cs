@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Services;
+using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -36,17 +37,20 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkZoneRepository parkZoneRepository;
     private readonly IImageRepository imageRepository;
+    private readonly IStandaloneAttractionRepository standaloneAttractionRepository;
 
     public SsrPageCacheInvalidationRequestResolver(
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IParkZoneRepository parkZoneRepository,
-        IImageRepository imageRepository)
+        IImageRepository imageRepository,
+        IStandaloneAttractionRepository standaloneAttractionRepository)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.parkZoneRepository = parkZoneRepository;
         this.imageRepository = imageRepository;
+        this.standaloneAttractionRepository = standaloneAttractionRepository;
     }
 
     public async Task<SsrPageCacheInvalidationRequest> ResolveAsync(
@@ -70,6 +74,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         SsrPageCacheInvalidationRequest request = controllerName switch
         {
             "Parks" => await this.ResolveParksAsync(context, executedContext, includeSeoDocuments, cancellationToken),
+            "StandaloneAttractions" => this.ResolveStandaloneAttractions(context, executedContext, includeSeoDocuments),
             "ParkOpeningHours" => this.ResolveParkOpeningHours(context, includeSeoDocuments),
             "ParkItems" => await this.ResolveParkItemsAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "ParkZones" => await this.ResolveParkZonesAsync(context, executedContext, includeSeoDocuments, cancellationToken),
@@ -156,6 +161,20 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             audienceClassificationFilter);
     }
 
+    private SsrPageCacheInvalidationRequest ResolveStandaloneAttractions(
+        ActionExecutingContext context,
+        ActionExecutedContext? executedContext,
+        bool includeSeoDocuments)
+    {
+        IReadOnlyCollection<string> attractionIds = ResolveStringTargets(context, executedContext, "id", "Id", "Ids");
+        if (attractionIds.Count == 0 || attractionIds.Count > MaxTargetedEntityCount)
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        return BuildStandaloneAttractionImpactRequest(attractionIds, includeSeoDocuments);
+    }
+
     private async Task<SsrPageCacheInvalidationRequest> ResolveParkItemsAsync(
         ActionExecutingContext context,
         ActionExecutedContext? executedContext,
@@ -240,6 +259,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             operatorIds,
             "operator",
             id => this.parkRepository.GetParkIdsByOperatorIdAsync(id, cancellationToken),
+            id => this.standaloneAttractionRepository.GetIdsByOperatorIdAsync(id, cancellationToken),
             includeSeoDocuments);
     }
 
@@ -254,6 +274,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             founderIds,
             "founder",
             id => this.parkRepository.GetParkIdsByFounderIdAsync(id, cancellationToken),
+            null,
             includeSeoDocuments);
     }
 
@@ -268,6 +289,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             manufacturerIds,
             "manufacturer",
             id => this.parkItemRepository.GetParkIdsByManufacturerIdAsync(id, cancellationToken),
+            id => this.standaloneAttractionRepository.GetIdsByManufacturerIdAsync(id, cancellationToken),
             includeSeoDocuments);
     }
 
@@ -275,6 +297,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         IReadOnlyCollection<string> referenceIds,
         string referenceKind,
         Func<string, Task<IReadOnlyCollection<string>>> parkIdsResolver,
+        Func<string, Task<IReadOnlyCollection<string>>>? standaloneAttractionIdsResolver,
         bool includeSeoDocuments)
     {
         if (referenceIds.Count == 0 || referenceIds.Count > MaxTargetedEntityCount)
@@ -285,6 +308,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> parkIds = new HashSet<string>(StringComparer.Ordinal);
+        HashSet<string> standaloneAttractionIds = new HashSet<string>(StringComparer.Ordinal);
 
         foreach (string referenceId in referenceIds)
         {
@@ -292,9 +316,15 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             AddReferenceListPaths(paths, referenceKind);
             IReadOnlyCollection<string> resolvedParkIds = await parkIdsResolver(referenceId);
             AddRange(parkIds, resolvedParkIds);
+            if (standaloneAttractionIdsResolver is not null)
+            {
+                IReadOnlyCollection<string> resolvedStandaloneAttractionIds = await standaloneAttractionIdsResolver(referenceId);
+                AddRange(standaloneAttractionIds, resolvedStandaloneAttractionIds);
+            }
         }
 
         AddParkPrefixes(prefixes, parkIds);
+        AddStandaloneAttractionPrefixes(prefixes, standaloneAttractionIds);
         AddDiscoveryPaths(paths);
 
         return BuildRequest(paths, prefixes, includeSeoDocuments);
@@ -430,6 +460,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> fallbackParkIds = new HashSet<string>(StringComparer.Ordinal);
+        HashSet<string> fallbackStandaloneAttractionIds = new HashSet<string>(StringComparer.Ordinal);
         bool includeDiscoveryPages = false;
 
         foreach (ParkGraphUpsertChangeDto change in changedEntities)
@@ -441,6 +472,12 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             {
                 AddNonEmpty(fallbackParkIds, entityId ?? result.TargetParkId);
                 includeDiscoveryPages = true;
+                continue;
+            }
+
+            if (string.Equals(entityType, "standaloneattraction", StringComparison.Ordinal))
+            {
+                AddNonEmpty(fallbackStandaloneAttractionIds, entityId ?? result.TargetStandaloneAttractionId);
                 continue;
             }
 
@@ -472,6 +509,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
                 if (!resolved)
                 {
                     AddNonEmpty(fallbackParkIds, result.TargetParkId);
+                    AddNonEmpty(fallbackStandaloneAttractionIds, result.TargetStandaloneAttractionId);
                 }
 
                 continue;
@@ -479,26 +517,46 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
 
             if (string.Equals(entityType, "parkoperator", StringComparison.Ordinal) || string.Equals(entityType, "operator", StringComparison.Ordinal))
             {
-                await this.AddReferenceImpactAsync(paths, prefixes, entityId, "operator", id => this.parkRepository.GetParkIdsByOperatorIdAsync(id, cancellationToken));
+                await this.AddReferenceImpactAsync(
+                    paths,
+                    prefixes,
+                    entityId,
+                    "operator",
+                    id => this.parkRepository.GetParkIdsByOperatorIdAsync(id, cancellationToken),
+                    id => this.standaloneAttractionRepository.GetIdsByOperatorIdAsync(id, cancellationToken));
                 continue;
             }
 
             if (string.Equals(entityType, "parkfounder", StringComparison.Ordinal) || string.Equals(entityType, "founder", StringComparison.Ordinal))
             {
-                await this.AddReferenceImpactAsync(paths, prefixes, entityId, "founder", id => this.parkRepository.GetParkIdsByFounderIdAsync(id, cancellationToken));
+                await this.AddReferenceImpactAsync(
+                    paths,
+                    prefixes,
+                    entityId,
+                    "founder",
+                    id => this.parkRepository.GetParkIdsByFounderIdAsync(id, cancellationToken),
+                    null);
                 continue;
             }
 
             if (string.Equals(entityType, "attractionmanufacturer", StringComparison.Ordinal) || string.Equals(entityType, "manufacturer", StringComparison.Ordinal))
             {
-                await this.AddReferenceImpactAsync(paths, prefixes, entityId, "manufacturer", id => this.parkItemRepository.GetParkIdsByManufacturerIdAsync(id, cancellationToken));
+                await this.AddReferenceImpactAsync(
+                    paths,
+                    prefixes,
+                    entityId,
+                    "manufacturer",
+                    id => this.parkItemRepository.GetParkIdsByManufacturerIdAsync(id, cancellationToken),
+                    id => this.standaloneAttractionRepository.GetIdsByManufacturerIdAsync(id, cancellationToken));
                 continue;
             }
 
             AddNonEmpty(fallbackParkIds, result.TargetParkId);
+            AddNonEmpty(fallbackStandaloneAttractionIds, result.TargetStandaloneAttractionId);
         }
 
         AddParkPrefixes(prefixes, fallbackParkIds);
+        AddStandaloneAttractionPrefixes(prefixes, fallbackStandaloneAttractionIds);
 
         if (includeDiscoveryPages)
         {
@@ -551,8 +609,10 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         bool includeSeoDocuments)
     {
         HashSet<string> parkIds = new HashSet<string>(StringComparer.Ordinal);
+        HashSet<string> standaloneAttractionIds = new HashSet<string>(StringComparer.Ordinal);
         AddNonEmpty(parkIds, result.TargetParkId);
-        if (parkIds.Count == 0)
+        AddNonEmpty(standaloneAttractionIds, result.TargetStandaloneAttractionId);
+        if (parkIds.Count == 0 && standaloneAttractionIds.Count == 0)
         {
             return BuildAllPageCaches(includeSeoDocuments);
         }
@@ -560,7 +620,12 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
         HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
         AddParkPrefixes(prefixes, parkIds);
-        AddDiscoveryPaths(paths);
+        AddStandaloneAttractionPrefixes(prefixes, standaloneAttractionIds);
+        if (parkIds.Count > 0)
+        {
+            AddDiscoveryPaths(paths);
+        }
+
         SsrPageCacheInvalidationRequest request = WithoutRefresh(BuildRequest(paths, prefixes, includeSeoDocuments));
         return requiresHardPurge ? ForceHardPurge(request) : request;
     }
@@ -731,6 +796,12 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             return await this.AddParkItemImpactAsync(paths, prefixes, ownerId, cancellationToken);
         }
 
+        if (string.Equals(normalizedOwnerType, "standaloneattraction", StringComparison.Ordinal))
+        {
+            AddStandaloneAttractionPrefixes(prefixes, new[] { ownerId });
+            return true;
+        }
+
         return false;
     }
 
@@ -739,7 +810,8 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         ISet<string> prefixes,
         string? referenceId,
         string referenceKind,
-        Func<string, Task<IReadOnlyCollection<string>>> parkIdsResolver)
+        Func<string, Task<IReadOnlyCollection<string>>> parkIdsResolver,
+        Func<string, Task<IReadOnlyCollection<string>>>? standaloneAttractionIdsResolver)
     {
         if (string.IsNullOrWhiteSpace(referenceId))
         {
@@ -750,6 +822,11 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         AddReferenceListPaths(paths, referenceKind);
         IReadOnlyCollection<string> parkIds = await parkIdsResolver(referenceId);
         AddParkPrefixes(prefixes, parkIds);
+        if (standaloneAttractionIdsResolver is not null)
+        {
+            IReadOnlyCollection<string> standaloneAttractionIds = await standaloneAttractionIdsResolver(referenceId);
+            AddStandaloneAttractionPrefixes(prefixes, standaloneAttractionIds);
+        }
     }
 
     private async Task<SsrPageCacheInvalidationRequest> ResolveEntityImpactAsync(
@@ -774,6 +851,11 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
                 : BuildParkImpactRequest(new[] { item.ParkId }, includeSeoDocuments, includeDiscoveryPages: false);
         }
 
+        if (string.Equals(normalizedEntityType, "standaloneattraction", StringComparison.Ordinal))
+        {
+            return BuildStandaloneAttractionImpactRequest(new[] { normalizedEntityId }, includeSeoDocuments);
+        }
+
         if (string.Equals(normalizedEntityType, "parkzone", StringComparison.Ordinal) || string.Equals(normalizedEntityType, "zone", StringComparison.Ordinal))
         {
             ParkZone? zone = await this.parkZoneRepository.GetByIdAsync(normalizedEntityId, cancellationToken);
@@ -788,6 +870,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
                 new[] { normalizedEntityId },
                 "operator",
                 id => this.parkRepository.GetParkIdsByOperatorIdAsync(id, cancellationToken),
+                id => this.standaloneAttractionRepository.GetIdsByOperatorIdAsync(id, cancellationToken),
                 includeSeoDocuments);
         }
 
@@ -797,6 +880,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
                 new[] { normalizedEntityId },
                 "founder",
                 id => this.parkRepository.GetParkIdsByFounderIdAsync(id, cancellationToken),
+                null,
                 includeSeoDocuments);
         }
 
@@ -806,6 +890,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
                 new[] { normalizedEntityId },
                 "manufacturer",
                 id => this.parkItemRepository.GetParkIdsByManufacturerIdAsync(id, cancellationToken),
+                id => this.standaloneAttractionRepository.GetIdsByManufacturerIdAsync(id, cancellationToken),
                 includeSeoDocuments);
         }
 
@@ -828,6 +913,15 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         }
 
         return BuildRequest(paths, prefixes, includeSeoDocuments);
+    }
+
+    private static SsrPageCacheInvalidationRequest BuildStandaloneAttractionImpactRequest(
+        IReadOnlyCollection<string> attractionIds,
+        bool includeSeoDocuments)
+    {
+        HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
+        AddStandaloneAttractionPrefixes(prefixes, attractionIds);
+        return BuildRequest(Array.Empty<string>(), prefixes, includeSeoDocuments);
     }
 
     private static void AddParkDetailPaths(ISet<string> paths, Park park)
@@ -979,6 +1073,17 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             foreach (string language in PublicLanguages)
             {
                 prefixes.Add($"/{language}/park/{parkId}/");
+            }
+        }
+    }
+
+    private static void AddStandaloneAttractionPrefixes(ISet<string> prefixes, IEnumerable<string> attractionIds)
+    {
+        foreach (string attractionId in NormalizeTargets(attractionIds))
+        {
+            foreach (string language in PublicLanguages)
+            {
+                prefixes.Add($"/{language}/attraction/{attractionId}/");
             }
         }
     }

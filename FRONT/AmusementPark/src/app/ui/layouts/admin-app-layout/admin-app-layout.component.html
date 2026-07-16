@@ -42,6 +42,10 @@
           <i class="pi pi-ticket" aria-hidden="true"></i>
           <span>{{ 'admin.parkItems.title' | translate }}</span>
         </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'standalone-attractions']" routerLinkActive="active">
+          <i class="pi pi-compass" aria-hidden="true"></i>
+          <span>{{ 'admin.standaloneAttractions.title' | translate }}</span>
+        </a>
         <a [routerLink]="['/', currentLang, 'admin', 'field-mode']" routerLinkActive="active">
           <i class="pi pi-compass" aria-hidden="true"></i>
           <span>{{ fieldModeNavLabel }}</span>

@@ -127,6 +127,19 @@ Ajouter seulement les sections utiles à l’étape : `references`, `park`, `zon
 
 Les textes localisés des upserts actuels utilisent les codes courts présents dans les exports : `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `pt`. Si un export existant utilise une autre forme, garder la forme déjà présente.
 
+## Flux attraction fixe isolée
+
+Si l’étape 0 conclut que l’entité est une attraction fixe isolée, ne pas continuer le parcours parc 1 à 8. Lire `standalone-attraction-data-integration.md` et utiliser un document `standaloneAttractionGraph`.
+
+Règles spécifiques :
+
+- ne pas créer de faux parc pour porter une seule attraction ;
+- ne pas rattacher artificiellement les activités voisines du domaine touristique ;
+- utiliser `standaloneAttraction` pour l’identité, l’adresse, l’exploitant, les descriptions et les données techniques ;
+- utiliser `migration` pour convertir une ancienne fiche parc mono-attraction en attraction autonome ;
+- utiliser `ImageOwnerType: "StandaloneAttraction"` et `ImageCategory: "StandaloneAttraction"` pour les images de l’attraction ;
+- ne pas renseigner les horaires sur l’ancien parc legacy. Les horaires autonomes seront traités seulement quand le modèle d’horaires générique sera disponible.
+
 ## Mode bulk JSON upsert
 
 Le mode bulk utilise une enveloppe racine `AmusementParkBulkParkGraphUpsert` avec un tableau `parks`. Chaque entrée de `parks` est un document `AmusementParkParkGraphUpsert` normal, avec son `identity` minimal (`id`/`parkId`, `name`, `countryCode`) et les sections exportées explicitement.

@@ -9,7 +9,8 @@
       "OPERATOR": "Foto de operador",
       "MANUFACTURER": "Foto de fabricante",
       "FOUNDER": "Foto de fundador",
-      "VIDEO_THUMBNAIL": "Miniatura de video"
+      "VIDEO_THUMBNAIL": "Miniatura de video",
+      "STANDALONE_ATTRACTION": "Foto de atracción aislada"
     },
     "ownerTypes": {
       "NONE": "Ninguno",
@@ -19,7 +20,8 @@
       "PARK_OPERATOR": "Operador",
       "ATTRACTION_MANUFACTURER": "Fabricante",
       "PARK_FOUNDER": "Fundador",
-      "VIDEO": "Video"
+      "VIDEO": "Video",
+      "STANDALONE_ATTRACTION": "Atracción aislada"
     }
   }
 }
