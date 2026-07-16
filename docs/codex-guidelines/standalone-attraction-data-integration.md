@@ -23,6 +23,7 @@ Si une attraction isolée existe déjà comme parc mono-attraction :
 - créer ou mettre à jour une fiche `standaloneAttraction` ;
 - renseigner `legacyParkId` et `legacyParkItemId` ;
 - utiliser l’interface admin `Attractions isolées` ou un JSON `standaloneAttractionGraph` avec bloc `migration` ;
+- dans l’interface admin, rechercher l’ancien parc legacy depuis le bloc de migration, sélectionner le résultat, puis vérifier les IDs remplis avant de lancer la migration ;
 - masquer ou retirer le parc legacy et son item seulement après migration contrôlée.
 
 Exemple Bardonecchia :
