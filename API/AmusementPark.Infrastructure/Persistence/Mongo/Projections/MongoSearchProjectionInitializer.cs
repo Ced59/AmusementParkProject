@@ -37,6 +37,7 @@ public sealed class MongoSearchProjectionInitializer
         }
 
         await this.BackfillLocalizedDescriptionsAsync(cancellationToken);
+        await this.BackfillStandaloneAttractionProjectionsAsync(cancellationToken);
     }
 
     private async Task EnsureCollectionAndIndexesAsync(CancellationToken cancellationToken)
@@ -159,6 +160,76 @@ public sealed class MongoSearchProjectionInitializer
             {
                 await this.FlushBatchAsync(batchByResourceType.Key, batchByResourceType.Value, delayMilliseconds, cancellationToken);
             }
+        }
+    }
+
+    private async Task BackfillStandaloneAttractionProjectionsAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<StandaloneAttractionDocument> standaloneAttractionsCollection = this.database.GetCollection<StandaloneAttractionDocument>(this.settings.StandaloneAttractionsCollectionName);
+        IMongoCollection<SearchItemDocument> searchCollection = this.database.GetCollection<SearchItemDocument>(this.settings.SearchItemCollectionName);
+        int batchSize = Math.Max(1, this.settings.SearchProjectionRebuildBatchSize);
+        int delayMilliseconds = Math.Max(0, this.settings.SearchProjectionRebuildBatchDelayMilliseconds);
+        List<string> batch = new List<string>(batchSize);
+
+        using IAsyncCursor<string> cursor = await standaloneAttractionsCollection
+            .Find(Builders<StandaloneAttractionDocument>.Filter.Empty)
+            .Project(document => document.Id)
+            .ToCursorAsync(cancellationToken);
+
+        while (await cursor.MoveNextAsync(cancellationToken))
+        {
+            foreach (string id in cursor.Current)
+            {
+                if (string.IsNullOrWhiteSpace(id))
+                {
+                    continue;
+                }
+
+                batch.Add(id.Trim());
+                if (batch.Count >= batchSize)
+                {
+                    await this.FlushMissingStandaloneAttractionsBatchAsync(searchCollection, batch, delayMilliseconds, cancellationToken);
+                }
+            }
+        }
+
+        if (batch.Count > 0)
+        {
+            await this.FlushMissingStandaloneAttractionsBatchAsync(searchCollection, batch, delayMilliseconds, cancellationToken);
+        }
+    }
+
+    private async Task FlushMissingStandaloneAttractionsBatchAsync(
+        IMongoCollection<SearchItemDocument> searchCollection,
+        List<string> batch,
+        int delayMilliseconds,
+        CancellationToken cancellationToken)
+    {
+        List<string> sourceIds = batch.ToList();
+        batch.Clear();
+
+        IReadOnlyCollection<string> originalIds = StandaloneSearchProjectionBackfill.BuildProjectionOriginalIds(sourceIds);
+        if (originalIds.Count == 0)
+        {
+            return;
+        }
+
+        List<string> existingOriginalIds = await searchCollection
+            .Find(Builders<SearchItemDocument>.Filter.In(document => document.OriginalId, originalIds))
+            .Project(document => document.OriginalId)
+            .ToListAsync(cancellationToken);
+
+        IReadOnlyCollection<string> missingIds = StandaloneSearchProjectionBackfill.ResolveMissingStandaloneAttractionIds(sourceIds, existingOriginalIds);
+        if (missingIds.Count == 0)
+        {
+            return;
+        }
+
+        await this.searchProjectionWriter.UpsertManyAsync(SearchProjectionResourceTypes.StandaloneAttractions, missingIds, cancellationToken);
+
+        if (delayMilliseconds > 0)
+        {
+            await Task.Delay(delayMilliseconds, cancellationToken);
         }
     }
 
