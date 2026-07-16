@@ -1,6 +1,20 @@
 {
-  "version": "3.4.24",
+  "version": "3.4.25",
   "history": [
+    {
+      "version": "3.4.25",
+      "releasedAt": "2026-07-16",
+      "labels": {
+        "fr": "La recherche retrouve mieux les attractions isolées.",
+        "en": "Search finds standalone attractions more reliably.",
+        "de": "Die Suche findet einzelne Attraktionen zuverlässiger.",
+        "nl": "Zoeken vindt losse attracties betrouwbaarder.",
+        "it": "La ricerca trova le attrazioni isolate in modo più affidabile.",
+        "es": "La búsqueda encuentra mejor las atracciones aisladas.",
+        "pl": "Wyszukiwanie pewniej znajduje samodzielne atrakcje.",
+        "pt": "A pesquisa encontra atrações isoladas com mais fiabilidade."
+      }
+    },
     {
       "version": "3.4.24",
       "releasedAt": "2026-07-16",
