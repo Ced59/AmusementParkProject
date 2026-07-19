@@ -1,6 +1,20 @@
 {
-  "version": "3.4.29",
+  "version": "3.4.30",
   "history": [
+    {
+      "version": "3.4.30",
+      "releasedAt": "2026-07-19",
+      "labels": {
+        "fr": "Les aperçus de partage des parcs sont plus naturels et illustrés.",
+        "en": "Park sharing previews are more natural and visual.",
+        "de": "Vorschauen geteilter Parks wirken natürlicher und anschaulicher.",
+        "nl": "Voorbeelden van gedeelde parken zijn natuurlijker en visueler.",
+        "it": "Le anteprime dei parchi condivisi sono più naturali e illustrate.",
+        "es": "Las vistas previas de parques compartidos son más naturales y visuales.",
+        "pl": "Podglądy udostępnianych parków są naturalniejsze i bardziej obrazowe.",
+        "pt": "As pré-visualizações de parques partilhados são mais naturais e visuais."
+      }
+    },
     {
       "version": "3.4.29",
       "releasedAt": "2026-07-19",
