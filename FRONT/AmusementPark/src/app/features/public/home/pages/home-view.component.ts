@@ -24,6 +24,7 @@ import { UiButtonDirective, UiSectionHeaderComponent, UiSurfaceDirective } from 
 import { UiPrimitiveTone } from '@ui/primitives/models/ui-primitive-variant.model';
 import { UiFeaturedParkCardComponent, UiSearchResultCardComponent, UiSearchResultCardModel } from '@ui/cards';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { resolveLocalizedPlural } from '@shared/utils/localization/localized-plural.helpers';
 
 @Component({
   selector: 'app-home-view',
@@ -155,7 +156,13 @@ export class HomeViewComponent {
     }
 
     if (this.isParkSearchResult(item) && item.attractionCount !== null && item.attractionCount !== undefined) {
-      metaParts.push(`${new Intl.NumberFormat(this.currentLang()).format(item.attractionCount)} ${this.searchResultsAttractionsLabel}`);
+      const attractionLabel: string = resolveLocalizedPlural(
+        this.translateService,
+        'home.counts.attraction',
+        item.attractionCount,
+        this.currentLang()
+      );
+      metaParts.push(`${new Intl.NumberFormat(this.currentLang()).format(item.attractionCount)} ${attractionLabel}`);
       return metaParts;
     }
 
@@ -322,10 +329,6 @@ export class HomeViewComponent {
       .toLowerCase()
       .replace(/\s+/g, '')
       .replace(/s$/, '');
-  }
-
-  private get searchResultsAttractionsLabel(): string {
-    return this.translateService.instant('home.search.attractionsLabel') as string;
   }
 
   protected formatStatValue(value: number | null | undefined): string {

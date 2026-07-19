@@ -111,6 +111,7 @@ function buildPublicVideoCard(
     type: video.type ?? VideoType.OTHER,
     typeLabelKey: getVideoTypeLabelKey(video.type),
     durationLabel: formatDuration(video.durationSeconds),
+    viewCount: normalizeViewCount(video.externalMetadata?.providerViewCount),
     viewCountLabel: formatViewCount(video.externalMetadata?.providerViewCount, currentLanguage),
     publishedAtLabel: formatPublishedAt(video.publishedAtUtc, currentLanguage),
     thumbnailPathOrUrl: normalizeOptionalString(video.thumbnailImageId) ?? normalizeOptionalString(video.thumbnailUrl),
@@ -119,6 +120,10 @@ function buildPublicVideoCard(
       .map((tagId: string) => tagLookup.get(tagId))
       .filter((tag: PublicVideoTagViewModel | undefined): tag is PublicVideoTagViewModel => tag !== undefined)
   };
+}
+
+function normalizeViewCount(value: number | null | undefined): number | null {
+  return value === null || value === undefined || !Number.isFinite(value) || value < 0 ? null : Math.round(value);
 }
 
 function buildVideoTagLookup(tags: readonly VideoTagDto[], currentLanguage: string): Map<string, PublicVideoTagViewModel> {

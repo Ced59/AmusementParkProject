@@ -14,7 +14,7 @@
             {{ kickerLabelKey | translate }}
           </app-ui-kicker>
           <app-ui-chip tone="soft" iconClass="pi pi-play-circle">
-            {{ 'videos.list.count' | translate:{ count: totalVideos } }}
+            {{ 'videos.list.count' | localizedPlural:totalVideos }}
           </app-ui-chip>
         </div>
 
@@ -142,7 +142,7 @@
                   <span><i class="pi pi-calendar" aria-hidden="true"></i>{{ video.publishedAtLabel }}</span>
                 }
                 @if (video.viewCountLabel) {
-                  <span><i class="pi pi-eye" aria-hidden="true"></i>{{ 'videos.list.views' | translate:{ count: video.viewCountLabel } }}</span>
+                  <span><i class="pi pi-eye" aria-hidden="true"></i>{{ 'videos.list.views' | localizedPlural:video.viewCount!:{ count: video.viewCountLabel } }}</span>
                 }
               </span>
               @if (video.tags.length > 0) {

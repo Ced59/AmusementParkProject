@@ -35,7 +35,7 @@
             }
             @if (video.viewCountLabel) {
               <app-ui-chip tone="soft" iconClass="pi pi-eye">
-                {{ 'videos.watch.views' | translate:{ count: video.viewCountLabel } }}
+                {{ 'videos.watch.views' | localizedPlural:video.viewCount!:{ count: video.viewCountLabel } }}
               </app-ui-chip>
             }
           </div>
@@ -144,7 +144,7 @@
           @if (video.viewCountLabel) {
             <div>
               <dt>{{ 'videos.watch.viewCount' | translate }}</dt>
-              <dd>{{ 'videos.watch.views' | translate:{ count: video.viewCountLabel } }}</dd>
+              <dd>{{ 'videos.watch.views' | localizedPlural:video.viewCount!:{ count: video.viewCountLabel } }}</dd>
             </div>
           }
         </dl>

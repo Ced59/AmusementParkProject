@@ -7,7 +7,12 @@
       "loading": "Technische gidsen laden...",
       "empty": "Er is nog geen technische pagina gepubliceerd.",
       "errorMessage": "Technische pagina's kunnen niet worden geladen.",
-      "categoryCount": "{{count}} pagina('s)"
+      "categoryCount": {
+        "one": "{{count}} pagina",
+        "other": "{{count}} pagina's",
+        "few": "{{count}} pagina's",
+        "many": "{{count}} pagina's"
+      }
     },
     "detail": {
       "loading": "Technische pagina laden...",

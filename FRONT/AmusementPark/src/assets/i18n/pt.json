@@ -2349,7 +2349,12 @@
         "unknown": "Data desconhecida"
       },
       "selection": {
-        "count": "{{count}} fotos",
+        "count": {
+          "one": "{{count}} foto",
+          "other": "{{count}} fotos",
+          "few": "{{count}} fotos",
+          "many": "{{count}} fotos"
+        },
         "empty": "Nenhuma foto corresponde a está seleção."
       },
       "metadata": {
@@ -2380,8 +2385,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} vídeos",
-      "views": "{{count}} visualizações",
+      "count": {
+        "one": "{{count}} vídeo",
+        "other": "{{count}} vídeos",
+        "few": "{{count}} vídeos",
+        "many": "{{count}} vídeos"
+      },
+      "views": {
+        "one": "{{count}} visualização",
+        "other": "{{count}} visualizações",
+        "few": "{{count}} visualizações",
+        "many": "{{count}} visualizações"
+      },
       "loadMore": "Carregar mais vídeos",
       "loadingMore": "A carregar..."
     },
@@ -2427,7 +2442,12 @@
       "duration": "Duração",
       "publishedAt": "Publicado",
       "viewCount": "Visualizações",
-      "views": "{{count}} visualizações",
+      "views": {
+        "one": "{{count}} visualização",
+        "other": "{{count}} visualizações",
+        "few": "{{count}} visualizações",
+        "many": "{{count}} visualizações"
+      },
       "tagsAndCategories": "Categorias e etiquetas",
       "openExternal": "Abrir vídeo",
       "openCreator": "Abrir criador",
@@ -2700,6 +2720,62 @@
       "manualSelection": "Seleção",
       "sponsored": "Patrocinado"
     },
+    "counts": {
+      "attraction": {
+        "one": "atração",
+        "other": "atrações",
+        "few": "atrações",
+        "many": "atrações"
+      },
+      "restaurant": {
+        "one": "restaurante",
+        "other": "restaurantes",
+        "few": "restaurantes",
+        "many": "restaurantes"
+      },
+      "hotel": {
+        "one": "hotel",
+        "other": "hotéis",
+        "few": "hotéis",
+        "many": "hotéis"
+      },
+      "animal": {
+        "one": "animal",
+        "other": "animais",
+        "few": "animais",
+        "many": "animais"
+      },
+      "show": {
+        "one": "espetáculo",
+        "other": "espetáculos",
+        "few": "espetáculos",
+        "many": "espetáculos"
+      },
+      "shop": {
+        "one": "loja",
+        "other": "lojas",
+        "few": "lojas",
+        "many": "lojas"
+      },
+      "service": {
+        "one": "serviço",
+        "other": "serviços",
+        "few": "serviços",
+        "many": "serviços"
+      },
+      "transport": {
+        "one": "transporte",
+        "other": "transportes",
+        "few": "transportes",
+        "many": "transportes"
+      },
+      "other": {
+        "one": "outro",
+        "other": "outros",
+        "few": "outros",
+        "many": "outros"
+      }
+    },
     "search": {
       "resultsTitle": "Resultados da pesquisa",
       "resultsSubtitle": "Abre diretamente as fichas que correspondem à tua pesquisa.",
@@ -2762,7 +2838,12 @@
     "error": "Não e possível carregar os fabricantes agora.",
     "empty": "Nenhum fabricante corresponde a pesquisa.",
     "noDescription": "O perfil detalhado ainda precisa de conteudo.",
-    "attractionCount": "{{count}} atracao(oes)"
+    "attractionCount": {
+      "one": "{{count}} atração",
+      "other": "{{count}} atrações",
+      "few": "{{count}} atrações",
+      "many": "{{count}} atrações"
+    }
   },
   "publicNavigation": {
     "youAreHere": "Você está aqui",
@@ -3910,7 +3991,12 @@
       "loading": "Carregando guias técnicos...",
       "empty": "Ainda não há página técnica publicada.",
       "errorMessage": "Não foi possível carregar as páginas técnicas.",
-      "categoryCount": "{{count}} página(s)"
+      "categoryCount": {
+        "one": "{{count}} página",
+        "other": "{{count}} páginas",
+        "few": "{{count}} páginas",
+        "many": "{{count}} páginas"
+      }
     },
     "detail": {
       "loading": "Carregando a página técnica...",

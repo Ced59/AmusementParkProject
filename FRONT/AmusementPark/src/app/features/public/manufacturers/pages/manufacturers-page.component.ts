@@ -11,6 +11,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PaginationContract } from '@shared/models/contracts';
+import { LocalizedPluralPipe } from '@shared/pipes';
 import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/localized-text.helpers';
 import { buildPublicParkReferenceRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
@@ -30,7 +31,8 @@ import { PublicManufacturerGroup, PublicManufacturersStateFacade } from '../stat
     PaginationComponent,
     UiButtonDirective,
     UiKickerComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    LocalizedPluralPipe
   ]
 })
 export class ManufacturersPageComponent implements OnInit {

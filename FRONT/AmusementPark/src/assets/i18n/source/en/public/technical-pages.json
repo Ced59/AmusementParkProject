@@ -7,7 +7,12 @@
       "loading": "Loading technical guides...",
       "empty": "No published technical page yet.",
       "errorMessage": "Unable to load technical pages.",
-      "categoryCount": "{{count}} page(s)"
+      "categoryCount": {
+        "one": "{{count}} page",
+        "few": "{{count}} pages",
+        "many": "{{count}} pages",
+        "other": "{{count}} pages"
+      }
     },
     "detail": {
       "loading": "Loading the technical page...",

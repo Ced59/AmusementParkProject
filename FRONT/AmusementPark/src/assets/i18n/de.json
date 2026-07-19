@@ -2349,7 +2349,12 @@
         "unknown": "Unbekanntes Datum"
       },
       "selection": {
-        "count": "{{count}} Fotos",
+        "count": {
+          "one": "{{count}} Foto",
+          "other": "{{count}} Fotos",
+          "few": "{{count}} Fotos",
+          "many": "{{count}} Fotos"
+        },
         "empty": "Kein Foto passt zu dieser Auswahl."
       },
       "metadata": {
@@ -2380,8 +2385,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} Videos",
-      "views": "{{count}} Aufrufe",
+      "count": {
+        "one": "{{count}} Video",
+        "other": "{{count}} Videos",
+        "few": "{{count}} Videos",
+        "many": "{{count}} Videos"
+      },
+      "views": {
+        "one": "{{count}} Aufruf",
+        "other": "{{count}} Aufrufe",
+        "few": "{{count}} Aufrufe",
+        "many": "{{count}} Aufrufe"
+      },
       "loadMore": "Mehr Videos laden",
       "loadingMore": "Wird geladen..."
     },
@@ -2427,7 +2442,12 @@
       "duration": "Dauer",
       "publishedAt": "Veröffentlicht",
       "viewCount": "Aufrufe",
-      "views": "{{count}} Aufrufe",
+      "views": {
+        "one": "{{count}} Aufruf",
+        "other": "{{count}} Aufrufe",
+        "few": "{{count}} Aufrufe",
+        "many": "{{count}} Aufrufe"
+      },
       "tagsAndCategories": "Kategorien und Tags",
       "openExternal": "Video öffnen",
       "openCreator": "Ersteller öffnen",
@@ -2700,6 +2720,62 @@
       "manualSelection": "Auswahl",
       "sponsored": "Gesponsert"
     },
+    "counts": {
+      "attraction": {
+        "one": "Attraktion",
+        "other": "Attraktionen",
+        "few": "Attraktionen",
+        "many": "Attraktionen"
+      },
+      "restaurant": {
+        "one": "Restaurant",
+        "other": "Restaurants",
+        "few": "Restaurants",
+        "many": "Restaurants"
+      },
+      "hotel": {
+        "one": "Hotel",
+        "other": "Hotels",
+        "few": "Hotels",
+        "many": "Hotels"
+      },
+      "animal": {
+        "one": "Tier",
+        "other": "Tiere",
+        "few": "Tiere",
+        "many": "Tiere"
+      },
+      "show": {
+        "one": "Show",
+        "other": "Shows",
+        "few": "Shows",
+        "many": "Shows"
+      },
+      "shop": {
+        "one": "Geschäft",
+        "other": "Geschäfte",
+        "few": "Geschäfte",
+        "many": "Geschäfte"
+      },
+      "service": {
+        "one": "Service",
+        "other": "Services",
+        "few": "Services",
+        "many": "Services"
+      },
+      "transport": {
+        "one": "Transport",
+        "other": "Transporte",
+        "few": "Transporte",
+        "many": "Transporte"
+      },
+      "other": {
+        "one": "Sonstiges",
+        "other": "Sonstige",
+        "few": "Sonstige",
+        "many": "Sonstige"
+      }
+    },
     "search": {
       "resultsTitle": "Suchergebnisse",
       "resultsSubtitle": "Öffne direkt die passenden Seiten zu deiner Suche.",
@@ -2762,7 +2838,12 @@
     "error": "Hersteller können gerade nicht geladen werden.",
     "empty": "Kein Hersteller passt zu deiner Suche.",
     "noDescription": "Das Detailprofil muss noch ergaenzt werden.",
-    "attractionCount": "{{count}} Attraktion(en)"
+    "attractionCount": {
+      "one": "{{count}} Attraktion",
+      "other": "{{count}} Attraktionen",
+      "few": "{{count}} Attraktionen",
+      "many": "{{count}} Attraktionen"
+    }
   },
   "publicNavigation": {
     "youAreHere": "Du bist hier",
@@ -3910,7 +3991,12 @@
       "loading": "Technik-Guides werden geladen...",
       "empty": "Es ist noch keine Technikseite veröffentlicht.",
       "errorMessage": "Technikseiten konnten nicht geladen werden.",
-      "categoryCount": "{{count}} Seite(n)"
+      "categoryCount": {
+        "one": "{{count}} Seite",
+        "other": "{{count}} Seiten",
+        "few": "{{count}} Seiten",
+        "many": "{{count}} Seiten"
+      }
     },
     "detail": {
       "loading": "Technikseite wird geladen...",

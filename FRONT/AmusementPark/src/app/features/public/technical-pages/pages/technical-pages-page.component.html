@@ -34,7 +34,7 @@
               <span class="technical-category__icon" aria-hidden="true"><i class="pi pi-sitemap"></i></span>
               <div>
                 <h2>{{ group.categoryName }}</h2>
-                <p>{{ 'technicalPages.list.categoryCount' | translate:{ count: group.pages.length } }}</p>
+                <p>{{ 'technicalPages.list.categoryCount' | localizedPlural:group.pages.length }}</p>
               </div>
             </div>
 

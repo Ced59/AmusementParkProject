@@ -9,8 +9,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} filmów",
-      "views": "{{count}} wyświetleń",
+      "count": {
+        "one": "{{count}} film",
+        "few": "{{count}} filmy",
+        "many": "{{count}} filmów",
+        "other": "{{count}} filmu"
+      },
+      "views": {
+        "one": "{{count}} wyświetlenie",
+        "few": "{{count}} wyświetlenia",
+        "many": "{{count}} wyświetleń",
+        "other": "{{count}} wyświetlenia"
+      },
       "loadMore": "Załaduj więcej filmów",
       "loadingMore": "Ładowanie..."
     },
@@ -56,7 +66,12 @@
       "duration": "Czas trwania",
       "publishedAt": "Opublikowano",
       "viewCount": "Wyświetlenia",
-      "views": "{{count}} wyświetleń",
+      "views": {
+        "one": "{{count}} wyświetlenie",
+        "few": "{{count}} wyświetlenia",
+        "many": "{{count}} wyświetleń",
+        "other": "{{count}} wyświetlenia"
+      },
       "tagsAndCategories": "Kategorie i tagi",
       "openExternal": "Otwórz film",
       "openCreator": "Otwórz twórcę",

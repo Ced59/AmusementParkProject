@@ -2349,7 +2349,12 @@
         "unknown": "Date inconnue"
       },
       "selection": {
-        "count": "{{count}} photos",
+        "count": {
+          "one": "{{count}} photo",
+          "other": "{{count}} photos",
+          "few": "{{count}} photos",
+          "many": "{{count}} photos"
+        },
         "empty": "Aucune photo ne correspond à cette sélection."
       },
       "metadata": {
@@ -2380,8 +2385,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} vidéos",
-      "views": "{{count}} vues",
+      "count": {
+        "one": "{{count}} vidéo",
+        "other": "{{count}} vidéos",
+        "few": "{{count}} vidéos",
+        "many": "{{count}} vidéos"
+      },
+      "views": {
+        "one": "{{count}} vue",
+        "other": "{{count}} vues",
+        "few": "{{count}} vues",
+        "many": "{{count}} vues"
+      },
       "loadMore": "Charger plus de vidéos",
       "loadingMore": "Chargement..."
     },
@@ -2427,7 +2442,12 @@
       "duration": "Durée",
       "publishedAt": "Publiée le",
       "viewCount": "Vues",
-      "views": "{{count}} vues",
+      "views": {
+        "one": "{{count}} vue",
+        "other": "{{count}} vues",
+        "few": "{{count}} vues",
+        "many": "{{count}} vues"
+      },
       "tagsAndCategories": "Catégories et tags",
       "openExternal": "Ouvrir la vidéo",
       "openCreator": "Ouvrir le créateur",
@@ -2700,6 +2720,62 @@
       "manualSelection": "Sélection",
       "sponsored": "Sponsorisé"
     },
+    "counts": {
+      "attraction": {
+        "one": "attraction",
+        "other": "attractions",
+        "few": "attractions",
+        "many": "attractions"
+      },
+      "restaurant": {
+        "one": "restaurant",
+        "other": "restaurants",
+        "few": "restaurants",
+        "many": "restaurants"
+      },
+      "hotel": {
+        "one": "hôtel",
+        "other": "hôtels",
+        "few": "hôtels",
+        "many": "hôtels"
+      },
+      "animal": {
+        "one": "animal",
+        "other": "animaux",
+        "few": "animaux",
+        "many": "animaux"
+      },
+      "show": {
+        "one": "spectacle",
+        "other": "spectacles",
+        "few": "spectacles",
+        "many": "spectacles"
+      },
+      "shop": {
+        "one": "boutique",
+        "other": "boutiques",
+        "few": "boutiques",
+        "many": "boutiques"
+      },
+      "service": {
+        "one": "service",
+        "other": "services",
+        "few": "services",
+        "many": "services"
+      },
+      "transport": {
+        "one": "transport",
+        "other": "transports",
+        "few": "transports",
+        "many": "transports"
+      },
+      "other": {
+        "one": "autre",
+        "other": "autres",
+        "few": "autres",
+        "many": "autres"
+      }
+    },
     "search": {
       "resultsTitle": "Résultats de recherche",
       "resultsSubtitle": "Ouvre directement les fiches qui correspondent à ta recherche.",
@@ -2762,7 +2838,12 @@
     "error": "Impossible de charger les constructeurs pour le moment.",
     "empty": "Aucun constructeur ne correspond a ta recherche.",
     "noDescription": "La fiche detaillee reste a completer.",
-    "attractionCount": "{{count}} attraction(s)"
+    "attractionCount": {
+      "one": "{{count}} attraction",
+      "other": "{{count}} attractions",
+      "few": "{{count}} attractions",
+      "many": "{{count}} attractions"
+    }
   },
   "publicNavigation": {
     "youAreHere": "Tu es ici",
@@ -3910,7 +3991,12 @@
       "loading": "Chargement des dossiers techniques...",
       "empty": "Aucune page technique publiée pour le moment.",
       "errorMessage": "Impossible de charger les pages techniques.",
-      "categoryCount": "{{count}} page(s)"
+      "categoryCount": {
+        "one": "{{count}} page",
+        "other": "{{count}} pages",
+        "few": "{{count}} pages",
+        "many": "{{count}} pages"
+      }
     },
     "detail": {
       "loading": "Chargement de la page technique...",

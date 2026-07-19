@@ -53,7 +53,7 @@
 
     <main class="photo-carousel-main">
       <div class="photo-carousel-selection-count">
-        {{ selectionCountKey | translate:{ count: selectedCount } }}
+        {{ selectionCountKey | localizedPlural:selectedCount }}
       </div>
 
       <ng-container *ngIf="activePhoto as currentPhoto; else emptySelection">

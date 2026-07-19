@@ -12,6 +12,11 @@
     "error": "Nie można teraz załadować producentów.",
     "empty": "Zaden producent nie pasuje do wyszukiwania.",
     "noDescription": "Profil szczegolowy wymaga jeszcze uzupelnienia.",
-    "attractionCount": "{{count}} atrakcji"
+    "attractionCount": {
+      "one": "{{count}} atrakcja",
+      "few": "{{count}} atrakcje",
+      "many": "{{count}} atrakcji",
+      "other": "{{count}} atrakcji"
+    }
   }
 }

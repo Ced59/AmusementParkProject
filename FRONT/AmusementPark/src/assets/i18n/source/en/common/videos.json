@@ -9,8 +9,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
+      "count": {
+        "one": "{{count}} video",
+        "few": "{{count}} videos",
+        "many": "{{count}} videos",
+        "other": "{{count}} videos"
+      },
+      "views": {
+        "one": "{{count}} view",
+        "few": "{{count}} views",
+        "many": "{{count}} views",
+        "other": "{{count}} views"
+      },
       "loadMore": "Load more videos",
       "loadingMore": "Loading..."
     },
@@ -56,7 +66,12 @@
       "duration": "Duration",
       "publishedAt": "Published",
       "viewCount": "Views",
-      "views": "{{count}} views",
+      "views": {
+        "one": "{{count}} view",
+        "few": "{{count}} views",
+        "many": "{{count}} views",
+        "other": "{{count}} views"
+      },
       "tagsAndCategories": "Categories and tags",
       "openExternal": "Open video",
       "openCreator": "Open creator",

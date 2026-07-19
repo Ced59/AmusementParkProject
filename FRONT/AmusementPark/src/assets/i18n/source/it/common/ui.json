@@ -36,7 +36,12 @@
         "unknown": "Data sconosciuta"
       },
       "selection": {
-        "count": "{{count}} foto",
+        "count": {
+          "one": "{{count}} foto",
+          "other": "{{count}} foto",
+          "few": "{{count}} foto",
+          "many": "{{count}} foto"
+        },
         "empty": "Nessuna foto corrisponde a questa selezione."
       },
       "metadata": {

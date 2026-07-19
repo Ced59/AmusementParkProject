@@ -1,6 +1,20 @@
 {
-  "version": "3.4.27",
+  "version": "3.4.28",
   "history": [
+    {
+      "version": "3.4.28",
+      "releasedAt": "2026-07-19",
+      "labels": {
+        "fr": "Les quantités s’affichent correctement au singulier et au pluriel.",
+        "en": "Counts now display correctly in singular and plural forms.",
+        "de": "Anzahlen werden jetzt korrekt im Singular und Plural angezeigt.",
+        "nl": "Aantallen worden nu correct in enkelvoud en meervoud weergegeven.",
+        "it": "Le quantità ora sono visualizzate correttamente al singolare e al plurale.",
+        "es": "Las cantidades ahora se muestran correctamente en singular y plural.",
+        "pl": "Liczby są teraz poprawnie wyświetlane w formie pojedynczej i mnogiej.",
+        "pt": "As quantidades são agora apresentadas corretamente no singular e no plural."
+      }
+    },
     {
       "version": "3.4.27",
       "releasedAt": "2026-07-19",
@@ -133,26 +147,26 @@
       "labels": {
         "fr": "Les pages publiques attendent mieux les rendus SEO.",
         "en": "Public pages wait better for SEO renders.",
-        "de": "\u00d6ffentliche Seiten warten besser auf SEO-Renderings.",
+        "de": "Öffentliche Seiten warten besser auf SEO-Renderings.",
         "nl": "Publieke pagina's wachten beter op SEO-renders.",
         "it": "Le pagine pubbliche attendono meglio i rendering SEO.",
-        "es": "Las p\u00e1ginas p\u00fablicas esperan mejor los renderizados SEO.",
-        "pl": "Publiczne strony lepiej czekaj\u0105 na renderowanie SEO.",
-        "pt": "As p\u00e1ginas p\u00fablicas aguardam melhor as renderiza\u00e7\u00f5es SEO."
+        "es": "Las páginas públicas esperan mejor los renderizados SEO.",
+        "pl": "Publiczne strony lepiej czekają na renderowanie SEO.",
+        "pt": "As páginas públicas aguardam melhor as renderizações SEO."
       }
     },
     {
       "version": "3.4.17",
       "releasedAt": "2026-07-07",
       "labels": {
-        "fr": "Les pages publiques g\u00e8rent mieux les rendus incomplets.",
+        "fr": "Les pages publiques gèrent mieux les rendus incomplets.",
         "en": "Public pages handle incomplete renders better.",
-        "de": "\u00d6ffentliche Seiten gehen besser mit unvollst\u00e4ndigen Renderings um.",
+        "de": "Öffentliche Seiten gehen besser mit unvollständigen Renderings um.",
         "nl": "Publieke pagina's gaan beter om met onvolledige renders.",
         "it": "Le pagine pubbliche gestiscono meglio i rendering incompleti.",
-        "es": "Las p\u00e1ginas p\u00fablicas gestionan mejor los renderizados incompletos.",
-        "pl": "Publiczne strony lepiej obs\u0142uguj\u0105 niepe\u0142ne renderowanie.",
-        "pt": "As p\u00e1ginas p\u00fablicas lidam melhor com renderiza\u00e7\u00f5es incompletas."
+        "es": "Las páginas públicas gestionan mejor los renderizados incompletos.",
+        "pl": "Publiczne strony lepiej obsługują niepełne renderowanie.",
+        "pt": "As páginas públicas lidam melhor com renderizações incompletas."
       }
     },
     {
@@ -161,40 +175,40 @@
       "labels": {
         "fr": "Les pages publiques restent plus stables pour les moteurs.",
         "en": "Public pages stay more stable for search engines.",
-        "de": "\u00d6ffentliche Seiten bleiben f\u00fcr Suchmaschinen stabiler.",
+        "de": "Öffentliche Seiten bleiben für Suchmaschinen stabiler.",
         "nl": "Publieke pagina's blijven stabieler voor zoekmachines.",
-        "it": "Le pagine pubbliche restano pi\u00f9 stabili per i motori di ricerca.",
-        "es": "Las p\u00e1ginas p\u00fablicas son m\u00e1s estables para los buscadores.",
-        "pl": "Publiczne strony s\u0105 stabilniejsze dla wyszukiwarek.",
-        "pt": "As p\u00e1ginas p\u00fablicas ficam mais est\u00e1veis para os motores de pesquisa."
+        "it": "Le pagine pubbliche restano più stabili per i motori di ricerca.",
+        "es": "Las páginas públicas son más estables para los buscadores.",
+        "pl": "Publiczne strony są stabilniejsze dla wyszukiwarek.",
+        "pt": "As páginas públicas ficam mais estáveis para os motores de pesquisa."
       }
     },
     {
       "version": "3.4.15",
       "releasedAt": "2026-07-06",
       "labels": {
-        "fr": "Les pages publiques r\u00e9essaient mieux les erreurs passag\u00e8res.",
+        "fr": "Les pages publiques réessaient mieux les erreurs passagères.",
         "en": "Public pages retry temporary errors better.",
-        "de": "\u00d6ffentliche Seiten wiederholen vor\u00fcbergehende Fehler besser.",
+        "de": "Öffentliche Seiten wiederholen vorübergehende Fehler besser.",
         "nl": "Publieke pagina's proberen tijdelijke fouten beter opnieuw.",
         "it": "Le pagine pubbliche ritentano meglio gli errori temporanei.",
-        "es": "Las p\u00e1ginas p\u00fablicas reintentan mejor los errores temporales.",
-        "pl": "Publiczne strony lepiej ponawiaj\u0105 chwilowe b\u0142\u0119dy.",
-        "pt": "As p\u00e1ginas p\u00fablicas repetem melhor erros tempor\u00e1rios."
+        "es": "Las páginas públicas reintentan mejor los errores temporales.",
+        "pl": "Publiczne strony lepiej ponawiają chwilowe błędy.",
+        "pt": "As páginas públicas repetem melhor erros temporários."
       }
     },
     {
       "version": "3.4.14",
       "releasedAt": "2026-07-06",
       "labels": {
-        "fr": "Les pages publiques g\u00e8rent mieux les indisponibilit\u00e9s.",
+        "fr": "Les pages publiques gèrent mieux les indisponibilités.",
         "en": "Public pages handle outages better.",
-        "de": "\u00d6ffentliche Seiten gehen besser mit Ausf\u00e4llen um.",
+        "de": "Öffentliche Seiten gehen besser mit Ausfällen um.",
         "nl": "Publieke pagina's gaan beter om met storingen.",
-        "it": "Le pagine pubbliche gestiscono meglio le indisponibilit\u00e0.",
-        "es": "Las p\u00e1ginas p\u00fablicas gestionan mejor las interrupciones.",
-        "pl": "Publiczne strony lepiej obs\u0142uguj\u0105 przerwy.",
-        "pt": "As p\u00e1ginas p\u00fablicas lidam melhor com indisponibilidades."
+        "it": "Le pagine pubbliche gestiscono meglio le indisponibilità.",
+        "es": "Las páginas públicas gestionan mejor las interrupciones.",
+        "pl": "Publiczne strony lepiej obsługują przerwy.",
+        "pt": "As páginas públicas lidam melhor com indisponibilidades."
       }
     },
     {
@@ -203,26 +217,26 @@
       "labels": {
         "fr": "Les pages publiques restent plus fiables.",
         "en": "Public pages stay more reliable.",
-        "de": "\u00d6ffentliche Seiten bleiben zuverl\u00e4ssiger.",
+        "de": "Öffentliche Seiten bleiben zuverlässiger.",
         "nl": "Publieke pagina's blijven betrouwbaarder.",
-        "it": "Le pagine pubbliche restano pi\u00f9 affidabili.",
-        "es": "Las p\u00e1ginas p\u00fablicas siguen siendo m\u00e1s fiables.",
-        "pl": "Publiczne strony pozostaj\u0105 bardziej niezawodne.",
-        "pt": "As p\u00e1ginas p\u00fablicas ficam mais fi\u00e1veis."
+        "it": "Le pagine pubbliche restano più affidabili.",
+        "es": "Las páginas públicas siguen siendo más fiables.",
+        "pl": "Publiczne strony pozostają bardziej niezawodne.",
+        "pt": "As páginas públicas ficam mais fiáveis."
       }
     },
     {
       "version": "3.4.12",
       "releasedAt": "2026-07-06",
       "labels": {
-        "fr": "Les sitemaps restent plus faciles \u00e0 lire.",
+        "fr": "Les sitemaps restent plus faciles à lire.",
         "en": "Sitemaps stay easier to read.",
         "de": "Sitemaps bleiben leichter lesbar.",
         "nl": "Sitemaps blijven makkelijker leesbaar.",
-        "it": "Le sitemap restano pi\u00f9 facili da leggere.",
-        "es": "Los mapas del sitio siguen siendo m\u00e1s f\u00e1ciles de leer.",
-        "pl": "Mapy strony pozostaj\u0105 \u0142atwiejsze do odczytania.",
-        "pt": "Os mapas do site ficam mais f\u00e1ceis de ler."
+        "it": "Le sitemap restano più facili da leggere.",
+        "es": "Los mapas del sitio siguen siendo más fáciles de leer.",
+        "pl": "Mapy strony pozostają łatwiejsze do odczytania.",
+        "pt": "Os mapas do site ficam mais fáceis de ler."
       }
     },
     {

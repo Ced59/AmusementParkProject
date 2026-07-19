@@ -43,6 +43,62 @@
       "manualSelection": "Sélection",
       "sponsored": "Sponsorisé"
     },
+    "counts": {
+      "attraction": {
+        "one": "attraction",
+        "other": "attractions",
+        "few": "attractions",
+        "many": "attractions"
+      },
+      "restaurant": {
+        "one": "restaurant",
+        "other": "restaurants",
+        "few": "restaurants",
+        "many": "restaurants"
+      },
+      "hotel": {
+        "one": "hôtel",
+        "other": "hôtels",
+        "few": "hôtels",
+        "many": "hôtels"
+      },
+      "animal": {
+        "one": "animal",
+        "other": "animaux",
+        "few": "animaux",
+        "many": "animaux"
+      },
+      "show": {
+        "one": "spectacle",
+        "other": "spectacles",
+        "few": "spectacles",
+        "many": "spectacles"
+      },
+      "shop": {
+        "one": "boutique",
+        "other": "boutiques",
+        "few": "boutiques",
+        "many": "boutiques"
+      },
+      "service": {
+        "one": "service",
+        "other": "services",
+        "few": "services",
+        "many": "services"
+      },
+      "transport": {
+        "one": "transport",
+        "other": "transports",
+        "few": "transports",
+        "many": "transports"
+      },
+      "other": {
+        "one": "autre",
+        "other": "autres",
+        "few": "autres",
+        "many": "autres"
+      }
+    },
     "search": {
       "resultsTitle": "Résultats de recherche",
       "resultsSubtitle": "Ouvre directement les fiches qui correspondent à ta recherche.",

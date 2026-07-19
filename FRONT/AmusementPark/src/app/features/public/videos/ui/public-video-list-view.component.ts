@@ -9,6 +9,7 @@ import { SocialShareTargetType } from '@app/models/social-share/social-share.mod
 import { VideoType } from '@app/models/videos/video-type';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { LocalizedPluralPipe } from '@shared/pipes';
 import {
   PublicVideoCardViewModel,
   PublicVideoFilterState,
@@ -43,7 +44,8 @@ export interface PublicVideoListTab {
     UiChipComponent,
     UiKickerComponent,
     UiSurfaceDirective,
-    PublicSharePanelComponent
+    PublicSharePanelComponent,
+    LocalizedPluralPipe
   ]
 })
 export class PublicVideoListViewComponent implements OnChanges {

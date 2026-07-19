@@ -7,7 +7,12 @@
       "loading": "Carregando guias técnicos...",
       "empty": "Ainda não há página técnica publicada.",
       "errorMessage": "Não foi possível carregar as páginas técnicas.",
-      "categoryCount": "{{count}} página(s)"
+      "categoryCount": {
+        "one": "{{count}} página",
+        "other": "{{count}} páginas",
+        "few": "{{count}} páginas",
+        "many": "{{count}} páginas"
+      }
     },
     "detail": {
       "loading": "Carregando a página técnica...",

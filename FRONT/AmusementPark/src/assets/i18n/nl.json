@@ -2349,7 +2349,12 @@
         "unknown": "Onbekende datum"
       },
       "selection": {
-        "count": "{{count}} foto's",
+        "count": {
+          "one": "{{count}} foto",
+          "other": "{{count}} foto's",
+          "few": "{{count}} foto's",
+          "many": "{{count}} foto's"
+        },
         "empty": "Geen foto past bij deze selectie."
       },
       "metadata": {
@@ -2380,8 +2385,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} video's",
-      "views": "{{count}} weergaven",
+      "count": {
+        "one": "{{count}} video",
+        "other": "{{count}} video's",
+        "few": "{{count}} video's",
+        "many": "{{count}} video's"
+      },
+      "views": {
+        "one": "{{count}} weergave",
+        "other": "{{count}} weergaven",
+        "few": "{{count}} weergaven",
+        "many": "{{count}} weergaven"
+      },
       "loadMore": "Meer video's laden",
       "loadingMore": "Laden..."
     },
@@ -2427,7 +2442,12 @@
       "duration": "Duur",
       "publishedAt": "Gepubliceerd",
       "viewCount": "Weergaven",
-      "views": "{{count}} weergaven",
+      "views": {
+        "one": "{{count}} weergave",
+        "other": "{{count}} weergaven",
+        "few": "{{count}} weergaven",
+        "many": "{{count}} weergaven"
+      },
       "tagsAndCategories": "Categorieën en tags",
       "openExternal": "Video openen",
       "openCreator": "Maker openen",
@@ -2700,6 +2720,62 @@
       "manualSelection": "Selectie",
       "sponsored": "Gesponsord"
     },
+    "counts": {
+      "attraction": {
+        "one": "attractie",
+        "other": "attracties",
+        "few": "attracties",
+        "many": "attracties"
+      },
+      "restaurant": {
+        "one": "restaurant",
+        "other": "restaurants",
+        "few": "restaurants",
+        "many": "restaurants"
+      },
+      "hotel": {
+        "one": "hotel",
+        "other": "hotels",
+        "few": "hotels",
+        "many": "hotels"
+      },
+      "animal": {
+        "one": "dier",
+        "other": "dieren",
+        "few": "dieren",
+        "many": "dieren"
+      },
+      "show": {
+        "one": "show",
+        "other": "shows",
+        "few": "shows",
+        "many": "shows"
+      },
+      "shop": {
+        "one": "winkel",
+        "other": "winkels",
+        "few": "winkels",
+        "many": "winkels"
+      },
+      "service": {
+        "one": "dienst",
+        "other": "diensten",
+        "few": "diensten",
+        "many": "diensten"
+      },
+      "transport": {
+        "one": "transport",
+        "other": "transporten",
+        "few": "transporten",
+        "many": "transporten"
+      },
+      "other": {
+        "one": "overig",
+        "other": "overige",
+        "few": "overige",
+        "many": "overige"
+      }
+    },
     "search": {
       "resultsTitle": "Zoekresultaten",
       "resultsSubtitle": "Open direct de pagina’s die bij je zoekopdracht passen.",
@@ -2762,7 +2838,12 @@
     "error": "Bouwers kunnen nu niet worden geladen.",
     "empty": "Geen bouwer past bij je zoekopdracht.",
     "noDescription": "Het detailprofiel moet nog worden aangevuld.",
-    "attractionCount": "{{count}} attractie(s)"
+    "attractionCount": {
+      "one": "{{count}} attractie",
+      "other": "{{count}} attracties",
+      "few": "{{count}} attracties",
+      "many": "{{count}} attracties"
+    }
   },
   "publicNavigation": {
     "youAreHere": "Je bent hier",
@@ -3910,7 +3991,12 @@
       "loading": "Technische gidsen laden...",
       "empty": "Er is nog geen technische pagina gepubliceerd.",
       "errorMessage": "Technische pagina's kunnen niet worden geladen.",
-      "categoryCount": "{{count}} pagina('s)"
+      "categoryCount": {
+        "one": "{{count}} pagina",
+        "other": "{{count}} pagina's",
+        "few": "{{count}} pagina's",
+        "many": "{{count}} pagina's"
+      }
     },
     "detail": {
       "loading": "Technische pagina laden...",

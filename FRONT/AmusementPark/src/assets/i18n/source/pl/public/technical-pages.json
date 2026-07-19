@@ -7,7 +7,12 @@
       "loading": "Ładowanie przewodników technicznych...",
       "empty": "Nie opublikowano jeszcze żadnej strony technicznej.",
       "errorMessage": "Nie można załadować stron technicznych.",
-      "categoryCount": "{{count}} strona/stron"
+      "categoryCount": {
+        "one": "{{count}} strona",
+        "few": "{{count}} strony",
+        "many": "{{count}} stron",
+        "other": "{{count}} strony"
+      }
     },
     "detail": {
       "loading": "Ładowanie strony technicznej...",

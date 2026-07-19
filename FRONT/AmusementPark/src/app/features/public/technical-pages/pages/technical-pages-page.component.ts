@@ -9,6 +9,7 @@ import { TechnicalPagesApiService } from '@data-access/technical-pages/technical
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
+import { LocalizedPluralPipe } from '@shared/pipes';
 import { resolveLocalizedText } from '@shared/utils/localization';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
 
@@ -23,7 +24,7 @@ interface TechnicalPageGroup {
   templateUrl: './technical-pages-page.component.html',
   styleUrls: ['./technical-pages-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink, TranslateModule]
+  imports: [CommonModule, RouterLink, TranslateModule, LocalizedPluralPipe]
 })
 export class TechnicalPagesPageComponent implements OnInit {
   protected readonly pages = signal<TechnicalPage[]>([]);

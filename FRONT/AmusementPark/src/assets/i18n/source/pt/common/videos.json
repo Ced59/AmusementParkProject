@@ -9,8 +9,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} vídeos",
-      "views": "{{count}} visualizações",
+      "count": {
+        "one": "{{count}} vídeo",
+        "other": "{{count}} vídeos",
+        "few": "{{count}} vídeos",
+        "many": "{{count}} vídeos"
+      },
+      "views": {
+        "one": "{{count}} visualização",
+        "other": "{{count}} visualizações",
+        "few": "{{count}} visualizações",
+        "many": "{{count}} visualizações"
+      },
       "loadMore": "Carregar mais vídeos",
       "loadingMore": "A carregar..."
     },
@@ -56,7 +66,12 @@
       "duration": "Duração",
       "publishedAt": "Publicado",
       "viewCount": "Visualizações",
-      "views": "{{count}} visualizações",
+      "views": {
+        "one": "{{count}} visualização",
+        "other": "{{count}} visualizações",
+        "few": "{{count}} visualizações",
+        "many": "{{count}} visualizações"
+      },
       "tagsAndCategories": "Categorias e etiquetas",
       "openExternal": "Abrir vídeo",
       "openCreator": "Abrir criador",

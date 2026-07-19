@@ -12,6 +12,11 @@
     "error": "Hersteller können gerade nicht geladen werden.",
     "empty": "Kein Hersteller passt zu deiner Suche.",
     "noDescription": "Das Detailprofil muss noch ergaenzt werden.",
-    "attractionCount": "{{count}} Attraktion(en)"
+    "attractionCount": {
+      "one": "{{count}} Attraktion",
+      "other": "{{count}} Attraktionen",
+      "few": "{{count}} Attraktionen",
+      "many": "{{count}} Attraktionen"
+    }
   }
 }
