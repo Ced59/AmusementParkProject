@@ -62,12 +62,55 @@ describe('SeoService', () => {
   });
 
   it('avoids saying a park is directly à a country in French', () => {
-    const park: ParkDetailViewModel = buildParkDetail({ city: null, countryName: 'France', description: null });
+    const park: ParkDetailViewModel = buildParkDetail({ city: null, countryCode: 'FR', countryName: 'France', description: null });
 
     service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
 
     expect(readMetaContent('meta[property="og:title"]')).toBe('Guide de Demo Park en France — Amusement Parks');
     expect(readMetaContent('meta[property="og:title"]')).not.toContain(' à France');
+  });
+
+  it('uses au for French park metadata in a masculine country', () => {
+    const park: ParkDetailViewModel = buildParkDetail({
+      city: 'Montréal',
+      countryCode: 'ca',
+      countryName: 'Canada',
+      description: null
+    });
+
+    service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:title"]')).toBe('Guide de Demo Park à Montréal, au Canada — Amusement Parks');
+    expect(readMetaContent('meta[property="og:description"]')).toContain('Demo Park à Montréal, au Canada');
+  });
+
+  it('uses aux for French park metadata in a plural country', () => {
+    const park: ParkDetailViewModel = buildParkDetail({
+      city: 'Orlando',
+      countryCode: 'US',
+      countryName: 'États-Unis',
+      description: null
+    });
+
+    service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:title"]')).toBe('Guide de Demo Park à Orlando, aux États-Unis — Amusement Parks');
+    expect(readMetaContent('meta[property="og:description"]')).toContain('Demo Park à Orlando, aux États-Unis');
+  });
+
+  it('uses neutral location context in other languages to avoid country grammar errors', () => {
+    const park: ParkDetailViewModel = buildParkDetail({
+      city: 'Zürich',
+      countryCode: 'CH',
+      countryName: 'Schweiz',
+      description: null
+    });
+
+    service.applyParkDetailSeo(park, 'de', '/de/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:title"]')).toBe('Parkprofil Demo Park — Zürich, Schweiz — Amusement Parks');
+    expect(readMetaContent('meta[property="og:description"]')).toContain('Demo Park — Zürich, Schweiz');
+    expect(readMetaContent('meta[property="og:description"]')).not.toContain('in Schweiz');
   });
 
   it('uses the park item hero photo as the Open Graph image', () => {
