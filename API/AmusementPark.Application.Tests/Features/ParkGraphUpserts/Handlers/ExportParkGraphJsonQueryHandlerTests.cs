@@ -532,8 +532,8 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         JsonElement parkExportEvent = historyEvents.EnumerateArray().Single(historyEvent => historyEvent.GetProperty("key").GetString() == "park-opening");
         Assert.Equal("Park", parkExportEvent.GetProperty("entityType").GetString());
         Assert.Equal("park", parkExportEvent.GetProperty("owner").GetString());
-        Assert.Equal(string.Empty, parkExportEvent.GetProperty("ownerId").GetString());
-        Assert.Equal(JsonValueKind.Null, parkExportEvent.GetProperty("parkId").ValueKind);
+        Assert.Equal("park-1", parkExportEvent.GetProperty("ownerId").GetString());
+        Assert.Equal("park-1", parkExportEvent.GetProperty("parkId").GetString());
         Assert.Equal("Opening", parkExportEvent.GetProperty("eventType").GetString());
         Assert.Equal(1987, parkExportEvent.GetProperty("year").GetInt32());
         Assert.Equal(5, parkExportEvent.GetProperty("month").GetInt32());
@@ -549,11 +549,11 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         JsonElement itemExportEvent = historyEvents.EnumerateArray().Single(historyEvent => historyEvent.GetProperty("key").GetString() == "item-opening");
         Assert.Equal("ParkItem", itemExportEvent.GetProperty("entityType").GetString());
         Assert.Equal("parkItem", itemExportEvent.GetProperty("owner").GetString());
-        Assert.Equal(string.Empty, itemExportEvent.GetProperty("ownerId").GetString());
-        Assert.Equal(JsonValueKind.Null, itemExportEvent.GetProperty("parkItemId").ValueKind);
+        Assert.Equal("item-1", itemExportEvent.GetProperty("ownerId").GetString());
+        Assert.Equal("item-1", itemExportEvent.GetProperty("parkItemId").GetString());
         Assert.Equal("item-1", itemExportEvent.GetProperty("itemKey").GetString());
         Assert.Equal("item-1", itemExportEvent.GetProperty("parkItemKey").GetString());
-        Assert.Equal(JsonValueKind.Null, itemExportEvent.GetProperty("contextParkId").ValueKind);
+        Assert.Equal("park-1", itemExportEvent.GetProperty("contextParkId").GetString());
         Assert.Equal("Year", itemExportEvent.GetProperty("datePrecision").GetString());
 
         parkRepository.VerifyAll();
