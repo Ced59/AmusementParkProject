@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateService } from '@ngx-translate/core';
 
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { RatingTreeComponent, RatingTreePark } from './rating-tree.component';
@@ -43,6 +44,28 @@ describe('RatingTreeComponent', () => {
     expect(actions.length).toBe(2);
     expect(actions[0].textContent).toContain('ratings.tree.detailAction');
     expect(actions[1].textContent).toContain('ratings.tree.detailAction');
+  });
+
+  it('pluralizes the rating count with the label family supplied by the caller', () => {
+    const translateService: TranslateService = TestBed.inject(TranslateService);
+    translateService.setTranslation('en', {
+      ratings: {
+        profile: {
+          ratingCount: {
+            one: '{{count}} personal rating',
+            other: '{{count}} personal ratings'
+          }
+        }
+      }
+    });
+    translateService.use('en');
+    fixture.componentRef.setInput('ratingCountLabelKey', 'ratings.profile.ratingCount');
+    fixture.componentRef.setInput('parks', [{ ...createPark(), ratingCount: 1 }]);
+    fixture.detectChanges();
+
+    const countLabel: HTMLElement | null = fixture.nativeElement.querySelector('.rating-tree__park-main span');
+
+    expect(countLabel?.textContent?.trim()).toBe('1 personal rating');
   });
 
   it('emits rating changes when an editable star is selected', () => {

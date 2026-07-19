@@ -41,7 +41,7 @@
       "searchPlaceholder": "Find a park in your ratings",
       "searchAction": "Search",
       "clearSearch": "Clear search",
-      "ratingCount": "{{count}} rating(s)",
+      "ratingCount": { "one": "{{count}} rating", "few": "{{count}} ratings", "many": "{{count}} ratings", "other": "{{count}} ratings" },
       "loadMore": "Load more ratings",
       "loadingMore": "Loading ratings..."
     },
@@ -53,7 +53,7 @@
       "loading": "Loading rankings...",
       "empty": "No ranking is available yet.",
       "parkFallback": "Park",
-      "ratingCount": "{{count}} rating(s)",
+      "ratingCount": { "one": "{{count}} rating", "few": "{{count}} ratings", "many": "{{count}} ratings", "other": "{{count}} ratings" },
       "reliableBadge": "Reliable",
       "filters": {
         "label": "Filter rankings",

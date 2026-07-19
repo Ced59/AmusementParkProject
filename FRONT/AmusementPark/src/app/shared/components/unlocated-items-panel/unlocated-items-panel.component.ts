@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { UiButtonDirective } from '@ui/primitives';
+import { LocalizedPluralPipe } from '@shared/pipes';
 
 export interface UnlocatedItemsPanelItem {
   id: string | null;
@@ -17,7 +18,7 @@ export interface UnlocatedItemsPanelItem {
   templateUrl: './unlocated-items-panel.component.html',
   styleUrls: ['./unlocated-items-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule, UiButtonDirective]
+  imports: [RouterLink, TranslateModule, UiButtonDirective, LocalizedPluralPipe]
 })
 export class UnlocatedItemsPanelComponent implements OnChanges {
   @Input() items: readonly UnlocatedItemsPanelItem[] = [];

@@ -3686,6 +3686,104 @@
       "emptyMessage": "Todavía no hay ningún vídeo publicado para {{name}}."
     }
   },
+  "publicCounts": {
+    "place": {
+      "one": "Lugar por descubrir",
+      "few": "Lugares por descubrir",
+      "many": "Lugares por descubrir",
+      "other": "Lugares por descubrir"
+    },
+    "placeWithCount": {
+      "one": "{{count}} lugar",
+      "few": "{{count}} lugares",
+      "many": "{{count}} lugares",
+      "other": "{{count}} lugares"
+    },
+    "rollerCoaster": {
+      "one": "Montaña rusa",
+      "few": "Montañas rusas",
+      "many": "Montañas rusas",
+      "other": "Montañas rusas"
+    },
+    "waterRide": {
+      "one": "Atracción acuática",
+      "few": "Atracciones acuáticas",
+      "many": "Atracciones acuáticas",
+      "other": "Atracciones acuáticas"
+    },
+    "flatRide": {
+      "one": "Atracción plana",
+      "few": "Atracciones planas",
+      "many": "Atracciones planas",
+      "other": "Atracciones planas"
+    },
+    "darkRide": {
+      "one": "Atracción oscura",
+      "few": "Atracciones oscuras",
+      "many": "Atracciones oscuras",
+      "other": "Atracciones oscuras"
+    },
+    "manufacturerFound": {
+      "one": "{{count}} fabricante encontrado",
+      "few": "{{count}} fabricantes encontrados",
+      "many": "{{count}} fabricantes encontrados",
+      "other": "{{count}} fabricantes encontrados"
+    },
+    "parkOnMap": {
+      "one": "{{count}} parque en el mapa",
+      "few": "{{count}} parques en el mapa",
+      "many": "{{count}} parques en el mapa",
+      "other": "{{count}} parques en el mapa"
+    },
+    "result": {
+      "one": "{{count}} resultado",
+      "few": "{{count}} resultados",
+      "many": "{{count}} resultados",
+      "other": "{{count}} resultados"
+    },
+    "unlocatedPlace": {
+      "one": "{{count}} lugar fuera del mapa",
+      "few": "{{count}} lugares fuera del mapa",
+      "many": "{{count}} lugares fuera del mapa",
+      "other": "{{count}} lugares fuera del mapa"
+    },
+    "resultRange": {
+      "one": "Mostrando {{start}} a {{end}} de {{total}} lugar",
+      "few": "Mostrando {{start}} a {{end}} de {{total}} lugares",
+      "many": "Mostrando {{start}} a {{end}} de {{total}} lugares",
+      "other": "Mostrando {{start}} a {{end}} de {{total}} lugares"
+    },
+    "rating": {
+      "one": "{{count}} valoración",
+      "few": "{{count}} valoraciones",
+      "many": "{{count}} valoraciones",
+      "other": "{{count}} valoraciones"
+    },
+    "averageRating": {
+      "one": "Valoración media {{value}} de 5 con {{count}} valoración.",
+      "few": "Valoración media {{value}} de 5 con {{count}} valoraciones.",
+      "many": "Valoración media {{value}} de 5 con {{count}} valoraciones.",
+      "other": "Valoración media {{value}} de 5 con {{count}} valoraciones."
+    },
+    "day": {
+      "one": "{{count}} día",
+      "few": "{{count}} días",
+      "many": "{{count}} días",
+      "other": "{{count}} días"
+    },
+    "zoneWithCount": {
+      "one": "{{count}} zona",
+      "few": "{{count}} zonas",
+      "many": "{{count}} zonas",
+      "other": "{{count}} zonas"
+    },
+    "zoneSummary": {
+      "one": "{{zoneCountLabel}} que agrupa {{placeCountLabel}} por descubrir.",
+      "few": "{{zoneCountLabel}} que agrupan {{placeCountLabel}} por descubrir.",
+      "many": "{{zoneCountLabel}} que agrupan {{placeCountLabel}} por descubrir.",
+      "other": "{{zoneCountLabel}} que agrupan {{placeCountLabel}} por descubrir."
+    }
+  },
   "privacyPage": {
     "kicker": "Datos personales",
     "title": "Política de privacidad",
@@ -3808,7 +3906,12 @@
       "searchPlaceholder": "Encontrar un parque en tus notas",
       "searchAction": "Buscar",
       "clearSearch": "Borrar búsqueda",
-      "ratingCount": "{{count}} nota(s)",
+      "ratingCount": {
+        "one": "{{count}} nota",
+        "few": "{{count}} notas",
+        "many": "{{count}} notas",
+        "other": "{{count}} notas"
+      },
       "loadMore": "Cargar más notas",
       "loadingMore": "Cargando notas..."
     },
@@ -3820,7 +3923,12 @@
       "loading": "Cargando rankings...",
       "empty": "No hay ranking disponible por ahora.",
       "parkFallback": "Parque",
-      "ratingCount": "{{count}} valoración(es)",
+      "ratingCount": {
+        "one": "{{count}} valoración",
+        "few": "{{count}} valoraciones",
+        "many": "{{count}} valoraciones",
+        "other": "{{count}} valoraciones"
+      },
       "reliableBadge": "Fiable",
       "filters": {
         "label": "Filtrar rankings",

@@ -41,7 +41,7 @@
       "searchPlaceholder": "Vind een park in je beoordelingen",
       "searchAction": "Zoeken",
       "clearSearch": "Zoekopdracht wissen",
-      "ratingCount": "{{count}} beoordeling(en)",
+      "ratingCount": { "one": "{{count}} beoordeling", "few": "{{count}} beoordelingen", "many": "{{count}} beoordelingen", "other": "{{count}} beoordelingen" },
       "loadMore": "Meer beoordelingen laden",
       "loadingMore": "Beoordelingen laden..."
     },
@@ -53,7 +53,7 @@
       "loading": "Ranglijsten worden geladen...",
       "empty": "Er is nog geen ranglijst beschikbaar.",
       "parkFallback": "Park",
-      "ratingCount": "{{count}} beoordeling(en)",
+      "ratingCount": { "one": "{{count}} beoordeling", "few": "{{count}} beoordelingen", "many": "{{count}} beoordelingen", "other": "{{count}} beoordelingen" },
       "reliableBadge": "Betrouwbaar",
       "filters": {
         "label": "Ranglijsten filteren",

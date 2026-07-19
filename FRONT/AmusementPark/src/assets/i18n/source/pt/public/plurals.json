@@ -1,0 +1,20 @@
+{
+  "publicCounts": {
+    "place": { "one": "Local a descobrir", "few": "Locais a descobrir", "many": "Locais a descobrir", "other": "Locais a descobrir" },
+    "placeWithCount": { "one": "{{count}} local", "few": "{{count}} locais", "many": "{{count}} locais", "other": "{{count}} locais" },
+    "rollerCoaster": { "one": "Montanha-russa", "few": "Montanhas-russas", "many": "Montanhas-russas", "other": "Montanhas-russas" },
+    "waterRide": { "one": "Atração aquática", "few": "Atrações aquáticas", "many": "Atrações aquáticas", "other": "Atrações aquáticas" },
+    "flatRide": { "one": "Carrossel", "few": "Carrosséis", "many": "Carrosséis", "other": "Carrosséis" },
+    "darkRide": { "one": "Dark ride", "few": "Dark rides", "many": "Dark rides", "other": "Dark rides" },
+    "manufacturerFound": { "one": "{{count}} fabricante encontrado", "few": "{{count}} fabricantes encontrados", "many": "{{count}} fabricantes encontrados", "other": "{{count}} fabricantes encontrados" },
+    "parkOnMap": { "one": "{{count}} parque no mapa", "few": "{{count}} parques no mapa", "many": "{{count}} parques no mapa", "other": "{{count}} parques no mapa" },
+    "result": { "one": "{{count}} resultado", "few": "{{count}} resultados", "many": "{{count}} resultados", "other": "{{count}} resultados" },
+    "unlocatedPlace": { "one": "{{count}} local fora do mapa", "few": "{{count}} locais fora do mapa", "many": "{{count}} locais fora do mapa", "other": "{{count}} locais fora do mapa" },
+    "resultRange": { "one": "A mostrar de {{start}} a {{end}} de {{total}} local", "few": "A mostrar de {{start}} a {{end}} de {{total}} locais", "many": "A mostrar de {{start}} a {{end}} de {{total}} locais", "other": "A mostrar de {{start}} a {{end}} de {{total}} locais" },
+    "rating": { "one": "{{count}} avaliação", "few": "{{count}} avaliações", "many": "{{count}} avaliações", "other": "{{count}} avaliações" },
+    "averageRating": { "one": "Avaliação média {{value}} em 5 com {{count}} avaliação.", "few": "Avaliação média {{value}} em 5 com {{count}} avaliações.", "many": "Avaliação média {{value}} em 5 com {{count}} avaliações.", "other": "Avaliação média {{value}} em 5 com {{count}} avaliações." },
+    "day": { "one": "{{count}} dia", "few": "{{count}} dias", "many": "{{count}} dias", "other": "{{count}} dias" },
+    "zoneWithCount": { "one": "{{count}} zona", "few": "{{count}} zonas", "many": "{{count}} zonas", "other": "{{count}} zonas" },
+    "zoneSummary": { "one": "{{zoneCountLabel}} que agrupa {{placeCountLabel}} a descobrir.", "few": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir.", "many": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir.", "other": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir." }
+  }
+}

@@ -3,6 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { RatingSummary, RatingTargetType } from '@app/models/ratings/rating.models';
 import { PublicRatingStateFacade } from '../state/public-rating-state.facade';
+import { LocalizedPluralPipe } from '@shared/pipes';
 
 @Component({
   selector: 'app-rating-stars',
@@ -10,7 +11,7 @@ import { PublicRatingStateFacade } from '../state/public-rating-state.facade';
   styleUrls: ['./rating-stars.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PublicRatingStateFacade],
-  imports: [TranslateModule]
+  imports: [TranslateModule, LocalizedPluralPipe]
 })
 export class RatingStarsComponent implements OnChanges {
   protected readonly starIndexes: readonly number[] = [1, 2, 3, 4, 5];

@@ -41,7 +41,7 @@
       "searchPlaceholder": "Encontrar un parque en tus notas",
       "searchAction": "Buscar",
       "clearSearch": "Borrar búsqueda",
-      "ratingCount": "{{count}} nota(s)",
+      "ratingCount": { "one": "{{count}} nota", "few": "{{count}} notas", "many": "{{count}} notas", "other": "{{count}} notas" },
       "loadMore": "Cargar más notas",
       "loadingMore": "Cargando notas..."
     },
@@ -53,7 +53,7 @@
       "loading": "Cargando rankings...",
       "empty": "No hay ranking disponible por ahora.",
       "parkFallback": "Parque",
-      "ratingCount": "{{count}} valoración(es)",
+      "ratingCount": { "one": "{{count}} valoración", "few": "{{count}} valoraciones", "many": "{{count}} valoraciones", "other": "{{count}} valoraciones" },
       "reliableBadge": "Fiable",
       "filters": {
         "label": "Filtrar rankings",

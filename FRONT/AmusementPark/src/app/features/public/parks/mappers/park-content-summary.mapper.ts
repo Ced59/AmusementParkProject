@@ -16,6 +16,14 @@ function createSummaryEntry(
   };
 }
 
+function getPublicCountKey(segment: string): string {
+  return `publicCounts.${segment}`;
+}
+
+function getHomeCountKey(segment: string): string {
+  return `home.counts.${segment}`;
+}
+
 export function mapParkContentSummaryViewModel(
   park: ParkDetailViewModel | null,
   explorer: ParkExplorer | null
@@ -33,84 +41,84 @@ export function mapParkContentSummaryViewModel(
 
   const entries: ParkContentSummaryEntryViewModel[] = [
     createSummaryEntry(
-      'parkVisitor.summary.totalItems',
+      getPublicCountKey('place'),
       explorer.overview.totalItems,
       'pi pi-th-large'
     ),
     createSummaryEntry(
-      'parkExplorer.categories.attraction',
+      getHomeCountKey('attraction'),
       categoryCounts.get('Attraction') ?? 0,
       'pi pi-star',
       { category: 'Attraction' }
     ),
     createSummaryEntry(
-      'parkExplorer.types.rollerCoaster',
+      getPublicCountKey('rollerCoaster'),
       typeCounts.get('RollerCoaster') ?? 0,
       'pi pi-bolt',
       { type: 'RollerCoaster' }
     ),
     createSummaryEntry(
-      'parkExplorer.types.waterRide',
+      getPublicCountKey('waterRide'),
       typeCounts.get('WaterRide') ?? 0,
       'pi pi-compass',
       { type: 'WaterRide' }
     ),
     createSummaryEntry(
-      'parkExplorer.types.flatRide',
+      getPublicCountKey('flatRide'),
       typeCounts.get('FlatRide') ?? 0,
       'pi pi-sync',
       { type: 'FlatRide' }
     ),
     createSummaryEntry(
-      'parkExplorer.types.darkRide',
+      getPublicCountKey('darkRide'),
       typeCounts.get('DarkRide') ?? 0,
       'pi pi-moon',
       { type: 'DarkRide' }
     ),
     createSummaryEntry(
-      'parkExplorer.categories.restaurant',
+      getHomeCountKey('restaurant'),
       categoryCounts.get('Restaurant') ?? 0,
       'pi pi-shopping-cart',
       { category: 'Restaurant' }
     ),
     createSummaryEntry(
-      'parkExplorer.categories.hotel',
+      getHomeCountKey('hotel'),
       categoryCounts.get('Hotel') ?? 0,
       'pi pi-building',
       { category: 'Hotel' }
     ),
     createSummaryEntry(
-      'parkExplorer.categories.show',
+      getHomeCountKey('show'),
       categoryCounts.get('Show') ?? 0,
       'pi pi-ticket',
       { category: 'Show' }
     ),
     createSummaryEntry(
-      'parkExplorer.categories.shop',
+      getHomeCountKey('shop'),
       categoryCounts.get('Shop') ?? 0,
       'pi pi-shopping-bag',
       { category: 'Shop' }
     ),
     createSummaryEntry(
-      'parkExplorer.categories.animal',
+      getHomeCountKey('animal'),
       categoryCounts.get('Animal') ?? 0,
       'pi pi-heart',
       { category: 'Animal' }
     ),
     createSummaryEntry(
-      'parkExplorer.categories.transport',
+      getHomeCountKey('transport'),
       categoryCounts.get('Transport') ?? 0,
       'pi pi-car',
       { category: 'Transport' }
     ),
     createSummaryEntry(
-      'parkExplorer.categories.service',
+      getHomeCountKey('service'),
       categoryCounts.get('Service') ?? 0,
       'pi pi-wrench',
       { category: 'Service' }
     ),
     createSummaryEntry(
-      'parkExplorer.categories.other',
+      getHomeCountKey('other'),
       categoryCounts.get('Other') ?? 0,
       'pi pi-ellipsis-h',
       { category: 'Other' }

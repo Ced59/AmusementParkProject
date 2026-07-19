@@ -1,10 +1,10 @@
 <section class="rating-stars" (mouseleave)="clearPreview()">
-  <div class="rating-stars__score" [attr.aria-label]="'ratings.stars.averageAria' | translate:{ value: formattedAverage(), count: count() }">
+  <div class="rating-stars__score" [attr.aria-label]="'publicCounts.averageRating' | localizedPlural:count():{ value: formattedAverage() }">
     <span class="rating-stars__score-label">{{ 'ratings.stars.averageLabel' | translate }}</span>
     <span class="rating-stars__average">{{ formattedAverage() }}</span>
     <span class="rating-stars__meta">
       @if (count() > 0) {
-        {{ 'ratings.stars.count' | translate:{ count: count() } }}
+        {{ 'publicCounts.rating' | localizedPlural:count() }}
       } @else {
         {{ 'ratings.stars.noRatings' | translate }}
       }

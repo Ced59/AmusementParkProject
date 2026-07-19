@@ -1,0 +1,20 @@
+{
+  "publicCounts": {
+    "place": { "one": "Ort zum Entdecken", "few": "Orte zum Entdecken", "many": "Orte zum Entdecken", "other": "Orte zum Entdecken" },
+    "placeWithCount": { "one": "{{count}} Ort", "few": "{{count}} Orte", "many": "{{count}} Orte", "other": "{{count}} Orte" },
+    "rollerCoaster": { "one": "Achterbahn", "few": "Achterbahnen", "many": "Achterbahnen", "other": "Achterbahnen" },
+    "waterRide": { "one": "Wasserattraktion", "few": "Wasserattraktionen", "many": "Wasserattraktionen", "other": "Wasserattraktionen" },
+    "flatRide": { "one": "Fahrgeschäft", "few": "Fahrgeschäfte", "many": "Fahrgeschäfte", "other": "Fahrgeschäfte" },
+    "darkRide": { "one": "Themenfahrt", "few": "Themenfahrten", "many": "Themenfahrten", "other": "Themenfahrten" },
+    "manufacturerFound": { "one": "{{count}} Hersteller gefunden", "few": "{{count}} Hersteller gefunden", "many": "{{count}} Hersteller gefunden", "other": "{{count}} Hersteller gefunden" },
+    "parkOnMap": { "one": "{{count}} Park auf der Karte", "few": "{{count}} Parks auf der Karte", "many": "{{count}} Parks auf der Karte", "other": "{{count}} Parks auf der Karte" },
+    "result": { "one": "{{count}} Ergebnis", "few": "{{count}} Ergebnisse", "many": "{{count}} Ergebnisse", "other": "{{count}} Ergebnisse" },
+    "unlocatedPlace": { "one": "{{count}} Ort außerhalb der Karte", "few": "{{count}} Orte außerhalb der Karte", "many": "{{count}} Orte außerhalb der Karte", "other": "{{count}} Orte außerhalb der Karte" },
+    "resultRange": { "one": "Anzeige {{start}} bis {{end}} von {{total}} Ort", "few": "Anzeige {{start}} bis {{end}} von {{total}} Orten", "many": "Anzeige {{start}} bis {{end}} von {{total}} Orten", "other": "Anzeige {{start}} bis {{end}} von {{total}} Orten" },
+    "rating": { "one": "{{count}} Bewertung", "few": "{{count}} Bewertungen", "many": "{{count}} Bewertungen", "other": "{{count}} Bewertungen" },
+    "averageRating": { "one": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertung.", "few": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertungen.", "many": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertungen.", "other": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertungen." },
+    "day": { "one": "{{count}} Tag", "few": "{{count}} Tage", "many": "{{count}} Tage", "other": "{{count}} Tage" },
+    "zoneWithCount": { "one": "{{count}} Bereich", "few": "{{count}} Bereiche", "many": "{{count}} Bereiche", "other": "{{count}} Bereiche" },
+    "zoneSummary": { "one": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken.", "few": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken.", "many": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken.", "other": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken." }
+  }
+}

@@ -13,7 +13,7 @@
       <div>
         <app-ui-kicker iconClass="pi pi-th-large">{{ 'parks.zones.badge' | translate }}</app-ui-kicker>
         <h1>{{ 'parks.zones.title' | translate:{ park: currentPage.parkName } }}</h1>
-        <p>{{ 'parks.zones.subtitle' | translate:{ count: currentPage.zoneCount, total: currentPage.totalItems } }}</p>
+        <p>{{ zoneSummary(currentPage.zoneCount, currentPage.totalItems) }}</p>
       </div>
 
       <div class="zones-hero__actions">

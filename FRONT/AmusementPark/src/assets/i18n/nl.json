@@ -3686,6 +3686,104 @@
       "emptyMessage": "Er is nog geen gepubliceerde video beschikbaar voor {{name}}."
     }
   },
+  "publicCounts": {
+    "place": {
+      "one": "Plek om te ontdekken",
+      "few": "Plekken om te ontdekken",
+      "many": "Plekken om te ontdekken",
+      "other": "Plekken om te ontdekken"
+    },
+    "placeWithCount": {
+      "one": "{{count}} plek",
+      "few": "{{count}} plekken",
+      "many": "{{count}} plekken",
+      "other": "{{count}} plekken"
+    },
+    "rollerCoaster": {
+      "one": "Achtbaan",
+      "few": "Achtbanen",
+      "many": "Achtbanen",
+      "other": "Achtbanen"
+    },
+    "waterRide": {
+      "one": "Waterattractie",
+      "few": "Waterattracties",
+      "many": "Waterattracties",
+      "other": "Waterattracties"
+    },
+    "flatRide": {
+      "one": "Kermisattractie",
+      "few": "Kermisattracties",
+      "many": "Kermisattracties",
+      "other": "Kermisattracties"
+    },
+    "darkRide": {
+      "one": "Darkride",
+      "few": "Darkrides",
+      "many": "Darkrides",
+      "other": "Darkrides"
+    },
+    "manufacturerFound": {
+      "one": "{{count}} bouwer gevonden",
+      "few": "{{count}} bouwers gevonden",
+      "many": "{{count}} bouwers gevonden",
+      "other": "{{count}} bouwers gevonden"
+    },
+    "parkOnMap": {
+      "one": "{{count}} park op de kaart",
+      "few": "{{count}} parken op de kaart",
+      "many": "{{count}} parken op de kaart",
+      "other": "{{count}} parken op de kaart"
+    },
+    "result": {
+      "one": "{{count}} resultaat",
+      "few": "{{count}} resultaten",
+      "many": "{{count}} resultaten",
+      "other": "{{count}} resultaten"
+    },
+    "unlocatedPlace": {
+      "one": "{{count}} plek buiten de kaart",
+      "few": "{{count}} plekken buiten de kaart",
+      "many": "{{count}} plekken buiten de kaart",
+      "other": "{{count}} plekken buiten de kaart"
+    },
+    "resultRange": {
+      "one": "Weergave {{start}} tot {{end}} van {{total}} plek",
+      "few": "Weergave {{start}} tot {{end}} van {{total}} plekken",
+      "many": "Weergave {{start}} tot {{end}} van {{total}} plekken",
+      "other": "Weergave {{start}} tot {{end}} van {{total}} plekken"
+    },
+    "rating": {
+      "one": "{{count}} beoordeling",
+      "few": "{{count}} beoordelingen",
+      "many": "{{count}} beoordelingen",
+      "other": "{{count}} beoordelingen"
+    },
+    "averageRating": {
+      "one": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordeling.",
+      "few": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordelingen.",
+      "many": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordelingen.",
+      "other": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordelingen."
+    },
+    "day": {
+      "one": "{{count}} dag",
+      "few": "{{count}} dagen",
+      "many": "{{count}} dagen",
+      "other": "{{count}} dagen"
+    },
+    "zoneWithCount": {
+      "one": "{{count}} zone",
+      "few": "{{count}} zones",
+      "many": "{{count}} zones",
+      "other": "{{count}} zones"
+    },
+    "zoneSummary": {
+      "one": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken.",
+      "few": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken.",
+      "many": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken.",
+      "other": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken."
+    }
+  },
   "privacyPage": {
     "kicker": "Persoonsgegevens",
     "title": "Privacybeleid",
@@ -3808,7 +3906,12 @@
       "searchPlaceholder": "Vind een park in je beoordelingen",
       "searchAction": "Zoeken",
       "clearSearch": "Zoekopdracht wissen",
-      "ratingCount": "{{count}} beoordeling(en)",
+      "ratingCount": {
+        "one": "{{count}} beoordeling",
+        "few": "{{count}} beoordelingen",
+        "many": "{{count}} beoordelingen",
+        "other": "{{count}} beoordelingen"
+      },
       "loadMore": "Meer beoordelingen laden",
       "loadingMore": "Beoordelingen laden..."
     },
@@ -3820,7 +3923,12 @@
       "loading": "Ranglijsten worden geladen...",
       "empty": "Er is nog geen ranglijst beschikbaar.",
       "parkFallback": "Park",
-      "ratingCount": "{{count}} beoordeling(en)",
+      "ratingCount": {
+        "one": "{{count}} beoordeling",
+        "few": "{{count}} beoordelingen",
+        "many": "{{count}} beoordelingen",
+        "other": "{{count}} beoordelingen"
+      },
       "reliableBadge": "Betrouwbaar",
       "filters": {
         "label": "Ranglijsten filteren",

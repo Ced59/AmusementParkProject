@@ -19,7 +19,7 @@
     </div>
 
     <app-ui-chip tone="sky" iconClass="pi pi-eye">
-      {{ 'parks.map.visiblePins' | translate:{ count: mapPoints().length } }}
+      {{ 'publicCounts.parkOnMap' | localizedPlural:mapPoints().length }}
     </app-ui-chip>
   </div>
 

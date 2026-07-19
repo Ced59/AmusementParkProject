@@ -23,7 +23,7 @@ import {
   buildPublicParkRouteCommands,
   buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
-import { SafeExternalUrlPipe } from '@shared/pipes';
+import { LocalizedPluralPipe, SafeExternalUrlPipe } from '@shared/pipes';
 import { UiButtonDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 
@@ -70,7 +70,7 @@ type ParkOpeningHoursDayTone = 'empty' | 'closed' | 'short' | 'standard' | 'long
   templateUrl: './park-opening-hours-page.component.html',
   styleUrls: ['./park-opening-hours-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, PublicSharePanelComponent, RouterLink, TranslateModule, SafeExternalUrlPipe, UiButtonDirective]
+  imports: [PageStateComponent, PublicSharePanelComponent, RouterLink, TranslateModule, SafeExternalUrlPipe, UiButtonDirective, LocalizedPluralPipe]
 })
 export class ParkOpeningHoursPageComponent implements OnInit {
   private readonly stateStore = new SignalScreenStateStore<ParkOpeningHoursPageData>();

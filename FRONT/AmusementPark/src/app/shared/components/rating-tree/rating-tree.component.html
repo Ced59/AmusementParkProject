@@ -8,7 +8,7 @@
 
         <span class="rating-tree__park-main">
           <strong class="rating-tree__title">{{ park.name }}</strong>
-          <span>{{ ratingCountLabelKey | translate:{ count: park.ratingCount } }}</span>
+          <span>{{ ratingCountLabelKey | localizedPlural:park.ratingCount }}</span>
         </span>
 
         <span class="rating-tree__summary-actions">

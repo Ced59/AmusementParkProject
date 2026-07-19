@@ -8,13 +8,14 @@ import { UiChipComponent } from '@ui/primitives';
 import { UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
+import { LocalizedPluralPipe } from '@shared/pipes';
 
 @Component({
   selector: 'app-park-list-map',
   templateUrl: './park-list-map.component.html',
   styleUrls: ['./park-list-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LeafletMapComponent, TranslateModule, UiChipComponent, UiMapShellComponent, UiMapSlotComponent]
+  imports: [LeafletMapComponent, TranslateModule, UiChipComponent, UiMapShellComponent, UiMapSlotComponent, LocalizedPluralPipe]
 })
 export class ParkListMapComponent {
   private readonly translateService: TranslateService = inject(TranslateService);

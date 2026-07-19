@@ -1,6 +1,20 @@
 {
-  "version": "3.4.28",
+  "version": "3.4.29",
   "history": [
+    {
+      "version": "3.4.29",
+      "releasedAt": "2026-07-19",
+      "labels": {
+        "fr": "Les quantités sont plus naturelles dans tout le site.",
+        "en": "Counts read more naturally throughout the site.",
+        "de": "Anzahlen werden auf der gesamten Website natürlicher angezeigt.",
+        "nl": "Aantallen worden overal op de site natuurlijker weergegeven.",
+        "it": "Le quantità sono più naturali in tutto il sito.",
+        "es": "Las cantidades se muestran de forma más natural en todo el sitio.",
+        "pl": "Liczby są wyświetlane naturalniej w całym serwisie.",
+        "pt": "As quantidades são apresentadas de forma mais natural em todo o site."
+      }
+    },
     {
       "version": "3.4.28",
       "releasedAt": "2026-07-19",

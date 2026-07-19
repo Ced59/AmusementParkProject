@@ -41,7 +41,7 @@
       "searchPlaceholder": "Encontrar um parque nas tuas avaliações",
       "searchAction": "Pesquisar",
       "clearSearch": "Limpar pesquisa",
-      "ratingCount": "{{count}} avaliação(ões)",
+      "ratingCount": { "one": "{{count}} avaliação", "few": "{{count}} avaliações", "many": "{{count}} avaliações", "other": "{{count}} avaliações" },
       "loadMore": "Carregar mais avaliações",
       "loadingMore": "A carregar avaliações..."
     },
@@ -53,7 +53,7 @@
       "loading": "A carregar rankings...",
       "empty": "Ainda não há ranking disponível.",
       "parkFallback": "Parque",
-      "ratingCount": "{{count}} avaliação(ões)",
+      "ratingCount": { "one": "{{count}} avaliação", "few": "{{count}} avaliações", "many": "{{count}} avaliações", "other": "{{count}} avaliações" },
       "reliableBadge": "Fiável",
       "filters": {
         "label": "Filtrar rankings",

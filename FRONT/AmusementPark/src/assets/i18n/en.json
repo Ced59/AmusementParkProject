@@ -3686,6 +3686,104 @@
       "emptyMessage": "No published video is available for {{name}} yet."
     }
   },
+  "publicCounts": {
+    "place": {
+      "one": "Place to discover",
+      "few": "Places to discover",
+      "many": "Places to discover",
+      "other": "Places to discover"
+    },
+    "placeWithCount": {
+      "one": "{{count}} place",
+      "few": "{{count}} places",
+      "many": "{{count}} places",
+      "other": "{{count}} places"
+    },
+    "rollerCoaster": {
+      "one": "Roller coaster",
+      "few": "Roller coasters",
+      "many": "Roller coasters",
+      "other": "Roller coasters"
+    },
+    "waterRide": {
+      "one": "Water ride",
+      "few": "Water rides",
+      "many": "Water rides",
+      "other": "Water rides"
+    },
+    "flatRide": {
+      "one": "Flat ride",
+      "few": "Flat rides",
+      "many": "Flat rides",
+      "other": "Flat rides"
+    },
+    "darkRide": {
+      "one": "Dark ride",
+      "few": "Dark rides",
+      "many": "Dark rides",
+      "other": "Dark rides"
+    },
+    "manufacturerFound": {
+      "one": "{{count}} manufacturer found",
+      "few": "{{count}} manufacturers found",
+      "many": "{{count}} manufacturers found",
+      "other": "{{count}} manufacturers found"
+    },
+    "parkOnMap": {
+      "one": "{{count}} park on the map",
+      "few": "{{count}} parks on the map",
+      "many": "{{count}} parks on the map",
+      "other": "{{count}} parks on the map"
+    },
+    "result": {
+      "one": "{{count}} result",
+      "few": "{{count}} results",
+      "many": "{{count}} results",
+      "other": "{{count}} results"
+    },
+    "unlocatedPlace": {
+      "one": "{{count}} place off map",
+      "few": "{{count}} places off map",
+      "many": "{{count}} places off map",
+      "other": "{{count}} places off map"
+    },
+    "resultRange": {
+      "one": "Showing {{start}} to {{end}} of {{total}} place",
+      "few": "Showing {{start}} to {{end}} of {{total}} places",
+      "many": "Showing {{start}} to {{end}} of {{total}} places",
+      "other": "Showing {{start}} to {{end}} of {{total}} places"
+    },
+    "rating": {
+      "one": "{{count}} rating",
+      "few": "{{count}} ratings",
+      "many": "{{count}} ratings",
+      "other": "{{count}} ratings"
+    },
+    "averageRating": {
+      "one": "Average rating {{value}} out of 5 from {{count}} rating.",
+      "few": "Average rating {{value}} out of 5 from {{count}} ratings.",
+      "many": "Average rating {{value}} out of 5 from {{count}} ratings.",
+      "other": "Average rating {{value}} out of 5 from {{count}} ratings."
+    },
+    "day": {
+      "one": "{{count}} day",
+      "few": "{{count}} days",
+      "many": "{{count}} days",
+      "other": "{{count}} days"
+    },
+    "zoneWithCount": {
+      "one": "{{count}} zone",
+      "few": "{{count}} zones",
+      "many": "{{count}} zones",
+      "other": "{{count}} zones"
+    },
+    "zoneSummary": {
+      "one": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.",
+      "few": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.",
+      "many": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.",
+      "other": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover."
+    }
+  },
   "privacyPage": {
     "kicker": "Personal data",
     "title": "Privacy policy",
@@ -3808,7 +3906,12 @@
       "searchPlaceholder": "Find a park in your ratings",
       "searchAction": "Search",
       "clearSearch": "Clear search",
-      "ratingCount": "{{count}} rating(s)",
+      "ratingCount": {
+        "one": "{{count}} rating",
+        "few": "{{count}} ratings",
+        "many": "{{count}} ratings",
+        "other": "{{count}} ratings"
+      },
       "loadMore": "Load more ratings",
       "loadingMore": "Loading ratings..."
     },
@@ -3820,7 +3923,12 @@
       "loading": "Loading rankings...",
       "empty": "No ranking is available yet.",
       "parkFallback": "Park",
-      "ratingCount": "{{count}} rating(s)",
+      "ratingCount": {
+        "one": "{{count}} rating",
+        "few": "{{count}} ratings",
+        "many": "{{count}} ratings",
+        "other": "{{count}} ratings"
+      },
       "reliableBadge": "Reliable",
       "filters": {
         "label": "Filter rankings",

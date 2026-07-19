@@ -1,0 +1,20 @@
+{
+  "publicCounts": {
+    "place": { "one": "Lieu à découvrir", "few": "Lieux à découvrir", "many": "Lieux à découvrir", "other": "Lieux à découvrir" },
+    "placeWithCount": { "one": "{{count}} lieu", "few": "{{count}} lieux", "many": "{{count}} lieux", "other": "{{count}} lieux" },
+    "rollerCoaster": { "one": "Montagne russe", "few": "Montagnes russes", "many": "Montagnes russes", "other": "Montagnes russes" },
+    "waterRide": { "one": "Attraction aquatique", "few": "Attractions aquatiques", "many": "Attractions aquatiques", "other": "Attractions aquatiques" },
+    "flatRide": { "one": "Manège", "few": "Manèges", "many": "Manèges", "other": "Manèges" },
+    "darkRide": { "one": "Parcours scénique", "few": "Parcours scéniques", "many": "Parcours scéniques", "other": "Parcours scéniques" },
+    "manufacturerFound": { "one": "{{count}} constructeur trouvé", "few": "{{count}} constructeurs trouvés", "many": "{{count}} constructeurs trouvés", "other": "{{count}} constructeurs trouvés" },
+    "parkOnMap": { "one": "{{count}} parc sur la carte", "few": "{{count}} parcs sur la carte", "many": "{{count}} parcs sur la carte", "other": "{{count}} parcs sur la carte" },
+    "result": { "one": "{{count}} résultat", "few": "{{count}} résultats", "many": "{{count}} résultats", "other": "{{count}} résultats" },
+    "unlocatedPlace": { "one": "{{count}} lieu sans carte", "few": "{{count}} lieux sans carte", "many": "{{count}} lieux sans carte", "other": "{{count}} lieux sans carte" },
+    "resultRange": { "one": "Affichage de {{start}} à {{end}} sur {{total}} lieu", "few": "Affichage de {{start}} à {{end}} sur {{total}} lieux", "many": "Affichage de {{start}} à {{end}} sur {{total}} lieux", "other": "Affichage de {{start}} à {{end}} sur {{total}} lieux" },
+    "rating": { "one": "{{count}} note", "few": "{{count}} notes", "many": "{{count}} notes", "other": "{{count}} notes" },
+    "averageRating": { "one": "Note moyenne {{value}} sur 5 avec {{count}} note.", "few": "Note moyenne {{value}} sur 5 avec {{count}} notes.", "many": "Note moyenne {{value}} sur 5 avec {{count}} notes.", "other": "Note moyenne {{value}} sur 5 avec {{count}} notes." },
+    "day": { "one": "{{count}} jour", "few": "{{count}} jours", "many": "{{count}} jours", "other": "{{count}} jours" },
+    "zoneWithCount": { "one": "{{count}} zone", "few": "{{count}} zones", "many": "{{count}} zones", "other": "{{count}} zones" },
+    "zoneSummary": { "one": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.", "few": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.", "many": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.", "other": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir." }
+  }
+}
