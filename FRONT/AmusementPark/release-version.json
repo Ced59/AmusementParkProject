@@ -1,6 +1,20 @@
 {
-  "version": "3.4.26",
+  "version": "3.4.27",
   "history": [
+    {
+      "version": "3.4.27",
+      "releasedAt": "2026-07-19",
+      "labels": {
+        "fr": "Les exports administratifs restent plus fiables.",
+        "en": "Administration exports stay more reliable.",
+        "de": "Verwaltungsexporte bleiben zuverlässiger.",
+        "nl": "Beheerexports blijven betrouwbaarder.",
+        "it": "Le esportazioni amministrative restano più affidabili.",
+        "es": "Las exportaciones de administración siguen siendo más fiables.",
+        "pl": "Eksporty administracyjne działają bardziej niezawodnie.",
+        "pt": "As exportações de administração ficam mais fiáveis."
+      }
+    },
     {
       "version": "3.4.26",
       "releasedAt": "2026-07-16",

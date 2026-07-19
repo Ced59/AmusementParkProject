@@ -18,6 +18,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
@@ -207,6 +208,86 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenHistoryIsSelected_ShouldPreserveHistoryIdentifiers()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "History Park",
+            CountryCode = "FR",
+        };
+        ParkItem item = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "History Item",
+        };
+        HistoryEvent historyEvent = new HistoryEvent
+        {
+            Key = "item-opening",
+            EntityType = HistoryEntityType.ParkItem,
+            OwnerId = "item-1",
+            ParkItemId = "item-1",
+            ContextParkId = "park-1",
+            Year = 2001,
+            EventType = ParkItemHistoryEventType.Opening.ToString(),
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { item });
+        Mock<IHistoryEventRepository> historyEventRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        historyEventRepository
+            .Setup(repository => repository.GetParkTimelineAsync(
+                "park-1",
+                true,
+                true,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { historyEvent });
+
+        ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
+            parkRepository.Object,
+            parkItemRepository: parkItemRepository.Object,
+            historyEventRepository: historyEventRepository.Object);
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportBulkParkGraphJsonQuery(new ParkGraphBulkExportRequest
+            {
+                SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
+                ParkIds = new[] { "park-1" },
+                Sections = new[] { ParkGraphExportSection.History },
+            }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+
+        using JsonDocument document = JsonDocument.Parse(result.Value.Content);
+        JsonElement exportedEvent = document.RootElement
+            .GetProperty("parks")[0]
+            .GetProperty("history")
+            .GetProperty("events")[0];
+
+        Assert.Equal("item-1", exportedEvent.GetProperty("ownerId").GetString());
+        Assert.Equal("item-1", exportedEvent.GetProperty("parkItemId").GetString());
+        Assert.Equal("park-1", exportedEvent.GetProperty("contextParkId").GetString());
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        historyEventRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenProgressIsProvided_ShouldReportCompletedProgress()
     {
         Park firstPark = new Park
@@ -297,7 +378,8 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
     private static ExportBulkParkGraphJsonQueryHandler CreateHandler(
         IParkRepository parkRepository,
         IParkItemRepository? parkItemRepository = null,
-        IImageRepository? imageRepository = null)
+        IImageRepository? imageRepository = null,
+        IHistoryEventRepository? historyEventRepository = null)
     {
         return new ExportBulkParkGraphJsonQueryHandler(
             parkRepository,
@@ -311,7 +393,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             imageRepository ?? Mock.Of<IImageRepository>(MockBehavior.Strict),
             Mock.Of<IParkOpeningHoursRepository>(MockBehavior.Strict),
-            Mock.Of<IHistoryEventRepository>(MockBehavior.Strict)));
+            historyEventRepository ?? Mock.Of<IHistoryEventRepository>(MockBehavior.Strict)));
     }
 
     private sealed class CollectingProgress<TProgress> : IProgress<TProgress>
