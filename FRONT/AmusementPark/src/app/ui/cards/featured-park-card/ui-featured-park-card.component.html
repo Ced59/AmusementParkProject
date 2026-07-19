@@ -54,7 +54,7 @@
         @if (hasMetrics) {
           @for (metric of currentPark.metrics; track metric.category) {
             <app-ui-chip tone="soft">
-              {{ metric.count }} {{ metric.labelKey | translate }}
+              {{ metric.count }} {{ metric.labelKey | localizedPlural:metric.count }}
             </app-ui-chip>
           }
         }

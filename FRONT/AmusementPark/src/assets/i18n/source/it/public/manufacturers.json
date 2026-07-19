@@ -12,6 +12,11 @@
     "error": "Impossibile caricare i costruttori ora.",
     "empty": "Nessun costruttore corrisponde alla ricerca.",
     "noDescription": "Il profilo dettagliato deve ancora essere completato.",
-    "attractionCount": "{{count}} attrazione/i"
+    "attractionCount": {
+      "one": "{{count}} attrazione",
+      "other": "{{count}} attrazioni",
+      "few": "{{count}} attrazioni",
+      "many": "{{count}} attrazioni"
+    }
   }
 }

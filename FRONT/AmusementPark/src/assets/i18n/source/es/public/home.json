@@ -43,6 +43,62 @@
       "manualSelection": "Selección",
       "sponsored": "Patrocinado"
     },
+    "counts": {
+      "attraction": {
+        "one": "atracción",
+        "other": "atracciones",
+        "few": "atracciones",
+        "many": "atracciones"
+      },
+      "restaurant": {
+        "one": "restaurante",
+        "other": "restaurantes",
+        "few": "restaurantes",
+        "many": "restaurantes"
+      },
+      "hotel": {
+        "one": "hotel",
+        "other": "hoteles",
+        "few": "hoteles",
+        "many": "hoteles"
+      },
+      "animal": {
+        "one": "animal",
+        "other": "animales",
+        "few": "animales",
+        "many": "animales"
+      },
+      "show": {
+        "one": "espectáculo",
+        "other": "espectáculos",
+        "few": "espectáculos",
+        "many": "espectáculos"
+      },
+      "shop": {
+        "one": "tienda",
+        "other": "tiendas",
+        "few": "tiendas",
+        "many": "tiendas"
+      },
+      "service": {
+        "one": "servicio",
+        "other": "servicios",
+        "few": "servicios",
+        "many": "servicios"
+      },
+      "transport": {
+        "one": "transporte",
+        "other": "transportes",
+        "few": "transportes",
+        "many": "transportes"
+      },
+      "other": {
+        "one": "otro",
+        "other": "otros",
+        "few": "otros",
+        "many": "otros"
+      }
+    },
     "search": {
       "resultsTitle": "Resultados de búsqueda",
       "resultsSubtitle": "Abre directamente las fichas que coinciden con tu búsqueda.",

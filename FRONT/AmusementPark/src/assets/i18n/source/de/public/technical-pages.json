@@ -7,7 +7,12 @@
       "loading": "Technik-Guides werden geladen...",
       "empty": "Es ist noch keine Technikseite veröffentlicht.",
       "errorMessage": "Technikseiten konnten nicht geladen werden.",
-      "categoryCount": "{{count}} Seite(n)"
+      "categoryCount": {
+        "one": "{{count}} Seite",
+        "other": "{{count}} Seiten",
+        "few": "{{count}} Seiten",
+        "many": "{{count}} Seiten"
+      }
     },
     "detail": {
       "loading": "Technikseite wird geladen...",

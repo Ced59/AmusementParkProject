@@ -43,6 +43,62 @@
       "manualSelection": "Wybór",
       "sponsored": "Sponsorowane"
     },
+    "counts": {
+      "attraction": {
+        "one": "atrakcja",
+        "few": "atrakcje",
+        "many": "atrakcji",
+        "other": "atrakcji"
+      },
+      "restaurant": {
+        "one": "restauracja",
+        "few": "restauracje",
+        "many": "restauracji",
+        "other": "restauracji"
+      },
+      "hotel": {
+        "one": "hotel",
+        "few": "hotele",
+        "many": "hoteli",
+        "other": "hoteli"
+      },
+      "animal": {
+        "one": "zwierzę",
+        "few": "zwierzęta",
+        "many": "zwierząt",
+        "other": "zwierząt"
+      },
+      "show": {
+        "one": "pokaz",
+        "few": "pokazy",
+        "many": "pokazów",
+        "other": "pokazów"
+      },
+      "shop": {
+        "one": "sklep",
+        "few": "sklepy",
+        "many": "sklepów",
+        "other": "sklepów"
+      },
+      "service": {
+        "one": "usługa",
+        "few": "usługi",
+        "many": "usług",
+        "other": "usług"
+      },
+      "transport": {
+        "one": "transport",
+        "few": "transporty",
+        "many": "transportów",
+        "other": "transportów"
+      },
+      "other": {
+        "one": "inny",
+        "few": "inne",
+        "many": "innych",
+        "other": "innych"
+      }
+    },
     "search": {
       "resultsTitle": "Wyniki wyszukiwania",
       "resultsSubtitle": "Otwórz od razu strony pasujące do wyszukiwania.",

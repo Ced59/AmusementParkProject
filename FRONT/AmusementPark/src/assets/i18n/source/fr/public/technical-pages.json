@@ -7,7 +7,12 @@
       "loading": "Chargement des dossiers techniques...",
       "empty": "Aucune page technique publiée pour le moment.",
       "errorMessage": "Impossible de charger les pages techniques.",
-      "categoryCount": "{{count}} page(s)"
+      "categoryCount": {
+        "one": "{{count}} page",
+        "other": "{{count}} pages",
+        "few": "{{count}} pages",
+        "many": "{{count}} pages"
+      }
     },
     "detail": {
       "loading": "Chargement de la page technique...",

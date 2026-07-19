@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, O
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { LocalizedPluralPipe } from '@shared/pipes';
 
 import { MapMarker } from '@app/models/map/map-marker';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
@@ -27,6 +28,7 @@ import {
     ImageDisplayComponent,
     LeafletMapComponent,
     TranslateModule,
+    LocalizedPluralPipe,
     UiChipComponent,
     UiSectionHeaderComponent,
     UiSurfaceDirective,

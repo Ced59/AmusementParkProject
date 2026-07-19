@@ -12,6 +12,11 @@
     "error": "No se pueden cargar los fabricantes ahora.",
     "empty": "Ningun fabricante coincide con tu busqueda.",
     "noDescription": "El perfil detallado aun debe completarse.",
-    "attractionCount": "{{count}} atraccion(es)"
+    "attractionCount": {
+      "one": "{{count}} atracción",
+      "other": "{{count}} atracciones",
+      "few": "{{count}} atracciones",
+      "many": "{{count}} atracciones"
+    }
   }
 }

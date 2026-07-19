@@ -2349,7 +2349,12 @@
         "unknown": "Unknown date"
       },
       "selection": {
-        "count": "{{count}} photos",
+        "count": {
+          "one": "{{count}} photo",
+          "few": "{{count}} photos",
+          "many": "{{count}} photos",
+          "other": "{{count}} photos"
+        },
         "empty": "No photo matches this selection."
       },
       "metadata": {
@@ -2380,8 +2385,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
-      "views": "{{count}} views",
+      "count": {
+        "one": "{{count}} video",
+        "few": "{{count}} videos",
+        "many": "{{count}} videos",
+        "other": "{{count}} videos"
+      },
+      "views": {
+        "one": "{{count}} view",
+        "few": "{{count}} views",
+        "many": "{{count}} views",
+        "other": "{{count}} views"
+      },
       "loadMore": "Load more videos",
       "loadingMore": "Loading..."
     },
@@ -2427,7 +2442,12 @@
       "duration": "Duration",
       "publishedAt": "Published",
       "viewCount": "Views",
-      "views": "{{count}} views",
+      "views": {
+        "one": "{{count}} view",
+        "few": "{{count}} views",
+        "many": "{{count}} views",
+        "other": "{{count}} views"
+      },
       "tagsAndCategories": "Categories and tags",
       "openExternal": "Open video",
       "openCreator": "Open creator",
@@ -2700,6 +2720,62 @@
       "manualSelection": "Selection",
       "sponsored": "Sponsored"
     },
+    "counts": {
+      "attraction": {
+        "one": "attraction",
+        "few": "attractions",
+        "many": "attractions",
+        "other": "attractions"
+      },
+      "restaurant": {
+        "one": "restaurant",
+        "few": "restaurants",
+        "many": "restaurants",
+        "other": "restaurants"
+      },
+      "hotel": {
+        "one": "hotel",
+        "few": "hotels",
+        "many": "hotels",
+        "other": "hotels"
+      },
+      "animal": {
+        "one": "animal",
+        "few": "animals",
+        "many": "animals",
+        "other": "animals"
+      },
+      "show": {
+        "one": "show",
+        "few": "shows",
+        "many": "shows",
+        "other": "shows"
+      },
+      "shop": {
+        "one": "shop",
+        "few": "shops",
+        "many": "shops",
+        "other": "shops"
+      },
+      "service": {
+        "one": "service",
+        "few": "services",
+        "many": "services",
+        "other": "services"
+      },
+      "transport": {
+        "one": "transport",
+        "few": "transports",
+        "many": "transports",
+        "other": "transports"
+      },
+      "other": {
+        "one": "other",
+        "few": "others",
+        "many": "others",
+        "other": "others"
+      }
+    },
     "search": {
       "resultsTitle": "Search results",
       "resultsSubtitle": "Open the pages that match your search directly.",
@@ -2762,7 +2838,12 @@
     "error": "Manufacturers cannot be loaded right now.",
     "empty": "No manufacturer matches your search.",
     "noDescription": "The detailed profile still needs more content.",
-    "attractionCount": "{{count}} attraction(s)"
+    "attractionCount": {
+      "one": "{{count}} attraction",
+      "few": "{{count}} attractions",
+      "many": "{{count}} attractions",
+      "other": "{{count}} attractions"
+    }
   },
   "publicNavigation": {
     "youAreHere": "You are here",
@@ -3910,7 +3991,12 @@
       "loading": "Loading technical guides...",
       "empty": "No published technical page yet.",
       "errorMessage": "Unable to load technical pages.",
-      "categoryCount": "{{count}} page(s)"
+      "categoryCount": {
+        "one": "{{count}} page",
+        "few": "{{count}} pages",
+        "many": "{{count}} pages",
+        "other": "{{count}} pages"
+      }
     },
     "detail": {
       "loading": "Loading the technical page...",

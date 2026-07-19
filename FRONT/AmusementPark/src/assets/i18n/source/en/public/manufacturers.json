@@ -12,6 +12,11 @@
     "error": "Manufacturers cannot be loaded right now.",
     "empty": "No manufacturer matches your search.",
     "noDescription": "The detailed profile still needs more content.",
-    "attractionCount": "{{count}} attraction(s)"
+    "attractionCount": {
+      "one": "{{count}} attraction",
+      "few": "{{count}} attractions",
+      "many": "{{count}} attractions",
+      "other": "{{count}} attractions"
+    }
   }
 }

@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts';
-import { SafeExternalUrlPipe } from '@shared/pipes';
+import { LocalizedPluralPipe, SafeExternalUrlPipe } from '@shared/pipes';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { PublicVideoBackLink } from './public-video-list-view.component';
@@ -21,6 +21,7 @@ import { PublicVideoNavigationItem, PublicVideoWatchViewModel } from '../models/
     PageStateComponent,
     RouterLink,
     SafeExternalUrlPipe,
+    LocalizedPluralPipe,
     TranslateModule,
     UiButtonDirective,
     UiChipComponent,

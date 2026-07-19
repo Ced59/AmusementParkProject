@@ -12,6 +12,11 @@
     "error": "Impossible de charger les constructeurs pour le moment.",
     "empty": "Aucun constructeur ne correspond a ta recherche.",
     "noDescription": "La fiche detaillee reste a completer.",
-    "attractionCount": "{{count}} attraction(s)"
+    "attractionCount": {
+      "one": "{{count}} attraction",
+      "other": "{{count}} attractions",
+      "few": "{{count}} attractions",
+      "many": "{{count}} attractions"
+    }
   }
 }

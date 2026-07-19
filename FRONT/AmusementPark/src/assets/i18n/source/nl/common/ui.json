@@ -36,7 +36,12 @@
         "unknown": "Onbekende datum"
       },
       "selection": {
-        "count": "{{count}} foto's",
+        "count": {
+          "one": "{{count}} foto",
+          "other": "{{count}} foto's",
+          "few": "{{count}} foto's",
+          "many": "{{count}} foto's"
+        },
         "empty": "Geen foto past bij deze selectie."
       },
       "metadata": {

@@ -86,7 +86,7 @@
                       <span><i class="pi pi-map-marker" aria-hidden="true"></i>{{ location }}</span>
                     }
                     @if (manufacturer.attractionCount !== undefined && manufacturer.attractionCount !== null) {
-                      <span><i class="pi pi-sitemap" aria-hidden="true"></i>{{ 'manufacturersPage.attractionCount' | translate:{ count: manufacturer.attractionCount } }}</span>
+                      <span><i class="pi pi-sitemap" aria-hidden="true"></i>{{ 'manufacturersPage.attractionCount' | localizedPlural:manufacturer.attractionCount }}</span>
                     }
                     @if (websiteHost(manufacturer); as host) {
                       <span><i class="pi pi-globe" aria-hidden="true"></i>{{ host }}</span>

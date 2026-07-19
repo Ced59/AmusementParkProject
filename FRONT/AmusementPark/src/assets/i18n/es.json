@@ -2349,7 +2349,12 @@
         "unknown": "Fecha desconocida"
       },
       "selection": {
-        "count": "{{count}} fotos",
+        "count": {
+          "one": "{{count}} foto",
+          "other": "{{count}} fotos",
+          "few": "{{count}} fotos",
+          "many": "{{count}} fotos"
+        },
         "empty": "Ninguna foto coincide con está selección."
       },
       "metadata": {
@@ -2380,8 +2385,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} vídeos",
-      "views": "{{count}} visualizaciones",
+      "count": {
+        "one": "{{count}} vídeo",
+        "other": "{{count}} vídeos",
+        "few": "{{count}} vídeos",
+        "many": "{{count}} vídeos"
+      },
+      "views": {
+        "one": "{{count}} visualización",
+        "other": "{{count}} visualizaciones",
+        "few": "{{count}} visualizaciones",
+        "many": "{{count}} visualizaciones"
+      },
       "loadMore": "Cargar más vídeos",
       "loadingMore": "Cargando..."
     },
@@ -2427,7 +2442,12 @@
       "duration": "Duración",
       "publishedAt": "Publicado",
       "viewCount": "Visualizaciones",
-      "views": "{{count}} visualizaciones",
+      "views": {
+        "one": "{{count}} visualización",
+        "other": "{{count}} visualizaciones",
+        "few": "{{count}} visualizaciones",
+        "many": "{{count}} visualizaciones"
+      },
       "tagsAndCategories": "Categorías y etiquetas",
       "openExternal": "Abrir vídeo",
       "openCreator": "Abrir creador",
@@ -2700,6 +2720,62 @@
       "manualSelection": "Selección",
       "sponsored": "Patrocinado"
     },
+    "counts": {
+      "attraction": {
+        "one": "atracción",
+        "other": "atracciones",
+        "few": "atracciones",
+        "many": "atracciones"
+      },
+      "restaurant": {
+        "one": "restaurante",
+        "other": "restaurantes",
+        "few": "restaurantes",
+        "many": "restaurantes"
+      },
+      "hotel": {
+        "one": "hotel",
+        "other": "hoteles",
+        "few": "hoteles",
+        "many": "hoteles"
+      },
+      "animal": {
+        "one": "animal",
+        "other": "animales",
+        "few": "animales",
+        "many": "animales"
+      },
+      "show": {
+        "one": "espectáculo",
+        "other": "espectáculos",
+        "few": "espectáculos",
+        "many": "espectáculos"
+      },
+      "shop": {
+        "one": "tienda",
+        "other": "tiendas",
+        "few": "tiendas",
+        "many": "tiendas"
+      },
+      "service": {
+        "one": "servicio",
+        "other": "servicios",
+        "few": "servicios",
+        "many": "servicios"
+      },
+      "transport": {
+        "one": "transporte",
+        "other": "transportes",
+        "few": "transportes",
+        "many": "transportes"
+      },
+      "other": {
+        "one": "otro",
+        "other": "otros",
+        "few": "otros",
+        "many": "otros"
+      }
+    },
     "search": {
       "resultsTitle": "Resultados de búsqueda",
       "resultsSubtitle": "Abre directamente las fichas que coinciden con tu búsqueda.",
@@ -2762,7 +2838,12 @@
     "error": "No se pueden cargar los fabricantes ahora.",
     "empty": "Ningun fabricante coincide con tu busqueda.",
     "noDescription": "El perfil detallado aun debe completarse.",
-    "attractionCount": "{{count}} atraccion(es)"
+    "attractionCount": {
+      "one": "{{count}} atracción",
+      "other": "{{count}} atracciones",
+      "few": "{{count}} atracciones",
+      "many": "{{count}} atracciones"
+    }
   },
   "publicNavigation": {
     "youAreHere": "Estás aquí",
@@ -3910,7 +3991,12 @@
       "loading": "Cargando guías técnicas...",
       "empty": "Todavía no hay ninguna página técnica publicada.",
       "errorMessage": "No se pueden cargar las páginas técnicas.",
-      "categoryCount": "{{count}} página(s)"
+      "categoryCount": {
+        "one": "{{count}} página",
+        "other": "{{count}} páginas",
+        "few": "{{count}} páginas",
+        "many": "{{count}} páginas"
+      }
     },
     "detail": {
       "loading": "Cargando la página técnica...",

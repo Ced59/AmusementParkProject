@@ -3,7 +3,7 @@ import { HomeFeaturedParkCategoryCountModel, HomeFeaturedParkModel } from '@app/
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
-import { getParkItemCategoryTranslationKey, getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { getParkTypeTranslationKey, normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
 
@@ -51,7 +51,7 @@ function buildMetrics(countsByCategory: HomeFeaturedParkCategoryCountModel[] | n
     .map((count: HomeFeaturedParkCategoryCountModel) => ({
       category: count.category,
       count: count.count,
-      labelKey: getParkItemCategoryTranslationKey(count.category)
+      labelKey: `home.counts.${normalizeTranslationSegment(count.category, 'other')}`
     }));
 }
 

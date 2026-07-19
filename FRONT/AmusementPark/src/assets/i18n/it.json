@@ -2349,7 +2349,12 @@
         "unknown": "Data sconosciuta"
       },
       "selection": {
-        "count": "{{count}} foto",
+        "count": {
+          "one": "{{count}} foto",
+          "other": "{{count}} foto",
+          "few": "{{count}} foto",
+          "many": "{{count}} foto"
+        },
         "empty": "Nessuna foto corrisponde a questa selezione."
       },
       "metadata": {
@@ -2380,8 +2385,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} video",
-      "views": "{{count}} visualizzazioni",
+      "count": {
+        "one": "{{count}} video",
+        "other": "{{count}} video",
+        "few": "{{count}} video",
+        "many": "{{count}} video"
+      },
+      "views": {
+        "one": "{{count}} visualizzazione",
+        "other": "{{count}} visualizzazioni",
+        "few": "{{count}} visualizzazioni",
+        "many": "{{count}} visualizzazioni"
+      },
       "loadMore": "Carica altri video",
       "loadingMore": "Caricamento..."
     },
@@ -2427,7 +2442,12 @@
       "duration": "Durata",
       "publishedAt": "Pubblicato",
       "viewCount": "Visualizzazioni",
-      "views": "{{count}} visualizzazioni",
+      "views": {
+        "one": "{{count}} visualizzazione",
+        "other": "{{count}} visualizzazioni",
+        "few": "{{count}} visualizzazioni",
+        "many": "{{count}} visualizzazioni"
+      },
       "tagsAndCategories": "Categorie e tag",
       "openExternal": "Apri video",
       "openCreator": "Apri creatore",
@@ -2700,6 +2720,62 @@
       "manualSelection": "Selezione",
       "sponsored": "Sponsorizzato"
     },
+    "counts": {
+      "attraction": {
+        "one": "attrazione",
+        "other": "attrazioni",
+        "few": "attrazioni",
+        "many": "attrazioni"
+      },
+      "restaurant": {
+        "one": "ristorante",
+        "other": "ristoranti",
+        "few": "ristoranti",
+        "many": "ristoranti"
+      },
+      "hotel": {
+        "one": "hotel",
+        "other": "hotel",
+        "few": "hotel",
+        "many": "hotel"
+      },
+      "animal": {
+        "one": "animale",
+        "other": "animali",
+        "few": "animali",
+        "many": "animali"
+      },
+      "show": {
+        "one": "spettacolo",
+        "other": "spettacoli",
+        "few": "spettacoli",
+        "many": "spettacoli"
+      },
+      "shop": {
+        "one": "negozio",
+        "other": "negozi",
+        "few": "negozi",
+        "many": "negozi"
+      },
+      "service": {
+        "one": "servizio",
+        "other": "servizi",
+        "few": "servizi",
+        "many": "servizi"
+      },
+      "transport": {
+        "one": "trasporto",
+        "other": "trasporti",
+        "few": "trasporti",
+        "many": "trasporti"
+      },
+      "other": {
+        "one": "altro",
+        "other": "altri",
+        "few": "altri",
+        "many": "altri"
+      }
+    },
     "search": {
       "resultsTitle": "Risultati della ricerca",
       "resultsSubtitle": "Apri direttamente le schede che corrispondono alla tua ricerca.",
@@ -2762,7 +2838,12 @@
     "error": "Impossibile caricare i costruttori ora.",
     "empty": "Nessun costruttore corrisponde alla ricerca.",
     "noDescription": "Il profilo dettagliato deve ancora essere completato.",
-    "attractionCount": "{{count}} attrazione/i"
+    "attractionCount": {
+      "one": "{{count}} attrazione",
+      "other": "{{count}} attrazioni",
+      "few": "{{count}} attrazioni",
+      "many": "{{count}} attrazioni"
+    }
   },
   "publicNavigation": {
     "youAreHere": "Sei qui",
@@ -3910,7 +3991,12 @@
       "loading": "Caricamento delle guide tecniche...",
       "empty": "Nessuna pagina tecnica pubblicata per ora.",
       "errorMessage": "Impossibile caricare le pagine tecniche.",
-      "categoryCount": "{{count}} pagina/e"
+      "categoryCount": {
+        "one": "{{count}} pagina",
+        "other": "{{count}} pagine",
+        "few": "{{count}} pagine",
+        "many": "{{count}} pagine"
+      }
     },
     "detail": {
       "loading": "Caricamento della pagina tecnica...",

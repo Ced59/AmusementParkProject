@@ -43,6 +43,62 @@
       "manualSelection": "Auswahl",
       "sponsored": "Gesponsert"
     },
+    "counts": {
+      "attraction": {
+        "one": "Attraktion",
+        "other": "Attraktionen",
+        "few": "Attraktionen",
+        "many": "Attraktionen"
+      },
+      "restaurant": {
+        "one": "Restaurant",
+        "other": "Restaurants",
+        "few": "Restaurants",
+        "many": "Restaurants"
+      },
+      "hotel": {
+        "one": "Hotel",
+        "other": "Hotels",
+        "few": "Hotels",
+        "many": "Hotels"
+      },
+      "animal": {
+        "one": "Tier",
+        "other": "Tiere",
+        "few": "Tiere",
+        "many": "Tiere"
+      },
+      "show": {
+        "one": "Show",
+        "other": "Shows",
+        "few": "Shows",
+        "many": "Shows"
+      },
+      "shop": {
+        "one": "Geschäft",
+        "other": "Geschäfte",
+        "few": "Geschäfte",
+        "many": "Geschäfte"
+      },
+      "service": {
+        "one": "Service",
+        "other": "Services",
+        "few": "Services",
+        "many": "Services"
+      },
+      "transport": {
+        "one": "Transport",
+        "other": "Transporte",
+        "few": "Transporte",
+        "many": "Transporte"
+      },
+      "other": {
+        "one": "Sonstiges",
+        "other": "Sonstige",
+        "few": "Sonstige",
+        "many": "Sonstige"
+      }
+    },
     "search": {
       "resultsTitle": "Suchergebnisse",
       "resultsSubtitle": "Öffne direkt die passenden Seiten zu deiner Suche.",

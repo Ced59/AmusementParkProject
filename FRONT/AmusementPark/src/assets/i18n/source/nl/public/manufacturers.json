@@ -12,6 +12,11 @@
     "error": "Bouwers kunnen nu niet worden geladen.",
     "empty": "Geen bouwer past bij je zoekopdracht.",
     "noDescription": "Het detailprofiel moet nog worden aangevuld.",
-    "attractionCount": "{{count}} attractie(s)"
+    "attractionCount": {
+      "one": "{{count}} attractie",
+      "other": "{{count}} attracties",
+      "few": "{{count}} attracties",
+      "many": "{{count}} attracties"
+    }
   }
 }
