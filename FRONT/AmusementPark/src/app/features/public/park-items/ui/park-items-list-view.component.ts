@@ -20,6 +20,7 @@ import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-po
 import { UiMapSlotComponent } from '@ui/maps';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { LocalizedPluralPipe } from '@shared/pipes';
 
 @Component({
   selector: 'app-park-items-list-view',
@@ -43,7 +44,8 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
     UiKickerComponent,
     UiSurfaceDirective,
     PublicSharePanelComponent,
-    UnlocatedItemsPanelComponent
+    UnlocatedItemsPanelComponent,
+    LocalizedPluralPipe
   ]
 })
 export class ParkItemsListViewComponent {

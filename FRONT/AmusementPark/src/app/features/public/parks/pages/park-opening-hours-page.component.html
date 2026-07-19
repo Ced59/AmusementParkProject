@@ -226,7 +226,7 @@
 
         <div>
           <span>{{ 'parkOpeningHours.page.daysCount' | translate }}</span>
-          <strong>{{ 'parkOpeningHours.page.daysCountValue' | translate:{ count: data.calendar.days.length } }}</strong>
+          <strong>{{ 'publicCounts.day' | localizedPlural:data.calendar.days.length }}</strong>
         </div>
       </section>
 

@@ -24,7 +24,7 @@
         </button>
       }
     </div>
-    <p>{{ 'manufacturersPage.search.count' | translate:{ count: totalCount() } }}</p>
+    <p>{{ 'publicCounts.manufacturerFound' | localizedPlural:totalCount() }}</p>
   </section>
 
   @if (loading()) {

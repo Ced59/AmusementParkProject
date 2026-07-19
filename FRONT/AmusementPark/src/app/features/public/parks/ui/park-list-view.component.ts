@@ -15,13 +15,14 @@ import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detai
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkListMapComponent } from './park-list-map.component';
+import { LocalizedPluralPipe } from '@shared/pipes';
 
 @Component({
   selector: 'app-park-list-view',
   templateUrl: './park-list-view.component.html',
   styleUrls: ['./park-list-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, PaginationComponent, NgFor, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, UiParkCardComponent, ParkListMapComponent, PublicSharePanelComponent]
+  imports: [PageStateComponent, PaginationComponent, NgFor, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, UiParkCardComponent, ParkListMapComponent, PublicSharePanelComponent, LocalizedPluralPipe]
 })
 export class ParkListViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

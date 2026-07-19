@@ -23,7 +23,7 @@
           </app-ui-kicker>
           <h1>{{ 'parkItems.list.titleWithPark' | translate:{ name: currentView.parkName } }}</h1>
           <p>
-            {{ 'parkItems.list.resultsCount' | translate:{ start: rangeStart(), end: rangeEnd(), total: totalResults() } }}
+            {{ 'publicCounts.resultRange' | localizedPlural:totalResults():{ start: rangeStart(), end: rangeEnd(), total: totalResults() } }}
           </p>
         </div>
 

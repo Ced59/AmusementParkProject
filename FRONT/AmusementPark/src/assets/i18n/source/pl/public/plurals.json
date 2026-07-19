@@ -1,0 +1,20 @@
+{
+  "publicCounts": {
+    "place": { "one": "Miejsce do odkrycia", "few": "Miejsca do odkrycia", "many": "Miejsc do odkrycia", "other": "Miejsca do odkrycia" },
+    "placeWithCount": { "one": "{{count}} miejsce", "few": "{{count}} miejsca", "many": "{{count}} miejsc", "other": "{{count}} miejsca" },
+    "rollerCoaster": { "one": "Kolejka górska", "few": "Kolejki górskie", "many": "Kolejek górskich", "other": "Kolejki górskiej" },
+    "waterRide": { "one": "Atrakcja wodna", "few": "Atrakcje wodne", "many": "Atrakcji wodnych", "other": "Atrakcji wodnej" },
+    "flatRide": { "one": "Karuzela", "few": "Karuzele", "many": "Karuzel", "other": "Karuzeli" },
+    "darkRide": { "one": "Mroczna przejażdżka", "few": "Mroczne przejażdżki", "many": "Mrocznych przejażdżek", "other": "Mrocznej przejażdżki" },
+    "manufacturerFound": { "one": "Znaleziono {{count}} producenta", "few": "Znaleziono {{count}} producentów", "many": "Znaleziono {{count}} producentów", "other": "Znaleziono {{count}} producenta" },
+    "parkOnMap": { "one": "{{count}} park na mapie", "few": "{{count}} parki na mapie", "many": "{{count}} parków na mapie", "other": "{{count}} parku na mapie" },
+    "result": { "one": "{{count}} wynik", "few": "{{count}} wyniki", "many": "{{count}} wyników", "other": "{{count}} wyniku" },
+    "unlocatedPlace": { "one": "{{count}} miejsce poza mapą", "few": "{{count}} miejsca poza mapą", "many": "{{count}} miejsc poza mapą", "other": "{{count}} miejsca poza mapą" },
+    "resultRange": { "one": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsca", "few": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc", "many": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc", "other": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsca" },
+    "rating": { "one": "{{count}} ocena", "few": "{{count}} oceny", "many": "{{count}} ocen", "other": "{{count}} oceny" },
+    "averageRating": { "one": "Średnia ocena {{value}} z 5 na podstawie {{count}} oceny.", "few": "Średnia ocena {{value}} z 5 na podstawie {{count}} ocen.", "many": "Średnia ocena {{value}} z 5 na podstawie {{count}} ocen.", "other": "Średnia ocena {{value}} z 5 na podstawie {{count}} oceny." },
+    "day": { "one": "{{count}} dzień", "few": "{{count}} dni", "many": "{{count}} dni", "other": "{{count}} dnia" },
+    "zoneWithCount": { "one": "{{count}} strefa", "few": "{{count}} strefy", "many": "{{count}} stref", "other": "{{count}} strefy" },
+    "zoneSummary": "{{zoneCountLabel}} obejmujące {{placeCountLabel}} do odkrycia."
+  }
+}

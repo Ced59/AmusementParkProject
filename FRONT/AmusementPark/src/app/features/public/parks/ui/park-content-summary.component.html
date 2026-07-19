@@ -21,7 +21,7 @@
         <i [class]="entry.icon"></i>
       </div>
       <div class="summary-card__body">
-        <span class="summary-card__label">{{ entry.labelKey | translate }}</span>
+        <span class="summary-card__label">{{ entry.labelKey | localizedPlural:entry.count }}</span>
         <strong class="summary-card__count">{{ entry.count }}</strong>
       </div>
       <i class="pi pi-angle-right summary-card__arrow"></i>

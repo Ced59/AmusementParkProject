@@ -3686,6 +3686,99 @@
       "emptyMessage": "Non c’è ancora nessun video pubblicato per {{name}}."
     }
   },
+  "publicCounts": {
+    "place": {
+      "one": "Luogo da scoprire",
+      "few": "Luoghi da scoprire",
+      "many": "Luoghi da scoprire",
+      "other": "Luoghi da scoprire"
+    },
+    "placeWithCount": {
+      "one": "{{count}} luogo",
+      "few": "{{count}} luoghi",
+      "many": "{{count}} luoghi",
+      "other": "{{count}} luoghi"
+    },
+    "rollerCoaster": {
+      "one": "Montagna russa",
+      "few": "Montagne russe",
+      "many": "Montagne russe",
+      "other": "Montagne russe"
+    },
+    "waterRide": {
+      "one": "Attrazione acquatica",
+      "few": "Attrazioni acquatiche",
+      "many": "Attrazioni acquatiche",
+      "other": "Attrazioni acquatiche"
+    },
+    "flatRide": {
+      "one": "Giostra",
+      "few": "Giostre",
+      "many": "Giostre",
+      "other": "Giostre"
+    },
+    "darkRide": {
+      "one": "Dark ride",
+      "few": "Dark ride",
+      "many": "Dark ride",
+      "other": "Dark ride"
+    },
+    "manufacturerFound": {
+      "one": "{{count}} costruttore trovato",
+      "few": "{{count}} costruttori trovati",
+      "many": "{{count}} costruttori trovati",
+      "other": "{{count}} costruttori trovati"
+    },
+    "parkOnMap": {
+      "one": "{{count}} parco sulla mappa",
+      "few": "{{count}} parchi sulla mappa",
+      "many": "{{count}} parchi sulla mappa",
+      "other": "{{count}} parchi sulla mappa"
+    },
+    "result": {
+      "one": "{{count}} risultato",
+      "few": "{{count}} risultati",
+      "many": "{{count}} risultati",
+      "other": "{{count}} risultati"
+    },
+    "unlocatedPlace": {
+      "one": "{{count}} luogo fuori mappa",
+      "few": "{{count}} luoghi fuori mappa",
+      "many": "{{count}} luoghi fuori mappa",
+      "other": "{{count}} luoghi fuori mappa"
+    },
+    "resultRange": {
+      "one": "Visualizzazione da {{start}} a {{end}} su {{total}} luogo",
+      "few": "Visualizzazione da {{start}} a {{end}} su {{total}} luoghi",
+      "many": "Visualizzazione da {{start}} a {{end}} su {{total}} luoghi",
+      "other": "Visualizzazione da {{start}} a {{end}} su {{total}} luoghi"
+    },
+    "rating": {
+      "one": "{{count}} valutazione",
+      "few": "{{count}} valutazioni",
+      "many": "{{count}} valutazioni",
+      "other": "{{count}} valutazioni"
+    },
+    "averageRating": {
+      "one": "Valutazione media {{value}} su 5 con {{count}} valutazione.",
+      "few": "Valutazione media {{value}} su 5 con {{count}} valutazioni.",
+      "many": "Valutazione media {{value}} su 5 con {{count}} valutazioni.",
+      "other": "Valutazione media {{value}} su 5 con {{count}} valutazioni."
+    },
+    "day": {
+      "one": "{{count}} giorno",
+      "few": "{{count}} giorni",
+      "many": "{{count}} giorni",
+      "other": "{{count}} giorni"
+    },
+    "zoneWithCount": {
+      "one": "{{count}} zona",
+      "few": "{{count}} zone",
+      "many": "{{count}} zone",
+      "other": "{{count}} zone"
+    },
+    "zoneSummary": "{{zoneCountLabel}} che raggruppano {{placeCountLabel}} da scoprire."
+  },
   "privacyPage": {
     "kicker": "Dati personali",
     "title": "Informativa sulla privacy",

@@ -78,7 +78,7 @@
           </button>
         } @else {
           <app-ui-chip tone="soft" iconClass="pi pi-database">
-            {{ 'parks.results.count' | translate:{ count: pagination()?.totalItems ?? parks().length } }}
+            {{ 'publicCounts.result' | localizedPlural:(pagination()?.totalItems ?? parks().length) }}
           </app-ui-chip>
         }
       </div>
