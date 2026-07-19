@@ -39,12 +39,35 @@ describe('SeoService', () => {
 
     service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
-    expect(readMetaContent('meta[property="og:image:secure_url"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=3');
+    expect(readMetaContent('meta[property="og:image:secure_url"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=3');
     expect(readMetaContent('meta[property="og:image:width"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:height"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo Park');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/park-photo%201?width=1200&v=3');
+  });
+
+  it('uses natural French prepositions for a park city and country', () => {
+    const park: ParkDetailViewModel = buildParkDetail({
+      name: 'Denain Évasion',
+      city: 'Denain',
+      countryName: 'France',
+      description: null
+    });
+
+    service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/denain-evasion');
+
+    expect(readMetaContent('meta[property="og:title"]')).toBe('Guide de Denain Évasion à Denain, en France — Amusement Parks');
+    expect(readMetaContent('meta[property="og:description"]')).toContain('Denain Évasion à Denain, en France');
+  });
+
+  it('avoids saying a park is directly à a country in French', () => {
+    const park: ParkDetailViewModel = buildParkDetail({ city: null, countryName: 'France', description: null });
+
+    service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:title"]')).toBe('Guide de Demo Park en France — Amusement Parks');
+    expect(readMetaContent('meta[property="og:title"]')).not.toContain(' à France');
   });
 
   it('uses the park item hero photo as the Open Graph image', () => {
@@ -56,8 +79,8 @@ describe('SeoService', () => {
 
     service.applyParkItemDetailSeo(detail, 'fr', '/fr/park/park-1/demo-park/item/item-1/demo-item');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/item-photo-1?width=1200&v=2');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/item-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/item-photo-1?width=1200&v=3');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/item-photo-1?width=1200&v=3');
   });
 
   it('falls back to the site social image when the page has no main photo', () => {
@@ -80,7 +103,7 @@ describe('SeoService', () => {
       logoImageId: 'park-logo-1'
     }), 'fr', '/fr/park/park-1/demo-park');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-hero-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-hero-1?width=1200&v=3');
 
     service.applyParkDetailSeo(buildParkDetail({
       primaryPhoto: null,
@@ -88,7 +111,7 @@ describe('SeoService', () => {
       logoImageId: 'park-logo-1'
     }), 'fr', '/fr/park/park-1/demo-park');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-logo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-logo-1?width=1200&v=3');
   });
 
   it('removes stale social image dimensions when a responsive image replaces the fallback', () => {
@@ -114,8 +137,8 @@ describe('SeoService', () => {
 
     service.applyParkImagesSeo(park, 'fr', '/fr/park/park-1/demo-park/photos', 4, 'gallery image 1');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/gallery%20image%201?width=1200&v=2');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/gallery%20image%201?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/gallery%20image%201?width=1200&v=3');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/gallery%20image%201?width=1200&v=3');
   });
 
   it('uses the park main photo when a park video has no thumbnail', () => {
@@ -123,8 +146,8 @@ describe('SeoService', () => {
 
     service.applyParkVideoSeo(video, buildPark(), 'fr', '/fr/park/park-1/demo-park/videos/video-1/demo-video', 'park-main-1');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-main-1?width=1200&v=2');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/park-main-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-main-1?width=1200&v=3');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/park-main-1?width=1200&v=3');
   });
 
   it('uses the park item main photo when a park item video has no thumbnail', () => {
@@ -144,8 +167,8 @@ describe('SeoService', () => {
       'item-main-1'
     );
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/item-main-1?width=1200&v=2');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/item-main-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/item-main-1?width=1200&v=3');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/item-main-1?width=1200&v=3');
   });
 
   it('uses the first video thumbnail before the park main photo on video lists', () => {
@@ -158,8 +181,8 @@ describe('SeoService', () => {
       'park-main-1'
     );
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/video-thumb-1?width=1200&v=2');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/video-thumb-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/video-thumb-1?width=1200&v=3');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/video-thumb-1?width=1200&v=3');
   });
 
   it('uses the park item main photo instead of an external thumbnail URL on park item video lists', () => {
@@ -173,8 +196,8 @@ describe('SeoService', () => {
       'item-main-1'
     );
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/item-main-1?width=1200&v=2');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/item-main-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/item-main-1?width=1200&v=3');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/item-main-1?width=1200&v=3');
   });
 
   it('uses the park main photo instead of an external thumbnail URL on park video detail pages', () => {
@@ -185,8 +208,8 @@ describe('SeoService', () => {
 
     service.applyParkVideoSeo(video, buildPark(), 'fr', '/fr/park/park-1/demo-park/videos/video-1/demo-video', 'park-main-1');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-main-1?width=1200&v=2');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/park-main-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/park-main-1?width=1200&v=3');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/park-main-1?width=1200&v=3');
   });
 
   it('uses localized French fallbacks for park item video social metadata', () => {
@@ -212,7 +235,7 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:locale"]')).toBe('fr_FR');
     expect(readMetaContent('meta[property="og:url"]'))
       .toBe('http://localhost:4200/fr/park/park-1/phantasialand/item/item-1/river-quest/videos/video-1/river-quest');
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/video-thumb-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/video-thumb-1?width=1200&v=3');
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo video');
     expect(readMetaContent('meta[name="twitter:image:alt"]')).toBe('Demo video');
   });
@@ -312,7 +335,7 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:title"]')).not.toContain('Chronologie');
     expect(readMetaContent('meta[property="og:title"]')).not.toContain('historique');
     expect(readMetaContent('meta[property="og:description"]')).toContain('Le Nitro - Dennlys Parc');
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=3');
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Le Nitro - Dennlys Parc');
   });
 
@@ -358,9 +381,9 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:title"]')).not.toContain('Article historique');
     expect(readMetaContent('meta[property="og:title"]')).toContain('Article : Opening of Mirapolis');
     expect(readMetaContent('meta[property="og:description"]')).toBe('Article detaille sur l ouverture de Mirapolis.');
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/history-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/history-photo-1?width=1200&v=3');
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Opening of Mirapolis');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/history-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/history-photo-1?width=1200&v=3');
 
     service.applyParkDetailSeo(buildParkDetail(), 'fr', '/fr/park/park-1/demo-park');
 
@@ -396,9 +419,9 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:title"]')).toContain('Arret de Nitro - Le Nitro - Dennlys Parc');
     expect(readMetaContent('meta[property="og:title"]')).not.toContain('Article historique');
     expect(readMetaContent('meta[property="og:description"]')).toBe('Article sur Le Nitro - Dennlys Parc, autour de 1987.');
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=3');
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Arret de Nitro - Le Nitro - Dennlys Parc');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=3');
   });
 
   it('emits managed Open Graph locale alternates for localized public pages', () => {
@@ -889,7 +912,7 @@ describe('SeoService', () => {
 
     expect(documentRef.title).toBe('Dossier technique : Lap bar - Amusement Parks');
     expect(readMetaContent('meta[name="description"]')).toBe('Explication technique de la lap bar.');
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/technical-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/binary/technical-photo-1?width=1200&v=3');
     expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/fr/technical/lap-bar');
   });
 

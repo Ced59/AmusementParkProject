@@ -158,7 +158,7 @@ const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpa
 const SOCIAL_IMAGE_WIDTH: number = 1200;
 const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
 const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
-const RESPONSIVE_IMAGE_VERSION: string = '2';
+const RESPONSIVE_IMAGE_VERSION: string = '3';
 
 const HISTORY_SEO_COPY: Record<string, HistorySeoCopy> = {
   fr: {
@@ -999,9 +999,9 @@ const PARK_DETAIL_SEO_COPY: Record<string, ParkDetailSeoCopy> = {
       `Explore ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: practical information, attractions, restaurants, hotels and park map.`
   },
   fr: {
-    title: (parkName: string, locationLabel: string): string => `Guide de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}`,
+    title: (parkName: string, locationLabel: string): string => `Guide de ${parkName}${locationLabel}`,
     description: (parkName: string, locationLabel: string): string =>
-      `Découvre ${parkName}${locationLabel ? ` à ${locationLabel}` : ''} : infos pratiques, attractions, restaurants, hôtels et carte du parc.`
+      `Découvre ${parkName}${locationLabel} : infos pratiques, attractions, restaurants, hôtels et carte du parc.`
   },
   es: {
     title: (parkName: string, locationLabel: string): string => `Guía de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}`,
@@ -1510,9 +1510,7 @@ export class SeoService {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkDetailSeoCopy = PARK_DETAIL_SEO_COPY[normalizedLanguage] ?? PARK_DETAIL_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
-    const locationLabel: string = [park.city, park.countryName ?? park.countryCode]
-      .filter((value: string | null | undefined): value is string => !!value)
-      .join(', ');
+    const locationLabel: string = this.buildParkDetailLocationLabel(park, normalizedLanguage);
     const descriptionFallback: string = copy.description(park.name, locationLabel);
 
     this.apply({
@@ -2154,6 +2152,27 @@ export class SeoService {
     ]
       .filter((value: string | null): value is string => value !== null)
       .join(', ');
+  }
+
+  private buildParkDetailLocationLabel(park: ParkDetailViewModel, language: string): string {
+    const city: string | null = this.normalizeOptionalText(park.city);
+    const country: string | null = this.normalizeOptionalText(park.countryName ?? park.countryCode);
+
+    if (language !== 'fr') {
+      return [city, country]
+        .filter((value: string | null): value is string => value !== null)
+        .join(', ');
+    }
+
+    if (city && country) {
+      return ` à ${city}, en ${country}`;
+    }
+
+    if (country) {
+      return ` en ${country}`;
+    }
+
+    return city ? ` à ${city}` : '';
   }
 
   private resolveLocalizedCountryName(countryCode: string | null | undefined, language: string): string | null {
