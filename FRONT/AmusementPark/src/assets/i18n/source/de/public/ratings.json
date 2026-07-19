@@ -41,7 +41,7 @@
       "searchPlaceholder": "Park in deinen Bewertungen finden",
       "searchAction": "Suchen",
       "clearSearch": "Suche löschen",
-      "ratingCount": "{{count}} Bewertung(en)",
+      "ratingCount": { "one": "{{count}} Bewertung", "few": "{{count}} Bewertungen", "many": "{{count}} Bewertungen", "other": "{{count}} Bewertungen" },
       "loadMore": "Mehr Bewertungen laden",
       "loadingMore": "Bewertungen werden geladen..."
     },
@@ -53,7 +53,7 @@
       "loading": "Ranglisten werden geladen...",
       "empty": "Noch ist keine Rangliste verfügbar.",
       "parkFallback": "Park",
-      "ratingCount": "{{count}} Bewertung(en)",
+      "ratingCount": { "one": "{{count}} Bewertung", "few": "{{count}} Bewertungen", "many": "{{count}} Bewertungen", "other": "{{count}} Bewertungen" },
       "reliableBadge": "Zuverlässig",
       "filters": {
         "label": "Ranglisten filtern",

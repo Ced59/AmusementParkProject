@@ -15,6 +15,6 @@
     "averageRating": { "one": "Average rating {{value}} out of 5 from {{count}} rating.", "few": "Average rating {{value}} out of 5 from {{count}} ratings.", "many": "Average rating {{value}} out of 5 from {{count}} ratings.", "other": "Average rating {{value}} out of 5 from {{count}} ratings." },
     "day": { "one": "{{count}} day", "few": "{{count}} days", "many": "{{count}} days", "other": "{{count}} days" },
     "zoneWithCount": { "one": "{{count}} zone", "few": "{{count}} zones", "many": "{{count}} zones", "other": "{{count}} zones" },
-    "zoneSummary": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover."
+    "zoneSummary": { "one": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.", "few": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.", "many": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.", "other": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover." }
   }
 }

@@ -3777,7 +3777,12 @@
       "many": "{{count}} zones",
       "other": "{{count}} zones"
     },
-    "zoneSummary": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir."
+    "zoneSummary": {
+      "one": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.",
+      "few": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.",
+      "many": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.",
+      "other": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir."
+    }
   },
   "privacyPage": {
     "kicker": "Données personnelles",
@@ -3901,7 +3906,12 @@
       "searchPlaceholder": "Trouver un parc dans tes notes",
       "searchAction": "Rechercher",
       "clearSearch": "Effacer la recherche",
-      "ratingCount": "{{count}} note(s)",
+      "ratingCount": {
+        "one": "{{count}} note",
+        "few": "{{count}} notes",
+        "many": "{{count}} notes",
+        "other": "{{count}} notes"
+      },
       "loadMore": "Charger plus de notes",
       "loadingMore": "Chargement des notes..."
     },
@@ -3913,7 +3923,12 @@
       "loading": "Chargement du classement...",
       "empty": "Aucun classement n'est disponible pour le moment.",
       "parkFallback": "Parc",
-      "ratingCount": "{{count}} note(s)",
+      "ratingCount": {
+        "one": "{{count}} note",
+        "few": "{{count}} notes",
+        "many": "{{count}} notes",
+        "other": "{{count}} notes"
+      },
       "reliableBadge": "Fiable",
       "filters": {
         "label": "Filtrer les classements",

@@ -3777,7 +3777,12 @@
       "many": "{{count}} zones",
       "other": "{{count}} zones"
     },
-    "zoneSummary": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover."
+    "zoneSummary": {
+      "one": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.",
+      "few": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.",
+      "many": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover.",
+      "other": "{{zoneCountLabel}} grouping {{placeCountLabel}} to discover."
+    }
   },
   "privacyPage": {
     "kicker": "Personal data",
@@ -3901,7 +3906,12 @@
       "searchPlaceholder": "Find a park in your ratings",
       "searchAction": "Search",
       "clearSearch": "Clear search",
-      "ratingCount": "{{count}} rating(s)",
+      "ratingCount": {
+        "one": "{{count}} rating",
+        "few": "{{count}} ratings",
+        "many": "{{count}} ratings",
+        "other": "{{count}} ratings"
+      },
       "loadMore": "Load more ratings",
       "loadingMore": "Loading ratings..."
     },
@@ -3913,7 +3923,12 @@
       "loading": "Loading rankings...",
       "empty": "No ranking is available yet.",
       "parkFallback": "Park",
-      "ratingCount": "{{count}} rating(s)",
+      "ratingCount": {
+        "one": "{{count}} rating",
+        "few": "{{count}} ratings",
+        "many": "{{count}} ratings",
+        "other": "{{count}} ratings"
+      },
       "reliableBadge": "Reliable",
       "filters": {
         "label": "Filter rankings",

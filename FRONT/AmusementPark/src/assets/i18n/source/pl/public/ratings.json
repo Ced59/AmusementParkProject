@@ -41,7 +41,7 @@
       "searchPlaceholder": "Znajdź park w swoich ocenach",
       "searchAction": "Szukaj",
       "clearSearch": "Wyczyść wyszukiwanie",
-      "ratingCount": "{{count}} ocen(a)",
+      "ratingCount": { "one": "{{count}} ocena", "few": "{{count}} oceny", "many": "{{count}} ocen", "other": "{{count}} oceny" },
       "loadMore": "Załaduj więcej ocen",
       "loadingMore": "Ładowanie ocen..."
     },
@@ -53,7 +53,7 @@
       "loading": "Ładowanie rankingów...",
       "empty": "Ranking nie jest jeszcze dostępny.",
       "parkFallback": "Park",
-      "ratingCount": "{{count}} ocen(y)",
+      "ratingCount": { "one": "{{count}} ocena", "few": "{{count}} oceny", "many": "{{count}} ocen", "other": "{{count}} oceny" },
       "reliableBadge": "Pewne",
       "filters": {
         "label": "Filtruj rankingi",

@@ -44,7 +44,13 @@ export class ParkZonesViewComponent {
     const locale: string = this.translateService.currentLang || this.translateService.defaultLang || 'en';
     const zoneCountLabel: string = resolveLocalizedPlural(this.translateService, 'publicCounts.zoneWithCount', zoneCount, locale);
     const placeCountLabel: string = resolveLocalizedPlural(this.translateService, 'publicCounts.placeWithCount', totalItems, locale);
-    return this.translateService.instant('publicCounts.zoneSummary', { zoneCountLabel, placeCountLabel }) as string;
+    return resolveLocalizedPlural(
+      this.translateService,
+      'publicCounts.zoneSummary',
+      zoneCount,
+      locale,
+      { zoneCountLabel, placeCountLabel }
+    );
   }
 
   onBackClicked(): void {

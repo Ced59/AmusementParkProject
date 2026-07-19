@@ -15,6 +15,6 @@
     "averageRating": { "one": "Średnia ocena {{value}} z 5 na podstawie {{count}} oceny.", "few": "Średnia ocena {{value}} z 5 na podstawie {{count}} ocen.", "many": "Średnia ocena {{value}} z 5 na podstawie {{count}} ocen.", "other": "Średnia ocena {{value}} z 5 na podstawie {{count}} oceny." },
     "day": { "one": "{{count}} dzień", "few": "{{count}} dni", "many": "{{count}} dni", "other": "{{count}} dnia" },
     "zoneWithCount": { "one": "{{count}} strefa", "few": "{{count}} strefy", "many": "{{count}} stref", "other": "{{count}} strefy" },
-    "zoneSummary": "{{zoneCountLabel}} obejmujące {{placeCountLabel}} do odkrycia."
+    "zoneSummary": { "one": "{{zoneCountLabel}} obejmująca {{placeCountLabel}} do odkrycia.", "few": "{{zoneCountLabel}} obejmujące {{placeCountLabel}} do odkrycia.", "many": "{{zoneCountLabel}} obejmujących {{placeCountLabel}} do odkrycia.", "other": "{{zoneCountLabel}} obejmujące {{placeCountLabel}} do odkrycia." }
   }
 }

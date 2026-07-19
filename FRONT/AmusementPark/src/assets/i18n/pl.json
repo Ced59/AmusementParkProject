@@ -3777,7 +3777,12 @@
       "many": "{{count}} stref",
       "other": "{{count}} strefy"
     },
-    "zoneSummary": "{{zoneCountLabel}} obejmujące {{placeCountLabel}} do odkrycia."
+    "zoneSummary": {
+      "one": "{{zoneCountLabel}} obejmująca {{placeCountLabel}} do odkrycia.",
+      "few": "{{zoneCountLabel}} obejmujące {{placeCountLabel}} do odkrycia.",
+      "many": "{{zoneCountLabel}} obejmujących {{placeCountLabel}} do odkrycia.",
+      "other": "{{zoneCountLabel}} obejmujące {{placeCountLabel}} do odkrycia."
+    }
   },
   "privacyPage": {
     "kicker": "Dane osobowe",
@@ -3901,7 +3906,12 @@
       "searchPlaceholder": "Znajdź park w swoich ocenach",
       "searchAction": "Szukaj",
       "clearSearch": "Wyczyść wyszukiwanie",
-      "ratingCount": "{{count}} ocen(a)",
+      "ratingCount": {
+        "one": "{{count}} ocena",
+        "few": "{{count}} oceny",
+        "many": "{{count}} ocen",
+        "other": "{{count}} oceny"
+      },
       "loadMore": "Załaduj więcej ocen",
       "loadingMore": "Ładowanie ocen..."
     },
@@ -3913,7 +3923,12 @@
       "loading": "Ładowanie rankingów...",
       "empty": "Ranking nie jest jeszcze dostępny.",
       "parkFallback": "Park",
-      "ratingCount": "{{count}} ocen(y)",
+      "ratingCount": {
+        "one": "{{count}} ocena",
+        "few": "{{count}} oceny",
+        "many": "{{count}} ocen",
+        "other": "{{count}} oceny"
+      },
       "reliableBadge": "Pewne",
       "filters": {
         "label": "Filtruj rankingi",

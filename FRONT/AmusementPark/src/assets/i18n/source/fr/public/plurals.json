@@ -15,6 +15,6 @@
     "averageRating": { "one": "Note moyenne {{value}} sur 5 avec {{count}} note.", "few": "Note moyenne {{value}} sur 5 avec {{count}} notes.", "many": "Note moyenne {{value}} sur 5 avec {{count}} notes.", "other": "Note moyenne {{value}} sur 5 avec {{count}} notes." },
     "day": { "one": "{{count}} jour", "few": "{{count}} jours", "many": "{{count}} jours", "other": "{{count}} jours" },
     "zoneWithCount": { "one": "{{count}} zone", "few": "{{count}} zones", "many": "{{count}} zones", "other": "{{count}} zones" },
-    "zoneSummary": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir."
+    "zoneSummary": { "one": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.", "few": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.", "many": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir.", "other": "{{zoneCountLabel}} regroupant {{placeCountLabel}} à découvrir." }
   }
 }

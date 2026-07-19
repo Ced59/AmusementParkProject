@@ -15,6 +15,6 @@
     "averageRating": { "one": "Avaliação média {{value}} em 5 com {{count}} avaliação.", "few": "Avaliação média {{value}} em 5 com {{count}} avaliações.", "many": "Avaliação média {{value}} em 5 com {{count}} avaliações.", "other": "Avaliação média {{value}} em 5 com {{count}} avaliações." },
     "day": { "one": "{{count}} dia", "few": "{{count}} dias", "many": "{{count}} dias", "other": "{{count}} dias" },
     "zoneWithCount": { "one": "{{count}} zona", "few": "{{count}} zonas", "many": "{{count}} zonas", "other": "{{count}} zonas" },
-    "zoneSummary": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir."
+    "zoneSummary": { "one": "{{zoneCountLabel}} que agrupa {{placeCountLabel}} a descobrir.", "few": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir.", "many": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir.", "other": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir." }
   }
 }

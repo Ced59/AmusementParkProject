@@ -3777,7 +3777,12 @@
       "many": "{{count}} zonas",
       "other": "{{count}} zonas"
     },
-    "zoneSummary": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir."
+    "zoneSummary": {
+      "one": "{{zoneCountLabel}} que agrupa {{placeCountLabel}} a descobrir.",
+      "few": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir.",
+      "many": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir.",
+      "other": "{{zoneCountLabel}} que agrupam {{placeCountLabel}} a descobrir."
+    }
   },
   "privacyPage": {
     "kicker": "Dados pessoais",
@@ -3901,7 +3906,12 @@
       "searchPlaceholder": "Encontrar um parque nas tuas avaliações",
       "searchAction": "Pesquisar",
       "clearSearch": "Limpar pesquisa",
-      "ratingCount": "{{count}} avaliação(ões)",
+      "ratingCount": {
+        "one": "{{count}} avaliação",
+        "few": "{{count}} avaliações",
+        "many": "{{count}} avaliações",
+        "other": "{{count}} avaliações"
+      },
       "loadMore": "Carregar mais avaliações",
       "loadingMore": "A carregar avaliações..."
     },
@@ -3913,7 +3923,12 @@
       "loading": "A carregar rankings...",
       "empty": "Ainda não há ranking disponível.",
       "parkFallback": "Parque",
-      "ratingCount": "{{count}} avaliação(ões)",
+      "ratingCount": {
+        "one": "{{count}} avaliação",
+        "few": "{{count}} avaliações",
+        "many": "{{count}} avaliações",
+        "other": "{{count}} avaliações"
+      },
       "reliableBadge": "Fiável",
       "filters": {
         "label": "Filtrar rankings",

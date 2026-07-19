@@ -15,6 +15,6 @@
     "averageRating": { "one": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertung.", "few": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertungen.", "many": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertungen.", "other": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertungen." },
     "day": { "one": "{{count}} Tag", "few": "{{count}} Tage", "many": "{{count}} Tage", "other": "{{count}} Tage" },
     "zoneWithCount": { "one": "{{count}} Bereich", "few": "{{count}} Bereiche", "many": "{{count}} Bereiche", "other": "{{count}} Bereiche" },
-    "zoneSummary": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken."
+    "zoneSummary": { "one": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken.", "few": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken.", "many": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken.", "other": "{{zoneCountLabel}} mit {{placeCountLabel}} zum Entdecken." }
   }
 }

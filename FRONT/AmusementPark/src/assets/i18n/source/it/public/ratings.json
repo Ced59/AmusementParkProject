@@ -41,7 +41,7 @@
       "searchPlaceholder": "Trova un parco nelle tue valutazioni",
       "searchAction": "Cerca",
       "clearSearch": "Cancella ricerca",
-      "ratingCount": "{{count}} valutazione(i)",
+      "ratingCount": { "one": "{{count}} valutazione", "few": "{{count}} valutazioni", "many": "{{count}} valutazioni", "other": "{{count}} valutazioni" },
       "loadMore": "Carica altre valutazioni",
       "loadingMore": "Caricamento valutazioni..."
     },
@@ -53,7 +53,7 @@
       "loading": "Caricamento classifiche...",
       "empty": "Nessuna classifica disponibile al momento.",
       "parkFallback": "Parco",
-      "ratingCount": "{{count}} valutazione/i",
+      "ratingCount": { "one": "{{count}} valutazione", "few": "{{count}} valutazioni", "many": "{{count}} valutazioni", "other": "{{count}} valutazioni" },
       "reliableBadge": "Affidabile",
       "filters": {
         "label": "Filtra classifiche",

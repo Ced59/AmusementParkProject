@@ -15,6 +15,6 @@
     "averageRating": { "one": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordeling.", "few": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordelingen.", "many": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordelingen.", "other": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordelingen." },
     "day": { "one": "{{count}} dag", "few": "{{count}} dagen", "many": "{{count}} dagen", "other": "{{count}} dagen" },
     "zoneWithCount": { "one": "{{count}} zone", "few": "{{count}} zones", "many": "{{count}} zones", "other": "{{count}} zones" },
-    "zoneSummary": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken."
+    "zoneSummary": { "one": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken.", "few": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken.", "many": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken.", "other": "{{zoneCountLabel}} met {{placeCountLabel}} om te ontdekken." }
   }
 }
