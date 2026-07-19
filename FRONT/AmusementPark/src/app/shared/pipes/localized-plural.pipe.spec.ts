@@ -36,6 +36,16 @@ describe('LocalizedPluralPipe', () => {
 
     expect(pipe.transform('counts.service', 1, {}, 'fr')).toBe('services');
   });
+
+  it('uses the configured Portuguese regional locale for route languages', () => {
+    const translateService: TranslateService = createTranslateService({
+      'counts.video.one': '{{count}} vídeo',
+      'counts.video.other': '{{count}} vídeos'
+    });
+    const pipe: LocalizedPluralPipe = new LocalizedPluralPipe(translateService);
+
+    expect(pipe.transform('counts.video', 0, {}, 'pt')).toBe('{{count}} vídeos');
+  });
 });
 
 function createTranslateService(translations: Record<string, string>): TranslateService {
