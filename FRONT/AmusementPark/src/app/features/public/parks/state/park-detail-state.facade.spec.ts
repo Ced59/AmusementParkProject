@@ -506,7 +506,7 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.founderName).toBe('Founder');
     expect(context.facade.park()?.operatorName).toBe('Operator');
     expect(context.facade.park()?.stats[0].value).toBe(3);
-    expect(context.facade.summary()?.entries.find((entry) => entry.labelKey === 'parkVisitor.summary.totalItems')?.count).toBe(3);
+    expect(context.facade.summary()?.entries.find((entry) => entry.labelKey === 'publicCounts.place')?.count).toBe(3);
     expect(context.parksPort.summaryCalls).toEqual(['park-1']);
     expect(context.videosPort.calls).toEqual([{
       page: 1,
