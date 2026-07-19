@@ -1,6 +1,20 @@
 {
-  "version": "3.4.30",
+  "version": "3.4.31",
   "history": [
+    {
+      "version": "3.4.31",
+      "releasedAt": "2026-07-19",
+      "labels": {
+        "fr": "Les lieux des parcs sont formulés plus naturellement.",
+        "en": "Park locations are phrased more naturally.",
+        "de": "Parkstandorte werden natürlicher formuliert.",
+        "nl": "Parklocaties worden natuurlijker verwoord.",
+        "it": "Le località dei parchi sono formulate in modo più naturale.",
+        "es": "Las ubicaciones de los parques se expresan de forma más natural.",
+        "pl": "Lokalizacje parków są opisywane naturalniej.",
+        "pt": "As localizações dos parques são formuladas de forma mais natural."
+      }
+    },
     {
       "version": "3.4.30",
       "releasedAt": "2026-07-19",

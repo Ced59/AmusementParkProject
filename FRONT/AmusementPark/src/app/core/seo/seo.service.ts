@@ -159,6 +159,15 @@ const SOCIAL_IMAGE_WIDTH: number = 1200;
 const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
 const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
 const RESPONSIVE_IMAGE_VERSION: string = '3';
+const FRENCH_AU_COUNTRY_CODES: ReadonlySet<string> = new Set<string>([
+  'BJ', 'BT', 'BW', 'BR', 'BN', 'BF', 'BI', 'KH', 'CM', 'CA', 'CL', 'CG', 'CD', 'CR',
+  'DK', 'DJ', 'GA', 'GH', 'GT', 'GY', 'HN', 'JP', 'KE', 'KW', 'LA', 'LS', 'LB', 'LI', 'LU', 'MW',
+  'ML', 'MA', 'MX', 'ME', 'MZ', 'NP', 'NI', 'NE', 'NG', 'PK', 'PA', 'PY', 'PE', 'PT', 'QA', 'GB',
+  'RW', 'SV', 'SN', 'SD', 'LK', 'SR', 'SZ', 'TD', 'TG', 'TM', 'VE', 'VN', 'YE', 'ZW'
+]);
+const FRENCH_AUX_COUNTRY_CODES: ReadonlySet<string> = new Set<string>([
+  'BS', 'KM', 'US', 'CV', 'FJ', 'MV', 'MH', 'NL', 'PH', 'SB', 'SC', 'AE'
+]);
 
 const HISTORY_SEO_COPY: Record<string, HistorySeoCopy> = {
   fr: {
@@ -994,9 +1003,9 @@ const PARK_REFERENCE_SEO_COPY: Record<string, ParkReferenceSeoCopy> = {
 
 const PARK_DETAIL_SEO_COPY: Record<string, ParkDetailSeoCopy> = {
   en: {
-    title: (parkName: string, locationLabel: string): string => `Park guide: ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}`,
+    title: (parkName: string, locationLabel: string): string => `Park guide: ${parkName}${locationLabel}`,
     description: (parkName: string, locationLabel: string): string =>
-      `Explore ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: practical information, attractions, restaurants, hotels and park map.`
+      `Explore ${parkName}${locationLabel}: practical information, attractions, restaurants, hotels and park map.`
   },
   fr: {
     title: (parkName: string, locationLabel: string): string => `Guide de ${parkName}${locationLabel}`,
@@ -1004,34 +1013,34 @@ const PARK_DETAIL_SEO_COPY: Record<string, ParkDetailSeoCopy> = {
       `Découvre ${parkName}${locationLabel} : infos pratiques, attractions, restaurants, hôtels et carte du parc.`
   },
   es: {
-    title: (parkName: string, locationLabel: string): string => `Guía de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}`,
+    title: (parkName: string, locationLabel: string): string => `Guía de ${parkName}${locationLabel}`,
     description: (parkName: string, locationLabel: string): string =>
-      `Explora ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}: información práctica, atracciones, restaurantes, hoteles y mapa del parque.`
+      `Explora ${parkName}${locationLabel}: información práctica, atracciones, restaurantes, hoteles y mapa del parque.`
   },
   de: {
-    title: (parkName: string, locationLabel: string): string => `Parkprofil ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}`,
+    title: (parkName: string, locationLabel: string): string => `Parkprofil ${parkName}${locationLabel}`,
     description: (parkName: string, locationLabel: string): string =>
-      `Entdecke ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: praktische Infos, Attraktionen, Restaurants, Hotels und Parkkarte.`
+      `Entdecke ${parkName}${locationLabel}: praktische Infos, Attraktionen, Restaurants, Hotels und Parkkarte.`
   },
   it: {
-    title: (parkName: string, locationLabel: string): string => `Scheda di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}`,
+    title: (parkName: string, locationLabel: string): string => `Scheda di ${parkName}${locationLabel}`,
     description: (parkName: string, locationLabel: string): string =>
-      `Scopri ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}: informazioni pratiche, attrazioni, ristoranti, hotel e mappa del parco.`
+      `Scopri ${parkName}${locationLabel}: informazioni pratiche, attrazioni, ristoranti, hotel e mappa del parco.`
   },
   pl: {
-    title: (parkName: string, locationLabel: string): string => `Przewodnik po ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}`,
+    title: (parkName: string, locationLabel: string): string => `Przewodnik po ${parkName}${locationLabel}`,
     description: (parkName: string, locationLabel: string): string =>
-      `Poznaj ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}: informacje praktyczne, atrakcje, restauracje, hotele i mapa parku.`
+      `Poznaj ${parkName}${locationLabel}: informacje praktyczne, atrakcje, restauracje, hotele i mapa parku.`
   },
   nl: {
-    title: (parkName: string, locationLabel: string): string => `Parkgids voor ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}`,
+    title: (parkName: string, locationLabel: string): string => `Parkgids voor ${parkName}${locationLabel}`,
     description: (parkName: string, locationLabel: string): string =>
-      `Ontdek ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: praktische info, attracties, restaurants, hotels en parkkaart.`
+      `Ontdek ${parkName}${locationLabel}: praktische info, attracties, restaurants, hotels en parkkaart.`
   },
   pt: {
-    title: (parkName: string, locationLabel: string): string => `Guia de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}`,
+    title: (parkName: string, locationLabel: string): string => `Guia de ${parkName}${locationLabel}`,
     description: (parkName: string, locationLabel: string): string =>
-      `Explora ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}: informação prática, atrações, restaurantes, hotéis e mapa do parque.`
+      `Explora ${parkName}${locationLabel}: informação prática, atrações, restaurantes, hotéis e mapa do parque.`
   }
 };
 
@@ -2159,20 +2168,35 @@ export class SeoService {
     const country: string | null = this.normalizeOptionalText(park.countryName ?? park.countryCode);
 
     if (language !== 'fr') {
-      return [city, country]
+      const neutralLocationLabel: string = [city, country]
         .filter((value: string | null): value is string => value !== null)
         .join(', ');
+      return neutralLocationLabel ? ` — ${neutralLocationLabel}` : '';
     }
 
     if (city && country) {
-      return ` à ${city}, en ${country}`;
+      return ` à ${city}, ${this.resolveFrenchCountryPreposition(park.countryCode)} ${country}`;
     }
 
     if (country) {
-      return ` en ${country}`;
+      return ` ${this.resolveFrenchCountryPreposition(park.countryCode)} ${country}`;
     }
 
     return city ? ` à ${city}` : '';
+  }
+
+  private resolveFrenchCountryPreposition(countryCode: string | null | undefined): 'en' | 'au' | 'aux' {
+    const normalizedCountryCode: string | null = this.normalizeOptionalText(countryCode)?.toUpperCase() ?? null;
+
+    if (normalizedCountryCode && FRENCH_AUX_COUNTRY_CODES.has(normalizedCountryCode)) {
+      return 'aux';
+    }
+
+    if (normalizedCountryCode && FRENCH_AU_COUNTRY_CODES.has(normalizedCountryCode)) {
+      return 'au';
+    }
+
+    return 'en';
   }
 
   private resolveLocalizedCountryName(countryCode: string | null | undefined, language: string): string | null {
