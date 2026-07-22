@@ -101,6 +101,7 @@ let technicalStatsPersistencePurgedBuckets = 0;
 let technicalStatsPersistenceEntries = 0;
 let technicalStatsPersistenceBytes = 0;
 let technicalStatsPersistenceTimerStarted = false;
+let retainedTechnicalStatsBucketsCache: TechnicalStatsPersistentBucket[] | null = null;
 let diskPageCacheMeasuredEntries = 0;
 let diskPageCacheMeasuredBytes = 0;
 let diskPageCacheStatsLastMeasuredAt = 0;
@@ -1176,8 +1177,13 @@ function loadPersistedTechnicalStatsBuckets(): void {
 }
 
 function readRetainedTechnicalStatsBuckets(): TechnicalStatsPersistentBucket[] {
+  if (retainedTechnicalStatsBucketsCache !== null) {
+    return retainedTechnicalStatsBucketsCache;
+  }
+
   if (!existsSync(technicalStatsPersistenceDirectory)) {
-    return [];
+    retainedTechnicalStatsBucketsCache = [];
+    return retainedTechnicalStatsBucketsCache;
   }
 
   const cutoff = getTechnicalStatsRetentionCutoffDateKey();
@@ -1195,7 +1201,9 @@ function readRetainedTechnicalStatsBuckets(): TechnicalStatsPersistentBucket[] {
     }
   }
 
-  return buckets.sort((left: TechnicalStatsPersistentBucket, right: TechnicalStatsPersistentBucket): number => left.date.localeCompare(right.date));
+  retainedTechnicalStatsBucketsCache = buckets.sort(
+    (left: TechnicalStatsPersistentBucket, right: TechnicalStatsPersistentBucket): number => left.date.localeCompare(right.date));
+  return retainedTechnicalStatsBucketsCache;
 }
 
 function readTechnicalStatsBucket(dateKey: string): TechnicalStatsPersistentBucket | null {
@@ -1236,6 +1244,12 @@ function readTechnicalStatsBucket(dateKey: string): TechnicalStatsPersistentBuck
 
 function writeTechnicalStatsBucket(bucket: TechnicalStatsPersistentBucket): void {
   writeJsonAtomically(getTechnicalStatsBucketPath(bucket.date), bucket);
+  if (retainedTechnicalStatsBucketsCache !== null) {
+    retainedTechnicalStatsBucketsCache = [
+      ...retainedTechnicalStatsBucketsCache.filter((existingBucket: TechnicalStatsPersistentBucket): boolean => existingBucket.date !== bucket.date),
+      bucket
+    ].sort((left: TechnicalStatsPersistentBucket, right: TechnicalStatsPersistentBucket): number => left.date.localeCompare(right.date));
+  }
 }
 
 function purgeExpiredTechnicalStatsBuckets(): number {
@@ -1258,6 +1272,10 @@ function purgeExpiredTechnicalStatsBuckets(): number {
     } catch {
       // Best effort cleanup only.
     }
+  }
+
+  if (purged > 0) {
+    retainedTechnicalStatsBucketsCache = null;
   }
 
   return purged;

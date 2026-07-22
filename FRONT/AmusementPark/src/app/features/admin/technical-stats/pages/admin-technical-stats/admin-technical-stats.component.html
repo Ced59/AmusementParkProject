@@ -162,7 +162,7 @@
                     <dl>
                       <div><dt>{{ t('cacheHits') }}</dt><dd>{{ day.hitRatePercent | number:'1.0-1' }}%</dd></div>
                       <div><dt>{{ t('seoReady') }}</dt><dd>{{ day.seoReadyRatePercent | number:'1.0-1' }}%</dd></div>
-                      <div><dt>{{ t('cacheOnlyMisses') }}</dt><dd>{{ day.unavailableResponses | number }}</dd></div>
+                      <div><dt>{{ t(selectedTrendAgent() === 'all' ? 'cacheOnlyMisses' : 'ssrUnavailableShort') }}</dt><dd>{{ day.unavailableResponses | number }}</dd></div>
                     </dl>
                   </article>
                 }

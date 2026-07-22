@@ -148,6 +148,26 @@ describe('AdminTechnicalStatsComponent', () => {
 
     expect(fixture.debugElement.queryAll(By.css('.admin-technical-stats-day-chart__row')).length).toBe(100);
   });
+
+  it('distinguishes aggregate cache-only misses from per-agent SSR unavailability', () => {
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    fixture.detectChanges();
+
+    const trendsTab = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-tab'))
+      .find((button) => button.nativeElement.textContent.includes('Daily trends'));
+    trendsTab?.nativeElement.click();
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.textContent).toContain('Cache-only 503s');
+
+    const agentSelect: HTMLSelectElement = fixture.debugElement.query(By.css('.admin-technical-stats-agent-head select')).nativeElement;
+    agentSelect.value = 'Googlebot';
+    agentSelect.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.textContent).toContain('SSR unavailable 503s');
+  });
 });
 
 function createStats(rowCount: number): TechnicalStatsSnapshot {

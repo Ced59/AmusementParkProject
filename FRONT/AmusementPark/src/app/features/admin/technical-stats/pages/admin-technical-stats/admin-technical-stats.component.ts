@@ -182,6 +182,7 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     cacheHits: 'Cache',
     seoReady: 'SEO prêt',
     cacheOnlyMisses: '503 cache-only',
+    ssrUnavailableShort: '503 SSR indisponible',
     averageRenderShort: 'Rendu moy.'
   },
   en: {
@@ -324,6 +325,7 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     cacheHits: 'Cache',
     seoReady: 'SEO ready',
     cacheOnlyMisses: 'Cache-only 503s',
+    ssrUnavailableShort: 'SSR unavailable 503s',
     averageRenderShort: 'Avg. render'
   }
 };
@@ -357,6 +359,11 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
     'CSR-OVERLOAD-FALLBACK': 'Overload fallback',
     'CSR-WARMUP-SKIPPED': 'Warmup skipped'
   }
+};
+
+const DAY_FORMATTERS: Record<TechnicalStatsLanguage, Intl.DateTimeFormat> = {
+  fr: new Intl.DateTimeFormat('fr', { day: '2-digit', month: 'short', timeZone: 'UTC' }),
+  en: new Intl.DateTimeFormat('en', { day: '2-digit', month: 'short', timeZone: 'UTC' })
 };
 
 @Component({
@@ -597,7 +604,7 @@ export class AdminTechnicalStatsComponent implements OnInit {
     const parsed: Date = new Date(`${date}T00:00:00Z`);
     return Number.isNaN(parsed.getTime())
       ? date
-      : new Intl.DateTimeFormat(this.currentLanguage, { day: '2-digit', month: 'short', timeZone: 'UTC' }).format(parsed);
+      : DAY_FORMATTERS[this.currentLanguage].format(parsed);
   }
 
   protected saveRetentionDays(event: Event, stats: TechnicalStatsSnapshot): void {
