@@ -45,6 +45,7 @@ function isKnownPublicPageRoute(path: string): boolean {
     || /^\/[a-z]{2}\/(?:home|parks|sitemap|rankings|manufacturers|about|contact|versions|privacy)\/?$/i.test(path)
     || /^\/[a-z]{2}\/technical(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
+    || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/images|\/videos|\/map|\/zones|\/weather|\/opening-hours|\/items)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/history(?:\/[^/]+\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path)

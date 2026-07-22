@@ -4,6 +4,7 @@ export type RobotFamily =
   | 'DuckDuckBot'
   | 'YandexBot'
   | 'AhrefsBot'
+  | 'AhrefsSiteAudit'
   | 'SemrushBot'
   | 'BaiduSpider'
   | 'Yahoo Slurp'
@@ -21,11 +22,14 @@ export type RobotFamily =
   | 'TwitterBot'
   | 'Other bot';
 
-const primarySearchRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily>([
+const coldRenderRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily>([
   'Googlebot',
   'Bingbot',
   'YandexBot',
-  'DuckDuckBot'
+  'DuckDuckBot',
+  'Applebot',
+  'AhrefsBot',
+  'AhrefsSiteAudit'
 ]);
 
 const socialPreviewRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily>([
@@ -62,6 +66,10 @@ export function detectRobotFamilyFromUserAgent(userAgentHeader: string): RobotFa
 
   if (userAgent.includes('ahrefsbot')) {
     return 'AhrefsBot';
+  }
+
+  if (userAgent.includes('ahrefssiteaudit')) {
+    return 'AhrefsSiteAudit';
   }
 
   if (userAgent.includes('semrushbot')) {
@@ -133,7 +141,7 @@ export function detectRobotFamilyFromUserAgent(userAgentHeader: string): RobotFa
 
 export function shouldAllowRobotCacheMissSsrRender(robotFamily: RobotFamily | null): boolean {
   return robotFamily === null
-    || primarySearchRobotFamilies.has(robotFamily)
+    || coldRenderRobotFamilies.has(robotFamily)
     || socialPreviewRobotFamilies.has(robotFamily);
 }
 

@@ -26,6 +26,7 @@ public sealed class SeoControllerTests
         {
             PublicBaseUrl = "https://amusement-parks.fun",
             SupportedLanguages = new List<string> { "en", "fr" },
+            AhrefsCrawlDelaySeconds = 2,
             RobotsAllowPaths = new List<string> { "/api/images/binary/" },
             RobotsDisallowPaths = new List<string> { "/api/", "/{lang}/admin/" },
         });
@@ -35,6 +36,9 @@ public sealed class SeoControllerTests
         string[] lines = content.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
         Assert.Contains("Allow: /", lines);
+        Assert.Contains("User-agent: AhrefsBot", lines);
+        Assert.Contains("User-agent: AhrefsSiteAudit", lines);
+        Assert.Contains("Crawl-delay: 2", lines);
         Assert.Contains("Allow: /api/images/binary/", lines);
         Assert.DoesNotContain("Allow: /api/images/", lines);
         Assert.Contains("Disallow: /api/", lines);

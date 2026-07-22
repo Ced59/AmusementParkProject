@@ -1,6 +1,20 @@
 {
-  "version": "3.4.31",
+  "version": "3.4.32",
   "history": [
+    {
+      "version": "3.4.32",
+      "releasedAt": "2026-07-22",
+      "labels": {
+        "fr": "Les outils d’audit explorent mieux les pages publiques.",
+        "en": "Audit tools explore public pages more reliably.",
+        "de": "Audit-Tools erfassen öffentliche Seiten zuverlässiger.",
+        "nl": "Audittools verkennen openbare pagina's betrouwbaarder.",
+        "it": "Gli strumenti di audit esplorano le pagine pubbliche in modo più affidabile.",
+        "es": "Las herramientas de auditoría exploran las páginas públicas con más fiabilidad.",
+        "pl": "Narzędzia audytowe niezawodniej przeglądają strony publiczne.",
+        "pt": "As ferramentas de auditoria exploram as páginas públicas com mais fiabilidade."
+      }
+    },
     {
       "version": "3.4.31",
       "releasedAt": "2026-07-19",
