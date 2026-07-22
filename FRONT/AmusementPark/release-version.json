@@ -1,6 +1,20 @@
 {
-  "version": "3.4.33",
+  "version": "3.4.34",
   "history": [
+    {
+      "version": "3.4.34",
+      "releasedAt": "2026-07-22",
+      "labels": {
+        "fr": "Les assistants de recherche accèdent mieux aux pages publiques.",
+        "en": "Search assistants access public pages more reliably.",
+        "de": "Suchassistenten greifen zuverlässiger auf öffentliche Seiten zu.",
+        "nl": "Zoekassistenten bereiken openbare pagina's betrouwbaarder.",
+        "it": "Gli assistenti di ricerca accedono alle pagine pubbliche in modo più affidabile.",
+        "es": "Los asistentes de búsqueda acceden mejor a las páginas públicas.",
+        "pl": "Asystenci wyszukiwania pewniej uzyskują dostęp do stron publicznych.",
+        "pt": "Os assistentes de pesquisa acedem às páginas públicas com mais fiabilidade."
+      }
+    },
     {
       "version": "3.4.33",
       "releasedAt": "2026-07-22",
