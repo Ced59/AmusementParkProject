@@ -1,6 +1,20 @@
 {
-  "version": "3.4.32",
+  "version": "3.4.33",
   "history": [
+    {
+      "version": "3.4.33",
+      "releasedAt": "2026-07-22",
+      "labels": {
+        "fr": "Les pages publiques restent plus stables pendant l’exploration.",
+        "en": "Public pages stay more stable during crawling.",
+        "de": "Öffentliche Seiten bleiben beim Crawling stabiler.",
+        "nl": "Openbare pagina's blijven stabieler tijdens het crawlen.",
+        "it": "Le pagine pubbliche restano più stabili durante la scansione.",
+        "es": "Las páginas públicas se mantienen más estables durante el rastreo.",
+        "pl": "Strony publiczne działają stabilniej podczas indeksowania.",
+        "pt": "As páginas públicas ficam mais estáveis durante o rastreio."
+      }
+    },
     {
       "version": "3.4.32",
       "releasedAt": "2026-07-22",
