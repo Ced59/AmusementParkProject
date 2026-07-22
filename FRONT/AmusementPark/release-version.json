@@ -1,6 +1,20 @@
 {
-  "version": "3.4.34",
+  "version": "3.4.35",
   "history": [
+    {
+      "version": "3.4.35",
+      "releasedAt": "2026-07-22",
+      "labels": {
+        "fr": "La navigation des assistants reste plus fiable.",
+        "en": "Assistant browsing remains more reliable.",
+        "de": "Das Browsen durch Assistenten bleibt zuverlässiger.",
+        "nl": "Browsen via assistenten blijft betrouwbaarder.",
+        "it": "La navigazione degli assistenti resta più affidabile.",
+        "es": "La navegación de los asistentes sigue siendo más fiable.",
+        "pl": "Przeglądanie przez asystentów pozostaje bardziej niezawodne.",
+        "pt": "A navegação dos assistentes continua mais fiável."
+      }
+    },
     {
       "version": "3.4.34",
       "releasedAt": "2026-07-22",
