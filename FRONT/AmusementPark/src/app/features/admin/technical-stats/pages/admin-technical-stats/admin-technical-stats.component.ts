@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 
 import {
   TechnicalStatsCount,
+  TechnicalStatsDailySnapshot,
   TechnicalStatsRobotFamily,
   TechnicalStatsSnapshot
 } from '@app/models/admin/technical-stats/technical-stats.models';
 import { AdminTechnicalStatsFacade } from '../../state/admin-technical-stats.facade';
 
 type TechnicalStatsLanguage = 'fr' | 'en';
-type TechnicalStatsTab = 'summary' | 'cache' | 'rendering' | 'seo' | 'config';
+type TechnicalStatsTab = 'summary' | 'trends' | 'cache' | 'rendering' | 'seo' | 'config';
+type TrendRange = 7 | 15 | 30 | 'all';
 type RobotFamilyFilter = 'all' | 'google' | 'bing' | 'yandex' | 'other';
 
 const MAX_DISTRIBUTION_ROWS = 12;
@@ -29,6 +31,14 @@ interface TechnicalStatsTabOption {
 interface RobotFamilyFilterOption {
   readonly key: RobotFamilyFilter;
   readonly labelKey: string;
+}
+
+interface TechnicalStatsAgentDay {
+  readonly date: string;
+  readonly requests: number;
+  readonly hitRatePercent: number;
+  readonly seoReadyRatePercent: number;
+  readonly unavailableResponses: number;
 }
 
 const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
@@ -54,6 +64,7 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     tabRendering: 'Rendu',
     tabSeo: 'SEO robots',
     tabConfig: 'Config',
+    tabTrends: 'Par jour',
     lastRefresh: 'Snapshot généré',
     startedAt: 'Fenêtre commencée',
     uptime: 'Durée fenêtre',
@@ -152,7 +163,26 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     groupOther: 'Autres',
     yes: 'Oui',
     no: 'Non',
-    never: 'Jamais'
+    never: 'Jamais',
+    trendsTitle: 'Évolution journalière',
+    trendsSubtitle: 'Compare le trafic, le cache, le rendu et la qualité SEO pour chaque journée conservée.',
+    period: 'Période',
+    days7: '7 jours',
+    days15: '15 jours',
+    days30: '30 jours',
+    allDays: 'Tout',
+    dailyTraffic: 'Trafic et rendus par jour',
+    dailyRates: 'Qualité et efficacité par jour',
+    agentEvolution: 'Évolution par agent',
+    selectAgent: 'Agent analysé',
+    allAgents: 'Tous les agents',
+    date: 'Date',
+    pages: 'Pages',
+    robots: 'Robots',
+    cacheHits: 'Cache',
+    seoReady: 'SEO prêt',
+    cacheOnlyMisses: '503 cache-only',
+    averageRenderShort: 'Rendu moy.'
   },
   en: {
     nav: 'Technical stats',
@@ -176,6 +206,7 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     tabRendering: 'Rendering',
     tabSeo: 'SEO robots',
     tabConfig: 'Config',
+    tabTrends: 'Daily trends',
     lastRefresh: 'Snapshot generated',
     startedAt: 'Window started',
     uptime: 'Window duration',
@@ -274,7 +305,26 @@ const COPY: Record<TechnicalStatsLanguage, Record<string, string>> = {
     groupOther: 'Other',
     yes: 'Yes',
     no: 'No',
-    never: 'Never'
+    never: 'Never',
+    trendsTitle: 'Daily trends',
+    trendsSubtitle: 'Compare traffic, cache, rendering and SEO quality for every retained day.',
+    period: 'Period',
+    days7: '7 days',
+    days15: '15 days',
+    days30: '30 days',
+    allDays: 'All',
+    dailyTraffic: 'Daily traffic and renders',
+    dailyRates: 'Daily quality and efficiency',
+    agentEvolution: 'Agent trends',
+    selectAgent: 'Selected agent',
+    allAgents: 'All agents',
+    date: 'Date',
+    pages: 'Pages',
+    robots: 'Robots',
+    cacheHits: 'Cache',
+    seoReady: 'SEO ready',
+    cacheOnlyMisses: 'Cache-only 503s',
+    averageRenderShort: 'Avg. render'
   }
 };
 
@@ -322,6 +372,7 @@ const STATUS_LABELS: Record<TechnicalStatsLanguage, Record<string, string>> = {
 export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly tabOptions: readonly TechnicalStatsTabOption[] = [
     { key: 'summary', labelKey: 'tabSummary' },
+    { key: 'trends', labelKey: 'tabTrends' },
     { key: 'seo', labelKey: 'tabSeo' },
     { key: 'cache', labelKey: 'tabCache' },
     { key: 'rendering', labelKey: 'tabRendering' },
@@ -345,6 +396,47 @@ export class AdminTechnicalStatsComponent implements OnInit {
   protected readonly retentionDaysDraft = signal<number | null>(null);
   protected readonly activeTab = signal<TechnicalStatsTab>('summary');
   protected readonly robotFamilyFilter = signal<RobotFamilyFilter>('all');
+  protected readonly trendRange = signal<TrendRange>(15);
+  protected readonly selectedTrendAgent = signal<string>('all');
+  protected readonly visibleDailyStats = computed((): TechnicalStatsDailySnapshot[] => {
+    const daily: TechnicalStatsDailySnapshot[] = this.stats()?.daily ?? [];
+    const range: TrendRange = this.trendRange();
+    return range === 'all' ? daily : daily.slice(-range);
+  });
+  protected readonly trendAgentOptions = computed((): string[] => {
+    const agents: Set<string> = new Set<string>();
+    for (const day of this.visibleDailyStats()) {
+      for (const robot of day.robotFamilies) {
+        agents.add(robot.key);
+      }
+    }
+    return Array.from(agents).sort((left: string, right: string): number => left.localeCompare(right));
+  });
+  protected readonly selectedAgentDailyStats = computed((): TechnicalStatsAgentDay[] => {
+    const selectedAgent: string = this.selectedTrendAgent();
+    return this.visibleDailyStats().map((day: TechnicalStatsDailySnapshot): TechnicalStatsAgentDay => {
+      if (selectedAgent === 'all') {
+        return {
+          date: day.date,
+          requests: day.robotPageResponses,
+          hitRatePercent: day.robotHitRatePercent,
+          seoReadyRatePercent: day.robotSeoReadyRatePercent,
+          unavailableResponses: day.robotCacheOnlyMissResponses
+        };
+      }
+
+      const robot: TechnicalStatsRobotFamily | undefined = day.robotFamilies.find((item: TechnicalStatsRobotFamily): boolean => item.key === selectedAgent);
+      return {
+        date: day.date,
+        requests: robot?.count ?? 0,
+        hitRatePercent: robot?.hitRatePercent ?? 0,
+        seoReadyRatePercent: robot?.seoReadyRatePercent ?? 0,
+        unavailableResponses: robot?.ssrUnavailableResponses ?? 0
+      };
+    });
+  });
+  protected readonly maxDailyPageResponses = computed((): number => Math.max(1, ...this.visibleDailyStats().map((day: TechnicalStatsDailySnapshot): number => day.pageResponses)));
+  protected readonly maxAgentRequests = computed((): number => Math.max(1, ...this.selectedAgentDailyStats().map((day: TechnicalStatsAgentDay): number => day.requests)));
   protected readonly visibleStatuses = computed(() => this.activeTab() === 'cache' ? this.limitRows(this.stats()?.cache.statuses ?? []) : []);
   protected readonly visibleRobotFamilies = computed(() => this.activeTab() === 'cache' ? this.limitRows(this.stats()?.cache.robotFamilies ?? []) : []);
   protected readonly visibleSeoRobotFamilies = computed(() => {
@@ -483,6 +575,29 @@ export class AdminTechnicalStatsComponent implements OnInit {
 
   protected setRobotFamilyFilter(filter: RobotFamilyFilter): void {
     this.robotFamilyFilter.set(filter);
+  }
+
+  protected setTrendRange(range: TrendRange): void {
+    this.trendRange.set(range);
+  }
+
+  protected setSelectedTrendAgent(value: string): void {
+    this.selectedTrendAgent.set(value);
+  }
+
+  protected dailyVolumeWidth(value: number): number {
+    return this.ratioWidth(value, this.maxDailyPageResponses());
+  }
+
+  protected agentVolumeWidth(value: number): number {
+    return this.ratioWidth(value, this.maxAgentRequests());
+  }
+
+  protected formatDay(date: string): string {
+    const parsed: Date = new Date(`${date}T00:00:00Z`);
+    return Number.isNaN(parsed.getTime())
+      ? date
+      : new Intl.DateTimeFormat(this.currentLanguage, { day: '2-digit', month: 'short', timeZone: 'UTC' }).format(parsed);
   }
 
   protected saveRetentionDays(event: Event, stats: TechnicalStatsSnapshot): void {
@@ -628,6 +743,14 @@ export class AdminTechnicalStatsComponent implements OnInit {
     }
 
     return Math.min(100, Math.max(0, value));
+  }
+
+  private ratioWidth(value: number, maximum: number): number {
+    if (!Number.isFinite(value) || value <= 0 || maximum <= 0) {
+      return 0;
+    }
+
+    return Math.max(3, Math.min(100, (value / maximum) * 100));
   }
 
   private clampRetentionDays(value: number | string): number {

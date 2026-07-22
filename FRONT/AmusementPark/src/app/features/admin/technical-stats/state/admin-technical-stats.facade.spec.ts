@@ -80,6 +80,7 @@ function createStats(): TechnicalStatsSnapshot {
     startedAtUtc: '2026-06-23T09:00:00Z',
     uptimeSeconds: 3600,
     buildVersion: '2.6.18',
+    daily: [],
     cache: {
       pageResponses: 8,
       cacheablePageResponses: 8,

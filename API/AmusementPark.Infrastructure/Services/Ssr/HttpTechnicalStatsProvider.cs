@@ -153,7 +153,8 @@ public sealed class HttpTechnicalStatsProvider : ITechnicalStatsProvider
             GeneratedAtUtc = ReadDateTime(root, "generatedAtUtc", now),
             StartedAtUtc = ReadDateTime(root, "startedAtUtc", now),
             UptimeSeconds = ReadLong(root, "uptimeSeconds"),
-            BuildVersion = ReadString(root, "buildVersion", string.Empty)
+            BuildVersion = ReadString(root, "buildVersion", string.Empty),
+            Daily = ReadDailyRows(root, "daily")
         };
 
         if (TryGetObject(root, "cache", out JsonElement cache))
@@ -295,6 +296,54 @@ public sealed class HttpTechnicalStatsProvider : ITechnicalStatsProvider
         }
 
         return snapshot;
+    }
+
+    private static IReadOnlyCollection<TechnicalStatsDailySnapshot> ReadDailyRows(JsonElement parent, string propertyName)
+    {
+        if (!TryGetArray(parent, propertyName, out JsonElement array))
+        {
+            return Array.Empty<TechnicalStatsDailySnapshot>();
+        }
+
+        List<TechnicalStatsDailySnapshot> rows = new List<TechnicalStatsDailySnapshot>();
+        foreach (JsonElement item in array.EnumerateArray())
+        {
+            if (item.ValueKind != JsonValueKind.Object)
+            {
+                continue;
+            }
+
+            string date = ReadString(item, "date", string.Empty);
+            if (date.Length == 0)
+            {
+                continue;
+            }
+
+            rows.Add(new TechnicalStatsDailySnapshot
+            {
+                Date = date,
+                PageResponses = ReadLong(item, "pageResponses"),
+                CacheHitResponses = ReadLong(item, "cacheHitResponses"),
+                HitRatePercent = ReadDouble(item, "hitRatePercent"),
+                RobotPageResponses = ReadLong(item, "robotPageResponses"),
+                RobotCacheHitResponses = ReadLong(item, "robotCacheHitResponses"),
+                RobotHitRatePercent = ReadDouble(item, "robotHitRatePercent"),
+                TotalRenders = ReadLong(item, "totalRenders"),
+                AverageRenderMilliseconds = ReadLong(item, "averageRenderMilliseconds"),
+                SeoReadyRatePercent = ReadDouble(item, "seoReadyRatePercent"),
+                RobotSeoReadyRatePercent = ReadDouble(item, "robotSeoReadyRatePercent"),
+                RobotCacheOnlyMissResponses = ReadLong(item, "robotCacheOnlyMissResponses"),
+                QueueFullRejections = ReadLong(item, "queueFullRejections"),
+                RobotFamilies = ReadRobotFamilyRows(item, "robotFamilies")
+            });
+
+            if (rows.Count >= 365)
+            {
+                break;
+            }
+        }
+
+        return rows.ToArray();
     }
 
     private static IReadOnlyCollection<TechnicalStatsCount> ReadCountRows(JsonElement parent, string propertyName)

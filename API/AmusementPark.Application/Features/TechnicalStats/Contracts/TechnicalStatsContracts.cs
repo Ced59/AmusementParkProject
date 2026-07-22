@@ -14,6 +14,8 @@ public sealed class TechnicalStatsSnapshot
 
     public string BuildVersion { get; set; } = string.Empty;
 
+    public IReadOnlyCollection<TechnicalStatsDailySnapshot> Daily { get; set; } = Array.Empty<TechnicalStatsDailySnapshot>();
+
     public TechnicalStatsCacheSummary Cache { get; set; } = new TechnicalStatsCacheSummary();
 
     public TechnicalStatsStorageSummary Storage { get; set; } = new TechnicalStatsStorageSummary();
@@ -27,6 +29,24 @@ public sealed class TechnicalStatsSnapshot
     public TechnicalStatsInvalidationSummary Invalidation { get; set; } = new TechnicalStatsInvalidationSummary();
 
     public TechnicalStatsRuntimeConfig Config { get; set; } = new TechnicalStatsRuntimeConfig();
+}
+
+public sealed class TechnicalStatsDailySnapshot
+{
+    public string Date { get; set; } = string.Empty;
+    public long PageResponses { get; set; }
+    public long CacheHitResponses { get; set; }
+    public double HitRatePercent { get; set; }
+    public long RobotPageResponses { get; set; }
+    public long RobotCacheHitResponses { get; set; }
+    public double RobotHitRatePercent { get; set; }
+    public long TotalRenders { get; set; }
+    public long AverageRenderMilliseconds { get; set; }
+    public double SeoReadyRatePercent { get; set; }
+    public double RobotSeoReadyRatePercent { get; set; }
+    public long RobotCacheOnlyMissResponses { get; set; }
+    public long QueueFullRejections { get; set; }
+    public IReadOnlyCollection<TechnicalStatsRobotFamily> RobotFamilies { get; set; } = Array.Empty<TechnicalStatsRobotFamily>();
 }
 
 public sealed class TechnicalStatsCacheSummary
