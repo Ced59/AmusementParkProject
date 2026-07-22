@@ -9,7 +9,7 @@ describe('robot SSR policy', () => {
   it('allows cold SSR for search, user-triggered, audit and social preview robots', () => {
     const allowedFamilies: Array<RobotFamily | null> = [
       null,
-      'Googlebot', 'Google-InspectionTool', 'Google-Agent', 'Google-GeminiNotebook',
+      'Googlebot', 'Google-InspectionTool', 'Google-Agent', 'GoogleAgent-Mariner', 'Google-GeminiNotebook',
       'Bingbot', 'YandexBot', 'DuckDuckBot', 'DuckAssistBot', 'Applebot',
       'OAI-SearchBot', 'ChatGPT-User', 'OAI-AdsBot',
       'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User',
@@ -52,6 +52,7 @@ describe('robot SSR policy', () => {
       ['Google-GeminiNotebook', 'Google-GeminiNotebook'],
       ['Google-NotebookLM', 'Google-GeminiNotebook'],
       ['Google-Agent', 'Google-Agent'],
+      ['GoogleAgent-Mariner/1.0', 'GoogleAgent-Mariner'],
       ['DuckAssistBot/1.2', 'DuckAssistBot'],
       ['Bravebot/1.0', 'Bravebot'],
       ['Amazonbot/0.1', 'Amazonbot'],
@@ -84,6 +85,7 @@ describe('robot SSR policy', () => {
 
   it('groups Google-specific agents in Google technical statistics', () => {
     expect(getRobotFamilyCategory('Google-Agent')).toBe('google');
+    expect(getRobotFamilyCategory('GoogleAgent-Mariner')).toBe('google');
     expect(getRobotFamilyCategory('Google-GeminiNotebook')).toBe('google');
     expect(getRobotFamilyCategory('OAI-SearchBot')).toBe('other');
   });

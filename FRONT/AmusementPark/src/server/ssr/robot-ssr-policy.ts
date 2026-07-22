@@ -3,6 +3,7 @@ export type RobotFamily =
   | 'GoogleOther'
   | 'Google-InspectionTool'
   | 'Google-Agent'
+  | 'GoogleAgent-Mariner'
   | 'Google-GeminiNotebook'
   | 'Bingbot'
   | 'DuckDuckBot'
@@ -53,6 +54,7 @@ const coldRenderRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily>([
   'Googlebot',
   'Google-InspectionTool',
   'Google-Agent',
+  'GoogleAgent-Mariner',
   'Google-GeminiNotebook',
   'Bingbot',
   'YandexBot',
@@ -99,6 +101,7 @@ const robotFamilyMatchers: ReadonlyArray<readonly [RobotFamily, ReadonlyArray<st
   ['PerplexityBot', ['perplexitybot']],
   ['Google-GeminiNotebook', ['google-gemininotebook', 'google-notebooklm']],
   ['Google-InspectionTool', ['google-inspectiontool']],
+  ['GoogleAgent-Mariner', ['googleagent-mariner']],
   ['Google-Agent', ['google-agent']],
   ['GoogleOther', ['googleother']],
   ['Googlebot', ['googlebot', 'adsbot-google', 'mediapartners-google']],
@@ -169,6 +172,7 @@ export function getRobotFamilyCategory(robotFamily: string): string {
     case 'GoogleOther':
     case 'Google-InspectionTool':
     case 'Google-Agent':
+    case 'GoogleAgent-Mariner':
     case 'Google-GeminiNotebook':
       return 'google';
     case 'Bingbot':

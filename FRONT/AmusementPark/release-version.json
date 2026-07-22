@@ -1,6 +1,20 @@
 {
-  "version": "3.4.35",
+  "version": "3.4.36",
   "history": [
+    {
+      "version": "3.4.36",
+      "releasedAt": "2026-07-22",
+      "labels": {
+        "fr": "La navigation des assistants Google est mieux reconnue.",
+        "en": "Google assistant browsing is recognized more reliably.",
+        "de": "Das Browsen durch Google-Assistenten wird zuverlässiger erkannt.",
+        "nl": "Browsen via Google-assistenten wordt betrouwbaarder herkend.",
+        "it": "La navigazione degli assistenti Google viene riconosciuta meglio.",
+        "es": "La navegación de los asistentes de Google se reconoce mejor.",
+        "pl": "Przeglądanie przez asystentów Google jest lepiej rozpoznawane.",
+        "pt": "A navegação dos assistentes Google é reconhecida com mais fiabilidade."
+      }
+    },
     {
       "version": "3.4.35",
       "releasedAt": "2026-07-22",
