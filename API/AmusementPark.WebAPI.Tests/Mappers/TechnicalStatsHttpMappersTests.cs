@@ -13,6 +13,20 @@ public sealed class TechnicalStatsHttpMappersTests
         TechnicalStatsSnapshot snapshot = new TechnicalStatsSnapshot
         {
             BuildVersion = "3.2.7",
+            Daily = new[]
+            {
+                new TechnicalStatsDailySnapshot
+                {
+                    Date = "2026-07-22",
+                    PageResponses = 120,
+                    RobotPageResponses = 30,
+                    HitRatePercent = 82.5,
+                    RobotFamilies = new[]
+                    {
+                        new TechnicalStatsRobotFamily { Key = "Googlebot", Category = "google", Count = 30 }
+                    }
+                }
+            },
             Seo = new TechnicalStatsSeoSummary
             {
                 RobotNoJsHtmlEnabled = true,
@@ -64,6 +78,10 @@ public sealed class TechnicalStatsHttpMappersTests
         TechnicalStatsSnapshotDto dto = snapshot.ToHttp();
 
         Assert.Equal("3.2.7", dto.BuildVersion);
+        TechnicalStatsDailySnapshotDto daily = Assert.Single(dto.Daily);
+        Assert.Equal("2026-07-22", daily.Date);
+        Assert.Equal(120, daily.PageResponses);
+        Assert.Equal("Googlebot", Assert.Single(daily.RobotFamilies).Key);
         Assert.True(dto.Seo.RobotNoJsHtmlEnabled);
         Assert.Equal(100, dto.Seo.HtmlResponses);
         Assert.Equal(95, dto.Seo.SeoReadyHtmlResponses);

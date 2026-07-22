@@ -127,6 +127,27 @@ describe('AdminTechnicalStatsComponent', () => {
 
     expect(rows.length).toBe(12);
   });
+
+  it('shows every retained daily bucket when the all-days range is selected', () => {
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    fixture.detectChanges();
+
+    const trendsTab = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-tab'))
+      .find((button) => button.nativeElement.textContent.includes('Daily trends'));
+    trendsTab?.nativeElement.click();
+    fixture.detectChanges();
+
+    expect(fixture.debugElement.queryAll(By.css('.admin-technical-stats-day-chart__row')).length).toBe(15);
+
+    const allDays = fixture.debugElement
+      .queryAll(By.css('.admin-technical-stats-range button'))
+      .find((button) => button.nativeElement.textContent.includes('All'));
+    allDays?.nativeElement.click();
+    fixture.detectChanges();
+
+    expect(fixture.debugElement.queryAll(By.css('.admin-technical-stats-day-chart__row')).length).toBe(100);
+  });
 });
 
 function createStats(rowCount: number): TechnicalStatsSnapshot {
@@ -137,6 +158,35 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
     startedAtUtc: '2026-07-03T09:00:00.000Z',
     uptimeSeconds: 3600,
     buildVersion: '3.2.2',
+    daily: Array.from({ length: 100 }, (_, index: number) => ({
+      date: new Date(Date.UTC(2026, 6, 22 - index)).toISOString().slice(0, 10),
+      pageResponses: 100 - index,
+      cacheHitResponses: 80 - Math.floor(index / 2),
+      hitRatePercent: 80,
+      robotPageResponses: 40,
+      robotCacheHitResponses: 30,
+      robotHitRatePercent: 75,
+      totalRenders: 5,
+      averageRenderMilliseconds: 120,
+      seoReadyRatePercent: 98,
+      robotSeoReadyRatePercent: 100,
+      robotCacheOnlyMissResponses: 0,
+      queueFullRejections: 0,
+      robotFamilies: [{
+        key: 'Googlebot',
+        category: 'google',
+        count: 40,
+        cacheHits: 30,
+        hitRatePercent: 75,
+        seoReadyResponses: 40,
+        seoNotReadyResponses: 0,
+        seoReadyRatePercent: 100,
+        noJsResponses: 40,
+        blockedNotSeoReadyResponses: 0,
+        htmlNotAllowedResponses: 0,
+        ssrUnavailableResponses: 0
+      }]
+    })),
     cache: {
       pageResponses: 1000,
       cacheablePageResponses: 900,

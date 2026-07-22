@@ -20,6 +20,35 @@ public sealed class HttpTechnicalStatsProviderTests
           "startedAtUtc": "2026-06-23T09:00:00Z",
           "uptimeSeconds": 3600,
           "buildVersion": "2.6.18",
+          "daily": [{
+            "date": "2026-06-23",
+            "pageResponses": 10,
+            "cacheHitResponses": 7,
+            "hitRatePercent": 70,
+            "robotPageResponses": 4,
+            "robotCacheHitResponses": 3,
+            "robotHitRatePercent": 75,
+            "totalRenders": 2,
+            "averageRenderMilliseconds": 125,
+            "seoReadyRatePercent": 90,
+            "robotSeoReadyRatePercent": 100,
+            "robotCacheOnlyMissResponses": 1,
+            "queueFullRejections": 2,
+            "robotFamilies": [{
+              "key": "Googlebot",
+              "category": "google",
+              "count": 4,
+              "cacheHits": 3,
+              "hitRatePercent": 75,
+              "seoReadyResponses": 4,
+              "seoNotReadyResponses": 0,
+              "seoReadyRatePercent": 100,
+              "noJsResponses": 4,
+              "blockedNotSeoReadyResponses": 0,
+              "htmlNotAllowedResponses": 0,
+              "ssrUnavailableResponses": 1
+            }]
+          }],
           "cache": {
             "pageResponses": 10,
             "cacheablePageResponses": 10,
@@ -83,6 +112,11 @@ public sealed class HttpTechnicalStatsProviderTests
         Assert.Equal(1, snapshot.Seo.RobotSsrUnavailableResponses);
         Assert.Equal(1, snapshot.Seo.RobotCacheOnlyMissResponses);
         Assert.Equal(2, snapshot.Seo.QueueFullRejections);
+        TechnicalStatsDailySnapshot daily = Assert.Single(snapshot.Daily);
+        Assert.Equal("2026-06-23", daily.Date);
+        Assert.Equal(10, daily.PageResponses);
+        Assert.Equal(125, daily.AverageRenderMilliseconds);
+        Assert.Equal("Googlebot", Assert.Single(daily.RobotFamilies).Key);
         TechnicalStatsRobotFamily family = Assert.Single(snapshot.Cache.RobotFamilies);
         Assert.Equal("Googlebot", family.Key);
         Assert.Equal("google", family.Category);

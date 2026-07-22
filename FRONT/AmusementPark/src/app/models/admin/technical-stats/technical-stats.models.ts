@@ -5,6 +5,7 @@ export interface TechnicalStatsSnapshot {
   startedAtUtc: string;
   uptimeSeconds: number;
   buildVersion: string;
+  daily: TechnicalStatsDailySnapshot[];
   cache: TechnicalStatsCacheSummary;
   storage: TechnicalStatsStorageSummary;
   seo: TechnicalStatsSeoSummary;
@@ -12,6 +13,23 @@ export interface TechnicalStatsSnapshot {
   refresh: TechnicalStatsRefreshSummary;
   invalidation: TechnicalStatsInvalidationSummary;
   config: TechnicalStatsRuntimeConfig;
+}
+
+export interface TechnicalStatsDailySnapshot {
+  date: string;
+  pageResponses: number;
+  cacheHitResponses: number;
+  hitRatePercent: number;
+  robotPageResponses: number;
+  robotCacheHitResponses: number;
+  robotHitRatePercent: number;
+  totalRenders: number;
+  averageRenderMilliseconds: number;
+  seoReadyRatePercent: number;
+  robotSeoReadyRatePercent: number;
+  robotCacheOnlyMissResponses: number;
+  queueFullRejections: number;
+  robotFamilies: TechnicalStatsRobotFamily[];
 }
 
 export interface TechnicalStatsCacheSummary {

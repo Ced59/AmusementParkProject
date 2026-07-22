@@ -17,6 +17,7 @@ public static class TechnicalStatsHttpMappers
             StartedAtUtc = snapshot.StartedAtUtc,
             UptimeSeconds = snapshot.UptimeSeconds,
             BuildVersion = snapshot.BuildVersion,
+            Daily = snapshot.Daily.Select(ToHttp).ToArray(),
             Cache = snapshot.Cache.ToHttp(),
             Storage = snapshot.Storage.ToHttp(),
             Seo = snapshot.Seo.ToHttp(),
@@ -24,6 +25,27 @@ public static class TechnicalStatsHttpMappers
             Refresh = snapshot.Refresh.ToHttp(),
             Invalidation = snapshot.Invalidation.ToHttp(),
             Config = snapshot.Config.ToHttp()
+        };
+    }
+
+    private static TechnicalStatsDailySnapshotDto ToHttp(TechnicalStatsDailySnapshot snapshot)
+    {
+        return new TechnicalStatsDailySnapshotDto
+        {
+            Date = snapshot.Date,
+            PageResponses = snapshot.PageResponses,
+            CacheHitResponses = snapshot.CacheHitResponses,
+            HitRatePercent = snapshot.HitRatePercent,
+            RobotPageResponses = snapshot.RobotPageResponses,
+            RobotCacheHitResponses = snapshot.RobotCacheHitResponses,
+            RobotHitRatePercent = snapshot.RobotHitRatePercent,
+            TotalRenders = snapshot.TotalRenders,
+            AverageRenderMilliseconds = snapshot.AverageRenderMilliseconds,
+            SeoReadyRatePercent = snapshot.SeoReadyRatePercent,
+            RobotSeoReadyRatePercent = snapshot.RobotSeoReadyRatePercent,
+            RobotCacheOnlyMissResponses = snapshot.RobotCacheOnlyMissResponses,
+            QueueFullRejections = snapshot.QueueFullRejections,
+            RobotFamilies = snapshot.RobotFamilies.Select(ToHttp).ToArray()
         };
     }
 

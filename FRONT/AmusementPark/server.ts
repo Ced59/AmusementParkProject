@@ -206,6 +206,23 @@ interface TechnicalStatsRobotFamily {
   readonly ssrUnavailableResponses: number;
 }
 
+interface TechnicalStatsDailySnapshot {
+  readonly date: string;
+  readonly pageResponses: number;
+  readonly cacheHitResponses: number;
+  readonly hitRatePercent: number;
+  readonly robotPageResponses: number;
+  readonly robotCacheHitResponses: number;
+  readonly robotHitRatePercent: number;
+  readonly totalRenders: number;
+  readonly averageRenderMilliseconds: number;
+  readonly seoReadyRatePercent: number;
+  readonly robotSeoReadyRatePercent: number;
+  readonly robotCacheOnlyMissResponses: number;
+  readonly queueFullRejections: number;
+  readonly robotFamilies: readonly TechnicalStatsRobotFamily[];
+}
+
 interface DiskPageCacheStats {
   readonly entries: number;
   readonly bytes: number;
@@ -617,6 +634,7 @@ function buildTechnicalStatsSnapshot(): Record<string, unknown> {
     startedAtUtc: technicalStatsStartedAtUtc.toISOString(),
     uptimeSeconds,
     buildVersion: currentBuildVersion,
+    daily: buildTechnicalStatsDailySnapshots(),
     cache: {
       pageResponses: technicalStatsCounters.pageResponses,
       cacheablePageResponses: technicalStatsCounters.cacheablePageResponses,
@@ -721,6 +739,60 @@ function buildTechnicalStatsSnapshot(): Record<string, unknown> {
       technicalStatsPersistenceLastCleanupUtc
     }
   };
+}
+
+function buildTechnicalStatsDailySnapshots(): TechnicalStatsDailySnapshot[] {
+  return readRetainedTechnicalStatsBuckets().map((bucket: TechnicalStatsPersistentBucket): TechnicalStatsDailySnapshot => {
+    const counters: TechnicalStatsCounters = bucket.counters;
+    const htmlResponses: number = counters.seoReadyHtmlResponses + counters.seoNotReadyHtmlResponses;
+    const robotHtmlResponses: number = counters.robotSeoReadyHtmlResponses + counters.robotSeoNotReadyHtmlResponses;
+
+    return {
+      date: bucket.date,
+      pageResponses: counters.pageResponses,
+      cacheHitResponses: counters.cacheHitResponses,
+      hitRatePercent: toPercent(counters.cacheHitResponses, counters.pageResponses),
+      robotPageResponses: counters.robotPageResponses,
+      robotCacheHitResponses: counters.robotCacheHitResponses,
+      robotHitRatePercent: toPercent(counters.robotCacheHitResponses, counters.robotPageResponses),
+      totalRenders: counters.totalRenders,
+      averageRenderMilliseconds: counters.totalRenders > 0
+        ? Math.round(counters.totalRenderMilliseconds / counters.totalRenders)
+        : 0,
+      seoReadyRatePercent: toPercent(counters.seoReadyHtmlResponses, htmlResponses),
+      robotSeoReadyRatePercent: toPercent(counters.robotSeoReadyHtmlResponses, robotHtmlResponses),
+      robotCacheOnlyMissResponses: counters.robotCacheOnlyMissResponses,
+      queueFullRejections: counters.renderQueueFullRejections,
+      robotFamilies: buildTechnicalStatsDailyRobotFamilies(bucket)
+    };
+  });
+}
+
+function buildTechnicalStatsDailyRobotFamilies(bucket: TechnicalStatsPersistentBucket): TechnicalStatsRobotFamily[] {
+  return Object.entries(bucket.robotFamilyCounts)
+    .filter((entry: [string, number]): boolean => entry[1] > 0)
+    .map(([key, count]: [string, number]): TechnicalStatsRobotFamily => {
+      const cacheHits: number = bucket.robotFamilyCacheHitCounts[key] ?? 0;
+      const seoReadyResponses: number = bucket.robotFamilySeoReadyCounts[key] ?? 0;
+      const seoNotReadyResponses: number = bucket.robotFamilySeoNotReadyCounts[key] ?? 0;
+
+      return {
+        key,
+        category: getRobotFamilyCategory(key),
+        count,
+        cacheHits,
+        hitRatePercent: toPercent(cacheHits, count),
+        seoReadyResponses,
+        seoNotReadyResponses,
+        seoReadyRatePercent: toPercent(seoReadyResponses, seoReadyResponses + seoNotReadyResponses),
+        noJsResponses: bucket.robotFamilyNoJsCounts[key] ?? 0,
+        blockedNotSeoReadyResponses: bucket.robotFamilyBlockedNotSeoReadyCounts[key] ?? 0,
+        htmlNotAllowedResponses: bucket.robotFamilyHtmlNotAllowedCounts[key] ?? 0,
+        ssrUnavailableResponses: bucket.robotFamilySsrUnavailableCounts[key] ?? 0
+      };
+    })
+    .sort((left: TechnicalStatsRobotFamily, right: TechnicalStatsRobotFamily): number => right.count - left.count || left.key.localeCompare(right.key))
+    .slice(0, technicalStatsDistributionRowLimit);
 }
 
 function buildCountRows<TKey>(map: Map<TKey, number>, total: number): TechnicalStatsCount[] {

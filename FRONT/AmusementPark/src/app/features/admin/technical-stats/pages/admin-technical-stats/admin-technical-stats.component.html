@@ -95,6 +95,85 @@
         </section>
       }
 
+      @case ('trends') {
+        <section class="admin-technical-stats-trends-head">
+          <div>
+            <h3>{{ t('trendsTitle') }}</h3>
+            <p>{{ t('trendsSubtitle') }}</p>
+          </div>
+          <div class="admin-technical-stats-range" role="group" [attr.aria-label]="t('period')">
+            <button type="button" [class.is-active]="trendRange() === 7" (click)="setTrendRange(7)">{{ t('days7') }}</button>
+            <button type="button" [class.is-active]="trendRange() === 15" (click)="setTrendRange(15)">{{ t('days15') }}</button>
+            <button type="button" [class.is-active]="trendRange() === 30" (click)="setTrendRange(30)">{{ t('days30') }}</button>
+            <button type="button" [class.is-active]="trendRange() === 'all'" (click)="setTrendRange('all')">{{ t('allDays') }}</button>
+          </div>
+        </section>
+
+        @if (visibleDailyStats().length > 0) {
+          <section class="admin-technical-stats-trend-grid">
+            <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
+              <div class="admin-technical-stats-section-head"><h3>{{ t('dailyTraffic') }}</h3></div>
+              <div class="admin-technical-stats-day-chart">
+                @for (day of visibleDailyStats(); track day.date) {
+                  <div class="admin-technical-stats-day-chart__row">
+                    <time [attr.datetime]="day.date">{{ formatDay(day.date) }}</time>
+                    <div class="admin-technical-stats-day-chart__plot">
+                      <span class="is-pages" [style.width.%]="dailyVolumeWidth(day.pageResponses)" [attr.title]="t('pages') + ': ' + day.pageResponses"></span>
+                      <span class="is-robots" [style.width.%]="dailyVolumeWidth(day.robotPageResponses)" [attr.title]="t('robots') + ': ' + day.robotPageResponses"></span>
+                    </div>
+                    <strong>{{ day.pageResponses | number }}</strong>
+                    <small>{{ day.robotPageResponses | number }} {{ t('robots') }}</small>
+                  </div>
+                }
+              </div>
+              <div class="admin-technical-stats-legend"><span class="is-pages">{{ t('pages') }}</span><span class="is-robots">{{ t('robots') }}</span></div>
+            </article>
+
+            <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
+              <div class="admin-technical-stats-section-head"><h3>{{ t('dailyRates') }}</h3></div>
+              <div class="admin-technical-stats-daily-cards">
+                @for (day of visibleDailyStats(); track day.date) {
+                  <article>
+                    <time [attr.datetime]="day.date">{{ formatDay(day.date) }}</time>
+                    <div><span>{{ t('cacheHits') }}</span><strong>{{ day.hitRatePercent | number:'1.0-1' }}%</strong><i><b [style.width.%]="barWidth(day.hitRatePercent)"></b></i></div>
+                    <div><span>{{ t('seoReady') }}</span><strong>{{ day.seoReadyRatePercent | number:'1.0-1' }}%</strong><i class="is-seo"><b [style.width.%]="barWidth(day.seoReadyRatePercent)"></b></i></div>
+                    <small>{{ t('renders') }}: {{ day.totalRenders | number }} &middot; {{ t('averageRenderShort') }}: {{ formatMilliseconds(day.averageRenderMilliseconds) }}</small>
+                  </article>
+                }
+              </div>
+            </article>
+
+            <article class="admin-technical-stats-panel admin-technical-stats-panel--wide">
+              <div class="admin-technical-stats-section-head admin-technical-stats-agent-head">
+                <h3>{{ t('agentEvolution') }}</h3>
+                <label>{{ t('selectAgent') }}
+                  <select [value]="selectedTrendAgent()" (change)="setSelectedTrendAgent($any($event.target).value)">
+                    <option value="all">{{ t('allAgents') }}</option>
+                    @for (agent of trendAgentOptions(); track agent) { <option [value]="agent">{{ agent }}</option> }
+                  </select>
+                </label>
+              </div>
+              <div class="admin-technical-stats-agent-days">
+                @for (day of selectedAgentDailyStats(); track day.date) {
+                  <article>
+                    <time [attr.datetime]="day.date">{{ formatDay(day.date) }}</time>
+                    <div class="admin-technical-stats-agent-volume"><span [style.width.%]="agentVolumeWidth(day.requests)"></span></div>
+                    <strong>{{ day.requests | number }}</strong>
+                    <dl>
+                      <div><dt>{{ t('cacheHits') }}</dt><dd>{{ day.hitRatePercent | number:'1.0-1' }}%</dd></div>
+                      <div><dt>{{ t('seoReady') }}</dt><dd>{{ day.seoReadyRatePercent | number:'1.0-1' }}%</dd></div>
+                      <div><dt>{{ t('cacheOnlyMisses') }}</dt><dd>{{ day.unavailableResponses | number }}</dd></div>
+                    </dl>
+                  </article>
+                }
+              </div>
+            </article>
+          </section>
+        } @else {
+          <p class="admin-technical-stats-empty">{{ t('noData') }}</p>
+        }
+      }
+
       @case ('seo') {
         <section class="admin-technical-stats-seo-head">
           <div>
