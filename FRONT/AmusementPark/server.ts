@@ -24,8 +24,8 @@ import {
   detectRobotFamilyFromUserAgent,
   getRobotFamilyCategory,
   shouldAllowRobotCacheMissSsrRender
-} from './src/app/core/ssr/robot-ssr-policy';
-import type { RobotFamily } from './src/app/core/ssr/robot-ssr-policy';
+} from './src/server/ssr/robot-ssr-policy';
+import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-writer';
 import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-policy';
