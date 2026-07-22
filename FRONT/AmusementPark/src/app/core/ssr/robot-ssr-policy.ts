@@ -1,8 +1,22 @@
 export type RobotFamily =
   | 'Googlebot'
+  | 'GoogleOther'
+  | 'Google-InspectionTool'
+  | 'Google-Agent'
+  | 'Google-GeminiNotebook'
   | 'Bingbot'
   | 'DuckDuckBot'
+  | 'DuckAssistBot'
   | 'YandexBot'
+  | 'OAI-SearchBot'
+  | 'ChatGPT-User'
+  | 'OAI-AdsBot'
+  | 'GPTBot'
+  | 'Claude-SearchBot'
+  | 'Claude-User'
+  | 'ClaudeBot'
+  | 'PerplexityBot'
+  | 'Perplexity-User'
   | 'AhrefsBot'
   | 'AhrefsSiteAudit'
   | 'SemrushBot'
@@ -10,6 +24,19 @@ export type RobotFamily =
   | 'Yahoo Slurp'
   | 'Applebot'
   | 'PetalBot'
+  | 'Bravebot'
+  | 'Amazonbot'
+  | 'YouBot'
+  | 'KagiBot'
+  | 'PhindBot'
+  | 'ExaBot'
+  | 'Meta-ExternalFetcher'
+  | 'Meta-ExternalAgent'
+  | 'CCBot'
+  | 'cohere-ai'
+  | 'AI2Bot'
+  | 'Diffbot'
+  | 'ImagesiftBot'
   | 'MJ12bot'
   | 'DotBot'
   | 'ByteSpider'
@@ -24,10 +51,28 @@ export type RobotFamily =
 
 const coldRenderRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily>([
   'Googlebot',
+  'Google-InspectionTool',
+  'Google-Agent',
+  'Google-GeminiNotebook',
   'Bingbot',
   'YandexBot',
   'DuckDuckBot',
+  'DuckAssistBot',
   'Applebot',
+  'OAI-SearchBot',
+  'ChatGPT-User',
+  'OAI-AdsBot',
+  'Claude-SearchBot',
+  'Claude-User',
+  'PerplexityBot',
+  'Perplexity-User',
+  'Bravebot',
+  'Amazonbot',
+  'YouBot',
+  'KagiBot',
+  'PhindBot',
+  'ExaBot',
+  'Meta-ExternalFetcher',
   'AhrefsBot',
   'AhrefsSiteAudit'
 ]);
@@ -42,97 +87,70 @@ const socialPreviewRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily
   'TwitterBot'
 ]);
 
+const robotFamilyMatchers: ReadonlyArray<readonly [RobotFamily, ReadonlyArray<string>]> = [
+  ['OAI-SearchBot', ['oai-searchbot']],
+  ['ChatGPT-User', ['chatgpt-user']],
+  ['OAI-AdsBot', ['oai-adsbot']],
+  ['GPTBot', ['gptbot']],
+  ['Claude-SearchBot', ['claude-searchbot']],
+  ['Claude-User', ['claude-user']],
+  ['ClaudeBot', ['claudebot']],
+  ['Perplexity-User', ['perplexity-user']],
+  ['PerplexityBot', ['perplexitybot']],
+  ['Google-GeminiNotebook', ['google-gemininotebook', 'google-notebooklm']],
+  ['Google-InspectionTool', ['google-inspectiontool']],
+  ['Google-Agent', ['google-agent']],
+  ['GoogleOther', ['googleother']],
+  ['Googlebot', ['googlebot', 'adsbot-google', 'mediapartners-google']],
+  ['Bingbot', ['bingbot', 'msnbot']],
+  ['DuckAssistBot', ['duckassistbot']],
+  ['DuckDuckBot', ['duckduckbot']],
+  ['YandexBot', ['yandexbot']],
+  ['AhrefsSiteAudit', ['ahrefssiteaudit']],
+  ['AhrefsBot', ['ahrefsbot']],
+  ['SemrushBot', ['semrushbot']],
+  ['BaiduSpider', ['baiduspider']],
+  ['Yahoo Slurp', ['slurp']],
+  ['Applebot', ['applebot']],
+  ['PetalBot', ['petalbot']],
+  ['Bravebot', ['bravebot']],
+  ['Amazonbot', ['amazonbot']],
+  ['YouBot', ['youbot']],
+  ['KagiBot', ['kagibot']],
+  ['PhindBot', ['phindbot']],
+  ['ExaBot', ['exabot']],
+  ['Meta-ExternalFetcher', ['meta-externalfetcher']],
+  ['Meta-ExternalAgent', ['meta-externalagent']],
+  ['CCBot', ['ccbot']],
+  ['cohere-ai', ['cohere-ai']],
+  ['AI2Bot', ['ai2bot']],
+  ['Diffbot', ['diffbot']],
+  ['ImagesiftBot', ['imagesiftbot']],
+  ['MJ12bot', ['mj12bot']],
+  ['DotBot', ['dotbot']],
+  ['ByteSpider', ['bytespider']],
+  ['Facebook external hit', ['facebookexternalhit']],
+  ['WhatsApp', ['whatsapp']],
+  ['TelegramBot', ['telegrambot']],
+  ['LinkedInBot', ['linkedinbot']],
+  ['PinterestBot', ['pinterestbot', 'pinterest']],
+  ['DiscordBot', ['discordbot']],
+  ['TwitterBot', ['twitterbot']]
+];
+
 export function detectRobotFamilyFromUserAgent(userAgentHeader: string): RobotFamily | null {
   const userAgent: string = userAgentHeader.toLowerCase();
   if (userAgent.length === 0 || userAgent.includes('amusementpark-ssr-targetedrefresh')) {
     return null;
   }
 
-  if (userAgent.includes('googlebot') || userAgent.includes('adsbot-google') || userAgent.includes('mediapartners-google')) {
-    return 'Googlebot';
+  for (const [family, markers] of robotFamilyMatchers) {
+    if (markers.some((marker: string): boolean => userAgent.includes(marker))) {
+      return family;
+    }
   }
 
-  if (userAgent.includes('bingbot') || userAgent.includes('msnbot')) {
-    return 'Bingbot';
-  }
-
-  if (userAgent.includes('duckduckbot')) {
-    return 'DuckDuckBot';
-  }
-
-  if (userAgent.includes('yandexbot')) {
-    return 'YandexBot';
-  }
-
-  if (userAgent.includes('ahrefsbot')) {
-    return 'AhrefsBot';
-  }
-
-  if (userAgent.includes('ahrefssiteaudit')) {
-    return 'AhrefsSiteAudit';
-  }
-
-  if (userAgent.includes('semrushbot')) {
-    return 'SemrushBot';
-  }
-
-  if (userAgent.includes('baiduspider')) {
-    return 'BaiduSpider';
-  }
-
-  if (userAgent.includes('slurp')) {
-    return 'Yahoo Slurp';
-  }
-
-  if (userAgent.includes('applebot')) {
-    return 'Applebot';
-  }
-
-  if (userAgent.includes('petalbot')) {
-    return 'PetalBot';
-  }
-
-  if (userAgent.includes('mj12bot')) {
-    return 'MJ12bot';
-  }
-
-  if (userAgent.includes('dotbot')) {
-    return 'DotBot';
-  }
-
-  if (userAgent.includes('bytespider')) {
-    return 'ByteSpider';
-  }
-
-  if (userAgent.includes('facebookexternalhit')) {
-    return 'Facebook external hit';
-  }
-
-  if (userAgent.includes('whatsapp')) {
-    return 'WhatsApp';
-  }
-
-  if (userAgent.includes('telegrambot')) {
-    return 'TelegramBot';
-  }
-
-  if (userAgent.includes('linkedinbot')) {
-    return 'LinkedInBot';
-  }
-
-  if (userAgent.includes('pinterest')) {
-    return 'PinterestBot';
-  }
-
-  if (userAgent.includes('discordbot')) {
-    return 'DiscordBot';
-  }
-
-  if (userAgent.includes('twitterbot')) {
-    return 'TwitterBot';
-  }
-
-  if (/(?:bot|crawler|spider|slurp|facebookexternalhit|whatsapp|telegrambot|linkedinbot|pinterest|discordbot|twitterbot)/i.test(userAgent)) {
+  if (/(?:bot|crawler|spider|slurp|facebookexternalhit|whatsapp|pinterest)/i.test(userAgent)) {
     return 'Other bot';
   }
 
@@ -148,6 +166,10 @@ export function shouldAllowRobotCacheMissSsrRender(robotFamily: RobotFamily | nu
 export function getRobotFamilyCategory(robotFamily: string): string {
   switch (robotFamily) {
     case 'Googlebot':
+    case 'GoogleOther':
+    case 'Google-InspectionTool':
+    case 'Google-Agent':
+    case 'Google-GeminiNotebook':
       return 'google';
     case 'Bingbot':
       return 'bing';
