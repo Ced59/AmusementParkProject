@@ -1,6 +1,20 @@
 {
-  "version": "3.4.40",
+  "version": "3.4.41",
   "history": [
+    {
+      "version": "3.4.41",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La documentation du projet a été enrichie.",
+        "en": "Project documentation has been expanded.",
+        "de": "Die Projektdokumentation wurde erweitert.",
+        "nl": "De projectdocumentatie is uitgebreid.",
+        "it": "La documentazione del progetto è stata ampliata.",
+        "es": "Se ha ampliado la documentación del proyecto.",
+        "pl": "Rozszerzono dokumentację projektu.",
+        "pt": "A documentação do projeto foi ampliada."
+      }
+    },
     {
       "version": "3.4.40",
       "releasedAt": "2026-07-23",
