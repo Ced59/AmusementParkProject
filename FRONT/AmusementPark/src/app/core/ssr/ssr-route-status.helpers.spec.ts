@@ -33,6 +33,7 @@ describe('SSR route status helpers', () => {
       '/fr/contact',
       '/fr/versions',
       '/fr/privacy',
+      '/fr/attraction/standalone-123/attraction-test',
       '/fr/park/123/parc-test',
       '/fr/park/123/parc-test/map',
       '/fr/park/123/parc-test/opening-hours',

@@ -42,6 +42,8 @@ public sealed class SeoSettings
         "/{lang}/reset-password",
     };
 
+    public int AhrefsCrawlDelaySeconds { get; set; } = 2;
+
     public string GetNormalizedPublicBaseUrl(bool requireHttps)
     {
         string value = string.IsNullOrWhiteSpace(this.PublicBaseUrl)

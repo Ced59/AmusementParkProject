@@ -12,6 +12,9 @@ describe('robot SSR policy', () => {
       'Bingbot',
       'YandexBot',
       'DuckDuckBot',
+      'Applebot',
+      'AhrefsBot',
+      'AhrefsSiteAudit',
       'Facebook external hit',
       'WhatsApp',
       'TelegramBot',
@@ -28,10 +31,8 @@ describe('robot SSR policy', () => {
 
   it('keeps secondary crawler robots cache-only on cache misses', () => {
     const cacheOnlyFamilies: RobotFamily[] = [
-      'Applebot',
       'BaiduSpider',
       'PetalBot',
-      'AhrefsBot',
       'SemrushBot',
       'MJ12bot',
       'DotBot',
@@ -49,6 +50,7 @@ describe('robot SSR policy', () => {
     expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 (compatible; Baiduspider/2.0)')).toBe('BaiduSpider');
     expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 PetalBot')).toBe('PetalBot');
     expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 AhrefsBot')).toBe('AhrefsBot');
+    expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)')).toBe('AhrefsSiteAudit');
     expect(detectRobotFamilyFromUserAgent('facebookexternalhit/1.1')).toBe('Facebook external hit');
     expect(detectRobotFamilyFromUserAgent('WhatsApp/2.24')).toBe('WhatsApp');
     expect(detectRobotFamilyFromUserAgent('Mozilla/5.0 SomeCrawler')).toBe('Other bot');

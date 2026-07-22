@@ -180,6 +180,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line SSR_WARMUP_FAIL_IF_LOCKED "$(value_or_default SSR_WARMUP_FAIL_IF_LOCKED 'true')"
   write_line SSR_WARMUP_BOT_USER_AGENT "$(value_or_default SSR_WARMUP_BOT_USER_AGENT 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)')"
   write_line SEO_DEFAULT_LANGUAGE "$(value_or_default SEO_DEFAULT_LANGUAGE 'en')"
+  write_line SEO_AHREFS_CRAWL_DELAY_SECONDS "$(value_or_default SEO_AHREFS_CRAWL_DELAY_SECONDS '2')"
   write_line AUTH_RATE_LIMIT_LOGIN_LIMIT "$(value_or_default AUTH_RATE_LIMIT_LOGIN_LIMIT '5')"
   write_line AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS "$(value_or_default AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS '60')"
   write_line AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT "$(value_or_default AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT '10')"

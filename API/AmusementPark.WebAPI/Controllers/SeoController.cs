@@ -53,22 +53,41 @@ public sealed class SeoController : ControllerBase
     {
         string publicBaseUrl = this.GetPublicBaseUrl();
         StringBuilder builder = new StringBuilder();
+        IReadOnlyCollection<string> allowPaths = this.BuildRobotsAllowPaths();
+        IReadOnlyCollection<string> disallowPaths = this.BuildRobotsDisallowPaths();
+
+        builder.AppendLine("User-agent: AhrefsBot");
+        builder.AppendLine("User-agent: AhrefsSiteAudit");
+        this.AppendRobotsRules(builder, allowPaths, disallowPaths);
+        if (this.settings.AhrefsCrawlDelaySeconds > 0)
+        {
+            builder.Append("Crawl-delay: ").AppendLine(this.settings.AhrefsCrawlDelaySeconds.ToString(System.Globalization.CultureInfo.InvariantCulture));
+        }
+
+        builder.AppendLine();
         builder.AppendLine("User-agent: *");
-
-        foreach (string allowPath in this.BuildRobotsAllowPaths())
-        {
-            builder.Append("Allow: ").AppendLine(allowPath);
-        }
-
-        foreach (string disallowPath in this.BuildRobotsDisallowPaths())
-        {
-            builder.Append("Disallow: ").AppendLine(disallowPath);
-        }
+        this.AppendRobotsRules(builder, allowPaths, disallowPaths);
 
         builder.AppendLine();
         builder.Append("Sitemap: ").Append(publicBaseUrl).AppendLine("/sitemap.xml");
 
         return this.Content(builder.ToString(), "text/plain", Encoding.UTF8);
+    }
+
+    private void AppendRobotsRules(
+        StringBuilder builder,
+        IReadOnlyCollection<string> allowPaths,
+        IReadOnlyCollection<string> disallowPaths)
+    {
+        foreach (string allowPath in allowPaths)
+        {
+            builder.Append("Allow: ").AppendLine(allowPath);
+        }
+
+        foreach (string disallowPath in disallowPaths)
+        {
+            builder.Append("Disallow: ").AppendLine(disallowPath);
+        }
     }
 
     [HttpHead("/robots.txt")]
