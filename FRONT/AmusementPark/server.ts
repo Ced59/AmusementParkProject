@@ -23,7 +23,8 @@ import type { SeoReadyHtmlCheckResult } from './src/app/core/ssr/robot-html-opti
 import {
   detectRobotFamilyFromUserAgent,
   getRobotFamilyCategory,
-  shouldAllowRobotCacheMissSsrRender
+  shouldAllowRobotCacheMissSsrRender,
+  shouldServeRobotOptimizedNoJsHtml
 } from './src/server/ssr/robot-ssr-policy';
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
@@ -1761,7 +1762,7 @@ function resolveCacheMissRenderDecision(req: Request, warmupRequest: boolean): C
 
 function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: string | null, mode: SsrPageResponseStatus): void {
   const statusCode: number = resolveSsrRouteStatusCode(req.originalUrl);
-  const robotFamily: string | null = detectRobotFamily(req);
+  const robotFamily: RobotFamily | null = detectRobotFamily(req);
   if (shouldReturnBotSsrUnavailable(robotFamily !== null, statusCode)) {
     const unavailableStatus: SsrPageResponseStatus = mode === 'SSR-BOT-CACHE-ONLY-MISS' ? mode : 'SSR-BOT-UNAVAILABLE';
     serveBotSsrUnavailable(req, res, robotFamily, unavailableStatus);
@@ -1813,11 +1814,11 @@ function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string
 }
 
 function prepareHtmlForResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): string {
-  const robotFamily: string | null = detectRobotFamily(req);
+  const robotFamily: RobotFamily | null = detectRobotFamily(req);
   const preparationResult: RobotHtmlPreparationResult = prepareRobotHtmlForResponse(html, {
     allowRobotNoJsOptimization: options.allowRobotNoJsOptimization,
     robotNoJsHtmlEnabled,
-    isRobotRequest: robotFamily !== null
+    isRobotRequest: shouldServeRobotOptimizedNoJsHtml(robotFamily)
   });
 
   res.setHeader('X-AmusementPark-SSR-Mode', options.responseMode);

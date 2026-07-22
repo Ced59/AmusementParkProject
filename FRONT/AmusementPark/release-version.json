@@ -1,6 +1,20 @@
 {
-  "version": "3.4.38",
+  "version": "3.4.39",
   "history": [
+    {
+      "version": "3.4.39",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La navigation des assistants Google reste interactive.",
+        "en": "Google assistant browsing remains interactive.",
+        "de": "Das Browsen mit Google-Assistenten bleibt interaktiv.",
+        "nl": "Browsen met Google-assistenten blijft interactief.",
+        "it": "La navigazione degli assistenti Google resta interattiva.",
+        "es": "La navegación de los asistentes de Google sigue siendo interactiva.",
+        "pl": "Przeglądanie przez asystentów Google pozostaje interaktywne.",
+        "pt": "A navegação dos assistentes Google continua interativa."
+      }
+    },
     {
       "version": "3.4.38",
       "releasedAt": "2026-07-23",

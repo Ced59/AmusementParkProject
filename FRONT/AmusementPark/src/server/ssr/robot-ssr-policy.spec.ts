@@ -1,7 +1,8 @@
 import {
   detectRobotFamilyFromUserAgent,
   getRobotFamilyCategory,
-  shouldAllowRobotCacheMissSsrRender
+  shouldAllowRobotCacheMissSsrRender,
+  shouldServeRobotOptimizedNoJsHtml
 } from './robot-ssr-policy';
 import type { RobotFamily } from './robot-ssr-policy';
 
@@ -88,6 +89,13 @@ describe('robot SSR policy', () => {
     expect(getRobotFamilyCategory('GoogleAgent-Mariner')).toBe('google');
     expect(getRobotFamilyCategory('Google-GeminiNotebook')).toBe('google');
     expect(getRobotFamilyCategory('OAI-SearchBot')).toBe('other');
+  });
+
+  it('tracks Mariner as a robot without stripping scripts from its interactive browser session', () => {
+    expect(detectRobotFamilyFromUserAgent('GoogleAgent-Mariner/1.0')).toBe('GoogleAgent-Mariner');
+    expect(shouldAllowRobotCacheMissSsrRender('GoogleAgent-Mariner')).toBeTrue();
+    expect(shouldServeRobotOptimizedNoJsHtml('GoogleAgent-Mariner')).toBeFalse();
+    expect(shouldServeRobotOptimizedNoJsHtml('Googlebot')).toBeTrue();
   });
 
   it('does not treat internal targeted refreshes as robot traffic', () => {
