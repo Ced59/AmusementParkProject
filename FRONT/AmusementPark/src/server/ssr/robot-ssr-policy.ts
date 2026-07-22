@@ -166,6 +166,10 @@ export function shouldAllowRobotCacheMissSsrRender(robotFamily: RobotFamily | nu
     || socialPreviewRobotFamilies.has(robotFamily);
 }
 
+export function shouldServeRobotOptimizedNoJsHtml(robotFamily: RobotFamily | null): boolean {
+  return robotFamily !== null && robotFamily !== 'GoogleAgent-Mariner';
+}
+
 export function getRobotFamilyCategory(robotFamily: string): string {
   switch (robotFamily) {
     case 'Googlebot':
