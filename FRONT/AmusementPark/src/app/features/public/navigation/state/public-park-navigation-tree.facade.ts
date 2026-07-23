@@ -2,7 +2,6 @@ import {
   DestroyRef,
   Injectable,
   Signal,
-  signal,
   Inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -41,6 +40,7 @@ import {
   PublicParkNavigationTreeItem,
   PublicParkNavigationTreeViewModel
 } from '../models/public-park-navigation-tree.model';
+import { PublicParkNavigationTreeState } from './public-park-navigation-tree.state';
 
 import {
   PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT,
@@ -102,15 +102,7 @@ interface PublicParkNavigationSourceData {
 
 @Injectable()
 export class PublicParkNavigationTreeFacade {
-  private readonly treeSignal = signal<PublicParkNavigationTreeViewModel>({
-    isAvailable: false,
-    isLoading: false,
-    items: []
-  });
-
-  public readonly tree: Signal<PublicParkNavigationTreeViewModel> = this.treeSignal.asReadonly();
-
-  private loadSequence: number = 0;
+  public readonly tree: Signal<PublicParkNavigationTreeViewModel>;
 
   constructor(
     @Inject(PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT) private readonly parksApiService: PublicParkNavigationTreeParksApiServicePort,
@@ -119,8 +111,10 @@ export class PublicParkNavigationTreeFacade {
     @Inject(PUBLIC_PARK_NAVIGATION_TREE_VIDEOS_API_SERVICE_PORT) private readonly videosApiService: PublicParkNavigationTreeVideosApiServicePort,
     @Inject(PUBLIC_PARK_NAVIGATION_TREE_HISTORY_API_SERVICE_PORT) private readonly historyApiService: PublicParkNavigationTreeHistoryApiServicePort,
     private readonly router: Router,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly state: PublicParkNavigationTreeState
   ) {
+    this.tree = this.state.tree;
   }
 
   initialize(): void {
@@ -140,47 +134,24 @@ export class PublicParkNavigationTreeFacade {
     const context: PublicParkRouteContext | null = this.resolveRouteContext(url);
 
     if (!context) {
-      this.loadSequence++;
-      this.treeSignal.set({
-        isAvailable: false,
-        isLoading: false,
-        items: []
-      });
+      this.state.markUnavailable();
       return;
     }
 
-    const loadId: number = ++this.loadSequence;
-    const previousTree: PublicParkNavigationTreeViewModel = this.treeSignal();
-    this.treeSignal.set({
-      isAvailable: true,
-      isLoading: true,
-      items: previousTree.items
-    });
+    const loadId: number = this.state.beginLoad();
 
     this.loadSourceData(context).pipe(
       takeUntilDestroyed(this.destroyRef)
     ).subscribe({
       next: (sourceData: PublicParkNavigationSourceData): void => {
-        if (loadId !== this.loadSequence) {
-          return;
-        }
-
-        this.treeSignal.set({
-          isAvailable: true,
-          isLoading: false,
-          items: this.buildTreeItems(sourceData)
-        });
+        this.state.completeLoad(loadId, this.buildTreeItems(sourceData));
       },
       error: (): void => {
-        if (loadId !== this.loadSequence) {
+        if (!this.state.isCurrent(loadId)) {
           return;
         }
 
-        this.treeSignal.set({
-          isAvailable: true,
-          isLoading: false,
-          items: this.buildFallbackTreeItems(context)
-        });
+        this.state.completeLoad(loadId, this.buildFallbackTreeItems(context));
       }
     });
   }

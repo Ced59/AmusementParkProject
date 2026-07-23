@@ -7,12 +7,13 @@ import { PublicHeaderComponent } from '@ui/layouts/public-header/public-header.c
 import { PublicMobileBottomNavComponent } from '@ui/layouts/public-mobile-bottom-nav/public-mobile-bottom-nav.component';
 import { UiChipComponent, UiKickerComponent } from '@ui/primitives';
 import { PublicParkNavigationTreeFacade } from '@features/public/navigation/state/public-park-navigation-tree.facade';
+import { PublicParkNavigationTreeState } from '@features/public/navigation/state/public-park-navigation-tree.state';
 
 @Component({
   selector: 'app-account-layout',
   templateUrl: './account-layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [PublicParkNavigationTreeFacade],
+  providers: [PublicParkNavigationTreeFacade, PublicParkNavigationTreeState],
   imports: [
     PublicFooterComponent,
     PublicHeaderComponent,
