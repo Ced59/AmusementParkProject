@@ -1,6 +1,20 @@
 {
-  "version": "3.5.6",
+  "version": "3.5.7",
   "history": [
+    {
+      "version": "3.5.7",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La disponibilité du site pendant les mises à jour a été améliorée.",
+        "en": "Site availability during updates has been improved.",
+        "de": "Die Verfügbarkeit der Website während Aktualisierungen wurde verbessert.",
+        "nl": "De beschikbaarheid van de site tijdens updates is verbeterd.",
+        "it": "La disponibilità del sito durante gli aggiornamenti è stata migliorata.",
+        "es": "Se ha mejorado la disponibilidad del sitio durante las actualizaciones.",
+        "pl": "Poprawiono dostępność witryny podczas aktualizacji.",
+        "pt": "A disponibilidade do site durante as atualizações foi melhorada."
+      }
+    },
     {
       "version": "3.5.6",
       "releasedAt": "2026-07-23",

@@ -22,6 +22,7 @@ deploy_lock_wait_log_interval_seconds="${DEPLOY_LOCK_WAIT_LOG_INTERVAL_SECONDS:-
 deploy_compose_log_timeout_seconds="${DEPLOY_COMPOSE_LOG_TIMEOUT_SECONDS:-30}"
 deploy_compose_up_timeout_seconds="${DEPLOY_COMPOSE_UP_TIMEOUT_SECONDS:-300}"
 deploy_docker_prune_timeout_seconds="${DEPLOY_DOCKER_PRUNE_TIMEOUT_SECONDS:-120}"
+deploy_zero_downtime_enabled="${DEPLOY_ZERO_DOWNTIME_ENABLED:-true}"
 
 compose() {
   docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
@@ -129,6 +130,93 @@ wait_for_service_healthy() {
   return 1
 }
 
+service_is_healthy() {
+  local service_name="$1"
+  local container_id=""
+  local health_status=""
+
+  container_id="$(compose ps -q "${service_name}" 2>/dev/null || true)"
+  if [ -z "${container_id}" ]; then
+    return 1
+  fi
+
+  health_status="$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "${container_id}" 2>/dev/null || true)"
+  [ "${health_status}" = "healthy" ]
+}
+
+wait_for_container_healthy() {
+  local container_name="$1"
+  local timeout_seconds="${2:-180}"
+  local elapsed_seconds=0
+  local health_status=""
+
+  while [ "${elapsed_seconds}" -lt "${timeout_seconds}" ]; do
+    health_status="$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "${container_name}" 2>/dev/null || true)"
+    if [ "${health_status}" = "healthy" ]; then
+      echo "${container_name} is healthy."
+      return 0
+    fi
+    if [ "${health_status}" = "unhealthy" ] || [ "${health_status}" = "exited" ] || [ "${health_status}" = "dead" ]; then
+      echo "${container_name} reached status '${health_status}'." >&2
+      docker logs --tail=160 "${container_name}" >&2 || true
+      return 1
+    fi
+    sleep 2
+    elapsed_seconds=$((elapsed_seconds + 2))
+  done
+
+  echo "Timed out while waiting for ${container_name} after ${timeout_seconds}s." >&2
+  docker logs --tail=160 "${container_name}" >&2 || true
+  return 1
+}
+
+start_deploy_candidate() {
+  local service_name="$1"
+  local container_name="$2"
+
+  echo "Starting healthy ${service_name} deployment candidate ${container_name}..."
+  compose run -d --no-deps --name "${container_name}" "${service_name}" >/dev/null
+  wait_for_container_healthy "${container_name}" 180
+}
+
+attach_candidate_aliases() {
+  local service_name="$1"
+  local container_name="$2"
+  local backend_network="${compose_project_name}_backend_private"
+
+  docker network disconnect "${backend_network}" "${container_name}"
+  if [ "${service_name}" = "api" ]; then
+    docker network connect --alias api --alias amusementpark-api "${backend_network}" "${container_name}"
+  else
+    docker network connect --alias front --alias amusementpark-front "${backend_network}" "${container_name}"
+    wait_for_container_healthy "${container_name}" 30
+    docker network disconnect "${npm_docker_network_name}" "${container_name}"
+    docker network connect \
+      --alias amusementpark-front \
+      --alias amusementpark-front-ssr \
+      "${npm_docker_network_name}" \
+      "${container_name}"
+  fi
+
+  wait_for_container_healthy "${container_name}" 30
+  echo "Production aliases attached to healthy ${container_name}."
+}
+
+api_candidate_name=""
+front_candidate_name=""
+
+cleanup_deploy_candidates() {
+  local candidate_name=""
+  for candidate_name in "${front_candidate_name}" "${api_candidate_name}"; do
+    if [ -n "${candidate_name}" ] && docker inspect "${candidate_name}" >/dev/null 2>&1; then
+      echo "Removing deployment candidate ${candidate_name}..."
+      docker rm -f "${candidate_name}" >/dev/null || true
+    fi
+  done
+}
+
+trap cleanup_deploy_candidates EXIT
+
 run_legacy_enum_migrations() {
   local migration_script="./scripts/migrate-legacy-enums-1.10.0.js"
   local mongo_database_name="${MONGO_DATABASE_NAME:-AmusementPark}"
@@ -218,8 +306,22 @@ fi
 echo "Pulling production images..."
 compose pull
 
+rolling_deploy=false
+if [ "${deploy_zero_downtime_enabled}" = "true" ] && service_is_healthy api && service_is_healthy front; then
+  rolling_deploy=true
+  candidate_suffix="$(date -u +%Y%m%dT%H%M%SZ)-$$"
+  api_candidate_name="${compose_project_name}-api-candidate-${candidate_suffix}"
+  front_candidate_name="${compose_project_name}-front-candidate-${candidate_suffix}"
+  start_deploy_candidate api "${api_candidate_name}"
+  attach_candidate_aliases api "${api_candidate_name}"
+  start_deploy_candidate front "${front_candidate_name}"
+  attach_candidate_aliases front "${front_candidate_name}"
+else
+  echo "Healthy API/front stack not available or zero-downtime disabled; using the standard startup path."
+fi
+
 echo "Starting production stack..."
-if ! compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans; then
+if ! compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d; then
   echo "Docker Compose failed while starting the production stack. Recent container status:" >&2
   compose ps >&2 || true
   echo "Recent API logs:" >&2
@@ -264,6 +366,13 @@ curl_with_retry \
   "Checking robots.txt through SSR public proxy..." \
   "http://127.0.0.1:${public_http_port}/robots.txt"
 
+if [ "${rolling_deploy}" = "true" ]; then
+  echo "Canonical services are healthy; removing deployment candidates."
+  cleanup_deploy_candidates
+  front_candidate_name=""
+  api_candidate_name=""
+  compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans
+fi
 
 if [ "${SSR_WARMUP_AFTER_DEPLOY:-false}" = "true" ]; then
   mkdir -p ./warmup

@@ -173,6 +173,7 @@ En production, le déploiement utilise `Smtp` par défaut si `PROD_EMAIL_MODE` n
 - `SSR_INTERNAL_BASE_URL`, défaut `http://front:4000` pour les appels internes API vers le serveur SSR.
 - `SSR_TECHNICAL_STATS_RETENTION_DAYS`, défaut `100`, ajustable ensuite depuis le panel admin des stats techniques.
 - `SSR_TECHNICAL_STATS_FLUSH_INTERVAL_SECONDS`, défaut `60`.
+- `DEPLOY_ZERO_DOWNTIME_ENABLED`, défaut `true`, maintient des candidats API/front sains pendant le remplacement des conteneurs canoniques.
 - `PUBLIC_HTTP_PORT`, défaut `18080`
 - `MINIO_API_PORT`, défaut `19000`
 - `MINIO_CONSOLE_PORT`, défaut `19001`
