@@ -1,4 +1,3 @@
-using System.Reflection;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
@@ -11,8 +10,6 @@ using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.ContextualBlocks;
 using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace AmusementPark.WebAPI.OutputCaching;
@@ -1116,140 +1113,82 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         string resultPropertyName,
         string collectionPropertyName)
     {
-        HashSet<string> targets = new HashSet<string>(StringComparer.Ordinal);
-
-        AddNonEmpty(targets, GetRouteValue(context, routeKey));
-        AddNonEmpty(targets, GetStringProperty(ResolveResultValue(executedContext), resultPropertyName));
-        AddRange(targets, GetStringCollectionProperty(FindActionArgument(context, "request"), collectionPropertyName));
-
-        return targets.ToList();
+        return SsrInvalidationInputReader.ResolveStringTargets(context, executedContext, routeKey, resultPropertyName, collectionPropertyName);
     }
 
     private static object? ResolveResultValue(ActionExecutedContext? executedContext)
     {
-        if (executedContext?.Result is ObjectResult objectResult)
-        {
-            return objectResult.Value;
-        }
-
-        return null;
+        return SsrInvalidationInputReader.ResolveResultValue(executedContext);
     }
 
     private static object? FindActionArgument(ActionExecutingContext context, string argumentName)
     {
-        return context.ActionArguments.TryGetValue(argumentName, out object? value) ? value : null;
+        return SsrInvalidationInputReader.FindActionArgument(context, argumentName);
     }
 
     private static string ResolveControllerName(ActionExecutingContext context)
     {
-        if (context.ActionDescriptor is ControllerActionDescriptor controllerActionDescriptor)
-        {
-            return controllerActionDescriptor.ControllerName;
-        }
-
-        return string.Empty;
+        return SsrInvalidationInputReader.ResolveControllerName(context);
     }
 
     private static string? GetRouteValue(ActionExecutingContext context, string key)
     {
-        object? value = context.RouteData.Values.TryGetValue(key, out object? routeValue)
-            ? routeValue
-            : null;
-
-        return value?.ToString();
+        return SsrInvalidationInputReader.GetRouteValue(context, key);
     }
 
     private static string? GetStringProperty(object? source, string propertyName)
     {
-        object? value = GetPropertyValue(source, propertyName);
-        return value as string;
+        return SsrInvalidationInputReader.GetStringProperty(source, propertyName);
     }
 
     private static string? GetPropertyText(object? source, string propertyName)
     {
-        object? value = GetPropertyValue(source, propertyName);
-        return value?.ToString();
+        return SsrInvalidationInputReader.GetPropertyText(source, propertyName);
     }
 
     private static bool? GetNullableBooleanProperty(object? source, string propertyName)
     {
-        object? value = GetPropertyValue(source, propertyName);
-        if (value is bool booleanValue)
-        {
-            return booleanValue;
-        }
-
-        return null;
+        return SsrInvalidationInputReader.GetNullableBooleanProperty(source, propertyName);
     }
 
     private static IReadOnlyCollection<string> GetStringCollectionProperty(object? source, string propertyName)
     {
-        object? value = GetPropertyValue(source, propertyName);
-        if (value is IEnumerable<string> strings)
-        {
-            return NormalizeTargets(strings).ToList();
-        }
-
-        return Array.Empty<string>();
-    }
-
-    private static object? GetPropertyValue(object? source, string propertyName)
-    {
-        if (source is null)
-        {
-            return null;
-        }
-
-        PropertyInfo? property = source.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
-        return property?.GetValue(source);
+        return SsrInvalidationInputReader.GetStringCollectionProperty(source, propertyName);
     }
 
     private static IEnumerable<string> NormalizeTargets(IEnumerable<string> values)
     {
-        return values
-            .Where(static value => !string.IsNullOrWhiteSpace(value))
-            .Select(static value => value.Trim())
-            .Distinct(StringComparer.Ordinal);
+        return SsrInvalidationInputReader.NormalizeTargets(values);
     }
 
     private static string? NormalizeTarget(string? value)
     {
-        return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+        return SsrInvalidationInputReader.NormalizeTarget(value);
     }
 
     private static IEnumerable<string> NormalizePaths(IEnumerable<string> values)
     {
-        return values
-            .Where(static value => !string.IsNullOrWhiteSpace(value))
-            .Select(static value => value.Trim())
-            .Select(static value => value.StartsWith("/", StringComparison.Ordinal) ? value : $"/{value}")
-            .Distinct(StringComparer.Ordinal);
+        return SsrInvalidationInputReader.NormalizePaths(values);
     }
 
     private static void AddNonEmpty(ISet<string> values, string? value)
     {
-        if (!string.IsNullOrWhiteSpace(value))
-        {
-            values.Add(value.Trim());
-        }
+        SsrInvalidationInputReader.AddNonEmpty(values, value);
     }
 
     private static void AddRange(ISet<string> values, IEnumerable<string> candidates)
     {
-        foreach (string candidate in NormalizeTargets(candidates))
-        {
-            values.Add(candidate);
-        }
+        SsrInvalidationInputReader.AddRange(values, candidates);
     }
 
     private static TEnum? ParseEnum<TEnum>(string? value)
         where TEnum : struct
     {
-        return Enum.TryParse(value, true, out TEnum parsed) ? parsed : null;
+        return SsrInvalidationInputReader.ParseEnum<TEnum>(value);
     }
 
     private static string NormalizeEntityType(string entityType)
     {
-        return entityType.Trim().Replace("-", string.Empty, StringComparison.Ordinal).Replace("_", string.Empty, StringComparison.Ordinal).ToLowerInvariant();
+        return SsrInvalidationInputReader.NormalizeEntityType(entityType);
     }
 }
