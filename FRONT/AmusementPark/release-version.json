@@ -1,6 +1,20 @@
 {
-  "version": "3.5.20",
+  "version": "3.5.21",
   "history": [
+    {
+      "version": "3.5.21",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La stabilité du classement des contenus a été renforcée.",
+        "en": "Content ordering stability has been strengthened.",
+        "de": "Die Stabilität der Inhaltssortierung wurde verbessert.",
+        "nl": "De stabiliteit van de inhoudssortering is verbeterd.",
+        "it": "La stabilità dell’ordinamento dei contenuti è stata rafforzata.",
+        "es": "Se ha reforzado la estabilidad de la ordenación de contenidos.",
+        "pl": "Zwiększono stabilność sortowania treści.",
+        "pt": "A estabilidade da ordenação de conteúdos foi reforçada."
+      }
+    },
     {
       "version": "3.5.20",
       "releasedAt": "2026-07-23",
