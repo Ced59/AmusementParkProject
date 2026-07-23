@@ -70,6 +70,8 @@
           optionValue="value"
           [showClear]="true"
           [filter]="true"
+          [ariaLabel]="'admin.parkItems.parkFilter' | translate"
+          [filterAriaLabel]="'admin.parkItems.parkFilter' | translate"
           (ngModelChange)="onImmediateFilterChanged()"
           [placeholder]="'admin.parkItems.parkFilter' | translate">
         </app-ui-select>

@@ -670,8 +670,8 @@ export class SortableColumn {
   imports: [FormsModule, NgFor, NgIf],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => Select), multi: true }],
   template: `
-    <input *ngIf="filter" class="p-select-filter" type="search" [ngModel]="filterText" (ngModelChange)="filterText = $event" [placeholder]="placeholder || ''" [disabled]="isDisabled || loading" (focus)="show()" />
-    <select class="p-select-native" [id]="inputId" [disabled]="isDisabled || loading" [ngModel]="value" (ngModelChange)="setValue($event)" (focus)="show()" (click)="show()">
+    <input *ngIf="filter" class="p-select-filter" type="search" [attr.aria-label]="filterAriaLabel" [ngModel]="filterText" (ngModelChange)="filterText = $event" [placeholder]="placeholder || ''" [disabled]="isDisabled || loading" (focus)="show()" />
+    <select class="p-select-native" [id]="inputId" [attr.aria-label]="ariaLabel" [disabled]="isDisabled || loading" [ngModel]="value" (ngModelChange)="setValue($event)" (focus)="show()" (click)="show()">
       <option *ngIf="showClear" [ngValue]="null">{{ placeholder || '-' }}</option>
       <option *ngFor="let option of filteredOptions" [ngValue]="resolveOptionValue(option)">{{ resolveOptionLabel(option) }}</option>
     </select>
@@ -683,6 +683,8 @@ export class Select implements ControlValueAccessor {
   @Input() optionLabel: string = 'label';
   @Input() optionValue: string = 'value';
   @Input() inputId: string | null = null;
+  @Input() ariaLabel: string | null = null;
+  @Input() filterAriaLabel: string | null = null;
   @Input() placeholder: string | null = null;
   @Input() showClear: boolean = false;
   @Input() filter: boolean = false;
