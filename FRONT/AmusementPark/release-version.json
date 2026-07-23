@@ -1,6 +1,20 @@
 {
-  "version": "3.5.9",
+  "version": "3.5.10",
   "history": [
+    {
+      "version": "3.5.10",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La fiabilité du référencement des pages a été renforcée.",
+        "en": "Page search visibility reliability has been strengthened.",
+        "de": "Die Zuverlässigkeit der Seitensichtbarkeit in Suchmaschinen wurde verbessert.",
+        "nl": "De betrouwbaarheid van de zichtbaarheid van pagina’s in zoekmachines is versterkt.",
+        "it": "L’affidabilità della visibilità delle pagine nei motori di ricerca è stata rafforzata.",
+        "es": "Se ha reforzado la fiabilidad de la visibilidad de las páginas en buscadores.",
+        "pl": "Zwiększono niezawodność widoczności stron w wyszukiwarkach.",
+        "pt": "A fiabilidade da visibilidade das páginas nos motores de pesquisa foi reforçada."
+      }
+    },
     {
       "version": "3.5.9",
       "releasedAt": "2026-07-23",
