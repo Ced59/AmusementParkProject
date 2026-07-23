@@ -60,31 +60,33 @@ disponibles, jusqu’à la rétention configurée.
 
 ### Cache SSR et VPS
 
-- VPS contrôlé en `root@185.158.107.198` avec la clé SSH dédiée.
-- KVM2 observé : 7,8 Gio de RAM, environ 3,9 Gio disponibles lors de la mesure,
-  pas de swap et environ 49 Gio de disque libre.
-- Cache mesuré pendant le chantier : environ 14 877 fichiers pour 2,7 Gio.
-- Plafond disque conservé à 16 Gio, cache mémoire à 2 000 entrées et concurrence
-  de rendu à 1, choix adapté aux ressources mesurées.
-- Warmup `full`, maximum 80 000 URL, concurrence 1, pause 250 ms, cycle toutes les
-  six heures et reprise sur erreur toutes les cinq minutes.
+- VPS contrôlé via le profil SSH root par adresse IP, sans consigner l’adresse ni
+  la clé dans le dépôt.
+- RAM, disque, absence de swap, conteneurs et inodes vérifiés ; la marge observée
+  était compatible avec le profil de cache retenu.
+- Cache mesuré à plusieurs milliers de fichiers et plusieurs Gio, sous son plafond
+  configuré.
+- Plafond disque, cache mémoire et concurrence de rendu conservés à des niveaux
+  adaptés aux ressources mesurées.
+- Warmup complet, borné et séquentiel, avec pause entre requêtes, cycles périodiques
+  et reprise sur erreur.
 - Service systemd activé et actif, artefacts de warmup retenus sept jours.
 - Les pages déjà chaudes répondaient typiquement en quelques dizaines de
   millisecondes depuis le PC ; aucun 502 n’a été observé pendant les boucles de
   validation du nouveau déploiement.
 
-Variables GitHub alignées :
+Variables GitHub alignées, sans publier leurs valeurs de production :
 
-- `SSR_TECHNICAL_STATS_RETENTION_DAYS=100`
-- `SSR_WARMUP_CONTINUOUS_ENABLED=true`
-- `SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS=21600`
-- `SSR_WARMUP_CONTINUOUS_RETRY_SECONDS=300`
-- `SSR_WARMUP_PROFILE=full`
-- `SSR_WARMUP_MAX_URLS=80000`
-- `SSR_WARMUP_CONCURRENCY=1`
-- `SSR_WARMUP_SLEEP_SECONDS=0.25`
-- `SSR_WARMUP_BOT_VALIDATION_SAMPLE_SIZE=250`
-- `CSP_REPORT_ONLY=false`
+- `SSR_TECHNICAL_STATS_RETENTION_DAYS`
+- `SSR_WARMUP_CONTINUOUS_ENABLED`
+- `SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS`
+- `SSR_WARMUP_CONTINUOUS_RETRY_SECONDS`
+- `SSR_WARMUP_PROFILE`
+- `SSR_WARMUP_MAX_URLS`
+- `SSR_WARMUP_CONCURRENCY`
+- `SSR_WARMUP_SLEEP_SECONDS`
+- `SSR_WARMUP_BOT_VALIDATION_SAMPLE_SIZE`
+- `CSP_REPORT_ONLY`
 
 ### Sécurité et chaîne CI/CD
 
