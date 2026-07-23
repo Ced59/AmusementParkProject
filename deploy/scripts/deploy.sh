@@ -175,9 +175,47 @@ start_deploy_candidate() {
   local container_name="$2"
 
   echo "Starting healthy ${service_name} deployment candidate ${container_name}..."
-  compose run -d --no-deps --use-aliases --name "${container_name}" "${service_name}" >/dev/null
+  compose run -d --no-deps --name "${container_name}" "${service_name}" >/dev/null
   wait_for_container_healthy "${container_name}" 180
 }
+
+attach_candidate_aliases() {
+  local service_name="$1"
+  local container_name="$2"
+  local backend_network="${compose_project_name}_backend_private"
+
+  docker network disconnect "${backend_network}" "${container_name}"
+  if [ "${service_name}" = "api" ]; then
+    docker network connect --alias api --alias amusementpark-api "${backend_network}" "${container_name}"
+  else
+    docker network connect --alias front --alias amusementpark-front "${backend_network}" "${container_name}"
+    wait_for_container_healthy "${container_name}" 30
+    docker network disconnect "${npm_docker_network_name}" "${container_name}"
+    docker network connect \
+      --alias amusementpark-front \
+      --alias amusementpark-front-ssr \
+      "${npm_docker_network_name}" \
+      "${container_name}"
+  fi
+
+  wait_for_container_healthy "${container_name}" 30
+  echo "Production aliases attached to healthy ${container_name}."
+}
+
+api_candidate_name=""
+front_candidate_name=""
+
+cleanup_deploy_candidates() {
+  local candidate_name=""
+  for candidate_name in "${front_candidate_name}" "${api_candidate_name}"; do
+    if [ -n "${candidate_name}" ] && docker inspect "${candidate_name}" >/dev/null 2>&1; then
+      echo "Removing deployment candidate ${candidate_name}..."
+      docker rm -f "${candidate_name}" >/dev/null || true
+    fi
+  done
+}
+
+trap cleanup_deploy_candidates EXIT
 
 run_legacy_enum_migrations() {
   local migration_script="./scripts/migrate-legacy-enums-1.10.0.js"
@@ -269,15 +307,15 @@ echo "Pulling production images..."
 compose pull
 
 rolling_deploy=false
-api_candidate_name=""
-front_candidate_name=""
 if [ "${deploy_zero_downtime_enabled}" = "true" ] && service_is_healthy api && service_is_healthy front; then
   rolling_deploy=true
   candidate_suffix="$(date -u +%Y%m%dT%H%M%SZ)-$$"
   api_candidate_name="${compose_project_name}-api-candidate-${candidate_suffix}"
   front_candidate_name="${compose_project_name}-front-candidate-${candidate_suffix}"
   start_deploy_candidate api "${api_candidate_name}"
+  attach_candidate_aliases api "${api_candidate_name}"
   start_deploy_candidate front "${front_candidate_name}"
+  attach_candidate_aliases front "${front_candidate_name}"
 else
   echo "Healthy API/front stack not available or zero-downtime disabled; using the standard startup path."
 fi
@@ -330,7 +368,9 @@ curl_with_retry \
 
 if [ "${rolling_deploy}" = "true" ]; then
   echo "Canonical services are healthy; removing deployment candidates."
-  docker rm -f "${front_candidate_name}" "${api_candidate_name}" >/dev/null
+  cleanup_deploy_candidates
+  front_candidate_name=""
+  api_candidate_name=""
   compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans
 fi
 
