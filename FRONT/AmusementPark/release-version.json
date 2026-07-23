@@ -1,6 +1,20 @@
 {
-  "version": "3.5.8",
+  "version": "3.5.9",
   "history": [
+    {
+      "version": "3.5.9",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La disponibilité durable des pages a été renforcée.",
+        "en": "Long-term page availability has been strengthened.",
+        "de": "Die langfristige Verfügbarkeit der Seiten wurde verbessert.",
+        "nl": "De duurzame beschikbaarheid van pagina’s is versterkt.",
+        "it": "La disponibilità duratura delle pagine è stata rafforzata.",
+        "es": "Se ha reforzado la disponibilidad duradera de las páginas.",
+        "pl": "Wzmocniono długoterminową dostępność stron.",
+        "pt": "A disponibilidade duradoura das páginas foi reforçada."
+      }
+    },
     {
       "version": "3.5.8",
       "releasedAt": "2026-07-23",

@@ -23,6 +23,7 @@ deploy_compose_log_timeout_seconds="${DEPLOY_COMPOSE_LOG_TIMEOUT_SECONDS:-30}"
 deploy_compose_up_timeout_seconds="${DEPLOY_COMPOSE_UP_TIMEOUT_SECONDS:-300}"
 deploy_docker_prune_timeout_seconds="${DEPLOY_DOCKER_PRUNE_TIMEOUT_SECONDS:-120}"
 deploy_zero_downtime_enabled="${DEPLOY_ZERO_DOWNTIME_ENABLED:-true}"
+continuous_warmup_service_name="amusementpark-ssr-warmup.service"
 
 compose() {
   docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
@@ -44,6 +45,63 @@ compose_with_timeout() {
   shift
 
   run_with_timeout "${timeout_seconds}" docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
+}
+
+reconcile_continuous_warmup_service() {
+  local deploy_directory
+  local service_file
+  local temporary_service_file
+
+  service_file="/etc/systemd/system/${continuous_warmup_service_name}"
+
+  if [ "${SSR_WARMUP_CONTINUOUS_ENABLED:-false}" != "true" ]; then
+    if command -v systemctl >/dev/null 2>&1; then
+      systemctl disable --now "${continuous_warmup_service_name}" >/dev/null 2>&1 || true
+      if [ -f "${service_file}" ]; then
+        rm -f "${service_file}"
+        systemctl daemon-reload
+      fi
+    fi
+    return 0
+  fi
+
+  if [ "${SSR_WARMUP_AFTER_DEPLOY:-false}" != "true" ]; then
+    echo "SSR_WARMUP_CONTINUOUS_ENABLED requires SSR_WARMUP_AFTER_DEPLOY=true." >&2
+    exit 1
+  fi
+
+  if [ "$(id -u)" -ne 0 ] || ! command -v systemctl >/dev/null 2>&1; then
+    echo "Continuous SSR warmup requires root and systemd supervision." >&2
+    exit 1
+  fi
+
+  deploy_directory="$(pwd -P)"
+  temporary_service_file="$(mktemp)"
+  {
+    printf '%s\n' \
+      '[Unit]' \
+      'Description=AmusementPark continuous SSR cache warmup' \
+      'After=network-online.target docker.service' \
+      'Wants=network-online.target' \
+      '' \
+      '[Service]' \
+      'Type=simple' \
+      "WorkingDirectory=${deploy_directory}" \
+      "ExecStart=${deploy_directory}/scripts/warmup-ssr-cache-continuous.sh" \
+      'Restart=on-failure' \
+      'RestartSec=30' \
+      'KillMode=control-group' \
+      '' \
+      '[Install]' \
+      'WantedBy=multi-user.target'
+  } > "${temporary_service_file}"
+
+  install -m 0644 "${temporary_service_file}" "${service_file}"
+  rm -f "${temporary_service_file}"
+  systemctl daemon-reload
+  systemctl enable "${continuous_warmup_service_name}" >/dev/null
+  systemctl restart "${continuous_warmup_service_name}"
+  echo "Continuous SSR warmup service is enabled and running."
 }
 
 compose_logs() {
@@ -374,17 +432,13 @@ if [ "${rolling_deploy}" = "true" ]; then
   compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans
 fi
 
+reconcile_continuous_warmup_service
+
 if [ "${SSR_WARMUP_AFTER_DEPLOY:-false}" = "true" ]; then
   mkdir -p ./warmup
 
   if [ "${SSR_WARMUP_CONTINUOUS_ENABLED:-false}" = "true" ]; then
-    if [ "${SSR_WARMUP_BACKGROUND:-true}" != "true" ]; then
-      echo "SSR_WARMUP_CONTINUOUS_ENABLED requires SSR_WARMUP_BACKGROUND=true." >&2
-      exit 1
-    fi
-    warmup_log="./warmup/ssr-warmup-continuous.log"
-    echo "Starting or confirming the continuous SSR cache warmup worker. Log: ${warmup_log}"
-    nohup ./scripts/warmup-ssr-cache-continuous.sh >> "${warmup_log}" 2>&1 9>&- &
+    echo "Continuous SSR cache warmup is managed by ${continuous_warmup_service_name}."
   elif [ "${SSR_WARMUP_BACKGROUND:-true}" = "true" ]; then
     warmup_log="./warmup/ssr-warmup-deploy-$(date -u +%Y%m%dT%H%M%SZ).log"
     echo "Starting optional SSR cache warmup in background. Log: ${warmup_log}"

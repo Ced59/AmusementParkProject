@@ -166,6 +166,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line SSR_WARMUP_CONTINUOUS_ENABLED "$(value_or_default SSR_WARMUP_CONTINUOUS_ENABLED 'false')"
   write_line SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS "$(value_or_default SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS '21600')"
   write_line SSR_WARMUP_CONTINUOUS_RETRY_SECONDS "$(value_or_default SSR_WARMUP_CONTINUOUS_RETRY_SECONDS '300')"
+  write_line SSR_WARMUP_ARTIFACT_RETENTION_DAYS "$(value_or_default SSR_WARMUP_ARTIFACT_RETENTION_DAYS '7')"
   write_line SSR_WARMUP_REQUIRED "$(value_or_default SSR_WARMUP_REQUIRED 'true')"
   write_line SSR_WARMUP_PROFILE "$(value_or_default SSR_WARMUP_PROFILE 'critical')"
   write_line SSR_WARMUP_SEO_DOCUMENTS "$(value_or_default SSR_WARMUP_SEO_DOCUMENTS 'true')"
