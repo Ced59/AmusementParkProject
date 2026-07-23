@@ -116,7 +116,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line SSR_FORCE_HTTPS "$(value_or_default SSR_FORCE_HTTPS 'true')"
   write_line SSR_CSP_ALLOW_LOCAL_DEV_SOURCES "$(value_or_default SSR_CSP_ALLOW_LOCAL_DEV_SOURCES 'false')"
   write_line CSP_ENABLED "$(value_or_default CSP_ENABLED 'true')"
-  write_line CSP_REPORT_ONLY "$(value_or_default CSP_REPORT_ONLY 'true')"
+  write_line CSP_REPORT_ONLY "$(value_or_default CSP_REPORT_ONLY 'false')"
   write_line CSP_REPORT_URI "$(value_or_default CSP_REPORT_URI '/security/csp-report')"
   write_line FRONT_CSP_REPORT_URI "$(value_or_default FRONT_CSP_REPORT_URI '/api/security/csp-report')"
   write_line FRONT_NODE_OPTIONS "$(value_or_default FRONT_NODE_OPTIONS '--max-old-space-size=1024')"

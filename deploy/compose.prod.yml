@@ -20,7 +20,7 @@ services:
       PORT: 4000
       SSR_API_INTERNAL_URL: ${FRONT_SSR_API_INTERNAL_URL:-http://api:8080}
       SSR_CSP_ENABLED: ${CSP_ENABLED:-true}
-      SSR_CSP_REPORT_ONLY: ${CSP_REPORT_ONLY:-true}
+      SSR_CSP_REPORT_ONLY: ${CSP_REPORT_ONLY:-false}
       SSR_CSP_REPORT_URI: ${FRONT_CSP_REPORT_URI:-/api/security/csp-report}
       SSR_CSP_ALLOW_LOCAL_DEV_SOURCES: ${SSR_CSP_ALLOW_LOCAL_DEV_SOURCES:-false}
       SSR_ALLOWED_HOSTS: ${SSR_ALLOWED_HOSTS:?SSR_ALLOWED_HOSTS is required}
@@ -111,7 +111,7 @@ services:
       ForwardedHeaders__KnownNetworks__0: ${FORWARDED_HEADERS_KNOWN_NETWORKS:?FORWARDED_HEADERS_KNOWN_NETWORKS is required}
       ForwardedHeaders__AllowedHosts__0: ${FORWARDED_HEADERS_ALLOWED_HOSTS:?FORWARDED_HEADERS_ALLOWED_HOSTS is required}
       Security__ContentSecurityPolicy__Enabled: ${CSP_ENABLED:-true}
-      Security__ContentSecurityPolicy__ReportOnly: ${CSP_REPORT_ONLY:-true}
+      Security__ContentSecurityPolicy__ReportOnly: ${CSP_REPORT_ONLY:-false}
       Security__ContentSecurityPolicy__ReportUri: ${CSP_REPORT_URI:-/security/csp-report}
       RateLimiting__Authentication__Login__PermitLimit: ${AUTH_RATE_LIMIT_LOGIN_LIMIT:-5}
       RateLimiting__Authentication__Login__WindowSeconds: ${AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS:-60}

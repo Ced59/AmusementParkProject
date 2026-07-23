@@ -36,7 +36,7 @@ import { siteVersion } from './src/environments/version.generated';
 const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
 const currentBuildVersion = (process.env['APP_VERSION'] ?? siteVersion).trim() || siteVersion;
-const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'true').toLowerCase() !== 'false';
+const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'false').toLowerCase() !== 'false';
 const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
 const forceHttps = (process.env['SSR_FORCE_HTTPS'] ?? 'false').toLowerCase() === 'true';
