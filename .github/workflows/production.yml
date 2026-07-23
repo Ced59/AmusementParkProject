@@ -243,13 +243,17 @@ jobs:
       - name: Scan .NET packages
         shell: bash
         run: |
-          set -euo pipefail
+          set +e
           dotnet list AmusementPark.sln package --vulnerable --include-transitive > dependency-security-reports/dotnet-vulnerable.txt 2>&1
+          scan_status=$?
           cat dependency-security-reports/dotnet-vulnerable.txt
-          if grep -Eiq '(^|[[:space:]])(critical|high)([[:space:]]|$)' dependency-security-reports/dotnet-vulnerable.txt; then
-            echo "::error::A critical or high severity .NET dependency vulnerability was detected."
-            exit 1
+          if [ "${scan_status}" -ne 0 ]; then
+            touch dependency-security-reports/dotnet-scan-error.flag
           fi
+          if grep -Eiq '(^|[[:space:]])(critical|high)([[:space:]]|$)' dependency-security-reports/dotnet-vulnerable.txt; then
+            touch dependency-security-reports/dotnet-critical-high.flag
+          fi
+          exit 0
 
       - name: Install frontend dependencies for npm audit
         working-directory: FRONT/AmusementPark
@@ -267,9 +271,9 @@ jobs:
           npm audit --audit-level=high
           gate_status=$?
           if [ "${gate_status}" -ne 0 ]; then
-            echo "::error::A critical or high severity npm dependency vulnerability was detected."
+            touch ../../dependency-security-reports/npm-critical-high.flag
           fi
-          exit "${gate_status}"
+          exit 0
 
       - name: Upload dependency security reports
         if: always()
@@ -278,6 +282,20 @@ jobs:
           name: dependency-security-reports
           path: dependency-security-reports
 
+      - name: Enforce critical and high vulnerability gate
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if compgen -G 'dependency-security-reports/*-scan-error.flag' >/dev/null; then
+            echo "::error::A dependency vulnerability scan could not complete."
+            exit 1
+          fi
+          if compgen -G 'dependency-security-reports/*-critical-high.flag' >/dev/null; then
+            echo "::error::A critical or high severity dependency vulnerability was detected."
+            exit 1
+          fi
+
   docker-images:
     name: Build Docker images
     runs-on: ubuntu-latest
@@ -285,6 +303,7 @@ jobs:
       - release-version
       - backend
       - frontend
+      - dependency-security
     outputs:
       api_image: ${{ steps.image-names.outputs.api_image }}
       front_image: ${{ steps.image-names.outputs.front_image }}
