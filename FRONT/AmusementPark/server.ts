@@ -27,6 +27,7 @@ import {
   shouldServeRobotOptimizedNoJsHtml
 } from './src/server/ssr/robot-ssr-policy';
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
+import { RetainedBucketCache } from './src/server/technical-stats/retained-bucket-cache';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-writer';
 import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-policy';
@@ -101,7 +102,8 @@ let technicalStatsPersistencePurgedBuckets = 0;
 let technicalStatsPersistenceEntries = 0;
 let technicalStatsPersistenceBytes = 0;
 let technicalStatsPersistenceTimerStarted = false;
-let retainedTechnicalStatsBucketsCache: TechnicalStatsPersistentBucket[] | null = null;
+const retainedTechnicalStatsBucketsCache: RetainedBucketCache<TechnicalStatsPersistentBucket> =
+  new RetainedBucketCache<TechnicalStatsPersistentBucket>();
 let diskPageCacheMeasuredEntries = 0;
 let diskPageCacheMeasuredBytes = 0;
 let diskPageCacheStatsLastMeasuredAt = 0;
@@ -1177,33 +1179,28 @@ function loadPersistedTechnicalStatsBuckets(): void {
 }
 
 function readRetainedTechnicalStatsBuckets(): TechnicalStatsPersistentBucket[] {
-  if (retainedTechnicalStatsBucketsCache !== null) {
-    return retainedTechnicalStatsBucketsCache;
-  }
-
-  if (!existsSync(technicalStatsPersistenceDirectory)) {
-    retainedTechnicalStatsBucketsCache = [];
-    return retainedTechnicalStatsBucketsCache;
-  }
-
-  const cutoff = getTechnicalStatsRetentionCutoffDateKey();
-  const buckets: TechnicalStatsPersistentBucket[] = [];
-
-  for (const fileName of readdirSync(technicalStatsPersistenceDirectory)) {
-    const bucketDate = parseTechnicalStatsBucketFileDate(fileName);
-    if (bucketDate === null || bucketDate < cutoff) {
-      continue;
+  return [...retainedTechnicalStatsBucketsCache.getOrLoad((): TechnicalStatsPersistentBucket[] => {
+    if (!existsSync(technicalStatsPersistenceDirectory)) {
+      return [];
     }
 
-    const bucket = readTechnicalStatsBucket(bucketDate);
-    if (bucket !== null) {
-      buckets.push(bucket);
-    }
-  }
+    const cutoff = getTechnicalStatsRetentionCutoffDateKey();
+    const buckets: TechnicalStatsPersistentBucket[] = [];
 
-  retainedTechnicalStatsBucketsCache = buckets.sort(
-    (left: TechnicalStatsPersistentBucket, right: TechnicalStatsPersistentBucket): number => left.date.localeCompare(right.date));
-  return retainedTechnicalStatsBucketsCache;
+    for (const fileName of readdirSync(technicalStatsPersistenceDirectory)) {
+      const bucketDate = parseTechnicalStatsBucketFileDate(fileName);
+      if (bucketDate === null || bucketDate < cutoff) {
+        continue;
+      }
+
+      const bucket = readTechnicalStatsBucket(bucketDate);
+      if (bucket !== null) {
+        buckets.push(bucket);
+      }
+    }
+
+    return buckets;
+  })];
 }
 
 function readTechnicalStatsBucket(dateKey: string): TechnicalStatsPersistentBucket | null {
@@ -1244,12 +1241,7 @@ function readTechnicalStatsBucket(dateKey: string): TechnicalStatsPersistentBuck
 
 function writeTechnicalStatsBucket(bucket: TechnicalStatsPersistentBucket): void {
   writeJsonAtomically(getTechnicalStatsBucketPath(bucket.date), bucket);
-  if (retainedTechnicalStatsBucketsCache !== null) {
-    retainedTechnicalStatsBucketsCache = [
-      ...retainedTechnicalStatsBucketsCache.filter((existingBucket: TechnicalStatsPersistentBucket): boolean => existingBucket.date !== bucket.date),
-      bucket
-    ].sort((left: TechnicalStatsPersistentBucket, right: TechnicalStatsPersistentBucket): number => left.date.localeCompare(right.date));
-  }
+  retainedTechnicalStatsBucketsCache.replace(bucket);
 }
 
 function purgeExpiredTechnicalStatsBuckets(): number {
@@ -1275,7 +1267,7 @@ function purgeExpiredTechnicalStatsBuckets(): number {
   }
 
   if (purged > 0) {
-    retainedTechnicalStatsBucketsCache = null;
+    retainedTechnicalStatsBucketsCache.invalidate();
   }
 
   return purged;
