@@ -32,6 +32,7 @@ import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-
 import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-writer';
 import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-policy';
 import { siteVersion } from './src/environments/version.generated';
+import { buildContentSecurityPolicy } from './src/app/core/security/content-security-policy';
 
 const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
@@ -3073,41 +3074,13 @@ function applySecurityHeaders(_req: Request, res: Response, next: NextFunction):
 
   if (cspEnabled) {
     const cspHeaderName = cspReportOnly ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
-    res.setHeader(cspHeaderName, buildContentSecurityPolicy());
+    res.setHeader(cspHeaderName, buildContentSecurityPolicy({
+      allowLocalSources: allowLocalCspSources,
+      reportUri: process.env['SSR_CSP_REPORT_URI'] ?? '/api/security/csp-report'
+    }));
   }
 
   next();
-}
-
-function buildContentSecurityPolicy(): string {
-  const reportUri = process.env['SSR_CSP_REPORT_URI'] ?? '/api/security/csp-report';
-  const localScriptSources: string[] = allowLocalCspSources ? ['http://localhost:*', 'http://matomo.amusement.localhost:*'] : [];
-  const localImageSources: string[] = allowLocalCspSources ? ['http://localhost:*', 'http://amusement.localhost:*', 'http://matomo.amusement.localhost:*'] : [];
-  const localConnectSources: string[] = allowLocalCspSources ? ['http://localhost:*', 'https://localhost:*', 'http://amusement.localhost:*', 'http://matomo.amusement.localhost:*'] : [];
-
-  return [
-    "default-src 'self'",
-    "base-uri 'self'",
-    "object-src 'none'",
-    "frame-ancestors 'none'",
-    "form-action 'self'",
-    joinCspDirective('script-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com', 'https://apis.google.com', 'https://matomo.cedric-caudron.com', 'https://www.clarity.ms', 'https://*.clarity.ms', ...localScriptSources]),
-    joinCspDirective('style-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com']),
-    joinCspDirective('style-src-elem', ["'self'", "'unsafe-inline'", 'https://accounts.google.com']),
-    joinCspDirective('font-src', ["'self'", 'data:']),
-    joinCspDirective('img-src', ["'self'", 'data:', 'blob:', 'https:', 'https://tile.openstreetmap.org', 'https://*.tile.openstreetmap.org', 'https://*.clarity.ms', ...localImageSources]),
-    joinCspDirective('connect-src', ["'self'", 'https://accounts.google.com', 'https://www.googleapis.com', 'https://matomo.cedric-caudron.com', 'https://www.clarity.ms', 'https://*.clarity.ms', ...localConnectSources]),
-    joinCspDirective('frame-src', ["'self'", 'https://accounts.google.com']),
-    "worker-src 'self' blob:",
-    "media-src 'self' blob: data:",
-    "manifest-src 'self'",
-    `report-uri ${reportUri}`
-  ].join('; ');
-}
-
-function joinCspDirective(name: string, sources: string[]): string {
-  const uniqueSources: string[] = Array.from(new Set(sources.filter((source: string) => source.length > 0)));
-  return `${name} ${uniqueSources.join(' ')}`;
 }
 
 function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, targetPath: string): void {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { isAllowedVideoEmbedUrl } from '@core/security/video-embed-policy';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class SafeVideoEmbedUrlService {
     try {
       const url: URL = new URL(normalizedValue);
 
-      if (url.protocol !== 'https:' || !this.isAllowedEmbedUrl(url)) {
+      if (url.protocol !== 'https:' || !isAllowedVideoEmbedUrl(url)) {
         return null;
       }
 
@@ -28,18 +29,4 @@ export class SafeVideoEmbedUrlService {
     }
   }
 
-  private isAllowedEmbedUrl(url: URL): boolean {
-    const hostname: string = url.hostname.toLowerCase();
-    const pathname: string = url.pathname.toLowerCase();
-
-    if ((hostname === 'www.youtube.com' || hostname === 'youtube.com' || hostname === 'www.youtube-nocookie.com') && pathname.startsWith('/embed/')) {
-      return true;
-    }
-
-    if (hostname === 'www.dailymotion.com' && pathname.startsWith('/embed/video/')) {
-      return true;
-    }
-
-    return hostname === 'player.vimeo.com' && pathname.startsWith('/video/');
-  }
 }
