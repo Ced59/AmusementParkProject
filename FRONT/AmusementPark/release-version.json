@@ -1,6 +1,20 @@
 {
-  "version": "3.4.41",
+  "version": "3.5.0",
   "history": [
+    {
+      "version": "3.5.0",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La conservation des statistiques techniques a été fiabilisée.",
+        "en": "Technical statistics retention has been made more reliable.",
+        "de": "Die Aufbewahrung technischer Statistiken wurde zuverlässiger gestaltet.",
+        "nl": "De bewaring van technische statistieken is betrouwbaarder gemaakt.",
+        "it": "La conservazione delle statistiche tecniche è stata resa più affidabile.",
+        "es": "La conservación de las estadísticas técnicas se ha hecho más fiable.",
+        "pl": "Zwiększono niezawodność przechowywania statystyk technicznych.",
+        "pt": "A conservação das estatísticas técnicas tornou-se mais fiável."
+      }
+    },
     {
       "version": "3.4.41",
       "releasedAt": "2026-07-23",
