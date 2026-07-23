@@ -30,6 +30,10 @@ describe('AdminParkItemsIndexViewComponent', () => {
     const parkSelect: Select = selects[0].componentInstance as Select;
 
     expect(parkSelect.filter).toBeTrue();
-    expect(fixture.debugElement.queryAll(By.css('.p-select-filter')).length).toBe(1);
+    const filterInput: HTMLInputElement = fixture.debugElement.query(By.css('.p-select-filter')).nativeElement;
+    const nativeSelect: HTMLSelectElement = fixture.debugElement.query(By.css('.p-select-native')).nativeElement;
+
+    expect(filterInput.getAttribute('aria-label')).toBeTruthy();
+    expect(nativeSelect.getAttribute('aria-label')).toBeTruthy();
   });
 });
