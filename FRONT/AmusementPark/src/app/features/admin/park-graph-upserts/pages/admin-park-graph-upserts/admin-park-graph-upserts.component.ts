@@ -6,8 +6,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { finalize } from 'rxjs';
 
-import { ParkGraphUpsertsApiService } from '@data-access/admin/park-graph-upserts-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkGraphUpsertChange, ParkGraphUpsertCounts, ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
@@ -16,6 +14,7 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { SafeExternalUrlPipe } from '@shared/pipes';
 import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
+import { AdminParkGraphUpsertOperationsFacade } from '../../state/admin-park-graph-upsert-operations.facade';
 
 type ParkGraphUpsertChangeTypeFilter = 'All' | 'Created' | 'Updated' | 'Deleted' | 'Unchanged' | 'Warning' | 'Skipped';
 type ParkGraphUpsertMergeEntityType = 'AttractionManufacturer' | 'Park' | 'ParkItem';
@@ -110,8 +109,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly parksApi: ParksApiService,
-    private readonly parkGraphUpsertsApi: ParkGraphUpsertsApiService,
+    private readonly operations: AdminParkGraphUpsertOperationsFacade,
     private readonly toastMessageService: ToastMessageService,
     private readonly translateService: TranslateService,
     private readonly changeDetectorRef: ChangeDetectorRef,
@@ -135,7 +133,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     }
 
     this.isSearching = true;
-    this.parksApi.searchParks(query, 1, 10, false, null, null)
+    this.operations.searchParks(query)
       .pipe(finalize((): void => {
         this.isSearching = false;
         this.changeDetectorRef.markForCheck();
@@ -181,7 +179,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     }
 
     this.isExporting = true;
-    this.parkGraphUpsertsApi.downloadParkExport(this.selectedPark.id)
+    this.operations.downloadParkExport(this.selectedPark.id)
       .pipe(finalize((): void => {
         this.isExporting = false;
         this.changeDetectorRef.markForCheck();
@@ -255,7 +253,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     this.previewResult = null;
     this.lastAppliedResult = null;
     this.operationErrorDetail = null;
-    this.parkGraphUpsertsApi.preview(request)
+    this.operations.preview(request)
       .pipe(finalize((): void => {
         this.isPreviewing = false;
         this.changeDetectorRef.markForCheck();
@@ -291,7 +289,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     this.isApplying = true;
     this.lastAppliedResult = null;
     this.operationErrorDetail = null;
-    this.parkGraphUpsertsApi.apply(request)
+    this.operations.apply(request)
       .pipe(finalize((): void => {
         this.isApplying = false;
         this.changeDetectorRef.markForCheck();
@@ -599,7 +597,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     }
 
     this.isLoadingSelectedParkScore = true;
-    this.parksApi.getParkDataCompletenessScore(this.selectedPark.id)
+    this.operations.loadParkDataCompleteness(this.selectedPark.id)
       .pipe(finalize((): void => {
         this.isLoadingSelectedParkScore = false;
         this.changeDetectorRef.markForCheck();
