@@ -2,24 +2,28 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
-import { ParkGraphUpsertsApiService } from '@data-access/admin/park-graph-upserts-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { AdminParkGraphUpsertOperationsFacade } from './admin-park-graph-upsert-operations.facade';
+import {
+  ADMIN_PARK_GRAPH_UPSERT_GRAPH_PORT,
+  ADMIN_PARK_GRAPH_UPSERT_PARKS_PORT,
+  AdminParkGraphUpsertGraphPort,
+  AdminParkGraphUpsertParksPort
+} from './admin-park-graph-upsert-operations.ports';
 
 describe('AdminParkGraphUpsertOperationsFacade', () => {
   let facade: AdminParkGraphUpsertOperationsFacade;
-  let parksApi: jasmine.SpyObj<ParksApiService>;
-  let graphApi: jasmine.SpyObj<ParkGraphUpsertsApiService>;
+  let parksApi: jasmine.SpyObj<AdminParkGraphUpsertParksPort>;
+  let graphApi: jasmine.SpyObj<AdminParkGraphUpsertGraphPort>;
 
   beforeEach(() => {
-    parksApi = jasmine.createSpyObj<ParksApiService>('ParksApiService', ['searchParks', 'getParkDataCompletenessScore']);
-    graphApi = jasmine.createSpyObj<ParkGraphUpsertsApiService>('ParkGraphUpsertsApiService', ['downloadParkExport', 'preview', 'apply']);
+    parksApi = jasmine.createSpyObj<AdminParkGraphUpsertParksPort>('AdminParkGraphUpsertParksPort', ['searchParks', 'getParkDataCompletenessScore']);
+    graphApi = jasmine.createSpyObj<AdminParkGraphUpsertGraphPort>('AdminParkGraphUpsertGraphPort', ['downloadParkExport', 'preview', 'apply']);
 
     TestBed.configureTestingModule({
       providers: [
         AdminParkGraphUpsertOperationsFacade,
-        { provide: ParksApiService, useValue: parksApi },
-        { provide: ParkGraphUpsertsApiService, useValue: graphApi }
+        { provide: ADMIN_PARK_GRAPH_UPSERT_PARKS_PORT, useValue: parksApi },
+        { provide: ADMIN_PARK_GRAPH_UPSERT_GRAPH_PORT, useValue: graphApi }
       ]
     });
     facade = TestBed.inject(AdminParkGraphUpsertOperationsFacade);
