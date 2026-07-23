@@ -29,6 +29,7 @@ describe('SeoRoutePolicyService', (): void => {
     expect(service.resolveStaticRouteKey('/de/privacy')).toBe('privacy');
     expect(service.resolveStaticRouteKey('/fr/not-found')).toBe('notFound');
     expect(service.resolveStaticRouteKey('/fr/park/id/slug')).toBeNull();
+    expect(service.resolveStaticRouteKey('/fr/constructor')).toBeNull();
   });
 
   it('normalizes duplicate separators for path segments', (): void => {

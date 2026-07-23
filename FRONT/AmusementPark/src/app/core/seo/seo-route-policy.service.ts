@@ -17,21 +17,21 @@ export class SeoRoutePolicyService {
 
   resolveStaticRouteKey(url: string): string | null {
     const routeSegment: string = this.getPathSegments(url)[1] ?? 'home';
-    const routeKeys: Readonly<Record<string, string>> = {
-      home: 'home',
-      parks: 'parks',
-      sitemap: 'sitemap',
-      rankings: 'rankings',
-      technical: 'technical',
-      manufacturers: 'manufacturers',
-      about: 'about',
-      contact: 'contact',
-      versions: 'versions',
-      privacy: 'privacy',
-      'not-found': 'notFound'
-    };
+    const routeKeys: ReadonlyMap<string, string> = new Map<string, string>([
+      ['home', 'home'],
+      ['parks', 'parks'],
+      ['sitemap', 'sitemap'],
+      ['rankings', 'rankings'],
+      ['technical', 'technical'],
+      ['manufacturers', 'manufacturers'],
+      ['about', 'about'],
+      ['contact', 'contact'],
+      ['versions', 'versions'],
+      ['privacy', 'privacy'],
+      ['not-found', 'notFound']
+    ]);
 
-    return routeSegment === '' ? 'home' : routeKeys[routeSegment] ?? null;
+    return routeSegment === '' ? 'home' : routeKeys.get(routeSegment) ?? null;
   }
 
   isAdminRoute(url: string): boolean {
