@@ -1,6 +1,20 @@
 {
-  "version": "3.5.10",
+  "version": "3.5.11",
   "history": [
+    {
+      "version": "3.5.11",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La protection contre les dépendances à risque a été renforcée.",
+        "en": "Protection against risky dependencies has been strengthened.",
+        "de": "Der Schutz vor riskanten Abhängigkeiten wurde verstärkt.",
+        "nl": "De bescherming tegen risicovolle afhankelijkheden is versterkt.",
+        "it": "La protezione dalle dipendenze a rischio è stata rafforzata.",
+        "es": "Se ha reforzado la protección frente a dependencias de riesgo.",
+        "pl": "Wzmocniono ochronę przed ryzykownymi zależnościami.",
+        "pt": "A proteção contra dependências de risco foi reforçada."
+      }
+    },
     {
       "version": "3.5.10",
       "releasedAt": "2026-07-23",
