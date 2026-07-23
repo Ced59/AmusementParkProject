@@ -1,6 +1,20 @@
 {
-  "version": "3.5.15",
+  "version": "3.5.16",
   "history": [
+    {
+      "version": "3.5.16",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "L’accès à l’accueil depuis une adresse courte a été corrigé.",
+        "en": "Access to the home page from a short address has been fixed.",
+        "de": "Der Zugriff auf die Startseite über eine kurze Adresse wurde korrigiert.",
+        "nl": "De toegang tot de startpagina via een kort adres is hersteld.",
+        "it": "L’accesso alla pagina iniziale da un indirizzo breve è stato corretto.",
+        "es": "Se ha corregido el acceso al inicio desde una dirección corta.",
+        "pl": "Poprawiono dostęp do strony głównej z krótkiego adresu.",
+        "pt": "Foi corrigido o acesso à página inicial através de um endereço curto."
+      }
+    },
     {
       "version": "3.5.15",
       "releasedAt": "2026-07-23",

@@ -141,6 +141,11 @@ export const routes: Routes = [
       },
       {
         path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: '',
         loadComponent: () => import('@ui/layouts/account-layout/account-layout.component').then((m) => m.AccountLayoutComponent),
         children: [
           { path: 'profile', loadChildren: () => import('@features/profile/profile.module').then((m) => m.ProfileModule) },
