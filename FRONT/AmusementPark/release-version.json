@@ -1,6 +1,20 @@
 {
-  "version": "3.5.3",
+  "version": "3.5.4",
   "history": [
+    {
+      "version": "3.5.4",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La stabilité des mises à jour du site a été renforcée.",
+        "en": "Site update stability has been strengthened.",
+        "de": "Die Stabilität der Website-Aktualisierungen wurde verbessert.",
+        "nl": "De stabiliteit van site-updates is verbeterd.",
+        "it": "La stabilità degli aggiornamenti del sito è stata rafforzata.",
+        "es": "Se ha reforzado la estabilidad de las actualizaciones del sitio.",
+        "pl": "Zwiększono stabilność aktualizacji witryny.",
+        "pt": "A estabilidade das atualizações do site foi reforçada."
+      }
+    },
     {
       "version": "3.5.3",
       "releasedAt": "2026-07-23",
