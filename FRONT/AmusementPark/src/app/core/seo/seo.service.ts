@@ -19,6 +19,7 @@ import { JsonLdService } from './json-ld.service';
 import { buildCanonicalVideoRouteRedirectPath } from './legacy-video-route.helpers';
 import { SeoAlternateLink, SeoRouteData } from './models/seo-route-data.model';
 import { SEO_DEFAULT_LANGUAGE } from './seo-languages';
+import { SeoRoutePolicyService } from './seo-route-policy.service';
 import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
 
 interface StaticSeoCopy {
@@ -1437,6 +1438,7 @@ export class SeoService {
     private readonly canonicalUrlService: CanonicalUrlService,
     private readonly hreflangService: HreflangService,
     private readonly jsonLdService: JsonLdService,
+    private readonly routePolicy: SeoRoutePolicyService,
     @Inject(DOCUMENT) private readonly document: Document
   ) {
   }
@@ -3412,153 +3414,62 @@ export class SeoService {
   }
 
   private resolveLanguageFromUrl(url: string): string {
-    const firstSegment: string | undefined = this.getPathSegments(url)[0];
-    return firstSegment?.trim() || SEO_DEFAULT_LANGUAGE;
+    return this.routePolicy.resolveLanguage(url);
   }
 
   private resolveStaticRouteKey(url: string): string | null {
-    const segments: string[] = this.getPathSegments(url);
-    const routeSegment: string = segments[1] ?? 'home';
-
-    if (routeSegment === 'home' || routeSegment === '') {
-      return 'home';
-    }
-
-    if (routeSegment === 'parks') {
-      return 'parks';
-    }
-
-    if (routeSegment === 'sitemap') {
-      return 'sitemap';
-    }
-
-    if (routeSegment === 'rankings') {
-      return 'rankings';
-    }
-
-    if (routeSegment === 'technical') {
-      return 'technical';
-    }
-
-    if (routeSegment === 'manufacturers') {
-      return 'manufacturers';
-    }
-
-    if (routeSegment === 'about') {
-      return 'about';
-    }
-
-    if (routeSegment === 'contact') {
-      return 'contact';
-    }
-
-    if (routeSegment === 'versions') {
-      return 'versions';
-    }
-
-    if (routeSegment === 'privacy') {
-      return 'privacy';
-    }
-
-    if (routeSegment === 'not-found') {
-      return 'notFound';
-    }
-
-    return null;
+    return this.routePolicy.resolveStaticRouteKey(url);
   }
 
   private isAdminRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/admin(?:\/|$)/i.test(this.normalizePath(url));
+    return this.routePolicy.isAdminRoute(url);
   }
 
   private isAccountRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/|$)/i.test(this.normalizePath(url));
+    return this.routePolicy.isAccountRoute(url);
   }
 
   private isFilteredPublicParkItemsRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/items\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private isFilteredPublicParkZonesRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zones\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private isFilteredPublicParkZoneRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zone\/[^/]+\/[^/]+\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private isFilteredPublicParkWeatherRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/weather\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private isFilteredPublicParkOpeningHoursRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/opening-hours\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private isFilteredPublicParkImagesRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/images\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private isFilteredPublicParkItemImagesRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/images\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private isFilteredPublicParkVideosRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private isFilteredPublicParkItemVideosRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/videos\/?$/i.test(this.normalizePath(url))
-      && this.hasQueryString(url);
+    return this.routePolicy.isFilteredPublicParkRoute(url);
   }
 
   private hasQueryString(url: string): boolean {
-    const trimmedUrl: string = url?.trim() ?? '';
-
-    try {
-      const documentOrigin: string | undefined = this.document.location?.origin;
-      const baseUrl: string = documentOrigin && documentOrigin !== 'null' ? documentOrigin : 'https://amusement-parks.fun';
-      const parsedUrl: URL = new URL(trimmedUrl || '/', baseUrl);
-      return parsedUrl.search.length > 0;
-    } catch {
-      return trimmedUrl.includes('?');
-    }
+    return this.routePolicy.hasQueryString(url);
   }
 
   private getPathSegments(url: string): string[] {
-    return this.normalizePath(url)
-      .split('/')
-      .filter((segment: string) => !!segment);
-  }
-
-  private normalizePath(url: string): string {
-    const rawUrl: string = url?.trim() ?? '';
-
-    if (!rawUrl) {
-      return '/';
-    }
-
-    try {
-      const documentOrigin: string | undefined = this.document.location?.origin;
-      const baseUrl: string = documentOrigin && documentOrigin !== 'null' ? documentOrigin : 'https://amusement-parks.fun';
-      const parsedUrl: URL = new URL(rawUrl, baseUrl);
-      const normalizedPath: string = parsedUrl.pathname.replace(/\/+/g, '/');
-
-      return normalizedPath || '/';
-    } catch {
-      const withoutHash: string = rawUrl.split('#')[0] ?? '';
-      const withoutQuery: string = withoutHash.split('?')[0] ?? '';
-      const withLeadingSlash: string = withoutQuery.startsWith('/') ? withoutQuery : `/${withoutQuery}`;
-
-      return withLeadingSlash.replace(/\/+/g, '/');
-    }
+    return this.routePolicy.getPathSegments(url);
   }
 }
