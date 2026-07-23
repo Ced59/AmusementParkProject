@@ -1,6 +1,20 @@
 {
-  "version": "3.5.4",
+  "version": "3.5.5",
   "history": [
+    {
+      "version": "3.5.5",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La sécurité et la stabilité du site ont été renforcées.",
+        "en": "Site security and stability have been strengthened.",
+        "de": "Die Sicherheit und Stabilität der Website wurden verbessert.",
+        "nl": "De veiligheid en stabiliteit van de site zijn verbeterd.",
+        "it": "La sicurezza e la stabilità del sito sono state rafforzate.",
+        "es": "Se han reforzado la seguridad y la estabilidad del sitio.",
+        "pl": "Wzmocniono bezpieczeństwo i stabilność witryny.",
+        "pt": "A segurança e a estabilidade do site foram reforçadas."
+      }
+    },
     {
       "version": "3.5.4",
       "releasedAt": "2026-07-23",
