@@ -1,6 +1,20 @@
 {
-  "version": "3.5.22",
+  "version": "3.5.23",
   "history": [
+    {
+      "version": "3.5.23",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La sécurité des outils de développement a été renforcée.",
+        "en": "Development tool security has been strengthened.",
+        "de": "Die Sicherheit der Entwicklungswerkzeuge wurde verbessert.",
+        "nl": "De beveiliging van ontwikkeltools is versterkt.",
+        "it": "La sicurezza degli strumenti di sviluppo è stata rafforzata.",
+        "es": "Se ha reforzado la seguridad de las herramientas de desarrollo.",
+        "pl": "Wzmocniono bezpieczeństwo narzędzi programistycznych.",
+        "pt": "A segurança das ferramentas de desenvolvimento foi reforçada."
+      }
+    },
     {
       "version": "3.5.22",
       "releasedAt": "2026-07-23",
