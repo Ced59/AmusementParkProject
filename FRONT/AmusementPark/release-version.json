@@ -1,6 +1,20 @@
 {
-  "version": "3.5.17",
+  "version": "3.5.18",
   "history": [
+    {
+      "version": "3.5.18",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La stabilité des onglets de navigation a été renforcée.",
+        "en": "Navigation tab stability has been strengthened.",
+        "de": "Die Stabilität der Navigations-Tabs wurde verbessert.",
+        "nl": "De stabiliteit van navigatietabbladen is verbeterd.",
+        "it": "La stabilità delle schede di navigazione è stata rafforzata.",
+        "es": "Se ha reforzado la estabilidad de las pestañas de navegación.",
+        "pl": "Zwiększono stabilność kart nawigacyjnych.",
+        "pt": "A estabilidade dos separadores de navegação foi reforçada."
+      }
+    },
     {
       "version": "3.5.17",
       "releasedAt": "2026-07-23",
