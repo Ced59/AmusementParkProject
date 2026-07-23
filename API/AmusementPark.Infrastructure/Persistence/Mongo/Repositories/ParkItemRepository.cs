@@ -267,7 +267,7 @@ public sealed class ParkItemRepository : IParkItemRepository
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<ParkItemDocument> documents = await this.collection.Find(filter)
-            .Sort(this.BuildAdminListSort(sortField, sortDescending))
+            .Sort(ParkItemListOrdering.Build(sortField, sortDescending))
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -841,49 +841,6 @@ public sealed class ParkItemRepository : IParkItemRepository
     private FilterDefinition<ParkItemDocument> BuildAdminReviewStatusFilter(AdminReviewStatus adminReviewStatus)
     {
         return Builders<ParkItemDocument>.Filter.BuildAdminReviewStatusFilter("adminReviewStatus", adminReviewStatus);
-    }
-
-    private SortDefinition<ParkItemDocument> BuildAdminListSort(ParkItemAdminSortField sortField, bool sortDescending)
-    {
-        SortDefinitionBuilder<ParkItemDocument> sortBuilder = Builders<ParkItemDocument>.Sort;
-
-        if (sortField == ParkItemAdminSortField.Default)
-        {
-            return sortBuilder
-                .Ascending(document => document.AdminReviewPriority)
-                .Ascending(document => document.ParkId)
-                .Ascending(document => document.Name)
-                .Ascending(document => document.Id);
-        }
-
-        SortDefinition<ParkItemDocument> primarySort = this.BuildPrimaryAdminListSort(sortField, sortDescending, sortBuilder);
-        return sortBuilder.Combine(
-            primarySort,
-            sortBuilder.Ascending(document => document.Name),
-            sortBuilder.Ascending(document => document.Id));
-    }
-
-    private SortDefinition<ParkItemDocument> BuildPrimaryAdminListSort(ParkItemAdminSortField sortField, bool sortDescending, SortDefinitionBuilder<ParkItemDocument> sortBuilder)
-    {
-        switch (sortField)
-        {
-            case ParkItemAdminSortField.Name:
-                return sortDescending ? sortBuilder.Descending(document => document.Name) : sortBuilder.Ascending(document => document.Name);
-            case ParkItemAdminSortField.Category:
-                return sortDescending ? sortBuilder.Descending(document => document.Category) : sortBuilder.Ascending(document => document.Category);
-            case ParkItemAdminSortField.Type:
-                return sortDescending ? sortBuilder.Descending(document => document.Type) : sortBuilder.Ascending(document => document.Type);
-            case ParkItemAdminSortField.IsVisible:
-                return sortDescending ? sortBuilder.Descending(document => document.IsVisible) : sortBuilder.Ascending(document => document.IsVisible);
-            case ParkItemAdminSortField.AdminReviewStatus:
-                return sortDescending ? sortBuilder.Descending(document => document.AdminReviewPriority) : sortBuilder.Ascending(document => document.AdminReviewPriority);
-            case ParkItemAdminSortField.ParkId:
-                return sortDescending ? sortBuilder.Descending(document => document.ParkId) : sortBuilder.Ascending(document => document.ParkId);
-            case ParkItemAdminSortField.ZoneId:
-                return sortDescending ? sortBuilder.Descending(document => document.ZoneId) : sortBuilder.Ascending(document => document.ZoneId);
-            default:
-                return sortBuilder.Ascending(document => document.AdminReviewPriority);
-        }
     }
 
     private static int CalculateRelatedScore(ParkItem candidate, ParkItem currentItem)
