@@ -458,6 +458,9 @@ jobs:
       SSR_CSR_FALLBACK_CACHE_CONTROL: ${{ vars.SSR_CSR_FALLBACK_CACHE_CONTROL || 'public, max-age=60, stale-while-revalidate=300' }}
       SSR_WARMUP_AFTER_DEPLOY: ${{ vars.SSR_WARMUP_AFTER_DEPLOY || 'false' }}
       SSR_WARMUP_BACKGROUND: ${{ vars.SSR_WARMUP_BACKGROUND || 'false' }}
+      SSR_WARMUP_CONTINUOUS_ENABLED: ${{ vars.SSR_WARMUP_CONTINUOUS_ENABLED || 'false' }}
+      SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS: ${{ vars.SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS || '21600' }}
+      SSR_WARMUP_CONTINUOUS_RETRY_SECONDS: ${{ vars.SSR_WARMUP_CONTINUOUS_RETRY_SECONDS || '300' }}
       SSR_WARMUP_REQUIRED: ${{ vars.SSR_WARMUP_REQUIRED || 'true' }}
       SSR_WARMUP_PROFILE: ${{ vars.SSR_WARMUP_PROFILE || 'critical' }}
       SSR_WARMUP_SEO_DOCUMENTS: ${{ vars.SSR_WARMUP_SEO_DOCUMENTS || 'true' }}
@@ -475,6 +478,7 @@ jobs:
       SSR_WARMUP_FAIL_ON_BOT_VALIDATION: ${{ vars.SSR_WARMUP_FAIL_ON_BOT_VALIDATION || 'true' }}
       SSR_WARMUP_FAIL_IF_LOCKED: ${{ vars.SSR_WARMUP_FAIL_IF_LOCKED || 'true' }}
       SSR_WARMUP_BOT_USER_AGENT: ${{ vars.SSR_WARMUP_BOT_USER_AGENT || 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' }}
+      SSR_WARMUP_BOT_VALIDATION_MAX_URLS: ${{ vars.SSR_WARMUP_BOT_VALIDATION_MAX_URLS || '250' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7

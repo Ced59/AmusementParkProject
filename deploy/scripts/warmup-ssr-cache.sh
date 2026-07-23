@@ -131,6 +131,7 @@ export SSR_WARMUP_SEO_DOCUMENTS_VALUE="${SSR_WARMUP_SEO_DOCUMENTS:-true}"
 export SSR_WARMUP_VALIDATE_BOT_VALUE="${SSR_WARMUP_VALIDATE_BOT:-true}"
 export SSR_WARMUP_FAIL_ON_BOT_VALIDATION_VALUE="${SSR_WARMUP_FAIL_ON_BOT_VALIDATION:-true}"
 export SSR_WARMUP_BOT_USER_AGENT_VALUE="${SSR_WARMUP_BOT_USER_AGENT:-Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)}"
+export SSR_WARMUP_BOT_VALIDATION_MAX_URLS_VALUE="${SSR_WARMUP_BOT_VALIDATION_MAX_URLS:-250}"
 
 python3 - <<'PY'
 import os
@@ -170,6 +171,7 @@ warmup_seo_documents_enabled = os.environ['SSR_WARMUP_SEO_DOCUMENTS_VALUE'].stri
 bot_validation_enabled = os.environ['SSR_WARMUP_VALIDATE_BOT_VALUE'].strip().lower() in {'1', 'true', 'yes', 'y'}
 fail_on_bot_validation = os.environ['SSR_WARMUP_FAIL_ON_BOT_VALIDATION_VALUE'].strip().lower() in {'1', 'true', 'yes', 'y'}
 bot_user_agent = os.environ['SSR_WARMUP_BOT_USER_AGENT_VALUE'].strip()
+bot_validation_max_urls = max(0, int(os.environ['SSR_WARMUP_BOT_VALIDATION_MAX_URLS_VALUE']))
 
 # Keep the deploy script simple: fail loudly on unsupported modes.
 allowed_profiles = {'critical', 'static', 'parks', 'references', 'items', 'seo-important', 'full'}
@@ -589,6 +591,17 @@ def validate_bot_urls(urls: list[str]) -> None:
     if not urls:
         log('Bot validation skipped because no URL was selected.')
         return
+
+    if bot_validation_max_urls > 0 and len(urls) > bot_validation_max_urls:
+        if bot_validation_max_urls == 1:
+            urls = [urls[0]]
+        else:
+            last_index = len(urls) - 1
+            urls = [
+                urls[round(index * last_index / (bot_validation_max_urls - 1))]
+                for index in range(bot_validation_max_urls)
+            ]
+        log(f"Bot validation sampled {len(urls)} URL(s) across the complete warmup selection.")
 
     report_file.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = [
