@@ -218,7 +218,6 @@ jobs:
   dependency-security:
     name: Dependency security reports
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -244,11 +243,13 @@ jobs:
       - name: Scan .NET packages
         shell: bash
         run: |
-          set +e
+          set -euo pipefail
           dotnet list AmusementPark.sln package --vulnerable --include-transitive > dependency-security-reports/dotnet-vulnerable.txt 2>&1
-          status=$?
           cat dependency-security-reports/dotnet-vulnerable.txt
-          exit 0
+          if grep -Eiq '(^|[[:space:]])(critical|high)([[:space:]]|$)' dependency-security-reports/dotnet-vulnerable.txt; then
+            echo "::error::A critical or high severity .NET dependency vulnerability was detected."
+            exit 1
+          fi
 
       - name: Install frontend dependencies for npm audit
         working-directory: FRONT/AmusementPark
@@ -263,9 +264,15 @@ jobs:
           npm audit --audit-level=moderate > ../../dependency-security-reports/npm-audit.txt 2>&1
           npm audit signatures > ../../dependency-security-reports/npm-audit-signatures.txt 2>&1
           cat ../../dependency-security-reports/npm-audit.txt
-          exit 0
+          npm audit --audit-level=high
+          gate_status=$?
+          if [ "${gate_status}" -ne 0 ]; then
+            echo "::error::A critical or high severity npm dependency vulnerability was detected."
+          fi
+          exit "${gate_status}"
 
       - name: Upload dependency security reports
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: dependency-security-reports

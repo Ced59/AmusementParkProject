@@ -66,7 +66,7 @@ dependency-security-reports
 
 ## Politique actuelle
 
-- Les vulnérabilités sont visibles dans la CI.
-- Les rapports sont archivés.
-- Le job ne bloque pas encore automatiquement le déploiement pour une vulnérabilité npm ou .NET détectée.
-- Une fois les premiers rapports stabilisés, il sera possible de rendre bloquants certains seuils, par exemple critical/high.
+- Les vulnérabilités modérées, hautes et critiques restent visibles dans les rapports archivés.
+- Une vulnérabilité critique ou haute détectée par npm ou .NET fait échouer le job et bloque les images ainsi que le déploiement.
+- Les alertes modérées restent non bloquantes afin de suivre les dépendances d’outillage sans masquer le niveau de risque.
+- Les rapports sont téléversés même lorsqu’un seuil bloquant est atteint.
