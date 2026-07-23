@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Inject, OnInit, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { skip } from 'rxjs/operators';
 
-import { ImagesApiService } from '@data-access/images/images-api.service';
-import { TechnicalPagesApiService } from '@data-access/technical-pages/technical-pages-api.service';
 import {
   TechnicalContentBlock,
   TechnicalContentLink,
@@ -22,6 +20,12 @@ import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { resolveLocalizedText } from '@shared/utils/localization';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
+import {
+  PUBLIC_TECHNICAL_PAGES_API_SERVICE_PORT,
+  PUBLIC_TECHNICAL_PAGES_IMAGES_API_SERVICE_PORT,
+  PublicTechnicalPagesApiServicePort,
+  PublicTechnicalPagesImagesApiServicePort
+} from '../state/public-technical-pages-data.ports';
 
 @Component({
   selector: 'app-technical-page-detail-page',
@@ -38,8 +42,8 @@ export class TechnicalPageDetailPageComponent implements OnInit {
   private activeLanguage: string | null = null;
 
   constructor(
-    private readonly technicalPagesApiService: TechnicalPagesApiService,
-    private readonly imagesApiService: ImagesApiService,
+    @Inject(PUBLIC_TECHNICAL_PAGES_API_SERVICE_PORT) private readonly technicalPagesApiService: PublicTechnicalPagesApiServicePort,
+    @Inject(PUBLIC_TECHNICAL_PAGES_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: PublicTechnicalPagesImagesApiServicePort,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly translationService: TranslationService,
