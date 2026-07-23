@@ -3,6 +3,18 @@ import { Route } from '@angular/router';
 import { routes } from './app.routes';
 
 describe('App routes', () => {
+  it('redirects a localized root to the public home before matching the account layout', () => {
+    const localizedRoute: Route | undefined = routes.find((route: Route): boolean => route.path === ':lang');
+    const localizedChildren: Route[] = localizedRoute?.children ?? [];
+    const localizedRootRedirectIndex: number = localizedChildren.findIndex((route: Route): boolean =>
+      route.path === '' && route.pathMatch === 'full' && route.redirectTo === 'home');
+    const accountLayoutIndex: number = localizedChildren.findIndex((route: Route): boolean =>
+      route.path === '' && route.loadComponent !== undefined);
+
+    expect(localizedRootRedirectIndex).toBeGreaterThanOrEqual(0);
+    expect(accountLayoutIndex).toBeGreaterThan(localizedRootRedirectIndex);
+  });
+
   it('redirects legacy video share routes to canonical video routes', () => {
     const publicRoutes: Route[] = getPublicRoutes();
     const expectedRedirects: Record<string, string> = {
