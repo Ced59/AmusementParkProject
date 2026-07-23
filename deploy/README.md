@@ -80,7 +80,7 @@ Variables API disponibles :
 
 ```bash
 CSP_ENABLED=true
-CSP_REPORT_ONLY=true
+CSP_REPORT_ONLY=false
 CSP_REPORT_URI=/security/csp-report
 ```
 
@@ -90,11 +90,13 @@ Pour tester localement le vrai header front, utiliser le container SSR plutôt q
 curl -I -H "Host: amusement-parks.fun" -H "X-Forwarded-Proto: https" http://127.0.0.1:${PUBLIC_HTTP_PORT:-18080}/
 ```
 
-La réponse doit contenir `Content-Security-Policy-Report-Only`.
+La réponse doit contenir `Content-Security-Policy`.
 
-Avant M18.5, conserver `CSP_REPORT_ONLY=true` et analyser les logs `SecurityReportsController`.
-
-M18.5 reste à reprendre impérativement après le premier déploiement réel/staging : il faudra vérifier les rapports CSP sur le vrai domaine HTTPS, puis seulement basculer en mode enforce.
+La CSP est appliquée en mode bloquant par défaut. Le retour temporaire en observation
+reste possible avec `CSP_REPORT_ONLY=true` si une régression est détectée. Les sources
+inline restent provisoirement autorisées afin de préserver Angular SSR et les
+intégrations tierces ; leur suppression doit être réalisée séparément avec des nonces
+et des tests dédiés.
 
 ## Rate limiting auth M18.6
 
@@ -184,7 +186,7 @@ En production, le déploiement utilise `Smtp` par défaut si `PROD_EMAIL_MODE` n
 - `MINIO_CONSOLE_PORT`, défaut `19001`
 - `MINIO_IMAGE`, pour changer l'image MinIO sans modifier le compose
 - `CSP_ENABLED`, défaut `true`
-- `CSP_REPORT_ONLY`, défaut `true` pendant M18.4
+- `CSP_REPORT_ONLY`, défaut `false` (mode bloquant)
 - `CSP_REPORT_URI`, défaut `/security/csp-report`
 - `AUTH_RATE_LIMIT_LOGIN_LIMIT`, défaut `5`
 - `AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS`, défaut `60`

@@ -399,7 +399,7 @@ jobs:
       SSR_ALLOWED_HOSTS: ${{ vars.SSR_ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1' }}
       SSR_FORCE_HTTPS: ${{ vars.SSR_FORCE_HTTPS || 'true' }}
       CSP_ENABLED: ${{ vars.CSP_ENABLED || 'true' }}
-      CSP_REPORT_ONLY: ${{ vars.CSP_REPORT_ONLY || 'true' }}
+      CSP_REPORT_ONLY: ${{ vars.CSP_REPORT_ONLY || 'false' }}
       FRONT_NODE_OPTIONS: ${{ vars.FRONT_NODE_OPTIONS || '--max-old-space-size=1024' }}
       FRONT_MEMORY_LIMIT: ${{ vars.FRONT_MEMORY_LIMIT || '1536m' }}
       SEO_MAX_DYNAMIC_URLS_PER_TYPE: ${{ vars.SEO_MAX_DYNAMIC_URLS_PER_TYPE || '50' }}

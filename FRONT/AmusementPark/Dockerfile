@@ -22,7 +22,7 @@ ENV NODE_ENV=production \
     PORT=4000 \
     SSR_API_INTERNAL_URL=http://api:8080 \
     SSR_CSP_ENABLED=true \
-    SSR_CSP_REPORT_ONLY=true \
+    SSR_CSP_REPORT_ONLY=false \
     SSR_CSP_REPORT_URI=/api/security/csp-report
 
 COPY package.json package-lock.json ./
