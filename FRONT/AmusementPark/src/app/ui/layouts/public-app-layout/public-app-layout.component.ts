@@ -6,6 +6,7 @@ import { RouterOutlet } from '@angular/router';
 import { AuthService } from '@app/services/auth/auth.service';
 import { SharedService } from '@app/services/shared/shared.service';
 import { PublicParkNavigationTreeFacade } from '@features/public/navigation/state/public-park-navigation-tree.facade';
+import { PublicParkNavigationTreeState } from '@features/public/navigation/state/public-park-navigation-tree.state';
 import { PublicFooterComponent } from '@ui/layouts/public-footer/public-footer.component';
 import { PublicHeaderComponent } from '@ui/layouts/public-header/public-header.component';
 import { PublicMobileBottomNavComponent } from '@ui/layouts/public-mobile-bottom-nav/public-mobile-bottom-nav.component';
@@ -15,7 +16,7 @@ import { PublicParkNavigationTrailComponent } from '@ui/layouts/public-park-navi
   selector: 'app-public-app-layout',
   templateUrl: './public-app-layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [PublicParkNavigationTreeFacade],
+  providers: [PublicParkNavigationTreeFacade, PublicParkNavigationTreeState],
   imports: [
     NgComponentOutlet,
     PublicFooterComponent,

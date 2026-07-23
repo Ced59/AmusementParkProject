@@ -1,6 +1,20 @@
 {
-  "version": "3.5.11",
+  "version": "3.5.12",
   "history": [
+    {
+      "version": "3.5.12",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La navigation entre les pages des parcs est plus fiable.",
+        "en": "Navigation between park pages is more reliable.",
+        "de": "Die Navigation zwischen Parkseiten ist zuverlässiger.",
+        "nl": "De navigatie tussen parkpagina’s is betrouwbaarder.",
+        "it": "La navigazione tra le pagine dei parchi è più affidabile.",
+        "es": "La navegación entre las páginas de los parques es más fiable.",
+        "pl": "Nawigacja między stronami parków jest bardziej niezawodna.",
+        "pt": "A navegação entre as páginas dos parques é mais fiável."
+      }
+    },
     {
       "version": "3.5.11",
       "releasedAt": "2026-07-23",
