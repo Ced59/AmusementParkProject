@@ -1,6 +1,20 @@
 {
-  "version": "3.5.21",
+  "version": "3.5.22",
   "history": [
+    {
+      "version": "3.5.22",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La documentation technique et opérationnelle a été consolidée.",
+        "en": "Technical and operational documentation has been consolidated.",
+        "de": "Die technische und betriebliche Dokumentation wurde konsolidiert.",
+        "nl": "De technische en operationele documentatie is geconsolideerd.",
+        "it": "La documentazione tecnica e operativa è stata consolidata.",
+        "es": "Se ha consolidado la documentación técnica y operativa.",
+        "pl": "Skonsolidowano dokumentację techniczną i operacyjną.",
+        "pt": "A documentação técnica e operacional foi consolidada."
+      }
+    },
     {
       "version": "3.5.21",
       "releasedAt": "2026-07-23",

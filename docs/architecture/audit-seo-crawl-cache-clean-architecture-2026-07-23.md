@@ -193,6 +193,13 @@ Les commentaires plus anciens portant sur d'autres fonctionnalités ou des choix
 
 Chaque ligne doit faire l'objet d'une PR focalisée avec ses propres mesures et tests. Aucun de ces refactorings n'est lancé par cet audit.
 
+## Mise à jour après livraison
+
+Les actions prioritaires ont été exécutées par les PR #408 à #429. Le détail des
+changements, mesures VPS, variables GitHub, commentaires de revue, tests et dettes
+résiduelles est consigné dans
+`docs/architecture/audit-delivery-report-2026-07-23.md`.
+
 ## Correctifs déjà livrés pendant la vérification
 
 - #404 : recherche du filtre parc rétablie uniquement sur la page admin « Contenus du parc ».
