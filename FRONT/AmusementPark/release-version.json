@@ -1,6 +1,20 @@
 {
-  "version": "3.5.16",
+  "version": "3.5.17",
   "history": [
+    {
+      "version": "3.5.17",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "Les contrôles de sécurité des mises à jour ont été fiabilisés.",
+        "en": "Update security checks have been made more reliable.",
+        "de": "Die Sicherheitsprüfungen für Aktualisierungen wurden zuverlässiger gemacht.",
+        "nl": "De beveiligingscontroles voor updates zijn betrouwbaarder gemaakt.",
+        "it": "I controlli di sicurezza degli aggiornamenti sono stati resi più affidabili.",
+        "es": "Se han reforzado los controles de seguridad de las actualizaciones.",
+        "pl": "Zwiększono niezawodność kontroli bezpieczeństwa aktualizacji.",
+        "pt": "As verificações de segurança das atualizações tornaram-se mais fiáveis."
+      }
+    },
     {
       "version": "3.5.16",
       "releasedAt": "2026-07-23",
