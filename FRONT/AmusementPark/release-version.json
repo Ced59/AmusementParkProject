@@ -1,6 +1,20 @@
 {
-  "version": "3.5.7",
+  "version": "3.5.8",
   "history": [
+    {
+      "version": "3.5.8",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La rapidité et la disponibilité des pages ont été améliorées.",
+        "en": "Page speed and availability have been improved.",
+        "de": "Seitengeschwindigkeit und Verfügbarkeit wurden verbessert.",
+        "nl": "De snelheid en beschikbaarheid van pagina’s zijn verbeterd.",
+        "it": "La velocità e la disponibilità delle pagine sono state migliorate.",
+        "es": "Se han mejorado la velocidad y la disponibilidad de las páginas.",
+        "pl": "Poprawiono szybkość i dostępność stron.",
+        "pt": "A velocidade e a disponibilidade das páginas foram melhoradas."
+      }
+    },
     {
       "version": "3.5.7",
       "releasedAt": "2026-07-23",

@@ -174,6 +174,9 @@ En production, le déploiement utilise `Smtp` par défaut si `PROD_EMAIL_MODE` n
 - `SSR_TECHNICAL_STATS_RETENTION_DAYS`, défaut `100`, ajustable ensuite depuis le panel admin des stats techniques.
 - `SSR_TECHNICAL_STATS_FLUSH_INTERVAL_SECONDS`, défaut `60`.
 - `DEPLOY_ZERO_DOWNTIME_ENABLED`, défaut `true`, maintient des candidats API/front sains pendant le remplacement des conteneurs canoniques.
+- `SSR_WARMUP_CONTINUOUS_ENABLED`, défaut `false`, relance périodiquement un warmup borné par verrou.
+- `SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS`, défaut `21600` entre deux cycles terminés.
+- `SSR_WARMUP_BOT_VALIDATION_MAX_URLS`, défaut `250`, échantillonne régulièrement toute la sélection réchauffée pour la validation robot.
 - `PUBLIC_HTTP_PORT`, défaut `18080`
 - `MINIO_API_PORT`, défaut `19000`
 - `MINIO_CONSOLE_PORT`, défaut `19001`
