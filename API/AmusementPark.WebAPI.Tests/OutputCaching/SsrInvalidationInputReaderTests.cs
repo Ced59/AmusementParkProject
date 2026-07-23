@@ -1,5 +1,6 @@
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.OutputCaching;
+using Xunit;
 
 namespace AmusementPark.WebAPI.Tests.OutputCaching;
 
