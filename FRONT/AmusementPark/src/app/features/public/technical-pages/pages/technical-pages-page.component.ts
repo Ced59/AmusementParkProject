@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Inject, OnInit, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { skip } from 'rxjs/operators';
 
-import { TechnicalPagesApiService } from '@data-access/technical-pages/technical-pages-api.service';
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { LocalizedPluralPipe } from '@shared/pipes';
 import { resolveLocalizedText } from '@shared/utils/localization';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
+import {
+  PUBLIC_TECHNICAL_PAGES_API_SERVICE_PORT,
+  PublicTechnicalPagesApiServicePort
+} from '../state/public-technical-pages-data.ports';
 
 interface TechnicalPageGroup {
   categoryKey: string;
@@ -35,7 +38,7 @@ export class TechnicalPagesPageComponent implements OnInit {
   private activeLanguage: string | null = null;
 
   constructor(
-    private readonly technicalPagesApiService: TechnicalPagesApiService,
+    @Inject(PUBLIC_TECHNICAL_PAGES_API_SERVICE_PORT) private readonly technicalPagesApiService: PublicTechnicalPagesApiServicePort,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly translationService: TranslationService,

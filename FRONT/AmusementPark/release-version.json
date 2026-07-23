@@ -1,6 +1,20 @@
 {
-  "version": "3.5.12",
+  "version": "3.5.13",
   "history": [
+    {
+      "version": "3.5.13",
+      "releasedAt": "2026-07-23",
+      "labels": {
+        "fr": "La fiabilité des guides techniques a été améliorée.",
+        "en": "Technical guide reliability has been improved.",
+        "de": "Die Zuverlässigkeit der technischen Leitfäden wurde verbessert.",
+        "nl": "De betrouwbaarheid van technische gidsen is verbeterd.",
+        "it": "L’affidabilità delle guide tecniche è stata migliorata.",
+        "es": "Se ha mejorado la fiabilidad de las guías técnicas.",
+        "pl": "Poprawiono niezawodność przewodników technicznych.",
+        "pt": "A fiabilidade dos guias técnicos foi melhorada."
+      }
+    },
     {
       "version": "3.5.12",
       "releasedAt": "2026-07-23",
