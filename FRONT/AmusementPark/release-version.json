@@ -5,14 +5,14 @@
       "version": "3.5.0",
       "releasedAt": "2026-07-23",
       "labels": {
-        "fr": "La conservation des statistiques techniques a été fiabilisée.",
-        "en": "Technical statistics retention has been made more reliable.",
-        "de": "Die Aufbewahrung technischer Statistiken wurde zuverlässiger gestaltet.",
-        "nl": "De bewaring van technische statistieken is betrouwbaarder gemaakt.",
-        "it": "La conservazione delle statistiche tecniche è stata resa più affidabile.",
-        "es": "La conservación de las estadísticas técnicas se ha hecho más fiable.",
-        "pl": "Zwiększono niezawodność przechowywania statystyk technicznych.",
-        "pt": "A conservação das estatísticas técnicas tornou-se mais fiável."
+        "fr": "L’ergonomie de l’administration a été améliorée.",
+        "en": "Administration ergonomics have been improved.",
+        "de": "Die Benutzerfreundlichkeit der Verwaltung wurde verbessert.",
+        "nl": "Het gebruiksgemak van het beheer is verbeterd.",
+        "it": "L’ergonomia dell’amministrazione è stata migliorata.",
+        "es": "Se ha mejorado la ergonomía de la administración.",
+        "pl": "Ulepszono ergonomię panelu administracyjnego.",
+        "pt": "A ergonomia da administração foi melhorada."
       }
     },
     {
