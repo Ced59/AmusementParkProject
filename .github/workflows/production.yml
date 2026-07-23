@@ -264,16 +264,24 @@ jobs:
         shell: bash
         run: |
           set +e
-          npm audit --audit-level=moderate --json > ../../dependency-security-reports/npm-audit.json 2>&1
-          npm audit --audit-level=moderate > ../../dependency-security-reports/npm-audit.txt 2>&1
+          npm audit --audit-level=moderate --json > ../../dependency-security-reports/npm-audit.json 2> ../../dependency-security-reports/npm-audit-error.txt
+          audit_status=$?
           npm audit signatures > ../../dependency-security-reports/npm-audit-signatures.txt 2>&1
+          node ../../.github/scripts/classify-npm-audit-report.mjs \
+            ../../dependency-security-reports/npm-audit.json \
+            "${audit_status}" \
+            > ../../dependency-security-reports/npm-audit.txt
+          classification_status=$?
           cat ../../dependency-security-reports/npm-audit.txt
-          npm audit --audit-level=high
-          gate_status=$?
-          if [ "${gate_status}" -ne 0 ]; then
-            touch ../../dependency-security-reports/npm-critical-high.flag
-          fi
+          case "${classification_status}" in
+            0) ;;
+            1) touch ../../dependency-security-reports/npm-critical-high.flag ;;
+            *) touch ../../dependency-security-reports/npm-scan-error.flag ;;
+          esac
           exit 0
+
+      - name: Test npm audit report classification
+        run: node --test .github/scripts/classify-npm-audit-report.test.mjs
 
       - name: Upload dependency security reports
         if: always()
