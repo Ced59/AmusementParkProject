@@ -176,6 +176,8 @@ En production, le déploiement utilise `Smtp` par défaut si `PROD_EMAIL_MODE` n
 - `DEPLOY_ZERO_DOWNTIME_ENABLED`, défaut `true`, maintient des candidats API/front sains pendant le remplacement des conteneurs canoniques.
 - `SSR_WARMUP_CONTINUOUS_ENABLED`, défaut `false`, relance périodiquement un warmup borné par verrou.
 - `SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS`, défaut `21600` entre deux cycles terminés.
+- `SSR_WARMUP_CONTINUOUS_RETRY_SECONDS`, défaut `300` après un échec ou un verrou de cycle occupé.
+- `SSR_WARMUP_ARTIFACT_RETENTION_DAYS`, défaut `7`, supprime les journaux et rapports horodatés plus anciens.
 - `SSR_WARMUP_BOT_VALIDATION_MAX_URLS`, défaut `250`, échantillonne régulièrement toute la sélection réchauffée pour la validation robot.
 - `PUBLIC_HTTP_PORT`, défaut `18080`
 - `MINIO_API_PORT`, défaut `19000`
