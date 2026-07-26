@@ -185,6 +185,53 @@ Images d’incident ou accident :
 - ne pas écrire une légende défensive du type “aucune image de scène non graphique…” ;
 - écrire plutôt une légende factuelle : “El Loco dans Adventuredome. La vue permet de situer la montagne russe concernée par l’incident de 2019.”
 
+## Images créées ou utilisées dans un lot d’article
+
+Un article ne résout jamais le propriétaire d’une image. Toute image ajoutée dans le même JSON qu’un article doit d’abord respecter les règles complètes de l’étape 5.
+
+Pour chaque objet `images[]` du lot :
+
+- répéter explicitement `ownerType`, `ownerId` et `ownerKey` ;
+- ne jamais compter sur l’événement, l’article, `mainImageKey`, un bloc image ou l’image précédente pour compléter le propriétaire ;
+- pour une image de parc, utiliser `ownerType: "Park"`, l’ID exact du parc dans `ownerId` et `ownerKey: "park"` ;
+- pour une image de parkItem, utiliser `ownerType: "ParkItem"`, l’ID exact du parkItem dans `ownerId` et le même ID dans `ownerKey` ;
+- avec le processeur actuel, redéclarer en plus chaque parkItem propriétaire dans `items[]` avec `id`, `key` et `name`, même si l’article et l’événement contiennent déjà leurs propres IDs ;
+- pour une image de référence, redéclarer la référence minimale quand la résolution dépend de sa clé ;
+- ne jamais fabriquer un ID pour créer l’image et l’article dans le même lot : créer le propriétaire, appliquer, réexporter, puis produire le lot d’article illustré.
+
+Pour la référence depuis l’article :
+
+- image déjà présente dans l’export : utiliser `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` ;
+- image créée dans le même JSON : utiliser `mainImageKey`, `blocks[].imageKey` ou `blocks[].imageKeys`, avec une `images[].key` stable et unique ;
+- ne jamais utiliser une clé d’image d’un ancien lot sans avoir récupéré son `imageId` dans un export actualisé ;
+- la présence d’une `imageKey` dans l’article ne dispense jamais l’objet `images[]` de son triplet propriétaire ni de la déclaration minimale du propriétaire.
+
+Exemple minimal pour une image de parkItem créée avec un article :
+
+```json
+{
+  "items": [
+    {
+      "id": "id-du-parkItem",
+      "key": "key-exportee-du-parkItem",
+      "name": "Nom exact exporté du parkItem"
+    }
+  ],
+  "images": [
+    {
+      "key": "article-context-image",
+      "sourceUrl": "https://example.org/photo.jpg",
+      "ownerType": "ParkItem",
+      "ownerId": "id-du-parkItem",
+      "ownerKey": "id-du-parkItem",
+      "category": "ParkItem"
+    }
+  ]
+}
+```
+
+Un Preview avec `Remote image ignored: owner could not be resolved`, `clé image introuvable` ou toute image `Skipped` est bloquant pour le lot d’article.
+
 ## Style des événements et articles
 
 Les titres, résumés et blocs d’articles visibles publiquement doivent se lire comme un récit utile pour un visiteur curieux, pas comme une note d’audit ou une justification interne.
@@ -307,9 +354,13 @@ Section principale : `history.events`.
 - Les articles ont un vrai angle éditorial.
 - Les titres, résumés et blocs d’articles ne contiennent aucune formulation d’audit interne ou justification documentaire mécanique.
 - Les images référencées existent déjà ou sont créées dans le même JSON.
+- Chaque image créée dans le lot contient son propre triplet `ownerType`, `ownerId`, `ownerKey` complet ; aucun champ n’est hérité.
+- Chaque image de parkItem créée dans le lot possède aussi une entrée `items[]` minimale correspondante avec `id`, `key` et `name`.
 - Chaque événement `ParkItem` contient `ownerId`, `parkItemId` et `itemId` explicites quand le parkItem existe déjà dans l’export.
 - Chaque article qui référence une image existante utilise `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` depuis l’export actualisé.
 - `mainImageKey`, `imageKey` et `imageKeys` ne sont utilisés que pour des images créées dans le même JSON ou dont la clé est démontrée résolue.
+- Le contrôle croisé liste séparément le propriétaire de l’événement, le propriétaire de l’image et la référence de l’image depuis l’article ; aucun de ces trois mécanismes ne remplace les deux autres.
+- La Preview contient zéro image `Skipped` et zéro warning de propriétaire ou de clé image.
 - Les titres, sous-titres, résumés, paragraphes et légendes sont relus en affichage public mobile.
 - Aucune légende ne doit expliquer l’absence d’une autre image ; elle doit décrire l’image affichée et son lien avec le sujet.
 - Les articles d’incidents ou accidents ne doivent contenir ni dramatisation, ni langage défensif, ni justification de méthode.
