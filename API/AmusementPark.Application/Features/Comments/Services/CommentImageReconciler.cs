@@ -6,6 +6,7 @@ namespace AmusementPark.Application.Features.Comments.Services;
 
 public sealed class CommentImageReconciler
 {
+    private static readonly TimeSpan CleanupClaimLease = TimeSpan.FromMinutes(10);
     private readonly ICommentRepository commentRepository;
     private readonly IImageRepository imageRepository;
     private readonly IImageBinaryStorage imageBinaryStorage;
@@ -37,8 +38,16 @@ public sealed class CommentImageReconciler
         {
             bool reconciled = image.OwnerType switch
             {
-                ImageOwnerType.CommentDraft => await this.ReconcileDraftAsync(image, cancellationToken),
-                ImageOwnerType.Comment => await this.ReconcilePublishedAsync(image, cancellationToken),
+                ImageOwnerType.CommentDraft => await this.ReconcileDraftAsync(
+                    image,
+                    dueBeforeUtc,
+                    draftCreatedBeforeUtc,
+                    cancellationToken),
+                ImageOwnerType.Comment => await this.ReconcilePublishedAsync(
+                    image,
+                    dueBeforeUtc,
+                    draftCreatedBeforeUtc,
+                    cancellationToken),
                 _ => false,
             };
             if (reconciled)
@@ -52,6 +61,8 @@ public sealed class CommentImageReconciler
 
     private async Task<bool> ReconcileDraftAsync(
         Image image,
+        DateTime dueBeforeUtc,
+        DateTime draftCreatedBeforeUtc,
         CancellationToken cancellationToken)
     {
         if (!string.IsNullOrWhiteSpace(image.PendingCommentId))
@@ -66,6 +77,7 @@ public sealed class CommentImageReconciler
                     image.Id,
                     draftOwnerId,
                     image.PendingCommentId,
+                    image.PendingReservationToken,
                     cancellationToken);
                 return finalized is not null;
             }
@@ -76,8 +88,30 @@ public sealed class CommentImageReconciler
                     image.Id,
                     draftOwnerId,
                     image.PendingCommentId,
+                    image.PendingReservationToken,
                     cancellationToken);
             }
+        }
+
+        string? ownerId = Normalize(image.OwnerId);
+        if (ownerId is null)
+        {
+            return false;
+        }
+
+        string claimToken = Guid.NewGuid().ToString("N");
+        bool claimed = await this.imageRepository.TryClaimCommentImageCleanupAsync(
+            image.Id,
+            ImageOwnerType.CommentDraft,
+            ownerId,
+            dueBeforeUtc,
+            draftCreatedBeforeUtc,
+            claimToken,
+            dueBeforeUtc.Add(CleanupClaimLease),
+            cancellationToken);
+        if (!claimed)
+        {
+            return false;
         }
 
         if (!string.IsNullOrWhiteSpace(image.Path)
@@ -86,18 +120,37 @@ public sealed class CommentImageReconciler
             return false;
         }
 
-        return await this.imageRepository.DeleteCommentDraftAsync(
+        return await this.imageRepository.DeleteClaimedCommentImageAsync(
             image.Id,
-            image.OwnerId,
+            ImageOwnerType.CommentDraft,
+            ownerId,
+            claimToken,
             cancellationToken);
     }
 
     private async Task<bool> ReconcilePublishedAsync(
         Image image,
+        DateTime dueBeforeUtc,
+        DateTime draftCreatedBeforeUtc,
         CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(image.OwnerId)
             || image.CleanupRequestedAtUtc is null)
+        {
+            return false;
+        }
+
+        string claimToken = Guid.NewGuid().ToString("N");
+        bool claimed = await this.imageRepository.TryClaimCommentImageCleanupAsync(
+            image.Id,
+            ImageOwnerType.Comment,
+            image.OwnerId,
+            dueBeforeUtc,
+            draftCreatedBeforeUtc,
+            claimToken,
+            dueBeforeUtc.Add(CleanupClaimLease),
+            cancellationToken);
+        if (!claimed)
         {
             return false;
         }
@@ -107,9 +160,11 @@ public sealed class CommentImageReconciler
             cancellationToken);
         if (isReferenced)
         {
-            return await this.imageRepository.ClearCommentImageCleanupAsync(
+            return await this.imageRepository.CancelClaimedCommentImageCleanupAsync(
                 image.Id,
+                ImageOwnerType.Comment,
                 image.OwnerId,
+                claimToken,
                 cancellationToken);
         }
 
@@ -119,9 +174,17 @@ public sealed class CommentImageReconciler
             return false;
         }
 
-        return await this.imageRepository.DeleteCommentImageAsync(
+        return await this.imageRepository.DeleteClaimedCommentImageAsync(
             image.Id,
+            ImageOwnerType.Comment,
             image.OwnerId,
+            claimToken,
             cancellationToken);
+    }
+
+    private static string? Normalize(string? value)
+    {
+        string? normalized = value?.Trim();
+        return string.IsNullOrWhiteSpace(normalized) ? null : normalized;
     }
 }

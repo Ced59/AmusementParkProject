@@ -1,5 +1,6 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Comments.Services;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Images;
 using Moq;
@@ -15,6 +16,7 @@ public sealed class CommentImageManagerTests
     public async Task PublishForCommentAsync_WhenDraftBelongsToActor_ShouldReserveItPrivately()
     {
         Image draft = CreateDraft("author-1");
+        string? capturedReservationToken = null;
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository
             .Setup(value => value.GetByIdsAsync(
@@ -26,8 +28,17 @@ public sealed class CommentImageManagerTests
                 ImageId,
                 "author-1",
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
+            .Callback((
+                string _,
+                string _,
+                string _,
+                string reservationToken,
+                DateTime _,
+                CancellationToken _) =>
+                capturedReservationToken = reservationToken)
             .ReturnsAsync(new Image
             {
                 Id = ImageId,
@@ -41,13 +52,18 @@ public sealed class CommentImageManagerTests
             repository.Object,
             Mock.Of<IImageBinaryStorage>());
 
-        ApplicationResult result = await manager.PublishForCommentAsync(
+        ApplicationResult<CommentImageReservationBatch> result =
+            await manager.PublishForCommentAsync(
             "author-1",
             "comment-1",
             new[] { ImageId },
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
+        CommentImageReservationBatch batch =
+            Assert.IsType<CommentImageReservationBatch>(result.Value);
+        Assert.False(string.IsNullOrWhiteSpace(capturedReservationToken));
+        Assert.Equal(capturedReservationToken, batch.ReservationToken);
         repository.VerifyAll();
     }
 
@@ -92,6 +108,12 @@ public sealed class CommentImageManagerTests
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { published });
+        repository
+            .Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
+                ImageId,
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(PublishedCommentImageReusePreparation.Prepared);
         CommentImageManager manager = new CommentImageManager(
             repository.Object,
             Mock.Of<IImageBinaryStorage>());
@@ -103,6 +125,47 @@ public sealed class CommentImageManagerTests
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PublishForCommentAsync_WhenCleanupClaimWins_ShouldRejectPublishedImageReuse()
+    {
+        Image published = new Image
+        {
+            Id = ImageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.Comment,
+            OwnerId = "comment-1",
+            CleanupRequestedAtUtc = DateTime.UtcNow,
+            IsPublished = true,
+        };
+        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.GetByIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { published });
+        repository
+            .Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
+                ImageId,
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(PublishedCommentImageReusePreparation.Rejected);
+        CommentImageManager manager = new CommentImageManager(
+            repository.Object,
+            Mock.Of<IImageBinaryStorage>());
+
+        ApplicationResult result = await manager.PublishForCommentAsync(
+            "author-1",
+            "comment-1",
+            new[] { ImageId },
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "comment.image.forbidden");
         repository.VerifyAll();
     }
 
@@ -155,6 +218,7 @@ public sealed class CommentImageManagerTests
     public async Task PublishForCommentAsync_WhenSecondReservationFails_ShouldReleaseFirstReservation()
     {
         const string secondImageId = "11111111111111111111111111111111";
+        string? capturedReservationToken = null;
         Image firstDraft = CreateDraft("author-1");
         Image secondDraft = new Image
         {
@@ -184,14 +248,24 @@ public sealed class CommentImageManagerTests
                 ImageId,
                 "author-1",
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
+            .Callback((
+                string _,
+                string _,
+                string _,
+                string reservationToken,
+                DateTime _,
+                CancellationToken _) =>
+                capturedReservationToken = reservationToken)
             .ReturnsAsync(firstReserved);
         repository
             .Setup(value => value.ReserveCommentDraftAsync(
                 secondImageId,
                 "author-1",
                 "comment-1",
+                It.Is<string>(token => token == capturedReservationToken),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((Image?)null);
@@ -200,13 +274,14 @@ public sealed class CommentImageManagerTests
                 ImageId,
                 "author-1",
                 "comment-1",
+                It.Is<string>(token => token == capturedReservationToken),
                 CancellationToken.None))
             .ReturnsAsync(true);
         CommentImageManager manager = new CommentImageManager(
             repository.Object,
             Mock.Of<IImageBinaryStorage>());
 
-        ApplicationResult<IReadOnlyCollection<string>> result = await manager.PublishForCommentAsync(
+        ApplicationResult<CommentImageReservationBatch> result = await manager.PublishForCommentAsync(
             "author-1",
             "comment-1",
             new[] { ImageId, secondImageId },
@@ -249,6 +324,7 @@ public sealed class CommentImageManagerTests
                 ImageId,
                 "author-1",
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(firstReserved);
@@ -257,6 +333,7 @@ public sealed class CommentImageManagerTests
                 secondImageId,
                 "author-1",
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("reservation failed"));
@@ -265,6 +342,7 @@ public sealed class CommentImageManagerTests
                 ImageId,
                 "author-1",
                 "comment-1",
+                It.IsAny<string>(),
                 CancellationToken.None))
             .ReturnsAsync(true);
         CommentImageManager manager = new CommentImageManager(
@@ -290,18 +368,21 @@ public sealed class CommentImageManagerTests
                 ImageId,
                 "author-1",
                 "comment-1",
+                "reservation-token",
                 CancellationToken.None))
             .ReturnsAsync(false);
         repository.Setup(value => value.ReleaseCommentDraftReservationAsync(
                 secondImageId,
                 "author-1",
                 "comment-1",
+                "reservation-token",
                 CancellationToken.None))
             .ThrowsAsync(new InvalidOperationException("release failed"));
         repository.Setup(value => value.ReleaseCommentDraftReservationAsync(
                 thirdImageId,
                 "author-1",
                 "comment-1",
+                "reservation-token",
                 CancellationToken.None))
             .ReturnsAsync(true);
         CommentImageManager manager = new CommentImageManager(
@@ -312,7 +393,10 @@ public sealed class CommentImageManagerTests
             await manager.ReleaseReservationsForCommentAsync(
                 "author-1",
                 "comment-1",
-                new[] { ImageId, secondImageId, thirdImageId });
+                new CommentImageReservationBatch(
+                    new[] { ImageId, secondImageId, thirdImageId },
+                    "reservation-token",
+                    Array.Empty<string>()));
 
         Assert.Equal(new[] { ImageId, secondImageId }, failedImageIds);
         repository.VerifyAll();
@@ -329,6 +413,7 @@ public sealed class CommentImageManagerTests
                 ImageId,
                 "author-1",
                 "comment-1",
+                "reservation-token",
                 CancellationToken.None))
             .ReturnsAsync(new Image { Id = ImageId });
         repository
@@ -336,6 +421,7 @@ public sealed class CommentImageManagerTests
                 failedImageId,
                 "author-1",
                 "comment-1",
+                "reservation-token",
                 CancellationToken.None))
             .ReturnsAsync((Image?)null);
         repository
@@ -343,6 +429,7 @@ public sealed class CommentImageManagerTests
                 exceptionImageId,
                 "author-1",
                 "comment-1",
+                "reservation-token",
                 CancellationToken.None))
             .ThrowsAsync(new InvalidOperationException("finalization failed"));
         CommentImageManager manager = new CommentImageManager(
@@ -352,41 +439,13 @@ public sealed class CommentImageManagerTests
         IReadOnlyCollection<string> failedImageIds = await manager.FinalizeForCommentAsync(
             "author-1",
             "comment-1",
-            new[] { ImageId, failedImageId, exceptionImageId });
+            new CommentImageReservationBatch(
+                new[] { ImageId, failedImageId, exceptionImageId },
+                "reservation-token",
+                Array.Empty<string>()));
 
         Assert.Equal(new[] { failedImageId, exceptionImageId }, failedImageIds);
         repository.VerifyAll();
-    }
-
-    [Fact]
-    public async Task DeleteExpiredDraftsAsync_ShouldUseAtomicDraftDeletionAndBoundedQuery()
-    {
-        Image draft = CreateDraft("author-1");
-        draft.Path = "comment/draft";
-        DateTime cutoff = new DateTime(2026, 7, 28, 10, 0, 0, DateTimeKind.Utc);
-        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
-        repository
-            .Setup(value => value.GetExpiredCommentDraftsAsync(
-                cutoff,
-                50,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { draft });
-        repository
-            .Setup(value => value.DeleteCommentDraftAsync(
-                ImageId,
-                null,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(true);
-        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
-        storage.Setup(value => value.DeleteAsync("comment/draft", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(true);
-        CommentImageManager manager = new CommentImageManager(repository.Object, storage.Object);
-
-        int result = await manager.DeleteExpiredDraftsAsync(cutoff, 50, CancellationToken.None);
-
-        Assert.Equal(1, result);
-        repository.VerifyAll();
-        storage.VerifyAll();
     }
 
     [Fact]

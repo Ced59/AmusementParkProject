@@ -89,9 +89,21 @@ public sealed class ImageDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? PendingCommentId { get; set; }
 
+    [BsonElement("pendingReservationToken")]
+    [BsonIgnoreIfNull]
+    public string? PendingReservationToken { get; set; }
+
     [BsonElement("cleanupRequestedAt")]
     [BsonIgnoreIfNull]
     public DateTime? CleanupRequestedAt { get; set; }
+
+    [BsonElement("cleanupClaimToken")]
+    [BsonIgnoreIfNull]
+    public string? CleanupClaimToken { get; set; }
+
+    [BsonElement("cleanupClaimedUntil")]
+    [BsonIgnoreIfNull]
+    public DateTime? CleanupClaimedUntil { get; set; }
 }
 
 /// <summary>

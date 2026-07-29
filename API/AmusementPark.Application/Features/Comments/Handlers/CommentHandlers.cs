@@ -81,7 +81,7 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
         DateTime nowUtc = DateTime.UtcNow;
         string commentId = Guid.NewGuid().ToString("N");
         List<string> imageIds = ExtractImageIds(bodiesResult.Value, this.contentSanitizer);
-        ApplicationResult<IReadOnlyCollection<string>> imageResult =
+        ApplicationResult<CommentImageReservationBatch> imageResult =
             await this.commentImageManager.PublishForCommentAsync(
             author!.Id,
             commentId,
@@ -247,7 +247,7 @@ public sealed class UpdateCommentCommandHandler
                 : Array.Empty<string>())
             .Distinct(StringComparer.Ordinal)
             .ToList();
-        ApplicationResult<IReadOnlyCollection<string>> imageResult =
+        ApplicationResult<CommentImageReservationBatch> imageResult =
             await this.commentImageManager.PublishForCommentAsync(
             actor.Id,
             comment.Id,

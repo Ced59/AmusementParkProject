@@ -10,6 +10,7 @@ using AmusementPark.Application.Features.Comments.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Comments;
 using AmusementPark.Core.Domain.Parks;
@@ -255,10 +256,11 @@ public sealed class CommentHandlersTests
     }
 
     [Fact]
-    public async Task UpdateAsync_WhenRevisionChanged_ShouldReleaseOnlyTheNewReservation()
+    public async Task UpdateAsync_WhenRevisionChanged_ShouldRollbackReservationAndPreparedCleanup()
     {
         const string draftImageId = "abcdef0123456789abcdef0123456789";
         const string existingImageId = "11111111111111111111111111111111";
+        string? capturedReservationToken = null;
         string html =
             $"<p>Texte<img src=\"/images/{existingImageId}\" alt=\"Existing\" " +
             "class=\"rich-text__image rich-text__image--left\">" +
@@ -307,25 +309,47 @@ public sealed class CommentHandlersTests
             OwnerType = ImageOwnerType.Comment,
             OwnerId = "comment-1",
             IsPublished = true,
+            CleanupRequestedAtUtc = new DateTime(2026, 7, 1, 11, 0, 0, DateTimeKind.Utc),
         };
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         images.Setup(value => value.GetByIdsAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { published, draft });
+        images.Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
+                existingImageId,
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(PublishedCommentImageReusePreparation.PreparedAndCleanupCleared);
         images.Setup(value => value.ReserveCommentDraftAsync(
                 draftImageId,
                 "admin-1",
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
+            .Callback((
+                string _,
+                string _,
+                string _,
+                string reservationToken,
+                DateTime _,
+                CancellationToken _) =>
+                capturedReservationToken = reservationToken)
             .ReturnsAsync(reserved);
         images.Setup(value => value.ReleaseCommentDraftReservationAsync(
                 draftImageId,
                 "admin-1",
                 "comment-1",
+                It.Is<string>(token => token == capturedReservationToken),
                 CancellationToken.None))
             .ReturnsAsync(true);
+        images.Setup(value => value.RequestCommentImagesCleanupAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { existingImageId })),
+                "comment-1",
+                It.IsAny<DateTime>(),
+                CancellationToken.None))
+            .ReturnsAsync(1);
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             comments.Object,
             sanitizer.Object,
@@ -386,6 +410,7 @@ public sealed class CommentHandlersTests
                 draftImageId,
                 "admin-1",
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Image
@@ -407,6 +432,7 @@ public sealed class CommentHandlersTests
                 draftImageId,
                 "admin-1",
                 "comment-1",
+                It.IsAny<string>(),
                 CancellationToken.None))
             .ReturnsAsync(true);
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
@@ -474,6 +500,7 @@ public sealed class CommentHandlersTests
                 draftImageId,
                 "admin-1",
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 cancellation.Token))
             .ReturnsAsync(new Image
@@ -489,6 +516,7 @@ public sealed class CommentHandlersTests
                 draftImageId,
                 "admin-1",
                 "comment-1",
+                It.IsAny<string>(),
                 CancellationToken.None))
             .ReturnsAsync(true);
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
@@ -861,6 +889,7 @@ public sealed class CommentHandlersTests
     public async Task HandleAsync_WhenImageIsUsedInImageOnlyTranslation_ShouldKeepLanguageAndPublishUnion()
     {
         const string imageId = "abcdef0123456789abcdef0123456789";
+        string? capturedReservationToken = null;
         string imageHtml =
             $"<img src=\"/images/{imageId}\" alt=\"Park\" class=\"rich-text__image rich-text__image--full\">";
         User author = new User
@@ -903,8 +932,17 @@ public sealed class CommentHandlersTests
                 imageId,
                 "admin-1",
                 It.IsAny<string>(),
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
+            .Callback((
+                string _imageId,
+                string _ownerId,
+                string _commentId,
+                string reservationToken,
+                DateTime _reconcileAfterUtc,
+                CancellationToken _cancellationToken) =>
+                capturedReservationToken = reservationToken)
             .ReturnsAsync(new Image
             {
                 Id = imageId,
@@ -917,6 +955,7 @@ public sealed class CommentHandlersTests
                 imageId,
                 "admin-1",
                 It.IsAny<string>(),
+                It.Is<string>(token => token == capturedReservationToken),
                 CancellationToken.None))
             .ReturnsAsync(new Image
             {
@@ -1010,12 +1049,14 @@ public sealed class CommentHandlersTests
                 imageId,
                 "admin-1",
                 It.IsAny<string>(),
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(reserved);
         images.Setup(value => value.ReleaseCommentDraftReservationAsync(
                 imageId,
                 "admin-1",
+                It.IsAny<string>(),
                 It.IsAny<string>(),
                 CancellationToken.None))
             .ReturnsAsync(true);

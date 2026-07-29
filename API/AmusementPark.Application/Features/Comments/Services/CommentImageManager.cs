@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Images;
 using Microsoft.Extensions.Logging;
@@ -24,29 +25,34 @@ public sealed class CommentImageManager
         this.logger = logger;
     }
 
-    public async Task<ApplicationResult<IReadOnlyCollection<string>>> PublishForCommentAsync(
+    public async Task<ApplicationResult<CommentImageReservationBatch>> PublishForCommentAsync(
         string actorUserId,
         string commentId,
         IReadOnlyCollection<string> desiredImageIds,
         CancellationToken cancellationToken)
     {
         List<string> normalizedIds = NormalizeIds(desiredImageIds);
+        string reservationToken = Guid.NewGuid().ToString("N");
         if (normalizedIds.Count > MaximumImagesPerComment)
         {
-            return ApplicationResult<IReadOnlyCollection<string>>.Failure(
+            return ApplicationResult<CommentImageReservationBatch>.Failure(
                 CommentApplicationErrors.TooManyImages());
         }
 
         if (normalizedIds.Count == 0)
         {
-            return ApplicationResult<IReadOnlyCollection<string>>.Success(Array.Empty<string>());
+            return ApplicationResult<CommentImageReservationBatch>.Success(
+                new CommentImageReservationBatch(
+                    Array.Empty<string>(),
+                    reservationToken,
+                    Array.Empty<string>()));
         }
 
         IReadOnlyCollection<Image> images = await this.imageRepository.GetByIdsAsync(normalizedIds, cancellationToken);
         Dictionary<string, Image> imagesById = images.ToDictionary(static image => image.Id, StringComparer.Ordinal);
         if (imagesById.Count != normalizedIds.Count)
         {
-            return ApplicationResult<IReadOnlyCollection<string>>.Failure(
+            return ApplicationResult<CommentImageReservationBatch>.Failure(
                 CommentApplicationErrors.ImageNotAllowed());
         }
 
@@ -55,8 +61,33 @@ public sealed class CommentImageManager
             Image image = imagesById[imageId];
             if (!image.CanBeUsedInComment(actorUserId, commentId))
             {
-                return ApplicationResult<IReadOnlyCollection<string>>.Failure(
+                return ApplicationResult<CommentImageReservationBatch>.Failure(
                     CommentApplicationErrors.ImageNotAllowed());
+            }
+        }
+
+        List<string> preparedCleanupImageIds = new List<string>();
+        foreach (Image published in images.Where(
+            static image => image.OwnerType == ImageOwnerType.Comment))
+        {
+            PublishedCommentImageReusePreparation preparation =
+                await this.imageRepository.TryPreparePublishedCommentImageForReuseAsync(
+                    published.Id,
+                    commentId,
+                    cancellationToken);
+            if (preparation == PublishedCommentImageReusePreparation.Rejected)
+            {
+                await this.RestorePreparedPublishedCleanupAsync(
+                    commentId,
+                    preparedCleanupImageIds);
+                return ApplicationResult<CommentImageReservationBatch>.Failure(
+                    CommentApplicationErrors.ImageNotAllowed());
+            }
+
+            if (preparation
+                == PublishedCommentImageReusePreparation.PreparedAndCleanupCleared)
+            {
+                preparedCleanupImageIds.Add(published.Id);
             }
         }
 
@@ -69,6 +100,7 @@ public sealed class CommentImageManager
                     draft.Id,
                     actorUserId,
                     commentId,
+                    reservationToken,
                     DateTime.UtcNow.Add(ReconciliationGracePeriod),
                     cancellationToken);
                 if (reserved is null)
@@ -76,8 +108,11 @@ public sealed class CommentImageManager
                     _ = await this.ReleaseReservationsForCommentAsync(
                         actorUserId,
                         commentId,
-                        reservedImageIds);
-                    return ApplicationResult<IReadOnlyCollection<string>>.Failure(
+                        new CommentImageReservationBatch(
+                            reservedImageIds,
+                            reservationToken,
+                            preparedCleanupImageIds));
+                    return ApplicationResult<CommentImageReservationBatch>.Failure(
                         CommentApplicationErrors.ImageNotAllowed());
                 }
 
@@ -89,20 +124,27 @@ public sealed class CommentImageManager
             _ = await this.ReleaseReservationsForCommentAsync(
                 actorUserId,
                 commentId,
-                reservedImageIds);
+                new CommentImageReservationBatch(
+                    reservedImageIds,
+                    reservationToken,
+                    preparedCleanupImageIds));
             throw;
         }
 
-        return ApplicationResult<IReadOnlyCollection<string>>.Success(reservedImageIds);
+        return ApplicationResult<CommentImageReservationBatch>.Success(
+            new CommentImageReservationBatch(
+                reservedImageIds,
+                reservationToken,
+                preparedCleanupImageIds));
     }
 
     public async Task<IReadOnlyCollection<string>> FinalizeForCommentAsync(
         string actorUserId,
         string commentId,
-        IReadOnlyCollection<string> reservedImageIds)
+        CommentImageReservationBatch reservationBatch)
     {
         List<string> failedImageIds = new List<string>();
-        foreach (string imageId in NormalizeIds(reservedImageIds))
+        foreach (string imageId in NormalizeIds(reservationBatch.ReservedImageIds))
         {
             try
             {
@@ -110,6 +152,7 @@ public sealed class CommentImageManager
                     imageId,
                     actorUserId,
                     commentId,
+                    reservationBatch.ReservationToken,
                     CancellationToken.None);
                 if (finalized is null)
                 {
@@ -176,51 +219,13 @@ public sealed class CommentImageManager
             : ApplicationResult.Failure(CommentApplicationErrors.ImageNotAllowed());
     }
 
-    public async Task<int> DeleteExpiredDraftsAsync(
-        DateTime createdBeforeUtc,
-        int limit,
-        CancellationToken cancellationToken)
-    {
-        IReadOnlyCollection<Image> drafts = await this.imageRepository.GetExpiredCommentDraftsAsync(
-            createdBeforeUtc,
-            limit,
-            cancellationToken);
-        int deletedCount = 0;
-        foreach (Image draft in drafts)
-        {
-            if (await this.DeleteDraftAsync(draft, null, cancellationToken))
-            {
-                deletedCount++;
-            }
-        }
-
-        return deletedCount;
-    }
-
-    private async Task<bool> DeleteDraftAsync(
-        Image image,
-        string? ownerId,
-        CancellationToken cancellationToken)
-    {
-        if (!string.IsNullOrWhiteSpace(image.Path)
-            && !await this.imageBinaryStorage.DeleteAsync(image.Path, cancellationToken))
-        {
-            return false;
-        }
-
-        return await this.imageRepository.DeleteCommentDraftAsync(
-            image.Id,
-            ownerId,
-            cancellationToken);
-    }
-
     public async Task<IReadOnlyCollection<string>> ReleaseReservationsForCommentAsync(
         string actorUserId,
         string commentId,
-        IReadOnlyCollection<string> reservedImageIds)
+        CommentImageReservationBatch reservationBatch)
     {
         List<string> failedImageIds = new List<string>();
-        foreach (string imageId in NormalizeIds(reservedImageIds))
+        foreach (string imageId in NormalizeIds(reservationBatch.ReservedImageIds))
         {
             try
             {
@@ -228,6 +233,7 @@ public sealed class CommentImageManager
                     imageId,
                     actorUserId,
                     commentId,
+                    reservationBatch.ReservationToken,
                     CancellationToken.None);
                 if (!released)
                 {
@@ -250,7 +256,44 @@ public sealed class CommentImageManager
             }
         }
 
+        IReadOnlyCollection<string> cleanupRestoreFailures =
+            await this.RestorePreparedPublishedCleanupAsync(
+                commentId,
+                reservationBatch.PreparedCleanupImageIds);
+        failedImageIds.AddRange(cleanupRestoreFailures);
+
         return failedImageIds;
+    }
+
+    private async Task<IReadOnlyCollection<string>> RestorePreparedPublishedCleanupAsync(
+        string commentId,
+        IReadOnlyCollection<string> preparedPublishedImageIds)
+    {
+        if (preparedPublishedImageIds.Count == 0)
+        {
+            return Array.Empty<string>();
+        }
+
+        try
+        {
+            int restoredCount =
+                await this.imageRepository.RequestCommentImagesCleanupAsync(
+                preparedPublishedImageIds,
+                commentId,
+                DateTime.UtcNow.Add(ReconciliationGracePeriod),
+                CancellationToken.None);
+            return restoredCount == preparedPublishedImageIds.Count
+                ? Array.Empty<string>()
+                : preparedPublishedImageIds;
+        }
+        catch (Exception exception)
+        {
+            this.logger?.LogWarning(
+                exception,
+                "Unable to restore cleanup for prepared comment images on comment {CommentId}.",
+                commentId);
+            return preparedPublishedImageIds;
+        }
     }
 
     private static List<string> NormalizeIds(IReadOnlyCollection<string> imageIds)

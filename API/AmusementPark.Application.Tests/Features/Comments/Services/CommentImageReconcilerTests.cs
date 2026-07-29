@@ -25,6 +25,7 @@ public sealed class CommentImageReconcilerTests
                 pending.Id,
                 "author-1",
                 "comment-1",
+                "reservation-token",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Image
             {
@@ -62,6 +63,7 @@ public sealed class CommentImageReconcilerTests
                 pending.Id,
                 "author-1",
                 "comment-1",
+                "reservation-token",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
         CommentImageReconciler reconciler = new CommentImageReconciler(
@@ -85,12 +87,15 @@ public sealed class CommentImageReconcilerTests
     {
         Image published = CreatePublishedCleanup();
         Mock<IImageRepository> images = CreateCandidateRepository(published);
+        SetupCleanupClaim(images, published, true);
         Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
         comments.Setup(value => value.IsImageReferencedAsync(published.Id, It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
-        images.Setup(value => value.ClearCommentImageCleanupAsync(
+        images.Setup(value => value.CancelClaimedCommentImageCleanupAsync(
                 published.Id,
+                ImageOwnerType.Comment,
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
         CommentImageReconciler reconciler = new CommentImageReconciler(
@@ -114,6 +119,7 @@ public sealed class CommentImageReconcilerTests
     {
         Image published = CreatePublishedCleanup();
         Mock<IImageRepository> images = CreateCandidateRepository(published);
+        SetupCleanupClaim(images, published, true);
         Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
         comments.Setup(value => value.IsImageReferencedAsync(published.Id, It.IsAny<CancellationToken>()))
             .ReturnsAsync(false);
@@ -142,15 +148,18 @@ public sealed class CommentImageReconcilerTests
     {
         Image published = CreatePublishedCleanup();
         Mock<IImageRepository> images = CreateCandidateRepository(published);
+        SetupCleanupClaim(images, published, true);
         Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
         comments.Setup(value => value.IsImageReferencedAsync(published.Id, It.IsAny<CancellationToken>()))
             .ReturnsAsync(false);
         Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
         storage.Setup(value => value.DeleteAsync(published.Path!, It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
-        images.Setup(value => value.DeleteCommentImageAsync(
+        images.Setup(value => value.DeleteClaimedCommentImageAsync(
                 published.Id,
+                ImageOwnerType.Comment,
                 "comment-1",
+                It.IsAny<string>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
         CommentImageReconciler reconciler = new CommentImageReconciler(
@@ -168,6 +177,56 @@ public sealed class CommentImageReconcilerTests
         comments.VerifyAll();
         images.VerifyAll();
         storage.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenCleanupClaimLosesToReuse_ShouldNotDeleteBinary()
+    {
+        Image published = CreatePublishedCleanup();
+        Mock<IImageRepository> images = CreateCandidateRepository(published);
+        SetupCleanupClaim(images, published, false);
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        CommentImageReconciler reconciler = new CommentImageReconciler(
+            comments.Object,
+            images.Object,
+            storage.Object);
+
+        int result = await reconciler.ReconcileAsync(
+            NowUtc,
+            DraftCutoffUtc,
+            50,
+            CancellationToken.None);
+
+        Assert.Equal(0, result);
+        images.VerifyAll();
+        comments.VerifyNoOtherCalls();
+        storage.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenDraftClaimLosesToReservation_ShouldNotDeleteBinary()
+    {
+        Image draft = CreateExpiredDraft();
+        Mock<IImageRepository> images = CreateCandidateRepository(draft);
+        SetupCleanupClaim(images, draft, false);
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        CommentImageReconciler reconciler = new CommentImageReconciler(
+            comments.Object,
+            images.Object,
+            storage.Object);
+
+        int result = await reconciler.ReconcileAsync(
+            NowUtc,
+            DraftCutoffUtc,
+            50,
+            CancellationToken.None);
+
+        Assert.Equal(0, result);
+        images.VerifyAll();
+        comments.VerifyNoOtherCalls();
+        storage.VerifyNoOtherCalls();
     }
 
     private static Mock<IImageRepository> CreateCandidateRepository(Image candidate)
@@ -192,9 +251,20 @@ public sealed class CommentImageReconcilerTests
             OwnerId = "author-1",
             DraftOwnerId = "author-1",
             PendingCommentId = "comment-1",
+            PendingReservationToken = "reservation-token",
             CleanupRequestedAtUtc = NowUtc.AddMinutes(-1),
             IsPublished = false,
         };
+    }
+
+    private static Image CreateExpiredDraft()
+    {
+        Image draft = CreatePendingDraft();
+        draft.PendingCommentId = null;
+        draft.CleanupRequestedAtUtc = null;
+        draft.Path = "comment/draft-1";
+        draft.CreatedAtUtc = DraftCutoffUtc.AddMinutes(-1);
+        return draft;
     }
 
     private static Image CreatePublishedCleanup()
@@ -210,5 +280,22 @@ public sealed class CommentImageReconcilerTests
             Path = "comment/image-1",
             IsPublished = true,
         };
+    }
+
+    private static void SetupCleanupClaim(
+        Mock<IImageRepository> images,
+        Image image,
+        bool claimed)
+    {
+        images.Setup(value => value.TryClaimCommentImageCleanupAsync(
+                image.Id,
+                image.OwnerType,
+                image.OwnerId!,
+                NowUtc,
+                DraftCutoffUtc,
+                It.IsAny<string>(),
+                It.Is<DateTime>(claimUntilUtc => claimUntilUtc > NowUtc),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(claimed);
     }
 }

@@ -122,6 +122,11 @@ public sealed class Image : AuditableEntity
     public string? PendingCommentId { get; set; }
 
     /// <summary>
+    /// Identifie la tentative applicative qui détient la réservation du brouillon.
+    /// </summary>
+    public string? PendingReservationToken { get; set; }
+
+    /// <summary>
     /// Date à partir de laquelle le worker peut réconcilier ou supprimer l'image.
     /// </summary>
     public DateTime? CleanupRequestedAtUtc { get; set; }

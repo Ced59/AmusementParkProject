@@ -17,11 +17,29 @@ public interface IImageRepository
     Task<long> CountActiveCommentDraftsByOwnerAsync(string ownerId, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<Image>> GetByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory? category, CancellationToken cancellationToken);
     Task<Image?> GetByOwnerAndSourceUrlAsync(ImageOwnerType ownerType, string ownerId, string sourceUrl, CancellationToken cancellationToken);
-    Task<IReadOnlyCollection<Image>> GetExpiredCommentDraftsAsync(DateTime createdBeforeUtc, int limit, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<Image>> GetCommentImagesRequiringReconciliationAsync(
         DateTime dueBeforeUtc,
         DateTime draftCreatedBeforeUtc,
         int limit,
+        CancellationToken cancellationToken);
+    Task<bool> TryClaimCommentImageCleanupAsync(
+        string imageId,
+        ImageOwnerType ownerType,
+        string ownerId,
+        DateTime dueBeforeUtc,
+        DateTime draftCreatedBeforeUtc,
+        string claimToken,
+        DateTime claimUntilUtc,
+        CancellationToken cancellationToken);
+    Task<PublishedCommentImageReusePreparation> TryPreparePublishedCommentImageForReuseAsync(
+        string imageId,
+        string commentId,
+        CancellationToken cancellationToken);
+    Task<bool> CancelClaimedCommentImageCleanupAsync(
+        string imageId,
+        ImageOwnerType ownerType,
+        string ownerId,
+        string claimToken,
         CancellationToken cancellationToken);
     Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken);
     Task<Image?> GetCurrentByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken);
@@ -31,17 +49,20 @@ public interface IImageRepository
         string imageId,
         string draftOwnerId,
         string commentId,
+        string reservationToken,
         DateTime reconcileAfterUtc,
         CancellationToken cancellationToken);
     Task<Image?> FinalizeCommentDraftAsync(
         string imageId,
         string draftOwnerId,
         string commentId,
+        string? reservationToken,
         CancellationToken cancellationToken);
     Task<bool> ReleaseCommentDraftReservationAsync(
         string imageId,
         string draftOwnerId,
         string commentId,
+        string? reservationToken,
         CancellationToken cancellationToken);
     Task<bool> RequestCommentDraftCleanupAsync(
         string imageId,
@@ -53,15 +74,15 @@ public interface IImageRepository
         string commentId,
         DateTime cleanupRequestedAtUtc,
         CancellationToken cancellationToken);
-    Task<bool> ClearCommentImageCleanupAsync(
-        string imageId,
-        string commentId,
-        CancellationToken cancellationToken);
     Task<Image?> SetCurrentAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
     Task<Image?> UpdateMetadataAsync(string imageId, ImageMetadataUpdate metadata, CancellationToken cancellationToken);
     Task<Image?> MarkWatermarkedAsync(string imageId, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken);
-    Task<bool> DeleteCommentDraftAsync(string imageId, string? ownerId, CancellationToken cancellationToken);
-    Task<bool> DeleteCommentImageAsync(string imageId, string commentId, CancellationToken cancellationToken);
+    Task<bool> DeleteClaimedCommentImageAsync(
+        string imageId,
+        ImageOwnerType ownerType,
+        string ownerId,
+        string claimToken,
+        CancellationToken cancellationToken);
     Task<int> UpdateBulkMetadataAsync(IReadOnlyCollection<string> imageIds, ImageBulkMetadataUpdate metadata, CancellationToken cancellationToken);
 }

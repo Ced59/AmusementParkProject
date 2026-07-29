@@ -44,6 +44,7 @@ internal static partial class EntityMongoMappers
             IsPublished = document.IsPublished,
             DraftOwnerId = document.DraftOwnerId,
             PendingCommentId = document.PendingCommentId,
+            PendingReservationToken = document.PendingReservationToken,
             CleanupRequestedAtUtc = document.CleanupRequestedAt,
         };
 
@@ -79,6 +80,7 @@ internal static partial class EntityMongoMappers
             IsPublished = entity.IsPublished,
             DraftOwnerId = entity.DraftOwnerId,
             PendingCommentId = entity.PendingCommentId,
+            PendingReservationToken = entity.PendingReservationToken,
             CleanupRequestedAt = entity.CleanupRequestedAtUtc,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
