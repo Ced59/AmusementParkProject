@@ -9,6 +9,7 @@
       "rateValue": "Rate {{value}} out of 5",
       "yourRating": "Your rating: {{value}}/5",
       "clearRating": "Clear my rating",
+      "clearRatingConfirm": "Are you sure you want to clear your rating? This action cannot be undone.",
       "prompt": "Choose your rating",
       "signInMessage": "Sign in to leave your rating.",
       "savedMessage": "Thanks, your rating has been saved.",

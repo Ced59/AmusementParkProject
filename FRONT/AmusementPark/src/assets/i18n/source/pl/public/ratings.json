@@ -9,6 +9,7 @@
       "rateValue": "Oceń {{value}} z 5",
       "yourRating": "Twoja ocena: {{value}}/5",
       "clearRating": "Usuń moją ocenę",
+      "clearRatingConfirm": "Czy na pewno chcesz usunąć swoją ocenę? Tej operacji nie można cofnąć.",
       "prompt": "Wybierz swoją ocenę",
       "signInMessage": "Zaloguj się, aby dodać ocenę.",
       "savedMessage": "Dziękujemy, ocena została zapisana.",

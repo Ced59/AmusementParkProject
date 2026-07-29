@@ -1,6 +1,20 @@
 {
-  "version": "4.0.6",
+  "version": "4.0.7",
   "history": [
+    {
+      "version": "4.0.7",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "La suppression accidentelle d’une note est désormais évitée.",
+        "en": "Accidental removal of a rating is now prevented.",
+        "de": "Das versehentliche Löschen einer Bewertung wird jetzt verhindert.",
+        "nl": "Het per ongeluk wissen van een beoordeling wordt nu voorkomen.",
+        "it": "La cancellazione accidentale di una valutazione è ora evitata.",
+        "es": "Ahora se evita borrar una valoración por accidente.",
+        "pl": "Przypadkowe usunięcie oceny jest teraz blokowane.",
+        "pt": "A eliminação acidental de uma avaliação é agora evitada."
+      }
+    },
     {
       "version": "4.0.6",
       "releasedAt": "2026-07-29",

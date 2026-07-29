@@ -55,6 +55,13 @@ export class RatingStarsComponent implements OnChanges {
   }
 
   protected removeRating(): void {
+    const confirmed: boolean = confirm(
+      this.translateService.instant('ratings.stars.clearRatingConfirm'),
+    );
+    if (!confirmed) {
+      return;
+    }
+
     this.stateFacade.removeRating();
   }
 
