@@ -40,6 +40,12 @@ public sealed class UserRatingDocument : MongoDocumentBase
 [BsonIgnoreExtraElements]
 public sealed class RatingAggregateDocument : MongoDocumentBase
 {
+    [BsonElement("mutationVersion")]
+    public long MutationVersion { get; set; }
+
+    [BsonElement("calculatedVersion")]
+    public long CalculatedVersion { get; set; }
+
     [BsonElement("targetType")]
     [BsonRepresentation(BsonType.String)]
     public RatingTargetType TargetType { get; set; }

@@ -1,6 +1,20 @@
 {
-  "version": "3.6.2",
+  "version": "3.6.3",
   "history": [
+    {
+      "version": "3.6.3",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "La fiabilité et l’affichage des notes ont été améliorés.",
+        "en": "Rating reliability and display have been improved.",
+        "de": "Zuverlässigkeit und Anzeige der Bewertungen wurden verbessert.",
+        "nl": "De betrouwbaarheid en weergave van beoordelingen zijn verbeterd.",
+        "it": "L’affidabilità e la visualizzazione delle valutazioni sono state migliorate.",
+        "es": "Se han mejorado la fiabilidad y la visualización de las valoraciones.",
+        "pl": "Poprawiono niezawodność i sposób wyświetlania ocen.",
+        "pt": "A fiabilidade e a apresentação das avaliações foram melhoradas."
+      }
+    },
     {
       "version": "3.6.2",
       "releasedAt": "2026-07-29",
