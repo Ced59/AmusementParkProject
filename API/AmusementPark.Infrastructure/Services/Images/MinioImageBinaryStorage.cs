@@ -47,7 +47,40 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         this.watermarkFonts = ResolveWatermarkFonts(logger);
     }
 
-    public async Task<IReadOnlyCollection<string>> SaveAsync(string pathWithoutExtension, FilePayload file, bool withWatermark, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<string>> SaveAsync(
+        string pathWithoutExtension,
+        FilePayload file,
+        bool withWatermark,
+        CancellationToken cancellationToken)
+    {
+        return await this.SaveCoreAsync(
+            pathWithoutExtension,
+            file,
+            withWatermark,
+            false,
+            cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<string>> SaveWithoutMetadataAsync(
+        string pathWithoutExtension,
+        FilePayload file,
+        bool withWatermark,
+        CancellationToken cancellationToken)
+    {
+        return await this.SaveCoreAsync(
+            pathWithoutExtension,
+            file,
+            withWatermark,
+            true,
+            cancellationToken);
+    }
+
+    private async Task<IReadOnlyCollection<string>> SaveCoreAsync(
+        string pathWithoutExtension,
+        FilePayload file,
+        bool withWatermark,
+        bool stripMetadata,
+        CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pathWithoutExtension);
         ArgumentNullException.ThrowIfNull(file);
@@ -69,6 +102,11 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
 
         workingStream.Position = 0;
         using Image image = await Image.LoadAsync(workingStream, cancellationToken);
+        if (stripMetadata)
+        {
+            StripEmbeddedMetadata(image);
+        }
+
         ResizeInPlaceIfNeeded(image);
 
         List<string> savedFiles = new List<string>();
@@ -91,6 +129,15 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         }
 
         return savedFiles;
+    }
+
+    internal static void StripEmbeddedMetadata(Image image)
+    {
+        ArgumentNullException.ThrowIfNull(image);
+        image.Metadata.ExifProfile = null;
+        image.Metadata.IccProfile = null;
+        image.Metadata.IptcProfile = null;
+        image.Metadata.XmpProfile = null;
     }
 
     public async Task<bool> ApplyWatermarkAsync(string pathWithoutExtension, CancellationToken cancellationToken)

@@ -30,7 +30,7 @@ public sealed class ImageMetadataPipeline : IImageProcessingPipeline
             imageStream.Position = 0;
         }
 
-        using SixLaborsImage image = await SixLaborsImage.LoadAsync(imageStream, cancellationToken);
+        ImageInfo image = await SixLaborsImage.IdentifyAsync(imageStream, cancellationToken);
         ExifProfile? exif = image.Metadata.ExifProfile;
 
         Rational[]? latValues = GetExifReferenceValue(exif, ExifTag.GPSLatitude);

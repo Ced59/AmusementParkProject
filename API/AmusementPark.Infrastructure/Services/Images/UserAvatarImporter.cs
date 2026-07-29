@@ -12,6 +12,9 @@ namespace AmusementPark.Infrastructure.Services.Images;
 /// </summary>
 public sealed class UserAvatarImporter : IUserAvatarImporter
 {
+    private const long MaximumAvatarFileSizeInBytes = 5 * 1024 * 1024;
+    private const int MaximumAvatarEdge = 4096;
+    private const long MaximumAvatarPixels = 8_000_000;
     private static readonly HashSet<string> SupportedContentTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
     {
         "image/jpeg",
@@ -70,14 +73,32 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 return string.Empty;
             }
 
+            if (response.Content.Headers.ContentLength is long contentLength
+                && contentLength > MaximumAvatarFileSizeInBytes)
+            {
+                this.logger.LogWarning("External avatar is too large for user {UserId}.", userId);
+                return string.Empty;
+            }
+
             await using Stream remoteStream = await response.Content.ReadAsStreamAsync(cancellationToken);
-            MemoryStream bufferedStream = new MemoryStream();
-            await remoteStream.CopyToAsync(bufferedStream, cancellationToken);
+            await using MemoryStream bufferedStream = new MemoryStream();
+            byte[] buffer = new byte[81920];
+            int bytesRead;
+            while ((bytesRead = await remoteStream.ReadAsync(buffer, cancellationToken)) > 0)
+            {
+                if (bufferedStream.Length + bytesRead > MaximumAvatarFileSizeInBytes)
+                {
+                    this.logger.LogWarning("External avatar exceeded the size limit for user {UserId}.", userId);
+                    return string.Empty;
+                }
+
+                await bufferedStream.WriteAsync(buffer.AsMemory(0, bytesRead), cancellationToken);
+            }
+
             bufferedStream.Position = 0;
 
             if (bufferedStream.Length == 0)
             {
-                bufferedStream.Dispose();
                 return string.Empty;
             }
 
@@ -100,6 +121,17 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
             };
 
             ImageProcessingMetadata? metadata = await this.imageProcessingPipeline.ExtractMetadataAsync(baseRequest, cancellationToken);
+            if (metadata is null
+                || metadata.Width <= 0
+                || metadata.Height <= 0
+                || metadata.Width > MaximumAvatarEdge
+                || metadata.Height > MaximumAvatarEdge
+                || (long)metadata.Width * metadata.Height > MaximumAvatarPixels)
+            {
+                this.logger.LogWarning("External avatar dimensions are invalid for user {UserId}.", userId);
+                return string.Empty;
+            }
+
             ImageUploadRequest request = new ImageUploadRequest
             {
                 Category = baseRequest.Category,
@@ -111,14 +143,13 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 Width = metadata?.Width ?? 0,
                 Height = metadata?.Height ?? 0,
                 SizeInBytes = metadata?.SizeInBytes ?? filePayload.Length,
-                GeoLocation = metadata?.GeoLocation,
-                ExifMetadata = metadata?.ExifMetadata,
+                GeoLocation = null,
+                ExifMetadata = null,
             };
 
             Image image = await this.imageRepository.CreateAsync(request, cancellationToken);
             if (string.IsNullOrWhiteSpace(image.Path))
             {
-                bufferedStream.Dispose();
                 return string.Empty;
             }
 
@@ -127,9 +158,12 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 filePayload.Content.Position = 0;
             }
 
-            await this.imageBinaryStorage.SaveAsync(image.Path, filePayload, false, cancellationToken);
+            await this.imageBinaryStorage.SaveWithoutMetadataAsync(
+                image.Path,
+                filePayload,
+                false,
+                cancellationToken);
             await this.imageRepository.SetCurrentAsync(image.Id, ImageOwnerType.User, userId, cancellationToken);
-            bufferedStream.Dispose();
             return $"/images/{image.Id}";
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

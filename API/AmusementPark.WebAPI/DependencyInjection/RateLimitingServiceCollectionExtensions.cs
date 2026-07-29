@@ -30,6 +30,7 @@ public static class RateLimitingServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(configuration);
 
         services.AddHttpContextAccessor();
+        services.AddSingleton<IAvatarUploadAttemptLimiter, AvatarUploadAttemptLimiter>();
 
         AuthenticationRateLimitingSettings authenticationSettings = configuration
             .GetSection(AuthenticationRateLimitingSettings.ConfigurationSectionName)

@@ -1,10 +1,28 @@
 using AmusementPark.Infrastructure.Services.Images;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Metadata.Profiles.Exif;
+using SixLabors.ImageSharp.PixelFormats;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Services.Images;
 
 public sealed class MinioImageBinaryStorageTests
 {
+    [Fact]
+    public void StripEmbeddedMetadata_ShouldRemoveExifProfiles()
+    {
+        using Image<Rgba32> image = new Image<Rgba32>(1, 1);
+        image.Metadata.ExifProfile = new ExifProfile();
+        image.Metadata.ExifProfile.SetValue(ExifTag.GPSLatitudeRef, "N");
+
+        MinioImageBinaryStorage.StripEmbeddedMetadata(image);
+
+        Assert.Null(image.Metadata.ExifProfile);
+        Assert.Null(image.Metadata.IccProfile);
+        Assert.Null(image.Metadata.IptcProfile);
+        Assert.Null(image.Metadata.XmpProfile);
+    }
+
     [Theory]
     [InlineData(null, null)]
     [InlineData(0, null)]
