@@ -106,6 +106,7 @@ Pour chaque article avec image :
 - l’image existe déjà dans l’export ou est créée dans le même JSON ;
 - l’article utilise `imageId` quand l’image vient de l’export ;
 - `imageKey` est réservé aux images créées dans le même JSON avec un `key` stable ;
+- les `images[].key` restent uniques après suppression des espaces de bord et comparaison sans tenir compte de la casse ;
 - chaque `mainImageKey`, `imageKey` ou valeur de `imageKeys` correspond exactement à une unique `images[].key` du même JSON ;
 - un Preview sans avertissement n’est pas considéré comme une validation de ces clés d’images ;
 - la légende est localisée dans les langues du lot ;

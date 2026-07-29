@@ -212,7 +212,7 @@ Pour une image déjà présente dans l’export actualisé, utiliser son ID :
 - `blocks[].imageId` ;
 - `blocks[].imageIds`.
 
-Pour une image distante créée dans le même JSON, définir une `images[].key` stable et unique, puis utiliser exactement cette valeur dans :
+Pour une image distante créée dans le même JSON, définir une `images[].key` stable et unique après suppression des espaces de bord et sans tenir compte de la casse, puis recopier exactement cette valeur dans :
 
 - `mainImageKey` ;
 - `blocks[].imageKey` ;
@@ -229,7 +229,7 @@ Pendant un Preview, une nouvelle image distante n’a pas encore d’ID importé
 Un Preview sans avertissement ne prouve donc pas que les clés d’images de l’article sont correctes. Avant livraison, ChatGPT doit effectuer ce contrôle statique :
 
 1. lister toutes les définitions `images[].key` du JSON ;
-2. vérifier qu’elles sont uniques ;
+2. supprimer leurs espaces de bord, les comparer sans tenir compte de la casse et vérifier qu’elles restent uniques ;
 3. lister toutes les références `mainImageKey`, `imageKey` et `imageKeys` ;
 4. vérifier caractère par caractère que chaque référence possède exactement une définition dans le même JSON ;
 5. utiliser un ID exporté à la place pour toute image qui n’est pas créée dans ce lot.
@@ -407,6 +407,7 @@ Section principale : `history.events`.
 - Chaque article qui référence une image existante utilise `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` depuis l’export actualisé.
 - `mainImageKey`, `imageKey` et `imageKeys` ne sont utilisés que pour des images créées dans le même JSON.
 - Chaque clé d’image référencée correspond caractère par caractère à une unique `images[].key` du lot.
+- Deux définitions `images[].key` ne deviennent jamais identiques après suppression des espaces de bord et comparaison sans tenir compte de la casse.
 - Le Preview n’est pas considéré comme une validation des clés d’images utilisées par les articles.
 - Les titres, sous-titres, résumés, paragraphes et légendes sont relus en affichage public mobile.
 - Aucune légende ne doit expliquer l’absence d’une autre image ; elle doit décrire l’image affichée et son lien avec le sujet.

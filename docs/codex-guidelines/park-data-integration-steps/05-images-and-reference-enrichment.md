@@ -80,7 +80,7 @@ Le parc cible est le seul propriétaire résolu directement par le contexte du p
 | Exploitant | `ParkOperator` | `operator:<key>` | entrée correspondante dans `references.operators` | non utilisé pour résoudre ce type |
 | Fondateur | `ParkFounder` | `founder:<key>` | entrée correspondante dans `references.founders` | non utilisé pour résoudre ce type |
 | Constructeur | `AttractionManufacturer` | `manufacturer:<key>` | entrée correspondante dans `references.manufacturers` | non utilisé pour résoudre ce type |
-| Attraction autonome | `StandaloneAttraction` | clé enregistrée par le bloc d’attraction, notamment `standaloneAttraction` dans l’export standard | bloc `standaloneAttraction` ou `standaloneAttractions` correspondant | un `ownerId` exact non vide est accepté directement pour ce type |
+| Attraction autonome | `StandaloneAttraction` | clé enregistrée par le bloc singulier, notamment `standaloneAttraction` dans l’export standard | bloc `standaloneAttraction` correspondant | un `ownerId` exact non vide est accepté directement pour ce type |
 
 Le processeur sait déduire certains `ownerType` depuis un préfixe, mais ChatGPT doit toujours l’écrire explicitement pour empêcher un repli accidentel vers `Park`.
 
@@ -116,7 +116,7 @@ Une alerte Preview du type `Remote image ignored: owner could not be resolved` i
 
 Chaque nouvelle image distante doit avoir :
 
-- `key` ;
+- `key` stable, sans espaces de bord et unique sans tenir compte de la casse ;
 - `sourceUrl` ;
 - `ownerType` ;
 - l’`ownerKey` défini dans le tableau ci-dessus, sauf attraction autonome volontairement résolue par son `ownerId` exact ;

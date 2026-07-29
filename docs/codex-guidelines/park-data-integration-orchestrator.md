@@ -88,7 +88,7 @@ Pour une image de parkItem ou de référence, `ownerId` ne remplace jamais `owne
 Cas autorisé pour les clés :
 
 - `itemKey` / `parkItemKey` peut être utilisé seulement si le même JSON contient aussi une section `items[]` minimale qui permet de remplir le dictionnaire des parkItems avant le traitement dépendant ;
-- `imageKey` peut être utilisé dans un article pour une image créée dans le même JSON avec un `key` stable et unique ;
+- `imageKey` peut être utilisé dans un article pour une image créée dans le même JSON avec un `key` stable et unique après suppression des espaces de bord et sans tenir compte de la casse ;
 - sinon utiliser `imageId` depuis l’export actualisé.
 
 Tout Preview qui retourne :
