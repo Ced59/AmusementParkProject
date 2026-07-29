@@ -1,5 +1,26 @@
-<article class="admin-photo-batch-card" [class.admin-photo-batch-card--saving]="photo.isSaving">
+<article
+  class="admin-photo-batch-card"
+  [class.admin-photo-batch-card--selected]="selected"
+  [class.admin-photo-batch-card--saving]="photo.isSaving"
+  [attr.aria-busy]="photo.isSaving">
   <div class="admin-photo-batch-card__media">
+    <label class="admin-photo-batch-card__selector">
+      <input
+        type="checkbox"
+        [checked]="selected"
+        [disabled]="photo.isSaving"
+        [attr.aria-label]="'admin.images.batch.selectPhotoAria' | translate: {
+          name: photo.image.originalFileName || photo.image.description || photo.image.id
+        }"
+        (change)="onSelectionChange($event)">
+      <span>{{ 'admin.images.batch.selectPhoto' | translate }}</span>
+    </label>
+    @if (photo.image.isCurrent) {
+      <span class="admin-photo-batch-card__current">
+        <i class="pi pi-star-fill" aria-hidden="true"></i>
+        {{ 'admin.images.batch.currentPhoto' | translate }}
+      </span>
+    }
     <app-image-display
       [imageId]="photo.image.id"
       [alt]="photo.image.description || photo.image.originalFileName || photo.image.id"
@@ -9,6 +30,11 @@
       sizes="(max-width: 900px) 100vw, 320px"
       [srcWidth]="480">
     </app-image-display>
+    @if (photo.isSaving) {
+      <span class="admin-photo-batch-card__processing" aria-hidden="true">
+        <i class="pi pi-spinner pi-spin"></i>
+      </span>
+    }
   </div>
 
   <div class="admin-photo-batch-card__body">
@@ -65,7 +91,7 @@
     <div class="admin-photo-batch-card__form">
       <label class="admin-field">
         <span class="admin-field-label">{{ 'admin.images.batch.target' | translate }}</span>
-        <select [ngModel]="photo.draftOwnerKind" (ngModelChange)="onOwnerKindChange($event)">
+        <select [ngModel]="photo.draftOwnerKind" [disabled]="photo.isSaving" (ngModelChange)="onOwnerKindChange($event)">
           <option value="park">{{ 'admin.images.batch.targetPark' | translate }}</option>
           <option value="parkItem">{{ 'admin.images.batch.targetParkItem' | translate }}</option>
         </select>
@@ -74,7 +100,7 @@
       @if (photo.draftOwnerKind === 'parkItem') {
         <label class="admin-field">
           <span class="admin-field-label">{{ 'admin.images.batch.parkItem' | translate }}</span>
-          <select [ngModel]="photo.draftParkItemId || ''" (ngModelChange)="onParkItemChange($event)">
+          <select [ngModel]="photo.draftParkItemId || ''" [disabled]="photo.isSaving" (ngModelChange)="onParkItemChange($event)">
             <option value="">{{ 'admin.images.batch.chooseParkItem' | translate }}</option>
             @for (item of parkItems; track item.id) {
               <option [value]="item.id">{{ item.name }}</option>
@@ -85,7 +111,7 @@
 
       <label class="admin-field">
         <span class="admin-field-label">{{ 'admin.images.batch.category' | translate }}</span>
-        <select [ngModel]="photo.draftCategorySlug" (ngModelChange)="onCategoryChange($event)">
+        <select [ngModel]="photo.draftCategorySlug" [disabled]="photo.isSaving" (ngModelChange)="onCategoryChange($event)">
           @for (category of categoryOptions; track category.slug) {
             <option [value]="category.slug">{{ category.labelKey | translate }}</option>
           }
@@ -98,6 +124,18 @@
         <i class="pi pi-save" aria-hidden="true"></i>
         {{ 'actions.save' | translate }}
       </button>
+      @if (photo.section !== 'uncategorized') {
+        <button
+          type="button"
+          class="btn btn--sm"
+          [class.btn--lime]="photo.image.isCurrent"
+          [class.btn--ghost]="!photo.image.isCurrent"
+          [disabled]="photo.isSaving || photo.image.isCurrent"
+          (click)="setAsCurrent()">
+          <i class="pi" [class.pi-star-fill]="photo.image.isCurrent" [class.pi-star]="!photo.image.isCurrent" aria-hidden="true"></i>
+          {{ (photo.image.isCurrent ? 'admin.images.batch.currentPhoto' : 'admin.images.batch.setAsCurrent') | translate }}
+        </button>
+      }
       @if (photo.section !== 'uncategorized') {
         <button type="button" class="btn btn--ghost btn--sm" [disabled]="photo.isSaving" (click)="moveToUncategorized()">
           <i class="pi pi-inbox" aria-hidden="true"></i>

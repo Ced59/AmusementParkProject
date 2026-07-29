@@ -1,6 +1,6 @@
 import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, Subject, of, throwError } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AdminImageSearchQuery } from '@app/models/images/admin-image-search-query';
@@ -53,6 +53,12 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
   );
   public tagsResponse$: Observable<ImageTagDto[]> = of(createCategoryTags());
   public deleteResponse$: Observable<boolean> = of(true);
+  public currentResponse$: Observable<ImageDto> = of(
+    createImage('image-1', { isCurrent: true }),
+  );
+  public uploadResponsesByFileName: Record<string, Observable<UploadedImage>> =
+    {};
+  public readonly updateErrorsById: Set<string> = new Set<string>();
 
   public readonly uploadCalls: File[] = [];
   public readonly updateCalls: Array<{
@@ -60,6 +66,7 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
     request: UpdateAdminImageRequest;
   }> = [];
   public readonly deleteCalls: string[] = [];
+  public readonly currentCalls: string[] = [];
   public readonly adminImageQueries: Partial<AdminImageSearchQuery>[] = [];
   public readonly parkItemImageCalls: Array<{
     parkId: string;
@@ -69,7 +76,7 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
 
   uploadImage(file: File): Observable<UploadedImage> {
     this.uploadCalls.push(file);
-    return this.uploadResponse$;
+    return this.uploadResponsesByFileName[file.name] ?? this.uploadResponse$;
   }
 
   linkImage(): Observable<ImageDto> {
@@ -81,6 +88,10 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
     request: UpdateAdminImageRequest,
   ): Observable<ImageDto> {
     this.updateCalls.push({ id, request });
+    if (this.updateErrorsById.has(id)) {
+      return throwError(() => new Error(`Update failed for ${id}.`));
+    }
+
     return of(
       createImage(id, {
         category: request.category ?? ImageCategory.PARK,
@@ -97,6 +108,11 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
   deleteImage(imageId: string): Observable<boolean> {
     this.deleteCalls.push(imageId);
     return this.deleteResponse$;
+  }
+
+  setCurrentImage(imageId: string): Observable<ImageDto> {
+    this.currentCalls.push(imageId);
+    return this.currentResponse$;
   }
 
   getAdminImages(
@@ -265,6 +281,38 @@ describe('AdminPhotoBatchStateFacade', () => {
     expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual([
       'image-1',
     ]);
+    expect(imagesPort.adminImageQueries.length).toBe(1);
+  });
+
+  it('uploads selected files one at a time', async () => {
+    const firstUpload: Subject<UploadedImage> = new Subject<UploadedImage>();
+    imagesPort.uploadResponsesByFileName['first.jpg'] =
+      firstUpload.asObservable();
+    await prepareSelectedParkAsync(facade);
+    facade.selectFiles(
+      createFileInputEvent(
+        new File(['first'], 'first.jpg', { type: 'image/jpeg' }),
+        new File(['second'], 'second.jpg', { type: 'image/jpeg' }),
+      ),
+    );
+    await flushAsyncWork();
+
+    const uploadPromise: Promise<void> = facade.uploadSelectedFiles();
+    await flushAsyncWork();
+
+    expect(imagesPort.uploadCalls.map((file: File) => file.name)).toEqual([
+      'first.jpg',
+    ]);
+
+    firstUpload.next({ id: 'uploaded-first' });
+    firstUpload.complete();
+    await flushAsyncWork();
+
+    expect(imagesPort.uploadCalls.map((file: File) => file.name)).toEqual([
+      'first.jpg',
+      'second.jpg',
+    ]);
+    await uploadPromise;
   });
 
   it('loads the first image pages and loads more on demand', async () => {
@@ -369,13 +417,6 @@ describe('AdminPhotoBatchStateFacade', () => {
       ]),
     );
     await prepareSelectedParkAsync(facade);
-    imagesPort.parkImagesPage$ = of(createPagedResult<ImageDto>([]));
-    imagesPort.parkItemImagesPage$ = of(
-      createPagedResult<ParkItemImageDto>([
-        createParkItemImage('image-1', 'item-1', 'Demo Coaster'),
-      ]),
-    );
-
     facade.setPhotoDraftOwnerKind('image-1', 'parkItem');
     facade.setPhotoDraftParkItemId('image-1', 'item-1');
     facade.setPhotoDraftCategorySlug(
@@ -394,6 +435,116 @@ describe('AdminPhotoBatchStateFacade', () => {
     expect(facade.parkItemPhotos().map((photo) => photo.id)).toEqual([
       'image-1',
     ]);
+    expect(facade.parkItemPhotos()[0].parkItemName).toBe('Demo Coaster');
+    expect(imagesPort.adminImageQueries.length).toBe(1);
+  });
+
+  it('classifies selected photos in one action and assigns the chosen current photo without reloading', async () => {
+    imagesPort.parkImagesPage$ = of(
+      createPagedResult<ImageDto>([
+        createImage('image-1', { tagIds: [] }),
+        createImage('image-2', { tagIds: [] }),
+      ]),
+    );
+    await prepareSelectedParkAsync(facade);
+
+    facade.setPhotoSelected('image-1', true);
+    facade.setPhotoSelected('image-2', true);
+    facade.setBulkOwnerKind('parkItem');
+    facade.setBulkParkItemId('item-1');
+    facade.setBulkCategorySlug(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
+    facade.setBulkCurrentImageId('image-2');
+
+    await facade.applyBulkCategorization();
+
+    expect(imagesPort.updateCalls.map((call) => call.id)).toEqual([
+      'image-2',
+      'image-1',
+    ]);
+    expect(
+      imagesPort.updateCalls.every(
+        (call) => call.request.ownerType === ImageOwnerType.PARK_ITEM,
+      ),
+    ).toBe(true);
+    expect(
+      imagesPort.updateCalls.every((call) => call.request.ownerId === 'item-1'),
+    ).toBe(true);
+    expect(
+      imagesPort.updateCalls.find((call) => call.id === 'image-2')?.request
+        .isCurrent,
+    ).toBe(true);
+    expect(
+      facade
+        .parkItemPhotos()
+        .map((photo) => photo.id)
+        .sort(),
+    ).toEqual(['image-1', 'image-2']);
+    expect(
+      facade.parkItemPhotos().find((photo) => photo.id === 'image-2')?.image
+        .isCurrent,
+    ).toBe(true);
+    expect(facade.selectedPhotoCount()).toBe(0);
+    expect(imagesPort.adminImageQueries.length).toBe(1);
+  });
+
+  it('sets a classified photo as current and updates the local scope without reloading', async () => {
+    const categoryTagId: string = `${PARK_PHOTO_CATEGORY_OPTIONS[0].slug}-tag`;
+    imagesPort.parkImagesPage$ = of(
+      createPagedResult<ImageDto>([
+        createImage('image-1', {
+          isCurrent: true,
+          tagIds: [categoryTagId],
+        }),
+        createImage('image-2', {
+          isCurrent: false,
+          tagIds: [categoryTagId],
+        }),
+      ]),
+    );
+    imagesPort.currentResponse$ = of(
+      createImage('image-2', {
+        isCurrent: true,
+        tagIds: [categoryTagId],
+      }),
+    );
+    await prepareSelectedParkAsync(facade);
+
+    await facade.setPhotoAsCurrent('image-2');
+
+    expect(imagesPort.currentCalls).toEqual(['image-2']);
+    expect(
+      facade.parkPhotos().find((photo) => photo.id === 'image-1')?.image
+        .isCurrent,
+    ).toBe(false);
+    expect(
+      facade.parkPhotos().find((photo) => photo.id === 'image-2')?.image
+        .isCurrent,
+    ).toBe(true);
+    expect(imagesPort.adminImageQueries.length).toBe(1);
+  });
+
+  it('keeps failed bulk photos selected and editable after successful photos have moved', async () => {
+    imagesPort.parkImagesPage$ = of(
+      createPagedResult<ImageDto>([
+        createImage('image-1', { tagIds: [] }),
+        createImage('image-2', { tagIds: [] }),
+      ]),
+    );
+    imagesPort.updateErrorsById.add('image-2');
+    await prepareSelectedParkAsync(facade);
+
+    facade.setPhotoSelected('image-1', true);
+    facade.setPhotoSelected('image-2', true);
+    await facade.applyBulkCategorization();
+
+    expect(facade.parkPhotos().map((photo) => photo.id)).toEqual(['image-1']);
+    expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual([
+      'image-2',
+    ]);
+    expect(facade.selectedPhotoCount()).toBe(1);
+    expect(facade.isPhotoSelected('image-2')).toBe(true);
+    expect(facade.uncategorizedPhotos()[0].isSaving).toBe(false);
+    expect(imagesPort.adminImageQueries.length).toBe(1);
   });
 
   it('toggles public visibility through image metadata updates', async () => {
@@ -494,7 +645,7 @@ describe('AdminPhotoBatchStateFacade', () => {
     );
   });
 
-  it('reloads the workspace after deleting a photo so the next page is not skipped', async () => {
+  it('keeps pagination complete after a local deletion without refreshing the workspace', async () => {
     imagesPort.parkImagesPages = {
       1: createPagedResult<ImageDto>(
         [createImage('image-1', { isPublished: false, tagIds: [] })],
@@ -512,6 +663,13 @@ describe('AdminPhotoBatchStateFacade', () => {
     );
 
     await facade.deletePhoto('image-1');
+
+    expect(imagesPort.adminImageQueries.map((query) => query.page)).toEqual([
+      1,
+    ]);
+    expect(facade.uncategorizedPhotos()).toEqual([]);
+
+    await facade.loadMoreParkPhotos();
     await facade.loadMoreParkPhotos();
 
     expect(imagesPort.adminImageQueries.map((query) => query.page)).toEqual([
@@ -533,10 +691,10 @@ async function prepareSelectedParkAsync(
   await flushAsyncWork();
 }
 
-function createFileInputEvent(file: File): Event {
+function createFileInputEvent(...files: File[]): Event {
   const input: HTMLInputElement = document.createElement('input');
   Object.defineProperty(input, 'files', {
-    value: [file],
+    value: files,
   });
 
   return { target: input } as unknown as Event;

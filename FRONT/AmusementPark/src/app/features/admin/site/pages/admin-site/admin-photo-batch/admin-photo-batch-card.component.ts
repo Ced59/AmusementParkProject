@@ -26,13 +26,16 @@ export class AdminPhotoBatchCardComponent {
   @Input() parkItems: readonly AdminPhotoBatchParkItemOption[] = [];
   @Input() parkCategoryOptions: readonly AdminParkPhotoCategoryOption[] = [];
   @Input() parkItemCategoryOptions: readonly AdminParkItemPhotoCategoryOption[] = [];
+  @Input() selected: boolean = false;
 
+  @Output() selectionChange = new EventEmitter<{ photoId: string; selected: boolean }>();
   @Output() ownerKindChange = new EventEmitter<{ photoId: string; ownerKind: AdminPhotoBatchOwnerKind }>();
   @Output() parkItemChange = new EventEmitter<{ photoId: string; parkItemId: string }>();
   @Output() categoryChange = new EventEmitter<{ photoId: string; categorySlug: string }>();
   @Output() save = new EventEmitter<string>();
   @Output() uncategorize = new EventEmitter<string>();
   @Output() togglePublished = new EventEmitter<string>();
+  @Output() setCurrent = new EventEmitter<string>();
   @Output() deletePhoto = new EventEmitter<AdminPhotoBatchPhoto>();
 
   protected get categoryOptions(): readonly (AdminParkPhotoCategoryOption | AdminParkItemPhotoCategoryOption)[] {
@@ -53,6 +56,11 @@ export class AdminPhotoBatchCardComponent {
 
   protected onOwnerKindChange(ownerKind: AdminPhotoBatchOwnerKind): void {
     this.ownerKindChange.emit({ photoId: this.photo.id, ownerKind });
+  }
+
+  protected onSelectionChange(event: Event): void {
+    const inputElement: HTMLInputElement = event.target as HTMLInputElement;
+    this.selectionChange.emit({ photoId: this.photo.id, selected: inputElement.checked });
   }
 
   protected onParkItemChange(parkItemId: string): void {
@@ -78,6 +86,12 @@ export class AdminPhotoBatchCardComponent {
   protected togglePublicVisibility(): void {
     if (!this.photo.isSaving) {
       this.togglePublished.emit(this.photo.id);
+    }
+  }
+
+  protected setAsCurrent(): void {
+    if (!this.photo.isSaving && !this.photo.image.isCurrent && this.photo.section !== 'uncategorized') {
+      this.setCurrent.emit(this.photo.id);
     }
   }
 

@@ -78,6 +78,12 @@ public static class RateLimitingServiceCollectionExtensions
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthPasswordReset, authenticationSettings.PasswordReset);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.ContactSubmission, contactSubmissionSettings);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.SocialShareEvents, socialShareEventSettings);
+            options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
+            {
+                limiterOptions.PermitLimit = 1;
+                limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                limiterOptions.QueueLimit = 8;
+            });
         });
 
         return services;

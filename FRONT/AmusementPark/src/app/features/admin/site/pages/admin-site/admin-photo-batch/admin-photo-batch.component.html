@@ -45,7 +45,7 @@
 
         <label class="admin-field">
           <span class="admin-field-label">{{ 'admin.images.batch.park' | translate }}</span>
-          <select [ngModel]="selectedParkId() || ''" [disabled]="parksLoading() || uploading()" (ngModelChange)="selectPark($event)">
+          <select [ngModel]="selectedParkId() || ''" [disabled]="parksLoading() || uploading() || bulkSaving()" (ngModelChange)="selectPark($event)">
             <option value="">{{ 'admin.images.batch.choosePark' | translate }}</option>
             @for (park of parks(); track park.id) {
               <option [value]="park.id">{{ park.name }}</option>
@@ -57,13 +57,17 @@
       <div class="admin-photo-batch-setup__upload">
         <label class="admin-field">
           <span class="admin-field-label">{{ 'admin.images.batch.files' | translate }}</span>
-          <input type="file" accept="image/*" multiple [disabled]="!selectedParkId() || uploading()" (change)="selectFiles($event)">
+          <input type="file" accept="image/*" multiple [disabled]="!selectedParkId() || uploading() || bulkSaving()" (change)="selectFiles($event)">
         </label>
 
         <label class="admin-checkbox-row">
           <input type="checkbox" [ngModel]="withWatermark()" [disabled]="uploading()" (ngModelChange)="setWithWatermark($event)">
           <span>{{ 'admin.images.batch.withWatermark' | translate }}</span>
         </label>
+        <p class="admin-photo-batch-setup__queue-hint">
+          <i class="pi pi-shield" aria-hidden="true"></i>
+          {{ 'admin.images.batch.uploadSequentialHint' | translate }}
+        </p>
 
         <div class="admin-photo-batch-setup__actions">
           <button
@@ -81,7 +85,7 @@
             </button>
           }
           @if (selectedParkId()) {
-            <button type="button" class="btn btn--ghost btn--sm" [disabled]="uploading() || photosLoading()" (click)="refreshSelectedPark()">
+            <button type="button" class="btn btn--ghost btn--sm" [disabled]="uploading() || bulkSaving() || photosLoading()" (click)="refreshSelectedPark()">
               <i class="pi pi-refresh" aria-hidden="true"></i>
               {{ 'actions.refresh' | translate }}
             </button>
@@ -150,6 +154,80 @@
     }
   </section>
 
+  @if (selectedParkId() && selectedPhotoCount() > 0) {
+    <section class="admin-photo-batch-bulk" aria-labelledby="admin-photo-batch-bulk-title">
+      <header class="admin-photo-batch-section-header">
+        <div>
+          <h3 id="admin-photo-batch-bulk-title">
+            {{ 'admin.images.batch.bulkSelectionTitle' | translate: { count: selectedPhotoCount() } }}
+          </h3>
+          <p>{{ 'admin.images.batch.bulkSelectionSubtitle' | translate }}</p>
+        </div>
+        <button type="button" class="btn btn--ghost btn--sm" [disabled]="bulkSaving()" (click)="clearPhotoSelection()">
+          <i class="pi pi-times" aria-hidden="true"></i>
+          {{ 'admin.images.batch.clearSelection' | translate }}
+        </button>
+      </header>
+
+      <div class="admin-photo-batch-bulk__fields">
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.batch.target' | translate }}</span>
+          <select [ngModel]="bulkOwnerKind()" [disabled]="bulkSaving()" (ngModelChange)="setBulkOwnerKind($event)">
+            <option value="park">{{ 'admin.images.batch.targetPark' | translate }}</option>
+            <option value="parkItem">{{ 'admin.images.batch.targetParkItem' | translate }}</option>
+          </select>
+        </label>
+
+        @if (bulkOwnerKind() === 'parkItem') {
+          <label class="admin-field">
+            <span class="admin-field-label">{{ 'admin.images.batch.parkItem' | translate }}</span>
+            <select [ngModel]="bulkParkItemId() || ''" [disabled]="bulkSaving()" (ngModelChange)="setBulkParkItem($event)">
+              <option value="">{{ 'admin.images.batch.chooseParkItem' | translate }}</option>
+              @for (item of parkItems(); track trackParkItemById($index, item)) {
+                <option [value]="item.id">{{ item.name }}</option>
+              }
+            </select>
+          </label>
+        }
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.batch.category' | translate }}</span>
+          <select [ngModel]="bulkCategorySlug()" [disabled]="bulkSaving()" (ngModelChange)="setBulkCategory($event)">
+            @for (
+              category of (bulkOwnerKind() === 'parkItem' ? categorySets().parkItem : categorySets().park);
+              track category.slug
+            ) {
+              <option [value]="category.slug">{{ category.labelKey | translate }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.batch.mainPhoto' | translate }}</span>
+          <select [ngModel]="bulkCurrentImageId() || ''" [disabled]="bulkSaving()" (ngModelChange)="setBulkCurrentImage($event)">
+            <option value="">{{ 'admin.images.batch.noMainPhoto' | translate }}</option>
+            @for (photo of selectedPhotos(); track trackPhotoById($index, photo)) {
+              <option [value]="photo.id">
+                {{ photo.image.originalFileName || photo.image.description || photo.image.id }}
+              </option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <div class="admin-photo-batch-bulk__actions">
+        <button
+          type="button"
+          class="btn btn--primary btn--sm"
+          [disabled]="!canApplyBulkCategorization()"
+          (click)="applyBulkCategorization()">
+          <i class="pi" [class.pi-spinner]="bulkSaving()" [class.pi-spin]="bulkSaving()" [class.pi-check]="!bulkSaving()" aria-hidden="true"></i>
+          {{ (bulkSaving() ? 'admin.images.batch.applySelectionInProgress' : 'admin.images.batch.applySelection') | translate }}
+        </button>
+      </div>
+    </section>
+  }
+
   @if (selectedParkId()) {
     <section class="admin-photo-batch-section admin-photo-batch-section--uncategorized" aria-labelledby="admin-photo-batch-uncategorized-title">
       <header class="admin-photo-batch-section-header">
@@ -170,12 +248,15 @@
               [parkItems]="parkItems()"
               [parkCategoryOptions]="categorySets().park"
               [parkItemCategoryOptions]="categorySets().parkItem"
+              [selected]="isPhotoSelected(photo.id)"
+              (selectionChange)="setPhotoSelected($event)"
               (ownerKindChange)="setPhotoDraftOwnerKind($event)"
               (parkItemChange)="setPhotoDraftParkItem($event)"
               (categoryChange)="setPhotoDraftCategory($event)"
               (save)="savePhotoCategorization($event)"
               (uncategorize)="movePhotoToUncategorized($event)"
               (togglePublished)="togglePublished($event)"
+              (setCurrent)="setPhotoAsCurrent($event)"
               (deletePhoto)="deletePhoto($event)">
             </app-admin-photo-batch-card>
           }
@@ -212,12 +293,15 @@
               [parkItems]="parkItems()"
               [parkCategoryOptions]="categorySets().park"
               [parkItemCategoryOptions]="categorySets().parkItem"
+              [selected]="isPhotoSelected(photo.id)"
+              (selectionChange)="setPhotoSelected($event)"
               (ownerKindChange)="setPhotoDraftOwnerKind($event)"
               (parkItemChange)="setPhotoDraftParkItem($event)"
               (categoryChange)="setPhotoDraftCategory($event)"
               (save)="savePhotoCategorization($event)"
               (uncategorize)="movePhotoToUncategorized($event)"
               (togglePublished)="togglePublished($event)"
+              (setCurrent)="setPhotoAsCurrent($event)"
               (deletePhoto)="deletePhoto($event)">
             </app-admin-photo-batch-card>
           }
@@ -254,12 +338,15 @@
               [parkItems]="parkItems()"
               [parkCategoryOptions]="categorySets().park"
               [parkItemCategoryOptions]="categorySets().parkItem"
+              [selected]="isPhotoSelected(photo.id)"
+              (selectionChange)="setPhotoSelected($event)"
               (ownerKindChange)="setPhotoDraftOwnerKind($event)"
               (parkItemChange)="setPhotoDraftParkItem($event)"
               (categoryChange)="setPhotoDraftCategory($event)"
               (save)="savePhotoCategorization($event)"
               (uncategorize)="movePhotoToUncategorized($event)"
               (togglePublished)="togglePublished($event)"
+              (setCurrent)="setPhotoAsCurrent($event)"
               (deletePhoto)="deletePhoto($event)">
             </app-admin-photo-batch-card>
           }

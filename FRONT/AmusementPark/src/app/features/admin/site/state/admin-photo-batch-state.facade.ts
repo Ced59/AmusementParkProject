@@ -66,7 +66,6 @@ const DEFAULT_PARK_PHOTO_CATEGORY_SLUG: string = PARK_PHOTO_CATEGORY_OPTIONS[0].
 const DEFAULT_PARK_ITEM_PHOTO_CATEGORY_SLUG: string = PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug;
 const PARKS_PAGE_SIZE: number = 60;
 const WORKSPACE_PAGE_SIZE: number = 100;
-const UPLOAD_CONCURRENCY_LIMIT: number = 2;
 
 @Injectable()
 export class AdminPhotoBatchStateFacade implements OnDestroy {
@@ -89,6 +88,12 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
   private readonly uploadingSignal = signal(false);
   private readonly uploadProgressSignal = signal<AdminPhotoBatchUploadProgress | null>(null);
   private readonly withWatermarkSignal = signal(true);
+  private readonly selectedPhotoIdsSignal = signal<Set<string>>(new Set<string>());
+  private readonly bulkOwnerKindSignal = signal<AdminPhotoBatchOwnerKind>('park');
+  private readonly bulkParkItemIdSignal = signal<string | null>(null);
+  private readonly bulkCategorySlugSignal = signal(DEFAULT_PARK_PHOTO_CATEGORY_SLUG);
+  private readonly bulkCurrentImageIdSignal = signal<string | null>(null);
+  private readonly bulkSavingSignal = signal(false);
   private readonly categoryTagIdsBySlugSignal = signal<Record<string, string>>({});
   private readonly categorySlugByTagIdSignal = signal<Record<string, string>>({});
   private readonly metadataRequestsBySelectionId = new Map<string, Promise<AdminContextualPhotoMetadataPreview | null>>();
@@ -125,6 +130,23 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       : 0;
   });
   public readonly withWatermark: Signal<boolean> = this.withWatermarkSignal.asReadonly();
+  public readonly selectedPhotoCount: Signal<number> = computed(() => this.selectedPhotoIdsSignal().size);
+  public readonly selectedPhotos: Signal<AdminPhotoBatchPhoto[]> = computed(() => {
+    const selectedPhotoIds: Set<string> = this.selectedPhotoIdsSignal();
+    return this.photosSignal().filter((photo: AdminPhotoBatchPhoto) => selectedPhotoIds.has(photo.id));
+  });
+  public readonly bulkOwnerKind: Signal<AdminPhotoBatchOwnerKind> = this.bulkOwnerKindSignal.asReadonly();
+  public readonly bulkParkItemId: Signal<string | null> = this.bulkParkItemIdSignal.asReadonly();
+  public readonly bulkCategorySlug: Signal<string> = this.bulkCategorySlugSignal.asReadonly();
+  public readonly bulkCurrentImageId: Signal<string | null> = this.bulkCurrentImageIdSignal.asReadonly();
+  public readonly bulkSaving: Signal<boolean> = this.bulkSavingSignal.asReadonly();
+  public readonly canApplyBulkCategorization: Signal<boolean> = computed(() =>
+    this.selectedPhotoIdsSignal().size > 0 &&
+    !this.bulkSavingSignal() &&
+    !this.selectedPhotos().some((photo: AdminPhotoBatchPhoto) => photo.isSaving) &&
+    Boolean(this.bulkCategorySlugSignal()) &&
+    (this.bulkOwnerKindSignal() === 'park' || Boolean(this.bulkParkItemIdSignal()))
+  );
   public readonly categorySets: Signal<AdminPhotoBatchCategorySets> = signal<AdminPhotoBatchCategorySets>({
     park: PARK_PHOTO_CATEGORY_OPTIONS,
     parkItem: PARK_ITEM_PHOTO_CATEGORY_OPTIONS
@@ -205,6 +227,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     this.photosSignal.set([]);
     this.parkItemsSignal.set([]);
     this.resetPhotoPagination();
+    this.resetBulkSelection();
     this.clearSelectedFiles();
 
     if (!normalizedParkId) {
@@ -225,6 +248,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       return;
     }
 
+    this.resetBulkSelection();
     this.resetPhotoPagination();
     void this.loadParkWorkspaceAsync(parkId);
   }
@@ -316,11 +340,11 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     let completedCount: number = 0;
     let failedCount: number = 0;
     let missingGeoCount: number = 0;
-    let shouldReloadWorkspace: boolean = false;
 
     try {
       await this.ensureCategoryTagsAsync();
-      await this.runWithConcurrency(selections, async (selection: AdminPhotoBatchUploadSelection, index: number): Promise<void> => {
+      for (let index: number = 0; index < selections.length; index++) {
+        const selection: AdminPhotoBatchUploadSelection = selections[index];
         this.uploadProgressSignal.set({
           completed: completedCount,
           total: selections.length,
@@ -333,7 +357,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
           if (!uploadedPhoto.geoLocation) {
             missingGeoCount++;
           }
-          this.upsertPhoto(this.toBatchPhoto(uploadedPhoto));
+          this.applyUpdatedImage(uploadedPhoto);
         } catch (error: unknown) {
           failedCount++;
           console.error('Error uploading photo batch selection', error);
@@ -346,9 +370,8 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
             currentFileName: selection.fileName
           });
         }
-      });
+      }
 
-      shouldReloadWorkspace = completedCount > failedCount;
       this.clearSelectedFiles();
       this.toastMessageService.add(
         failedCount === 0 ? 'success' : 'warn',
@@ -376,10 +399,6 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     } finally {
       this.uploadingSignal.set(false);
       this.uploadProgressSignal.set(null);
-    }
-
-    if (shouldReloadWorkspace) {
-      await this.reloadParkWorkspaceAsync(parkId);
     }
   }
 
@@ -472,6 +491,186 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     this.patchPhoto(photoId, { draftCategorySlug: categorySlug });
   }
 
+  isPhotoSelected(photoId: string): boolean {
+    return this.selectedPhotoIdsSignal().has(photoId);
+  }
+
+  setPhotoSelected(photoId: string, selected: boolean): void {
+    const photo: AdminPhotoBatchPhoto | undefined = this.photosSignal().find((item: AdminPhotoBatchPhoto) => item.id === photoId);
+    if (!photo || photo.isSaving || this.bulkSavingSignal()) {
+      return;
+    }
+
+    const selectedPhotoIds: Set<string> = new Set<string>(this.selectedPhotoIdsSignal());
+    if (selected) {
+      selectedPhotoIds.add(photoId);
+    } else {
+      selectedPhotoIds.delete(photoId);
+      if (this.bulkCurrentImageIdSignal() === photoId) {
+        this.bulkCurrentImageIdSignal.set(null);
+      }
+    }
+
+    this.selectedPhotoIdsSignal.set(selectedPhotoIds);
+  }
+
+  clearPhotoSelection(): void {
+    if (this.bulkSavingSignal()) {
+      return;
+    }
+
+    this.selectedPhotoIdsSignal.set(new Set<string>());
+    this.bulkCurrentImageIdSignal.set(null);
+  }
+
+  setBulkOwnerKind(ownerKind: AdminPhotoBatchOwnerKind): void {
+    if (this.bulkSavingSignal()) {
+      return;
+    }
+
+    this.bulkOwnerKindSignal.set(ownerKind);
+    this.bulkParkItemIdSignal.set(ownerKind === 'parkItem' ? this.parkItemsSignal()[0]?.id ?? null : null);
+    this.bulkCategorySlugSignal.set(
+      ownerKind === 'parkItem'
+        ? DEFAULT_PARK_ITEM_PHOTO_CATEGORY_SLUG
+        : DEFAULT_PARK_PHOTO_CATEGORY_SLUG
+    );
+  }
+
+  setBulkParkItemId(parkItemId: string): void {
+    if (!this.bulkSavingSignal()) {
+      this.bulkParkItemIdSignal.set(parkItemId || null);
+    }
+  }
+
+  setBulkCategorySlug(categorySlug: string): void {
+    if (!this.bulkSavingSignal()) {
+      this.bulkCategorySlugSignal.set(categorySlug);
+    }
+  }
+
+  setBulkCurrentImageId(imageId: string): void {
+    if (this.bulkSavingSignal()) {
+      return;
+    }
+
+    this.bulkCurrentImageIdSignal.set(
+      imageId && this.selectedPhotoIdsSignal().has(imageId)
+        ? imageId
+        : null
+    );
+  }
+
+  async applyBulkCategorization(): Promise<void> {
+    const parkId: string | null = this.selectedParkIdSignal();
+    const ownerKind: AdminPhotoBatchOwnerKind = this.bulkOwnerKindSignal();
+    const parkItemId: string | null = this.bulkParkItemIdSignal();
+    const categorySlug: string = this.bulkCategorySlugSignal();
+    const currentImageId: string | null = this.bulkCurrentImageIdSignal();
+    const selectedPhotoIds: Set<string> = new Set<string>(this.selectedPhotoIdsSignal());
+    const selectedPhotos: AdminPhotoBatchPhoto[] = this.photosSignal()
+      .filter((photo: AdminPhotoBatchPhoto) => selectedPhotoIds.has(photo.id) && !photo.isSaving)
+      .sort((left: AdminPhotoBatchPhoto, right: AdminPhotoBatchPhoto) => {
+        if (left.id === currentImageId) {
+          return -1;
+        }
+
+        if (right.id === currentImageId) {
+          return 1;
+        }
+
+        return 0;
+      });
+
+    if (
+      !parkId ||
+      selectedPhotos.length === 0 ||
+      selectedPhotos.length !== selectedPhotoIds.size ||
+      this.bulkSavingSignal()
+    ) {
+      return;
+    }
+
+    if (ownerKind === 'parkItem' && !parkItemId) {
+      this.toastMessageService.add(
+        'warn',
+        this.translateService.instant('common.warning'),
+        this.translateService.instant('admin.images.batch.toasts.missingParkItem')
+      );
+      return;
+    }
+
+    this.bulkSavingSignal.set(true);
+    this.patchPhotos(selectedPhotoIds, { isSaving: true });
+    const successfulPhotoIds: Set<string> = new Set<string>();
+    let failedCount: number = 0;
+    let effectiveCurrentImageId: string | null = currentImageId;
+
+    try {
+      await this.ensureCategoryTagsAsync();
+
+      for (const photo of selectedPhotos) {
+        try {
+          const updatedImage: ImageDto = await this.updatePhotoCategorizationAsync(
+            photo,
+            parkId,
+            ownerKind,
+            parkItemId,
+            categorySlug,
+            effectiveCurrentImageId
+          );
+          successfulPhotoIds.add(photo.id);
+          this.applyUpdatedImage(updatedImage);
+          this.patchPhoto(photo.id, { isSaving: true });
+        } catch (error: unknown) {
+          failedCount++;
+          if (photo.id === effectiveCurrentImageId) {
+            effectiveCurrentImageId = null;
+          }
+          console.error('Error categorizing selected batch photo', error);
+        }
+      }
+
+      this.patchPhotos(selectedPhotoIds, { isSaving: false });
+      this.selectedPhotoIdsSignal.set(new Set<string>(
+        Array.from(selectedPhotoIds).filter((photoId: string) => !successfulPhotoIds.has(photoId))
+      ));
+      if (currentImageId && successfulPhotoIds.has(currentImageId)) {
+        this.bulkCurrentImageIdSignal.set(null);
+      }
+
+      const successfulCount: number = successfulPhotoIds.size;
+      this.toastMessageService.add(
+        failedCount === 0 ? 'success' : successfulCount > 0 ? 'warn' : 'error',
+        this.translateService.instant(
+          failedCount === 0
+            ? 'admin.images.batch.toasts.bulkCategorizedSummary'
+            : successfulCount > 0
+              ? 'admin.images.batch.toasts.bulkCategorizedPartialSummary'
+              : 'common.errorTitle'
+        ),
+        this.translateService.instant(
+          failedCount === 0
+            ? 'admin.images.batch.toasts.bulkCategorizedDetail'
+            : successfulCount > 0
+              ? 'admin.images.batch.toasts.bulkCategorizedPartialDetail'
+              : 'admin.images.batch.toasts.bulkCategorizedError',
+          { count: successfulCount, failed: failedCount }
+        )
+      );
+    } catch (error: unknown) {
+      console.error('Error preparing selected batch photo categorization', error);
+      this.patchPhotos(selectedPhotoIds, { isSaving: false });
+      this.toastMessageService.add(
+        'error',
+        this.translateService.instant('common.errorTitle'),
+        this.translateService.instant('admin.images.batch.toasts.bulkCategorizedError')
+      );
+    } finally {
+      this.bulkSavingSignal.set(false);
+    }
+  }
+
   async savePhotoCategorization(photoId: string): Promise<void> {
     const parkId: string | null = this.selectedParkIdSignal();
     const photo: AdminPhotoBatchPhoto | undefined = this.photosSignal().find((item: AdminPhotoBatchPhoto) => item.id === photoId);
@@ -489,45 +688,24 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       return;
     }
 
-    await this.ensureCategoryTagsAsync();
-    const ownerType: ImageOwnerType = photo.draftOwnerKind === 'parkItem' ? ImageOwnerType.PARK_ITEM : ImageOwnerType.PARK;
-    const ownerId: string = photo.draftOwnerKind === 'parkItem' ? photo.draftParkItemId! : parkId;
-    const category: ImageCategory = photo.draftOwnerKind === 'parkItem' ? ImageCategory.PARK_ITEM : ImageCategory.PARK;
-    const selectedTagId: string | undefined = this.categoryTagIdsBySlugSignal()[photo.draftCategorySlug];
-    const nextTagIds: string[] = [
-      ...this.getNonCategoryTagIds(photo.image),
-      ...(selectedTagId ? [selectedTagId] : [])
-    ];
-    const sameScope: boolean =
-      photo.image.ownerType === ownerType &&
-      photo.image.ownerId === ownerId &&
-      photo.image.category === category;
-
     this.patchPhoto(photoId, { isSaving: true });
 
     try {
-      const updatedImage: ImageDto = await firstValueFrom(this.imagesPort.updateAdminImage(photo.image.id, {
-        category,
-        ownerType,
-        ownerId,
-        isCurrent: sameScope ? photo.image.isCurrent : false,
-        description: photo.image.description,
-        geoLocation: photo.image.geoLocation ?? null,
-        altTexts: photo.image.altTexts ?? [],
-        captions: photo.image.captions ?? [],
-        credits: photo.image.credits ?? [],
-        tagIds: nextTagIds,
-        isPublished: photo.image.isPublished === true,
-        sourceUrl: photo.image.sourceUrl ?? null
-      }));
-
-      this.upsertPhoto(this.toBatchPhoto(updatedImage));
+      await this.ensureCategoryTagsAsync();
+      const updatedImage: ImageDto = await this.updatePhotoCategorizationAsync(
+        photo,
+        parkId,
+        photo.draftOwnerKind,
+        photo.draftParkItemId,
+        photo.draftCategorySlug,
+        null
+      );
+      this.applyUpdatedImage(updatedImage);
       this.toastMessageService.add(
         'success',
         this.translateService.instant('admin.images.batch.toasts.categorizedSummary'),
         this.translateService.instant('admin.images.batch.toasts.categorizedDetail')
       );
-      await this.reloadParkWorkspaceAsync(parkId);
     } catch (error: unknown) {
       console.error('Error categorizing batch photo', error);
       this.patchPhoto(photoId, { isSaving: false });
@@ -565,13 +743,12 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         sourceUrl: photo.image.sourceUrl ?? null
       }));
 
-      this.upsertPhoto(this.toBatchPhoto(updatedImage));
+      this.applyUpdatedImage(updatedImage);
       this.toastMessageService.add(
         'success',
         this.translateService.instant('admin.images.batch.toasts.uncategorizedSummary'),
         this.translateService.instant('admin.images.batch.toasts.uncategorizedDetail')
       );
-      await this.reloadParkWorkspaceAsync(parkId);
     } catch (error: unknown) {
       console.error('Error moving batch photo to uncategorized', error);
       this.patchPhoto(photoId, { isSaving: false });
@@ -613,7 +790,7 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         sourceUrl: photo.image.sourceUrl ?? null
       }));
 
-      this.upsertPhoto(this.toBatchPhoto(updatedImage));
+      this.applyUpdatedImage(updatedImage);
       this.toastMessageService.add(
         'success',
         this.translateService.instant('admin.images.batch.toasts.visibilitySummary'),
@@ -632,8 +809,43 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     }
   }
 
+  async setPhotoAsCurrent(photoId: string): Promise<void> {
+    const photo: AdminPhotoBatchPhoto | undefined = this.photosSignal().find((item: AdminPhotoBatchPhoto) => item.id === photoId);
+    if (!photo || photo.isSaving || photo.image.isCurrent) {
+      return;
+    }
+
+    if (photo.section === 'uncategorized') {
+      this.toastMessageService.add(
+        'warn',
+        this.translateService.instant('common.warning'),
+        this.translateService.instant('admin.images.batch.toasts.currentNeedsCategory')
+      );
+      return;
+    }
+
+    this.patchPhoto(photoId, { isSaving: true });
+
+    try {
+      const updatedImage: ImageDto = await firstValueFrom(this.imagesPort.setCurrentImage(photo.image.id));
+      this.applyUpdatedImage(updatedImage);
+      this.toastMessageService.add(
+        'success',
+        this.translateService.instant('admin.images.batch.toasts.currentSummary'),
+        this.translateService.instant('admin.images.batch.toasts.currentDetail')
+      );
+    } catch (error: unknown) {
+      console.error('Error setting batch photo as current', error);
+      this.patchPhoto(photoId, { isSaving: false });
+      this.toastMessageService.add(
+        'error',
+        this.translateService.instant('common.errorTitle'),
+        this.translateService.instant('admin.images.batch.toasts.currentError')
+      );
+    }
+  }
+
   async deletePhoto(photoId: string): Promise<void> {
-    const parkId: string | null = this.selectedParkIdSignal();
     const photo: AdminPhotoBatchPhoto | undefined = this.photosSignal().find((item: AdminPhotoBatchPhoto) => item.id === photoId);
     if (!photo || photo.isSaving) {
       return;
@@ -648,12 +860,13 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       }
 
       this.photosSignal.set(this.photosSignal().filter((item: AdminPhotoBatchPhoto) => item.id !== photoId));
+      this.removePhotoFromSelection(photoId);
+      this.rewindPhotoPaginationAfterDeletion(photo);
       this.toastMessageService.add(
         'success',
         this.translateService.instant('admin.images.batch.toasts.deleteSummary'),
         this.translateService.instant('admin.images.batch.toasts.deleteDetail')
       );
-      await this.reloadParkWorkspaceAsync(parkId);
     } catch (error: unknown) {
       console.error('Error deleting batch photo', error);
       this.patchPhoto(photoId, { isSaving: false });
@@ -719,15 +932,6 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     }
   }
 
-  private async reloadParkWorkspaceAsync(parkId: string | null): Promise<void> {
-    if (!parkId || this.selectedParkIdSignal() !== parkId) {
-      return;
-    }
-
-    this.resetPhotoPagination();
-    await this.loadParkWorkspaceAsync(parkId);
-  }
-
   private async loadAllParkItemsAsync(parkId: string): Promise<ParkItemAdminRow[]> {
     const rows: ParkItemAdminRow[] = [];
     let page: number = 1;
@@ -789,6 +993,45 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     return currentItemCount >= WORKSPACE_PAGE_SIZE;
   }
 
+  private async updatePhotoCategorizationAsync(
+    photo: AdminPhotoBatchPhoto,
+    parkId: string,
+    ownerKind: AdminPhotoBatchOwnerKind,
+    parkItemId: string | null,
+    categorySlug: string,
+    currentImageId: string | null
+  ): Promise<ImageDto> {
+    const ownerType: ImageOwnerType = ownerKind === 'parkItem' ? ImageOwnerType.PARK_ITEM : ImageOwnerType.PARK;
+    const ownerId: string = ownerKind === 'parkItem' ? parkItemId! : parkId;
+    const category: ImageCategory = ownerKind === 'parkItem' ? ImageCategory.PARK_ITEM : ImageCategory.PARK;
+    const selectedTagId: string | undefined = this.categoryTagIdsBySlugSignal()[categorySlug];
+    const nextTagIds: string[] = [
+      ...this.getNonCategoryTagIds(photo.image),
+      ...(selectedTagId ? [selectedTagId] : [])
+    ];
+    const sameScope: boolean =
+      photo.image.ownerType === ownerType &&
+      photo.image.ownerId === ownerId &&
+      photo.image.category === category;
+    const isCurrent: boolean = currentImageId === photo.id ||
+      (currentImageId === null && sameScope && photo.image.isCurrent);
+
+    return firstValueFrom(this.imagesPort.updateAdminImage(photo.image.id, {
+      category,
+      ownerType,
+      ownerId,
+      isCurrent,
+      description: photo.image.description,
+      geoLocation: photo.image.geoLocation ?? null,
+      altTexts: photo.image.altTexts ?? [],
+      captions: photo.image.captions ?? [],
+      credits: photo.image.credits ?? [],
+      tagIds: nextTagIds,
+      isPublished: photo.image.isPublished === true,
+      sourceUrl: photo.image.sourceUrl ?? null
+    }));
+  }
+
   private async uploadSelectionAsync(selection: AdminPhotoBatchUploadSelection, parkId: string, parkName: string): Promise<ImageDto> {
     const metadata: AdminContextualPhotoMetadataPreview | null = await this.waitForSelectionMetadata(selection.id);
     const uploadedImage: UploadedImage = await firstValueFrom(this.imagesPort.uploadImage(
@@ -821,23 +1064,6 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
       isPublished: false,
       sourceUrl: linkedImage.sourceUrl ?? null
     }));
-  }
-
-  private async runWithConcurrency(
-    selections: AdminPhotoBatchUploadSelection[],
-    worker: (selection: AdminPhotoBatchUploadSelection, index: number) => Promise<void>
-  ): Promise<void> {
-    let nextIndex: number = 0;
-    const workerCount: number = Math.min(UPLOAD_CONCURRENCY_LIMIT, selections.length);
-    const workers: Promise<void>[] = Array.from({ length: workerCount }, async (): Promise<void> => {
-      while (nextIndex < selections.length) {
-        const currentIndex: number = nextIndex;
-        nextIndex++;
-        await worker(selections[currentIndex], currentIndex);
-      }
-    });
-
-    await Promise.all(workers);
   }
 
   private readSelectionMetadata(selection: AdminPhotoBatchUploadSelection): void {
@@ -989,6 +1215,36 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     return 'uncategorized';
   }
 
+  private applyUpdatedImage(image: ImageDto): void {
+    const existingPhoto: AdminPhotoBatchPhoto | undefined = this.photosSignal()
+      .find((photo: AdminPhotoBatchPhoto) => photo.id === image.id);
+    if (!existingPhoto) {
+      this.rewindPhotoPagination(image.ownerType);
+    } else if (existingPhoto.image.ownerType !== image.ownerType) {
+      this.rewindPhotoPagination(existingPhoto.image.ownerType);
+      this.rewindPhotoPagination(image.ownerType);
+    }
+
+    if (image.isCurrent && image.ownerId) {
+      this.photosSignal.set(this.photosSignal().map((photo: AdminPhotoBatchPhoto) =>
+        photo.id !== image.id &&
+        photo.image.ownerType === image.ownerType &&
+        photo.image.ownerId === image.ownerId &&
+        photo.image.category === image.category
+          ? {
+            ...photo,
+            image: {
+              ...photo.image,
+              isCurrent: false
+            }
+          }
+          : photo
+      ));
+    }
+
+    this.upsertPhoto(this.toBatchPhoto(image, this.createParkItemNameById()));
+  }
+
   private upsertPhoto(photo: AdminPhotoBatchPhoto): void {
     const currentPhotos: AdminPhotoBatchPhoto[] = this.photosSignal();
     const existingIndex: number = currentPhotos.findIndex((item: AdminPhotoBatchPhoto) => item.id === photo.id);
@@ -1017,6 +1273,50 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
         ? { ...photo, ...patch }
         : photo
     ));
+  }
+
+  private patchPhotos(photoIds: ReadonlySet<string>, patch: PhotoPatch): void {
+    this.photosSignal.set(this.photosSignal().map((photo: AdminPhotoBatchPhoto) =>
+      photoIds.has(photo.id)
+        ? { ...photo, ...patch }
+        : photo
+    ));
+  }
+
+  private removePhotoFromSelection(photoId: string): void {
+    const selectedPhotoIds: Set<string> = new Set<string>(this.selectedPhotoIdsSignal());
+    selectedPhotoIds.delete(photoId);
+    this.selectedPhotoIdsSignal.set(selectedPhotoIds);
+
+    if (this.bulkCurrentImageIdSignal() === photoId) {
+      this.bulkCurrentImageIdSignal.set(null);
+    }
+  }
+
+  private rewindPhotoPaginationAfterDeletion(photo: AdminPhotoBatchPhoto): void {
+    this.rewindPhotoPagination(photo.image.ownerType);
+  }
+
+  private rewindPhotoPagination(ownerType: ImageOwnerType): void {
+    if (ownerType === ImageOwnerType.PARK_ITEM) {
+      if (this.parkItemPhotosCanLoadMoreSignal()) {
+        this.parkItemPhotosPageSignal.update((page: number) => Math.max(0, page - 1));
+      }
+      return;
+    }
+
+    if (this.parkPhotosCanLoadMoreSignal()) {
+      this.parkPhotosPageSignal.update((page: number) => Math.max(0, page - 1));
+    }
+  }
+
+  private resetBulkSelection(): void {
+    this.selectedPhotoIdsSignal.set(new Set<string>());
+    this.bulkOwnerKindSignal.set('park');
+    this.bulkParkItemIdSignal.set(null);
+    this.bulkCategorySlugSignal.set(DEFAULT_PARK_PHOTO_CATEGORY_SLUG);
+    this.bulkCurrentImageIdSignal.set(null);
+    this.bulkSavingSignal.set(false);
   }
 
   private resetPhotoPagination(): void {

@@ -11,6 +11,7 @@ export interface AdminPhotoBatchImagesPort extends Pick<ImagesApiService,
   'getAdminImages' |
   'getParkItemImagesByPark' |
   'linkImage' |
+  'setCurrentImage' |
   'updateAdminImage' |
   'uploadImage'> {
 }
