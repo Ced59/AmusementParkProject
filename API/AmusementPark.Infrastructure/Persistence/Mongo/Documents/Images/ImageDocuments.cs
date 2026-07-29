@@ -80,6 +80,18 @@ public sealed class ImageDocument : MongoDocumentBase
 
     [BsonElement("isPublished")]
     public bool IsPublished { get; set; } = true;
+
+    [BsonElement("draftOwnerId")]
+    [BsonIgnoreIfNull]
+    public string? DraftOwnerId { get; set; }
+
+    [BsonElement("pendingCommentId")]
+    [BsonIgnoreIfNull]
+    public string? PendingCommentId { get; set; }
+
+    [BsonElement("cleanupRequestedAt")]
+    [BsonIgnoreIfNull]
+    public DateTime? CleanupRequestedAt { get; set; }
 }
 
 /// <summary>

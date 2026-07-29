@@ -7,7 +7,7 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Mappers;
 public sealed class CommentMongoMappersTests
 {
     [Fact]
-    public void CommentRoundTrip_ShouldPreserveReferencedImageIds()
+    public void CommentRoundTrip_ShouldPreserveReferencedImageIdsAndRevision()
     {
         Comment comment = new Comment
         {
@@ -22,6 +22,7 @@ public sealed class CommentMongoMappersTests
                 "11111111111111111111111111111111",
             },
             ModerationStatus = CommentModerationStatus.Published,
+            Revision = 7,
             CreatedAtUtc = DateTime.UtcNow,
             UpdatedAtUtc = DateTime.UtcNow,
         };
@@ -29,5 +30,6 @@ public sealed class CommentMongoMappersTests
         Comment result = comment.ToDocument().ToDomain();
 
         Assert.Equal(comment.ImageIds, result.ImageIds);
+        Assert.Equal(comment.Revision, result.Revision);
     }
 }

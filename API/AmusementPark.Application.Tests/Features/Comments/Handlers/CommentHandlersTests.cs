@@ -150,8 +150,11 @@ public sealed class CommentHandlersTests
             .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
         commentRepository
-            .Setup(repository => repository.UpdateAsync(existing, It.IsAny<CancellationToken>()))
-            .ReturnsAsync((Comment comment, CancellationToken _) => comment);
+            .Setup(repository => repository.UpdateAsync(
+                existing,
+                existing.Revision,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment comment, long _, CancellationToken _) => comment);
         Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
         sanitizer.Setup(value => value.SanitizeRichHtml("<p>Corrigé<script>bad</script></p>"))
             .Returns("<p>Corrigé</p>");
@@ -212,7 +215,47 @@ public sealed class CommentHandlersTests
     }
 
     [Fact]
-    public async Task UpdateAsync_WhenPersistenceReturnsNull_ShouldRollbackNewlyPublishedImages()
+    public async Task UpdateAsync_WhenClientRevisionIsStale_ShouldReturnConflictBeforeSanitizing()
+    {
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        existing.Revision = 3;
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.GetByIdAsync(
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        Mock<ICommentContentSanitizer> sanitizer =
+            new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        Mock<IUserRepository> users = CreateAdminUserRepository();
+        UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
+            comments.Object,
+            sanitizer.Object,
+            users.Object,
+            CreateCommentImageManager());
+
+        ApplicationResult<CommentResult> result = await handler.HandleAsync(
+            new UpdateCommentCommand(
+                "admin-1",
+                "comment-1",
+                new CommentEditModel(
+                    new[] { new LocalizedTextValue("fr", "<p>Obsolète</p>") },
+                    false,
+                    2)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "comment.concurrent-modification");
+        comments.VerifyAll();
+        sanitizer.VerifyNoOtherCalls();
+        users.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateAsync_WhenRevisionChanged_ShouldKeepReservationForReconciliation()
     {
         const string imageId = "abcdef0123456789abcdef0123456789";
         string html =
@@ -225,7 +268,10 @@ public sealed class CommentHandlersTests
         Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
         comments.Setup(value => value.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
-        comments.Setup(value => value.UpdateAsync(existing, It.IsAny<CancellationToken>()))
+        comments.Setup(value => value.UpdateAsync(
+                existing,
+                existing.Revision,
+                It.IsAny<CancellationToken>()))
             .ReturnsAsync((Comment?)null);
         Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
         sanitizer.Setup(value => value.SanitizeRichHtml(html)).Returns(html);
@@ -240,40 +286,32 @@ public sealed class CommentHandlersTests
             OwnerId = "admin-1",
             IsPublished = false,
         };
-        Image published = new Image
+        Image reserved = new Image
         {
             Id = imageId,
             Category = ImageCategory.Comment,
-            OwnerType = ImageOwnerType.Comment,
-            OwnerId = "comment-1",
-            Path = "comment/image",
-            IsPublished = true,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "admin-1",
+            PendingCommentId = "comment-1",
+            IsPublished = false,
         };
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
-        images.SetupSequence(value => value.GetByIdsAsync(
+        images.Setup(value => value.GetByIdsAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { draft })
-            .ReturnsAsync(new[] { published });
-        images.Setup(value => value.PublishCommentDraftAsync(
+            .ReturnsAsync(new[] { draft });
+        images.Setup(value => value.ReserveCommentDraftAsync(
                 imageId,
                 "admin-1",
                 "comment-1",
+                It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(published);
-        images.Setup(value => value.DeleteCommentImageAsync(
-                imageId,
-                "comment-1",
-                CancellationToken.None))
-            .ReturnsAsync(true);
-        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
-        storage.Setup(value => value.DeleteAsync("comment/image", CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(reserved);
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             comments.Object,
             sanitizer.Object,
             users.Object,
-            new CommentImageManager(images.Object, storage.Object));
+            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
             "admin-1",
@@ -283,12 +321,11 @@ public sealed class CommentHandlersTests
                 false)));
 
         Assert.False(result.IsSuccess);
-        Assert.Contains(result.Errors, static error => error.Code == "comment.not-found");
+        Assert.Contains(result.Errors, static error => error.Code == "comment.concurrent-modification");
         comments.VerifyAll();
         sanitizer.VerifyAll();
         users.VerifyAll();
         images.VerifyAll();
-        storage.VerifyAll();
     }
 
     [Fact]
@@ -305,8 +342,11 @@ public sealed class CommentHandlersTests
             .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
         commentRepository
-            .Setup(repository => repository.UpdateAsync(existing, It.IsAny<CancellationToken>()))
-            .ReturnsAsync((Comment comment, CancellationToken _) => comment);
+            .Setup(repository => repository.UpdateAsync(
+                existing,
+                existing.Revision,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment comment, long _, CancellationToken _) => comment);
         Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
         sanitizer.Setup(value => value.SanitizeRichHtml("<p>Corrigé</p>")).Returns("<p>Corrigé</p>");
         sanitizer.Setup(value => value.ExtractPlainText("<p>Corrigé</p>")).Returns("Corrigé");
@@ -345,8 +385,11 @@ public sealed class CommentHandlersTests
             .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
         commentRepository
-            .Setup(repository => repository.UpdateAsync(existing, It.IsAny<CancellationToken>()))
-            .ReturnsAsync((Comment comment, CancellationToken _) => comment);
+            .Setup(repository => repository.UpdateAsync(
+                existing,
+                existing.Revision,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment comment, long _, CancellationToken _) => comment);
         Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
         sanitizer.Setup(value => value.SanitizeRichHtml("<p>Corrigé</p>")).Returns("<p>Corrigé</p>");
         sanitizer.Setup(value => value.ExtractPlainText("<p>Corrigé</p>")).Returns("Corrigé");
@@ -354,7 +397,8 @@ public sealed class CommentHandlersTests
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             commentRepository.Object,
             sanitizer.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
             "user-1",
@@ -416,7 +460,10 @@ public sealed class CommentHandlersTests
             .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
         commentRepository
-            .Setup(repository => repository.DeleteAsync("comment-1", It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.DeleteAsync(
+                "comment-1",
+                existing.Revision,
+                It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
         Mock<IUserRepository> userRepository = CreateAdminUserRepository();
         DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
@@ -447,7 +494,10 @@ public sealed class CommentHandlersTests
             .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
         commentRepository
-            .Setup(repository => repository.DeleteAsync("comment-1", It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.DeleteAsync(
+                "comment-1",
+                existing.Revision,
+                It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
         Mock<IUserRepository> userRepository = CreateModeratorUserRepository();
         DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
@@ -478,12 +528,16 @@ public sealed class CommentHandlersTests
             .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
         commentRepository
-            .Setup(repository => repository.DeleteAsync("comment-1", It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.DeleteAsync(
+                "comment-1",
+                existing.Revision,
+                It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
         Mock<IUserRepository> userRepository = CreateActiveUserRepository("user-1", Role.User);
         DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
             commentRepository.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult result = await handler.HandleAsync(new DeleteCommentCommand(
             "user-1",
@@ -659,11 +713,25 @@ public sealed class CommentHandlersTests
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { draft });
-        images.Setup(value => value.PublishCommentDraftAsync(
+        images.Setup(value => value.ReserveCommentDraftAsync(
                 imageId,
                 "admin-1",
                 It.IsAny<string>(),
+                It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Image
+            {
+                Id = imageId,
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "admin-1",
+                IsPublished = false,
+            });
+        images.Setup(value => value.FinalizeCommentDraftAsync(
+                imageId,
+                "admin-1",
+                It.IsAny<string>(),
+                CancellationToken.None))
             .ReturnsAsync(new Image
             {
                 Id = imageId,
@@ -705,7 +773,7 @@ public sealed class CommentHandlersTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenCommentPersistenceThrows_ShouldRollbackNewlyPublishedImagesAndRethrow()
+    public async Task HandleAsync_WhenCommentPersistenceThrows_ShouldLeavePrivateReservationForWorker()
     {
         const string imageId = "abcdef0123456789abcdef0123456789";
         string html =
@@ -739,44 +807,32 @@ public sealed class CommentHandlersTests
             OwnerId = "admin-1",
             IsPublished = false,
         };
-        Image published = new Image
+        Image reserved = new Image
         {
             Id = imageId,
             Category = ImageCategory.Comment,
-            OwnerType = ImageOwnerType.Comment,
-            Path = "comment/image",
-            IsPublished = true,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "admin-1",
+            IsPublished = false,
         };
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
-        images.SetupSequence(value => value.GetByIdsAsync(
+        images.Setup(value => value.GetByIdsAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { draft })
-            .ReturnsAsync(new[] { published });
-        images.Setup(value => value.PublishCommentDraftAsync(
+            .ReturnsAsync(new[] { draft });
+        images.Setup(value => value.ReserveCommentDraftAsync(
                 imageId,
                 "admin-1",
                 It.IsAny<string>(),
+                It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((string _, string _, string commentId, CancellationToken _) =>
-            {
-                published.OwnerId = commentId;
-                return published;
-            });
-        images.Setup(value => value.DeleteCommentImageAsync(
-                imageId,
-                It.IsAny<string>(),
-                CancellationToken.None))
-            .ReturnsAsync(true);
-        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
-        storage.Setup(value => value.DeleteAsync("comment/image", CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(reserved);
         CreateCommentCommandHandler handler = new CreateCommentCommandHandler(
             comments.Object,
             sanitizer.Object,
             users.Object,
             new CommentTargetResolver(parks.Object, items.Object),
-            new CommentImageManager(images.Object, storage.Object));
+            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
 
         await Assert.ThrowsAsync<InvalidOperationException>(() => handler.HandleAsync(
             new CreateCommentCommand(
@@ -792,7 +848,6 @@ public sealed class CommentHandlersTests
         users.VerifyAll();
         parks.VerifyAll();
         images.VerifyAll();
-        storage.VerifyAll();
     }
 
     private static CommentImageManager CreateCommentImageManager()

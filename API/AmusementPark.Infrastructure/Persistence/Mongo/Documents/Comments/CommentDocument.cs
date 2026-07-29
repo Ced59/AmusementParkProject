@@ -39,6 +39,9 @@ public sealed class CommentDocument : MongoDocumentBase
     [BsonElement("imageIds")]
     public List<string> ImageIds { get; set; } = new List<string>();
 
+    [BsonElement("revision")]
+    public long Revision { get; set; }
+
     [BsonElement("isOfficial")]
     public bool IsOfficial { get; set; }
 

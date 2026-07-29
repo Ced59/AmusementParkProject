@@ -42,6 +42,9 @@ internal static partial class EntityMongoMappers
             SourceUrl = document.SourceUrl,
             IsWatermarked = document.IsWatermarked,
             IsPublished = document.IsPublished,
+            DraftOwnerId = document.DraftOwnerId,
+            PendingCommentId = document.PendingCommentId,
+            CleanupRequestedAtUtc = document.CleanupRequestedAt,
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -74,6 +77,9 @@ internal static partial class EntityMongoMappers
             SourceUrl = entity.SourceUrl,
             IsWatermarked = entity.IsWatermarked,
             IsPublished = entity.IsPublished,
+            DraftOwnerId = entity.DraftOwnerId,
+            PendingCommentId = entity.PendingCommentId,
+            CleanupRequestedAt = entity.CleanupRequestedAtUtc,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

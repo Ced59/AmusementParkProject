@@ -25,6 +25,13 @@ public static class CommentApplicationErrors
             "Le commentaire est introuvable.");
     }
 
+    public static ApplicationError ConcurrentModification()
+    {
+        return ApplicationError.Conflict(
+            "comment.concurrent-modification",
+            "Le commentaire a été modifié entre-temps. Recharge-le avant de recommencer.");
+    }
+
     public static ApplicationError AuthorNotAllowed()
     {
         return ApplicationError.Forbidden(

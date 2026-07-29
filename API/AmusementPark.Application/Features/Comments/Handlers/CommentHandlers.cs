@@ -110,16 +110,11 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
             UpdatedAtUtc = nowUtc,
         };
 
-        Comment created;
-        try
-        {
-            created = await this.commentRepository.CreateAsync(comment, cancellationToken);
-        }
-        catch
-        {
-            await this.commentImageManager.RollbackPublishedAsync(commentId, imageResult.Value);
-            throw;
-        }
+        Comment created = await this.commentRepository.CreateAsync(comment, cancellationToken);
+        await this.commentImageManager.FinalizeForCommentAsync(
+            author.Id,
+            commentId,
+            imageResult.Value);
 
         return ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(created, author));
     }
@@ -215,6 +210,13 @@ public sealed class UpdateCommentCommandHandler
             return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.ManagerNotAllowed());
         }
 
+        if (command.Model.ExpectedRevision.HasValue
+            && command.Model.ExpectedRevision.Value != comment.Revision)
+        {
+            return ApplicationResult<CommentResult>.Failure(
+                CommentApplicationErrors.ConcurrentModification());
+        }
+
         ApplicationResult<IReadOnlyCollection<LocalizedText>> bodiesResult = CommentBodyNormalizer.Normalize(
             command.Model.Bodies,
             this.contentSanitizer);
@@ -246,35 +248,30 @@ public sealed class UpdateCommentCommandHandler
         List<string> removedImageIds = comment.ImageIds
             .Except(imageIds, StringComparer.Ordinal)
             .ToList();
+        await this.commentImageManager.RequestRemovedCleanupAsync(
+            comment.Id,
+            removedImageIds,
+            cancellationToken);
+        long expectedRevision = comment.Revision;
         comment.UpdateContent(bodiesResult.Value, imageIds, isOfficial);
-        Comment? updated;
-        try
-        {
-            updated = await this.commentRepository.UpdateAsync(comment, cancellationToken);
-        }
-        catch
-        {
-            await this.commentImageManager.RollbackPublishedAsync(comment.Id, imageResult.Value);
-            throw;
-        }
+        Comment? updated = await this.commentRepository.UpdateAsync(
+            comment,
+            expectedRevision,
+            cancellationToken);
 
         if (updated is not null)
         {
-            await this.commentImageManager.DeleteRemovedAsync(
+            await this.commentImageManager.FinalizeForCommentAsync(
+                actor.Id,
                 comment.Id,
-                removedImageIds,
-                cancellationToken);
-        }
-        else
-        {
-            await this.commentImageManager.RollbackPublishedAsync(comment.Id, imageResult.Value);
+                imageResult.Value);
         }
 
         User? author = string.Equals(actor.Id, comment.AuthorUserId, StringComparison.Ordinal)
             ? actor
             : await this.userRepository.GetByIdAsync(comment.AuthorUserId, cancellationToken);
         return updated is null
-            ? ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.CommentNotFound())
+            ? ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.ConcurrentModification())
             : ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(updated, author));
     }
 }
@@ -325,18 +322,24 @@ public sealed class DeleteCommentCommandHandler : ICommandHandler<DeleteCommentC
             return ApplicationResult.Failure(CommentApplicationErrors.ManagerNotAllowed());
         }
 
-        bool deleted = await this.commentRepository.DeleteAsync(commentId, cancellationToken);
-        if (deleted)
+        if (command.ExpectedRevision.HasValue
+            && command.ExpectedRevision.Value != comment.Revision)
         {
-            await this.commentImageManager.DeleteRemovedAsync(
-                comment.Id,
-                comment.ImageIds,
-                cancellationToken);
+            return ApplicationResult.Failure(CommentApplicationErrors.ConcurrentModification());
         }
+
+        await this.commentImageManager.RequestRemovedCleanupAsync(
+            comment.Id,
+            comment.ImageIds,
+            cancellationToken);
+        bool deleted = await this.commentRepository.DeleteAsync(
+            commentId,
+            comment.Revision,
+            cancellationToken);
 
         return deleted
             ? ApplicationResult.Success()
-            : ApplicationResult.Failure(CommentApplicationErrors.CommentNotFound());
+            : ApplicationResult.Failure(CommentApplicationErrors.ConcurrentModification());
     }
 }
 
@@ -597,7 +600,8 @@ internal static class CommentResultFactory
             comment.Bodies,
             comment.IsOfficial,
             comment.CreatedAtUtc,
-            comment.UpdatedAtUtc);
+            comment.UpdatedAtUtc,
+            comment.Revision);
     }
 
     private static Role ResolveAuthorRole(User author)

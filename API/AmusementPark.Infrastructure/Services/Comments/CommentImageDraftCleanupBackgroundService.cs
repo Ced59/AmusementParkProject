@@ -36,16 +36,19 @@ public sealed class CommentImageDraftCleanupBackgroundService : BackgroundServic
         try
         {
             using IServiceScope scope = this.serviceScopeFactory.CreateScope();
-            CommentImageManager manager = scope.ServiceProvider.GetRequiredService<CommentImageManager>();
-            int deletedCount = await manager.DeleteExpiredDraftsAsync(
-                DateTime.UtcNow.Subtract(DraftRetention),
+            CommentImageReconciler reconciler =
+                scope.ServiceProvider.GetRequiredService<CommentImageReconciler>();
+            DateTime nowUtc = DateTime.UtcNow;
+            int reconciledCount = await reconciler.ReconcileAsync(
+                nowUtc,
+                nowUtc.Subtract(DraftRetention),
                 MaximumDeletionsPerRun,
                 cancellationToken);
-            if (deletedCount > 0)
+            if (reconciledCount > 0)
             {
                 this.logger.LogInformation(
-                    "Deleted {DeletedCount} expired comment image drafts.",
-                    deletedCount);
+                    "Reconciled {ReconciledCount} comment images.",
+                    reconciledCount);
             }
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

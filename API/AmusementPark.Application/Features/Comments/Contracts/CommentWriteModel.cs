@@ -11,4 +11,5 @@ public sealed record CommentWriteModel(
 
 public sealed record CommentEditModel(
     IReadOnlyCollection<LocalizedTextValue> Bodies,
-    bool IsOfficial);
+    bool IsOfficial,
+    long? ExpectedRevision = null);

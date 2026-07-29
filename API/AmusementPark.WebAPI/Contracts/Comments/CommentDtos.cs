@@ -24,6 +24,8 @@ public sealed class UpdateCommentRequestDto
     public List<LocalizedTextDto> Bodies { get; set; } = new List<LocalizedTextDto>();
 
     public bool IsOfficial { get; set; }
+
+    public long? Revision { get; set; }
 }
 
 public sealed class CommentImageUploadDto
@@ -68,6 +70,8 @@ public sealed class CommentDto
     public bool CanUpdate { get; set; }
 
     public bool CanDelete { get; set; }
+
+    public long Revision { get; set; }
 
     public DateTime CreatedAtUtc { get; set; }
 

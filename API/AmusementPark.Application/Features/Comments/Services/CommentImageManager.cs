@@ -8,6 +8,7 @@ public sealed class CommentImageManager
 {
     public const int MaximumImagesPerComment = 12;
     public const int MaximumDraftImagesPerAuthor = 24;
+    private static readonly TimeSpan ReconciliationGracePeriod = TimeSpan.FromMinutes(5);
     private readonly IImageRepository imageRepository;
     private readonly IImageBinaryStorage imageBinaryStorage;
 
@@ -55,43 +56,50 @@ public sealed class CommentImageManager
             }
         }
 
-        List<string> publishedImageIds = new List<string>();
-        try
+        List<string> reservedImageIds = new List<string>();
+        foreach (Image draft in images.Where(static image => image.OwnerType == ImageOwnerType.CommentDraft))
         {
-            foreach (Image draft in images.Where(static image => image.OwnerType == ImageOwnerType.CommentDraft))
+            Image? reserved = await this.imageRepository.ReserveCommentDraftAsync(
+                draft.Id,
+                actorUserId,
+                commentId,
+                DateTime.UtcNow.Add(ReconciliationGracePeriod),
+                cancellationToken);
+            if (reserved is null)
             {
-                Image? published = await this.imageRepository.PublishCommentDraftAsync(
-                    draft.Id,
+                return ApplicationResult<IReadOnlyCollection<string>>.Failure(
+                    CommentApplicationErrors.ImageNotAllowed());
+            }
+
+            reservedImageIds.Add(reserved.Id);
+        }
+
+        return ApplicationResult<IReadOnlyCollection<string>>.Success(reservedImageIds);
+    }
+
+    public async Task FinalizeForCommentAsync(
+        string actorUserId,
+        string commentId,
+        IReadOnlyCollection<string> reservedImageIds)
+    {
+        foreach (string imageId in NormalizeIds(reservedImageIds))
+        {
+            try
+            {
+                await this.imageRepository.FinalizeCommentDraftAsync(
+                    imageId,
                     actorUserId,
                     commentId,
-                    cancellationToken);
-                if (published is null)
-                {
-                    await this.RollbackPublishedAsync(commentId, publishedImageIds);
-                    return ApplicationResult<IReadOnlyCollection<string>>.Failure(
-                        CommentApplicationErrors.ImageNotAllowed());
-                }
-
-                publishedImageIds.Add(published.Id);
+                    CancellationToken.None);
+            }
+            catch
+            {
+                // Le brouillon réservé reste privé et sera réconcilié par le worker.
             }
         }
-        catch
-        {
-            await this.RollbackPublishedAsync(commentId, publishedImageIds);
-            throw;
-        }
-
-        return ApplicationResult<IReadOnlyCollection<string>>.Success(publishedImageIds);
     }
 
-    public Task RollbackPublishedAsync(
-        string commentId,
-        IReadOnlyCollection<string> publishedImageIds)
-    {
-        return this.RollbackPublishedCoreAsync(commentId, publishedImageIds);
-    }
-
-    public async Task DeleteRemovedAsync(
+    public async Task RequestRemovedCleanupAsync(
         string commentId,
         IReadOnlyCollection<string> removedImageIds,
         CancellationToken cancellationToken)
@@ -102,16 +110,11 @@ public sealed class CommentImageManager
             return;
         }
 
-        IReadOnlyCollection<Image> images = await this.imageRepository.GetByIdsAsync(normalizedIds, cancellationToken);
-        foreach (Image image in images)
-        {
-            if (!image.IsOwnedByComment(commentId))
-            {
-                continue;
-            }
-
-            await this.DeleteCommentImageAsync(image, commentId, cancellationToken);
-        }
+        await this.imageRepository.RequestCommentImagesCleanupAsync(
+            normalizedIds,
+            commentId,
+            DateTime.UtcNow.Add(ReconciliationGracePeriod),
+            cancellationToken);
     }
 
     public async Task<ApplicationResult> DeleteOwnedDraftAsync(
@@ -120,13 +123,19 @@ public sealed class CommentImageManager
         CancellationToken cancellationToken)
     {
         Image? image = await this.imageRepository.GetByIdAsync(imageId.Trim(), cancellationToken);
-        if (image is null || !image.IsCommentDraftOwnedBy(actorUserId))
+        if (image is null
+            || !image.IsCommentDraftOwnedBy(actorUserId)
+            || !string.IsNullOrWhiteSpace(image.PendingCommentId))
         {
             return ApplicationResult.Failure(CommentApplicationErrors.ImageNotAllowed());
         }
 
-        bool deleted = await this.DeleteDraftAsync(image, actorUserId, cancellationToken);
-        return deleted
+        bool requested = await this.imageRepository.RequestCommentDraftCleanupAsync(
+            image.Id,
+            actorUserId,
+            DateTime.UtcNow,
+            cancellationToken);
+        return requested
             ? ApplicationResult.Success()
             : ApplicationResult.Failure(CommentApplicationErrors.ImageNotAllowed());
     }
@@ -157,72 +166,16 @@ public sealed class CommentImageManager
         string? ownerId,
         CancellationToken cancellationToken)
     {
-        bool deleted = await this.imageRepository.DeleteCommentDraftAsync(
+        if (!string.IsNullOrWhiteSpace(image.Path)
+            && !await this.imageBinaryStorage.DeleteAsync(image.Path, cancellationToken))
+        {
+            return false;
+        }
+
+        return await this.imageRepository.DeleteCommentDraftAsync(
             image.Id,
             ownerId,
             cancellationToken);
-        if (deleted && !string.IsNullOrWhiteSpace(image.Path))
-        {
-            await this.imageBinaryStorage.DeleteAsync(image.Path, cancellationToken);
-        }
-
-        return deleted;
-    }
-
-    private async Task DeleteCommentImageAsync(
-        Image image,
-        string commentId,
-        CancellationToken cancellationToken)
-    {
-        bool deleted = await this.imageRepository.DeleteCommentImageAsync(
-            image.Id,
-            commentId,
-            cancellationToken);
-        if (deleted && !string.IsNullOrWhiteSpace(image.Path))
-        {
-            await this.imageBinaryStorage.DeleteAsync(image.Path, cancellationToken);
-        }
-    }
-
-    private async Task RollbackPublishedCoreAsync(
-        string commentId,
-        IReadOnlyCollection<string> publishedImageIds)
-    {
-        List<string> normalizedIds = NormalizeIds(publishedImageIds);
-        if (normalizedIds.Count == 0)
-        {
-            return;
-        }
-
-        IReadOnlyCollection<Image> images;
-        try
-        {
-            images = await this.imageRepository.GetByIdsAsync(
-                normalizedIds,
-                CancellationToken.None);
-        }
-        catch
-        {
-            // Best effort: the original persistence/publication failure must remain observable.
-            return;
-        }
-
-        foreach (Image image in images)
-        {
-            if (!image.IsOwnedByComment(commentId))
-            {
-                continue;
-            }
-
-            try
-            {
-                await this.DeleteCommentImageAsync(image, commentId, CancellationToken.None);
-            }
-            catch
-            {
-                // Continue rolling back the remaining images.
-            }
-        }
     }
 
     private static List<string> NormalizeIds(IReadOnlyCollection<string> imageIds)

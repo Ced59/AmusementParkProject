@@ -429,6 +429,84 @@ public sealed class UploadImageCommandHandlerTests
         pipeline.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenCommentStorageFails_ShouldKeepDocumentMarkedForCleanup()
+    {
+        FilePayload file = new FilePayload
+        {
+            FileName = "comment.jpg",
+            ContentType = "image/jpeg",
+            Length = 128,
+            Content = new MemoryStream(new byte[] { 1, 2, 3 }),
+        };
+        Mock<IImageProcessingPipeline> pipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        pipeline.Setup(value => value.ExtractMetadataAsync(
+                It.IsAny<ImageUploadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = 1200,
+                Height = 800,
+                SizeInBytes = file.Length,
+                DetectedContentType = "image/jpeg",
+                FrameCount = 1,
+            });
+        Image draft = new Image
+        {
+            Id = "image-1",
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "author-1",
+            Path = "comment/image-1",
+            IsPublished = false,
+        };
+        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        MockSequence sequence = new MockSequence();
+        repository.InSequence(sequence)
+            .Setup(value => value.CreateAsync(
+                It.Is<ImageUploadRequest>(request =>
+                    request.Category == ImageCategory.Comment
+                    && request.OwnerId == "author-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(draft);
+        storage.InSequence(sequence)
+            .Setup(value => value.SaveWithoutMetadataAsync(
+                It.IsAny<string>(),
+                file,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new IOException("Partial MinIO write."));
+        repository.InSequence(sequence)
+            .Setup(value => value.RequestCommentDraftCleanupAsync(
+                "image-1",
+                "author-1",
+                It.IsAny<DateTime>(),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            repository.Object,
+            pipeline.Object,
+            storage.Object);
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Comment,
+                File = file,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+                WithWatermark = true,
+                IsPublished = false,
+            }));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "comment.image.invalid");
+        pipeline.VerifyAll();
+        repository.VerifyAll();
+        storage.VerifyAll();
+    }
+
     private static FilePayload CreateAvatarFile(long length, string contentType = "image/jpeg")
     {
         return new FilePayload

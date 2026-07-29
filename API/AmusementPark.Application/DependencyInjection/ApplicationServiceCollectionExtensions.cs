@@ -48,6 +48,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();
         services.AddScoped<CommentImageManager>();
+        services.AddScoped<CommentImageReconciler>();
         services.AddScoped<ParkItemsBulkCreatePreviewService>();
         services.AddScoped<BulkParkGraphJsonExportDataLoader>();
         services.AddScoped<ParkGraphUpsertProcessor>();

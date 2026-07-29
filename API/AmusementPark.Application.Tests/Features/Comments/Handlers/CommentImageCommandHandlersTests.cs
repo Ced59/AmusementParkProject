@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Comments.Commands;
 using AmusementPark.Application.Features.Comments.Handlers;
+using AmusementPark.Application.Features.Comments.Services;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Images.Results;
@@ -90,6 +91,25 @@ public sealed class CommentImageCommandHandlersTests
 
         ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
             new UploadCommentImageCommand(user.Id, CreateFile("image/png", 100)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "comment.author.forbidden");
+        users.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteDraftAsync_WhenActorIsRegularUser_ShouldRejectBeforeImageLookup()
+    {
+        User user = CreateActor(Role.User);
+        Mock<IUserRepository> users = CreateUserRepository(user);
+        DeleteCommentDraftImageCommandHandler handler = new DeleteCommentDraftImageCommandHandler(
+            users.Object,
+            new CommentImageManager(
+                Mock.Of<IImageRepository>(),
+                Mock.Of<IImageBinaryStorage>()));
+
+        ApplicationResult result = await handler.HandleAsync(
+            new DeleteCommentDraftImageCommand(user.Id, "image-1"));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "comment.author.forbidden");

@@ -109,6 +109,23 @@ public sealed class Image : AuditableEntity
     /// </summary>
     public bool IsPublished { get; set; } = true;
 
+    /// <summary>
+    /// Propriétaire initial d'un brouillon de commentaire. Cette valeur permet
+    /// de rendre le brouillon à son auteur si l'association au commentaire échoue.
+    /// </summary>
+    public string? DraftOwnerId { get; set; }
+
+    /// <summary>
+    /// Commentaire auquel le brouillon est réservé pendant l'écriture Mongo.
+    /// Une image réservée reste privée jusqu'à la finalisation.
+    /// </summary>
+    public string? PendingCommentId { get; set; }
+
+    /// <summary>
+    /// Date à partir de laquelle le worker peut réconcilier ou supprimer l'image.
+    /// </summary>
+    public DateTime? CleanupRequestedAtUtc { get; set; }
+
     public bool CanBeUsedInComment(string actorUserId, string commentId)
     {
         bool isPublishedForComment =
@@ -120,6 +137,8 @@ public sealed class Image : AuditableEntity
             this.Category == ImageCategory.Comment
             && this.OwnerType == ImageOwnerType.CommentDraft
             && string.Equals(this.OwnerId, actorUserId, StringComparison.Ordinal)
+            && (string.IsNullOrWhiteSpace(this.PendingCommentId)
+                || string.Equals(this.PendingCommentId, commentId, StringComparison.Ordinal))
             && !this.IsPublished;
         return isPublishedForComment || isDraftOwnedByActor;
     }

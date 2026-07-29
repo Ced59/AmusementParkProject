@@ -8,9 +8,9 @@ public interface ICommentRepository
 
     Task<Comment?> GetByIdAsync(string commentId, CancellationToken cancellationToken);
 
-    Task<Comment?> UpdateAsync(Comment comment, CancellationToken cancellationToken);
+    Task<Comment?> UpdateAsync(Comment comment, long expectedRevision, CancellationToken cancellationToken);
 
-    Task<bool> DeleteAsync(string commentId, CancellationToken cancellationToken);
+    Task<bool> DeleteAsync(string commentId, long expectedRevision, CancellationToken cancellationToken);
 
     Task<bool> IsImageReferencedAsync(string imageId, CancellationToken cancellationToken);
 

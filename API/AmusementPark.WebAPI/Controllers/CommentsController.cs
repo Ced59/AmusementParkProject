@@ -251,6 +251,7 @@ public sealed class CommentsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> DeleteAsync(
         [FromRoute] string commentId,
+        [FromQuery] long? revision = null,
         CancellationToken cancellationToken = default)
     {
         string? actorUserId = this.User.GetUserId();
@@ -260,7 +261,7 @@ public sealed class CommentsController : ControllerBase
         }
 
         ApplicationResult result = await this.deleteCommentHandler.HandleAsync(
-            new DeleteCommentCommand(actorUserId, commentId),
+            new DeleteCommentCommand(actorUserId, commentId, revision),
             cancellationToken);
         if (!result.IsSuccess)
         {

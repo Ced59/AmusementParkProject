@@ -19,7 +19,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
     private const int MaximumAvatarEdge = 4096;
     private const long MaximumAvatarPixels = 8_000_000;
     private const int MaximumCommentImageEdge = 8192;
-    private const long MaximumCommentImagePixels = 40_000_000;
+    private const long MaximumCommentImagePixels = 24_000_000;
     private static readonly HashSet<string> AllowedAvatarContentTypes = new HashSet<string>(
         new[] { "image/jpeg", "image/png", "image/webp" },
         StringComparer.OrdinalIgnoreCase);
@@ -99,18 +99,6 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             string storagePath = $"{categoryPathSegment}/{imageId}";
             FilePayload persistedFile = BuildPersistedFile(command.Request, metadata);
 
-            IReadOnlyCollection<string> savedFiles = IsPrivateImageCategory(command.Request.Category)
-                ? await this.imageBinaryStorage.SaveWithoutMetadataAsync(
-                    storagePath,
-                    command.Request.File,
-                    withWatermark,
-                    cancellationToken)
-                : await this.imageBinaryStorage.SaveAsync(
-                    storagePath,
-                    command.Request.File,
-                    withWatermark,
-                    cancellationToken);
-
             ImageUploadRequest preparedRequest = new ImageUploadRequest
             {
                 ImageId = imageId,
@@ -130,6 +118,54 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 IsPublished = command.Request.IsPublished,
             };
 
+            if (command.Request.Category == ImageCategory.Comment)
+            {
+                Image draft = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
+                IReadOnlyCollection<string> commentFiles;
+                try
+                {
+                    commentFiles = await this.imageBinaryStorage.SaveWithoutMetadataAsync(
+                        storagePath,
+                        command.Request.File,
+                        withWatermark,
+                        cancellationToken);
+                }
+                catch
+                {
+                    try
+                    {
+                        await this.imageRepository.RequestCommentDraftCleanupAsync(
+                            draft.Id,
+                            draft.OwnerId ?? string.Empty,
+                            DateTime.UtcNow,
+                            CancellationToken.None);
+                    }
+                    catch
+                    {
+                        // Le brouillon reste détectable par la rétention de secours.
+                    }
+
+                    throw;
+                }
+
+                return ApplicationResult<UploadedImageResult>.Success(new UploadedImageResult
+                {
+                    Image = draft,
+                    SavedFiles = commentFiles,
+                });
+            }
+
+            IReadOnlyCollection<string> savedFiles = command.Request.Category == ImageCategory.Avatar
+                ? await this.imageBinaryStorage.SaveWithoutMetadataAsync(
+                    storagePath,
+                    command.Request.File,
+                    withWatermark,
+                    cancellationToken)
+                : await this.imageBinaryStorage.SaveAsync(
+                    storagePath,
+                    command.Request.File,
+                    withWatermark,
+                    cancellationToken);
             Image image = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
 
             return ApplicationResult<UploadedImageResult>.Success(new UploadedImageResult

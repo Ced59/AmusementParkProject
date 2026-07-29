@@ -27,6 +27,8 @@ public sealed class Comment : AuditableEntity
 
     public List<string> ImageIds { get; set; } = new List<string>();
 
+    public long Revision { get; set; }
+
     public bool IsOfficial { get; set; }
 
     public CommentModerationStatus ModerationStatus { get; set; } = CommentModerationStatus.Published;

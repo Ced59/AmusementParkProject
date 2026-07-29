@@ -324,6 +324,18 @@ public sealed partial class MongoDatabaseInitializer
                 new CreateIndexOptions { Name = "idx_images_owner_type_published_created_desc" }),
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.CleanupRequestedAt)
+                    .Ascending(item => item.CreatedAt),
+                new CreateIndexOptions<ImageDocument>
+                {
+                    Name = "idx_images_comment_cleanup_due",
+                    PartialFilterExpression =
+                        Builders<ImageDocument>.Filter.Exists(
+                            static item => item.CleanupRequestedAt),
+                }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
                     .Text(item => item.OriginalFileName)
                     .Text(item => item.Description)
                     .Text(item => item.Path)

@@ -12,7 +12,7 @@ public sealed class CommentImageManagerTests
     private const string ImageId = "abcdef0123456789abcdef0123456789";
 
     [Fact]
-    public async Task PublishForCommentAsync_WhenDraftBelongsToActor_ShouldPublishItForComment()
+    public async Task PublishForCommentAsync_WhenDraftBelongsToActor_ShouldReserveItPrivately()
     {
         Image draft = CreateDraft("author-1");
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
@@ -22,18 +22,20 @@ public sealed class CommentImageManagerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { draft });
         repository
-            .Setup(value => value.PublishCommentDraftAsync(
+            .Setup(value => value.ReserveCommentDraftAsync(
                 ImageId,
                 "author-1",
                 "comment-1",
+                It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Image
             {
                 Id = ImageId,
                 Category = ImageCategory.Comment,
-                OwnerType = ImageOwnerType.Comment,
-                OwnerId = "comment-1",
-                IsPublished = true,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+                PendingCommentId = "comment-1",
+                IsPublished = false,
             });
         CommentImageManager manager = new CommentImageManager(
             repository.Object,
@@ -125,55 +127,32 @@ public sealed class CommentImageManagerTests
     }
 
     [Fact]
-    public async Task DeleteRemovedAsync_ShouldDeleteOnlyImagesOwnedByComment()
+    public async Task RequestRemovedCleanupAsync_ShouldPersistCleanupBeforeDeletion()
     {
-        Image owned = new Image
-        {
-            Id = ImageId,
-            Category = ImageCategory.Comment,
-            OwnerType = ImageOwnerType.Comment,
-            OwnerId = "comment-1",
-            Path = "comment/image-1",
-            IsPublished = true,
-        };
-        Image foreign = new Image
-        {
-            Id = "11111111111111111111111111111111",
-            Category = ImageCategory.Comment,
-            OwnerType = ImageOwnerType.Comment,
-            OwnerId = "comment-2",
-            Path = "comment/image-2",
-            IsPublished = true,
-        };
+        const string secondImageId = "11111111111111111111111111111111";
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository
-            .Setup(value => value.GetByIdsAsync(
-                It.IsAny<IReadOnlyCollection<string>>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { owned, foreign });
-        repository
-            .Setup(value => value.DeleteCommentImageAsync(
-                ImageId,
+            .Setup(value => value.RequestCommentImagesCleanupAsync(
+                It.Is<IReadOnlyCollection<string>>(ids =>
+                    ids.SequenceEqual(new[] { ImageId, secondImageId })),
                 "comment-1",
+                It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(true);
-        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
-        storage
-            .Setup(value => value.DeleteAsync("comment/image-1", It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
-        CommentImageManager manager = new CommentImageManager(repository.Object, storage.Object);
+            .ReturnsAsync(2);
+        CommentImageManager manager = new CommentImageManager(
+            repository.Object,
+            Mock.Of<IImageBinaryStorage>());
 
-        await manager.DeleteRemovedAsync(
+        await manager.RequestRemovedCleanupAsync(
             "comment-1",
-            new[] { ImageId, foreign.Id },
+            new[] { ImageId, secondImageId },
             CancellationToken.None);
 
         repository.VerifyAll();
-        storage.VerifyAll();
     }
 
     [Fact]
-    public async Task PublishForCommentAsync_WhenSecondPublicationFails_ShouldRollbackFirstPublication()
+    public async Task PublishForCommentAsync_WhenSecondReservationFails_ShouldLeaveFirstForReconciliation()
     {
         const string secondImageId = "11111111111111111111111111111111";
         Image firstDraft = CreateDraft("author-1");
@@ -185,14 +164,14 @@ public sealed class CommentImageManagerTests
             OwnerId = "author-1",
             IsPublished = false,
         };
-        Image firstPublished = new Image
+        Image firstReserved = new Image
         {
             Id = ImageId,
             Category = ImageCategory.Comment,
-            OwnerType = ImageOwnerType.Comment,
-            OwnerId = "comment-1",
-            Path = "comment/first",
-            IsPublished = true,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "author-1",
+            PendingCommentId = "comment-1",
+            IsPublished = false,
         };
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository
@@ -201,31 +180,24 @@ public sealed class CommentImageManagerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { firstDraft, secondDraft });
         repository
-            .Setup(value => value.PublishCommentDraftAsync(
+            .Setup(value => value.ReserveCommentDraftAsync(
                 ImageId,
                 "author-1",
                 "comment-1",
+                It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(firstPublished);
+            .ReturnsAsync(firstReserved);
         repository
-            .Setup(value => value.PublishCommentDraftAsync(
+            .Setup(value => value.ReserveCommentDraftAsync(
                 secondImageId,
                 "author-1",
                 "comment-1",
+                It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((Image?)null);
-        repository
-            .Setup(value => value.GetByIdsAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { ImageId })),
-                CancellationToken.None))
-            .ReturnsAsync(new[] { firstPublished });
-        repository
-            .Setup(value => value.DeleteCommentImageAsync(ImageId, "comment-1", CancellationToken.None))
-            .ReturnsAsync(true);
-        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
-        storage.Setup(value => value.DeleteAsync("comment/first", CancellationToken.None))
-            .Returns(Task.CompletedTask);
-        CommentImageManager manager = new CommentImageManager(repository.Object, storage.Object);
+        CommentImageManager manager = new CommentImageManager(
+            repository.Object,
+            Mock.Of<IImageBinaryStorage>());
 
         ApplicationResult<IReadOnlyCollection<string>> result = await manager.PublishForCommentAsync(
             "author-1",
@@ -235,7 +207,6 @@ public sealed class CommentImageManagerTests
 
         Assert.False(result.IsSuccess);
         repository.VerifyAll();
-        storage.VerifyAll();
     }
 
     [Fact]
@@ -259,7 +230,7 @@ public sealed class CommentImageManagerTests
             .ReturnsAsync(true);
         Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
         storage.Setup(value => value.DeleteAsync("comment/draft", It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         CommentImageManager manager = new CommentImageManager(repository.Object, storage.Object);
 
         int result = await manager.DeleteExpiredDraftsAsync(cutoff, 50, CancellationToken.None);
@@ -275,6 +246,28 @@ public sealed class CommentImageManagerTests
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository.Setup(value => value.GetByIdAsync(ImageId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(CreateDraft("other-author"));
+        CommentImageManager manager = new CommentImageManager(
+            repository.Object,
+            Mock.Of<IImageBinaryStorage>());
+
+        ApplicationResult result = await manager.DeleteOwnedDraftAsync(
+            "author-1",
+            ImageId,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "comment.image.forbidden");
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteOwnedDraftAsync_WhenDraftIsReserved_ShouldRejectWithoutSchedulingDeletion()
+    {
+        Image draft = CreateDraft("author-1");
+        draft.PendingCommentId = "comment-1";
+        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetByIdAsync(ImageId, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(draft);
         CommentImageManager manager = new CommentImageManager(
             repository.Object,
             Mock.Of<IImageBinaryStorage>());

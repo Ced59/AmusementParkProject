@@ -65,15 +65,21 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 return ApplicationResult.Failure(ImageApplicationErrors.ImageReferencedByComment());
             }
 
+            if (!string.IsNullOrWhiteSpace(image.Path))
+            {
+                bool binaryDeleted = await this.imageBinaryStorage.DeleteAsync(
+                    image.Path,
+                    cancellationToken);
+                if (!binaryDeleted)
+                {
+                    return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
+                }
+            }
+
             bool deleted = await this.imageRepository.DeleteAsync(image.Id, cancellationToken);
             if (!deleted)
             {
                 return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
-            }
-
-            if (!string.IsNullOrWhiteSpace(image.Path))
-            {
-                await this.imageBinaryStorage.DeleteAsync(image.Path, cancellationToken);
             }
 
             await SynchronizeAfterDeletionAsync(image, this.imageRepository, this.parkRepository, this.attractionManufacturerRepository, this.searchProjectionWriter, this.userRepository, cancellationToken);

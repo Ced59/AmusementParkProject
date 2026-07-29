@@ -41,7 +41,7 @@ public sealed class UploadCommentImageCommandHandler
             command.ActorUserId,
             this.userRepository,
             cancellationToken);
-        if (actor is null)
+        if (!CanManageCommentImages(actor))
         {
             return ApplicationResult<UploadedImageResult>.Failure(CommentApplicationErrors.AuthorNotAllowed());
         }
@@ -58,7 +58,7 @@ public sealed class UploadCommentImageCommandHandler
 
         IReadOnlyCollection<Image> existingDrafts = await this.imageRepository.GetByOwnerAsync(
             ImageOwnerType.CommentDraft,
-            actor.Id,
+            actor!.Id,
             ImageCategory.Comment,
             cancellationToken);
         if (existingDrafts.Count >= CommentImageManager.MaximumDraftImagesPerAuthor)
@@ -76,6 +76,12 @@ public sealed class UploadCommentImageCommandHandler
             IsPublished = false,
         };
         return await this.uploadImageHandler.HandleAsync(new UploadImageCommand(request), cancellationToken);
+    }
+
+    private static bool CanManageCommentImages(User? actor)
+    {
+        return actor is not null
+            && (actor.HasRole(Role.Admin) || actor.HasRole(Role.Moderator));
     }
 }
 
@@ -101,7 +107,7 @@ public sealed class DeleteCommentDraftImageCommandHandler
             command.ActorUserId,
             this.userRepository,
             cancellationToken);
-        if (actor is null)
+        if (!CanManageCommentImages(actor))
         {
             return ApplicationResult.Failure(CommentApplicationErrors.AuthorNotAllowed());
         }
@@ -112,8 +118,14 @@ public sealed class DeleteCommentDraftImageCommandHandler
         }
 
         return await this.commentImageManager.DeleteOwnedDraftAsync(
-            actor.Id,
+            actor!.Id,
             command.ImageId,
             cancellationToken);
+    }
+
+    private static bool CanManageCommentImages(User? actor)
+    {
+        return actor is not null
+            && (actor.HasRole(Role.Admin) || actor.HasRole(Role.Moderator));
     }
 }

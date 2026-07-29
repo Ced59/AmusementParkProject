@@ -14,12 +14,6 @@ public interface IImageBinaryStorage
         bool withWatermark,
         CancellationToken cancellationToken);
 
-    Task<IReadOnlyCollection<string>> SaveWithoutMetadataAsync(
-        string pathWithoutExtension,
-        AmusementPark.Application.Common.Contracts.FilePayload file,
-        bool withWatermark,
-        CancellationToken cancellationToken);
-
     /// <summary>
     /// Sauvegarde les variantes après suppression des métadonnées intégrées.
     /// </summary>
@@ -46,5 +40,5 @@ public interface IImageBinaryStorage
     /// <summary>
     /// Supprime toutes les variantes connues d'une image.
     /// </summary>
-    Task DeleteAsync(string pathWithoutExtension, CancellationToken cancellationToken);
+    Task<bool> DeleteAsync(string pathWithoutExtension, CancellationToken cancellationToken);
 }
