@@ -1,6 +1,6 @@
 import { CommentTargetType } from '@app/models/comments/comment.models';
 
-const COMMENTS_ROOT = '/comments';
+const COMMENTS_ROOT = 'comments';
 
 export const COMMENTS_API_ENDPOINTS = {
   create: COMMENTS_ROOT,
