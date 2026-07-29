@@ -1,0 +1,56 @@
+{
+  "comments": {
+    "kicker": "Da equipa",
+    "title": "Comentários sobre {{name}}",
+    "subtitle": "Encontra aqui os comentários publicados pela equipa da Amusement Parks.",
+    "backToTarget": "Voltar a {{name}}",
+    "officialBadge": "Opinião oficial da Amusement Parks",
+    "officialAuthor": "Amusement Parks",
+    "roles": {
+      "Admin": "Administrador",
+      "Moderator": "Moderador"
+    },
+    "summary": {
+      "createFirst": "Escrever o primeiro comentário",
+      "count": {
+        "one": "{{count}} comentário",
+        "few": "{{count}} comentários",
+        "many": "{{count}} comentários",
+        "other": "{{count}} comentários"
+      }
+    },
+    "breadcrumb": {
+      "label": "Navegação estrutural",
+      "home": "Início",
+      "parks": "Parques",
+      "comments": "Comentários"
+    },
+    "loading": {
+      "title": "A carregar comentários",
+      "message": "A equipa está a reunir os comentários publicados."
+    },
+    "listLabel": "Comentários publicados",
+    "empty": {
+      "title": "Ainda não há comentários",
+      "message": "A equipa ainda não publicou nenhum comentário nesta página."
+    },
+    "editor": {
+      "kicker": "Espaço da equipa",
+      "title": "Escrever um comentário",
+      "help": "A formatação e as traduções são preservadas com o editor partilhado do site.",
+      "placeholder": "Escreve o comentário em {{language}}…",
+      "officialLabel": "Opinião oficial da Amusement Parks",
+      "officialHelp": "Esta opinião será destacada e apresentada antes de todos os outros comentários.",
+      "validation": "Escreve o comentário em pelo menos um idioma.",
+      "publish": "Publicar comentário",
+      "saving": "A publicar…",
+      "saved": "O comentário foi publicado."
+    },
+    "errors": {
+      "title": "Comentários indisponíveis",
+      "load": "Não foi possível carregar os comentários.",
+      "save": "Não foi possível publicar o comentário.",
+      "forbidden": "Só administradores e moderadores podem publicar um comentário."
+    }
+  }
+}

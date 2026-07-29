@@ -58,6 +58,7 @@ export interface ParkDetailViewModel {
   imagesLink: string[] | null;
   videosLink: string[] | null;
   historyLink: string[] | null;
+  commentsLink: string[] | null;
   mapLink: string[] | null;
   weatherLink: string[] | null;
   openingHoursLink: string[] | null;

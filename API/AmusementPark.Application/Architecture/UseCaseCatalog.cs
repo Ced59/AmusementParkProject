@@ -28,6 +28,7 @@ public static class UseCaseCatalog
             ["Ratings"] = new[] { "UpsertUserRating", "GetRatingSummary", "GetUserRating", "ListUserRatings", "GetUserRatingStats", "GetRatingRankings" },
             ["TechnicalPages"] = new[] { "GetTechnicalPages", "GetTechnicalPageById", "GetTechnicalPageBySlug", "CreateTechnicalPage", "UpdateTechnicalPage", "UpsertTechnicalPagesJson" },
             ["History"] = new[] { "GetParkHistoryTimeline", "GetParkItemHistoryTimeline", "GetHistoryArticle", "GetHistoryEventsPage", "UpsertHistoryEvent", "DeleteHistoryEvent" },
+            ["Comments"] = new[] { "CreateComment", "GetCommentSummary", "GetCommentThread" },
             ["TechnicalStats"] = new[] { "GetTechnicalStats", "UpdateTechnicalStatsSettings" },
         };
 }

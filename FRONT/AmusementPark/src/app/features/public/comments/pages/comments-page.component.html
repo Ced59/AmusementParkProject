@@ -1,0 +1,136 @@
+<app-page-state
+  [state]="state()"
+  [messages]="{
+    loadingTitleKey: 'comments.loading.title',
+    loadingMessageKey: 'comments.loading.message',
+    errorTitleKey: 'comments.errors.title',
+    errorMessageKey: 'comments.errors.load'
+  }">
+  @if (thread(); as currentThread) {
+    <main class="comments-page public-page">
+      <nav class="comments-breadcrumb" [attr.aria-label]="'comments.breadcrumb.label' | translate">
+        <a [routerLink]="homeLink()">{{ 'comments.breadcrumb.home' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="parksLink()">{{ 'comments.breadcrumb.parks' | translate }}</a>
+
+        @if (parkLink(); as currentParkLink) {
+          <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          <a [routerLink]="currentParkLink">{{ currentThread.parkName }}</a>
+        }
+
+        @if (currentThread.targetType === 'ParkItem' && targetLink(); as currentTargetLink) {
+          <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          <a [routerLink]="currentTargetLink">{{ currentThread.targetName }}</a>
+        }
+
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <span>{{ 'comments.breadcrumb.comments' | translate }}</span>
+      </nav>
+
+      <section class="comments-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+        <div>
+          <app-ui-kicker tone="lime" iconClass="pi pi-comments">
+            {{ 'comments.kicker' | translate }}
+          </app-ui-kicker>
+          <h1>{{ 'comments.title' | translate:{ name: currentThread.targetName } }}</h1>
+          <p>{{ 'comments.subtitle' | translate:{ count: currentThread.comments.length } }}</p>
+        </div>
+
+        <a appUiButton="ghost" [routerLink]="targetLink()">
+          <i class="pi pi-arrow-left" aria-hidden="true"></i>
+          <span>{{ 'comments.backToTarget' | translate:{ name: currentThread.targetName } }}</span>
+        </a>
+      </section>
+
+      @if (canWrite()) {
+        <form
+          class="comment-editor"
+          appUiSurface="panel"
+          appUiSurfacePadding="spacious"
+          [formGroup]="editorForm"
+          (ngSubmit)="submit()"
+          (input)="clearSaveError()">
+          <header class="comment-editor__header">
+            <div>
+              <app-ui-kicker tone="sky" iconClass="pi pi-pencil">
+                {{ 'comments.editor.kicker' | translate }}
+              </app-ui-kicker>
+              <h2>{{ 'comments.editor.title' | translate }}</h2>
+              <p>{{ 'comments.editor.help' | translate }}</p>
+            </div>
+
+            <label class="comment-editor__official">
+              <input type="checkbox" formControlName="isOfficial" />
+              <span>
+                <strong>{{ 'comments.editor.officialLabel' | translate }}</strong>
+                <small>{{ 'comments.editor.officialHelp' | translate }}</small>
+              </span>
+            </label>
+          </header>
+
+          <app-localized-rich-text-editor
+            formControlName="bodies"
+            placeholderKey="comments.editor.placeholder"
+            editorHeight="14rem">
+          </app-localized-rich-text-editor>
+
+          @if (editorForm.controls.bodies.touched && editorForm.controls.bodies.value.length === 0) {
+            <p class="comment-editor__error">{{ 'comments.editor.validation' | translate }}</p>
+          }
+
+          @if (saveErrorKey()) {
+            <p class="comment-editor__error">{{ saveErrorKey()! | translate }}</p>
+          }
+
+          <div class="comment-editor__actions">
+            <button appUiButton="primary" type="submit" [disabled]="saving()">
+              <i class="pi pi-send" aria-hidden="true"></i>
+              <span>{{ (saving() ? 'comments.editor.saving' : 'comments.editor.publish') | translate }}</span>
+            </button>
+          </div>
+        </form>
+      }
+
+      <section class="comments-list" [attr.aria-label]="'comments.listLabel' | translate">
+        @for (comment of currentThread.comments; track comment.id) {
+          <article
+            class="comment-card"
+            [class.comment-card--official]="comment.isOfficial"
+            appUiSurface="detail"
+            appUiSurfacePadding="regular">
+            <header class="comment-card__header">
+              <div class="comment-card__author">
+                <span class="comment-card__avatar" aria-hidden="true">
+                  <i [class]="comment.isOfficial ? 'pi pi-verified' : 'pi pi-user'"></i>
+                </span>
+                <span>
+                  <strong>{{ comment.isOfficial ? ('comments.officialAuthor' | translate) : comment.authorDisplayName }}</strong>
+                  <small>{{ ('comments.roles.' + comment.authorRole) | translate }}</small>
+                </span>
+              </div>
+
+              <div class="comment-card__meta">
+                @if (comment.isOfficial) {
+                  <app-ui-chip tone="lime" iconClass="pi pi-verified">
+                    {{ 'comments.officialBadge' | translate }}
+                  </app-ui-chip>
+                }
+                <time [attr.datetime]="comment.createdAtUtc">
+                  {{ comment.createdAtUtc | date:'longDate':undefined:currentLanguage() }}
+                </time>
+              </div>
+            </header>
+
+            <div class="comment-card__body" [innerHTML]="commentBody(comment) | safeRichHtml"></div>
+          </article>
+        } @empty {
+          <section class="comments-empty" appUiSurface="shell" appUiSurfacePadding="spacious">
+            <i class="pi pi-comments" aria-hidden="true"></i>
+            <h2>{{ 'comments.empty.title' | translate }}</h2>
+            <p>{{ 'comments.empty.message' | translate }}</p>
+          </section>
+        }
+      </section>
+    </main>
+  }
+</app-page-state>

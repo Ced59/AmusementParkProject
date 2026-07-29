@@ -76,6 +76,15 @@
                 [initialSummary]="currentPark.rating">
               </app-rating-stars>
             }
+
+            @if (currentPark.id && currentPark.commentsLink) {
+              <app-comment-summary-link
+                targetType="Park"
+                [targetId]="currentPark.id"
+                [commentsLink]="currentPark.commentsLink"
+                [currentLanguage]="currentLang">
+              </app-comment-summary-link>
+            }
           </div>
 
           <div class="park-banner__actions">

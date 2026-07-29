@@ -8,6 +8,7 @@ import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.h
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import {
   buildPublicParkImagesRouteCommands,
+  buildPublicParkCommentsRouteCommands,
   buildPublicParkItemsRouteCommands,
   buildPublicParkMapRouteCommands,
   buildPublicParkHistoryRouteCommands,
@@ -145,6 +146,9 @@ export function mapParkToDetailViewModel(
       : null,
     historyLink: hasIdentity && hasHistory
       ? buildPublicParkHistoryRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
+      : null,
+    commentsLink: hasIdentity
+      ? buildPublicParkCommentsRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     mapLink: hasIdentity
       ? buildPublicParkMapRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })

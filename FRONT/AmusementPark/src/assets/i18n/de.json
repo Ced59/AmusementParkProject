@@ -2622,6 +2622,60 @@
       "secondary": "Zur Startseite"
     }
   },
+  "comments": {
+    "kicker": "Vom Team",
+    "title": "Kommentare zu {{name}}",
+    "subtitle": "Hier findest du die vom Amusement-Parks-Team veröffentlichten Kommentare.",
+    "backToTarget": "Zurück zu {{name}}",
+    "officialBadge": "Offizielle Meinung von Amusement Parks",
+    "officialAuthor": "Amusement Parks",
+    "roles": {
+      "Admin": "Administrator",
+      "Moderator": "Moderator"
+    },
+    "summary": {
+      "createFirst": "Den ersten Kommentar schreiben",
+      "count": {
+        "one": "{{count}} Kommentar",
+        "few": "{{count}} Kommentare",
+        "many": "{{count}} Kommentare",
+        "other": "{{count}} Kommentare"
+      }
+    },
+    "breadcrumb": {
+      "label": "Brotkrümelnavigation",
+      "home": "Startseite",
+      "parks": "Parks",
+      "comments": "Kommentare"
+    },
+    "loading": {
+      "title": "Kommentare werden geladen",
+      "message": "Das Team stellt die veröffentlichten Kommentare zusammen."
+    },
+    "listLabel": "Veröffentlichte Kommentare",
+    "empty": {
+      "title": "Noch keine Kommentare",
+      "message": "Das Team hat zu dieser Seite noch keinen Kommentar veröffentlicht."
+    },
+    "editor": {
+      "kicker": "Teambereich",
+      "title": "Kommentar schreiben",
+      "help": "Formatierung und Übersetzungen bleiben mit dem gemeinsamen Editor der Website erhalten.",
+      "placeholder": "Schreibe den Kommentar auf {{language}}…",
+      "officialLabel": "Offizielle Meinung von Amusement Parks",
+      "officialHelp": "Diese Meinung wird hervorgehoben und vor allen anderen Kommentaren angezeigt.",
+      "validation": "Schreibe den Kommentar in mindestens einer Sprache.",
+      "publish": "Kommentar veröffentlichen",
+      "saving": "Veröffentlichung…",
+      "saved": "Der Kommentar wurde veröffentlicht."
+    },
+    "errors": {
+      "title": "Kommentare nicht verfügbar",
+      "load": "Die Kommentare konnten nicht geladen werden.",
+      "save": "Der Kommentar konnte nicht veröffentlicht werden.",
+      "forbidden": "Nur Administratoren und Moderatoren können einen Kommentar veröffentlichen."
+    }
+  },
   "contactPage": {
     "kicker": "Kontakt",
     "title": "AmusementPark kontaktieren",

@@ -1,0 +1,42 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import {
+  CommentSummary,
+  CommentTargetType,
+  CommentThread,
+  CreateCommentRequest,
+  PublicComment
+} from '@app/models/comments/comment.models';
+import { environment } from '../../../environments/environment';
+import { COMMENTS_API_ENDPOINTS } from './comments-api-endpoints';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CommentsApiService {
+  private readonly jsonHttpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
+  constructor(private readonly http: HttpClient) {
+  }
+
+  getSummary(targetType: CommentTargetType, targetId: string): Observable<CommentSummary> {
+    const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.getSummary(targetType, targetId)}`;
+    return this.http.get<CommentSummary>(url);
+  }
+
+  getThread(targetType: CommentTargetType, targetId: string): Observable<CommentThread> {
+    const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.getThread(targetType, targetId)}`;
+    return this.http.get<CommentThread>(url);
+  }
+
+  createComment(request: CreateCommentRequest): Observable<PublicComment> {
+    const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.create}`;
+    return this.http.post<PublicComment>(url, request, this.jsonHttpOptions);
+  }
+}

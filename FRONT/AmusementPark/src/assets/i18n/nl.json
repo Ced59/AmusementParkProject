@@ -2622,6 +2622,60 @@
       "secondary": "Terug naar home"
     }
   },
+  "comments": {
+    "kicker": "Van het team",
+    "title": "Reacties over {{name}}",
+    "subtitle": "Hier vind je reacties die door het Amusement Parks-team zijn gepubliceerd.",
+    "backToTarget": "Terug naar {{name}}",
+    "officialBadge": "Officieel oordeel van Amusement Parks",
+    "officialAuthor": "Amusement Parks",
+    "roles": {
+      "Admin": "Beheerder",
+      "Moderator": "Moderator"
+    },
+    "summary": {
+      "createFirst": "De eerste reactie schrijven",
+      "count": {
+        "one": "{{count}} reactie",
+        "few": "{{count}} reacties",
+        "many": "{{count}} reacties",
+        "other": "{{count}} reacties"
+      }
+    },
+    "breadcrumb": {
+      "label": "Broodkruimelnavigatie",
+      "home": "Start",
+      "parks": "Parken",
+      "comments": "Reacties"
+    },
+    "loading": {
+      "title": "Reacties laden",
+      "message": "Het team verzamelt de gepubliceerde reacties."
+    },
+    "listLabel": "Gepubliceerde reacties",
+    "empty": {
+      "title": "Nog geen reacties",
+      "message": "Het team heeft nog geen reactie op deze pagina gepubliceerd."
+    },
+    "editor": {
+      "kicker": "Teamruimte",
+      "title": "Een reactie schrijven",
+      "help": "Opmaak en vertalingen blijven behouden met de gedeelde editor van de site.",
+      "placeholder": "Schrijf de reactie in het {{language}}…",
+      "officialLabel": "Officieel oordeel van Amusement Parks",
+      "officialHelp": "Dit oordeel wordt uitgelicht en vóór alle andere reacties weergegeven.",
+      "validation": "Schrijf de reactie in ten minste één taal.",
+      "publish": "Reactie publiceren",
+      "saving": "Publiceren…",
+      "saved": "De reactie is gepubliceerd."
+    },
+    "errors": {
+      "title": "Reacties niet beschikbaar",
+      "load": "De reacties konden niet worden geladen.",
+      "save": "De reactie kon niet worden gepubliceerd.",
+      "forbidden": "Alleen beheerders en moderators kunnen een reactie publiceren."
+    }
+  },
   "contactPage": {
     "kicker": "Contact",
     "title": "Contact met AmusementPark",

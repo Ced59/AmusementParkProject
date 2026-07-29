@@ -138,6 +138,16 @@ export function buildPublicParkVideosRouteCommands(target: PublicParkRouteTarget
   return [...parkRouteCommands, 'videos'];
 }
 
+export function buildPublicParkCommentsRouteCommands(target: PublicParkRouteTarget): string[] | null {
+  const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
+
+  if (!parkRouteCommands) {
+    return null;
+  }
+
+  return [...parkRouteCommands, 'comments'];
+}
+
 export function buildPublicParkVideoRouteCommands(target: PublicParkVideoRouteTarget): string[] | null {
   const videosRouteCommands: string[] | null = buildPublicParkVideosRouteCommands(target);
   const videoId: string | null = normalizeRouteValue(target.videoId);
@@ -237,6 +247,16 @@ export function buildPublicParkItemVideosRouteCommands(target: PublicParkItemRou
   }
 
   return [...itemRouteCommands, 'videos'];
+}
+
+export function buildPublicParkItemCommentsRouteCommands(target: PublicParkItemRouteTarget): string[] | null {
+  const itemRouteCommands: string[] | null = buildPublicParkItemRouteCommands(target);
+
+  if (!itemRouteCommands) {
+    return null;
+  }
+
+  return [...itemRouteCommands, 'comments'];
 }
 
 export function buildPublicParkItemHistoryRouteCommands(target: PublicParkItemRouteTarget): string[] | null {

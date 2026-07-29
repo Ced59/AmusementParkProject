@@ -1,0 +1,56 @@
+{
+  "comments": {
+    "kicker": "Del equipo",
+    "title": "Comentarios sobre {{name}}",
+    "subtitle": "Aquí encontrarás los comentarios publicados por el equipo de Amusement Parks.",
+    "backToTarget": "Volver a {{name}}",
+    "officialBadge": "Opinión oficial de Amusement Parks",
+    "officialAuthor": "Amusement Parks",
+    "roles": {
+      "Admin": "Administrador",
+      "Moderator": "Moderador"
+    },
+    "summary": {
+      "createFirst": "Escribir el primer comentario",
+      "count": {
+        "one": "{{count}} comentario",
+        "few": "{{count}} comentarios",
+        "many": "{{count}} comentarios",
+        "other": "{{count}} comentarios"
+      }
+    },
+    "breadcrumb": {
+      "label": "Ruta de navegación",
+      "home": "Inicio",
+      "parks": "Parques",
+      "comments": "Comentarios"
+    },
+    "loading": {
+      "title": "Cargando comentarios",
+      "message": "El equipo está reuniendo los comentarios publicados."
+    },
+    "listLabel": "Comentarios publicados",
+    "empty": {
+      "title": "Todavía no hay comentarios",
+      "message": "El equipo aún no ha publicado ningún comentario en esta página."
+    },
+    "editor": {
+      "kicker": "Espacio del equipo",
+      "title": "Escribir un comentario",
+      "help": "El formato y las traducciones se conservan con el editor compartido del sitio.",
+      "placeholder": "Escribe el comentario en {{language}}…",
+      "officialLabel": "Opinión oficial de Amusement Parks",
+      "officialHelp": "Esta opinión se destacará y aparecerá antes que todos los demás comentarios.",
+      "validation": "Escribe el comentario en al menos un idioma.",
+      "publish": "Publicar comentario",
+      "saving": "Publicando…",
+      "saved": "El comentario se ha publicado."
+    },
+    "errors": {
+      "title": "Comentarios no disponibles",
+      "load": "No se han podido cargar los comentarios.",
+      "save": "No se ha podido publicar el comentario.",
+      "forbidden": "Solo los administradores y moderadores pueden publicar un comentario."
+    }
+  }
+}

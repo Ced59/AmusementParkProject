@@ -17,6 +17,7 @@ import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.component';
+import { CommentSummaryLinkComponent } from '@features/public/comments/ui/comment-summary-link.component';
 import { PublicContextualBlockMarker } from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
 import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
 
@@ -43,6 +44,7 @@ import { PublicContextualBlockDirective } from '@features/public/contextual-edit
     UiSurfaceDirective,
     PublicSharePanelComponent,
     RatingStarsComponent,
+    CommentSummaryLinkComponent,
     PublicContextualBlockDirective
   ]
 })

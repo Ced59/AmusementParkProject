@@ -2622,6 +2622,60 @@
       "secondary": "Torna alla home"
     }
   },
+  "comments": {
+    "kicker": "Dal team",
+    "title": "Commenti su {{name}}",
+    "subtitle": "Qui trovi i commenti pubblicati dal team di Amusement Parks.",
+    "backToTarget": "Torna a {{name}}",
+    "officialBadge": "Parere ufficiale di Amusement Parks",
+    "officialAuthor": "Amusement Parks",
+    "roles": {
+      "Admin": "Amministratore",
+      "Moderator": "Moderatore"
+    },
+    "summary": {
+      "createFirst": "Scrivi il primo commento",
+      "count": {
+        "one": "{{count}} commento",
+        "few": "{{count}} commenti",
+        "many": "{{count}} commenti",
+        "other": "{{count}} commenti"
+      }
+    },
+    "breadcrumb": {
+      "label": "Percorso di navigazione",
+      "home": "Home",
+      "parks": "Parchi",
+      "comments": "Commenti"
+    },
+    "loading": {
+      "title": "Caricamento dei commenti",
+      "message": "Il team sta raccogliendo i commenti pubblicati."
+    },
+    "listLabel": "Commenti pubblicati",
+    "empty": {
+      "title": "Ancora nessun commento",
+      "message": "Il team non ha ancora pubblicato un commento su questa pagina."
+    },
+    "editor": {
+      "kicker": "Spazio del team",
+      "title": "Scrivi un commento",
+      "help": "La formattazione e le traduzioni vengono conservate con l’editor condiviso del sito.",
+      "placeholder": "Scrivi il commento in {{language}}…",
+      "officialLabel": "Parere ufficiale di Amusement Parks",
+      "officialHelp": "Questo parere sarà evidenziato e mostrato prima di tutti gli altri commenti.",
+      "validation": "Scrivi il commento in almeno una lingua.",
+      "publish": "Pubblica il commento",
+      "saving": "Pubblicazione…",
+      "saved": "Il commento è stato pubblicato."
+    },
+    "errors": {
+      "title": "Commenti non disponibili",
+      "load": "Non è stato possibile caricare i commenti.",
+      "save": "Non è stato possibile pubblicare il commento.",
+      "forbidden": "Solo amministratori e moderatori possono pubblicare un commento."
+    }
+  },
   "contactPage": {
     "kicker": "Contatto",
     "title": "Contattare AmusementPark",

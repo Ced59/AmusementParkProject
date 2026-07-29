@@ -11,6 +11,7 @@ import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-v
 import { ParkReferenceDetailViewModel, ParkReferenceKind } from '@features/public/parks/models/park-reference-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
 import { HistoryArticlePageViewModel, HistoryTimelinePageViewModel } from '@features/public/history/models/history-view.model';
+import { CommentThread } from '@app/models/comments/comment.models';
 import { environment } from '../../../environments/environment';
 import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/localized-text.helpers';
 import { CanonicalUrlService } from './canonical-url.service';
@@ -60,6 +61,12 @@ interface ParkItemVideosSeoCopy {
   titlePrefix: string;
   itemFallback: string;
   description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number) => string;
+}
+
+interface CommentsSeoCopy {
+  title: (targetName: string) => string;
+  description: (targetName: string, commentCount: number) => string;
+  breadcrumbLabel: string;
 }
 
 interface ParkMapSeoCopy {
@@ -159,6 +166,56 @@ const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpa
 const SOCIAL_IMAGE_WIDTH: number = 1200;
 const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
 const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
+const COMMENTS_SEO_COPY: Record<string, CommentsSeoCopy> = {
+  fr: {
+    title: (targetName: string): string => `Commentaires et avis sur ${targetName}`,
+    description: (targetName: string, commentCount: number): string =>
+      `Découvre ${commentCount} commentaire${commentCount > 1 ? 's' : ''} éditorial${commentCount > 1 ? 'aux' : ''} sur ${targetName}, dont l’avis officiel d’Amusement Parks lorsqu’il est disponible.`,
+    breadcrumbLabel: 'Commentaires'
+  },
+  en: {
+    title: (targetName: string): string => `Comments and reviews of ${targetName}`,
+    description: (targetName: string, commentCount: number): string =>
+      `Read ${commentCount} editorial comment${commentCount === 1 ? '' : 's'} about ${targetName}, including the official Amusement Parks review when available.`,
+    breadcrumbLabel: 'Comments'
+  },
+  de: {
+    title: (targetName: string): string => `Kommentare und Meinungen zu ${targetName}`,
+    description: (targetName: string, commentCount: number): string =>
+      `Entdecke ${commentCount} redaktionelle Kommentare zu ${targetName}, einschließlich der offiziellen Meinung von Amusement Parks, wenn sie verfügbar ist.`,
+    breadcrumbLabel: 'Kommentare'
+  },
+  nl: {
+    title: (targetName: string): string => `Reacties en beoordelingen over ${targetName}`,
+    description: (targetName: string, commentCount: number): string =>
+      `Lees ${commentCount} redactionele reacties over ${targetName}, inclusief het officiële oordeel van Amusement Parks wanneer dit beschikbaar is.`,
+    breadcrumbLabel: 'Reacties'
+  },
+  it: {
+    title: (targetName: string): string => `Commenti e opinioni su ${targetName}`,
+    description: (targetName: string, commentCount: number): string =>
+      `Scopri ${commentCount} commenti editoriali su ${targetName}, compreso il parere ufficiale di Amusement Parks quando disponibile.`,
+    breadcrumbLabel: 'Commenti'
+  },
+  es: {
+    title: (targetName: string): string => `Comentarios y opiniones sobre ${targetName}`,
+    description: (targetName: string, commentCount: number): string =>
+      `Descubre ${commentCount} comentarios editoriales sobre ${targetName}, incluida la opinión oficial de Amusement Parks cuando esté disponible.`,
+    breadcrumbLabel: 'Comentarios'
+  },
+  pl: {
+    title: (targetName: string): string => `Komentarze i opinie o ${targetName}`,
+    description: (targetName: string, commentCount: number): string =>
+      `Poznaj ${commentCount} komentarzy redakcyjnych o ${targetName}, w tym oficjalną opinię Amusement Parks, gdy jest dostępna.`,
+    breadcrumbLabel: 'Komentarze'
+  },
+  pt: {
+    title: (targetName: string): string => `Comentários e opiniões sobre ${targetName}`,
+    description: (targetName: string, commentCount: number): string =>
+      `Descobre ${commentCount} comentários editoriais sobre ${targetName}, incluindo a opinião oficial da Amusement Parks quando disponível.`,
+    breadcrumbLabel: 'Comentários'
+  }
+};
 const RESPONSIVE_IMAGE_VERSION: string = '3';
 const FRENCH_A_COUNTRY_CODES: ReadonlySet<string> = new Set<string>([
   'BH', 'CU', 'CY', 'DJ', 'KN', 'LC', 'MG', 'MC', 'MT', 'MU', 'NR', 'OM', 'SG', 'SM',
@@ -1671,6 +1728,48 @@ export class SeoService {
         ?? undefined,
       imageAlt: itemName,
       jsonLd: [this.buildParkItemSubpageBreadcrumbJsonLd(item, park, seoUrl, this.resolveParkItemVideosBreadcrumbLabel(normalizedLanguage, itemName))]
+    });
+  }
+
+  applyCommentsSeo(
+    thread: CommentThread,
+    language: string,
+    url: string,
+    canonicalPath: string | null = null
+  ): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: CommentsSeoCopy = COMMENTS_SEO_COPY[normalizedLanguage] ?? COMMENTS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
+    const targetName: string = this.normalizeOptionalText(thread.targetName) ?? 'Amusement Parks';
+    const officialBody: string = resolveLocalizedText(
+      thread.comments.find((comment) => comment.isOfficial)?.bodies,
+      normalizedLanguage,
+      ''
+    );
+    const description: string = normalizeSeoText(
+      stripHtml(officialBody),
+      copy.description(targetName, thread.comments.length)
+    );
+    const park: Park = {
+      id: thread.parkId,
+      name: thread.parkName ?? targetName
+    } as Park;
+    const jsonLd: unknown = thread.targetType === 'ParkItem'
+      ? this.buildParkItemSubpageBreadcrumbJsonLd(
+        { id: thread.targetId, parkId: thread.parkId, name: targetName } as ParkItem,
+        park,
+        seoUrl,
+        copy.breadcrumbLabel
+      )
+      : this.buildParkSubpageBreadcrumbJsonLd(park, seoUrl, copy.breadcrumbLabel);
+
+    this.apply({
+      title: `${copy.title(targetName)} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: thread.comments.length > 0 ? 'index,follow' : 'noindex,follow',
+      alternates: this.hreflangService.buildAlternates(seoUrl),
+      jsonLd: [jsonLd]
     });
   }
 
