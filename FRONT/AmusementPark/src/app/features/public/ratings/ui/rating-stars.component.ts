@@ -21,7 +21,7 @@ export class RatingStarsComponent implements OnChanges {
   protected readonly messageKey: Signal<string | null> = this.stateFacade.messageKey;
   protected readonly selectedValue: Signal<number | null> = this.stateFacade.userRatingValue;
   protected readonly displayValue: Signal<number> = computed(() => {
-    return this.hoverValue() ?? this.summary()?.averageRating ?? 0;
+    return this.hoverValue() ?? this.selectedValue() ?? 0;
   });
 
   @Input({ required: true }) targetType!: RatingTargetType;
@@ -51,6 +51,10 @@ export class RatingStarsComponent implements OnChanges {
     this.stateFacade.rate(value);
   }
 
+  protected removeRating(): void {
+    this.stateFacade.removeRating();
+  }
+
   protected fillPercent(starIndex: number): string {
     const value: number = this.displayValue();
     const filled: number = Math.max(0, Math.min(1, value - (starIndex - 1)));
@@ -60,6 +64,11 @@ export class RatingStarsComponent implements OnChanges {
   protected formattedAverage(): string {
     const average: number = this.summary()?.averageRating ?? 0;
     return average > 0 ? average.toFixed(1).replace('.', ',') : '-';
+  }
+
+  protected formattedSelectedValue(): string {
+    const value: number = this.selectedValue() ?? 0;
+    return value > 0 ? value.toFixed(1).replace('.', ',') : '-';
   }
 
   protected count(): number {

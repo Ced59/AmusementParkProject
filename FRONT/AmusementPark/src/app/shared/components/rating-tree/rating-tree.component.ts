@@ -11,6 +11,7 @@ export interface RatingTreeEditableScore {
 export interface RatingTreeMetric {
   labelKey: string;
   value: number;
+  ratingCount?: number | null;
   editable?: RatingTreeEditableScore | null;
 }
 
@@ -18,6 +19,7 @@ export interface RatingTreeItem {
   id: string;
   name: string;
   score: number;
+  ratingCount?: number | null;
   route: string[] | null;
   secondaryLabelKey?: string | null;
   secondaryScore?: number | null;
@@ -28,6 +30,7 @@ export interface RatingTreeSection {
   id: string;
   titleKey: string;
   score: number;
+  ratingCount?: number | null;
   items: RatingTreeItem[];
 }
 
@@ -59,6 +62,8 @@ export class RatingTreeComponent {
 
   @Input({ required: true }) parks: RatingTreePark[] = [];
   @Input() ratingCountLabelKey: string = 'ratings.rankings.ratingCount';
+  @Input() totalRatingCountLabelKey: string | null = null;
+  @Input() parkScoreLabelKey: string | null = null;
   @Input() detailActionKey: string = 'ratings.tree.detailAction';
   @Input() collapseActionKey: string = 'ratings.tree.collapseAction';
   @Input() openParkActionKey: string = 'ratings.tree.openParkAction';

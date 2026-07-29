@@ -125,19 +125,29 @@ export class RankingsPageComponent implements OnInit {
       ratingCount: item.ratingCount,
       route: this.parkRoute(item),
       metrics: [
-        { labelKey: 'ratings.rankings.parkSignal', value: item.parkAverageRating },
-        { labelKey: 'ratings.rankings.itemsSignal', value: item.itemsAverageRating }
+        {
+          labelKey: 'ratings.rankings.parkSignal',
+          value: item.parkAverageRating,
+          ratingCount: item.parkRatingCount
+        },
+        {
+          labelKey: 'ratings.rankings.itemsSignal',
+          value: item.itemsAverageRating,
+          ratingCount: item.itemsRatingCount
+        }
       ],
       sections: item.categories.map((category: ParkRatingRankingCategory) => {
         return {
           id: category.parkItemCategory,
           titleKey: this.categoryLabelKey(category),
           score: category.averageRating,
+          ratingCount: category.ratingCount,
           items: category.items.map((parkItem: ParkRatingRankingItem) => {
             return {
               id: parkItem.targetId,
               name: parkItem.targetName,
               score: parkItem.averageRating,
+              ratingCount: parkItem.ratingCount,
               route: this.itemRoute(item, parkItem)
             };
           })

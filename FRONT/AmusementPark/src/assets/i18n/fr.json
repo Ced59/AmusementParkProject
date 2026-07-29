@@ -3894,11 +3894,14 @@
       "chooseLabel": "Choisir une note",
       "rateValue": "Noter {{value}} sur 5",
       "yourRating": "Ta note : {{value}}/5",
+      "clearRating": "Effacer ma note",
       "prompt": "Choisis ta note",
       "signInMessage": "Connecte-toi pour laisser ta note.",
       "savedMessage": "Merci, ta note est prise en compte.",
       "errorMessage": "Ta note ne peut pas être enregistrée pour le moment.",
-      "savedToast": "Ta note a bien été enregistrée."
+      "removeErrorMessage": "Ta note ne peut pas être effacée pour le moment.",
+      "savedToast": "Ta note a bien été enregistrée.",
+      "removedToast": "Ta note a bien été effacée."
     },
     "tree": {
       "detailAction": "Voir détail",
@@ -3950,6 +3953,12 @@
         "many": "{{count}} notes",
         "other": "{{count}} notes"
       },
+      "totalRatingCount": {
+        "one": "{{count}} note au total",
+        "few": "{{count}} notes au total",
+        "many": "{{count}} notes au total",
+        "other": "{{count}} notes au total"
+      },
       "reliableBadge": "Fiable",
       "filters": {
         "label": "Filtrer les classements",
@@ -3960,10 +3969,11 @@
         "hotels": "Hôtels",
         "services": "Services"
       },
-      "calculationHint": "Le classement des parcs tient compte des notes du parc et des lieux notés à l’intérieur, pour faire ressortir les destinations appréciées dans leur ensemble.",
+      "calculationHint": "Le score agrégé équilibre les notes directes du parc et celles de ses différentes catégories. Le nombre affiché sous chaque moyenne correspond aux notes brutes prises en compte.",
       "scoreAria": "Note {{value}} sur 5",
-      "parkSignal": "Note du parc",
-      "itemsSignal": "Note des lieux",
+      "rankingScore": "Score agrégé du classement",
+      "parkSignal": "Note directe du parc",
+      "itemsSignal": "Moyenne de tous les lieux",
       "searchLabel": "Rechercher un parc dans le classement",
       "searchPlaceholder": "Trouver un parc dans le classement",
       "searchAction": "Rechercher",

@@ -5,15 +5,24 @@ using AmusementPark.Core.Domain.Ratings;
 
 namespace AmusementPark.Application.Features.Ratings.Ports;
 
+public sealed record RatingAggregateTarget(
+    RatingTargetType TargetType,
+    string TargetId,
+    string ParkId,
+    ParkItemCategory? ParkItemCategory,
+    ParkItemType? ParkItemType);
+
 public interface IRatingRepository
 {
     Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
 
     Task<UserRating> UpsertUserRatingAsync(UserRating rating, CancellationToken cancellationToken);
 
+    Task<UserRating?> DeleteUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
+
     Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
 
-    Task<RatingAggregate?> RecalculateAggregateAsync(RatingTargetMetadataResult metadata, CancellationToken cancellationToken);
+    Task<RatingAggregate?> RecalculateAggregateAsync(RatingAggregateTarget target, CancellationToken cancellationToken);
 
     Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, string? parkSearch, CancellationToken cancellationToken);
 

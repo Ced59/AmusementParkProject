@@ -61,6 +61,27 @@ describe('RatingsApiService', () => {
     expect(ratings[0]?.value).toBe(4.5);
   });
 
+  it('deletes the authenticated user rating for the exact target', () => {
+    const summaries: RatingSummary[] = [];
+
+    service.deleteMyRating('ParkItem', 'item 1').subscribe((summary: RatingSummary): void => {
+      summaries.push(summary);
+    });
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}ratings/ParkItem/item%201/me`);
+    expect(request.request.method).toBe('DELETE');
+    request.flush({
+      targetType: 'ParkItem',
+      targetId: 'item 1',
+      ratingCount: 1,
+      averageRating: 4,
+      bayesianScore: 3.4
+    });
+
+    expect(summaries[0]?.targetId).toBe('item 1');
+    expect(summaries[0]?.ratingCount).toBe(1);
+  });
+
   it('loads filtered rankings and unwraps paged responses', () => {
     let items: ParkRatingRanking[] = [];
 

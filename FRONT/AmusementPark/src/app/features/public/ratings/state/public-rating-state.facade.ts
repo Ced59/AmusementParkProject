@@ -75,7 +75,10 @@ export class PublicRatingStateFacade {
 
         this.ratingsApiService.upsertRating(request).pipe(take(1)).subscribe({
           next: (rating: UserRating): void => {
-            if (rating.targetType !== targetType || rating.targetId !== targetId || rating.value !== value) {
+            if (!this.isCurrentTarget(targetType, targetId)
+              || rating.targetType !== targetType
+              || rating.targetId !== targetId
+              || rating.value !== value) {
               this.messageKeySignal.set('ratings.stars.errorMessage');
               this.savingSignal.set(false);
               return;
@@ -83,7 +86,7 @@ export class PublicRatingStateFacade {
 
             this.userRatingSignal.set(rating);
             this.summarySignal.set(rating.summary);
-            this.messageKeySignal.set('ratings.stars.savedMessage');
+            this.messageKeySignal.set(null);
             this.savingSignal.set(false);
             this.toastMessageService.add(
               'success',
@@ -106,6 +109,59 @@ export class PublicRatingStateFacade {
     });
   }
 
+  removeRating(): void {
+    const targetType: RatingTargetType | null = this.targetTypeSignal();
+    const targetId: string | null = this.targetIdSignal();
+
+    if (!targetType || !targetId || !this.userRatingSignal() || this.savingSignal()) {
+      return;
+    }
+
+    this.savingSignal.set(true);
+    this.authService.ensureValidAccessToken(true).pipe(take(1)).subscribe({
+      next: (token: string | null): void => {
+        if (!token) {
+          this.messageKeySignal.set('ratings.stars.signInMessage');
+          this.savingSignal.set(false);
+          this.modalService.openModal('loginModal');
+          return;
+        }
+
+        this.ratingsApiService.deleteMyRating(targetType, targetId).pipe(take(1)).subscribe({
+          next: (summary: RatingSummary): void => {
+            if (!this.isCurrentTarget(targetType, targetId)
+              || summary.targetType !== targetType
+              || summary.targetId !== targetId) {
+              this.messageKeySignal.set('ratings.stars.removeErrorMessage');
+              this.savingSignal.set(false);
+              return;
+            }
+
+            this.userRatingSignal.set(null);
+            this.summarySignal.set(summary);
+            this.messageKeySignal.set(null);
+            this.savingSignal.set(false);
+            this.toastMessageService.add(
+              'success',
+              this.translateService.instant('common.success'),
+              this.translateService.instant('ratings.stars.removedToast')
+            );
+          },
+          error: (error: unknown): void => {
+            console.error('Error deleting rating', error);
+            this.messageKeySignal.set('ratings.stars.removeErrorMessage');
+            this.savingSignal.set(false);
+          }
+        });
+      },
+      error: (error: unknown): void => {
+        console.error('Error checking rating session', error);
+        this.messageKeySignal.set('ratings.stars.removeErrorMessage');
+        this.savingSignal.set(false);
+      }
+    });
+  }
+
   private loadUserRatingIfAuthenticated(): void {
     const targetType: RatingTargetType | null = this.targetTypeSignal();
     const targetId: string | null = this.targetIdSignal();
@@ -116,11 +172,23 @@ export class PublicRatingStateFacade {
 
     this.ratingsApiService.getMyRating(targetType, targetId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (rating: UserRating | null): void => {
-        this.userRatingSignal.set(rating);
+        if (!this.isCurrentTarget(targetType, targetId)) {
+          return;
+        }
+
+        const isExpectedTarget: boolean = rating === null
+          || (rating.targetType === targetType && rating.targetId === targetId);
+        this.userRatingSignal.set(isExpectedTarget ? rating : null);
       },
       error: (): void => {
-        this.userRatingSignal.set(null);
+        if (this.isCurrentTarget(targetType, targetId)) {
+          this.userRatingSignal.set(null);
+        }
       }
     });
+  }
+
+  private isCurrentTarget(targetType: RatingTargetType, targetId: string): boolean {
+    return this.targetTypeSignal() === targetType && this.targetIdSignal() === targetId;
   }
 }

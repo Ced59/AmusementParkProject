@@ -81,6 +81,59 @@ describe('RatingTreeComponent', () => {
     expect(countLabel?.textContent?.trim()).toBe('1 personal rating');
   });
 
+  it('shows rating counts for park metrics, sections, and items when provided', () => {
+    const translateService: TranslateService = TestBed.inject(TranslateService);
+    translateService.setTranslation('en', {
+      ratings: {
+        rankings: {
+          ratingCount: {
+            one: '{{count}} rating',
+            other: '{{count}} ratings',
+          },
+        },
+      },
+    });
+    translateService.use('en');
+    fixture.componentRef.setInput('parks', [createPark()]);
+    fixture.detectChanges();
+
+    const metricCount: HTMLElement | null = fixture.nativeElement.querySelector(
+      '.rating-tree__metric-count',
+    );
+    const sectionCount: HTMLElement | null =
+      fixture.nativeElement.querySelector(
+        '.rating-tree__section-main .rating-tree__rating-count',
+      );
+    const itemCount: HTMLElement | null = fixture.nativeElement.querySelector(
+      '.rating-tree__item-main .rating-tree__rating-count',
+    );
+
+    expect(metricCount?.textContent?.trim()).toBe('2 ratings');
+    expect(sectionCount?.textContent?.trim()).toBe('6 ratings');
+    expect(itemCount?.textContent?.trim()).toBe('3 ratings');
+  });
+
+  it('renders a filled star layer with the score proportion', () => {
+    fixture.componentRef.setInput('parks', [createPark()]);
+    fixture.detectChanges();
+
+    const stars: NodeListOf<HTMLElement> =
+      fixture.nativeElement.querySelectorAll(
+        '.rating-tree__park-summary .rating-tree__star',
+      );
+    const filledStars: NodeListOf<HTMLElement> =
+      fixture.nativeElement.querySelectorAll(
+        '.rating-tree__park-summary .rating-tree__star-filled',
+      );
+
+    expect(filledStars.length).toBe(5);
+    expect(stars[0]?.style.getPropertyValue('--fill')).toBe('100%');
+    expect(stars[3]?.style.getPropertyValue('--fill')).toBe('100%');
+    expect(
+      Number.parseFloat(stars[4]?.style.getPropertyValue('--fill') ?? '0'),
+    ).toBeCloseTo(30);
+  });
+
   it('emits rating changes when an editable star is selected', () => {
     const changes: Array<{
       ratingId: string;
@@ -112,17 +165,25 @@ function createPark(): RatingTreePark {
     score: 4.3,
     ratingCount: 8,
     route: ['/parks', 'park-1'],
-    metrics: [{ labelKey: 'ratings.rankings.parkSignal', value: 5 }],
+    metrics: [
+      {
+        labelKey: 'ratings.rankings.parkSignal',
+        value: 5,
+        ratingCount: 2,
+      },
+    ],
     sections: [
       {
         id: 'Attraction',
         titleKey: 'ratings.categories.Attraction',
         score: 4.3,
+        ratingCount: 6,
         items: [
           {
             id: 'item-1',
             name: 'Taron',
             score: 5,
+            ratingCount: 3,
             route: ['/parks', 'park-1', 'items', 'item-1'],
             secondaryLabelKey: 'ratings.profile.communityAverage',
             secondaryScore: 4.8,

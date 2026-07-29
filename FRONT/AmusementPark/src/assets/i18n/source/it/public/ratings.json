@@ -8,11 +8,14 @@
       "chooseLabel": "Scegli una valutazione",
       "rateValue": "Valuta {{value}} su 5",
       "yourRating": "La tua valutazione: {{value}}/5",
+      "clearRating": "Cancella la mia valutazione",
       "prompt": "Scegli la tua valutazione",
       "signInMessage": "Accedi per lasciare la tua valutazione.",
       "savedMessage": "Grazie, la tua valutazione è stata salvata.",
       "errorMessage": "Non è possibile salvare la valutazione ora.",
-      "savedToast": "La tua valutazione è stata salvata."
+      "removeErrorMessage": "Non è possibile cancellare la tua valutazione ora.",
+      "savedToast": "La tua valutazione è stata salvata.",
+      "removedToast": "La tua valutazione è stata cancellata."
     },
     "tree": {
       "detailAction": "Vedi dettaglio",
@@ -54,6 +57,7 @@
       "empty": "Nessuna classifica disponibile al momento.",
       "parkFallback": "Parco",
       "ratingCount": { "one": "{{count}} valutazione", "few": "{{count}} valutazioni", "many": "{{count}} valutazioni", "other": "{{count}} valutazioni" },
+      "totalRatingCount": { "one": "{{count}} valutazione in totale", "few": "{{count}} valutazioni in totale", "many": "{{count}} valutazioni in totale", "other": "{{count}} valutazioni in totale" },
       "reliableBadge": "Affidabile",
       "filters": {
         "label": "Filtra classifiche",
@@ -64,10 +68,11 @@
         "hotels": "Hotel",
         "services": "Servizi"
       },
-      "calculationHint": "La classifica dei parchi considera le valutazioni del parco e dei luoghi valutati al suo interno, per far emergere le destinazioni più apprezzate nel complesso.",
+      "calculationHint": "Il punteggio aggregato bilancia le valutazioni dirette del parco e quelle delle diverse categorie di luoghi. Ogni media indica il numero di singole valutazioni considerate.",
       "scoreAria": "Valutazione {{value}} su 5",
-      "parkSignal": "Valutazione del parco",
-      "itemsSignal": "Valutazione dei luoghi",
+      "rankingScore": "Punteggio aggregato in classifica",
+      "parkSignal": "Valutazione diretta del parco",
+      "itemsSignal": "Media di tutti i luoghi",
       "searchLabel": "Cerca un parco nelle classifiche",
       "searchPlaceholder": "Trova un parco in classifica",
       "searchAction": "Cerca",

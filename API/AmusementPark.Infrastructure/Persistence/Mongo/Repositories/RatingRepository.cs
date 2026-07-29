@@ -71,6 +71,19 @@ public sealed class RatingRepository : IRatingRepository
         return document.ToDomain();
     }
 
+    public async Task<UserRating?> DeleteUserRatingAsync(
+        string userId,
+        RatingTargetType targetType,
+        string targetId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserRatingDocument> filter = BuildUserTargetFilter(userId, targetType, targetId);
+        UserRatingDocument? document = await this.userRatingsCollection.FindOneAndDeleteAsync(
+            filter,
+            cancellationToken: cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
     {
         FilterDefinition<RatingAggregateDocument> filter = BuildAggregateTargetFilter(targetType, targetId);
@@ -78,11 +91,11 @@ public sealed class RatingRepository : IRatingRepository
         return document?.ToDomain();
     }
 
-    public async Task<RatingAggregate?> RecalculateAggregateAsync(RatingTargetMetadataResult metadata, CancellationToken cancellationToken)
+    public async Task<RatingAggregate?> RecalculateAggregateAsync(RatingAggregateTarget target, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(metadata);
+        ArgumentNullException.ThrowIfNull(target);
 
-        FilterDefinition<UserRatingDocument> ratingFilter = BuildUserRatingTargetFilter(metadata.TargetType, metadata.TargetId);
+        FilterDefinition<UserRatingDocument> ratingFilter = BuildUserRatingTargetFilter(target.TargetType, target.TargetId);
         BsonDocument? aggregateValues = await this.userRatingsCollection.Aggregate()
             .Match(ratingFilter)
             .Group(new BsonDocument
@@ -96,14 +109,14 @@ public sealed class RatingRepository : IRatingRepository
 
         if (aggregateValues is null)
         {
-            await this.ratingAggregatesCollection.DeleteOneAsync(BuildAggregateTargetFilter(metadata.TargetType, metadata.TargetId), cancellationToken);
+            await this.ratingAggregatesCollection.DeleteOneAsync(BuildAggregateTargetFilter(target.TargetType, target.TargetId), cancellationToken);
             return null;
         }
 
         long ratingCount = aggregateValues.GetValue("count", BsonValue.Create(0)).ToInt64();
         if (ratingCount <= 0)
         {
-            await this.ratingAggregatesCollection.DeleteOneAsync(BuildAggregateTargetFilter(metadata.TargetType, metadata.TargetId), cancellationToken);
+            await this.ratingAggregatesCollection.DeleteOneAsync(BuildAggregateTargetFilter(target.TargetType, target.TargetId), cancellationToken);
             return null;
         }
 
@@ -111,15 +124,15 @@ public sealed class RatingRepository : IRatingRepository
         double averageRating = RatingScoreCalculator.CalculateAverage(ratingSum, ratingCount);
         double bayesianScore = RatingScoreCalculator.CalculateBayesianScore(ratingSum, ratingCount);
         DateTime nowUtc = DateTime.UtcNow;
-        FilterDefinition<RatingAggregateDocument> aggregateFilter = BuildAggregateTargetFilter(metadata.TargetType, metadata.TargetId);
+        FilterDefinition<RatingAggregateDocument> aggregateFilter = BuildAggregateTargetFilter(target.TargetType, target.TargetId);
         UpdateDefinition<RatingAggregateDocument> update = Builders<RatingAggregateDocument>.Update
             .SetOnInsert(document => document.Id, Guid.NewGuid().ToString("N"))
             .SetOnInsert(document => document.CreatedAt, nowUtc)
-            .Set(document => document.TargetType, metadata.TargetType)
-            .Set(document => document.TargetId, metadata.TargetId)
-            .Set(document => document.ParkId, metadata.ParkId)
-            .Set(document => document.ParkItemCategory, metadata.ParkItemCategory)
-            .Set(document => document.ParkItemType, metadata.ParkItemType)
+            .Set(document => document.TargetType, target.TargetType)
+            .Set(document => document.TargetId, target.TargetId)
+            .Set(document => document.ParkId, target.ParkId)
+            .Set(document => document.ParkItemCategory, target.ParkItemCategory)
+            .Set(document => document.ParkItemType, target.ParkItemType)
             .Set(document => document.RatingCount, ratingCount)
             .Set(document => document.RatingSum, ratingSum)
             .Set(document => document.AverageRating, averageRating)

@@ -8,11 +8,14 @@
       "chooseLabel": "Elegir una valoración",
       "rateValue": "Valorar {{value}} de 5",
       "yourRating": "Tu valoración: {{value}}/5",
+      "clearRating": "Borrar mi valoración",
       "prompt": "Elige tu valoración",
       "signInMessage": "Inicia sesión para dejar tu valoración.",
       "savedMessage": "Gracias, tu valoración se ha guardado.",
       "errorMessage": "No se pudo guardar tu valoración ahora.",
-      "savedToast": "Tu nota se ha guardado."
+      "removeErrorMessage": "No se pudo borrar tu valoración ahora.",
+      "savedToast": "Tu nota se ha guardado.",
+      "removedToast": "Tu valoración se ha borrado."
     },
     "tree": {
       "detailAction": "Ver detalle",
@@ -54,6 +57,7 @@
       "empty": "No hay ranking disponible por ahora.",
       "parkFallback": "Parque",
       "ratingCount": { "one": "{{count}} valoración", "few": "{{count}} valoraciones", "many": "{{count}} valoraciones", "other": "{{count}} valoraciones" },
+      "totalRatingCount": { "one": "{{count}} valoración en total", "few": "{{count}} valoraciones en total", "many": "{{count}} valoraciones en total", "other": "{{count}} valoraciones en total" },
       "reliableBadge": "Fiable",
       "filters": {
         "label": "Filtrar rankings",
@@ -64,10 +68,11 @@
         "hotels": "Hoteles",
         "services": "Servicios"
       },
-      "calculationHint": "El ranking de parques tiene en cuenta las notas del parque y de los lugares valorados dentro de él, para destacar destinos apreciados en conjunto.",
+      "calculationHint": "La puntuación agregada equilibra las valoraciones directas del parque y las de sus distintas categorías. Cada media indica el número de valoraciones individuales incluidas.",
       "scoreAria": "Nota {{value}} de 5",
-      "parkSignal": "Nota del parque",
-      "itemsSignal": "Nota de los lugares",
+      "rankingScore": "Puntuación agregada del ranking",
+      "parkSignal": "Valoración directa del parque",
+      "itemsSignal": "Media de todos los lugares",
       "searchLabel": "Buscar un parque en rankings",
       "searchPlaceholder": "Encontrar un parque en el ranking",
       "searchAction": "Buscar",

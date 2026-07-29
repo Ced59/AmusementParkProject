@@ -8,11 +8,14 @@
       "chooseLabel": "Kies een beoordeling",
       "rateValue": "Beoordeel {{value}} van 5",
       "yourRating": "Jouw beoordeling: {{value}}/5",
+      "clearRating": "Mijn beoordeling wissen",
       "prompt": "Kies je beoordeling",
       "signInMessage": "Log in om je beoordeling te geven.",
       "savedMessage": "Bedankt, je beoordeling is opgeslagen.",
       "errorMessage": "Je beoordeling kan nu niet worden opgeslagen.",
-      "savedToast": "Je beoordeling is opgeslagen."
+      "removeErrorMessage": "Je beoordeling kan nu niet worden gewist.",
+      "savedToast": "Je beoordeling is opgeslagen.",
+      "removedToast": "Je beoordeling is gewist."
     },
     "tree": {
       "detailAction": "Details bekijken",
@@ -54,6 +57,7 @@
       "empty": "Er is nog geen ranglijst beschikbaar.",
       "parkFallback": "Park",
       "ratingCount": { "one": "{{count}} beoordeling", "few": "{{count}} beoordelingen", "many": "{{count}} beoordelingen", "other": "{{count}} beoordelingen" },
+      "totalRatingCount": { "one": "{{count}} beoordeling in totaal", "few": "{{count}} beoordelingen in totaal", "many": "{{count}} beoordelingen in totaal", "other": "{{count}} beoordelingen in totaal" },
       "reliableBadge": "Betrouwbaar",
       "filters": {
         "label": "Ranglijsten filteren",
@@ -64,10 +68,11 @@
         "hotels": "Hotels",
         "services": "Services"
       },
-      "calculationHint": "De parkranglijst telt beoordelingen van het park en van beoordeelde plekken erin mee, zodat sterke totaalervaringen naar voren komen.",
+      "calculationHint": "De samengestelde score weegt directe parkbeoordelingen en beoordelingen uit de verschillende categorieën evenwichtig mee. Elk gemiddelde toont hoeveel afzonderlijke beoordelingen zijn gebruikt.",
       "scoreAria": "Beoordeling {{value}} van 5",
-      "parkSignal": "Parkbeoordeling",
-      "itemsSignal": "Beoordeling van plekken",
+      "rankingScore": "Samengestelde ranglijstscore",
+      "parkSignal": "Directe parkbeoordeling",
+      "itemsSignal": "Gemiddelde van alle plekken",
       "searchLabel": "Zoek een park in ranglijsten",
       "searchPlaceholder": "Vind een park in de ranglijst",
       "searchAction": "Zoeken",

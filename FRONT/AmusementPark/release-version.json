@@ -1,6 +1,20 @@
 {
-  "version": "3.6.1",
+  "version": "3.6.2",
   "history": [
+    {
+      "version": "3.6.2",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "Les notes personnelles et les classements sont plus clairs.",
+        "en": "Personal ratings and rankings are clearer.",
+        "de": "Persönliche Bewertungen und Ranglisten sind übersichtlicher.",
+        "nl": "Persoonlijke beoordelingen en ranglijsten zijn duidelijker.",
+        "it": "Le valutazioni personali e le classifiche sono più chiare.",
+        "es": "Las valoraciones personales y los rankings son más claros.",
+        "pl": "Oceny osobiste i rankingi są czytelniejsze.",
+        "pt": "As avaliações pessoais e os rankings estão mais claros."
+      }
+    },
     {
       "version": "3.6.1",
       "releasedAt": "2026-07-29",

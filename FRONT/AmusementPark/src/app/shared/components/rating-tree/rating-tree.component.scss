@@ -49,6 +49,7 @@
 }
 
 .rating-tree__park-main,
+.rating-tree__section-main,
 .rating-tree__item-main {
   display: grid;
   min-width: 0;
@@ -56,6 +57,10 @@
 
 .rating-tree__park-main {
   gap: 0.15rem;
+}
+
+.rating-tree__section-main {
+  gap: 0.12rem;
 }
 
 .rating-tree__item-main {
@@ -66,6 +71,18 @@
   display: grid;
   gap: 0.45rem;
   justify-items: end;
+}
+
+.rating-tree__park-score {
+  display: grid;
+  gap: 0.15rem;
+  justify-items: end;
+}
+
+.rating-tree__score-label {
+  color: var(--app-text-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
 }
 
 .rating-tree__title,
@@ -83,6 +100,7 @@
 }
 
 .rating-tree__park-main span,
+.rating-tree__rating-count,
 .rating-tree__metrics,
 .rating-tree__item,
 .rating-tree__item-secondary {
@@ -199,6 +217,11 @@ details[open] > summary .rating-tree__toggle-open {
 .rating-tree__metric {
   align-items: center;
   gap: 0.35rem;
+}
+
+.rating-tree__metric-count::before {
+  content: "·";
+  margin-right: 0.35rem;
 }
 
 .rating-tree__park-link {
@@ -335,6 +358,10 @@ a.rating-tree__item-name {
   .rating-tree__score,
   .rating-tree__score--compact {
     justify-content: flex-start;
+  }
+
+  .rating-tree__park-score {
+    justify-items: start;
   }
 
   .rating-tree__items {
