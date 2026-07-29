@@ -2661,19 +2661,34 @@
       "kicker": "Team area",
       "title": "Write a comment",
       "help": "Formatting and translations are preserved with the site’s shared editor.",
+      "editTitle": "Edit comment",
+      "editHelp": "Update the content or its official status, then save your changes.",
       "placeholder": "Write the comment in {{language}}…",
       "officialLabel": "Official Amusement Parks review",
       "officialHelp": "This review will be highlighted and displayed before every other comment.",
       "validation": "Write the comment in at least one language.",
       "publish": "Publish comment",
       "saving": "Publishing…",
+      "update": "Save changes",
+      "updating": "Saving…",
+      "cancelEdit": "Cancel editing",
       "saved": "The comment has been published."
+    },
+    "management": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Do you really want to delete this comment? This action cannot be undone.",
+      "updated": "The comment has been updated.",
+      "deleted": "The comment has been deleted."
     },
     "errors": {
       "title": "Comments unavailable",
       "load": "The comments could not be loaded.",
       "save": "The comment could not be published.",
-      "forbidden": "Only administrators and moderators can publish a comment."
+      "update": "The comment could not be updated.",
+      "delete": "The comment could not be deleted.",
+      "forbidden": "Only administrators and moderators can publish a comment.",
+      "managementForbidden": "Only administrators can edit or delete a comment."
     }
   },
   "contactPage": {

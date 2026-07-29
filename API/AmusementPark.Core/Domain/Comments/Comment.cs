@@ -26,6 +26,15 @@ public sealed class Comment : AuditableEntity
     public bool IsOfficial { get; set; }
 
     public CommentModerationStatus ModerationStatus { get; set; } = CommentModerationStatus.Published;
+
+    public void UpdateContent(IReadOnlyCollection<LocalizedText> bodies, bool isOfficial)
+    {
+        ArgumentNullException.ThrowIfNull(bodies);
+
+        this.Bodies = bodies.ToList();
+        this.IsOfficial = isOfficial;
+        this.Touch();
+    }
 }
 
 /// <summary>

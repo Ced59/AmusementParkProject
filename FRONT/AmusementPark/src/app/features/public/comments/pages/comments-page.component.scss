@@ -103,6 +103,8 @@
 
 .comment-editor__actions {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
   justify-content: flex-end;
 }
 
@@ -192,6 +194,15 @@
   color: var(--c-sky);
 }
 
+.comment-card__actions {
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: flex-end;
+  padding-top: 0.9rem;
+}
+
 .comments-empty {
   justify-items: center;
   text-align: center;
@@ -215,5 +226,16 @@
 
   .comment-card__meta {
     justify-items: start;
+  }
+
+  .comment-editor__actions,
+  .comment-card__actions {
+    justify-content: stretch;
+  }
+
+  .comment-editor__actions button,
+  .comment-card__actions button {
+    flex: 1 1 auto;
+    justify-content: center;
   }
 }

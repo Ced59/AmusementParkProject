@@ -15,11 +15,6 @@ namespace AmusementPark.Application.Features.Comments.Handlers;
 
 public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentCommand, ApplicationResult<CommentResult>>
 {
-    private const int MaximumBodyLength = 12000;
-    private static readonly HashSet<string> SupportedLanguages = new HashSet<string>(
-        new[] { "fr", "en", "de", "nl", "it", "es", "pl", "pt" },
-        StringComparer.OrdinalIgnoreCase);
-
     private readonly ICommentRepository commentRepository;
     private readonly ICommentContentSanitizer contentSanitizer;
     private readonly IUserRepository userRepository;
@@ -72,7 +67,9 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
             return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.TargetNotFound());
         }
 
-        ApplicationResult<IReadOnlyCollection<LocalizedText>> bodiesResult = this.NormalizeBodies(command.Model.Bodies);
+        ApplicationResult<IReadOnlyCollection<LocalizedText>> bodiesResult = CommentBodyNormalizer.Normalize(
+            command.Model.Bodies,
+            this.contentSanitizer);
         if (!bodiesResult.IsSuccess || bodiesResult.Value is null)
         {
             return ApplicationResult<CommentResult>.Failure(bodiesResult.Errors);
@@ -98,48 +95,6 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
         return ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(created));
     }
 
-    private ApplicationResult<IReadOnlyCollection<LocalizedText>> NormalizeBodies(
-        IReadOnlyCollection<LocalizedTextValue>? values)
-    {
-        Dictionary<string, LocalizedText> normalized = new Dictionary<string, LocalizedText>(StringComparer.OrdinalIgnoreCase);
-
-        foreach (LocalizedTextValue value in values ?? Array.Empty<LocalizedTextValue>())
-        {
-            string languageCode = value.LanguageCode?.Trim().ToLowerInvariant() ?? string.Empty;
-            if (!SupportedLanguages.Contains(languageCode))
-            {
-                return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(CommentApplicationErrors.InvalidLanguage());
-            }
-
-            if (value.Value.Length > MaximumBodyLength)
-            {
-                return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(CommentApplicationErrors.BodyTooLong());
-            }
-
-            string sanitizedValue = this.contentSanitizer.SanitizeRichHtml(value.Value);
-            string plainText = this.contentSanitizer.ExtractPlainText(sanitizedValue);
-            if (string.IsNullOrWhiteSpace(plainText))
-            {
-                continue;
-            }
-
-            if (sanitizedValue.Length > MaximumBodyLength)
-            {
-                return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(CommentApplicationErrors.BodyTooLong());
-            }
-
-            normalized[languageCode] = new LocalizedText(languageCode, sanitizedValue);
-        }
-
-        if (normalized.Count == 0)
-        {
-            return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(CommentApplicationErrors.EmptyBody());
-        }
-
-        return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Success(
-            normalized.Values.OrderBy(static value => value.LanguageCode, StringComparer.Ordinal).ToList());
-    }
-
     private static bool IsAllowedAuthor(User? author)
     {
         return author is not null
@@ -162,6 +117,119 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
                 .Select(static value => value!.Trim()));
 
         return string.IsNullOrWhiteSpace(displayName) ? "Équipe Amusement Parks" : displayName;
+    }
+}
+
+public sealed class UpdateCommentCommandHandler
+    : ICommandHandler<UpdateCommentCommand, ApplicationResult<CommentResult>>
+{
+    private readonly ICommentRepository commentRepository;
+    private readonly ICommentContentSanitizer contentSanitizer;
+    private readonly IUserRepository userRepository;
+
+    public UpdateCommentCommandHandler(
+        ICommentRepository commentRepository,
+        ICommentContentSanitizer contentSanitizer,
+        IUserRepository userRepository)
+    {
+        this.commentRepository = commentRepository;
+        this.contentSanitizer = contentSanitizer;
+        this.userRepository = userRepository;
+    }
+
+    public async Task<ApplicationResult<CommentResult>> HandleAsync(
+        UpdateCommentCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        User? actor = await CommentManagementAuthorization.GetActorAsync(
+            command.ActorUserId,
+            this.userRepository,
+            cancellationToken);
+        if (actor is null)
+        {
+            return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.ManagerNotAllowed());
+        }
+
+        if (string.IsNullOrWhiteSpace(command.CommentId))
+        {
+            return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.CommentNotFound());
+        }
+
+        string commentId = command.CommentId.Trim();
+        Comment? comment = await this.commentRepository.GetByIdAsync(commentId, cancellationToken);
+        if (comment is null)
+        {
+            return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.CommentNotFound());
+        }
+
+        if (!CommentManagementAuthorization.CanManage(actor, comment))
+        {
+            return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.ManagerNotAllowed());
+        }
+
+        ApplicationResult<IReadOnlyCollection<LocalizedText>> bodiesResult = CommentBodyNormalizer.Normalize(
+            command.Model.Bodies,
+            this.contentSanitizer);
+        if (!bodiesResult.IsSuccess || bodiesResult.Value is null)
+        {
+            return ApplicationResult<CommentResult>.Failure(bodiesResult.Errors);
+        }
+
+        comment.UpdateContent(bodiesResult.Value, command.Model.IsOfficial);
+        Comment? updated = await this.commentRepository.UpdateAsync(comment, cancellationToken);
+        return updated is null
+            ? ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.CommentNotFound())
+            : ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(updated));
+    }
+}
+
+public sealed class DeleteCommentCommandHandler : ICommandHandler<DeleteCommentCommand, ApplicationResult>
+{
+    private readonly ICommentRepository commentRepository;
+    private readonly IUserRepository userRepository;
+
+    public DeleteCommentCommandHandler(
+        ICommentRepository commentRepository,
+        IUserRepository userRepository)
+    {
+        this.commentRepository = commentRepository;
+        this.userRepository = userRepository;
+    }
+
+    public async Task<ApplicationResult> HandleAsync(
+        DeleteCommentCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        User? actor = await CommentManagementAuthorization.GetActorAsync(
+            command.ActorUserId,
+            this.userRepository,
+            cancellationToken);
+        if (actor is null)
+        {
+            return ApplicationResult.Failure(CommentApplicationErrors.ManagerNotAllowed());
+        }
+
+        if (string.IsNullOrWhiteSpace(command.CommentId))
+        {
+            return ApplicationResult.Failure(CommentApplicationErrors.CommentNotFound());
+        }
+
+        string commentId = command.CommentId.Trim();
+        Comment? comment = await this.commentRepository.GetByIdAsync(commentId, cancellationToken);
+        if (comment is null)
+        {
+            return ApplicationResult.Failure(CommentApplicationErrors.CommentNotFound());
+        }
+
+        if (!CommentManagementAuthorization.CanManage(actor, comment))
+        {
+            return ApplicationResult.Failure(CommentApplicationErrors.ManagerNotAllowed());
+        }
+
+        bool deleted = await this.commentRepository.DeleteAsync(commentId, cancellationToken);
+        return deleted
+            ? ApplicationResult.Success()
+            : ApplicationResult.Failure(CommentApplicationErrors.CommentNotFound());
     }
 }
 
@@ -293,6 +361,89 @@ internal static class CommentQueryValidation
     }
 }
 
+internal static class CommentBodyNormalizer
+{
+    private const int MaximumBodyLength = 12000;
+    private static readonly HashSet<string> SupportedLanguages = new HashSet<string>(
+        new[] { "fr", "en", "de", "nl", "it", "es", "pl", "pt" },
+        StringComparer.OrdinalIgnoreCase);
+
+    public static ApplicationResult<IReadOnlyCollection<LocalizedText>> Normalize(
+        IReadOnlyCollection<LocalizedTextValue>? values,
+        ICommentContentSanitizer contentSanitizer)
+    {
+        Dictionary<string, LocalizedText> normalized =
+            new Dictionary<string, LocalizedText>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (LocalizedTextValue value in values ?? Array.Empty<LocalizedTextValue>())
+        {
+            string languageCode = value.LanguageCode?.Trim().ToLowerInvariant() ?? string.Empty;
+            if (!SupportedLanguages.Contains(languageCode))
+            {
+                return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(
+                    CommentApplicationErrors.InvalidLanguage());
+            }
+
+            if (value.Value.Length > MaximumBodyLength)
+            {
+                return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(
+                    CommentApplicationErrors.BodyTooLong());
+            }
+
+            string sanitizedValue = contentSanitizer.SanitizeRichHtml(value.Value);
+            string plainText = contentSanitizer.ExtractPlainText(sanitizedValue);
+            if (string.IsNullOrWhiteSpace(plainText))
+            {
+                continue;
+            }
+
+            if (sanitizedValue.Length > MaximumBodyLength)
+            {
+                return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(
+                    CommentApplicationErrors.BodyTooLong());
+            }
+
+            normalized[languageCode] = new LocalizedText(languageCode, sanitizedValue);
+        }
+
+        if (normalized.Count == 0)
+        {
+            return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(
+                CommentApplicationErrors.EmptyBody());
+        }
+
+        return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Success(
+            normalized.Values.OrderBy(static value => value.LanguageCode, StringComparer.Ordinal).ToList());
+    }
+}
+
+internal static class CommentManagementAuthorization
+{
+    public static async Task<User?> GetActorAsync(
+        string actorUserId,
+        IUserRepository userRepository,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(actorUserId))
+        {
+            return null;
+        }
+
+        User? actor = await userRepository.GetByIdAsync(actorUserId.Trim(), cancellationToken);
+        bool isAllowed = actor is not null
+            && actor.IsActivated
+            && !actor.IsBlocked
+            && (actor.HasRole(Role.Admin) || actor.HasRole(Role.Moderator));
+        return isAllowed ? actor : null;
+    }
+
+    public static bool CanManage(User actor, Comment comment)
+    {
+        return actor.HasRole(Role.Admin)
+            || string.Equals(actor.Id, comment.AuthorUserId, StringComparison.Ordinal);
+    }
+}
+
 internal static class CommentResultFactory
 {
     public static CommentResult Create(Comment comment)
@@ -301,6 +452,7 @@ internal static class CommentResultFactory
             comment.Id,
             comment.TargetType,
             comment.TargetId,
+            comment.AuthorUserId,
             comment.AuthorDisplayName,
             comment.AuthorRole,
             comment.Bodies,

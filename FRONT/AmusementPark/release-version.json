@@ -1,6 +1,20 @@
 {
-  "version": "4.0.8",
+  "version": "4.0.9",
   "history": [
+    {
+      "version": "4.0.9",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "L’ergonomie des outils d’administration a été améliorée.",
+        "en": "Admin tool ergonomics have been improved.",
+        "de": "Die Bedienbarkeit der Administrationswerkzeuge wurde verbessert.",
+        "nl": "De gebruiksvriendelijkheid van beheertools is verbeterd.",
+        "it": "L’ergonomia degli strumenti di amministrazione è stata migliorata.",
+        "es": "Se ha mejorado la ergonomía de las herramientas de administración.",
+        "pl": "Ulepszono obsługę narzędzi administracyjnych.",
+        "pt": "A ergonomia das ferramentas de administração foi melhorada."
+      }
+    },
     {
       "version": "4.0.8",
       "releasedAt": "2026-07-29",

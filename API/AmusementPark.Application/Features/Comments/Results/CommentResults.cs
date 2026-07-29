@@ -15,6 +15,7 @@ public sealed record CommentResult(
     string Id,
     CommentTargetType TargetType,
     string TargetId,
+    string AuthorUserId,
     string AuthorDisplayName,
     Role AuthorRole,
     IReadOnlyCollection<LocalizedText> Bodies,

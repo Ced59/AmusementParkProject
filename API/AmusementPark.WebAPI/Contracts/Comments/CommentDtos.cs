@@ -17,6 +17,14 @@ public sealed class CreateCommentRequestDto
     public bool IsOfficial { get; set; }
 }
 
+public sealed class UpdateCommentRequestDto
+{
+    [Required]
+    public List<LocalizedTextDto> Bodies { get; set; } = new List<LocalizedTextDto>();
+
+    public bool IsOfficial { get; set; }
+}
+
 public sealed class CommentDto
 {
     public string Id { get; set; } = string.Empty;
@@ -32,6 +40,10 @@ public sealed class CommentDto
     public List<LocalizedTextDto> Bodies { get; set; } = new List<LocalizedTextDto>();
 
     public bool IsOfficial { get; set; }
+
+    public bool CanUpdate { get; set; }
+
+    public bool CanDelete { get; set; }
 
     public DateTime CreatedAtUtc { get; set; }
 

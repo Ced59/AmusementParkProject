@@ -2,9 +2,10 @@ import type { MockedObject } from 'vitest';
 import { EventEmitter, Signal, WritableSignal, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, ParamMap, Router, convertToParamMap } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
-import { CommentThread } from '@app/models/comments/comment.models';
+import { CommentThread, UpdateCommentRequest } from '@app/models/comments/comment.models';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
@@ -22,13 +23,18 @@ class FakeTranslationService {
 class FakeCommentThreadStateFacade {
   readonly state: Signal<ScreenState<CommentThread, string>> =
     signal<ScreenState<CommentThread, string>>({ kind: 'loading' }).asReadonly();
-  readonly thread: Signal<CommentThread | null> = signal<CommentThread | null>(null).asReadonly();
+  readonly threadSignal: WritableSignal<CommentThread | null> = signal<CommentThread | null>(null);
+  readonly thread: Signal<CommentThread | null> = this.threadSignal.asReadonly();
   readonly canWrite: Signal<boolean> = signal<boolean>(false).asReadonly();
+  readonly canManageSignal: WritableSignal<boolean> = signal<boolean>(false);
+  readonly canManage: Signal<boolean> = this.canManageSignal.asReadonly();
   readonly saving: Signal<boolean> = signal<boolean>(false).asReadonly();
   readonly saveErrorKey: Signal<string | null> = signal<string | null>(null).asReadonly();
-  readonly createdVersion: Signal<number> = signal<number>(0).asReadonly();
+  readonly editorResetVersion: Signal<number> = signal<number>(0).asReadonly();
   readonly notFoundSignal: WritableSignal<boolean> = signal<boolean>(false);
   readonly notFound: Signal<boolean> = this.notFoundSignal.asReadonly();
+  readonly deleteCalls: string[] = [];
+  readonly updateCalls: UpdateCommentRequest[] = [];
 
   initializeAuthorAccess(): void {
   }
@@ -37,6 +43,14 @@ class FakeCommentThreadStateFacade {
   }
 
   create(): void {
+  }
+
+  update(request: UpdateCommentRequest): void {
+    this.updateCalls.push(request);
+  }
+
+  delete(_commentId: string): void {
+    this.deleteCalls.push(_commentId);
   }
 
   clearSaveError(): void {
@@ -80,6 +94,7 @@ describe('CommentsPageComponent', () => {
         route,
         router,
         translationService as unknown as TranslationService,
+        { instant: (key: string): string => key } as unknown as TranslateService,
         seoService,
         stateFacade as unknown as CommentThreadStateFacade
       )
@@ -93,5 +108,75 @@ describe('CommentsPageComponent', () => {
       'fr',
       '/fr/park/missing-park/parc-introuvable/comments'
     );
+  });
+
+  it('requires deletion confirmation and submits an existing comment through edit mode', () => {
+    const routeParamMap: ParamMap = convertToParamMap({ lang: 'fr', id: 'park-1' });
+    const stateFacade: FakeCommentThreadStateFacade = new FakeCommentThreadStateFacade();
+    stateFacade.canManageSignal.set(true);
+    const comment = {
+      id: 'comment-1',
+      targetType: 'Park' as const,
+      targetId: 'park-1',
+      authorDisplayName: 'Alice',
+      authorRole: 'Admin' as const,
+      bodies: [{ languageCode: 'fr', value: '<p>Avis</p>' }],
+      isOfficial: false,
+      canUpdate: true,
+      canDelete: true,
+      createdAtUtc: '2026-07-01T10:00:00Z',
+      updatedAtUtc: '2026-07-01T10:00:00Z'
+    };
+    stateFacade.threadSignal.set({
+      targetType: 'Park',
+      targetId: 'park-1',
+      targetName: 'Demo Park',
+      parkId: 'park-1',
+      parkName: 'Demo Park',
+      comments: [comment]
+    });
+    const confirmSpy = vi.spyOn(globalThis, 'confirm').mockReturnValue(false);
+    const component: CommentsPageComponent = TestBed.runInInjectionContext(
+      (): CommentsPageComponent => new CommentsPageComponent(
+        {
+          snapshot: { paramMap: routeParamMap },
+          paramMap: of(routeParamMap),
+          parent: null
+        } as unknown as ActivatedRoute,
+        { url: '/fr/park/park-1/demo-park/comments' } as Router,
+        new FakeTranslationService() as unknown as TranslationService,
+        { instant: (key: string): string => key } as unknown as TranslateService,
+        {
+          applyCommentsSeo: vi.fn(),
+          applyNotFoundSeo: vi.fn()
+        } as unknown as SeoService,
+        stateFacade as unknown as CommentThreadStateFacade
+      )
+    );
+    const managementComponent = component as unknown as {
+      deleteComment(value: typeof comment): void;
+      startEditing(value: typeof comment): void;
+      submit(): void;
+    };
+    const deleteComment = managementComponent.deleteComment.bind(component);
+
+    deleteComment(comment);
+
+    expect(confirmSpy).toHaveBeenCalledWith('comments.management.deleteConfirm');
+    expect(stateFacade.deleteCalls).toEqual([]);
+
+    confirmSpy.mockReturnValue(true);
+    deleteComment(comment);
+
+    expect(stateFacade.deleteCalls).toEqual(['comment-1']);
+
+    managementComponent.startEditing.call(component, comment);
+    managementComponent.submit.call(component);
+
+    expect(stateFacade.updateCalls).toEqual([{
+      id: 'comment-1',
+      bodies: [{ languageCode: 'fr', value: '<p>Avis</p>' }],
+      isOfficial: false
+    }]);
   });
 });

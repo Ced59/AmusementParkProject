@@ -8,7 +8,8 @@ import {
   CommentTargetType,
   CommentThread,
   CreateCommentRequest,
-  PublicComment
+  PublicComment,
+  UpdateCommentRequest
 } from '@app/models/comments/comment.models';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
@@ -31,8 +32,11 @@ class FakeCommentDataPort implements CommentDataPort {
     createComment('official', true, '2026-07-01T10:00:00Z')
   ]);
   createdComment: PublicComment = createComment('created', false, '2026-07-03T10:00:00Z');
+  updatedComment: PublicComment = createComment('regular', true, '2026-07-04T10:00:00Z');
   threadResponse: Observable<CommentThread> | null = null;
   readonly createCalls: CreateCommentRequest[] = [];
+  readonly updateCalls: UpdateCommentRequest[] = [];
+  readonly deleteCalls: string[] = [];
 
   getSummary(targetType: CommentTargetType, targetId: string): Observable<CommentSummary> {
     return of({
@@ -50,6 +54,16 @@ class FakeCommentDataPort implements CommentDataPort {
   createComment(request: CreateCommentRequest): Observable<PublicComment> {
     this.createCalls.push(request);
     return of(this.createdComment);
+  }
+
+  updateComment(request: UpdateCommentRequest): Observable<PublicComment> {
+    this.updateCalls.push(request);
+    return of(this.updatedComment);
+  }
+
+  deleteComment(commentId: string): Observable<void> {
+    this.deleteCalls.push(commentId);
+    return of(undefined);
   }
 }
 
@@ -129,8 +143,97 @@ describe('CommentThreadStateFacade', () => {
     expect(context.facade.canWrite()).toBe(true);
     expect(context.dataPort.createCalls).toEqual([request]);
     expect(context.facade.thread()?.comments[0]?.id).toBe('new-official');
-    expect(context.facade.createdVersion()).toBe(1);
+    expect(context.facade.editorResetVersion()).toBe(1);
     expect(context.toastMessageService.messages).toEqual(['comments.editor.saved']);
+  });
+
+  it('allows an administrator to update an existing comment', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['ADMIN'];
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+    const request: UpdateCommentRequest = {
+      id: 'regular',
+      bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
+      isOfficial: true
+    };
+
+    context.facade.update(request);
+
+    expect(context.facade.canManage()).toBe(true);
+    expect(context.dataPort.updateCalls).toEqual([request]);
+    expect(context.facade.thread()?.comments[0]?.id).toBe('regular');
+    expect(context.facade.thread()?.comments[0]?.isOfficial).toBe(true);
+    expect(context.facade.editorResetVersion()).toBe(1);
+    expect(context.toastMessageService.messages).toEqual(['comments.management.updated']);
+  });
+
+  it('allows an administrator to delete an existing comment', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['ADMIN'];
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+
+    context.facade.delete('regular');
+
+    expect(context.dataPort.deleteCalls).toEqual(['regular']);
+    expect(context.facade.thread()?.comments.map((comment: PublicComment) => comment.id))
+      .toEqual(['official']);
+    expect(context.facade.editorResetVersion()).toBe(1);
+    expect(context.toastMessageService.messages).toEqual(['comments.management.deleted']);
+  });
+
+  it('allows a moderator to manage their own comment', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['MODERATOR'];
+    context.dataPort.thread = createThread([
+      createComment('own', false, '2026-07-02T10:00:00Z', true)
+    ]);
+    context.dataPort.updatedComment = createComment(
+      'own',
+      false,
+      '2026-07-03T10:00:00Z',
+      true
+    );
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+
+    context.facade.update({
+      id: 'own',
+      bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
+      isOfficial: false
+    });
+    context.facade.delete('own');
+
+    expect(context.facade.canWrite()).toBe(true);
+    expect(context.facade.canManage()).toBe(true);
+    expect(context.dataPort.updateCalls).toHaveLength(1);
+    expect(context.dataPort.deleteCalls).toEqual(['own']);
+  });
+
+  it('does not let a moderator manage another author comment', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['MODERATOR'];
+    context.dataPort.thread = createThread([
+      createComment('other', false, '2026-07-02T10:00:00Z', false)
+    ]);
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+
+    context.facade.update({
+      id: 'other',
+      bodies: [{ languageCode: 'fr', value: '<p>Interdit</p>' }],
+      isOfficial: false
+    });
+    context.facade.delete('other');
+
+    expect(context.facade.canManage()).toBe(true);
+    expect(context.dataPort.updateCalls).toEqual([]);
+    expect(context.dataPort.deleteCalls).toEqual([]);
   });
 
   it('does not expose publication to a regular user', () => {
@@ -218,7 +321,12 @@ function createThread(comments: PublicComment[]): CommentThread {
   };
 }
 
-function createComment(id: string, isOfficial: boolean, createdAtUtc: string): PublicComment {
+function createComment(
+  id: string,
+  isOfficial: boolean,
+  createdAtUtc: string,
+  canManage: boolean = true
+): PublicComment {
   return {
     id,
     targetType: 'Park',
@@ -227,6 +335,8 @@ function createComment(id: string, isOfficial: boolean, createdAtUtc: string): P
     authorRole: 'Admin',
     bodies: [{ languageCode: 'fr', value: `<p>${id}</p>` }],
     isOfficial,
+    canUpdate: canManage,
+    canDelete: canManage,
     createdAtUtc,
     updatedAtUtc: createdAtUtc
   };

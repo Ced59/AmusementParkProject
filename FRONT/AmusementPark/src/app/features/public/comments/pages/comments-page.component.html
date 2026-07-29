@@ -44,6 +44,7 @@
 
       @if (canWrite()) {
         <form
+          id="comment-editor"
           class="comment-editor"
           appUiSurface="panel"
           appUiSurfacePadding="spacious"
@@ -55,8 +56,8 @@
               <app-ui-kicker tone="sky" iconClass="pi pi-pencil">
                 {{ 'comments.editor.kicker' | translate }}
               </app-ui-kicker>
-              <h2>{{ 'comments.editor.title' | translate }}</h2>
-              <p>{{ 'comments.editor.help' | translate }}</p>
+              <h2>{{ (isEditing() ? 'comments.editor.editTitle' : 'comments.editor.title') | translate }}</h2>
+              <p>{{ (isEditing() ? 'comments.editor.editHelp' : 'comments.editor.help') | translate }}</p>
             </div>
 
             <label class="comment-editor__official">
@@ -83,9 +84,21 @@
           }
 
           <div class="comment-editor__actions">
+            @if (isEditing()) {
+              <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="cancelEditing()">
+                <i class="pi pi-times" aria-hidden="true"></i>
+                <span>{{ 'comments.editor.cancelEdit' | translate }}</span>
+              </button>
+            }
             <button appUiButton="primary" type="submit" [disabled]="saving()">
-              <i class="pi pi-send" aria-hidden="true"></i>
-              <span>{{ (saving() ? 'comments.editor.saving' : 'comments.editor.publish') | translate }}</span>
+              <i [class]="isEditing() ? 'pi pi-save' : 'pi pi-send'" aria-hidden="true"></i>
+              <span>
+                {{ (
+                  saving()
+                    ? (isEditing() ? 'comments.editor.updating' : 'comments.editor.saving')
+                    : (isEditing() ? 'comments.editor.update' : 'comments.editor.publish')
+                ) | translate }}
+              </span>
             </button>
           </div>
         </form>
@@ -122,6 +135,32 @@
             </header>
 
             <div class="comment-card__body" [innerHTML]="commentBody(comment) | safeRichHtml"></div>
+
+            @if (canUpdateComment(comment) || canDeleteComment(comment)) {
+              <footer class="comment-card__actions">
+                @if (canUpdateComment(comment)) {
+                  <button
+                    appUiButton="ghost"
+                    type="button"
+                    [disabled]="saving()"
+                    (click)="startEditing(comment)">
+                    <i class="pi pi-pencil" aria-hidden="true"></i>
+                    <span>{{ 'comments.management.edit' | translate }}</span>
+                  </button>
+                }
+                @if (canDeleteComment(comment)) {
+                  <button
+                    appUiButton="ghost"
+                    type="button"
+                    severity="danger"
+                    [disabled]="saving()"
+                    (click)="deleteComment(comment)">
+                    <i class="pi pi-trash" aria-hidden="true"></i>
+                    <span>{{ 'comments.management.delete' | translate }}</span>
+                  </button>
+                }
+              </footer>
+            }
           </article>
         } @empty {
           <section class="comments-empty" appUiSurface="shell" appUiSurfacePadding="spacious">

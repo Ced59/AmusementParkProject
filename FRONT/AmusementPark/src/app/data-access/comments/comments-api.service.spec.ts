@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 
-import { CreateCommentRequest } from '@app/models/comments/comment.models';
+import { CreateCommentRequest, UpdateCommentRequest } from '@app/models/comments/comment.models';
 import { environment } from '../../../environments/environment';
 import { CommentsApiService } from './comments-api.service';
 
@@ -59,6 +59,36 @@ describe('CommentsApiService', () => {
       expect.objectContaining({
         headers: expect.anything()
       })
+    );
+  });
+
+  it('uses encoded comment identifiers for update and delete operations', () => {
+    const httpClient = {
+      put: vi.fn().mockReturnValue(of({})),
+      delete: vi.fn().mockReturnValue(of(undefined))
+    };
+    const service: CommentsApiService = new CommentsApiService(httpClient as unknown as HttpClient);
+    const request: UpdateCommentRequest = {
+      id: 'comment/1',
+      bodies: [{ languageCode: 'fr', value: '<p>Avis corrigé</p>' }],
+      isOfficial: true
+    };
+
+    service.updateComment(request).subscribe();
+    service.deleteComment(request.id).subscribe();
+
+    expect(httpClient.put).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}comments/comment%2F1`,
+      {
+        bodies: request.bodies,
+        isOfficial: true
+      },
+      expect.objectContaining({
+        headers: expect.anything()
+      })
+    );
+    expect(httpClient.delete).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}comments/comment%2F1`
     );
   });
 });
