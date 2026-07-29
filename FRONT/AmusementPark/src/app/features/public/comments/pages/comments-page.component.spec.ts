@@ -44,6 +44,18 @@ class FakeCommentThreadStateFacade {
 }
 
 describe('CommentsPageComponent', () => {
+  it('lets the comment editor shrink inside the mobile page', () => {
+    const styles: string = (
+      CommentsPageComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('.comment-editor');
+    expect(styles).toContain('.comment-editor__header');
+    expect(styles).toContain('app-localized-rich-text-editor');
+    expect(styles).toContain('min-width: 0');
+    expect(styles).toContain('overflow-wrap: anywhere');
+  });
+
   it('applies not-found SEO when the comment target does not exist', () => {
     const routeParamMap: ParamMap = convertToParamMap({
       lang: 'fr',

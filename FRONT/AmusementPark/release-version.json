@@ -1,6 +1,20 @@
 {
-  "version": "4.0.7",
+  "version": "4.0.8",
   "history": [
+    {
+      "version": "4.0.8",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "L’ergonomie des outils d’administration sur mobile a été améliorée.",
+        "en": "Admin tool ergonomics on mobile has been improved.",
+        "de": "Die Bedienbarkeit der Administrationswerkzeuge auf Mobilgeräten wurde verbessert.",
+        "nl": "De gebruiksvriendelijkheid van beheertools op mobiel is verbeterd.",
+        "it": "L’ergonomia degli strumenti di amministrazione sui dispositivi mobili è stata migliorata.",
+        "es": "Se ha mejorado la ergonomía de las herramientas de administración en dispositivos móviles.",
+        "pl": "Ulepszono obsługę narzędzi administracyjnych na urządzeniach mobilnych.",
+        "pt": "A ergonomia das ferramentas de administração em dispositivos móveis foi melhorada."
+      }
+    },
     {
       "version": "4.0.7",
       "releasedAt": "2026-07-29",
