@@ -128,6 +128,68 @@ describe('SeoService', () => {
     );
   });
 
+  it.each([
+    { countryCode: 'MC', countryName: 'Monaco', expectedContext: 'à Monaco' },
+    {
+      countryCode: 'SG',
+      countryName: 'Singapour',
+      expectedContext: 'à Singapour',
+    },
+    {
+      countryCode: 'BD',
+      countryName: 'Bangladesh',
+      expectedContext: 'au Bangladesh',
+    },
+    {
+      countryCode: 'KZ',
+      countryName: 'Kazakhstan',
+      expectedContext: 'au Kazakhstan',
+    },
+    {
+      countryCode: 'CV',
+      countryName: 'Cap-Vert',
+      expectedContext: 'au Cap-Vert',
+    },
+    {
+      countryCode: 'WS',
+      countryName: 'Samoa',
+      expectedContext: 'aux Samoa',
+    },
+    {
+      countryCode: 'DJ',
+      countryName: 'Djibouti',
+      expectedContext: 'à Djibouti',
+    },
+    {
+      countryCode: 'BB',
+      countryName: 'Barbade',
+      expectedContext: 'à la Barbade',
+    },
+  ])(
+    'uses $expectedContext for French park metadata',
+    ({ countryCode, countryName, expectedContext }) => {
+      const park: ParkDetailViewModel = buildParkDetail({
+        city: null,
+        countryCode,
+        countryName,
+        description: null,
+      });
+
+      service.applyParkDetailSeo(
+        park,
+        'fr',
+        '/fr/park/park-1/demo-park',
+      );
+
+      expect(readMetaContent('meta[property="og:title"]')).toContain(
+        `Demo Park ${expectedContext}`,
+      );
+      expect(readMetaContent('meta[property="og:description"]')).toContain(
+        `Demo Park ${expectedContext}`,
+      );
+    },
+  );
+
   it('uses neutral location context in other languages to avoid country grammar errors', () => {
     const park: ParkDetailViewModel = buildParkDetail({
       city: 'Zürich',

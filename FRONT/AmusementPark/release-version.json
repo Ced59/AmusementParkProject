@@ -1,6 +1,20 @@
 {
-  "version": "3.6.0",
+  "version": "3.6.1",
   "history": [
+    {
+      "version": "3.6.1",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "Les formulations géographiques en français ont été améliorées.",
+        "en": "French geographic wording has been improved.",
+        "de": "Die französischen geografischen Formulierungen wurden verbessert.",
+        "nl": "De Franse geografische formuleringen zijn verbeterd.",
+        "it": "Le formulazioni geografiche in francese sono state migliorate.",
+        "es": "Se han mejorado las formulaciones geográficas en francés.",
+        "pl": "Ulepszono francuskie sformułowania geograficzne.",
+        "pt": "As formulações geográficas em francês foram melhoradas."
+      }
+    },
     {
       "version": "3.6.0",
       "releasedAt": "2026-07-29",
