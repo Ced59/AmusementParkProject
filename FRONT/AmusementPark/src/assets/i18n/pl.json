@@ -2708,7 +2708,8 @@
       "update": "Nie udało się zaktualizować komentarza.",
       "delete": "Nie udało się usunąć komentarza.",
       "forbidden": "Tylko administratorzy i moderatorzy mogą publikować komentarze.",
-      "managementForbidden": "Możesz edytować lub usuwać tylko własne komentarze, chyba że jesteś administratorem."
+      "managementForbidden": "Możesz edytować lub usuwać tylko własne komentarze, chyba że jesteś administratorem.",
+      "concurrentModification": "Ten komentarz został w międzyczasie zmieniony. Twój szkic został zachowany, a najnowsza wersja jest ponownie wczytywana. Porównaj obie wersje i spróbuj ponownie."
     }
   },
   "contactPage": {

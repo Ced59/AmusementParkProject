@@ -34,6 +34,9 @@ class FakeCommentDataPort implements CommentDataPort {
   createdComment: PublicComment = createComment('created', false, '2026-07-03T10:00:00Z');
   updatedComment: PublicComment = createComment('regular', true, '2026-07-04T10:00:00Z');
   threadResponse: Observable<CommentThread> | null = null;
+  updateResponse: Observable<PublicComment> | null = null;
+  deleteResponse: Observable<void> | null = null;
+  readonly getThreadCalls: Array<{ targetType: CommentTargetType; targetId: string }> = [];
   readonly createCalls: CreateCommentRequest[] = [];
   readonly updateCalls: UpdateCommentRequest[] = [];
   readonly deleteCalls: Array<{ commentId: string; revision: number }> = [];
@@ -47,7 +50,8 @@ class FakeCommentDataPort implements CommentDataPort {
     });
   }
 
-  getThread(_targetType: CommentTargetType, _targetId: string): Observable<CommentThread> {
+  getThread(targetType: CommentTargetType, targetId: string): Observable<CommentThread> {
+    this.getThreadCalls.push({ targetType, targetId });
     return this.threadResponse ?? of(this.thread);
   }
 
@@ -69,12 +73,12 @@ class FakeCommentDataPort implements CommentDataPort {
 
   updateComment(request: UpdateCommentRequest): Observable<PublicComment> {
     this.updateCalls.push(request);
-    return of(this.updatedComment);
+    return this.updateResponse ?? of(this.updatedComment);
   }
 
   deleteComment(commentId: string, revision: number): Observable<void> {
     this.deleteCalls.push({ commentId, revision });
-    return of(undefined);
+    return this.deleteResponse ?? of(undefined);
   }
 }
 
@@ -299,6 +303,67 @@ describe('CommentThreadStateFacade', () => {
 
     expect(context.dataPort.updateCalls).toHaveLength(1);
     expect(context.dataPort.deleteCalls).toEqual([]);
+  });
+
+  it('reloads the latest revision after an update conflict without resetting the editor', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['USER'];
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+    context.dataPort.thread = createThread([
+      {
+        ...createComment('regular', false, '2026-07-05T10:00:00Z'),
+        bodies: [{ languageCode: 'fr', value: '<p>Version distante</p>' }],
+        revision: 2
+      }
+    ]);
+    context.dataPort.updateResponse = throwError(
+      () => new HttpErrorResponse({ status: 409 })
+    );
+
+    context.facade.update({
+      id: 'regular',
+      bodies: [{ languageCode: 'fr', value: '<p>Mon brouillon</p>' }],
+      isOfficial: false,
+      revision: 1
+    });
+
+    expect(context.dataPort.getThreadCalls).toEqual([
+      { targetType: 'Park', targetId: 'park-1' },
+      { targetType: 'Park', targetId: 'park-1' }
+    ]);
+    expect(context.facade.thread()?.comments[0]?.revision).toBe(2);
+    expect(context.facade.thread()?.comments[0]?.bodies[0]?.value)
+      .toBe('<p>Version distante</p>');
+    expect(context.facade.saveErrorKey()).toBe('comments.errors.concurrentModification');
+    expect(context.facade.editorResetVersion()).toBe(0);
+    expect(context.toastMessageService.messages)
+      .toEqual(['comments.errors.concurrentModification']);
+  });
+
+  it('reloads the thread after a delete conflict', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['USER'];
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+    context.dataPort.thread = createThread([
+      {
+        ...createComment('regular', false, '2026-07-05T10:00:00Z'),
+        revision: 3
+      }
+    ]);
+    context.dataPort.deleteResponse = throwError(
+      () => new HttpErrorResponse({ status: 409 })
+    );
+
+    context.facade.delete('regular', 1);
+
+    expect(context.dataPort.getThreadCalls).toHaveLength(2);
+    expect(context.facade.thread()?.comments[0]?.revision).toBe(3);
+    expect(context.facade.saveErrorKey()).toBe('comments.errors.concurrentModification');
+    expect(context.facade.editorResetVersion()).toBe(0);
   });
 
   it('marks a missing comment target as not found during SSR', () => {

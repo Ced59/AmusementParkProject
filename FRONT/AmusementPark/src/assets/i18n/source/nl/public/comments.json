@@ -78,7 +78,8 @@
       "update": "De reactie kon niet worden bijgewerkt.",
       "delete": "De reactie kon niet worden verwijderd.",
       "forbidden": "Alleen beheerders en moderators kunnen een reactie publiceren.",
-      "managementForbidden": "Je kunt alleen je eigen reacties bewerken of verwijderen, tenzij je beheerder bent."
+      "managementForbidden": "Je kunt alleen je eigen reacties bewerken of verwijderen, tenzij je beheerder bent.",
+      "concurrentModification": "Deze reactie is intussen gewijzigd. Je concept is bewaard en de nieuwste versie wordt opnieuw geladen. Vergelijk beide versies en probeer het opnieuw."
     }
   }
 }

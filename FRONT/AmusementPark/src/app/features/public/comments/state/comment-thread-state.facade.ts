@@ -70,15 +70,26 @@ export class CommentThreadStateFacade {
   }
 
   load(targetType: CommentTargetType, targetId: string): void {
+    this.loadThread(targetType, targetId, false, false);
+  }
+
+  private loadThread(
+    targetType: CommentTargetType,
+    targetId: string,
+    forceReload: boolean,
+    preserveSaveError: boolean
+  ): void {
     const normalizedTargetId: string = targetId.trim();
     const targetKey: string = `${targetType}:${normalizedTargetId}`;
-    if (!normalizedTargetId || this.currentTargetKey === targetKey) {
+    if (!normalizedTargetId || (!forceReload && this.currentTargetKey === targetKey)) {
       return;
     }
 
     this.currentTargetKey = targetKey;
     this.stateSignal.set({ kind: 'loading' });
-    this.saveErrorKeySignal.set(null);
+    if (!preserveSaveError) {
+      this.saveErrorKeySignal.set(null);
+    }
     this.notFoundSignal.set(false);
 
     this.commentDataPort.getThread(targetType, normalizedTargetId)
@@ -228,9 +239,8 @@ export class CommentThreadStateFacade {
                   this.translateService.instant('comments.management.updated')
                 );
               },
-              error: (): void => {
-                this.savingSignal.set(false);
-                this.saveErrorKeySignal.set('comments.errors.update');
+              error: (error: unknown): void => {
+                this.handleManagementError(error, 'comments.errors.update');
               }
             });
         },
@@ -294,9 +304,8 @@ export class CommentThreadStateFacade {
                   this.translateService.instant('comments.management.deleted')
                 );
               },
-              error: (): void => {
-                this.savingSignal.set(false);
-                this.saveErrorKeySignal.set('comments.errors.delete');
+              error: (error: unknown): void => {
+                this.handleManagementError(error, 'comments.errors.delete');
               }
             });
         },
@@ -313,6 +322,37 @@ export class CommentThreadStateFacade {
 
   private hasStaffRole(): boolean {
     return this.authService.hasRole('ADMIN') || this.authService.hasRole('MODERATOR');
+  }
+
+  private handleManagementError(error: unknown, fallbackErrorKey: string): void {
+    this.savingSignal.set(false);
+    if (!hasHttpStatus(error, 409)) {
+      this.saveErrorKeySignal.set(fallbackErrorKey);
+      return;
+    }
+
+    const conflictErrorKey: string = 'comments.errors.concurrentModification';
+    this.saveErrorKeySignal.set(conflictErrorKey);
+    this.toastMessageService.add(
+      'warn',
+      this.translateService.instant('common.warning'),
+      this.translateService.instant(conflictErrorKey)
+    );
+    this.reloadCurrentThreadAfterConflict();
+  }
+
+  private reloadCurrentThreadAfterConflict(): void {
+    const currentThread: CommentThread | null = this.thread();
+    if (!currentThread) {
+      return;
+    }
+
+    this.loadThread(
+      currentThread.targetType,
+      currentThread.targetId,
+      true,
+      true
+    );
   }
 
   private requestEditorReset(reason: CommentEditorResetReason): void {

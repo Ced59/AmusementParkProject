@@ -2708,7 +2708,8 @@
       "update": "Der Kommentar konnte nicht aktualisiert werden.",
       "delete": "Der Kommentar konnte nicht gelöscht werden.",
       "forbidden": "Nur Administratoren und Moderatoren können einen Kommentar veröffentlichen.",
-      "managementForbidden": "Du kannst nur deine eigenen Kommentare bearbeiten oder löschen, es sei denn, du bist Administrator."
+      "managementForbidden": "Du kannst nur deine eigenen Kommentare bearbeiten oder löschen, es sei denn, du bist Administrator.",
+      "concurrentModification": "Dieser Kommentar wurde inzwischen geändert. Dein Entwurf wurde beibehalten und die neueste Version wird neu geladen. Vergleiche beide Versionen und versuche es erneut."
     }
   },
   "contactPage": {

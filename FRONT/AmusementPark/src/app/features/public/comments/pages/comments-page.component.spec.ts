@@ -212,6 +212,7 @@ describe('CommentsPageComponent', () => {
       startEditing(value: typeof comment): void;
       submit(): void;
     };
+    TestBed.flushEffects();
     const deleteComment = managementComponent.deleteComment.bind(component);
 
     deleteComment(comment);
@@ -234,6 +235,38 @@ describe('CommentsPageComponent', () => {
       isOfficial: false,
       revision: 4
     }]);
+
+    const preservedDraft = [{ languageCode: 'fr', value: '<p>Mon brouillon local</p>' }];
+    const testableForm = component as unknown as {
+      editorForm: {
+        controls: {
+          bodies: { setValue(value: Array<{ languageCode: string; value: string }>): void };
+        };
+      };
+    };
+    testableForm.editorForm.controls.bodies.setValue(preservedDraft);
+    stateFacade.threadSignal.set({
+      targetType: 'Park',
+      targetId: 'park-1',
+      targetName: 'Demo Park',
+      parkId: 'park-1',
+      parkName: 'Demo Park',
+      comments: [{
+        ...comment,
+        bodies: [{ languageCode: 'fr', value: '<p>Version distante</p>' }],
+        revision: 5
+      }]
+    });
+    TestBed.flushEffects();
+
+    managementComponent.submit.call(component);
+
+    expect(stateFacade.updateCalls[1]).toEqual({
+      id: 'comment-1',
+      bodies: preservedDraft,
+      isOfficial: false,
+      revision: 5
+    });
   });
 
   it('snapshots the strict union of submitted image ids and commits only that snapshot on success', () => {

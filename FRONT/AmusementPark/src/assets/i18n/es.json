@@ -2708,7 +2708,8 @@
       "update": "No se ha podido actualizar el comentario.",
       "delete": "No se ha podido eliminar el comentario.",
       "forbidden": "Solo los administradores y moderadores pueden publicar un comentario.",
-      "managementForbidden": "Solo puedes editar o eliminar tus propios comentarios, salvo que seas administrador."
+      "managementForbidden": "Solo puedes editar o eliminar tus propios comentarios, salvo que seas administrador.",
+      "concurrentModification": "Este comentario ha cambiado mientras tanto. Tu borrador se ha conservado y se está recargando la última versión. Compara ambas versiones y vuelve a intentarlo."
     }
   },
   "contactPage": {

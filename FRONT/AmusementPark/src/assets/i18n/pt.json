@@ -2708,7 +2708,8 @@
       "update": "Não foi possível atualizar o comentário.",
       "delete": "Não foi possível eliminar o comentário.",
       "forbidden": "Só administradores e moderadores podem publicar um comentário.",
-      "managementForbidden": "Só podes editar ou eliminar os teus próprios comentários, a menos que sejas administrador."
+      "managementForbidden": "Só podes editar ou eliminar os teus próprios comentários, a menos que sejas administrador.",
+      "concurrentModification": "Este comentário foi alterado entretanto. O teu rascunho foi mantido e a versão mais recente está a ser recarregada. Compara as duas versões e tenta novamente."
     }
   },
   "contactPage": {

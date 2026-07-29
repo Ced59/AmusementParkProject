@@ -78,7 +78,8 @@
       "update": "Non è stato possibile modificare il commento.",
       "delete": "Non è stato possibile eliminare il commento.",
       "forbidden": "Solo amministratori e moderatori possono pubblicare un commento.",
-      "managementForbidden": "Puoi modificare o eliminare solo i tuoi commenti, a meno che tu non sia amministratore."
+      "managementForbidden": "Puoi modificare o eliminare solo i tuoi commenti, a meno che tu non sia amministratore.",
+      "concurrentModification": "Questo commento è stato modificato nel frattempo. La tua bozza è stata conservata e l’ultima versione è in fase di ricaricamento. Confronta le due versioni, poi riprova."
     }
   }
 }

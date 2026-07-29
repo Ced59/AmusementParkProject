@@ -78,7 +78,8 @@
       "update": "Le commentaire n’a pas pu être modifié.",
       "delete": "Le commentaire n’a pas pu être supprimé.",
       "forbidden": "Seuls les administrateurs et les modérateurs peuvent publier un commentaire.",
-      "managementForbidden": "Tu peux uniquement modifier ou supprimer tes propres commentaires, sauf si tu es administrateur."
+      "managementForbidden": "Tu peux uniquement modifier ou supprimer tes propres commentaires, sauf si tu es administrateur.",
+      "concurrentModification": "Ce commentaire a changé entre-temps. Ton brouillon a été conservé et la dernière version est en cours de rechargement. Compare les deux versions, puis réessaie."
     }
   }
 }
