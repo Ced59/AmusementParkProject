@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { ProfilePageComponent } from './profile-page.component';
 import { ProfilePageViewComponent } from './profile-page-view.component';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import { OwnerImageUploadDialogComponent } from '@shared/components/owner-image-upload-dialog/owner-image-upload-dialog.component';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -32,5 +34,15 @@ describe('ProfilePageComponent', () => {
     expect(styles).toContain('height: 7.5rem');
     expect(styles).toContain('width: 7.5rem');
     expect(styles).toContain('object-fit: cover');
+  });
+
+  it('routes avatar changes through the current-user upload endpoint', () => {
+    fixture.detectChanges();
+
+    const uploadDialog: OwnerImageUploadDialogComponent = fixture.debugElement
+      .query(By.directive(OwnerImageUploadDialogComponent))
+      .componentInstance as OwnerImageUploadDialogComponent;
+
+    expect(uploadDialog.uploadMode).toBe('current-user-avatar');
   });
 });

@@ -252,7 +252,9 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
     {
         if (user.PublicAccountNumber <= 0)
         {
-            user.PublicAccountNumber = await this.userRepository.AllocatePublicAccountNumberAsync(cancellationToken);
+            long publicAccountNumber =
+                await this.userRepository.AllocatePublicAccountNumberAsync(cancellationToken);
+            user.AssignPublicAccountNumber(publicAccountNumber);
         }
 
         if (user.UsesAutomaticPublicDisplayName || string.IsNullOrWhiteSpace(user.PublicDisplayName))

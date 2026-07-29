@@ -15,7 +15,7 @@ internal static partial class EntityMongoMappers
             ParkId = document.ParkId,
             AuthorUserId = document.AuthorUserId,
             AuthorDisplayName = string.IsNullOrWhiteSpace(document.AuthorDisplayName)
-                ? "Amusement Parks"
+                ? "User"
                 : document.AuthorDisplayName,
             AuthorAvatarUrl = document.AuthorAvatarUrl,
             AuthorRole = document.AuthorRole,

@@ -455,8 +455,7 @@ internal static class CommentManagementAuthorization
         User? actor = await userRepository.GetByIdAsync(actorUserId.Trim(), cancellationToken);
         bool isAllowed = actor is not null
             && actor.IsActivated
-            && !actor.IsBlocked
-            && (actor.HasRole(Role.Admin) || actor.HasRole(Role.Moderator));
+            && !actor.IsBlocked;
         return isAllowed ? actor : null;
     }
 

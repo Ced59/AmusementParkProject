@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { finalize, Subscription, switchMap } from 'rxjs';
+import { finalize, Observable, Subscription, switchMap } from 'rxjs';
 
 import { ImagesApiService } from '@data-access/images/images-api.service';
+import { UsersApiService } from '@data-access/users/users-api.service';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -53,6 +54,7 @@ export class OwnerImageUploadDialogComponent implements OnChanges, OnDestroy {
   @Input() allowWatermarkChoice: boolean = false;
   @Input() watermarkLabelKey: string = 'shared.imageUpload.withWatermark';
   @Input() maxFileSizeBytes: number = 5 * 1024 * 1024;
+  @Input() uploadMode: 'owner-image' | 'current-user-avatar' = 'owner-image';
 
   @Output() uploaded: EventEmitter<ImageDto> = new EventEmitter<ImageDto>();
 
@@ -71,6 +73,7 @@ export class OwnerImageUploadDialogComponent implements OnChanges, OnDestroy {
 
   constructor(
     private readonly imagesApiService: ImagesApiService,
+    private readonly usersApiService: UsersApiService,
     private readonly imageUploadSecurityService: ImageUploadSecurityService,
     private readonly destroyRef: DestroyRef
   ) {
@@ -152,7 +155,7 @@ export class OwnerImageUploadDialogComponent implements OnChanges, OnDestroy {
       return;
     }
 
-    if (!this.selectedFile || !this.ownerId) {
+    if (!this.selectedFile || (this.uploadMode === 'owner-image' && !this.ownerId)) {
       this.errorTranslationKey = this.noImageSelectedKey;
       return;
     }
@@ -161,21 +164,8 @@ export class OwnerImageUploadDialogComponent implements OnChanges, OnDestroy {
     this.isUploading = true;
 
     this.uploadSubscription?.unsubscribe();
-    this.uploadSubscription = this.imagesApiService.uploadImage(
-      this.selectedFile,
-      category,
-      this.shouldApplyWatermark(category),
-      this.showDescription ? this.description : undefined)
+    this.uploadSubscription = this.uploadSelectedFile(this.selectedFile, category)
       .pipe(
-        switchMap((uploadedImage: UploadedImage) => {
-          return this.imagesApiService.linkImage({
-            imageId: uploadedImage.id,
-            ownerType: this.ownerType,
-            ownerId: this.ownerId,
-            description: this.showDescription ? this.description : undefined,
-            setAsCurrent: true
-          });
-        }),
         finalize(() => {
           this.isUploading = false;
         }))
@@ -265,6 +255,28 @@ export class OwnerImageUploadDialogComponent implements OnChanges, OnDestroy {
     }
 
     this.setPreviewFromFile(file);
+  }
+
+  private uploadSelectedFile(file: File, category: ImageCategory): Observable<ImageDto> {
+    if (this.uploadMode === 'current-user-avatar') {
+      return this.usersApiService.uploadCurrentUserAvatar(file);
+    }
+
+    return this.imagesApiService.uploadImage(
+      file,
+      category,
+      this.shouldApplyWatermark(category),
+      this.showDescription ? this.description : undefined)
+      .pipe(
+        switchMap((uploadedImage: UploadedImage) => {
+          return this.imagesApiService.linkImage({
+            imageId: uploadedImage.id,
+            ownerType: this.ownerType,
+            ownerId: this.ownerId,
+            description: this.showDescription ? this.description : undefined,
+            setAsCurrent: true
+          });
+        }));
   }
 
   private importRemote(sourceUrl: string, category: ImageCategory): void {

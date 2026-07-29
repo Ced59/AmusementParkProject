@@ -55,7 +55,7 @@ export class CommentThreadStateFacade {
       .subscribe({
         next: (token: string | null): void => {
           this.canWriteSignal.set(!!token && this.hasStaffRole());
-          this.canManageSignal.set(!!token && this.hasStaffRole());
+          this.canManageSignal.set(!!token);
         },
         error: (): void => {
           this.canWriteSignal.set(false);
@@ -122,7 +122,7 @@ export class CommentThreadStateFacade {
         next: (token: string | null): void => {
           if (!token || !this.hasStaffRole()) {
             this.canWriteSignal.set(false);
-            this.canManageSignal.set(false);
+            this.canManageSignal.set(!!token);
             this.savingSignal.set(false);
             this.saveErrorKeySignal.set('comments.errors.forbidden');
             return;
@@ -186,7 +186,7 @@ export class CommentThreadStateFacade {
       .pipe(take(1), takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (token: string | null): void => {
-          if (!token || !this.hasStaffRole()) {
+          if (!token) {
             this.canManageSignal.set(false);
             this.savingSignal.set(false);
             this.saveErrorKeySignal.set('comments.errors.managementForbidden');
@@ -255,7 +255,7 @@ export class CommentThreadStateFacade {
       .pipe(take(1), takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (token: string | null): void => {
-          if (!token || !this.hasStaffRole()) {
+          if (!token) {
             this.canManageSignal.set(false);
             this.savingSignal.set(false);
             this.saveErrorKeySignal.set('comments.errors.managementForbidden');

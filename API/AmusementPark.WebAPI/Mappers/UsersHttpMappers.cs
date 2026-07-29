@@ -53,7 +53,6 @@ public static class UsersHttpMappers
             NewEmail = request.NewEmail,
             PreferredLanguage = request.PreferredLanguage,
             PreferredMeasurementSystem = request.PreferredMeasurementSystem,
-            AvatarUrl = request.AvatarUrl,
         };
     }
 

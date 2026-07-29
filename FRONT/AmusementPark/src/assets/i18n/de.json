@@ -2696,7 +2696,7 @@
       "update": "Der Kommentar konnte nicht aktualisiert werden.",
       "delete": "Der Kommentar konnte nicht gelöscht werden.",
       "forbidden": "Nur Administratoren und Moderatoren können einen Kommentar veröffentlichen.",
-      "managementForbidden": "Nur Administratoren können einen Kommentar bearbeiten oder löschen."
+      "managementForbidden": "Du kannst nur deine eigenen Kommentare bearbeiten oder löschen, es sei denn, du bist Administrator."
     }
   },
   "contactPage": {

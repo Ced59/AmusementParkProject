@@ -2696,7 +2696,7 @@
       "update": "Le commentaire n’a pas pu être modifié.",
       "delete": "Le commentaire n’a pas pu être supprimé.",
       "forbidden": "Seuls les administrateurs et les modérateurs peuvent publier un commentaire.",
-      "managementForbidden": "Seuls les administrateurs peuvent modifier ou supprimer un commentaire."
+      "managementForbidden": "Tu peux uniquement modifier ou supprimer tes propres commentaires, sauf si tu es administrateur."
     }
   },
   "contactPage": {

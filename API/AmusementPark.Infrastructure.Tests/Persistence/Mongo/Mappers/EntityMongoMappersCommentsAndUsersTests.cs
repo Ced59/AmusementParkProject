@@ -16,10 +16,10 @@ public sealed class EntityMongoMappersCommentsAndUsersTests
         {
             Id = "user-1",
             PublicDisplayName = "CoasterFan",
-            PublicAccountNumber = 42,
             UsesAutomaticPublicDisplayName = false,
             Roles = new List<Role> { Role.User },
         };
+        source.AssignPublicAccountNumber(42);
 
         User result = source.ToDocument().ToDomain();
 
@@ -65,6 +65,6 @@ public sealed class EntityMongoMappersCommentsAndUsersTests
 
         Comment result = document.ToDomain();
 
-        Assert.Equal("Amusement Parks", result.AuthorDisplayName);
+        Assert.Equal("User", result.AuthorDisplayName);
     }
 }

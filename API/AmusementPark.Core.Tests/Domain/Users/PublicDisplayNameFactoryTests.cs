@@ -50,10 +50,10 @@ public sealed class PublicDisplayNameFactoryTests
         User user = new User
         {
             PublicDisplayName = "User0001",
-            PublicAccountNumber = 1,
             UsesAutomaticPublicDisplayName = true,
             Roles = new List<Role> { Role.User, Role.Admin },
         };
+        user.AssignPublicAccountNumber(1);
 
         user.RefreshAutomaticPublicDisplayName();
 
@@ -66,13 +66,27 @@ public sealed class PublicDisplayNameFactoryTests
         User user = new User
         {
             PublicDisplayName = "CoasterFan",
-            PublicAccountNumber = 1,
             UsesAutomaticPublicDisplayName = false,
             Roles = new List<Role> { Role.User, Role.Admin },
         };
+        user.AssignPublicAccountNumber(1);
 
         user.RefreshAutomaticPublicDisplayName();
 
         Assert.Equal("CoasterFan", user.PublicDisplayName);
+    }
+
+    [Fact]
+    public void AssignPublicAccountNumber_WhenNumberAlreadyAssigned_ShouldPreserveIt()
+    {
+        User user = new User();
+        user.AssignPublicAccountNumber(1);
+
+        user.AssignPublicAccountNumber(1);
+        InvalidOperationException exception = Assert.Throws<InvalidOperationException>(
+            () => user.AssignPublicAccountNumber(2));
+
+        Assert.Equal(1, user.PublicAccountNumber);
+        Assert.Contains("cannot be changed", exception.Message, StringComparison.Ordinal);
     }
 }

@@ -13,7 +13,7 @@ public sealed class User : AuditableEntity
 
     public string? PublicDisplayName { get; set; }
 
-    public long PublicAccountNumber { get; set; }
+    public long PublicAccountNumber { get; private set; }
 
     public bool UsesAutomaticPublicDisplayName { get; set; } = true;
 
@@ -59,6 +59,25 @@ public sealed class User : AuditableEntity
     public bool HasRole(Role role)
     {
         return Roles.Contains(role);
+    }
+
+    /// <summary>
+    /// Attribue une seule fois le numéro public stable du compte.
+    /// </summary>
+    public void AssignPublicAccountNumber(long publicAccountNumber)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(publicAccountNumber);
+
+        if (PublicAccountNumber == 0)
+        {
+            PublicAccountNumber = publicAccountNumber;
+            return;
+        }
+
+        if (PublicAccountNumber != publicAccountNumber)
+        {
+            throw new InvalidOperationException("The public account number cannot be changed once assigned.");
+        }
     }
 
     /// <summary>

@@ -16,6 +16,7 @@ public sealed class UpdateUserProfileCommandHandlerTests
     public async Task HandleAsync_WhenPublicDisplayNameIsAvailable_ShouldPersistIt()
     {
         User user = CreateUser("user-1", null);
+        user.AvatarUrl = "/images/avatar-existing";
         Mock<IUserRepository> userRepository = new Mock<IUserRepository>(MockBehavior.Strict);
         userRepository
             .Setup(repository => repository.GetByIdAsync("user-1", It.IsAny<CancellationToken>()))
@@ -36,6 +37,7 @@ public sealed class UpdateUserProfileCommandHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal("CoasterFan", result.Value!.PublicDisplayName);
+        Assert.Equal("/images/avatar-existing", result.Value.AvatarUrl);
         userRepository.VerifyAll();
     }
 
@@ -153,15 +155,16 @@ public sealed class UpdateUserProfileCommandHandlerTests
         string? publicDisplayName,
         bool usesAutomaticPublicDisplayName = false)
     {
-        return new User
+        User user = new User
         {
             Id = id,
             Email = "user@example.com",
             PublicDisplayName = publicDisplayName,
-            PublicAccountNumber = 1,
             UsesAutomaticPublicDisplayName = usesAutomaticPublicDisplayName,
             Roles = new List<Role> { Role.User },
         };
+        user.AssignPublicAccountNumber(1);
+        return user;
     }
 
     private static UserProfileUpdate CreateUpdate(string publicDisplayName)

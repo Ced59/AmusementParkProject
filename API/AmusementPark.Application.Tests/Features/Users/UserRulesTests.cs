@@ -57,10 +57,11 @@ public sealed class UserRulesTests
     }
 
     [Fact]
-    public void IsValidPublicDisplayName_ShouldRejectMoreThanSixtyCharacters()
+    public void IsValidPublicDisplayName_ShouldRejectInvalidLengthsAndInvisibleCharacters()
     {
         Assert.True(UserRules.IsValidPublicDisplayName(new string('a', 60)));
         Assert.False(UserRules.IsValidPublicDisplayName(new string('a', 61)));
+        Assert.False(UserRules.IsValidPublicDisplayName("\u200B"));
     }
 
     [Theory]
@@ -68,11 +69,17 @@ public sealed class UserRulesTests
     [InlineData("a-d_m i n 99")]
     [InlineData("Adm1nSupport")]
     [InlineData("Аdmіn01")]
+    [InlineData("Ａｄｍｉｎ01")]
+    [InlineData("𝐀𝐝𝐦𝐢𝐧01")]
+    [InlineData("@dmin")]
     [InlineData("MODO42")]
     [InlineData("M0dérateur")]
     [InlineData("Mοdο42")]
     [InlineData("ModeratorTeam")]
     [InlineData("Staff")]
+    [InlineData("Official")]
+    [InlineData("Support")]
+    [InlineData("Équipe")]
     [InlineData("Amusement Parks")]
     [InlineData("Amusement-Parks Support")]
     [InlineData("Équipe Amusement Parks")]

@@ -2,6 +2,7 @@ using AmusementPark.Application.Features.Users.Contracts;
 using AmusementPark.Core.Domain.Users;
 using AmusementPark.WebAPI.Contracts.Users;
 using AmusementPark.WebAPI.Mappers;
+using System.Reflection;
 using Xunit;
 
 namespace AmusementPark.WebAPI.Tests.Mappers;
@@ -22,15 +23,22 @@ public sealed class UsersHttpMappersTests
     }
 
     [Fact]
+    public void ProfileUpdateContracts_ShouldNotAcceptAnAvatarUrl()
+    {
+        Assert.Null(typeof(UserUpdateDto).GetProperty("AvatarUrl", BindingFlags.Instance | BindingFlags.Public));
+        Assert.Null(typeof(UserProfileUpdate).GetProperty("AvatarUrl", BindingFlags.Instance | BindingFlags.Public));
+    }
+
+    [Fact]
     public void UserResponses_ShouldExposeThePublicDisplayNameToItsOwner()
     {
         User user = new User
         {
             Id = "user-1",
             PublicDisplayName = "CoasterFan",
-            PublicAccountNumber = 1,
             Roles = new List<Role> { Role.Admin },
         };
+        user.AssignPublicAccountNumber(1);
 
         Assert.Equal("CoasterFan", user.ToGettedDto().PublicDisplayName);
         Assert.Equal("CoasterFan", user.ToUpdatedDto().PublicDisplayName);

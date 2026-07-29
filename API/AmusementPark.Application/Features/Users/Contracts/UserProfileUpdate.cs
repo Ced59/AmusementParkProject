@@ -18,6 +18,4 @@ public sealed class UserProfileUpdate
     public string? PreferredLanguage { get; init; }
 
     public string? PreferredMeasurementSystem { get; init; }
-
-    public string? AvatarUrl { get; init; }
 }

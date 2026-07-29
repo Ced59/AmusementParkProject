@@ -2696,7 +2696,7 @@
       "update": "The comment could not be updated.",
       "delete": "The comment could not be deleted.",
       "forbidden": "Only administrators and moderators can publish a comment.",
-      "managementForbidden": "Only administrators can edit or delete a comment."
+      "managementForbidden": "You can only edit or delete your own comments unless you are an administrator."
     }
   },
   "contactPage": {

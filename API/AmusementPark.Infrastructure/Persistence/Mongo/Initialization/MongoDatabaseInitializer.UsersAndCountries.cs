@@ -256,17 +256,28 @@ public sealed partial class MongoDatabaseInitializer
     {
         IMongoCollection<UserDocument> usersCollection =
             this.database.GetCollection<UserDocument>(this.settings.UsersCollectionName);
+        FilterDefinition<UserDocument> migrationFilter = BuildPublicIdentityMigrationFilter();
+        ProjectionDefinition<UserDocument> migrationProjection = Builders<UserDocument>.Projection
+            .Include(document => document.Id)
+            .Include(document => document.PublicAccountNumber)
+            .Include(document => document.PublicDisplayName)
+            .Include(document => document.UsesAutomaticPublicDisplayName)
+            .Include(document => document.Roles)
+            .Include(document => document.CreatedAt);
         List<UserDocument> users = await usersCollection
-            .Find(Builders<UserDocument>.Filter.Empty)
+            .Find(migrationFilter)
+            .Project<UserDocument>(migrationProjection)
             .ToListAsync(cancellationToken);
         if (users.Count == 0)
         {
             return;
         }
 
-        HashSet<long> reservedNumbers = users
-            .Where(static user => user.PublicAccountNumber > 0)
-            .Select(static user => user.PublicAccountNumber)
+        List<long> existingNumbers = await usersCollection
+            .Find(Builders<UserDocument>.Filter.Gt(document => document.PublicAccountNumber, 0))
+            .Project(document => document.PublicAccountNumber)
+            .ToListAsync(cancellationToken);
+        HashSet<long> reservedNumbers = existingNumbers
             .ToHashSet();
         long nextNumber = 1;
         long modifiedCount = 0;
@@ -330,6 +341,18 @@ public sealed partial class MongoDatabaseInitializer
             modifiedCount);
     }
 
+    internal static FilterDefinition<UserDocument> BuildPublicIdentityMigrationFilter()
+    {
+        FilterDefinitionBuilder<UserDocument> builder = Builders<UserDocument>.Filter;
+        return builder.Or(
+            builder.Exists(document => document.PublicAccountNumber, false),
+            builder.Lte(document => document.PublicAccountNumber, 0),
+            builder.Exists(document => document.PublicDisplayName, false),
+            builder.Eq(document => document.PublicDisplayName, null),
+            builder.Eq(document => document.PublicDisplayName, string.Empty),
+            builder.Exists(document => document.UsesAutomaticPublicDisplayName, false));
+    }
+
     private async Task InitializeUserPublicDisplayNameIndexAsync(CancellationToken cancellationToken)
     {
         IMongoCollection<UserDocument> usersCollection =
@@ -363,12 +386,13 @@ public sealed partial class MongoDatabaseInitializer
     {
         IMongoCollection<CommentDocument> commentsCollection =
             this.database.GetCollection<CommentDocument>(this.settings.CommentsCollectionName);
-        FilterDefinition<CommentDocument> missingDisplayNameFilter = Builders<CommentDocument>.Filter.Or(
-            Builders<CommentDocument>.Filter.Exists(document => document.AuthorDisplayName, false),
-            Builders<CommentDocument>.Filter.Eq(document => document.AuthorDisplayName, null),
-            Builders<CommentDocument>.Filter.Eq(document => document.AuthorDisplayName, string.Empty));
         List<CommentDocument> legacyComments = await commentsCollection
-            .Find(missingDisplayNameFilter)
+            .Find(BuildLegacyCommentAuthorSnapshotFilter())
+            .Project<CommentDocument>(
+                Builders<CommentDocument>.Projection
+                    .Include(document => document.Id)
+                    .Include(document => document.AuthorUserId)
+                    .Include(document => document.UpdatedAt))
             .ToListAsync(cancellationToken);
         if (legacyComments.Count == 0)
         {
@@ -384,6 +408,13 @@ public sealed partial class MongoDatabaseInitializer
             this.database.GetCollection<UserDocument>(this.settings.UsersCollectionName);
         List<UserDocument> authors = await usersCollection
             .Find(Builders<UserDocument>.Filter.In(document => document.Id, authorUserIds))
+            .Project<UserDocument>(
+                Builders<UserDocument>.Projection
+                    .Include(document => document.Id)
+                    .Include(document => document.PublicDisplayName)
+                    .Include(document => document.PublicAccountNumber)
+                    .Include(document => document.Roles)
+                    .Include(document => document.AvatarUrl))
             .ToListAsync(cancellationToken);
         Dictionary<string, UserDocument> authorsById = authors.ToDictionary(
             static author => author.Id,
@@ -393,28 +424,9 @@ public sealed partial class MongoDatabaseInitializer
         foreach (CommentDocument comment in legacyComments)
         {
             authorsById.TryGetValue(comment.AuthorUserId, out UserDocument? author);
-            string publicDisplayName = author?.PublicDisplayName?.Trim() ?? string.Empty;
-            if (string.IsNullOrWhiteSpace(publicDisplayName)
-                && author is not null
-                && author.PublicAccountNumber > 0)
-            {
-                publicDisplayName = PublicDisplayNameFactory.Create(
-                    author.Roles,
-                    author.PublicAccountNumber);
-            }
-
-            if (string.IsNullOrWhiteSpace(publicDisplayName))
-            {
-                publicDisplayName = "Amusement Parks";
-            }
-
-            UpdateDefinition<CommentDocument> update = Builders<CommentDocument>.Update
-                .Set(document => document.AuthorDisplayName, publicDisplayName)
-                .Set(document => document.AuthorAvatarUrl, author?.AvatarUrl)
-                .Set(document => document.UpdatedAt, comment.UpdatedAt);
             writes.Add(new UpdateOneModel<CommentDocument>(
                 Builders<CommentDocument>.Filter.Eq(document => document.Id, comment.Id),
-                update));
+                BuildLegacyCommentAuthorSnapshotUpdate(comment, author)));
         }
 
         BulkWriteResult<CommentDocument> result = await commentsCollection.BulkWriteAsync(
@@ -424,6 +436,47 @@ public sealed partial class MongoDatabaseInitializer
         this.logger.LogInformation(
             "Migrated {Count} legacy comment author snapshots to public pseudonyms.",
             result.ModifiedCount);
+    }
+
+    internal static FilterDefinition<CommentDocument> BuildLegacyCommentAuthorSnapshotFilter()
+    {
+        FilterDefinitionBuilder<CommentDocument> builder = Builders<CommentDocument>.Filter;
+        FilterDefinition<CommentDocument> missingPublicDisplayName = builder.Or(
+            builder.Exists(document => document.AuthorDisplayName, false),
+            builder.Eq(document => document.AuthorDisplayName, null),
+            builder.Eq(document => document.AuthorDisplayName, string.Empty));
+        return builder.Or(
+            builder.Exists("authorDisplayName", true),
+            missingPublicDisplayName);
+    }
+
+    internal static UpdateDefinition<CommentDocument> BuildLegacyCommentAuthorSnapshotUpdate(
+        CommentDocument comment,
+        UserDocument? author)
+    {
+        string publicDisplayName = ResolveLegacyCommentAuthorPublicDisplayName(author);
+        return Builders<CommentDocument>.Update
+            .Set(document => document.AuthorDisplayName, publicDisplayName)
+            .Set(document => document.AuthorAvatarUrl, author?.AvatarUrl)
+            .Set(document => document.UpdatedAt, comment.UpdatedAt)
+            .Unset("authorDisplayName");
+    }
+
+    internal static string ResolveLegacyCommentAuthorPublicDisplayName(UserDocument? author)
+    {
+        string publicDisplayName = author?.PublicDisplayName?.Trim() ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(publicDisplayName)
+            && author is not null
+            && author.PublicAccountNumber > 0)
+        {
+            publicDisplayName = PublicDisplayNameFactory.Create(
+                author.Roles,
+                author.PublicAccountNumber);
+        }
+
+        return string.IsNullOrWhiteSpace(publicDisplayName)
+            ? "User"
+            : publicDisplayName;
     }
 
     private static int ResolvePublicIdentityRoleOrder(IReadOnlyCollection<Role> roles)

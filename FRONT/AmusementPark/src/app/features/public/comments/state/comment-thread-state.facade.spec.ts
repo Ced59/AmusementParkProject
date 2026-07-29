@@ -251,7 +251,36 @@ describe('CommentThreadStateFacade', () => {
     });
 
     expect(context.facade.canWrite()).toBe(false);
+    expect(context.facade.canManage()).toBe(true);
     expect(context.dataPort.createCalls).toEqual([]);
+  });
+
+  it('allows a regular user to manage only a comment marked as their own', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['USER'];
+    context.dataPort.thread = createThread([
+      createComment('own', false, '2026-07-02T10:00:00Z', true),
+      createComment('other', false, '2026-07-01T10:00:00Z', false)
+    ]);
+    context.dataPort.updatedComment = createComment(
+      'own',
+      false,
+      '2026-07-03T10:00:00Z',
+      true
+    );
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+
+    context.facade.update({
+      id: 'own',
+      bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
+      isOfficial: false
+    });
+    context.facade.delete('other');
+
+    expect(context.dataPort.updateCalls).toHaveLength(1);
+    expect(context.dataPort.deleteCalls).toEqual([]);
   });
 
   it('marks a missing comment target as not found during SSR', () => {

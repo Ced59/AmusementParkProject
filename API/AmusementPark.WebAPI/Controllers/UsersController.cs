@@ -158,7 +158,7 @@ public sealed class UsersController : ControllerBase
     public async Task<IActionResult> UpdateUserAsync([FromRoute] string id, [FromBody] UserUpdateDto userUpdate, CancellationToken cancellationToken = default)
     {
         string? currentUserId = this.User.GetUserId();
-        if (currentUserId != id && !this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR))
+        if (currentUserId != id && !this.User.IsInRoles(UserRoleDto.ADMIN))
         {
             return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "You cannot update another user account.", "user.update-denied");
         }

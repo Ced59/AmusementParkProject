@@ -63,7 +63,9 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
 
         if (user.PublicAccountNumber <= 0)
         {
-            user.PublicAccountNumber = await this.userRepository.AllocatePublicAccountNumberAsync(cancellationToken);
+            long publicAccountNumber =
+                await this.userRepository.AllocatePublicAccountNumberAsync(cancellationToken);
+            user.AssignPublicAccountNumber(publicAccountNumber);
         }
 
         string? confirmationToken = null;
@@ -135,10 +137,6 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
         user.PreferredMeasurementSystem = UserRules.NormalizePreferredMeasurementSystem(command.Update.PreferredMeasurementSystem);
         user.LastActivityUtc = DateTime.UtcNow;
         user.UpdatedAtUtc = DateTime.UtcNow;
-        if (command.Update.AvatarUrl is not null)
-        {
-            user.AvatarUrl = command.Update.AvatarUrl;
-        }
 
         try
         {

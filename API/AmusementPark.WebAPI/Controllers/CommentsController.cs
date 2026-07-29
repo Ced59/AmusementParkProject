@@ -125,7 +125,7 @@ public sealed class CommentsController : ControllerBase
     }
 
     [HttpPut("{commentId}")]
-    [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [AdminAudit("comment.update", "Comment")]
     [InvalidatesPublicCache(PublicCacheScope.Data)]
@@ -155,7 +155,7 @@ public sealed class CommentsController : ControllerBase
     }
 
     [HttpDelete("{commentId}")]
-    [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [AdminAudit("comment.delete", "Comment")]
     [InvalidatesPublicCache(PublicCacheScope.Data)]
