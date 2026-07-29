@@ -66,6 +66,20 @@ public sealed class RatingAggregateDocument : MongoDocumentBase
     [BsonRepresentation(BsonType.String)]
     public ParkItemType? ParkItemType { get; set; }
 
+    [BsonElement("pendingParkId")]
+    [BsonIgnoreIfNull]
+    public string? PendingParkId { get; set; }
+
+    [BsonElement("pendingParkItemCategory")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public ParkItemCategory? PendingParkItemCategory { get; set; }
+
+    [BsonElement("pendingParkItemType")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public ParkItemType? PendingParkItemType { get; set; }
+
     [BsonElement("ratingCount")]
     public long RatingCount { get; set; }
 

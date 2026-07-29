@@ -31,12 +31,13 @@ public sealed class RatingAggregateSynchronizerTests
 
         BsonDocument renderedUpdate = update.Render(renderArguments).AsBsonDocument;
 
-        BsonDocument metadataUpdate = renderedUpdate["$set"].AsBsonDocument;
-        Assert.Equal(nameof(RatingTargetType.ParkItem), metadataUpdate["targetType"].AsString);
-        Assert.Equal("item-1", metadataUpdate["targetId"].AsString);
-        Assert.Equal("park-new", metadataUpdate["parkId"].AsString);
-        Assert.Equal("Attraction", metadataUpdate["parkItemCategory"].AsString);
-        Assert.Equal("RollerCoaster", metadataUpdate["parkItemType"].AsString);
+        BsonDocument pendingMetadataUpdate = renderedUpdate["$set"].AsBsonDocument;
+        Assert.Equal("park-new", pendingMetadataUpdate["pendingParkId"].AsString);
+        Assert.Equal("Attraction", pendingMetadataUpdate["pendingParkItemCategory"].AsString);
+        Assert.Equal("RollerCoaster", pendingMetadataUpdate["pendingParkItemType"].AsString);
+        Assert.False(pendingMetadataUpdate.Contains("parkId"));
+        Assert.False(pendingMetadataUpdate.Contains("parkItemCategory"));
+        Assert.False(pendingMetadataUpdate.Contains("parkItemType"));
         Assert.Equal(1, renderedUpdate["$inc"]["mutationVersion"].ToInt64());
         Assert.False(renderedUpdate["$setOnInsert"].AsBsonDocument.Contains("parkId"));
     }
@@ -49,9 +50,12 @@ public sealed class RatingAggregateSynchronizerTests
             MutationVersion = 8,
             TargetType = RatingTargetType.ParkItem,
             TargetId = "item-1",
-            ParkId = "park-new",
-            ParkItemCategory = ParkItemCategory.Restaurant,
-            ParkItemType = ParkItemType.Restaurant,
+            ParkId = "park-committed",
+            ParkItemCategory = ParkItemCategory.Attraction,
+            ParkItemType = ParkItemType.RollerCoaster,
+            PendingParkId = "park-new",
+            PendingParkItemCategory = ParkItemCategory.Restaurant,
+            PendingParkItemType = ParkItemType.Restaurant,
         };
 
         RatingAggregatePendingMutation pendingMutation =
@@ -60,9 +64,46 @@ public sealed class RatingAggregateSynchronizerTests
         Assert.Equal(8, pendingMutation.Version);
         Assert.Equal(currentDocument.TargetType, pendingMutation.Target.TargetType);
         Assert.Equal(currentDocument.TargetId, pendingMutation.Target.TargetId);
-        Assert.Equal(currentDocument.ParkId, pendingMutation.Target.ParkId);
-        Assert.Equal(currentDocument.ParkItemCategory, pendingMutation.Target.ParkItemCategory);
-        Assert.Equal(currentDocument.ParkItemType, pendingMutation.Target.ParkItemType);
+        Assert.Equal(currentDocument.PendingParkId, pendingMutation.Target.ParkId);
+        Assert.Equal(currentDocument.PendingParkItemCategory, pendingMutation.Target.ParkItemCategory);
+        Assert.Equal(currentDocument.PendingParkItemType, pendingMutation.Target.ParkItemType);
+    }
+
+    [Fact]
+    public void BuildCommitUpdate_WhenSnapshotSucceeds_ShouldPromoteAndClearPendingMetadata()
+    {
+        RatingAggregateTarget target = new RatingAggregateTarget(
+            RatingTargetType.ParkItem,
+            " item-1 ",
+            " park-new ",
+            ParkItemCategory.Restaurant,
+            ParkItemType.Restaurant);
+        UpdateDefinition<RatingAggregateDocument> update = RatingAggregateSynchronizer.BuildCommitUpdate(
+            target,
+            8,
+            2,
+            9d,
+            4.5d,
+            4.2d,
+            new DateTime(2026, 7, 29, 15, 31, 0, DateTimeKind.Utc),
+            new DateTime(2026, 7, 29, 15, 32, 0, DateTimeKind.Utc));
+        IBsonSerializer<RatingAggregateDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<RatingAggregateDocument>();
+        RenderArgs<RatingAggregateDocument> renderArguments =
+            new RenderArgs<RatingAggregateDocument>(serializer, BsonSerializer.SerializerRegistry);
+
+        BsonDocument renderedUpdate = update.Render(renderArguments).AsBsonDocument;
+
+        BsonDocument publishedSnapshot = renderedUpdate["$set"].AsBsonDocument;
+        Assert.Equal(8, publishedSnapshot["calculatedVersion"].ToInt64());
+        Assert.Equal("park-new", publishedSnapshot["parkId"].AsString);
+        Assert.Equal("Restaurant", publishedSnapshot["parkItemCategory"].AsString);
+        Assert.Equal("Restaurant", publishedSnapshot["parkItemType"].AsString);
+        Assert.Equal(2, publishedSnapshot["ratingCount"].ToInt64());
+        BsonDocument clearedPendingMetadata = renderedUpdate["$unset"].AsBsonDocument;
+        Assert.True(clearedPendingMetadata.Contains("pendingParkId"));
+        Assert.True(clearedPendingMetadata.Contains("pendingParkItemCategory"));
+        Assert.True(clearedPendingMetadata.Contains("pendingParkItemType"));
     }
 
     [Fact]
