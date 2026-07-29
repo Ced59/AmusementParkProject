@@ -60,6 +60,12 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
                 return ApplicationResult.Failure(ImageApplicationErrors.ImageNotExists());
             }
 
+            if (ManagedCommentImageMutationGuard.IsManagedScope(image))
+            {
+                return ApplicationResult.Failure(
+                    ImageApplicationErrors.CommentImageLifecycleManaged());
+            }
+
             if (await this.commentRepository.IsImageReferencedAsync(image.Id, cancellationToken))
             {
                 return ApplicationResult.Failure(ImageApplicationErrors.ImageReferencedByComment());

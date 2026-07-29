@@ -15,27 +15,32 @@ namespace AmusementPark.Application.Tests.Features.Images.Handlers;
 
 public sealed class DeleteImageCommandHandlerTests
 {
-    [Fact]
-    public async Task HandleAsync_WhenImageIsReferencedByPublishedComment_ShouldRejectGenericDeletion()
+    [Theory]
+    [InlineData(ImageOwnerType.Comment, false)]
+    [InlineData(ImageOwnerType.CommentDraft, false)]
+    [InlineData(ImageOwnerType.CommentDraft, true)]
+    public async Task HandleAsync_WhenImageBelongsToManagedCommentScope_ShouldRejectBeforeReferenceLookup(
+        ImageOwnerType ownerType,
+        bool isReserved)
     {
         Image image = new Image
         {
             Id = "image-1",
             Category = ImageCategory.Comment,
-            OwnerType = ImageOwnerType.Comment,
-            OwnerId = "comment-1",
-            IsPublished = true,
+            OwnerType = ownerType,
+            OwnerId = ownerType == ImageOwnerType.Comment ? "comment-1" : "author-1",
+            PendingCommentId = isReserved ? "comment-1" : null,
+            IsPublished = ownerType == ImageOwnerType.Comment,
         };
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository
             .Setup(value => value.GetByIdAsync("image-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(image);
         Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
-        comments.Setup(value => value.IsImageReferencedAsync("image-1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(true);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
         DeleteImageCommandHandler handler = new DeleteImageCommandHandler(
             repository.Object,
-            Mock.Of<IImageBinaryStorage>(),
+            storage.Object,
             Mock.Of<IParkRepository>(),
             Mock.Of<IAttractionManufacturerRepository>(),
             Mock.Of<ISearchProjectionWriter>(),
@@ -47,8 +52,11 @@ public sealed class DeleteImageCommandHandlerTests
             CancellationToken.None);
 
         Assert.False(result.IsSuccess);
-        Assert.Contains(result.Errors, static error => error.Code == "image.comment.referenced");
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "image.comment.lifecycle-managed");
         repository.VerifyAll();
-        comments.VerifyAll();
+        comments.VerifyNoOtherCalls();
+        storage.VerifyNoOtherCalls();
     }
 }
