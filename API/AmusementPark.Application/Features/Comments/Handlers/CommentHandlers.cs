@@ -162,7 +162,7 @@ public sealed class UpdateCommentCommandHandler
             return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.CommentNotFound());
         }
 
-        if (!CommentManagementAuthorization.CanManage(actor, comment))
+        if (!comment.CanBeManagedBy(actor))
         {
             return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.ManagerNotAllowed());
         }
@@ -221,7 +221,7 @@ public sealed class DeleteCommentCommandHandler : ICommandHandler<DeleteCommentC
             return ApplicationResult.Failure(CommentApplicationErrors.CommentNotFound());
         }
 
-        if (!CommentManagementAuthorization.CanManage(actor, comment))
+        if (!comment.CanBeManagedBy(actor))
         {
             return ApplicationResult.Failure(CommentApplicationErrors.ManagerNotAllowed());
         }
@@ -437,11 +437,6 @@ internal static class CommentManagementAuthorization
         return isAllowed ? actor : null;
     }
 
-    public static bool CanManage(User actor, Comment comment)
-    {
-        return actor.HasRole(Role.Admin)
-            || string.Equals(actor.Id, comment.AuthorUserId, StringComparison.Ordinal);
-    }
 }
 
 internal static class CommentResultFactory

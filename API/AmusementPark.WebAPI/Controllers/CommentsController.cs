@@ -119,7 +119,9 @@ public sealed class CommentsController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        return this.Ok(result.Value.ToHttp());
+        return this.Ok(result.Value.ToHttp(
+            authorUserId,
+            this.User.IsInRole(AuthorizationRoleGroups.Admin)));
     }
 
     [HttpPut("{commentId}")]

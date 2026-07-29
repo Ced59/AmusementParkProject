@@ -35,6 +35,18 @@ public sealed class Comment : AuditableEntity
         this.IsOfficial = isOfficial;
         this.Touch();
     }
+
+    /// <summary>
+    /// Indique si un utilisateur peut administrer ce commentaire.
+    /// Un administrateur peut gérer tous les commentaires ; les autres utilisateurs uniquement les leurs.
+    /// </summary>
+    public bool CanBeManagedBy(User actor)
+    {
+        ArgumentNullException.ThrowIfNull(actor);
+
+        return actor.HasRole(Role.Admin)
+            || string.Equals(actor.Id, this.AuthorUserId, StringComparison.Ordinal);
+    }
 }
 
 /// <summary>
