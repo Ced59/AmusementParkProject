@@ -1,6 +1,20 @@
 {
-  "version": "4.0.5",
+  "version": "4.0.6",
   "history": [
+    {
+      "version": "4.0.6",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "Le chargement des pages d’avis a été amélioré.",
+        "en": "Review pages now load more reliably.",
+        "de": "Bewertungsseiten werden jetzt zuverlässiger geladen.",
+        "nl": "Beoordelingspagina’s laden nu betrouwbaarder.",
+        "it": "Le pagine delle recensioni ora si caricano in modo più affidabile.",
+        "es": "Las páginas de reseñas ahora se cargan de forma más fiable.",
+        "pl": "Strony opinii ładują się teraz bardziej niezawodnie.",
+        "pt": "As páginas de opiniões carregam agora de forma mais fiável."
+      }
+    },
     {
       "version": "4.0.5",
       "releasedAt": "2026-07-29",

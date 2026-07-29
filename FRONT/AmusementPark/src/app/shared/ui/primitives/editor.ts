@@ -6,14 +6,17 @@ import {
   ContentChildren,
   ElementRef,
   forwardRef,
+  Inject,
   Input,
+  OnDestroy,
+  PLATFORM_ID,
   QueryList,
   TemplateRef,
   ViewChild
 } from '@angular/core';
-import { NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { isPlatformBrowser, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import Quill from 'quill';
+import type Quill from 'quill';
 import { UiTemplate } from './api';
 
 @Component({
@@ -31,7 +34,7 @@ import { UiTemplate } from './api';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Editor implements AfterViewInit, AfterContentInit, ControlValueAccessor {
+export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, ControlValueAccessor {
   @Input() readonly: boolean = false;
   @Input() style: Record<string, string> | null = null;
   @Input() placeholder: string | null = null;
@@ -41,18 +44,36 @@ export class Editor implements AfterViewInit, AfterContentInit, ControlValueAcce
 
   private editor: Quill | null = null;
   private pendingValue: string = '';
+  private destroyed: boolean = false;
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
+
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {
+  }
 
   ngAfterContentInit(): void {
   }
 
   ngAfterViewInit(): void {
-    if (!this.editorElement || !this.toolbarElement) {
+    if (!isPlatformBrowser(this.platformId)) {
       return;
     }
 
-    this.editor = new Quill(this.editorElement.nativeElement, {
+    void this.initializeEditor();
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed = true;
+    this.editor = null;
+  }
+
+  private async initializeEditor(): Promise<void> {
+    const quillModule: typeof import('quill') = await import('quill');
+    if (this.destroyed || !this.editorElement || !this.toolbarElement) {
+      return;
+    }
+
+    this.editor = new quillModule.default(this.editorElement.nativeElement, {
       modules: { toolbar: this.toolbarElement.nativeElement },
       placeholder: this.placeholder ?? '',
       readOnly: this.readonly,
