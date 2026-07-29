@@ -12,17 +12,26 @@ public sealed record RatingAggregateTarget(
     ParkItemCategory? ParkItemCategory,
     ParkItemType? ParkItemType);
 
+public sealed record UserRatingMutationResult(
+    UserRating Rating,
+    RatingAggregate? Aggregate);
+
 public interface IRatingRepository
 {
     Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
 
-    Task<UserRating> UpsertUserRatingAsync(UserRating rating, CancellationToken cancellationToken);
+    Task<UserRatingMutationResult> UpsertUserRatingAndRecalculateAggregateAsync(
+        UserRating rating,
+        RatingAggregateTarget aggregateTarget,
+        CancellationToken cancellationToken);
 
-    Task<UserRating?> DeleteUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
+    Task<RatingAggregate?> DeleteUserRatingAndRecalculateAggregateAsync(
+        string userId,
+        RatingTargetType targetType,
+        string targetId,
+        CancellationToken cancellationToken);
 
     Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken);
-
-    Task<RatingAggregate?> RecalculateAggregateAsync(RatingAggregateTarget target, CancellationToken cancellationToken);
 
     Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, string? parkSearch, CancellationToken cancellationToken);
 

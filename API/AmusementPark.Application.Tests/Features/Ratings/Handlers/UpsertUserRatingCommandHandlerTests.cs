@@ -70,16 +70,16 @@ public sealed class UpsertUserRatingCommandHandlerTests
 
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
-            .Setup(repository => repository.UpsertUserRatingAsync(It.IsAny<UserRating>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync((UserRating rating, CancellationToken _) =>
+            .Setup(repository => repository.UpsertUserRatingAndRecalculateAggregateAsync(
+                It.IsAny<UserRating>(),
+                It.IsAny<RatingAggregateTarget>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((UserRating rating, RatingAggregateTarget _, CancellationToken _) =>
             {
                 rating.Id = "rating-1";
                 rating.CreatedAtUtc = new DateTime(2026, 6, 19, 10, 0, 0, DateTimeKind.Utc);
-                return rating;
+                return new UserRatingMutationResult(rating, aggregate);
             });
-        ratingRepository
-            .Setup(repository => repository.RecalculateAggregateAsync(It.IsAny<RatingAggregateTarget>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(aggregate);
 
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -115,20 +115,22 @@ public sealed class UpsertUserRatingCommandHandlerTests
         Assert.Equal(4.5d, result.Value.Summary.AverageRating);
         Assert.Equal(3.72d, result.Value.Summary.BayesianScore);
 
-        ratingRepository.Verify(repository => repository.UpsertUserRatingAsync(It.Is<UserRating>(rating =>
-            rating.UserId == "user-1" &&
-            rating.TargetType == RatingTargetType.ParkItem &&
-            rating.TargetId == "item-1" &&
-            rating.ParkId == "park-1" &&
-            rating.ParkItemCategory == ParkItemCategory.Attraction &&
-            rating.ParkItemType == ParkItemType.RollerCoaster &&
-            rating.Value == 4.5d), It.IsAny<CancellationToken>()), Times.Once);
-        ratingRepository.Verify(repository => repository.RecalculateAggregateAsync(It.Is<RatingAggregateTarget>(target =>
-            target.TargetType == RatingTargetType.ParkItem &&
-            target.TargetId == "item-1" &&
-            target.ParkId == "park-1" &&
-            target.ParkItemCategory == ParkItemCategory.Attraction &&
-            target.ParkItemType == ParkItemType.RollerCoaster), It.IsAny<CancellationToken>()), Times.Once);
+        ratingRepository.Verify(repository => repository.UpsertUserRatingAndRecalculateAggregateAsync(
+            It.Is<UserRating>(rating =>
+                rating.UserId == "user-1" &&
+                rating.TargetType == RatingTargetType.ParkItem &&
+                rating.TargetId == "item-1" &&
+                rating.ParkId == "park-1" &&
+                rating.ParkItemCategory == ParkItemCategory.Attraction &&
+                rating.ParkItemType == ParkItemType.RollerCoaster &&
+                rating.Value == 4.5d),
+            It.Is<RatingAggregateTarget>(target =>
+                target.TargetType == RatingTargetType.ParkItem &&
+                target.TargetId == "item-1" &&
+                target.ParkId == "park-1" &&
+                target.ParkItemCategory == ParkItemCategory.Attraction &&
+                target.ParkItemType == ParkItemType.RollerCoaster),
+            It.IsAny<CancellationToken>()), Times.Once);
         ratingRepository.VerifyAll();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();

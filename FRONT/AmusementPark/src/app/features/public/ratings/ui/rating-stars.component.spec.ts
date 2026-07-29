@@ -91,6 +91,39 @@ describe('RatingStarsComponent', () => {
     expect(facade.removeRating).toHaveBeenCalledTimes(1);
   });
 
+  it('formats the public and personal ratings with the active locale', () => {
+    const translateService: TranslateService = TestBed.inject(TranslateService);
+    translateService.setTranslation('en', {
+      ratings: {
+        stars: {
+          averageLabel: 'Average rating',
+          yourRating: 'Your rating: {{value}}/5',
+          clearRating: 'Clear my rating',
+        },
+      },
+      publicCounts: {
+        averageRating: {
+          one: 'Average rating {{value}} out of 5',
+          other: 'Average rating {{value}} out of 5',
+        },
+        rating: {
+          one: '{{count}} rating',
+          other: '{{count}} ratings',
+        },
+      },
+    });
+    translateService.use('en');
+    fixture.detectChanges();
+
+    const average: HTMLElement | null =
+      fixture.nativeElement.querySelector('.rating-stars__average');
+    const message: HTMLElement | null =
+      fixture.nativeElement.querySelector('.rating-stars__message');
+
+    expect(average?.textContent?.trim()).toBe('4.0');
+    expect(message?.textContent).toContain('Your rating: 3.5/5');
+  });
+
   it('fills the interactive stars from the personal rating rather than the community average', () => {
     const stars: NodeListOf<HTMLElement> =
       fixture.nativeElement.querySelectorAll('.rating-stars__star');

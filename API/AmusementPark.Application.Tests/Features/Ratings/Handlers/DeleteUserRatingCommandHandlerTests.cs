@@ -15,17 +15,6 @@ public sealed class DeleteUserRatingCommandHandlerTests
     [Fact]
     public async Task HandleAsync_WhenRatingExists_ShouldDeleteItAndReturnRecalculatedSummary()
     {
-        UserRating deletedRating = new UserRating
-        {
-            Id = "rating-1",
-            UserId = "user-1",
-            TargetType = RatingTargetType.ParkItem,
-            TargetId = "item-1",
-            ParkId = "park-1",
-            ParkItemCategory = ParkItemCategory.Attraction,
-            ParkItemType = ParkItemType.RollerCoaster,
-            Value = 4.5d,
-        };
         RatingAggregate aggregate = new RatingAggregate
         {
             TargetType = RatingTargetType.ParkItem,
@@ -39,20 +28,10 @@ public sealed class DeleteUserRatingCommandHandlerTests
         };
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
-            .Setup(repository => repository.DeleteUserRatingAsync(
+            .Setup(repository => repository.DeleteUserRatingAndRecalculateAggregateAsync(
                 "user-1",
                 RatingTargetType.ParkItem,
                 "item-1",
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(deletedRating);
-        ratingRepository
-            .Setup(repository => repository.RecalculateAggregateAsync(
-                It.Is<RatingAggregateTarget>(target =>
-                    target.TargetType == RatingTargetType.ParkItem &&
-                    target.TargetId == "item-1" &&
-                    target.ParkId == "park-1" &&
-                    target.ParkItemCategory == ParkItemCategory.Attraction &&
-                    target.ParkItemType == ParkItemType.RollerCoaster),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(aggregate);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(ratingRepository.Object);
@@ -69,7 +48,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenRatingIsAlreadyAbsent_ShouldReturnCurrentSummaryWithoutRecalculation()
+    public async Task HandleAsync_WhenRatingIsAlreadyAbsent_ShouldReturnCurrentSummary()
     {
         RatingAggregate aggregate = new RatingAggregate
         {
@@ -82,14 +61,8 @@ public sealed class DeleteUserRatingCommandHandlerTests
         };
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
-            .Setup(repository => repository.DeleteUserRatingAsync(
+            .Setup(repository => repository.DeleteUserRatingAndRecalculateAggregateAsync(
                 "user-1",
-                RatingTargetType.Park,
-                "park-1",
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync((UserRating?)null);
-        ratingRepository
-            .Setup(repository => repository.GetAggregateAsync(
                 RatingTargetType.Park,
                 "park-1",
                 It.IsAny<CancellationToken>()))
@@ -107,29 +80,12 @@ public sealed class DeleteUserRatingCommandHandlerTests
     [Fact]
     public async Task HandleAsync_WhenLastRatingIsDeleted_ShouldReturnAnEmptySummary()
     {
-        UserRating deletedRating = new UserRating
-        {
-            Id = "rating-1",
-            UserId = "user-1",
-            TargetType = RatingTargetType.Park,
-            TargetId = "park-1",
-            ParkId = "park-1",
-            Value = 4d,
-        };
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
-            .Setup(repository => repository.DeleteUserRatingAsync(
+            .Setup(repository => repository.DeleteUserRatingAndRecalculateAggregateAsync(
                 "user-1",
                 RatingTargetType.Park,
                 "park-1",
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(deletedRating);
-        ratingRepository
-            .Setup(repository => repository.RecalculateAggregateAsync(
-                It.Is<RatingAggregateTarget>(target =>
-                    target.TargetType == RatingTargetType.Park
-                    && target.TargetId == "park-1"
-                    && target.ParkId == "park-1"),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((RatingAggregate?)null);
         DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(ratingRepository.Object);

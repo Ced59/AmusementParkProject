@@ -70,17 +70,19 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             UpdatedAtUtc = nowUtc,
         };
 
-        UserRating upsertedRating = await this.ratingRepository.UpsertUserRatingAsync(rating, cancellationToken);
         RatingAggregateTarget aggregateTarget = new RatingAggregateTarget(
             metadata.TargetType,
             metadata.TargetId,
             metadata.ParkId,
             metadata.ParkItemCategory,
             metadata.ParkItemType);
-        RatingAggregate? aggregate = await this.ratingRepository.RecalculateAggregateAsync(aggregateTarget, cancellationToken);
-        RatingSummaryResult summary = RatingResultFactory.CreateSummary(metadata.TargetType, metadata.TargetId, aggregate);
+        UserRatingMutationResult mutation = await this.ratingRepository.UpsertUserRatingAndRecalculateAggregateAsync(
+            rating,
+            aggregateTarget,
+            cancellationToken);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(metadata.TargetType, metadata.TargetId, mutation.Aggregate);
 
-        return ApplicationResult<UserRatingResult>.Success(ToUserRatingResult(upsertedRating, summary));
+        return ApplicationResult<UserRatingResult>.Success(ToUserRatingResult(mutation.Rating, summary));
     }
 
     private async Task<RatingTargetMetadataResult?> ResolveTargetMetadataAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
@@ -178,27 +180,11 @@ public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserR
 
         string userId = command.UserId.Trim();
         string targetId = command.TargetId.Trim();
-        UserRating? deletedRating = await this.ratingRepository.DeleteUserRatingAsync(
+        RatingAggregate? aggregate = await this.ratingRepository.DeleteUserRatingAndRecalculateAggregateAsync(
             userId,
             command.TargetType,
             targetId,
             cancellationToken);
-
-        RatingAggregate? aggregate;
-        if (deletedRating is null)
-        {
-            aggregate = await this.ratingRepository.GetAggregateAsync(command.TargetType, targetId, cancellationToken);
-        }
-        else
-        {
-            RatingAggregateTarget aggregateTarget = new RatingAggregateTarget(
-                deletedRating.TargetType,
-                deletedRating.TargetId,
-                deletedRating.ParkId,
-                deletedRating.ParkItemCategory,
-                deletedRating.ParkItemType);
-            aggregate = await this.ratingRepository.RecalculateAggregateAsync(aggregateTarget, cancellationToken);
-        }
 
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(command.TargetType, targetId, aggregate);
         return ApplicationResult<RatingSummaryResult>.Success(summary);

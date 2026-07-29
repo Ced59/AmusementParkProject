@@ -7,7 +7,6 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -21,6 +20,7 @@ public sealed class RatingRepository : IRatingRepository
     private readonly IMongoCollection<RatingAggregateDocument> ratingAggregatesCollection;
     private readonly IMongoCollection<ParkDocument> parksCollection;
     private readonly IMongoCollection<ParkItemDocument> parkItemsCollection;
+    private readonly RatingAggregateSynchronizer aggregateSynchronizer;
 
     public RatingRepository(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -28,6 +28,9 @@ public sealed class RatingRepository : IRatingRepository
         this.ratingAggregatesCollection = database.GetCollection<RatingAggregateDocument>(settings.RatingAggregatesCollectionName);
         this.parksCollection = database.GetCollection<ParkDocument>(settings.ParksCollectionName);
         this.parkItemsCollection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
+        this.aggregateSynchronizer = new RatingAggregateSynchronizer(
+            this.userRatingsCollection,
+            this.ratingAggregatesCollection);
     }
 
     public async Task<UserRating?> GetUserRatingAsync(string userId, RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
@@ -37,7 +40,53 @@ public sealed class RatingRepository : IRatingRepository
         return document?.ToDomain();
     }
 
-    public async Task<UserRating> UpsertUserRatingAsync(UserRating rating, CancellationToken cancellationToken)
+    public async Task<UserRatingMutationResult> UpsertUserRatingAndRecalculateAggregateAsync(
+        UserRating rating,
+        RatingAggregateTarget aggregateTarget,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(rating);
+        ArgumentNullException.ThrowIfNull(aggregateTarget);
+
+        UserRating upsertedRating = await this.UpsertUserRatingDocumentAsync(rating, cancellationToken);
+        RatingAggregate? aggregate = await this.aggregateSynchronizer.RecalculateAsync(aggregateTarget, cancellationToken);
+        return new UserRatingMutationResult(upsertedRating, aggregate);
+    }
+
+    public async Task<RatingAggregate?> DeleteUserRatingAndRecalculateAggregateAsync(
+        string userId,
+        RatingTargetType targetType,
+        string targetId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserRatingDocument> filter = BuildUserTargetFilter(userId, targetType, targetId);
+        UserRatingDocument? document = await this.userRatingsCollection.FindOneAndDeleteAsync(
+            filter,
+            cancellationToken: cancellationToken);
+        if (document is null)
+        {
+            return await this.GetAggregateAsync(targetType, targetId, cancellationToken);
+        }
+
+        UserRating deletedRating = document.ToDomain();
+        RatingAggregateTarget aggregateTarget = new RatingAggregateTarget(
+            deletedRating.TargetType,
+            deletedRating.TargetId,
+            deletedRating.ParkId,
+            deletedRating.ParkItemCategory,
+            deletedRating.ParkItemType);
+        return await this.aggregateSynchronizer.RecalculateAsync(aggregateTarget, cancellationToken);
+    }
+
+    public async Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
+    {
+        FilterDefinition<RatingAggregateDocument> filter = BuildAggregateTargetFilter(targetType, targetId)
+            & Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
+        RatingAggregateDocument? document = await this.ratingAggregatesCollection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
+    private async Task<UserRating> UpsertUserRatingDocumentAsync(UserRating rating, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(rating);
 
@@ -66,90 +115,6 @@ public sealed class RatingRepository : IRatingRepository
         if (document is null)
         {
             document = await this.userRatingsCollection.Find(filter).FirstAsync(cancellationToken);
-        }
-
-        return document.ToDomain();
-    }
-
-    public async Task<UserRating?> DeleteUserRatingAsync(
-        string userId,
-        RatingTargetType targetType,
-        string targetId,
-        CancellationToken cancellationToken)
-    {
-        FilterDefinition<UserRatingDocument> filter = BuildUserTargetFilter(userId, targetType, targetId);
-        UserRatingDocument? document = await this.userRatingsCollection.FindOneAndDeleteAsync(
-            filter,
-            cancellationToken: cancellationToken);
-        return document?.ToDomain();
-    }
-
-    public async Task<RatingAggregate?> GetAggregateAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
-    {
-        FilterDefinition<RatingAggregateDocument> filter = BuildAggregateTargetFilter(targetType, targetId);
-        RatingAggregateDocument? document = await this.ratingAggregatesCollection.Find(filter).FirstOrDefaultAsync(cancellationToken);
-        return document?.ToDomain();
-    }
-
-    public async Task<RatingAggregate?> RecalculateAggregateAsync(RatingAggregateTarget target, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(target);
-
-        FilterDefinition<UserRatingDocument> ratingFilter = BuildUserRatingTargetFilter(target.TargetType, target.TargetId);
-        BsonDocument? aggregateValues = await this.userRatingsCollection.Aggregate()
-            .Match(ratingFilter)
-            .Group(new BsonDocument
-            {
-                { "_id", BsonNull.Value },
-                { "count", new BsonDocument("$sum", 1) },
-                { "sum", new BsonDocument("$sum", "$value") },
-                { "lastRatedAtUtc", new BsonDocument("$max", "$updatedAt") },
-            })
-            .FirstOrDefaultAsync(cancellationToken);
-
-        if (aggregateValues is null)
-        {
-            await this.ratingAggregatesCollection.DeleteOneAsync(BuildAggregateTargetFilter(target.TargetType, target.TargetId), cancellationToken);
-            return null;
-        }
-
-        long ratingCount = aggregateValues.GetValue("count", BsonValue.Create(0)).ToInt64();
-        if (ratingCount <= 0)
-        {
-            await this.ratingAggregatesCollection.DeleteOneAsync(BuildAggregateTargetFilter(target.TargetType, target.TargetId), cancellationToken);
-            return null;
-        }
-
-        double ratingSum = aggregateValues.GetValue("sum", BsonValue.Create(0d)).ToDouble();
-        double averageRating = RatingScoreCalculator.CalculateAverage(ratingSum, ratingCount);
-        double bayesianScore = RatingScoreCalculator.CalculateBayesianScore(ratingSum, ratingCount);
-        DateTime nowUtc = DateTime.UtcNow;
-        FilterDefinition<RatingAggregateDocument> aggregateFilter = BuildAggregateTargetFilter(target.TargetType, target.TargetId);
-        UpdateDefinition<RatingAggregateDocument> update = Builders<RatingAggregateDocument>.Update
-            .SetOnInsert(document => document.Id, Guid.NewGuid().ToString("N"))
-            .SetOnInsert(document => document.CreatedAt, nowUtc)
-            .Set(document => document.TargetType, target.TargetType)
-            .Set(document => document.TargetId, target.TargetId)
-            .Set(document => document.ParkId, target.ParkId)
-            .Set(document => document.ParkItemCategory, target.ParkItemCategory)
-            .Set(document => document.ParkItemType, target.ParkItemType)
-            .Set(document => document.RatingCount, ratingCount)
-            .Set(document => document.RatingSum, ratingSum)
-            .Set(document => document.AverageRating, averageRating)
-            .Set(document => document.BayesianScore, bayesianScore)
-            .Set(document => document.LastRatedAtUtc, ReadOptionalDateTime(aggregateValues, "lastRatedAtUtc"))
-            .Set(document => document.UpdatedAt, nowUtc);
-
-        FindOneAndUpdateOptions<RatingAggregateDocument> options = new FindOneAndUpdateOptions<RatingAggregateDocument>
-        {
-            IsUpsert = true,
-            ReturnDocument = ReturnDocument.After,
-        };
-
-        RatingAggregateDocument? document = await this.ratingAggregatesCollection.FindOneAndUpdateAsync(aggregateFilter, update, options, cancellationToken);
-        if (document is null)
-        {
-            document = await this.ratingAggregatesCollection.Find(aggregateFilter).FirstAsync(cancellationToken);
         }
 
         return document.ToDomain();
@@ -363,7 +328,10 @@ public sealed class RatingRepository : IRatingRepository
             return new Dictionary<string, RatingAggregate>(StringComparer.Ordinal);
         }
 
-        List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection.Find(Builders<RatingAggregateDocument>.Filter.Or(filters)).ToListAsync(cancellationToken);
+        FilterDefinition<RatingAggregateDocument> aggregateFilter =
+            Builders<RatingAggregateDocument>.Filter.Or(filters)
+            & Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
+        List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection.Find(aggregateFilter).ToListAsync(cancellationToken);
         return documents.ToDictionary(
             static document => BuildTargetKey(document.TargetType, document.TargetId),
             static document => document.ToDomain(),
@@ -566,15 +534,5 @@ public sealed class RatingRepository : IRatingRepository
             .Select(static id => id.Trim())
             .Distinct(StringComparer.Ordinal)
             .ToList();
-    }
-
-    private static DateTime? ReadOptionalDateTime(BsonDocument document, string elementName)
-    {
-        if (!document.TryGetValue(elementName, out BsonValue value) || value.IsBsonNull)
-        {
-            return null;
-        }
-
-        return value is BsonDateTime dateTime ? dateTime.ToUniversalTime() : null;
     }
 }

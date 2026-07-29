@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, Signal, SimpleChanges, computed, signal } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { RatingSummary, RatingTargetType } from '@app/models/ratings/rating.models';
 import { PublicRatingStateFacade } from '../state/public-rating-state.facade';
@@ -28,7 +28,10 @@ export class RatingStarsComponent implements OnChanges {
   @Input({ required: true }) targetId!: string;
   @Input() initialSummary: RatingSummary | null = null;
 
-  constructor(private readonly stateFacade: PublicRatingStateFacade) {
+  constructor(
+    private readonly stateFacade: PublicRatingStateFacade,
+    private readonly translateService: TranslateService
+  ) {
   }
 
   ngOnChanges(_changes: SimpleChanges): void {
@@ -63,15 +66,29 @@ export class RatingStarsComponent implements OnChanges {
 
   protected formattedAverage(): string {
     const average: number = this.summary()?.averageRating ?? 0;
-    return average > 0 ? average.toFixed(1).replace('.', ',') : '-';
+    return this.formatRating(average);
   }
 
   protected formattedSelectedValue(): string {
     const value: number = this.selectedValue() ?? 0;
-    return value > 0 ? value.toFixed(1).replace('.', ',') : '-';
+    return this.formatRating(value);
   }
 
   protected count(): number {
     return this.summary()?.ratingCount ?? 0;
+  }
+
+  private formatRating(value: number): string {
+    if (value <= 0) {
+      return '-';
+    }
+
+    const locale: string = this.translateService.currentLang
+      || this.translateService.defaultLang
+      || 'en';
+    return new Intl.NumberFormat(locale, {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1
+    }).format(value);
   }
 }
