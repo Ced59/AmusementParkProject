@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
@@ -7,6 +8,7 @@ using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Images;
+using AmusementPark.Core.Domain.Comments;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.ContextualBlocks;
 using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
@@ -32,6 +34,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
 
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly ICommentRepository commentRepository;
     private readonly IParkZoneRepository parkZoneRepository;
     private readonly IImageRepository imageRepository;
     private readonly IStandaloneAttractionRepository standaloneAttractionRepository;
@@ -39,12 +42,14 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
     public SsrPageCacheInvalidationRequestResolver(
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
+        ICommentRepository commentRepository,
         IParkZoneRepository parkZoneRepository,
         IImageRepository imageRepository,
         IStandaloneAttractionRepository standaloneAttractionRepository)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
+        this.commentRepository = commentRepository;
         this.parkZoneRepository = parkZoneRepository;
         this.imageRepository = imageRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
@@ -71,6 +76,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         SsrPageCacheInvalidationRequest request = controllerName switch
         {
             "Parks" => await this.ResolveParksAsync(context, executedContext, includeSeoDocuments, cancellationToken),
+            "Comments" => await this.ResolveCommentsAsync(context, executedContext, cancellationToken),
             "StandaloneAttractions" => this.ResolveStandaloneAttractions(context, executedContext, includeSeoDocuments),
             "ParkOpeningHours" => this.ResolveParkOpeningHours(context, includeSeoDocuments),
             "ParkItems" => await this.ResolveParkItemsAsync(context, executedContext, includeSeoDocuments, cancellationToken),
@@ -86,6 +92,75 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         };
 
         return request;
+    }
+
+    private async Task<SsrPageCacheInvalidationRequest> ResolveCommentsAsync(
+        ActionExecutingContext context,
+        ActionExecutedContext? executedContext,
+        CancellationToken cancellationToken)
+    {
+        object? resultValue = ResolveResultValue(executedContext);
+        object? requestValue = FindActionArgument(context, "request");
+        string? targetTypeText = GetPropertyText(resultValue, "TargetType")
+            ?? GetPropertyText(requestValue, "TargetType");
+        string? targetId = GetStringProperty(resultValue, "TargetId")
+            ?? GetStringProperty(requestValue, "TargetId");
+
+        if (string.IsNullOrWhiteSpace(targetTypeText) || string.IsNullOrWhiteSpace(targetId))
+        {
+            string? commentId = GetRouteValue(context, "commentId");
+            Comment? comment = string.IsNullOrWhiteSpace(commentId)
+                ? null
+                : await this.commentRepository.GetByIdAsync(commentId.Trim(), cancellationToken);
+            targetTypeText = comment?.TargetType.ToString();
+            targetId = comment?.TargetId;
+        }
+
+        if (!Enum.TryParse(targetTypeText, true, out CommentTargetType targetType)
+            || string.IsNullOrWhiteSpace(targetId))
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        string normalizedTargetId = targetId.Trim();
+        if (targetType == CommentTargetType.Park)
+        {
+            Park? park = await this.parkRepository.GetByIdAsync(
+                normalizedTargetId,
+                true,
+                cancellationToken);
+            if (park is null)
+            {
+                return SsrPageCacheInvalidationRequest.AllCaches();
+            }
+
+            HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
+            AddParkDetailPaths(paths, park);
+            AddParkCommentPaths(paths, park);
+            return BuildRequest(paths, Array.Empty<string>(), includeSeoDocuments: false);
+        }
+
+        ParkItem? item = await this.parkItemRepository.GetByIdAsync(
+            normalizedTargetId,
+            true,
+            cancellationToken);
+        if (item is null || string.IsNullOrWhiteSpace(item.ParkId))
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        Park? parentPark = await this.parkRepository.GetByIdAsync(
+            item.ParkId,
+            true,
+            cancellationToken);
+        if (parentPark is null)
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        HashSet<string> itemPaths = new HashSet<string>(StringComparer.Ordinal);
+        AddParkItemDetailAndCommentPaths(itemPaths, parentPark, item);
+        return BuildRequest(itemPaths, Array.Empty<string>(), includeSeoDocuments: false);
     }
 
     private SsrPageCacheInvalidationRequest ResolveParkOpeningHours(
@@ -926,6 +1001,29 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         foreach (string language in PublicLanguages)
         {
             paths.Add(BuildParkBasePath(language, park));
+        }
+    }
+
+    private static void AddParkCommentPaths(ISet<string> paths, Park park)
+    {
+        foreach (string language in PublicLanguages)
+        {
+            paths.Add($"{BuildParkBasePath(language, park)}/comments");
+        }
+    }
+
+    private static void AddParkItemDetailAndCommentPaths(
+        ISet<string> paths,
+        Park park,
+        ParkItem item)
+    {
+        string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
+        foreach (string language in PublicLanguages)
+        {
+            string itemPath =
+                $"{BuildParkBasePath(language, park)}/item/{item.Id}/{itemSlug}";
+            paths.Add(itemPath);
+            paths.Add($"{itemPath}/comments");
         }
     }
 

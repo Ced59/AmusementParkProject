@@ -7,7 +7,8 @@ import {
   CommentTargetType,
   CommentThread,
   CreateCommentRequest,
-  PublicComment
+  PublicComment,
+  UpdateCommentRequest
 } from '@app/models/comments/comment.models';
 import { environment } from '../../../environments/environment';
 import { COMMENTS_API_ENDPOINTS } from './comments-api-endpoints';
@@ -38,5 +39,22 @@ export class CommentsApiService {
   createComment(request: CreateCommentRequest): Observable<PublicComment> {
     const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.create}`;
     return this.http.post<PublicComment>(url, request, this.jsonHttpOptions);
+  }
+
+  updateComment(request: UpdateCommentRequest): Observable<PublicComment> {
+    const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.update(request.id)}`;
+    return this.http.put<PublicComment>(
+      url,
+      {
+        bodies: request.bodies,
+        isOfficial: request.isOfficial
+      },
+      this.jsonHttpOptions
+    );
+  }
+
+  deleteComment(commentId: string): Observable<void> {
+    const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.delete(commentId)}`;
+    return this.http.delete<void>(url);
   }
 }

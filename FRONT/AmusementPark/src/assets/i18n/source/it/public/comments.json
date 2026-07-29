@@ -38,19 +38,34 @@
       "kicker": "Spazio del team",
       "title": "Scrivi un commento",
       "help": "La formattazione e le traduzioni vengono conservate con l’editor condiviso del sito.",
+      "editTitle": "Modifica il commento",
+      "editHelp": "Aggiorna il contenuto o lo stato ufficiale, quindi salva le modifiche.",
       "placeholder": "Scrivi il commento in {{language}}…",
       "officialLabel": "Parere ufficiale di Amusement Parks",
       "officialHelp": "Questo parere sarà evidenziato e mostrato prima di tutti gli altri commenti.",
       "validation": "Scrivi il commento in almeno una lingua.",
       "publish": "Pubblica il commento",
       "saving": "Pubblicazione…",
+      "update": "Salva le modifiche",
+      "updating": "Salvataggio…",
+      "cancelEdit": "Annulla la modifica",
       "saved": "Il commento è stato pubblicato."
+    },
+    "management": {
+      "edit": "Modifica",
+      "delete": "Elimina",
+      "deleteConfirm": "Vuoi davvero eliminare questo commento? Questa azione è irreversibile.",
+      "updated": "Il commento è stato modificato.",
+      "deleted": "Il commento è stato eliminato."
     },
     "errors": {
       "title": "Commenti non disponibili",
       "load": "Non è stato possibile caricare i commenti.",
       "save": "Non è stato possibile pubblicare il commento.",
-      "forbidden": "Solo amministratori e moderatori possono pubblicare un commento."
+      "update": "Non è stato possibile modificare il commento.",
+      "delete": "Non è stato possibile eliminare il commento.",
+      "forbidden": "Solo amministratori e moderatori possono pubblicare un commento.",
+      "managementForbidden": "Solo gli amministratori possono modificare o eliminare un commento."
     }
   }
 }

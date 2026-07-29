@@ -2661,19 +2661,34 @@
       "kicker": "Espacio del equipo",
       "title": "Escribir un comentario",
       "help": "El formato y las traducciones se conservan con el editor compartido del sitio.",
+      "editTitle": "Editar el comentario",
+      "editHelp": "Actualiza el contenido o su estado oficial y guarda los cambios.",
       "placeholder": "Escribe el comentario en {{language}}…",
       "officialLabel": "Opinión oficial de Amusement Parks",
       "officialHelp": "Esta opinión se destacará y aparecerá antes que todos los demás comentarios.",
       "validation": "Escribe el comentario en al menos un idioma.",
       "publish": "Publicar comentario",
       "saving": "Publicando…",
+      "update": "Guardar los cambios",
+      "updating": "Guardando…",
+      "cancelEdit": "Cancelar la edición",
       "saved": "El comentario se ha publicado."
+    },
+    "management": {
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "deleteConfirm": "¿De verdad quieres eliminar este comentario? Esta acción no se puede deshacer.",
+      "updated": "El comentario se ha actualizado.",
+      "deleted": "El comentario se ha eliminado."
     },
     "errors": {
       "title": "Comentarios no disponibles",
       "load": "No se han podido cargar los comentarios.",
       "save": "No se ha podido publicar el comentario.",
-      "forbidden": "Solo los administradores y moderadores pueden publicar un comentario."
+      "update": "No se ha podido actualizar el comentario.",
+      "delete": "No se ha podido eliminar el comentario.",
+      "forbidden": "Solo los administradores y moderadores pueden publicar un comentario.",
+      "managementForbidden": "Solo los administradores pueden editar o eliminar un comentario."
     }
   },
   "contactPage": {

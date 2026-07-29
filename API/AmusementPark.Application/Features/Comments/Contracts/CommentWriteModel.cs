@@ -8,3 +8,7 @@ public sealed record CommentWriteModel(
     string TargetId,
     IReadOnlyCollection<LocalizedTextValue> Bodies,
     bool IsOfficial);
+
+public sealed record CommentEditModel(
+    IReadOnlyCollection<LocalizedTextValue> Bodies,
+    bool IsOfficial);

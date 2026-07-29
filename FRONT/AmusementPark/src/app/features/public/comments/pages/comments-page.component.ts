@@ -3,13 +3,14 @@ import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, compute
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import {
   CommentTargetType,
   CommentThread,
   CreateCommentRequest,
-  PublicComment
+  PublicComment,
+  UpdateCommentRequest
 } from '@app/models/comments/comment.models';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { TranslationService } from '@app/services/translation.service';
@@ -58,10 +59,13 @@ export class CommentsPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly thread = this.stateFacade.thread;
   protected readonly canWrite = this.stateFacade.canWrite;
+  protected readonly canManage = this.stateFacade.canManage;
   protected readonly saving = this.stateFacade.saving;
   protected readonly saveErrorKey = this.stateFacade.saveErrorKey;
   protected readonly notFound = this.stateFacade.notFound;
   protected readonly currentLanguage = signal<string>('en');
+  protected readonly editingCommentId = signal<string | null>(null);
+  protected readonly isEditing = computed(() => this.editingCommentId() !== null);
   protected readonly editorForm = new FormGroup<CommentEditorForm>({
     bodies: new FormControl<LocalizedItem<string>[]>([], { nonNullable: true }),
     isOfficial: new FormControl<boolean>(false, { nonNullable: true })
@@ -104,6 +108,7 @@ export class CommentsPageComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly translationService: TranslationService,
+    private readonly translateService: TranslateService,
     private readonly seoService: SeoService,
     private readonly stateFacade: CommentThreadStateFacade
   ) {
@@ -128,11 +133,8 @@ export class CommentsPageComponent implements OnInit {
     });
 
     effect((): void => {
-      this.stateFacade.createdVersion();
-      this.editorForm.reset({
-        bodies: [],
-        isOfficial: false
-      });
+      this.stateFacade.editorResetVersion();
+      this.resetEditor();
     });
   }
 
@@ -176,17 +178,78 @@ export class CommentsPageComponent implements OnInit {
       return;
     }
 
-    const request: CreateCommentRequest = {
+    const editingId: string | null = this.editingCommentId();
+    if (editingId) {
+      const request: UpdateCommentRequest = {
+        id: editingId,
+        bodies,
+        isOfficial: this.editorForm.controls.isOfficial.value
+      };
+      this.stateFacade.update(request);
+      return;
+    }
+
+    const createRequest: CreateCommentRequest = {
       targetType: currentThread.targetType,
       targetId: currentThread.targetId,
       bodies,
       isOfficial: this.editorForm.controls.isOfficial.value
     };
-    this.stateFacade.create(request);
+    this.stateFacade.create(createRequest);
+  }
+
+  protected startEditing(comment: PublicComment): void {
+    if (!this.canUpdateComment(comment) || this.saving()) {
+      return;
+    }
+
+    this.editingCommentId.set(comment.id);
+    this.editorForm.reset({
+      bodies: comment.bodies.map((body: LocalizedItem<string>) => ({ ...body })),
+      isOfficial: comment.isOfficial
+    });
+    this.clearSaveError();
+  }
+
+  protected cancelEditing(): void {
+    if (!this.saving()) {
+      this.resetEditor();
+    }
+  }
+
+  protected deleteComment(comment: PublicComment): void {
+    if (!this.canDeleteComment(comment) || this.saving()) {
+      return;
+    }
+
+    const confirmed: boolean = confirm(
+      this.translateService.instant('comments.management.deleteConfirm')
+    );
+    if (!confirmed) {
+      return;
+    }
+
+    this.stateFacade.delete(comment.id);
+  }
+
+  protected canUpdateComment(comment: PublicComment): boolean {
+    return this.canManage() && comment.canUpdate;
+  }
+
+  protected canDeleteComment(comment: PublicComment): boolean {
+    return this.canManage() && comment.canDelete;
   }
 
   protected clearSaveError(): void {
     this.stateFacade.clearSaveError();
+  }
+
+  private resetEditor(): void {
+    this.editingCommentId.set(null);
+    this.editorForm.reset({
+      bodies: [],
+      isOfficial: false
+    });
   }
 
   private resolveCanonicalPath(thread: CommentThread): string | null {

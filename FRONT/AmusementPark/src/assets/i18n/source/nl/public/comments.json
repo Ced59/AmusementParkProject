@@ -38,19 +38,34 @@
       "kicker": "Teamruimte",
       "title": "Een reactie schrijven",
       "help": "Opmaak en vertalingen blijven behouden met de gedeelde editor van de site.",
+      "editTitle": "Reactie bewerken",
+      "editHelp": "Pas de inhoud of de officiële status aan en sla daarna je wijzigingen op.",
       "placeholder": "Schrijf de reactie in het {{language}}…",
       "officialLabel": "Officieel oordeel van Amusement Parks",
       "officialHelp": "Dit oordeel wordt uitgelicht en vóór alle andere reacties weergegeven.",
       "validation": "Schrijf de reactie in ten minste één taal.",
       "publish": "Reactie publiceren",
       "saving": "Publiceren…",
+      "update": "Wijzigingen opslaan",
+      "updating": "Opslaan…",
+      "cancelEdit": "Bewerken annuleren",
       "saved": "De reactie is gepubliceerd."
+    },
+    "management": {
+      "edit": "Bewerken",
+      "delete": "Verwijderen",
+      "deleteConfirm": "Wil je deze reactie echt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+      "updated": "De reactie is bijgewerkt.",
+      "deleted": "De reactie is verwijderd."
     },
     "errors": {
       "title": "Reacties niet beschikbaar",
       "load": "De reacties konden niet worden geladen.",
       "save": "De reactie kon niet worden gepubliceerd.",
-      "forbidden": "Alleen beheerders en moderators kunnen een reactie publiceren."
+      "update": "De reactie kon niet worden bijgewerkt.",
+      "delete": "De reactie kon niet worden verwijderd.",
+      "forbidden": "Alleen beheerders en moderators kunnen een reactie publiceren.",
+      "managementForbidden": "Alleen beheerders kunnen een reactie bewerken of verwijderen."
     }
   }
 }

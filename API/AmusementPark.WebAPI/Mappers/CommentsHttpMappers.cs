@@ -26,8 +26,23 @@ internal static class CommentsHttpMappers
             request.IsOfficial);
     }
 
-    public static CommentDto ToHttp(this CommentResult value)
+    public static CommentEditModel ToApplication(this UpdateCommentRequestDto request)
     {
+        return new CommentEditModel(
+            request.Bodies
+                .Select(static body => new LocalizedTextValue(body.LanguageCode, body.Value ?? string.Empty))
+                .ToList(),
+            request.IsOfficial);
+    }
+
+    public static CommentDto ToHttp(
+        this CommentResult value,
+        string? actorUserId = null,
+        bool canManageAll = false)
+    {
+        bool canManage = canManageAll
+            || (!string.IsNullOrWhiteSpace(actorUserId)
+                && string.Equals(actorUserId, value.AuthorUserId, StringComparison.Ordinal));
         return new CommentDto
         {
             Id = value.Id,
@@ -37,23 +52,31 @@ internal static class CommentsHttpMappers
             AuthorRole = value.AuthorRole.ToString(),
             Bodies = value.Bodies.Select(ToHttp).ToList(),
             IsOfficial = value.IsOfficial,
+            CanUpdate = canManage,
+            CanDelete = canManage,
             CreatedAtUtc = value.CreatedAtUtc,
             UpdatedAtUtc = value.UpdatedAtUtc,
         };
     }
 
-    public static CommentSummaryDto ToHttp(this CommentSummaryResult value)
+    public static CommentSummaryDto ToHttp(
+        this CommentSummaryResult value,
+        string? actorUserId = null,
+        bool canManageAll = false)
     {
         return new CommentSummaryDto
         {
             TargetType = value.TargetType.ToString(),
             TargetId = value.TargetId,
             CommentCount = value.CommentCount,
-            OfficialComment = value.OfficialComment?.ToHttp(),
+            OfficialComment = value.OfficialComment?.ToHttp(actorUserId, canManageAll),
         };
     }
 
-    public static CommentThreadDto ToHttp(this CommentThreadResult value)
+    public static CommentThreadDto ToHttp(
+        this CommentThreadResult value,
+        string? actorUserId = null,
+        bool canManageAll = false)
     {
         return new CommentThreadDto
         {
@@ -62,7 +85,9 @@ internal static class CommentsHttpMappers
             TargetName = value.TargetName,
             ParkId = value.ParkId,
             ParkName = value.ParkName,
-            Comments = value.Comments.Select(static comment => comment.ToHttp()).ToList(),
+            Comments = value.Comments
+                .Select(comment => comment.ToHttp(actorUserId, canManageAll))
+                .ToList(),
         };
     }
 

@@ -23,6 +23,35 @@ public sealed class CommentRepository : ICommentRepository
         return document.ToDomain();
     }
 
+    public async Task<Comment?> GetByIdAsync(string commentId, CancellationToken cancellationToken)
+    {
+        CommentDocument? document = await this.commentsCollection
+            .Find(value => value.Id == commentId.Trim())
+            .FirstOrDefaultAsync(cancellationToken);
+
+        return document?.ToDomain();
+    }
+
+    public async Task<Comment?> UpdateAsync(Comment comment, CancellationToken cancellationToken)
+    {
+        CommentDocument document = comment.ToDocument();
+        ReplaceOneResult result = await this.commentsCollection.ReplaceOneAsync(
+            value => value.Id == document.Id,
+            document,
+            cancellationToken: cancellationToken);
+
+        return result.MatchedCount == 0 ? null : document.ToDomain();
+    }
+
+    public async Task<bool> DeleteAsync(string commentId, CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.commentsCollection.DeleteOneAsync(
+            value => value.Id == commentId.Trim(),
+            cancellationToken);
+
+        return result.DeletedCount > 0;
+    }
+
     public async Task<IReadOnlyCollection<Comment>> GetPublishedByTargetAsync(
         CommentTargetType targetType,
         string targetId,

@@ -130,6 +130,232 @@ public sealed class CommentHandlersTests
     }
 
     [Fact]
+    public async Task UpdateAsync_WhenCommentExists_ShouldSanitizeContentAndPreserveOwnership()
+    {
+        DateTime createdAtUtc = new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc);
+        Comment existing = CreateComment("comment-1", false, createdAtUtc);
+        string authorUserId = existing.AuthorUserId;
+        string targetId = existing.TargetId;
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        commentRepository
+            .Setup(repository => repository.UpdateAsync(existing, It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment comment, CancellationToken _) => comment);
+        Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        sanitizer.Setup(value => value.SanitizeRichHtml("<p>Corrigé<script>bad</script></p>"))
+            .Returns("<p>Corrigé</p>");
+        sanitizer.Setup(value => value.ExtractPlainText("<p>Corrigé</p>")).Returns("Corrigé");
+        Mock<IUserRepository> userRepository = CreateAdminUserRepository();
+        UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
+            commentRepository.Object,
+            sanitizer.Object,
+            userRepository.Object);
+
+        ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
+            "admin-1",
+            " comment-1 ",
+            new CommentEditModel(
+                new[] { new LocalizedTextValue("FR", "<p>Corrigé<script>bad</script></p>") },
+                true)));
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.IsOfficial);
+        Assert.Equal("<p>Corrigé</p>", Assert.Single(result.Value.Bodies).Value);
+        Assert.Equal(authorUserId, existing.AuthorUserId);
+        Assert.Equal(targetId, existing.TargetId);
+        Assert.Equal(createdAtUtc, existing.CreatedAtUtc);
+        Assert.True(existing.UpdatedAtUtc > createdAtUtc);
+        commentRepository.VerifyAll();
+        sanitizer.VerifyAll();
+        userRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateAsync_WhenCommentDoesNotExist_ShouldReturnNotFoundWithoutSanitizing()
+    {
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.GetByIdAsync("missing", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment?)null);
+        Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        Mock<IUserRepository> userRepository = CreateAdminUserRepository();
+        UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
+            commentRepository.Object,
+            sanitizer.Object,
+            userRepository.Object);
+
+        ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
+            "admin-1",
+            "missing",
+            new CommentEditModel(
+                new[] { new LocalizedTextValue("fr", "<p>Texte</p>") },
+                false)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "comment.not-found");
+        commentRepository.VerifyAll();
+        sanitizer.VerifyNoOtherCalls();
+        userRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateAsync_WhenModeratorOwnsComment_ShouldUpdateIt()
+    {
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc),
+            "moderator-1",
+            Role.Moderator);
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        commentRepository
+            .Setup(repository => repository.UpdateAsync(existing, It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment comment, CancellationToken _) => comment);
+        Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        sanitizer.Setup(value => value.SanitizeRichHtml("<p>Corrigé</p>")).Returns("<p>Corrigé</p>");
+        sanitizer.Setup(value => value.ExtractPlainText("<p>Corrigé</p>")).Returns("Corrigé");
+        Mock<IUserRepository> userRepository = CreateModeratorUserRepository();
+        UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
+            commentRepository.Object,
+            sanitizer.Object,
+            userRepository.Object);
+
+        ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
+            "moderator-1",
+            "comment-1",
+            new CommentEditModel(
+                new[] { new LocalizedTextValue("fr", "<p>Corrigé</p>") },
+                false)));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("moderator-1", result.Value!.AuthorUserId);
+        commentRepository.VerifyAll();
+        sanitizer.VerifyAll();
+        userRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateAsync_WhenModeratorDoesNotOwnComment_ShouldRejectBeforeSanitizing()
+    {
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        Mock<IUserRepository> userRepository = CreateModeratorUserRepository();
+        UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
+            commentRepository.Object,
+            sanitizer.Object,
+            userRepository.Object);
+
+        ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
+            "moderator-1",
+            "comment-1",
+            new CommentEditModel(
+                new[] { new LocalizedTextValue("fr", "<p>Interdit</p>") },
+                false)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "comment.manager.forbidden");
+        commentRepository.VerifyAll();
+        sanitizer.VerifyNoOtherCalls();
+        userRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteAsync_WhenCommentExists_ShouldDeleteIt()
+    {
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        commentRepository
+            .Setup(repository => repository.DeleteAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<IUserRepository> userRepository = CreateAdminUserRepository();
+        DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
+            commentRepository.Object,
+            userRepository.Object);
+
+        ApplicationResult result = await handler.HandleAsync(new DeleteCommentCommand(
+            "admin-1",
+            " comment-1 "));
+
+        Assert.True(result.IsSuccess);
+        commentRepository.VerifyAll();
+        userRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteAsync_WhenModeratorOwnsComment_ShouldDeleteIt()
+    {
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc),
+            "moderator-1",
+            Role.Moderator);
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        commentRepository
+            .Setup(repository => repository.DeleteAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<IUserRepository> userRepository = CreateModeratorUserRepository();
+        DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
+            commentRepository.Object,
+            userRepository.Object);
+
+        ApplicationResult result = await handler.HandleAsync(new DeleteCommentCommand(
+            "moderator-1",
+            "comment-1"));
+
+        Assert.True(result.IsSuccess);
+        commentRepository.VerifyAll();
+        userRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteAsync_WhenModeratorDoesNotOwnComment_ShouldRejectWithoutDeleting()
+    {
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        Mock<IUserRepository> userRepository = CreateModeratorUserRepository();
+        DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
+            commentRepository.Object,
+            userRepository.Object);
+
+        ApplicationResult result = await handler.HandleAsync(new DeleteCommentCommand(
+            "moderator-1",
+            "comment-1"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "comment.manager.forbidden");
+        commentRepository.VerifyAll();
+        userRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenThreadContainsOfficialComment_ShouldReturnItFirst()
     {
         Park park = new Park { Id = "park-1", Name = "Demo Park", IsVisible = true };
@@ -163,7 +389,12 @@ public sealed class CommentHandlersTests
         parkItemRepository.VerifyNoOtherCalls();
     }
 
-    private static Comment CreateComment(string id, bool isOfficial, DateTime createdAtUtc)
+    private static Comment CreateComment(
+        string id,
+        bool isOfficial,
+        DateTime createdAtUtc,
+        string authorUserId = "admin-1",
+        Role authorRole = Role.Admin)
     {
         return new Comment
         {
@@ -171,14 +402,44 @@ public sealed class CommentHandlersTests
             TargetType = CommentTargetType.Park,
             TargetId = "park-1",
             ParkId = "park-1",
-            AuthorUserId = "admin-1",
+            AuthorUserId = authorUserId,
             AuthorDisplayName = "Alice",
-            AuthorRole = Role.Admin,
+            AuthorRole = authorRole,
             Bodies = new List<LocalizedText> { new LocalizedText("fr", "<p>Texte</p>") },
             IsOfficial = isOfficial,
             ModerationStatus = CommentModerationStatus.Published,
             CreatedAtUtc = createdAtUtc,
             UpdatedAtUtc = createdAtUtc,
         };
+    }
+
+    private static Mock<IUserRepository> CreateAdminUserRepository()
+    {
+        User administrator = new User
+        {
+            Id = "admin-1",
+            IsActivated = true,
+            Roles = new List<Role> { Role.Admin },
+        };
+        Mock<IUserRepository> userRepository = new Mock<IUserRepository>(MockBehavior.Strict);
+        userRepository
+            .Setup(repository => repository.GetByIdAsync("admin-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(administrator);
+        return userRepository;
+    }
+
+    private static Mock<IUserRepository> CreateModeratorUserRepository()
+    {
+        User moderator = new User
+        {
+            Id = "moderator-1",
+            IsActivated = true,
+            Roles = new List<Role> { Role.Moderator },
+        };
+        Mock<IUserRepository> userRepository = new Mock<IUserRepository>(MockBehavior.Strict);
+        userRepository
+            .Setup(repository => repository.GetByIdAsync("moderator-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(moderator);
+        return userRepository;
     }
 }

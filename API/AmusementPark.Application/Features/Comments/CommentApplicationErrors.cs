@@ -18,11 +18,25 @@ public static class CommentApplicationErrors
             "La cible du commentaire est introuvable.");
     }
 
+    public static ApplicationError CommentNotFound()
+    {
+        return ApplicationError.NotFound(
+            "comment.not-found",
+            "Le commentaire est introuvable.");
+    }
+
     public static ApplicationError AuthorNotAllowed()
     {
         return ApplicationError.Forbidden(
             "comment.author.forbidden",
             "Seuls les administrateurs et les modérateurs peuvent publier un commentaire.");
+    }
+
+    public static ApplicationError ManagerNotAllowed()
+    {
+        return ApplicationError.Forbidden(
+            "comment.manager.forbidden",
+            "Seuls les administrateurs ou l’auteur du commentaire peuvent le modifier ou le supprimer.");
     }
 
     public static ApplicationError InvalidLanguage()

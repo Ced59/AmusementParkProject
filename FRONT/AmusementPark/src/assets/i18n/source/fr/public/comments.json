@@ -38,19 +38,34 @@
       "kicker": "Espace équipe",
       "title": "Écrire un commentaire",
       "help": "La mise en forme et les traductions sont conservées grâce à l’éditeur partagé du site.",
+      "editTitle": "Modifier le commentaire",
+      "editHelp": "Corrige le contenu ou son statut officiel, puis enregistre tes modifications.",
       "placeholder": "Écris le commentaire en {{language}}…",
       "officialLabel": "Avis officiel d’Amusement Parks",
       "officialHelp": "Cet avis sera mis en avant et affiché avant tous les autres commentaires.",
       "validation": "Écris le commentaire dans au moins une langue.",
       "publish": "Publier le commentaire",
       "saving": "Publication…",
+      "update": "Enregistrer les modifications",
+      "updating": "Enregistrement…",
+      "cancelEdit": "Annuler la modification",
       "saved": "Le commentaire a été publié."
+    },
+    "management": {
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "deleteConfirm": "Veux-tu vraiment supprimer ce commentaire ? Cette action est irréversible.",
+      "updated": "Le commentaire a été modifié.",
+      "deleted": "Le commentaire a été supprimé."
     },
     "errors": {
       "title": "Commentaires indisponibles",
       "load": "Les commentaires n’ont pas pu être chargés.",
       "save": "Le commentaire n’a pas pu être publié.",
-      "forbidden": "Seuls les administrateurs et les modérateurs peuvent publier un commentaire."
+      "update": "Le commentaire n’a pas pu être modifié.",
+      "delete": "Le commentaire n’a pas pu être supprimé.",
+      "forbidden": "Seuls les administrateurs et les modérateurs peuvent publier un commentaire.",
+      "managementForbidden": "Seuls les administrateurs peuvent modifier ou supprimer un commentaire."
     }
   }
 }

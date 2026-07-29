@@ -11,6 +11,8 @@ export interface PublicComment {
   authorRole: CommentAuthorRole;
   bodies: LocalizedItem<string>[];
   isOfficial: boolean;
+  canUpdate: boolean;
+  canDelete: boolean;
   createdAtUtc: string;
   updatedAtUtc: string;
 }
@@ -34,6 +36,12 @@ export interface CommentThread {
 export interface CreateCommentRequest {
   targetType: CommentTargetType;
   targetId: string;
+  bodies: LocalizedItem<string>[];
+  isOfficial: boolean;
+}
+
+export interface UpdateCommentRequest {
+  id: string;
   bodies: LocalizedItem<string>[];
   isOfficial: boolean;
 }

@@ -2661,19 +2661,34 @@
       "kicker": "Teambereich",
       "title": "Kommentar schreiben",
       "help": "Formatierung und Übersetzungen bleiben mit dem gemeinsamen Editor der Website erhalten.",
+      "editTitle": "Kommentar bearbeiten",
+      "editHelp": "Passe den Inhalt oder den offiziellen Status an und speichere anschließend deine Änderungen.",
       "placeholder": "Schreibe den Kommentar auf {{language}}…",
       "officialLabel": "Offizielle Meinung von Amusement Parks",
       "officialHelp": "Diese Meinung wird hervorgehoben und vor allen anderen Kommentaren angezeigt.",
       "validation": "Schreibe den Kommentar in mindestens einer Sprache.",
       "publish": "Kommentar veröffentlichen",
       "saving": "Veröffentlichung…",
+      "update": "Änderungen speichern",
+      "updating": "Speichern…",
+      "cancelEdit": "Bearbeitung abbrechen",
       "saved": "Der Kommentar wurde veröffentlicht."
+    },
+    "management": {
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "deleteConfirm": "Möchtest du diesen Kommentar wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "updated": "Der Kommentar wurde aktualisiert.",
+      "deleted": "Der Kommentar wurde gelöscht."
     },
     "errors": {
       "title": "Kommentare nicht verfügbar",
       "load": "Die Kommentare konnten nicht geladen werden.",
       "save": "Der Kommentar konnte nicht veröffentlicht werden.",
-      "forbidden": "Nur Administratoren und Moderatoren können einen Kommentar veröffentlichen."
+      "update": "Der Kommentar konnte nicht aktualisiert werden.",
+      "delete": "Der Kommentar konnte nicht gelöscht werden.",
+      "forbidden": "Nur Administratoren und Moderatoren können einen Kommentar veröffentlichen.",
+      "managementForbidden": "Nur Administratoren können einen Kommentar bearbeiten oder löschen."
     }
   },
   "contactPage": {

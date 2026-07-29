@@ -38,19 +38,34 @@
       "kicker": "Strefa zespołu",
       "title": "Napisz komentarz",
       "help": "Formatowanie i tłumaczenia są zachowywane dzięki wspólnemu edytorowi witryny.",
+      "editTitle": "Edytuj komentarz",
+      "editHelp": "Zmień treść lub status oficjalny, a następnie zapisz zmiany.",
       "placeholder": "Napisz komentarz w języku {{language}}…",
       "officialLabel": "Oficjalna opinia Amusement Parks",
       "officialHelp": "Ta opinia zostanie wyróżniona i wyświetlona przed wszystkimi pozostałymi komentarzami.",
       "validation": "Napisz komentarz w co najmniej jednym języku.",
       "publish": "Opublikuj komentarz",
       "saving": "Publikowanie…",
+      "update": "Zapisz zmiany",
+      "updating": "Zapisywanie…",
+      "cancelEdit": "Anuluj edycję",
       "saved": "Komentarz został opublikowany."
+    },
+    "management": {
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "deleteConfirm": "Czy na pewno chcesz usunąć ten komentarz? Tej operacji nie można cofnąć.",
+      "updated": "Komentarz został zaktualizowany.",
+      "deleted": "Komentarz został usunięty."
     },
     "errors": {
       "title": "Komentarze niedostępne",
       "load": "Nie udało się załadować komentarzy.",
       "save": "Nie udało się opublikować komentarza.",
-      "forbidden": "Tylko administratorzy i moderatorzy mogą publikować komentarze."
+      "update": "Nie udało się zaktualizować komentarza.",
+      "delete": "Nie udało się usunąć komentarza.",
+      "forbidden": "Tylko administratorzy i moderatorzy mogą publikować komentarze.",
+      "managementForbidden": "Tylko administratorzy mogą edytować lub usuwać komentarze."
     }
   }
 }
