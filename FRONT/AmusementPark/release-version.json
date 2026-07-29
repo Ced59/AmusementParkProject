@@ -1,6 +1,20 @@
 {
-  "version": "3.6.4",
+  "version": "3.6.5",
   "history": [
+    {
+      "version": "3.6.5",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "La cohérence des classements de notes a été améliorée.",
+        "en": "Rating ranking consistency has been improved.",
+        "de": "Die Konsistenz der Bewertungsranglisten wurde verbessert.",
+        "nl": "De consistentie van beoordelingsranglijsten is verbeterd.",
+        "it": "La coerenza delle classifiche delle valutazioni è stata migliorata.",
+        "es": "Se ha mejorado la coherencia de los rankings de valoraciones.",
+        "pl": "Poprawiono spójność rankingów ocen.",
+        "pt": "A consistência dos rankings de avaliações foi melhorada."
+      }
+    },
     {
       "version": "3.6.4",
       "releasedAt": "2026-07-29",

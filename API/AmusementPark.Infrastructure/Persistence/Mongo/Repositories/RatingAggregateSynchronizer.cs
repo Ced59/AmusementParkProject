@@ -145,17 +145,17 @@ internal sealed class RatingAggregateSynchronizer
         return Builders<RatingAggregateDocument>.Update
             .SetOnInsert(document => document.Id, Guid.NewGuid().ToString("N"))
             .SetOnInsert(document => document.CreatedAt, nowUtc)
+            .SetOnInsert(document => document.UpdatedAt, nowUtc)
             .SetOnInsert(document => document.CalculatedVersion, 0)
+            .SetOnInsert(document => document.TargetType, target.TargetType)
+            .SetOnInsert(document => document.TargetId, target.TargetId.Trim())
             .SetOnInsert(document => document.RatingCount, 0)
             .SetOnInsert(document => document.RatingSum, 0d)
             .SetOnInsert(document => document.AverageRating, 0d)
             .SetOnInsert(document => document.BayesianScore, RatingScoreCalculator.PriorMean)
-            .Set(document => document.UpdatedAt, nowUtc)
-            .Set(document => document.TargetType, target.TargetType)
-            .Set(document => document.TargetId, target.TargetId.Trim())
-            .Set(document => document.ParkId, target.ParkId.Trim())
-            .Set(document => document.ParkItemCategory, target.ParkItemCategory)
-            .Set(document => document.ParkItemType, target.ParkItemType)
+            .Set(document => document.PendingParkId, target.ParkId.Trim())
+            .Set(document => document.PendingParkItemCategory, target.ParkItemCategory)
+            .Set(document => document.PendingParkItemType, target.ParkItemType)
             .Inc(document => document.MutationVersion, 1);
     }
 
@@ -191,25 +191,15 @@ internal sealed class RatingAggregateSynchronizer
         FilterDefinition<RatingAggregateDocument> commitFilter =
             BuildCommitFilter(target.TargetType, target.TargetId, mutationVersion);
         DateTime nowUtc = DateTime.UtcNow;
-        UpdateDefinition<RatingAggregateDocument> update = Builders<RatingAggregateDocument>.Update
-            .Set(document => document.CalculatedVersion, mutationVersion)
-            .Set(document => document.TargetType, target.TargetType)
-            .Set(document => document.TargetId, target.TargetId)
-            .Set(document => document.ParkId, target.ParkId)
-            .Set(document => document.ParkItemCategory, target.ParkItemCategory)
-            .Set(document => document.ParkItemType, target.ParkItemType)
-            .Set(document => document.RatingCount, ratingCount)
-            .Set(document => document.RatingSum, ratingSum)
-            .Set(document => document.AverageRating, averageRating)
-            .Set(document => document.BayesianScore, bayesianScore)
-            .Set(document => document.UpdatedAt, nowUtc);
-        update = lastRatedAtUtc.HasValue
-            ? Builders<RatingAggregateDocument>.Update.Combine(
-                update,
-                Builders<RatingAggregateDocument>.Update.Set(document => document.LastRatedAtUtc, lastRatedAtUtc.Value))
-            : Builders<RatingAggregateDocument>.Update.Combine(
-                update,
-                Builders<RatingAggregateDocument>.Update.Unset(document => document.LastRatedAtUtc));
+        UpdateDefinition<RatingAggregateDocument> update = BuildCommitUpdate(
+            target,
+            mutationVersion,
+            ratingCount,
+            ratingSum,
+            averageRating,
+            bayesianScore,
+            lastRatedAtUtc,
+            nowUtc);
         FindOneAndUpdateOptions<RatingAggregateDocument> options = new FindOneAndUpdateOptions<RatingAggregateDocument>
         {
             IsUpsert = false,
@@ -221,6 +211,41 @@ internal sealed class RatingAggregateSynchronizer
             update,
             options,
             cancellationToken);
+    }
+
+    internal static UpdateDefinition<RatingAggregateDocument> BuildCommitUpdate(
+        RatingAggregateTarget target,
+        long mutationVersion,
+        long ratingCount,
+        double ratingSum,
+        double averageRating,
+        double bayesianScore,
+        DateTime? lastRatedAtUtc,
+        DateTime nowUtc)
+    {
+        UpdateDefinition<RatingAggregateDocument> update = Builders<RatingAggregateDocument>.Update
+            .Set(document => document.CalculatedVersion, mutationVersion)
+            .Set(document => document.TargetType, target.TargetType)
+            .Set(document => document.TargetId, target.TargetId.Trim())
+            .Set(document => document.ParkId, target.ParkId.Trim())
+            .Set(document => document.ParkItemCategory, target.ParkItemCategory)
+            .Set(document => document.ParkItemType, target.ParkItemType)
+            .Set(document => document.RatingCount, ratingCount)
+            .Set(document => document.RatingSum, ratingSum)
+            .Set(document => document.AverageRating, averageRating)
+            .Set(document => document.BayesianScore, bayesianScore)
+            .Set(document => document.UpdatedAt, nowUtc)
+            .Unset(document => document.PendingParkId)
+            .Unset(document => document.PendingParkItemCategory)
+            .Unset(document => document.PendingParkItemType);
+        update = lastRatedAtUtc.HasValue
+            ? Builders<RatingAggregateDocument>.Update.Combine(
+                update,
+                Builders<RatingAggregateDocument>.Update.Set(document => document.LastRatedAtUtc, lastRatedAtUtc.Value))
+            : Builders<RatingAggregateDocument>.Update.Combine(
+                update,
+                Builders<RatingAggregateDocument>.Update.Unset(document => document.LastRatedAtUtc));
+        return update;
     }
 
     internal static FilterDefinition<RatingAggregateDocument> BuildCommitFilter(
@@ -245,9 +270,10 @@ internal sealed class RatingAggregateSynchronizer
         RatingAggregateTarget target = new RatingAggregateTarget(
             document.TargetType,
             document.TargetId,
-            document.ParkId,
-            document.ParkItemCategory,
-            document.ParkItemType);
+            document.PendingParkId
+                ?? throw new InvalidOperationException("Pending rating aggregate metadata is missing."),
+            document.PendingParkItemCategory,
+            document.PendingParkItemType);
         return new RatingAggregatePendingMutation(document.MutationVersion, target);
     }
 
