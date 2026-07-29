@@ -47,6 +47,14 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
   public parkImagesPages: Record<number, PagedResult<ImageDto>> = {};
   public parkItemImagesPages: Record<number, PagedResult<ParkItemImageDto>> =
     {};
+  public parkImageResponsesByPage: Record<
+    number,
+    Observable<PagedResult<ImageDto>>
+  > = {};
+  public parkItemImageResponsesByPage: Record<
+    number,
+    Observable<PagedResult<ParkItemImageDto>>
+  > = {};
   public uploadResponse$: Observable<UploadedImage> = of({ id: 'uploaded-1' });
   public linkResponse$: Observable<ImageDto> = of(
     createImage('image-1', { isPublished: true }),
@@ -120,6 +128,12 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
   ): Observable<PagedResult<ImageDto>> {
     this.adminImageQueries.push(query);
     const page: number = query.page ?? 1;
+    const pageResponse$: Observable<PagedResult<ImageDto>> | undefined =
+      this.parkImageResponsesByPage[page];
+    if (pageResponse$) {
+      return pageResponse$;
+    }
+
     const pageResponse: PagedResult<ImageDto> | undefined =
       this.parkImagesPages[page];
     return pageResponse ? of(pageResponse) : this.parkImagesPage$;
@@ -131,6 +145,12 @@ class FakeImagesPort implements AdminPhotoBatchImagesPort {
     size: number = 24,
   ): Observable<PagedResult<ParkItemImageDto>> {
     this.parkItemImageCalls.push({ parkId, page, size });
+    const pageResponse$: Observable<PagedResult<ParkItemImageDto>> | undefined =
+      this.parkItemImageResponsesByPage[page];
+    if (pageResponse$) {
+      return pageResponse$;
+    }
+
     const pageResponse: PagedResult<ParkItemImageDto> | undefined =
       this.parkItemImagesPages[page];
     return pageResponse ? of(pageResponse) : this.parkItemImagesPage$;
@@ -678,6 +698,89 @@ describe('AdminPhotoBatchStateFacade', () => {
     expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual([
       'image-2',
       'image-3',
+    ]);
+  });
+
+  it('ignores an in-flight park photo page after a deletion rewinds pagination', async () => {
+    const staleSecondPage: Subject<PagedResult<ImageDto>> =
+      new Subject<PagedResult<ImageDto>>();
+    imagesPort.parkImagesPages = {
+      1: createPagedResult<ImageDto>(
+        [createImage('image-1', { tagIds: [] })],
+        createPagination(2, 1, 2, 100),
+      ),
+    };
+    imagesPort.parkImageResponsesByPage[2] = staleSecondPage.asObservable();
+    await prepareSelectedParkAsync(facade);
+
+    const staleLoadPromise: Promise<void> = facade.loadMoreParkPhotos();
+    await flushAsyncWork();
+    imagesPort.parkImagesPages[1] = createPagedResult<ImageDto>(
+      [createImage('image-2', { tagIds: [] })],
+      createPagination(1, 1, 1, 100),
+    );
+
+    await facade.deletePhoto('image-1');
+    staleSecondPage.next(
+      createPagedResult<ImageDto>(
+        [createImage('stale-image', { tagIds: [] })],
+        createPagination(2, 2, 2, 100),
+      ),
+    );
+    staleSecondPage.complete();
+    await staleLoadPromise;
+
+    expect(facade.uncategorizedPhotos()).toEqual([]);
+
+    await facade.loadMoreParkPhotos();
+
+    expect(imagesPort.adminImageQueries.map((query) => query.page)).toEqual([
+      1, 2, 1,
+    ]);
+    expect(facade.uncategorizedPhotos().map((photo) => photo.id)).toEqual([
+      'image-2',
+    ]);
+  });
+
+  it('ignores an in-flight park item photo page after a deletion rewinds pagination', async () => {
+    const staleSecondPage: Subject<PagedResult<ParkItemImageDto>> =
+      new Subject<PagedResult<ParkItemImageDto>>();
+    imagesPort.parkItemImagesPages = {
+      1: createPagedResult<ParkItemImageDto>(
+        [createParkItemImage('image-1', 'item-1', 'Demo Coaster')],
+        createPagination(2, 1, 2, 100),
+      ),
+    };
+    imagesPort.parkItemImageResponsesByPage[2] =
+      staleSecondPage.asObservable();
+    await prepareSelectedParkAsync(facade);
+
+    const staleLoadPromise: Promise<void> = facade.loadMoreParkItemPhotos();
+    await flushAsyncWork();
+    imagesPort.parkItemImagesPages[1] = createPagedResult<ParkItemImageDto>(
+      [createParkItemImage('image-2', 'item-1', 'Demo Coaster')],
+      createPagination(1, 1, 1, 100),
+    );
+
+    await facade.deletePhoto('image-1');
+    staleSecondPage.next(
+      createPagedResult<ParkItemImageDto>(
+        [createParkItemImage('stale-image', 'item-1', 'Demo Coaster')],
+        createPagination(2, 2, 2, 100),
+      ),
+    );
+    staleSecondPage.complete();
+    await staleLoadPromise;
+
+    expect(facade.parkItemPhotos()).toEqual([]);
+
+    await facade.loadMoreParkItemPhotos();
+
+    expect(imagesPort.parkItemImageCalls.map((call) => call.page)).toEqual([
+      1, 2, 1,
+    ]);
+    expect(facade.parkItemPhotos().map((photo) => photo.id)).toEqual([
+      'image-2',
     ]);
   });
 });

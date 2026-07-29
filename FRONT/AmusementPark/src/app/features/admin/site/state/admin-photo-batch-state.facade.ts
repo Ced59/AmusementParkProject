@@ -84,6 +84,8 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
   private readonly parkItemPhotosCanLoadMoreSignal = signal(false);
   private readonly parkPhotosLoadingMoreSignal = signal(false);
   private readonly parkItemPhotosLoadingMoreSignal = signal(false);
+  private parkPhotosPaginationGeneration: number = 0;
+  private parkItemPhotosPaginationGeneration: number = 0;
   private readonly selectedFilesSignal = signal<AdminPhotoBatchUploadSelection[]>([]);
   private readonly uploadingSignal = signal(false);
   private readonly uploadProgressSignal = signal<AdminPhotoBatchUploadProgress | null>(null);
@@ -409,11 +411,15 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     }
 
     const nextPage: number = this.parkPhotosPageSignal() + 1;
+    const paginationGeneration: number = this.parkPhotosPaginationGeneration;
     this.parkPhotosLoadingMoreSignal.set(true);
 
     try {
       const pageResult: WorkspaceImagePage<ImageDto> = await this.loadParkPhotosPageAsync(parkId, nextPage);
-      if (this.selectedParkIdSignal() !== parkId) {
+      if (
+        this.selectedParkIdSignal() !== parkId ||
+        this.parkPhotosPaginationGeneration !== paginationGeneration
+      ) {
         return;
       }
 
@@ -445,11 +451,15 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
     }
 
     const nextPage: number = this.parkItemPhotosPageSignal() + 1;
+    const paginationGeneration: number = this.parkItemPhotosPaginationGeneration;
     this.parkItemPhotosLoadingMoreSignal.set(true);
 
     try {
       const pageResult: WorkspaceImagePage<ParkItemImageDto> = await this.loadParkItemPhotosPageAsync(parkId, nextPage);
-      if (this.selectedParkIdSignal() !== parkId) {
+      if (
+        this.selectedParkIdSignal() !== parkId ||
+        this.parkItemPhotosPaginationGeneration !== paginationGeneration
+      ) {
         return;
       }
 
@@ -1300,12 +1310,14 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
   private rewindPhotoPagination(ownerType: ImageOwnerType): void {
     if (ownerType === ImageOwnerType.PARK_ITEM) {
       if (this.parkItemPhotosCanLoadMoreSignal()) {
+        this.parkItemPhotosPaginationGeneration++;
         this.parkItemPhotosPageSignal.update((page: number) => Math.max(0, page - 1));
       }
       return;
     }
 
     if (this.parkPhotosCanLoadMoreSignal()) {
+      this.parkPhotosPaginationGeneration++;
       this.parkPhotosPageSignal.update((page: number) => Math.max(0, page - 1));
     }
   }
@@ -1320,6 +1332,8 @@ export class AdminPhotoBatchStateFacade implements OnDestroy {
   }
 
   private resetPhotoPagination(): void {
+    this.parkPhotosPaginationGeneration++;
+    this.parkItemPhotosPaginationGeneration++;
     this.parkPhotosPageSignal.set(0);
     this.parkItemPhotosPageSignal.set(0);
     this.parkPhotosCanLoadMoreSignal.set(false);
