@@ -113,12 +113,22 @@
             appUiSurfacePadding="regular">
             <header class="comment-card__header">
               <div class="comment-card__author">
-                <span class="comment-card__avatar" aria-hidden="true">
-                  <i [class]="comment.isOfficial ? 'pi pi-verified' : 'pi pi-user'"></i>
-                </span>
-                <span>
-                  <strong>{{ comment.isOfficial ? ('comments.officialAuthor' | translate) : comment.authorDisplayName }}</strong>
-                  <small>{{ ('comments.roles.' + comment.authorRole) | translate }}</small>
+                <app-image-display
+                  [imagePathOrUrl]="comment.authorAvatarUrl"
+                  [alt]="comment.authorDisplayName"
+                  imgClass="comment-card__avatar"
+                  placeholderClass="comment-card__avatar comment-card__avatar--placeholder"
+                  placeholderIconClass="pi pi-user"
+                  loading="lazy"
+                  sizes="44px"
+                  [srcWidth]="96"
+                  [responsiveWidths]="avatarResponsiveWidths">
+                </app-image-display>
+                <span class="comment-card__author-details">
+                  <strong>{{ comment.authorDisplayName }}</strong>
+                  <app-ui-chip tone="sky" iconClass="pi pi-shield">
+                    {{ ('comments.roles.' + comment.authorRole) | translate }}
+                  </app-ui-chip>
                 </span>
               </div>
 
@@ -130,6 +140,8 @@
                 }
                 <time [attr.datetime]="comment.createdAtUtc">
                   {{ comment.createdAtUtc | date:'longDate':undefined:currentLanguage() }}
+                  ·
+                  {{ comment.createdAtUtc | date:'shortTime':undefined:currentLanguage() }}
                 </time>
               </div>
             </header>

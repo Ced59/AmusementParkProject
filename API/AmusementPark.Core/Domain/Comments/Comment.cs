@@ -19,6 +19,8 @@ public sealed class Comment : AuditableEntity
 
     public string AuthorDisplayName { get; set; } = string.Empty;
 
+    public string? AuthorAvatarUrl { get; set; }
+
     public Role AuthorRole { get; set; }
 
     public List<LocalizedText> Bodies { get; set; } = new List<LocalizedText>();

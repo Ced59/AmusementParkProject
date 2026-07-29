@@ -145,30 +145,39 @@
   gap: 0.75rem;
 }
 
-.comment-card__author > span:last-child,
+.comment-card__author-details,
 .comment-card__meta {
   display: grid;
   gap: 0.18rem;
 }
 
-.comment-card__author small,
+.comment-card__author-details app-ui-chip {
+  justify-self: start;
+}
+
 .comment-card__meta time {
   color: var(--text-muted);
   font-size: 0.8rem;
 }
 
-.comment-card__avatar {
-  align-items: center;
+:host ::ng-deep .comment-card__avatar {
   background: color-mix(in srgb, var(--c-sky) 15%, var(--surface));
   border-radius: 50%;
-  color: var(--c-sky);
-  display: inline-flex;
+  display: block;
+  flex: 0 0 auto;
   height: 2.7rem;
-  justify-content: center;
+  object-fit: cover;
   width: 2.7rem;
 }
 
-.comment-card--official .comment-card__avatar {
+:host ::ng-deep .comment-card__avatar--placeholder {
+  align-items: center;
+  color: var(--c-sky);
+  display: inline-flex;
+  justify-content: center;
+}
+
+:host ::ng-deep .comment-card--official .comment-card__avatar {
   background: color-mix(in srgb, var(--c-lime) 17%, var(--surface));
   color: var(--c-lime);
 }

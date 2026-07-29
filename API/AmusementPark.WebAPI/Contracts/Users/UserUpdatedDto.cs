@@ -18,6 +18,10 @@ public sealed class UserUpdatedDto
 
     public string? LastName { get; set; }
 
+    public string? PublicDisplayName { get; set; }
+
+    public string? PublicIdentifier { get; set; }
+
     public string? Email { get; set; }
 
     public bool? IsActivated { get; set; }

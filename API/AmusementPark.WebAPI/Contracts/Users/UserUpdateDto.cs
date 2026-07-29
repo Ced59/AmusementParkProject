@@ -9,6 +9,8 @@ public sealed class UserUpdateDto
 
     public string? LastName { get; set; }
 
+    public string? PublicDisplayName { get; set; }
+
     public string? Email { get; set; }
 
     public string? NewEmail { get; set; }

@@ -332,6 +332,7 @@ function createComment(
     targetType: 'Park',
     targetId: 'park-1',
     authorDisplayName: 'Alice',
+    authorAvatarUrl: '/images/avatar-1',
     authorRole: 'Admin',
     bodies: [{ languageCode: 'fr', value: `<p>${id}</p>` }],
     isOfficial,

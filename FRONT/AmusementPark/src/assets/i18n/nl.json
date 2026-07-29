@@ -11,6 +11,13 @@
     "title": "Gebruikersprofiel",
     "name": "Achternaam",
     "firstname": "Voornaam",
+    "publicDisplayName": "Openbare gebruikersnaam",
+    "publicDisplayNameHelp": "Deze gebruikersnaam en je avatar worden bij je reacties getoond. Je voor- en achternaam blijven privé.",
+    "publicDisplayNameFallback": "Automatische gebruikersnaam",
+    "publicDisplayNameTooLong": "De openbare gebruikersnaam mag maximaal 60 tekens bevatten.",
+    "publicDisplayNameReserved": "Deze gebruikersnaam is gereserveerd om rolmisbruik te voorkomen.",
+    "publicDisplayNameTaken": "Deze gebruikersnaam wordt al door een ander account gebruikt.",
+    "publicIdentifier": "Openbare account-ID: {{identifier}}",
     "email": "E-mail",
     "preferred_language": "Voorkeurstaal",
     "preferred_measurement_system": "Voorkeurseenheden",
@@ -2631,7 +2638,8 @@
     "officialAuthor": "Amusement Parks",
     "roles": {
       "Admin": "Beheerder",
-      "Moderator": "Moderator"
+      "Moderator": "Moderator",
+      "User": "Gebruiker"
     },
     "summary": {
       "createFirst": "De eerste reactie schrijven",

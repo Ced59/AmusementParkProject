@@ -11,6 +11,13 @@
     "title": "Profilo utente",
     "name": "Cognome",
     "firstname": "Nome",
+    "publicDisplayName": "Pseudonimo pubblico",
+    "publicDisplayNameHelp": "Questo pseudonimo e il tuo avatar vengono mostrati con i tuoi commenti. Nome e cognome restano privati.",
+    "publicDisplayNameFallback": "Pseudonimo automatico",
+    "publicDisplayNameTooLong": "Lo pseudonimo pubblico non può superare 60 caratteri.",
+    "publicDisplayNameReserved": "Questo pseudonimo è riservato per evitare l’usurpazione dei ruoli.",
+    "publicDisplayNameTaken": "Questo pseudonimo è già utilizzato da un altro account.",
+    "publicIdentifier": "Identificativo pubblico dell’account: {{identifier}}",
     "email": "Email",
     "preferred_language": "Lingua preferita",
     "preferred_measurement_system": "Sistema di misura preferito",
@@ -2631,7 +2638,8 @@
     "officialAuthor": "Amusement Parks",
     "roles": {
       "Admin": "Amministratore",
-      "Moderator": "Moderatore"
+      "Moderator": "Moderatore",
+      "User": "Utente"
     },
     "summary": {
       "createFirst": "Scrivi il primo commento",

@@ -45,6 +45,51 @@ public sealed class UserRulesTests
     }
 
     [Theory]
+    [InlineData(null, null)]
+    [InlineData("", null)]
+    [InlineData("   ", null)]
+    [InlineData(" CoasterFan ", "CoasterFan")]
+    public void NormalizePublicDisplayName_ShouldTrimOrReturnNull(string? value, string? expected)
+    {
+        string? result = UserRules.NormalizePublicDisplayName(value);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void IsValidPublicDisplayName_ShouldRejectMoreThanSixtyCharacters()
+    {
+        Assert.True(UserRules.IsValidPublicDisplayName(new string('a', 60)));
+        Assert.False(UserRules.IsValidPublicDisplayName(new string('a', 61)));
+    }
+
+    [Theory]
+    [InlineData("Admin01")]
+    [InlineData("a-d_m i n 99")]
+    [InlineData("Adm1nSupport")]
+    [InlineData("Аdmіn01")]
+    [InlineData("MODO42")]
+    [InlineData("M0dérateur")]
+    [InlineData("Mοdο42")]
+    [InlineData("ModeratorTeam")]
+    [InlineData("Staff")]
+    [InlineData("Équipe Amusement Parks")]
+    [InlineData("User0042")]
+    public void IsReservedPublicDisplayName_ShouldRejectStaffAndGeneratedIdentityVariants(string value)
+    {
+        Assert.True(UserRules.IsReservedPublicDisplayName(value));
+    }
+
+    [Theory]
+    [InlineData("CoasterFan")]
+    [InlineData("ModelPark")]
+    [InlineData("Alice")]
+    public void IsReservedPublicDisplayName_ShouldAllowOrdinaryNicknames(string value)
+    {
+        Assert.False(UserRules.IsReservedPublicDisplayName(value));
+    }
+
+    [Theory]
     [InlineData("user@example.com", true)]
     [InlineData("USER@EXAMPLE.COM", true)]
     [InlineData("user.name+tag@example.co.uk", true)]

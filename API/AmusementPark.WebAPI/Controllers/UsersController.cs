@@ -14,6 +14,7 @@ using AmusementPark.WebAPI.Contracts.Users;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
+using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -150,6 +151,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [InvalidatesPublicCache(PublicCacheScope.Data)]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserUpdatedDto), StatusCodes.Status200OK)]
@@ -292,6 +294,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("roles/assign/{userId}")]
+    [InvalidatesPublicCache(PublicCacheScope.Data)]
     [AdminAudit("user.role.assign", "User", TargetIdRouteKey = "userId")]
     [Authorize(Roles = AuthorizationRoleGroups.Admin)]
     [RequireActivatedUnblockedUser]
@@ -311,6 +314,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpDelete("roles/remove/{userId}")]
+    [InvalidatesPublicCache(PublicCacheScope.Data)]
     [AdminAudit("user.role.remove", "User", TargetIdRouteKey = "userId")]
     [Authorize(Roles = AuthorizationRoleGroups.Admin)]
     [RequireActivatedUnblockedUser]

@@ -9,11 +9,16 @@ namespace AmusementPark.Application.Features.Users.Ports;
 public interface IUserRepository
 {
     Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken);
+    Task<User?> GetByPublicDisplayNameAsync(string publicDisplayName, CancellationToken cancellationToken);
     Task<User?> GetByIdAsync(string userId, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<User>> GetByIdsAsync(
+        IReadOnlyCollection<string> userIds,
+        CancellationToken cancellationToken);
     Task<User?> GetByExternalLoginAsync(ExternalLoginProvider provider, string providerUserId, CancellationToken cancellationToken);
     Task<User?> GetByEmailConfirmationTokenHashAsync(string tokenHash, CancellationToken cancellationToken);
     Task<User?> GetByPasswordResetTokenHashAsync(string tokenHash, CancellationToken cancellationToken);
     Task<PagedResult<User>> GetPageAsync(int page, int pageSize, CancellationToken cancellationToken);
+    Task<long> AllocatePublicAccountNumberAsync(CancellationToken cancellationToken);
     Task<User> CreateAsync(User user, CancellationToken cancellationToken);
     Task<User?> UpdateAsync(string userId, User user, CancellationToken cancellationToken);
     Task UpdateLastLoginAndActivityAsync(string userId, CancellationToken cancellationToken);

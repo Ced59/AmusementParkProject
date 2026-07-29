@@ -9,6 +9,8 @@ public sealed class UserProfileUpdate
 
     public string? LastName { get; init; }
 
+    public string? PublicDisplayName { get; init; }
+
     public string? Email { get; init; }
 
     public string? NewEmail { get; init; }

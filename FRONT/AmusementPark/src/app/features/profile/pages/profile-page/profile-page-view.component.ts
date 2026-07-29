@@ -41,7 +41,15 @@ export class ProfilePageViewComponent {
   @Input() displayAvatarUploadDialog: boolean = false;
   @Input() isEditingIdentity: boolean = false;
   @Input() savingIdentity: boolean = false;
-  @Input() identityDraft: { firstName: string; lastName: string } = { firstName: '', lastName: '' };
+  @Input() identityDraft: {
+    firstName: string;
+    lastName: string;
+    publicDisplayName: string;
+  } = {
+    firstName: '',
+    lastName: '',
+    publicDisplayName: ''
+  };
   @Input() avatarCategory!: ImageCategory;
   @Input() userOwnerType!: ImageOwnerType;
   @Input() currentUserId: string | null = null;

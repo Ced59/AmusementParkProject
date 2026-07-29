@@ -83,6 +83,7 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
             ParkId = target.ParkId,
             AuthorUserId = author!.Id,
             AuthorDisplayName = BuildAuthorDisplayName(author),
+            AuthorAvatarUrl = NormalizeAvatarUrl(author.AvatarUrl),
             AuthorRole = ResolveAuthorRole(author),
             Bodies = bodiesResult.Value.ToList(),
             IsOfficial = command.Model.IsOfficial,
@@ -92,7 +93,7 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
         };
 
         Comment created = await this.commentRepository.CreateAsync(comment, cancellationToken);
-        return ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(created));
+        return ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(created, author));
     }
 
     private static bool IsAllowedAuthor(User? author)
@@ -110,13 +111,12 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
 
     private static string BuildAuthorDisplayName(User author)
     {
-        string displayName = string.Join(
-            " ",
-            new[] { author.FirstName, author.LastName }
-                .Where(static value => !string.IsNullOrWhiteSpace(value))
-                .Select(static value => value!.Trim()));
+        return author.ResolvePublicDisplayName() ?? "Amusement Parks";
+    }
 
-        return string.IsNullOrWhiteSpace(displayName) ? "Équipe Amusement Parks" : displayName;
+    private static string? NormalizeAvatarUrl(string? avatarUrl)
+    {
+        return string.IsNullOrWhiteSpace(avatarUrl) ? null : avatarUrl.Trim();
     }
 }
 
@@ -177,9 +177,12 @@ public sealed class UpdateCommentCommandHandler
 
         comment.UpdateContent(bodiesResult.Value, command.Model.IsOfficial);
         Comment? updated = await this.commentRepository.UpdateAsync(comment, cancellationToken);
+        User? author = string.Equals(actor.Id, comment.AuthorUserId, StringComparison.Ordinal)
+            ? actor
+            : await this.userRepository.GetByIdAsync(comment.AuthorUserId, cancellationToken);
         return updated is null
             ? ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.CommentNotFound())
-            : ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(updated));
+            : ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(updated, author));
     }
 }
 
@@ -237,13 +240,16 @@ public sealed class GetCommentSummaryQueryHandler
     : IQueryHandler<GetCommentSummaryQuery, ApplicationResult<CommentSummaryResult>>
 {
     private readonly ICommentRepository commentRepository;
+    private readonly IUserRepository userRepository;
     private readonly CommentTargetResolver targetResolver;
 
     public GetCommentSummaryQueryHandler(
         ICommentRepository commentRepository,
+        IUserRepository userRepository,
         CommentTargetResolver targetResolver)
     {
         this.commentRepository = commentRepository;
+        this.userRepository = userRepository;
         this.targetResolver = targetResolver;
     }
 
@@ -274,11 +280,14 @@ public sealed class GetCommentSummaryQueryHandler
 
         await Task.WhenAll(countTask, officialTask);
         Comment? officialComment = await officialTask;
+        User? officialAuthor = officialComment is null
+            ? null
+            : await this.userRepository.GetByIdAsync(officialComment.AuthorUserId, cancellationToken);
         return ApplicationResult<CommentSummaryResult>.Success(new CommentSummaryResult(
             query.TargetType,
             targetId,
             await countTask,
-            officialComment is null ? null : CommentResultFactory.Create(officialComment)));
+            officialComment is null ? null : CommentResultFactory.Create(officialComment, officialAuthor)));
     }
 }
 
@@ -286,13 +295,16 @@ public sealed class GetCommentThreadQueryHandler
     : IQueryHandler<GetCommentThreadQuery, ApplicationResult<CommentThreadResult>>
 {
     private readonly ICommentRepository commentRepository;
+    private readonly IUserRepository userRepository;
     private readonly CommentTargetResolver targetResolver;
 
     public GetCommentThreadQueryHandler(
         ICommentRepository commentRepository,
+        IUserRepository userRepository,
         CommentTargetResolver targetResolver)
     {
         this.commentRepository = commentRepository;
+        this.userRepository = userRepository;
         this.targetResolver = targetResolver;
     }
 
@@ -316,6 +328,15 @@ public sealed class GetCommentThreadQueryHandler
             target.TargetType,
             target.TargetId,
             cancellationToken);
+        IReadOnlyCollection<User> authors = await this.userRepository.GetByIdsAsync(
+            comments
+                .Select(static comment => comment.AuthorUserId)
+                .Distinct(StringComparer.Ordinal)
+                .ToList(),
+            cancellationToken);
+        IReadOnlyDictionary<string, User> authorsById = authors.ToDictionary(
+            static author => author.Id,
+            StringComparer.Ordinal);
 
         return ApplicationResult<CommentThreadResult>.Success(new CommentThreadResult(
             target.TargetType,
@@ -326,7 +347,9 @@ public sealed class GetCommentThreadQueryHandler
             comments
                 .OrderByDescending(static comment => comment.IsOfficial)
                 .ThenByDescending(static comment => comment.CreatedAtUtc)
-                .Select(CommentResultFactory.Create)
+                .Select(comment => CommentResultFactory.Create(
+                    comment,
+                    authorsById.GetValueOrDefault(comment.AuthorUserId)))
                 .ToList()));
     }
 }
@@ -441,18 +464,46 @@ internal static class CommentManagementAuthorization
 
 internal static class CommentResultFactory
 {
-    public static CommentResult Create(Comment comment)
+    public static CommentResult Create(Comment comment, User? currentAuthor = null)
     {
+        bool hasCurrentAuthor = currentAuthor is not null
+            && string.Equals(currentAuthor.Id, comment.AuthorUserId, StringComparison.Ordinal);
+        string authorDisplayName = hasCurrentAuthor
+            ? currentAuthor!.ResolvePublicDisplayName() ?? comment.AuthorDisplayName
+            : comment.AuthorDisplayName;
+        string? authorAvatarUrl = hasCurrentAuthor
+            ? NormalizeAvatarUrl(currentAuthor!.AvatarUrl)
+            : comment.AuthorAvatarUrl;
+        Role authorRole = hasCurrentAuthor
+            ? ResolveAuthorRole(currentAuthor!)
+            : comment.AuthorRole;
+
         return new CommentResult(
             comment.Id,
             comment.TargetType,
             comment.TargetId,
             comment.AuthorUserId,
-            comment.AuthorDisplayName,
-            comment.AuthorRole,
+            authorDisplayName,
+            authorAvatarUrl,
+            authorRole,
             comment.Bodies,
             comment.IsOfficial,
             comment.CreatedAtUtc,
             comment.UpdatedAtUtc);
+    }
+
+    private static Role ResolveAuthorRole(User author)
+    {
+        if (author.HasRole(Role.Admin))
+        {
+            return Role.Admin;
+        }
+
+        return author.HasRole(Role.Moderator) ? Role.Moderator : Role.User;
+    }
+
+    private static string? NormalizeAvatarUrl(string? avatarUrl)
+    {
+        return string.IsNullOrWhiteSpace(avatarUrl) ? null : avatarUrl.Trim();
     }
 }

@@ -13,11 +13,16 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 /// </summary>
 public sealed class UserRepository : IUserRepository
 {
+    private static readonly Collation PublicDisplayNameCollation =
+        new Collation("en", strength: CollationStrength.Secondary);
     private readonly IMongoCollection<UserDocument> collection;
+    private readonly IMongoCollection<PublicAccountCounterDocument> countersCollection;
 
     public UserRepository(IMongoDatabase database, MongoDbSettings settings)
     {
         this.collection = database.GetCollection<UserDocument>(settings.UsersCollectionName);
+        this.countersCollection = database.GetCollection<PublicAccountCounterDocument>(
+            settings.CountersCollectionName);
     }
 
     public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
@@ -26,10 +31,55 @@ public sealed class UserRepository : IUserRepository
         return document?.ToDomain();
     }
 
+    public async Task<User?> GetByPublicDisplayNameAsync(
+        string publicDisplayName,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserDocument> filter = Builders<UserDocument>.Filter.Eq(
+            document => document.PublicDisplayName,
+            publicDisplayName);
+        FindOptions options = new FindOptions
+        {
+            Collation = PublicDisplayNameCollation,
+        };
+        UserDocument? document = await this.collection
+            .Find(filter, options)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<User?> GetByIdAsync(string userId, CancellationToken cancellationToken)
     {
         UserDocument? document = await this.collection.Find(document => document.Id == userId).FirstOrDefaultAsync(cancellationToken);
         return document?.ToDomain();
+    }
+
+    public async Task<IReadOnlyCollection<User>> GetByIdsAsync(
+        IReadOnlyCollection<string> userIds,
+        CancellationToken cancellationToken)
+    {
+        if (userIds.Count == 0)
+        {
+            return Array.Empty<User>();
+        }
+
+        IReadOnlyCollection<string> normalizedUserIds = userIds
+            .Where(static userId => !string.IsNullOrWhiteSpace(userId))
+            .Select(static userId => userId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+        if (normalizedUserIds.Count == 0)
+        {
+            return Array.Empty<User>();
+        }
+
+        FilterDefinition<UserDocument> filter = Builders<UserDocument>.Filter.In(
+            document => document.Id,
+            normalizedUserIds);
+        List<UserDocument> documents = await this.collection
+            .Find(filter)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToList();
     }
 
     public async Task<User?> GetByExternalLoginAsync(ExternalLoginProvider provider, string providerUserId, CancellationToken cancellationToken)
@@ -71,6 +121,28 @@ public sealed class UserRepository : IUserRepository
             page,
             pageSize,
             totalItems);
+    }
+
+    public async Task<long> AllocatePublicAccountNumberAsync(CancellationToken cancellationToken)
+    {
+        FilterDefinition<PublicAccountCounterDocument> filter =
+            Builders<PublicAccountCounterDocument>.Filter.Eq(
+                document => document.Id,
+                "public-account-number");
+        UpdateDefinition<PublicAccountCounterDocument> update =
+            Builders<PublicAccountCounterDocument>.Update.Inc(document => document.Sequence, 1);
+        FindOneAndUpdateOptions<PublicAccountCounterDocument> options =
+            new FindOneAndUpdateOptions<PublicAccountCounterDocument>
+            {
+                IsUpsert = true,
+                ReturnDocument = ReturnDocument.After,
+            };
+        PublicAccountCounterDocument counter = await this.countersCollection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            options,
+            cancellationToken);
+        return counter.Sequence;
     }
 
     public async Task<User> CreateAsync(User user, CancellationToken cancellationToken)
@@ -235,6 +307,13 @@ public sealed class UserRepository : IUserRepository
         }
 
         updateRoles(document.Roles);
+        if (document.UsesAutomaticPublicDisplayName && document.PublicAccountNumber > 0)
+        {
+            User user = document.ToDomain();
+            user.RefreshAutomaticPublicDisplayName();
+            document.PublicDisplayName = user.PublicDisplayName;
+        }
+
         document.UpdatedAt = DateTime.UtcNow;
 
         ReplaceOneResult result = await this.collection.ReplaceOneAsync(

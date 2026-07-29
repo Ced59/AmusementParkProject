@@ -29,6 +29,8 @@ public sealed class CommentHandlersTests
             Id = "admin-1",
             FirstName = " Alice ",
             LastName = " Martin ",
+            PublicDisplayName = " CoasterFan ",
+            AvatarUrl = " /images/avatar-1 ",
             IsActivated = true,
             Roles = new List<Role> { Role.Admin },
         };
@@ -71,7 +73,8 @@ public sealed class CommentHandlersTests
         Assert.Equal("comment-1", result.Value!.Id);
         Assert.True(result.Value.IsOfficial);
         Assert.Equal(Role.Admin, result.Value.AuthorRole);
-        Assert.Equal("Alice Martin", result.Value.AuthorDisplayName);
+        Assert.Equal("CoasterFan", result.Value.AuthorDisplayName);
+        Assert.Equal("/images/avatar-1", result.Value.AuthorAvatarUrl);
         Assert.Equal("<p>Texte</p>", Assert.Single(result.Value.Bodies).Value);
         commentRepository.Verify(repository => repository.CreateAsync(
             It.Is<Comment>(comment =>
@@ -79,6 +82,8 @@ public sealed class CommentHandlersTests
                 && comment.TargetId == "park-1"
                 && comment.ParkId == "park-1"
                 && comment.AuthorUserId == "admin-1"
+                && comment.AuthorDisplayName == "CoasterFan"
+                && comment.AuthorAvatarUrl == "/images/avatar-1"
                 && comment.ModerationStatus == CommentModerationStatus.Published
                 && comment.IsOfficial),
             It.IsAny<CancellationToken>()), Times.Once);
@@ -375,8 +380,23 @@ public sealed class CommentHandlersTests
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        User currentAuthor = new User
+        {
+            Id = "admin-1",
+            PublicDisplayName = "CoasterFan",
+            PublicAccountNumber = 1,
+            AvatarUrl = "/images/current-avatar",
+            Roles = new List<Role> { Role.Admin },
+        };
+        Mock<IUserRepository> userRepository = new Mock<IUserRepository>(MockBehavior.Strict);
+        userRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "admin-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { currentAuthor });
         GetCommentThreadQueryHandler handler = new GetCommentThreadQueryHandler(
             commentRepository.Object,
+            userRepository.Object,
             new CommentTargetResolver(parkRepository.Object, parkItemRepository.Object));
 
         ApplicationResult<CommentThreadResult> result = await handler.HandleAsync(
@@ -384,7 +404,14 @@ public sealed class CommentHandlersTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal(new[] { "official", "regular" }, result.Value!.Comments.Select(static comment => comment.Id));
+        Assert.All(result.Value.Comments, static comment =>
+        {
+            Assert.Equal("CoasterFan", comment.AuthorDisplayName);
+            Assert.Equal("/images/current-avatar", comment.AuthorAvatarUrl);
+            Assert.Equal(Role.Admin, comment.AuthorRole);
+        });
         commentRepository.VerifyAll();
+        userRepository.VerifyAll();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyNoOtherCalls();
     }
@@ -404,6 +431,7 @@ public sealed class CommentHandlersTests
             ParkId = "park-1",
             AuthorUserId = authorUserId,
             AuthorDisplayName = "Alice",
+            AuthorAvatarUrl = "/images/avatar-1",
             AuthorRole = authorRole,
             Bodies = new List<LocalizedText> { new LocalizedText("fr", "<p>Texte</p>") },
             IsOfficial = isOfficial,

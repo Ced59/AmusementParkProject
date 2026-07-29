@@ -43,16 +43,27 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
 
         string? currentEmail = UserRules.NormalizeEmail(command.Update.Email);
         string? newEmail = UserRules.NormalizeEmail(command.Update.NewEmail);
+        string? publicDisplayName = UserRules.NormalizePublicDisplayName(command.Update.PublicDisplayName);
 
         if (!UserRules.IsValidEmail(currentEmail) || (newEmail is not null && !UserRules.IsValidEmail(newEmail)))
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.InvalidEmailAddress());
         }
 
+        if (!UserRules.IsValidPublicDisplayName(publicDisplayName))
+        {
+            return ApplicationResult<User>.Failure(UserApplicationErrors.InvalidPublicDisplayName());
+        }
+
         User? user = await this.userRepository.GetByIdAsync(command.UserId.Trim(), cancellationToken);
         if (user is null)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserNotExists());
+        }
+
+        if (user.PublicAccountNumber <= 0)
+        {
+            user.PublicAccountNumber = await this.userRepository.AllocatePublicAccountNumberAsync(cancellationToken);
         }
 
         string? confirmationToken = null;
@@ -76,6 +87,50 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
 
         user.FirstName = command.Update.FirstName;
         user.LastName = command.Update.LastName;
+        if (command.Update.PublicDisplayName is not null)
+        {
+            string automaticDisplayName = PublicDisplayNameFactory.Create(
+                user.Roles,
+                user.PublicAccountNumber);
+            bool keepsCurrentAutomaticDisplayName = user.UsesAutomaticPublicDisplayName
+                && string.Equals(
+                    publicDisplayName,
+                    user.PublicDisplayName,
+                    StringComparison.OrdinalIgnoreCase);
+            if (publicDisplayName is null)
+            {
+                user.PublicDisplayName = automaticDisplayName;
+                user.UsesAutomaticPublicDisplayName = true;
+            }
+            else
+            {
+                if (!keepsCurrentAutomaticDisplayName
+                    && UserRules.IsReservedPublicDisplayName(publicDisplayName))
+                {
+                    return ApplicationResult<User>.Failure(UserApplicationErrors.PublicDisplayNameReserved());
+                }
+
+                User? existingDisplayNameOwner = await this.userRepository.GetByPublicDisplayNameAsync(
+                    publicDisplayName,
+                    cancellationToken);
+                if (existingDisplayNameOwner is not null
+                    && !string.Equals(existingDisplayNameOwner.Id, user.Id, StringComparison.Ordinal))
+                {
+                    return ApplicationResult<User>.Failure(UserApplicationErrors.PublicDisplayNameAlreadyExists());
+                }
+
+                user.PublicDisplayName = publicDisplayName;
+                user.UsesAutomaticPublicDisplayName = keepsCurrentAutomaticDisplayName;
+            }
+        }
+        else if (string.IsNullOrWhiteSpace(user.PublicDisplayName))
+        {
+            user.PublicDisplayName = PublicDisplayNameFactory.Create(
+                user.Roles,
+                user.PublicAccountNumber);
+            user.UsesAutomaticPublicDisplayName = true;
+        }
+
         user.PreferredLanguage = UserRules.NormalizePreferredLanguage(command.Update.PreferredLanguage);
         user.PreferredMeasurementSystem = UserRules.NormalizePreferredMeasurementSystem(command.Update.PreferredMeasurementSystem);
         user.LastActivityUtc = DateTime.UtcNow;

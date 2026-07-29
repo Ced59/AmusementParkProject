@@ -8,7 +8,8 @@
     "officialAuthor": "Amusement Parks",
     "roles": {
       "Admin": "Administrador",
-      "Moderator": "Moderador"
+      "Moderator": "Moderador",
+      "User": "Utilizador"
     },
     "summary": {
       "createFirst": "Escrever o primeiro comentário",

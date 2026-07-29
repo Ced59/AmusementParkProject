@@ -119,6 +119,7 @@ describe('CommentsPageComponent', () => {
       targetType: 'Park' as const,
       targetId: 'park-1',
       authorDisplayName: 'Alice',
+      authorAvatarUrl: '/images/avatar-1',
       authorRole: 'Admin' as const,
       bodies: [{ languageCode: 'fr', value: '<p>Avis</p>' }],
       isOfficial: false,

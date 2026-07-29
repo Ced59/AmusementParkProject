@@ -5,6 +5,7 @@ using AmusementPark.Core.Domain.Users;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Comments;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
@@ -249,6 +250,190 @@ public sealed partial class MongoDatabaseInitializer
         };
 
         await usersCollection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
+    }
+
+    private async Task BackfillPublicAccountIdentitiesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<UserDocument> usersCollection =
+            this.database.GetCollection<UserDocument>(this.settings.UsersCollectionName);
+        List<UserDocument> users = await usersCollection
+            .Find(Builders<UserDocument>.Filter.Empty)
+            .ToListAsync(cancellationToken);
+        if (users.Count == 0)
+        {
+            return;
+        }
+
+        HashSet<long> reservedNumbers = users
+            .Where(static user => user.PublicAccountNumber > 0)
+            .Select(static user => user.PublicAccountNumber)
+            .ToHashSet();
+        long nextNumber = 1;
+        long modifiedCount = 0;
+
+        foreach (UserDocument user in users
+            .OrderBy(static user => ResolvePublicIdentityRoleOrder(user.Roles))
+            .ThenBy(static user => user.CreatedAt)
+            .ThenBy(static user => user.Id, StringComparer.Ordinal))
+        {
+            bool needsNumber = user.PublicAccountNumber <= 0;
+            if (needsNumber)
+            {
+                while (!reservedNumbers.Add(nextNumber))
+                {
+                    nextNumber++;
+                }
+
+                user.PublicAccountNumber = nextNumber;
+                nextNumber++;
+            }
+
+            bool needsAutomaticDisplayName = string.IsNullOrWhiteSpace(user.PublicDisplayName)
+                || user.UsesAutomaticPublicDisplayName;
+            string? publicDisplayName = needsAutomaticDisplayName
+                ? PublicDisplayNameFactory.Create(user.Roles, user.PublicAccountNumber)
+                : user.PublicDisplayName?.Trim();
+            bool needsUpdate = needsNumber
+                || !string.Equals(user.PublicDisplayName, publicDisplayName, StringComparison.Ordinal)
+                || (needsAutomaticDisplayName && !user.UsesAutomaticPublicDisplayName);
+            if (!needsUpdate)
+            {
+                continue;
+            }
+
+            UpdateResult result = await usersCollection.UpdateOneAsync(
+                Builders<UserDocument>.Filter.Eq(document => document.Id, user.Id),
+                Builders<UserDocument>.Update
+                    .Set(document => document.PublicAccountNumber, user.PublicAccountNumber)
+                    .Set(document => document.PublicDisplayName, publicDisplayName)
+                    .Set(document => document.UsesAutomaticPublicDisplayName, needsAutomaticDisplayName)
+                    .Set(document => document.UpdatedAt, DateTime.UtcNow),
+                cancellationToken: cancellationToken);
+            modifiedCount += result.ModifiedCount;
+        }
+
+        long maximumNumber = reservedNumbers.Count == 0 ? 0 : reservedNumbers.Max();
+        IMongoCollection<PublicAccountCounterDocument> countersCollection =
+            this.database.GetCollection<PublicAccountCounterDocument>(this.settings.CountersCollectionName);
+        await countersCollection.UpdateOneAsync(
+            Builders<PublicAccountCounterDocument>.Filter.Eq(
+                document => document.Id,
+                "public-account-number"),
+            Builders<PublicAccountCounterDocument>.Update.Max(
+                document => document.Sequence,
+                maximumNumber),
+            new UpdateOptions { IsUpsert = true },
+            cancellationToken);
+
+        this.logger.LogInformation(
+            "Backfilled a stable public account identity for {Count} existing user accounts.",
+            modifiedCount);
+    }
+
+    private async Task InitializeUserPublicDisplayNameIndexAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<UserDocument> usersCollection =
+            this.database.GetCollection<UserDocument>(this.settings.UsersCollectionName);
+        CreateIndexModel<UserDocument>[] indexes =
+        {
+            new CreateIndexModel<UserDocument>(
+                Builders<UserDocument>.IndexKeys.Ascending(document => document.PublicDisplayName),
+                new CreateIndexOptions<UserDocument>
+                {
+                    Name = "idx_users_public_display_name_unique",
+                    Unique = true,
+                    Collation = new Collation("en", strength: CollationStrength.Secondary),
+                    PartialFilterExpression = Builders<UserDocument>.Filter.Type(
+                        document => document.PublicDisplayName,
+                        BsonType.String),
+                }),
+            new CreateIndexModel<UserDocument>(
+                Builders<UserDocument>.IndexKeys.Ascending(document => document.PublicAccountNumber),
+                new CreateIndexOptions
+                {
+                    Name = "idx_users_public_account_number_unique",
+                    Unique = true,
+                }),
+        };
+
+        await usersCollection.Indexes.CreateManyAsync(indexes, cancellationToken);
+    }
+
+    private async Task BackfillLegacyCommentAuthorSnapshotsAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<CommentDocument> commentsCollection =
+            this.database.GetCollection<CommentDocument>(this.settings.CommentsCollectionName);
+        FilterDefinition<CommentDocument> missingDisplayNameFilter = Builders<CommentDocument>.Filter.Or(
+            Builders<CommentDocument>.Filter.Exists(document => document.AuthorDisplayName, false),
+            Builders<CommentDocument>.Filter.Eq(document => document.AuthorDisplayName, null),
+            Builders<CommentDocument>.Filter.Eq(document => document.AuthorDisplayName, string.Empty));
+        List<CommentDocument> legacyComments = await commentsCollection
+            .Find(missingDisplayNameFilter)
+            .ToListAsync(cancellationToken);
+        if (legacyComments.Count == 0)
+        {
+            return;
+        }
+
+        string[] authorUserIds = legacyComments
+            .Select(static comment => comment.AuthorUserId)
+            .Where(static authorUserId => !string.IsNullOrWhiteSpace(authorUserId))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IMongoCollection<UserDocument> usersCollection =
+            this.database.GetCollection<UserDocument>(this.settings.UsersCollectionName);
+        List<UserDocument> authors = await usersCollection
+            .Find(Builders<UserDocument>.Filter.In(document => document.Id, authorUserIds))
+            .ToListAsync(cancellationToken);
+        Dictionary<string, UserDocument> authorsById = authors.ToDictionary(
+            static author => author.Id,
+            StringComparer.Ordinal);
+        List<WriteModel<CommentDocument>> writes = new List<WriteModel<CommentDocument>>(legacyComments.Count);
+
+        foreach (CommentDocument comment in legacyComments)
+        {
+            authorsById.TryGetValue(comment.AuthorUserId, out UserDocument? author);
+            string publicDisplayName = author?.PublicDisplayName?.Trim() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(publicDisplayName)
+                && author is not null
+                && author.PublicAccountNumber > 0)
+            {
+                publicDisplayName = PublicDisplayNameFactory.Create(
+                    author.Roles,
+                    author.PublicAccountNumber);
+            }
+
+            if (string.IsNullOrWhiteSpace(publicDisplayName))
+            {
+                publicDisplayName = "Amusement Parks";
+            }
+
+            UpdateDefinition<CommentDocument> update = Builders<CommentDocument>.Update
+                .Set(document => document.AuthorDisplayName, publicDisplayName)
+                .Set(document => document.AuthorAvatarUrl, author?.AvatarUrl)
+                .Set(document => document.UpdatedAt, comment.UpdatedAt);
+            writes.Add(new UpdateOneModel<CommentDocument>(
+                Builders<CommentDocument>.Filter.Eq(document => document.Id, comment.Id),
+                update));
+        }
+
+        BulkWriteResult<CommentDocument> result = await commentsCollection.BulkWriteAsync(
+            writes,
+            new BulkWriteOptions { IsOrdered = false },
+            cancellationToken);
+        this.logger.LogInformation(
+            "Migrated {Count} legacy comment author snapshots to public pseudonyms.",
+            result.ModifiedCount);
+    }
+
+    private static int ResolvePublicIdentityRoleOrder(IReadOnlyCollection<Role> roles)
+    {
+        if (roles.Contains(Role.Admin))
+        {
+            return 0;
+        }
+
+        return roles.Contains(Role.Moderator) ? 1 : 2;
     }
 
     private async Task InitializeCountriesIndexesAsync(CancellationToken cancellationToken)
