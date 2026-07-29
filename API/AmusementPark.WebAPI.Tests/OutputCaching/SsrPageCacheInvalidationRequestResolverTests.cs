@@ -1,9 +1,11 @@
+using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.Images;
+using AmusementPark.Core.Domain.Comments;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.ContextualBlocks;
 using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
@@ -20,6 +22,104 @@ namespace AmusementPark.WebAPI.Tests.OutputCaching;
 
 public sealed class SsrPageCacheInvalidationRequestResolverTests
 {
+    [Fact]
+    public async Task ResolveAsync_ForParkCommentCreate_ShouldTargetTheDetailAndCommentPages()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "park-1",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Demo Park" });
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver(
+            parkRepository: parkRepository);
+        ActionExecutingContext context = CreateContext(
+            "Comments",
+            new Dictionary<string, object?>());
+        context.ActionArguments["request"] = new
+        {
+            TargetType = CommentTargetType.Park.ToString(),
+            TargetId = "park-1",
+        };
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request =
+            await resolver.ResolveAsync(
+                context,
+                null,
+                new[] { PublicCacheScope.Data },
+                CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/demo-park", request.Paths);
+        Assert.Contains("/fr/park/park-1/demo-park/comments", request.Paths);
+        Assert.Empty(request.Prefixes);
+        Assert.False(request.IncludeSeoDocuments);
+        parkRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForParkItemCommentDelete_ShouldResolveTheCommentBeforeExecution()
+    {
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Comment
+            {
+                Id = "comment-1",
+                TargetType = CommentTargetType.ParkItem,
+                TargetId = "item-1",
+            });
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "item-1",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkItem
+            {
+                Id = "item-1",
+                ParkId = "park-1",
+                Name = "Demo Ride",
+            });
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "park-1",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Demo Park" });
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver(
+            parkRepository: parkRepository,
+            parkItemRepository: parkItemRepository,
+            commentRepository: commentRepository);
+        ActionExecutingContext context = CreateContext(
+            "Comments",
+            new Dictionary<string, object?> { ["commentId"] = "comment-1" });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request =
+            await resolver.ResolveAsync(
+                context,
+                null,
+                new[] { PublicCacheScope.Data },
+                CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains(
+            "/fr/park/park-1/demo-park/item/item-1/demo-ride",
+            request.Paths);
+        Assert.Contains(
+            "/fr/park/park-1/demo-park/item/item-1/demo-ride/comments",
+            request.Paths);
+        Assert.Empty(request.Prefixes);
+        Assert.False(request.IncludeSeoDocuments);
+        commentRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkRepository.VerifyAll();
+    }
+
     [Fact]
     public async Task ResolveAsync_ForParkUpdate_ShouldTargetParkAndDiscoveryPages()
     {
@@ -835,6 +935,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     private static SsrPageCacheInvalidationRequestResolver CreateResolver(
         Mock<IParkRepository>? parkRepository = null,
         Mock<IParkItemRepository>? parkItemRepository = null,
+        Mock<ICommentRepository>? commentRepository = null,
         Mock<IParkZoneRepository>? parkZoneRepository = null,
         Mock<IImageRepository>? imageRepository = null,
         Mock<IStandaloneAttractionRepository>? standaloneAttractionRepository = null)
@@ -842,6 +943,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         return new SsrPageCacheInvalidationRequestResolver(
             (parkRepository ?? new Mock<IParkRepository>(MockBehavior.Strict)).Object,
             (parkItemRepository ?? new Mock<IParkItemRepository>(MockBehavior.Strict)).Object,
+            (commentRepository ?? new Mock<ICommentRepository>(MockBehavior.Strict)).Object,
             (parkZoneRepository ?? new Mock<IParkZoneRepository>(MockBehavior.Strict)).Object,
             (imageRepository ?? new Mock<IImageRepository>(MockBehavior.Strict)).Object,
             (standaloneAttractionRepository ?? new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict)).Object);
