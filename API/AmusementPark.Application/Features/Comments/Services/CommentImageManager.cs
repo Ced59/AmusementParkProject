@@ -1,6 +1,7 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Images;
+using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.Application.Features.Comments.Services;
 
@@ -11,13 +12,16 @@ public sealed class CommentImageManager
     private static readonly TimeSpan ReconciliationGracePeriod = TimeSpan.FromMinutes(5);
     private readonly IImageRepository imageRepository;
     private readonly IImageBinaryStorage imageBinaryStorage;
+    private readonly ILogger<CommentImageManager>? logger;
 
     public CommentImageManager(
         IImageRepository imageRepository,
-        IImageBinaryStorage imageBinaryStorage)
+        IImageBinaryStorage imageBinaryStorage,
+        ILogger<CommentImageManager>? logger = null)
     {
         this.imageRepository = imageRepository;
         this.imageBinaryStorage = imageBinaryStorage;
+        this.logger = logger;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<string>>> PublishForCommentAsync(
@@ -57,46 +61,78 @@ public sealed class CommentImageManager
         }
 
         List<string> reservedImageIds = new List<string>();
-        foreach (Image draft in images.Where(static image => image.OwnerType == ImageOwnerType.CommentDraft))
+        try
         {
-            Image? reserved = await this.imageRepository.ReserveCommentDraftAsync(
-                draft.Id,
+            foreach (Image draft in images.Where(static image => image.OwnerType == ImageOwnerType.CommentDraft))
+            {
+                Image? reserved = await this.imageRepository.ReserveCommentDraftAsync(
+                    draft.Id,
+                    actorUserId,
+                    commentId,
+                    DateTime.UtcNow.Add(ReconciliationGracePeriod),
+                    cancellationToken);
+                if (reserved is null)
+                {
+                    await this.ReleaseReservationsAsync(
+                        actorUserId,
+                        commentId,
+                        reservedImageIds);
+                    return ApplicationResult<IReadOnlyCollection<string>>.Failure(
+                        CommentApplicationErrors.ImageNotAllowed());
+                }
+
+                reservedImageIds.Add(reserved.Id);
+            }
+        }
+        catch
+        {
+            await this.ReleaseReservationsAsync(
                 actorUserId,
                 commentId,
-                DateTime.UtcNow.Add(ReconciliationGracePeriod),
-                cancellationToken);
-            if (reserved is null)
-            {
-                return ApplicationResult<IReadOnlyCollection<string>>.Failure(
-                    CommentApplicationErrors.ImageNotAllowed());
-            }
-
-            reservedImageIds.Add(reserved.Id);
+                reservedImageIds);
+            throw;
         }
 
         return ApplicationResult<IReadOnlyCollection<string>>.Success(reservedImageIds);
     }
 
-    public async Task FinalizeForCommentAsync(
+    public async Task<IReadOnlyCollection<string>> FinalizeForCommentAsync(
         string actorUserId,
         string commentId,
         IReadOnlyCollection<string> reservedImageIds)
     {
+        List<string> failedImageIds = new List<string>();
         foreach (string imageId in NormalizeIds(reservedImageIds))
         {
             try
             {
-                await this.imageRepository.FinalizeCommentDraftAsync(
+                Image? finalized = await this.imageRepository.FinalizeCommentDraftAsync(
                     imageId,
                     actorUserId,
                     commentId,
                     CancellationToken.None);
+                if (finalized is null)
+                {
+                    failedImageIds.Add(imageId);
+                    this.logger?.LogWarning(
+                        "Unable to finalize reserved comment image {ImageId} for comment {CommentId}.",
+                        imageId,
+                        commentId);
+                }
             }
-            catch
+            catch (Exception exception)
             {
+                failedImageIds.Add(imageId);
+                this.logger?.LogWarning(
+                    exception,
+                    "Unable to finalize reserved comment image {ImageId} for comment {CommentId}.",
+                    imageId,
+                    commentId);
                 // Le brouillon réservé reste privé et sera réconcilié par le worker.
             }
         }
+
+        return failedImageIds;
     }
 
     public async Task RequestRemovedCleanupAsync(
@@ -176,6 +212,33 @@ public sealed class CommentImageManager
             image.Id,
             ownerId,
             cancellationToken);
+    }
+
+    private async Task ReleaseReservationsAsync(
+        string actorUserId,
+        string commentId,
+        IReadOnlyCollection<string> reservedImageIds)
+    {
+        foreach (string imageId in reservedImageIds)
+        {
+            try
+            {
+                await this.imageRepository.ReleaseCommentDraftReservationAsync(
+                    imageId,
+                    actorUserId,
+                    commentId,
+                    CancellationToken.None);
+            }
+            catch (Exception exception)
+            {
+                this.logger?.LogWarning(
+                    exception,
+                    "Unable to release reserved comment image {ImageId} for comment {CommentId}.",
+                    imageId,
+                    commentId);
+                // La réconciliation libérera la réservation si le rollback échoue.
+            }
+        }
     }
 
     private static List<string> NormalizeIds(IReadOnlyCollection<string> imageIds)

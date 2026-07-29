@@ -152,7 +152,7 @@ public sealed class CommentImageManagerTests
     }
 
     [Fact]
-    public async Task PublishForCommentAsync_WhenSecondReservationFails_ShouldLeaveFirstForReconciliation()
+    public async Task PublishForCommentAsync_WhenSecondReservationFails_ShouldReleaseFirstReservation()
     {
         const string secondImageId = "11111111111111111111111111111111";
         Image firstDraft = CreateDraft("author-1");
@@ -195,6 +195,13 @@ public sealed class CommentImageManagerTests
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((Image?)null);
+        repository
+            .Setup(value => value.ReleaseCommentDraftReservationAsync(
+                ImageId,
+                "author-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(true);
         CommentImageManager manager = new CommentImageManager(
             repository.Object,
             Mock.Of<IImageBinaryStorage>());
@@ -206,6 +213,110 @@ public sealed class CommentImageManagerTests
             CancellationToken.None);
 
         Assert.False(result.IsSuccess);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PublishForCommentAsync_WhenSecondReservationThrows_ShouldReleaseFirstReservation()
+    {
+        const string secondImageId = "11111111111111111111111111111111";
+        Image firstDraft = CreateDraft("author-1");
+        Image secondDraft = new Image
+        {
+            Id = secondImageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "author-1",
+            IsPublished = false,
+        };
+        Image firstReserved = new Image
+        {
+            Id = ImageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "author-1",
+            PendingCommentId = "comment-1",
+            IsPublished = false,
+        };
+        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 2),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { firstDraft, secondDraft });
+        repository
+            .Setup(value => value.ReserveCommentDraftAsync(
+                ImageId,
+                "author-1",
+                "comment-1",
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(firstReserved);
+        repository
+            .Setup(value => value.ReserveCommentDraftAsync(
+                secondImageId,
+                "author-1",
+                "comment-1",
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new InvalidOperationException("reservation failed"));
+        repository
+            .Setup(value => value.ReleaseCommentDraftReservationAsync(
+                ImageId,
+                "author-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        CommentImageManager manager = new CommentImageManager(
+            repository.Object,
+            Mock.Of<IImageBinaryStorage>());
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => manager.PublishForCommentAsync(
+            "author-1",
+            "comment-1",
+            new[] { ImageId, secondImageId },
+            CancellationToken.None));
+
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task FinalizeForCommentAsync_WhenRepositoryCannotFinalize_ShouldReturnFailedImageIds()
+    {
+        const string failedImageId = "11111111111111111111111111111111";
+        const string exceptionImageId = "22222222222222222222222222222222";
+        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.FinalizeCommentDraftAsync(
+                ImageId,
+                "author-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(new Image { Id = ImageId });
+        repository
+            .Setup(value => value.FinalizeCommentDraftAsync(
+                failedImageId,
+                "author-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync((Image?)null);
+        repository
+            .Setup(value => value.FinalizeCommentDraftAsync(
+                exceptionImageId,
+                "author-1",
+                "comment-1",
+                CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("finalization failed"));
+        CommentImageManager manager = new CommentImageManager(
+            repository.Object,
+            Mock.Of<IImageBinaryStorage>());
+
+        IReadOnlyCollection<string> failedImageIds = await manager.FinalizeForCommentAsync(
+            "author-1",
+            "comment-1",
+            new[] { ImageId, failedImageId, exceptionImageId });
+
+        Assert.Equal(new[] { failedImageId, exceptionImageId }, failedImageIds);
         repository.VerifyAll();
     }
 

@@ -1,5 +1,6 @@
 using AmusementPark.Infrastructure.Services.Images;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Gif;
 using SixLabors.ImageSharp.Metadata.Profiles.Exif;
 using SixLabors.ImageSharp.PixelFormats;
 using Xunit;
@@ -8,6 +9,28 @@ namespace AmusementPark.Infrastructure.Tests.Services.Images;
 
 public sealed class MinioImageBinaryStorageTests
 {
+    [Fact]
+    public async Task LoadForStorageAsync_WhenPrivateImageIsAnimated_ShouldDecodeOnlyFirstFrame()
+    {
+        await using MemoryStream stream = new MemoryStream();
+        using (Image<Rgba32> image = new Image<Rgba32>(2, 3))
+        using (Image<Rgba32> secondFrameImage = new Image<Rgba32>(2, 3))
+        using (Image<Rgba32> thirdFrameImage = new Image<Rgba32>(2, 3))
+        {
+            image.Frames.AddFrame(secondFrameImage.Frames.RootFrame);
+            image.Frames.AddFrame(thirdFrameImage.Frames.RootFrame);
+            await image.SaveAsync(stream, new GifEncoder());
+        }
+
+        stream.Position = 0;
+        using Image decoded = await MinioImageBinaryStorage.LoadForStorageAsync(
+            stream,
+            stripMetadata: true,
+            CancellationToken.None);
+
+        Assert.Single(decoded.Frames);
+    }
+
     [Fact]
     public void StripEmbeddedMetadata_ShouldRemoveExifProfiles()
     {

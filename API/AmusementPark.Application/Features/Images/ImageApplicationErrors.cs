@@ -71,6 +71,13 @@ internal static class ImageApplicationErrors
             "A published comment image must be removed through comment editing.");
     }
 
+    public static ApplicationError CommentImageLifecycleManaged()
+    {
+        return ApplicationError.Conflict(
+            "image.comment.lifecycle-managed",
+            "Comment images can only be changed through the comment editor.");
+    }
+
     public static ApplicationError ErrorApplyingWatermark()
     {
         return ApplicationError.Technical("image.watermark.failed", "Error while applying image watermark.");

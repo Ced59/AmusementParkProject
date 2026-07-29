@@ -126,6 +126,31 @@ public sealed class ImageRepository : IImageRepository
         return images;
     }
 
+    public async Task<long> CountActiveCommentDraftsByOwnerAsync(
+        string ownerId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<ImageDocument> filter =
+            BuildActiveCommentDraftsByOwnerFilter(ownerId);
+        return await this.collection.CountDocumentsAsync(
+            filter,
+            cancellationToken: cancellationToken);
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildActiveCommentDraftsByOwnerFilter(
+        string ownerId)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        return
+            builder.Eq(static document => document.Category, ImageCategory.Comment)
+            & builder.Eq(static document => document.OwnerType, ImageOwnerType.CommentDraft)
+            & builder.Eq(static document => document.OwnerId, ownerId)
+            & builder.Eq(static document => document.IsPublished, false)
+            & builder.Or(
+                builder.Eq(static document => document.CleanupRequestedAt, null),
+                builder.Ne(static document => document.PendingCommentId, null));
+    }
+
     public async Task<IReadOnlyCollection<Image>> GetByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory? category, CancellationToken cancellationToken)
     {
         List<string> normalizedOwnerIds = ownerIds

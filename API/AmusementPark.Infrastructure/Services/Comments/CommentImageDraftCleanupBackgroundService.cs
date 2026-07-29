@@ -8,7 +8,7 @@ namespace AmusementPark.Infrastructure.Services.Comments;
 public sealed class CommentImageDraftCleanupBackgroundService : BackgroundService
 {
     private static readonly TimeSpan DraftRetention = TimeSpan.FromHours(24);
-    private static readonly TimeSpan CleanupInterval = TimeSpan.FromHours(1);
+    private static readonly TimeSpan CleanupInterval = TimeSpan.FromMinutes(5);
     private const int MaximumDeletionsPerRun = 50;
     private readonly IServiceScopeFactory serviceScopeFactory;
     private readonly ILogger<CommentImageDraftCleanupBackgroundService> logger;

@@ -11,6 +11,41 @@ namespace AmusementPark.Application.Tests.Features.Images.Handlers;
 public sealed class ApplyImageWatermarkCommandHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenImageBelongsToCommentLifecycle_ShouldRejectBeforeStorage()
+    {
+        Image image = new Image
+        {
+            Id = "comment-image",
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.Comment,
+            OwnerId = "comment-1",
+            Path = "comment/comment-image",
+        };
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByIdAsync(
+                "comment-image",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(image);
+        Mock<IImageBinaryStorage> imageBinaryStorage =
+            new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        ApplyImageWatermarkCommandHandler handler = new ApplyImageWatermarkCommandHandler(
+            imageRepository.Object,
+            imageBinaryStorage.Object);
+
+        ApplicationResult<Image> result = await handler.HandleAsync(
+            new ApplyImageWatermarkCommand("comment-image"),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "image.comment.lifecycle-managed");
+        imageRepository.VerifyAll();
+        imageBinaryStorage.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenImageIsAlreadyWatermarked_ShouldReturnWithoutReprocessing()
     {
         Image image = new Image

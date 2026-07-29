@@ -18,6 +18,45 @@ namespace AmusementPark.Application.Tests.Features.Images.Handlers;
 public sealed class UpdateImageMetadataCommandHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenImageBelongsToCommentLifecycle_ShouldRejectBeforeMutation()
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "comment-image",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Image
+            {
+                Id = "comment-image",
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.Comment,
+                OwnerId = "comment-1",
+                IsPublished = true,
+            });
+        UpdateImageMetadataCommandHandler handler = new UpdateImageMetadataCommandHandler(
+            imageRepository.Object,
+            Mock.Of<IParkRepository>(),
+            Mock.Of<IAttractionManufacturerRepository>(),
+            Mock.Of<ISearchProjectionWriter>(),
+            Mock.Of<IUserRepository>());
+
+        ApplicationResult<Image> result = await handler.HandleAsync(
+            new UpdateImageMetadataCommand("comment-image", new ImageMetadataUpdate
+            {
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.Comment,
+                OwnerId = "comment-1",
+                IsPublished = false,
+            }));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "image.comment.lifecycle-managed");
+        imageRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenCurrentParkLogoLeavesLogoCategory_ShouldClearParkCurrentLogo()
     {
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);

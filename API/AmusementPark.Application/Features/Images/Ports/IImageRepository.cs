@@ -14,6 +14,7 @@ public interface IImageRepository
     Task<Image?> GetByIdAsync(string imageId, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<Image>> GetByIdsAsync(IReadOnlyCollection<string> imageIds, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<Image>> GetByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory? category, CancellationToken cancellationToken);
+    Task<long> CountActiveCommentDraftsByOwnerAsync(string ownerId, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<Image>> GetByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory? category, CancellationToken cancellationToken);
     Task<Image?> GetByOwnerAndSourceUrlAsync(ImageOwnerType ownerType, string ownerId, string sourceUrl, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<Image>> GetExpiredCommentDraftsAsync(DateTime createdBeforeUtc, int limit, CancellationToken cancellationToken);

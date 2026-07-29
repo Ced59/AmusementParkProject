@@ -24,12 +24,10 @@ public sealed class CommentImageCommandHandlersTests
         Mock<IUserRepository> users = CreateUserRepository(moderator);
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         images
-            .Setup(value => value.GetByOwnerAsync(
-                ImageOwnerType.CommentDraft,
+            .Setup(value => value.CountActiveCommentDraftsByOwnerAsync(
                 moderator.Id,
-                ImageCategory.Comment,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(Array.Empty<Image>());
+            .ReturnsAsync(0);
         Mock<ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>>> uploader =
             new Mock<ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>>>(MockBehavior.Strict);
         uploader
@@ -38,7 +36,8 @@ public sealed class CommentImageCommandHandlersTests
                     command.Request.Category == ImageCategory.Comment
                     && command.Request.OwnerType == ImageOwnerType.CommentDraft
                     && command.Request.OwnerId == moderator.Id
-                    && !command.Request.IsPublished),
+                    && !command.Request.IsPublished
+                    && command.AllowManagedCommentLifecycle),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(ApplicationResult<UploadedImageResult>.Success(new UploadedImageResult
             {
@@ -122,14 +121,10 @@ public sealed class CommentImageCommandHandlersTests
         User administrator = CreateActor(Role.Admin);
         Mock<IUserRepository> users = CreateUserRepository(administrator);
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
-        images.Setup(value => value.GetByOwnerAsync(
-                ImageOwnerType.CommentDraft,
+        images.Setup(value => value.CountActiveCommentDraftsByOwnerAsync(
                 administrator.Id,
-                ImageCategory.Comment,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(Enumerable.Range(0, 24)
-                .Select(static index => new Image { Id = index.ToString() })
-                .ToList());
+            .ReturnsAsync(CommentImageManager.MaximumDraftImagesPerAuthor);
         UploadCommentImageCommandHandler handler = new UploadCommentImageCommandHandler(
             users.Object,
             images.Object,

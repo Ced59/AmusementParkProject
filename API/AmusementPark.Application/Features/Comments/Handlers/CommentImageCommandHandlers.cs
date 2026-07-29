@@ -56,12 +56,10 @@ public sealed class UploadCommentImageCommandHandler
             return ApplicationResult<UploadedImageResult>.Failure(CommentApplicationErrors.ImageUploadInvalid());
         }
 
-        IReadOnlyCollection<Image> existingDrafts = await this.imageRepository.GetByOwnerAsync(
-            ImageOwnerType.CommentDraft,
+        long activeDraftCount = await this.imageRepository.CountActiveCommentDraftsByOwnerAsync(
             actor!.Id,
-            ImageCategory.Comment,
             cancellationToken);
-        if (existingDrafts.Count >= CommentImageManager.MaximumDraftImagesPerAuthor)
+        if (activeDraftCount >= CommentImageManager.MaximumDraftImagesPerAuthor)
         {
             return ApplicationResult<UploadedImageResult>.Failure(CommentApplicationErrors.TooManyImages());
         }
@@ -75,7 +73,9 @@ public sealed class UploadCommentImageCommandHandler
             OwnerId = actor.Id,
             IsPublished = false,
         };
-        return await this.uploadImageHandler.HandleAsync(new UploadImageCommand(request), cancellationToken);
+        return await this.uploadImageHandler.HandleAsync(
+            new UploadImageCommand(request, AllowManagedCommentLifecycle: true),
+            cancellationToken);
     }
 
     private static bool CanManageCommentImages(User? actor)

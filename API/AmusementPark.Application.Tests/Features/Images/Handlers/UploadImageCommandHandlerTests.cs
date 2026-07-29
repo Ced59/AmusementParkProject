@@ -14,6 +14,36 @@ namespace AmusementPark.Application.Tests.Features.Images.Handlers;
 public sealed class UploadImageCommandHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenGenericUploadTargetsCommentLifecycle_ShouldRejectBeforeProcessing()
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IImageProcessingPipeline> imageProcessingPipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        Mock<IImageBinaryStorage> imageBinaryStorage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            imageRepository.Object,
+            imageProcessingPipeline.Object,
+            imageBinaryStorage.Object);
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Comment,
+                File = CreateAvatarFile(100, "image/png"),
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+                IsPublished = false,
+            }));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "image.comment.lifecycle-managed");
+        imageRepository.VerifyNoOtherCalls();
+        imageProcessingPipeline.VerifyNoOtherCalls();
+        imageBinaryStorage.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenAvatarIsValid_ShouldStripMetadataAndPersistNoLocation()
     {
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
@@ -331,7 +361,7 @@ public sealed class UploadImageCommandHandlerTests
                 OwnerType = ImageOwnerType.CommentDraft,
                 OwnerId = "author-1",
                 IsPublished = false,
-            }));
+            }, AllowManagedCommentLifecycle: true));
 
         Assert.True(result.IsSuccess);
         Assert.False(result.Value!.Image.IsPublished);
@@ -379,7 +409,7 @@ public sealed class UploadImageCommandHandlerTests
                 OwnerType = ImageOwnerType.CommentDraft,
                 OwnerId = "author-1",
                 IsPublished = false,
-            }));
+            }, AllowManagedCommentLifecycle: true));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(
@@ -422,7 +452,7 @@ public sealed class UploadImageCommandHandlerTests
                 OwnerType = ImageOwnerType.CommentDraft,
                 OwnerId = "author-1",
                 IsPublished = false,
-            }));
+            }, AllowManagedCommentLifecycle: true));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "comment.image.invalid");
@@ -498,7 +528,7 @@ public sealed class UploadImageCommandHandlerTests
                 OwnerId = "author-1",
                 WithWatermark = true,
                 IsPublished = false,
-            }));
+            }, AllowManagedCommentLifecycle: true));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "comment.image.invalid");

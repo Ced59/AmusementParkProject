@@ -92,7 +92,10 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
             file.Content.Position = 0;
         }
 
-        using Image image = await Image.LoadAsync(file.Content, cancellationToken);
+        using Image image = await LoadForStorageAsync(
+            file.Content,
+            stripMetadata,
+            cancellationToken);
         ResizeInPlaceIfNeeded(image);
         if (withWatermark)
         {
@@ -152,6 +155,24 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         ArgumentNullException.ThrowIfNull(image);
         image.Mutate(static context => context.AutoOrient());
         StripEmbeddedMetadata(image);
+    }
+
+    internal static async Task<Image> LoadForStorageAsync(
+        Stream content,
+        bool stripMetadata,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(content);
+        if (!stripMetadata)
+        {
+            return await Image.LoadAsync(content, cancellationToken);
+        }
+
+        DecoderOptions options = new DecoderOptions
+        {
+            MaxFrames = 1,
+        };
+        return await Image.LoadAsync(options, content, cancellationToken);
     }
 
     public async Task<bool> ApplyWatermarkAsync(string pathWithoutExtension, CancellationToken cancellationToken)

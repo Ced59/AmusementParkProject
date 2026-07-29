@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Images;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Metadata.Profiles.Exif;
 using SixLaborsImage = SixLabors.ImageSharp.Image;
 
@@ -14,6 +15,11 @@ namespace AmusementPark.Infrastructure.Services.Images;
 /// </summary>
 public sealed class ImageMetadataPipeline : IImageProcessingPipeline
 {
+    private static readonly DecoderOptions InspectionDecoderOptions = new DecoderOptions
+    {
+        MaxFrames = 2,
+    };
+
     public Task<ImageUploadRequest> ProcessAsync(ImageUploadRequest request, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
@@ -30,7 +36,10 @@ public sealed class ImageMetadataPipeline : IImageProcessingPipeline
             imageStream.Position = 0;
         }
 
-        ImageInfo image = await SixLaborsImage.IdentifyAsync(imageStream, cancellationToken);
+        ImageInfo image = await SixLaborsImage.IdentifyAsync(
+            InspectionDecoderOptions,
+            imageStream,
+            cancellationToken);
         ExifProfile? exif = image.Metadata.ExifProfile;
 
         Rational[]? latValues = GetExifReferenceValue(exif, ExifTag.GPSLatitude);

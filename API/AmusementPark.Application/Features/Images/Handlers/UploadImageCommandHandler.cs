@@ -47,6 +47,15 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             return ApplicationResult<UploadedImageResult>.Failure(ApplicationErrors.Required(nameof(command.Request)));
         }
 
+        if (!command.AllowManagedCommentLifecycle
+            && ManagedCommentImageMutationGuard.IsManagedScope(
+                command.Request.Category,
+                command.Request.OwnerType))
+        {
+            return ApplicationResult<UploadedImageResult>.Failure(
+                ImageApplicationErrors.CommentImageLifecycleManaged());
+        }
+
         if (command.Request.File is null || command.Request.File.Content == Stream.Null || string.IsNullOrWhiteSpace(command.Request.File.FileName))
         {
             return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.NoImageFileProvided());

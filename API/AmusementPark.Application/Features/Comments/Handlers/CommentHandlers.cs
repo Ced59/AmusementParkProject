@@ -111,7 +111,7 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
         };
 
         Comment created = await this.commentRepository.CreateAsync(comment, cancellationToken);
-        await this.commentImageManager.FinalizeForCommentAsync(
+        _ = await this.commentImageManager.FinalizeForCommentAsync(
             author.Id,
             commentId,
             imageResult.Value);
@@ -261,7 +261,7 @@ public sealed class UpdateCommentCommandHandler
 
         if (updated is not null)
         {
-            await this.commentImageManager.FinalizeForCommentAsync(
+            _ = await this.commentImageManager.FinalizeForCommentAsync(
                 actor.Id,
                 comment.Id,
                 imageResult.Value);

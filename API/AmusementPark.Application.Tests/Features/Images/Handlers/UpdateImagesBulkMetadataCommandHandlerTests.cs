@@ -21,6 +21,15 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
 
         ImageBulkMetadataUpdate metadata = new ImageBulkMetadataUpdate(IsPublished: false);
         imageRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "image-1", "image-2" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Image { Id = "image-1", Category = ImageCategory.Park },
+                new Image { Id = "image-2", Category = ImageCategory.Park },
+            });
+        imageRepository
             .Setup(repository => repository.UpdateBulkMetadataAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "image-1", "image-2" })),
                 metadata,
@@ -62,8 +71,10 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
         };
 
         imageRepository
-            .Setup(repository => repository.GetByIdAsync("image-1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(existing);
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "image-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { existing });
 
         updateImageMetadataCommandHandler
             .Setup(handler => handler.HandleAsync(
@@ -96,5 +107,42 @@ public sealed class UpdateImagesBulkMetadataCommandHandlerTests
         Assert.Equal(1, result.Value.UpdatedCount);
         imageRepository.VerifyAll();
         updateImageMetadataCommandHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenSelectionContainsCommentImage_ShouldRejectBeforeMutation()
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "comment-image" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Image
+                {
+                    Id = "comment-image",
+                    Category = ImageCategory.Comment,
+                    OwnerType = ImageOwnerType.Comment,
+                    OwnerId = "comment-1",
+                },
+            });
+        Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>> updateHandler =
+            new Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>>(MockBehavior.Strict);
+        UpdateImagesBulkMetadataCommandHandler handler = new UpdateImagesBulkMetadataCommandHandler(
+            imageRepository.Object,
+            updateHandler.Object);
+
+        ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
+            new UpdateImagesBulkMetadataCommand(
+                new[] { "comment-image" },
+                new ImageBulkMetadataUpdate(IsPublished: false)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "image.comment.lifecycle-managed");
+        imageRepository.VerifyAll();
+        updateHandler.VerifyNoOtherCalls();
     }
 }

@@ -61,6 +61,15 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
             }
 
             ImageMetadataUpdate metadata = BuildNormalizedMetadata(command.Metadata, existing);
+            if (ManagedCommentImageMutationGuard.IsManagedScope(existing)
+                || ManagedCommentImageMutationGuard.IsManagedScope(
+                    metadata.Category,
+                    metadata.OwnerType))
+            {
+                return ApplicationResult<Image>.Failure(
+                    ImageApplicationErrors.CommentImageLifecycleManaged());
+            }
+
             if (metadata.OwnerType != ImageOwnerType.None && string.IsNullOrWhiteSpace(metadata.OwnerId))
             {
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.InvalidOwner());
