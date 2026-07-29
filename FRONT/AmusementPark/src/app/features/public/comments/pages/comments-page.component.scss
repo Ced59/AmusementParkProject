@@ -51,6 +51,8 @@
 .comment-editor {
   display: grid;
   gap: 1.2rem;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .comment-editor__header {
@@ -58,6 +60,19 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: minmax(0, 1fr) minmax(15rem, 21rem);
+}
+
+.comment-editor__header > *,
+.comment-editor app-localized-rich-text-editor {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.comment-editor__header h2,
+.comment-editor__header p,
+.comment-editor__official strong,
+.comment-editor__official small {
+  overflow-wrap: anywhere;
 }
 
 .comment-editor__official {
@@ -79,6 +94,7 @@
 .comment-editor__official span {
   display: grid;
   gap: 0.2rem;
+  min-width: 0;
 }
 
 .comment-editor__official small {

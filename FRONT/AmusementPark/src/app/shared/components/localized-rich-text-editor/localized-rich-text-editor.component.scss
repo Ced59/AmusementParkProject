@@ -4,17 +4,34 @@
 .localized-rich-text-editor {
   display: block;
   max-width: 100%;
+  min-width: 0;
+  width: 100%;
 }
 
+.localized-rich-text-editor app-ui-tabs,
+.localized-rich-text-editor app-ui-tab-list,
+.localized-rich-text-editor app-ui-tab-panels,
+.localized-rich-text-editor app-ui-tab-panel,
 .localized-rich-text-editor__panel {
   display: block;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
 }
 
 .localized-rich-text-editor .p-tablist {
+  display: block;
   max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
+}
+
+.localized-rich-text-editor .p-tablist-tab-list {
+  display: flex;
+  min-width: max-content;
+  width: max-content;
 }
 
 .localized-rich-text-editor .p-tab {
@@ -22,13 +39,26 @@
   white-space: nowrap;
 }
 
+.localized-rich-text-editor .p-editor-container,
+.localized-rich-text-editor .p-editor-content,
+.localized-rich-text-editor .ql-container,
+.localized-rich-text-editor .ql-editor {
+  max-width: 100%;
+  min-width: 0;
+}
+
 .localized-rich-text-editor .p-editor-container {
   border-radius: 0.75rem;
   overflow: hidden;
 }
 
-.localized-rich-text-editor .p-editor-toolbar {
+.localized-rich-text-editor .p-editor-toolbar,
+.localized-rich-text-editor .ql-toolbar {
   border-bottom: 1px solid var(--surface-border);
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .localized-rich-text-editor .p-editor-content {
@@ -43,5 +73,10 @@
 
   .localized-rich-text-editor .p-tab {
     min-width: max-content;
+  }
+
+  .localized-rich-text-editor .p-editor-toolbar,
+  .localized-rich-text-editor .ql-toolbar {
+    scrollbar-width: thin;
   }
 }
