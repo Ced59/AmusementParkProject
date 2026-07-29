@@ -1,6 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { DestroyRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import {
   CommentSummary,
@@ -11,6 +12,7 @@ import {
 } from '@app/models/comments/comment.models';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { CommentDataPort } from './comment-data.ports';
 import { CommentThreadStateFacade } from './comment-thread-state.facade';
 
@@ -29,6 +31,7 @@ class FakeCommentDataPort implements CommentDataPort {
     createComment('official', true, '2026-07-01T10:00:00Z')
   ]);
   createdComment: PublicComment = createComment('created', false, '2026-07-03T10:00:00Z');
+  threadResponse: Observable<CommentThread> | null = null;
   readonly createCalls: CreateCommentRequest[] = [];
 
   getSummary(targetType: CommentTargetType, targetId: string): Observable<CommentSummary> {
@@ -41,7 +44,7 @@ class FakeCommentDataPort implements CommentDataPort {
   }
 
   getThread(_targetType: CommentTargetType, _targetId: string): Observable<CommentThread> {
-    return of(this.thread);
+    return this.threadResponse ?? of(this.thread);
   }
 
   createComment(request: CreateCommentRequest): Observable<PublicComment> {
@@ -78,6 +81,19 @@ class FakeToastMessageService {
 class FakeTranslateService {
   instant(key: string): string {
     return key;
+  }
+}
+
+class FakeSsrHttpStatusService {
+  readonly statuses: number[] = [];
+  notFoundCallCount: number = 0;
+
+  setNotFound(): void {
+    this.notFoundCallCount += 1;
+  }
+
+  setStatus(status: number): void {
+    this.statuses.push(status);
   }
 }
 
@@ -134,6 +150,34 @@ describe('CommentThreadStateFacade', () => {
     expect(context.facade.canWrite()).toBe(false);
     expect(context.dataPort.createCalls).toEqual([]);
   });
+
+  it('marks a missing comment target as not found during SSR', () => {
+    const context = createFacade();
+    context.dataPort.threadResponse = throwError(
+      () => new HttpErrorResponse({ status: 404 })
+    );
+
+    context.facade.load('Park', 'missing-park');
+
+    expect(context.facade.state().kind).toBe('error');
+    expect(context.facade.notFound()).toBe(true);
+    expect(context.ssrHttpStatusService.notFoundCallCount).toBe(1);
+    expect(context.ssrHttpStatusService.statuses).toEqual([]);
+  });
+
+  it('marks transient comment load failures as unavailable during SSR', () => {
+    const context = createFacade();
+    context.dataPort.threadResponse = throwError(
+      () => new HttpErrorResponse({ status: 503 })
+    );
+
+    context.facade.load('Park', 'park-1');
+
+    expect(context.facade.state().kind).toBe('error');
+    expect(context.facade.notFound()).toBe(false);
+    expect(context.ssrHttpStatusService.notFoundCallCount).toBe(0);
+    expect(context.ssrHttpStatusService.statuses).toEqual([503]);
+  });
 });
 
 function createFacade(): {
@@ -141,21 +185,25 @@ function createFacade(): {
   dataPort: FakeCommentDataPort;
   authService: FakeAuthService;
   toastMessageService: FakeToastMessageService;
+  ssrHttpStatusService: FakeSsrHttpStatusService;
 } {
   const dataPort: FakeCommentDataPort = new FakeCommentDataPort();
   const authService: FakeAuthService = new FakeAuthService();
   const toastMessageService: FakeToastMessageService = new FakeToastMessageService();
+  const ssrHttpStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
   return {
     facade: new CommentThreadStateFacade(
       dataPort,
       authService as unknown as AuthService,
       toastMessageService as unknown as ToastMessageService,
       new FakeTranslateService() as unknown as TranslateService,
-      new FakeDestroyRef()
+      new FakeDestroyRef(),
+      ssrHttpStatusService as unknown as SsrHttpStatusService
     ),
     dataPort,
     authService,
-    toastMessageService
+    toastMessageService,
+    ssrHttpStatusService
   };
 }
 

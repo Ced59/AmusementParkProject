@@ -1,15 +1,23 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Comments.Commands;
+using AmusementPark.Application.Features.Comments.Handlers;
+using AmusementPark.Application.Features.Comments.Ports;
+using AmusementPark.Application.Features.Comments.Queries;
+using AmusementPark.Application.Features.Comments.Results;
 using AmusementPark.Application.Features.Contact.Commands;
 using AmusementPark.Application.Features.Contact.Contracts;
 using AmusementPark.Application.Features.Contact.Queries;
+using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.TechnicalPages.Commands;
 using AmusementPark.Application.Features.TechnicalPages.Queries;
 using AmusementPark.Application.Features.TechnicalPages.Results;
 using AmusementPark.Application.Features.TechnicalStats.Commands;
 using AmusementPark.Application.Features.TechnicalStats.Contracts;
 using AmusementPark.Application.Features.TechnicalStats.Queries;
+using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Videos.Queries;
@@ -17,6 +25,7 @@ using AmusementPark.Core.Domain.Videos;
 using AmusementPark.WebAPI.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using Xunit;
 
 namespace AmusementPark.WebAPI.Tests.DependencyInjection;
@@ -48,5 +57,31 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpsertTechnicalPagesJsonCommand, ApplicationResult<TechnicalPageJsonUpsertResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalStatsQuery, ApplicationResult<TechnicalStatsSnapshot>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpdateTechnicalStatsSettingsCommand, ApplicationResult<TechnicalStatsSettings>>));
+    }
+
+    [Fact]
+    public void AddApplicationModules_WhenCalled_ShouldResolveCommentHandlers()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+        services.AddApplicationModules(configuration);
+        services.AddSingleton(Mock.Of<ICommentRepository>());
+        services.AddSingleton(Mock.Of<ICommentContentSanitizer>());
+        services.AddSingleton(Mock.Of<IUserRepository>());
+        services.AddSingleton(Mock.Of<IParkRepository>());
+        services.AddSingleton(Mock.Of<IParkItemRepository>());
+
+        using ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+        ICommandHandler<CreateCommentCommand, ApplicationResult<CommentResult>> createHandler =
+            serviceProvider.GetRequiredService<ICommandHandler<CreateCommentCommand, ApplicationResult<CommentResult>>>();
+        IQueryHandler<GetCommentSummaryQuery, ApplicationResult<CommentSummaryResult>> summaryHandler =
+            serviceProvider.GetRequiredService<IQueryHandler<GetCommentSummaryQuery, ApplicationResult<CommentSummaryResult>>>();
+        IQueryHandler<GetCommentThreadQuery, ApplicationResult<CommentThreadResult>> threadHandler =
+            serviceProvider.GetRequiredService<IQueryHandler<GetCommentThreadQuery, ApplicationResult<CommentThreadResult>>>();
+
+        Assert.IsType<CreateCommentCommandHandler>(createHandler);
+        Assert.IsType<GetCommentSummaryQueryHandler>(summaryHandler);
+        Assert.IsType<GetCommentThreadQueryHandler>(threadHandler);
     }
 }
