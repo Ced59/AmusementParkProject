@@ -36,7 +36,7 @@ class FakeCommentDataPort implements CommentDataPort {
   threadResponse: Observable<CommentThread> | null = null;
   readonly createCalls: CreateCommentRequest[] = [];
   readonly updateCalls: UpdateCommentRequest[] = [];
-  readonly deleteCalls: string[] = [];
+  readonly deleteCalls: Array<{ commentId: string; revision: number }> = [];
 
   getSummary(targetType: CommentTargetType, targetId: string): Observable<CommentSummary> {
     return of({
@@ -72,8 +72,8 @@ class FakeCommentDataPort implements CommentDataPort {
     return of(this.updatedComment);
   }
 
-  deleteComment(commentId: string): Observable<void> {
-    this.deleteCalls.push(commentId);
+  deleteComment(commentId: string, revision: number): Observable<void> {
+    this.deleteCalls.push({ commentId, revision });
     return of(undefined);
   }
 }
@@ -168,7 +168,8 @@ describe('CommentThreadStateFacade', () => {
     const request: UpdateCommentRequest = {
       id: 'regular',
       bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
-      isOfficial: true
+      isOfficial: true,
+      revision: 1
     };
 
     context.facade.update(request);
@@ -189,9 +190,9 @@ describe('CommentThreadStateFacade', () => {
     context.facade.initializeAuthorAccess();
     context.facade.load('Park', 'park-1');
 
-    context.facade.delete('regular');
+    context.facade.delete('regular', 1);
 
-    expect(context.dataPort.deleteCalls).toEqual(['regular']);
+    expect(context.dataPort.deleteCalls).toEqual([{ commentId: 'regular', revision: 1 }]);
     expect(context.facade.thread()?.comments.map((comment: PublicComment) => comment.id))
       .toEqual(['official']);
     expect(context.facade.editorResetVersion()).toBe(1);
@@ -218,14 +219,15 @@ describe('CommentThreadStateFacade', () => {
     context.facade.update({
       id: 'own',
       bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
-      isOfficial: false
+      isOfficial: false,
+      revision: 1
     });
-    context.facade.delete('own');
+    context.facade.delete('own', 1);
 
     expect(context.facade.canWrite()).toBe(true);
     expect(context.facade.canManage()).toBe(true);
     expect(context.dataPort.updateCalls).toHaveLength(1);
-    expect(context.dataPort.deleteCalls).toEqual(['own']);
+    expect(context.dataPort.deleteCalls).toEqual([{ commentId: 'own', revision: 1 }]);
   });
 
   it('does not let a moderator manage another author comment', () => {
@@ -241,9 +243,10 @@ describe('CommentThreadStateFacade', () => {
     context.facade.update({
       id: 'other',
       bodies: [{ languageCode: 'fr', value: '<p>Interdit</p>' }],
-      isOfficial: false
+      isOfficial: false,
+      revision: 1
     });
-    context.facade.delete('other');
+    context.facade.delete('other', 1);
 
     expect(context.facade.canManage()).toBe(true);
     expect(context.dataPort.updateCalls).toEqual([]);
@@ -289,9 +292,10 @@ describe('CommentThreadStateFacade', () => {
     context.facade.update({
       id: 'own',
       bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
-      isOfficial: false
+      isOfficial: false,
+      revision: 1
     });
-    context.facade.delete('other');
+    context.facade.delete('other', 1);
 
     expect(context.dataPort.updateCalls).toHaveLength(1);
     expect(context.dataPort.deleteCalls).toEqual([]);
@@ -381,6 +385,7 @@ function createComment(
     isOfficial,
     canUpdate: canManage,
     canDelete: canManage,
+    revision: 1,
     createdAtUtc,
     updatedAtUtc: createdAtUtc
   };

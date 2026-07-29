@@ -51,7 +51,7 @@ class FakeCommentDataPort implements CommentDataPort {
     throw new Error('Not used.');
   }
 
-  deleteComment(_commentId: string): Observable<void> {
+  deleteComment(_commentId: string, _revision: number): Observable<void> {
     throw new Error('Not used.');
   }
 

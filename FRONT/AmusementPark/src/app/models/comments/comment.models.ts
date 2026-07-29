@@ -14,6 +14,7 @@ export interface PublicComment {
   isOfficial: boolean;
   canUpdate: boolean;
   canDelete: boolean;
+  revision: number;
   createdAtUtc: string;
   updatedAtUtc: string;
 }
@@ -45,4 +46,5 @@ export interface UpdateCommentRequest {
   id: string;
   bodies: LocalizedItem<string>[];
   isOfficial: boolean;
+  revision: number;
 }

@@ -71,24 +71,31 @@ describe('CommentsApiService', () => {
     const request: UpdateCommentRequest = {
       id: 'comment/1',
       bodies: [{ languageCode: 'fr', value: '<p>Avis corrigé</p>' }],
-      isOfficial: true
+      isOfficial: true,
+      revision: 3
     };
 
     service.updateComment(request).subscribe();
-    service.deleteComment(request.id).subscribe();
+    service.deleteComment(request.id, request.revision).subscribe();
 
     expect(httpClient.put).toHaveBeenCalledWith(
       `${environment.apiBaseUrl}comments/comment%2F1`,
       {
         bodies: request.bodies,
-        isOfficial: true
+        isOfficial: true,
+        revision: 3
       },
       expect.objectContaining({
         headers: expect.anything()
       })
     );
     expect(httpClient.delete).toHaveBeenCalledWith(
-      `${environment.apiBaseUrl}comments/comment%2F1`
+      `${environment.apiBaseUrl}comments/comment%2F1`,
+      {
+        params: {
+          revision: '3'
+        }
+      }
     );
   });
 

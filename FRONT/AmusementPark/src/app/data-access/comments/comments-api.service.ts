@@ -60,14 +60,19 @@ export class CommentsApiService {
       url,
       {
         bodies: request.bodies,
-        isOfficial: request.isOfficial
+        isOfficial: request.isOfficial,
+        revision: request.revision
       },
       this.jsonHttpOptions
     );
   }
 
-  deleteComment(commentId: string): Observable<void> {
+  deleteComment(commentId: string, revision: number): Observable<void> {
     const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.delete(commentId)}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<void>(url, {
+      params: {
+        revision: revision.toString()
+      }
+    });
   }
 }

@@ -48,7 +48,7 @@ class FakeCommentThreadStateFacade {
     this.editorResetReasonSignal.asReadonly();
   readonly notFoundSignal: WritableSignal<boolean> = signal<boolean>(false);
   readonly notFound: Signal<boolean> = this.notFoundSignal.asReadonly();
-  readonly deleteCalls: string[] = [];
+  readonly deleteCalls: Array<{ commentId: string; revision: number }> = [];
   readonly createCalls: CreateCommentRequest[] = [];
   readonly updateCalls: UpdateCommentRequest[] = [];
 
@@ -66,8 +66,8 @@ class FakeCommentThreadStateFacade {
     this.updateCalls.push(request);
   }
 
-  delete(_commentId: string): void {
-    this.deleteCalls.push(_commentId);
+  delete(commentId: string, revision: number): void {
+    this.deleteCalls.push({ commentId, revision });
   }
 
   clearSaveError(): void {
@@ -176,6 +176,7 @@ describe('CommentsPageComponent', () => {
       isOfficial: false,
       canUpdate: true,
       canDelete: true,
+      revision: 4,
       createdAtUtc: '2026-07-01T10:00:00Z',
       updatedAtUtc: '2026-07-01T10:00:00Z'
     };
@@ -221,7 +222,7 @@ describe('CommentsPageComponent', () => {
     confirmSpy.mockReturnValue(true);
     deleteComment(comment);
 
-    expect(stateFacade.deleteCalls).toEqual(['comment-1']);
+    expect(stateFacade.deleteCalls).toEqual([{ commentId: 'comment-1', revision: 4 }]);
 
     managementComponent.startEditing.call(component, comment);
     managementComponent.submit.call(component);
@@ -230,7 +231,8 @@ describe('CommentsPageComponent', () => {
     expect(stateFacade.updateCalls).toEqual([{
       id: 'comment-1',
       bodies: [{ languageCode: 'fr', value: '<p>Avis</p>' }],
-      isOfficial: false
+      isOfficial: false,
+      revision: 4
     }]);
   });
 

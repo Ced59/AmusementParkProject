@@ -241,7 +241,7 @@ export class CommentThreadStateFacade {
       });
   }
 
-  delete(commentId: string): void {
+  delete(commentId: string, revision: number): void {
     const normalizedCommentId: string = commentId.trim();
     const thread: CommentThread | null = this.thread();
     const comment: PublicComment | undefined = thread?.comments.find(
@@ -267,7 +267,7 @@ export class CommentThreadStateFacade {
             return;
           }
 
-          this.commentDataPort.deleteComment(normalizedCommentId)
+          this.commentDataPort.deleteComment(normalizedCommentId, revision)
             .pipe(take(1), takeUntilDestroyed(this.destroyRef))
             .subscribe({
               next: (): void => {

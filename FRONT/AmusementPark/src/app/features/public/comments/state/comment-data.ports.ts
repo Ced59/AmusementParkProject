@@ -19,7 +19,7 @@ export interface CommentDataPort {
   uploadCommentImage(file: File): Observable<CommentImageUpload>;
   deleteCommentImage(imageId: string): Observable<void>;
   updateComment(request: UpdateCommentRequest): Observable<PublicComment>;
-  deleteComment(commentId: string): Observable<void>;
+  deleteComment(commentId: string, revision: number): Observable<void>;
 }
 
 export const COMMENT_DATA_PORT = new InjectionToken<CommentDataPort>('COMMENT_DATA_PORT', {

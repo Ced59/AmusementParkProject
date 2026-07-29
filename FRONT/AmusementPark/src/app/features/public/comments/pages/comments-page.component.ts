@@ -220,10 +220,19 @@ export class CommentsPageComponent implements OnInit {
     this.pendingSubmissionImageIds = this.captureManagedImageIds(bodies);
     const editingId: string | null = this.editingCommentId();
     if (editingId) {
+      const editingComment: PublicComment | undefined = currentThread.comments.find(
+        (comment: PublicComment) => comment.id === editingId
+      );
+      if (!editingComment) {
+        this.pendingSubmissionImageIds = null;
+        return;
+      }
+
       const request: UpdateCommentRequest = {
         id: editingId,
         bodies,
-        isOfficial: this.editorForm.controls.isOfficial.value
+        isOfficial: this.editorForm.controls.isOfficial.value,
+        revision: editingComment.revision
       };
       this.stateFacade.update(request);
       return;
@@ -273,7 +282,7 @@ export class CommentsPageComponent implements OnInit {
       return;
     }
 
-    this.stateFacade.delete(comment.id);
+    this.stateFacade.delete(comment.id, comment.revision);
   }
 
   protected canUpdateComment(comment: PublicComment): boolean {
