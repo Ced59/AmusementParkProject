@@ -8,20 +8,27 @@
 
         <span class="rating-tree__park-main">
           <strong class="rating-tree__title">{{ park.name }}</strong>
-          <span>{{ ratingCountLabelKey | localizedPlural:park.ratingCount }}</span>
+          <span class="rating-tree__rating-count">
+            {{ (totalRatingCountLabelKey || ratingCountLabelKey) | localizedPlural:park.ratingCount }}
+          </span>
         </span>
 
         <span class="rating-tree__summary-actions">
-          <span class="rating-tree__score" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(park.score) }">
-            <span class="rating-tree__stars" aria-hidden="true">
-              @for (star of starIndexes; track star) {
-                <span class="rating-tree__star" [style.--fill]="fillPercent(park.score, star)">
-                  <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
-                  <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
-                </span>
-              }
+          <span class="rating-tree__park-score">
+            @if (parkScoreLabelKey) {
+              <span class="rating-tree__score-label">{{ parkScoreLabelKey | translate }}</span>
+            }
+            <span class="rating-tree__score" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(park.score) }">
+              <span class="rating-tree__stars" aria-hidden="true">
+                @for (star of starIndexes; track star) {
+                  <span class="rating-tree__star" [style.--fill]="fillPercent(park.score, star)">
+                    <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
+                    <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
+                  </span>
+                }
+              </span>
+              <strong>{{ formatRating(park.score) }}</strong>
             </span>
-            <strong>{{ formatRating(park.score) }}</strong>
           </span>
 
           <span class="rating-tree__toggle" aria-hidden="true">
@@ -75,6 +82,11 @@
                 } @else {
                   <span>{{ formatRating(metric.value) }}</span>
                 }
+                @if (metric.ratingCount !== null && metric.ratingCount !== undefined) {
+                  <span class="rating-tree__metric-count">
+                    {{ ratingCountLabelKey | localizedPlural:metric.ratingCount }}
+                  </span>
+                }
               </span>
             }
           </div>
@@ -89,7 +101,14 @@
         @for (section of park.sections; track section.id) {
           <details class="rating-tree__section">
             <summary class="rating-tree__section-summary">
-              <span class="rating-tree__section-title">{{ section.titleKey | translate }}</span>
+              <span class="rating-tree__section-main">
+                <span class="rating-tree__section-title">{{ section.titleKey | translate }}</span>
+                @if (section.ratingCount !== null && section.ratingCount !== undefined) {
+                  <span class="rating-tree__rating-count">
+                    {{ ratingCountLabelKey | localizedPlural:section.ratingCount }}
+                  </span>
+                }
+              </span>
               <span class="rating-tree__score rating-tree__score--compact" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(section.score) }">
                 <span class="rating-tree__stars" aria-hidden="true">
                   @for (star of starIndexes; track star) {
@@ -121,6 +140,11 @@
                       <a class="rating-tree__item-name" [routerLink]="route">{{ item.name }}</a>
                     } @else {
                       <span class="rating-tree__item-name">{{ item.name }}</span>
+                    }
+                    @if (item.ratingCount !== null && item.ratingCount !== undefined) {
+                      <span class="rating-tree__rating-count">
+                        {{ ratingCountLabelKey | localizedPlural:item.ratingCount }}
+                      </span>
                     }
                     @if (item.secondaryLabelKey && item.secondaryScore !== null && item.secondaryScore !== undefined) {
                       <span class="rating-tree__item-secondary">

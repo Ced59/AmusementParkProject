@@ -5,6 +5,8 @@ export const RATINGS_API_ENDPOINTS = {
     `ratings/${encodeURIComponent(targetType)}/${encodeURIComponent(targetId)}/summary`,
   getMyRating: (targetType: RatingTargetType, targetId: string) =>
     `ratings/${encodeURIComponent(targetType)}/${encodeURIComponent(targetId)}/me`,
+  deleteMyRating: (targetType: RatingTargetType, targetId: string) =>
+    `ratings/${encodeURIComponent(targetType)}/${encodeURIComponent(targetId)}/me`,
   upsert: 'ratings',
   getMyRatings: (page: number, size: number, search: string | null = null) => {
     const params: string[] = [`page=${page}`, `size=${size}`];

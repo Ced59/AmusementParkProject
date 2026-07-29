@@ -71,8 +71,14 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
         };
 
         UserRating upsertedRating = await this.ratingRepository.UpsertUserRatingAsync(rating, cancellationToken);
-        RatingAggregate? aggregate = await this.ratingRepository.RecalculateAggregateAsync(metadata, cancellationToken);
-        RatingSummaryResult summary = ToSummary(metadata.TargetType, metadata.TargetId, aggregate);
+        RatingAggregateTarget aggregateTarget = new RatingAggregateTarget(
+            metadata.TargetType,
+            metadata.TargetId,
+            metadata.ParkId,
+            metadata.ParkItemCategory,
+            metadata.ParkItemType);
+        RatingAggregate? aggregate = await this.ratingRepository.RecalculateAggregateAsync(aggregateTarget, cancellationToken);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(metadata.TargetType, metadata.TargetId, aggregate);
 
         return ApplicationResult<UserRatingResult>.Success(ToUserRatingResult(upsertedRating, summary));
     }
@@ -140,7 +146,68 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             summary);
     }
 
-    private static RatingSummaryResult ToSummary(RatingTargetType targetType, string targetId, RatingAggregate? aggregate)
+}
+
+public sealed class DeleteUserRatingCommandHandler : ICommandHandler<DeleteUserRatingCommand, ApplicationResult<RatingSummaryResult>>
+{
+    private readonly IRatingRepository ratingRepository;
+
+    public DeleteUserRatingCommandHandler(IRatingRepository ratingRepository)
+    {
+        this.ratingRepository = ratingRepository;
+    }
+
+    public async Task<ApplicationResult<RatingSummaryResult>> HandleAsync(
+        DeleteUserRatingCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        if (string.IsNullOrWhiteSpace(command.UserId))
+        {
+            return ApplicationResult<RatingSummaryResult>.Failure(ApplicationErrors.Required(nameof(command.UserId)));
+        }
+
+        if (string.IsNullOrWhiteSpace(command.TargetId))
+        {
+            return ApplicationResult<RatingSummaryResult>.Failure(ApplicationErrors.Required(nameof(command.TargetId)));
+        }
+
+        if (!Enum.IsDefined(command.TargetType))
+        {
+            return ApplicationResult<RatingSummaryResult>.Failure(RatingApplicationErrors.InvalidTargetType());
+        }
+
+        string userId = command.UserId.Trim();
+        string targetId = command.TargetId.Trim();
+        UserRating? deletedRating = await this.ratingRepository.DeleteUserRatingAsync(
+            userId,
+            command.TargetType,
+            targetId,
+            cancellationToken);
+
+        RatingAggregate? aggregate;
+        if (deletedRating is null)
+        {
+            aggregate = await this.ratingRepository.GetAggregateAsync(command.TargetType, targetId, cancellationToken);
+        }
+        else
+        {
+            RatingAggregateTarget aggregateTarget = new RatingAggregateTarget(
+                deletedRating.TargetType,
+                deletedRating.TargetId,
+                deletedRating.ParkId,
+                deletedRating.ParkItemCategory,
+                deletedRating.ParkItemType);
+            aggregate = await this.ratingRepository.RecalculateAggregateAsync(aggregateTarget, cancellationToken);
+        }
+
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(command.TargetType, targetId, aggregate);
+        return ApplicationResult<RatingSummaryResult>.Success(summary);
+    }
+}
+
+internal static class RatingResultFactory
+{
+    public static RatingSummaryResult CreateSummary(RatingTargetType targetType, string targetId, RatingAggregate? aggregate)
     {
         if (aggregate is null)
         {
@@ -178,9 +245,7 @@ public sealed class GetRatingSummaryQueryHandler : IQueryHandler<GetRatingSummar
         }
 
         RatingAggregate? aggregate = await this.ratingRepository.GetAggregateAsync(query.TargetType, query.TargetId.Trim(), cancellationToken);
-        RatingSummaryResult summary = aggregate is null
-            ? new RatingSummaryResult(query.TargetType, query.TargetId.Trim(), 0, 0d, RatingScoreCalculator.PriorMean)
-            : new RatingSummaryResult(aggregate.TargetType, aggregate.TargetId, aggregate.RatingCount, aggregate.AverageRating, aggregate.BayesianScore);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(query.TargetType, query.TargetId.Trim(), aggregate);
 
         return ApplicationResult<RatingSummaryResult>.Success(summary);
     }
@@ -219,9 +284,7 @@ public sealed class GetUserRatingQueryHandler : IQueryHandler<GetUserRatingQuery
         }
 
         RatingAggregate? aggregate = await this.ratingRepository.GetAggregateAsync(query.TargetType, query.TargetId.Trim(), cancellationToken);
-        RatingSummaryResult summary = aggregate is null
-            ? new RatingSummaryResult(query.TargetType, query.TargetId.Trim(), 0, 0d, RatingScoreCalculator.PriorMean)
-            : new RatingSummaryResult(aggregate.TargetType, aggregate.TargetId, aggregate.RatingCount, aggregate.AverageRating, aggregate.BayesianScore);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(query.TargetType, query.TargetId.Trim(), aggregate);
 
         UserRatingResult result = new UserRatingResult(
             rating.Id,

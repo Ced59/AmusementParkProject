@@ -27,6 +27,7 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class RatingsController : ControllerBase
 {
     private readonly ICommandHandler<UpsertUserRatingCommand, ApplicationResult<UserRatingResult>> upsertUserRatingCommandHandler;
+    private readonly ICommandHandler<DeleteUserRatingCommand, ApplicationResult<RatingSummaryResult>> deleteUserRatingCommandHandler;
     private readonly IQueryHandler<GetRatingSummaryQuery, ApplicationResult<RatingSummaryResult>> getRatingSummaryQueryHandler;
     private readonly IQueryHandler<GetUserRatingQuery, ApplicationResult<UserRatingResult?>> getUserRatingQueryHandler;
     private readonly IQueryHandler<ListUserRatingsQuery, ApplicationResult<PagedResult<UserRatingListItemResult>>> listUserRatingsQueryHandler;
@@ -35,6 +36,7 @@ public sealed class RatingsController : ControllerBase
 
     public RatingsController(
         ICommandHandler<UpsertUserRatingCommand, ApplicationResult<UserRatingResult>> upsertUserRatingCommandHandler,
+        ICommandHandler<DeleteUserRatingCommand, ApplicationResult<RatingSummaryResult>> deleteUserRatingCommandHandler,
         IQueryHandler<GetRatingSummaryQuery, ApplicationResult<RatingSummaryResult>> getRatingSummaryQueryHandler,
         IQueryHandler<GetUserRatingQuery, ApplicationResult<UserRatingResult?>> getUserRatingQueryHandler,
         IQueryHandler<ListUserRatingsQuery, ApplicationResult<PagedResult<UserRatingListItemResult>>> listUserRatingsQueryHandler,
@@ -42,6 +44,7 @@ public sealed class RatingsController : ControllerBase
         IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<ParkRatingRankingResult>>> getRatingRankingsQueryHandler)
     {
         this.upsertUserRatingCommandHandler = upsertUserRatingCommandHandler;
+        this.deleteUserRatingCommandHandler = deleteUserRatingCommandHandler;
         this.getRatingSummaryQueryHandler = getRatingSummaryQueryHandler;
         this.getUserRatingQueryHandler = getUserRatingQueryHandler;
         this.listUserRatingsQueryHandler = listUserRatingsQueryHandler;
@@ -178,6 +181,34 @@ public sealed class RatingsController : ControllerBase
                 request.TargetType.ToRatingTargetType(),
                 request.TargetId,
                 request.Value),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpDelete("{targetType}/{targetId}/me")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
+    [InvalidatesPublicCache(PublicCacheScope.Data)]
+    [ProducesResponseType(typeof(RatingSummaryDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> DeleteMyRatingForTargetAsync(
+        [FromRoute] string targetType,
+        [FromRoute] string targetId,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.Unauthorized();
+        }
+
+        ApplicationResult<RatingSummaryResult> result = await this.deleteUserRatingCommandHandler.HandleAsync(
+            new DeleteUserRatingCommand(userId, targetType.ToRatingTargetType(), targetId),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

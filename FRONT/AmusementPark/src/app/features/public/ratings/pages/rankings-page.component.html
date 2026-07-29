@@ -54,7 +54,11 @@
   } @else if (items().length === 0) {
     <div class="rankings-empty">{{ 'ratings.rankings.empty' | translate }}</div>
   } @else {
-    <app-rating-tree [parks]="treeParks()"></app-rating-tree>
+    <app-rating-tree
+      [parks]="treeParks()"
+      totalRatingCountLabelKey="ratings.rankings.totalRatingCount"
+      parkScoreLabelKey="ratings.rankings.rankingScore">
+    </app-rating-tree>
 
     @if (hasMore()) {
       <div class="rankings-more">

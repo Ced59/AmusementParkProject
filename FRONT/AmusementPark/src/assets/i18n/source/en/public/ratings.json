@@ -8,11 +8,14 @@
       "chooseLabel": "Choose a rating",
       "rateValue": "Rate {{value}} out of 5",
       "yourRating": "Your rating: {{value}}/5",
+      "clearRating": "Clear my rating",
       "prompt": "Choose your rating",
       "signInMessage": "Sign in to leave your rating.",
       "savedMessage": "Thanks, your rating has been saved.",
       "errorMessage": "Your rating could not be saved right now.",
-      "savedToast": "Your rating has been saved."
+      "removeErrorMessage": "Your rating could not be removed right now.",
+      "savedToast": "Your rating has been saved.",
+      "removedToast": "Your rating has been removed."
     },
     "tree": {
       "detailAction": "View detail",
@@ -54,6 +57,7 @@
       "empty": "No ranking is available yet.",
       "parkFallback": "Park",
       "ratingCount": { "one": "{{count}} rating", "few": "{{count}} ratings", "many": "{{count}} ratings", "other": "{{count}} ratings" },
+      "totalRatingCount": { "one": "{{count}} rating in total", "few": "{{count}} ratings in total", "many": "{{count}} ratings in total", "other": "{{count}} ratings in total" },
       "reliableBadge": "Reliable",
       "filters": {
         "label": "Filter rankings",
@@ -64,10 +68,11 @@
         "hotels": "Hotels",
         "services": "Services"
       },
-      "calculationHint": "Park rankings combine visitor ratings for the park and the rated places inside it, so a park stands out for its overall experience and what visitors enjoyed on site.",
+      "calculationHint": "The aggregated score balances direct park ratings with ratings across its different place categories. Each average shows the number of raw ratings included.",
       "scoreAria": "Rating {{value}} out of 5",
-      "parkSignal": "Park rating",
-      "itemsSignal": "Places rating",
+      "rankingScore": "Aggregated ranking score",
+      "parkSignal": "Direct park rating",
+      "itemsSignal": "Average for all places",
       "searchLabel": "Search a park in rankings",
       "searchPlaceholder": "Find a park in the ranking",
       "searchAction": "Search",

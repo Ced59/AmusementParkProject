@@ -44,6 +44,11 @@ export class RatingsApiService {
     return this.http.get<UserRating | null>(url);
   }
 
+  deleteMyRating(targetType: RatingTargetType, targetId: string): Observable<RatingSummary> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.deleteMyRating(targetType, targetId)}`;
+    return this.http.delete<RatingSummary>(url);
+  }
+
   upsertRating(request: UserRatingUpsertRequest): Observable<UserRating> {
     const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.upsert}`;
     return this.http.put<UserRating>(url, request, this.jsonHttpOptions);

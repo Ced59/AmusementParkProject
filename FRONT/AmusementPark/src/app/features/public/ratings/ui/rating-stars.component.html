@@ -42,13 +42,24 @@
     }
   </div>
 
-  <p class="rating-stars__message">
-    @if (messageKey()) {
+  <div class="rating-stars__message">
+    @if (selectedValue()) {
+      <span>{{ 'ratings.stars.yourRating' | translate:{ value: formattedSelectedValue() } }}</span>
+      <button
+        type="button"
+        class="rating-stars__clear"
+        [disabled]="saving()"
+        (click)="removeRating()">
+        {{ 'ratings.stars.clearRating' | translate }}
+      </button>
+    } @else if (messageKey()) {
       {{ (messageKey() || '') | translate }}
-    } @else if (selectedValue()) {
-      {{ 'ratings.stars.yourRating' | translate:{ value: selectedValue() } }}
     } @else {
       {{ 'ratings.stars.prompt' | translate }}
     }
-  </p>
+  </div>
+
+  @if (selectedValue() && messageKey()) {
+    <p class="rating-stars__status">{{ (messageKey() || '') | translate }}</p>
+  }
 </section>

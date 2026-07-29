@@ -8,11 +8,14 @@
       "chooseLabel": "Escolher avaliação",
       "rateValue": "Avaliar {{value}} em 5",
       "yourRating": "A tua avaliação: {{value}}/5",
+      "clearRating": "Apagar a minha avaliação",
       "prompt": "Escolhe a tua avaliação",
       "signInMessage": "Inicia sessão para deixar a tua avaliação.",
       "savedMessage": "Obrigado, a tua avaliação foi guardada.",
       "errorMessage": "Não foi possível guardar a avaliação agora.",
-      "savedToast": "A tua avaliação foi guardada."
+      "removeErrorMessage": "Não foi possível apagar a tua avaliação agora.",
+      "savedToast": "A tua avaliação foi guardada.",
+      "removedToast": "A tua avaliação foi apagada."
     },
     "tree": {
       "detailAction": "Ver detalhe",
@@ -54,6 +57,7 @@
       "empty": "Ainda não há ranking disponível.",
       "parkFallback": "Parque",
       "ratingCount": { "one": "{{count}} avaliação", "few": "{{count}} avaliações", "many": "{{count}} avaliações", "other": "{{count}} avaliações" },
+      "totalRatingCount": { "one": "{{count}} avaliação no total", "few": "{{count}} avaliações no total", "many": "{{count}} avaliações no total", "other": "{{count}} avaliações no total" },
       "reliableBadge": "Fiável",
       "filters": {
         "label": "Filtrar rankings",
@@ -64,10 +68,11 @@
         "hotels": "Hotéis",
         "services": "Serviços"
       },
-      "calculationHint": "O ranking dos parques considera avaliações do parque e dos locais avaliados no interior, para destacar destinos apreciados como um todo.",
+      "calculationHint": "A pontuação agregada equilibra as avaliações diretas do parque e as das diferentes categorias de locais. Cada média indica o número de avaliações individuais consideradas.",
       "scoreAria": "Avaliação {{value}} de 5",
-      "parkSignal": "Avaliação do parque",
-      "itemsSignal": "Avaliação dos locais",
+      "rankingScore": "Pontuação agregada do ranking",
+      "parkSignal": "Avaliação direta do parque",
+      "itemsSignal": "Média de todos os locais",
       "searchLabel": "Pesquisar um parque nos rankings",
       "searchPlaceholder": "Encontrar um parque no ranking",
       "searchAction": "Pesquisar",

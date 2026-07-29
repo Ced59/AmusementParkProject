@@ -8,11 +8,14 @@
       "chooseLabel": "Wybierz ocenę",
       "rateValue": "Oceń {{value}} z 5",
       "yourRating": "Twoja ocena: {{value}}/5",
+      "clearRating": "Usuń moją ocenę",
       "prompt": "Wybierz swoją ocenę",
       "signInMessage": "Zaloguj się, aby dodać ocenę.",
       "savedMessage": "Dziękujemy, ocena została zapisana.",
       "errorMessage": "Nie można teraz zapisać oceny.",
-      "savedToast": "Twoja ocena została zapisana."
+      "removeErrorMessage": "Nie można teraz usunąć Twojej oceny.",
+      "savedToast": "Twoja ocena została zapisana.",
+      "removedToast": "Twoja ocena została usunięta."
     },
     "tree": {
       "detailAction": "Zobacz szczegóły",
@@ -54,6 +57,7 @@
       "empty": "Ranking nie jest jeszcze dostępny.",
       "parkFallback": "Park",
       "ratingCount": { "one": "{{count}} ocena", "few": "{{count}} oceny", "many": "{{count}} ocen", "other": "{{count}} oceny" },
+      "totalRatingCount": { "one": "Łącznie {{count}} ocena", "few": "Łącznie {{count}} oceny", "many": "Łącznie {{count}} ocen", "other": "Łącznie {{count}} oceny" },
       "reliableBadge": "Pewne",
       "filters": {
         "label": "Filtruj rankingi",
@@ -64,10 +68,11 @@
         "hotels": "Hotele",
         "services": "Usługi"
       },
-      "calculationHint": "Ranking parków uwzględnia oceny parku oraz ocenione miejsca w środku, aby wyróżnić kierunki cenione jako całość.",
+      "calculationHint": "Łączny wynik równoważy bezpośrednie oceny parku i oceny z poszczególnych kategorii miejsc. Każda średnia pokazuje liczbę uwzględnionych pojedynczych ocen.",
       "scoreAria": "Ocena {{value}} z 5",
-      "parkSignal": "Ocena parku",
-      "itemsSignal": "Ocena miejsc",
+      "rankingScore": "Łączny wynik rankingu",
+      "parkSignal": "Bezpośrednia ocena parku",
+      "itemsSignal": "Średnia wszystkich miejsc",
       "searchLabel": "Szukaj parku w rankingach",
       "searchPlaceholder": "Znajdź park w rankingu",
       "searchAction": "Szukaj",

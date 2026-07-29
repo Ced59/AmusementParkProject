@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, throwError } from 'rxjs';
 
 import {
+  RatingSummary,
   RatingTargetType,
   UserRating,
   UserRatingUpsertRequest,
@@ -29,8 +30,19 @@ class FakeRatingsPort implements PublicRatingRatingsPort {
     targetType: RatingTargetType;
     targetId: string;
   }> = [];
+  readonly deleteMyRatingCalls: Array<{
+    targetType: RatingTargetType;
+    targetId: string;
+  }> = [];
   ratingResponse: UserRating = createUserRating(4.5, 3, 4.5);
   myRatingResponse: UserRating | null = null;
+  deleteResponse: RatingSummary = {
+    targetType: 'ParkItem',
+    targetId: 'item-1',
+    ratingCount: 1,
+    averageRating: 4,
+    bayesianScore: 3.4,
+  };
 
   getMyRating(
     targetType: RatingTargetType,
@@ -38,6 +50,14 @@ class FakeRatingsPort implements PublicRatingRatingsPort {
   ): Observable<UserRating | null> {
     this.getMyRatingCalls.push({ targetType, targetId });
     return of(this.myRatingResponse);
+  }
+
+  deleteMyRating(
+    targetType: RatingTargetType,
+    targetId: string,
+  ): Observable<RatingSummary> {
+    this.deleteMyRatingCalls.push({ targetType, targetId });
+    return of(this.deleteResponse);
   }
 
   upsertRating(request: UserRatingUpsertRequest): Observable<UserRating> {
@@ -99,7 +119,11 @@ describe('PublicRatingStateFacade', () => {
     const port: FakeRatingsPort = new FakeRatingsPort();
     const authService: FakeAuthService = new FakeAuthService();
     authService.loggedIn = true;
-    port.myRatingResponse = createUserRating(3.5, 2, 4);
+    port.myRatingResponse = {
+      ...createUserRating(3.5, 2, 4),
+      targetType: 'Park',
+      targetId: 'park-1',
+    };
     const facade: PublicRatingStateFacade = createFacade(port, authService);
 
     facade.configure('Park', ' park-1 ', {
@@ -115,6 +139,18 @@ describe('PublicRatingStateFacade', () => {
     ]);
     expect(facade.userRatingValue()).toBe(3.5);
     expect(facade.summary()?.averageRating).toBe(4);
+  });
+
+  it('ignores a user rating returned for another target', () => {
+    const port: FakeRatingsPort = new FakeRatingsPort();
+    const authService: FakeAuthService = new FakeAuthService();
+    authService.loggedIn = true;
+    port.myRatingResponse = createUserRating(3.5, 2, 4);
+    const facade: PublicRatingStateFacade = createFacade(port, authService);
+
+    facade.configure('Park', 'park-1', null);
+
+    expect(facade.userRatingValue()).toBeNull();
   });
 
   it('opens the login modal when an anonymous visitor tries to rate', () => {
@@ -177,12 +213,46 @@ describe('PublicRatingStateFacade', () => {
     expect(facade.summary()?.ratingCount).toBe(5);
     expect(facade.summary()?.averageRating).toBe(4.2);
     expect(facade.saving()).toBe(false);
-    expect(facade.messageKey()).toBe('ratings.stars.savedMessage');
+    expect(facade.messageKey()).toBeNull();
     expect(toastMessageService.messages).toEqual([
       {
         severity: 'success',
         summary: 'common.success',
         detail: 'ratings.stars.savedToast',
+      },
+    ]);
+  });
+
+  it('deletes the rating for the configured target and applies the returned summary', () => {
+    const port: FakeRatingsPort = new FakeRatingsPort();
+    const authService: FakeAuthService = new FakeAuthService();
+    authService.loggedIn = true;
+    authService.token = 'token';
+    port.myRatingResponse = createUserRating(4.5, 2, 4.5);
+    const toastMessageService: FakeToastMessageService =
+      new FakeToastMessageService();
+    const facade: PublicRatingStateFacade = createFacade(
+      port,
+      authService,
+      new FakeModalService(),
+      toastMessageService,
+    );
+
+    facade.configure('ParkItem', 'item-1', port.myRatingResponse.summary);
+    facade.removeRating();
+
+    expect(port.deleteMyRatingCalls).toEqual([
+      { targetType: 'ParkItem', targetId: 'item-1' },
+    ]);
+    expect(facade.userRatingValue()).toBeNull();
+    expect(facade.summary()?.ratingCount).toBe(1);
+    expect(facade.summary()?.averageRating).toBe(4);
+    expect(facade.saving()).toBe(false);
+    expect(toastMessageService.messages).toEqual([
+      {
+        severity: 'success',
+        summary: 'common.success',
+        detail: 'ratings.stars.removedToast',
       },
     ]);
   });

@@ -3894,11 +3894,14 @@
       "chooseLabel": "Bewertung wählen",
       "rateValue": "{{value}} von 5 bewerten",
       "yourRating": "Deine Bewertung: {{value}}/5",
+      "clearRating": "Meine Bewertung löschen",
       "prompt": "Wähle deine Bewertung",
       "signInMessage": "Melde dich an, um zu bewerten.",
       "savedMessage": "Danke, deine Bewertung wurde gespeichert.",
       "errorMessage": "Deine Bewertung konnte gerade nicht gespeichert werden.",
-      "savedToast": "Deine Bewertung wurde gespeichert."
+      "removeErrorMessage": "Deine Bewertung konnte gerade nicht gelöscht werden.",
+      "savedToast": "Deine Bewertung wurde gespeichert.",
+      "removedToast": "Deine Bewertung wurde gelöscht."
     },
     "tree": {
       "detailAction": "Details ansehen",
@@ -3950,6 +3953,12 @@
         "many": "{{count}} Bewertungen",
         "other": "{{count}} Bewertungen"
       },
+      "totalRatingCount": {
+        "one": "{{count}} Bewertung insgesamt",
+        "few": "{{count}} Bewertungen insgesamt",
+        "many": "{{count}} Bewertungen insgesamt",
+        "other": "{{count}} Bewertungen insgesamt"
+      },
       "reliableBadge": "Zuverlässig",
       "filters": {
         "label": "Ranglisten filtern",
@@ -3960,10 +3969,11 @@
         "hotels": "Hotels",
         "services": "Services"
       },
-      "calculationHint": "Die Parkrangliste berücksichtigt Bewertungen des Parks und der bewerteten Orte im Park, damit Ziele mit einem starken Gesamterlebnis sichtbar werden.",
+      "calculationHint": "Der aggregierte Wert gewichtet direkte Parkbewertungen und Bewertungen der verschiedenen Ortskategorien ausgewogen. Jeder Durchschnitt zeigt die Anzahl der berücksichtigten Einzelbewertungen.",
       "scoreAria": "Bewertung {{value}} von 5",
-      "parkSignal": "Parkbewertung",
-      "itemsSignal": "Ortsbewertung",
+      "rankingScore": "Aggregierter Ranglistenwert",
+      "parkSignal": "Direkte Parkbewertung",
+      "itemsSignal": "Durchschnitt aller Orte",
       "searchLabel": "Park in Ranglisten suchen",
       "searchPlaceholder": "Park in der Rangliste finden",
       "searchAction": "Suchen",
