@@ -1,0 +1,56 @@
+{
+  "comments": {
+    "kicker": "From the team",
+    "title": "Comments about {{name}}",
+    "subtitle": "Find comments published by the Amusement Parks team here.",
+    "backToTarget": "Back to {{name}}",
+    "officialBadge": "Official Amusement Parks review",
+    "officialAuthor": "Amusement Parks",
+    "roles": {
+      "Admin": "Administrator",
+      "Moderator": "Moderator"
+    },
+    "summary": {
+      "createFirst": "Write the first comment",
+      "count": {
+        "one": "{{count}} comment",
+        "few": "{{count}} comments",
+        "many": "{{count}} comments",
+        "other": "{{count}} comments"
+      }
+    },
+    "breadcrumb": {
+      "label": "Breadcrumb",
+      "home": "Home",
+      "parks": "Parks",
+      "comments": "Comments"
+    },
+    "loading": {
+      "title": "Loading comments",
+      "message": "The team is gathering the published comments."
+    },
+    "listLabel": "Published comments",
+    "empty": {
+      "title": "No comments yet",
+      "message": "The team has not published a comment on this page yet."
+    },
+    "editor": {
+      "kicker": "Team area",
+      "title": "Write a comment",
+      "help": "Formatting and translations are preserved with the site’s shared editor.",
+      "placeholder": "Write the comment in {{language}}…",
+      "officialLabel": "Official Amusement Parks review",
+      "officialHelp": "This review will be highlighted and displayed before every other comment.",
+      "validation": "Write the comment in at least one language.",
+      "publish": "Publish comment",
+      "saving": "Publishing…",
+      "saved": "The comment has been published."
+    },
+    "errors": {
+      "title": "Comments unavailable",
+      "load": "The comments could not be loaded.",
+      "save": "The comment could not be published.",
+      "forbidden": "Only administrators and moderators can publish a comment."
+    }
+  }
+}

@@ -92,6 +92,8 @@ public sealed class MongoDbSettings
 
     public string RatingAggregatesCollectionName { get; set; } = "ratingAggregates";
 
+    public string CommentsCollectionName { get; set; } = "comments";
+
     public string CountriesCollectionName { get; set; } = "countries";
 
     public string CaptainCoasterSettingsCollectionName { get; set; } = "captainCoasterSettings";

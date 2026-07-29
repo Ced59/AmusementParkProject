@@ -202,6 +202,7 @@ export const routes: Routes = [
           { path: 'park/:id/:slug/zone/:zoneId/:zoneSlug', loadComponent: () => import('./features/public/parks/pages/park-zone-page.component').then((m) => m.ParkZonePageComponent) },
           { path: 'park/:id/:slug/weather', loadComponent: () => import('./features/public/parks/pages/park-weather-page.component').then((m) => m.ParkWeatherPageComponent) },
           { path: 'park/:id/:slug/opening-hours', loadComponent: () => import('./features/public/parks/pages/park-opening-hours-page.component').then((m) => m.ParkOpeningHoursPageComponent) },
+          { path: 'park/:id/:slug/comments', loadComponent: () => import('./features/public/comments/pages/comments-page.component').then((m) => m.CommentsPageComponent) },
           { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/images', loadComponent: () => import('./features/public/park-items/pages/park-item-images-page.component').then((m) => m.ParkItemImagesPageComponent) },
           {
@@ -225,6 +226,7 @@ export const routes: Routes = [
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/video/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', pathMatch: 'full' },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', loadComponent: () => import('./features/public/park-items/pages/park-item-video-page.component').then((m) => m.ParkItemVideoPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/videos', loadComponent: () => import('./features/public/park-items/pages/park-item-videos-page.component').then((m) => m.ParkItemVideosPageComponent) },
+          { path: 'park/:id/:slug/item/:itemId/:itemSlug/comments', loadComponent: () => import('./features/public/comments/pages/comments-page.component').then((m) => m.CommentsPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug', loadComponent: () => import('./features/public/park-items/pages/park-item-detail-page.component').then((m) => m.ParkItemDetailPageComponent) },
           { path: 'park/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-detail-page.component').then((m) => m.ParkDetailPageComponent) },
 

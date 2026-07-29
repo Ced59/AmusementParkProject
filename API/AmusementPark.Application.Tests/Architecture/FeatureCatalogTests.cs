@@ -12,6 +12,7 @@ public sealed class FeatureCatalogTests
         Assert.Contains(FeatureCatalog.All, static feature => feature.Name == "Parks");
         Assert.Contains(FeatureCatalog.All, static feature => feature.Name == "ParkItems");
         Assert.Contains(FeatureCatalog.All, static feature => feature.Name == "AdminAudit");
+        Assert.Contains(FeatureCatalog.All, static feature => feature.Name == "Comments");
     }
 
     [Fact]

@@ -1,0 +1,56 @@
+{
+  "comments": {
+    "kicker": "Od zespołu",
+    "title": "Komentarze o {{name}}",
+    "subtitle": "Tutaj znajdziesz komentarze opublikowane przez zespół Amusement Parks.",
+    "backToTarget": "Wróć do {{name}}",
+    "officialBadge": "Oficjalna opinia Amusement Parks",
+    "officialAuthor": "Amusement Parks",
+    "roles": {
+      "Admin": "Administrator",
+      "Moderator": "Moderator"
+    },
+    "summary": {
+      "createFirst": "Napisz pierwszy komentarz",
+      "count": {
+        "one": "{{count}} komentarz",
+        "few": "{{count}} komentarze",
+        "many": "{{count}} komentarzy",
+        "other": "{{count}} komentarza"
+      }
+    },
+    "breadcrumb": {
+      "label": "Ścieżka nawigacyjna",
+      "home": "Strona główna",
+      "parks": "Parki",
+      "comments": "Komentarze"
+    },
+    "loading": {
+      "title": "Ładowanie komentarzy",
+      "message": "Zespół zbiera opublikowane komentarze."
+    },
+    "listLabel": "Opublikowane komentarze",
+    "empty": {
+      "title": "Na razie brak komentarzy",
+      "message": "Zespół nie opublikował jeszcze komentarza na tej stronie."
+    },
+    "editor": {
+      "kicker": "Strefa zespołu",
+      "title": "Napisz komentarz",
+      "help": "Formatowanie i tłumaczenia są zachowywane dzięki wspólnemu edytorowi witryny.",
+      "placeholder": "Napisz komentarz w języku {{language}}…",
+      "officialLabel": "Oficjalna opinia Amusement Parks",
+      "officialHelp": "Ta opinia zostanie wyróżniona i wyświetlona przed wszystkimi pozostałymi komentarzami.",
+      "validation": "Napisz komentarz w co najmniej jednym języku.",
+      "publish": "Opublikuj komentarz",
+      "saving": "Publikowanie…",
+      "saved": "Komentarz został opublikowany."
+    },
+    "errors": {
+      "title": "Komentarze niedostępne",
+      "load": "Nie udało się załadować komentarzy.",
+      "save": "Nie udało się opublikować komentarza.",
+      "forbidden": "Tylko administratorzy i moderatorzy mogą publikować komentarze."
+    }
+  }
+}

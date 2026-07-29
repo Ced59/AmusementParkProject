@@ -26,6 +26,7 @@ namespace AmusementPark.Application.Architecture
             new FeatureSlice("Ratings", 14, "Notes utilisateurs authentifies, agregats publics et classements."),
             new FeatureSlice("TechnicalPages", 15, "Pages techniques publiques et administration editoriale."),
             new FeatureSlice("History", 16, "Timelines historiques des parcs, park items et articles associes."),
+            new FeatureSlice("Comments", 17, "Commentaires éditoriaux des parcs et park items, avis officiels et future modération."),
         };
     }
 }

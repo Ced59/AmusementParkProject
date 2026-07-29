@@ -138,6 +138,14 @@
               [targetId]="currentDetail.id"
               [initialSummary]="currentDetail.rating">
             </app-rating-stars>
+
+            <app-comment-summary-link
+              *ngIf="currentDetail.id && currentDetail.commentsLink"
+              targetType="ParkItem"
+              [targetId]="currentDetail.id"
+              [commentsLink]="currentDetail.commentsLink"
+              [currentLanguage]="currentLang">
+            </app-comment-summary-link>
           </div>
         </div>
 

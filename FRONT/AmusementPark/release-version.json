@@ -1,6 +1,20 @@
 {
-  "version": "3.6.5",
+  "version": "4.0.0",
   "history": [
+    {
+      "version": "4.0.0",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "Les parcs et leurs attractions accueillent désormais les avis de l’équipe.",
+        "en": "Parks and their attractions now feature reviews from the team.",
+        "de": "Parks und ihre Attraktionen zeigen jetzt Bewertungen des Teams.",
+        "nl": "Parken en hun attracties tonen nu beoordelingen van het team.",
+        "it": "I parchi e le loro attrazioni mostrano ora le recensioni del team.",
+        "es": "Los parques y sus atracciones muestran ahora las reseñas del equipo.",
+        "pl": "Parki i ich atrakcje prezentują teraz opinie zespołu.",
+        "pt": "Os parques e as suas atrações apresentam agora as opiniões da equipa."
+      }
+    },
     {
       "version": "3.6.5",
       "releasedAt": "2026-07-29",

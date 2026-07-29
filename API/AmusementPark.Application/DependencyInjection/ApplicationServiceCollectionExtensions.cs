@@ -3,6 +3,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.Contact.Ports;
 using AmusementPark.Application.Features.Contact.Services;
+using AmusementPark.Application.Features.Comments.Services;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.Countries.Services;
 using AmusementPark.Application.Features.ParkItems;
@@ -45,6 +46,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<PagedQueryValidator>();
         services.AddSingleton<IApplicationValidator<AmusementPark.Application.Common.Requests.PagedQuery>, PagedQueryValidator>();
         services.AddScoped<ParkItemReferenceValidator>();
+        services.AddScoped<CommentTargetResolver>();
         services.AddScoped<ParkItemsBulkCreatePreviewService>();
         services.AddScoped<BulkParkGraphJsonExportDataLoader>();
         services.AddScoped<ParkGraphUpsertProcessor>();

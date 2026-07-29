@@ -2622,6 +2622,60 @@
       "secondary": "Retour à l’accueil"
     }
   },
+  "comments": {
+    "kicker": "Parole de l’équipe",
+    "title": "Commentaires sur {{name}}",
+    "subtitle": "Retrouve ici les commentaires publiés par l’équipe d’Amusement Parks.",
+    "backToTarget": "Retour à {{name}}",
+    "officialBadge": "Avis officiel d’Amusement Parks",
+    "officialAuthor": "Amusement Parks",
+    "roles": {
+      "Admin": "Administrateur",
+      "Moderator": "Modérateur"
+    },
+    "summary": {
+      "createFirst": "Écrire le premier commentaire",
+      "count": {
+        "one": "{{count}} commentaire",
+        "few": "{{count}} commentaires",
+        "many": "{{count}} commentaires",
+        "other": "{{count}} commentaires"
+      }
+    },
+    "breadcrumb": {
+      "label": "Fil d’Ariane",
+      "home": "Accueil",
+      "parks": "Parcs",
+      "comments": "Commentaires"
+    },
+    "loading": {
+      "title": "Chargement des commentaires",
+      "message": "L’équipe rassemble les commentaires publiés."
+    },
+    "listLabel": "Commentaires publiés",
+    "empty": {
+      "title": "Aucun commentaire pour le moment",
+      "message": "L’équipe n’a pas encore publié de commentaire sur cette fiche."
+    },
+    "editor": {
+      "kicker": "Espace équipe",
+      "title": "Écrire un commentaire",
+      "help": "La mise en forme et les traductions sont conservées grâce à l’éditeur partagé du site.",
+      "placeholder": "Écris le commentaire en {{language}}…",
+      "officialLabel": "Avis officiel d’Amusement Parks",
+      "officialHelp": "Cet avis sera mis en avant et affiché avant tous les autres commentaires.",
+      "validation": "Écris le commentaire dans au moins une langue.",
+      "publish": "Publier le commentaire",
+      "saving": "Publication…",
+      "saved": "Le commentaire a été publié."
+    },
+    "errors": {
+      "title": "Commentaires indisponibles",
+      "load": "Les commentaires n’ont pas pu être chargés.",
+      "save": "Le commentaire n’a pas pu être publié.",
+      "forbidden": "Seuls les administrateurs et les modérateurs peuvent publier un commentaire."
+    }
+  },
   "contactPage": {
     "kicker": "Contact",
     "title": "Contacter AmusementPark",

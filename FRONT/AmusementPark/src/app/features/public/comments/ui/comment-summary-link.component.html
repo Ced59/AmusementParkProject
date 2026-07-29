@@ -1,0 +1,34 @@
+@if (summary(); as currentSummary) {
+  @if (currentSummary.commentCount > 0) {
+    <a class="comment-summary-link" [routerLink]="commentsLink">
+      <span class="comment-summary-link__icon" aria-hidden="true">
+        <i class="pi pi-comments"></i>
+      </span>
+
+      <span class="comment-summary-link__content">
+        <strong>
+          {{ 'comments.summary.count' | localizedPlural:currentSummary.commentCount:{ count: currentSummary.commentCount } }}
+        </strong>
+
+        @if (officialPreview(); as preview) {
+          <span class="comment-summary-link__official">
+            <span class="comment-summary-link__badge">{{ 'comments.officialBadge' | translate }}</span>
+            <span>{{ preview }}</span>
+          </span>
+        }
+      </span>
+
+      <i class="pi pi-arrow-right comment-summary-link__arrow" aria-hidden="true"></i>
+    </a>
+  } @else if (canWrite()) {
+    <a class="comment-summary-link comment-summary-link--create" [routerLink]="commentsLink">
+      <span class="comment-summary-link__icon" aria-hidden="true">
+        <i class="pi pi-comment"></i>
+      </span>
+      <span class="comment-summary-link__content">
+        <strong>{{ 'comments.summary.createFirst' | translate }}</strong>
+      </span>
+      <i class="pi pi-arrow-right comment-summary-link__arrow" aria-hidden="true"></i>
+    </a>
+  }
+}

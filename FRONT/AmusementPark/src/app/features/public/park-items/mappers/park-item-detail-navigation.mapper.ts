@@ -3,6 +3,7 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation, ParkItemSiblingNavigationItem } from '@app/models/parks/park-item-sibling-navigation';
 import {
   buildPublicParkItemHistoryRouteCommands,
+  buildPublicParkItemCommentsRouteCommands,
   buildPublicParkItemImagesRouteCommands,
   buildPublicParkItemRouteCommands,
   buildPublicParkItemVideosRouteCommands,
@@ -104,6 +105,16 @@ export function buildVideosLink(park: Park | null, item: ParkItem | null, curren
 
 export function buildHistoryLink(park: Park | null, item: ParkItem | null, currentLanguage: string): string[] | null {
   return buildPublicParkItemHistoryRouteCommands({
+    language: currentLanguage,
+    parkId: park?.id,
+    parkName: park?.name,
+    itemId: item?.id,
+    itemName: item?.name
+  });
+}
+
+export function buildCommentsLink(park: Park | null, item: ParkItem | null, currentLanguage: string): string[] | null {
+  return buildPublicParkItemCommentsRouteCommands({
     language: currentLanguage,
     parkId: park?.id,
     parkName: park?.name,
