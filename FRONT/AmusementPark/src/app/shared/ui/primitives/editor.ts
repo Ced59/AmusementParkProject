@@ -337,7 +337,11 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
       : this.removeImagesFromHtml(this.htmlSecurityService.sanitizeManagedImageRichHtml(html));
     const insertionIndex: number = this.editor?.getSelection()?.index
       ?? Math.max(0, (this.editor?.getLength() ?? 1) - 1);
-    this.editor?.clipboard.dangerouslyPasteHTML(insertionIndex, safeHtml, 'user');
+    this.editor?.clipboard.dangerouslyPasteHTML(
+      insertionIndex,
+      this.applyManagedImagePreviewsForDom(safeHtml),
+      'user'
+    );
     this.hydrateManagedImagePreviews();
   }
 
@@ -461,7 +465,9 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
       return;
     }
 
-    const html: string = this.sanitizeEditorHtml(value);
+    const html: string = this.applyManagedImagePreviewsForDom(
+      this.sanitizeEditorHtml(value)
+    );
     this.editor.clipboard.dangerouslyPasteHTML(html, 'silent');
     this.hydrateManagedImagePreviews();
     this.selectedManagedImage = null;
@@ -514,11 +520,37 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
       }
 
       const previewUrl: string | null = this.managedImagePreviewUrl(imageId);
-      if (previewUrl?.startsWith('blob:')) {
+      if (previewUrl) {
         image.setAttribute(ManagedImageIdAttribute, imageId);
         image.setAttribute('src', previewUrl);
       }
     }
+  }
+
+  private applyManagedImagePreviewsForDom(value: string): string {
+    if (!this.managedImagePreviewUrl) {
+      return value;
+    }
+
+    const documentRef: Document = this.editorElement?.nativeElement.ownerDocument ?? document;
+    const template: HTMLTemplateElement = documentRef.createElement('template');
+    template.innerHTML = value;
+    for (const image of Array.from(template.content.querySelectorAll('img'))) {
+      const imageId: string | null = extractManagedCommentImageId(image.getAttribute('src'));
+      if (!imageId) {
+        continue;
+      }
+
+      const previewUrl: string | null = this.managedImagePreviewUrl(imageId);
+      if (!previewUrl) {
+        continue;
+      }
+
+      image.setAttribute(ManagedImageIdAttribute, imageId);
+      image.setAttribute('src', previewUrl);
+    }
+
+    return template.innerHTML;
   }
 
   private removeImagesFromHtml(value: string): string {
@@ -603,7 +635,7 @@ function registerManagedImageBlot(quillConstructor: typeof import('quill').defau
 
 function applyManagedImageValue(node: HTMLElement, value: ManagedImageBlotValue): void {
   node.setAttribute(ManagedImageIdAttribute, value.id);
-  node.setAttribute('src', value.previewUrl?.startsWith('blob:') ? value.previewUrl : `/images/${value.id}`);
+  node.setAttribute('src', value.previewUrl ?? `/images/${value.id}`);
   node.setAttribute(
     'class',
     `rich-text__image rich-text__image--${normalizeManagedImageLayout(value.layout)}`
@@ -615,9 +647,11 @@ function applyManagedImageValue(node: HTMLElement, value: ManagedImageBlotValue)
 }
 
 function managedImageValueFromNode(node: Element): ManagedImageBlotValue | null {
-  const imageId: string | null = normalizeManagedCommentImageId(
+  const managedImageId: string | null = normalizeManagedCommentImageId(
     node.getAttribute(ManagedImageIdAttribute)
-  ) ?? extractManagedCommentImageId(node.getAttribute('src'));
+  );
+  const source: string = node.getAttribute('src') ?? '';
+  const imageId: string | null = managedImageId ?? extractManagedCommentImageId(source);
   if (imageId === null) {
     return null;
   }
@@ -629,8 +663,8 @@ function managedImageValueFromNode(node: Element): ManagedImageBlotValue | null 
     id: imageId,
     alt: (node.getAttribute('alt') ?? '').trim().slice(0, ManagedCommentImageAltMaxLength),
     layout: normalizeManagedImageLayout(layoutClass?.replace('rich-text__image--', '') ?? 'full'),
-    previewUrl: (node.getAttribute('src') ?? '').startsWith('blob:')
-      ? node.getAttribute('src') ?? undefined
+    previewUrl: managedImageId !== null && extractManagedCommentImageId(source) === null
+      ? source || undefined
       : undefined
   };
 }

@@ -14,6 +14,7 @@ interface TestableEditor {
   onManagedImageCopy(event: ClipboardEvent): void;
   changeSelectedManagedImageLayout(layout: 'left' | 'right' | 'center' | 'full'): void;
   changeSelectedManagedImageAlt(): void;
+  applyManagedImagePreviewsForDom(value: string): string;
   editor: Quill | null;
 }
 
@@ -45,6 +46,58 @@ describe('Editor managed images', () => {
     await Promise.resolve();
 
     expect(context.content.querySelector('.ql-editor')).toBeNull();
+  });
+
+  it('renders an existing managed image through the binary pipeline but emits canonical html', async () => {
+    const context = createEditor();
+    const imageId: string = '0123456789abcdef0123456789abcdef';
+    const previewUrl: string = `/api/images/binary/${imageId}?width=1280&v=2`;
+    const emittedValues: string[] = [];
+    context.component.preserveManagedImages = true;
+    context.component.managedImagePreviewUrl = vi.fn().mockReturnValue(previewUrl);
+    context.component.registerOnChange((value: string): void => {
+      emittedValues.push(value);
+    });
+    const canonicalHtml: string =
+      `<p>Avis existant</p><img src="/images/${imageId}" class="rich-text__image rich-text__image--right" alt="Parc">`;
+    const domHtml: string = context.testable.applyManagedImagePreviewsForDom(canonicalHtml);
+    const domTemplate: HTMLTemplateElement = document.createElement('template');
+    domTemplate.innerHTML = domHtml;
+    expect(domTemplate.content.querySelector('img')?.getAttribute('src')).toBe(previewUrl);
+    expect(domTemplate.content.querySelector('img')?.getAttribute('data-managed-image-id'))
+      .toBe(imageId);
+    expect(domHtml).not.toContain(`src="/images/${imageId}"`);
+    context.component.writeValue(
+      canonicalHtml
+    );
+
+    context.component.ngAfterViewInit();
+    await vi.waitFor(
+      (): void => expect(context.content.querySelector('.ql-editor')).not.toBeNull(),
+      { timeout: 3000 }
+    );
+
+    const image: HTMLImageElement | null = context.content.querySelector(
+      'img.rich-text__image'
+    );
+    expect(image?.getAttribute('src')).toBe(previewUrl);
+    expect(image?.getAttribute('data-managed-image-id')).toBe(imageId);
+
+    if (!context.testable.editor || !image) {
+      throw new Error('Expected Quill and the managed image to be initialized.');
+    }
+
+    image.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    context.testable.changeSelectedManagedImageLayout('left');
+
+    const updatedImage: HTMLImageElement | null = context.content.querySelector(
+      'img.rich-text__image'
+    );
+    expect(updatedImage?.getAttribute('src')).toBe(previewUrl);
+    expect(updatedImage?.classList.contains('rich-text__image--left')).toBe(true);
+    expect(emittedValues.at(-1)).toContain(`src="/images/${imageId}"`);
+    expect(emittedValues.at(-1)).not.toContain('/api/images/binary/');
+    context.component.ngOnDestroy();
   });
 
   it('uploads pasted image files instead of storing base64 clipboard html', async () => {

@@ -16,6 +16,7 @@ import { ManagedRichTextImage } from '@app/models/comments/comment-image.models'
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -85,8 +86,9 @@ export class CommentsPageComponent implements OnInit {
   });
   protected readonly uploadCommentImage = (file: File): Promise<ManagedRichTextImage> =>
     this.commentImagesFacade.uploadImage(file);
-  protected readonly resolveDraftCommentImagePreview = (imageId: string): string | null =>
-    this.commentImagesFacade.resolvePreviewUrl(imageId);
+  protected readonly resolveCommentImagePreview = (imageId: string): string =>
+    this.commentImagesFacade.resolvePreviewUrl(imageId)
+    ?? this.imagesApiService.buildImageUrl(imageId, { width: 1280 });
 
   protected readonly homeLink: Signal<string[]> = computed(() => ['/', this.currentLanguage(), 'home']);
   protected readonly parksLink: Signal<string[]> = computed(() => ['/', this.currentLanguage(), 'parks']);
@@ -130,7 +132,8 @@ export class CommentsPageComponent implements OnInit {
     private readonly translateService: TranslateService,
     private readonly seoService: SeoService,
     private readonly stateFacade: CommentThreadStateFacade,
-    private readonly commentImagesFacade: CommentRichTextImagesFacade
+    private readonly commentImagesFacade: CommentRichTextImagesFacade,
+    private readonly imagesApiService: ImagesApiService
   ) {
     effect((): void => {
       const currentThread: CommentThread | null = this.thread();

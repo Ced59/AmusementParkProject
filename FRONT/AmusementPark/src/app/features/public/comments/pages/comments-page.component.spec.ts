@@ -12,6 +12,7 @@ import {
 } from '@app/models/comments/comment.models';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import {
   CommentEditorResetReason,
@@ -79,6 +80,7 @@ class FakeCommentRichTextImagesFacade {
   readonly uploading: Signal<boolean> = this.uploadingSignal.asReadonly();
   readonly errorKey: Signal<string | null> = signal<string | null>(null).asReadonly();
   discardCount: number = 0;
+  previewUrl: string | null = null;
   readonly committedImageIdSnapshots: string[][] = [];
 
   uploadImage(): Promise<{ id: string }> {
@@ -97,7 +99,16 @@ class FakeCommentRichTextImagesFacade {
   }
 
   resolvePreviewUrl(): string | null {
-    return null;
+    return this.previewUrl;
+  }
+}
+
+class FakeImagesApiService {
+  readonly buildImageUrlCalls: Array<{ imageId: string; width: number | undefined }> = [];
+
+  buildImageUrl(imageId: string, options: { width?: number } = {}): string {
+    this.buildImageUrlCalls.push({ imageId, width: options.width });
+    return `/api/images/binary/${imageId}?width=${options.width ?? 0}`;
   }
 }
 
@@ -138,6 +149,7 @@ describe('CommentsPageComponent', () => {
     } as unknown as MockedObject<SeoService>;
     const stateFacade: FakeCommentThreadStateFacade = new FakeCommentThreadStateFacade();
     const imagesFacade: FakeCommentRichTextImagesFacade = new FakeCommentRichTextImagesFacade();
+    const imagesApiService: FakeImagesApiService = new FakeImagesApiService();
     const component: CommentsPageComponent = TestBed.runInInjectionContext(
       (): CommentsPageComponent => new CommentsPageComponent(
         route,
@@ -146,7 +158,8 @@ describe('CommentsPageComponent', () => {
         { instant: (key: string): string => key } as unknown as TranslateService,
         seoService,
         stateFacade as unknown as CommentThreadStateFacade,
-        imagesFacade as unknown as CommentRichTextImagesFacade
+        imagesFacade as unknown as CommentRichTextImagesFacade,
+        imagesApiService as unknown as ImagesApiService
       )
     );
     component.ngOnInit();
@@ -204,7 +217,8 @@ describe('CommentsPageComponent', () => {
           applyNotFoundSeo: vi.fn()
         } as unknown as SeoService,
         stateFacade as unknown as CommentThreadStateFacade,
-        imagesFacade as unknown as CommentRichTextImagesFacade
+        imagesFacade as unknown as CommentRichTextImagesFacade,
+        new FakeImagesApiService() as unknown as ImagesApiService
       )
     );
     const managementComponent = component as unknown as {
@@ -273,6 +287,7 @@ describe('CommentsPageComponent', () => {
     const routeParamMap: ParamMap = convertToParamMap({ lang: 'fr', id: 'park-1' });
     const stateFacade: FakeCommentThreadStateFacade = new FakeCommentThreadStateFacade();
     const imagesFacade: FakeCommentRichTextImagesFacade = new FakeCommentRichTextImagesFacade();
+    const imagesApiService: FakeImagesApiService = new FakeImagesApiService();
     const firstImageId: string = '0123456789abcdef0123456789abcdef';
     const secondImageId: string = 'abcdef0123456789abcdef0123456789';
     stateFacade.canWriteSignal.set(true);
@@ -296,7 +311,8 @@ describe('CommentsPageComponent', () => {
         { instant: (key: string): string => key } as unknown as TranslateService,
         { applyCommentsSeo: vi.fn(), applyNotFoundSeo: vi.fn() } as unknown as SeoService,
         stateFacade as unknown as CommentThreadStateFacade,
-        imagesFacade as unknown as CommentRichTextImagesFacade
+        imagesFacade as unknown as CommentRichTextImagesFacade,
+        imagesApiService as unknown as ImagesApiService
       )
     );
     const testable = component as unknown as {
@@ -306,7 +322,18 @@ describe('CommentsPageComponent', () => {
         };
       };
       submit(): void;
+      resolveCommentImagePreview(imageId: string): string;
     };
+    expect(testable.resolveCommentImagePreview(firstImageId)).toBe(
+      `/api/images/binary/${firstImageId}?width=1280`
+    );
+    expect(imagesApiService.buildImageUrlCalls).toEqual([
+      { imageId: firstImageId, width: 1280 }
+    ]);
+    imagesFacade.previewUrl = 'blob:comment-draft';
+    expect(testable.resolveCommentImagePreview(secondImageId)).toBe('blob:comment-draft');
+    expect(imagesApiService.buildImageUrlCalls).toHaveLength(1);
+
     testable.editorForm.controls.bodies.setValue([
       {
         languageCode: 'fr',
@@ -324,6 +351,23 @@ describe('CommentsPageComponent', () => {
 
     testable.submit.call(component);
     expect(stateFacade.createCalls).toHaveLength(1);
+    expect(stateFacade.createCalls[0]?.bodies).toEqual([
+      {
+        languageCode: 'fr',
+        value: `<p>Avis</p><img src="/images/${firstImageId}"><img src="/images/${firstImageId}">`
+      },
+      {
+        languageCode: 'en',
+        value: `<img class="rich-text__image" src='/images/${secondImageId}'>`
+      },
+      {
+        languageCode: 'es',
+        value: `<img src="/images/${secondImageId.toUpperCase()}"><img src="https://cdn.test/images/${secondImageId}">`
+      }
+    ]);
+    expect(JSON.stringify(stateFacade.createCalls[0]?.bodies)).not.toContain(
+      '/api/images/binary/'
+    );
     expect(imagesFacade.committedImageIdSnapshots).toEqual([]);
 
     stateFacade.editorResetReasonSignal.set('saved');
@@ -358,7 +402,8 @@ describe('CommentsPageComponent', () => {
         { instant: (key: string): string => key } as unknown as TranslateService,
         { applyCommentsSeo: vi.fn(), applyNotFoundSeo: vi.fn() } as unknown as SeoService,
         stateFacade as unknown as CommentThreadStateFacade,
-        imagesFacade as unknown as CommentRichTextImagesFacade
+        imagesFacade as unknown as CommentRichTextImagesFacade,
+        new FakeImagesApiService() as unknown as ImagesApiService
       )
     );
     const testable = component as unknown as {
