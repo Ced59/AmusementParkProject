@@ -1,6 +1,20 @@
 {
-  "version": "4.0.2",
+  "version": "4.0.3",
   "history": [
+    {
+      "version": "4.0.3",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "L’accès aux avis des parcs et de leurs attractions fonctionne désormais correctement.",
+        "en": "Access to reviews for parks and their attractions now works correctly.",
+        "de": "Der Zugriff auf Bewertungen von Parks und ihren Attraktionen funktioniert jetzt korrekt.",
+        "nl": "De toegang tot beoordelingen van parken en hun attracties werkt nu correct.",
+        "it": "L’accesso alle recensioni dei parchi e delle loro attrazioni ora funziona correttamente.",
+        "es": "El acceso a las reseñas de los parques y sus atracciones ahora funciona correctamente.",
+        "pl": "Dostęp do opinii o parkach i ich atrakcjach działa teraz prawidłowo.",
+        "pt": "O acesso às opiniões dos parques e das suas atrações funciona agora corretamente."
+      }
+    },
     {
       "version": "4.0.2",
       "releasedAt": "2026-07-29",
