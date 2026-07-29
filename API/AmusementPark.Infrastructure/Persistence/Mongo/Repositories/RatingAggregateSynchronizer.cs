@@ -30,11 +30,12 @@ internal sealed class RatingAggregateSynchronizer
     {
         ArgumentNullException.ThrowIfNull(target);
 
-        long mutationVersion = await this.ReserveMutationVersionAsync(target, cancellationToken);
+        RatingAggregatePendingMutation pendingMutation =
+            await this.ReserveMutationVersionAsync(target, cancellationToken);
         while (true)
         {
             BsonDocument? aggregateValues = await this.userRatingsCollection.Aggregate()
-                .Match(BuildUserRatingTargetFilter(target))
+                .Match(BuildUserRatingTargetFilter(pendingMutation.Target))
                 .Group(new BsonDocument
                 {
                     { "_id", BsonNull.Value },
@@ -55,8 +56,8 @@ internal sealed class RatingAggregateSynchronizer
                 : ReadOptionalDateTime(aggregateValues, "lastRatedAtUtc");
 
             RatingAggregateDocument? committedDocument = await this.TryCommitSnapshotAsync(
-                target,
-                mutationVersion,
+                pendingMutation.Target,
+                pendingMutation.Version,
                 ratingCount,
                 ratingSum,
                 averageRating,
@@ -70,13 +71,14 @@ internal sealed class RatingAggregateSynchronizer
 
             // Une mutation plus récente a invalidé ce snapshot. Le recalcul courant
             // retourne sa projection terminée ou aide à finaliser la dernière version.
-            FilterDefinition<RatingAggregateDocument> aggregateFilter = BuildAggregateTargetFilter(target);
+            FilterDefinition<RatingAggregateDocument> aggregateFilter =
+                BuildAggregateTargetFilter(pendingMutation.Target);
             RatingAggregateDocument? currentDocument = await this.ratingAggregatesCollection
                 .Find(aggregateFilter)
                 .FirstOrDefaultAsync(cancellationToken);
             if (currentDocument is null)
             {
-                mutationVersion = await this.ReserveMutationVersionAsync(target, cancellationToken);
+                pendingMutation = await this.ReserveMutationVersionAsync(target, cancellationToken);
                 continue;
             }
 
@@ -85,31 +87,17 @@ internal sealed class RatingAggregateSynchronizer
                 return ToVisibleAggregate(currentDocument);
             }
 
-            mutationVersion = currentDocument.MutationVersion;
+            pendingMutation = ToPendingMutation(currentDocument);
         }
     }
 
-    private async Task<long> ReserveMutationVersionAsync(
+    private async Task<RatingAggregatePendingMutation> ReserveMutationVersionAsync(
         RatingAggregateTarget target,
         CancellationToken cancellationToken)
     {
         DateTime nowUtc = DateTime.UtcNow;
         FilterDefinition<RatingAggregateDocument> aggregateFilter = BuildAggregateTargetFilter(target);
-        UpdateDefinition<RatingAggregateDocument> reserveUpdate = Builders<RatingAggregateDocument>.Update
-            .SetOnInsert(document => document.Id, Guid.NewGuid().ToString("N"))
-            .SetOnInsert(document => document.CreatedAt, nowUtc)
-            .SetOnInsert(document => document.UpdatedAt, nowUtc)
-            .SetOnInsert(document => document.CalculatedVersion, 0)
-            .SetOnInsert(document => document.TargetType, target.TargetType)
-            .SetOnInsert(document => document.TargetId, target.TargetId)
-            .SetOnInsert(document => document.ParkId, target.ParkId)
-            .SetOnInsert(document => document.ParkItemCategory, target.ParkItemCategory)
-            .SetOnInsert(document => document.ParkItemType, target.ParkItemType)
-            .SetOnInsert(document => document.RatingCount, 0)
-            .SetOnInsert(document => document.RatingSum, 0d)
-            .SetOnInsert(document => document.AverageRating, 0d)
-            .SetOnInsert(document => document.BayesianScore, RatingScoreCalculator.PriorMean)
-            .Inc(document => document.MutationVersion, 1);
+        UpdateDefinition<RatingAggregateDocument> reserveUpdate = BuildReserveUpdate(target, nowUtc);
         FindOneAndUpdateOptions<RatingAggregateDocument> options = new FindOneAndUpdateOptions<RatingAggregateDocument>
         {
             IsUpsert = true,
@@ -127,11 +115,19 @@ internal sealed class RatingAggregateSynchronizer
         }
         catch (MongoWriteException exception) when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
         {
-            document = await this.IncrementExistingMutationVersionAsync(aggregateFilter, cancellationToken);
+            document = await this.ReserveExistingMutationVersionAsync(
+                aggregateFilter,
+                target,
+                nowUtc,
+                cancellationToken);
         }
         catch (MongoCommandException exception) when (exception.Code == 11000)
         {
-            document = await this.IncrementExistingMutationVersionAsync(aggregateFilter, cancellationToken);
+            document = await this.ReserveExistingMutationVersionAsync(
+                aggregateFilter,
+                target,
+                nowUtc,
+                cancellationToken);
         }
 
         if (document is null)
@@ -139,15 +135,37 @@ internal sealed class RatingAggregateSynchronizer
             throw new InvalidOperationException("Unable to reserve the rating aggregate mutation version.");
         }
 
-        return document.MutationVersion;
+        return ToPendingMutation(document);
     }
 
-    private async Task<RatingAggregateDocument?> IncrementExistingMutationVersionAsync(
+    internal static UpdateDefinition<RatingAggregateDocument> BuildReserveUpdate(
+        RatingAggregateTarget target,
+        DateTime nowUtc)
+    {
+        return Builders<RatingAggregateDocument>.Update
+            .SetOnInsert(document => document.Id, Guid.NewGuid().ToString("N"))
+            .SetOnInsert(document => document.CreatedAt, nowUtc)
+            .SetOnInsert(document => document.CalculatedVersion, 0)
+            .SetOnInsert(document => document.RatingCount, 0)
+            .SetOnInsert(document => document.RatingSum, 0d)
+            .SetOnInsert(document => document.AverageRating, 0d)
+            .SetOnInsert(document => document.BayesianScore, RatingScoreCalculator.PriorMean)
+            .Set(document => document.UpdatedAt, nowUtc)
+            .Set(document => document.TargetType, target.TargetType)
+            .Set(document => document.TargetId, target.TargetId.Trim())
+            .Set(document => document.ParkId, target.ParkId.Trim())
+            .Set(document => document.ParkItemCategory, target.ParkItemCategory)
+            .Set(document => document.ParkItemType, target.ParkItemType)
+            .Inc(document => document.MutationVersion, 1);
+    }
+
+    private async Task<RatingAggregateDocument?> ReserveExistingMutationVersionAsync(
         FilterDefinition<RatingAggregateDocument> aggregateFilter,
+        RatingAggregateTarget target,
+        DateTime nowUtc,
         CancellationToken cancellationToken)
     {
-        UpdateDefinition<RatingAggregateDocument> increment = Builders<RatingAggregateDocument>.Update
-            .Inc(document => document.MutationVersion, 1);
+        UpdateDefinition<RatingAggregateDocument> reserveUpdate = BuildReserveUpdate(target, nowUtc);
         FindOneAndUpdateOptions<RatingAggregateDocument> options = new FindOneAndUpdateOptions<RatingAggregateDocument>
         {
             IsUpsert = false,
@@ -155,7 +173,7 @@ internal sealed class RatingAggregateSynchronizer
         };
         return await this.ratingAggregatesCollection.FindOneAndUpdateAsync(
             aggregateFilter,
-            increment,
+            reserveUpdate,
             options,
             cancellationToken);
     }
@@ -220,6 +238,19 @@ internal sealed class RatingAggregateSynchronizer
             & pendingCalculationFilter;
     }
 
+    internal static RatingAggregatePendingMutation ToPendingMutation(RatingAggregateDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+
+        RatingAggregateTarget target = new RatingAggregateTarget(
+            document.TargetType,
+            document.TargetId,
+            document.ParkId,
+            document.ParkItemCategory,
+            document.ParkItemType);
+        return new RatingAggregatePendingMutation(document.MutationVersion, target);
+    }
+
     private static FilterDefinition<UserRatingDocument> BuildUserRatingTargetFilter(RatingAggregateTarget target)
     {
         return Builders<UserRatingDocument>.Filter.Eq(document => document.TargetType, target.TargetType)
@@ -254,3 +285,7 @@ internal sealed class RatingAggregateSynchronizer
         return value is BsonDateTime dateTime ? dateTime.ToUniversalTime() : null;
     }
 }
+
+internal sealed record RatingAggregatePendingMutation(
+    long Version,
+    RatingAggregateTarget Target);
