@@ -610,7 +610,7 @@ for (const agent of agents) {
 
     try {
       const response = await fetch(url, {
-        redirect: 'follow',
+        redirect: 'manual',
         headers: {
           accept: 'text/html,application/xhtml+xml',
           'accept-encoding': 'identity',
@@ -630,6 +630,7 @@ for (const agent of agents) {
       const ogDescription = findMeta(html, 'property', 'og:description');
       const ogUrl = findMeta(html, 'property', 'og:url');
       const ogLocale = findMeta(html, 'property', 'og:locale');
+      const expectedOgLocale = resolveExpectedOpenGraphLocale(response.url);
       const h1Count = (html.match(/<h1\b/gi) ?? []).length;
       const invalidJsonLd = findJsonLd(html).filter((value) => !value.valid);
       const executableScripts = countExecutableScripts(html);
@@ -639,6 +640,9 @@ for (const agent of agents) {
       const warnings = [];
 
       if (response.status !== 200) errors.push(`HTTP ${response.status}`);
+      if (response.status >= 300 && response.status < 400) {
+        errors.push(`unexpected redirect to ${response.headers.get('location') ?? '(missing location)'}`);
+      }
       if (!response.headers.get('content-type')?.includes('text/html')) {
         errors.push('Content-Type is not HTML');
       }
@@ -654,8 +658,10 @@ for (const agent of agents) {
         errors.push('missing canonical');
       } else {
         const canonicalUrl = new URL(canonical, url);
-        const pageUrl = new URL(url);
-        if (canonicalUrl.origin !== pageUrl.origin) errors.push('canonical origin mismatch');
+        const finalPageUrl = new URL(response.url);
+        if (canonicalUrl.href !== finalPageUrl.href) {
+          errors.push(`canonical mismatch: ${canonicalUrl.href}`);
+        }
         if (canonicalUrl.search || canonicalUrl.hash) errors.push('canonical has query or fragment');
       }
       if (!hreflangs.some((entry) => entry.language === 'x-default')) {
@@ -666,6 +672,9 @@ for (const agent of agents) {
       }
       if (!ogTitle || !ogDescription || !ogUrl || !ogLocale) {
         errors.push('incomplete Open Graph metadata');
+      }
+      if (expectedOgLocale && ogLocale !== expectedOgLocale) {
+        errors.push(`Open Graph locale mismatch: expected ${expectedOgLocale}, received ${ogLocale}`);
       }
       if (h1Count !== 1) warnings.push(`H1 count is ${h1Count}`);
       if (!appRootHasContent) errors.push('empty SSR app-root');
@@ -697,6 +706,7 @@ for (const agent of agents) {
         ogDescription,
         ogUrl,
         ogLocale,
+        expectedOgLocale,
         h1Count,
         jsonLdCount: findJsonLd(html).length,
         executableScripts,
@@ -782,6 +792,20 @@ function countExecutableScripts(html) {
   return (html.match(/<script\b[^>]*>/gi) ?? [])
     .filter((tag) => getAttribute(tag, 'type').toLowerCase() !== 'application/ld+json')
     .length;
+}
+
+function resolveExpectedOpenGraphLocale(url) {
+  const language = new URL(url).pathname.split('/').filter(Boolean)[0]?.toLowerCase();
+  return {
+    en: 'en_US',
+    fr: 'fr_FR',
+    es: 'es_ES',
+    de: 'de_DE',
+    it: 'it_IT',
+    pl: 'pl_PL',
+    nl: 'nl_NL',
+    pt: 'pt_PT'
+  }[language] ?? null;
 }
 '@ | node --input-type=module -
 ```
