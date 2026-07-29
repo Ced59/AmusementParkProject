@@ -13,4 +13,5 @@ public static class RateLimitPolicyNames
     public const string AuthPasswordReset = "auth-password-reset";
     public const string ContactSubmission = "contact-submission";
     public const string SocialShareEvents = "social-share-events";
+    public const string ImageUploadProcessing = "image-upload-processing";
 }

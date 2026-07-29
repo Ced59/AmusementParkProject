@@ -12,13 +12,34 @@
 }
 
 .admin-photo-batch-workflow,
-.admin-photo-batch-section {
+.admin-photo-batch-section,
+.admin-photo-batch-bulk {
   display: grid;
   gap: 1rem;
   padding: 1rem;
   border: 1px solid rgba(168, 134, 92, 0.18);
   border-radius: 8px;
   background: rgba(18, 12, 8, 0.55);
+}
+
+.admin-photo-batch-bulk {
+  position: sticky;
+  z-index: 5;
+  top: 0.75rem;
+  border-color: rgba(163, 230, 53, 0.42);
+  background: rgba(24, 18, 10, 0.96);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.28);
+}
+
+.admin-photo-batch-bulk__fields {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(10rem, 1fr));
+  gap: 0.75rem;
+}
+
+.admin-photo-batch-bulk__actions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .admin-photo-batch-section--uncategorized {
@@ -62,6 +83,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+}
+
+.admin-photo-batch-setup__queue-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  margin: 0;
+  color: #b6c991;
+  font-size: 0.82rem;
 }
 
 .admin-checkbox-row {
@@ -188,6 +218,10 @@
   .admin-photo-batch-setup {
     grid-template-columns: 1fr;
   }
+
+  .admin-photo-batch-bulk__fields {
+    grid-template-columns: repeat(2, minmax(12rem, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
@@ -200,5 +234,21 @@
   .admin-photo-batch-queue__grid,
   .admin-photo-batch-grid {
     grid-template-columns: 1fr;
+  }
+
+  .admin-photo-batch-bulk {
+    position: static;
+  }
+
+  .admin-photo-batch-bulk__fields {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-photo-batch-bulk__actions {
+    justify-content: stretch;
+  }
+
+  .admin-photo-batch-bulk__actions .btn {
+    width: 100%;
   }
 }

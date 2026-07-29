@@ -44,6 +44,14 @@ export class AdminPhotoBatchComponent implements OnInit {
   protected readonly uploadProgress = this.stateFacade.uploadProgress;
   protected readonly uploadPercent = this.stateFacade.uploadPercent;
   protected readonly withWatermark = this.stateFacade.withWatermark;
+  protected readonly selectedPhotoCount = this.stateFacade.selectedPhotoCount;
+  protected readonly selectedPhotos = this.stateFacade.selectedPhotos;
+  protected readonly bulkOwnerKind = this.stateFacade.bulkOwnerKind;
+  protected readonly bulkParkItemId = this.stateFacade.bulkParkItemId;
+  protected readonly bulkCategorySlug = this.stateFacade.bulkCategorySlug;
+  protected readonly bulkCurrentImageId = this.stateFacade.bulkCurrentImageId;
+  protected readonly bulkSaving = this.stateFacade.bulkSaving;
+  protected readonly canApplyBulkCategorization = this.stateFacade.canApplyBulkCategorization;
   protected readonly categorySets = this.stateFacade.categorySets;
   protected readonly uncategorizedPhotos = this.stateFacade.uncategorizedPhotos;
   protected readonly parkPhotos = this.stateFacade.parkPhotos;
@@ -112,6 +120,38 @@ export class AdminPhotoBatchComponent implements OnInit {
     this.stateFacade.setPhotoDraftCategorySlug(event.photoId, event.categorySlug);
   }
 
+  protected isPhotoSelected(photoId: string): boolean {
+    return this.stateFacade.isPhotoSelected(photoId);
+  }
+
+  protected setPhotoSelected(event: { photoId: string; selected: boolean }): void {
+    this.stateFacade.setPhotoSelected(event.photoId, event.selected);
+  }
+
+  protected clearPhotoSelection(): void {
+    this.stateFacade.clearPhotoSelection();
+  }
+
+  protected setBulkOwnerKind(ownerKind: AdminPhotoBatchOwnerKind): void {
+    this.stateFacade.setBulkOwnerKind(ownerKind);
+  }
+
+  protected setBulkParkItem(parkItemId: string): void {
+    this.stateFacade.setBulkParkItemId(parkItemId);
+  }
+
+  protected setBulkCategory(categorySlug: string): void {
+    this.stateFacade.setBulkCategorySlug(categorySlug);
+  }
+
+  protected setBulkCurrentImage(imageId: string): void {
+    this.stateFacade.setBulkCurrentImageId(imageId);
+  }
+
+  protected applyBulkCategorization(): void {
+    void this.stateFacade.applyBulkCategorization();
+  }
+
   protected savePhotoCategorization(photoId: string): void {
     void this.stateFacade.savePhotoCategorization(photoId);
   }
@@ -122,6 +162,10 @@ export class AdminPhotoBatchComponent implements OnInit {
 
   protected togglePublished(photoId: string): void {
     void this.stateFacade.togglePublished(photoId);
+  }
+
+  protected setPhotoAsCurrent(photoId: string): void {
+    void this.stateFacade.setPhotoAsCurrent(photoId);
   }
 
   protected loadMoreParkPhotos(): void {

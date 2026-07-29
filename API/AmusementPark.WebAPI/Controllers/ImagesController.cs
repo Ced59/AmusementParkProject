@@ -16,12 +16,14 @@ using AmusementPark.Core.Domain.Images;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Images;
 using AmusementPark.WebAPI.Mappers;
+using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.AdminPublicView;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
+using Microsoft.AspNetCore.RateLimiting;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
@@ -96,6 +98,7 @@ public sealed class ImagesController : ControllerBase
 
     [HttpPost]
     [AdminAudit("image.upload", "Image")]
+    [EnableRateLimiting(RateLimitPolicyNames.ImageUploadProcessing)]
     [Consumes("multipart/form-data")]
     [ProducesResponseType(typeof(ImageCreatedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UploadAsync([FromForm] ImageCreateDto image, CancellationToken cancellationToken = default)
@@ -128,6 +131,7 @@ public sealed class ImagesController : ControllerBase
 
     [HttpPost("remote")]
     [AdminAudit("image.remote-import", "Image")]
+    [EnableRateLimiting(RateLimitPolicyNames.ImageUploadProcessing)]
     [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ImportRemoteAsync([FromBody] RemoteImageCreateDto request, CancellationToken cancellationToken = default)
     {
