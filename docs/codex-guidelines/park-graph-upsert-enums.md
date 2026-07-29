@@ -141,10 +141,13 @@ Ce fichier liste les valeurs enum canoniques. Il ne garantit pas la résolution 
 Même avec un enum valide (`ParkItem`, `Incident`, `Image`, etc.), le JSON doit fournir les IDs ou clés nécessaires :
 
 - `ownerId` / `parkItemId` / `itemId` pour les événements de parkItems existants ;
-- `ownerId` pour les images d’entités existantes ;
+- `ownerKey: "park"` pour une image du parc cible ;
+- `ownerKey` et une entrée `items[]` correspondante pour une image de parkItem ;
+- `ownerKey` préfixé et la référence correspondante dans le même JSON pour une image d’exploitant, de fondateur ou de constructeur ;
+- une clé enregistrée ou un `ownerId` exact pour une image d’attraction autonome ;
 - `imageId` pour les images déjà présentes dans l’export.
 
-Ne pas confondre une valeur enum valide avec une relation résolue.
+Pour les images de parkItems et de références, `ownerId` n’est pas utilisé comme solution de repli par le résolveur. Ne pas confondre une valeur enum valide ou un `ownerId` présent avec une relation réellement résolue.
 
 Pour `history.events[].eventType`, utiliser la liste correspondant au propriétaire de l’événement.
 

@@ -67,37 +67,59 @@ Ne pas utiliser de lien CDN interne du site comme source externe pour réimporte
 
 ## Propriétaires d’images
 
-Utiliser :
+### Fonctionnement réel du processeur
 
-- `ownerKey: "park"` pour le parc ;
-- `ownerType: "ParkItem"` avec `ownerKey` d’item pour un parkItem ;
-- `ownerKey: "manufacturer:key"` pour un constructeur ;
-- `ownerKey: "operator:key"` pour un exploitant ;
-- `ownerKey: "founder:key"` pour un fondateur.
+Le processeur traite `references`, puis `items[]`, puis `images[]`. Il construit pendant ce traitement des dictionnaires de clés qui contiennent seulement les références, parkItems ou attractions autonomes redéclarés dans le JSON courant. Le fait qu’une entité existe déjà en base ou dans un export précédent ne suffit pas à enregistrer sa clé.
 
-Si le propriétaire ne peut pas être résolu, ne pas inclure l’image.
+Le parc cible est le seul propriétaire résolu directement par le contexte du parc. Pour les livrables produits par ChatGPT, chaque objet de `images[]` doit préciser explicitement `ownerType` et utiliser le mécanisme suivant :
 
-Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `ownerKey` si l’export ne prouve pas que cette valeur est acceptée. Pour un parkItem, `ownerKey` doit correspondre à la clé ou à l’identifiant réellement attendu par l’import selon l’export et le modèle du JSON. En cas de doute, ne pas inclure l’image et signaler le blocage.
+| Propriétaire | `ownerType` de l’image | `ownerKey` sûr | Déclaration requise dans le JSON courant | Rôle de `ownerId` dans la résolution |
+| --- | --- | --- | --- | --- |
+| Parc cible | `Park` | `park` | parc cible résolu par la sélection admin, `identity.parkId` ou l’identifiant équivalent du document | ignoré dès que `ownerKey: "park"` est reconnu |
+| ParkItem | `ParkItem` | valeur exacte de `items[].key` | entrée correspondante dans `items[]` | non utilisé pour résoudre ce type |
+| Exploitant | `ParkOperator` | `operator:<key>` | entrée correspondante dans `references.operators` | non utilisé pour résoudre ce type |
+| Fondateur | `ParkFounder` | `founder:<key>` | entrée correspondante dans `references.founders` | non utilisé pour résoudre ce type |
+| Constructeur | `AttractionManufacturer` | `manufacturer:<key>` | entrée correspondante dans `references.manufacturers` | non utilisé pour résoudre ce type |
+| Attraction autonome | `StandaloneAttraction` | clé enregistrée par le bloc singulier, notamment `standaloneAttraction` dans l’export standard | bloc `standaloneAttraction` correspondant | un `ownerId` exact non vide est accepté directement pour ce type |
+
+Le processeur sait déduire certains `ownerType` depuis un préfixe, mais ChatGPT doit toujours l’écrire explicitement pour empêcher un repli accidentel vers `Park`.
+
+Pour un propriétaire existant, recopier depuis le même export actualisé :
+
+- `id`, `key` et `name` dans l’entrée minimale de `items[]` ou de `references` ;
+- exactement la même valeur de `key` dans `images[].ownerKey`, précédée du préfixe requis pour une référence ;
+- l’`ownerId` uniquement s’il est conservé comme information redondante issue de l’export.
+
+Dans l’export standard, la clé d’un parkItem est son ID. Une image de parkItem utilise donc généralement cet ID comme `ownerKey`, mais parce qu’il est aussi présent dans `items[].key`, pas parce que `ownerId` permettrait de le résoudre.
+
+Pour un propriétaire créé dans le même JSON, utiliser une clé locale stable et strictement identique entre sa déclaration et l’image. Ne jamais inventer un UUID ou un ID interne.
+
+`ownerId` n’est pas une clé de secours universelle. En particulier, un `ownerId` fourni seul pour un parkItem, un exploitant, un fondateur ou un constructeur ne remplace jamais `ownerKey` ni la déclaration du propriétaire dans le JSON courant.
 
 Avant de livrer un JSON avec des images, faire un contrôle croisé simple :
 
 - lister chaque `sourceUrl` ;
-- indiquer son `ownerType` attendu ;
-- indiquer son `ownerKey` ;
-- vérifier que `ownerKey` existe dans l’export actualisé ou dans le même JSON ;
+- indiquer son `ownerType` explicite ;
+- indiquer son `ownerKey` exact ;
+- pointer vers l’objet précis du JSON courant qui enregistre cette clé, ou vers le parc cible pour `ownerKey: "park"` ;
+- vérifier caractère par caractère l’égalité entre les clés ;
+- vérifier tout `ownerId` conservé contre l’export, sans compter sur lui pour remplacer la clé ;
 - retirer toute image dont le propriétaire ne peut pas être prouvé.
 
 Ne jamais utiliser le nom de fichier, le dossier de galerie, l’URL, une légende approximative ou un slug deviné comme `ownerKey`. Une image d’une galerie source doit être rattachée à `park` si elle représente vraiment le parc dans son ensemble, ou à un `ParkItem` seulement si l’item est déjà présent et que le lien est certain.
 
-Une alerte Preview du type `Remote image ignored: owner could not be resolved` indique une erreur de livrable. Ne pas demander à l’utilisateur d’appliquer quand même : corriger les `ownerKey`, créer la référence ou l’item manquant dans le même JSON si c’est fiable, ou retirer les images concernées et fournir un nouveau fichier téléchargeable.
+Chaque image est résolue indépendamment. Aucun champ propriétaire n’est hérité de l’image précédente, du parc cible, de l’article qui la référence ou d’une autre section.
+
+Une alerte Preview du type `Remote image ignored: owner could not be resolved` indique une erreur de livrable. Ne pas demander à l’utilisateur d’appliquer quand même : corriger `ownerType`, `ownerKey` ou la déclaration manquante dans `items[]` ou `references`, puis fournir un nouveau fichier téléchargeable.
 
 ## Métadonnées image
 
-Chaque image doit avoir, si possible :
+Chaque nouvelle image distante doit avoir :
 
-- `key` ;
+- `key` stable, sans espaces de bord et unique sans tenir compte de la casse ;
 - `sourceUrl` ;
-- `ownerKey` ou `ownerType` + `ownerKey` ;
+- `ownerType` ;
+- l’`ownerKey` défini dans le tableau ci-dessus, sauf attraction autonome volontairement résolue par son `ownerId` exact ;
 - `category` ;
 - `isPublished` ;
 - `withWatermark` ;
@@ -151,6 +173,7 @@ Ne pas transformer ces enrichissements en étape autonome. Cette étape 5 est le
 Sections possibles :
 
 - `images`
+- `items` quand une image appartient à un parkItem
 - `references.founders`
 - `references.operators`
 - `references.manufacturers`
@@ -175,6 +198,7 @@ Sections possibles :
     {
       "key": "park-main-image",
       "sourceUrl": "https://upload.wikimedia.org/example/image.jpg",
+      "ownerType": "Park",
       "ownerKey": "park",
       "category": "Park",
       "isPublished": true,
@@ -192,53 +216,78 @@ Sections possibles :
 }
 ```
 
-## Propriétaires d’images — règle stricte
+## Exemples de résolution sûre
 
-Pour les images distantes, le propriétaire doit être résolu avant livraison.
+### Image d’un parkItem existant
 
-Pour une image rattachée à un parkItem déjà présent dans l’export :
-
-```json
-{
-  "ownerType": "ParkItem",
-  "ownerId": "id-du-parkItem",
-  "ownerKey": "id-du-parkItem"
-}
-```
-
-Ne pas utiliser seulement `ownerKey` si le JSON ne contient pas aussi une section `items[]` minimale pour enregistrer la clé du parkItem. Le processeur ne doit pas avoir à deviner le propriétaire depuis une URL, un nom de fichier, une légende, un titre ou un nom affiché.
-
-Pour une image de parc :
+Même si aucune donnée métier du parkItem ne change, le redéclarer pour enregistrer sa clé avant le traitement de l’image :
 
 ```json
 {
-  "ownerType": "Park",
-  "ownerId": "id-du-parc",
-  "ownerKey": "park"
+  "items": [
+    {
+      "id": "id-exporte-du-parkItem",
+      "key": "id-exporte-du-parkItem",
+      "name": "Nom exact exporté du parkItem"
+    }
+  ],
+  "images": [
+    {
+      "key": "park-item-main-image",
+      "sourceUrl": "https://example.org/photo.jpg",
+      "ownerType": "ParkItem",
+      "ownerKey": "id-exporte-du-parkItem",
+      "category": "ParkItem"
+    }
+  ]
 }
 ```
 
-Pour une image constructeur :
+L’`ownerId` de l’image peut être recopié de l’export comme redondance, mais il n’est pas consulté pour résoudre un propriétaire `ParkItem`.
+
+### Image d’un constructeur existant
+
+La référence doit être traitée avant l’image et la partie située après `manufacturer:` doit correspondre à sa clé :
 
 ```json
 {
-  "ownerType": "AttractionManufacturer",
-  "ownerId": "id-du-constructeur"
+  "references": {
+    "manufacturers": [
+      {
+        "id": "id-exporte-du-constructeur",
+        "key": "id-exporte-du-constructeur",
+        "name": "Nom exact exporté du constructeur"
+      }
+    ]
+  },
+  "images": [
+    {
+      "key": "manufacturer-logo",
+      "sourceUrl": "https://example.org/logo.png",
+      "ownerType": "AttractionManufacturer",
+      "ownerKey": "manufacturer:id-exporte-du-constructeur",
+      "category": "Logo"
+    }
+  ]
 }
 ```
 
-ou `ownerKey: "manufacturer:<key>"` seulement si la référence est déjà résolue ou incluse dans le même JSON.
+Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `founder:<key>` et `references.founders`.
 
-Contrôle bloquant :
+### Contrôle bloquant
 
-- aucune image distante ne doit produire `Remote image ignored: owner could not be resolved` ;
-- aucune image ne doit avoir un `ownerKey` basé sur une URL, un chemin CDN, un nom de fichier ou une valeur reconstruite ;
-- si le JSON ajoute des images de parkItems sans modifier les parkItems, utiliser `ownerId` explicite ou ajouter des `items[]` minimaux.
+- aucune image distante ne produit `Remote image ignored: owner could not be resolved` ;
+- chaque `ownerKey` est prouvé par le parc cible ou par une déclaration du JSON courant ;
+- aucune image n’utilise seulement `ownerId` pour un parkItem ou une référence ;
+- aucun `ownerKey` ne provient d’une URL, d’un chemin CDN, d’un nom de fichier, d’un nom affiché ou d’une valeur reconstruite ;
+- le nombre d’images contrôlées est égal au nombre d’objets de `images[]`.
 
 ## Contrôles avant livraison
 
 - Toutes les URLs images sont techniquement importables selon les règles ci-dessus.
-- Tous les propriétaires sont résolus.
+- Tous les propriétaires sont résolus par le mécanisme exact décrit dans le tableau.
+- Tous les parkItems propriétaires d’images sont redéclarés dans `items[]`.
+- Toutes les références propriétaires d’images sont redéclarées dans leur section `references` correspondante.
 - Aucune URL image ne peut produire `Remote image ignored: owner could not be resolved`.
 - Les constructeurs liés aux items ont une biographie ou une limite de source documentée.
 - Les fondateurs liés au parc ont une biographie ou une limite de source documentée.

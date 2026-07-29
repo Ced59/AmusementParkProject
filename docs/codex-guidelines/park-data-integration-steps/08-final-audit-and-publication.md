@@ -92,6 +92,8 @@ Vérifier :
 - URLs externes techniquement importables par le flux remote image ;
 - propriétaires résolus ;
 - aucun warning Preview du type `Remote image ignored: owner could not be resolved` ;
+- chaque image de parkItem possède une entrée `items[]` correspondante dans son JSON de livraison ;
+- chaque image d’exploitant, de fondateur ou de constructeur possède la référence correspondante dans son JSON de livraison ;
 - aucun `ownerKey` basé sur une URL, un nom de fichier, un dossier de galerie ou une valeur devinée ;
 - alt texts et crédits localisés ;
 - pas de page HTML, preview non téléchargeable, image trompeuse ou watermark non autorisé ;
@@ -104,6 +106,9 @@ Pour chaque article avec image :
 - l’image existe déjà dans l’export ou est créée dans le même JSON ;
 - l’article utilise `imageId` quand l’image vient de l’export ;
 - `imageKey` est réservé aux images créées dans le même JSON avec un `key` stable ;
+- les `images[].key` restent uniques après suppression des espaces de bord et comparaison sans tenir compte de la casse ;
+- chaque `mainImageKey`, `imageKey` ou valeur de `imageKeys` correspond exactement à une unique `images[].key` du même JSON ;
+- un Preview sans avertissement n’est pas considéré comme une validation de ces clés d’images ;
 - la légende est localisée dans les langues du lot ;
 - la légende ne contient pas de justification technique, juridique ou documentaire ;
 - pour incident/accident, une photo réelle non graphique et juridiquement réutilisable doit être privilégiée si disponible ;
