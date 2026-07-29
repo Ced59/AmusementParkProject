@@ -2680,7 +2680,19 @@
       "update": "Änderungen speichern",
       "updating": "Speichern…",
       "cancelEdit": "Bearbeitung abbrechen",
-      "saved": "Der Kommentar wurde veröffentlicht."
+      "saved": "Der Kommentar wurde veröffentlicht.",
+      "images": {
+        "add": "Bild hinzufügen",
+        "uploading": "Bild wird hochgeladen…",
+        "alignLeft": "Bild links, Text rechts",
+        "alignCenter": "Bild zentrieren",
+        "alignRight": "Bild rechts, Text links",
+        "fullWidth": "Bild in voller Breite anzeigen",
+        "alt": "Alternativtext bearbeiten",
+        "altPrompt": "Beschreibe das Bild kurz für die Barrierefreiheit",
+        "uploadError": "Das Bild konnte nicht hochgeladen werden.",
+        "cleanupError": "Ein Entwurfsbild konnte nicht gelöscht werden."
+      }
     },
     "management": {
       "edit": "Bearbeiten",

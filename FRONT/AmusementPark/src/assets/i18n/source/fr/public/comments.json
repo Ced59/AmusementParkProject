@@ -50,7 +50,19 @@
       "update": "Enregistrer les modifications",
       "updating": "Enregistrement…",
       "cancelEdit": "Annuler la modification",
-      "saved": "Le commentaire a été publié."
+      "saved": "Le commentaire a été publié.",
+      "images": {
+        "add": "Ajouter une image",
+        "uploading": "Téléversement de l’image…",
+        "alignLeft": "Image à gauche, texte à droite",
+        "alignCenter": "Centrer l’image",
+        "alignRight": "Image à droite, texte à gauche",
+        "fullWidth": "Afficher l’image en pleine largeur",
+        "alt": "Modifier le texte alternatif",
+        "altPrompt": "Décris brièvement l’image pour l’accessibilité",
+        "uploadError": "L’image n’a pas pu être téléversée.",
+        "cleanupError": "Une image de brouillon n’a pas pu être supprimée."
+      }
     },
     "management": {
       "edit": "Modifier",

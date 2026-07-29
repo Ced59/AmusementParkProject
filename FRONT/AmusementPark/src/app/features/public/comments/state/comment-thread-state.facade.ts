@@ -18,6 +18,8 @@ import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { TranslateService } from '@ngx-translate/core';
 import { COMMENT_DATA_PORT, CommentDataPort } from './comment-data.ports';
 
+export type CommentEditorResetReason = 'saved' | 'deleted';
+
 @Injectable()
 export class CommentThreadStateFacade {
   private readonly stateSignal = signal<ScreenState<CommentThread, string>>({ kind: 'loading' });
@@ -26,6 +28,7 @@ export class CommentThreadStateFacade {
   private readonly savingSignal = signal<boolean>(false);
   private readonly saveErrorKeySignal = signal<string | null>(null);
   private readonly editorResetVersionSignal = signal<number>(0);
+  private readonly editorResetReasonSignal = signal<CommentEditorResetReason | null>(null);
   private readonly notFoundSignal = signal<boolean>(false);
 
   readonly state: Signal<ScreenState<CommentThread, string>> = this.stateSignal.asReadonly();
@@ -35,6 +38,8 @@ export class CommentThreadStateFacade {
   readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
   readonly saveErrorKey: Signal<string | null> = this.saveErrorKeySignal.asReadonly();
   readonly editorResetVersion: Signal<number> = this.editorResetVersionSignal.asReadonly();
+  readonly editorResetReason: Signal<CommentEditorResetReason | null> =
+    this.editorResetReasonSignal.asReadonly();
   readonly notFound: Signal<boolean> = this.notFoundSignal.asReadonly();
 
   private currentTargetKey: string | null = null;
@@ -149,7 +154,7 @@ export class CommentThreadStateFacade {
                   }
                 });
                 this.savingSignal.set(false);
-                this.editorResetVersionSignal.update((value: number) => value + 1);
+                this.requestEditorReset('saved');
                 this.toastMessageService.add(
                   'success',
                   this.translateService.instant('common.success'),
@@ -216,7 +221,7 @@ export class CommentThreadStateFacade {
                   }
                 });
                 this.savingSignal.set(false);
-                this.editorResetVersionSignal.update((value: number) => value + 1);
+                this.requestEditorReset('saved');
                 this.toastMessageService.add(
                   'success',
                   this.translateService.instant('common.success'),
@@ -282,7 +287,7 @@ export class CommentThreadStateFacade {
                   }
                 });
                 this.savingSignal.set(false);
-                this.editorResetVersionSignal.update((value: number) => value + 1);
+                this.requestEditorReset('deleted');
                 this.toastMessageService.add(
                   'success',
                   this.translateService.instant('common.success'),
@@ -308,6 +313,11 @@ export class CommentThreadStateFacade {
 
   private hasStaffRole(): boolean {
     return this.authService.hasRole('ADMIN') || this.authService.hasRole('MODERATOR');
+  }
+
+  private requestEditorReset(reason: CommentEditorResetReason): void {
+    this.editorResetReasonSignal.set(reason);
+    this.editorResetVersionSignal.update((value: number) => value + 1);
   }
 
 }

@@ -188,7 +188,46 @@
 
 .comment-card__body {
   line-height: 1.72;
+  min-width: 0;
+  overflow: hidden;
   overflow-wrap: anywhere;
+}
+
+.comment-card__body::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.comment-card__body ::ng-deep img.rich-text__image {
+  border-radius: 0.8rem;
+  height: auto;
+  max-width: 100%;
+}
+
+.comment-card__body ::ng-deep img.rich-text__image--left {
+  float: left;
+  margin: 0.25rem 1rem 0.75rem 0;
+  width: min(44%, 32rem);
+}
+
+.comment-card__body ::ng-deep img.rich-text__image--right {
+  float: right;
+  margin: 0.25rem 0 0.75rem 1rem;
+  width: min(44%, 32rem);
+}
+
+.comment-card__body ::ng-deep img.rich-text__image--center {
+  display: block;
+  margin: 0.75rem auto;
+  width: min(72%, 54rem);
+}
+
+.comment-card__body ::ng-deep img.rich-text__image--full {
+  clear: both;
+  display: block;
+  margin: 0.75rem 0;
+  width: 100%;
 }
 
 .comment-card__body ::ng-deep > :first-child {
@@ -246,5 +285,11 @@
   .comment-card__actions button {
     flex: 1 1 auto;
     justify-content: center;
+  }
+
+  .comment-card__body ::ng-deep img.rich-text__image {
+    float: none;
+    margin: 0.75rem 0;
+    width: 100%;
   }
 }

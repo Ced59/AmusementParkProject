@@ -2680,7 +2680,19 @@
       "update": "Wijzigingen opslaan",
       "updating": "Opslaan…",
       "cancelEdit": "Bewerken annuleren",
-      "saved": "De reactie is gepubliceerd."
+      "saved": "De reactie is gepubliceerd.",
+      "images": {
+        "add": "Afbeelding toevoegen",
+        "uploading": "Afbeelding uploaden…",
+        "alignLeft": "Afbeelding links, tekst rechts",
+        "alignCenter": "Afbeelding centreren",
+        "alignRight": "Afbeelding rechts, tekst links",
+        "fullWidth": "Afbeelding over de volle breedte tonen",
+        "alt": "Alternatieve tekst bewerken",
+        "altPrompt": "Beschrijf de afbeelding kort voor toegankelijkheid",
+        "uploadError": "De afbeelding kon niet worden geüpload.",
+        "cleanupError": "Een conceptafbeelding kon niet worden verwijderd."
+      }
     },
     "management": {
       "edit": "Bewerken",

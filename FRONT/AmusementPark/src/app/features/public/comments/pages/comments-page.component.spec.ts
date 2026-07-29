@@ -9,7 +9,11 @@ import { CommentThread, UpdateCommentRequest } from '@app/models/comments/commen
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
-import { CommentThreadStateFacade } from '../state/comment-thread-state.facade';
+import {
+  CommentEditorResetReason,
+  CommentThreadStateFacade
+} from '../state/comment-thread-state.facade';
+import { CommentRichTextImagesFacade } from '../state/comment-rich-text-images.facade';
 import { CommentsPageComponent } from './comments-page.component';
 
 class FakeTranslationService {
@@ -31,6 +35,8 @@ class FakeCommentThreadStateFacade {
   readonly saving: Signal<boolean> = signal<boolean>(false).asReadonly();
   readonly saveErrorKey: Signal<string | null> = signal<string | null>(null).asReadonly();
   readonly editorResetVersion: Signal<number> = signal<number>(0).asReadonly();
+  readonly editorResetReason: Signal<CommentEditorResetReason | null> =
+    signal<CommentEditorResetReason | null>(null).asReadonly();
   readonly notFoundSignal: WritableSignal<boolean> = signal<boolean>(false);
   readonly notFound: Signal<boolean> = this.notFoundSignal.asReadonly();
   readonly deleteCalls: string[] = [];
@@ -57,6 +63,35 @@ class FakeCommentThreadStateFacade {
   }
 }
 
+class FakeCommentRichTextImagesFacade {
+  readonly uploading: Signal<boolean> = signal<boolean>(false).asReadonly();
+  readonly errorKey: Signal<string | null> = signal<string | null>(null).asReadonly();
+  readonly discardedImageIds: string[] = [];
+  committedCount: number = 0;
+
+  uploadImage(): Promise<{ id: string }> {
+    return Promise.resolve({ id: '0123456789abcdef0123456789abcdef' });
+  }
+
+  deleteDraftImage(imageId: string): void {
+    this.discardedImageIds.push(imageId);
+  }
+
+  discardDraftImages(): void {
+  }
+
+  markDraftImagesCommitted(): void {
+    this.committedCount += 1;
+  }
+
+  clearError(): void {
+  }
+
+  resolvePreviewUrl(): string | null {
+    return null;
+  }
+}
+
 describe('CommentsPageComponent', () => {
   it('lets the comment editor shrink inside the mobile page', () => {
     const styles: string = (
@@ -68,6 +103,10 @@ describe('CommentsPageComponent', () => {
     expect(styles).toContain('app-localized-rich-text-editor');
     expect(styles).toContain('min-width: 0');
     expect(styles).toContain('overflow-wrap: anywhere');
+    expect(styles).toContain('img.rich-text__image--left');
+    expect(styles).toContain('img.rich-text__image--right');
+    expect(styles).toContain('float: none');
+    expect(styles).toContain('overflow: hidden');
   });
 
   it('applies not-found SEO when the comment target does not exist', () => {
@@ -89,6 +128,7 @@ describe('CommentsPageComponent', () => {
       applyNotFoundSeo: vi.fn().mockName('SeoService.applyNotFoundSeo')
     } as unknown as MockedObject<SeoService>;
     const stateFacade: FakeCommentThreadStateFacade = new FakeCommentThreadStateFacade();
+    const imagesFacade: FakeCommentRichTextImagesFacade = new FakeCommentRichTextImagesFacade();
     const component: CommentsPageComponent = TestBed.runInInjectionContext(
       (): CommentsPageComponent => new CommentsPageComponent(
         route,
@@ -96,7 +136,8 @@ describe('CommentsPageComponent', () => {
         translationService as unknown as TranslationService,
         { instant: (key: string): string => key } as unknown as TranslateService,
         seoService,
-        stateFacade as unknown as CommentThreadStateFacade
+        stateFacade as unknown as CommentThreadStateFacade,
+        imagesFacade as unknown as CommentRichTextImagesFacade
       )
     );
     component.ngOnInit();
@@ -113,6 +154,7 @@ describe('CommentsPageComponent', () => {
   it('lets an owner without publication permission manage an existing comment', () => {
     const routeParamMap: ParamMap = convertToParamMap({ lang: 'fr', id: 'park-1' });
     const stateFacade: FakeCommentThreadStateFacade = new FakeCommentThreadStateFacade();
+    const imagesFacade: FakeCommentRichTextImagesFacade = new FakeCommentRichTextImagesFacade();
     stateFacade.canManageSignal.set(true);
     const comment = {
       id: 'comment-1',
@@ -151,7 +193,8 @@ describe('CommentsPageComponent', () => {
           applyCommentsSeo: vi.fn(),
           applyNotFoundSeo: vi.fn()
         } as unknown as SeoService,
-        stateFacade as unknown as CommentThreadStateFacade
+        stateFacade as unknown as CommentThreadStateFacade,
+        imagesFacade as unknown as CommentRichTextImagesFacade
       )
     );
     const managementComponent = component as unknown as {

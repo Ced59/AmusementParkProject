@@ -10,6 +10,7 @@ import {
   PublicComment,
   UpdateCommentRequest
 } from '@app/models/comments/comment.models';
+import { CommentImageUpload } from '@app/models/comments/comment-image.models';
 import { environment } from '../../../environments/environment';
 import { COMMENTS_API_ENDPOINTS } from './comments-api-endpoints';
 
@@ -39,6 +40,18 @@ export class CommentsApiService {
   createComment(request: CreateCommentRequest): Observable<PublicComment> {
     const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.create}`;
     return this.http.post<PublicComment>(url, request, this.jsonHttpOptions);
+  }
+
+  uploadCommentImage(file: File): Observable<CommentImageUpload> {
+    const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.uploadImage}`;
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post<CommentImageUpload>(url, formData);
+  }
+
+  deleteCommentImage(imageId: string): Observable<void> {
+    const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.deleteImage(imageId)}`;
+    return this.http.delete<void>(url);
   }
 
   updateComment(request: UpdateCommentRequest): Observable<PublicComment> {

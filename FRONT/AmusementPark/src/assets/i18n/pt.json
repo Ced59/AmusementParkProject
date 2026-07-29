@@ -2680,7 +2680,19 @@
       "update": "Guardar alterações",
       "updating": "A guardar…",
       "cancelEdit": "Cancelar a edição",
-      "saved": "O comentário foi publicado."
+      "saved": "O comentário foi publicado.",
+      "images": {
+        "add": "Adicionar uma imagem",
+        "uploading": "A carregar a imagem…",
+        "alignLeft": "Imagem à esquerda, texto à direita",
+        "alignCenter": "Centrar a imagem",
+        "alignRight": "Imagem à direita, texto à esquerda",
+        "fullWidth": "Mostrar a imagem em largura total",
+        "alt": "Editar o texto alternativo",
+        "altPrompt": "Descreve brevemente a imagem para acessibilidade",
+        "uploadError": "Não foi possível carregar a imagem.",
+        "cleanupError": "Não foi possível eliminar uma imagem do rascunho."
+      }
     },
     "management": {
       "edit": "Editar",

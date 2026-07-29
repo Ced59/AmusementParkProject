@@ -56,6 +56,17 @@ class FakeCommentDataPort implements CommentDataPort {
     return of(this.createdComment);
   }
 
+  uploadCommentImage(): Observable<{ id: string; url: string }> {
+    return of({
+      id: '0123456789abcdef0123456789abcdef',
+      url: '/images/0123456789abcdef0123456789abcdef'
+    });
+  }
+
+  deleteCommentImage(): Observable<void> {
+    return of(undefined);
+  }
+
   updateComment(request: UpdateCommentRequest): Observable<PublicComment> {
     this.updateCalls.push(request);
     return of(this.updatedComment);
@@ -144,6 +155,7 @@ describe('CommentThreadStateFacade', () => {
     expect(context.dataPort.createCalls).toEqual([request]);
     expect(context.facade.thread()?.comments[0]?.id).toBe('new-official');
     expect(context.facade.editorResetVersion()).toBe(1);
+    expect(context.facade.editorResetReason()).toBe('saved');
     expect(context.toastMessageService.messages).toEqual(['comments.editor.saved']);
   });
 
@@ -166,6 +178,7 @@ describe('CommentThreadStateFacade', () => {
     expect(context.facade.thread()?.comments[0]?.id).toBe('regular');
     expect(context.facade.thread()?.comments[0]?.isOfficial).toBe(true);
     expect(context.facade.editorResetVersion()).toBe(1);
+    expect(context.facade.editorResetReason()).toBe('saved');
     expect(context.toastMessageService.messages).toEqual(['comments.management.updated']);
   });
 
@@ -182,6 +195,7 @@ describe('CommentThreadStateFacade', () => {
     expect(context.facade.thread()?.comments.map((comment: PublicComment) => comment.id))
       .toEqual(['official']);
     expect(context.facade.editorResetVersion()).toBe(1);
+    expect(context.facade.editorResetReason()).toBe('deleted');
     expect(context.toastMessageService.messages).toEqual(['comments.management.deleted']);
   });
 

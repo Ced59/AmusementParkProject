@@ -50,7 +50,19 @@
       "update": "Save changes",
       "updating": "Saving…",
       "cancelEdit": "Cancel editing",
-      "saved": "The comment has been published."
+      "saved": "The comment has been published.",
+      "images": {
+        "add": "Add an image",
+        "uploading": "Uploading image…",
+        "alignLeft": "Image on the left, text on the right",
+        "alignCenter": "Centre image",
+        "alignRight": "Image on the right, text on the left",
+        "fullWidth": "Show image at full width",
+        "alt": "Edit alternative text",
+        "altPrompt": "Briefly describe the image for accessibility",
+        "uploadError": "The image could not be uploaded.",
+        "cleanupError": "A draft image could not be deleted."
+      }
     },
     "management": {
       "edit": "Edit",

@@ -91,4 +91,29 @@ describe('CommentsApiService', () => {
       `${environment.apiBaseUrl}comments/comment%2F1`
     );
   });
+
+  it('uploads managed comment images as multipart and deletes drafts through dedicated routes', () => {
+    const httpClient = {
+      post: vi.fn().mockReturnValue(of({
+        id: '0123456789abcdef0123456789abcdef',
+        url: '/images/0123456789abcdef0123456789abcdef'
+      })),
+      delete: vi.fn().mockReturnValue(of(undefined))
+    };
+    const service: CommentsApiService = new CommentsApiService(httpClient as unknown as HttpClient);
+    const file: File = new File(['image'], 'coaster.png', { type: 'image/png' });
+
+    service.uploadCommentImage(file).subscribe();
+    service.deleteCommentImage('image/1').subscribe();
+
+    const uploadCall: unknown[] = httpClient.post.mock.calls[0];
+    expect(uploadCall[0]).toBe(`${environment.apiBaseUrl}comments/images`);
+    expect(uploadCall[1]).toBeInstanceOf(FormData);
+    const uploadedFile: File = (uploadCall[1] as FormData).get('file') as File;
+    expect(uploadedFile.name).toBe(file.name);
+    expect(uploadedFile.type).toBe(file.type);
+    expect(httpClient.delete).toHaveBeenCalledWith(
+      `${environment.apiBaseUrl}comments/images/image%2F1`
+    );
+  });
 });

@@ -65,6 +65,55 @@
   min-height: 16rem;
 }
 
+.localized-rich-text-editor__image-tools button {
+  align-items: center;
+  display: inline-flex !important;
+  justify-content: center;
+}
+
+.localized-rich-text-editor .ql-editor img.rich-text__image {
+  border: 2px solid transparent;
+  cursor: pointer;
+  height: auto;
+  max-width: 100%;
+}
+
+.localized-rich-text-editor .ql-editor img.rich-text__image:hover,
+.localized-rich-text-editor .ql-editor img.rich-text__image:focus {
+  border-color: var(--c-sky);
+}
+
+.localized-rich-text-editor .ql-editor img.rich-text__image--left {
+  float: left;
+  margin: 0.25rem 1rem 0.75rem 0;
+  width: min(44%, 32rem);
+}
+
+.localized-rich-text-editor .ql-editor img.rich-text__image--right {
+  float: right;
+  margin: 0.25rem 0 0.75rem 1rem;
+  width: min(44%, 32rem);
+}
+
+.localized-rich-text-editor .ql-editor img.rich-text__image--center {
+  display: block;
+  margin: 0.75rem auto;
+  width: min(72%, 54rem);
+}
+
+.localized-rich-text-editor .ql-editor img.rich-text__image--full {
+  clear: both;
+  display: block;
+  margin: 0.75rem 0;
+  width: 100%;
+}
+
+.localized-rich-text-editor .ql-editor::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
 @media (max-width: 767px) {
   .localized-rich-text-editor .p-tablist {
     margin-bottom: 0.75rem;
@@ -78,5 +127,11 @@
   .localized-rich-text-editor .p-editor-toolbar,
   .localized-rich-text-editor .ql-toolbar {
     scrollbar-width: thin;
+  }
+
+  .localized-rich-text-editor .ql-editor img.rich-text__image {
+    float: none;
+    margin: 0.75rem 0;
+    width: 100%;
   }
 }

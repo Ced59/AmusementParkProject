@@ -2680,7 +2680,19 @@
       "update": "Salva le modifiche",
       "updating": "Salvataggio…",
       "cancelEdit": "Annulla la modifica",
-      "saved": "Il commento è stato pubblicato."
+      "saved": "Il commento è stato pubblicato.",
+      "images": {
+        "add": "Aggiungi un’immagine",
+        "uploading": "Caricamento dell’immagine…",
+        "alignLeft": "Immagine a sinistra, testo a destra",
+        "alignCenter": "Centra l’immagine",
+        "alignRight": "Immagine a destra, testo a sinistra",
+        "fullWidth": "Mostra l’immagine a larghezza intera",
+        "alt": "Modifica il testo alternativo",
+        "altPrompt": "Descrivi brevemente l’immagine per l’accessibilità",
+        "uploadError": "Non è stato possibile caricare l’immagine.",
+        "cleanupError": "Non è stato possibile eliminare un’immagine della bozza."
+      }
     },
     "management": {
       "edit": "Modifica",

@@ -2680,7 +2680,19 @@
       "update": "Zapisz zmiany",
       "updating": "Zapisywanie…",
       "cancelEdit": "Anuluj edycję",
-      "saved": "Komentarz został opublikowany."
+      "saved": "Komentarz został opublikowany.",
+      "images": {
+        "add": "Dodaj obraz",
+        "uploading": "Przesyłanie obrazu…",
+        "alignLeft": "Obraz po lewej, tekst po prawej",
+        "alignCenter": "Wyśrodkuj obraz",
+        "alignRight": "Obraz po prawej, tekst po lewej",
+        "fullWidth": "Pokaż obraz na pełną szerokość",
+        "alt": "Edytuj tekst alternatywny",
+        "altPrompt": "Krótko opisz obraz na potrzeby dostępności",
+        "uploadError": "Nie udało się przesłać obrazu.",
+        "cleanupError": "Nie udało się usunąć obrazu z wersji roboczej."
+      }
     },
     "management": {
       "edit": "Edytuj",
