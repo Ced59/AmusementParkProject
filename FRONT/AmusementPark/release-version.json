@@ -1,6 +1,20 @@
 {
-  "version": "4.0.3",
+  "version": "4.0.4",
   "history": [
+    {
+      "version": "4.0.4",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "Le guide d’audit SEO de production est désormais reproductible.",
+        "en": "The production SEO audit guide is now reproducible.",
+        "de": "Der Leitfaden für Produktions-SEO-Audits ist jetzt reproduzierbar.",
+        "nl": "De handleiding voor SEO-audits in productie is nu reproduceerbaar.",
+        "it": "La guida per l’audit SEO di produzione è ora riproducibile.",
+        "es": "La guía de auditoría SEO de producción ahora es reproducible.",
+        "pl": "Przewodnik po audycie SEO środowiska produkcyjnego jest teraz powtarzalny.",
+        "pt": "O guia de auditoria SEO de produção é agora reproduzível."
+      }
+    },
     {
       "version": "4.0.3",
       "releasedAt": "2026-07-29",
