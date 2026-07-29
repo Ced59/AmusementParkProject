@@ -48,7 +48,7 @@ public sealed class ImageMetadataPipeline : IImageProcessingPipeline
             Height = image.Height,
             SizeInBytes = imageStream.CanSeek ? imageStream.Length : 0,
             DetectedContentType = image.Metadata.DecodedImageFormat?.DefaultMimeType,
-            FrameCount = image.FrameMetadataCollection.Count,
+            FrameCount = Math.Max(1, image.FrameMetadataCollection.Count),
             GeoLocation = latitude.HasValue && longitude.HasValue ? new GeoPointValue(latitude.Value, longitude.Value) : null,
             ExifMetadata = exif == null ? null : new ImageExifMetadata
             {
