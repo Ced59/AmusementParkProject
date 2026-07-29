@@ -64,6 +64,7 @@ internal static class UserRules
             "moderateur",
             "moderador",
             "staff",
+            "amusementparks",
             "equipeamusementparks",
             "teamamusementparks",
             "officialamusementparks",

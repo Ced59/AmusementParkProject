@@ -73,6 +73,8 @@ public sealed class UserRulesTests
     [InlineData("Mοdο42")]
     [InlineData("ModeratorTeam")]
     [InlineData("Staff")]
+    [InlineData("Amusement Parks")]
+    [InlineData("Amusement-Parks Support")]
     [InlineData("Équipe Amusement Parks")]
     [InlineData("User0042")]
     public void IsReservedPublicDisplayName_ShouldRejectStaffAndGeneratedIdentityVariants(string value)
