@@ -161,21 +161,25 @@ const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
 const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
 const RESPONSIVE_IMAGE_VERSION: string = '3';
 const FRENCH_A_COUNTRY_CODES: ReadonlySet<string> = new Set<string>([
-  'BH', 'CU', 'CY', 'DJ', 'KI', 'KN', 'LC', 'MG', 'MC', 'MT', 'MU', 'NR', 'OM', 'SG', 'SM',
+  'BH', 'CU', 'CY', 'DJ', 'KN', 'LC', 'MG', 'MC', 'MT', 'MU', 'NR', 'OM', 'SG', 'SM',
   'ST', 'TT', 'TW', 'VC'
+]);
+const FRENCH_A_L_COUNTRY_CODES: ReadonlySet<string> = new Set<string>([
+  'VA'
 ]);
 const FRENCH_A_LA_COUNTRY_CODES: ReadonlySet<string> = new Set<string>([
   'BB'
 ]);
 const FRENCH_AU_COUNTRY_CODES: ReadonlySet<string> = new Set<string>([
-  'BD', 'BJ', 'BT', 'BW', 'BR', 'BN', 'BF', 'BI', 'BY', 'BZ', 'KH', 'CM', 'CA', 'CV', 'CL',
+  'BD', 'BJ', 'BT', 'BW', 'BR', 'BN', 'BF', 'BI', 'BZ', 'KH', 'CM', 'CA', 'CV', 'CL',
   'CG', 'CD', 'CR', 'DK', 'EH', 'GA', 'GH', 'GT', 'GY', 'HN', 'JP', 'KZ', 'KE', 'KG', 'KW',
   'XK', 'LA', 'LS', 'LB', 'LR', 'LI', 'LU', 'MW', 'ML', 'MA', 'MX', 'ME', 'MZ', 'MM', 'NP',
   'NI', 'NE', 'NG', 'PK', 'PA', 'PY', 'PE', 'PT', 'QA', 'GB', 'RW', 'SV', 'SN', 'SD', 'SS',
-  'LK', 'SR', 'TJ', 'TD', 'TG', 'TL', 'TM', 'VU', 'VA', 'VE', 'VN', 'YE', 'ZW'
+  'LK', 'SR', 'TJ', 'TD', 'TG', 'TL', 'TM', 'VU', 'VE', 'VN', 'YE', 'ZW'
 ]);
 const FRENCH_AUX_COUNTRY_CODES: ReadonlySet<string> = new Set<string>([
-  'BS', 'KM', 'US', 'FJ', 'MV', 'MH', 'NL', 'PW', 'PH', 'SB', 'SC', 'TO', 'TV', 'AE', 'WS'
+  'BS', 'KM', 'US', 'FJ', 'KI', 'MV', 'MH', 'NL', 'PW', 'PH', 'SB', 'SC', 'TO', 'TV', 'AE',
+  'WS'
 ]);
 
 const HISTORY_SEO_COPY: Record<string, HistorySeoCopy> = {
@@ -2185,23 +2189,39 @@ export class SeoService {
     }
 
     if (city && country) {
-      return ` à ${city}, ${this.resolveFrenchCountryPreposition(park.countryCode)} ${country}`;
+      return ` à ${city}, ${this.buildFrenchCountryLocationLabel(park.countryCode, country)}`;
     }
 
     if (country) {
-      return ` ${this.resolveFrenchCountryPreposition(park.countryCode)} ${country}`;
+      return ` ${this.buildFrenchCountryLocationLabel(park.countryCode, country)}`;
     }
 
     return city ? ` à ${city}` : '';
   }
 
+  private buildFrenchCountryLocationLabel(
+    countryCode: string | null | undefined,
+    countryName: string
+  ): string {
+    const preposition: 'à' | 'à l’' | 'à la' | 'en' | 'au' | 'aux' =
+      this.resolveFrenchCountryPreposition(countryCode);
+
+    return preposition === 'à l’'
+      ? `${preposition}${countryName}`
+      : `${preposition} ${countryName}`;
+  }
+
   private resolveFrenchCountryPreposition(
     countryCode: string | null | undefined
-  ): 'à' | 'à la' | 'en' | 'au' | 'aux' {
+  ): 'à' | 'à l’' | 'à la' | 'en' | 'au' | 'aux' {
     const normalizedCountryCode: string | null = this.normalizeOptionalText(countryCode)?.toUpperCase() ?? null;
 
     if (normalizedCountryCode && FRENCH_A_COUNTRY_CODES.has(normalizedCountryCode)) {
       return 'à';
+    }
+
+    if (normalizedCountryCode && FRENCH_A_L_COUNTRY_CODES.has(normalizedCountryCode)) {
+      return 'à l’';
     }
 
     if (normalizedCountryCode && FRENCH_A_LA_COUNTRY_CODES.has(normalizedCountryCode)) {

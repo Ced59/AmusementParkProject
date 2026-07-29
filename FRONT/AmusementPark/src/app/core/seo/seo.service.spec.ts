@@ -165,6 +165,21 @@ describe('SeoService', () => {
       countryName: 'Barbade',
       expectedContext: 'à la Barbade',
     },
+    {
+      countryCode: 'BY',
+      countryName: 'Biélorussie',
+      expectedContext: 'en Biélorussie',
+    },
+    {
+      countryCode: 'KI',
+      countryName: 'Kiribati',
+      expectedContext: 'aux Kiribati',
+    },
+    {
+      countryCode: 'VA',
+      countryName: 'État de la Cité du Vatican',
+      expectedContext: 'à l’État de la Cité du Vatican',
+    },
   ])(
     'uses $expectedContext for French park metadata',
     ({ countryCode, countryName, expectedContext }) => {
