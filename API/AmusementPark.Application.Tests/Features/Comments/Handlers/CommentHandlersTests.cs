@@ -354,7 +354,7 @@ public sealed class CommentHandlersTests
             comments.Object,
             sanitizer.Object,
             users.Object,
-            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
+            new CommentImageManager(images.Object));
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
             "admin-1",
@@ -439,7 +439,7 @@ public sealed class CommentHandlersTests
             comments.Object,
             sanitizer.Object,
             users.Object,
-            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
+            new CommentImageManager(images.Object));
 
         InvalidOperationException exception = await Assert.ThrowsAsync<InvalidOperationException>(
             () => handler.HandleAsync(new UpdateCommentCommand(
@@ -523,7 +523,7 @@ public sealed class CommentHandlersTests
             comments.Object,
             sanitizer.Object,
             users.Object,
-            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
+            new CommentImageManager(images.Object));
 
         OperationCanceledException exception = await Assert.ThrowsAsync<OperationCanceledException>(
             () => handler.HandleAsync(
@@ -969,7 +969,7 @@ public sealed class CommentHandlersTests
             sanitizer.Object,
             users.Object,
             new CommentTargetResolver(parks.Object, items.Object),
-            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
+            new CommentImageManager(images.Object));
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new CreateCommentCommand(
             "admin-1",
@@ -1065,7 +1065,7 @@ public sealed class CommentHandlersTests
             sanitizer.Object,
             users.Object,
             new CommentTargetResolver(parks.Object, items.Object),
-            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
+            new CommentImageManager(images.Object));
 
         await Assert.ThrowsAsync<InvalidOperationException>(() => handler.HandleAsync(
             new CreateCommentCommand(
@@ -1085,9 +1085,7 @@ public sealed class CommentHandlersTests
 
     private static CommentImageManager CreateCommentImageManager()
     {
-        return new CommentImageManager(
-            Mock.Of<IImageRepository>(),
-            Mock.Of<IImageBinaryStorage>());
+        return new CommentImageManager(Mock.Of<IImageRepository>());
     }
 
     private static Mock<IUserRepository> CreateModeratorUserRepository()

@@ -103,9 +103,7 @@ public sealed class CommentImageCommandHandlersTests
         Mock<IUserRepository> users = CreateUserRepository(user);
         DeleteCommentDraftImageCommandHandler handler = new DeleteCommentDraftImageCommandHandler(
             users.Object,
-            new CommentImageManager(
-                Mock.Of<IImageRepository>(),
-                Mock.Of<IImageBinaryStorage>()));
+            new CommentImageManager(Mock.Of<IImageRepository>()));
 
         ApplicationResult result = await handler.HandleAsync(
             new DeleteCommentDraftImageCommand(user.Id, "image-1"));

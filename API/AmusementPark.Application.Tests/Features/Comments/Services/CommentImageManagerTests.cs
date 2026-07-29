@@ -48,9 +48,7 @@ public sealed class CommentImageManagerTests
                 PendingCommentId = "comment-1",
                 IsPublished = false,
             });
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         ApplicationResult<CommentImageReservationBatch> result =
             await manager.PublishForCommentAsync(
@@ -76,9 +74,7 @@ public sealed class CommentImageManagerTests
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { CreateDraft("other-author") });
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         ApplicationResult result = await manager.PublishForCommentAsync(
             "author-1",
@@ -114,9 +110,7 @@ public sealed class CommentImageManagerTests
                 "comment-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(PublishedCommentImageReusePreparation.Prepared);
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         ApplicationResult result = await manager.PublishForCommentAsync(
             "admin-editing-another-comment",
@@ -152,9 +146,7 @@ public sealed class CommentImageManagerTests
                 "comment-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(PublishedCommentImageReusePreparation.Rejected);
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         ApplicationResult result = await manager.PublishForCommentAsync(
             "author-1",
@@ -172,9 +164,7 @@ public sealed class CommentImageManagerTests
     [Fact]
     public async Task PublishForCommentAsync_WhenMoreThanLimit_ShouldRejectBeforeReadingRepository()
     {
-        CommentImageManager manager = new CommentImageManager(
-            Mock.Of<IImageRepository>(),
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(Mock.Of<IImageRepository>());
         string[] ids = Enumerable.Range(0, CommentImageManager.MaximumImagesPerComment + 1)
             .Select(static index => index.ToString("x32"))
             .ToArray();
@@ -202,9 +192,7 @@ public sealed class CommentImageManagerTests
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(2);
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         await manager.RequestRemovedCleanupAsync(
             "comment-1",
@@ -277,9 +265,7 @@ public sealed class CommentImageManagerTests
                 It.Is<string>(token => token == capturedReservationToken),
                 CancellationToken.None))
             .ReturnsAsync(true);
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         ApplicationResult<CommentImageReservationBatch> result = await manager.PublishForCommentAsync(
             "author-1",
@@ -345,9 +331,7 @@ public sealed class CommentImageManagerTests
                 It.IsAny<string>(),
                 CancellationToken.None))
             .ReturnsAsync(true);
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         await Assert.ThrowsAsync<InvalidOperationException>(() => manager.PublishForCommentAsync(
             "author-1",
@@ -385,9 +369,7 @@ public sealed class CommentImageManagerTests
                 "reservation-token",
                 CancellationToken.None))
             .ReturnsAsync(true);
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         IReadOnlyCollection<string> failedImageIds =
             await manager.ReleaseReservationsForCommentAsync(
@@ -432,9 +414,7 @@ public sealed class CommentImageManagerTests
                 "reservation-token",
                 CancellationToken.None))
             .ThrowsAsync(new InvalidOperationException("finalization failed"));
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         IReadOnlyCollection<string> failedImageIds = await manager.FinalizeForCommentAsync(
             "author-1",
@@ -454,9 +434,7 @@ public sealed class CommentImageManagerTests
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository.Setup(value => value.GetByIdAsync(ImageId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(CreateDraft("other-author"));
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         ApplicationResult result = await manager.DeleteOwnedDraftAsync(
             "author-1",
@@ -476,9 +454,7 @@ public sealed class CommentImageManagerTests
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository.Setup(value => value.GetByIdAsync(ImageId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(draft);
-        CommentImageManager manager = new CommentImageManager(
-            repository.Object,
-            Mock.Of<IImageBinaryStorage>());
+        CommentImageManager manager = new CommentImageManager(repository.Object);
 
         ApplicationResult result = await manager.DeleteOwnedDraftAsync(
             "author-1",

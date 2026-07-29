@@ -12,16 +12,13 @@ public sealed class CommentImageManager
     public const int MaximumDraftImagesPerAuthor = 24;
     private static readonly TimeSpan ReconciliationGracePeriod = TimeSpan.FromMinutes(5);
     private readonly IImageRepository imageRepository;
-    private readonly IImageBinaryStorage imageBinaryStorage;
     private readonly ILogger<CommentImageManager>? logger;
 
     public CommentImageManager(
         IImageRepository imageRepository,
-        IImageBinaryStorage imageBinaryStorage,
         ILogger<CommentImageManager>? logger = null)
     {
         this.imageRepository = imageRepository;
-        this.imageBinaryStorage = imageBinaryStorage;
         this.logger = logger;
     }
 
