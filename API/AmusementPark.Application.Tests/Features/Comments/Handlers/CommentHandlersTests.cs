@@ -249,7 +249,7 @@ public sealed class CommentHandlersTests
     {
         Comment existing = CreateComment(
             "comment-1",
-            false,
+            true,
             new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc),
             "user-1",
             Role.User);
@@ -278,6 +278,7 @@ public sealed class CommentHandlersTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal("user-1", result.Value!.AuthorUserId);
+        Assert.True(result.Value.IsOfficial);
         commentRepository.VerifyAll();
         sanitizer.VerifyAll();
         userRepository.VerifyAll();

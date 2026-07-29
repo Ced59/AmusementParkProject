@@ -49,6 +49,16 @@ public sealed class Comment : AuditableEntity
         return actor.HasRole(Role.Admin)
             || string.Equals(actor.Id, this.AuthorUserId, StringComparison.Ordinal);
     }
+
+    /// <summary>
+    /// Indique si l'utilisateur peut attribuer ou retirer le statut officiel.
+    /// </summary>
+    public static bool CanManageOfficialStatus(User actor)
+    {
+        ArgumentNullException.ThrowIfNull(actor);
+
+        return actor.HasRole(Role.Admin) || actor.HasRole(Role.Moderator);
+    }
 }
 
 /// <summary>

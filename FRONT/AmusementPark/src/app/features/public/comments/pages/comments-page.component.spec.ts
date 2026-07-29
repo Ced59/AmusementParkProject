@@ -110,7 +110,7 @@ describe('CommentsPageComponent', () => {
     );
   });
 
-  it('requires deletion confirmation and submits an existing comment through edit mode', () => {
+  it('lets an owner without publication permission manage an existing comment', () => {
     const routeParamMap: ParamMap = convertToParamMap({ lang: 'fr', id: 'park-1' });
     const stateFacade: FakeCommentThreadStateFacade = new FakeCommentThreadStateFacade();
     stateFacade.canManageSignal.set(true);
@@ -174,6 +174,7 @@ describe('CommentsPageComponent', () => {
     managementComponent.startEditing.call(component, comment);
     managementComponent.submit.call(component);
 
+    expect(stateFacade.canWrite()).toBe(false);
     expect(stateFacade.updateCalls).toEqual([{
       id: 'comment-1',
       bodies: [{ languageCode: 'fr', value: '<p>Avis</p>' }],

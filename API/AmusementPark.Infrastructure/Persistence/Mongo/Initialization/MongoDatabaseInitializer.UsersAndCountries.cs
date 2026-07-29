@@ -270,6 +270,16 @@ public sealed partial class MongoDatabaseInitializer
             .ToListAsync(cancellationToken);
         if (users.Count == 0)
         {
+            long persistedMaximumNumber = await usersCollection
+                .Find(Builders<UserDocument>.Filter.Gt(
+                    document => document.PublicAccountNumber,
+                    0))
+                .SortByDescending(document => document.PublicAccountNumber)
+                .Project(document => document.PublicAccountNumber)
+                .FirstOrDefaultAsync(cancellationToken);
+            await this.SynchronizePublicAccountCounterAsync(
+                persistedMaximumNumber,
+                cancellationToken);
             return;
         }
 
@@ -324,6 +334,17 @@ public sealed partial class MongoDatabaseInitializer
         }
 
         long maximumNumber = reservedNumbers.Count == 0 ? 0 : reservedNumbers.Max();
+        await this.SynchronizePublicAccountCounterAsync(maximumNumber, cancellationToken);
+
+        this.logger.LogInformation(
+            "Backfilled a stable public account identity for {Count} existing user accounts.",
+            modifiedCount);
+    }
+
+    private async Task SynchronizePublicAccountCounterAsync(
+        long maximumNumber,
+        CancellationToken cancellationToken)
+    {
         IMongoCollection<PublicAccountCounterDocument> countersCollection =
             this.database.GetCollection<PublicAccountCounterDocument>(this.settings.CountersCollectionName);
         await countersCollection.UpdateOneAsync(
@@ -335,10 +356,6 @@ public sealed partial class MongoDatabaseInitializer
                 maximumNumber),
             new UpdateOptions { IsUpsert = true },
             cancellationToken);
-
-        this.logger.LogInformation(
-            "Backfilled a stable public account identity for {Count} existing user accounts.",
-            modifiedCount);
     }
 
     internal static FilterDefinition<UserDocument> BuildPublicIdentityMigrationFilter()

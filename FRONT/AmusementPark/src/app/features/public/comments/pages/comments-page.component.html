@@ -42,7 +42,7 @@
         </a>
       </section>
 
-      @if (canWrite()) {
+      @if (canWrite() || isEditing()) {
         <form
           id="comment-editor"
           class="comment-editor"
@@ -60,13 +60,15 @@
               <p>{{ (isEditing() ? 'comments.editor.editHelp' : 'comments.editor.help') | translate }}</p>
             </div>
 
-            <label class="comment-editor__official">
-              <input type="checkbox" formControlName="isOfficial" />
-              <span>
-                <strong>{{ 'comments.editor.officialLabel' | translate }}</strong>
-                <small>{{ 'comments.editor.officialHelp' | translate }}</small>
-              </span>
-            </label>
+            @if (canWrite()) {
+              <label class="comment-editor__official">
+                <input type="checkbox" formControlName="isOfficial" />
+                <span>
+                  <strong>{{ 'comments.editor.officialLabel' | translate }}</strong>
+                  <small>{{ 'comments.editor.officialHelp' | translate }}</small>
+                </span>
+              </label>
+            }
           </header>
 
           <app-localized-rich-text-editor

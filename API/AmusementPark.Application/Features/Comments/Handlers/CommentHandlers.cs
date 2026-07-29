@@ -175,7 +175,10 @@ public sealed class UpdateCommentCommandHandler
             return ApplicationResult<CommentResult>.Failure(bodiesResult.Errors);
         }
 
-        comment.UpdateContent(bodiesResult.Value, command.Model.IsOfficial);
+        bool isOfficial = Comment.CanManageOfficialStatus(actor)
+            ? command.Model.IsOfficial
+            : comment.IsOfficial;
+        comment.UpdateContent(bodiesResult.Value, isOfficial);
         Comment? updated = await this.commentRepository.UpdateAsync(comment, cancellationToken);
         User? author = string.Equals(actor.Id, comment.AuthorUserId, StringComparison.Ordinal)
             ? actor
