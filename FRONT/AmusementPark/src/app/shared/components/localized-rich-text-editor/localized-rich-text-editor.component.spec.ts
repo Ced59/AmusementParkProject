@@ -52,42 +52,46 @@ describe('LocalizedRichTextEditorComponent', () => {
     );
   });
 
-  it('deletes an image draft only after it disappears from every language', async () => {
+  it('keeps an image-only translation while requiring the page to validate global text', () => {
     const component: LocalizedRichTextEditorComponent = new LocalizedRichTextEditorComponent(
       new HtmlSecurityService(document, new UrlSecurityService())
     );
     const imageId: string = '0123456789abcdef0123456789abcdef';
-    const removed: string[] = [];
+    const emittedValues: Array<Array<{ languageCode: string; value: string }>> = [];
     component.allowManagedImages = true;
-    component.managedImageRemoved = (removedImageId: string): void => {
-      removed.push(removedImageId);
-    };
     component.writeValue([
       {
         languageCode: 'fr',
-        value: `<p>Texte</p><img src="/images/${imageId}" class="rich-text__image rich-text__image--full" alt="">`
+        value: '<p>Texte</p>'
       },
       {
         languageCode: 'en',
-        value: `<p>Text</p><img src="/images/${imageId}" class="rich-text__image rich-text__image--full" alt="">`
+        value: `<img src="/images/${imageId}" class="rich-text__image rich-text__image--full" alt="">`
       }
     ]);
+    component.registerOnChange((values): void => {
+      emittedValues.push(values);
+    });
 
-    const french = component.entries.find((entry) => entry.languageCode === 'fr');
-    const english = component.entries.find((entry) => entry.languageCode === 'en');
-    if (!french || !english) {
-      throw new Error('Expected French and English entries.');
-    }
+    component.onEntryValueChange();
 
-    french.value = '<p>Texte</p>';
-    component.managedImageRemovalHandler('fr')(imageId);
-    await Promise.resolve();
-    expect(removed).toEqual([]);
+    expect(emittedValues.at(-1)).toEqual([
+      { languageCode: 'en', value: expect.stringContaining(`/images/${imageId}`) },
+      { languageCode: 'fr', value: '<p>Texte</p>' }
+    ]);
+  });
 
-    english.value = '<p>Text</p>';
-    component.managedImageRemovalHandler('en')(imageId);
-    await Promise.resolve();
-    expect(removed).toEqual([imageId]);
+  it('locks both tabs and editor interaction while a parent operation is running', () => {
+    const component: LocalizedRichTextEditorComponent = new LocalizedRichTextEditorComponent(
+      new HtmlSecurityService(document, new UrlSecurityService())
+    );
+
+    expect(component.isInteractionDisabled).toBe(false);
+    component.interactionLocked = true;
+    expect(component.isInteractionDisabled).toBe(true);
+    component.interactionLocked = false;
+    component.setDisabledState(true);
+    expect(component.isInteractionDisabled).toBe(true);
   });
 
   it('preserves published image tags for an owner who cannot add new images', () => {

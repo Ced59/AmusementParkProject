@@ -2,7 +2,7 @@
   <app-ui-tabs [(value)]="activeTabIndex">
     <app-ui-tab-list>
       @for (entry of entries; track trackByLanguageCode(index, entry); let index = $index) {
-        <app-ui-tab [value]="index">
+        <app-ui-tab [value]="index" [disabled]="isInteractionDisabled">
           {{ entry.languageLabel }}
         </app-ui-tab>
       }
@@ -15,11 +15,10 @@
             <app-ui-editor
               [(ngModel)]="entry.value"
               [ngModelOptions]="{ standalone: true }"
-              [readonly]="isDisabled"
+              [readonly]="isInteractionDisabled"
               [allowManagedImages]="allowManagedImages"
               [preserveManagedImages]="preserveManagedImages"
               [managedImageUpload]="managedImageUpload"
-              [managedImageRemoved]="managedImageRemovalHandler(entry.languageCode)"
               [managedImagePreviewUrl]="managedImagePreviewUrl"
               [managedImageUploadingLabel]="managedImageLabel('uploading') | translate"
               [managedImageAltPrompt]="managedImageLabel('altPrompt') | translate"

@@ -29,7 +29,6 @@ import {
 import { UiTemplate } from './api';
 
 export type ManagedImageUploadHandler = (file: File) => Promise<ManagedRichTextImage>;
-export type ManagedImageRemovalHandler = (imageId: string) => void;
 export type ManagedImagePreviewResolver = (imageId: string) => string | null;
 
 type ManagedImageLayout = 'left' | 'right' | 'center' | 'full';
@@ -102,13 +101,21 @@ const ManagedImageIdAttribute: string = 'data-managed-image-id';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, ControlValueAccessor {
-  @Input() readonly: boolean = false;
+  @Input()
+  set readonly(value: boolean) {
+    this.readonlyState = value;
+    this.editor?.enable(!value);
+  }
+
+  get readonly(): boolean {
+    return this.readonlyState;
+  }
+
   @Input() style: Record<string, string> | null = null;
   @Input() placeholder: string | null = null;
   @Input() allowManagedImages: boolean = false;
   @Input() preserveManagedImages: boolean = false;
   @Input() managedImageUpload: ManagedImageUploadHandler | null = null;
-  @Input() managedImageRemoved: ManagedImageRemovalHandler | null = null;
   @Input() managedImagePreviewUrl: ManagedImagePreviewResolver | null = null;
   @Input() managedImageUploadingLabel: string = '';
   @Input() managedImageAltPrompt: string = '';
@@ -120,11 +127,11 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
   managedImageUploadCount: number = 0;
 
   private editor: Quill | null = null;
+  private readonlyState: boolean = false;
   private quillConstructor: typeof import('quill').default | null = null;
   private pendingValue: string = '';
   private destroyed: boolean = false;
   private selectedManagedImage: HTMLImageElement | null = null;
-  private managedImageIds: Set<string> = new Set<string>();
   private readonly removeRootListeners: Array<() => void> = [];
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
@@ -186,7 +193,10 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
     const containsExternalImageUrl: boolean = Array.from(event.dataTransfer?.items ?? []).some(
       (item: DataTransferItem) => item.kind === 'string' && item.type === 'text/uri-list'
     );
-    if (files.length === 0 && !containsExternalImageUrl) {
+    const containsHtmlImage: boolean = /<img[\s>]/i.test(
+      event.dataTransfer?.getData?.('text/html') ?? ''
+    );
+    if (files.length === 0 && !containsExternalImageUrl && !containsHtmlImage) {
       return;
     }
 
@@ -229,7 +239,6 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
 
     this.writeEditorHtml(this.pendingValue);
     this.editor.on('text-change', (): void => {
-      this.notifyRemovedManagedImages();
       this.onChange(this.sanitizeEditorHtml(this.editor?.root.innerHTML ?? ''));
       this.onTouched();
     });
@@ -277,17 +286,25 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
         ? target
         : null;
     };
+    const focusHandler = (event: FocusEvent): void => {
+      const target: EventTarget | null = event.target;
+      if (target instanceof HTMLImageElement && managedImageValueFromNode(target) !== null) {
+        this.selectedManagedImage = target;
+      }
+    };
     const pasteHandler = (event: ClipboardEvent): void => this.onManagedImagePaste(event);
     const copyHandler = (event: ClipboardEvent): void => this.onManagedImageCopy(event);
     const dragOverHandler = (event: DragEvent): void => this.onDragOver(event);
     const dropHandler = (event: DragEvent): void => this.onDrop(event);
     root.addEventListener('click', clickHandler);
+    root.addEventListener('focusin', focusHandler);
     root.addEventListener('copy', copyHandler, true);
     container.addEventListener('paste', pasteHandler, true);
     container.addEventListener('dragover', dragOverHandler, true);
     container.addEventListener('drop', dropHandler, true);
     this.removeRootListeners.push(
       (): void => root.removeEventListener('click', clickHandler),
+      (): void => root.removeEventListener('focusin', focusHandler),
       (): void => root.removeEventListener('copy', copyHandler, true),
       (): void => container.removeEventListener('paste', pasteHandler, true),
       (): void => container.removeEventListener('dragover', dragOverHandler, true),
@@ -447,7 +464,6 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
     const html: string = this.sanitizeEditorHtml(value);
     this.editor.clipboard.dangerouslyPasteHTML(html, 'silent');
     this.hydrateManagedImagePreviews();
-    this.managedImageIds = collectManagedImageIds(this.editor.root, this.htmlSecurityService);
     this.selectedManagedImage = null;
   }
 
@@ -513,23 +529,6 @@ export class Editor implements AfterViewInit, AfterContentInit, OnDestroy, Contr
       image.remove();
     }
     return template.innerHTML;
-  }
-
-  private notifyRemovedManagedImages(): void {
-    if (!this.editor || !this.allowManagedImages) {
-      return;
-    }
-
-    const currentIds: Set<string> = collectManagedImageIds(
-      this.editor.root,
-      this.htmlSecurityService
-    );
-    for (const previousId of this.managedImageIds) {
-      if (!currentIds.has(previousId)) {
-        this.managedImageRemoved?.(previousId);
-      }
-    }
-    this.managedImageIds = currentIds;
   }
 
   private imageFiles(fileList: FileList | null | undefined): File[] {
@@ -612,6 +611,7 @@ function applyManagedImageValue(node: HTMLElement, value: ManagedImageBlotValue)
   node.setAttribute('alt', value.alt.trim().slice(0, ManagedCommentImageAltMaxLength));
   node.setAttribute('loading', 'lazy');
   node.setAttribute('decoding', 'async');
+  node.setAttribute('tabindex', '0');
 }
 
 function managedImageValueFromNode(node: Element): ManagedImageBlotValue | null {
@@ -643,21 +643,4 @@ function normalizeManagedImageLayout(value: string): ManagedImageLayout {
     || normalizedValue === 'full'
     ? normalizedValue
     : 'full';
-}
-
-function collectManagedImageIds(
-  root: ParentNode,
-  htmlSecurityService: HtmlSecurityService
-): Set<string> {
-  const imageIds: Set<string> = new Set<string>();
-  const images: HTMLImageElement[] = Array.from(root.querySelectorAll('img'));
-  for (const image of images) {
-    const imageId: string | null = normalizeManagedCommentImageId(
-      image.getAttribute(ManagedImageIdAttribute)
-    ) ?? htmlSecurityService.extractManagedImageId(image.getAttribute('src'));
-    if (imageId) {
-      imageIds.add(imageId);
-    }
-  }
-  return imageIds;
 }

@@ -76,13 +76,13 @@
             [allowManagedImages]="canWrite()"
             [preserveManagedImages]="true"
             [managedImageUpload]="uploadCommentImage"
-            [managedImageRemoved]="removeDraftCommentImage"
             [managedImagePreviewUrl]="resolveDraftCommentImagePreview"
+            [interactionLocked]="saving() || uploadingImages()"
             placeholderKey="comments.editor.placeholder"
             editorHeight="14rem">
           </app-localized-rich-text-editor>
 
-          @if (editorForm.controls.bodies.touched && editorForm.controls.bodies.value.length === 0) {
+          @if (editorForm.controls.bodies.touched && !hasGlobalCommentText(editorForm.controls.bodies.value)) {
             <p class="comment-editor__error">{{ 'comments.editor.validation' | translate }}</p>
           }
 
@@ -164,7 +164,7 @@
                   <button
                     appUiButton="ghost"
                     type="button"
-                    [disabled]="saving()"
+                    [disabled]="saving() || uploadingImages()"
                     (click)="startEditing(comment)">
                     <i class="pi pi-pencil" aria-hidden="true"></i>
                     <span>{{ 'comments.management.edit' | translate }}</span>
@@ -175,7 +175,7 @@
                     appUiButton="ghost"
                     type="button"
                     severity="danger"
-                    [disabled]="saving()"
+                    [disabled]="saving() || uploadingImages()"
                     (click)="deleteComment(comment)">
                     <i class="pi pi-trash" aria-hidden="true"></i>
                     <span>{{ 'comments.management.delete' | translate }}</span>

@@ -1,5 +1,4 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
 
 import { CommentImageUpload, ManagedRichTextImage } from '@app/models/comments/comment-image.models';
@@ -40,7 +39,7 @@ export class CommentRichTextImagesFacade {
 
     const uploadTask: Promise<CommentImageUpload> = this.uploadQueue.then(
       (): Promise<CommentImageUpload> => firstValueFrom(
-        this.commentDataPort.uploadCommentImage(file).pipe(takeUntilDestroyed(this.destroyRef))
+        this.commentDataPort.uploadCommentImage(file)
       )
     );
     this.uploadQueue = uploadTask.then((): void => undefined, (): void => undefined);
@@ -73,16 +72,6 @@ export class CommentRichTextImagesFacade {
     });
   }
 
-  deleteDraftImage(imageId: string): void {
-    const normalizedImageId: string = imageId.trim();
-    if (!this.draftImageIds.delete(normalizedImageId)) {
-      return;
-    }
-
-    this.revokePreviewUrl(normalizedImageId);
-    this.deleteImageWithoutBlocking(normalizedImageId);
-  }
-
   discardDraftImages(): void {
     this.draftSession += 1;
     const imageIds: string[] = Array.from(this.draftImageIds);
@@ -93,10 +82,16 @@ export class CommentRichTextImagesFacade {
     }
   }
 
-  markDraftImagesCommitted(): void {
+  markDraftImagesCommitted(committedImageIds: ReadonlySet<string>): void {
     this.draftSession += 1;
+    const draftImageIds: string[] = Array.from(this.draftImageIds);
     this.draftImageIds.clear();
-    this.revokeAllPreviewUrls();
+    for (const imageId of draftImageIds) {
+      this.revokePreviewUrl(imageId);
+      if (!committedImageIds.has(imageId)) {
+        this.deleteImageWithoutBlocking(imageId);
+      }
+    }
     this.errorKeySignal.set(null);
   }
 
@@ -110,7 +105,6 @@ export class CommentRichTextImagesFacade {
 
   private deleteImageWithoutBlocking(imageId: string): void {
     this.commentDataPort.deleteCommentImage(imageId)
-      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         error: (): void => {
           this.errorKeySignal.set('comments.editor.images.cleanupError');
@@ -142,9 +136,4 @@ export class CommentRichTextImagesFacade {
     }
   }
 
-  private revokeAllPreviewUrls(): void {
-    for (const imageId of Array.from(this.previewUrls.keys())) {
-      this.revokePreviewUrl(imageId);
-    }
-  }
 }

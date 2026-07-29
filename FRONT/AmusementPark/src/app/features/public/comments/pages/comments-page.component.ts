@@ -20,7 +20,10 @@ import { LocalizedRichTextEditorComponent } from '@shared/components/localized-r
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { SafeCommentRichHtmlPipe } from '@shared/pipes';
-import { resolveLocalizedValue } from '@shared/utils/localization';
+import {
+  extractManagedCommentImageIdsFromHtml
+} from '@shared/utils/comments/managed-comment-image.helpers';
+import { isRichTextEmpty, resolveLocalizedValue } from '@shared/utils/localization';
 import {
   buildPublicParkCommentsRouteCommands,
   buildPublicParkItemCommentsRouteCommands,
@@ -82,8 +85,6 @@ export class CommentsPageComponent implements OnInit {
   });
   protected readonly uploadCommentImage = (file: File): Promise<ManagedRichTextImage> =>
     this.commentImagesFacade.uploadImage(file);
-  protected readonly removeDraftCommentImage = (imageId: string): void =>
-    this.commentImagesFacade.deleteDraftImage(imageId);
   protected readonly resolveDraftCommentImagePreview = (imageId: string): string | null =>
     this.commentImagesFacade.resolvePreviewUrl(imageId);
 
@@ -120,6 +121,7 @@ export class CommentsPageComponent implements OnInit {
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private lastEditorResetVersion: number = 0;
+  private pendingSubmissionImageIds: ReadonlySet<string> | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -156,10 +158,13 @@ export class CommentsPageComponent implements OnInit {
         const resetReason: CommentEditorResetReason | null =
           this.stateFacade.editorResetReason();
         if (resetReason === 'saved') {
-          this.commentImagesFacade.markDraftImagesCommitted();
+          this.commentImagesFacade.markDraftImagesCommitted(
+            this.pendingSubmissionImageIds ?? new Set<string>()
+          );
         } else {
           this.commentImagesFacade.discardDraftImages();
         }
+        this.pendingSubmissionImageIds = null;
       }
       this.lastEditorResetVersion = resetVersion;
       this.resetEditor();
@@ -189,6 +194,7 @@ export class CommentsPageComponent implements OnInit {
         const targetId: string | null = itemId ?? parkId;
 
         if (targetId) {
+          this.pendingSubmissionImageIds = null;
           this.commentImagesFacade.discardDraftImages();
           this.resetEditor();
           this.stateFacade.load(targetType, targetId);
@@ -203,11 +209,15 @@ export class CommentsPageComponent implements OnInit {
   protected submit(): void {
     const currentThread: CommentThread | null = this.thread();
     const bodies: LocalizedItem<string>[] = this.editorForm.controls.bodies.value;
-    if (!currentThread || bodies.length === 0 || this.saving() || this.uploadingImages()) {
+    if (!currentThread
+      || !this.hasGlobalCommentText(bodies)
+      || this.saving()
+      || this.uploadingImages()) {
       this.editorForm.controls.bodies.markAsTouched();
       return;
     }
 
+    this.pendingSubmissionImageIds = this.captureManagedImageIds(bodies);
     const editingId: string | null = this.editingCommentId();
     if (editingId) {
       const request: UpdateCommentRequest = {
@@ -233,6 +243,7 @@ export class CommentsPageComponent implements OnInit {
       return;
     }
 
+    this.pendingSubmissionImageIds = null;
     this.commentImagesFacade.discardDraftImages();
     this.editingCommentId.set(comment.id);
     this.editorForm.reset({
@@ -244,6 +255,7 @@ export class CommentsPageComponent implements OnInit {
 
   protected cancelEditing(): void {
     if (!this.saving() && !this.uploadingImages()) {
+      this.pendingSubmissionImageIds = null;
       this.commentImagesFacade.discardDraftImages();
       this.resetEditor();
     }
@@ -277,12 +289,28 @@ export class CommentsPageComponent implements OnInit {
     this.commentImagesFacade.clearError();
   }
 
+  protected hasGlobalCommentText(bodies: readonly LocalizedItem<string>[]): boolean {
+    return bodies.some((body: LocalizedItem<string>) => !isRichTextEmpty(body.value));
+  }
+
   private resetEditor(): void {
     this.editingCommentId.set(null);
     this.editorForm.reset({
       bodies: [],
       isOfficial: false
     });
+  }
+
+  private captureManagedImageIds(
+    bodies: readonly LocalizedItem<string>[]
+  ): ReadonlySet<string> {
+    const imageIds: Set<string> = new Set<string>();
+    for (const body of bodies) {
+      for (const imageId of extractManagedCommentImageIdsFromHtml(body.value)) {
+        imageIds.add(imageId);
+      }
+    }
+    return imageIds;
   }
 
   private resolveCanonicalPath(thread: CommentThread): string | null {

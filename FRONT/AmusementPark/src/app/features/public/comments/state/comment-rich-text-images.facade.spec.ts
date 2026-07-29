@@ -14,7 +14,7 @@ import { CommentDataPort } from './comment-data.ports';
 import { CommentRichTextImagesFacade } from './comment-rich-text-images.facade';
 
 class FakeDestroyRef implements DestroyRef {
-  readonly destroyed: boolean = false;
+  destroyed: boolean = false;
   private callback: (() => void) | null = null;
 
   onDestroy(callback: () => void): () => void {
@@ -25,6 +25,7 @@ class FakeDestroyRef implements DestroyRef {
   }
 
   destroy(): void {
+    this.destroyed = true;
     this.callback?.();
   }
 }
@@ -98,7 +99,11 @@ describe('CommentRichTextImagesFacade', () => {
     expect(facade.uploading()).toBe(false);
   });
 
-  it('deletes only uncommitted images when a draft is changed or abandoned', async () => {
+  it('keeps uploaded drafts until submit and deletes only ids outside the submitted snapshot', async () => {
+    const createObjectUrl = vi.spyOn(URL, 'createObjectURL')
+      .mockReturnValueOnce('blob:first-draft')
+      .mockReturnValueOnce('blob:second-draft');
+    const revokeObjectUrl = vi.spyOn(URL, 'revokeObjectURL').mockImplementation((): void => {});
     const port: FakeCommentDataPort = new FakeCommentDataPort();
     const facade: CommentRichTextImagesFacade = new CommentRichTextImagesFacade(
       port,
@@ -112,9 +117,6 @@ describe('CommentRichTextImagesFacade', () => {
     port.uploadSubjects[0].complete();
     await firstUpload;
 
-    facade.deleteDraftImage(firstImageId);
-    expect(port.deletedImageIds).toEqual([firstImageId]);
-
     const secondUpload: Promise<{ id: string }> = facade.uploadImage(
       new File(['second'], 'second.png', { type: 'image/png' })
     );
@@ -122,10 +124,14 @@ describe('CommentRichTextImagesFacade', () => {
     port.uploadSubjects[1].next({ id: secondImageId, url: `/images/${secondImageId}` });
     port.uploadSubjects[1].complete();
     await secondUpload;
-    facade.markDraftImagesCommitted();
+    facade.markDraftImagesCommitted(new Set<string>([secondImageId]));
     facade.discardDraftImages();
 
     expect(port.deletedImageIds).toEqual([firstImageId]);
+    expect(revokeObjectUrl).toHaveBeenCalledWith('blob:first-draft');
+    expect(revokeObjectUrl).toHaveBeenCalledWith('blob:second-draft');
+    createObjectUrl.mockRestore();
+    revokeObjectUrl.mockRestore();
   });
 
   it('deletes an upload that finishes after its draft was cancelled', async () => {
@@ -168,8 +174,42 @@ describe('CommentRichTextImagesFacade', () => {
     expect(facade.resolvePreviewUrl(firstImageId)).toBe('blob:draft-preview');
     expect(createObjectUrl).toHaveBeenCalledWith(file);
 
-    facade.markDraftImagesCommitted();
+    facade.markDraftImagesCommitted(new Set<string>([firstImageId]));
     expect(revokeObjectUrl).toHaveBeenCalledWith('blob:draft-preview');
     expect(facade.resolvePreviewUrl(firstImageId)).toBeNull();
+  });
+
+  it('continues an upload after destruction so its late server draft can be deleted', async () => {
+    const port: FakeCommentDataPort = new FakeCommentDataPort();
+    const destroyRef: FakeDestroyRef = new FakeDestroyRef();
+    const facade: CommentRichTextImagesFacade = new CommentRichTextImagesFacade(port, destroyRef);
+    const upload: Promise<{ id: string }> = facade.uploadImage(
+      new File(['image'], 'late-after-destroy.png', { type: 'image/png' })
+    );
+    await vi.waitFor((): void => expect(port.uploadSubjects).toHaveLength(1));
+
+    destroyRef.destroy();
+    port.uploadSubjects[0].next({ id: lateImageId, url: `/images/${lateImageId}` });
+    port.uploadSubjects[0].complete();
+
+    await expect(upload).rejects.toThrow('discarded');
+    expect(port.deletedImageIds).toEqual([lateImageId]);
+  });
+
+  it('starts destroy cleanup without binding the delete request to the destroyed scope', async () => {
+    const port: FakeCommentDataPort = new FakeCommentDataPort();
+    const destroyRef: FakeDestroyRef = new FakeDestroyRef();
+    const facade: CommentRichTextImagesFacade = new CommentRichTextImagesFacade(port, destroyRef);
+    const upload: Promise<{ id: string }> = facade.uploadImage(
+      new File(['image'], 'draft.png', { type: 'image/png' })
+    );
+    await vi.waitFor((): void => expect(port.uploadSubjects).toHaveLength(1));
+    port.uploadSubjects[0].next({ id: firstImageId, url: `/images/${firstImageId}` });
+    port.uploadSubjects[0].complete();
+    await upload;
+
+    destroyRef.destroy();
+
+    expect(port.deletedImageIds).toEqual([firstImageId]);
   });
 });
