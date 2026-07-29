@@ -3,15 +3,27 @@ import { Observable, of, throwError } from 'rxjs';
 
 import {
   RESET_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT,
-  ResetPasswordPageStateAuthApiServicePort
+  ResetPasswordPageStateAuthApiServicePort,
 } from './reset-password-page-state-data.ports';
 import { ResetPasswordPageStateFacade } from './reset-password-page-state.facade';
 
 class FakeAuthPort implements ResetPasswordPageStateAuthApiServicePort {
-  public response$: Observable<{ message: string }> = of({ message: 'Mot de passe réinitialisé.' });
-  public readonly calls: { token: string; newPassword: string; confirmPassword: string }[] = [];
+  public response$: Observable<{
+    message: string;
+  }> = of({ message: 'Mot de passe réinitialisé.' });
+  public readonly calls: {
+    token: string;
+    newPassword: string;
+    confirmPassword: string;
+  }[] = [];
 
-  resetPassword(token: string, newPassword: string, confirmPassword: string): Observable<{ message: string }> {
+  resetPassword(
+    token: string,
+    newPassword: string,
+    confirmPassword: string,
+  ): Observable<{
+    message: string;
+  }> {
     this.calls.push({ token, newPassword, confirmPassword });
     return this.response$;
   }
@@ -27,8 +39,11 @@ describe('ResetPasswordPageStateFacade', () => {
     TestBed.configureTestingModule({
       providers: [
         ResetPasswordPageStateFacade,
-        { provide: RESET_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT, useValue: port }
-      ]
+        {
+          provide: RESET_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT,
+          useValue: port,
+        },
+      ],
     });
 
     facade = TestBed.inject(ResetPasswordPageStateFacade);
@@ -49,7 +64,7 @@ describe('ResetPasswordPageStateFacade', () => {
     facade.submit();
 
     expect(port.calls).toEqual([]);
-    expect(facade.isSubmitted()).toBeFalse();
+    expect(facade.isSubmitted()).toBe(false);
   });
 
   it('submits the reset request through the auth port', () => {
@@ -59,20 +74,28 @@ describe('ResetPasswordPageStateFacade', () => {
 
     facade.submit();
 
-    expect(port.calls).toEqual([{ token: 'token-1', newPassword: 'Secret123!', confirmPassword: 'Secret123!' }]);
-    expect(facade.isSubmitted()).toBeTrue();
+    expect(port.calls).toEqual([
+      {
+        token: 'token-1',
+        newPassword: 'Secret123!',
+        confirmPassword: 'Secret123!',
+      },
+    ]);
+    expect(facade.isSubmitted()).toBe(true);
     expect(facade.message()).toBe('Mot de passe réinitialisé.');
   });
 
   it('exposes a friendly error message when reset fails', () => {
-    port.response$ = throwError(() => ({ error: { message: 'Token invalide.' } }));
+    port.response$ = throwError(() => ({
+      error: { message: 'Token invalide.' },
+    }));
     facade.initialize('token-1');
     facade.setNewPassword('Secret123!');
     facade.setConfirmPassword('Secret123!');
 
     facade.submit();
 
-    expect(facade.isSubmitted()).toBeTrue();
+    expect(facade.isSubmitted()).toBe(true);
     expect(facade.message()).toBe('Token invalide.');
   });
 });

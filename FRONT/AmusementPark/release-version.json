@@ -1,6 +1,20 @@
 {
-  "version": "3.5.23",
+  "version": "3.5.24",
   "history": [
+    {
+      "version": "3.5.24",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "La sécurité des outils de test a été renforcée.",
+        "en": "Test tool security has been strengthened.",
+        "de": "Die Sicherheit der Testwerkzeuge wurde verbessert.",
+        "nl": "De beveiliging van testhulpmiddelen is versterkt.",
+        "it": "La sicurezza degli strumenti di test è stata rafforzata.",
+        "es": "Se ha reforzado la seguridad de las herramientas de prueba.",
+        "pl": "Wzmocniono bezpieczeństwo narzędzi testowych.",
+        "pt": "A segurança das ferramentas de teste foi reforçada."
+      }
+    },
     {
       "version": "3.5.23",
       "releasedAt": "2026-07-23",

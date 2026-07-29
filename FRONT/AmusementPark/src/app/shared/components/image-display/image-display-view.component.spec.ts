@@ -9,7 +9,7 @@ describe('ImageDisplayViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ImageDisplayViewComponent]
+      imports: [ImageDisplayViewComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ImageDisplayViewComponent);
@@ -19,13 +19,18 @@ describe('ImageDisplayViewComponent', () => {
   it('renders responsive image attributes when provided', () => {
     component.showImage = true;
     component.resolvedImageUrl = '/api/images/img-1';
-    component.resolvedImageSrcSet = '/api/images/img-1?width=320 320w, /api/images/img-1?width=640 640w';
+    component.resolvedImageSrcSet =
+      '/api/images/img-1?width=320 320w, /api/images/img-1?width=640 640w';
     component.resolvedImageSizes = '(max-width: 900px) 100vw, 900px';
 
     fixture.detectChanges();
 
-    const image: HTMLImageElement = fixture.debugElement.query(By.css('img')).nativeElement;
-    expect(image.getAttribute('srcset')).toBe('/api/images/img-1?width=320 320w, /api/images/img-1?width=640 640w');
+    const image: HTMLImageElement = fixture.debugElement.query(
+      By.css('img'),
+    ).nativeElement;
+    expect(image.getAttribute('srcset')).toBe(
+      '/api/images/img-1?width=320 320w, /api/images/img-1?width=640 640w',
+    );
     expect(image.getAttribute('sizes')).toBe('(max-width: 900px) 100vw, 900px');
   });
 
@@ -37,7 +42,9 @@ describe('ImageDisplayViewComponent', () => {
 
     fixture.detectChanges();
 
-    const image: HTMLImageElement = fixture.debugElement.query(By.css('img')).nativeElement;
+    const image: HTMLImageElement = fixture.debugElement.query(
+      By.css('img'),
+    ).nativeElement;
     expect(image.getAttribute('loading')).toBe('eager');
     expect(image.getAttribute('fetchpriority')).toBe('high');
   });
@@ -48,9 +55,11 @@ describe('ImageDisplayViewComponent', () => {
 
     fixture.detectChanges();
 
-    const image: HTMLImageElement = fixture.debugElement.query(By.css('img')).nativeElement;
-    expect(image.hasAttribute('srcset')).toBeFalse();
-    expect(image.hasAttribute('sizes')).toBeFalse();
+    const image: HTMLImageElement = fixture.debugElement.query(
+      By.css('img'),
+    ).nativeElement;
+    expect(image.hasAttribute('srcset')).toBe(false);
+    expect(image.hasAttribute('sizes')).toBe(false);
   });
 
   it('falls back to a non-empty alt text when the provided alt is blank', () => {
@@ -61,7 +70,9 @@ describe('ImageDisplayViewComponent', () => {
 
     fixture.detectChanges();
 
-    const image: HTMLImageElement = fixture.debugElement.query(By.css('img')).nativeElement;
+    const image: HTMLImageElement = fixture.debugElement.query(
+      By.css('img'),
+    ).nativeElement;
     expect(image.getAttribute('alt')).toBe('Image AMUSEMENT-PARKS.fun');
   });
 });

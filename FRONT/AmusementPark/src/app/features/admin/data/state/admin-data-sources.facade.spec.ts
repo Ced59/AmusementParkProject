@@ -4,12 +4,14 @@ import { Observable, of, throwError } from 'rxjs';
 import { DataSourceSummary } from '@app/models/admin/data/data-management.models';
 import {
   ADMIN_DATA_SOURCES_DATA_SOURCES_API_SERVICE_PORT,
-  AdminDataSourcesDataSourcesApiServicePort
+  AdminDataSourcesDataSourcesApiServicePort,
 } from './admin-data-sources-data.ports';
 import { AdminDataSourcesFacade } from './admin-data-sources.facade';
 
 class FakeDataSourcesPort implements AdminDataSourcesDataSourcesApiServicePort {
-  public response$: Observable<DataSourceSummary[]> = of([createSource('captain-coaster')]);
+  public response$: Observable<DataSourceSummary[]> = of([
+    createSource('captain-coaster'),
+  ]);
   public callCount = 0;
 
   listSources(): Observable<DataSourceSummary[]> {
@@ -27,7 +29,7 @@ function createSource(key: string): DataSourceSummary {
     isEnabled: true,
     lastImportUtc: null,
     totalSessions: 1,
-    statusLabel: 'Disponible'
+    statusLabel: 'Disponible',
   };
 }
 
@@ -41,8 +43,11 @@ describe('AdminDataSourcesFacade', () => {
     TestBed.configureTestingModule({
       providers: [
         AdminDataSourcesFacade,
-        { provide: ADMIN_DATA_SOURCES_DATA_SOURCES_API_SERVICE_PORT, useValue: port }
-      ]
+        {
+          provide: ADMIN_DATA_SOURCES_DATA_SOURCES_API_SERVICE_PORT,
+          useValue: port,
+        },
+      ],
     });
 
     facade = TestBed.inject(AdminDataSourcesFacade);
@@ -52,7 +57,9 @@ describe('AdminDataSourcesFacade', () => {
     await facade.loadSourcesAsync();
 
     expect(port.callCount).toBe(1);
-    expect(facade.dataSources().map((source: DataSourceSummary) => source.key)).toEqual(['captain-coaster']);
+    expect(
+      facade.dataSources().map((source: DataSourceSummary) => source.key),
+    ).toEqual(['captain-coaster']);
   });
 
   it('keeps a fallback source when the data port fails', async () => {
@@ -62,7 +69,7 @@ describe('AdminDataSourcesFacade', () => {
 
     expect(facade.dataSources().length).toBe(1);
     expect(facade.dataSources()[0].key).toBe('captain-coaster');
-    expect(facade.dataSources()[0].isEnabled).toBeFalse();
+    expect(facade.dataSources()[0].isEnabled).toBe(false);
   });
 
   it('selects and clears the current source without reloading data', async () => {

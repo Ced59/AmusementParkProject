@@ -1,24 +1,33 @@
+import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { Observable, of, throwError } from 'rxjs';
 
 import { TechnicalStatsSnapshot } from '@app/models/admin/technical-stats/technical-stats.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { AdminTechnicalStatsFacade } from './admin-technical-stats.facade';
-import { ADMIN_TECHNICAL_STATS_DATA_PORT, AdminTechnicalStatsDataPort } from './admin-technical-stats-state-data.ports';
+import {
+  ADMIN_TECHNICAL_STATS_DATA_PORT,
+  AdminTechnicalStatsDataPort,
+} from './admin-technical-stats-state-data.ports';
 
 describe('AdminTechnicalStatsFacade', () => {
   let facade: AdminTechnicalStatsFacade;
-  let port: jasmine.SpyObj<AdminTechnicalStatsDataPort>;
+  let port: MockedObject<AdminTechnicalStatsDataPort>;
 
   beforeEach(() => {
-    port = jasmine.createSpyObj<AdminTechnicalStatsDataPort>('AdminTechnicalStatsDataPort', ['getStats', 'updateSettings']);
+    port = {
+      getStats: vi.fn().mockName('AdminTechnicalStatsDataPort.getStats'),
+      updateSettings: vi
+        .fn()
+        .mockName('AdminTechnicalStatsDataPort.updateSettings'),
+    } as unknown as MockedObject<AdminTechnicalStatsDataPort>;
 
     TestBed.configureTestingModule({
       providers: [
         provideCommonTestDependencies(),
         AdminTechnicalStatsFacade,
-        { provide: ADMIN_TECHNICAL_STATS_DATA_PORT, useValue: port }
-      ]
+        { provide: ADMIN_TECHNICAL_STATS_DATA_PORT, useValue: port },
+      ],
     });
 
     facade = TestBed.inject(AdminTechnicalStatsFacade);
@@ -26,7 +35,7 @@ describe('AdminTechnicalStatsFacade', () => {
 
   it('loads stats and exposes KPI signals', () => {
     const stats: TechnicalStatsSnapshot = createStats();
-    port.getStats.and.returnValue(of(stats));
+    port.getStats.mockReturnValue(of(stats));
 
     facade.load();
 
@@ -39,10 +48,14 @@ describe('AdminTechnicalStatsFacade', () => {
 
   it('keeps previous stats available when reload fails', () => {
     const stats: TechnicalStatsSnapshot = createStats();
-    port.getStats.and.returnValue(of(stats));
+    port.getStats.mockReturnValue(of(stats));
     facade.load();
 
-    port.getStats.and.returnValue(throwError(() => new Error('network')) as Observable<TechnicalStatsSnapshot>);
+    port.getStats.mockReturnValue(
+      throwError(
+        () => new Error('network'),
+      ) as Observable<TechnicalStatsSnapshot>,
+    );
     facade.load();
 
     expect(facade.state().kind).toBe('error');
@@ -51,24 +64,26 @@ describe('AdminTechnicalStatsFacade', () => {
 
   it('updates settings and reloads stats', () => {
     const stats: TechnicalStatsSnapshot = createStats();
-    port.getStats.and.returnValue(of(stats));
-    port.updateSettings.and.returnValue(of({ persistenceRetentionDays: 20 }));
+    port.getStats.mockReturnValue(of(stats));
+    port.updateSettings.mockReturnValue(of({ persistenceRetentionDays: 20 }));
 
     facade.updateSettings({ persistenceRetentionDays: 20 });
 
-    expect(port.updateSettings).toHaveBeenCalledWith({ persistenceRetentionDays: 20 });
+    expect(port.updateSettings).toHaveBeenCalledWith({
+      persistenceRetentionDays: 20,
+    });
     expect(port.getStats).toHaveBeenCalled();
-    expect(facade.settingsSaving()).toBeFalse();
-    expect(facade.settingsError()).toBeFalse();
+    expect(facade.settingsSaving()).toBe(false);
+    expect(facade.settingsError()).toBe(false);
   });
 
   it('flags settings update errors', () => {
-    port.updateSettings.and.returnValue(throwError(() => new Error('network')));
+    port.updateSettings.mockReturnValue(throwError(() => new Error('network')));
 
     facade.updateSettings({ persistenceRetentionDays: 20 });
 
-    expect(facade.settingsSaving()).toBeFalse();
-    expect(facade.settingsError()).toBeTrue();
+    expect(facade.settingsSaving()).toBe(false);
+    expect(facade.settingsError()).toBe(true);
   });
 });
 
@@ -90,20 +105,22 @@ function createStats(): TechnicalStatsSnapshot {
       robotCacheHitResponses: 2,
       robotHitRatePercent: 50,
       statuses: [{ key: 'HIT', count: 6, percent: 75 }],
-      robotFamilies: [{
-        key: 'Googlebot',
-        category: 'google',
-        count: 4,
-        cacheHits: 2,
-        hitRatePercent: 50,
-        seoReadyResponses: 4,
-        seoNotReadyResponses: 0,
-        seoReadyRatePercent: 100,
-        noJsResponses: 4,
-        blockedNotSeoReadyResponses: 0,
-        htmlNotAllowedResponses: 0,
-        ssrUnavailableResponses: 0
-      }]
+      robotFamilies: [
+        {
+          key: 'Googlebot',
+          category: 'google',
+          count: 4,
+          cacheHits: 2,
+          hitRatePercent: 50,
+          seoReadyResponses: 4,
+          seoNotReadyResponses: 0,
+          seoReadyRatePercent: 100,
+          noJsResponses: 4,
+          blockedNotSeoReadyResponses: 0,
+          htmlNotAllowedResponses: 0,
+          ssrUnavailableResponses: 0,
+        },
+      ],
     },
     storage: {
       memoryEntries: 1,
@@ -121,7 +138,7 @@ function createStats(): TechnicalStatsSnapshot {
       seoDocumentRequests: 0,
       seoDocumentHits: 0,
       seoDocumentMisses: 0,
-      assetMisses: 0
+      assetMisses: 0,
     },
     seo: {
       robotNoJsHtmlEnabled: true,
@@ -145,7 +162,7 @@ function createStats(): TechnicalStatsSnapshot {
       seoDocumentHits: 0,
       seoDocumentMisses: 0,
       seoDocumentHitRatePercent: 0,
-      queueFullRejections: 0
+      queueFullRejections: 0,
     },
     rendering: {
       ssrRenderEnabled: true,
@@ -160,7 +177,7 @@ function createStats(): TechnicalStatsSnapshot {
       maxRenderMilliseconds: 180,
       slowRenders: 0,
       slowRenderThresholdMilliseconds: 3000,
-      queueFullRejections: 0
+      queueFullRejections: 0,
     },
     refresh: {
       enabled: true,
@@ -173,7 +190,7 @@ function createStats(): TechnicalStatsSnapshot {
       maxUrls: 24,
       concurrency: 1,
       delayMilliseconds: 1500,
-      timeoutSeconds: 45
+      timeoutSeconds: 45,
     },
     invalidation: {
       requests: 0,
@@ -182,7 +199,7 @@ function createStats(): TechnicalStatsSnapshot {
       clearedEntries: 0,
       staleEntries: 0,
       queuedRefreshes: 0,
-      lastInvalidationUtc: null
+      lastInvalidationUtc: null,
     },
     config: {
       pageCacheTtlSeconds: 86400,
@@ -195,7 +212,7 @@ function createStats(): TechnicalStatsSnapshot {
       technicalStatsPersistenceRetentionDays: 15,
       technicalStatsPersistenceFlushIntervalSeconds: 60,
       technicalStatsPersistenceLastFlushUtc: null,
-      technicalStatsPersistenceLastCleanupUtc: null
-    }
+      technicalStatsPersistenceLastCleanupUtc: null,
+    },
   };
 }

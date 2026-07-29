@@ -11,7 +11,9 @@ describe('PublicHtmlSitemapApiService', () => {
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: provideCommonTestDependencies() });
+    TestBed.configureTestingModule({
+      providers: provideCommonTestDependencies(),
+    });
     service = TestBed.inject(PublicHtmlSitemapApiService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
@@ -21,29 +23,54 @@ describe('PublicHtmlSitemapApiService', () => {
   });
 
   it('gets current language sitemap nodes without a double slash in the API URL', () => {
-    service.getNodes('fr', 'parks').subscribe((nodes: PublicHtmlSitemapNode[]) => {
-      expect(nodes[0].id).toBe('park:park-1');
-    });
+    service
+      .getNodes('fr', 'parks')
+      .subscribe((nodes: PublicHtmlSitemapNode[]) => {
+        expect(nodes[0].id).toBe('park:park-1');
+      });
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}seo/html-sitemap/nodes`);
+    const request = httpTestingController.expectOne(
+      (candidate) =>
+        candidate.url === `${environment.apiBaseUrl}seo/html-sitemap/nodes`,
+    );
     expect(request.request.method).toBe('GET');
     expect(request.request.url).not.toContain('/api//');
     expect(request.request.params.get('language')).toBe('fr');
     expect(request.request.params.get('parentNodeId')).toBe('parks');
-    expect(request.request.params.has('includeDescendants')).toBeFalse();
-    request.flush([{ id: 'park:park-1', label: 'Parc Demo', relativeUrl: '/fr/park/park-1/parc-demo', hasChildren: true }]);
+    expect(request.request.params.has('includeDescendants')).toBe(false);
+    request.flush([
+      {
+        id: 'park:park-1',
+        label: 'Parc Demo',
+        relativeUrl: '/fr/park/park-1/parc-demo',
+        hasChildren: true,
+      },
+    ]);
   });
 
   it('can request the complete sitemap tree', () => {
-    service.getNodes('fr', null, true).subscribe((nodes: PublicHtmlSitemapNode[]) => {
-      expect(nodes[0].id).toBe('parks');
-    });
+    service
+      .getNodes('fr', null, true)
+      .subscribe((nodes: PublicHtmlSitemapNode[]) => {
+        expect(nodes[0].id).toBe('parks');
+      });
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}seo/html-sitemap/nodes`);
+    const request = httpTestingController.expectOne(
+      (candidate) =>
+        candidate.url === `${environment.apiBaseUrl}seo/html-sitemap/nodes`,
+    );
     expect(request.request.method).toBe('GET');
     expect(request.request.params.get('language')).toBe('fr');
-    expect(request.request.params.has('parentNodeId')).toBeFalse();
+    expect(request.request.params.has('parentNodeId')).toBe(false);
     expect(request.request.params.get('includeDescendants')).toBe('true');
-    request.flush([{ id: 'parks', label: 'Parcs', relativeUrl: '/fr/parks', hasChildren: true, children: [] }]);
+    request.flush([
+      {
+        id: 'parks',
+        label: 'Parcs',
+        relativeUrl: '/fr/parks',
+        hasChildren: true,
+        children: [],
+      },
+    ]);
   });
 });

@@ -12,7 +12,9 @@ describe('ImagesApiService', () => {
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: provideCommonTestDependencies() });
+    TestBed.configureTestingModule({
+      providers: provideCommonTestDependencies(),
+    });
     service = TestBed.inject(ImagesApiService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
@@ -26,7 +28,9 @@ describe('ImagesApiService', () => {
 
     service.uploadImage(file, ImageCategory.LOGO, false, 'Logo').subscribe();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}images`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}images`,
+    );
     expect(request.request.method).toBe('POST');
     const formData: FormData = request.request.body as FormData;
     expect(formData.get('File')).toBe(file);
@@ -37,41 +41,61 @@ describe('ImagesApiService', () => {
   });
 
   it('links images with mapped owner type', () => {
-    service.linkImage({ imageId: 'img-1', ownerType: ImageOwnerType.PARK, ownerId: 'park-1', category: ImageCategory.LOGO } as never).subscribe();
+    service
+      .linkImage({
+        imageId: 'img-1',
+        ownerType: ImageOwnerType.PARK,
+        ownerId: 'park-1',
+        category: ImageCategory.LOGO,
+      } as never)
+      .subscribe();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}images/links`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}images/links`,
+    );
     expect(request.request.method).toBe('POST');
     expect(request.request.body.ownerType).toBe(1);
     request.flush({ id: 'img-1' });
   });
 
   it('imports remote images with mapped owner type and category', () => {
-    service.importRemoteImage({
-      sourceUrl: 'https://cdn.example.test/logo.webp',
-      category: ImageCategory.LOGO,
-      ownerType: ImageOwnerType.PARK,
-      ownerId: 'park-1',
-      withWatermark: false,
-      setAsCurrent: true
-    }).subscribe();
+    service
+      .importRemoteImage({
+        sourceUrl: 'https://cdn.example.test/logo.webp',
+        category: ImageCategory.LOGO,
+        ownerType: ImageOwnerType.PARK,
+        ownerId: 'park-1',
+        withWatermark: false,
+        setAsCurrent: true,
+      })
+      .subscribe();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}images/remote`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}images/remote`,
+    );
     expect(request.request.method).toBe('POST');
-    expect(request.request.body.sourceUrl).toBe('https://cdn.example.test/logo.webp');
+    expect(request.request.body.sourceUrl).toBe(
+      'https://cdn.example.test/logo.webp',
+    );
     expect(request.request.body.category).toBe(1);
     expect(request.request.body.ownerType).toBe(1);
     expect(request.request.body.ownerId).toBe('park-1');
-    expect(request.request.body.withWatermark).toBeFalse();
-    expect(request.request.body.setAsCurrent).toBeTrue();
+    expect(request.request.body.withWatermark).toBe(false);
+    expect(request.request.body.setAsCurrent).toBe(true);
     request.flush({ id: 'img-1' });
   });
 
   it('gets owner images with mapped owner and category params and unwraps paged responses', () => {
-    service.getImages(ImageOwnerType.PARK, 'park-1', ImageCategory.PARK, 2, 20).subscribe((images) => {
-      expect(images.length).toBe(1);
-    });
+    service
+      .getImages(ImageOwnerType.PARK, 'park-1', ImageCategory.PARK, 2, 20)
+      .subscribe((images) => {
+        expect(images.length).toBe(1);
+      });
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}images/1/park-1/2`);
+    const request = httpTestingController.expectOne(
+      (candidate) =>
+        candidate.url === `${environment.apiBaseUrl}images/1/park-1/2`,
+    );
     expect(request.request.params.get('page')).toBe('2');
     expect(request.request.params.get('size')).toBe('20');
     request.flush({ data: [{ id: 'img-1' }] });
@@ -79,33 +103,61 @@ describe('ImagesApiService', () => {
 
   it('gets park item images for a park with pagination params', () => {
     service.getParkItemImagesByPark('park-1', 3, 12).subscribe((page) => {
-      expect(page.items).toEqual([{ image: { id: 'item-img-1' }, item: { id: 'item-1' } } as never]);
+      expect(page.items).toEqual([
+        { image: { id: 'item-img-1' }, item: { id: 'item-1' } } as never,
+      ]);
     });
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}images/parks/park-1/park-items`);
+    const request = httpTestingController.expectOne(
+      (candidate) =>
+        candidate.url ===
+        `${environment.apiBaseUrl}images/parks/park-1/park-items`,
+    );
     expect(request.request.method).toBe('GET');
     expect(request.request.params.get('page')).toBe('3');
     expect(request.request.params.get('size')).toBe('12');
-    request.flush({ data: [{ image: { id: 'item-img-1' }, item: { id: 'item-1' } }] });
+    request.flush({
+      data: [{ image: { id: 'item-img-1' }, item: { id: 'item-1' } }],
+    });
   });
 
   it('builds image urls from ids and normalizes supported image paths', () => {
-    expect(service.buildImageUrl('img-1')).toBe(`${environment.imagesBaseUrl}/img-1`);
-    expect(service.buildImageUrl('img-1', { width: 640 })).toBe(`${environment.imagesBaseUrl}/img-1?width=640&v=2`);
-    expect(service.resolveImageUrl('/images/img-1')).toBe(`${environment.imagesBaseUrl}/img-1`);
-    expect(service.resolveImageUrl('/images/img-1', { width: 640 })).toBe(`${environment.imagesBaseUrl}/img-1?width=640&v=2`);
-    expect(service.resolveImageUrl('images/img-2')).toBe(`${environment.imagesBaseUrl}/img-2`);
-    expect(service.resolveImageUrl('img-3')).toBe(`${environment.imagesBaseUrl}/img-3`);
-    expect(service.resolveImageUrl('img-3', { width: 960 })).toBe(`${environment.imagesBaseUrl}/img-3?width=960&v=2`);
-    expect(service.resolveImageUrl('assets/img.png')).toBe(`${environment.apiBaseUrl}assets/img.png`);
+    expect(service.buildImageUrl('img-1')).toBe(
+      `${environment.imagesBaseUrl}/img-1`,
+    );
+    expect(service.buildImageUrl('img-1', { width: 640 })).toBe(
+      `${environment.imagesBaseUrl}/img-1?width=640&v=2`,
+    );
+    expect(service.resolveImageUrl('/images/img-1')).toBe(
+      `${environment.imagesBaseUrl}/img-1`,
+    );
+    expect(service.resolveImageUrl('/images/img-1', { width: 640 })).toBe(
+      `${environment.imagesBaseUrl}/img-1?width=640&v=2`,
+    );
+    expect(service.resolveImageUrl('images/img-2')).toBe(
+      `${environment.imagesBaseUrl}/img-2`,
+    );
+    expect(service.resolveImageUrl('img-3')).toBe(
+      `${environment.imagesBaseUrl}/img-3`,
+    );
+    expect(service.resolveImageUrl('img-3', { width: 960 })).toBe(
+      `${environment.imagesBaseUrl}/img-3?width=960&v=2`,
+    );
+    expect(service.resolveImageUrl('assets/img.png')).toBe(
+      `${environment.apiBaseUrl}assets/img.png`,
+    );
   });
 
   it('builds responsive srcset entries only for API image ids', () => {
     expect(service.buildImageSrcSet('img-1', [640, 320, 640])).toBe(
-      `${environment.imagesBaseUrl}/img-1?width=320&v=2 320w, ${environment.imagesBaseUrl}/img-1?width=640&v=2 640w`
+      `${environment.imagesBaseUrl}/img-1?width=320&v=2 320w, ${environment.imagesBaseUrl}/img-1?width=640&v=2 640w`,
     );
-    expect(service.buildImageSrcSet('/images/img-2', [960])).toBe(`${environment.imagesBaseUrl}/img-2?width=960&v=2 960w`);
-    expect(service.buildImageSrcSet('https://example.com/img.png', [640])).toBeNull();
+    expect(service.buildImageSrcSet('/images/img-2', [960])).toBe(
+      `${environment.imagesBaseUrl}/img-2?width=960&v=2 960w`,
+    );
+    expect(
+      service.buildImageSrcSet('https://example.com/img.png', [640]),
+    ).toBeNull();
     expect(service.buildImageSrcSet('assets/img.png', [640])).toBeNull();
   });
 
@@ -119,15 +171,17 @@ describe('ImagesApiService', () => {
         `${environment.imagesBaseUrl}/img-1?width=960&v=2 960w`,
         `${environment.imagesBaseUrl}/img-1?width=1280&v=2 1280w`,
         `${environment.imagesBaseUrl}/img-1?width=1600&v=2 1600w`,
-        `${environment.imagesBaseUrl}/img-1?width=1920&v=2 1920w`
-      ].join(', ')
+        `${environment.imagesBaseUrl}/img-1?width=1920&v=2 1920w`,
+      ].join(', '),
     );
   });
 
   it('returns null for empty or unsafe image paths and preserves safe absolute paths', () => {
     expect(service.resolveImageUrl('')).toBeNull();
     expect(service.resolveImageUrl('javascript:alert(1)')).toBeNull();
-    expect(service.resolveImageUrl('https://example.com/img.png')).toBe('https://example.com/img.png');
+    expect(service.resolveImageUrl('https://example.com/img.png')).toBe(
+      'https://example.com/img.png',
+    );
   });
 
   it('builds a fallback avatar data URL when no avatar image can be resolved', () => {
@@ -138,15 +192,26 @@ describe('ImagesApiService', () => {
   });
 
   it('gets admin images with optional search params including false booleans', () => {
-    service.getAdminImages({ page: 3, size: 10, search: ' park ', isPublished: false, hasOwner: true, hasGeoLocation: null }).subscribe();
+    service
+      .getAdminImages({
+        page: 3,
+        size: 10,
+        search: ' park ',
+        isPublished: false,
+        hasOwner: true,
+        hasGeoLocation: null,
+      })
+      .subscribe();
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}images`);
+    const request = httpTestingController.expectOne(
+      (candidate) => candidate.url === `${environment.apiBaseUrl}images`,
+    );
     expect(request.request.params.get('page')).toBe('3');
     expect(request.request.params.get('size')).toBe('10');
     expect(request.request.params.get('search')).toBe(' park ');
     expect(request.request.params.get('isPublished')).toBe('false');
     expect(request.request.params.get('hasOwner')).toBe('true');
-    expect(request.request.params.has('hasGeoLocation')).toBeFalse();
+    expect(request.request.params.has('hasGeoLocation')).toBe(false);
     request.flush({ data: [] });
   });
 
@@ -155,7 +220,9 @@ describe('ImagesApiService', () => {
       expect(tags).toEqual([{ id: 'tag-1', slug: 'entrance' } as never]);
     });
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}images/tags`);
+    const request = httpTestingController.expectOne(
+      (candidate) => candidate.url === `${environment.apiBaseUrl}images/tags`,
+    );
     expect(request.request.method).toBe('GET');
     expect(request.request.params.get('page')).toBe('1');
     expect(request.request.params.get('size')).toBe('100');
@@ -164,28 +231,53 @@ describe('ImagesApiService', () => {
 
   it('deletes images through the image endpoint', () => {
     service.deleteImage('img-1').subscribe((deleted) => {
-      expect(deleted).toBeTrue();
+      expect(deleted).toBe(true);
     });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}images/img-1`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}images/img-1`,
+    );
     expect(request.request.method).toBe('DELETE');
     request.flush(true);
   });
 
   it('updates admin image metadata and image tags', () => {
-    service.updateAdminImage('img-1', { altTexts: [], captions: [], credits: [], tagIds: [], isPublished: true }).subscribe();
-    service.createAdminImageTag({ slug: 'tag', labels: [], descriptions: [] }).subscribe();
-    service.updateAdminImageTag('tag-1', { slug: 'tag', labels: [], descriptions: [], isActive: true }).subscribe();
+    service
+      .updateAdminImage('img-1', {
+        altTexts: [],
+        captions: [],
+        credits: [],
+        tagIds: [],
+        isPublished: true,
+      })
+      .subscribe();
+    service
+      .createAdminImageTag({ slug: 'tag', labels: [], descriptions: [] })
+      .subscribe();
+    service
+      .updateAdminImageTag('tag-1', {
+        slug: 'tag',
+        labels: [],
+        descriptions: [],
+        isActive: true,
+      })
+      .subscribe();
 
-    const imageRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}images/img-1/metadata`);
+    const imageRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}images/img-1/metadata`,
+    );
     expect(imageRequest.request.method).toBe('PUT');
     imageRequest.flush({ id: 'img-1' });
 
-    const createTagRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}images/tags`);
+    const createTagRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}images/tags`,
+    );
     expect(createTagRequest.request.method).toBe('POST');
     createTagRequest.flush({ id: 'tag-1' });
 
-    const updateTagRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}images/tags/tag-1`);
+    const updateTagRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}images/tags/tag-1`,
+    );
     expect(updateTagRequest.request.method).toBe('PUT');
     updateTagRequest.flush({ id: 'tag-1' });
   });

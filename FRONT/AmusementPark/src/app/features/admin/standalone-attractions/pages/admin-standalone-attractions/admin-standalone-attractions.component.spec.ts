@@ -1,12 +1,22 @@
-import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpResponse,
+} from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 
 import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
-import { StandaloneAttraction, StandaloneAttractionMigrationRequest } from '@app/models/standalone-attractions/standalone-attraction';
-import { ParkAdminListFilters, ParkAdminListSort } from '@data-access/parks/parks-api-endpoints';
+import {
+  StandaloneAttraction,
+  StandaloneAttractionMigrationRequest,
+} from '@app/models/standalone-attractions/standalone-attraction';
+import {
+  ParkAdminListFilters,
+  ParkAdminListSort,
+} from '@data-access/parks/parks-api-endpoints';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { StandaloneAttractionsApiService } from '@data-access/standalone-attractions/standalone-attractions-api.service';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
@@ -16,17 +26,29 @@ import { AdminStandaloneAttractionsComponent } from './admin-standalone-attracti
 class FakeStandaloneAttractionsApiService {
   public pageResponse$: Observable<PagedResult<StandaloneAttraction>> = of({
     items: [],
-    pagination: createPagination()
+    pagination: createPagination(),
   });
-  public migrateResponse$: Observable<StandaloneAttraction> = of(createAttraction('standalone-1'));
-  public exportResponse$: Observable<HttpResponse<Blob>> = of(new HttpResponse({
-    body: new Blob(['{}'], { type: 'application/json' })
-  }));
-  public readonly pageCalls: Array<{ page: number; size: number; filters: unknown }> = [];
+  public migrateResponse$: Observable<StandaloneAttraction> = of(
+    createAttraction('standalone-1'),
+  );
+  public exportResponse$: Observable<HttpResponse<Blob>> = of(
+    new HttpResponse({
+      body: new Blob(['{}'], { type: 'application/json' }),
+    }),
+  );
+  public readonly pageCalls: Array<{
+    page: number;
+    size: number;
+    filters: unknown;
+  }> = [];
   public readonly migrationCalls: StandaloneAttractionMigrationRequest[] = [];
   public readonly exportCalls: string[] = [];
 
-  getAdminPage(page: number, size: number, filters: unknown): Observable<PagedResult<StandaloneAttraction>> {
+  getAdminPage(
+    page: number,
+    size: number,
+    filters: unknown,
+  ): Observable<PagedResult<StandaloneAttraction>> {
     this.pageCalls.push({ page, size, filters });
     return this.pageResponse$;
   }
@@ -35,15 +57,23 @@ class FakeStandaloneAttractionsApiService {
     return of({ ...attraction, id: 'created-standalone' });
   }
 
-  update(_id: string, attraction: StandaloneAttraction): Observable<StandaloneAttraction> {
+  update(
+    _id: string,
+    attraction: StandaloneAttraction,
+  ): Observable<StandaloneAttraction> {
     return of(attraction);
   }
 
-  updateBulkAdministration(): Observable<{ requestedCount: number; updatedCount: number }> {
+  updateBulkAdministration(): Observable<{
+    requestedCount: number;
+    updatedCount: number;
+  }> {
     return of({ requestedCount: 0, updatedCount: 0 });
   }
 
-  migrateFromPark(request: StandaloneAttractionMigrationRequest): Observable<StandaloneAttraction> {
+  migrateFromPark(
+    request: StandaloneAttractionMigrationRequest,
+  ): Observable<StandaloneAttraction> {
     this.migrationCalls.push(request);
     return this.migrateResponse$;
   }
@@ -57,15 +87,20 @@ class FakeStandaloneAttractionsApiService {
 class FakeParksApiService {
   public searchResponse$: Observable<ParksApiResponse> = of({
     data: [createPark('legacy-park-1')],
-    pagination: createPagination()
+    pagination: createPagination(),
   });
-  public parkByIdResponse$: Observable<Park> = of(createPark('legacy-park-by-id'));
+  public parkByIdResponse$: Observable<Park> = of(
+    createPark('legacy-park-by-id'),
+  );
   public readonly searchCalls: Array<{
     query: string;
     page: number;
     size: number;
     filters: ParkAdminListFilters | null;
-    options: { closedFilter?: string; sort?: ParkAdminListSort };
+    options: {
+      closedFilter?: string;
+      sort?: ParkAdminListSort;
+    };
   }> = [];
   public readonly getByIdCalls: string[] = [];
 
@@ -76,7 +111,10 @@ class FakeParksApiService {
     _visibleOnly: boolean = false,
     _region = null,
     filters: ParkAdminListFilters | null = null,
-    options: { closedFilter?: string; sort?: ParkAdminListSort } = {}
+    options: {
+      closedFilter?: string;
+      sort?: ParkAdminListSort;
+    } = {},
   ): Observable<ParksApiResponse> {
     this.searchCalls.push({ query, page, size, filters, options });
     return this.searchResponse$;
@@ -93,7 +131,7 @@ function createPagination(): PaginationContract {
     currentPage: 1,
     itemsPerPage: 10,
     totalItems: 1,
-    totalPages: 1
+    totalPages: 1,
   };
 }
 
@@ -117,7 +155,7 @@ function createAttraction(id: string | null = null): StandaloneAttraction {
     isVisible: false,
     adminReviewStatus: 'ToReview',
     legacyParkId: null,
-    legacyParkItemId: null
+    legacyParkItemId: null,
   };
 }
 
@@ -134,7 +172,7 @@ function createPark(id: string): Park {
     city: 'Bardonecchia',
     parkItemsTotalCount: 1,
     parkItemsVisibleCount: 0,
-    descriptions: []
+    descriptions: [],
   };
 }
 
@@ -151,10 +189,16 @@ describe('AdminStandaloneAttractionsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AdminStandaloneAttractionsComponent],
       providers: [
-        { provide: StandaloneAttractionsApiService, useValue: standaloneApiService },
+        {
+          provide: StandaloneAttractionsApiService,
+          useValue: standaloneApiService,
+        },
         { provide: ParksApiService, useValue: parksApiService },
-        { provide: Router, useValue: { url: '/fr/admin/standalone-attractions' } }
-      ]
+        {
+          provide: Router,
+          useValue: { url: '/fr/admin/standalone-attractions' },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminStandaloneAttractionsComponent);
@@ -214,7 +258,9 @@ describe('AdminStandaloneAttractionsComponent', () => {
       typeFilter: string;
       isVisibleFilter: string;
       reviewStatusFilter: string;
-      draft: { set: (value: StandaloneAttraction) => void };
+      draft: {
+        set: (value: StandaloneAttraction) => void;
+      };
       selected: () => StandaloneAttraction | null;
       saveDraft: () => Promise<void>;
     };
@@ -230,12 +276,14 @@ describe('AdminStandaloneAttractionsComponent', () => {
       countryCode: 'IT',
       type: 'RollerCoaster',
       isVisible: false,
-      adminReviewStatus: 'ToReview'
+      adminReviewStatus: 'ToReview',
     });
 
     await componentAccessor.saveDraft();
 
-    const lastPageCall = standaloneApiService.pageCalls[standaloneApiService.pageCalls.length - 1] as {
+    const lastPageCall = standaloneApiService.pageCalls[
+      standaloneApiService.pageCalls.length - 1
+    ] as {
       page: number;
       filters: {
         search?: string | null;
@@ -261,7 +309,9 @@ describe('AdminStandaloneAttractionsComponent', () => {
 
   it('uses the selected standalone attraction as migration target when available', () => {
     const componentAccessor = component as unknown as {
-      draft: { set: (value: StandaloneAttraction) => void };
+      draft: {
+        set: (value: StandaloneAttraction) => void;
+      };
       migrationTargetStandaloneAttractionId: string;
       migrationLegacyParkId: string;
       selectLegacyParkForMigration: (park: Park) => void;
@@ -272,7 +322,9 @@ describe('AdminStandaloneAttractionsComponent', () => {
     componentAccessor.selectLegacyParkForMigration(createPark('legacy-park-2'));
 
     expect(componentAccessor.migrationLegacyParkId).toBe('legacy-park-2');
-    expect(componentAccessor.migrationTargetStandaloneAttractionId).toBe('standalone-target');
+    expect(componentAccessor.migrationTargetStandaloneAttractionId).toBe(
+      'standalone-target',
+    );
   });
 
   it('shows the API problem detail when migration fails', async () => {
@@ -281,35 +333,51 @@ describe('AdminStandaloneAttractionsComponent', () => {
       migrationLegacyParkId: string;
       migrateFromPark: () => Promise<void>;
     };
-    standaloneApiService.migrateResponse$ = throwError(() => new HttpErrorResponse({
-      status: 400,
-      error: {
-        status: 400,
-        title: 'Migration impossible',
-        detail: 'Le parc legacy contient plusieurs attractions.'
-      }
-    }));
+    standaloneApiService.migrateResponse$ = throwError(
+      () =>
+        new HttpErrorResponse({
+          status: 400,
+          error: {
+            status: 400,
+            title: 'Migration impossible',
+            detail: 'Le parc legacy contient plusieurs attractions.',
+          },
+        }),
+    );
 
     componentAccessor.migrationLegacyParkId = 'legacy-park-1';
 
     await componentAccessor.migrateFromPark();
 
-    expect(componentAccessor.error()).toBe('Le parc legacy contient plusieurs attractions.');
+    expect(componentAccessor.error()).toBe(
+      'Le parc legacy contient plusieurs attractions.',
+    );
   });
 
   it('downloads standalone JSON exports through the authenticated API service', async () => {
     const responseBlob: Blob = new Blob(['{}'], { type: 'application/json' });
-    const createObjectUrlSpy = spyOn(URL, 'createObjectURL').and.returnValue('blob:standalone-export');
-    const revokeObjectUrlSpy = spyOn(URL, 'revokeObjectURL').and.stub();
-    const clickSpy = spyOn(HTMLAnchorElement.prototype, 'click').and.stub();
-    standaloneApiService.exportResponse$ = of(new HttpResponse({
-      body: responseBlob,
-      headers: new HttpHeaders({
-        'content-disposition': 'attachment; filename="standalone-export.json"'
-      })
-    }));
+    const createObjectUrlSpy = vi
+      .spyOn(URL, 'createObjectURL')
+      .mockReturnValue('blob:standalone-export');
+    const revokeObjectUrlSpy = vi
+      .spyOn(URL, 'revokeObjectURL')
+      .mockImplementation(() => {});
+    const clickSpy = vi
+      .spyOn(HTMLAnchorElement.prototype, 'click')
+      .mockImplementation(() => {});
+    standaloneApiService.exportResponse$ = of(
+      new HttpResponse({
+        body: responseBlob,
+        headers: new HttpHeaders({
+          'content-disposition':
+            'attachment; filename="standalone-export.json"',
+        }),
+      }),
+    );
     const componentAccessor = component as unknown as {
-      draft: { set: (value: StandaloneAttraction) => void };
+      draft: {
+        set: (value: StandaloneAttraction) => void;
+      };
       exportDraft: () => Promise<void>;
       error: () => string | null;
     };
@@ -319,9 +387,11 @@ describe('AdminStandaloneAttractionsComponent', () => {
     await componentAccessor.exportDraft();
 
     expect(standaloneApiService.exportCalls).toEqual(['standalone-1']);
-    expect(createObjectUrlSpy).toHaveBeenCalledOnceWith(responseBlob);
+    expect(createObjectUrlSpy).toHaveBeenCalledTimes(1);
+    expect(createObjectUrlSpy).toHaveBeenCalledWith(responseBlob);
     expect(clickSpy).toHaveBeenCalled();
-    expect(revokeObjectUrlSpy).toHaveBeenCalledOnceWith('blob:standalone-export');
+    expect(revokeObjectUrlSpy).toHaveBeenCalledTimes(1);
+    expect(revokeObjectUrlSpy).toHaveBeenCalledWith('blob:standalone-export');
     expect(componentAccessor.error()).toBeNull();
   });
 });

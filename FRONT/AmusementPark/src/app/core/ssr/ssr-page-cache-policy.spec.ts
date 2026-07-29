@@ -8,13 +8,15 @@ describe('SSR page cache policy', () => {
       '<meta name="description" content="A useful public description for amusement park visitors.">',
       '<link rel="canonical" href="https://amusement-parks.fun/en/home">',
       '</head><body><app-root><main>',
-      'Helpful amusement park content with practical details for visitors. '.repeat(12),
-      '</main></app-root></body></html>'
+      'Helpful amusement park content with practical details for visitors. '.repeat(
+        12,
+      ),
+      '</main></app-root></body></html>',
     ].join('');
 
     const result = shouldCacheSsrRenderedHtml(html);
 
-    expect(result.canCache).toBeTrue();
+    expect(result.canCache).toBe(true);
     expect(result.reason).toBe('ready');
   });
 
@@ -25,13 +27,15 @@ describe('SSR page cache policy', () => {
       '<meta name="description" content="The requested page is not available.">',
       '<meta name="robots" content="noindex,follow">',
       '</head><body><app-root><main>',
-      'The requested page could not be rendered because public data was temporarily unavailable. '.repeat(12),
-      '</main></app-root></body></html>'
+      'The requested page could not be rendered because public data was temporarily unavailable. '.repeat(
+        12,
+      ),
+      '</main></app-root></body></html>',
     ].join('');
 
     const result = shouldCacheSsrRenderedHtml(html);
 
-    expect(result.canCache).toBeFalse();
+    expect(result.canCache).toBe(false);
     expect(result.reason).toBe('missing-canonical');
   });
 });

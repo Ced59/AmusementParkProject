@@ -1,9 +1,13 @@
+import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventEmitter } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { TranslationService } from '@app/services/translation.service';
 import { VersionHistoryPageComponent } from './version-history-page.component';
 
@@ -11,19 +15,19 @@ describe('VersionHistoryPageComponent', () => {
   let fixture: ComponentFixture<VersionHistoryPageComponent>;
 
   beforeEach(async () => {
-    const translationService: jasmine.SpyObj<TranslationService> = jasmine.createSpyObj<TranslationService>(
-      'TranslationService',
-      ['getCurrentLang', 'useLang'],
-      { languageChanged: new EventEmitter<string>() }
-    );
-    translationService.getCurrentLang.and.returnValue('fr');
-    translationService.useLang.and.returnValue(of(null));
+    const translationService: MockedObject<TranslationService> = {
+      getCurrentLang: vi.fn().mockName('TranslationService.getCurrentLang'),
+      useLang: vi.fn().mockName('TranslationService.useLang'),
+      languageChanged: new EventEmitter<string>(),
+    } as unknown as MockedObject<TranslationService>;
+    translationService.getCurrentLang.mockReturnValue('fr');
+    translationService.useLang.mockReturnValue(of(null));
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, VersionHistoryPageComponent],
       providers: [
         ...provideCommonTestDependencies(),
-        { provide: TranslationService, useValue: translationService }
+        { provide: TranslationService, useValue: translationService },
       ],
     }).compileComponents();
 
@@ -38,14 +42,14 @@ describe('VersionHistoryPageComponent', () => {
         loadError: 'Impossible de charger l historique.',
         actions: {
           expand: 'Voir {{count}}',
-          collapse: 'Reduire'
+          collapse: 'Reduire',
         },
         levels: {
           major: 'Majeure',
           minor: 'Palier',
-          patch: 'Mise a jour'
-        }
-      }
+          patch: 'Mise a jour',
+        },
+      },
     });
     translateService.use('fr');
 
@@ -62,8 +66,12 @@ describe('VersionHistoryPageComponent', () => {
     expect(host.querySelector('.version-entry--major')).not.toBeNull();
     expect(host.querySelector('.version-entry--minor')).not.toBeNull();
     expect(host.querySelector('.version-entry--patch')).not.toBeNull();
-    expect(host.querySelector('.version-entry--minor.version-entry--indented')).not.toBeNull();
-    expect(host.querySelector('.version-entry--patch.version-entry--indented')).not.toBeNull();
+    expect(
+      host.querySelector('.version-entry--minor.version-entry--indented'),
+    ).not.toBeNull();
+    expect(
+      host.querySelector('.version-entry--patch.version-entry--indented'),
+    ).not.toBeNull();
   });
 
   it('collapses patches for an expanded milestone', async () => {
@@ -76,7 +84,7 @@ describe('VersionHistoryPageComponent', () => {
     expect(patchVersionsBeforeCollapse.length).toBeGreaterThan(0);
 
     const currentMajorToggle: HTMLButtonElement | null = host.querySelector(
-      '.version-entry--major.version-entry--expanded .version-entry__toggle'
+      '.version-entry--major.version-entry--expanded .version-entry__toggle',
     );
     expect(currentMajorToggle).not.toBeNull();
 
@@ -87,18 +95,28 @@ describe('VersionHistoryPageComponent', () => {
   });
 });
 
-async function settleVersionHistory(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
-  expect(await waitForVersionHistorySelector(fixture, '.version-entry--major')).toBeTrue();
+async function settleVersionHistory(
+  fixture: ComponentFixture<VersionHistoryPageComponent>,
+): Promise<void> {
+  expect(
+    await waitForVersionHistorySelector(fixture, '.version-entry--major'),
+  ).toBe(true);
 }
 
-async function expandFirstMinorWithPatchChildren(fixture: ComponentFixture<VersionHistoryPageComponent>): Promise<void> {
+async function expandFirstMinorWithPatchChildren(
+  fixture: ComponentFixture<VersionHistoryPageComponent>,
+): Promise<void> {
   const host: HTMLElement = fixture.nativeElement as HTMLElement;
   const majorToggles: HTMLButtonElement[] = Array.from(
-    host.querySelectorAll<HTMLButtonElement>('.version-entry--major .version-entry__toggle')
+    host.querySelectorAll<HTMLButtonElement>(
+      '.version-entry--major .version-entry__toggle',
+    ),
   );
 
   for (const majorToggle of majorToggles) {
-    const majorEntry: HTMLElement | null = majorToggle.closest<HTMLElement>('.version-entry--major');
+    const majorEntry: HTMLElement | null = majorToggle.closest<HTMLElement>(
+      '.version-entry--major',
+    );
     if (!majorEntry?.classList.contains('version-entry--expanded')) {
       majorToggle.click();
       fixture.detectChanges();
@@ -106,17 +124,23 @@ async function expandFirstMinorWithPatchChildren(fixture: ComponentFixture<Versi
 
     if (await waitForVersionHistorySelector(fixture, '.version-entry--minor')) {
       const minorToggles: HTMLButtonElement[] = Array.from(
-        host.querySelectorAll<HTMLButtonElement>('.version-entry--minor .version-entry__toggle')
+        host.querySelectorAll<HTMLButtonElement>(
+          '.version-entry--minor .version-entry__toggle',
+        ),
       );
 
       for (const minorToggle of minorToggles) {
-        const minorEntry: HTMLElement | null = minorToggle.closest<HTMLElement>('.version-entry--minor');
+        const minorEntry: HTMLElement | null = minorToggle.closest<HTMLElement>(
+          '.version-entry--minor',
+        );
         if (!minorEntry?.classList.contains('version-entry--expanded')) {
           minorToggle.click();
           fixture.detectChanges();
         }
 
-        if (await waitForVersionHistorySelector(fixture, '.version-entry--patch')) {
+        if (
+          await waitForVersionHistorySelector(fixture, '.version-entry--patch')
+        ) {
           return;
         }
 
@@ -138,7 +162,7 @@ async function expandFirstMinorWithPatchChildren(fixture: ComponentFixture<Versi
 
 async function waitForVersionHistorySelector(
   fixture: ComponentFixture<VersionHistoryPageComponent>,
-  selector: string
+  selector: string,
 ): Promise<boolean> {
   for (let attempt = 0; attempt < 20; attempt += 1) {
     await fixture.whenStable();

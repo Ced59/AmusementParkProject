@@ -1,3 +1,4 @@
+import type { MockedObject } from 'vitest';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { HtmlSecurityService } from '@shared/utils/security/html-security.service';
@@ -11,14 +12,23 @@ class DomSanitizerStub {
 
 describe('SafeRichHtmlPipe', () => {
   it('sanitizes html before marking it as trusted', () => {
-    const htmlSecurityService: jasmine.SpyObj<HtmlSecurityService> = jasmine.createSpyObj<HtmlSecurityService>('HtmlSecurityService', ['sanitizeRichHtml']);
+    const htmlSecurityService: MockedObject<HtmlSecurityService> = {
+      sanitizeRichHtml: vi
+        .fn()
+        .mockName('HtmlSecurityService.sanitizeRichHtml'),
+    } as unknown as MockedObject<HtmlSecurityService>;
     const domSanitizer: DomSanitizerStub = new DomSanitizerStub();
-    const pipe: SafeRichHtmlPipe = new SafeRichHtmlPipe(htmlSecurityService, domSanitizer as unknown as DomSanitizer);
-    htmlSecurityService.sanitizeRichHtml.and.returnValue('<p>safe</p>');
+    const pipe: SafeRichHtmlPipe = new SafeRichHtmlPipe(
+      htmlSecurityService,
+      domSanitizer as unknown as DomSanitizer,
+    );
+    htmlSecurityService.sanitizeRichHtml.mockReturnValue('<p>safe</p>');
 
     const result: SafeHtml = pipe.transform('<script>bad</script><p>safe</p>');
 
-    expect(htmlSecurityService.sanitizeRichHtml).toHaveBeenCalledWith('<script>bad</script><p>safe</p>');
+    expect(htmlSecurityService.sanitizeRichHtml).toHaveBeenCalledWith(
+      '<script>bad</script><p>safe</p>',
+    );
     expect(result as unknown as string).toBe('SAFE:<p>safe</p>');
   });
 });

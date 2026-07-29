@@ -16,7 +16,7 @@ import {
   PARK_VIDEOS_PARKS_PORT,
   PARK_VIDEOS_VIDEOS_PORT,
   ParkVideosParksPort,
-  ParkVideosVideosPort
+  ParkVideosVideosPort,
 } from './park-videos-data.ports';
 import { ParkVideosStateFacade } from './park-videos-state.facade';
 
@@ -31,22 +31,40 @@ class FakeParksPort implements ParkVideosParksPort {
 }
 
 class FakeVideosPort implements ParkVideosVideosPort {
-  public firstParkPage$: Observable<PagedResult<VideoDto>> = of(createPage([createParkVideo('park-video-1')], 1, 2, 2));
-  public nextParkPage$: Observable<PagedResult<VideoDto>> = of(createPage([createParkVideo('park-video-2')], 2, 2, 2));
-  public itemProbePage$: Observable<PagedResult<ParkItemVideoDto>> = of(createPage([], 1, 0, 0));
-  public firstItemPage$: Observable<PagedResult<ParkItemVideoDto>> = of(createPage([createParkItemVideo('item-video-1')], 1, 2, 2));
-  public nextItemPage$: Observable<PagedResult<ParkItemVideoDto>> = of(createPage([createParkItemVideo('item-video-2')], 2, 2, 2));
+  public firstParkPage$: Observable<PagedResult<VideoDto>> = of(
+    createPage([createParkVideo('park-video-1')], 1, 2, 2),
+  );
+  public nextParkPage$: Observable<PagedResult<VideoDto>> = of(
+    createPage([createParkVideo('park-video-2')], 2, 2, 2),
+  );
+  public itemProbePage$: Observable<PagedResult<ParkItemVideoDto>> = of(
+    createPage([], 1, 0, 0),
+  );
+  public firstItemPage$: Observable<PagedResult<ParkItemVideoDto>> = of(
+    createPage([createParkItemVideo('item-video-1')], 1, 2, 2),
+  );
+  public nextItemPage$: Observable<PagedResult<ParkItemVideoDto>> = of(
+    createPage([createParkItemVideo('item-video-2')], 2, 2, 2),
+  );
   public tags$: Observable<VideoTagDto[]> = of([createVideoTag()]);
   public readonly pageCalls: VideoSearchQuery[] = [];
-  public readonly itemVideoCalls: { parkId: string; query: VideoSearchQuery }[] = [];
+  public readonly itemVideoCalls: {
+    parkId: string;
+    query: VideoSearchQuery;
+  }[] = [];
   public tagCallCount: number = 0;
 
-  getVideosPage(query: VideoSearchQuery = {}): Observable<PagedResult<VideoDto>> {
+  getVideosPage(
+    query: VideoSearchQuery = {},
+  ): Observable<PagedResult<VideoDto>> {
     this.pageCalls.push(query);
     return query.page === 2 ? this.nextParkPage$ : this.firstParkPage$;
   }
 
-  getParkItemVideosByPark(parkId: string, query: VideoSearchQuery = {}): Observable<PagedResult<ParkItemVideoDto>> {
+  getParkItemVideosByPark(
+    parkId: string,
+    query: VideoSearchQuery = {},
+  ): Observable<PagedResult<ParkItemVideoDto>> {
     this.itemVideoCalls.push({ parkId, query });
     if (query.size === 1) {
       return this.itemProbePage$;
@@ -81,7 +99,7 @@ function createPark(): Park {
     latitude: 50.8,
     longitude: 6.8,
     isVisible: true,
-    descriptions: []
+    descriptions: [],
   };
 }
 
@@ -98,8 +116,8 @@ function createSummary(): ParkDetailSummary {
       showCount: 0,
       shopCount: 0,
       hotelCount: 0,
-      countsByCategory: {}
-    }
+      countsByCategory: {},
+    },
   };
 }
 
@@ -129,7 +147,7 @@ function createParkVideo(id: string): VideoDto {
     externalMetadata: {},
     isPublished: true,
     createdAt: '2026-01-01T00:00:00Z',
-    updatedAt: '2026-01-01T00:00:00Z'
+    updatedAt: '2026-01-01T00:00:00Z',
   };
 }
 
@@ -142,14 +160,14 @@ function createParkItemVideo(id: string): ParkItemVideoDto {
       category: 'Attraction',
       type: 'FlatRide',
       latitude: null,
-      longitude: null
+      longitude: null,
     },
     video: {
       ...createParkVideo(id),
       ownerType: VideoOwnerType.PARK_ITEM,
       ownerId: 'item-1',
-      title: `Item video ${id}`
-    }
+      title: `Item video ${id}`,
+    },
   };
 }
 
@@ -161,19 +179,24 @@ function createVideoTag(): VideoTagDto {
     descriptions: [],
     isActive: true,
     createdAt: '2026-01-01T00:00:00Z',
-    updatedAt: '2026-01-01T00:00:00Z'
+    updatedAt: '2026-01-01T00:00:00Z',
   };
 }
 
-function createPage<TItem>(items: TItem[], currentPage: number, totalPages: number, totalItems: number): PagedResult<TItem> {
+function createPage<TItem>(
+  items: TItem[],
+  currentPage: number,
+  totalPages: number,
+  totalItems: number,
+): PagedResult<TItem> {
   return {
     items,
     pagination: {
       currentPage,
       totalPages,
       totalItems,
-      itemsPerPage: 24
-    }
+      itemsPerPage: 24,
+    },
   };
 }
 
@@ -185,22 +208,23 @@ function configureFacade(): {
 } {
   const parksPort: FakeParksPort = new FakeParksPort();
   const videosPort: FakeVideosPort = new FakeVideosPort();
-  const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
+  const ssrStatusService: FakeSsrHttpStatusService =
+    new FakeSsrHttpStatusService();
 
   TestBed.configureTestingModule({
     providers: [
       ParkVideosStateFacade,
       { provide: PARK_VIDEOS_PARKS_PORT, useValue: parksPort },
       { provide: PARK_VIDEOS_VIDEOS_PORT, useValue: videosPort },
-      { provide: SsrHttpStatusService, useValue: ssrStatusService }
-    ]
+      { provide: SsrHttpStatusService, useValue: ssrStatusService },
+    ],
   });
 
   return {
     facade: TestBed.inject(ParkVideosStateFacade),
     parksPort,
     videosPort,
-    ssrStatusService
+    ssrStatusService,
   };
 }
 
@@ -211,55 +235,82 @@ describe('ParkVideosStateFacade', () => {
 
   it('loads park videos and probes park item videos without loading that tab', () => {
     const context = configureFacade();
-    context.videosPort.itemProbePage$ = of(createPage([createParkItemVideo('probe')], 1, 2, 2));
+    context.videosPort.itemProbePage$ = of(
+      createPage([createParkItemVideo('probe')], 1, 2, 2),
+    );
 
     context.facade.setCurrentLanguage('fr');
-    context.facade.loadParkVideos('park-1', { type: VideoType.ON_RIDE, tagId: 'tag-1', creatorName: 'creator' });
+    context.facade.loadParkVideos('park-1', {
+      type: VideoType.ON_RIDE,
+      tagId: 'tag-1',
+      creatorName: 'creator',
+    });
 
     expect(context.facade.state().kind).toBe('ready');
     expect(context.facade.activeTab()).toBe('park');
     expect(context.facade.totalVideos()).toBe(4);
     expect(context.facade.parkTabVideoCount()).toBe(2);
     expect(context.facade.itemTabVideoCount()).toBe(2);
-    expect(context.facade.showItemTab()).toBeTrue();
-    expect(context.facade.videoCards()[0]?.detailLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'videos', 'park-video-1', 'park-video-park-video-1']);
-    expect(context.videosPort.pageCalls).toEqual([{
-      page: 1,
-      size: 24,
-      ownerType: VideoOwnerType.PARK,
-      ownerId: 'park-1',
-      type: VideoType.ON_RIDE,
-      tagId: 'tag-1',
-      creatorName: 'creator',
-      languageCode: 'fr',
-      sortBy: 'published',
-      sortDirection: 'desc'
-    }]);
-    expect(context.videosPort.itemVideoCalls).toEqual([{
-      parkId: 'park-1',
-      query: {
+    expect(context.facade.showItemTab()).toBe(true);
+    expect(context.facade.videoCards()[0]?.detailLink).toEqual([
+      '/',
+      'fr',
+      'park',
+      'park-1',
+      'phantasialand',
+      'videos',
+      'park-video-1',
+      'park-video-park-video-1',
+    ]);
+    expect(context.videosPort.pageCalls).toEqual([
+      {
         page: 1,
-        size: 1,
+        size: 24,
+        ownerType: VideoOwnerType.PARK,
+        ownerId: 'park-1',
         type: VideoType.ON_RIDE,
         tagId: 'tag-1',
         creatorName: 'creator',
         languageCode: 'fr',
         sortBy: 'published',
-        sortDirection: 'desc'
-      }
-    }]);
+        sortDirection: 'desc',
+      },
+    ]);
+    expect(context.videosPort.itemVideoCalls).toEqual([
+      {
+        parkId: 'park-1',
+        query: {
+          page: 1,
+          size: 1,
+          type: VideoType.ON_RIDE,
+          tagId: 'tag-1',
+          creatorName: 'creator',
+          languageCode: 'fr',
+          sortBy: 'published',
+          sortDirection: 'desc',
+        },
+      },
+    ]);
   });
 
   it('loads park item videos only when their tab is selected', () => {
     const context = configureFacade();
-    context.videosPort.itemProbePage$ = of(createPage([createParkItemVideo('probe')], 1, 2, 2));
+    context.videosPort.itemProbePage$ = of(
+      createPage([createParkItemVideo('probe')], 1, 2, 2),
+    );
 
     context.facade.setCurrentLanguage('fr');
-    context.facade.loadParkVideos('park-1', { type: null, tagId: null, creatorName: '' });
+    context.facade.loadParkVideos('park-1', {
+      type: null,
+      tagId: null,
+      creatorName: '',
+    });
     context.facade.selectTab('items');
 
     expect(context.facade.activeTab()).toBe('items');
-    expect(context.facade.videoCards().map((video) => video.id)).toEqual(['item-video-1']);
+    expect(context.facade.videoCards().map((video) => video.id)).toEqual([
+      'item-video-1',
+    ]);
     expect(context.facade.videoCards()[0]?.detailLink).toEqual([
       '/',
       'fr',
@@ -271,34 +322,105 @@ describe('ParkVideosStateFacade', () => {
       'family-ride',
       'videos',
       'item-video-1',
-      'item-video-item-video-1'
+      'item-video-item-video-1',
     ]);
-    expect(context.facade.canLoadMore()).toBeTrue();
+    expect(context.facade.canLoadMore()).toBe(true);
 
     context.facade.loadNextPage();
 
-    expect(context.facade.videoCards().map((video) => video.id)).toEqual(['item-video-1', 'item-video-2']);
-    expect(context.facade.canLoadMore()).toBeFalse();
+    expect(context.facade.videoCards().map((video) => video.id)).toEqual([
+      'item-video-1',
+      'item-video-2',
+    ]);
+    expect(context.facade.canLoadMore()).toBe(false);
     expect(context.videosPort.itemVideoCalls).toEqual([
-      { parkId: 'park-1', query: { page: 1, size: 1, type: null, tagId: null, creatorName: '', languageCode: 'fr', sortBy: 'published', sortDirection: 'desc' } },
-      { parkId: 'park-1', query: { page: 1, size: 24, type: null, tagId: null, creatorName: '', languageCode: 'fr', sortBy: 'published', sortDirection: 'desc' } },
-      { parkId: 'park-1', query: { page: 2, size: 24, type: null, tagId: null, creatorName: '', languageCode: 'fr', sortBy: 'published', sortDirection: 'desc' } }
+      {
+        parkId: 'park-1',
+        query: {
+          page: 1,
+          size: 1,
+          type: null,
+          tagId: null,
+          creatorName: '',
+          languageCode: 'fr',
+          sortBy: 'published',
+          sortDirection: 'desc',
+        },
+      },
+      {
+        parkId: 'park-1',
+        query: {
+          page: 1,
+          size: 24,
+          type: null,
+          tagId: null,
+          creatorName: '',
+          languageCode: 'fr',
+          sortBy: 'published',
+          sortDirection: 'desc',
+        },
+      },
+      {
+        parkId: 'park-1',
+        query: {
+          page: 2,
+          size: 24,
+          type: null,
+          tagId: null,
+          creatorName: '',
+          languageCode: 'fr',
+          sortBy: 'published',
+          sortDirection: 'desc',
+        },
+      },
     ]);
   });
 
   it('selects the park item tab when the park has no direct videos', () => {
     const context = configureFacade();
     context.videosPort.firstParkPage$ = of(createPage([], 1, 0, 0));
-    context.videosPort.itemProbePage$ = of(createPage([createParkItemVideo('probe')], 1, 2, 2));
+    context.videosPort.itemProbePage$ = of(
+      createPage([createParkItemVideo('probe')], 1, 2, 2),
+    );
 
     context.facade.setCurrentLanguage('fr');
-    context.facade.loadParkVideos('park-1', { type: null, tagId: null, creatorName: '' });
+    context.facade.loadParkVideos('park-1', {
+      type: null,
+      tagId: null,
+      creatorName: '',
+    });
 
     expect(context.facade.activeTab()).toBe('items');
-    expect(context.facade.videoCards().map((video) => video.id)).toEqual(['item-video-1']);
+    expect(context.facade.videoCards().map((video) => video.id)).toEqual([
+      'item-video-1',
+    ]);
     expect(context.videosPort.itemVideoCalls).toEqual([
-      { parkId: 'park-1', query: { page: 1, size: 1, type: null, tagId: null, creatorName: '', languageCode: 'fr', sortBy: 'published', sortDirection: 'desc' } },
-      { parkId: 'park-1', query: { page: 1, size: 24, type: null, tagId: null, creatorName: '', languageCode: 'fr', sortBy: 'published', sortDirection: 'desc' } }
+      {
+        parkId: 'park-1',
+        query: {
+          page: 1,
+          size: 1,
+          type: null,
+          tagId: null,
+          creatorName: '',
+          languageCode: 'fr',
+          sortBy: 'published',
+          sortDirection: 'desc',
+        },
+      },
+      {
+        parkId: 'park-1',
+        query: {
+          page: 1,
+          size: 24,
+          type: null,
+          tagId: null,
+          creatorName: '',
+          languageCode: 'fr',
+          sortBy: 'published',
+          sortDirection: 'desc',
+        },
+      },
     ]);
   });
 
@@ -306,7 +428,11 @@ describe('ParkVideosStateFacade', () => {
     const context = configureFacade();
     context.parksPort.response$ = throwError(() => ({ status: 404 }));
 
-    context.facade.loadParkVideos('missing-park', { type: null, tagId: null, creatorName: '' });
+    context.facade.loadParkVideos('missing-park', {
+      type: null,
+      tagId: null,
+      creatorName: '',
+    });
 
     expect(context.facade.state().kind).toBe('error');
     expect(context.ssrStatusService.notFoundCallCount).toBe(1);

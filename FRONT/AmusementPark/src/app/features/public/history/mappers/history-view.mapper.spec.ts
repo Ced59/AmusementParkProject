@@ -1,6 +1,13 @@
-import { HistoryArticle, HistoryEvent, HistoryTimeline } from '@app/models/history/history.models';
+import {
+  HistoryArticle,
+  HistoryEvent,
+  HistoryTimeline,
+} from '@app/models/history/history.models';
 import { Park } from '@app/models/parks/park';
-import { mapHistoryArticleToViewModel, mapHistoryTimelineToViewModel } from './history-view.mapper';
+import {
+  mapHistoryArticleToViewModel,
+  mapHistoryTimelineToViewModel,
+} from './history-view.mapper';
 
 describe('history-view.mapper', () => {
   it('uses a readable timeline title fallback instead of the technical key', () => {
@@ -15,9 +22,9 @@ describe('history-view.mapper', () => {
           event: createHistoryEvent(),
           contextPark: null,
           parkItem: null,
-          mainImage: null
-        }
-      ]
+          mainImage: null,
+        },
+      ],
     };
 
     const viewModel = mapHistoryTimelineToViewModel(timeline, 'en');
@@ -35,30 +42,50 @@ describe('history-view.mapper', () => {
       includedParkItems: [],
       events: [
         {
-          event: createHistoryEvent({ id: 'event-1987-a', key: 'opening', year: 1987 }),
+          event: createHistoryEvent({
+            id: 'event-1987-a',
+            key: 'opening',
+            year: 1987,
+          }),
           contextPark: null,
           parkItem: null,
-          mainImage: null
+          mainImage: null,
         },
         {
-          event: createHistoryEvent({ id: 'event-1987-b', key: 'operator', year: 1987, month: 7, day: null }),
+          event: createHistoryEvent({
+            id: 'event-1987-b',
+            key: 'operator',
+            year: 1987,
+            month: 7,
+            day: null,
+          }),
           contextPark: null,
           parkItem: null,
-          mainImage: null
+          mainImage: null,
         },
         {
-          event: createHistoryEvent({ id: 'event-1988', key: 'item-opening', year: 1988, month: null, day: null }),
+          event: createHistoryEvent({
+            id: 'event-1988',
+            key: 'item-opening',
+            year: 1988,
+            month: null,
+            day: null,
+          }),
           contextPark: null,
           parkItem: null,
-          mainImage: null
-        }
-      ]
+          mainImage: null,
+        },
+      ],
     };
 
     const viewModel = mapHistoryTimelineToViewModel(timeline, 'en');
 
-    expect(viewModel.showParkItemControls).toBeTrue();
-    expect(viewModel.events.map(event => event.isFirstInYear)).toEqual([true, false, true]);
+    expect(viewModel.showParkItemControls).toBe(true);
+    expect(viewModel.events.map((event) => event.isFirstInYear)).toEqual([
+      true,
+      false,
+      true,
+    ]);
   });
 
   it('maps timeline pagination ranges to readable period labels and global year bounds', () => {
@@ -72,29 +99,38 @@ describe('history-view.mapper', () => {
         currentPage: 2,
         itemsPerPage: 2,
         totalItems: 4,
-        totalPages: 2
+        totalPages: 2,
       },
       pageRanges: [
         { page: 1, startYear: 1970, endYear: 1980, eventCount: 2 },
-        { page: 2, startYear: 1981, endYear: 1990, eventCount: 2 }
+        { page: 2, startYear: 1981, endYear: 1990, eventCount: 2 },
       ],
       events: [
         {
-          event: createHistoryEvent({ id: 'event-1981', key: 'event-1981', year: 1981 }),
+          event: createHistoryEvent({
+            id: 'event-1981',
+            key: 'event-1981',
+            year: 1981,
+          }),
           contextPark: null,
           parkItem: null,
-          mainImage: null
-        }
-      ]
+          mainImage: null,
+        },
+      ],
     };
 
     const viewModel = mapHistoryTimelineToViewModel(timeline, 'fr');
 
     expect(viewModel.yearStart).toBe(1970);
     expect(viewModel.yearEnd).toBe(1990);
-    expect(viewModel.pageRanges.map(range => ({ label: range.label, isCurrent: range.isCurrent }))).toEqual([
+    expect(
+      viewModel.pageRanges.map((range) => ({
+        label: range.label,
+        isCurrent: range.isCurrent,
+      })),
+    ).toEqual([
       { label: '1970 à 1980', isCurrent: false },
-      { label: '1981 à 1990', isCurrent: true }
+      { label: '1981 à 1990', isCurrent: true },
     ]);
   });
 
@@ -117,31 +153,35 @@ describe('history-view.mapper', () => {
               texts: [],
               imageId: null,
               imageIds: [],
-              captions: []
+              captions: [],
             },
             {
               id: 'content-block',
               type: 'Paragraph',
               sortOrder: 2,
-              texts: [{ languageCode: 'en', value: 'Mirapolis opens to visitors.' }],
+              texts: [
+                { languageCode: 'en', value: 'Mirapolis opens to visitors.' },
+              ],
               imageId: null,
               imageIds: [],
-              captions: []
-            }
-          ]
-        }
+              captions: [],
+            },
+          ],
+        },
       }),
       park: { id: 'park-1', name: 'Mirapolis' } as Park,
       parkItem: null,
       contextPark: null,
-      mainImage: null
+      mainImage: null,
     };
 
     const viewModel = mapHistoryArticleToViewModel(article, 'en');
 
     expect(viewModel).not.toBeNull();
     expect(viewModel!.title).toBe('Opening - Mirapolis');
-    expect(viewModel!.blocks.map(block => block.id)).toEqual(['content-block']);
+    expect(viewModel!.blocks.map((block) => block.id)).toEqual([
+      'content-block',
+    ]);
   });
 
   it('builds a canonical article path from resolved owner data', () => {
@@ -155,19 +195,21 @@ describe('history-view.mapper', () => {
           mainImageId: null,
           isPublished: true,
           sources: [],
-          blocks: []
-        }
+          blocks: [],
+        },
       }),
       park: { id: 'park-1', name: 'Mirapolis' } as Park,
       parkItem: null,
       contextPark: null,
-      mainImage: null
+      mainImage: null,
     };
 
     const viewModel = mapHistoryArticleToViewModel(article, 'en');
 
     expect(viewModel).not.toBeNull();
-    expect(viewModel!.canonicalPath).toBe('/en/park/park-1/mirapolis/history/event-1/opening-article');
+    expect(viewModel!.canonicalPath).toBe(
+      '/en/park/park-1/mirapolis/history/event-1/opening-article',
+    );
   });
 
   it('uses the event slug fallback for article canonical paths', () => {
@@ -182,19 +224,21 @@ describe('history-view.mapper', () => {
           mainImageId: null,
           isPublished: true,
           sources: [],
-          blocks: []
-        }
+          blocks: [],
+        },
       }),
       park: { id: 'park-1', name: 'Mirapolis' } as Park,
       parkItem: null,
       contextPark: null,
-      mainImage: null
+      mainImage: null,
     };
 
     const viewModel = mapHistoryArticleToViewModel(article, 'en');
 
     expect(viewModel).not.toBeNull();
-    expect(viewModel!.canonicalPath).toBe('/en/park/park-1/mirapolis/history/event-1/opening-event');
+    expect(viewModel!.canonicalPath).toBe(
+      '/en/park/park-1/mirapolis/history/event-1/opening-event',
+    );
   });
 
   it('keeps gallery image ids on article blocks', () => {
@@ -216,15 +260,15 @@ describe('history-view.mapper', () => {
               texts: [],
               imageId: null,
               imageIds: ['image-1', 'image-2'],
-              captions: [{ languageCode: 'en', value: 'Opening photos' }]
-            }
-          ]
-        }
+              captions: [{ languageCode: 'en', value: 'Opening photos' }],
+            },
+          ],
+        },
       }),
       park: { id: 'park-1', name: 'Mirapolis' } as Park,
       parkItem: null,
       contextPark: null,
-      mainImage: null
+      mainImage: null,
     };
 
     const viewModel = mapHistoryArticleToViewModel(article, 'en');
@@ -235,7 +279,9 @@ describe('history-view.mapper', () => {
   });
 });
 
-function createHistoryEvent(overrides: Partial<HistoryEvent> = {}): HistoryEvent {
+function createHistoryEvent(
+  overrides: Partial<HistoryEvent> = {},
+): HistoryEvent {
   return {
     id: 'event-1',
     key: 'mirapolis-opening-1987',
@@ -268,6 +314,6 @@ function createHistoryEvent(overrides: Partial<HistoryEvent> = {}): HistoryEvent
     article: null,
     createdAtUtc: '2026-06-30T00:00:00Z',
     updatedAtUtc: '2026-06-30T00:00:00Z',
-    ...overrides
+    ...overrides,
   };
 }

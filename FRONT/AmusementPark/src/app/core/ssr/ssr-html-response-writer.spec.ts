@@ -1,4 +1,7 @@
-import { HtmlResponseWriter, writeSsrHtmlResponse } from './ssr-html-response-writer';
+import {
+  HtmlResponseWriter,
+  writeSsrHtmlResponse,
+} from './ssr-html-response-writer';
 
 describe('SSR HTML response writer', () => {
   it('writes GET HTML responses with an accurate UTF-8 content length', () => {
@@ -11,19 +14,23 @@ describe('SSR HTML response writer', () => {
     expect(response.headers.get('Content-Length')).toBe('46');
     expect(response.endedChunk).toBe(html);
     expect(response.endedEncoding).toBe('utf8');
-    expect(response.closed).toBeTrue();
+    expect(response.closed).toBe(true);
   });
 
   it('keeps the GET content length but does not write a body for HEAD HTML responses', () => {
     const response = new TestHtmlResponseWriter();
 
-    writeSsrHtmlResponse('HEAD', response, '<!doctype html><html><body>Ready</body></html>');
+    writeSsrHtmlResponse(
+      'HEAD',
+      response,
+      '<!doctype html><html><body>Ready</body></html>',
+    );
 
     expect(response.contentType).toBe('html');
     expect(response.headers.get('Content-Length')).toBe('46');
     expect(response.endedChunk).toBeUndefined();
     expect(response.endedEncoding).toBeUndefined();
-    expect(response.closed).toBeTrue();
+    expect(response.closed).toBe(true);
   });
 });
 

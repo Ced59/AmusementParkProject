@@ -5,14 +5,14 @@ import {
   isRichTextEmpty,
   resolveLocalizedText,
   resolveLocalizedValue,
-  stripHtml
+  stripHtml,
 } from './localized-text.helpers';
 
 describe('localized-text helpers', () => {
   const localizedItems: LocalizedItem<string>[] = [
     { languageCode: 'fr', value: 'Bonjour' },
     { languageCode: 'en', value: 'Hello' },
-    { languageCode: 'es', value: 'Hola' }
+    { languageCode: 'es', value: 'Hola' },
   ];
 
   it('resolves exact language matches case-insensitively', () => {
@@ -26,14 +26,20 @@ describe('localized-text helpers', () => {
   it('falls back to general localized values when exact and default languages are missing', () => {
     const values: LocalizedItem<string>[] = [
       { languageCode: 'general', value: 'Common label' },
-      { languageCode: 'nl', value: 'Hallo' }
+      { languageCode: 'nl', value: 'Hallo' },
     ];
 
     expect(resolveLocalizedValue(values, 'de')).toBe('Common label');
   });
 
   it('falls back to the first item when the default language is missing', () => {
-    expect(resolveLocalizedValue([{ languageCode: 'nl', value: 'Hallo' }], 'de', 'en')).toBe('Hallo');
+    expect(
+      resolveLocalizedValue(
+        [{ languageCode: 'nl', value: 'Hallo' }],
+        'de',
+        'en',
+      ),
+    ).toBe('Hallo');
   });
 
   it('returns undefined for empty localized collections', () => {
@@ -45,7 +51,7 @@ describe('localized-text helpers', () => {
     const values: LocalizedItem<string>[] = [
       { languageCode: 'fr', value: '   ' },
       { languageCode: 'en', value: '' },
-      { languageCode: 'de', value: 'Hallo' }
+      { languageCode: 'de', value: 'Hallo' },
     ];
 
     expect(resolveLocalizedText(values, 'fr')).toBe('Hallo');
@@ -55,23 +61,29 @@ describe('localized-text helpers', () => {
     const values: LocalizedItem<string>[] = [
       { languageCode: 'fr', value: '   ' },
       { languageCode: 'general', value: 'Shared description' },
-      { languageCode: 'de', value: 'Hallo' }
+      { languageCode: 'de', value: 'Hallo' },
     ];
 
     expect(resolveLocalizedText(values, 'fr')).toBe('Shared description');
   });
 
   it('returns the configured fallback when no text is available', () => {
-    expect(resolveLocalizedText(null, 'fr')).toBe(DEFAULT_LOCALIZED_TEXT_FALLBACK);
-    expect(resolveLocalizedText([{ languageCode: 'fr', value: '' }], 'fr', 'N/A')).toBe('N/A');
+    expect(resolveLocalizedText(null, 'fr')).toBe(
+      DEFAULT_LOCALIZED_TEXT_FALLBACK,
+    );
+    expect(
+      resolveLocalizedText([{ languageCode: 'fr', value: '' }], 'fr', 'N/A'),
+    ).toBe('N/A');
   });
 
   it('strips rich html into plain compact text', () => {
-    expect(stripHtml('<p>Hello&nbsp;<strong>world</strong></p>')).toBe('Hello world');
+    expect(stripHtml('<p>Hello&nbsp;<strong>world</strong></p>')).toBe(
+      'Hello world',
+    );
   });
 
   it('detects empty rich text values', () => {
-    expect(isRichTextEmpty('<p>&nbsp;</p>')).toBeTrue();
-    expect(isRichTextEmpty('<p>Visible</p>')).toBeFalse();
+    expect(isRichTextEmpty('<p>&nbsp;</p>')).toBe(true);
+    expect(isRichTextEmpty('<p>Visible</p>')).toBe(false);
   });
 });

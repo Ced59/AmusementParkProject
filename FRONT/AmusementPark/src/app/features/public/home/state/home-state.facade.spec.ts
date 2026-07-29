@@ -15,15 +15,27 @@ import {
   HOME_STATE_SEARCH_API_SERVICE_PORT,
   HomeStateHomeApiServicePort,
   HomeStateParksApiServicePort,
-  HomeStateSearchApiServicePort
+  HomeStateSearchApiServicePort,
 } from './home-state-data.ports';
 import { HomeStateFacade } from './home-state.facade';
 
 class FakeSearchPort implements HomeStateSearchApiServicePort {
-  public response$: Observable<SearchApiResponse> = of(createSearchResponse([createSearchResult()], createPagination(1, 10, 1)));
-  public readonly calls: { term: string; categories: string[]; page: number; size: number }[] = [];
+  public response$: Observable<SearchApiResponse> = of(
+    createSearchResponse([createSearchResult()], createPagination(1, 10, 1)),
+  );
+  public readonly calls: {
+    term: string;
+    categories: string[];
+    page: number;
+    size: number;
+  }[] = [];
 
-  getSearch(term: string, categories: string[], page: number, size: number): Observable<SearchApiResponse> {
+  getSearch(
+    term: string,
+    categories: string[],
+    page: number,
+    size: number,
+  ): Observable<SearchApiResponse> {
     this.calls.push({ term, categories, page, size });
     return this.response$;
   }
@@ -40,17 +52,29 @@ class FakeParksPort implements HomeStateParksApiServicePort {
 }
 
 class FakeHomePort implements HomeStateHomeApiServicePort {
-  public statsResponse$: Observable<HomeStatsModel> = of({ parksCount: 10, attractionsCount: 40, countriesCount: 3 });
-  public featuredResponse$: Observable<HomeFeaturedParkModel[]> = of([createFeaturedPark('park-2')]);
+  public statsResponse$: Observable<HomeStatsModel> = of({
+    parksCount: 10,
+    attractionsCount: 40,
+    countriesCount: 3,
+  });
+  public featuredResponse$: Observable<HomeFeaturedParkModel[]> = of([
+    createFeaturedPark('park-2'),
+  ]);
   public readonly statsCalls: number[] = [];
-  public readonly featuredCalls: { excludedParkIds: readonly string[]; limit: number }[] = [];
+  public readonly featuredCalls: {
+    excludedParkIds: readonly string[];
+    limit: number;
+  }[] = [];
 
   getHomeStats(): Observable<HomeStatsModel> {
     this.statsCalls.push(1);
     return this.statsResponse$;
   }
 
-  getFeaturedParks(excludedParkIds: readonly string[], limit: number): Observable<HomeFeaturedParkModel[]> {
+  getFeaturedParks(
+    excludedParkIds: readonly string[],
+    limit: number,
+  ): Observable<HomeFeaturedParkModel[]> {
     this.featuredCalls.push({ excludedParkIds, limit });
     return this.featuredResponse$;
   }
@@ -64,7 +88,7 @@ function createPark(id: string): Park {
     latitude: 48.8,
     longitude: 2.3,
     isVisible: true,
-    descriptions: [{ languageCode: 'en', value: '<p>Park description.</p>' }]
+    descriptions: [{ languageCode: 'en', value: '<p>Park description.</p>' }],
   };
 }
 
@@ -81,7 +105,7 @@ function createFeaturedPark(id: string): HomeFeaturedParkModel {
     currentLogoImageId: null,
     isManualFeatured: true,
     isSponsoredFeatured: false,
-    countsByCategory: []
+    countsByCategory: [],
   };
 }
 
@@ -90,20 +114,27 @@ function createSearchResult(): SearchResultItem {
     originalId: 'park-1',
     category: 'Park',
     title: 'Parc de test',
-    description: 'Description de test'
+    description: 'Description de test',
   };
 }
 
-function createPagination(currentPage: number, itemsPerPage: number, totalItems: number): Pagination {
+function createPagination(
+  currentPage: number,
+  itemsPerPage: number,
+  totalItems: number,
+): Pagination {
   return {
     currentPage,
     itemsPerPage,
     totalItems,
-    totalPages: Math.ceil(totalItems / itemsPerPage)
+    totalPages: Math.ceil(totalItems / itemsPerPage),
   };
 }
 
-function createSearchResponse(data: SearchResultItem[], pagination: Pagination): SearchApiResponse {
+function createSearchResponse(
+  data: SearchResultItem[],
+  pagination: Pagination,
+): SearchApiResponse {
   return { data, pagination };
 }
 
@@ -125,8 +156,8 @@ describe('HomeStateFacade', () => {
         CountryDisplayService,
         { provide: HOME_STATE_SEARCH_API_SERVICE_PORT, useValue: searchPort },
         { provide: HOME_STATE_PARKS_API_SERVICE_PORT, useValue: parksPort },
-        { provide: HOME_STATE_HOME_API_SERVICE_PORT, useValue: homePort }
-      ]
+        { provide: HOME_STATE_HOME_API_SERVICE_PORT, useValue: homePort },
+      ],
     });
 
     facade = TestBed.inject(HomeStateFacade);
@@ -136,7 +167,11 @@ describe('HomeStateFacade', () => {
     facade.loadHomeStats();
 
     expect(homePort.statsCalls).toEqual([1]);
-    expect(facade.homeStats()).toEqual({ parksCount: 10, attractionsCount: 40, countriesCount: 3 });
+    expect(facade.homeStats()).toEqual({
+      parksCount: 10,
+      attractionsCount: 40,
+      countriesCount: 3,
+    });
     expect(facade.statsState().kind).toBe('ready');
   });
 
@@ -145,7 +180,9 @@ describe('HomeStateFacade', () => {
 
     expect(parksPort.calls).toEqual([4]);
     expect(facade.heroParks().map((park) => park.id)).toEqual(['park-1']);
-    expect(homePort.featuredCalls).toEqual([{ excludedParkIds: ['park-1'], limit: 3 }]);
+    expect(homePort.featuredCalls).toEqual([
+      { excludedParkIds: ['park-1'], limit: 3 },
+    ]);
     expect(facade.featuredParks().map((park) => park.id)).toEqual(['park-2']);
   });
 
@@ -161,23 +198,36 @@ describe('HomeStateFacade', () => {
   it('searches with a trimmed term and selected category', () => {
     facade.search(' taron ', 'Attraction', 2, 20);
 
-    expect(searchPort.calls).toEqual([{ term: 'taron', categories: ['Attraction'], page: 2, size: 20 }]);
-    expect(facade.hasPerformedSearch()).toBeTrue();
-    expect(facade.searchResults().map((result: SearchResultItem) => result.originalId)).toEqual(['park-1']);
+    expect(searchPort.calls).toEqual([
+      { term: 'taron', categories: ['Attraction'], page: 2, size: 20 },
+    ]);
+    expect(facade.hasPerformedSearch()).toBe(true);
+    expect(
+      facade
+        .searchResults()
+        .map((result: SearchResultItem) => result.originalId),
+    ).toEqual(['park-1']);
   });
 
   it('passes the attractions with standalone category to the search port', () => {
     facade.search('', 'attractionsWithStandalone', 1, 10);
 
-    expect(searchPort.calls).toEqual([{ term: '', categories: ['attractionsWithStandalone'], page: 1, size: 10 }]);
-    expect(facade.hasPerformedSearch()).toBeTrue();
+    expect(searchPort.calls).toEqual([
+      {
+        term: '',
+        categories: ['attractionsWithStandalone'],
+        page: 1,
+        size: 10,
+      },
+    ]);
+    expect(facade.hasPerformedSearch()).toBe(true);
   });
 
   it('clears search without calling the search port when no criteria are provided', () => {
     facade.search('   ', '', 3, 10);
 
     expect(searchPort.calls).toEqual([]);
-    expect(facade.hasPerformedSearch()).toBeFalse();
+    expect(facade.hasPerformedSearch()).toBe(false);
     expect(facade.currentPage()).toBe(1);
   });
 });

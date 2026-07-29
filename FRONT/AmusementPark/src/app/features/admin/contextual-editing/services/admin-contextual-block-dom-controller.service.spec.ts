@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { PublicContextualBlockMarker } from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
 import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
 import { AdminContextualBlockSelectionFacade } from '../state/admin-contextual-block-selection.facade';
@@ -16,14 +19,14 @@ import { AdminContextualBlockDomControllerService } from './admin-contextual-blo
       <p>Visitor content</p>
     </section>
   `,
-  imports: [PublicContextualBlockDirective]
+  imports: [PublicContextualBlockDirective],
 })
 class HostComponent {
   marker: PublicContextualBlockMarker = {
     type: 'park.description',
     parkId: 'park-1',
     contextLabel: 'Phantasialand',
-    languageCode: 'fr'
+    languageCode: 'fr',
   };
 }
 
@@ -39,17 +42,17 @@ describe('AdminContextualBlockDomControllerService', () => {
       providers: [
         ...provideCommonTestDependencies(),
         AdminPublicViewModeFacade,
-        AdminContextualBlockSelectionFacade
-      ]
+        AdminContextualBlockSelectionFacade,
+      ],
     }).compileComponents();
 
     const translateService: TranslateService = TestBed.inject(TranslateService);
     translateService.setTranslation('fr', {
       admin: {
         contextualBlocks: {
-          editAction: 'Modifier'
-        }
-      }
+          editAction: 'Modifier',
+        },
+      },
     });
     translateService.use('fr');
 
@@ -68,13 +71,17 @@ describe('AdminContextualBlockDomControllerService', () => {
     const host: HTMLElement = getHostElement(fixture);
 
     controller.start();
-    expect(host.querySelector('.admin-contextual-block__edit-button')).toBeNull();
+    expect(
+      host.querySelector('.admin-contextual-block__edit-button'),
+    ).toBeNull();
 
     enableEditionMode(publicViewModeFacade);
     fixture.detectChanges();
 
-    const button: HTMLButtonElement | null = host.querySelector('.admin-contextual-block__edit-button');
-    expect(host.classList.contains('admin-contextual-block')).toBeTrue();
+    const button: HTMLButtonElement | null = host.querySelector(
+      '.admin-contextual-block__edit-button',
+    );
+    expect(host.classList.contains('admin-contextual-block')).toBe(true);
     expect(button?.textContent?.trim()).toBe('Modifier');
 
     host.dispatchEvent(new MouseEvent('click', { bubbles: true }));
@@ -88,21 +95,31 @@ describe('AdminContextualBlockDomControllerService', () => {
     enableEditionMode(publicViewModeFacade);
     fixture.detectChanges();
 
-    const link: HTMLAnchorElement = getHostElement(fixture).querySelector('a') as HTMLAnchorElement;
-    const event = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true });
+    const link: HTMLAnchorElement = getHostElement(fixture).querySelector(
+      'a',
+    ) as HTMLAnchorElement;
+    const event = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      bubbles: true,
+      cancelable: true,
+    });
     link.dispatchEvent(event);
     fixture.detectChanges();
 
-    expect(event.defaultPrevented).toBeFalse();
+    expect(event.defaultPrevented).toBe(false);
     expect(selectionFacade.selectedBlock()).toBeNull();
   });
 });
 
-function enableEditionMode(publicViewModeFacade: AdminPublicViewModeFacade): void {
+function enableEditionMode(
+  publicViewModeFacade: AdminPublicViewModeFacade,
+): void {
   publicViewModeFacade.setViewMode('adminPreview');
   publicViewModeFacade.setEditionModeEnabled(true);
 }
 
 function getHostElement(fixture: ComponentFixture<HostComponent>): HTMLElement {
-  return (fixture.nativeElement as HTMLElement).querySelector('section') as HTMLElement;
+  return (fixture.nativeElement as HTMLElement).querySelector(
+    'section',
+  ) as HTMLElement;
 }

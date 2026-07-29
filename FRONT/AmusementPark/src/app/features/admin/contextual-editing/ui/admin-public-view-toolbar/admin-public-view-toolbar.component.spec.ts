@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
 import { AdminPublicViewToolbarComponent } from './admin-public-view-toolbar.component';
 
@@ -14,8 +17,8 @@ describe('AdminPublicViewToolbarComponent', () => {
       imports: [...COMMON_TEST_IMPORTS, AdminPublicViewToolbarComponent],
       providers: [
         ...provideCommonTestDependencies(),
-        AdminPublicViewModeFacade
-      ]
+        AdminPublicViewModeFacade,
+      ],
     }).compileComponents();
 
     const translateService: TranslateService = TestBed.inject(TranslateService);
@@ -32,13 +35,25 @@ describe('AdminPublicViewToolbarComponent', () => {
           collapse: 'Masquer la barre admin',
           expand: 'Afficher la barre admin',
           modes: {
-            anonymous: { label: 'Visiteur non connecte', short: 'Visiteur', aria: 'Voir comme visiteur non connecte' },
-            user: { label: 'Visiteur role user', short: 'User', aria: 'Voir comme visiteur role user' },
-            moderator: { label: 'Visiteur role moderateur', short: 'Modo', aria: 'Voir comme visiteur role moderateur' },
-            admin: { label: 'Admin', short: 'Admin', aria: 'Voir comme admin' }
-          }
-        }
-      }
+            anonymous: {
+              label: 'Visiteur non connecte',
+              short: 'Visiteur',
+              aria: 'Voir comme visiteur non connecte',
+            },
+            user: {
+              label: 'Visiteur role user',
+              short: 'User',
+              aria: 'Voir comme visiteur role user',
+            },
+            moderator: {
+              label: 'Visiteur role moderateur',
+              short: 'Modo',
+              aria: 'Voir comme visiteur role moderateur',
+            },
+            admin: { label: 'Admin', short: 'Admin', aria: 'Voir comme admin' },
+          },
+        },
+      },
     });
     translateService.use('fr');
 
@@ -49,60 +64,80 @@ describe('AdminPublicViewToolbarComponent', () => {
 
   it('renders every public view mode with edition disabled by default', () => {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const modeButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-public-view-toolbar__mode');
-    const editionButton: HTMLButtonElement | null = host.querySelector('.admin-public-view-toolbar__edition');
+    const modeButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll(
+      '.admin-public-view-toolbar__mode',
+    );
+    const editionButton: HTMLButtonElement | null = host.querySelector(
+      '.admin-public-view-toolbar__edition',
+    );
 
     expect(modeButtons.length).toBe(4);
     expect(modeButtons[0]?.getAttribute('aria-checked')).toBe('true');
-    expect(editionButton?.disabled).toBeTrue();
+    expect(editionButton?.disabled).toBe(true);
     expect(facade.viewMode()).toBe('anonymousVisitor');
-    expect(facade.editionModeEnabled()).toBeFalse();
+    expect(facade.editionModeEnabled()).toBe(false);
   });
 
   it('enables edition only after selecting admin preview', () => {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const modeButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-public-view-toolbar__mode');
-    const editionButton: HTMLButtonElement = host.querySelector('.admin-public-view-toolbar__edition') as HTMLButtonElement;
+    const modeButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll(
+      '.admin-public-view-toolbar__mode',
+    );
+    const editionButton: HTMLButtonElement = host.querySelector(
+      '.admin-public-view-toolbar__edition',
+    ) as HTMLButtonElement;
 
     modeButtons[3]?.click();
     fixture.detectChanges();
 
     expect(facade.viewMode()).toBe('adminPreview');
-    expect(editionButton.disabled).toBeFalse();
+    expect(editionButton.disabled).toBe(false);
 
     editionButton.click();
     fixture.detectChanges();
 
-    expect(facade.editionModeEnabled()).toBeTrue();
+    expect(facade.editionModeEnabled()).toBe(true);
     expect(editionButton.getAttribute('aria-pressed')).toBe('true');
   });
 
   it('collapses to a compact restore button without resetting the selected mode', () => {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const modeButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-public-view-toolbar__mode');
-    const editionButton: HTMLButtonElement = host.querySelector('.admin-public-view-toolbar__edition') as HTMLButtonElement;
+    const modeButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll(
+      '.admin-public-view-toolbar__mode',
+    );
+    const editionButton: HTMLButtonElement = host.querySelector(
+      '.admin-public-view-toolbar__edition',
+    ) as HTMLButtonElement;
 
     modeButtons[3]?.click();
     fixture.detectChanges();
     editionButton.click();
     fixture.detectChanges();
 
-    const collapseButton: HTMLButtonElement = host.querySelector('.admin-public-view-toolbar__collapse') as HTMLButtonElement;
+    const collapseButton: HTMLButtonElement = host.querySelector(
+      '.admin-public-view-toolbar__collapse',
+    ) as HTMLButtonElement;
     collapseButton.click();
     fixture.detectChanges();
 
     expect(host.querySelector('.admin-public-view-toolbar')).toBeNull();
-    expect(host.querySelector('.admin-public-view-toolbar__restore')).not.toBeNull();
+    expect(
+      host.querySelector('.admin-public-view-toolbar__restore'),
+    ).not.toBeNull();
     expect(facade.viewMode()).toBe('adminPreview');
-    expect(facade.editionModeEnabled()).toBeTrue();
+    expect(facade.editionModeEnabled()).toBe(true);
 
-    const restoreButton: HTMLButtonElement = host.querySelector('.admin-public-view-toolbar__restore') as HTMLButtonElement;
+    const restoreButton: HTMLButtonElement = host.querySelector(
+      '.admin-public-view-toolbar__restore',
+    ) as HTMLButtonElement;
     restoreButton.click();
     fixture.detectChanges();
 
     expect(host.querySelector('.admin-public-view-toolbar')).not.toBeNull();
-    expect(host.querySelector('.admin-public-view-toolbar__restore')).toBeNull();
+    expect(
+      host.querySelector('.admin-public-view-toolbar__restore'),
+    ).toBeNull();
     expect(facade.viewMode()).toBe('adminPreview');
-    expect(facade.editionModeEnabled()).toBeTrue();
+    expect(facade.editionModeEnabled()).toBe(true);
   });
 });

@@ -9,8 +9,8 @@ describe('SignalScreenStateStore', () => {
 
   it('starts in loading state', () => {
     expect(store.kind()).toBe('loading');
-    expect(store.isLoading()).toBeTrue();
-    expect(store.isReady()).toBeFalse();
+    expect(store.isLoading()).toBe(true);
+    expect(store.isReady()).toBe(false);
   });
 
   it('transitions to ready with data', () => {
@@ -18,7 +18,7 @@ describe('SignalScreenStateStore', () => {
 
     expect(store.state()).toEqual({ kind: 'ready', data: ['a'] });
     expect(store.data()).toEqual(['a']);
-    expect(store.isReady()).toBeTrue();
+    expect(store.isReady()).toBe(true);
   });
 
   it('transitions to empty while preserving optional data', () => {
@@ -26,7 +26,7 @@ describe('SignalScreenStateStore', () => {
 
     expect(store.kind()).toBe('empty');
     expect(store.data()).toEqual([]);
-    expect(store.isEmpty()).toBeTrue();
+    expect(store.isEmpty()).toBe(true);
   });
 
   it('transitions to error with optional stale data', () => {
@@ -34,7 +34,7 @@ describe('SignalScreenStateStore', () => {
 
     expect(store.error()).toBe('boom');
     expect(store.data()).toEqual(['old']);
-    expect(store.isError()).toBeTrue();
+    expect(store.isError()).toBe(true);
   });
 
   it('can go back to loading and replace data', () => {

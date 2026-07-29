@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { ParkZone } from '@app/models/parks/park-zone';
 import {
   ADMIN_PARK_ITEM_ZONES_STATE_PARK_ZONES_API_SERVICE_PORT,
-  AdminParkItemZonesStateParkZonesApiServicePort
+  AdminParkItemZonesStateParkZonesApiServicePort,
 } from './admin-park-item-zones-state-data.ports';
 import { AdminParkItemZonesStateFacade } from './admin-park-item-zones-state.facade';
 
@@ -19,8 +19,8 @@ class FakeZonesPort implements AdminParkItemZonesStateParkZonesApiServicePort {
         parkId,
         name: 'Frontier',
         names: [{ languageCode: 'en', value: 'Frontier' }],
-        descriptions: []
-      } as ParkZone
+        descriptions: [],
+      } as ParkZone,
     ]);
   }
 }
@@ -35,8 +35,11 @@ describe('AdminParkItemZonesStateFacade', () => {
     TestBed.configureTestingModule({
       providers: [
         AdminParkItemZonesStateFacade,
-        { provide: ADMIN_PARK_ITEM_ZONES_STATE_PARK_ZONES_API_SERVICE_PORT, useValue: port }
-      ]
+        {
+          provide: ADMIN_PARK_ITEM_ZONES_STATE_PARK_ZONES_API_SERVICE_PORT,
+          useValue: port,
+        },
+      ],
     });
 
     facade = TestBed.inject(AdminParkItemZonesStateFacade);
@@ -49,9 +52,7 @@ describe('AdminParkItemZonesStateFacade', () => {
     facade.load('park-1', 'fr');
 
     expect(port.calls).toEqual(['park-1', 'park-1']);
-    expect(facade.zones()).toEqual([
-      { id: 'zone-1', label: 'Frontier' }
-    ]);
+    expect(facade.zones()).toEqual([{ id: 'zone-1', label: 'Frontier' }]);
   });
 
   it('can invalidate one park cache', () => {

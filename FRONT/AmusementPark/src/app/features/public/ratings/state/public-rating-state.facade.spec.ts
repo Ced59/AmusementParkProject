@@ -1,8 +1,13 @@
+import type { Mock } from 'vitest';
 import { DestroyRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, throwError } from 'rxjs';
 
-import { RatingTargetType, UserRating, UserRatingUpsertRequest } from '@app/models/ratings/rating.models';
+import {
+  RatingTargetType,
+  UserRating,
+  UserRatingUpsertRequest,
+} from '@app/models/ratings/rating.models';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ModalService } from '@app/services/modal/modal.service';
@@ -20,11 +25,17 @@ class FakeDestroyRef implements DestroyRef {
 
 class FakeRatingsPort implements PublicRatingRatingsPort {
   readonly upsertCalls: UserRatingUpsertRequest[] = [];
-  readonly getMyRatingCalls: Array<{ targetType: RatingTargetType; targetId: string }> = [];
+  readonly getMyRatingCalls: Array<{
+    targetType: RatingTargetType;
+    targetId: string;
+  }> = [];
   ratingResponse: UserRating = createUserRating(4.5, 3, 4.5);
   myRatingResponse: UserRating | null = null;
 
-  getMyRating(targetType: RatingTargetType, targetId: string): Observable<UserRating | null> {
+  getMyRating(
+    targetType: RatingTargetType,
+    targetId: string,
+  ): Observable<UserRating | null> {
     this.getMyRatingCalls.push({ targetType, targetId });
     return of(this.myRatingResponse);
   }
@@ -62,9 +73,17 @@ class FakeModalService {
 }
 
 class FakeToastMessageService {
-  readonly messages: Array<{ severity: string; summary: string; detail: string }> = [];
+  readonly messages: Array<{
+    severity: string;
+    summary: string;
+    detail: string;
+  }> = [];
 
-  add(severity: 'success' | 'info' | 'warn' | 'error', summary: string, detail: string): void {
+  add(
+    severity: 'success' | 'info' | 'warn' | 'error',
+    summary: string,
+    detail: string,
+  ): void {
     this.messages.push({ severity, summary, detail });
   }
 }
@@ -88,10 +107,12 @@ describe('PublicRatingStateFacade', () => {
       targetId: 'park-1',
       ratingCount: 2,
       averageRating: 4,
-      bayesianScore: 3.58
+      bayesianScore: 3.58,
     });
 
-    expect(port.getMyRatingCalls).toEqual([{ targetType: 'Park', targetId: 'park-1' }]);
+    expect(port.getMyRatingCalls).toEqual([
+      { targetType: 'Park', targetId: 'park-1' },
+    ]);
     expect(facade.userRatingValue()).toBe(3.5);
     expect(facade.summary()?.averageRating).toBe(4);
   });
@@ -100,7 +121,11 @@ describe('PublicRatingStateFacade', () => {
     const port: FakeRatingsPort = new FakeRatingsPort();
     const authService: FakeAuthService = new FakeAuthService();
     const modalService: FakeModalService = new FakeModalService();
-    const facade: PublicRatingStateFacade = createFacade(port, authService, modalService);
+    const facade: PublicRatingStateFacade = createFacade(
+      port,
+      authService,
+      modalService,
+    );
 
     facade.configure('Park', 'park-1', null);
     facade.rate(4.5);
@@ -115,13 +140,15 @@ describe('PublicRatingStateFacade', () => {
     const authService: FakeAuthService = new FakeAuthService();
     authService.tokenError = new Error('session');
     const facade: PublicRatingStateFacade = createFacade(port, authService);
-    const consoleErrorSpy: jasmine.Spy = spyOn(console, 'error').and.stub();
+    const consoleErrorSpy: Mock = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
 
     facade.configure('Park', 'park-1', null);
     facade.rate(4.5);
 
     expect(port.upsertCalls.length).toBe(0);
-    expect(facade.saving()).toBeFalse();
+    expect(facade.saving()).toBe(false);
     expect(facade.messageKey()).toBe('ratings.stars.errorMessage');
     expect(consoleErrorSpy).toHaveBeenCalled();
   });
@@ -131,20 +158,32 @@ describe('PublicRatingStateFacade', () => {
     const authService: FakeAuthService = new FakeAuthService();
     authService.token = 'token';
     port.ratingResponse = createUserRating(4.5, 5, 4.2);
-    const toastMessageService: FakeToastMessageService = new FakeToastMessageService();
-    const facade: PublicRatingStateFacade = createFacade(port, authService, new FakeModalService(), toastMessageService);
+    const toastMessageService: FakeToastMessageService =
+      new FakeToastMessageService();
+    const facade: PublicRatingStateFacade = createFacade(
+      port,
+      authService,
+      new FakeModalService(),
+      toastMessageService,
+    );
 
     facade.configure('ParkItem', ' item-1 ', null);
     facade.rate(4.5);
 
-    expect(port.upsertCalls).toEqual([{ targetType: 'ParkItem', targetId: 'item-1', value: 4.5 }]);
+    expect(port.upsertCalls).toEqual([
+      { targetType: 'ParkItem', targetId: 'item-1', value: 4.5 },
+    ]);
     expect(facade.userRatingValue()).toBe(4.5);
     expect(facade.summary()?.ratingCount).toBe(5);
     expect(facade.summary()?.averageRating).toBe(4.2);
-    expect(facade.saving()).toBeFalse();
+    expect(facade.saving()).toBe(false);
     expect(facade.messageKey()).toBe('ratings.stars.savedMessage');
     expect(toastMessageService.messages).toEqual([
-      { severity: 'success', summary: 'common.success', detail: 'ratings.stars.savedToast' }
+      {
+        severity: 'success',
+        summary: 'common.success',
+        detail: 'ratings.stars.savedToast',
+      },
     ]);
   });
 });
@@ -153,7 +192,7 @@ function createFacade(
   port: FakeRatingsPort,
   authService: FakeAuthService,
   modalService: FakeModalService = new FakeModalService(),
-  toastMessageService: FakeToastMessageService = new FakeToastMessageService()
+  toastMessageService: FakeToastMessageService = new FakeToastMessageService(),
 ): PublicRatingStateFacade {
   return new PublicRatingStateFacade(
     port,
@@ -161,11 +200,15 @@ function createFacade(
     modalService as unknown as ModalService,
     toastMessageService as unknown as ToastMessageService,
     new FakeTranslateService() as unknown as TranslateService,
-    new FakeDestroyRef()
+    new FakeDestroyRef(),
   );
 }
 
-function createUserRating(value: number, ratingCount: number, averageRating: number): UserRating {
+function createUserRating(
+  value: number,
+  ratingCount: number,
+  averageRating: number,
+): UserRating {
   return {
     id: 'rating-1',
     targetType: 'ParkItem',
@@ -181,7 +224,7 @@ function createUserRating(value: number, ratingCount: number, averageRating: num
       targetId: 'item-1',
       ratingCount,
       averageRating,
-      bayesianScore: 3.8
-    }
+      bayesianScore: 3.8,
+    },
   };
 }

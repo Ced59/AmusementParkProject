@@ -1,8 +1,12 @@
+import type { Mock } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgZone } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { PageJumpButtonComponent } from './page-jump-button.component';
 
 interface ExposedPageJumpButtonComponent {
@@ -20,20 +24,40 @@ describe('PageJumpButtonComponent', () => {
   let originalScrollYDescriptor: PropertyDescriptor | undefined;
 
   beforeEach(async () => {
-    originalScrollHeightDescriptor = Object.getOwnPropertyDescriptor(document.documentElement, 'scrollHeight');
-    originalBodyScrollHeightDescriptor = Object.getOwnPropertyDescriptor(document.body, 'scrollHeight');
-    originalInnerHeightDescriptor = Object.getOwnPropertyDescriptor(window, 'innerHeight');
-    originalScrollYDescriptor = Object.getOwnPropertyDescriptor(window, 'scrollY');
+    originalScrollHeightDescriptor = Object.getOwnPropertyDescriptor(
+      document.documentElement,
+      'scrollHeight',
+    );
+    originalBodyScrollHeightDescriptor = Object.getOwnPropertyDescriptor(
+      document.body,
+      'scrollHeight',
+    );
+    originalInnerHeightDescriptor = Object.getOwnPropertyDescriptor(
+      window,
+      'innerHeight',
+    );
+    originalScrollYDescriptor = Object.getOwnPropertyDescriptor(
+      window,
+      'scrollY',
+    );
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, PageJumpButtonComponent],
-      providers: provideCommonTestDependencies()
+      providers: provideCommonTestDependencies(),
     }).compileComponents();
   });
 
   afterEach(() => {
-    restoreProperty(document.documentElement, 'scrollHeight', originalScrollHeightDescriptor);
-    restoreProperty(document.body, 'scrollHeight', originalBodyScrollHeightDescriptor);
+    restoreProperty(
+      document.documentElement,
+      'scrollHeight',
+      originalScrollHeightDescriptor,
+    );
+    restoreProperty(
+      document.body,
+      'scrollHeight',
+      originalBodyScrollHeightDescriptor,
+    );
     restoreProperty(window, 'innerHeight', originalInnerHeightDescriptor);
     restoreProperty(window, 'scrollY', originalScrollYDescriptor);
   });
@@ -45,8 +69,10 @@ describe('PageJumpButtonComponent', () => {
     context.exposed.updatePageScrollState();
     context.fixture.detectChanges();
 
-    expect(context.exposed.isVisible).toBeFalse();
-    expect(context.fixture.debugElement.query(By.css('.page-jump-button'))).toBeNull();
+    expect(context.exposed.isVisible).toBe(false);
+    expect(
+      context.fixture.debugElement.query(By.css('.page-jump-button')),
+    ).toBeNull();
   });
 
   it('shows a bottom jump action until the user reaches the page end', () => {
@@ -56,9 +82,11 @@ describe('PageJumpButtonComponent', () => {
     context.exposed.updatePageScrollState();
     context.fixture.detectChanges();
 
-    let button: HTMLElement = context.fixture.debugElement.query(By.css('.page-jump-button')).nativeElement;
-    expect(context.exposed.isVisible).toBeTrue();
-    expect(context.exposed.isNearPageBottom).toBeFalse();
+    let button: HTMLElement = context.fixture.debugElement.query(
+      By.css('.page-jump-button'),
+    ).nativeElement;
+    expect(context.exposed.isVisible).toBe(true);
+    expect(context.exposed.isNearPageBottom).toBe(false);
     expect(context.exposed.labelKey).toBe('actions.scrollBottom');
     expect(button.querySelector('.pi-arrow-down')).not.toBeNull();
 
@@ -66,60 +94,75 @@ describe('PageJumpButtonComponent', () => {
     context.exposed.updatePageScrollState();
     context.fixture.detectChanges();
 
-    button = context.fixture.debugElement.query(By.css('.page-jump-button')).nativeElement;
-    expect(context.exposed.isNearPageBottom).toBeTrue();
+    button = context.fixture.debugElement.query(
+      By.css('.page-jump-button'),
+    ).nativeElement;
+    expect(context.exposed.isNearPageBottom).toBe(true);
     expect(context.exposed.labelKey).toBe('actions.scrollTop');
     expect(button.querySelector('.pi-arrow-up')).not.toBeNull();
   });
 
   it('scrolls to the page bottom or top from the floating action', () => {
     const context = createComponent();
-    const scrollToSpy = spyOn(window, 'scrollTo');
+    const scrollToSpy = vi.spyOn(window, 'scrollTo');
     setViewportMetrics(2000, 800, 0);
 
     context.exposed.isNearPageBottom = false;
     context.exposed.togglePageScroll();
 
-    const firstScrollOptions: unknown = scrollToSpy.calls.argsFor(0)[0];
+    const firstScrollOptions: unknown = vi.mocked(scrollToSpy).mock.calls[0][0];
     expect(firstScrollOptions).toEqual({
       top: 2000,
-      behavior: 'smooth'
+      behavior: 'smooth',
     } as ScrollToOptions);
 
     context.exposed.isNearPageBottom = true;
     context.exposed.togglePageScroll();
 
-    const secondScrollOptions: unknown = scrollToSpy.calls.argsFor(1)[0];
+    const secondScrollOptions: unknown =
+      vi.mocked(scrollToSpy).mock.calls[1][0];
     expect(secondScrollOptions).toEqual({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     } as ScrollToOptions);
   });
 
   it('registers passive viewport listeners outside Angular and cleans them up', () => {
     const ngZone: NgZone = TestBed.inject(NgZone);
-    const runOutsideAngularSpy = spyOn(ngZone, 'runOutsideAngular').and.callThrough();
-    const addEventListenerSpy = spyOn(window, 'addEventListener').and.callThrough();
-    const removeEventListenerSpy = spyOn(window, 'removeEventListener').and.callThrough();
+    const runOutsideAngularSpy = vi.spyOn(ngZone, 'runOutsideAngular');
+    const addEventListenerSpy = vi.spyOn(window, 'addEventListener');
+    const removeEventListenerSpy = vi.spyOn(window, 'removeEventListener');
     const context = createComponent();
 
     context.fixture.detectChanges();
 
-    const scrollListener: EventListenerOrEventListenerObject = findWindowListener(addEventListenerSpy, 'scroll');
-    const resizeListener: EventListenerOrEventListenerObject = findWindowListener(addEventListenerSpy, 'resize');
+    const scrollListener: EventListenerOrEventListenerObject =
+      findWindowListener(addEventListenerSpy, 'scroll');
+    const resizeListener: EventListenerOrEventListenerObject =
+      findWindowListener(addEventListenerSpy, 'resize');
 
     expect(runOutsideAngularSpy).toHaveBeenCalled();
-    expect(findWindowListenerOptions(addEventListenerSpy, 'scroll')).toEqual({ passive: true });
-    expect(findWindowListenerOptions(addEventListenerSpy, 'resize')).toEqual({ passive: true });
+    expect(findWindowListenerOptions(addEventListenerSpy, 'scroll')).toEqual({
+      passive: true,
+    });
+    expect(findWindowListenerOptions(addEventListenerSpy, 'resize')).toEqual({
+      passive: true,
+    });
 
     context.fixture.destroy();
 
-    const scrollRemoveArgs: Parameters<typeof window.removeEventListener> = findWindowRemoveListenerArgs(removeEventListenerSpy, 'scroll');
-    const resizeRemoveArgs: Parameters<typeof window.removeEventListener> = findWindowRemoveListenerArgs(removeEventListenerSpy, 'resize');
+    const scrollRemoveArgs: Parameters<typeof window.removeEventListener> =
+      findWindowRemoveListenerArgs(removeEventListenerSpy, 'scroll');
+    const resizeRemoveArgs: Parameters<typeof window.removeEventListener> =
+      findWindowRemoveListenerArgs(removeEventListenerSpy, 'resize');
     expect(scrollRemoveArgs[1]).toBe(scrollListener);
-    expect(scrollRemoveArgs[2] as unknown).toEqual({ passive: true } as AddEventListenerOptions);
+    expect(scrollRemoveArgs[2] as unknown).toEqual({
+      passive: true,
+    } as AddEventListenerOptions);
     expect(resizeRemoveArgs[1]).toBe(resizeListener);
-    expect(resizeRemoveArgs[2] as unknown).toEqual({ passive: true } as AddEventListenerOptions);
+    expect(resizeRemoveArgs[2] as unknown).toEqual({
+      passive: true,
+    } as AddEventListenerOptions);
   });
 });
 
@@ -127,33 +170,43 @@ function createComponent(): {
   fixture: ComponentFixture<PageJumpButtonComponent>;
   exposed: ExposedPageJumpButtonComponent;
 } {
-  const fixture: ComponentFixture<PageJumpButtonComponent> = TestBed.createComponent(PageJumpButtonComponent);
+  const fixture: ComponentFixture<PageJumpButtonComponent> =
+    TestBed.createComponent(PageJumpButtonComponent);
   return {
     fixture,
-    exposed: fixture.componentInstance as unknown as ExposedPageJumpButtonComponent
+    exposed:
+      fixture.componentInstance as unknown as ExposedPageJumpButtonComponent,
   };
 }
 
-function setViewportMetrics(scrollHeight: number, innerHeight: number, scrollY: number): void {
+function setViewportMetrics(
+  scrollHeight: number,
+  innerHeight: number,
+  scrollY: number,
+): void {
   Object.defineProperty(document.documentElement, 'scrollHeight', {
     configurable: true,
-    value: scrollHeight
+    value: scrollHeight,
   });
   Object.defineProperty(document.body, 'scrollHeight', {
     configurable: true,
-    value: scrollHeight
+    value: scrollHeight,
   });
   Object.defineProperty(window, 'innerHeight', {
     configurable: true,
-    value: innerHeight
+    value: innerHeight,
   });
   Object.defineProperty(window, 'scrollY', {
     configurable: true,
-    value: scrollY
+    value: scrollY,
   });
 }
 
-function restoreProperty(target: object, propertyName: string, descriptor: PropertyDescriptor | undefined): void {
+function restoreProperty(
+  target: object,
+  propertyName: string,
+  descriptor: PropertyDescriptor | undefined,
+): void {
   if (descriptor) {
     Object.defineProperty(target, propertyName, descriptor);
     return;
@@ -162,9 +215,15 @@ function restoreProperty(target: object, propertyName: string, descriptor: Prope
   delete (target as Record<string, unknown>)[propertyName];
 }
 
-function findWindowListener(spy: jasmine.Spy<typeof window.addEventListener>, eventName: string): EventListenerOrEventListenerObject {
-  const args: Parameters<typeof window.addEventListener> | undefined = spy.calls.allArgs()
-    .find((callArgs: Parameters<typeof window.addEventListener>): boolean => callArgs[0] === eventName);
+function findWindowListener(
+  spy: Mock,
+  eventName: string,
+): EventListenerOrEventListenerObject {
+  const calls = vi.mocked(spy).mock.calls as unknown as Array<
+    Parameters<typeof window.addEventListener>
+  >;
+  const args: Parameters<typeof window.addEventListener> | undefined =
+    calls.find((callArgs) => callArgs[0] === eventName);
 
   if (!args) {
     throw new Error(`Missing ${eventName} listener.`);
@@ -173,9 +232,15 @@ function findWindowListener(spy: jasmine.Spy<typeof window.addEventListener>, ev
   return args[1];
 }
 
-function findWindowListenerOptions(spy: jasmine.Spy<typeof window.addEventListener>, eventName: string): boolean | AddEventListenerOptions | undefined {
-  const args: Parameters<typeof window.addEventListener> | undefined = spy.calls.allArgs()
-    .find((callArgs: Parameters<typeof window.addEventListener>): boolean => callArgs[0] === eventName);
+function findWindowListenerOptions(
+  spy: Mock,
+  eventName: string,
+): boolean | AddEventListenerOptions | undefined {
+  const calls = vi.mocked(spy).mock.calls as unknown as Array<
+    Parameters<typeof window.addEventListener>
+  >;
+  const args: Parameters<typeof window.addEventListener> | undefined =
+    calls.find((callArgs) => callArgs[0] === eventName);
 
   if (!args) {
     throw new Error(`Missing ${eventName} listener options.`);
@@ -184,9 +249,15 @@ function findWindowListenerOptions(spy: jasmine.Spy<typeof window.addEventListen
   return args[2];
 }
 
-function findWindowRemoveListenerArgs(spy: jasmine.Spy<typeof window.removeEventListener>, eventName: string): Parameters<typeof window.removeEventListener> {
-  const args: Parameters<typeof window.removeEventListener> | undefined = spy.calls.allArgs()
-    .find((callArgs: Parameters<typeof window.removeEventListener>): boolean => callArgs[0] === eventName);
+function findWindowRemoveListenerArgs(
+  spy: Mock,
+  eventName: string,
+): Parameters<typeof window.removeEventListener> {
+  const calls = vi.mocked(spy).mock.calls as unknown as Array<
+    Parameters<typeof window.removeEventListener>
+  >;
+  const args: Parameters<typeof window.removeEventListener> | undefined =
+    calls.find((callArgs) => callArgs[0] === eventName);
 
   if (!args) {
     throw new Error(`Missing ${eventName} remove listener.`);

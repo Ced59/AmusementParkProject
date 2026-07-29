@@ -21,8 +21,8 @@ describe('CookieConsentService', () => {
     const service = new CookieConsentService('browser' as unknown as object);
 
     expect(service.decision()).toBeNull();
-    expect(service.hasAcceptedOptionalCookies()).toBeFalse();
-    expect(service.isBannerVisible()).toBeTrue();
+    expect(service.hasAcceptedOptionalCookies()).toBe(false);
+    expect(service.isBannerVisible()).toBe(true);
   });
 
   it('stores an accepted optional cookie decision', () => {
@@ -31,9 +31,11 @@ describe('CookieConsentService', () => {
     service.acceptOptionalCookies();
 
     expect(service.decision()).toBe('accepted');
-    expect(service.hasAcceptedOptionalCookies()).toBeTrue();
-    expect(service.isBannerVisible()).toBeFalse();
-    expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('accepted');
+    expect(service.hasAcceptedOptionalCookies()).toBe(true);
+    expect(service.isBannerVisible()).toBe(false);
+    expect(
+      JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision,
+    ).toBe('accepted');
     expect(document.cookie).toContain(`${consentCookieName}=accepted`);
   });
 
@@ -43,18 +45,25 @@ describe('CookieConsentService', () => {
     service.continueWithNecessaryCookiesOnly();
 
     expect(service.decision()).toBe('refused');
-    expect(service.hasAcceptedOptionalCookies()).toBeFalse();
-    expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('refused');
+    expect(service.hasAcceptedOptionalCookies()).toBe(false);
+    expect(
+      JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision,
+    ).toBe('refused');
   });
 
   it('migrates a legacy analytics consent value and removes the old key', () => {
-    window.localStorage.setItem(legacyStorageKey, JSON.stringify({ decision: 'accepted' }));
+    window.localStorage.setItem(
+      legacyStorageKey,
+      JSON.stringify({ decision: 'accepted' }),
+    );
 
     const service = new CookieConsentService('browser' as unknown as object);
 
     expect(service.decision()).toBe('accepted');
     expect(window.localStorage.getItem(legacyStorageKey)).toBeNull();
-    expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('accepted');
+    expect(
+      JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision,
+    ).toBe('accepted');
   });
 
   it('migrates a raw legacy accepted value', () => {
@@ -64,7 +73,9 @@ describe('CookieConsentService', () => {
 
     expect(service.decision()).toBe('accepted');
     expect(window.localStorage.getItem(legacyStorageKey)).toBeNull();
-    expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('accepted');
+    expect(
+      JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision,
+    ).toBe('accepted');
   });
 
   it('restores a decision from the consent cookie', () => {
@@ -73,7 +84,9 @@ describe('CookieConsentService', () => {
     const service = new CookieConsentService('browser' as unknown as object);
 
     expect(service.decision()).toBe('refused');
-    expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('refused');
+    expect(
+      JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision,
+    ).toBe('refused');
   });
 
   it('removes malformed stored JSON and keeps the decision empty', () => {
@@ -86,8 +99,14 @@ describe('CookieConsentService', () => {
   });
 
   it('resets both current and legacy choices', () => {
-    window.localStorage.setItem(storageKey, JSON.stringify({ decision: 'accepted' }));
-    window.localStorage.setItem(legacyStorageKey, JSON.stringify({ decision: 'refused' }));
+    window.localStorage.setItem(
+      storageKey,
+      JSON.stringify({ decision: 'accepted' }),
+    );
+    window.localStorage.setItem(
+      legacyStorageKey,
+      JSON.stringify({ decision: 'refused' }),
+    );
     const service = new CookieConsentService('browser' as unknown as object);
 
     service.resetCookieChoice();
@@ -99,7 +118,10 @@ describe('CookieConsentService', () => {
   });
 
   it('does not access browser storage on the server platform', () => {
-    window.localStorage.setItem(storageKey, JSON.stringify({ decision: 'accepted' }));
+    window.localStorage.setItem(
+      storageKey,
+      JSON.stringify({ decision: 'accepted' }),
+    );
 
     const service = new CookieConsentService('server' as unknown as object);
     service.acceptOptionalCookies();

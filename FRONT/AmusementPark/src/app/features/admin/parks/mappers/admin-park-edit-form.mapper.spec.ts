@@ -7,7 +7,7 @@ import {
   createAdminParkEditForm,
   getAdminParkFirstInvalidTabIndex,
   mapAdminParkEditFormToPark,
-  patchAdminParkEditForm
+  patchAdminParkEditForm,
 } from './admin-park-edit-form.mapper';
 
 describe('admin park edit form mapper', () => {
@@ -22,10 +22,12 @@ describe('admin park edit form mapper', () => {
 
     expect(form.get('name')?.value).toBe('');
     expect(form.get('latitude')?.value).toBe(DEFAULT_ADMIN_PARK_COORDINATES[0]);
-    expect(form.get('longitude')?.value).toBe(DEFAULT_ADMIN_PARK_COORDINATES[1]);
+    expect(form.get('longitude')?.value).toBe(
+      DEFAULT_ADMIN_PARK_COORDINATES[1],
+    );
     expect(form.get('status')?.value).toBe('Operating');
     expect(form.get('audienceClassification')?.value).toBeNull();
-    expect(form.get('isVisible')?.value).toBeTrue();
+    expect(form.get('isVisible')?.value).toBe(true);
     expect(form.get('adminReviewStatus')?.value).toBe('Validated');
     expect(form.get('openingDate')?.value).toBe('');
     expect(form.get('closingDate')?.value).toBe('');
@@ -51,7 +53,7 @@ describe('admin park edit form mapper', () => {
       closingDateText: '1991',
       descriptions: null,
       webSiteUrl: null,
-      city: null
+      city: null,
     } as unknown as Park;
 
     patchAdminParkEditForm(form, park);
@@ -59,7 +61,7 @@ describe('admin park edit form mapper', () => {
     expect(form.get('id')?.value).toBe('park-1');
     expect(form.get('countryCode')?.value).toBe('');
     expect(form.get('audienceClassification')?.value).toBe('International');
-    expect(form.get('isVisible')?.value).toBeTrue();
+    expect(form.get('isVisible')?.value).toBe(true);
     expect(form.get('status')?.value).toBe('Operating');
     expect(form.get('adminReviewStatus')?.value).toBe('Validated');
     expect(form.get('openingDate')?.value).toBe('1987-05-20');
@@ -91,7 +93,7 @@ describe('admin park edit form mapper', () => {
       closingDateText: ' ',
       isFeaturedOnHome: true,
       featuredHomeOrder: '3',
-      isFeaturedOnHomeSponsored: true
+      isFeaturedOnHomeSponsored: true,
     });
 
     const park: Park = mapAdminParkEditFormToPark(form);
@@ -112,7 +114,7 @@ describe('admin park edit form mapper', () => {
     expect(park.openingDateText).toBe('1987');
     expect(park.closingDateText).toBeNull();
     expect(park.featuredHomeOrder).toBe(3);
-    expect(park.isFeaturedOnHomeSponsored).toBeTrue();
+    expect(park.isFeaturedOnHomeSponsored).toBe(true);
   });
 
   it('drops invalid featured order and sponsored flag when the park is not featured', () => {
@@ -121,13 +123,13 @@ describe('admin park edit form mapper', () => {
       name: 'Park',
       isFeaturedOnHome: false,
       featuredHomeOrder: '-1',
-      isFeaturedOnHomeSponsored: true
+      isFeaturedOnHomeSponsored: true,
     });
 
     const park: Park = mapAdminParkEditFormToPark(form);
 
     expect(park.featuredHomeOrder).toBeNull();
-    expect(park.isFeaturedOnHomeSponsored).toBeFalse();
+    expect(park.isFeaturedOnHomeSponsored).toBe(false);
   });
 
   it('builds a deterministic snapshot from normalized form values', () => {

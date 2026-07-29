@@ -1,3 +1,4 @@
+import type { Mock } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 
 import { ScrollAnchorService } from './scroll-anchor.service';
@@ -23,14 +24,16 @@ describe('ScrollAnchorService', () => {
     target.setAttribute('data-pagination-scroll-target', '');
     target.appendChild(host);
     root.appendChild(target);
-    const scrollSpy: jasmine.Spy = spyOn(target, 'scrollIntoView');
+    const scrollSpy: Mock = vi.spyOn(target, 'scrollIntoView');
 
     service.scrollToPaginationTarget(host, { behavior: 'auto' });
 
-    expect(scrollSpy).toHaveBeenCalledOnceWith({
+    expect(scrollSpy).toHaveBeenCalledTimes(1);
+
+    expect(scrollSpy).toHaveBeenCalledWith({
       behavior: 'auto',
       block: 'start',
-      inline: 'nearest'
+      inline: 'nearest',
     });
   });
 
@@ -43,19 +46,20 @@ describe('ScrollAnchorService', () => {
     closestTarget.appendChild(host);
     root.appendChild(closestTarget);
     root.appendChild(explicitTarget);
-    const closestScrollSpy: jasmine.Spy = spyOn(closestTarget, 'scrollIntoView');
-    const explicitScrollSpy: jasmine.Spy = spyOn(explicitTarget, 'scrollIntoView');
+    const closestScrollSpy: Mock = vi.spyOn(closestTarget, 'scrollIntoView');
+    const explicitScrollSpy: Mock = vi.spyOn(explicitTarget, 'scrollIntoView');
 
     service.scrollToPaginationTarget(host, {
       targetSelector: '#explicit-scroll-target',
-      block: 'nearest'
+      block: 'nearest',
     });
 
     expect(closestScrollSpy).not.toHaveBeenCalled();
-    expect(explicitScrollSpy).toHaveBeenCalledOnceWith({
+    expect(explicitScrollSpy).toHaveBeenCalledTimes(1);
+    expect(explicitScrollSpy).toHaveBeenCalledWith({
       behavior: 'smooth',
       block: 'nearest',
-      inline: 'nearest'
+      inline: 'nearest',
     });
   });
 
@@ -63,14 +67,16 @@ describe('ScrollAnchorService', () => {
     const target: HTMLElement = document.createElement('section');
     target.id = 'selector-scroll-target';
     root.appendChild(target);
-    const scrollSpy: jasmine.Spy = spyOn(target, 'scrollIntoView');
+    const scrollSpy: Mock = vi.spyOn(target, 'scrollIntoView');
 
     service.scrollToSelector('#selector-scroll-target', { behavior: 'auto' });
 
-    expect(scrollSpy).toHaveBeenCalledOnceWith({
+    expect(scrollSpy).toHaveBeenCalledTimes(1);
+
+    expect(scrollSpy).toHaveBeenCalledWith({
       behavior: 'auto',
       block: 'start',
-      inline: 'nearest'
+      inline: 'nearest',
     });
   });
 });

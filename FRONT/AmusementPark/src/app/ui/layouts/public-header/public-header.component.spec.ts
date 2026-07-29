@@ -1,9 +1,13 @@
+import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventEmitter, NO_ERRORS_SCHEMA, Signal, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
@@ -22,58 +26,76 @@ class PublicParkNavigationTreeFacadeStub {
   private readonly treeSignal = signal<PublicParkNavigationTreeViewModel>({
     isAvailable: false,
     isLoading: false,
-    items: []
+    items: [],
   });
 
-  readonly tree: Signal<PublicParkNavigationTreeViewModel> = this.treeSignal.asReadonly();
+  readonly tree: Signal<PublicParkNavigationTreeViewModel> =
+    this.treeSignal.asReadonly();
 }
 
 describe('PublicHeaderComponent', () => {
   let fixture: ComponentFixture<PublicHeaderComponent>;
-  let authApiService: jasmine.SpyObj<AuthApiService>;
-  let authService: jasmine.SpyObj<AuthService>;
-  let modalService: jasmine.SpyObj<ModalService>;
+  let authApiService: MockedObject<AuthApiService>;
+  let authService: MockedObject<AuthService>;
+  let modalService: MockedObject<ModalService>;
 
   beforeEach(async () => {
-    const imagesApiService: jasmine.SpyObj<ImagesApiService> = jasmine.createSpyObj<ImagesApiService>('ImagesApiService', ['resolveImageUrl']);
-    imagesApiService.resolveImageUrl.and.returnValue(null);
+    const imagesApiService: MockedObject<ImagesApiService> = {
+      resolveImageUrl: vi.fn().mockName('ImagesApiService.resolveImageUrl'),
+    } as unknown as MockedObject<ImagesApiService>;
+    imagesApiService.resolveImageUrl.mockReturnValue(null);
 
-    authApiService = jasmine.createSpyObj<AuthApiService>('AuthApiService', ['getCurrentUserById']);
-    authService = jasmine.createSpyObj<AuthService>('AuthService', [
-      'ensureValidAccessToken',
-      'getUserIdFromToken',
-      'hasRole',
-      'isLoggedIn'
-    ]);
-    authService.ensureValidAccessToken.and.returnValue(of(null));
-    authService.getUserIdFromToken.and.returnValue(null);
-    authService.hasRole.and.returnValue(false);
-    authService.isLoggedIn.and.returnValue(false);
+    authApiService = {
+      getCurrentUserById: vi.fn().mockName('AuthApiService.getCurrentUserById'),
+    } as unknown as MockedObject<AuthApiService>;
+    authService = {
+      ensureValidAccessToken: vi
+        .fn()
+        .mockName('AuthService.ensureValidAccessToken'),
+      getUserIdFromToken: vi.fn().mockName('AuthService.getUserIdFromToken'),
+      hasRole: vi.fn().mockName('AuthService.hasRole'),
+      isLoggedIn: vi.fn().mockName('AuthService.isLoggedIn'),
+    } as unknown as MockedObject<AuthService>;
+    authService.ensureValidAccessToken.mockReturnValue(of(null));
+    authService.getUserIdFromToken.mockReturnValue(null);
+    authService.hasRole.mockReturnValue(false);
+    authService.isLoggedIn.mockReturnValue(false);
 
-    modalService = jasmine.createSpyObj<ModalService>('ModalService', ['closeModal', 'getModalStatus', 'openModal']);
-    modalService.getModalStatus.and.returnValue(of(false));
+    modalService = {
+      closeModal: vi.fn().mockName('ModalService.closeModal'),
+      getModalStatus: vi.fn().mockName('ModalService.getModalStatus'),
+      openModal: vi.fn().mockName('ModalService.openModal'),
+    } as unknown as MockedObject<ModalService>;
+    modalService.getModalStatus.mockReturnValue(of(false));
 
-    const sharedService: jasmine.SpyObj<SharedService> = jasmine.createSpyObj<SharedService>('SharedService', ['getLoginStatusListener']);
-    sharedService.getLoginStatusListener.and.returnValue(of());
+    const sharedService: MockedObject<SharedService> = {
+      getLoginStatusListener: vi
+        .fn()
+        .mockName('SharedService.getLoginStatusListener'),
+    } as unknown as MockedObject<SharedService>;
+    sharedService.getLoginStatusListener.mockReturnValue(of());
 
-    const themeService: jasmine.SpyObj<ThemeService> = jasmine.createSpyObj<ThemeService>('ThemeService', ['changeTheme', 'getCurrentTheme']);
-    themeService.getCurrentTheme.and.returnValue('dark');
+    const themeService: MockedObject<ThemeService> = {
+      changeTheme: vi.fn().mockName('ThemeService.changeTheme'),
+      getCurrentTheme: vi.fn().mockName('ThemeService.getCurrentTheme'),
+    } as unknown as MockedObject<ThemeService>;
+    themeService.getCurrentTheme.mockReturnValue('dark');
 
-    const translationService: jasmine.SpyObj<TranslationService> = jasmine.createSpyObj<TranslationService>(
-      'TranslationService',
-      ['getCurrentLang', 'useLang'],
-      { languageChanged: new EventEmitter<string>() }
-    );
-    translationService.getCurrentLang.and.returnValue('fr');
-    translationService.useLang.and.returnValue(of(null));
+    const translationService: MockedObject<TranslationService> = {
+      getCurrentLang: vi.fn().mockName('TranslationService.getCurrentLang'),
+      useLang: vi.fn().mockName('TranslationService.useLang'),
+      languageChanged: new EventEmitter<string>(),
+    } as unknown as MockedObject<TranslationService>;
+    translationService.getCurrentLang.mockReturnValue('fr');
+    translationService.useLang.mockReturnValue(of(null));
 
     TestBed.overrideComponent(PublicHeaderComponent, {
       remove: {
-        imports: [AuthModalComponent, Dialog]
+        imports: [AuthModalComponent, Dialog],
       },
       add: {
-        schemas: [NO_ERRORS_SCHEMA]
-      }
+        schemas: [NO_ERRORS_SCHEMA],
+      },
     });
 
     await TestBed.configureTestingModule({
@@ -87,9 +109,12 @@ describe('PublicHeaderComponent', () => {
         { provide: SharedService, useValue: sharedService },
         { provide: ThemeService, useValue: themeService },
         { provide: TranslationService, useValue: translationService },
-        { provide: PublicParkNavigationTreeFacade, useClass: PublicParkNavigationTreeFacadeStub }
+        {
+          provide: PublicParkNavigationTreeFacade,
+          useClass: PublicParkNavigationTreeFacadeStub,
+        },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     const translateService: TranslateService = TestBed.inject(TranslateService);
@@ -97,16 +122,16 @@ describe('PublicHeaderComponent', () => {
       sidebar: {
         about: 'A propos',
         home: 'Accueil',
-        parks: 'Parcs'
+        parks: 'Parcs',
       },
       topbar: {
         choose_language: 'Choisir la langue',
-        login_header: 'Connexion / Inscription'
+        login_header: 'Connexion / Inscription',
       },
       measurementSystem: {
         toggleToImperial: 'Passer aux unités impériales',
-        toggleToMetric: 'Passer aux unités métriques'
-      }
+        toggleToMetric: 'Passer aux unités métriques',
+      },
     });
     translateService.use('fr');
 
@@ -115,22 +140,32 @@ describe('PublicHeaderComponent', () => {
   });
 
   it('keeps an accessible name on the compact login button', () => {
-    const loginButton: HTMLButtonElement | null = (fixture.nativeElement as HTMLElement).querySelector('.btn-nav--primary');
+    const loginButton: HTMLButtonElement | null = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector('.btn-nav--primary');
 
     expect(loginButton).not.toBeNull();
-    expect(loginButton?.getAttribute('aria-label')).toBe('Connexion / Inscription');
+    expect(loginButton?.getAttribute('aria-label')).toBe(
+      'Connexion / Inscription',
+    );
   });
 
   it('renders the official logo asset in the brand link', () => {
-    const logoImage: HTMLImageElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-nav__logo-mark');
+    const logoImage: HTMLImageElement | null = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector('.app-public-nav__logo-mark');
 
     expect(logoImage).not.toBeNull();
-    expect(logoImage?.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark-ui.png');
+    expect(logoImage?.getAttribute('src')).toBe(
+      '/assets/general-icon/logo-amusementpark-ui.png',
+    );
     expect(logoImage?.getAttribute('alt')).toBe('AMUSEMENT-PARKS.fun');
   });
 
   it('renders a descriptive alt text on the selected language flag', () => {
-    const languageFlag: HTMLImageElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-nav__flag');
+    const languageFlag: HTMLImageElement | null = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector('.app-public-nav__flag');
 
     expect(languageFlag).not.toBeNull();
     expect(languageFlag?.getAttribute('alt')).toBe('Fran\u00e7ais');
@@ -138,11 +173,17 @@ describe('PublicHeaderComponent', () => {
   });
 
   it('renders the public brand wordmark with the .fun signature', () => {
-    const brandLink: HTMLAnchorElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-nav__logo');
-    const wordmark: HTMLElement | null = brandLink?.querySelector('.app-brand-wordmark') ?? null;
-    const base: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__base') ?? null;
-    const dot: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__dot') ?? null;
-    const fun: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__fun-text') ?? null;
+    const brandLink: HTMLAnchorElement | null = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector('.app-public-nav__logo');
+    const wordmark: HTMLElement | null =
+      brandLink?.querySelector('.app-brand-wordmark') ?? null;
+    const base: HTMLElement | null =
+      wordmark?.querySelector('.app-brand-wordmark__base') ?? null;
+    const dot: HTMLElement | null =
+      wordmark?.querySelector('.app-brand-wordmark__dot') ?? null;
+    const fun: HTMLElement | null =
+      wordmark?.querySelector('.app-brand-wordmark__fun-text') ?? null;
 
     expect(brandLink?.getAttribute('aria-label')).toBe('AMUSEMENT-PARKS.fun');
     expect(base?.textContent).toBe('AMUSEMENT-PARKS');
@@ -151,30 +192,44 @@ describe('PublicHeaderComponent', () => {
   });
 
   it('opens the login modal from the named login button', () => {
-    const loginButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement).querySelector('.btn-nav--primary') as HTMLButtonElement;
+    const loginButton: HTMLButtonElement = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector('.btn-nav--primary') as HTMLButtonElement;
 
     loginButton.click();
 
-    expect(modalService.openModal).toHaveBeenCalledOnceWith('loginModal');
+    expect(modalService.openModal).toHaveBeenCalledTimes(1);
+
+    expect(modalService.openModal).toHaveBeenCalledWith('loginModal');
   });
 
   it('places the visitor measurement toggle before login and shows the active unit', () => {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const measurementButton: HTMLButtonElement | null = host.querySelector('.app-public-nav__measurement-toggle');
-    const loginButton: HTMLButtonElement | null = host.querySelector('.btn-nav--primary');
+    const measurementButton: HTMLButtonElement | null = host.querySelector(
+      '.app-public-nav__measurement-toggle',
+    );
+    const loginButton: HTMLButtonElement | null =
+      host.querySelector('.btn-nav--primary');
 
     expect(measurementButton).not.toBeNull();
     expect(loginButton).not.toBeNull();
     expect(measurementButton?.textContent?.trim()).toBe('m');
-    expect(measurementButton?.getAttribute('aria-label')).toBe('Passer aux unités impériales');
-    const measurementButtonPosition: number = measurementButton?.compareDocumentPosition(loginButton as Node) ?? 0;
-    expect(measurementButtonPosition & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(measurementButton?.getAttribute('aria-label')).toBe(
+      'Passer aux unités impériales',
+    );
+    const measurementButtonPosition: number =
+      measurementButton?.compareDocumentPosition(loginButton as Node) ?? 0;
+    expect(
+      measurementButtonPosition & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
 
     measurementButton?.click();
     fixture.detectChanges();
 
     expect(measurementButton?.textContent?.trim()).toBe('ft');
-    expect(measurementButton?.getAttribute('aria-label')).toBe('Passer aux unités métriques');
+    expect(measurementButton?.getAttribute('aria-label')).toBe(
+      'Passer aux unités métriques',
+    );
   });
 
   it('hides the header measurement toggle for authenticated users', () => {
@@ -192,18 +247,20 @@ describe('PublicHeaderComponent', () => {
       preferredMeasurementSystem: 'Metric',
       avatarUrl: '',
       createdAt: '2026-06-18T00:00:00Z',
-      updatedAt: '2026-06-18T00:00:00Z'
+      updatedAt: '2026-06-18T00:00:00Z',
     };
 
-    authService.isLoggedIn.and.returnValue(true);
-    authService.getUserIdFromToken.and.returnValue('user-1');
-    authApiService.getCurrentUserById.and.returnValue(of(user));
+    authService.isLoggedIn.mockReturnValue(true);
+    authService.getUserIdFromToken.mockReturnValue('user-1');
+    authApiService.getCurrentUserById.mockReturnValue(of(user));
 
     fixture = TestBed.createComponent(PublicHeaderComponent);
     fixture.detectChanges();
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    expect(host.querySelector('.app-public-nav__measurement-toggle')).toBeNull();
+    expect(
+      host.querySelector('.app-public-nav__measurement-toggle'),
+    ).toBeNull();
     expect(host.querySelector('.app-public-nav__profile')).not.toBeNull();
   });
 
@@ -222,19 +279,25 @@ describe('PublicHeaderComponent', () => {
       preferredMeasurementSystem: 'Metric',
       avatarUrl: 'avatars/user-1.png',
       createdAt: '2026-06-18T00:00:00Z',
-      updatedAt: '2026-06-18T00:00:00Z'
+      updatedAt: '2026-06-18T00:00:00Z',
     };
 
-    authService.isLoggedIn.and.returnValue(true);
-    authService.getUserIdFromToken.and.returnValue('user-1');
-    authApiService.getCurrentUserById.and.returnValue(of(user));
-    const imagesApiService: jasmine.SpyObj<ImagesApiService> = TestBed.inject(ImagesApiService) as jasmine.SpyObj<ImagesApiService>;
-    imagesApiService.resolveImageUrl.and.returnValue('/api/images/avatar-user-1');
+    authService.isLoggedIn.mockReturnValue(true);
+    authService.getUserIdFromToken.mockReturnValue('user-1');
+    authApiService.getCurrentUserById.mockReturnValue(of(user));
+    const imagesApiService: MockedObject<ImagesApiService> = TestBed.inject(
+      ImagesApiService,
+    ) as MockedObject<ImagesApiService>;
+    imagesApiService.resolveImageUrl.mockReturnValue(
+      '/api/images/avatar-user-1',
+    );
 
     fixture = TestBed.createComponent(PublicHeaderComponent);
     fixture.detectChanges();
 
-    const avatarImage: HTMLImageElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-nav__profile-avatar');
+    const avatarImage: HTMLImageElement | null = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector('.app-public-nav__profile-avatar');
     expect(avatarImage).not.toBeNull();
     expect(avatarImage?.getAttribute('src')).toBe('/api/images/avatar-user-1');
     expect(avatarImage?.getAttribute('alt')).toBe('Ced Caudron avatar');

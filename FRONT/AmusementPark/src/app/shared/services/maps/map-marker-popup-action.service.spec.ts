@@ -1,3 +1,4 @@
+import type { MockedObject } from 'vitest';
 import { MapMarker } from '@app/models/map/map-marker';
 
 import { MapDirectionsUrlService } from './map-directions-url.service';
@@ -5,14 +6,30 @@ import { MapMarkerDetailLinkService } from './map-marker-detail-link.service';
 import { MapMarkerPopupActionService } from './map-marker-popup-action.service';
 
 describe('MapMarkerPopupActionService', () => {
-  let directionsService: jasmine.SpyObj<MapDirectionsUrlService>;
-  let detailLinkService: jasmine.SpyObj<MapMarkerDetailLinkService>;
+  let directionsService: MockedObject<MapDirectionsUrlService>;
+  let detailLinkService: MockedObject<MapMarkerDetailLinkService>;
   let service: MapMarkerPopupActionService;
 
   beforeEach(() => {
-    directionsService = jasmine.createSpyObj<MapDirectionsUrlService>('MapDirectionsUrlService', ['buildDirectionsUrl']);
-    detailLinkService = jasmine.createSpyObj<MapMarkerDetailLinkService>('MapMarkerDetailLinkService', ['buildParkDetailRouteCommands', 'buildParkItemDetailRouteCommands']);
-    service = new MapMarkerPopupActionService(directionsService, detailLinkService);
+    directionsService = {
+      buildDirectionsUrl: vi
+        .fn()
+        .mockName('MapDirectionsUrlService.buildDirectionsUrl'),
+    } as unknown as MockedObject<MapDirectionsUrlService>;
+    detailLinkService = {
+      buildParkDetailRouteCommands: vi
+        .fn()
+        .mockName('MapMarkerDetailLinkService.buildParkDetailRouteCommands'),
+      buildParkItemDetailRouteCommands: vi
+        .fn()
+        .mockName(
+          'MapMarkerDetailLinkService.buildParkItemDetailRouteCommands',
+        ),
+    } as unknown as MockedObject<MapMarkerDetailLinkService>;
+    service = new MapMarkerPopupActionService(
+      directionsService,
+      detailLinkService,
+    );
   });
 
   function createMarker(): MapMarker {
@@ -21,40 +38,56 @@ describe('MapMarkerPopupActionService', () => {
       label: 'Marker',
       lat: 50,
       lng: 3,
-      iconKind: 'park'
+      iconKind: 'park',
     } as MapMarker;
   }
 
   it('adds directions url and labels without mutating the original marker', () => {
     const marker: MapMarker = createMarker();
-    directionsService.buildDirectionsUrl.and.returnValue('https://maps.test');
+    directionsService.buildDirectionsUrl.mockReturnValue('https://maps.test');
 
     const result: MapMarker = service.enrich(marker, {
       directions: { latitude: 50, longitude: 3 },
-      directionsLabel: ' Go '
+      directionsLabel: ' Go ',
     });
 
     expect(result).not.toBe(marker);
     expect(result.actionUrl).toBe('https://maps.test');
     expect(result.actionLabel).toBe('Go');
-    expect(result.directionsActionEnabled).toBeTrue();
+    expect(result.directionsActionEnabled).toBe(true);
     expect(marker.actionUrl).toBeUndefined();
   });
 
   it('prefers park item detail route commands over park route commands', () => {
     const marker: MapMarker = createMarker();
-    detailLinkService.buildParkItemDetailRouteCommands.and.returnValue(['/', 'fr', 'item']);
-    detailLinkService.buildParkDetailRouteCommands.and.returnValue(['/', 'fr', 'park']);
+    detailLinkService.buildParkItemDetailRouteCommands.mockReturnValue([
+      '/',
+      'fr',
+      'item',
+    ]);
+    detailLinkService.buildParkDetailRouteCommands.mockReturnValue([
+      '/',
+      'fr',
+      'park',
+    ]);
 
     const result: MapMarker = service.enrich(marker, {
       parkDetail: { language: 'fr', parkId: 'p1', parkName: 'Park' },
-      parkItemDetail: { language: 'fr', parkId: 'p1', parkName: 'Park', itemId: 'i1', itemName: 'Item' },
-      detailLabel: 'Details'
+      parkItemDetail: {
+        language: 'fr',
+        parkId: 'p1',
+        parkName: 'Park',
+        itemId: 'i1',
+        itemName: 'Item',
+      },
+      detailLabel: 'Details',
     });
 
     expect(result.detailActionRouteCommands).toEqual(['/', 'fr', 'item']);
     expect(result.detailActionLabel).toBe('Details');
-    expect(detailLinkService.buildParkDetailRouteCommands).not.toHaveBeenCalled();
+    expect(
+      detailLinkService.buildParkDetailRouteCommands,
+    ).not.toHaveBeenCalled();
   });
 
   it('keeps existing action values when no replacement is provided', () => {
@@ -63,7 +96,7 @@ describe('MapMarkerPopupActionService', () => {
       actionUrl: 'https://existing.test',
       actionLabel: 'Existing',
       detailActionRouteCommands: ['/', 'en', 'park'],
-      detailActionLabel: 'Existing detail'
+      detailActionLabel: 'Existing detail',
     } as MapMarker;
 
     const result: MapMarker = service.enrich(marker, {});
@@ -77,7 +110,7 @@ describe('MapMarkerPopupActionService', () => {
   it('normalizes blank labels to null', () => {
     const result: MapMarker = service.enrich(createMarker(), {
       directionsLabel: ' ',
-      detailLabel: ' '
+      detailLabel: ' ',
     });
 
     expect(result.actionLabel).toBeNull();

@@ -1,3 +1,4 @@
+import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 import { of, throwError } from 'rxjs';
@@ -21,35 +22,57 @@ describe('TranslationService', () => {
   });
 
   it('uses the route language as default language during initialization', async () => {
-    const translateService: jasmine.SpyObj<TranslateService> = jasmine.createSpyObj<TranslateService>('TranslateService', [
-      'setDefaultLang',
-      'use'
-    ]);
-    const testDocument: Document = createDocumentForPath('/fr/parcs/phantasialand');
-    const testedService = new TranslationService(translateService, testDocument);
-    translateService.use.and.returnValue(of({}));
+    const translateService: MockedObject<TranslateService> = {
+      setDefaultLang: vi.fn().mockName('TranslateService.setDefaultLang'),
+      use: vi.fn().mockName('TranslateService.use'),
+    } as unknown as MockedObject<TranslateService>;
+    const testDocument: Document = createDocumentForPath(
+      '/fr/parcs/phantasialand',
+    );
+    const testedService = new TranslationService(
+      translateService,
+      testDocument,
+    );
+    translateService.use.mockReturnValue(of({}));
 
     await testedService.initializeLanguage();
 
-    expect(translateService.setDefaultLang).toHaveBeenCalledOnceWith('fr');
-    expect(translateService.use).toHaveBeenCalledOnceWith('fr');
+    expect(translateService.setDefaultLang).toHaveBeenCalledTimes(1);
+
+    expect(translateService.setDefaultLang).toHaveBeenCalledWith('fr');
+    expect(translateService.use).toHaveBeenCalledTimes(1);
+    expect(translateService.use).toHaveBeenCalledWith('fr');
   });
 
   it('loads English only as fallback when the requested language fails', async () => {
-    spyOn(console, 'error');
-    const translateService: jasmine.SpyObj<TranslateService> = jasmine.createSpyObj<TranslateService>('TranslateService', [
-      'setDefaultLang',
-      'use'
-    ]);
-    const testDocument: Document = createDocumentForPath('/fr/parcs/phantasialand');
-    const testedService = new TranslationService(translateService, testDocument);
-    translateService.use.withArgs('fr').and.returnValue(throwError(() => new Error('network')));
-    translateService.use.withArgs('en').and.returnValue(of({}));
+    vi.spyOn(console, 'error');
+    const translateService: MockedObject<TranslateService> = {
+      setDefaultLang: vi.fn().mockName('TranslateService.setDefaultLang'),
+      use: vi.fn().mockName('TranslateService.use'),
+    } as unknown as MockedObject<TranslateService>;
+    const testDocument: Document = createDocumentForPath(
+      '/fr/parcs/phantasialand',
+    );
+    const testedService = new TranslationService(
+      translateService,
+      testDocument,
+    );
+    translateService.use.mockImplementation((language: string) =>
+      language === 'fr'
+        ? throwError(() => new Error('network'))
+        : of({}),
+    );
 
     await testedService.initializeLanguage();
 
-    expect(translateService.setDefaultLang.calls.allArgs()).toEqual([['fr'], ['en']]);
-    expect(translateService.use.calls.allArgs()).toEqual([['fr'], ['en']]);
+    expect(vi.mocked(translateService.setDefaultLang).mock.calls).toEqual([
+      ['fr'],
+      ['en'],
+    ]);
+    expect(vi.mocked(translateService.use).mock.calls).toEqual([
+      ['fr'],
+      ['en'],
+    ]);
   });
 });
 
@@ -58,7 +81,7 @@ function createDocumentForPath(pathname: string): Document {
     location: { pathname },
     documentElement: {
       lang: '',
-      getAttribute: () => 'en'
-    }
+      getAttribute: () => 'en',
+    },
   } as unknown as Document;
 }

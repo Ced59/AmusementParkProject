@@ -7,7 +7,8 @@ import { Tooltip } from './primitives';
 @Component({
   standalone: true,
   imports: [Tooltip],
-  template: '<button type="button" [appUiTooltip]="text" tooltipPosition="bottom">?</button>'
+  template:
+    '<button type="button" [appUiTooltip]="text" tooltipPosition="bottom">?</button>',
 })
 class TooltipHostComponent {
   text = 'Helpful details';
@@ -15,26 +16,33 @@ class TooltipHostComponent {
 
 describe('Tooltip primitive', () => {
   afterEach(() => {
-    document.querySelectorAll('.app-ui-tooltip').forEach((element: Element) => element.remove());
+    document
+      .querySelectorAll('.app-ui-tooltip')
+      .forEach((element: Element) => element.remove());
   });
 
   it('shows a positioned tooltip on hover and removes it on mouse leave', async () => {
     await TestBed.configureTestingModule({
-      imports: [TooltipHostComponent]
+      imports: [TooltipHostComponent],
     }).compileComponents();
 
-    const fixture: ComponentFixture<TooltipHostComponent> = TestBed.createComponent(TooltipHostComponent);
+    const fixture: ComponentFixture<TooltipHostComponent> =
+      TestBed.createComponent(TooltipHostComponent);
     fixture.detectChanges();
 
-    const button: HTMLButtonElement = fixture.debugElement.query(By.css('button')).nativeElement;
+    const button: HTMLButtonElement = fixture.debugElement.query(
+      By.css('button'),
+    ).nativeElement;
     button.dispatchEvent(new Event('mouseenter'));
     fixture.detectChanges();
 
-    const tooltip = document.querySelector('.app-ui-tooltip') as HTMLElement | null;
+    const tooltip = document.querySelector(
+      '.app-ui-tooltip',
+    ) as HTMLElement | null;
 
     expect(tooltip).not.toBeNull();
     if (tooltip === null) {
-      fail('Expected tooltip to be rendered.');
+      throw new Error('Expected tooltip to be rendered.');
       return;
     }
 
@@ -45,6 +53,6 @@ describe('Tooltip primitive', () => {
     fixture.detectChanges();
 
     expect(document.querySelector('.app-ui-tooltip')).toBeNull();
-    expect(button.hasAttribute('aria-describedby')).toBeFalse();
+    expect(button.hasAttribute('aria-describedby')).toBe(false);
   });
 });

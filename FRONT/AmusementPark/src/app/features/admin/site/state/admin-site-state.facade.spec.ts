@@ -1,7 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { Observable, of, throwError } from 'rxjs';
 
-import { AdminImageBulkMetadataResult, AdminImageBulkMetadataUpdate } from '@app/models/images/admin-image-bulk-metadata-update';
+import {
+  AdminImageBulkMetadataResult,
+  AdminImageBulkMetadataUpdate,
+} from '@app/models/images/admin-image-bulk-metadata-update';
 import { AdminImageSearchQuery } from '@app/models/images/admin-image-search-query';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -12,33 +15,54 @@ import { PagedResult } from '@shared/models/contracts';
 
 import {
   ADMIN_SITE_STATE_IMAGES_API_SERVICE_PORT,
-  AdminSiteStateImagesApiServicePort
+  AdminSiteStateImagesApiServicePort,
 } from './admin-site-state-data.ports';
 import { AdminSiteStateFacade } from './admin-site-state.facade';
 
-type UpdateAdminImageRequest = Parameters<AdminSiteStateImagesApiServicePort['updateAdminImage']>[1];
-type CreateAdminImageTagRequest = Parameters<AdminSiteStateImagesApiServicePort['createAdminImageTag']>[0];
+type UpdateAdminImageRequest = Parameters<
+  AdminSiteStateImagesApiServicePort['updateAdminImage']
+>[1];
+type CreateAdminImageTagRequest = Parameters<
+  AdminSiteStateImagesApiServicePort['createAdminImageTag']
+>[0];
 
 class FakeImagesPort implements AdminSiteStateImagesApiServicePort {
-  public pageResponse$: Observable<PagedResult<ImageDto>> = of(createPagedResult<ImageDto>([
-    createImage('image-1'),
-    createImage('image-2', { category: ImageCategory.LOGO, isWatermarked: false })
-  ]));
+  public pageResponse$: Observable<PagedResult<ImageDto>> = of(
+    createPagedResult<ImageDto>([
+      createImage('image-1'),
+      createImage('image-2', {
+        category: ImageCategory.LOGO,
+        isWatermarked: false,
+      }),
+    ]),
+  );
   public tagsResponse$: Observable<ImageTagDto[]> = of([createTag('tag-1')]);
   public updateResponse$: Observable<ImageDto> = of(createImage('image-1'));
-  public watermarkResponse$: Observable<ImageDto> = of(createImage('image-1', { isWatermarked: true }));
-  public bulkResponse$: Observable<AdminImageBulkMetadataResult> = of({ requestedCount: 1, updatedCount: 1 });
+  public watermarkResponse$: Observable<ImageDto> = of(
+    createImage('image-1', { isWatermarked: true }),
+  );
+  public bulkResponse$: Observable<AdminImageBulkMetadataResult> = of({
+    requestedCount: 1,
+    updatedCount: 1,
+  });
   public deleteResponse$: Observable<boolean> = of(true);
-  public createTagResponse$: Observable<ImageTagDto> = of(createTag('created-tag'));
+  public createTagResponse$: Observable<ImageTagDto> = of(
+    createTag('created-tag'),
+  );
 
   public readonly queryCalls: AdminImageSearchQuery[] = [];
-  public readonly updateCalls: Array<{ id: string; request: UpdateAdminImageRequest }> = [];
+  public readonly updateCalls: Array<{
+    id: string;
+    request: UpdateAdminImageRequest;
+  }> = [];
   public readonly watermarkCalls: string[] = [];
   public readonly bulkCalls: AdminImageBulkMetadataUpdate[] = [];
   public readonly deleteCalls: string[] = [];
   public readonly createTagCalls: CreateAdminImageTagRequest[] = [];
 
-  getAdminImages(query: Partial<AdminImageSearchQuery> = {}): Observable<PagedResult<ImageDto>> {
+  getAdminImages(
+    query: Partial<AdminImageSearchQuery> = {},
+  ): Observable<PagedResult<ImageDto>> {
     this.queryCalls.push(query as AdminImageSearchQuery);
     return this.pageResponse$;
   }
@@ -47,7 +71,10 @@ class FakeImagesPort implements AdminSiteStateImagesApiServicePort {
     return this.tagsResponse$;
   }
 
-  updateAdminImage(id: string, request: UpdateAdminImageRequest): Observable<ImageDto> {
+  updateAdminImage(
+    id: string,
+    request: UpdateAdminImageRequest,
+  ): Observable<ImageDto> {
     this.updateCalls.push({ id, request });
     return this.updateResponse$;
   }
@@ -57,12 +84,16 @@ class FakeImagesPort implements AdminSiteStateImagesApiServicePort {
     return this.watermarkResponse$;
   }
 
-  createAdminImageTag(request: CreateAdminImageTagRequest): Observable<ImageTagDto> {
+  createAdminImageTag(
+    request: CreateAdminImageTagRequest,
+  ): Observable<ImageTagDto> {
     this.createTagCalls.push(request);
     return this.createTagResponse$;
   }
 
-  updateAdminImagesBulkMetadata(request: AdminImageBulkMetadataUpdate): Observable<AdminImageBulkMetadataResult> {
+  updateAdminImagesBulkMetadata(
+    request: AdminImageBulkMetadataUpdate,
+  ): Observable<AdminImageBulkMetadataResult> {
     this.bulkCalls.push(request);
     return this.bulkResponse$;
   }
@@ -94,7 +125,10 @@ describe('AdminSiteStateFacade', () => {
     facade.reload();
 
     expect(facade.state().kind).toBe('ready');
-    expect(facade.images().map((image: ImageDto) => image.id)).toEqual(['image-1', 'image-2']);
+    expect(facade.images().map((image: ImageDto) => image.id)).toEqual([
+      'image-1',
+      'image-2',
+    ]);
     expect(facade.tags().map((tag: ImageTagDto) => tag.id)).toEqual(['tag-1']);
     expect(facade.selectedImage()?.id).toBe('image-1');
   });
@@ -117,7 +151,7 @@ describe('AdminSiteStateFacade', () => {
     expect(port.updateCalls[0].request.ownerId).toBeNull();
     expect(port.updateCalls[0].request.geoLocation).toBeNull();
     expect(port.updateCalls[0].request.tagIds).toEqual(['tag-1']);
-    expect(port.updateCalls[0].request.isPublished).toBeFalse();
+    expect(port.updateCalls[0].request.isPublished).toBe(false);
   });
 
   it('applies watermark only when the selected image is eligible', () => {
@@ -136,12 +170,14 @@ describe('AdminSiteStateFacade', () => {
   it('creates image tags with a normalized slug', () => {
     facade.reload();
 
-    expect(facade.createTag('  HERO-TAG  ')).toBeTrue();
-    expect(facade.createTag('   ')).toBeFalse();
+    expect(facade.createTag('  HERO-TAG  ')).toBe(true);
+    expect(facade.createTag('   ')).toBe(false);
 
     expect(port.createTagCalls.length).toBe(1);
     expect(port.createTagCalls[0].slug).toBe('hero-tag');
-    expect(port.createTagCalls[0].labels).toEqual([{ languageCode: 'fr', value: 'hero-tag' }]);
+    expect(port.createTagCalls[0].labels).toEqual([
+      { languageCode: 'fr', value: 'hero-tag' },
+    ]);
   });
 
   it('applies bulk metadata to selected images', () => {
@@ -151,7 +187,9 @@ describe('AdminSiteStateFacade', () => {
 
     facade.applyBulkMetadata({ isPublished: false });
 
-    expect(port.bulkCalls).toEqual([{ imageIds: ['image-1', 'image-2'], isPublished: false }]);
+    expect(port.bulkCalls).toEqual([
+      { imageIds: ['image-1', 'image-2'], isPublished: false },
+    ]);
   });
 
   it('deletes unique image ids and reloads the page', () => {
@@ -170,7 +208,10 @@ describe('AdminSiteStateFacade', () => {
     facade.deleteImages(['image-1']);
 
     expect(facade.state().kind).toBe('ready');
-    expect(facade.images().map((image: ImageDto) => image.id)).toEqual(['image-1', 'image-2']);
+    expect(facade.images().map((image: ImageDto) => image.id)).toEqual([
+      'image-1',
+      'image-2',
+    ]);
     expect(facade.operationErrorKey()).toBe('common.errorMessage');
   });
 });

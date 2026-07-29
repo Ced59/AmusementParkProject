@@ -1,7 +1,10 @@
 import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { environment } from '../../../environments/environment';
 import { ContextualBlocksApiService } from './contextual-blocks-api.service';
 
@@ -26,31 +29,44 @@ describe('ContextualBlocksApiService', () => {
   it('downloads bounded contextual block exports as blobs', () => {
     const responseBlob: Blob = new Blob(['{}'], { type: 'application/json' });
 
-    service.downloadBlockExport('park.description', 'park 1').subscribe((response) => {
-      expect(response.body).toBe(responseBlob);
-      expect(response.headers.get('content-disposition')).toContain('block.json');
-    });
+    service
+      .downloadBlockExport('park.description', 'park 1')
+      .subscribe((response) => {
+        expect(response.body).toBe(responseBlob);
+        expect(response.headers.get('content-disposition')).toContain(
+          'block.json',
+        );
+      });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/export`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/export`,
+    );
     expect(request.request.method).toBe('GET');
     expect(request.request.responseType).toBe('blob');
 
     request.flush(responseBlob, {
       headers: {
-        'content-disposition': 'attachment; filename="block.json"'
-      }
+        'content-disposition': 'attachment; filename="block.json"',
+      },
     });
   });
 
   it('posts bounded JSON preview requests without mutating public data', () => {
-    const document: unknown = { blockType: 'park.description', block: { parkId: 'park-1' } };
+    const document: unknown = {
+      blockType: 'park.description',
+      block: { parkId: 'park-1' },
+    };
 
-    service.previewBlock('park.description', 'park 1', document).subscribe((response) => {
-      expect(response.canApply).toBeTrue();
-      expect(response.changes.length).toBe(0);
-    });
+    service
+      .previewBlock('park.description', 'park 1', document)
+      .subscribe((response) => {
+        expect(response.canApply).toBe(true);
+        expect(response.changes.length).toBe(0);
+      });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/preview`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/preview`,
+    );
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual({ document });
 
@@ -63,7 +79,7 @@ describe('ContextualBlocksApiService', () => {
       target: {
         entityType: 'Park',
         entityId: 'park-1',
-        displayName: 'Phantasialand'
+        displayName: 'Phantasialand',
       },
       counts: {
         created: 0,
@@ -71,21 +87,25 @@ describe('ContextualBlocksApiService', () => {
         deleted: 0,
         unchanged: 0,
         warnings: 0,
-        errors: 0
+        errors: 0,
       },
       changes: [],
       warnings: [],
-      errors: []
+      errors: [],
     });
   });
 
   it('reads bounded contextual block exports as JSON documents', () => {
-    service.getBlockExportDocument('park.description', 'park 1').subscribe((response) => {
-      expect(response.blockType).toBe('park.description');
-      expect(response.target.entityId).toBe('park-1');
-    });
+    service
+      .getBlockExportDocument('park.description', 'park 1')
+      .subscribe((response) => {
+        expect(response.blockType).toBe('park.description');
+        expect(response.target.entityId).toBe('park-1');
+      });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/export`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/export`,
+    );
     expect(request.request.method).toBe('GET');
 
     request.flush({
@@ -94,31 +114,38 @@ describe('ContextualBlocksApiService', () => {
       blockType: 'park.description',
       target: {
         entityType: 'Park',
-        entityId: 'park-1'
+        entityId: 'park-1',
       },
       ids: {
-        parkId: 'park-1'
+        parkId: 'park-1',
       },
       block: {
         parkId: 'park-1',
-        descriptions: []
+        descriptions: [],
       },
       metadata: {
         source: 'admin-contextual-block-export',
-        exportedAtUtc: '2026-06-21T10:00:00Z'
-      }
+        exportedAtUtc: '2026-06-21T10:00:00Z',
+      },
     });
   });
 
   it('posts bounded JSON apply requests to mutate selected blocks', () => {
-    const document: unknown = { blockType: 'park.description', block: { parkId: 'park-1' } };
+    const document: unknown = {
+      blockType: 'park.description',
+      block: { parkId: 'park-1' },
+    };
 
-    service.applyBlock('park.description', 'park 1', document).subscribe((response) => {
-      expect(response.isApplied).toBeTrue();
-      expect(response.canApply).toBeTrue();
-    });
+    service
+      .applyBlock('park.description', 'park 1', document)
+      .subscribe((response) => {
+        expect(response.isApplied).toBe(true);
+        expect(response.canApply).toBe(true);
+      });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/apply`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/apply`,
+    );
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual({ document });
 
@@ -131,7 +158,7 @@ describe('ContextualBlocksApiService', () => {
       target: {
         entityType: 'Park',
         entityId: 'park-1',
-        displayName: 'Phantasialand'
+        displayName: 'Phantasialand',
       },
       counts: {
         created: 0,
@@ -139,11 +166,11 @@ describe('ContextualBlocksApiService', () => {
         deleted: 0,
         unchanged: 7,
         warnings: 0,
-        errors: 0
+        errors: 0,
       },
       changes: [],
       warnings: [],
-      errors: []
+      errors: [],
     });
   });
 });

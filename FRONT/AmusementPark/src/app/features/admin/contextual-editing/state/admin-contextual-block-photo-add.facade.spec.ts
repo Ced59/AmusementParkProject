@@ -1,3 +1,4 @@
+import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,105 +11,143 @@ import { ImageUploadSecurityService } from '@shared/utils/security';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
 import {
   AdminContextualPhotoMetadataPreview,
-  AdminContextualPhotoMetadataReaderService
+  AdminContextualPhotoMetadataReaderService,
 } from '../services/admin-contextual-photo-metadata-reader.service';
 import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
 import {
   ADMIN_CONTEXTUAL_BLOCK_PHOTO_ADD_IMAGES_PORT,
-  AdminContextualBlockPhotoAddImagesPort
+  AdminContextualBlockPhotoAddImagesPort,
 } from './admin-contextual-block-photo-add-data.ports';
 import { AdminContextualBlockPhotoAddFacade } from './admin-contextual-block-photo-add.facade';
 
 describe('AdminContextualBlockPhotoAddFacade', () => {
   let facade: AdminContextualBlockPhotoAddFacade;
-  let imagesPort: jasmine.SpyObj<AdminContextualBlockPhotoAddImagesPort>;
-  let metadataReader: jasmine.SpyObj<AdminContextualPhotoMetadataReaderService>;
-  let refreshEvents: jasmine.SpyObj<AdminContextualBlockRefreshEvents>;
-  let imageUploadSecurityService: jasmine.SpyObj<ImageUploadSecurityService>;
+  let imagesPort: MockedObject<AdminContextualBlockPhotoAddImagesPort>;
+  let metadataReader: MockedObject<AdminContextualPhotoMetadataReaderService>;
+  let refreshEvents: MockedObject<AdminContextualBlockRefreshEvents>;
+  let imageUploadSecurityService: MockedObject<ImageUploadSecurityService>;
 
   beforeEach(() => {
-    imagesPort = jasmine.createSpyObj<AdminContextualBlockPhotoAddImagesPort>('AdminContextualBlockPhotoAddImagesPort', [
-      'uploadImage',
-      'linkImage',
-      'importRemoteImage',
-      'getAdminImageTags',
-      'createAdminImageTag',
-      'updateAdminImage'
-    ]);
-    metadataReader = jasmine.createSpyObj<AdminContextualPhotoMetadataReaderService>('AdminContextualPhotoMetadataReaderService', ['readFile', 'readRemoteUrl']);
-    refreshEvents = jasmine.createSpyObj<AdminContextualBlockRefreshEvents>('AdminContextualBlockRefreshEvents', ['notifyBlockApplied']);
-    imageUploadSecurityService = jasmine.createSpyObj<ImageUploadSecurityService>('ImageUploadSecurityService', ['validateImageFile']);
+    imagesPort = {
+      uploadImage: vi
+        .fn()
+        .mockName('AdminContextualBlockPhotoAddImagesPort.uploadImage'),
+      linkImage: vi
+        .fn()
+        .mockName('AdminContextualBlockPhotoAddImagesPort.linkImage'),
+      importRemoteImage: vi
+        .fn()
+        .mockName('AdminContextualBlockPhotoAddImagesPort.importRemoteImage'),
+      getAdminImageTags: vi
+        .fn()
+        .mockName('AdminContextualBlockPhotoAddImagesPort.getAdminImageTags'),
+      createAdminImageTag: vi
+        .fn()
+        .mockName('AdminContextualBlockPhotoAddImagesPort.createAdminImageTag'),
+      updateAdminImage: vi
+        .fn()
+        .mockName('AdminContextualBlockPhotoAddImagesPort.updateAdminImage'),
+    } as unknown as MockedObject<AdminContextualBlockPhotoAddImagesPort>;
+    metadataReader = {
+      readFile: vi
+        .fn()
+        .mockName('AdminContextualPhotoMetadataReaderService.readFile'),
+      readRemoteUrl: vi
+        .fn()
+        .mockName('AdminContextualPhotoMetadataReaderService.readRemoteUrl'),
+    } as unknown as MockedObject<AdminContextualPhotoMetadataReaderService>;
+    refreshEvents = {
+      notifyBlockApplied: vi
+        .fn()
+        .mockName('AdminContextualBlockRefreshEvents.notifyBlockApplied'),
+    } as unknown as MockedObject<AdminContextualBlockRefreshEvents>;
+    imageUploadSecurityService = {
+      validateImageFile: vi
+        .fn()
+        .mockName('ImageUploadSecurityService.validateImageFile'),
+    } as unknown as MockedObject<ImageUploadSecurityService>;
 
-    imagesPort.getAdminImageTags.and.returnValue(of(createTags()));
-    imagesPort.createAdminImageTag.and.callFake((request) => of({
-      id: `${request.slug}-tag`,
-      slug: request.slug,
-      labels: request.labels,
-      descriptions: request.descriptions,
-      isActive: true,
-      createdAt: '2026-06-21T00:00:00Z',
-      updatedAt: '2026-06-21T00:00:00Z'
-    }));
-    imageUploadSecurityService.validateImageFile.and.returnValue({ isValid: true, errorKey: null });
-    metadataReader.readFile.and.returnValue(Promise.resolve(createMetadataPreview()));
-    metadataReader.readRemoteUrl.and.returnValue(Promise.resolve({
-      ...createMetadataPreview(),
-      sourceKind: 'remote',
-      fileName: null,
-      contentType: null,
-      sizeInBytes: null,
-      geoLocation: null,
-      geoStatus: 'unavailable'
-    }));
+    imagesPort.getAdminImageTags.mockReturnValue(of(createTags()));
+    imagesPort.createAdminImageTag.mockImplementation((request) =>
+      of({
+        id: `${request.slug}-tag`,
+        slug: request.slug,
+        labels: request.labels,
+        descriptions: request.descriptions,
+        isActive: true,
+        createdAt: '2026-06-21T00:00:00Z',
+        updatedAt: '2026-06-21T00:00:00Z',
+      }),
+    );
+    imageUploadSecurityService.validateImageFile.mockReturnValue({
+      isValid: true,
+      errorKey: null,
+    });
+    metadataReader.readFile.mockReturnValue(
+      Promise.resolve(createMetadataPreview()),
+    );
+    metadataReader.readRemoteUrl.mockReturnValue(
+      Promise.resolve({
+        ...createMetadataPreview(),
+        sourceKind: 'remote',
+        fileName: null,
+        contentType: null,
+        sizeInBytes: null,
+        geoLocation: null,
+        geoStatus: 'unavailable',
+      }),
+    );
 
     TestBed.configureTestingModule({
       providers: [
         AdminContextualBlockPhotoAddFacade,
         {
           provide: ADMIN_CONTEXTUAL_BLOCK_PHOTO_ADD_IMAGES_PORT,
-          useValue: imagesPort
+          useValue: imagesPort,
         },
         {
           provide: AdminContextualPhotoMetadataReaderService,
-          useValue: metadataReader
+          useValue: metadataReader,
         },
         {
           provide: ImageUploadSecurityService,
-          useValue: imageUploadSecurityService
+          useValue: imageUploadSecurityService,
         },
         {
           provide: AdminContextualBlockRefreshEvents,
-          useValue: refreshEvents
+          useValue: refreshEvents,
         },
         {
           provide: TranslateService,
           useValue: {
             currentLang: 'fr',
-            instant: (key: string) => key
-          }
-        }
-      ]
+            instant: (key: string) => key,
+          },
+        },
+      ],
     });
 
     facade = TestBed.inject(AdminContextualBlockPhotoAddFacade);
-    spyOn(URL, 'createObjectURL').and.returnValue('blob:preview');
-    spyOn(URL, 'revokeObjectURL');
+    vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:preview');
+    vi.spyOn(URL, 'revokeObjectURL');
   });
 
   it('uploads a selected park photo with category, tags, metadata preview and refresh notification', async () => {
     const block: AdminContextualBlockInstance = createParkImagesBlock();
-    const file: File = new File(['image'], 'entrance.jpg', { type: 'image/jpeg' });
+    const file: File = new File(['image'], 'entrance.jpg', {
+      type: 'image/jpeg',
+    });
     const linkedImage: ImageDto = createImageDto({
       id: 'image-1',
-      tagIds: ['existing-tag']
+      tagIds: ['existing-tag'],
     });
     const updatedImage: ImageDto = createImageDto({
       id: 'image-1',
-      tagIds: ['existing-tag', 'park-gallery-tag', 'extra-tag']
+      tagIds: ['existing-tag', 'park-gallery-tag', 'extra-tag'],
     });
-    imagesPort.uploadImage.and.returnValue(of({ id: 'uploaded-1' }));
-    imagesPort.linkImage.and.returnValue(of(linkedImage));
-    imagesPort.updateAdminImage.and.returnValue(of(updatedImage));
+    imagesPort.uploadImage.mockReturnValue(of({ id: 'uploaded-1' }));
+    imagesPort.linkImage.mockReturnValue(of(linkedImage));
+    imagesPort.updateAdminImage.mockReturnValue(of(updatedImage));
 
     facade.resetForBlock(block);
     await flushPromises();
@@ -122,25 +161,41 @@ describe('AdminContextualBlockPhotoAddFacade', () => {
     await flushPromises();
 
     expect(facade.previewUrl()).toBeNull();
-    expect(facade.successKey()).toBe('admin.contextualBlocks.drawer.photoUploadSucceeded');
+    expect(facade.successKey()).toBe(
+      'admin.contextualBlocks.drawer.photoUploadSucceeded',
+    );
     expect(facade.metadataRows().length).toBe(0);
-    expect(imagesPort.uploadImage).toHaveBeenCalledOnceWith(file, ImageCategory.PARK, true, 'Entrance view');
-    expect(imagesPort.linkImage).toHaveBeenCalledOnceWith({
+    expect(imagesPort.uploadImage).toHaveBeenCalledTimes(1);
+    expect(imagesPort.uploadImage).toHaveBeenCalledWith(
+      file,
+      ImageCategory.PARK,
+      true,
+      'Entrance view',
+    );
+    expect(imagesPort.linkImage).toHaveBeenCalledTimes(1);
+    expect(imagesPort.linkImage).toHaveBeenCalledWith({
       imageId: 'uploaded-1',
       ownerType: ImageOwnerType.PARK,
       ownerId: 'park-1',
       description: 'Entrance view',
-      setAsCurrent: true
+      setAsCurrent: true,
     });
-    expect(imagesPort.updateAdminImage).toHaveBeenCalledOnceWith('image-1', jasmine.objectContaining({
-      tagIds: ['existing-tag', 'park-gallery-tag', 'extra-tag'],
-      isPublished: true
-    }));
-    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledOnceWith(jasmine.objectContaining({
-      blockType: 'park.images',
-      entityType: 'Park',
-      entityId: 'park-1'
-    }));
+    expect(imagesPort.updateAdminImage).toHaveBeenCalledTimes(1);
+    expect(imagesPort.updateAdminImage).toHaveBeenCalledWith(
+      'image-1',
+      expect.objectContaining({
+        tagIds: ['existing-tag', 'park-gallery-tag', 'extra-tag'],
+        isPublished: true,
+      }),
+    );
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledTimes(1);
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledWith(
+      expect.objectContaining({
+        blockType: 'park.images',
+        entityType: 'Park',
+        entityId: 'park-1',
+      }),
+    );
   });
 
   it('imports a remote park item photo through the selected contextual block', async () => {
@@ -149,10 +204,10 @@ describe('AdminContextualBlockPhotoAddFacade', () => {
       id: 'image-2',
       category: ImageCategory.PARK_ITEM,
       ownerType: ImageOwnerType.PARK_ITEM,
-      ownerId: 'item-1'
+      ownerId: 'item-1',
     });
-    imagesPort.importRemoteImage.and.returnValue(of(importedImage));
-    imagesPort.updateAdminImage.and.returnValue(of(importedImage));
+    imagesPort.importRemoteImage.mockReturnValue(of(importedImage));
+    imagesPort.updateAdminImage.mockReturnValue(of(importedImage));
 
     facade.resetForBlock(block);
     await flushPromises();
@@ -165,23 +220,32 @@ describe('AdminContextualBlockPhotoAddFacade', () => {
     facade.uploadPhoto(block);
     await flushPromises();
 
-    expect(imagesPort.importRemoteImage).toHaveBeenCalledOnceWith({
+    expect(imagesPort.importRemoteImage).toHaveBeenCalledTimes(1);
+
+    expect(imagesPort.importRemoteImage).toHaveBeenCalledWith({
       sourceUrl: 'https://example.test/photo.webp',
       category: ImageCategory.PARK_ITEM,
       ownerType: ImageOwnerType.PARK_ITEM,
       ownerId: 'item-1',
       description: 'Queue line',
       withWatermark: false,
-      setAsCurrent: false
+      setAsCurrent: false,
     });
-    expect(imagesPort.updateAdminImage).toHaveBeenCalledOnceWith('image-2', jasmine.objectContaining({
-      isPublished: false
-    }));
-    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledOnceWith(jasmine.objectContaining({
-      blockType: 'parkItem.images',
-      entityType: 'ParkItem',
-      entityId: 'item-1'
-    }));
+    expect(imagesPort.updateAdminImage).toHaveBeenCalledTimes(1);
+    expect(imagesPort.updateAdminImage).toHaveBeenCalledWith(
+      'image-2',
+      expect.objectContaining({
+        isPublished: false,
+      }),
+    );
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledTimes(1);
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledWith(
+      expect.objectContaining({
+        blockType: 'parkItem.images',
+        entityType: 'ParkItem',
+        entityId: 'item-1',
+      }),
+    );
   });
 });
 
@@ -200,7 +264,7 @@ function createTags(): ImageTagDto[] {
       descriptions: [],
       isActive: true,
       createdAt: '2026-06-21T00:00:00Z',
-      updatedAt: '2026-06-21T00:00:00Z'
+      updatedAt: '2026-06-21T00:00:00Z',
     },
     {
       id: 'park-item-gallery-tag',
@@ -209,7 +273,7 @@ function createTags(): ImageTagDto[] {
       descriptions: [],
       isActive: true,
       createdAt: '2026-06-21T00:00:00Z',
-      updatedAt: '2026-06-21T00:00:00Z'
+      updatedAt: '2026-06-21T00:00:00Z',
     },
     {
       id: 'extra-tag',
@@ -218,8 +282,8 @@ function createTags(): ImageTagDto[] {
       descriptions: [],
       isActive: true,
       createdAt: '2026-06-21T00:00:00Z',
-      updatedAt: '2026-06-21T00:00:00Z'
-    }
+      updatedAt: '2026-06-21T00:00:00Z',
+    },
   ];
 }
 
@@ -232,7 +296,7 @@ function createMetadataPreview(): AdminContextualPhotoMetadataPreview {
     width: 1024,
     height: 768,
     geoLocation: { latitude: 50.1, longitude: 3.2 },
-    geoStatus: 'detected'
+    geoStatus: 'detected',
   };
 }
 
@@ -258,7 +322,7 @@ function createImageDto(partial: Partial<ImageDto>): ImageDto {
     credits: partial.credits ?? [],
     tagIds: partial.tagIds ?? [],
     createdAt: partial.createdAt ?? '2026-06-21T00:00:00Z',
-    updatedAt: partial.updatedAt ?? '2026-06-21T00:00:00Z'
+    updatedAt: partial.updatedAt ?? '2026-06-21T00:00:00Z',
   };
 }
 
@@ -277,7 +341,7 @@ function createParkImagesBlock(): AdminContextualBlockInstance {
     jsonScope: ['park.id', 'image.file'],
     localizedLanguageCodes: [],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }
 
@@ -296,6 +360,15 @@ function createParkItemImagesBlock(): AdminContextualBlockInstance {
     jsonScope: ['parkItem.id', 'image.file'],
     localizedLanguageCodes: [],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1', 'items', 'item-1']
+    adminRoute: [
+      '/',
+      'fr',
+      'admin',
+      'parks',
+      'edit',
+      'park-1',
+      'items',
+      'item-1',
+    ],
   };
 }

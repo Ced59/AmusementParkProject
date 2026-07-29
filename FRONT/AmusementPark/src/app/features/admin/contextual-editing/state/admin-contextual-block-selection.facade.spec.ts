@@ -12,8 +12,8 @@ describe('AdminContextualBlockSelectionFacade', () => {
     TestBed.configureTestingModule({
       providers: [
         AdminPublicViewModeFacade,
-        AdminContextualBlockSelectionFacade
-      ]
+        AdminContextualBlockSelectionFacade,
+      ],
     });
 
     publicViewModeFacade = TestBed.inject(AdminPublicViewModeFacade);
@@ -24,7 +24,7 @@ describe('AdminContextualBlockSelectionFacade', () => {
     selectionFacade.selectBlock(createBlock());
 
     expect(selectionFacade.selectedBlock()).toBeNull();
-    expect(selectionFacade.hasSelection()).toBeFalse();
+    expect(selectionFacade.hasSelection()).toBe(false);
   });
 
   it('stores the selected block only in admin edition mode', () => {
@@ -34,7 +34,7 @@ describe('AdminContextualBlockSelectionFacade', () => {
     selectionFacade.selectBlock(createBlock());
 
     expect(selectionFacade.selectedBlock()?.id).toBe('park.hero:park-1');
-    expect(selectionFacade.hasSelection()).toBeTrue();
+    expect(selectionFacade.hasSelection()).toBe(true);
   });
 
   it('clears the selected block when edition mode is disabled', () => {
@@ -64,6 +64,6 @@ function createBlock(): AdminContextualBlockInstance {
     jsonScope: ['park.id'],
     localizedLanguageCodes: [],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }
