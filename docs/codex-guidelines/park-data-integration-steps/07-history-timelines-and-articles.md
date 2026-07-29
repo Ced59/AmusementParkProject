@@ -185,6 +185,101 @@ Images d’incident ou accident :
 - ne pas écrire une légende défensive du type “aucune image de scène non graphique…” ;
 - écrire plutôt une légende factuelle : “El Loco dans Adventuredome. La vue permet de situer la montagne russe concernée par l’incident de 2019.”
 
+## Images créées ou utilisées dans un lot d’article
+
+Le propriétaire d’une image et la référence de cette image depuis un article sont deux résolutions indépendantes. Un événement, un article, `mainImageKey`, `imageKey` ou `imageKeys` ne renseigne jamais le propriétaire de l’objet `images[]`.
+
+Le processeur traite les sections dans cet ordre :
+
+1. `items[]` et `references` enregistrent les clés de propriétaires ;
+2. `images[]` résout les propriétaires et enregistre les clés d’images disponibles ;
+3. `history.events` et les articles utilisent les IDs ou clés d’images enregistrés.
+
+### Propriétaire de chaque image
+
+Chaque image créée dans le lot doit suivre exactement les règles de l’étape 5 :
+
+- `ownerType: "Park"` et `ownerKey: "park"` pour le parc cible ;
+- `ownerType: "ParkItem"` et un `ownerKey` égal à la valeur exacte d’une entrée `items[].key` du même JSON ;
+- `ownerType` de référence et `ownerKey` préfixé, avec la référence correspondante dans le même JSON ;
+- jamais `ownerId` seul pour tenter de résoudre un parkItem, un exploitant, un fondateur ou un constructeur.
+
+### Référence depuis l’article
+
+Pour une image déjà présente dans l’export actualisé, utiliser son ID :
+
+- `mainImageId` ;
+- `blocks[].imageId` ;
+- `blocks[].imageIds`.
+
+Pour une image distante créée dans le même JSON, définir une `images[].key` stable et unique, puis utiliser exactement cette valeur dans :
+
+- `mainImageKey` ;
+- `blocks[].imageKey` ;
+- `blocks[].imageKeys`.
+
+Ne jamais utiliser la clé d’une image créée dans un lot précédent. Le processeur ne précharge pas les clés de toutes les images existantes. Après un Apply, réexporter et utiliser l’ID obtenu.
+
+Une image existante peut techniquement enregistrer une clé dans le lot courant si `images[]` contient à la fois son `imageId` et `key`, mais ChatGPT doit préférer l’ID direct dans l’article afin d’éviter une résolution indirecte inutile.
+
+### Limite du Preview et contrôle obligatoire de ChatGPT
+
+Pendant un Preview, une nouvelle image distante n’a pas encore d’ID importé. Sa `images[].key` n’est donc pas enregistrée pour l’article. De plus, les avertissements `La clé image '…' est introuvable` ne sont ajoutés par le processeur que pendant Apply.
+
+Un Preview sans avertissement ne prouve donc pas que les clés d’images de l’article sont correctes. Avant livraison, ChatGPT doit effectuer ce contrôle statique :
+
+1. lister toutes les définitions `images[].key` du JSON ;
+2. vérifier qu’elles sont uniques ;
+3. lister toutes les références `mainImageKey`, `imageKey` et `imageKeys` ;
+4. vérifier caractère par caractère que chaque référence possède exactement une définition dans le même JSON ;
+5. utiliser un ID exporté à la place pour toute image qui n’est pas créée dans ce lot.
+
+Après Apply, tout avertissement `clé image introuvable` indique un livrable incorrect et impose une correction. Ne jamais présenter le Preview comme une validation de ces clés.
+
+Exemple minimal d’une image de parkItem créée avec un article :
+
+```json
+{
+  "items": [
+    {
+      "id": "id-exporte-du-parkItem",
+      "key": "id-exporte-du-parkItem",
+      "name": "Nom exact exporté du parkItem"
+    }
+  ],
+  "images": [
+    {
+      "key": "article-context-image",
+      "sourceUrl": "https://example.org/photo.jpg",
+      "ownerType": "ParkItem",
+      "ownerKey": "id-exporte-du-parkItem",
+      "category": "ParkItem"
+    }
+  ],
+  "history": {
+    "events": [
+      {
+        "entityType": "Park",
+        "owner": "park",
+        "ownerId": "id-du-parc",
+        "key": "article-history-event",
+        "eventType": "ConstructionMilestone",
+        "date": "2026",
+        "article": {
+          "mainImageKey": "article-context-image",
+          "blocks": [
+            {
+              "type": "Image",
+              "imageKey": "article-context-image"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
 ## Style des événements et articles
 
 Les titres, résumés et blocs d’articles visibles publiquement doivent se lire comme un récit utile pour un visiteur curieux, pas comme une note d’audit ou une justification interne.
@@ -307,9 +402,12 @@ Section principale : `history.events`.
 - Les articles ont un vrai angle éditorial.
 - Les titres, résumés et blocs d’articles ne contiennent aucune formulation d’audit interne ou justification documentaire mécanique.
 - Les images référencées existent déjà ou sont créées dans le même JSON.
+- Chaque image créée possède un propriétaire résolu selon l’étape 5, indépendamment de l’article.
 - Chaque événement `ParkItem` contient `ownerId`, `parkItemId` et `itemId` explicites quand le parkItem existe déjà dans l’export.
 - Chaque article qui référence une image existante utilise `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` depuis l’export actualisé.
-- `mainImageKey`, `imageKey` et `imageKeys` ne sont utilisés que pour des images créées dans le même JSON ou dont la clé est démontrée résolue.
+- `mainImageKey`, `imageKey` et `imageKeys` ne sont utilisés que pour des images créées dans le même JSON.
+- Chaque clé d’image référencée correspond caractère par caractère à une unique `images[].key` du lot.
+- Le Preview n’est pas considéré comme une validation des clés d’images utilisées par les articles.
 - Les titres, sous-titres, résumés, paragraphes et légendes sont relus en affichage public mobile.
 - Aucune légende ne doit expliquer l’absence d’une autre image ; elle doit décrire l’image affichée et son lien avec le sujet.
 - Les articles d’incidents ou accidents ne doivent contenir ni dramatisation, ni langage défensif, ni justification de méthode.

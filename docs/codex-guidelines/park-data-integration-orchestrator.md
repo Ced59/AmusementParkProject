@@ -74,30 +74,32 @@ Si la prochaine étape officielle est `probablement inutile`, continuer l’anal
 
 Avant de livrer un JSON upsert, vérifier toutes les relations qui dépendent d’un propriétaire ou d’une clé indirecte.
 
-Règle générale : quand l’entité existe déjà dans l’export actualisé, préférer l’ID explicite plutôt qu’une clé indirecte :
+Règle générale : utiliser les IDs explicites des entités existantes, sauf pour les propriétaires d’images dont le processeur résout plusieurs types uniquement grâce aux clés enregistrées dans le JSON courant :
 
-- image de parc existant : `ownerType: "Park"` + `ownerId` ou `ownerKey: "park"` ;
-- image de parkItem existant : `ownerType: "ParkItem"` + `ownerId` égal à l’ID du parkItem, et éventuellement `ownerKey` égal au même ID ;
-- image de constructeur existant : `ownerType: "AttractionManufacturer"` + `ownerId`, ou `ownerKey: "manufacturer:<id-or-key>"` seulement si la référence est dans le JSON ou déjà résolue ;
+- image du parc cible : `ownerType: "Park"` + `ownerKey: "park"`, avec un parc cible effectivement résolu ;
+- image de parkItem : `ownerType: "ParkItem"` + `ownerKey` égal exactement à une valeur `items[].key`, avec ce parkItem redéclaré dans le même JSON ;
+- image d’exploitant, de fondateur ou de constructeur : `ownerType` explicite + `ownerKey` préfixé, avec la référence correspondante redéclarée dans le même JSON ;
+- image d’attraction autonome : `ownerType: "StandaloneAttraction"` + clé enregistrée par le bloc d’attraction ; un `ownerId` exact non vide est aussi accepté directement pour ce seul type ;
 - événement d’histoire de parkItem existant : `owner: "parkItem"` + `entityType: "ParkItem"` + `ownerId` + `parkItemId` + `itemId`, tous égaux à l’ID du parkItem ciblé ;
 - événement d’histoire de parc : `owner: "park"` + `entityType: "Park"` + `ownerId` ou `parkId` égal à l’ID du parc.
 
-Ne jamais compter sur `itemKey`, `parkItemKey`, `ownerKey` ou `imageKey` seuls quand le JSON ne contient pas aussi la section qui enregistre cette clé pendant le traitement.
+Pour une image de parkItem ou de référence, `ownerId` ne remplace jamais `ownerKey` ni la section qui enregistre cette clé pendant le traitement. Voir l’étape 5 pour la matrice complète de résolution.
 
 Cas autorisé pour les clés :
 
 - `itemKey` / `parkItemKey` peut être utilisé seulement si le même JSON contient aussi une section `items[]` minimale qui permet de remplir le dictionnaire des parkItems avant le traitement dépendant ;
-- `imageKey` peut être utilisé dans un article seulement si l’image est créée ou mise à jour dans le même JSON avec un `key` stable ;
+- `imageKey` peut être utilisé dans un article pour une image créée dans le même JSON avec un `key` stable et unique ;
 - sinon utiliser `imageId` depuis l’export actualisé.
 
 Tout Preview qui retourne :
 
 - `owner could not be resolved`,
 - `Remote image ignored: owner could not be resolved`,
-- `clé image introuvable`,
 - `Impossible de résoudre le propriétaire de l’événement history`,
 
 est bloquant. Ne pas appliquer. Corriger le JSON et relivrer une version numérotée.
+
+Le Preview ne signale pas les clés d’images d’articles introuvables et ne peut pas enregistrer la clé d’une image distante qui n’a pas encore été importée. Avant livraison, comparer donc statiquement chaque `mainImageKey`, `imageKey` et `imageKeys` avec les `images[].key` du même JSON. Après Apply, tout avertissement `clé image introuvable` constitue une erreur de livrable.
 
 ## Structure JSON commune
 
