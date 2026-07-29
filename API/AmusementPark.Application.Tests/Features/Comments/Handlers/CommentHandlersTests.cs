@@ -10,9 +10,11 @@ using AmusementPark.Application.Features.Comments.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Comments;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Users;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
@@ -59,7 +61,8 @@ public sealed class CommentHandlersTests
             commentRepository.Object,
             sanitizer.Object,
             userRepository.Object,
-            new CommentTargetResolver(parkRepository.Object, parkItemRepository.Object));
+            new CommentTargetResolver(parkRepository.Object, parkItemRepository.Object),
+            CreateCommentImageManager());
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new CreateCommentCommand(
             " admin-1 ",
@@ -115,7 +118,8 @@ public sealed class CommentHandlersTests
             commentRepository.Object,
             sanitizer.Object,
             userRepository.Object,
-            new CommentTargetResolver(parkRepository.Object, parkItemRepository.Object));
+            new CommentTargetResolver(parkRepository.Object, parkItemRepository.Object),
+            CreateCommentImageManager());
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new CreateCommentCommand(
             "user-1",
@@ -156,7 +160,8 @@ public sealed class CommentHandlersTests
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             commentRepository.Object,
             sanitizer.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
             "admin-1",
@@ -189,7 +194,8 @@ public sealed class CommentHandlersTests
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             commentRepository.Object,
             sanitizer.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
             "admin-1",
@@ -203,6 +209,86 @@ public sealed class CommentHandlersTests
         commentRepository.VerifyAll();
         sanitizer.VerifyNoOtherCalls();
         userRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateAsync_WhenPersistenceReturnsNull_ShouldRollbackNewlyPublishedImages()
+    {
+        const string imageId = "abcdef0123456789abcdef0123456789";
+        string html =
+            $"<p>Texte<img src=\"/images/{imageId}\" alt=\"Park\" " +
+            "class=\"rich-text__image rich-text__image--left\"></p>";
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        comments.Setup(value => value.UpdateAsync(existing, It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment?)null);
+        Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        sanitizer.Setup(value => value.SanitizeRichHtml(html)).Returns(html);
+        sanitizer.Setup(value => value.ExtractPlainText(html)).Returns("Texte");
+        sanitizer.Setup(value => value.ExtractImageIds(html)).Returns(new[] { imageId });
+        Mock<IUserRepository> users = CreateAdminUserRepository();
+        Image draft = new Image
+        {
+            Id = imageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "admin-1",
+            IsPublished = false,
+        };
+        Image published = new Image
+        {
+            Id = imageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.Comment,
+            OwnerId = "comment-1",
+            Path = "comment/image",
+            IsPublished = true,
+        };
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.SetupSequence(value => value.GetByIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { draft })
+            .ReturnsAsync(new[] { published });
+        images.Setup(value => value.PublishCommentDraftAsync(
+                imageId,
+                "admin-1",
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(published);
+        images.Setup(value => value.DeleteCommentImageAsync(
+                imageId,
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        storage.Setup(value => value.DeleteAsync("comment/image", CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
+            comments.Object,
+            sanitizer.Object,
+            users.Object,
+            new CommentImageManager(images.Object, storage.Object));
+
+        ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
+            "admin-1",
+            "comment-1",
+            new CommentEditModel(
+                new[] { new LocalizedTextValue("fr", html) },
+                false)));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "comment.not-found");
+        comments.VerifyAll();
+        sanitizer.VerifyAll();
+        users.VerifyAll();
+        images.VerifyAll();
+        storage.VerifyAll();
     }
 
     [Fact]
@@ -228,7 +314,8 @@ public sealed class CommentHandlersTests
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             commentRepository.Object,
             sanitizer.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
             "moderator-1",
@@ -300,7 +387,8 @@ public sealed class CommentHandlersTests
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             commentRepository.Object,
             sanitizer.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult<CommentResult> result = await handler.HandleAsync(new UpdateCommentCommand(
             "moderator-1",
@@ -333,7 +421,8 @@ public sealed class CommentHandlersTests
         Mock<IUserRepository> userRepository = CreateAdminUserRepository();
         DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
             commentRepository.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult result = await handler.HandleAsync(new DeleteCommentCommand(
             "admin-1",
@@ -363,7 +452,8 @@ public sealed class CommentHandlersTests
         Mock<IUserRepository> userRepository = CreateModeratorUserRepository();
         DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
             commentRepository.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult result = await handler.HandleAsync(new DeleteCommentCommand(
             "moderator-1",
@@ -418,7 +508,8 @@ public sealed class CommentHandlersTests
         Mock<IUserRepository> userRepository = CreateModeratorUserRepository();
         DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
             commentRepository.Object,
-            userRepository.Object);
+            userRepository.Object,
+            CreateCommentImageManager());
 
         ApplicationResult result = await handler.HandleAsync(new DeleteCommentCommand(
             "moderator-1",
@@ -524,6 +615,191 @@ public sealed class CommentHandlersTests
             .Setup(repository => repository.GetByIdAsync("admin-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(administrator);
         return userRepository;
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenImageIsUsedInImageOnlyTranslation_ShouldKeepLanguageAndPublishUnion()
+    {
+        const string imageId = "abcdef0123456789abcdef0123456789";
+        string imageHtml =
+            $"<img src=\"/images/{imageId}\" alt=\"Park\" class=\"rich-text__image rich-text__image--full\">";
+        User author = new User
+        {
+            Id = "admin-1",
+            IsActivated = true,
+            Roles = new List<Role> { Role.Admin },
+        };
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments
+            .Setup(value => value.CreateAsync(It.IsAny<Comment>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment comment, CancellationToken _) => comment);
+        Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        sanitizer.Setup(value => value.SanitizeRichHtml("<p>Texte</p>")).Returns("<p>Texte</p>");
+        sanitizer.Setup(value => value.ExtractPlainText("<p>Texte</p>")).Returns("Texte");
+        sanitizer.Setup(value => value.SanitizeRichHtml(imageHtml)).Returns(imageHtml);
+        sanitizer.Setup(value => value.ExtractPlainText(imageHtml)).Returns(string.Empty);
+        sanitizer.Setup(value => value.ExtractImageIds(imageHtml)).Returns(new[] { imageId });
+        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
+        users.Setup(value => value.GetByIdAsync("admin-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(author);
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Park" });
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Image draft = new Image
+        {
+            Id = imageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "admin-1",
+            IsPublished = false,
+        };
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.GetByIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { draft });
+        images.Setup(value => value.PublishCommentDraftAsync(
+                imageId,
+                "admin-1",
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Image
+            {
+                Id = imageId,
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.Comment,
+                IsPublished = true,
+            });
+        CreateCommentCommandHandler handler = new CreateCommentCommandHandler(
+            comments.Object,
+            sanitizer.Object,
+            users.Object,
+            new CommentTargetResolver(parks.Object, items.Object),
+            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
+
+        ApplicationResult<CommentResult> result = await handler.HandleAsync(new CreateCommentCommand(
+            "admin-1",
+            new CommentWriteModel(
+                CommentTargetType.Park,
+                "park-1",
+                new[]
+                {
+                    new LocalizedTextValue("fr", "<p>Texte</p>"),
+                    new LocalizedTextValue("en", imageHtml),
+                },
+                false)));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(2, result.Value!.Bodies.Count);
+        comments.Verify(value => value.CreateAsync(
+            It.Is<Comment>(comment =>
+                comment.ImageIds.SequenceEqual(new[] { imageId })
+                && comment.Bodies.Any(body => body.LanguageCode == "en")),
+            It.IsAny<CancellationToken>()), Times.Once);
+        comments.VerifyAll();
+        sanitizer.VerifyAll();
+        users.VerifyAll();
+        parks.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenCommentPersistenceThrows_ShouldRollbackNewlyPublishedImagesAndRethrow()
+    {
+        const string imageId = "abcdef0123456789abcdef0123456789";
+        string html =
+            $"<p>Texte<img src=\"/images/{imageId}\" alt=\"Park\" " +
+            "class=\"rich-text__image rich-text__image--full\"></p>";
+        User author = new User
+        {
+            Id = "admin-1",
+            IsActivated = true,
+            Roles = new List<Role> { Role.Admin },
+        };
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.CreateAsync(It.IsAny<Comment>(), It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new InvalidOperationException("Persistence failed."));
+        Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        sanitizer.Setup(value => value.SanitizeRichHtml(html)).Returns(html);
+        sanitizer.Setup(value => value.ExtractPlainText(html)).Returns("Texte");
+        sanitizer.Setup(value => value.ExtractImageIds(html)).Returns(new[] { imageId });
+        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
+        users.Setup(value => value.GetByIdAsync("admin-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(author);
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Park" });
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Image draft = new Image
+        {
+            Id = imageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "admin-1",
+            IsPublished = false,
+        };
+        Image published = new Image
+        {
+            Id = imageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.Comment,
+            Path = "comment/image",
+            IsPublished = true,
+        };
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.SetupSequence(value => value.GetByIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { draft })
+            .ReturnsAsync(new[] { published });
+        images.Setup(value => value.PublishCommentDraftAsync(
+                imageId,
+                "admin-1",
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, string _, string commentId, CancellationToken _) =>
+            {
+                published.OwnerId = commentId;
+                return published;
+            });
+        images.Setup(value => value.DeleteCommentImageAsync(
+                imageId,
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        storage.Setup(value => value.DeleteAsync("comment/image", CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        CreateCommentCommandHandler handler = new CreateCommentCommandHandler(
+            comments.Object,
+            sanitizer.Object,
+            users.Object,
+            new CommentTargetResolver(parks.Object, items.Object),
+            new CommentImageManager(images.Object, storage.Object));
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => handler.HandleAsync(
+            new CreateCommentCommand(
+                "admin-1",
+                new CommentWriteModel(
+                    CommentTargetType.Park,
+                    "park-1",
+                    new[] { new LocalizedTextValue("fr", html) },
+                    false))));
+
+        comments.VerifyAll();
+        sanitizer.VerifyAll();
+        users.VerifyAll();
+        parks.VerifyAll();
+        images.VerifyAll();
+        storage.VerifyAll();
+    }
+
+    private static CommentImageManager CreateCommentImageManager()
+    {
+        return new CommentImageManager(
+            Mock.Of<IImageRepository>(),
+            Mock.Of<IImageBinaryStorage>());
     }
 
     private static Mock<IUserRepository> CreateModeratorUserRepository()

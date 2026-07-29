@@ -52,6 +52,13 @@ public sealed class CommentRepository : ICommentRepository
         return result.DeletedCount > 0;
     }
 
+    public Task<bool> IsImageReferencedAsync(string imageId, CancellationToken cancellationToken)
+    {
+        FilterDefinition<CommentDocument> filter =
+            Builders<CommentDocument>.Filter.AnyEq(static value => value.ImageIds, imageId.Trim());
+        return this.commentsCollection.Find(filter).AnyAsync(cancellationToken);
+    }
+
     public async Task<IReadOnlyCollection<Comment>> GetPublishedByTargetAsync(
         CommentTargetType targetType,
         string targetId,

@@ -78,6 +78,28 @@ public sealed class ImageRepository : IImageRepository
         return image;
     }
 
+    public async Task<IReadOnlyCollection<Image>> GetByIdsAsync(
+        IReadOnlyCollection<string> imageIds,
+        CancellationToken cancellationToken)
+    {
+        List<string> normalizedIds = imageIds
+            .Where(static imageId => !string.IsNullOrWhiteSpace(imageId))
+            .Select(static imageId => imageId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+        if (normalizedIds.Count == 0)
+        {
+            return Array.Empty<Image>();
+        }
+
+        FilterDefinition<ImageDocument> filter =
+            Builders<ImageDocument>.Filter.In(static document => document.Id, normalizedIds);
+        List<ImageDocument> documents = await this.collection
+            .Find(filter)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<IReadOnlyCollection<Image>> GetByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory? category, CancellationToken cancellationToken)
     {
         string cacheKey = BuildOwnerImagesCacheKey(ownerType, ownerId, category);
@@ -152,6 +174,28 @@ public sealed class ImageRepository : IImageRepository
             .FirstOrDefaultAsync(cancellationToken);
 
         return document?.ToDomain();
+    }
+
+    public async Task<IReadOnlyCollection<Image>> GetExpiredCommentDraftsAsync(
+        DateTime createdBeforeUtc,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        int safeLimit = Math.Clamp(limit, 1, 100);
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter =
+            builder.Eq(static document => document.Category, ImageCategory.Comment)
+            & builder.Eq(static document => document.OwnerType, ImageOwnerType.CommentDraft)
+            & builder.Eq(static document => document.IsPublished, false)
+            & builder.Lt(static document => document.CreatedAt, createdBeforeUtc);
+
+        List<ImageDocument> documents = await this.collection
+            .Find(filter)
+            .SortBy(static document => document.CreatedAt)
+            .Limit(safeLimit)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
     }
 
     public async Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken)
@@ -252,7 +296,7 @@ public sealed class ImageRepository : IImageRepository
             SizeInBytes = request.SizeInBytes > 0 ? request.SizeInBytes : request.File.Length,
             OwnerType = request.OwnerType,
             OwnerId = request.OwnerId,
-            IsPublished = true,
+            IsPublished = request.IsPublished,
             OriginalFileName = request.File.FileName,
             ContentType = request.File.ContentType,
             SourceUrl = string.IsNullOrWhiteSpace(request.SourceUrl) ? null : request.SourceUrl.Trim(),
@@ -286,6 +330,42 @@ public sealed class ImageRepository : IImageRepository
 
         ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
         InvalidateReadCache();
+        return document?.ToDomain();
+    }
+
+    public async Task<Image?> PublishCommentDraftAsync(
+        string imageId,
+        string draftOwnerId,
+        string commentId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> draftFilter =
+            builder.Eq(static document => document.Id, imageId)
+            & builder.Eq(static document => document.Category, ImageCategory.Comment)
+            & builder.Eq(static document => document.OwnerType, ImageOwnerType.CommentDraft)
+            & builder.Eq(static document => document.OwnerId, draftOwnerId)
+            & builder.Eq(static document => document.IsPublished, false);
+        UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
+            .Set(static document => document.OwnerType, ImageOwnerType.Comment)
+            .Set(static document => document.OwnerId, commentId)
+            .Set(static document => document.IsPublished, true)
+            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
+        FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+
+        ImageDocument? document = await this.collection.FindOneAndUpdateAsync(
+            draftFilter,
+            update,
+            options,
+            cancellationToken);
+        if (document is not null)
+        {
+            InvalidateReadCache();
+        }
+
         return document?.ToDomain();
     }
 
@@ -389,6 +469,52 @@ public sealed class ImageRepository : IImageRepository
     public async Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken)
     {
         DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == imageId, cancellationToken: cancellationToken);
+        if (result.DeletedCount > 0)
+        {
+            InvalidateReadCache();
+        }
+
+        return result.DeletedCount > 0;
+    }
+
+    public async Task<bool> DeleteCommentDraftAsync(
+        string imageId,
+        string? ownerId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter =
+            builder.Eq(static document => document.Id, imageId)
+            & builder.Eq(static document => document.Category, ImageCategory.Comment)
+            & builder.Eq(static document => document.OwnerType, ImageOwnerType.CommentDraft)
+            & builder.Eq(static document => document.IsPublished, false);
+        if (!string.IsNullOrWhiteSpace(ownerId))
+        {
+            filter &= builder.Eq(static document => document.OwnerId, ownerId.Trim());
+        }
+
+        DeleteResult result = await this.collection.DeleteOneAsync(filter, cancellationToken);
+        if (result.DeletedCount > 0)
+        {
+            InvalidateReadCache();
+        }
+
+        return result.DeletedCount > 0;
+    }
+
+    public async Task<bool> DeleteCommentImageAsync(
+        string imageId,
+        string commentId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter =
+            builder.Eq(static document => document.Id, imageId)
+            & builder.Eq(static document => document.Category, ImageCategory.Comment)
+            & builder.Eq(static document => document.OwnerType, ImageOwnerType.Comment)
+            & builder.Eq(static document => document.OwnerId, commentId)
+            & builder.Eq(static document => document.IsPublished, true);
+        DeleteResult result = await this.collection.DeleteOneAsync(filter, cancellationToken);
         if (result.DeletedCount > 0)
         {
             InvalidateReadCache();

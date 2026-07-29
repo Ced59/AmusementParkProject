@@ -64,6 +64,13 @@ internal static class ImageApplicationErrors
         return ApplicationError.Technical("image.delete.failed", "Error while deleting image.");
     }
 
+    public static ApplicationError ImageReferencedByComment()
+    {
+        return ApplicationError.Conflict(
+            "image.comment.referenced",
+            "A published comment image must be removed through comment editing.");
+    }
+
     public static ApplicationError ErrorApplyingWatermark()
     {
         return ApplicationError.Technical("image.watermark.failed", "Error while applying image watermark.");

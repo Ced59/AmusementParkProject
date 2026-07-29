@@ -169,6 +169,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IContactGrievanceRepository, ContactGrievanceRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<ICommentContentSanitizer, CommentContentSanitizer>();
+        services.AddHostedService<CommentImageDraftCleanupBackgroundService>();
         services.AddScoped<ISocialShareEventRepository, SocialShareEventRepository>();
         services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddScoped<IUserRepository, UserRepository>();

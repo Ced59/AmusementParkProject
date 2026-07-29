@@ -16,4 +16,5 @@ public enum ImageCategory
     Founder = 6,
     VideoThumbnail = 7,
     StandaloneAttraction = 8,
+    Comment = 9,
 }

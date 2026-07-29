@@ -45,4 +45,36 @@ public sealed class ImageMetadataPipelineTests
         Assert.Equal(2, metadata.Width);
         Assert.Equal(3, metadata.Height);
     }
+
+    [Fact]
+    public async Task ExtractMetadataAsync_WhenPngIsValid_ShouldIdentifyFormatAndDimensions()
+    {
+        await using MemoryStream stream = new MemoryStream();
+        using (Image<Rgba32> image = new Image<Rgba32>(1, 1))
+        {
+            await image.SaveAsPngAsync(stream);
+        }
+
+        stream.Position = 0;
+        ImageMetadataPipeline pipeline = new ImageMetadataPipeline();
+
+        ImageProcessingMetadata? result = await pipeline.ExtractMetadataAsync(
+            new ImageUploadRequest
+            {
+                File = new FilePayload
+                {
+                    FileName = "pixel.png",
+                    ContentType = "image/png",
+                    Length = stream.Length,
+                    Content = stream,
+                },
+            },
+            CancellationToken.None);
+
+        Assert.NotNull(result);
+        Assert.Equal(1, result.Width);
+        Assert.Equal(1, result.Height);
+        Assert.Equal("image/png", result.DetectedContentType);
+        Assert.Equal(1, result.FrameCount);
+    }
 }

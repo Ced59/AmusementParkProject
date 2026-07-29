@@ -108,4 +108,35 @@ public sealed class Image : AuditableEntity
     /// Indique si l'image est publiée.
     /// </summary>
     public bool IsPublished { get; set; } = true;
+
+    public bool CanBeUsedInComment(string actorUserId, string commentId)
+    {
+        bool isPublishedForComment =
+            this.Category == ImageCategory.Comment
+            && this.OwnerType == ImageOwnerType.Comment
+            && string.Equals(this.OwnerId, commentId, StringComparison.Ordinal)
+            && this.IsPublished;
+        bool isDraftOwnedByActor =
+            this.Category == ImageCategory.Comment
+            && this.OwnerType == ImageOwnerType.CommentDraft
+            && string.Equals(this.OwnerId, actorUserId, StringComparison.Ordinal)
+            && !this.IsPublished;
+        return isPublishedForComment || isDraftOwnedByActor;
+    }
+
+    public bool IsCommentDraftOwnedBy(string actorUserId)
+    {
+        return this.Category == ImageCategory.Comment
+            && this.OwnerType == ImageOwnerType.CommentDraft
+            && string.Equals(this.OwnerId, actorUserId, StringComparison.Ordinal)
+            && !this.IsPublished;
+    }
+
+    public bool IsOwnedByComment(string commentId)
+    {
+        return this.Category == ImageCategory.Comment
+            && this.OwnerType == ImageOwnerType.Comment
+            && string.Equals(this.OwnerId, commentId, StringComparison.Ordinal)
+            && this.IsPublished;
+    }
 }

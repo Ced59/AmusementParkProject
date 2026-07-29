@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Users;
@@ -24,6 +25,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IUserRepository userRepository;
+    private readonly ICommentRepository commentRepository;
 
     public DeleteImageCommandHandler(
         IImageRepository imageRepository,
@@ -31,7 +33,8 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         IParkRepository parkRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        ICommentRepository commentRepository)
     {
         this.imageRepository = imageRepository;
         this.imageBinaryStorage = imageBinaryStorage;
@@ -39,6 +42,7 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.searchProjectionWriter = searchProjectionWriter;
         this.userRepository = userRepository;
+        this.commentRepository = commentRepository;
     }
 
     public async Task<ApplicationResult> HandleAsync(DeleteImageCommand command, CancellationToken cancellationToken = default)
@@ -54,6 +58,11 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
             if (image is null)
             {
                 return ApplicationResult.Failure(ImageApplicationErrors.ImageNotExists());
+            }
+
+            if (await this.commentRepository.IsImageReferencedAsync(image.Id, cancellationToken))
+            {
+                return ApplicationResult.Failure(ImageApplicationErrors.ImageReferencedByComment());
             }
 
             bool deleted = await this.imageRepository.DeleteAsync(image.Id, cancellationToken);

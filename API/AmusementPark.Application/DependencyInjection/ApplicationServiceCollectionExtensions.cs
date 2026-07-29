@@ -47,6 +47,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<IApplicationValidator<AmusementPark.Application.Common.Requests.PagedQuery>, PagedQueryValidator>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();
+        services.AddScoped<CommentImageManager>();
         services.AddScoped<ParkItemsBulkCreatePreviewService>();
         services.AddScoped<BulkParkGraphJsonExportDataLoader>();
         services.AddScoped<ParkGraphUpsertProcessor>();

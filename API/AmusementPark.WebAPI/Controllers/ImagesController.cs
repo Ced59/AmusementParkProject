@@ -26,6 +26,7 @@ using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.RateLimiting;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Filters;
+using AmusementPark.WebAPI.Extensions;
 using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -441,6 +442,29 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
+        if (!result.Value.IsPublished)
+        {
+            bool isCommentDraft =
+                result.Value.Category == ImageCategory.Comment
+                && result.Value.OwnerType == ImageOwnerType.CommentDraft;
+            bool hasCommentWriterRole =
+                this.User.IsInRole(AuthorizationRoleGroups.Admin)
+                || this.User.IsInRole("MODERATOR");
+            bool canReadOwnCommentDraft =
+                isCommentDraft
+                && hasCommentWriterRole
+                && string.Equals(result.Value.OwnerId, this.User.GetUserId(), StringComparison.Ordinal);
+            bool canRead = isCommentDraft
+                ? canReadOwnCommentDraft
+                : this.UserCanSeeNonVisible();
+            if (!canRead)
+            {
+                return this.ToNotFoundProblemDetailsResult(
+                    "The requested image was not found.",
+                    "image.not-found");
+            }
+        }
+
         if (string.IsNullOrWhiteSpace(result.Value.Path))
         {
             return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");
@@ -452,7 +476,9 @@ public sealed class ImagesController : ControllerBase
             return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");
         }
 
-        this.Response.Headers.CacheControl = "public,max-age=31536000,immutable";
+        this.Response.Headers.CacheControl = result.Value.IsPublished
+            ? "public,max-age=31536000,immutable"
+            : "private,no-store";
         this.Response.Headers.Vary = "Accept";
         return this.File(binary.Value.Stream, binary.Value.ContentType);
     }

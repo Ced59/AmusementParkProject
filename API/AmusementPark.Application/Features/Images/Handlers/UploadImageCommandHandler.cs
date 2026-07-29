@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Images.Results;
+using AmusementPark.Application.Features.Comments;
 using AmusementPark.Core.Domain.Images;
 
 namespace AmusementPark.Application.Features.Images.Handlers;
@@ -17,7 +18,12 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
     private const long MaximumAvatarFileSizeInBytes = 5 * 1024 * 1024;
     private const int MaximumAvatarEdge = 4096;
     private const long MaximumAvatarPixels = 8_000_000;
+    private const int MaximumCommentImageEdge = 8192;
+    private const long MaximumCommentImagePixels = 40_000_000;
     private static readonly HashSet<string> AllowedAvatarContentTypes = new HashSet<string>(
+        new[] { "image/jpeg", "image/png", "image/webp" },
+        StringComparer.OrdinalIgnoreCase);
+    private static readonly HashSet<string> AllowedCommentImageContentTypes = new HashSet<string>(
         new[] { "image/jpeg", "image/png", "image/webp" },
         StringComparer.OrdinalIgnoreCase);
     private readonly IImageRepository imageRepository;
@@ -62,6 +68,27 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.AvatarUploadInvalid());
             }
 
+            if (command.Request.Category == ImageCategory.Comment
+                && (metadata is null
+                    || string.IsNullOrWhiteSpace(metadata.DetectedContentType)
+                    || !AllowedCommentImageContentTypes.Contains(metadata.DetectedContentType)
+                    || metadata.FrameCount != 1))
+            {
+                return ApplicationResult<UploadedImageResult>.Failure(
+                    CommentApplicationErrors.ImageUploadInvalid());
+            }
+
+            if (command.Request.Category == ImageCategory.Comment
+                && (metadata!.Width <= 0
+                    || metadata.Height <= 0
+                    || metadata.Width > MaximumCommentImageEdge
+                    || metadata.Height > MaximumCommentImageEdge
+                    || (long)metadata.Width * metadata.Height > MaximumCommentImagePixels))
+            {
+                return ApplicationResult<UploadedImageResult>.Failure(
+                    CommentApplicationErrors.ImageDimensionsInvalid());
+            }
+
             if (command.Request.File.Content.CanSeek)
             {
                 command.Request.File.Content.Position = 0;
@@ -72,7 +99,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             string storagePath = $"{categoryPathSegment}/{imageId}";
             FilePayload persistedFile = BuildPersistedFile(command.Request, metadata);
 
-            IReadOnlyCollection<string> savedFiles = command.Request.Category == ImageCategory.Avatar
+            IReadOnlyCollection<string> savedFiles = IsPrivateImageCategory(command.Request.Category)
                 ? await this.imageBinaryStorage.SaveWithoutMetadataAsync(
                     storagePath,
                     command.Request.File,
@@ -98,8 +125,9 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 Width = metadata?.Width ?? 0,
                 Height = metadata?.Height ?? 0,
                 SizeInBytes = metadata?.SizeInBytes ?? command.Request.File.Length,
-                GeoLocation = command.Request.Category == ImageCategory.Avatar ? null : metadata?.GeoLocation,
-                ExifMetadata = command.Request.Category == ImageCategory.Avatar ? null : metadata?.ExifMetadata,
+                GeoLocation = IsPrivateImageCategory(command.Request.Category) ? null : metadata?.GeoLocation,
+                ExifMetadata = IsPrivateImageCategory(command.Request.Category) ? null : metadata?.ExifMetadata,
+                IsPublished = command.Request.IsPublished,
             };
 
             Image image = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
@@ -116,7 +144,9 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
         }
         catch (Exception)
         {
-            return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.ImageProcessingFailed());
+            return command.Request.Category == ImageCategory.Comment
+                ? ApplicationResult<UploadedImageResult>.Failure(CommentApplicationErrors.ImageUploadInvalid())
+                : ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.ImageProcessingFailed());
         }
     }
 
@@ -151,7 +181,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
         ImageUploadRequest request,
         ImageProcessingMetadata? metadata)
     {
-        if (request.Category != ImageCategory.Avatar
+        if (!IsPrivateImageCategory(request.Category)
             || string.IsNullOrWhiteSpace(metadata?.DetectedContentType))
         {
             return request.File;
@@ -164,6 +194,11 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             Length = request.File.Length,
             Content = request.File.Content,
         };
+    }
+
+    private static bool IsPrivateImageCategory(ImageCategory category)
+    {
+        return category is ImageCategory.Avatar or ImageCategory.Comment;
     }
 
     private static bool IsLogoCategory(ImageCategory category)
@@ -183,6 +218,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             ImageCategory.Manufacturer => "manufacturer",
             ImageCategory.Founder => "founder",
             ImageCategory.VideoThumbnail => "video_thumbnail",
+            ImageCategory.Comment => "comment",
             _ => "image",
         };
     }

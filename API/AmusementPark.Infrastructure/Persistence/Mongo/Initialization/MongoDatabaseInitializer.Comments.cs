@@ -29,6 +29,10 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(static document => document.ParkId)
                     .Descending(static document => document.CreatedAt),
                 new CreateIndexOptions { Name = "idx_comments_park_created" }),
+            new CreateIndexModel<CommentDocument>(
+                Builders<CommentDocument>.IndexKeys
+                    .Ascending(static document => document.ImageIds),
+                new CreateIndexOptions { Name = "idx_comments_image_ids" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);

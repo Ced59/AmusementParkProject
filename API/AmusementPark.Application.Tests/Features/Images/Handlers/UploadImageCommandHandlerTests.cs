@@ -267,6 +267,168 @@ public sealed class UploadImageCommandHandlerTests
         imageRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenCommentImage_ShouldStripMetadataAndRemainUnpublished()
+    {
+        FilePayload file = new FilePayload
+        {
+            FileName = "comment.jpg",
+            ContentType = "image/jpeg",
+            Length = 128,
+            Content = new MemoryStream(new byte[] { 1, 2, 3 }),
+        };
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IImageProcessingPipeline> pipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        pipeline
+            .Setup(value => value.ExtractMetadataAsync(It.IsAny<ImageUploadRequest>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = 1200,
+                Height = 800,
+                SizeInBytes = file.Length,
+                DetectedContentType = "image/jpeg",
+                FrameCount = 1,
+                GeoLocation = new GeoPointValue(50, 3),
+                ExifMetadata = new ImageExifMetadata { CameraMaker = "Private camera" },
+            });
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        storage
+            .Setup(value => value.SaveWithoutMetadataAsync(
+                It.Is<string>(path => path.StartsWith("comment/", StringComparison.Ordinal)),
+                file,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { "comment/image.webp", "comment/image.jpg" });
+        imageRepository
+            .Setup(value => value.CreateAsync(
+                It.Is<ImageUploadRequest>(request =>
+                    request.Category == ImageCategory.Comment
+                    && request.OwnerType == ImageOwnerType.CommentDraft
+                    && request.OwnerId == "author-1"
+                    && !request.IsPublished
+                    && request.GeoLocation == null
+                    && request.ExifMetadata == null),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ImageUploadRequest request, CancellationToken _) => new Image
+            {
+                Id = request.ImageId!,
+                Category = request.Category,
+                OwnerType = request.OwnerType,
+                OwnerId = request.OwnerId,
+                IsPublished = request.IsPublished,
+            });
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            imageRepository.Object,
+            pipeline.Object,
+            storage.Object);
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Comment,
+                File = file,
+                WithWatermark = true,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+                IsPublished = false,
+            }));
+
+        Assert.True(result.IsSuccess);
+        Assert.False(result.Value!.Image.IsPublished);
+        pipeline.VerifyAll();
+        storage.VerifyAll();
+        imageRepository.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(8193, 100)]
+    [InlineData(7000, 7000)]
+    public async Task HandleAsync_WhenCommentImageDimensionsAreUnsafe_ShouldRejectBeforeStorage(
+        int width,
+        int height)
+    {
+        FilePayload file = new FilePayload
+        {
+            FileName = "comment.jpg",
+            ContentType = "image/jpeg",
+            Length = 128,
+            Content = new MemoryStream(new byte[] { 1, 2, 3 }),
+        };
+        Mock<IImageProcessingPipeline> pipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        pipeline.Setup(value => value.ExtractMetadataAsync(
+                It.IsAny<ImageUploadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = width,
+                Height = height,
+                SizeInBytes = file.Length,
+                DetectedContentType = "image/jpeg",
+                FrameCount = 1,
+            });
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            Mock.Of<IImageRepository>(),
+            pipeline.Object,
+            Mock.Of<IImageBinaryStorage>());
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Comment,
+                File = file,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+                IsPublished = false,
+            }));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "comment.image.dimensions-invalid");
+        pipeline.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenCommentImageDetectedFormatIsNotAllowed_ShouldRejectBeforeStorage()
+    {
+        FilePayload file = new FilePayload
+        {
+            FileName = "fake.png",
+            ContentType = "image/png",
+            Length = 128,
+            Content = new MemoryStream(new byte[] { 1, 2, 3 }),
+        };
+        Mock<IImageProcessingPipeline> pipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        pipeline.Setup(value => value.ExtractMetadataAsync(
+                It.IsAny<ImageUploadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = 100,
+                Height = 100,
+                SizeInBytes = file.Length,
+                DetectedContentType = "image/gif",
+            });
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            Mock.Of<IImageRepository>(),
+            pipeline.Object,
+            Mock.Of<IImageBinaryStorage>());
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Comment,
+                File = file,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+                IsPublished = false,
+            }));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "comment.image.invalid");
+        pipeline.VerifyAll();
+    }
+
     private static FilePayload CreateAvatarFile(long length, string contentType = "image/jpeg")
     {
         return new FilePayload
