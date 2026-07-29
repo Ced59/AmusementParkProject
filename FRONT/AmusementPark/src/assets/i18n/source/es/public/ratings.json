@@ -9,6 +9,7 @@
       "rateValue": "Valorar {{value}} de 5",
       "yourRating": "Tu valoración: {{value}}/5",
       "clearRating": "Borrar mi valoración",
+      "clearRatingConfirm": "¿Seguro que quieres borrar tu valoración? Esta acción no se puede deshacer.",
       "prompt": "Elige tu valoración",
       "signInMessage": "Inicia sesión para dejar tu valoración.",
       "savedMessage": "Gracias, tu valoración se ha guardado.",

@@ -30,6 +30,10 @@ describe('RatingStarsComponent', () => {
   let fixture: ComponentFixture<RatingStarsComponent>;
   let facade: FakePublicRatingStateFacade;
 
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   beforeEach(async () => {
     facade = new FakePublicRatingStateFacade();
 
@@ -55,6 +59,7 @@ describe('RatingStarsComponent', () => {
         stars: {
           yourRating: 'Ta note : {{value}}/5',
           clearRating: 'Effacer ma note',
+          clearRatingConfirm: 'Veux-tu vraiment effacer ta note ?',
           prompt: 'Choisis ta note',
         },
       },
@@ -78,6 +83,7 @@ describe('RatingStarsComponent', () => {
   });
 
   it('shows the exact personal rating and offers to clear it', () => {
+    const confirmSpy = vi.spyOn(globalThis, 'confirm').mockReturnValue(true);
     const message: HTMLElement | null =
       fixture.nativeElement.querySelector('.rating-stars__message');
     const clearButton: HTMLButtonElement | null =
@@ -88,7 +94,20 @@ describe('RatingStarsComponent', () => {
 
     clearButton?.click();
 
+    expect(confirmSpy).toHaveBeenCalledWith(
+      'Veux-tu vraiment effacer ta note ?',
+    );
     expect(facade.removeRating).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps the rating when removal is not confirmed', () => {
+    vi.spyOn(globalThis, 'confirm').mockReturnValue(false);
+    const clearButton: HTMLButtonElement | null =
+      fixture.nativeElement.querySelector('.rating-stars__clear');
+
+    clearButton?.click();
+
+    expect(facade.removeRating).not.toHaveBeenCalled();
   });
 
   it('formats the public and personal ratings with the active locale', () => {

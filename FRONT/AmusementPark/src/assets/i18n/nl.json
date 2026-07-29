@@ -3949,6 +3949,7 @@
       "rateValue": "Beoordeel {{value}} van 5",
       "yourRating": "Jouw beoordeling: {{value}}/5",
       "clearRating": "Mijn beoordeling wissen",
+      "clearRatingConfirm": "Wil je jouw beoordeling echt wissen? Deze actie kan niet ongedaan worden gemaakt.",
       "prompt": "Kies je beoordeling",
       "signInMessage": "Log in om je beoordeling te geven.",
       "savedMessage": "Bedankt, je beoordeling is opgeslagen.",

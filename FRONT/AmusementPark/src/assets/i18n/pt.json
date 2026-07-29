@@ -3949,6 +3949,7 @@
       "rateValue": "Avaliar {{value}} em 5",
       "yourRating": "A tua avaliação: {{value}}/5",
       "clearRating": "Apagar a minha avaliação",
+      "clearRatingConfirm": "Queres mesmo apagar a tua avaliação? Esta ação não pode ser anulada.",
       "prompt": "Escolhe a tua avaliação",
       "signInMessage": "Inicia sessão para deixar a tua avaliação.",
       "savedMessage": "Obrigado, a tua avaliação foi guardada.",

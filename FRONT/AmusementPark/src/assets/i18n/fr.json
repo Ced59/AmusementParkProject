@@ -3949,6 +3949,7 @@
       "rateValue": "Noter {{value}} sur 5",
       "yourRating": "Ta note : {{value}}/5",
       "clearRating": "Effacer ma note",
+      "clearRatingConfirm": "Veux-tu vraiment effacer ta note ? Cette action est définitive.",
       "prompt": "Choisis ta note",
       "signInMessage": "Connecte-toi pour laisser ta note.",
       "savedMessage": "Merci, ta note est prise en compte.",

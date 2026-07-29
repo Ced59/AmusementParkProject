@@ -9,6 +9,7 @@
       "rateValue": "Valuta {{value}} su 5",
       "yourRating": "La tua valutazione: {{value}}/5",
       "clearRating": "Cancella la mia valutazione",
+      "clearRatingConfirm": "Vuoi davvero cancellare la tua valutazione? Questa azione non può essere annullata.",
       "prompt": "Scegli la tua valutazione",
       "signInMessage": "Accedi per lasciare la tua valutazione.",
       "savedMessage": "Grazie, la tua valutazione è stata salvata.",

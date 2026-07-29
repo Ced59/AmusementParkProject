@@ -9,6 +9,7 @@
       "rateValue": "{{value}} von 5 bewerten",
       "yourRating": "Deine Bewertung: {{value}}/5",
       "clearRating": "Meine Bewertung löschen",
+      "clearRatingConfirm": "Möchtest du deine Bewertung wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
       "prompt": "Wähle deine Bewertung",
       "signInMessage": "Melde dich an, um zu bewerten.",
       "savedMessage": "Danke, deine Bewertung wurde gespeichert.",
