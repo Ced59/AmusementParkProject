@@ -27,6 +27,7 @@ import {
   shouldServeRobotOptimizedNoJsHtml
 } from './src/server/ssr/robot-ssr-policy';
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
+import { isPublicCommentSsrRoute } from './src/server/ssr/public-comment-ssr-route-policy';
 import { RetainedBucketCache } from './src/server/technical-stats/retained-bucket-cache';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-writer';
@@ -2127,6 +2128,7 @@ function isPublicSsrCacheRoute(url: string): boolean {
     || isPublicParkItemHistoryArticleRoute(path)
     || isPublicParkItemVideosRoute(path)
     || isPublicParkItemVideoDetailRoute(path)
+    || isPublicCommentSsrRoute(path)
     || isPublicStandaloneAttractionRoute(path)
     || isPublicReferenceRoute(path);
 }
@@ -2153,6 +2155,7 @@ function isCriticalPublicSsrRoute(url: string): boolean {
     || isPublicParkItemHistoryArticleRoute(path)
     || (isPublicParkItemVideosRoute(path) && !hasQueryString(url))
     || isPublicParkItemVideoDetailRoute(path)
+    || isPublicCommentSsrRoute(path)
     || isPublicStandaloneAttractionRoute(path)
     || isPublicReferenceRoute(path);
 }
