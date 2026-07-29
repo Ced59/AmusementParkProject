@@ -12,12 +12,14 @@ namespace AmusementPark.Infrastructure.Services.Images;
 /// </summary>
 public sealed class UserAvatarImporter : IUserAvatarImporter
 {
-    private static readonly HashSet<string> SupportedContentTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    private const long MaximumAvatarFileSizeInBytes = 5 * 1024 * 1024;
+    private const int MaximumAvatarEdge = 4096;
+    private const long MaximumAvatarPixels = 8_000_000;
+    private static readonly HashSet<string> AllowedAvatarContentTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
     {
         "image/jpeg",
         "image/png",
         "image/webp",
-        "image/gif",
     };
 
     private readonly IHttpClientFactory httpClientFactory;
@@ -64,20 +66,38 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
             }
 
             string? contentType = response.Content.Headers.ContentType?.MediaType;
-            if (string.IsNullOrWhiteSpace(contentType) || !SupportedContentTypes.Contains(contentType))
+            if (string.IsNullOrWhiteSpace(contentType) || !AllowedAvatarContentTypes.Contains(contentType))
             {
                 this.logger.LogWarning("Unsupported avatar content type {ContentType} for user {UserId}.", contentType, userId);
                 return string.Empty;
             }
 
+            if (response.Content.Headers.ContentLength is long contentLength
+                && contentLength > MaximumAvatarFileSizeInBytes)
+            {
+                this.logger.LogWarning("External avatar is too large for user {UserId}.", userId);
+                return string.Empty;
+            }
+
             await using Stream remoteStream = await response.Content.ReadAsStreamAsync(cancellationToken);
-            MemoryStream bufferedStream = new MemoryStream();
-            await remoteStream.CopyToAsync(bufferedStream, cancellationToken);
+            await using MemoryStream bufferedStream = new MemoryStream();
+            byte[] buffer = new byte[81920];
+            int bytesRead;
+            while ((bytesRead = await remoteStream.ReadAsync(buffer, cancellationToken)) > 0)
+            {
+                if (bufferedStream.Length + bytesRead > MaximumAvatarFileSizeInBytes)
+                {
+                    this.logger.LogWarning("External avatar exceeded the size limit for user {UserId}.", userId);
+                    return string.Empty;
+                }
+
+                await bufferedStream.WriteAsync(buffer.AsMemory(0, bytesRead), cancellationToken);
+            }
+
             bufferedStream.Position = 0;
 
             if (bufferedStream.Length == 0)
             {
-                bufferedStream.Dispose();
                 return string.Empty;
             }
 
@@ -100,10 +120,32 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
             };
 
             ImageProcessingMetadata? metadata = await this.imageProcessingPipeline.ExtractMetadataAsync(baseRequest, cancellationToken);
+            if (metadata is null
+                || string.IsNullOrWhiteSpace(metadata.DetectedContentType)
+                || !AllowedAvatarContentTypes.Contains(metadata.DetectedContentType)
+                || metadata.FrameCount != 1
+                || metadata.Width <= 0
+                || metadata.Height <= 0
+                || metadata.Width > MaximumAvatarEdge
+                || metadata.Height > MaximumAvatarEdge
+                || (long)metadata.Width * metadata.Height * metadata.FrameCount > MaximumAvatarPixels)
+            {
+                this.logger.LogWarning("External avatar metadata is invalid for user {UserId}.", userId);
+                return string.Empty;
+            }
+
+            FilePayload persistedFilePayload = new FilePayload
+            {
+                FileName = filePayload.FileName,
+                ContentType = metadata.DetectedContentType,
+                Length = filePayload.Length,
+                Content = filePayload.Content,
+            };
+
             ImageUploadRequest request = new ImageUploadRequest
             {
                 Category = baseRequest.Category,
-                File = filePayload,
+                File = persistedFilePayload,
                 Description = baseRequest.Description,
                 WithWatermark = baseRequest.WithWatermark,
                 OwnerType = baseRequest.OwnerType,
@@ -111,14 +153,13 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 Width = metadata?.Width ?? 0,
                 Height = metadata?.Height ?? 0,
                 SizeInBytes = metadata?.SizeInBytes ?? filePayload.Length,
-                GeoLocation = metadata?.GeoLocation,
-                ExifMetadata = metadata?.ExifMetadata,
+                GeoLocation = null,
+                ExifMetadata = null,
             };
 
             Image image = await this.imageRepository.CreateAsync(request, cancellationToken);
             if (string.IsNullOrWhiteSpace(image.Path))
             {
-                bufferedStream.Dispose();
                 return string.Empty;
             }
 
@@ -127,9 +168,12 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
                 filePayload.Content.Position = 0;
             }
 
-            await this.imageBinaryStorage.SaveAsync(image.Path, filePayload, false, cancellationToken);
+            await this.imageBinaryStorage.SaveWithoutMetadataAsync(
+                image.Path,
+                filePayload,
+                false,
+                cancellationToken);
             await this.imageRepository.SetCurrentAsync(image.Id, ImageOwnerType.User, userId, cancellationToken);
-            bufferedStream.Dispose();
             return $"/images/{image.Id}";
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

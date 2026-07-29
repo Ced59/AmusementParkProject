@@ -14,7 +14,10 @@ internal static partial class EntityMongoMappers
             TargetId = document.TargetId,
             ParkId = document.ParkId,
             AuthorUserId = document.AuthorUserId,
-            AuthorDisplayName = document.AuthorDisplayName,
+            AuthorDisplayName = string.IsNullOrWhiteSpace(document.AuthorDisplayName)
+                ? "User"
+                : document.AuthorDisplayName,
+            AuthorAvatarUrl = document.AuthorAvatarUrl,
             AuthorRole = document.AuthorRole,
             Bodies = CommonMongoMappers.ToDomain(document.Bodies),
             IsOfficial = document.IsOfficial,
@@ -34,6 +37,7 @@ internal static partial class EntityMongoMappers
             ParkId = entity.ParkId,
             AuthorUserId = entity.AuthorUserId,
             AuthorDisplayName = entity.AuthorDisplayName,
+            AuthorAvatarUrl = entity.AuthorAvatarUrl,
             AuthorRole = entity.AuthorRole,
             Bodies = CommonMongoMappers.ToDocuments(entity.Bodies),
             IsOfficial = entity.IsOfficial,

@@ -15,6 +15,15 @@ public interface IImageBinaryStorage
         CancellationToken cancellationToken);
 
     /// <summary>
+    /// Sauvegarde les variantes après suppression des métadonnées intégrées.
+    /// </summary>
+    Task<IReadOnlyCollection<string>> SaveWithoutMetadataAsync(
+        string pathWithoutExtension,
+        AmusementPark.Application.Common.Contracts.FilePayload file,
+        bool withWatermark,
+        CancellationToken cancellationToken);
+
+    /// <summary>
     /// Récupère la meilleure variante disponible pour un client HTTP.
     /// </summary>
     Task<(Stream Stream, string ContentType)?> GetBestAsync(

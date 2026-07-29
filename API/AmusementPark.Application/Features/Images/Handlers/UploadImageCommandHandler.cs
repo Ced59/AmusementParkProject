@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;
@@ -13,6 +14,12 @@ namespace AmusementPark.Application.Features.Images.Handlers;
 /// </summary>
 public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>>
 {
+    private const long MaximumAvatarFileSizeInBytes = 5 * 1024 * 1024;
+    private const int MaximumAvatarEdge = 4096;
+    private const long MaximumAvatarPixels = 8_000_000;
+    private static readonly HashSet<string> AllowedAvatarContentTypes = new HashSet<string>(
+        new[] { "image/jpeg", "image/png", "image/webp" },
+        StringComparer.OrdinalIgnoreCase);
     private readonly IImageRepository imageRepository;
     private readonly IImageProcessingPipeline imageProcessingPipeline;
     private readonly IImageBinaryStorage imageBinaryStorage;
@@ -39,10 +46,21 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.NoImageFileProvided());
         }
 
+        if (command.Request.Category == ImageCategory.Avatar
+            && !IsValidAvatarFile(command.Request.File))
+        {
+            return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.AvatarUploadInvalid());
+        }
+
         try
         {
             bool withWatermark = ShouldApplyWatermark(command.Request.Category, command.Request.WithWatermark);
             ImageProcessingMetadata? metadata = await this.imageProcessingPipeline.ExtractMetadataAsync(command.Request, cancellationToken);
+            if (command.Request.Category == ImageCategory.Avatar
+                && !IsValidAvatarMetadata(metadata))
+            {
+                return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.AvatarUploadInvalid());
+            }
 
             if (command.Request.File.Content.CanSeek)
             {
@@ -52,18 +70,25 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             string imageId = Guid.NewGuid().ToString("N");
             string categoryPathSegment = ToPathSegment(command.Request.Category);
             string storagePath = $"{categoryPathSegment}/{imageId}";
+            FilePayload persistedFile = BuildPersistedFile(command.Request, metadata);
 
-            IReadOnlyCollection<string> savedFiles = await this.imageBinaryStorage.SaveAsync(
-                storagePath,
-                command.Request.File,
-                withWatermark,
-                cancellationToken);
+            IReadOnlyCollection<string> savedFiles = command.Request.Category == ImageCategory.Avatar
+                ? await this.imageBinaryStorage.SaveWithoutMetadataAsync(
+                    storagePath,
+                    command.Request.File,
+                    withWatermark,
+                    cancellationToken)
+                : await this.imageBinaryStorage.SaveAsync(
+                    storagePath,
+                    command.Request.File,
+                    withWatermark,
+                    cancellationToken);
 
             ImageUploadRequest preparedRequest = new ImageUploadRequest
             {
                 ImageId = imageId,
                 Category = command.Request.Category,
-                File = command.Request.File,
+                File = persistedFile,
                 Description = command.Request.Description,
                 WithWatermark = withWatermark,
                 OwnerType = command.Request.OwnerType,
@@ -73,8 +98,8 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 Width = metadata?.Width ?? 0,
                 Height = metadata?.Height ?? 0,
                 SizeInBytes = metadata?.SizeInBytes ?? command.Request.File.Length,
-                GeoLocation = metadata?.GeoLocation,
-                ExifMetadata = metadata?.ExifMetadata,
+                GeoLocation = command.Request.Category == ImageCategory.Avatar ? null : metadata?.GeoLocation,
+                ExifMetadata = command.Request.Category == ImageCategory.Avatar ? null : metadata?.ExifMetadata,
             };
 
             Image image = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
@@ -98,6 +123,47 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
     private static bool ShouldApplyWatermark(ImageCategory category, bool requestedWithWatermark)
     {
         return requestedWithWatermark && !IsLogoCategory(category);
+    }
+
+    private static bool IsValidAvatarFile(FilePayload file)
+    {
+        long streamLength = file.Content.CanSeek ? file.Content.Length : file.Length;
+        return file.Length > 0
+            && file.Length <= MaximumAvatarFileSizeInBytes
+            && streamLength > 0
+            && streamLength <= MaximumAvatarFileSizeInBytes;
+    }
+
+    private static bool IsValidAvatarMetadata(ImageProcessingMetadata? metadata)
+    {
+        return metadata is not null
+            && !string.IsNullOrWhiteSpace(metadata.DetectedContentType)
+            && AllowedAvatarContentTypes.Contains(metadata.DetectedContentType)
+            && metadata.FrameCount == 1
+            && metadata.Width > 0
+            && metadata.Height > 0
+            && metadata.Width <= MaximumAvatarEdge
+            && metadata.Height <= MaximumAvatarEdge
+            && (long)metadata.Width * metadata.Height * metadata.FrameCount <= MaximumAvatarPixels;
+    }
+
+    private static FilePayload BuildPersistedFile(
+        ImageUploadRequest request,
+        ImageProcessingMetadata? metadata)
+    {
+        if (request.Category != ImageCategory.Avatar
+            || string.IsNullOrWhiteSpace(metadata?.DetectedContentType))
+        {
+            return request.File;
+        }
+
+        return new FilePayload
+        {
+            FileName = request.File.FileName,
+            ContentType = metadata.DetectedContentType,
+            Length = request.File.Length,
+            Content = request.File.Content,
+        };
     }
 
     private static bool IsLogoCategory(ImageCategory category)

@@ -11,6 +11,13 @@
     "title": "Benutzerprofil",
     "name": "Nachname",
     "firstname": "Vorname",
+    "publicDisplayName": "Öffentlicher Benutzername",
+    "publicDisplayNameHelp": "Dieser Benutzername und dein Avatar werden bei deinen Kommentaren angezeigt. Dein Vor- und Nachname bleiben privat.",
+    "publicDisplayNameFallback": "Automatischer Benutzername",
+    "publicDisplayNameTooLong": "Der öffentliche Benutzername darf höchstens 60 Zeichen lang sein.",
+    "publicDisplayNameReserved": "Dieser Benutzername ist reserviert, um Rollenmissbrauch zu verhindern.",
+    "publicDisplayNameTaken": "Dieser Benutzername wird bereits von einem anderen Konto verwendet.",
+    "publicIdentifier": "Öffentliche Konto-ID: {{identifier}}",
     "email": "E-Mail",
     "preferred_language": "Bevorzugte Sprache",
     "preferred_measurement_system": "Bevorzugtes Einheitensystem",
@@ -2631,7 +2638,8 @@
     "officialAuthor": "Amusement Parks",
     "roles": {
       "Admin": "Administrator",
-      "Moderator": "Moderator"
+      "Moderator": "Moderator",
+      "User": "Benutzer"
     },
     "summary": {
       "createFirst": "Den ersten Kommentar schreiben",
@@ -2688,7 +2696,7 @@
       "update": "Der Kommentar konnte nicht aktualisiert werden.",
       "delete": "Der Kommentar konnte nicht gelöscht werden.",
       "forbidden": "Nur Administratoren und Moderatoren können einen Kommentar veröffentlichen.",
-      "managementForbidden": "Nur Administratoren können einen Kommentar bearbeiten oder löschen."
+      "managementForbidden": "Du kannst nur deine eigenen Kommentare bearbeiten oder löschen, es sei denn, du bist Administrator."
     }
   },
   "contactPage": {

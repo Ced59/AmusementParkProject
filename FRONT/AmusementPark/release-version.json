@@ -1,6 +1,20 @@
 {
-  "version": "4.0.9",
+  "version": "4.0.10",
   "history": [
+    {
+      "version": "4.0.10",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "L’identité publique des auteurs de commentaires a été améliorée.",
+        "en": "The public identity of comment authors has been improved.",
+        "de": "Die öffentliche Identität von Kommentarautoren wurde verbessert.",
+        "nl": "De openbare identiteit van auteurs van reacties is verbeterd.",
+        "it": "L’identità pubblica degli autori dei commenti è stata migliorata.",
+        "es": "Se ha mejorado la identidad pública de quienes escriben comentarios.",
+        "pl": "Ulepszono publiczną tożsamość autorów komentarzy.",
+        "pt": "A identidade pública dos autores dos comentários foi melhorada."
+      }
+    },
     {
       "version": "4.0.9",
       "releasedAt": "2026-07-29",

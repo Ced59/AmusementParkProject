@@ -50,6 +50,8 @@ public sealed partial class MongoDatabaseInitializer
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
     {
+        await this.EnsureCollectionExistsAsync(this.settings.CountersCollectionName, cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.UsersCollectionName, cancellationToken);
         await this.InitializeUsersIndexesAsync(cancellationToken);
 
@@ -164,6 +166,9 @@ public sealed partial class MongoDatabaseInitializer
         await this.InitializeParkWeatherIndexesAsync(cancellationToken);
 
         await this.InitializeAdminUserAsync(cancellationToken);
+        await this.BackfillPublicAccountIdentitiesAsync(cancellationToken);
+        await this.InitializeUserPublicDisplayNameIndexAsync(cancellationToken);
+        await this.BackfillLegacyCommentAuthorSnapshotsAsync(cancellationToken);
     }
 
     private async Task EnsureCollectionExistsAsync(string collectionName, CancellationToken cancellationToken)

@@ -20,6 +20,10 @@ public sealed class UserGettedDto
 
     public string? LastName { get; set; } = string.Empty;
 
+    public string? PublicDisplayName { get; set; }
+
+    public string? PublicIdentifier { get; set; }
+
     public bool? IsActivated { get; set; }
 
     public bool? IsBlocked { get; set; }

@@ -17,6 +17,7 @@ public sealed record CommentResult(
     string TargetId,
     string AuthorUserId,
     string AuthorDisplayName,
+    string? AuthorAvatarUrl,
     Role AuthorRole,
     IReadOnlyCollection<LocalizedText> Bodies,
     bool IsOfficial,

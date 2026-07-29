@@ -26,6 +26,7 @@ public sealed class CommentsHttpMappersTests
             "park-1",
             "author-1",
             "Alice",
+            "/images/avatar-1",
             Role.Moderator,
             new[] { new LocalizedText("fr", "<p>Avis</p>") },
             false,
@@ -36,5 +37,6 @@ public sealed class CommentsHttpMappersTests
 
         Assert.Equal(expected, dto.CanUpdate);
         Assert.Equal(expected, dto.CanDelete);
+        Assert.Equal("/images/avatar-1", dto.AuthorAvatarUrl);
     }
 }

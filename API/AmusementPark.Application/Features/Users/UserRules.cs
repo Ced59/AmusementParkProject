@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using AmusementPark.Core.Domain.Users;
 
 namespace AmusementPark.Application.Features.Users;
 
@@ -33,6 +34,23 @@ internal static class UserRules
         return "Metric";
     }
 
+    public static string? NormalizePublicDisplayName(string? publicDisplayName)
+    {
+        return string.IsNullOrWhiteSpace(publicDisplayName)
+            ? null
+            : publicDisplayName.Trim();
+    }
+
+    public static bool IsValidPublicDisplayName(string? publicDisplayName)
+    {
+        return PublicDisplayNamePolicy.IsValid(publicDisplayName);
+    }
+
+    public static bool IsReservedPublicDisplayName(string publicDisplayName)
+    {
+        return PublicDisplayNamePolicy.IsReserved(publicDisplayName);
+    }
+
     public static bool IsValidEmail(string? email)
     {
         if (string.IsNullOrWhiteSpace(email))
@@ -59,4 +77,5 @@ internal static class UserRules
         string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
         return Regex.IsMatch(password ?? string.Empty, passwordPattern);
     }
+
 }

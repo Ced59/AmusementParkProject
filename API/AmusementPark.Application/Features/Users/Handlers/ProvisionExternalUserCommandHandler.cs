@@ -163,10 +163,13 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
                 user.LastName = identity.FamilyName;
             }
         }
+
     }
 
     private async Task<User?> PersistUserAsync(User user, VerifiedExternalIdentity identity, bool createIfMissing, CancellationToken cancellationToken)
     {
+        await this.EnsurePublicIdentityAsync(user, cancellationToken);
+
         if (string.IsNullOrWhiteSpace(user.AvatarUrl) && !string.IsNullOrWhiteSpace(identity.PictureUrl))
         {
             string avatarPath = await this.userAvatarImporter.DownloadAndSaveAsync(identity.PictureUrl, user.Id, cancellationToken);
@@ -199,6 +202,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         }
 
         ApplyIdentityToUser(user, identity, false);
+        await this.EnsurePublicIdentityAsync(user, cancellationToken);
 
         if (string.IsNullOrWhiteSpace(user.AvatarUrl) && !string.IsNullOrWhiteSpace(identity.PictureUrl))
         {
@@ -242,6 +246,22 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             RefreshToken = refreshToken,
             RefreshTokenExpiresAtUtc = refreshTokenExpiresAtUtc,
         });
+    }
+
+    private async Task EnsurePublicIdentityAsync(User user, CancellationToken cancellationToken)
+    {
+        if (user.PublicAccountNumber <= 0)
+        {
+            long publicAccountNumber =
+                await this.userRepository.AllocatePublicAccountNumberAsync(cancellationToken);
+            user.AssignPublicAccountNumber(publicAccountNumber);
+        }
+
+        if (user.UsesAutomaticPublicDisplayName || string.IsNullOrWhiteSpace(user.PublicDisplayName))
+        {
+            user.PublicDisplayName = PublicDisplayNameFactory.Create(user.Roles, user.PublicAccountNumber);
+            user.UsesAutomaticPublicDisplayName = true;
+        }
     }
 
     private static bool CanAutoLink(User existingUser, VerifiedExternalIdentity identity)

@@ -50,4 +50,21 @@ public sealed class CommentManagementTests
 
         Assert.False(result);
     }
+
+    [Theory]
+    [InlineData(Role.Admin, true)]
+    [InlineData(Role.Moderator, true)]
+    [InlineData(Role.User, false)]
+    public void CanManageOfficialStatus_ShouldRequireAStaffRole(Role role, bool expected)
+    {
+        User actor = new User
+        {
+            Id = "user-1",
+            Roles = new List<Role> { role },
+        };
+
+        bool result = Comment.CanManageOfficialStatus(actor);
+
+        Assert.Equal(expected, result);
+    }
 }

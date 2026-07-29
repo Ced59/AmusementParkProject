@@ -9,6 +9,9 @@ internal static class UserApplicationErrors
 {
     public static ApplicationError PasswordsNotSames() => ApplicationError.RuleViolation("user.passwords.not-same", "Passwords do not match.");
     public static ApplicationError InvalidEmailAddress() => ApplicationError.RuleViolation("user.email.invalid", "Invalid email address format.");
+    public static ApplicationError InvalidPublicDisplayName() => ApplicationError.RuleViolation("user.public-display-name.invalid", "The public display name is too long.");
+    public static ApplicationError PublicDisplayNameAlreadyExists() => ApplicationError.Conflict("user.public-display-name.already-exists", "This public display name is already in use.");
+    public static ApplicationError PublicDisplayNameReserved() => ApplicationError.RuleViolation("user.public-display-name.reserved", "This public display name is reserved.");
     public static ApplicationError UserAlreadyExists() => ApplicationError.RuleViolation("user.already-exists", "User Already Exist.");
     public static ApplicationError UserNotExists() => ApplicationError.NotFound("user.not-found", "User not Exist");
     public static ApplicationError InvalidPassword() => ApplicationError.RuleViolation("user.password.invalid", "Password does not meet complexity requirements.");

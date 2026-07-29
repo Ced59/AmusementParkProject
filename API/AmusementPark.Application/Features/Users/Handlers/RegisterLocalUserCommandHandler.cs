@@ -83,6 +83,11 @@ public sealed class RegisterLocalUserCommandHandler : ICommandHandler<RegisterLo
                 CreatedAtUtc = now,
                 UpdatedAtUtc = now,
             };
+            long publicAccountNumber =
+                await this.userRepository.AllocatePublicAccountNumberAsync(cancellationToken);
+            user.AssignPublicAccountNumber(publicAccountNumber);
+            user.PublicDisplayName = PublicDisplayNameFactory.Create(user.Roles, user.PublicAccountNumber);
+            user.UsesAutomaticPublicDisplayName = true;
 
             User createdUser = await this.userRepository.CreateAsync(user, cancellationToken);
             await this.localAccountEmailService.SendEmailConfirmationAsync(createdUser, confirmationToken, cancellationToken);

@@ -16,6 +16,7 @@ import { LocalizedItem } from '@app/models/shared/localized-item';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { resolveLocalizedValue } from '@shared/utils/localization';
@@ -43,6 +44,7 @@ interface CommentEditorForm {
   providers: [CommentThreadStateFacade],
   imports: [
     DatePipe,
+    ImageDisplayComponent,
     LocalizedRichTextEditorComponent,
     PageStateComponent,
     ReactiveFormsModule,
@@ -64,6 +66,7 @@ export class CommentsPageComponent implements OnInit {
   protected readonly saveErrorKey = this.stateFacade.saveErrorKey;
   protected readonly notFound = this.stateFacade.notFound;
   protected readonly currentLanguage = signal<string>('en');
+  protected readonly avatarResponsiveWidths: readonly number[] = [48, 96];
   protected readonly editingCommentId = signal<string | null>(null);
   protected readonly isEditing = computed(() => this.editingCommentId() !== null);
   protected readonly editorForm = new FormGroup<CommentEditorForm>({

@@ -19,6 +19,16 @@ public sealed class UserDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? LastName { get; set; }
 
+    [BsonElement("publicDisplayName")]
+    [BsonIgnoreIfNull]
+    public string? PublicDisplayName { get; set; }
+
+    [BsonElement("publicAccountNumber")]
+    public long PublicAccountNumber { get; set; }
+
+    [BsonElement("usesAutomaticPublicDisplayName")]
+    public bool UsesAutomaticPublicDisplayName { get; set; } = true;
+
     [BsonElement("email")]
     [BsonIgnoreIfNull]
     public string? Email { get; set; }

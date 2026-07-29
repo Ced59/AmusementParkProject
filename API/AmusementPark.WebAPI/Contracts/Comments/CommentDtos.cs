@@ -35,6 +35,8 @@ public sealed class CommentDto
 
     public string AuthorDisplayName { get; set; } = string.Empty;
 
+    public string? AuthorAvatarUrl { get; set; }
+
     public string AuthorRole { get; set; } = string.Empty;
 
     public List<LocalizedTextDto> Bodies { get; set; } = new List<LocalizedTextDto>();

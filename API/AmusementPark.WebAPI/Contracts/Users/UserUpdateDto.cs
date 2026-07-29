@@ -9,6 +9,8 @@ public sealed class UserUpdateDto
 
     public string? LastName { get; set; }
 
+    public string? PublicDisplayName { get; set; }
+
     public string? Email { get; set; }
 
     public string? NewEmail { get; set; }
@@ -16,6 +18,4 @@ public sealed class UserUpdateDto
     public string? PreferredLanguage { get; set; }
 
     public string? PreferredMeasurementSystem { get; set; }
-
-    public string? AvatarUrl { get; set; }
 }

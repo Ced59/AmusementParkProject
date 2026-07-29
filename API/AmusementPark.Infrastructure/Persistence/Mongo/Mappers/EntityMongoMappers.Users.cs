@@ -24,6 +24,8 @@ internal static partial class EntityMongoMappers
             Id = document.Id,
             FirstName = document.FirstName,
             LastName = document.LastName,
+            PublicDisplayName = document.PublicDisplayName,
+            UsesAutomaticPublicDisplayName = document.UsesAutomaticPublicDisplayName,
             Email = document.Email,
             HashedPassword = document.HashedPassword,
             IsActivated = document.IsActivated,
@@ -43,6 +45,11 @@ internal static partial class EntityMongoMappers
             PasswordResetSentAtUtc = document.PasswordResetSentAtUtc,
         };
 
+        if (document.PublicAccountNumber > 0)
+        {
+            entity.AssignPublicAccountNumber(document.PublicAccountNumber);
+        }
+
         entity.CreatedAtUtc = document.CreatedAt;
         entity.UpdatedAtUtc = document.UpdatedAt;
         return entity;
@@ -55,6 +62,9 @@ internal static partial class EntityMongoMappers
             Id = entity.Id,
             FirstName = entity.FirstName,
             LastName = entity.LastName,
+            PublicDisplayName = entity.PublicDisplayName,
+            PublicAccountNumber = entity.PublicAccountNumber,
+            UsesAutomaticPublicDisplayName = entity.UsesAutomaticPublicDisplayName,
             Email = entity.Email,
             HashedPassword = entity.HashedPassword,
             IsActivated = entity.IsActivated,

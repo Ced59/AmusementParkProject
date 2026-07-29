@@ -14,6 +14,191 @@ namespace AmusementPark.Application.Tests.Features.Images.Handlers;
 public sealed class UploadImageCommandHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenAvatarIsValid_ShouldStripMetadataAndPersistNoLocation()
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IImageProcessingPipeline> imageProcessingPipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        Mock<IImageBinaryStorage> imageBinaryStorage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            imageRepository.Object,
+            imageProcessingPipeline.Object,
+            imageBinaryStorage.Object);
+        FilePayload file = CreateAvatarFile(1024, "image/gif");
+        imageProcessingPipeline
+            .Setup(pipeline => pipeline.ExtractMetadataAsync(
+                It.Is<ImageUploadRequest>(request => request.Category == ImageCategory.Avatar),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = 1200,
+                Height = 800,
+                SizeInBytes = file.Length,
+                DetectedContentType = "image/jpeg",
+                FrameCount = 1,
+                GeoLocation = new GeoPointValue(50.0, 3.0),
+                ExifMetadata = new ImageExifMetadata { CameraMaker = "Phone" },
+            });
+        imageBinaryStorage
+            .Setup(storage => storage.SaveWithoutMetadataAsync(
+                It.Is<string>(path => path.StartsWith("avatar/", StringComparison.Ordinal)),
+                file,
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { "avatar/avatar.webp", "avatar/avatar.jpg" });
+        imageRepository
+            .Setup(repository => repository.CreateAsync(
+                It.Is<ImageUploadRequest>(request =>
+                    request.Category == ImageCategory.Avatar
+                    && request.GeoLocation == null
+                    && request.ExifMetadata == null
+                    && request.File.ContentType == "image/jpeg"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ImageUploadRequest request, CancellationToken _) => new Image
+            {
+                Id = request.ImageId ?? "image-id",
+                Category = request.Category,
+                OriginalFileName = request.File.FileName,
+                ContentType = request.File.ContentType,
+                Path = request.StoragePath,
+            });
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Avatar,
+                File = file,
+                WithWatermark = false,
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "user-1",
+            }));
+
+        Assert.True(result.IsSuccess);
+        imageProcessingPipeline.VerifyAll();
+        imageBinaryStorage.VerifyAll();
+        imageRepository.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(4097, 100)]
+    [InlineData(3000, 3000)]
+    public async Task HandleAsync_WhenAvatarDimensionsAreUnsafe_ShouldRejectBeforeStorage(
+        int width,
+        int height)
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IImageProcessingPipeline> imageProcessingPipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        Mock<IImageBinaryStorage> imageBinaryStorage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            imageRepository.Object,
+            imageProcessingPipeline.Object,
+            imageBinaryStorage.Object);
+        FilePayload file = CreateAvatarFile(1024);
+        imageProcessingPipeline
+            .Setup(pipeline => pipeline.ExtractMetadataAsync(
+                It.IsAny<ImageUploadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = width,
+                Height = height,
+                SizeInBytes = file.Length,
+                DetectedContentType = "image/jpeg",
+                FrameCount = 1,
+            });
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Avatar,
+                File = file,
+                WithWatermark = false,
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "user-1",
+            }));
+
+        Assert.False(result.IsSuccess);
+        imageProcessingPipeline.VerifyAll();
+        imageBinaryStorage.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenAvatarFileIsUnsafe_ShouldRejectBeforeInspection()
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IImageProcessingPipeline> imageProcessingPipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        Mock<IImageBinaryStorage> imageBinaryStorage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            imageRepository.Object,
+            imageProcessingPipeline.Object,
+            imageBinaryStorage.Object);
+        FilePayload file = new FilePayload
+        {
+            FileName = "avatar",
+            ContentType = "image/jpeg",
+            Length = 5242881,
+            Content = new MemoryStream(new byte[] { 1 }),
+        };
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Avatar,
+                File = file,
+                WithWatermark = false,
+            }));
+
+        Assert.False(result.IsSuccess);
+        imageProcessingPipeline.VerifyNoOtherCalls();
+        imageBinaryStorage.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Theory]
+    [InlineData("image/gif", 1)]
+    [InlineData("image/jpeg", 2)]
+    public async Task HandleAsync_WhenDetectedAvatarContentIsUnsafe_ShouldRejectBeforeStorage(
+        string detectedContentType,
+        int frameCount)
+    {
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IImageProcessingPipeline> imageProcessingPipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        Mock<IImageBinaryStorage> imageBinaryStorage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            imageRepository.Object,
+            imageProcessingPipeline.Object,
+            imageBinaryStorage.Object);
+        FilePayload file = CreateAvatarFile(1024);
+        imageProcessingPipeline
+            .Setup(pipeline => pipeline.ExtractMetadataAsync(
+                It.IsAny<ImageUploadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = 1200,
+                Height = 800,
+                SizeInBytes = file.Length,
+                DetectedContentType = detectedContentType,
+                FrameCount = frameCount,
+            });
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Avatar,
+                File = file,
+                WithWatermark = false,
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "user-1",
+            }));
+
+        Assert.False(result.IsSuccess);
+        imageProcessingPipeline.VerifyAll();
+        imageBinaryStorage.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenLogoRequestsWatermark_ShouldSaveWithoutWatermark()
     {
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
@@ -80,5 +265,16 @@ public sealed class UploadImageCommandHandlerTests
         imageProcessingPipeline.VerifyAll();
         imageBinaryStorage.VerifyAll();
         imageRepository.VerifyAll();
+    }
+
+    private static FilePayload CreateAvatarFile(long length, string contentType = "image/jpeg")
+    {
+        return new FilePayload
+        {
+            FileName = "avatar.jpg",
+            ContentType = contentType,
+            Length = length,
+            Content = new MemoryStream(new byte[length]),
+        };
     }
 }

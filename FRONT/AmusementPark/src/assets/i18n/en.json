@@ -11,6 +11,13 @@
     "title": "User profile",
     "name": "Last name",
     "firstname": "First name",
+    "publicDisplayName": "Public nickname",
+    "publicDisplayNameHelp": "This nickname and your avatar appear with your comments. Your first and last names remain private.",
+    "publicDisplayNameFallback": "Automatic nickname",
+    "publicDisplayNameTooLong": "The public nickname cannot exceed 60 characters.",
+    "publicDisplayNameReserved": "This nickname is reserved to prevent role impersonation.",
+    "publicDisplayNameTaken": "This nickname is already used by another account.",
+    "publicIdentifier": "Public account identifier: {{identifier}}",
     "email": "Email",
     "preferred_language": "Preferred language",
     "preferred_measurement_system": "Preferred measurement system",
@@ -2631,7 +2638,8 @@
     "officialAuthor": "Amusement Parks",
     "roles": {
       "Admin": "Administrator",
-      "Moderator": "Moderator"
+      "Moderator": "Moderator",
+      "User": "User"
     },
     "summary": {
       "createFirst": "Write the first comment",
@@ -2688,7 +2696,7 @@
       "update": "The comment could not be updated.",
       "delete": "The comment could not be deleted.",
       "forbidden": "Only administrators and moderators can publish a comment.",
-      "managementForbidden": "Only administrators can edit or delete a comment."
+      "managementForbidden": "You can only edit or delete your own comments unless you are an administrator."
     }
   },
   "contactPage": {

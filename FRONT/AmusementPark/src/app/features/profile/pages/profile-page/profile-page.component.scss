@@ -2,9 +2,25 @@
   display: block;
 }
 
+:host ::ng-deep .profile-avatar {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: block;
+  height: 7.5rem;
+  max-height: 7.5rem;
+  max-width: 7.5rem;
+  min-height: 7.5rem;
+  object-fit: cover;
+  overflow: hidden;
+  width: 7.5rem;
+}
+
 :host ::ng-deep .profile-avatar--placeholder {
+  align-items: center;
   border: 1px solid var(--app-border);
   background: var(--app-surface-2);
+  display: inline-grid;
+  justify-content: center;
 }
 
 .profile-measurement-actions {

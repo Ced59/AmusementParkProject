@@ -12,10 +12,15 @@
         <div class="profile-hero__avatar">
           <app-image-display
             [imagePathOrUrl]="avatarUrl"
-            alt="Avatar"
+            [alt]="currentUser.publicDisplayName || currentUser.email || 'Avatar'"
             imgClass="profile-avatar"
             placeholderClass="profile-avatar profile-avatar--placeholder"
-            placeholderIconClass="pi pi-user">
+            placeholderIconClass="pi pi-user"
+            loading="eager"
+            fetchPriority="high"
+            sizes="120px"
+            [srcWidth]="240"
+            [responsiveWidths]="profileAvatarResponsiveWidths">
           </app-image-display>
           <button
             appUiButton="soft"
@@ -31,7 +36,9 @@
           <app-ui-kicker tone="gold" iconClass="pi pi-user">
             {{ 'user-profile.accountBadge' | translate }}
           </app-ui-kicker>
-          <h1 class="profile-hero__title">{{ currentUser.firstName || currentUser.email }}</h1>
+          <h1 class="profile-hero__title">
+            {{ currentUser.publicDisplayName || currentUser.firstName || currentUser.email }}
+          </h1>
           <p class="profile-hero__subtitle">{{ 'user-profile.subtitle' | translate }}</p>
           <div class="profile-hero__chips">
             <app-ui-chip tone="sky" iconClass="pi pi-envelope">{{ currentUser.email }}</app-ui-chip>
@@ -82,8 +89,16 @@
 
             @if (!isEditingIdentity) {
               <span class="profile-value profile-value--identity">
-                <strong>{{ currentUser.firstName }}</strong>
-                <span>{{ currentUser.lastName }}</span>
+                <strong>
+                  {{ currentUser.publicDisplayName || ('user-profile.publicDisplayNameFallback' | translate) }}
+                </strong>
+                @if (currentUser.publicIdentifier) {
+                  <small>
+                    {{ 'user-profile.publicIdentifier' | translate:{ identifier: currentUser.publicIdentifier } }}
+                  </small>
+                }
+                <span>{{ currentUser.firstName }} {{ currentUser.lastName }}</span>
+                <small>{{ 'user-profile.publicDisplayNameHelp' | translate }}</small>
               </span>
               <button appUiButton="ghost" type="button" (click)="editField('identity')">
                 {{ 'user-profile.modify' | translate }}
@@ -91,6 +106,14 @@
             } @else {
               <div class="profile-identity-editor">
                 <div class="profile-identity-fields">
+                  <app-ui-field-input
+                    inputId="profile-public-display-name"
+                    labelKey="user-profile.publicDisplayName"
+                    [value]="identityDraft.publicDisplayName"
+                    [disabled]="savingIdentity"
+                    (valueChange)="identityDraft.publicDisplayName = $event">
+                  </app-ui-field-input>
+
                   <app-ui-field-input
                     inputId="profile-firstname"
                     labelKey="user-profile.firstname"
@@ -193,6 +216,7 @@
   [noImageSelectedKey]="'user-profile.avatar.noImageSelected'"
   [uploadingKey]="'user-profile.avatar.uploading'"
   [withWatermark]="false"
+  [uploadMode]="'current-user-avatar'"
   (visibleChange)="onAvatarUploadDialogVisibleChange($event)"
   (uploaded)="onAvatarUploaded($event)">
 </app-owner-image-upload-dialog>

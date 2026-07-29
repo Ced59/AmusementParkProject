@@ -49,6 +49,7 @@ internal static class CommentsHttpMappers
             TargetType = value.TargetType.ToString(),
             TargetId = value.TargetId,
             AuthorDisplayName = value.AuthorDisplayName,
+            AuthorAvatarUrl = value.AuthorAvatarUrl,
             AuthorRole = value.AuthorRole.ToString(),
             Bodies = value.Bodies.Select(ToHttp).ToList(),
             IsOfficial = value.IsOfficial,

@@ -54,4 +54,21 @@ describe('UsersApiService', () => {
     expect(nullRequest.request.body).toBe(JSON.stringify(null));
     nullRequest.flush({ id: 'null' });
   });
+
+  it('uploads the current user avatar without sending an owner or category', () => {
+    const file: File = new File(['avatar'], 'avatar.png', { type: 'image/png' });
+
+    service.uploadCurrentUserAvatar(file).subscribe();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}users/me/avatar`);
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body instanceof FormData).toBe(true);
+    const formData: FormData = request.request.body as FormData;
+    expect(formData.get('File')).toBe(file);
+    expect(formData.getAll('File')).toHaveLength(1);
+    expect(formData.get('OwnerId')).toBeNull();
+    expect(formData.get('Category')).toBeNull();
+    expect(request.request.headers.has('Content-Type')).toBe(false);
+    request.flush({ id: 'avatar-1' });
+  });
 });

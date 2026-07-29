@@ -1,13 +1,14 @@
 import { LocalizedItem } from '@app/models/shared/localized-item';
 
 export type CommentTargetType = 'Park' | 'ParkItem';
-export type CommentAuthorRole = 'Admin' | 'Moderator';
+export type CommentAuthorRole = 'Admin' | 'Moderator' | 'User';
 
 export interface PublicComment {
   id: string;
   targetType: CommentTargetType;
   targetId: string;
   authorDisplayName: string;
+  authorAvatarUrl: string | null;
   authorRole: CommentAuthorRole;
   bodies: LocalizedItem<string>[];
   isOfficial: boolean;

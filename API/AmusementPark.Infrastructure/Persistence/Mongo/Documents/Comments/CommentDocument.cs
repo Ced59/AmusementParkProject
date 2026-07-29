@@ -22,8 +22,12 @@ public sealed class CommentDocument : MongoDocumentBase
     [BsonElement("authorUserId")]
     public string AuthorUserId { get; set; } = string.Empty;
 
-    [BsonElement("authorDisplayName")]
+    [BsonElement("authorPublicDisplayName")]
     public string AuthorDisplayName { get; set; } = string.Empty;
+
+    [BsonElement("authorAvatarUrl")]
+    [BsonIgnoreIfNull]
+    public string? AuthorAvatarUrl { get; set; }
 
     [BsonElement("authorRole")]
     [BsonRepresentation(BsonType.String)]

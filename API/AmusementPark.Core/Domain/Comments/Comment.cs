@@ -19,6 +19,8 @@ public sealed class Comment : AuditableEntity
 
     public string AuthorDisplayName { get; set; } = string.Empty;
 
+    public string? AuthorAvatarUrl { get; set; }
+
     public Role AuthorRole { get; set; }
 
     public List<LocalizedText> Bodies { get; set; } = new List<LocalizedText>();
@@ -46,6 +48,16 @@ public sealed class Comment : AuditableEntity
 
         return actor.HasRole(Role.Admin)
             || string.Equals(actor.Id, this.AuthorUserId, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    /// Indique si l'utilisateur peut attribuer ou retirer le statut officiel.
+    /// </summary>
+    public static bool CanManageOfficialStatus(User actor)
+    {
+        ArgumentNullException.ThrowIfNull(actor);
+
+        return actor.HasRole(Role.Admin) || actor.HasRole(Role.Moderator);
     }
 }
 

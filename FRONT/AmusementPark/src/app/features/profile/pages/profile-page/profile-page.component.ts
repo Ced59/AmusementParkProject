@@ -20,6 +20,7 @@ import { MeasurementSystem } from '@shared/models/measurements/measurement-syste
 import { TranslateService } from '@ngx-translate/core';
 import { ProfilePageViewComponent } from './profile-page-view.component';
 import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
+import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 
 @Component({
     selector: 'app-profile-page',
@@ -30,6 +31,8 @@ import { ProfilePageStateFacade } from '@features/profile/state/profile-page-sta
     imports: [ProfilePageViewComponent]
 })
 export class ProfilePageComponent implements OnInit {
+  private static readonly MaximumPublicDisplayNameLength = 60;
+
   protected readonly state = this.stateFacade.state;
   protected readonly user = this.stateFacade.user;
   displayAvatarUploadDialog: boolean = false;
@@ -37,7 +40,8 @@ export class ProfilePageComponent implements OnInit {
   savingIdentity: boolean = false;
   identityDraft = {
     firstName: '',
-    lastName: ''
+    lastName: '',
+    publicDisplayName: ''
   };
 
   protected readonly avatarCategory = ImageCategory.AVATAR;
@@ -105,7 +109,8 @@ export class ProfilePageComponent implements OnInit {
 
     this.identityDraft = {
       firstName: currentUser.firstName ?? '',
-      lastName: currentUser.lastName ?? ''
+      lastName: currentUser.lastName ?? '',
+      publicDisplayName: currentUser.publicDisplayName ?? ''
     };
     this.isEditingIdentity = true;
   }
@@ -117,7 +122,8 @@ export class ProfilePageComponent implements OnInit {
     this.savingIdentity = false;
     this.identityDraft = {
       firstName: currentUser?.firstName ?? '',
-      lastName: currentUser?.lastName ?? ''
+      lastName: currentUser?.lastName ?? '',
+      publicDisplayName: currentUser?.publicDisplayName ?? ''
     };
   }
 
@@ -130,9 +136,19 @@ export class ProfilePageComponent implements OnInit {
 
     const firstName: string = this.identityDraft.firstName.trim();
     const lastName: string = this.identityDraft.lastName.trim();
+    const publicDisplayName: string = this.identityDraft.publicDisplayName.trim();
 
     if (!firstName || !lastName) {
       this.messageService.add('warn', this.translate('common.warning', 'Warning'), this.translate('user-profile.identityRequired', 'First name and last name are required.'));
+      return;
+    }
+
+    if (publicDisplayName.length > ProfilePageComponent.MaximumPublicDisplayNameLength) {
+      this.messageService.add(
+        'warn',
+        this.translate('common.warning', 'Warning'),
+        this.translate('user-profile.publicDisplayNameTooLong', 'The public name is too long.')
+      );
       return;
     }
 
@@ -141,6 +157,7 @@ export class ProfilePageComponent implements OnInit {
     const payload: UserPut = {
       firstName,
       lastName,
+      publicDisplayName,
       email: currentUser.email ?? '',
       newEmail: currentUser.email ?? '',
       preferredLanguage: currentUser.preferredLanguage ?? this.translationService.getCurrentLang().toUpperCase(),
@@ -152,7 +169,8 @@ export class ProfilePageComponent implements OnInit {
         this.stateFacade.setUser(user);
         this.identityDraft = {
           firstName: user.firstName ?? '',
-          lastName: user.lastName ?? ''
+          lastName: user.lastName ?? '',
+          publicDisplayName: user.publicDisplayName ?? ''
         };
         this.isEditingIdentity = false;
         this.savingIdentity = false;
@@ -162,7 +180,11 @@ export class ProfilePageComponent implements OnInit {
       error: (error: unknown) => {
         console.error('Error updating profile identity', error);
         this.savingIdentity = false;
-        this.messageService.add('error', this.translate('common.error', 'Error'), this.translate('user-profile.updateError', 'Profile update failed.'));
+        this.messageService.add(
+          'error',
+          this.translate('common.error', 'Error'),
+          this.translate(this.resolvePublicDisplayNameErrorKey(error), 'Profile update failed.')
+        );
       }
     });
   }
@@ -204,6 +226,7 @@ export class ProfilePageComponent implements OnInit {
     const payload: UserPut = {
       firstName: currentUser.firstName ?? '',
       lastName: currentUser.lastName ?? '',
+      publicDisplayName: currentUser.publicDisplayName ?? '',
       email: currentUser.email ?? '',
       newEmail: currentUser.email ?? '',
       preferredLanguage: lang.toUpperCase(),
@@ -228,6 +251,7 @@ export class ProfilePageComponent implements OnInit {
     const payload: UserPut = {
       firstName: currentUser.firstName ?? '',
       lastName: currentUser.lastName ?? '',
+      publicDisplayName: currentUser.publicDisplayName ?? '',
       email: currentUser.email ?? '',
       newEmail: currentUser.email ?? '',
       preferredLanguage: currentUser.preferredLanguage ?? this.translationService.getCurrentLang().toUpperCase(),
@@ -250,5 +274,22 @@ export class ProfilePageComponent implements OnInit {
   private translate(key: string, fallback: string): string {
     const translatedValue: string = this.translateService.instant(key);
     return translatedValue === key ? fallback : translatedValue;
+  }
+
+  private resolvePublicDisplayNameErrorKey(error: unknown): string {
+    const errorCode: string | null | undefined = extractApiProblemDetails(error)?.errorCode;
+    if (errorCode === 'user.public-display-name.already-exists') {
+      return 'user-profile.publicDisplayNameTaken';
+    }
+
+    if (errorCode === 'user.public-display-name.reserved') {
+      return 'user-profile.publicDisplayNameReserved';
+    }
+
+    if (errorCode === 'user.public-display-name.invalid') {
+      return 'user-profile.publicDisplayNameTooLong';
+    }
+
+    return 'user-profile.updateError';
   }
 }

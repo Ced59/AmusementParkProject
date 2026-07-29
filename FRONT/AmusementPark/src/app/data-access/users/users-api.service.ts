@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { UserDto } from '@app/models/users/user_dto';
 import { UserPut } from '@app/models/users/user_put';
 import { UsersApiResponse } from '@app/models/users/users_api_response';
+import { ImageDto } from '@app/models/images/image-dto';
 import { USERS_API_ENDPOINTS } from './users-api-endpoints';
 
 @Injectable({
@@ -34,5 +35,12 @@ export class UsersApiService {
   putUserById(id: string | null, user: UserPut | null): Observable<UserDto> {
     const url: string = `${environment.apiBaseUrl}${USERS_API_ENDPOINTS.putUserById(id)}`;
     return this.http.put<UserDto>(url, JSON.stringify(user), this.jsonHttpOptions);
+  }
+
+  uploadCurrentUserAvatar(file: File): Observable<ImageDto> {
+    const url: string = `${environment.apiBaseUrl}${USERS_API_ENDPOINTS.uploadCurrentUserAvatar}`;
+    const formData: FormData = new FormData();
+    formData.append('File', file);
+    return this.http.post<ImageDto>(url, formData);
   }
 }

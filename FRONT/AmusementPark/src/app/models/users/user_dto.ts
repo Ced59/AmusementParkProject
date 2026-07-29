@@ -3,6 +3,8 @@ export interface UserDto {
   email: string;
   firstName: string;
   lastName: string;
+  publicDisplayName?: string | null;
+  publicIdentifier?: string | null;
   isActivated: boolean;
   isBlocked: boolean;
   roles: string[];

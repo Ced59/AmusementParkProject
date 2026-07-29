@@ -48,11 +48,11 @@ public static class UsersHttpMappers
         {
             FirstName = request.FirstName,
             LastName = request.LastName,
+            PublicDisplayName = request.PublicDisplayName,
             Email = request.Email,
             NewEmail = request.NewEmail,
             PreferredLanguage = request.PreferredLanguage,
             PreferredMeasurementSystem = request.PreferredMeasurementSystem,
-            AvatarUrl = request.AvatarUrl,
         };
     }
 
@@ -97,6 +97,8 @@ public static class UsersHttpMappers
             CreatedAt = user.CreatedAtUtc,
             UpdatedAt = user.UpdatedAtUtc,
             Email = user.Email,
+            PublicDisplayName = user.PublicDisplayName,
+            PublicIdentifier = user.ResolvePublicIdentifier(),
             IsActivated = user.IsActivated,
             IsBlocked = user.IsBlocked,
             Roles = user.Roles.Select(ToHttp).ToList(),
@@ -116,6 +118,8 @@ public static class UsersHttpMappers
             Email = user.Email,
             FirstName = user.FirstName,
             LastName = user.LastName,
+            PublicDisplayName = user.PublicDisplayName,
+            PublicIdentifier = user.ResolvePublicIdentifier(),
             IsActivated = user.IsActivated,
             IsBlocked = user.IsBlocked,
             Roles = user.Roles.Select(ToHttp).ToList(),
@@ -134,6 +138,8 @@ public static class UsersHttpMappers
             UpdatedAt = user.UpdatedAtUtc,
             FirstName = user.FirstName,
             LastName = user.LastName,
+            PublicDisplayName = user.PublicDisplayName,
+            PublicIdentifier = user.ResolvePublicIdentifier(),
             Email = user.Email,
             IsActivated = user.IsActivated,
             IsBlocked = user.IsBlocked,
@@ -153,6 +159,8 @@ public static class UsersHttpMappers
             UpdatedAt = user.UpdatedAtUtc,
             FirstName = user.FirstName,
             LastName = user.LastName,
+            PublicDisplayName = user.PublicDisplayName,
+            PublicIdentifier = user.ResolvePublicIdentifier(),
             Email = user.Email,
             IsActivated = user.IsActivated,
             IsBlocked = user.IsBlocked,

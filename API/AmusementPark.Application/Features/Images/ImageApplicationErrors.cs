@@ -22,6 +22,13 @@ internal static class ImageApplicationErrors
         return ApplicationError.Technical("image.processing.failed", "Image processing Internal Server Error");
     }
 
+    public static ApplicationError AvatarUploadInvalid()
+    {
+        return ApplicationError.Validation(
+            "image.avatar.invalid",
+            "Avatar must be a JPEG, PNG or WebP image within the allowed size and dimensions.");
+    }
+
     public static ApplicationError RemoteImageImportFailed()
     {
         return ApplicationError.Validation("image.remote-import.failed", "Remote image could not be imported.");

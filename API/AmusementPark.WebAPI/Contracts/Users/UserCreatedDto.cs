@@ -16,6 +16,10 @@ public sealed class UserCreatedDto
 
     public string? Email { get; set; }
 
+    public string? PublicDisplayName { get; set; }
+
+    public string? PublicIdentifier { get; set; }
+
     public bool? IsActivated { get; set; }
 
     public bool? IsBlocked { get; set; }

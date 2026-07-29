@@ -35,13 +35,22 @@ import { ProfileRatingsPanelComponent } from '@features/profile/ratings/profile-
 })
 export class ProfilePageViewComponent {
   protected readonly activeTab = signal<'profile' | 'ratings'>('profile');
+  protected readonly profileAvatarResponsiveWidths: readonly number[] = [120, 240];
 
   @Input() state!: Signal<ScreenState<unknown, string>>;
   @Input() user!: Signal<UserDto | null>;
   @Input() displayAvatarUploadDialog: boolean = false;
   @Input() isEditingIdentity: boolean = false;
   @Input() savingIdentity: boolean = false;
-  @Input() identityDraft: { firstName: string; lastName: string } = { firstName: '', lastName: '' };
+  @Input() identityDraft: {
+    firstName: string;
+    lastName: string;
+    publicDisplayName: string;
+  } = {
+    firstName: '',
+    lastName: '',
+    publicDisplayName: ''
+  };
   @Input() avatarCategory!: ImageCategory;
   @Input() userOwnerType!: ImageOwnerType;
   @Input() currentUserId: string | null = null;

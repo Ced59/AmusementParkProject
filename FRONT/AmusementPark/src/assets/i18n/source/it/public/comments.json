@@ -8,7 +8,8 @@
     "officialAuthor": "Amusement Parks",
     "roles": {
       "Admin": "Amministratore",
-      "Moderator": "Moderatore"
+      "Moderator": "Moderatore",
+      "User": "Utente"
     },
     "summary": {
       "createFirst": "Scrivi il primo commento",
@@ -65,7 +66,7 @@
       "update": "Non è stato possibile modificare il commento.",
       "delete": "Non è stato possibile eliminare il commento.",
       "forbidden": "Solo amministratori e moderatori possono pubblicare un commento.",
-      "managementForbidden": "Solo gli amministratori possono modificare o eliminare un commento."
+      "managementForbidden": "Puoi modificare o eliminare solo i tuoi commenti, a meno che tu non sia amministratore."
     }
   }
 }

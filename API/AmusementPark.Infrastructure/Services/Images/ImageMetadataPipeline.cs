@@ -30,7 +30,7 @@ public sealed class ImageMetadataPipeline : IImageProcessingPipeline
             imageStream.Position = 0;
         }
 
-        using SixLaborsImage image = await SixLaborsImage.LoadAsync(imageStream, cancellationToken);
+        ImageInfo image = await SixLaborsImage.IdentifyAsync(imageStream, cancellationToken);
         ExifProfile? exif = image.Metadata.ExifProfile;
 
         Rational[]? latValues = GetExifReferenceValue(exif, ExifTag.GPSLatitude);
@@ -47,6 +47,8 @@ public sealed class ImageMetadataPipeline : IImageProcessingPipeline
             Width = image.Width,
             Height = image.Height,
             SizeInBytes = imageStream.CanSeek ? imageStream.Length : 0,
+            DetectedContentType = image.Metadata.DecodedImageFormat?.DefaultMimeType,
+            FrameCount = image.FrameMetadataCollection.Count,
             GeoLocation = latitude.HasValue && longitude.HasValue ? new GeoPointValue(latitude.Value, longitude.Value) : null,
             ExifMetadata = exif == null ? null : new ImageExifMetadata
             {

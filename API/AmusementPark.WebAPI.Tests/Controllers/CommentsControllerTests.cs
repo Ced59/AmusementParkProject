@@ -25,7 +25,7 @@ public sealed class CommentsControllerTests
     [Theory]
     [InlineData(nameof(CommentsController.UpdateAsync))]
     [InlineData(nameof(CommentsController.DeleteAsync))]
-    public void CommentManagement_ShouldAllowModeratorsAndAdministrators(string methodName)
+    public void CommentManagement_ShouldAllowOwnersAndAdministrators(string methodName)
     {
         MethodInfo method = typeof(CommentsController).GetMethod(methodName)
             ?? throw new InvalidOperationException($"{methodName} was not found.");
@@ -33,7 +33,7 @@ public sealed class CommentsControllerTests
             .GetCustomAttributes<AuthorizeAttribute>()
             .Single(candidate => candidate.Roles is not null);
 
-        Assert.Equal(AuthorizationRoleGroups.ModeratorAdmin, attribute.Roles);
+        Assert.Equal(AuthorizationRoleGroups.UserModeratorAdmin, attribute.Roles);
         Assert.NotNull(method.GetCustomAttribute<RequireActivatedUnblockedUserAttribute>());
         Assert.NotNull(method.GetCustomAttribute<AdminAuditAttribute>());
         Assert.NotNull(method.GetCustomAttribute<InvalidatesPublicCacheAttribute>());

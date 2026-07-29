@@ -11,6 +11,13 @@
     "title": "Perfil de utilizador",
     "name": "Apelido",
     "firstname": "Nome",
+    "publicDisplayName": "Pseudónimo público",
+    "publicDisplayNameHelp": "Este pseudónimo e o teu avatar são apresentados com os teus comentários. O teu nome e apelido permanecem privados.",
+    "publicDisplayNameFallback": "Pseudónimo automático",
+    "publicDisplayNameTooLong": "O pseudónimo público não pode exceder 60 caracteres.",
+    "publicDisplayNameReserved": "Este pseudónimo está reservado para evitar a usurpação de funções.",
+    "publicDisplayNameTaken": "Este pseudónimo já é utilizado por outra conta.",
+    "publicIdentifier": "Identificador público da conta: {{identifier}}",
     "email": "Email",
     "preferred_language": "Idioma preferido",
     "preferred_measurement_system": "Sistema de medidas preferido",
@@ -2631,7 +2638,8 @@
     "officialAuthor": "Amusement Parks",
     "roles": {
       "Admin": "Administrador",
-      "Moderator": "Moderador"
+      "Moderator": "Moderador",
+      "User": "Utilizador"
     },
     "summary": {
       "createFirst": "Escrever o primeiro comentário",
@@ -2688,7 +2696,7 @@
       "update": "Não foi possível atualizar o comentário.",
       "delete": "Não foi possível eliminar o comentário.",
       "forbidden": "Só administradores e moderadores podem publicar um comentário.",
-      "managementForbidden": "Só os administradores podem editar ou eliminar um comentário."
+      "managementForbidden": "Só podes editar ou eliminar os teus próprios comentários, a menos que sejas administrador."
     }
   },
   "contactPage": {
