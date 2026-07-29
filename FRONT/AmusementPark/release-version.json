@@ -1,6 +1,20 @@
 {
-  "version": "3.6.3",
+  "version": "3.6.4",
   "history": [
+    {
+      "version": "3.6.4",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "La fiabilité des classements de notes a été renforcée.",
+        "en": "Rating ranking reliability has been strengthened.",
+        "de": "Die Zuverlässigkeit der Bewertungsranglisten wurde verbessert.",
+        "nl": "De betrouwbaarheid van beoordelingsranglijsten is versterkt.",
+        "it": "L’affidabilità delle classifiche delle valutazioni è stata rafforzata.",
+        "es": "Se ha reforzado la fiabilidad de los rankings de valoraciones.",
+        "pl": "Zwiększono niezawodność rankingów ocen.",
+        "pt": "A fiabilidade dos rankings de avaliações foi reforçada."
+      }
+    },
     {
       "version": "3.6.3",
       "releasedAt": "2026-07-29",
