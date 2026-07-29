@@ -1,6 +1,20 @@
 {
-  "version": "4.0.1",
+  "version": "4.0.2",
   "history": [
+    {
+      "version": "4.0.2",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "La publication des avis de l’équipe fonctionne désormais correctement.",
+        "en": "Publishing team reviews now works correctly.",
+        "de": "Das Veröffentlichen von Team-Bewertungen funktioniert jetzt korrekt.",
+        "nl": "Het publiceren van beoordelingen door het team werkt nu correct.",
+        "it": "La pubblicazione delle recensioni del team ora funziona correttamente.",
+        "es": "La publicación de las reseñas del equipo ahora funciona correctamente.",
+        "pl": "Publikowanie opinii zespołu działa teraz prawidłowo.",
+        "pt": "A publicação das opiniões da equipa funciona agora corretamente."
+      }
+    },
     {
       "version": "4.0.1",
       "releasedAt": "2026-07-29",

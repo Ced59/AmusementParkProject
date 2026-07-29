@@ -10,6 +10,9 @@ import {
 } from '@app/models/comments/comment.models';
 import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { hasHttpStatus } from '@core/http/http-error-status.helpers';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { TranslateService } from '@ngx-translate/core';
 import { COMMENT_DATA_PORT, CommentDataPort } from './comment-data.ports';
@@ -21,6 +24,7 @@ export class CommentThreadStateFacade {
   private readonly savingSignal = signal<boolean>(false);
   private readonly saveErrorKeySignal = signal<string | null>(null);
   private readonly createdVersionSignal = signal<number>(0);
+  private readonly notFoundSignal = signal<boolean>(false);
 
   readonly state: Signal<ScreenState<CommentThread, string>> = this.stateSignal.asReadonly();
   readonly thread: Signal<CommentThread | null> = computed(() => this.stateSignal().data ?? null);
@@ -28,6 +32,7 @@ export class CommentThreadStateFacade {
   readonly saving: Signal<boolean> = this.savingSignal.asReadonly();
   readonly saveErrorKey: Signal<string | null> = this.saveErrorKeySignal.asReadonly();
   readonly createdVersion: Signal<number> = this.createdVersionSignal.asReadonly();
+  readonly notFound: Signal<boolean> = this.notFoundSignal.asReadonly();
 
   private currentTargetKey: string | null = null;
 
@@ -36,7 +41,8 @@ export class CommentThreadStateFacade {
     private readonly authService: AuthService,
     private readonly toastMessageService: ToastMessageService,
     private readonly translateService: TranslateService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
   }
 
@@ -63,6 +69,7 @@ export class CommentThreadStateFacade {
     this.currentTargetKey = targetKey;
     this.stateSignal.set({ kind: 'loading' });
     this.saveErrorKeySignal.set(null);
+    this.notFoundSignal.set(false);
 
     this.commentDataPort.getThread(targetType, normalizedTargetId)
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -82,8 +89,10 @@ export class CommentThreadStateFacade {
             }
           });
         },
-        error: (): void => {
+        error: (error: unknown): void => {
           if (this.currentTargetKey === targetKey) {
+            applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
+            this.notFoundSignal.set(hasHttpStatus(error, 404));
             this.stateSignal.set({ kind: 'error', error: 'comments.errors.load' });
           }
         }

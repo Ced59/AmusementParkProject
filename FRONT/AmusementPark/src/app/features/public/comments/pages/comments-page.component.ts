@@ -60,6 +60,7 @@ export class CommentsPageComponent implements OnInit {
   protected readonly canWrite = this.stateFacade.canWrite;
   protected readonly saving = this.stateFacade.saving;
   protected readonly saveErrorKey = this.stateFacade.saveErrorKey;
+  protected readonly notFound = this.stateFacade.notFound;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly editorForm = new FormGroup<CommentEditorForm>({
     bodies: new FormControl<LocalizedItem<string>[]>([], { nonNullable: true }),
@@ -118,6 +119,12 @@ export class CommentsPageComponent implements OnInit {
         this.router.url,
         this.resolveCanonicalPath(currentThread)
       );
+    });
+
+    effect((): void => {
+      if (this.notFound()) {
+        this.seoService.applyNotFoundSeo(this.currentLanguage(), this.router.url);
+      }
     });
 
     effect((): void => {
