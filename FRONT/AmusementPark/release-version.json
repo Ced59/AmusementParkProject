@@ -1,6 +1,20 @@
 {
-  "version": "4.0.4",
+  "version": "4.0.5",
   "history": [
+    {
+      "version": "4.0.5",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "L’accès aux avis des parcs et de leurs attractions a été amélioré.",
+        "en": "Access to reviews for parks and their attractions has been improved.",
+        "de": "Der Zugriff auf Bewertungen von Parks und ihren Attraktionen wurde verbessert.",
+        "nl": "De toegang tot beoordelingen van parken en hun attracties is verbeterd.",
+        "it": "L’accesso alle recensioni dei parchi e delle loro attrazioni è stato migliorato.",
+        "es": "Se ha mejorado el acceso a las reseñas de los parques y sus atracciones.",
+        "pl": "Ulepszono dostęp do opinii o parkach i ich atrakcjach.",
+        "pt": "O acesso às opiniões dos parques e das suas atrações foi melhorado."
+      }
+    },
     {
       "version": "4.0.4",
       "releasedAt": "2026-07-29",

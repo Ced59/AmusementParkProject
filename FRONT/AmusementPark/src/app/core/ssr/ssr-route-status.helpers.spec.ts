@@ -75,6 +75,19 @@ describe('SSR route status helpers', () => {
     ).toBe(200);
   });
 
+  it('keeps park and park item comment routes available for SSR', () => {
+    const commentRoutes: string[] = [
+      '/fr/park/123/parc-test/comments',
+      '/fr/park/123/parc-test/item/abc/attraction-test/comments',
+    ];
+
+    for (const route of commentRoutes) {
+      expect(resolveSsrRouteStatusCode(route), route).toBe(200);
+      expect(isSsrNotFoundRoute(route), route).toBe(false);
+      expect(shouldApplyNoindexFollowHeader(route), route).toBe(false);
+    }
+  });
+
   it('applies noindex follow to public 404 and filtered exploration routes', () => {
     expect(
       shouldApplyNoindexFollowHeader('/fr/page-qui-nexiste-pas-123456'),
