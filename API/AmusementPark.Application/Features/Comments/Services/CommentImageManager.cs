@@ -73,7 +73,7 @@ public sealed class CommentImageManager
                     cancellationToken);
                 if (reserved is null)
                 {
-                    await this.ReleaseReservationsAsync(
+                    _ = await this.ReleaseReservationsForCommentAsync(
                         actorUserId,
                         commentId,
                         reservedImageIds);
@@ -86,7 +86,7 @@ public sealed class CommentImageManager
         }
         catch
         {
-            await this.ReleaseReservationsAsync(
+            _ = await this.ReleaseReservationsForCommentAsync(
                 actorUserId,
                 commentId,
                 reservedImageIds);
@@ -214,23 +214,33 @@ public sealed class CommentImageManager
             cancellationToken);
     }
 
-    private async Task ReleaseReservationsAsync(
+    public async Task<IReadOnlyCollection<string>> ReleaseReservationsForCommentAsync(
         string actorUserId,
         string commentId,
         IReadOnlyCollection<string> reservedImageIds)
     {
-        foreach (string imageId in reservedImageIds)
+        List<string> failedImageIds = new List<string>();
+        foreach (string imageId in NormalizeIds(reservedImageIds))
         {
             try
             {
-                await this.imageRepository.ReleaseCommentDraftReservationAsync(
+                bool released = await this.imageRepository.ReleaseCommentDraftReservationAsync(
                     imageId,
                     actorUserId,
                     commentId,
                     CancellationToken.None);
+                if (!released)
+                {
+                    failedImageIds.Add(imageId);
+                    this.logger?.LogWarning(
+                        "Unable to release reserved comment image {ImageId} for comment {CommentId}.",
+                        imageId,
+                        commentId);
+                }
             }
             catch (Exception exception)
             {
+                failedImageIds.Add(imageId);
                 this.logger?.LogWarning(
                     exception,
                     "Unable to release reserved comment image {ImageId} for comment {CommentId}.",
@@ -239,6 +249,8 @@ public sealed class CommentImageManager
                 // La réconciliation libérera la réservation si le rollback échoue.
             }
         }
+
+        return failedImageIds;
     }
 
     private static List<string> NormalizeIds(IReadOnlyCollection<string> imageIds)

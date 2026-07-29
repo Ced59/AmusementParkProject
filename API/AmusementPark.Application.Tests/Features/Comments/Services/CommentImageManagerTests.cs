@@ -281,6 +281,44 @@ public sealed class CommentImageManagerTests
     }
 
     [Fact]
+    public async Task ReleaseReservationsForCommentAsync_WhenRollbackPartlyFails_ShouldContinueBestEffort()
+    {
+        const string secondImageId = "11111111111111111111111111111111";
+        const string thirdImageId = "22222222222222222222222222222222";
+        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.ReleaseCommentDraftReservationAsync(
+                ImageId,
+                "author-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        repository.Setup(value => value.ReleaseCommentDraftReservationAsync(
+                secondImageId,
+                "author-1",
+                "comment-1",
+                CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("release failed"));
+        repository.Setup(value => value.ReleaseCommentDraftReservationAsync(
+                thirdImageId,
+                "author-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        CommentImageManager manager = new CommentImageManager(
+            repository.Object,
+            Mock.Of<IImageBinaryStorage>());
+
+        IReadOnlyCollection<string> failedImageIds =
+            await manager.ReleaseReservationsForCommentAsync(
+                "author-1",
+                "comment-1",
+                new[] { ImageId, secondImageId, thirdImageId });
+
+        Assert.Equal(new[] { ImageId, secondImageId }, failedImageIds);
+        repository.VerifyAll();
+    }
+
+    [Fact]
     public async Task FinalizeForCommentAsync_WhenRepositoryCannotFinalize_ShouldReturnFailedImageIds()
     {
         const string failedImageId = "11111111111111111111111111111111";

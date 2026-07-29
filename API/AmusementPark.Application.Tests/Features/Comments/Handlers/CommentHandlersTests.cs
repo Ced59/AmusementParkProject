@@ -255,16 +255,20 @@ public sealed class CommentHandlersTests
     }
 
     [Fact]
-    public async Task UpdateAsync_WhenRevisionChanged_ShouldKeepReservationForReconciliation()
+    public async Task UpdateAsync_WhenRevisionChanged_ShouldReleaseOnlyTheNewReservation()
     {
-        const string imageId = "abcdef0123456789abcdef0123456789";
+        const string draftImageId = "abcdef0123456789abcdef0123456789";
+        const string existingImageId = "11111111111111111111111111111111";
         string html =
-            $"<p>Texte<img src=\"/images/{imageId}\" alt=\"Park\" " +
-            "class=\"rich-text__image rich-text__image--left\"></p>";
+            $"<p>Texte<img src=\"/images/{existingImageId}\" alt=\"Existing\" " +
+            "class=\"rich-text__image rich-text__image--left\">" +
+            $"<img src=\"/images/{draftImageId}\" alt=\"Draft\" " +
+            "class=\"rich-text__image rich-text__image--right\"></p>";
         Comment existing = CreateComment(
             "comment-1",
             false,
             new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        existing.ImageIds = new List<string> { existingImageId };
         Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
         comments.Setup(value => value.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(existing);
@@ -276,11 +280,12 @@ public sealed class CommentHandlersTests
         Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
         sanitizer.Setup(value => value.SanitizeRichHtml(html)).Returns(html);
         sanitizer.Setup(value => value.ExtractPlainText(html)).Returns("Texte");
-        sanitizer.Setup(value => value.ExtractImageIds(html)).Returns(new[] { imageId });
+        sanitizer.Setup(value => value.ExtractImageIds(html))
+            .Returns(new[] { existingImageId, draftImageId });
         Mock<IUserRepository> users = CreateAdminUserRepository();
         Image draft = new Image
         {
-            Id = imageId,
+            Id = draftImageId,
             Category = ImageCategory.Comment,
             OwnerType = ImageOwnerType.CommentDraft,
             OwnerId = "admin-1",
@@ -288,25 +293,39 @@ public sealed class CommentHandlersTests
         };
         Image reserved = new Image
         {
-            Id = imageId,
+            Id = draftImageId,
             Category = ImageCategory.Comment,
             OwnerType = ImageOwnerType.CommentDraft,
             OwnerId = "admin-1",
             PendingCommentId = "comment-1",
             IsPublished = false,
         };
+        Image published = new Image
+        {
+            Id = existingImageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.Comment,
+            OwnerId = "comment-1",
+            IsPublished = true,
+        };
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         images.Setup(value => value.GetByIdsAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { draft });
+            .ReturnsAsync(new[] { published, draft });
         images.Setup(value => value.ReserveCommentDraftAsync(
-                imageId,
+                draftImageId,
                 "admin-1",
                 "comment-1",
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(reserved);
+        images.Setup(value => value.ReleaseCommentDraftReservationAsync(
+                draftImageId,
+                "admin-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(true);
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             comments.Object,
             sanitizer.Object,
@@ -322,6 +341,173 @@ public sealed class CommentHandlersTests
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "comment.concurrent-modification");
+        comments.VerifyAll();
+        sanitizer.VerifyAll();
+        users.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateAsync_WhenRemovedImageCleanupThrows_ShouldReleaseReservationAndRethrow()
+    {
+        const string draftImageId = "abcdef0123456789abcdef0123456789";
+        const string removedImageId = "11111111111111111111111111111111";
+        string html =
+            $"<p>Texte<img src=\"/images/{draftImageId}\" alt=\"Draft\" " +
+            "class=\"rich-text__image rich-text__image--full\"></p>";
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        existing.ImageIds = new List<string> { removedImageId };
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.GetByIdAsync("comment-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        Mock<ICommentContentSanitizer> sanitizer =
+            new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        sanitizer.Setup(value => value.SanitizeRichHtml(html)).Returns(html);
+        sanitizer.Setup(value => value.ExtractPlainText(html)).Returns("Texte");
+        sanitizer.Setup(value => value.ExtractImageIds(html)).Returns(new[] { draftImageId });
+        Mock<IUserRepository> users = CreateAdminUserRepository();
+        Image draft = new Image
+        {
+            Id = draftImageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "admin-1",
+            IsPublished = false,
+        };
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.GetByIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { draft });
+        images.Setup(value => value.ReserveCommentDraftAsync(
+                draftImageId,
+                "admin-1",
+                "comment-1",
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Image
+            {
+                Id = draftImageId,
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "admin-1",
+                PendingCommentId = "comment-1",
+                IsPublished = false,
+            });
+        images.Setup(value => value.RequestCommentImagesCleanupAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { removedImageId })),
+                "comment-1",
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new InvalidOperationException("Cleanup failed."));
+        images.Setup(value => value.ReleaseCommentDraftReservationAsync(
+                draftImageId,
+                "admin-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
+            comments.Object,
+            sanitizer.Object,
+            users.Object,
+            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
+
+        InvalidOperationException exception = await Assert.ThrowsAsync<InvalidOperationException>(
+            () => handler.HandleAsync(new UpdateCommentCommand(
+                "admin-1",
+                "comment-1",
+                new CommentEditModel(
+                    new[] { new LocalizedTextValue("fr", html) },
+                    false))));
+
+        Assert.Equal("Cleanup failed.", exception.Message);
+        comments.VerifyAll();
+        sanitizer.VerifyAll();
+        users.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateAsync_WhenPersistenceIsCancelled_ShouldReleaseReservationAndRethrowCancellation()
+    {
+        const string draftImageId = "abcdef0123456789abcdef0123456789";
+        string html =
+            $"<p>Texte<img src=\"/images/{draftImageId}\" alt=\"Draft\" " +
+            "class=\"rich-text__image rich-text__image--full\"></p>";
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        using CancellationTokenSource cancellation = new CancellationTokenSource();
+        cancellation.Cancel();
+        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.GetByIdAsync("comment-1", cancellation.Token))
+            .ReturnsAsync(existing);
+        comments.Setup(value => value.UpdateAsync(
+                existing,
+                existing.Revision,
+                cancellation.Token))
+            .ThrowsAsync(new OperationCanceledException(cancellation.Token));
+        Mock<ICommentContentSanitizer> sanitizer =
+            new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+        sanitizer.Setup(value => value.SanitizeRichHtml(html)).Returns(html);
+        sanitizer.Setup(value => value.ExtractPlainText(html)).Returns("Texte");
+        sanitizer.Setup(value => value.ExtractImageIds(html)).Returns(new[] { draftImageId });
+        Mock<IUserRepository> users = CreateAdminUserRepository();
+        Image draft = new Image
+        {
+            Id = draftImageId,
+            Category = ImageCategory.Comment,
+            OwnerType = ImageOwnerType.CommentDraft,
+            OwnerId = "admin-1",
+            IsPublished = false,
+        };
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.GetByIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                cancellation.Token))
+            .ReturnsAsync(new[] { draft });
+        images.Setup(value => value.ReserveCommentDraftAsync(
+                draftImageId,
+                "admin-1",
+                "comment-1",
+                It.IsAny<DateTime>(),
+                cancellation.Token))
+            .ReturnsAsync(new Image
+            {
+                Id = draftImageId,
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "admin-1",
+                PendingCommentId = "comment-1",
+                IsPublished = false,
+            });
+        images.Setup(value => value.ReleaseCommentDraftReservationAsync(
+                draftImageId,
+                "admin-1",
+                "comment-1",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
+            comments.Object,
+            sanitizer.Object,
+            users.Object,
+            new CommentImageManager(images.Object, Mock.Of<IImageBinaryStorage>()));
+
+        OperationCanceledException exception = await Assert.ThrowsAsync<OperationCanceledException>(
+            () => handler.HandleAsync(
+                new UpdateCommentCommand(
+                    "admin-1",
+                    "comment-1",
+                    new CommentEditModel(
+                        new[] { new LocalizedTextValue("fr", html) },
+                        false)),
+                cancellation.Token));
+
+        Assert.Equal(cancellation.Token, exception.CancellationToken);
         comments.VerifyAll();
         sanitizer.VerifyAll();
         users.VerifyAll();
@@ -773,7 +959,7 @@ public sealed class CommentHandlersTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenCommentPersistenceThrows_ShouldLeavePrivateReservationForWorker()
+    public async Task HandleAsync_WhenCommentPersistenceThrows_ShouldReleaseReservationAndRethrow()
     {
         const string imageId = "abcdef0123456789abcdef0123456789";
         string html =
@@ -827,6 +1013,12 @@ public sealed class CommentHandlersTests
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(reserved);
+        images.Setup(value => value.ReleaseCommentDraftReservationAsync(
+                imageId,
+                "admin-1",
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .ReturnsAsync(true);
         CreateCommentCommandHandler handler = new CreateCommentCommandHandler(
             comments.Object,
             sanitizer.Object,

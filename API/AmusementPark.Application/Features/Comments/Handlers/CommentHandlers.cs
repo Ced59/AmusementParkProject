@@ -92,25 +92,38 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
             return ApplicationResult<CommentResult>.Failure(imageResult.Errors);
         }
 
-        Comment comment = new Comment
+        Comment created;
+        try
         {
-            Id = commentId,
-            TargetType = target.TargetType,
-            TargetId = target.TargetId,
-            ParkId = target.ParkId,
-            AuthorUserId = author!.Id,
-            AuthorDisplayName = BuildAuthorDisplayName(author),
-            AuthorAvatarUrl = NormalizeAvatarUrl(author.AvatarUrl),
-            AuthorRole = ResolveAuthorRole(author),
-            Bodies = bodiesResult.Value.ToList(),
-            ImageIds = imageIds,
-            IsOfficial = command.Model.IsOfficial,
-            ModerationStatus = CommentModerationStatus.Published,
-            CreatedAtUtc = nowUtc,
-            UpdatedAtUtc = nowUtc,
-        };
+            Comment comment = new Comment
+            {
+                Id = commentId,
+                TargetType = target.TargetType,
+                TargetId = target.TargetId,
+                ParkId = target.ParkId,
+                AuthorUserId = author!.Id,
+                AuthorDisplayName = BuildAuthorDisplayName(author),
+                AuthorAvatarUrl = NormalizeAvatarUrl(author.AvatarUrl),
+                AuthorRole = ResolveAuthorRole(author),
+                Bodies = bodiesResult.Value.ToList(),
+                ImageIds = imageIds,
+                IsOfficial = command.Model.IsOfficial,
+                ModerationStatus = CommentModerationStatus.Published,
+                CreatedAtUtc = nowUtc,
+                UpdatedAtUtc = nowUtc,
+            };
 
-        Comment created = await this.commentRepository.CreateAsync(comment, cancellationToken);
+            created = await this.commentRepository.CreateAsync(comment, cancellationToken);
+        }
+        catch
+        {
+            _ = await this.commentImageManager.ReleaseReservationsForCommentAsync(
+                author!.Id,
+                commentId,
+                imageResult.Value);
+            throw;
+        }
+
         _ = await this.commentImageManager.FinalizeForCommentAsync(
             author.Id,
             commentId,
@@ -245,34 +258,51 @@ public sealed class UpdateCommentCommandHandler
             return ApplicationResult<CommentResult>.Failure(imageResult.Errors);
         }
 
-        List<string> removedImageIds = comment.ImageIds
-            .Except(imageIds, StringComparer.Ordinal)
-            .ToList();
-        await this.commentImageManager.RequestRemovedCleanupAsync(
-            comment.Id,
-            removedImageIds,
-            cancellationToken);
-        long expectedRevision = comment.Revision;
-        comment.UpdateContent(bodiesResult.Value, imageIds, isOfficial);
-        Comment? updated = await this.commentRepository.UpdateAsync(
-            comment,
-            expectedRevision,
-            cancellationToken);
-
-        if (updated is not null)
+        Comment? updated;
+        try
         {
-            _ = await this.commentImageManager.FinalizeForCommentAsync(
+            List<string> removedImageIds = comment.ImageIds
+                .Except(imageIds, StringComparer.Ordinal)
+                .ToList();
+            await this.commentImageManager.RequestRemovedCleanupAsync(
+                comment.Id,
+                removedImageIds,
+                cancellationToken);
+            long expectedRevision = comment.Revision;
+            comment.UpdateContent(bodiesResult.Value, imageIds, isOfficial);
+            updated = await this.commentRepository.UpdateAsync(
+                comment,
+                expectedRevision,
+                cancellationToken);
+        }
+        catch
+        {
+            _ = await this.commentImageManager.ReleaseReservationsForCommentAsync(
                 actor.Id,
                 comment.Id,
                 imageResult.Value);
+            throw;
         }
+
+        if (updated is null)
+        {
+            _ = await this.commentImageManager.ReleaseReservationsForCommentAsync(
+                actor.Id,
+                comment.Id,
+                imageResult.Value);
+            return ApplicationResult<CommentResult>.Failure(
+                CommentApplicationErrors.ConcurrentModification());
+        }
+
+        _ = await this.commentImageManager.FinalizeForCommentAsync(
+            actor.Id,
+            comment.Id,
+            imageResult.Value);
 
         User? author = string.Equals(actor.Id, comment.AuthorUserId, StringComparison.Ordinal)
             ? actor
             : await this.userRepository.GetByIdAsync(comment.AuthorUserId, cancellationToken);
-        return updated is null
-            ? ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.ConcurrentModification())
-            : ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(updated, author));
+        return ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(updated, author));
     }
 }
 
