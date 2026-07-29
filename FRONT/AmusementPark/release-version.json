@@ -1,6 +1,20 @@
 {
-  "version": "4.0.3",
+  "version": "4.0.4",
   "history": [
+    {
+      "version": "4.0.4",
+      "releasedAt": "2026-07-29",
+      "labels": {
+        "fr": "La fiabilité et la qualité du site ont été améliorées.",
+        "en": "Site reliability and quality have been improved.",
+        "de": "Zuverlässigkeit und Qualität der Website wurden verbessert.",
+        "nl": "De betrouwbaarheid en kwaliteit van de site zijn verbeterd.",
+        "it": "L’affidabilità e la qualità del sito sono state migliorate.",
+        "es": "Se han mejorado la fiabilidad y la calidad del sitio.",
+        "pl": "Poprawiono niezawodność i jakość strony.",
+        "pt": "A fiabilidade e a qualidade do site foram melhoradas."
+      }
+    },
     {
       "version": "4.0.3",
       "releasedAt": "2026-07-29",
