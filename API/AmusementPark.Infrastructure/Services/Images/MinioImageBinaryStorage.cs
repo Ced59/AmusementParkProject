@@ -104,7 +104,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         using Image image = await Image.LoadAsync(workingStream, cancellationToken);
         if (stripMetadata)
         {
-            StripEmbeddedMetadata(image);
+            AutoOrientAndStripEmbeddedMetadata(image);
         }
 
         ResizeInPlaceIfNeeded(image);
@@ -138,6 +138,13 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         image.Metadata.IccProfile = null;
         image.Metadata.IptcProfile = null;
         image.Metadata.XmpProfile = null;
+    }
+
+    internal static void AutoOrientAndStripEmbeddedMetadata(Image image)
+    {
+        ArgumentNullException.ThrowIfNull(image);
+        image.Mutate(static context => context.AutoOrient());
+        StripEmbeddedMetadata(image);
     }
 
     public async Task<bool> ApplyWatermarkAsync(string pathWithoutExtension, CancellationToken cancellationToken)

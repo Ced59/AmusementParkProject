@@ -14,6 +14,10 @@ public sealed class ImageProcessingMetadata
 
     public long SizeInBytes { get; init; }
 
+    public string? DetectedContentType { get; init; }
+
+    public int FrameCount { get; init; }
+
     public GeoPointValue? GeoLocation { get; init; }
 
     public ImageExifMetadata? ExifMetadata { get; init; }

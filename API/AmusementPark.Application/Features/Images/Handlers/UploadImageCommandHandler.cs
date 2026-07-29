@@ -57,7 +57,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             bool withWatermark = ShouldApplyWatermark(command.Request.Category, command.Request.WithWatermark);
             ImageProcessingMetadata? metadata = await this.imageProcessingPipeline.ExtractMetadataAsync(command.Request, cancellationToken);
             if (command.Request.Category == ImageCategory.Avatar
-                && !IsValidAvatarDimensions(metadata))
+                && !IsValidAvatarMetadata(metadata))
             {
                 return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.AvatarUploadInvalid());
             }
@@ -70,6 +70,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             string imageId = Guid.NewGuid().ToString("N");
             string categoryPathSegment = ToPathSegment(command.Request.Category);
             string storagePath = $"{categoryPathSegment}/{imageId}";
+            FilePayload persistedFile = BuildPersistedFile(command.Request, metadata);
 
             IReadOnlyCollection<string> savedFiles = command.Request.Category == ImageCategory.Avatar
                 ? await this.imageBinaryStorage.SaveWithoutMetadataAsync(
@@ -87,7 +88,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             {
                 ImageId = imageId,
                 Category = command.Request.Category,
-                File = command.Request.File,
+                File = persistedFile,
                 Description = command.Request.Description,
                 WithWatermark = withWatermark,
                 OwnerType = command.Request.OwnerType,
@@ -130,18 +131,39 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
         return file.Length > 0
             && file.Length <= MaximumAvatarFileSizeInBytes
             && streamLength > 0
-            && streamLength <= MaximumAvatarFileSizeInBytes
-            && AllowedAvatarContentTypes.Contains(file.ContentType);
+            && streamLength <= MaximumAvatarFileSizeInBytes;
     }
 
-    private static bool IsValidAvatarDimensions(ImageProcessingMetadata? metadata)
+    private static bool IsValidAvatarMetadata(ImageProcessingMetadata? metadata)
     {
         return metadata is not null
+            && !string.IsNullOrWhiteSpace(metadata.DetectedContentType)
+            && AllowedAvatarContentTypes.Contains(metadata.DetectedContentType)
+            && metadata.FrameCount == 1
             && metadata.Width > 0
             && metadata.Height > 0
             && metadata.Width <= MaximumAvatarEdge
             && metadata.Height <= MaximumAvatarEdge
-            && (long)metadata.Width * metadata.Height <= MaximumAvatarPixels;
+            && (long)metadata.Width * metadata.Height * metadata.FrameCount <= MaximumAvatarPixels;
+    }
+
+    private static FilePayload BuildPersistedFile(
+        ImageUploadRequest request,
+        ImageProcessingMetadata? metadata)
+    {
+        if (request.Category != ImageCategory.Avatar
+            || string.IsNullOrWhiteSpace(metadata?.DetectedContentType))
+        {
+            return request.File;
+        }
+
+        return new FilePayload
+        {
+            FileName = request.File.FileName,
+            ContentType = metadata.DetectedContentType,
+            Length = request.File.Length,
+            Content = request.File.Content,
+        };
     }
 
     private static bool IsLogoCategory(ImageCategory category)

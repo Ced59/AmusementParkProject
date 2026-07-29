@@ -23,6 +23,26 @@ public sealed class MinioImageBinaryStorageTests
         Assert.Null(image.Metadata.XmpProfile);
     }
 
+    [Fact]
+    public void AutoOrientAndStripEmbeddedMetadata_ShouldPreserveExifOrientationInPixels()
+    {
+        using Image<Rgba32> image = new Image<Rgba32>(2, 1);
+        Rgba32 red = new Rgba32(255, 0, 0);
+        Rgba32 blue = new Rgba32(0, 0, 255);
+        image[0, 0] = red;
+        image[1, 0] = blue;
+        image.Metadata.ExifProfile = new ExifProfile();
+        image.Metadata.ExifProfile.SetValue(ExifTag.Orientation, (ushort)6);
+
+        MinioImageBinaryStorage.AutoOrientAndStripEmbeddedMetadata(image);
+
+        Assert.Equal(1, image.Width);
+        Assert.Equal(2, image.Height);
+        Assert.Equal(red, image[0, 0]);
+        Assert.Equal(blue, image[0, 1]);
+        Assert.Null(image.Metadata.ExifProfile);
+    }
+
     [Theory]
     [InlineData(null, null)]
     [InlineData(0, null)]

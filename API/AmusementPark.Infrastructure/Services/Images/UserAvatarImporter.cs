@@ -15,12 +15,11 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
     private const long MaximumAvatarFileSizeInBytes = 5 * 1024 * 1024;
     private const int MaximumAvatarEdge = 4096;
     private const long MaximumAvatarPixels = 8_000_000;
-    private static readonly HashSet<string> SupportedContentTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    private static readonly HashSet<string> AllowedAvatarContentTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
     {
         "image/jpeg",
         "image/png",
         "image/webp",
-        "image/gif",
     };
 
     private readonly IHttpClientFactory httpClientFactory;
@@ -67,7 +66,7 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
             }
 
             string? contentType = response.Content.Headers.ContentType?.MediaType;
-            if (string.IsNullOrWhiteSpace(contentType) || !SupportedContentTypes.Contains(contentType))
+            if (string.IsNullOrWhiteSpace(contentType) || !AllowedAvatarContentTypes.Contains(contentType))
             {
                 this.logger.LogWarning("Unsupported avatar content type {ContentType} for user {UserId}.", contentType, userId);
                 return string.Empty;
@@ -122,20 +121,31 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
 
             ImageProcessingMetadata? metadata = await this.imageProcessingPipeline.ExtractMetadataAsync(baseRequest, cancellationToken);
             if (metadata is null
+                || string.IsNullOrWhiteSpace(metadata.DetectedContentType)
+                || !AllowedAvatarContentTypes.Contains(metadata.DetectedContentType)
+                || metadata.FrameCount != 1
                 || metadata.Width <= 0
                 || metadata.Height <= 0
                 || metadata.Width > MaximumAvatarEdge
                 || metadata.Height > MaximumAvatarEdge
-                || (long)metadata.Width * metadata.Height > MaximumAvatarPixels)
+                || (long)metadata.Width * metadata.Height * metadata.FrameCount > MaximumAvatarPixels)
             {
-                this.logger.LogWarning("External avatar dimensions are invalid for user {UserId}.", userId);
+                this.logger.LogWarning("External avatar metadata is invalid for user {UserId}.", userId);
                 return string.Empty;
             }
+
+            FilePayload persistedFilePayload = new FilePayload
+            {
+                FileName = filePayload.FileName,
+                ContentType = metadata.DetectedContentType,
+                Length = filePayload.Length,
+                Content = filePayload.Content,
+            };
 
             ImageUploadRequest request = new ImageUploadRequest
             {
                 Category = baseRequest.Category,
-                File = filePayload,
+                File = persistedFilePayload,
                 Description = baseRequest.Description,
                 WithWatermark = baseRequest.WithWatermark,
                 OwnerType = baseRequest.OwnerType,

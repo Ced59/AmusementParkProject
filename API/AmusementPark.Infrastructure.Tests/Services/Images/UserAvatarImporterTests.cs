@@ -37,6 +37,8 @@ public sealed class UserAvatarImporterTests
                 Width = 1,
                 Height = 1,
                 SizeInBytes = PngBytes.Length,
+                DetectedContentType = "image/png",
+                FrameCount = 1,
                 GeoLocation = new GeoPointValue(50, 3),
                 ExifMetadata = new ImageExifMetadata { CameraMaker = "Phone" },
             });
