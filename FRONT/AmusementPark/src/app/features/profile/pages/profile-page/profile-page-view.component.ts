@@ -35,6 +35,7 @@ import { ProfileRatingsPanelComponent } from '@features/profile/ratings/profile-
 })
 export class ProfilePageViewComponent {
   protected readonly activeTab = signal<'profile' | 'ratings'>('profile');
+  protected readonly profileAvatarResponsiveWidths: readonly number[] = [120, 240];
 
   @Input() state!: Signal<ScreenState<unknown, string>>;
   @Input() user!: Signal<UserDto | null>;

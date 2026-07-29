@@ -12,10 +12,15 @@
         <div class="profile-hero__avatar">
           <app-image-display
             [imagePathOrUrl]="avatarUrl"
-            alt="Avatar"
+            [alt]="currentUser.publicDisplayName || currentUser.email || 'Avatar'"
             imgClass="profile-avatar"
             placeholderClass="profile-avatar profile-avatar--placeholder"
-            placeholderIconClass="pi pi-user">
+            placeholderIconClass="pi pi-user"
+            loading="eager"
+            fetchPriority="high"
+            sizes="120px"
+            [srcWidth]="240"
+            [responsiveWidths]="profileAvatarResponsiveWidths">
           </app-image-display>
           <button
             appUiButton="soft"

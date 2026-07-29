@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfilePageComponent } from './profile-page.component';
+import { ProfilePageViewComponent } from './profile-page-view.component';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 
 describe('ProfilePageComponent', () => {
@@ -19,5 +20,17 @@ describe('ProfilePageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('keeps the profile avatar round and constrained on mobile', () => {
+    const styles: string = (
+      ProfilePageViewComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('.profile-avatar');
+    expect(styles).toContain('border-radius: 50%');
+    expect(styles).toContain('height: 7.5rem');
+    expect(styles).toContain('width: 7.5rem');
+    expect(styles).toContain('object-fit: cover');
   });
 });
