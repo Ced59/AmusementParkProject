@@ -3,15 +3,19 @@ import { Observable, of, throwError } from 'rxjs';
 
 import {
   FORGOT_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT,
-  ForgotPasswordPageStateAuthApiServicePort
+  ForgotPasswordPageStateAuthApiServicePort,
 } from './forgot-password-page-state-data.ports';
 import { ForgotPasswordPageStateFacade } from './forgot-password-page-state.facade';
 
 class FakeAuthPort implements ForgotPasswordPageStateAuthApiServicePort {
-  public response$: Observable<{ message: string }> = of({ message: 'Email envoyé.' });
+  public response$: Observable<{
+    message: string;
+  }> = of({ message: 'Email envoyé.' });
   public readonly calls: string[] = [];
 
-  forgotPassword(email: string): Observable<{ message: string }> {
+  forgotPassword(email: string): Observable<{
+    message: string;
+  }> {
     this.calls.push(email);
     return this.response$;
   }
@@ -27,8 +31,11 @@ describe('ForgotPasswordPageStateFacade', () => {
     TestBed.configureTestingModule({
       providers: [
         ForgotPasswordPageStateFacade,
-        { provide: FORGOT_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT, useValue: port }
-      ]
+        {
+          provide: FORGOT_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT,
+          useValue: port,
+        },
+      ],
     });
 
     facade = TestBed.inject(ForgotPasswordPageStateFacade);
@@ -47,7 +54,7 @@ describe('ForgotPasswordPageStateFacade', () => {
     facade.submit();
 
     expect(port.calls).toEqual([]);
-    expect(facade.isSubmitted()).toBeFalse();
+    expect(facade.isSubmitted()).toBe(false);
   });
 
   it('submits the trimmed email and stores the success message', () => {
@@ -56,17 +63,19 @@ describe('ForgotPasswordPageStateFacade', () => {
     facade.submit();
 
     expect(port.calls).toEqual(['ced@example.test']);
-    expect(facade.isSubmitted()).toBeTrue();
+    expect(facade.isSubmitted()).toBe(true);
     expect(facade.message()).toBe('Email envoyé.');
   });
 
   it('keeps the submitted state with the backend error message on failure', () => {
-    port.response$ = throwError(() => ({ error: { Message: 'Adresse inconnue.' } }));
+    port.response$ = throwError(() => ({
+      error: { Message: 'Adresse inconnue.' },
+    }));
     facade.setEmail('ced@example.test');
 
     facade.submit();
 
-    expect(facade.isSubmitted()).toBeTrue();
+    expect(facade.isSubmitted()).toBe(true);
     expect(facade.message()).toBe('Adresse inconnue.');
   });
 });

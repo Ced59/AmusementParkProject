@@ -1,3 +1,4 @@
+import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
@@ -12,12 +13,16 @@ import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkWeatherPageComponent } from './park-weather-page.component';
 
 class FakeTranslationService {
-  public readonly languageChanged: EventEmitter<string> = new EventEmitter<string>();
+  public readonly languageChanged: EventEmitter<string> =
+    new EventEmitter<string>();
 
   getCurrentLang(): string {
     return 'fr';
@@ -26,26 +31,36 @@ class FakeTranslationService {
 
 describe('ParkWeatherPageComponent', () => {
   let fixture: ComponentFixture<ParkWeatherPageComponent>;
-  let parksApiService: jasmine.SpyObj<ParksApiService>;
-  let seoService: jasmine.SpyObj<SeoService>;
+  let parksApiService: MockedObject<ParksApiService>;
+  let seoService: MockedObject<SeoService>;
   let routeParamMap: BehaviorSubject<ParamMap>;
 
   beforeEach(async () => {
-    routeParamMap = new BehaviorSubject<ParamMap>(convertToParamMap({ id: 'park-1', lang: 'fr' }));
-    parksApiService = jasmine.createSpyObj<ParksApiService>('ParksApiService', [
-      'getParkDetailSummary',
-      'getParkWeather',
-      'getParkWeatherHistoricalComparisons'
-    ]);
-    seoService = jasmine.createSpyObj<SeoService>('SeoService', ['applyParkWeatherSeo']);
+    routeParamMap = new BehaviorSubject<ParamMap>(
+      convertToParamMap({ id: 'park-1', lang: 'fr' }),
+    );
+    parksApiService = {
+      getParkDetailSummary: vi
+        .fn()
+        .mockName('ParksApiService.getParkDetailSummary'),
+      getParkWeather: vi.fn().mockName('ParksApiService.getParkWeather'),
+      getParkWeatherHistoricalComparisons: vi
+        .fn()
+        .mockName('ParksApiService.getParkWeatherHistoricalComparisons'),
+    } as unknown as MockedObject<ParksApiService>;
+    seoService = {
+      applyParkWeatherSeo: vi.fn().mockName('SeoService.applyParkWeatherSeo'),
+    } as unknown as MockedObject<SeoService>;
 
-    parksApiService.getParkDetailSummary.and.returnValue(of(createSummary()));
-    parksApiService.getParkWeather.and.returnValue(of(createForecast()));
-    parksApiService.getParkWeatherHistoricalComparisons.and.returnValue(of({
-      parkId: 'park-1',
-      years: [],
-      attribution: createAttribution()
-    }));
+    parksApiService.getParkDetailSummary.mockReturnValue(of(createSummary()));
+    parksApiService.getParkWeather.mockReturnValue(of(createForecast()));
+    parksApiService.getParkWeatherHistoricalComparisons.mockReturnValue(
+      of({
+        parkId: 'park-1',
+        years: [],
+        attribution: createAttribution(),
+      }),
+    );
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, ParkWeatherPageComponent],
@@ -54,16 +69,23 @@ describe('ParkWeatherPageComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            snapshot: { paramMap: convertToParamMap({ id: 'park-1', lang: 'fr' }) },
+            snapshot: {
+              paramMap: convertToParamMap({ id: 'park-1', lang: 'fr' }),
+            },
             parent: null,
-            paramMap: routeParamMap.asObservable()
-          }
+            paramMap: routeParamMap.asObservable(),
+          },
         },
         { provide: ParksApiService, useValue: parksApiService },
         { provide: SeoService, useValue: seoService },
-        { provide: SsrHttpStatusService, useValue: jasmine.createSpyObj<SsrHttpStatusService>('SsrHttpStatusService', ['setNotFound']) },
-        { provide: TranslationService, useClass: FakeTranslationService }
-      ]
+        {
+          provide: SsrHttpStatusService,
+          useValue: {
+            setNotFound: vi.fn().mockName('SsrHttpStatusService.setNotFound'),
+          },
+        },
+        { provide: TranslationService, useClass: FakeTranslationService },
+      ],
     }).compileComponents();
 
     const translateService: TranslateService = TestBed.inject(TranslateService);
@@ -78,8 +100,9 @@ describe('ParkWeatherPageComponent', () => {
           loadingTitle: 'Chargement de la météo',
           loadingMessage: 'Les prévisions sont en cours de chargement.',
           emptyTitle: 'Aucune prévision disponible',
-          emptyMessage: 'Aucune donnée météo n’est encore disponible pour ce parc.',
-          errorTitle: 'Météo indisponible'
+          emptyMessage:
+            'Aucune donnée météo n’est encore disponible pour ce parc.',
+          errorTitle: 'Météo indisponible',
         },
         today: { title: 'Météo du jour' },
         conditions: { cloudy: 'Nuageux', unknown: 'Météo indisponible' },
@@ -88,36 +111,40 @@ describe('ParkWeatherPageComponent', () => {
           minimum: 'Min',
           condition: 'Météo',
           temperature: 'Temp.',
-          precipitationSum: 'Cumul'
+          precipitationSum: 'Cumul',
         },
         fields: {
           precipitationProbability: 'Risque de pluie',
-          wind: 'Vent'
+          wind: 'Vent',
         },
         history: {
           title: 'Comparer avec les années précédentes',
-          subtitle: 'Compare avec les années précédentes pour mieux anticiper ta visite.',
+          subtitle:
+            'Compare avec les années précédentes pour mieux anticiper ta visite.',
           loading: 'Chargement des comparaisons météo.',
-          empty: 'Aucune observation historique n’est disponible pour ces dates.',
+          empty:
+            'Aucune observation historique n’est disponible pour ces dates.',
           errorMessage: 'Les comparaisons météo n’ont pas pu être chargées.',
           yearSingular: 'Il y a {{count}} an',
           yearPlural: 'Il y a {{count}} ans',
           rain: 'Pluie {{value}}',
-          wind: 'Vent {{value}}'
+          wind: 'Vent {{value}}',
         },
         attribution: {
-          full: 'Données météo fournies par {{provider}} sous licence :'
+          full: 'Données météo fournies par {{provider}} sous licence :',
         },
-        errorMessage: 'Les données météo n’ont pas pu être chargées.'
+        errorMessage: 'Les données météo n’ont pas pu être chargées.',
       },
       shareSocial: {
         weather: {
           title: 'Partager cette météo',
-          description: 'Envoie les prévisions de {{title}} à quelqu’un qui prépare sa visite.',
-          text: 'Vérifie la météo de {{title}} sur AmusementPark.'
+          description:
+            'Envoie les prévisions de {{title}} à quelqu’un qui prépare sa visite.',
+          text: 'Vérifie la météo de {{title}} sur AmusementPark.',
         },
         defaultTitle: 'Partager cette page',
-        defaultDescription: 'Tu connais quelqu’un qui pourrait utiliser cette page ?',
+        defaultDescription:
+          'Tu connais quelqu’un qui pourrait utiliser cette page ?',
         defaultText: 'Regarde {{title}} sur AmusementPark.',
         actions: {
           share: 'Partager',
@@ -132,14 +159,14 @@ describe('ParkWeatherPageComponent', () => {
           email: 'Email',
           whatsapp: 'WhatsApp',
           telegram: 'Telegram',
-          qrCode: 'QR code'
+          qrCode: 'QR code',
         },
         qr: {
           title: 'Partager via QR code',
           loading: 'Génération du QR code',
-          alt: 'QR code pour {{title}}'
-        }
-      }
+          alt: 'QR code pour {{title}}',
+        },
+      },
     });
     translateService.use('fr');
 
@@ -148,16 +175,19 @@ describe('ParkWeatherPageComponent', () => {
   });
 
   it('renders the weather page lead with the park name', () => {
-    const textContent: string = (fixture.nativeElement as HTMLElement).textContent ?? '';
+    const textContent: string =
+      (fixture.nativeElement as HTMLElement).textContent ?? '';
 
-    expect(textContent).toContain('Vérifie la météo de Bellewaerde pour ta visite.');
+    expect(textContent).toContain(
+      'Vérifie la météo de Bellewaerde pour ta visite.',
+    );
     expect(textContent).not.toContain('{{name}}');
   });
 
   it('renders the weather sharing panel for the park', () => {
-    const sharePanel: PublicSharePanelComponent = fixture.debugElement
-      .query(By.directive(PublicSharePanelComponent))
-      .componentInstance as PublicSharePanelComponent;
+    const sharePanel: PublicSharePanelComponent = fixture.debugElement.query(
+      By.directive(PublicSharePanelComponent),
+    ).componentInstance as PublicSharePanelComponent;
 
     expect(sharePanel.targetType).toBe('Park');
     expect(sharePanel.targetId).toBe('park-1');
@@ -168,14 +198,19 @@ describe('ParkWeatherPageComponent', () => {
   });
 
   it('requests historical comparisons for the displayed forecast dates', () => {
-    const details: HTMLDetailsElement | null = (fixture.nativeElement as HTMLElement).querySelector('details.park-weather-history');
+    const details: HTMLDetailsElement | null = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector('details.park-weather-history');
 
     expect(details).not.toBeNull();
     details!.open = true;
     details!.dispatchEvent(new Event('toggle'));
     fixture.detectChanges();
 
-    const args: Parameters<ParksApiService['getParkWeatherHistoricalComparisons']> = parksApiService.getParkWeatherHistoricalComparisons.calls.mostRecent().args;
+    const args: Parameters<
+      ParksApiService['getParkWeatherHistoricalComparisons']
+    > = vi.mocked(parksApiService.getParkWeatherHistoricalComparisons).mock
+      .lastCall!;
     expect(args[0]).toBe('park-1');
     expect(args[1]).toBe(2);
     expect(args[2]).toBe(10);
@@ -196,8 +231,8 @@ function createSummary(): ParkDetailSummary {
       showCount: 0,
       shopCount: 0,
       hotelCount: 0,
-      countsByCategory: {}
-    }
+      countsByCategory: {},
+    },
   };
 }
 
@@ -208,7 +243,7 @@ function createPark(): Park {
     countryCode: 'BE',
     latitude: 50.845,
     longitude: 2.945,
-    isVisible: true
+    isVisible: true,
   };
 }
 
@@ -225,7 +260,7 @@ function createForecast(): ParkWeatherForecast {
         precipitationProbabilityMaxPercent: 22,
         precipitationSumMillimeters: 0,
         windSpeedMaxKilometersPerHour: 12.6,
-        fetchedAtUtc: '2026-06-20T08:00:00Z'
+        fetchedAtUtc: '2026-06-20T08:00:00Z',
       },
       {
         localDate: '2026-06-21',
@@ -236,10 +271,10 @@ function createForecast(): ParkWeatherForecast {
         precipitationProbabilityMaxPercent: 12,
         precipitationSumMillimeters: 0,
         windSpeedMaxKilometersPerHour: 10.1,
-        fetchedAtUtc: '2026-06-20T08:00:00Z'
-      }
+        fetchedAtUtc: '2026-06-20T08:00:00Z',
+      },
     ],
-    attribution: createAttribution()
+    attribution: createAttribution(),
   };
 }
 
@@ -248,6 +283,6 @@ function createAttribution(): ParkWeatherForecast['attribution'] {
     providerName: 'Open-Meteo',
     providerUrl: 'https://open-meteo.com',
     licenseName: 'CC BY 4.0',
-    licenseUrl: 'https://creativecommons.org/licenses/by/4.0/'
+    licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
   };
 }

@@ -1,7 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { Observable, of, throwError } from 'rxjs';
 
-import { CreateVideoTagRequest, UpdateVideoTagRequest } from '@app/models/videos/video-tag-write-request';
+import {
+  CreateVideoTagRequest,
+  UpdateVideoTagRequest,
+} from '@app/models/videos/video-tag-write-request';
 import { PagedResult } from '@shared/models/contracts';
 import { ResolvedVideoMetadataDto } from '@app/models/videos/resolved-video-metadata-dto';
 import { VideoDto } from '@app/models/videos/video-dto';
@@ -15,12 +18,14 @@ import { createPagedResult } from '@shared/utils/mapping';
 
 import {
   ADMIN_VIDEOS_STATE_VIDEOS_API_SERVICE_PORT,
-  AdminVideosStateVideosApiServicePort
+  AdminVideosStateVideosApiServicePort,
 } from './admin-videos-state-data.ports';
 import { AdminVideosStateFacade } from './admin-videos-state.facade';
 
 class FakeVideosPort implements AdminVideosStateVideosApiServicePort {
-  public pageResponse$: Observable<PagedResult<VideoDto>> = of(createPagedResult([createVideo('video-1')]));
+  public pageResponse$: Observable<PagedResult<VideoDto>> = of(
+    createPagedResult([createVideo('video-1')]),
+  );
   public tagsResponse$: Observable<VideoTagDto[]> = of([createTag('tag-1')]);
 
   getVideosPage(query?: VideoSearchQuery): Observable<PagedResult<VideoDto>> {
@@ -51,7 +56,10 @@ class FakeVideosPort implements AdminVideosStateVideosApiServicePort {
     return of(createTag('created-tag'));
   }
 
-  updateVideoTag(id: string, request: UpdateVideoTagRequest): Observable<VideoTagDto> {
+  updateVideoTag(
+    id: string,
+    request: UpdateVideoTagRequest,
+  ): Observable<VideoTagDto> {
     return of(createTag(id));
   }
 }
@@ -109,7 +117,7 @@ describe('AdminVideosStateFacade', () => {
   });
 
   it('keeps the admin video screen usable when the videos page fails to load', () => {
-    spyOn(console, 'error');
+    vi.spyOn(console, 'error');
     port.pageResponse$ = throwError(() => new Error('network'));
 
     facade.reload();
@@ -118,20 +126,28 @@ describe('AdminVideosStateFacade', () => {
     expect(facade.videos()).toEqual([]);
     expect(facade.tags().map((tag: VideoTagDto) => tag.id)).toEqual(['tag-1']);
     expect(facade.operationErrorKey()).toBeNull();
-    expect(console.error).toHaveBeenCalledWith('Error loading admin videos', jasmine.any(Error));
+    expect(console.error).toHaveBeenCalledWith(
+      'Error loading admin videos',
+      expect.any(Error),
+    );
   });
 
   it('keeps the admin video screen usable when tags fail to load', () => {
-    spyOn(console, 'error');
+    vi.spyOn(console, 'error');
     port.tagsResponse$ = throwError(() => new Error('network'));
 
     facade.reload();
 
     expect(facade.state().kind).toBe('ready');
-    expect(facade.videos().map((video: VideoDto) => video.id)).toEqual(['video-1']);
+    expect(facade.videos().map((video: VideoDto) => video.id)).toEqual([
+      'video-1',
+    ]);
     expect(facade.tags()).toEqual([]);
     expect(facade.operationErrorKey()).toBeNull();
-    expect(console.error).toHaveBeenCalledWith('Error loading admin video tags', jasmine.any(Error));
+    expect(console.error).toHaveBeenCalledWith(
+      'Error loading admin video tags',
+      expect.any(Error),
+    );
   });
 
   it('keeps current data visible when a write action reports an error', () => {
@@ -140,7 +156,9 @@ describe('AdminVideosStateFacade', () => {
     facade.setError();
 
     expect(facade.state().kind).toBe('ready');
-    expect(facade.videos().map((video: VideoDto) => video.id)).toEqual(['video-1']);
+    expect(facade.videos().map((video: VideoDto) => video.id)).toEqual([
+      'video-1',
+    ]);
     expect(facade.operationErrorKey()).toBe('common.errorMessage');
   });
 });

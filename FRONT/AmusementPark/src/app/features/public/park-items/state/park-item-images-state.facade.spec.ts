@@ -15,7 +15,7 @@ import {
   PARK_ITEM_IMAGES_PARKS_PORT,
   ParkItemImagesImagesPort,
   ParkItemImagesItemsPort,
-  ParkItemImagesParksPort
+  ParkItemImagesParksPort,
 } from './park-item-images-data.ports';
 import { ParkItemImagesStateFacade } from './park-item-images-state.facade';
 
@@ -40,13 +40,29 @@ class FakeParksPort implements ParkItemImagesParksPort {
 }
 
 class FakeImagesPort implements ParkItemImagesImagesPort {
-  public firstPage$: Observable<PagedResult<ImageDto>> = of(createImagePage([createImage('image-1')], 1, 2, 2));
-  public nextPage$: Observable<PagedResult<ImageDto>> = of(createImagePage([createImage('image-2')], 2, 2, 2));
+  public firstPage$: Observable<PagedResult<ImageDto>> = of(
+    createImagePage([createImage('image-1')], 1, 2, 2),
+  );
+  public nextPage$: Observable<PagedResult<ImageDto>> = of(
+    createImagePage([createImage('image-2')], 2, 2, 2),
+  );
   public tags$: Observable<ImageTagDto[]> = of([]);
-  public readonly pageCalls: { ownerType: ImageOwnerType; ownerId: string; category: ImageCategory; page?: number; size?: number }[] = [];
+  public readonly pageCalls: {
+    ownerType: ImageOwnerType;
+    ownerId: string;
+    category: ImageCategory;
+    page?: number;
+    size?: number;
+  }[] = [];
   public tagCallCount: number = 0;
 
-  getImagesPage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number): Observable<PagedResult<ImageDto>> {
+  getImagesPage(
+    ownerType: ImageOwnerType,
+    ownerId: string,
+    category: ImageCategory,
+    page?: number,
+    size?: number,
+  ): Observable<PagedResult<ImageDto>> {
     this.pageCalls.push({ ownerType, ownerId, category, page, size });
     return page === 2 ? this.nextPage$ : this.firstPage$;
   }
@@ -73,7 +89,7 @@ function createPark(): Park {
     latitude: 50.8,
     longitude: 6.8,
     isVisible: true,
-    descriptions: []
+    descriptions: [],
   };
 }
 
@@ -88,7 +104,7 @@ function createParkItem(overrides: Partial<ParkItem> = {}): ParkItem {
     latitude: 50.8,
     longitude: 6.8,
     isVisible: true,
-    ...overrides
+    ...overrides,
   } as ParkItem;
 }
 
@@ -114,19 +130,24 @@ function createImage(id: string): ImageDto {
     credits: [],
     tagIds: [],
     createdAt: '2026-01-01T00:00:00Z',
-    updatedAt: '2026-01-01T00:00:00Z'
+    updatedAt: '2026-01-01T00:00:00Z',
   };
 }
 
-function createImagePage(items: ImageDto[], currentPage: number, totalPages: number, totalItems: number): PagedResult<ImageDto> {
+function createImagePage(
+  items: ImageDto[],
+  currentPage: number,
+  totalPages: number,
+  totalItems: number,
+): PagedResult<ImageDto> {
   return {
     items,
     pagination: {
       currentPage,
       totalPages,
       totalItems,
-      itemsPerPage: 100
-    }
+      itemsPerPage: 100,
+    },
   };
 }
 
@@ -140,7 +161,8 @@ function configureFacade(): {
   const itemsPort: FakeItemsPort = new FakeItemsPort();
   const parksPort: FakeParksPort = new FakeParksPort();
   const imagesPort: FakeImagesPort = new FakeImagesPort();
-  const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
+  const ssrStatusService: FakeSsrHttpStatusService =
+    new FakeSsrHttpStatusService();
 
   TestBed.configureTestingModule({
     providers: [
@@ -148,8 +170,8 @@ function configureFacade(): {
       { provide: PARK_ITEM_IMAGES_ITEMS_PORT, useValue: itemsPort },
       { provide: PARK_ITEM_IMAGES_PARKS_PORT, useValue: parksPort },
       { provide: PARK_ITEM_IMAGES_IMAGES_PORT, useValue: imagesPort },
-      { provide: SsrHttpStatusService, useValue: ssrStatusService }
-    ]
+      { provide: SsrHttpStatusService, useValue: ssrStatusService },
+    ],
   });
 
   return {
@@ -157,7 +179,7 @@ function configureFacade(): {
     itemsPort,
     parksPort,
     imagesPort,
-    ssrStatusService
+    ssrStatusService,
   };
 }
 
@@ -175,14 +197,26 @@ describe('ParkItemImagesStateFacade', () => {
     expect(context.facade.item()?.name).toBe('Taron');
     expect(context.facade.park()?.name).toBe('Phantasialand');
     expect(context.facade.totalImages()).toBe(2);
-    expect(context.facade.canLoadMore()).toBeTrue();
+    expect(context.facade.canLoadMore()).toBe(true);
     expect(context.facade.photos()[0]?.categoryKey).toBe('gallery');
-    expect(context.facade.categories()).toEqual([{ key: 'gallery', labelKey: 'parkItems.photos.categories.gallery', count: 1 }]);
+    expect(context.facade.categories()).toEqual([
+      {
+        key: 'gallery',
+        labelKey: 'parkItems.photos.categories.gallery',
+        count: 1,
+      },
+    ]);
     expect(context.itemsPort.calls).toEqual(['item-1']);
     expect(context.parksPort.calls).toEqual(['park-1']);
     expect(context.imagesPort.tagCallCount).toBe(1);
     expect(context.imagesPort.pageCalls).toEqual([
-      { ownerType: ImageOwnerType.PARK_ITEM, ownerId: 'item-1', category: ImageCategory.PARK_ITEM, page: 1, size: 100 }
+      {
+        ownerType: ImageOwnerType.PARK_ITEM,
+        ownerId: 'item-1',
+        category: ImageCategory.PARK_ITEM,
+        page: 1,
+        size: 100,
+      },
     ]);
   });
 
@@ -192,11 +226,26 @@ describe('ParkItemImagesStateFacade', () => {
     context.facade.loadItemImages('item-1');
     context.facade.loadNextPage();
 
-    expect(context.facade.photos().map((photo) => photo.imageId)).toEqual(['image-1', 'image-2']);
-    expect(context.facade.canLoadMore()).toBeFalse();
+    expect(context.facade.photos().map((photo) => photo.imageId)).toEqual([
+      'image-1',
+      'image-2',
+    ]);
+    expect(context.facade.canLoadMore()).toBe(false);
     expect(context.imagesPort.pageCalls).toEqual([
-      { ownerType: ImageOwnerType.PARK_ITEM, ownerId: 'item-1', category: ImageCategory.PARK_ITEM, page: 1, size: 100 },
-      { ownerType: ImageOwnerType.PARK_ITEM, ownerId: 'item-1', category: ImageCategory.PARK_ITEM, page: 2, size: 100 }
+      {
+        ownerType: ImageOwnerType.PARK_ITEM,
+        ownerId: 'item-1',
+        category: ImageCategory.PARK_ITEM,
+        page: 1,
+        size: 100,
+      },
+      {
+        ownerType: ImageOwnerType.PARK_ITEM,
+        ownerId: 'item-1',
+        category: ImageCategory.PARK_ITEM,
+        page: 2,
+        size: 100,
+      },
     ]);
   });
 

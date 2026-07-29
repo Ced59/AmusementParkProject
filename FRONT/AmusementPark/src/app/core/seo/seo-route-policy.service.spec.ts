@@ -11,21 +11,35 @@ describe('SeoRoutePolicyService', (): void => {
   });
 
   it('classifies private routes without matching similarly named public routes', (): void => {
-    expect(service.isAdminRoute('/fr/admin/content')).toBeTrue();
-    expect(service.isAdminRoute('/fr/administration-guide')).toBeFalse();
-    expect(service.isAccountRoute('/en/reset-password/token')).toBeTrue();
-    expect(service.isAccountRoute('/en/park/reset-password-land')).toBeFalse();
+    expect(service.isAdminRoute('/fr/admin/content')).toBe(true);
+    expect(service.isAdminRoute('/fr/administration-guide')).toBe(false);
+    expect(service.isAccountRoute('/en/reset-password/token')).toBe(true);
+    expect(service.isAccountRoute('/en/park/reset-password-land')).toBe(false);
   });
 
   it('marks only query-filtered park collection and subpage routes', (): void => {
-    expect(service.isFilteredPublicParkRoute('/fr/park/id/slug/items?page=2')).toBeTrue();
-    expect(service.isFilteredPublicParkRoute('/fr/park/id/slug/item/item-id/item-slug/images?sort=date')).toBeTrue();
-    expect(service.isFilteredPublicParkRoute('/fr/park/id/slug/items')).toBeFalse();
-    expect(service.isFilteredPublicParkRoute('/fr/park/id/slug?ref=home')).toBeFalse();
+    expect(
+      service.isFilteredPublicParkRoute('/fr/park/id/slug/items?page=2'),
+    ).toBe(true);
+    expect(
+      service.isFilteredPublicParkRoute(
+        '/fr/park/id/slug/item/item-id/item-slug/images?sort=date',
+      ),
+    ).toBe(true);
+    expect(service.isFilteredPublicParkRoute('/fr/park/id/slug/items')).toBe(
+      false,
+    );
+    expect(service.isFilteredPublicParkRoute('/fr/park/id/slug?ref=home')).toBe(
+      false,
+    );
   });
 
   it('resolves localized static routes and absolute URLs', (): void => {
-    expect(service.resolveLanguage('https://amusement-parks.fun/de/privacy?source=test')).toBe('de');
+    expect(
+      service.resolveLanguage(
+        'https://amusement-parks.fun/de/privacy?source=test',
+      ),
+    ).toBe('de');
     expect(service.resolveStaticRouteKey('/de/privacy')).toBe('privacy');
     expect(service.resolveStaticRouteKey('/fr/not-found')).toBe('notFound');
     expect(service.resolveStaticRouteKey('/fr/park/id/slug')).toBeNull();
@@ -33,6 +47,11 @@ describe('SeoRoutePolicyService', (): void => {
   });
 
   it('normalizes duplicate separators for path segments', (): void => {
-    expect(service.getPathSegments('/fr//park///id/slug')).toEqual(['fr', 'park', 'id', 'slug']);
+    expect(service.getPathSegments('/fr//park///id/slug')).toEqual([
+      'fr',
+      'park',
+      'id',
+      'slug',
+    ]);
   });
 });

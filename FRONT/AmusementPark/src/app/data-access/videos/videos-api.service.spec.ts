@@ -13,7 +13,9 @@ describe('VideosApiService', () => {
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: provideCommonTestDependencies() });
+    TestBed.configureTestingModule({
+      providers: provideCommonTestDependencies(),
+    });
     service = TestBed.inject(VideosApiService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
@@ -23,22 +25,26 @@ describe('VideosApiService', () => {
   });
 
   it('gets public videos with owner and filter query params', () => {
-    service.getVideosPage({
-      page: 2,
-      size: 12,
-      ownerType: VideoOwnerType.PARK,
-      ownerId: 'park-1',
-      type: VideoType.ON_RIDE,
-      tagId: 'official',
-      creatorName: 'creator',
-      languageCode: 'fr',
-      sortBy: 'published',
-      sortDirection: 'desc'
-    }).subscribe((page) => {
-      expect(page.items).toEqual([{ id: 'video-1' } as never]);
-    });
+    service
+      .getVideosPage({
+        page: 2,
+        size: 12,
+        ownerType: VideoOwnerType.PARK,
+        ownerId: 'park-1',
+        type: VideoType.ON_RIDE,
+        tagId: 'official',
+        creatorName: 'creator',
+        languageCode: 'fr',
+        sortBy: 'published',
+        sortDirection: 'desc',
+      })
+      .subscribe((page) => {
+        expect(page.items).toEqual([{ id: 'video-1' } as never]);
+      });
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos`);
+    const request = httpTestingController.expectOne(
+      (candidate) => candidate.url === `${environment.apiBaseUrl}videos`,
+    );
     expect(request.request.method).toBe('GET');
     expect(request.request.params.get('page')).toBe('2');
     expect(request.request.params.get('size')).toBe('12');
@@ -54,20 +60,28 @@ describe('VideosApiService', () => {
   });
 
   it('gets park item videos for a park with filter query params', () => {
-    service.getParkItemVideosByPark('park 1', {
-      page: 3,
-      size: 6,
-      type: VideoType.ON_RIDE,
-      tagId: 'tag-1',
-      creatorName: 'creator',
-      languageCode: 'fr',
-      sortBy: 'published',
-      sortDirection: 'desc'
-    }).subscribe((page) => {
-      expect(page.items).toEqual([{ video: { id: 'video-1' }, item: { id: 'item-1' } } as never]);
-    });
+    service
+      .getParkItemVideosByPark('park 1', {
+        page: 3,
+        size: 6,
+        type: VideoType.ON_RIDE,
+        tagId: 'tag-1',
+        creatorName: 'creator',
+        languageCode: 'fr',
+        sortBy: 'published',
+        sortDirection: 'desc',
+      })
+      .subscribe((page) => {
+        expect(page.items).toEqual([
+          { video: { id: 'video-1' }, item: { id: 'item-1' } } as never,
+        ]);
+      });
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos/parks/park%201/park-items`);
+    const request = httpTestingController.expectOne(
+      (candidate) =>
+        candidate.url ===
+        `${environment.apiBaseUrl}videos/parks/park%201/park-items`,
+    );
     expect(request.request.method).toBe('GET');
     expect(request.request.params.get('page')).toBe('3');
     expect(request.request.params.get('size')).toBe('6');
@@ -77,7 +91,9 @@ describe('VideosApiService', () => {
     expect(request.request.params.get('languageCode')).toBe('fr');
     expect(request.request.params.get('sortBy')).toBe('published');
     expect(request.request.params.get('sortDirection')).toBe('desc');
-    request.flush({ data: [{ video: { id: 'video-1' }, item: { id: 'item-1' } }] });
+    request.flush({
+      data: [{ video: { id: 'video-1' }, item: { id: 'item-1' } }],
+    });
   });
 
   it('gets a video detail and public tags', () => {
@@ -85,7 +101,10 @@ describe('VideosApiService', () => {
       expect(video.id).toBe('video-1');
     });
 
-    const videoRequest = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos/video-1`);
+    const videoRequest = httpTestingController.expectOne(
+      (candidate) =>
+        candidate.url === `${environment.apiBaseUrl}videos/video-1`,
+    );
     expect(videoRequest.request.method).toBe('GET');
     expect(videoRequest.request.params.get('languageCode')).toBe('fr');
     videoRequest.flush({ id: 'video-1' });
@@ -94,7 +113,9 @@ describe('VideosApiService', () => {
       expect(tags).toEqual([{ id: 'tag-1', slug: 'official' } as never]);
     });
 
-    const tagsRequest = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos/tags`);
+    const tagsRequest = httpTestingController.expectOne(
+      (candidate) => candidate.url === `${environment.apiBaseUrl}videos/tags`,
+    );
     expect(tagsRequest.request.method).toBe('GET');
     expect(tagsRequest.request.params.get('page')).toBe('1');
     expect(tagsRequest.request.params.get('size')).toBe('100');
@@ -118,25 +139,40 @@ describe('VideosApiService', () => {
       titles: [],
       descriptions: [],
       tagIds: ['tag-1'],
-      isPublished: true
+      isPublished: true,
     };
 
-    service.resolveVideoMetadata('https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk').subscribe((metadata) => {
-      expect(metadata.externalId).toBe('abcdefghijk');
-    });
+    service
+      .resolveVideoMetadata(
+        'https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk',
+      )
+      .subscribe((metadata) => {
+        expect(metadata.externalId).toBe('abcdefghijk');
+      });
 
-    const metadataRequest = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos/resolve-metadata`);
+    const metadataRequest = httpTestingController.expectOne(
+      (candidate) =>
+        candidate.url === `${environment.apiBaseUrl}videos/resolve-metadata`,
+    );
     expect(metadataRequest.request.method).toBe('GET');
-    expect(metadataRequest.request.params.get('url')).toBe('https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk');
-    expect(metadataRequest.request.urlWithParams).toContain('url=https%3A%2F%2Fyoutube.com%2Fwatch%3Fv%3DWlLikBWTmbg%26is%3DlUPBiTdjFOXks1sk');
-    expect(metadataRequest.request.urlWithParams).not.toContain('&is=lUPBiTdjFOXks1sk');
+    expect(metadataRequest.request.params.get('url')).toBe(
+      'https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk',
+    );
+    expect(metadataRequest.request.urlWithParams).toContain(
+      'url=https%3A%2F%2Fyoutube.com%2Fwatch%3Fv%3DWlLikBWTmbg%26is%3DlUPBiTdjFOXks1sk',
+    );
+    expect(metadataRequest.request.urlWithParams).not.toContain(
+      '&is=lUPBiTdjFOXks1sk',
+    );
     metadataRequest.flush({ externalId: 'abcdefghijk' });
 
     service.createVideo(requestBody).subscribe((video) => {
       expect(video.id).toBe('video-1');
     });
 
-    const createRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos`);
+    const createRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}videos`,
+    );
     expect(createRequest.request.method).toBe('POST');
     expect(createRequest.request.body).toEqual(requestBody);
     createRequest.flush({ id: 'video-1' });
@@ -145,43 +181,55 @@ describe('VideosApiService', () => {
       expect(video.id).toBe('video-1');
     });
 
-    const updateRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/video-1`);
+    const updateRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}videos/video-1`,
+    );
     expect(updateRequest.request.method).toBe('PUT');
     expect(updateRequest.request.body).toEqual(requestBody);
     updateRequest.flush({ id: 'video-1' });
 
     service.deleteVideo('video-1').subscribe((deleted) => {
-      expect(deleted).toBeTrue();
+      expect(deleted).toBe(true);
     });
 
-    const deleteRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/video-1`);
+    const deleteRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}videos/video-1`,
+    );
     expect(deleteRequest.request.method).toBe('DELETE');
     deleteRequest.flush(true);
   });
 
   it('creates and updates video tags through admin endpoints', () => {
-    service.createVideoTag({
-      slug: 'official',
-      labels: [{ languageCode: 'fr', value: 'official' }],
-      descriptions: []
-    }).subscribe((tag) => {
-      expect(tag.slug).toBe('official');
-    });
+    service
+      .createVideoTag({
+        slug: 'official',
+        labels: [{ languageCode: 'fr', value: 'official' }],
+        descriptions: [],
+      })
+      .subscribe((tag) => {
+        expect(tag.slug).toBe('official');
+      });
 
-    const createRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/tags`);
+    const createRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}videos/tags`,
+    );
     expect(createRequest.request.method).toBe('POST');
     createRequest.flush({ id: 'tag-1', slug: 'official' });
 
-    service.updateVideoTag('tag-1', {
-      slug: 'official',
-      labels: [{ languageCode: 'fr', value: 'official' }],
-      descriptions: [],
-      isActive: true
-    }).subscribe((tag) => {
-      expect(tag.id).toBe('tag-1');
-    });
+    service
+      .updateVideoTag('tag-1', {
+        slug: 'official',
+        labels: [{ languageCode: 'fr', value: 'official' }],
+        descriptions: [],
+        isActive: true,
+      })
+      .subscribe((tag) => {
+        expect(tag.id).toBe('tag-1');
+      });
 
-    const updateRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/tags/tag-1`);
+    const updateRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}videos/tags/tag-1`,
+    );
     expect(updateRequest.request.method).toBe('PUT');
     updateRequest.flush({ id: 'tag-1', slug: 'official' });
   });

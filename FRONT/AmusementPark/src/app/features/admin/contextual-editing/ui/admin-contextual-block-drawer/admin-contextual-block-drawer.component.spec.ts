@@ -1,20 +1,31 @@
+import type { Mock } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Signal, WritableSignal, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import { AdminContextualBlockInstance } from '../../models/admin-contextual-block.model';
 import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
-import { AdminContextualBlockChildAddFacade, AdminContextualBlockChildAddZoneOption } from '../../state/admin-contextual-block-child-add.facade';
+import {
+  AdminContextualBlockChildAddFacade,
+  AdminContextualBlockChildAddZoneOption,
+} from '../../state/admin-contextual-block-child-add.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
-import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField, AdminContextualBlockLocationForm } from '../../state/admin-contextual-block-form.facade';
+import {
+  AdminContextualBlockFormFacade,
+  AdminContextualBlockLocalizedFormField,
+  AdminContextualBlockLocationForm,
+} from '../../state/admin-contextual-block-form.facade';
 import {
   AdminContextualBlockPhotoAddFacade,
   AdminContextualBlockPhotoCategoryOption,
   AdminContextualBlockPhotoMetadataRow,
   AdminContextualBlockPhotoTagOption,
-  AdminContextualPhotoSourceMode
+  AdminContextualPhotoSourceMode,
 } from '../../state/admin-contextual-block-photo-add.facade';
 import { AdminContextualBlockParkGraphUpsertFacade } from '../../state/admin-contextual-block-park-graph-upsert.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
@@ -29,29 +40,29 @@ describe('AdminContextualBlockDrawerComponent', () => {
   let exportFacade: {
     isExporting: Signal<boolean>;
     errorKey: Signal<string | null>;
-    canExport: jasmine.Spy;
-    exportBlock: jasmine.Spy;
+    canExport: Mock;
+    exportBlock: Mock;
   };
   let previewFacade: {
     jsonDraft: Signal<string>;
     previewResult: Signal<ContextualBlockPreviewResult | null>;
     isPreviewing: Signal<boolean>;
     errorKey: Signal<string | null>;
-    canPreview: jasmine.Spy;
-    setJsonDraft: jasmine.Spy;
-    clearDraft: jasmine.Spy;
-    previewBlock: jasmine.Spy;
-    resetForBlock: jasmine.Spy;
+    canPreview: Mock;
+    setJsonDraft: Mock;
+    clearDraft: Mock;
+    previewBlock: Mock;
+    resetForBlock: Mock;
   };
   let applyFacade: {
     applyResult: Signal<ContextualBlockPreviewResult | null>;
     isApplying: Signal<boolean>;
     errorKey: Signal<string | null>;
-    canApply: jasmine.Spy;
-    hasAcceptedPreview: jasmine.Spy;
-    applyBlock: jasmine.Spy;
-    resetForBlock: jasmine.Spy;
-    clearResult: jasmine.Spy;
+    canApply: Mock;
+    hasAcceptedPreview: Mock;
+    applyBlock: Mock;
+    resetForBlock: Mock;
+    clearResult: Mock;
   };
   let formFacade: {
     localizedFields: Signal<readonly AdminContextualBlockLocalizedFormField[]>;
@@ -60,15 +71,15 @@ describe('AdminContextualBlockDrawerComponent', () => {
     isSaving: Signal<boolean>;
     errorKey: Signal<string | null>;
     successKey: Signal<string | null>;
-    canEditForm: jasmine.Spy;
-    resetForBlock: jasmine.Spy;
-    loadForm: jasmine.Spy;
-    updateLocalizedValue: jasmine.Spy;
-    updateLocationPosition: jasmine.Spy;
-    updateLocationLatitude: jasmine.Spy;
-    updateLocationLongitude: jasmine.Spy;
-    clearLocation: jasmine.Spy;
-    saveForm: jasmine.Spy;
+    canEditForm: Mock;
+    resetForBlock: Mock;
+    loadForm: Mock;
+    updateLocalizedValue: Mock;
+    updateLocationPosition: Mock;
+    updateLocationLatitude: Mock;
+    updateLocationLongitude: Mock;
+    clearLocation: Mock;
+    saveForm: Mock;
   };
   let locationFormSignal: WritableSignal<AdminContextualBlockLocationForm | null>;
   let childAddFacade: {
@@ -80,11 +91,11 @@ describe('AdminContextualBlockDrawerComponent', () => {
     errorKey: Signal<string | null>;
     successKey: Signal<string | null>;
     createdItemAdminRoute: Signal<readonly string[] | null>;
-    canAddChild: jasmine.Spy;
-    resetForBlock: jasmine.Spy;
-    updateItemName: jasmine.Spy;
-    updateSelectedZoneId: jasmine.Spy;
-    createChild: jasmine.Spy;
+    canAddChild: Mock;
+    resetForBlock: Mock;
+    updateItemName: Mock;
+    updateSelectedZoneId: Mock;
+    createChild: Mock;
   };
   let photoAddFacade: {
     sourceMode: Signal<AdminContextualPhotoSourceMode>;
@@ -105,19 +116,19 @@ describe('AdminContextualBlockDrawerComponent', () => {
     isUploading: Signal<boolean>;
     errorKey: Signal<string | null>;
     successKey: Signal<string | null>;
-    canAddPhoto: jasmine.Spy;
-    resetForBlock: jasmine.Spy;
-    setSourceMode: jasmine.Spy;
-    selectFile: jasmine.Spy;
-    updateRemoteSourceUrl: jasmine.Spy;
-    previewRemoteSourceUrl: jasmine.Spy;
-    updateDescription: jasmine.Spy;
-    updateWithWatermark: jasmine.Spy;
-    updateSelectedCategorySlug: jasmine.Spy;
-    toggleTag: jasmine.Spy;
-    updateIsPublished: jasmine.Spy;
-    updateSetAsCurrent: jasmine.Spy;
-    uploadPhoto: jasmine.Spy;
+    canAddPhoto: Mock;
+    resetForBlock: Mock;
+    setSourceMode: Mock;
+    selectFile: Mock;
+    updateRemoteSourceUrl: Mock;
+    previewRemoteSourceUrl: Mock;
+    updateDescription: Mock;
+    updateWithWatermark: Mock;
+    updateSelectedCategorySlug: Mock;
+    toggleTag: Mock;
+    updateIsPublished: Mock;
+    updateSetAsCurrent: Mock;
+    uploadPhoto: Mock;
   };
   let parkGraphUpsertFacade: {
     isCopying: Signal<boolean>;
@@ -125,27 +136,31 @@ describe('AdminContextualBlockDrawerComponent', () => {
     isImporting: Signal<boolean>;
     errorKey: Signal<string | null>;
     successKey: Signal<string | null>;
-    canUseDraft: jasmine.Spy;
-    getDraft: jasmine.Spy;
-    resetForBlock: jasmine.Spy;
-    copyDraft: jasmine.Spy;
-    downloadDraft: jasmine.Spy;
-    importDraftFile: jasmine.Spy;
+    canUseDraft: Mock;
+    getDraft: Mock;
+    resetForBlock: Mock;
+    copyDraft: Mock;
+    downloadDraft: Mock;
+    importDraftFile: Mock;
   };
 
   beforeEach(async () => {
     const isExportingSignal = signal<boolean>(false);
     const errorKeySignal = signal<string | null>(null);
     const jsonDraftSignal = signal<string>('');
-    const previewResultSignal = signal<ContextualBlockPreviewResult | null>(null);
+    const previewResultSignal = signal<ContextualBlockPreviewResult | null>(
+      null,
+    );
     const isPreviewingSignal = signal<boolean>(false);
     const previewErrorKeySignal = signal<string | null>(null);
     const applyResultSignal = signal<ContextualBlockPreviewResult | null>(null);
     const isApplyingSignal = signal<boolean>(false);
     const applyErrorKeySignal = signal<string | null>(null);
-    const localizedFieldsSignal = signal<readonly AdminContextualBlockLocalizedFormField[]>([
+    const localizedFieldsSignal = signal<
+      readonly AdminContextualBlockLocalizedFormField[]
+    >([
       { languageCode: 'en', value: 'English description' },
-      { languageCode: 'fr', value: '' }
+      { languageCode: 'fr', value: '' },
     ]);
     locationFormSignal = signal<AdminContextualBlockLocationForm | null>(null);
     const isFormLoadingSignal = signal<boolean>(false);
@@ -154,33 +169,51 @@ describe('AdminContextualBlockDrawerComponent', () => {
     const formSuccessKeySignal = signal<string | null>(null);
     const childAddNameSignal = signal<string>('');
     const childAddSelectedZoneIdSignal = signal<string | null>(null);
-    const childAddZonesSignal = signal<readonly AdminContextualBlockChildAddZoneOption[]>([
-      { id: 'zone-1', label: 'Berlin', latitude: 50.1, longitude: 3.2 }
-    ]);
+    const childAddZonesSignal = signal<
+      readonly AdminContextualBlockChildAddZoneOption[]
+    >([{ id: 'zone-1', label: 'Berlin', latitude: 50.1, longitude: 3.2 }]);
     const isChildAddLoadingZonesSignal = signal<boolean>(false);
     const isChildAddCreatingSignal = signal<boolean>(false);
     const childAddErrorKeySignal = signal<string | null>(null);
     const childAddSuccessKeySignal = signal<string | null>(null);
     const createdItemAdminRouteSignal = signal<readonly string[] | null>(null);
-    const photoSourceModeSignal = signal<AdminContextualPhotoSourceMode>('file');
+    const photoSourceModeSignal =
+      signal<AdminContextualPhotoSourceMode>('file');
     const photoSelectedFileSignal = signal<File | null>(null);
     const photoRemoteSourceUrlSignal = signal<string>('');
-    const photoPreviewUrlSignal = signal<string | null>('https://example.test/photo.jpg');
-    const photoMetadataRowsSignal = signal<readonly AdminContextualBlockPhotoMetadataRow[]>([
-      { labelKey: 'admin.contextualBlocks.drawer.photoMetadataDimensions', value: '1024 x 768 px', tone: 'neutral' },
-      { labelKey: 'admin.contextualBlocks.drawer.photoMetadataGeoLocation', value: '50.100000, 3.200000', tone: 'success' }
+    const photoPreviewUrlSignal = signal<string | null>(
+      'https://example.test/photo.jpg',
+    );
+    const photoMetadataRowsSignal = signal<
+      readonly AdminContextualBlockPhotoMetadataRow[]
+    >([
+      {
+        labelKey: 'admin.contextualBlocks.drawer.photoMetadataDimensions',
+        value: '1024 x 768 px',
+        tone: 'neutral',
+      },
+      {
+        labelKey: 'admin.contextualBlocks.drawer.photoMetadataGeoLocation',
+        value: '50.100000, 3.200000',
+        tone: 'success',
+      },
     ]);
     const photoDescriptionSignal = signal<string>('');
     const photoWithWatermarkSignal = signal<boolean>(false);
     const photoIsPublishedSignal = signal<boolean>(true);
     const photoSetAsCurrentSignal = signal<boolean>(false);
-    const photoCategoryOptionsSignal = signal<readonly AdminContextualBlockPhotoCategoryOption[]>([
-      { slug: 'park-gallery', labelKey: 'admin.parks.photos.categories.gallery' }
+    const photoCategoryOptionsSignal = signal<
+      readonly AdminContextualBlockPhotoCategoryOption[]
+    >([
+      {
+        slug: 'park-gallery',
+        labelKey: 'admin.parks.photos.categories.gallery',
+      },
     ]);
     const photoSelectedCategorySlugSignal = signal<string>('park-gallery');
-    const photoTagOptionsSignal = signal<readonly AdminContextualBlockPhotoTagOption[]>([
-      { id: 'tag-1', slug: 'night', label: 'Nuit', isCategoryTag: false }
-    ]);
+    const photoTagOptionsSignal = signal<
+      readonly AdminContextualBlockPhotoTagOption[]
+    >([{ id: 'tag-1', slug: 'night', label: 'Nuit', isCategoryTag: false }]);
     const photoSelectedTagIdsSignal = signal<readonly string[]>([]);
     const isPhotoLoadingTagsSignal = signal<boolean>(false);
     const isPhotoReadingMetadataSignal = signal<boolean>(false);
@@ -195,31 +228,43 @@ describe('AdminContextualBlockDrawerComponent', () => {
     exportFacade = {
       isExporting: isExportingSignal.asReadonly(),
       errorKey: errorKeySignal.asReadonly(),
-      canExport: jasmine.createSpy('canExport').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
-        return Boolean(block?.capabilities.includes('boundedJsonExport'));
-      }),
-      exportBlock: jasmine.createSpy('exportBlock')
+      canExport: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): boolean => {
+            return Boolean(block?.capabilities.includes('boundedJsonExport'));
+          },
+        ),
+      exportBlock: vi.fn(),
     };
     previewFacade = {
       jsonDraft: jsonDraftSignal.asReadonly(),
       previewResult: previewResultSignal.asReadonly(),
       isPreviewing: isPreviewingSignal.asReadonly(),
       errorKey: previewErrorKeySignal.asReadonly(),
-      canPreview: jasmine.createSpy('canPreview').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
-        return Boolean(block?.capabilities.includes('boundedJsonPreview'));
-      }),
-      setJsonDraft: jasmine.createSpy('setJsonDraft').and.callFake((value: string): void => {
+      canPreview: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): boolean => {
+            return Boolean(block?.capabilities.includes('boundedJsonPreview'));
+          },
+        ),
+      setJsonDraft: vi.fn().mockImplementation((value: string): void => {
         jsonDraftSignal.set(value);
       }),
-      clearDraft: jasmine.createSpy('clearDraft').and.callFake((): void => {
+      clearDraft: vi.fn().mockImplementation((): void => {
         jsonDraftSignal.set('');
       }),
-      previewBlock: jasmine.createSpy('previewBlock'),
-      resetForBlock: jasmine.createSpy('resetForBlock').and.callFake((block: AdminContextualBlockInstance | null): void => {
-        if (!block) {
-          jsonDraftSignal.set('');
-        }
-      })
+      previewBlock: vi.fn(),
+      resetForBlock: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): void => {
+            if (!block) {
+              jsonDraftSignal.set('');
+            }
+          },
+        ),
     };
     formFacade = {
       localizedFields: localizedFieldsSignal.asReadonly(),
@@ -228,59 +273,79 @@ describe('AdminContextualBlockDrawerComponent', () => {
       isSaving: isFormSavingSignal.asReadonly(),
       errorKey: formErrorKeySignal.asReadonly(),
       successKey: formSuccessKeySignal.asReadonly(),
-      canEditForm: jasmine.createSpy('canEditForm').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
-        return Boolean(block?.capabilities.includes('contextualFormEdit'));
-      }),
-      resetForBlock: jasmine.createSpy('resetForBlock'),
-      loadForm: jasmine.createSpy('loadForm'),
-      updateLocalizedValue: jasmine.createSpy('updateLocalizedValue').and.callFake((languageCode: string, value: string): void => {
-        localizedFieldsSignal.update((fields: readonly AdminContextualBlockLocalizedFormField[]) => fields.map((field: AdminContextualBlockLocalizedFormField) => {
-          return field.languageCode === languageCode ? { ...field, value } : field;
-        }));
-      }),
-      updateLocationPosition: jasmine.createSpy('updateLocationPosition').and.callFake((latitude: number, longitude: number): void => {
-        const currentForm: AdminContextualBlockLocationForm | null = locationFormSignal();
-        locationFormSignal.set({
-          latitude,
-          longitude,
-          mapCenter: [latitude, longitude],
-          mapZoom: currentForm?.mapZoom ?? 16,
-          mapMarkers: [{
-            id: 'contextual-location',
-            lat: latitude,
-            lng: longitude,
-            title: 'Phantasialand',
-            iconKind: 'park'
-          }]
-        });
-      }),
-      updateLocationLatitude: jasmine.createSpy('updateLocationLatitude'),
-      updateLocationLongitude: jasmine.createSpy('updateLocationLongitude'),
-      clearLocation: jasmine.createSpy('clearLocation').and.callFake((): void => {
+      canEditForm: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): boolean => {
+            return Boolean(block?.capabilities.includes('contextualFormEdit'));
+          },
+        ),
+      resetForBlock: vi.fn(),
+      loadForm: vi.fn(),
+      updateLocalizedValue: vi
+        .fn()
+        .mockImplementation((languageCode: string, value: string): void => {
+          localizedFieldsSignal.update(
+            (fields: readonly AdminContextualBlockLocalizedFormField[]) =>
+              fields.map((field: AdminContextualBlockLocalizedFormField) => {
+                return field.languageCode === languageCode
+                  ? { ...field, value }
+                  : field;
+              }),
+          );
+        }),
+      updateLocationPosition: vi
+        .fn()
+        .mockImplementation((latitude: number, longitude: number): void => {
+          const currentForm: AdminContextualBlockLocationForm | null =
+            locationFormSignal();
+          locationFormSignal.set({
+            latitude,
+            longitude,
+            mapCenter: [latitude, longitude],
+            mapZoom: currentForm?.mapZoom ?? 16,
+            mapMarkers: [
+              {
+                id: 'contextual-location',
+                lat: latitude,
+                lng: longitude,
+                title: 'Phantasialand',
+                iconKind: 'park',
+              },
+            ],
+          });
+        }),
+      updateLocationLatitude: vi.fn(),
+      updateLocationLongitude: vi.fn(),
+      clearLocation: vi.fn().mockImplementation((): void => {
         locationFormSignal.set({
           latitude: null,
           longitude: null,
           mapCenter: [48.85, 2.35],
           mapZoom: 16,
-          mapMarkers: []
+          mapMarkers: [],
         });
       }),
-      saveForm: jasmine.createSpy('saveForm')
+      saveForm: vi.fn(),
     };
     applyFacade = {
       applyResult: applyResultSignal.asReadonly(),
       isApplying: isApplyingSignal.asReadonly(),
       errorKey: applyErrorKeySignal.asReadonly(),
-      canApply: jasmine.createSpy('canApply').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
-        return Boolean(block?.capabilities.includes('boundedJsonApply'));
-      }),
-      hasAcceptedPreview: jasmine.createSpy('hasAcceptedPreview').and.returnValue(true),
-      applyBlock: jasmine.createSpy('applyBlock'),
-      resetForBlock: jasmine.createSpy('resetForBlock'),
-      clearResult: jasmine.createSpy('clearResult').and.callFake((): void => {
+      canApply: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): boolean => {
+            return Boolean(block?.capabilities.includes('boundedJsonApply'));
+          },
+        ),
+      hasAcceptedPreview: vi.fn().mockReturnValue(true),
+      applyBlock: vi.fn(),
+      resetForBlock: vi.fn(),
+      clearResult: vi.fn().mockImplementation((): void => {
         applyResultSignal.set(null);
         applyErrorKeySignal.set(null);
-      })
+      }),
     };
     childAddFacade = {
       itemName: childAddNameSignal.asReadonly(),
@@ -291,17 +356,23 @@ describe('AdminContextualBlockDrawerComponent', () => {
       errorKey: childAddErrorKeySignal.asReadonly(),
       successKey: childAddSuccessKeySignal.asReadonly(),
       createdItemAdminRoute: createdItemAdminRouteSignal.asReadonly(),
-      canAddChild: jasmine.createSpy('canAddChild').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
-        return Boolean(block?.capabilities.includes('targetedChildAdd'));
-      }),
-      resetForBlock: jasmine.createSpy('resetForBlock'),
-      updateItemName: jasmine.createSpy('updateItemName').and.callFake((value: string): void => {
+      canAddChild: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): boolean => {
+            return Boolean(block?.capabilities.includes('targetedChildAdd'));
+          },
+        ),
+      resetForBlock: vi.fn(),
+      updateItemName: vi.fn().mockImplementation((value: string): void => {
         childAddNameSignal.set(value);
       }),
-      updateSelectedZoneId: jasmine.createSpy('updateSelectedZoneId').and.callFake((value: string | null): void => {
-        childAddSelectedZoneIdSignal.set(value);
-      }),
-      createChild: jasmine.createSpy('createChild')
+      updateSelectedZoneId: vi
+        .fn()
+        .mockImplementation((value: string | null): void => {
+          childAddSelectedZoneIdSignal.set(value);
+        }),
+      createChild: vi.fn(),
     };
     photoAddFacade = {
       sourceMode: photoSourceModeSignal.asReadonly(),
@@ -322,37 +393,51 @@ describe('AdminContextualBlockDrawerComponent', () => {
       isUploading: isPhotoUploadingSignal.asReadonly(),
       errorKey: photoErrorKeySignal.asReadonly(),
       successKey: photoSuccessKeySignal.asReadonly(),
-      canAddPhoto: jasmine.createSpy('canAddPhoto').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
-        return Boolean(block?.capabilities.includes('contextualPhotoAdd'));
-      }),
-      resetForBlock: jasmine.createSpy('resetForBlock'),
-      setSourceMode: jasmine.createSpy('setSourceMode').and.callFake((mode: AdminContextualPhotoSourceMode): void => {
-        photoSourceModeSignal.set(mode);
-      }),
-      selectFile: jasmine.createSpy('selectFile'),
-      updateRemoteSourceUrl: jasmine.createSpy('updateRemoteSourceUrl').and.callFake((value: string): void => {
-        photoRemoteSourceUrlSignal.set(value);
-      }),
-      previewRemoteSourceUrl: jasmine.createSpy('previewRemoteSourceUrl'),
-      updateDescription: jasmine.createSpy('updateDescription').and.callFake((value: string): void => {
+      canAddPhoto: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): boolean => {
+            return Boolean(block?.capabilities.includes('contextualPhotoAdd'));
+          },
+        ),
+      resetForBlock: vi.fn(),
+      setSourceMode: vi
+        .fn()
+        .mockImplementation((mode: AdminContextualPhotoSourceMode): void => {
+          photoSourceModeSignal.set(mode);
+        }),
+      selectFile: vi.fn(),
+      updateRemoteSourceUrl: vi
+        .fn()
+        .mockImplementation((value: string): void => {
+          photoRemoteSourceUrlSignal.set(value);
+        }),
+      previewRemoteSourceUrl: vi.fn(),
+      updateDescription: vi.fn().mockImplementation((value: string): void => {
         photoDescriptionSignal.set(value);
       }),
-      updateWithWatermark: jasmine.createSpy('updateWithWatermark').and.callFake((value: boolean): void => {
-        photoWithWatermarkSignal.set(value);
-      }),
-      updateSelectedCategorySlug: jasmine.createSpy('updateSelectedCategorySlug').and.callFake((value: string): void => {
-        photoSelectedCategorySlugSignal.set(value);
-      }),
-      toggleTag: jasmine.createSpy('toggleTag').and.callFake((tagId: string, checked: boolean): void => {
-        photoSelectedTagIdsSignal.set(checked ? [tagId] : []);
-      }),
-      updateIsPublished: jasmine.createSpy('updateIsPublished').and.callFake((value: boolean): void => {
+      updateWithWatermark: vi
+        .fn()
+        .mockImplementation((value: boolean): void => {
+          photoWithWatermarkSignal.set(value);
+        }),
+      updateSelectedCategorySlug: vi
+        .fn()
+        .mockImplementation((value: string): void => {
+          photoSelectedCategorySlugSignal.set(value);
+        }),
+      toggleTag: vi
+        .fn()
+        .mockImplementation((tagId: string, checked: boolean): void => {
+          photoSelectedTagIdsSignal.set(checked ? [tagId] : []);
+        }),
+      updateIsPublished: vi.fn().mockImplementation((value: boolean): void => {
         photoIsPublishedSignal.set(value);
       }),
-      updateSetAsCurrent: jasmine.createSpy('updateSetAsCurrent').and.callFake((value: boolean): void => {
+      updateSetAsCurrent: vi.fn().mockImplementation((value: boolean): void => {
         photoSetAsCurrentSignal.set(value);
       }),
-      uploadPhoto: jasmine.createSpy('uploadPhoto')
+      uploadPhoto: vi.fn(),
     };
     parkGraphUpsertFacade = {
       isCopying: isParkGraphUpsertCopyingSignal.asReadonly(),
@@ -360,17 +445,28 @@ describe('AdminContextualBlockDrawerComponent', () => {
       isImporting: isParkGraphUpsertImportingSignal.asReadonly(),
       errorKey: parkGraphUpsertErrorKeySignal.asReadonly(),
       successKey: parkGraphUpsertSuccessKeySignal.asReadonly(),
-      canUseDraft: jasmine.createSpy('canUseDraft').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
-        return Boolean(block?.capabilities.includes('parkGraphUpsertDraft') && block.parkGraphUpsertDraftJson?.trim());
-      }),
-      getDraft: jasmine.createSpy('getDraft').and.callFake((block: AdminContextualBlockInstance | null): string | null => {
-        const draft: string = block?.parkGraphUpsertDraftJson?.trim() ?? '';
-        return draft.length > 0 ? draft : null;
-      }),
-      resetForBlock: jasmine.createSpy('resetForBlock'),
-      copyDraft: jasmine.createSpy('copyDraft'),
-      downloadDraft: jasmine.createSpy('downloadDraft'),
-      importDraftFile: jasmine.createSpy('importDraftFile')
+      canUseDraft: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): boolean => {
+            return Boolean(
+              block?.capabilities.includes('parkGraphUpsertDraft') &&
+                block.parkGraphUpsertDraftJson?.trim(),
+            );
+          },
+        ),
+      getDraft: vi
+        .fn()
+        .mockImplementation(
+          (block: AdminContextualBlockInstance | null): string | null => {
+            const draft: string = block?.parkGraphUpsertDraftJson?.trim() ?? '';
+            return draft.length > 0 ? draft : null;
+          },
+        ),
+      resetForBlock: vi.fn(),
+      copyDraft: vi.fn(),
+      downloadDraft: vi.fn(),
+      importDraftFile: vi.fn(),
     };
 
     await TestBed.configureTestingModule({
@@ -381,33 +477,33 @@ describe('AdminContextualBlockDrawerComponent', () => {
         AdminContextualBlockSelectionFacade,
         {
           provide: AdminContextualBlockExportFacade,
-          useValue: exportFacade
+          useValue: exportFacade,
         },
         {
           provide: AdminContextualBlockPreviewFacade,
-          useValue: previewFacade
+          useValue: previewFacade,
         },
         {
           provide: AdminContextualBlockApplyFacade,
-          useValue: applyFacade
+          useValue: applyFacade,
         },
         {
           provide: AdminContextualBlockFormFacade,
-          useValue: formFacade
+          useValue: formFacade,
         },
         {
           provide: AdminContextualBlockChildAddFacade,
-          useValue: childAddFacade
+          useValue: childAddFacade,
         },
         {
           provide: AdminContextualBlockPhotoAddFacade,
-          useValue: photoAddFacade
+          useValue: photoAddFacade,
         },
         {
           provide: AdminContextualBlockParkGraphUpsertFacade,
-          useValue: parkGraphUpsertFacade
-        }
-      ]
+          useValue: parkGraphUpsertFacade,
+        },
+      ],
     }).compileComponents();
 
     const translateService: TranslateService = TestBed.inject(TranslateService);
@@ -478,7 +574,8 @@ describe('AdminContextualBlockDrawerComponent', () => {
             addChildSucceeded: 'Item cree.',
             openCreatedChild: 'Ouvrir l item',
             parkGraphUpsertTitle: 'Upsert constructeur',
-            parkGraphUpsertHint: 'Copie telecharge ou importe ce JSON constructeur.',
+            parkGraphUpsertHint:
+              'Copie telecharge ou importe ce JSON constructeur.',
             parkGraphUpsertDraftAriaLabel: 'Brouillon upsert constructeur',
             copyParkGraphUpsert: 'Copier le JSON',
             copyParkGraphUpsertBusy: 'Copie...',
@@ -534,7 +631,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
             previewCurrentValue: 'Actuel',
             previewProposedValue: 'Propose',
             previewJsonNoChanges: 'Aucun changement detecte',
-            emptyValue: 'Vide'
+            emptyValue: 'Vide',
           },
           capabilities: {
             fullAdminEdit: 'Edition admin complete disponible',
@@ -547,24 +644,24 @@ describe('AdminContextualBlockDrawerComponent', () => {
             targetedChildAdd: 'Ajout cible disponible',
             boundedJsonExportPlanned: 'Export JSON borne prevu',
             boundedJsonUpsertPlanned: 'Upsert JSON borne prevu',
-            formEditPlanned: 'Formulaire contextuel prevu'
+            formEditPlanned: 'Formulaire contextuel prevu',
           },
           blocks: {
             parkDescription: {
               label: 'Description du parc',
-              description: 'Description localisee'
+              description: 'Description localisee',
             },
             parkImages: {
               label: 'Photos du parc',
-              description: 'Galerie publique'
+              description: 'Galerie publique',
             },
             manufacturerReference: {
               label: 'Constructeur',
-              description: 'Brouillon upsert du constructeur'
-            }
-          }
-        }
-      }
+              description: 'Brouillon upsert du constructeur',
+            },
+          },
+        },
+      },
     });
     translateService.use('fr');
 
@@ -576,7 +673,11 @@ describe('AdminContextualBlockDrawerComponent', () => {
   it('stays absent until a block is selected', () => {
     fixture.detectChanges();
 
-    expect((fixture.nativeElement as HTMLElement).querySelector('.admin-contextual-block-drawer')).toBeNull();
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelector(
+        '.admin-contextual-block-drawer',
+      ),
+    ).toBeNull();
   });
 
   it('renders selected block diagnostics and bounded JSON actions without exposing submit forms', () => {
@@ -586,12 +687,24 @@ describe('AdminContextualBlockDrawerComponent', () => {
     fixture.detectChanges();
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const drawer: HTMLElement = host.querySelector('.admin-contextual-block-drawer') as HTMLElement;
-    const formSection: HTMLElement | null = host.querySelector('.admin-contextual-block-drawer__form');
-    const idsSection: HTMLElement | null = host.querySelector('.admin-contextual-block-drawer__ids');
-    const adminLink: HTMLAnchorElement | null = host.querySelector('.admin-contextual-block-drawer__footer .admin-contextual-block-drawer__action--primary');
-    const exportButton: HTMLButtonElement | null = host.querySelector('.admin-contextual-block-drawer__footer .admin-contextual-block-drawer__action--secondary');
-    const previewTextArea: HTMLTextAreaElement | null = host.querySelector('.admin-contextual-block-drawer__json-input');
+    const drawer: HTMLElement = host.querySelector(
+      '.admin-contextual-block-drawer',
+    ) as HTMLElement;
+    const formSection: HTMLElement | null = host.querySelector(
+      '.admin-contextual-block-drawer__form',
+    );
+    const idsSection: HTMLElement | null = host.querySelector(
+      '.admin-contextual-block-drawer__ids',
+    );
+    const adminLink: HTMLAnchorElement | null = host.querySelector(
+      '.admin-contextual-block-drawer__footer .admin-contextual-block-drawer__action--primary',
+    );
+    const exportButton: HTMLButtonElement | null = host.querySelector(
+      '.admin-contextual-block-drawer__footer .admin-contextual-block-drawer__action--secondary',
+    );
+    const previewTextArea: HTMLTextAreaElement | null = host.querySelector(
+      '.admin-contextual-block-drawer__json-input',
+    );
 
     expect(drawer.textContent).toContain('park.description');
     expect(drawer.textContent).toContain('park-1');
@@ -601,7 +714,13 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(drawer.textContent).toContain('Formulaire rapide');
     expect(formSection).not.toBeNull();
     expect(idsSection).not.toBeNull();
-    expect(Boolean((formSection as HTMLElement).compareDocumentPosition(idsSection as HTMLElement) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTrue();
+    expect(
+      Boolean(
+        (formSection as HTMLElement).compareDocumentPosition(
+          idsSection as HTMLElement,
+        ) & Node.DOCUMENT_POSITION_FOLLOWING,
+      ),
+    ).toBe(true);
     expect(exportButton?.textContent).toContain('Telecharger le JSON du bloc');
     expect(drawer.textContent).toContain('Appliquer');
     expect(adminLink?.textContent).toContain('Ouvrir edition admin complete');
@@ -617,11 +736,16 @@ describe('AdminContextualBlockDrawerComponent', () => {
     selectionFacade.selectBlock(block);
     fixture.detectChanges();
 
-    const exportButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement)
-      .querySelector('.admin-contextual-block-drawer__footer .admin-contextual-block-drawer__action--secondary') as HTMLButtonElement;
+    const exportButton: HTMLButtonElement = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector(
+      '.admin-contextual-block-drawer__footer .admin-contextual-block-drawer__action--secondary',
+    ) as HTMLButtonElement;
     exportButton.click();
 
-    expect(exportFacade.exportBlock).toHaveBeenCalledOnceWith(block);
+    expect(exportFacade.exportBlock).toHaveBeenCalledTimes(1);
+
+    expect(exportFacade.exportBlock).toHaveBeenCalledWith(block);
   });
 
   it('delegates bounded JSON previews without clearing the draft', () => {
@@ -631,18 +755,27 @@ describe('AdminContextualBlockDrawerComponent', () => {
     selectionFacade.selectBlock(block);
     fixture.detectChanges();
 
-    const textArea: HTMLTextAreaElement = (fixture.nativeElement as HTMLElement)
-      .querySelector('.admin-contextual-block-drawer__json-input') as HTMLTextAreaElement;
+    const textArea: HTMLTextAreaElement = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector(
+      '.admin-contextual-block-drawer__json-input',
+    ) as HTMLTextAreaElement;
     textArea.value = '{ "block": { "parkId": "park-1" } }';
     textArea.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    const previewButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement)
-      .querySelector('.admin-contextual-block-drawer__preview .admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
+    const previewButton: HTMLButtonElement = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector(
+      '.admin-contextual-block-drawer__preview .admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action--primary',
+    ) as HTMLButtonElement;
     previewButton.click();
 
-    expect(previewFacade.setJsonDraft).toHaveBeenCalledWith('{ "block": { "parkId": "park-1" } }');
-    expect(previewFacade.previewBlock).toHaveBeenCalledOnceWith(block);
+    expect(previewFacade.setJsonDraft).toHaveBeenCalledWith(
+      '{ "block": { "parkId": "park-1" } }',
+    );
+    expect(previewFacade.previewBlock).toHaveBeenCalledTimes(1);
+    expect(previewFacade.previewBlock).toHaveBeenCalledWith(block);
     expect(applyFacade.clearResult).toHaveBeenCalled();
     expect(previewFacade.clearDraft).not.toHaveBeenCalled();
   });
@@ -654,12 +787,17 @@ describe('AdminContextualBlockDrawerComponent', () => {
     selectionFacade.selectBlock(block);
     fixture.detectChanges();
 
-    const buttons: NodeListOf<HTMLButtonElement> = (fixture.nativeElement as HTMLElement)
-      .querySelectorAll('.admin-contextual-block-drawer__preview .admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action');
+    const buttons: NodeListOf<HTMLButtonElement> = (
+      fixture.nativeElement as HTMLElement
+    ).querySelectorAll(
+      '.admin-contextual-block-drawer__preview .admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action',
+    );
     const applyButton: HTMLButtonElement = buttons.item(1);
     applyButton.click();
 
-    expect(applyFacade.applyBlock).toHaveBeenCalledOnceWith(block);
+    expect(applyFacade.applyBlock).toHaveBeenCalledTimes(1);
+
+    expect(applyFacade.applyBlock).toHaveBeenCalledWith(block);
   });
 
   it('delegates contextual form edits to the form facade', () => {
@@ -669,18 +807,28 @@ describe('AdminContextualBlockDrawerComponent', () => {
     selectionFacade.selectBlock(block);
     fixture.detectChanges();
 
-    const textarea: HTMLTextAreaElement = (fixture.nativeElement as HTMLElement)
-      .querySelector('.admin-contextual-block-drawer__form-fields textarea') as HTMLTextAreaElement;
+    const textarea: HTMLTextAreaElement = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector(
+      '.admin-contextual-block-drawer__form-fields textarea',
+    ) as HTMLTextAreaElement;
     textarea.value = 'Updated description';
     textarea.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    const saveButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement)
-      .querySelector('.admin-contextual-block-drawer__form .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
+    const saveButton: HTMLButtonElement = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector(
+      '.admin-contextual-block-drawer__form .admin-contextual-block-drawer__action--primary',
+    ) as HTMLButtonElement;
     saveButton.click();
 
-    expect(formFacade.updateLocalizedValue).toHaveBeenCalledWith('en', 'Updated description');
-    expect(formFacade.saveForm).toHaveBeenCalledOnceWith(block);
+    expect(formFacade.updateLocalizedValue).toHaveBeenCalledWith(
+      'en',
+      'Updated description',
+    );
+    expect(formFacade.saveForm).toHaveBeenCalledTimes(1);
+    expect(formFacade.saveForm).toHaveBeenCalledWith(block);
   });
 
   it('renders the contextual location form and delegates map actions', () => {
@@ -690,13 +838,15 @@ describe('AdminContextualBlockDrawerComponent', () => {
       longitude: 2.35,
       mapCenter: [48.85, 2.35],
       mapZoom: 16,
-      mapMarkers: [{
-        id: 'contextual-location',
-        lat: 48.85,
-        lng: 2.35,
-        title: 'Phantasialand',
-        iconKind: 'park'
-      }]
+      mapMarkers: [
+        {
+          id: 'contextual-location',
+          lat: 48.85,
+          lng: 2.35,
+          title: 'Phantasialand',
+          iconKind: 'park',
+        },
+      ],
     });
     publicViewModeFacade.setViewMode('adminPreview');
     publicViewModeFacade.setEditionModeEnabled(true);
@@ -704,23 +854,37 @@ describe('AdminContextualBlockDrawerComponent', () => {
     fixture.detectChanges();
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const latitudeInput: HTMLInputElement = host.querySelector('input[aria-label="Latitude"]') as HTMLInputElement;
-    const longitudeInput: HTMLInputElement = host.querySelector('input[aria-label="Longitude"]') as HTMLInputElement;
+    const latitudeInput: HTMLInputElement = host.querySelector(
+      'input[aria-label="Latitude"]',
+    ) as HTMLInputElement;
+    const longitudeInput: HTMLInputElement = host.querySelector(
+      'input[aria-label="Longitude"]',
+    ) as HTMLInputElement;
     latitudeInput.value = '50.1';
     latitudeInput.dispatchEvent(new Event('input'));
     longitudeInput.value = '3.2';
     longitudeInput.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    const buttons: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-contextual-block-drawer__form .admin-contextual-block-drawer__action');
+    const buttons: NodeListOf<HTMLButtonElement> = host.querySelectorAll(
+      '.admin-contextual-block-drawer__form .admin-contextual-block-drawer__action',
+    );
     buttons.item(0).click();
     buttons.item(1).click();
 
     expect(host.querySelector('app-leaflet-map')).not.toBeNull();
-    expect(formFacade.updateLocationLatitude).toHaveBeenCalledWith('50.1', block);
-    expect(formFacade.updateLocationLongitude).toHaveBeenCalledWith('3.2', block);
-    expect(formFacade.saveForm).toHaveBeenCalledOnceWith(block);
-    expect(formFacade.clearLocation).toHaveBeenCalledOnceWith(block);
+    expect(formFacade.updateLocationLatitude).toHaveBeenCalledWith(
+      '50.1',
+      block,
+    );
+    expect(formFacade.updateLocationLongitude).toHaveBeenCalledWith(
+      '3.2',
+      block,
+    );
+    expect(formFacade.saveForm).toHaveBeenCalledTimes(1);
+    expect(formFacade.saveForm).toHaveBeenCalledWith(block);
+    expect(formFacade.clearLocation).toHaveBeenCalledTimes(1);
+    expect(formFacade.clearLocation).toHaveBeenCalledWith(block);
   });
 
   it('delegates targeted child creation to the child add facade', () => {
@@ -731,20 +895,27 @@ describe('AdminContextualBlockDrawerComponent', () => {
     fixture.detectChanges();
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const nameInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__child-add input') as HTMLInputElement;
-    const zoneSelect: HTMLSelectElement = host.querySelector('.admin-contextual-block-drawer__child-add select') as HTMLSelectElement;
+    const nameInput: HTMLInputElement = host.querySelector(
+      '.admin-contextual-block-drawer__child-add input',
+    ) as HTMLInputElement;
+    const zoneSelect: HTMLSelectElement = host.querySelector(
+      '.admin-contextual-block-drawer__child-add select',
+    ) as HTMLSelectElement;
     nameInput.value = 'New ride';
     nameInput.dispatchEvent(new Event('input'));
     zoneSelect.value = 'zone-1';
     zoneSelect.dispatchEvent(new Event('change'));
     fixture.detectChanges();
 
-    const createButton: HTMLButtonElement = host.querySelector('.admin-contextual-block-drawer__child-add .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
+    const createButton: HTMLButtonElement = host.querySelector(
+      '.admin-contextual-block-drawer__child-add .admin-contextual-block-drawer__action--primary',
+    ) as HTMLButtonElement;
     createButton.click();
 
     expect(childAddFacade.updateItemName).toHaveBeenCalledWith('New ride');
     expect(childAddFacade.updateSelectedZoneId).toHaveBeenCalledWith('zone-1');
-    expect(childAddFacade.createChild).toHaveBeenCalledOnceWith(block);
+    expect(childAddFacade.createChild).toHaveBeenCalledTimes(1);
+    expect(childAddFacade.createChild).toHaveBeenCalledWith(block);
   });
 
   it('renders contextual photo additions and delegates upload choices to the photo facade', () => {
@@ -755,45 +926,62 @@ describe('AdminContextualBlockDrawerComponent', () => {
     fixture.detectChanges();
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const sourceButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-contextual-block-drawer__segmented button');
+    const sourceButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll(
+      '.admin-contextual-block-drawer__segmented button',
+    );
     sourceButtons.item(1).click();
     fixture.detectChanges();
 
-    const remoteInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__photo-add input[type="url"]') as HTMLInputElement;
+    const remoteInput: HTMLInputElement = host.querySelector(
+      '.admin-contextual-block-drawer__photo-add input[type="url"]',
+    ) as HTMLInputElement;
     remoteInput.value = 'https://example.test/photo.jpg';
     remoteInput.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    const descriptionInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__photo-add input[type="text"]') as HTMLInputElement;
+    const descriptionInput: HTMLInputElement = host.querySelector(
+      '.admin-contextual-block-drawer__photo-add input[type="text"]',
+    ) as HTMLInputElement;
     descriptionInput.value = 'Night view';
     descriptionInput.dispatchEvent(new Event('input'));
 
-    const tagInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__tag-list input[type="checkbox"]') as HTMLInputElement;
+    const tagInput: HTMLInputElement = host.querySelector(
+      '.admin-contextual-block-drawer__tag-list input[type="checkbox"]',
+    ) as HTMLInputElement;
     tagInput.checked = true;
     tagInput.dispatchEvent(new Event('change'));
 
-    const toggles: NodeListOf<HTMLInputElement> = host.querySelectorAll('.admin-contextual-block-drawer__toggles input[type="checkbox"]');
+    const toggles: NodeListOf<HTMLInputElement> = host.querySelectorAll(
+      '.admin-contextual-block-drawer__toggles input[type="checkbox"]',
+    );
     toggles.item(0).checked = true;
     toggles.item(0).dispatchEvent(new Event('change'));
     toggles.item(2).checked = true;
     toggles.item(2).dispatchEvent(new Event('change'));
     fixture.detectChanges();
 
-    const previewButton: HTMLButtonElement = host.querySelector('.admin-contextual-block-drawer__photo-add .admin-contextual-block-drawer__action--secondary') as HTMLButtonElement;
-    const uploadButton: HTMLButtonElement = host.querySelector('.admin-contextual-block-drawer__photo-add .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
+    const previewButton: HTMLButtonElement = host.querySelector(
+      '.admin-contextual-block-drawer__photo-add .admin-contextual-block-drawer__action--secondary',
+    ) as HTMLButtonElement;
+    const uploadButton: HTMLButtonElement = host.querySelector(
+      '.admin-contextual-block-drawer__photo-add .admin-contextual-block-drawer__action--primary',
+    ) as HTMLButtonElement;
     previewButton.click();
     uploadButton.click();
 
     expect(host.textContent).toContain('Ajouter une photo');
     expect(host.textContent).toContain('1024 x 768 px');
     expect(photoAddFacade.setSourceMode).toHaveBeenCalledWith('remote');
-    expect(photoAddFacade.updateRemoteSourceUrl).toHaveBeenCalledWith('https://example.test/photo.jpg');
+    expect(photoAddFacade.updateRemoteSourceUrl).toHaveBeenCalledWith(
+      'https://example.test/photo.jpg',
+    );
     expect(photoAddFacade.updateDescription).toHaveBeenCalledWith('Night view');
     expect(photoAddFacade.updateWithWatermark).toHaveBeenCalledWith(true);
     expect(photoAddFacade.toggleTag).toHaveBeenCalledWith('tag-1', true);
     expect(photoAddFacade.updateSetAsCurrent).toHaveBeenCalledWith(true);
     expect(photoAddFacade.previewRemoteSourceUrl).toHaveBeenCalled();
-    expect(photoAddFacade.uploadPhoto).toHaveBeenCalledOnceWith(block);
+    expect(photoAddFacade.uploadPhoto).toHaveBeenCalledTimes(1);
+    expect(photoAddFacade.uploadPhoto).toHaveBeenCalledWith(block);
   });
 
   it('renders manufacturer JSON upsert draft actions', () => {
@@ -804,26 +992,42 @@ describe('AdminContextualBlockDrawerComponent', () => {
     fixture.detectChanges();
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
-    const textarea: HTMLTextAreaElement = host.querySelector('.admin-contextual-block-drawer__park-graph-upsert textarea') as HTMLTextAreaElement;
-    const actions: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-contextual-block-drawer__park-graph-upsert button');
-    const importInput: HTMLInputElement = host.querySelector('.admin-contextual-block-drawer__park-graph-upsert input[type="file"]') as HTMLInputElement;
-    const importFile: File = new File(['{ "documentType": "AmusementParkParkGraphUpsert" }'], 'manufacturer.json', { type: 'application/json' });
+    const textarea: HTMLTextAreaElement = host.querySelector(
+      '.admin-contextual-block-drawer__park-graph-upsert textarea',
+    ) as HTMLTextAreaElement;
+    const actions: NodeListOf<HTMLButtonElement> = host.querySelectorAll(
+      '.admin-contextual-block-drawer__park-graph-upsert button',
+    );
+    const importInput: HTMLInputElement = host.querySelector(
+      '.admin-contextual-block-drawer__park-graph-upsert input[type="file"]',
+    ) as HTMLInputElement;
+    const importFile: File = new File(
+      ['{ "documentType": "AmusementParkParkGraphUpsert" }'],
+      'manufacturer.json',
+      { type: 'application/json' },
+    );
 
     actions.item(0).click();
     actions.item(1).click();
     Object.defineProperty(importInput, 'files', {
       configurable: true,
-      value: [importFile]
+      value: [importFile],
     });
     importInput.dispatchEvent(new Event('change'));
 
     expect(host.textContent).toContain('Upsert constructeur');
     expect(textarea.value).toContain('AmusementParkParkGraphUpsert');
-    expect(parkGraphUpsertFacade.copyDraft).toHaveBeenCalledOnceWith(block);
-    expect(parkGraphUpsertFacade.downloadDraft).toHaveBeenCalledOnceWith(block);
+    expect(parkGraphUpsertFacade.copyDraft).toHaveBeenCalledTimes(1);
+    expect(parkGraphUpsertFacade.copyDraft).toHaveBeenCalledWith(block);
+    expect(parkGraphUpsertFacade.downloadDraft).toHaveBeenCalledTimes(1);
+    expect(parkGraphUpsertFacade.downloadDraft).toHaveBeenCalledWith(block);
     expect(host.textContent).toContain('Importer un JSON');
     expect(importInput.accept).toContain('.json');
-    expect(parkGraphUpsertFacade.importDraftFile).toHaveBeenCalledOnceWith(block, importFile);
+    expect(parkGraphUpsertFacade.importDraftFile).toHaveBeenCalledTimes(1);
+    expect(parkGraphUpsertFacade.importDraftFile).toHaveBeenCalledWith(
+      block,
+      importFile,
+    );
   });
 
   it('clears the selected block from the close action', () => {
@@ -832,13 +1036,20 @@ describe('AdminContextualBlockDrawerComponent', () => {
     selectionFacade.selectBlock(createBlock());
     fixture.detectChanges();
 
-    const closeButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement)
-      .querySelector('.admin-contextual-block-drawer__close') as HTMLButtonElement;
+    const closeButton: HTMLButtonElement = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector(
+      '.admin-contextual-block-drawer__close',
+    ) as HTMLButtonElement;
     closeButton.click();
     fixture.detectChanges();
 
     expect(selectionFacade.selectedBlock()).toBeNull();
-    expect((fixture.nativeElement as HTMLElement).querySelector('.admin-contextual-block-drawer')).toBeNull();
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelector(
+        '.admin-contextual-block-drawer',
+      ),
+    ).toBeNull();
   });
 });
 
@@ -853,11 +1064,17 @@ function createBlock(): AdminContextualBlockInstance {
     labelKey: 'admin.contextualBlocks.blocks.parkDescription.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkDescription.description',
     iconClass: 'pi pi-align-left',
-    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    capabilities: [
+      'fullAdminEdit',
+      'boundedJsonExport',
+      'boundedJsonPreview',
+      'boundedJsonApply',
+      'contextualFormEdit',
+    ],
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }
 
@@ -870,15 +1087,17 @@ function createManufacturerBlock(): AdminContextualBlockInstance {
     contextLabel: 'Mack Rides',
     ids: { manufacturerId: 'manufacturer-1' },
     labelKey: 'admin.contextualBlocks.blocks.manufacturerReference.label',
-    descriptionKey: 'admin.contextualBlocks.blocks.manufacturerReference.description',
+    descriptionKey:
+      'admin.contextualBlocks.blocks.manufacturerReference.description',
     iconClass: 'pi pi-wrench',
     capabilities: ['fullAdminEdit', 'parkGraphUpsertDraft'],
     jsonScope: ['references.manufacturers[*].name'],
     localizedLanguageCodes: ['fr', 'en'],
     locationFallbackCenter: null,
     adminRoute: ['/', 'fr', 'admin', 'manufacturers', 'edit', 'manufacturer-1'],
-    parkGraphUpsertDraftJson: '{ "documentType": "AmusementParkParkGraphUpsert" }',
-    parkGraphUpsertFileName: 'manufacturer-1-manufacturer-upsert.json'
+    parkGraphUpsertDraftJson:
+      '{ "documentType": "AmusementParkParkGraphUpsert" }',
+    parkGraphUpsertFileName: 'manufacturer-1-manufacturer-upsert.json',
   };
 }
 
@@ -893,11 +1112,17 @@ function createLocationBlock(): AdminContextualBlockInstance {
     labelKey: 'admin.contextualBlocks.blocks.parkLocation.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkLocation.description',
     iconClass: 'pi pi-map-marker',
-    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    capabilities: [
+      'fullAdminEdit',
+      'boundedJsonExport',
+      'boundedJsonPreview',
+      'boundedJsonApply',
+      'contextualFormEdit',
+    ],
     jsonScope: ['park.id', 'park.latitude', 'park.longitude'],
     localizedLanguageCodes: [],
     locationFallbackCenter: [48.85, 2.35],
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }
 
@@ -916,7 +1141,7 @@ function createPhotoBlock(): AdminContextualBlockInstance {
     jsonScope: ['park.id', 'image.file', 'image.sourceUrl'],
     localizedLanguageCodes: [],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }
 
@@ -935,6 +1160,6 @@ function createHeroBlock(): AdminContextualBlockInstance {
     jsonScope: ['park.id'],
     localizedLanguageCodes: [],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }

@@ -12,7 +12,9 @@ describe('SocialShare API services', () => {
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: provideCommonTestDependencies() });
+    TestBed.configureTestingModule({
+      providers: provideCommonTestDependencies(),
+    });
     eventsApiService = TestBed.inject(SocialShareEventsApiService);
     statsApiService = TestBed.inject(AdminSocialShareStatsApiService);
     httpTestingController = TestBed.inject(HttpTestingController);
@@ -29,28 +31,35 @@ describe('SocialShare API services', () => {
       targetTitle: 'Test Park',
       url: 'https://example.test/fr/park/park-1/test-park',
       languageCode: 'fr',
-      channel: 'Copy' as const
+      channel: 'Copy' as const,
     };
 
     eventsApiService.captureEvent(body).subscribe((response) => {
-      expect(response.accepted).toBeTrue();
+      expect(response.accepted).toBe(true);
     });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}social-share/events`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}social-share/events`,
+    );
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual(body);
     request.flush({ accepted: true, occurredAtUtc: '2026-06-17T10:00:00Z' });
   });
 
   it('loads admin social share stats with optional UTC bounds', () => {
-    statsApiService.getStats({
-      fromUtc: '2026-06-01T00:00:00Z',
-      toUtc: '2026-06-17T23:59:59Z'
-    }).subscribe((response) => {
-      expect(response.totalEvents).toBe(3);
-    });
+    statsApiService
+      .getStats({
+        fromUtc: '2026-06-01T00:00:00Z',
+        toUtc: '2026-06-17T23:59:59Z',
+      })
+      .subscribe((response) => {
+        expect(response.totalEvents).toBe(3);
+      });
 
-    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}admin/social-share/stats`);
+    const request = httpTestingController.expectOne(
+      (candidate) =>
+        candidate.url === `${environment.apiBaseUrl}admin/social-share/stats`,
+    );
     expect(request.request.method).toBe('GET');
     expect(request.request.params.get('fromUtc')).toBe('2026-06-01T00:00:00Z');
     expect(request.request.params.get('toUtc')).toBe('2026-06-17T23:59:59Z');
@@ -64,7 +73,7 @@ describe('SocialShare API services', () => {
       channels: [],
       targetTypes: [],
       visitorKinds: [],
-      topTargets: []
+      topTargets: [],
     });
   });
 });

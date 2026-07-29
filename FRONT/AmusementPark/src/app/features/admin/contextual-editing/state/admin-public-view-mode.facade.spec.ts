@@ -7,7 +7,7 @@ describe('AdminPublicViewModeFacade', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AdminPublicViewModeFacade]
+      providers: [AdminPublicViewModeFacade],
     });
 
     facade = TestBed.inject(AdminPublicViewModeFacade);
@@ -15,20 +15,20 @@ describe('AdminPublicViewModeFacade', () => {
 
   it('starts in anonymous visitor mode with edition disabled', () => {
     expect(facade.viewMode()).toBe('anonymousVisitor');
-    expect(facade.editionModeEnabled()).toBeFalse();
-    expect(facade.canEdit()).toBeFalse();
+    expect(facade.editionModeEnabled()).toBe(false);
+    expect(facade.canEdit()).toBe(false);
   });
 
   it('allows edition only in admin preview mode', () => {
     facade.setEditionModeEnabled(true);
 
-    expect(facade.editionModeEnabled()).toBeFalse();
+    expect(facade.editionModeEnabled()).toBe(false);
 
     facade.setViewMode('adminPreview');
     facade.setEditionModeEnabled(true);
 
-    expect(facade.canEdit()).toBeTrue();
-    expect(facade.editionModeEnabled()).toBeTrue();
+    expect(facade.canEdit()).toBe(true);
+    expect(facade.editionModeEnabled()).toBe(true);
   });
 
   it('disables edition when switching back to a visitor view', () => {
@@ -38,8 +38,8 @@ describe('AdminPublicViewModeFacade', () => {
     facade.setViewMode('userVisitor');
 
     expect(facade.viewMode()).toBe('userVisitor');
-    expect(facade.canEdit()).toBeFalse();
-    expect(facade.editionModeEnabled()).toBeFalse();
+    expect(facade.canEdit()).toBe(false);
+    expect(facade.editionModeEnabled()).toBe(false);
   });
 
   it('resets view and edition state together', () => {
@@ -49,6 +49,6 @@ describe('AdminPublicViewModeFacade', () => {
     facade.reset();
 
     expect(facade.viewMode()).toBe('anonymousVisitor');
-    expect(facade.editionModeEnabled()).toBeFalse();
+    expect(facade.editionModeEnabled()).toBe(false);
   });
 });

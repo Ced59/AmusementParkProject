@@ -1,4 +1,8 @@
-import { isSupportedLanguage, resolveSupportedLanguage, resolveSupportedLanguageFromUrl } from './localized-route.helpers';
+import {
+  isSupportedLanguage,
+  resolveSupportedLanguage,
+  resolveSupportedLanguageFromUrl,
+} from './localized-route.helpers';
 
 describe('localized-route helpers', () => {
   it('resolves supported languages after trimming and lowercasing', () => {
@@ -22,9 +26,9 @@ describe('localized-route helpers', () => {
   });
 
   it('checks supported language codes strictly after normalization', () => {
-    expect(isSupportedLanguage('es')).toBeTrue();
-    expect(isSupportedLanguage(' es ')).toBeTrue();
-    expect(isSupportedLanguage('es-ES')).toBeFalse();
-    expect(isSupportedLanguage(null)).toBeFalse();
+    expect(isSupportedLanguage('es')).toBe(true);
+    expect(isSupportedLanguage(' es ')).toBe(true);
+    expect(isSupportedLanguage('es-ES')).toBe(false);
+    expect(isSupportedLanguage(null)).toBe(false);
   });
 });

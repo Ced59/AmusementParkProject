@@ -1,31 +1,51 @@
+import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 
-import { TechnicalStatsSettings, TechnicalStatsSnapshot } from '@app/models/admin/technical-stats/technical-stats.models';
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
-import { ADMIN_TECHNICAL_STATS_DATA_PORT, AdminTechnicalStatsDataPort } from '../../state/admin-technical-stats-state-data.ports';
+import {
+  TechnicalStatsSettings,
+  TechnicalStatsSnapshot,
+} from '@app/models/admin/technical-stats/technical-stats.models';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
+import {
+  ADMIN_TECHNICAL_STATS_DATA_PORT,
+  AdminTechnicalStatsDataPort,
+} from '../../state/admin-technical-stats-state-data.ports';
 import { AdminTechnicalStatsComponent } from './admin-technical-stats.component';
 
 describe('AdminTechnicalStatsComponent', () => {
-  let port: jasmine.SpyObj<AdminTechnicalStatsDataPort>;
+  let port: MockedObject<AdminTechnicalStatsDataPort>;
 
   beforeEach(async () => {
-    port = jasmine.createSpyObj<AdminTechnicalStatsDataPort>('AdminTechnicalStatsDataPort', ['getStats', 'updateSettings']);
-    port.getStats.and.returnValue(of(createStats(30)));
-    port.updateSettings.and.returnValue(of({ persistenceRetentionDays: 15 }) as Observable<TechnicalStatsSettings>);
+    port = {
+      getStats: vi.fn().mockName('AdminTechnicalStatsDataPort.getStats'),
+      updateSettings: vi
+        .fn()
+        .mockName('AdminTechnicalStatsDataPort.updateSettings'),
+    } as unknown as MockedObject<AdminTechnicalStatsDataPort>;
+    port.getStats.mockReturnValue(of(createStats(30)));
+    port.updateSettings.mockReturnValue(
+      of({
+        persistenceRetentionDays: 15,
+      }) as Observable<TechnicalStatsSettings>,
+    );
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, AdminTechnicalStatsComponent],
       providers: [
         ...provideCommonTestDependencies(),
-        { provide: ADMIN_TECHNICAL_STATS_DATA_PORT, useValue: port }
-      ]
+        { provide: ADMIN_TECHNICAL_STATS_DATA_PORT, useValue: port },
+      ],
     }).compileComponents();
   });
 
   it('caps distribution rows rendered from large technical stats snapshots', () => {
-    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> =
+      TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
     const cacheTab = fixture.debugElement
@@ -35,21 +55,37 @@ describe('AdminTechnicalStatsComponent', () => {
     fixture.detectChanges();
 
     const statusRows = fixture.debugElement
-      .queryAll(By.css('.admin-technical-stats-panel--wide .admin-technical-stats-row'))
-      .filter((row) => !row.nativeElement.classList.contains('admin-technical-stats-row--robot'));
-    const robotRows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-row--robot'));
+      .queryAll(
+        By.css('.admin-technical-stats-panel--wide .admin-technical-stats-row'),
+      )
+      .filter(
+        (row) =>
+          !row.nativeElement.classList.contains(
+            'admin-technical-stats-row--robot',
+          ),
+      );
+    const robotRows = fixture.debugElement.queryAll(
+      By.css('.admin-technical-stats-row--robot'),
+    );
 
     expect(statusRows.length).toBe(12);
     expect(robotRows.length).toBe(12);
   });
 
   it('renders only the summary tab by default', () => {
-    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> =
+      TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
-    const kpis = fixture.debugElement.queryAll(By.css('.admin-technical-stats-kpi'));
-    const statusRows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-row'));
-    const seoRows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-robot-table__row'));
+    const kpis = fixture.debugElement.queryAll(
+      By.css('.admin-technical-stats-kpi'),
+    );
+    const statusRows = fixture.debugElement.queryAll(
+      By.css('.admin-technical-stats-row'),
+    );
+    const seoRows = fixture.debugElement.queryAll(
+      By.css('.admin-technical-stats-robot-table__row'),
+    );
 
     expect(kpis.length).toBe(4);
     expect(statusRows.length).toBe(0);
@@ -57,21 +93,29 @@ describe('AdminTechnicalStatsComponent', () => {
   });
 
   it('exposes help text on help buttons for the custom tooltip', () => {
-    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> =
+      TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
-    const helpButton = fixture.debugElement.query(By.css('.admin-technical-stats-help'));
+    const helpButton = fixture.debugElement.query(
+      By.css('.admin-technical-stats-help'),
+    );
 
-    expect(helpButton.attributes['aria-label']).toContain('Share of HTML pages');
+    expect(helpButton.attributes['aria-label']).toContain(
+      'Share of HTML pages',
+    );
   });
 
   it('filters SEO robot stats by robot family category', () => {
-    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> =
+      TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
     const seoTab = fixture.debugElement
       .queryAll(By.css('.admin-technical-stats-tab'))
-      .find((button) => button.nativeElement.textContent.includes('SEO robots'));
+      .find((button) =>
+        button.nativeElement.textContent.includes('SEO robots'),
+      );
     seoTab?.nativeElement.click();
     fixture.detectChanges();
 
@@ -81,25 +125,36 @@ describe('AdminTechnicalStatsComponent', () => {
     bingFilter?.nativeElement.click();
     fixture.detectChanges();
 
-    const rows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-robot-table__row'));
+    const rows = fixture.debugElement.queryAll(
+      By.css('.admin-technical-stats-robot-table__row'),
+    );
 
     expect(rows.length).toBe(1);
     expect(rows[0].nativeElement.textContent).toContain('Bingbot');
   });
 
   it('exposes labels on SEO robot cells for compact layouts', () => {
-    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> =
+      TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
     const seoTab = fixture.debugElement
       .queryAll(By.css('.admin-technical-stats-tab'))
-      .find((button) => button.nativeElement.textContent.includes('SEO robots'));
+      .find((button) =>
+        button.nativeElement.textContent.includes('SEO robots'),
+      );
     seoTab?.nativeElement.click();
     fixture.detectChanges();
 
-    const row = fixture.debugElement.query(By.css('.admin-technical-stats-robot-table__row'));
-    const cells: Element[] = Array.from(row.nativeElement.children as HTMLCollectionOf<Element>);
-    const labels: Array<string | null> = cells.map((cell: Element): string | null => cell.getAttribute('data-label'));
+    const row = fixture.debugElement.query(
+      By.css('.admin-technical-stats-robot-table__row'),
+    );
+    const cells: Element[] = Array.from(
+      row.nativeElement.children as HTMLCollectionOf<Element>,
+    );
+    const labels: Array<string | null> = cells.map(
+      (cell: Element): string | null => cell.getAttribute('data-label'),
+    );
 
     expect(labels).toEqual([
       'Robot',
@@ -109,36 +164,48 @@ describe('AdminTechnicalStatsComponent', () => {
       'SEO-ready',
       'No-JS',
       'Blocked',
-      '503'
+      '503',
     ]);
   });
 
   it('caps SEO robot rows rendered from large technical stats snapshots', () => {
-    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> =
+      TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
     const seoTab = fixture.debugElement
       .queryAll(By.css('.admin-technical-stats-tab'))
-      .find((button) => button.nativeElement.textContent.includes('SEO robots'));
+      .find((button) =>
+        button.nativeElement.textContent.includes('SEO robots'),
+      );
     seoTab?.nativeElement.click();
     fixture.detectChanges();
 
-    const rows = fixture.debugElement.queryAll(By.css('.admin-technical-stats-robot-table__row'));
+    const rows = fixture.debugElement.queryAll(
+      By.css('.admin-technical-stats-robot-table__row'),
+    );
 
     expect(rows.length).toBe(12);
   });
 
   it('shows every retained daily bucket when the all-days range is selected', () => {
-    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> =
+      TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
     const trendsTab = fixture.debugElement
       .queryAll(By.css('.admin-technical-stats-tab'))
-      .find((button) => button.nativeElement.textContent.includes('Daily trends'));
+      .find((button) =>
+        button.nativeElement.textContent.includes('Daily trends'),
+      );
     trendsTab?.nativeElement.click();
     fixture.detectChanges();
 
-    expect(fixture.debugElement.queryAll(By.css('.admin-technical-stats-day-chart__row')).length).toBe(15);
+    expect(
+      fixture.debugElement.queryAll(
+        By.css('.admin-technical-stats-day-chart__row'),
+      ).length,
+    ).toBe(15);
 
     const allDays = fixture.debugElement
       .queryAll(By.css('.admin-technical-stats-range button'))
@@ -146,22 +213,31 @@ describe('AdminTechnicalStatsComponent', () => {
     allDays?.nativeElement.click();
     fixture.detectChanges();
 
-    expect(fixture.debugElement.queryAll(By.css('.admin-technical-stats-day-chart__row')).length).toBe(100);
+    expect(
+      fixture.debugElement.queryAll(
+        By.css('.admin-technical-stats-day-chart__row'),
+      ).length,
+    ).toBe(100);
   });
 
   it('distinguishes aggregate cache-only misses from per-agent SSR unavailability', () => {
-    const fixture: ComponentFixture<AdminTechnicalStatsComponent> = TestBed.createComponent(AdminTechnicalStatsComponent);
+    const fixture: ComponentFixture<AdminTechnicalStatsComponent> =
+      TestBed.createComponent(AdminTechnicalStatsComponent);
     fixture.detectChanges();
 
     const trendsTab = fixture.debugElement
       .queryAll(By.css('.admin-technical-stats-tab'))
-      .find((button) => button.nativeElement.textContent.includes('Daily trends'));
+      .find((button) =>
+        button.nativeElement.textContent.includes('Daily trends'),
+      );
     trendsTab?.nativeElement.click();
     fixture.detectChanges();
 
     expect(fixture.nativeElement.textContent).toContain('Cache-only 503s');
 
-    const agentSelect: HTMLSelectElement = fixture.debugElement.query(By.css('.admin-technical-stats-agent-head select')).nativeElement;
+    const agentSelect: HTMLSelectElement = fixture.debugElement.query(
+      By.css('.admin-technical-stats-agent-head select'),
+    ).nativeElement;
     agentSelect.value = 'Googlebot';
     agentSelect.dispatchEvent(new Event('change'));
     fixture.detectChanges();
@@ -192,20 +268,22 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       robotSeoReadyRatePercent: 100,
       robotCacheOnlyMissResponses: 0,
       queueFullRejections: 0,
-      robotFamilies: [{
-        key: 'Googlebot',
-        category: 'google',
-        count: 40,
-        cacheHits: 30,
-        hitRatePercent: 75,
-        seoReadyResponses: 40,
-        seoNotReadyResponses: 0,
-        seoReadyRatePercent: 100,
-        noJsResponses: 40,
-        blockedNotSeoReadyResponses: 0,
-        htmlNotAllowedResponses: 0,
-        ssrUnavailableResponses: 0
-      }]
+      robotFamilies: [
+        {
+          key: 'Googlebot',
+          category: 'google',
+          count: 40,
+          cacheHits: 30,
+          hitRatePercent: 75,
+          seoReadyResponses: 40,
+          seoNotReadyResponses: 0,
+          seoReadyRatePercent: 100,
+          noJsResponses: 40,
+          blockedNotSeoReadyResponses: 0,
+          htmlNotAllowedResponses: 0,
+          ssrUnavailableResponses: 0,
+        },
+      ],
     })),
     cache: {
       pageResponses: 1000,
@@ -218,7 +296,7 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       statuses: Array.from({ length: rowCount }, (_, index: number) => ({
         key: `STATUS-${index}`,
         count: rowCount - index,
-        percent: 10
+        percent: 10,
       })),
       robotFamilies: Array.from({ length: rowCount }, (_, index: number) => ({
         key: index === 0 ? 'Bingbot' : `Robot-${index}`,
@@ -232,8 +310,8 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
         noJsResponses: rowCount - index,
         blockedNotSeoReadyResponses: 0,
         htmlNotAllowedResponses: 0,
-        ssrUnavailableResponses: 0
-      }))
+        ssrUnavailableResponses: 0,
+      })),
     },
     storage: {
       memoryEntries: 10,
@@ -251,7 +329,7 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       seoDocumentRequests: 6,
       seoDocumentHits: 4,
       seoDocumentMisses: 2,
-      assetMisses: 1
+      assetMisses: 1,
     },
     seo: {
       robotNoJsHtmlEnabled: true,
@@ -275,7 +353,7 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       seoDocumentHits: 4,
       seoDocumentMisses: 2,
       seoDocumentHitRatePercent: 66.7,
-      queueFullRejections: 0
+      queueFullRejections: 0,
     },
     rendering: {
       ssrRenderEnabled: true,
@@ -290,7 +368,7 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       maxRenderMilliseconds: 500,
       slowRenders: 1,
       slowRenderThresholdMilliseconds: 3000,
-      queueFullRejections: 0
+      queueFullRejections: 0,
     },
     refresh: {
       enabled: true,
@@ -303,7 +381,7 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       maxUrls: 24,
       concurrency: 1,
       delayMilliseconds: 1500,
-      timeoutSeconds: 45
+      timeoutSeconds: 45,
     },
     invalidation: {
       requests: 0,
@@ -312,7 +390,7 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       clearedEntries: 0,
       staleEntries: 0,
       queuedRefreshes: 0,
-      lastInvalidationUtc: null
+      lastInvalidationUtc: null,
     },
     config: {
       pageCacheTtlSeconds: 86400,
@@ -325,7 +403,7 @@ function createStats(rowCount: number): TechnicalStatsSnapshot {
       technicalStatsPersistenceRetentionDays: 15,
       technicalStatsPersistenceFlushIntervalSeconds: 60,
       technicalStatsPersistenceLastFlushUtc: null,
-      technicalStatsPersistenceLastCleanupUtc: null
-    }
+      technicalStatsPersistenceLastCleanupUtc: null,
+    },
   };
 }

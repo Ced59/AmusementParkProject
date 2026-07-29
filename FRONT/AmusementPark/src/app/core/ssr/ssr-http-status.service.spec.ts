@@ -1,3 +1,4 @@
+import type { MockedObject } from 'vitest';
 import { SsrResponseLike } from './ssr-response.token';
 import { SsrHttpStatusService } from './ssr-http-status.service';
 
@@ -9,7 +10,9 @@ describe('SsrHttpStatusService', () => {
   });
 
   it('sets an arbitrary status on the SSR response', () => {
-    const response: jasmine.SpyObj<SsrResponseLike> = jasmine.createSpyObj<SsrResponseLike>('SsrResponseLike', ['status']);
+    const response: MockedObject<SsrResponseLike> = {
+      status: vi.fn().mockName('SsrResponseLike.status'),
+    } as unknown as MockedObject<SsrResponseLike>;
     const service: SsrHttpStatusService = new SsrHttpStatusService(response);
 
     service.setStatus(503);
@@ -18,7 +21,9 @@ describe('SsrHttpStatusService', () => {
   });
 
   it('sets the not found status through the dedicated helper', () => {
-    const response: jasmine.SpyObj<SsrResponseLike> = jasmine.createSpyObj<SsrResponseLike>('SsrResponseLike', ['status']);
+    const response: MockedObject<SsrResponseLike> = {
+      status: vi.fn().mockName('SsrResponseLike.status'),
+    } as unknown as MockedObject<SsrResponseLike>;
     const service: SsrHttpStatusService = new SsrHttpStatusService(response);
 
     service.setNotFound();

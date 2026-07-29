@@ -1,32 +1,53 @@
 import { TestBed } from '@angular/core/testing';
 import { Observable, of, throwError } from 'rxjs';
 
-import { HistoryArticle, HistoryTimeline } from '@app/models/history/history.models';
+import {
+  HistoryArticle,
+  HistoryTimeline,
+} from '@app/models/history/history.models';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { HISTORY_DATA_PORT, HistoryDataPort } from './history-data.ports';
 import { HistoryTimelineStateFacade } from './history-timeline-state.facade';
 
 class FakeHistoryDataPort implements HistoryDataPort {
-  public parkTimelineResponses$: Observable<HistoryTimeline>[] = [of(createTimeline())];
-  public readonly parkTimelineCalls: { parkId: string; includeParkItems?: boolean; parkItemIds?: readonly string[]; page?: number }[] = [];
+  public parkTimelineResponses$: Observable<HistoryTimeline>[] = [
+    of(createTimeline()),
+  ];
+  public readonly parkTimelineCalls: {
+    parkId: string;
+    includeParkItems?: boolean;
+    parkItemIds?: readonly string[];
+    page?: number;
+  }[] = [];
 
   getParkTimeline(
     parkId: string,
     includeParkItems?: boolean,
     parkItemIds?: readonly string[],
     _options?: AnonymousHttpOptions,
-    page?: number
+    page?: number,
   ): Observable<HistoryTimeline> {
-    this.parkTimelineCalls.push({ parkId, includeParkItems, parkItemIds, page });
+    this.parkTimelineCalls.push({
+      parkId,
+      includeParkItems,
+      parkItemIds,
+      page,
+    });
     return this.parkTimelineResponses$.shift() ?? of(createTimeline());
   }
 
-  getParkItemTimeline(_parkItemId: string, _options?: AnonymousHttpOptions): Observable<HistoryTimeline> {
+  getParkItemTimeline(
+    _parkItemId: string,
+    _options?: AnonymousHttpOptions,
+  ): Observable<HistoryTimeline> {
     return of(createTimeline('ParkItem'));
   }
 
-  getArticle(_eventId: string, _options?: AnonymousHttpOptions): Observable<HistoryArticle> {
+  getArticle(
+    _eventId: string,
+    _options?: AnonymousHttpOptions,
+  ): Observable<HistoryArticle> {
     throw new Error('Not implemented in this spec');
   }
 }
@@ -44,57 +65,64 @@ class FakeSsrHttpStatusService {
   }
 }
 
-function createTimeline(entityType: 'Park' | 'ParkItem' = 'Park'): HistoryTimeline {
+function createTimeline(
+  entityType: 'Park' | 'ParkItem' = 'Park',
+): HistoryTimeline {
   return {
     entityType,
-    park: entityType === 'Park' ? {
-      id: 'park-1',
-      name: 'Mirapolis',
-      countryCode: 'FR',
-      latitude: 49.054,
-      longitude: 2.0,
-      isVisible: true
-    } : null,
+    park:
+      entityType === 'Park'
+        ? {
+            id: 'park-1',
+            name: 'Mirapolis',
+            countryCode: 'FR',
+            latitude: 49.054,
+            longitude: 2.0,
+            isVisible: true,
+          }
+        : null,
     parkItem: null,
     includedParkItems: [],
-    events: [{
-      event: {
-        id: 'auto-event-1',
-        key: 'auto-event-1',
-        entityType,
-        ownerId: entityType === 'Park' ? 'park-1' : 'item-1',
-        parkId: 'park-1',
-        parkItemId: entityType === 'ParkItem' ? 'item-1' : null,
-        contextParkId: 'park-1',
-        year: 1988,
-        month: null,
-        day: null,
-        datePrecision: 'Year',
-        eventType: 'Opening',
-        isMajor: false,
-        isVisible: true,
-        slug: null,
-        titles: [],
-        summaries: [],
-        mainImageId: null,
-        previousName: null,
-        newName: null,
-        previousLogoImageId: null,
-        newLogoImageId: null,
-        previousOperatorId: null,
-        newOperatorId: null,
-        locationLabel: null,
-        relatedParkIds: [],
-        relatedParkItemIds: [],
-        sources: [],
-        article: null,
-        createdAtUtc: '2026-01-01T00:00:00Z',
-        updatedAtUtc: '2026-01-01T00:00:00Z'
+    events: [
+      {
+        event: {
+          id: 'auto-event-1',
+          key: 'auto-event-1',
+          entityType,
+          ownerId: entityType === 'Park' ? 'park-1' : 'item-1',
+          parkId: 'park-1',
+          parkItemId: entityType === 'ParkItem' ? 'item-1' : null,
+          contextParkId: 'park-1',
+          year: 1988,
+          month: null,
+          day: null,
+          datePrecision: 'Year',
+          eventType: 'Opening',
+          isMajor: false,
+          isVisible: true,
+          slug: null,
+          titles: [],
+          summaries: [],
+          mainImageId: null,
+          previousName: null,
+          newName: null,
+          previousLogoImageId: null,
+          newLogoImageId: null,
+          previousOperatorId: null,
+          newOperatorId: null,
+          locationLabel: null,
+          relatedParkIds: [],
+          relatedParkItemIds: [],
+          sources: [],
+          article: null,
+          createdAtUtc: '2026-01-01T00:00:00Z',
+          updatedAtUtc: '2026-01-01T00:00:00Z',
+        },
+        contextPark: null,
+        parkItem: null,
+        mainImage: null,
       },
-      contextPark: null,
-      parkItem: null,
-      mainImage: null
-    }]
+    ],
   };
 }
 
@@ -104,20 +132,21 @@ function configureFacade(): {
   ssrStatusService: FakeSsrHttpStatusService;
 } {
   const historyDataPort: FakeHistoryDataPort = new FakeHistoryDataPort();
-  const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
+  const ssrStatusService: FakeSsrHttpStatusService =
+    new FakeSsrHttpStatusService();
 
   TestBed.configureTestingModule({
     providers: [
       HistoryTimelineStateFacade,
       { provide: HISTORY_DATA_PORT, useValue: historyDataPort },
-      { provide: SsrHttpStatusService, useValue: ssrStatusService }
-    ]
+      { provide: SsrHttpStatusService, useValue: ssrStatusService },
+    ],
   });
 
   return {
     facade: TestBed.inject(HistoryTimelineStateFacade),
     historyDataPort,
-    ssrStatusService
+    ssrStatusService,
   };
 }
 
@@ -130,24 +159,24 @@ describe('HistoryTimelineStateFacade', () => {
     const context = configureFacade();
     context.historyDataPort.parkTimelineResponses$ = [
       throwError(() => ({ status: 404 })),
-      of(createTimeline())
+      of(createTimeline()),
     ];
 
     context.facade.loadParkTimeline('park-1', false);
 
     expect(context.historyDataPort.parkTimelineCalls).toEqual([
       { parkId: 'park-1', includeParkItems: false, parkItemIds: [], page: 1 },
-      { parkId: 'park-1', includeParkItems: true, parkItemIds: [], page: 1 }
+      { parkId: 'park-1', includeParkItems: true, parkItemIds: [], page: 1 },
     ]);
     expect(context.facade.state().kind).toBe('ready');
-    expect(context.facade.includeParkItems()).toBeTrue();
+    expect(context.facade.includeParkItems()).toBe(true);
     expect(context.ssrStatusService.notFoundCallCount).toBe(0);
   });
 
   it('sets SSR unavailable when the timeline lookup fails transiently', () => {
     const context = configureFacade();
     context.historyDataPort.parkTimelineResponses$ = [
-      throwError(() => ({ status: 503 }))
+      throwError(() => ({ status: 503 })),
     ];
 
     context.facade.loadParkTimeline('park-1', false);
@@ -162,7 +191,7 @@ describe('HistoryTimelineStateFacade', () => {
     const previousTimeline: HistoryTimeline = createTimeline();
     context.historyDataPort.parkTimelineResponses$ = [
       of(previousTimeline),
-      throwError(() => ({ status: 503 }))
+      throwError(() => ({ status: 503 })),
     ];
 
     context.facade.loadParkTimeline('park-1', false, 1);
@@ -181,7 +210,7 @@ describe('HistoryTimelineStateFacade', () => {
 
     expect(context.historyDataPort.parkTimelineCalls).toEqual([
       { parkId: 'park-1', includeParkItems: false, parkItemIds: [], page: 2 },
-      { parkId: 'park-1', includeParkItems: true, parkItemIds: [], page: 1 }
+      { parkId: 'park-1', includeParkItems: true, parkItemIds: [], page: 1 },
     ]);
   });
 });

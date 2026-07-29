@@ -6,31 +6,35 @@ describe('hasHttpStatus', () => {
   it('returns true for a matching HttpErrorResponse status', () => {
     const error: HttpErrorResponse = new HttpErrorResponse({ status: 404 });
 
-    expect(hasHttpStatus(error, 404)).toBeTrue();
+    expect(hasHttpStatus(error, 404)).toBe(true);
   });
 
   it('returns false for a non matching HttpErrorResponse status', () => {
     const error: HttpErrorResponse = new HttpErrorResponse({ status: 500 });
 
-    expect(hasHttpStatus(error, 404)).toBeFalse();
+    expect(hasHttpStatus(error, 404)).toBe(false);
   });
 
   it('supports plain error-like objects containing a numeric status', () => {
-    const error: { status: number } = { status: 401 };
+    const error: {
+      status: number;
+    } = { status: 401 };
 
-    expect(hasHttpStatus(error, 401)).toBeTrue();
+    expect(hasHttpStatus(error, 401)).toBe(true);
   });
 
   it('ignores objects whose status is not numeric', () => {
-    const error: { status: string } = { status: '404' };
+    const error: {
+      status: string;
+    } = { status: '404' };
 
-    expect(hasHttpStatus(error, 404)).toBeFalse();
+    expect(hasHttpStatus(error, 404)).toBe(false);
   });
 
   it('returns false for null, primitives and unrelated objects', () => {
-    expect(hasHttpStatus(null, 404)).toBeFalse();
-    expect(hasHttpStatus(undefined, 404)).toBeFalse();
-    expect(hasHttpStatus('404', 404)).toBeFalse();
-    expect(hasHttpStatus({ message: 'not found' }, 404)).toBeFalse();
+    expect(hasHttpStatus(null, 404)).toBe(false);
+    expect(hasHttpStatus(undefined, 404)).toBe(false);
+    expect(hasHttpStatus('404', 404)).toBe(false);
+    expect(hasHttpStatus({ message: 'not found' }, 404)).toBe(false);
   });
 });

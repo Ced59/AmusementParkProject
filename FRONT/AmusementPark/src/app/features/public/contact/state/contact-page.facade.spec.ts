@@ -2,16 +2,27 @@ import { EventEmitter } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Observable, Subject, of, throwError } from 'rxjs';
 
-import { ContactGrievanceSubmission, SubmitContactGrievanceRequest } from '@app/models/contact/contact-grievance.models';
+import {
+  ContactGrievanceSubmission,
+  SubmitContactGrievanceRequest,
+} from '@app/models/contact/contact-grievance.models';
 import { TranslationService } from '@app/services/translation.service';
-import { CONTACT_PAGE_DATA_PORT, ContactPageDataPort } from './contact-page-data.ports';
+import {
+  CONTACT_PAGE_DATA_PORT,
+  ContactPageDataPort,
+} from './contact-page-data.ports';
 import { ContactPageFacade } from './contact-page.facade';
 
 class FakeContactPagePort implements ContactPageDataPort {
-  public response$: Observable<ContactGrievanceSubmission> = of({ accepted: true, submittedAtUtc: '2026-06-17T00:00:00Z' });
+  public response$: Observable<ContactGrievanceSubmission> = of({
+    accepted: true,
+    submittedAtUtc: '2026-06-17T00:00:00Z',
+  });
   public readonly calls: SubmitContactGrievanceRequest[] = [];
 
-  submitGrievance(request: SubmitContactGrievanceRequest): Observable<ContactGrievanceSubmission> {
+  submitGrievance(
+    request: SubmitContactGrievanceRequest,
+  ): Observable<ContactGrievanceSubmission> {
     this.calls.push(request);
     return this.response$;
   }
@@ -32,10 +43,10 @@ describe('ContactPageFacade', () => {
           provide: TranslationService,
           useValue: {
             languageChanged: new EventEmitter<string>(),
-            getCurrentLang: () => 'fr'
-          }
-        }
-      ]
+            getCurrentLang: () => 'fr',
+          },
+        },
+      ],
     });
 
     facade = TestBed.inject(ContactPageFacade);
@@ -48,11 +59,11 @@ describe('ContactPageFacade', () => {
       {
         message: 'Une suggestion claire.',
         website: 'hidden-field',
-        languageCode: 'fr'
-      }
+        languageCode: 'fr',
+      },
     ]);
-    expect(facade.submitted()).toBeTrue();
-    expect(facade.submitting()).toBeFalse();
+    expect(facade.submitted()).toBe(true);
+    expect(facade.submitting()).toBe(false);
     expect(facade.errorKey()).toBeNull();
   });
 
@@ -61,8 +72,8 @@ describe('ContactPageFacade', () => {
 
     facade.submit('Une suggestion claire.', '');
 
-    expect(facade.submitted()).toBeFalse();
-    expect(facade.submitting()).toBeFalse();
+    expect(facade.submitted()).toBe(false);
+    expect(facade.submitting()).toBe(false);
     expect(facade.errorKey()).toBe('contactPage.form.error');
   });
 
@@ -75,9 +86,12 @@ describe('ContactPageFacade', () => {
 
     expect(port.calls.length).toBe(1);
 
-    pendingResponse.next({ accepted: true, submittedAtUtc: '2026-06-17T00:00:00Z' });
+    pendingResponse.next({
+      accepted: true,
+      submittedAtUtc: '2026-06-17T00:00:00Z',
+    });
     pendingResponse.complete();
 
-    expect(facade.submitted()).toBeTrue();
+    expect(facade.submitted()).toBe(true);
   });
 });

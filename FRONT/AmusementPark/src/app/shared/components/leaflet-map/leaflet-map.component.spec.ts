@@ -1,22 +1,31 @@
+import type { Mock } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SimpleChange, ViewEncapsulation } from '@angular/core';
 
 import { LeafletMapComponent } from './leaflet-map.component';
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { MapMarker } from '@app/models/map/map-marker';
 
 type LeafletTestMap = {
-  fitBounds: jasmine.Spy;
-  getZoom: jasmine.Spy;
-  invalidateSize: jasmine.Spy;
-  setView: jasmine.Spy;
-  setZoom: jasmine.Spy;
-  remove: jasmine.Spy;
+  fitBounds: Mock;
+  getZoom: Mock;
+  invalidateSize: Mock;
+  setView: Mock;
+  setZoom: Mock;
+  remove: Mock;
 };
 
 type LeafletMapComponentInternals = {
   addSingleMarker: (marker: MapMarker) => void;
-  handleMapClick: (event: { latlng: { lat: number; lng: number } }) => void;
+  handleMapClick: (event: {
+    latlng: {
+      lat: number;
+      lng: number;
+    };
+  }) => void;
   handleMapViewportChange: () => void;
   focusSelectedMarker: () => boolean;
   openPendingSelectedMarkerPopup: () => void;
@@ -28,54 +37,81 @@ type LeafletMapComponentInternals = {
   fitMapToMarkersIfNeeded: () => boolean;
   ensureFitBoundsMinimumZoom: () => void;
   refreshMarkers: () => void;
-  L: { latLngBounds: jasmine.Spy } | null;
+  L: {
+    latLngBounds: Mock;
+  } | null;
   map: LeafletTestMap | null;
-  tileLayer: { redraw: jasmine.Spy } | null;
-  markerLayer: { clearLayers: jasmine.Spy } | null;
-  leafletMarkers: Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>;
+  tileLayer: {
+    redraw: Mock;
+  } | null;
+  markerLayer: {
+    clearLayers: Mock;
+  } | null;
+  leafletMarkers: Map<
+    string,
+    {
+      getLatLng: Mock;
+      openPopup: Mock;
+    }
+  >;
   pendingPopupMarkerId: string | null;
 };
 
 type LeafletMarkerTestDouble = {
-  addTo: jasmine.Spy;
-  bindPopup: jasmine.Spy;
-  getLatLng: jasmine.Spy;
-  getPopup: jasmine.Spy;
-  on: jasmine.Spy;
-  openPopup: jasmine.Spy;
+  addTo: Mock;
+  bindPopup: Mock;
+  getLatLng: Mock;
+  getPopup: Mock;
+  on: Mock;
+  openPopup: Mock;
 };
 
 type LeafletMarkerHandlers = Map<string, Array<(...args: unknown[]) => void>>;
 
-function createLeafletMarkerTestDouble(): { marker: LeafletMarkerTestDouble; handlers: LeafletMarkerHandlers } {
-  const marker: LeafletMarkerTestDouble = jasmine.createSpyObj('leafletMarker', [
-    'addTo',
-    'bindPopup',
-    'getLatLng',
-    'getPopup',
-    'on',
-    'openPopup'
-  ]);
-  const handlers: LeafletMarkerHandlers = new Map<string, Array<(...args: unknown[]) => void>>();
+function createLeafletMarkerTestDouble(): {
+  marker: LeafletMarkerTestDouble;
+  handlers: LeafletMarkerHandlers;
+} {
+  const marker: LeafletMarkerTestDouble = {
+    addTo: vi.fn().mockName('leafletMarker.addTo'),
+    bindPopup: vi.fn().mockName('leafletMarker.bindPopup'),
+    getLatLng: vi.fn().mockName('leafletMarker.getLatLng'),
+    getPopup: vi.fn().mockName('leafletMarker.getPopup'),
+    on: vi.fn().mockName('leafletMarker.on'),
+    openPopup: vi.fn().mockName('leafletMarker.openPopup'),
+  };
+  const handlers: LeafletMarkerHandlers = new Map<
+    string,
+    Array<(...args: unknown[]) => void>
+  >();
 
-  marker.addTo.and.returnValue(marker);
-  marker.bindPopup.and.returnValue(marker);
-  marker.getLatLng.and.returnValue({ lat: 48.85, lng: 2.35 });
-  marker.getPopup.and.returnValue({});
-  marker.on.and.callFake((eventName: string, handler: (...args: unknown[]) => void): LeafletMarkerTestDouble => {
-    const existingHandlers: Array<(...args: unknown[]) => void> = handlers.get(eventName) ?? [];
-    handlers.set(eventName, [...existingHandlers, handler]);
-    return marker;
-  });
+  marker.addTo.mockReturnValue(marker);
+  marker.bindPopup.mockReturnValue(marker);
+  marker.getLatLng.mockReturnValue({ lat: 48.85, lng: 2.35 });
+  marker.getPopup.mockReturnValue({});
+  marker.on.mockImplementation(
+    (
+      eventName: string,
+      handler: (...args: unknown[]) => void,
+    ): LeafletMarkerTestDouble => {
+      const existingHandlers: Array<(...args: unknown[]) => void> =
+        handlers.get(eventName) ?? [];
+      handlers.set(eventName, [...existingHandlers, handler]);
+      return marker;
+    },
+  );
 
   return { marker, handlers };
 }
 
-function configureLeafletMarkerFactory(internals: LeafletMapComponentInternals, marker: LeafletMarkerTestDouble): void {
+function configureLeafletMarkerFactory(
+  internals: LeafletMapComponentInternals,
+  marker: LeafletMarkerTestDouble,
+): void {
   internals.L = {
-    latLngBounds: jasmine.createSpy('latLngBounds'),
-    marker: jasmine.createSpy('marker').and.returnValue(marker),
-    divIcon: jasmine.createSpy('divIcon').and.returnValue({})
+    latLngBounds: vi.fn(),
+    marker: vi.fn().mockReturnValue(marker),
+    divIcon: vi.fn().mockReturnValue({}),
   } as unknown as LeafletMapComponentInternals['L'];
 }
 
@@ -98,38 +134,83 @@ describe('LeafletMapComponent', () => {
   });
 
   it('uses unscoped component styles so Leaflet CSS can stay out of the initial global bundle', () => {
-    expect((LeafletMapComponent as unknown as { ɵcmp: { encapsulation: ViewEncapsulation } }).ɵcmp.encapsulation)
-      .toBe(ViewEncapsulation.None);
+    expect(
+      (
+        LeafletMapComponent as unknown as {
+          ɵcmp: {
+            encapsulation: ViewEncapsulation;
+          };
+        }
+      ).ɵcmp.encapsulation,
+    ).toBe(ViewEncapsulation.None);
   });
 
   it('keeps the selected marker popup pending while focusing an already rendered marker', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const marker: { getLatLng: jasmine.Spy; openPopup: jasmine.Spy } = jasmine.createSpyObj('marker', ['getLatLng', 'openPopup']);
-    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const marker: {
+      getLatLng: Mock;
+      openPopup: Mock;
+    } = {
+      getLatLng: vi.fn().mockName('marker.getLatLng'),
+      openPopup: vi.fn().mockName('marker.openPopup'),
+    };
+    const map: {
+      fitBounds: Mock;
+      getZoom: Mock;
+      invalidateSize: Mock;
+      setView: Mock;
+      setZoom: Mock;
+      remove: Mock;
+    } = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
 
-    marker.getLatLng.and.returnValue({ lat: 49.804, lng: 6.878 });
-    map.getZoom.and.returnValue(12);
+    marker.getLatLng.mockReturnValue({ lat: 49.804, lng: 6.878 });
+    map.getZoom.mockReturnValue(12);
 
     component.selectedMarkerId = 'entrance';
     internals.map = map;
-    internals.leafletMarkers = new Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>([
-      ['entrance', marker]
-    ]);
+    internals.leafletMarkers = new Map<
+      string,
+      {
+        getLatLng: Mock;
+        openPopup: Mock;
+      }
+    >([['entrance', marker]]);
 
-    expect(internals.focusSelectedMarker()).toBeTrue();
+    expect(internals.focusSelectedMarker()).toBe(true);
     expect(internals.pendingPopupMarkerId).toBe('entrance');
-    expect(map.setView).toHaveBeenCalledWith({ lat: 49.804, lng: 6.878 }, 14, { animate: true });
+    expect(map.setView).toHaveBeenCalledWith({ lat: 49.804, lng: 6.878 }, 14, {
+      animate: true,
+    });
     expect(marker.openPopup).toHaveBeenCalled();
   });
 
   it('reopens the pending selected marker popup after marker refresh', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const marker: { getLatLng: jasmine.Spy; openPopup: jasmine.Spy } = jasmine.createSpyObj('marker', ['getLatLng', 'openPopup']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const marker: {
+      getLatLng: Mock;
+      openPopup: Mock;
+    } = {
+      getLatLng: vi.fn().mockName('marker.getLatLng'),
+      openPopup: vi.fn().mockName('marker.openPopup'),
+    };
 
     internals.pendingPopupMarkerId = 'entrance';
-    internals.leafletMarkers = new Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>([
-      ['entrance', marker]
-    ]);
+    internals.leafletMarkers = new Map<
+      string,
+      {
+        getLatLng: Mock;
+        openPopup: Mock;
+      }
+    >([['entrance', marker]]);
 
     internals.openPendingSelectedMarkerPopup();
 
@@ -138,17 +219,22 @@ describe('LeafletMapComponent', () => {
   });
 
   it('binds and opens a directions-only marker popup when the marker is clicked', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const markerLayer: { clearLayers: jasmine.Spy } = jasmine.createSpyObj('markerLayer', ['clearLayers']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const markerLayer: {
+      clearLayers: Mock;
+    } = {
+      clearLayers: vi.fn().mockName('markerLayer.clearLayers'),
+    };
     const testDouble = createLeafletMarkerTestDouble();
     const markerModel: MapMarker = {
       id: 'park-gps',
       lat: 48.85,
       lng: 2.35,
       actionUrl: 'https://maps.google.com/?daddr=48.85,2.35',
-      actionLabel: 'Y aller'
+      actionLabel: 'Y aller',
     };
-    const markerClickSpy: jasmine.Spy = jasmine.createSpy('markerClick');
+    const markerClickSpy: Mock = vi.fn();
 
     configureLeafletMarkerFactory(internals, testDouble.marker);
     internals.markerLayer = markerLayer;
@@ -157,12 +243,14 @@ describe('LeafletMapComponent', () => {
     internals.addSingleMarker(markerModel);
 
     expect(testDouble.marker.bindPopup).toHaveBeenCalled();
-    const popupContent: string = testDouble.marker.bindPopup.calls.mostRecent().args[0] as string;
+    const popupContent: string = vi.mocked(testDouble.marker.bindPopup).mock
+      .lastCall![0] as string;
     expect(popupContent).toContain('leaflet-map-popup__action--directions');
     expect(popupContent).toContain('Y aller');
     expect(popupContent).not.toContain('<strong></strong>');
 
-    const clickHandlers: Array<(...args: unknown[]) => void> = testDouble.handlers.get('click') ?? [];
+    const clickHandlers: Array<(...args: unknown[]) => void> =
+      testDouble.handlers.get('click') ?? [];
     expect(clickHandlers.length).toBe(1);
 
     clickHandlers[0]();
@@ -172,15 +260,26 @@ describe('LeafletMapComponent', () => {
   });
 
   it('does not refresh markers after a viewport move for a simple map', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
 
     component.markers = [{ id: 'park', lat: 48.85, lng: 2.35 }];
     component.stabilizeDynamicMarkerViewport = false;
-    map.getZoom.and.returnValue(13);
+    map.getZoom.mockReturnValue(13);
     internals.map = map;
 
-    const scheduleMarkerRefreshSpy: jasmine.Spy = spyOn(internals, 'scheduleMarkerRefresh');
+    const scheduleMarkerRefreshSpy: Mock = vi.spyOn(
+      internals,
+      'scheduleMarkerRefresh',
+    );
 
     internals.handleMapViewportChange();
 
@@ -188,15 +287,26 @@ describe('LeafletMapComponent', () => {
   });
 
   it('refreshes markers after viewport moves for stabilized dynamic maps', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
 
     component.markers = [{ id: 'park', lat: 48.85, lng: 2.35 }];
     component.stabilizeDynamicMarkerViewport = true;
-    map.getZoom.and.returnValue(13);
+    map.getZoom.mockReturnValue(13);
     internals.map = map;
 
-    const scheduleMarkerRefreshSpy: jasmine.Spy = spyOn(internals, 'scheduleMarkerRefresh');
+    const scheduleMarkerRefreshSpy: Mock = vi.spyOn(
+      internals,
+      'scheduleMarkerRefresh',
+    );
 
     internals.handleMapViewportChange();
 
@@ -204,37 +314,56 @@ describe('LeafletMapComponent', () => {
   });
 
   it('clears pending marker popup when there is no selected marker', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const map: {
+      fitBounds: Mock;
+      getZoom: Mock;
+      invalidateSize: Mock;
+      setView: Mock;
+      setZoom: Mock;
+      remove: Mock;
+    } = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
 
     component.selectedMarkerId = null;
     internals.pendingPopupMarkerId = 'entrance';
     internals.map = map;
 
-    expect(internals.focusSelectedMarker()).toBeFalse();
+    expect(internals.focusSelectedMarker()).toBe(false);
     expect(internals.pendingPopupMarkerId).toBeNull();
   });
 
   it('uses reduced OpenStreetMap tile requests on mobile viewports', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    spyOnProperty(window, 'innerWidth', 'get').and.returnValue(390);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(390);
 
     const options: Record<string, unknown> = internals.buildTileLayerOptions();
 
-    expect(options).toEqual(jasmine.objectContaining({
-      maxZoom: 19,
-      detectRetina: false,
-      keepBuffer: 0,
-      updateWhenIdle: true,
-      updateWhenZooming: false,
-      tileSize: 512,
-      zoomOffset: -1
-    }));
+    expect(options).toEqual(
+      expect.objectContaining({
+        maxZoom: 19,
+        detectRetina: false,
+        keepBuffer: 0,
+        updateWhenIdle: true,
+        updateWhenZooming: false,
+        tileSize: 512,
+        zoomOffset: -1,
+      }),
+    );
   });
 
   it('keeps native tiles and a larger buffer for stabilized dynamic marker maps on mobile viewports', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    spyOnProperty(window, 'innerWidth', 'get').and.returnValue(390);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(390);
 
     component.stabilizeDynamicMarkerViewport = true;
 
@@ -246,8 +375,9 @@ describe('LeafletMapComponent', () => {
   });
 
   it('keeps native tile detail on wider viewports', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1024);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(1024);
 
     const options: Record<string, unknown> = internals.buildTileLayerOptions();
 
@@ -257,26 +387,48 @@ describe('LeafletMapComponent', () => {
   });
 
   it('clears stale markers and defers marker refresh until viewport update for stabilized fit-bounds maps', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
-    const markerLayer: { clearLayers: jasmine.Spy } = jasmine.createSpyObj('markerLayer', ['clearLayers']);
-    const marker: { getLatLng: jasmine.Spy; openPopup: jasmine.Spy } = jasmine.createSpyObj('marker', ['getLatLng', 'openPopup']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
+    const markerLayer: {
+      clearLayers: Mock;
+    } = {
+      clearLayers: vi.fn().mockName('markerLayer.clearLayers'),
+    };
+    const marker: {
+      getLatLng: Mock;
+      openPopup: Mock;
+    } = {
+      getLatLng: vi.fn().mockName('marker.getLatLng'),
+      openPopup: vi.fn().mockName('marker.openPopup'),
+    };
 
     component.fitBounds = true;
     component.stabilizeDynamicMarkerViewport = true;
     component.markers = [{ id: 'new', lat: 48.85, lng: 2.35 }];
-    internals.L = { latLngBounds: jasmine.createSpy('latLngBounds') };
+    internals.L = { latLngBounds: vi.fn() };
     internals.map = map;
     internals.markerLayer = markerLayer;
-    internals.leafletMarkers = new Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>([
-      ['old', marker]
-    ]);
+    internals.leafletMarkers = new Map<
+      string,
+      {
+        getLatLng: Mock;
+        openPopup: Mock;
+      }
+    >([['old', marker]]);
 
-    const refreshMarkersSpy: jasmine.Spy = spyOn(internals, 'refreshMarkers');
-    spyOn(internals, 'scheduleViewportUpdate');
+    const refreshMarkersSpy: Mock = vi.spyOn(internals, 'refreshMarkers');
+    vi.spyOn(internals, 'scheduleViewportUpdate');
 
     component.ngOnChanges({
-      markers: new SimpleChange([], component.markers, false)
+      markers: new SimpleChange([], component.markers, false),
     });
 
     expect(markerLayer.clearLayers).toHaveBeenCalled();
@@ -286,100 +438,151 @@ describe('LeafletMapComponent', () => {
   });
 
   it('redraws reduced mobile tiles while stabilizing the initial map size', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
-    const tileLayer: { redraw: jasmine.Spy } = jasmine.createSpyObj('tileLayer', ['redraw']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const map: {
+      fitBounds: Mock;
+      getZoom: Mock;
+      invalidateSize: Mock;
+      setView: Mock;
+      setZoom: Mock;
+      remove: Mock;
+    } = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
+    const tileLayer: {
+      redraw: Mock;
+    } = {
+      redraw: vi.fn().mockName('tileLayer.redraw'),
+    };
 
-    spyOnProperty(window, 'innerWidth', 'get').and.returnValue(390);
-    map.getZoom.and.returnValue(5);
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(390);
+    map.getZoom.mockReturnValue(5);
     internals.map = map;
     internals.tileLayer = tileLayer;
 
-    jasmine.clock().install();
+    vi.useFakeTimers();
     try {
       internals.scheduleMapSizeStabilization();
 
-      jasmine.clock().tick(1500);
+      vi.advanceTimersByTime(1500);
 
-      expect(map.invalidateSize).toHaveBeenCalledWith({ pan: false, debounceMoveend: true });
-      expect(tileLayer.redraw.calls.count()).toBe(5);
+      expect(map.invalidateSize).toHaveBeenCalledWith({
+        pan: false,
+        debounceMoveend: true,
+      });
+      expect(vi.mocked(tileLayer.redraw).mock.calls.length).toBe(5);
     } finally {
-      jasmine.clock().uninstall();
+      vi.useRealTimers();
     }
   });
 
   it('refreshes stabilized marker rendering and tiles after viewport updates', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
-    const tileLayer: { redraw: jasmine.Spy } = jasmine.createSpyObj('tileLayer', ['redraw']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
+    const tileLayer: {
+      redraw: Mock;
+    } = {
+      redraw: vi.fn().mockName('tileLayer.redraw'),
+    };
 
     component.center = [46.8, 2.2];
     component.zoom = 6;
     component.stabilizeDynamicMarkerViewport = true;
-    map.getZoom.and.returnValue(5);
+    map.getZoom.mockReturnValue(5);
     internals.map = map;
     internals.tileLayer = tileLayer;
 
-    const refreshMarkersSpy: jasmine.Spy = spyOn(internals, 'refreshMarkers');
+    const refreshMarkersSpy: Mock = vi.spyOn(internals, 'refreshMarkers');
 
-    jasmine.clock().install();
+    vi.useFakeTimers();
     try {
       internals.scheduleViewportUpdate();
 
-      jasmine.clock().tick(1);
+      vi.advanceTimersByTime(1);
 
       expect(map.invalidateSize).toHaveBeenCalled();
       expect(map.setView).toHaveBeenCalledWith([46.8, 2.2], 6);
-      expect(refreshMarkersSpy.calls.count()).toBe(1);
-      expect(tileLayer.redraw.calls.count()).toBe(1);
+      expect(vi.mocked(refreshMarkersSpy).mock.calls.length).toBe(1);
+      expect(vi.mocked(tileLayer.redraw).mock.calls.length).toBe(1);
 
-      jasmine.clock().tick(120);
+      vi.advanceTimersByTime(120);
 
-      expect(refreshMarkersSpy.calls.count()).toBe(2);
-      expect(tileLayer.redraw.calls.count()).toBe(2);
+      expect(vi.mocked(refreshMarkersSpy).mock.calls.length).toBe(2);
+      expect(vi.mocked(tileLayer.redraw).mock.calls.length).toBe(2);
     } finally {
-      jasmine.clock().uninstall();
+      vi.useRealTimers();
     }
   });
 
   it('uses larger fit bounds padding and ignores invalid coordinates for stabilized dynamic marker maps', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
     const bounds: object = {};
-    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const map: LeafletTestMap = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
 
     component.fitBounds = true;
     component.stabilizeDynamicMarkerViewport = true;
     component.markers = [
       { id: 'valid-1', lat: 48.85, lng: 2.35 },
       { id: 'invalid', lat: 120, lng: 2.35 },
-      { id: 'valid-2', lat: 41.89, lng: 12.49 }
+      { id: 'valid-2', lat: 41.89, lng: 12.49 },
     ];
     internals.L = {
-      latLngBounds: jasmine.createSpy('latLngBounds').and.returnValue(bounds)
+      latLngBounds: vi.fn().mockReturnValue(bounds),
     };
     internals.map = map;
 
-    expect(internals.fitMapToMarkersIfNeeded()).toBeTrue();
+    expect(internals.fitMapToMarkersIfNeeded()).toBe(true);
     expect(internals.L.latLngBounds).toHaveBeenCalledWith([
       [48.85, 2.35],
-      [41.89, 12.49]
+      [41.89, 12.49],
     ]);
-    expect(map.fitBounds).toHaveBeenCalledWith(bounds, { padding: [72, 72], maxZoom: 8 });
+    expect(map.fitBounds).toHaveBeenCalledWith(bounds, {
+      padding: [72, 72],
+      maxZoom: 8,
+    });
   });
 
   it('falls back to the default viewport when fit-bounds markers have no usable coordinates', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
 
     component.center = [46.8, 2.2];
     component.zoom = 6;
     component.fitBounds = true;
-    component.markers = [
-      { id: 'invalid', lat: 120, lng: 2.35 }
-    ];
+    component.markers = [{ id: 'invalid', lat: 120, lng: 2.35 }];
     internals.map = map;
 
-    spyOn(internals, 'scheduleViewportUpdate');
+    vi.spyOn(internals, 'scheduleViewportUpdate');
 
     internals.applyDefaultViewport();
 
@@ -388,10 +591,19 @@ describe('LeafletMapComponent', () => {
   });
 
   it('emits editable map click positions inside Angular zone', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const ngZone = (component as unknown as { ngZone: { run(fn: () => void): void } }).ngZone;
-    const positionChangeSpy: jasmine.Spy = jasmine.createSpy('positionChange');
-    const zoneRunSpy: jasmine.Spy = spyOn(ngZone, 'run').and.callFake((fn: () => void): void => fn());
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const ngZone = (
+      component as unknown as {
+        ngZone: {
+          run(fn: () => void): void;
+        };
+      }
+    ).ngZone;
+    const positionChangeSpy: Mock = vi.fn();
+    const zoneRunSpy: Mock = vi
+      .spyOn(ngZone, 'run')
+      .mockImplementation((fn: () => void): void => fn());
 
     component.editable = true;
     component.markers = [];
@@ -404,11 +616,26 @@ describe('LeafletMapComponent', () => {
   });
 
   it('keeps fitted bounds at the configured minimum zoom', () => {
-    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const internals: LeafletMapComponentInternals =
+      component as unknown as LeafletMapComponentInternals;
+    const map: {
+      fitBounds: Mock;
+      getZoom: Mock;
+      invalidateSize: Mock;
+      setView: Mock;
+      setZoom: Mock;
+      remove: Mock;
+    } = {
+      fitBounds: vi.fn().mockName('map.fitBounds'),
+      getZoom: vi.fn().mockName('map.getZoom'),
+      invalidateSize: vi.fn().mockName('map.invalidateSize'),
+      setView: vi.fn().mockName('map.setView'),
+      setZoom: vi.fn().mockName('map.setZoom'),
+      remove: vi.fn().mockName('map.remove'),
+    };
 
     component.fitBoundsMinZoom = 3;
-    map.getZoom.and.returnValue(2);
+    map.getZoom.mockReturnValue(2);
     internals.map = map;
 
     internals.ensureFitBoundsMinimumZoom();

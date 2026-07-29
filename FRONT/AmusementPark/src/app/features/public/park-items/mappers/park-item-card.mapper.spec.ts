@@ -5,7 +5,12 @@ import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-
 import { mapParkItemToCardViewModel } from './park-item-card.mapper';
 
 describe('mapParkItemToCardViewModel', () => {
-  const park: Park = { id: 'park-1', name: 'Parc Test', latitude: 0, longitude: 0 };
+  const park: Park = {
+    id: 'park-1',
+    name: 'Parc Test',
+    latitude: 0,
+    longitude: 0,
+  };
 
   function createItem(overrides: Partial<ParkItem> = {}): ParkItem {
     return {
@@ -22,14 +27,20 @@ describe('mapParkItemToCardViewModel', () => {
         status: 'Operating',
         heightInMeters: 50,
         speedInKmH: 120,
-        inversionCount: 2
+        inversionCount: 2,
       } as never,
-      ...overrides
+      ...overrides,
     };
   }
 
   it('maps card identity, labels, icon and public item link', () => {
-    const result = mapParkItemToCardViewModel(createItem(), park, 'fr', 'B&M', 'Zone A');
+    const result = mapParkItemToCardViewModel(
+      createItem(),
+      park,
+      'fr',
+      'B&M',
+      'Zone A',
+    );
 
     expect(result.id).toBe('item-1');
     expect(result.name).toBe('Big Ride');
@@ -39,27 +50,64 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.typeIconClass).toBe('pi pi-bolt');
     expect(result.zoneName).toBe('Zone A');
     expect(result.imageUrl).toBeNull();
-    expect(result.itemLink).toEqual(['/', 'fr', 'park', 'park-1', 'parc-test', 'item', 'item-1', 'big-ride']);
+    expect(result.itemLink).toEqual([
+      '/',
+      'fr',
+      'park',
+      'park-1',
+      'parc-test',
+      'item',
+      'item-1',
+      'big-ride',
+    ]);
   });
 
   it('maps drop tower cards as thrill-style attraction cards', () => {
-    const result = mapParkItemToCardViewModel(createItem({ type: 'DropTower' }), park, 'fr', null, null);
+    const result = mapParkItemToCardViewModel(
+      createItem({ type: 'DropTower' }),
+      park,
+      'fr',
+      null,
+      null,
+    );
 
     expect(result.typeLabelKey).toBe('parkExplorer.types.dropTower');
     expect(result.typeIconClass).toBe('pi pi-send');
   });
 
   it('maps the optional card image urls', () => {
-    const result = mapParkItemToCardViewModel(createItem(), park, 'fr', 'B&M', 'Zone A', null, 'Metric', undefined, '/images/main', '/images/main 640w');
+    const result = mapParkItemToCardViewModel(
+      createItem(),
+      park,
+      'fr',
+      'B&M',
+      'Zone A',
+      null,
+      'Metric',
+      undefined,
+      '/images/main',
+      '/images/main 640w',
+    );
 
     expect(result.imageUrl).toBe('/images/main');
     expect(result.imageSrcSet).toBe('/images/main 640w');
   });
 
   it('limits highlights to four values and localizes known statuses', () => {
-    const result = mapParkItemToCardViewModel(createItem(), park, 'fr', 'B&M', null);
+    const result = mapParkItemToCardViewModel(
+      createItem(),
+      park,
+      'fr',
+      'B&M',
+      null,
+    );
 
-    expect(result.highlights).toEqual(['B&M', 'Hyper Coaster', 'En fonctionnement', '50 m']);
+    expect(result.highlights).toEqual([
+      'B&M',
+      'Hyper Coaster',
+      'En fonctionnement',
+      '50 m',
+    ]);
   });
 
   it('formats attraction highlights with imperial units when requested', () => {
@@ -67,28 +115,40 @@ describe('mapParkItemToCardViewModel', () => {
       createItem({
         attractionDetails: {
           heightInMeters: 60.96,
-          speedInKmH: 120.7
-        } as never
+          speedInKmH: 120.7,
+        } as never,
       }),
       park,
       'en',
       null,
       null,
       null,
-      'Imperial'
+      'Imperial',
     );
 
     expect(result.highlights).toEqual(['200 ft', '75 mph']);
   });
 
   it('falls back to raw status labels when status is unknown', () => {
-    const result = mapParkItemToCardViewModel(createItem({ attractionDetails: { status: 'Soft opening' } as never }), park, 'en', null, null);
+    const result = mapParkItemToCardViewModel(
+      createItem({ attractionDetails: { status: 'Soft opening' } as never }),
+      park,
+      'en',
+      null,
+      null,
+    );
 
     expect(result.highlights).toEqual(['Soft opening']);
   });
 
   it('returns null subtitle and link when related data is missing', () => {
-    const result = mapParkItemToCardViewModel(createItem({ id: undefined, attractionDetails: null }), null, 'en', null, null);
+    const result = mapParkItemToCardViewModel(
+      createItem({ id: undefined, attractionDetails: null }),
+      null,
+      'en',
+      null,
+      null,
+    );
 
     expect(result.subtitle).toBeNull();
     expect(result.itemLink).toBeNull();
@@ -97,12 +157,24 @@ describe('mapParkItemToCardViewModel', () => {
 
   it('truncates card descriptions with the shared text truncator when provided', () => {
     const item: ParkItem = createItem({
-      descriptions: [{ languageCode: 'en', value: 'A detailed attraction description '.repeat(12) }]
+      descriptions: [
+        {
+          languageCode: 'en',
+          value: 'A detailed attraction description '.repeat(12),
+        },
+      ],
     });
 
-    const result = mapParkItemToCardViewModel(item, park, 'en', null, null, new NaturalTextTruncatorService());
+    const result = mapParkItemToCardViewModel(
+      item,
+      park,
+      'en',
+      null,
+      null,
+      new NaturalTextTruncatorService(),
+    );
 
     expect(result.description?.length).toBeLessThanOrEqual(160);
-    expect(result.description?.endsWith('...')).toBeTrue();
+    expect(result.description?.endsWith('...')).toBe(true);
   });
 });

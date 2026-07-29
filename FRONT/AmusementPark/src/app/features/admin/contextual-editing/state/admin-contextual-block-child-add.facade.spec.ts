@@ -1,3 +1,4 @@
+import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
@@ -8,39 +9,49 @@ import { ParkZone } from '@app/models/parks/park-zone';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
 import {
   ADMIN_CONTEXTUAL_BLOCK_CHILD_ADD_PARK_ITEMS_DATA_PORT,
-  ADMIN_CONTEXTUAL_BLOCK_CHILD_ADD_PARK_ZONES_DATA_PORT
+  ADMIN_CONTEXTUAL_BLOCK_CHILD_ADD_PARK_ZONES_DATA_PORT,
 } from './admin-contextual-block-child-add-data.ports';
 import { AdminContextualBlockChildAddFacade } from './admin-contextual-block-child-add.facade';
 import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
 
 describe('AdminContextualBlockChildAddFacade', () => {
   let facade: AdminContextualBlockChildAddFacade;
-  let parkItemsApi: jasmine.SpyObj<ParkItemsApiService>;
-  let parkZonesApi: jasmine.SpyObj<ParkZonesApiService>;
-  let refreshEvents: jasmine.SpyObj<AdminContextualBlockRefreshEvents>;
+  let parkItemsApi: MockedObject<ParkItemsApiService>;
+  let parkZonesApi: MockedObject<ParkZonesApiService>;
+  let refreshEvents: MockedObject<AdminContextualBlockRefreshEvents>;
 
   beforeEach(() => {
-    parkItemsApi = jasmine.createSpyObj<ParkItemsApiService>('ParkItemsApiService', ['createParkItem']);
-    parkZonesApi = jasmine.createSpyObj<ParkZonesApiService>('ParkZonesApiService', ['getParkZonesByParkId']);
-    refreshEvents = jasmine.createSpyObj<AdminContextualBlockRefreshEvents>('AdminContextualBlockRefreshEvents', ['notifyBlockApplied']);
-    parkZonesApi.getParkZonesByParkId.and.returnValue(of(createZones()));
+    parkItemsApi = {
+      createParkItem: vi.fn().mockName('ParkItemsApiService.createParkItem'),
+    } as unknown as MockedObject<ParkItemsApiService>;
+    parkZonesApi = {
+      getParkZonesByParkId: vi
+        .fn()
+        .mockName('ParkZonesApiService.getParkZonesByParkId'),
+    } as unknown as MockedObject<ParkZonesApiService>;
+    refreshEvents = {
+      notifyBlockApplied: vi
+        .fn()
+        .mockName('AdminContextualBlockRefreshEvents.notifyBlockApplied'),
+    } as unknown as MockedObject<AdminContextualBlockRefreshEvents>;
+    parkZonesApi.getParkZonesByParkId.mockReturnValue(of(createZones()));
 
     TestBed.configureTestingModule({
       providers: [
         AdminContextualBlockChildAddFacade,
         {
           provide: ADMIN_CONTEXTUAL_BLOCK_CHILD_ADD_PARK_ITEMS_DATA_PORT,
-          useValue: parkItemsApi
+          useValue: parkItemsApi,
         },
         {
           provide: ADMIN_CONTEXTUAL_BLOCK_CHILD_ADD_PARK_ZONES_DATA_PORT,
-          useValue: parkZonesApi
+          useValue: parkZonesApi,
         },
         {
           provide: AdminContextualBlockRefreshEvents,
-          useValue: refreshEvents
-        }
-      ]
+          useValue: refreshEvents,
+        },
+      ],
     });
 
     facade = TestBed.inject(AdminContextualBlockChildAddFacade);
@@ -49,10 +60,12 @@ describe('AdminContextualBlockChildAddFacade', () => {
   it('loads park zones when a targeted child add block is selected', () => {
     facade.resetForBlock(createBlock());
 
-    expect(parkZonesApi.getParkZonesByParkId).toHaveBeenCalledOnceWith('park-1');
+    expect(parkZonesApi.getParkZonesByParkId).toHaveBeenCalledTimes(1);
+
+    expect(parkZonesApi.getParkZonesByParkId).toHaveBeenCalledWith('park-1');
     expect(facade.zoneOptions()).toEqual([
       { id: 'zone-1', label: 'Berlin', latitude: 50.1, longitude: 3.2 },
-      { id: 'zone-2', label: 'zone-2', latitude: null, longitude: null }
+      { id: 'zone-2', label: 'zone-2', latitude: null, longitude: null },
     ]);
   });
 
@@ -67,9 +80,9 @@ describe('AdminContextualBlockChildAddFacade', () => {
       latitude: 50.1,
       longitude: 3.2,
       isVisible: false,
-      adminReviewStatus: 'ToReview'
+      adminReviewStatus: 'ToReview',
     };
-    parkItemsApi.createParkItem.and.returnValue(of(createdItem));
+    parkItemsApi.createParkItem.mockReturnValue(of(createdItem));
     const block: AdminContextualBlockInstance = createBlock();
     facade.resetForBlock(block);
 
@@ -77,29 +90,49 @@ describe('AdminContextualBlockChildAddFacade', () => {
     facade.updateSelectedZoneId('zone-1');
     facade.createChild(block);
 
-    expect(parkItemsApi.createParkItem).toHaveBeenCalledOnceWith(jasmine.objectContaining({
-      parkId: 'park-1',
-      zoneId: 'zone-1',
-      name: 'New ride',
-      category: 'Attraction',
-      type: 'Attraction',
-      descriptions: [],
-      latitude: 50.1,
-      longitude: 3.2,
-      isVisible: false,
-      adminReviewStatus: 'ToReview'
-    }));
-    expect(facade.successKey()).toBe('admin.contextualBlocks.drawer.addChildSucceeded');
-    expect(facade.createdItemAdminRoute()).toEqual(['/', 'fr', 'admin', 'parks', 'edit', 'park-1', 'items', 'item-1']);
-    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledOnceWith(jasmine.objectContaining({
-      blockType: 'park.hero',
-      entityType: 'Park',
-      entityId: 'park-1'
-    }));
+    expect(parkItemsApi.createParkItem).toHaveBeenCalledTimes(1);
+
+    expect(parkItemsApi.createParkItem).toHaveBeenCalledWith(
+      expect.objectContaining({
+        parkId: 'park-1',
+        zoneId: 'zone-1',
+        name: 'New ride',
+        category: 'Attraction',
+        type: 'Attraction',
+        descriptions: [],
+        latitude: 50.1,
+        longitude: 3.2,
+        isVisible: false,
+        adminReviewStatus: 'ToReview',
+      }),
+    );
+    expect(facade.successKey()).toBe(
+      'admin.contextualBlocks.drawer.addChildSucceeded',
+    );
+    expect(facade.createdItemAdminRoute()).toEqual([
+      '/',
+      'fr',
+      'admin',
+      'parks',
+      'edit',
+      'park-1',
+      'items',
+      'item-1',
+    ]);
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledTimes(1);
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledWith(
+      expect.objectContaining({
+        blockType: 'park.hero',
+        entityType: 'Park',
+        entityId: 'park-1',
+      }),
+    );
   });
 
   it('keeps the draft name when creation fails', () => {
-    parkItemsApi.createParkItem.and.returnValue(throwError(() => new Error('failed')));
+    parkItemsApi.createParkItem.mockReturnValue(
+      throwError(() => new Error('failed')),
+    );
     const block: AdminContextualBlockInstance = createBlock();
     facade.resetForBlock(block);
 
@@ -107,21 +140,25 @@ describe('AdminContextualBlockChildAddFacade', () => {
     facade.createChild(block);
 
     expect(facade.itemName()).toBe('Draft item');
-    expect(facade.errorKey()).toBe('admin.contextualBlocks.drawer.addChildError');
+    expect(facade.errorKey()).toBe(
+      'admin.contextualBlocks.drawer.addChildError',
+    );
     expect(refreshEvents.notifyBlockApplied).not.toHaveBeenCalled();
   });
 
   it('does not create a child without the targeted capability', () => {
     const block: AdminContextualBlockInstance = {
       ...createBlock(),
-      capabilities: ['fullAdminEdit']
+      capabilities: ['fullAdminEdit'],
     };
 
     facade.updateItemName('Draft item');
     facade.createChild(block);
 
     expect(parkItemsApi.createParkItem).not.toHaveBeenCalled();
-    expect(facade.errorKey()).toBe('admin.contextualBlocks.drawer.addChildUnavailable');
+    expect(facade.errorKey()).toBe(
+      'admin.contextualBlocks.drawer.addChildUnavailable',
+    );
   });
 });
 
@@ -132,12 +169,12 @@ function createZones(): ParkZone[] {
       parkId: 'park-1',
       name: 'Berlin',
       latitude: 50.1,
-      longitude: 3.2
+      longitude: 3.2,
     },
     {
       id: 'zone-2',
-      parkId: 'park-1'
-    }
+      parkId: 'park-1',
+    },
   ];
 }
 
@@ -156,6 +193,6 @@ function createBlock(): AdminContextualBlockInstance {
     jsonScope: ['park.id'],
     localizedLanguageCodes: [],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }

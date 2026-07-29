@@ -8,7 +8,7 @@ describe('PublicParkNavigationTreeState', (): void => {
 
   beforeEach((): void => {
     TestBed.configureTestingModule({
-      providers: [PublicParkNavigationTreeState]
+      providers: [PublicParkNavigationTreeState],
     });
     state = TestBed.inject(PublicParkNavigationTreeState);
   });
@@ -30,7 +30,7 @@ describe('PublicParkNavigationTreeState', (): void => {
     expect(state.tree()).toEqual({
       isAvailable: true,
       isLoading: true,
-      items: [item]
+      items: [item],
     });
   });
 
@@ -40,8 +40,8 @@ describe('PublicParkNavigationTreeState', (): void => {
 
     state.completeLoad(staleLoadId, []);
 
-    expect(state.tree().isLoading).toBeTrue();
-    expect(state.isCurrent(currentLoadId)).toBeTrue();
+    expect(state.tree().isLoading).toBe(true);
+    expect(state.isCurrent(currentLoadId)).toBe(true);
   });
 
   it('clears the tree when the route is outside a park context', (): void => {
@@ -51,7 +51,7 @@ describe('PublicParkNavigationTreeState', (): void => {
     expect(state.tree()).toEqual({
       isAvailable: false,
       isLoading: false,
-      items: []
+      items: [],
     });
   });
 });

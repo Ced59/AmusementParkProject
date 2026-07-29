@@ -1,9 +1,14 @@
+import type { Mock } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpTestingController } from '@angular/common/http/testing';
 
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { AdminBulkParkGraphUpsertsComponent } from './admin-bulk-park-graph-upserts.component';
-import { BulkParkGraphUpsertResult, ParkGraphBulkExportJob, ParkGraphExportSection } from '@app/models/admin/park-graph-upsert.models';
+import {
+  BulkParkGraphUpsertResult,
+  ParkGraphBulkExportJob,
+  ParkGraphExportSection,
+} from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { environment } from '../../../../../../environments/environment';
@@ -37,26 +42,28 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
   let fixture: ComponentFixture<AdminBulkParkGraphUpsertsComponent>;
   let harness: AdminBulkParkGraphUpsertsComponentHarness;
   let httpTestingController: HttpTestingController;
-  let createObjectUrlSpy: jasmine.Spy;
-  let revokeObjectUrlSpy: jasmine.Spy;
-  let anchorClickSpy: jasmine.Spy;
+  let createObjectUrlSpy: Mock;
+  let revokeObjectUrlSpy: Mock;
+  let anchorClickSpy: Mock;
   let originalCreateObjectUrl: typeof URL.createObjectURL;
   let originalRevokeObjectUrl: typeof URL.revokeObjectURL;
 
   beforeEach(async () => {
     originalCreateObjectUrl = URL.createObjectURL;
     originalRevokeObjectUrl = URL.revokeObjectURL;
-    createObjectUrlSpy = jasmine.createSpy('createObjectURL').and.returnValue('blob:bulk-export');
-    revokeObjectUrlSpy = jasmine.createSpy('revokeObjectURL');
+    createObjectUrlSpy = vi.fn().mockReturnValue('blob:bulk-export');
+    revokeObjectUrlSpy = vi.fn();
     Object.defineProperty(URL, 'createObjectURL', {
       configurable: true,
-      value: createObjectUrlSpy
+      value: createObjectUrlSpy,
     });
     Object.defineProperty(URL, 'revokeObjectURL', {
       configurable: true,
-      value: revokeObjectUrlSpy
+      value: revokeObjectUrlSpy,
     });
-    anchorClickSpy = spyOn(HTMLAnchorElement.prototype, 'click').and.stub();
+    anchorClickSpy = vi
+      .spyOn(HTMLAnchorElement.prototype, 'click')
+      .mockImplementation(() => {});
 
     TestBed.overrideComponent(AdminBulkParkGraphUpsertsComponent, {
       set: {
@@ -74,14 +81,19 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
           @for (park of parks; track park.id) {
             <span class="park-name">{{ park.name }}</span>
           }
-        `
-      }
+        `,
+      },
     });
     await TestBed.configureTestingModule({
       imports: [AdminBulkParkGraphUpsertsComponent],
       providers: [
         ...provideCommonTestDependencies(),
-        { provide: ToastMessageService, useValue: jasmine.createSpyObj<ToastMessageService>('ToastMessageService', ['add']) }
+        {
+          provide: ToastMessageService,
+          useValue: {
+            add: vi.fn().mockName('ToastMessageService.add'),
+          },
+        },
       ],
     }).compileComponents();
 
@@ -93,11 +105,11 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     httpTestingController.verify();
     Object.defineProperty(URL, 'createObjectURL', {
       configurable: true,
-      value: originalCreateObjectUrl
+      value: originalCreateObjectUrl,
     });
     Object.defineProperty(URL, 'revokeObjectURL', {
       configurable: true,
-      value: originalRevokeObjectUrl
+      value: originalRevokeObjectUrl,
     });
   });
 
@@ -109,7 +121,9 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
   }
 
   function flushInitialParks(parks: Park[] = []): void {
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}parks?page=1&size=10`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}parks?page=1&size=10`,
+    );
     expect(request.request.method).toBe('GET');
     request.flush({
       data: parks,
@@ -117,8 +131,8 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
         totalItems: parks.length,
         totalPages: 1,
         currentPage: 1,
-        itemsPerPage: 10
-      }
+        itemsPerPage: 10,
+      },
     });
   }
 
@@ -131,7 +145,7 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
       exportedParkCount: 2,
       processedParkCount: 0,
       createdAtUtc: '2026-07-04T00:00:00Z',
-      expiresAtUtc: '2026-07-04T00:30:00Z'
+      expiresAtUtc: '2026-07-04T00:30:00Z',
     };
   }
 
@@ -142,8 +156,9 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
       progressPercentage: 100,
       processedParkCount: 2,
       fileName: 'bulk.json',
-      downloadUrl: 'https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc',
-      completedAtUtc: '2026-07-04T00:01:00Z'
+      downloadUrl:
+        'https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc',
+      completedAtUtc: '2026-07-04T00:01:00Z',
     };
   }
 
@@ -156,8 +171,8 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
         name: 'Export Park',
         countryCode: 'FR',
         latitude: 48.5,
-        longitude: 2.3
-      }
+        longitude: 2.3,
+      },
     ]);
     fixture.detectChanges();
 
@@ -177,18 +192,22 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     harness.selectedSections = [];
     harness.exportBulkJson();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`,
+    );
     expect(request.request.method).toBe('POST');
-    expect(request.request.body).toEqual(jasmine.objectContaining({
-      selectionMode: 'filtered',
-      parkIds: [],
-      searchTerm: 'closed',
-      isVisible: false,
-      adminReviewStatus: 'Validated',
-      countryCode: 'FR',
-      closedFilter: 'closedOnly',
-      sections: []
-    }));
+    expect(request.request.body).toEqual(
+      expect.objectContaining({
+        selectionMode: 'filtered',
+        parkIds: [],
+        searchTerm: 'closed',
+        isVisible: false,
+        adminReviewStatus: 'Validated',
+        countryCode: 'FR',
+        closedFilter: 'closedOnly',
+        sections: [],
+      }),
+    );
 
     request.flush(createCompletedJob());
   });
@@ -199,39 +218,54 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
 
     harness.exportBulkJson();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`,
+    );
     request.flush(createRunningJob());
-    const statusRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+    const statusRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`,
+    );
     statusRequest.flush(createRunningJob());
     fixture.detectChanges();
 
-    const exportButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('.export-action');
-    expect(harness.isExporting).toBeTrue();
-    expect(exportButton?.disabled).toBeTrue();
-    expect(fixture.nativeElement.querySelector('.export-progress')).not.toBeNull();
+    const exportButton: HTMLButtonElement | null =
+      fixture.nativeElement.querySelector('.export-action');
+    expect(harness.isExporting).toBe(true);
+    expect(exportButton?.disabled).toBe(true);
+    expect(
+      fixture.nativeElement.querySelector('.export-progress'),
+    ).not.toBeNull();
     expect(harness.exportJob?.progressPercentage).toBe(25);
   });
 
   it('does not start another status request while a slow export poll is pending', () => {
-    jasmine.clock().install();
+    vi.useFakeTimers();
     try {
       createComponent();
       flushInitialParks();
 
       harness.exportBulkJson();
 
-      const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
+      const request = httpTestingController.expectOne(
+        `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`,
+      );
       request.flush(createRunningJob('job-1'));
-      const pendingStatusRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+      const pendingStatusRequest = httpTestingController.expectOne(
+        `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`,
+      );
 
-      jasmine.clock().tick(1000);
-      httpTestingController.expectNone(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+      vi.advanceTimersByTime(1000);
+      httpTestingController.expectNone(
+        `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`,
+      );
 
       pendingStatusRequest.flush(createCompletedJob('job-1'));
-      jasmine.clock().tick(0);
-      httpTestingController.expectNone(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+      vi.advanceTimersByTime(0);
+      httpTestingController.expectNone(
+        `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`,
+      );
     } finally {
-      jasmine.clock().uninstall();
+      vi.useRealTimers();
     }
   });
 
@@ -244,43 +278,55 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     harness.selectedSections = ['ParkAudience', 'ParkLocation'];
     harness.exportBulkJson();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`);
-    expect(request.request.body).toEqual(jasmine.objectContaining({
-      selectionMode: 'explicit',
-      parkIds: ['park-1', 'park-2'],
-      sections: ['ParkAudience', 'ParkLocation']
-    }));
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs`,
+    );
+    expect(request.request.body).toEqual(
+      expect.objectContaining({
+        selectionMode: 'explicit',
+        parkIds: ['park-1', 'park-2'],
+        sections: ['ParkAudience', 'ParkLocation'],
+      }),
+    );
     request.flush(createRunningJob('job-1'));
 
-    const statusRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`);
+    const statusRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/export-jobs/job-1`,
+    );
     expect(statusRequest.request.method).toBe('GET');
     statusRequest.flush(createCompletedJob('job-1'));
 
-    expect(harness.isExporting).toBeFalse();
+    expect(harness.isExporting).toBe(false);
     expect(harness.exportJob?.status).toBe('Completed');
     fixture.detectChanges();
 
-    const downloadButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('.download-link');
+    const downloadButton: HTMLButtonElement | null =
+      fixture.nativeElement.querySelector('.download-link');
     expect(downloadButton).not.toBeNull();
-    expect(downloadButton?.disabled).toBeFalse();
+    expect(downloadButton?.disabled).toBe(false);
 
     downloadButton?.click();
 
-    const downloadRequest = httpTestingController.expectOne('https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc');
+    const downloadRequest = httpTestingController.expectOne(
+      'https://api.test/admin/park-graph-upserts/bulk/export-jobs/job-1/download?token=abc',
+    );
     expect(downloadRequest.request.method).toBe('GET');
     expect(downloadRequest.request.responseType).toBe('blob');
 
     const blob: Blob = new Blob(['{}'], { type: 'application/json' });
     downloadRequest.flush(blob, {
       headers: {
-        'content-disposition': 'attachment; filename="bulk-from-server.json"'
-      }
+        'content-disposition': 'attachment; filename="bulk-from-server.json"',
+      },
     });
 
-    expect(createObjectUrlSpy).toHaveBeenCalledOnceWith(blob);
+    expect(createObjectUrlSpy).toHaveBeenCalledTimes(1);
+
+    expect(createObjectUrlSpy).toHaveBeenCalledWith(blob);
     expect(anchorClickSpy).toHaveBeenCalled();
-    expect(revokeObjectUrlSpy).toHaveBeenCalledOnceWith('blob:bulk-export');
-    expect(harness.isDownloadingExport).toBeFalse();
+    expect(revokeObjectUrlSpy).toHaveBeenCalledTimes(1);
+    expect(revokeObjectUrlSpy).toHaveBeenCalledWith('blob:bulk-export');
+    expect(harness.isDownloadingExport).toBe(false);
   });
 
   it('sends preview bulk JSON without allowing park creation', () => {
@@ -288,10 +334,14 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     flushInitialParks();
 
     harness.replaceCollections = true;
-    harness.updateJsonText('{"documentType":"AmusementParkBulkParkGraphUpsert","parks":[{"identity":{"parkId":"park-1"}}]}');
+    harness.updateJsonText(
+      '{"documentType":"AmusementParkBulkParkGraphUpsert","parks":[{"identity":{"parkId":"park-1"}}]}',
+    );
     harness.preview();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/bulk/preview`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/bulk/preview`,
+    );
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual({
       createIfMissing: false,
@@ -301,15 +351,20 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
         parks: [
           {
             identity: {
-              parkId: 'park-1'
-            }
-          }
-        ]
-      }
+              parkId: 'park-1',
+            },
+          },
+        ],
+      },
     });
 
-    request.flush('preview failed', { status: 500, statusText: 'Server Error' });
-    expect(harness.uiError).toBe('admin.bulkParkGraphUpserts.errors.previewFailed');
+    request.flush('preview failed', {
+      status: 500,
+      statusText: 'Server Error',
+    });
+    expect(harness.uiError).toBe(
+      'admin.bulkParkGraphUpserts.errors.previewFailed',
+    );
   });
 
   it('rejects invalid JSON before previewing', () => {
@@ -319,7 +374,9 @@ describe('AdminBulkParkGraphUpsertsComponent', () => {
     harness.updateJsonText('{');
     harness.preview();
 
-    expect(harness.uiError).toBe('admin.bulkParkGraphUpserts.errors.invalidJson');
+    expect(harness.uiError).toBe(
+      'admin.bulkParkGraphUpserts.errors.invalidJson',
+    );
     expect(harness.operationErrorDetail).toBeNull();
   });
 });

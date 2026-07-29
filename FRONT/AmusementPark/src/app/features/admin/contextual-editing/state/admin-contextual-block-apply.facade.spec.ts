@@ -1,3 +1,4 @@
+import type { Mock, MockedObject } from 'vitest';
 import { signal, WritableSignal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
@@ -12,71 +13,94 @@ import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refr
 
 describe('AdminContextualBlockApplyFacade', () => {
   let facade: AdminContextualBlockApplyFacade;
-  let contextualBlocksApi: jasmine.SpyObj<ContextualBlocksApiService>;
+  let contextualBlocksApi: MockedObject<ContextualBlocksApiService>;
   let previewFacade: {
     jsonDraft: WritableSignal<string>;
     previewResult: WritableSignal<ContextualBlockPreviewResult | null>;
-    useServerResult: jasmine.Spy;
+    useServerResult: Mock;
   };
-  let refreshEvents: jasmine.SpyObj<AdminContextualBlockRefreshEvents>;
+  let refreshEvents: MockedObject<AdminContextualBlockRefreshEvents>;
 
   beforeEach(() => {
-    contextualBlocksApi = jasmine.createSpyObj<ContextualBlocksApiService>('ContextualBlocksApiService', ['applyBlock']);
+    contextualBlocksApi = {
+      applyBlock: vi.fn().mockName('ContextualBlocksApiService.applyBlock'),
+    } as unknown as MockedObject<ContextualBlocksApiService>;
     previewFacade = {
       jsonDraft: signal<string>(''),
       previewResult: signal<ContextualBlockPreviewResult | null>(null),
-      useServerResult: jasmine.createSpy('useServerResult')
+      useServerResult: vi.fn(),
     };
-    refreshEvents = jasmine.createSpyObj<AdminContextualBlockRefreshEvents>('AdminContextualBlockRefreshEvents', ['notifyBlockApplied']);
+    refreshEvents = {
+      notifyBlockApplied: vi
+        .fn()
+        .mockName('AdminContextualBlockRefreshEvents.notifyBlockApplied'),
+    } as unknown as MockedObject<AdminContextualBlockRefreshEvents>;
 
     TestBed.configureTestingModule({
       providers: [
         AdminContextualBlockApplyFacade,
         {
           provide: ADMIN_CONTEXTUAL_BLOCK_APPLY_DATA_PORT,
-          useValue: contextualBlocksApi
+          useValue: contextualBlocksApi,
         },
         {
           provide: AdminContextualBlockPreviewFacade,
-          useValue: previewFacade
+          useValue: previewFacade,
         },
         {
           provide: AdminContextualBlockRefreshEvents,
-          useValue: refreshEvents
-        }
-      ]
+          useValue: refreshEvents,
+        },
+      ],
     });
 
     facade = TestBed.inject(AdminContextualBlockApplyFacade);
   });
 
   it('applies the parsed JSON and emits a targeted refresh event', () => {
-    const block: AdminContextualBlockInstance = createBlock(['boundedJsonApply']);
-    const applyResult: ContextualBlockPreviewResult = createPreviewResult(true, true);
-    contextualBlocksApi.applyBlock.and.returnValue(of(applyResult));
+    const block: AdminContextualBlockInstance = createBlock([
+      'boundedJsonApply',
+    ]);
+    const applyResult: ContextualBlockPreviewResult = createPreviewResult(
+      true,
+      true,
+    );
+    contextualBlocksApi.applyBlock.mockReturnValue(of(applyResult));
     previewFacade.jsonDraft.set('{ "block": { "parkId": "park-1" } }');
     previewFacade.previewResult.set(createPreviewResult(true, false));
 
     facade.applyBlock(block);
 
-    expect(contextualBlocksApi.applyBlock).toHaveBeenCalledOnceWith('park.description', 'park-1', {
-      block: {
-        parkId: 'park-1'
-      }
-    });
-    expect(previewFacade.useServerResult).toHaveBeenCalledOnceWith(applyResult);
+    expect(contextualBlocksApi.applyBlock).toHaveBeenCalledTimes(1);
+
+    expect(contextualBlocksApi.applyBlock).toHaveBeenCalledWith(
+      'park.description',
+      'park-1',
+      {
+        block: {
+          parkId: 'park-1',
+        },
+      },
+    );
+    expect(previewFacade.useServerResult).toHaveBeenCalledTimes(1);
+    expect(previewFacade.useServerResult).toHaveBeenCalledWith(applyResult);
     expect(facade.applyResult()).toBe(applyResult);
     expect(facade.errorKey()).toBeNull();
-    expect(facade.isApplying()).toBeFalse();
-    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledOnceWith(jasmine.objectContaining({
-      blockType: 'park.description',
-      entityType: 'Park',
-      entityId: 'park-1'
-    }));
+    expect(facade.isApplying()).toBe(false);
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledTimes(1);
+    expect(refreshEvents.notifyBlockApplied).toHaveBeenCalledWith(
+      expect.objectContaining({
+        blockType: 'park.description',
+        entityType: 'Park',
+        entityId: 'park-1',
+      }),
+    );
   });
 
   it('requires an accepted preview before applying JSON', () => {
-    const block: AdminContextualBlockInstance = createBlock(['boundedJsonApply']);
+    const block: AdminContextualBlockInstance = createBlock([
+      'boundedJsonApply',
+    ]);
     previewFacade.jsonDraft.set('{ "block": { "parkId": "park-1" } }');
     previewFacade.previewResult.set(createPreviewResult(false, false));
 
@@ -84,24 +108,35 @@ describe('AdminContextualBlockApplyFacade', () => {
 
     expect(contextualBlocksApi.applyBlock).not.toHaveBeenCalled();
     expect(refreshEvents.notifyBlockApplied).not.toHaveBeenCalled();
-    expect(facade.errorKey()).toBe('admin.contextualBlocks.drawer.applyJsonPreviewRequired');
+    expect(facade.errorKey()).toBe(
+      'admin.contextualBlocks.drawer.applyJsonPreviewRequired',
+    );
   });
 
   it('keeps the draft and avoids refresh events when apply fails', () => {
-    contextualBlocksApi.applyBlock.and.returnValue(throwError(() => new Error('failed')));
+    contextualBlocksApi.applyBlock.mockReturnValue(
+      throwError(() => new Error('failed')),
+    );
     previewFacade.jsonDraft.set('{ "block": { "parkId": "park-1" } }');
     previewFacade.previewResult.set(createPreviewResult(true, false));
 
     facade.applyBlock(createBlock(['boundedJsonApply']));
 
-    expect(previewFacade.jsonDraft()).toBe('{ "block": { "parkId": "park-1" } }');
+    expect(previewFacade.jsonDraft()).toBe(
+      '{ "block": { "parkId": "park-1" } }',
+    );
     expect(facade.applyResult()).toBeNull();
-    expect(facade.errorKey()).toBe('admin.contextualBlocks.drawer.applyJsonError');
+    expect(facade.errorKey()).toBe(
+      'admin.contextualBlocks.drawer.applyJsonError',
+    );
     expect(refreshEvents.notifyBlockApplied).not.toHaveBeenCalled();
   });
 });
 
-function createPreviewResult(canApply: boolean, isApplied: boolean): ContextualBlockPreviewResult {
+function createPreviewResult(
+  canApply: boolean,
+  isApplied: boolean,
+): ContextualBlockPreviewResult {
   return {
     operationId: 'operation-1',
     blockType: 'park.description',
@@ -111,7 +146,7 @@ function createPreviewResult(canApply: boolean, isApplied: boolean): ContextualB
     target: {
       entityType: 'Park',
       entityId: 'park-1',
-      displayName: 'Phantasialand'
+      displayName: 'Phantasialand',
     },
     counts: {
       created: 0,
@@ -119,15 +154,17 @@ function createPreviewResult(canApply: boolean, isApplied: boolean): ContextualB
       deleted: 0,
       unchanged: 7,
       warnings: 0,
-      errors: canApply ? 0 : 1
+      errors: canApply ? 0 : 1,
     },
     changes: [],
     warnings: [],
-    errors: []
+    errors: [],
   };
 }
 
-function createBlock(capabilities: AdminContextualBlockInstance['capabilities']): AdminContextualBlockInstance {
+function createBlock(
+  capabilities: AdminContextualBlockInstance['capabilities'],
+): AdminContextualBlockInstance {
   return {
     id: 'park.description:park-1',
     type: 'park.description',
@@ -142,6 +179,6 @@ function createBlock(capabilities: AdminContextualBlockInstance['capabilities'])
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }

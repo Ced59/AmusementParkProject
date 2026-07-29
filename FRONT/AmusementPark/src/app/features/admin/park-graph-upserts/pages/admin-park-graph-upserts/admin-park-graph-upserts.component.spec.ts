@@ -2,7 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { AdminParkGraphUpsertsComponent } from './admin-park-graph-upserts.component';
 import { ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
@@ -30,7 +33,9 @@ interface AdminParkGraphUpsertsComponentHarness {
   previewResult: ParkGraphUpsertResult | null;
   searchTerm: string;
   selectedPark: Park | null;
-  selectedParkDataCompleteness: { completenessScore: number } | null;
+  selectedParkDataCompleteness: {
+    completenessScore: number;
+  } | null;
   uiError: string | null;
   addMergeDraft(): void;
   apply(): void;
@@ -53,15 +58,15 @@ describe('AdminParkGraphUpsertsComponent', () => {
   beforeEach(async () => {
     routeStub = {
       snapshot: {
-        queryParamMap: convertToParamMap({})
-      }
+        queryParamMap: convertToParamMap({}),
+      },
     };
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, AdminParkGraphUpsertsComponent],
       providers: [
         ...provideCommonTestDependencies(),
-        { provide: ActivatedRoute, useValue: routeStub }
+        { provide: ActivatedRoute, useValue: routeStub },
       ],
     }).compileComponents();
 
@@ -70,6 +75,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
 
   afterEach(() => {
     httpTestingController.verify();
+    vi.unstubAllGlobals();
   });
 
   function createComponent(queryParams: Record<string, string> = {}): void {
@@ -85,14 +91,19 @@ describe('AdminParkGraphUpsertsComponent', () => {
     }
   }
 
-  function flushParkDataCompleteness(parkId: string, completenessScore: number = 72): void {
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/${encodeURIComponent(parkId)}/data-completeness`);
+  function flushParkDataCompleteness(
+    parkId: string,
+    completenessScore: number = 72,
+  ): void {
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}parks/${encodeURIComponent(parkId)}/data-completeness`,
+    );
     expect(request.request.method).toBe('GET');
     request.flush({
       completenessScore,
       dataQualityLevel: completenessScore >= 70 ? 'Publishable' : 'Partial',
       applicableMaxPoints: 116,
-      earnedPoints: Math.round(116 * completenessScore / 100)
+      earnedPoints: Math.round((116 * completenessScore) / 100),
     });
   }
 
@@ -100,13 +111,15 @@ describe('AdminParkGraphUpsertsComponent', () => {
     createComponent();
 
     expect(harness.jsonText).toBe('');
-    expect(harness.hasJsonDraft).toBeFalse();
+    expect(harness.hasJsonDraft).toBe(false);
     expect(fixture.nativeElement.querySelector('.graph-wizard')).toBeNull();
     expect(fixture.nativeElement.querySelector('.template-list')).toBeNull();
     expect(fixture.nativeElement.querySelector('.graph-builder')).toBeNull();
     expect(fixture.nativeElement.querySelector('.history-list')).toBeNull();
 
-    const editor: HTMLTextAreaElement = fixture.nativeElement.querySelector('.json-editor') as HTMLTextAreaElement;
+    const editor: HTMLTextAreaElement = fixture.nativeElement.querySelector(
+      '.json-editor',
+    ) as HTMLTextAreaElement;
     expect(editor).not.toBeNull();
     expect(editor.value).toBe('');
     expect(editor.placeholder).toContain('AmusementParkParkGraphUpsert');
@@ -115,17 +128,23 @@ describe('AdminParkGraphUpsertsComponent', () => {
   it('keeps preview disabled until a JSON draft exists', () => {
     createComponent();
 
-    const previewButton: HTMLButtonElement = fixture.nativeElement.querySelector('.editor-actions button') as HTMLButtonElement;
-    expect(harness.canPreview).toBeFalse();
-    expect(previewButton.disabled).toBeTrue();
+    const previewButton: HTMLButtonElement =
+      fixture.nativeElement.querySelector(
+        '.editor-actions button',
+      ) as HTMLButtonElement;
+    expect(harness.canPreview).toBe(false);
+    expect(previewButton.disabled).toBe(true);
 
     harness.updateJsonText('{"merges":[]}');
     fixture.detectChanges();
 
-    expect(harness.hasJsonDraft).toBeTrue();
-    expect(harness.canPreview).toBeTrue();
-    const enabledPreviewButton: HTMLButtonElement = fixture.nativeElement.querySelector('.editor-actions button') as HTMLButtonElement;
-    expect(enabledPreviewButton.disabled).toBeFalse();
+    expect(harness.hasJsonDraft).toBe(true);
+    expect(harness.canPreview).toBe(true);
+    const enabledPreviewButton: HTMLButtonElement =
+      fixture.nativeElement.querySelector(
+        '.editor-actions button',
+      ) as HTMLButtonElement;
+    expect(enabledPreviewButton.disabled).toBe(false);
   });
 
   it('preselects the park received from the export shortcut query params', () => {
@@ -139,7 +158,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
       parkDataCompletenessScore: '64',
       parkDataQualityLevel: 'Partial',
       parkDataCompletenessEarnedPoints: '74',
-      parkDataCompletenessMaxPoints: '116'
+      parkDataCompletenessMaxPoints: '116',
     });
 
     expect(harness.selectedPark?.id).toBe('park-1');
@@ -160,31 +179,42 @@ describe('AdminParkGraphUpsertsComponent', () => {
     harness.jsonText = '{"park":{"name":"Draft"}}';
     harness.preview();
 
-    expect(harness.uiError).toBe('admin.parkGraphUpserts.errors.noParkSelected');
+    expect(harness.uiError).toBe(
+      'admin.parkGraphUpserts.errors.noParkSelected',
+    );
 
     harness.exportSelectedParkJson();
 
-    expect(harness.uiError).toBe('admin.parkGraphUpserts.errors.noParkSelected');
+    expect(harness.uiError).toBe(
+      'admin.parkGraphUpserts.errors.noParkSelected',
+    );
   });
 
   it('loads uploaded JSON files into the raw draft', () => {
     createComponent();
 
     const uploadedJson: string = '{"park":{"name":"Uploaded Park"},"items":[]}';
-    const fakeReader: Partial<FileReader> = {
-      get result(): string {
-        return uploadedJson;
-      },
-      onload: null,
-      onerror: null,
-      readAsText(): void {
-        this.onload?.call(this as FileReader, new ProgressEvent('load') as ProgressEvent<FileReader>);
-      }
-    };
-    spyOn(window, 'FileReader').and.returnValue(fakeReader as FileReader);
+    class FakeFileReader {
+      public readonly result: string = uploadedJson;
+      public onload: ((this: FileReader, event: ProgressEvent<FileReader>) => void) | null = null;
+      public onerror: ((this: FileReader, event: ProgressEvent<FileReader>) => void) | null = null;
 
-    const file: File = new File([uploadedJson], 'park.json', { type: 'application/json' });
-    const input: HTMLInputElement = { files: [file], value: 'park.json' } as unknown as HTMLInputElement;
+      public readAsText(): void {
+        this.onload?.call(
+          this as unknown as FileReader,
+          new ProgressEvent('load') as ProgressEvent<FileReader>,
+        );
+      }
+    }
+    vi.stubGlobal('FileReader', FakeFileReader);
+
+    const file: File = new File([uploadedJson], 'park.json', {
+      type: 'application/json',
+    });
+    const input: HTMLInputElement = {
+      files: [file],
+      value: 'park.json',
+    } as unknown as HTMLInputElement;
 
     harness.loadExpertJsonFile({ target: input } as unknown as Event);
 
@@ -196,13 +226,15 @@ describe('AdminParkGraphUpsertsComponent', () => {
   it('previews the raw JSON against the selected park in merge mode', () => {
     createComponent({
       parkId: 'park-1',
-      parkName: 'Selected Park'
+      parkName: 'Selected Park',
     });
 
     harness.jsonText = '{"park":{"name":"Selected Park"}}';
     harness.preview();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/preview`,
+    );
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual({
       targetParkId: 'park-1',
@@ -210,9 +242,9 @@ describe('AdminParkGraphUpsertsComponent', () => {
       replaceCollections: false,
       document: {
         park: {
-          name: 'Selected Park'
-        }
-      }
+          name: 'Selected Park',
+        },
+      },
     });
 
     request.flush({
@@ -223,26 +255,35 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 0, updated: 1, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      counts: {
+        created: 0,
+        updated: 1,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
       changes: [],
       warnings: [],
-      errors: []
+      errors: [],
     } satisfies ParkGraphUpsertResult);
 
     expect(harness.previewResult?.targetParkId).toBe('park-1');
-    expect(harness.previewResult?.canApply).toBeTrue();
+    expect(harness.previewResult?.canApply).toBe(true);
   });
 
   it('invalidates preview results when the JSON draft changes', () => {
     createComponent({
       parkId: 'park-1',
-      parkName: 'Selected Park'
+      parkName: 'Selected Park',
     });
 
     harness.jsonText = '{"park":{"name":"Selected Park"}}';
     harness.preview();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/preview`,
+    );
     request.flush({
       operationId: 'operation-1',
       mode: 'merge',
@@ -251,20 +292,27 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 0, updated: 1, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      counts: {
+        created: 0,
+        updated: 1,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
       changes: [],
       warnings: [],
-      errors: []
+      errors: [],
     } satisfies ParkGraphUpsertResult);
 
-    expect(harness.previewResult?.canApply).toBeTrue();
-    expect(harness.canApply).toBeTrue();
+    expect(harness.previewResult?.canApply).toBe(true);
+    expect(harness.canApply).toBe(true);
 
     harness.updateJsonText('{"park":{"name":"Changed Park"}}');
 
     expect(harness.previewResult).toBeNull();
     expect(harness.lastAppliedResult).toBeNull();
-    expect(harness.canApply).toBeFalse();
+    expect(harness.canApply).toBe(false);
   });
 
   it('previews a manufacturer merge without a selected park', () => {
@@ -278,14 +326,16 @@ describe('AdminParkGraphUpsertsComponent', () => {
           targetId: 'manufacturer-target',
           sections: {
             identity: 'source',
-            contactDetails: 'target'
-          }
-        }
-      ]
+            contactDetails: 'target',
+          },
+        },
+      ],
     });
     harness.preview();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/preview`,
+    );
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual({
       targetParkId: null,
@@ -299,11 +349,11 @@ describe('AdminParkGraphUpsertsComponent', () => {
             targetId: 'manufacturer-target',
             sections: {
               identity: 'source',
-              contactDetails: 'target'
-            }
-          }
-        ]
-      }
+              contactDetails: 'target',
+            },
+          },
+        ],
+      },
     });
 
     request.flush({
@@ -314,14 +364,21 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: null,
       targetParkName: null,
-      counts: { created: 0, updated: 1, deleted: 1, unchanged: 0, warnings: 0, errors: 0 },
+      counts: {
+        created: 0,
+        updated: 1,
+        deleted: 1,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
       changes: [],
       warnings: [],
-      errors: []
+      errors: [],
     } satisfies ParkGraphUpsertResult);
 
     expect(harness.uiError).toBeNull();
-    expect(harness.previewResult?.canApply).toBeTrue();
+    expect(harness.previewResult?.canApply).toBe(true);
   });
 
   it('adds a merge block to the JSON draft with section choices', () => {
@@ -342,12 +399,14 @@ describe('AdminParkGraphUpsertsComponent', () => {
       }>;
     };
 
-    expect(document.merges).toHaveSize(1);
-    expect(document.merges[0]).toEqual(jasmine.objectContaining({
-      entityType: 'ParkItem',
-      sourceId: 'source-item',
-      targetId: 'target-item'
-    }));
+    expect(document.merges).toHaveLength(1);
+    expect(document.merges[0]).toEqual(
+      expect.objectContaining({
+        entityType: 'ParkItem',
+        sourceId: 'source-item',
+        targetId: 'target-item',
+      }),
+    );
     expect(document.merges[0].sections['descriptions']).toBe('source');
     expect(document.merges[0].sections['identity']).toBe('target');
   });
@@ -355,13 +414,15 @@ describe('AdminParkGraphUpsertsComponent', () => {
   it('shows when previewed content fields will be updated', () => {
     createComponent({
       parkId: 'park-1',
-      parkName: 'Selected Park'
+      parkName: 'Selected Park',
     });
 
     harness.jsonText = '{"park":{"id":"park-1"}}';
     harness.preview();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/preview`,
+    );
     request.flush({
       operationId: 'operation-1',
       mode: 'merge',
@@ -370,7 +431,14 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 0, updated: 1, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      counts: {
+        created: 0,
+        updated: 1,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
       changes: [
         {
           entityType: 'ParkItem',
@@ -383,24 +451,26 @@ describe('AdminParkGraphUpsertsComponent', () => {
             {
               field: 'descriptions.fr',
               oldValue: 'Ancienne description',
-              newValue: 'Nouvelle description'
-            }
-          ]
-        }
+              newValue: 'Nouvelle description',
+            },
+          ],
+        },
       ],
       warnings: [],
-      errors: []
+      errors: [],
     } satisfies ParkGraphUpsertResult);
     fixture.detectChanges();
 
     expect(harness.contentChangeCount).toBe(1);
-    expect(fixture.nativeElement.querySelector('.admin-alert--info')).not.toBeNull();
+    expect(
+      fixture.nativeElement.querySelector('.admin-alert--info'),
+    ).not.toBeNull();
   });
 
   it('shows a partial apply result with the rejected image detail', () => {
     createComponent({
       parkId: 'park-1',
-      parkName: 'Selected Park'
+      parkName: 'Selected Park',
     });
 
     harness.jsonText = '{"items":[],"images":[]}';
@@ -412,15 +482,24 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 1, updated: 0, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      counts: {
+        created: 1,
+        updated: 0,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
       changes: [],
       warnings: [],
-      errors: []
+      errors: [],
     };
 
     harness.apply();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/apply`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/apply`,
+    );
     expect(request.request.method).toBe('POST');
     request.flush({
       operationId: 'operation-apply',
@@ -431,7 +510,14 @@ describe('AdminParkGraphUpsertsComponent', () => {
       appliedAtUtc: '2026-06-18T10:01:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 1, updated: 0, deleted: 0, unchanged: 0, warnings: 0, errors: 1 },
+      counts: {
+        created: 1,
+        updated: 0,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 1,
+      },
       changes: [
         {
           entityType: 'ParkItem',
@@ -440,7 +526,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
           displayName: 'Coaster',
           changeType: 'Created',
           matchedBy: 'name',
-          fields: []
+          fields: [],
         },
         {
           entityType: 'Image',
@@ -453,39 +539,53 @@ describe('AdminParkGraphUpsertsComponent', () => {
             {
               field: 'sourceUrl',
               oldValue: null,
-              newValue: 'https://cdn.example.test/photo.webp'
-            }
-          ]
-        }
+              newValue: 'https://cdn.example.test/photo.webp',
+            },
+          ],
+        },
       ],
       warnings: [],
-      errors: ["Remote image was not imported: 'https://cdn.example.test/photo.webp'."]
+      errors: [
+        "Remote image was not imported: 'https://cdn.example.test/photo.webp'.",
+      ],
     } satisfies ParkGraphUpsertResult);
     flushParkDataCompleteness('park-1', 81);
     fixture.detectChanges();
 
-    expect(harness.appliedResultMessageKey).toBe('admin.parkGraphUpserts.result.appliedPartial');
-    expect(harness.appliedResultMessageParams).toEqual({ applied: 1, failed: 1 });
-    expect(fixture.nativeElement.querySelector('.admin-alert--warning')).not.toBeNull();
-    expect(fixture.nativeElement.textContent).toContain('https://cdn.example.test/photo.webp');
+    expect(harness.appliedResultMessageKey).toBe(
+      'admin.parkGraphUpserts.result.appliedPartial',
+    );
+    expect(harness.appliedResultMessageParams).toEqual({
+      applied: 1,
+      failed: 1,
+    });
+    expect(
+      fixture.nativeElement.querySelector('.admin-alert--warning'),
+    ).not.toBeNull();
+    expect(fixture.nativeElement.textContent).toContain(
+      'https://cdn.example.test/photo.webp',
+    );
     expect(harness.selectedParkDataCompleteness?.completenessScore).toBe(81);
   });
 
   it('wraps long preview warnings inside the result panel', () => {
     createComponent({
       parkId: 'park-1',
-      parkName: 'Selected Park'
+      parkName: 'Selected Park',
     });
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     host.style.width = '360px';
-    const sourceUrl = 'https://cdn.example.test/images/this-is-a-very-long-source-url-that-must-not-overflow-mobile-screens/photo.webp';
+    const sourceUrl =
+      'https://cdn.example.test/images/this-is-a-very-long-source-url-that-must-not-overflow-mobile-screens/photo.webp';
     const warning = `Remote image skipped: sourceUrl already exists for Park 'park-1' as image 'image-existing-1': '${sourceUrl}'.`;
 
     harness.jsonText = '{"images":[]}';
     harness.preview();
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/preview`,
+    );
     request.flush({
       operationId: 'operation-1',
       mode: 'merge',
@@ -494,7 +594,14 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1-with-a-long-identifier-that-should-wrap',
       targetParkName: 'Selected Park',
-      counts: { created: 0, updated: 0, deleted: 0, unchanged: 0, warnings: 1, errors: 0 },
+      counts: {
+        created: 0,
+        updated: 0,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 1,
+        errors: 0,
+      },
       changes: [
         {
           entityType: 'Image',
@@ -507,18 +614,22 @@ describe('AdminParkGraphUpsertsComponent', () => {
             {
               field: 'sourceUrl',
               oldValue: null,
-              newValue: sourceUrl
-            }
-          ]
-        }
+              newValue: sourceUrl,
+            },
+          ],
+        },
       ],
       warnings: [warning],
-      errors: []
+      errors: [],
     } satisfies ParkGraphUpsertResult);
     fixture.detectChanges();
 
-    const warningMessage = fixture.nativeElement.querySelector('.message-list--warning .message-group p') as HTMLElement;
-    const targetCode = fixture.nativeElement.querySelector('.result-head .admin-muted code') as HTMLElement;
+    const warningMessage = fixture.nativeElement.querySelector(
+      '.message-list--warning .message-group p',
+    ) as HTMLElement;
+    const targetCode = fixture.nativeElement.querySelector(
+      '.result-head .admin-muted code',
+    ) as HTMLElement;
 
     expect(warningMessage).not.toBeNull();
     expect(getComputedStyle(warningMessage).overflowWrap).toBe('anywhere');
@@ -528,16 +639,16 @@ describe('AdminParkGraphUpsertsComponent', () => {
   it('queues a deletion and removes the source image block from the JSON draft', () => {
     createComponent({
       parkId: 'park-1',
-      parkName: 'Selected Park'
+      parkName: 'Selected Park',
     });
 
     harness.jsonText = JSON.stringify({
       images: [
         {
           imageId: 'image-1',
-          description: 'Duplicate image'
-        }
-      ]
+          description: 'Duplicate image',
+        },
+      ],
     });
     const change: ParkGraphUpsertResult['changes'][number] = {
       entityType: 'Image',
@@ -546,7 +657,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
       displayName: 'Duplicate image',
       changeType: 'Updated',
       matchedBy: 'imageId',
-      fields: []
+      fields: [],
     };
     harness.previewResult = {
       operationId: 'operation-1',
@@ -556,33 +667,48 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 0, updated: 1, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      counts: {
+        created: 0,
+        updated: 1,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
       changes: [change],
       warnings: [],
-      errors: []
+      errors: [],
     };
 
     harness.removePreviewBlock(change);
 
-    const nextDocument: { images: unknown[]; suppr: Array<{ entityType: string; id: string }> } = JSON.parse(harness.jsonText);
+    const nextDocument: {
+      images: unknown[];
+      suppr: Array<{
+        entityType: string;
+        id: string;
+      }>;
+    } = JSON.parse(harness.jsonText);
     expect(nextDocument.images).toEqual([]);
-    expect(nextDocument.suppr).toEqual([{ entityType: 'Image', id: 'image-1' }]);
+    expect(nextDocument.suppr).toEqual([
+      { entityType: 'Image', id: 'image-1' },
+    ]);
     expect(harness.previewResult?.changes).toEqual([]);
   });
 
   it('removes a newly created preview block without queuing a deletion', () => {
     createComponent({
       parkId: 'park-1',
-      parkName: 'Selected Park'
+      parkName: 'Selected Park',
     });
 
     harness.jsonText = JSON.stringify({
       items: [
         {
           key: 'new-ride',
-          name: 'Draft Ride'
-        }
-      ]
+          name: 'Draft Ride',
+        },
+      ],
     });
     const change: ParkGraphUpsertResult['changes'][number] = {
       entityType: 'ParkItem',
@@ -591,7 +717,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
       displayName: 'Draft Ride',
       changeType: 'Created',
       matchedBy: 'name',
-      fields: []
+      fields: [],
     };
     harness.previewResult = {
       operationId: 'operation-1',
@@ -601,15 +727,25 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 1, updated: 0, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      counts: {
+        created: 1,
+        updated: 0,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
       changes: [change],
       warnings: [],
-      errors: []
+      errors: [],
     };
 
     harness.removePreviewBlock(change);
 
-    const nextDocument: { items: unknown[]; suppr?: unknown } = JSON.parse(harness.jsonText);
+    const nextDocument: {
+      items: unknown[];
+      suppr?: unknown;
+    } = JSON.parse(harness.jsonText);
     expect(nextDocument.items).toEqual([]);
     expect(nextDocument.suppr).toBeUndefined();
     expect(harness.previewResult?.changes).toEqual([]);

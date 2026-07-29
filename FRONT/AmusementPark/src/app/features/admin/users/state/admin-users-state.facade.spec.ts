@@ -6,13 +6,18 @@ import { UserDto } from '@app/models/users/user_dto';
 import { UsersApiResponse } from '@app/models/users/users_api_response';
 import {
   ADMIN_USERS_STATE_USERS_API_SERVICE_PORT,
-  AdminUsersStateUsersApiServicePort
+  AdminUsersStateUsersApiServicePort,
 } from './admin-users-state-data.ports';
 import { AdminUsersStateFacade } from './admin-users-state.facade';
 
 class FakeUsersPort implements AdminUsersStateUsersApiServicePort {
-  public response$: Observable<UsersApiResponse> = of(createResponse([createUser('user-1')], createPagination(1, 10, 1)));
-  public readonly calls: { page: number; size: number }[] = [];
+  public response$: Observable<UsersApiResponse> = of(
+    createResponse([createUser('user-1')], createPagination(1, 10, 1)),
+  );
+  public readonly calls: {
+    page: number;
+    size: number;
+  }[] = [];
 
   getUsers(page: number, size: number): Observable<UsersApiResponse> {
     this.calls.push({ page, size });
@@ -32,20 +37,27 @@ function createUser(id: string): UserDto {
     preferredLanguage: 'fr',
     avatarUrl: '',
     createdAt: '2026-01-01T00:00:00Z',
-    updatedAt: '2026-01-01T00:00:00Z'
+    updatedAt: '2026-01-01T00:00:00Z',
   };
 }
 
-function createPagination(currentPage: number, itemsPerPage: number, totalItems: number): Pagination {
+function createPagination(
+  currentPage: number,
+  itemsPerPage: number,
+  totalItems: number,
+): Pagination {
   return {
     currentPage,
     itemsPerPage,
     totalItems,
-    totalPages: Math.ceil(totalItems / itemsPerPage)
+    totalPages: Math.ceil(totalItems / itemsPerPage),
   };
 }
 
-function createResponse(data: UserDto[], pagination: Pagination): UsersApiResponse {
+function createResponse(
+  data: UserDto[],
+  pagination: Pagination,
+): UsersApiResponse {
   return { data, pagination };
 }
 
@@ -59,8 +71,8 @@ describe('AdminUsersStateFacade', () => {
     TestBed.configureTestingModule({
       providers: [
         AdminUsersStateFacade,
-        { provide: ADMIN_USERS_STATE_USERS_API_SERVICE_PORT, useValue: port }
-      ]
+        { provide: ADMIN_USERS_STATE_USERS_API_SERVICE_PORT, useValue: port },
+      ],
     });
 
     facade = TestBed.inject(AdminUsersStateFacade);

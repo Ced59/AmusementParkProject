@@ -3,15 +3,19 @@ import { Observable, of, throwError } from 'rxjs';
 
 import {
   CONFIRM_ACCOUNT_PAGE_STATE_AUTH_API_SERVICE_PORT,
-  ConfirmAccountPageStateAuthApiServicePort
+  ConfirmAccountPageStateAuthApiServicePort,
 } from './confirm-account-page-state-data.ports';
 import { ConfirmAccountPageStateFacade } from './confirm-account-page-state.facade';
 
 class FakeAuthPort implements ConfirmAccountPageStateAuthApiServicePort {
-  public response$: Observable<{ message: string }> = of({ message: 'Compte confirmé.' });
+  public response$: Observable<{
+    message: string;
+  }> = of({ message: 'Compte confirmé.' });
   public readonly calls: string[] = [];
 
-  confirmEmail(token: string): Observable<{ message: string }> {
+  confirmEmail(token: string): Observable<{
+    message: string;
+  }> {
     this.calls.push(token);
     return this.response$;
   }
@@ -27,8 +31,11 @@ describe('ConfirmAccountPageStateFacade', () => {
     TestBed.configureTestingModule({
       providers: [
         ConfirmAccountPageStateFacade,
-        { provide: CONFIRM_ACCOUNT_PAGE_STATE_AUTH_API_SERVICE_PORT, useValue: port }
-      ]
+        {
+          provide: CONFIRM_ACCOUNT_PAGE_STATE_AUTH_API_SERVICE_PORT,
+          useValue: port,
+        },
+      ],
     });
 
     facade = TestBed.inject(ConfirmAccountPageStateFacade);
@@ -39,7 +46,7 @@ describe('ConfirmAccountPageStateFacade', () => {
 
     expect(port.calls).toEqual([]);
     expect(facade.currentLanguage()).toBe('fr');
-    expect(facade.isSuccess()).toBeFalse();
+    expect(facade.isSuccess()).toBe(false);
     expect(facade.message()).toBe('Le lien de confirmation est invalide.');
   });
 
@@ -47,7 +54,7 @@ describe('ConfirmAccountPageStateFacade', () => {
     facade.confirmEmail('token-1', 'fr');
 
     expect(port.calls).toEqual(['token-1']);
-    expect(facade.isSuccess()).toBeTrue();
+    expect(facade.isSuccess()).toBe(true);
     expect(facade.message()).toBe('Compte confirmé.');
   });
 
@@ -56,7 +63,7 @@ describe('ConfirmAccountPageStateFacade', () => {
 
     facade.confirmEmail('token-1', 'fr');
 
-    expect(facade.isSuccess()).toBeFalse();
+    expect(facade.isSuccess()).toBe(false);
     expect(facade.message()).toBe('Lien expiré.');
   });
 });

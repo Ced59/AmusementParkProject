@@ -11,7 +11,7 @@ describe('ServerApiBaseUrlInterceptor', () => {
       handle: (request: HttpRequest<unknown>) => {
         capturedUrl = request.url;
         return of(new HttpResponse({ status: 200 }));
-      }
+      },
     };
 
     new ServerApiBaseUrlInterceptor()
@@ -22,13 +22,17 @@ describe('ServerApiBaseUrlInterceptor', () => {
   }
 
   it('rewrites browser API urls to the SSR API base url', () => {
-    const rewrittenUrl: string = captureUrlFor(`${environment.apiBaseUrl}api/parks?page=1`);
+    const rewrittenUrl: string = captureUrlFor(
+      `${environment.apiBaseUrl}api/parks?page=1`,
+    );
 
     expect(rewrittenUrl).toBe(`${environment.ssrApiBaseUrl}api/parks?page=1`);
   });
 
   it('leaves already external or relative urls untouched', () => {
-    expect(captureUrlFor('https://cdn.example.test/image.png')).toBe('https://cdn.example.test/image.png');
+    expect(captureUrlFor('https://cdn.example.test/image.png')).toBe(
+      'https://cdn.example.test/image.png',
+    );
     expect(captureUrlFor('/assets/logo.png')).toBe('/assets/logo.png');
   });
 

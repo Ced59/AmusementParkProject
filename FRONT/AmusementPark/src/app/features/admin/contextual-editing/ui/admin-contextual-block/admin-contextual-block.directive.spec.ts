@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
 
-import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
 import { AdminContextualBlockInstance } from '../../models/admin-contextual-block.model';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
@@ -15,7 +18,7 @@ import { AdminContextualBlockDirective } from './admin-contextual-block.directiv
       <p>Visitor content</p>
     </section>
   `,
-  imports: [AdminContextualBlockDirective]
+  imports: [AdminContextualBlockDirective],
 })
 class HostComponent {
   block: AdminContextualBlockInstance | null = createBlock();
@@ -32,17 +35,17 @@ describe('AdminContextualBlockDirective', () => {
       providers: [
         ...provideCommonTestDependencies(),
         AdminPublicViewModeFacade,
-        AdminContextualBlockSelectionFacade
-      ]
+        AdminContextualBlockSelectionFacade,
+      ],
     }).compileComponents();
 
     const translateService: TranslateService = TestBed.inject(TranslateService);
     translateService.setTranslation('fr', {
       admin: {
         contextualBlocks: {
-          editAction: 'Modifier'
-        }
-      }
+          editAction: 'Modifier',
+        },
+      },
     });
     translateService.use('fr');
 
@@ -55,9 +58,11 @@ describe('AdminContextualBlockDirective', () => {
   it('does not add admin controls or attributes while edition mode is disabled', () => {
     const host: HTMLElement = getHostElement(fixture);
 
-    expect(host.querySelector('.admin-contextual-block__edit-button')).toBeNull();
-    expect(host.classList.contains('admin-contextual-block')).toBeFalse();
-    expect(host.hasAttribute('data-admin-contextual-block-type')).toBeFalse();
+    expect(
+      host.querySelector('.admin-contextual-block__edit-button'),
+    ).toBeNull();
+    expect(host.classList.contains('admin-contextual-block')).toBe(false);
+    expect(host.hasAttribute('data-admin-contextual-block-type')).toBe(false);
   });
 
   it('adds a touch-friendly edit action in edition mode', () => {
@@ -65,10 +70,14 @@ describe('AdminContextualBlockDirective', () => {
     fixture.detectChanges();
 
     const host: HTMLElement = getHostElement(fixture);
-    const button: HTMLButtonElement | null = host.querySelector('.admin-contextual-block__edit-button');
+    const button: HTMLButtonElement | null = host.querySelector(
+      '.admin-contextual-block__edit-button',
+    );
 
-    expect(host.classList.contains('admin-contextual-block')).toBeTrue();
-    expect(host.getAttribute('data-admin-contextual-block-type')).toBe('park.hero');
+    expect(host.classList.contains('admin-contextual-block')).toBe(true);
+    expect(host.getAttribute('data-admin-contextual-block-type')).toBe(
+      'park.hero',
+    );
     expect(button?.textContent?.trim()).toBe('Modifier');
   });
 
@@ -76,19 +85,27 @@ describe('AdminContextualBlockDirective', () => {
     enableEditionMode(publicViewModeFacade);
     fixture.detectChanges();
 
-    const button: HTMLButtonElement = getHostElement(fixture).querySelector('.admin-contextual-block__edit-button') as HTMLButtonElement;
+    const button: HTMLButtonElement = getHostElement(fixture).querySelector(
+      '.admin-contextual-block__edit-button',
+    ) as HTMLButtonElement;
     button.click();
     fixture.detectChanges();
 
     expect(selectionFacade.selectedBlock()?.id).toBe('park.hero:park-1');
-    expect(getHostElement(fixture).classList.contains('admin-contextual-block--selected')).toBeTrue();
+    expect(
+      getHostElement(fixture).classList.contains(
+        'admin-contextual-block--selected',
+      ),
+    ).toBe(true);
   });
 
   it('keeps visitor links usable instead of selecting the block', () => {
     enableEditionMode(publicViewModeFacade);
     fixture.detectChanges();
 
-    const link: HTMLAnchorElement = getHostElement(fixture).querySelector('a') as HTMLAnchorElement;
+    const link: HTMLAnchorElement = getHostElement(fixture).querySelector(
+      'a',
+    ) as HTMLAnchorElement;
     link.click();
     fixture.detectChanges();
 
@@ -99,12 +116,18 @@ describe('AdminContextualBlockDirective', () => {
     enableEditionMode(publicViewModeFacade);
     fixture.detectChanges();
 
-    const link: HTMLAnchorElement = getHostElement(fixture).querySelector('a') as HTMLAnchorElement;
-    const event = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true });
+    const link: HTMLAnchorElement = getHostElement(fixture).querySelector(
+      'a',
+    ) as HTMLAnchorElement;
+    const event = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      bubbles: true,
+      cancelable: true,
+    });
     link.dispatchEvent(event);
     fixture.detectChanges();
 
-    expect(event.defaultPrevented).toBeFalse();
+    expect(event.defaultPrevented).toBe(false);
     expect(selectionFacade.selectedBlock()).toBeNull();
   });
 
@@ -116,19 +139,25 @@ describe('AdminContextualBlockDirective', () => {
     fixture.detectChanges();
 
     const host: HTMLElement = getHostElement(fixture);
-    expect(host.querySelector('.admin-contextual-block__edit-button')).toBeNull();
-    expect(host.classList.contains('admin-contextual-block')).toBeFalse();
-    expect(host.hasAttribute('data-admin-contextual-block-type')).toBeFalse();
+    expect(
+      host.querySelector('.admin-contextual-block__edit-button'),
+    ).toBeNull();
+    expect(host.classList.contains('admin-contextual-block')).toBe(false);
+    expect(host.hasAttribute('data-admin-contextual-block-type')).toBe(false);
   });
 });
 
-function enableEditionMode(publicViewModeFacade: AdminPublicViewModeFacade): void {
+function enableEditionMode(
+  publicViewModeFacade: AdminPublicViewModeFacade,
+): void {
   publicViewModeFacade.setViewMode('adminPreview');
   publicViewModeFacade.setEditionModeEnabled(true);
 }
 
 function getHostElement(fixture: ComponentFixture<HostComponent>): HTMLElement {
-  return (fixture.nativeElement as HTMLElement).querySelector('section') as HTMLElement;
+  return (fixture.nativeElement as HTMLElement).querySelector(
+    'section',
+  ) as HTMLElement;
 }
 
 function createBlock(): AdminContextualBlockInstance {
@@ -146,6 +175,6 @@ function createBlock(): AdminContextualBlockInstance {
     jsonScope: ['park.id'],
     localizedLanguageCodes: [],
     locationFallbackCenter: null,
-    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']
+    adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1'],
   };
 }
