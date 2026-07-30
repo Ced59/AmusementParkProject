@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ImageDisplayViewComponent } from './image-display-view.component';
@@ -11,7 +11,10 @@ import { ImageFallbackKind, resolveImageFallbackIconClass } from '@shared/utils/
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ImageDisplayViewComponent, TranslateModule]
 })
-export class ImageDisplayComponent implements OnChanges {
+export class ImageDisplayComponent implements OnChanges, OnDestroy {
+  private static readonly MaxRetryAttempts: number = 2;
+  private static readonly RetryBaseDelayMilliseconds: number = 350;
+
   @Input() imageId: string | null = null;
   @Input() imagePathOrUrl: string | null = null;
   @Input() alt: string = '';
@@ -30,11 +33,20 @@ export class ImageDisplayComponent implements OnChanges {
   resolvedImageSrcSet: string | null = null;
   resolvedImageSizes: string | null = null;
 
-  constructor(private readonly imagesApiService: ImagesApiService) {
+  private retryAttempt: number = 0;
+  private retryTimeoutId: ReturnType<typeof setTimeout> | null = null;
+  private canRetryImageLoad: boolean = false;
+
+  constructor(
+    private readonly imagesApiService: ImagesApiService,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['imageId'] || changes['imagePathOrUrl']) {
+      this.cancelPendingRetry();
+      this.retryAttempt = 0;
       this.imageLoadFailed = false;
     }
 
@@ -47,6 +59,10 @@ export class ImageDisplayComponent implements OnChanges {
     ) {
       this.refreshResolvedImage();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.cancelPendingRetry();
   }
 
   get showImage(): boolean {
@@ -64,21 +80,52 @@ export class ImageDisplayComponent implements OnChanges {
   }
 
   onImageError(): void {
+    this.cancelPendingRetry();
+
+    if (this.canRetryImageLoad && this.retryAttempt < ImageDisplayComponent.MaxRetryAttempts) {
+      this.imageLoadFailed = true;
+      this.retryAttempt += 1;
+      const currentRetryAttempt: number = this.retryAttempt;
+
+      this.retryTimeoutId = setTimeout((): void => {
+        this.retryTimeoutId = null;
+        this.refreshResolvedImage(currentRetryAttempt);
+        this.imageLoadFailed = this.resolvedImageUrl === null;
+        this.changeDetectorRef.markForCheck();
+      }, ImageDisplayComponent.RetryBaseDelayMilliseconds * currentRetryAttempt);
+      return;
+    }
+
     this.imageLoadFailed = true;
   }
 
-  private refreshResolvedImage(): void {
+  private refreshResolvedImage(retryAttempt: number = 0): void {
     const rawValue: string | undefined = this.imagePathOrUrl?.trim() || this.imageId?.trim();
 
     if (!rawValue) {
       this.resolvedImageUrl = null;
       this.resolvedImageSrcSet = null;
       this.resolvedImageSizes = null;
+      this.canRetryImageLoad = false;
       return;
     }
 
-    this.resolvedImageUrl = this.imagesApiService.resolveImageUrl(rawValue, { width: this.srcWidth });
-    this.resolvedImageSrcSet = this.imagesApiService.buildImageSrcSet(rawValue, this.responsiveWidths);
+    this.resolvedImageUrl = retryAttempt > 0
+      ? this.imagesApiService.resolveImageUrl(rawValue, { width: this.srcWidth, retryAttempt })
+      : this.imagesApiService.resolveImageUrl(rawValue, { width: this.srcWidth });
+    this.resolvedImageSrcSet = retryAttempt > 0
+      ? this.imagesApiService.buildImageSrcSet(rawValue, this.responsiveWidths, { retryAttempt })
+      : this.imagesApiService.buildImageSrcSet(rawValue, this.responsiveWidths);
     this.resolvedImageSizes = this.resolvedImageSrcSet ? this.sizes : null;
+    this.canRetryImageLoad = !!this.imageId?.trim() || this.resolvedImageSrcSet !== null;
+  }
+
+  private cancelPendingRetry(): void {
+    if (this.retryTimeoutId === null) {
+      return;
+    }
+
+    clearTimeout(this.retryTimeoutId);
+    this.retryTimeoutId = null;
   }
 }

@@ -1,6 +1,20 @@
 {
-  "version": "4.0.13",
+  "version": "4.0.14",
   "history": [
+    {
+      "version": "4.0.14",
+      "releasedAt": "2026-07-30",
+      "labels": {
+        "fr": "Les images des galeries se chargent désormais plus fiablement.",
+        "en": "Gallery images now load more reliably.",
+        "de": "Galeriebilder werden jetzt zuverlässiger geladen.",
+        "nl": "Galerijafbeeldingen laden nu betrouwbaarder.",
+        "it": "Le immagini delle gallerie ora si caricano in modo più affidabile.",
+        "es": "Las imágenes de las galerías ahora se cargan de forma más fiable.",
+        "pl": "Obrazy w galeriach ładują się teraz bardziej niezawodnie.",
+        "pt": "As imagens das galerias carregam agora de forma mais fiável."
+      }
+    },
     {
       "version": "4.0.13",
       "releasedAt": "2026-07-30",

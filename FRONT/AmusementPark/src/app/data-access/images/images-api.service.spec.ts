@@ -128,6 +128,9 @@ describe('ImagesApiService', () => {
     expect(service.buildImageUrl('img-1', { width: 640 })).toBe(
       `${environment.imagesBaseUrl}/img-1?width=640&v=2`,
     );
+    expect(
+      service.buildImageUrl('img-1', { width: 640, retryAttempt: 1 }),
+    ).toBe(`${environment.imagesBaseUrl}/img-1?width=640&v=2&retry=1`);
     expect(service.resolveImageUrl('/images/img-1')).toBe(
       `${environment.imagesBaseUrl}/img-1`,
     );
@@ -143,6 +146,9 @@ describe('ImagesApiService', () => {
     expect(service.resolveImageUrl('img-3', { width: 960 })).toBe(
       `${environment.imagesBaseUrl}/img-3?width=960&v=2`,
     );
+    expect(
+      service.resolveImageUrl('img-3', { width: 960, retryAttempt: 2 }),
+    ).toBe(`${environment.imagesBaseUrl}/img-3?width=960&v=2&retry=2`);
     expect(service.resolveImageUrl('assets/img.png')).toBe(
       `${environment.apiBaseUrl}assets/img.png`,
     );
@@ -154,6 +160,11 @@ describe('ImagesApiService', () => {
     );
     expect(service.buildImageSrcSet('/images/img-2', [960])).toBe(
       `${environment.imagesBaseUrl}/img-2?width=960&v=2 960w`,
+    );
+    expect(
+      service.buildImageSrcSet('img-1', [320, 640], { retryAttempt: 1 }),
+    ).toBe(
+      `${environment.imagesBaseUrl}/img-1?width=320&v=2&retry=1 320w, ${environment.imagesBaseUrl}/img-1?width=640&v=2&retry=1 640w`,
     );
     expect(
       service.buildImageSrcSet('https://example.com/img.png', [640]),
