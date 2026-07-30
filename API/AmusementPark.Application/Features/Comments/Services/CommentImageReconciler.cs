@@ -105,16 +105,24 @@ public sealed class CommentImageReconciler
                 && (comment is null
                     || comment.Revision
                         >= image.CleanupCommentRevision.Value);
-            bool isLegacyReservation =
-                !image.PendingCommentRevision.HasValue;
             bool retentionExpired =
                 image.CreatedAtUtc < draftCreatedBeforeUtc;
-            // Une réservation moderne reste volontairement clôturée tant que la
-            // révision visée n'existe pas : une écriture Mongo sans accusé peut
-            // encore aboutir, même si le commentaire paraît absent ou obsolète.
+            bool reservationHardExpired =
+                image.PendingReservationExpiresAtUtc.HasValue
+                    ? image.PendingReservationExpiresAtUtc.Value <= dueBeforeUtc
+                    : retentionExpired;
+            bool reservationExplicitlyAborted =
+                !string.IsNullOrWhiteSpace(image.PendingReservationToken)
+                && image.AbortedReservationTokens.Contains(
+                    image.PendingReservationToken,
+                    StringComparer.Ordinal);
+            // La barrière de révision protège les écritures Mongo encore en vol,
+            // tandis que l'échéance dure garantit qu'une tentative sans
+            // commentaire visible ne bloque pas le brouillon indéfiniment.
             if (!revisionFenceReached
                 && !cleanupFenceReached
-                && (!isLegacyReservation || !retentionExpired))
+                && !reservationExplicitlyAborted
+                && !reservationHardExpired)
             {
                 return await this.imageRepository
                     .ReschedulePendingCommentDraftReconciliationAsync(

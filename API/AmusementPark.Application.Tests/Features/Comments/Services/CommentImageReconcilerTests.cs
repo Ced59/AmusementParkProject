@@ -46,6 +46,56 @@ public sealed class CommentImageReconcilerTests
     }
 
     [Fact]
+    public async Task ReconcileAsync_WhenPendingCreateReachedItsHardExpiry_ShouldReleaseForRecheck()
+    {
+        Image pending = CreatePendingDraft(0);
+        pending.PendingReservationExpiresAtUtc = NowUtc.AddMinutes(-1);
+        Mock<IImageRepository> images = CreateCandidateRepository(pending);
+        Mock<ICommentRepository> comments =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.GetByIdAsync(
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment?)null);
+        SetupPendingRelease(images, pending);
+
+        int result = await CreateReconciler(comments, images).ReconcileAsync(
+            NowUtc,
+            DraftCutoffUtc,
+            50,
+            CancellationToken.None);
+
+        Assert.Equal(1, result);
+        comments.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenReservationAttemptWasAborted_ShouldReleaseWithoutWaitingForExpiry()
+    {
+        Image pending = CreatePendingDraft(0);
+        pending.AbortedReservationTokens.Add("reservation-token");
+        Mock<IImageRepository> images = CreateCandidateRepository(pending);
+        Mock<ICommentRepository> comments =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.GetByIdAsync(
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment?)null);
+        SetupPendingRelease(images, pending);
+
+        int result = await CreateReconciler(comments, images).ReconcileAsync(
+            NowUtc,
+            DraftCutoffUtc,
+            50,
+            CancellationToken.None);
+
+        Assert.Equal(1, result);
+        comments.VerifyAll();
+        images.VerifyAll();
+    }
+
+    [Fact]
     public async Task ReconcileAsync_WhenUpdateRevisionIsStillStale_ShouldOnlyReschedule()
     {
         Image pending = CreatePendingDraft(4);
@@ -740,6 +790,22 @@ public sealed class CommentImageReconcilerTests
             .ReturnsAsync(true);
     }
 
+    private static void SetupPendingRelease(
+        Mock<IImageRepository> images,
+        Image pending)
+    {
+        images.Setup(value =>
+                value.ReleaseCommentDraftReservationForReconciliationAsync(
+                    pending.Id,
+                    "author-1",
+                    "comment-1",
+                    "reservation-token",
+                    pending.ReservationReconcileAfterUtc!.Value,
+                    It.Is<DateTime>(date => date > NowUtc),
+                    It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+    }
+
     private static Image CreatePublishedReuse()
     {
         Image published = CreatePublishedCleanup(5);
@@ -781,6 +847,7 @@ public sealed class CommentImageReconcilerTests
             PendingCommentId = "comment-1",
             PendingReservationToken = "reservation-token",
             PendingCommentRevision = pendingRevision,
+            PendingReservationExpiresAtUtc = NowUtc.AddHours(23),
             ReservationReconcileAfterUtc = NowUtc.AddMinutes(-1),
             CreatedAtUtc = NowUtc.AddHours(-1),
             IsPublished = false,

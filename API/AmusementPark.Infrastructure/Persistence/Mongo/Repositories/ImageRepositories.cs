@@ -21,6 +21,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class ImageRepository : IImageRepository
 {
     private static readonly TimeSpan OwnerImagesCacheDuration = TimeSpan.FromMinutes(5);
+    private static readonly TimeSpan ReservationMaximumLifetime =
+        TimeSpan.FromHours(24);
     private static long cacheVersion;
     private readonly IMongoCollection<ImageDocument> collection;
     private readonly IMemoryCache cache;
@@ -865,6 +867,7 @@ public sealed class ImageRepository : IImageRepository
 
     public async Task<Image> CreateAsync(ImageUploadRequest request, CancellationToken cancellationToken)
     {
+        DateTime nowUtc = DateTime.UtcNow;
         List<LocalizedTextDocument> captions = string.IsNullOrWhiteSpace(request.Description)
             ? new List<LocalizedTextDocument>()
             : new List<LocalizedTextDocument>
@@ -888,6 +891,8 @@ public sealed class ImageRepository : IImageRepository
             DraftOwnerId = request.OwnerType == ImageOwnerType.CommentDraft
                 ? request.OwnerId
                 : null,
+            CommentDraftUploadToken = request.CommentDraftUploadToken,
+            CleanupRequestedAt = request.CleanupRequestedAtUtc,
             IsPublished = request.IsPublished,
             OriginalFileName = request.File.FileName,
             ContentType = request.File.ContentType,
@@ -898,13 +903,85 @@ public sealed class ImageRepository : IImageRepository
             GeoLocation = request.GeoLocation is null ? null : CommonMongoMappers.ToDocument(new GeoPoint(request.GeoLocation.Latitude, request.GeoLocation.Longitude)),
             ExifMetadata = request.ExifMetadata?.ToDocument(),
             Captions = captions,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,
+            CreatedAt = nowUtc,
+            UpdatedAt = nowUtc,
         };
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
         InvalidateReadCache();
         return document.ToDomain();
+    }
+
+    public async Task<Image?> CompleteCommentDraftUploadAsync(
+        string imageId,
+        string draftOwnerId,
+        string uploadToken,
+        DateTime observedCleanupRequestedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<ImageDocument> filter =
+            BuildCompleteCommentDraftUploadFilter(
+                imageId,
+                draftOwnerId,
+                uploadToken,
+                observedCleanupRequestedAtUtc);
+        UpdateDefinition<ImageDocument> update =
+            BuildCompleteCommentDraftUploadUpdate();
+        FindOneAndUpdateOptions<ImageDocument> options =
+            new FindOneAndUpdateOptions<ImageDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+            };
+        ImageDocument? document =
+            await this.collection.FindOneAndUpdateAsync(
+                filter,
+                update,
+                options,
+                cancellationToken);
+        if (document is not null)
+        {
+            InvalidateReadCache();
+        }
+
+        return document?.ToDomain();
+    }
+
+    internal static FilterDefinition<ImageDocument>
+        BuildCompleteCommentDraftUploadFilter(
+            string imageId,
+            string draftOwnerId,
+            string uploadToken,
+            DateTime observedCleanupRequestedAtUtc)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder =
+            Builders<ImageDocument>.Filter;
+        return builder.Eq(static document => document.Id, imageId)
+            & builder.Eq(
+                static document => document.Category,
+                ImageCategory.Comment)
+            & builder.Eq(
+                static document => document.OwnerType,
+                ImageOwnerType.CommentDraft)
+            & builder.Eq(static document => document.OwnerId, draftOwnerId)
+            & builder.Eq(static document => document.IsPublished, false)
+            & builder.Eq(static document => document.PendingCommentId, null)
+            & builder.Eq(
+                static document => document.CommentDraftUploadToken,
+                uploadToken)
+            & builder.Eq(
+                static document => document.CleanupRequestedAt,
+                observedCleanupRequestedAtUtc)
+            & builder.Eq(static document => document.CleanupClaimToken, null);
+    }
+
+    internal static UpdateDefinition<ImageDocument>
+        BuildCompleteCommentDraftUploadUpdate()
+    {
+        return Builders<ImageDocument>.Update
+            .Unset(static document => document.CommentDraftUploadToken)
+            .Unset(static document => document.CleanupRequestedAt)
+            .Unset(static document => document.CleanupCommentRevision)
+            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
     }
 
     public async Task<Image?> LinkAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken)
@@ -951,6 +1028,9 @@ public sealed class ImageRepository : IImageRepository
             .Set(
                 static document => document.ReservationReconcileAfter,
                 reconcileAfterUtc)
+            .Set(
+                static document => document.PendingReservationExpiresAt,
+                reconcileAfterUtc.Add(ReservationMaximumLifetime))
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>
         {
@@ -984,6 +1064,9 @@ public sealed class ImageRepository : IImageRepository
             & builder.Eq(static document => document.OwnerId, draftOwnerId)
             & builder.Eq(static document => document.IsPublished, false)
             & builder.Eq(static document => document.CleanupClaimToken, null)
+            & builder.Not(builder.AnyEq(
+                static document => document.AbortedReservationTokens,
+                reservationToken))
             & builder.Or(
                 builder.Eq(static document => document.PendingCommentId, null)
                     & builder.Eq(static document => document.PendingReservationToken, null)
@@ -1036,6 +1119,34 @@ public sealed class ImageRepository : IImageRepository
         string? reservationToken,
         CancellationToken cancellationToken)
     {
+        bool abortRecorded = false;
+        if (!string.IsNullOrWhiteSpace(reservationToken))
+        {
+            FilterDefinitionBuilder<ImageDocument> builder =
+                Builders<ImageDocument>.Filter;
+            FilterDefinition<ImageDocument> abortFilter =
+                builder.Eq(static document => document.Id, imageId)
+                & builder.Eq(
+                    static document => document.Category,
+                    ImageCategory.Comment)
+                & builder.Eq(
+                    static document => document.OwnerType,
+                    ImageOwnerType.CommentDraft)
+                & builder.Eq(static document => document.OwnerId, draftOwnerId)
+                & builder.Eq(static document => document.IsPublished, false);
+            UpdateResult abortResult = await this.collection.UpdateOneAsync(
+                abortFilter,
+                BuildAbortCommentDraftReservationUpdate(
+                    reservationToken),
+                cancellationToken: cancellationToken);
+            if (abortResult.MatchedCount == 0)
+            {
+                return false;
+            }
+
+            abortRecorded = true;
+        }
+
         FilterDefinition<ImageDocument> filter =
             BuildPendingCommentDraftFilter(
                 imageId,
@@ -1046,6 +1157,8 @@ public sealed class ImageRepository : IImageRepository
             .Unset(static document => document.PendingCommentId)
             .Unset(static document => document.PendingReservationToken)
             .Unset(static document => document.PendingCommentRevision)
+            .Unset(
+                static document => document.PendingReservationExpiresAt)
             .Unset(static document => document.ReservationReconcileAfter)
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
         UpdateResult result = await this.collection.UpdateOneAsync(
@@ -1057,7 +1170,22 @@ public sealed class ImageRepository : IImageRepository
             InvalidateReadCache();
         }
 
-        return result.ModifiedCount > 0;
+        if (abortRecorded)
+        {
+            InvalidateReadCache();
+        }
+
+        return abortRecorded || result.ModifiedCount > 0;
+    }
+
+    internal static UpdateDefinition<ImageDocument>
+        BuildAbortCommentDraftReservationUpdate(string reservationToken)
+    {
+        return Builders<ImageDocument>.Update
+            .AddToSet(
+                static document => document.AbortedReservationTokens,
+                reservationToken)
+            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
     }
 
     public async Task<bool> ReleaseCommentDraftReservationForReconciliationAsync(
@@ -1333,6 +1461,8 @@ public sealed class ImageRepository : IImageRepository
                     static document => document.PendingReservationToken)
                 .Unset(static document => document.PendingCommentRevision)
                 .Unset(
+                    static document => document.PendingReservationExpiresAt)
+                .Unset(
                     static document => document.ReservationReconcileAfter)
                 .Unset(static document => document.CleanupClaimToken)
                 .Unset(static document => document.CleanupClaimedUntil)
@@ -1391,6 +1521,9 @@ public sealed class ImageRepository : IImageRepository
             .Unset(static document => document.PendingCommentId)
             .Unset(static document => document.PendingReservationToken)
             .Unset(static document => document.PendingCommentRevision)
+            .Unset(
+                static document => document.PendingReservationExpiresAt)
+            .Unset(static document => document.AbortedReservationTokens)
             .Unset(static document => document.ReservationReconcileAfter)
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
     }
@@ -1406,6 +1539,8 @@ public sealed class ImageRepository : IImageRepository
                 .Unset(
                     static document => document.PendingReservationToken)
                 .Unset(static document => document.PendingCommentRevision)
+                .Unset(
+                    static document => document.PendingReservationExpiresAt)
                 .Set(
                     static document => document.ReservationReconcileAfter,
                     nextReconcileAfterUtc)
@@ -1452,6 +1587,7 @@ public sealed class ImageRepository : IImageRepository
         UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
             .Set(static document => document.CleanupRequestedAt, cleanupRequestedAtUtc)
             .Unset(static document => document.CleanupCommentRevision)
+            .Unset(static document => document.CommentDraftUploadToken)
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
         UpdateResult result = await this.collection.UpdateOneAsync(
             filter,

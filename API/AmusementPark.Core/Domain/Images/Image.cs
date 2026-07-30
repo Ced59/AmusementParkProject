@@ -132,6 +132,18 @@ public sealed class Image : AuditableEntity
     public long? PendingCommentRevision { get; set; }
 
     /// <summary>
+    /// Échéance dure après laquelle une réservation sans commentaire visible
+    /// peut être libérée par la réconciliation.
+    /// </summary>
+    public DateTime? PendingReservationExpiresAtUtc { get; set; }
+
+    /// <summary>
+    /// Tokens de tentatives explicitement annulées. Une écriture Mongo tardive
+    /// portant l'un de ces tokens ne peut plus réserver le brouillon.
+    /// </summary>
+    public List<string> AbortedReservationTokens { get; set; } = new();
+
+    /// <summary>
     /// Date à partir de laquelle une suppression demandée peut être évaluée.
     /// </summary>
     public DateTime? CleanupRequestedAtUtc { get; set; }

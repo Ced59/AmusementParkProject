@@ -51,6 +51,10 @@ internal static partial class EntityMongoMappers
             PendingCommentId = document.PendingCommentId,
             PendingReservationToken = document.PendingReservationToken,
             PendingCommentRevision = document.PendingCommentRevision,
+            PendingReservationExpiresAtUtc =
+                document.PendingReservationExpiresAt,
+            AbortedReservationTokens =
+                document.AbortedReservationTokens.ToList(),
             CleanupRequestedAtUtc = usesLegacyReservationDeadline
                 ? null
                 : document.CleanupRequestedAt,
@@ -101,6 +105,10 @@ internal static partial class EntityMongoMappers
             PendingCommentId = entity.PendingCommentId,
             PendingReservationToken = entity.PendingReservationToken,
             PendingCommentRevision = entity.PendingCommentRevision,
+            PendingReservationExpiresAt =
+                entity.PendingReservationExpiresAtUtc,
+            AbortedReservationTokens =
+                entity.AbortedReservationTokens.ToList(),
             ReservationReconcileAfter =
                 entity.ReservationReconcileAfterUtc,
             CleanupRequestedAt = entity.CleanupRequestedAtUtc,

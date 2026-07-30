@@ -75,6 +75,12 @@ public interface IImageRepository
     Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken);
     Task<Image?> GetCurrentByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken);
     Task<Image> CreateAsync(ImageUploadRequest request, CancellationToken cancellationToken);
+    Task<Image?> CompleteCommentDraftUploadAsync(
+        string imageId,
+        string draftOwnerId,
+        string uploadToken,
+        DateTime observedCleanupRequestedAtUtc,
+        CancellationToken cancellationToken);
     Task<Image?> LinkAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
     Task<Image?> ReserveCommentDraftAsync(
         string imageId,

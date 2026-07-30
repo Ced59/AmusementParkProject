@@ -12,6 +12,7 @@ public sealed class ImageMongoMappersTests
     {
         DateTime cleanupRequestedAtUtc = DateTime.UtcNow.AddMinutes(5);
         DateTime reconcileAfterUtc = DateTime.UtcNow.AddMinutes(2);
+        DateTime reservationExpiresAtUtc = DateTime.UtcNow.AddHours(24);
         Image image = new Image
         {
             Id = "image-1",
@@ -23,6 +24,8 @@ public sealed class ImageMongoMappersTests
             PendingCommentId = "comment-1",
             PendingReservationToken = "reservation-token",
             PendingCommentRevision = 4,
+            PendingReservationExpiresAtUtc = reservationExpiresAtUtc,
+            AbortedReservationTokens = new List<string> { "aborted-token" },
             ReservationReconcileAfterUtc = reconcileAfterUtc,
             CleanupRequestedAtUtc = cleanupRequestedAtUtc,
             CleanupCommentRevision = 5,
@@ -41,6 +44,12 @@ public sealed class ImageMongoMappersTests
         Assert.Equal(
             image.PendingCommentRevision,
             result.PendingCommentRevision);
+        Assert.Equal(
+            image.PendingReservationExpiresAtUtc,
+            result.PendingReservationExpiresAtUtc);
+        Assert.Equal(
+            image.AbortedReservationTokens,
+            result.AbortedReservationTokens);
         Assert.Equal(
             image.ReservationReconcileAfterUtc,
             result.ReservationReconcileAfterUtc);

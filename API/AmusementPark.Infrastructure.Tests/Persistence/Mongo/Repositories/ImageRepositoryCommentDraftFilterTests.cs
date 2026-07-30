@@ -68,6 +68,69 @@ public sealed class ImageRepositoryCommentDraftFilterTests
             rendered,
             "pendingCommentRevision",
             new BsonInt64(7)));
+        Assert.True(ContainsFieldComparison(
+            rendered,
+            "abortedReservationTokens",
+            "$ne",
+            new BsonString("attempt-loser")));
+    }
+
+    [Fact]
+    public void BuildCompleteCommentDraftUploadFilter_ShouldRequireExactGuardAndNoCleanupClaim()
+    {
+        DateTime guardUtc =
+            new DateTime(2026, 7, 31, 12, 0, 0, DateTimeKind.Utc);
+        FilterDefinition<ImageDocument> filter =
+            ImageRepository.BuildCompleteCommentDraftUploadFilter(
+                "image-1",
+                "author-1",
+                "upload-token",
+                guardUtc);
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "commentDraftUploadToken",
+            new BsonString("upload-token")));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "cleanupRequestedAt",
+            new BsonDateTime(guardUtc)));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "cleanupClaimToken",
+            BsonNull.Value));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "pendingCommentId",
+            BsonNull.Value));
+    }
+
+    [Fact]
+    public void BuildCompleteCommentDraftUploadUpdate_ShouldClearOnlyTheProvisionalGuard()
+    {
+        BsonDocument rendered = Render(
+            ImageRepository.BuildCompleteCommentDraftUploadUpdate());
+        BsonDocument unset = rendered["$unset"].AsBsonDocument;
+
+        Assert.True(unset.Contains("commentDraftUploadToken"));
+        Assert.True(unset.Contains("cleanupRequestedAt"));
+        Assert.True(unset.Contains("cleanupCommentRevision"));
+        Assert.False(unset.Contains("cleanupClaimToken"));
+    }
+
+    [Fact]
+    public void BuildAbortCommentDraftReservationUpdate_ShouldPersistTheAttemptToken()
+    {
+        BsonDocument rendered = Render(
+            ImageRepository.BuildAbortCommentDraftReservationUpdate(
+                "attempt-token"));
+
+        Assert.Equal(
+            "attempt-token",
+            rendered["$addToSet"].AsBsonDocument[
+                "abortedReservationTokens"].AsString);
     }
 
     [Fact]
@@ -256,6 +319,8 @@ public sealed class ImageRepositoryCommentDraftFilterTests
 
         Assert.True(unset.Contains("pendingReservationToken"));
         Assert.True(unset.Contains("pendingCommentRevision"));
+        Assert.True(unset.Contains("pendingReservationExpiresAt"));
+        Assert.True(unset.Contains("abortedReservationTokens"));
         Assert.True(unset.Contains("reservationReconcileAfter"));
         Assert.False(unset.Contains("cleanupRequestedAt"));
         Assert.False(unset.Contains("cleanupCommentRevision"));

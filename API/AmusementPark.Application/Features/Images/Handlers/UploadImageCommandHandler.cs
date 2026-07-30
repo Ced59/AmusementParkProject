@@ -20,6 +20,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
     private const long MaximumAvatarPixels = 8_000_000;
     private const int MaximumCommentImageEdge = 8192;
     private const long MaximumCommentImagePixels = 24_000_000;
+    private static readonly TimeSpan CommentDraftRetention = TimeSpan.FromHours(24);
     private static readonly HashSet<string> AllowedAvatarContentTypes = new HashSet<string>(
         new[] { "image/jpeg", "image/png", "image/webp" },
         StringComparer.OrdinalIgnoreCase);
@@ -104,6 +105,10 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             }
 
             string imageId = Guid.NewGuid().ToString("N");
+            string? commentDraftUploadToken =
+                command.Request.Category == ImageCategory.Comment
+                    ? Guid.NewGuid().ToString("N")
+                    : null;
             string categoryPathSegment = ToPathSegment(command.Request.Category);
             string storagePath = $"{categoryPathSegment}/{imageId}";
             FilePayload persistedFile = BuildPersistedFile(command.Request, metadata);
@@ -125,6 +130,11 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 GeoLocation = IsPrivateImageCategory(command.Request.Category) ? null : metadata?.GeoLocation,
                 ExifMetadata = IsPrivateImageCategory(command.Request.Category) ? null : metadata?.ExifMetadata,
                 IsPublished = command.Request.IsPublished,
+                CommentDraftUploadToken = commentDraftUploadToken,
+                CleanupRequestedAtUtc =
+                    command.Request.Category == ImageCategory.Comment
+                        ? DateTime.UtcNow.Add(CommentDraftRetention)
+                        : null,
             };
 
             if (command.Request.Category == ImageCategory.Comment)
@@ -159,9 +169,38 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                     throw;
                 }
 
+                Image? completedDraft;
+                try
+                {
+                    completedDraft =
+                        await this.imageRepository
+                            .CompleteCommentDraftUploadAsync(
+                                draft.Id,
+                                draft.OwnerId ?? string.Empty,
+                                commentDraftUploadToken!,
+                                preparedRequest.CleanupRequestedAtUtc!.Value,
+                                CancellationToken.None);
+                }
+                catch
+                {
+                    await this.RequestCommentDraftCleanupBestEffortAsync(
+                        draft.Id,
+                        draft.OwnerId ?? string.Empty);
+                    throw;
+                }
+
+                if (completedDraft is null)
+                {
+                    await this.RequestCommentDraftCleanupBestEffortAsync(
+                        draft.Id,
+                        draft.OwnerId ?? string.Empty);
+                    throw new InvalidOperationException(
+                        "Unable to confirm the comment image draft upload.");
+                }
+
                 return ApplicationResult<UploadedImageResult>.Success(new UploadedImageResult
                 {
-                    Image = draft,
+                    Image = completedDraft,
                     SavedFiles = commentFiles,
                 });
             }
