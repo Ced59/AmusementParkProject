@@ -15,6 +15,7 @@
   [currentLang]="currentLang"
   [searchTerm]="searchTerm"
   (searchInputChanged)="onSearchInput($event)"
+  (searchSubmitted)="onSearchSubmit()"
   (clearSearchClicked)="clearSearch()"
   (mapParkSelected)="onMapParkSelected($event)"
   (regionFilterChanged)="onRegionFilterChanged($event)"

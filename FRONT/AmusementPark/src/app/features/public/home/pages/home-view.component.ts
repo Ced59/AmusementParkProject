@@ -75,6 +75,7 @@ export class HomeViewComponent {
   @Input() searchResultsHintKey: string = '';
 
   @Output() searchInputChanged: EventEmitter<string> = new EventEmitter<string>();
+  @Output() searchSubmitted: EventEmitter<void> = new EventEmitter<void>();
   @Output() categoryChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() searchCleared: EventEmitter<void> = new EventEmitter<void>();
   @Output() suggestionSelected: EventEmitter<string> = new EventEmitter<string>();
@@ -341,6 +342,10 @@ export class HomeViewComponent {
 
   onSearchInput(value: string): void {
     this.searchInputChanged.emit(value);
+  }
+
+  onSearchSubmit(): void {
+    this.searchSubmitted.emit();
   }
 
   onFilterChanged(event: { id: string; value: string | null }): void {

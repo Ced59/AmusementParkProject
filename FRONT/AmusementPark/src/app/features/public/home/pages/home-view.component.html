@@ -142,8 +142,11 @@
       [searchTerm]="searchTerm()"
       [filters]="searchFilters()"
       [compactMobile]="hasActiveSearch"
+      [showSearchAction]="true"
+      [searchInProgress]="searchState().kind === 'loading'"
       (searchTermChange)="onSearchInput($event)"
       (searchKeyDown)="onSearchKeyDown($event)"
+      (searchClicked)="onSearchSubmit()"
       (filterChanged)="onFilterChanged($event)"
       (clearClicked)="onClearSearch()">
       <p filters-subtitle class="home-command-center__subtitle">

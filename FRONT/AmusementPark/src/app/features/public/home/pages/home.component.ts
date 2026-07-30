@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, inject, signal } from '@angular/core';
-import { EMPTY, Subject } from 'rxjs';
+import { EMPTY, of, Subject, timer } from 'rxjs';
 import { Router } from '@angular/router';
-import { debounceTime, switchMap } from 'rxjs/operators';
+import { debounce, switchMap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
   protected readonly hasPerformedSearch = this.stateFacade.hasPerformedSearch;
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
-  private readonly searchSubject: Subject<void> = new Subject<void>();
+  private readonly searchSubject: Subject<HomeSearchTrigger> = new Subject<HomeSearchTrigger>();
 
   constructor(
     private readonly stateFacade: HomeStateFacade,
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
     this.stateFacade.loadFeaturedParks(this.currentLang());
 
     this.searchSubject.pipe(
-      debounceTime(300),
+      debounce((trigger: HomeSearchTrigger) => trigger.immediate ? of(0) : timer(300)),
       switchMap(() => {
         this.stateFacade.search(this.searchTerm(), this.selectedCategory(), 1, this.stateFacade.pageSize());
         return EMPTY;
@@ -98,12 +98,16 @@ export class HomeComponent implements OnInit {
 
   onSearchInput(value: string): void {
     this.searchTerm.set(value.trim());
-    this.searchSubject.next();
+    this.searchSubject.next({ immediate: false });
   }
 
   onCategoryChange(value: string): void {
     this.selectedCategory.set(value ?? '');
-    this.searchSubject.next();
+    this.searchSubject.next({ immediate: false });
+  }
+
+  onSearchSubmit(): void {
+    this.searchSubject.next({ immediate: true });
   }
 
   onClearSearch(): void {
@@ -125,4 +129,8 @@ export class HomeComponent implements OnInit {
     const rows: number = event.rows ?? this.stateFacade.pageSize();
     this.stateFacade.search(this.searchTerm(), this.selectedCategory(), page, rows);
   }
+}
+
+interface HomeSearchTrigger {
+  immediate: boolean;
 }

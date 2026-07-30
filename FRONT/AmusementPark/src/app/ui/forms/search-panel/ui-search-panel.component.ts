@@ -29,11 +29,16 @@ export class UiSearchPanelComponent {
   @Input() searchInputId: string = `ui-search-${nextUiSearchPanelId++}`;
   @Input() filters: UiSearchPanelSelectFilterModel[] = [];
   @Input() clearActionLabelKey: string = 'parks.search.clear';
+  @Input() searchActionLabelKey: string = 'actions.search';
+  @Input() searchLoadingLabelKey: string = 'actions.searching';
+  @Input() showSearchAction: boolean = false;
+  @Input() searchInProgress: boolean = false;
   @Input() showClearAction: boolean = true;
   @Input() compactMobile: boolean = false;
 
   @Output() searchTermChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() searchKeyDown: EventEmitter<KeyboardEvent> = new EventEmitter<KeyboardEvent>();
+  @Output() searchClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() filterChanged: EventEmitter<{ id: string; value: string | null }> = new EventEmitter<{ id: string; value: string | null }>();
   @Output() clearClicked: EventEmitter<void> = new EventEmitter<void>();
 
@@ -55,6 +60,14 @@ export class UiSearchPanelComponent {
 
   protected onSearchKeyDown(event: KeyboardEvent): void {
     this.searchKeyDown.emit(event);
+  }
+
+  protected search(): void {
+    if (this.searchInProgress) {
+      return;
+    }
+
+    this.searchClicked.emit();
   }
 
   protected onFilterChanged(filterId: string, value: string | null): void {
