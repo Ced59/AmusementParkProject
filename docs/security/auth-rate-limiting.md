@@ -4,6 +4,8 @@
 
 Le rate limiting global IP existant reste utile pour protéger l'API contre le bruit général, mais il ne suffit pas pour les endpoints d'authentification.
 
+Les lectures sûres (`GET` et `HEAD`) disposent d'un quota distinct de 120 requêtes par seconde et par IP. Ce quota couvre notamment les données publiques et les images : une page riche ne consomme donc plus le quota général de 30 requêtes par seconde réservé aux autres méthodes. Les limites ciblées d'authentification restent inchangées et continuent de s'appliquer en plus du quota général.
+
 M18.6 ajoute donc des limites explicites sur les routes publiques sensibles :
 
 | Policy | Endpoint concerné | Défaut prod |
@@ -32,6 +34,19 @@ Le quota global est maintenant appliqué par le middleware natif ASP.NET Core `R
   ]
 }
 ```
+
+Le quota dédié aux lectures publiques est configuré séparément :
+
+```json
+"RateLimiting": {
+  "PublicReads": {
+    "PermitLimit": 120,
+    "WindowSeconds": 1
+  }
+}
+```
+
+Les partitions de lectures et d'écritures sont séparées pour une même IP. Les téléchargements d'images ou les appels JSON d'une page ne peuvent donc plus épuiser le quota des mutations.
 
 Les policies ciblées auth restent déclarées via `EnableRateLimiting`, uniquement sur les actions sensibles. Cela évite de limiter tout le site public avec des seuils trop agressifs et rend le code plus lisible : chaque action sensible porte sa policy explicitement.
 
@@ -80,6 +95,8 @@ AUTH_RATE_LIMIT_EMAIL_CHALLENGE_LIMIT=3
 AUTH_RATE_LIMIT_EMAIL_CHALLENGE_WINDOW_SECONDS=900
 AUTH_RATE_LIMIT_PASSWORD_RESET_LIMIT=5
 AUTH_RATE_LIMIT_PASSWORD_RESET_WINDOW_SECONDS=900
+PUBLIC_READ_RATE_LIMIT=120
+PUBLIC_READ_RATE_LIMIT_WINDOW_SECONDS=1
 ```
 
 Ces variables sont propagées par `deploy/compose.prod.yml` vers les clés .NET :
@@ -87,6 +104,8 @@ Ces variables sont propagées par `deploy/compose.prod.yml` vers les clés .NET 
 ```bash
 RateLimiting__Authentication__Login__PermitLimit
 RateLimiting__Authentication__Login__WindowSeconds
+RateLimiting__PublicReads__PermitLimit
+RateLimiting__PublicReads__WindowSeconds
 ```
 
 Et ainsi de suite pour chaque policy.

@@ -23,6 +23,8 @@ public static class RateLimitingServiceCollectionExtensions
 {
     private const int InternalSsrPermitLimit = 300;
     private const int InternalSsrWindowSeconds = 1;
+    private const int PublicReadPermitLimit = 120;
+    private const int PublicReadWindowSeconds = 1;
 
     public static IServiceCollection AddApiRateLimiting(this IServiceCollection services, IConfiguration configuration)
     {
@@ -37,6 +39,11 @@ public static class RateLimitingServiceCollectionExtensions
             .Get<AuthenticationRateLimitingSettings>() ?? new AuthenticationRateLimitingSettings();
 
         FixedWindowRateLimitSettings globalSettings = GetGlobalRateLimitSettings(configuration);
+        FixedWindowRateLimitSettings publicReadSettings = configuration
+            .GetSection("RateLimiting:PublicReads")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(
+                PublicReadPermitLimit,
+                PublicReadWindowSeconds);
         FixedWindowRateLimitSettings contactSubmissionSettings = configuration
             .GetSection("RateLimiting:Contact:Submission")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 900);
@@ -66,8 +73,16 @@ public static class RateLimitingServiceCollectionExtensions
                         });
                 }
 
+                string remoteIpPartitionKey = GetRemoteIpPartitionKey(context);
+                if (IsSafeReadMethod(context.Request.Method))
+                {
+                    return RateLimitPartition.GetFixedWindowLimiter(
+                        partitionKey: $"public-read:{remoteIpPartitionKey}",
+                        factory: _ => CreateFixedWindowOptions(publicReadSettings));
+                }
+
                 return RateLimitPartition.GetFixedWindowLimiter(
-                    partitionKey: GetRemoteIpPartitionKey(context),
+                    partitionKey: $"general:{remoteIpPartitionKey}",
                     factory: _ => CreateFixedWindowOptions(globalSettings));
             });
 
@@ -145,6 +160,11 @@ public static class RateLimitingServiceCollectionExtensions
     {
         string remoteIp = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
         return $"ip:{remoteIp}";
+    }
+
+    private static bool IsSafeReadMethod(string method)
+    {
+        return HttpMethods.IsGet(method) || HttpMethods.IsHead(method);
     }
 
     private static FixedWindowRateLimitSettings GetGlobalRateLimitSettings(IConfiguration configuration)
