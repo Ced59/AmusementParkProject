@@ -14,6 +14,10 @@ public interface ICommentRepository
 
     Task<bool> IsImageReferencedAsync(string imageId, CancellationToken cancellationToken);
 
+    Task<string?> GetReferencingCommentIdAsync(
+        string imageId,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<Comment>> GetPublishedByTargetAsync(
         CommentTargetType targetType,
         string targetId,

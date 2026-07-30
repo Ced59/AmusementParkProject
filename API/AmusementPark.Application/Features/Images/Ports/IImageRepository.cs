@@ -40,6 +40,7 @@ public interface IImageRepository
         ImageOwnerType ownerType,
         string ownerId,
         DateTime observedCleanupRequestedAtUtc,
+        long? observedCleanupCommentRevision,
         string claimToken,
         CancellationToken cancellationToken);
     Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken);
@@ -51,6 +52,7 @@ public interface IImageRepository
         string draftOwnerId,
         string commentId,
         string reservationToken,
+        long pendingCommentRevision,
         DateTime reconcileAfterUtc,
         CancellationToken cancellationToken);
     Task<Image?> FinalizeCommentDraftAsync(
@@ -65,6 +67,46 @@ public interface IImageRepository
         string commentId,
         string? reservationToken,
         CancellationToken cancellationToken);
+    Task<bool> ReleaseCommentDraftReservationForReconciliationAsync(
+        string imageId,
+        string draftOwnerId,
+        string commentId,
+        string? reservationToken,
+        DateTime observedReconcileAfterUtc,
+        DateTime nextReconcileAfterUtc,
+        CancellationToken cancellationToken);
+    Task<bool> ReschedulePendingCommentDraftReconciliationAsync(
+        string imageId,
+        string draftOwnerId,
+        string commentId,
+        string? reservationToken,
+        DateTime observedReconcileAfterUtc,
+        DateTime nextReconcileAfterUtc,
+        CancellationToken cancellationToken);
+    Task<bool> RescheduleClaimedCommentDraftReconciliationAsync(
+        string imageId,
+        string draftOwnerId,
+        string claimToken,
+        DateTime nextReconcileAfterUtc,
+        CancellationToken cancellationToken);
+    Task<bool> RescheduleClaimedCommentImageCleanupAsync(
+        string imageId,
+        ImageOwnerType ownerType,
+        string ownerId,
+        DateTime observedCleanupRequestedAtUtc,
+        long? observedCleanupCommentRevision,
+        string claimToken,
+        DateTime nextCleanupRequestedAtUtc,
+        CancellationToken cancellationToken);
+    Task<Image?> RecoverClaimedReferencedCommentDraftAsync(
+        string imageId,
+        string draftOwnerId,
+        string commentId,
+        string claimToken,
+        DateTime? observedCleanupRequestedAtUtc,
+        long? observedCleanupCommentRevision,
+        DateTime safetyCleanupRequestedAtUtc,
+        CancellationToken cancellationToken);
     Task<bool> RequestCommentDraftCleanupAsync(
         string imageId,
         string draftOwnerId,
@@ -73,6 +115,7 @@ public interface IImageRepository
     Task<int> RequestCommentImagesCleanupAsync(
         IReadOnlyCollection<string> imageIds,
         string commentId,
+        long cleanupCommentRevision,
         DateTime cleanupRequestedAtUtc,
         CancellationToken cancellationToken);
     Task<Image?> SetCurrentAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);

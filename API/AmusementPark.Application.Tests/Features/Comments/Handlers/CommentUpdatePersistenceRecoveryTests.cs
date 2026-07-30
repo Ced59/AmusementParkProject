@@ -97,6 +97,7 @@ public sealed class CommentUpdatePersistenceRecoveryTests
                 It.Is<IReadOnlyCollection<string>>(ids =>
                     ids.SequenceEqual(new[] { UpdateWithImageScenario.PublishedImageId })),
                 UpdateWithImageScenario.CommentId,
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 CancellationToken.None))
             .ReturnsAsync(1);
@@ -254,6 +255,7 @@ public sealed class CommentUpdatePersistenceRecoveryTests
                     "admin-1",
                     CommentId,
                     It.IsAny<string>(),
+                    It.IsAny<long>(),
                     It.IsAny<DateTime>(),
                     this.OperationToken))
                 .Callback((
@@ -261,6 +263,7 @@ public sealed class CommentUpdatePersistenceRecoveryTests
                     string _,
                     string _,
                     string reservationToken,
+                    long _,
                     DateTime _,
                     CancellationToken _) =>
                     this.ReservationToken = reservationToken)

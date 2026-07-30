@@ -47,7 +47,8 @@ public sealed class ImageRepositoryCommentDraftFilterTests
                 "image-1",
                 "author-1",
                 "comment-1",
-                "attempt-loser");
+                "attempt-loser",
+                7);
 
         BsonDocument rendered = Render(filter);
 
@@ -63,6 +64,10 @@ public sealed class ImageRepositoryCommentDraftFilterTests
             rendered,
             "cleanupRequestedAt",
             BsonNull.Value));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "pendingCommentRevision",
+            new BsonInt64(7)));
     }
 
     [Fact]
@@ -184,7 +189,7 @@ public sealed class ImageRepositoryCommentDraftFilterTests
     }
 
     [Fact]
-    public void BuildRequestCommentImagesCleanupFilter_ShouldAllowAnActiveClaim()
+    public void BuildRequestCommentImagesCleanupFilter_ShouldMatchPublishedOrReservedDraft()
     {
         FilterDefinition<ImageDocument> filter =
             ImageRepository.BuildRequestCommentImagesCleanupFilter(
@@ -198,7 +203,57 @@ public sealed class ImageRepositoryCommentDraftFilterTests
             rendered,
             "ownerId",
             new BsonString("comment-1")));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "pendingCommentId",
+            new BsonString("comment-1")));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "ownerType",
+            new BsonString("Comment")));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "ownerType",
+            new BsonString("CommentDraft")));
         Assert.False(ContainsField(rendered, "cleanupClaimToken"));
+    }
+
+    [Fact]
+    public void BuildRequestCommentImagesCleanupUpdate_ShouldPersistRevisionFence()
+    {
+        DateTime cleanupUtc =
+            new DateTime(2026, 7, 30, 12, 0, 0, DateTimeKind.Utc);
+        UpdateDefinition<ImageDocument> update =
+            ImageRepository.BuildRequestCommentImagesCleanupUpdate(
+                8,
+                cleanupUtc);
+
+        BsonDocument set = Render(update)["$set"].AsBsonDocument;
+
+        Assert.Equal(8, set["cleanupCommentRevision"].AsInt64);
+        Assert.Equal(
+            new BsonDateTime(cleanupUtc),
+            set["cleanupRequestedAt"]);
+        Assert.Equal(
+            new BsonDateTime(cleanupUtc),
+            set["reservationReconcileAfter"]);
+    }
+
+    [Fact]
+    public void BuildFinalizeCommentDraftUpdate_ShouldPreserveNewerCleanupRequest()
+    {
+        UpdateDefinition<ImageDocument> update =
+            ImageRepository.BuildFinalizeCommentDraftUpdate(
+                "author-1",
+                "comment-1");
+
+        BsonDocument unset = Render(update)["$unset"].AsBsonDocument;
+
+        Assert.True(unset.Contains("pendingReservationToken"));
+        Assert.True(unset.Contains("pendingCommentRevision"));
+        Assert.True(unset.Contains("reservationReconcileAfter"));
+        Assert.False(unset.Contains("cleanupRequestedAt"));
+        Assert.False(unset.Contains("cleanupCommentRevision"));
     }
 
     [Fact]
@@ -212,6 +267,7 @@ public sealed class ImageRepositoryCommentDraftFilterTests
                 AmusementPark.Core.Domain.Images.ImageOwnerType.Comment,
                 "comment-1",
                 observedCleanupUtc,
+                6,
                 "claim-owner");
 
         BsonDocument rendered = Render(filter);
@@ -224,6 +280,10 @@ public sealed class ImageRepositoryCommentDraftFilterTests
             rendered,
             "cleanupRequestedAt",
             new BsonDateTime(observedCleanupUtc)));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "cleanupCommentRevision",
+            new BsonInt64(6)));
     }
 
     [Fact]
@@ -252,6 +312,7 @@ public sealed class ImageRepositoryCommentDraftFilterTests
         Assert.True(unset.Contains("cleanupClaimToken"));
         Assert.True(unset.Contains("cleanupClaimedUntil"));
         Assert.True(unset.Contains("cleanupRequestedAt"));
+        Assert.True(unset.Contains("cleanupCommentRevision"));
     }
 
     private static BsonDocument Render(FilterDefinition<ImageDocument> filter)

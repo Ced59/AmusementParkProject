@@ -74,6 +74,20 @@ public sealed class CommentRepository : ICommentRepository
         return this.commentsCollection.Find(filter).AnyAsync(cancellationToken);
     }
 
+    public async Task<string?> GetReferencingCommentIdAsync(
+        string imageId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<CommentDocument> filter =
+            Builders<CommentDocument>.Filter.AnyEq(
+                static value => value.ImageIds,
+                imageId.Trim());
+        return await this.commentsCollection
+            .Find(filter)
+            .Project(static value => value.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
     public async Task<IReadOnlyCollection<Comment>> GetPublishedByTargetAsync(
         CommentTargetType targetType,
         string targetId,

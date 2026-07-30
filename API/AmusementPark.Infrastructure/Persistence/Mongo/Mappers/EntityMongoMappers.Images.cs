@@ -19,6 +19,11 @@ internal static partial class EntityMongoMappers
 {
     public static Image ToDomain(this ImageDocument document)
     {
+        bool usesLegacyReservationDeadline =
+            document.OwnerType == ImageOwnerType.CommentDraft
+            && !string.IsNullOrWhiteSpace(document.PendingCommentId)
+            && document.ReservationReconcileAfter is null
+            && document.CleanupRequestedAt.HasValue;
         Image entity = new Image
         {
             Id = document.Id,
@@ -45,7 +50,18 @@ internal static partial class EntityMongoMappers
             DraftOwnerId = document.DraftOwnerId,
             PendingCommentId = document.PendingCommentId,
             PendingReservationToken = document.PendingReservationToken,
-            CleanupRequestedAtUtc = document.CleanupRequestedAt,
+            PendingCommentRevision = document.PendingCommentRevision,
+            CleanupRequestedAtUtc = usesLegacyReservationDeadline
+                ? null
+                : document.CleanupRequestedAt,
+            CleanupCommentRevision = usesLegacyReservationDeadline
+                ? null
+                : document.CleanupCommentRevision,
+            ReservationReconcileAfterUtc =
+                document.ReservationReconcileAfter
+                ?? (usesLegacyReservationDeadline
+                    ? document.CleanupRequestedAt
+                    : null),
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -81,7 +97,11 @@ internal static partial class EntityMongoMappers
             DraftOwnerId = entity.DraftOwnerId,
             PendingCommentId = entity.PendingCommentId,
             PendingReservationToken = entity.PendingReservationToken,
+            PendingCommentRevision = entity.PendingCommentRevision,
+            ReservationReconcileAfter =
+                entity.ReservationReconcileAfterUtc,
             CleanupRequestedAt = entity.CleanupRequestedAtUtc,
+            CleanupCommentRevision = entity.CleanupCommentRevision,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

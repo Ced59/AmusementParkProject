@@ -127,9 +127,26 @@ public sealed class Image : AuditableEntity
     public string? PendingReservationToken { get; set; }
 
     /// <summary>
-    /// Date à partir de laquelle le worker peut réconcilier ou supprimer l'image.
+    /// Révision du commentaire que la réservation attend avant d'être libérée.
+    /// </summary>
+    public long? PendingCommentRevision { get; set; }
+
+    /// <summary>
+    /// Date à partir de laquelle une suppression demandée peut être évaluée.
     /// </summary>
     public DateTime? CleanupRequestedAtUtc { get; set; }
+
+    /// <summary>
+    /// Révision que le commentaire doit avoir atteinte avant d'évaluer
+    /// cette demande de suppression. L'absence du commentaire satisfait
+    /// également cette barrière.
+    /// </summary>
+    public long? CleanupCommentRevision { get; set; }
+
+    /// <summary>
+    /// Date technique à partir de laquelle une réservation doit être réconciliée.
+    /// </summary>
+    public DateTime? ReservationReconcileAfterUtc { get; set; }
 
     public bool CanBeUsedInComment(string actorUserId, string commentId)
     {

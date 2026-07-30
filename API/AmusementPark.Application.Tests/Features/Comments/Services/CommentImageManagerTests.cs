@@ -17,6 +17,7 @@ public sealed class CommentImageManagerTests
     {
         Image draft = CreateDraft("author-1");
         string? capturedReservationToken = null;
+        long? capturedPendingRevision = null;
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository
             .Setup(value => value.GetByIdsAsync(
@@ -29,6 +30,7 @@ public sealed class CommentImageManagerTests
                 "author-1",
                 "comment-1",
                 It.IsAny<string>(),
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .Callback((
@@ -36,9 +38,13 @@ public sealed class CommentImageManagerTests
                 string _,
                 string _,
                 string reservationToken,
+                long pendingRevision,
                 DateTime _,
                 CancellationToken _) =>
-                capturedReservationToken = reservationToken)
+            {
+                capturedReservationToken = reservationToken;
+                capturedPendingRevision = pendingRevision;
+            })
             .ReturnsAsync(new Image
             {
                 Id = ImageId,
@@ -54,6 +60,7 @@ public sealed class CommentImageManagerTests
             await manager.PublishForCommentAsync(
             "author-1",
             "comment-1",
+            7,
             new[] { ImageId },
             CancellationToken.None);
 
@@ -61,7 +68,9 @@ public sealed class CommentImageManagerTests
         CommentImageReservationBatch batch =
             Assert.IsType<CommentImageReservationBatch>(result.Value);
         Assert.False(string.IsNullOrWhiteSpace(capturedReservationToken));
+        Assert.Equal(7, capturedPendingRevision);
         Assert.Equal(capturedReservationToken, batch.ReservationToken);
+        Assert.Equal(7, batch.PendingCommentRevision);
         repository.VerifyAll();
     }
 
@@ -190,6 +199,7 @@ public sealed class CommentImageManagerTests
                 It.Is<IReadOnlyCollection<string>>(ids =>
                     ids.SequenceEqual(new[] { ImageId, secondImageId })),
                 "comment-1",
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 CancellationToken.None))
             .ReturnsAsync(2);
@@ -236,6 +246,7 @@ public sealed class CommentImageManagerTests
                 It.Is<IReadOnlyCollection<string>>(ids =>
                     ids.SequenceEqual(new[] { ImageId, secondImageId })),
                 "comment-1",
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 CancellationToken.None))
             .ReturnsAsync(2);
@@ -280,6 +291,7 @@ public sealed class CommentImageManagerTests
                 It.Is<IReadOnlyCollection<string>>(ids =>
                     ids.SequenceEqual(new[] { ImageId, secondImageId })),
                 "comment-1",
+                8,
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(2);
@@ -287,6 +299,7 @@ public sealed class CommentImageManagerTests
 
         await manager.RequestRemovedCleanupAsync(
             "comment-1",
+            8,
             new[] { ImageId, secondImageId },
             CancellationToken.None);
 
@@ -328,6 +341,7 @@ public sealed class CommentImageManagerTests
                 "author-1",
                 "comment-1",
                 It.IsAny<string>(),
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .Callback((
@@ -335,6 +349,7 @@ public sealed class CommentImageManagerTests
                 string _,
                 string _,
                 string reservationToken,
+                long _,
                 DateTime _,
                 CancellationToken _) =>
                 capturedReservationToken = reservationToken)
@@ -345,6 +360,7 @@ public sealed class CommentImageManagerTests
                 "author-1",
                 "comment-1",
                 It.Is<string>(token => token == capturedReservationToken),
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((Image?)null);
@@ -402,6 +418,7 @@ public sealed class CommentImageManagerTests
                 "author-1",
                 "comment-1",
                 It.IsAny<string>(),
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(firstReserved);
@@ -411,6 +428,7 @@ public sealed class CommentImageManagerTests
                 "author-1",
                 "comment-1",
                 It.IsAny<string>(),
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("reservation failed"));

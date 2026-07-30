@@ -68,6 +68,7 @@ public sealed class ImageRepositoryCommentCleanupClaimTests
             ImageOwnerType.Comment,
             "comment-1",
             new DateTime(2026, 7, 30, 12, 0, 0, DateTimeKind.Utc),
+            null,
             "claim-owner",
             CancellationToken.None);
 
@@ -119,6 +120,7 @@ public sealed class ImageRepositoryCommentCleanupClaimTests
             ImageOwnerType.Comment,
             "comment-1",
             new DateTime(2026, 7, 30, 12, 0, 0, DateTimeKind.Utc),
+            null,
             "claim-owner",
             CancellationToken.None);
 

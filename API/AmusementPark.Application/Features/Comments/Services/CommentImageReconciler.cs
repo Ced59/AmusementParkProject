@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Core.Domain.Comments;
 using AmusementPark.Core.Domain.Images;
 
 namespace AmusementPark.Application.Features.Comments.Services;
@@ -7,6 +8,7 @@ namespace AmusementPark.Application.Features.Comments.Services;
 public sealed class CommentImageReconciler
 {
     private static readonly TimeSpan CleanupClaimLease = TimeSpan.FromMinutes(10);
+    private static readonly TimeSpan ReconciliationRetryDelay = TimeSpan.FromMinutes(5);
     private readonly ICommentRepository commentRepository;
     private readonly IImageRepository imageRepository;
     private readonly IImageBinaryStorage imageBinaryStorage;
@@ -67,30 +69,70 @@ public sealed class CommentImageReconciler
     {
         if (!string.IsNullOrWhiteSpace(image.PendingCommentId))
         {
-            bool isReferenced = await this.commentRepository.IsImageReferencedAsync(
-                image.Id,
-                cancellationToken);
             string draftOwnerId = image.DraftOwnerId ?? image.OwnerId ?? string.Empty;
-            if (isReferenced && !string.IsNullOrWhiteSpace(draftOwnerId))
+            if (string.IsNullOrWhiteSpace(draftOwnerId)
+                || !image.ReservationReconcileAfterUtc.HasValue)
             {
-                Image? finalized = await this.imageRepository.FinalizeCommentDraftAsync(
-                    image.Id,
-                    draftOwnerId,
-                    image.PendingCommentId,
-                    image.PendingReservationToken,
-                    cancellationToken);
+                return false;
+            }
+
+            Comment? comment = await this.commentRepository.GetByIdAsync(
+                image.PendingCommentId,
+                cancellationToken);
+            bool isReferenced =
+                comment?.ImageIds.Contains(image.Id, StringComparer.Ordinal)
+                == true;
+            if (isReferenced)
+            {
+                Image? finalized =
+                    await this.imageRepository.FinalizeCommentDraftAsync(
+                        image.Id,
+                        draftOwnerId,
+                        image.PendingCommentId,
+                        image.PendingReservationToken,
+                        cancellationToken);
                 return finalized is not null;
             }
 
-            if (!string.IsNullOrWhiteSpace(draftOwnerId))
+            bool revisionFenceReached =
+                image.PendingCommentRevision.HasValue
+                && comment is not null
+                && comment.Revision >= image.PendingCommentRevision.Value;
+            bool cleanupFenceReached =
+                image.CleanupRequestedAtUtc.HasValue
+                && image.CleanupRequestedAtUtc.Value <= dueBeforeUtc
+                && image.CleanupCommentRevision.HasValue
+                && (comment is null
+                    || comment.Revision
+                        >= image.CleanupCommentRevision.Value);
+            bool isLegacyReservation =
+                !image.PendingCommentRevision.HasValue;
+            bool retentionExpired =
+                image.CreatedAtUtc < draftCreatedBeforeUtc;
+            if (!revisionFenceReached
+                && !cleanupFenceReached
+                && (!isLegacyReservation || !retentionExpired))
             {
-                return await this.imageRepository.ReleaseCommentDraftReservationAsync(
+                return await this.imageRepository
+                    .ReschedulePendingCommentDraftReconciliationAsync(
+                        image.Id,
+                        draftOwnerId,
+                        image.PendingCommentId,
+                        image.PendingReservationToken,
+                        image.ReservationReconcileAfterUtc.Value,
+                        dueBeforeUtc.Add(ReconciliationRetryDelay),
+                        cancellationToken);
+            }
+
+            return await this.imageRepository
+                .ReleaseCommentDraftReservationForReconciliationAsync(
                     image.Id,
                     draftOwnerId,
                     image.PendingCommentId,
                     image.PendingReservationToken,
+                    image.ReservationReconcileAfterUtc.Value,
+                    dueBeforeUtc.Add(ReconciliationRetryDelay),
                     cancellationToken);
-            }
         }
 
         string? ownerId = Normalize(image.OwnerId);
@@ -112,6 +154,41 @@ public sealed class CommentImageReconciler
         if (!claimed)
         {
             return false;
+        }
+
+        string? referencingCommentId =
+            await this.commentRepository.GetReferencingCommentIdAsync(
+                image.Id,
+                cancellationToken);
+        if (!string.IsNullOrWhiteSpace(referencingCommentId))
+        {
+            Image? recovered = await this.imageRepository
+                .RecoverClaimedReferencedCommentDraftAsync(
+                    image.Id,
+                    ownerId,
+                    referencingCommentId,
+                    claimToken,
+                    image.CleanupRequestedAtUtc,
+                    image.CleanupCommentRevision,
+                    dueBeforeUtc.Add(ReconciliationRetryDelay),
+                    cancellationToken);
+            return recovered is not null;
+        }
+
+        bool cleanupIsDue =
+            image.CleanupRequestedAtUtc.HasValue
+            && image.CleanupRequestedAtUtc.Value <= dueBeforeUtc;
+        bool unreservedRetentionExpired =
+            image.CreatedAtUtc < draftCreatedBeforeUtc;
+        if (!cleanupIsDue && !unreservedRetentionExpired)
+        {
+            return await this.imageRepository
+                .RescheduleClaimedCommentDraftReconciliationAsync(
+                    image.Id,
+                    ownerId,
+                    claimToken,
+                    dueBeforeUtc.Add(ReconciliationRetryDelay),
+                    cancellationToken);
         }
 
         if (!string.IsNullOrWhiteSpace(image.Path)
@@ -155,9 +232,28 @@ public sealed class CommentImageReconciler
             return false;
         }
 
-        bool isReferenced = await this.commentRepository.IsImageReferencedAsync(
-            image.Id,
+        Comment? comment = await this.commentRepository.GetByIdAsync(
+            image.OwnerId,
             cancellationToken);
+        if (comment is not null
+            && image.CleanupCommentRevision.HasValue
+            && comment.Revision < image.CleanupCommentRevision.Value)
+        {
+            return await this.imageRepository
+                .RescheduleClaimedCommentImageCleanupAsync(
+                    image.Id,
+                    ImageOwnerType.Comment,
+                    image.OwnerId,
+                    image.CleanupRequestedAtUtc.Value,
+                    image.CleanupCommentRevision,
+                    claimToken,
+                    dueBeforeUtc.Add(ReconciliationRetryDelay),
+                    cancellationToken);
+        }
+
+        bool isReferenced =
+            comment?.ImageIds.Contains(image.Id, StringComparer.Ordinal)
+            == true;
         if (isReferenced)
         {
             return await this.imageRepository.CancelClaimedCommentImageCleanupAsync(
@@ -165,6 +261,7 @@ public sealed class CommentImageReconciler
                 ImageOwnerType.Comment,
                 image.OwnerId,
                 image.CleanupRequestedAtUtc.Value,
+                image.CleanupCommentRevision,
                 claimToken,
                 cancellationToken);
         }

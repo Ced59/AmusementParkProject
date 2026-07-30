@@ -28,6 +28,21 @@ public sealed class CommentImageManager
         IReadOnlyCollection<string> desiredImageIds,
         CancellationToken cancellationToken)
     {
+        return await this.PublishForCommentAsync(
+            actorUserId,
+            commentId,
+            0,
+            desiredImageIds,
+            cancellationToken);
+    }
+
+    public async Task<ApplicationResult<CommentImageReservationBatch>> PublishForCommentAsync(
+        string actorUserId,
+        string commentId,
+        long pendingCommentRevision,
+        IReadOnlyCollection<string> desiredImageIds,
+        CancellationToken cancellationToken)
+    {
         List<string> normalizedIds = NormalizeIds(desiredImageIds);
         string reservationToken = Guid.NewGuid().ToString("N");
         if (normalizedIds.Count > MaximumImagesPerComment)
@@ -42,7 +57,8 @@ public sealed class CommentImageManager
                 new CommentImageReservationBatch(
                     Array.Empty<string>(),
                     reservationToken,
-                    Array.Empty<string>()));
+                    Array.Empty<string>(),
+                    pendingCommentRevision));
         }
 
         IReadOnlyCollection<Image> images = await this.imageRepository.GetByIdsAsync(normalizedIds, cancellationToken);
@@ -80,6 +96,7 @@ public sealed class CommentImageManager
                 {
                     await this.RestorePreparedPublishedCleanupAsync(
                         commentId,
+                        pendingCommentRevision,
                         preparedCleanupImageIds);
                     return ApplicationResult<CommentImageReservationBatch>.Failure(
                         CommentApplicationErrors.ImageNotAllowed());
@@ -105,6 +122,7 @@ public sealed class CommentImageManager
 
             await this.RestorePreparedPublishedCleanupAsync(
                 commentId,
+                pendingCommentRevision,
                 cleanupImageIdsToRestore);
             throw;
         }
@@ -119,6 +137,7 @@ public sealed class CommentImageManager
                     actorUserId,
                     commentId,
                     reservationToken,
+                    pendingCommentRevision,
                     DateTime.UtcNow.Add(ReconciliationGracePeriod),
                     cancellationToken);
                 if (reserved is null)
@@ -129,7 +148,8 @@ public sealed class CommentImageManager
                         new CommentImageReservationBatch(
                             reservedImageIds,
                             reservationToken,
-                            preparedCleanupImageIds));
+                            preparedCleanupImageIds,
+                            pendingCommentRevision));
                     return ApplicationResult<CommentImageReservationBatch>.Failure(
                         CommentApplicationErrors.ImageNotAllowed());
                 }
@@ -145,7 +165,8 @@ public sealed class CommentImageManager
                 new CommentImageReservationBatch(
                     reservedImageIds,
                     reservationToken,
-                    preparedCleanupImageIds));
+                    preparedCleanupImageIds,
+                    pendingCommentRevision));
             throw;
         }
 
@@ -153,7 +174,8 @@ public sealed class CommentImageManager
             new CommentImageReservationBatch(
                 reservedImageIds,
                 reservationToken,
-                preparedCleanupImageIds));
+                preparedCleanupImageIds,
+                pendingCommentRevision));
     }
 
     public async Task<IReadOnlyCollection<string>> FinalizeForCommentAsync(
@@ -201,6 +223,19 @@ public sealed class CommentImageManager
         IReadOnlyCollection<string> removedImageIds,
         CancellationToken cancellationToken)
     {
+        await this.RequestRemovedCleanupAsync(
+            commentId,
+            0,
+            removedImageIds,
+            cancellationToken);
+    }
+
+    public async Task RequestRemovedCleanupAsync(
+        string commentId,
+        long cleanupCommentRevision,
+        IReadOnlyCollection<string> removedImageIds,
+        CancellationToken cancellationToken)
+    {
         List<string> normalizedIds = NormalizeIds(removedImageIds);
         if (normalizedIds.Count == 0)
         {
@@ -210,6 +245,7 @@ public sealed class CommentImageManager
         await this.imageRepository.RequestCommentImagesCleanupAsync(
             normalizedIds,
             commentId,
+            cleanupCommentRevision,
             DateTime.UtcNow.Add(ReconciliationGracePeriod),
             cancellationToken);
     }
@@ -277,6 +313,7 @@ public sealed class CommentImageManager
         IReadOnlyCollection<string> cleanupRestoreFailures =
             await this.RestorePreparedPublishedCleanupAsync(
                 commentId,
+                reservationBatch.PendingCommentRevision,
                 reservationBatch.PreparedCleanupImageIds);
         failedImageIds.AddRange(cleanupRestoreFailures);
 
@@ -289,11 +326,13 @@ public sealed class CommentImageManager
     {
         return this.RestorePreparedPublishedCleanupAsync(
             commentId,
+            reservationBatch.PendingCommentRevision,
             reservationBatch.PreparedCleanupImageIds);
     }
 
     private async Task<IReadOnlyCollection<string>> RestorePreparedPublishedCleanupAsync(
         string commentId,
+        long cleanupCommentRevision,
         IReadOnlyCollection<string> preparedPublishedImageIds)
     {
         if (preparedPublishedImageIds.Count == 0)
@@ -305,10 +344,11 @@ public sealed class CommentImageManager
         {
             int restoredCount =
                 await this.imageRepository.RequestCommentImagesCleanupAsync(
-                preparedPublishedImageIds,
-                commentId,
-                DateTime.UtcNow.Add(ReconciliationGracePeriod),
-                CancellationToken.None);
+                    preparedPublishedImageIds,
+                    commentId,
+                    cleanupCommentRevision,
+                    DateTime.UtcNow.Add(ReconciliationGracePeriod),
+                    CancellationToken.None);
             return restoredCount == preparedPublishedImageIds.Count
                 ? Array.Empty<string>()
                 : preparedPublishedImageIds;

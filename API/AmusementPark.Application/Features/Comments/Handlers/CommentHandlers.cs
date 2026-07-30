@@ -84,7 +84,7 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
         ApplicationResult<CommentImageReservationBatch> imageResult =
             await this.commentImageManager.PublishForCommentAsync(
             author!.Id,
-            commentId,
+            commentId, 0,
             imageIds,
             cancellationToken);
         if (!imageResult.IsSuccess || imageResult.Value is null)
@@ -257,7 +257,7 @@ public sealed class UpdateCommentCommandHandler
         ApplicationResult<CommentImageReservationBatch> imageResult =
             await this.commentImageManager.PublishForCommentAsync(
             actor.Id,
-            comment.Id,
+            comment.Id, checked(comment.Revision + 1),
             imageIds,
             cancellationToken);
         if (!imageResult.IsSuccess || imageResult.Value is null)
@@ -271,7 +271,7 @@ public sealed class UpdateCommentCommandHandler
                 .Except(imageIds, StringComparer.Ordinal)
                 .ToList();
             await this.commentImageManager.RequestRemovedCleanupAsync(
-                comment.Id,
+                comment.Id, checked(comment.Revision + 1),
                 removedImageIds,
                 cancellationToken);
         }
@@ -375,7 +375,7 @@ public sealed class DeleteCommentCommandHandler : ICommandHandler<DeleteCommentC
         }
 
         await this.commentImageManager.RequestRemovedCleanupAsync(
-            comment.Id,
+            comment.Id, checked(comment.Revision + 1),
             comment.ImageIds,
             cancellationToken);
         bool deleted = await this.commentRepository.DeleteAsync(

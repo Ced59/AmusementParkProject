@@ -339,6 +339,18 @@ public sealed partial class MongoDatabaseInitializer
                 }),
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.ReservationReconcileAfter)
+                    .Ascending(item => item.CreatedAt),
+                new CreateIndexOptions<ImageDocument>
+                {
+                    Name = "idx_images_comment_reservation_reconcile_due",
+                    PartialFilterExpression =
+                        Builders<ImageDocument>.Filter.Exists(
+                            static item => item.ReservationReconcileAfter),
+                }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
                     .Text(item => item.OriginalFileName)
                     .Text(item => item.Description)
                     .Text(item => item.Path)

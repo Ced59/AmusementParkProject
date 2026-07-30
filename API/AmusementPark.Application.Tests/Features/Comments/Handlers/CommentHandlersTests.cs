@@ -326,6 +326,7 @@ public sealed class CommentHandlersTests
                 "admin-1",
                 "comment-1",
                 It.IsAny<string>(),
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .Callback((
@@ -333,6 +334,7 @@ public sealed class CommentHandlersTests
                 string _,
                 string _,
                 string reservationToken,
+                long _,
                 DateTime _,
                 CancellationToken _) =>
                 capturedReservationToken = reservationToken)
@@ -347,6 +349,7 @@ public sealed class CommentHandlersTests
         images.Setup(value => value.RequestCommentImagesCleanupAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { existingImageId })),
                 "comment-1",
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 CancellationToken.None))
             .ReturnsAsync(1);
@@ -411,6 +414,7 @@ public sealed class CommentHandlersTests
                 "admin-1",
                 "comment-1",
                 It.IsAny<string>(),
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Image
@@ -425,6 +429,7 @@ public sealed class CommentHandlersTests
         images.Setup(value => value.RequestCommentImagesCleanupAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { removedImageId })),
                 "comment-1",
+                It.Is<long>(revision => revision == existing.Revision + 1),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("Cleanup failed."));
@@ -606,6 +611,52 @@ public sealed class CommentHandlersTests
         Assert.True(result.IsSuccess);
         commentRepository.VerifyAll();
         userRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteAsync_WhenCommentHasImage_ShouldFenceCleanupAtNextRevision()
+    {
+        const string imageId = "abcdef0123456789abcdef0123456789";
+        Comment existing = CreateComment(
+            "comment-1",
+            false,
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+        existing.Revision = 7;
+        existing.ImageIds = new List<string> { imageId };
+        Mock<ICommentRepository> comments =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.Setup(value => value.GetByIdAsync(
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        comments.Setup(value => value.DeleteAsync(
+                "comment-1",
+                7,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<IImageRepository> images =
+            new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(value => value.RequestCommentImagesCleanupAsync(
+                It.Is<IReadOnlyCollection<string>>(ids =>
+                    ids.SequenceEqual(new[] { imageId })),
+                "comment-1",
+                8,
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(1);
+        Mock<IUserRepository> users = CreateAdminUserRepository();
+        DeleteCommentCommandHandler handler = new DeleteCommentCommandHandler(
+            comments.Object,
+            users.Object,
+            new CommentImageManager(images.Object));
+
+        ApplicationResult result = await handler.HandleAsync(
+            new DeleteCommentCommand("admin-1", "comment-1"));
+
+        Assert.True(result.IsSuccess);
+        comments.VerifyAll();
+        images.VerifyAll();
+        users.VerifyAll();
     }
 
     [Fact]
@@ -847,6 +898,7 @@ public sealed class CommentHandlersTests
                 "admin-1",
                 It.IsAny<string>(),
                 It.IsAny<string>(),
+                It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
             .Callback((
@@ -854,6 +906,7 @@ public sealed class CommentHandlersTests
                 string _ownerId,
                 string _commentId,
                 string reservationToken,
+                long _pendingCommentRevision,
                 DateTime _reconcileAfterUtc,
                 CancellationToken _cancellationToken) =>
                 capturedReservationToken = reservationToken)
@@ -1063,6 +1116,7 @@ public sealed class CommentHandlersTests
                 "admin-1",
                 It.IsAny<string>(),
                 It.IsAny<string>(),
+                It.Is<long>(revision => revision == 0),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
                 .Callback((
@@ -1070,6 +1124,7 @@ public sealed class CommentHandlersTests
                     string _,
                     string commentId,
                     string reservationToken,
+                    long _,
                     DateTime _,
                     CancellationToken _) =>
                 {
