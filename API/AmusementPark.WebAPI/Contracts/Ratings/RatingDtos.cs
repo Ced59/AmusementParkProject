@@ -23,6 +23,8 @@ public sealed class RatingSummaryDto
     public double AverageRating { get; set; }
 
     public double BayesianScore { get; set; }
+
+    public int? Rank { get; set; }
 }
 
 public sealed class UserRatingDto
@@ -152,4 +154,60 @@ public sealed class ParkRatingRankingDto
     public double ItemsAverageRating { get; set; }
 
     public IReadOnlyCollection<ParkRatingRankingCategoryDto> Categories { get; set; } = Array.Empty<ParkRatingRankingCategoryDto>();
+}
+
+public sealed class ParkItemRatingRankingDto
+{
+    public int Rank { get; set; }
+
+    public string TargetId { get; set; } = string.Empty;
+
+    public string TargetName { get; set; } = string.Empty;
+
+    public string ParkId { get; set; } = string.Empty;
+
+    public string ParkName { get; set; } = string.Empty;
+
+    public string ParkItemCategory { get; set; } = string.Empty;
+
+    public string? ParkItemType { get; set; }
+
+    public long RatingCount { get; set; }
+
+    public double AverageRating { get; set; }
+
+    public double BayesianScore { get; set; }
+}
+
+public sealed class UserParkRatingRankingCategoryDto
+{
+    public string ParkItemCategory { get; set; } = string.Empty;
+
+    public double AverageRating { get; set; }
+
+    public IReadOnlyCollection<UserRatingListItemDto> Items { get; set; } = Array.Empty<UserRatingListItemDto>();
+}
+
+public sealed class UserParkRatingRankingDto
+{
+    public int Rank { get; set; }
+
+    public string ParkId { get; set; } = string.Empty;
+
+    public string ParkName { get; set; } = string.Empty;
+
+    public int RatingCount { get; set; }
+
+    public double AverageRating { get; set; }
+
+    public UserRatingListItemDto? ParkRating { get; set; }
+
+    public IReadOnlyCollection<UserParkRatingRankingCategoryDto> Categories { get; set; } = Array.Empty<UserParkRatingRankingCategoryDto>();
+}
+
+public sealed class UserParkItemRatingRankingDto
+{
+    public int Rank { get; set; }
+
+    public UserRatingListItemDto Rating { get; set; } = new UserRatingListItemDto();
 }

@@ -16,7 +16,8 @@
       "errorMessage": "Non è possibile salvare la valutazione ora.",
       "removeErrorMessage": "Non è possibile cancellare la tua valutazione ora.",
       "savedToast": "La tua valutazione è stata salvata.",
-      "removedToast": "La tua valutazione è stata cancellata."
+      "removedToast": "La tua valutazione è stata cancellata.",
+      "rankLabel": "N. {{rank}} in classifica"
     },
     "tree": {
       "detailAction": "Vedi dettaglio",
@@ -25,10 +26,10 @@
       "scoreAria": "Valutazione {{value}} su 5"
     },
     "profile": {
-      "kicker": "Le mie valutazioni",
-      "title": "Le tue note di visita",
-      "subtitle": "Ritrova i luoghi valutati e i parchi che emergono di più nelle tue scelte.",
-      "loading": "Caricamento valutazioni...",
+      "kicker": "La mia classifica",
+      "title": "La tua classifica personale",
+      "subtitle": "Ordina i parchi e i luoghi che hai valutato secondo le tue preferenze.",
+      "loading": "Caricamento della tua classifica...",
       "emptyTitle": "Ancora nessuna valutazione",
       "emptyText": "Valuta un parco o un luogo per iniziare la tua vista personale.",
       "stats": {
@@ -41,13 +42,18 @@
       "byKind": "Per tipo",
       "unknownPark": "Parco collegato",
       "communityAverage": "Media",
-      "searchLabel": "Cerca nei parchi valutati",
-      "searchPlaceholder": "Trova un parco nelle tue valutazioni",
+      "filtersLabel": "Filtra la tua classifica",
+      "searchLabel": "Cerca nella tua classifica",
+      "searchPlaceholder": "Trova un parco nella tua classifica",
+      "parkItemSearchPlaceholder": "Trova un luogo o il suo parco",
+      "yourRatingLabel": "La tua valutazione",
       "searchAction": "Cerca",
       "clearSearch": "Cancella ricerca",
       "ratingCount": { "one": "{{count}} valutazione", "few": "{{count}} valutazioni", "many": "{{count}} valutazioni", "other": "{{count}} valutazioni" },
       "loadMore": "Carica altre valutazioni",
-      "loadingMore": "Caricamento valutazioni..."
+      "loadingMore": "Caricamento parchi...",
+      "loadMoreItems": "Carica altri luoghi",
+      "loadingMoreItems": "Caricamento luoghi..."
     },
     "rankings": {
       "kicker": "Preferiti dai visitatori",
@@ -74,12 +80,17 @@
       "rankingScore": "Punteggio aggregato in classifica",
       "parkSignal": "Valutazione diretta del parco",
       "itemsSignal": "Media di tutti i luoghi",
-      "searchLabel": "Cerca un parco nelle classifiche",
+      "attractionTypeLabel": "Tipo di attrazione",
+      "allAttractionTypes": "Tutti i tipi di attrazione",
+      "searchLabel": "Cerca nella classifica",
       "searchPlaceholder": "Trova un parco in classifica",
+      "parkItemSearchPlaceholder": "Trova un luogo o il suo parco",
       "searchAction": "Cerca",
       "clearSearch": "Cancella ricerca",
       "loadMore": "Carica altri parchi",
-      "loadingMore": "Caricamento parchi..."
+      "loadingMore": "Caricamento parchi...",
+      "loadMoreItems": "Carica altri luoghi",
+      "loadingMoreItems": "Caricamento luoghi..."
     },
     "targetTypes": {
       "Park": "Parchi",

@@ -8,7 +8,10 @@ public sealed record RatingSummaryResult(
     string TargetId,
     long RatingCount,
     double AverageRating,
-    double BayesianScore);
+    double BayesianScore)
+{
+    public int? Rank { get; init; }
+}
 
 public sealed record RatingTargetMetadataResult(
     RatingTargetType TargetType,
@@ -100,3 +103,33 @@ public sealed record ParkRatingRankingResult(
     long ItemsRatingCount,
     double ItemsAverageRating,
     IReadOnlyCollection<ParkRatingRankingCategoryResult> Categories);
+
+public sealed record ParkItemRatingRankingResult(
+    int Rank,
+    string TargetId,
+    string TargetName,
+    string ParkId,
+    string ParkName,
+    ParkItemCategory ParkItemCategory,
+    ParkItemType? ParkItemType,
+    long RatingCount,
+    double AverageRating,
+    double BayesianScore);
+
+public sealed record UserParkRatingRankingCategoryResult(
+    ParkItemCategory ParkItemCategory,
+    double AverageRating,
+    IReadOnlyCollection<UserRatingListItemResult> Items);
+
+public sealed record UserParkRatingRankingResult(
+    int Rank,
+    string ParkId,
+    string ParkName,
+    int RatingCount,
+    double AverageRating,
+    UserRatingListItemResult? ParkRating,
+    IReadOnlyCollection<UserParkRatingRankingCategoryResult> Categories);
+
+public sealed record UserParkItemRatingRankingResult(
+    int Rank,
+    UserRatingListItemResult Rating);

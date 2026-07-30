@@ -4,7 +4,7 @@
     "placeWithCount": { "one": "{{count}} miejsce", "few": "{{count}} miejsca", "many": "{{count}} miejsc", "other": "{{count}} miejsca" },
     "rollerCoaster": { "one": "Kolejka górska", "few": "Kolejki górskie", "many": "Kolejek górskich", "other": "Kolejki górskiej" },
     "waterRide": { "one": "Atrakcja wodna", "few": "Atrakcje wodne", "many": "Atrakcji wodnych", "other": "Atrakcji wodnej" },
-    "flatRide": { "one": "Karuzela", "few": "Karuzele", "many": "Karuzel", "other": "Karuzeli" },
+    "flatRide": { "one": "Flat ride", "few": "Flat ride’y", "many": "Flat ride’ów", "other": "Flat ride’a" },
     "darkRide": { "one": "Mroczna przejażdżka", "few": "Mroczne przejażdżki", "many": "Mrocznych przejażdżek", "other": "Mrocznej przejażdżki" },
     "manufacturerFound": { "one": "Znaleziono {{count}} producenta", "few": "Znaleziono {{count}} producentów", "many": "Znaleziono {{count}} producentów", "other": "Znaleziono {{count}} producenta" },
     "parkOnMap": { "one": "{{count}} park na mapie", "few": "{{count}} parki na mapie", "many": "{{count}} parków na mapie", "other": "{{count}} parku na mapie" },

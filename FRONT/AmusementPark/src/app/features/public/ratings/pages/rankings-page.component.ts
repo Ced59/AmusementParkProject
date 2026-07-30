@@ -3,12 +3,23 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ParkRatingRanking, ParkRatingRankingCategory, ParkRatingRankingItem } from '@app/models/ratings/rating.models';
+import {
+  ParkItemRatingRanking,
+  ParkRatingRanking,
+  ParkRatingRankingCategory,
+  ParkRatingRankingItem
+} from '@app/models/ratings/rating.models';
+import { ParkItemType } from '@app/models/parks/park-item-type';
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
 import { RatingTreeComponent, RatingTreePark } from '@shared/components/rating-tree/rating-tree.component';
+import {
+  RatingRankingListComponent,
+  RatingRankingListItem
+} from '@shared/components/rating-ranking-list/rating-ranking-list.component';
 import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { ATTRACTION_TYPE_OPTIONS, TranslationOption } from '@shared/utils/display/display-options';
 import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
 import { RankingsStateFacade } from '../state/rankings-state.facade';
 
@@ -26,6 +37,7 @@ interface RankingFilter {
   providers: [RankingsStateFacade],
   imports: [
     RatingTreeComponent,
+    RatingRankingListComponent,
     TranslateModule,
     UiButtonDirective,
     UiSectionHeaderComponent
@@ -41,13 +53,44 @@ export class RankingsPageComponent implements OnInit {
     { key: 'services', labelKey: 'ratings.rankings.filters.services', category: 'Service' }
   ];
   protected readonly currentFilter = signal<RankingFilter>(this.filters[0]);
+  protected readonly selectedAttractionType = signal<ParkItemType | null>(null);
+  protected readonly attractionTypeOptions: ReadonlyArray<TranslationOption<ParkItemType>> = ATTRACTION_TYPE_OPTIONS;
   protected readonly currentLang = signal<string>('en');
   protected readonly loading: Signal<boolean> = this.stateFacade.loading;
   protected readonly loadingMore: Signal<boolean> = this.stateFacade.loadingMore;
   protected readonly hasMore: Signal<boolean> = this.stateFacade.hasMore;
   protected readonly items: Signal<ParkRatingRanking[]> = this.stateFacade.items;
+  protected readonly parkItems: Signal<ParkItemRatingRanking[]> = this.stateFacade.parkItems;
+  protected readonly isParkItemRanking: Signal<boolean> = computed(() => this.currentFilter().category !== null);
+  protected readonly hasRankings: Signal<boolean> = computed(() => {
+    return this.isParkItemRanking() ? this.parkItems().length > 0 : this.items().length > 0;
+  });
   protected readonly treeParks: Signal<RatingTreePark[]> = computed(() => {
     return this.items().map((item: ParkRatingRanking): RatingTreePark => this.mapRankingToTree(item));
+  });
+  protected readonly rankedParkItems: Signal<RatingRankingListItem[]> = computed(() => {
+    return this.parkItems().map((item: ParkItemRatingRanking): RatingRankingListItem => {
+      return {
+        id: item.targetId,
+        rank: item.rank,
+        name: item.targetName,
+        score: item.averageRating,
+        ratingCount: item.ratingCount,
+        route: buildPublicParkItemRouteCommands({
+          language: this.currentLang(),
+          parkId: item.parkId,
+          parkName: item.parkName,
+          itemId: item.targetId,
+          itemName: item.targetName
+        }),
+        parkName: item.parkName,
+        parkRoute: buildPublicParkRouteCommands({
+          language: this.currentLang(),
+          parkId: item.parkId,
+          parkName: item.parkName
+        })
+      };
+    });
   });
 
   constructor(
@@ -74,7 +117,16 @@ export class RankingsPageComponent implements OnInit {
 
   protected selectFilter(filter: RankingFilter): void {
     this.currentFilter.set(filter);
+    this.selectedAttractionType.set(null);
     this.stateFacade.load(filter.category, this.searchTerm());
+  }
+
+  protected selectAttractionType(value: string): void {
+    const selectedType: ParkItemType | null = value.trim().length > 0
+      ? value as ParkItemType
+      : null;
+    this.selectedAttractionType.set(selectedType);
+    this.stateFacade.load(this.currentFilter().category, this.searchTerm(), selectedType);
   }
 
   protected loadMore(): void {
@@ -86,12 +138,20 @@ export class RankingsPageComponent implements OnInit {
   }
 
   protected applySearch(): void {
-    this.stateFacade.load(this.currentFilter().category, this.searchTerm());
+    this.stateFacade.load(
+      this.currentFilter().category,
+      this.searchTerm(),
+      this.selectedAttractionType()
+    );
   }
 
   protected clearSearch(): void {
     this.searchTerm.set('');
-    this.stateFacade.load(this.currentFilter().category);
+    this.stateFacade.load(
+      this.currentFilter().category,
+      null,
+      this.selectedAttractionType()
+    );
   }
 
   private parkRoute(item: ParkRatingRanking): string[] | null {

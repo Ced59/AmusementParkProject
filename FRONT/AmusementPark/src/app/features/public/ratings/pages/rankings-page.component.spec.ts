@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
 import {
+  ParkItemRatingRankingsPage,
   ParkRatingRanking,
   RatingRankingsPage,
 } from '@app/models/ratings/rating.models';
@@ -22,6 +23,11 @@ import {
 import { RankingsPageComponent } from './rankings-page.component';
 
 class FakeRankingsRatingsPort implements RankingsRatingsPort {
+  readonly parkItemCalls: Array<{
+    category: string;
+    type: string | null;
+  }> = [];
+
   getRankings(
     _page: number,
     _size: number,
@@ -40,10 +46,45 @@ class FakeRankingsRatingsPort implements RankingsRatingsPort {
       },
     });
   }
+
+  getParkItemRankings(
+    _page: number,
+    _size: number,
+    category: string,
+    type: string | null,
+    _search: string | null,
+    _options?: AnonymousHttpOptions,
+  ): Observable<ParkItemRatingRankingsPage> {
+    this.parkItemCalls.push({ category, type });
+    return of({
+      items: [
+        {
+          rank: 2,
+          targetId: 'item-1',
+          targetName: 'Taron',
+          parkId: 'park-1',
+          parkName: 'Phantasialand',
+          parkItemCategory: 'Attraction',
+          parkItemType: 'RollerCoaster',
+          ratingCount: 3,
+          averageRating: 4.5,
+          bayesianScore: 4.1,
+        },
+      ],
+      pagination: {
+        ...DEFAULT_PAGINATION,
+        currentPage: 1,
+        itemsPerPage: 20,
+        totalItems: 1,
+        totalPages: 1,
+      },
+    });
+  }
 }
 
 describe('RankingsPageComponent', () => {
   let fixture: ComponentFixture<RankingsPageComponent>;
+  let port: FakeRankingsRatingsPort;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -101,6 +142,7 @@ describe('RankingsPageComponent', () => {
     translateService.use('fr');
 
     fixture = TestBed.createComponent(RankingsPageComponent);
+    port = TestBed.inject(RANKINGS_RATINGS_PORT) as FakeRankingsRatingsPort;
   });
 
   it('maps raw rating counts to every ranking level', () => {
@@ -134,6 +176,37 @@ describe('RankingsPageComponent', () => {
     ).toEqual(['2 notes', '6 notes']);
     expect(sectionCount?.textContent?.trim()).toBe('6 notes');
     expect(itemCount?.textContent?.trim()).toBe('3 notes');
+  });
+
+  it('shows a cross-park attraction ranking and filters it by attraction type', () => {
+    fixture.detectChanges();
+
+    const filterButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.rankings-filters button');
+    filterButtons[1]?.click();
+    fixture.detectChanges();
+
+    const list: HTMLElement | null =
+      fixture.nativeElement.querySelector('app-rating-ranking-list');
+    expect(list?.textContent).toContain('#2');
+    expect(list?.textContent).toContain('Taron');
+    expect(list?.textContent).toContain('Phantasialand');
+    expect(fixture.nativeElement.querySelector('app-rating-tree')).toBeNull();
+    expect(port.parkItemCalls[0]).toEqual({
+      category: 'Attraction',
+      type: null,
+    });
+
+    const typeSelect: HTMLSelectElement =
+      fixture.nativeElement.querySelector('.rankings-type-filter select');
+    typeSelect.value = 'FlatRide';
+    typeSelect.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+
+    expect(port.parkItemCalls.at(-1)).toEqual({
+      category: 'Attraction',
+      type: 'FlatRide',
+    });
   });
 });
 

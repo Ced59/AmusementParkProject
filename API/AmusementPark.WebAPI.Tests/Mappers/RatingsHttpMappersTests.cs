@@ -17,7 +17,10 @@ public sealed class RatingsHttpMappersTests
             "park-1",
             12,
             4.35d,
-            3.88d);
+            3.88d)
+        {
+            Rank = 2,
+        };
 
         RatingSummaryDto dto = result.ToHttp();
 
@@ -26,6 +29,7 @@ public sealed class RatingsHttpMappersTests
         Assert.Equal(12, dto.RatingCount);
         Assert.Equal(4.35d, dto.AverageRating);
         Assert.Equal(3.88d, dto.BayesianScore);
+        Assert.Equal(2, dto.Rank);
     }
 
     [Fact]
@@ -92,5 +96,29 @@ public sealed class RatingsHttpMappersTests
         ParkItemCategory? category = "bad-category".ToParkItemCategoryFilter();
 
         Assert.Null(category);
+    }
+
+    [Fact]
+    public void ToHttp_WhenParkItemRankingIsMapped_ShouldExposeParentPark()
+    {
+        ParkItemRatingRankingResult result = new ParkItemRatingRankingResult(
+            3,
+            "item-1",
+            "Talocan",
+            "park-1",
+            "Phantasialand",
+            ParkItemCategory.Attraction,
+            ParkItemType.FlatRide,
+            12,
+            4.5d,
+            4.2d);
+
+        ParkItemRatingRankingDto dto = result.ToHttp();
+
+        Assert.Equal(3, dto.Rank);
+        Assert.Equal("Talocan", dto.TargetName);
+        Assert.Equal("park-1", dto.ParkId);
+        Assert.Equal("Phantasialand", dto.ParkName);
+        Assert.Equal("FlatRide", dto.ParkItemType);
     }
 }

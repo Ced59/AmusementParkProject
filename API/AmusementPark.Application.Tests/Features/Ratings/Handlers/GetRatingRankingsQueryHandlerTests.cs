@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Application.Validation;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using Moq;
 using Xunit;
@@ -35,6 +36,50 @@ public sealed class GetRatingRankingsQueryHandlerTests
         ratingRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenAttractionTypeIsSelected_ShouldRankMatchingItemsAcrossParks()
+    {
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        ratingRepository
+            .Setup(repository => repository.GetVisibleParkItemRankingSourcesAsync(
+                ParkItemCategory.Attraction,
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                CreateParkItemSource("flat-1", "Talocan", "park-1", "Phantasialand", ParkItemType.FlatRide, 4.1),
+                CreateParkItemSource("coaster-1", "Taron", "park-1", "Phantasialand", ParkItemType.RollerCoaster, 4.8),
+                CreateParkItemSource("flat-2", "Sledge Hammer", "park-2", "Bobbejaanland", ParkItemType.FlatRide, 4.5),
+            });
+        GetParkItemRatingRankingsQueryHandler handler = new GetParkItemRatingRankingsQueryHandler(
+            ratingRepository.Object,
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<ParkItemRatingRankingResult>> result = await handler.HandleAsync(
+            new GetParkItemRatingRankingsQuery(
+                ParkItemCategory.Attraction,
+                new PagedQuery(1, 20),
+                null,
+                ParkItemType.FlatRide));
+
+        Assert.True(result.IsSuccess);
+        Assert.Collection(
+            result.Value!.Items,
+            first =>
+            {
+                Assert.Equal(1, first.Rank);
+                Assert.Equal("Sledge Hammer", first.TargetName);
+                Assert.Equal("Bobbejaanland", first.ParkName);
+            },
+            second =>
+            {
+                Assert.Equal(2, second.Rank);
+                Assert.Equal("Talocan", second.TargetName);
+                Assert.Equal("Phantasialand", second.ParkName);
+            });
+        ratingRepository.VerifyAll();
+    }
+
     private static IReadOnlyCollection<RatingRankingItemResult> CreateParkSources()
     {
         List<RatingRankingItemResult> sources = new List<RatingRankingItemResult>();
@@ -56,5 +101,27 @@ public sealed class GetRatingRankingsQueryHandlerTests
         }
 
         return sources;
+    }
+
+    private static RatingRankingItemResult CreateParkItemSource(
+        string targetId,
+        string targetName,
+        string parkId,
+        string parkName,
+        ParkItemType parkItemType,
+        double bayesianScore)
+    {
+        return new RatingRankingItemResult(
+            RatingTargetType.ParkItem,
+            targetId,
+            targetName,
+            parkId,
+            parkName,
+            ParkItemCategory.Attraction,
+            parkItemType,
+            10,
+            45,
+            4.5,
+            bayesianScore);
     }
 }

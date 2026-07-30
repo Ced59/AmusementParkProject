@@ -126,10 +126,10 @@
       "catalogTitle": "Parks and attractions in one place",
       "catalogText": "Move from a park to its attractions, photos and useful references without getting lost."
     },
-    "heroTitleFind": "Find",
-    "heroTitleYour": "your",
-    "heroTitleThrill": "thrill",
-    "heroTitlePerfect": "perfect",
+    "heroTitleFind": "Find, rate",
+    "heroTitleYour": "and plan your",
+    "heroTitleThrill": "perfect",
+    "heroTitlePerfect": "thrill",
     "stats": {
       "ariaLabel": "Public catalog statistics",
       "parks": "Listed parks",

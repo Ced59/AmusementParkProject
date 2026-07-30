@@ -252,6 +252,44 @@ public sealed class RatingRepository : IRatingRepository
         return await this.EnrichVisibleRankingSourcesAsync(candidateDocuments, cancellationToken);
     }
 
+    public async Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleParkItemRankingSourcesAsync(
+        ParkItemCategory parkItemCategory,
+        int maxItems,
+        CancellationToken cancellationToken)
+    {
+        int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
+        List<RatingAggregateDocument> documents = await this.ratingAggregatesCollection.Find(
+                BuildParkRankingItemFilter(parkItemCategory))
+            .Sort(BuildRankingSort())
+            .Limit(effectiveMaxItems)
+            .ToListAsync(cancellationToken);
+
+        if (documents.Count == 0)
+        {
+            return Array.Empty<RatingRankingItemResult>();
+        }
+
+        return await this.EnrichVisibleRankingSourcesAsync(documents, cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<UserRatingListItemResult>> GetUserRankingSourcesAsync(
+        string userId,
+        int maxItems,
+        CancellationToken cancellationToken)
+    {
+        int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
+        FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(
+            document => document.UserId,
+            userId.Trim());
+        List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
+            .SortByDescending(document => document.Value)
+            .ThenBy(document => document.TargetId)
+            .Limit(effectiveMaxItems)
+            .ToListAsync(cancellationToken);
+
+        return await this.EnrichUserRatingsAsync(documents, cancellationToken);
+    }
+
     private async Task<IReadOnlyCollection<RatingRankingItemResult>> EnrichVisibleRankingSourcesAsync(IReadOnlyCollection<RatingAggregateDocument> documents, CancellationToken cancellationToken)
     {
         List<string> parkTargetIds = documents
@@ -320,7 +358,13 @@ public sealed class RatingRepository : IRatingRepository
     private async Task<IReadOnlyDictionary<string, RatingAggregate>> LoadAggregatesAsync(IReadOnlyCollection<UserRatingDocument> ratings, CancellationToken cancellationToken)
     {
         List<FilterDefinition<RatingAggregateDocument>> filters = ratings
-            .Select(static rating => BuildAggregateTargetFilter(rating.TargetType, rating.TargetId))
+            .GroupBy(static rating => rating.TargetType)
+            .Select(group =>
+            {
+                List<string> targetIds = NormalizeIds(group.Select(static rating => rating.TargetId));
+                return Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetType, group.Key)
+                    & Builders<RatingAggregateDocument>.Filter.In(document => document.TargetId, targetIds);
+            })
             .ToList();
 
         if (filters.Count == 0)

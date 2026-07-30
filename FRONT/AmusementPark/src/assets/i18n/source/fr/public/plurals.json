@@ -4,7 +4,7 @@
     "placeWithCount": { "one": "{{count}} lieu", "few": "{{count}} lieux", "many": "{{count}} lieux", "other": "{{count}} lieux" },
     "rollerCoaster": { "one": "Montagne russe", "few": "Montagnes russes", "many": "Montagnes russes", "other": "Montagnes russes" },
     "waterRide": { "one": "Attraction aquatique", "few": "Attractions aquatiques", "many": "Attractions aquatiques", "other": "Attractions aquatiques" },
-    "flatRide": { "one": "Manège", "few": "Manèges", "many": "Manèges", "other": "Manèges" },
+    "flatRide": { "one": "Flat Ride", "few": "Flat Rides", "many": "Flat Rides", "other": "Flat Rides" },
     "darkRide": { "one": "Parcours scénique", "few": "Parcours scéniques", "many": "Parcours scéniques", "other": "Parcours scéniques" },
     "manufacturerFound": { "one": "{{count}} constructeur trouvé", "few": "{{count}} constructeurs trouvés", "many": "{{count}} constructeurs trouvés", "other": "{{count}} constructeurs trouvés" },
     "parkOnMap": { "one": "{{count}} parc sur la carte", "few": "{{count}} parcs sur la carte", "many": "{{count}} parcs sur la carte", "other": "{{count}} parcs sur la carte" },

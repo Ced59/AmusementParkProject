@@ -7,12 +7,38 @@
     subtitleKey="ratings.profile.subtitle">
   </app-ui-section-header>
 
+  <nav class="profile-ratings__filters" [attr.aria-label]="'ratings.profile.filtersLabel' | translate">
+    @for (filter of filters; track filter.key) {
+      <button
+        appUiButton="ghost"
+        type="button"
+        [class.profile-ratings__filter--active]="currentFilter().key === filter.key"
+        (click)="selectFilter(filter)">
+        {{ filter.labelKey | translate }}
+      </button>
+    }
+  </nav>
+
+  @if (currentFilter().category === 'Attraction') {
+    <label class="profile-ratings__type-filter">
+      <span>{{ 'ratings.rankings.attractionTypeLabel' | translate }}</span>
+      <select
+        [value]="selectedAttractionType() || ''"
+        (change)="selectAttractionType($any($event.target).value)">
+        <option value="">{{ 'ratings.rankings.allAttractionTypes' | translate }}</option>
+        @for (option of attractionTypeOptions; track option.value) {
+          <option [value]="option.value">{{ option.labelKey | translate }}</option>
+        }
+      </select>
+    </label>
+  }
+
   <section class="profile-ratings__search" [attr.aria-label]="'ratings.profile.searchLabel' | translate">
     <i class="pi pi-search" aria-hidden="true"></i>
     <input
       type="search"
       [value]="searchTerm()"
-      [placeholder]="'ratings.profile.searchPlaceholder' | translate"
+      [placeholder]="(isParkItemRanking() ? 'ratings.profile.parkItemSearchPlaceholder' : 'ratings.profile.searchPlaceholder') | translate"
       (input)="updateSearchTerm($any($event.target).value)"
       (keyup.enter)="applySearch()">
     <button appUiButton="primary" type="button" (click)="applySearch()">
@@ -92,16 +118,26 @@
       </div>
     }
 
-    <app-rating-tree
-      [parks]="ratingParks()"
-      ratingCountLabelKey="ratings.profile.ratingCount"
-      (ratingChange)="updateRating($event)">
-    </app-rating-tree>
+    @if (isParkItemRanking()) {
+      <app-rating-ranking-list
+        [items]="rankedParkItems()"
+        scoreLabelKey="ratings.profile.yourRatingLabel"
+        (ratingChange)="updateRating($event)">
+      </app-rating-ranking-list>
+    } @else {
+      <app-rating-tree
+        [parks]="ratingParks()"
+        ratingCountLabelKey="ratings.profile.ratingCount"
+        (ratingChange)="updateRating($event)">
+      </app-rating-tree>
+    }
 
     @if (hasMore()) {
       <div class="profile-ratings__more">
         <button appUiButton="primary" type="button" [disabled]="loadingMore()" (click)="loadMore()">
-          {{ (loadingMore() ? 'ratings.profile.loadingMore' : 'ratings.profile.loadMore') | translate }}
+          {{ (loadingMore()
+            ? (isParkItemRanking() ? 'ratings.profile.loadingMoreItems' : 'ratings.profile.loadingMore')
+            : (isParkItemRanking() ? 'ratings.profile.loadMoreItems' : 'ratings.profile.loadMore')) | translate }}
         </button>
       </div>
     }

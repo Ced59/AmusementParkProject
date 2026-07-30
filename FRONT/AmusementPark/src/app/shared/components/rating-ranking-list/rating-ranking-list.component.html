@@ -1,0 +1,65 @@
+<div class="rating-ranking-list">
+  @for (item of items; track item.id) {
+    <article class="rating-ranking-list__item">
+      <span class="rating-ranking-list__rank">#{{ item.rank }}</span>
+
+      <span class="rating-ranking-list__main">
+        @if (item.route; as route) {
+          <a class="rating-ranking-list__name" [routerLink]="route">{{ item.name }}</a>
+        } @else {
+          <strong class="rating-ranking-list__name">{{ item.name }}</strong>
+        }
+
+        <span class="rating-ranking-list__park">
+          <i class="pi pi-map-marker" aria-hidden="true"></i>
+          @if (item.parkRoute; as parkRoute) {
+            <a [routerLink]="parkRoute">{{ item.parkName }}</a>
+          } @else {
+            <span>{{ item.parkName }}</span>
+          }
+        </span>
+
+        @if (item.ratingCount !== null && item.ratingCount !== undefined) {
+          <span class="rating-ranking-list__count">
+            {{ ratingCountLabelKey | localizedPlural:item.ratingCount }}
+          </span>
+        }
+      </span>
+
+      <span class="rating-ranking-list__score-block">
+        <span class="rating-ranking-list__score-label">{{ scoreLabelKey | translate }}</span>
+        <span
+          class="rating-ranking-list__score"
+          [class.rating-ranking-list__score--editable]="item.editable !== null && item.editable !== undefined"
+          [class.rating-ranking-list__score--saving]="item.editable?.saving"
+          [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(item.score) }">
+          <span class="rating-ranking-list__stars" [attr.aria-hidden]="item.editable ? null : true">
+            @for (star of starIndexes; track star) {
+              <span class="rating-ranking-list__star" [style.--fill]="fillPercent(item.score, star)">
+                <i class="pi pi-star rating-ranking-list__star-empty" aria-hidden="true"></i>
+                <i class="pi pi-star-fill rating-ranking-list__star-filled" aria-hidden="true"></i>
+                @if (item.editable; as editable) {
+                  <button
+                    type="button"
+                    class="rating-ranking-list__star-hit rating-ranking-list__star-hit--left"
+                    [disabled]="editable.saving"
+                    [attr.aria-label]="rateActionKey | translate:{ value: star - 0.5 }"
+                    (click)="changeRating($event, editable, star - 0.5)">
+                  </button>
+                  <button
+                    type="button"
+                    class="rating-ranking-list__star-hit rating-ranking-list__star-hit--right"
+                    [disabled]="editable.saving"
+                    [attr.aria-label]="rateActionKey | translate:{ value: star }"
+                    (click)="changeRating($event, editable, star)">
+                  </button>
+                }
+              </span>
+            }
+          </span>
+          <strong>{{ formatRating(item.score) }}</strong>
+        </span>
+      </span>
+    </article>
+  }
+</div>

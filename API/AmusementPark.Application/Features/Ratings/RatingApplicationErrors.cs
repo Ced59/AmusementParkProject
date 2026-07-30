@@ -18,6 +18,13 @@ public static class RatingApplicationErrors
             "La note doit être comprise entre 0,5 et 5, par palier de 0,5.");
     }
 
+    public static ApplicationError InvalidParkItemCategory()
+    {
+        return ApplicationError.Validation(
+            "rating.park-item-category.invalid",
+            "La catégorie de lieu est invalide.");
+    }
+
     public static ApplicationError TargetNotFound()
     {
         return ApplicationError.NotFound(

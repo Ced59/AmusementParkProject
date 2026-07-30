@@ -55,7 +55,7 @@
     "tabs": {
       "label": "Secções do perfil",
       "profile": "Perfil",
-      "ratings": "Avaliações"
+      "ratings": "O meu ranking"
     }
   },
   "admin": {
@@ -2946,8 +2946,8 @@
       "catalogTitle": "Parques e atrações num só lugar",
       "catalogText": "Passa de um parque para as respetivas atrações, fotos e referências úteis sem te perderes."
     },
-    "heroTitleFind": "Encontra",
-    "heroTitleYour": "a tua",
+    "heroTitleFind": "Encontra, avalia",
+    "heroTitleYour": "e planeia a tua",
     "heroTitleThrill": "emoção",
     "heroTitlePerfect": "perfeita",
     "stats": {
@@ -3030,7 +3030,7 @@
     "types": {
       "rollerCoaster": "Montanhas-russas",
       "waterRide": "Atrações aquáticas",
-      "flatRide": "Atrações planas",
+      "flatRide": "Flat rides",
       "darkRide": "Percursos cénicos",
       "familyRide": "Atrações familiares",
       "thrillRide": "Atrações radicais",
@@ -3855,10 +3855,10 @@
       "other": "Atrações aquáticas"
     },
     "flatRide": {
-      "one": "Carrossel",
-      "few": "Carrosséis",
-      "many": "Carrosséis",
-      "other": "Carrosséis"
+      "one": "Flat ride",
+      "few": "Flat rides",
+      "many": "Flat rides",
+      "other": "Flat rides"
     },
     "darkRide": {
       "one": "Dark ride",
@@ -4024,7 +4024,8 @@
       "errorMessage": "Não foi possível guardar a avaliação agora.",
       "removeErrorMessage": "Não foi possível apagar a tua avaliação agora.",
       "savedToast": "A tua avaliação foi guardada.",
-      "removedToast": "A tua avaliação foi apagada."
+      "removedToast": "A tua avaliação foi apagada.",
+      "rankLabel": "N.º {{rank}} no ranking"
     },
     "tree": {
       "detailAction": "Ver detalhe",
@@ -4033,10 +4034,10 @@
       "scoreAria": "Avaliação {{value}} de 5"
     },
     "profile": {
-      "kicker": "As minhas avaliações",
-      "title": "As tuas notas de visita",
-      "subtitle": "Encontra os locais que avaliaste e os parques que mais se destacam nas tuas escolhas.",
-      "loading": "A carregar avaliações...",
+      "kicker": "O meu ranking",
+      "title": "O teu ranking pessoal",
+      "subtitle": "Ordena os parques e locais que avaliaste segundo as tuas preferências.",
+      "loading": "A carregar o teu ranking...",
       "emptyTitle": "Ainda sem avaliações",
       "emptyText": "Avalia um parque ou local para começar a tua vista pessoal.",
       "stats": {
@@ -4049,8 +4050,11 @@
       "byKind": "Por tipo",
       "unknownPark": "Parque associado",
       "communityAverage": "Avaliação média",
-      "searchLabel": "Pesquisar nos teus parques avaliados",
-      "searchPlaceholder": "Encontrar um parque nas tuas avaliações",
+      "filtersLabel": "Filtrar o teu ranking",
+      "searchLabel": "Pesquisar no teu ranking",
+      "searchPlaceholder": "Encontrar um parque no teu ranking",
+      "parkItemSearchPlaceholder": "Encontrar um local ou o respetivo parque",
+      "yourRatingLabel": "A tua avaliação",
       "searchAction": "Pesquisar",
       "clearSearch": "Limpar pesquisa",
       "ratingCount": {
@@ -4060,7 +4064,9 @@
         "other": "{{count}} avaliações"
       },
       "loadMore": "Carregar mais avaliações",
-      "loadingMore": "A carregar avaliações..."
+      "loadingMore": "A carregar parques...",
+      "loadMoreItems": "Carregar mais locais",
+      "loadingMoreItems": "A carregar locais..."
     },
     "rankings": {
       "kicker": "Favoritos dos visitantes",
@@ -4097,12 +4103,17 @@
       "rankingScore": "Pontuação agregada do ranking",
       "parkSignal": "Avaliação direta do parque",
       "itemsSignal": "Média de todos os locais",
-      "searchLabel": "Pesquisar um parque nos rankings",
+      "attractionTypeLabel": "Tipo de atração",
+      "allAttractionTypes": "Todos os tipos de atração",
+      "searchLabel": "Pesquisar no ranking",
       "searchPlaceholder": "Encontrar um parque no ranking",
+      "parkItemSearchPlaceholder": "Encontrar um local ou o respetivo parque",
       "searchAction": "Pesquisar",
       "clearSearch": "Limpar pesquisa",
       "loadMore": "Carregar mais parques",
-      "loadingMore": "A carregar parques..."
+      "loadingMore": "A carregar parques...",
+      "loadMoreItems": "Carregar mais locais",
+      "loadingMoreItems": "A carregar locais..."
     },
     "targetTypes": {
       "Park": "Parques",
