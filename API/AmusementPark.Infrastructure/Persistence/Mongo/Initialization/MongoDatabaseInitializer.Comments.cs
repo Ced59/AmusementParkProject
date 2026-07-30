@@ -9,6 +9,11 @@ public sealed partial class MongoDatabaseInitializer
     {
         IMongoCollection<CommentDocument> collection =
             this.database.GetCollection<CommentDocument>(this.settings.CommentsCollectionName);
+        await collection.UpdateManyAsync(
+            BuildLegacyCommentRevisionFilter(),
+            BuildLegacyCommentRevisionUpdate(),
+            cancellationToken: cancellationToken);
+
         List<CreateIndexModel<CommentDocument>> indexes = new List<CreateIndexModel<CommentDocument>>
         {
             new CreateIndexModel<CommentDocument>(
@@ -29,8 +34,26 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(static document => document.ParkId)
                     .Descending(static document => document.CreatedAt),
                 new CreateIndexOptions { Name = "idx_comments_park_created" }),
+            new CreateIndexModel<CommentDocument>(
+                Builders<CommentDocument>.IndexKeys
+                    .Ascending(static document => document.ImageIds),
+                new CreateIndexOptions { Name = "idx_comments_image_ids" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
+    }
+
+    internal static FilterDefinition<CommentDocument> BuildLegacyCommentRevisionFilter()
+    {
+        return Builders<CommentDocument>.Filter.Exists(
+            static document => document.Revision,
+            false);
+    }
+
+    internal static UpdateDefinition<CommentDocument> BuildLegacyCommentRevisionUpdate()
+    {
+        return Builders<CommentDocument>.Update.Set(
+            static document => document.Revision,
+            0L);
     }
 }

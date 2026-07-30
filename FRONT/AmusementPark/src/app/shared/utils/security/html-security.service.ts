@@ -2,6 +2,10 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 
 import { UrlSecurityService } from './url-security.service';
+import {
+  ManagedCommentImageAltMaxLength,
+  extractManagedCommentImageId
+} from '@shared/utils/comments/managed-comment-image.helpers';
 
 const ALLOWED_ELEMENTS: Set<string> = new Set<string>([
   'a', 'b', 'blockquote', 'br', 'code', 'div', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i',
@@ -17,6 +21,7 @@ const ALLOWED_CLASS_PATTERN: RegExp = /^(ql-(align|indent|size|direction|font|co
 const COLOR_PATTERN: RegExp = /^(#[0-9a-f]{3,8}|rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}(\s*,\s*(0|1|0?\.\d+))?\s*\)|hsla?\(\s*\d{1,3}\s*,\s*\d{1,3}%\s*,\s*\d{1,3}%(\s*,\s*(0|1|0?\.\d+))?\s*\))$/i;
 const SIZE_PATTERN: RegExp = /^\d{1,3}(\.\d{1,2})?(px|em|rem|%)$/i;
 const SPACING_PATTERN: RegExp = /^\d{1,3}(\.\d{1,2})?(px|em|rem|%)$/i;
+const MANAGED_IMAGE_LAYOUTS: ReadonlySet<string> = new Set<string>(['left', 'right', 'center', 'full']);
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +45,45 @@ export class HtmlSecurityService {
 
     this.sanitizeChildren(template.content);
     return template.innerHTML;
+  }
+
+  sanitizeManagedImageRichHtml(value: string | null | undefined): string {
+    const sanitizedHtml: string = this.sanitizeRichHtml(value);
+    if (!sanitizedHtml) {
+      return '';
+    }
+
+    const workingDocument: Document = this.createWorkingDocument();
+    const template: HTMLTemplateElement = workingDocument.createElement('template');
+    template.innerHTML = sanitizedHtml;
+
+    const images: HTMLImageElement[] = Array.from(template.content.querySelectorAll('img'));
+    for (const image of images) {
+      const imageId: string | null = this.extractManagedImageId(image.getAttribute('src'));
+      if (imageId === null) {
+        image.remove();
+        continue;
+      }
+
+      const layout: string = this.resolveManagedImageLayout(Array.from(image.classList));
+      image.setAttribute('src', `/images/${imageId}`);
+      image.setAttribute('class', `rich-text__image rich-text__image--${layout}`);
+      image.setAttribute(
+        'alt',
+        (image.getAttribute('alt') ?? '').trim().slice(0, ManagedCommentImageAltMaxLength)
+      );
+      image.setAttribute('loading', 'lazy');
+      image.setAttribute('decoding', 'async');
+      image.removeAttribute('width');
+      image.removeAttribute('height');
+      image.removeAttribute('style');
+    }
+
+    return template.innerHTML;
+  }
+
+  extractManagedImageId(value: string | null | undefined): string | null {
+    return extractManagedCommentImageId(value);
   }
 
   private decodeEncodedRichHtml(value: string, workingDocument: Document): string {
@@ -185,6 +229,17 @@ export class HtmlSecurityService {
     }
 
     element.setAttribute('src', safeUrl);
+  }
+
+  private resolveManagedImageLayout(classes: string[]): string {
+    for (const className of classes) {
+      const match: RegExpMatchArray | null = className.match(/^rich-text__image--([a-z]+)$/i);
+      if (match && MANAGED_IMAGE_LAYOUTS.has(match[1].toLowerCase())) {
+        return match[1].toLowerCase();
+      }
+    }
+
+    return 'full';
   }
 
   private sanitizeClassAttribute(element: HTMLElement, value: string): void {

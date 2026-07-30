@@ -108,4 +108,96 @@ public sealed class Image : AuditableEntity
     /// Indique si l'image est publiée.
     /// </summary>
     public bool IsPublished { get; set; } = true;
+
+    /// <summary>
+    /// Propriétaire initial d'un brouillon de commentaire. Cette valeur permet
+    /// de rendre le brouillon à son auteur si l'association au commentaire échoue.
+    /// </summary>
+    public string? DraftOwnerId { get; set; }
+
+    /// <summary>
+    /// Commentaire auquel le brouillon est réservé pendant l'écriture Mongo.
+    /// Une image réservée reste privée jusqu'à la finalisation.
+    /// </summary>
+    public string? PendingCommentId { get; set; }
+
+    /// <summary>
+    /// Identifie la tentative applicative qui détient la réservation du brouillon.
+    /// </summary>
+    public string? PendingReservationToken { get; set; }
+
+    /// <summary>
+    /// Révision du commentaire que la réservation attend avant d'être libérée.
+    /// </summary>
+    public long? PendingCommentRevision { get; set; }
+
+    /// <summary>
+    /// Échéance dure après laquelle une réservation sans commentaire visible
+    /// peut être libérée par la réconciliation.
+    /// </summary>
+    public DateTime? PendingReservationExpiresAtUtc { get; set; }
+
+    /// <summary>
+    /// Tokens de tentatives explicitement annulées. Une écriture Mongo tardive
+    /// portant l'un de ces tokens ne peut plus réserver le brouillon.
+    /// </summary>
+    public List<string> AbortedReservationTokens { get; set; } = new();
+
+    /// <summary>
+    /// Date à partir de laquelle une suppression demandée peut être évaluée.
+    /// </summary>
+    public DateTime? CleanupRequestedAtUtc { get; set; }
+
+    /// <summary>
+    /// Révision que le commentaire doit avoir atteinte avant d'évaluer
+    /// cette demande de suppression. L'absence du commentaire satisfait
+    /// également cette barrière.
+    /// </summary>
+    public long? CleanupCommentRevision { get; set; }
+
+    /// <summary>
+    /// Date technique à partir de laquelle une réservation doit être réconciliée.
+    /// </summary>
+    public DateTime? ReservationReconcileAfterUtc { get; set; }
+
+    public string? CommentReuseReservationToken { get; set; }
+
+    public DateTime? CommentReuseReconcileAfterUtc { get; set; }
+
+    public long? CommentReuseTargetRevision { get; set; }
+
+    public DateTime? CommentReuseExpiresAtUtc { get; set; }
+
+    public bool CanBeUsedInComment(string actorUserId, string commentId)
+    {
+        bool isPublishedForComment =
+            this.Category == ImageCategory.Comment
+            && this.OwnerType == ImageOwnerType.Comment
+            && string.Equals(this.OwnerId, commentId, StringComparison.Ordinal)
+            && this.IsPublished;
+        bool isDraftOwnedByActor =
+            this.Category == ImageCategory.Comment
+            && this.OwnerType == ImageOwnerType.CommentDraft
+            && string.Equals(this.OwnerId, actorUserId, StringComparison.Ordinal)
+            && (string.IsNullOrWhiteSpace(this.PendingCommentId)
+                || string.Equals(this.PendingCommentId, commentId, StringComparison.Ordinal))
+            && !this.IsPublished;
+        return isPublishedForComment || isDraftOwnedByActor;
+    }
+
+    public bool IsCommentDraftOwnedBy(string actorUserId)
+    {
+        return this.Category == ImageCategory.Comment
+            && this.OwnerType == ImageOwnerType.CommentDraft
+            && string.Equals(this.OwnerId, actorUserId, StringComparison.Ordinal)
+            && !this.IsPublished;
+    }
+
+    public bool IsOwnedByComment(string commentId)
+    {
+        return this.Category == ImageCategory.Comment
+            && this.OwnerType == ImageOwnerType.Comment
+            && string.Equals(this.OwnerId, commentId, StringComparison.Ordinal)
+            && this.IsPublished;
+    }
 }

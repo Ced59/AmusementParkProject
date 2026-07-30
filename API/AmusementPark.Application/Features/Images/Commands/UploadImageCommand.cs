@@ -9,4 +9,9 @@ namespace AmusementPark.Application.Features.Images.Commands;
 /// Upload une nouvelle image.
 /// </summary>
 /// <param name="Request">Données d'upload applicatives.</param>
-public sealed record UploadImageCommand(ImageUploadRequest Request) : ICommand<ApplicationResult<UploadedImageResult>>;
+/// <param name="AllowManagedCommentLifecycle">
+/// Autorise le flux dédié des images de commentaire.
+/// </param>
+public sealed record UploadImageCommand(
+    ImageUploadRequest Request,
+    bool AllowManagedCommentLifecycle = false) : ICommand<ApplicationResult<UploadedImageResult>>;

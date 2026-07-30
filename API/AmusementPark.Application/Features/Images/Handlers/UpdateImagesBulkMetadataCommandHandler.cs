@@ -48,8 +48,27 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
             return ApplicationResult<BulkAdministrationUpdateResult>.Failure(ApplicationErrors.Required("bulkImageAction"));
         }
 
+        if (command.Metadata.Category == ImageCategory.Comment)
+        {
+            return ApplicationResult<BulkAdministrationUpdateResult>.Failure(
+                ImageApplicationErrors.CommentImageLifecycleManaged());
+        }
+
+        IReadOnlyCollection<Image> existingImages = await this.imageRepository.GetByIdsAsync(
+            imageIds,
+            cancellationToken);
+        if (existingImages.Any(ManagedCommentImageMutationGuard.IsManagedScope))
+        {
+            return ApplicationResult<BulkAdministrationUpdateResult>.Failure(
+                ImageApplicationErrors.CommentImageLifecycleManaged());
+        }
+
         int updatedCount = command.Metadata.Category.HasValue
-            ? await this.UpdateOneByOneAsync(imageIds, command.Metadata, cancellationToken)
+            ? await this.UpdateOneByOneAsync(
+                imageIds,
+                existingImages,
+                command.Metadata,
+                cancellationToken)
             : await this.imageRepository.UpdateBulkMetadataAsync(imageIds, command.Metadata, cancellationToken);
 
         return ApplicationResult<BulkAdministrationUpdateResult>.Success(new BulkAdministrationUpdateResult
@@ -59,13 +78,19 @@ public sealed class UpdateImagesBulkMetadataCommandHandler : ICommandHandler<Upd
         });
     }
 
-    private async Task<int> UpdateOneByOneAsync(IReadOnlyCollection<string> imageIds, ImageBulkMetadataUpdate metadata, CancellationToken cancellationToken)
+    private async Task<int> UpdateOneByOneAsync(
+        IReadOnlyCollection<string> imageIds,
+        IReadOnlyCollection<Image> existingImages,
+        ImageBulkMetadataUpdate metadata,
+        CancellationToken cancellationToken)
     {
+        IReadOnlyDictionary<string, Image> imagesById = existingImages.ToDictionary(
+            static image => image.Id,
+            StringComparer.Ordinal);
         int updatedCount = 0;
         foreach (string imageId in imageIds)
         {
-            Image? existing = await this.imageRepository.GetByIdAsync(imageId, cancellationToken);
-            if (existing is null)
+            if (!imagesById.TryGetValue(imageId, out Image? existing))
             {
                 continue;
             }

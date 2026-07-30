@@ -20,6 +20,7 @@ using AmusementPark.Application.Features.TechnicalStats.Queries;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Videos.Queries;
 using AmusementPark.Core.Domain.Videos;
 using AmusementPark.WebAPI.DependencyInjection;
@@ -70,6 +71,8 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         services.AddSingleton(Mock.Of<IUserRepository>());
         services.AddSingleton(Mock.Of<IParkRepository>());
         services.AddSingleton(Mock.Of<IParkItemRepository>());
+        services.AddSingleton(Mock.Of<IImageRepository>());
+        services.AddSingleton(Mock.Of<IImageBinaryStorage>());
 
         using ServiceProvider serviceProvider = services.BuildServiceProvider();
 

@@ -17,7 +17,7 @@ namespace AmusementPark.Infrastructure.Services.Images;
 /// <summary>
 /// Stockage binaire MinIO des variantes d'images avec compression et watermark.
 /// </summary>
-public sealed class MinioImageBinaryStorage : IImageBinaryStorage
+public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
 {
     private const string WatermarkBaseText = "AMUSEMENT-PARKS";
     private const string WatermarkDotText = ".";
@@ -27,6 +27,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
     private const int MaxFileSizeKb = 300;
     private const int MaxLongEdge = 1920;
     private const int ResponsiveVariantVersion = 2;
+    private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
@@ -34,15 +35,18 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
     private readonly IMinioClient minioClient;
     private readonly MinioImageStorageSettings settings;
     private readonly ILogger<MinioImageBinaryStorage> logger;
+    private readonly IImageVariantGenerationLease variantGenerationLease;
     private readonly WatermarkFontFamilies watermarkFonts;
 
     public MinioImageBinaryStorage(
         IMinioClient minioClient,
         MinioImageStorageSettings settings,
+        IImageVariantGenerationLease variantGenerationLease,
         ILogger<MinioImageBinaryStorage> logger)
     {
         this.minioClient = minioClient;
         this.settings = settings;
+        this.variantGenerationLease = variantGenerationLease;
         this.logger = logger;
         this.watermarkFonts = ResolveWatermarkFonts(logger);
     }
@@ -92,22 +96,31 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
             file.Content.Position = 0;
         }
 
-        await using MemoryStream inputCopy = new MemoryStream();
-        await file.Content.CopyToAsync(inputCopy, cancellationToken);
-        inputCopy.Position = 0;
+        using Image image = await LoadForStorageAsync(
+            file.Content,
+            stripMetadata,
+            cancellationToken);
+        ResizeInPlaceIfNeeded(image);
+        if (withWatermark)
+        {
+            if (this.watermarkFonts.IsUsable)
+            {
+                image.Mutate(context =>
+                {
+                    this.DrawWatermark(context, image.Width, image.Height);
+                });
+            }
+            else
+            {
+                this.logger.LogWarning(
+                    "Image watermark skipped because no usable font is available on the current host.");
+            }
+        }
 
-        await using MemoryStream workingStream = withWatermark
-            ? await ApplyWatermarkToStreamAsync(inputCopy, cancellationToken)
-            : new MemoryStream(inputCopy.ToArray());
-
-        workingStream.Position = 0;
-        using Image image = await Image.LoadAsync(workingStream, cancellationToken);
         if (stripMetadata)
         {
             AutoOrientAndStripEmbeddedMetadata(image);
         }
-
-        ResizeInPlaceIfNeeded(image);
 
         List<string> savedFiles = new List<string>();
 
@@ -123,7 +136,8 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
                     .WithObject(objectName)
                     .WithStreamData(objectStream)
                     .WithObjectSize(objectStream.Length)
-                    .WithContentType(format.contentType));
+                    .WithContentType(format.contentType),
+                cancellationToken);
 
             savedFiles.Add(objectName);
         }
@@ -145,6 +159,24 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         ArgumentNullException.ThrowIfNull(image);
         image.Mutate(static context => context.AutoOrient());
         StripEmbeddedMetadata(image);
+    }
+
+    internal static async Task<Image> LoadForStorageAsync(
+        Stream content,
+        bool stripMetadata,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(content);
+        if (!stripMetadata)
+        {
+            return await Image.LoadAsync(content, cancellationToken);
+        }
+
+        DecoderOptions options = new DecoderOptions
+        {
+            MaxFrames = 1,
+        };
+        return await Image.LoadAsync(options, content, cancellationToken);
     }
 
     public async Task<bool> ApplyWatermarkAsync(string pathWithoutExtension, CancellationToken cancellationToken)
@@ -284,14 +316,87 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         string contentType,
         CancellationToken cancellationToken)
     {
-        (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(pathWithoutExtension, cancellationToken);
-        if (source is null)
+        return await this.ExecuteWithVariantGenerationLeaseAsync(
+            pathWithoutExtension,
+            token => this.TryCreateResizedVariantUnderLeaseAsync(
+                pathWithoutExtension,
+                objectName,
+                width,
+                encoderFactory,
+                contentType,
+                token),
+            cancellationToken);
+    }
+
+    internal async Task<(Stream Stream, string ContentType)?>
+        ExecuteWithVariantGenerationLeaseAsync(
+            string pathWithoutExtension,
+            Func<CancellationToken, Task<(Stream Stream, string ContentType)?>> action,
+            CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+
+        string leaseToken = Guid.NewGuid().ToString("N");
+        DateTime acquiredAtUtc = DateTime.UtcNow;
+        bool leaseAcquired = await this.variantGenerationLease.TryAcquireAsync(
+            pathWithoutExtension,
+            leaseToken,
+            acquiredAtUtc,
+            acquiredAtUtc.Add(VariantGenerationLeaseDuration),
+            cancellationToken);
+        if (!leaseAcquired)
         {
             return null;
         }
 
         try
         {
+            return await action(cancellationToken);
+        }
+        finally
+        {
+            try
+            {
+                await this.variantGenerationLease.ReleaseAsync(
+                    pathWithoutExtension,
+                    leaseToken,
+                    CancellationToken.None);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogWarning(
+                    exception,
+                    "Unable to release responsive image generation lease for {PathWithoutExtension}.",
+                    pathWithoutExtension);
+            }
+        }
+    }
+
+    private async Task<(Stream Stream, string ContentType)?>
+        TryCreateResizedVariantUnderLeaseAsync(
+            string pathWithoutExtension,
+            string objectName,
+            int width,
+            Func<int, IImageEncoder> encoderFactory,
+            string contentType,
+            CancellationToken cancellationToken)
+    {
+        try
+        {
+            (Stream Stream, string ContentType)? cached =
+                await TryGetObjectAsync(objectName, contentType, cancellationToken);
+            if (cached is not null)
+            {
+                return cached;
+            }
+
+            (Stream Stream, string ContentType)? source =
+                await TryGetSourceObjectAsync(pathWithoutExtension, cancellationToken);
+            if (source is null)
+            {
+                return null;
+            }
+
             await using Stream sourceStream = source.Value.Stream;
             using Image image = await Image.LoadAsync(sourceStream, cancellationToken);
 
@@ -301,7 +406,9 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
             }
 
             double scale = (double)width / image.Width;
-            int targetHeight = Math.Max(1, (int)Math.Round(image.Height * scale));
+            int targetHeight = Math.Max(
+                1,
+                (int)Math.Round(image.Height * scale));
             image.Mutate(context =>
             {
                 context.Resize(new ResizeOptions
@@ -311,7 +418,10 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
                 });
             });
 
-            byte[] content = await EncodeResponsiveVariantAsync(image, encoderFactory, cancellationToken);
+            byte[] content = await EncodeResponsiveVariantAsync(
+                image,
+                encoderFactory,
+                cancellationToken);
             MemoryStream outputStream = new MemoryStream(content);
             await this.minioClient.PutObjectAsync(
                 new PutObjectArgs()
@@ -331,7 +441,11 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         }
         catch (Exception exception)
         {
-            this.logger.LogWarning(exception, "Unable to create responsive image variant {ObjectName} in MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
+            this.logger.LogWarning(
+                exception,
+                "Unable to create responsive image variant {ObjectName} in MinIO bucket {Bucket}.",
+                objectName,
+                this.settings.Bucket);
             return null;
         }
     }
@@ -358,13 +472,14 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         yield return ("png", "image/png");
     }
 
-    public async Task DeleteAsync(string pathWithoutExtension, CancellationToken cancellationToken)
+    public async Task<bool> DeleteAsync(string pathWithoutExtension, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(pathWithoutExtension))
         {
-            return;
+            return true;
         }
 
+        bool succeeded = true;
         foreach (string objectName in GetObjectNamesForDeletion(pathWithoutExtension))
         {
             try
@@ -372,7 +487,8 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
                 await this.minioClient.RemoveObjectAsync(
                     new RemoveObjectArgs()
                         .WithBucket(this.settings.Bucket)
-                        .WithObject(objectName));
+                        .WithObject(objectName),
+                    cancellationToken);
             }
             catch (Minio.Exceptions.ObjectNotFoundException)
             {
@@ -383,9 +499,12 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
             }
             catch (Exception exception)
             {
+                succeeded = false;
                 this.logger.LogWarning(exception, "Unable to delete image object {ObjectName} from MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
             }
         }
+
+        return succeeded;
     }
 
     private async Task DeleteResponsiveVariantsAsync(string pathWithoutExtension, CancellationToken cancellationToken)

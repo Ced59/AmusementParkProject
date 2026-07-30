@@ -32,7 +32,8 @@ internal static class CommentsHttpMappers
             request.Bodies
                 .Select(static body => new LocalizedTextValue(body.LanguageCode, body.Value ?? string.Empty))
                 .ToList(),
-            request.IsOfficial);
+            request.IsOfficial,
+            request.Revision);
     }
 
     public static CommentDto ToHttp(
@@ -55,6 +56,7 @@ internal static class CommentsHttpMappers
             IsOfficial = value.IsOfficial,
             CanUpdate = canManage,
             CanDelete = canManage,
+            Revision = value.Revision,
             CreatedAtUtc = value.CreatedAtUtc,
             UpdatedAtUtc = value.UpdatedAtUtc,
         };

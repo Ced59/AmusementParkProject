@@ -17,4 +17,6 @@ public enum ImageOwnerTypeDto
     PARK_FOUNDER = 6,
     VIDEO = 7,
     STANDALONE_ATTRACTION = 8,
+    COMMENT_DRAFT = 9,
+    COMMENT = 10,
 }

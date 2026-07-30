@@ -2,7 +2,7 @@
   <app-ui-tabs [(value)]="activeTabIndex">
     <app-ui-tab-list>
       @for (entry of entries; track trackByLanguageCode(index, entry); let index = $index) {
-        <app-ui-tab [value]="index">
+        <app-ui-tab [value]="index" [disabled]="isInteractionDisabled">
           {{ entry.languageLabel }}
         </app-ui-tab>
       }
@@ -15,7 +15,13 @@
             <app-ui-editor
               [(ngModel)]="entry.value"
               [ngModelOptions]="{ standalone: true }"
-              [readonly]="isDisabled"
+              [readonly]="isInteractionDisabled"
+              [allowManagedImages]="allowManagedImages"
+              [preserveManagedImages]="preserveManagedImages"
+              [managedImageUpload]="managedImageUpload"
+              [managedImagePreviewUrl]="managedImagePreviewUrl"
+              [managedImageUploadingLabel]="managedImageLabel('uploading') | translate"
+              [managedImageAltPrompt]="managedImageLabel('altPrompt') | translate"
               [style]="{ height: editorHeight }"
               [placeholder]="placeholderKey | translate:{ language: entry.languageLabel }"
               (ngModelChange)="onEntryValueChange()">
@@ -26,6 +32,56 @@
                   <button type="button" class="ql-underline" aria-label="Underline"></button>
                   <button type="button" class="ql-strike" aria-label="Strike"></button>
                 </span>
+                @if (allowManagedImages) {
+                  <span class="ql-formats localized-rich-text-editor__image-tools">
+                    <button
+                      type="button"
+                      class="ql-managedImage"
+                      [attr.aria-label]="managedImageLabel('add') | translate"
+                      [attr.title]="managedImageLabel('add') | translate">
+                      <i class="pi pi-image" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ql-managedImageLayout"
+                      value="left"
+                      [attr.aria-label]="managedImageLabel('alignLeft') | translate"
+                      [attr.title]="managedImageLabel('alignLeft') | translate">
+                      <i class="pi pi-align-left" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ql-managedImageLayout"
+                      value="center"
+                      [attr.aria-label]="managedImageLabel('alignCenter') | translate"
+                      [attr.title]="managedImageLabel('alignCenter') | translate">
+                      <i class="pi pi-align-center" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ql-managedImageLayout"
+                      value="right"
+                      [attr.aria-label]="managedImageLabel('alignRight') | translate"
+                      [attr.title]="managedImageLabel('alignRight') | translate">
+                      <i class="pi pi-align-right" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ql-managedImageLayout"
+                      value="full"
+                      [attr.aria-label]="managedImageLabel('fullWidth') | translate"
+                      [attr.title]="managedImageLabel('fullWidth') | translate">
+                      <i class="pi pi-arrows-h" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="ql-managedImageAlt"
+                      [attr.aria-label]="managedImageLabel('alt') | translate"
+                      [attr.title]="managedImageLabel('alt') | translate">
+                      <i class="pi pi-pencil" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                }
                 <span class="ql-formats">
                   <button type="button" class="ql-list" value="ordered" aria-label="Ordered list"></button>
                   <button type="button" class="ql-list" value="bullet" aria-label="Bullet list"></button>

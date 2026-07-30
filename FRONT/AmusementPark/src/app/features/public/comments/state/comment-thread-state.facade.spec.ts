@@ -34,9 +34,12 @@ class FakeCommentDataPort implements CommentDataPort {
   createdComment: PublicComment = createComment('created', false, '2026-07-03T10:00:00Z');
   updatedComment: PublicComment = createComment('regular', true, '2026-07-04T10:00:00Z');
   threadResponse: Observable<CommentThread> | null = null;
+  updateResponse: Observable<PublicComment> | null = null;
+  deleteResponse: Observable<void> | null = null;
+  readonly getThreadCalls: Array<{ targetType: CommentTargetType; targetId: string }> = [];
   readonly createCalls: CreateCommentRequest[] = [];
   readonly updateCalls: UpdateCommentRequest[] = [];
-  readonly deleteCalls: string[] = [];
+  readonly deleteCalls: Array<{ commentId: string; revision: number }> = [];
 
   getSummary(targetType: CommentTargetType, targetId: string): Observable<CommentSummary> {
     return of({
@@ -47,7 +50,8 @@ class FakeCommentDataPort implements CommentDataPort {
     });
   }
 
-  getThread(_targetType: CommentTargetType, _targetId: string): Observable<CommentThread> {
+  getThread(targetType: CommentTargetType, targetId: string): Observable<CommentThread> {
+    this.getThreadCalls.push({ targetType, targetId });
     return this.threadResponse ?? of(this.thread);
   }
 
@@ -56,14 +60,25 @@ class FakeCommentDataPort implements CommentDataPort {
     return of(this.createdComment);
   }
 
-  updateComment(request: UpdateCommentRequest): Observable<PublicComment> {
-    this.updateCalls.push(request);
-    return of(this.updatedComment);
+  uploadCommentImage(): Observable<{ id: string; url: string }> {
+    return of({
+      id: '0123456789abcdef0123456789abcdef',
+      url: '/images/0123456789abcdef0123456789abcdef'
+    });
   }
 
-  deleteComment(commentId: string): Observable<void> {
-    this.deleteCalls.push(commentId);
+  deleteCommentImage(): Observable<void> {
     return of(undefined);
+  }
+
+  updateComment(request: UpdateCommentRequest): Observable<PublicComment> {
+    this.updateCalls.push(request);
+    return this.updateResponse ?? of(this.updatedComment);
+  }
+
+  deleteComment(commentId: string, revision: number): Observable<void> {
+    this.deleteCalls.push({ commentId, revision });
+    return this.deleteResponse ?? of(undefined);
   }
 }
 
@@ -144,6 +159,7 @@ describe('CommentThreadStateFacade', () => {
     expect(context.dataPort.createCalls).toEqual([request]);
     expect(context.facade.thread()?.comments[0]?.id).toBe('new-official');
     expect(context.facade.editorResetVersion()).toBe(1);
+    expect(context.facade.editorResetReason()).toBe('saved');
     expect(context.toastMessageService.messages).toEqual(['comments.editor.saved']);
   });
 
@@ -156,7 +172,8 @@ describe('CommentThreadStateFacade', () => {
     const request: UpdateCommentRequest = {
       id: 'regular',
       bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
-      isOfficial: true
+      isOfficial: true,
+      revision: 1
     };
 
     context.facade.update(request);
@@ -166,6 +183,7 @@ describe('CommentThreadStateFacade', () => {
     expect(context.facade.thread()?.comments[0]?.id).toBe('regular');
     expect(context.facade.thread()?.comments[0]?.isOfficial).toBe(true);
     expect(context.facade.editorResetVersion()).toBe(1);
+    expect(context.facade.editorResetReason()).toBe('saved');
     expect(context.toastMessageService.messages).toEqual(['comments.management.updated']);
   });
 
@@ -176,12 +194,13 @@ describe('CommentThreadStateFacade', () => {
     context.facade.initializeAuthorAccess();
     context.facade.load('Park', 'park-1');
 
-    context.facade.delete('regular');
+    context.facade.delete('regular', 1);
 
-    expect(context.dataPort.deleteCalls).toEqual(['regular']);
+    expect(context.dataPort.deleteCalls).toEqual([{ commentId: 'regular', revision: 1 }]);
     expect(context.facade.thread()?.comments.map((comment: PublicComment) => comment.id))
       .toEqual(['official']);
     expect(context.facade.editorResetVersion()).toBe(1);
+    expect(context.facade.editorResetReason()).toBe('deleted');
     expect(context.toastMessageService.messages).toEqual(['comments.management.deleted']);
   });
 
@@ -204,14 +223,15 @@ describe('CommentThreadStateFacade', () => {
     context.facade.update({
       id: 'own',
       bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
-      isOfficial: false
+      isOfficial: false,
+      revision: 1
     });
-    context.facade.delete('own');
+    context.facade.delete('own', 1);
 
     expect(context.facade.canWrite()).toBe(true);
     expect(context.facade.canManage()).toBe(true);
     expect(context.dataPort.updateCalls).toHaveLength(1);
-    expect(context.dataPort.deleteCalls).toEqual(['own']);
+    expect(context.dataPort.deleteCalls).toEqual([{ commentId: 'own', revision: 1 }]);
   });
 
   it('does not let a moderator manage another author comment', () => {
@@ -227,9 +247,10 @@ describe('CommentThreadStateFacade', () => {
     context.facade.update({
       id: 'other',
       bodies: [{ languageCode: 'fr', value: '<p>Interdit</p>' }],
-      isOfficial: false
+      isOfficial: false,
+      revision: 1
     });
-    context.facade.delete('other');
+    context.facade.delete('other', 1);
 
     expect(context.facade.canManage()).toBe(true);
     expect(context.dataPort.updateCalls).toEqual([]);
@@ -275,12 +296,74 @@ describe('CommentThreadStateFacade', () => {
     context.facade.update({
       id: 'own',
       bodies: [{ languageCode: 'fr', value: '<p>Corrigé</p>' }],
-      isOfficial: false
+      isOfficial: false,
+      revision: 1
     });
-    context.facade.delete('other');
+    context.facade.delete('other', 1);
 
     expect(context.dataPort.updateCalls).toHaveLength(1);
     expect(context.dataPort.deleteCalls).toEqual([]);
+  });
+
+  it('reloads the latest revision after an update conflict without resetting the editor', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['USER'];
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+    context.dataPort.thread = createThread([
+      {
+        ...createComment('regular', false, '2026-07-05T10:00:00Z'),
+        bodies: [{ languageCode: 'fr', value: '<p>Version distante</p>' }],
+        revision: 2
+      }
+    ]);
+    context.dataPort.updateResponse = throwError(
+      () => new HttpErrorResponse({ status: 409 })
+    );
+
+    context.facade.update({
+      id: 'regular',
+      bodies: [{ languageCode: 'fr', value: '<p>Mon brouillon</p>' }],
+      isOfficial: false,
+      revision: 1
+    });
+
+    expect(context.dataPort.getThreadCalls).toEqual([
+      { targetType: 'Park', targetId: 'park-1' },
+      { targetType: 'Park', targetId: 'park-1' }
+    ]);
+    expect(context.facade.thread()?.comments[0]?.revision).toBe(2);
+    expect(context.facade.thread()?.comments[0]?.bodies[0]?.value)
+      .toBe('<p>Version distante</p>');
+    expect(context.facade.saveErrorKey()).toBe('comments.errors.concurrentModification');
+    expect(context.facade.editorResetVersion()).toBe(0);
+    expect(context.toastMessageService.messages)
+      .toEqual(['comments.errors.concurrentModification']);
+  });
+
+  it('reloads the thread after a delete conflict', () => {
+    const context = createFacade();
+    context.authService.token = 'token';
+    context.authService.roles = ['USER'];
+    context.facade.initializeAuthorAccess();
+    context.facade.load('Park', 'park-1');
+    context.dataPort.thread = createThread([
+      {
+        ...createComment('regular', false, '2026-07-05T10:00:00Z'),
+        revision: 3
+      }
+    ]);
+    context.dataPort.deleteResponse = throwError(
+      () => new HttpErrorResponse({ status: 409 })
+    );
+
+    context.facade.delete('regular', 1);
+
+    expect(context.dataPort.getThreadCalls).toHaveLength(2);
+    expect(context.facade.thread()?.comments[0]?.revision).toBe(3);
+    expect(context.facade.saveErrorKey()).toBe('comments.errors.concurrentModification');
+    expect(context.facade.editorResetVersion()).toBe(0);
   });
 
   it('marks a missing comment target as not found during SSR', () => {
@@ -367,6 +450,7 @@ function createComment(
     isOfficial,
     canUpdate: canManage,
     canDelete: canManage,
+    revision: 1,
     createdAtUtc,
     updatedAtUtc: createdAtUtc
   };

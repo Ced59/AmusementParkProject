@@ -80,6 +80,77 @@ public sealed class ImageDocument : MongoDocumentBase
 
     [BsonElement("isPublished")]
     public bool IsPublished { get; set; } = true;
+
+    [BsonElement("draftOwnerId")]
+    [BsonIgnoreIfNull]
+    public string? DraftOwnerId { get; set; }
+
+    [BsonElement("pendingCommentId")]
+    [BsonIgnoreIfNull]
+    public string? PendingCommentId { get; set; }
+
+    [BsonElement("pendingReservationToken")]
+    [BsonIgnoreIfNull]
+    public string? PendingReservationToken { get; set; }
+
+    [BsonElement("pendingCommentRevision")]
+    [BsonIgnoreIfNull]
+    public long? PendingCommentRevision { get; set; }
+
+    [BsonElement("pendingReservationExpiresAt")]
+    [BsonIgnoreIfNull]
+    public DateTime? PendingReservationExpiresAt { get; set; }
+
+    [BsonElement("abortedReservationTokens")]
+    public List<string> AbortedReservationTokens { get; set; } = new();
+
+    [BsonElement("reservationReconcileAfter")]
+    [BsonIgnoreIfNull]
+    public DateTime? ReservationReconcileAfter { get; set; }
+
+    [BsonElement("commentDraftUploadToken")]
+    [BsonIgnoreIfNull]
+    public string? CommentDraftUploadToken { get; set; }
+
+    [BsonElement("cleanupRequestedAt")]
+    [BsonIgnoreIfNull]
+    public DateTime? CleanupRequestedAt { get; set; }
+
+    [BsonElement("cleanupCommentRevision")]
+    [BsonIgnoreIfNull]
+    public long? CleanupCommentRevision { get; set; }
+
+    [BsonElement("commentReuseReservationToken")]
+    [BsonIgnoreIfNull]
+    public string? CommentReuseReservationToken { get; set; }
+
+    [BsonElement("commentReuseReconcileAfter")]
+    [BsonIgnoreIfNull]
+    public DateTime? CommentReuseReconcileAfter { get; set; }
+
+    [BsonElement("commentReuseTargetRevision")]
+    [BsonIgnoreIfNull]
+    public long? CommentReuseTargetRevision { get; set; }
+
+    [BsonElement("commentReuseExpiresAt")]
+    [BsonIgnoreIfNull]
+    public DateTime? CommentReuseExpiresAt { get; set; }
+
+    [BsonElement("cleanupClaimToken")]
+    [BsonIgnoreIfNull]
+    public string? CleanupClaimToken { get; set; }
+
+    [BsonElement("cleanupClaimedUntil")]
+    [BsonIgnoreIfNull]
+    public DateTime? CleanupClaimedUntil { get; set; }
+
+    [BsonElement("variantGenerationClaimToken")]
+    [BsonIgnoreIfNull]
+    public string? VariantGenerationClaimToken { get; set; }
+
+    [BsonElement("variantGenerationClaimedUntil")]
+    [BsonIgnoreIfNull]
+    public DateTime? VariantGenerationClaimedUntil { get; set; }
 }
 
 /// <summary>

@@ -5,4 +5,6 @@ public interface ICommentContentSanitizer
     string SanitizeRichHtml(string value);
 
     string ExtractPlainText(string value);
+
+    IReadOnlyCollection<string> ExtractImageIds(string value);
 }

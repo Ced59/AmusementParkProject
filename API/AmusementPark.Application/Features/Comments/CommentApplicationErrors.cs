@@ -25,6 +25,13 @@ public static class CommentApplicationErrors
             "Le commentaire est introuvable.");
     }
 
+    public static ApplicationError ConcurrentModification()
+    {
+        return ApplicationError.Conflict(
+            "comment.concurrent-modification",
+            "Le commentaire a été modifié entre-temps. Recharge-le avant de recommencer.");
+    }
+
     public static ApplicationError AuthorNotAllowed()
     {
         return ApplicationError.Forbidden(
@@ -58,5 +65,33 @@ public static class CommentApplicationErrors
         return ApplicationError.Validation(
             "comment.body.too-long",
             "Le commentaire dépasse la longueur maximale autorisée.");
+    }
+
+    public static ApplicationError TooManyImages()
+    {
+        return ApplicationError.Validation(
+            "comment.images.too-many",
+            "Un commentaire ne peut pas contenir plus de 12 images.");
+    }
+
+    public static ApplicationError ImageNotAllowed()
+    {
+        return ApplicationError.Forbidden(
+            "comment.image.forbidden",
+            "Cette image ne peut pas être utilisée dans ce commentaire.");
+    }
+
+    public static ApplicationError ImageUploadInvalid()
+    {
+        return ApplicationError.Validation(
+            "comment.image.invalid",
+            "Le fichier doit être une image JPEG, PNG ou WebP de 10 Mo maximum.");
+    }
+
+    public static ApplicationError ImageDimensionsInvalid()
+    {
+        return ApplicationError.Validation(
+            "comment.image.dimensions-invalid",
+            "L'image dépasse les dimensions maximales autorisées.");
     }
 }

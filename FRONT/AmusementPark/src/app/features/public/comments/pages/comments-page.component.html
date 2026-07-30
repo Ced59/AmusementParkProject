@@ -73,26 +73,34 @@
 
           <app-localized-rich-text-editor
             formControlName="bodies"
+            [allowManagedImages]="canWrite()"
+            [preserveManagedImages]="true"
+            [managedImageUpload]="uploadCommentImage"
+            [managedImagePreviewUrl]="resolveCommentImagePreview"
+            [interactionLocked]="saving() || uploadingImages()"
             placeholderKey="comments.editor.placeholder"
             editorHeight="14rem">
           </app-localized-rich-text-editor>
 
-          @if (editorForm.controls.bodies.touched && editorForm.controls.bodies.value.length === 0) {
+          @if (editorForm.controls.bodies.touched && !hasGlobalCommentText(editorForm.controls.bodies.value)) {
             <p class="comment-editor__error">{{ 'comments.editor.validation' | translate }}</p>
           }
 
           @if (saveErrorKey()) {
             <p class="comment-editor__error">{{ saveErrorKey()! | translate }}</p>
           }
+          @if (imageErrorKey()) {
+            <p class="comment-editor__error">{{ imageErrorKey()! | translate }}</p>
+          }
 
           <div class="comment-editor__actions">
             @if (isEditing()) {
-              <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="cancelEditing()">
+              <button appUiButton="ghost" type="button" [disabled]="saving() || uploadingImages()" (click)="cancelEditing()">
                 <i class="pi pi-times" aria-hidden="true"></i>
                 <span>{{ 'comments.editor.cancelEdit' | translate }}</span>
               </button>
             }
-            <button appUiButton="primary" type="submit" [disabled]="saving()">
+            <button appUiButton="primary" type="submit" [disabled]="saving() || uploadingImages()">
               <i [class]="isEditing() ? 'pi pi-save' : 'pi pi-send'" aria-hidden="true"></i>
               <span>
                 {{ (
@@ -148,7 +156,7 @@
               </div>
             </header>
 
-            <div class="comment-card__body" [innerHTML]="commentBody(comment) | safeRichHtml"></div>
+            <div class="comment-card__body" [innerHTML]="commentBody(comment) | safeCommentRichHtml"></div>
 
             @if (canUpdateComment(comment) || canDeleteComment(comment)) {
               <footer class="comment-card__actions">
@@ -156,7 +164,7 @@
                   <button
                     appUiButton="ghost"
                     type="button"
-                    [disabled]="saving()"
+                    [disabled]="saving() || uploadingImages()"
                     (click)="startEditing(comment)">
                     <i class="pi pi-pencil" aria-hidden="true"></i>
                     <span>{{ 'comments.management.edit' | translate }}</span>
@@ -167,7 +175,7 @@
                     appUiButton="ghost"
                     type="button"
                     severity="danger"
-                    [disabled]="saving()"
+                    [disabled]="saving() || uploadingImages()"
                     (click)="deleteComment(comment)">
                     <i class="pi pi-trash" aria-hidden="true"></i>
                     <span>{{ 'comments.management.delete' | translate }}</span>

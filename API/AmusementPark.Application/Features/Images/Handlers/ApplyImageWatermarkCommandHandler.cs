@@ -35,6 +35,12 @@ public sealed class ApplyImageWatermarkCommandHandler : ICommandHandler<ApplyIma
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
             }
 
+            if (ManagedCommentImageMutationGuard.IsManagedScope(image))
+            {
+                return ApplicationResult<Image>.Failure(
+                    ImageApplicationErrors.CommentImageLifecycleManaged());
+            }
+
             if (image.Category == ImageCategory.Logo)
             {
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageWatermarkNotAllowed());

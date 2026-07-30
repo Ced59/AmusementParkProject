@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
@@ -26,6 +27,7 @@ using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.RateLimiting;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Filters;
+using AmusementPark.WebAPI.Extensions;
 using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -180,6 +182,13 @@ public sealed class ImagesController : ControllerBase
             return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid category.", "image.category-invalid");
         }
 
+        if (IsCommentImageOwnerRoute(parsedOwnerType, parsedCategory))
+        {
+            return this.ToNotFoundProblemDetailsResult(
+                "The requested image collection was not found.",
+                "image.not-found");
+        }
+
         ApplicationResult<Image> result = await this.getCurrentImageQueryHandler.HandleAsync(
             new GetCurrentImageQuery(ownerId, parsedOwnerType.ToDomain(), parsedCategory.ToDomain()),
             cancellationToken);
@@ -206,6 +215,13 @@ public sealed class ImagesController : ControllerBase
         if (!ImagesHttpMappers.TryParseImageCategoryDto(category, out ImageCategoryDto parsedCategory))
         {
             return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid category.", "image.category-invalid");
+        }
+
+        if (IsCommentImageOwnerRoute(parsedOwnerType, parsedCategory))
+        {
+            return this.ToNotFoundProblemDetailsResult(
+                "The requested image collection was not found.",
+                "image.not-found");
         }
 
         bool canSeeNonVisible = this.UserCanSeeNonVisible();
@@ -441,6 +457,22 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
+        if (!result.Value.IsPublished)
+        {
+            bool isCommentDraft =
+                result.Value.Category == ImageCategory.Comment
+                && result.Value.OwnerType == ImageOwnerType.CommentDraft;
+            bool canRead = isCommentDraft
+                ? CanReadOwnCommentDraft(result.Value, this.User)
+                : this.UserCanSeeNonVisible();
+            if (!canRead)
+            {
+                return this.ToNotFoundProblemDetailsResult(
+                    "The requested image was not found.",
+                    "image.not-found");
+            }
+        }
+
         if (string.IsNullOrWhiteSpace(result.Value.Path))
         {
             return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");
@@ -452,7 +484,9 @@ public sealed class ImagesController : ControllerBase
             return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");
         }
 
-        this.Response.Headers.CacheControl = "public,max-age=31536000,immutable";
+        this.Response.Headers.CacheControl = result.Value.IsPublished
+            ? "public,max-age=31536000,immutable"
+            : "private,no-store";
         this.Response.Headers.Vary = "Accept";
         return this.File(binary.Value.Stream, binary.Value.ContentType);
     }
@@ -460,5 +494,27 @@ public sealed class ImagesController : ControllerBase
     private bool UserCanSeeNonVisible()
     {
         return this.HttpContext.UserCanSeeNonVisibleInPublicView();
+    }
+
+    internal static bool IsCommentImageOwnerRoute(
+        ImageOwnerTypeDto ownerType,
+        ImageCategoryDto category)
+    {
+        return ownerType is ImageOwnerTypeDto.COMMENT or ImageOwnerTypeDto.COMMENT_DRAFT
+            || category == ImageCategoryDto.COMMENT;
+    }
+
+    internal static bool CanReadOwnCommentDraft(
+        Image image,
+        ClaimsPrincipal user)
+    {
+        bool hasCommentWriterRole =
+            user.IsInRole(AuthorizationRoleGroups.Admin)
+            || user.IsInRole("MODERATOR");
+        return image.Category == ImageCategory.Comment
+            && image.OwnerType == ImageOwnerType.CommentDraft
+            && !image.IsPublished
+            && hasCommentWriterRole
+            && string.Equals(image.OwnerId, user.GetUserId(), StringComparison.Ordinal);
     }
 }

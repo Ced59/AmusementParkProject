@@ -2680,7 +2680,19 @@
       "update": "Guardar los cambios",
       "updating": "Guardando…",
       "cancelEdit": "Cancelar la edición",
-      "saved": "El comentario se ha publicado."
+      "saved": "El comentario se ha publicado.",
+      "images": {
+        "add": "Añadir una imagen",
+        "uploading": "Subiendo la imagen…",
+        "alignLeft": "Imagen a la izquierda, texto a la derecha",
+        "alignCenter": "Centrar la imagen",
+        "alignRight": "Imagen a la derecha, texto a la izquierda",
+        "fullWidth": "Mostrar la imagen a ancho completo",
+        "alt": "Editar el texto alternativo",
+        "altPrompt": "Describe brevemente la imagen para la accesibilidad",
+        "uploadError": "No se ha podido subir la imagen.",
+        "cleanupError": "No se ha podido eliminar una imagen del borrador."
+      }
     },
     "management": {
       "edit": "Editar",
@@ -2696,7 +2708,8 @@
       "update": "No se ha podido actualizar el comentario.",
       "delete": "No se ha podido eliminar el comentario.",
       "forbidden": "Solo los administradores y moderadores pueden publicar un comentario.",
-      "managementForbidden": "Solo puedes editar o eliminar tus propios comentarios, salvo que seas administrador."
+      "managementForbidden": "Solo puedes editar o eliminar tus propios comentarios, salvo que seas administrador.",
+      "concurrentModification": "Este comentario ha cambiado mientras tanto. Tu borrador se ha conservado y se está recargando la última versión. Compara ambas versiones y vuelve a intentarlo."
     }
   },
   "contactPage": {

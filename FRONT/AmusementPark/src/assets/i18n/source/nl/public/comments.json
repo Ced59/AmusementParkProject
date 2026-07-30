@@ -50,7 +50,19 @@
       "update": "Wijzigingen opslaan",
       "updating": "Opslaan…",
       "cancelEdit": "Bewerken annuleren",
-      "saved": "De reactie is gepubliceerd."
+      "saved": "De reactie is gepubliceerd.",
+      "images": {
+        "add": "Afbeelding toevoegen",
+        "uploading": "Afbeelding uploaden…",
+        "alignLeft": "Afbeelding links, tekst rechts",
+        "alignCenter": "Afbeelding centreren",
+        "alignRight": "Afbeelding rechts, tekst links",
+        "fullWidth": "Afbeelding over de volle breedte tonen",
+        "alt": "Alternatieve tekst bewerken",
+        "altPrompt": "Beschrijf de afbeelding kort voor toegankelijkheid",
+        "uploadError": "De afbeelding kon niet worden geüpload.",
+        "cleanupError": "Een conceptafbeelding kon niet worden verwijderd."
+      }
     },
     "management": {
       "edit": "Bewerken",
@@ -66,7 +78,8 @@
       "update": "De reactie kon niet worden bijgewerkt.",
       "delete": "De reactie kon niet worden verwijderd.",
       "forbidden": "Alleen beheerders en moderators kunnen een reactie publiceren.",
-      "managementForbidden": "Je kunt alleen je eigen reacties bewerken of verwijderen, tenzij je beheerder bent."
+      "managementForbidden": "Je kunt alleen je eigen reacties bewerken of verwijderen, tenzij je beheerder bent.",
+      "concurrentModification": "Deze reactie is intussen gewijzigd. Je concept is bewaard en de nieuwste versie wordt opnieuw geladen. Vergelijk beide versies en probeer het opnieuw."
     }
   }
 }

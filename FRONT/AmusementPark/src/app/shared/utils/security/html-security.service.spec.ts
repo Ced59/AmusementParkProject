@@ -74,6 +74,54 @@ describe('HtmlSecurityService', () => {
     expect(result).toContain('decoding="async"');
   });
 
+  it('keeps only pipeline-managed images in comment rich text', () => {
+    const result: string = service.sanitizeManagedImageRichHtml(`
+      <p>Avant</p>
+      <img src="/images/0123456789abcdef0123456789abcdef" class="rich-text__image rich-text__image--left evil" alt="Train">
+      <img src="https://evil.test/hotlink.jpg" class="rich-text__image rich-text__image--right">
+      <img src="data:image/png;base64,AAAA" class="rich-text__image">
+      <p>Après</p>
+    `);
+
+    expect(result).toContain(
+      'src="/images/0123456789abcdef0123456789abcdef" class="rich-text__image rich-text__image--left"'
+    );
+    expect(result).toContain('alt="Train"');
+    expect(result).not.toContain('evil.test');
+    expect(result).not.toContain('base64');
+    expect(result.match(/<img/g)).toHaveLength(1);
+  });
+
+  it('preserves a managed image id and layout when content is copied between languages', () => {
+    const french: string = service.sanitizeManagedImageRichHtml(
+      '<p>Texte français</p><img src="/images/abcdef0123456789abcdef0123456789" class="rich-text__image rich-text__image--right" alt="Vue du parc">'
+    );
+    const translatedCopy: string = french.replace('Texte français', 'English text');
+
+    expect(service.sanitizeManagedImageRichHtml(translatedCopy)).toContain(
+      '<img src="/images/abcdef0123456789abcdef0123456789" class="rich-text__image rich-text__image--right" alt="Vue du parc"'
+    );
+  });
+
+  it('rejects managed image identifiers that are not exactly 32 hexadecimal characters', () => {
+    const result: string = service.sanitizeManagedImageRichHtml(
+      '<img src="/images/image-42" class="rich-text__image rich-text__image--full">'
+      + '<img src="/images/0123456789abcdef0123456789abcdeg" class="rich-text__image rich-text__image--full">'
+    );
+
+    expect(result).not.toContain('<img');
+  });
+
+  it('limits managed image alternative text to 240 characters', () => {
+    const result: string = service.sanitizeManagedImageRichHtml(
+      `<img src="/images/0123456789abcdef0123456789abcdef" class="rich-text__image rich-text__image--full" alt="${'a'.repeat(300)}">`
+    );
+    const template: HTMLTemplateElement = document.createElement('template');
+    template.innerHTML = result;
+
+    expect(template.content.querySelector('img')?.getAttribute('alt')).toHaveLength(240);
+  });
+
   it('decodes encoded rich html before sanitizing it', () => {
     const result: string = service.sanitizeRichHtml('&lt;p onclick=&quot;evil()&quot;&gt;Hello&lt;/p&gt;');
 

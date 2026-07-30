@@ -24,6 +24,16 @@ public interface IImageBinaryStorage
         CancellationToken cancellationToken);
 
     /// <summary>
+    /// Sauvegarde un brouillon de commentaire sous un bail distribué qui
+    /// empêche son nettoyage pendant une écriture binaire encore en vol.
+    /// </summary>
+    Task<IReadOnlyCollection<string>> SaveCommentDraftWithoutMetadataAsync(
+        string pathWithoutExtension,
+        AmusementPark.Application.Common.Contracts.FilePayload file,
+        bool withWatermark,
+        CancellationToken cancellationToken);
+
+    /// <summary>
     /// Récupère la meilleure variante disponible pour un client HTTP.
     /// </summary>
     Task<(Stream Stream, string ContentType)?> GetBestAsync(
@@ -40,5 +50,5 @@ public interface IImageBinaryStorage
     /// <summary>
     /// Supprime toutes les variantes connues d'une image.
     /// </summary>
-    Task DeleteAsync(string pathWithoutExtension, CancellationToken cancellationToken);
+    Task<bool> DeleteAsync(string pathWithoutExtension, CancellationToken cancellationToken);
 }

@@ -53,6 +53,12 @@ public sealed class SetCurrentImageCommandHandler : ICommandHandler<SetCurrentIm
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
             }
 
+            if (ManagedCommentImageMutationGuard.IsManagedScope(image))
+            {
+                return ApplicationResult<Image>.Failure(
+                    ImageApplicationErrors.CommentImageLifecycleManaged());
+            }
+
             if (image.OwnerType == ImageOwnerType.None || string.IsNullOrWhiteSpace(image.OwnerId))
             {
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotLinkedToOwner());

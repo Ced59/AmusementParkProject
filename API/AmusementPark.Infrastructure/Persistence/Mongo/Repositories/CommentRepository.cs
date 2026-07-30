@@ -32,24 +32,94 @@ public sealed class CommentRepository : ICommentRepository
         return document?.ToDomain();
     }
 
-    public async Task<Comment?> UpdateAsync(Comment comment, CancellationToken cancellationToken)
+    public async Task<Comment?> UpdateAsync(
+        Comment comment,
+        long expectedRevision,
+        CancellationToken cancellationToken)
     {
+        comment.Revision = checked(expectedRevision + 1);
         CommentDocument document = comment.ToDocument();
+        FilterDefinitionBuilder<CommentDocument> builder = Builders<CommentDocument>.Filter;
+        FilterDefinition<CommentDocument> filter =
+            builder.Eq(static value => value.Id, document.Id)
+            & builder.Eq(static value => value.Revision, expectedRevision);
         ReplaceOneResult result = await this.commentsCollection.ReplaceOneAsync(
-            value => value.Id == document.Id,
+            filter,
             document,
             cancellationToken: cancellationToken);
 
         return result.MatchedCount == 0 ? null : document.ToDomain();
     }
 
-    public async Task<bool> DeleteAsync(string commentId, CancellationToken cancellationToken)
+    public async Task<bool> TryAdvanceRevisionFenceAsync(
+        string commentId,
+        long expectedRevision,
+        CancellationToken cancellationToken)
     {
+        UpdateResult result = await this.commentsCollection.UpdateOneAsync(
+            BuildRevisionFenceFilter(commentId, expectedRevision),
+            BuildRevisionFenceUpdate(expectedRevision),
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount > 0;
+    }
+
+    internal static FilterDefinition<CommentDocument> BuildRevisionFenceFilter(
+        string commentId,
+        long expectedRevision)
+    {
+        FilterDefinitionBuilder<CommentDocument> builder =
+            Builders<CommentDocument>.Filter;
+        return builder.Eq(
+                static document => document.Id,
+                commentId.Trim())
+            & builder.Eq(
+                static document => document.Revision,
+                expectedRevision);
+    }
+
+    internal static UpdateDefinition<CommentDocument> BuildRevisionFenceUpdate(
+        long expectedRevision)
+    {
+        return Builders<CommentDocument>.Update.Set(
+            static document => document.Revision,
+            checked(expectedRevision + 1));
+    }
+
+    public async Task<bool> DeleteAsync(
+        string commentId,
+        long expectedRevision,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<CommentDocument> builder = Builders<CommentDocument>.Filter;
+        FilterDefinition<CommentDocument> filter =
+            builder.Eq(static value => value.Id, commentId.Trim())
+            & builder.Eq(static value => value.Revision, expectedRevision);
         DeleteResult result = await this.commentsCollection.DeleteOneAsync(
-            value => value.Id == commentId.Trim(),
+            filter,
             cancellationToken);
 
         return result.DeletedCount > 0;
+    }
+
+    public Task<bool> IsImageReferencedAsync(string imageId, CancellationToken cancellationToken)
+    {
+        FilterDefinition<CommentDocument> filter =
+            Builders<CommentDocument>.Filter.AnyEq(static value => value.ImageIds, imageId.Trim());
+        return this.commentsCollection.Find(filter).AnyAsync(cancellationToken);
+    }
+
+    public async Task<string?> GetReferencingCommentIdAsync(
+        string imageId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<CommentDocument> filter =
+            Builders<CommentDocument>.Filter.AnyEq(
+                static value => value.ImageIds,
+                imageId.Trim());
+        return await this.commentsCollection
+            .Find(filter)
+            .Project(static value => value.Id)
+            .FirstOrDefaultAsync(cancellationToken);
     }
 
     public async Task<IReadOnlyCollection<Comment>> GetPublishedByTargetAsync(

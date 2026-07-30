@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Images.Results;
+using AmusementPark.Application.Features.Comments;
 using AmusementPark.Core.Domain.Images;
 
 namespace AmusementPark.Application.Features.Images.Handlers;
@@ -17,7 +18,13 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
     private const long MaximumAvatarFileSizeInBytes = 5 * 1024 * 1024;
     private const int MaximumAvatarEdge = 4096;
     private const long MaximumAvatarPixels = 8_000_000;
+    private const int MaximumCommentImageEdge = 8192;
+    private const long MaximumCommentImagePixels = 24_000_000;
+    private static readonly TimeSpan CommentDraftRetention = TimeSpan.FromHours(24);
     private static readonly HashSet<string> AllowedAvatarContentTypes = new HashSet<string>(
+        new[] { "image/jpeg", "image/png", "image/webp" },
+        StringComparer.OrdinalIgnoreCase);
+    private static readonly HashSet<string> AllowedCommentImageContentTypes = new HashSet<string>(
         new[] { "image/jpeg", "image/png", "image/webp" },
         StringComparer.OrdinalIgnoreCase);
     private readonly IImageRepository imageRepository;
@@ -41,6 +48,15 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             return ApplicationResult<UploadedImageResult>.Failure(ApplicationErrors.Required(nameof(command.Request)));
         }
 
+        if (!command.AllowManagedCommentLifecycle
+            && ManagedCommentImageMutationGuard.IsManagedScope(
+                command.Request.Category,
+                command.Request.OwnerType))
+        {
+            return ApplicationResult<UploadedImageResult>.Failure(
+                ImageApplicationErrors.CommentImageLifecycleManaged());
+        }
+
         if (command.Request.File is null || command.Request.File.Content == Stream.Null || string.IsNullOrWhiteSpace(command.Request.File.FileName))
         {
             return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.NoImageFileProvided());
@@ -62,27 +78,40 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.AvatarUploadInvalid());
             }
 
+            if (command.Request.Category == ImageCategory.Comment
+                && (metadata is null
+                    || string.IsNullOrWhiteSpace(metadata.DetectedContentType)
+                    || !AllowedCommentImageContentTypes.Contains(metadata.DetectedContentType)
+                    || metadata.FrameCount != 1))
+            {
+                return ApplicationResult<UploadedImageResult>.Failure(
+                    CommentApplicationErrors.ImageUploadInvalid());
+            }
+
+            if (command.Request.Category == ImageCategory.Comment
+                && (metadata!.Width <= 0
+                    || metadata.Height <= 0
+                    || metadata.Width > MaximumCommentImageEdge
+                    || metadata.Height > MaximumCommentImageEdge
+                    || (long)metadata.Width * metadata.Height > MaximumCommentImagePixels))
+            {
+                return ApplicationResult<UploadedImageResult>.Failure(
+                    CommentApplicationErrors.ImageDimensionsInvalid());
+            }
+
             if (command.Request.File.Content.CanSeek)
             {
                 command.Request.File.Content.Position = 0;
             }
 
             string imageId = Guid.NewGuid().ToString("N");
+            string? commentDraftUploadToken =
+                command.Request.Category == ImageCategory.Comment
+                    ? Guid.NewGuid().ToString("N")
+                    : null;
             string categoryPathSegment = ToPathSegment(command.Request.Category);
             string storagePath = $"{categoryPathSegment}/{imageId}";
             FilePayload persistedFile = BuildPersistedFile(command.Request, metadata);
-
-            IReadOnlyCollection<string> savedFiles = command.Request.Category == ImageCategory.Avatar
-                ? await this.imageBinaryStorage.SaveWithoutMetadataAsync(
-                    storagePath,
-                    command.Request.File,
-                    withWatermark,
-                    cancellationToken)
-                : await this.imageBinaryStorage.SaveAsync(
-                    storagePath,
-                    command.Request.File,
-                    withWatermark,
-                    cancellationToken);
 
             ImageUploadRequest preparedRequest = new ImageUploadRequest
             {
@@ -98,10 +127,95 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 Width = metadata?.Width ?? 0,
                 Height = metadata?.Height ?? 0,
                 SizeInBytes = metadata?.SizeInBytes ?? command.Request.File.Length,
-                GeoLocation = command.Request.Category == ImageCategory.Avatar ? null : metadata?.GeoLocation,
-                ExifMetadata = command.Request.Category == ImageCategory.Avatar ? null : metadata?.ExifMetadata,
+                GeoLocation = IsPrivateImageCategory(command.Request.Category) ? null : metadata?.GeoLocation,
+                ExifMetadata = IsPrivateImageCategory(command.Request.Category) ? null : metadata?.ExifMetadata,
+                IsPublished = command.Request.IsPublished,
+                CommentDraftUploadToken = commentDraftUploadToken,
+                CleanupRequestedAtUtc =
+                    command.Request.Category == ImageCategory.Comment
+                        ? DateTime.UtcNow.Add(CommentDraftRetention)
+                        : null,
             };
 
+            if (command.Request.Category == ImageCategory.Comment)
+            {
+                Image draft;
+                try
+                {
+                    draft = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
+                }
+                catch
+                {
+                    await this.RequestCommentDraftCleanupBestEffortAsync(
+                        imageId,
+                        preparedRequest.OwnerId ?? string.Empty);
+                    throw;
+                }
+
+                IReadOnlyCollection<string> commentFiles;
+                try
+                {
+                    commentFiles = await this.imageBinaryStorage.SaveCommentDraftWithoutMetadataAsync(
+                        storagePath,
+                        command.Request.File,
+                        withWatermark,
+                        cancellationToken);
+                }
+                catch
+                {
+                    await this.RequestCommentDraftCleanupBestEffortAsync(
+                        draft.Id,
+                        draft.OwnerId ?? string.Empty);
+                    throw;
+                }
+
+                Image? completedDraft;
+                try
+                {
+                    completedDraft =
+                        await this.imageRepository
+                            .CompleteCommentDraftUploadAsync(
+                                draft.Id,
+                                draft.OwnerId ?? string.Empty,
+                                commentDraftUploadToken!,
+                                preparedRequest.CleanupRequestedAtUtc!.Value,
+                                CancellationToken.None);
+                }
+                catch
+                {
+                    await this.RequestCommentDraftCleanupBestEffortAsync(
+                        draft.Id,
+                        draft.OwnerId ?? string.Empty);
+                    throw;
+                }
+
+                if (completedDraft is null)
+                {
+                    await this.RequestCommentDraftCleanupBestEffortAsync(
+                        draft.Id,
+                        draft.OwnerId ?? string.Empty);
+                    throw new InvalidOperationException(
+                        "Unable to confirm the comment image draft upload.");
+                }
+
+                return ApplicationResult<UploadedImageResult>.Success(new UploadedImageResult
+                {
+                    Image = completedDraft,
+                    SavedFiles = commentFiles,
+                });
+            }
+
+            IReadOnlyCollection<string> savedFiles = command.Request.Category == ImageCategory.Avatar
+                ? await this.imageBinaryStorage.SaveWithoutMetadataAsync(
+                    storagePath,
+                    command.Request.File,
+                    withWatermark,
+                    cancellationToken)
+                : await this.imageBinaryStorage.SaveAsync(
+                    storagePath,
+                    command.Request.File,
+                    withWatermark,
+                    cancellationToken);
             Image image = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
 
             return ApplicationResult<UploadedImageResult>.Success(new UploadedImageResult
@@ -116,7 +230,25 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
         }
         catch (Exception)
         {
-            return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.ImageProcessingFailed());
+            return command.Request.Category == ImageCategory.Comment
+                ? ApplicationResult<UploadedImageResult>.Failure(CommentApplicationErrors.ImageUploadInvalid())
+                : ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.ImageProcessingFailed());
+        }
+    }
+
+    private async Task RequestCommentDraftCleanupBestEffortAsync(string imageId, string ownerId)
+    {
+        try
+        {
+            await this.imageRepository.RequestCommentDraftCleanupAsync(
+                imageId,
+                ownerId,
+                DateTime.UtcNow,
+                CancellationToken.None);
+        }
+        catch
+        {
+            // Le brouillon reste détectable par la rétention de secours.
         }
     }
 
@@ -151,7 +283,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
         ImageUploadRequest request,
         ImageProcessingMetadata? metadata)
     {
-        if (request.Category != ImageCategory.Avatar
+        if (!IsPrivateImageCategory(request.Category)
             || string.IsNullOrWhiteSpace(metadata?.DetectedContentType))
         {
             return request.File;
@@ -164,6 +296,11 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             Length = request.File.Length,
             Content = request.File.Content,
         };
+    }
+
+    private static bool IsPrivateImageCategory(ImageCategory category)
+    {
+        return category is ImageCategory.Avatar or ImageCategory.Comment;
     }
 
     private static bool IsLogoCategory(ImageCategory category)
@@ -183,6 +320,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             ImageCategory.Manufacturer => "manufacturer",
             ImageCategory.Founder => "founder",
             ImageCategory.VideoThumbnail => "video_thumbnail",
+            ImageCategory.Comment => "comment",
             _ => "image",
         };
     }

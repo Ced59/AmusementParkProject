@@ -50,7 +50,19 @@
       "update": "Salva le modifiche",
       "updating": "Salvataggio…",
       "cancelEdit": "Annulla la modifica",
-      "saved": "Il commento è stato pubblicato."
+      "saved": "Il commento è stato pubblicato.",
+      "images": {
+        "add": "Aggiungi un’immagine",
+        "uploading": "Caricamento dell’immagine…",
+        "alignLeft": "Immagine a sinistra, testo a destra",
+        "alignCenter": "Centra l’immagine",
+        "alignRight": "Immagine a destra, testo a sinistra",
+        "fullWidth": "Mostra l’immagine a larghezza intera",
+        "alt": "Modifica il testo alternativo",
+        "altPrompt": "Descrivi brevemente l’immagine per l’accessibilità",
+        "uploadError": "Non è stato possibile caricare l’immagine.",
+        "cleanupError": "Non è stato possibile eliminare un’immagine della bozza."
+      }
     },
     "management": {
       "edit": "Modifica",
@@ -66,7 +78,8 @@
       "update": "Non è stato possibile modificare il commento.",
       "delete": "Non è stato possibile eliminare il commento.",
       "forbidden": "Solo amministratori e moderatori possono pubblicare un commento.",
-      "managementForbidden": "Puoi modificare o eliminare solo i tuoi commenti, a meno che tu non sia amministratore."
+      "managementForbidden": "Puoi modificare o eliminare solo i tuoi commenti, a meno che tu non sia amministratore.",
+      "concurrentModification": "Questo commento è stato modificato nel frattempo. La tua bozza è stata conservata e l’ultima versione è in fase di ricaricamento. Confronta le due versioni, poi riprova."
     }
   }
 }

@@ -17,6 +17,29 @@ namespace AmusementPark.Application.Tests.Features.Images.Handlers;
 public sealed class ImportRemoteImageCommandHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenImportTargetsCommentLifecycle_ShouldRejectBeforeImporting()
+    {
+        Mock<IRemoteImageImporter> remoteImageImporter =
+            new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+        ImportRemoteImageCommandHandler handler = CreateHandler(remoteImageImporter);
+
+        ApplicationResult<Image> result = await handler.HandleAsync(
+            new ImportRemoteImageCommand(new RemoteImageImportRequest
+            {
+                SourceUrl = "https://cdn.example.test/comment.png",
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+            }));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "image.comment.lifecycle-managed");
+        remoteImageImporter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenSourceUrlIsInvalid_ShouldFailWithoutImporting()
     {
         Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);

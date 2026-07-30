@@ -16,4 +16,6 @@ public enum ImageOwnerType
     ParkFounder = 6,
     Video = 7,
     StandaloneAttraction = 8,
+    CommentDraft = 9,
+    Comment = 10,
 }

@@ -19,6 +19,11 @@ internal static partial class EntityMongoMappers
 {
     public static Image ToDomain(this ImageDocument document)
     {
+        bool usesLegacyReservationDeadline =
+            document.OwnerType == ImageOwnerType.CommentDraft
+            && !string.IsNullOrWhiteSpace(document.PendingCommentId)
+            && document.ReservationReconcileAfter is null
+            && document.CleanupRequestedAt.HasValue;
         Image entity = new Image
         {
             Id = document.Id,
@@ -42,6 +47,29 @@ internal static partial class EntityMongoMappers
             SourceUrl = document.SourceUrl,
             IsWatermarked = document.IsWatermarked,
             IsPublished = document.IsPublished,
+            DraftOwnerId = document.DraftOwnerId,
+            PendingCommentId = document.PendingCommentId,
+            PendingReservationToken = document.PendingReservationToken,
+            PendingCommentRevision = document.PendingCommentRevision,
+            PendingReservationExpiresAtUtc =
+                document.PendingReservationExpiresAt,
+            AbortedReservationTokens =
+                document.AbortedReservationTokens.ToList(),
+            CleanupRequestedAtUtc = usesLegacyReservationDeadline
+                ? null
+                : document.CleanupRequestedAt,
+            CleanupCommentRevision = usesLegacyReservationDeadline
+                ? null
+                : document.CleanupCommentRevision,
+            ReservationReconcileAfterUtc =
+                document.ReservationReconcileAfter
+                ?? (usesLegacyReservationDeadline
+                    ? document.CleanupRequestedAt
+                    : null),
+            CommentReuseReservationToken = document.CommentReuseReservationToken,
+            CommentReuseReconcileAfterUtc = document.CommentReuseReconcileAfter,
+            CommentReuseTargetRevision = document.CommentReuseTargetRevision,
+            CommentReuseExpiresAtUtc = document.CommentReuseExpiresAt,
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -74,6 +102,22 @@ internal static partial class EntityMongoMappers
             SourceUrl = entity.SourceUrl,
             IsWatermarked = entity.IsWatermarked,
             IsPublished = entity.IsPublished,
+            DraftOwnerId = entity.DraftOwnerId,
+            PendingCommentId = entity.PendingCommentId,
+            PendingReservationToken = entity.PendingReservationToken,
+            PendingCommentRevision = entity.PendingCommentRevision,
+            PendingReservationExpiresAt =
+                entity.PendingReservationExpiresAtUtc,
+            AbortedReservationTokens =
+                entity.AbortedReservationTokens.ToList(),
+            ReservationReconcileAfter =
+                entity.ReservationReconcileAfterUtc,
+            CleanupRequestedAt = entity.CleanupRequestedAtUtc,
+            CleanupCommentRevision = entity.CleanupCommentRevision,
+            CommentReuseReservationToken = entity.CommentReuseReservationToken,
+            CommentReuseReconcileAfter = entity.CommentReuseReconcileAfterUtc,
+            CommentReuseTargetRevision = entity.CommentReuseTargetRevision,
+            CommentReuseExpiresAt = entity.CommentReuseExpiresAtUtc,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

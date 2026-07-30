@@ -1,5 +1,11 @@
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Services.Images;
+using Microsoft.Extensions.Logging.Abstractions;
+using Minio;
+using Moq;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Gif;
 using SixLabors.ImageSharp.Metadata.Profiles.Exif;
 using SixLabors.ImageSharp.PixelFormats;
 using Xunit;
@@ -8,6 +14,366 @@ namespace AmusementPark.Infrastructure.Tests.Services.Images;
 
 public sealed class MinioImageBinaryStorageTests
 {
+    [Fact]
+    public async Task ExecuteWithVariantGenerationLeaseAsync_ShouldHoldLeaseUntilGenerationCompletes()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        lease.Setup(value => value.ReleaseAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        MinioImageBinaryStorage storage = new MinioImageBinaryStorage(
+            Mock.Of<IMinioClient>(),
+            new MinioImageStorageSettings(),
+            lease.Object,
+            NullLogger<MinioImageBinaryStorage>.Instance);
+        TaskCompletionSource<bool> generationStarted =
+            new TaskCompletionSource<bool>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> allowGenerationCompletion =
+            new TaskCompletionSource<bool>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+
+        Task<(Stream Stream, string ContentType)?> generationTask =
+            storage.ExecuteWithVariantGenerationLeaseAsync(
+                "comment/image-1",
+                async cancellationToken =>
+                {
+                    generationStarted.SetResult(true);
+                    await allowGenerationCompletion.Task.WaitAsync(
+                        cancellationToken);
+                    return null;
+                },
+                CancellationToken.None);
+
+        await generationStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        lease.Verify(value => value.ReleaseAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+
+        allowGenerationCompletion.SetResult(true);
+        await generationTask;
+
+        lease.Verify(value => value.ReleaseAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                CancellationToken.None),
+            Times.Once);
+    }
+
+    [Fact]
+    public async Task ExecuteWithVariantGenerationLeaseAsync_WhenCleanupOwnsClaim_ShouldNotGenerate()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        MinioImageBinaryStorage storage = new MinioImageBinaryStorage(
+            Mock.Of<IMinioClient>(),
+            new MinioImageStorageSettings(),
+            lease.Object,
+            NullLogger<MinioImageBinaryStorage>.Instance);
+        bool generationInvoked = false;
+
+        (Stream Stream, string ContentType)? result =
+            await storage.ExecuteWithVariantGenerationLeaseAsync(
+                "comment/image-1",
+                cancellationToken =>
+                {
+                    generationInvoked = true;
+                    return Task.FromResult<(Stream Stream, string ContentType)?>(
+                        null);
+                },
+                CancellationToken.None);
+
+        Assert.Null(result);
+        Assert.False(generationInvoked);
+        lease.Verify(value => value.ReleaseAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
+    public async Task ExecuteWithCommentDraftUploadLeaseAsync_ShouldReleaseOnlyAfterSuccessfulUpload()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.Is<DateTime>(until => until > DateTime.UtcNow.AddHours(24)),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        lease.Setup(value => value.ReleaseAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+        TaskCompletionSource<bool> uploadStarted =
+            new TaskCompletionSource<bool>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> allowUploadCompletion =
+            new TaskCompletionSource<bool>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+
+        Task<IReadOnlyCollection<string>> uploadTask =
+            storage.ExecuteWithCommentDraftUploadLeaseAsync(
+                "comment/image-1",
+                async cancellationToken =>
+                {
+                    uploadStarted.SetResult(true);
+                    await allowUploadCompletion.Task.WaitAsync(
+                        cancellationToken);
+                    return new[] { "comment/image-1.webp" };
+                },
+                TimeSpan.FromHours(25),
+                TimeSpan.FromHours(1),
+                CancellationToken.None);
+
+        await uploadStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        lease.Verify(value => value.ReleaseAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+
+        allowUploadCompletion.SetResult(true);
+        IReadOnlyCollection<string> result = await uploadTask;
+
+        Assert.Single(result);
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteWithCommentDraftUploadLeaseAsync_WhenUploadFails_ShouldKeepLeaseForQuarantine()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+
+        await Assert.ThrowsAsync<IOException>(() =>
+            storage.ExecuteWithCommentDraftUploadLeaseAsync(
+                "comment/image-1",
+                _ => Task.FromException<IReadOnlyCollection<string>>(
+                    new IOException("Ambiguous PUT.")),
+                TimeSpan.FromHours(25),
+                TimeSpan.FromHours(1),
+                CancellationToken.None));
+
+        lease.Verify(value => value.ReleaseAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteWithCommentDraftUploadLeaseAsync_WhenUploadIsLong_ShouldRenewBeforeRelease()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        TaskCompletionSource<bool> renewed =
+            new TaskCompletionSource<bool>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+        lease.Setup(value => value.RenewAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.Is<DateTime>(until => until > DateTime.UtcNow.AddHours(24)),
+                It.IsAny<CancellationToken>()))
+            .Callback(() => renewed.TrySetResult(true))
+            .ReturnsAsync(true);
+        lease.Setup(value => value.ReleaseAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+
+        IReadOnlyCollection<string> result =
+            await storage.ExecuteWithCommentDraftUploadLeaseAsync(
+                "comment/image-1",
+                async cancellationToken =>
+                {
+                    await renewed.Task.WaitAsync(cancellationToken);
+                    return new[] { "comment/image-1.webp" };
+                },
+                TimeSpan.FromHours(25),
+                TimeSpan.FromMilliseconds(10),
+                CancellationToken.None);
+
+        Assert.Single(result);
+        lease.Verify(value => value.RenewAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()),
+            Times.AtLeastOnce);
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteWithCommentDraftUploadLeaseAsync_WhenRenewalIsLost_ShouldCancelAndKeepLease()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        lease.Setup(value => value.RenewAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            storage.ExecuteWithCommentDraftUploadLeaseAsync(
+                "comment/image-1",
+                async cancellationToken =>
+                {
+                    await Task.Delay(
+                        Timeout.InfiniteTimeSpan,
+                        cancellationToken);
+                    return Array.Empty<string>();
+                },
+                TimeSpan.FromHours(25),
+                TimeSpan.FromMilliseconds(10),
+                CancellationToken.None));
+
+        lease.Verify(value => value.ReleaseAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteWithCommentDraftUploadLeaseAsync_WhenRenewalThrows_ShouldCancelAndKeepLease()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        lease.Setup(value => value.RenewAsync(
+                "comment/image-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new IOException("Lease store unavailable."));
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+        TaskCompletionSource<bool> uploadCancelled =
+            new TaskCompletionSource<bool>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+
+        InvalidOperationException exception =
+            await Assert.ThrowsAsync<InvalidOperationException>(() =>
+                storage.ExecuteWithCommentDraftUploadLeaseAsync(
+                    "comment/image-1",
+                    async cancellationToken =>
+                    {
+                        try
+                        {
+                            await Task.Delay(
+                                Timeout.InfiniteTimeSpan,
+                                cancellationToken);
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            uploadCancelled.TrySetResult(true);
+                            throw;
+                        }
+
+                        return Array.Empty<string>();
+                    },
+                    TimeSpan.FromHours(25),
+                    TimeSpan.FromMilliseconds(10),
+                    CancellationToken.None));
+
+        Assert.Equal(
+            "The comment draft upload lease was lost.",
+            exception.Message);
+        Assert.True(
+            await uploadCancelled.Task.WaitAsync(TimeSpan.FromSeconds(2)));
+        lease.Verify(value => value.ReleaseAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task LoadForStorageAsync_WhenPrivateImageIsAnimated_ShouldDecodeOnlyFirstFrame()
+    {
+        await using MemoryStream stream = new MemoryStream();
+        using (Image<Rgba32> image = new Image<Rgba32>(2, 3))
+        using (Image<Rgba32> secondFrameImage = new Image<Rgba32>(2, 3))
+        using (Image<Rgba32> thirdFrameImage = new Image<Rgba32>(2, 3))
+        {
+            image.Frames.AddFrame(secondFrameImage.Frames.RootFrame);
+            image.Frames.AddFrame(thirdFrameImage.Frames.RootFrame);
+            await image.SaveAsync(stream, new GifEncoder());
+        }
+
+        stream.Position = 0;
+        using Image decoded = await MinioImageBinaryStorage.LoadForStorageAsync(
+            stream,
+            stripMetadata: true,
+            CancellationToken.None);
+
+        Assert.Single(decoded.Frames);
+    }
+
     [Fact]
     public void StripEmbeddedMetadata_ShouldRemoveExifProfiles()
     {
@@ -41,6 +407,16 @@ public sealed class MinioImageBinaryStorageTests
         Assert.Equal(red, image[0, 0]);
         Assert.Equal(blue, image[0, 1]);
         Assert.Null(image.Metadata.ExifProfile);
+    }
+
+    private static MinioImageBinaryStorage CreateStorage(
+        Mock<IImageVariantGenerationLease> lease)
+    {
+        return new MinioImageBinaryStorage(
+            Mock.Of<IMinioClient>(),
+            new MinioImageStorageSettings(),
+            lease.Object,
+            NullLogger<MinioImageBinaryStorage>.Instance);
     }
 
     [Theory]

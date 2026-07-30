@@ -16,4 +16,5 @@ public sealed record UpdateCommentCommand(
 
 public sealed record DeleteCommentCommand(
     string ActorUserId,
-    string CommentId) : ICommand<ApplicationResult>;
+    string CommentId,
+    long? ExpectedRevision = null) : ICommand<ApplicationResult>;

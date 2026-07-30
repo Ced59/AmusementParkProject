@@ -308,6 +308,9 @@ public sealed partial class MongoDatabaseInitializer
                 Builders<ImageDocument>.IndexKeys.Ascending(item => item.CreatedAt),
                 new CreateIndexOptions { Name = "idx_images_created_at" }),
             new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys.Ascending(item => item.Path),
+                new CreateIndexOptions { Name = "idx_images_path" }),
+            new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys.Ascending("tagIds"),
                 new CreateIndexOptions { Name = "idx_images_tag_ids" }),
             new CreateIndexModel<ImageDocument>(
@@ -322,6 +325,41 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.IsPublished)
                     .Descending(item => item.CreatedAt),
                 new CreateIndexOptions { Name = "idx_images_owner_type_published_created_desc" }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.CleanupRequestedAt)
+                    .Ascending(item => item.CreatedAt),
+                new CreateIndexOptions<ImageDocument>
+                {
+                    Name = "idx_images_comment_cleanup_due",
+                    PartialFilterExpression =
+                        Builders<ImageDocument>.Filter.Exists(
+                            static item => item.CleanupRequestedAt),
+                }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.ReservationReconcileAfter)
+                    .Ascending(item => item.CreatedAt),
+                new CreateIndexOptions<ImageDocument>
+                {
+                    Name = "idx_images_comment_reservation_reconcile_due",
+                    PartialFilterExpression =
+                        Builders<ImageDocument>.Filter.Exists(
+                            static item => item.ReservationReconcileAfter),
+                }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.CommentReuseReconcileAfter),
+                new CreateIndexOptions<ImageDocument>
+                {
+                    Name = "idx_images_comment_reuse_reconcile",
+                    PartialFilterExpression =
+                        Builders<ImageDocument>.Filter.Exists(
+                            static item => item.CommentReuseReconcileAfter),
+                }),
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys
                     .Text(item => item.OriginalFileName)

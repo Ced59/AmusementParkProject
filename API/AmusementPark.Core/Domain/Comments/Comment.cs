@@ -25,15 +25,24 @@ public sealed class Comment : AuditableEntity
 
     public List<LocalizedText> Bodies { get; set; } = new List<LocalizedText>();
 
+    public List<string> ImageIds { get; set; } = new List<string>();
+
+    public long Revision { get; set; }
+
     public bool IsOfficial { get; set; }
 
     public CommentModerationStatus ModerationStatus { get; set; } = CommentModerationStatus.Published;
 
-    public void UpdateContent(IReadOnlyCollection<LocalizedText> bodies, bool isOfficial)
+    public void UpdateContent(
+        IReadOnlyCollection<LocalizedText> bodies,
+        IReadOnlyCollection<string> imageIds,
+        bool isOfficial)
     {
         ArgumentNullException.ThrowIfNull(bodies);
+        ArgumentNullException.ThrowIfNull(imageIds);
 
         this.Bodies = bodies.ToList();
+        this.ImageIds = imageIds.Distinct(StringComparer.Ordinal).ToList();
         this.IsOfficial = isOfficial;
         this.Touch();
     }

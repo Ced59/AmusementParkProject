@@ -2680,7 +2680,19 @@
       "update": "Save changes",
       "updating": "Saving…",
       "cancelEdit": "Cancel editing",
-      "saved": "The comment has been published."
+      "saved": "The comment has been published.",
+      "images": {
+        "add": "Add an image",
+        "uploading": "Uploading image…",
+        "alignLeft": "Image on the left, text on the right",
+        "alignCenter": "Centre image",
+        "alignRight": "Image on the right, text on the left",
+        "fullWidth": "Show image at full width",
+        "alt": "Edit alternative text",
+        "altPrompt": "Briefly describe the image for accessibility",
+        "uploadError": "The image could not be uploaded.",
+        "cleanupError": "A draft image could not be deleted."
+      }
     },
     "management": {
       "edit": "Edit",
@@ -2696,7 +2708,8 @@
       "update": "The comment could not be updated.",
       "delete": "The comment could not be deleted.",
       "forbidden": "Only administrators and moderators can publish a comment.",
-      "managementForbidden": "You can only edit or delete your own comments unless you are an administrator."
+      "managementForbidden": "You can only edit or delete your own comments unless you are an administrator.",
+      "concurrentModification": "This comment changed in the meantime. Your draft has been kept and the latest version is being reloaded. Compare both versions, then try again."
     }
   },
   "contactPage": {

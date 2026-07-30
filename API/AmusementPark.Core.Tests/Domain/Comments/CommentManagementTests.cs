@@ -1,5 +1,6 @@
 using AmusementPark.Core.Domain.Comments;
 using AmusementPark.Core.Domain.Users;
+using AmusementPark.Core.Localization;
 using Xunit;
 
 namespace AmusementPark.Core.Tests.Domain.Comments;
@@ -66,5 +67,24 @@ public sealed class CommentManagementTests
         bool result = Comment.CanManageOfficialStatus(actor);
 
         Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void UpdateContent_ShouldReplaceBodiesAndDeduplicateImageReferences()
+    {
+        Comment comment = new Comment
+        {
+            Bodies = new List<LocalizedText> { new LocalizedText("fr", "<p>Avant</p>") },
+            ImageIds = new List<string> { "old-image" },
+        };
+
+        comment.UpdateContent(
+            new[] { new LocalizedText("fr", "<p>Après</p>") },
+            new[] { "image-1", "image-1", "image-2" },
+            true);
+
+        Assert.Equal("<p>Après</p>", Assert.Single(comment.Bodies).Value);
+        Assert.Equal(new[] { "image-1", "image-2" }, comment.ImageIds);
+        Assert.True(comment.IsOfficial);
     }
 }

@@ -12,13 +12,15 @@ namespace AmusementPark.Infrastructure.Tests.Services.Images;
 public sealed class ImageMetadataPipelineTests
 {
     [Fact]
-    public async Task ExtractMetadataAsync_WhenGifIsAnimated_ShouldReportDetectedFormatAndAllFrames()
+    public async Task ExtractMetadataAsync_WhenGifHasManyFrames_ShouldDetectAnimationWithBoundedInspection()
     {
         await using MemoryStream stream = new MemoryStream();
         using (Image<Rgba32> image = new Image<Rgba32>(2, 3))
         using (Image<Rgba32> secondFrameImage = new Image<Rgba32>(2, 3))
+        using (Image<Rgba32> thirdFrameImage = new Image<Rgba32>(2, 3))
         {
             image.Frames.AddFrame(secondFrameImage.Frames.RootFrame);
+            image.Frames.AddFrame(thirdFrameImage.Frames.RootFrame);
             await image.SaveAsync(stream, new GifEncoder());
         }
 
@@ -44,5 +46,37 @@ public sealed class ImageMetadataPipelineTests
         Assert.Equal(2, metadata.FrameCount);
         Assert.Equal(2, metadata.Width);
         Assert.Equal(3, metadata.Height);
+    }
+
+    [Fact]
+    public async Task ExtractMetadataAsync_WhenPngIsValid_ShouldIdentifyFormatAndDimensions()
+    {
+        await using MemoryStream stream = new MemoryStream();
+        using (Image<Rgba32> image = new Image<Rgba32>(1, 1))
+        {
+            await image.SaveAsPngAsync(stream);
+        }
+
+        stream.Position = 0;
+        ImageMetadataPipeline pipeline = new ImageMetadataPipeline();
+
+        ImageProcessingMetadata? result = await pipeline.ExtractMetadataAsync(
+            new ImageUploadRequest
+            {
+                File = new FilePayload
+                {
+                    FileName = "pixel.png",
+                    ContentType = "image/png",
+                    Length = stream.Length,
+                    Content = stream,
+                },
+            },
+            CancellationToken.None);
+
+        Assert.NotNull(result);
+        Assert.Equal(1, result.Width);
+        Assert.Equal(1, result.Height);
+        Assert.Equal("image/png", result.DetectedContentType);
+        Assert.Equal(1, result.FrameCount);
     }
 }

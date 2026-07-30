@@ -31,12 +31,28 @@ public sealed class CommentsHttpMappersTests
             new[] { new LocalizedText("fr", "<p>Avis</p>") },
             false,
             new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc),
-            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc));
+            new DateTime(2026, 7, 1, 10, 0, 0, DateTimeKind.Utc),
+            7);
 
         CommentDto dto = result.ToHttp(actorUserId, canManageAll);
 
         Assert.Equal(expected, dto.CanUpdate);
         Assert.Equal(expected, dto.CanDelete);
         Assert.Equal("/images/avatar-1", dto.AuthorAvatarUrl);
+        Assert.Equal(7, dto.Revision);
+    }
+
+    [Fact]
+    public void ToApplication_ShouldMapExpectedRevision()
+    {
+        UpdateCommentRequestDto request = new UpdateCommentRequestDto
+        {
+            Revision = 7,
+        };
+
+        AmusementPark.Application.Features.Comments.Contracts.CommentEditModel result =
+            request.ToApplication();
+
+        Assert.Equal(7, result.ExpectedRevision);
     }
 }

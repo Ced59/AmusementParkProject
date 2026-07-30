@@ -10,7 +10,7 @@ public sealed class CommentContentSanitizer : ICommentContentSanitizer
         new[]
         {
             "a", "b", "blockquote", "br", "code", "div", "em", "h1", "h2", "h3", "i", "li", "ol", "p",
-            "pre", "s", "span", "strong", "sub", "sup", "u", "ul",
+            "pre", "s", "span", "strong", "sub", "sup", "u", "ul", "img",
         },
         StringComparer.OrdinalIgnoreCase);
 
@@ -25,6 +25,12 @@ public sealed class CommentContentSanitizer : ICommentContentSanitizer
     private static readonly Regex WhitespacePattern = new Regex(
         "\\s+",
         RegexOptions.CultureInvariant);
+
+    private static readonly Regex CommentImageSourcePattern = new Regex(
+        "^/images/(?<id>[a-f0-9]{32})$",
+        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+
+    private static readonly string[] CommentImageAlignments = new[] { "left", "right", "center", "full" };
 
     public string SanitizeRichHtml(string value)
     {
@@ -57,6 +63,25 @@ public sealed class CommentContentSanitizer : ICommentContentSanitizer
         document.LoadHtml(value);
         string decodedText = HtmlEntity.DeEntitize(document.DocumentNode.InnerText);
         return WhitespacePattern.Replace(decodedText, " ").Trim();
+    }
+
+    public IReadOnlyCollection<string> ExtractImageIds(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return Array.Empty<string>();
+        }
+
+        HtmlDocument document = new HtmlDocument();
+        document.LoadHtml(value);
+        return document.DocumentNode
+            .Descendants("img")
+            .Select(static node => node.GetAttributeValue("src", string.Empty))
+            .Select(static source => CommentImageSourcePattern.Match(HtmlEntity.DeEntitize(source).Trim()))
+            .Where(static match => match.Success)
+            .Select(static match => match.Groups["id"].Value.ToLowerInvariant())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
     }
 
     private void SanitizeChildren(HtmlNode parent)
@@ -94,6 +119,11 @@ public sealed class CommentContentSanitizer : ICommentContentSanitizer
             }
 
             this.SanitizeAttributes(node, tagName);
+            if (tagName == "img" && node.ParentNode is null)
+            {
+                continue;
+            }
+
             this.SanitizeChildren(node);
         }
     }
@@ -118,6 +148,12 @@ public sealed class CommentContentSanitizer : ICommentContentSanitizer
 
     private void SanitizeAttributes(HtmlNode node, string tagName)
     {
+        if (tagName == "img")
+        {
+            this.SanitizeImage(node);
+            return;
+        }
+
         foreach (HtmlAttribute attribute in node.Attributes.ToList())
         {
             string attributeName = attribute.Name.ToLowerInvariant();
@@ -145,6 +181,33 @@ public sealed class CommentContentSanitizer : ICommentContentSanitizer
             node.SetAttributeValue("target", "_blank");
             node.SetAttributeValue("rel", "noopener noreferrer nofollow");
         }
+    }
+
+    private void SanitizeImage(HtmlNode node)
+    {
+        string source = HtmlEntity.DeEntitize(node.GetAttributeValue("src", string.Empty)).Trim();
+        Match sourceMatch = CommentImageSourcePattern.Match(source);
+        if (!sourceMatch.Success)
+        {
+            node.Remove();
+            return;
+        }
+
+        string classes = node.GetAttributeValue("class", string.Empty);
+        string alignment = CommentImageAlignments.FirstOrDefault(candidate =>
+                classes.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                    .Contains($"rich-text__image--{candidate}", StringComparer.OrdinalIgnoreCase))
+            ?? "full";
+        string alt = HtmlEntity.DeEntitize(node.GetAttributeValue("alt", string.Empty)).Trim();
+        if (alt.Length > 240)
+        {
+            alt = alt[..240];
+        }
+
+        node.Attributes.RemoveAll();
+        node.SetAttributeValue("src", $"/images/{sourceMatch.Groups["id"].Value.ToLowerInvariant()}");
+        node.SetAttributeValue("alt", HtmlEntity.Entitize(alt));
+        node.SetAttributeValue("class", $"rich-text__image rich-text__image--{alignment}");
     }
 
     private void SanitizeClassAttribute(HtmlNode node, HtmlAttribute attribute)

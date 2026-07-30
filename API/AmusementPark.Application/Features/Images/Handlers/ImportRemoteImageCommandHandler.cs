@@ -46,6 +46,14 @@ public sealed class ImportRemoteImageCommandHandler : ICommandHandler<ImportRemo
             return ApplicationResult<Image>.Failure(ApplicationErrors.Required(nameof(command.Request)));
         }
 
+        if (ManagedCommentImageMutationGuard.IsManagedScope(
+            command.Request.Category,
+            command.Request.OwnerType))
+        {
+            return ApplicationResult<Image>.Failure(
+                ImageApplicationErrors.CommentImageLifecycleManaged());
+        }
+
         string? sourceUrl = Normalize(command.Request.SourceUrl);
         if (sourceUrl is null || !Uri.TryCreate(sourceUrl, UriKind.Absolute, out Uri? sourceUri) || !IsHttpUri(sourceUri))
         {

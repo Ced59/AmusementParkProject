@@ -160,6 +160,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IImageRepository, ImageRepository>();
         services.AddScoped<IImageTagRepository, ImageTagRepository>();
         services.AddScoped<IImageProcessingPipeline, ImageMetadataPipeline>();
+        services.AddScoped<IImageVariantGenerationLease, MongoImageVariantGenerationLease>();
         services.AddScoped<IImageBinaryStorage, MinioImageBinaryStorage>();
         services.AddScoped<IRemoteImageImporter, RemoteImageImporter>();
         services.AddScoped<IVideoRepository, VideoRepository>();
@@ -169,6 +170,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IContactGrievanceRepository, ContactGrievanceRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<ICommentContentSanitizer, CommentContentSanitizer>();
+        services.AddHostedService<CommentImageDraftCleanupBackgroundService>();
         services.AddScoped<ISocialShareEventRepository, SocialShareEventRepository>();
         services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddScoped<IUserRepository, UserRepository>();

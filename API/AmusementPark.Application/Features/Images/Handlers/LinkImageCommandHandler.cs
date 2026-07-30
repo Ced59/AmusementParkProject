@@ -60,6 +60,15 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                 return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageNotExists());
             }
 
+            if (ManagedCommentImageMutationGuard.IsManagedScope(image)
+                || ManagedCommentImageMutationGuard.IsManagedScope(
+                    image.Category,
+                    command.OwnerType))
+            {
+                return ApplicationResult<Image>.Failure(
+                    ImageApplicationErrors.CommentImageLifecycleManaged());
+            }
+
             string? normalizedOwnerId = string.IsNullOrWhiteSpace(command.OwnerId) ? null : command.OwnerId.Trim();
             Image? updated = command.SetAsCurrent
                 ? await this.imageRepository.SetCurrentAsync(image.Id, command.OwnerType, normalizedOwnerId ?? string.Empty, cancellationToken)

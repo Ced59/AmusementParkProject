@@ -22,7 +22,8 @@ public sealed record CommentResult(
     IReadOnlyCollection<LocalizedText> Bodies,
     bool IsOfficial,
     DateTime CreatedAtUtc,
-    DateTime UpdatedAtUtc);
+    DateTime UpdatedAtUtc,
+    long Revision = 0);
 
 public sealed record CommentSummaryResult(
     CommentTargetType TargetType,

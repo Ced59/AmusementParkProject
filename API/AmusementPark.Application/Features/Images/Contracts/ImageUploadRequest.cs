@@ -35,4 +35,10 @@ public sealed class ImageUploadRequest
     public GeoPointValue? GeoLocation { get; init; }
 
     public ImageExifMetadata? ExifMetadata { get; init; }
+
+    public bool IsPublished { get; init; } = true;
+
+    public string? CommentDraftUploadToken { get; init; }
+
+    public DateTime? CleanupRequestedAtUtc { get; init; }
 }

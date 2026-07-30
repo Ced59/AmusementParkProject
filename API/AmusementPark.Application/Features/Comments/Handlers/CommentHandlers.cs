@@ -19,17 +19,20 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
     private readonly ICommentContentSanitizer contentSanitizer;
     private readonly IUserRepository userRepository;
     private readonly CommentTargetResolver targetResolver;
+    private readonly CommentImageManager commentImageManager;
 
     public CreateCommentCommandHandler(
         ICommentRepository commentRepository,
         ICommentContentSanitizer contentSanitizer,
         IUserRepository userRepository,
-        CommentTargetResolver targetResolver)
+        CommentTargetResolver targetResolver,
+        CommentImageManager commentImageManager)
     {
         this.commentRepository = commentRepository;
         this.contentSanitizer = contentSanitizer;
         this.userRepository = userRepository;
         this.targetResolver = targetResolver;
+        this.commentImageManager = commentImageManager;
     }
 
     public async Task<ApplicationResult<CommentResult>> HandleAsync(
@@ -76,8 +79,23 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
         }
 
         DateTime nowUtc = DateTime.UtcNow;
+        string commentId = Guid.NewGuid().ToString("N");
+        List<string> imageIds = ExtractImageIds(bodiesResult.Value, this.contentSanitizer);
+        ApplicationResult<CommentImageReservationBatch> imageResult =
+            await this.commentImageManager.PublishForCommentAsync(
+                author!.Id,
+                commentId,
+                imageIds,
+                cancellationToken,
+                0);
+        if (!imageResult.IsSuccess || imageResult.Value is null)
+        {
+            return ApplicationResult<CommentResult>.Failure(imageResult.Errors);
+        }
+
         Comment comment = new Comment
         {
+            Id = commentId,
             TargetType = target.TargetType,
             TargetId = target.TargetId,
             ParkId = target.ParkId,
@@ -86,14 +104,57 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
             AuthorAvatarUrl = NormalizeAvatarUrl(author.AvatarUrl),
             AuthorRole = ResolveAuthorRole(author),
             Bodies = bodiesResult.Value.ToList(),
+            ImageIds = imageIds,
             IsOfficial = command.Model.IsOfficial,
             ModerationStatus = CommentModerationStatus.Published,
             CreatedAtUtc = nowUtc,
             UpdatedAtUtc = nowUtc,
         };
+        Comment created;
+        try
+        {
+            created = await this.commentRepository.CreateAsync(comment, cancellationToken);
+        }
+        catch
+        {
+            Comment? committed =
+                await CommentPersistenceRecovery.TryResolveCreateAsync(
+                    this.commentRepository,
+                    comment);
+            if (committed is null)
+            {
+                // L'écriture Mongo peut encore être committée malgré l'exception ou l'annulation.
+                // La réservation reste privée jusqu'à ce que le reconciler vérifie la référence.
+                _ = await this.commentImageManager.RestorePreparedCleanupForCommentAsync(commentId, imageResult.Value);
+                throw;
+            }
 
-        Comment created = await this.commentRepository.CreateAsync(comment, cancellationToken);
+            created = committed;
+        }
+
+        _ = await this.commentImageManager.FinalizeForCommentAsync(
+            author.Id,
+            commentId,
+            imageResult.Value);
+
         return ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(created, author));
+    }
+
+    private static List<string> ExtractImageIds(
+        IReadOnlyCollection<LocalizedText> bodies,
+        ICommentContentSanitizer contentSanitizer)
+    {
+        return bodies
+            .SelectMany(body => ContainsImage(body.Value)
+                ? contentSanitizer.ExtractImageIds(body.Value ?? string.Empty)
+                : Array.Empty<string>())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+    }
+
+    private static bool ContainsImage(string? value)
+    {
+        return value?.Contains("<img", StringComparison.OrdinalIgnoreCase) == true;
     }
 
     private static bool IsAllowedAuthor(User? author)
@@ -126,15 +187,18 @@ public sealed class UpdateCommentCommandHandler
     private readonly ICommentRepository commentRepository;
     private readonly ICommentContentSanitizer contentSanitizer;
     private readonly IUserRepository userRepository;
+    private readonly CommentImageManager commentImageManager;
 
     public UpdateCommentCommandHandler(
         ICommentRepository commentRepository,
         ICommentContentSanitizer contentSanitizer,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        CommentImageManager commentImageManager)
     {
         this.commentRepository = commentRepository;
         this.contentSanitizer = contentSanitizer;
         this.userRepository = userRepository;
+        this.commentImageManager = commentImageManager;
     }
 
     public async Task<ApplicationResult<CommentResult>> HandleAsync(
@@ -167,6 +231,13 @@ public sealed class UpdateCommentCommandHandler
             return ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.ManagerNotAllowed());
         }
 
+        if (command.Model.ExpectedRevision.HasValue
+            && command.Model.ExpectedRevision.Value != comment.Revision)
+        {
+            return ApplicationResult<CommentResult>.Failure(
+                CommentApplicationErrors.ConcurrentModification());
+        }
+
         ApplicationResult<IReadOnlyCollection<LocalizedText>> bodiesResult = CommentBodyNormalizer.Normalize(
             command.Model.Bodies,
             this.contentSanitizer);
@@ -178,14 +249,69 @@ public sealed class UpdateCommentCommandHandler
         bool isOfficial = Comment.CanManageOfficialStatus(actor)
             ? command.Model.IsOfficial
             : comment.IsOfficial;
-        comment.UpdateContent(bodiesResult.Value, isOfficial);
-        Comment? updated = await this.commentRepository.UpdateAsync(comment, cancellationToken);
+        List<string> imageIds = bodiesResult.Value
+            .SelectMany(body => body.Value?.Contains("<img", StringComparison.OrdinalIgnoreCase) == true
+                ? this.contentSanitizer.ExtractImageIds(body.Value)
+                : Array.Empty<string>())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+        ApplicationResult<CommentImageReservationBatch> imageResult =
+            await this.commentImageManager.PublishForCommentAsync(
+                actor.Id,
+                comment.Id,
+                imageIds,
+                cancellationToken,
+                checked(comment.Revision + 1));
+        if (!imageResult.IsSuccess || imageResult.Value is null)
+        {
+            return ApplicationResult<CommentResult>.Failure(imageResult.Errors);
+        }
+
+        try
+        {
+            List<string> removedImageIds = comment.ImageIds
+                .Except(imageIds, StringComparer.Ordinal)
+                .ToList();
+            await this.commentImageManager.RequestRemovedCleanupAsync(
+                comment.Id, checked(comment.Revision + 1),
+                removedImageIds,
+                cancellationToken);
+        }
+        catch
+        {
+            _ = await this.commentImageManager.ReleaseReservationsForCommentAsync(
+                actor.Id,
+                comment.Id,
+                imageResult.Value);
+            throw;
+        }
+
+        long expectedRevision = comment.Revision;
+        comment.UpdateContent(bodiesResult.Value, imageIds, isOfficial);
+        Comment? updated = await CommentPersistenceRecovery.UpdateAsync(
+            this.commentRepository,
+            comment,
+            expectedRevision,
+            cancellationToken);
+        if (updated is null)
+        {
+            _ = await this.commentImageManager.ReleaseReservationsForCommentAsync(
+                actor.Id,
+                comment.Id,
+                imageResult.Value);
+            return ApplicationResult<CommentResult>.Failure(
+                CommentApplicationErrors.ConcurrentModification());
+        }
+
+        _ = await this.commentImageManager.FinalizeForCommentAsync(
+            actor.Id,
+            comment.Id,
+            imageResult.Value);
+
         User? author = string.Equals(actor.Id, comment.AuthorUserId, StringComparison.Ordinal)
             ? actor
             : await this.userRepository.GetByIdAsync(comment.AuthorUserId, cancellationToken);
-        return updated is null
-            ? ApplicationResult<CommentResult>.Failure(CommentApplicationErrors.CommentNotFound())
-            : ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(updated, author));
+        return ApplicationResult<CommentResult>.Success(CommentResultFactory.Create(updated, author));
     }
 }
 
@@ -193,13 +319,16 @@ public sealed class DeleteCommentCommandHandler : ICommandHandler<DeleteCommentC
 {
     private readonly ICommentRepository commentRepository;
     private readonly IUserRepository userRepository;
+    private readonly CommentImageManager commentImageManager;
 
     public DeleteCommentCommandHandler(
         ICommentRepository commentRepository,
-        IUserRepository userRepository)
+        IUserRepository userRepository,
+        CommentImageManager commentImageManager)
     {
         this.commentRepository = commentRepository;
         this.userRepository = userRepository;
+        this.commentImageManager = commentImageManager;
     }
 
     public async Task<ApplicationResult> HandleAsync(
@@ -232,128 +361,24 @@ public sealed class DeleteCommentCommandHandler : ICommandHandler<DeleteCommentC
             return ApplicationResult.Failure(CommentApplicationErrors.ManagerNotAllowed());
         }
 
-        bool deleted = await this.commentRepository.DeleteAsync(commentId, cancellationToken);
+        if (command.ExpectedRevision.HasValue
+            && command.ExpectedRevision.Value != comment.Revision)
+        {
+            return ApplicationResult.Failure(CommentApplicationErrors.ConcurrentModification());
+        }
+
+        await this.commentImageManager.RequestRemovedCleanupAsync(
+            comment.Id, checked(comment.Revision + 1),
+            comment.ImageIds,
+            cancellationToken);
+        bool deleted = await this.commentRepository.DeleteAsync(
+            commentId,
+            comment.Revision,
+            cancellationToken);
+
         return deleted
             ? ApplicationResult.Success()
-            : ApplicationResult.Failure(CommentApplicationErrors.CommentNotFound());
-    }
-}
-
-public sealed class GetCommentSummaryQueryHandler
-    : IQueryHandler<GetCommentSummaryQuery, ApplicationResult<CommentSummaryResult>>
-{
-    private readonly ICommentRepository commentRepository;
-    private readonly IUserRepository userRepository;
-    private readonly CommentTargetResolver targetResolver;
-
-    public GetCommentSummaryQueryHandler(
-        ICommentRepository commentRepository,
-        IUserRepository userRepository,
-        CommentTargetResolver targetResolver)
-    {
-        this.commentRepository = commentRepository;
-        this.userRepository = userRepository;
-        this.targetResolver = targetResolver;
-    }
-
-    public async Task<ApplicationResult<CommentSummaryResult>> HandleAsync(
-        GetCommentSummaryQuery query,
-        CancellationToken cancellationToken = default)
-    {
-        ApplicationResult<CommentTargetMetadataResult> targetResult = await CommentQueryValidation.ResolveTargetAsync(
-            query.TargetType,
-            query.TargetId,
-            query.IncludeHidden,
-            this.targetResolver,
-            cancellationToken);
-        if (!targetResult.IsSuccess || targetResult.Value is null)
-        {
-            return ApplicationResult<CommentSummaryResult>.Failure(targetResult.Errors);
-        }
-
-        string targetId = targetResult.Value.TargetId;
-        Task<long> countTask = this.commentRepository.CountPublishedByTargetAsync(
-            query.TargetType,
-            targetId,
-            cancellationToken);
-        Task<Comment?> officialTask = this.commentRepository.GetFirstOfficialPublishedByTargetAsync(
-            query.TargetType,
-            targetId,
-            cancellationToken);
-
-        await Task.WhenAll(countTask, officialTask);
-        Comment? officialComment = await officialTask;
-        User? officialAuthor = officialComment is null
-            ? null
-            : await this.userRepository.GetByIdAsync(officialComment.AuthorUserId, cancellationToken);
-        return ApplicationResult<CommentSummaryResult>.Success(new CommentSummaryResult(
-            query.TargetType,
-            targetId,
-            await countTask,
-            officialComment is null ? null : CommentResultFactory.Create(officialComment, officialAuthor)));
-    }
-}
-
-public sealed class GetCommentThreadQueryHandler
-    : IQueryHandler<GetCommentThreadQuery, ApplicationResult<CommentThreadResult>>
-{
-    private readonly ICommentRepository commentRepository;
-    private readonly IUserRepository userRepository;
-    private readonly CommentTargetResolver targetResolver;
-
-    public GetCommentThreadQueryHandler(
-        ICommentRepository commentRepository,
-        IUserRepository userRepository,
-        CommentTargetResolver targetResolver)
-    {
-        this.commentRepository = commentRepository;
-        this.userRepository = userRepository;
-        this.targetResolver = targetResolver;
-    }
-
-    public async Task<ApplicationResult<CommentThreadResult>> HandleAsync(
-        GetCommentThreadQuery query,
-        CancellationToken cancellationToken = default)
-    {
-        ApplicationResult<CommentTargetMetadataResult> targetResult = await CommentQueryValidation.ResolveTargetAsync(
-            query.TargetType,
-            query.TargetId,
-            query.IncludeHidden,
-            this.targetResolver,
-            cancellationToken);
-        if (!targetResult.IsSuccess || targetResult.Value is null)
-        {
-            return ApplicationResult<CommentThreadResult>.Failure(targetResult.Errors);
-        }
-
-        CommentTargetMetadataResult target = targetResult.Value;
-        IReadOnlyCollection<Comment> comments = await this.commentRepository.GetPublishedByTargetAsync(
-            target.TargetType,
-            target.TargetId,
-            cancellationToken);
-        IReadOnlyCollection<User> authors = await this.userRepository.GetByIdsAsync(
-            comments
-                .Select(static comment => comment.AuthorUserId)
-                .Distinct(StringComparer.Ordinal)
-                .ToList(),
-            cancellationToken);
-        IReadOnlyDictionary<string, User> authorsById = authors.ToDictionary(
-            static author => author.Id,
-            StringComparer.Ordinal);
-
-        return ApplicationResult<CommentThreadResult>.Success(new CommentThreadResult(
-            target.TargetType,
-            target.TargetId,
-            target.TargetName,
-            target.ParkId,
-            target.ParkName,
-            comments
-                .OrderByDescending(static comment => comment.IsOfficial)
-                .ThenByDescending(static comment => comment.CreatedAtUtc)
-                .Select(comment => CommentResultFactory.Create(
-                    comment,
-                    authorsById.GetValueOrDefault(comment.AuthorUserId)))
-                .ToList()));
+            : ApplicationResult.Failure(CommentApplicationErrors.ConcurrentModification());
     }
 }
 
@@ -400,6 +425,7 @@ internal static class CommentBodyNormalizer
     {
         Dictionary<string, LocalizedText> normalized =
             new Dictionary<string, LocalizedText>(StringComparer.OrdinalIgnoreCase);
+        bool hasPlainText = false;
 
         foreach (LocalizedTextValue value in values ?? Array.Empty<LocalizedTextValue>())
         {
@@ -418,10 +444,14 @@ internal static class CommentBodyNormalizer
 
             string sanitizedValue = contentSanitizer.SanitizeRichHtml(value.Value);
             string plainText = contentSanitizer.ExtractPlainText(sanitizedValue);
-            if (string.IsNullOrWhiteSpace(plainText))
+            bool hasImage = string.IsNullOrWhiteSpace(plainText)
+                && contentSanitizer.ExtractImageIds(sanitizedValue).Count > 0;
+            if (string.IsNullOrWhiteSpace(plainText) && !hasImage)
             {
                 continue;
             }
+
+            hasPlainText |= !string.IsNullOrWhiteSpace(plainText);
 
             if (sanitizedValue.Length > MaximumBodyLength)
             {
@@ -432,7 +462,7 @@ internal static class CommentBodyNormalizer
             normalized[languageCode] = new LocalizedText(languageCode, sanitizedValue);
         }
 
-        if (normalized.Count == 0)
+        if (normalized.Count == 0 || !hasPlainText)
         {
             return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(
                 CommentApplicationErrors.EmptyBody());
@@ -491,7 +521,8 @@ internal static class CommentResultFactory
             comment.Bodies,
             comment.IsOfficial,
             comment.CreatedAtUtc,
-            comment.UpdatedAtUtc);
+            comment.UpdatedAtUtc,
+            comment.Revision);
     }
 
     private static Role ResolveAuthorRole(User author)

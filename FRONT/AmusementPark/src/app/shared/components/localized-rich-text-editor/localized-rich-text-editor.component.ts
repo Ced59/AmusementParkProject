@@ -6,7 +6,12 @@ import { isRichTextEmpty } from '@shared/utils/localization';
 import { HtmlSecurityService } from '@shared/utils/security';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@shared/ui/primitives/tabs';
-import { Editor } from '@shared/ui/primitives/editor';
+import {
+  Editor,
+  ManagedImagePreviewResolver,
+  ManagedImageUploadHandler
+} from '@shared/ui/primitives/editor';
+import { extractManagedCommentImageIdsFromHtml } from '@shared/utils/comments/managed-comment-image.helpers';
 import { UiTemplate } from '@shared/ui/primitives/api';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -34,6 +39,11 @@ interface LocalizedRichTextEntry {
 export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
   @Input() placeholderKey: string = 'admin.parks.descriptions.placeholder';
   @Input() editorHeight: string = '18rem';
+  @Input() allowManagedImages: boolean = false;
+  @Input() preserveManagedImages: boolean = false;
+  @Input() managedImageUpload: ManagedImageUploadHandler | null = null;
+  @Input() managedImagePreviewUrl: ManagedImagePreviewResolver | null = null;
+  @Input() interactionLocked: boolean = false;
 
   activeTabIndex: number = 0;
   entries: LocalizedRichTextEntry[] = this.buildEntries([]);
@@ -41,14 +51,13 @@ export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
 
   private onChange: (value: LocalizedItem<string>[]) => void = () => {};
   private onTouched: () => void = () => {};
-
   constructor(private readonly htmlSecurityService: HtmlSecurityService) {
   }
 
   writeValue(value: LocalizedItem<string>[] | null): void {
     const sanitizedItems: LocalizedItem<string>[] = (value ?? []).map((item: LocalizedItem<string>) => ({
       languageCode: item.languageCode,
-      value: this.htmlSecurityService.sanitizeRichHtml(item.value)
+      value: this.sanitizeEntryValue(item.value)
     }));
 
     this.entries = this.buildEntries(sanitizedItems);
@@ -75,15 +84,32 @@ export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
     this.onTouched();
   }
 
+  managedImageLabel(key: string): string {
+    return `comments.editor.images.${key}`;
+  }
+
+  get isInteractionDisabled(): boolean {
+    return this.isDisabled || this.interactionLocked;
+  }
+
   private propagateChanges(): void {
     const values: LocalizedItem<string>[] = this.entries
-      .filter((entry: LocalizedRichTextEntry) => !isRichTextEmpty(entry.value))
       .map((entry: LocalizedRichTextEntry) => ({
         languageCode: entry.languageCode,
-        value: this.htmlSecurityService.sanitizeRichHtml(entry.value)
-      }));
+        value: this.sanitizeEntryValue(entry.value)
+      }))
+      .filter((entry: LocalizedItem<string>) =>
+        !isRichTextEmpty(entry.value)
+        || extractManagedCommentImageIdsFromHtml(entry.value).size > 0
+      );
 
     this.onChange(values);
+  }
+
+  private sanitizeEntryValue(value: string): string {
+    return this.preserveManagedImages || this.allowManagedImages
+      ? this.htmlSecurityService.sanitizeManagedImageRichHtml(value)
+      : this.htmlSecurityService.sanitizeRichHtml(value);
   }
 
   private buildEntries(items: LocalizedItem<string>[]): LocalizedRichTextEntry[] {
