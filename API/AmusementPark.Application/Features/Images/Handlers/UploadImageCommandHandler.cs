@@ -129,7 +129,19 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
 
             if (command.Request.Category == ImageCategory.Comment)
             {
-                Image draft = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
+                Image draft;
+                try
+                {
+                    draft = await this.imageRepository.CreateAsync(preparedRequest, cancellationToken);
+                }
+                catch
+                {
+                    await this.RequestCommentDraftCleanupBestEffortAsync(
+                        imageId,
+                        preparedRequest.OwnerId ?? string.Empty);
+                    throw;
+                }
+
                 IReadOnlyCollection<string> commentFiles;
                 try
                 {
@@ -141,19 +153,9 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 }
                 catch
                 {
-                    try
-                    {
-                        await this.imageRepository.RequestCommentDraftCleanupAsync(
-                            draft.Id,
-                            draft.OwnerId ?? string.Empty,
-                            DateTime.UtcNow,
-                            CancellationToken.None);
-                    }
-                    catch
-                    {
-                        // Le brouillon reste détectable par la rétention de secours.
-                    }
-
+                    await this.RequestCommentDraftCleanupBestEffortAsync(
+                        draft.Id,
+                        draft.OwnerId ?? string.Empty);
                     throw;
                 }
 
@@ -192,6 +194,22 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             return command.Request.Category == ImageCategory.Comment
                 ? ApplicationResult<UploadedImageResult>.Failure(CommentApplicationErrors.ImageUploadInvalid())
                 : ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.ImageProcessingFailed());
+        }
+    }
+
+    private async Task RequestCommentDraftCleanupBestEffortAsync(string imageId, string ownerId)
+    {
+        try
+        {
+            await this.imageRepository.RequestCommentDraftCleanupAsync(
+                imageId,
+                ownerId,
+                DateTime.UtcNow,
+                CancellationToken.None);
+        }
+        catch
+        {
+            // Le brouillon reste détectable par la rétention de secours.
         }
     }
 

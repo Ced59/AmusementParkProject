@@ -436,10 +436,23 @@ public sealed class CommentImageManagerTests
         repository.VerifyAll();
     }
 
-    [Fact]
-    public async Task PublishForCommentAsync_WhenSecondReservationThrows_ShouldReleaseFirstReservation()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task PublishForCommentAsync_WhenSecondReservationThrows_ShouldReleaseCurrentAndPreviousReservations(
+        bool cancelReservation)
     {
         const string secondImageId = "11111111111111111111111111111111";
+        string? capturedReservationToken = null;
+        using CancellationTokenSource cancellation = new CancellationTokenSource();
+        if (cancelReservation)
+        {
+            cancellation.Cancel();
+        }
+
+        Exception reservationException = cancelReservation
+            ? new OperationCanceledException(cancellation.Token)
+            : new InvalidOperationException("reservation failed");
         Image firstDraft = CreateDraft("author-1");
         Image secondDraft = new Image
         {
@@ -473,34 +486,53 @@ public sealed class CommentImageManagerTests
                 It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
+            .Callback((
+                string _,
+                string _,
+                string _,
+                string reservationToken,
+                long _,
+                DateTime _,
+                CancellationToken _) =>
+                capturedReservationToken = reservationToken)
             .ReturnsAsync(firstReserved);
         repository
             .Setup(value => value.ReserveCommentDraftAsync(
                 secondImageId,
                 "author-1",
                 "comment-1",
-                It.IsAny<string>(),
+                It.Is<string>(token => token == capturedReservationToken),
                 It.IsAny<long>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
-            .ThrowsAsync(new InvalidOperationException("reservation failed"));
+            .ThrowsAsync(reservationException);
         repository
             .Setup(value => value.ReleaseCommentDraftReservationAsync(
                 ImageId,
                 "author-1",
                 "comment-1",
-                It.IsAny<string>(),
+                It.Is<string>(token => token == capturedReservationToken),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        repository
+            .Setup(value => value.ReleaseCommentDraftReservationAsync(
+                secondImageId,
+                "author-1",
+                "comment-1",
+                It.Is<string>(token => token == capturedReservationToken),
                 CancellationToken.None))
             .ReturnsAsync(true);
         CommentImageManager manager = new CommentImageManager(repository.Object);
 
-        await Assert.ThrowsAsync<InvalidOperationException>(() => manager.PublishForCommentAsync(
-            "author-1",
-            "comment-1",
-            new[] { ImageId, secondImageId },
-            CancellationToken.None,
-            1));
+        Exception actual = await Assert.ThrowsAnyAsync<Exception>(
+            () => manager.PublishForCommentAsync(
+                "author-1",
+                "comment-1",
+                new[] { ImageId, secondImageId },
+                cancellation.Token,
+                1));
 
+        Assert.Equal(reservationException.GetType(), actual.GetType());
         repository.VerifyAll();
     }
 

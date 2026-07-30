@@ -119,10 +119,12 @@ public sealed class CommentImageManager
         }
 
         List<string> reservedImageIds = new List<string>();
+        string? reservationInFlightImageId = null;
         try
         {
             foreach (Image draft in images.Where(static image => image.OwnerType == ImageOwnerType.CommentDraft))
             {
+                reservationInFlightImageId = draft.Id;
                 Image? reserved = await this.imageRepository.ReserveCommentDraftAsync(
                     draft.Id,
                     actorUserId,
@@ -146,15 +148,22 @@ public sealed class CommentImageManager
                 }
 
                 reservedImageIds.Add(reserved.Id);
+                reservationInFlightImageId = null;
             }
         }
         catch
         {
+            List<string> rollbackImageIds = new List<string>(reservedImageIds);
+            if (!string.IsNullOrWhiteSpace(reservationInFlightImageId))
+            {
+                rollbackImageIds.Add(reservationInFlightImageId);
+            }
+
             _ = await this.ReleaseReservationsForCommentAsync(
                 actorUserId,
                 commentId,
                 new CommentImageReservationBatch(
-                    reservedImageIds,
+                    rollbackImageIds,
                     reservationToken,
                     preparedCleanupImageIds,
                     pendingCommentRevision));

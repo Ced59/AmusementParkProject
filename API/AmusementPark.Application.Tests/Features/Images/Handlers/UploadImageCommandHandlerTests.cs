@@ -537,6 +537,131 @@ public sealed class UploadImageCommandHandlerTests
         storage.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenCommentDraftCreationFailsAfterAnAmbiguousInsert_ShouldRequestCleanup()
+    {
+        FilePayload file = new FilePayload
+        {
+            FileName = "comment.jpg",
+            ContentType = "image/jpeg",
+            Length = 128,
+            Content = new MemoryStream(new byte[] { 1, 2, 3 }),
+        };
+        Mock<IImageProcessingPipeline> pipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        pipeline.Setup(value => value.ExtractMetadataAsync(
+                It.IsAny<ImageUploadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = 1200,
+                Height = 800,
+                SizeInBytes = file.Length,
+                DetectedContentType = "image/jpeg",
+                FrameCount = 1,
+            });
+        string? attemptedImageId = null;
+        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.CreateAsync(
+                It.Is<ImageUploadRequest>(request =>
+                    request.Category == ImageCategory.Comment
+                    && request.OwnerId == "author-1"),
+                It.IsAny<CancellationToken>()))
+            .Callback((ImageUploadRequest request, CancellationToken _) => attemptedImageId = request.ImageId)
+            .ThrowsAsync(new IOException("Ambiguous Mongo insert."));
+        repository
+            .Setup(value => value.RequestCommentDraftCleanupAsync(
+                It.Is<string>(imageId => imageId == attemptedImageId),
+                "author-1",
+                It.IsAny<DateTime>(),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            repository.Object,
+            pipeline.Object,
+            storage.Object);
+
+        ApplicationResult<UploadedImageResult> result = await handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Comment,
+                File = file,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+                IsPublished = false,
+            }, AllowManagedCommentLifecycle: true));
+
+        Assert.False(result.IsSuccess);
+        Assert.False(string.IsNullOrWhiteSpace(attemptedImageId));
+        Assert.Contains(result.Errors, static error => error.Code == "comment.image.invalid");
+        pipeline.VerifyAll();
+        repository.VerifyAll();
+        storage.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenCommentDraftCreationIsCanceledAfterAnAmbiguousInsert_ShouldRequestCleanup()
+    {
+        FilePayload file = new FilePayload
+        {
+            FileName = "comment.jpg",
+            ContentType = "image/jpeg",
+            Length = 128,
+            Content = new MemoryStream(new byte[] { 1, 2, 3 }),
+        };
+        Mock<IImageProcessingPipeline> pipeline = new Mock<IImageProcessingPipeline>(MockBehavior.Strict);
+        pipeline.Setup(value => value.ExtractMetadataAsync(
+                It.IsAny<ImageUploadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ImageProcessingMetadata
+            {
+                Width = 1200,
+                Height = 800,
+                SizeInBytes = file.Length,
+                DetectedContentType = "image/jpeg",
+                FrameCount = 1,
+            });
+        using CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        cancellationTokenSource.Cancel();
+        string? attemptedImageId = null;
+        Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.CreateAsync(
+                It.IsAny<ImageUploadRequest>(),
+                cancellationTokenSource.Token))
+            .Callback((ImageUploadRequest request, CancellationToken _) => attemptedImageId = request.ImageId)
+            .ThrowsAsync(new OperationCanceledException(cancellationTokenSource.Token));
+        repository
+            .Setup(value => value.RequestCommentDraftCleanupAsync(
+                It.Is<string>(imageId => imageId == attemptedImageId),
+                "author-1",
+                It.IsAny<DateTime>(),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        UploadImageCommandHandler handler = new UploadImageCommandHandler(
+            repository.Object,
+            pipeline.Object,
+            storage.Object);
+
+        await Assert.ThrowsAsync<OperationCanceledException>(() => handler.HandleAsync(
+            new UploadImageCommand(new ImageUploadRequest
+            {
+                Category = ImageCategory.Comment,
+                File = file,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "author-1",
+                IsPublished = false,
+            }, AllowManagedCommentLifecycle: true),
+            cancellationTokenSource.Token));
+
+        Assert.False(string.IsNullOrWhiteSpace(attemptedImageId));
+        pipeline.VerifyAll();
+        repository.VerifyAll();
+        storage.VerifyNoOtherCalls();
+    }
+
     private static FilePayload CreateAvatarFile(long length, string contentType = "image/jpeg")
     {
         return new FilePayload
