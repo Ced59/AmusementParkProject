@@ -314,19 +314,86 @@ public sealed class CommentImageReconciler
                 : image.CreatedAtUtc < draftCreatedBeforeUtc;
         if (hasReuseReservation
             && image.CommentReuseTargetRevision.HasValue
-            && !reuseReservationHardExpired
-            && (ownerComment is null
-                || ownerComment.Revision
-                    < image.CommentReuseTargetRevision.Value))
+            && ownerComment is null
+            && !reuseReservationHardExpired)
         {
-            return await this.imageRepository
-                .DeferClaimedPublishedCommentImageReuseAsync(
-                    image.Id,
-                    image.OwnerId,
-                    image.CommentReuseReservationToken!,
+            return await this.DeferPublishedReuseAsync(
+                image,
+                claimToken,
+                dueBeforeUtc,
+                cancellationToken);
+        }
+
+        if (hasReuseReservation
+            && image.CommentReuseTargetRevision.HasValue
+            && ownerComment is not null
+            && ownerComment.Revision
+                < image.CommentReuseTargetRevision.Value)
+        {
+            if (!reuseReservationHardExpired)
+            {
+                return await this.DeferPublishedReuseAsync(
+                    image,
                     claimToken,
-                    dueBeforeUtc.Add(ReconciliationRetryDelay),
+                    dueBeforeUtc,
                     cancellationToken);
+            }
+
+            long targetRevision = image.CommentReuseTargetRevision.Value;
+            if (targetRevision <= 0
+                || ownerComment.Revision != targetRevision - 1)
+            {
+                return await this.DeferPublishedReuseAsync(
+                    image,
+                    claimToken,
+                    dueBeforeUtc,
+                    cancellationToken);
+            }
+
+            bool fenced = await this.commentRepository
+                .TryAdvanceRevisionFenceAsync(
+                    image.OwnerId,
+                    ownerComment.Revision,
+                    cancellationToken);
+            if (!fenced)
+            {
+                ownerComment = await this.commentRepository.GetByIdAsync(
+                    image.OwnerId,
+                    cancellationToken);
+            }
+
+            isReferenced = ownerComment?.ImageIds.Contains(
+                image.Id,
+                StringComparer.Ordinal) == true;
+            if (!isReferenced)
+            {
+                isReferenced =
+                    await this.commentRepository.IsImageReferencedAsync(
+                        image.Id,
+                        cancellationToken);
+            }
+
+            if (isReferenced)
+            {
+                return await this.imageRepository
+                    .ResolveClaimedPublishedCommentImageReuseAsync(
+                        image.Id,
+                        image.OwnerId,
+                        image.CommentReuseReservationToken!,
+                        claimToken,
+                        cancellationToken);
+            }
+
+            if (!fenced
+                && ownerComment is not null
+                && ownerComment.Revision < targetRevision)
+            {
+                return await this.DeferPublishedReuseAsync(
+                    image,
+                    claimToken,
+                    dueBeforeUtc,
+                    cancellationToken);
+            }
         }
 
         if (!string.IsNullOrWhiteSpace(image.Path)
@@ -341,6 +408,22 @@ public sealed class CommentImageReconciler
             image.OwnerId,
             claimToken,
             cancellationToken);
+    }
+
+    private Task<bool> DeferPublishedReuseAsync(
+        Image image,
+        string claimToken,
+        DateTime dueBeforeUtc,
+        CancellationToken cancellationToken)
+    {
+        return this.imageRepository
+            .DeferClaimedPublishedCommentImageReuseAsync(
+                image.Id,
+                image.OwnerId!,
+                image.CommentReuseReservationToken!,
+                claimToken,
+                dueBeforeUtc.Add(ReconciliationRetryDelay),
+                cancellationToken);
     }
 
     private static string? Normalize(string? value)

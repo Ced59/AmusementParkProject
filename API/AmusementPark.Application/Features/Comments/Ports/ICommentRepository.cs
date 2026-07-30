@@ -10,6 +10,11 @@ public interface ICommentRepository
 
     Task<Comment?> UpdateAsync(Comment comment, long expectedRevision, CancellationToken cancellationToken);
 
+    Task<bool> TryAdvanceRevisionFenceAsync(
+        string commentId,
+        long expectedRevision,
+        CancellationToken cancellationToken);
+
     Task<bool> DeleteAsync(string commentId, long expectedRevision, CancellationToken cancellationToken);
 
     Task<bool> IsImageReferencedAsync(string imageId, CancellationToken cancellationToken);

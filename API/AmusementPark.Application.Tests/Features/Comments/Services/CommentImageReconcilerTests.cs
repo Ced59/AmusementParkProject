@@ -652,7 +652,7 @@ public sealed class CommentImageReconcilerTests
     }
 
     [Fact]
-    public async Task ReconcileAsync_WhenReuseReservationHardExpired_ShouldDeleteAfterGlobalRecheck()
+    public async Task ReconcileAsync_WhenReuseReservationHardExpiredAndFenceWins_ShouldDeleteAfterGlobalRecheck()
     {
         Image published = CreatePublishedReuse();
         published.CommentReuseExpiresAtUtc = NowUtc.AddMinutes(-1);
@@ -673,6 +673,11 @@ public sealed class CommentImageReconcilerTests
                 published.Id,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(false);
+        comments.Setup(value => value.TryAdvanceRevisionFenceAsync(
+                "comment-1",
+                4,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
         Mock<IImageBinaryStorage> storage =
             new Mock<IImageBinaryStorage>(MockBehavior.Strict);
         storage.Setup(value => value.DeleteAsync(
@@ -695,9 +700,154 @@ public sealed class CommentImageReconcilerTests
                 CancellationToken.None);
 
         Assert.Equal(1, result);
+        comments.Verify(value => value.IsImageReferencedAsync(
+                published.Id,
+                It.IsAny<CancellationToken>()),
+            Times.Exactly(2));
         comments.VerifyAll();
         images.VerifyAll();
         storage.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenHardExpiryFenceLosesToReferencingUpdate_ShouldResolveReuse()
+    {
+        Image published = CreatePublishedReuse();
+        published.CommentReuseExpiresAtUtc = NowUtc.AddMinutes(-1);
+        Mock<IImageRepository> images = CreateCandidateRepository(published);
+        SetupCleanupClaim(images, published, true);
+        Mock<ICommentRepository> comments =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.SetupSequence(value => value.GetByIdAsync(
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateComment(4))
+            .ReturnsAsync(CreateComment(5, published.Id));
+        comments.Setup(value => value.IsImageReferencedAsync(
+                published.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        comments.Setup(value => value.TryAdvanceRevisionFenceAsync(
+                "comment-1",
+                4,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        images.Setup(value => value.ResolveClaimedPublishedCommentImageReuseAsync(
+                published.Id,
+                "comment-1",
+                "reuse-token",
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<IImageBinaryStorage> storage =
+            new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+
+        int result = await CreateReconciler(comments, images, storage)
+            .ReconcileAsync(
+                NowUtc,
+                DraftCutoffUtc,
+                50,
+                CancellationToken.None);
+
+        Assert.Equal(1, result);
+        comments.VerifyAll();
+        images.VerifyAll();
+        storage.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenHardExpiryFenceLosesToNonReferencingUpdate_ShouldDelete()
+    {
+        Image published = CreatePublishedReuse();
+        published.CommentReuseExpiresAtUtc = NowUtc.AddMinutes(-1);
+        Mock<IImageRepository> images = CreateCandidateRepository(published);
+        SetupCleanupClaim(images, published, true);
+        Mock<ICommentRepository> comments =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.SetupSequence(value => value.GetByIdAsync(
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateComment(4))
+            .ReturnsAsync(CreateComment(5));
+        comments.Setup(value => value.IsImageReferencedAsync(
+                published.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        comments.Setup(value => value.TryAdvanceRevisionFenceAsync(
+                "comment-1",
+                4,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        Mock<IImageBinaryStorage> storage =
+            new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        SetupPublishedDeletion(images, storage, published);
+
+        int result = await CreateReconciler(comments, images, storage)
+            .ReconcileAsync(
+                NowUtc,
+                DraftCutoffUtc,
+                50,
+                CancellationToken.None);
+
+        Assert.Equal(1, result);
+        comments.Verify(value => value.IsImageReferencedAsync(
+                published.Id,
+                It.IsAny<CancellationToken>()),
+            Times.Exactly(2));
+        comments.VerifyAll();
+        images.VerifyAll();
+        storage.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenHardExpiryFenceLosesWithoutRevisionProgress_ShouldDefer()
+    {
+        Image published = CreatePublishedReuse();
+        published.CommentReuseExpiresAtUtc = NowUtc.AddMinutes(-1);
+        Mock<IImageRepository> images = CreateCandidateRepository(published);
+        SetupCleanupClaim(images, published, true);
+        Mock<ICommentRepository> comments =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+        comments.SetupSequence(value => value.GetByIdAsync(
+                "comment-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateComment(4))
+            .ReturnsAsync(CreateComment(4));
+        comments.Setup(value => value.IsImageReferencedAsync(
+                published.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        comments.Setup(value => value.TryAdvanceRevisionFenceAsync(
+                "comment-1",
+                4,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        images.Setup(value => value.DeferClaimedPublishedCommentImageReuseAsync(
+                published.Id,
+                "comment-1",
+                "reuse-token",
+                It.IsAny<string>(),
+                NowUtc.AddMinutes(5),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<IImageBinaryStorage> storage =
+            new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+
+        int result = await CreateReconciler(comments, images, storage)
+            .ReconcileAsync(
+                NowUtc,
+                DraftCutoffUtc,
+                50,
+                CancellationToken.None);
+
+        Assert.Equal(1, result);
+        comments.Verify(value => value.IsImageReferencedAsync(
+                published.Id,
+                It.IsAny<CancellationToken>()),
+            Times.Exactly(2));
+        comments.VerifyAll();
+        images.VerifyAll();
+        storage.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -884,6 +1034,24 @@ public sealed class CommentImageReconcilerTests
                 It.Is<DateTime>(claimUntilUtc => claimUntilUtc > NowUtc),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(claimed);
+    }
+
+    private static void SetupPublishedDeletion(
+        Mock<IImageRepository> images,
+        Mock<IImageBinaryStorage> storage,
+        Image image)
+    {
+        storage.Setup(value => value.DeleteAsync(
+                image.Path!,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        images.Setup(value => value.DeleteClaimedCommentImageAsync(
+                image.Id,
+                ImageOwnerType.Comment,
+                image.OwnerId!,
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
     }
 
     private static Image CreatePendingDraft(long pendingRevision)

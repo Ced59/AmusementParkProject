@@ -51,6 +51,40 @@ public sealed class CommentRepository : ICommentRepository
         return result.MatchedCount == 0 ? null : document.ToDomain();
     }
 
+    public async Task<bool> TryAdvanceRevisionFenceAsync(
+        string commentId,
+        long expectedRevision,
+        CancellationToken cancellationToken)
+    {
+        UpdateResult result = await this.commentsCollection.UpdateOneAsync(
+            BuildRevisionFenceFilter(commentId, expectedRevision),
+            BuildRevisionFenceUpdate(expectedRevision),
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount > 0;
+    }
+
+    internal static FilterDefinition<CommentDocument> BuildRevisionFenceFilter(
+        string commentId,
+        long expectedRevision)
+    {
+        FilterDefinitionBuilder<CommentDocument> builder =
+            Builders<CommentDocument>.Filter;
+        return builder.Eq(
+                static document => document.Id,
+                commentId.Trim())
+            & builder.Eq(
+                static document => document.Revision,
+                expectedRevision);
+    }
+
+    internal static UpdateDefinition<CommentDocument> BuildRevisionFenceUpdate(
+        long expectedRevision)
+    {
+        return Builders<CommentDocument>.Update.Set(
+            static document => document.Revision,
+            checked(expectedRevision + 1));
+    }
+
     public async Task<bool> DeleteAsync(
         string commentId,
         long expectedRevision,
