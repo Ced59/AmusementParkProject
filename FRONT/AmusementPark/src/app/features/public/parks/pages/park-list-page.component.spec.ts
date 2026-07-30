@@ -140,6 +140,41 @@ describe('ParkListPageComponent', () => {
       { term: '', region: null },
     ]);
   });
+
+  it('runs an explicit search immediately without keeping the pending live search', () => {
+    vi.useFakeTimers();
+
+    try {
+      const routeParams$: BehaviorSubject<ParamMap> =
+        new BehaviorSubject<ParamMap>(convertToParamMap({ lang: 'fr' }));
+      const stateFacade: FakeParkListStateFacade = new FakeParkListStateFacade();
+      const component: ParkListPageComponent = createComponent(
+        stateFacade,
+        routeParams$,
+      );
+
+      component.ngOnInit();
+      stateFacade.mapLoads.length = 0;
+      stateFacade.parkLoads.length = 0;
+
+      component.onSearchInput('  Europa-Park  ');
+      component.onSearchSubmit();
+
+      expect(stateFacade.mapLoads).toEqual([
+        { term: 'Europa-Park', region: null },
+      ]);
+      expect(stateFacade.parkLoads).toEqual([
+        { page: 1, size: 9, term: 'Europa-Park', region: null },
+      ]);
+
+      vi.advanceTimersByTime(300);
+
+      expect(stateFacade.mapLoads).toHaveLength(1);
+      expect(stateFacade.parkLoads).toHaveLength(1);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });
 
 function createComponent(

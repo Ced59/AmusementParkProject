@@ -133,6 +133,7 @@
   min-width: 0;
 }
 
+.app-search-panel__submit,
 .app-search-panel__clear {
   display: flex;
   align-items: end;
@@ -213,6 +214,8 @@
   }
 
   .app-search-panel__actions,
+  .app-search-panel__submit,
+  .app-search-panel__submit .app-button,
   .app-search-panel__clear,
   .app-search-panel__clear .app-button {
     width: 100%;
@@ -252,10 +255,12 @@
     padding-block: 0.65rem;
   }
 
+  .app-search-panel--compact-mobile .app-search-panel__submit,
   .app-search-panel--compact-mobile .app-search-panel__clear {
     min-height: auto;
   }
 
+  .app-search-panel--compact-mobile .app-search-panel__submit .app-button,
   .app-search-panel--compact-mobile .app-search-panel__clear .app-button {
     min-height: 2.5rem;
     padding-block: 0.55rem;

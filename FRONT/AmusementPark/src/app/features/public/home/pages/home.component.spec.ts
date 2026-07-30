@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import { HomeStateFacade } from '../state/home-state.facade';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -29,5 +30,28 @@ describe('HomeComponent', () => {
 
     expect(values).toContain('attractionsWithStandalone');
     expect(values).toContain('standaloneAttractions');
+  });
+
+  it('runs an explicit search immediately without keeping the pending live search', () => {
+    vi.useFakeTimers();
+
+    try {
+      fixture.detectChanges();
+      const stateFacade: HomeStateFacade = fixture.debugElement.injector.get(HomeStateFacade);
+      const searchSpy = vi.spyOn(stateFacade, 'search').mockImplementation(() => undefined);
+
+      component.onSearchInput('  Europa-Park  ');
+      component.onSearchSubmit();
+
+      expect(searchSpy).toHaveBeenCalledTimes(1);
+      expect(searchSpy).toHaveBeenCalledWith('Europa-Park', '', 1, stateFacade.pageSize());
+
+      vi.advanceTimersByTime(300);
+
+      expect(searchSpy).toHaveBeenCalledTimes(1);
+    } finally {
+      fixture.destroy();
+      vi.useRealTimers();
+    }
   });
 });

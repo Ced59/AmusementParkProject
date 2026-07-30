@@ -2225,6 +2225,7 @@
     "clear": "Effacer",
     "delete": "Supprimer",
     "search": "Rechercher",
+    "searching": "Recherche en cours…",
     "reset": "Réinitialiser",
     "refresh": "Actualiser",
     "scrollTop": "Remonter en haut",

@@ -42,6 +42,7 @@ export class ParkListViewComponent {
   @Input() searchTerm!: Signal<string>;
 
   @Output() searchInputChanged: EventEmitter<string> = new EventEmitter<string>();
+  @Output() searchSubmitted: EventEmitter<void> = new EventEmitter<void>();
   @Output() clearSearchClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() mapParkSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() regionFilterChanged: EventEmitter<ParkRegionFilter | null> = new EventEmitter<ParkRegionFilter | null>();
@@ -76,6 +77,10 @@ export class ParkListViewComponent {
 
   onSearchInput(value: string): void {
     this.searchInputChanged.emit(value);
+  }
+
+  onSearchSubmit(): void {
+    this.searchSubmitted.emit();
   }
 
   clearSearch(): void {

@@ -186,6 +186,23 @@ describe('HomeViewComponent', () => {
 
     expect(autocompleteButton.textContent).toContain('Phantasialand');
   });
+
+  it('emits an explicit search when the search action is clicked', () => {
+    const fixture: ComponentFixture<HomeViewComponent> = createComponent([]);
+    let searchCount: number = 0;
+
+    fixture.componentInstance.searchSubmitted.subscribe(() => {
+      searchCount += 1;
+    });
+    fixture.detectChanges();
+
+    const searchButton: HTMLButtonElement = fixture.nativeElement.querySelector(
+      '.app-search-panel__submit button',
+    );
+    searchButton.click();
+
+    expect(searchCount).toBe(1);
+  });
 });
 
 function createComponent(

@@ -44,8 +44,11 @@
     searchPlaceholderKey="parks.search.placeholder"
     [searchTerm]="searchTerm()"
     [filters]="filters()"
+    [showSearchAction]="true"
+    [searchInProgress]="state().kind === 'loading' || mapState().kind === 'loading'"
     clearActionLabelKey="parks.search.clear"
     (searchTermChange)="onSearchInput($event)"
+    (searchClicked)="onSearchSubmit()"
     (filterChanged)="onFilterChanged($event)"
     (clearClicked)="clearSearch()">
   </app-ui-search-panel>

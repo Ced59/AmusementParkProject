@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime, skip } from 'rxjs/operators';
+import { of, Subject, timer } from 'rxjs';
+import { debounce, skip } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
@@ -51,7 +51,7 @@ export class ParkListPageComponent implements OnInit {
     { labelKey: 'parks.audienceFilters.notSpecified', value: 'Unspecified' }
   ]);
 
-  private readonly searchSubject: Subject<string> = new Subject<string>();
+  private readonly searchSubject: Subject<ParkSearchTrigger> = new Subject<ParkSearchTrigger>();
   private activeLanguage: string | null = null;
 
   constructor(
@@ -75,12 +75,12 @@ export class ParkListPageComponent implements OnInit {
     });
 
     this.searchSubject.pipe(
-      debounceTime(300),
+      debounce((trigger: ParkSearchTrigger) => trigger.immediate ? of(0) : timer(300)),
       takeUntilDestroyed(this.destroyRef)
-    ).subscribe((term: string) => {
+    ).subscribe((trigger: ParkSearchTrigger) => {
       this.stateFacade.clearSelectedPark();
-      this.stateFacade.loadVisibleMapPoints(term, this.selectedRegion());
-      this.stateFacade.loadParks(1, this.stateFacade.pageSize(), term, this.selectedRegion());
+      this.stateFacade.loadVisibleMapPoints(trigger.term, this.selectedRegion());
+      this.stateFacade.loadParks(1, this.stateFacade.pageSize(), trigger.term, this.selectedRegion());
     });
 
     this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
@@ -117,12 +117,16 @@ export class ParkListPageComponent implements OnInit {
   onSearchInput(value: string): void {
     const normalizedValue: string = value.trim();
     this.searchTerm.set(normalizedValue);
-    this.searchSubject.next(normalizedValue);
+    this.searchSubject.next({ term: normalizedValue, immediate: false });
+  }
+
+  onSearchSubmit(): void {
+    this.searchSubject.next({ term: this.searchTerm(), immediate: true });
   }
 
   clearSearch(): void {
     this.searchTerm.set('');
-    this.searchSubject.next('');
+    this.searchSubject.next({ term: '', immediate: false });
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {
@@ -167,6 +171,11 @@ export class ParkListPageComponent implements OnInit {
   clearSelectedPark(): void {
     this.stateFacade.clearSelectedPark();
   }
+}
+
+interface ParkSearchTrigger {
+  term: string;
+  immediate: boolean;
 }
 
 function normalizeClosedFilter(value: string | null): ClosedEntityFilter {

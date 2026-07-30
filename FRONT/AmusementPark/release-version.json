@@ -1,6 +1,20 @@
 {
-  "version": "4.0.15",
+  "version": "4.0.16",
   "history": [
+    {
+      "version": "4.0.16",
+      "releasedAt": "2026-07-30",
+      "labels": {
+        "fr": "La recherche est désormais plus claire et facile à lancer.",
+        "en": "Search is now clearer and easier to start.",
+        "de": "Die Suche ist jetzt klarer und leichter zu starten.",
+        "nl": "Zoeken is nu duidelijker en makkelijker te starten.",
+        "it": "La ricerca è ora più chiara e facile da avviare.",
+        "es": "La búsqueda es ahora más clara y fácil de iniciar.",
+        "pl": "Wyszukiwanie jest teraz bardziej przejrzyste i łatwiejsze do uruchomienia.",
+        "pt": "A pesquisa está agora mais clara e fácil de iniciar."
+      }
+    },
     {
       "version": "4.0.15",
       "releasedAt": "2026-07-30",
