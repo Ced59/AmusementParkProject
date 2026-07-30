@@ -64,28 +64,38 @@ public sealed class CommentImageManager
         }
 
         List<string> preparedCleanupImageIds = new List<string>();
-        foreach (Image published in images.Where(
-            static image => image.OwnerType == ImageOwnerType.Comment))
+        try
         {
-            PublishedCommentImageReusePreparation preparation =
-                await this.imageRepository.TryPreparePublishedCommentImageForReuseAsync(
-                    published.Id,
-                    commentId,
-                    cancellationToken);
-            if (preparation == PublishedCommentImageReusePreparation.Rejected)
+            foreach (Image published in images.Where(
+                static image => image.OwnerType == ImageOwnerType.Comment))
             {
-                await this.RestorePreparedPublishedCleanupAsync(
-                    commentId,
-                    preparedCleanupImageIds);
-                return ApplicationResult<CommentImageReservationBatch>.Failure(
-                    CommentApplicationErrors.ImageNotAllowed());
-            }
+                PublishedCommentImageReusePreparation preparation =
+                    await this.imageRepository.TryPreparePublishedCommentImageForReuseAsync(
+                        published.Id,
+                        commentId,
+                        cancellationToken);
+                if (preparation == PublishedCommentImageReusePreparation.Rejected)
+                {
+                    await this.RestorePreparedPublishedCleanupAsync(
+                        commentId,
+                        preparedCleanupImageIds);
+                    return ApplicationResult<CommentImageReservationBatch>.Failure(
+                        CommentApplicationErrors.ImageNotAllowed());
+                }
 
-            if (preparation
-                == PublishedCommentImageReusePreparation.PreparedAndCleanupCleared)
-            {
-                preparedCleanupImageIds.Add(published.Id);
+                if (preparation
+                    == PublishedCommentImageReusePreparation.PreparedAndCleanupCleared)
+                {
+                    preparedCleanupImageIds.Add(published.Id);
+                }
             }
+        }
+        catch
+        {
+            await this.RestorePreparedPublishedCleanupAsync(
+                commentId,
+                preparedCleanupImageIds);
+            throw;
         }
 
         List<string> reservedImageIds = new List<string>();

@@ -160,6 +160,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IImageRepository, ImageRepository>();
         services.AddScoped<IImageTagRepository, ImageTagRepository>();
         services.AddScoped<IImageProcessingPipeline, ImageMetadataPipeline>();
+        services.AddScoped<IImageVariantGenerationLease, MongoImageVariantGenerationLease>();
         services.AddScoped<IImageBinaryStorage, MinioImageBinaryStorage>();
         services.AddScoped<IRemoteImageImporter, RemoteImageImporter>();
         services.AddScoped<IVideoRepository, VideoRepository>();

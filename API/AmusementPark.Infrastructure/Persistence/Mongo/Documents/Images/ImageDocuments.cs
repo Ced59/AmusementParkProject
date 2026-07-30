@@ -104,6 +104,14 @@ public sealed class ImageDocument : MongoDocumentBase
     [BsonElement("cleanupClaimedUntil")]
     [BsonIgnoreIfNull]
     public DateTime? CleanupClaimedUntil { get; set; }
+
+    [BsonElement("variantGenerationClaimToken")]
+    [BsonIgnoreIfNull]
+    public string? VariantGenerationClaimToken { get; set; }
+
+    [BsonElement("variantGenerationClaimedUntil")]
+    [BsonIgnoreIfNull]
+    public DateTime? VariantGenerationClaimedUntil { get; set; }
 }
 
 /// <summary>

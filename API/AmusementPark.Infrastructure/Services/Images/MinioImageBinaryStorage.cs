@@ -27,6 +27,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
     private const int MaxFileSizeKb = 300;
     private const int MaxLongEdge = 1920;
     private const int ResponsiveVariantVersion = 2;
+    private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
@@ -34,15 +35,18 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
     private readonly IMinioClient minioClient;
     private readonly MinioImageStorageSettings settings;
     private readonly ILogger<MinioImageBinaryStorage> logger;
+    private readonly IImageVariantGenerationLease variantGenerationLease;
     private readonly WatermarkFontFamilies watermarkFonts;
 
     public MinioImageBinaryStorage(
         IMinioClient minioClient,
         MinioImageStorageSettings settings,
+        IImageVariantGenerationLease variantGenerationLease,
         ILogger<MinioImageBinaryStorage> logger)
     {
         this.minioClient = minioClient;
         this.settings = settings;
+        this.variantGenerationLease = variantGenerationLease;
         this.logger = logger;
         this.watermarkFonts = ResolveWatermarkFonts(logger);
     }
@@ -312,14 +316,87 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         string contentType,
         CancellationToken cancellationToken)
     {
-        (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(pathWithoutExtension, cancellationToken);
-        if (source is null)
+        return await this.ExecuteWithVariantGenerationLeaseAsync(
+            pathWithoutExtension,
+            token => this.TryCreateResizedVariantUnderLeaseAsync(
+                pathWithoutExtension,
+                objectName,
+                width,
+                encoderFactory,
+                contentType,
+                token),
+            cancellationToken);
+    }
+
+    internal async Task<(Stream Stream, string ContentType)?>
+        ExecuteWithVariantGenerationLeaseAsync(
+            string pathWithoutExtension,
+            Func<CancellationToken, Task<(Stream Stream, string ContentType)?>> action,
+            CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+
+        string leaseToken = Guid.NewGuid().ToString("N");
+        DateTime acquiredAtUtc = DateTime.UtcNow;
+        bool leaseAcquired = await this.variantGenerationLease.TryAcquireAsync(
+            pathWithoutExtension,
+            leaseToken,
+            acquiredAtUtc,
+            acquiredAtUtc.Add(VariantGenerationLeaseDuration),
+            cancellationToken);
+        if (!leaseAcquired)
         {
             return null;
         }
 
         try
         {
+            return await action(cancellationToken);
+        }
+        finally
+        {
+            try
+            {
+                await this.variantGenerationLease.ReleaseAsync(
+                    pathWithoutExtension,
+                    leaseToken,
+                    CancellationToken.None);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogWarning(
+                    exception,
+                    "Unable to release responsive image generation lease for {PathWithoutExtension}.",
+                    pathWithoutExtension);
+            }
+        }
+    }
+
+    private async Task<(Stream Stream, string ContentType)?>
+        TryCreateResizedVariantUnderLeaseAsync(
+            string pathWithoutExtension,
+            string objectName,
+            int width,
+            Func<int, IImageEncoder> encoderFactory,
+            string contentType,
+            CancellationToken cancellationToken)
+    {
+        try
+        {
+            (Stream Stream, string ContentType)? cached =
+                await TryGetObjectAsync(objectName, contentType, cancellationToken);
+            if (cached is not null)
+            {
+                return cached;
+            }
+
+            (Stream Stream, string ContentType)? source =
+                await TryGetSourceObjectAsync(pathWithoutExtension, cancellationToken);
+            if (source is null)
+            {
+                return null;
+            }
+
             await using Stream sourceStream = source.Value.Stream;
             using Image image = await Image.LoadAsync(sourceStream, cancellationToken);
 
@@ -329,7 +406,9 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
             }
 
             double scale = (double)width / image.Width;
-            int targetHeight = Math.Max(1, (int)Math.Round(image.Height * scale));
+            int targetHeight = Math.Max(
+                1,
+                (int)Math.Round(image.Height * scale));
             image.Mutate(context =>
             {
                 context.Resize(new ResizeOptions
@@ -339,7 +418,10 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
                 });
             });
 
-            byte[] content = await EncodeResponsiveVariantAsync(image, encoderFactory, cancellationToken);
+            byte[] content = await EncodeResponsiveVariantAsync(
+                image,
+                encoderFactory,
+                cancellationToken);
             MemoryStream outputStream = new MemoryStream(content);
             await this.minioClient.PutObjectAsync(
                 new PutObjectArgs()
@@ -359,7 +441,11 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         }
         catch (Exception exception)
         {
-            this.logger.LogWarning(exception, "Unable to create responsive image variant {ObjectName} in MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
+            this.logger.LogWarning(
+                exception,
+                "Unable to create responsive image variant {ObjectName} in MinIO bucket {Bucket}.",
+                objectName,
+                this.settings.Bucket);
             return null;
         }
     }

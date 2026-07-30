@@ -92,36 +92,42 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
             return ApplicationResult<CommentResult>.Failure(imageResult.Errors);
         }
 
+        Comment comment = new Comment
+        {
+            Id = commentId,
+            TargetType = target.TargetType,
+            TargetId = target.TargetId,
+            ParkId = target.ParkId,
+            AuthorUserId = author!.Id,
+            AuthorDisplayName = BuildAuthorDisplayName(author),
+            AuthorAvatarUrl = NormalizeAvatarUrl(author.AvatarUrl),
+            AuthorRole = ResolveAuthorRole(author),
+            Bodies = bodiesResult.Value.ToList(),
+            ImageIds = imageIds,
+            IsOfficial = command.Model.IsOfficial,
+            ModerationStatus = CommentModerationStatus.Published,
+            CreatedAtUtc = nowUtc,
+            UpdatedAtUtc = nowUtc,
+        };
         Comment created;
         try
         {
-            Comment comment = new Comment
-            {
-                Id = commentId,
-                TargetType = target.TargetType,
-                TargetId = target.TargetId,
-                ParkId = target.ParkId,
-                AuthorUserId = author!.Id,
-                AuthorDisplayName = BuildAuthorDisplayName(author),
-                AuthorAvatarUrl = NormalizeAvatarUrl(author.AvatarUrl),
-                AuthorRole = ResolveAuthorRole(author),
-                Bodies = bodiesResult.Value.ToList(),
-                ImageIds = imageIds,
-                IsOfficial = command.Model.IsOfficial,
-                ModerationStatus = CommentModerationStatus.Published,
-                CreatedAtUtc = nowUtc,
-                UpdatedAtUtc = nowUtc,
-            };
-
             created = await this.commentRepository.CreateAsync(comment, cancellationToken);
         }
         catch
         {
-            _ = await this.commentImageManager.ReleaseReservationsForCommentAsync(
-                author!.Id,
-                commentId,
-                imageResult.Value);
-            throw;
+            Comment? committed =
+                await CommentCreatePersistenceRecovery.TryResolveAsync(
+                    this.commentRepository,
+                    comment);
+            if (committed is null)
+            {
+                // L'écriture Mongo peut encore être committée malgré l'exception ou l'annulation.
+                // La réservation reste privée jusqu'à ce que le reconciler vérifie la référence.
+                throw;
+            }
+
+            created = committed;
         }
 
         _ = await this.commentImageManager.FinalizeForCommentAsync(

@@ -998,89 +998,248 @@ public sealed class CommentHandlersTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenCommentPersistenceThrows_ShouldReleaseReservationAndRethrow()
+    public async Task HandleAsync_WhenInsertWasCommittedBeforeMongoThrows_ShouldRecoverAndFinalizeReservation()
     {
-        const string imageId = "abcdef0123456789abcdef0123456789";
-        string html =
-            $"<p>Texte<img src=\"/images/{imageId}\" alt=\"Park\" " +
-            "class=\"rich-text__image rich-text__image--full\"></p>";
-        User author = new User
-        {
-            Id = "admin-1",
-            IsActivated = true,
-            Roles = new List<Role> { Role.Admin },
-        };
-        Mock<ICommentRepository> comments = new Mock<ICommentRepository>(MockBehavior.Strict);
-        comments.Setup(value => value.CreateAsync(It.IsAny<Comment>(), It.IsAny<CancellationToken>()))
+        CreateCommentWithImageScenario scenario = new CreateCommentWithImageScenario();
+        Comment? committed = null;
+        scenario.Comments
+            .Setup(value => value.CreateAsync(It.IsAny<Comment>(), It.IsAny<CancellationToken>()))
+            .Callback((Comment comment, CancellationToken _) => committed = comment)
+            .ThrowsAsync(new InvalidOperationException("Acknowledgement lost."));
+        scenario.Comments
+            .Setup(value => value.GetByIdAsync(
+                It.Is<string>(commentId => commentId == scenario.CommentId),
+                CancellationToken.None))
+            .ReturnsAsync(() => committed);
+        scenario.Images
+            .Setup(value => value.FinalizeCommentDraftAsync(
+                CreateCommentWithImageScenario.ImageId,
+                "admin-1",
+                It.Is<string>(commentId => commentId == scenario.CommentId),
+                It.Is<string>(token => token == scenario.ReservationToken),
+                CancellationToken.None))
+            .ReturnsAsync(new Image
+            {
+                Id = CreateCommentWithImageScenario.ImageId,
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.Comment,
+                OwnerId = scenario.CommentId,
+                IsPublished = true,
+            });
+
+        ApplicationResult<CommentResult> result =
+            await scenario.Handler.HandleAsync(scenario.Command);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(committed!.Id, result.Value!.Id);
+        scenario.VerifyCommonCalls();
+        scenario.VerifyReservationWasNotReleased();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenInsertWasNotObserved_ShouldKeepReservationForReconciliationAndRethrow()
+    {
+        CreateCommentWithImageScenario scenario = new CreateCommentWithImageScenario();
+        scenario.Comments
+            .Setup(value => value.CreateAsync(It.IsAny<Comment>(), It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("Persistence failed."));
-        Mock<ICommentContentSanitizer> sanitizer = new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
-        sanitizer.Setup(value => value.SanitizeRichHtml(html)).Returns(html);
-        sanitizer.Setup(value => value.ExtractPlainText(html)).Returns("Texte");
-        sanitizer.Setup(value => value.ExtractImageIds(html)).Returns(new[] { imageId });
-        Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
-        users.Setup(value => value.GetByIdAsync("admin-1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(author);
-        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
-        parks.Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Park { Id = "park-1", Name = "Park" });
-        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Image draft = new Image
+        scenario.Comments
+            .Setup(value => value.GetByIdAsync(
+                It.Is<string>(commentId => commentId == scenario.CommentId),
+                CancellationToken.None))
+            .ReturnsAsync((Comment?)null);
+
+        await Assert.ThrowsAsync<InvalidOperationException>(
+            () => scenario.Handler.HandleAsync(scenario.Command));
+
+        scenario.VerifyCommonCalls();
+        scenario.VerifyReservationWasNotReleased();
+        scenario.VerifyReservationWasNotFinalized();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenCommittedInsertIsCancelled_ShouldVerifyWithIndependentTokenAndFinalize()
+    {
+        using CancellationTokenSource cancellation = new CancellationTokenSource();
+        cancellation.Cancel();
+        CreateCommentWithImageScenario scenario = new CreateCommentWithImageScenario();
+        Comment? committed = null;
+        scenario.Comments
+            .Setup(value => value.CreateAsync(
+                It.IsAny<Comment>(),
+                cancellation.Token))
+            .Callback((Comment comment, CancellationToken _) => committed = comment)
+            .ThrowsAsync(new OperationCanceledException(cancellation.Token));
+        scenario.Comments
+            .Setup(value => value.GetByIdAsync(
+                It.Is<string>(commentId => commentId == scenario.CommentId),
+                CancellationToken.None))
+            .ReturnsAsync(() => committed);
+        scenario.Images
+            .Setup(value => value.FinalizeCommentDraftAsync(
+                CreateCommentWithImageScenario.ImageId,
+                "admin-1",
+                It.Is<string>(commentId => commentId == scenario.CommentId),
+                It.Is<string>(token => token == scenario.ReservationToken),
+                CancellationToken.None))
+            .ReturnsAsync(new Image
+            {
+                Id = CreateCommentWithImageScenario.ImageId,
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.Comment,
+                OwnerId = scenario.CommentId,
+                IsPublished = true,
+            });
+
+        ApplicationResult<CommentResult> result =
+            await scenario.Handler.HandleAsync(scenario.Command, cancellation.Token);
+
+        Assert.True(result.IsSuccess);
+        scenario.VerifyCommonCalls();
+        scenario.Comments.Verify(value => value.GetByIdAsync(
+            It.Is<string>(commentId => commentId == scenario.CommentId),
+            CancellationToken.None), Times.Once);
+        scenario.VerifyReservationWasNotReleased();
+    }
+
+    private sealed class CreateCommentWithImageScenario
+    {
+        public const string ImageId = "abcdef0123456789abcdef0123456789";
+
+        public CreateCommentWithImageScenario()
         {
-            Id = imageId,
-            Category = ImageCategory.Comment,
-            OwnerType = ImageOwnerType.CommentDraft,
-            OwnerId = "admin-1",
-            IsPublished = false,
-        };
-        Image reserved = new Image
-        {
-            Id = imageId,
-            Category = ImageCategory.Comment,
-            OwnerType = ImageOwnerType.CommentDraft,
-            OwnerId = "admin-1",
-            IsPublished = false,
-        };
-        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
-        images.Setup(value => value.GetByIdsAsync(
+            string html =
+                $"<p>Texte<img src=\"/images/{ImageId}\" alt=\"Park\" " +
+                "class=\"rich-text__image rich-text__image--full\"></p>";
+            User author = new User
+            {
+                Id = "admin-1",
+                IsActivated = true,
+                Roles = new List<Role> { Role.Admin },
+            };
+            this.Sanitizer
+                .Setup(value => value.SanitizeRichHtml(html))
+                .Returns(html);
+            this.Sanitizer
+                .Setup(value => value.ExtractPlainText(html))
+                .Returns("Texte");
+            this.Sanitizer
+                .Setup(value => value.ExtractImageIds(html))
+                .Returns(new[] { ImageId });
+            this.Users
+                .Setup(value => value.GetByIdAsync("admin-1", It.IsAny<CancellationToken>()))
+                .ReturnsAsync(author);
+            this.Parks
+                .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new Park { Id = "park-1", Name = "Park" });
+            Image draft = new Image
+            {
+                Id = ImageId,
+                Category = ImageCategory.Comment,
+                OwnerType = ImageOwnerType.CommentDraft,
+                OwnerId = "admin-1",
+                IsPublished = false,
+            };
+            this.Images.Setup(value => value.GetByIdsAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { draft });
-        images.Setup(value => value.ReserveCommentDraftAsync(
-                imageId,
+                .ReturnsAsync(new[] { draft });
+            this.Images.Setup(value => value.ReserveCommentDraftAsync(
+                ImageId,
                 "admin-1",
                 It.IsAny<string>(),
                 It.IsAny<string>(),
                 It.IsAny<DateTime>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(reserved);
-        images.Setup(value => value.ReleaseCommentDraftReservationAsync(
-                imageId,
-                "admin-1",
-                It.IsAny<string>(),
-                It.IsAny<string>(),
-                CancellationToken.None))
-            .ReturnsAsync(true);
-        CreateCommentCommandHandler handler = new CreateCommentCommandHandler(
-            comments.Object,
-            sanitizer.Object,
-            users.Object,
-            new CommentTargetResolver(parks.Object, items.Object),
-            new CommentImageManager(images.Object));
-
-        await Assert.ThrowsAsync<InvalidOperationException>(() => handler.HandleAsync(
-            new CreateCommentCommand(
+                .Callback((
+                    string _,
+                    string _,
+                    string commentId,
+                    string reservationToken,
+                    DateTime _,
+                    CancellationToken _) =>
+                {
+                    this.CommentId = commentId;
+                    this.ReservationToken = reservationToken;
+                })
+                .ReturnsAsync(new Image
+                {
+                    Id = ImageId,
+                    Category = ImageCategory.Comment,
+                    OwnerType = ImageOwnerType.CommentDraft,
+                    OwnerId = "admin-1",
+                    IsPublished = false,
+                });
+            this.Handler = new CreateCommentCommandHandler(
+                this.Comments.Object,
+                this.Sanitizer.Object,
+                this.Users.Object,
+                new CommentTargetResolver(this.Parks.Object, this.Items.Object),
+                new CommentImageManager(this.Images.Object));
+            this.Command = new CreateCommentCommand(
                 "admin-1",
                 new CommentWriteModel(
                     CommentTargetType.Park,
                     "park-1",
                     new[] { new LocalizedTextValue("fr", html) },
-                    false))));
+                    false));
+        }
 
-        comments.VerifyAll();
-        sanitizer.VerifyAll();
-        users.VerifyAll();
-        parks.VerifyAll();
-        images.VerifyAll();
+        public Mock<ICommentRepository> Comments { get; } =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+
+        public Mock<ICommentContentSanitizer> Sanitizer { get; } =
+            new Mock<ICommentContentSanitizer>(MockBehavior.Strict);
+
+        public Mock<IUserRepository> Users { get; } =
+            new Mock<IUserRepository>(MockBehavior.Strict);
+
+        public Mock<IParkRepository> Parks { get; } =
+            new Mock<IParkRepository>(MockBehavior.Strict);
+
+        public Mock<IParkItemRepository> Items { get; } =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+
+        public Mock<IImageRepository> Images { get; } =
+            new Mock<IImageRepository>(MockBehavior.Strict);
+
+        public CreateCommentCommandHandler Handler { get; }
+
+        public CreateCommentCommand Command { get; }
+
+        public string? CommentId { get; private set; }
+
+        public string? ReservationToken { get; private set; }
+
+        public void VerifyCommonCalls()
+        {
+            this.Comments.VerifyAll();
+            this.Sanitizer.VerifyAll();
+            this.Users.VerifyAll();
+            this.Parks.VerifyAll();
+            this.Items.VerifyNoOtherCalls();
+            this.Images.VerifyAll();
+        }
+
+        public void VerifyReservationWasNotReleased()
+        {
+            this.Images.Verify(value => value.ReleaseCommentDraftReservationAsync(
+                ImageId,
+                "admin-1",
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                CancellationToken.None), Times.Never);
+        }
+
+        public void VerifyReservationWasNotFinalized()
+        {
+            this.Images.Verify(value => value.FinalizeCommentDraftAsync(
+                ImageId,
+                "admin-1",
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                CancellationToken.None), Times.Never);
+        }
     }
 
     private static CommentImageManager CreateCommentImageManager()

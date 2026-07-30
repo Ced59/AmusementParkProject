@@ -308,6 +308,9 @@ public sealed partial class MongoDatabaseInitializer
                 Builders<ImageDocument>.IndexKeys.Ascending(item => item.CreatedAt),
                 new CreateIndexOptions { Name = "idx_images_created_at" }),
             new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys.Ascending(item => item.Path),
+                new CreateIndexOptions { Name = "idx_images_path" }),
+            new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys.Ascending("tagIds"),
                 new CreateIndexOptions { Name = "idx_images_tag_ids" }),
             new CreateIndexModel<ImageDocument>(

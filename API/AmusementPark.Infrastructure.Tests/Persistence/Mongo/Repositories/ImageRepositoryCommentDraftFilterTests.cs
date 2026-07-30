@@ -107,7 +107,8 @@ public sealed class ImageRepositoryCommentDraftFilterTests
                 AmusementPark.Core.Domain.Images.ImageOwnerType.CommentDraft,
                 "author-1",
                 nowUtc,
-                nowUtc.AddHours(-24));
+                nowUtc.AddHours(-24),
+                nowUtc);
 
         BsonDocument rendered = Render(filter);
 
@@ -123,6 +124,63 @@ public sealed class ImageRepositoryCommentDraftFilterTests
             rendered,
             "cleanupClaimToken",
             BsonNull.Value));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "variantGenerationClaimToken",
+            BsonNull.Value));
+        Assert.True(ContainsFieldComparison(
+            rendered,
+            "variantGenerationClaimedUntil",
+            "$lte",
+            new BsonDateTime(nowUtc)));
+    }
+
+    [Fact]
+    public void BuildVariantGenerationAcquireFilter_ShouldBeMutuallyExclusiveWithCleanupClaim()
+    {
+        DateTime nowUtc =
+            new DateTime(2026, 7, 30, 12, 0, 0, DateTimeKind.Utc);
+        FilterDefinition<ImageDocument> filter =
+            MongoImageVariantGenerationLease.BuildAcquireFilter(
+                "comment/image-1",
+                nowUtc);
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "cleanupClaimToken",
+            BsonNull.Value));
+        Assert.True(ContainsFieldComparison(
+            rendered,
+            "cleanupClaimedUntil",
+            "$lte",
+            new BsonDateTime(nowUtc)));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "variantGenerationClaimToken",
+            BsonNull.Value));
+        Assert.True(ContainsFieldComparison(
+            rendered,
+            "variantGenerationClaimedUntil",
+            "$lte",
+            new BsonDateTime(nowUtc)));
+    }
+
+    [Fact]
+    public void BuildVariantGenerationReleaseFilter_ShouldRequireOwningToken()
+    {
+        FilterDefinition<ImageDocument> filter =
+            MongoImageVariantGenerationLease.BuildReleaseFilter(
+                "comment/image-1",
+                "lease-owner");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("comment/image-1", rendered["path"].AsString);
+        Assert.Equal(
+            "lease-owner",
+            rendered["variantGenerationClaimToken"].AsString);
     }
 
     private static BsonDocument Render(FilterDefinition<ImageDocument> filter)
@@ -159,6 +217,45 @@ public sealed class ImageRepositoryCommentDraftFilterTests
         if (value is BsonArray array)
         {
             return array.Any(item => ContainsFieldValue(item, fieldName, expected));
+        }
+
+        return false;
+    }
+
+    private static bool ContainsFieldComparison(
+        BsonValue value,
+        string fieldName,
+        string comparisonOperator,
+        BsonValue expected)
+    {
+        if (value is BsonDocument document)
+        {
+            if (document.TryGetValue(fieldName, out BsonValue? fieldValue)
+                && fieldValue is BsonDocument comparison
+                && comparison.TryGetValue(
+                    comparisonOperator,
+                    out BsonValue? actual)
+                && actual == expected)
+            {
+                return true;
+            }
+
+            return document.Elements.Any(
+                element => ContainsFieldComparison(
+                    element.Value,
+                    fieldName,
+                    comparisonOperator,
+                    expected));
+        }
+
+        if (value is BsonArray array)
+        {
+            return array.Any(
+                item => ContainsFieldComparison(
+                    item,
+                    fieldName,
+                    comparisonOperator,
+                    expected));
         }
 
         return false;

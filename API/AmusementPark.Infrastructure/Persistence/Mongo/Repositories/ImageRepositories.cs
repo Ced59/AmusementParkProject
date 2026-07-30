@@ -222,11 +222,20 @@ public sealed class ImageRepository : IImageRepository
             builder.Eq(static document => document.CleanupClaimToken, null)
             | builder.Eq(static document => document.CleanupClaimedUntil, null)
             | builder.Lte(static document => document.CleanupClaimedUntil, dueBeforeUtc);
+        DateTime nowUtc = DateTime.UtcNow;
+        FilterDefinition<ImageDocument> availableVariantGenerationFilter =
+            builder.Eq(
+                static document => document.VariantGenerationClaimToken,
+                null)
+            | builder.Lte(
+                static document => document.VariantGenerationClaimedUntil,
+                nowUtc);
         List<ImageDocument> documents = await this.collection
             .Find(
                 commentFilter
                 & builder.Or(dueCleanupFilter, expiredDraftFilter)
-                & availableClaimFilter)
+                & availableClaimFilter
+                & availableVariantGenerationFilter)
             .SortBy(static document => document.CleanupRequestedAt)
             .ThenBy(static document => document.CreatedAt)
             .Limit(safeLimit)
@@ -256,7 +265,8 @@ public sealed class ImageRepository : IImageRepository
             ownerType,
             ownerId,
             dueBeforeUtc,
-            draftCreatedBeforeUtc);
+            draftCreatedBeforeUtc,
+            DateTime.UtcNow);
         UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
             .Set(static document => document.CleanupClaimToken, claimToken)
             .Set(static document => document.CleanupClaimedUntil, claimUntilUtc)
@@ -338,7 +348,8 @@ public sealed class ImageRepository : IImageRepository
         ImageOwnerType ownerType,
         string ownerId,
         DateTime dueBeforeUtc,
-        DateTime draftCreatedBeforeUtc)
+        DateTime draftCreatedBeforeUtc,
+        DateTime variantLeaseExpiredBeforeUtc)
     {
         FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
         FilterDefinition<ImageDocument> availableClaimFilter =
@@ -348,6 +359,13 @@ public sealed class ImageRepository : IImageRepository
         FilterDefinition<ImageDocument> cleanupDueFilter =
             builder.Ne(static document => document.CleanupRequestedAt, null)
             & builder.Lte(static document => document.CleanupRequestedAt, dueBeforeUtc);
+        FilterDefinition<ImageDocument> availableVariantGenerationFilter =
+            builder.Eq(
+                static document => document.VariantGenerationClaimToken,
+                null)
+            | builder.Lte(
+                static document => document.VariantGenerationClaimedUntil,
+                variantLeaseExpiredBeforeUtc);
         FilterDefinition<ImageDocument> scopeFilter = ownerType == ImageOwnerType.Comment
             ? builder.Eq(static document => document.IsPublished, true)
                 & cleanupDueFilter
@@ -363,7 +381,8 @@ public sealed class ImageRepository : IImageRepository
             & builder.Eq(static document => document.OwnerType, ownerType)
             & builder.Eq(static document => document.OwnerId, ownerId)
             & scopeFilter
-            & availableClaimFilter;
+            & availableClaimFilter
+            & availableVariantGenerationFilter;
     }
 
     internal static FilterDefinition<ImageDocument> BuildPublishedCommentImageReuseFilter(
