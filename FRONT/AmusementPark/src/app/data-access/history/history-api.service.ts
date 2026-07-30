@@ -1,6 +1,6 @@
-import { HttpClient, HttpContext, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, retry, throwError, timer } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 import {
   HistoryArticle,
@@ -22,9 +22,6 @@ interface HistoryHttpOptions {
   providedIn: 'root'
 })
 export class HistoryApiService {
-  private static readonly TimelineReadRetryCount: number = 1;
-  private static readonly TimelineReadRetryDelayMilliseconds: number = 300;
-
   private readonly jsonHttpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -88,33 +85,6 @@ export class HistoryApiService {
   }
 
   private getTimeline(url: string, options: HistoryHttpOptions): Observable<HistoryTimeline> {
-    return this.http.get<HistoryTimeline>(url, options).pipe(
-      retry({
-        count: HistoryApiService.TimelineReadRetryCount,
-        delay: (error: unknown) => this.resolveTimelineRetryDelay(error)
-      })
-    );
-  }
-
-  private resolveTimelineRetryDelay(error: unknown): Observable<number> {
-    if (!this.shouldRetryTimelineRead(error)) {
-      return throwError(() => error);
-    }
-
-    return timer(HistoryApiService.TimelineReadRetryDelayMilliseconds);
-  }
-
-  private shouldRetryTimelineRead(error: unknown): boolean {
-    if (!(error instanceof HttpErrorResponse)) {
-      return true;
-    }
-
-    return error.status === 0
-      || error.status === 408
-      || error.status === 429
-      || error.status === 500
-      || error.status === 502
-      || error.status === 503
-      || error.status === 504;
+    return this.http.get<HistoryTimeline>(url, options);
   }
 }

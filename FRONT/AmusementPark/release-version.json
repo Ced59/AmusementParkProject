@@ -1,6 +1,20 @@
 {
-  "version": "4.0.14",
+  "version": "4.0.15",
   "history": [
+    {
+      "version": "4.0.15",
+      "releasedAt": "2026-07-30",
+      "labels": {
+        "fr": "Les chargements évitent mieux les limitations de requêtes.",
+        "en": "Page loads now avoid request limits more effectively.",
+        "de": "Seitenaufrufe vermeiden Anfragelimits jetzt zuverlässiger.",
+        "nl": "Pagina’s vermijden nu beter verzoeklimieten.",
+        "it": "I caricamenti evitano meglio i limiti delle richieste.",
+        "es": "Las cargas evitan mejor los límites de solicitudes.",
+        "pl": "Ładowanie stron skuteczniej unika limitów żądań.",
+        "pt": "Os carregamentos evitam melhor os limites de pedidos."
+      }
+    },
     {
       "version": "4.0.14",
       "releasedAt": "2026-07-30",

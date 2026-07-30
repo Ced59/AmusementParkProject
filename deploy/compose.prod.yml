@@ -113,6 +113,8 @@ services:
       Security__ContentSecurityPolicy__Enabled: ${CSP_ENABLED:-true}
       Security__ContentSecurityPolicy__ReportOnly: ${CSP_REPORT_ONLY:-false}
       Security__ContentSecurityPolicy__ReportUri: ${CSP_REPORT_URI:-/security/csp-report}
+      RateLimiting__PublicReads__PermitLimit: ${PUBLIC_READ_RATE_LIMIT:-120}
+      RateLimiting__PublicReads__WindowSeconds: ${PUBLIC_READ_RATE_LIMIT_WINDOW_SECONDS:-1}
       RateLimiting__Authentication__Login__PermitLimit: ${AUTH_RATE_LIMIT_LOGIN_LIMIT:-5}
       RateLimiting__Authentication__Login__WindowSeconds: ${AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS:-60}
       RateLimiting__Authentication__ExternalLogin__PermitLimit: ${AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT:-10}
