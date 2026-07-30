@@ -60,6 +60,57 @@ public sealed class InMemoryRatingRankSnapshotCacheTests
         ratingRepository.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task GetOrCreateAsync_WhenDifferentSnapshotsRefresh_ShouldNotSerializeFactories()
+    {
+        using MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
+        using InMemoryRatingRankSnapshotCache snapshotCache =
+            new InMemoryRatingRankSnapshotCache(memoryCache);
+        TaskCompletionSource<bool> parkRefreshStarted = new TaskCompletionSource<bool>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> releaseParkRefresh = new TaskCompletionSource<bool>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+
+        Task<IReadOnlyDictionary<string, int>> parkRefresh = snapshotCache.GetOrCreateAsync(
+            RatingTargetType.Park,
+            null,
+            async cancellationToken =>
+            {
+                parkRefreshStarted.SetResult(true);
+                await releaseParkRefresh.Task.WaitAsync(cancellationToken);
+                return new Dictionary<string, int>(StringComparer.Ordinal)
+                {
+                    ["park-1"] = 1,
+                };
+            },
+            CancellationToken.None);
+
+        await parkRefreshStarted.Task.WaitAsync(TimeSpan.FromSeconds(1));
+        try
+        {
+            IReadOnlyDictionary<string, int> itemRanks = await snapshotCache.GetOrCreateAsync(
+                    RatingTargetType.ParkItem,
+                    ParkItemCategory.Attraction,
+                    static _ => Task.FromResult<IReadOnlyDictionary<string, int>>(
+                        new Dictionary<string, int>(StringComparer.Ordinal)
+                        {
+                            ["item-1"] = 1,
+                        }),
+                    CancellationToken.None)
+                .WaitAsync(TimeSpan.FromSeconds(1));
+
+            Assert.Equal(1, itemRanks["item-1"]);
+            Assert.False(parkRefresh.IsCompleted);
+        }
+        finally
+        {
+            releaseParkRefresh.TrySetResult(true);
+        }
+
+        IReadOnlyDictionary<string, int> parkRanks = await parkRefresh;
+        Assert.Equal(1, parkRanks["park-1"]);
+    }
+
     private static RatingRankingItemResult CreateRankingSource(
         string targetId,
         string targetName,

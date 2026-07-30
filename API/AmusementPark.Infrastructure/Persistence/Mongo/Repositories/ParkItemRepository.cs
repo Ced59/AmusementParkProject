@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.ParkZones.Results;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
@@ -24,10 +25,15 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class ParkItemRepository : IParkItemRepository
 {
     private readonly IMongoCollection<ParkItemDocument> collection;
+    private readonly IRatingRankSnapshotCache ratingRankSnapshotCache;
 
-    public ParkItemRepository(IMongoDatabase database, MongoDbSettings settings)
+    public ParkItemRepository(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        IRatingRankSnapshotCache ratingRankSnapshotCache)
     {
         this.collection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
+        this.ratingRankSnapshotCache = ratingRankSnapshotCache;
     }
 
     public async Task<IReadOnlyCollection<ParkItem>> GetByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
@@ -546,6 +552,7 @@ public sealed class ParkItemRepository : IParkItemRepository
         document.UpdatedAt = document.CreatedAt;
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+        this.ratingRankSnapshotCache.Invalidate();
         return document.ToDomain();
     }
 
@@ -565,13 +572,20 @@ public sealed class ParkItemRepository : IParkItemRepository
             return null;
         }
 
+        this.ratingRankSnapshotCache.Invalidate();
         return document.ToDomain();
     }
 
     public async Task<bool> DeleteAsync(string parkItemId, CancellationToken cancellationToken)
     {
         DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == parkItemId, cancellationToken: cancellationToken);
-        return result.DeletedCount > 0;
+        bool deleted = result.DeletedCount > 0;
+        if (deleted)
+        {
+            this.ratingRankSnapshotCache.Invalidate();
+        }
+
+        return deleted;
     }
 
     public async Task<int> UpdateBulkAdministrationAsync(IReadOnlyCollection<string> parkItemIds, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken)
@@ -606,7 +620,13 @@ public sealed class ParkItemRepository : IParkItemRepository
             update,
             cancellationToken: cancellationToken);
 
-        return checked((int)result.ModifiedCount);
+        int updatedCount = checked((int)result.ModifiedCount);
+        if (updatedCount > 0 && isVisible.HasValue)
+        {
+            this.ratingRankSnapshotCache.Invalidate();
+        }
+
+        return updatedCount;
     }
 
     public async Task<int> UpdateBulkFieldsAsync(IReadOnlyCollection<string> parkItemIds, bool updateZone, string? zoneId, ParkItemCategory? category, ParkItemType? type, bool updateManufacturer, string? manufacturerId, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken)
@@ -665,7 +685,14 @@ public sealed class ParkItemRepository : IParkItemRepository
             update,
             cancellationToken: cancellationToken);
 
-        return checked((int)result.ModifiedCount);
+        int updatedCount = checked((int)result.ModifiedCount);
+        if (updatedCount > 0
+            && (category.HasValue || type.HasValue || isVisible.HasValue))
+        {
+            this.ratingRankSnapshotCache.Invalidate();
+        }
+
+        return updatedCount;
     }
 
     private FilterDefinition<ParkItemDocument> BuildAdminListFilter(string? parkId, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? zoneId, string? manufacturerId, ParkItemContentBacklogFilter? contentBacklogFilter)

@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
@@ -21,10 +22,15 @@ public sealed class ParkRepository : IParkRepository
     private const int RandomVisibleFallbackHardLimit = 100;
 
     private readonly IMongoCollection<ParkDocument> collection;
+    private readonly IRatingRankSnapshotCache ratingRankSnapshotCache;
 
-    public ParkRepository(IMongoDatabase database, MongoDbSettings settings)
+    public ParkRepository(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        IRatingRankSnapshotCache ratingRankSnapshotCache)
     {
         this.collection = database.GetCollection<ParkDocument>(settings.ParksCollectionName);
+        this.ratingRankSnapshotCache = ratingRankSnapshotCache;
     }
 
     public async Task<Park?> GetByIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
@@ -294,6 +300,7 @@ public sealed class ParkRepository : IParkRepository
         document.RandomSortKey = CreateRandomSortKey();
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+        this.ratingRankSnapshotCache.Invalidate();
         return document.ToDomain();
     }
 
@@ -329,6 +336,7 @@ public sealed class ParkRepository : IParkRepository
             return null;
         }
 
+        this.ratingRankSnapshotCache.Invalidate();
         return document.ToDomain();
     }
 
@@ -338,7 +346,13 @@ public sealed class ParkRepository : IParkRepository
             document => document.Id == parkId,
             cancellationToken: cancellationToken);
 
-        return result.DeletedCount > 0;
+        bool deleted = result.DeletedCount > 0;
+        if (deleted)
+        {
+            this.ratingRankSnapshotCache.Invalidate();
+        }
+
+        return deleted;
     }
 
     public async Task<Park?> UpdateVisibilityAsync(string parkId, bool isVisible, CancellationToken cancellationToken)
@@ -354,6 +368,11 @@ public sealed class ParkRepository : IParkRepository
         };
 
         ParkDocument? updated = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
+        if (updated is not null)
+        {
+            this.ratingRankSnapshotCache.Invalidate();
+        }
+
         return updated?.ToDomain();
     }
 
@@ -384,7 +403,13 @@ public sealed class ParkRepository : IParkRepository
             update,
             cancellationToken: cancellationToken);
 
-        return checked((int)result.ModifiedCount);
+        int updatedCount = checked((int)result.ModifiedCount);
+        if (updatedCount > 0 && isVisible.HasValue)
+        {
+            this.ratingRankSnapshotCache.Invalidate();
+        }
+
+        return updatedCount;
     }
 
     public async Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken, ParkAudienceClassificationFilter? audienceClassificationFilter = null)

@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -10,7 +11,8 @@ public sealed class InMemoryRatingRankSnapshotCache : IRatingRankSnapshotCache, 
     private static readonly TimeSpan SnapshotDuration = TimeSpan.FromMinutes(5);
 
     private readonly IMemoryCache memoryCache;
-    private readonly SemaphoreSlim refreshLock = new SemaphoreSlim(1, 1);
+    private readonly ConcurrentDictionary<string, SemaphoreSlim> refreshLocks =
+        new ConcurrentDictionary<string, SemaphoreSlim>(StringComparer.Ordinal);
     private long generation;
 
     public InMemoryRatingRankSnapshotCache(IMemoryCache memoryCache)
@@ -29,38 +31,47 @@ public sealed class InMemoryRatingRankSnapshotCache : IRatingRankSnapshotCache, 
         string cacheKey = BuildCacheKey(targetType, parkItemCategory);
         while (true)
         {
+            long currentGeneration = Volatile.Read(ref this.generation);
             if (this.memoryCache.TryGetValue(
                     cacheKey,
-                    out IReadOnlyDictionary<string, int>? cachedRanks)
-                && cachedRanks is not null)
+                    out RatingRankSnapshot? cachedSnapshot)
+                && cachedSnapshot is not null
+                && cachedSnapshot.Generation == currentGeneration)
             {
-                return cachedRanks;
+                return cachedSnapshot.Ranks;
             }
 
-            await this.refreshLock.WaitAsync(cancellationToken);
+            SemaphoreSlim refreshLock = this.refreshLocks.GetOrAdd(
+                cacheKey,
+                static _ => new SemaphoreSlim(1, 1));
+            await refreshLock.WaitAsync(cancellationToken);
             try
             {
+                currentGeneration = Volatile.Read(ref this.generation);
                 if (this.memoryCache.TryGetValue(
                         cacheKey,
-                        out cachedRanks)
-                    && cachedRanks is not null)
+                        out cachedSnapshot)
+                    && cachedSnapshot is not null
+                    && cachedSnapshot.Generation == currentGeneration)
                 {
-                    return cachedRanks;
+                    return cachedSnapshot.Ranks;
                 }
 
-                long currentGeneration = Volatile.Read(ref this.generation);
                 IReadOnlyDictionary<string, int> ranks = await factory(cancellationToken);
                 if (currentGeneration != Volatile.Read(ref this.generation))
                 {
                     continue;
                 }
 
-                this.memoryCache.Set(cacheKey, ranks, SnapshotDuration);
+                this.memoryCache.Set(
+                    cacheKey,
+                    new RatingRankSnapshot(currentGeneration, ranks),
+                    SnapshotDuration);
                 return ranks;
             }
             finally
             {
-                this.refreshLock.Release();
+                refreshLock.Release();
             }
         }
     }
@@ -68,16 +79,14 @@ public sealed class InMemoryRatingRankSnapshotCache : IRatingRankSnapshotCache, 
     public void Invalidate()
     {
         Interlocked.Increment(ref this.generation);
-        this.memoryCache.Remove(BuildCacheKey(RatingTargetType.Park, null));
-        foreach (ParkItemCategory category in Enum.GetValues<ParkItemCategory>())
-        {
-            this.memoryCache.Remove(BuildCacheKey(RatingTargetType.ParkItem, category));
-        }
     }
 
     public void Dispose()
     {
-        this.refreshLock.Dispose();
+        foreach (SemaphoreSlim refreshLock in this.refreshLocks.Values)
+        {
+            refreshLock.Dispose();
+        }
     }
 
     private static string BuildCacheKey(
@@ -88,4 +97,8 @@ public sealed class InMemoryRatingRankSnapshotCache : IRatingRankSnapshotCache, 
             ? "ratings:rank-snapshot:parks"
             : $"ratings:rank-snapshot:park-items:{parkItemCategory}";
     }
+
+    private sealed record RatingRankSnapshot(
+        long Generation,
+        IReadOnlyDictionary<string, int> Ranks);
 }
