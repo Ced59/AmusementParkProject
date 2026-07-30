@@ -32,6 +32,11 @@ interface ImagesHttpOptions {
 
 interface ImageUrlOptions {
   width?: number | null;
+  retryAttempt?: number | null;
+}
+
+interface ImageSrcSetOptions {
+  retryAttempt?: number | null;
 }
 
 const ResponsiveImageVersion = 2;
@@ -156,15 +161,25 @@ export class ImagesApiService {
   buildImageUrl(imageId: string, options: ImageUrlOptions = {}): string {
     const baseUrl: string = `${environment.imagesBaseUrl}/${imageId}`;
     const width: number | null = this.normalizeResponsiveWidth(options.width);
+    const retryAttempt: number | null = this.normalizeRetryAttempt(options.retryAttempt);
+    const queryParts: string[] = [];
 
-    if (width === null) {
-      return baseUrl;
+    if (width !== null) {
+      queryParts.push(`width=${width}`, `v=${ResponsiveImageVersion}`);
     }
 
-    return `${baseUrl}?width=${width}&v=${ResponsiveImageVersion}`;
+    if (retryAttempt !== null) {
+      queryParts.push(`retry=${retryAttempt}`);
+    }
+
+    return queryParts.length > 0 ? `${baseUrl}?${queryParts.join('&')}` : baseUrl;
   }
 
-  buildImageSrcSet(imagePathOrUrl?: string | null, widths: readonly number[] = ResponsiveImageWidths): string | null {
+  buildImageSrcSet(
+    imagePathOrUrl?: string | null,
+    widths: readonly number[] = ResponsiveImageWidths,
+    options: ImageSrcSetOptions = {}
+  ): string | null {
     const imageId: string | null = this.resolveImageId(imagePathOrUrl);
 
     if (imageId === null) {
@@ -182,7 +197,7 @@ export class ImagesApiService {
     }
 
     return normalizedWidths
-      .map((width: number) => `${this.buildImageUrl(imageId, { width })} ${width}w`)
+      .map((width: number) => `${this.buildImageUrl(imageId, { width, retryAttempt: options.retryAttempt })} ${width}w`)
       .join(', ');
   }
 
@@ -375,6 +390,14 @@ export class ImagesApiService {
     }
 
     return roundedWidth;
+  }
+
+  private normalizeRetryAttempt(retryAttempt?: number | null): number | null {
+    if (typeof retryAttempt !== 'number' || !Number.isFinite(retryAttempt) || retryAttempt <= 0) {
+      return null;
+    }
+
+    return Math.floor(retryAttempt);
   }
 
 }
