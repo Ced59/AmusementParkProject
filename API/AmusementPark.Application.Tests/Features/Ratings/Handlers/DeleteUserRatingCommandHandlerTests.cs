@@ -34,7 +34,10 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 "item-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(aggregate);
-        DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(ratingRepository.Object);
+        Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
+        DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
+            ratingRepository.Object,
+            ratingRankProvider.Object);
 
         ApplicationResult<RatingSummaryResult> result = await handler.HandleAsync(
             new DeleteUserRatingCommand(" user-1 ", RatingTargetType.ParkItem, " item-1 "));
@@ -45,6 +48,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Assert.Equal(4d, result.Value.AverageRating);
         Assert.Equal(3.5d, result.Value.BayesianScore);
         ratingRepository.VerifyAll();
+        ratingRankProvider.VerifyAll();
     }
 
     [Fact]
@@ -67,7 +71,10 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 "park-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(aggregate);
-        DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(ratingRepository.Object);
+        Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
+        DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
+            ratingRepository.Object,
+            ratingRankProvider.Object);
 
         ApplicationResult<RatingSummaryResult> result = await handler.HandleAsync(
             new DeleteUserRatingCommand("user-1", RatingTargetType.Park, "park-1"));
@@ -75,6 +82,7 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Assert.True(result.IsSuccess);
         Assert.Equal(3, result.Value!.RatingCount);
         ratingRepository.VerifyAll();
+        ratingRankProvider.VerifyAll();
     }
 
     [Fact]
@@ -88,7 +96,10 @@ public sealed class DeleteUserRatingCommandHandlerTests
                 "park-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((RatingAggregate?)null);
-        DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(ratingRepository.Object);
+        Mock<IRatingRankProvider> ratingRankProvider = CreateRankProvider();
+        DeleteUserRatingCommandHandler handler = new DeleteUserRatingCommandHandler(
+            ratingRepository.Object,
+            ratingRankProvider.Object);
 
         ApplicationResult<RatingSummaryResult> result = await handler.HandleAsync(
             new DeleteUserRatingCommand("user-1", RatingTargetType.Park, "park-1"));
@@ -99,5 +110,14 @@ public sealed class DeleteUserRatingCommandHandlerTests
         Assert.Equal(0d, result.Value.AverageRating);
         Assert.Equal(RatingScoreCalculator.PriorMean, result.Value.BayesianScore);
         ratingRepository.VerifyAll();
+        ratingRankProvider.VerifyAll();
+    }
+
+    private static Mock<IRatingRankProvider> CreateRankProvider()
+    {
+        Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        ratingRankProvider
+            .Setup(provider => provider.Invalidate());
+        return ratingRankProvider;
     }
 }

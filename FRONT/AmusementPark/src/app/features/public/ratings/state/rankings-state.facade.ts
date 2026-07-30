@@ -32,7 +32,7 @@ export class RankingsStateFacade {
   public readonly pagination: Signal<PaginationContract | null> = this.paginationSignal.asReadonly();
   public readonly hasMore: Signal<boolean> = computed(() => {
     const pagination: PaginationContract | null = this.paginationSignal();
-    return Boolean(pagination && pagination.currentPage < pagination.totalPages && !this.searchSignal());
+    return Boolean(pagination && pagination.currentPage < pagination.totalPages);
   });
 
   constructor(
@@ -81,7 +81,7 @@ export class RankingsStateFacade {
 
   loadMore(): void {
     const pagination: PaginationContract | null = this.paginationSignal();
-    if (!pagination || this.searchSignal() || pagination.currentPage >= pagination.totalPages || this.loadingSignal() || this.loadingMoreSignal()) {
+    if (!pagination || pagination.currentPage >= pagination.totalPages || this.loadingSignal() || this.loadingMoreSignal()) {
       return;
     }
 
@@ -93,14 +93,14 @@ export class RankingsStateFacade {
         RANKINGS_PAGE_SIZE,
         category,
         this.parkItemTypeSignal(),
-        null,
+        this.searchSignal(),
         anonymousHttpOptions()
       )
       : this.ratingsApiService.getRankings(
         pagination.currentPage + 1,
         RANKINGS_PAGE_SIZE,
         null,
-        null,
+        this.searchSignal(),
         anonymousHttpOptions()
       );
     request.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({

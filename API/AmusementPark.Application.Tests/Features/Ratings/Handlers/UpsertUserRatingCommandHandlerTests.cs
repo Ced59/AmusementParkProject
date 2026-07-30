@@ -20,10 +20,12 @@ public sealed class UpsertUserRatingCommandHandlerTests
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
         UpsertUserRatingCommandHandler handler = new UpsertUserRatingCommandHandler(
             ratingRepository.Object,
             parkRepository.Object,
-            parkItemRepository.Object);
+            parkItemRepository.Object,
+            ratingRankProvider.Object);
 
         ApplicationResult<UserRatingResult> result = await handler.HandleAsync(new UpsertUserRatingCommand(
             "user-1",
@@ -36,6 +38,7 @@ public sealed class UpsertUserRatingCommandHandlerTests
         ratingRepository.VerifyNoOtherCalls();
         parkRepository.VerifyNoOtherCalls();
         parkItemRepository.VerifyNoOtherCalls();
+        ratingRankProvider.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -90,11 +93,15 @@ public sealed class UpsertUserRatingCommandHandlerTests
         parkItemRepository
             .Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(item);
+        Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        ratingRankProvider
+            .Setup(provider => provider.Invalidate());
 
         UpsertUserRatingCommandHandler handler = new UpsertUserRatingCommandHandler(
             ratingRepository.Object,
             parkRepository.Object,
-            parkItemRepository.Object);
+            parkItemRepository.Object,
+            ratingRankProvider.Object);
 
         ApplicationResult<UserRatingResult> result = await handler.HandleAsync(new UpsertUserRatingCommand(
             " user-1 ",
@@ -134,5 +141,6 @@ public sealed class UpsertUserRatingCommandHandlerTests
         ratingRepository.VerifyAll();
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
+        ratingRankProvider.VerifyAll();
     }
 }

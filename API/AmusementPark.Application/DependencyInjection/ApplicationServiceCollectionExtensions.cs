@@ -14,6 +14,8 @@ using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.ParkWeather.Services;
 using AmusementPark.Application.Features.Parks.Services;
+using AmusementPark.Application.Features.Ratings.Ports;
+using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
@@ -66,6 +68,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IParkWeatherNotificationService, NoOpParkWeatherNotificationService>();
         services.AddScoped<IParkOpeningHoursNotificationService, NoOpParkOpeningHoursNotificationService>();
         services.AddSingleton<IMeasurementConversionService>(MeasurementConversionService.Instance);
+        services.AddScoped<IRatingRankProvider, RatingRankProvider>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
