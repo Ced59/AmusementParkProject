@@ -62,6 +62,9 @@ internal static partial class EntityMongoMappers
                 ?? (usesLegacyReservationDeadline
                     ? document.CleanupRequestedAt
                     : null),
+            CommentReuseReservationToken = document.CommentReuseReservationToken,
+            CommentReuseReconcileAfterUtc = document.CommentReuseReconcileAfter,
+            CommentReuseTargetRevision = document.CommentReuseTargetRevision,
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -102,6 +105,9 @@ internal static partial class EntityMongoMappers
                 entity.ReservationReconcileAfterUtc,
             CleanupRequestedAt = entity.CleanupRequestedAtUtc,
             CleanupCommentRevision = entity.CleanupCommentRevision,
+            CommentReuseReservationToken = entity.CommentReuseReservationToken,
+            CommentReuseReconcileAfter = entity.CommentReuseReconcileAfterUtc,
+            CommentReuseTargetRevision = entity.CommentReuseTargetRevision,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

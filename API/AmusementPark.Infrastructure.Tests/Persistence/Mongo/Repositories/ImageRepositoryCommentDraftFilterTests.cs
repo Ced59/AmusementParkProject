@@ -113,6 +113,7 @@ public sealed class ImageRepositoryCommentDraftFilterTests
                 "author-1",
                 nowUtc,
                 nowUtc.AddHours(-24),
+                null,
                 nowUtc);
 
         BsonDocument rendered = Render(filter);
@@ -219,7 +220,7 @@ public sealed class ImageRepositoryCommentDraftFilterTests
     }
 
     [Fact]
-    public void BuildRequestCommentImagesCleanupUpdate_ShouldPersistRevisionFence()
+    public void BuildRequestCommentImagesCleanupUpdate_ShouldAdvanceCleanupAndRevisionMonotonically()
     {
         DateTime cleanupUtc =
             new DateTime(2026, 7, 30, 12, 0, 0, DateTimeKind.Utc);
@@ -228,15 +229,19 @@ public sealed class ImageRepositoryCommentDraftFilterTests
                 8,
                 cleanupUtc);
 
-        BsonDocument set = Render(update)["$set"].AsBsonDocument;
+        BsonDocument rendered = Render(update);
+        BsonDocument max = rendered["$max"].AsBsonDocument;
 
-        Assert.Equal(8, set["cleanupCommentRevision"].AsInt64);
+        Assert.Equal(8, max["cleanupCommentRevision"].AsInt64);
         Assert.Equal(
             new BsonDateTime(cleanupUtc),
-            set["cleanupRequestedAt"]);
+            max["cleanupRequestedAt"]);
         Assert.Equal(
             new BsonDateTime(cleanupUtc),
-            set["reservationReconcileAfter"]);
+            max["reservationReconcileAfter"]);
+        Assert.False(
+            rendered["$set"].AsBsonDocument.Contains(
+                "cleanupRequestedAt"));
     }
 
     [Fact]

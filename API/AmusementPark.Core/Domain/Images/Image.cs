@@ -148,6 +148,12 @@ public sealed class Image : AuditableEntity
     /// </summary>
     public DateTime? ReservationReconcileAfterUtc { get; set; }
 
+    public string? CommentReuseReservationToken { get; set; }
+
+    public DateTime? CommentReuseReconcileAfterUtc { get; set; }
+
+    public long? CommentReuseTargetRevision { get; set; }
+
     public bool CanBeUsedInComment(string actorUserId, string commentId)
     {
         bool isPublishedForComment =

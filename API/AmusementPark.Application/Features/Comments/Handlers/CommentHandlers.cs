@@ -83,10 +83,11 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
         List<string> imageIds = ExtractImageIds(bodiesResult.Value, this.contentSanitizer);
         ApplicationResult<CommentImageReservationBatch> imageResult =
             await this.commentImageManager.PublishForCommentAsync(
-            author!.Id,
-            commentId, 0,
-            imageIds,
-            cancellationToken);
+                author!.Id,
+                commentId,
+                imageIds,
+                cancellationToken,
+                0);
         if (!imageResult.IsSuccess || imageResult.Value is null)
         {
             return ApplicationResult<CommentResult>.Failure(imageResult.Errors);
@@ -256,10 +257,11 @@ public sealed class UpdateCommentCommandHandler
             .ToList();
         ApplicationResult<CommentImageReservationBatch> imageResult =
             await this.commentImageManager.PublishForCommentAsync(
-            actor.Id,
-            comment.Id, checked(comment.Revision + 1),
-            imageIds,
-            cancellationToken);
+                actor.Id,
+                comment.Id,
+                imageIds,
+                cancellationToken,
+                checked(comment.Revision + 1));
         if (!imageResult.IsSuccess || imageResult.Value is null)
         {
             return ApplicationResult<CommentResult>.Failure(imageResult.Errors);
@@ -286,20 +288,11 @@ public sealed class UpdateCommentCommandHandler
 
         long expectedRevision = comment.Revision;
         comment.UpdateContent(bodiesResult.Value, imageIds, isOfficial);
-        Comment? updated;
-        try
-        {
-            updated = await CommentPersistenceRecovery.UpdateAsync(
-                this.commentRepository,
-                comment,
-                expectedRevision,
-                cancellationToken);
-        }
-        catch
-        {
-            _ = await this.commentImageManager.RestorePreparedCleanupForCommentAsync(comment.Id, imageResult.Value);
-            throw;
-        }
+        Comment? updated = await CommentPersistenceRecovery.UpdateAsync(
+            this.commentRepository,
+            comment,
+            expectedRevision,
+            cancellationToken);
         if (updated is null)
         {
             _ = await this.commentImageManager.ReleaseReservationsForCommentAsync(

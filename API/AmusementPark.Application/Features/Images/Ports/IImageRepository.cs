@@ -28,12 +28,41 @@ public interface IImageRepository
         string ownerId,
         DateTime dueBeforeUtc,
         DateTime draftCreatedBeforeUtc,
+        string? observedCommentReuseReservationToken,
         string claimToken,
         DateTime claimUntilUtc,
         CancellationToken cancellationToken);
     Task<PublishedCommentImageReusePreparation> TryPreparePublishedCommentImageForReuseAsync(
         string imageId,
         string commentId,
+        string reservationToken,
+        DateTime reconcileAfterUtc,
+        long targetCommentRevision,
+        CancellationToken cancellationToken);
+    Task<bool> FinalizePublishedCommentImageReuseAsync(
+        string imageId,
+        string commentId,
+        string reservationToken,
+        CancellationToken cancellationToken);
+    Task<bool> ReleasePublishedCommentImageReuseAsync(
+        string imageId,
+        string commentId,
+        string reservationToken,
+        DateTime cleanupRequestedAtUtc,
+        long cleanupCommentRevision,
+        CancellationToken cancellationToken);
+    Task<bool> ResolveClaimedPublishedCommentImageReuseAsync(
+        string imageId,
+        string commentId,
+        string reservationToken,
+        string claimToken,
+        CancellationToken cancellationToken);
+    Task<bool> DeferClaimedPublishedCommentImageReuseAsync(
+        string imageId,
+        string commentId,
+        string reservationToken,
+        string claimToken,
+        DateTime reconcileAfterUtc,
         CancellationToken cancellationToken);
     Task<bool> CancelClaimedCommentImageCleanupAsync(
         string imageId,

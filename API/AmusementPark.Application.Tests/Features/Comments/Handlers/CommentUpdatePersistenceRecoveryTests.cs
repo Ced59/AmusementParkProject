@@ -83,7 +83,7 @@ public sealed class CommentUpdatePersistenceRecoveryTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenOutcomeIsUnknown_ShouldRestoreOnlyPreparedPublishedCleanup()
+    public async Task HandleAsync_WhenOutcomeIsUnknown_ShouldKeepDurablePublishedPreparation()
     {
         using UpdateWithImageScenario scenario =
             new UpdateWithImageScenario(false, true);
@@ -92,15 +92,6 @@ public sealed class CommentUpdatePersistenceRecoveryTests
             static (comment, expectedRevision) =>
                 comment.Revision = expectedRevision + 1);
         scenario.SetupRecovery(static () => null);
-        scenario.Images
-            .Setup(repository => repository.RequestCommentImagesCleanupAsync(
-                It.Is<IReadOnlyCollection<string>>(ids =>
-                    ids.SequenceEqual(new[] { UpdateWithImageScenario.PublishedImageId })),
-                UpdateWithImageScenario.CommentId,
-                It.IsAny<long>(),
-                It.IsAny<DateTime>(),
-                CancellationToken.None))
-            .ReturnsAsync(1);
 
         await Assert.ThrowsAsync<InvalidOperationException>(
             () => scenario.Handler.HandleAsync(
@@ -229,6 +220,9 @@ public sealed class CommentUpdatePersistenceRecoveryTests
                     .Setup(repository => repository.TryPreparePublishedCommentImageForReuseAsync(
                         PublishedImageId,
                         CommentId,
+                        It.IsAny<string>(),
+                        It.IsAny<DateTime>(),
+                        this.InitialRevision + 1,
                         this.OperationToken))
                     .ReturnsAsync(
                         PublishedCommentImageReusePreparation.PreparedAndCleanupCleared);

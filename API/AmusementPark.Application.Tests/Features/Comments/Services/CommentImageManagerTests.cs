@@ -60,9 +60,9 @@ public sealed class CommentImageManagerTests
             await manager.PublishForCommentAsync(
             "author-1",
             "comment-1",
-            7,
             new[] { ImageId },
-            CancellationToken.None);
+            CancellationToken.None,
+            7);
 
         Assert.True(result.IsSuccess);
         CommentImageReservationBatch batch =
@@ -89,7 +89,8 @@ public sealed class CommentImageManagerTests
             "author-1",
             "comment-1",
             new[] { ImageId },
-            CancellationToken.None);
+            CancellationToken.None,
+            1);
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "comment.image.forbidden");
@@ -117,6 +118,9 @@ public sealed class CommentImageManagerTests
             .Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
                 ImageId,
                 "comment-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<long>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(PublishedCommentImageReusePreparation.Prepared);
         CommentImageManager manager = new CommentImageManager(repository.Object);
@@ -125,7 +129,8 @@ public sealed class CommentImageManagerTests
             "admin-editing-another-comment",
             "comment-1",
             new[] { ImageId },
-            CancellationToken.None);
+            CancellationToken.None,
+            1);
 
         Assert.True(result.IsSuccess);
         repository.VerifyAll();
@@ -153,6 +158,9 @@ public sealed class CommentImageManagerTests
             .Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
                 ImageId,
                 "comment-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<long>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(PublishedCommentImageReusePreparation.Rejected);
         CommentImageManager manager = new CommentImageManager(repository.Object);
@@ -161,7 +169,8 @@ public sealed class CommentImageManagerTests
             "author-1",
             "comment-1",
             new[] { ImageId },
-            CancellationToken.None);
+            CancellationToken.None,
+            1);
 
         Assert.False(result.IsSuccess);
         Assert.Contains(
@@ -176,6 +185,7 @@ public sealed class CommentImageManagerTests
         const string secondImageId = "11111111111111111111111111111111";
         Image firstPublished = CreatePublished(ImageId);
         Image secondPublished = CreatePublished(secondImageId);
+        string? capturedReservationToken = null;
         Mock<IImageRepository> repository = new Mock<IImageRepository>(MockBehavior.Strict);
         repository
             .Setup(value => value.GetByIdsAsync(
@@ -186,23 +196,46 @@ public sealed class CommentImageManagerTests
             .Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
                 ImageId,
                 "comment-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                1,
                 It.IsAny<CancellationToken>()))
+            .Callback((
+                string _imageId,
+                string _commentId,
+                string reservationToken,
+                DateTime _reconcileAfterUtc,
+                long _targetCommentRevision,
+                CancellationToken _cancellationToken) =>
+                capturedReservationToken = reservationToken)
             .ReturnsAsync(PublishedCommentImageReusePreparation.PreparedAndCleanupCleared);
         repository
             .Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
                 secondImageId,
                 "comment-1",
+                It.Is<string>(token => token == capturedReservationToken),
+                It.IsAny<DateTime>(),
+                1,
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("Preparation failed."));
         repository
-            .Setup(value => value.RequestCommentImagesCleanupAsync(
-                It.Is<IReadOnlyCollection<string>>(ids =>
-                    ids.SequenceEqual(new[] { ImageId, secondImageId })),
+            .Setup(value => value.ReleasePublishedCommentImageReuseAsync(
+                ImageId,
                 "comment-1",
-                It.IsAny<long>(),
+                It.Is<string>(token => token == capturedReservationToken),
                 It.IsAny<DateTime>(),
+                1,
                 CancellationToken.None))
-            .ReturnsAsync(2);
+            .ReturnsAsync(true);
+        repository
+            .Setup(value => value.ReleasePublishedCommentImageReuseAsync(
+                secondImageId,
+                "comment-1",
+                It.Is<string>(token => token == capturedReservationToken),
+                It.IsAny<DateTime>(),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(true);
         CommentImageManager manager = new CommentImageManager(repository.Object);
 
         InvalidOperationException exception = await Assert.ThrowsAsync<InvalidOperationException>(
@@ -210,7 +243,8 @@ public sealed class CommentImageManagerTests
                 "author-1",
                 "comment-1",
                 new[] { ImageId, secondImageId },
-                CancellationToken.None));
+                CancellationToken.None,
+                1));
 
         Assert.Equal("Preparation failed.", exception.Message);
         repository.VerifyAll();
@@ -233,23 +267,38 @@ public sealed class CommentImageManagerTests
             .Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
                 ImageId,
                 "comment-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<long>(),
                 cancellation.Token))
             .ReturnsAsync(PublishedCommentImageReusePreparation.PreparedAndCleanupCleared);
         repository
             .Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
                 secondImageId,
                 "comment-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<long>(),
                 cancellation.Token))
             .ThrowsAsync(new OperationCanceledException(cancellation.Token));
         repository
-            .Setup(value => value.RequestCommentImagesCleanupAsync(
-                It.Is<IReadOnlyCollection<string>>(ids =>
-                    ids.SequenceEqual(new[] { ImageId, secondImageId })),
+            .Setup(value => value.ReleasePublishedCommentImageReuseAsync(
+                ImageId,
                 "comment-1",
-                It.IsAny<long>(),
+                It.IsAny<string>(),
                 It.IsAny<DateTime>(),
+                1,
                 CancellationToken.None))
-            .ReturnsAsync(2);
+            .ReturnsAsync(true);
+        repository
+            .Setup(value => value.ReleasePublishedCommentImageReuseAsync(
+                secondImageId,
+                "comment-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(true);
         CommentImageManager manager = new CommentImageManager(repository.Object);
 
         OperationCanceledException exception = await Assert.ThrowsAsync<OperationCanceledException>(
@@ -257,7 +306,8 @@ public sealed class CommentImageManagerTests
                 "author-1",
                 "comment-1",
                 new[] { ImageId, secondImageId },
-                cancellation.Token));
+                cancellation.Token,
+                1));
 
         Assert.Equal(cancellation.Token, exception.CancellationToken);
         repository.VerifyAll();
@@ -275,7 +325,8 @@ public sealed class CommentImageManagerTests
             "author-1",
             "comment-1",
             ids,
-            CancellationToken.None);
+            CancellationToken.None,
+            1);
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "comment.images.too-many");
@@ -378,7 +429,8 @@ public sealed class CommentImageManagerTests
             "author-1",
             "comment-1",
             new[] { ImageId, secondImageId },
-            CancellationToken.None);
+            CancellationToken.None,
+            1);
 
         Assert.False(result.IsSuccess);
         repository.VerifyAll();
@@ -446,7 +498,8 @@ public sealed class CommentImageManagerTests
             "author-1",
             "comment-1",
             new[] { ImageId, secondImageId },
-            CancellationToken.None));
+            CancellationToken.None,
+            1));
 
         repository.VerifyAll();
     }
@@ -534,6 +587,61 @@ public sealed class CommentImageManagerTests
                 Array.Empty<string>()));
 
         Assert.Equal(new[] { failedImageId, exceptionImageId }, failedImageIds);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task FinalizeForCommentAsync_WhenPublishedReuseWasPrepared_ShouldFinalizeOwningToken()
+    {
+        Mock<IImageRepository> repository =
+            new Mock<IImageRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.FinalizePublishedCommentImageReuseAsync(
+                ImageId,
+                "comment-1",
+                "reservation-token",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        CommentImageManager manager =
+            new CommentImageManager(repository.Object);
+
+        IReadOnlyCollection<string> failedImageIds =
+            await manager.FinalizeForCommentAsync(
+                "author-1",
+                "comment-1",
+                new CommentImageReservationBatch(
+                    Array.Empty<string>(),
+                    "reservation-token",
+                    new[] { ImageId }));
+
+        Assert.Empty(failedImageIds);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RestorePreparedCleanupForCommentAsync_WhenMongoFails_ShouldLeaveDurableMarkerForWorker()
+    {
+        Mock<IImageRepository> repository =
+            new Mock<IImageRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.ReleasePublishedCommentImageReuseAsync(
+                ImageId,
+                "comment-1",
+                "reservation-token",
+                It.IsAny<DateTime>(),
+                0,
+                CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("Mongo unavailable."));
+        CommentImageManager manager =
+            new CommentImageManager(repository.Object);
+
+        IReadOnlyCollection<string> failedImageIds =
+            await manager.RestorePreparedCleanupForCommentAsync(
+                "comment-1",
+                new CommentImageReservationBatch(
+                    Array.Empty<string>(),
+                    "reservation-token",
+                    new[] { ImageId }));
+
+        Assert.Equal(new[] { ImageId }, failedImageIds);
         repository.VerifyAll();
     }
 

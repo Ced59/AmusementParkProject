@@ -26,22 +26,8 @@ public sealed class CommentImageManager
         string actorUserId,
         string commentId,
         IReadOnlyCollection<string> desiredImageIds,
-        CancellationToken cancellationToken)
-    {
-        return await this.PublishForCommentAsync(
-            actorUserId,
-            commentId,
-            0,
-            desiredImageIds,
-            cancellationToken);
-    }
-
-    public async Task<ApplicationResult<CommentImageReservationBatch>> PublishForCommentAsync(
-        string actorUserId,
-        string commentId,
-        long pendingCommentRevision,
-        IReadOnlyCollection<string> desiredImageIds,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        long pendingCommentRevision)
     {
         List<string> normalizedIds = NormalizeIds(desiredImageIds);
         string reservationToken = Guid.NewGuid().ToString("N");
@@ -91,11 +77,15 @@ public sealed class CommentImageManager
                     await this.imageRepository.TryPreparePublishedCommentImageForReuseAsync(
                         published.Id,
                         commentId,
+                        reservationToken,
+                        DateTime.UtcNow.Add(ReconciliationGracePeriod),
+                        pendingCommentRevision,
                         cancellationToken);
                 if (preparation == PublishedCommentImageReusePreparation.Rejected)
                 {
                     await this.RestorePreparedPublishedCleanupAsync(
                         commentId,
+                        reservationToken,
                         pendingCommentRevision,
                         preparedCleanupImageIds);
                     return ApplicationResult<CommentImageReservationBatch>.Failure(
@@ -122,6 +112,7 @@ public sealed class CommentImageManager
 
             await this.RestorePreparedPublishedCleanupAsync(
                 commentId,
+                reservationToken,
                 pendingCommentRevision,
                 cleanupImageIdsToRestore);
             throw;
@@ -215,19 +206,39 @@ public sealed class CommentImageManager
             }
         }
 
-        return failedImageIds;
-    }
+        foreach (string imageId in NormalizeIds(
+            reservationBatch.PreparedCleanupImageIds))
+        {
+            try
+            {
+                bool finalized =
+                    await this.imageRepository.FinalizePublishedCommentImageReuseAsync(
+                        imageId,
+                        commentId,
+                        reservationBatch.ReservationToken,
+                        CancellationToken.None);
+                if (!finalized)
+                {
+                    failedImageIds.Add(imageId);
+                    this.logger?.LogWarning(
+                        "Unable to finalize prepared comment image {ImageId} for comment {CommentId}.",
+                        imageId,
+                        commentId);
+                }
+            }
+            catch (Exception exception)
+            {
+                failedImageIds.Add(imageId);
+                this.logger?.LogWarning(
+                    exception,
+                    "Unable to finalize prepared comment image {ImageId} for comment {CommentId}.",
+                    imageId,
+                    commentId);
+                // L'état durable sera réconcilié avec la référence du commentaire.
+            }
+        }
 
-    public async Task RequestRemovedCleanupAsync(
-        string commentId,
-        IReadOnlyCollection<string> removedImageIds,
-        CancellationToken cancellationToken)
-    {
-        await this.RequestRemovedCleanupAsync(
-            commentId,
-            0,
-            removedImageIds,
-            cancellationToken);
+        return failedImageIds;
     }
 
     public async Task RequestRemovedCleanupAsync(
@@ -313,6 +324,7 @@ public sealed class CommentImageManager
         IReadOnlyCollection<string> cleanupRestoreFailures =
             await this.RestorePreparedPublishedCleanupAsync(
                 commentId,
+                reservationBatch.ReservationToken,
                 reservationBatch.PendingCommentRevision,
                 reservationBatch.PreparedCleanupImageIds);
         failedImageIds.AddRange(cleanupRestoreFailures);
@@ -326,12 +338,14 @@ public sealed class CommentImageManager
     {
         return this.RestorePreparedPublishedCleanupAsync(
             commentId,
+            reservationBatch.ReservationToken,
             reservationBatch.PendingCommentRevision,
             reservationBatch.PreparedCleanupImageIds);
     }
 
     private async Task<IReadOnlyCollection<string>> RestorePreparedPublishedCleanupAsync(
         string commentId,
+        string reservationToken,
         long cleanupCommentRevision,
         IReadOnlyCollection<string> preparedPublishedImageIds)
     {
@@ -340,27 +354,43 @@ public sealed class CommentImageManager
             return Array.Empty<string>();
         }
 
-        try
+        List<string> failedImageIds = new List<string>();
+        DateTime cleanupRequestedAtUtc =
+            DateTime.UtcNow.Add(ReconciliationGracePeriod);
+        foreach (string imageId in NormalizeIds(preparedPublishedImageIds))
         {
-            int restoredCount =
-                await this.imageRepository.RequestCommentImagesCleanupAsync(
-                    preparedPublishedImageIds,
-                    commentId,
-                    cleanupCommentRevision,
-                    DateTime.UtcNow.Add(ReconciliationGracePeriod),
-                    CancellationToken.None);
-            return restoredCount == preparedPublishedImageIds.Count
-                ? Array.Empty<string>()
-                : preparedPublishedImageIds;
+            try
+            {
+                bool released =
+                    await this.imageRepository.ReleasePublishedCommentImageReuseAsync(
+                        imageId,
+                        commentId,
+                        reservationToken,
+                        cleanupRequestedAtUtc,
+                        cleanupCommentRevision,
+                        CancellationToken.None);
+                if (!released)
+                {
+                    failedImageIds.Add(imageId);
+                    this.logger?.LogWarning(
+                        "Unable to release prepared comment image {ImageId} for comment {CommentId}.",
+                        imageId,
+                        commentId);
+                }
+            }
+            catch (Exception exception)
+            {
+                failedImageIds.Add(imageId);
+                this.logger?.LogWarning(
+                    exception,
+                    "Unable to release prepared comment image {ImageId} for comment {CommentId}.",
+                    imageId,
+                    commentId);
+                // Le marqueur durable reste sélectionnable par le reconciler.
+            }
         }
-        catch (Exception exception)
-        {
-            this.logger?.LogWarning(
-                exception,
-                "Unable to restore cleanup for prepared comment images on comment {CommentId}.",
-                commentId);
-            return preparedPublishedImageIds;
-        }
+
+        return failedImageIds;
     }
 
     private static List<string> NormalizeIds(IReadOnlyCollection<string> imageIds)

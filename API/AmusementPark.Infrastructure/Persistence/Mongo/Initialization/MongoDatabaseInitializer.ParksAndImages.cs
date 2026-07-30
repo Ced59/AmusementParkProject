@@ -351,6 +351,17 @@ public sealed partial class MongoDatabaseInitializer
                 }),
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.CommentReuseReconcileAfter),
+                new CreateIndexOptions<ImageDocument>
+                {
+                    Name = "idx_images_comment_reuse_reconcile",
+                    PartialFilterExpression =
+                        Builders<ImageDocument>.Filter.Exists(
+                            static item => item.CommentReuseReconcileAfter),
+                }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
                     .Text(item => item.OriginalFileName)
                     .Text(item => item.Description)
                     .Text(item => item.Path)

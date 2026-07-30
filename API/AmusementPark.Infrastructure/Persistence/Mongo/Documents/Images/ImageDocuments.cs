@@ -109,6 +109,18 @@ public sealed class ImageDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public long? CleanupCommentRevision { get; set; }
 
+    [BsonElement("commentReuseReservationToken")]
+    [BsonIgnoreIfNull]
+    public string? CommentReuseReservationToken { get; set; }
+
+    [BsonElement("commentReuseReconcileAfter")]
+    [BsonIgnoreIfNull]
+    public DateTime? CommentReuseReconcileAfter { get; set; }
+
+    [BsonElement("commentReuseTargetRevision")]
+    [BsonIgnoreIfNull]
+    public long? CommentReuseTargetRevision { get; set; }
+
     [BsonElement("cleanupClaimToken")]
     [BsonIgnoreIfNull]
     public string? CleanupClaimToken { get; set; }

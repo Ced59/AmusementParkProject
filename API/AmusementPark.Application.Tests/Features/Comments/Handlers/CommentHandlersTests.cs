@@ -319,6 +319,9 @@ public sealed class CommentHandlersTests
         images.Setup(value => value.TryPreparePublishedCommentImageForReuseAsync(
                 existingImageId,
                 "comment-1",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                existing.Revision + 1,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(PublishedCommentImageReusePreparation.PreparedAndCleanupCleared);
         images.Setup(value => value.ReserveCommentDraftAsync(
@@ -346,13 +349,14 @@ public sealed class CommentHandlersTests
                 It.Is<string>(token => token == capturedReservationToken),
                 CancellationToken.None))
             .ReturnsAsync(true);
-        images.Setup(value => value.RequestCommentImagesCleanupAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { existingImageId })),
+        images.Setup(value => value.ReleasePublishedCommentImageReuseAsync(
+                existingImageId,
                 "comment-1",
-                It.IsAny<long>(),
+                It.Is<string>(token => token == capturedReservationToken),
                 It.IsAny<DateTime>(),
+                1,
                 CancellationToken.None))
-            .ReturnsAsync(1);
+            .ReturnsAsync(true);
         UpdateCommentCommandHandler handler = new UpdateCommentCommandHandler(
             comments.Object,
             sanitizer.Object,

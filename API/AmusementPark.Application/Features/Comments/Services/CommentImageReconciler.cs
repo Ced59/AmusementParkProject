@@ -109,6 +109,9 @@ public sealed class CommentImageReconciler
                 !image.PendingCommentRevision.HasValue;
             bool retentionExpired =
                 image.CreatedAtUtc < draftCreatedBeforeUtc;
+            // Une réservation moderne reste volontairement clôturée tant que la
+            // révision visée n'existe pas : une écriture Mongo sans accusé peut
+            // encore aboutir, même si le commentaire paraît absent ou obsolète.
             if (!revisionFenceReached
                 && !cleanupFenceReached
                 && (!isLegacyReservation || !retentionExpired))
@@ -148,6 +151,7 @@ public sealed class CommentImageReconciler
             ownerId,
             dueBeforeUtc,
             draftCreatedBeforeUtc,
+            null,
             claimToken,
             dueBeforeUtc.Add(CleanupClaimLease),
             cancellationToken);
@@ -212,7 +216,9 @@ public sealed class CommentImageReconciler
         CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(image.OwnerId)
-            || image.CleanupRequestedAtUtc is null)
+            || (image.CleanupRequestedAtUtc is null
+                && string.IsNullOrWhiteSpace(
+                    image.CommentReuseReservationToken)))
         {
             return false;
         }
@@ -224,6 +230,7 @@ public sealed class CommentImageReconciler
             image.OwnerId,
             dueBeforeUtc,
             draftCreatedBeforeUtc,
+            image.CommentReuseReservationToken,
             claimToken,
             dueBeforeUtc.Add(CleanupClaimLease),
             cancellationToken);
@@ -232,30 +239,57 @@ public sealed class CommentImageReconciler
             return false;
         }
 
-        Comment? comment = await this.commentRepository.GetByIdAsync(
+        bool hasReuseReservation = !string.IsNullOrWhiteSpace(
+            image.CommentReuseReservationToken);
+        Comment? ownerComment = await this.commentRepository.GetByIdAsync(
             image.OwnerId,
             cancellationToken);
-        if (comment is not null
+        bool isReferenced = ownerComment?.ImageIds.Contains(
+            image.Id,
+            StringComparer.Ordinal) == true;
+        if (!isReferenced)
+        {
+            isReferenced =
+                await this.commentRepository.IsImageReferencedAsync(
+                    image.Id,
+                    cancellationToken);
+        }
+
+        if (!hasReuseReservation
+            && ownerComment is not null
             && image.CleanupCommentRevision.HasValue
-            && comment.Revision < image.CleanupCommentRevision.Value)
+            && ownerComment.Revision < image.CleanupCommentRevision.Value)
         {
             return await this.imageRepository
                 .RescheduleClaimedCommentImageCleanupAsync(
                     image.Id,
                     ImageOwnerType.Comment,
                     image.OwnerId,
-                    image.CleanupRequestedAtUtc.Value,
+                    image.CleanupRequestedAtUtc!.Value,
                     image.CleanupCommentRevision,
                     claimToken,
                     dueBeforeUtc.Add(ReconciliationRetryDelay),
                     cancellationToken);
         }
 
-        bool isReferenced =
-            comment?.ImageIds.Contains(image.Id, StringComparer.Ordinal)
-            == true;
         if (isReferenced)
         {
+            if (hasReuseReservation)
+            {
+                return await this.imageRepository
+                    .ResolveClaimedPublishedCommentImageReuseAsync(
+                        image.Id,
+                        image.OwnerId,
+                        image.CommentReuseReservationToken!,
+                        claimToken,
+                        cancellationToken);
+            }
+
+            if (image.CleanupRequestedAtUtc is null)
+            {
+                return false;
+            }
+
             return await this.imageRepository.CancelClaimedCommentImageCleanupAsync(
                 image.Id,
                 ImageOwnerType.Comment,
@@ -264,6 +298,22 @@ public sealed class CommentImageReconciler
                 image.CleanupCommentRevision,
                 claimToken,
                 cancellationToken);
+        }
+
+        if (hasReuseReservation
+            && image.CommentReuseTargetRevision.HasValue
+            && ownerComment is not null
+            && ownerComment.Revision
+                < image.CommentReuseTargetRevision.Value)
+        {
+            return await this.imageRepository
+                .DeferClaimedPublishedCommentImageReuseAsync(
+                    image.Id,
+                    image.OwnerId,
+                    image.CommentReuseReservationToken!,
+                    claimToken,
+                    dueBeforeUtc.Add(ReconciliationRetryDelay),
+                    cancellationToken);
         }
 
         if (!string.IsNullOrWhiteSpace(image.Path)
