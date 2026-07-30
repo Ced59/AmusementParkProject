@@ -109,10 +109,9 @@ public sealed class GetParkItemRatingRankingsQueryHandler
                     ranking.TargetName.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase)
                     || ranking.ParkName.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase))
                 .ToList();
-        int page = string.IsNullOrWhiteSpace(query.Search) ? query.Paging.Page : 1;
         PagedResult<ParkItemRatingRankingResult> result = RatingRankingPaging.BuildPage(
             filteredRankings,
-            page,
+            query.Paging.Page,
             query.Paging.PageSize);
 
         return ApplicationResult<PagedResult<ParkItemRatingRankingResult>>.Success(result);
@@ -248,10 +247,9 @@ public sealed class GetUserParkItemRatingRankingsQueryHandler
                     ranking.Rating.TargetName.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase)
                     || (ranking.Rating.ParkName?.Contains(query.Search.Trim(), StringComparison.OrdinalIgnoreCase) ?? false))
                 .ToList();
-        int page = string.IsNullOrWhiteSpace(query.Search) ? query.Paging.Page : 1;
         PagedResult<UserParkItemRatingRankingResult> result = RatingRankingPaging.BuildPage(
             filteredRankings,
-            page,
+            query.Paging.Page,
             query.Paging.PageSize);
 
         return ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>.Success(result);

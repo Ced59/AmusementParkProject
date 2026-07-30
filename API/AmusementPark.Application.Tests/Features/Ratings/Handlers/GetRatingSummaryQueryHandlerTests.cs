@@ -19,8 +19,11 @@ public sealed class GetRatingSummaryQueryHandlerTests
         ratingRepository
             .Setup(repository => repository.GetAggregateAsync(RatingTargetType.Park, "park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync((RatingAggregate?)null);
+        Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
 
-        GetRatingSummaryQueryHandler handler = new GetRatingSummaryQueryHandler(ratingRepository.Object);
+        GetRatingSummaryQueryHandler handler = new GetRatingSummaryQueryHandler(
+            ratingRepository.Object,
+            ratingRankProvider.Object);
 
         ApplicationResult<RatingSummaryResult> result = await handler.HandleAsync(new GetRatingSummaryQuery(
             RatingTargetType.Park,
@@ -33,6 +36,7 @@ public sealed class GetRatingSummaryQueryHandlerTests
         Assert.Equal(0d, result.Value.AverageRating);
         Assert.Equal(RatingScoreCalculator.PriorMean, result.Value.BayesianScore);
         ratingRepository.VerifyAll();
+        ratingRankProvider.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -50,12 +54,6 @@ public sealed class GetRatingSummaryQueryHandlerTests
             AverageRating = 4.75,
             BayesianScore = 4.42,
         };
-        IReadOnlyCollection<RatingRankingItemResult> sources = new[]
-        {
-            CreateRankingSource("fly", "F.L.Y.", "park-1", "Phantasialand", ParkItemType.RollerCoaster, 4.6),
-            CreateRankingSource("taron", "Taron", "park-1", "Phantasialand", ParkItemType.RollerCoaster, 4.42),
-            CreateRankingSource("zadra", "Zadra", "park-2", "Energylandia", ParkItemType.RollerCoaster, 4.2),
-        };
         Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
         ratingRepository
             .Setup(repository => repository.GetAggregateAsync(
@@ -63,14 +61,14 @@ public sealed class GetRatingSummaryQueryHandlerTests
                 "taron",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(aggregate);
-        ratingRepository
-            .Setup(repository => repository.GetVisibleParkItemRankingSourcesAsync(
-                ParkItemCategory.Attraction,
-                It.IsAny<int>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(sources);
+        Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        ratingRankProvider
+            .Setup(provider => provider.GetRankAsync(aggregate, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(2);
 
-        GetRatingSummaryQueryHandler handler = new GetRatingSummaryQueryHandler(ratingRepository.Object);
+        GetRatingSummaryQueryHandler handler = new GetRatingSummaryQueryHandler(
+            ratingRepository.Object,
+            ratingRankProvider.Object);
 
         ApplicationResult<RatingSummaryResult> result = await handler.HandleAsync(
             new GetRatingSummaryQuery(RatingTargetType.ParkItem, "taron"));
@@ -78,27 +76,6 @@ public sealed class GetRatingSummaryQueryHandlerTests
         Assert.True(result.IsSuccess);
         Assert.Equal(2, result.Value!.Rank);
         ratingRepository.VerifyAll();
-    }
-
-    private static RatingRankingItemResult CreateRankingSource(
-        string targetId,
-        string targetName,
-        string parkId,
-        string parkName,
-        ParkItemType parkItemType,
-        double bayesianScore)
-    {
-        return new RatingRankingItemResult(
-            RatingTargetType.ParkItem,
-            targetId,
-            targetName,
-            parkId,
-            parkName,
-            ParkItemCategory.Attraction,
-            parkItemType,
-            10,
-            45,
-            4.5,
-            bayesianScore);
+        ratingRankProvider.VerifyAll();
     }
 }

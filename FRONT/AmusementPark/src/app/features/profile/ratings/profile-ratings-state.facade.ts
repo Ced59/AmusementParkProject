@@ -41,7 +41,7 @@ export class ProfileRatingsStateFacade {
   public readonly savingRatingIds: Signal<ReadonlySet<string>> = this.savingRatingIdsSignal.asReadonly();
   public readonly hasMore: Signal<boolean> = computed(() => {
     const pagination: PaginationContract | null = this.paginationSignal();
-    return Boolean(pagination && pagination.currentPage < pagination.totalPages && !this.searchSignal());
+    return Boolean(pagination && pagination.currentPage < pagination.totalPages);
   });
   public readonly isEmpty: Signal<boolean> = computed(() => {
     return !this.loadingSignal()
@@ -95,7 +95,7 @@ export class ProfileRatingsStateFacade {
 
   loadMore(): void {
     const pagination: PaginationContract | null = this.paginationSignal();
-    if (!pagination || this.searchSignal() || pagination.currentPage >= pagination.totalPages || this.loadingSignal() || this.loadingMoreSignal()) {
+    if (!pagination || pagination.currentPage >= pagination.totalPages || this.loadingSignal() || this.loadingMoreSignal()) {
       return;
     }
 
@@ -105,7 +105,7 @@ export class ProfileRatingsStateFacade {
       pagination.currentPage + 1,
       category,
       this.parkItemTypeSignal(),
-      null
+      this.searchSignal()
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: UserParkRatingRankingsPage | UserParkItemRatingRankingsPage): void => {
         if (category) {

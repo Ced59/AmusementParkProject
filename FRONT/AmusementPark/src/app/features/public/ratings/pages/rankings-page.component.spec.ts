@@ -24,8 +24,10 @@ import { RankingsPageComponent } from './rankings-page.component';
 
 class FakeRankingsRatingsPort implements RankingsRatingsPort {
   readonly parkItemCalls: Array<{
+    page: number;
     category: string;
     type: string | null;
+    search: string | null;
   }> = [];
 
   getRankings(
@@ -48,14 +50,14 @@ class FakeRankingsRatingsPort implements RankingsRatingsPort {
   }
 
   getParkItemRankings(
-    _page: number,
+    page: number,
     _size: number,
     category: string,
     type: string | null,
-    _search: string | null,
+    search: string | null,
     _options?: AnonymousHttpOptions,
   ): Observable<ParkItemRatingRankingsPage> {
-    this.parkItemCalls.push({ category, type });
+    this.parkItemCalls.push({ page, category, type, search });
     return of({
       items: [
         {
@@ -73,10 +75,10 @@ class FakeRankingsRatingsPort implements RankingsRatingsPort {
       ],
       pagination: {
         ...DEFAULT_PAGINATION,
-        currentPage: 1,
+        currentPage: page,
         itemsPerPage: 20,
-        totalItems: 1,
-        totalPages: 1,
+        totalItems: search ? 40 : 1,
+        totalPages: search ? 2 : 1,
       },
     });
   }
@@ -193,8 +195,10 @@ describe('RankingsPageComponent', () => {
     expect(list?.textContent).toContain('Phantasialand');
     expect(fixture.nativeElement.querySelector('app-rating-tree')).toBeNull();
     expect(port.parkItemCalls[0]).toEqual({
+      page: 1,
       category: 'Attraction',
       type: null,
+      search: null,
     });
 
     const typeSelect: HTMLSelectElement =
@@ -204,8 +208,41 @@ describe('RankingsPageComponent', () => {
     fixture.detectChanges();
 
     expect(port.parkItemCalls.at(-1)).toEqual({
+      page: 1,
       category: 'Attraction',
       type: 'FlatRide',
+      search: null,
+    });
+  });
+
+  it('loads the next park item search page with the active search term', () => {
+    fixture.detectChanges();
+
+    const filterButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.rankings-filters button');
+    filterButtons[1]?.click();
+    fixture.detectChanges();
+
+    const searchInput: HTMLInputElement =
+      fixture.nativeElement.querySelector('.rankings-search input');
+    searchInput.value = ' ride ';
+    searchInput.dispatchEvent(new Event('input'));
+    const searchButton: HTMLButtonElement =
+      fixture.nativeElement.querySelector('.rankings-search button');
+    searchButton.click();
+    fixture.detectChanges();
+
+    const loadMoreButton: HTMLButtonElement =
+      fixture.nativeElement.querySelector('.rankings-more button');
+    expect(loadMoreButton).toBeTruthy();
+    loadMoreButton.click();
+    fixture.detectChanges();
+
+    expect(port.parkItemCalls.at(-1)).toEqual({
+      page: 2,
+      category: 'Attraction',
+      type: null,
+      search: 'ride',
     });
   });
 });

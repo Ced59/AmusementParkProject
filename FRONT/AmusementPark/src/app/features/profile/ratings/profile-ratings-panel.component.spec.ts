@@ -18,6 +18,12 @@ import { ProfileRatingsPanelComponent } from './profile-ratings-panel.component'
 
 class FakeProfileRatingsPort implements ProfileRatingsPort {
   readonly upsertCalls: UserRatingUpsertRequest[] = [];
+  readonly parkItemCalls: Array<{
+    page: number;
+    category: string;
+    type: string | null;
+    search: string | null;
+  }> = [];
   readonly parkRankings: UserParkRatingRanking[] = [
     {
       rank: 1,
@@ -58,20 +64,21 @@ class FakeProfileRatingsPort implements ProfileRatingsPort {
   }
 
   getMyParkItemRankings(
-    _page: number,
+    page: number,
     _size: number,
-    _category: string,
-    _type: string | null,
-    _search: string | null
+    category: string,
+    type: string | null,
+    search: string | null
   ): Observable<UserParkItemRatingRankingsPage> {
+    this.parkItemCalls.push({ page, category, type, search });
     return of({
       items: this.parkItemRankings,
       pagination: {
         ...DEFAULT_PAGINATION,
-        currentPage: 1,
+        currentPage: page,
         itemsPerPage: 10,
-        totalItems: this.parkItemRankings.length,
-        totalPages: 1
+        totalItems: search ? 20 : this.parkItemRankings.length,
+        totalPages: search ? 2 : 1
       }
     });
   }
@@ -164,6 +171,37 @@ describe('ProfileRatingsPanelComponent', () => {
     expect(list?.textContent).toContain('Taron');
     expect(list?.textContent).toContain('Phantasialand');
     expect(fixture.nativeElement.querySelector('app-rating-tree')).toBeNull();
+  });
+
+  it('loads the next personal park item search page with the active search term', () => {
+    fixture.detectChanges();
+
+    const filterButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.profile-ratings__filters button');
+    filterButtons[1]?.click();
+    fixture.detectChanges();
+
+    const searchInput: HTMLInputElement =
+      fixture.nativeElement.querySelector('.profile-ratings__search input');
+    searchInput.value = ' ride ';
+    searchInput.dispatchEvent(new Event('input'));
+    const searchButton: HTMLButtonElement =
+      fixture.nativeElement.querySelector('.profile-ratings__search button');
+    searchButton.click();
+    fixture.detectChanges();
+
+    const loadMoreButton: HTMLButtonElement =
+      fixture.nativeElement.querySelector('.profile-ratings__more button');
+    expect(loadMoreButton).toBeTruthy();
+    loadMoreButton.click();
+    fixture.detectChanges();
+
+    expect(port.parkItemCalls.at(-1)).toEqual({
+      page: 2,
+      category: 'Attraction',
+      type: null,
+      search: 'ride'
+    });
   });
 });
 

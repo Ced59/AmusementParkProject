@@ -1,6 +1,20 @@
 {
-  "version": "4.0.17",
+  "version": "4.0.18",
   "history": [
+    {
+      "version": "4.0.18",
+      "releasedAt": "2026-07-30",
+      "labels": {
+        "fr": "Les classements restent rapides et tous les résultats de recherche sont accessibles.",
+        "en": "Rankings stay fast and every search result remains accessible.",
+        "de": "Ranglisten bleiben schnell und alle Suchergebnisse zugänglich.",
+        "nl": "Ranglijsten blijven snel en alle zoekresultaten bereikbaar.",
+        "it": "Le classifiche restano veloci e tutti i risultati di ricerca sono accessibili.",
+        "es": "Los rankings siguen siendo rápidos y todos los resultados de búsqueda accesibles.",
+        "pl": "Rankingi pozostają szybkie, a wszystkie wyniki wyszukiwania są dostępne.",
+        "pt": "Os rankings continuam rápidos e todos os resultados da pesquisa acessíveis."
+      }
+    },
     {
       "version": "4.0.17",
       "releasedAt": "2026-07-30",
