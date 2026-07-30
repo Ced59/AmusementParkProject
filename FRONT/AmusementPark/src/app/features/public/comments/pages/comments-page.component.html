@@ -33,7 +33,19 @@
             {{ 'comments.kicker' | translate }}
           </app-ui-kicker>
           <h1>{{ 'comments.title' | translate:{ name: currentThread.targetName } }}</h1>
-          <p>{{ 'comments.subtitle' | translate:{ count: currentThread.comments.length } }}</p>
+          <p>{{ 'comments.subtitle' | translate }}</p>
+          <p class="comments-hero__scope">
+            @if (showAllLanguages()) {
+              {{ 'comments.view.allCount' | localizedPlural:displayedComments().length:{
+                count: displayedComments().length
+              } }}
+            } @else {
+              {{ 'comments.view.currentCount' | localizedPlural:displayedComments().length:{
+                count: displayedComments().length,
+                language: currentLanguageLabel()
+              } }}
+            }
+          </p>
         </div>
 
         <a appUiButton="ghost" [routerLink]="targetLink()">
@@ -114,18 +126,35 @@
         </form>
       }
 
+      @if (hasOtherLanguageComments()) {
+        <section class="comments-language-filter" appUiSurface="shell" appUiSurfacePadding="regular">
+          <i class="pi pi-language" aria-hidden="true"></i>
+          @if (showAllLanguages()) {
+            <button appUiButton="ghost" type="button" (click)="showCommentsFromCurrentLanguage()">
+              {{ 'comments.view.currentOnly' | translate:{ language: currentLanguageLabel() } }}
+            </button>
+          } @else {
+            <button appUiButton="ghost" type="button" (click)="showCommentsFromAllLanguages()">
+              {{ 'comments.view.allLanguages' | localizedPlural:allLanguageComments().length:{
+                count: allLanguageComments().length
+              } }}
+            </button>
+          }
+        </section>
+      }
+
       <section class="comments-list" [attr.aria-label]="'comments.listLabel' | translate">
-        @for (comment of currentThread.comments; track comment.id) {
+        @for (commentView of displayedComments(); track commentView.comment.id) {
           <article
             class="comment-card"
-            [class.comment-card--official]="comment.isOfficial"
+            [class.comment-card--official]="commentView.comment.isOfficial"
             appUiSurface="detail"
             appUiSurfacePadding="regular">
             <header class="comment-card__header">
               <div class="comment-card__author">
                 <app-image-display
-                  [imagePathOrUrl]="comment.authorAvatarUrl"
-                  [alt]="comment.authorDisplayName"
+                  [imagePathOrUrl]="commentView.comment.authorAvatarUrl"
+                  [alt]="commentView.comment.authorDisplayName"
                   imgClass="comment-card__avatar"
                   placeholderClass="comment-card__avatar comment-card__avatar--placeholder"
                   placeholderIconClass="pi pi-user"
@@ -135,48 +164,53 @@
                   [responsiveWidths]="avatarResponsiveWidths">
                 </app-image-display>
                 <span class="comment-card__author-details">
-                  <strong>{{ comment.authorDisplayName }}</strong>
+                  <strong>{{ commentView.comment.authorDisplayName }}</strong>
                   <app-ui-chip tone="sky" iconClass="pi pi-shield">
-                    {{ ('comments.roles.' + comment.authorRole) | translate }}
+                    {{ ('comments.roles.' + commentView.comment.authorRole) | translate }}
                   </app-ui-chip>
                 </span>
               </div>
 
               <div class="comment-card__meta">
-                @if (comment.isOfficial) {
+                @if (commentView.comment.isOfficial) {
                   <app-ui-chip tone="lime" iconClass="pi pi-verified">
                     {{ 'comments.officialBadge' | translate }}
                   </app-ui-chip>
                 }
-                <time [attr.datetime]="comment.createdAtUtc">
-                  {{ comment.createdAtUtc | date:'longDate':undefined:currentLanguage() }}
+                @if (showAllLanguages()) {
+                  <app-ui-chip tone="sky" iconClass="pi pi-language">
+                    {{ commentView.languageLabel }}
+                  </app-ui-chip>
+                }
+                <time [attr.datetime]="commentView.comment.createdAtUtc">
+                  {{ commentView.comment.createdAtUtc | date:'longDate':undefined:currentLanguage() }}
                   ·
-                  {{ comment.createdAtUtc | date:'shortTime':undefined:currentLanguage() }}
+                  {{ commentView.comment.createdAtUtc | date:'shortTime':undefined:currentLanguage() }}
                 </time>
               </div>
             </header>
 
-            <div class="comment-card__body" [innerHTML]="commentBody(comment) | safeCommentRichHtml"></div>
+            <div class="comment-card__body" [innerHTML]="commentView.body | safeCommentRichHtml"></div>
 
-            @if (canUpdateComment(comment) || canDeleteComment(comment)) {
+            @if (canUpdateComment(commentView.comment) || canDeleteComment(commentView.comment)) {
               <footer class="comment-card__actions">
-                @if (canUpdateComment(comment)) {
+                @if (canUpdateComment(commentView.comment)) {
                   <button
                     appUiButton="ghost"
                     type="button"
                     [disabled]="saving() || uploadingImages()"
-                    (click)="startEditing(comment)">
+                    (click)="startEditing(commentView.comment)">
                     <i class="pi pi-pencil" aria-hidden="true"></i>
                     <span>{{ 'comments.management.edit' | translate }}</span>
                   </button>
                 }
-                @if (canDeleteComment(comment)) {
+                @if (canDeleteComment(commentView.comment)) {
                   <button
                     appUiButton="ghost"
                     type="button"
                     severity="danger"
                     [disabled]="saving() || uploadingImages()"
-                    (click)="deleteComment(comment)">
+                    (click)="deleteComment(commentView.comment)">
                     <i class="pi pi-trash" aria-hidden="true"></i>
                     <span>{{ 'comments.management.delete' | translate }}</span>
                   </button>
@@ -187,8 +221,15 @@
         } @empty {
           <section class="comments-empty" appUiSurface="shell" appUiSurfacePadding="spacious">
             <i class="pi pi-comments" aria-hidden="true"></i>
-            <h2>{{ 'comments.empty.title' | translate }}</h2>
-            <p>{{ 'comments.empty.message' | translate }}</p>
+            @if (showAllLanguages()) {
+              <h2>{{ 'comments.empty.title' | translate }}</h2>
+              <p>{{ 'comments.empty.message' | translate }}</p>
+            } @else {
+              <h2>{{ 'comments.empty.currentLanguageTitle' | translate:{
+                language: currentLanguageLabel()
+              } }}</h2>
+              <p>{{ 'comments.empty.currentLanguageMessage' | translate }}</p>
+            }
           </section>
         }
       </section>

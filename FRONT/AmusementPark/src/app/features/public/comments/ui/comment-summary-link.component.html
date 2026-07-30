@@ -7,10 +7,35 @@
 
       <span class="comment-summary-link__content">
         <strong>
-          {{ 'comments.summary.count' | localizedPlural:currentSummary.commentCount:{ count: currentSummary.commentCount } }}
+          @if (currentSummary.languageCommentCount > 0) {
+            {{ 'comments.summary.count' | localizedPlural:currentSummary.languageCommentCount:{
+              count: currentSummary.languageCommentCount
+            } }}
+          } @else {
+            {{ 'comments.summary.count' | localizedPlural:currentSummary.commentCount:{
+              count: currentSummary.commentCount
+            } }}
+          }
         </strong>
 
-        @if (officialPreview(); as preview) {
+        @if (currentSummary.languageCommentCount > 0) {
+          <span class="comment-summary-link__scope">
+            {{ 'comments.summary.currentLanguage' | translate:{ language: currentLanguageLabel() } }}
+          </span>
+          @if (currentSummary.commentCount > currentSummary.languageCommentCount) {
+            <span class="comment-summary-link__scope">
+              {{ 'comments.summary.allLanguagesCount' | localizedPlural:currentSummary.commentCount:{
+                count: currentSummary.commentCount
+              } }}
+            </span>
+          }
+        } @else {
+          <span class="comment-summary-link__scope">
+            {{ 'comments.summary.otherLanguages' | translate }}
+          </span>
+        }
+
+        @if (currentSummary.languageCommentCount > 0 && officialPreview(); as preview) {
           <span class="comment-summary-link__official">
             <span class="comment-summary-link__badge">{{ 'comments.officialBadge' | translate }}</span>
             <span>{{ preview }}</span>

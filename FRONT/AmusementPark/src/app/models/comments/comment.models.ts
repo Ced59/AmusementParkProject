@@ -23,6 +23,8 @@ export interface CommentSummary {
   targetType: CommentTargetType;
   targetId: string;
   commentCount: number;
+  languageCode: string;
+  languageCommentCount: number;
   officialComment: PublicComment | null;
 }
 

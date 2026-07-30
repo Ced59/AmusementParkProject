@@ -35,7 +35,11 @@ class FakeCommentDataPort implements CommentDataPort {
   readonly uploadedFiles: File[] = [];
   readonly deletedImageIds: string[] = [];
 
-  getSummary(_targetType: CommentTargetType, _targetId: string): Observable<CommentSummary> {
+  getSummary(
+    _targetType: CommentTargetType,
+    _targetId: string,
+    _languageCode: string
+  ): Observable<CommentSummary> {
     throw new Error('Not used.');
   }
 

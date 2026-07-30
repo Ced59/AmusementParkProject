@@ -13,6 +13,14 @@
     },
     "summary": {
       "createFirst": "Escrever o primeiro comentário",
+      "currentLanguage": "No teu idioma atual: {{language}}",
+      "otherLanguages": "Disponível apenas noutros idiomas",
+      "allLanguagesCount": {
+        "one": "{{count}} comentário em todos os idiomas",
+        "few": "{{count}} comentários em todos os idiomas",
+        "many": "{{count}} comentários em todos os idiomas",
+        "other": "{{count}} comentários em todos os idiomas"
+      },
       "count": {
         "one": "{{count}} comentário",
         "few": "{{count}} comentários",
@@ -31,9 +39,32 @@
       "message": "A equipa está a reunir os comentários publicados."
     },
     "listLabel": "Comentários publicados",
+    "view": {
+      "currentCount": {
+        "one": "{{count}} comentário no teu idioma atual ({{language}})",
+        "few": "{{count}} comentários no teu idioma atual ({{language}})",
+        "many": "{{count}} comentários no teu idioma atual ({{language}})",
+        "other": "{{count}} comentários no teu idioma atual ({{language}})"
+      },
+      "allCount": {
+        "one": "{{count}} comentário em todos os idiomas",
+        "few": "{{count}} comentários em todos os idiomas",
+        "many": "{{count}} comentários em todos os idiomas",
+        "other": "{{count}} comentários em todos os idiomas"
+      },
+      "allLanguages": {
+        "one": "Ver {{count}} comentário de todos os idiomas",
+        "few": "Ver os {{count}} comentários de todos os idiomas",
+        "many": "Ver os {{count}} comentários de todos os idiomas",
+        "other": "Ver os {{count}} comentários de todos os idiomas"
+      },
+      "currentOnly": "Ver apenas os comentários no teu idioma atual ({{language}})"
+    },
     "empty": {
       "title": "Ainda não há comentários",
-      "message": "A equipa ainda não publicou nenhum comentário nesta página."
+      "message": "A equipa ainda não publicou nenhum comentário nesta página.",
+      "currentLanguageTitle": "Sem comentários em {{language}}",
+      "currentLanguageMessage": "Muda para a vista multilingue para leres os comentários disponíveis noutros idiomas."
     },
     "editor": {
       "kicker": "Espaço da equipa",

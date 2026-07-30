@@ -72,6 +72,8 @@ internal static class CommentsHttpMappers
             TargetType = value.TargetType.ToString(),
             TargetId = value.TargetId,
             CommentCount = value.CommentCount,
+            LanguageCode = value.LanguageCode,
+            LanguageCommentCount = value.LanguageCommentCount,
             OfficialComment = value.OfficialComment?.ToHttp(actorUserId, canManageAll),
         };
     }

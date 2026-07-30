@@ -13,6 +13,14 @@
     },
     "summary": {
       "createFirst": "Den ersten Kommentar schreiben",
+      "currentLanguage": "In deiner aktuellen Sprache: {{language}}",
+      "otherLanguages": "Nur in anderen Sprachen verfügbar",
+      "allLanguagesCount": {
+        "one": "{{count}} Kommentar, alle Sprachen zusammen",
+        "few": "{{count}} Kommentare, alle Sprachen zusammen",
+        "many": "{{count}} Kommentare, alle Sprachen zusammen",
+        "other": "{{count}} Kommentare, alle Sprachen zusammen"
+      },
       "count": {
         "one": "{{count}} Kommentar",
         "few": "{{count}} Kommentare",
@@ -31,9 +39,32 @@
       "message": "Das Team stellt die veröffentlichten Kommentare zusammen."
     },
     "listLabel": "Veröffentlichte Kommentare",
+    "view": {
+      "currentCount": {
+        "one": "{{count}} Kommentar in deiner aktuellen Sprache ({{language}})",
+        "few": "{{count}} Kommentare in deiner aktuellen Sprache ({{language}})",
+        "many": "{{count}} Kommentare in deiner aktuellen Sprache ({{language}})",
+        "other": "{{count}} Kommentare in deiner aktuellen Sprache ({{language}})"
+      },
+      "allCount": {
+        "one": "{{count}} Kommentar, alle Sprachen zusammen",
+        "few": "{{count}} Kommentare, alle Sprachen zusammen",
+        "many": "{{count}} Kommentare, alle Sprachen zusammen",
+        "other": "{{count}} Kommentare, alle Sprachen zusammen"
+      },
+      "allLanguages": {
+        "one": "{{count}} Kommentar aus allen Sprachen ansehen",
+        "few": "Alle {{count}} Kommentare aus allen Sprachen ansehen",
+        "many": "Alle {{count}} Kommentare aus allen Sprachen ansehen",
+        "other": "Alle {{count}} Kommentare aus allen Sprachen ansehen"
+      },
+      "currentOnly": "Nur Kommentare in deiner aktuellen Sprache anzeigen ({{language}})"
+    },
     "empty": {
       "title": "Noch keine Kommentare",
-      "message": "Das Team hat zu dieser Seite noch keinen Kommentar veröffentlicht."
+      "message": "Das Team hat zu dieser Seite noch keinen Kommentar veröffentlicht.",
+      "currentLanguageTitle": "Keine Kommentare auf {{language}}",
+      "currentLanguageMessage": "Wechsle zur mehrsprachigen Ansicht, um Kommentare in anderen Sprachen zu lesen."
     },
     "editor": {
       "kicker": "Teambereich",

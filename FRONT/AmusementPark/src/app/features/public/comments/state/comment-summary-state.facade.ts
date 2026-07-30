@@ -23,22 +23,24 @@ export class CommentSummaryStateFacade {
   ) {
   }
 
-  load(targetType: CommentTargetType, targetId: string): void {
+  load(targetType: CommentTargetType, targetId: string, languageCode: string): void {
     const normalizedTargetId: string = targetId.trim();
-    const targetKey: string = `${targetType}:${normalizedTargetId}`;
-    if (!normalizedTargetId || this.currentTargetKey === targetKey) {
+    const normalizedLanguageCode: string = languageCode.trim().toLowerCase();
+    const targetKey: string = `${targetType}:${normalizedTargetId}:${normalizedLanguageCode}`;
+    if (!normalizedTargetId || !normalizedLanguageCode || this.currentTargetKey === targetKey) {
       return;
     }
 
     this.currentTargetKey = targetKey;
     this.summarySignal.set(null);
-    this.commentDataPort.getSummary(targetType, normalizedTargetId)
+    this.commentDataPort.getSummary(targetType, normalizedTargetId, normalizedLanguageCode)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (summary: CommentSummary): void => {
           if (this.currentTargetKey === targetKey
             && summary.targetType === targetType
-            && summary.targetId === normalizedTargetId) {
+            && summary.targetId === normalizedTargetId
+            && summary.languageCode === normalizedLanguageCode) {
             this.summarySignal.set(summary);
           }
         },

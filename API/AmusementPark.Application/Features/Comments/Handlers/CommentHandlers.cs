@@ -415,9 +415,6 @@ internal static class CommentQueryValidation
 internal static class CommentBodyNormalizer
 {
     private const int MaximumBodyLength = 12000;
-    private static readonly HashSet<string> SupportedLanguages = new HashSet<string>(
-        new[] { "fr", "en", "de", "nl", "it", "es", "pl", "pt" },
-        StringComparer.OrdinalIgnoreCase);
 
     public static ApplicationResult<IReadOnlyCollection<LocalizedText>> Normalize(
         IReadOnlyCollection<LocalizedTextValue>? values,
@@ -430,7 +427,7 @@ internal static class CommentBodyNormalizer
         foreach (LocalizedTextValue value in values ?? Array.Empty<LocalizedTextValue>())
         {
             string languageCode = value.LanguageCode?.Trim().ToLowerInvariant() ?? string.Empty;
-            if (!SupportedLanguages.Contains(languageCode))
+            if (!CommentLanguageCodes.IsSupported(languageCode))
             {
                 return ApplicationResult<IReadOnlyCollection<LocalizedText>>.Failure(
                     CommentApplicationErrors.InvalidLanguage());

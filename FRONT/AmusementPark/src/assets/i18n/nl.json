@@ -2643,6 +2643,14 @@
     },
     "summary": {
       "createFirst": "De eerste reactie schrijven",
+      "currentLanguage": "In je huidige taal: {{language}}",
+      "otherLanguages": "Alleen beschikbaar in andere talen",
+      "allLanguagesCount": {
+        "one": "{{count}} reactie in alle talen",
+        "few": "{{count}} reacties in alle talen",
+        "many": "{{count}} reacties in alle talen",
+        "other": "{{count}} reacties in alle talen"
+      },
       "count": {
         "one": "{{count}} reactie",
         "few": "{{count}} reacties",
@@ -2661,9 +2669,32 @@
       "message": "Het team verzamelt de gepubliceerde reacties."
     },
     "listLabel": "Gepubliceerde reacties",
+    "view": {
+      "currentCount": {
+        "one": "{{count}} reactie in je huidige taal ({{language}})",
+        "few": "{{count}} reacties in je huidige taal ({{language}})",
+        "many": "{{count}} reacties in je huidige taal ({{language}})",
+        "other": "{{count}} reacties in je huidige taal ({{language}})"
+      },
+      "allCount": {
+        "one": "{{count}} reactie in alle talen",
+        "few": "{{count}} reacties in alle talen",
+        "many": "{{count}} reacties in alle talen",
+        "other": "{{count}} reacties in alle talen"
+      },
+      "allLanguages": {
+        "one": "Bekijk {{count}} reactie uit alle talen",
+        "few": "Bekijk alle {{count}} reacties uit alle talen",
+        "many": "Bekijk alle {{count}} reacties uit alle talen",
+        "other": "Bekijk alle {{count}} reacties uit alle talen"
+      },
+      "currentOnly": "Bekijk alleen reacties in je huidige taal ({{language}})"
+    },
     "empty": {
       "title": "Nog geen reacties",
-      "message": "Het team heeft nog geen reactie op deze pagina gepubliceerd."
+      "message": "Het team heeft nog geen reactie op deze pagina gepubliceerd.",
+      "currentLanguageTitle": "Geen reacties in {{language}}",
+      "currentLanguageMessage": "Schakel over naar de meertalige weergave om reacties in andere talen te lezen."
     },
     "editor": {
       "kicker": "Teamruimte",

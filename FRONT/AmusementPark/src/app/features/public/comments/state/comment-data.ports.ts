@@ -13,7 +13,11 @@ import { CommentImageUpload } from '@app/models/comments/comment-image.models';
 import { CommentsApiService } from '@data-access/comments/comments-api.service';
 
 export interface CommentDataPort {
-  getSummary(targetType: CommentTargetType, targetId: string): Observable<CommentSummary>;
+  getSummary(
+    targetType: CommentTargetType,
+    targetId: string,
+    languageCode: string
+  ): Observable<CommentSummary>;
   getThread(targetType: CommentTargetType, targetId: string): Observable<CommentThread>;
   createComment(request: CreateCommentRequest): Observable<PublicComment>;
   uploadCommentImage(file: File): Observable<CommentImageUpload>;

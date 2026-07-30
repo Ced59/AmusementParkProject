@@ -20,11 +20,16 @@ import { ImagesApiService } from '@data-access/images/images-api.service';
 import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
-import { SafeCommentRichHtmlPipe } from '@shared/pipes';
+import { LANGUAGES, LanguageOption } from '@shared/models/localization';
+import { LocalizedPluralPipe, SafeCommentRichHtmlPipe } from '@shared/pipes';
 import {
   extractManagedCommentImageIdsFromHtml
 } from '@shared/utils/comments/managed-comment-image.helpers';
-import { isRichTextEmpty, resolveLocalizedValue } from '@shared/utils/localization';
+import {
+  findExactLocalizedText,
+  findLocalizedTextWithLanguage,
+  isRichTextEmpty
+} from '@shared/utils/localization';
 import {
   buildPublicParkCommentsRouteCommands,
   buildPublicParkItemCommentsRouteCommands,
@@ -45,6 +50,13 @@ interface CommentEditorForm {
   readonly isOfficial: FormControl<boolean>;
 }
 
+interface DisplayedComment {
+  readonly comment: PublicComment;
+  readonly body: string;
+  readonly languageCode: string;
+  readonly languageLabel: string;
+}
+
 @Component({
   selector: 'app-comments-page',
   templateUrl: './comments-page.component.html',
@@ -54,6 +66,7 @@ interface CommentEditorForm {
   imports: [
     DatePipe,
     ImageDisplayComponent,
+    LocalizedPluralPipe,
     LocalizedRichTextEditorComponent,
     PageStateComponent,
     ReactiveFormsModule,
@@ -77,6 +90,23 @@ export class CommentsPageComponent implements OnInit {
   protected readonly saveErrorKey = this.stateFacade.saveErrorKey;
   protected readonly notFound = this.stateFacade.notFound;
   protected readonly currentLanguage = signal<string>('en');
+  protected readonly showAllLanguages = signal<boolean>(false);
+  protected readonly currentLanguageLabel: Signal<string> = computed(
+    (): string => this.resolveLanguageLabel(this.currentLanguage())
+  );
+  protected readonly currentLanguageComments: Signal<readonly DisplayedComment[]> = computed(
+    (): readonly DisplayedComment[] => this.buildDisplayedComments(true)
+  );
+  protected readonly allLanguageComments: Signal<readonly DisplayedComment[]> = computed(
+    (): readonly DisplayedComment[] => this.buildDisplayedComments(false)
+  );
+  protected readonly displayedComments: Signal<readonly DisplayedComment[]> = computed(
+    (): readonly DisplayedComment[] =>
+      this.showAllLanguages() ? this.allLanguageComments() : this.currentLanguageComments()
+  );
+  protected readonly hasOtherLanguageComments: Signal<boolean> = computed(
+    (): boolean => this.allLanguageComments().length > this.currentLanguageComments().length
+  );
   protected readonly avatarResponsiveWidths: readonly number[] = [48, 96];
   protected readonly editingCommentId = signal<string | null>(null);
   protected readonly isEditing = computed(() => this.editingCommentId() !== null);
@@ -186,6 +216,7 @@ export class CommentsPageComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((language: string): void => {
         this.currentLanguage.set(language);
+        this.showAllLanguages.set(false);
       });
 
     this.route.paramMap
@@ -197,6 +228,7 @@ export class CommentsPageComponent implements OnInit {
         const targetId: string | null = itemId ?? parkId;
 
         if (targetId) {
+          this.showAllLanguages.set(false);
           this.pendingSubmissionImageIds = null;
           this.commentImagesFacade.discardDraftImages();
           this.resetEditor();
@@ -205,8 +237,12 @@ export class CommentsPageComponent implements OnInit {
       });
   }
 
-  protected commentBody(comment: PublicComment): string {
-    return resolveLocalizedValue(comment.bodies, this.currentLanguage()) ?? '';
+  protected showCommentsFromAllLanguages(): void {
+    this.showAllLanguages.set(true);
+  }
+
+  protected showCommentsFromCurrentLanguage(): void {
+    this.showAllLanguages.set(false);
   }
 
   protected submit(): void {
@@ -323,6 +359,38 @@ export class CommentsPageComponent implements OnInit {
       }
     }
     return imageIds;
+  }
+
+  private buildDisplayedComments(exactLanguageOnly: boolean): readonly DisplayedComment[] {
+    const currentThread: CommentThread | null = this.thread();
+    if (!currentThread) {
+      return [];
+    }
+
+    return currentThread.comments.flatMap(
+      (comment: PublicComment): DisplayedComment[] => {
+        const body: LocalizedItem<string> | undefined = exactLanguageOnly
+          ? findExactLocalizedText(comment.bodies, this.currentLanguage())
+          : findLocalizedTextWithLanguage(comment.bodies, this.currentLanguage());
+        if (!body) {
+          return [];
+        }
+
+        return [{
+          comment,
+          body: body.value,
+          languageCode: body.languageCode.trim().toLowerCase(),
+          languageLabel: this.resolveLanguageLabel(body.languageCode)
+        }];
+      }
+    );
+  }
+
+  private resolveLanguageLabel(languageCode: string): string {
+    const normalizedLanguageCode: string = languageCode.trim().toLowerCase();
+    return LANGUAGES.find(
+      (language: LanguageOption): boolean => language.value === normalizedLanguageCode
+    )?.label ?? normalizedLanguageCode.toUpperCase();
   }
 
   private resolveCanonicalPath(thread: CommentThread): string | null {

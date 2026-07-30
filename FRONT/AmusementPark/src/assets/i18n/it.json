@@ -2643,6 +2643,14 @@
     },
     "summary": {
       "createFirst": "Scrivi il primo commento",
+      "currentLanguage": "Nella tua lingua attuale: {{language}}",
+      "otherLanguages": "Disponibile solo in altre lingue",
+      "allLanguagesCount": {
+        "one": "{{count}} commento in tutte le lingue",
+        "few": "{{count}} commenti in tutte le lingue",
+        "many": "{{count}} commenti in tutte le lingue",
+        "other": "{{count}} commenti in tutte le lingue"
+      },
       "count": {
         "one": "{{count}} commento",
         "few": "{{count}} commenti",
@@ -2661,9 +2669,32 @@
       "message": "Il team sta raccogliendo i commenti pubblicati."
     },
     "listLabel": "Commenti pubblicati",
+    "view": {
+      "currentCount": {
+        "one": "{{count}} commento nella tua lingua attuale ({{language}})",
+        "few": "{{count}} commenti nella tua lingua attuale ({{language}})",
+        "many": "{{count}} commenti nella tua lingua attuale ({{language}})",
+        "other": "{{count}} commenti nella tua lingua attuale ({{language}})"
+      },
+      "allCount": {
+        "one": "{{count}} commento in tutte le lingue",
+        "few": "{{count}} commenti in tutte le lingue",
+        "many": "{{count}} commenti in tutte le lingue",
+        "other": "{{count}} commenti in tutte le lingue"
+      },
+      "allLanguages": {
+        "one": "Vedi {{count}} commento in tutte le lingue",
+        "few": "Vedi tutti i {{count}} commenti in tutte le lingue",
+        "many": "Vedi tutti i {{count}} commenti in tutte le lingue",
+        "other": "Vedi tutti i {{count}} commenti in tutte le lingue"
+      },
+      "currentOnly": "Vedi solo i commenti nella tua lingua attuale ({{language}})"
+    },
     "empty": {
       "title": "Ancora nessun commento",
-      "message": "Il team non ha ancora pubblicato un commento su questa pagina."
+      "message": "Il team non ha ancora pubblicato un commento su questa pagina.",
+      "currentLanguageTitle": "Nessun commento in {{language}}",
+      "currentLanguageMessage": "Passa alla vista multilingue per leggere i commenti disponibili in altre lingue."
     },
     "editor": {
       "kicker": "Spazio del team",

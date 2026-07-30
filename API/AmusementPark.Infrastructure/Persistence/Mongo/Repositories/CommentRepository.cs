@@ -1,8 +1,10 @@
 using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Core.Domain.Comments;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Comments;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -145,6 +147,20 @@ public sealed class CommentRepository : ICommentRepository
             cancellationToken: cancellationToken);
     }
 
+    public Task<long> CountPublishedByTargetAndLanguageAsync(
+        CommentTargetType targetType,
+        string targetId,
+        string languageCode,
+        CancellationToken cancellationToken)
+    {
+        return this.commentsCollection.CountDocumentsAsync(
+            BuildPublishedTargetAndLanguageFilter(
+                targetType,
+                targetId,
+                languageCode),
+            cancellationToken: cancellationToken);
+    }
+
     public async Task<Comment?> GetFirstOfficialPublishedByTargetAsync(
         CommentTargetType targetType,
         string targetId,
@@ -169,6 +185,25 @@ public sealed class CommentRepository : ICommentRepository
             & Builders<CommentDocument>.Filter.Eq(
                 static document => document.ModerationStatus,
                 CommentModerationStatus.Published);
+    }
+
+    internal static FilterDefinition<CommentDocument> BuildPublishedTargetAndLanguageFilter(
+        CommentTargetType targetType,
+        string targetId,
+        string languageCode)
+    {
+        FilterDefinition<LocalizedTextDocument> localizedFilter =
+            Builders<LocalizedTextDocument>.Filter.Eq(
+                static document => document.LanguageCode,
+                languageCode.Trim().ToLowerInvariant())
+            & Builders<LocalizedTextDocument>.Filter.Regex(
+                static document => document.Value,
+                new BsonRegularExpression("\\S"));
+
+        return BuildPublishedTargetFilter(targetType, targetId)
+            & Builders<CommentDocument>.Filter.ElemMatch(
+                static document => document.Bodies,
+                localizedFilter);
     }
 
     private static SortDefinition<CommentDocument> BuildPublicSort()

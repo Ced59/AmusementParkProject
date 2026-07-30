@@ -2643,6 +2643,14 @@
     },
     "summary": {
       "createFirst": "Napisz pierwszy komentarz",
+      "currentLanguage": "W Twoim bieżącym języku: {{language}}",
+      "otherLanguages": "Dostępne tylko w innych językach",
+      "allLanguagesCount": {
+        "one": "{{count}} komentarz we wszystkich językach",
+        "few": "{{count}} komentarze we wszystkich językach",
+        "many": "{{count}} komentarzy we wszystkich językach",
+        "other": "{{count}} komentarza we wszystkich językach"
+      },
       "count": {
         "one": "{{count}} komentarz",
         "few": "{{count}} komentarze",
@@ -2661,9 +2669,32 @@
       "message": "Zespół zbiera opublikowane komentarze."
     },
     "listLabel": "Opublikowane komentarze",
+    "view": {
+      "currentCount": {
+        "one": "{{count}} komentarz w Twoim bieżącym języku ({{language}})",
+        "few": "{{count}} komentarze w Twoim bieżącym języku ({{language}})",
+        "many": "{{count}} komentarzy w Twoim bieżącym języku ({{language}})",
+        "other": "{{count}} komentarza w Twoim bieżącym języku ({{language}})"
+      },
+      "allCount": {
+        "one": "{{count}} komentarz we wszystkich językach",
+        "few": "{{count}} komentarze we wszystkich językach",
+        "many": "{{count}} komentarzy we wszystkich językach",
+        "other": "{{count}} komentarza we wszystkich językach"
+      },
+      "allLanguages": {
+        "one": "Zobacz {{count}} komentarz ze wszystkich języków",
+        "few": "Zobacz wszystkie {{count}} komentarze ze wszystkich języków",
+        "many": "Zobacz wszystkie {{count}} komentarzy ze wszystkich języków",
+        "other": "Zobacz wszystkie {{count}} komentarza ze wszystkich języków"
+      },
+      "currentOnly": "Pokaż tylko komentarze w Twoim bieżącym języku ({{language}})"
+    },
     "empty": {
       "title": "Na razie brak komentarzy",
-      "message": "Zespół nie opublikował jeszcze komentarza na tej stronie."
+      "message": "Zespół nie opublikował jeszcze komentarza na tej stronie.",
+      "currentLanguageTitle": "Brak komentarzy w języku {{language}}",
+      "currentLanguageMessage": "Przełącz się na widok wielojęzyczny, aby przeczytać komentarze dostępne w innych językach."
     },
     "editor": {
       "kicker": "Strefa zespołu",

@@ -27,7 +27,7 @@ describe('CommentsApiService', () => {
     const service: CommentsApiService = new CommentsApiService(httpClient as unknown as HttpClient);
 
     service.getThread('ParkItem', 'item/1').subscribe();
-    service.getSummary('ParkItem', 'item/1').subscribe();
+    service.getSummary('ParkItem', 'item/1', 'fr').subscribe();
 
     expect(httpClient.get).toHaveBeenNthCalledWith(
       1,
@@ -35,7 +35,12 @@ describe('CommentsApiService', () => {
     );
     expect(httpClient.get).toHaveBeenNthCalledWith(
       2,
-      `${environment.apiBaseUrl}comments/ParkItem/item%2F1/summary`
+      `${environment.apiBaseUrl}comments/ParkItem/item%2F1/summary`,
+      {
+        params: {
+          language: 'fr'
+        }
+      }
     );
   });
 

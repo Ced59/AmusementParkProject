@@ -15,6 +15,8 @@ class FakeCommentSummaryStateFacade {
     targetType: 'Park',
     targetId: 'park-1',
     commentCount: 0,
+    languageCode: 'fr',
+    languageCommentCount: 0,
     officialComment: null,
   });
   readonly canWrite: WritableSignal<boolean> = signal<boolean>(true);
@@ -50,6 +52,16 @@ describe('CommentSummaryLinkComponent', () => {
       comments: {
         summary: {
           createFirst: 'Écrire le premier commentaire',
+          currentLanguage: 'Dans ta langue actuelle : {{language}}',
+          otherLanguages: 'Disponible uniquement dans d’autres langues',
+          count: {
+            one: '{{count}} commentaire',
+            other: '{{count}} commentaires',
+          },
+          allLanguagesCount: {
+            one: '{{count}} commentaire, toutes langues confondues',
+            other: '{{count}} commentaires, toutes langues confondues',
+          },
         },
       },
     });
@@ -75,7 +87,7 @@ describe('CommentSummaryLinkComponent', () => {
       '/fr/park/park-1/parc-test/comments',
     );
     expect(facade.initializeAuthorAccess).toHaveBeenCalledTimes(1);
-    expect(facade.load).toHaveBeenCalledWith('Park', 'park-1');
+    expect(facade.load).toHaveBeenCalledWith('Park', 'park-1', 'fr');
   });
 
   it('keeps the empty comment thread hidden from visitors without author access', () => {
@@ -85,5 +97,38 @@ describe('CommentSummaryLinkComponent', () => {
     expect(
       fixture.nativeElement.querySelector('.comment-summary-link'),
     ).toBeNull();
+  });
+
+  it('states when comments are available in the current language', () => {
+    facade.summary.set({
+      targetType: 'Park',
+      targetId: 'park-1',
+      commentCount: 3,
+      languageCode: 'fr',
+      languageCommentCount: 2,
+      officialComment: null,
+    });
+    fixture.detectChanges();
+
+    const text: string = fixture.nativeElement.textContent;
+    expect(text).toContain('2 commentaires');
+    expect(text).toContain('Dans ta langue actuelle : Français');
+    expect(text).toContain('3 commentaires, toutes langues confondues');
+  });
+
+  it('states when comments only exist in other languages', () => {
+    facade.summary.set({
+      targetType: 'Park',
+      targetId: 'park-1',
+      commentCount: 1,
+      languageCode: 'fr',
+      languageCommentCount: 0,
+      officialComment: null,
+    });
+    fixture.detectChanges();
+
+    const text: string = fixture.nativeElement.textContent;
+    expect(text).toContain('1 commentaire');
+    expect(text).toContain('Disponible uniquement dans d’autres langues');
   });
 });

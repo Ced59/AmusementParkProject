@@ -139,13 +139,15 @@ public sealed class CommentsController : ControllerBase
     public async Task<IActionResult> GetSummaryAsync(
         [FromRoute] string targetType,
         [FromRoute] string targetId,
+        [FromQuery] string? language = null,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<CommentSummaryResult> result = await this.getSummaryHandler.HandleAsync(
             new GetCommentSummaryQuery(
                 targetType.ToCommentTargetType(),
                 targetId,
-                this.HttpContext.UserCanSeeNonVisibleInPublicView()),
+                this.HttpContext.UserCanSeeNonVisibleInPublicView(),
+                language),
             cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {

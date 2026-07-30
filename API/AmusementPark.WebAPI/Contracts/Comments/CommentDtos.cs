@@ -86,6 +86,10 @@ public sealed class CommentSummaryDto
 
     public long CommentCount { get; set; }
 
+    public string LanguageCode { get; set; } = string.Empty;
+
+    public long LanguageCommentCount { get; set; }
+
     public CommentDto? OfficialComment { get; set; }
 }
 
