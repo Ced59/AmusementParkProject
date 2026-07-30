@@ -27,9 +27,17 @@ export class CommentsApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getSummary(targetType: CommentTargetType, targetId: string): Observable<CommentSummary> {
+  getSummary(
+    targetType: CommentTargetType,
+    targetId: string,
+    languageCode: string
+  ): Observable<CommentSummary> {
     const url: string = `${environment.apiBaseUrl}${COMMENTS_API_ENDPOINTS.getSummary(targetType, targetId)}`;
-    return this.http.get<CommentSummary>(url);
+    return this.http.get<CommentSummary>(url, {
+      params: {
+        language: languageCode
+      }
+    });
   }
 
   getThread(targetType: CommentTargetType, targetId: string): Observable<CommentThread> {

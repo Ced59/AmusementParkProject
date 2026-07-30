@@ -1,5 +1,6 @@
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Comments;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using AmusementPark.Core.Domain.Comments;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
@@ -36,6 +37,31 @@ public sealed class CommentRepositoryRevisionFenceTests
         Assert.Single(set);
         Assert.Equal(5, set["revision"].AsInt64);
         Assert.False(set.Contains("updatedAt"));
+    }
+
+    [Theory]
+    [InlineData(CommentTargetType.Park)]
+    [InlineData(CommentTargetType.ParkItem)]
+    public void BuildPublishedTargetAndLanguageFilter_ShouldRequireExactNonEmptyBody(
+        CommentTargetType targetType)
+    {
+        FilterDefinition<CommentDocument> filter =
+            CommentRepository.BuildPublishedTargetAndLanguageFilter(
+                targetType,
+                " target-1 ",
+                " FR ");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal(targetType.ToString(), rendered["targetType"].AsString);
+        Assert.Equal("target-1", rendered["targetId"].AsString);
+        Assert.Equal("Published", rendered["moderationStatus"].AsString);
+        BsonDocument localizedFilter =
+            rendered["bodies"].AsBsonDocument["$elemMatch"].AsBsonDocument;
+        Assert.Equal("fr", localizedFilter["languageCode"].AsString);
+        Assert.Equal(
+            "\\S",
+            localizedFilter["value"].AsBsonRegularExpression.Pattern);
     }
 
     private static BsonDocument Render(

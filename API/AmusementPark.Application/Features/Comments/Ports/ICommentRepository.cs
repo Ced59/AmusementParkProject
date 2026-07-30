@@ -33,6 +33,12 @@ public interface ICommentRepository
         string targetId,
         CancellationToken cancellationToken);
 
+    Task<long> CountPublishedByTargetAndLanguageAsync(
+        CommentTargetType targetType,
+        string targetId,
+        string languageCode,
+        CancellationToken cancellationToken);
+
     Task<Comment?> GetFirstOfficialPublishedByTargetAsync(
         CommentTargetType targetType,
         string targetId,

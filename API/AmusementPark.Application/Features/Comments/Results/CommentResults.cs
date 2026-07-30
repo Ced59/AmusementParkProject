@@ -29,6 +29,8 @@ public sealed record CommentSummaryResult(
     CommentTargetType TargetType,
     string TargetId,
     long CommentCount,
+    string LanguageCode,
+    long LanguageCommentCount,
     CommentResult? OfficialComment);
 
 public sealed record CommentThreadResult(

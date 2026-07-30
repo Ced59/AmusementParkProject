@@ -1,6 +1,6 @@
 import type { MockedObject } from 'vitest';
 import { EventEmitter, Signal, WritableSignal, signal } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, ParamMap, Router, convertToParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
@@ -11,6 +11,11 @@ import {
   UpdateCommentRequest
 } from '@app/models/comments/comment.models';
 import { TranslationService } from '@app/services/translation.service';
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies
+} from '@app/testing/common-test-providers';
+import { registerSupportedAngularLocales } from '@core/i18n/supported-angular-locales';
 import { SeoService } from '@core/seo/seo.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
@@ -30,8 +35,9 @@ class FakeTranslationService {
 }
 
 class FakeCommentThreadStateFacade {
-  readonly state: Signal<ScreenState<CommentThread, string>> =
-    signal<ScreenState<CommentThread, string>>({ kind: 'loading' }).asReadonly();
+  readonly stateSignal: WritableSignal<ScreenState<CommentThread, string>> =
+    signal<ScreenState<CommentThread, string>>({ kind: 'loading' });
+  readonly state: Signal<ScreenState<CommentThread, string>> = this.stateSignal.asReadonly();
   readonly threadSignal: WritableSignal<CommentThread | null> = signal<CommentThread | null>(null);
   readonly thread: Signal<CommentThread | null> = this.threadSignal.asReadonly();
   readonly canWriteSignal: WritableSignal<boolean> = signal<boolean>(false);
@@ -110,9 +116,156 @@ class FakeImagesApiService {
     this.buildImageUrlCalls.push({ imageId, width: options.width });
     return `/api/images/binary/${imageId}?width=${options.width ?? 0}`;
   }
+
+  resolveImageUrl(imagePathOrUrl: string): string {
+    return imagePathOrUrl;
+  }
+
+  buildImageSrcSet(): string | null {
+    return null;
+  }
 }
 
 describe('CommentsPageComponent', () => {
+  it('renders a ready French comment with its localized date instead of the loading state', async () => {
+    registerSupportedAngularLocales();
+    const routeParamMap: ParamMap = convertToParamMap({ lang: 'fr', id: 'park-1' });
+    const route: ActivatedRoute = {
+      snapshot: { paramMap: routeParamMap },
+      paramMap: of(routeParamMap),
+      parent: null
+    } as unknown as ActivatedRoute;
+    const stateFacade: FakeCommentThreadStateFacade = new FakeCommentThreadStateFacade();
+    const imagesFacade: FakeCommentRichTextImagesFacade = new FakeCommentRichTextImagesFacade();
+    const imagesApiService: FakeImagesApiService = new FakeImagesApiService();
+    const thread: CommentThread = {
+      targetType: 'Park',
+      targetId: 'park-1',
+      targetName: 'Parc Démo',
+      parkId: 'park-1',
+      parkName: 'Parc Démo',
+      comments: [{
+        id: 'comment-1',
+        targetType: 'Park',
+        targetId: 'park-1',
+        authorDisplayName: 'Admin01',
+        authorAvatarUrl: null,
+        authorRole: 'Admin',
+        bodies: [{ languageCode: 'fr', value: '<p>Test commentaire en français</p>' }],
+        isOfficial: true,
+        canUpdate: false,
+        canDelete: false,
+        revision: 1,
+        createdAtUtc: '2026-07-01T10:00:00Z',
+        updatedAtUtc: '2026-07-01T10:00:00Z'
+      }, {
+        id: 'comment-2',
+        targetType: 'Park',
+        targetId: 'park-1',
+        authorDisplayName: 'Moderateur02',
+        authorAvatarUrl: null,
+        authorRole: 'Moderator',
+        bodies: [{ languageCode: 'es', value: '<p>Comentario en español</p>' }],
+        isOfficial: false,
+        canUpdate: false,
+        canDelete: false,
+        revision: 1,
+        createdAtUtc: '2026-07-02T11:00:00Z',
+        updatedAtUtc: '2026-07-02T11:00:00Z'
+      }]
+    };
+    stateFacade.threadSignal.set(thread);
+    stateFacade.stateSignal.set({ kind: 'ready', data: thread });
+
+    await TestBed.configureTestingModule({
+      imports: [...COMMON_TEST_IMPORTS, CommentsPageComponent],
+      providers: [
+        ...provideCommonTestDependencies(),
+        { provide: ActivatedRoute, useValue: route },
+        { provide: TranslationService, useClass: FakeTranslationService },
+        {
+          provide: SeoService,
+          useValue: {
+            applyCommentsSeo: vi.fn(),
+            applyNotFoundSeo: vi.fn()
+          }
+        },
+        { provide: ImagesApiService, useValue: imagesApiService }
+      ]
+    })
+      .overrideComponent(CommentsPageComponent, {
+        set: {
+          providers: [
+            { provide: CommentThreadStateFacade, useValue: stateFacade },
+            { provide: CommentRichTextImagesFacade, useValue: imagesFacade }
+          ]
+        }
+      })
+      .compileComponents();
+
+    const translateService: TranslateService = TestBed.inject(TranslateService);
+    translateService.setTranslation('fr', {
+      comments: {
+        subtitle: 'Commentaires publiés',
+        officialBadge: 'Avis officiel',
+        roles: {
+          Admin: 'Administrateur',
+          Moderator: 'Modérateur'
+        },
+        view: {
+          currentCount: {
+            one: '{{count}} commentaire en {{language}}',
+            other: '{{count}} commentaires en {{language}}'
+          },
+          allCount: {
+            one: '{{count}} commentaire toutes langues',
+            other: '{{count}} commentaires toutes langues'
+          },
+          allLanguages: {
+            one: 'Voir le commentaire de toutes les langues',
+            other: 'Voir les {{count}} commentaires de toutes les langues'
+          },
+          currentOnly: 'Voir uniquement les commentaires en {{language}}'
+        }
+      }
+    });
+    translateService.use('fr');
+
+    const fixture: ComponentFixture<CommentsPageComponent> =
+      TestBed.createComponent(CommentsPageComponent);
+    fixture.detectChanges();
+
+    const element: HTMLElement = fixture.nativeElement as HTMLElement;
+    const commentBody: HTMLElement | null = element.querySelector('.comment-card__body');
+    const publishedAt: HTMLTimeElement | null = element.querySelector('time');
+
+    expect(element.querySelector('.app-page-state--loading')).toBeNull();
+    expect(commentBody?.textContent).toContain('Test commentaire en français');
+    expect(publishedAt?.textContent).toContain('1 juillet 2026');
+    expect(element.querySelectorAll('.comment-card')).toHaveLength(1);
+    expect(element.textContent).not.toContain('Comentario en español');
+
+    const languageToggle: HTMLButtonElement | null =
+      element.querySelector('.comments-language-filter button');
+    expect(languageToggle?.textContent).toContain('Voir les 2 commentaires de toutes les langues');
+    languageToggle?.click();
+    fixture.detectChanges();
+
+    expect(element.querySelectorAll('.comment-card')).toHaveLength(2);
+    expect(element.textContent).toContain('Comentario en español');
+    expect(element.textContent).toContain('Español');
+
+    const routingTranslationService: FakeTranslationService =
+      TestBed.inject(TranslationService) as unknown as FakeTranslationService;
+    routingTranslationService.languageChanged.emit('de');
+    fixture.detectChanges();
+
+    expect(element.querySelectorAll('.comment-card')).toHaveLength(0);
+    expect(element.querySelector('.comments-empty')).not.toBeNull();
+    expect(element.querySelector('.comments-language-filter button')?.textContent)
+      .toContain('Voir les 2 commentaires de toutes les langues');
+  });
+
   it('lets the comment editor shrink inside the mobile page', () => {
     const styles: string = (
       CommentsPageComponent as unknown as { ɵcmp: { styles: string[] } }
@@ -127,6 +280,8 @@ describe('CommentsPageComponent', () => {
     expect(styles).toContain('img.rich-text__image--right');
     expect(styles).toContain('float: none');
     expect(styles).toContain('overflow: hidden');
+    expect(styles).toContain('white-space: normal');
+    expect(styles).toContain('overflow-wrap: anywhere');
   });
 
   it('applies not-found SEO when the comment target does not exist', () => {

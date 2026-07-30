@@ -48,6 +48,24 @@
   margin: 0;
 }
 
+.comments-hero__scope {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 0.45rem !important;
+}
+
+.comments-language-filter {
+  align-items: center;
+  display: flex;
+  gap: 0.7rem;
+  justify-content: space-between;
+}
+
+.comments-language-filter > .pi {
+  color: var(--c-sky);
+  font-size: 1.2rem;
+}
+
 .comment-editor {
   display: grid;
   gap: 1.2rem;
@@ -281,10 +299,28 @@
     justify-content: stretch;
   }
 
+  .comments-language-filter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .comments-language-filter > .pi {
+    display: none;
+  }
+
+  .comments-language-filter button,
   .comment-editor__actions button,
   .comment-card__actions button {
     flex: 1 1 auto;
     justify-content: center;
+  }
+
+  .comments-language-filter button {
+    line-height: 1.35;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    width: 100%;
   }
 
   .comment-card__body ::ng-deep img.rich-text__image {

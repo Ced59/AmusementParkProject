@@ -13,6 +13,14 @@
     },
     "summary": {
       "createFirst": "Escribir el primer comentario",
+      "currentLanguage": "En tu idioma actual: {{language}}",
+      "otherLanguages": "Disponible únicamente en otros idiomas",
+      "allLanguagesCount": {
+        "one": "{{count}} comentario en todos los idiomas",
+        "few": "{{count}} comentarios en todos los idiomas",
+        "many": "{{count}} comentarios en todos los idiomas",
+        "other": "{{count}} comentarios en todos los idiomas"
+      },
       "count": {
         "one": "{{count}} comentario",
         "few": "{{count}} comentarios",
@@ -31,9 +39,32 @@
       "message": "El equipo está reuniendo los comentarios publicados."
     },
     "listLabel": "Comentarios publicados",
+    "view": {
+      "currentCount": {
+        "one": "{{count}} comentario en tu idioma actual ({{language}})",
+        "few": "{{count}} comentarios en tu idioma actual ({{language}})",
+        "many": "{{count}} comentarios en tu idioma actual ({{language}})",
+        "other": "{{count}} comentarios en tu idioma actual ({{language}})"
+      },
+      "allCount": {
+        "one": "{{count}} comentario en todos los idiomas",
+        "few": "{{count}} comentarios en todos los idiomas",
+        "many": "{{count}} comentarios en todos los idiomas",
+        "other": "{{count}} comentarios en todos los idiomas"
+      },
+      "allLanguages": {
+        "one": "Ver {{count}} comentario de todos los idiomas",
+        "few": "Ver los {{count}} comentarios de todos los idiomas",
+        "many": "Ver los {{count}} comentarios de todos los idiomas",
+        "other": "Ver los {{count}} comentarios de todos los idiomas"
+      },
+      "currentOnly": "Ver solo los comentarios en tu idioma actual ({{language}})"
+    },
     "empty": {
       "title": "Todavía no hay comentarios",
-      "message": "El equipo aún no ha publicado ningún comentario en esta página."
+      "message": "El equipo aún no ha publicado ningún comentario en esta página.",
+      "currentLanguageTitle": "No hay comentarios en {{language}}",
+      "currentLanguageMessage": "Cambia a la vista multilingüe para leer los comentarios disponibles en otros idiomas."
     },
     "editor": {
       "kicker": "Espacio del equipo",

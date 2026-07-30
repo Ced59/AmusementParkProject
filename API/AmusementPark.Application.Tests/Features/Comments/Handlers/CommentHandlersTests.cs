@@ -814,6 +814,141 @@ public sealed class CommentHandlersTests
         parkItemRepository.VerifyNoOtherCalls();
     }
 
+    [Theory]
+    [InlineData(CommentTargetType.Park, "park-1")]
+    [InlineData(CommentTargetType.ParkItem, "item-1")]
+    public async Task GetSummaryAsync_ShouldReturnTotalAndNormalizedLanguageCounts(
+        CommentTargetType targetType,
+        string targetId)
+    {
+        Park park = new Park { Id = "park-1", Name = "Demo Park", IsVisible = true };
+        Mock<ICommentRepository> commentRepository =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(repository => repository.CountPublishedByTargetAsync(
+                targetType,
+                targetId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(3);
+        commentRepository
+            .Setup(repository => repository.CountPublishedByTargetAndLanguageAsync(
+                targetType,
+                targetId,
+                "fr",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(2);
+        commentRepository
+            .Setup(repository => repository.GetFirstOfficialPublishedByTargetAsync(
+                targetType,
+                targetId,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((Comment?)null);
+        Mock<IParkRepository> parkRepository =
+            new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        if (targetType == CommentTargetType.Park)
+        {
+            parkRepository
+                .Setup(repository => repository.GetByIdAsync(
+                    "park-1",
+                    false,
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(park);
+        }
+        else
+        {
+            parkItemRepository
+                .Setup(repository => repository.GetByIdAsync(
+                    "item-1",
+                    false,
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new ParkItem
+                {
+                    Id = "item-1",
+                    ParkId = "park-1",
+                    Name = "Demo Item",
+                    IsVisible = true,
+                });
+            parkRepository
+                .Setup(repository => repository.GetByIdAsync(
+                    "park-1",
+                    false,
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(park);
+        }
+
+        Mock<IUserRepository> userRepository =
+            new Mock<IUserRepository>(MockBehavior.Strict);
+        GetCommentSummaryQueryHandler handler = new GetCommentSummaryQueryHandler(
+            commentRepository.Object,
+            userRepository.Object,
+            new CommentTargetResolver(
+                parkRepository.Object,
+                parkItemRepository.Object));
+
+        ApplicationResult<CommentSummaryResult> result = await handler.HandleAsync(
+            new GetCommentSummaryQuery(
+                targetType,
+                targetId,
+                false,
+                " FR-fr "));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(targetType, result.Value!.TargetType);
+        Assert.Equal(targetId, result.Value.TargetId);
+        Assert.Equal(3, result.Value.CommentCount);
+        Assert.Equal("fr", result.Value.LanguageCode);
+        Assert.Equal(2, result.Value.LanguageCommentCount);
+        Assert.Null(result.Value.OfficialComment);
+        commentRepository.VerifyAll();
+        userRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
+        if (targetType == CommentTargetType.Park)
+        {
+            parkItemRepository.VerifyNoOtherCalls();
+        }
+        else
+        {
+            parkItemRepository.VerifyAll();
+        }
+    }
+
+    [Fact]
+    public async Task GetSummaryAsync_WhenLanguageIsUnsupported_ShouldRejectBeforeResolvingTarget()
+    {
+        Mock<ICommentRepository> commentRepository =
+            new Mock<ICommentRepository>(MockBehavior.Strict);
+        Mock<IUserRepository> userRepository =
+            new Mock<IUserRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository =
+            new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository =
+            new Mock<IParkItemRepository>(MockBehavior.Strict);
+        GetCommentSummaryQueryHandler handler = new GetCommentSummaryQueryHandler(
+            commentRepository.Object,
+            userRepository.Object,
+            new CommentTargetResolver(
+                parkRepository.Object,
+                parkItemRepository.Object));
+
+        ApplicationResult<CommentSummaryResult> result = await handler.HandleAsync(
+            new GetCommentSummaryQuery(
+                CommentTargetType.Park,
+                "park-1",
+                false,
+                "ja"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "comment.language.invalid");
+        commentRepository.VerifyNoOtherCalls();
+        userRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+    }
+
     private static Comment CreateComment(
         string id,
         bool isOfficial,

@@ -55,4 +55,22 @@ public sealed class CommentsHttpMappersTests
 
         Assert.Equal(7, result.ExpectedRevision);
     }
+
+    [Fact]
+    public void SummaryToHttp_ShouldExposeTotalAndLanguageCounts()
+    {
+        CommentSummaryResult result = new CommentSummaryResult(
+            CommentTargetType.ParkItem,
+            "item-1",
+            7,
+            "fr",
+            3,
+            null);
+
+        CommentSummaryDto dto = result.ToHttp();
+
+        Assert.Equal(7, dto.CommentCount);
+        Assert.Equal("fr", dto.LanguageCode);
+        Assert.Equal(3, dto.LanguageCommentCount);
+    }
 }

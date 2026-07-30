@@ -3,9 +3,10 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { CommentSummary, CommentTargetType } from '@app/models/comments/comment.models';
+import { LANGUAGES, LanguageOption } from '@shared/models/localization';
 import { LocalizedPluralPipe } from '@shared/pipes';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
-import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
+import { findExactLocalizedText, stripHtml } from '@shared/utils/localization';
 import { CommentSummaryStateFacade } from '../state/comment-summary-state.facade';
 
 @Component({
@@ -26,14 +27,20 @@ export class CommentSummaryLinkComponent implements OnChanges {
   protected readonly canWrite: Signal<boolean> = this.stateFacade.canWrite;
   protected readonly officialPreview: Signal<string | null> = computed(() => {
     const currentSummary: CommentSummary | null = this.summary();
-    const officialBody: string | undefined = resolveLocalizedValue(
+    const officialBody: string | undefined = findExactLocalizedText(
       currentSummary?.officialComment?.bodies,
       this.currentLanguage
-    );
+    )?.value;
     return this.textTruncator.truncate(stripHtml(officialBody), {
       maxLength: 220,
       ellipsis: '…'
     });
+  });
+  protected readonly currentLanguageLabel: Signal<string> = computed(() => {
+    const languageCode: string = this.summary()?.languageCode ?? this.currentLanguage;
+    return LANGUAGES.find(
+      (language: LanguageOption): boolean => language.value === languageCode
+    )?.label ?? languageCode.toUpperCase();
   });
 
   constructor(
@@ -45,7 +52,7 @@ export class CommentSummaryLinkComponent implements OnChanges {
   ngOnChanges(_changes: SimpleChanges): void {
     if (this.targetType && this.targetId) {
       this.stateFacade.initializeAuthorAccess();
-      this.stateFacade.load(this.targetType, this.targetId);
+      this.stateFacade.load(this.targetType, this.targetId, this.currentLanguage);
     }
   }
 }

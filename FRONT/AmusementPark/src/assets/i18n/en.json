@@ -2643,6 +2643,14 @@
     },
     "summary": {
       "createFirst": "Write the first comment",
+      "currentLanguage": "In your current language: {{language}}",
+      "otherLanguages": "Available in other languages",
+      "allLanguagesCount": {
+        "one": "{{count}} comment across all languages",
+        "few": "{{count}} comments across all languages",
+        "many": "{{count}} comments across all languages",
+        "other": "{{count}} comments across all languages"
+      },
       "count": {
         "one": "{{count}} comment",
         "few": "{{count}} comments",
@@ -2661,9 +2669,32 @@
       "message": "The team is gathering the published comments."
     },
     "listLabel": "Published comments",
+    "view": {
+      "currentCount": {
+        "one": "{{count}} comment in your current language ({{language}})",
+        "few": "{{count}} comments in your current language ({{language}})",
+        "many": "{{count}} comments in your current language ({{language}})",
+        "other": "{{count}} comments in your current language ({{language}})"
+      },
+      "allCount": {
+        "one": "{{count}} comment across all languages",
+        "few": "{{count}} comments across all languages",
+        "many": "{{count}} comments across all languages",
+        "other": "{{count}} comments across all languages"
+      },
+      "allLanguages": {
+        "one": "View {{count}} comment across all languages",
+        "few": "View all {{count}} comments across languages",
+        "many": "View all {{count}} comments across languages",
+        "other": "View all {{count}} comments across languages"
+      },
+      "currentOnly": "Show only comments in your current language ({{language}})"
+    },
     "empty": {
       "title": "No comments yet",
-      "message": "The team has not published a comment on this page yet."
+      "message": "The team has not published a comment on this page yet.",
+      "currentLanguageTitle": "No comments in {{language}}",
+      "currentLanguageMessage": "Switch to the multilingual view to read comments available in other languages."
     },
     "editor": {
       "kicker": "Team area",

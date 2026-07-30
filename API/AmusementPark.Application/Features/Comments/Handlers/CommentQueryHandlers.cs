@@ -31,6 +31,14 @@ public sealed class GetCommentSummaryQueryHandler
         GetCommentSummaryQuery query,
         CancellationToken cancellationToken = default)
     {
+        if (!CommentLanguageCodes.TryNormalizeQueryLanguage(
+                query.LanguageCode,
+                out string languageCode))
+        {
+            return ApplicationResult<CommentSummaryResult>.Failure(
+                CommentApplicationErrors.InvalidLanguage());
+        }
+
         ApplicationResult<CommentTargetMetadataResult> targetResult = await CommentQueryValidation.ResolveTargetAsync(
             query.TargetType,
             query.TargetId,
@@ -47,12 +55,17 @@ public sealed class GetCommentSummaryQueryHandler
             query.TargetType,
             targetId,
             cancellationToken);
+        Task<long> languageCountTask = this.commentRepository.CountPublishedByTargetAndLanguageAsync(
+            query.TargetType,
+            targetId,
+            languageCode,
+            cancellationToken);
         Task<Comment?> officialTask = this.commentRepository.GetFirstOfficialPublishedByTargetAsync(
             query.TargetType,
             targetId,
             cancellationToken);
 
-        await Task.WhenAll(countTask, officialTask);
+        await Task.WhenAll(countTask, languageCountTask, officialTask);
         Comment? officialComment = await officialTask;
         User? officialAuthor = officialComment is null
             ? null
@@ -61,6 +74,8 @@ public sealed class GetCommentSummaryQueryHandler
             query.TargetType,
             targetId,
             await countTask,
+            languageCode,
+            await languageCountTask,
             officialComment is null ? null : CommentResultFactory.Create(officialComment, officialAuthor)));
     }
 }

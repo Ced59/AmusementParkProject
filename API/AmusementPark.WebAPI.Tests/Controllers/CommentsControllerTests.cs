@@ -52,6 +52,23 @@ public sealed class CommentsControllerTests
         Assert.NotNull(method.GetCustomAttribute<AllowAnonymousAttribute>());
     }
 
+    [Fact]
+    public void GetSummaryAsync_ShouldBindOptionalLanguageFromQuery()
+    {
+        MethodInfo method = typeof(CommentsController).GetMethod(
+            nameof(CommentsController.GetSummaryAsync))
+            ?? throw new InvalidOperationException(
+                "CommentsController.GetSummaryAsync was not found.");
+        ParameterInfo parameter = method
+            .GetParameters()
+            .Single(candidate => candidate.Name == "language");
+
+        Assert.NotNull(parameter.GetCustomAttribute<
+            Microsoft.AspNetCore.Mvc.FromQueryAttribute>());
+        Assert.True(parameter.HasDefaultValue);
+        Assert.Null(parameter.DefaultValue);
+    }
+
     [Theory]
     [InlineData(nameof(CommentsController.UploadImageAsync))]
     [InlineData(nameof(CommentsController.DeleteDraftImageAsync))]

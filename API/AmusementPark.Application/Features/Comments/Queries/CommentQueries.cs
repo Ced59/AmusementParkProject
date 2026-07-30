@@ -8,7 +8,8 @@ namespace AmusementPark.Application.Features.Comments.Queries;
 public sealed record GetCommentSummaryQuery(
     CommentTargetType TargetType,
     string TargetId,
-    bool IncludeHidden) : IQuery<ApplicationResult<CommentSummaryResult>>;
+    bool IncludeHidden,
+    string? LanguageCode = null) : IQuery<ApplicationResult<CommentSummaryResult>>;
 
 public sealed record GetCommentThreadQuery(
     CommentTargetType TargetType,

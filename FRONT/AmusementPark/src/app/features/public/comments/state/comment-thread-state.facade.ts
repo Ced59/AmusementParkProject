@@ -96,9 +96,12 @@ export class CommentThreadStateFacade {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (thread: CommentThread): void => {
-          if (this.currentTargetKey !== targetKey
-            || thread.targetType !== targetType
-            || thread.targetId !== normalizedTargetId) {
+          if (this.currentTargetKey !== targetKey) {
+            return;
+          }
+
+          if (thread.targetType !== targetType || thread.targetId !== normalizedTargetId) {
+            this.stateSignal.set({ kind: 'error', error: 'comments.errors.load' });
             return;
           }
 

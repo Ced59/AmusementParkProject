@@ -2,6 +2,8 @@ import { LocalizedItem } from '@app/models/shared/localized-item';
 
 import {
   DEFAULT_LOCALIZED_TEXT_FALLBACK,
+  findExactLocalizedText,
+  findLocalizedTextWithLanguage,
   isRichTextEmpty,
   resolveLocalizedText,
   resolveLocalizedValue,
@@ -85,5 +87,35 @@ describe('localized-text helpers', () => {
   it('detects empty rich text values', () => {
     expect(isRichTextEmpty('<p>&nbsp;</p>')).toBe(true);
     expect(isRichTextEmpty('<p>Visible</p>')).toBe(false);
+  });
+
+  it('finds only a non-empty exact localized rich-text body', () => {
+    const values: LocalizedItem<string>[] = [
+      { languageCode: 'fr', value: '<p>&nbsp;</p>' },
+      { languageCode: 'en', value: '<p>Hello</p>' },
+    ];
+
+    expect(findExactLocalizedText(values, 'fr')).toBeUndefined();
+    expect(findExactLocalizedText(values, 'en')).toEqual(values[1]);
+  });
+
+  it('keeps an image-only localized body visible without relaxing text validation', () => {
+    const imageOnlyBody: LocalizedItem<string> = {
+      languageCode: 'fr',
+      value: '<p><img src="/images/0123456789abcdef0123456789abcdef"></p>'
+    };
+
+    expect(isRichTextEmpty(imageOnlyBody.value)).toBe(true);
+    expect(findExactLocalizedText([imageOnlyBody], 'fr')).toEqual(imageOnlyBody);
+  });
+
+  it('returns the language of the localized body selected for a fallback view', () => {
+    const values: LocalizedItem<string>[] = [
+      { languageCode: 'es', value: '<p>Hola</p>' },
+      { languageCode: 'en', value: '<p>Hello</p>' },
+    ];
+
+    expect(findLocalizedTextWithLanguage(values, 'fr')).toEqual(values[1]);
+    expect(findLocalizedTextWithLanguage(values, 'es')).toEqual(values[0]);
   });
 });

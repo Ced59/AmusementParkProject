@@ -13,6 +13,14 @@
     },
     "summary": {
       "createFirst": "Écrire le premier commentaire",
+      "currentLanguage": "Dans ta langue actuelle : {{language}}",
+      "otherLanguages": "Disponible uniquement dans d’autres langues",
+      "allLanguagesCount": {
+        "one": "{{count}} commentaire, toutes langues confondues",
+        "few": "{{count}} commentaires, toutes langues confondues",
+        "many": "{{count}} commentaires, toutes langues confondues",
+        "other": "{{count}} commentaires, toutes langues confondues"
+      },
       "count": {
         "one": "{{count}} commentaire",
         "few": "{{count}} commentaires",
@@ -31,9 +39,32 @@
       "message": "L’équipe rassemble les commentaires publiés."
     },
     "listLabel": "Commentaires publiés",
+    "view": {
+      "currentCount": {
+        "one": "{{count}} commentaire dans ta langue actuelle ({{language}})",
+        "few": "{{count}} commentaires dans ta langue actuelle ({{language}})",
+        "many": "{{count}} commentaires dans ta langue actuelle ({{language}})",
+        "other": "{{count}} commentaires dans ta langue actuelle ({{language}})"
+      },
+      "allCount": {
+        "one": "{{count}} commentaire, toutes langues confondues",
+        "few": "{{count}} commentaires, toutes langues confondues",
+        "many": "{{count}} commentaires, toutes langues confondues",
+        "other": "{{count}} commentaires, toutes langues confondues"
+      },
+      "allLanguages": {
+        "one": "Voir {{count}} commentaire, toutes langues confondues",
+        "few": "Voir les {{count}} commentaires de toutes les langues",
+        "many": "Voir les {{count}} commentaires de toutes les langues",
+        "other": "Voir les {{count}} commentaires de toutes les langues"
+      },
+      "currentOnly": "Voir uniquement les commentaires dans ta langue actuelle ({{language}})"
+    },
     "empty": {
       "title": "Aucun commentaire pour le moment",
-      "message": "L’équipe n’a pas encore publié de commentaire sur cette fiche."
+      "message": "L’équipe n’a pas encore publié de commentaire sur cette fiche.",
+      "currentLanguageTitle": "Aucun commentaire en {{language}}",
+      "currentLanguageMessage": "Passe à l’affichage multilingue pour consulter les commentaires disponibles dans d’autres langues."
     },
     "editor": {
       "kicker": "Espace équipe",

@@ -22,7 +22,9 @@ import { AdminPublicViewSimulationInterceptor } from '@features/admin/contextual
 import { DeploymentVersionService } from '@core/deployment/deployment-version.service';
 import { MatomoPageViewTrackingService } from '@core/analytics/matomo-page-view-tracking.service';
 import { MicrosoftClarityTrackingService } from '@core/analytics/microsoft-clarity-tracking.service';
+import { registerSupportedAngularLocales } from '@core/i18n/supported-angular-locales';
 
+registerSupportedAngularLocales();
 
 export const appConfig: ApplicationConfig = {
   providers: [

@@ -41,11 +41,17 @@ class FakeCommentDataPort implements CommentDataPort {
   readonly updateCalls: UpdateCommentRequest[] = [];
   readonly deleteCalls: Array<{ commentId: string; revision: number }> = [];
 
-  getSummary(targetType: CommentTargetType, targetId: string): Observable<CommentSummary> {
+  getSummary(
+    targetType: CommentTargetType,
+    targetId: string,
+    languageCode: string
+  ): Observable<CommentSummary> {
     return of({
       targetType,
       targetId,
       commentCount: this.thread.comments.length,
+      languageCode,
+      languageCommentCount: this.thread.comments.length,
       officialComment: this.thread.comments.find((comment: PublicComment) => comment.isOfficial) ?? null
     });
   }
@@ -392,6 +398,18 @@ describe('CommentThreadStateFacade', () => {
     expect(context.facade.notFound()).toBe(false);
     expect(context.ssrHttpStatusService.notFoundCallCount).toBe(0);
     expect(context.ssrHttpStatusService.statuses).toEqual([503]);
+  });
+
+  it('shows a load error when the API response does not match the requested target', () => {
+    const context = createFacade();
+    context.dataPort.threadResponse = of(createThread([]));
+
+    context.facade.load('ParkItem', 'item-1');
+
+    expect(context.facade.state()).toEqual({
+      kind: 'error',
+      error: 'comments.errors.load'
+    });
   });
 });
 

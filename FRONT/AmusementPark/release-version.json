@@ -1,6 +1,20 @@
 {
-  "version": "4.0.11",
+  "version": "4.0.12",
   "history": [
+    {
+      "version": "4.0.12",
+      "releasedAt": "2026-07-30",
+      "labels": {
+        "fr": "Les commentaires s’affichent désormais correctement dans ta langue.",
+        "en": "Comments now display correctly in your language.",
+        "de": "Kommentare werden jetzt korrekt in deiner Sprache angezeigt.",
+        "nl": "Reacties worden nu correct in jouw taal weergegeven.",
+        "it": "I commenti ora vengono visualizzati correttamente nella tua lingua.",
+        "es": "Los comentarios ahora se muestran correctamente en tu idioma.",
+        "pl": "Komentarze są teraz prawidłowo wyświetlane w Twoim języku.",
+        "pt": "Os comentários são agora apresentados corretamente no teu idioma."
+      }
+    },
     {
       "version": "4.0.11",
       "releasedAt": "2026-07-30",

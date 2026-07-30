@@ -20,6 +20,56 @@ export function isRichTextEmpty(value: string | null | undefined): boolean {
   return stripHtml(value).length === 0;
 }
 
+export function findExactLocalizedText(
+  items: readonly LocalizedItem<string>[] | null | undefined,
+  languageCode: string | null | undefined
+): LocalizedItem<string> | undefined {
+  if (!items || items.length === 0) {
+    return undefined;
+  }
+
+  const normalizedLanguageCode: string = normalizeLanguageCode(languageCode);
+  return items.find(
+    (item: LocalizedItem<string>): boolean =>
+      normalizeLanguageCode(item.languageCode) === normalizedLanguageCode
+      && hasDisplayableRichTextContent(item.value)
+  );
+}
+
+export function findLocalizedTextWithLanguage(
+  items: readonly LocalizedItem<string>[] | null | undefined,
+  languageCode: string | null | undefined,
+  defaultLanguageCode: string = 'en'
+): LocalizedItem<string> | undefined {
+  if (!items || items.length === 0) {
+    return undefined;
+  }
+
+  const exactMatch: LocalizedItem<string> | undefined =
+    findExactLocalizedText(items, languageCode);
+  if (exactMatch !== undefined) {
+    return exactMatch;
+  }
+
+  const defaultMatch: LocalizedItem<string> | undefined =
+    findExactLocalizedText(items, defaultLanguageCode);
+  if (defaultMatch !== undefined) {
+    return defaultMatch;
+  }
+
+  const generalMatch: LocalizedItem<string> | undefined = items.find(
+    (item: LocalizedItem<string>): boolean =>
+      isGeneralLanguageCode(item.languageCode) && hasDisplayableRichTextContent(item.value)
+  );
+  if (generalMatch !== undefined) {
+    return generalMatch;
+  }
+
+  return items.find(
+    (item: LocalizedItem<string>): boolean => hasDisplayableRichTextContent(item.value)
+  );
+}
+
 export function resolveLocalizedValue<T>(
   items: readonly LocalizedItem<T>[] | null | undefined,
   languageCode: string | null | undefined,
@@ -115,4 +165,8 @@ function isGeneralLanguageCode(languageCode: string | null | undefined): boolean
 
 function hasText(value: string | null | undefined): boolean {
   return (value ?? '').trim().length > 0;
+}
+
+function hasDisplayableRichTextContent(value: string | null | undefined): boolean {
+  return !isRichTextEmpty(value) || /<img\b/i.test(value ?? '');
 }
