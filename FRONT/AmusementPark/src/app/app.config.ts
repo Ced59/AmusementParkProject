@@ -18,6 +18,7 @@ import { TranslationService } from './services/translation.service';
 import { AuthService } from './services/auth/auth.service';
 import { LanguageInterceptor } from '@core/http/interceptors/language.interceptor';
 import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
+import { TransientApiReadRetryInterceptor } from '@core/http/interceptors/transient-api-read-retry.interceptor';
 import { AdminPublicViewSimulationInterceptor } from '@features/admin/contextual-editing/http/admin-public-view-simulation.interceptor';
 import { DeploymentVersionService } from '@core/deployment/deployment-version.service';
 import { MatomoPageViewTrackingService } from '@core/analytics/matomo-page-view-tracking.service';
@@ -76,6 +77,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TransientApiReadRetryInterceptor,
       multi: true
     },
 

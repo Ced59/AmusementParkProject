@@ -1,6 +1,20 @@
 {
-  "version": "4.0.12",
+  "version": "4.0.13",
   "history": [
+    {
+      "version": "4.0.13",
+      "releasedAt": "2026-07-30",
+      "labels": {
+        "fr": "La navigation entre les pages est désormais plus fiable.",
+        "en": "Navigation between pages is now more reliable.",
+        "de": "Die Navigation zwischen den Seiten ist jetzt zuverlässiger.",
+        "nl": "Navigatie tussen pagina’s is nu betrouwbaarder.",
+        "it": "La navigazione tra le pagine è ora più affidabile.",
+        "es": "La navegación entre páginas es ahora más fiable.",
+        "pl": "Nawigacja między stronami jest teraz bardziej niezawodna.",
+        "pt": "A navegação entre páginas está agora mais fiável."
+      }
+    },
     {
       "version": "4.0.12",
       "releasedAt": "2026-07-30",

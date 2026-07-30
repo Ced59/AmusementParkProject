@@ -1,9 +1,13 @@
-import { FetchBackend, HttpBackend, HttpErrorResponse, HttpEvent, HttpRequest } from '@angular/common/http';
+import { FetchBackend, HttpBackend, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError, timer } from 'rxjs';
+import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import {
+  resolveTransientHttpReadRetryDelay,
+  TRANSIENT_HTTP_READ_RETRY_COUNT
+} from '../transient-http-read-retry.policy';
 
 /**
  * Backend HTTP utilisé uniquement pendant le rendu SSR.
@@ -22,9 +26,6 @@ import { environment } from '../../../../environments/environment';
 @Injectable()
 export class ServerApiBaseUrlBackend implements HttpBackend {
   private static readonly InternalSsrHeaderName: string = 'X-AmusementPark-Internal-SSR';
-  private static readonly TransientRetryCount: number = 2;
-  private static readonly TransientRetryBaseDelayMilliseconds: number = 250;
-  private static readonly TransientRetryMaxDelayMilliseconds: number = 2_000;
 
   constructor(private readonly fetchBackend: FetchBackend) {
   }
@@ -43,8 +44,10 @@ export class ServerApiBaseUrlBackend implements HttpBackend {
 
     return this.fetchBackend.handle(rewrittenRequest).pipe(
       retry({
-        count: ServerApiBaseUrlBackend.TransientRetryCount,
-        delay: (error: unknown, retryCount: number) => this.resolveTransientRetryDelay(error, rewrittenRequest, retryCount)
+        count: TRANSIENT_HTTP_READ_RETRY_COUNT,
+        delay: (error: unknown, retryCount: number) => {
+          return resolveTransientHttpReadRetryDelay(error, rewrittenRequest, retryCount);
+        }
       })
     );
   }
@@ -62,73 +65,5 @@ export class ServerApiBaseUrlBackend implements HttpBackend {
 
   private static ensureTrailingSlash(value: string): string {
     return value.endsWith('/') ? value : `${value}/`;
-  }
-
-  private resolveTransientRetryDelay(
-    error: unknown,
-    request: HttpRequest<unknown>,
-    retryCount: number
-  ): Observable<number> {
-    if (!this.shouldRetryTransientError(error, request)) {
-      return throwError(() => error);
-    }
-
-    return timer(this.getRetryDelayMilliseconds(error, retryCount));
-  }
-
-  private shouldRetryTransientError(error: unknown, request: HttpRequest<unknown>): boolean {
-    if (!this.isSafeMethod(request.method)) {
-      return false;
-    }
-
-    if (!(error instanceof HttpErrorResponse)) {
-      return true;
-    }
-
-    return error.status === 0
-      || error.status === 408
-      || error.status === 429
-      || error.status === 500
-      || error.status === 502
-      || error.status === 503
-      || error.status === 504;
-  }
-
-  private isSafeMethod(method: string): boolean {
-    const normalizedMethod: string = method.toUpperCase();
-    return normalizedMethod === 'GET' || normalizedMethod === 'HEAD';
-  }
-
-  private getRetryDelayMilliseconds(error: unknown, retryCount: number): number {
-    const retryAfterDelayMilliseconds: number | null = this.tryReadRetryAfterDelayMilliseconds(error);
-    if (retryAfterDelayMilliseconds !== null) {
-      return retryAfterDelayMilliseconds;
-    }
-
-    return Math.min(
-      ServerApiBaseUrlBackend.TransientRetryBaseDelayMilliseconds * retryCount,
-      ServerApiBaseUrlBackend.TransientRetryMaxDelayMilliseconds
-    );
-  }
-
-  private tryReadRetryAfterDelayMilliseconds(error: unknown): number | null {
-    if (!(error instanceof HttpErrorResponse)) {
-      return null;
-    }
-
-    const retryAfterHeader: string | null = error.headers.get('Retry-After');
-    if (retryAfterHeader === null) {
-      return null;
-    }
-
-    const retryAfterSeconds: number = Number.parseInt(retryAfterHeader, 10);
-    if (!Number.isFinite(retryAfterSeconds) || retryAfterSeconds < 0) {
-      return null;
-    }
-
-    return Math.min(
-      retryAfterSeconds * 1000,
-      ServerApiBaseUrlBackend.TransientRetryMaxDelayMilliseconds
-    );
   }
 }
