@@ -69,6 +69,7 @@ internal static partial class EntityMongoMappers
             CommentReuseReservationToken = document.CommentReuseReservationToken,
             CommentReuseReconcileAfterUtc = document.CommentReuseReconcileAfter,
             CommentReuseTargetRevision = document.CommentReuseTargetRevision,
+            CommentReuseExpiresAtUtc = document.CommentReuseExpiresAt,
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -116,6 +117,7 @@ internal static partial class EntityMongoMappers
             CommentReuseReservationToken = entity.CommentReuseReservationToken,
             CommentReuseReconcileAfter = entity.CommentReuseReconcileAfterUtc,
             CommentReuseTargetRevision = entity.CommentReuseTargetRevision,
+            CommentReuseExpiresAt = entity.CommentReuseExpiresAtUtc,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

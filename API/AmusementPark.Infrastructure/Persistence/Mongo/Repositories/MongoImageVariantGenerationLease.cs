@@ -78,6 +78,35 @@ public sealed class MongoImageVariantGenerationLease : IImageVariantGenerationLe
             cancellationToken: cancellationToken);
     }
 
+    public async Task<bool> RenewAsync(
+        string pathWithoutExtension,
+        string leaseToken,
+        DateTime renewedAtUtc,
+        DateTime leaseUntilUtc,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(pathWithoutExtension)
+            || string.IsNullOrWhiteSpace(leaseToken)
+            || leaseUntilUtc <= renewedAtUtc)
+        {
+            return false;
+        }
+
+        FilterDefinition<ImageDocument> filter = BuildRenewFilter(
+            pathWithoutExtension.Trim(),
+            leaseToken,
+            renewedAtUtc);
+        UpdateDefinition<ImageDocument> update =
+            Builders<ImageDocument>.Update.Set(
+                static document => document.VariantGenerationClaimedUntil,
+                leaseUntilUtc);
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            filter,
+            update,
+            cancellationToken: cancellationToken);
+        return result.MatchedCount > 0;
+    }
+
     internal static FilterDefinition<ImageDocument> BuildAcquireFilter(
         string pathWithoutExtension,
         DateTime acquiredAtUtc)
@@ -116,5 +145,26 @@ public sealed class MongoImageVariantGenerationLease : IImageVariantGenerationLe
             & builder.Eq(
                 static document => document.VariantGenerationClaimToken,
                 leaseToken);
+    }
+
+    internal static FilterDefinition<ImageDocument> BuildRenewFilter(
+        string pathWithoutExtension,
+        string leaseToken,
+        DateTime renewedAtUtc)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder =
+            Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> cleanupAvailableFilter =
+            builder.Eq(static document => document.CleanupClaimToken, null)
+            | builder.Lte(
+                static document => document.CleanupClaimedUntil,
+                renewedAtUtc);
+        return builder.Eq(
+                static document => document.Path,
+                pathWithoutExtension)
+            & builder.Eq(
+                static document => document.VariantGenerationClaimToken,
+                leaseToken)
+            & cleanupAvailableFilter;
     }
 }

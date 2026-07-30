@@ -17,7 +17,7 @@ namespace AmusementPark.Infrastructure.Services.Images;
 /// <summary>
 /// Stockage binaire MinIO des variantes d'images avec compression et watermark.
 /// </summary>
-public sealed class MinioImageBinaryStorage : IImageBinaryStorage
+public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
 {
     private const string WatermarkBaseText = "AMUSEMENT-PARKS";
     private const string WatermarkDotText = ".";

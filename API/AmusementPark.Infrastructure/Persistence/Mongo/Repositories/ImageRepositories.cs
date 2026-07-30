@@ -377,22 +377,11 @@ public sealed class ImageRepository : IImageRepository
                 builder.Lte(
                     static document => document.CleanupCommentRevision,
                     targetCommentRevision));
-        UpdateDefinitionBuilder<ImageDocument> updateBuilder =
-            Builders<ImageDocument>.Update;
-        UpdateDefinition<ImageDocument> update = updateBuilder
-            .Set(
-                static document => document.CommentReuseReservationToken,
-                reservationToken)
-            .Set(
-                static document => document.CommentReuseReconcileAfter,
-                reconcileAfterUtc)
-            .Set(
-                static document => document.CommentReuseTargetRevision,
-                targetCommentRevision)
-            .Unset(static document => document.CleanupRequestedAt)
-            .Unset(static document => document.CleanupCommentRevision)
-            .Unset(static document => document.ReservationReconcileAfter)
-            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
+        UpdateDefinition<ImageDocument> update =
+            BuildPreparePublishedCommentImageReuseUpdate(
+                reservationToken,
+                reconcileAfterUtc,
+                targetCommentRevision);
         FindOneAndUpdateOptions<ImageDocument> options =
             new FindOneAndUpdateOptions<ImageDocument>
             {
@@ -435,6 +424,31 @@ public sealed class ImageRepository : IImageRepository
             StringComparison.Ordinal)
             ? PublishedCommentImageReusePreparation.PreparedAndCleanupCleared
             : PublishedCommentImageReusePreparation.Prepared;
+    }
+
+    internal static UpdateDefinition<ImageDocument>
+        BuildPreparePublishedCommentImageReuseUpdate(
+            string reservationToken,
+            DateTime reconcileAfterUtc,
+            long targetCommentRevision)
+    {
+        return Builders<ImageDocument>.Update
+            .Set(
+                static document => document.CommentReuseReservationToken,
+                reservationToken)
+            .Set(
+                static document => document.CommentReuseReconcileAfter,
+                reconcileAfterUtc)
+            .Set(
+                static document => document.CommentReuseTargetRevision,
+                targetCommentRevision)
+            .Set(
+                static document => document.CommentReuseExpiresAt,
+                reconcileAfterUtc.Add(ReservationMaximumLifetime))
+            .Unset(static document => document.CleanupRequestedAt)
+            .Unset(static document => document.CleanupCommentRevision)
+            .Unset(static document => document.ReservationReconcileAfter)
+            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
     }
 
     public Task<bool> FinalizePublishedCommentImageReuseAsync(
@@ -495,6 +509,8 @@ public sealed class ImageRepository : IImageRepository
                     static document => document.CommentReuseReconcileAfter)
                 .Unset(
                     static document => document.CommentReuseTargetRevision)
+                .Unset(
+                    static document => document.CommentReuseExpiresAt)
                 .Unset(static document => document.CleanupClaimToken)
                 .Unset(static document => document.CleanupClaimedUntil)
                 .Set(static document => document.UpdatedAt, DateTime.UtcNow);
@@ -570,6 +586,7 @@ public sealed class ImageRepository : IImageRepository
             .Unset(static document => document.CommentReuseReservationToken)
             .Unset(static document => document.CommentReuseReconcileAfter)
             .Unset(static document => document.CommentReuseTargetRevision)
+            .Unset(static document => document.CommentReuseExpiresAt)
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
         if (cleanupRequestedAtUtc.HasValue)
         {

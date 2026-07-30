@@ -355,7 +355,7 @@ public sealed class UploadImageCommandHandlerTests
                 CleanupRequestedAtUtc = request.CleanupRequestedAtUtc,
             });
         storage.InSequence(sequence)
-            .Setup(value => value.SaveWithoutMetadataAsync(
+            .Setup(value => value.SaveCommentDraftWithoutMetadataAsync(
                 It.Is<string>(path => path.StartsWith("comment/", StringComparison.Ordinal)),
                 file,
                 true,
@@ -540,7 +540,7 @@ public sealed class UploadImageCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(draft);
         storage.InSequence(sequence)
-            .Setup(value => value.SaveWithoutMetadataAsync(
+            .Setup(value => value.SaveCommentDraftWithoutMetadataAsync(
                 It.IsAny<string>(),
                 file,
                 true,
@@ -614,7 +614,7 @@ public sealed class UploadImageCommandHandlerTests
                 IsPublished = false,
             });
         storage.InSequence(sequence)
-            .Setup(value => value.SaveWithoutMetadataAsync(
+            .Setup(value => value.SaveCommentDraftWithoutMetadataAsync(
                 It.IsAny<string>(),
                 file,
                 true,
@@ -691,7 +691,7 @@ public sealed class UploadImageCommandHandlerTests
                 IsPublished = false,
             });
         storage.InSequence(sequence)
-            .Setup(value => value.SaveWithoutMetadataAsync(
+            .Setup(value => value.SaveCommentDraftWithoutMetadataAsync(
                 It.IsAny<string>(),
                 file,
                 true,
@@ -770,7 +770,7 @@ public sealed class UploadImageCommandHandlerTests
                 IsPublished = false,
             });
         storage.InSequence(sequence)
-            .Setup(value => value.SaveWithoutMetadataAsync(
+            .Setup(value => value.SaveCommentDraftWithoutMetadataAsync(
                 It.IsAny<string>(),
                 file,
                 true,

@@ -132,6 +132,10 @@ public sealed class ImageDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public long? CommentReuseTargetRevision { get; set; }
 
+    [BsonElement("commentReuseExpiresAt")]
+    [BsonIgnoreIfNull]
+    public DateTime? CommentReuseExpiresAt { get; set; }
+
     [BsonElement("cleanupClaimToken")]
     [BsonIgnoreIfNull]
     public string? CleanupClaimToken { get; set; }

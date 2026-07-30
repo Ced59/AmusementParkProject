@@ -308,11 +308,16 @@ public sealed class CommentImageReconciler
                 cancellationToken);
         }
 
+        bool reuseReservationHardExpired =
+            image.CommentReuseExpiresAtUtc.HasValue
+                ? image.CommentReuseExpiresAtUtc.Value <= dueBeforeUtc
+                : image.CreatedAtUtc < draftCreatedBeforeUtc;
         if (hasReuseReservation
             && image.CommentReuseTargetRevision.HasValue
-            && ownerComment is not null
-            && ownerComment.Revision
-                < image.CommentReuseTargetRevision.Value)
+            && !reuseReservationHardExpired
+            && (ownerComment is null
+                || ownerComment.Revision
+                    < image.CommentReuseTargetRevision.Value))
         {
             return await this.imageRepository
                 .DeferClaimedPublishedCommentImageReuseAsync(

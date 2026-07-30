@@ -12,6 +12,13 @@ public interface IImageVariantGenerationLease
         DateTime leaseUntilUtc,
         CancellationToken cancellationToken);
 
+    Task<bool> RenewAsync(
+        string pathWithoutExtension,
+        string leaseToken,
+        DateTime renewedAtUtc,
+        DateTime leaseUntilUtc,
+        CancellationToken cancellationToken);
+
     Task ReleaseAsync(
         string pathWithoutExtension,
         string leaseToken,

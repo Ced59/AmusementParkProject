@@ -166,6 +166,8 @@ public sealed class Image : AuditableEntity
 
     public long? CommentReuseTargetRevision { get; set; }
 
+    public DateTime? CommentReuseExpiresAtUtc { get; set; }
+
     public bool CanBeUsedInComment(string actorUserId, string commentId)
     {
         bool isPublishedForComment =

@@ -165,6 +165,27 @@ public sealed class ImageRepositoryCommentDraftFilterTests
     }
 
     [Fact]
+    public void BuildPreparePublishedCommentImageReuseUpdate_ShouldSetImmutableExpiry()
+    {
+        DateTime reconcileAfterUtc =
+            new DateTime(2026, 7, 30, 12, 5, 0, DateTimeKind.Utc);
+        BsonDocument rendered = Render(
+            ImageRepository.BuildPreparePublishedCommentImageReuseUpdate(
+                "reuse-token",
+                reconcileAfterUtc,
+                5));
+        BsonDocument set = rendered["$set"].AsBsonDocument;
+
+        Assert.Equal(
+            new BsonDateTime(reconcileAfterUtc),
+            set["commentReuseReconcileAfter"]);
+        Assert.Equal(
+            new BsonDateTime(reconcileAfterUtc.AddHours(24)),
+            set["commentReuseExpiresAt"]);
+        Assert.Equal(5, set["commentReuseTargetRevision"].AsInt64);
+    }
+
+    [Fact]
     public void BuildCommentImageCleanupClaimFilter_ShouldRequireUnreservedEligibleDraft()
     {
         DateTime nowUtc =
@@ -250,6 +271,35 @@ public sealed class ImageRepositoryCommentDraftFilterTests
         Assert.Equal(
             "lease-owner",
             rendered["variantGenerationClaimToken"].AsString);
+    }
+
+    [Fact]
+    public void BuildVariantGenerationRenewFilter_ShouldRequireTokenAndNoActiveCleanup()
+    {
+        DateTime nowUtc =
+            new DateTime(2026, 7, 30, 12, 0, 0, DateTimeKind.Utc);
+        FilterDefinition<ImageDocument> filter =
+            MongoImageVariantGenerationLease.BuildRenewFilter(
+                "comment/image-1",
+                "lease-owner",
+                nowUtc);
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("comment/image-1", rendered["path"].AsString);
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "variantGenerationClaimToken",
+            new BsonString("lease-owner")));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "cleanupClaimToken",
+            BsonNull.Value));
+        Assert.True(ContainsFieldComparison(
+            rendered,
+            "cleanupClaimedUntil",
+            "$lte",
+            new BsonDateTime(nowUtc)));
     }
 
     [Fact]

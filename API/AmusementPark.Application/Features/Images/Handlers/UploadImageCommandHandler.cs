@@ -155,7 +155,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 IReadOnlyCollection<string> commentFiles;
                 try
                 {
-                    commentFiles = await this.imageBinaryStorage.SaveWithoutMetadataAsync(
+                    commentFiles = await this.imageBinaryStorage.SaveCommentDraftWithoutMetadataAsync(
                         storagePath,
                         command.Request.File,
                         withWatermark,
