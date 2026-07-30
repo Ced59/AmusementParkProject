@@ -162,7 +162,7 @@ public sealed class CommentImageManagerTests
     }
 
     [Fact]
-    public async Task PublishForCommentAsync_WhenLaterPublishedPreparationThrows_ShouldRestoreEarlierCleanup()
+    public async Task PublishForCommentAsync_WhenLaterPublishedPreparationThrows_ShouldRestoreEarlierAndCurrentCleanup()
     {
         const string secondImageId = "11111111111111111111111111111111";
         Image firstPublished = CreatePublished(ImageId);
@@ -187,11 +187,12 @@ public sealed class CommentImageManagerTests
             .ThrowsAsync(new InvalidOperationException("Preparation failed."));
         repository
             .Setup(value => value.RequestCommentImagesCleanupAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { ImageId })),
+                It.Is<IReadOnlyCollection<string>>(ids =>
+                    ids.SequenceEqual(new[] { ImageId, secondImageId })),
                 "comment-1",
                 It.IsAny<DateTime>(),
                 CancellationToken.None))
-            .ReturnsAsync(1);
+            .ReturnsAsync(2);
         CommentImageManager manager = new CommentImageManager(repository.Object);
 
         InvalidOperationException exception = await Assert.ThrowsAsync<InvalidOperationException>(
@@ -206,7 +207,7 @@ public sealed class CommentImageManagerTests
     }
 
     [Fact]
-    public async Task PublishForCommentAsync_WhenLaterPublishedPreparationIsCanceled_ShouldRestoreEarlierCleanup()
+    public async Task PublishForCommentAsync_WhenLaterPublishedPreparationIsCanceled_ShouldRestoreEarlierAndCurrentCleanup()
     {
         const string secondImageId = "11111111111111111111111111111111";
         Image firstPublished = CreatePublished(ImageId);
@@ -232,11 +233,12 @@ public sealed class CommentImageManagerTests
             .ThrowsAsync(new OperationCanceledException(cancellation.Token));
         repository
             .Setup(value => value.RequestCommentImagesCleanupAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { ImageId })),
+                It.Is<IReadOnlyCollection<string>>(ids =>
+                    ids.SequenceEqual(new[] { ImageId, secondImageId })),
                 "comment-1",
                 It.IsAny<DateTime>(),
                 CancellationToken.None))
-            .ReturnsAsync(1);
+            .ReturnsAsync(2);
         CommentImageManager manager = new CommentImageManager(repository.Object);
 
         OperationCanceledException exception = await Assert.ThrowsAsync<OperationCanceledException>(

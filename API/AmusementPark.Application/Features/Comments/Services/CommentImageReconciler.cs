@@ -164,6 +164,7 @@ public sealed class CommentImageReconciler
                 image.Id,
                 ImageOwnerType.Comment,
                 image.OwnerId,
+                image.CleanupRequestedAtUtc.Value,
                 claimToken,
                 cancellationToken);
         }

@@ -4,21 +4,58 @@ using AmusementPark.Core.Localization;
 
 namespace AmusementPark.Application.Features.Comments.Services;
 
-internal static class CommentCreatePersistenceRecovery
+internal static class CommentPersistenceRecovery
 {
-    public static async Task<Comment?> TryResolveAsync(
+    public static Task<Comment?> TryResolveCreateAsync(
         ICommentRepository commentRepository,
         Comment expected)
     {
         ArgumentNullException.ThrowIfNull(commentRepository);
         ArgumentNullException.ThrowIfNull(expected);
 
+        return TryResolveExactAsync(commentRepository, expected);
+    }
+
+    public static async Task<Comment?> UpdateAsync(
+        ICommentRepository commentRepository,
+        Comment expected,
+        long expectedRevision,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(commentRepository);
+        ArgumentNullException.ThrowIfNull(expected);
+
+        try
+        {
+            return await commentRepository.UpdateAsync(
+                expected,
+                expectedRevision,
+                cancellationToken);
+        }
+        catch
+        {
+            Comment? committed = await TryResolveExactAsync(
+                commentRepository,
+                expected);
+            if (committed is null)
+            {
+                throw;
+            }
+
+            return committed;
+        }
+    }
+
+    private static async Task<Comment?> TryResolveExactAsync(
+        ICommentRepository commentRepository,
+        Comment expected)
+    {
         try
         {
             Comment? candidate = await commentRepository.GetByIdAsync(
                 expected.Id,
                 CancellationToken.None);
-            return candidate is not null && MatchesExpectedCreate(expected, candidate)
+            return candidate is not null && MatchesExpectedState(expected, candidate)
                 ? candidate
                 : null;
         }
@@ -28,9 +65,10 @@ internal static class CommentCreatePersistenceRecovery
         }
     }
 
-    private static bool MatchesExpectedCreate(Comment expected, Comment candidate)
+    private static bool MatchesExpectedState(Comment expected, Comment candidate)
     {
         return string.Equals(candidate.Id, expected.Id, StringComparison.Ordinal)
+            && candidate.Revision == expected.Revision
             && candidate.TargetType == expected.TargetType
             && string.Equals(candidate.TargetId, expected.TargetId, StringComparison.Ordinal)
             && string.Equals(candidate.ParkId, expected.ParkId, StringComparison.Ordinal)

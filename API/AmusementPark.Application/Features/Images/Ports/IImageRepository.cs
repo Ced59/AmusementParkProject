@@ -39,6 +39,7 @@ public interface IImageRepository
         string imageId,
         ImageOwnerType ownerType,
         string ownerId,
+        DateTime observedCleanupRequestedAtUtc,
         string claimToken,
         CancellationToken cancellationToken);
     Task<IReadOnlyDictionary<string, string>> GetMainImageIdsByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory category, bool publishedOnly, CancellationToken cancellationToken);

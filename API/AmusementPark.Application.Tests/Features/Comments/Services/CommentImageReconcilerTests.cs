@@ -95,6 +95,7 @@ public sealed class CommentImageReconcilerTests
                 published.Id,
                 ImageOwnerType.Comment,
                 "comment-1",
+                published.CleanupRequestedAtUtc!.Value,
                 It.IsAny<string>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);

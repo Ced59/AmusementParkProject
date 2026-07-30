@@ -64,11 +64,13 @@ public sealed class CommentImageManager
         }
 
         List<string> preparedCleanupImageIds = new List<string>();
+        string? preparingPublishedImageId = null;
         try
         {
             foreach (Image published in images.Where(
                 static image => image.OwnerType == ImageOwnerType.Comment))
             {
+                preparingPublishedImageId = published.Id;
                 PublishedCommentImageReusePreparation preparation =
                     await this.imageRepository.TryPreparePublishedCommentImageForReuseAsync(
                         published.Id,
@@ -88,13 +90,22 @@ public sealed class CommentImageManager
                 {
                     preparedCleanupImageIds.Add(published.Id);
                 }
+
+                preparingPublishedImageId = null;
             }
         }
         catch
         {
+            List<string> cleanupImageIdsToRestore =
+                new List<string>(preparedCleanupImageIds);
+            if (!string.IsNullOrWhiteSpace(preparingPublishedImageId))
+            {
+                cleanupImageIdsToRestore.Add(preparingPublishedImageId);
+            }
+
             await this.RestorePreparedPublishedCleanupAsync(
                 commentId,
-                preparedCleanupImageIds);
+                cleanupImageIdsToRestore);
             throw;
         }
 
@@ -270,6 +281,15 @@ public sealed class CommentImageManager
         failedImageIds.AddRange(cleanupRestoreFailures);
 
         return failedImageIds;
+    }
+
+    public Task<IReadOnlyCollection<string>> RestorePreparedCleanupForCommentAsync(
+        string commentId,
+        CommentImageReservationBatch reservationBatch)
+    {
+        return this.RestorePreparedPublishedCleanupAsync(
+            commentId,
+            reservationBatch.PreparedCleanupImageIds);
     }
 
     private async Task<IReadOnlyCollection<string>> RestorePreparedPublishedCleanupAsync(

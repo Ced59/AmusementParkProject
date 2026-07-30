@@ -183,6 +183,77 @@ public sealed class ImageRepositoryCommentDraftFilterTests
             rendered["variantGenerationClaimToken"].AsString);
     }
 
+    [Fact]
+    public void BuildRequestCommentImagesCleanupFilter_ShouldAllowAnActiveClaim()
+    {
+        FilterDefinition<ImageDocument> filter =
+            ImageRepository.BuildRequestCommentImagesCleanupFilter(
+                new[] { "image-1" },
+                "comment-1");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.True(ContainsField(rendered, "_id"));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "ownerId",
+            new BsonString("comment-1")));
+        Assert.False(ContainsField(rendered, "cleanupClaimToken"));
+    }
+
+    [Fact]
+    public void BuildUnchangedClaimedCommentImageFilter_ShouldRequireTimestampAndToken()
+    {
+        DateTime observedCleanupUtc =
+            new DateTime(2026, 7, 30, 12, 0, 0, DateTimeKind.Utc);
+        FilterDefinition<ImageDocument> filter =
+            ImageRepository.BuildUnchangedClaimedCommentImageFilter(
+                "image-1",
+                AmusementPark.Core.Domain.Images.ImageOwnerType.Comment,
+                "comment-1",
+                observedCleanupUtc,
+                "claim-owner");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "cleanupClaimToken",
+            new BsonString("claim-owner")));
+        Assert.True(ContainsFieldValue(
+            rendered,
+            "cleanupRequestedAt",
+            new BsonDateTime(observedCleanupUtc)));
+    }
+
+    [Fact]
+    public void BuildReleaseCommentImageCleanupClaimUpdate_ShouldPreserveNewerRequest()
+    {
+        UpdateDefinition<ImageDocument> update =
+            ImageRepository.BuildReleaseCommentImageCleanupClaimUpdate();
+
+        BsonDocument rendered = Render(update);
+        BsonDocument unset = rendered["$unset"].AsBsonDocument;
+
+        Assert.True(unset.Contains("cleanupClaimToken"));
+        Assert.True(unset.Contains("cleanupClaimedUntil"));
+        Assert.False(unset.Contains("cleanupRequestedAt"));
+    }
+
+    [Fact]
+    public void BuildCancelClaimedCommentImageCleanupUpdate_ShouldClearUnchangedRequest()
+    {
+        UpdateDefinition<ImageDocument> update =
+            ImageRepository.BuildCancelClaimedCommentImageCleanupUpdate();
+
+        BsonDocument rendered = Render(update);
+        BsonDocument unset = rendered["$unset"].AsBsonDocument;
+
+        Assert.True(unset.Contains("cleanupClaimToken"));
+        Assert.True(unset.Contains("cleanupClaimedUntil"));
+        Assert.True(unset.Contains("cleanupRequestedAt"));
+    }
+
     private static BsonDocument Render(FilterDefinition<ImageDocument> filter)
     {
         IBsonSerializer<ImageDocument> serializer =
@@ -192,6 +263,17 @@ public sealed class ImageRepositoryCommentDraftFilterTests
                 serializer,
                 BsonSerializer.SerializerRegistry);
         return filter.Render(arguments);
+    }
+
+    private static BsonDocument Render(UpdateDefinition<ImageDocument> update)
+    {
+        IBsonSerializer<ImageDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ImageDocument>();
+        RenderArgs<ImageDocument> arguments =
+            new RenderArgs<ImageDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry);
+        return update.Render(arguments).AsBsonDocument;
     }
 
     private static bool ContainsFieldValue(
@@ -220,6 +302,21 @@ public sealed class ImageRepositoryCommentDraftFilterTests
         }
 
         return false;
+    }
+
+    private static bool ContainsField(
+        BsonValue value,
+        string fieldName)
+    {
+        if (value is BsonDocument document)
+        {
+            return document.Contains(fieldName)
+                || document.Elements.Any(
+                    element => ContainsField(element.Value, fieldName));
+        }
+
+        return value is BsonArray array
+            && array.Any(item => ContainsField(item, fieldName));
     }
 
     private static bool ContainsFieldComparison(

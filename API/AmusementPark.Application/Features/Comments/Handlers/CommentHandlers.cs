@@ -117,13 +117,14 @@ public sealed class CreateCommentCommandHandler : ICommandHandler<CreateCommentC
         catch
         {
             Comment? committed =
-                await CommentCreatePersistenceRecovery.TryResolveAsync(
+                await CommentPersistenceRecovery.TryResolveCreateAsync(
                     this.commentRepository,
                     comment);
             if (committed is null)
             {
                 // L'écriture Mongo peut encore être committée malgré l'exception ou l'annulation.
                 // La réservation reste privée jusqu'à ce que le reconciler vérifie la référence.
+                _ = await this.commentImageManager.RestorePreparedCleanupForCommentAsync(commentId, imageResult.Value);
                 throw;
             }
 
@@ -264,7 +265,6 @@ public sealed class UpdateCommentCommandHandler
             return ApplicationResult<CommentResult>.Failure(imageResult.Errors);
         }
 
-        Comment? updated;
         try
         {
             List<string> removedImageIds = comment.ImageIds
@@ -273,12 +273,6 @@ public sealed class UpdateCommentCommandHandler
             await this.commentImageManager.RequestRemovedCleanupAsync(
                 comment.Id,
                 removedImageIds,
-                cancellationToken);
-            long expectedRevision = comment.Revision;
-            comment.UpdateContent(bodiesResult.Value, imageIds, isOfficial);
-            updated = await this.commentRepository.UpdateAsync(
-                comment,
-                expectedRevision,
                 cancellationToken);
         }
         catch
@@ -290,6 +284,22 @@ public sealed class UpdateCommentCommandHandler
             throw;
         }
 
+        long expectedRevision = comment.Revision;
+        comment.UpdateContent(bodiesResult.Value, imageIds, isOfficial);
+        Comment? updated;
+        try
+        {
+            updated = await CommentPersistenceRecovery.UpdateAsync(
+                this.commentRepository,
+                comment,
+                expectedRevision,
+                cancellationToken);
+        }
+        catch
+        {
+            _ = await this.commentImageManager.RestorePreparedCleanupForCommentAsync(comment.Id, imageResult.Value);
+            throw;
+        }
         if (updated is null)
         {
             _ = await this.commentImageManager.ReleaseReservationsForCommentAsync(

@@ -318,29 +318,86 @@ public sealed class ImageRepository : IImageRepository
         string imageId,
         ImageOwnerType ownerType,
         string ownerId,
+        DateTime observedCleanupRequestedAtUtc,
         string claimToken,
         CancellationToken cancellationToken)
     {
-        FilterDefinition<ImageDocument> filter = BuildClaimedCommentImageFilter(
-            imageId,
-            ownerType,
-            ownerId,
-            claimToken);
-        UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
-            .Unset(static document => document.CleanupRequestedAt)
-            .Unset(static document => document.CleanupClaimToken)
-            .Unset(static document => document.CleanupClaimedUntil)
-            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
-        UpdateResult result = await this.collection.UpdateOneAsync(
-            filter,
-            update,
+        FilterDefinition<ImageDocument> unchangedCleanupFilter =
+            BuildUnchangedClaimedCommentImageFilter(
+                imageId,
+                ownerType,
+                ownerId,
+                observedCleanupRequestedAtUtc,
+                claimToken);
+        UpdateDefinition<ImageDocument> cancelCleanupUpdate =
+            BuildCancelClaimedCommentImageCleanupUpdate();
+        UpdateResult cancelResult = await this.collection.UpdateOneAsync(
+            unchangedCleanupFilter,
+            cancelCleanupUpdate,
             cancellationToken: cancellationToken);
-        if (result.ModifiedCount > 0)
+        if (cancelResult.MatchedCount > 0)
+        {
+            InvalidateReadCache();
+            return true;
+        }
+
+        FilterDefinition<ImageDocument> claimedFilter =
+            BuildClaimedCommentImageFilter(
+                imageId,
+                ownerType,
+                ownerId,
+                claimToken);
+        UpdateDefinition<ImageDocument> releaseClaimUpdate =
+            BuildReleaseCommentImageCleanupClaimUpdate();
+        UpdateResult releaseResult = await this.collection.UpdateOneAsync(
+            claimedFilter,
+            releaseClaimUpdate,
+            cancellationToken: cancellationToken);
+        if (releaseResult.ModifiedCount > 0)
         {
             InvalidateReadCache();
         }
 
-        return result.MatchedCount > 0;
+        return releaseResult.MatchedCount > 0;
+    }
+
+    internal static FilterDefinition<ImageDocument>
+        BuildUnchangedClaimedCommentImageFilter(
+            string imageId,
+            ImageOwnerType ownerType,
+            string ownerId,
+            DateTime observedCleanupRequestedAtUtc,
+            string claimToken)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder =
+            Builders<ImageDocument>.Filter;
+        return BuildClaimedCommentImageFilter(
+            imageId,
+            ownerType,
+            ownerId,
+            claimToken)
+            & builder.Eq(
+                static document => document.CleanupRequestedAt,
+                observedCleanupRequestedAtUtc);
+    }
+
+    internal static UpdateDefinition<ImageDocument>
+        BuildCancelClaimedCommentImageCleanupUpdate()
+    {
+        return Builders<ImageDocument>.Update
+            .Unset(static document => document.CleanupRequestedAt)
+            .Unset(static document => document.CleanupClaimToken)
+            .Unset(static document => document.CleanupClaimedUntil)
+            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
+    }
+
+    internal static UpdateDefinition<ImageDocument>
+        BuildReleaseCommentImageCleanupClaimUpdate()
+    {
+        return Builders<ImageDocument>.Update
+            .Unset(static document => document.CleanupClaimToken)
+            .Unset(static document => document.CleanupClaimedUntil)
+            .Set(static document => document.UpdatedAt, DateTime.UtcNow);
     }
 
     internal static FilterDefinition<ImageDocument> BuildCommentImageCleanupClaimFilter(
@@ -744,14 +801,10 @@ public sealed class ImageRepository : IImageRepository
             return 0;
         }
 
-        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
         FilterDefinition<ImageDocument> filter =
-            builder.In(static document => document.Id, normalizedIds)
-            & builder.Eq(static document => document.Category, ImageCategory.Comment)
-            & builder.Eq(static document => document.OwnerType, ImageOwnerType.Comment)
-            & builder.Eq(static document => document.OwnerId, commentId)
-            & builder.Eq(static document => document.IsPublished, true)
-            & builder.Eq(static document => document.CleanupClaimToken, null);
+            BuildRequestCommentImagesCleanupFilter(
+                normalizedIds,
+                commentId);
         UpdateDefinition<ImageDocument> update = Builders<ImageDocument>.Update
             .Set(static document => document.CleanupRequestedAt, cleanupRequestedAtUtc)
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
@@ -765,6 +818,24 @@ public sealed class ImageRepository : IImageRepository
         }
 
         return checked((int)result.MatchedCount);
+    }
+
+    internal static FilterDefinition<ImageDocument>
+        BuildRequestCommentImagesCleanupFilter(
+            IReadOnlyCollection<string> imageIds,
+            string commentId)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder =
+            Builders<ImageDocument>.Filter;
+        return builder.In(static document => document.Id, imageIds)
+            & builder.Eq(
+                static document => document.Category,
+                ImageCategory.Comment)
+            & builder.Eq(
+                static document => document.OwnerType,
+                ImageOwnerType.Comment)
+            & builder.Eq(static document => document.OwnerId, commentId)
+            & builder.Eq(static document => document.IsPublished, true);
     }
 
     public async Task<Image?> SetCurrentAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken)
