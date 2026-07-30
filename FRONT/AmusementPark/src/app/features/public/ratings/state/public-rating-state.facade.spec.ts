@@ -26,6 +26,10 @@ class FakeDestroyRef implements DestroyRef {
 
 class FakeRatingsPort implements PublicRatingRatingsPort {
   readonly upsertCalls: UserRatingUpsertRequest[] = [];
+  readonly getSummaryCalls: Array<{
+    targetType: RatingTargetType;
+    targetId: string;
+  }> = [];
   readonly getMyRatingCalls: Array<{
     targetType: RatingTargetType;
     targetId: string;
@@ -36,6 +40,14 @@ class FakeRatingsPort implements PublicRatingRatingsPort {
   }> = [];
   ratingResponse: UserRating = createUserRating(4.5, 3, 4.5);
   myRatingResponse: UserRating | null = null;
+  summaryResponse: RatingSummary = {
+    targetType: 'ParkItem',
+    targetId: 'item-1',
+    ratingCount: 1,
+    averageRating: 4,
+    bayesianScore: 3.4,
+    rank: 7,
+  };
   deleteResponse: RatingSummary = {
     targetType: 'ParkItem',
     targetId: 'item-1',
@@ -43,6 +55,14 @@ class FakeRatingsPort implements PublicRatingRatingsPort {
     averageRating: 4,
     bayesianScore: 3.4,
   };
+
+  getSummary(
+    targetType: RatingTargetType,
+    targetId: string,
+  ): Observable<RatingSummary> {
+    this.getSummaryCalls.push({ targetType, targetId });
+    return of(this.summaryResponse);
+  }
 
   getMyRating(
     targetType: RatingTargetType,
@@ -132,6 +152,7 @@ describe('PublicRatingStateFacade', () => {
       ratingCount: 2,
       averageRating: 4,
       bayesianScore: 3.58,
+      rank: 1,
     });
 
     expect(port.getMyRatingCalls).toEqual([
@@ -139,6 +160,7 @@ describe('PublicRatingStateFacade', () => {
     ]);
     expect(facade.userRatingValue()).toBe(3.5);
     expect(facade.summary()?.averageRating).toBe(4);
+    expect(port.getSummaryCalls).toEqual([]);
   });
 
   it('ignores a user rating returned for another target', () => {
@@ -194,6 +216,10 @@ describe('PublicRatingStateFacade', () => {
     const authService: FakeAuthService = new FakeAuthService();
     authService.token = 'token';
     port.ratingResponse = createUserRating(4.5, 5, 4.2);
+    port.summaryResponse = {
+      ...port.ratingResponse.summary,
+      rank: 3,
+    };
     const toastMessageService: FakeToastMessageService =
       new FakeToastMessageService();
     const facade: PublicRatingStateFacade = createFacade(
@@ -212,6 +238,11 @@ describe('PublicRatingStateFacade', () => {
     expect(facade.userRatingValue()).toBe(4.5);
     expect(facade.summary()?.ratingCount).toBe(5);
     expect(facade.summary()?.averageRating).toBe(4.2);
+    expect(facade.summary()?.rank).toBe(3);
+    expect(port.getSummaryCalls).toEqual([
+      { targetType: 'ParkItem', targetId: 'item-1' },
+      { targetType: 'ParkItem', targetId: 'item-1' },
+    ]);
     expect(facade.saving()).toBe(false);
     expect(facade.messageKey()).toBeNull();
     expect(toastMessageService.messages).toEqual([
@@ -229,6 +260,10 @@ describe('PublicRatingStateFacade', () => {
     authService.loggedIn = true;
     authService.token = 'token';
     port.myRatingResponse = createUserRating(4.5, 2, 4.5);
+    port.summaryResponse = {
+      ...port.deleteResponse,
+      rank: 9,
+    };
     const toastMessageService: FakeToastMessageService =
       new FakeToastMessageService();
     const facade: PublicRatingStateFacade = createFacade(
@@ -247,6 +282,7 @@ describe('PublicRatingStateFacade', () => {
     expect(facade.userRatingValue()).toBeNull();
     expect(facade.summary()?.ratingCount).toBe(1);
     expect(facade.summary()?.averageRating).toBe(4);
+    expect(facade.summary()?.rank).toBe(9);
     expect(facade.saving()).toBe(false);
     expect(toastMessageService.messages).toEqual([
       {

@@ -55,7 +55,7 @@
     "tabs": {
       "label": "Profile sections",
       "profile": "Profile",
-      "ratings": "Ratings"
+      "ratings": "My ranking"
     }
   },
   "admin": {
@@ -2946,10 +2946,10 @@
       "catalogTitle": "Parks and attractions in one place",
       "catalogText": "Move from a park to its attractions, photos and useful references without getting lost."
     },
-    "heroTitleFind": "Find",
-    "heroTitleYour": "your",
-    "heroTitleThrill": "thrill",
-    "heroTitlePerfect": "perfect",
+    "heroTitleFind": "Find, rate",
+    "heroTitleYour": "and plan your",
+    "heroTitleThrill": "perfect",
+    "heroTitlePerfect": "thrill",
     "stats": {
       "ariaLabel": "Public catalog statistics",
       "parks": "Listed parks",
@@ -4024,7 +4024,8 @@
       "errorMessage": "Your rating could not be saved right now.",
       "removeErrorMessage": "Your rating could not be removed right now.",
       "savedToast": "Your rating has been saved.",
-      "removedToast": "Your rating has been removed."
+      "removedToast": "Your rating has been removed.",
+      "rankLabel": "No. {{rank}} in the ranking"
     },
     "tree": {
       "detailAction": "View detail",
@@ -4033,10 +4034,10 @@
       "scoreAria": "Rating {{value}} out of 5"
     },
     "profile": {
-      "kicker": "My ratings",
-      "title": "Your park notes",
-      "subtitle": "Find the places you rated and the parks you tend to enjoy most.",
-      "loading": "Loading your ratings...",
+      "kicker": "My ranking",
+      "title": "Your personal ranking",
+      "subtitle": "Rank the parks and places you rated according to your own preferences.",
+      "loading": "Loading your ranking...",
       "emptyTitle": "No rating yet",
       "emptyText": "Rate a park or a place to start building your personal view.",
       "stats": {
@@ -4049,8 +4050,11 @@
       "byKind": "By type",
       "unknownPark": "Linked park",
       "communityAverage": "Average rating",
-      "searchLabel": "Search your rated parks",
-      "searchPlaceholder": "Find a park in your ratings",
+      "filtersLabel": "Filter your ranking",
+      "searchLabel": "Search your ranking",
+      "searchPlaceholder": "Find a park in your ranking",
+      "parkItemSearchPlaceholder": "Find a place or its park",
+      "yourRatingLabel": "Your rating",
       "searchAction": "Search",
       "clearSearch": "Clear search",
       "ratingCount": {
@@ -4060,7 +4064,9 @@
         "other": "{{count}} ratings"
       },
       "loadMore": "Load more ratings",
-      "loadingMore": "Loading ratings..."
+      "loadingMore": "Loading parks...",
+      "loadMoreItems": "Load more places",
+      "loadingMoreItems": "Loading places..."
     },
     "rankings": {
       "kicker": "Community favorites",
@@ -4097,12 +4103,17 @@
       "rankingScore": "Aggregated ranking score",
       "parkSignal": "Direct park rating",
       "itemsSignal": "Average for all places",
-      "searchLabel": "Search a park in rankings",
+      "attractionTypeLabel": "Attraction type",
+      "allAttractionTypes": "All attraction types",
+      "searchLabel": "Search the ranking",
       "searchPlaceholder": "Find a park in the ranking",
+      "parkItemSearchPlaceholder": "Find a place or its park",
       "searchAction": "Search",
       "clearSearch": "Clear search",
       "loadMore": "Load more parks",
-      "loadingMore": "Loading parks..."
+      "loadingMore": "Loading parks...",
+      "loadMoreItems": "Load more places",
+      "loadingMoreItems": "Loading places..."
     },
     "targetTypes": {
       "Park": "Parks",

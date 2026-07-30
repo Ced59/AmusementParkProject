@@ -4,7 +4,7 @@
     "placeWithCount": { "one": "{{count}} plek", "few": "{{count}} plekken", "many": "{{count}} plekken", "other": "{{count}} plekken" },
     "rollerCoaster": { "one": "Achtbaan", "few": "Achtbanen", "many": "Achtbanen", "other": "Achtbanen" },
     "waterRide": { "one": "Waterattractie", "few": "Waterattracties", "many": "Waterattracties", "other": "Waterattracties" },
-    "flatRide": { "one": "Kermisattractie", "few": "Kermisattracties", "many": "Kermisattracties", "other": "Kermisattracties" },
+    "flatRide": { "one": "Flat ride", "few": "Flat rides", "many": "Flat rides", "other": "Flat rides" },
     "darkRide": { "one": "Darkride", "few": "Darkrides", "many": "Darkrides", "other": "Darkrides" },
     "manufacturerFound": { "one": "{{count}} bouwer gevonden", "few": "{{count}} bouwers gevonden", "many": "{{count}} bouwers gevonden", "other": "{{count}} bouwers gevonden" },
     "parkOnMap": { "one": "{{count}} park op de kaart", "few": "{{count}} parken op de kaart", "many": "{{count}} parken op de kaart", "other": "{{count}} parken op de kaart" },

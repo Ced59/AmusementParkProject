@@ -8,6 +8,7 @@ export interface RatingSummary {
   ratingCount: number;
   averageRating: number;
   bayesianScore: number;
+  rank?: number | null;
 }
 
 export interface UserRatingUpsertRequest {
@@ -91,5 +92,42 @@ export interface ParkRatingRanking {
   categories: ParkRatingRankingCategory[];
 }
 
+export interface ParkItemRatingRanking {
+  rank: number;
+  targetId: string;
+  targetName: string;
+  parkId: string;
+  parkName: string;
+  parkItemCategory: string;
+  parkItemType?: string | null;
+  ratingCount: number;
+  averageRating: number;
+  bayesianScore: number;
+}
+
+export interface UserParkRatingRankingCategory {
+  parkItemCategory: string;
+  averageRating: number;
+  items: UserRatingListItem[];
+}
+
+export interface UserParkRatingRanking {
+  rank: number;
+  parkId: string;
+  parkName: string;
+  ratingCount: number;
+  averageRating: number;
+  parkRating?: UserRatingListItem | null;
+  categories: UserParkRatingRankingCategory[];
+}
+
+export interface UserParkItemRatingRanking {
+  rank: number;
+  rating: UserRatingListItem;
+}
+
 export type UserRatingsPage = PagedResult<UserRatingListItem>;
 export type RatingRankingsPage = PagedResult<ParkRatingRanking>;
+export type ParkItemRatingRankingsPage = PagedResult<ParkItemRatingRanking>;
+export type UserParkRatingRankingsPage = PagedResult<UserParkRatingRanking>;
+export type UserParkItemRatingRankingsPage = PagedResult<UserParkItemRatingRanking>;

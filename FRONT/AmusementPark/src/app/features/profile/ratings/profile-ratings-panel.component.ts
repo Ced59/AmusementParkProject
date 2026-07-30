@@ -2,8 +2,21 @@ import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, compute
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { UserRatingListItem, UserRatingStatBucket, UserRatingStats } from '@app/models/ratings/rating.models';
+import {
+  UserParkItemRatingRanking,
+  UserParkRatingRanking,
+  UserParkRatingRankingCategory,
+  UserRatingListItem,
+  UserRatingStatBucket,
+  UserRatingStats
+} from '@app/models/ratings/rating.models';
+import { ParkItemType } from '@app/models/parks/park-item-type';
 import { TranslationService } from '@app/services/translation.service';
+import {
+  RatingRankingListComponent,
+  RatingRankingListItem,
+  RatingRankingListRatingChange
+} from '@shared/components/rating-ranking-list/rating-ranking-list.component';
 import {
   RatingTreeComponent,
   RatingTreeEditableScore,
@@ -13,14 +26,14 @@ import {
   RatingTreeSection
 } from '@shared/components/rating-tree/rating-tree.component';
 import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { ATTRACTION_TYPE_OPTIONS, TranslationOption } from '@shared/utils/display/display-options';
 import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
 import { ProfileRatingsStateFacade } from './profile-ratings-state.facade';
 
-interface ProfileRatingSectionGroup {
+interface ProfileRankingFilter {
   key: string;
-  titleKey: string;
-  order: number;
-  ratings: UserRatingListItem[];
+  labelKey: string;
+  category: string | null;
 }
 
 @Component({
@@ -31,6 +44,7 @@ interface ProfileRatingSectionGroup {
   providers: [ProfileRatingsStateFacade],
   imports: [
     RatingTreeComponent,
+    RatingRankingListComponent,
     TranslateModule,
     UiButtonDirective,
     UiSectionHeaderComponent
@@ -39,16 +53,48 @@ interface ProfileRatingSectionGroup {
 export class ProfileRatingsPanelComponent implements OnInit {
   protected readonly searchTerm = signal<string>('');
   protected readonly currentLang = signal<string>('en');
+  protected readonly filters: readonly ProfileRankingFilter[] = [
+    { key: 'all', labelKey: 'ratings.rankings.filters.all', category: null },
+    { key: 'attractions', labelKey: 'ratings.rankings.filters.attractions', category: 'Attraction' },
+    { key: 'restaurants', labelKey: 'ratings.rankings.filters.restaurants', category: 'Restaurant' },
+    { key: 'hotels', labelKey: 'ratings.rankings.filters.hotels', category: 'Hotel' },
+    { key: 'services', labelKey: 'ratings.rankings.filters.services', category: 'Service' }
+  ];
+  protected readonly currentFilter = signal<ProfileRankingFilter>(this.filters[0]);
+  protected readonly selectedAttractionType = signal<ParkItemType | null>(null);
+  protected readonly attractionTypeOptions: ReadonlyArray<TranslationOption<ParkItemType>> = ATTRACTION_TYPE_OPTIONS;
   protected readonly loading: Signal<boolean> = this.stateFacade.loading;
   protected readonly loadingMore: Signal<boolean> = this.stateFacade.loadingMore;
   protected readonly hasMore: Signal<boolean> = this.stateFacade.hasMore;
-  protected readonly ratings: Signal<UserRatingListItem[]> = this.stateFacade.ratings;
+  protected readonly parkRankings: Signal<UserParkRatingRanking[]> = this.stateFacade.parkRankings;
+  protected readonly parkItemRankings: Signal<UserParkItemRatingRanking[]> = this.stateFacade.parkItemRankings;
   protected readonly stats: Signal<UserRatingStats | null> = this.stateFacade.stats;
   protected readonly isEmpty: Signal<boolean> = this.stateFacade.isEmpty;
   protected readonly savingRatingIds: Signal<ReadonlySet<string>> = this.stateFacade.savingRatingIds;
+  protected readonly isParkItemRanking: Signal<boolean> = computed(() => this.currentFilter().category !== null);
   protected readonly ratingParks: Signal<RatingTreePark[]> = computed(() => {
     const language: string = this.currentLang();
-    return this.groupRatingsByPark(this.ratings(), language, this.savingRatingIds());
+    const savingRatingIds: ReadonlySet<string> = this.savingRatingIds();
+    return this.parkRankings().map((ranking: UserParkRatingRanking): RatingTreePark => {
+      return this.mapParkRanking(ranking, language, savingRatingIds);
+    });
+  });
+  protected readonly rankedParkItems: Signal<RatingRankingListItem[]> = computed(() => {
+    const language: string = this.currentLang();
+    const savingRatingIds: ReadonlySet<string> = this.savingRatingIds();
+    return this.parkItemRankings().map((ranking: UserParkItemRatingRanking): RatingRankingListItem => {
+      const rating: UserRatingListItem = ranking.rating;
+      return {
+        id: rating.id,
+        rank: ranking.rank,
+        name: rating.targetName,
+        score: rating.value,
+        route: this.targetRoute(rating, language),
+        parkName: rating.parkName || rating.parkId,
+        parkRoute: this.parkRoute(rating.parkId, rating.parkName || rating.parkId, language),
+        editable: this.editableScore(rating.id, savingRatingIds)
+      };
+    });
   });
 
   constructor(
@@ -67,24 +113,48 @@ export class ProfileRatingsPanelComponent implements OnInit {
     });
   }
 
+  protected selectFilter(filter: ProfileRankingFilter): void {
+    this.currentFilter.set(filter);
+    this.selectedAttractionType.set(null);
+    this.stateFacade.load(1, filter.category, this.searchTerm());
+  }
+
+  protected selectAttractionType(value: string): void {
+    const selectedType: ParkItemType | null = value.trim().length > 0
+      ? value as ParkItemType
+      : null;
+    this.selectedAttractionType.set(selectedType);
+    this.stateFacade.load(1, this.currentFilter().category, this.searchTerm(), selectedType);
+  }
+
   protected updateSearchTerm(value: string): void {
     this.searchTerm.set(value);
   }
 
   protected applySearch(): void {
-    this.stateFacade.load(1, this.searchTerm());
+    this.stateFacade.load(
+      1,
+      this.currentFilter().category,
+      this.searchTerm(),
+      this.selectedAttractionType()
+    );
   }
 
   protected clearSearch(): void {
     this.searchTerm.set('');
-    this.stateFacade.load();
+    this.stateFacade.load(
+      1,
+      this.currentFilter().category,
+      null,
+      this.selectedAttractionType()
+    );
   }
 
   protected loadMore(): void {
     this.stateFacade.loadMore();
   }
 
-  protected updateRating(change: RatingTreeRatingChange): void {
+  protected updateRating(change: RatingTreeRatingChange | RatingRankingListRatingChange): void {
     this.stateFacade.updateRating(change.ratingId, change.value);
   }
 
@@ -105,6 +175,58 @@ export class ProfileRatingsPanelComponent implements OnInit {
 
     const keyPrefix: string = kind === 'targetType' ? 'ratings.targetTypes' : 'ratings.categories';
     return `${keyPrefix}.${bucket.key}`;
+  }
+
+  private mapParkRanking(
+    ranking: UserParkRatingRanking,
+    language: string,
+    savingRatingIds: ReadonlySet<string>
+  ): RatingTreePark {
+    const itemRatings: UserRatingListItem[] = ranking.categories.flatMap(
+      (category: UserParkRatingRankingCategory): UserRatingListItem[] => category.items
+    );
+    return {
+      id: ranking.parkId,
+      rank: ranking.rank,
+      name: ranking.parkName,
+      score: ranking.averageRating,
+      ratingCount: ranking.ratingCount,
+      route: this.parkRoute(ranking.parkId, ranking.parkName, language),
+      metrics: this.buildMetrics(ranking.parkRating ?? null, itemRatings),
+      sections: ranking.categories.map((category: UserParkRatingRankingCategory): RatingTreeSection => {
+        return {
+          id: category.parkItemCategory,
+          titleKey: `ratings.categories.${category.parkItemCategory}`,
+          score: category.averageRating,
+          items: category.items.map((rating: UserRatingListItem) => {
+            return {
+              id: rating.id,
+              name: rating.targetName,
+              score: rating.value,
+              route: this.targetRoute(rating, language),
+              editable: this.editableScore(rating.id, savingRatingIds)
+            };
+          })
+        };
+      })
+    };
+  }
+
+  private buildMetrics(
+    parkRating: UserRatingListItem | null,
+    itemRatings: UserRatingListItem[]
+  ): RatingTreeMetric[] {
+    return [
+      {
+        labelKey: 'ratings.rankings.parkSignal',
+        value: parkRating?.value ?? 0,
+        editable: parkRating ? this.editableScore(parkRating.id, this.savingRatingIds()) : null
+      },
+      {
+        labelKey: 'ratings.rankings.itemsSignal',
+        value: this.averageRating(itemRatings)
+      }
+    ];
   }
 
   private targetRoute(rating: UserRatingListItem, language: string): string[] | null {
@@ -133,162 +255,15 @@ export class ProfileRatingsPanelComponent implements OnInit {
     });
   }
 
-  private groupRatingsByPark(ratings: UserRatingListItem[], language: string, savingRatingIds: ReadonlySet<string>): RatingTreePark[] {
-    const groups = new Map<string, UserRatingListItem[]>();
-    for (const rating of ratings) {
-      const key: string = rating.parkId || rating.targetId;
-      const existingRatings: UserRatingListItem[] | undefined = groups.get(key);
-      if (existingRatings) {
-        existingRatings.push(rating);
-      } else {
-        groups.set(key, [rating]);
-      }
-    }
-
-    return Array.from(groups.entries()).map(([parkId, groupRatings]: [string, UserRatingListItem[]]) => {
-      const ratingSum: number = groupRatings.reduce((sum: number, rating: UserRatingListItem) => sum + rating.value, 0);
-      const parkRatings: UserRatingListItem[] = groupRatings.filter((rating: UserRatingListItem): boolean => rating.targetType === 'Park');
-      const itemRatings: UserRatingListItem[] = groupRatings.filter((rating: UserRatingListItem): boolean => rating.targetType !== 'Park');
-      const parkName: string = groupRatings[0]?.parkName || groupRatings[0]?.targetName || parkId;
-      return {
-        id: parkId,
-        rank: null,
-        name: parkName,
-        score: ratingSum / Math.max(groupRatings.length, 1),
-        ratingCount: groupRatings.length,
-        route: this.parkRoute(parkId, parkName, language),
-        metrics: this.buildMetrics(parkRatings, itemRatings, savingRatingIds),
-        sections: this.groupRatingsBySection(itemRatings, language, savingRatingIds)
-      };
-    }).sort((left: RatingTreePark, right: RatingTreePark) => {
-      if (right.score !== left.score) {
-        return right.score - left.score;
-      }
-
-      if (right.ratingCount !== left.ratingCount) {
-        return right.ratingCount - left.ratingCount;
-      }
-
-      return left.name.localeCompare(right.name);
-    });
-  }
-
-  private buildMetrics(
-    parkRatings: UserRatingListItem[],
-    itemRatings: UserRatingListItem[],
-    savingRatingIds: ReadonlySet<string>
-  ): RatingTreeMetric[] {
-    const parkRating: UserRatingListItem | undefined = parkRatings[0];
-    return [
-      {
-        labelKey: 'ratings.rankings.parkSignal',
-        value: this.averageRating(parkRatings),
-        editable: parkRating ? this.editableScore(parkRating.id, savingRatingIds) : null
-      },
-      { labelKey: 'ratings.rankings.itemsSignal', value: this.averageRating(itemRatings) }
-    ];
-  }
-
-  private groupRatingsBySection(
-    ratings: UserRatingListItem[],
-    language: string,
-    savingRatingIds: ReadonlySet<string>
-  ): RatingTreeSection[] {
-    const groups = new Map<string, ProfileRatingSectionGroup>();
-
-    for (const rating of ratings) {
-      const section: ProfileRatingSectionGroup = this.resolveSectionGroup(rating);
-      const existingSection: ProfileRatingSectionGroup | undefined = groups.get(section.key);
-      if (existingSection) {
-        existingSection.ratings.push(rating);
-      } else {
-        groups.set(section.key, {
-          ...section,
-          ratings: [rating]
-        });
-      }
-    }
-
-    return Array.from(groups.values()).sort((left: ProfileRatingSectionGroup, right: ProfileRatingSectionGroup) => {
-      if (left.order !== right.order) {
-        return left.order - right.order;
-      }
-
-      return left.titleKey.localeCompare(right.titleKey);
-    }).map((section: ProfileRatingSectionGroup): RatingTreeSection => {
-      const ratingSum: number = section.ratings.reduce((sum: number, rating: UserRatingListItem) => sum + rating.value, 0);
-      return {
-        id: section.key,
-        titleKey: section.titleKey,
-        score: ratingSum / Math.max(section.ratings.length, 1),
-        items: [...section.ratings].sort((left: UserRatingListItem, right: UserRatingListItem) => {
-          if (right.value !== left.value) {
-            return right.value - left.value;
-          }
-
-          return left.targetName.localeCompare(right.targetName);
-        }).map((rating: UserRatingListItem) => {
-          return {
-            id: rating.id,
-            name: rating.targetName,
-            score: rating.value,
-            route: this.targetRoute(rating, language),
-            editable: this.editableScore(rating.id, savingRatingIds)
-          };
-        })
-      };
-    });
-  }
-
-  private resolveSectionGroup(rating: UserRatingListItem): ProfileRatingSectionGroup {
-    if (rating.parkItemCategory) {
-      return {
-        key: rating.parkItemCategory,
-        titleKey: `ratings.categories.${rating.parkItemCategory}`,
-        order: this.categoryOrder(rating.parkItemCategory),
-        ratings: []
-      };
-    }
-
-    return {
-      key: 'ParkItem',
-      titleKey: 'ratings.targetTypes.ParkItem',
-      order: 99,
-      ratings: []
-    };
-  }
-
-  private categoryOrder(category: string): number {
-    switch (category) {
-      case 'Attraction':
-        return 10;
-      case 'Restaurant':
-        return 20;
-      case 'Hotel':
-        return 30;
-      case 'Animal':
-        return 40;
-      case 'Show':
-        return 50;
-      case 'Shop':
-        return 60;
-      case 'Service':
-        return 70;
-      case 'Transport':
-        return 80;
-      case 'Other':
-        return 90;
-      default:
-        return 100;
-    }
-  }
-
   private averageRating(ratings: UserRatingListItem[]): number {
     if (ratings.length === 0) {
       return 0;
     }
 
-    const ratingSum: number = ratings.reduce((sum: number, rating: UserRatingListItem) => sum + rating.value, 0);
+    const ratingSum: number = ratings.reduce(
+      (sum: number, rating: UserRatingListItem): number => sum + rating.value,
+      0
+    );
     return ratingSum / ratings.length;
   }
 

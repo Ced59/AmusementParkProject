@@ -113,6 +113,44 @@ describe('RatingsApiService', () => {
     expect(items[0]?.parkName).toBe('Demo Park');
   });
 
+  it('loads a true park item ranking filtered by attraction type', () => {
+    service.getParkItemRankings(
+      1,
+      20,
+      'Attraction',
+      'FlatRide',
+      'Talocan',
+    ).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}ratings/rankings/park-items?page=1&size=20&category=Attraction&type=FlatRide&search=Talocan`,
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({
+      data: [],
+      pagination: { page: 1, pageSize: 20, totalItems: 0, totalPages: 0 },
+    });
+  });
+
+  it('loads the authenticated personal park item ranking', () => {
+    service.getMyParkItemRankings(
+      2,
+      10,
+      'Attraction',
+      'RollerCoaster',
+      null,
+    ).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}ratings/me/rankings/park-items?page=2&size=10&category=Attraction&type=RollerCoaster`,
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({
+      data: [],
+      pagination: { page: 2, pageSize: 10, totalItems: 0, totalPages: 0 },
+    });
+  });
+
   function createUserRating(): UserRating {
     return {
       id: 'rating-1',

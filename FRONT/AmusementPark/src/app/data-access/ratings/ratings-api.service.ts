@@ -6,13 +6,19 @@ import { environment } from '../../../environments/environment';
 import {
   RatingRankingsPage,
   ParkRatingRanking,
+  ParkItemRatingRanking,
+  ParkItemRatingRankingsPage,
   RatingSummary,
   RatingTargetType,
   UserRating,
   UserRatingListItem,
   UserRatingStats,
   UserRatingUpsertRequest,
-  UserRatingsPage
+  UserRatingsPage,
+  UserParkItemRatingRanking,
+  UserParkItemRatingRankingsPage,
+  UserParkRatingRanking,
+  UserParkRatingRankingsPage
 } from '@app/models/ratings/rating.models';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
 import { RATINGS_API_ENDPOINTS } from './ratings-api-endpoints';
@@ -66,10 +72,44 @@ export class RatingsApiService {
     return this.http.get<UserRatingStats>(url);
   }
 
+  getMyParkRankings(page: number = 1, size: number = 10, search: string | null = null): Observable<UserParkRatingRankingsPage> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyParkRankings(page, size, search)}`;
+    return this.http.get<PagedCollectionResponse<UserParkRatingRanking>>(url).pipe(
+      map((response: PagedCollectionResponse<UserParkRatingRanking>) => unwrapPagedCollection<UserParkRatingRanking>(response))
+    );
+  }
+
+  getMyParkItemRankings(
+    page: number,
+    size: number,
+    category: string,
+    type: string | null = null,
+    search: string | null = null
+  ): Observable<UserParkItemRatingRankingsPage> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyParkItemRankings(page, size, category, type, search)}`;
+    return this.http.get<PagedCollectionResponse<UserParkItemRatingRanking>>(url).pipe(
+      map((response: PagedCollectionResponse<UserParkItemRatingRanking>) => unwrapPagedCollection<UserParkItemRatingRanking>(response))
+    );
+  }
+
   getRankings(page: number = 1, size: number = 20, category: string | null = null, search: string | null = null, options: RatingsHttpOptions = {}): Observable<RatingRankingsPage> {
     const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getRankings(page, size, category, search)}`;
     return this.http.get<PagedCollectionResponse<ParkRatingRanking>>(url, options).pipe(
       map((response: PagedCollectionResponse<ParkRatingRanking>) => unwrapPagedCollection<ParkRatingRanking>(response))
+    );
+  }
+
+  getParkItemRankings(
+    page: number,
+    size: number,
+    category: string,
+    type: string | null = null,
+    search: string | null = null,
+    options: RatingsHttpOptions = {}
+  ): Observable<ParkItemRatingRankingsPage> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getParkItemRankings(page, size, category, type, search)}`;
+    return this.http.get<PagedCollectionResponse<ParkItemRatingRanking>>(url, options).pipe(
+      map((response: PagedCollectionResponse<ParkItemRatingRanking>) => unwrapPagedCollection<ParkItemRatingRanking>(response))
     );
   }
 }

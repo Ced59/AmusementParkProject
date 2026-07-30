@@ -25,7 +25,7 @@ public static class UseCaseCatalog
             ["Search"] = new[] { "Search" },
             ["DataSources"] = new[] { "ListDataSources", "GetDataSourceStatus", "GetDataSourceSettings", "UpdateDataSourceSettings", "GetLatestDataSourceSession", "GetDataSourceSession", "GetDataSourceComparisonResults", "StartDataSourceImport", "ApplyDataSourceComparison" },
             ["AdminAudit"] = new[] { "GetAdminAuditLogs" },
-            ["Ratings"] = new[] { "UpsertUserRating", "GetRatingSummary", "GetUserRating", "ListUserRatings", "GetUserRatingStats", "GetRatingRankings" },
+            ["Ratings"] = new[] { "UpsertUserRating", "GetRatingSummary", "GetUserRating", "ListUserRatings", "GetUserRatingStats", "GetRatingRankings", "GetParkItemRatingRankings", "GetUserParkRatingRankings", "GetUserParkItemRatingRankings" },
             ["TechnicalPages"] = new[] { "GetTechnicalPages", "GetTechnicalPageById", "GetTechnicalPageBySlug", "CreateTechnicalPage", "UpdateTechnicalPage", "UpsertTechnicalPagesJson" },
             ["History"] = new[] { "GetParkHistoryTimeline", "GetParkItemHistoryTimeline", "GetHistoryArticle", "GetHistoryEventsPage", "UpsertHistoryEvent", "DeleteHistoryEvent" },
             ["Comments"] = new[] { "CreateComment", "GetCommentSummary", "GetCommentThread" },

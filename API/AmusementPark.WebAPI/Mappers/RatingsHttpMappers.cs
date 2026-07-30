@@ -17,6 +17,11 @@ internal static class RatingsHttpMappers
         return Enum.TryParse(value, true, out ParkItemCategory parsed) ? parsed : null;
     }
 
+    public static ParkItemType? ToParkItemTypeFilter(this string? value)
+    {
+        return Enum.TryParse(value, true, out ParkItemType parsed) ? parsed : null;
+    }
+
     public static RatingSummaryDto ToHttp(this RatingSummaryResult value)
     {
         return new RatingSummaryDto
@@ -26,6 +31,7 @@ internal static class RatingsHttpMappers
             RatingCount = value.RatingCount,
             AverageRating = value.AverageRating,
             BayesianScore = value.BayesianScore,
+            Rank = value.Rank,
         };
     }
 
@@ -95,6 +101,46 @@ internal static class RatingsHttpMappers
         };
     }
 
+    public static ParkItemRatingRankingDto ToHttp(this ParkItemRatingRankingResult value)
+    {
+        return new ParkItemRatingRankingDto
+        {
+            Rank = value.Rank,
+            TargetId = value.TargetId,
+            TargetName = value.TargetName,
+            ParkId = value.ParkId,
+            ParkName = value.ParkName,
+            ParkItemCategory = value.ParkItemCategory.ToString(),
+            ParkItemType = value.ParkItemType?.ToString(),
+            RatingCount = value.RatingCount,
+            AverageRating = value.AverageRating,
+            BayesianScore = value.BayesianScore,
+        };
+    }
+
+    public static UserParkRatingRankingDto ToHttp(this UserParkRatingRankingResult value)
+    {
+        return new UserParkRatingRankingDto
+        {
+            Rank = value.Rank,
+            ParkId = value.ParkId,
+            ParkName = value.ParkName,
+            RatingCount = value.RatingCount,
+            AverageRating = value.AverageRating,
+            ParkRating = value.ParkRating?.ToHttp(),
+            Categories = value.Categories.Select(static category => category.ToHttp()).ToList(),
+        };
+    }
+
+    public static UserParkItemRatingRankingDto ToHttp(this UserParkItemRatingRankingResult value)
+    {
+        return new UserParkItemRatingRankingDto
+        {
+            Rank = value.Rank,
+            Rating = value.Rating.ToHttp(),
+        };
+    }
+
     private static UserRatingStatBucketDto ToHttp(this UserRatingStatBucketResult value)
     {
         return new UserRatingStatBucketDto
@@ -129,6 +175,16 @@ internal static class RatingsHttpMappers
             RatingCount = value.RatingCount,
             AverageRating = value.AverageRating,
             BayesianScore = value.BayesianScore,
+        };
+    }
+
+    private static UserParkRatingRankingCategoryDto ToHttp(this UserParkRatingRankingCategoryResult value)
+    {
+        return new UserParkRatingRankingCategoryDto
+        {
+            ParkItemCategory = value.ParkItemCategory.ToString(),
+            AverageRating = value.AverageRating,
+            Items = value.Items.Select(static item => item.ToHttp()).ToList(),
         };
     }
 }

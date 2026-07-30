@@ -55,7 +55,7 @@
     "tabs": {
       "label": "Rubriques du profil",
       "profile": "Profil",
-      "ratings": "Notes"
+      "ratings": "Mon classement"
     }
   },
   "admin": {
@@ -2946,8 +2946,8 @@
       "catalogTitle": "Parcs et attractions au même endroit",
       "catalogText": "Passe d’un parc à ses attractions, photos et références utiles sans te perdre."
     },
-    "heroTitleFind": "Trouve",
-    "heroTitleYour": "ton",
+    "heroTitleFind": "Trouve, note",
+    "heroTitleYour": "et planifie ton",
     "heroTitleThrill": "frisson",
     "heroTitlePerfect": "parfait",
     "stats": {
@@ -3030,7 +3030,7 @@
     "types": {
       "rollerCoaster": "Montagnes russes",
       "waterRide": "Attractions aquatiques",
-      "flatRide": "Attractions à plat",
+      "flatRide": "Flat Rides",
       "darkRide": "Parcours scéniques",
       "familyRide": "Attractions familiales",
       "thrillRide": "Attractions à sensations",
@@ -3855,10 +3855,10 @@
       "other": "Attractions aquatiques"
     },
     "flatRide": {
-      "one": "Manège",
-      "few": "Manèges",
-      "many": "Manèges",
-      "other": "Manèges"
+      "one": "Flat Ride",
+      "few": "Flat Rides",
+      "many": "Flat Rides",
+      "other": "Flat Rides"
     },
     "darkRide": {
       "one": "Parcours scénique",
@@ -4024,7 +4024,8 @@
       "errorMessage": "Ta note ne peut pas être enregistrée pour le moment.",
       "removeErrorMessage": "Ta note ne peut pas être effacée pour le moment.",
       "savedToast": "Ta note a bien été enregistrée.",
-      "removedToast": "Ta note a bien été effacée."
+      "removedToast": "Ta note a bien été effacée.",
+      "rankLabel": "N° {{rank}} au classement"
     },
     "tree": {
       "detailAction": "Voir détail",
@@ -4033,10 +4034,10 @@
       "scoreAria": "Note {{value}} sur 5"
     },
     "profile": {
-      "kicker": "Mes notes",
-      "title": "Tes notes de visite",
-      "subtitle": "Retrouve les lieux que tu as notés et les parcs qui ressortent le mieux dans tes choix.",
-      "loading": "Chargement de tes notes...",
+      "kicker": "Mon classement",
+      "title": "Ton classement personnel",
+      "subtitle": "Classe les parcs et les lieux que tu as notés selon tes propres préférences.",
+      "loading": "Chargement de ton classement...",
       "emptyTitle": "Aucune note pour l'instant",
       "emptyText": "Note un parc ou un lieu pour commencer à construire ta sélection personnelle.",
       "stats": {
@@ -4049,8 +4050,11 @@
       "byKind": "Par type",
       "unknownPark": "Parc associé",
       "communityAverage": "Note moyenne",
-      "searchLabel": "Rechercher dans tes parcs notés",
-      "searchPlaceholder": "Trouver un parc dans tes notes",
+      "filtersLabel": "Filtrer ton classement",
+      "searchLabel": "Rechercher dans ton classement",
+      "searchPlaceholder": "Trouver un parc dans ton classement",
+      "parkItemSearchPlaceholder": "Trouver un lieu ou son parc",
+      "yourRatingLabel": "Ta note",
       "searchAction": "Rechercher",
       "clearSearch": "Effacer la recherche",
       "ratingCount": {
@@ -4060,7 +4064,9 @@
         "other": "{{count}} notes"
       },
       "loadMore": "Charger plus de notes",
-      "loadingMore": "Chargement des notes..."
+      "loadingMore": "Chargement des parcs...",
+      "loadMoreItems": "Charger plus de lieux",
+      "loadingMoreItems": "Chargement des lieux..."
     },
     "rankings": {
       "kicker": "Coups de coeur visiteurs",
@@ -4097,12 +4103,17 @@
       "rankingScore": "Score agrégé du classement",
       "parkSignal": "Note directe du parc",
       "itemsSignal": "Moyenne de tous les lieux",
-      "searchLabel": "Rechercher un parc dans le classement",
+      "attractionTypeLabel": "Type d’attraction",
+      "allAttractionTypes": "Tous les types d’attractions",
+      "searchLabel": "Rechercher dans le classement",
       "searchPlaceholder": "Trouver un parc dans le classement",
+      "parkItemSearchPlaceholder": "Trouver un lieu ou son parc",
       "searchAction": "Rechercher",
       "clearSearch": "Effacer la recherche",
       "loadMore": "Charger plus de parcs",
-      "loadingMore": "Chargement des parcs..."
+      "loadingMore": "Chargement des parcs...",
+      "loadMoreItems": "Charger plus de lieux",
+      "loadingMoreItems": "Chargement des lieux..."
     },
     "targetTypes": {
       "Park": "Parcs",

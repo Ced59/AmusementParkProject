@@ -17,6 +17,7 @@ class FakePublicRatingStateFacade {
     ratingCount: 2,
     averageRating: 4,
     bayesianScore: 3.5,
+    rank: 4,
   });
   readonly saving: WritableSignal<boolean> = signal<boolean>(false);
   readonly messageKey: WritableSignal<string | null> = signal<string | null>(null);
@@ -61,6 +62,7 @@ describe('RatingStarsComponent', () => {
           clearRating: 'Effacer ma note',
           clearRatingConfirm: 'Veux-tu vraiment effacer ta note ?',
           prompt: 'Choisis ta note',
+          rankLabel: 'Classé #{{rank}}',
         },
       },
       publicCounts: {
@@ -98,6 +100,13 @@ describe('RatingStarsComponent', () => {
       'Veux-tu vraiment effacer ta note ?',
     );
     expect(facade.removeRating).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows the target place when it belongs to a ranking', () => {
+    const rank: HTMLElement | null =
+      fixture.nativeElement.querySelector('.rating-stars__rank');
+
+    expect(rank?.textContent?.trim()).toBe('Classé #4');
   });
 
   it('keeps the rating when removal is not confirmed', () => {

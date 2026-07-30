@@ -31,12 +31,26 @@
     }
   </nav>
 
+  @if (currentFilter().category === 'Attraction') {
+    <label class="rankings-type-filter">
+      <span>{{ 'ratings.rankings.attractionTypeLabel' | translate }}</span>
+      <select
+        [value]="selectedAttractionType() || ''"
+        (change)="selectAttractionType($any($event.target).value)">
+        <option value="">{{ 'ratings.rankings.allAttractionTypes' | translate }}</option>
+        @for (option of attractionTypeOptions; track option.value) {
+          <option [value]="option.value">{{ option.labelKey | translate }}</option>
+        }
+      </select>
+    </label>
+  }
+
   <section class="rankings-search" [attr.aria-label]="'ratings.rankings.searchLabel' | translate">
     <i class="pi pi-search" aria-hidden="true"></i>
     <input
       type="search"
       [value]="searchTerm()"
-      [placeholder]="'ratings.rankings.searchPlaceholder' | translate"
+      [placeholder]="(isParkItemRanking() ? 'ratings.rankings.parkItemSearchPlaceholder' : 'ratings.rankings.searchPlaceholder') | translate"
       (input)="updateSearchTerm($any($event.target).value)"
       (keyup.enter)="applySearch()">
     <button appUiButton="primary" type="button" (click)="applySearch()">
@@ -51,19 +65,29 @@
 
   @if (loading()) {
     <div class="rankings-empty">{{ 'ratings.rankings.loading' | translate }}</div>
-  } @else if (items().length === 0) {
+  } @else if (!hasRankings()) {
     <div class="rankings-empty">{{ 'ratings.rankings.empty' | translate }}</div>
   } @else {
-    <app-rating-tree
-      [parks]="treeParks()"
-      totalRatingCountLabelKey="ratings.rankings.totalRatingCount"
-      parkScoreLabelKey="ratings.rankings.rankingScore">
-    </app-rating-tree>
+    @if (isParkItemRanking()) {
+      <app-rating-ranking-list
+        [items]="rankedParkItems()"
+        ratingCountLabelKey="ratings.rankings.ratingCount"
+        scoreLabelKey="ratings.stars.averageLabel">
+      </app-rating-ranking-list>
+    } @else {
+      <app-rating-tree
+        [parks]="treeParks()"
+        totalRatingCountLabelKey="ratings.rankings.totalRatingCount"
+        parkScoreLabelKey="ratings.rankings.rankingScore">
+      </app-rating-tree>
+    }
 
     @if (hasMore()) {
       <div class="rankings-more">
         <button appUiButton="primary" type="button" [disabled]="loadingMore()" (click)="loadMore()">
-          {{ (loadingMore() ? 'ratings.rankings.loadingMore' : 'ratings.rankings.loadMore') | translate }}
+          {{ (loadingMore()
+            ? (isParkItemRanking() ? 'ratings.rankings.loadingMoreItems' : 'ratings.rankings.loadingMore')
+            : (isParkItemRanking() ? 'ratings.rankings.loadMoreItems' : 'ratings.rankings.loadMore')) | translate }}
         </button>
       </div>
     }

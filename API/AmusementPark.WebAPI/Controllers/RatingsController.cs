@@ -33,6 +33,9 @@ public sealed class RatingsController : ControllerBase
     private readonly IQueryHandler<ListUserRatingsQuery, ApplicationResult<PagedResult<UserRatingListItemResult>>> listUserRatingsQueryHandler;
     private readonly IQueryHandler<GetUserRatingStatsQuery, ApplicationResult<UserRatingStatsResult>> getUserRatingStatsQueryHandler;
     private readonly IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<ParkRatingRankingResult>>> getRatingRankingsQueryHandler;
+    private readonly IQueryHandler<GetParkItemRatingRankingsQuery, ApplicationResult<PagedResult<ParkItemRatingRankingResult>>> getParkItemRatingRankingsQueryHandler;
+    private readonly IQueryHandler<GetUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>> getUserParkRatingRankingsQueryHandler;
+    private readonly IQueryHandler<GetUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>> getUserParkItemRatingRankingsQueryHandler;
 
     public RatingsController(
         ICommandHandler<UpsertUserRatingCommand, ApplicationResult<UserRatingResult>> upsertUserRatingCommandHandler,
@@ -41,7 +44,10 @@ public sealed class RatingsController : ControllerBase
         IQueryHandler<GetUserRatingQuery, ApplicationResult<UserRatingResult?>> getUserRatingQueryHandler,
         IQueryHandler<ListUserRatingsQuery, ApplicationResult<PagedResult<UserRatingListItemResult>>> listUserRatingsQueryHandler,
         IQueryHandler<GetUserRatingStatsQuery, ApplicationResult<UserRatingStatsResult>> getUserRatingStatsQueryHandler,
-        IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<ParkRatingRankingResult>>> getRatingRankingsQueryHandler)
+        IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<ParkRatingRankingResult>>> getRatingRankingsQueryHandler,
+        IQueryHandler<GetParkItemRatingRankingsQuery, ApplicationResult<PagedResult<ParkItemRatingRankingResult>>> getParkItemRatingRankingsQueryHandler,
+        IQueryHandler<GetUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>> getUserParkRatingRankingsQueryHandler,
+        IQueryHandler<GetUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>> getUserParkItemRatingRankingsQueryHandler)
     {
         this.upsertUserRatingCommandHandler = upsertUserRatingCommandHandler;
         this.deleteUserRatingCommandHandler = deleteUserRatingCommandHandler;
@@ -50,6 +56,9 @@ public sealed class RatingsController : ControllerBase
         this.listUserRatingsQueryHandler = listUserRatingsQueryHandler;
         this.getUserRatingStatsQueryHandler = getUserRatingStatsQueryHandler;
         this.getRatingRankingsQueryHandler = getRatingRankingsQueryHandler;
+        this.getParkItemRatingRankingsQueryHandler = getParkItemRatingRankingsQueryHandler;
+        this.getUserParkRatingRankingsQueryHandler = getUserParkRatingRankingsQueryHandler;
+        this.getUserParkItemRatingRankingsQueryHandler = getUserParkItemRatingRankingsQueryHandler;
     }
 
     [HttpGet("{targetType}/{targetId}/summary")]
@@ -93,6 +102,40 @@ public sealed class RatingsController : ControllerBase
         return this.Ok(result.Value.ToPagedResponse(static item => item.ToHttp()));
     }
 
+    [HttpGet("rankings/park-items")]
+    [AllowAnonymous]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
+    [ProducesResponseType(typeof(PagedResponseDto<ParkItemRatingRankingDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetParkItemRankingsAsync(
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? category = null,
+        [FromQuery] string? type = null,
+        [FromQuery] string? search = null,
+        CancellationToken cancellationToken = default)
+    {
+        ParkItemCategory? parsedCategory = category.ToParkItemCategoryFilter();
+        if (!parsedCategory.HasValue)
+        {
+            return this.BadRequest();
+        }
+
+        ApplicationResult<PagedResult<ParkItemRatingRankingResult>> result =
+            await this.getParkItemRatingRankingsQueryHandler.HandleAsync(
+                new GetParkItemRatingRankingsQuery(
+                    parsedCategory.Value,
+                    pagination.ToApplication(),
+                    search,
+                    type.ToParkItemTypeFilter()),
+                cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToPagedResponse(static item => item.ToHttp()));
+    }
+
     [HttpGet("me")]
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
@@ -115,6 +158,75 @@ public sealed class RatingsController : ControllerBase
         }
 
         return this.Ok(result.Value.ToPagedResponse(static rating => rating.ToHttp()));
+    }
+
+    [HttpGet("me/rankings/parks")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
+    [ProducesResponseType(typeof(PagedResponseDto<UserParkRatingRankingDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetMyParkRankingsAsync(
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? search = null,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.Unauthorized();
+        }
+
+        ApplicationResult<PagedResult<UserParkRatingRankingResult>> result =
+            await this.getUserParkRatingRankingsQueryHandler.HandleAsync(
+                new GetUserParkRatingRankingsQuery(userId, pagination.ToApplication(), search),
+                cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToPagedResponse(static ranking => ranking.ToHttp()));
+    }
+
+    [HttpGet("me/rankings/park-items")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
+    [ProducesResponseType(typeof(PagedResponseDto<UserParkItemRatingRankingDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetMyParkItemRankingsAsync(
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? category = null,
+        [FromQuery] string? type = null,
+        [FromQuery] string? search = null,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.Unauthorized();
+        }
+
+        ParkItemCategory? parsedCategory = category.ToParkItemCategoryFilter();
+        if (!parsedCategory.HasValue)
+        {
+            return this.BadRequest();
+        }
+
+        ApplicationResult<PagedResult<UserParkItemRatingRankingResult>> result =
+            await this.getUserParkItemRatingRankingsQueryHandler.HandleAsync(
+                new GetUserParkItemRatingRankingsQuery(
+                    userId,
+                    parsedCategory.Value,
+                    pagination.ToApplication(),
+                    search,
+                    type.ToParkItemTypeFilter()),
+                cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToPagedResponse(static ranking => ranking.ToHttp()));
     }
 
     [HttpGet("me/stats")]

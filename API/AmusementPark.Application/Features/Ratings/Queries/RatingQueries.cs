@@ -29,3 +29,21 @@ public sealed record GetRatingRankingsQuery(
     ParkItemCategory? ParkItemCategory,
     PagedQuery Paging,
     string? ParkSearch = null) : IQuery<ApplicationResult<PagedResult<ParkRatingRankingResult>>>;
+
+public sealed record GetParkItemRatingRankingsQuery(
+    ParkItemCategory ParkItemCategory,
+    PagedQuery Paging,
+    string? Search = null,
+    ParkItemType? ParkItemType = null) : IQuery<ApplicationResult<PagedResult<ParkItemRatingRankingResult>>>;
+
+public sealed record GetUserParkRatingRankingsQuery(
+    string UserId,
+    PagedQuery Paging,
+    string? ParkSearch = null) : IQuery<ApplicationResult<PagedResult<UserParkRatingRankingResult>>>;
+
+public sealed record GetUserParkItemRatingRankingsQuery(
+    string UserId,
+    ParkItemCategory ParkItemCategory,
+    PagedQuery Paging,
+    string? Search = null,
+    ParkItemType? ParkItemType = null) : IQuery<ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>>;

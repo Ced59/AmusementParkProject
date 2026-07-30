@@ -13,6 +13,9 @@ using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Application.Features.Parks.Results;
+using AmusementPark.Application.Features.Ratings.Queries;
+using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Parks;
 using AmusementPark.WebAPI.Contracts.Home;
@@ -42,6 +45,7 @@ public sealed class ParksController : ControllerBase
     private readonly ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler;
     private readonly IQueryHandler<GetParkByIdQuery, ApplicationResult<Park>> getParkByIdQueryHandler;
     private readonly IQueryHandler<GetParkDetailSummaryQuery, ApplicationResult<ParkDetailSummaryResult>> getParkDetailSummaryQueryHandler;
+    private readonly IQueryHandler<GetRatingSummaryQuery, ApplicationResult<RatingSummaryResult>> getRatingSummaryQueryHandler;
     private readonly IQueryHandler<GetParkMapItemsQuery, ApplicationResult<ParkMapItemsResult>> getParkMapItemsQueryHandler;
     private readonly IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>> getParksPageQueryHandler;
     private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksQueryHandler;
@@ -60,6 +64,7 @@ public sealed class ParksController : ControllerBase
         ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler,
         IQueryHandler<GetParkByIdQuery, ApplicationResult<Park>> getParkByIdQueryHandler,
         IQueryHandler<GetParkDetailSummaryQuery, ApplicationResult<ParkDetailSummaryResult>> getParkDetailSummaryQueryHandler,
+        IQueryHandler<GetRatingSummaryQuery, ApplicationResult<RatingSummaryResult>> getRatingSummaryQueryHandler,
         IQueryHandler<GetParkMapItemsQuery, ApplicationResult<ParkMapItemsResult>> getParkMapItemsQueryHandler,
         IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>> getParksPageQueryHandler,
         IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksQueryHandler,
@@ -77,6 +82,7 @@ public sealed class ParksController : ControllerBase
         this.createParkCommandHandler = createParkCommandHandler;
         this.getParkByIdQueryHandler = getParkByIdQueryHandler;
         this.getParkDetailSummaryQueryHandler = getParkDetailSummaryQueryHandler;
+        this.getRatingSummaryQueryHandler = getRatingSummaryQueryHandler;
         this.getParkMapItemsQueryHandler = getParkMapItemsQueryHandler;
         this.getParksPageQueryHandler = getParksPageQueryHandler;
         this.searchParksQueryHandler = searchParksQueryHandler;
@@ -184,7 +190,16 @@ public sealed class ParksController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        return this.Ok(result.Value.ToDetailSummaryHttp());
+        ParkDetailSummaryDto response = result.Value.ToDetailSummaryHttp();
+        ApplicationResult<RatingSummaryResult> ratingResult = await this.getRatingSummaryQueryHandler.HandleAsync(
+            new GetRatingSummaryQuery(RatingTargetType.Park, result.Value.Park.Id),
+            cancellationToken);
+        if (ratingResult.IsSuccess && ratingResult.Value is not null)
+        {
+            response.Rating = ratingResult.Value.ToHttp();
+        }
+
+        return this.Ok(response);
     }
 
     [HttpGet("{id}/map-items")]

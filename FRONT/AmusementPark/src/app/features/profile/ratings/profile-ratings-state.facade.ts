@@ -1,8 +1,18 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
-import { UserRating, UserRatingListItem, UserRatingStats, UserRatingUpsertRequest, UserRatingsPage } from '@app/models/ratings/rating.models';
+import {
+  UserParkItemRatingRanking,
+  UserParkItemRatingRankingsPage,
+  UserParkRatingRanking,
+  UserParkRatingRankingsPage,
+  UserRating,
+  UserRatingListItem,
+  UserRatingStats,
+  UserRatingUpsertRequest
+} from '@app/models/ratings/rating.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { PaginationContract } from '@shared/models/contracts';
 import { PROFILE_RATINGS_PORT, ProfileRatingsPort } from './profile-ratings-state-data.ports';
@@ -13,15 +23,19 @@ const PROFILE_RATINGS_PAGE_SIZE = 10;
 export class ProfileRatingsStateFacade {
   private readonly loadingSignal = signal<boolean>(false);
   private readonly loadingMoreSignal = signal<boolean>(false);
-  private readonly ratingsSignal = signal<UserRatingListItem[]>([]);
+  private readonly parkRankingsSignal = signal<UserParkRatingRanking[]>([]);
+  private readonly parkItemRankingsSignal = signal<UserParkItemRatingRanking[]>([]);
   private readonly statsSignal = signal<UserRatingStats | null>(null);
   private readonly paginationSignal = signal<PaginationContract | null>(null);
+  private readonly categorySignal = signal<string | null>(null);
+  private readonly parkItemTypeSignal = signal<string | null>(null);
   private readonly searchSignal = signal<string | null>(null);
   private readonly savingRatingIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
 
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly loadingMore: Signal<boolean> = this.loadingMoreSignal.asReadonly();
-  public readonly ratings: Signal<UserRatingListItem[]> = this.ratingsSignal.asReadonly();
+  public readonly parkRankings: Signal<UserParkRatingRanking[]> = this.parkRankingsSignal.asReadonly();
+  public readonly parkItemRankings: Signal<UserParkItemRatingRanking[]> = this.parkItemRankingsSignal.asReadonly();
   public readonly stats: Signal<UserRatingStats | null> = this.statsSignal.asReadonly();
   public readonly pagination: Signal<PaginationContract | null> = this.paginationSignal.asReadonly();
   public readonly savingRatingIds: Signal<ReadonlySet<string>> = this.savingRatingIdsSignal.asReadonly();
@@ -29,7 +43,11 @@ export class ProfileRatingsStateFacade {
     const pagination: PaginationContract | null = this.paginationSignal();
     return Boolean(pagination && pagination.currentPage < pagination.totalPages && !this.searchSignal());
   });
-  public readonly isEmpty: Signal<boolean> = computed(() => !this.loadingSignal() && this.ratingsSignal().length === 0);
+  public readonly isEmpty: Signal<boolean> = computed(() => {
+    return !this.loadingSignal()
+      && this.parkRankingsSignal().length === 0
+      && this.parkItemRankingsSignal().length === 0;
+  });
 
   constructor(
     @Inject(PROFILE_RATINGS_PORT) private readonly ratingsApiService: ProfileRatingsPort,
@@ -39,34 +57,40 @@ export class ProfileRatingsStateFacade {
   ) {
   }
 
-  load(page: number = 1, search: string | null = null): void {
+  load(
+    page: number = 1,
+    category: string | null = null,
+    search: string | null = null,
+    parkItemType: string | null = null
+  ): void {
+    this.categorySignal.set(category);
+    this.parkItemTypeSignal.set(category === 'Attraction' ? parkItemType : null);
     this.searchSignal.set(normalizeSearch(search));
     this.loadingSignal.set(true);
     this.loadingMoreSignal.set(false);
 
-    this.ratingsApiService.getMyRatings(page, PROFILE_RATINGS_PAGE_SIZE, this.searchSignal()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (result: UserRatingsPage): void => {
-        this.ratingsSignal.set(result.items);
+    this.loadRankings(page, category, this.parkItemTypeSignal(), this.searchSignal()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (result: UserParkRatingRankingsPage | UserParkItemRatingRankingsPage): void => {
+        if (category) {
+          this.parkRankingsSignal.set([]);
+          this.parkItemRankingsSignal.set(result.items as UserParkItemRatingRanking[]);
+        } else {
+          this.parkRankingsSignal.set(result.items as UserParkRatingRanking[]);
+          this.parkItemRankingsSignal.set([]);
+        }
         this.paginationSignal.set(result.pagination);
         this.loadingSignal.set(false);
       },
       error: (error: unknown): void => {
-        console.error('Error loading user ratings', error);
-        this.ratingsSignal.set([]);
+        console.error('Error loading user rankings', error);
+        this.parkRankingsSignal.set([]);
+        this.parkItemRankingsSignal.set([]);
         this.paginationSignal.set(null);
         this.loadingSignal.set(false);
       }
     });
 
-    this.ratingsApiService.getMyRatingStats().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (stats: UserRatingStats): void => {
-        this.statsSignal.set(stats);
-      },
-      error: (error: unknown): void => {
-        console.error('Error loading user rating stats', error);
-        this.statsSignal.set(null);
-      }
-    });
+    this.refreshStats();
   }
 
   loadMore(): void {
@@ -75,28 +99,43 @@ export class ProfileRatingsStateFacade {
       return;
     }
 
+    const category: string | null = this.categorySignal();
     this.loadingMoreSignal.set(true);
-    this.ratingsApiService.getMyRatings(pagination.currentPage + 1, PROFILE_RATINGS_PAGE_SIZE, null).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (result: UserRatingsPage): void => {
-        this.ratingsSignal.set([...this.ratingsSignal(), ...result.items]);
+    this.loadRankings(
+      pagination.currentPage + 1,
+      category,
+      this.parkItemTypeSignal(),
+      null
+    ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (result: UserParkRatingRankingsPage | UserParkItemRatingRankingsPage): void => {
+        if (category) {
+          this.parkItemRankingsSignal.set([
+            ...this.parkItemRankingsSignal(),
+            ...(result.items as UserParkItemRatingRanking[])
+          ]);
+        } else {
+          this.parkRankingsSignal.set([
+            ...this.parkRankingsSignal(),
+            ...(result.items as UserParkRatingRanking[])
+          ]);
+        }
         this.paginationSignal.set(result.pagination);
         this.loadingMoreSignal.set(false);
       },
       error: (error: unknown): void => {
-        console.error('Error loading more user ratings', error);
+        console.error('Error loading more user rankings', error);
         this.loadingMoreSignal.set(false);
       }
     });
   }
 
   updateRating(ratingId: string, value: number): void {
-    const existingRating: UserRatingListItem | undefined = this.ratingsSignal().find((rating: UserRatingListItem): boolean => rating.id === ratingId);
+    const existingRating: UserRatingListItem | null = this.findRating(ratingId);
     if (!existingRating || this.savingRatingIdsSignal().has(ratingId)) {
       return;
     }
 
     this.setRatingSaving(ratingId, true);
-
     const request: UserRatingUpsertRequest = {
       targetType: existingRating.targetType,
       targetId: existingRating.targetId,
@@ -111,22 +150,8 @@ export class ProfileRatingsStateFacade {
           return;
         }
 
-        this.ratingsSignal.set(this.ratingsSignal().map((currentRating: UserRatingListItem): UserRatingListItem => {
-          if (currentRating.id !== ratingId) {
-            return currentRating;
-          }
-
-          return {
-            ...currentRating,
-            parkItemCategory: rating.parkItemCategory,
-            parkItemType: rating.parkItemType,
-            value: rating.value,
-            updatedAtUtc: rating.updatedAtUtc,
-            summary: rating.summary
-          };
-        }));
-        this.refreshStats();
         this.setRatingSaving(ratingId, false);
+        this.load(1, this.categorySignal(), this.searchSignal(), this.parkItemTypeSignal());
         this.toastMessageService.add(
           'success',
           this.translateService.instant('common.success'),
@@ -141,6 +166,44 @@ export class ProfileRatingsStateFacade {
     });
   }
 
+  private loadRankings(
+    page: number,
+    category: string | null,
+    parkItemType: string | null,
+    search: string | null
+  ): Observable<UserParkRatingRankingsPage | UserParkItemRatingRankingsPage> {
+    return category
+      ? this.ratingsApiService.getMyParkItemRankings(
+        page,
+        PROFILE_RATINGS_PAGE_SIZE,
+        category,
+        parkItemType,
+        search
+      )
+      : this.ratingsApiService.getMyParkRankings(page, PROFILE_RATINGS_PAGE_SIZE, search);
+  }
+
+  private findRating(ratingId: string): UserRatingListItem | null {
+    for (const ranking of this.parkRankingsSignal()) {
+      if (ranking.parkRating?.id === ratingId) {
+        return ranking.parkRating;
+      }
+
+      for (const category of ranking.categories) {
+        const match: UserRatingListItem | undefined = category.items.find(
+          (rating: UserRatingListItem): boolean => rating.id === ratingId
+        );
+        if (match) {
+          return match;
+        }
+      }
+    }
+
+    return this.parkItemRankingsSignal().find(
+      (ranking: UserParkItemRatingRanking): boolean => ranking.rating.id === ratingId
+    )?.rating ?? null;
+  }
+
   private refreshStats(): void {
     this.ratingsApiService.getMyRatingStats().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (stats: UserRatingStats): void => {
@@ -148,6 +211,7 @@ export class ProfileRatingsStateFacade {
       },
       error: (error: unknown): void => {
         console.error('Error refreshing user rating stats', error);
+        this.statsSignal.set(null);
       }
     });
   }

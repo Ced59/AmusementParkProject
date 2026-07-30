@@ -16,7 +16,8 @@
       "errorMessage": "Je beoordeling kan nu niet worden opgeslagen.",
       "removeErrorMessage": "Je beoordeling kan nu niet worden gewist.",
       "savedToast": "Je beoordeling is opgeslagen.",
-      "removedToast": "Je beoordeling is gewist."
+      "removedToast": "Je beoordeling is gewist.",
+      "rankLabel": "Nr. {{rank}} in de ranglijst"
     },
     "tree": {
       "detailAction": "Details bekijken",
@@ -25,10 +26,10 @@
       "scoreAria": "Score {{value}} van 5"
     },
     "profile": {
-      "kicker": "Mijn beoordelingen",
-      "title": "Jouw bezoeknotities",
-      "subtitle": "Bekijk de plekken die je beoordeelde en de parken die voor jou het best scoren.",
-      "loading": "Je beoordelingen worden geladen...",
+      "kicker": "Mijn ranglijst",
+      "title": "Jouw persoonlijke ranglijst",
+      "subtitle": "Rangschik de parken en plekken die je beoordeelde volgens je eigen voorkeuren.",
+      "loading": "Je ranglijst wordt geladen...",
       "emptyTitle": "Nog geen beoordeling",
       "emptyText": "Beoordeel een park of plek om je persoonlijke overzicht te starten.",
       "stats": {
@@ -41,13 +42,18 @@
       "byKind": "Per type",
       "unknownPark": "Gekoppeld park",
       "communityAverage": "Gemiddelde",
-      "searchLabel": "Zoek in je beoordeelde parken",
-      "searchPlaceholder": "Vind een park in je beoordelingen",
+      "filtersLabel": "Filter je ranglijst",
+      "searchLabel": "Zoek in je ranglijst",
+      "searchPlaceholder": "Vind een park in je ranglijst",
+      "parkItemSearchPlaceholder": "Vind een plek of het bijbehorende park",
+      "yourRatingLabel": "Jouw beoordeling",
       "searchAction": "Zoeken",
       "clearSearch": "Zoekopdracht wissen",
       "ratingCount": { "one": "{{count}} beoordeling", "few": "{{count}} beoordelingen", "many": "{{count}} beoordelingen", "other": "{{count}} beoordelingen" },
       "loadMore": "Meer beoordelingen laden",
-      "loadingMore": "Beoordelingen laden..."
+      "loadingMore": "Parken laden...",
+      "loadMoreItems": "Meer plekken laden",
+      "loadingMoreItems": "Plekken laden..."
     },
     "rankings": {
       "kicker": "Bezoekersfavorieten",
@@ -74,12 +80,17 @@
       "rankingScore": "Samengestelde ranglijstscore",
       "parkSignal": "Directe parkbeoordeling",
       "itemsSignal": "Gemiddelde van alle plekken",
-      "searchLabel": "Zoek een park in ranglijsten",
+      "attractionTypeLabel": "Attractietype",
+      "allAttractionTypes": "Alle attractietypes",
+      "searchLabel": "Zoek in de ranglijst",
       "searchPlaceholder": "Vind een park in de ranglijst",
+      "parkItemSearchPlaceholder": "Vind een plek of het bijbehorende park",
       "searchAction": "Zoeken",
       "clearSearch": "Zoekopdracht wissen",
       "loadMore": "Meer parken laden",
-      "loadingMore": "Parken laden..."
+      "loadingMore": "Parken laden...",
+      "loadMoreItems": "Meer plekken laden",
+      "loadingMoreItems": "Plekken laden..."
     },
     "targetTypes": {
       "Park": "Parken",

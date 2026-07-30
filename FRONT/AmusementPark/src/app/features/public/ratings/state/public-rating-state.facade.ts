@@ -45,6 +45,9 @@ export class PublicRatingStateFacade {
 
     if (previousType !== targetType || previousId !== normalizedTargetId) {
       this.userRatingSignal.set(null);
+      if (summary?.rank === undefined) {
+        this.loadSummary(targetType, normalizedTargetId);
+      }
       this.loadUserRatingIfAuthenticated();
     }
   }
@@ -86,6 +89,7 @@ export class PublicRatingStateFacade {
 
             this.userRatingSignal.set(rating);
             this.summarySignal.set(rating.summary);
+            this.loadSummary(targetType, targetId);
             this.messageKeySignal.set(null);
             this.savingSignal.set(false);
             this.toastMessageService.add(
@@ -139,6 +143,7 @@ export class PublicRatingStateFacade {
 
             this.userRatingSignal.set(null);
             this.summarySignal.set(summary);
+            this.loadSummary(targetType, targetId);
             this.messageKeySignal.set(null);
             this.savingSignal.set(false);
             this.toastMessageService.add(
@@ -184,6 +189,21 @@ export class PublicRatingStateFacade {
         if (this.isCurrentTarget(targetType, targetId)) {
           this.userRatingSignal.set(null);
         }
+      }
+    });
+  }
+
+  private loadSummary(targetType: RatingTargetType, targetId: string): void {
+    this.ratingsApiService.getSummary(targetType, targetId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (summary: RatingSummary): void => {
+        if (this.isCurrentTarget(targetType, targetId)
+          && summary.targetType === targetType
+          && summary.targetId === targetId) {
+          this.summarySignal.set(summary);
+        }
+      },
+      error: (error: unknown): void => {
+        console.error('Error loading rating rank', error);
       }
     });
   }

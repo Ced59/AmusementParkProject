@@ -5,6 +5,7 @@ import { RatingSummary, RatingTargetType, UserRating, UserRatingUpsertRequest } 
 import { RatingsApiService } from '@data-access/ratings/ratings-api.service';
 
 export interface PublicRatingRatingsPort {
+  getSummary(targetType: RatingTargetType, targetId: string): Observable<RatingSummary>;
   getMyRating(targetType: RatingTargetType, targetId: string): Observable<UserRating | null>;
   deleteMyRating(targetType: RatingTargetType, targetId: string): Observable<RatingSummary>;
   upsertRating(request: UserRatingUpsertRequest): Observable<UserRating>;

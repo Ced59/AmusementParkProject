@@ -1,0 +1,64 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import {
+  COMMON_TEST_IMPORTS,
+  provideCommonTestDependencies,
+} from '@app/testing/common-test-providers';
+import {
+  RatingRankingListComponent,
+  RatingRankingListRatingChange,
+} from './rating-ranking-list.component';
+
+describe('RatingRankingListComponent', () => {
+  let fixture: ComponentFixture<RatingRankingListComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [...COMMON_TEST_IMPORTS, RatingRankingListComponent],
+      providers: provideCommonTestDependencies(),
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(RatingRankingListComponent);
+    fixture.componentRef.setInput('items', [
+      {
+        id: 'item-1',
+        rank: 3,
+        name: 'Taron',
+        score: 4.5,
+        ratingCount: 12,
+        route: ['/fr/parcs/park-1/attractions/item-1'],
+        parkName: 'Phantasialand',
+        parkRoute: ['/fr/parcs/park-1'],
+        editable: {
+          ratingId: 'rating-1',
+          saving: false,
+        },
+      },
+    ]);
+    fixture.detectChanges();
+  });
+
+  it('renders the item place with its parent park underneath', () => {
+    const item: HTMLElement | null =
+      fixture.nativeElement.querySelector('.rating-ranking-list__item');
+
+    expect(item?.textContent).toContain('#3');
+    expect(item?.textContent).toContain('Taron');
+    expect(item?.textContent).toContain('Phantasialand');
+  });
+
+  it('emits an inline personal rating change', () => {
+    const changes: RatingRankingListRatingChange[] = [];
+    fixture.componentInstance.ratingChange.subscribe(
+      (change: RatingRankingListRatingChange): void => {
+        changes.push(change);
+      },
+    );
+
+    const scoreButtons: NodeListOf<HTMLButtonElement> =
+      fixture.nativeElement.querySelectorAll('.rating-ranking-list__star-hit--right');
+    scoreButtons[3]?.click();
+
+    expect(changes).toEqual([{ ratingId: 'rating-1', value: 4 }]);
+  });
+});

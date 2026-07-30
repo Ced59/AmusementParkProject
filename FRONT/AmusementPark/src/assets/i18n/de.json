@@ -55,7 +55,7 @@
     "tabs": {
       "label": "Profilbereiche",
       "profile": "Profil",
-      "ratings": "Bewertungen"
+      "ratings": "Meine Rangliste"
     }
   },
   "admin": {
@@ -2946,10 +2946,10 @@
       "catalogTitle": "Parks und Attraktionen an einem Ort",
       "catalogText": "Wechsle vom Park zu seinen Attraktionen, Fotos und nützlichen Infos, ohne den Überblick zu verlieren."
     },
-    "heroTitleFind": "Finde",
-    "heroTitleYour": "deinen",
-    "heroTitleThrill": "Park",
-    "heroTitlePerfect": "perfekt",
+    "heroTitleFind": "Finde, bewerte",
+    "heroTitleYour": "und plane deinen",
+    "heroTitleThrill": "perfekten",
+    "heroTitlePerfect": "Nervenkitzel",
     "stats": {
       "ariaLabel": "Statistiken des öffentlichen Katalogs",
       "parks": "Erfasste Parks",
@@ -3030,7 +3030,7 @@
     "types": {
       "rollerCoaster": "Achterbahnen",
       "waterRide": "Wasserattraktionen",
-      "flatRide": "Flachfahrgeschäfte",
+      "flatRide": "Flat Rides",
       "darkRide": "Dark Rides",
       "familyRide": "Familienattraktionen",
       "thrillRide": "Thrill Rides",
@@ -3855,10 +3855,10 @@
       "other": "Wasserattraktionen"
     },
     "flatRide": {
-      "one": "Fahrgeschäft",
-      "few": "Fahrgeschäfte",
-      "many": "Fahrgeschäfte",
-      "other": "Fahrgeschäfte"
+      "one": "Flat Ride",
+      "few": "Flat Rides",
+      "many": "Flat Rides",
+      "other": "Flat Rides"
     },
     "darkRide": {
       "one": "Themenfahrt",
@@ -4024,7 +4024,8 @@
       "errorMessage": "Deine Bewertung konnte gerade nicht gespeichert werden.",
       "removeErrorMessage": "Deine Bewertung konnte gerade nicht gelöscht werden.",
       "savedToast": "Deine Bewertung wurde gespeichert.",
-      "removedToast": "Deine Bewertung wurde gelöscht."
+      "removedToast": "Deine Bewertung wurde gelöscht.",
+      "rankLabel": "Platz {{rank}} der Rangliste"
     },
     "tree": {
       "detailAction": "Details ansehen",
@@ -4033,10 +4034,10 @@
       "scoreAria": "Bewertung {{value}} von 5"
     },
     "profile": {
-      "kicker": "Meine Bewertungen",
-      "title": "Deine Besuchsnoten",
-      "subtitle": "Finde die Orte, die du bewertet hast, und die Parks, die dir besonders gefallen.",
-      "loading": "Deine Bewertungen werden geladen...",
+      "kicker": "Meine Rangliste",
+      "title": "Deine persönliche Rangliste",
+      "subtitle": "Ordne deine bewerteten Parks und Orte nach deinen eigenen Vorlieben.",
+      "loading": "Deine Rangliste wird geladen...",
       "emptyTitle": "Noch keine Bewertung",
       "emptyText": "Bewerte einen Park oder Ort, um deine persönliche Ansicht zu starten.",
       "stats": {
@@ -4049,8 +4050,11 @@
       "byKind": "Nach Typ",
       "unknownPark": "Zugehöriger Park",
       "communityAverage": "Durchschnitt",
-      "searchLabel": "Deine bewerteten Parks durchsuchen",
-      "searchPlaceholder": "Park in deinen Bewertungen finden",
+      "filtersLabel": "Deine Rangliste filtern",
+      "searchLabel": "Deine Rangliste durchsuchen",
+      "searchPlaceholder": "Park in deiner Rangliste finden",
+      "parkItemSearchPlaceholder": "Ort oder zugehörigen Park finden",
+      "yourRatingLabel": "Deine Bewertung",
       "searchAction": "Suchen",
       "clearSearch": "Suche löschen",
       "ratingCount": {
@@ -4060,7 +4064,9 @@
         "other": "{{count}} Bewertungen"
       },
       "loadMore": "Mehr Bewertungen laden",
-      "loadingMore": "Bewertungen werden geladen..."
+      "loadingMore": "Parks werden geladen...",
+      "loadMoreItems": "Mehr Orte laden",
+      "loadingMoreItems": "Orte werden geladen..."
     },
     "rankings": {
       "kicker": "Besucherfavoriten",
@@ -4097,12 +4103,17 @@
       "rankingScore": "Aggregierter Ranglistenwert",
       "parkSignal": "Direkte Parkbewertung",
       "itemsSignal": "Durchschnitt aller Orte",
-      "searchLabel": "Park in Ranglisten suchen",
+      "attractionTypeLabel": "Attraktionstyp",
+      "allAttractionTypes": "Alle Attraktionstypen",
+      "searchLabel": "Rangliste durchsuchen",
       "searchPlaceholder": "Park in der Rangliste finden",
+      "parkItemSearchPlaceholder": "Ort oder zugehörigen Park finden",
       "searchAction": "Suchen",
       "clearSearch": "Suche löschen",
       "loadMore": "Mehr Parks laden",
-      "loadingMore": "Parks werden geladen..."
+      "loadingMore": "Parks werden geladen...",
+      "loadMoreItems": "Mehr Orte laden",
+      "loadingMoreItems": "Orte werden geladen..."
     },
     "targetTypes": {
       "Park": "Parks",

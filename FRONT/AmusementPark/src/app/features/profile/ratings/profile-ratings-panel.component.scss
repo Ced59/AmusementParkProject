@@ -19,6 +19,36 @@
   text-align: center;
 }
 
+.profile-ratings__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.profile-ratings__filter--active {
+  border-color: color-mix(in srgb, var(--app-primary) 58%, var(--app-border));
+  background: color-mix(in srgb, var(--app-primary) 14%, var(--app-surface));
+  color: var(--app-primary);
+}
+
+.profile-ratings__type-filter {
+  display: grid;
+  max-width: 26rem;
+  gap: 0.4rem;
+  color: var(--app-text-muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.profile-ratings__type-filter select {
+  min-height: 2.75rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface);
+  color: var(--app-text);
+}
+
 .profile-ratings__empty i {
   color: #f7b733;
   font-size: 2rem;
