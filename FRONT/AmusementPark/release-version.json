@@ -1,6 +1,20 @@
 {
-  "version": "4.0.24",
+  "version": "4.0.25",
   "history": [
+    {
+      "version": "4.0.25",
+      "releasedAt": "2026-08-04",
+      "labels": {
+        "fr": "L’ergonomie des outils d’administration a été améliorée.",
+        "en": "Administration tools are now easier to use.",
+        "de": "Die Bedienung der Administrationswerkzeuge wurde verbessert.",
+        "nl": "De beheertools zijn nu gebruiksvriendelijker.",
+        "it": "Gli strumenti di amministrazione sono ora più facili da usare.",
+        "es": "Las herramientas de administración son ahora más fáciles de usar.",
+        "pl": "Narzędzia administracyjne są teraz łatwiejsze w użyciu.",
+        "pt": "As ferramentas de administração estão agora mais fáceis de utilizar."
+      }
+    },
     {
       "version": "4.0.24",
       "releasedAt": "2026-08-04",

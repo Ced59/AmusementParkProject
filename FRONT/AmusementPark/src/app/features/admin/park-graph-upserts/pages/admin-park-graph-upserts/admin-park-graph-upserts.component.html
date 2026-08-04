@@ -69,6 +69,18 @@
         <p class="admin-alert admin-alert--error">{{ 'admin.parkGraphUpserts.export.noParkSelected' | translate }}</p>
       }
 
+      <label class="create-if-missing-option" [class.create-if-missing-option--disabled]="!!selectedPark">
+        @if (selectedPark) {
+          <input type="checkbox" disabled>
+        } @else {
+          <input
+            type="checkbox"
+            [ngModel]="createIfMissing"
+            (ngModelChange)="setCreateIfMissing($event)">
+        }
+        <span>{{ 'admin.parkGraphUpserts.options.createIfMissing' | translate }}</span>
+      </label>
+
       @if (searchResults.length > 0) {
         <div class="park-results" role="list">
           @for (park of searchResults; track trackPark($index, park)) {

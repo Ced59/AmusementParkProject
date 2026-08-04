@@ -259,6 +259,40 @@
   }
 }
 
+.create-if-missing-option {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 2.8rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 0.9rem;
+  background: rgba(56, 197, 245, 0.07);
+  color: var(--app-text);
+  cursor: pointer;
+
+  input {
+    flex: 0 0 auto;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.08rem;
+    accent-color: var(--c-orange, #ff5a1f);
+  }
+
+  span {
+    min-width: 0;
+    font-weight: 800;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+}
+
+.create-if-missing-option--disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+}
+
 .merge-builder {
   display: grid;
   gap: 0.85rem;
