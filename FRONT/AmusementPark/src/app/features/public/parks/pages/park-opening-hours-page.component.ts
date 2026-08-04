@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { forkJoin } from 'rxjs';
+import { EMPTY, map, switchMap } from 'rxjs';
 import { TranslateModule, TranslateService as NgxTranslateService } from '@ngx-translate/core';
 
 import { Park } from '@app/models/parks/park';
@@ -17,6 +17,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
+import { isParkOpenToVisitors } from '@shared/utils/parks/park-status.presentation';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import {
   buildPublicParkOpeningHoursRouteCommands,
@@ -26,6 +27,7 @@ import {
 import { LocalizedPluralPipe, SafeExternalUrlPipe } from '@shared/pipes';
 import { UiButtonDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { ParkLifecycleNoticeComponent } from '../ui/park-lifecycle-notice.component';
 
 interface ParkOpeningHoursPageData {
   park: Park;
@@ -70,7 +72,7 @@ type ParkOpeningHoursDayTone = 'empty' | 'closed' | 'short' | 'standard' | 'long
   templateUrl: './park-opening-hours-page.component.html',
   styleUrls: ['./park-opening-hours-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, PublicSharePanelComponent, RouterLink, TranslateModule, SafeExternalUrlPipe, UiButtonDirective, LocalizedPluralPipe]
+  imports: [PageStateComponent, ParkLifecycleNoticeComponent, PublicSharePanelComponent, RouterLink, TranslateModule, SafeExternalUrlPipe, UiButtonDirective, LocalizedPluralPipe]
 })
 export class ParkOpeningHoursPageComponent implements OnInit {
   private readonly stateStore = new SignalScreenStateStore<ParkOpeningHoursPageData>();
@@ -78,6 +80,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
   protected readonly state = this.stateStore.state;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
+  protected readonly unavailablePark = signal<Park | null>(null);
   protected readonly weekDayLabels = signal<string[]>([]);
   protected readonly selectedMonthKey = signal<string>(this.resolveCurrentMonthKey(null));
   protected readonly selectedDayLocalDate = signal<string | null>(null);
@@ -563,11 +566,42 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     this.selectedMonthKey.set(requestedMonthKey);
     this.selectedDayLocalDate.set(null);
     this.stateStore.setLoading(previousData);
+    this.unavailablePark.set(null);
 
-    forkJoin({
-      summary: this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()),
-      calendar: this.parksApiService.getParkOpeningHours(parkId, requestedRange.from, requestedRange.to, anonymousHttpOptions())
-    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()).pipe(
+      switchMap((summary: ParkDetailSummary) => {
+        if (!isParkOpenToVisitors(summary.park.status)) {
+          const routeTarget = {
+            language: this.currentLanguage(),
+            parkId: summary.park.id,
+            parkName: summary.park.name
+          };
+          const parkImageId: string | null = resolveParkSummarySocialImageId(summary);
+
+          this.unavailablePark.set(summary.park);
+          this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
+          this.stateStore.setEmpty();
+          this.ssrHttpStatusService.setNotFound();
+          this.seoService.applyParkUnavailableFeatureSeo(
+            summary.park,
+            'openingHours',
+            this.currentLanguage(),
+            this.router.url,
+            parkImageId,
+            buildPublicRoutePath(buildPublicParkRouteCommands(routeTarget)));
+          return EMPTY;
+        }
+
+        return this.parksApiService.getParkOpeningHours(
+          parkId,
+          requestedRange.from,
+          requestedRange.to,
+          anonymousHttpOptions()).pipe(
+          map((calendar: ParkOpeningHoursCalendar) => ({ summary, calendar }))
+        );
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
       next: (data: { summary: ParkDetailSummary; calendar: ParkOpeningHoursCalendar }) => {
         const pageData: ParkOpeningHoursPageData = {
           park: data.summary.park,

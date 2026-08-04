@@ -52,7 +52,9 @@ describe('ParkWeatherPageComponent', () => {
     } as unknown as MockedObject<ParksApiService>;
     seoService = {
       applyParkWeatherSeo: vi.fn().mockName('SeoService.applyParkWeatherSeo'),
-      applyNotFoundSeo: vi.fn().mockName('SeoService.applyNotFoundSeo'),
+      applyParkUnavailableFeatureSeo: vi
+        .fn()
+        .mockName('SeoService.applyParkUnavailableFeatureSeo'),
     } as unknown as MockedObject<SeoService>;
     ssrHttpStatusService = {
       setNotFound: vi.fn().mockName('SsrHttpStatusService.setNotFound'),
@@ -108,6 +110,9 @@ describe('ParkWeatherPageComponent', () => {
           emptyMessage:
             'Aucune donnée météo n’est encore disponible pour ce parc.',
           errorTitle: 'Météo indisponible',
+          unavailableTitle: 'Météo indisponible pour {{name}}',
+          unavailableMessage:
+            'La météo de visite est uniquement proposée pour les parcs ouverts.',
         },
         today: { title: 'Météo du jour' },
         conditions: { cloudy: 'Nuageux', unknown: 'Météo indisponible' },
@@ -232,7 +237,7 @@ describe('ParkWeatherPageComponent', () => {
     parksApiService.getParkDetailSummary.mockReturnValue(of(createSummary(status)));
     parksApiService.getParkWeather.mockClear();
     seoService.applyParkWeatherSeo.mockClear();
-    seoService.applyNotFoundSeo.mockClear();
+    seoService.applyParkUnavailableFeatureSeo.mockClear();
     ssrHttpStatusService.setNotFound.mockClear();
 
     routeParamMap.next(convertToParamMap({ id: `park-${status}`, lang: 'fr' }));
@@ -240,8 +245,18 @@ describe('ParkWeatherPageComponent', () => {
 
     expect(parksApiService.getParkWeather).not.toHaveBeenCalled();
     expect(ssrHttpStatusService.setNotFound).toHaveBeenCalledTimes(1);
-    expect(seoService.applyNotFoundSeo).toHaveBeenCalledWith('fr', expect.any(String));
+    expect(seoService.applyParkUnavailableFeatureSeo).toHaveBeenCalledWith(
+      expect.objectContaining({ status }),
+      'weather',
+      'fr',
+      expect.any(String),
+      null,
+      '/fr/park/park-1/bellewaerde',
+    );
     expect(seoService.applyParkWeatherSeo).not.toHaveBeenCalled();
+    expect((fixture.nativeElement as HTMLElement).textContent).toContain(
+      'La météo de visite est uniquement proposée pour les parcs ouverts.',
+    );
   });
 });
 

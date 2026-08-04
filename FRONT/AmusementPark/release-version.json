@@ -1,6 +1,20 @@
 {
-  "version": "4.0.27",
+  "version": "4.0.28",
   "history": [
+    {
+      "version": "4.0.28",
+      "releasedAt": "2026-08-04",
+      "labels": {
+        "fr": "Les pages de visite et le référencement respectent mieux le statut des parcs.",
+        "en": "Visit pages and search listings now better reflect each park's status.",
+        "de": "Besuchsseiten und Suchergebnisse berücksichtigen den Parkstatus jetzt besser.",
+        "nl": "Bezoekpagina's en zoekresultaten houden nu beter rekening met de parkstatus.",
+        "it": "Le pagine di visita e i risultati di ricerca riflettono ora meglio lo stato dei parchi.",
+        "es": "Las páginas de visita y los resultados de búsqueda reflejan ahora mejor el estado de los parques.",
+        "pl": "Strony planowania wizyty i wyniki wyszukiwania lepiej uwzględniają teraz status parku.",
+        "pt": "As páginas de visita e os resultados de pesquisa refletem agora melhor o estado dos parques."
+      }
+    },
     {
       "version": "4.0.27",
       "releasedAt": "2026-08-04",

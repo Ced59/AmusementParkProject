@@ -19,6 +19,8 @@
       "kicker": "Date e orari",
       "title": "Date e orari di apertura di {{ name }}",
       "lead": "Consulta le date e gli orari giornalieri attualmente indicati per {{ name }}.",
+      "unavailableTitle": "Orari non disponibili per {{ name }}",
+      "unavailableMessage": "Gli orari attuali sono disponibili solo per i parchi attualmente aperti ai visitatori.",
       "backToPark": "Torna a {{ name }}",
       "officialSite": "Sito ufficiale",
       "disclaimer": "Questi orari sono forniti solo a titolo indicativo. Controlla sempre il sito ufficiale di {{ name }} prima della visita, perché eventi privati, chiusure eccezionali, meteo, operatività o altri cambiamenti potrebbero non essere noti o aggiornati qui.",

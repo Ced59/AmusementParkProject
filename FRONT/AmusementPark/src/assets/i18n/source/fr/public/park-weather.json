@@ -48,6 +48,8 @@
       "kicker": "Météo",
       "title": "Météo à 7 jours de {{name}}",
       "lead": "Vérifie la météo de {{name}} pour ta visite.",
+      "unavailableTitle": "Météo indisponible pour {{name}}",
+      "unavailableMessage": "La météo de visite est uniquement proposée pour les parcs actuellement ouverts.",
       "loadingTitle": "Chargement de la météo",
       "loadingMessage": "Les prévisions sont en cours de chargement.",
       "emptyTitle": "Aucune prévision disponible",

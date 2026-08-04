@@ -19,6 +19,8 @@
       "kicker": "Dates and hours",
       "title": "Dates and opening hours for {{ name }}",
       "lead": "Browse the dates and daily hours currently listed for {{ name }}.",
+      "unavailableTitle": "Opening hours unavailable for {{ name }}",
+      "unavailableMessage": "Current opening hours are only available for parks presently open to visitors.",
       "backToPark": "Back to {{ name }}",
       "officialSite": "Official site",
       "disclaimer": "These hours are provided for guidance only. Always check the official {{ name }} website before your visit, as private events, exceptional closures, weather, operations or other changes may not be known or updated here.",

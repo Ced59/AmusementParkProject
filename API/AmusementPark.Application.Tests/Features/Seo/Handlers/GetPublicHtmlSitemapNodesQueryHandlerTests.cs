@@ -227,6 +227,82 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         historyRepository.VerifyAll();
     }
 
+    [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed)]
+    [InlineData(ParkStatus.ClosedDefinitively)]
+    [InlineData(ParkStatus.Cancelled)]
+    public async Task HandleAsync_WhenParkIsNotOperating_ShouldNotExposeVisitPlanningNodes(ParkStatus status)
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Lifecycle Park",
+            IsVisible = true,
+            Status = status,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        park.SetPosition(48.85d, 2.35d);
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        itemRepository
+            .Setup(repository => repository.GetPublicPageByParkIdAsync(
+                1,
+                It.IsAny<int>(),
+                "park-1",
+                null,
+                false,
+                It.IsAny<ClosedEntityFilter>(),
+                null,
+                null,
+                null,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<ParkItem>(Array.Empty<ParkItem>(), 1, 500, 0));
+
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetPageAsync(1, 1, It.IsAny<ImageSearchCriteria>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<Image>(Array.Empty<Image>(), 1, 1, 0));
+
+        Mock<IVideoRepository> videoRepository = new Mock<IVideoRepository>(MockBehavior.Strict);
+        videoRepository
+            .Setup(repository => repository.GetPageAsync(1, It.IsAny<int>(), It.IsAny<VideoSearchCriteria>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<Video>(Array.Empty<Video>(), 1, 1, 0));
+
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+
+        GetPublicHtmlSitemapNodesQueryHandler handler = CreateHandler(
+            parkRepository,
+            itemRepository,
+            openingHoursRepository,
+            imageRepository,
+            videoRepository,
+            historyRepository);
+
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await handler.HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery("fr", "park:park-1", new[] { "fr", "en" }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.DoesNotContain(result.Value, static node => node.Id == "park-weather:park-1");
+        Assert.DoesNotContain(result.Value, static node => node.Id == "park-opening-hours:park-1");
+        openingHoursRepository.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        videoRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
     private static GetPublicHtmlSitemapNodesQueryHandler CreateHandler(Mock<ISeoSitemapSnapshotRepository>? sitemapSnapshotRepository = null)
     {
         return CreateHandler(

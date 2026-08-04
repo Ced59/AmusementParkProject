@@ -48,6 +48,8 @@
       "kicker": "Pogoda",
       "title": "Pogoda na 7 dni dla {{name}}",
       "lead": "Sprawdź pogodę w {{name}} przed swoją wizytą.",
+      "unavailableTitle": "Pogoda dla {{name}} jest niedostępna",
+      "unavailableMessage": "Pogoda do planowania wizyty jest dostępna tylko dla parków obecnie otwartych dla odwiedzających.",
       "loadingTitle": "Ładowanie pogody",
       "loadingMessage": "Prognoza jest ladowana.",
       "emptyTitle": "Brak prognozy",

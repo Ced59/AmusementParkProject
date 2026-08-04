@@ -19,6 +19,8 @@
       "kicker": "Data en tijden",
       "title": "Data en openingstijden van {{ name }}",
       "lead": "Bekijk de momenteel vermelde data en dagtijden voor {{ name }}.",
+      "unavailableTitle": "Openingstijden voor {{ name }} niet beschikbaar",
+      "unavailableMessage": "Actuele openingstijden zijn alleen beschikbaar voor parken die momenteel open zijn voor bezoekers.",
       "backToPark": "Terug naar {{ name }}",
       "officialSite": "Officiële site",
       "disclaimer": "Deze tijden zijn alleen indicatief. Controleer altijd de officiële website van {{ name }} voor je bezoek, omdat privé-evenementen, uitzonderlijke sluitingen, weer, operatie of andere wijzigingen hier mogelijk niet bekend of bijgewerkt zijn.",

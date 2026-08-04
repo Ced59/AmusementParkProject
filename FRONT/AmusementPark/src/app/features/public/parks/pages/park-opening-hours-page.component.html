@@ -1,3 +1,23 @@
+@if (unavailablePark(); as park) {
+  <section class="park-opening-hours-page">
+    <header class="park-opening-hours-hero">
+      <p class="park-opening-hours-hero__kicker">{{ 'parkOpeningHours.page.kicker' | translate }}</p>
+      <h1>{{ 'parkOpeningHours.page.unavailableTitle' | translate:{ name: park.name } }}</h1>
+      <p>{{ 'parkOpeningHours.page.unavailableMessage' | translate }}</p>
+
+      <app-park-lifecycle-notice [status]="park.status"></app-park-lifecycle-notice>
+
+      @if (detailLink()) {
+        <div class="park-opening-hours-hero__actions">
+          <a appUiButton="ghost" [routerLink]="detailLink()">
+            <i class="pi pi-arrow-left" aria-hidden="true"></i>
+            <span>{{ 'parkOpeningHours.page.backToPark' | translate:{ name: park.name } }}</span>
+          </a>
+        </div>
+      }
+    </header>
+  </section>
+} @else {
 <app-page-state
   [state]="state()"
   [messages]="{
@@ -241,3 +261,4 @@
     </section>
   }
 </app-page-state>
+}

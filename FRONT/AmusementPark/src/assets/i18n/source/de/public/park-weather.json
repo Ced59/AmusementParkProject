@@ -48,6 +48,8 @@
       "kicker": "Wetter",
       "title": "7-Tage-Wetter fur {{name}}",
       "lead": "Prüfe das Wetter für {{name}} vor deinem Besuch.",
+      "unavailableTitle": "Wetter für {{name}} nicht verfügbar",
+      "unavailableMessage": "Besuchswetter ist nur für Parks verfügbar, die derzeit für Besucher geöffnet sind.",
       "loadingTitle": "Wetter wird geladen",
       "loadingMessage": "Die Vorhersage wird geladen.",
       "emptyTitle": "Keine Vorhersage verfügbar",
