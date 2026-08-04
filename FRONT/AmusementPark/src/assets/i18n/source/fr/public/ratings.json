@@ -17,7 +17,9 @@
       "removeErrorMessage": "Ta note ne peut pas être effacée pour le moment.",
       "savedToast": "Ta note a bien été enregistrée.",
       "removedToast": "Ta note a bien été effacée.",
-      "rankLabel": "N° {{rank}} au classement"
+      "rankLabel": "N° {{rank}} au classement",
+      "pastVisitHint": "Ces notes reflètent des visites effectuées avant la fermeture temporaire.",
+      "historicalHint": "Ces notes reflètent des visites passées et ne comptent pas dans le classement actuel."
     },
     "tree": {
       "detailAction": "Voir détail",

@@ -31,4 +31,11 @@ public static class RatingApplicationErrors
             "rating.target.not-found",
             "La cible à noter est introuvable.");
     }
+
+    public static ApplicationError TargetUnavailable()
+    {
+        return ApplicationError.Conflict(
+            "rating.target.unavailable",
+            "Cette cible ne peut pas recevoir de note avec son statut actuel.");
+    }
 }

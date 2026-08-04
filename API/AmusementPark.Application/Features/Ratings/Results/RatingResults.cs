@@ -20,7 +20,8 @@ public sealed record RatingTargetMetadataResult(
     string ParkId,
     string? ParkName,
     ParkItemCategory? ParkItemCategory,
-    ParkItemType? ParkItemType);
+    ParkItemType? ParkItemType,
+    bool CanReceiveVisitorRatings);
 
 public sealed record UserRatingResult(
     string Id,

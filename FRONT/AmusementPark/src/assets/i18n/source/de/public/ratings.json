@@ -17,7 +17,9 @@
       "removeErrorMessage": "Deine Bewertung konnte gerade nicht gelöscht werden.",
       "savedToast": "Deine Bewertung wurde gespeichert.",
       "removedToast": "Deine Bewertung wurde gelöscht.",
-      "rankLabel": "Platz {{rank}} der Rangliste"
+      "rankLabel": "Platz {{rank}} der Rangliste",
+      "pastVisitHint": "Diese Bewertungen stammen aus Besuchen vor der vorübergehenden Schließung.",
+      "historicalHint": "Diese Bewertungen stammen aus früheren Besuchen und zählen nicht zur aktuellen Rangliste."
     },
     "tree": {
       "detailAction": "Details ansehen",

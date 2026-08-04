@@ -52,6 +52,10 @@ public sealed class UpsertUserRatingCommandHandlerTests
             Category = ParkItemCategory.Attraction,
             Type = ParkItemType.RollerCoaster,
             IsVisible = true,
+            AttractionDetails = new AttractionDetails
+            {
+                Status = ParkItemStatusNormalizer.Operating,
+            },
         };
         Park park = new Park
         {
@@ -142,5 +146,98 @@ public sealed class UpsertUserRatingCommandHandlerTests
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
         ratingRankProvider.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.Cancelled)]
+    public async Task HandleAsync_WhenParkStatusCannotRepresentAVisit_ShouldRejectRating(ParkStatus status)
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Future Park",
+            Status = status,
+        };
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        UpsertUserRatingCommandHandler handler = new UpsertUserRatingCommandHandler(
+            ratingRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            ratingRankProvider.Object);
+
+        ApplicationResult<UserRatingResult> result = await handler.HandleAsync(new UpsertUserRatingCommand(
+            "user-1",
+            RatingTargetType.Park,
+            "park-1",
+            4d));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "rating.target.unavailable");
+        parkRepository.VerifyAll();
+        ratingRepository.VerifyNoOtherCalls();
+        parkItemRepository.VerifyNoOtherCalls();
+        ratingRankProvider.VerifyNoOtherCalls();
+    }
+
+    [Theory]
+    [InlineData(ParkItemStatusNormalizer.Planned)]
+    [InlineData(ParkItemStatusNormalizer.UnderConstruction)]
+    [InlineData(ParkItemStatusNormalizer.Unknown)]
+    public async Task HandleAsync_WhenAttractionStatusCannotRepresentAVisit_ShouldRejectRating(string itemStatus)
+    {
+        ParkItem item = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Future Attraction",
+            Category = ParkItemCategory.Attraction,
+            Type = ParkItemType.RollerCoaster,
+            AttractionDetails = new AttractionDetails
+            {
+                Status = itemStatus,
+            },
+        };
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Operating Park",
+            Status = ParkStatus.Operating,
+        };
+        Mock<IRatingRepository> ratingRepository = new Mock<IRatingRepository>(MockBehavior.Strict);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(item);
+        Mock<IRatingRankProvider> ratingRankProvider = new Mock<IRatingRankProvider>(MockBehavior.Strict);
+        UpsertUserRatingCommandHandler handler = new UpsertUserRatingCommandHandler(
+            ratingRepository.Object,
+            parkRepository.Object,
+            parkItemRepository.Object,
+            ratingRankProvider.Object);
+
+        ApplicationResult<UserRatingResult> result = await handler.HandleAsync(new UpsertUserRatingCommand(
+            "user-1",
+            RatingTargetType.ParkItem,
+            "item-1",
+            4d));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "rating.target.unavailable");
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        ratingRepository.VerifyNoOtherCalls();
+        ratingRankProvider.VerifyNoOtherCalls();
     }
 }

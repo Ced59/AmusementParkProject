@@ -17,7 +17,9 @@
       "removeErrorMessage": "Não foi possível apagar a tua avaliação agora.",
       "savedToast": "A tua avaliação foi guardada.",
       "removedToast": "A tua avaliação foi apagada.",
-      "rankLabel": "N.º {{rank}} no ranking"
+      "rankLabel": "N.º {{rank}} no ranking",
+      "pastVisitHint": "Estas avaliações correspondem a visitas anteriores ao encerramento temporário.",
+      "historicalHint": "Estas avaliações correspondem a visitas passadas e não contam para o ranking atual."
     },
     "tree": {
       "detailAction": "Ver detalhe",

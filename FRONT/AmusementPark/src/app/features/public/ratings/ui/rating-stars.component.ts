@@ -27,6 +27,7 @@ export class RatingStarsComponent implements OnChanges {
   @Input({ required: true }) targetType!: RatingTargetType;
   @Input({ required: true }) targetId!: string;
   @Input() initialSummary: RatingSummary | null = null;
+  @Input() contextHintKey: string | null = null;
 
   constructor(
     private readonly stateFacade: PublicRatingStateFacade,

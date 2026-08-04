@@ -60,6 +60,7 @@ export interface ParkDetailViewModel {
   hasLocationInfo: boolean;
   hasDescription: boolean;
   rating: RatingSummary | null;
+  ratingContextHintKey: string | null;
   exploreLink: string[] | null;
   zonesLink: string[] | null;
   imagesLink: string[] | null;

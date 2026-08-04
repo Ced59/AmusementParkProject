@@ -54,10 +54,20 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
             return ApplicationResult<UserRatingResult>.Failure(RatingApplicationErrors.InvalidRatingValue());
         }
 
-        RatingTargetMetadataResult? metadata = await this.ResolveTargetMetadataAsync(command.TargetType, command.TargetId.Trim(), cancellationToken);
+        RatingTargetMetadataResult? metadata = await RatingTargetMetadataResolver.ResolveAsync(
+            command.TargetType,
+            command.TargetId.Trim(),
+            this.parkRepository,
+            this.parkItemRepository,
+            cancellationToken);
         if (metadata is null)
         {
             return ApplicationResult<UserRatingResult>.Failure(RatingApplicationErrors.TargetNotFound());
+        }
+
+        if (!metadata.CanReceiveVisitorRatings)
+        {
+            return ApplicationResult<UserRatingResult>.Failure(RatingApplicationErrors.TargetUnavailable());
         }
 
         DateTime nowUtc = DateTime.UtcNow;
@@ -87,53 +97,6 @@ public sealed class UpsertUserRatingCommandHandler : ICommandHandler<UpsertUserR
         RatingSummaryResult summary = RatingResultFactory.CreateSummary(metadata.TargetType, metadata.TargetId, mutation.Aggregate);
 
         return ApplicationResult<UserRatingResult>.Success(ToUserRatingResult(mutation.Rating, summary));
-    }
-
-    private async Task<RatingTargetMetadataResult?> ResolveTargetMetadataAsync(RatingTargetType targetType, string targetId, CancellationToken cancellationToken)
-    {
-        if (targetType == RatingTargetType.Park)
-        {
-            Park? park = await this.parkRepository.GetByIdAsync(targetId, false, cancellationToken);
-            if (park is null || string.IsNullOrWhiteSpace(park.Id))
-            {
-                return null;
-            }
-
-            return new RatingTargetMetadataResult(
-                RatingTargetType.Park,
-                park.Id.Trim(),
-                park.Name?.Trim() ?? park.Id.Trim(),
-                park.Id.Trim(),
-                park.Name?.Trim(),
-                null,
-                null);
-        }
-
-        if (targetType == RatingTargetType.ParkItem)
-        {
-            ParkItem? item = await this.parkItemRepository.GetByIdAsync(targetId, false, cancellationToken);
-            if (item is null || string.IsNullOrWhiteSpace(item.Id) || string.IsNullOrWhiteSpace(item.ParkId))
-            {
-                return null;
-            }
-
-            Park? park = await this.parkRepository.GetByIdAsync(item.ParkId, false, cancellationToken);
-            if (park is null || string.IsNullOrWhiteSpace(park.Id))
-            {
-                return null;
-            }
-
-            return new RatingTargetMetadataResult(
-                RatingTargetType.ParkItem,
-                item.Id.Trim(),
-                item.Name.Trim(),
-                park.Id.Trim(),
-                park.Name?.Trim(),
-                item.Category,
-                item.Type);
-        }
-
-        return null;
     }
 
     private static UserRatingResult ToUserRatingResult(UserRating rating, RatingSummaryResult summary)
@@ -221,13 +184,19 @@ public sealed class GetRatingSummaryQueryHandler : IQueryHandler<GetRatingSummar
 {
     private readonly IRatingRepository ratingRepository;
     private readonly IRatingRankProvider ratingRankProvider;
+    private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
 
     public GetRatingSummaryQueryHandler(
         IRatingRepository ratingRepository,
-        IRatingRankProvider ratingRankProvider)
+        IRatingRankProvider ratingRankProvider,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository)
     {
         this.ratingRepository = ratingRepository;
         this.ratingRankProvider = ratingRankProvider;
+        this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
     }
 
     public async Task<ApplicationResult<RatingSummaryResult>> HandleAsync(GetRatingSummaryQuery query, CancellationToken cancellationToken = default)
@@ -242,8 +211,25 @@ public sealed class GetRatingSummaryQueryHandler : IQueryHandler<GetRatingSummar
             return ApplicationResult<RatingSummaryResult>.Failure(RatingApplicationErrors.InvalidTargetType());
         }
 
-        RatingAggregate? aggregate = await this.ratingRepository.GetAggregateAsync(query.TargetType, query.TargetId.Trim(), cancellationToken);
-        RatingSummaryResult summary = RatingResultFactory.CreateSummary(query.TargetType, query.TargetId.Trim(), aggregate);
+        string targetId = query.TargetId.Trim();
+        RatingTargetMetadataResult? metadata = await RatingTargetMetadataResolver.ResolveAsync(
+            query.TargetType,
+            targetId,
+            this.parkRepository,
+            this.parkItemRepository,
+            cancellationToken);
+        if (metadata is null)
+        {
+            return ApplicationResult<RatingSummaryResult>.Failure(RatingApplicationErrors.TargetNotFound());
+        }
+
+        if (!metadata.CanReceiveVisitorRatings)
+        {
+            return ApplicationResult<RatingSummaryResult>.Failure(RatingApplicationErrors.TargetUnavailable());
+        }
+
+        RatingAggregate? aggregate = await this.ratingRepository.GetAggregateAsync(query.TargetType, targetId, cancellationToken);
+        RatingSummaryResult summary = RatingResultFactory.CreateSummary(query.TargetType, targetId, aggregate);
         if (aggregate is not null && aggregate.RatingCount > 0)
         {
             int? rank = await this.ratingRankProvider.GetRankAsync(aggregate, cancellationToken);
@@ -251,6 +237,66 @@ public sealed class GetRatingSummaryQueryHandler : IQueryHandler<GetRatingSummar
         }
 
         return ApplicationResult<RatingSummaryResult>.Success(summary);
+    }
+}
+
+internal static class RatingTargetMetadataResolver
+{
+    public static async Task<RatingTargetMetadataResult?> ResolveAsync(
+        RatingTargetType targetType,
+        string targetId,
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        CancellationToken cancellationToken)
+    {
+        if (targetType == RatingTargetType.Park)
+        {
+            Park? park = await parkRepository.GetByIdAsync(targetId, false, cancellationToken);
+            if (park is null || string.IsNullOrWhiteSpace(park.Id))
+            {
+                return null;
+            }
+
+            return new RatingTargetMetadataResult(
+                RatingTargetType.Park,
+                park.Id.Trim(),
+                park.Name?.Trim() ?? park.Id.Trim(),
+                park.Id.Trim(),
+                park.Name?.Trim(),
+                null,
+                null,
+                park.Status.CanReceiveVisitorRatings());
+        }
+
+        if (targetType == RatingTargetType.ParkItem)
+        {
+            ParkItem? item = await parkItemRepository.GetByIdAsync(targetId, false, cancellationToken);
+            if (item is null || string.IsNullOrWhiteSpace(item.Id) || string.IsNullOrWhiteSpace(item.ParkId))
+            {
+                return null;
+            }
+
+            Park? park = await parkRepository.GetByIdAsync(item.ParkId, false, cancellationToken);
+            if (park is null || string.IsNullOrWhiteSpace(park.Id))
+            {
+                return null;
+            }
+
+            bool canReceiveVisitorRatings = park.Status.CanReceiveVisitorRatings()
+                && ParkItemStatusNormalizer.CanReceiveVisitorRatings(item.Category, item.AttractionDetails?.Status);
+
+            return new RatingTargetMetadataResult(
+                RatingTargetType.ParkItem,
+                item.Id.Trim(),
+                item.Name.Trim(),
+                park.Id.Trim(),
+                park.Name?.Trim(),
+                item.Category,
+                item.Type,
+                canReceiveVisitorRatings);
+        }
+
+        return null;
     }
 }
 

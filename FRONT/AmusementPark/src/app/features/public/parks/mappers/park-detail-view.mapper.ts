@@ -7,6 +7,7 @@ import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/displ
 import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { getParkStatusPresentation, ParkStatusPresentation } from '@shared/utils/parks/park-status.presentation';
+import { resolveParkRatingContextHintKey } from '@features/public/ratings/utils/rating-lifecycle.helpers';
 import {
   buildPublicParkImagesRouteCommands,
   buildPublicParkCommentsRouteCommands,
@@ -139,6 +140,7 @@ export function mapParkToDetailViewModel(
     hasLocationInfo,
     hasDescription: !!description,
     rating,
+    ratingContextHintKey: resolveParkRatingContextHintKey(statusPresentation.status),
     exploreLink: hasIdentity
       ? buildPublicParkItemsRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,

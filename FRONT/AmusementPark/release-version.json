@@ -1,6 +1,20 @@
 {
-  "version": "4.0.25",
+  "version": "4.0.26",
   "history": [
+    {
+      "version": "4.0.26",
+      "releasedAt": "2026-08-04",
+      "labels": {
+        "fr": "Les notes et classements reflètent désormais le cycle de vie des parcs.",
+        "en": "Ratings and rankings now reflect each park's lifecycle.",
+        "de": "Bewertungen und Ranglisten berücksichtigen jetzt den Lebenszyklus der Parks.",
+        "nl": "Beoordelingen en ranglijsten houden nu rekening met de levenscyclus van parken.",
+        "it": "Valutazioni e classifiche riflettono ora il ciclo di vita dei parchi.",
+        "es": "Las valoraciones y clasificaciones reflejan ahora el ciclo de vida de los parques.",
+        "pl": "Oceny i rankingi uwzględniają teraz cykl życia parków.",
+        "pt": "As avaliações e classificações refletem agora o ciclo de vida dos parques."
+      }
+    },
     {
       "version": "4.0.25",
       "releasedAt": "2026-08-04",

@@ -22,6 +22,18 @@ public static class ParkStatusExtensions
         return status.IsOpenToVisitors();
     }
 
+    public static bool CanReceiveVisitorRatings(this ParkStatus status)
+    {
+        return status is ParkStatus.Operating
+            or ParkStatus.TemporarilyClosed
+            or ParkStatus.ClosedDefinitively;
+    }
+
+    public static bool CanAppearInCurrentRatingRankings(this ParkStatus status)
+    {
+        return status == ParkStatus.Operating;
+    }
+
     public static bool IsFutureProject(this ParkStatus status)
     {
         return status is ParkStatus.Planned or ParkStatus.UnderConstruction;
