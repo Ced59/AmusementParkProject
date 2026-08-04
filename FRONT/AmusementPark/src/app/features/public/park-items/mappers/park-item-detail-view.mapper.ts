@@ -36,6 +36,7 @@ import {
 } from './park-item-detail-navigation.mapper';
 import { buildPhotos } from './park-item-detail-photos.mapper';
 import { resolveParkItemTypeIconClass, resolveParkItemTypeTone } from './park-item-detail-presentation.mapper';
+import { resolveParkItemRatingContextHintKey } from '@features/public/ratings/utils/rating-lifecycle.helpers';
 import { buildRelatedItems } from './park-item-detail-related.mapper';
 import {
   buildExperienceRows,
@@ -113,6 +114,7 @@ export function mapParkItemToDetailViewModel(
     zoneNavigation: buildZoneNavigation(itemsLink, item.zoneId),
     description: resolveParkItemRichDescription(item, currentLanguage),
     rating: item.rating ?? null,
+    ratingContextHintKey: resolveParkItemRatingContextHintKey(park?.status, item.attractionDetails?.status),
     manufacturerName,
     modelName: trimOrNull(item.attractionDetails?.model),
     status: trimOrNull(item.attractionDetails?.status),

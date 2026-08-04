@@ -4048,7 +4048,9 @@
       "removeErrorMessage": "Je beoordeling kan nu niet worden gewist.",
       "savedToast": "Je beoordeling is opgeslagen.",
       "removedToast": "Je beoordeling is gewist.",
-      "rankLabel": "Nr. {{rank}} in de ranglijst"
+      "rankLabel": "Nr. {{rank}} in de ranglijst",
+      "pastVisitHint": "Deze beoordelingen gaan over bezoeken vóór de tijdelijke sluiting.",
+      "historicalHint": "Deze beoordelingen gaan over eerdere bezoeken en tellen niet mee voor de huidige ranglijst."
     },
     "tree": {
       "detailAction": "Details bekijken",

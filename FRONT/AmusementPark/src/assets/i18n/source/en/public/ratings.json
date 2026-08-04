@@ -17,7 +17,9 @@
       "removeErrorMessage": "Your rating could not be removed right now.",
       "savedToast": "Your rating has been saved.",
       "removedToast": "Your rating has been removed.",
-      "rankLabel": "No. {{rank}} in the ranking"
+      "rankLabel": "No. {{rank}} in the ranking",
+      "pastVisitHint": "These ratings reflect visits made before the temporary closure.",
+      "historicalHint": "These ratings reflect past visits and do not count toward the current ranking."
     },
     "tree": {
       "detailAction": "View detail",

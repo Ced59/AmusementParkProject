@@ -4048,7 +4048,9 @@
       "removeErrorMessage": "Non è possibile cancellare la tua valutazione ora.",
       "savedToast": "La tua valutazione è stata salvata.",
       "removedToast": "La tua valutazione è stata cancellata.",
-      "rankLabel": "N. {{rank}} in classifica"
+      "rankLabel": "N. {{rank}} in classifica",
+      "pastVisitHint": "Queste valutazioni si riferiscono a visite precedenti alla chiusura temporanea.",
+      "historicalHint": "Queste valutazioni si riferiscono a visite passate e non rientrano nella classifica attuale."
     },
     "tree": {
       "detailAction": "Vedi dettaglio",

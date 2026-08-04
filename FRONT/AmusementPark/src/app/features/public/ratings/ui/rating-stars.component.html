@@ -65,6 +65,13 @@
     }
   </div>
 
+  @if (contextHintKey) {
+    <p class="rating-stars__context">
+      <i class="pi pi-history" aria-hidden="true"></i>
+      {{ contextHintKey | translate }}
+    </p>
+  }
+
   @if (selectedValue() && messageKey()) {
     <p class="rating-stars__status">{{ (messageKey() || '') | translate }}</p>
   }

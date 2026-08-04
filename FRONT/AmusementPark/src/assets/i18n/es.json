@@ -4048,7 +4048,9 @@
       "removeErrorMessage": "No se pudo borrar tu valoración ahora.",
       "savedToast": "Tu nota se ha guardado.",
       "removedToast": "Tu valoración se ha borrado.",
-      "rankLabel": "N.º {{rank}} del ranking"
+      "rankLabel": "N.º {{rank}} del ranking",
+      "pastVisitHint": "Estas valoraciones corresponden a visitas anteriores al cierre temporal.",
+      "historicalHint": "Estas valoraciones corresponden a visitas pasadas y no cuentan para el ranking actual."
     },
     "tree": {
       "detailAction": "Ver detalle",

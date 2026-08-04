@@ -17,7 +17,9 @@
       "removeErrorMessage": "Nie można teraz usunąć Twojej oceny.",
       "savedToast": "Twoja ocena została zapisana.",
       "removedToast": "Twoja ocena została usunięta.",
-      "rankLabel": "{{rank}}. miejsce w rankingu"
+      "rankLabel": "{{rank}}. miejsce w rankingu",
+      "pastVisitHint": "Te oceny dotyczą wizyt sprzed tymczasowego zamknięcia.",
+      "historicalHint": "Te oceny dotyczą wcześniejszych wizyt i nie są uwzględniane w aktualnym rankingu."
     },
     "tree": {
       "detailAction": "Zobacz szczegóły",

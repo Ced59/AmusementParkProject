@@ -99,6 +99,7 @@ export interface ParkItemDetailViewModel {
   zoneNavigation: ParkItemDetailNavigationLinkViewModel | null;
   description: string | null;
   rating: RatingSummary | null;
+  ratingContextHintKey: string | null;
   manufacturerName: string | null;
   modelName: string | null;
   status: string | null;

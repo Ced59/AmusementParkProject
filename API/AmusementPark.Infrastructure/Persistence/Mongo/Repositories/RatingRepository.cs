@@ -313,6 +313,11 @@ public sealed class RatingRepository : IRatingRepository
                     continue;
                 }
 
+                if (!park.Status.CanAppearInCurrentRatingRankings())
+                {
+                    continue;
+                }
+
                 items.Add(new RatingRankingItemResult(
                     document.TargetType,
                     document.TargetId,
@@ -334,6 +339,14 @@ public sealed class RatingRepository : IRatingRepository
             }
 
             if (!visibleParks.TryGetValue(parkItem.ParkId, out ParkDocument? parentPark))
+            {
+                continue;
+            }
+
+            if (!parentPark.Status.CanAppearInCurrentRatingRankings()
+                || !ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(
+                    parkItem.Category,
+                    parkItem.AttractionDetails?.Status))
             {
                 continue;
             }

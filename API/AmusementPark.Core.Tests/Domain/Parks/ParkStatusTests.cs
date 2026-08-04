@@ -36,4 +36,48 @@ public sealed class ParkStatusTests
     {
         Assert.Equal(expected, status.CanAppearInPublicDiscovery());
     }
+
+    [Theory]
+    [InlineData(ParkStatus.Operating, true)]
+    [InlineData(ParkStatus.TemporarilyClosed, true)]
+    [InlineData(ParkStatus.ClosedDefinitively, true)]
+    [InlineData(ParkStatus.Planned, false)]
+    [InlineData(ParkStatus.UnderConstruction, false)]
+    [InlineData(ParkStatus.Cancelled, false)]
+    public void CanReceiveVisitorRatings_ShouldOnlyAllowVisitHistoryStatuses(ParkStatus status, bool expected)
+    {
+        Assert.Equal(expected, status.CanReceiveVisitorRatings());
+    }
+
+    [Theory]
+    [InlineData(ParkStatus.Operating, true)]
+    [InlineData(ParkStatus.TemporarilyClosed, false)]
+    [InlineData(ParkStatus.ClosedDefinitively, false)]
+    [InlineData(ParkStatus.Planned, false)]
+    [InlineData(ParkStatus.UnderConstruction, false)]
+    [InlineData(ParkStatus.Cancelled, false)]
+    public void CanAppearInCurrentRatingRankings_ShouldOnlyAllowOperatingParks(ParkStatus status, bool expected)
+    {
+        Assert.Equal(expected, status.CanAppearInCurrentRatingRankings());
+    }
+
+    [Theory]
+    [InlineData(ParkItemCategory.Attraction, "Operating", true, true)]
+    [InlineData(ParkItemCategory.Attraction, "TemporarilyClosed", true, false)]
+    [InlineData(ParkItemCategory.Attraction, "ClosedDefinitively", true, false)]
+    [InlineData(ParkItemCategory.Attraction, "Removed", true, false)]
+    [InlineData(ParkItemCategory.Attraction, "Planned", false, false)]
+    [InlineData(ParkItemCategory.Attraction, "UnderConstruction", false, false)]
+    [InlineData(ParkItemCategory.Attraction, "Unknown", false, false)]
+    [InlineData(ParkItemCategory.Attraction, null, false, false)]
+    [InlineData(ParkItemCategory.Restaurant, null, true, true)]
+    public void ParkItemRatingCapabilities_ShouldFollowOperationalStatus(
+        ParkItemCategory category,
+        string? status,
+        bool canReceiveRatings,
+        bool canAppearInCurrentRankings)
+    {
+        Assert.Equal(canReceiveRatings, ParkItemStatusNormalizer.CanReceiveVisitorRatings(category, status));
+        Assert.Equal(canAppearInCurrentRankings, ParkItemStatusNormalizer.CanAppearInCurrentRatingRankings(category, status));
+    }
 }

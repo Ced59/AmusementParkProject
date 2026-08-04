@@ -72,12 +72,13 @@
               <p class="park-banner__lead">{{ 'parks.detail.heroDescription' | translate }}</p>
             }
 
-            @if (currentPark.id) {
+            @if (currentPark.id && currentPark.rating) {
               <app-rating-stars
                 class="park-banner__rating"
                 targetType="Park"
                 [targetId]="currentPark.id"
-                [initialSummary]="currentPark.rating">
+                [initialSummary]="currentPark.rating"
+                [contextHintKey]="currentPark.ratingContextHintKey">
               </app-rating-stars>
             }
 

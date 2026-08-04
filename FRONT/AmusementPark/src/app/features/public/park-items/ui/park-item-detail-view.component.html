@@ -132,11 +132,12 @@
             </p>
 
             <app-rating-stars
-              *ngIf="currentDetail.id"
+              *ngIf="currentDetail.id && currentDetail.rating"
               class="item-detail-hero__rating"
               targetType="ParkItem"
               [targetId]="currentDetail.id"
-              [initialSummary]="currentDetail.rating">
+              [initialSummary]="currentDetail.rating"
+              [contextHintKey]="currentDetail.ratingContextHintKey">
             </app-rating-stars>
 
             <app-comment-summary-link

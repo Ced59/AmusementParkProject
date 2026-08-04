@@ -63,6 +63,7 @@ describe('RatingStarsComponent', () => {
           clearRatingConfirm: 'Veux-tu vraiment effacer ta note ?',
           prompt: 'Choisis ta note',
           rankLabel: 'Classé #{{rank}}',
+          historicalHint: 'Ces notes reflètent des visites passées.',
         },
       },
       publicCounts: {
@@ -107,6 +108,15 @@ describe('RatingStarsComponent', () => {
       fixture.nativeElement.querySelector('.rating-stars__rank');
 
     expect(rank?.textContent?.trim()).toBe('Classé #4');
+  });
+
+  it('explains when ratings describe past visits', () => {
+    fixture.componentRef.setInput('contextHintKey', 'ratings.stars.historicalHint');
+    fixture.detectChanges();
+
+    const context: HTMLElement | null = fixture.nativeElement.querySelector('.rating-stars__context');
+
+    expect(context?.textContent).toContain('Ces notes reflètent des visites passées.');
   });
 
   it('keeps the rating when removal is not confirmed', () => {
