@@ -107,6 +107,20 @@
       "isVisible": "Zichtbaar",
       "coordinates": "Coördinaten"
     },
+    "technicalValues": {
+      "material": {
+        "steel": "Staal"
+      },
+      "seating": {
+        "sitDown": "Zittend"
+      },
+      "launch": {
+        "tireLift": "Bandenlift"
+      },
+      "restraint": {
+        "sharedLapBar": "Gedeelde schootbeugel"
+      }
+    },
     "locations": {
       "general": "Algemene locatie",
       "entrance": "Ingang",

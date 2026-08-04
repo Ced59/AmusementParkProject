@@ -34,10 +34,24 @@ describe('display-label helpers', () => {
   });
 
   it('returns localized boolean labels and null for unknown values', () => {
-    expect(getLocalizedBooleanDisplay(true, 'fr')).toBe('Oui');
-    expect(getLocalizedBooleanDisplay(false, 'fr')).toBe('Non');
-    expect(getLocalizedBooleanDisplay(true, 'en')).toBe('Yes');
-    expect(getLocalizedBooleanDisplay(false, 'de')).toBe('No');
+    const expectedLabels: Record<string, readonly [string, string]> = {
+      de: ['Ja', 'Nein'],
+      en: ['Yes', 'No'],
+      es: ['Sí', 'No'],
+      fr: ['Oui', 'Non'],
+      it: ['Sì', 'No'],
+      nl: ['Ja', 'Nee'],
+      pl: ['Tak', 'Nie'],
+      pt: ['Sim', 'Não']
+    };
+
+    for (const [languageCode, labels] of Object.entries(expectedLabels)) {
+      expect(getLocalizedBooleanDisplay(true, languageCode)).toBe(labels[0]);
+      expect(getLocalizedBooleanDisplay(false, languageCode)).toBe(labels[1]);
+    }
+
+    expect(getLocalizedBooleanDisplay(true, 'de-DE')).toBe('Ja');
+    expect(getLocalizedBooleanDisplay(false, 'unknown')).toBe('No');
     expect(getLocalizedBooleanDisplay(null, 'fr')).toBeNull();
   });
 

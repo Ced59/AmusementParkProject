@@ -29,7 +29,11 @@ import {
   buildTypeQueryParams,
   buildZoneQueryParams
 } from './park-item-detail-navigation.mapper';
-import { getAttractionStatusValueKey } from './park-item-detail-presentation.mapper';
+import {
+  AttractionTechnicalValueKind,
+  getAttractionStatusValueKey,
+  getAttractionTechnicalValueKey
+} from './park-item-detail-presentation.mapper';
 import { pushGroup, pushRow } from './park-item-detail-row.helpers';
 import { buildTechnicalPageRouterLink } from './park-item-detail-technical-links.mapper';
 
@@ -72,42 +76,35 @@ export function buildTechnicalRows(
       : null);
   pushRow(rows, 'parkItems.fields.model', details?.model, null, 'pi pi-box');
   pushStatusRow(rows, details?.status);
-  pushRow(
-    rows,
-    'parkItems.fields.materialType',
-    details?.materialType,
-    null,
-    'pi pi-wrench',
-    buildTechnicalPageRouterLink(technicalPages, ['material'], details?.materialType, currentLanguage)
-  );
-  pushRow(
-    rows,
-    'parkItems.fields.seatingType',
-    details?.seatingType,
-    null,
-    'pi pi-users',
-    buildTechnicalPageRouterLink(technicalPages, ['seating'], details?.seatingType, currentLanguage)
-  );
-  pushRow(
-    rows,
-    'parkItems.fields.launchType',
-    details?.launchType,
-    null,
-    'pi pi-send',
-    buildTechnicalPageRouterLink(technicalPages, ['launch'], details?.launchType, currentLanguage)
-  );
-  pushRow(
-    rows,
-    'parkItems.fields.restraintType',
-    details?.restraintType,
-    null,
-    'pi pi-lock',
-    buildTechnicalPageRouterLink(technicalPages, ['restraint'], details?.restraintType, currentLanguage)
-  );
+  pushTechnicalValueRow(rows, 'parkItems.fields.materialType', 'material', details?.materialType, 'pi pi-wrench', technicalPages, currentLanguage);
+  pushTechnicalValueRow(rows, 'parkItems.fields.seatingType', 'seating', details?.seatingType, 'pi pi-users', technicalPages, currentLanguage);
+  pushTechnicalValueRow(rows, 'parkItems.fields.launchType', 'launch', details?.launchType, 'pi pi-send', technicalPages, currentLanguage);
+  pushTechnicalValueRow(rows, 'parkItems.fields.restraintType', 'restraint', details?.restraintType, 'pi pi-lock', technicalPages, currentLanguage);
   pushRow(rows, 'parkItems.fields.openingDate', formatDate(details?.openingDate ?? details?.openingDateText), null, 'pi pi-calendar-plus');
   pushRow(rows, 'parkItems.fields.closingDate', formatDate(details?.closingDate ?? details?.closingDateText), null, 'pi pi-calendar-minus');
 
   return rows;
+}
+
+function pushTechnicalValueRow(
+  rows: ParkItemDetailRowViewModel[],
+  labelKey: string,
+  kind: AttractionTechnicalValueKind,
+  value: string | null | undefined,
+  iconClass: string,
+  technicalPages: TechnicalPage[],
+  currentLanguage: string
+): void {
+  const valueKey: string | null = getAttractionTechnicalValueKey(kind, value);
+
+  pushRow(
+    rows,
+    labelKey,
+    valueKey ? '' : value,
+    valueKey,
+    iconClass,
+    buildTechnicalPageRouterLink(technicalPages, [kind], value, currentLanguage)
+  );
 }
 
 function pushStatusRow(rows: ParkItemDetailRowViewModel[], status: string | null | undefined): void {

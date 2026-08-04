@@ -107,6 +107,20 @@
       "isVisible": "Visible",
       "coordinates": "Coordinates"
     },
+    "technicalValues": {
+      "material": {
+        "steel": "Steel"
+      },
+      "seating": {
+        "sitDown": "Sit-down"
+      },
+      "launch": {
+        "tireLift": "Tire lift"
+      },
+      "restraint": {
+        "sharedLapBar": "Shared lap bar"
+      }
+    },
     "locations": {
       "general": "General location",
       "entrance": "Entrance",

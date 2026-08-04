@@ -636,6 +636,11 @@
 
 .detail-panel--sidebar {
   position: relative;
+  min-width: 0;
+}
+
+:host ::ng-deep .detail-panel--sidebar .app-section-header__title {
+  font-size: clamp(2rem, 3vw, 2.5rem);
 }
 
 .sidebar-actions {
@@ -645,6 +650,17 @@
 
 .sidebar-actions .app-button {
   width: 100%;
+  min-width: 0;
+  height: auto;
+  white-space: normal;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.sidebar-actions .app-button span,
+.sidebar-row__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 768px) {

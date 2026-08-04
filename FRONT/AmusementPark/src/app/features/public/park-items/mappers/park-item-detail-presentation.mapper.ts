@@ -1,5 +1,39 @@
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
 
+export type AttractionTechnicalValueKind = 'material' | 'seating' | 'launch' | 'restraint';
+
+const ATTRACTION_TECHNICAL_VALUE_SEGMENTS: Record<AttractionTechnicalValueKind, Record<string, string>> = {
+  material: {
+    steel: 'steel'
+  },
+  seating: {
+    'sit down': 'sitDown',
+    sitdown: 'sitDown'
+  },
+  launch: {
+    'lift a pneus': 'tireLift',
+    'luft a pneus': 'tireLift',
+    'tire lift': 'tireLift',
+    'tyre lift': 'tireLift'
+  },
+  restraint: {
+    'common lap bar': 'sharedLapBar',
+    'lap bar commune': 'sharedLapBar',
+    'lapbar commune': 'sharedLapBar',
+    'shared lap bar': 'sharedLapBar'
+  }
+};
+
+export function getAttractionTechnicalValueKey(
+  kind: AttractionTechnicalValueKind,
+  value: string | null | undefined
+): string | null {
+  const normalizedValue: string = normalizeAttractionTechnicalValue(value);
+  const segment: string | undefined = ATTRACTION_TECHNICAL_VALUE_SEGMENTS[kind][normalizedValue];
+
+  return segment ? `parkItems.technicalValues.${kind}.${segment}` : null;
+}
+
 export function getAttractionStatusValueKey(status: string | null | undefined): string | null {
   const normalized: string = status?.trim() ?? '';
   if (normalized.length === 0) {
@@ -147,6 +181,16 @@ export function resolveParkItemTypeTone(type: string | null | undefined, categor
     default:
       return resolveParkItemCategoryTone(category);
   }
+}
+
+function normalizeAttractionTechnicalValue(value: string | null | undefined): string {
+  return (value ?? '')
+    .trim()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ');
 }
 
 function resolveParkItemCategoryTone(category: string | null | undefined): string {

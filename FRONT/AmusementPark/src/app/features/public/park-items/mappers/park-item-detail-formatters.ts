@@ -3,7 +3,25 @@ import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-acce
 import { MeasurementSystem, DEFAULT_MEASUREMENT_SYSTEM } from '@shared/models/measurements/measurement-system.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { getLocalizedBooleanDisplay } from '@shared/utils/display/display-label.helpers';
-import { resolveLocalizedText } from '@shared/utils/localization/localized-text.helpers';
+import { findExactLocalizedText } from '@shared/utils/localization/localized-text.helpers';
+
+interface LocalizedAgeUnits {
+  one: string;
+  few?: string;
+  many?: string;
+  other: string;
+}
+
+const LOCALIZED_AGE_UNITS: Record<string, LocalizedAgeUnits> = {
+  de: { one: 'Jahr', other: 'Jahre' },
+  en: { one: 'year', other: 'years' },
+  es: { one: 'año', other: 'años' },
+  fr: { one: 'an', other: 'ans' },
+  it: { one: 'anno', other: 'anni' },
+  nl: { one: 'jaar', other: 'jaar' },
+  pl: { one: 'rok', few: 'lata', many: 'lat', other: 'lat' },
+  pt: { one: 'ano', other: 'anos' }
+};
 
 const defaultMeasurementConversionService = new MeasurementConversionService();
 
@@ -100,7 +118,11 @@ export function formatAccessConditionValue(
 }
 
 export function formatAge(value: number, currentLanguage: string): string {
-  const suffix: string = currentLanguage === 'fr' ? 'ans' : 'years';
+  const languageCode: string = normalizeSupportedLanguageCode(currentLanguage);
+  const units: LocalizedAgeUnits = LOCALIZED_AGE_UNITS[languageCode] ?? LOCALIZED_AGE_UNITS['en'];
+  const pluralCategory: Intl.LDMLPluralRule = new Intl.PluralRules(languageCode).select(value);
+  const suffix: string = units[pluralCategory as keyof LocalizedAgeUnits] ?? units.other;
+
   return `${formatNumber(value)} ${suffix}`;
 }
 
@@ -124,6 +146,13 @@ export function isValidCoordinatePair(latitude: number | null | undefined, longi
 }
 
 export function resolveOptionalLocalizedText(items: AttractionAccessCondition['label'], currentLanguage: string): string | null {
-  const text: string = resolveLocalizedText(items, currentLanguage, '');
-  return text.trim().length > 0 ? text : null;
+  const localizedItem = findExactLocalizedText(items, normalizeSupportedLanguageCode(currentLanguage));
+  const text: string = localizedItem?.value?.trim() ?? '';
+
+  return text.length > 0 ? text : null;
+}
+
+function normalizeSupportedLanguageCode(languageCode: string): string {
+  const normalizedLanguageCode: string = languageCode.trim().toLowerCase().split('-')[0];
+  return LOCALIZED_AGE_UNITS[normalizedLanguageCode] ? normalizedLanguageCode : 'en';
 }
