@@ -244,16 +244,25 @@ public sealed partial class ParkGraphUpsertProcessor
         if (HasProperty(patch, "sources"))
         {
             List<HistorySourceReference> sources = ReadHistorySources(GetArray(patch, "sources"));
-            AddChange(change, "sources", historyEvent.Sources.Count, sources.Count);
+            AddChange(
+                change,
+                "sources",
+                DescribeHistorySourcesForDiff(historyEvent.Sources),
+                DescribeHistorySourcesForDiff(sources));
             historyEvent.Sources = sources;
         }
 
         if (HasProperty(patch, "article"))
         {
-            HistoryArticle? article = ReadHistoryArticle(GetObject(patch, "article"), imageKeys, result, apply, key);
-            AddChange(change, "article", historyEvent.Article is null ? null : "present", article is null ? null : "present");
-            historyEvent.Article = article;
-            if (article is not null)
+            HistoryArticle? previousArticle = historyEvent.Article;
+            HistoryArticle? updatedArticle = ReadHistoryArticle(GetObject(patch, "article"), imageKeys, result, apply, key, previousArticle);
+            AddChange(
+                change,
+                "article",
+                DescribeHistoryArticleForDiff(previousArticle),
+                DescribeHistoryArticleForDiff(updatedArticle));
+            historyEvent.Article = updatedArticle;
+            if (updatedArticle is not null)
             {
                 historyEvent.IsMajor = true;
             }
@@ -404,7 +413,8 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> imageKeys,
         ParkGraphUpsertResult result,
         bool apply,
-        string eventKey)
+        string eventKey,
+        HistoryArticle? previousArticle)
     {
         if (element is null)
         {
@@ -424,7 +434,13 @@ public sealed partial class ParkGraphUpsertProcessor
             Subtitles = ReadLocalizedTextsFlexible(element.Value, "subtitles", "subtitle"),
             Summaries = ReadLocalizedTextsFlexible(element.Value, "summaries", "summary"),
             MainImageId = mainImageId,
-            Blocks = ReadHistoryArticleBlocks(GetArray(element, "blocks"), imageKeys, result, apply, eventKey),
+            Blocks = ReadHistoryArticleBlocks(
+                GetArray(element, "blocks"),
+                imageKeys,
+                result,
+                apply,
+                eventKey,
+                previousArticle is null ? Array.Empty<HistoryArticleBlock>() : previousArticle.Blocks),
             Sources = ReadHistorySources(GetArray(element, "sources")),
             IsPublished = ReadBool(element, "isPublished") ?? true,
         };
@@ -435,7 +451,8 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> imageKeys,
         ParkGraphUpsertResult result,
         bool apply,
-        string eventKey)
+        string eventKey,
+        IReadOnlyList<HistoryArticleBlock> previousBlocks)
     {
         if (array is null)
         {
@@ -443,6 +460,7 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         List<HistoryArticleBlock> blocks = new List<HistoryArticleBlock>();
+        HashSet<HistoryArticleBlock> matchedPreviousBlocks = new HashSet<HistoryArticleBlock>();
         int fallbackSortOrder = 0;
         foreach (JsonElement item in array.Value.EnumerateArray())
         {
@@ -452,7 +470,20 @@ public sealed partial class ParkGraphUpsertProcessor
             }
 
             fallbackSortOrder++;
-            string blockId = NormalizeString(ReadString(item, "id")) ?? Guid.NewGuid().ToString("N");
+            int sortOrder = ReadInt(item, "sortOrder") ?? fallbackSortOrder;
+            string? requestedBlockId = NormalizeString(ReadString(item, "id"));
+            HistoryArticleBlock? previousBlock = FindPreviousHistoryArticleBlock(
+                previousBlocks,
+                matchedPreviousBlocks,
+                requestedBlockId,
+                sortOrder,
+                fallbackSortOrder - 1);
+            if (previousBlock is not null)
+            {
+                matchedPreviousBlocks.Add(previousBlock);
+            }
+
+            string blockId = requestedBlockId ?? NormalizeString(previousBlock?.Id) ?? Guid.NewGuid().ToString("N");
             string? imageId = null;
             if (TryReadHistoryImageIdPatch(item, "imageId", "imageKey", "mainImageKey", imageKeys, result, apply, $"le bloc '{blockId}' de l'article history '{eventKey}'", out string? resolvedImageId))
             {
@@ -463,7 +494,7 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 Id = blockId,
                 Type = ReadEnum(item, "type", HistoryArticleBlockType.Paragraph),
-                SortOrder = ReadInt(item, "sortOrder") ?? fallbackSortOrder,
+                SortOrder = sortOrder,
                 HeadingLevel = ReadInt(item, "headingLevel"),
                 Texts = ReadLocalizedTextsFlexible(item, "texts", "text"),
                 ImageId = imageId,
@@ -474,6 +505,38 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         return blocks;
+    }
+
+    private static HistoryArticleBlock? FindPreviousHistoryArticleBlock(
+        IReadOnlyList<HistoryArticleBlock> previousBlocks,
+        IReadOnlySet<HistoryArticleBlock> matchedPreviousBlocks,
+        string? requestedBlockId,
+        int sortOrder,
+        int blockIndex)
+    {
+        if (!string.IsNullOrWhiteSpace(requestedBlockId))
+        {
+            return previousBlocks.FirstOrDefault(block =>
+                !matchedPreviousBlocks.Contains(block)
+                && string.Equals(NormalizeString(block.Id), requestedBlockId, StringComparison.Ordinal));
+        }
+
+        HistoryArticleBlock? sameSortOrder = previousBlocks.FirstOrDefault(block =>
+            !matchedPreviousBlocks.Contains(block)
+            && block.SortOrder == sortOrder);
+        if (sameSortOrder is not null)
+        {
+            return sameSortOrder;
+        }
+
+        if (blockIndex >= 0
+            && blockIndex < previousBlocks.Count
+            && !matchedPreviousBlocks.Contains(previousBlocks[blockIndex]))
+        {
+            return previousBlocks[blockIndex];
+        }
+
+        return previousBlocks.FirstOrDefault(block => !matchedPreviousBlocks.Contains(block));
     }
 
     private static List<HistorySourceReference> ReadHistorySources(JsonElement? array)
