@@ -258,6 +258,31 @@ describe('ParkWeatherPageComponent', () => {
       'La météo de visite est uniquement proposée pour les parcs ouverts.',
     );
   });
+
+  it('refreshes unavailable weather SEO when the language changes', () => {
+    const translationService: FakeTranslationService = TestBed.inject(
+      TranslationService,
+    ) as unknown as FakeTranslationService;
+    parksApiService.getParkDetailSummary.mockReturnValue(
+      of(createSummary('Planned')),
+    );
+
+    routeParamMap.next(convertToParamMap({ id: 'park-planned', lang: 'fr' }));
+    fixture.detectChanges();
+    seoService.applyParkUnavailableFeatureSeo.mockClear();
+
+    translationService.languageChanged.emit('en');
+    fixture.detectChanges();
+
+    expect(seoService.applyParkUnavailableFeatureSeo).toHaveBeenLastCalledWith(
+      expect.objectContaining({ status: 'Planned' }),
+      'weather',
+      'en',
+      expect.any(String),
+      null,
+      '/en/park/park-1/bellewaerde',
+    );
+  });
 });
 
 function createSummary(status: ParkStatus = 'Operating'): ParkDetailSummary {

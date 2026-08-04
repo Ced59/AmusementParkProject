@@ -274,6 +274,34 @@ describe('ParkOpeningHoursPageComponent', () => {
     );
   });
 
+  it('refreshes unavailable opening-hours SEO when the language changes', () => {
+    const translationService: FakeTranslationService = TestBed.inject(
+      TranslationService,
+    ) as unknown as FakeTranslationService;
+    parksApiService.getParkDetailSummary.mockReturnValue(
+      of(createSummary('park-planned', 'Planned')),
+    );
+
+    fixture.detectChanges();
+    paramMapSubject.next(
+      convertToParamMap({ id: 'park-planned', lang: 'fr' }),
+    );
+    fixture.detectChanges();
+    seoService.applyParkUnavailableFeatureSeo.mockClear();
+
+    translationService.languageChanged.emit('en');
+    fixture.detectChanges();
+
+    expect(seoService.applyParkUnavailableFeatureSeo).toHaveBeenLastCalledWith(
+      expect.objectContaining({ status: 'Planned' }),
+      'openingHours',
+      'en',
+      expect.any(String),
+      null,
+      expect.stringContaining('/en/park/park-planned/'),
+    );
+  });
+
   it('ignores pending month responses from a previously loaded park', () => {
     const currentMonthKey: string = component['resolveCurrentMonthKey'](null);
     const nextMonthKey: string = component['addMonths'](currentMonthKey, 1);

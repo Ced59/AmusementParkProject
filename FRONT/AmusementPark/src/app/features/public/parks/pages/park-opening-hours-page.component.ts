@@ -81,6 +81,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
   protected readonly unavailablePark = signal<Park | null>(null);
+  private readonly unavailableParkImageId = signal<string | null>(null);
   protected readonly weekDayLabels = signal<string[]>([]);
   protected readonly selectedMonthKey = signal<string>(this.resolveCurrentMonthKey(null));
   protected readonly selectedDayLocalDate = signal<string | null>(null);
@@ -109,13 +110,33 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
     effect((): void => {
+      const language: string = this.currentLanguage();
+      const unavailablePark: Park | null = this.unavailablePark();
+      if (unavailablePark) {
+        const routeTarget = {
+          language,
+          parkId: unavailablePark.id,
+          parkName: unavailablePark.name
+        };
+
+        this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
+        this.seoService.applyParkUnavailableFeatureSeo(
+          unavailablePark,
+          'openingHours',
+          language,
+          this.router.url,
+          this.unavailableParkImageId(),
+          buildPublicRoutePath(buildPublicParkRouteCommands(routeTarget)));
+        return;
+      }
+
       const currentData: ParkOpeningHoursPageData | undefined = this.stateStore.data();
       if (!currentData) {
         return;
       }
 
       const routeTarget = {
-        language: this.currentLanguage(),
+        language,
         parkId: currentData.park.id,
         parkName: currentData.park.name
       };
@@ -123,7 +144,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
       this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
       this.seoService.applyParkOpeningHoursSeo(
         currentData.park.name ?? 'Park',
-        this.currentLanguage(),
+        language,
         this.router.url,
         currentData.calendar.days.length,
         currentData.parkImageId,
@@ -567,6 +588,7 @@ export class ParkOpeningHoursPageComponent implements OnInit {
     this.selectedDayLocalDate.set(null);
     this.stateStore.setLoading(previousData);
     this.unavailablePark.set(null);
+    this.unavailableParkImageId.set(null);
 
     this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()).pipe(
       switchMap((summary: ParkDetailSummary) => {
@@ -578,17 +600,11 @@ export class ParkOpeningHoursPageComponent implements OnInit {
           };
           const parkImageId: string | null = resolveParkSummarySocialImageId(summary);
 
+          this.unavailableParkImageId.set(parkImageId);
           this.unavailablePark.set(summary.park);
           this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
           this.stateStore.setEmpty();
           this.ssrHttpStatusService.setNotFound();
-          this.seoService.applyParkUnavailableFeatureSeo(
-            summary.park,
-            'openingHours',
-            this.currentLanguage(),
-            this.router.url,
-            parkImageId,
-            buildPublicRoutePath(buildPublicParkRouteCommands(routeTarget)));
           return EMPTY;
         }
 
