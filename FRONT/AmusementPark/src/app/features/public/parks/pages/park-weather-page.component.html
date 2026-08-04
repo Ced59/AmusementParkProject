@@ -1,3 +1,21 @@
+@if (unavailablePark(); as park) {
+  <section class="park-weather-page">
+    <header class="park-weather-hero">
+      <p class="park-weather-hero__kicker">{{ 'parkWeather.page.kicker' | translate }}</p>
+      <h1>{{ 'parkWeather.page.unavailableTitle' | translate:{ name: park.name } }}</h1>
+      <p>{{ 'parkWeather.page.unavailableMessage' | translate }}</p>
+
+      <app-park-lifecycle-notice [status]="park.status"></app-park-lifecycle-notice>
+
+      @if (detailLink()) {
+        <a appUiButton="ghost" class="park-weather-hero__back" [routerLink]="detailLink()">
+          <i class="pi pi-arrow-left" aria-hidden="true"></i>
+          <span>{{ 'parkWeather.page.backToPark' | translate:{ name: park.name } }}</span>
+        </a>
+      }
+    </header>
+  </section>
+} @else {
 <app-page-state
   [state]="state()"
   [messages]="{
@@ -208,3 +226,4 @@
     </section>
   }
 </app-page-state>
+}

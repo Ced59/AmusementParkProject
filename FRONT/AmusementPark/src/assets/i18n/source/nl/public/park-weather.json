@@ -48,6 +48,8 @@
       "kicker": "Weer",
       "title": "7-daags weer voor {{name}}",
       "lead": "Check het weer voor {{name}} voordat je op bezoek gaat.",
+      "unavailableTitle": "Weer voor {{name}} niet beschikbaar",
+      "unavailableMessage": "Bezoekweer is alleen beschikbaar voor parken die momenteel open zijn voor bezoekers.",
       "loadingTitle": "Weer wordt geladen",
       "loadingMessage": "De verwachting wordt geladen.",
       "emptyTitle": "Geen verwachting beschikbaar",

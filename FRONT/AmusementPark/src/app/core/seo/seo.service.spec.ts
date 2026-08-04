@@ -106,8 +106,15 @@ describe('SeoService', () => {
       );
 
       const parkJsonLd: Record<string, unknown> | undefined = readJsonLdScripts().find(
-        (value: Record<string, unknown>): boolean => value['@type'] === 'AmusementPark',
+        (value: Record<string, unknown>): boolean => value['name'] === park.name,
       );
+      const expectedSchemaType: string = status === 'Planned'
+        || status === 'UnderConstruction'
+        || status === 'Cancelled'
+        ? 'Place'
+        : 'AmusementPark';
+
+      expect(parkJsonLd?.['@type']).toBe(expectedSchemaType);
       expect(parkJsonLd?.['openingHours']).toBeUndefined();
       expect(parkJsonLd?.['openingHoursSpecification']).toBeUndefined();
       expect(parkJsonLd?.['additionalProperty']).toEqual({
@@ -117,6 +124,27 @@ describe('SeoService', () => {
       });
     },
   );
+
+  it.each([
+    ['weather', 'Météo indisponible'],
+    ['openingHours', 'Horaires indisponibles'],
+  ] as const)('keeps unavailable %s pages noindex and canonicalized to the park detail', (feature, expectedTitle) => {
+    service.applyParkUnavailableFeatureSeo(
+      { name: 'Future Park', status: 'Planned' } as Park,
+      feature,
+      'fr',
+      `/fr/park/park-1/future-park/${feature === 'weather' ? 'weather' : 'opening-hours'}`,
+      null,
+      '/fr/park/park-1/future-park',
+    );
+
+    expect(documentRef.title).toContain(expectedTitle);
+    expect(readMetaContent('meta[name="description"]')).toContain('projet annoncé');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park/park-1/future-park');
+    expect(readOpenGraphLocaleAlternates()).toEqual([]);
+    expect(readJsonLdScripts()).toEqual([]);
+  });
 
   it('keeps the supplied description for an operating park', () => {
     const park: ParkDetailViewModel = buildParkDetail({
@@ -302,6 +330,35 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
       'https://localhost:44391/images/binary/item-photo-1?width=1200&v=3',
     );
+  });
+
+  it('describes planned park items as documented concepts instead of tourist attractions', () => {
+    const detail: ParkItemDetailViewModel = buildParkItemDetail({
+      parkName: 'Future Park',
+      parkStatus: 'Planned',
+      parkLink: ['/fr/park/park-1/future-park'],
+    });
+
+    service.applyParkItemDetailSeo(
+      detail,
+      'fr',
+      '/fr/park/park-1/future-park/item/item-1/future-ride',
+    );
+
+    const itemJsonLd: Record<string, unknown> | undefined = readJsonLdScripts().find(
+      (value: Record<string, unknown>): boolean => value['name'] === detail.name,
+    );
+
+    expect(itemJsonLd?.['@type']).toBe('Thing');
+    expect(itemJsonLd?.['containedInPlace']).toEqual({
+      '@type': 'Place',
+      name: 'Future Park',
+    });
+    expect(itemJsonLd?.['additionalProperty']).toEqual({
+      '@type': 'PropertyValue',
+      name: 'parentParkLifecycleStatus',
+      value: 'Planned',
+    });
   });
 
   it('falls back to the site social image when the page has no main photo', () => {
@@ -1704,6 +1761,7 @@ function buildParkItemDetail(
     name: 'Demo Item',
     description: 'Demo item description',
     parkName: null,
+    parkStatus: 'Operating',
     parkLink: null,
     manufacturerName: null,
     heroPhoto: null,

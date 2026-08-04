@@ -19,6 +19,8 @@
       "kicker": "Daten und Zeiten",
       "title": "Daten und Öffnungszeiten für {{ name }}",
       "lead": "Sieh dir die aktuell gepflegten Daten und Tageszeiten für {{ name }} an.",
+      "unavailableTitle": "Öffnungszeiten für {{ name }} nicht verfügbar",
+      "unavailableMessage": "Aktuelle Öffnungszeiten sind nur für Parks verfügbar, die derzeit für Besucher geöffnet sind.",
       "backToPark": "Zurück zu {{ name }}",
       "officialSite": "Offizielle Website",
       "disclaimer": "Diese Zeiten dienen nur zur Orientierung. Prüfe vor deinem Besuch immer die offizielle Website von {{ name }}, da private Events, Sonderschließungen, Wetter, Betrieb oder andere Änderungen hier eventuell nicht bekannt oder aktualisiert sind.",

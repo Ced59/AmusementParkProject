@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject, of } from 'rxjs';
 
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
+import { ParkStatus } from '@app/models/parks/park-status';
 import {
   ParkOpeningHoursCalendar,
   ParkOpeningHoursDay,
@@ -37,6 +38,8 @@ describe('ParkOpeningHoursPageComponent', () => {
   let component: ParkOpeningHoursPageComponent;
   let paramMapSubject: Subject<ParamMap>;
   let parksApiService: MockedObject<ParksApiService>;
+  let seoService: MockedObject<SeoService>;
+  let ssrHttpStatusService: MockedObject<SsrHttpStatusService>;
 
   beforeEach(async () => {
     paramMapSubject = new Subject<ParamMap>();
@@ -48,6 +51,18 @@ describe('ParkOpeningHoursPageComponent', () => {
         .fn()
         .mockName('ParksApiService.getParkOpeningHours'),
     } as unknown as MockedObject<ParksApiService>;
+    seoService = {
+      applyParkOpeningHoursSeo: vi
+        .fn()
+        .mockName('SeoService.applyParkOpeningHoursSeo'),
+      applyParkUnavailableFeatureSeo: vi
+        .fn()
+        .mockName('SeoService.applyParkUnavailableFeatureSeo'),
+    } as unknown as MockedObject<SeoService>;
+    ssrHttpStatusService = {
+      setNotFound: vi.fn().mockName('SsrHttpStatusService.setNotFound'),
+      setStatus: vi.fn().mockName('SsrHttpStatusService.setStatus'),
+    } as unknown as MockedObject<SsrHttpStatusService>;
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, ParkOpeningHoursPageComponent],
@@ -64,20 +79,8 @@ describe('ParkOpeningHoursPageComponent', () => {
           },
         },
         { provide: ParksApiService, useValue: parksApiService },
-        {
-          provide: SeoService,
-          useValue: {
-            applyParkOpeningHoursSeo: vi
-              .fn()
-              .mockName('SeoService.applyParkOpeningHoursSeo'),
-          },
-        },
-        {
-          provide: SsrHttpStatusService,
-          useValue: {
-            setNotFound: vi.fn().mockName('SsrHttpStatusService.setNotFound'),
-          },
-        },
+        { provide: SeoService, useValue: seoService },
+        { provide: SsrHttpStatusService, useValue: ssrHttpStatusService },
         { provide: TranslationService, useClass: FakeTranslationService },
       ],
     }).compileComponents();
@@ -91,6 +94,11 @@ describe('ParkOpeningHoursPageComponent', () => {
           notDefined: 'Non renseigné',
           dayHasInformation: 'Information ajoutée',
           nextDaySuffix: 'lendemain',
+          kicker: 'Horaires',
+          unavailableTitle: 'Horaires indisponibles pour {{name}}',
+          unavailableMessage:
+            'Les horaires actuels sont uniquement proposés pour les parcs ouverts.',
+          backToPark: 'Retour à {{name}}',
         },
       },
     });
@@ -233,6 +241,67 @@ describe('ParkOpeningHoursPageComponent', () => {
     expect(sharePanel.textKey).toBe('shareSocial.openingHours.text');
   });
 
+  it.each<ParkStatus>([
+    'ClosedDefinitively',
+    'Planned',
+    'UnderConstruction',
+    'TemporarilyClosed',
+    'Cancelled',
+  ])('does not load or index opening hours when the park status is %s', (status: ParkStatus) => {
+    parksApiService.getParkDetailSummary.mockReturnValue(
+      of(createSummary(`park-${status}`, status)),
+    );
+
+    fixture.detectChanges();
+    paramMapSubject.next(
+      convertToParamMap({ id: `park-${status}`, lang: 'fr' }),
+    );
+    fixture.detectChanges();
+
+    expect(parksApiService.getParkOpeningHours).not.toHaveBeenCalled();
+    expect(ssrHttpStatusService.setNotFound).toHaveBeenCalledTimes(1);
+    expect(seoService.applyParkUnavailableFeatureSeo).toHaveBeenCalledWith(
+      expect.objectContaining({ status }),
+      'openingHours',
+      'fr',
+      expect.any(String),
+      null,
+      expect.stringContaining(`/park-${status}/`),
+    );
+    expect(seoService.applyParkOpeningHoursSeo).not.toHaveBeenCalled();
+    expect((fixture.nativeElement as HTMLElement).textContent).toContain(
+      'Les horaires actuels sont uniquement proposés pour les parcs ouverts.',
+    );
+  });
+
+  it('refreshes unavailable opening-hours SEO when the language changes', () => {
+    const translationService: FakeTranslationService = TestBed.inject(
+      TranslationService,
+    ) as unknown as FakeTranslationService;
+    parksApiService.getParkDetailSummary.mockReturnValue(
+      of(createSummary('park-planned', 'Planned')),
+    );
+
+    fixture.detectChanges();
+    paramMapSubject.next(
+      convertToParamMap({ id: 'park-planned', lang: 'fr' }),
+    );
+    fixture.detectChanges();
+    seoService.applyParkUnavailableFeatureSeo.mockClear();
+
+    translationService.languageChanged.emit('en');
+    fixture.detectChanges();
+
+    expect(seoService.applyParkUnavailableFeatureSeo).toHaveBeenLastCalledWith(
+      expect.objectContaining({ status: 'Planned' }),
+      'openingHours',
+      'en',
+      expect.any(String),
+      null,
+      expect.stringContaining('/en/park/park-planned/'),
+    );
+  });
+
   it('ignores pending month responses from a previously loaded park', () => {
     const currentMonthKey: string = component['resolveCurrentMonthKey'](null);
     const nextMonthKey: string = component['addMonths'](currentMonthKey, 1);
@@ -332,13 +401,17 @@ function createCalendar(
   };
 }
 
-function createSummary(parkId: string): ParkDetailSummary {
+function createSummary(
+  parkId: string,
+  status: ParkStatus = 'Operating',
+): ParkDetailSummary {
   return {
     park: {
       id: parkId,
       name: parkId === 'park-1' ? 'First Park' : 'Second Park',
       latitude: 50,
       longitude: 3,
+      status,
     },
     mainImage: null,
     references: {},

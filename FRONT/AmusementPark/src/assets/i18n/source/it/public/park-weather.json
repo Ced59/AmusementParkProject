@@ -48,6 +48,8 @@
       "kicker": "Meteo",
       "title": "Meteo a 7 giorni di {{name}}",
       "lead": "Controlla il meteo di {{name}} prima della tua visita.",
+      "unavailableTitle": "Meteo non disponibile per {{name}}",
+      "unavailableMessage": "Il meteo per la visita è disponibile solo per i parchi attualmente aperti ai visitatori.",
       "loadingTitle": "Caricamento meteo",
       "loadingMessage": "Le previsioni sono in caricamento.",
       "emptyTitle": "Nessuna previsione disponibile",

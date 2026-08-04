@@ -34,6 +34,7 @@ import {
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { UiButtonDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { ParkLifecycleNoticeComponent } from '../ui/park-lifecycle-notice.component';
 import { resolveWeatherConditionKey, resolveWeatherIconClass } from '../ui/park-weather-card.component';
 
 interface ParkWeatherPageData {
@@ -55,7 +56,7 @@ const CHART_BOTTOM: number = 216;
   templateUrl: './park-weather-page.component.html',
   styleUrls: ['./park-weather-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
+  imports: [PageStateComponent, ParkLifecycleNoticeComponent, PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
 })
 export class ParkWeatherPageComponent implements OnInit {
   private readonly stateStore = new SignalScreenStateStore<ParkWeatherPageData>();
@@ -66,6 +67,8 @@ export class ParkWeatherPageComponent implements OnInit {
   protected readonly historicalComparisonRequested = signal<boolean>(false);
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
+  protected readonly unavailablePark = signal<Park | null>(null);
+  private readonly unavailableParkImageId = signal<string | null>(null);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private currentParkId: string | null = null;
@@ -83,13 +86,33 @@ export class ParkWeatherPageComponent implements OnInit {
     private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
     effect((): void => {
+      const language: string = this.currentLanguage();
+      const unavailablePark: Park | null = this.unavailablePark();
+      if (unavailablePark) {
+        const routeTarget = {
+          language,
+          parkId: unavailablePark.id,
+          parkName: unavailablePark.name
+        };
+
+        this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
+        this.seoService.applyParkUnavailableFeatureSeo(
+          unavailablePark,
+          'weather',
+          language,
+          this.router.url,
+          this.unavailableParkImageId(),
+          buildPublicRoutePath(buildPublicParkRouteCommands(routeTarget)));
+        return;
+      }
+
       const currentData: ParkWeatherPageData | undefined = this.stateStore.data();
       if (!currentData) {
         return;
       }
 
       const routeTarget = {
-        language: this.currentLanguage(),
+        language,
         parkId: currentData.park.id,
         parkName: currentData.park.name
       };
@@ -98,7 +121,7 @@ export class ParkWeatherPageComponent implements OnInit {
 
       this.seoService.applyParkWeatherSeo(
         currentData.park.name ?? 'Park',
-        this.currentLanguage(),
+        language,
         this.router.url,
         currentData.weather.days.length,
         currentData.parkImageId,
@@ -264,6 +287,8 @@ export class ParkWeatherPageComponent implements OnInit {
   private loadWeatherPage(parkId: string): void {
     const previousData: ParkWeatherPageData | undefined = this.stateStore.data();
     this.stateStore.setLoading(previousData);
+    this.unavailablePark.set(null);
+    this.unavailableParkImageId.set(null);
     this.historicalComparisonRequested.set(false);
     this.loadedHistoricalComparisonParkId = null;
     this.loadedHistoricalComparisonForecastDateKey = null;
@@ -271,9 +296,18 @@ export class ParkWeatherPageComponent implements OnInit {
     this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()).pipe(
       switchMap((summary: ParkDetailSummary) => {
         if (!isParkOpenToVisitors(summary.park.status)) {
+          const routeTarget = {
+            language: this.currentLanguage(),
+            parkId: summary.park.id,
+            parkName: summary.park.name
+          };
+          const parkImageId: string | null = resolveParkSummarySocialImageId(summary);
+
+          this.unavailableParkImageId.set(parkImageId);
+          this.unavailablePark.set(summary.park);
+          this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
+          this.stateStore.setEmpty();
           this.ssrHttpStatusService.setNotFound();
-          this.seoService.applyNotFoundSeo(this.currentLanguage(), this.router.url);
-          this.stateStore.setError('parkWeather.errorMessage');
           return EMPTY;
         }
 

@@ -48,6 +48,8 @@
       "kicker": "Tiempo",
       "title": "Tiempo a 7 días de {{name}}",
       "lead": "Consulta el tiempo de {{name}} antes de tu visita.",
+      "unavailableTitle": "Tiempo no disponible para {{name}}",
+      "unavailableMessage": "El tiempo para planificar una visita solo está disponible para parques abiertos actualmente al público.",
       "loadingTitle": "Cargando el tiempo",
       "loadingMessage": "La previsión se está cargando.",
       "emptyTitle": "Sin previsión disponible",

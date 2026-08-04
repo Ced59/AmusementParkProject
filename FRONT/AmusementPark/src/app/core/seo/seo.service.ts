@@ -131,6 +131,15 @@ interface ParkDetailSeoCopy {
   description: (parkName: string, locationLabel: string) => string;
 }
 
+type ParkUnavailableFeature = 'weather' | 'openingHours';
+
+interface ParkUnavailableFeatureSeoCopy {
+  weatherTitle: (parkName: string) => string;
+  weatherDescription: (parkName: string, statusLabel: string) => string;
+  openingHoursTitle: (parkName: string) => string;
+  openingHoursDescription: (parkName: string, statusLabel: string) => string;
+}
+
 type NonOperatingParkStatus = Exclude<ParkStatus, 'Operating'>;
 
 interface ParkLifecycleSeoCopy {
@@ -1222,6 +1231,73 @@ const PARK_LIFECYCLE_SEO_COPY: Record<string, ParkLifecycleSeoCopy> = {
   }
 };
 
+const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSeoCopy> = {
+  en: {
+    weatherTitle: (parkName: string): string => `Weather unavailable for ${parkName}`,
+    weatherDescription: (parkName: string, statusLabel: string): string =>
+      `Visit-planning weather is not available because ${parkName} is currently listed as ${statusLabel}.`,
+    openingHoursTitle: (parkName: string): string => `Opening hours unavailable for ${parkName}`,
+    openingHoursDescription: (parkName: string, statusLabel: string): string =>
+      `Current opening hours are not available because ${parkName} is currently listed as ${statusLabel}.`
+  },
+  fr: {
+    weatherTitle: (parkName: string): string => `Météo indisponible pour ${parkName}`,
+    weatherDescription: (parkName: string, statusLabel: string): string =>
+      `La météo de visite n’est pas proposée car ${parkName} est actuellement répertorié comme ${statusLabel}.`,
+    openingHoursTitle: (parkName: string): string => `Horaires indisponibles pour ${parkName}`,
+    openingHoursDescription: (parkName: string, statusLabel: string): string =>
+      `Les horaires actuels ne sont pas proposés car ${parkName} est actuellement répertorié comme ${statusLabel}.`
+  },
+  de: {
+    weatherTitle: (parkName: string): string => `Wetter für ${parkName} nicht verfügbar`,
+    weatherDescription: (parkName: string, statusLabel: string): string =>
+      `Besuchswetter ist nicht verfügbar, da ${parkName} derzeit als ${statusLabel} geführt wird.`,
+    openingHoursTitle: (parkName: string): string => `Öffnungszeiten für ${parkName} nicht verfügbar`,
+    openingHoursDescription: (parkName: string, statusLabel: string): string =>
+      `Aktuelle Öffnungszeiten sind nicht verfügbar, da ${parkName} derzeit als ${statusLabel} geführt wird.`
+  },
+  nl: {
+    weatherTitle: (parkName: string): string => `Weer voor ${parkName} niet beschikbaar`,
+    weatherDescription: (parkName: string, statusLabel: string): string =>
+      `Bezoekweer is niet beschikbaar omdat ${parkName} momenteel vermeld staat als ${statusLabel}.`,
+    openingHoursTitle: (parkName: string): string => `Openingstijden voor ${parkName} niet beschikbaar`,
+    openingHoursDescription: (parkName: string, statusLabel: string): string =>
+      `Actuele openingstijden zijn niet beschikbaar omdat ${parkName} momenteel vermeld staat als ${statusLabel}.`
+  },
+  it: {
+    weatherTitle: (parkName: string): string => `Meteo non disponibile per ${parkName}`,
+    weatherDescription: (parkName: string, statusLabel: string): string =>
+      `Il meteo per la visita non è disponibile perché ${parkName} risulta attualmente ${statusLabel}.`,
+    openingHoursTitle: (parkName: string): string => `Orari non disponibili per ${parkName}`,
+    openingHoursDescription: (parkName: string, statusLabel: string): string =>
+      `Gli orari attuali non sono disponibili perché ${parkName} risulta attualmente ${statusLabel}.`
+  },
+  es: {
+    weatherTitle: (parkName: string): string => `Tiempo no disponible para ${parkName}`,
+    weatherDescription: (parkName: string, statusLabel: string): string =>
+      `El tiempo para planificar una visita no está disponible porque ${parkName} figura actualmente como ${statusLabel}.`,
+    openingHoursTitle: (parkName: string): string => `Horarios no disponibles para ${parkName}`,
+    openingHoursDescription: (parkName: string, statusLabel: string): string =>
+      `Los horarios actuales no están disponibles porque ${parkName} figura actualmente como ${statusLabel}.`
+  },
+  pl: {
+    weatherTitle: (parkName: string): string => `Pogoda dla ${parkName} jest niedostępna`,
+    weatherDescription: (parkName: string, statusLabel: string): string =>
+      `Pogoda do planowania wizyty nie jest dostępna, ponieważ ${parkName} ma obecnie status: ${statusLabel}.`,
+    openingHoursTitle: (parkName: string): string => `Godziny otwarcia ${parkName} są niedostępne`,
+    openingHoursDescription: (parkName: string, statusLabel: string): string =>
+      `Aktualne godziny otwarcia nie są dostępne, ponieważ ${parkName} ma obecnie status: ${statusLabel}.`
+  },
+  pt: {
+    weatherTitle: (parkName: string): string => `Meteorologia indisponível para ${parkName}`,
+    weatherDescription: (parkName: string, statusLabel: string): string =>
+      `A meteorologia para planear uma visita não está disponível porque ${parkName} está atualmente registado como ${statusLabel}.`,
+    openingHoursTitle: (parkName: string): string => `Horários indisponíveis para ${parkName}`,
+    openingHoursDescription: (parkName: string, statusLabel: string): string =>
+      `Os horários atuais não estão disponíveis porque ${parkName} está atualmente registado como ${statusLabel}.`
+  }
+};
+
 const PARK_ITEM_DETAIL_SEO_COPY: Record<string, ParkItemDetailSeoCopy> = {
   en: {
     parkContextPrefix: 'at',
@@ -2058,6 +2134,46 @@ export class SeoService {
     });
   }
 
+  applyParkUnavailableFeatureSeo(
+    park: Pick<Park, 'name' | 'status'>,
+    feature: ParkUnavailableFeature,
+    language: string,
+    url: string,
+    parkImageId: string | null = null,
+    parkDetailCanonicalPath: string | null = null
+  ): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: ParkUnavailableFeatureSeoCopy = PARK_UNAVAILABLE_FEATURE_SEO_COPY[normalizedLanguage]
+      ?? PARK_UNAVAILABLE_FEATURE_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const lifecycleCopy: ParkLifecycleSeoCopy = PARK_LIFECYCLE_SEO_COPY[normalizedLanguage]
+      ?? PARK_LIFECYCLE_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const parkName: string = this.normalizeOptionalText(park.name) ?? 'Park';
+    const lifecycleStatus: NonOperatingParkStatus | null = park.status && park.status !== 'Operating'
+      ? park.status
+      : null;
+    const statusLabel: string = lifecycleStatus
+      ? lifecycleCopy.statusLabels[lifecycleStatus]
+      : park.status ?? 'unavailable';
+    const title: string = feature === 'weather'
+      ? copy.weatherTitle(parkName)
+      : copy.openingHoursTitle(parkName);
+    const description: string = feature === 'weather'
+      ? copy.weatherDescription(parkName, statusLabel)
+      : copy.openingHoursDescription(parkName, statusLabel);
+    const seoUrl: string = this.resolveSeoUrl(url, parkDetailCanonicalPath);
+
+    this.apply({
+      title: `${title} - ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: 'noindex,follow',
+      alternates: [],
+      imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
+      imageAlt: parkName,
+      jsonLd: []
+    });
+  }
+
   applyParkZonesSeo(
     parkName: string,
     language: string,
@@ -2591,7 +2707,7 @@ export class SeoService {
 
     const parkJsonLd: Record<string, unknown> = {
       '@context': 'https://schema.org',
-      '@type': 'AmusementPark',
+      '@type': this.resolveParkSchemaType(park.status),
       name: park.name,
       url: canonicalUrl
     };
@@ -3256,10 +3372,18 @@ export class SeoService {
 
     const itemJsonLd: Record<string, unknown> = {
       '@context': 'https://schema.org',
-      '@type': 'TouristAttraction',
+      '@type': this.isConceptualParkStatus(detail.parkStatus) ? 'Thing' : 'TouristAttraction',
       name: detail.name,
       url: canonicalUrl
     };
+
+    if (detail.parkStatus && detail.parkStatus !== 'Operating') {
+      itemJsonLd['additionalProperty'] = {
+        '@type': 'PropertyValue',
+        name: 'parentParkLifecycleStatus',
+        value: detail.parkStatus
+      };
+    }
 
     const description: string = normalizeSeoText(detail.description, '');
     if (description) {
@@ -3268,7 +3392,7 @@ export class SeoService {
 
     if (detail.parkName) {
       itemJsonLd['containedInPlace'] = {
-        '@type': 'AmusementPark',
+        '@type': this.resolveParkSchemaType(detail.parkStatus),
         name: detail.parkName
       };
     }
@@ -3281,6 +3405,14 @@ export class SeoService {
     }
 
     return [this.buildBreadcrumbJsonLd(breadcrumbItems), itemJsonLd];
+  }
+
+  private resolveParkSchemaType(status: ParkStatus | null | undefined): 'AmusementPark' | 'Place' {
+    return this.isConceptualParkStatus(status) ? 'Place' : 'AmusementPark';
+  }
+
+  private isConceptualParkStatus(status: ParkStatus | null | undefined): boolean {
+    return status === 'Planned' || status === 'UnderConstruction' || status === 'Cancelled';
   }
 
   private buildStandaloneAttractionJsonLd(attraction: StandaloneAttraction, url: string, attractionName: string, description: string): unknown[] {
