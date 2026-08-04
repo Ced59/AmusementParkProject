@@ -27,7 +27,8 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> imageKeys,
         ParkGraphUpsertResult result,
         bool apply,
-        string context)
+        string context,
+        IReadOnlyCollection<string> previousImageIds)
     {
         List<string> imageIds = ReadStringArray(GetArray(element, "imageIds"));
         JsonElement? imageKeyArray = GetArray(element, "imageKeys");
@@ -36,6 +37,7 @@ public sealed partial class ParkGraphUpsertProcessor
             return imageIds;
         }
 
+        bool hasUnresolvedImageKey = false;
         foreach (JsonElement item in imageKeyArray.Value.EnumerateArray())
         {
             if (item.ValueKind != JsonValueKind.String)
@@ -59,6 +61,13 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 result.Warnings.Add($"La clé image '{imageKey}' est introuvable pour {context}.");
             }
+
+            hasUnresolvedImageKey = true;
+        }
+
+        if (hasUnresolvedImageKey)
+        {
+            imageIds.AddRange(previousImageIds);
         }
 
         return imageIds
@@ -66,6 +75,17 @@ public sealed partial class ParkGraphUpsertProcessor
             .Select(static id => id.Trim())
             .Distinct(StringComparer.Ordinal)
             .ToList();
+    }
+
+    private static bool HasHistoryImageIdPatch(
+        JsonElement element,
+        string idPropertyName,
+        string keyPropertyName,
+        string fallbackKeyPropertyName)
+    {
+        return HasProperty(element, idPropertyName)
+            || HasProperty(element, keyPropertyName)
+            || HasProperty(element, fallbackKeyPropertyName);
     }
 
     private static bool TryReadHistoryImageIdPatch(
