@@ -8,6 +8,7 @@ import { BehaviorSubject, of } from 'rxjs';
 
 import { Park } from '@app/models/parks/park';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
+import { ParkStatus } from '@app/models/parks/park-status';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
@@ -33,6 +34,7 @@ describe('ParkWeatherPageComponent', () => {
   let fixture: ComponentFixture<ParkWeatherPageComponent>;
   let parksApiService: MockedObject<ParksApiService>;
   let seoService: MockedObject<SeoService>;
+  let ssrHttpStatusService: MockedObject<SsrHttpStatusService>;
   let routeParamMap: BehaviorSubject<ParamMap>;
 
   beforeEach(async () => {
@@ -50,7 +52,12 @@ describe('ParkWeatherPageComponent', () => {
     } as unknown as MockedObject<ParksApiService>;
     seoService = {
       applyParkWeatherSeo: vi.fn().mockName('SeoService.applyParkWeatherSeo'),
+      applyNotFoundSeo: vi.fn().mockName('SeoService.applyNotFoundSeo'),
     } as unknown as MockedObject<SeoService>;
+    ssrHttpStatusService = {
+      setNotFound: vi.fn().mockName('SsrHttpStatusService.setNotFound'),
+      setStatus: vi.fn().mockName('SsrHttpStatusService.setStatus'),
+    } as unknown as MockedObject<SsrHttpStatusService>;
 
     parksApiService.getParkDetailSummary.mockReturnValue(of(createSummary()));
     parksApiService.getParkWeather.mockReturnValue(of(createForecast()));
@@ -80,9 +87,7 @@ describe('ParkWeatherPageComponent', () => {
         { provide: SeoService, useValue: seoService },
         {
           provide: SsrHttpStatusService,
-          useValue: {
-            setNotFound: vi.fn().mockName('SsrHttpStatusService.setNotFound'),
-          },
+          useValue: ssrHttpStatusService,
         },
         { provide: TranslationService, useClass: FakeTranslationService },
       ],
@@ -216,11 +221,33 @@ describe('ParkWeatherPageComponent', () => {
     expect(args[2]).toBe(10);
     expect(args[3]).toEqual(['2026-06-20', '2026-06-21']);
   });
+
+  it.each<ParkStatus>([
+    'ClosedDefinitively',
+    'Planned',
+    'UnderConstruction',
+    'TemporarilyClosed',
+    'Cancelled',
+  ])('does not load or index weather when the park status is %s', (status: ParkStatus) => {
+    parksApiService.getParkDetailSummary.mockReturnValue(of(createSummary(status)));
+    parksApiService.getParkWeather.mockClear();
+    seoService.applyParkWeatherSeo.mockClear();
+    seoService.applyNotFoundSeo.mockClear();
+    ssrHttpStatusService.setNotFound.mockClear();
+
+    routeParamMap.next(convertToParamMap({ id: `park-${status}`, lang: 'fr' }));
+    fixture.detectChanges();
+
+    expect(parksApiService.getParkWeather).not.toHaveBeenCalled();
+    expect(ssrHttpStatusService.setNotFound).toHaveBeenCalledTimes(1);
+    expect(seoService.applyNotFoundSeo).toHaveBeenCalledWith('fr', expect.any(String));
+    expect(seoService.applyParkWeatherSeo).not.toHaveBeenCalled();
+  });
 });
 
-function createSummary(): ParkDetailSummary {
+function createSummary(status: ParkStatus = 'Operating'): ParkDetailSummary {
   return {
-    park: createPark(),
+    park: createPark(status),
     mainImage: null,
     references: {},
     stats: {
@@ -236,7 +263,7 @@ function createSummary(): ParkDetailSummary {
   };
 }
 
-function createPark(): Park {
+function createPark(status: ParkStatus = 'Operating'): Park {
   return {
     id: 'park-1',
     name: 'Bellewaerde',
@@ -244,6 +271,7 @@ function createPark(): Park {
     latitude: 50.845,
     longitude: 2.945,
     isVisible: true,
+    status,
   };
 }
 

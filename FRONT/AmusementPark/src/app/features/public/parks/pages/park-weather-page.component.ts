@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { forkJoin } from 'rxjs';
+import { EMPTY, map, switchMap } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { Park } from '@app/models/parks/park';
@@ -25,6 +25,7 @@ import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { resolveParkSummarySocialImageId } from '@shared/utils/images/park-social-image.helpers';
+import { isParkOpenToVisitors } from '@shared/utils/parks/park-status.presentation';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import {
   buildPublicParkRouteCommands,
@@ -267,10 +268,21 @@ export class ParkWeatherPageComponent implements OnInit {
     this.loadedHistoricalComparisonParkId = null;
     this.loadedHistoricalComparisonForecastDateKey = null;
 
-    forkJoin({
-      summary: this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()),
-      weather: this.parksApiService.getParkWeather(parkId, 7, anonymousHttpOptions())
-    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()).pipe(
+      switchMap((summary: ParkDetailSummary) => {
+        if (!isParkOpenToVisitors(summary.park.status)) {
+          this.ssrHttpStatusService.setNotFound();
+          this.seoService.applyNotFoundSeo(this.currentLanguage(), this.router.url);
+          this.stateStore.setError('parkWeather.errorMessage');
+          return EMPTY;
+        }
+
+        return this.parksApiService.getParkWeather(parkId, 7, anonymousHttpOptions()).pipe(
+          map((weather: ParkWeatherForecast) => ({ summary, weather }))
+        );
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
       next: (data: { summary: ParkDetailSummary; weather: ParkWeatherForecast }) => {
         const pageData: ParkWeatherPageData = {
           park: data.summary.park,
