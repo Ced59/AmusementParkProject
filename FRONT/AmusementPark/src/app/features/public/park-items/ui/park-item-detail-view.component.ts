@@ -20,6 +20,7 @@ import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.c
 import { CommentSummaryLinkComponent } from '@features/public/comments/ui/comment-summary-link.component';
 import { PublicContextualBlockMarker } from '@features/public/contextual-editing/models/public-contextual-block-marker.model';
 import { PublicContextualBlockDirective } from '@features/public/contextual-editing/ui/public-contextual-block.directive';
+import { ParkLifecycleNoticeComponent } from '@features/public/parks/ui/park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-item-detail-view',
@@ -45,7 +46,8 @@ import { PublicContextualBlockDirective } from '@features/public/contextual-edit
     PublicSharePanelComponent,
     RatingStarsComponent,
     CommentSummaryLinkComponent,
-    PublicContextualBlockDirective
+    PublicContextualBlockDirective,
+    ParkLifecycleNoticeComponent
   ]
 })
 export class ParkItemDetailViewComponent {
@@ -69,12 +71,13 @@ export class ParkItemDetailViewComponent {
         subtitle: currentDetail.name,
         iconKind: resolveLocationMarkerIconKind(point.id),
         details: [],
-        actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
+        actionUrl: currentDetail.parkStatus === 'Operating' ? this.mapDirectionsUrlService.buildDirectionsUrl({
           latitude: point.latitude,
           longitude: point.longitude,
           label: `${currentDetail.name} - ${pointLabel}`
-        }),
-        actionLabel: this.translateService.instant('parks.map.navigate')
+        }) : null,
+        actionLabel: currentDetail.parkStatus === 'Operating' ? this.translateService.instant('parks.map.navigate') : null,
+        directionsActionEnabled: currentDetail.parkStatus === 'Operating'
       };
     });
   });

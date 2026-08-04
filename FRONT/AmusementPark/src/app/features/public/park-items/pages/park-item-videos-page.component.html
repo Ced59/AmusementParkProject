@@ -1,3 +1,7 @@
+@if (park(); as currentPark) {
+  <app-park-lifecycle-notice [status]="currentPark.status" [parkName]="currentPark.name"></app-park-lifecycle-notice>
+}
+
 <app-public-video-list-view
   [state]="state()"
   [videos]="videos()"

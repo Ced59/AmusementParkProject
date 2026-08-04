@@ -78,12 +78,12 @@ export class ParkItemsMapSectionComponent implements OnChanges {
 
     this.navigationMarkers = this.filteredMarkers.map((marker: ParkItemsMapMarkerViewModel) => {
       return this.mapMarkerPopupActionService.enrich(marker, {
-        directions: {
+        directions: currentMap.isOpenToVisitors ? {
           latitude: marker.lat,
           longitude: marker.lng,
           label: marker.title
-        },
-        directionsLabel: navigateLabel,
+        } : null,
+        directionsLabel: currentMap.isOpenToVisitors ? navigateLabel : null,
         parkItemDetail: {
           language,
           parkId: currentMap.parkId,

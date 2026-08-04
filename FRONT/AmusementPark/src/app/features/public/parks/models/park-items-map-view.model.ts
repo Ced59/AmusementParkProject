@@ -19,6 +19,7 @@ export interface ParkItemsMapViewModel {
   parkId: string | null;
   parkName: string | null;
   language: string;
+  isOpenToVisitors: boolean;
   center: [number, number];
   markers: ParkItemsMapMarkerViewModel[];
   unlocatedItems: ParkItemsMapUnlocatedItemViewModel[];

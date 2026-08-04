@@ -23,6 +23,7 @@ namespace AmusementPark.Application.Features.Parks.Queries;
 /// <param name="OpeningHoursFilter">Filtre selon l'etat de couverture des horaires.</param>
 /// <param name="SortField">Champ de tri.</param>
 /// <param name="SortDescending">Indique si le tri doit etre descendant.</param>
+/// <param name="Status">Filtre exact sur l'étape de vie du parc.</param>
 public sealed record GetParksPageQuery(
     PagedQuery Paging,
     bool IncludeHidden = false,
@@ -35,4 +36,5 @@ public sealed record GetParksPageQuery(
     ClosedEntityFilter ClosedFilter = ClosedEntityFilter.OpenOnly,
     ParkOpeningHoursAdminFilter OpeningHoursFilter = ParkOpeningHoursAdminFilter.All,
     ParkAdminSortField SortField = ParkAdminSortField.Default,
-    bool SortDescending = false) : IQuery<ApplicationResult<PagedResult<ParkListResult>>>;
+    bool SortDescending = false,
+    ParkStatus? Status = null) : IQuery<ApplicationResult<PagedResult<ParkListResult>>>;

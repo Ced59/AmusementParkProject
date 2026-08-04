@@ -11,6 +11,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirecti
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselComponent, UiPhotoCarouselImage } from '@ui/media';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkImagesGalleryTab } from '../models/park-images-view.model';
+import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-images-view',
@@ -27,7 +28,8 @@ import { ParkImagesGalleryTab } from '../models/park-images-view.model';
     UiSurfaceDirective,
     UiPhotoCarouselComponent,
     PublicSharePanelComponent,
-    PublicContextualBlockDirective
+    PublicContextualBlockDirective,
+    ParkLifecycleNoticeComponent
   ]
 })
 export class ParkImagesViewComponent {

@@ -3,6 +3,7 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { RatingSummary } from '@app/models/ratings/rating.models';
 import { UiPhotoCarouselImage } from '@ui/media';
 import { ParkItemCardViewModel } from './park-item-card.model';
+import { ParkStatus } from '@app/models/parks/park-status';
 
 export interface ParkItemDetailRowViewModel {
   labelKey: string;
@@ -85,6 +86,7 @@ export interface ParkItemDetailViewModel {
   typeIconClass: string;
   typeTone: string;
   parkName: string | null;
+  parkStatus: ParkStatus;
   homeLink: string[];
   parkLink: string[] | null;
   itemsLink: string[] | null;

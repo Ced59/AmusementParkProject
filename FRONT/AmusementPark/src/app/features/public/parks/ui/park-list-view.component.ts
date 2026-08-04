@@ -34,9 +34,9 @@ export class ParkListViewComponent {
   @Input() selectedMapParkId!: Signal<string | null>;
   @Input() selectedParkCard!: Signal<ParkCardModel | null>;
   @Input() selectedRegion!: Signal<ParkRegionFilter | null>;
-  @Input() selectedClosedFilter!: Signal<string>;
+  @Input() selectedStatus!: Signal<string | null>;
   @Input() selectedAudienceClassificationFilter!: Signal<ParkAudienceClassificationFilter | null>;
-  @Input() closedFilterOptions!: Signal<UiSelectOptionModel[]>;
+  @Input() statusFilterOptions!: Signal<UiSelectOptionModel[]>;
   @Input() audienceClassificationFilterOptions!: Signal<UiSelectOptionModel[]>;
   @Input() currentLang!: Signal<string>;
   @Input() searchTerm!: Signal<string>;
@@ -46,7 +46,7 @@ export class ParkListViewComponent {
   @Output() clearSearchClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() mapParkSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() regionFilterChanged: EventEmitter<ParkRegionFilter | null> = new EventEmitter<ParkRegionFilter | null>();
-  @Output() closedFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
+  @Output() statusFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() audienceClassificationFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() resultParkFocused: EventEmitter<ParkCardModel> = new EventEmitter<ParkCardModel>();
   @Output() selectedParkCleared: EventEmitter<void> = new EventEmitter<void>();
@@ -54,10 +54,10 @@ export class ParkListViewComponent {
 
   protected readonly filters = computed<UiSearchPanelSelectFilterModel[]>(() => [
     {
-      id: 'closed',
-      labelKey: 'parks.closedFilters.label',
-      selectedValue: this.selectedClosedFilter(),
-      options: this.closedFilterOptions()
+      id: 'status',
+      labelKey: 'parks.statusFilters.label',
+      selectedValue: this.selectedStatus(),
+      options: this.statusFilterOptions()
     },
     {
       id: 'audienceClassification',
@@ -96,8 +96,8 @@ export class ParkListViewComponent {
   }
 
   onFilterChanged(event: { id: string; value: string | null }): void {
-    if (event.id === 'closed') {
-      this.closedFilterChanged.emit(event.value);
+    if (event.id === 'status') {
+      this.statusFilterChanged.emit(event.value);
     }
 
     if (event.id === 'audienceClassification') {

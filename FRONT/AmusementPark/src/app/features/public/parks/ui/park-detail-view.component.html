@@ -154,6 +154,11 @@
         </div>
       </section>
 
+      <app-park-lifecycle-notice
+        [status]="currentPark.status"
+        [parkName]="currentPark.name">
+      </app-park-lifecycle-notice>
+
       <div class="park-detail__body">
         <main class="park-main">
           @if (currentPark.stats.length > 0) {
@@ -311,7 +316,8 @@
         [parks]="nearbyParks"
         [state]="nearbyState"
         [currentLang]="currentLang"
-        [sourceName]="currentPark.name">
+        [sourceName]="currentPark.name"
+        [alternativesMode]="!currentPark.isOpenToVisitors">
       </app-park-nearby-section>
     </section>
   }

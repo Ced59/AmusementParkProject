@@ -42,6 +42,8 @@
         </div>
       </header>
 
+      <app-park-lifecycle-notice [status]="currentPark.status" [parkName]="currentPark.name"></app-park-lifecycle-notice>
+
       @if (showItemTab) {
         <div class="park-images-tabs" role="tablist" [attr.aria-label]="'parks.imagesPage.tabs.label' | translate">
           <button

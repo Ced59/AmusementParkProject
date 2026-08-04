@@ -9,6 +9,8 @@
     emptyMessageKey: 'parks.zones.emptyMessage'
   }">
   <section class="park-zones-page public-page page-shell" *ngIf="page() as currentPage">
+    <app-park-lifecycle-notice [status]="currentPage.parkStatus" [parkName]="currentPage.parkName"></app-park-lifecycle-notice>
+
     <section class="zones-hero" appUiSurface="panel" appUiSurfacePadding="regular">
       <div>
         <app-ui-kicker iconClass="pi pi-th-large">{{ 'parks.zones.badge' | translate }}</app-ui-kicker>

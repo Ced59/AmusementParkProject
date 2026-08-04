@@ -11,6 +11,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirecti
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkZonesPageViewModel } from '../models/park-zone-page.model';
 import { resolveLocalizedPlural } from '@shared/utils/localization/localized-plural.helpers';
+import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-zones-view',
@@ -29,7 +30,8 @@ import { resolveLocalizedPlural } from '@shared/utils/localization/localized-plu
     UiChipComponent,
     UiKickerComponent,
     PublicSharePanelComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    ParkLifecycleNoticeComponent
   ]
 })
 export class ParkZonesViewComponent {

@@ -57,6 +57,8 @@
         </div>
       </header>
 
+      <app-park-lifecycle-notice [status]="currentPark.status" [parkName]="currentPark.name"></app-park-lifecycle-notice>
+
       @if (map) {
         <app-park-items-map-section [map]="map"></app-park-items-map-section>
       }

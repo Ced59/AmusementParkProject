@@ -20,6 +20,7 @@ import { PARKS_API_ENDPOINTS, ParkAdminListFilters, ParkAdminListSort } from './
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { DataCompletenessScore } from '@app/models/shared/data-completeness-score';
+import { ParkStatus } from '@app/models/parks/park-status';
 
 interface ParkWriteRequest {
   name?: string;
@@ -52,6 +53,7 @@ interface ParksHttpOptions {
   closedFilter?: ClosedEntityFilter;
   audienceClassificationFilter?: ParkAudienceClassificationFilter | null;
   sort?: ParkAdminListSort;
+  status?: ParkStatus | null;
 }
 
 @Injectable({
@@ -71,7 +73,7 @@ export class ParksApiService {
   }
 
   getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region, filters, options.sort ?? null, options.closedFilter)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region, filters, options.sort ?? null, options.closedFilter, options.status)}`;
     return this.http.get<ParksApiResponse>(url, options);
   }
 
@@ -82,7 +84,7 @@ export class ParksApiService {
 
   getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null, options: ParksHttpOptions = {}): Observable<ParkMapPoint[]> {
     const normalizedQuery: string | null = query?.trim() || null;
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region, options.closedFilter, options.audienceClassificationFilter)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region, options.closedFilter, options.audienceClassificationFilter, options.status)}`;
     return this.http.get<ParkMapPoint[]>(url, options);
   }
 
@@ -146,7 +148,7 @@ export class ParksApiService {
   }
 
   searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region, filters, options.sort ?? null, options.closedFilter)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region, filters, options.sort ?? null, options.closedFilter, options.status)}`;
     return this.http.get<ParksApiResponse>(url, options);
   }
 

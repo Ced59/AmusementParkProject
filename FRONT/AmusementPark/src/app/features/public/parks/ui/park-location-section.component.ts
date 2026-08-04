@@ -47,12 +47,13 @@ export class ParkLocationSectionComponent {
       title: this.park.name,
       subtitle: this.park.locationLine,
       iconKind: 'park',
-      actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
+      actionUrl: this.park.isOpenToVisitors ? this.mapDirectionsUrlService.buildDirectionsUrl({
         latitude: this.park.latitude,
         longitude: this.park.longitude,
         label: this.park.name
-      }),
-      actionLabel: this.translateService.instant('parks.map.navigate')
+      }) : null,
+      actionLabel: this.park.isOpenToVisitors ? this.translateService.instant('parks.map.navigate') : null,
+      directionsActionEnabled: this.park.isOpenToVisitors
     }];
   }
 }

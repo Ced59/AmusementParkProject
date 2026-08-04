@@ -21,6 +21,7 @@ export class ParkNearbySectionComponent {
   @Input() parks: ParkCardModel[] = [];
   @Input() currentLang: string = 'en';
   @Input() sourceName: string | null = null;
+  @Input() alternativesMode: boolean = false;
   @Input() state: ScreenState<unknown, unknown> | ScreenStateKind | null = 'empty';
 
   protected buildParkLink(park: ParkCardModel): string[] | null {
@@ -33,5 +34,13 @@ export class ParkNearbySectionComponent {
 
   protected get nearestPark(): ParkCardModel | null {
     return this.parks[0] ?? null;
+  }
+
+  protected get titleKey(): string {
+    return this.alternativesMode ? 'parks.detail.nearby.alternativesTitle' : 'parks.detail.nearby.title';
+  }
+
+  protected get subtitleKey(): string {
+    return this.alternativesMode ? 'parks.detail.nearby.alternativesSubtitle' : 'parks.detail.nearby.subtitle';
   }
 }

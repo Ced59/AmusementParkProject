@@ -10,6 +10,7 @@ export interface ParkDetailReferenceNames {
 export interface ParkDetailStatsSource {
   totalItems?: number | null;
   zoneCount?: number | null;
+  mappableItemsCount?: number | null;
 }
 
 export interface ParkDetailItemPhotoSource {

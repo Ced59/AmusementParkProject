@@ -159,7 +159,7 @@ export function mapParkToDetailViewModel(
     commentsLink: hasIdentity
       ? buildPublicParkCommentsRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
-    mapLink: hasIdentity
+    mapLink: hasIdentity && (statsSource.mappableItemsCount ?? 0) > 0
       ? buildPublicParkMapRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     weatherLink: hasIdentity && statusPresentation.isOpenToVisitors

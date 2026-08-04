@@ -1,6 +1,7 @@
 import { MapMarker } from '@app/models/map/map-marker';
 import { ParkItemCardViewModel } from '../../park-items/models/park-item-card.model';
 import { ParkItemsCountTagViewModel } from '../../park-items/models/park-items-page-view.model';
+import { ParkStatus } from '@app/models/parks/park-status';
 
 export interface ParkZoneOverviewCardViewModel {
   id: string;
@@ -16,6 +17,7 @@ export interface ParkZoneOverviewCardViewModel {
 
 export interface ParkZonesPageViewModel {
   parkName: string;
+  parkStatus: ParkStatus;
   parkLink: string[] | null;
   itemsLink: string[] | null;
   zoneCount: number;
@@ -31,6 +33,7 @@ export interface ParkZoneMapViewModel {
 
 export interface ParkZonePageViewModel {
   parkName: string;
+  parkStatus: ParkStatus;
   parkLink: string[] | null;
   zonesLink: string[] | null;
   allItemsLink: string[] | null;

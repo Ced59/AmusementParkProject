@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Ports;
@@ -7,6 +8,7 @@ using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
@@ -64,20 +66,13 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
             return ApplicationResult<PagedResult<ParkListResult>>.Success(sortedResult);
         }
 
-        PagedResult<Park> page = await this.parkRepository.GetPageAsync(
+        PagedResult<Park> page = await this.LoadRepositoryPageAsync(
+            query,
             query.Paging.Page,
             query.Paging.PageSize,
-            query.IncludeHidden,
-            query.IsVisible,
-            query.AdminReviewStatus,
-            query.Type,
-            query.CountryCode,
-            query.HasValidCoordinates,
-            query.ClosedFilter,
-            cancellationToken,
             query.SortField,
             query.SortDescending,
-            query.AudienceClassificationFilter);
+            cancellationToken);
 
         PagedResult<ParkListResult> result = await this.EnrichAsync(page, query.IncludeHidden, query.IncludeHidden, query.IncludeHidden, cancellationToken);
         return ApplicationResult<PagedResult<ParkListResult>>.Success(result);
@@ -85,18 +80,13 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
 
     private async Task<PagedResult<ParkListResult>> LoadApplicationLevelPageAsync(GetParksPageQuery query, CancellationToken cancellationToken)
     {
-        PagedResult<Park> countProbe = await this.parkRepository.GetPageAsync(
+        PagedResult<Park> countProbe = await this.LoadRepositoryPageAsync(
+            query,
             1,
             1,
-            query.IncludeHidden,
-            query.IsVisible,
-            query.AdminReviewStatus,
-            query.Type,
-            query.CountryCode,
-            query.HasValidCoordinates,
-            query.ClosedFilter,
-            cancellationToken,
-            audienceClassificationFilter: query.AudienceClassificationFilter);
+            ParkAdminSortField.Default,
+            false,
+            cancellationToken);
 
         if (countProbe.TotalItems == 0)
         {
@@ -107,20 +97,13 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
             ? ParkAdminSortField.Default
             : query.SortField;
         int allPageSize = checked((int)Math.Min(countProbe.TotalItems, int.MaxValue));
-        PagedResult<Park> allParks = await this.parkRepository.GetPageAsync(
+        PagedResult<Park> allParks = await this.LoadRepositoryPageAsync(
+            query,
             1,
             allPageSize,
-            query.IncludeHidden,
-            query.IsVisible,
-            query.AdminReviewStatus,
-            query.Type,
-            query.CountryCode,
-            query.HasValidCoordinates,
-            query.ClosedFilter,
-            cancellationToken,
             repositorySortField,
             query.SortDescending,
-            query.AudienceClassificationFilter);
+            cancellationToken);
         PagedResult<ParkListResult> enrichedPage = await this.EnrichAsync(allParks, true, true, query.IncludeHidden, cancellationToken);
         List<ParkListResult> filteredItems = ApplyOpeningHoursFilter(enrichedPage.Items, query.OpeningHoursFilter);
         List<ParkListResult> sortedItems = RequiresApplicationLevelSort(query.SortField)
@@ -132,6 +115,53 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
             .ToList();
 
         return new PagedResult<ParkListResult>(pagedItems, query.Paging.Page, query.Paging.PageSize, filteredItems.Count);
+    }
+
+    private Task<PagedResult<Park>> LoadRepositoryPageAsync(
+        GetParksPageQuery query,
+        int page,
+        int pageSize,
+        ParkAdminSortField sortField,
+        bool sortDescending,
+        CancellationToken cancellationToken)
+    {
+        if (!query.Status.HasValue)
+        {
+            return this.parkRepository.GetPageAsync(
+                page,
+                pageSize,
+                query.IncludeHidden,
+                query.IsVisible,
+                query.AdminReviewStatus,
+                query.Type,
+                query.CountryCode,
+                query.HasValidCoordinates,
+                query.ClosedFilter,
+                cancellationToken,
+                sortField,
+                sortDescending,
+                query.AudienceClassificationFilter);
+        }
+
+        ParkSearchCriteria criteria = ParkSearchCriteria.Empty with
+        {
+            AudienceClassificationFilter = query.AudienceClassificationFilter,
+            Status = query.Status,
+        };
+        return this.parkRepository.SearchAsync(
+            criteria,
+            page,
+            pageSize,
+            query.IncludeHidden,
+            query.IsVisible,
+            query.AdminReviewStatus,
+            query.Type,
+            query.CountryCode,
+            query.HasValidCoordinates,
+            ClosedEntityFilter.All,
+            cancellationToken,
+            sortField,
+            sortDescending);
     }
 
     private async Task<PagedResult<ParkListResult>> EnrichAsync(PagedResult<Park> page, bool includeCounts, bool includeOpeningHours, bool includeDataCompleteness, CancellationToken cancellationToken)

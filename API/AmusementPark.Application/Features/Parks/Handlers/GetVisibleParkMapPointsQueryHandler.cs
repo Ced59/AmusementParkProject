@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Countries.Ports;
@@ -30,9 +31,11 @@ public sealed class GetVisibleParkMapPointsQueryHandler : IQueryHandler<GetVisib
         ParkSearchCriteria criteria = new ParkSearchCriteria(query.SearchTerm, matchingCountryCodes, regionCountryCodes)
         {
             AudienceClassificationFilter = query.AudienceClassificationFilter,
+            Status = query.Status,
         };
 
-        IReadOnlyCollection<Park> parks = await this.parkRepository.GetVisibleMapPointsAsync(criteria, query.ClosedFilter, cancellationToken);
+        ClosedEntityFilter closedFilter = query.Status.HasValue ? ClosedEntityFilter.All : query.ClosedFilter;
+        IReadOnlyCollection<Park> parks = await this.parkRepository.GetVisibleMapPointsAsync(criteria, closedFilter, cancellationToken);
         return ApplicationResult<IReadOnlyCollection<Park>>.Success(parks);
     }
 }

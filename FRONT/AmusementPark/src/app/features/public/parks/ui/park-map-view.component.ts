@@ -10,6 +10,7 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
 import { UiSelectOptionModel } from '@ui/forms';
 import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { ParkItemsMapSectionComponent } from './park-items-map-section.component';
+import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-map-view',
@@ -25,7 +26,8 @@ import { ParkItemsMapSectionComponent } from './park-items-map-section.component
     UiKickerComponent,
     UiSurfaceDirective,
     PublicSharePanelComponent,
-    ParkItemsMapSectionComponent
+    ParkItemsMapSectionComponent,
+    ParkLifecycleNoticeComponent
   ]
 })
 export class ParkMapViewComponent {

@@ -53,6 +53,8 @@
         </div>
       </header>
 
+      <app-park-lifecycle-notice [status]="currentPark.status" [parkName]="currentPark.name"></app-park-lifecycle-notice>
+
       @if (photos.length > 0) {
         <app-ui-photo-carousel
           [photos]="photos"

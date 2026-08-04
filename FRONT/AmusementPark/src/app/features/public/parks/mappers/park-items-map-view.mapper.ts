@@ -5,6 +5,7 @@ import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { isParkOpenToVisitors } from '@shared/utils/parks/park-status.presentation';
 import {
   ParkItemsMapFilterOptionViewModel,
   ParkItemsMapMarkerViewModel,
@@ -28,6 +29,7 @@ export function mapParkItemsToMapViewModel(
     parkId: normalizeOptionalString(park.id),
     parkName: normalizeOptionalString(park.name),
     language: currentLanguage,
+    isOpenToVisitors: isParkOpenToVisitors(park.status),
     center: resolveMapCenter(park, markers),
     markers,
     unlocatedItems: mapUnlocatedItems(park, items, currentLanguage),
@@ -84,7 +86,7 @@ function mapParkItemToMarker(
     title: item.name,
     subtitle: item.category,
     subtitleTranslationKey: getParkItemCategoryTranslationKey(item.category),
-    directionsActionEnabled: true,
+    directionsActionEnabled: isParkOpenToVisitors(park.status),
     iconKind: resolveParkItemMarkerIconKind({
       category: item.category,
       type: item.type,

@@ -564,6 +564,11 @@ public sealed class ParkRepository : IParkRepository
             filter &= audienceClassificationFilter;
         }
 
+        if (criteria.Status.HasValue)
+        {
+            filter &= Builders<ParkDocument>.Filter.Eq(document => document.Status, criteria.Status.Value);
+        }
+
         FilterDefinition<ParkDocument>? searchFilter = this.BuildSearchTermFilter(criteria);
         if (searchFilter is not null)
         {

@@ -87,6 +87,7 @@ export class ParkZonesPageStateFacade {
 
     return {
       parkName: park.name ?? '',
+      parkStatus: park.status ?? 'Operating',
       parkLink: buildPublicParkRouteCommands({ language: this.currentLanguageSignal(), parkId: park.id, parkName: park.name }),
       itemsLink: buildPublicParkItemsRouteCommands({ language: this.currentLanguageSignal(), parkId: park.id, parkName: park.name }),
       zoneCount: zones.length,
@@ -110,6 +111,7 @@ export class ParkZonesPageStateFacade {
 
     return {
       parkName: park.name ?? '',
+      parkStatus: park.status ?? 'Operating',
       parkLink: buildPublicParkRouteCommands({ language: this.currentLanguageSignal(), parkId: park.id, parkName: park.name }),
       zonesLink: buildPublicParkZonesRouteCommands({ language: this.currentLanguageSignal(), parkId: park.id, parkName: park.name }),
       allItemsLink: buildPublicParkItemsRouteCommands({ language: this.currentLanguageSignal(), parkId: park.id, parkName: park.name }),
@@ -343,7 +345,7 @@ export class ParkZonesPageStateFacade {
         title: item.name,
         subtitle: item.category,
         detailTranslationKeys: item.type ? [getParkItemTypeTranslationKey(item.type)] : [],
-        directionsActionEnabled: true,
+        directionsActionEnabled: park.status === 'Operating',
         iconKind: resolveParkItemMarkerIconKind({
           category: item.category,
           type: item.type,

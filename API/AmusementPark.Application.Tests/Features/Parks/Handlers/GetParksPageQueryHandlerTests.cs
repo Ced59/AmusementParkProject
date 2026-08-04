@@ -19,6 +19,45 @@ namespace AmusementPark.Application.Tests.Features.Parks.Handlers;
 public sealed class GetParksPageQueryHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenExactStatusIsProvided_ShouldUseSearchCriteriaAndIgnoreLegacyClosedFilter()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.SearchAsync(
+                It.Is<ParkSearchCriteria>(criteria => criteria.Status == ParkStatus.Planned),
+                1,
+                12,
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                ClosedEntityFilter.All,
+                It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Default,
+                false))
+            .ReturnsAsync(new PagedResult<Park>(Array.Empty<Park>(), 1, 12, 0));
+
+        GetParksPageQueryHandler handler = new GetParksPageQueryHandler(
+            parkRepository.Object,
+            parkItemRepository.Object,
+            openingHoursRepository.Object,
+            new ParkOpeningHoursAdminStatusResolver(),
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<ParkListResult>> result = await handler.HandleAsync(
+            new GetParksPageQuery(new PagedQuery(1, 12), IsVisible: true, Status: ParkStatus.Planned));
+
+        Assert.True(result.IsSuccess);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        openingHoursRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenAudienceClassificationFilterIsProvided_ShouldPassItToRepository()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

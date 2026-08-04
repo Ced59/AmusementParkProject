@@ -11,6 +11,7 @@ import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselComponent, UiPhotoCarouselImage } from '@ui/media';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { ParkLifecycleNoticeComponent } from '@features/public/parks/ui/park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-item-images-view',
@@ -27,7 +28,8 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
     UiSurfaceDirective,
     UiPhotoCarouselComponent,
     PublicSharePanelComponent,
-    PublicContextualBlockDirective
+    PublicContextualBlockDirective,
+    ParkLifecycleNoticeComponent
   ]
 })
 export class ParkItemImagesViewComponent {

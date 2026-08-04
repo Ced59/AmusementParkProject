@@ -3479,7 +3479,7 @@
   "parks": {
     "heroBadge": "Public catalog",
     "title": "Parks",
-    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "subtitle": "Explora os parques documentados e filtra-os pela fase do ciclo de vida.",
     "loadingTitle": "A carregar parques",
     "loadingMessage": "The parques list is being loaded.",
     "errorTitle": "Não foi possível carregar parques",
@@ -3514,25 +3514,27 @@
     },
     "detail": {
       "heroBadge": "Visão geral do parque",
-      "heroDescription": "Descobre as informações práticas atualmente disponíveis para este parque.",
+      "heroDescription": "Consulta as informações atualmente documentadas para este parque.",
       "loadingTitle": "A carregar parque",
       "loadingMessage": "The parque page is being loaded.",
       "errorTitle": "Não foi possível carregar the parque",
       "errorMessage": "The requested parque não foi possível carregar.",
       "practical": {
         "title": "Informações práticas",
-        "subtitle": "As informações essenciais para visitantes atualmente disponíveis para este parque.",
+        "subtitle": "As informações de localização, contacto e referência atualmente disponíveis.",
         "postalCode": "Código postal",
         "street": "Rua",
         "openReference": "Abrir a ficha de {{name}}"
       },
       "location": {
         "title": "Localização",
-        "subtitle": "Encontra o parque no mapa e consulta as coordenadas."
+        "subtitle": "Consulta a localização e as coordenadas atualmente documentadas."
       },
       "nearby": {
         "title": "Nearby parques",
-        "subtitle": "Continua a descoberta com parques situados perto deste destino.",
+        "subtitle": "Descobre outros parques abertos perto deste destino.",
+        "alternativesTitle": "Alternativas abertas nas proximidades",
+        "alternativesSubtitle": "Descobre parques atualmente abertos perto deste local documentado.",
         "loadingTitle": "A carregar nearby parques",
         "loadingMessage": "Nearby parques are being loaded.",
         "errorTitle": "Não foi possível carregar nearby parques",
@@ -3808,6 +3810,32 @@
       "itemsTitle": "Locais a descobrir nesta zona",
       "emptyItemsTitle": "Nenhum local nesta zona",
       "emptyItemsMessage": "Nenhum local público está atualmente ligado a está zona."
+    },
+    "statusFilters": {
+      "label": "Fase do ciclo de vida",
+      "all": "Todos os estados"
+    },
+    "lifecycle": {
+      "planned": {
+        "title": "Projeto anunciado",
+        "body": "Esta página documenta um projeto planeado. As informações refletem anúncios conhecidos, não um parque atualmente visitável."
+      },
+      "underConstruction": {
+        "title": "Parque em construção",
+        "body": "O projeto está em construção. Os conteúdos publicados documentam o seu progresso; atualmente não é possível visitá-lo."
+      },
+      "temporarilyClosed": {
+        "title": "Parque temporariamente fechado",
+        "body": "Esta página e as avaliações anteriores documentam o parque, mas confirma a reabertura antes de planeares uma visita."
+      },
+      "closedDefinitively": {
+        "title": "Parque fechado definitivamente",
+        "body": "Esta página preserva a história do parque, dos seus locais e das visitas anteriores."
+      },
+      "cancelled": {
+        "title": "Projeto cancelado",
+        "body": "Esta página documenta um projeto abandonado; os locais anunciados não representam um parque visitável."
+      }
     },
     "closedFilters": {
       "label": "Estado",

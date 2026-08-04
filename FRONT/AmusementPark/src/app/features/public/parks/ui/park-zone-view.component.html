@@ -9,6 +9,8 @@
     emptyMessageKey: 'parks.zone.emptyMessage'
   }">
   <section class="park-zone-page public-page page-shell" *ngIf="page() as currentPage; else missingZone">
+    <app-park-lifecycle-notice [status]="currentPage.parkStatus" [parkName]="currentPage.parkName"></app-park-lifecycle-notice>
+
     <section class="zone-hero" appUiSurface="panel" appUiSurfacePadding="regular">
       <div class="zone-hero__content">
         <app-ui-kicker iconClass="pi pi-map-marker">{{ 'parks.zone.badge' | translate:{ park: currentPage.parkName } }}</app-ui-kicker>

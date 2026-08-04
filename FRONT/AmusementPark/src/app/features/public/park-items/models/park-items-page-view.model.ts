@@ -15,6 +15,7 @@ export interface ParkItemZoneCardViewModel {
 export interface ParkItemsPageViewModel {
   parkId: string | null;
   parkName: string;
+  parkStatus: ParkStatus;
   backLink: string[] | null;
   totalItems: number;
   totalResults: number;
@@ -23,3 +24,4 @@ export interface ParkItemsPageViewModel {
   activeZoneLabel: string | null;
   topTypeHighlights: ParkItemsCountTagViewModel[];
 }
+import { ParkStatus } from '@app/models/parks/park-status';

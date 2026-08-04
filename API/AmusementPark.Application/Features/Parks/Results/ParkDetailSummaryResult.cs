@@ -31,6 +31,8 @@ public sealed class ParkDetailSummaryStatsResult
 
     public int ZoneCount { get; init; }
 
+    public int MappableItemsCount { get; init; }
+
     public int AttractionCount { get; init; }
 
     public int RestaurantCount { get; init; }

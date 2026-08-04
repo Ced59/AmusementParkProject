@@ -5,7 +5,7 @@ export function resolvePublicParkItemsClosedFilter(
   park: Pick<Park, 'status'> | null | undefined,
   requestedClosedFilter: ClosedEntityFilter = DEFAULT_CLOSED_ENTITY_FILTER
 ): ClosedEntityFilter {
-  if (park?.status === 'ClosedDefinitively' && requestedClosedFilter === DEFAULT_CLOSED_ENTITY_FILTER) {
+  if (park?.status && park.status !== 'Operating' && requestedClosedFilter === DEFAULT_CLOSED_ENTITY_FILTER) {
     return 'all';
   }
 

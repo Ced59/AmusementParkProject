@@ -33,6 +33,8 @@ public sealed class ParkDetailSummaryStatsDto
 
     public int ZoneCount { get; set; }
 
+    public int MappableItemsCount { get; set; }
+
     public int AttractionCount { get; set; }
 
     public int RestaurantCount { get; set; }
