@@ -3169,6 +3169,20 @@
       "isVisible": "Visible",
       "coordinates": "Coordonnées"
     },
+    "technicalValues": {
+      "material": {
+        "steel": "Acier"
+      },
+      "seating": {
+        "sitDown": "Assis"
+      },
+      "launch": {
+        "tireLift": "Lift à pneus"
+      },
+      "restraint": {
+        "sharedLapBar": "Lap bar commune"
+      }
+    },
     "locations": {
       "general": "Localisation générale",
       "entrance": "Entrée",

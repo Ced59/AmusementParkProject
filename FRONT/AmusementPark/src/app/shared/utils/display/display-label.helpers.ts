@@ -3,6 +3,17 @@ import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ParkAudienceClassification, ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkType } from '@app/models/parks/park-type';
 
+const LOCALIZED_BOOLEAN_LABELS: Record<string, readonly [string, string]> = {
+  de: ['Ja', 'Nein'],
+  en: ['Yes', 'No'],
+  es: ['Sí', 'No'],
+  fr: ['Oui', 'Non'],
+  it: ['Sì', 'No'],
+  nl: ['Ja', 'Nee'],
+  pl: ['Tak', 'Nie'],
+  pt: ['Sim', 'Não']
+};
+
 export function getParkTypeTranslationKey(type: ParkType | string | null | undefined): string {
   return `admin.parks.types.${normalizeTranslationSegment(type, 'notSpecified')}`;
 }
@@ -68,11 +79,10 @@ export function getLocalizedBooleanDisplay(value: boolean | null | undefined, cu
     return null;
   }
 
-  if (currentLang === 'fr') {
-    return value ? 'Oui' : 'Non';
-  }
+  const languageCode: string = currentLang.trim().toLowerCase().split('-')[0];
+  const localizedLabels: readonly [string, string] = LOCALIZED_BOOLEAN_LABELS[languageCode] ?? LOCALIZED_BOOLEAN_LABELS['en'];
 
-  return value ? 'Yes' : 'No';
+  return value ? localizedLabels[0] : localizedLabels[1];
 }
 
 export function normalizeTranslationSegment(value: string | null | undefined, fallbackSegment: string): string {

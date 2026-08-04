@@ -107,6 +107,20 @@
       "isVisible": "Widoczny",
       "coordinates": "Współrzędne"
     },
+    "technicalValues": {
+      "material": {
+        "steel": "Stal"
+      },
+      "seating": {
+        "sitDown": "Siedzące"
+      },
+      "launch": {
+        "tireLift": "Wyciąg oponowy"
+      },
+      "restraint": {
+        "sharedLapBar": "Wspólny pałąk biodrowy"
+      }
+    },
     "locations": {
       "general": "Lokalizacja ogólna",
       "entrance": "Wejście",

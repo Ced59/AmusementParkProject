@@ -3169,6 +3169,20 @@
       "isVisible": "Sichtbar",
       "coordinates": "Koordinaten"
     },
+    "technicalValues": {
+      "material": {
+        "steel": "Stahl"
+      },
+      "seating": {
+        "sitDown": "Sitzend"
+      },
+      "launch": {
+        "tireLift": "Reibradlift"
+      },
+      "restraint": {
+        "sharedLapBar": "Gemeinsamer Schoßbügel"
+      }
+    },
     "locations": {
       "general": "Allgemeiner Standort",
       "entrance": "Eingang",

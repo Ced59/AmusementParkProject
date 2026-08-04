@@ -1,6 +1,20 @@
 {
-  "version": "4.0.20",
+  "version": "4.0.21",
   "history": [
+    {
+      "version": "4.0.21",
+      "releasedAt": "2026-08-04",
+      "labels": {
+        "fr": "Les informations des attractions s’affichent maintenant correctement dans ta langue.",
+        "en": "Attraction information now displays correctly in your language.",
+        "de": "Attraktionsinformationen werden jetzt korrekt in deiner Sprache angezeigt.",
+        "nl": "Attractie-informatie wordt nu correct in jouw taal weergegeven.",
+        "it": "Le informazioni sulle attrazioni ora vengono visualizzate correttamente nella tua lingua.",
+        "es": "La información de las atracciones ahora se muestra correctamente en tu idioma.",
+        "pl": "Informacje o atrakcjach są teraz prawidłowo wyświetlane w Twoim języku.",
+        "pt": "As informações das atrações são agora apresentadas corretamente no teu idioma."
+      }
+    },
     {
       "version": "4.0.20",
       "releasedAt": "2026-08-04",

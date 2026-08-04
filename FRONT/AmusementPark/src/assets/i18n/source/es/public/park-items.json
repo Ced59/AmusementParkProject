@@ -107,6 +107,20 @@
       "isVisible": "Visible",
       "coordinates": "Coordenadas"
     },
+    "technicalValues": {
+      "material": {
+        "steel": "Acero"
+      },
+      "seating": {
+        "sitDown": "Sentado"
+      },
+      "launch": {
+        "tireLift": "Elevación por neumáticos"
+      },
+      "restraint": {
+        "sharedLapBar": "Barra de regazo compartida"
+      }
+    },
     "locations": {
       "general": "Ubicación general",
       "entrance": "Entrada",
