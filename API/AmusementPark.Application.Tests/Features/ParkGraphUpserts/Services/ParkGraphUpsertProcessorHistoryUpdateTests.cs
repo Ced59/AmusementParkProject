@@ -136,6 +136,72 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenArticleImageKeysCannotBeResolved_ShouldPreserveExistingImageIds()
+    {
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());
+        string document = BuildDocument($$"""
+        "article": {{BuildArticleJsonWithUnresolvedImageKeys()}}
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> apply = await context.ApplyAsync(document);
+
+        Assert.True(apply.IsSuccess);
+        AssertHistoryChange(apply, "Unchanged");
+        Assert.Contains(apply.Value!.Warnings, static warning => warning.Contains("missing-main", StringComparison.Ordinal));
+        Assert.Contains(apply.Value.Warnings, static warning => warning.Contains("missing-block", StringComparison.Ordinal));
+        Assert.Contains(apply.Value.Warnings, static warning => warning.Contains("missing-gallery", StringComparison.Ordinal));
+        context.HistoryEventRepository.Verify(
+            value => value.UpdateAsync(It.IsAny<string>(), It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+
+        HistoryArticle persistedArticle = Assert.IsType<HistoryArticle>(context.ReadPersistedEvent().Article);
+        Assert.Equal("image-main-1", persistedArticle.MainImageId);
+        HistoryArticleBlock imageBlock = Assert.Single(persistedArticle.Blocks, static block => block.Id == "photo");
+        Assert.Equal("image-block-1", imageBlock.ImageId);
+        Assert.Equal(new[] { "image-gallery-1", "image-gallery-2" }, imageBlock.ImageIds);
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenArticleImageKeysCannotBeResolved_ShouldReportArticleUpdate()
+    {
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());
+        string document = BuildDocument($$"""
+        "article": {{BuildArticleJsonWithUnresolvedImageKeys()}}
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> preview = await context.PreviewAsync(document);
+
+        Assert.True(preview.IsSuccess);
+        AssertHistoryChange(preview, "Updated", "article");
+        context.HistoryEventRepository.Verify(
+            value => value.UpdateAsync(It.IsAny<string>(), It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenArticleImageIdsAreExplicitlyCleared_ShouldRemoveExistingImageIds()
+    {
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());
+        string articleJson = BuildArticleJson()
+            .Replace("\"mainImageId\": \"image-main-1\"", "\"mainImageId\": null", StringComparison.Ordinal)
+            .Replace("\"imageId\": \"image-block-1\"", "\"imageId\": null", StringComparison.Ordinal)
+            .Replace("\"imageIds\": [\"image-gallery-1\", \"image-gallery-2\"]", "\"imageIds\": []", StringComparison.Ordinal);
+        string document = BuildDocument($$"""
+        "article": {{articleJson}}
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> apply = await context.ApplyAsync(document);
+
+        Assert.True(apply.IsSuccess);
+        AssertHistoryChange(apply, "Updated", "article");
+        HistoryArticle persistedArticle = Assert.IsType<HistoryArticle>(context.ReadPersistedEvent().Article);
+        Assert.Null(persistedArticle.MainImageId);
+        HistoryArticleBlock imageBlock = Assert.Single(persistedArticle.Blocks, static block => block.Id == "photo");
+        Assert.Null(imageBlock.ImageId);
+        Assert.Empty(imageBlock.ImageIds);
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenArticleIsExplicitlyNull_ShouldRemoveAndPersistArticle()
     {
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());
@@ -268,6 +334,14 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
           "isPublished": true
         }
         """;
+    }
+
+    private static string BuildArticleJsonWithUnresolvedImageKeys()
+    {
+        return BuildArticleJson()
+            .Replace("\"mainImageId\": \"image-main-1\"", "\"mainImageKey\": \"missing-main\"", StringComparison.Ordinal)
+            .Replace("\"imageId\": \"image-block-1\"", "\"imageKey\": \"missing-block\"", StringComparison.Ordinal)
+            .Replace("\"imageIds\": [\"image-gallery-1\", \"image-gallery-2\"]", "\"imageKeys\": [\"missing-gallery\"]", StringComparison.Ordinal);
     }
 
     private static HistoryEvent BuildExistingEvent()

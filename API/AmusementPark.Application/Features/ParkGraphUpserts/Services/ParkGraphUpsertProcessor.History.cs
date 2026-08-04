@@ -426,6 +426,10 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             mainImageId = resolvedMainImageId;
         }
+        else if (apply && HasHistoryImageIdPatch(element.Value, "mainImageId", "mainImageKey", "imageKey"))
+        {
+            mainImageId = previousArticle?.MainImageId;
+        }
 
         return new HistoryArticle
         {
@@ -489,6 +493,10 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 imageId = resolvedImageId;
             }
+            else if (apply && HasHistoryImageIdPatch(item, "imageId", "imageKey", "mainImageKey"))
+            {
+                imageId = previousBlock?.ImageId;
+            }
 
             HistoryArticleBlock block = new HistoryArticleBlock
             {
@@ -498,7 +506,13 @@ public sealed partial class ParkGraphUpsertProcessor
                 HeadingLevel = ReadInt(item, "headingLevel"),
                 Texts = ReadLocalizedTextsFlexible(item, "texts", "text"),
                 ImageId = imageId,
-                ImageIds = ReadHistoryImageIds(item, imageKeys, result, apply, $"le bloc '{blockId}' de l'article history '{eventKey}'"),
+                ImageIds = ReadHistoryImageIds(
+                    item,
+                    imageKeys,
+                    result,
+                    apply,
+                    $"le bloc '{blockId}' de l'article history '{eventKey}'",
+                    previousBlock is null ? Array.Empty<string>() : previousBlock.ImageIds),
                 Captions = ReadLocalizedTextsFlexible(item, "captions", "caption"),
             };
             blocks.Add(block);
