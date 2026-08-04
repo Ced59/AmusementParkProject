@@ -197,7 +197,7 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
                 null,
                 null,
                 null,
-                ClosedEntityFilter.OpenOnly,
+                ClosedEntityFilter.All,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
                 false,
