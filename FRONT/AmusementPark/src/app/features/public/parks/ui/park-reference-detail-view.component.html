@@ -63,7 +63,7 @@
             </app-ui-kicker>
 
             @if (currentReference.richDescription) {
-              <div class="park-reference-card__rich-text" [innerHTML]="currentReference.richDescription | safeRichHtml"></div>
+              <div class="park-reference-card__rich-text app-editorial-copy" [innerHTML]="currentReference.richDescription | safeRichHtml"></div>
             } @else {
               <p class="park-reference-card__empty">{{ currentReference.emptyDescriptionKey | translate }}</p>
             }

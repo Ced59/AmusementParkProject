@@ -44,7 +44,7 @@
                 </figure>
               }
               @if (blockBody(block)) {
-                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+                <div class="technical-rich-text app-editorial-copy" [innerHTML]="blockBody(block) | safeRichHtml"></div>
               }
             </section>
           }
@@ -60,7 +60,7 @@
                 <span class="technical-diagram__node technical-diagram__node--train">{{ 'technicalPages.detail.diagram.train' | translate }}</span>
               </div>
               @if (blockBody(block)) {
-                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+                <div class="technical-rich-text app-editorial-copy" [innerHTML]="blockBody(block) | safeRichHtml"></div>
               }
               @if (blockCaption(block)) {
                 <p class="technical-block__caption">{{ blockCaption(block) }}</p>
@@ -73,7 +73,7 @@
                 <h2>{{ blockTitle(block) }}</h2>
               }
               @if (blockBody(block)) {
-                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+                <div class="technical-rich-text app-editorial-copy" [innerHTML]="blockBody(block) | safeRichHtml"></div>
               }
               @if (block.table; as table) {
                 <div class="technical-table-wrap">
@@ -105,7 +105,7 @@
                 <h2>{{ blockTitle(block) }}</h2>
               }
               @if (blockBody(block)) {
-                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+                <div class="technical-rich-text app-editorial-copy" [innerHTML]="blockBody(block) | safeRichHtml"></div>
               }
               <ul>
                 @for (item of block.items || []; track $index) {
@@ -173,7 +173,7 @@
                 <h2>{{ blockTitle(block) }}</h2>
               }
               @if (blockBody(block)) {
-                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+                <div class="technical-rich-text app-editorial-copy" [innerHTML]="blockBody(block) | safeRichHtml"></div>
               }
               <div class="technical-columns">
                 @for (column of block.columns || []; track $index) {
@@ -195,7 +195,7 @@
                 <h2>{{ blockTitle(block) }}</h2>
               }
               @if (blockBody(block)) {
-                <div class="technical-rich-text" [innerHTML]="blockBody(block) | safeRichHtml"></div>
+                <div class="technical-rich-text app-editorial-copy" [innerHTML]="blockBody(block) | safeRichHtml"></div>
               }
             </section>
           }

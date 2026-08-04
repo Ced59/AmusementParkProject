@@ -1,6 +1,20 @@
 {
-  "version": "4.0.18",
+  "version": "4.0.19",
   "history": [
+    {
+      "version": "4.0.19",
+      "releasedAt": "2026-08-04",
+      "labels": {
+        "fr": "Les longs contenus sont désormais plus agréables à lire sur grand écran.",
+        "en": "Long-form content is now more comfortable to read on larger screens.",
+        "de": "Längere Inhalte sind auf großen Bildschirmen jetzt angenehmer zu lesen.",
+        "nl": "Lange teksten zijn nu prettiger leesbaar op grote schermen.",
+        "it": "I contenuti più lunghi sono ora più piacevoli da leggere sugli schermi grandi.",
+        "es": "Los contenidos largos son ahora más agradables de leer en pantallas grandes.",
+        "pl": "Dłuższe treści są teraz wygodniejsze do czytania na dużych ekranach.",
+        "pt": "Os conteúdos mais longos são agora mais agradáveis de ler em ecrãs grandes."
+      }
+    },
     {
       "version": "4.0.18",
       "releasedAt": "2026-07-30",

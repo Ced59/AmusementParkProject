@@ -15,7 +15,7 @@
         <h1>{{ currentPage.zoneName }}</h1>
 
         @if (currentPage.zoneDescription) {
-          <div class="zone-hero__description" [innerHTML]="currentPage.zoneDescription | safeRichHtml"></div>
+          <div class="zone-hero__description app-editorial-copy" [innerHTML]="currentPage.zoneDescription | safeRichHtml"></div>
         } @else {
           <p class="zone-hero__description">{{ 'parks.zones.noDescription' | translate }}</p>
         }

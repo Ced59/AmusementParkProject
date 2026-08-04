@@ -3659,7 +3659,8 @@ public sealed class ParkGraphUpsertProcessorTests
             MeasurementConversionService.Instance,
             openingHoursRepository.Object,
             new ParkOpeningHoursScheduleNormalizer(),
-            new ParkOpeningHoursCoverageSegmentBuilder());
+            new ParkOpeningHoursCoverageSegmentBuilder(
+                new FixedTimeProvider(new DateTimeOffset(2026, 7, 2, 10, 0, 0, TimeSpan.Zero))));
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -3824,5 +3825,20 @@ public sealed class ParkGraphUpsertProcessorTests
         parkRepository.VerifyAll();
         openingHoursRepository.VerifyAll();
         historyRepository.VerifyAll();
+    }
+
+    private sealed class FixedTimeProvider : TimeProvider
+    {
+        private readonly DateTimeOffset utcNow;
+
+        public FixedTimeProvider(DateTimeOffset utcNow)
+        {
+            this.utcNow = utcNow;
+        }
+
+        public override DateTimeOffset GetUtcNow()
+        {
+            return this.utcNow;
+        }
     }
 }

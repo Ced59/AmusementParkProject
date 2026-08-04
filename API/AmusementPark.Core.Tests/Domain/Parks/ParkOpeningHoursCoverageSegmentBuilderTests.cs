@@ -30,11 +30,10 @@ public sealed class ParkOpeningHoursCoverageSegmentBuilderTests
                 },
             },
         };
-        ParkOpeningHoursCoverageSegmentBuilder builder = new ParkOpeningHoursCoverageSegmentBuilder();
+        ParkOpeningHoursCoverageSegmentBuilder builder = new ParkOpeningHoursCoverageSegmentBuilder(
+            new FixedTimeProvider(new DateTimeOffset(2026, 7, 2, 10, 0, 0, TimeSpan.Zero)));
 
-        IReadOnlyCollection<ParkOpeningHoursCoverageSegment> segments = builder.BuildSegments(
-            schedule,
-            new DateTime(2026, 7, 2, 10, 0, 0, DateTimeKind.Utc));
+        IReadOnlyCollection<ParkOpeningHoursCoverageSegment> segments = builder.BuildSegments(schedule);
 
         Assert.Collection(
             segments,
@@ -48,5 +47,20 @@ public sealed class ParkOpeningHoursCoverageSegmentBuilderTests
                 Assert.Equal(new DateOnly(2026, 7, 3), second.StartDate);
                 Assert.Equal(new DateOnly(2026, 7, 3), second.EndDate);
             });
+    }
+
+    private sealed class FixedTimeProvider : TimeProvider
+    {
+        private readonly DateTimeOffset utcNow;
+
+        public FixedTimeProvider(DateTimeOffset utcNow)
+        {
+            this.utcNow = utcNow;
+        }
+
+        public override DateTimeOffset GetUtcNow()
+        {
+            return this.utcNow;
+        }
     }
 }

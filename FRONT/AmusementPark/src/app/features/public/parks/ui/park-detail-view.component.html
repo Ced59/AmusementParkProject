@@ -202,7 +202,7 @@
             </app-ui-kicker>
             <h2 class="park-desc__title">{{ 'parks.detail.description.title' | translate }}</h2>
             @if (currentPark.description) {
-              <div class="park-desc__text" [innerHTML]="currentPark.description | safeRichHtml"></div>
+              <div class="park-desc__text app-editorial-copy" [innerHTML]="currentPark.description | safeRichHtml"></div>
             } @else {
               <p class="park-desc__text">{{ 'parks.detail.description.empty' | translate }}</p>
             }

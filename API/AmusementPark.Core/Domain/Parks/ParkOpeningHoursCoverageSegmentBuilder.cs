@@ -3,10 +3,21 @@ namespace AmusementPark.Core.Domain.Parks;
 public sealed class ParkOpeningHoursCoverageSegmentBuilder
 {
     private const int MaximumCoverageDayCount = 1096;
+    private readonly TimeProvider timeProvider;
+
+    public ParkOpeningHoursCoverageSegmentBuilder()
+        : this(TimeProvider.System)
+    {
+    }
+
+    public ParkOpeningHoursCoverageSegmentBuilder(TimeProvider timeProvider)
+    {
+        this.timeProvider = timeProvider;
+    }
 
     public IReadOnlyCollection<ParkOpeningHoursCoverageSegment> BuildSegments(ParkOpeningHoursSchedule schedule)
     {
-        return this.BuildSegments(schedule, DateTime.UtcNow);
+        return this.BuildSegments(schedule, this.timeProvider.GetUtcNow().UtcDateTime);
     }
 
     public IReadOnlyCollection<ParkOpeningHoursCoverageSegment> BuildSegments(ParkOpeningHoursSchedule schedule, DateTime utcNow)
