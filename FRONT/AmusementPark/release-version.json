@@ -1,6 +1,20 @@
 {
-  "version": "4.0.23",
+  "version": "4.0.24",
   "history": [
+    {
+      "version": "4.0.24",
+      "releasedAt": "2026-08-04",
+      "labels": {
+        "fr": "Les pages météo respectent désormais mieux la disponibilité des parcs.",
+        "en": "Weather pages now better reflect park availability.",
+        "de": "Wetterseiten berücksichtigen jetzt besser die Verfügbarkeit der Parks.",
+        "nl": "Weerpagina's houden nu beter rekening met de beschikbaarheid van parken.",
+        "it": "Le pagine meteo riflettono ora meglio la disponibilità dei parchi.",
+        "es": "Las páginas meteorológicas reflejan ahora mejor la disponibilidad de los parques.",
+        "pl": "Strony pogodowe lepiej uwzględniają teraz dostępność parków.",
+        "pt": "As páginas meteorológicas refletem agora melhor a disponibilidade dos parques."
+      }
+    },
     {
       "version": "4.0.23",
       "releasedAt": "2026-08-04",

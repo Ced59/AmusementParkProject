@@ -34,7 +34,7 @@ public sealed class GetParkWeatherForecastQueryHandler : IQueryHandler<GetParkWe
         }
 
         Park? park = await this.parkRepository.GetByIdAsync(query.ParkId.Trim(), includeHidden: false, cancellationToken);
-        if (park is null)
+        if (park is null || !park.Status.IsOpenToVisitors())
         {
             return ApplicationResult<ParkWeatherForecastResult>.Failure(ParkWeatherApplicationErrors.ParkNotFound());
         }
@@ -91,7 +91,7 @@ public sealed class GetParkWeatherHistoricalComparisonsQueryHandler : IQueryHand
         }
 
         Park? park = await this.parkRepository.GetByIdAsync(query.ParkId.Trim(), includeHidden: false, cancellationToken);
-        if (park is null)
+        if (park is null || !park.Status.IsOpenToVisitors())
         {
             return ApplicationResult<ParkWeatherHistoricalComparisonsResult>.Failure(ParkWeatherApplicationErrors.ParkNotFound());
         }

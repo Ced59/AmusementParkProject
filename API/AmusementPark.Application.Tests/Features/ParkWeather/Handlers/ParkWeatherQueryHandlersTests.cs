@@ -50,6 +50,36 @@ public sealed class ParkWeatherQueryHandlersTests
         weatherRepository.VerifyAll();
     }
 
+    [Theory]
+    [InlineData(ParkStatus.ClosedDefinitively)]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed)]
+    [InlineData(ParkStatus.Cancelled)]
+    public async Task ForecastHandleAsync_WhenParkIsNotOperating_ShouldReturnNotFoundWithoutReadingWeather(ParkStatus status)
+    {
+        Park park = CreatePark("park-1");
+        park.Status = status;
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        GetParkWeatherForecastQueryHandler handler = new GetParkWeatherForecastQueryHandler(
+            parkRepository.Object,
+            weatherRepository.Object,
+            new ParkWeatherLocalDateResolver(new FixedTimeProvider(new DateTimeOffset(2026, 6, 19, 0, 30, 0, TimeSpan.Zero))));
+
+        ApplicationResult<ParkWeatherForecastResult> result = await handler.HandleAsync(
+            new GetParkWeatherForecastQuery("park-1", 7),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "park-weather.park-not-found");
+        parkRepository.VerifyAll();
+        weatherRepository.VerifyNoOtherCalls();
+    }
+
     [Fact]
     public void ResolveLocalDate_WhenOffsetMovesDateForward_ShouldReturnOffsetLocalDate()
     {
@@ -158,6 +188,38 @@ public sealed class ParkWeatherQueryHandlersTests
             Times.Never);
         parkRepository.VerifyAll();
         weatherRepository.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(ParkStatus.ClosedDefinitively)]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed)]
+    [InlineData(ParkStatus.Cancelled)]
+    public async Task HistoricalHandleAsync_WhenParkIsNotOperating_ShouldReturnNotFoundWithoutReadingWeather(ParkStatus status)
+    {
+        Park park = CreatePark("park-1");
+        park.Status = status;
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        GetParkWeatherHistoricalComparisonsQueryHandler handler = new GetParkWeatherHistoricalComparisonsQueryHandler(
+            parkRepository.Object,
+            weatherRepository.Object,
+            new ParkWeatherLocalDateResolver(new FixedTimeProvider(new DateTimeOffset(2026, 6, 19, 0, 30, 0, TimeSpan.Zero))),
+            new ParkWeatherHistoricalComparisonDateResolver(),
+            new TestRefreshSettings());
+
+        ApplicationResult<ParkWeatherHistoricalComparisonsResult> result = await handler.HandleAsync(
+            new GetParkWeatherHistoricalComparisonsQuery("park-1", 7, 10),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "park-weather.park-not-found");
+        parkRepository.VerifyAll();
+        weatherRepository.VerifyNoOtherCalls();
     }
 
     private static Park CreatePark(string id)
