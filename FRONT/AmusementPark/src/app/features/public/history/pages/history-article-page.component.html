@@ -64,7 +64,7 @@
       </header>
 
       <div class="history-article__body">
-        <main class="history-article__content">
+        <main class="history-article__content app-editorial-copy">
           @for (block of currentArticle.blocks; track block.id) {
             @if (isHeading(block)) {
               @if (block.headingLevel === 3) {

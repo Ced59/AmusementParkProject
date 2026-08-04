@@ -46,7 +46,7 @@
       <main class="standalone-main">
         <section class="standalone-panel" *ngIf="description(); else noDescription">
           <span class="standalone-kicker">{{ t('description') }}</span>
-          <div class="standalone-rich-text" [innerHTML]="description() | safeRichHtml"></div>
+          <div class="standalone-rich-text app-editorial-copy" [innerHTML]="description() | safeRichHtml"></div>
         </section>
         <ng-template #noDescription>
           <section class="standalone-panel">

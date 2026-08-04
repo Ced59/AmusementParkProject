@@ -37,3 +37,20 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+// Long-form public copy only: compact UI and small screens keep a ragged edge for readability.
+.app-editorial-copy,
+.app-editorial-copy :where(p, li) {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+@media (min-width: 64rem) {
+  .app-editorial-copy:is(p, li),
+  .app-editorial-copy :where(p, li) {
+    hyphens: auto;
+    text-align: justify;
+    text-align-last: start;
+    text-justify: inter-word;
+  }
+}

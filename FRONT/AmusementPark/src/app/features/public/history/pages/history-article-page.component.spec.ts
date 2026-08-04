@@ -163,6 +163,15 @@ describe('HistoryArticlePageComponent', () => {
     expect(historyDataPort.articleCallCount).toBe(0);
   });
 
+  it('marks the long-form body as editorial copy', () => {
+    const articleBody: HTMLElement | null = (
+      fixture.nativeElement as HTMLElement
+    ).querySelector('.history-article__content');
+
+    expect(articleBody).not.toBeNull();
+    expect(articleBody?.classList.contains('app-editorial-copy')).toBe(true);
+  });
+
   it('uses the resolved article context for sharing and SEO', () => {
     const sharePanel: PublicSharePanelComponent = fixture.debugElement.query(
       By.directive(PublicSharePanelComponent),
