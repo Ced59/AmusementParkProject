@@ -43,7 +43,8 @@ public sealed class ParkOpeningHoursSitemapSectionProvider : ISitemapSectionProv
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in publicParks.OrderBy(static park => park.Name, StringComparer.OrdinalIgnoreCase))
         {
-            if (string.IsNullOrWhiteSpace(park.Id)
+            if (!park.Status.CanHaveCurrentOpeningHours()
+                || string.IsNullOrWhiteSpace(park.Id)
                 || !summaries.TryGetValue(park.Id, out ParkOpeningHoursScheduleSummary? summary)
                 || !summary.HasScheduleData)
             {

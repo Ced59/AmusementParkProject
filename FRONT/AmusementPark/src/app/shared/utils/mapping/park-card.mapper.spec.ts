@@ -1,5 +1,6 @@
 import type { MockedObject } from 'vitest';
 import { Park } from '@app/models/parks/park';
+import { ParkStatus } from '@app/models/parks/park-status';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 
@@ -61,6 +62,24 @@ describe('mapParkToCardModel', () => {
     expect(result.status).toBe('ClosedDefinitively');
     expect(result.isClosedDefinitively).toBe(true);
   });
+
+  it.each([
+    ['Planned', 'parks.statuses.planned', false],
+    ['UnderConstruction', 'parks.statuses.underConstruction', false],
+    ['Operating', 'parks.statuses.operating', true],
+    ['TemporarilyClosed', 'parks.statuses.temporarilyClosed', false],
+    ['ClosedDefinitively', 'parks.statuses.closedDefinitively', false],
+    ['Cancelled', 'parks.statuses.cancelled', false],
+  ] as const)(
+    'maps the %s lifecycle badge and visitability',
+    (status: ParkStatus, statusLabelKey: string | null, isOpenToVisitors: boolean) => {
+      const result = mapParkToCardModel(createPark({ status }), 'en');
+
+      expect(result.status).toBe(status);
+      expect(result.statusLabelKey).toBe(statusLabelKey);
+      expect(result.isOpenToVisitors).toBe(isOpenToVisitors);
+    },
+  );
 
   it('returns null coordinate fields when coordinates are not finite', () => {
     const result = mapParkToCardModel(

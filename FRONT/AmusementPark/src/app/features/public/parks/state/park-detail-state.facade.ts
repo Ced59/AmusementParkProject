@@ -31,6 +31,7 @@ import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status
 import { mapNullable } from '@shared/utils/mapping';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 import { resolvePublicParkItemsClosedFilter } from '@shared/utils/parks/public-park-items-closed-filter.helper';
+import { isParkOpenToVisitors } from '@shared/utils/parks/park-status.presentation';
 import { mapParkDistanceTargetToCardModel } from '../mappers/park-distance-card.mapper';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
 import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
@@ -182,7 +183,7 @@ export class ParkDetailStateFacade {
   private loadOpeningHours(park: Park): void {
     const parkId: string | null = park.id?.trim() ?? null;
 
-    if (!parkId) {
+    if (!parkId || !isParkOpenToVisitors(park.status)) {
       this.openingHoursStateStore.setEmpty(undefined);
       return;
     }
@@ -393,7 +394,7 @@ export class ParkDetailStateFacade {
   private loadWeather(park: Park): void {
     const parkId: string | null = park.id?.trim() ?? null;
 
-    if (!parkId || !Number.isFinite(park.latitude) || !Number.isFinite(park.longitude)) {
+    if (!parkId || !isParkOpenToVisitors(park.status) || !Number.isFinite(park.latitude) || !Number.isFinite(park.longitude)) {
       this.weatherStateStore.setEmpty(undefined);
       return;
     }

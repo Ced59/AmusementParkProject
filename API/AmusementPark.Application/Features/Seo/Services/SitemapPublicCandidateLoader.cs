@@ -28,7 +28,7 @@ internal static class SitemapPublicCandidateLoader
                 type: null,
                 countryCode: null,
                 hasValidCoordinates: null,
-                closedFilter: ClosedEntityFilter.OpenOnly,
+                closedFilter: ClosedEntityFilter.All,
                 cancellationToken);
 
             parks.AddRange(page.Items.Where(ParksSitemapSectionProvider.IsPublicPark));

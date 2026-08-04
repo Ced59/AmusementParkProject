@@ -41,6 +41,12 @@ Classer le parc en niveau de profondeur :
 - **Intermédiaire** : traitement complet sur les éléments fiables, mais pas d’invention de zones ou d’articles artificiels.
 - **Local ou mineur** : fiche utile et spécifique, sans survente ni fausse importance.
 - **Historique fermé** : dates, ancien emplacement, histoire, parkItems confirmés et relocalisations quand elles existent.
+- **Projet annoncé** : identité, annonce officielle, site prévu, période cible et histoire du projet ; pas d’inventaire ni d’horaires inventés.
+- **En construction** : éléments du projet officiellement confirmés et jalons de chantier ; ne pas présenter les concepts comme déjà visitables.
+- **Fermé temporairement** : données existantes conservées, raison et reprise seulement si sourcées ; aucun statut « ouvert » public.
+- **Projet annulé** : annonce, annulation et sources historiques ; pas de coordonnées, exploitant ou offre visiteurs supposés.
+
+La sortie de cadrage doit retenir exactement un `ParkStatus` canonique parmi `Planned`, `UnderConstruction`, `Operating`, `TemporarilyClosed`, `ClosedDefinitively` et `Cancelled`. En cas d’incertitude entre deux états, conserver la fiche masquée et demander une validation plutôt que choisir le statut le plus optimiste.
 
 Un parc majeur ne doit jamais être traité comme une fiche minimale si les sources permettent mieux. Il doit être planifié pour recevoir descriptions longues, zones officielles, parkItems principaux et secondaires, restaurants, boutiques, services, hôtels, parkings, exploitants, fondateurs, constructeurs, images, horaires et histoire.
 

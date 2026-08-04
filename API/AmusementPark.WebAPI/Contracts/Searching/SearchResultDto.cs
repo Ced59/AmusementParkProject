@@ -1,5 +1,7 @@
 namespace AmusementPark.WebAPI.Contracts.Searching;
 
+using AmusementPark.WebAPI.Contracts.Parks;
+
 /// <summary>
 /// Résultat HTTP de la recherche transverse, aligné sur le contrat legacy.
 /// </summary>
@@ -24,6 +26,8 @@ public sealed class SearchResultDto
     public string? LogoImageId { get; set; }
 
     public int? AttractionCount { get; set; }
+
+    public ParkStatusDto? ParkStatus { get; set; }
 
     public string? ParentParkId { get; set; }
 

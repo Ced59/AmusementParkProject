@@ -43,6 +43,14 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
+        if (!targetPark.Status.CanHaveCurrentOpeningHours())
+        {
+            change.ChangeType = "Skipped";
+            result.Changes.Add(change);
+            result.Errors.Add($"openingHours est réservé aux parcs dont le statut est '{ParkStatus.Operating}'. Le parc cible utilise '{targetPark.Status}'.");
+            return;
+        }
+
         if (this.parkOpeningHoursRepository is null
             || this.parkOpeningHoursScheduleNormalizer is null
             || this.parkOpeningHoursCoverageSegmentBuilder is null)

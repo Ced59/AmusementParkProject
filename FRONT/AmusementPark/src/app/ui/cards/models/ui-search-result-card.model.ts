@@ -7,6 +7,9 @@ export interface UiSearchResultCardModel {
   iconClass: string;
   tone: UiPrimitiveTone;
   categoryLabelKey: string;
+  statusLabelKey: string | null;
+  statusIconClass: string | null;
+  statusTone: UiPrimitiveTone | null;
   metaParts: string[];
   detailLink: string[] | null;
   actionLabelKey: string;

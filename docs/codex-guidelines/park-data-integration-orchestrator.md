@@ -202,6 +202,8 @@ Lire `park-data-integration-steps/00-intake-and-export.md`.
 
 Objectif : décider si le parc est pertinent, s’il est majeur, s’il existe déjà, quelles sources sont acceptables, et comment découper le travail.
 
+Le cadrage doit aussi classifier le cycle de vie avec une valeur canonique : `Planned`, `UnderConstruction`, `Operating`, `TemporarilyClosed`, `ClosedDefinitively` ou `Cancelled`. Cette décision pilote l’applicabilité des étapes suivantes ; elle ne doit jamais être déduite de la seule présence d’une fiche ou d’une date annoncée.
+
 Sortie attendue : une décision de pertinence et un plan de lots. Pas de JSON massif.
 
 ### Étape 1 — Infos générales du parc
@@ -249,6 +251,8 @@ Sortie attendue : JSON upsert avec `images` et/ou `references`.
 Lire `park-data-integration-steps/06-opening-hours-and-named-events.md`.
 
 Objectif : intégrer les horaires vérifiés et les exceptions datées. Les événements nommés comme Halloween peuvent apparaître dans les libellés ou raisons localisés, mais les périodes génériques comme une ouverture estivale ne doivent pas devenir des événements éditoriaux artificiels.
+
+Cette étape ne produit un bloc `openingHours` que pour `Operating`. Pour les cinq autres statuts, constater explicitement que l’étape est non applicable et passer à l’évaluation de l’étape 7 sans fabriquer de calendrier.
 
 Sortie attendue : JSON upsert centré sur `openingHours`, et éventuellement quelques événements `history` seulement s’ils ont une vraie valeur durable.
 
@@ -298,7 +302,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 
 - Vérifier la pertinence avant tout enrichissement.
 - Ne jamais enrichir artificiellement une entité douteuse.
-- Pour un parc majeur, viser un traitement complet : parc, zones, attractions, restaurants, boutiques, services, hôtels, parkings, références, images, horaires et histoire.
+- Pour un parc majeur `Operating`, viser un traitement complet : parc, zones, attractions, restaurants, boutiques, services, hôtels, parkings, références, images, horaires et histoire. Pour un projet ou un parc non exploité, adapter le traitement à ce qui existe réellement sans simuler une offre visiteurs.
 - Ne pas se limiter aux coasters.
 - Résoudre toutes les clés utilisées : `zoneKey`, `manufacturerKey`, `operatorKey`, `founderKey`, `ownerKey`, `itemKey`, `imageKey`.
 - Chercher systématiquement les conditions d’accès de chaque attraction et les intégrer dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.

@@ -685,6 +685,28 @@ describe('ParkDetailStateFacade', () => {
     expect(context.parksPort.summaryOptions[1]?.closedFilter).toBe('all');
   });
 
+  it.each([
+    'Planned',
+    'UnderConstruction',
+    'TemporarilyClosed',
+    'ClosedDefinitively',
+    'Cancelled',
+  ] as const)('does not request opening hours for a %s park', (status: Park['status']) => {
+    const context = configureFacade();
+    context.parksPort.summaryResponses$ = status === 'ClosedDefinitively'
+      ? [of(createSummary(0, true, true, status)), of(createSummary(0, true, true, status))]
+      : [of(createSummary(0, true, true, status))];
+
+    context.facade.loadPark('park-1');
+
+    expect(context.parksPort.openingHoursCalls).toEqual([]);
+    expect(context.parksPort.weatherCalls).toEqual([]);
+    expect(context.facade.openingHoursState().kind).toBe('empty');
+    expect(context.facade.weatherState().kind).toBe('empty');
+    expect(context.facade.park()?.openingHoursLink).toBeNull();
+    expect(context.facade.park()?.weatherLink).toBeNull();
+  });
+
   it('clears stale secondary park data while another park is loading', () => {
     const context = configureFacade();
     context.facade.loadPark('park-1');

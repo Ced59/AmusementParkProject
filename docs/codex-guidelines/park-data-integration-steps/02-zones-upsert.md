@@ -30,6 +30,7 @@ Utiliser l’export actualisé après l’étape 1. Ne pas continuer avec l’ex
 - Ne pas déduire une zone d’une localisation approximative.
 - Ne pas renommer une zone existante sans source claire.
 - Garder les zones fermées ou historiques si elles sont utiles à l’histoire du parc et documentées.
+- Pour `Planned`, `UnderConstruction` ou `Cancelled`, créer une zone uniquement si son nom et son périmètre ont été officiellement confirmés. Une zone de concept art, une rumeur ou un simple thème évoqué ne devient pas une zone visitable.
 
 ## JSON attendu
 

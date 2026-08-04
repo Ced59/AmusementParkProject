@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AmusementPark.Application.Features.ParkZones.Results;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.Parks;
 using AmusementPark.WebAPI.Contracts.ParkZones;
 using AmusementPark.WebAPI.Mappers;
 using Xunit;
@@ -11,6 +12,35 @@ namespace AmusementPark.WebAPI.Tests.Mappers;
 
 public sealed class ParksHttpMappersTests
 {
+    [Theory]
+    [InlineData(ParkStatus.Operating, ParkStatusDto.Operating)]
+    [InlineData(ParkStatus.ClosedDefinitively, ParkStatusDto.ClosedDefinitively)]
+    [InlineData(ParkStatus.Planned, ParkStatusDto.Planned)]
+    [InlineData(ParkStatus.UnderConstruction, ParkStatusDto.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed, ParkStatusDto.TemporarilyClosed)]
+    [InlineData(ParkStatus.Cancelled, ParkStatusDto.Cancelled)]
+    public void ParkStatusMappings_ShouldRoundTripEveryCanonicalValue(ParkStatus domainStatus, ParkStatusDto dtoStatus)
+    {
+        ParkDto dto = new Park { Status = domainStatus }.ToHttp();
+        Park mappedBack = new ParkUpdateDto { Status = dtoStatus }.ToDomain();
+
+        Assert.Equal(dtoStatus, dto.Status);
+        Assert.Equal(domainStatus, mappedBack.Status);
+    }
+
+    [Fact]
+    public void ToMapPointHttp_ShouldExposeLifecycleStatus()
+    {
+        ParkMapPointDto dto = new Park
+        {
+            Id = "park-1",
+            Name = "Future Park",
+            Status = ParkStatus.UnderConstruction,
+        }.ToMapPointHttp();
+
+        Assert.Equal(ParkStatusDto.UnderConstruction, dto.Status);
+    }
+
     [Fact]
     public void ToHttp_WhenExplorerHasZones_ShouldKeepCountsAndUnassignedBucket()
     {

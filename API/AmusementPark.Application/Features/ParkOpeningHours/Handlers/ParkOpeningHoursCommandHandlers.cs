@@ -46,6 +46,11 @@ public sealed class UpsertParkOpeningHoursScheduleCommandHandler : ICommandHandl
             return ApplicationResult<ParkOpeningHoursSchedule>.Failure(ParkOpeningHoursApplicationErrors.ParkNotFound());
         }
 
+        if (!park.Status.CanHaveCurrentOpeningHours())
+        {
+            return ApplicationResult<ParkOpeningHoursSchedule>.Failure(ParkOpeningHoursApplicationErrors.ScheduleNotAllowed(park.Status));
+        }
+
         normalizedSchedule.CoverageSegments = this.coverageSegmentBuilder.BuildSegments(normalizedSchedule).ToList();
         ParkOpeningHoursSchedule savedSchedule = await this.openingHoursRepository.UpsertAsync(normalizedSchedule, cancellationToken);
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);

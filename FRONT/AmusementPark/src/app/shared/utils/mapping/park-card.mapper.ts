@@ -5,6 +5,7 @@ import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-
 import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { resolveLocalizedCountryName } from '@shared/utils/display/country-display.helpers';
 import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
+import { getParkStatusPresentation, ParkStatusPresentation } from '@shared/utils/parks/park-status.presentation';
 
 const PARK_CARD_DESCRIPTION_MAX_LENGTH = 140;
 
@@ -21,13 +22,17 @@ export function mapParkToCardModel(
   const hasCoordinates: boolean = Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   const countryName: string | null = countryDisplayService?.resolveLocalizedCountryName(park.countryCode, currentLanguage)
     ?? resolveLocalizedCountryName(park.countryCode, currentLanguage);
+  const statusPresentation: ParkStatusPresentation = getParkStatusPresentation(park.status);
 
   return {
     id: park.id ?? null,
     name: park.name?.trim() ?? '',
     countryCode: park.countryCode?.trim() ?? null,
     city: park.city?.trim() ?? null,
-    status: park.status ?? 'Operating',
+    status: statusPresentation.status,
+    statusLabelKey: statusPresentation.showOnCard ? statusPresentation.labelKey : null,
+    statusIconClass: statusPresentation.showOnCard ? statusPresentation.iconClass : null,
+    statusTone: statusPresentation.tone,
     latitude: hasCoordinates ? park.latitude : null,
     longitude: hasCoordinates ? park.longitude : null,
     logoImageId: park.currentLogoImageId?.trim() ?? null,
@@ -36,7 +41,8 @@ export function mapParkToCardModel(
     addressLine: buildParkAddressLine(park),
     coordinatesLine: hasCoordinates ? `${park.latitude.toFixed(3)}, ${park.longitude.toFixed(3)}` : null,
     shortDescription,
-    isClosedDefinitively: park.status === 'ClosedDefinitively'
+    isClosedDefinitively: statusPresentation.status === 'ClosedDefinitively',
+    isOpenToVisitors: statusPresentation.isOpenToVisitors
   };
 }
 

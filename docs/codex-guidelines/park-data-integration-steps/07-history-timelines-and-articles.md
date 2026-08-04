@@ -24,6 +24,8 @@ Pour un parc riche :
 
 Ne pas écrire toute l’histoire d’un grand parc et de toutes ses attractions en un seul JSON.
 
+Le cycle de vie du parc doit être explicable par la timeline quand les sources existent : `Announcement` pour `Planned`, `ConstructionStart` ou jalons pour `UnderConstruction`, `TemporaryClosure` pour `TemporarilyClosed`, `DefinitiveClosure` pour `ClosedDefinitively`, et un événement documentant l’annulation ou l’abandon pour `Cancelled` avec le type historique disponible le plus fidèle. Le statut du parc reste porté par `park.status`; un événement historique ne le remplace pas.
+
 ## Événements de parc
 
 Créer des événements pour les faits durables :

@@ -36,6 +36,12 @@
     </div>
 
     <div class="ui-search-result-card__actions">
+      @if (currentCard.statusLabelKey && currentCard.statusTone) {
+        <app-ui-chip [tone]="currentCard.statusTone" [iconClass]="currentCard.statusIconClass">
+          {{ currentCard.statusLabelKey | translate }}
+        </app-ui-chip>
+      }
+
       <span class="ui-search-result-card__category">
         <i [class]="currentCard.iconClass" aria-hidden="true"></i>
         <span>{{ currentCard.categoryLabelKey | translate }}</span>

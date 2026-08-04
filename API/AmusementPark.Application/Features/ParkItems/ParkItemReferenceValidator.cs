@@ -48,7 +48,7 @@ public sealed class ParkItemReferenceValidator
         Park? park = await this.parkRepository.GetByIdAsync(parkId.Trim(), false, cancellationToken);
         if (park is null ||
             !park.IsVisible ||
-            park.Status == ParkStatus.ClosedDefinitively ||
+            !park.Status.CanAppearInPublicDiscovery() ||
             park.AdminReviewStatus == AdminReviewStatus.NotRelevant)
         {
             return ParkApplicationErrors.ParkNotExists();

@@ -6,6 +6,7 @@ import { RatingSummary } from '@app/models/ratings/rating.models';
 import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
+import { getParkStatusPresentation, ParkStatusPresentation } from '@shared/utils/parks/park-status.presentation';
 import {
   buildPublicParkImagesRouteCommands,
   buildPublicParkCommentsRouteCommands,
@@ -73,6 +74,7 @@ export function mapParkToDetailViewModel(
   const description: string | null = normalizeOptionalString(resolveLocalizedValue(park.descriptions, currentLanguage) ?? null);
   const totalItems: number = statsSource.totalItems ?? 0;
   const zoneCount: number = statsSource.zoneCount ?? 0;
+  const statusPresentation: ParkStatusPresentation = getParkStatusPresentation(park.status);
 
   const identityRows: ParkDetailInfoRowViewModel[] = buildIdentityRows(park.id ?? null, type, founderName, operatorName, founderId, operatorId);
   const practicalRows: ParkDetailInfoRowViewModel[] = buildPracticalRows(
@@ -116,6 +118,11 @@ export function mapParkToDetailViewModel(
     description,
     type,
     typeLabelKey: type ? getParkTypeTranslationKey(type) : null,
+    status: statusPresentation.status,
+    statusLabelKey: statusPresentation.labelKey,
+    statusIconClass: statusPresentation.iconClass,
+    statusTone: statusPresentation.tone,
+    isOpenToVisitors: statusPresentation.isOpenToVisitors,
     founderId,
     founderName,
     operatorId,
@@ -153,10 +160,10 @@ export function mapParkToDetailViewModel(
     mapLink: hasIdentity
       ? buildPublicParkMapRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
-    weatherLink: hasIdentity
+    weatherLink: hasIdentity && statusPresentation.isOpenToVisitors
       ? buildPublicParkWeatherRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
-    openingHoursLink: hasIdentity
+    openingHoursLink: hasIdentity && statusPresentation.isOpenToVisitors
       ? buildPublicParkOpeningHoursRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     primaryPhoto,

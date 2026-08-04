@@ -187,6 +187,21 @@ describe('HomeViewComponent', () => {
     expect(autocompleteButton.textContent).toContain('Phantasialand');
   });
 
+  it('shows the lifecycle badge on park search results', () => {
+    const fixture: ComponentFixture<HomeViewComponent> = createComponent([
+      createSearchResult('park_1', 'Park', 'Future Park', {
+        parkStatus: 'Planned',
+      }),
+    ]);
+
+    fixture.detectChanges();
+
+    const lifecycleChip = fixture.debugElement.query(By.css('app-ui-chip'));
+    expect(lifecycleChip).not.toBeNull();
+    expect(lifecycleChip.componentInstance.tone).toBe('purple');
+    expect(lifecycleChip.componentInstance.iconClass).toBe('pi pi-calendar');
+  });
+
   it('emits an explicit search when the search action is clicked', () => {
     const fixture: ComponentFixture<HomeViewComponent> = createComponent([]);
     let searchCount: number = 0;

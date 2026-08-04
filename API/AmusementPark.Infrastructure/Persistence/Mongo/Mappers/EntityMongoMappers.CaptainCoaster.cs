@@ -66,6 +66,7 @@ internal static partial class EntityMongoMappers
             CountryCode = document.CountryCode,
             LogoImageId = document.LogoImageId,
             AttractionCount = document.AttractionCount,
+            ParkStatus = document.ParkStatus,
             ParentParkId = document.ParentParkId,
             ParentParkName = document.ParentParkName,
             Score = document.CompositeScore,

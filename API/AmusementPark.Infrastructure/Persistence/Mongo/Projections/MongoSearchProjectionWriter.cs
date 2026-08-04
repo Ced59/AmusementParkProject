@@ -323,6 +323,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             CountryCode = source.CountryCode,
             LogoImageId = source.CurrentLogoImageId,
             AttractionCount = attractionCount,
+            ParkStatus = source.Status,
             Keywords = keywords,
             CompositeScore = 0.0,
             Latitude = source.Latitude,

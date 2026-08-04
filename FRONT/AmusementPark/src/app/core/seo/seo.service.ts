@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { Park } from '@app/models/parks/park';
+import { ParkStatus } from '@app/models/parks/park-status';
 import { ParkItem } from '@app/models/parks/park-item';
 import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
 import { TechnicalContentBlock, TechnicalPage } from '@app/models/technical-pages/technical-page';
@@ -128,6 +129,14 @@ interface ParkReferenceSeoCopy {
 interface ParkDetailSeoCopy {
   title: (parkName: string, locationLabel: string) => string;
   description: (parkName: string, locationLabel: string) => string;
+}
+
+type NonOperatingParkStatus = Exclude<ParkStatus, 'Operating'>;
+
+interface ParkLifecycleSeoCopy {
+  statusLabels: Record<NonOperatingParkStatus, string>;
+  title: (parkName: string, locationLabel: string, statusLabel: string) => string;
+  description: (parkName: string, locationLabel: string, statusLabel: string) => string;
 }
 
 interface ParkItemDetailSeoCopy {
@@ -1114,6 +1123,105 @@ const PARK_DETAIL_SEO_COPY: Record<string, ParkDetailSeoCopy> = {
   }
 };
 
+const PARK_LIFECYCLE_SEO_COPY: Record<string, ParkLifecycleSeoCopy> = {
+  en: {
+    statusLabels: {
+      Planned: 'planned project',
+      UnderConstruction: 'under construction',
+      TemporarilyClosed: 'temporarily closed',
+      ClosedDefinitively: 'permanently closed',
+      Cancelled: 'cancelled project'
+    },
+    title: (parkName: string, locationLabel: string, statusLabel: string): string => `${parkName}${locationLabel}: ${statusLabel}`,
+    description: (parkName: string, locationLabel: string, statusLabel: string): string =>
+      `${parkName}${locationLabel} is listed as a ${statusLabel}. Find its current lifecycle information and known history.`
+  },
+  fr: {
+    statusLabels: {
+      Planned: 'projet annoncé',
+      UnderConstruction: 'en construction',
+      TemporarilyClosed: 'fermé temporairement',
+      ClosedDefinitively: 'fermé définitivement',
+      Cancelled: 'projet annulé'
+    },
+    title: (parkName: string, locationLabel: string, statusLabel: string): string => `${parkName}${locationLabel} : ${statusLabel}`,
+    description: (parkName: string, locationLabel: string, statusLabel: string): string =>
+      `${parkName}${locationLabel} est répertorié comme ${statusLabel}. Retrouve son état actuel et les éléments historiques connus.`
+  },
+  de: {
+    statusLabels: {
+      Planned: 'geplantes Projekt',
+      UnderConstruction: 'im Bau',
+      TemporarilyClosed: 'vorübergehend geschlossen',
+      ClosedDefinitively: 'dauerhaft geschlossen',
+      Cancelled: 'abgesagtes Projekt'
+    },
+    title: (parkName: string, locationLabel: string, statusLabel: string): string => `${parkName}${locationLabel}: ${statusLabel}`,
+    description: (parkName: string, locationLabel: string, statusLabel: string): string =>
+      `${parkName}${locationLabel} ist als ${statusLabel} verzeichnet. Entdecke den aktuellen Projektstand und die bekannte Geschichte.`
+  },
+  nl: {
+    statusLabels: {
+      Planned: 'aangekondigd project',
+      UnderConstruction: 'in aanbouw',
+      TemporarilyClosed: 'tijdelijk gesloten',
+      ClosedDefinitively: 'definitief gesloten',
+      Cancelled: 'geannuleerd project'
+    },
+    title: (parkName: string, locationLabel: string, statusLabel: string): string => `${parkName}${locationLabel}: ${statusLabel}`,
+    description: (parkName: string, locationLabel: string, statusLabel: string): string =>
+      `${parkName}${locationLabel} staat vermeld als ${statusLabel}. Bekijk de huidige projectstatus en de bekende geschiedenis.`
+  },
+  it: {
+    statusLabels: {
+      Planned: 'progetto annunciato',
+      UnderConstruction: 'in costruzione',
+      TemporarilyClosed: 'temporaneamente chiuso',
+      ClosedDefinitively: 'chiuso definitivamente',
+      Cancelled: 'progetto annullato'
+    },
+    title: (parkName: string, locationLabel: string, statusLabel: string): string => `${parkName}${locationLabel}: ${statusLabel}`,
+    description: (parkName: string, locationLabel: string, statusLabel: string): string =>
+      `${parkName}${locationLabel} è indicato come ${statusLabel}. Consulta lo stato attuale del progetto e la storia conosciuta.`
+  },
+  es: {
+    statusLabels: {
+      Planned: 'proyecto anunciado',
+      UnderConstruction: 'en construcción',
+      TemporarilyClosed: 'cerrado temporalmente',
+      ClosedDefinitively: 'cerrado definitivamente',
+      Cancelled: 'proyecto cancelado'
+    },
+    title: (parkName: string, locationLabel: string, statusLabel: string): string => `${parkName}${locationLabel}: ${statusLabel}`,
+    description: (parkName: string, locationLabel: string, statusLabel: string): string =>
+      `${parkName}${locationLabel} figura como ${statusLabel}. Consulta su estado actual y la historia conocida.`
+  },
+  pl: {
+    statusLabels: {
+      Planned: 'zapowiedziany projekt',
+      UnderConstruction: 'w budowie',
+      TemporarilyClosed: 'tymczasowo zamknięty',
+      ClosedDefinitively: 'zamknięty na stałe',
+      Cancelled: 'anulowany projekt'
+    },
+    title: (parkName: string, locationLabel: string, statusLabel: string): string => `${parkName}${locationLabel}: ${statusLabel}`,
+    description: (parkName: string, locationLabel: string, statusLabel: string): string =>
+      `${parkName}${locationLabel} figuruje jako ${statusLabel}. Sprawdź aktualny etap projektu i znaną historię.`
+  },
+  pt: {
+    statusLabels: {
+      Planned: 'projeto anunciado',
+      UnderConstruction: 'em construção',
+      TemporarilyClosed: 'encerrado temporariamente',
+      ClosedDefinitively: 'encerrado definitivamente',
+      Cancelled: 'projeto cancelado'
+    },
+    title: (parkName: string, locationLabel: string, statusLabel: string): string => `${parkName}${locationLabel}: ${statusLabel}`,
+    description: (parkName: string, locationLabel: string, statusLabel: string): string =>
+      `${parkName}${locationLabel} está registado como ${statusLabel}. Consulta o estado atual do projeto e a história conhecida.`
+  }
+};
+
 const PARK_ITEM_DETAIL_SEO_COPY: Record<string, ParkItemDetailSeoCopy> = {
   en: {
     parkContextPrefix: 'at',
@@ -1589,19 +1697,30 @@ export class SeoService {
   applyParkDetailSeo(park: ParkDetailViewModel, language: string, url: string, canonicalPath: string | null = null): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkDetailSeoCopy = PARK_DETAIL_SEO_COPY[normalizedLanguage] ?? PARK_DETAIL_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const lifecycleCopy: ParkLifecycleSeoCopy = PARK_LIFECYCLE_SEO_COPY[normalizedLanguage]
+      ?? PARK_LIFECYCLE_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
     const locationLabel: string = this.buildParkDetailLocationLabel(park, normalizedLanguage);
-    const descriptionFallback: string = copy.description(park.name, locationLabel);
+    const lifecycleStatus: NonOperatingParkStatus | null = park.status === 'Operating' ? null : park.status;
+    const lifecycleStatusLabel: string | null = lifecycleStatus ? lifecycleCopy.statusLabels[lifecycleStatus] : null;
+    const title: string = lifecycleStatusLabel
+      ? lifecycleCopy.title(park.name, locationLabel, lifecycleStatusLabel)
+      : copy.title(park.name, locationLabel);
+    const descriptionFallback: string = lifecycleStatusLabel
+      ? lifecycleCopy.description(park.name, locationLabel, lifecycleStatusLabel)
+      : copy.description(park.name, locationLabel);
+    const descriptionSource: string | null = lifecycleStatusLabel ? null : park.description;
+    const description: string = truncateSeoText(normalizeSeoText(descriptionSource, descriptionFallback), 160);
 
     this.apply({
-      title: `${copy.title(park.name, locationLabel)} — ${SITE_NAME}`,
-      description: truncateSeoText(normalizeSeoText(park.description, descriptionFallback), 160),
+      title: `${title} — ${SITE_NAME}`,
+      description,
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
       imageUrl: this.resolveImageIdAbsoluteUrl(this.resolveParkDetailSocialImageId(park)) ?? undefined,
       imageAlt: park.name,
-      jsonLd: this.buildParkDetailJsonLd(park, seoUrl)
+      jsonLd: this.buildParkDetailJsonLd(park, seoUrl, description)
     });
   }
 
@@ -2461,7 +2580,7 @@ export class SeoService {
       ?? this.normalizeOptionalText(park.logoImageId);
   }
 
-  private buildParkDetailJsonLd(park: ParkDetailViewModel, url: string): unknown[] {
+  private buildParkDetailJsonLd(park: ParkDetailViewModel, url: string, seoDescription: string): unknown[] {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
     const language: string = this.resolveLanguageFromUrl(url);
     const jsonLd: unknown[] = [this.buildBreadcrumbJsonLd([
@@ -2477,10 +2596,16 @@ export class SeoService {
       url: canonicalUrl
     };
 
-    const description: string = normalizeSeoText(park.description, '');
+    const description: string = normalizeSeoText(seoDescription, '');
     if (description) {
       parkJsonLd['description'] = truncateSeoText(description, 300);
     }
+
+    parkJsonLd['additionalProperty'] = {
+      '@type': 'PropertyValue',
+      name: 'lifecycleStatus',
+      value: park.status
+    };
 
     if (park.websiteUrl) {
       parkJsonLd['sameAs'] = [park.websiteUrl];

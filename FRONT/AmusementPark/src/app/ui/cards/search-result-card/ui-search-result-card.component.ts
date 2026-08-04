@@ -4,14 +4,14 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { SafeRichHtmlPipe } from '@shared/pipes';
-import { UiButtonDirective } from '@ui/primitives';
+import { UiButtonDirective, UiChipComponent } from '@ui/primitives';
 import { UiSearchResultCardModel } from '../models/ui-search-result-card.model';
 
 @Component({
   selector: 'app-ui-search-result-card',
   templateUrl: './ui-search-result-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ImageDisplayComponent, RouterLink, TranslateModule, SafeRichHtmlPipe, UiButtonDirective]
+  imports: [ImageDisplayComponent, RouterLink, TranslateModule, SafeRichHtmlPipe, UiButtonDirective, UiChipComponent]
 })
 export class UiSearchResultCardComponent {
   @Input() card: UiSearchResultCardModel | null = null;

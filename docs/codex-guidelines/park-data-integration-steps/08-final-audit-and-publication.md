@@ -23,6 +23,10 @@ Vérifier :
 - aucune section massive inutile ;
 - aucune suppression implicite ;
 - aucune donnée existante fiable écrasée ;
+- `park.status` est l’une des six valeurs canoniques et correspond aux sources ;
+- un projet créé reste masqué par défaut tant que la revue et la décision de publication ne sont pas terminées ;
+- `openingHours` est absent lorsque le statut n’est pas `Operating` ;
+- les dates ou périodes partielles fiables ont été conservées sans jour ou mois inventé ;
 - toutes les clés sont résolues ;
 - toutes les dates complètes sont sourcées ;
 - les années seules fiables sont renseignées comme années seules, sans `01-01` ni premier jour de mois inventé ;
@@ -118,7 +122,8 @@ Pour chaque article avec image :
 
 Vérifier :
 
-- horaires sourcés et récents ;
+- horaires sourcés et récents pour `Operating` uniquement ;
+- aucun CTA, calendrier ou donnée « ouvert maintenant » pour `Planned`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively` ou `Cancelled` ;
 - pas de tarifs ;
 - événements nommés seulement ;
 - pas de “ouverture estivale” générique transformée en événement ;

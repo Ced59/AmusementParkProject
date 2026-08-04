@@ -244,6 +244,7 @@ internal static class ParksHttpMappers
             Name = value.Name ?? string.Empty,
             CountryCode = value.CountryCode,
             AudienceClassification = value.AudienceClassification.ToHttp(),
+            Status = value.Status.ToHttp(),
             City = value.City,
             Street = value.Street,
             PostalCode = value.PostalCode,

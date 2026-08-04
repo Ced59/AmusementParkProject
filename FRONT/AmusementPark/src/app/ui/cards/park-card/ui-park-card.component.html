@@ -14,9 +14,9 @@
           </app-ui-chip>
         }
 
-        @if (currentPark.isClosedDefinitively) {
-          <app-ui-chip tone="soft" iconClass="pi pi-ban">
-            {{ 'parks.statuses.closedDefinitively' | translate }}
+        @if (currentPark.statusLabelKey) {
+          <app-ui-chip [tone]="currentPark.statusTone" [iconClass]="currentPark.statusIconClass">
+            {{ currentPark.statusLabelKey | translate }}
           </app-ui-chip>
         }
       </div>

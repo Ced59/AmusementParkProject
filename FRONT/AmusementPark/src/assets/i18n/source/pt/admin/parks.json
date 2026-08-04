@@ -480,8 +480,12 @@
       "itemsVisibleCount": "Vis.",
       "dataCompleteness": "Completude dos dados",
       "statuses": {
+        "planned": "Projeto anunciado",
+        "underConstruction": "Em construção",
         "operating": "Aberto",
-        "closedDefinitively": "Fechado definitivamente"
+        "temporarilyClosed": "Encerrado temporariamente",
+        "closedDefinitively": "Encerrado definitivamente",
+        "cancelled": "Projeto cancelado"
       },
       "sort": {
         "label": "Ordenar",

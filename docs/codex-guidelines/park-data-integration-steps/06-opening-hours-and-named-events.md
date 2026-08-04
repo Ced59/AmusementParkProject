@@ -12,6 +12,17 @@ Objectif : intégrer les horaires vérifiés et les exceptions datées sans inve
 
 Utiliser l’export actualisé après les étapes précédentes. Si des images doivent illustrer un événement historique, elles doivent déjà être dans l’export ou créées dans le même JSON.
 
+## Applicabilité selon le statut
+
+Lire `park.status` dans l’export avant toute recherche de calendrier. Seul `Operating` autorise la création ou la mise à jour de `openingHours`.
+
+Pour `Planned`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively` et `Cancelled` :
+
+- ne pas livrer de section `openingHours` ;
+- ne pas recycler d’anciens horaires pour suggérer une ouverture actuelle ;
+- conserver les dates d’annonce, chantier, fermeture ou annulation dans les champs du parc ou à l’étape 7 ;
+- conclure explicitement « étape 6 non applicable au statut courant », puis évaluer l’étape 7.
+
 ## Sources à privilégier
 
 - Calendrier officiel du parc.

@@ -1,6 +1,6 @@
 # AmusementPark — Enums JSON Park Graph Upsert
 
-Version : **2026-06-30**
+Version : **2026-08-04**
 
 Ce fichier liste les valeurs enum à utiliser dans les JSON `AmusementParkParkGraphUpsert` et `standaloneAttractionGraph`.
 
@@ -18,10 +18,31 @@ Règles :
 | --- | --- | --- |
 | `park.type` | `ParkType` | `ThemePark`, `WaterPark`, `Zoo`, `AnimalPark`, `AmusementPark`, `Resort` |
 | `park.audienceClassification` | `ParkAudienceClassification` | `International`, `National`, `Regional`, `Local` |
-| `park.status` | `ParkStatus` | `Operating`, `ClosedDefinitively` |
+| `park.status` | `ParkStatus` | `Planned`, `UnderConstruction`, `Operating`, `TemporarilyClosed`, `ClosedDefinitively`, `Cancelled` |
 | `park.adminReviewStatus` | `AdminReviewStatus` | `ToReview`, `Validated`, `ToProcessLater`, `NotRelevant` |
 
 `AdminReviewStatus.Ready` existe comme alias legacy de `Validated`, mais ne doit pas être utilisé dans les nouveaux JSON.
+
+### Cycle de vie d’un parc
+
+Toujours écrire la valeur canonique correspondant à la réalité documentée :
+
+| Valeur | Usage |
+| --- | --- |
+| `Planned` | Projet officiellement annoncé, sans chantier confirmé. |
+| `UnderConstruction` | Chantier du parc effectivement commencé. |
+| `Operating` | Parc actuellement exploité et visitable selon son calendrier. |
+| `TemporarilyClosed` | Parc existant fermé temporairement, avec une reprise encore possible. |
+| `ClosedDefinitively` | Parc ayant existé puis fermé définitivement. |
+| `Cancelled` | Projet annoncé puis annulé ou abandonné avant ouverture. |
+
+Les anciennes valeurs numériques stables restent `Operating = 0` et `ClosedDefinitively = 1`. Les JSON upsert et les exports doivent néanmoins utiliser exclusivement les chaînes canoniques.
+
+Le parseur tolère notamment `announced`, `construction`, `temporaryClosure`, `canceled` et leurs variantes normalisées pour reprendre d’anciens brouillons. Cette tolérance n’autorise pas leur emploi dans un nouveau livrable : la Preview et l’export normalisent toujours vers les six valeurs de la table.
+
+Seul `Operating` autorise un bloc `openingHours`. Ne pas créer de faux horaires, dates d’ouverture quotidienne ou propriétés opérationnelles pour un projet, un parc temporairement fermé, un ancien parc ou un projet annulé. Une date d’ouverture/fermeture approximative fiable reste textuelle ; ne jamais inventer un jour ou un mois.
+
+Si un ancien enregistrement non opérationnel possède encore des horaires stockés, l’export borné renvoie `openingHours: null`. Une Preview contenant des règles d’horaires pour un autre statut est bloquée avec une erreur explicite au lieu de réimporter ces données.
 
 ## Champs parkItems
 

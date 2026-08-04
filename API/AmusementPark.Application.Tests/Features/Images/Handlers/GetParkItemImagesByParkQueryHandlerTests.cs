@@ -156,7 +156,6 @@ public sealed class GetParkItemImagesByParkQueryHandlerTests
     [Theory]
     [InlineData(false, AdminReviewStatus.Validated, ParkStatus.Operating)]
     [InlineData(true, AdminReviewStatus.NotRelevant, ParkStatus.Operating)]
-    [InlineData(true, AdminReviewStatus.Validated, ParkStatus.ClosedDefinitively)]
     public async Task HandleAsync_WhenPublicParentParkIsNotPublic_ShouldReturnNotFoundWithoutQueryingItems(
         bool isVisible,
         AdminReviewStatus adminReviewStatus,

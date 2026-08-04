@@ -2,6 +2,8 @@
 
 Objectif : intégrer tous les contenus visiteurs nommables et fiables, avec dates, statuts et rattachements, sans se limiter aux coasters.
 
+Pour `Planned`, `UnderConstruction` ou `Cancelled`, cette étape est non applicable par défaut. N’intégrer que les équipements officiellement nommés et confirmés, avec leur propre statut prévu ou en construction ; ne jamais convertir une intention, un rendu ou une rumeur en inventaire opérationnel. Pour `TemporarilyClosed` et `ClosedDefinitively`, conserver l’inventaire confirmé utile à la compréhension et à l’histoire.
+
 ## Lire avant de commencer
 
 - `park-data-integration-orchestrator.md`

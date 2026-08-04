@@ -54,6 +54,33 @@ public sealed class ParkItemReferenceValidatorTests
         parkRepository.VerifyAll();
     }
 
+    [Theory]
+    [InlineData(ParkStatus.Operating)]
+    [InlineData(ParkStatus.ClosedDefinitively)]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed)]
+    [InlineData(ParkStatus.Cancelled)]
+    public async Task EnsurePublicParkExistsAsync_WhenPublishedParkHasSupportedStatus_ShouldReturnNull(ParkStatus status)
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(item => item.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park
+            {
+                Id = "park-1",
+                IsVisible = true,
+                AdminReviewStatus = AdminReviewStatus.Validated,
+                Status = status,
+            });
+        ParkItemReferenceValidator validator = CreateValidator(parkRepository);
+
+        ApplicationError? error = await validator.EnsurePublicParkExistsAsync("park-1", CancellationToken.None);
+
+        Assert.Null(error);
+        parkRepository.VerifyAll();
+    }
+
     [Fact]
     public async Task ValidateForWriteAsync_WhenParkItemIsNull_ShouldThrow()
     {

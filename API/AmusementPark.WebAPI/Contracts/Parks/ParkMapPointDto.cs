@@ -13,6 +13,8 @@ public sealed class ParkMapPointDto
 
     public ParkAudienceClassificationDto? AudienceClassification { get; set; }
 
+    public ParkStatusDto Status { get; set; } = ParkStatusDto.Operating;
+
     public string? City { get; set; }
 
     public string? Street { get; set; }

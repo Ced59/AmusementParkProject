@@ -136,7 +136,7 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
         return !string.IsNullOrWhiteSpace(park.Id) &&
                !string.IsNullOrWhiteSpace(park.Name) &&
                park.IsVisible &&
-               park.Status != ParkStatus.ClosedDefinitively &&
+               park.Status.CanAppearInPublicDiscovery() &&
                park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 
@@ -149,7 +149,8 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 
     internal static bool HasWeatherCoordinates(Park park)
     {
-        return park.Position is not null
+        return park.Status.IsOpenToVisitors()
+               && park.Position is not null
                && !(Math.Abs(park.Position.Latitude) < double.Epsilon && Math.Abs(park.Position.Longitude) < double.Epsilon);
     }
 

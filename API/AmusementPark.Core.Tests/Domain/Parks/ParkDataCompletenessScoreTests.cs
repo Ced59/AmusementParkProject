@@ -56,6 +56,76 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.Equal(scoreWithOpeningHours.CompletenessScore, scoreWithoutOpeningHours.CompletenessScore);
     }
 
+    [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed)]
+    [InlineData(ParkStatus.ClosedDefinitively)]
+    [InlineData(ParkStatus.Cancelled)]
+    public void CalculateDataCompletenessScore_WhenParkIsNotOperating_DoesNotApplyOpeningHoursPoints(ParkStatus status)
+    {
+        Park park = CreatePublishablePark();
+        park.Status = status;
+        ParkDataCompletenessContext withoutOpeningHours = CreateRichParkContext() with
+        {
+            HasOpeningHours = false,
+            HasOpeningHoursSource = false,
+            HasOpeningHoursTimeZone = false,
+            HasOpeningHoursExceptions = false,
+            HasOpeningHoursRecentVerification = false,
+        };
+
+        DataCompletenessScore scoreWithoutOpeningHours = park.CalculateDataCompletenessScore(withoutOpeningHours);
+        DataCompletenessScore scoreWithOpeningHours = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(scoreWithOpeningHours.ApplicableMaxPoints, scoreWithoutOpeningHours.ApplicableMaxPoints);
+        Assert.Equal(scoreWithOpeningHours.CompletenessScore, scoreWithoutOpeningHours.CompletenessScore);
+    }
+
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenParkIsOperating_RequiresOpeningHours()
+    {
+        Park park = CreatePublishablePark();
+        ParkDataCompletenessContext withoutOpeningHours = CreateRichParkContext() with
+        {
+            HasOpeningHours = false,
+            HasOpeningHoursSource = false,
+            HasOpeningHoursTimeZone = false,
+            HasOpeningHoursExceptions = false,
+            HasOpeningHoursRecentVerification = false,
+        };
+
+        DataCompletenessScore scoreWithoutOpeningHours = park.CalculateDataCompletenessScore(withoutOpeningHours);
+        DataCompletenessScore scoreWithOpeningHours = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.True(scoreWithoutOpeningHours.EarnedPoints < scoreWithOpeningHours.EarnedPoints);
+        Assert.True(scoreWithoutOpeningHours.CompletenessScore < scoreWithOpeningHours.CompletenessScore);
+    }
+
+    [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.Cancelled)]
+    public void CalculateDataCompletenessScore_WhenParkIsAProject_DoesNotRequireBuiltInventory(ParkStatus status)
+    {
+        Park park = CreatePublishablePark();
+        park.Status = status;
+        ParkDataCompletenessContext withoutInventory = CreateRichParkContext() with
+        {
+            ParkItemsTotalCount = 0,
+            ParkItemsVisibleCount = 0,
+            DistinctParkItemCategoryCount = 0,
+            ParkItemsWithKnownStatusOrDatesCount = 0,
+            AttractionManufacturerIdsCount = 0,
+            AttractionsWithAccessConditionsCount = 0,
+        };
+
+        DataCompletenessScore scoreWithoutInventory = park.CalculateDataCompletenessScore(withoutInventory);
+        DataCompletenessScore scoreWithInventory = park.CalculateDataCompletenessScore(CreateRichParkContext());
+
+        Assert.Equal(scoreWithInventory.CompletenessScore, scoreWithoutInventory.CompletenessScore);
+    }
+
     [Fact]
     public void CalculateDataCompletenessScore_WhenParkIsNotRelevant_LosesRelevancePoints()
     {
