@@ -65,7 +65,7 @@ public sealed partial class ParkGraphUpsertProcessor
             hasUnresolvedImageKey = true;
         }
 
-        if (hasUnresolvedImageKey)
+        if (apply && hasUnresolvedImageKey)
         {
             imageIds.AddRange(previousImageIds);
         }

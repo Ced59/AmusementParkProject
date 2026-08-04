@@ -139,12 +139,8 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
     public async Task ApplyAsync_WhenArticleImageKeysCannotBeResolved_ShouldPreserveExistingImageIds()
     {
         HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());
-        string articleJson = BuildArticleJson()
-            .Replace("\"mainImageId\": \"image-main-1\"", "\"mainImageKey\": \"missing-main\"", StringComparison.Ordinal)
-            .Replace("\"imageId\": \"image-block-1\"", "\"imageKey\": \"missing-block\"", StringComparison.Ordinal)
-            .Replace("\"imageIds\": [\"image-gallery-1\", \"image-gallery-2\"]", "\"imageKeys\": [\"missing-gallery\"]", StringComparison.Ordinal);
         string document = BuildDocument($$"""
-        "article": {{articleJson}}
+        "article": {{BuildArticleJsonWithUnresolvedImageKeys()}}
         """);
 
         ApplicationResult<ParkGraphUpsertResult> apply = await context.ApplyAsync(document);
@@ -163,6 +159,23 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
         HistoryArticleBlock imageBlock = Assert.Single(persistedArticle.Blocks, static block => block.Id == "photo");
         Assert.Equal("image-block-1", imageBlock.ImageId);
         Assert.Equal(new[] { "image-gallery-1", "image-gallery-2" }, imageBlock.ImageIds);
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenArticleImageKeysCannotBeResolved_ShouldReportArticleUpdate()
+    {
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(BuildExistingEvent());
+        string document = BuildDocument($$"""
+        "article": {{BuildArticleJsonWithUnresolvedImageKeys()}}
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> preview = await context.PreviewAsync(document);
+
+        Assert.True(preview.IsSuccess);
+        AssertHistoryChange(preview, "Updated", "article");
+        context.HistoryEventRepository.Verify(
+            value => value.UpdateAsync(It.IsAny<string>(), It.IsAny<HistoryEvent>(), It.IsAny<CancellationToken>()),
+            Times.Never);
     }
 
     [Fact]
@@ -321,6 +334,14 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
           "isPublished": true
         }
         """;
+    }
+
+    private static string BuildArticleJsonWithUnresolvedImageKeys()
+    {
+        return BuildArticleJson()
+            .Replace("\"mainImageId\": \"image-main-1\"", "\"mainImageKey\": \"missing-main\"", StringComparison.Ordinal)
+            .Replace("\"imageId\": \"image-block-1\"", "\"imageKey\": \"missing-block\"", StringComparison.Ordinal)
+            .Replace("\"imageIds\": [\"image-gallery-1\", \"image-gallery-2\"]", "\"imageKeys\": [\"missing-gallery\"]", StringComparison.Ordinal);
     }
 
     private static HistoryEvent BuildExistingEvent()

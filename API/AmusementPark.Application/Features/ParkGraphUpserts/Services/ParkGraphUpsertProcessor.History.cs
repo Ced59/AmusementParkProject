@@ -426,7 +426,7 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             mainImageId = resolvedMainImageId;
         }
-        else if (HasHistoryImageIdPatch(element.Value, "mainImageId", "mainImageKey", "imageKey"))
+        else if (apply && HasHistoryImageIdPatch(element.Value, "mainImageId", "mainImageKey", "imageKey"))
         {
             mainImageId = previousArticle?.MainImageId;
         }
@@ -493,7 +493,7 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 imageId = resolvedImageId;
             }
-            else if (HasHistoryImageIdPatch(item, "imageId", "imageKey", "mainImageKey"))
+            else if (apply && HasHistoryImageIdPatch(item, "imageId", "imageKey", "mainImageKey"))
             {
                 imageId = previousBlock?.ImageId;
             }
