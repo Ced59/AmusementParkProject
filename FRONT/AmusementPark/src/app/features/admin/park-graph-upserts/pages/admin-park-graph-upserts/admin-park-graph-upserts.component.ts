@@ -90,6 +90,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   protected searchResults: Park[] = [];
   protected selectedPark: Park | null = null;
   protected selectedParkDataCompleteness: DataCompletenessScore | null = null;
+  protected createIfMissing: boolean = false;
   protected jsonText: string = '';
   protected previewResult: ParkGraphUpsertResult | null = null;
   protected lastAppliedResult: ParkGraphUpsertResult | null = null;
@@ -153,6 +154,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
   protected selectPark(park: Park): void {
     this.selectedPark = park;
     this.selectedParkDataCompleteness = park.dataCompleteness ?? null;
+    this.createIfMissing = false;
     this.previewResult = null;
     this.lastAppliedResult = null;
     this.uiError = null;
@@ -165,6 +167,19 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     this.selectedParkDataCompleteness = null;
     this.previewResult = null;
     this.lastAppliedResult = null;
+    this.operationErrorDetail = null;
+  }
+
+  protected setCreateIfMissing(enabled: boolean): void {
+    const nextValue: boolean = !this.selectedPark && enabled;
+    if (nextValue === this.createIfMissing) {
+      return;
+    }
+
+    this.createIfMissing = nextValue;
+    this.previewResult = null;
+    this.lastAppliedResult = null;
+    this.uiError = null;
     this.operationErrorDetail = null;
   }
 
@@ -658,7 +673,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
       return null;
     }
 
-    if (this.requiresSelectedPark(document) && !this.selectedPark?.id) {
+    if (this.requiresSelectedPark(document) && !this.selectedPark?.id && !this.createIfMissing) {
       this.uiError = 'admin.parkGraphUpserts.errors.noParkSelected';
       this.changeDetectorRef.markForCheck();
       return null;
@@ -666,7 +681,7 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
 
     return {
       targetParkId: this.selectedPark?.id ?? null,
-      createIfMissing: false,
+      createIfMissing: !this.selectedPark?.id && this.createIfMissing,
       replaceCollections: false,
       document
     };

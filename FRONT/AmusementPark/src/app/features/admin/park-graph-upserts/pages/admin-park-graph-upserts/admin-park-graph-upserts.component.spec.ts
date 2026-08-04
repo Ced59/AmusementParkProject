@@ -23,6 +23,7 @@ interface AdminParkGraphUpsertsComponentHarness {
   canApply: boolean;
   canPreview: boolean;
   contentChangeCount: number;
+  createIfMissing: boolean;
   hasJsonDraft: boolean;
   jsonText: string;
   lastAppliedResult: ParkGraphUpsertResult | null;
@@ -43,6 +44,7 @@ interface AdminParkGraphUpsertsComponentHarness {
   loadExpertJsonFile(event: Event): void;
   preview(): void;
   removePreviewBlock(change: ParkGraphUpsertResult['changes'][number]): void;
+  setCreateIfMissing(enabled: boolean): void;
   selectMergeEntityType(entityType: string): void;
   setMergeSectionChoice(section: string, choice: string): void;
   updateJsonText(value: string): void;
@@ -171,6 +173,11 @@ describe('AdminParkGraphUpsertsComponent', () => {
     expect(harness.searchTerm).toBe('Export Park');
     expect(fixture.nativeElement.textContent).toContain('Export Park');
     expect(fixture.nativeElement.textContent).toContain('72%');
+    const checkbox: HTMLInputElement = fixture.nativeElement.querySelector(
+      '.create-if-missing-option input[type="checkbox"]',
+    ) as HTMLInputElement;
+    expect(harness.createIfMissing).toBe(false);
+    expect(checkbox.disabled).toBe(true);
   });
 
   it('requires a selected existing park before previewing or exporting', () => {
@@ -188,6 +195,111 @@ describe('AdminParkGraphUpsertsComponent', () => {
     expect(harness.uiError).toBe(
       'admin.parkGraphUpserts.errors.noParkSelected',
     );
+  });
+
+  it('shows the create-if-missing option on mobile and sends it in the preview request', () => {
+    createComponent();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    host.style.width = '360px';
+    fixture.detectChanges();
+
+    const checkbox: HTMLInputElement | null = host.querySelector(
+      '.create-if-missing-option input[type="checkbox"]',
+    );
+    expect(checkbox).not.toBeNull();
+    expect(checkbox!.disabled).toBe(false);
+
+    checkbox!.click();
+    fixture.detectChanges();
+    expect(harness.createIfMissing).toBe(true);
+
+    harness.jsonText = '{"park":{"name":"New Park"}}';
+    harness.preview();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/preview`,
+    );
+    expect(request.request.body).toEqual({
+      targetParkId: null,
+      createIfMissing: true,
+      replaceCollections: false,
+      document: {
+        park: {
+          name: 'New Park',
+        },
+      },
+    });
+    request.flush({
+      operationId: 'operation-create',
+      mode: 'merge',
+      isApplied: false,
+      canApply: true,
+      previewedAtUtc: '2026-08-04T19:00:00Z',
+      targetParkId: null,
+      targetParkName: 'New Park',
+      counts: {
+        created: 1,
+        updated: 0,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
+      changes: [],
+      warnings: [],
+      errors: [],
+    } satisfies ParkGraphUpsertResult);
+
+    expect(harness.uiError).toBeNull();
+    expect(harness.previewResult?.canApply).toBe(true);
+
+    harness.apply();
+
+    const applyRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/park-graph-upserts/apply`,
+    );
+    expect(applyRequest.request.body).toEqual(expect.objectContaining({
+      targetParkId: null,
+      createIfMissing: true,
+    }));
+    applyRequest.flush({
+      operationId: 'operation-create',
+      mode: 'merge',
+      isApplied: true,
+      canApply: false,
+      previewedAtUtc: '2026-08-04T19:00:00Z',
+      appliedAtUtc: '2026-08-04T19:01:00Z',
+      targetParkId: 'new-park-id',
+      targetParkName: 'New Park',
+      counts: {
+        created: 1,
+        updated: 0,
+        deleted: 0,
+        unchanged: 0,
+        warnings: 0,
+        errors: 0,
+      },
+      changes: [],
+      warnings: [],
+      errors: [],
+    } satisfies ParkGraphUpsertResult);
+
+    expect(harness.lastAppliedResult?.isApplied).toBe(true);
+  });
+
+  it('invalidates the current preview when the creation option changes', () => {
+    createComponent();
+
+    harness.previewResult = { canApply: true } as ParkGraphUpsertResult;
+    harness.lastAppliedResult = { isApplied: true } as ParkGraphUpsertResult;
+
+    harness.setCreateIfMissing(true);
+
+    expect(harness.createIfMissing).toBe(true);
+    expect(harness.previewResult).toBeNull();
+    expect(harness.lastAppliedResult).toBeNull();
+    expect(harness.canApply).toBe(false);
   });
 
   it('loads uploaded JSON files into the raw draft', () => {
