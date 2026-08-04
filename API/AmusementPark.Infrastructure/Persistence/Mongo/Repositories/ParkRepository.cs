@@ -446,6 +446,7 @@ public sealed class ParkRepository : IParkRepository
             Name = document.Name,
             CountryCode = document.CountryCode,
             AudienceClassification = document.AudienceClassification,
+            Status = document.Status,
             Street = document.Street,
             City = document.City,
             PostalCode = document.PostalCode,
@@ -740,13 +741,13 @@ public sealed class ParkRepository : IParkRepository
             : Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
     }
 
-    private static FilterDefinition<ParkDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
+    internal static FilterDefinition<ParkDocument> BuildClosedFilter(ClosedEntityFilter closedFilter)
     {
         return closedFilter switch
         {
             ClosedEntityFilter.All => Builders<ParkDocument>.Filter.Empty,
             ClosedEntityFilter.ClosedOnly => Builders<ParkDocument>.Filter.Eq(document => document.Status, ParkStatus.ClosedDefinitively),
-            _ => Builders<ParkDocument>.Filter.Ne(document => document.Status, ParkStatus.ClosedDefinitively),
+            _ => Builders<ParkDocument>.Filter.Eq(document => document.Status, ParkStatus.Operating),
         };
     }
 }

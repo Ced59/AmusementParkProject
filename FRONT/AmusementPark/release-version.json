@@ -1,6 +1,20 @@
 {
-  "version": "4.0.22",
+  "version": "4.0.23",
   "history": [
+    {
+      "version": "4.0.23",
+      "releasedAt": "2026-08-04",
+      "labels": {
+        "fr": "Les projets de parcs et les fermetures sont désormais présentés plus clairement.",
+        "en": "Park projects and closures are now presented more clearly.",
+        "de": "Parkprojekte und Schließungen werden jetzt klarer dargestellt.",
+        "nl": "Parkprojecten en sluitingen worden nu duidelijker weergegeven.",
+        "it": "I progetti dei parchi e le chiusure sono ora presentati più chiaramente.",
+        "es": "Los proyectos de parques y los cierres se presentan ahora con mayor claridad.",
+        "pl": "Projekty parków i zamknięcia są teraz prezentowane wyraźniej.",
+        "pt": "Os projetos de parques e os encerramentos são agora apresentados com maior clareza."
+      }
+    },
     {
       "version": "4.0.22",
       "releasedAt": "2026-08-04",

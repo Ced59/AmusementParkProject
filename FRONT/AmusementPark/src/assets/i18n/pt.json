@@ -1460,8 +1460,12 @@
       "itemsVisibleCount": "Vis.",
       "dataCompleteness": "Completude dos dados",
       "statuses": {
+        "planned": "Projeto anunciado",
+        "underConstruction": "Em construção",
         "operating": "Aberto",
-        "closedDefinitively": "Fechado definitivamente"
+        "temporarilyClosed": "Encerrado temporariamente",
+        "closedDefinitively": "Encerrado definitivamente",
+        "cancelled": "Projeto cancelado"
       }
     },
     "parkWeather": {
@@ -3806,10 +3810,10 @@
       "emptyItemsMessage": "Nenhum local público está atualmente ligado a está zona."
     },
     "closedFilters": {
-      "label": "Abertura",
+      "label": "Estado",
       "openOnly": "Abertos",
-      "withClosed": "Com fechados",
-      "closedOnly": "Fechados"
+      "withClosed": "Todos os estados",
+      "closedOnly": "Encerrados definitivamente"
     },
     "audienceFilters": {
       "label": "Alcance",
@@ -3821,7 +3825,12 @@
       "notSpecified": "Não informado"
     },
     "statuses": {
-      "closedDefinitively": "Fechado definitivamente"
+      "planned": "Projeto anunciado — parque ainda não aberto",
+      "underConstruction": "Em construção — parque ainda não aberto",
+      "operating": "Aberto",
+      "temporarilyClosed": "Encerrado temporariamente",
+      "closedDefinitively": "Encerrado definitivamente",
+      "cancelled": "Projeto cancelado"
     },
     "videosPage": {
       "kicker": "Vídeos do parque",

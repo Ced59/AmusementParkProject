@@ -1460,8 +1460,12 @@
       "itemsVisibleCount": "Zicht.",
       "dataCompleteness": "Datavolledigheid",
       "statuses": {
+        "planned": "Aangekondigd project",
+        "underConstruction": "In aanbouw",
         "operating": "Open",
-        "closedDefinitively": "Definitief gesloten"
+        "temporarilyClosed": "Tijdelijk gesloten",
+        "closedDefinitively": "Definitief gesloten",
+        "cancelled": "Geannuleerd project"
       }
     },
     "parkWeather": {
@@ -3806,10 +3810,10 @@
       "emptyItemsMessage": "Er is momenteel geen openbare plek aan deze zone gekoppeld."
     },
     "closedFilters": {
-      "label": "Opening",
+      "label": "Status",
       "openOnly": "Open",
-      "withClosed": "Met gesloten",
-      "closedOnly": "Gesloten"
+      "withClosed": "Alle statussen",
+      "closedOnly": "Definitief gesloten"
     },
     "audienceFilters": {
       "label": "Bereik",
@@ -3821,7 +3825,12 @@
       "notSpecified": "Niet ingevuld"
     },
     "statuses": {
-      "closedDefinitively": "Definitief gesloten"
+      "planned": "Aangekondigd project — nog niet geopend",
+      "underConstruction": "In aanbouw — nog niet geopend",
+      "operating": "Open",
+      "temporarilyClosed": "Tijdelijk gesloten",
+      "closedDefinitively": "Definitief gesloten",
+      "cancelled": "Geannuleerd project"
     },
     "videosPage": {
       "kicker": "Parkvideo's",

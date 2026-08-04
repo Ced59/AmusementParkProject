@@ -1,5 +1,6 @@
 using System;
 using AmusementPark.Application.Features.Search.Results;
+using AmusementPark.WebAPI.Contracts.Parks;
 using AmusementPark.WebAPI.Contracts.Searching;
 
 namespace AmusementPark.WebAPI.Mappers;
@@ -25,6 +26,10 @@ internal static class SearchHttpMappers
             CountryCode = result.CountryCode,
             LogoImageId = result.LogoImageId,
             AttractionCount = result.AttractionCount,
+            ParkStatus = result.ParkStatus.HasValue
+                && Enum.TryParse(result.ParkStatus.Value.ToString(), out ParkStatusDto parkStatus)
+                    ? parkStatus
+                    : null,
             ParentParkId = result.ParentParkId,
             ParentParkName = result.ParentParkName,
         };

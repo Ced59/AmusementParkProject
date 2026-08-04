@@ -1,6 +1,6 @@
 # Enums - inventaire et reference JSON upsert
 
-Date: 2026-06-21
+Date: 2026-08-04
 
 Objectif: centraliser les enums du projet et expliciter les valeurs a utiliser dans les JSON upsert admin. Cette page complete l'audit historique `docs/architecture/enum-categorization-audit-2026-06-17.md`.
 
@@ -36,7 +36,7 @@ Le document park graph est exporte par `ExportParkGraphJsonQueryHandler` avec `J
 | Enum | Champs JSON | Valeurs canoniques |
 | --- | --- | --- |
 | `ParkType` | `park.type` | `ThemePark`, `WaterPark`, `Zoo`, `AnimalPark`, `AmusementPark`, `Resort` |
-| `ParkStatus` | `park.status` | `Operating`, `ClosedDefinitively` |
+| `ParkStatus` | `park.status` | `Planned`, `UnderConstruction`, `Operating`, `TemporarilyClosed`, `ClosedDefinitively`, `Cancelled` |
 | `AdminReviewStatus` | `park.adminReviewStatus`, `references.operators[].adminReviewStatus`, `references.manufacturers[].adminReviewStatus`, `items[].adminReviewStatus` | `ToReview`, `Validated`, `ToProcessLater`, `NotRelevant` |
 | `ParkItemCategory` | `items[].category` | `Attraction`, `Restaurant`, `Hotel`, `Animal`, `Show`, `Shop`, `Service`, `Transport`, `Other` |
 | `ParkItemType` | `items[].type` | Voir la table dediee ci-dessous |
@@ -47,6 +47,21 @@ Le document park graph est exporte par `ExportParkGraphJsonQueryHandler` avec `J
 | `ImageCategory` | `images[].category` | `Avatar`, `Logo`, `Park`, `ParkItem`, `Operator`, `Manufacturer`, `Founder`, `VideoThumbnail` |
 
 `AdminReviewStatus.Ready` existe comme alias legacy de `Validated` cote domaine. Il ne doit pas etre utilise dans les nouveaux JSON.
+
+### ParkStatus
+
+| Valeur canonique | Valeur numérique stable | Sémantique |
+| --- | ---: | --- |
+| `Operating` | 0 | Parc exploité et visitable selon son calendrier. |
+| `ClosedDefinitively` | 1 | Parc ayant existé puis fermé définitivement. |
+| `Planned` | 2 | Projet officiellement annoncé. |
+| `UnderConstruction` | 3 | Construction du parc commencée. |
+| `TemporarilyClosed` | 4 | Parc existant fermé temporairement. |
+| `Cancelled` | 5 | Projet annulé ou abandonné avant ouverture. |
+
+Les valeurs `0` et `1` sont conservées pour la compatibilité historique. MongoDB et les contrats JSON écrivent les noms canoniques. Les filtres publics « ouverts » et les horaires ne concernent que `Operating` ; les autres statuts peuvent rester visibles selon les règles ordinaires de publication, sans être présentés comme visitables.
+
+`ClosedEntityFilter.OpenOnly` signifie désormais exactement `ParkStatus.Operating`. `ClosedOnly` reste volontairement limité à `ClosedDefinitively` et son libellé public l’indique. Pour découvrir les projets, les fermetures temporaires, les anciens parcs et les projets annulés, utiliser `All`; chaque résultat expose alors son badge de cycle de vie.
 
 ## JSON upsert localized content
 

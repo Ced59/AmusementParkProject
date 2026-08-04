@@ -1,9 +1,15 @@
+import { ParkStatus } from '@app/models/parks/park-status';
+import { UiPrimitiveTone } from '@ui/primitives/models/ui-primitive-variant.model';
+
 export interface ParkCardModel {
   id: string | null;
   name: string;
   countryCode: string | null;
   city: string | null;
-  status: string | null;
+  status: ParkStatus;
+  statusLabelKey: string | null;
+  statusIconClass: string | null;
+  statusTone: UiPrimitiveTone;
   latitude: number | null;
   longitude: number | null;
   logoImageId: string | null;
@@ -15,4 +21,5 @@ export interface ParkCardModel {
   travelDurationLine?: string | null;
   shortDescription: string | null;
   isClosedDefinitively: boolean;
+  isOpenToVisitors: boolean;
 }

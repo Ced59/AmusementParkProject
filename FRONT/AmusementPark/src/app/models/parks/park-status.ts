@@ -1,3 +1,7 @@
 export type ParkStatus =
+  | 'Planned'
+  | 'UnderConstruction'
   | 'Operating'
-  | 'ClosedDefinitively';
+  | 'TemporarilyClosed'
+  | 'ClosedDefinitively'
+  | 'Cancelled';

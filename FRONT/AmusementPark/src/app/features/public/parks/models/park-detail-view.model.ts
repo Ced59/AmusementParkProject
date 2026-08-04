@@ -1,7 +1,9 @@
 import { ImageCategory } from '@app/models/images/image-category';
 import { ParkType } from '@app/models/parks/park-type';
+import { ParkStatus } from '@app/models/parks/park-status';
 import { RatingSummary } from '@app/models/ratings/rating.models';
 import { UiPhotoCarouselImage } from '@ui/media';
+import { UiPrimitiveTone } from '@ui/primitives/models/ui-primitive-variant.model';
 import { ParkDetailInfoRowViewModel } from './park-detail-info-row.model';
 
 export interface ParkDetailStatViewModel {
@@ -37,6 +39,11 @@ export interface ParkDetailViewModel {
   description: string | null;
   type: ParkType | null;
   typeLabelKey: string | null;
+  status: ParkStatus;
+  statusLabelKey: string;
+  statusIconClass: string;
+  statusTone: UiPrimitiveTone;
+  isOpenToVisitors: boolean;
   founderId: string | null;
   founderName: string | null;
   operatorId: string | null;

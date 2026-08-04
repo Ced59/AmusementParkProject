@@ -237,12 +237,12 @@ public sealed class PublicSeoUpdateNotifierTests
     }
 
     [Fact]
-    public async Task ResolveAsync_WhenClosedPublicParkHasLifecycleDate_ShouldReturnHistoryUrlOnly()
+    public async Task ResolveAsync_WhenClosedPublicParkHasLifecycleDate_ShouldReturnDetailAndHistoryUrls()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = CreateImageRepository();
 
         parkItemRepository
             .Setup(repository => repository.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
@@ -276,11 +276,11 @@ public sealed class PublicSeoUpdateNotifierTests
             CancellationToken.None);
 
         Assert.Contains("/fr/park/park-1/closed-park/history", urls);
-        Assert.DoesNotContain("/fr/park/park-1/closed-park", urls);
+        Assert.Contains("/fr/park/park-1/closed-park", urls);
         parkRepository.VerifyNoOtherCalls();
         parkItemRepository.VerifyAll();
         parkZoneRepository.VerifyAll();
-        imageRepository.VerifyNoOtherCalls();
+        imageRepository.VerifyAll();
     }
 
     [Fact]

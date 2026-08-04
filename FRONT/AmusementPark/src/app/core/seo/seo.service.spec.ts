@@ -10,6 +10,7 @@ import {
   HistoryTimelinePageViewModel,
 } from '@features/public/history/models/history-view.model';
 import { Park } from '@app/models/parks/park';
+import { ParkStatus } from '@app/models/parks/park-status';
 import { ParkItem } from '@app/models/parks/park-item';
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
@@ -71,6 +72,62 @@ describe('SeoService', () => {
     );
     expect(readMetaContent('meta[property="og:description"]')).toContain(
       'Denain Évasion à Denain, en France',
+    );
+  });
+
+  it.each([
+    ['Planned', 'projet annoncé'],
+    ['UnderConstruction', 'en construction'],
+    ['TemporarilyClosed', 'fermé temporairement'],
+    ['ClosedDefinitively', 'fermé définitivement'],
+    ['Cancelled', 'projet annulé'],
+  ] as const)(
+    'uses lifecycle-aware metadata for %s parks',
+    (status: ParkStatus, expectedLabel: string) => {
+      const park: ParkDetailViewModel = buildParkDetail({
+        status,
+        description: 'Viens profiter du parc ouvert tous les jours.',
+      });
+
+      service.applyParkDetailSeo(
+        park,
+        'fr',
+        '/fr/park/park-1/demo-park',
+      );
+
+      expect(readMetaContent('meta[property="og:title"]')).toContain(
+        expectedLabel,
+      );
+      expect(readMetaContent('meta[property="og:description"]')).toContain(
+        expectedLabel,
+      );
+      expect(readMetaContent('meta[property="og:description"]')).not.toContain(
+        'ouvert tous les jours',
+      );
+
+      const parkJsonLd: Record<string, unknown> | undefined = readJsonLdScripts().find(
+        (value: Record<string, unknown>): boolean => value['@type'] === 'AmusementPark',
+      );
+      expect(parkJsonLd?.['openingHours']).toBeUndefined();
+      expect(parkJsonLd?.['openingHoursSpecification']).toBeUndefined();
+      expect(parkJsonLd?.['additionalProperty']).toEqual({
+        '@type': 'PropertyValue',
+        name: 'lifecycleStatus',
+        value: status,
+      });
+    },
+  );
+
+  it('keeps the supplied description for an operating park', () => {
+    const park: ParkDetailViewModel = buildParkDetail({
+      status: 'Operating',
+      description: 'Description opérationnelle vérifiée.',
+    });
+
+    service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
+
+    expect(readMetaContent('meta[property="og:description"]')).toBe(
+      'Description opérationnelle vérifiée.',
     );
   });
 
@@ -1626,6 +1683,7 @@ function buildParkDetail(
 ): ParkDetailViewModel {
   return {
     name: 'Demo Park',
+    status: 'Operating',
     description: 'Demo park description',
     countryCode: null,
     city: null,

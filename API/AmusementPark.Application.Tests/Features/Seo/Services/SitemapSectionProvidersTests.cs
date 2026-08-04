@@ -83,6 +83,54 @@ public sealed class SitemapSectionProvidersTests
     }
 
     [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed)]
+    [InlineData(ParkStatus.Cancelled)]
+    public void ParksProviderIsPublicPark_WhenDocumentedLifecycleStatusIsPublished_ShouldReturnTrue(ParkStatus status)
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Documented project",
+            IsVisible = true,
+            Status = status,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        Assert.True(ParksSitemapSectionProvider.IsPublicPark(park));
+    }
+
+    [Fact]
+    public void ParksProviderIsPublicPark_WhenParkIsClosedDefinitively_ShouldReturnTrue()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Historical park",
+            IsVisible = true,
+            Status = ParkStatus.ClosedDefinitively,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        Assert.True(ParksSitemapSectionProvider.IsPublicPark(park));
+    }
+
+    [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed)]
+    [InlineData(ParkStatus.ClosedDefinitively)]
+    [InlineData(ParkStatus.Cancelled)]
+    public void ParksProviderHasWeatherCoordinates_WhenParkIsNotOperating_ShouldReturnFalse(ParkStatus status)
+    {
+        Park park = CreateLocatedPark("park-1", "Lifecycle park", DateTime.UtcNow);
+        park.Status = status;
+
+        Assert.False(ParksSitemapSectionProvider.HasWeatherCoordinates(park));
+    }
+
+    [Theory]
     [InlineData("", "Park", true, AdminReviewStatus.Validated)]
     [InlineData("park-1", "", true, AdminReviewStatus.Validated)]
     [InlineData("park-1", "Park", false, AdminReviewStatus.Validated)]
@@ -1107,7 +1155,7 @@ public sealed class SitemapSectionProvidersTests
                 null,
                 null,
                 null,
-                ClosedEntityFilter.OpenOnly,
+                ClosedEntityFilter.All,
                 It.IsAny<CancellationToken>(),
                 ParkAdminSortField.Default,
                 false,

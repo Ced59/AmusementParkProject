@@ -1,6 +1,7 @@
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
+import { resolveParkStatus } from '@shared/utils/parks/park-status.presentation';
 
 export function mapParkMapPointToViewModel(point: ParkMapPoint, currentLanguage: string, countryDisplayService: CountryDisplayService): ParkMapPointViewModel | null {
   const hasIdentifier: boolean = typeof point.id === 'string' && point.id.trim().length > 0;
@@ -22,6 +23,7 @@ export function mapParkMapPointToViewModel(point: ParkMapPoint, currentLanguage:
     name: point.name.trim(),
     countryCode,
     countryName,
+    status: resolveParkStatus(point.status),
     city,
     street,
     postalCode,

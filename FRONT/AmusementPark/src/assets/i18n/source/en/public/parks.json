@@ -333,10 +333,10 @@
       "emptyItemsMessage": "No public place is currently attached to this zone."
     },
     "closedFilters": {
-      "label": "Opening",
+      "label": "Status",
       "openOnly": "Open",
-      "withClosed": "With closed",
-      "closedOnly": "Closed"
+      "withClosed": "All statuses",
+      "closedOnly": "Permanently closed"
     },
     "audienceFilters": {
       "label": "Reach",
@@ -348,7 +348,12 @@
       "notSpecified": "Not specified"
     },
     "statuses": {
-      "closedDefinitively": "Permanently closed"
+      "planned": "Planned project — not open yet",
+      "underConstruction": "Under construction — not open yet",
+      "operating": "Open",
+      "temporarilyClosed": "Temporarily closed",
+      "closedDefinitively": "Permanently closed",
+      "cancelled": "Cancelled project"
     }
   }
 }

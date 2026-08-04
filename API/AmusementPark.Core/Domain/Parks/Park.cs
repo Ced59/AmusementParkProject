@@ -115,12 +115,12 @@ public sealed class Park : GeolocatedEntityBase
         score.Add(scoreContext.HasCleanLegacyDataOrDocumentedDebt, 2);
 
         score.Add(DataCompletenessScoringRules.HasText(this.CountryCode), 1);
-        score.Add(this.IsLocalizable() && DataCompletenessScoringRules.HasText(this.City), 1);
-        score.Add(this.IsLocalizable() && (DataCompletenessScoringRules.HasText(this.Street) || DataCompletenessScoringRules.HasText(this.PostalCode)), 1);
+        score.Add(DataCompletenessScoringRules.HasText(this.City), 1);
+        score.AddIfApplicable(this.ExpectsKnownAddress(), DataCompletenessScoringRules.HasText(this.Street) || DataCompletenessScoringRules.HasText(this.PostalCode), 1);
         score.AddIfApplicable(this.ExpectsKnownCoordinates(), DataCompletenessScoringRules.HasValidPosition(this.Position), 2);
         score.AddIfApplicable(DataCompletenessScoringRules.HasValidPosition(this.Position), this.PositionDoesNotLookLikeDefault(), 1);
         score.Add(this.Type.HasValue, 2);
-        score.Add(this.Status is ParkStatus.Operating or ParkStatus.ClosedDefinitively, 1);
+        score.Add(this.Status.IsSupported(), 1);
         score.AddIfApplicable(this.HasDocumentableOpeningDate(), this.OpeningDate.HasValue || DataCompletenessScoringRules.HasText(this.OpeningDateText), 1);
         score.AddIfApplicable(this.Status == ParkStatus.ClosedDefinitively, this.ClosingDate.HasValue || DataCompletenessScoringRules.HasText(this.ClosingDateText), 1);
         score.Add(DataCompletenessScoringRules.HasText(this.WebsiteUrl), 1);
@@ -129,10 +129,10 @@ public sealed class Park : GeolocatedEntityBase
         score.Add(this.AudienceClassification.HasValue, 1);
         score.Add(this.AudienceClassification.HasValue, 1);
 
-        score.Add(scoreContext.ParkItemsTotalCount > 0, 3);
-        score.Add(scoreContext.DistinctParkItemCategoryCount >= 3, 3);
-        score.Add(this.HasCoherentParkItemCount(scoreContext.ParkItemsTotalCount), 3);
-        score.Add(scoreContext.ParkItemsVisibleCount > 0 && scoreContext.ParkItemsVisibleCount <= scoreContext.ParkItemsTotalCount, 2);
+        score.AddIfApplicable(this.ExpectsParkInventoryForScoring(), scoreContext.ParkItemsTotalCount > 0, 3);
+        score.AddIfApplicable(this.ExpectsParkInventoryForScoring(), scoreContext.DistinctParkItemCategoryCount >= 3, 3);
+        score.AddIfApplicable(this.ExpectsParkInventoryForScoring(), this.HasCoherentParkItemCount(scoreContext.ParkItemsTotalCount), 3);
+        score.AddIfApplicable(this.ExpectsParkInventoryForScoring(), scoreContext.ParkItemsVisibleCount > 0 && scoreContext.ParkItemsVisibleCount <= scoreContext.ParkItemsTotalCount, 2);
         score.AddIfApplicable(this.Status == ParkStatus.ClosedDefinitively || scoreContext.ClosedImportantParkItemsCount > 0, scoreContext.ClosedImportantParkItemsCount > 0, 1);
         score.AddIfApplicable(scoreContext.ParkItemsTotalCount > 0, scoreContext.ParkItemsWithKnownStatusOrDatesCount > 0, 1);
         score.AddIfApplicable(scoreContext.ParkItemsTotalCount > 0, scoreContext.AttractionManufacturerIdsCount > 0, 1);
@@ -159,7 +159,7 @@ public sealed class Park : GeolocatedEntityBase
         score.AddIfApplicable(scoreContext.ParkPublishedImageCount > 0, scoreContext.ParkImagesWithResolvedOwnerCount == scoreContext.ParkPublishedImageCount, 1);
         score.AddIfApplicable(scoreContext.HasOriginalMedia, scoreContext.HasOriginalMedia, 1);
 
-        if (this.Status != ParkStatus.ClosedDefinitively)
+        if (this.Status.CanHaveCurrentOpeningHours())
         {
             score.Add(scoreContext.HasOpeningHours, 2);
             score.Add(scoreContext.HasOpeningHoursSource, 2);
@@ -221,16 +221,20 @@ public sealed class Park : GeolocatedEntityBase
             && !DataCompletenessScoringRules.IsPlaceholderName(this.Name);
     }
 
-    private bool IsLocalizable()
+    private bool ExpectsKnownAddress()
     {
-        return this.Status == ParkStatus.Operating
-            || this.Status == ParkStatus.ClosedDefinitively;
+        return this.Status is ParkStatus.Operating
+            or ParkStatus.UnderConstruction
+            or ParkStatus.TemporarilyClosed
+            or ParkStatus.ClosedDefinitively;
     }
 
     private bool ExpectsKnownCoordinates()
     {
-        return this.Status == ParkStatus.Operating
-            || this.Status == ParkStatus.ClosedDefinitively;
+        return this.Status is ParkStatus.Operating
+            or ParkStatus.UnderConstruction
+            or ParkStatus.TemporarilyClosed
+            or ParkStatus.ClosedDefinitively;
     }
 
     private bool PositionDoesNotLookLikeDefault()
@@ -240,8 +244,18 @@ public sealed class Park : GeolocatedEntityBase
 
     private bool HasDocumentableOpeningDate()
     {
-        return this.Status == ParkStatus.Operating
-            || this.Status == ParkStatus.ClosedDefinitively;
+        return this.Status is ParkStatus.Operating
+            or ParkStatus.Planned
+            or ParkStatus.UnderConstruction
+            or ParkStatus.TemporarilyClosed
+            or ParkStatus.ClosedDefinitively;
+    }
+
+    private bool ExpectsParkInventoryForScoring()
+    {
+        return this.Status is ParkStatus.Operating
+            or ParkStatus.TemporarilyClosed
+            or ParkStatus.ClosedDefinitively;
     }
 
     private bool HasCoherentParkItemCount(int totalCount)
@@ -268,14 +282,20 @@ public sealed class Park : GeolocatedEntityBase
 
     private bool RequiresHistoryForScoring()
     {
-        return this.Status == ParkStatus.ClosedDefinitively
+        return this.Status is ParkStatus.Planned
+            or ParkStatus.UnderConstruction
+            or ParkStatus.TemporarilyClosed
+            or ParkStatus.ClosedDefinitively
+            or ParkStatus.Cancelled
             || this.AudienceClassification is ParkAudienceClassification.International or ParkAudienceClassification.National;
     }
 
     private bool HasDocumentableOperator()
     {
-        return this.Status == ParkStatus.Operating
-            || this.Status == ParkStatus.ClosedDefinitively;
+        return this.Status is ParkStatus.Operating
+            or ParkStatus.UnderConstruction
+            or ParkStatus.TemporarilyClosed
+            or ParkStatus.ClosedDefinitively;
     }
 
     private bool HasDocumentableFounder()

@@ -508,7 +508,7 @@ public sealed partial class PublicSeoUrlResolver
         return !string.IsNullOrWhiteSpace(park.Id) &&
                !string.IsNullOrWhiteSpace(park.Name) &&
                park.IsVisible &&
-               park.Status != ParkStatus.ClosedDefinitively &&
+               park.Status.CanAppearInPublicDiscovery() &&
                park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 

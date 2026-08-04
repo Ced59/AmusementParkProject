@@ -1,4 +1,5 @@
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
+using AmusementPark.Core.Domain.Parks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -48,6 +49,11 @@ public sealed class SearchItemDocument : MongoGeolocatedDocumentBase
     [BsonElement("attractionCount")]
     [BsonIgnoreIfNull]
     public int? AttractionCount { get; set; }
+
+    [BsonElement("parkStatus")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public ParkStatus? ParkStatus { get; set; }
 
     [BsonElement("parentParkId")]
     [BsonIgnoreIfNull]

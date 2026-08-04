@@ -226,22 +226,18 @@ export class ParkListStateFacade {
   }
 
   private mapPointToCardModel(point: ParkMapPointViewModel): ParkCardModel {
-    return {
+    return mapParkToCardModel({
       id: point.id,
       name: point.name,
-      countryCode: point.countryCode,
-      city: point.city,
-      status: null,
+      countryCode: point.countryCode ?? undefined,
+      city: point.city ?? undefined,
+      street: point.street ?? undefined,
+      postalCode: point.postalCode ?? undefined,
+      status: point.status,
       latitude: point.latitude,
       longitude: point.longitude,
-      logoImageId: point.logoImageId,
-      websiteUrl: null,
-      locationLine: point.locationLine,
-      addressLine: point.addressLine,
-      coordinatesLine: point.coordinatesLine,
-      shortDescription: null,
-      isClosedDefinitively: false
-    };
+      currentLogoImageId: point.logoImageId
+    }, this.currentLanguageSignal(), this.countryDisplayService, this.textTruncator);
   }
 
   private buildAudienceClassificationFilters(): ParkAdminListFilters | null {

@@ -480,8 +480,12 @@
       "itemsVisibleCount": "Vis.",
       "dataCompleteness": "Complétude data",
       "statuses": {
+        "planned": "Projet annoncé",
+        "underConstruction": "En construction",
         "operating": "Ouvert",
-        "closedDefinitively": "Fermé définitivement"
+        "temporarilyClosed": "Fermé temporairement",
+        "closedDefinitively": "Fermé définitivement",
+        "cancelled": "Projet annulé"
       },
       "sort": {
         "label": "Tri",

@@ -85,7 +85,9 @@ internal static class ParkGraphJsonExportDocumentFactory
 
         if (sections.Contains(ParkGraphExportSection.OpeningHours))
         {
-            document["openingHours"] = data.OpeningHours is null ? null : MapOpeningHours(data.OpeningHours);
+            document["openingHours"] = park.Status.CanHaveCurrentOpeningHours() && data.OpeningHours is not null
+                ? MapOpeningHours(data.OpeningHours)
+                : null;
         }
 
         if (sections.Contains(ParkGraphExportSection.History))

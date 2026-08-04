@@ -49,6 +49,42 @@ public sealed class ParkOpeningHoursCommandHandlersTests
         sitemapRefreshScheduler.VerifyAll();
     }
 
+    [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    [InlineData(ParkStatus.TemporarilyClosed)]
+    [InlineData(ParkStatus.ClosedDefinitively)]
+    [InlineData(ParkStatus.Cancelled)]
+    public async Task HandleAsync_WhenParkIsNotOperating_ShouldRejectSchedule(ParkStatus status)
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Lifecycle Park", Status = status });
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        UpsertParkOpeningHoursScheduleCommandHandler handler = new UpsertParkOpeningHoursScheduleCommandHandler(
+            parkRepository.Object,
+            openingHoursRepository.Object,
+            new ParkOpeningHoursScheduleNormalizer(),
+            new ParkOpeningHoursCoverageSegmentBuilder(),
+            sitemapRefreshScheduler.Object);
+
+        ApplicationResult<ParkOpeningHoursSchedule> result = await handler.HandleAsync(
+            new UpsertParkOpeningHoursScheduleCommand(CreateSchedule()),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "park-opening-hours.not-operating");
+        openingHoursRepository.Verify(
+            repository => repository.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        sitemapRefreshScheduler.Verify(
+            scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()),
+            Times.Never);
+        parkRepository.VerifyAll();
+    }
+
     private static ParkOpeningHoursSchedule CreateSchedule()
     {
         return new ParkOpeningHoursSchedule

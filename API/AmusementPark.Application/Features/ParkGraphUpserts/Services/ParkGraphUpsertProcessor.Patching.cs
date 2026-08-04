@@ -167,6 +167,10 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             "operating" or "open" or "opened" or "enfonctionnement" => ParkStatus.Operating,
             "closeddefinitively" or "permanentlyclosed" or "definitivelyclosed" or "fermedefinitivement" => ParkStatus.ClosedDefinitively,
+            "planned" or "announced" or "projectannounced" or "projetannonce" => ParkStatus.Planned,
+            "underconstruction" or "constructionstarted" or "construction" or "entravaux" => ParkStatus.UnderConstruction,
+            "temporarilyclosed" or "closedtemporarily" or "temporaryclosure" or "fermetemporairement" => ParkStatus.TemporarilyClosed,
+            "cancelled" or "canceled" or "abandoned" or "projectcancelled" or "annule" or "abandonne" => ParkStatus.Cancelled,
             _ => null,
         };
     }

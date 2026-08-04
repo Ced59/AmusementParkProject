@@ -60,7 +60,8 @@ Exemples :
 - un parc sans zones officielles ne perd pas de points pour absence de zones ;
 - un restaurant n'est pas pénalisé parce qu'il n'a pas de constructeur ;
 - une attraction sans restriction officielle publiée n'est pas pénalisée si l'absence de source est documentée ;
-- un parc fermé n'est pas pénalisé pour absence d'horaires actuels, mais il est attendu sur l'histoire et les dates.
+- seul un parc `Operating` est évalué sur les horaires actuels ; les projets, fermetures temporaires, anciens parcs et projets annulés ne sont pas pénalisés pour leur absence ;
+- `Planned`, `UnderConstruction` et `Cancelled` ne sont pas pénalisés pour l’absence d’un inventaire de lieux effectivement construits ; leur historique et leurs dates/périodes documentées restent prioritaires.
 
 ### Les zones ne sont jamais bloquantes par défaut
 
@@ -182,9 +183,9 @@ Inspiré de l'étape 1.
 | Coordonnées GPS valides | 2 | Parc vivant ou ancien emplacement connu |
 | Coordonnées pointant le parc ou l'entrée principale, pas la ville | 1 | Si GPS présent |
 | Type de parc renseigné | 2 | Toujours |
-| Statut cohérent (`Operating` / `ClosedDefinitively`) | 1 | Toujours |
-| Date d'ouverture ou période fiable | 1 | Si documentable |
-| Date de fermeture ou période fiable | 1 | Parc fermé |
+| Statut cohérent parmi les six valeurs `ParkStatus` | 1 | Toujours |
+| Date d'ouverture prévue/réelle ou période fiable | 1 | `Planned`, `UnderConstruction`, `Operating`, `TemporarilyClosed` ou `ClosedDefinitively`, si documentable |
+| Date de fermeture ou période fiable | 1 | `TemporarilyClosed` ou `ClosedDefinitively`, si documentable |
 | Site officiel ou source d'identité fiable | 1 | Toujours |
 
 Si un parc historique n'a plus d'adresse actuelle, l'ancien emplacement documenté remplace l'adresse publique.
@@ -205,10 +206,10 @@ Inspiré de l'étape 3, qui demande de ne pas se limiter aux coasters et d'inté
 
 | Critère | Points | Applicabilité |
 | --- | ---: | --- |
-| ParkItems principaux présents | 3 | Parc avec attractions ou lieux nommables |
-| Inventaire diversifié : attractions, restaurants, boutiques, services, hôtels, parkings, spectacles, animaux selon le parc | 3 | Selon offre réelle |
-| Nombre d'items cohérent avec l'importance du parc | 3 | Toujours |
-| Items visibles cohérents avec leur qualité | 2 | Si items présents |
+| ParkItems principaux présents | 3 | `Operating`, `TemporarilyClosed` ou `ClosedDefinitively` avec attractions ou lieux nommables |
+| Inventaire diversifié : attractions, restaurants, boutiques, services, hôtels, parkings, spectacles, animaux selon le parc | 3 | `Operating`, `TemporarilyClosed` ou `ClosedDefinitively`, selon l’offre réelle |
+| Nombre d'items cohérent avec l'importance du parc | 3 | `Operating`, `TemporarilyClosed` ou `ClosedDefinitively` |
+| Items visibles cohérents avec leur qualité | 2 | `Operating`, `TemporarilyClosed` ou `ClosedDefinitively`, si items présents |
 | Items fermés importants conservés quand utiles à l'histoire | 1 | Si parc historique ou riche |
 | Dates/statuts d'items renseignés quand fiables | 1 | Si documentable |
 | Constructeurs/modèles renseignés pour les attractions quand fiables | 1 | Attractions mécaniques |
@@ -267,14 +268,14 @@ Inspiré de l'étape 6.
 
 | Critère | Points | Applicabilité |
 | --- | ---: | --- |
-| Horaires actuels ou saisonniers renseignés | 2 | Parc vivant avec horaires publics |
-| Source officielle ou fiable | 2 | Parc vivant avec horaires publics |
+| Horaires actuels ou saisonniers renseignés | 2 | `Operating` uniquement |
+| Source officielle ou fiable | 2 | `Operating` uniquement |
 | Fuseau horaire cohérent | 1 | Si horaires présents |
 | Exceptions datées utiles | 1 | Si disponibles |
 | Libellés publics réservés aux événements nommés ou exceptions | 1 | Si labels/reasons présents |
 | Date de vérification récente | 1 | Horaires actuels/futurs |
 
-Pour un parc fermé définitivement, cette catégorie est non applicable. Le poids doit être reporté par normalisation.
+Pour tout statut autre que `Operating`, cette catégorie est non applicable. Le poids est retiré du maximum applicable par normalisation, même si d’anciens horaires restent stockés à titre historique.
 
 ### 9. Histoire, timeline et articles enrichis — 14 points
 

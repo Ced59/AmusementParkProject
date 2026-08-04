@@ -53,6 +53,8 @@ Ne pas modifier la charte pour rendre les textes techniques. Les descriptions re
 
 Une description doit aider un visiteur réel à comprendre ce qu’il va voir, l’ambiance du lieu, le type d’expérience proposée, l’identité propre de l’entité et pourquoi elle mérite d’être remarquée.
 
+Le temps verbal et les promesses doivent suivre `park.status` : futur et formulations de projet pour `Planned`/`UnderConstruction`, fermeture temporaire explicite pour `TemporarilyClosed`, passé pour `ClosedDefinitively`, et projet non réalisé pour `Cancelled`. Ne jamais inviter à visiter, annoncer une disponibilité actuelle ou transformer une promesse de projet en équipement existant hors de `Operating`.
+
 Avant de valider une description, se demander : est-ce qu’un visiteur du parc pourrait lire ce texte sur son téléphone et le trouver utile, naturel et agréable ? Si la réponse est non, réécrire.
 
 Priorités en cas de doute :

@@ -36,6 +36,11 @@ public sealed class GetParkOpeningHoursScheduleQueryHandler : IQueryHandler<GetP
             return ApplicationResult<ParkOpeningHoursScheduleResult>.Failure(ParkOpeningHoursApplicationErrors.ParkNotFound());
         }
 
+        if (!query.IncludeHidden && !park.Status.CanHaveCurrentOpeningHours())
+        {
+            return ApplicationResult<ParkOpeningHoursScheduleResult>.Failure(ParkOpeningHoursApplicationErrors.ScheduleNotFound());
+        }
+
         ParkOpeningHoursSchedule? schedule = await this.openingHoursRepository.GetByParkIdAsync(parkId, cancellationToken);
         if (schedule is null)
         {
@@ -74,6 +79,11 @@ public sealed class GetParkOpeningHoursCalendarQueryHandler : IQueryHandler<GetP
         if (park is null)
         {
             return ApplicationResult<ParkOpeningHoursCalendarResult>.Failure(ParkOpeningHoursApplicationErrors.ParkNotFound());
+        }
+
+        if (!query.IncludeHidden && !park.Status.CanHaveCurrentOpeningHours())
+        {
+            return ApplicationResult<ParkOpeningHoursCalendarResult>.Failure(ParkOpeningHoursApplicationErrors.ScheduleNotFound());
         }
 
         ParkOpeningHoursSchedule? schedule = await this.openingHoursRepository.GetByParkIdAsync(parkId, cancellationToken);

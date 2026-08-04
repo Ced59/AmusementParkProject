@@ -19,10 +19,21 @@ Utiliser l’export initial ou l’export actualisé fourni par l’utilisateur.
 - Pays, ville, adresse et site officiel.
 - Type de parc.
 - Rayonnement du parc : international, national, régional ou local.
-- Statut : en activité, fermé définitivement ou autre statut réellement supporté.
+- Statut canonique : `Planned`, `UnderConstruction`, `Operating`, `TemporarilyClosed`, `ClosedDefinitively` ou `Cancelled`.
 - Date d’ouverture.
 - Date de fermeture si le parc est fermé.
 - Précisions textuelles si seule l’année ou le mois est fiable.
+
+## Règles du cycle de vie
+
+- `Planned` exige une annonce officielle, sans preuve de chantier commencé.
+- `UnderConstruction` exige une preuve fiable que le chantier du parc a commencé.
+- `Operating` signifie que le parc est exploité et visitable selon son calendrier ; une ouverture future annoncée ne suffit pas.
+- `TemporarilyClosed` conserve un parc existant dont la fermeture n’est pas considérée définitive.
+- `ClosedDefinitively` concerne un parc ayant réellement existé puis fermé.
+- `Cancelled` concerne un projet abandonné ou annulé avant son ouverture.
+- Conserver les dates ou périodes partielles dans les champs textuels prévus. Ne jamais transformer une année cible en date complète inventée.
+- À la création, conserver `isVisible: false` et le statut de revue prudent, y compris pour `Planned`; la valeur de cycle de vie n’accorde pas automatiquement la publication.
 - Fondateur si fiable.
 - Exploitant actuel ou dernier exploitant si le parc est fermé.
 - Coordonnées GPS du parc ou de l’entrée principale.

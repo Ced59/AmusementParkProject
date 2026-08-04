@@ -45,6 +45,8 @@ Les propriétaires importables par JSON upsert sont :
 
 ## Images à privilégier éditorialement
 
+Pour `Planned`, `UnderConstruction` ou `Cancelled`, distinguer clairement photographies du site, images officielles du chantier et rendus de conception. Un rendu ne doit jamais être légendé comme une vue d’un parc existant ou ouvert. Pour `TemporarilyClosed` et `ClosedDefinitively`, dater ou contextualiser les images quand leur apparence ne reflète plus l’état actuel.
+
 Une image externe doit être :
 
 - une URL stable quand c’est possible ;

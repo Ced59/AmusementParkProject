@@ -1,3 +1,5 @@
+using AmusementPark.Core.Domain.Parks;
+
 namespace AmusementPark.Application.Features.Search.Results;
 
 /// <summary>
@@ -15,6 +17,7 @@ public sealed class SearchHitResult
     public string? CountryCode { get; init; }
     public string? LogoImageId { get; init; }
     public int? AttractionCount { get; init; }
+    public ParkStatus? ParkStatus { get; init; }
     public string? ParentParkId { get; init; }
     public string? ParentParkName { get; init; }
     public double? Score { get; init; }

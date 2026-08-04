@@ -333,10 +333,10 @@
       "emptyItemsMessage": "Żadne publiczne miejsce nie jest obecnie powiązane z tą strefą."
     },
     "closedFilters": {
-      "label": "Otwarcie",
+      "label": "Status",
       "openOnly": "Otwarte",
-      "withClosed": "Z zamkn.",
-      "closedOnly": "Zamknięte"
+      "withClosed": "Wszystkie statusy",
+      "closedOnly": "Zamknięte na stałe"
     },
     "audienceFilters": {
       "label": "Zasięg",
@@ -348,7 +348,12 @@
       "notSpecified": "Nie uzupełniono"
     },
     "statuses": {
-      "closedDefinitively": "Zamknięty na stałe"
+      "planned": "Zapowiedziany projekt — park jeszcze nieotwarty",
+      "underConstruction": "W budowie — park jeszcze nieotwarty",
+      "operating": "Otwarty",
+      "temporarilyClosed": "Tymczasowo zamknięty",
+      "closedDefinitively": "Zamknięty na stałe",
+      "cancelled": "Anulowany projekt"
     }
   }
 }

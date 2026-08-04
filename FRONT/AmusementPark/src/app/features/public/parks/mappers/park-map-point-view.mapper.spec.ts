@@ -29,6 +29,7 @@ describe('mapParkMapPointToViewModel', () => {
       latitude: 50.1234,
       longitude: 3.9876,
       currentLogoImageId: ' logo ',
+      status: 'UnderConstruction',
       ...overrides,
     };
   }
@@ -48,6 +49,7 @@ describe('mapParkMapPointToViewModel', () => {
     expect(result?.addressLine).toBe('Street, 1000 Brussels');
     expect(result?.coordinatesLine).toBe('50.123, 3.988');
     expect(result?.logoImageId).toBe('logo');
+    expect(result?.status).toBe('UnderConstruction');
   });
 
   it('falls back to country code when localized country name is missing', () => {

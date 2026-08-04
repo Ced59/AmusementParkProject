@@ -37,6 +37,7 @@ public sealed class MongoSearchProjectionInitializer
         }
 
         await this.BackfillLocalizedDescriptionsAsync(cancellationToken);
+        await this.BackfillParkStatusesAsync(cancellationToken);
         await this.BackfillStandaloneAttractionProjectionsAsync(cancellationToken);
     }
 
@@ -196,6 +197,46 @@ public sealed class MongoSearchProjectionInitializer
         if (batch.Count > 0)
         {
             await this.FlushMissingStandaloneAttractionsBatchAsync(searchCollection, batch, delayMilliseconds, cancellationToken);
+        }
+    }
+
+    private async Task BackfillParkStatusesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<SearchItemDocument> searchCollection = this.database.GetCollection<SearchItemDocument>(this.settings.SearchItemCollectionName);
+        FilterDefinition<SearchItemDocument> missingParkStatus = Builders<SearchItemDocument>.Filter.And(
+            Builders<SearchItemDocument>.Filter.Or(
+                Builders<SearchItemDocument>.Filter.Eq(document => document.ResourceType, SearchProjectionResourceTypes.Parks),
+                Builders<SearchItemDocument>.Filter.Eq(document => document.Category, "park")),
+            Builders<SearchItemDocument>.Filter.Exists("parkStatus", false));
+        int batchSize = Math.Max(1, this.settings.SearchProjectionRebuildBatchSize);
+        int delayMilliseconds = Math.Max(0, this.settings.SearchProjectionRebuildBatchDelayMilliseconds);
+        List<string> batch = new List<string>(batchSize);
+
+        using IAsyncCursor<string> cursor = await searchCollection
+            .Find(missingParkStatus)
+            .Project(document => document.OriginalId)
+            .ToCursorAsync(cancellationToken);
+
+        while (await cursor.MoveNextAsync(cancellationToken))
+        {
+            foreach (string originalId in cursor.Current)
+            {
+                if (!TryResolveOriginalId(originalId, "park_", SearchProjectionResourceTypes.Parks, out string resourceType, out string resourceId))
+                {
+                    continue;
+                }
+
+                batch.Add(resourceId);
+                if (batch.Count >= batchSize)
+                {
+                    await this.FlushBatchAsync(resourceType, batch, delayMilliseconds, cancellationToken);
+                }
+            }
+        }
+
+        if (batch.Count > 0)
+        {
+            await this.FlushBatchAsync(SearchProjectionResourceTypes.Parks, batch, delayMilliseconds, cancellationToken);
         }
     }
 

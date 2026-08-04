@@ -60,6 +60,10 @@
               @if (currentPark.typeLabelKey) {
                 <app-ui-chip tone="gold" iconClass="pi pi-tag">{{ currentPark.typeLabelKey | translate }}</app-ui-chip>
               }
+
+              <app-ui-chip [tone]="currentPark.statusTone" [iconClass]="currentPark.statusIconClass">
+                {{ currentPark.statusLabelKey | translate }}
+              </app-ui-chip>
             </div>
 
             <h1 class="park-banner__name">{{ currentPark.name }}</h1>
@@ -271,20 +275,24 @@
             </section>
           }
 
-          <app-park-opening-hours-card
-            class="park-side-card park-side-card--opening-hours"
-            [calendar]="openingHours"
-            [state]="openingHoursState"
-            [openingHoursLink]="currentPark.openingHoursLink">
-          </app-park-opening-hours-card>
+          @if (currentPark.isOpenToVisitors) {
+            <app-park-opening-hours-card
+              class="park-side-card park-side-card--opening-hours"
+              [calendar]="openingHours"
+              [state]="openingHoursState"
+              [openingHoursLink]="currentPark.openingHoursLink">
+            </app-park-opening-hours-card>
+          }
 
-          <app-park-weather-card
-            class="park-side-card park-side-card--weather"
-            [forecast]="weather"
-            [state]="weatherState"
-            [currentLang]="currentLang"
-            [weatherLink]="currentPark.weatherLink">
-          </app-park-weather-card>
+          @if (currentPark.isOpenToVisitors) {
+            <app-park-weather-card
+              class="park-side-card park-side-card--weather"
+              [forecast]="weather"
+              [state]="weatherState"
+              [currentLang]="currentLang"
+              [weatherLink]="currentPark.weatherLink">
+            </app-park-weather-card>
+          }
         </aside>
       </div>
 

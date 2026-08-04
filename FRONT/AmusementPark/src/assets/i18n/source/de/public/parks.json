@@ -333,10 +333,10 @@
       "emptyItemsMessage": "Derzeit ist kein öffentlicher Ort mit diesem Bereich verknüpft."
     },
     "closedFilters": {
-      "label": "Öffnung",
-      "openOnly": "Offen",
-      "withClosed": "Mit geschl.",
-      "closedOnly": "Geschlossen"
+      "label": "Status",
+      "openOnly": "Geöffnet",
+      "withClosed": "Alle Statuswerte",
+      "closedOnly": "Dauerhaft geschlossen"
     },
     "audienceFilters": {
       "label": "Reichweite",
@@ -348,7 +348,12 @@
       "notSpecified": "Nicht angegeben"
     },
     "statuses": {
-      "closedDefinitively": "Dauerhaft geschlossen"
+      "planned": "Geplantes Projekt — noch nicht geöffnet",
+      "underConstruction": "Im Bau — noch nicht geöffnet",
+      "operating": "Geöffnet",
+      "temporarilyClosed": "Vorübergehend geschlossen",
+      "closedDefinitively": "Dauerhaft geschlossen",
+      "cancelled": "Abgesagtes Projekt"
     }
   }
 }

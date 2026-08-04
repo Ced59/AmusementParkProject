@@ -36,8 +36,12 @@ export const PARK_AUDIENCE_CLASSIFICATION_OPTIONS: ReadonlyArray<TranslationOpti
 ];
 
 export const PARK_STATUS_OPTIONS: ReadonlyArray<TranslationOption<ParkStatus>> = [
+  { labelKey: 'admin.parks.statuses.planned', value: 'Planned' },
+  { labelKey: 'admin.parks.statuses.underConstruction', value: 'UnderConstruction' },
   { labelKey: 'admin.parks.statuses.operating', value: 'Operating' },
-  { labelKey: 'admin.parks.statuses.closedDefinitively', value: 'ClosedDefinitively' }
+  { labelKey: 'admin.parks.statuses.temporarilyClosed', value: 'TemporarilyClosed' },
+  { labelKey: 'admin.parks.statuses.closedDefinitively', value: 'ClosedDefinitively' },
+  { labelKey: 'admin.parks.statuses.cancelled', value: 'Cancelled' }
 ];
 
 export const PARK_ITEM_CATEGORY_OPTIONS: ReadonlyArray<TranslationOption<ParkItemCategory>> = [

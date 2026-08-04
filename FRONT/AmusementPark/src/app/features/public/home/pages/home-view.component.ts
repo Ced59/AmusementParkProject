@@ -25,6 +25,7 @@ import { UiPrimitiveTone } from '@ui/primitives/models/ui-primitive-variant.mode
 import { UiFeaturedParkCardComponent, UiSearchResultCardComponent, UiSearchResultCardModel } from '@ui/cards';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { resolveLocalizedPlural } from '@shared/utils/localization/localized-plural.helpers';
+import { getParkStatusPresentation, ParkStatusPresentation } from '@shared/utils/parks/park-status.presentation';
 
 @Component({
   selector: 'app-home-view',
@@ -131,6 +132,10 @@ export class HomeViewComponent {
   }
 
   protected buildSearchResultCard(item: SearchResultItem): UiSearchResultCardModel {
+    const statusPresentation: ParkStatusPresentation | null = this.isParkSearchResult(item)
+      ? getParkStatusPresentation(item.parkStatus)
+      : null;
+
     return {
       title: item.title,
       description: item.description ?? null,
@@ -138,6 +143,9 @@ export class HomeViewComponent {
       iconClass: this.resolveSearchResultIconClass(item),
       tone: this.resolveSearchResultTone(item),
       categoryLabelKey: getSearchCategoryTranslationKey(item.category),
+      statusLabelKey: statusPresentation?.labelKey ?? null,
+      statusIconClass: statusPresentation?.iconClass ?? null,
+      statusTone: statusPresentation?.tone ?? null,
       metaParts: this.buildSearchResultMetaParts(item),
       detailLink: this.buildSearchResultLink(item),
       actionLabelKey: 'home.search.openResult'
