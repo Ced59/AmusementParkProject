@@ -3479,7 +3479,7 @@
   "parks": {
     "heroBadge": "🗺️ Exploration",
     "title": "Alle Parks",
-    "subtitle": "Entdecke sichtbare Parks, finde sie auf der interaktiven Karte und wähle dein nächstes Ziel.",
+    "subtitle": "Entdecke dokumentierte Parks und filtere sie nach ihrer Lebenszyklusphase.",
     "loadingTitle": "Parks werden geladen",
     "loadingMessage": "Die Parkliste wird geladen.",
     "errorTitle": "Parks können nicht geladen werden",
@@ -3514,25 +3514,27 @@
     },
     "detail": {
       "heroBadge": "Parkübersicht",
-      "heroDescription": "Entdecke die derzeit verfügbaren praktischen Informationen zu diesem Park.",
+      "heroDescription": "Sieh dir die derzeit dokumentierten Informationen zu diesem Park an.",
       "loadingTitle": "Park wird geladen",
       "loadingMessage": "Die Parkseite wird geladen.",
       "errorTitle": "Park kann nicht geladen werden",
       "errorMessage": "Der angeforderte Park konnte nicht geladen werden.",
       "practical": {
         "title": "Praktische Informationen",
-        "subtitle": "Die derzeit verfügbaren wichtigsten Besucherinformationen zu diesem Park.",
+        "subtitle": "Die derzeit verfügbaren Standort-, Kontakt- und Referenzinformationen.",
         "postalCode": "Postleitzahl",
         "street": "Straße",
         "openReference": "Details zu {{name}} öffnen"
       },
       "location": {
         "title": "Standort",
-        "subtitle": "Finde den Park auf der Karte und prüfe seine Koordinaten."
+        "subtitle": "Sieh dir den derzeit dokumentierten Standort und die Koordinaten an."
       },
       "nearby": {
         "title": "Parks in der Nähe",
-        "subtitle": "Setze deine Entdeckung mit Parks rund um dieses Ziel fort.",
+        "subtitle": "Entdecke weitere geöffnete Parks rund um dieses Ziel.",
+        "alternativesTitle": "Geöffnete Alternativen in der Nähe",
+        "alternativesSubtitle": "Entdecke derzeit geöffnete Parks in der Nähe dieses dokumentierten Ortes.",
         "loadingTitle": "Parks in der Nähe werden geladen",
         "loadingMessage": "Parks in der Nähe werden geladen.",
         "errorTitle": "Parks in der Nähe können nicht geladen werden",
@@ -3808,6 +3810,32 @@
       "itemsTitle": "Orte in diesem Bereich entdecken",
       "emptyItemsTitle": "Kein Ort in diesem Bereich",
       "emptyItemsMessage": "Derzeit ist kein öffentlicher Ort mit diesem Bereich verknüpft."
+    },
+    "statusFilters": {
+      "label": "Lebenszyklusphase",
+      "all": "Alle Status"
+    },
+    "lifecycle": {
+      "planned": {
+        "title": "Angekündigtes Projekt",
+        "body": "Diese Seite dokumentiert ein geplantes Projekt. Die Informationen spiegeln bekannte Ankündigungen wider, keinen derzeit besuchbaren Park."
+      },
+      "underConstruction": {
+        "title": "Park im Bau",
+        "body": "Das Projekt befindet sich im Bau. Veröffentlichte Inhalte dokumentieren den Fortschritt; ein Besuch ist derzeit nicht möglich."
+      },
+      "temporarilyClosed": {
+        "title": "Park vorübergehend geschlossen",
+        "body": "Diese Seite und frühere Bewertungen dokumentieren den Park. Prüfe vor einem geplanten Besuch, ob er wieder geöffnet ist."
+      },
+      "closedDefinitively": {
+        "title": "Dauerhaft geschlossener Park",
+        "body": "Diese Seite bewahrt die Geschichte des Parks, seiner Orte und vergangener Besuche."
+      },
+      "cancelled": {
+        "title": "Abgesagtes Projekt",
+        "body": "Diese Seite dokumentiert ein aufgegebenes Projekt; die angekündigten Orte bilden keinen besuchbaren Park."
+      }
     },
     "closedFilters": {
       "label": "Status",

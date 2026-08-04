@@ -22,7 +22,7 @@ import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audienc
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { mapParkMapPointToViewModel } from '../mappers/park-map-point-view.mapper';
-import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
+import { ParkStatus } from '@app/models/parks/park-status';
 import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
 
 import {
@@ -44,7 +44,7 @@ export class ParkListStateFacade {
   private readonly selectedParkIdSignal = signal<string | null>(null);
   private readonly selectedParkCardSignal = signal<ParkCardModel | null>(null);
   private readonly selectedRegionSignal = signal<ParkRegionFilter | null>(null);
-  private readonly selectedClosedFilterSignal = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
+  private readonly selectedStatusSignal = signal<ParkStatus | null>('Operating');
   private readonly selectedAudienceClassificationFilterSignal = signal<ParkAudienceClassificationFilter | null>(null);
 
   public readonly state = this.screenStateStore.state;
@@ -80,7 +80,7 @@ export class ParkListStateFacade {
   public readonly selectedParkId = this.selectedParkIdSignal.asReadonly();
   public readonly selectedParkCard = this.selectedParkCardSignal.asReadonly();
   public readonly selectedRegion = this.selectedRegionSignal.asReadonly();
-  public readonly selectedClosedFilter = this.selectedClosedFilterSignal.asReadonly();
+  public readonly selectedStatus = this.selectedStatusSignal.asReadonly();
   public readonly selectedAudienceClassificationFilter = this.selectedAudienceClassificationFilterSignal.asReadonly();
 
   constructor(
@@ -99,8 +99,8 @@ export class ParkListStateFacade {
     this.selectedRegionSignal.set(region);
   }
 
-  setClosedFilter(closedFilter: ClosedEntityFilter): void {
-    this.selectedClosedFilterSignal.set(closedFilter);
+  setStatus(status: ParkStatus | null): void {
+    this.selectedStatusSignal.set(status);
   }
 
   setAudienceClassificationFilter(audienceClassificationFilter: ParkAudienceClassificationFilter | null): void {
@@ -170,8 +170,8 @@ export class ParkListStateFacade {
     this.screenStateStore.setLoading(previousData);
 
     const request$ = normalizedTerm
-      ? this.parksApiService.searchParks(normalizedTerm, page, size, true, region, filters, { ...anonymousHttpOptions(), closedFilter: this.selectedClosedFilterSignal() })
-      : this.parksApiService.getParksPaginated(page, size, true, region, filters, { ...anonymousHttpOptions(), closedFilter: this.selectedClosedFilterSignal() });
+      ? this.parksApiService.searchParks(normalizedTerm, page, size, true, region, filters, this.buildPublicOptions())
+      : this.parksApiService.getParksPaginated(page, size, true, region, filters, this.buildPublicOptions());
 
     request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
@@ -201,7 +201,8 @@ export class ParkListStateFacade {
 
     this.parksApiService.getVisibleParkMapPoints(term, region, {
       ...anonymousHttpOptions(),
-      closedFilter: this.selectedClosedFilterSignal(),
+      closedFilter: this.selectedStatusSignal() === null ? 'all' : 'openOnly',
+      status: this.selectedStatusSignal(),
       audienceClassificationFilter: this.selectedAudienceClassificationFilterSignal()
     })
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -238,6 +239,15 @@ export class ParkListStateFacade {
       longitude: point.longitude,
       currentLogoImageId: point.logoImageId
     }, this.currentLanguageSignal(), this.countryDisplayService, this.textTruncator);
+  }
+
+  private buildPublicOptions(): ReturnType<typeof anonymousHttpOptions> & { closedFilter: 'openOnly' | 'all'; status: ParkStatus | null } {
+    const status: ParkStatus | null = this.selectedStatusSignal();
+    return {
+      ...anonymousHttpOptions(),
+      closedFilter: status === null ? 'all' : 'openOnly',
+      status,
+    };
   }
 
   private buildAudienceClassificationFilters(): ParkAdminListFilters | null {

@@ -82,7 +82,8 @@ export class ParkDetailStateFacade {
         },
         {
           totalItems: currentSummary.stats?.totalItems ?? null,
-          zoneCount: currentSummary.stats?.zoneCount ?? null
+          zoneCount: currentSummary.stats?.zoneCount ?? null,
+          mappableItemsCount: currentSummary.stats?.mappableItemsCount ?? null
         },
         currentSummary.mainImage ? [currentSummary.mainImage] : [],
         [],

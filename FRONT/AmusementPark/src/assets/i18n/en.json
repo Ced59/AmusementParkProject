@@ -3479,7 +3479,7 @@
   "parks": {
     "heroBadge": "🗺️ Exploration",
     "title": "All parks",
-    "subtitle": "Explore visible parks, locate them on the interactive map and choose your next destination.",
+    "subtitle": "Explore documented parks and filter them by lifecycle stage.",
     "loadingTitle": "Loading parks",
     "loadingMessage": "The parks list is being loaded.",
     "errorTitle": "Unable to load parks",
@@ -3514,25 +3514,27 @@
     },
     "detail": {
       "heroBadge": "Park overview",
-      "heroDescription": "Discover the practical information currently available for this park.",
+      "heroDescription": "Review the information currently documented for this park.",
       "loadingTitle": "Loading park",
       "loadingMessage": "The park page is being loaded.",
       "errorTitle": "Unable to load the park",
       "errorMessage": "The requested park could not be loaded.",
       "practical": {
         "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park.",
+        "subtitle": "The currently available location, contact and reference information.",
         "postalCode": "Postal code",
         "street": "Street",
         "openReference": "Open {{name}} details"
       },
       "location": {
         "title": "Location",
-        "subtitle": "Find the park on the map and review its coordinates."
+        "subtitle": "Review the currently documented location and coordinates."
       },
       "nearby": {
         "title": "Nearby parks",
-        "subtitle": "Continue your discovery with parks located around this destination.",
+        "subtitle": "Discover other operating parks around this destination.",
+        "alternativesTitle": "Open alternatives nearby",
+        "alternativesSubtitle": "Discover parks that are currently operating near this documented location.",
         "loadingTitle": "Loading nearby parks",
         "loadingMessage": "Nearby parks are being loaded.",
         "errorTitle": "Unable to load nearby parks",
@@ -3808,6 +3810,32 @@
       "itemsTitle": "Places to discover in this zone",
       "emptyItemsTitle": "No place in this zone",
       "emptyItemsMessage": "No public place is currently attached to this zone."
+    },
+    "statusFilters": {
+      "label": "Lifecycle stage",
+      "all": "All statuses"
+    },
+    "lifecycle": {
+      "planned": {
+        "title": "Announced project",
+        "body": "This page documents a planned project. The information reflects known announcements, not a park currently open to visitors."
+      },
+      "underConstruction": {
+        "title": "Park under construction",
+        "body": "The project is under construction. Published content documents its progress; no visit is currently possible."
+      },
+      "temporarilyClosed": {
+        "title": "Park temporarily closed",
+        "body": "This page and past reviews document the park, but check that it has reopened before planning a visit."
+      },
+      "closedDefinitively": {
+        "title": "Permanently closed park",
+        "body": "This page preserves the history of the park, its places and past visits."
+      },
+      "cancelled": {
+        "title": "Cancelled project",
+        "body": "This page documents an abandoned project; the announced places do not represent a visitable park."
+      }
     },
     "closedFilters": {
       "label": "Status",

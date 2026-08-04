@@ -19,6 +19,48 @@ namespace AmusementPark.Application.Tests.Features.Parks.Handlers;
 public sealed class SearchParksQueryHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenExactStatusIsProvided_ShouldPassItToCriteriaAndIgnoreLegacyClosedFilter()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<ICountryReferenceService> countryReferenceService = new Mock<ICountryReferenceService>(MockBehavior.Strict);
+        countryReferenceService.Setup(service => service.FindCountryCodesByLocalizedSearchAsync("project", It.IsAny<CancellationToken>())).ReturnsAsync(Array.Empty<string>());
+        countryReferenceService.Setup(service => service.GetCountryCodesForRegion(null)).Returns(Array.Empty<string>());
+        parkRepository
+            .Setup(repository => repository.SearchAsync(
+                It.Is<ParkSearchCriteria>(criteria => criteria.Status == ParkStatus.Cancelled),
+                1,
+                12,
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                ClosedEntityFilter.All,
+                It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Default,
+                false))
+            .ReturnsAsync(new PagedResult<Park>(Array.Empty<Park>(), 1, 12, 0));
+
+        SearchParksQueryHandler handler = new SearchParksQueryHandler(
+            parkRepository.Object,
+            parkItemRepository.Object,
+            openingHoursRepository.Object,
+            new ParkOpeningHoursAdminStatusResolver(),
+            countryReferenceService.Object,
+            new PagedQueryValidator());
+
+        ApplicationResult<PagedResult<ParkListResult>> result = await handler.HandleAsync(
+            new SearchParksQuery("project", null, new PagedQuery(1, 12), IsVisible: true, Status: ParkStatus.Cancelled));
+
+        Assert.True(result.IsSuccess);
+        parkRepository.VerifyAll();
+        countryReferenceService.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenAudienceClassificationFilterIsProvided_ShouldPassItToRepositoryCriteria()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

@@ -180,6 +180,7 @@ internal static class ParksHttpMappers
             {
                 TotalItems = value.Stats.TotalItems,
                 ZoneCount = value.Stats.ZoneCount,
+                MappableItemsCount = value.Stats.MappableItemsCount,
                 AttractionCount = value.Stats.AttractionCount,
                 RestaurantCount = value.Stats.RestaurantCount,
                 ShowCount = value.Stats.ShowCount,

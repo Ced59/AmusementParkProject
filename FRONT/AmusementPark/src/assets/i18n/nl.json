@@ -3479,7 +3479,7 @@
   "parks": {
     "heroBadge": "Public catalog",
     "title": "Parks",
-    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "subtitle": "Ontdek gedocumenteerde parken en filter ze op levenscyclusfase.",
     "loadingTitle": "Laden parks",
     "loadingMessage": "De parkenlijst wordt geladen.",
     "errorTitle": "Kan niet laden parks",
@@ -3514,25 +3514,27 @@
     },
     "detail": {
       "heroBadge": "Parkoverzicht",
-      "heroDescription": "Ontdek de praktische informatie die momenteel voor dit park beschikbaar is.",
+      "heroDescription": "Bekijk de informatie die momenteel voor dit park is gedocumenteerd.",
       "loadingTitle": "Laden park",
       "loadingMessage": "De parkpagina wordt geladen.",
       "errorTitle": "Kan niet laden the park",
       "errorMessage": "The requested park kon niet worden geladen.",
       "practical": {
         "title": "Praktische informatie",
-        "subtitle": "De belangrijkste bezoekersinformatie die momenteel voor dit park beschikbaar is.",
+        "subtitle": "De momenteel beschikbare locatie-, contact- en referentiegegevens.",
         "postalCode": "Postcode",
         "street": "Straat",
         "openReference": "Details van {{name}} openen"
       },
       "location": {
         "title": "Locatie",
-        "subtitle": "Vind het park op de kaart en bekijk de coördinaten."
+        "subtitle": "Bekijk de momenteel gedocumenteerde locatie en coördinaten."
       },
       "nearby": {
         "title": "Nabijgelegen parken",
-        "subtitle": "Ga verder met parken rond deze bestemming.",
+        "subtitle": "Ontdek andere geopende parken rond deze bestemming.",
+        "alternativesTitle": "Geopende alternatieven in de buurt",
+        "alternativesSubtitle": "Ontdek parken die momenteel open zijn in de buurt van deze gedocumenteerde locatie.",
         "loadingTitle": "Laden nearby parks",
         "loadingMessage": "Nabijgelegen parken worden geladen.",
         "errorTitle": "Kan niet laden nearby parks",
@@ -3808,6 +3810,32 @@
       "itemsTitle": "Plekken om te ontdekken in deze zone",
       "emptyItemsTitle": "Geen plek in deze zone",
       "emptyItemsMessage": "Er is momenteel geen openbare plek aan deze zone gekoppeld."
+    },
+    "statusFilters": {
+      "label": "Levenscyclusfase",
+      "all": "Alle statussen"
+    },
+    "lifecycle": {
+      "planned": {
+        "title": "Aangekondigd project",
+        "body": "Deze pagina documenteert een gepland project. De informatie weerspiegelt bekende aankondigingen, niet een park dat momenteel te bezoeken is."
+      },
+      "underConstruction": {
+        "title": "Park in aanbouw",
+        "body": "Het project is in aanbouw. Gepubliceerde inhoud documenteert de voortgang; een bezoek is momenteel niet mogelijk."
+      },
+      "temporarilyClosed": {
+        "title": "Park tijdelijk gesloten",
+        "body": "Deze pagina en eerdere beoordelingen documenteren het park. Controleer vóór een gepland bezoek of het weer open is."
+      },
+      "closedDefinitively": {
+        "title": "Definitief gesloten park",
+        "body": "Deze pagina bewaart de geschiedenis van het park, de locaties en eerdere bezoeken."
+      },
+      "cancelled": {
+        "title": "Geannuleerd project",
+        "body": "Deze pagina documenteert een stopgezet project; de aangekondigde locaties vormen geen bezoekbaar park."
+      }
     },
     "closedFilters": {
       "label": "Status",

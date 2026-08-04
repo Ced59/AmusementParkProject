@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Countries.Ports;
@@ -80,7 +81,7 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
             query.Type,
             query.CountryCode,
             query.HasValidCoordinates,
-            query.ClosedFilter,
+            ResolveClosedFilter(query),
             cancellationToken,
             query.SortField,
             query.SortDescending);
@@ -100,6 +101,7 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
             regionCountryCodes)
         {
             AudienceClassificationFilter = query.AudienceClassificationFilter,
+            Status = query.Status,
         };
     }
 
@@ -115,7 +117,7 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
             query.Type,
             query.CountryCode,
             query.HasValidCoordinates,
-            query.ClosedFilter,
+            ResolveClosedFilter(query),
             cancellationToken);
 
         if (countProbe.TotalItems == 0)
@@ -137,7 +139,7 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
             query.Type,
             query.CountryCode,
             query.HasValidCoordinates,
-            query.ClosedFilter,
+            ResolveClosedFilter(query),
             cancellationToken,
             repositorySortField,
             query.SortDescending);
@@ -152,6 +154,11 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
             .ToList();
 
         return new PagedResult<ParkListResult>(pagedItems, query.Paging.Page, query.Paging.PageSize, filteredItems.Count);
+    }
+
+    private static ClosedEntityFilter ResolveClosedFilter(SearchParksQuery query)
+    {
+        return query.Status.HasValue ? ClosedEntityFilter.All : query.ClosedFilter;
     }
 
     private async Task<PagedResult<ParkListResult>> EnrichAsync(PagedResult<Park> page, bool includeCounts, bool includeOpeningHours, bool includeDataCompleteness, CancellationToken cancellationToken)

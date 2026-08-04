@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.park-lifecycle-notice {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 1rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--color-warning, #f5b942) 45%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--color-warning, #f5b942) 10%, var(--surface-card, #17130f));
+}
+
+.park-lifecycle-notice i {
+  margin-top: 0.15rem;
+  color: var(--color-warning, #f5b942);
+  font-size: 1.2rem;
+}
+
+.park-lifecycle-notice strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.park-lifecycle-notice p {
+  margin: 0;
+  color: var(--text-color-secondary);
+  line-height: 1.55;
+}

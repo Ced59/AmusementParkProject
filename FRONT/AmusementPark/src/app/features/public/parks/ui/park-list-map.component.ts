@@ -71,12 +71,12 @@ export class ParkListMapComponent {
       iconKind: 'park',
       details: this.buildMarkerDetails(point)
     }, {
-      directions: {
+      directions: point.status === 'Operating' ? {
         latitude: point.latitude,
         longitude: point.longitude,
         label: point.name
-      },
-      directionsLabel: navigateLabel,
+      } : null,
+      directionsLabel: point.status === 'Operating' ? navigateLabel : null,
       parkDetail: {
         language: this.translateService.currentLang,
         parkId: point.id,

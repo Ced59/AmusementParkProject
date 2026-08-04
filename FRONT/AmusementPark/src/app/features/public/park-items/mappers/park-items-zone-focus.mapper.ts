@@ -8,6 +8,7 @@ import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { isParkOpenToVisitors } from '@shared/utils/parks/park-status.presentation';
 import { ParkItemsCountTagViewModel } from '../models/park-items-page-view.model';
 import {
   ParkItemsMapViewModel,
@@ -106,7 +107,7 @@ function mapDisplayedItemsToMapViewModel(
         subtitleTranslationKey: getParkItemCategoryTranslationKey(item.category),
         details,
         detailTranslationKeys,
-        directionsActionEnabled: true,
+        directionsActionEnabled: isParkOpenToVisitors(park.status),
         iconKind: resolveParkItemMarkerIconKind({
           category: item.category,
           type: item.type,

@@ -1,6 +1,20 @@
 {
-  "version": "4.0.26",
+  "version": "4.0.27",
   "history": [
+    {
+      "version": "4.0.27",
+      "releasedAt": "2026-08-04",
+      "labels": {
+        "fr": "Les pages publiques distinguent plus clairement chaque étape de vie des parcs.",
+        "en": "Public pages now distinguish each park lifecycle stage more clearly.",
+        "de": "Öffentliche Seiten unterscheiden die Lebenszyklusphasen der Parks jetzt deutlicher.",
+        "nl": "Openbare pagina's maken nu duidelijker onderscheid tussen de levenscyclusfasen van parken.",
+        "it": "Le pagine pubbliche distinguono ora più chiaramente le fasi del ciclo di vita dei parchi.",
+        "es": "Las páginas públicas distinguen ahora con mayor claridad cada etapa del ciclo de vida de los parques.",
+        "pl": "Strony publiczne wyraźniej rozróżniają teraz etapy cyklu życia parków.",
+        "pt": "As páginas públicas distinguem agora com maior clareza cada fase do ciclo de vida dos parques."
+      }
+    },
     {
       "version": "4.0.26",
       "releasedAt": "2026-08-04",

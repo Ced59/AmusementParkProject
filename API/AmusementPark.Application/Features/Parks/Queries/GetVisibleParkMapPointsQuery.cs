@@ -15,4 +15,5 @@ public sealed record GetVisibleParkMapPointsQuery(
     string? SearchTerm = null,
     WorldRegionFilter? Region = null,
     ParkAudienceClassificationFilter? AudienceClassificationFilter = null,
-    ClosedEntityFilter ClosedFilter = ClosedEntityFilter.OpenOnly) : IQuery<ApplicationResult<IReadOnlyCollection<Park>>>;
+    ClosedEntityFilter ClosedFilter = ClosedEntityFilter.OpenOnly,
+    ParkStatus? Status = null) : IQuery<ApplicationResult<IReadOnlyCollection<Park>>>;

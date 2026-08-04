@@ -15,6 +15,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardCompon
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkItemCardComponent } from '../../park-items/ui/park-item-card.component';
 import { ParkZonePageViewModel } from '../models/park-zone-page.model';
+import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-zone-view',
@@ -37,7 +38,8 @@ import { ParkZonePageViewModel } from '../models/park-zone-page.model';
     UiMapSlotComponent,
     PublicSharePanelComponent,
     UiStatCardComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    ParkLifecycleNoticeComponent
   ]
 })
 export class ParkZoneViewComponent {
@@ -57,14 +59,15 @@ export class ParkZoneViewComponent {
 
     const navigateLabel: string = this.translateService.instant('parks.map.navigate');
     const openDetailLabel: string = this.translateService.instant('parks.map.openDetail');
+    const isOpenToVisitors: boolean = currentPage.parkStatus === 'Operating';
 
     return currentPage.map.markers.map((marker: MapMarker) => this.mapMarkerPopupActionService.enrich(marker, {
-      directions: {
+      directions: isOpenToVisitors ? {
         latitude: marker.lat,
         longitude: marker.lng,
         label: marker.title
-      },
-      directionsLabel: navigateLabel,
+      } : null,
+      directionsLabel: isOpenToVisitors ? navigateLabel : null,
       detailLabel: openDetailLabel
     }));
   }

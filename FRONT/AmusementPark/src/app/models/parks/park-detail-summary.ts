@@ -10,6 +10,7 @@ export interface ParkDetailReferenceSummary {
 export interface ParkDetailSummaryStats {
   totalItems: number;
   zoneCount: number;
+  mappableItemsCount?: number;
   attractionCount: number;
   restaurantCount: number;
   showCount: number;

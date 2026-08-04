@@ -26,4 +26,5 @@ public sealed record SearchParksQuery(
     ClosedEntityFilter ClosedFilter = ClosedEntityFilter.OpenOnly,
     ParkOpeningHoursAdminFilter OpeningHoursFilter = ParkOpeningHoursAdminFilter.All,
     ParkAdminSortField SortField = ParkAdminSortField.Default,
-    bool SortDescending = false) : IQuery<ApplicationResult<PagedResult<ParkListResult>>>;
+    bool SortDescending = false,
+    ParkStatus? Status = null) : IQuery<ApplicationResult<PagedResult<ParkListResult>>>;

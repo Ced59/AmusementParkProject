@@ -3479,7 +3479,7 @@
   "parks": {
     "heroBadge": "Public catalog",
     "title": "Parks",
-    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "subtitle": "Odkrywaj udokumentowane parki i filtruj je według etapu cyklu życia.",
     "loadingTitle": "Ładowanie parks",
     "loadingMessage": "Lista parków jest ładowana.",
     "errorTitle": "Nie można wczytać parks",
@@ -3514,25 +3514,27 @@
     },
     "detail": {
       "heroBadge": "Przegląd parku",
-      "heroDescription": "Poznaj praktyczne informacje dostępne obecnie dla tego parku.",
+      "heroDescription": "Sprawdź informacje obecnie udokumentowane dla tego parku.",
       "loadingTitle": "Ładowanie park",
       "loadingMessage": "Strona parku jest ładowana.",
       "errorTitle": "Nie można wczytać the park",
       "errorMessage": "The requested park nie udało się wczytać.",
       "practical": {
         "title": "Informacje praktyczne",
-        "subtitle": "Najważniejsze informacje dla odwiedzających dostępne obecnie dla tego parku.",
+        "subtitle": "Obecnie dostępne informacje o lokalizacji, kontakcie i źródłach.",
         "postalCode": "Kod pocztowy",
         "street": "Ulica",
         "openReference": "Otwórz szczegóły {{name}}"
       },
       "location": {
         "title": "Lokalizacja",
-        "subtitle": "Znajdź park na mapie i sprawdź jego współrzędne."
+        "subtitle": "Sprawdź obecnie udokumentowaną lokalizację i współrzędne."
       },
       "nearby": {
         "title": "Pobliskie parki",
-        "subtitle": "Kontynuuj odkrywanie parków położonych wokół tego miejsca.",
+        "subtitle": "Odkryj inne otwarte parki w pobliżu tego miejsca.",
+        "alternativesTitle": "Otwarte alternatywy w pobliżu",
+        "alternativesSubtitle": "Odkryj obecnie otwarte parki w pobliżu tej udokumentowanej lokalizacji.",
         "loadingTitle": "Ładowanie nearby parks",
         "loadingMessage": "Pobliskie parki są ładowane.",
         "errorTitle": "Nie można wczytać nearby parks",
@@ -3808,6 +3810,32 @@
       "itemsTitle": "Miejsca do odkrycia w tej strefie",
       "emptyItemsTitle": "Brak miejsca w tej strefie",
       "emptyItemsMessage": "Żadne publiczne miejsce nie jest obecnie powiązane z tą strefą."
+    },
+    "statusFilters": {
+      "label": "Etap cyklu życia",
+      "all": "Wszystkie statusy"
+    },
+    "lifecycle": {
+      "planned": {
+        "title": "Zapowiedziany projekt",
+        "body": "Ta strona dokumentuje planowany projekt. Informacje odzwierciedlają znane zapowiedzi, a nie park, który można obecnie odwiedzić."
+      },
+      "underConstruction": {
+        "title": "Park w budowie",
+        "body": "Projekt jest w budowie. Opublikowane treści dokumentują jego postęp; obecnie wizyta nie jest możliwa."
+      },
+      "temporarilyClosed": {
+        "title": "Park tymczasowo zamknięty",
+        "body": "Ta strona i wcześniejsze oceny dokumentują park, ale przed zaplanowaniem wizyty sprawdź, czy został ponownie otwarty."
+      },
+      "closedDefinitively": {
+        "title": "Park zamknięty na stałe",
+        "body": "Ta strona zachowuje historię parku, jego miejsc i wcześniejszych wizyt."
+      },
+      "cancelled": {
+        "title": "Anulowany projekt",
+        "body": "Ta strona dokumentuje porzucony projekt; zapowiedziane miejsca nie tworzą parku możliwego do odwiedzenia."
+      }
     },
     "closedFilters": {
       "label": "Status",

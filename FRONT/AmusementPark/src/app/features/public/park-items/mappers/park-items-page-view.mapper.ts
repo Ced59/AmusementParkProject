@@ -24,6 +24,7 @@ export function mapParkItemsPageViewModel(
   return {
     parkId: park.id ?? null,
     parkName: park.name?.trim() ?? '',
+    parkStatus: park.status ?? 'Operating',
     backLink: buildParkLink(park, currentLanguage),
     totalItems: explorer.overview.totalItems,
     totalResults,

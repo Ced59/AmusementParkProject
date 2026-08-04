@@ -2,9 +2,9 @@
   <app-ui-section-header
     class="park-section-header"
     kickerIconClass="pi pi-map-marker"
-    kickerLabelKey="parks.detail.nearby.title"
-    titleKey="parks.detail.nearby.title"
-    subtitleKey="parks.detail.nearby.subtitle">
+    [kickerLabelKey]="titleKey"
+    [titleKey]="titleKey"
+    [subtitleKey]="subtitleKey">
   </app-ui-section-header>
 
   @if (nearestPark; as closestPark) {

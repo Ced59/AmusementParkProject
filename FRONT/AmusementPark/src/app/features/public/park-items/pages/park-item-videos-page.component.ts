@@ -21,6 +21,7 @@ import {
   parsePublicVideoFilters
 } from '@features/public/videos/utils/public-video-filter-query.helpers';
 import { ParkItemVideosStateFacade } from '../state/park-item-videos-state.facade';
+import { ParkLifecycleNoticeComponent } from '@features/public/parks/ui/park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-item-videos-page',
@@ -28,7 +29,7 @@ import { ParkItemVideosStateFacade } from '../state/park-item-videos-state.facad
   styleUrls: ['./park-item-videos-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ParkItemVideosStateFacade],
-  imports: [PublicVideoListViewComponent]
+  imports: [PublicVideoListViewComponent, ParkLifecycleNoticeComponent]
 })
 export class ParkItemVideosPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

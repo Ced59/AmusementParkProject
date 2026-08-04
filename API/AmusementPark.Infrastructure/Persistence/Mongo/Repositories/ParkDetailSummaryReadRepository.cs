@@ -55,12 +55,13 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
 
         Task<IReadOnlyDictionary<ParkItemCategory, int>> countsTask = this.GetCountsByCategoryAsync(parkId, includeHidden, closedFilter, cancellationToken);
         Task<int> zoneCountTask = this.GetZoneCountAsync(parkId, includeHidden, cancellationToken);
+        Task<int> mappableItemsCountTask = this.GetMappableItemsCountAsync(parkId, includeHidden, closedFilter, cancellationToken);
         Task<Image?> mainImageTask = this.GetMainImageAsync(parkDocument, cancellationToken);
         Task<string?> founderNameTask = this.GetFounderNameAsync(parkDocument.FounderId, cancellationToken);
         Task<string?> operatorNameTask = this.GetOperatorNameAsync(parkDocument.OperatorId, cancellationToken);
         Task<RatingSummaryResult> ratingTask = this.GetRatingSummaryAsync(parkDocument.Id, cancellationToken);
 
-        await Task.WhenAll(countsTask, zoneCountTask, mainImageTask, founderNameTask, operatorNameTask, ratingTask);
+        await Task.WhenAll(countsTask, zoneCountTask, mappableItemsCountTask, mainImageTask, founderNameTask, operatorNameTask, ratingTask);
 
         IReadOnlyDictionary<ParkItemCategory, int> countsByCategory = await countsTask;
         int totalItems = countsByCategory.Values.Sum();
@@ -76,6 +77,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
             {
                 TotalItems = totalItems,
                 ZoneCount = await zoneCountTask,
+                MappableItemsCount = await mappableItemsCountTask,
                 AttractionCount = GetCount(countsByCategory, ParkItemCategory.Attraction),
                 RestaurantCount = GetCount(countsByCategory, ParkItemCategory.Restaurant),
                 ShowCount = GetCount(countsByCategory, ParkItemCategory.Show),
@@ -84,6 +86,29 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
                 CountsByCategory = countsByCategory,
             },
         };
+    }
+
+    private async Task<int> GetMappableItemsCountAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkItemDocument> validCoordinatesFilter = Builders<ParkItemDocument>.Filter.Ne(document => document.Latitude, null)
+            & Builders<ParkItemDocument>.Filter.Ne(document => document.Longitude, null)
+            & Builders<ParkItemDocument>.Filter.Gte(document => document.Latitude, -90d)
+            & Builders<ParkItemDocument>.Filter.Lte(document => document.Latitude, 90d)
+            & Builders<ParkItemDocument>.Filter.Gte(document => document.Longitude, -180d)
+            & Builders<ParkItemDocument>.Filter.Lte(document => document.Longitude, 180d)
+            & (Builders<ParkItemDocument>.Filter.Ne(document => document.Latitude, 0d)
+                | Builders<ParkItemDocument>.Filter.Ne(document => document.Longitude, 0d));
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
+            & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
+            & BuildClosedFilter(closedFilter)
+            & validCoordinatesFilter;
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        long count = await this.parkItemsCollection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+        return count > int.MaxValue ? int.MaxValue : checked((int)count);
     }
 
     private async Task<RatingSummaryResult> GetRatingSummaryAsync(string parkId, CancellationToken cancellationToken)

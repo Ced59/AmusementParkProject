@@ -4,6 +4,7 @@ import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audienc
 import { ParkType } from '@app/models/parks/park-type';
 import { ParkOpeningHoursAdminFilter } from '@app/models/parks/park-opening-hours';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
+import { ParkStatus } from '@app/models/parks/park-status';
 
 
 export interface ParkAdminListFilters {
@@ -76,11 +77,15 @@ function buildClosedFilterQuery(closedFilter: ClosedEntityFilter | null | undefi
   return `${prefix}closedFilter=${encodeURIComponent(closedFilter)}`;
 }
 
+function buildStatusFilterQuery(status: ParkStatus | null | undefined): string {
+  return status ? `&status=${encodeURIComponent(status)}` : '';
+}
+
 export const PARKS_API_ENDPOINTS = {
-  getParksPaginated: (page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, sort: ParkAdminListSort | null = null, closedFilter?: ClosedEntityFilter | null) =>
-    `parks?page=${page}&size=${size}${visibleOnly ? '&visibleOnly=true' : ''}${buildRegionQuery(region)}${buildAdminListQuery(filters)}${buildAdminSortQuery(sort)}${buildClosedFilterQuery(closedFilter)}`,
+  getParksPaginated: (page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, sort: ParkAdminListSort | null = null, closedFilter?: ClosedEntityFilter | null, status?: ParkStatus | null) =>
+    `parks?page=${page}&size=${size}${visibleOnly ? '&visibleOnly=true' : ''}${buildRegionQuery(region)}${buildAdminListQuery(filters)}${buildAdminSortQuery(sort)}${buildClosedFilterQuery(closedFilter)}${buildStatusFilterQuery(status)}`,
   getRandomVisibleParks: (limit: number) => `parks/random-visible?limit=${limit}`,
-  getVisibleParkMapPoints: (query: string | null = null, region: ParkRegionFilter | null = null, closedFilter?: ClosedEntityFilter | null, audienceClassification?: ParkAudienceClassificationFilter | null) => {
+  getVisibleParkMapPoints: (query: string | null = null, region: ParkRegionFilter | null = null, closedFilter?: ClosedEntityFilter | null, audienceClassification?: ParkAudienceClassificationFilter | null, status?: ParkStatus | null) => {
     const params: string[] = [];
     if (query) {
       params.push(`query=${encodeURIComponent(query)}`);
@@ -93,6 +98,9 @@ export const PARKS_API_ENDPOINTS = {
     }
     if (audienceClassification) {
       params.push(`audienceClassification=${encodeURIComponent(audienceClassification)}`);
+    }
+    if (status) {
+      params.push(`status=${encodeURIComponent(status)}`);
     }
 
     return `parks/map-visible${params.length > 0 ? `?${params.join('&')}` : ''}`;
@@ -138,8 +146,8 @@ export const PARKS_API_ENDPOINTS = {
 
     return `parks/${encodeURIComponent(sourceParkId)}/nearby?${params.join('&')}`;
   },
-  searchParks: (query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, sort: ParkAdminListSort | null = null, closedFilter?: ClosedEntityFilter | null) =>
-    `parks?page=${page}&size=${size}&query=${encodeURIComponent(query)}${visibleOnly ? '&visibleOnly=true' : ''}${buildRegionQuery(region)}${buildAdminListQuery(filters)}${buildAdminSortQuery(sort)}${buildClosedFilterQuery(closedFilter)}`,
+  searchParks: (query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, sort: ParkAdminListSort | null = null, closedFilter?: ClosedEntityFilter | null, status?: ParkStatus | null) =>
+    `parks?page=${page}&size=${size}&query=${encodeURIComponent(query)}${visibleOnly ? '&visibleOnly=true' : ''}${buildRegionQuery(region)}${buildAdminListQuery(filters)}${buildAdminSortQuery(sort)}${buildClosedFilterQuery(closedFilter)}${buildStatusFilterQuery(status)}`,
   getParksByLocation: (latitude: number, longitude: number, radiusMeters: number, closedFilter?: ClosedEntityFilter | null) => `parks/geo-search?latitude=${latitude}&longitude=${longitude}&radiusMeters=${radiusMeters}${buildClosedFilterQuery(closedFilter)}`,
   updateParkVisibility: (id: string) => `parks/${id}/visibility`,
   updateParksBulkAdministration: 'parks/bulk-administration',

@@ -15,6 +15,30 @@ namespace AmusementPark.Application.Tests.Features.Parks.Handlers;
 public sealed class GetVisibleParkMapPointsQueryHandlerTests
 {
     [Fact]
+    public async Task HandleAsync_WhenExactStatusIsProvided_ShouldPassItToCriteriaAndIgnoreLegacyClosedFilter()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<ICountryReferenceService> countryReferenceService = new Mock<ICountryReferenceService>(MockBehavior.Strict);
+        countryReferenceService.Setup(service => service.FindCountryCodesByLocalizedSearchAsync(null, It.IsAny<CancellationToken>())).ReturnsAsync(Array.Empty<string>());
+        countryReferenceService.Setup(service => service.GetCountryCodesForRegion(null)).Returns(Array.Empty<string>());
+        parkRepository
+            .Setup(repository => repository.GetVisibleMapPointsAsync(
+                It.Is<ParkSearchCriteria>(criteria => criteria.Status == ParkStatus.UnderConstruction),
+                ClosedEntityFilter.All,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Park>());
+
+        GetVisibleParkMapPointsQueryHandler handler = new GetVisibleParkMapPointsQueryHandler(parkRepository.Object, countryReferenceService.Object);
+
+        ApplicationResult<IReadOnlyCollection<Park>> result = await handler.HandleAsync(
+            new GetVisibleParkMapPointsQuery(Status: ParkStatus.UnderConstruction));
+
+        Assert.True(result.IsSuccess);
+        parkRepository.VerifyAll();
+        countryReferenceService.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenAudienceClassificationFilterIsProvided_ShouldPassItToRepositoryCriteria()
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

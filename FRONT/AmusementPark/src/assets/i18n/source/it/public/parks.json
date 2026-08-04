@@ -2,7 +2,7 @@
   "parks": {
     "heroBadge": "Public catalog",
     "title": "Parks",
-    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "subtitle": "Esplora i parchi documentati e filtrali per fase del ciclo di vita.",
     "loadingTitle": "Caricamento parcos",
     "loadingMessage": "The parcos list is being loaded.",
     "errorTitle": "Impossibile caricare parcos",
@@ -37,25 +37,27 @@
     },
     "detail": {
       "heroBadge": "Panoramica del parco",
-      "heroDescription": "Scopri le informazioni pratiche attualmente disponibili per questo parco.",
+      "heroDescription": "Consulta le informazioni attualmente documentate per questo parco.",
       "loadingTitle": "Caricamento parco",
       "loadingMessage": "The parco page is being loaded.",
       "errorTitle": "Impossibile caricare the parco",
       "errorMessage": "The requested parco non è stato possibile caricare.",
       "practical": {
         "title": "Informazioni pratiche",
-        "subtitle": "Le informazioni essenziali per i visitatori attualmente disponibili per questo parco.",
+        "subtitle": "Le informazioni su posizione, contatti e riferimenti attualmente disponibili.",
         "postalCode": "CAP",
         "street": "Via",
         "openReference": "Apri la scheda di {{name}}"
       },
       "location": {
         "title": "Posizione",
-        "subtitle": "Trova il parco sulla mappa e consulta le sue coordinate."
+        "subtitle": "Consulta la posizione e le coordinate attualmente documentate."
       },
       "nearby": {
         "title": "Nearby parcos",
-        "subtitle": "Continua la scoperta con i parchi situati intorno a questa destinazione.",
+        "subtitle": "Scopri altri parchi aperti nei dintorni di questa destinazione.",
+        "alternativesTitle": "Alternative aperte nelle vicinanze",
+        "alternativesSubtitle": "Scopri i parchi attualmente aperti vicino a questo luogo documentato.",
         "loadingTitle": "Caricamento nearby parcos",
         "loadingMessage": "Nearby parcos are being loaded.",
         "errorTitle": "Impossibile caricare nearby parcos",
@@ -331,6 +333,14 @@
       "itemsTitle": "Luoghi da scoprire in questa zona",
       "emptyItemsTitle": "Nessun luogo in questa zona",
       "emptyItemsMessage": "Nessun luogo pubblico è attualmente collegato a questa zona."
+    },
+    "statusFilters": { "label": "Fase del ciclo di vita", "all": "Tutti gli stati" },
+    "lifecycle": {
+      "planned": { "title": "Progetto annunciato", "body": "Questa pagina documenta un progetto pianificato. Le informazioni riflettono gli annunci noti, non un parco attualmente visitabile." },
+      "underConstruction": { "title": "Parco in costruzione", "body": "Il progetto è in costruzione. I contenuti pubblicati ne documentano l’avanzamento; al momento non è possibile visitarlo." },
+      "temporarilyClosed": { "title": "Parco temporaneamente chiuso", "body": "Questa pagina e le recensioni passate documentano il parco, ma verifica la riapertura prima di pianificare una visita." },
+      "closedDefinitively": { "title": "Parco chiuso definitivamente", "body": "Questa pagina conserva la storia del parco, dei suoi luoghi e delle visite passate." },
+      "cancelled": { "title": "Progetto annullato", "body": "Questa pagina documenta un progetto abbandonato; i luoghi annunciati non rappresentano un parco visitabile." }
     },
     "closedFilters": {
       "label": "Stato",

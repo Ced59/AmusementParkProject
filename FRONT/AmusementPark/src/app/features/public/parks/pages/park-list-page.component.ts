@@ -12,7 +12,7 @@ import { ParkListStateFacade } from '../state/park-list-state.facade';
 import { ParkListViewComponent } from '../ui/park-list-view.component';
 import { SeoService } from '@core/seo/seo.service';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
-import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
+import { ParkStatus } from '@app/models/parks/park-status';
 
 @Component({
   selector: 'app-park-list-page',
@@ -33,14 +33,18 @@ export class ParkListPageComponent implements OnInit {
   protected readonly selectedMapParkId = this.stateFacade.selectedParkId;
   protected readonly selectedParkCard = this.stateFacade.selectedParkCard;
   protected readonly selectedRegion = this.stateFacade.selectedRegion;
-  protected readonly selectedClosedFilter = this.stateFacade.selectedClosedFilter;
+  protected readonly selectedStatus = this.stateFacade.selectedStatus;
   protected readonly selectedAudienceClassificationFilter = this.stateFacade.selectedAudienceClassificationFilter;
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
-  protected readonly closedFilterOptions = signal([
-    { labelKey: 'parks.closedFilters.openOnly', value: DEFAULT_CLOSED_ENTITY_FILTER },
-    { labelKey: 'parks.closedFilters.withClosed', value: 'all' },
-    { labelKey: 'parks.closedFilters.closedOnly', value: 'closedOnly' }
+  protected readonly statusFilterOptions = signal([
+    { labelKey: 'parks.statusFilters.all', value: null },
+    { labelKey: 'parks.statuses.operating', value: 'Operating' },
+    { labelKey: 'parks.statuses.planned', value: 'Planned' },
+    { labelKey: 'parks.statuses.underConstruction', value: 'UnderConstruction' },
+    { labelKey: 'parks.statuses.temporarilyClosed', value: 'TemporarilyClosed' },
+    { labelKey: 'parks.statuses.closedDefinitively', value: 'ClosedDefinitively' },
+    { labelKey: 'parks.statuses.cancelled', value: 'Cancelled' }
   ]);
   protected readonly audienceClassificationFilterOptions = signal([
     { labelKey: 'parks.audienceFilters.all', value: null },
@@ -142,10 +146,10 @@ export class ParkListPageComponent implements OnInit {
     this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), region);
   }
 
-  onClosedFilterChanged(value: string | null): void {
-    const closedFilter: ClosedEntityFilter = normalizeClosedFilter(value);
+  onStatusFilterChanged(value: string | null): void {
+    const status: ParkStatus | null = normalizeParkStatus(value);
 
-    this.stateFacade.setClosedFilter(closedFilter);
+    this.stateFacade.setStatus(status);
     this.stateFacade.clearSelectedPark();
     this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
     this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
@@ -178,12 +182,18 @@ interface ParkSearchTrigger {
   immediate: boolean;
 }
 
-function normalizeClosedFilter(value: string | null): ClosedEntityFilter {
-  if (value === 'all' || value === 'closedOnly') {
-    return value;
+function normalizeParkStatus(value: string | null): ParkStatus | null {
+  switch (value) {
+    case 'Operating':
+    case 'Planned':
+    case 'UnderConstruction':
+    case 'TemporarilyClosed':
+    case 'ClosedDefinitively':
+    case 'Cancelled':
+      return value;
+    default:
+      return null;
   }
-
-  return DEFAULT_CLOSED_ENTITY_FILTER;
 }
 
 function normalizeAudienceClassificationFilter(value: string | null): ParkAudienceClassificationFilter | null {

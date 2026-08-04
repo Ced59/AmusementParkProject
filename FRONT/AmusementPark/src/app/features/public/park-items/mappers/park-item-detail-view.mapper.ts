@@ -100,6 +100,7 @@ export function mapParkItemToDetailViewModel(
     typeIconClass: resolveParkItemTypeIconClass(item.type),
     typeTone: resolveParkItemTypeTone(item.type, item.category),
     parkName: park?.name?.trim() ?? null,
+    parkStatus: park?.status ?? 'Operating',
     homeLink: ['/', currentLanguage, 'home'],
     parkLink,
     itemsLink,

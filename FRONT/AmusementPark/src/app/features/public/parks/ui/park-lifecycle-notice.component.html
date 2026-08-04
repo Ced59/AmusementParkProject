@@ -1,0 +1,9 @@
+@if (notice; as currentNotice) {
+  <aside class="park-lifecycle-notice" role="note">
+    <i [class]="currentNotice.iconClass" aria-hidden="true"></i>
+    <div>
+      <strong>{{ currentNotice.titleKey | translate }}</strong>
+      <p>{{ currentNotice.bodyKey | translate:{ name: parkName } }}</p>
+    </div>
+  </aside>
+}

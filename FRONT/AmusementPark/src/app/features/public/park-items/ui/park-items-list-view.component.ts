@@ -21,6 +21,7 @@ import { UiMapSlotComponent } from '@ui/maps';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { LocalizedPluralPipe } from '@shared/pipes';
+import { ParkLifecycleNoticeComponent } from '@features/public/parks/ui/park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-items-list-view',
@@ -45,7 +46,8 @@ import { LocalizedPluralPipe } from '@shared/pipes';
     UiSurfaceDirective,
     PublicSharePanelComponent,
     UnlocatedItemsPanelComponent,
-    LocalizedPluralPipe
+    LocalizedPluralPipe,
+    ParkLifecycleNoticeComponent
   ]
 })
 export class ParkItemsListViewComponent {
@@ -92,14 +94,15 @@ export class ParkItemsListViewComponent {
 
     const navigateLabel: string = this.translateService.instant('parks.map.navigate');
     const openDetailLabel: string = this.translateService.instant('parks.map.openDetail');
+    const isOpenToVisitors: boolean = this.pageView()?.parkStatus === 'Operating';
 
     return focus.map.markers.map((marker: MapMarker) => this.mapMarkerPopupActionService.enrich(marker, {
-      directions: {
+      directions: isOpenToVisitors ? {
         latitude: marker.lat,
         longitude: marker.lng,
         label: marker.title
-      },
-      directionsLabel: navigateLabel,
+      } : null,
+      directionsLabel: isOpenToVisitors ? navigateLabel : null,
       detailLabel: openDetailLabel
     }));
   }

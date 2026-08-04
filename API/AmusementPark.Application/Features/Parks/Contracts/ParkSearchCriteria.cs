@@ -1,3 +1,5 @@
+using AmusementPark.Core.Domain.Parks;
+
 namespace AmusementPark.Application.Features.Parks.Contracts;
 
 /// <summary>
@@ -12,6 +14,8 @@ public sealed record ParkSearchCriteria(
 
     public ParkAudienceClassificationFilter? AudienceClassificationFilter { get; init; }
 
+    public ParkStatus? Status { get; init; }
+
     public bool HasSearchTerm => !string.IsNullOrWhiteSpace(SearchTerm);
 
     public bool HasMatchingCountryCodes => MatchingCountryCodes.Count > 0;
@@ -20,5 +24,7 @@ public sealed record ParkSearchCriteria(
 
     public bool HasAudienceClassification => AudienceClassificationFilter.HasValue;
 
-    public bool HasAnyFilter => HasSearchTerm || HasMatchingCountryCodes || HasRegionCountryCodes || HasAudienceClassification;
+    public bool HasStatus => Status.HasValue;
+
+    public bool HasAnyFilter => HasSearchTerm || HasMatchingCountryCodes || HasRegionCountryCodes || HasAudienceClassification || HasStatus;
 }

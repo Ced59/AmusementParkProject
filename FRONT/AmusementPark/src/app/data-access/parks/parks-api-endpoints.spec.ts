@@ -50,6 +50,15 @@ describe('PARKS_API_ENDPOINTS', () => {
     expect(PARKS_API_ENDPOINTS.getParkExplorer('park-1', 'all')).toBe('park-zones/park/park-1/explorer?closedFilter=all');
   });
 
+  it('adds an exact lifecycle status to list, search and map endpoints', () => {
+    expect(PARKS_API_ENDPOINTS.getParksPaginated(1, 10, true, null, null, null, 'openOnly', 'Planned'))
+      .toBe('parks?page=1&size=10&visibleOnly=true&status=Planned');
+    expect(PARKS_API_ENDPOINTS.searchParks('land', 1, 10, true, null, null, null, 'all', 'Cancelled'))
+      .toBe('parks?page=1&size=10&query=land&visibleOnly=true&closedFilter=all&status=Cancelled');
+    expect(PARKS_API_ENDPOINTS.getVisibleParkMapPoints(null, null, 'openOnly', null, 'UnderConstruction'))
+      .toBe('parks/map-visible?status=UnderConstruction');
+  });
+
   it('adds admin sort parameters when a list sort is selected', () => {
     expect(PARKS_API_ENDPOINTS.getParksPaginated(1, 10, false, null, null, { sortBy: 'parkItemsTotalCount', sortDirection: 'desc' }))
       .toBe('parks?page=1&size=10&sortBy=parkItemsTotalCount&sortDirection=desc');

@@ -25,6 +25,7 @@ import { ParkWeatherCardComponent } from './park-weather-card.component';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.component';
 import { CommentSummaryLinkComponent } from '@features/public/comments/ui/comment-summary-link.component';
+import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component';
 
 @Component({
   selector: 'app-park-detail-view',
@@ -50,6 +51,7 @@ import { CommentSummaryLinkComponent } from '@features/public/comments/ui/commen
     PublicSharePanelComponent,
     RatingStarsComponent,
     CommentSummaryLinkComponent,
+    ParkLifecycleNoticeComponent,
     PublicContextualBlockDirective
   ]
 })

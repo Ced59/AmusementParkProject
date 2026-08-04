@@ -693,9 +693,10 @@ describe('ParkDetailStateFacade', () => {
     'Cancelled',
   ] as const)('does not request opening hours for a %s park', (status: Park['status']) => {
     const context = configureFacade();
-    context.parksPort.summaryResponses$ = status === 'ClosedDefinitively'
-      ? [of(createSummary(0, true, true, status)), of(createSummary(0, true, true, status))]
-      : [of(createSummary(0, true, true, status))];
+    context.parksPort.summaryResponses$ = [
+      of(createSummary(0, true, true, status)),
+      of(createSummary(0, true, true, status)),
+    ];
 
     context.facade.loadPark('park-1');
 
