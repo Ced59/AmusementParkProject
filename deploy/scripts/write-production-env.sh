@@ -109,7 +109,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line BACKEND_PRIVATE_SUBNET "$(value_or_default BACKEND_PRIVATE_SUBNET '172.30.31.0/24')"
   write_line ALLOWED_HOSTS "${allowed_hosts}"
   write_line FORWARDED_HEADERS_ALLOWED_HOSTS "${forwarded_allowed_hosts}"
-  write_line FORWARDED_HEADERS_KNOWN_NETWORKS "$(value_or_default FORWARDED_HEADERS_KNOWN_NETWORKS '172.30.31.0/24')"
+  write_line FORWARDED_HEADERS_KNOWN_NETWORKS "$(value_or_default FORWARDED_HEADERS_KNOWN_NETWORKS '172.30.31.0/24;172.19.0.0/16')"
   write_line FORWARDED_HEADERS_FORWARD_LIMIT "$(value_or_default FORWARDED_HEADERS_FORWARD_LIMIT '2')"
   write_line FRONT_SSR_API_INTERNAL_URL "${front_ssr_api_internal_url}"
   write_line SSR_ALLOWED_HOSTS "${ssr_allowed_hosts}"

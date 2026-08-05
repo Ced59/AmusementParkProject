@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using AmusementPark.WebAPI.ClientIp;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -55,7 +56,7 @@ public sealed class SecurityReportsController : ControllerBase
             summary.BlockedUri,
             summary.SourceFile,
             summary.LineNumber,
-            this.HttpContext.Connection.RemoteIpAddress?.ToString(),
+            ClientIpAddressResolver.Resolve(this.HttpContext),
             this.Request.Headers["User-Agent"].ToString());
 
         return this.NoContent();

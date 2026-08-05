@@ -28,6 +28,7 @@ import {
 } from './src/server/ssr/robot-ssr-policy';
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { isPublicCommentSsrRoute } from './src/server/ssr/public-comment-ssr-route-policy';
+import { appendForwardedFor } from './src/server/proxy/forwarded-for';
 import { RetainedBucketCache } from './src/server/technical-stats/retained-bucket-cache';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-writer';
@@ -3371,7 +3372,10 @@ function buildApiProxyHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHe
   headers['host'] = publicHost;
   headers['x-forwarded-host'] = publicHost;
   headers['x-forwarded-proto'] = publicProtocol;
-  headers['x-forwarded-for'] = appendForwardedFor(req);
+  headers['x-forwarded-for'] = appendForwardedFor(
+    req.headers['x-forwarded-for'],
+    req.socket.remoteAddress,
+  );
 
   if (req.originalUrl.toLowerCase().startsWith('/api')) {
     headers['x-forwarded-prefix'] = '/api';
@@ -3388,7 +3392,10 @@ function buildSeoDocumentFetchHeaders(req: Request, targetUrl: URL): http.Outgoi
     'host': publicHost,
     'x-forwarded-host': publicHost,
     'x-forwarded-proto': publicProtocol,
-    'x-forwarded-for': appendForwardedFor(req),
+    'x-forwarded-for': appendForwardedFor(
+      req.headers['x-forwarded-for'],
+      req.socket.remoteAddress,
+    ),
     'accept': 'application/xml, text/plain, */*',
     'accept-language': 'en',
     'user-agent': 'AmusementPark-SSR-SeoCache/1.0',
@@ -3396,21 +3403,6 @@ function buildSeoDocumentFetchHeaders(req: Request, targetUrl: URL): http.Outgoi
   };
 
   return headers;
-}
-
-function appendForwardedFor(req: Request): string {
-  const existing = getForwardedValue(req, 'x-forwarded-for');
-  const remoteAddress = req.socket.remoteAddress ?? '';
-
-  if (!existing) {
-    return remoteAddress;
-  }
-
-  if (!remoteAddress) {
-    return existing;
-  }
-
-  return `${existing}, ${remoteAddress}`;
 }
 
 function getPublicRequestUrl(req: Request): string {

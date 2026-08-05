@@ -52,12 +52,12 @@ Variables recommandées pour le déploiement Docker actuel :
 ```bash
 NPM_DOCKER_NETWORK_NAME=nginx-proxy-network
 BACKEND_PRIVATE_SUBNET=172.30.31.0/24
-FORWARDED_HEADERS_KNOWN_NETWORKS=172.30.31.0/24
+FORWARDED_HEADERS_KNOWN_NETWORKS=172.30.31.0/24;172.19.0.0/16
 FORWARDED_HEADERS_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
 FORWARDED_HEADERS_FORWARD_LIMIT=2
 ```
 
-Si Nginx Proxy Manager tourne dans un autre réseau Docker et que son adresse apparaît dans `X-Forwarded-For`, ajouter ce réseau à `FORWARDED_HEADERS_KNOWN_NETWORKS`, séparé par `;`.
+La valeur doit contenir le réseau privé du front et celui de Nginx Proxy Manager, séparés par `;`, afin que l'API puisse remonter toute la chaîne jusqu'à l'adresse cliente.
 
 
 ## CSP Report-Only M18.4

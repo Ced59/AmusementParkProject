@@ -111,7 +111,7 @@ Recommandation : activer le seed admin seulement au premier déploiement, puis r
 |---|---|
 | `NPM_DOCKER_NETWORK_NAME` | `nginx-proxy-network` sur ton VPS actuel |
 | `BACKEND_PRIVATE_SUBNET` | `172.30.31.0/24` |
-| `FORWARDED_HEADERS_KNOWN_NETWORKS` | `172.30.31.0/24` |
+| `FORWARDED_HEADERS_KNOWN_NETWORKS` | `172.30.31.0/24;172.19.0.0/16` |
 | `FORWARDED_HEADERS_ALLOWED_HOSTS` | `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1` |
 | `ALLOWED_HOSTS` | `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;api;amusementpark-api` |
 | `SSR_ALLOWED_HOSTS` | `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1` |

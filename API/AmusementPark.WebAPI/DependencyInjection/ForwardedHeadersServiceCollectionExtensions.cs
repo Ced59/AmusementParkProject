@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using AmusementPark.WebAPI.Configuration;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +17,7 @@ namespace AmusementPark.WebAPI.DependencyInjection;
 /// </summary>
 public static class ForwardedHeadersServiceCollectionExtensions
 {
+    private const int Ipv4MappedIpv6PrefixLength = 96;
     private static readonly char[] ForwardedHeaderSeparators = [';', ','];
 
     public static IServiceCollection AddApiForwardedHeaders(
@@ -74,6 +76,10 @@ public static class ForwardedHeadersServiceCollectionExtensions
             }
 
             knownProxies.Add(address);
+            if (address.AddressFamily == AddressFamily.InterNetwork)
+            {
+                knownProxies.Add(address.MapToIPv6());
+            }
         }
 
         return knownProxies;
@@ -110,6 +116,10 @@ public static class ForwardedHeadersServiceCollectionExtensions
             try
             {
                 knownNetworks.Add(new SystemNetIPNetwork(address, prefixLength));
+                if (address.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    knownNetworks.Add(new SystemNetIPNetwork(address.MapToIPv6(), prefixLength + Ipv4MappedIpv6PrefixLength));
+                }
             }
             catch (ArgumentException exception)
             {
