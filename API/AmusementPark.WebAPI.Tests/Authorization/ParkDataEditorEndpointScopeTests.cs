@@ -1,5 +1,10 @@
 using System.Reflection;
 using System.Security.Claims;
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Commands;
+using AmusementPark.Application.Features.Images.Queries;
+using AmusementPark.Application.Features.Images.Results;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Images;
@@ -7,6 +12,8 @@ using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
 using Xunit;
 
 namespace AmusementPark.WebAPI.Tests.Authorization;
@@ -37,6 +44,72 @@ public sealed class ParkDataEditorEndpointScopeTests
         bool expected)
     {
         Assert.Equal(expected, ParkDataEditorImagesController.IsAllowedOwnership(category, ownerType, "owner-id"));
+    }
+
+    [Theory]
+    [InlineData(ImageCategory.Park, ImageOwnerType.None, null, true)]
+    [InlineData(ImageCategory.Park, ImageOwnerType.Park, "park-1", true)]
+    [InlineData(ImageCategory.Avatar, ImageOwnerType.User, "user-1", false)]
+    [InlineData(ImageCategory.Logo, ImageOwnerType.ParkOperator, "operator-1", false)]
+    [InlineData(ImageCategory.VideoThumbnail, ImageOwnerType.Video, "video-1", false)]
+    public void ParkDataEditorImages_ShouldValidateTheCurrentImageScope(
+        ImageCategory category,
+        ImageOwnerType ownerType,
+        string? ownerId,
+        bool expected)
+    {
+        Image image = new Image
+        {
+            Category = category,
+            OwnerType = ownerType,
+            OwnerId = ownerId,
+        };
+
+        Assert.Equal(expected, ParkDataEditorImagesController.IsAllowedImageScope(image));
+    }
+
+    [Fact]
+    public async Task UpdateMetadata_ShouldRejectReclassificationOfAnOutOfScopeImage()
+    {
+        Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> getImageHandler =
+            new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
+        getImageHandler
+            .Setup(handler => handler.HandleAsync(
+                It.Is<GetImageByIdQuery>(query => query.ImageId == "avatar-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<Image>.Success(new Image
+            {
+                Id = "avatar-1",
+                Category = ImageCategory.Avatar,
+                OwnerType = ImageOwnerType.User,
+                OwnerId = "user-1",
+            }));
+        Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>> updateMetadataHandler =
+            new Mock<ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>>>(MockBehavior.Strict);
+        ParkDataEditorImagesController controller = new ParkDataEditorImagesController(
+            new Mock<ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>>>(MockBehavior.Strict).Object,
+            new Mock<ICommandHandler<LinkImageCommand, ApplicationResult<Image>>>(MockBehavior.Strict).Object,
+            new Mock<ICommandHandler<SetCurrentImageCommand, ApplicationResult<Image>>>(MockBehavior.Strict).Object,
+            updateMetadataHandler.Object,
+            getImageHandler.Object);
+        controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext(),
+        };
+
+        IActionResult result = await controller.UpdateMetadataAsync(
+            "avatar-1",
+            new UpdateImageAssetRequest
+            {
+                Category = ImageCategoryDto.PARK,
+                OwnerType = ImageOwnerTypeDto.PARK,
+                OwnerId = "park-1",
+            },
+            CancellationToken.None);
+
+        ObjectResult forbidden = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(StatusCodes.Status403Forbidden, forbidden.StatusCode);
+        updateMetadataHandler.VerifyNoOtherCalls();
     }
 
     [Fact]

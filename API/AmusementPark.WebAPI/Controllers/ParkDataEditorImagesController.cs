@@ -111,7 +111,8 @@ public sealed class ParkDataEditorImagesController : ControllerBase
         }
 
         ImageOwnerType ownerType = request.OwnerType.ToDomain();
-        if (!IsAllowedOwnership(imageResult.Value.Category, ownerType, request.OwnerId))
+        if (!IsAllowedImageScope(imageResult.Value)
+            || !IsAllowedOwnership(imageResult.Value.Category, ownerType, request.OwnerId))
         {
             return this.ScopeDenied();
         }
@@ -181,9 +182,7 @@ public sealed class ParkDataEditorImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        if (!IsAllowedCategory(result.Value.Category)
-            || (result.Value.OwnerType != ImageOwnerType.None
-                && !IsAllowedOwnership(result.Value.Category, result.Value.OwnerType, result.Value.OwnerId)))
+        if (!IsAllowedImageScope(result.Value))
         {
             return this.ScopeDenied();
         }
@@ -205,6 +204,11 @@ public sealed class ParkDataEditorImagesController : ControllerBase
         if (!imageResult.IsSuccess || imageResult.Value is null)
         {
             return this.ToActionResult(imageResult);
+        }
+
+        if (!IsAllowedImageScope(imageResult.Value))
+        {
+            return this.ScopeDenied();
         }
 
         ImageCategory category = request.Category?.ToDomain() ?? imageResult.Value.Category;
@@ -233,6 +237,13 @@ public sealed class ParkDataEditorImagesController : ControllerBase
             or ImageCategory.Park
             or ImageCategory.ParkItem
             or ImageCategory.StandaloneAttraction;
+    }
+
+    internal static bool IsAllowedImageScope(Image image)
+    {
+        return IsAllowedCategory(image.Category)
+            && (image.OwnerType == ImageOwnerType.None
+                || IsAllowedOwnership(image.Category, image.OwnerType, image.OwnerId));
     }
 
     internal static bool IsAllowedOwnership(

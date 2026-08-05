@@ -1,6 +1,20 @@
 {
-  "version": "4.1.6",
+  "version": "4.1.7",
   "history": [
+    {
+      "version": "4.1.7",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "Les outils d’administration sont mieux encadrés.",
+        "en": "Administration tools are better safeguarded.",
+        "de": "Die Verwaltungswerkzeuge sind besser abgesichert.",
+        "nl": "De beheertools zijn beter afgeschermd.",
+        "it": "Gli strumenti di amministrazione sono meglio protetti.",
+        "es": "Las herramientas de administración están mejor protegidas.",
+        "pl": "Narzędzia administracyjne są lepiej zabezpieczone.",
+        "pt": "As ferramentas de administração estão mais protegidas."
+      }
+    },
     {
       "version": "4.1.6",
       "releasedAt": "2026-08-05",
