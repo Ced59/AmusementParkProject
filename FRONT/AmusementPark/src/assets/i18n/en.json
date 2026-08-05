@@ -207,6 +207,13 @@
         "parkGraphUpserts": "Preview then apply a full or partial park graph JSON.",
         "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow.",
         "history": "Manage timelines, sourced milestones and article content.",
+        "standaloneAttractions": "Manage attractions that are not attached to a park.",
+        "fieldMode": "Quickly complete photos and locations directly on site.",
+        "technicalPages": "Manage technical pages and their localized content.",
+        "imageBatch": "Process and update multiple images in one operation.",
+        "videos": "Manage the video library, its associations and metadata.",
+        "socialShare": "Review usage statistics for social sharing tools.",
+        "technicalStats": "Monitor SSR cache, crawlers, rendering and purges.",
         "socialPublishing": "Compose, publish and track announcements sent to social networks.",
         "parkWeather": "Monitor scheduled public data refreshes."
       },
@@ -603,6 +610,12 @@
       "subtitle": "Reference list of manufacturers used by attractions.",
       "reviewStatus": "Admin status",
       "loadError": "Unable to load manufacturers."
+    },
+    "fieldMode": {
+      "navTitle": "Field mode"
+    },
+    "technicalStats": {
+      "navTitle": "Technical stats"
     },
     "operators": {
       "total": "Operators: {{count}}",

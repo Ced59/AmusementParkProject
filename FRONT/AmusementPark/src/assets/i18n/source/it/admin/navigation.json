@@ -1,0 +1,21 @@
+{
+  "admin": {
+    "fieldMode": {
+      "navTitle": "Modalità sul campo"
+    },
+    "technicalStats": {
+      "navTitle": "Statistiche tecniche"
+    },
+    "dashboard": {
+      "shortcuts": {
+        "standaloneAttractions": "Gestire le attrazioni autonome non collegate a un parco.",
+        "fieldMode": "Completare rapidamente foto e posizioni direttamente sul posto.",
+        "technicalPages": "Gestire le pagine tecniche e i relativi contenuti localizzati.",
+        "imageBatch": "Elaborare e aggiornare più immagini in un'unica operazione.",
+        "videos": "Gestire la videoteca, i collegamenti e i metadati.",
+        "socialShare": "Consultare le statistiche di utilizzo degli strumenti di condivisione.",
+        "technicalStats": "Monitorare cache SSR, crawler, rendering e pulizie."
+      }
+    }
+  }
+}

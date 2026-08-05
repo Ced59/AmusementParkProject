@@ -207,6 +207,13 @@
         "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
         "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
         "history": "Zarządzaj osiami czasu, udokumentowanymi kamieniami milowymi i artykułami historycznymi.",
+        "standaloneAttractions": "Zarządzaj samodzielnymi atrakcjami, które nie są przypisane do parku.",
+        "fieldMode": "Szybko uzupełniaj zdjęcia i lokalizacje bezpośrednio w terenie.",
+        "technicalPages": "Zarządzaj stronami technicznymi i ich zlokalizowaną treścią.",
+        "imageBatch": "Przetwarzaj i aktualizuj wiele obrazów w jednej operacji.",
+        "videos": "Zarządzaj biblioteką filmów, powiązaniami i metadanymi.",
+        "socialShare": "Przeglądaj statystyki użycia narzędzi udostępniania.",
+        "technicalStats": "Monitoruj pamięć podręczną SSR, roboty, renderowanie i czyszczenie.",
         "socialPublishing": "Twórz, publikuj i monitoruj ogłoszenia wysyłane do sieci społecznościowych.",
         "parkWeather": "Monitoruj zaplanowane odświeżanie danych publicznych."
       },
@@ -603,6 +610,12 @@
       "subtitle": "Lista producentów używana przy atrakcjach.",
       "reviewStatus": "Status admin",
       "loadError": "Nie udało się wczytać producentów."
+    },
+    "fieldMode": {
+      "navTitle": "Tryb terenowy"
+    },
+    "technicalStats": {
+      "navTitle": "Statystyki techniczne"
     },
     "operators": {
       "total": "Operatorzy: {{count}}",

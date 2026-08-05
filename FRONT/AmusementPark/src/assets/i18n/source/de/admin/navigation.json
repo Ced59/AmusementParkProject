@@ -1,0 +1,21 @@
+{
+  "admin": {
+    "fieldMode": {
+      "navTitle": "Vor-Ort-Modus"
+    },
+    "technicalStats": {
+      "navTitle": "Technische Statistiken"
+    },
+    "dashboard": {
+      "shortcuts": {
+        "standaloneAttractions": "Eigenständige Attraktionen verwalten, die keinem Park zugeordnet sind.",
+        "fieldMode": "Fotos und Positionen direkt vor Ort schnell ergänzen.",
+        "technicalPages": "Technische Seiten und ihre lokalisierten Inhalte verwalten.",
+        "imageBatch": "Mehrere Bilder in einem Vorgang verarbeiten und aktualisieren.",
+        "videos": "Videobibliothek, Zuordnungen und Metadaten verwalten.",
+        "socialShare": "Nutzungsstatistiken der Teilen-Funktionen prüfen.",
+        "technicalStats": "SSR-Cache, Crawler, Rendering und Bereinigungen überwachen."
+      }
+    }
+  }
+}

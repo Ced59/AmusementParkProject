@@ -8,8 +8,8 @@
   </header>
 
   <div class="admin-dashboard__grid" aria-label="Administration">
-    @for (shortcut of shortcuts; track shortcut.segment) {
-      <a class="admin-dashboard__shortcut" [routerLink]="buildAdminRoute(shortcut.segment)">
+    @for (shortcut of shortcuts; track shortcut.id) {
+      <a class="admin-dashboard__shortcut" [routerLink]="buildAdminRoute(shortcut.segments)">
         <span class="admin-dashboard__shortcut-icon" aria-hidden="true">
           <i [class]="shortcut.iconClass"></i>
         </span>

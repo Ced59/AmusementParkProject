@@ -207,6 +207,13 @@
         "parkGraphUpserts": "Prévisualiser puis appliquer un JSON global ou partiel de parc.",
         "seoSitemaps": "Piloter le sitemap index, les sections XML, les statistiques et IndexNow.",
         "history": "Gérer les timelines, les jalons sourcés et les articles historiques.",
+        "standaloneAttractions": "Gérer les attractions qui ne dépendent d’aucun parc.",
+        "fieldMode": "Compléter rapidement les photos et positions directement sur place.",
+        "technicalPages": "Administrer les pages techniques et leurs contenus localisés.",
+        "imageBatch": "Traiter et mettre à jour plusieurs images en une seule opération.",
+        "videos": "Gérer la vidéothèque, ses rattachements et ses métadonnées.",
+        "socialShare": "Consulter les statistiques d’utilisation des outils de partage.",
+        "technicalStats": "Suivre le cache SSR, les robots, le rendu et les purges.",
         "socialPublishing": "Composez, publiez et suivez les annonces envoyées sur les réseaux sociaux.",
         "parkWeather": "Suivre les rafraichissements planifiés de données publiques."
       },
@@ -603,6 +610,12 @@
       "subtitle": "Référentiel des constructeurs utilisés par les attractions.",
       "reviewStatus": "Statut admin",
       "loadError": "Impossible de charger les constructeurs."
+    },
+    "fieldMode": {
+      "navTitle": "Mode terrain"
+    },
+    "technicalStats": {
+      "navTitle": "Stats techniques"
     },
     "operators": {
       "total": "Exploitants : {{count}}",
