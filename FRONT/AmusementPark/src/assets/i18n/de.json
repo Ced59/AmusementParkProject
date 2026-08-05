@@ -207,6 +207,7 @@
         "parkGraphUpserts": "Ein vollständiges oder teilweises Park-JSON prüfen und anwenden.",
         "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten.",
         "history": "Timelines, belegte Meilensteine und historische Artikel verwalten.",
+        "socialPublishing": "Ankündigungen für soziale Netzwerke verfassen, veröffentlichen und verfolgen.",
         "parkWeather": "Geplante Aktualisierungen offentlicher Daten uberwachen."
       },
       "title": "Dashboard",
@@ -1847,6 +1848,56 @@
         "success": "Erfolg",
         "failed": "Fehler",
         "missingSitemap": "SSR-Cache konnte nicht vorgewärmt werden: Sitemap-Index nicht gefunden."
+      }
+    },
+    "socialPublishing": {
+      "navTitle": "Social-Media-Beiträge",
+      "kicker": "Community",
+      "title": "Veröffentlichungen in sozialen Netzwerken",
+      "subtitle": "Website-Ankündigungen zentral verwalten und Links mit Open-Graph-Vorschau veröffentlichen.",
+      "loading": "Veröffentlichungskanäle werden geladen...",
+      "loadError": "Social-Media-Beiträge konnten nicht geladen werden.",
+      "provider": {
+        "channel": "Aktiver Kanal",
+        "configured": "Konfiguriert",
+        "notConfigured": "Nicht konfiguriert",
+        "openPage": "Seite öffnen",
+        "automaticParkAnnouncements": "Wenn ein Park erstmals öffentlich sichtbar wird, wird automatisch eine zweisprachige Ankündigung vorbereitet.",
+        "configurationHelp": "Page-ID, Seiten-URL und Page Access Token in der Produktionsumgebung hinterlegen und anschließend den Kanal aktivieren."
+      },
+      "composer": {
+        "eyebrow": "Neuer Beitrag",
+        "title": "Link der Website veröffentlichen",
+        "messageLabel": "Beitragstext",
+        "messagePlaceholder": "Eine Nachricht auf Französisch, Englisch oder in beiden Sprachen hinzufügen...",
+        "urlLabel": "Öffentlicher Amusement-Parks-Link",
+        "urlPlaceholder": "https://amusement-parks.fun/de/...",
+        "ogTitle": "Automatische Open-Graph-Vorschau",
+        "ogDescription": "Facebook übernimmt OG-Titel, Beschreibung und Bild direkt von dieser öffentlichen Seite.",
+        "publish": "Auf Facebook veröffentlichen"
+      },
+      "history": {
+        "eyebrow": "Verlauf",
+        "title": "Letzte Beiträge",
+        "empty": "Es wurde noch kein Social-Media-Beitrag vorbereitet.",
+        "openPost": "Beitrag ansehen",
+        "retry": "Erneut versuchen"
+      },
+      "statuses": {
+        "Pending": "In Bearbeitung",
+        "Published": "Veröffentlicht",
+        "Failed": "Fehlgeschlagen"
+      },
+      "triggers": {
+        "Manual": "Manuell",
+        "AutomaticParkPublication": "Neuer Park"
+      },
+      "toasts": {
+        "successSummary": "Beitrag gesendet",
+        "publishSuccess": "Der Beitrag ist auf der Facebook-Seite verfügbar.",
+        "errorSummary": "Veröffentlichung fehlgeschlagen",
+        "publishError": "Der Beitrag konnte nicht gesendet werden.",
+        "retryError": "Der Beitrag konnte nicht erneut gesendet werden."
       }
     },
     "socialShare": {

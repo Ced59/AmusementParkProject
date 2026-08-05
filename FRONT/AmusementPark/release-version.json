@@ -1,6 +1,20 @@
 {
-  "version": "4.0.32",
+  "version": "4.1.0",
   "history": [
+    {
+      "version": "4.1.0",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "Les nouveautés du site peuvent désormais être partagées plus facilement avec la communauté.",
+        "en": "Site updates can now be shared more easily with the community.",
+        "de": "Neuigkeiten der Website können jetzt leichter mit der Community geteilt werden.",
+        "nl": "Nieuws van de website kan nu makkelijker met de community worden gedeeld.",
+        "it": "Le novità del sito possono ora essere condivise più facilmente con la community.",
+        "es": "Las novedades del sitio ahora se pueden compartir más fácilmente con la comunidad.",
+        "pl": "Nowości w witrynie można teraz łatwiej udostępniać społeczności.",
+        "pt": "As novidades do site podem agora ser partilhadas mais facilmente com a comunidade."
+      }
+    },
     {
       "version": "4.0.32",
       "releasedAt": "2026-08-05",

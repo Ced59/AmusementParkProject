@@ -90,6 +90,8 @@ public sealed class MongoDbSettings
 
     public string SocialShareEventsCollectionName { get; set; } = "socialShareEvents";
 
+    public string SocialPublicationsCollectionName { get; set; } = "socialPublications";
+
     public string UserRatingsCollectionName { get; set; } = "userRatings";
 
     public string RatingAggregatesCollectionName { get; set; } = "ratingAggregates";

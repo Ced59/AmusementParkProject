@@ -207,6 +207,7 @@
         "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
         "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow.",
         "history": "Zarządzaj osiami czasu, udokumentowanymi kamieniami milowymi i artykułami historycznymi.",
+        "socialPublishing": "Twórz, publikuj i monitoruj ogłoszenia wysyłane do sieci społecznościowych.",
         "parkWeather": "Monitoruj zaplanowane odświeżanie danych publicznych."
       },
       "title": "Panel",
@@ -1847,6 +1848,56 @@
         "success": "sukces",
         "failed": "błąd",
         "missingSitemap": "Nie można rozgrzać pamięci podręcznej SSR: nie znaleziono indeksu sitemap."
+      }
+    },
+    "socialPublishing": {
+      "navTitle": "Publikacje społecznościowe",
+      "kicker": "Społeczność",
+      "title": "Publikowanie w sieciach społecznościowych",
+      "subtitle": "Zarządzaj ogłoszeniami witryny w jednym miejscu i publikuj linki z podglądem Open Graph.",
+      "loading": "Ładowanie kanałów publikacji...",
+      "loadError": "Nie można załadować publikacji społecznościowych.",
+      "provider": {
+        "channel": "Aktywny kanał",
+        "configured": "Skonfigurowano",
+        "notConfigured": "Nie skonfigurowano",
+        "openPage": "Otwórz stronę",
+        "automaticParkAnnouncements": "Gdy park po raz pierwszy staje się publicznie widoczny, automatycznie przygotowywane jest dwujęzyczne ogłoszenie.",
+        "configurationHelp": "Dodaj Page ID, adres strony i Page Access Token do środowiska produkcyjnego, a następnie włącz kanał."
+      },
+      "composer": {
+        "eyebrow": "Nowa publikacja",
+        "title": "Opublikuj link do witryny",
+        "messageLabel": "Treść publikacji",
+        "messagePlaceholder": "Dodaj wiadomość po francusku, angielsku lub w obu językach...",
+        "urlLabel": "Publiczny link Amusement Parks",
+        "urlPlaceholder": "https://amusement-parks.fun/pl/...",
+        "ogTitle": "Automatyczny podgląd Open Graph",
+        "ogDescription": "Facebook pobiera tytuł, opis i obraz OG bezpośrednio z tej publicznej strony.",
+        "publish": "Opublikuj na Facebooku"
+      },
+      "history": {
+        "eyebrow": "Monitorowanie",
+        "title": "Ostatnie publikacje",
+        "empty": "Nie przygotowano jeszcze żadnej publikacji społecznościowej.",
+        "openPost": "Zobacz publikację",
+        "retry": "Ponów"
+      },
+      "statuses": {
+        "Pending": "W toku",
+        "Published": "Opublikowano",
+        "Failed": "Niepowodzenie"
+      },
+      "triggers": {
+        "Manual": "Ręczna",
+        "AutomaticParkPublication": "Nowy park"
+      },
+      "toasts": {
+        "successSummary": "Publikacja wysłana",
+        "publishSuccess": "Publikacja jest dostępna na stronie Facebooka.",
+        "errorSummary": "Publikacja nie powiodła się",
+        "publishError": "Nie udało się wysłać publikacji.",
+        "retryError": "Nie udało się ponowić publikacji."
       }
     },
     "socialShare": {

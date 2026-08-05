@@ -1,0 +1,165 @@
+<section class="admin-social-publishing admin-surface">
+  <header class="admin-social-publishing__header">
+    <div>
+      <span class="admin-kicker">{{ 'admin.socialPublishing.kicker' | translate }}</span>
+      <h1>{{ 'admin.socialPublishing.title' | translate }}</h1>
+      <p>{{ 'admin.socialPublishing.subtitle' | translate }}</p>
+    </div>
+  </header>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.socialPublishing.loading"
+    errorMessageKey="admin.socialPublishing.loadError">
+    @if (facebookPublisher(); as facebook) {
+      <article class="admin-card admin-social-publishing__provider">
+        <div class="admin-social-publishing__provider-identity">
+          <span class="admin-social-publishing__facebook-icon" aria-hidden="true">
+            <i class="pi pi-facebook"></i>
+          </span>
+          <div>
+            <span class="admin-social-publishing__eyebrow">{{ 'admin.socialPublishing.provider.channel' | translate }}</span>
+            <h2>{{ facebook.displayName }}</h2>
+          </div>
+        </div>
+
+        <div class="admin-social-publishing__provider-state">
+          <app-ui-tag
+            [value]="(facebook.isConfigured ? 'admin.socialPublishing.provider.configured' : 'admin.socialPublishing.provider.notConfigured') | translate"
+            [severity]="facebook.isConfigured ? 'success' : 'warn'">
+          </app-ui-tag>
+          @if (facebook.targetUrl) {
+            <a class="btn btn--ghost btn--sm" [href]="facebook.targetUrl" target="_blank" rel="noopener noreferrer">
+              <i class="pi pi-external-link" aria-hidden="true"></i>
+              {{ 'admin.socialPublishing.provider.openPage' | translate }}
+            </a>
+          }
+        </div>
+
+        <p class="admin-social-publishing__provider-note">
+          <i class="pi pi-bolt" aria-hidden="true"></i>
+          {{ 'admin.socialPublishing.provider.automaticParkAnnouncements' | translate }}
+        </p>
+      </article>
+
+      @if (!facebook.isConfigured) {
+        <aside class="admin-social-publishing__configuration-warning" role="status">
+          <i class="pi pi-info-circle" aria-hidden="true"></i>
+          <span>{{ 'admin.socialPublishing.provider.configurationHelp' | translate }}</span>
+        </aside>
+      }
+
+      <article class="admin-card admin-social-publishing__composer">
+        <div class="admin-social-publishing__section-head">
+          <div>
+            <span class="admin-social-publishing__eyebrow">{{ 'admin.socialPublishing.composer.eyebrow' | translate }}</span>
+            <h2>{{ 'admin.socialPublishing.composer.title' | translate }}</h2>
+          </div>
+        </div>
+
+        <form [formGroup]="publicationForm" (ngSubmit)="publish()">
+          <label>
+            <span>{{ 'admin.socialPublishing.composer.messageLabel' | translate }}</span>
+            <textarea
+              rows="8"
+              formControlName="message"
+              maxlength="5000"
+              [placeholder]="'admin.socialPublishing.composer.messagePlaceholder' | translate">
+            </textarea>
+            <small>{{ publicationForm.controls.message.value.length }} / 5000</small>
+          </label>
+
+          <label>
+            <span>{{ 'admin.socialPublishing.composer.urlLabel' | translate }}</span>
+            <input
+              appUiInputText
+              type="url"
+              formControlName="url"
+              inputmode="url"
+              [placeholder]="'admin.socialPublishing.composer.urlPlaceholder' | translate" />
+          </label>
+
+          <div class="admin-social-publishing__og-note">
+            <i class="pi pi-image" aria-hidden="true"></i>
+            <div>
+              <strong>{{ 'admin.socialPublishing.composer.ogTitle' | translate }}</strong>
+              <span>{{ 'admin.socialPublishing.composer.ogDescription' | translate }}</span>
+            </div>
+          </div>
+
+          <div class="admin-social-publishing__composer-actions">
+            <button
+              appUiButton
+              type="submit"
+              icon="pi pi-send"
+              [label]="'admin.socialPublishing.composer.publish' | translate"
+              [loading]="publishing()"
+              [disabled]="publicationForm.invalid || publishing() || !facebook.isConfigured">
+            </button>
+          </div>
+        </form>
+      </article>
+    }
+
+    <article class="admin-card admin-social-publishing__history">
+      <div class="admin-social-publishing__section-head">
+        <div>
+          <span class="admin-social-publishing__eyebrow">{{ 'admin.socialPublishing.history.eyebrow' | translate }}</span>
+          <h2>{{ 'admin.socialPublishing.history.title' | translate }}</h2>
+        </div>
+      </div>
+
+      @if (recentPublications().length === 0) {
+        <p class="admin-social-publishing__empty">{{ 'admin.socialPublishing.history.empty' | translate }}</p>
+      } @else {
+        <div class="admin-social-publishing__history-list">
+          @for (publication of recentPublications(); track trackByPublicationId($index, publication)) {
+            <article class="admin-social-publishing__history-item">
+              <div class="admin-social-publishing__history-main">
+                <div class="admin-social-publishing__history-meta">
+                  <app-ui-tag
+                    [value]="statusLabel(publication.status) | translate"
+                    [severity]="statusSeverity(publication.status)">
+                  </app-ui-tag>
+                  <span>{{ triggerLabel(publication.trigger) | translate }}</span>
+                  <time [attr.datetime]="publication.requestedAtUtc">
+                    {{ publication.requestedAtUtc | date:'short' }}
+                  </time>
+                </div>
+                <p>{{ publication.message }}</p>
+                <a [href]="publication.url" target="_blank" rel="noopener noreferrer">{{ publication.url }}</a>
+                @if (publication.failureMessage) {
+                  <span class="admin-social-publishing__failure">
+                    <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+                    {{ publication.failureMessage }}
+                  </span>
+                }
+              </div>
+
+              <div class="admin-social-publishing__history-actions">
+                @if (publication.externalPostUrl) {
+                  <a class="btn btn--ghost btn--sm" [href]="publication.externalPostUrl" target="_blank" rel="noopener noreferrer">
+                    <i class="pi pi-external-link" aria-hidden="true"></i>
+                    {{ 'admin.socialPublishing.history.openPost' | translate }}
+                  </a>
+                }
+                @if (publication.status === 'Failed') {
+                  <button
+                    appUiButton
+                    type="button"
+                    class="p-button-secondary"
+                    icon="pi pi-refresh"
+                    [label]="'admin.socialPublishing.history.retry' | translate"
+                    [loading]="retryingPublicationId() === publication.id"
+                    [disabled]="!!retryingPublicationId()"
+                    (click)="retry(publication)">
+                  </button>
+                }
+              </div>
+            </article>
+          }
+        </div>
+      }
+    </article>
+  </app-page-state>
+</section>

@@ -20,6 +20,7 @@ using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialShare.Ports;
+using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Application.Features.TechnicalPages.Ports;
 using AmusementPark.Application.Features.TechnicalStats.Ports;
@@ -32,6 +33,7 @@ using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Configuration.Ssr;
+using AmusementPark.Infrastructure.Configuration.SocialPublishing;
 using AmusementPark.Infrastructure.Configuration.Videos;
 using AmusementPark.Infrastructure.Configuration.Weather;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
@@ -47,6 +49,7 @@ using AmusementPark.Infrastructure.Services.Comments;
 using AmusementPark.Infrastructure.Services.Images;
 using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Ssr;
+using AmusementPark.Infrastructure.Services.SocialPublishing;
 using AmusementPark.Infrastructure.Services.Videos;
 using AmusementPark.Infrastructure.Services.Weather;
 using System.Net;
@@ -104,6 +107,9 @@ public static class InfrastructureServiceCollectionExtensions
         SsrSettings ssrSettings = configuration.GetSection(SsrSettings.SectionName).Get<SsrSettings>() ?? new SsrSettings();
         services.AddSingleton(ssrSettings);
 
+        FacebookPagePublishingSettings facebookPagePublishingSettings = FacebookPagePublishingSettings.Bind(configuration);
+        services.AddSingleton(facebookPagePublishingSettings);
+
         services.AddMemoryCache();
         services.AddHttpClient();
         services.AddHttpClient(HttpSsrPageCacheInvalidator.HttpClientName, static client =>
@@ -130,6 +136,10 @@ public static class InfrastructureServiceCollectionExtensions
         {
             AllowAutoRedirect = false,
             AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate | DecompressionMethods.Brotli,
+        });
+        services.AddHttpClient(FacebookPageSocialPublisher.HttpClientName, client =>
+        {
+            client.Timeout = TimeSpan.FromSeconds(facebookPagePublishingSettings.RequestTimeoutSeconds);
         });
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
         services.AddSingleton<IMinioClient>(_ =>
@@ -173,6 +183,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ICommentContentSanitizer, CommentContentSanitizer>();
         services.AddHostedService<CommentImageDraftCleanupBackgroundService>();
         services.AddScoped<ISocialShareEventRepository, SocialShareEventRepository>();
+        services.AddScoped<ISocialPublicationRepository, SocialPublicationRepository>();
+        services.AddScoped<ISocialPublisher, FacebookPageSocialPublisher>();
         services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddScoped<IUserRepository, UserRepository>();

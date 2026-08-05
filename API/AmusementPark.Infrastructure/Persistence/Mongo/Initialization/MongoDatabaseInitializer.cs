@@ -78,6 +78,9 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.SocialShareEventsCollectionName, cancellationToken);
         await this.InitializeSocialShareEventIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.SocialPublicationsCollectionName, cancellationToken);
+        await this.InitializeSocialPublicationIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.UserRatingsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.RatingAggregatesCollectionName, cancellationToken);
         await this.InitializeRatingsIndexesAsync(cancellationToken);

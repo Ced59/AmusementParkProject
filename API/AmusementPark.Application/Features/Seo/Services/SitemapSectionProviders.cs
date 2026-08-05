@@ -133,11 +133,7 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 
     internal static bool IsPublicPark(Park park)
     {
-        return !string.IsNullOrWhiteSpace(park.Id) &&
-               !string.IsNullOrWhiteSpace(park.Name) &&
-               park.IsVisible &&
-               park.Status.CanAppearInPublicDiscovery() &&
-               park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+        return park.IsPubliclyDiscoverable();
     }
 
     internal static bool HasPublicMapMarker(ParkItem item)

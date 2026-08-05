@@ -1,0 +1,59 @@
+{
+  "admin": {
+    "dashboard": {
+      "shortcuts": {
+        "socialPublishing": "Composez, publiez et suivez les annonces envoyées sur les réseaux sociaux."
+      }
+    },
+    "socialPublishing": {
+      "navTitle": "Publications sociales",
+      "kicker": "Communauté",
+      "title": "Publications sur les réseaux sociaux",
+      "subtitle": "Centralisez les annonces du site et publiez des liens avec leur aperçu Open Graph.",
+      "loading": "Chargement des canaux de publication...",
+      "loadError": "Impossible de charger les publications sociales.",
+      "provider": {
+        "channel": "Canal actif",
+        "configured": "Configuré",
+        "notConfigured": "Non configuré",
+        "openPage": "Ouvrir la Page",
+        "automaticParkAnnouncements": "Le premier passage d’un parc en visibilité publique prépare automatiquement une annonce bilingue.",
+        "configurationHelp": "Ajoutez le Page ID, l’URL de la Page et le Page Access Token dans l’environnement de production, puis activez le canal."
+      },
+      "composer": {
+        "eyebrow": "Nouvelle publication",
+        "title": "Publier un lien du site",
+        "messageLabel": "Texte de la publication",
+        "messagePlaceholder": "Ajoutez un message en français, en anglais ou dans les deux langues...",
+        "urlLabel": "Lien public Amusement Parks",
+        "urlPlaceholder": "https://amusement-parks.fun/fr/...",
+        "ogTitle": "Aperçu Open Graph automatique",
+        "ogDescription": "Facebook récupère le titre, la description et l’image OG directement depuis cette page publique.",
+        "publish": "Publier sur Facebook"
+      },
+      "history": {
+        "eyebrow": "Suivi",
+        "title": "Publications récentes",
+        "empty": "Aucune publication sociale n’a encore été préparée.",
+        "openPost": "Voir la publication",
+        "retry": "Relancer"
+      },
+      "statuses": {
+        "Pending": "En cours",
+        "Published": "Publiée",
+        "Failed": "Échec"
+      },
+      "triggers": {
+        "Manual": "Manuelle",
+        "AutomaticParkPublication": "Nouveau parc"
+      },
+      "toasts": {
+        "successSummary": "Publication envoyée",
+        "publishSuccess": "La publication est disponible sur la Page Facebook.",
+        "errorSummary": "Publication impossible",
+        "publishError": "La publication n’a pas pu être envoyée.",
+        "retryError": "La publication n’a pas pu être relancée."
+      }
+    }
+  }
+}

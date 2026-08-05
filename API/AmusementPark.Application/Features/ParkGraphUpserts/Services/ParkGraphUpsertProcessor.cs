@@ -23,6 +23,7 @@ using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
+using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
@@ -49,6 +50,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer;
     private readonly ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder;
     private readonly IHistoryEventRepository? historyEventRepository;
+    private readonly ISocialPublicationService? socialPublicationService;
 
     public ParkGraphUpsertProcessor(
         IParkRepository parkRepository,
@@ -67,7 +69,8 @@ public sealed partial class ParkGraphUpsertProcessor
         ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null,
         ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null,
         IHistoryEventRepository? historyEventRepository = null,
-        IStandaloneAttractionRepository? standaloneAttractionRepository = null)
+        IStandaloneAttractionRepository? standaloneAttractionRepository = null,
+        ISocialPublicationService? socialPublicationService = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -86,6 +89,7 @@ public sealed partial class ParkGraphUpsertProcessor
         this.parkOpeningHoursCoverageSegmentBuilder = parkOpeningHoursCoverageSegmentBuilder;
         this.historyEventRepository = historyEventRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
+        this.socialPublicationService = socialPublicationService;
     }
 
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)
@@ -234,6 +238,7 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         PublicSeoParkSnapshot? previousParkSnapshot = PublicSeoParkSnapshot.FromPark(targetPark);
+        bool wasPubliclyDiscoverable = targetPark.IsPubliclyDiscoverable();
 
         ParkGraphUpsertChange parkChange = BuildEntityChange("Park", targetPark.Id, "park", targetPark.Name ?? "Parc", parkWillBeCreated ? "Created" : "Unchanged", parkWillBeCreated ? "createIfMissing" : "id");
         PatchPark(targetPark, parkPatch, identity, founderKeys, operatorKeys, parkChange, result, parkWillBeCreated);
@@ -291,6 +296,13 @@ public sealed partial class ParkGraphUpsertProcessor
                     },
                     cancellationToken);
             }
+
+            await this.PublishNewlyVisibleParkAsync(
+                targetPark,
+                wasPubliclyDiscoverable,
+                requestedByUserId,
+                result,
+                cancellationToken);
         }
 
         FinalizeCounts(result);

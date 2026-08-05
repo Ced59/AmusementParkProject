@@ -1,0 +1,59 @@
+{
+  "admin": {
+    "dashboard": {
+      "shortcuts": {
+        "socialPublishing": "Aankondigingen voor sociale netwerken opstellen, publiceren en opvolgen."
+      }
+    },
+    "socialPublishing": {
+      "navTitle": "Sociale publicaties",
+      "kicker": "Community",
+      "title": "Publiceren op sociale netwerken",
+      "subtitle": "Beheer aankondigingen centraal en publiceer links met hun Open Graph-voorbeeld.",
+      "loading": "Publicatiekanalen laden...",
+      "loadError": "De sociale publicaties kunnen niet worden geladen.",
+      "provider": {
+        "channel": "Actief kanaal",
+        "configured": "Geconfigureerd",
+        "notConfigured": "Niet geconfigureerd",
+        "openPage": "Pagina openen",
+        "automaticParkAnnouncements": "Wanneer een park voor het eerst openbaar zichtbaar wordt, wordt automatisch een tweetalige aankondiging voorbereid.",
+        "configurationHelp": "Voeg de Page ID, pagina-URL en Page Access Token toe aan de productieomgeving en activeer daarna het kanaal."
+      },
+      "composer": {
+        "eyebrow": "Nieuwe publicatie",
+        "title": "Een sitelink publiceren",
+        "messageLabel": "Publicatietekst",
+        "messagePlaceholder": "Voeg een bericht toe in het Frans, Engels of beide talen...",
+        "urlLabel": "Openbare Amusement Parks-link",
+        "urlPlaceholder": "https://amusement-parks.fun/nl/...",
+        "ogTitle": "Automatisch Open Graph-voorbeeld",
+        "ogDescription": "Facebook haalt de OG-titel, beschrijving en afbeelding rechtstreeks van deze openbare pagina.",
+        "publish": "Publiceren op Facebook"
+      },
+      "history": {
+        "eyebrow": "Opvolging",
+        "title": "Recente publicaties",
+        "empty": "Er is nog geen sociale publicatie voorbereid.",
+        "openPost": "Publicatie bekijken",
+        "retry": "Opnieuw proberen"
+      },
+      "statuses": {
+        "Pending": "Bezig",
+        "Published": "Gepubliceerd",
+        "Failed": "Mislukt"
+      },
+      "triggers": {
+        "Manual": "Handmatig",
+        "AutomaticParkPublication": "Nieuw park"
+      },
+      "toasts": {
+        "successSummary": "Publicatie verzonden",
+        "publishSuccess": "De publicatie staat op de Facebook-pagina.",
+        "errorSummary": "Publicatie mislukt",
+        "publishError": "De publicatie kon niet worden verzonden.",
+        "retryError": "De publicatie kon niet opnieuw worden verzonden."
+      }
+    }
+  }
+}

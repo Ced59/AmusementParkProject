@@ -119,6 +119,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/social-share/pages/admin-social-share-stats/admin-social-share-stats.component').then((m) => m.AdminSocialShareStatsComponent)
           },
           {
+            path: 'social-publications',
+            loadComponent: () => import('@features/admin/social-publishing/pages/admin-social-publishing/admin-social-publishing.component').then((m) => m.AdminSocialPublishingComponent)
+          },
+          {
             path: 'technical-stats',
             loadComponent: () => import('@features/admin/technical-stats/pages/admin-technical-stats/admin-technical-stats.component').then((m) => m.AdminTechnicalStatsComponent)
           },

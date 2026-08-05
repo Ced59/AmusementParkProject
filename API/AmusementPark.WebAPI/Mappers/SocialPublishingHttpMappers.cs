@@ -1,0 +1,59 @@
+using AmusementPark.Application.Features.SocialPublishing.Contracts;
+using AmusementPark.Core.Domain.SocialPublishing;
+using AmusementPark.WebAPI.Contracts.SocialPublishing;
+
+namespace AmusementPark.WebAPI.Mappers;
+
+internal static class SocialPublishingHttpMappers
+{
+    public static SocialLinkPublicationRequest ToApplication(this PublishSocialLinkRequestDto dto)
+    {
+        return new SocialLinkPublicationRequest(
+            dto.Network switch
+            {
+                SocialNetworkDto.Facebook => SocialNetwork.Facebook,
+                _ => (SocialNetwork)(-1),
+            },
+            dto.Message,
+            dto.Url);
+    }
+
+    public static SocialPublishingOverviewDto ToHttp(this SocialPublishingOverview overview)
+    {
+        return new SocialPublishingOverviewDto
+        {
+            Publishers = overview.Publishers.Select(static publisher => new SocialPublisherDto
+            {
+                Network = publisher.Network.ToString(),
+                DisplayName = publisher.DisplayName,
+                IsEnabled = publisher.IsEnabled,
+                IsConfigured = publisher.IsConfigured,
+                TargetUrl = publisher.TargetUrl,
+                SupportsAutomaticParkAnnouncements = publisher.SupportsAutomaticParkAnnouncements,
+            }).ToList(),
+            RecentPublications = overview.RecentPublications.Select(static publication => publication.ToHttp()).ToList(),
+        };
+    }
+
+    public static SocialPublicationDto ToHttp(this SocialPublication publication)
+    {
+        return new SocialPublicationDto
+        {
+            Id = publication.Id ?? string.Empty,
+            Network = publication.Network.ToString(),
+            Status = publication.Status.ToString(),
+            Trigger = publication.Trigger.ToString(),
+            Message = publication.Message,
+            Url = publication.Url,
+            SourceEntityType = publication.SourceEntityType,
+            SourceEntityId = publication.SourceEntityId,
+            RequestedAtUtc = publication.RequestedAtUtc,
+            AttemptedAtUtc = publication.AttemptedAtUtc,
+            PublishedAtUtc = publication.PublishedAtUtc,
+            ExternalPostId = publication.ExternalPostId,
+            ExternalPostUrl = publication.ExternalPostUrl,
+            FailureCode = publication.FailureCode,
+            FailureMessage = publication.FailureMessage,
+        };
+    }
+}

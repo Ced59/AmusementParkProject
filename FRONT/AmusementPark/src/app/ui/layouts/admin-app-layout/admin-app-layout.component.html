@@ -114,6 +114,10 @@
           <i class="pi pi-share-alt" aria-hidden="true"></i>
           <span>{{ 'admin.socialShare.navTitle' | translate }}</span>
         </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'social-publications']" routerLinkActive="active">
+          <i class="pi pi-send" aria-hidden="true"></i>
+          <span>{{ 'admin.socialPublishing.navTitle' | translate }}</span>
+        </a>
         <a [routerLink]="['/', currentLang, 'admin', 'technical-stats']" routerLinkActive="active">
           <i class="pi pi-server" aria-hidden="true"></i>
           <span>{{ technicalStatsNavLabel }}</span>
