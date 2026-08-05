@@ -16,7 +16,7 @@
 .technical-index__hero-copy,
 .technical-index__body {
   width: 100%;
-  max-width: 1320px;
+  max-width: var(--content-wide-max-width, 100rem);
   margin: 0 auto;
   padding-inline: 1.25rem;
 }

@@ -15,6 +15,7 @@ import { PublicParkNavigationTrailComponent } from '@ui/layouts/public-park-navi
 @Component({
   selector: 'app-public-app-layout',
   templateUrl: './public-app-layout.component.html',
+  styleUrl: './public-app-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PublicParkNavigationTreeFacade, PublicParkNavigationTreeState],
   imports: [

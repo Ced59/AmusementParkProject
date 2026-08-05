@@ -87,6 +87,17 @@ describe('PublicAppLayoutComponent', () => {
     expect(publicParkNavigationTreeFacade.initialize).toHaveBeenCalled();
   });
 
+  it('uses wider desktop content while preserving compact mobile gutters', () => {
+    const styles: string = (
+      PublicAppLayoutComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('--content-max-width: 92rem');
+    expect(styles).toContain('--content-wide-max-width: 100rem');
+    expect(styles).toContain('width: min(100% - 1.5rem, var(--content-wide-max-width))');
+    expect(styles).toContain('width: min(100% - 1rem, var(--content-max-width))');
+  });
+
   it('lazy-renders the admin toolbar for authenticated admins in the browser', async () => {
     expect(isPlatformBrowser(TestBed.inject(PLATFORM_ID))).toBe(true);
     authService.isLoggedIn.mockReturnValue(true);

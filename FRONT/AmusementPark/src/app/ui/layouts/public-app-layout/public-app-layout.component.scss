@@ -1,0 +1,14 @@
+.app-public-layout {
+  --content-max-width: 92rem;
+  --content-wide-max-width: 100rem;
+}
+
+.app-public-layout__main {
+  width: min(calc(100% - 1.5rem), var(--content-wide-max-width));
+}
+
+@media (max-width: 680px) {
+  .app-public-layout__main {
+    width: min(calc(100% - 1rem), var(--content-max-width));
+  }
+}
