@@ -1,6 +1,20 @@
 {
-  "version": "4.1.0",
+  "version": "4.1.1",
   "history": [
+    {
+      "version": "4.1.1",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "L’administration gagne en fiabilité.",
+        "en": "Administration is more reliable.",
+        "de": "Die Administration ist zuverlässiger.",
+        "nl": "Het beheer is betrouwbaarder.",
+        "it": "L’amministrazione è più affidabile.",
+        "es": "La administración es más fiable.",
+        "pl": "Panel administracyjny działa bardziej niezawodnie.",
+        "pt": "A administração está mais fiável."
+      }
+    },
     {
       "version": "4.1.0",
       "releasedAt": "2026-08-05",

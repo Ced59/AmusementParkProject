@@ -95,17 +95,34 @@
   font-weight: 650;
 }
 
-.admin-social-publishing__composer textarea {
+.admin-social-publishing__composer textarea,
+.admin-social-publishing__composer input[appUiInputText] {
   width: 100%;
+  min-height: 2.75rem;
+  border: 1px solid var(--border-2, var(--surface-border));
+  border-radius: var(--radius-md, 0.7rem);
+  color: var(--text, var(--text-color));
+  background: color-mix(in srgb, var(--bg, var(--surface-ground)) 72%, transparent);
+  font: inherit;
+  outline: none;
+  transition: var(--transition, border-color 160ms ease, box-shadow 160ms ease);
+}
+
+.admin-social-publishing__composer textarea {
   min-height: 10rem;
   resize: vertical;
   padding: 0.85rem;
-  border: 1px solid var(--surface-border);
-  border-radius: 0.7rem;
-  color: var(--text-color);
-  background: var(--surface-card);
-  font: inherit;
   line-height: 1.5;
+}
+
+.admin-social-publishing__composer input[appUiInputText] {
+  padding: 0 0.85rem;
+}
+
+.admin-social-publishing__composer textarea:focus,
+.admin-social-publishing__composer input[appUiInputText]:focus {
+  border-color: rgba(255, 90, 31, 0.52);
+  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.1);
 }
 
 .admin-social-publishing__composer small {
