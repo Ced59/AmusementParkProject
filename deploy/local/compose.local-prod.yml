@@ -126,6 +126,12 @@ services:
       Authentication__Google__ClientId: ${GOOGLE_CLIENT_ID:-}
       Authentication__Google__ClientSecret: ${GOOGLE_CLIENT_SECRET:-}
       Authentication__Google__RedirectUri: ${GOOGLE_REDIRECT_URI:-}
+      SocialPublishing__Facebook__Enabled: ${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}
+      SocialPublishing__Facebook__ApiVersion: ${SOCIAL_PUBLISHING_FACEBOOK_API_VERSION:-v24.0}
+      SocialPublishing__Facebook__PageId: ${SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID:-}
+      SocialPublishing__Facebook__PageAccessToken: ${SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN:-}
+      SocialPublishing__Facebook__PageUrl: ${SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL:-}
+      SocialPublishing__Facebook__RequestTimeoutSeconds: ${SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS:-10}
       Cors__AllowedOriginsCsv: ${PUBLIC_BASE_URL:-http://amusement.localhost:18080};http://localhost:${SSR_DIRECT_PORT:-14000}
       Cors__AllowedMethods__0: GET
       Cors__AllowedMethods__1: POST

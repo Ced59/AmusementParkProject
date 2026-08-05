@@ -107,6 +107,12 @@ export class AdminDashboardComponent {
       titleKey: 'admin.contactGrievances.navTitle',
       descriptionKey: 'admin.dashboard.shortcuts.contactGrievances',
       segment: 'contact-grievances'
+    },
+    {
+      iconClass: 'pi pi-send',
+      titleKey: 'admin.socialPublishing.navTitle',
+      descriptionKey: 'admin.dashboard.shortcuts.socialPublishing',
+      segment: 'social-publications'
     }
   ];
 

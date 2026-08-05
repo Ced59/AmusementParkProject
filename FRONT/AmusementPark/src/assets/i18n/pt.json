@@ -207,6 +207,7 @@
         "parkGraphUpserts": "Pré-visualizar e aplicar um JSON completo ou parcial de parque.",
         "seoSitemaps": "Gerir índice sitemap, secções XML, estatísticas e IndexNow.",
         "history": "Gerir linhas do tempo, marcos documentados e artigos históricos.",
+        "socialPublishing": "Compõe, publica e acompanha os anúncios enviados para as redes sociais.",
         "parkWeather": "Monitorizar atualizações programadas de dados públicos."
       },
       "title": "Painel",
@@ -1847,6 +1848,56 @@
         "success": "sucesso",
         "failed": "falha",
         "missingSitemap": "Não foi possível pré-aquecer a cache SSR: índice do sitemap não encontrado."
+      }
+    },
+    "socialPublishing": {
+      "navTitle": "Publicações sociais",
+      "kicker": "Comunidade",
+      "title": "Publicações nas redes sociais",
+      "subtitle": "Centraliza os anúncios do site e publica ligações com a respetiva pré-visualização Open Graph.",
+      "loading": "A carregar os canais de publicação...",
+      "loadError": "Não foi possível carregar as publicações sociais.",
+      "provider": {
+        "channel": "Canal ativo",
+        "configured": "Configurado",
+        "notConfigured": "Não configurado",
+        "openPage": "Abrir a Página",
+        "automaticParkAnnouncements": "Quando um parque fica visível publicamente pela primeira vez, é preparado automaticamente um anúncio bilingue.",
+        "configurationHelp": "Adiciona o Page ID, o URL da Página e o Page Access Token ao ambiente de produção e ativa depois o canal."
+      },
+      "composer": {
+        "eyebrow": "Nova publicação",
+        "title": "Publicar uma ligação do site",
+        "messageLabel": "Texto da publicação",
+        "messagePlaceholder": "Adiciona uma mensagem em francês, inglês ou nos dois idiomas...",
+        "urlLabel": "Ligação pública do Amusement Parks",
+        "urlPlaceholder": "https://amusement-parks.fun/pt/...",
+        "ogTitle": "Pré-visualização Open Graph automática",
+        "ogDescription": "O Facebook obtém o título, a descrição e a imagem OG diretamente desta página pública.",
+        "publish": "Publicar no Facebook"
+      },
+      "history": {
+        "eyebrow": "Acompanhamento",
+        "title": "Publicações recentes",
+        "empty": "Ainda não foi preparada nenhuma publicação social.",
+        "openPost": "Ver publicação",
+        "retry": "Tentar novamente"
+      },
+      "statuses": {
+        "Pending": "Em curso",
+        "Published": "Publicada",
+        "Failed": "Falhou"
+      },
+      "triggers": {
+        "Manual": "Manual",
+        "AutomaticParkPublication": "Novo parque"
+      },
+      "toasts": {
+        "successSummary": "Publicação enviada",
+        "publishSuccess": "A publicação está disponível na Página do Facebook.",
+        "errorSummary": "Não foi possível publicar",
+        "publishError": "Não foi possível enviar a publicação.",
+        "retryError": "Não foi possível tentar novamente a publicação."
       }
     },
     "socialShare": {

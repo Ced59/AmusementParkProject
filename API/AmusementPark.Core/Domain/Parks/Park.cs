@@ -103,6 +103,15 @@ public sealed class Park : GeolocatedEntityBase
     /// </summary>
     public string? CurrentLogoImageId { get; set; }
 
+    public bool IsPubliclyDiscoverable()
+    {
+        return !string.IsNullOrWhiteSpace(this.Id)
+            && !string.IsNullOrWhiteSpace(this.Name)
+            && this.IsVisible
+            && this.Status.CanAppearInPublicDiscovery()
+            && this.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+    }
+
     public DataCompletenessScore CalculateDataCompletenessScore(ParkDataCompletenessContext? context = null)
     {
         ParkDataCompletenessContext scoreContext = context ?? new ParkDataCompletenessContext();

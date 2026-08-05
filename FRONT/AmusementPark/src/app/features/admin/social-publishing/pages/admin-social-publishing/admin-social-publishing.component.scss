@@ -1,0 +1,206 @@
+.admin-social-publishing {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.admin-social-publishing__header h1,
+.admin-social-publishing__section-head h2,
+.admin-social-publishing__provider h2 {
+  margin: 0;
+}
+
+.admin-social-publishing__header p {
+  max-width: 760px;
+  margin: 0.5rem 0 0;
+  color: var(--text-color-secondary);
+}
+
+.admin-social-publishing__provider,
+.admin-social-publishing__composer,
+.admin-social-publishing__history {
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.admin-social-publishing__provider {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-social-publishing__provider-identity,
+.admin-social-publishing__provider-state,
+.admin-social-publishing__history-meta,
+.admin-social-publishing__history-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.admin-social-publishing__facebook-icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #1877f2;
+  font-size: 1.35rem;
+}
+
+.admin-social-publishing__eyebrow {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-social-publishing__provider-note {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0;
+  color: var(--text-color-secondary);
+}
+
+.admin-social-publishing__configuration-warning {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, #f59e0b 45%, transparent);
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, #f59e0b 10%, transparent);
+}
+
+.admin-social-publishing__section-head {
+  margin-bottom: 1rem;
+}
+
+.admin-social-publishing__composer form {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-social-publishing__composer label {
+  display: grid;
+  gap: 0.45rem;
+  font-weight: 650;
+}
+
+.admin-social-publishing__composer textarea {
+  width: 100%;
+  min-height: 10rem;
+  resize: vertical;
+  padding: 0.85rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.7rem;
+  color: var(--text-color);
+  background: var(--surface-card);
+  font: inherit;
+  line-height: 1.5;
+}
+
+.admin-social-publishing__composer small {
+  justify-self: end;
+  color: var(--text-color-secondary);
+  font-weight: 400;
+}
+
+.admin-social-publishing__og-note {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.9rem;
+  border-radius: 0.75rem;
+  background: var(--surface-ground);
+}
+
+.admin-social-publishing__og-note div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.admin-social-publishing__og-note span {
+  color: var(--text-color-secondary);
+}
+
+.admin-social-publishing__composer-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-social-publishing__history-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.admin-social-publishing__history-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.8rem;
+}
+
+.admin-social-publishing__history-main {
+  min-width: 0;
+}
+
+.admin-social-publishing__history-main p {
+  margin: 0.75rem 0;
+  white-space: pre-line;
+}
+
+.admin-social-publishing__history-main a {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-social-publishing__history-meta {
+  color: var(--text-color-secondary);
+  font-size: 0.85rem;
+}
+
+.admin-social-publishing__failure {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-top: 0.75rem;
+  color: var(--red-600, #dc2626);
+}
+
+.admin-social-publishing__empty {
+  margin: 0;
+  color: var(--text-color-secondary);
+}
+
+@media (max-width: 760px) {
+  .admin-social-publishing__provider,
+  .admin-social-publishing__history-item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .admin-social-publishing__provider-state,
+  .admin-social-publishing__history-actions,
+  .admin-social-publishing__composer-actions {
+    justify-content: stretch;
+  }
+
+  .admin-social-publishing__provider-state > *,
+  .admin-social-publishing__history-actions > *,
+  .admin-social-publishing__composer-actions > * {
+    width: 100%;
+  }
+}

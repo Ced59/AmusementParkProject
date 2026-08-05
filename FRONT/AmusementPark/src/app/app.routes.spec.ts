@@ -107,6 +107,17 @@ describe('App routes', () => {
     expect(route?.redirectTo).toBeUndefined();
     expect(route?.loadComponent).toBeDefined();
   });
+
+  it('lazy loads social publishing behind the admin layout', () => {
+    const adminRoutes: Route[] = getAdminRoutes();
+    const route: Route | undefined = adminRoutes.find(
+      (candidate: Route): boolean => candidate.path === 'social-publications',
+    );
+
+    expect(route).toBeDefined();
+    expect(route?.redirectTo).toBeUndefined();
+    expect(route?.loadComponent).toBeDefined();
+  });
 });
 
 function getPublicRoutes(): Route[] {

@@ -1,0 +1,59 @@
+{
+  "admin": {
+    "dashboard": {
+      "shortcuts": {
+        "socialPublishing": "Compose, publish and track announcements sent to social networks."
+      }
+    },
+    "socialPublishing": {
+      "navTitle": "Social publishing",
+      "kicker": "Community",
+      "title": "Social network publishing",
+      "subtitle": "Centralize site announcements and publish links with their Open Graph preview.",
+      "loading": "Loading publishing channels...",
+      "loadError": "Unable to load social publications.",
+      "provider": {
+        "channel": "Active channel",
+        "configured": "Configured",
+        "notConfigured": "Not configured",
+        "openPage": "Open Page",
+        "automaticParkAnnouncements": "The first time a park becomes publicly visible, a bilingual announcement is prepared automatically.",
+        "configurationHelp": "Add the Page ID, Page URL and Page Access Token to the production environment, then enable the channel."
+      },
+      "composer": {
+        "eyebrow": "New publication",
+        "title": "Publish a site link",
+        "messageLabel": "Publication text",
+        "messagePlaceholder": "Add a message in French, English or both languages...",
+        "urlLabel": "Public Amusement Parks link",
+        "urlPlaceholder": "https://amusement-parks.fun/en/...",
+        "ogTitle": "Automatic Open Graph preview",
+        "ogDescription": "Facebook retrieves the OG title, description and image directly from this public page.",
+        "publish": "Publish on Facebook"
+      },
+      "history": {
+        "eyebrow": "Tracking",
+        "title": "Recent publications",
+        "empty": "No social publication has been prepared yet.",
+        "openPost": "View publication",
+        "retry": "Retry"
+      },
+      "statuses": {
+        "Pending": "In progress",
+        "Published": "Published",
+        "Failed": "Failed"
+      },
+      "triggers": {
+        "Manual": "Manual",
+        "AutomaticParkPublication": "New park"
+      },
+      "toasts": {
+        "successSummary": "Publication sent",
+        "publishSuccess": "The publication is available on the Facebook Page.",
+        "errorSummary": "Publication failed",
+        "publishError": "The publication could not be sent.",
+        "retryError": "The publication could not be retried."
+      }
+    }
+  }
+}

@@ -19,6 +19,8 @@ using AmusementPark.Application.Features.Ratings.Services;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
+using AmusementPark.Application.Features.SocialPublishing.Ports;
+using AmusementPark.Application.Features.SocialPublishing.Services;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,6 +57,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<BulkParkGraphJsonExportDataLoader>();
         services.AddScoped<ParkGraphUpsertProcessor>();
         services.AddScoped<BulkParkGraphUpsertProcessor>();
+        services.AddScoped<ISocialPublicationService, SocialPublicationService>();
         services.AddScoped<ParkOpeningHoursScheduleNormalizer>();
         services.AddSingleton<ParkOpeningHoursCoverageSegmentBuilder>();
         services.AddSingleton<ParkOpeningHoursAdminStatusResolver>();

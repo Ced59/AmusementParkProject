@@ -64,6 +64,25 @@ https://amusement-parks.fun/api/auth/external/google/callback
 | `PROD_FACEBOOK_APP_ID` | peut rester vide si Facebook n’est pas activé |
 | `PROD_FACEBOOK_APP_SECRET` | peut rester vide si Facebook n’est pas activé |
 
+### Publication sur la Page Facebook, si activée
+
+| Secret | Exemple / note |
+|---|---|
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN` | Page Access Token Meta ; ne jamais le placer dans une variable GitHub ni dans le dépôt |
+
+Variables associées :
+
+| Variable | Valeur recommandée |
+|---|---|
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_ENABLED` | `false` jusqu’à validation du jeton, puis `true` |
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_API_VERSION` | `v24.0` |
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID` | identifiant numérique de la Page |
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL` | URL publique complète de la Page |
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS` | `10` |
+
+La procédure de création et de validation du jeton est détaillée dans
+[`facebook-page-publishing.md`](facebook-page-publishing.md).
+
 ### SMTP, si `PROD_EMAIL_MODE=Smtp`
 
 | Secret | Exemple / note |
