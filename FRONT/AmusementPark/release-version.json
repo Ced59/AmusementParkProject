@@ -1,6 +1,20 @@
 {
-  "version": "4.0.29",
+  "version": "4.0.30",
   "history": [
+    {
+      "version": "4.0.30",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "Les noms de parc longs s’affichent mieux sur mobile.",
+        "en": "Long park names display better on mobile.",
+        "de": "Lange Parknamen werden auf Mobilgeräten besser dargestellt.",
+        "nl": "Lange parknamen worden beter weergegeven op mobiel.",
+        "it": "I nomi lunghi dei parchi sono visualizzati meglio sui dispositivi mobili.",
+        "es": "Los nombres largos de los parques se muestran mejor en móvil.",
+        "pl": "Długie nazwy parków są lepiej wyświetlane na urządzeniach mobilnych.",
+        "pt": "Os nomes longos dos parques são melhor apresentados em dispositivos móveis."
+      }
+    },
     {
       "version": "4.0.29",
       "releasedAt": "2026-08-05",
