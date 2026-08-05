@@ -1,6 +1,20 @@
 {
-  "version": "4.0.30",
+  "version": "4.0.31",
   "history": [
+    {
+      "version": "4.0.31",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "Les pages publiques utilisent mieux l’espace disponible sur les grands écrans.",
+        "en": "Public pages make better use of the space available on larger screens.",
+        "de": "Öffentliche Seiten nutzen den verfügbaren Platz auf großen Bildschirmen besser.",
+        "nl": "Openbare pagina's benutten de beschikbare ruimte op grote schermen beter.",
+        "it": "Le pagine pubbliche sfruttano meglio lo spazio disponibile sugli schermi più grandi.",
+        "es": "Las páginas públicas aprovechan mejor el espacio disponible en pantallas grandes.",
+        "pl": "Strony publiczne lepiej wykorzystują przestrzeń dostępną na dużych ekranach.",
+        "pt": "As páginas públicas aproveitam melhor o espaço disponível em ecrãs maiores."
+      }
+    },
     {
       "version": "4.0.30",
       "releasedAt": "2026-08-05",

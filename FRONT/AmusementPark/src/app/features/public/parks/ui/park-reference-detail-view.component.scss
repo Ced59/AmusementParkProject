@@ -51,7 +51,7 @@
   z-index: 1;
   display: grid;
   width: 100%;
-  max-width: 1340px;
+  max-width: var(--content-max-width, 92rem);
   margin: 0 auto;
   gap: 1.25rem;
   padding: 1.45rem 1.25rem 2rem;
@@ -130,7 +130,7 @@
   flex-direction: column;
   gap: 1.6rem;
   width: 100%;
-  max-width: 1340px;
+  max-width: var(--content-max-width, 92rem);
   margin: 0 auto;
   padding: 2.25rem 1.25rem 4.5rem;
 }
