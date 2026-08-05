@@ -229,9 +229,10 @@ public sealed class SocialPublicationService : ISocialPublicationService
                 continue;
             }
 
-            bool changed = snapshot.Message is not null
-                && !string.Equals(publication.Message, snapshot.Message, StringComparison.Ordinal);
-            publication.Message = snapshot.Message ?? publication.Message;
+            string? synchronizedMessage = NormalizeExternalMessage(snapshot.Message);
+            bool changed = synchronizedMessage is not null
+                && !string.Equals(publication.Message, synchronizedMessage, StringComparison.Ordinal);
+            publication.Message = synchronizedMessage ?? publication.Message;
             publication.ExternalPostUrl = snapshot.ExternalPostUrl ?? publication.ExternalPostUrl;
             publication.LastSynchronizedAtUtc = DateTime.UtcNow;
             publication.Touch();
@@ -262,7 +263,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
             return;
         }
 
-        publication.Message = change.Message ?? publication.Message;
+        publication.Message = NormalizeExternalMessage(change.Message) ?? publication.Message;
         publication.LastSynchronizedAtUtc = DateTime.UtcNow;
         publication.Touch();
         await this.repository.UpdateAsync(publication, cancellationToken);
@@ -416,6 +417,19 @@ public sealed class SocialPublicationService : ISocialPublicationService
     {
         return publication.Status == SocialPublicationStatus.Published
             && !string.IsNullOrWhiteSpace(publication.ExternalPostId);
+    }
+
+    private static string? NormalizeExternalMessage(string? message)
+    {
+        if (message is null)
+        {
+            return null;
+        }
+
+        string normalizedMessage = message.Trim();
+        return normalizedMessage.Length > MaximumMessageLength
+            ? normalizedMessage[..MaximumMessageLength]
+            : normalizedMessage;
     }
 
     private ISocialPublisher? FindPublisher(SocialNetwork network)

@@ -198,6 +198,53 @@ public sealed class SocialPublicationServiceTests
         Assert.Equal(1, publisher.GetCallCount);
     }
 
+    [Fact]
+    public async Task SynchronizeAsync_WhenExternalMessageExceedsLimit_ShouldTrimAndCapBeforePersisting()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        string expectedMessage = new string('x', SocialPublicationService.MaximumMessageLength);
+        publisher.SnapshotResult = new SocialPublisherPostSnapshotResult(
+            true,
+            true,
+            $"  {expectedMessage}x  ",
+            "https://www.facebook.com/123/posts/456",
+            null,
+            null);
+        SocialPublication publication = CreatePublishedPublication();
+        repository.Publications.Add(publication);
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        SocialPublicationSynchronizationResult result = await service.SynchronizeAsync(25, CancellationToken.None);
+
+        Assert.Equal(1, result.CheckedCount);
+        Assert.Equal(1, result.UpdatedCount);
+        Assert.Equal(expectedMessage, publication.Message);
+        Assert.Equal(SocialPublicationService.MaximumMessageLength, publication.Message.Length);
+    }
+
+    [Fact]
+    public async Task ApplyExternalChangeAsync_WhenExternalMessageExceedsLimit_ShouldTrimAndCapBeforePersisting()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        string expectedMessage = new string('x', SocialPublicationService.MaximumMessageLength);
+        SocialPublication publication = CreatePublishedPublication();
+        repository.Publications.Add(publication);
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        await service.ApplyExternalChangeAsync(
+            SocialNetwork.Facebook,
+            new SocialWebhookChange(
+                publication.ExternalPostId!,
+                SocialWebhookChangeKind.Updated,
+                $"  {expectedMessage}x  "),
+            CancellationToken.None);
+
+        Assert.Equal(expectedMessage, publication.Message);
+        Assert.Equal(SocialPublicationService.MaximumMessageLength, publication.Message.Length);
+    }
+
     private static SocialPublication CreatePublishedPublication()
     {
         return new SocialPublication
