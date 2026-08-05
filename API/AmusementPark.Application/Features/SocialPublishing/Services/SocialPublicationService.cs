@@ -427,9 +427,19 @@ public sealed class SocialPublicationService : ISocialPublicationService
         }
 
         string normalizedMessage = message.Trim();
-        return normalizedMessage.Length > MaximumMessageLength
-            ? normalizedMessage[..MaximumMessageLength]
-            : normalizedMessage;
+        if (normalizedMessage.Length <= MaximumMessageLength)
+        {
+            return normalizedMessage;
+        }
+
+        int truncatedLength = MaximumMessageLength;
+        if (char.IsHighSurrogate(normalizedMessage[truncatedLength - 1])
+            && char.IsLowSurrogate(normalizedMessage[truncatedLength]))
+        {
+            truncatedLength--;
+        }
+
+        return normalizedMessage[..truncatedLength];
     }
 
     private ISocialPublisher? FindPublisher(SocialNetwork network)

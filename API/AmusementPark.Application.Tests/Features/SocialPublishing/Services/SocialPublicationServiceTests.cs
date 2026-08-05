@@ -245,6 +245,29 @@ public sealed class SocialPublicationServiceTests
         Assert.Equal(SocialPublicationService.MaximumMessageLength, publication.Message.Length);
     }
 
+    [Fact]
+    public async Task SynchronizeAsync_WhenLimitCutsSurrogatePair_ShouldPreserveValidUnicode()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        string expectedMessage = new string('x', SocialPublicationService.MaximumMessageLength - 1);
+        publisher.SnapshotResult = new SocialPublisherPostSnapshotResult(
+            true,
+            true,
+            $"{expectedMessage}😀y",
+            "https://www.facebook.com/123/posts/456",
+            null,
+            null);
+        SocialPublication publication = CreatePublishedPublication();
+        repository.Publications.Add(publication);
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        await service.SynchronizeAsync(25, CancellationToken.None);
+
+        Assert.Equal(expectedMessage, publication.Message);
+        Assert.Equal(SocialPublicationService.MaximumMessageLength - 1, publication.Message.Length);
+    }
+
     private static SocialPublication CreatePublishedPublication()
     {
         return new SocialPublication
