@@ -285,6 +285,11 @@ if [ "${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}" = "true" ]; then
 fi
 
 if [ "${SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED:-false}" = "true" ]; then
+  if [ "${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}" != "true" ]; then
+    echo "ERROR: SOCIAL_PUBLISHING_FACEBOOK_ENABLED must be true when SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED is true." >&2
+    errors=$((errors + 1))
+  fi
+
   for webhook_name in SOCIAL_PUBLISHING_FACEBOOK_APP_SECRET SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_VERIFY_TOKEN; do
     require_value "${webhook_name}"
     reject_placeholder "${webhook_name}"

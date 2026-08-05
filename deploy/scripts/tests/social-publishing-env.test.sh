@@ -47,6 +47,24 @@ assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED=false'
 
 "${deploy_scripts_dir}/validate-production-env.sh" "${valid_env_file}"
 
+export SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED='true'
+export SOCIAL_PUBLISHING_FACEBOOK_APP_SECRET='test-facebook-app-secret-value'
+export SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_VERIFY_TOKEN='test-facebook-webhook-verify-token-value'
+valid_webhook_env_file="${temp_dir}/valid-webhook.env"
+"${deploy_scripts_dir}/write-production-env.sh" "${valid_webhook_env_file}"
+"${deploy_scripts_dir}/validate-production-env.sh" "${valid_webhook_env_file}"
+
+export SOCIAL_PUBLISHING_FACEBOOK_ENABLED='false'
+webhook_without_publishing_env_file="${temp_dir}/webhook-without-publishing.env"
+"${deploy_scripts_dir}/write-production-env.sh" "${webhook_without_publishing_env_file}"
+
+if "${deploy_scripts_dir}/validate-production-env.sh" "${webhook_without_publishing_env_file}" >/dev/null 2>&1; then
+  echo 'Validation unexpectedly accepted an enabled Facebook webhook without enabled publishing.' >&2
+  exit 1
+fi
+
+export SOCIAL_PUBLISHING_FACEBOOK_ENABLED='true'
+export SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED='false'
 export SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN=''
 invalid_env_file="${temp_dir}/missing-token.env"
 "${deploy_scripts_dir}/write-production-env.sh" "${invalid_env_file}"
