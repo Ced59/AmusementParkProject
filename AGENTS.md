@@ -20,9 +20,10 @@ The project must preserve its current architecture, SOLID principles, separation
 
 ## General rules
 
-- For implementation tasks, always start from a new branch based on `origin/master`, then commit, push, and open a pull request targeting `master`.
+- For implementation tasks, always start from a new branch based on `origin/master`, then implement, verify, commit, push, open a pull request targeting `master`, monitor its checks and reviews, merge it, and monitor the resulting deployment when the repository workflow deploys `master`. Do not stop at PR creation unless the user explicitly asks to stop earlier or a genuine blocker requires user input.
 - Name branches with an intent prefix such as `feat/`, `fix/`, `chore/`, `docs/`, `test/`, or `perf/` depending on the change. Do not use a generic `codex/` prefix.
 - Keep pull requests small, focused, and easy to review.
+- Open pull requests as ready for review by default. Use a draft only when the user explicitly requests one or when the work is knowingly incomplete and cannot yet be reviewed safely.
 - Increment the release version in every PR unless the user explicitly asks for a major or intermediate version increment instead. Always base that increment on the current `origin/master` release version, not on the local `master` branch or the current working branch.
 - When incrementing a release version, update `FRONT/AmusementPark/release-version.json`: set the new version and add or update the matching history entry with the release date and short non-technical localized labels for every supported language.
 - For admin-only changes, keep release-version labels generic and avoid describing sensitive or precise back-office capabilities. Prefer wording such as "admin ergonomics improvements".
@@ -136,6 +137,14 @@ Every PR must include:
 - Files intentionally deleted, if any.
 - Any known limitation or follow-up task.
 
+Before merging every PR:
+
+- Wait for all required CI checks to complete and fix relevant failures.
+- Inspect top-level comments, reviews, and unresolved review threads.
+- Address every relevant and actionable comment, rerun the appropriate checks, and update the PR before merging.
+- Do not implement irrelevant, outdated, duplicate, or behavior-regressing feedback blindly; document why it is not applied when a response is useful.
+- Merge only when the PR is ready, required checks are green, and no relevant actionable review feedback remains.
+
 Do not open a PR that contains broad formatting churn, unrelated renames, unrelated dependency updates, or unrelated refactors.
 
 ## Definition of done
@@ -149,6 +158,7 @@ A task is done only when:
 - Relevant backend and/or frontend commands pass, or failures are clearly explained.
 - The PR summary is complete.
 - Deleted files are explicitly listed.
+- The ready-for-review PR has been checked for relevant comments, merged into `master`, and its deployment has completed successfully when deployment is part of the repository workflow.
 
 ## Review guidelines
 
