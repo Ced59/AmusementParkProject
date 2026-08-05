@@ -1,6 +1,20 @@
 {
-  "version": "4.0.31",
+  "version": "4.0.32",
   "history": [
+    {
+      "version": "4.0.32",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "Le slogan d’accueil est mieux équilibré sur tous les écrans.",
+        "en": "The home slogan is better balanced across all screen sizes.",
+        "de": "Der Startseitenslogan ist auf allen Bildschirmgrößen ausgewogener angeordnet.",
+        "nl": "De slogan op de startpagina is beter verdeeld over alle schermformaten.",
+        "it": "Lo slogan della pagina iniziale è meglio bilanciato su tutti gli schermi.",
+        "es": "El eslogan de inicio está mejor equilibrado en todos los tamaños de pantalla.",
+        "pl": "Hasło na stronie głównej jest lepiej rozmieszczone na wszystkich ekranach.",
+        "pt": "O slogan da página inicial está mais equilibrado em todos os tamanhos de ecrã."
+      }
+    },
     {
       "version": "4.0.31",
       "releasedAt": "2026-08-05",
