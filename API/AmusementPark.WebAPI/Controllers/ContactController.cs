@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Contact.Contracts;
 using AmusementPark.Application.Features.Contact.Queries;
 using AmusementPark.Core.Domain.Contact;
 using AmusementPark.WebAPI.Authorization;
+using AmusementPark.WebAPI.ClientIp;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Contact;
 using AmusementPark.WebAPI.Filters;
@@ -39,7 +40,7 @@ public sealed class ContactController : ControllerBase
     [ProducesResponseType(typeof(ContactGrievanceSubmissionDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> SubmitGrievanceAsync([FromBody] SubmitContactGrievanceRequest? request, CancellationToken cancellationToken = default)
     {
-        string ipAddress = this.ResolveRemoteIpAddress();
+        string ipAddress = ClientIpAddressResolver.Resolve(this.HttpContext) ?? "unknown";
         string? userAgent = this.Request.Headers["User-Agent"].ToString();
         SubmitContactGrievanceRequest safeRequest = request ?? new SubmitContactGrievanceRequest();
         ApplicationResult<ContactGrievanceSubmissionResult> result = await this.submitContactGrievanceCommandHandler.HandleAsync(
@@ -76,10 +77,5 @@ public sealed class ContactController : ControllerBase
         }
 
         return this.Ok(result.Value.ToPagedResponse(static grievance => grievance.ToAdminHttp()));
-    }
-
-    private string ResolveRemoteIpAddress()
-    {
-        return this.HttpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
     }
 }

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Security.Claims;
 using AmusementPark.Application.Features.AdminAudit.Models;
 using AmusementPark.Application.Features.AdminAudit.Ports;
+using AmusementPark.WebAPI.ClientIp;
 using AmusementPark.WebAPI.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -134,7 +135,7 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
             HttpMethod = httpContext.Request.Method,
             Path = httpContext.Request.Path.Value ?? string.Empty,
             StatusCode = statusCode,
-            IpAddress = httpContext.Connection.RemoteIpAddress?.ToString(),
+            IpAddress = ClientIpAddressResolver.Resolve(httpContext),
             UserAgent = httpContext.Request.Headers["User-Agent"].ToString(),
             TraceId = Activity.Current?.Id ?? httpContext.TraceIdentifier,
             Metadata = metadata,

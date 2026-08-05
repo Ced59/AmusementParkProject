@@ -26,12 +26,12 @@ La configuration M18.3 applique désormais :
 ```bash
 PUBLIC_EDGE_SUBNET=172.30.30.0/24
 BACKEND_PRIVATE_SUBNET=172.30.31.0/24
-FORWARDED_HEADERS_KNOWN_NETWORKS=172.30.31.0/24
+FORWARDED_HEADERS_KNOWN_NETWORKS=172.30.31.0/24;172.19.0.0/16
 FORWARDED_HEADERS_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
 FORWARDED_HEADERS_FORWARD_LIMIT=2
 ```
 
-Le réseau réellement utilisé par l'API est `backend_private`, car le front SSR appelle l'API via le service Docker `http://api:8080/` sur ce réseau. Ce host interne doit rester présent dans `ALLOWED_HOSTS`.
+L'API reçoit directement le front sur `backend_private`, puis remonte jusqu'à Nginx Proxy Manager dans la chaîne `X-Forwarded-For`. Les deux réseaux doivent donc être déclarés comme réseaux de confiance. Le host interne `api` doit rester présent dans `ALLOWED_HOSTS` pour les appels SSR.
 
 ## Cas Nginx Proxy Manager externe
 

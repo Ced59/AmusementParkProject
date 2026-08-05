@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.RateLimiting;
+using AmusementPark.WebAPI.ClientIp;
 using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
@@ -158,7 +159,7 @@ public static class RateLimitingServiceCollectionExtensions
 
     private static string GetRemoteIpPartitionKey(HttpContext context)
     {
-        string remoteIp = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+        string remoteIp = ClientIpAddressResolver.Resolve(context) ?? "unknown";
         return $"ip:{remoteIp}";
     }
 
