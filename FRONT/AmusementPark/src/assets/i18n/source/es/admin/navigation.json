@@ -1,0 +1,21 @@
+{
+  "admin": {
+    "fieldMode": {
+      "navTitle": "Modo de campo"
+    },
+    "technicalStats": {
+      "navTitle": "Estadísticas técnicas"
+    },
+    "dashboard": {
+      "shortcuts": {
+        "standaloneAttractions": "Gestionar atracciones independientes que no están asociadas a un parque.",
+        "fieldMode": "Completar rápidamente fotos y ubicaciones directamente sobre el terreno.",
+        "technicalPages": "Administrar las páginas técnicas y su contenido localizado.",
+        "imageBatch": "Procesar y actualizar varias imágenes en una sola operación.",
+        "videos": "Gestionar la videoteca, sus asociaciones y metadatos.",
+        "socialShare": "Consultar las estadísticas de uso de las herramientas para compartir.",
+        "technicalStats": "Supervisar la caché SSR, los rastreadores, el renderizado y las purgas."
+      }
+    }
+  }
+}

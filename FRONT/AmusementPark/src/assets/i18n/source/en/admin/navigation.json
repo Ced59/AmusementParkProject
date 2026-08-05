@@ -1,0 +1,21 @@
+{
+  "admin": {
+    "fieldMode": {
+      "navTitle": "Field mode"
+    },
+    "technicalStats": {
+      "navTitle": "Technical stats"
+    },
+    "dashboard": {
+      "shortcuts": {
+        "standaloneAttractions": "Manage attractions that are not attached to a park.",
+        "fieldMode": "Quickly complete photos and locations directly on site.",
+        "technicalPages": "Manage technical pages and their localized content.",
+        "imageBatch": "Process and update multiple images in one operation.",
+        "videos": "Manage the video library, its associations and metadata.",
+        "socialShare": "Review usage statistics for social sharing tools.",
+        "technicalStats": "Monitor SSR cache, crawlers, rendering and purges."
+      }
+    }
+  }
+}

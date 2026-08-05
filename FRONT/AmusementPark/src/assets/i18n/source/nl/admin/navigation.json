@@ -1,0 +1,21 @@
+{
+  "admin": {
+    "fieldMode": {
+      "navTitle": "Veldmodus"
+    },
+    "technicalStats": {
+      "navTitle": "Technische statistieken"
+    },
+    "dashboard": {
+      "shortcuts": {
+        "standaloneAttractions": "Zelfstandige attracties beheren die niet aan een park zijn gekoppeld.",
+        "fieldMode": "Foto's en locaties snel ter plaatse aanvullen.",
+        "technicalPages": "Technische pagina's en hun gelokaliseerde inhoud beheren.",
+        "imageBatch": "Meerdere afbeeldingen in één bewerking verwerken en bijwerken.",
+        "videos": "De videobibliotheek, koppelingen en metadata beheren.",
+        "socialShare": "Gebruiksstatistieken van de deelhulpmiddelen bekijken.",
+        "technicalStats": "SSR-cache, crawlers, rendering en opschoningen volgen."
+      }
+    }
+  }
+}

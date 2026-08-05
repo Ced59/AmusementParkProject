@@ -1,0 +1,21 @@
+{
+  "admin": {
+    "fieldMode": {
+      "navTitle": "Tryb terenowy"
+    },
+    "technicalStats": {
+      "navTitle": "Statystyki techniczne"
+    },
+    "dashboard": {
+      "shortcuts": {
+        "standaloneAttractions": "Zarządzaj samodzielnymi atrakcjami, które nie są przypisane do parku.",
+        "fieldMode": "Szybko uzupełniaj zdjęcia i lokalizacje bezpośrednio w terenie.",
+        "technicalPages": "Zarządzaj stronami technicznymi i ich zlokalizowaną treścią.",
+        "imageBatch": "Przetwarzaj i aktualizuj wiele obrazów w jednej operacji.",
+        "videos": "Zarządzaj biblioteką filmów, powiązaniami i metadanymi.",
+        "socialShare": "Przeglądaj statystyki użycia narzędzi udostępniania.",
+        "technicalStats": "Monitoruj pamięć podręczną SSR, roboty, renderowanie i czyszczenie."
+      }
+    }
+  }
+}

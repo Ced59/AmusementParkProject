@@ -1,6 +1,20 @@
 {
-  "version": "4.1.3",
+  "version": "4.1.4",
   "history": [
+    {
+      "version": "4.1.4",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "L’administration est plus cohérente.",
+        "en": "Administration is more consistent.",
+        "de": "Die Administration ist einheitlicher.",
+        "nl": "Het beheer is consistenter.",
+        "it": "L’amministrazione è più coerente.",
+        "es": "La administración es más coherente.",
+        "pl": "Panel administracyjny jest bardziej spójny.",
+        "pt": "A administração está mais coerente."
+      }
+    },
     {
       "version": "4.1.3",
       "releasedAt": "2026-08-05",

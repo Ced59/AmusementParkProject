@@ -34,94 +34,12 @@
           <i class="pi pi-chart-bar" aria-hidden="true"></i>
           <span>{{ 'admin.dashboard.title' | translate }}</span>
         </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'parks']" routerLinkActive="active">
-          <i class="pi pi-map" aria-hidden="true"></i>
-          <span>{{ 'admin.parks.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'items']" routerLinkActive="active">
-          <i class="pi pi-ticket" aria-hidden="true"></i>
-          <span>{{ 'admin.parkItems.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'standalone-attractions']" routerLinkActive="active">
-          <i class="pi pi-compass" aria-hidden="true"></i>
-          <span>{{ 'admin.standaloneAttractions.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'field-mode']" routerLinkActive="active">
-          <i class="pi pi-compass" aria-hidden="true"></i>
-          <span>{{ fieldModeNavLabel }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'operators']" routerLinkActive="active">
-          <i class="pi pi-building" aria-hidden="true"></i>
-          <span>{{ 'admin.operators.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'founders']" routerLinkActive="active">
-          <i class="pi pi-sparkles" aria-hidden="true"></i>
-          <span>{{ 'admin.parkFounders.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'manufacturers']" routerLinkActive="active">
-          <i class="pi pi-wrench" aria-hidden="true"></i>
-          <span>{{ 'admin.manufacturers.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'technical-pages']" routerLinkActive="active">
-          <i class="pi pi-cog" aria-hidden="true"></i>
-          <span>{{ 'admin.technicalPages.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'images']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <i class="pi pi-image" aria-hidden="true"></i>
-          <span>{{ 'admin.images.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'images', 'batch']" routerLinkActive="active">
-          <i class="pi pi-images" aria-hidden="true"></i>
-          <span>{{ 'admin.images.batch.navTitle' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'videos']" routerLinkActive="active">
-          <i class="pi pi-video" aria-hidden="true"></i>
-          <span>{{ 'admin.videos.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'users']" routerLinkActive="active">
-          <i class="pi pi-users" aria-hidden="true"></i>
-          <span>{{ 'admin.users.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'data']" routerLinkActive="active">
-          <i class="pi pi-cog" aria-hidden="true"></i>
-          <span>{{ 'admin.dataSources.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'park-graph-upserts']" routerLinkActive="active">
-          <i class="pi pi-sitemap" aria-hidden="true"></i>
-          <span>{{ 'admin.parkGraphUpserts.navTitle' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'history']" routerLinkActive="active">
-          <i class="pi pi-history" aria-hidden="true"></i>
-          <span>{{ 'admin.history.navTitle' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'audit-logs']" routerLinkActive="active">
-          <i class="pi pi-shield" aria-hidden="true"></i>
-          <span>{{ 'admin.auditLogs.title' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'seo-sitemaps']" routerLinkActive="active">
-          <i class="pi pi-search" aria-hidden="true"></i>
-          <span>{{ 'admin.seoSitemaps.navTitle' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'park-weather']" routerLinkActive="active">
-          <i class="pi pi-cloud" aria-hidden="true"></i>
-          <span>{{ 'admin.parkWeather.navTitle' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'contact-grievances']" routerLinkActive="active">
-          <i class="pi pi-inbox" aria-hidden="true"></i>
-          <span>{{ 'admin.contactGrievances.navTitle' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'social-share']" routerLinkActive="active">
-          <i class="pi pi-share-alt" aria-hidden="true"></i>
-          <span>{{ 'admin.socialShare.navTitle' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'social-publications']" routerLinkActive="active">
-          <i class="pi pi-send" aria-hidden="true"></i>
-          <span>{{ 'admin.socialPublishing.navTitle' | translate }}</span>
-        </a>
-        <a [routerLink]="['/', currentLang, 'admin', 'technical-stats']" routerLinkActive="active">
-          <i class="pi pi-server" aria-hidden="true"></i>
-          <span>{{ technicalStatsNavLabel }}</span>
-        </a>
+        @for (item of navigationItems; track item.id) {
+          <a [routerLink]="buildAdminRoute(item.segments)" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: item.exact }">
+            <i [class]="item.iconClass" aria-hidden="true"></i>
+            <span>{{ item.titleKey | translate }}</span>
+          </a>
+        }
       </nav>
     </aside>
 

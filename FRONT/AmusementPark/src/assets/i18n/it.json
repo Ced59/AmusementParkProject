@@ -207,6 +207,13 @@
         "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
         "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow.",
         "history": "Gestire timeline, tappe documentate e articoli storici.",
+        "standaloneAttractions": "Gestire le attrazioni autonome non collegate a un parco.",
+        "fieldMode": "Completare rapidamente foto e posizioni direttamente sul posto.",
+        "technicalPages": "Gestire le pagine tecniche e i relativi contenuti localizzati.",
+        "imageBatch": "Elaborare e aggiornare più immagini in un'unica operazione.",
+        "videos": "Gestire la videoteca, i collegamenti e i metadati.",
+        "socialShare": "Consultare le statistiche di utilizzo degli strumenti di condivisione.",
+        "technicalStats": "Monitorare cache SSR, crawler, rendering e pulizie.",
         "socialPublishing": "Componi, pubblica e monitora gli annunci inviati ai social network.",
         "parkWeather": "Monitorare aggiornamenti pianificati di dati pubblici."
       },
@@ -603,6 +610,12 @@
       "subtitle": "Elenco di riferimento dei costruttori usati dalle attrazioni.",
       "reviewStatus": "Stato admin",
       "loadError": "Impossibile caricare i produttori."
+    },
+    "fieldMode": {
+      "navTitle": "Modalità sul campo"
+    },
+    "technicalStats": {
+      "navTitle": "Statistiche tecniche"
     },
     "operators": {
       "total": "Gestori: {{count}}",

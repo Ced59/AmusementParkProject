@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { ADMIN_NAVIGATION_ITEMS, AdminNavigationItem } from '@shared/models/admin/admin-navigation.models';
 
 @Component({
   selector: 'app-admin-app-layout',
@@ -11,6 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [RouterLink, RouterLinkActive, RouterOutlet, TranslateModule]
 })
 export class AdminAppLayoutComponent {
+  protected readonly navigationItems: readonly AdminNavigationItem[] = ADMIN_NAVIGATION_ITEMS;
+
   constructor(private readonly router: Router) {
   }
 
@@ -18,11 +21,7 @@ export class AdminAppLayoutComponent {
     return this.router.url.split('/')[1] || 'en';
   }
 
-  protected get fieldModeNavLabel(): string {
-    return this.currentLang === 'fr' ? 'Mode terrain' : 'Field mode';
-  }
-
-  protected get technicalStatsNavLabel(): string {
-    return this.currentLang === 'fr' ? 'Stats techniques' : 'Technical stats';
+  protected buildAdminRoute(segments: readonly string[]): string[] {
+    return ['/', this.currentLang, 'admin', ...segments];
   }
 }
