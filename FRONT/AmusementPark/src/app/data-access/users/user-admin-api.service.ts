@@ -7,7 +7,12 @@ import { AuthMessageResponse } from '@app/models/auth/auth-message-response';
 import { UserLockRequest } from '@app/models/users/user-lock-request';
 import { UserPasswordChange } from '@app/models/users/user-password-change';
 import { UserRoleRequest } from '@app/models/users/user-role-request';
-import { UserLockStateResponse, UserRolesUpdateResponse } from '@app/models/users/user-admin-responses';
+import {
+  ParkDataEditorToken,
+  RevokedParkDataEditorTokensResponse,
+  UserLockStateResponse,
+  UserRolesUpdateResponse
+} from '@app/models/users/user-admin-responses';
 import { USER_ADMIN_API_ENDPOINTS } from './user-admin-api-endpoints';
 
 @Injectable({
@@ -40,5 +45,20 @@ export class UserAdminApiService {
   changeUserPassword(id: string, payload: UserPasswordChange): Observable<AuthMessageResponse> {
     const url: string = `${environment.apiBaseUrl}${USER_ADMIN_API_ENDPOINTS.changeUserPassword(id)}`;
     return this.http.post<AuthMessageResponse>(url, payload);
+  }
+
+  getParkDataEditorTokens(userId: string): Observable<ParkDataEditorToken[]> {
+    const url: string = `${environment.apiBaseUrl}${USER_ADMIN_API_ENDPOINTS.parkDataEditorTokens(userId)}`;
+    return this.http.get<ParkDataEditorToken[]>(url);
+  }
+
+  revokeParkDataEditorToken(userId: string, tokenId: string): Observable<RevokedParkDataEditorTokensResponse> {
+    const url: string = `${environment.apiBaseUrl}${USER_ADMIN_API_ENDPOINTS.parkDataEditorToken(userId, tokenId)}`;
+    return this.http.delete<RevokedParkDataEditorTokensResponse>(url);
+  }
+
+  revokeAllParkDataEditorTokens(userId: string): Observable<RevokedParkDataEditorTokensResponse> {
+    const url: string = `${environment.apiBaseUrl}${USER_ADMIN_API_ENDPOINTS.parkDataEditorTokens(userId)}`;
+    return this.http.delete<RevokedParkDataEditorTokensResponse>(url);
   }
 }

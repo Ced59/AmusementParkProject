@@ -11,4 +11,5 @@ public enum UserRoleDto
     USER,
     MODERATOR,
     ADMIN,
+    PARK_DATA_EDITOR,
 }

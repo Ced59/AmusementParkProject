@@ -10,10 +10,12 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 
 - `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’export initial, l’export actualisé avant chaque nouvelle étape, les limites de lots et les fichiers de règles à lire selon l’étape.
 - `standalone-attraction-data-integration.md` : fichier à utiliser quand l’entité pertinente est une attraction fixe isolée et non un parc.
+- `codex-park-data-editor-api-workflow.md` : complément strictement réservé à Codex lorsqu’il exécute lui-même les étapes par API avec le rôle technique `PARK_DATA_EDITOR`. Il ajoute les garde-fous Preview/Apply et l’upload local des photos sans modifier le workflow ChatGPT.
 
 ## Documents disponibles
 
 - `park-data-integration-orchestrator.md` : orchestrateur principal du parcours complet.
+- `codex-park-data-editor-api-workflow.md` : surcouche d’exécution API autonome réservée à Codex ; ChatGPT continue d’utiliser l’orchestrateur et les étapes existantes sans changement.
 - `standalone-attraction-data-integration.md` : flux d’intégration et de migration des attractions fixes isolées.
 - `park-graph-upsert-enums.md` : liste des enums et valeurs autorisées dans les JSON Park Graph Upsert.
 - `park-data-integration-steps/00-intake-and-export.md` : cadrage, pertinence, export et découpage anti-saturation.

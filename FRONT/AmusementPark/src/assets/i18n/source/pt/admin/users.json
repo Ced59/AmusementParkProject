@@ -40,7 +40,28 @@
       "subtitle": "Gerir contas, funções e estados de acesso.",
       "loadError": "Não foi possível carregar os utilizadores.",
       "blockAction": "Bloquear conta",
-      "unblockAction": "Desbloquear conta"
+      "unblockAction": "Desbloquear conta",
+      "parkDataEditorTokens": {
+        "title": "Tokens de acesso aos dados dos parques",
+        "description": "Estes tokens técnicos estão limitados à integração de dados dos parques. Remover a função ou bloquear a conta invalida-os imediatamente.",
+        "loading": "A carregar tokens…",
+        "empty": "Ainda não foi criado nenhum token.",
+        "active": "Ativo",
+        "inactive": "Inativo",
+        "createdAt": "Criado em",
+        "expiresAt": "Expira em",
+        "lastUsedAt": "Última utilização em",
+        "revoke": "Revogar",
+        "revokeAll": "Revogar todos",
+        "revokeConfirmation": "Revogar este token imediatamente? Esta ação é irreversível.",
+        "revokeAllConfirmation": "Revogar imediatamente todos os tokens ativos desta conta?",
+        "successTitle": "Sucesso",
+        "errorTitle": "Erro",
+        "revoked": "O token foi revogado.",
+        "revokedAll": "Todos os tokens ativos foram revogados.",
+        "loadError": "Não foi possível carregar os tokens técnicos.",
+        "revokeError": "Não foi possível revogar os tokens."
+      }
     }
   }
 }

@@ -40,7 +40,28 @@
       "subtitle": "Zarządzanie kontami, rolami i statusem dostępu.",
       "loadError": "Nie udało się wczytać użytkowników.",
       "blockAction": "Zablokuj konto",
-      "unblockAction": "Odblokuj konto"
+      "unblockAction": "Odblokuj konto",
+      "parkDataEditorTokens": {
+        "title": "Tokeny dostępu do danych parków",
+        "description": "Te tokeny techniczne są ograniczone do integracji danych parków. Usunięcie roli lub zablokowanie konta natychmiast je unieważnia.",
+        "loading": "Wczytywanie tokenów…",
+        "empty": "Nie utworzono jeszcze żadnego tokenu.",
+        "active": "Aktywny",
+        "inactive": "Nieaktywny",
+        "createdAt": "Utworzono",
+        "expiresAt": "Wygasa",
+        "lastUsedAt": "Ostatnio użyto",
+        "revoke": "Unieważnij",
+        "revokeAll": "Unieważnij wszystkie",
+        "revokeConfirmation": "Natychmiast unieważnić ten token? Tej operacji nie można cofnąć.",
+        "revokeAllConfirmation": "Natychmiast unieważnić wszystkie aktywne tokeny tego konta?",
+        "successTitle": "Sukces",
+        "errorTitle": "Błąd",
+        "revoked": "Token został unieważniony.",
+        "revokedAll": "Wszystkie aktywne tokeny zostały unieważnione.",
+        "loadError": "Nie udało się wczytać tokenów technicznych.",
+        "revokeError": "Nie udało się unieważnić tokenów."
+      }
     }
   }
 }

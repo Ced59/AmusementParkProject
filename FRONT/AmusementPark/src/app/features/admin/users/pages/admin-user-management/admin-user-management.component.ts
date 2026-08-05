@@ -9,6 +9,7 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { UserDto } from '@app/models/users/user_dto';
+import { ParkDataEditorToken } from '@app/models/users/user-admin-responses';
 import { UserPut } from '@app/models/users/user_put';
 import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
 import { ImagesApiService } from '@data-access/images/images-api.service';
@@ -18,14 +19,14 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import { UserAdminApiService } from '@data-access/users/user-admin-api.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ButtonDirective } from '@shared/ui/primitives/button';
-import { NgIf, NgFor } from '@angular/common';
+import { DatePipe, NgIf, NgFor } from '@angular/common';
 import { Card } from '@shared/ui/primitives/card';
 import { Tag } from '@shared/ui/primitives/tag';
 import { InputText } from '@shared/ui/primitives/inputtext';
 import { Select } from '@shared/ui/primitives/select';
 import { OwnerImageUploadDialogComponent } from '@shared/components/owner-image-upload-dialog/owner-image-upload-dialog.component';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AdminUserManagementStateFacade } from '@features/admin/users/state/admin-user-management-state.facade';
 
 @Component({
@@ -34,7 +35,7 @@ import { AdminUserManagementStateFacade } from '@features/admin/users/state/admi
     styleUrls: ['./admin-user-management.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [AdminUserManagementStateFacade],
-    imports: [PageStateComponent, ButtonDirective, NgIf, Card, Tag, NgFor, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule, ImageDisplayComponent]
+    imports: [PageStateComponent, ButtonDirective, NgIf, Card, Tag, NgFor, DatePipe, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule, ImageDisplayComponent]
 })
 export class AdminUserManagementComponent implements OnInit {
   readonly roleOptions: AppRole[] = APP_ROLES;
@@ -52,6 +53,11 @@ export class AdminUserManagementComponent implements OnInit {
 
   protected readonly state = this.stateFacade.state;
   protected readonly user = this.stateFacade.user;
+  protected readonly parkDataEditorTokens = this.stateFacade.parkDataEditorTokens;
+  protected readonly loadingParkDataEditorTokens = this.stateFacade.loadingParkDataEditorTokens;
+  protected readonly revokingParkDataEditorTokenId = this.stateFacade.revokingParkDataEditorTokenId;
+  protected readonly revokingAllParkDataEditorTokens = this.stateFacade.revokingAllParkDataEditorTokens;
+  protected readonly hasActiveParkDataEditorTokens = this.stateFacade.hasActiveParkDataEditorTokens;
   savingProfile: boolean = false;
   savingPassword: boolean = false;
   processingRole: AppRole | null = null;
@@ -75,7 +81,8 @@ export class AdminUserManagementComponent implements OnInit {
     private readonly imagesApiService: ImagesApiService,
     private readonly userAdminApiService: UserAdminApiService,
     private readonly authService: AuthService,
-    private readonly messageService: ToastMessageService
+    private readonly messageService: ToastMessageService,
+    private readonly translateService: TranslateService
   ) {
     this.profileForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -112,6 +119,11 @@ export class AdminUserManagementComponent implements OnInit {
 
       if (currentUser) {
         this.patchProfileForm(currentUser);
+        if (currentUser.roles?.includes('PARK_DATA_EDITOR')) {
+          this.stateFacade.loadParkDataEditorTokens(this.targetUserId ?? currentUser.id);
+        } else {
+          this.stateFacade.clearParkDataEditorTokens();
+        }
       }
     }, { injector: this.injector });
   }
@@ -232,6 +244,30 @@ export class AdminUserManagementComponent implements OnInit {
     });
   }
 
+  revokeParkDataEditorToken(token: ParkDataEditorToken): void {
+    if (!this.targetUserId || !token.isActive) {
+      return;
+    }
+
+    if (!window.confirm(this.translateService.instant('admin.users.parkDataEditorTokens.revokeConfirmation'))) {
+      return;
+    }
+
+    this.stateFacade.revokeParkDataEditorToken(this.targetUserId, token.id);
+  }
+
+  revokeAllParkDataEditorTokens(): void {
+    if (!this.targetUserId || !this.hasActiveParkDataEditorTokens()) {
+      return;
+    }
+
+    if (!window.confirm(this.translateService.instant('admin.users.parkDataEditorTokens.revokeAllConfirmation'))) {
+      return;
+    }
+
+    this.stateFacade.revokeAllParkDataEditorTokens(this.targetUserId);
+  }
+
   changePassword(): void {
     if (!this.targetUserId || !this.canManagePassword || this.passwordForm.invalid) {
       this.passwordForm.markAllAsTouched();
@@ -299,4 +335,5 @@ export class AdminUserManagementComponent implements OnInit {
       preferredMeasurementSystem: user.preferredMeasurementSystem ?? 'Metric'
     });
   }
+
 }

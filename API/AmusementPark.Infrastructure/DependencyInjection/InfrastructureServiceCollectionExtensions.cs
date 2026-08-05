@@ -9,6 +9,7 @@ using AmusementPark.Application.Features.DataSources.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Application.Features.ParkDataEditorTokens.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
@@ -190,6 +191,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IParkDataEditorAccessTokenRepository, ParkDataEditorAccessTokenRepository>();
         services.AddScoped<IAdminAuditLogWriter, AdminAuditLogWriter>();
         services.AddScoped<IAdminAuditLogReader, AdminAuditLogReader>();
         services.AddScoped<ISeoSitemapSnapshotRepository, SeoSitemapSnapshotRepository>();
@@ -226,6 +228,7 @@ public static class InfrastructureServiceCollectionExtensions
 
         services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
         services.AddScoped<IRefreshTokenFactory, LocalAccountTokenFactory>();
+        services.AddSingleton<IParkDataEditorTokenProtector, ParkDataEditorTokenProtector>();
         services.AddScoped<ITokenService, JwtTokenService>();
         services.AddScoped<ILocalAccountEmailService, LocalAccountEmailService>();
         services.AddScoped<IExternalIdentityVerifier, GoogleExternalIdentityVerifier>();

@@ -2077,7 +2077,28 @@
       "subtitle": "Manage accounts, roles and access status.",
       "loadError": "Unable to load users.",
       "blockAction": "Block account",
-      "unblockAction": "Unblock account"
+      "unblockAction": "Unblock account",
+      "parkDataEditorTokens": {
+        "title": "Park data access tokens",
+        "description": "These technical tokens are limited to park data integration. Removing the role or blocking the account invalidates them immediately.",
+        "loading": "Loading tokens…",
+        "empty": "No token has been created yet.",
+        "active": "Active",
+        "inactive": "Inactive",
+        "createdAt": "Created on",
+        "expiresAt": "Expires on",
+        "lastUsedAt": "Last used on",
+        "revoke": "Revoke",
+        "revokeAll": "Revoke all",
+        "revokeConfirmation": "Revoke this token immediately? This action cannot be undone.",
+        "revokeAllConfirmation": "Immediately revoke every active token for this account?",
+        "successTitle": "Success",
+        "errorTitle": "Error",
+        "revoked": "The token has been revoked.",
+        "revokedAll": "All active tokens have been revoked.",
+        "loadError": "Unable to load technical tokens.",
+        "revokeError": "Unable to revoke the token or tokens."
+      }
     },
     "videos": {
       "title": "Videos",

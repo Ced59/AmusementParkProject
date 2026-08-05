@@ -107,6 +107,7 @@ public sealed class JwtTokenService : ITokenService
         {
             Role.Admin => "ADMIN",
             Role.Moderator => "MODERATOR",
+            Role.ParkDataEditor => "PARK_DATA_EDITOR",
             _ => "USER",
         };
     }

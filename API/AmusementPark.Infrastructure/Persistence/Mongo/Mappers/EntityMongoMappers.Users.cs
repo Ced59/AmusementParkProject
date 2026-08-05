@@ -123,6 +123,45 @@ internal static partial class EntityMongoMappers
         };
     }
 
+    public static ParkDataEditorAccessToken ToDomain(this ParkDataEditorAccessTokenDocument document)
+    {
+        ParkDataEditorAccessToken entity = new ParkDataEditorAccessToken
+        {
+            Id = document.Id,
+            UserId = document.UserId,
+            Label = document.Label,
+            TokenHash = document.TokenHash,
+            DisplayPrefix = document.DisplayPrefix,
+            ExpiresAtUtc = document.ExpiresAtUtc,
+            LastUsedAtUtc = document.LastUsedAtUtc,
+            RevokedAtUtc = document.RevokedAtUtc,
+            RevokedByUserId = document.RevokedByUserId,
+            RevocationReason = document.RevocationReason,
+            CreatedAtUtc = document.CreatedAt,
+            UpdatedAtUtc = document.UpdatedAt,
+        };
+        return entity;
+    }
+
+    public static ParkDataEditorAccessTokenDocument ToDocument(this ParkDataEditorAccessToken entity)
+    {
+        return new ParkDataEditorAccessTokenDocument
+        {
+            Id = entity.Id,
+            UserId = entity.UserId,
+            Label = entity.Label,
+            TokenHash = entity.TokenHash,
+            DisplayPrefix = entity.DisplayPrefix,
+            ExpiresAtUtc = entity.ExpiresAtUtc,
+            LastUsedAtUtc = entity.LastUsedAtUtc,
+            RevokedAtUtc = entity.RevokedAtUtc,
+            RevokedByUserId = entity.RevokedByUserId,
+            RevocationReason = entity.RevocationReason,
+            CreatedAt = entity.CreatedAtUtc,
+            UpdatedAt = entity.UpdatedAtUtc,
+        };
+    }
+
     public static ExternalLogin ToDomain(this ExternalLoginDocument document)
     {
         return new ExternalLogin

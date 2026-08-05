@@ -150,6 +150,17 @@ internal static class ImagesHttpMappers
         };
     }
 
+    public static ImageUploadRequest ToApplication(this ParkDataEditorImageCreateDto value, FilePayload file)
+    {
+        return new ImageUploadRequest
+        {
+            Category = value.Category.ToDomain(),
+            File = file,
+            Description = value.Description,
+            WithWatermark = value.WithWatermark,
+        };
+    }
+
     public static RemoteImageImportRequest ToApplication(this RemoteImageCreateDto value)
     {
         return new RemoteImageImportRequest

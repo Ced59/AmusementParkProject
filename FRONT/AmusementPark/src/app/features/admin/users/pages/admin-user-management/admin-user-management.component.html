@@ -137,6 +137,71 @@
       </div>
     </app-ui-card>
 
+    <app-ui-card
+      *ngIf="hasRole('PARK_DATA_EDITOR')"
+      [header]="'admin.users.parkDataEditorTokens.title' | translate"
+      class="admin-user-card">
+      <div class="token-toolbar">
+        <p>{{ 'admin.users.parkDataEditorTokens.description' | translate }}</p>
+        <button
+          *ngIf="hasActiveParkDataEditorTokens()"
+          appUiButton
+          type="button"
+          severity="danger"
+          class="p-button-outlined"
+          [label]="'admin.users.parkDataEditorTokens.revokeAll' | translate"
+          [loading]="revokingAllParkDataEditorTokens()"
+          (click)="revokeAllParkDataEditorTokens()">
+        </button>
+      </div>
+
+      <p *ngIf="loadingParkDataEditorTokens()">
+        {{ 'admin.users.parkDataEditorTokens.loading' | translate }}
+      </p>
+      <p *ngIf="!loadingParkDataEditorTokens() && parkDataEditorTokens().length === 0">
+        {{ 'admin.users.parkDataEditorTokens.empty' | translate }}
+      </p>
+
+      <div class="token-list" *ngIf="!loadingParkDataEditorTokens() && parkDataEditorTokens().length > 0">
+        <div class="token-item" *ngFor="let token of parkDataEditorTokens()">
+          <div class="token-details">
+            <div class="token-heading">
+              <strong>{{ token.label }}</strong>
+              <app-ui-tag
+                [severity]="token.isActive ? 'success' : 'secondary'"
+                [value]="(token.isActive
+                  ? 'admin.users.parkDataEditorTokens.active'
+                  : 'admin.users.parkDataEditorTokens.inactive') | translate">
+              </app-ui-tag>
+            </div>
+            <code>{{ token.displayPrefix }}…</code>
+            <span>
+              {{ 'admin.users.parkDataEditorTokens.createdAt' | translate }}
+              {{ token.createdAtUtc | date:'medium' }}
+            </span>
+            <span>
+              {{ 'admin.users.parkDataEditorTokens.expiresAt' | translate }}
+              {{ token.expiresAtUtc | date:'medium' }}
+            </span>
+            <span *ngIf="token.lastUsedAtUtc">
+              {{ 'admin.users.parkDataEditorTokens.lastUsedAt' | translate }}
+              {{ token.lastUsedAtUtc | date:'medium' }}
+            </span>
+          </div>
+          <button
+            *ngIf="token.isActive"
+            appUiButton
+            type="button"
+            severity="danger"
+            class="p-button-outlined"
+            [label]="'admin.users.parkDataEditorTokens.revoke' | translate"
+            [loading]="revokingParkDataEditorTokenId() === token.id"
+            (click)="revokeParkDataEditorToken(token)">
+          </button>
+        </div>
+      </div>
+    </app-ui-card>
+
     <app-ui-card *ngIf="user() as currentUser" [header]="'admin.users.securityTitle' | translate" class="admin-user-card">
       <div class="security-grid">
         <div class="security-row" *ngIf="canBlockUser">

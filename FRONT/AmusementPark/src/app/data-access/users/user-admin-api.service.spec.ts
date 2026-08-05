@@ -59,4 +59,27 @@ describe('UserAdminApiService', () => {
     expect(passwordRequest.request.body).toBe(passwordPayload);
     passwordRequest.flush({ message: 'ok' });
   });
+
+  it('lists and revokes park data editor tokens through admin endpoints', () => {
+    service.getParkDataEditorTokens('user/1').subscribe();
+    service.revokeParkDataEditorToken('user/1', 'token 1').subscribe();
+    service.revokeAllParkDataEditorTokens('user/1').subscribe();
+
+    const listRequest = httpTestingController.expectOne((request) =>
+      request.method === 'GET'
+      && request.url === `${environment.apiBaseUrl}admin/users/user%2F1/park-data-editor-tokens`);
+    expect(listRequest.request.method).toBe('GET');
+    listRequest.flush([]);
+
+    const revokeRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/users/user%2F1/park-data-editor-tokens/token%201`);
+    expect(revokeRequest.request.method).toBe('DELETE');
+    revokeRequest.flush({ revokedCount: 1 });
+
+    const revokeAllRequest = httpTestingController.expectOne((request) =>
+      request.method === 'DELETE'
+      && request.url === `${environment.apiBaseUrl}admin/users/user%2F1/park-data-editor-tokens`);
+    expect(revokeAllRequest.request.method).toBe('DELETE');
+    revokeAllRequest.flush({ revokedCount: 1 });
+  });
 });

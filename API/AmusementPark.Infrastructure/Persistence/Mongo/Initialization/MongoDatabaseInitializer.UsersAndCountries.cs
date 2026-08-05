@@ -23,6 +23,30 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 /// </summary>
 public sealed partial class MongoDatabaseInitializer
 {
+    private async Task InitializeParkDataEditorAccessTokensIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<ParkDataEditorAccessTokenDocument> collection =
+            this.database.GetCollection<ParkDataEditorAccessTokenDocument>(
+                this.settings.ParkDataEditorAccessTokensCollectionName);
+        List<CreateIndexModel<ParkDataEditorAccessTokenDocument>> indexes =
+            new List<CreateIndexModel<ParkDataEditorAccessTokenDocument>>
+            {
+                new CreateIndexModel<ParkDataEditorAccessTokenDocument>(
+                    Builders<ParkDataEditorAccessTokenDocument>.IndexKeys
+                        .Ascending(item => item.UserId)
+                        .Descending(item => item.CreatedAt),
+                    new CreateIndexOptions { Name = "idx_park_data_editor_tokens_user_created" }),
+                new CreateIndexModel<ParkDataEditorAccessTokenDocument>(
+                    Builders<ParkDataEditorAccessTokenDocument>.IndexKeys
+                        .Ascending(item => item.UserId)
+                        .Ascending(item => item.RevokedAtUtc)
+                        .Ascending(item => item.ExpiresAtUtc),
+                    new CreateIndexOptions { Name = "idx_park_data_editor_tokens_active" }),
+            };
+
+        await collection.Indexes.CreateManyAsync(indexes, cancellationToken);
+    }
+
     private async Task InitializeRefreshTokensIndexesAsync(CancellationToken cancellationToken)
     {
         IMongoCollection<RefreshTokenDocument> collection = this.database.GetCollection<RefreshTokenDocument>(this.settings.RefreshTokensCollectionName);

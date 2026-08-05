@@ -9,4 +9,11 @@ describe('USER_ADMIN_API_ENDPOINTS', () => {
   it('encodes ids in password endpoints', () => {
     expect(USER_ADMIN_API_ENDPOINTS.changeUserPassword('user+1')).toBe('users/change-password?idUser=user%2B1');
   });
+
+  it('encodes user and token ids in park data editor token endpoints', () => {
+    expect(USER_ADMIN_API_ENDPOINTS.parkDataEditorTokens('user/1'))
+      .toBe('admin/users/user%2F1/park-data-editor-tokens');
+    expect(USER_ADMIN_API_ENDPOINTS.parkDataEditorToken('user/1', 'token 1'))
+      .toBe('admin/users/user%2F1/park-data-editor-tokens/token%201');
+  });
 });
