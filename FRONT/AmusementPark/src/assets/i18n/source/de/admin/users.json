@@ -40,7 +40,28 @@
       "subtitle": "Konten, Rollen und Zugriffsstatus verwalten.",
       "loadError": "Benutzer konnten nicht geladen werden.",
       "blockAction": "Konto sperren",
-      "unblockAction": "Konto entsperren"
+      "unblockAction": "Konto entsperren",
+      "parkDataEditorTokens": {
+        "title": "Zugriffstoken für Parkdaten",
+        "description": "Diese technischen Token sind auf die Integration von Parkdaten beschränkt. Das Entfernen der Rolle oder das Sperren des Kontos macht sie sofort ungültig.",
+        "loading": "Token werden geladen…",
+        "empty": "Es wurde noch kein Token erstellt.",
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "createdAt": "Erstellt am",
+        "expiresAt": "Läuft ab am",
+        "lastUsedAt": "Zuletzt verwendet am",
+        "revoke": "Widerrufen",
+        "revokeAll": "Alle widerrufen",
+        "revokeConfirmation": "Dieses Token sofort widerrufen? Diese Aktion kann nicht rückgängig gemacht werden.",
+        "revokeAllConfirmation": "Alle aktiven Token dieses Kontos sofort widerrufen?",
+        "successTitle": "Erfolg",
+        "errorTitle": "Fehler",
+        "revoked": "Das Token wurde widerrufen.",
+        "revokedAll": "Alle aktiven Token wurden widerrufen.",
+        "loadError": "Die technischen Token konnten nicht geladen werden.",
+        "revokeError": "Die Token konnten nicht widerrufen werden."
+      }
     }
   }
 }

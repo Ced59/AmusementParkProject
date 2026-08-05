@@ -3,6 +3,7 @@ using AmusementPark.WebAPI.AdminPublicView;
 using AmusementPark.WebAPI.Diagnostics;
 using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
@@ -103,6 +104,7 @@ public static class WebApplicationPipelineExtensions
         app.UseApiRateLimiting();
         app.UseApiAuthenticationRateLimiting();
         app.UseAuthentication();
+        app.UseMiddleware<ParkDataEditorRequestAuditMiddleware>();
         app.UseMiddleware<AdminPublicViewSimulationMiddleware>();
         app.UseAuthorization();
         app.UseMiddleware<ApiPerformanceLoggingMiddleware>();

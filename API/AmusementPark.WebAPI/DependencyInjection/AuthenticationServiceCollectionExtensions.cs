@@ -5,6 +5,7 @@ using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -35,9 +36,27 @@ public static class AuthenticationServiceCollectionExtensions
         Microsoft.AspNetCore.Authentication.AuthenticationBuilder authenticationBuilder = services
             .AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = ParkDataEditorAuthenticationDefaults.PolicyScheme;
+                options.DefaultChallengeScheme = ParkDataEditorAuthenticationDefaults.PolicyScheme;
             })
+            .AddPolicyScheme(
+                ParkDataEditorAuthenticationDefaults.PolicyScheme,
+                ParkDataEditorAuthenticationDefaults.PolicyScheme,
+                options =>
+                {
+                    options.ForwardDefaultSelector = static context =>
+                    {
+                        string authorizationHeader = context.Request.Headers.Authorization.ToString();
+                        return authorizationHeader.StartsWith(
+                            $"Bearer {ParkDataEditorAuthenticationDefaults.TokenPrefix}",
+                            StringComparison.OrdinalIgnoreCase)
+                            ? ParkDataEditorAuthenticationDefaults.AuthenticationScheme
+                            : JwtBearerDefaults.AuthenticationScheme;
+                    };
+                })
+            .AddScheme<AuthenticationSchemeOptions, ParkDataEditorTokenAuthenticationHandler>(
+                ParkDataEditorAuthenticationDefaults.AuthenticationScheme,
+                static _ => { })
             .AddCookie("ExternalCookies", options =>
             {
                 options.Cookie.Name = "ExternalAuth.Cookie";
@@ -78,6 +97,7 @@ public static class AuthenticationServiceCollectionExtensions
         {
             AuthorizationPolicy authenticatedUserPolicy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
+                .AddRequirements(RestrictedParkDataEditorTokenRequirement.Instance)
                 .Build();
 
             options.DefaultPolicy = authenticatedUserPolicy;
@@ -88,9 +108,31 @@ public static class AuthenticationServiceCollectionExtensions
                 policy.RequireAuthenticatedUser();
                 policy.AddRequirements(ActivatedUnblockedUserRequirement.Instance);
             });
+
+            options.AddPolicy(AuthorizationPolicyNames.AdminOrParkDataEditorToken, static policy =>
+            {
+                policy.RequireAuthenticatedUser();
+                policy.AddRequirements(AdminOrParkDataEditorTokenRequirement.Instance);
+            });
+
+            options.AddPolicy(AuthorizationPolicyNames.ParkDataEditorToken, static policy =>
+            {
+                policy.AddAuthenticationSchemes(ParkDataEditorAuthenticationDefaults.AuthenticationScheme);
+                policy.RequireAuthenticatedUser();
+                policy.RequireRole(AuthorizationRoleGroups.ParkDataEditor);
+            });
+
+            options.AddPolicy(AuthorizationPolicyNames.ParkDataEditorJwt, static policy =>
+            {
+                policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
+                policy.RequireAuthenticatedUser();
+                policy.RequireRole(AuthorizationRoleGroups.ParkDataEditor);
+            });
         });
 
         services.AddScoped<IAuthorizationHandler, ActivatedUnblockedUserAuthorizationHandler>();
+        services.AddSingleton<IAuthorizationHandler, RestrictedParkDataEditorTokenAuthorizationHandler>();
+        services.AddSingleton<IAuthorizationHandler, AdminOrParkDataEditorTokenAuthorizationHandler>();
         services.AddSingleton<IAuthorizationMiddlewareResultHandler, ActivatedUnblockedUserAuthorizationResultHandler>();
 
         return services;

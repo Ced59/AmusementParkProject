@@ -1,6 +1,20 @@
 {
-  "version": "4.1.5",
+  "version": "4.1.6",
   "history": [
+    {
+      "version": "4.1.6",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "La gestion administrative est mieux maîtrisée.",
+        "en": "Administration management is better controlled.",
+        "de": "Die Verwaltungsabläufe sind besser abgesichert.",
+        "nl": "De administratieve processen zijn beter beheersbaar.",
+        "it": "La gestione amministrativa è più controllata.",
+        "es": "La gestión administrativa está mejor controlada.",
+        "pl": "Procesy administracyjne są lepiej kontrolowane.",
+        "pt": "A gestão administrativa está mais controlada."
+      }
+    },
     {
       "version": "4.1.5",
       "releasedAt": "2026-08-05",

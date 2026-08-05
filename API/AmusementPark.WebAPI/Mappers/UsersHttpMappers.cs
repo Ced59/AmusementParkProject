@@ -230,6 +230,7 @@ public static class UsersHttpMappers
         {
             Role.Admin => UserRoleDto.ADMIN,
             Role.Moderator => UserRoleDto.MODERATOR,
+            Role.ParkDataEditor => UserRoleDto.PARK_DATA_EDITOR,
             _ => UserRoleDto.USER,
         };
     }
@@ -240,6 +241,7 @@ public static class UsersHttpMappers
         {
             UserRoleDto.ADMIN => Role.Admin,
             UserRoleDto.MODERATOR => Role.Moderator,
+            UserRoleDto.PARK_DATA_EDITOR => Role.ParkDataEditor,
             _ => Role.User,
         };
     }

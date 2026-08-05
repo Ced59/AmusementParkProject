@@ -1,4 +1,5 @@
 using System;
+using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Geo;
@@ -62,6 +63,21 @@ public sealed class ImagesHttpMappersTests
 
         Assert.False(dto.WithWatermark);
         Assert.False(request.WithWatermark);
+    }
+
+    [Fact]
+    public void ParkDataEditorImageCreateDto_WhenCreated_ShouldKeepWatermarkDisabledInApplicationRequest()
+    {
+        ParkDataEditorImageCreateDto dto = new ParkDataEditorImageCreateDto
+        {
+            Category = ImageCategoryDto.PARK,
+        };
+
+        ImageUploadRequest request = dto.ToApplication(new FilePayload());
+
+        Assert.False(dto.WithWatermark);
+        Assert.False(request.WithWatermark);
+        Assert.Equal(ImageCategory.Park, request.Category);
     }
 
     [Fact]

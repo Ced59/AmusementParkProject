@@ -22,7 +22,8 @@ namespace AmusementPark.WebAPI.Controllers;
 
 [ApiController]
 [Route("admin/park-graph-upserts")]
-[Authorize(Roles = AuthorizationRoleGroups.Admin)]
+[Authorize(Policy = AuthorizationPolicyNames.AdminOrParkDataEditorToken)]
+[AllowParkDataEditorToken]
 [RequireActivatedUnblockedUser]
 public sealed class ParkGraphUpsertsController : ControllerBase
 {

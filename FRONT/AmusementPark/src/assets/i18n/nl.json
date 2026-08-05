@@ -2077,7 +2077,28 @@
       "subtitle": "Beheer accounts, rollen en toegangsstatus.",
       "loadError": "Gebruikers konden niet worden geladen.",
       "blockAction": "Account blokkeren",
-      "unblockAction": "Account deblokkeren"
+      "unblockAction": "Account deblokkeren",
+      "parkDataEditorTokens": {
+        "title": "Toegangstokens voor parkgegevens",
+        "description": "Deze technische tokens zijn beperkt tot de integratie van parkgegevens. Het verwijderen van de rol of blokkeren van het account maakt ze onmiddellijk ongeldig.",
+        "loading": "Tokens laden…",
+        "empty": "Er is nog geen token aangemaakt.",
+        "active": "Actief",
+        "inactive": "Inactief",
+        "createdAt": "Aangemaakt op",
+        "expiresAt": "Verloopt op",
+        "lastUsedAt": "Laatst gebruikt op",
+        "revoke": "Intrekken",
+        "revokeAll": "Alles intrekken",
+        "revokeConfirmation": "Dit token onmiddellijk intrekken? Deze actie kan niet ongedaan worden gemaakt.",
+        "revokeAllConfirmation": "Alle actieve tokens van dit account onmiddellijk intrekken?",
+        "successTitle": "Gelukt",
+        "errorTitle": "Fout",
+        "revoked": "Het token is ingetrokken.",
+        "revokedAll": "Alle actieve tokens zijn ingetrokken.",
+        "loadError": "De technische tokens konden niet worden geladen.",
+        "revokeError": "De token(s) konden niet worden ingetrokken."
+      }
     },
     "videos": {
       "title": "Video's",

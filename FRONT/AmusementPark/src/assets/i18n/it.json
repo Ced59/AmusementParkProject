@@ -2077,7 +2077,28 @@
       "subtitle": "Gestisci account, ruoli e stato di accesso.",
       "loadError": "Impossibile caricare gli utenti.",
       "blockAction": "Blocca account",
-      "unblockAction": "Sblocca account"
+      "unblockAction": "Sblocca account",
+      "parkDataEditorTokens": {
+        "title": "Token di accesso ai dati dei parchi",
+        "description": "Questi token tecnici sono limitati all’integrazione dei dati dei parchi. La rimozione del ruolo o il blocco dell’account li invalida immediatamente.",
+        "loading": "Caricamento dei token…",
+        "empty": "Non è ancora stato creato alcun token.",
+        "active": "Attivo",
+        "inactive": "Inattivo",
+        "createdAt": "Creato il",
+        "expiresAt": "Scade il",
+        "lastUsedAt": "Ultimo utilizzo il",
+        "revoke": "Revoca",
+        "revokeAll": "Revoca tutti",
+        "revokeConfirmation": "Revocare immediatamente questo token? L’azione è irreversibile.",
+        "revokeAllConfirmation": "Revocare immediatamente tutti i token attivi di questo account?",
+        "successTitle": "Operazione riuscita",
+        "errorTitle": "Errore",
+        "revoked": "Il token è stato revocato.",
+        "revokedAll": "Tutti i token attivi sono stati revocati.",
+        "loadError": "Impossibile caricare i token tecnici.",
+        "revokeError": "Impossibile revocare i token."
+      }
     },
     "videos": {
       "title": "Video",

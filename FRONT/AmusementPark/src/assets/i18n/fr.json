@@ -2077,7 +2077,28 @@
       "subtitle": "Gestion des comptes, rôles et états d’accès.",
       "loadError": "Impossible de charger les utilisateurs.",
       "blockAction": "Bloquer le compte",
-      "unblockAction": "Débloquer le compte"
+      "unblockAction": "Débloquer le compte",
+      "parkDataEditorTokens": {
+        "title": "Jetons d’accès aux données de parcs",
+        "description": "Ces jetons techniques sont limités à l’intégration des données de parcs. Retirer le rôle ou bloquer le compte les invalide immédiatement.",
+        "loading": "Chargement des jetons…",
+        "empty": "Aucun jeton n’a encore été créé.",
+        "active": "Actif",
+        "inactive": "Inactif",
+        "createdAt": "Créé le",
+        "expiresAt": "Expire le",
+        "lastUsedAt": "Dernière utilisation le",
+        "revoke": "Révoquer",
+        "revokeAll": "Tout révoquer",
+        "revokeConfirmation": "Révoquer ce jeton immédiatement ? Cette action est irréversible.",
+        "revokeAllConfirmation": "Révoquer immédiatement tous les jetons actifs de ce compte ?",
+        "successTitle": "Succès",
+        "errorTitle": "Erreur",
+        "revoked": "Le jeton a été révoqué.",
+        "revokedAll": "Tous les jetons actifs ont été révoqués.",
+        "loadError": "Impossible de charger les jetons techniques.",
+        "revokeError": "Impossible de révoquer le ou les jetons."
+      }
     },
     "videos": {
       "title": "Vidéos",

@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.AdminAudit.Models;
 using AmusementPark.Application.Features.AdminAudit.Ports;
 using AmusementPark.WebAPI.ClientIp;
 using AmusementPark.WebAPI.Extensions;
+using AmusementPark.WebAPI.Security;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -204,6 +205,18 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
         }
 
         AddValue(metadata, "result.statusCode", GetStatusCode(executedContext.Result).ToString());
+        AddValue(
+            metadata,
+            "authenticationMethod",
+            context.HttpContext.User.FindFirst(ParkDataEditorAuthenticationDefaults.AuthenticationMethodClaim)?.Value);
+        AddValue(
+            metadata,
+            "parkDataEditorTokenId",
+            context.HttpContext.User.FindFirst(ParkDataEditorAuthenticationDefaults.TokenIdClaim)?.Value);
+        AddValue(
+            metadata,
+            "parkDataEditorTokenLabel",
+            context.HttpContext.User.FindFirst(ParkDataEditorAuthenticationDefaults.TokenLabelClaim)?.Value);
         return metadata;
     }
 

@@ -10,4 +10,6 @@ public static class AuthorizationRoleGroups
     public const string ModeratorAdmin = "MODERATOR,ADMIN";
 
     public const string Admin = "ADMIN";
+
+    public const string ParkDataEditor = "PARK_DATA_EDITOR";
 }

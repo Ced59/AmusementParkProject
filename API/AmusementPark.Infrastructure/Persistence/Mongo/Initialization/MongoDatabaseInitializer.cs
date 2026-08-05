@@ -58,6 +58,9 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.RefreshTokensCollectionName, cancellationToken);
         await this.InitializeRefreshTokensIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.ParkDataEditorAccessTokensCollectionName, cancellationToken);
+        await this.InitializeParkDataEditorAccessTokensIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.ImagesCollectionName, cancellationToken);
         await this.BackfillLegacyImageCategoriesAsync(cancellationToken);
         await this.InitializeImagesIndexesAsync(cancellationToken);
