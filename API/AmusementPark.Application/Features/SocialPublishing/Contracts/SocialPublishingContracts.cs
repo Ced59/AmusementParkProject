@@ -24,6 +24,37 @@ public sealed record SocialPublisherResult(
     string? FailureCode,
     string? FailureMessage);
 
+public sealed record SocialPublisherOperationResult(
+    bool IsSuccess,
+    bool IsMissing,
+    string? FailureCode,
+    string? FailureMessage);
+
+public sealed record SocialPublisherPostSnapshotResult(
+    bool IsSuccess,
+    bool Exists,
+    string? Message,
+    string? ExternalPostUrl,
+    string? FailureCode,
+    string? FailureMessage);
+
+public sealed record SocialPublicationSynchronizationResult(
+    int CheckedCount,
+    int UpdatedCount,
+    int DeletedCount,
+    int FailureCount);
+
+public enum SocialWebhookChangeKind
+{
+    Updated = 0,
+    Deleted = 1,
+}
+
+public sealed record SocialWebhookChange(
+    string ExternalPostId,
+    SocialWebhookChangeKind Kind,
+    string? Message);
+
 public sealed record SocialPublishingOverview(
     IReadOnlyCollection<SocialPublisherDescriptor> Publishers,
     IReadOnlyCollection<SocialPublication> RecentPublications);

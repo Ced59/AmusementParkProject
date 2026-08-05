@@ -17,6 +17,22 @@ public sealed class PublishSocialLinkRequestDto
     public string? Url { get; set; }
 }
 
+public sealed class UpdateSocialPublicationRequestDto
+{
+    public string? Message { get; set; }
+}
+
+public sealed class SocialPublicationSynchronizationResultDto
+{
+    public int CheckedCount { get; set; }
+
+    public int UpdatedCount { get; set; }
+
+    public int DeletedCount { get; set; }
+
+    public int FailureCount { get; set; }
+}
+
 public sealed class SocialPublishingOverviewDto
 {
     public List<SocialPublisherDto> Publishers { get; set; } = new List<SocialPublisherDto>();
@@ -62,6 +78,10 @@ public sealed class SocialPublicationDto
     public DateTime? AttemptedAtUtc { get; set; }
 
     public DateTime? PublishedAtUtc { get; set; }
+
+    public DateTime? DeletedAtUtc { get; set; }
+
+    public DateTime? LastSynchronizedAtUtc { get; set; }
 
     public string? ExternalPostId { get; set; }
 

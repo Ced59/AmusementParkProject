@@ -107,6 +107,16 @@
           <span class="admin-social-publishing__eyebrow">{{ 'admin.socialPublishing.history.eyebrow' | translate }}</span>
           <h2>{{ 'admin.socialPublishing.history.title' | translate }}</h2>
         </div>
+        <button
+          appUiButton
+          type="button"
+          class="p-button-secondary"
+          icon="pi pi-sync"
+          [label]="'admin.socialPublishing.history.synchronize' | translate"
+          [loading]="synchronizing()"
+          [disabled]="synchronizing()"
+          (click)="synchronize()">
+        </button>
       </div>
 
       @if (recentPublications().length === 0) {
@@ -126,7 +136,38 @@
                     {{ publication.requestedAtUtc | date:'short' }}
                   </time>
                 </div>
-                <p>{{ publication.message }}</p>
+                @if (editingPublicationId() === publication.id) {
+                  <div class="admin-social-publishing__edit-form">
+                    <textarea
+                      rows="6"
+                      maxlength="5000"
+                      [formControl]="editMessageControl">
+                    </textarea>
+                    <small>{{ editMessageControl.value.length }} / 5000</small>
+                    <div class="admin-social-publishing__edit-actions">
+                      <button
+                        appUiButton
+                        type="button"
+                        icon="pi pi-check"
+                        [label]="'admin.socialPublishing.history.save' | translate"
+                        [loading]="updatingPublicationId() === publication.id"
+                        [disabled]="editMessageControl.invalid || !!updatingPublicationId()"
+                        (click)="saveEdit(publication)">
+                      </button>
+                      <button
+                        appUiButton
+                        type="button"
+                        class="p-button-secondary"
+                        icon="pi pi-times"
+                        [label]="'admin.socialPublishing.history.cancel' | translate"
+                        [disabled]="!!updatingPublicationId()"
+                        (click)="cancelEdit()">
+                      </button>
+                    </div>
+                  </div>
+                } @else {
+                  <p>{{ publication.message }}</p>
+                }
                 <a [href]="publication.url" target="_blank" rel="noopener noreferrer">{{ publication.url }}</a>
                 @if (publication.failureMessage) {
                   <span class="admin-social-publishing__failure">
@@ -137,7 +178,7 @@
               </div>
 
               <div class="admin-social-publishing__history-actions">
-                @if (publication.externalPostUrl) {
+                @if (publication.externalPostUrl && publication.status !== 'Deleted') {
                   <a class="btn btn--ghost btn--sm" [href]="publication.externalPostUrl" target="_blank" rel="noopener noreferrer">
                     <i class="pi pi-external-link" aria-hidden="true"></i>
                     {{ 'admin.socialPublishing.history.openPost' | translate }}
@@ -153,6 +194,27 @@
                     [loading]="retryingPublicationId() === publication.id"
                     [disabled]="!!retryingPublicationId()"
                     (click)="retry(publication)">
+                  </button>
+                }
+                @if (publication.status === 'Published') {
+                  <button
+                    appUiButton
+                    type="button"
+                    class="p-button-secondary"
+                    icon="pi pi-pencil"
+                    [label]="'admin.socialPublishing.history.edit' | translate"
+                    [disabled]="!!updatingPublicationId() || !!deletingPublicationId()"
+                    (click)="startEdit(publication)">
+                  </button>
+                  <button
+                    appUiButton
+                    type="button"
+                    class="p-button-danger"
+                    icon="pi pi-trash"
+                    [label]="'admin.socialPublishing.history.delete' | translate"
+                    [loading]="deletingPublicationId() === publication.id"
+                    [disabled]="!!updatingPublicationId() || !!deletingPublicationId()"
+                    (click)="delete(publication)">
                   </button>
                 }
               </div>

@@ -50,10 +50,23 @@ internal static class SocialPublishingHttpMappers
             RequestedAtUtc = publication.RequestedAtUtc,
             AttemptedAtUtc = publication.AttemptedAtUtc,
             PublishedAtUtc = publication.PublishedAtUtc,
+            DeletedAtUtc = publication.DeletedAtUtc,
+            LastSynchronizedAtUtc = publication.LastSynchronizedAtUtc,
             ExternalPostId = publication.ExternalPostId,
             ExternalPostUrl = publication.ExternalPostUrl,
             FailureCode = publication.FailureCode,
             FailureMessage = publication.FailureMessage,
+        };
+    }
+
+    public static SocialPublicationSynchronizationResultDto ToHttp(this SocialPublicationSynchronizationResult result)
+    {
+        return new SocialPublicationSynchronizationResultDto
+        {
+            CheckedCount = result.CheckedCount,
+            UpdatedCount = result.UpdatedCount,
+            DeletedCount = result.DeletedCount,
+            FailureCount = result.FailureCount,
         };
     }
 }

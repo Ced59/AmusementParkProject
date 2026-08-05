@@ -51,6 +51,60 @@ public sealed class FacebookPageSocialPublisherTests
         Assert.DoesNotContain("secret-page-token", result.FailureMessage, StringComparison.Ordinal);
     }
 
+    [Fact]
+    public async Task UpdatePostAsync_WhenFacebookAcceptsChange_ShouldTargetTrackedPost()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, "{\"success\":true}");
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            CreateSettings());
+
+        SocialPublisherOperationResult result = await publisher.UpdatePostAsync(
+            "123_456",
+            "Updated message",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(HttpMethod.Post, handler.Method);
+        Assert.Equal("https://graph.facebook.com/v24.0/123_456", handler.RequestUri);
+        Assert.Contains("message=Updated+message", handler.RequestBody, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task DeletePostAsync_WhenPostNoLongerExists_ShouldReturnMissingResult()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.BadRequest,
+            "{\"error\":{\"message\":\"Unsupported get request\",\"code\":100,\"error_subcode\":33}}");
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            CreateSettings());
+
+        SocialPublisherOperationResult result = await publisher.DeletePostAsync("123_456", CancellationToken.None);
+
+        Assert.True(result.IsMissing);
+        Assert.Equal(HttpMethod.Delete, handler.Method);
+    }
+
+    [Fact]
+    public async Task GetPostAsync_WhenFacebookReturnsPost_ShouldMapSnapshot()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{\"id\":\"123_456\",\"message\":\"Facebook text\",\"permalink_url\":\"https://facebook.test/post\"}");
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            CreateSettings());
+
+        SocialPublisherPostSnapshotResult result = await publisher.GetPostAsync("123_456", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Exists);
+        Assert.Equal("Facebook text", result.Message);
+        Assert.Equal("https://facebook.test/post", result.ExternalPostUrl);
+        Assert.Contains("fields=id,message,permalink_url", handler.RequestUri, StringComparison.Ordinal);
+    }
+
     private static FacebookPagePublishingSettings CreateSettings()
     {
         return new FacebookPagePublishingSettings
@@ -98,11 +152,14 @@ public sealed class FacebookPageSocialPublisherTests
 
         public string RequestBody { get; private set; } = string.Empty;
 
+        public HttpMethod? Method { get; private set; }
+
         protected override async Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
             this.RequestUri = request.RequestUri?.AbsoluteUri;
+            this.Method = request.Method;
             this.AuthorizationScheme = request.Headers.Authorization?.Scheme;
             this.AuthorizationParameter = request.Headers.Authorization?.Parameter;
             this.RequestBody = request.Content is null

@@ -28,6 +28,10 @@ public sealed class SocialPublication : AuditableEntity
 
     public DateTime? PublishedAtUtc { get; set; }
 
+    public DateTime? DeletedAtUtc { get; set; }
+
+    public DateTime? LastSynchronizedAtUtc { get; set; }
+
     public string? ExternalPostId { get; set; }
 
     public string? ExternalPostUrl { get; set; }

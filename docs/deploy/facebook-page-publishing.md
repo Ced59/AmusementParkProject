@@ -34,6 +34,19 @@ Dans l’environnement GitHub Actions `production` :
 
 La version Graph API est configurable par `PROD_SOCIAL_PUBLISHING_FACEBOOK_API_VERSION`. Lors d’une montée de version Meta, la modifier sans changement de code après validation dans l’environnement de test.
 
+## Synchronisation des modifications et suppressions
+
+L’administration peut modifier, supprimer et synchroniser manuellement les publications créées par le site avec le token de Page actuel.
+
+Pour recevoir automatiquement les modifications ou suppressions faites directement sur Facebook :
+
+1. régénérer le token avec l’autorisation `pages_manage_metadata` en plus des autorisations existantes ;
+2. créer les secrets `PROD_SOCIAL_PUBLISHING_FACEBOOK_APP_SECRET` et `PROD_SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_VERIFY_TOKEN` ;
+3. déclarer dans Meta le callback `https://amusement-parks.fun/api/social-publishing/facebook/webhook`, avec le même verify token, et s’abonner au champ Page `feed` ;
+4. passer `PROD_SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED=true`, puis redéployer.
+
+Le callback vérifie systématiquement la signature `X-Hub-Signature-256`. Seules les publications déjà suivies par le site sont mises à jour ; les autres contenus de la Page ne sont pas importés.
+
 ## Fonctionnement des liens et de l’image Open Graph
 
 Le backend envoie le texte dans `message` et l’URL du site dans le champ Graph API `link`. Facebook explore alors la page liée et construit son aperçu depuis les balises Open Graph SSR, notamment `og:title`, `og:description` et `og:image`.

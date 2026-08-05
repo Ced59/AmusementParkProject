@@ -40,6 +40,54 @@ public sealed class RetrySocialPublicationCommandHandler
     }
 }
 
+public sealed class UpdateSocialPublicationCommandHandler
+    : ICommandHandler<UpdateSocialPublicationCommand, ApplicationResult<SocialPublication>>
+{
+    private readonly ISocialPublicationService service;
+
+    public UpdateSocialPublicationCommandHandler(ISocialPublicationService service)
+    {
+        this.service = service;
+    }
+
+    public Task<ApplicationResult<SocialPublication>> HandleAsync(UpdateSocialPublicationCommand command, CancellationToken cancellationToken = default)
+    {
+        return this.service.UpdateAsync(command.PublicationId, command.Message, command.RequestedByUserId, cancellationToken);
+    }
+}
+
+public sealed class DeleteSocialPublicationCommandHandler
+    : ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>>
+{
+    private readonly ISocialPublicationService service;
+
+    public DeleteSocialPublicationCommandHandler(ISocialPublicationService service)
+    {
+        this.service = service;
+    }
+
+    public Task<ApplicationResult<SocialPublication>> HandleAsync(DeleteSocialPublicationCommand command, CancellationToken cancellationToken = default)
+    {
+        return this.service.DeleteAsync(command.PublicationId, command.RequestedByUserId, cancellationToken);
+    }
+}
+
+public sealed class SynchronizeSocialPublicationsCommandHandler
+    : ICommandHandler<SynchronizeSocialPublicationsCommand, SocialPublicationSynchronizationResult>
+{
+    private readonly ISocialPublicationService service;
+
+    public SynchronizeSocialPublicationsCommandHandler(ISocialPublicationService service)
+    {
+        this.service = service;
+    }
+
+    public Task<SocialPublicationSynchronizationResult> HandleAsync(SynchronizeSocialPublicationsCommand command, CancellationToken cancellationToken = default)
+    {
+        return this.service.SynchronizeAsync(command.Limit, cancellationToken);
+    }
+}
+
 public sealed class GetSocialPublishingOverviewQueryHandler
     : IQueryHandler<GetSocialPublishingOverviewQuery, SocialPublishingOverview>
 {

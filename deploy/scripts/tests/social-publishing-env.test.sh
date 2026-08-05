@@ -23,6 +23,7 @@ export SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID='1285475681307050'
 export SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN='test-page-access-token-value'
 export SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL='https://www.facebook.com/profile.php?id=61592732938801'
 export SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS='10'
+export SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED='false'
 
 valid_env_file="${temp_dir}/valid.env"
 "${deploy_scripts_dir}/write-production-env.sh" "${valid_env_file}"
@@ -42,6 +43,7 @@ assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID=1285475681307050'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN=test-page-access-token-value'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL=https://www.facebook.com/profile.php?id=61592732938801'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS=10'
+assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED=false'
 
 "${deploy_scripts_dir}/validate-production-env.sh" "${valid_env_file}"
 

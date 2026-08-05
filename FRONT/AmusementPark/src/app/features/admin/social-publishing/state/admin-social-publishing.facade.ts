@@ -7,8 +7,10 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import {
   PublishSocialLinkRequest,
   SocialPublication,
+  SocialPublicationSynchronizationResult,
   SocialPublisher,
-  SocialPublishingOverview
+  SocialPublishingOverview,
+  UpdateSocialPublicationRequest
 } from '@app/models/social-publishing/social-publishing.models';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import {
@@ -21,6 +23,9 @@ export class AdminSocialPublishingFacade {
   private readonly screenStateStore = new SignalScreenStateStore<SocialPublishingOverview>();
   private readonly publishingSignal = signal<boolean>(false);
   private readonly retryingPublicationIdSignal = signal<string | null>(null);
+  private readonly updatingPublicationIdSignal = signal<string | null>(null);
+  private readonly deletingPublicationIdSignal = signal<string | null>(null);
+  private readonly synchronizingSignal = signal<boolean>(false);
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -34,6 +39,9 @@ export class AdminSocialPublishingFacade {
   );
   public readonly publishing = this.publishingSignal.asReadonly();
   public readonly retryingPublicationId = this.retryingPublicationIdSignal.asReadonly();
+  public readonly updatingPublicationId = this.updatingPublicationIdSignal.asReadonly();
+  public readonly deletingPublicationId = this.deletingPublicationIdSignal.asReadonly();
+  public readonly synchronizing = this.synchronizingSignal.asReadonly();
 
   constructor(
     @Inject(ADMIN_SOCIAL_PUBLISHING_DATA_PORT) private readonly dataPort: AdminSocialPublishingDataPort,
@@ -105,6 +113,92 @@ export class AdminSocialPublishingFacade {
     });
   }
 
+  update(publicationId: string, message: string, onSuccess?: () => void): void {
+    if (this.updatingPublicationIdSignal()) {
+      return;
+    }
+
+    const request: UpdateSocialPublicationRequest = { message };
+    this.updatingPublicationIdSignal.set(publicationId);
+    this.dataPort.update(publicationId, request).pipe(
+      takeUntilDestroyed(this.destroyRef),
+      finalize(() => this.updatingPublicationIdSignal.set(null))
+    ).subscribe({
+      next: (publication: SocialPublication) => {
+        this.applyPublication(publication);
+        onSuccess?.();
+        this.toastMessageService.add(
+          publication.status === 'Deleted' ? 'info' : 'success',
+          this.translateService.instant('admin.socialPublishing.toasts.successSummary'),
+          this.translateService.instant(
+            publication.status === 'Deleted'
+              ? 'admin.socialPublishing.toasts.alreadyDeleted'
+              : 'admin.socialPublishing.toasts.updateSuccess'
+          )
+        );
+      },
+      error: (error: unknown) => {
+        console.error('Error updating social publication', error);
+        this.showActionError('admin.socialPublishing.toasts.updateError');
+      }
+    });
+  }
+
+  delete(publicationId: string): void {
+    if (this.deletingPublicationIdSignal()) {
+      return;
+    }
+
+    this.deletingPublicationIdSignal.set(publicationId);
+    this.dataPort.delete(publicationId).pipe(
+      takeUntilDestroyed(this.destroyRef),
+      finalize(() => this.deletingPublicationIdSignal.set(null))
+    ).subscribe({
+      next: (publication: SocialPublication) => {
+        this.applyPublication(publication);
+        this.toastMessageService.add(
+          'success',
+          this.translateService.instant('admin.socialPublishing.toasts.successSummary'),
+          this.translateService.instant('admin.socialPublishing.toasts.deleteSuccess')
+        );
+      },
+      error: (error: unknown) => {
+        console.error('Error deleting social publication', error);
+        this.showActionError('admin.socialPublishing.toasts.deleteError');
+      }
+    });
+  }
+
+  synchronize(): void {
+    if (this.synchronizingSignal()) {
+      return;
+    }
+
+    this.synchronizingSignal.set(true);
+    this.dataPort.synchronize().pipe(
+      takeUntilDestroyed(this.destroyRef),
+      finalize(() => this.synchronizingSignal.set(false))
+    ).subscribe({
+      next: (result: SocialPublicationSynchronizationResult) => {
+        this.toastMessageService.add(
+          result.failureCount > 0 ? 'warn' : 'success',
+          this.translateService.instant('admin.socialPublishing.toasts.syncSummary'),
+          this.translateService.instant('admin.socialPublishing.toasts.syncSuccess', {
+            checked: result.checkedCount,
+            updated: result.updatedCount,
+            deleted: result.deletedCount,
+            failed: result.failureCount
+          })
+        );
+        this.load();
+      },
+      error: (error: unknown) => {
+        console.error('Error synchronizing social publications', error);
+        this.showActionError('admin.socialPublishing.toasts.syncError');
+      }
+    });
+  }
+
   private applyPublication(publication: SocialPublication): void {
     const currentOverview: SocialPublishingOverview = this.overview() ?? {
       publishers: [],
@@ -134,6 +228,14 @@ export class AdminSocialPublishingFacade {
       'error',
       this.translateService.instant('admin.socialPublishing.toasts.errorSummary'),
       publication.failureMessage ?? this.translateService.instant('admin.socialPublishing.toasts.publishError')
+    );
+  }
+
+  private showActionError(messageKey: string): void {
+    this.toastMessageService.add(
+      'error',
+      this.translateService.instant('admin.socialPublishing.toasts.errorSummary'),
+      this.translateService.instant(messageKey)
     );
   }
 }

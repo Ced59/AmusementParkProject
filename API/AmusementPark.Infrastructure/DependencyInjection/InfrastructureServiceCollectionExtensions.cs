@@ -185,6 +185,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ISocialShareEventRepository, SocialShareEventRepository>();
         services.AddScoped<ISocialPublicationRepository, SocialPublicationRepository>();
         services.AddScoped<ISocialPublisher, FacebookPageSocialPublisher>();
+        services.AddScoped<ISocialWebhookHandler, FacebookPageWebhookHandler>();
         services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddScoped<IUserRepository, UserRepository>();

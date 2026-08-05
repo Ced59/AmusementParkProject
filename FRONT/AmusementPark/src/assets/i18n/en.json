@@ -1881,12 +1881,19 @@
         "title": "Recent publications",
         "empty": "No social publication has been prepared yet.",
         "openPost": "View publication",
-        "retry": "Retry"
+        "retry": "Retry",
+        "synchronize": "Sync with Facebook",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Save",
+        "cancel": "Cancel",
+        "deleteConfirm": "Permanently delete this publication from the Facebook Page?"
       },
       "statuses": {
         "Pending": "In progress",
         "Published": "Published",
-        "Failed": "Failed"
+        "Failed": "Failed",
+        "Deleted": "Deleted"
       },
       "triggers": {
         "Manual": "Manual",
@@ -1897,7 +1904,15 @@
         "publishSuccess": "The publication is available on the Facebook Page.",
         "errorSummary": "Publication failed",
         "publishError": "The publication could not be sent.",
-        "retryError": "The publication could not be retried."
+        "retryError": "The publication could not be retried.",
+        "updateSuccess": "The text was updated on Facebook.",
+        "deleteSuccess": "The publication was deleted from Facebook.",
+        "alreadyDeleted": "The publication had already been deleted from Facebook.",
+        "updateError": "The publication could not be updated.",
+        "deleteError": "The publication could not be deleted.",
+        "syncSummary": "Synchronization complete",
+        "syncSuccess": "{{checked}} checked, {{updated}} updated, {{deleted}} deleted, {{failed}} failed.",
+        "syncError": "Synchronization with Facebook failed."
       }
     },
     "socialShare": {

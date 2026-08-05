@@ -73,9 +73,38 @@ describe('AdminSocialPublicationsApiService', () => {
     expect(request.request.method).toBe('POST');
     request.flush(createPublication('Published'));
   });
+
+  it('updates and deletes a tracked publication', () => {
+    service.update('publication 1', { message: 'Updated' }).subscribe();
+
+    const updateRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/social-publications/publication%201`
+    );
+    expect(updateRequest.request.method).toBe('PUT');
+    expect(updateRequest.request.body).toEqual({ message: 'Updated' });
+    updateRequest.flush(createPublication('Published'));
+
+    service.delete('publication 1').subscribe();
+    const deleteRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/social-publications/publication%201`
+    );
+    expect(deleteRequest.request.method).toBe('DELETE');
+    deleteRequest.flush(createPublication('Deleted'));
+  });
+
+  it('synchronizes recent tracked publications', () => {
+    service.synchronize(10).subscribe();
+
+    const request = httpTestingController.expectOne(
+      (candidate) => candidate.url === `${environment.apiBaseUrl}admin/social-publications/synchronize`
+    );
+    expect(request.request.method).toBe('POST');
+    expect(request.request.params.get('limit')).toBe('10');
+    request.flush({ checkedCount: 1, updatedCount: 0, deletedCount: 1, failureCount: 0 });
+  });
 });
 
-function createPublication(status: 'Published' | 'Failed') {
+function createPublication(status: 'Published' | 'Failed' | 'Deleted') {
   return {
     id: 'publication-1',
     network: 'Facebook',
@@ -88,8 +117,10 @@ function createPublication(status: 'Published' | 'Failed') {
     requestedAtUtc: '2026-08-05T10:00:00Z',
     attemptedAtUtc: '2026-08-05T10:00:00Z',
     publishedAtUtc: status === 'Published' ? '2026-08-05T10:00:01Z' : null,
-    externalPostId: status === 'Published' ? '123_456' : null,
-    externalPostUrl: status === 'Published' ? 'https://www.facebook.com/123_456' : null,
+    deletedAtUtc: status === 'Deleted' ? '2026-08-05T10:10:00Z' : null,
+    lastSynchronizedAtUtc: status === 'Deleted' ? '2026-08-05T10:10:00Z' : null,
+    externalPostId: status !== 'Failed' ? '123_456' : null,
+    externalPostUrl: status !== 'Failed' ? 'https://www.facebook.com/123_456' : null,
     failureCode: status === 'Failed' ? 'error' : null,
     failureMessage: status === 'Failed' ? 'Failure' : null
   };

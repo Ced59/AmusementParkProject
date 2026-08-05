@@ -1,6 +1,20 @@
 {
-  "version": "4.1.2",
+  "version": "4.1.3",
   "history": [
+    {
+      "version": "4.1.3",
+      "releasedAt": "2026-08-05",
+      "labels": {
+        "fr": "L’administration gagne en ergonomie.",
+        "en": "Administration is easier to use.",
+        "de": "Die Administration ist benutzerfreundlicher.",
+        "nl": "Het beheer is gebruiksvriendelijker.",
+        "it": "L’amministrazione è più facile da usare.",
+        "es": "La administración es más fácil de usar.",
+        "pl": "Panel administracyjny jest łatwiejszy w obsłudze.",
+        "pt": "A administração está mais fácil de utilizar."
+      }
+    },
     {
       "version": "4.1.2",
       "releasedAt": "2026-08-05",

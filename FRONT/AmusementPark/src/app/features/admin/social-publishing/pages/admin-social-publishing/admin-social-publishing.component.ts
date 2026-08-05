@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import {
   PublishSocialLinkRequest,
@@ -41,6 +41,14 @@ export class AdminSocialPublishingComponent implements OnInit {
   protected readonly recentPublications = this.facade.recentPublications;
   protected readonly publishing = this.facade.publishing;
   protected readonly retryingPublicationId = this.facade.retryingPublicationId;
+  protected readonly updatingPublicationId = this.facade.updatingPublicationId;
+  protected readonly deletingPublicationId = this.facade.deletingPublicationId;
+  protected readonly synchronizing = this.facade.synchronizing;
+  protected readonly editingPublicationId = signal<string | null>(null);
+  protected readonly editMessageControl = new FormControl<string>('', {
+    nonNullable: true,
+    validators: [Validators.required, Validators.maxLength(5000)]
+  });
 
   protected readonly publicationForm = new FormGroup<SocialPublicationForm>({
     message: new FormControl<string>('', {
@@ -53,7 +61,10 @@ export class AdminSocialPublishingComponent implements OnInit {
     })
   });
 
-  constructor(private readonly facade: AdminSocialPublishingFacade) {
+  constructor(
+    private readonly facade: AdminSocialPublishingFacade,
+    private readonly translateService: TranslateService
+  ) {
   }
 
   ngOnInit(): void {
@@ -83,12 +94,53 @@ export class AdminSocialPublishingComponent implements OnInit {
     this.facade.retry(publication.id);
   }
 
+  protected startEdit(publication: SocialPublication): void {
+    if (publication.status !== 'Published') {
+      return;
+    }
+
+    this.editMessageControl.setValue(publication.message);
+    this.editingPublicationId.set(publication.id);
+  }
+
+  protected cancelEdit(): void {
+    this.editingPublicationId.set(null);
+    this.editMessageControl.reset('');
+  }
+
+  protected saveEdit(publication: SocialPublication): void {
+    if (this.editMessageControl.invalid || this.updatingPublicationId()) {
+      this.editMessageControl.markAsTouched();
+      return;
+    }
+
+    this.facade.update(publication.id, this.editMessageControl.value.trim(), () => this.cancelEdit());
+  }
+
+  protected delete(publication: SocialPublication): void {
+    if (publication.status !== 'Published'
+      || !confirm(this.deleteConfirmationMessage())) {
+      return;
+    }
+
+    this.facade.delete(publication.id);
+    if (this.editingPublicationId() === publication.id) {
+      this.cancelEdit();
+    }
+  }
+
+  protected synchronize(): void {
+    this.facade.synchronize();
+  }
+
   protected statusSeverity(status: SocialPublicationStatus): string {
     switch (status) {
       case 'Published':
         return 'success';
       case 'Failed':
         return 'danger';
+      case 'Deleted':
+        return 'secondary';
       default:
         return 'info';
     }
@@ -104,5 +156,9 @@ export class AdminSocialPublishingComponent implements OnInit {
 
   protected trackByPublicationId(_: number, publication: SocialPublication): string {
     return publication.id;
+  }
+
+  private deleteConfirmationMessage(): string {
+    return this.translateService.instant('admin.socialPublishing.history.deleteConfirm');
   }
 }

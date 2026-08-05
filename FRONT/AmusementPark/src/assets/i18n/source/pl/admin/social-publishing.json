@@ -36,12 +36,19 @@
         "title": "Ostatnie publikacje",
         "empty": "Nie przygotowano jeszcze żadnej publikacji społecznościowej.",
         "openPost": "Zobacz publikację",
-        "retry": "Ponów"
+        "retry": "Ponów",
+        "synchronize": "Synchronizuj z Facebookiem",
+        "edit": "Edytuj",
+        "delete": "Usuń",
+        "save": "Zapisz",
+        "cancel": "Anuluj",
+        "deleteConfirm": "Trwale usunąć tę publikację ze strony na Facebooku?"
       },
       "statuses": {
         "Pending": "W toku",
         "Published": "Opublikowano",
-        "Failed": "Niepowodzenie"
+        "Failed": "Niepowodzenie",
+        "Deleted": "Usunięto"
       },
       "triggers": {
         "Manual": "Ręczna",
@@ -52,7 +59,15 @@
         "publishSuccess": "Publikacja jest dostępna na stronie Facebooka.",
         "errorSummary": "Publikacja nie powiodła się",
         "publishError": "Nie udało się wysłać publikacji.",
-        "retryError": "Nie udało się ponowić publikacji."
+        "retryError": "Nie udało się ponowić publikacji.",
+        "updateSuccess": "Tekst został zaktualizowany na Facebooku.",
+        "deleteSuccess": "Publikacja została usunięta z Facebooka.",
+        "alreadyDeleted": "Publikacja została już wcześniej usunięta z Facebooka.",
+        "updateError": "Nie udało się zaktualizować publikacji.",
+        "deleteError": "Nie udało się usunąć publikacji.",
+        "syncSummary": "Synchronizacja zakończona",
+        "syncSuccess": "Sprawdzono: {{checked}}, zaktualizowano: {{updated}}, usunięto: {{deleted}}, błędy: {{failed}}.",
+        "syncError": "Synchronizacja z Facebookiem nie powiodła się."
       }
     }
   }

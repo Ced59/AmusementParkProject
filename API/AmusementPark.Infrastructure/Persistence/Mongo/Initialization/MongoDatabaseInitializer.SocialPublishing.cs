@@ -30,6 +30,15 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(static document => document.Status)
                     .Descending(static document => document.RequestedAtUtc),
                 new CreateIndexOptions { Name = "idx_social_publications_network_status" }),
+            new CreateIndexModel<SocialPublicationDocument>(
+                Builders<SocialPublicationDocument>.IndexKeys.Ascending(static document => document.ExternalPostId),
+                new CreateIndexOptions<SocialPublicationDocument>
+                {
+                    Name = "idx_social_publications_external_post_id",
+                    PartialFilterExpression = Builders<SocialPublicationDocument>.Filter.Type(
+                        static document => document.ExternalPostId,
+                        MongoDB.Bson.BsonType.String),
+                }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);

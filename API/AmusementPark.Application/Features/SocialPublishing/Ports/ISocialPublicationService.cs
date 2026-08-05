@@ -17,6 +17,26 @@ public interface ISocialPublicationService
         string? requestedByUserId,
         CancellationToken cancellationToken);
 
+    Task<ApplicationResult<SocialPublication>> UpdateAsync(
+        string publicationId,
+        string? message,
+        string? requestedByUserId,
+        CancellationToken cancellationToken);
+
+    Task<ApplicationResult<SocialPublication>> DeleteAsync(
+        string publicationId,
+        string? requestedByUserId,
+        CancellationToken cancellationToken);
+
+    Task<SocialPublicationSynchronizationResult> SynchronizeAsync(
+        int limit,
+        CancellationToken cancellationToken);
+
+    Task ApplyExternalChangeAsync(
+        SocialNetwork network,
+        SocialWebhookChange change,
+        CancellationToken cancellationToken);
+
     Task<SocialPublication?> PublishParkAnnouncementAsync(
         Park park,
         string? requestedByUserId,

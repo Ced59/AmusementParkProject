@@ -137,6 +137,82 @@ public sealed class SocialPublicationServiceTests
         Assert.Single(repository.Publications);
     }
 
+    [Fact]
+    public async Task UpdateAsync_WhenPublishedPostExists_ShouldUpdateFacebookAndStoredMessage()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        SocialPublication publication = CreatePublishedPublication();
+        repository.Publications.Add(publication);
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        ApplicationResult<SocialPublication> result = await service.UpdateAsync(
+            publication.Id!,
+            " Nouveau texte ",
+            "admin-2",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("Nouveau texte", result.Value!.Message);
+        Assert.Equal("admin-2", result.Value.RequestedByUserId);
+        Assert.NotNull(result.Value.LastSynchronizedAtUtc);
+        Assert.Equal(1, publisher.UpdateCallCount);
+    }
+
+    [Fact]
+    public async Task DeleteAsync_WhenPostWasAlreadyRemovedFromFacebook_ShouldMarkItDeleted()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        publisher.DeleteResult = new SocialPublisherOperationResult(false, true, null, null);
+        SocialPublication publication = CreatePublishedPublication();
+        repository.Publications.Add(publication);
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        ApplicationResult<SocialPublication> result = await service.DeleteAsync(
+            publication.Id!,
+            "admin-2",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(SocialPublicationStatus.Deleted, result.Value!.Status);
+        Assert.NotNull(result.Value.DeletedAtUtc);
+        Assert.Equal(1, publisher.DeleteCallCount);
+    }
+
+    [Fact]
+    public async Task SynchronizeAsync_WhenTrackedPostNoLongerExists_ShouldMarkItDeleted()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        publisher.SnapshotResult = new SocialPublisherPostSnapshotResult(true, false, null, null, null, null);
+        SocialPublication publication = CreatePublishedPublication();
+        repository.Publications.Add(publication);
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        SocialPublicationSynchronizationResult result = await service.SynchronizeAsync(25, CancellationToken.None);
+
+        Assert.Equal(1, result.CheckedCount);
+        Assert.Equal(1, result.DeletedCount);
+        Assert.Equal(SocialPublicationStatus.Deleted, publication.Status);
+        Assert.Equal(1, publisher.GetCallCount);
+    }
+
+    private static SocialPublication CreatePublishedPublication()
+    {
+        return new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Published,
+            Trigger = SocialPublicationTrigger.Manual,
+            Message = "Message",
+            Url = "https://amusement-parks.fun/fr/home",
+            ExternalPostId = "123_456",
+            ExternalPostUrl = "https://www.facebook.com/123/posts/456",
+        };
+    }
+
     private static SocialPublicationService CreateService(
         InMemorySocialPublicationRepository repository,
         StubSocialPublisher publisher)
@@ -169,6 +245,24 @@ public sealed class SocialPublicationServiceTests
         public SocialNetwork Network => SocialNetwork.Facebook;
 
         public int PublishCallCount { get; private set; }
+
+        public int UpdateCallCount { get; private set; }
+
+        public int DeleteCallCount { get; private set; }
+
+        public int GetCallCount { get; private set; }
+
+        public SocialPublisherOperationResult DeleteResult { get; set; } =
+            new SocialPublisherOperationResult(true, false, null, null);
+
+        public SocialPublisherPostSnapshotResult SnapshotResult { get; set; } =
+            new SocialPublisherPostSnapshotResult(
+                true,
+                true,
+                "Message",
+                "https://www.facebook.com/123/posts/456",
+                null,
+                null);
 
         public static StubSocialPublisher Configured()
         {
@@ -207,6 +301,31 @@ public sealed class SocialPublicationServiceTests
                 null,
                 null));
         }
+
+        public Task<SocialPublisherOperationResult> UpdatePostAsync(
+            string externalPostId,
+            string message,
+            CancellationToken cancellationToken)
+        {
+            this.UpdateCallCount++;
+            return Task.FromResult(new SocialPublisherOperationResult(true, false, null, null));
+        }
+
+        public Task<SocialPublisherOperationResult> DeletePostAsync(
+            string externalPostId,
+            CancellationToken cancellationToken)
+        {
+            this.DeleteCallCount++;
+            return Task.FromResult(this.DeleteResult);
+        }
+
+        public Task<SocialPublisherPostSnapshotResult> GetPostAsync(
+            string externalPostId,
+            CancellationToken cancellationToken)
+        {
+            this.GetCallCount++;
+            return Task.FromResult(this.SnapshotResult);
+        }
     }
 
     private sealed class InMemorySocialPublicationRepository : ISocialPublicationRepository
@@ -239,6 +358,12 @@ public sealed class SocialPublicationServiceTests
         {
             return Task.FromResult(this.Publications.FirstOrDefault(
                 publication => publication.DeduplicationKey == deduplicationKey));
+        }
+
+        public Task<SocialPublication?> GetByExternalPostIdAsync(string externalPostId, CancellationToken cancellationToken)
+        {
+            return Task.FromResult(this.Publications.FirstOrDefault(
+                publication => publication.ExternalPostId == externalPostId));
         }
 
         public Task<IReadOnlyCollection<SocialPublication>> ListRecentAsync(int limit, CancellationToken cancellationToken)

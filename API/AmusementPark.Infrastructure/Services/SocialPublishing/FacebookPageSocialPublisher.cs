@@ -79,6 +79,174 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
             null);
     }
 
+    public Task<SocialPublisherOperationResult> UpdatePostAsync(
+        string externalPostId,
+        string message,
+        CancellationToken cancellationToken)
+    {
+        return this.SendMutationAsync(
+            HttpMethod.Post,
+            externalPostId,
+            new Dictionary<string, string> { ["message"] = message },
+            cancellationToken);
+    }
+
+    public Task<SocialPublisherOperationResult> DeletePostAsync(
+        string externalPostId,
+        CancellationToken cancellationToken)
+    {
+        return this.SendMutationAsync(HttpMethod.Delete, externalPostId, null, cancellationToken);
+    }
+
+    public async Task<SocialPublisherPostSnapshotResult> GetPostAsync(
+        string externalPostId,
+        CancellationToken cancellationToken)
+    {
+        if (!this.settings.IsConfigured())
+        {
+            return new SocialPublisherPostSnapshotResult(
+                false,
+                false,
+                null,
+                null,
+                "publisher-not-configured",
+                "La Page Facebook n'est pas configurée.");
+        }
+
+        string endpoint = $"{BuildObjectEndpoint(this.settings.ApiVersion, externalPostId)}?fields=id,message,permalink_url";
+        using HttpRequestMessage httpRequest = this.CreateAuthorizedRequest(HttpMethod.Get, endpoint);
+        HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
+        using HttpResponseMessage response = await client.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+        string responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
+        if (!response.IsSuccessStatusCode)
+        {
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound || IsMissingObject(responseBody))
+            {
+                return new SocialPublisherPostSnapshotResult(true, false, null, null, null, null);
+            }
+
+            SocialPublisherResult failure = ParseFailure(
+                responseBody,
+                ((int)response.StatusCode).ToString(System.Globalization.CultureInfo.InvariantCulture));
+            return new SocialPublisherPostSnapshotResult(
+                false,
+                false,
+                null,
+                null,
+                failure.FailureCode,
+                failure.FailureMessage);
+        }
+
+        try
+        {
+            using JsonDocument document = JsonDocument.Parse(responseBody);
+            JsonElement root = document.RootElement;
+            string? message = root.TryGetProperty("message", out JsonElement messageElement)
+                && messageElement.ValueKind == JsonValueKind.String
+                    ? messageElement.GetString()
+                    : null;
+            string? permalink = root.TryGetProperty("permalink_url", out JsonElement permalinkElement)
+                && permalinkElement.ValueKind == JsonValueKind.String
+                    ? permalinkElement.GetString()
+                    : null;
+            return new SocialPublisherPostSnapshotResult(true, true, message, permalink, null, null);
+        }
+        catch (JsonException)
+        {
+            return new SocialPublisherPostSnapshotResult(
+                false,
+                false,
+                null,
+                null,
+                "facebook-invalid-response",
+                "Facebook a renvoyé une réponse invalide.");
+        }
+    }
+
+    private async Task<SocialPublisherOperationResult> SendMutationAsync(
+        HttpMethod method,
+        string externalPostId,
+        IReadOnlyDictionary<string, string>? formValues,
+        CancellationToken cancellationToken)
+    {
+        if (!this.settings.IsConfigured())
+        {
+            return new SocialPublisherOperationResult(
+                false,
+                false,
+                "publisher-not-configured",
+                "La Page Facebook n'est pas configurée.");
+        }
+
+        string endpoint = BuildObjectEndpoint(this.settings.ApiVersion, externalPostId);
+        using HttpRequestMessage httpRequest = this.CreateAuthorizedRequest(method, endpoint);
+        if (formValues is not null)
+        {
+            httpRequest.Content = new FormUrlEncodedContent(formValues);
+        }
+
+        HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
+        using HttpResponseMessage response = await client.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+        string responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
+        if (response.IsSuccessStatusCode)
+        {
+            return new SocialPublisherOperationResult(true, false, null, null);
+        }
+
+        if (response.StatusCode == System.Net.HttpStatusCode.NotFound || IsMissingObject(responseBody))
+        {
+            return new SocialPublisherOperationResult(false, true, null, null);
+        }
+
+        SocialPublisherResult failure = ParseFailure(
+            responseBody,
+            ((int)response.StatusCode).ToString(System.Globalization.CultureInfo.InvariantCulture));
+        return new SocialPublisherOperationResult(
+            false,
+            false,
+            failure.FailureCode,
+            failure.FailureMessage);
+    }
+
+    private HttpRequestMessage CreateAuthorizedRequest(HttpMethod method, string endpoint)
+    {
+        HttpRequestMessage request = new HttpRequestMessage(method, endpoint);
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", this.settings.PageAccessToken);
+        return request;
+    }
+
+    private static string BuildObjectEndpoint(string apiVersion, string externalPostId)
+    {
+        return $"{GraphApiBaseUrl}/{apiVersion}/{Uri.EscapeDataString(externalPostId)}";
+    }
+
+    private static bool IsMissingObject(string responseBody)
+    {
+        try
+        {
+            using JsonDocument document = JsonDocument.Parse(responseBody);
+            if (!document.RootElement.TryGetProperty("error", out JsonElement errorElement)
+                || errorElement.ValueKind != JsonValueKind.Object)
+            {
+                return false;
+            }
+
+            int code = errorElement.TryGetProperty("code", out JsonElement codeElement)
+                && codeElement.TryGetInt32(out int parsedCode)
+                    ? parsedCode
+                    : 0;
+            int subcode = errorElement.TryGetProperty("error_subcode", out JsonElement subcodeElement)
+                && subcodeElement.TryGetInt32(out int parsedSubcode)
+                    ? parsedSubcode
+                    : 0;
+            return code == 803 || (code == 100 && subcode == 33);
+        }
+        catch (JsonException)
+        {
+            return false;
+        }
+    }
+
     private static string BuildExternalPostUrl(string externalPostId)
     {
         string[] parts = externalPostId.Split('_', 2, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);

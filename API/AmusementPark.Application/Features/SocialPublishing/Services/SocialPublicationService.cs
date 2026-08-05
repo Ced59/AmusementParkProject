@@ -70,6 +70,204 @@ public sealed class SocialPublicationService : ISocialPublicationService
         return ApplicationResult<SocialPublication>.Success(publication);
     }
 
+    public async Task<ApplicationResult<SocialPublication>> UpdateAsync(
+        string publicationId,
+        string? message,
+        string? requestedByUserId,
+        CancellationToken cancellationToken)
+    {
+        SocialPublication? publication = await this.repository.GetByIdAsync(publicationId, cancellationToken);
+        if (publication is null)
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationNotFound(publicationId));
+        }
+
+        if (!CanManage(publication))
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeManaged());
+        }
+
+        string normalizedMessage = message?.Trim() ?? string.Empty;
+        if (normalizedMessage.Length == 0 || normalizedMessage.Length > MaximumMessageLength)
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.InvalidMessage());
+        }
+
+        ISocialPublisher? publisher = this.FindPublisher(publication.Network);
+        if (publisher is null || !publisher.Describe().IsConfigured)
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublisherOperationFailed(null));
+        }
+
+        SocialPublisherOperationResult result;
+        try
+        {
+            result = await publisher.UpdatePostAsync(publication.ExternalPostId!, normalizedMessage, cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
+        {
+            result = new SocialPublisherOperationResult(false, false, "publisher-unavailable", null);
+        }
+
+        if (result.IsMissing)
+        {
+            publication = await this.MarkDeletedAsync(publication, requestedByUserId, cancellationToken);
+            return ApplicationResult<SocialPublication>.Success(publication);
+        }
+
+        if (!result.IsSuccess)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublisherOperationFailed(result.FailureMessage));
+        }
+
+        publication.Message = normalizedMessage;
+        publication.RequestedByUserId = requestedByUserId;
+        publication.LastSynchronizedAtUtc = DateTime.UtcNow;
+        publication.Touch();
+        publication = await this.repository.UpdateAsync(publication, cancellationToken);
+        return ApplicationResult<SocialPublication>.Success(publication);
+    }
+
+    public async Task<ApplicationResult<SocialPublication>> DeleteAsync(
+        string publicationId,
+        string? requestedByUserId,
+        CancellationToken cancellationToken)
+    {
+        SocialPublication? publication = await this.repository.GetByIdAsync(publicationId, cancellationToken);
+        if (publication is null)
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationNotFound(publicationId));
+        }
+
+        if (!CanManage(publication))
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeManaged());
+        }
+
+        ISocialPublisher? publisher = this.FindPublisher(publication.Network);
+        if (publisher is null || !publisher.Describe().IsConfigured)
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublisherOperationFailed(null));
+        }
+
+        SocialPublisherOperationResult result;
+        try
+        {
+            result = await publisher.DeletePostAsync(publication.ExternalPostId!, cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
+        {
+            result = new SocialPublisherOperationResult(false, false, "publisher-unavailable", null);
+        }
+
+        if (!result.IsSuccess && !result.IsMissing)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublisherOperationFailed(result.FailureMessage));
+        }
+
+        publication = await this.MarkDeletedAsync(publication, requestedByUserId, cancellationToken);
+        return ApplicationResult<SocialPublication>.Success(publication);
+    }
+
+    public async Task<SocialPublicationSynchronizationResult> SynchronizeAsync(
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<SocialPublication> publications = await this.repository.ListRecentAsync(
+            Math.Clamp(limit, 1, 100),
+            cancellationToken);
+        int checkedCount = 0;
+        int updatedCount = 0;
+        int deletedCount = 0;
+        int failureCount = 0;
+
+        foreach (SocialPublication publication in publications.Where(CanManage))
+        {
+            ISocialPublisher? publisher = this.FindPublisher(publication.Network);
+            if (publisher is null || !publisher.Describe().IsConfigured)
+            {
+                failureCount++;
+                continue;
+            }
+
+            checkedCount++;
+            SocialPublisherPostSnapshotResult snapshot;
+            try
+            {
+                snapshot = await publisher.GetPostAsync(publication.ExternalPostId!, cancellationToken);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                failureCount++;
+                continue;
+            }
+
+            if (!snapshot.IsSuccess)
+            {
+                failureCount++;
+                continue;
+            }
+
+            if (!snapshot.Exists)
+            {
+                await this.MarkDeletedAsync(publication, publication.RequestedByUserId, cancellationToken);
+                deletedCount++;
+                continue;
+            }
+
+            bool changed = snapshot.Message is not null
+                && !string.Equals(publication.Message, snapshot.Message, StringComparison.Ordinal);
+            publication.Message = snapshot.Message ?? publication.Message;
+            publication.ExternalPostUrl = snapshot.ExternalPostUrl ?? publication.ExternalPostUrl;
+            publication.LastSynchronizedAtUtc = DateTime.UtcNow;
+            publication.Touch();
+            await this.repository.UpdateAsync(publication, cancellationToken);
+            if (changed)
+            {
+                updatedCount++;
+            }
+        }
+
+        return new SocialPublicationSynchronizationResult(checkedCount, updatedCount, deletedCount, failureCount);
+    }
+
+    public async Task ApplyExternalChangeAsync(
+        SocialNetwork network,
+        SocialWebhookChange change,
+        CancellationToken cancellationToken)
+    {
+        SocialPublication? publication = await this.repository.GetByExternalPostIdAsync(change.ExternalPostId, cancellationToken);
+        if (publication is null || publication.Network != network || publication.Status == SocialPublicationStatus.Deleted)
+        {
+            return;
+        }
+
+        if (change.Kind == SocialWebhookChangeKind.Deleted)
+        {
+            await this.MarkDeletedAsync(publication, publication.RequestedByUserId, cancellationToken);
+            return;
+        }
+
+        publication.Message = change.Message ?? publication.Message;
+        publication.LastSynchronizedAtUtc = DateTime.UtcNow;
+        publication.Touch();
+        await this.repository.UpdateAsync(publication, cancellationToken);
+    }
+
     public async Task<SocialPublication?> PublishParkAnnouncementAsync(
         Park park,
         string? requestedByUserId,
@@ -210,6 +408,31 @@ public sealed class SocialPublicationService : ISocialPublicationService
         publication.ExternalPostUrl = result.ExternalPostUrl;
         publication.FailureCode = result.FailureCode;
         publication.FailureMessage = result.FailureMessage;
+        publication.Touch();
+        return await this.repository.UpdateAsync(publication, cancellationToken);
+    }
+
+    private static bool CanManage(SocialPublication publication)
+    {
+        return publication.Status == SocialPublicationStatus.Published
+            && !string.IsNullOrWhiteSpace(publication.ExternalPostId);
+    }
+
+    private ISocialPublisher? FindPublisher(SocialNetwork network)
+    {
+        return this.publishers.FirstOrDefault(candidate => candidate.Network == network);
+    }
+
+    private async Task<SocialPublication> MarkDeletedAsync(
+        SocialPublication publication,
+        string? requestedByUserId,
+        CancellationToken cancellationToken)
+    {
+        DateTime deletedAtUtc = DateTime.UtcNow;
+        publication.Status = SocialPublicationStatus.Deleted;
+        publication.DeletedAtUtc = deletedAtUtc;
+        publication.LastSynchronizedAtUtc = deletedAtUtc;
+        publication.RequestedByUserId = requestedByUserId;
         publication.Touch();
         return await this.repository.UpdateAsync(publication, cancellationToken);
     }
