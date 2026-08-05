@@ -153,6 +153,26 @@ validate_boolean() {
   esac
 }
 
+validate_positive_integer() {
+  local name="$1"
+  local value="${!name:-}"
+
+  if [[ ! "${value}" =~ ^[1-9][0-9]*$ ]]; then
+    echo "ERROR: ${name} must be a positive integer." >&2
+    errors=$((errors + 1))
+  fi
+}
+
+validate_https_url() {
+  local name="$1"
+  local value="${!name:-}"
+
+  if [[ ! "${value}" =~ ^https://[^[:space:]]+$ ]]; then
+    echo "ERROR: ${name} must be an absolute https URL." >&2
+    errors=$((errors + 1))
+  fi
+}
+
 warn_missing() {
   local name="$1"
   local value="${!name:-}"
@@ -184,6 +204,7 @@ required_names=(
   JWT_KEY
   JWT_ISSUER
   JWT_AUDIENCE
+  SOCIAL_PUBLISHING_FACEBOOK_ENABLED
 )
 
 for required_name in "${required_names[@]}"; do
@@ -231,6 +252,35 @@ validate_boolean RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION
 validate_boolean OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN
 validate_boolean RUN_LEGACY_ENUM_MIGRATIONS
 validate_boolean LEGACY_ENUM_MIGRATIONS_DRY_RUN
+validate_boolean SOCIAL_PUBLISHING_FACEBOOK_ENABLED
+
+if [ "${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}" = "true" ]; then
+  social_publishing_required_names=(
+    SOCIAL_PUBLISHING_FACEBOOK_API_VERSION
+    SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID
+    SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN
+    SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL
+    SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS
+  )
+
+  for social_publishing_name in "${social_publishing_required_names[@]}"; do
+    require_value "${social_publishing_name}"
+    reject_placeholder "${social_publishing_name}"
+  done
+
+  if [[ ! "${SOCIAL_PUBLISHING_FACEBOOK_API_VERSION:-}" =~ ^v[0-9]+\.[0-9]+$ ]]; then
+    echo "ERROR: SOCIAL_PUBLISHING_FACEBOOK_API_VERSION must use the v<major>.<minor> format." >&2
+    errors=$((errors + 1))
+  fi
+
+  if [[ ! "${SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID:-}" =~ ^[0-9]+$ ]]; then
+    echo "ERROR: SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID must contain digits only." >&2
+    errors=$((errors + 1))
+  fi
+
+  validate_https_url SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL
+  validate_positive_integer SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS
+fi
 
 if [ -n "${GOOGLE_CLIENT_ID:-}" ] || [ -n "${GOOGLE_CLIENT_SECRET:-}" ]; then
   for google_name in GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET GOOGLE_REDIRECT_URI; do

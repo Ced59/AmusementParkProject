@@ -135,6 +135,19 @@ jobs:
           git tag "${tag}" "${{ github.sha }}"
           git push origin "refs/tags/${tag}"
 
+  deployment-configuration-tests:
+    name: Deployment configuration tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Test production environment generation
+        shell: bash
+        run: |
+          chmod +x deploy/scripts/*.sh deploy/scripts/tests/*.sh
+          deploy/scripts/tests/social-publishing-env.test.sh
+
   backend:
     name: Backend build and tests
     runs-on: ubuntu-latest
@@ -378,6 +391,7 @@ jobs:
     needs:
       - docker-images
       - dependency-security
+      - deployment-configuration-tests
     concurrency:
       group: production-deploy-${{ github.ref_name }}
       cancel-in-progress: true
