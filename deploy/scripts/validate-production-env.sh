@@ -205,6 +205,7 @@ required_names=(
   JWT_ISSUER
   JWT_AUDIENCE
   SOCIAL_PUBLISHING_FACEBOOK_ENABLED
+  SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED
 )
 
 for required_name in "${required_names[@]}"; do
@@ -253,6 +254,7 @@ validate_boolean OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN
 validate_boolean RUN_LEGACY_ENUM_MIGRATIONS
 validate_boolean LEGACY_ENUM_MIGRATIONS_DRY_RUN
 validate_boolean SOCIAL_PUBLISHING_FACEBOOK_ENABLED
+validate_boolean SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED
 
 if [ "${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}" = "true" ]; then
   social_publishing_required_names=(
@@ -280,6 +282,13 @@ if [ "${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}" = "true" ]; then
 
   validate_https_url SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL
   validate_positive_integer SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS
+fi
+
+if [ "${SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED:-false}" = "true" ]; then
+  for webhook_name in SOCIAL_PUBLISHING_FACEBOOK_APP_SECRET SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_VERIFY_TOKEN; do
+    require_value "${webhook_name}"
+    reject_placeholder "${webhook_name}"
+  done
 fi
 
 if [ -n "${GOOGLE_CLIENT_ID:-}" ] || [ -n "${GOOGLE_CLIENT_SECRET:-}" ]; then

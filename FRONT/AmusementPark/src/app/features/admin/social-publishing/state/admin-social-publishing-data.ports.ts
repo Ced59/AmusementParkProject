@@ -5,13 +5,18 @@ import { AdminSocialPublicationsApiService } from '@data-access/social-publishin
 import {
   PublishSocialLinkRequest,
   SocialPublication,
-  SocialPublishingOverview
+  SocialPublicationSynchronizationResult,
+  SocialPublishingOverview,
+  UpdateSocialPublicationRequest
 } from '@app/models/social-publishing/social-publishing.models';
 
 export interface AdminSocialPublishingDataPort {
   getOverview(limit?: number): Observable<SocialPublishingOverview>;
   publish(request: PublishSocialLinkRequest): Observable<SocialPublication>;
   retry(publicationId: string): Observable<SocialPublication>;
+  update(publicationId: string, request: UpdateSocialPublicationRequest): Observable<SocialPublication>;
+  delete(publicationId: string): Observable<SocialPublication>;
+  synchronize(limit?: number): Observable<SocialPublicationSynchronizationResult>;
 }
 
 export const ADMIN_SOCIAL_PUBLISHING_DATA_PORT = new InjectionToken<AdminSocialPublishingDataPort>(

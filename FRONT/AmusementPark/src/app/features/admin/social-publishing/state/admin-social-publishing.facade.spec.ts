@@ -36,7 +36,10 @@ describe('AdminSocialPublishingFacade', () => {
     port = {
       getOverview: vi.fn(),
       publish: vi.fn(),
-      retry: vi.fn()
+      retry: vi.fn(),
+      update: vi.fn(),
+      delete: vi.fn(),
+      synchronize: vi.fn()
     } as unknown as MockedObject<AdminSocialPublishingDataPort>;
     toastMessageService = {
       add: vi.fn()
@@ -99,9 +102,42 @@ describe('AdminSocialPublishingFacade', () => {
     expect(facade.recentPublications()).toEqual([publishedPublication]);
     expect(facade.retryingPublicationId()).toBeNull();
   });
+
+  it('updates and deletes a published publication in history', () => {
+    const publication: SocialPublication = createPublication('Published');
+    const updatedPublication: SocialPublication = { ...publication, message: 'Updated' };
+    const deletedPublication: SocialPublication = {
+      ...updatedPublication,
+      status: 'Deleted',
+      deletedAtUtc: '2026-08-05T10:10:00Z'
+    };
+    port.getOverview.mockReturnValue(of({ ...overview, recentPublications: [publication] }));
+    port.update.mockReturnValue(of(updatedPublication));
+    port.delete.mockReturnValue(of(deletedPublication));
+    facade.load();
+
+    facade.update(publication.id, 'Updated');
+    facade.delete(publication.id);
+
+    expect(port.update).toHaveBeenCalledWith(publication.id, { message: 'Updated' });
+    expect(port.delete).toHaveBeenCalledWith(publication.id);
+    expect(facade.recentPublications()[0].status).toBe('Deleted');
+  });
+
+  it('synchronizes then reloads the overview', () => {
+    port.getOverview.mockReturnValue(of(overview));
+    port.synchronize.mockReturnValue(of({ checkedCount: 1, updatedCount: 0, deletedCount: 1, failureCount: 0 }));
+    facade.load();
+
+    facade.synchronize();
+
+    expect(port.synchronize).toHaveBeenCalled();
+    expect(port.getOverview).toHaveBeenCalledTimes(2);
+    expect(facade.synchronizing()).toBe(false);
+  });
 });
 
-function createPublication(status: 'Published' | 'Failed'): SocialPublication {
+function createPublication(status: 'Published' | 'Failed' | 'Deleted'): SocialPublication {
   return {
     id: 'publication-1',
     network: 'Facebook',
@@ -114,8 +150,10 @@ function createPublication(status: 'Published' | 'Failed'): SocialPublication {
     requestedAtUtc: '2026-08-05T10:00:00Z',
     attemptedAtUtc: '2026-08-05T10:00:00Z',
     publishedAtUtc: status === 'Published' ? '2026-08-05T10:00:01Z' : null,
-    externalPostId: status === 'Published' ? '123_456' : null,
-    externalPostUrl: status === 'Published' ? 'https://www.facebook.com/123_456' : null,
+    deletedAtUtc: status === 'Deleted' ? '2026-08-05T10:10:00Z' : null,
+    lastSynchronizedAtUtc: status === 'Deleted' ? '2026-08-05T10:10:00Z' : null,
+    externalPostId: status !== 'Failed' ? '123_456' : null,
+    externalPostUrl: status !== 'Failed' ? 'https://www.facebook.com/123_456' : null,
     failureCode: status === 'Failed' ? 'error' : null,
     failureMessage: status === 'Failed' ? 'Failure' : null
   };

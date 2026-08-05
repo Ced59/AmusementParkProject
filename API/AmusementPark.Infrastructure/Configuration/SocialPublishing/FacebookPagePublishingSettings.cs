@@ -18,6 +18,12 @@ public sealed class FacebookPagePublishingSettings
 
     public int RequestTimeoutSeconds { get; set; } = 10;
 
+    public bool WebhookEnabled { get; set; }
+
+    public string AppSecret { get; set; } = string.Empty;
+
+    public string WebhookVerifyToken { get; set; } = string.Empty;
+
     public bool IsConfigured()
     {
         return this.Enabled
@@ -25,6 +31,14 @@ public sealed class FacebookPagePublishingSettings
             && !string.IsNullOrWhiteSpace(this.PageAccessToken)
             && Uri.TryCreate(this.PageUrl, UriKind.Absolute, out Uri? pageUri)
             && string.Equals(pageUri.Scheme, Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase);
+    }
+
+    public bool IsWebhookConfigured()
+    {
+        return this.IsConfigured()
+            && this.WebhookEnabled
+            && !string.IsNullOrWhiteSpace(this.AppSecret)
+            && !string.IsNullOrWhiteSpace(this.WebhookVerifyToken);
     }
 
     public static FacebookPagePublishingSettings Bind(IConfiguration configuration)
@@ -39,6 +53,8 @@ public sealed class FacebookPagePublishingSettings
         settings.PageId = settings.PageId?.Trim() ?? string.Empty;
         settings.PageAccessToken = settings.PageAccessToken?.Trim() ?? string.Empty;
         settings.PageUrl = settings.PageUrl?.Trim() ?? string.Empty;
+        settings.AppSecret = settings.AppSecret?.Trim() ?? string.Empty;
+        settings.WebhookVerifyToken = settings.WebhookVerifyToken?.Trim() ?? string.Empty;
         settings.RequestTimeoutSeconds = Math.Clamp(settings.RequestTimeoutSeconds, 3, 30);
         return settings;
     }

@@ -38,4 +38,20 @@ public static class SocialPublishingApplicationErrors
             "social-publishing.publication.retry-not-allowed",
             "Seule une publication en échec peut être relancée.");
     }
+
+    public static ApplicationError PublicationCannotBeManaged()
+    {
+        return ApplicationError.RuleViolation(
+            "social-publishing.publication.manage-not-allowed",
+            "Seule une publication encore présente sur le réseau social peut être modifiée ou supprimée.");
+    }
+
+    public static ApplicationError PublisherOperationFailed(string? message)
+    {
+        return ApplicationError.RuleViolation(
+            "social-publishing.publisher.operation-failed",
+            string.IsNullOrWhiteSpace(message)
+                ? "Le réseau social n'a pas pu appliquer la modification."
+                : message);
+    }
 }

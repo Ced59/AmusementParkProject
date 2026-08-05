@@ -69,6 +69,8 @@ https://amusement-parks.fun/api/auth/external/google/callback
 | Secret | Exemple / note |
 |---|---|
 | `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN` | Page Access Token Meta ; ne jamais le placer dans une variable GitHub ni dans le dépôt |
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_APP_SECRET` | secret de l’application Meta utilisé pour vérifier la signature des webhooks |
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_VERIFY_TOKEN` | valeur aléatoire longue partagée uniquement avec Meta pour valider le callback |
 
 Variables associées :
 
@@ -79,6 +81,7 @@ Variables associées :
 | `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID` | identifiant numérique de la Page |
 | `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL` | URL publique complète de la Page |
 | `PROD_SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS` | `10` |
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED` | `false` tant que le callback Meta n’est pas configuré, puis `true` |
 
 La procédure de création et de validation du jeton est détaillée dans
 [`facebook-page-publishing.md`](facebook-page-publishing.md).

@@ -52,6 +52,14 @@ public sealed class SocialPublicationRepository : ISocialPublicationRepository
         return document?.ToDomain();
     }
 
+    public async Task<SocialPublication?> GetByExternalPostIdAsync(string externalPostId, CancellationToken cancellationToken)
+    {
+        SocialPublicationDocument? document = await this.collection
+            .Find(current => current.ExternalPostId == externalPostId)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<IReadOnlyCollection<SocialPublication>> ListRecentAsync(int limit, CancellationToken cancellationToken)
     {
         List<SocialPublicationDocument> documents = await this.collection

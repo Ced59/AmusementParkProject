@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import {
   PublishSocialLinkRequest,
   SocialPublication,
-  SocialPublishingOverview
+  SocialPublicationSynchronizationResult,
+  SocialPublishingOverview,
+  UpdateSocialPublicationRequest
 } from '@app/models/social-publishing/social-publishing.models';
 import { environment } from '../../../environments/environment';
 
@@ -30,5 +32,20 @@ export class AdminSocialPublicationsApiService {
   retry(publicationId: string): Observable<SocialPublication> {
     const encodedPublicationId: string = encodeURIComponent(publicationId);
     return this.http.post<SocialPublication>(`${this.baseUrl}/${encodedPublicationId}/retry`, {});
+  }
+
+  update(publicationId: string, request: UpdateSocialPublicationRequest): Observable<SocialPublication> {
+    const encodedPublicationId: string = encodeURIComponent(publicationId);
+    return this.http.put<SocialPublication>(`${this.baseUrl}/${encodedPublicationId}`, request);
+  }
+
+  delete(publicationId: string): Observable<SocialPublication> {
+    const encodedPublicationId: string = encodeURIComponent(publicationId);
+    return this.http.delete<SocialPublication>(`${this.baseUrl}/${encodedPublicationId}`);
+  }
+
+  synchronize(limit: number = 25): Observable<SocialPublicationSynchronizationResult> {
+    const params: HttpParams = new HttpParams().set('limit', limit.toString());
+    return this.http.post<SocialPublicationSynchronizationResult>(`${this.baseUrl}/synchronize`, {}, { params });
   }
 }

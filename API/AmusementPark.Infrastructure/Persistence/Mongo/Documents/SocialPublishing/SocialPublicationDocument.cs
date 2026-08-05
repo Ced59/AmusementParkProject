@@ -48,6 +48,14 @@ public sealed class SocialPublicationDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? PublishedAtUtc { get; set; }
 
+    [BsonElement("deletedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? DeletedAtUtc { get; set; }
+
+    [BsonElement("lastSynchronizedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? LastSynchronizedAtUtc { get; set; }
+
     [BsonElement("externalPostId")]
     [BsonIgnoreIfNull]
     public string? ExternalPostId { get; set; }

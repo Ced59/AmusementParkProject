@@ -10,6 +10,32 @@ public interface ISocialPublisher
     SocialPublisherDescriptor Describe();
 
     Task<SocialPublisherResult> PublishLinkAsync(SocialPublisherRequest request, CancellationToken cancellationToken);
+
+    Task<SocialPublisherOperationResult> UpdatePostAsync(
+        string externalPostId,
+        string message,
+        CancellationToken cancellationToken);
+
+    Task<SocialPublisherOperationResult> DeletePostAsync(
+        string externalPostId,
+        CancellationToken cancellationToken);
+
+    Task<SocialPublisherPostSnapshotResult> GetPostAsync(
+        string externalPostId,
+        CancellationToken cancellationToken);
+}
+
+public interface ISocialWebhookHandler
+{
+    SocialNetwork Network { get; }
+
+    bool IsEnabled { get; }
+
+    bool VerifySubscriptionToken(string? verifyToken);
+
+    bool VerifySignature(string payload, string? signature);
+
+    IReadOnlyCollection<SocialWebhookChange> ParseChanges(string payload);
 }
 
 public interface ISocialPublicationRepository
@@ -21,6 +47,8 @@ public interface ISocialPublicationRepository
     Task<SocialPublication?> GetByIdAsync(string id, CancellationToken cancellationToken);
 
     Task<SocialPublication?> GetByDeduplicationKeyAsync(string deduplicationKey, CancellationToken cancellationToken);
+
+    Task<SocialPublication?> GetByExternalPostIdAsync(string externalPostId, CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<SocialPublication>> ListRecentAsync(int limit, CancellationToken cancellationToken);
 }

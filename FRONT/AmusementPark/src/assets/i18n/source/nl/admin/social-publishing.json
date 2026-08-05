@@ -36,12 +36,19 @@
         "title": "Recente publicaties",
         "empty": "Er is nog geen sociale publicatie voorbereid.",
         "openPost": "Publicatie bekijken",
-        "retry": "Opnieuw proberen"
+        "retry": "Opnieuw proberen",
+        "synchronize": "Synchroniseren met Facebook",
+        "edit": "Bewerken",
+        "delete": "Verwijderen",
+        "save": "Opslaan",
+        "cancel": "Annuleren",
+        "deleteConfirm": "Deze publicatie definitief van de Facebook-pagina verwijderen?"
       },
       "statuses": {
         "Pending": "Bezig",
         "Published": "Gepubliceerd",
-        "Failed": "Mislukt"
+        "Failed": "Mislukt",
+        "Deleted": "Verwijderd"
       },
       "triggers": {
         "Manual": "Handmatig",
@@ -52,7 +59,15 @@
         "publishSuccess": "De publicatie staat op de Facebook-pagina.",
         "errorSummary": "Publicatie mislukt",
         "publishError": "De publicatie kon niet worden verzonden.",
-        "retryError": "De publicatie kon niet opnieuw worden verzonden."
+        "retryError": "De publicatie kon niet opnieuw worden verzonden.",
+        "updateSuccess": "De tekst is op Facebook bijgewerkt.",
+        "deleteSuccess": "De publicatie is van Facebook verwijderd.",
+        "alreadyDeleted": "De publicatie was al van Facebook verwijderd.",
+        "updateError": "De publicatie kon niet worden bijgewerkt.",
+        "deleteError": "De publicatie kon niet worden verwijderd.",
+        "syncSummary": "Synchronisatie voltooid",
+        "syncSuccess": "{{checked}} gecontroleerd, {{updated}} bijgewerkt, {{deleted}} verwijderd, {{failed}} mislukt.",
+        "syncError": "De synchronisatie met Facebook is mislukt."
       }
     }
   }

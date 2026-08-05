@@ -36,12 +36,19 @@
         "title": "Publicaciones recientes",
         "empty": "Todavía no se ha preparado ninguna publicación social.",
         "openPost": "Ver publicación",
-        "retry": "Reintentar"
+        "retry": "Reintentar",
+        "synchronize": "Sincronizar con Facebook",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "deleteConfirm": "¿Eliminar definitivamente esta publicación de la página de Facebook?"
       },
       "statuses": {
         "Pending": "En curso",
         "Published": "Publicada",
-        "Failed": "Fallida"
+        "Failed": "Fallida",
+        "Deleted": "Eliminada"
       },
       "triggers": {
         "Manual": "Manual",
@@ -52,7 +59,15 @@
         "publishSuccess": "La publicación está disponible en la página de Facebook.",
         "errorSummary": "No se pudo publicar",
         "publishError": "No se pudo enviar la publicación.",
-        "retryError": "No se pudo reintentar la publicación."
+        "retryError": "No se pudo reintentar la publicación.",
+        "updateSuccess": "El texto se ha actualizado en Facebook.",
+        "deleteSuccess": "La publicación se ha eliminado de Facebook.",
+        "alreadyDeleted": "La publicación ya se había eliminado de Facebook.",
+        "updateError": "No se pudo actualizar la publicación.",
+        "deleteError": "No se pudo eliminar la publicación.",
+        "syncSummary": "Sincronización completada",
+        "syncSuccess": "{{checked}} comprobadas, {{updated}} actualizadas, {{deleted}} eliminadas, {{failed}} fallidas.",
+        "syncError": "La sincronización con Facebook ha fallado."
       }
     }
   }

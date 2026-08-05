@@ -1881,12 +1881,19 @@
         "title": "Letzte Beiträge",
         "empty": "Es wurde noch kein Social-Media-Beitrag vorbereitet.",
         "openPost": "Beitrag ansehen",
-        "retry": "Erneut versuchen"
+        "retry": "Erneut versuchen",
+        "synchronize": "Mit Facebook synchronisieren",
+        "edit": "Bearbeiten",
+        "delete": "Löschen",
+        "save": "Speichern",
+        "cancel": "Abbrechen",
+        "deleteConfirm": "Diesen Beitrag dauerhaft von der Facebook-Seite löschen?"
       },
       "statuses": {
         "Pending": "In Bearbeitung",
         "Published": "Veröffentlicht",
-        "Failed": "Fehlgeschlagen"
+        "Failed": "Fehlgeschlagen",
+        "Deleted": "Gelöscht"
       },
       "triggers": {
         "Manual": "Manuell",
@@ -1897,7 +1904,15 @@
         "publishSuccess": "Der Beitrag ist auf der Facebook-Seite verfügbar.",
         "errorSummary": "Veröffentlichung fehlgeschlagen",
         "publishError": "Der Beitrag konnte nicht gesendet werden.",
-        "retryError": "Der Beitrag konnte nicht erneut gesendet werden."
+        "retryError": "Der Beitrag konnte nicht erneut gesendet werden.",
+        "updateSuccess": "Der Text wurde auf Facebook aktualisiert.",
+        "deleteSuccess": "Der Beitrag wurde von Facebook gelöscht.",
+        "alreadyDeleted": "Der Beitrag war bereits von Facebook gelöscht worden.",
+        "updateError": "Der Beitrag konnte nicht aktualisiert werden.",
+        "deleteError": "Der Beitrag konnte nicht gelöscht werden.",
+        "syncSummary": "Synchronisierung abgeschlossen",
+        "syncSuccess": "{{checked}} geprüft, {{updated}} aktualisiert, {{deleted}} gelöscht, {{failed}} fehlgeschlagen.",
+        "syncError": "Die Synchronisierung mit Facebook ist fehlgeschlagen."
       }
     },
     "socialShare": {

@@ -25,15 +25,24 @@ public sealed class AdminSocialPublicationsController : ControllerBase
     private readonly IQueryHandler<GetSocialPublishingOverviewQuery, SocialPublishingOverview> overviewHandler;
     private readonly ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>> publishHandler;
     private readonly ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>> retryHandler;
+    private readonly ICommandHandler<UpdateSocialPublicationCommand, ApplicationResult<SocialPublication>> updateHandler;
+    private readonly ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>> deleteHandler;
+    private readonly ICommandHandler<SynchronizeSocialPublicationsCommand, SocialPublicationSynchronizationResult> synchronizeHandler;
 
     public AdminSocialPublicationsController(
         IQueryHandler<GetSocialPublishingOverviewQuery, SocialPublishingOverview> overviewHandler,
         ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>> publishHandler,
-        ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>> retryHandler)
+        ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>> retryHandler,
+        ICommandHandler<UpdateSocialPublicationCommand, ApplicationResult<SocialPublication>> updateHandler,
+        ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>> deleteHandler,
+        ICommandHandler<SynchronizeSocialPublicationsCommand, SocialPublicationSynchronizationResult> synchronizeHandler)
     {
         this.overviewHandler = overviewHandler;
         this.publishHandler = publishHandler;
         this.retryHandler = retryHandler;
+        this.updateHandler = updateHandler;
+        this.deleteHandler = deleteHandler;
+        this.synchronizeHandler = synchronizeHandler;
     }
 
     [HttpGet]
@@ -76,5 +85,55 @@ public sealed class AdminSocialPublicationsController : ControllerBase
         }
 
         return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPut("{publicationId}")]
+    [AdminAudit("social-publication.update", "SocialPublication", TargetIdRouteKey = "publicationId")]
+    [ProducesResponseType(typeof(SocialPublicationDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateAsync(
+        [FromRoute] string publicationId,
+        [FromBody] UpdateSocialPublicationRequestDto request,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<SocialPublication> result = await this.updateHandler.HandleAsync(
+            new UpdateSocialPublicationCommand(publicationId, request.Message, this.User.GetUserId()),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpDelete("{publicationId}")]
+    [AdminAudit("social-publication.delete", "SocialPublication", TargetIdRouteKey = "publicationId")]
+    [ProducesResponseType(typeof(SocialPublicationDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> DeleteAsync(
+        [FromRoute] string publicationId,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<SocialPublication> result = await this.deleteHandler.HandleAsync(
+            new DeleteSocialPublicationCommand(publicationId, this.User.GetUserId()),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("synchronize")]
+    [AdminAudit("social-publication.synchronize", "SocialPublication", StaticTargetId = "recent")]
+    [ProducesResponseType(typeof(SocialPublicationSynchronizationResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> SynchronizeAsync(
+        [FromQuery] int limit = 25,
+        CancellationToken cancellationToken = default)
+    {
+        SocialPublicationSynchronizationResult result = await this.synchronizeHandler.HandleAsync(
+            new SynchronizeSocialPublicationsCommand(limit),
+            cancellationToken);
+        return this.Ok(result.ToHttp());
     }
 }

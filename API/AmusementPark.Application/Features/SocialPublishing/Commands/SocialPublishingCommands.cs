@@ -12,3 +12,15 @@ public sealed record PublishSocialLinkCommand(
 public sealed record RetrySocialPublicationCommand(
     string PublicationId,
     string? RequestedByUserId) : ICommand<ApplicationResult<SocialPublication>>;
+
+public sealed record UpdateSocialPublicationCommand(
+    string PublicationId,
+    string? Message,
+    string? RequestedByUserId) : ICommand<ApplicationResult<SocialPublication>>;
+
+public sealed record DeleteSocialPublicationCommand(
+    string PublicationId,
+    string? RequestedByUserId) : ICommand<ApplicationResult<SocialPublication>>;
+
+public sealed record SynchronizeSocialPublicationsCommand(
+    int Limit) : ICommand<SocialPublicationSynchronizationResult>;

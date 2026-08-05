@@ -41,7 +41,10 @@ public sealed class AdminSocialPublicationsControllerTests
         AdminSocialPublicationsController controller = new AdminSocialPublicationsController(
             Mock.Of<IQueryHandler<GetSocialPublishingOverviewQuery, SocialPublishingOverview>>(MockBehavior.Strict),
             publishHandler.Object,
-            Mock.Of<ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict));
+            Mock.Of<ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<UpdateSocialPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<SynchronizeSocialPublicationsCommand, SocialPublicationSynchronizationResult>>(MockBehavior.Strict));
         controller.ControllerContext = new ControllerContext
         {
             HttpContext = new DefaultHttpContext

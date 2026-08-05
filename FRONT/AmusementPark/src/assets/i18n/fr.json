@@ -1881,12 +1881,19 @@
         "title": "Publications récentes",
         "empty": "Aucune publication sociale n’a encore été préparée.",
         "openPost": "Voir la publication",
-        "retry": "Relancer"
+        "retry": "Relancer",
+        "synchronize": "Synchroniser avec Facebook",
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "save": "Enregistrer",
+        "cancel": "Annuler",
+        "deleteConfirm": "Supprimer définitivement cette publication de la Page Facebook ?"
       },
       "statuses": {
         "Pending": "En cours",
         "Published": "Publiée",
-        "Failed": "Échec"
+        "Failed": "Échec",
+        "Deleted": "Supprimée"
       },
       "triggers": {
         "Manual": "Manuelle",
@@ -1897,7 +1904,15 @@
         "publishSuccess": "La publication est disponible sur la Page Facebook.",
         "errorSummary": "Publication impossible",
         "publishError": "La publication n’a pas pu être envoyée.",
-        "retryError": "La publication n’a pas pu être relancée."
+        "retryError": "La publication n’a pas pu être relancée.",
+        "updateSuccess": "Le texte a été modifié sur Facebook.",
+        "deleteSuccess": "La publication a été supprimée de Facebook.",
+        "alreadyDeleted": "La publication avait déjà été supprimée de Facebook.",
+        "updateError": "La publication n’a pas pu être modifiée.",
+        "deleteError": "La publication n’a pas pu être supprimée.",
+        "syncSummary": "Synchronisation terminée",
+        "syncSuccess": "{{checked}} vérifiée(s), {{updated}} modifiée(s), {{deleted}} supprimée(s), {{failed}} en échec.",
+        "syncError": "La synchronisation avec Facebook a échoué."
       }
     },
     "socialShare": {

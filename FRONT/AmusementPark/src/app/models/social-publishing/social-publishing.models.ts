@@ -1,5 +1,5 @@
 export type SocialNetwork = 'Facebook';
-export type SocialPublicationStatus = 'Pending' | 'Published' | 'Failed';
+export type SocialPublicationStatus = 'Pending' | 'Published' | 'Failed' | 'Deleted';
 export type SocialPublicationTrigger = 'Manual' | 'AutomaticParkPublication';
 
 export interface SocialPublisher {
@@ -23,6 +23,8 @@ export interface SocialPublication {
   readonly requestedAtUtc: string;
   readonly attemptedAtUtc: string | null;
   readonly publishedAtUtc: string | null;
+  readonly deletedAtUtc: string | null;
+  readonly lastSynchronizedAtUtc: string | null;
   readonly externalPostId: string | null;
   readonly externalPostUrl: string | null;
   readonly failureCode: string | null;
@@ -38,4 +40,15 @@ export interface PublishSocialLinkRequest {
   readonly network: SocialNetwork;
   readonly message: string;
   readonly url: string;
+}
+
+export interface UpdateSocialPublicationRequest {
+  readonly message: string;
+}
+
+export interface SocialPublicationSynchronizationResult {
+  readonly checkedCount: number;
+  readonly updatedCount: number;
+  readonly deletedCount: number;
+  readonly failureCount: number;
 }
