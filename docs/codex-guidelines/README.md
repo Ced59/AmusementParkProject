@@ -7,7 +7,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 
 ## Entrée recommandée
 
-- `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’export initial, l’état de travail consolidé, l’export complet actualisé juste avant l’étape 8, les limites de lots et les fichiers de règles à lire selon l’étape.
+- `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’état de travail consolidé, l’unique export complet obligatoire juste avant l’étape 8, les limites de lots et les fichiers de règles à lire selon l’étape.
 - `standalone-attraction-data-integration.md` : fichier à utiliser quand l’entité pertinente est une attraction fixe isolée et non un parc.
 - `codex-park-data-editor-api-workflow.md` : complément strictement réservé à Codex lorsqu’il exécute lui-même les étapes par API avec le rôle technique `PARK_DATA_EDITOR`. Il ajoute les garde-fous Preview/Apply et l’upload local des photos sans modifier le workflow ChatGPT.
 
@@ -19,8 +19,9 @@ La demande `Complète le parc <nom>` suffit pour lancer le parcours complet avec
 
 - retrouver ou cadrer le parc à l’étape 0 ;
 - exécuter de façon autonome toutes les étapes 1 à 8 applicables avec le flux API `PARK_DATA_EDITOR` ;
-- tenir à jour l’état de travail à partir des réponses Preview/Apply et d’import d’images, sans export complet entre les étapes 1 à 7 ni après chaque mutation ;
-- effectuer un seul réexport complet planifié juste avant l’audit de l’étape 8 ;
+- contrôler chaque réponse Preview/Apply et chaque import d’image, puis tenir à jour l’état de travail consolidé sans export complet entre les étapes 1 à 7 ni après chaque mutation ;
+- réserver les exports ciblés aux ambiguïtés, identifiants manquants ou dépendances précises entre lots ;
+- effectuer l’unique export complet obligatoire juste avant l’audit de l’étape 8 ;
 - rechercher aussi les lacunes de l’existant, pas seulement ajouter les informations les plus faciles à trouver ;
 - atteindre le contrat de complétude exigeant décrit dans l’orchestrateur et produire un audit chiffré final ;
 - s’arrêter au seuil `prêt pour publication` tant que l’utilisateur n’a pas explicitement demandé de publier.
@@ -60,9 +61,11 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - Une attraction fixe isolée pertinente ne doit pas être transformée en faux parc. Utiliser le flux `StandaloneAttraction` et migrer l’ancien parc mono-attraction si une fiche legacy existe.
 - Les descriptions doivent être naturelles, spécifiques au lieu, agréables à lire, orientées visiteur et non mécaniques.
 - Une description raconte l’entité elle-même : ce que le visiteur voit, son ambiance et sa singularité. Elle ne donne jamais de consigne d’itinéraire, ne conseille pas de « garder » un lieu pour un profil, ne propose pas une pause entre des files et ne réutilise pas un paragraphe passe-partout pour toute une catégorie.
+- Pour un parc majeur, une description longue est un véritable contenu éditorial : la fiche du parc développe normalement au moins trois intertitres et cinq paragraphes ; chaque parkItem publiable au moins deux intertitres spécifiques et trois paragraphes développés. Les fourchettes de l’étape 4 servent à détecter les textes minces, jamais à justifier du remplissage.
 - Cette exigence éditoriale s’applique aussi aux titres, résumés, articles, descriptions internes visibles, textes alternatifs et légendes d’images. Les champs de crédits portent les crédits ; les textes visiteurs ne décrivent jamais la collecte, l’import, la qualité de la source ou le fonctionnement d’un outil.
 - Ne jamais écrire de formulations du type “ce que ça apporte à la journée”, “au groupe”, “comment l’intégrer dans la journée” ou “quand cela devient utile”.
 - Ne pas mettre les conditions d’accès, restrictions, tailles, tarifs ou informations purement techniques dans les descriptions : ces données doivent aller dans les champs JSON prévus.
+- Ne pas transformer la description en explication du dispositif : vitesse, durée, capacité, nombre de sièges ou de véhicules, détail du tracé, rotations, accélérations et principe de fonctionnement restent dans les champs structurés. Un mot concret comme « train », « bateau » ou « rail » peut être naturel s’il désigne ce qui est réellement visible ; leur accumulation dans un même texte impose une reprise centrée sur le décor, le récit, l’atmosphère, les sensations et l’héritage.
 - Les conditions d’accès de chaque attraction doivent être recherchées systématiquement et intégrées dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.
 - Les enums utilisées dans un JSON upsert doivent venir de `park-graph-upsert-enums.md`, avec les valeurs canoniques exactes.
 - Les dates ne doivent jamais être inventées. Si seule l’année d’ouverture ou de fermeture est fiable, renseigner l’année seule dans le JSON ; ne jamais fabriquer un `01-01` ou un premier jour de mois.
@@ -77,10 +80,11 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - Les horaires, dates d’ouverture et événements datés doivent être vérifiés avec des sources actuelles et ne doivent pas être mélangés aux tarifs si les tarifs ne sont pas implémentés.
 - Les libellés et raisons visibles dans le calendrier doivent être réservés aux événements nommés, exceptions datées ou informations temporaires utiles. Ne jamais y répéter des commentaires généraux sur tous les jours normaux.
 - Les articles doivent apporter une vraie valeur éditoriale, avec des sources vérifiées, et ne doivent pas devenir des fiches techniques déguisées.
+- Un résumé de timeline raconte le fait et sa portée durable. Un article de parc majeur ne peut pas être validé avec seulement un titre, un résumé bref et deux paragraphes minces : l’étape 7 impose une profondeur et une structure proportionnées au sujet.
 - Pour un parc majeur ou historiquement riche, rechercher les attractions définitivement fermées, les transformations structurantes et les annonces récentes à effet durable. Une histoire légère ou limitée à l’ouverture du parc n’est pas considérée complète lorsque les sources permettent davantage.
 - Les événements et articles historiques doivent être rédigés pour les visiteurs, sans phrases d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur la présence confirmée d’un élément.
 - Les sources d’articles et d’événements doivent être des URL HTTP(S) valides et joignables au moment de la génération. Ne jamais livrer de source en 404, 410, erreur serveur, soft-404 ou URL inventée.
-- En mode ChatGPT guidé, ne jamais enchaîner deux étapes sans export actualisé du parc après l’application de l’étape précédente. En mode Codex autonome, ne pas réexporter le parc entre les étapes 1 à 7 : consolider l’export initial avec les résultats Preview/Apply et d’import, puis obtenir un export complet frais juste avant l’étape 8.
+- Dans les deux modes, aucun export complet n’est obligatoire pendant les étapes 0 à 7, pas même au cadrage. Tenir l’état consolidé à partir de la recherche du parc, des éventuels exports ciblés et des résultats Preview/Apply ou d’import, puis obtenir l’unique export complet obligatoire juste avant l’étape 8.
 - Les JSON upsert doivent rester bornés : une étape, un lot cohérent, aucune copie massive de l’export complet si seules quelques entités changent.
 - Chaque livraison de JSON upsert doit inclure un récap visible avant le fichier : ce qui est ajouté, corrigé, masqué ou conservé, le périmètre exact du lot, un compteur d’avancement traité/total et le reste à traiter avant l’étape suivante.
 - La cible de complétude est une qualité `Excellent` sans bloqueur, avec le même degré de rigueur pour chaque parc. La quantité de contenu reste proportionnée à la taille, au statut et aux sources : exigence élevée ne signifie jamais invention ou remplissage artificiel.

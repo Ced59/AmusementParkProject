@@ -12,7 +12,7 @@ Pour `Planned`, `UnderConstruction` ou `Cancelled`, cette étape est non applica
 
 ## État de référence requis
 
-En mode ChatGPT guidé, utiliser l’export actualisé après les zones. En mode Codex autonome, utiliser le registre local consolidé avec les résultats des étapes précédentes, sans nouvel export complet. Vérifier les `zone.key`, les `references.manufacturers[].key`, les IDs existants et les items déjà présents pour éviter les doublons et les rattachements non résolus.
+Dans les deux modes, utiliser le registre consolidé avec les résultats validés des étapes précédentes, sans nouvel export complet. Vérifier les `zone.key`, les `references.manufacturers[].key`, les IDs existants et les items déjà présents pour éviter les doublons et les rattachements non résolus ; demander une section ciblée seulement si une information indispensable manque.
 
 ## Contenus à rechercher
 
@@ -251,6 +251,6 @@ Si un JSON est une correction d’un lot déjà livré, le récap doit préciser
 
 ## Après Apply
 
-Avant de rédiger les descriptions longues, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer les résultats Apply au registre local et continuer sans nouvel export.
+Avant de rédiger les descriptions longues, contrôler les réponses Apply, reporter les IDs, noms et statuts acceptés dans le registre consolidé et continuer sans export complet ; utiliser un export ciblé seulement si une réponse ambiguë ou un identifiant manquant l’exige.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 4 — Descriptions longues localisées. Si le parc est très mineur ou trop peu documenté pour des textes longs, indiquer `à décider` ou `probablement inutile` avec la raison. Si l’étape 4 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

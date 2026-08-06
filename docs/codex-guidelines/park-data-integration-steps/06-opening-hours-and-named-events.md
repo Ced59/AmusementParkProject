@@ -10,7 +10,7 @@ Objectif : intégrer les horaires vérifiés et les exceptions datées sans inve
 
 ## État de référence requis
 
-En mode ChatGPT guidé, utiliser l’export actualisé après les étapes précédentes. En mode Codex autonome, utiliser le registre local consolidé, sans nouvel export complet. Si des images doivent illustrer un événement historique, elles doivent déjà être dans cet état de référence ou être créées dans le même JSON.
+Dans les deux modes, utiliser le registre consolidé, sans nouvel export complet. Si des images doivent illustrer un événement historique, leurs IDs doivent provenir d’une réponse exploitable ou d’un export ciblé de la section `Images`, à moins qu’elles ne soient créées dans le même JSON.
 
 ## Applicabilité selon le statut
 
@@ -172,6 +172,6 @@ Section principale : `openingHours`.
 
 ## Après Apply
 
-Avant de créer la timeline historique, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer les résultats Apply au registre local et continuer sans nouvel export.
+Avant de créer la timeline historique, contrôler la réponse Apply, intégrer ses résultats au registre consolidé et continuer sans export complet ; demander uniquement un export ciblé si un identifiant ou une réponse ambiguë l’exige. L’export complet frais reste réservé au passage vers l’étape 8.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 7 — Histoire du parc et des parkItems. Si le parc est trop peu documenté pour une timeline fiable, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 7 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'UpdatePhotoMetadata', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -44,6 +44,8 @@ param(
     [string]$OwnerType,
 
     [string]$OwnerId,
+
+    [string]$ImageId,
 
     [string]$Description,
 
@@ -144,49 +146,68 @@ function Invoke-ParkDataEditorJsonApi {
         [object]$Body
     )
 
+    Add-Type -AssemblyName System.Net.Http
     $token = Get-ParkDataEditorToken
-    $headers = @{ Authorization = "Bearer $token" }
     $uri = (Get-NormalizedApiBaseUrl $ApiBaseUrl) + $RelativePath.TrimStart('/')
-    $parameters = @{
-        Method = $Method
-        Uri = $uri
-        Headers = $headers
-        UseBasicParsing = $true
-    }
-    if ($null -ne $Body) {
-        $parameters.ContentType = 'application/json; charset=utf-8'
-        $parameters.Body = $Body | ConvertTo-Json -Depth 100 -Compress
-    }
-
+    $client = [System.Net.Http.HttpClient]::new()
     $deadlineUtc = [DateTime]::UtcNow.AddMinutes(10)
-    while ($true) {
-        try {
-            return Invoke-RestMethod @parameters
-        }
-        catch {
-            $response = $_.Exception.Response
-            $statusCode = if ($null -eq $response) { 0 } else { [int]$response.StatusCode }
-            if ($statusCode -ne 429 -or [DateTime]::UtcNow -ge $deadlineUtc) {
-                throw
-            }
-
-            $retryAfterSeconds = 5
+    try {
+        $client.Timeout = [TimeSpan]::FromSeconds(300)
+        $client.DefaultRequestHeaders.ConnectionClose = $true
+        while ($true) {
+            $request = [System.Net.Http.HttpRequestMessage]::new(
+                [System.Net.Http.HttpMethod]::new($Method),
+                $uri)
             try {
-                $retryAfterValues = @($response.Headers.GetValues('Retry-After'))
-                if ($retryAfterValues.Count -gt 0) {
-                    $parsedRetryAfterSeconds = 0
-                    if ([int]::TryParse([string]$retryAfterValues[0], [ref]$parsedRetryAfterSeconds)) {
-                        $retryAfterSeconds = [Math]::Max(1, [Math]::Min(30, $parsedRetryAfterSeconds))
+                $request.Headers.Authorization = [System.Net.Http.Headers.AuthenticationHeaderValue]::new('Bearer', $token)
+                $request.Headers.ExpectContinue = $false
+                if ($null -ne $Body) {
+                    $json = $Body | ConvertTo-Json -Depth 100 -Compress
+                    $request.Content = [System.Net.Http.StringContent]::new(
+                        $json,
+                        [Text.Encoding]::UTF8,
+                        'application/json')
+                }
+
+                $response = $client.SendAsync($request).GetAwaiter().GetResult()
+                try {
+                    $responseBody = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult()
+                    if ([int]$response.StatusCode -eq 429 -and [DateTime]::UtcNow -lt $deadlineUtc) {
+                        $retryAfterSeconds = 5
+                        $retryAfterHeader = $response.Headers.RetryAfter
+                        if ($null -ne $retryAfterHeader -and $null -ne $retryAfterHeader.Delta) {
+                            $retryAfterSeconds = [Math]::Max(1, [int][Math]::Ceiling($retryAfterHeader.Delta.TotalSeconds))
+                        }
+                        elseif ($null -ne $retryAfterHeader -and $null -ne $retryAfterHeader.Date) {
+                            $retryAfterSeconds = [Math]::Max(
+                                1,
+                                [int][Math]::Ceiling(($retryAfterHeader.Date.UtcDateTime - [DateTime]::UtcNow).TotalSeconds))
+                        }
+
+                        Write-Verbose "The park data editor API is busy. Retrying after $retryAfterSeconds seconds."
+                        Start-Sleep -Seconds $retryAfterSeconds
+                        continue
                     }
+                    if (-not $response.IsSuccessStatusCode) {
+                        throw "Park data editor request failed with HTTP $([int]$response.StatusCode): $responseBody"
+                    }
+                    if ([string]::IsNullOrWhiteSpace($responseBody)) {
+                        return $null
+                    }
+
+                    return $responseBody | ConvertFrom-Json
+                }
+                finally {
+                    $response.Dispose()
                 }
             }
-            catch {
-                $retryAfterSeconds = 5
+            finally {
+                $request.Dispose()
             }
-
-            Write-Verbose "The park data editor API is busy. Retrying after $retryAfterSeconds seconds."
-            Start-Sleep -Seconds $retryAfterSeconds
         }
+    }
+    finally {
+        $client.Dispose()
     }
 }
 
@@ -331,63 +352,105 @@ function Wait-ParkGraphExportJob {
 function Invoke-ResumableFileDownload {
     param([string]$Url, [string]$DestinationPath, [long]$ExpectedLength)
 
-    $curl = Get-Command 'curl.exe' -ErrorAction SilentlyContinue
-    if ($null -eq $curl) {
+    $systemCurlPath = Join-Path $env:SystemRoot 'System32\curl.exe'
+    $curlCommand = Get-Command 'curl.exe' -ErrorAction SilentlyContinue
+    $curlPath = if (Test-Path -LiteralPath $systemCurlPath -PathType Leaf) {
+        $systemCurlPath
+    }
+    elseif ($null -ne $curlCommand) {
+        [string]$curlCommand.Source
+    }
+    else {
+        $null
+    }
+    if ([string]::IsNullOrWhiteSpace($curlPath)) {
         throw 'curl.exe is required for resumable park exports.'
     }
 
     $partialPath = $DestinationPath + '.partial'
+    $chunkPath = $partialPath + '.chunk'
     if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
         Remove-Item -LiteralPath $partialPath -Force
     }
+    if (Test-Path -LiteralPath $chunkPath -PathType Leaf) {
+        Remove-Item -LiteralPath $chunkPath -Force
+    }
 
-    $attempt = 0
-    $stagnantAttempts = 0
+    # Keep ranges below the production proxy's observed early-close threshold.
+    $chunkSize = 64 * 1024
     while ($true) {
-        $attempt++
         $beforeLength = if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
             (Get-Item -LiteralPath $partialPath).Length
         }
         else {
             0
         }
-
-        & $curl.Source `
-            --fail `
-            --location `
-            --silent `
-            --connect-timeout 30 `
-            --max-time 120 `
-            --continue-at - `
-            --output $partialPath `
-            --url $Url
-        $curlExitCode = $LASTEXITCODE
-
-        $afterLength = if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
-            (Get-Item -LiteralPath $partialPath).Length
-        }
-        else {
-            0
-        }
-
-        if ($afterLength -gt $ExpectedLength) {
-            throw "The resumed park export is larger than expected ($afterLength bytes instead of $ExpectedLength)."
-        }
-        if ($afterLength -eq $ExpectedLength) {
+        if ($beforeLength -eq $ExpectedLength) {
             break
         }
-
-        if ($afterLength -gt $beforeLength) {
-            $stagnantAttempts = 0
-        }
-        else {
-            $stagnantAttempts++
+        if ($beforeLength -gt $ExpectedLength) {
+            throw "The resumed park export is larger than expected ($beforeLength bytes instead of $ExpectedLength)."
         }
 
-        Write-Verbose "Park export download attempt $attempt ended with curl code $curlExitCode at $afterLength / $ExpectedLength bytes."
-        if ($stagnantAttempts -ge 5 -or $attempt -ge 200) {
-            throw "The park export download could not progress after $attempt attempts ($afterLength / $ExpectedLength bytes)."
+        $rangeEnd = [Math]::Min($beforeLength + $chunkSize - 1, $ExpectedLength - 1)
+        $expectedChunkLength = $rangeEnd - $beforeLength + 1
+        $range = "$beforeLength-$rangeEnd"
+        $chunkComplete = $false
+        for ($attempt = 1; $attempt -le 5; $attempt++) {
+            if (Test-Path -LiteralPath $chunkPath -PathType Leaf) {
+                Remove-Item -LiteralPath $chunkPath -Force
+            }
+
+            & $curlPath `
+                --fail `
+                --location `
+                --silent `
+                --show-error `
+                --http1.1 `
+                --header 'Accept-Encoding: identity' `
+                --connect-timeout 15 `
+                --speed-limit 64 `
+                --speed-time 60 `
+                --max-time 120 `
+                --range $range `
+                --output $chunkPath `
+                --url $Url
+            $curlExitCode = $LASTEXITCODE
+            $actualChunkLength = if (Test-Path -LiteralPath $chunkPath -PathType Leaf) {
+                (Get-Item -LiteralPath $chunkPath).Length
+            }
+            else {
+                0
+            }
+
+            if ($actualChunkLength -eq $expectedChunkLength) {
+                $chunkComplete = $true
+                break
+            }
+            if ($actualChunkLength -gt $expectedChunkLength) {
+                throw "The park export range $range returned $actualChunkLength bytes instead of $expectedChunkLength."
+            }
+
+            Write-Verbose "Park export range $range attempt $attempt ended with curl code $curlExitCode at $actualChunkLength / $expectedChunkLength bytes."
+            if ($attempt -lt 5) {
+                Start-Sleep -Seconds ([Math]::Min($attempt * 2, 8))
+            }
         }
+
+        if (-not $chunkComplete) {
+            throw "The park export range $range could not be downloaded completely after 5 attempts."
+        }
+
+        $destinationStream = [IO.File]::Open($partialPath, [IO.FileMode]::Append, [IO.FileAccess]::Write, [IO.FileShare]::None)
+        $chunkStream = [IO.File]::OpenRead($chunkPath)
+        try {
+            $chunkStream.CopyTo($destinationStream)
+        }
+        finally {
+            $chunkStream.Dispose()
+            $destinationStream.Dispose()
+        }
+        Remove-Item -LiteralPath $chunkPath -Force
     }
 
     return $partialPath
@@ -422,21 +485,22 @@ function Export-ParkGraph {
         @($RequestedSections)
     }
 
-    Wait-ParkDataEditorAvailability -TimeoutSeconds $TimeoutSeconds | Out-Null
-    $job = Invoke-ParkDataEditorJsonApi -Method POST `
-        -RelativePath 'admin/park-graph-upserts/bulk/export-jobs' `
-        -Body @{
-            selectionMode = 'explicit'
-            parkIds = @($TargetParkId)
-            sections = $effectiveSections
-        }
-    $completedJob = Wait-ParkGraphExportJob -InitialSnapshot $job -TimeoutSeconds $TimeoutSeconds
-    $partialPath = Invoke-ResumableFileDownload `
-        -Url ([string]$completedJob.downloadUrl) `
-        -DestinationPath $resolvedOutputPath `
-        -ExpectedLength ([long]$completedJob.contentLength)
-
+    $partialPath = $resolvedOutputPath + '.partial'
     try {
+        Wait-ParkDataEditorAvailability -TimeoutSeconds $TimeoutSeconds | Out-Null
+        $job = Invoke-ParkDataEditorJsonApi -Method POST `
+            -RelativePath 'admin/park-graph-upserts/bulk/export-jobs' `
+            -Body @{
+                selectionMode = 'explicit'
+                parkIds = @($TargetParkId)
+                sections = $effectiveSections
+            }
+        $completedJob = Wait-ParkGraphExportJob -InitialSnapshot $job -TimeoutSeconds $TimeoutSeconds
+        $partialPath = Invoke-ResumableFileDownload `
+            -Url ([string]$completedJob.downloadUrl) `
+            -DestinationPath $resolvedOutputPath `
+            -ExpectedLength ([long]$completedJob.contentLength)
+
         $bulkDocument = [IO.File]::ReadAllText($partialPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
         $parkDocuments = @($bulkDocument.parks)
         if ($parkDocuments.Count -ne 1) {
@@ -454,6 +518,10 @@ function Export-ParkGraph {
         if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
             Remove-Item -LiteralPath $partialPath -Force
         }
+        $chunkPath = $resolvedOutputPath + '.partial.chunk'
+        if (Test-Path -LiteralPath $chunkPath -PathType Leaf) {
+            Remove-Item -LiteralPath $chunkPath -Force
+        }
     }
 
     return $resolvedOutputPath
@@ -467,6 +535,109 @@ function Set-JsonProperty {
     }
     else {
         $Object.$Name = $Value
+    }
+}
+
+function ConvertTo-ImageCategoryDtoValue {
+    param([string]$Value)
+
+    switch ($Value.Trim()) {
+        'Avatar' { return 'AVATAR' }
+        'AVATAR' { return 'AVATAR' }
+        'Logo' { return 'LOGO' }
+        'LOGO' { return 'LOGO' }
+        'Park' { return 'PARK' }
+        'PARK' { return 'PARK' }
+        'Attraction' { return 'PARK_ITEM' }
+        'ParkItem' { return 'PARK_ITEM' }
+        'PARK_ITEM' { return 'PARK_ITEM' }
+        'Operator' { return 'OPERATOR' }
+        'OPERATOR' { return 'OPERATOR' }
+        'Manufacturer' { return 'MANUFACTURER' }
+        'MANUFACTURER' { return 'MANUFACTURER' }
+        'Founder' { return 'FOUNDER' }
+        'FOUNDER' { return 'FOUNDER' }
+        'VideoThumbnail' { return 'VIDEO_THUMBNAIL' }
+        'VIDEO_THUMBNAIL' { return 'VIDEO_THUMBNAIL' }
+        'StandaloneAttraction' { return 'STANDALONE_ATTRACTION' }
+        'STANDALONE_ATTRACTION' { return 'STANDALONE_ATTRACTION' }
+        'Comment' { return 'COMMENT' }
+        'COMMENT' { return 'COMMENT' }
+        default { throw "Unsupported image category '$Value'." }
+    }
+}
+
+function ConvertTo-ImageOwnerTypeDtoValue {
+    param([string]$Value)
+
+    switch ($Value.Trim()) {
+        'None' { return 'NONE' }
+        'NONE' { return 'NONE' }
+        'Park' { return 'PARK' }
+        'PARK' { return 'PARK' }
+        'User' { return 'USER' }
+        'USER' { return 'USER' }
+        'Attraction' { return 'PARK_ITEM' }
+        'ParkItem' { return 'PARK_ITEM' }
+        'PARK_ITEM' { return 'PARK_ITEM' }
+        'ParkOperator' { return 'PARK_OPERATOR' }
+        'PARK_OPERATOR' { return 'PARK_OPERATOR' }
+        'AttractionManufacturer' { return 'ATTRACTION_MANUFACTURER' }
+        'ATTRACTION_MANUFACTURER' { return 'ATTRACTION_MANUFACTURER' }
+        'ParkFounder' { return 'PARK_FOUNDER' }
+        'PARK_FOUNDER' { return 'PARK_FOUNDER' }
+        'Video' { return 'VIDEO' }
+        'VIDEO' { return 'VIDEO' }
+        'StandaloneAttraction' { return 'STANDALONE_ATTRACTION' }
+        'STANDALONE_ATTRACTION' { return 'STANDALONE_ATTRACTION' }
+        'CommentDraft' { return 'COMMENT_DRAFT' }
+        'COMMENT_DRAFT' { return 'COMMENT_DRAFT' }
+        'Comment' { return 'COMMENT' }
+        'COMMENT' { return 'COMMENT' }
+        default { throw "Unsupported image owner type '$Value'." }
+    }
+}
+
+function Assert-CompleteImageMetadata {
+    param([object]$Metadata)
+
+    $requiredProperties = @(
+        'category',
+        'ownerType',
+        'ownerId',
+        'isCurrent',
+        'description',
+        'geoLocation',
+        'altTexts',
+        'captions',
+        'credits',
+        'tagIds',
+        'isPublished',
+        'sourceUrl'
+    )
+    foreach ($propertyName in $requiredProperties) {
+        if ($null -eq $Metadata.PSObject.Properties[$propertyName]) {
+            throw "MetadataJsonPath must contain the complete '$propertyName' field so existing image metadata is not cleared accidentally."
+        }
+    }
+
+    foreach ($propertyName in @('category', 'ownerType', 'ownerId', 'description', 'sourceUrl')) {
+        if ([string]::IsNullOrWhiteSpace([string]$Metadata.$propertyName)) {
+            throw "MetadataJsonPath field '$propertyName' cannot be empty."
+        }
+    }
+
+    $expectedLanguages = @('de', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt')
+    foreach ($propertyName in @('altTexts', 'captions', 'credits')) {
+        $localizedValues = @($Metadata.$propertyName)
+        $actualLanguages = @($localizedValues | ForEach-Object { [string]$_.languageCode } | Sort-Object -Unique)
+        $missingLanguages = @($expectedLanguages | Where-Object { $_ -notin $actualLanguages })
+        $unexpectedLanguages = @($actualLanguages | Where-Object { $_ -notin $expectedLanguages })
+        $emptyLanguages = @($localizedValues | Where-Object { [string]::IsNullOrWhiteSpace([string]$_.value) } | ForEach-Object { [string]$_.languageCode })
+        if ($localizedValues.Count -ne 8 -or $missingLanguages.Count -gt 0 -or
+            $unexpectedLanguages.Count -gt 0 -or $emptyLanguages.Count -gt 0) {
+            throw "MetadataJsonPath field '$propertyName' must contain one non-empty value for each of de, en, es, fr, it, nl, pl and pt."
+        }
     }
 }
 
@@ -779,6 +950,21 @@ switch ($Action) {
     }
     'ImportPhoto' {
         Import-ParkPhoto
+    }
+    'UpdatePhotoMetadata' {
+        if ([string]::IsNullOrWhiteSpace($ImageId) -or [string]::IsNullOrWhiteSpace($MetadataJsonPath)) {
+            throw 'ImageId and MetadataJsonPath are required for UpdatePhotoMetadata.'
+        }
+
+        $resolvedMetadataPath = Resolve-RequiredFile -Path $MetadataJsonPath -ParameterName 'MetadataJsonPath'
+        $metadata = [IO.File]::ReadAllText($resolvedMetadataPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
+        Assert-CompleteImageMetadata -Metadata $metadata
+        Set-JsonProperty -Object $metadata -Name 'category' -Value (ConvertTo-ImageCategoryDtoValue -Value ([string]$metadata.category))
+        Set-JsonProperty -Object $metadata -Name 'ownerType' -Value (ConvertTo-ImageOwnerTypeDtoValue -Value ([string]$metadata.ownerType))
+        Wait-ParkDataEditorAvailability | Out-Null
+        Invoke-ParkDataEditorJsonApi -Method PUT `
+            -RelativePath "park-data-editor/images/$([Uri]::EscapeDataString($ImageId))/metadata" `
+            -Body $metadata
     }
     'RevokeCurrent' {
         Invoke-ParkDataEditorJsonApi -Method DELETE -RelativePath 'park-data-editor/tokens/current' -Body $null | Out-Null

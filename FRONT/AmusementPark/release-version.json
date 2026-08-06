@@ -1,6 +1,20 @@
 {
-  "version": "4.1.22",
+  "version": "4.1.23",
   "history": [
+    {
+      "version": "4.1.23",
+      "releasedAt": "2026-08-07",
+      "labels": {
+        "fr": "La qualité éditoriale des fiches de parc a été renforcée.",
+        "en": "The editorial quality of park profiles has been strengthened.",
+        "de": "Die redaktionelle Qualität der Parkprofile wurde gestärkt.",
+        "nl": "De redactionele kwaliteit van parkprofielen is versterkt.",
+        "it": "La qualità editoriale delle schede dei parchi è stata rafforzata.",
+        "es": "Se ha reforzado la calidad editorial de las fichas de los parques.",
+        "pl": "Wzmocniono jakość redakcyjną profili parków.",
+        "pt": "A qualidade editorial das fichas dos parques foi reforçada."
+      }
+    },
     {
       "version": "4.1.22",
       "releasedAt": "2026-08-07",

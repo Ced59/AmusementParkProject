@@ -9,7 +9,7 @@ Objectif : structurer le parc avec ses zones officielles ou clairement établies
 
 ## État de référence requis
 
-En mode ChatGPT guidé, utiliser l’export actualisé après l’étape 1. En mode Codex autonome, utiliser le registre local consolidé avec la réponse Apply de l’étape 1 ; ne pas relancer un export complet.
+Dans les deux modes, utiliser le registre consolidé avec les valeurs et identifiants de la réponse Apply validée à l’étape 1 ; ne pas demander d’export complet.
 
 ## Données à rechercher
 
@@ -79,6 +79,6 @@ Chaque zone doit avoir une `key` stable, un `name`, des `names` localisés si po
 
 ## Après Apply
 
-Avant de créer les parkItems, demander l’export actualisé en mode ChatGPT afin de reprendre les vrais IDs et les clés acceptées. En mode Codex autonome, intégrer les `changes`, IDs et clés de la réponse Apply au registre local et continuer sans nouvel export.
+Avant de créer les parkItems, contrôler la réponse Apply, intégrer ses `changes`, IDs et clés au registre consolidé et continuer sans export complet ; demander seulement un export ciblé si un identifiant indispensable manque.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 3 — Inventaire des parkItems. Si aucune zone fiable n’a été créée, l’étape 3 reste généralement utile, mais les parkItems devront être intégrés sans `zoneKey` sauf source claire. Si l’étape 3 est exceptionnellement jugée `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la validation utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

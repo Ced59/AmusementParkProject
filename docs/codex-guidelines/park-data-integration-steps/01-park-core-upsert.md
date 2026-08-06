@@ -10,7 +10,7 @@ Objectif : créer ou corriger la fiche parc minimale fiable avant tout enrichiss
 
 ## État de référence requis
 
-En mode ChatGPT guidé, utiliser l’export initial ou l’export actualisé fourni par l’utilisateur et le demander s’il manque. En mode Codex autonome, utiliser l’export complet initial et commencer le registre local consolidé décrit dans le workflow API.
+Dans les deux modes, utiliser l’état initial consolidé à l’étape 0 et demander seulement un export ciblé si une donnée existante indispensable manque. Aucun export complet n’est requis avant ce lot.
 
 ## Données à rechercher
 
@@ -46,7 +46,7 @@ En mode ChatGPT guidé, utiliser l’export initial ou l’export actualisé fou
 - Pour un parc fermé, utiliser un logo historique dont le lien avec la période d’exploitation est documenté.
 - Le logo utilise la catégorie `Logo`, reste sans watermark ajouté et devient l’image logo courante. Une photo principale du parc reste une image distincte.
 - Si aucun fichier acceptable n’est importable à l’étape 1, inscrire la recherche et l’import comme obligation de l’étape 5, pas comme enrichissement facultatif.
-- Après import, vérifier que l’image est bien rattachée au parc et définie comme logo courant. En mode ChatGPT, utiliser l’export actualisé ; en mode Codex, contrôler la réponse d’import et inscrire le résultat au registre local, puis le confirmer dans l’export complet préalable à l’étape 8. Contrôler aussi la restitution publique avant publication.
+- Après import, vérifier que l’image est bien rattachée au parc et définie comme logo courant à partir de la réponse d’import, inscrire le résultat au registre consolidé, puis le confirmer dans l’export complet préalable à l’étape 8. Contrôler aussi la restitution publique avant publication.
 
 ## Références incluses dans cette étape
 
@@ -148,6 +148,6 @@ Exemple de forme :
 
 ## Après Apply
 
-Avant de passer aux zones, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer la réponse Apply au registre local et continuer sans nouvel export.
+Avant de passer aux zones, contrôler la réponse Apply, reporter les valeurs acceptées dans le registre consolidé et continuer sans export complet ; demander seulement un export ciblé si la réponse est ambiguë ou si un identifiant indispensable manque.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 2 — Zones. Si aucune zone officielle ou clairement établie n’existe, indiquer `probablement inutile` avec la raison, puis appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

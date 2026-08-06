@@ -10,7 +10,7 @@ Objectif : créer une histoire fiable, sourcée et lisible, en séparant les év
 
 ## État de référence requis
 
-En mode ChatGPT guidé, utiliser l’export actualisé après les étapes d’inventaire, de descriptions, d’images et d’horaires. En mode Codex autonome, utiliser le registre local consolidé, sans nouvel export complet. Les timelines doivent pouvoir référencer les vrais IDs ou les `itemKey` existants.
+Dans les deux modes, utiliser le registre consolidé et les réponses validées des étapes d’inventaire, de descriptions, d’images et d’horaires, sans nouvel export complet. Les timelines doivent pouvoir référencer les vrais IDs ou les `itemKey` existants ; demander seulement la section nécessaire lorsqu’un identifiant manque réellement.
 
 ## Découpage recommandé
 
@@ -146,6 +146,8 @@ Créer un article uniquement si le sujet mérite un développement durable :
 
 Un article ne doit pas répéter la description ni devenir une fiche technique.
 
+Une annonce d’attraction peut exposer son année, son récit, son implantation et sa portée durable sans recopier la fiche du constructeur. Vitesse, durée, capacité, nombre de sièges ou de véhicules, détail du tracé, rotations et accélérations restent dans les données structurées. Un chiffre ne rejoint le récit que s’il constitue lui-même le fait historique ou l’angle éditorial, jamais pour donner artificiellement une impression de précision.
+
 Pour un parc majeur, un article est attendu pour chaque sujet qui mérite réellement un développement durable, notamment une annonce récente structurante, une transformation majeure ou la fermeture définitive d’une attraction emblématique. Cette obligation ne justifie aucun article de remplissage : les micro-changements restent de simples événements ou sont omis.
 
 Mauvais sujets :
@@ -165,6 +167,20 @@ Structure recommandée :
 4. Informations vérifiées et sources.
 5. Impact sur l’histoire, la visite ou la page du parc.
 6. Conclusion naturelle.
+
+### Profondeur et mise en forme
+
+Pour un parc majeur, les repères suivants détectent un contenu trop mince :
+
+- résumé de timeline : environ 25 à 55 mots visibles dans la langue de rédaction, généralement une à trois phrases ; il énonce le fait, son contexte immédiat et ce qu’il change durablement, sans recopier seulement le titre et la date ;
+- sous-titre d’article : spécifique au sujet, assez précis pour annoncer l’angle, jamais une formule de série interchangeable ;
+- résumé d’article : environ 45 à 90 mots, autonome et narratif ;
+- article durable ciblé : au moins 250 mots visibles, résumé compris, avec normalement 3 intertitres et 3 paragraphes développés ;
+- grand article de synthèse sur le parc ou une transformation structurante : environ 500 à 900 mots visibles, plusieurs périodes ou angles, et une alternance lisible de titres, paragraphes et images contextualisées quand elles existent.
+
+Un sujet très circonscrit peut rester entre 150 et 250 mots si deux sections suffisent réellement. L’exception doit être motivée par le périmètre du sujet, jamais par le manque de rédaction. Ces bandes sont des alertes de relecture : elles n’autorisent ni répétition, ni fiche technique, ni paragraphes de remplissage.
+
+Les huit langues reprennent le même nombre de blocs éditoriaux, les mêmes faits et une profondeur comparable. Les images ne remplacent pas un développement écrit ; inversement, ajouter des blocs vides ou des intertitres génériques ne rend pas l’article substantiel.
 
 Le style doit être naturel, clair, agréable à lire, documenté, orienté lecteur, non promotionnel, non mécanique et non académique.
 
@@ -251,7 +267,7 @@ Pour une image distante créée dans le même JSON, définir une `images[].key` 
 - `blocks[].imageKey` ;
 - `blocks[].imageKeys`.
 
-Ne jamais utiliser la clé d’une image créée dans un lot précédent. Le processeur ne précharge pas les clés de toutes les images existantes. En mode ChatGPT, réexporter après l’Apply et utiliser l’ID obtenu. En mode Codex autonome, utiliser l’ID renvoyé par l’Apply ou l’import et conservé dans le registre local.
+Ne jamais utiliser la clé d’une image créée dans un lot précédent. Le processeur ne précharge pas les clés de toutes les images existantes. Utiliser l’ID renvoyé par l’Apply ou l’import et conservé dans le registre consolidé ; exporter uniquement la section `Images` si cette réponse est inexploitable. Aucun export complet intermédiaire n’est requis.
 
 Une image existante peut techniquement enregistrer une clé dans le lot courant si `images[]` contient à la fois son `imageId` et `key`, mais ChatGPT doit préférer l’ID direct dans l’article afin d’éviter une résolution indirecte inutile.
 
@@ -433,6 +449,9 @@ Section principale : `history.events`.
 - Les URLs archivées pointent vers une capture consultable de la page utile, pas seulement vers une page d’archive vide.
 - Les titres et résumés importants sont localisés dans les 8 langues quand le lot est complet.
 - Les articles ont un vrai angle éditorial.
+- Pour un parc majeur, les résumés de timeline sont contrôlés contre la bande indicative de 25 à 55 mots et racontent à la fois le fait et sa portée.
+- Les articles durables atteignent normalement 250 mots visibles avec au moins 3 intertitres et 3 paragraphes ; les grandes synthèses atteignent normalement 500 à 900 mots. Toute exception courte est relue et justifiée par le sujet.
+- Les huit versions d’un article conservent exactement les mêmes blocs éditoriaux utiles et une profondeur comparable ; aucune langue ne perd un paragraphe, une période ou une conclusion.
 - Les annonces récentes à effet durable ont été recherchées et les sujets importants possèdent un article, pas seulement une ligne de timeline.
 - Pour un parc majeur ou historique, la timeline couvre les grandes périodes et transformations documentables plutôt qu’un historique minimal.
 - Les fermetures emblématiques de l’inventaire de l’étape 3 sont reliées à un jalon, un article quand le sujet le mérite, ou une lacune expliquée.
@@ -448,6 +467,7 @@ Section principale : `history.events`.
 - Deux définitions `images[].key` ne deviennent jamais identiques après suppression des espaces de bord et comparaison sans tenir compte de la casse.
 - Le Preview n’est pas considéré comme une validation des clés d’images utilisées par les articles.
 - Les titres, sous-titres, résumés, paragraphes et légendes sont relus en affichage public mobile.
+- Les annonces et récits d’attractions sont balayés par familles de vocabulaire mécanique et de spécifications chiffrées ; toute concentration qui explique le dispositif au lieu de raconter le sujet impose une réécriture.
 - Les corps de résumés et sous-titres sont comparés entre événements et articles après retrait des noms propres ; aucun gabarit générique répété ne subsiste.
 - Les huit versions d’un même résumé racontent les mêmes faits avec une précision comparable ; la seule présence des huit codes de langue ne valide pas des traductions raccourcies en phrases de secours.
 - Aucune légende ne doit expliquer l’absence d’une autre image ; elle doit décrire l’image affichée et son lien avec le sujet.
@@ -457,6 +477,6 @@ Section principale : `history.events`.
 
 ## Après Apply
 
-Avant le lot historique suivant, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer les résultats Apply au registre local et continuer sans export. Une fois tous les lots de l’étape 7 terminés, effectuer l’export complet frais obligatoire avant de commencer l’étape 8.
+Avant le lot historique suivant, contrôler la réponse Apply, intégrer ses résultats au registre consolidé et continuer sans export complet ; un export ciblé reste réservé à une réponse ambiguë ou à un identifiant indispensable. Une fois tous les lots de l’étape 7 terminés, effectuer l’unique export complet obligatoire avant de commencer l’étape 8.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 8 — Audit final. L’audit final reste utile dès qu’un JSON a été appliqué, même si certains enrichissements ont été volontairement sautés. Si l’étape 8 est exceptionnellement jugée `probablement inutile`, expliquer pourquoi et rappeler qu’elle est normalement le point de contrôle final du parcours. En mode ChatGPT, attendre la validation utilisateur ; en mode Codex autonome, exécuter l’audit sans pause.
