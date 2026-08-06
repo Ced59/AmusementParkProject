@@ -1,6 +1,20 @@
 {
-  "version": "4.1.8",
+  "version": "4.1.9",
   "history": [
+    {
+      "version": "4.1.9",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les aperçus des partages se rafraîchissent plus sûrement.",
+        "en": "Social sharing previews refresh more reliably.",
+        "de": "Vorschauen geteilter Inhalte werden zuverlässiger aktualisiert.",
+        "nl": "Voorvertoningen van gedeelde links worden betrouwbaarder vernieuwd.",
+        "it": "Le anteprime dei link condivisi si aggiornano in modo più affidabile.",
+        "es": "Las vistas previas de los enlaces compartidos se actualizan con mayor fiabilidad.",
+        "pl": "Podglądy udostępnianych linków odświeżają się bardziej niezawodnie.",
+        "pt": "As pré-visualizações de ligações partilhadas atualizam-se com maior fiabilidade."
+      }
+    },
     {
       "version": "4.1.8",
       "releasedAt": "2026-08-06",

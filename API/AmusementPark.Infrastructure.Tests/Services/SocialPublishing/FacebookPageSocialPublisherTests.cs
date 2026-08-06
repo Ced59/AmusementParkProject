@@ -76,8 +76,9 @@ public sealed class FacebookPageSocialPublisherTests
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
             HttpStatusCode.OK,
             "{\"url\":\"https://amusement-parks.fun/fr/park/park-1/test\"}");
+        StubHttpClientFactory httpClientFactory = new StubHttpClientFactory(handler);
         FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
-            new StubHttpClientFactory(handler),
+            httpClientFactory,
             CreateSettings());
 
         SocialPublisherOperationResult result = await publisher.RefreshLinkPreviewAsync(
@@ -85,6 +86,7 @@ public sealed class FacebookPageSocialPublisherTests
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
+        Assert.Equal(FacebookPageSocialPublisher.PreviewRefreshHttpClientName, httpClientFactory.LastClientName);
         Assert.Equal(HttpMethod.Post, handler.Method);
         Assert.Equal("https://graph.facebook.com/v24.0/", handler.RequestUri);
         Assert.Equal("Bearer", handler.AuthorizationScheme);
@@ -153,8 +155,11 @@ public sealed class FacebookPageSocialPublisherTests
             this.client = new HttpClient(handler);
         }
 
+        public string? LastClientName { get; private set; }
+
         public HttpClient CreateClient(string name)
         {
+            this.LastClientName = name;
             return this.client;
         }
     }

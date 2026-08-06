@@ -11,6 +11,8 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
 {
     public const string HttpClientName = "SocialPublishing.Facebook";
 
+    public const string PreviewRefreshHttpClientName = "SocialPublishing.Facebook.PreviewRefresh";
+
     private const string GraphApiBaseUrl = "https://graph.facebook.com";
     private const int MaximumStoredErrorLength = 500;
 
@@ -100,7 +102,7 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
             ["scrape"] = "true",
         });
 
-        HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
+        HttpClient client = this.httpClientFactory.CreateClient(PreviewRefreshHttpClientName);
         using HttpResponseMessage response = await client.SendAsync(
             httpRequest,
             HttpCompletionOption.ResponseHeadersRead,

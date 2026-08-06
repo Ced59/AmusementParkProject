@@ -142,6 +142,10 @@ public static class InfrastructureServiceCollectionExtensions
         {
             client.Timeout = TimeSpan.FromSeconds(facebookPagePublishingSettings.RequestTimeoutSeconds);
         });
+        services.AddHttpClient(FacebookPageSocialPublisher.PreviewRefreshHttpClientName, static client =>
+        {
+            client.Timeout = TimeSpan.FromSeconds(30);
+        });
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
         services.AddSingleton<IMinioClient>(_ =>
             new MinioClient()
