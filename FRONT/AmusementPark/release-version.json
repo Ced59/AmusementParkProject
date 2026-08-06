@@ -1,8 +1,8 @@
 {
-  "version": "4.1.12",
+  "version": "4.1.13",
   "history": [
     {
-      "version": "4.1.12",
+      "version": "4.1.13",
       "releasedAt": "2026-08-06",
       "labels": {
         "fr": "Les images des publications sociales s’affichent plus fiablement.",
@@ -13,6 +13,20 @@
         "es": "Las imágenes de las publicaciones sociales se muestran con mayor fiabilidad.",
         "pl": "Obrazy w publikacjach społecznościowych wyświetlają się bardziej niezawodnie.",
         "pt": "As imagens nas publicações sociais são apresentadas de forma mais fiável."
+      }
+    },
+    {
+      "version": "4.1.12",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les outils d’administration sont plus fiables.",
+        "en": "Administration tools are more reliable.",
+        "de": "Die Verwaltungswerkzeuge sind zuverlässiger.",
+        "nl": "De beheertools zijn betrouwbaarder.",
+        "it": "Gli strumenti di amministrazione sono più affidabili.",
+        "es": "Las herramientas de administración son más fiables.",
+        "pl": "Narzędzia administracyjne działają bardziej niezawodnie.",
+        "pt": "As ferramentas de administração estão mais fiáveis."
       }
     },
     {
