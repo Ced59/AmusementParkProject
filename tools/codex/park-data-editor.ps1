@@ -641,6 +641,28 @@ function Assert-CompleteImageMetadata {
     }
 }
 
+function Assert-ImageMetadataIdentity {
+    param([object]$Metadata, [string]$TargetImageId)
+
+    $identityValues = @()
+    foreach ($propertyName in @('imageId', 'id')) {
+        if ($null -ne $Metadata.PSObject.Properties[$propertyName] -and
+            -not [string]::IsNullOrWhiteSpace([string]$Metadata.$propertyName)) {
+            $identityValues += [string]$Metadata.$propertyName
+        }
+    }
+
+    if ($identityValues.Count -eq 0) {
+        throw 'MetadataJsonPath must contain imageId or id from the exported image so the target identity can be verified.'
+    }
+
+    foreach ($identityValue in $identityValues) {
+        if (-not [string]::Equals($identityValue, $TargetImageId, [StringComparison]::OrdinalIgnoreCase)) {
+            throw "MetadataJsonPath targets image '$identityValue', not route image '$TargetImageId'."
+        }
+    }
+}
+
 function Test-AllowedImageOwnership {
     $allowed = switch ($Category) {
         'LOGO' { $OwnerType -eq 'PARK' }
@@ -958,7 +980,10 @@ switch ($Action) {
 
         $resolvedMetadataPath = Resolve-RequiredFile -Path $MetadataJsonPath -ParameterName 'MetadataJsonPath'
         $metadata = [IO.File]::ReadAllText($resolvedMetadataPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
+        Assert-ImageMetadataIdentity -Metadata $metadata -TargetImageId $ImageId
         Assert-CompleteImageMetadata -Metadata $metadata
+        $metadata.PSObject.Properties.Remove('imageId')
+        $metadata.PSObject.Properties.Remove('id')
         Set-JsonProperty -Object $metadata -Name 'category' -Value (ConvertTo-ImageCategoryDtoValue -Value ([string]$metadata.category))
         Set-JsonProperty -Object $metadata -Name 'ownerType' -Value (ConvertTo-ImageOwnerTypeDtoValue -Value ([string]$metadata.ownerType))
         Wait-ParkDataEditorAvailability | Out-Null

@@ -248,7 +248,7 @@ Pour corriger les métadonnées d’une image déjà rattachée sans réimporter
   -MetadataJsonPath .\work\photo-metadata.json
 ```
 
-Le fichier doit reprendre explicitement `category`, `ownerType`, `ownerId`, `isCurrent`, `description`, `geoLocation`, `altTexts`, `captions`, `credits`, `tagIds`, `isPublished` et `sourceUrl`. Le client exige exactement une valeur non vide dans chacune des huit langues pour les textes alternatifs, légendes et crédits. Construire ce document depuis l’export courant afin de préserver le rattachement, la publication, le statut courant, la source, la géolocalisation et les tags ; ne jamais envoyer un fragment qui effacerait silencieusement les autres métadonnées.
+Le fichier doit reprendre explicitement l’identité exportée `imageId` ou `id`, puis `category`, `ownerType`, `ownerId`, `isCurrent`, `description`, `geoLocation`, `altTexts`, `captions`, `credits`, `tagIds`, `isPublished` et `sourceUrl`. Le client refuse l’appel si l’identité du document ne correspond pas à `-ImageId`, puis retire les champs d’identité avant le PUT. Il exige aussi exactement une valeur non vide dans chacune des huit langues pour les textes alternatifs, légendes et crédits. Construire ce document depuis l’export courant afin de préserver le rattachement, la publication, le statut courant, la source, la géolocalisation et les tags ; ne jamais envoyer un fragment qui effacerait silencieusement les autres métadonnées.
 
 L’export emploie les noms métier tels que `ParkItem`, tandis que le contrat HTTP utilise les enums publics tels que `PARK_ITEM`. Le client convertit explicitement `category` et `ownerType`, y compris l’ancien alias `Attraction`, avant l’envoi. Ne pas modifier manuellement le document exporté pour contourner ce décalage.
 
