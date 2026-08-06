@@ -17,6 +17,7 @@ export MINIO_ROOT_USER='test-minio-user'
 export MINIO_ROOT_PASSWORD='test-minio-password-value'
 export JWT_KEY='test-jwt-key-with-at-least-32-characters'
 export EMAIL_MODE='Console'
+export FACEBOOK_APP_ID='123456789012345'
 export SOCIAL_PUBLISHING_FACEBOOK_ENABLED='true'
 export SOCIAL_PUBLISHING_FACEBOOK_API_VERSION='v24.0'
 export SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID='1285475681307050'
@@ -38,12 +39,18 @@ assert_env_line() {
 }
 
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_ENABLED=true'
+assert_env_line 'FACEBOOK_APP_ID=123456789012345'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_API_VERSION=v24.0'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID=1285475681307050'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN=test-page-access-token-value'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL=https://www.facebook.com/profile.php?id=61592732938801'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS=10'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED=false'
+
+if ! grep -Fq 'FACEBOOK_APP_ID: ${FACEBOOK_APP_ID:-}' "${deploy_scripts_dir}/../compose.prod.yml"; then
+  echo 'The frontend SSR service does not receive FACEBOOK_APP_ID.' >&2
+  exit 1
+fi
 
 "${deploy_scripts_dir}/validate-production-env.sh" "${valid_env_file}"
 

@@ -64,6 +64,7 @@ services:
       SSR_ASSET_MISS_LOG_SAMPLE_RATE: ${SSR_ASSET_MISS_LOG_SAMPLE_RATE:-25}
       SSR_CSR_FALLBACK_LOG_SAMPLE_RATE: ${SSR_CSR_FALLBACK_LOG_SAMPLE_RATE:-100}
       SSR_CSR_FALLBACK_CACHE_CONTROL: ${SSR_CSR_FALLBACK_CACHE_CONTROL:-public, max-age=60, stale-while-revalidate=300}
+      FACEBOOK_APP_ID: ${FACEBOOK_APP_ID:-}
     networks:
       npm_proxy_external:
         aliases:
