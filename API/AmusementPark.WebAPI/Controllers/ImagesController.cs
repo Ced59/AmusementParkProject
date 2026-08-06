@@ -498,7 +498,6 @@ public sealed class ImagesController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> GetSocialPreviewImageAsync(
         [FromRoute] string imageId,
-        [FromQuery(Name = "rev")] long? revision = null,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<Image> result = await this.getImageByIdQueryHandler.HandleAsync(
@@ -516,18 +515,9 @@ public sealed class ImagesController : ControllerBase
                 "image.not-found");
         }
 
-        long currentRevision = new DateTimeOffset(
-            result.Value.UpdatedAtUtc.Kind == DateTimeKind.Utc
-                ? result.Value.UpdatedAtUtc
-                : result.Value.UpdatedAtUtc.ToUniversalTime())
-            .ToUnixTimeMilliseconds();
-        long requestedRevision = revision ?? currentRevision;
-        bool generateIfMissing = requestedRevision == currentRevision;
         (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetSocialPreviewAsync(
             result.Value.Path,
             SocialPreviewImageWidth,
-            requestedRevision,
-            generateIfMissing,
             cancellationToken);
         if (binary is null)
         {
@@ -540,9 +530,7 @@ public sealed class ImagesController : ControllerBase
         using System.IO.MemoryStream content = new System.IO.MemoryStream();
         await source.CopyToAsync(content, cancellationToken);
 
-        this.Response.Headers.CacheControl = revision.HasValue
-            ? "public,max-age=31536000,immutable"
-            : "public,max-age=0,must-revalidate";
+        this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
         return this.File(content.ToArray(), binary.Value.ContentType);
     }
 

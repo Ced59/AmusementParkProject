@@ -88,14 +88,11 @@ public sealed class ImagesControllerTests
     public async Task GetSocialPreviewImageAsync_ShouldUseStableJpegVariantWithoutContentNegotiation()
     {
         byte[] imageContent = new byte[] { 0xFF, 0xD8, 0xFF, 0xD9 };
-        DateTime updatedAtUtc = new DateTime(2026, 8, 6, 10, 15, 30, 123, DateTimeKind.Utc);
-        long revision = new DateTimeOffset(updatedAtUtc).ToUnixTimeMilliseconds();
         Image image = new Image
         {
             Id = "image-1",
             Path = "images/image-1",
             IsPublished = true,
-            UpdatedAtUtc = updatedAtUtc,
         };
         Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
             new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
@@ -109,106 +106,17 @@ public sealed class ImagesControllerTests
             .Setup(candidate => candidate.GetSocialPreviewAsync(
                 "images/image-1",
                 ImagesController.SocialPreviewImageWidth,
-                revision,
-                true,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((new MemoryStream(imageContent), "image/jpeg"));
         ImagesController controller = CreateController(queryHandler.Object, storage.Object);
 
-        IActionResult result = await controller.GetSocialPreviewImageAsync(
-            "image-1",
-            revision,
-            CancellationToken.None);
+        IActionResult result = await controller.GetSocialPreviewImageAsync("image-1", CancellationToken.None);
 
         FileContentResult file = Assert.IsType<FileContentResult>(result);
         Assert.Equal("image/jpeg", file.ContentType);
         Assert.Equal(imageContent, file.FileContents);
-        Assert.Equal("public,max-age=31536000,immutable", controller.Response.Headers.CacheControl);
-        Assert.False(controller.Response.Headers.ContainsKey("Vary"));
-        queryHandler.VerifyAll();
-        storage.VerifyAll();
-    }
-
-    [Fact]
-    public async Task GetSocialPreviewImageAsync_WithoutRevision_ShouldRequireRevalidation()
-    {
-        byte[] imageContent = new byte[] { 0xFF, 0xD8, 0xFF, 0xD9 };
-        DateTime updatedAtUtc = new DateTime(2026, 8, 6, 10, 15, 30, 123, DateTimeKind.Utc);
-        long revision = new DateTimeOffset(updatedAtUtc).ToUnixTimeMilliseconds();
-        Image image = new Image
-        {
-            Id = "image-1",
-            Path = "images/image-1",
-            IsPublished = true,
-            UpdatedAtUtc = updatedAtUtc,
-        };
-        Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
-            new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
-        queryHandler
-            .Setup(candidate => candidate.HandleAsync(
-                It.Is<GetImageByIdQuery>(query => query.ImageId == "image-1"),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(ApplicationResult<Image>.Success(image));
-        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
-        storage
-            .Setup(candidate => candidate.GetSocialPreviewAsync(
-                "images/image-1",
-                ImagesController.SocialPreviewImageWidth,
-                revision,
-                true,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync((new MemoryStream(imageContent), "image/jpeg"));
-        ImagesController controller = CreateController(queryHandler.Object, storage.Object);
-
-        IActionResult result = await controller.GetSocialPreviewImageAsync(
-            "image-1",
-            revision: null,
-            cancellationToken: CancellationToken.None);
-
-        Assert.IsType<FileContentResult>(result);
         Assert.Equal("public,max-age=0,must-revalidate", controller.Response.Headers.CacheControl);
-        queryHandler.VerifyAll();
-        storage.VerifyAll();
-    }
-
-    [Fact]
-    public async Task GetSocialPreviewImageAsync_ForAnOlderRevision_ShouldOnlyReadTheStoredArtifact()
-    {
-        DateTime updatedAtUtc = new DateTime(2026, 8, 6, 10, 15, 30, 123, DateTimeKind.Utc);
-        long currentRevision = new DateTimeOffset(updatedAtUtc).ToUnixTimeMilliseconds();
-        long olderRevision = currentRevision - 1;
-        Image image = new Image
-        {
-            Id = "image-1",
-            Path = "images/image-1",
-            IsPublished = true,
-            UpdatedAtUtc = updatedAtUtc,
-        };
-        Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
-            new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
-        queryHandler
-            .Setup(candidate => candidate.HandleAsync(
-                It.Is<GetImageByIdQuery>(query => query.ImageId == "image-1"),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(ApplicationResult<Image>.Success(image));
-        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
-        storage
-            .Setup(candidate => candidate.GetSocialPreviewAsync(
-                "images/image-1",
-                ImagesController.SocialPreviewImageWidth,
-                olderRevision,
-                false,
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync((new MemoryStream(new byte[] { 0xFF, 0xD8, 0xFF, 0xD9 }), "image/jpeg"));
-        ImagesController controller = CreateController(queryHandler.Object, storage.Object);
-
-        IActionResult result = await controller.GetSocialPreviewImageAsync(
-            "image-1",
-            olderRevision,
-            CancellationToken.None);
-
-        Assert.IsType<FileContentResult>(result);
-        Assert.Equal("public,max-age=31536000,immutable", controller.Response.Headers.CacheControl);
+        Assert.False(controller.Response.Headers.ContainsKey("Vary"));
         queryHandler.VerifyAll();
         storage.VerifyAll();
     }
@@ -232,10 +140,7 @@ public sealed class ImagesControllerTests
         Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
         ImagesController controller = CreateController(queryHandler.Object, storage.Object);
 
-        IActionResult result = await controller.GetSocialPreviewImageAsync(
-            "image-1",
-            revision: null,
-            cancellationToken: CancellationToken.None);
+        IActionResult result = await controller.GetSocialPreviewImageAsync("image-1", CancellationToken.None);
 
         ObjectResult notFound = Assert.IsType<ObjectResult>(result);
         Assert.Equal(StatusCodes.Status404NotFound, notFound.StatusCode);

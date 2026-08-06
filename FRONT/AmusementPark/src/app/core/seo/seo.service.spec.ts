@@ -38,24 +38,23 @@ describe('SeoService', () => {
     const park: ParkDetailViewModel = buildParkDetail({
       primaryPhoto: {
         imageId: 'park-photo 1',
-        updatedAt: '2026-08-06T10:15:30.123Z',
       } as ParkDetailViewModel['primaryPhoto'],
     });
 
     service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-photo%201/social-preview-v1?rev=1786011330123',
+      'https://localhost:44391/images/binary/park-photo%201/social-preview-v1',
     );
     expect(readMetaContent('meta[property="og:image:secure_url"]')).toBe(
-      'https://localhost:44391/images/binary/park-photo%201/social-preview-v1?rev=1786011330123',
+      'https://localhost:44391/images/binary/park-photo%201/social-preview-v1',
     );
     expect(readMetaContent('meta[property="og:image:width"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:height"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:type"]')).toBe('image/jpeg');
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo Park');
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-photo%201/social-preview-v1?rev=1786011330123',
+      'https://localhost:44391/images/binary/park-photo%201/social-preview-v1',
     );
   });
 
