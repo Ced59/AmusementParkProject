@@ -1,6 +1,20 @@
 {
-  "version": "4.1.17",
+  "version": "4.1.18",
   "history": [
+    {
+      "version": "4.1.18",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les publications sociales utilisent des photos plus adaptées.",
+        "en": "Social posts use more suitable photos.",
+        "de": "Soziale Beiträge verwenden passendere Fotos.",
+        "nl": "Sociale berichten gebruiken geschiktere foto's.",
+        "it": "Le pubblicazioni social usano foto più adatte.",
+        "es": "Las publicaciones sociales usan fotos más adecuadas.",
+        "pl": "Publikacje społecznościowe korzystają z lepiej dobranych zdjęć.",
+        "pt": "As publicações sociais utilizam fotografias mais adequadas."
+      }
+    },
     {
       "version": "4.1.17",
       "releasedAt": "2026-08-06",
