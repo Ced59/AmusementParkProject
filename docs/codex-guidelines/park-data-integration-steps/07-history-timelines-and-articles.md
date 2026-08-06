@@ -51,7 +51,7 @@ Créer des événements pour les faits durables :
 - construction ;
 - ouverture ;
 - ouverture de zone ;
-- attraction majeure ;
+- transformation d’ensemble du parc liée à plusieurs parkItems, sans dupliquer l’ouverture ou la fermeture propre à l’un d’eux ;
 - changement d’exploitant ;
 - acquisition ;
 - extension ;
@@ -84,6 +84,12 @@ Créer des événements pour :
 - conservation patrimoniale.
 
 Pour une attraction déplacée, la timeline du parkItem peut continuer hors du parc d’origine. Utiliser `contextParkId` quand l’événement se déroule dans un autre parc connu, ou un marqueur externe seulement si le modèle l’accepte et que le contexte est clair.
+
+### Propriété des ouvertures et fermetures de parkItems
+
+L’ouverture, la réouverture, la fermeture temporaire et la fermeture définitive d’un parkItem appartiennent exclusivement à la timeline de ce parkItem. Ne jamais dupliquer le même fait dans la timeline du parc, même lorsque le parkItem est emblématique ou que l’événement est majeur.
+
+La timeline du parc peut documenter une transformation d’ensemble, une extension ou une période qui concerne plusieurs parkItems seulement si le fait possède une portée propre à l’échelle du parc. Cet événement de parc ne doit alors ni reprendre comme fait principal l’ouverture ou la fermeture d’un parkItem individuel, ni créer une seconde occurrence de sa date ; utiliser les rattachements vers les parkItems concernés pour conserver le contexte.
 
 ## Résolution des propriétaires d’événements history
 
@@ -430,6 +436,7 @@ Section principale : `history.events`.
 - Les annonces récentes à effet durable ont été recherchées et les sujets importants possèdent un article, pas seulement une ligne de timeline.
 - Pour un parc majeur ou historique, la timeline couvre les grandes périodes et transformations documentables plutôt qu’un historique minimal.
 - Les fermetures emblématiques de l’inventaire de l’étape 3 sont reliées à un jalon, un article quand le sujet le mérite, ou une lacune expliquée.
+- Aucune ouverture, réouverture, fermeture temporaire ou fermeture définitive de parkItem n’est dupliquée dans la timeline du parc ; ces faits sont portés uniquement par la timeline du parkItem concerné.
 - Les titres, résumés et blocs d’articles ne contiennent aucune formulation d’audit interne ou justification documentaire mécanique.
 - Les images référencées existent déjà ou sont créées dans le même JSON.
 - Chaque jalon visible et chaque article possède une image contextualisée quand une image acceptable est trouvable, sinon l’exception de recherche est documentée.
