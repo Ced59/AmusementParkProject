@@ -524,7 +524,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         }
 
         bool requiresHardPurge = changedEntities.Any(ContainsHardPurgeSignal)
-            || changedEntities.Any(IsImageChange);
+            || changedEntities.Any(IsAppliedImageChange);
         if (changedEntities.Count > MaxTargetedEntityCount)
         {
             return BuildLargeParkGraphUpsertRequest(result, requiresHardPurge, includeSeoDocuments);
@@ -659,7 +659,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
 
         bool requiresHardPurge = changedParks
             .SelectMany(static park => park.Result.Changes)
-            .Any(static change => ContainsHardPurgeSignal(change) || IsImageChange(change));
+            .Any(static change => ContainsHardPurgeSignal(change) || IsAppliedImageChange(change));
         IReadOnlyCollection<string> parkIds = changedParks
             .Select(static park => park.TargetParkId ?? park.Result.TargetParkId)
             .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
@@ -1106,9 +1106,16 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             || (string.Equals(field.Field, "adminReviewStatus", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, AdminReviewStatus.NotRelevant.ToString(), StringComparison.OrdinalIgnoreCase)));
     }
 
-    private static bool IsImageChange(ParkGraphUpsertChangeDto change)
+    private static bool IsAppliedImageChange(ParkGraphUpsertChangeDto change)
     {
-        return string.Equals(NormalizeEntityType(change.EntityType), "image", StringComparison.Ordinal);
+        if (!string.Equals(NormalizeEntityType(change.EntityType), "image", StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        return string.Equals(change.ChangeType, "Created", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(change.ChangeType, "Updated", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(change.ChangeType, "Deleted", StringComparison.OrdinalIgnoreCase);
     }
 
     private static SsrPageCacheInvalidationRequest ForceHardPurge(SsrPageCacheInvalidationRequest request)
