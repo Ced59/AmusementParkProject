@@ -27,6 +27,12 @@ param(
 
     [string]$OutputPath,
 
+    [ValidateSet('ParkBasics', 'ParkAudience', 'ParkLocation', 'ParkAdministration', 'ParkDescriptions', 'ParkHomeFeature', 'References', 'Zones', 'Items', 'Images', 'OpeningHours', 'History')]
+    [string[]]$Sections = @(),
+
+    [ValidateRange(30, 900)]
+    [int]$ExportTimeoutSeconds = 600,
+
     [switch]$AllowWarnings,
 
     [string]$SourceUrl,
@@ -232,6 +238,150 @@ function Get-DefaultOutputPath {
     $directory = [IO.Path]::GetDirectoryName($InputPath)
     $name = [IO.Path]::GetFileNameWithoutExtension($InputPath)
     return [IO.Path]::Combine($directory, "$name.$Suffix.json")
+}
+
+function Wait-ParkGraphExportJob {
+    param([object]$InitialSnapshot, [int]$TimeoutSeconds)
+
+    $snapshot = $InitialSnapshot
+    $deadlineUtc = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
+    while ([string]$snapshot.status -in @('Queued', 'Running')) {
+        if ([DateTime]::UtcNow -ge $deadlineUtc) {
+            throw "The park export job timed out after $TimeoutSeconds seconds."
+        }
+
+        Start-Sleep -Milliseconds 500
+        $jobId = [Uri]::EscapeDataString([string]$snapshot.jobId)
+        $snapshot = Invoke-ParkDataEditorJsonApi -Method GET `
+            -RelativePath "admin/park-graph-upserts/bulk/export-jobs/$jobId" `
+            -Body $null
+    }
+
+    if ([string]$snapshot.status -ne 'Completed') {
+        $reason = if ([string]::IsNullOrWhiteSpace([string]$snapshot.error)) {
+            [string]$snapshot.message
+        }
+        else {
+            [string]$snapshot.error
+        }
+        throw "The park export job ended with status '$($snapshot.status)': $reason"
+    }
+
+    if ([string]::IsNullOrWhiteSpace([string]$snapshot.downloadUrl) -or [long]$snapshot.contentLength -le 0) {
+        throw 'The completed park export job did not provide a valid download URL and content length.'
+    }
+
+    return $snapshot
+}
+
+function Invoke-ResumableFileDownload {
+    param([string]$Url, [string]$DestinationPath, [long]$ExpectedLength)
+
+    $curl = Get-Command 'curl.exe' -ErrorAction SilentlyContinue
+    if ($null -eq $curl) {
+        throw 'curl.exe is required for resumable park exports.'
+    }
+
+    $partialPath = $DestinationPath + '.partial'
+    if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
+        Remove-Item -LiteralPath $partialPath -Force
+    }
+
+    $attempt = 0
+    $stagnantAttempts = 0
+    while ($true) {
+        $attempt++
+        $beforeLength = if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
+            (Get-Item -LiteralPath $partialPath).Length
+        }
+        else {
+            0
+        }
+
+        & $curl.Source `
+            --fail `
+            --location `
+            --silent `
+            --connect-timeout 30 `
+            --max-time 120 `
+            --continue-at - `
+            --output $partialPath `
+            --url $Url
+        $curlExitCode = $LASTEXITCODE
+
+        $afterLength = if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
+            (Get-Item -LiteralPath $partialPath).Length
+        }
+        else {
+            0
+        }
+
+        if ($afterLength -gt $ExpectedLength) {
+            throw "The resumed park export is larger than expected ($afterLength bytes instead of $ExpectedLength)."
+        }
+        if ($afterLength -eq $ExpectedLength) {
+            break
+        }
+
+        if ($afterLength -gt $beforeLength) {
+            $stagnantAttempts = 0
+        }
+        else {
+            $stagnantAttempts++
+        }
+
+        Write-Verbose "Park export download attempt $attempt ended with curl code $curlExitCode at $afterLength / $ExpectedLength bytes."
+        if ($stagnantAttempts -ge 5 -or $attempt -ge 200) {
+            throw "The park export download could not progress after $attempt attempts ($afterLength / $ExpectedLength bytes)."
+        }
+    }
+
+    return $partialPath
+}
+
+function Export-ParkGraph {
+    param([string]$TargetParkId, [string]$DestinationPath, [string[]]$RequestedSections, [int]$TimeoutSeconds)
+
+    $resolvedOutputPath = [IO.Path]::GetFullPath($DestinationPath)
+    $outputDirectory = [IO.Path]::GetDirectoryName($resolvedOutputPath)
+    if (-not [string]::IsNullOrWhiteSpace($outputDirectory)) {
+        [IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
+    }
+
+    $job = Invoke-ParkDataEditorJsonApi -Method POST `
+        -RelativePath 'admin/park-graph-upserts/bulk/export-jobs' `
+        -Body @{
+            selectionMode = 'explicit'
+            parkIds = @($TargetParkId)
+            sections = @($RequestedSections)
+        }
+    $completedJob = Wait-ParkGraphExportJob -InitialSnapshot $job -TimeoutSeconds $TimeoutSeconds
+    $partialPath = Invoke-ResumableFileDownload `
+        -Url ([string]$completedJob.downloadUrl) `
+        -DestinationPath $resolvedOutputPath `
+        -ExpectedLength ([long]$completedJob.contentLength)
+
+    try {
+        $bulkDocument = [IO.File]::ReadAllText($partialPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
+        $parkDocuments = @($bulkDocument.parks)
+        if ($parkDocuments.Count -ne 1) {
+            throw "The park export returned $($parkDocuments.Count) park documents instead of one."
+        }
+
+        $exportedParkId = [string]$parkDocuments[0].identity.parkId
+        if (-not [string]::Equals($exportedParkId, $TargetParkId, [StringComparison]::OrdinalIgnoreCase)) {
+            throw "The park export returned '$exportedParkId' instead of '$TargetParkId'."
+        }
+
+        Write-JsonFile -Value $parkDocuments[0] -Path $resolvedOutputPath
+    }
+    finally {
+        if (Test-Path -LiteralPath $partialPath -PathType Leaf) {
+            Remove-Item -LiteralPath $partialPath -Force
+        }
+    }
+
+    return $resolvedOutputPath
 }
 
 function Set-JsonProperty {
@@ -456,11 +606,11 @@ switch ($Action) {
         if ([string]::IsNullOrWhiteSpace($ParkId) -or [string]::IsNullOrWhiteSpace($OutputPath)) {
             throw 'ParkId and OutputPath are required for ExportPark.'
         }
-        $token = Get-ParkDataEditorToken
-        $headers = @{ Authorization = "Bearer $token" }
-        $uri = $ApiBaseUrl + 'admin/park-graph-upserts/parks/' + [Uri]::EscapeDataString($ParkId) + '/export'
-        Invoke-WebRequest -Method GET -Uri $uri -Headers $headers -UseBasicParsing -OutFile $OutputPath
-        Write-Output (Resolve-Path -LiteralPath $OutputPath).Path
+        Export-ParkGraph `
+            -TargetParkId $ParkId `
+            -DestinationPath $OutputPath `
+            -RequestedSections $Sections `
+            -TimeoutSeconds $ExportTimeoutSeconds
     }
     'Preview' {
         $resolvedJsonPath = Resolve-RequiredFile -Path $JsonPath -ParameterName 'JsonPath'

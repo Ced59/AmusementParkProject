@@ -56,6 +56,7 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - Ne pas se limiter aux coasters : référencer les attractions, zones, restaurants, boutiques, hôtels, parkings, services, points d’accès, spectacles fixes, animaux/enclos et autres contenus visiteurs nommables quand ils sont fiables.
 - Une attraction fixe isolée pertinente ne doit pas être transformée en faux parc. Utiliser le flux `StandaloneAttraction` et migrer l’ancien parc mono-attraction si une fiche legacy existe.
 - Les descriptions doivent être naturelles, spécifiques au lieu, agréables à lire, orientées visiteur et non mécaniques.
+- Une description raconte l’entité elle-même : ce que le visiteur voit, son ambiance et sa singularité. Elle ne donne jamais de consigne d’itinéraire, ne conseille pas de « garder » un lieu pour un profil, ne propose pas une pause entre des files et ne réutilise pas un paragraphe passe-partout pour toute une catégorie.
 - Cette exigence éditoriale s’applique aussi aux titres, résumés, articles, descriptions internes visibles, textes alternatifs et légendes d’images. Les champs de crédits portent les crédits ; les textes visiteurs ne décrivent jamais la collecte, l’import, la qualité de la source ou le fonctionnement d’un outil.
 - Ne jamais écrire de formulations du type “ce que ça apporte à la journée”, “au groupe”, “comment l’intégrer dans la journée” ou “quand cela devient utile”.
 - Ne pas mettre les conditions d’accès, restrictions, tailles, tarifs ou informations purement techniques dans les descriptions : ces données doivent aller dans les champs JSON prévus.
@@ -80,6 +81,7 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - Les JSON upsert doivent rester bornés : une étape, un lot cohérent, aucune copie massive de l’export complet si seules quelques entités changent.
 - Chaque livraison de JSON upsert doit inclure un récap visible avant le fichier : ce qui est ajouté, corrigé, masqué ou conservé, le périmètre exact du lot, un compteur d’avancement traité/total et le reste à traiter avant l’étape suivante.
 - La cible de complétude est une qualité `Excellent` sans bloqueur, avec le même degré de rigueur pour chaque parc. La quantité de contenu reste proportionnée à la taille, au statut et aux sources : exigence élevée ne signifie jamais invention ou remplissage artificiel.
+- L’audit final compare aussi les corps de paragraphes après retrait des titres et noms d’entités. Un HTML différent uniquement grâce au `<h2>` ne rend pas deux descriptions réellement distinctes ; tout groupe de texte répété doit être réécrit ou justifié factuellement.
 
 ## Anciennes guidelines
 
