@@ -15,6 +15,50 @@ namespace AmusementPark.Infrastructure.Tests.Services.Images;
 public sealed class MinioImageBinaryStorageTests
 {
     [Fact]
+    public async Task ExecuteWithSocialPreviewGenerationLockAsync_ShouldCoordinateScopedInstancesForSameImage()
+    {
+        MinioImageBinaryStorage firstStorage = CreateStorage(
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict));
+        MinioImageBinaryStorage secondStorage = CreateStorage(
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict));
+        TaskCompletionSource<bool> firstOperationStarted =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> allowFirstOperationCompletion =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> secondOperationStarted =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        Task<bool> firstOperation = firstStorage.ExecuteWithSocialPreviewGenerationLockAsync(
+            "images/photo-1",
+            async cancellationToken =>
+            {
+                firstOperationStarted.SetResult(true);
+                await allowFirstOperationCompletion.Task.WaitAsync(cancellationToken);
+                return true;
+            },
+            CancellationToken.None);
+
+        await firstOperationStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        Task<bool> secondOperation = secondStorage.ExecuteWithSocialPreviewGenerationLockAsync(
+            "images/photo-1",
+            cancellationToken =>
+            {
+                secondOperationStarted.SetResult(true);
+                return Task.FromResult(true);
+            },
+            CancellationToken.None);
+
+        await Task.Delay(TimeSpan.FromMilliseconds(100));
+        Assert.False(secondOperationStarted.Task.IsCompleted);
+
+        allowFirstOperationCompletion.SetResult(true);
+        await firstOperation.WaitAsync(TimeSpan.FromSeconds(2));
+        await secondOperation.WaitAsync(TimeSpan.FromSeconds(2));
+
+        Assert.True(secondOperationStarted.Task.IsCompletedSuccessfully);
+    }
+
+    [Fact]
     public async Task ExecuteWithVariantGenerationLeaseAsync_ShouldHoldLeaseUntilGenerationCompletes()
     {
         Mock<IImageVariantGenerationLease> lease =

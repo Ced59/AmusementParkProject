@@ -190,49 +190,64 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             return false;
         }
 
-        await EnsureBucketExistsAsync(cancellationToken);
-
-        (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(pathWithoutExtension, cancellationToken);
-        if (source is null)
-        {
-            return false;
-        }
-
-        try
-        {
-            await using Stream sourceStream = source.Value.Stream;
-            await using MemoryStream watermarkedStream = await ApplyWatermarkToStreamAsync(sourceStream, cancellationToken);
-            using Image image = await Image.LoadAsync(watermarkedStream, cancellationToken);
-            ResizeInPlaceIfNeeded(image);
-
-            foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetFormats())
+        return await this.ExecuteWithSocialPreviewGenerationLockAsync(
+            pathWithoutExtension,
+            async operationCancellationToken =>
             {
-                byte[] content = await EncodeWithSizeLimitAsync(image, format.encoderFactory, cancellationToken);
-                string objectName = $"{pathWithoutExtension}.{format.extension}";
+                try
+                {
+                    await EnsureBucketExistsAsync(operationCancellationToken);
 
-                await using MemoryStream objectStream = new MemoryStream(content);
-                await this.minioClient.PutObjectAsync(
-                    new PutObjectArgs()
-                        .WithBucket(this.settings.Bucket)
-                        .WithObject(objectName)
-                        .WithStreamData(objectStream)
-                        .WithObjectSize(objectStream.Length)
-                        .WithContentType(format.contentType),
-                    cancellationToken);
-            }
+                    (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(
+                        pathWithoutExtension,
+                        operationCancellationToken);
+                    if (source is null)
+                    {
+                        return false;
+                    }
 
-            await this.DeleteResponsiveVariantsAsync(pathWithoutExtension, cancellationToken);
-            return true;
-        }
-        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-        {
-            throw;
-        }
-        catch (Exception exception)
-        {
-            this.logger.LogWarning(exception, "Unable to apply watermark to image {PathWithoutExtension} in MinIO bucket {Bucket}.", pathWithoutExtension, this.settings.Bucket);
-            return false;
-        }
+                    await using Stream sourceStream = source.Value.Stream;
+                    await using MemoryStream watermarkedStream = await ApplyWatermarkToStreamAsync(
+                        sourceStream,
+                        operationCancellationToken);
+                    using Image image = await Image.LoadAsync(watermarkedStream, operationCancellationToken);
+                    ResizeInPlaceIfNeeded(image);
+
+                    foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetFormats())
+                    {
+                        byte[] content = await EncodeWithSizeLimitAsync(
+                            image,
+                            format.encoderFactory,
+                            operationCancellationToken);
+                        string objectName = $"{pathWithoutExtension}.{format.extension}";
+
+                        await using MemoryStream objectStream = new MemoryStream(content);
+                        await this.minioClient.PutObjectAsync(
+                            new PutObjectArgs()
+                                .WithBucket(this.settings.Bucket)
+                                .WithObject(objectName)
+                                .WithStreamData(objectStream)
+                                .WithObjectSize(objectStream.Length)
+                                .WithContentType(format.contentType),
+                            operationCancellationToken);
+                    }
+
+                    await this.DeleteResponsiveVariantsAsync(
+                        pathWithoutExtension,
+                        operationCancellationToken);
+                    return true;
+                }
+                catch (OperationCanceledException) when (operationCancellationToken.IsCancellationRequested)
+                {
+                    throw;
+                }
+                catch (Exception exception)
+                {
+                    this.logger.LogWarning(exception, "Unable to apply watermark to image {PathWithoutExtension} in MinIO bucket {Bucket}.", pathWithoutExtension, this.settings.Bucket);
+                    return false;
+                }
+            },
+            cancellationToken);
     }
 
     public async Task<(Stream Stream, string ContentType)?> GetBestAsync(string pathWithoutExtension, string? acceptHeader, int? width, CancellationToken cancellationToken)
@@ -275,32 +290,43 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
 
         string objectName = GetSocialPreviewVariantObjectName(pathWithoutExtension, socialPreviewWidth);
-        (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(
-            objectName,
-            "image/jpeg",
+        return await this.ExecuteWithSocialPreviewGenerationLockAsync(
+            pathWithoutExtension,
+            async operationCancellationToken =>
+            {
+                (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(
+                    objectName,
+                    "image/jpeg",
+                    operationCancellationToken);
+                if (cached is not null)
+                {
+                    return cached;
+                }
+
+                return await this.TryCreateSocialPreviewAsync(
+                    pathWithoutExtension,
+                    objectName,
+                    socialPreviewWidth,
+                    operationCancellationToken);
+            },
             cancellationToken);
-        if (cached is not null)
-        {
-            return cached;
-        }
+    }
+
+    internal async Task<T> ExecuteWithSocialPreviewGenerationLockAsync<T>(
+        string pathWithoutExtension,
+        Func<CancellationToken, Task<T>> operation,
+        CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(pathWithoutExtension);
+        ArgumentNullException.ThrowIfNull(operation);
 
         SemaphoreSlim generationLock = SocialPreviewGenerationLocks.GetOrAdd(
-            objectName,
+            pathWithoutExtension,
             static _ => new SemaphoreSlim(1, 1));
         await generationLock.WaitAsync(cancellationToken);
         try
         {
-            cached = await TryGetObjectAsync(objectName, "image/jpeg", cancellationToken);
-            if (cached is not null)
-            {
-                return cached;
-            }
-
-            return await this.TryCreateSocialPreviewAsync(
-                pathWithoutExtension,
-                objectName,
-                socialPreviewWidth,
-                cancellationToken);
+            return await operation(cancellationToken);
         }
         finally
         {
