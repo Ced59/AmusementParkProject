@@ -182,6 +182,8 @@ Les textes visiteurs de l’image suivent la charte éditoriale de l’étape 4 
 - `credits` contient l’auteur, la source et la licence ou l’autorisation utile ;
 - `description` reste factuelle et lisible si elle peut apparaître dans un outil éditorial.
 
+La description et la légende commencent par le sujet réellement visible et son contexte : attraction, scène, époque, décor ou point de vue utile. Des libellés comme « image officielle », « visuel supplémentaire », « onride », « photo importée » ou « image contextualisée de l’élément » ne décrivent pas la scène et doivent être remplacés. Le caractère officiel, l’auteur, la licence et la provenance restent dans `credits` lorsqu’ils sont utiles.
+
 Ne jamais écrire dans `altTexts`, `captions` ou `description` : URL source, méthode d’import, statut de vérification, résolution, justification de droits, absence d’une autre photo, propriétaire technique, catégorie de base, score de complétude ou formulation mécanique du type « image contextualisée de l’élément ». Les crédits et notes internes portent ces informations à leur place.
 
 Si une image est techniquement importable mais éditorialement fragile, ne pas l’ajouter : préférer une absence d’image à une image trompeuse, instable ou mal créditée.
@@ -357,6 +359,7 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 - Chaque image a été inspectée visuellement et ne porte aucun watermark ou logo incrusté d’un site tiers.
 - Chaque jalon et article déjà présent possède une image contextualisée quand une image acceptable est trouvable ; les images manquantes sont inscrites au registre de reprise de l’étape 7.
 - Les `altTexts`, `captions` et `description` sont naturels et éditoriaux, sans formulation technique, mécanique ou justificative.
+- Les huit versions des `altTexts` et `captions` décrivent le même sujet avec une langue naturelle ; aucune traduction ne retombe sur un libellé générique du seul nom de l’attraction si la scène permet davantage.
 - Les images historiques ne prétendent pas montrer une date ou un état qu’elles ne montrent pas.
 - Les biographies ne créent pas de doublons de références.
 - Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.

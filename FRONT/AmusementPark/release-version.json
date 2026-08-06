@@ -1,8 +1,8 @@
 {
-  "version": "4.1.13",
+  "version": "4.1.14",
   "history": [
     {
-      "version": "4.1.13",
+      "version": "4.1.14",
       "releasedAt": "2026-08-06",
       "labels": {
         "fr": "Les images des publications sociales s’affichent plus fiablement.",
@@ -13,6 +13,20 @@
         "es": "Las imágenes de las publicaciones sociales se muestran con mayor fiabilidad.",
         "pl": "Obrazy w publikacjach społecznościowych wyświetlają się bardziej niezawodnie.",
         "pt": "As imagens nas publicações sociais são apresentadas de forma mais fiável."
+      }
+    },
+    {
+      "version": "4.1.13",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Le contrôle de qualité des contenus a été renforcé.",
+        "en": "Content quality checks have been strengthened.",
+        "de": "Die Qualitätsprüfung der Inhalte wurde verstärkt.",
+        "nl": "De kwaliteitscontrole van inhoud is aangescherpt.",
+        "it": "I controlli sulla qualità dei contenuti sono stati rafforzati.",
+        "es": "Se han reforzado los controles de calidad del contenido.",
+        "pl": "Wzmocniono kontrolę jakości treści.",
+        "pt": "Os controlos de qualidade dos conteúdos foram reforçados."
       }
     },
     {

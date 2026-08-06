@@ -1,6 +1,6 @@
 # AmusementPark — Scoring de complétude data des parcs et parkItems
 
-Version : **2026-08-06-r1**
+Version : **2026-08-06-r2**
 Projet : **amusement-parks.fun**  
 Usage : spécification fonctionnelle pour calculer en production un score de complétude data, prioriser les enrichissements et aider la décision de visibilité SEO.
 
@@ -161,6 +161,7 @@ Les bloqueurs suivants forcent `isVisible: false` même si le score brut est él
 - sources critiques absentes pour une fiche historique ;
 - URL source d'article ou d'événement non joignable ;
 - contenu public contenant jargon interne, notes d'audit ou données techniques au mauvais endroit.
+- corpus de descriptions contenant des paragraphes passe-partout répétés, des conseils d’itinéraire ou des traductions de secours génériques dissimulés par des titres différents ;
 - logo officiel courant omis sans recherche documentée ;
 - formulation technique, mécanique ou justificative dans un texte alternatif, une légende ou une description d’image publique ;
 - inventaire historique manifestement léger pour un parc majeur ou ancien ;
@@ -257,6 +258,8 @@ Inspiré de l'étape 4.
 | Descriptions non clonées et non génériques | 1 | Toujours si texte public |
 
 Les langues publiques attendues sont `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `pt`, sauf dette legacy documentée.
+
+Le calcul numérique ne sait pas prouver à lui seul que les textes sont distincts. L’étape 8 doit comparer les corps de paragraphes après retrait des titres et noms ; un groupe répété reste un bloqueur éditorial même si le score calculé atteint 100.
 
 ### 7. Images, logos et médias — 10 points
 

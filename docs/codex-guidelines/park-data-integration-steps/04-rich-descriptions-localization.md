@@ -54,6 +54,8 @@ Ne pas modifier la charte pour rendre les textes techniques. Les descriptions re
 
 Une description doit aider un visiteur réel à comprendre ce qu’il va voir, l’ambiance du lieu, le type d’expérience proposée, l’identité propre de l’entité et pourquoi elle mérite d’être remarquée.
 
+Elle décrit l’entité, pas l’emploi du temps du lecteur. Le texte peut expliquer un rythme calme, familial ou intense lorsqu’il s’agit d’une caractéristique réelle de l’expérience, mais il ne doit jamais prescrire à quel moment venir, à quel profil réserver l’activité ou comment l’insérer entre deux files.
+
 Le temps verbal et les promesses doivent suivre `park.status` : futur et formulations de projet pour `Planned`/`UnderConstruction`, fermeture temporaire explicite pour `TemporarilyClosed`, passé pour `ClosedDefinitively`, et projet non réalisé pour `Cancelled`. Ne jamais inviter à visiter, annoncer une disponibilité actuelle ou transformer une promesse de projet en équipement existant hors de `Operating`.
 
 Avant de valider une description, se demander : est-ce qu’un visiteur du parc pourrait lire ce texte sur son téléphone et le trouver utile, naturel et agréable ? Si la réponse est non, réécrire.
@@ -100,8 +102,26 @@ Formulations interdites :
 - “dans la base” ;
 - “upsert” ;
 - “SEO” dans un texte public.
+- “garde cette attraction pour…” ou “choisis-la si…” ;
+- “place-la entre…” ou “intègre-la dans la journée” ;
+- “une pause entre les files, véhicules ou grandes attractions” ;
+- “une expérience utile pour varier le parcours” ;
+- “une place claire dans la visite ou le programme de la journée” ;
+- les équivalents traduits de ces consignes ou paragraphes de secours dans les sept autres langues.
 
 Éviter aussi les introductions répétitives : “Situé dans…”, “Cette attraction propose…”, “Idéal pour…”, “Cette zone permet…”.
+
+## Contrôle anti-gabarit sur tout le corpus
+
+La présence de huit textes et de noms différents ne suffit pas. Avant Apply puis à l’étape 8 :
+
+1. retirer temporairement les `<h2>`, le nom de l’entité et les balises de mise en forme pour comparer les corps de texte ;
+2. repérer les paragraphes identiques, quasi identiques et les mêmes enchaînements de phrases dans chaque langue ;
+3. rechercher les familles de formulations d’itinéraire, de classement interne et de remplissage, pas seulement une liste exacte de mots interdits ;
+4. relire manuellement chaque groupe détecté et réécrire avec des faits propres à l’entité ;
+5. refaire ce contrôle après réexport, car un titre différent peut masquer un corps de paragraphe cloné.
+
+Un même fait peut naturellement employer un vocabulaire proche, mais deux entités distinctes ne doivent pas partager un paragraphe passe-partout. Les traductions allemande et néerlandaise, comme toutes les autres, ne peuvent pas servir de versions de secours plus génériques que le français ou l’anglais.
 
 ## Règles par type de description
 
@@ -170,6 +190,8 @@ Sections possibles :
 - Le français public utilise un ton direct et informel quand le contexte s’y prête.
 - Les textes localisés utilisent les accents, diacritiques, ponctuations et caractères propres à chaque langue.
 - Aucun texte ne réemploie mécaniquement la même structure d’un item à l’autre.
+- Aucun corps de paragraphe n’est dupliqué entre entités après retrait du titre et du nom, sauf citation ou fait commun explicitement justifié.
+- Aucune description ne donne de conseil d’itinéraire ou ne classe l’entité selon son utilité dans la journée.
 - Le HTML reste simple : `<p>`, `<h2>`, `<h3>`, `<ul>`, `<li>`, `<strong>` si utile, sans structure lourde ou décorative.
 - Aucune information structurée ne pollue la narration.
 - Le texte donne envie de lire sans survente.
