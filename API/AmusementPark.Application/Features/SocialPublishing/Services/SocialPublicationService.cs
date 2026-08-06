@@ -334,7 +334,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
         if (publication.Network != SocialNetwork.Facebook
             || publication.Trigger != SocialPublicationTrigger.AutomaticParkPublication
             || !CanManage(publication)
-            || !Uri.TryCreate(publication.Url, UriKind.Absolute, out Uri? publicationUri))
+            || !Uri.TryCreate(publication.Url, UriKind.Absolute, out _))
         {
             return ApplicationResult<SocialPublication>.Failure(
                 SocialPublishingApplicationErrors.PublicationCannotBeManaged());
@@ -346,8 +346,6 @@ public sealed class SocialPublicationService : ISocialPublicationService
             return ApplicationResult<SocialPublication>.Failure(
                 SocialPublishingApplicationErrors.PublisherOperationFailed(null));
         }
-
-        await this.HardPurgePublicPageAsync(publicationUri.AbsolutePath, cancellationToken);
 
         SocialPublisherOperationResult refreshResult;
         try

@@ -1,6 +1,20 @@
 {
-  "version": "4.1.15",
+  "version": "4.1.16",
   "history": [
+    {
+      "version": "4.1.16",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les aperçus des publications sociales restent disponibles pendant leur actualisation.",
+        "en": "Social post previews remain available while they refresh.",
+        "de": "Vorschauen sozialer Beiträge bleiben während der Aktualisierung verfügbar.",
+        "nl": "Voorvertoningen van sociale berichten blijven beschikbaar tijdens het vernieuwen.",
+        "it": "Le anteprime dei post social restano disponibili durante l’aggiornamento.",
+        "es": "Las vistas previas de las publicaciones sociales siguen disponibles mientras se actualizan.",
+        "pl": "Podglądy publikacji społecznościowych pozostają dostępne podczas odświeżania.",
+        "pt": "As pré-visualizações das publicações sociais permanecem disponíveis durante a atualização."
+      }
+    },
     {
       "version": "4.1.15",
       "releasedAt": "2026-08-06",

@@ -117,7 +117,7 @@ public sealed class SocialPublicationServiceTests
     }
 
     [Fact]
-    public async Task RefreshParkAnnouncementPreviewAsync_ShouldHardPurgeBeforeFacebookRescrape()
+    public async Task RefreshParkAnnouncementPreviewAsync_ShouldPreserveWarmSsrPageBeforeFacebookRescrape()
     {
         List<string> events = new List<string>();
         InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
@@ -147,13 +147,10 @@ public sealed class SocialPublicationServiceTests
         Assert.True(result.IsSuccess);
         Assert.Same(publication, result.Value);
         Assert.Equal("editor-1", publication.RequestedByUserId);
-        Assert.Equal(new[] { "invalidate", "refresh" }, events);
+        Assert.Equal(new[] { "refresh" }, events);
         Assert.Equal(1, publisher.RefreshPreviewCallCount);
         Assert.Equal(publication.Url, publisher.LastRefreshedUrl);
-        SsrPageCacheInvalidationRequest request = Assert.Single(invalidator.Requests);
-        Assert.Equal(new[] { "/fr/park/park-1/parc-etincelle" }, request.Paths);
-        Assert.False(request.AllowStale);
-        Assert.False(request.Refresh);
+        Assert.Empty(invalidator.Requests);
     }
 
     [Fact]
