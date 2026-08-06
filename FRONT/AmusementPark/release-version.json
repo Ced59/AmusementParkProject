@@ -1,6 +1,20 @@
 {
-  "version": "4.1.19",
+  "version": "4.1.20",
   "history": [
+    {
+      "version": "4.1.20",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les outils internes coordonnent mieux leurs opérations.",
+        "en": "Internal tools coordinate their operations more reliably.",
+        "de": "Interne Werkzeuge koordinieren ihre Abläufe zuverlässiger.",
+        "nl": "Interne hulpmiddelen stemmen hun werkzaamheden beter af.",
+        "it": "Gli strumenti interni coordinano meglio le proprie operazioni.",
+        "es": "Las herramientas internas coordinan mejor sus operaciones.",
+        "pl": "Narzędzia wewnętrzne lepiej koordynują swoje działania.",
+        "pt": "As ferramentas internas coordenam melhor as suas operações."
+      }
+    },
     {
       "version": "4.1.19",
       "releasedAt": "2026-08-06",

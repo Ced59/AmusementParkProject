@@ -47,6 +47,17 @@ public sealed class BulkParkGraphExportJobSnapshot
     public DateTime ExpiresAtUtc { get; init; }
 
     public string? Error { get; init; }
+
+    public string RequestedByClientId { get; init; } = string.Empty;
+}
+
+public sealed class BulkParkGraphExportJobStartResult
+{
+    public BulkParkGraphExportJobSnapshot? Snapshot { get; init; }
+
+    public int RetryAfterSeconds { get; init; }
+
+    public bool IsAccepted => this.Snapshot is not null;
 }
 
 public sealed class BulkParkGraphExportDownload
@@ -60,9 +71,15 @@ public sealed class BulkParkGraphExportDownload
 
 public interface IBulkParkGraphExportJobService
 {
-    Task<BulkParkGraphExportJobSnapshot> StartAsync(ParkGraphBulkExportRequest request, string requestedByUserId, CancellationToken cancellationToken = default);
+    Task<BulkParkGraphExportJobStartResult> TryStartAsync(
+        ParkGraphBulkExportRequest request,
+        string requestedByUserId,
+        string requestedByClientId,
+        CancellationToken cancellationToken = default);
 
     BulkParkGraphExportJobSnapshot? GetSnapshot(string jobId, string requestedByUserId);
+
+    IReadOnlyCollection<BulkParkGraphExportJobSnapshot> GetActiveSnapshots();
 
     BulkParkGraphExportDownload? GetDownload(string jobId, string token);
 }
@@ -77,19 +94,26 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
     private readonly ConcurrentDictionary<string, BulkParkGraphExportJobState> jobs = new ConcurrentDictionary<string, BulkParkGraphExportJobState>(StringComparer.Ordinal);
     private readonly SemaphoreSlim exportSemaphore = new SemaphoreSlim(1, 1);
     private readonly IServiceScopeFactory serviceScopeFactory;
+    private readonly IParkDataEditorOperationCoordinator operationCoordinator;
     private readonly ILogger<BulkParkGraphExportJobService> logger;
     private readonly string workDirectory;
 
     public BulkParkGraphExportJobService(
         IServiceScopeFactory serviceScopeFactory,
+        IParkDataEditorOperationCoordinator operationCoordinator,
         ILogger<BulkParkGraphExportJobService> logger)
     {
         this.serviceScopeFactory = serviceScopeFactory;
+        this.operationCoordinator = operationCoordinator;
         this.logger = logger;
         this.workDirectory = Path.Combine(Path.GetTempPath(), "amusement-park", "bulk-park-graph-exports");
     }
 
-    public Task<BulkParkGraphExportJobSnapshot> StartAsync(ParkGraphBulkExportRequest request, string requestedByUserId, CancellationToken cancellationToken = default)
+    public Task<BulkParkGraphExportJobStartResult> TryStartAsync(
+        ParkGraphBulkExportRequest request,
+        string requestedByUserId,
+        string requestedByClientId,
+        CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -98,26 +122,57 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
             throw new ArgumentException("The requesting user identifier is required.", nameof(requestedByUserId));
         }
 
+        if (string.IsNullOrWhiteSpace(requestedByClientId))
+        {
+            throw new ArgumentException("The requesting client identifier is required.", nameof(requestedByClientId));
+        }
+
         cancellationToken.ThrowIfCancellationRequested();
         DateTime now = DateTime.UtcNow;
         this.CleanupExpired(now);
         EnsurePrivateDirectory(this.workDirectory);
 
+        string jobId = CreateToken(16);
+        ParkDataEditorOperationLease? coordinationLease = this.operationCoordinator.TryBeginExport(
+            jobId,
+            requestedByClientId);
+        if (coordinationLease is null)
+        {
+            return Task.FromResult(new BulkParkGraphExportJobStartResult
+            {
+                RetryAfterSeconds = this.operationCoordinator.RetryAfterSeconds,
+            });
+        }
+
         BulkParkGraphExportJobState state = new BulkParkGraphExportJobState
         {
-            JobId = CreateToken(16),
+            JobId = jobId,
             RequestedByUserId = requestedByUserId,
+            RequestedByClientId = requestedByClientId,
             DownloadToken = CreateToken(32),
             Request = CloneRequest(request),
             CreatedAtUtc = now,
             ExpiresAtUtc = now.Add(PendingJobLifetime),
+            CoordinationLease = coordinationLease,
         };
-        state.FilePath = Path.Combine(this.workDirectory, $"{state.JobId}.json");
-        state.Message = "Export JSON bulk en file d'attente.";
-        this.jobs[state.JobId] = state;
+        try
+        {
+            state.FilePath = Path.Combine(this.workDirectory, $"{state.JobId}.json");
+            state.Message = "Export JSON bulk en file d'attente.";
+            this.jobs[state.JobId] = state;
 
-        _ = Task.Run(() => this.ProcessAsync(state.JobId, CancellationToken.None), CancellationToken.None);
-        return Task.FromResult(CreateSnapshot(state, false));
+            _ = Task.Run(() => this.ProcessAsync(state.JobId, CancellationToken.None), CancellationToken.None);
+            return Task.FromResult(new BulkParkGraphExportJobStartResult
+            {
+                Snapshot = CreateSnapshot(state, false),
+                RetryAfterSeconds = this.operationCoordinator.RetryAfterSeconds,
+            });
+        }
+        catch
+        {
+            coordinationLease.Dispose();
+            throw;
+        }
     }
 
     public BulkParkGraphExportJobSnapshot? GetSnapshot(string jobId, string requestedByUserId)
@@ -140,6 +195,17 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
         }
 
         return CreateSnapshot(state, true);
+    }
+
+    public IReadOnlyCollection<BulkParkGraphExportJobSnapshot> GetActiveSnapshots()
+    {
+        this.CleanupExpired(DateTime.UtcNow);
+        return this.jobs.Values
+            .Select(static state => CreateSnapshot(state, false))
+            .Where(static snapshot => snapshot.Status == BulkParkGraphExportJobStatus.Queued
+                || snapshot.Status == BulkParkGraphExportJobStatus.Running)
+            .OrderBy(static snapshot => snapshot.CreatedAtUtc)
+            .ToList();
     }
 
     public BulkParkGraphExportDownload? GetDownload(string jobId, string token)
@@ -232,6 +298,8 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
         }
         finally
         {
+            state.CoordinationLease?.Dispose();
+            state.CoordinationLease = null;
             this.exportSemaphore.Release();
         }
     }
@@ -342,6 +410,7 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
                 CompletedAtUtc = state.CompletedAtUtc,
                 ExpiresAtUtc = state.ExpiresAtUtc,
                 Error = state.Error,
+                RequestedByClientId = state.RequestedByClientId,
             };
         }
     }
@@ -454,6 +523,8 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
 
         public string RequestedByUserId { get; init; } = string.Empty;
 
+        public string RequestedByClientId { get; init; } = string.Empty;
+
         public string DownloadToken { get; init; } = string.Empty;
 
         public ParkGraphBulkExportRequest Request { get; init; } = new ParkGraphBulkExportRequest();
@@ -483,6 +554,8 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
         public DateTime ExpiresAtUtc { get; set; }
 
         public string? Error { get; set; }
+
+        public ParkDataEditorOperationLease? CoordinationLease { get; set; }
     }
 
     private sealed class InlineProgress<TProgress> : IProgress<TProgress>

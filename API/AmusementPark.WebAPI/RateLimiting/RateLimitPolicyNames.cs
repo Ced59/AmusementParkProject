@@ -14,4 +14,5 @@ public static class RateLimitPolicyNames
     public const string ContactSubmission = "contact-submission";
     public const string SocialShareEvents = "social-share-events";
     public const string ImageUploadProcessing = "image-upload-processing";
+    public const string ParkDataEditorOperationStatus = "park-data-editor-operation-status";
 }

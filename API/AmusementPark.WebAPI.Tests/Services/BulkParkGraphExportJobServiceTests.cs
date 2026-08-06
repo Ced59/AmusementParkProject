@@ -20,11 +20,13 @@ public sealed class BulkParkGraphExportJobServiceTests
         services.AddSingleton<IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>, FakeBulkExportHandler>();
         using ServiceProvider serviceProvider = services.BuildServiceProvider();
         IServiceScopeFactory scopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();
+        ParkDataEditorOperationCoordinator coordinator = new ParkDataEditorOperationCoordinator();
         BulkParkGraphExportJobService service = new BulkParkGraphExportJobService(
             scopeFactory,
+            coordinator,
             NullLogger<BulkParkGraphExportJobService>.Instance);
 
-        BulkParkGraphExportJobSnapshot queuedSnapshot = await service.StartAsync(
+        BulkParkGraphExportJobStartResult startResult = await service.TryStartAsync(
             new ParkGraphBulkExportRequest
             {
                 SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
@@ -32,7 +34,9 @@ public sealed class BulkParkGraphExportJobServiceTests
                 Sections = new[] { ParkGraphExportSection.ParkBasics },
             },
             "admin-user",
+            "token-1",
             CancellationToken.None);
+        BulkParkGraphExportJobSnapshot queuedSnapshot = Assert.IsType<BulkParkGraphExportJobSnapshot>(startResult.Snapshot);
 
         BulkParkGraphExportJobSnapshot completedSnapshot = await WaitForTerminalSnapshotAsync(
             service,
@@ -55,6 +59,36 @@ public sealed class BulkParkGraphExportJobServiceTests
         AssertPrivateUnixPermissions(expectedDirectory, download.FilePath);
 
         File.Delete(download.FilePath);
+    }
+
+    [Fact]
+    public async Task TryStartAsync_WhenResourceIntensiveOperationIsActive_ShouldRejectWithoutQueuing()
+    {
+        ServiceCollection services = new ServiceCollection();
+        services.AddSingleton<IQueryHandler<ExportBulkParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>, FakeBulkExportHandler>();
+        using ServiceProvider serviceProvider = services.BuildServiceProvider();
+        IServiceScopeFactory scopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();
+        ParkDataEditorOperationCoordinator coordinator = new ParkDataEditorOperationCoordinator();
+        using ParkDataEditorOperationLease activeOperation = coordinator.TryBeginRequest(
+            "token-1",
+            ParkDataEditorOperationKind.ResourceIntensive,
+            "POST",
+            "/admin/park-graph-upserts/preview")!;
+        BulkParkGraphExportJobService service = new BulkParkGraphExportJobService(
+            scopeFactory,
+            coordinator,
+            NullLogger<BulkParkGraphExportJobService>.Instance);
+
+        BulkParkGraphExportJobStartResult result = await service.TryStartAsync(
+            new ParkGraphBulkExportRequest(),
+            "admin-user",
+            "token-2",
+            CancellationToken.None);
+
+        Assert.False(result.IsAccepted);
+        Assert.Null(result.Snapshot);
+        Assert.Equal(ParkDataEditorOperationCoordinator.BusyRetryAfterSeconds, result.RetryAfterSeconds);
+        Assert.Empty(service.GetActiveSnapshots());
     }
 
     private static void AssertPrivateUnixPermissions(string directoryPath, string filePath)

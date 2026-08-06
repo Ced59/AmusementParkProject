@@ -1,6 +1,8 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.RateLimiting;
@@ -101,6 +103,18 @@ public static class RateLimitingServiceCollectionExtensions
                 limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
                 limiterOptions.QueueLimit = 8;
             });
+            options.AddPolicy(RateLimitPolicyNames.ParkDataEditorOperationStatus, context =>
+                RateLimitPartition.GetTokenBucketLimiter(
+                    partitionKey: GetParkDataEditorTokenPartitionKey(context),
+                    factory: _ => new TokenBucketRateLimiterOptions
+                    {
+                        TokenLimit = 2,
+                        QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                        QueueLimit = 0,
+                        ReplenishmentPeriod = TimeSpan.FromSeconds(5),
+                        TokensPerPeriod = 1,
+                        AutoReplenishment = true,
+                    }));
         });
 
         return services;
@@ -161,6 +175,18 @@ public static class RateLimitingServiceCollectionExtensions
     {
         string remoteIp = ClientIpAddressResolver.Resolve(context) ?? "unknown";
         return $"ip:{remoteIp}";
+    }
+
+    private static string GetParkDataEditorTokenPartitionKey(HttpContext context)
+    {
+        string authorizationHeader = context.Request.Headers.Authorization.ToString();
+        if (string.IsNullOrWhiteSpace(authorizationHeader))
+        {
+            return $"park-data-editor-status:{GetRemoteIpPartitionKey(context)}";
+        }
+
+        byte[] hash = SHA256.HashData(Encoding.UTF8.GetBytes(authorizationHeader));
+        return $"park-data-editor-status:{Convert.ToHexString(hash)}";
     }
 
     private static bool IsSafeReadMethod(string method)

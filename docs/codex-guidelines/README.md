@@ -11,6 +11,8 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 - `standalone-attraction-data-integration.md` : fichier à utiliser quand l’entité pertinente est une attraction fixe isolée et non un parc.
 - `codex-park-data-editor-api-workflow.md` : complément strictement réservé à Codex lorsqu’il exécute lui-même les étapes par API avec le rôle technique `PARK_DATA_EDITOR`. Il ajoute les garde-fous Preview/Apply et l’upload local des photos sans modifier le workflow ChatGPT.
 
+Le complément API impose aussi une coordination globale entre toutes les instances Codex : consultation de l’état partagé avant les opérations coûteuses, absence d’appels concurrents, sondage espacé et respect strict de `Retry-After`.
+
 ## Commande courte de complétude
 
 La demande `Complète le parc <nom>` suffit pour lancer le parcours complet avec Codex. Elle signifie :

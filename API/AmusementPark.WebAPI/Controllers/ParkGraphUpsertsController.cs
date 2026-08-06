@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Security.Claims;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
@@ -10,6 +11,7 @@ using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.Security;
 using AmusementPark.WebAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -73,6 +75,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     }
 
     [HttpGet("parks/{parkId}/export")]
+    [ParkDataEditorOperation(ParkDataEditorOperationKind.ResourceIntensive)]
     [AdminAudit("park-graph-upsert.export", "Park")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> ExportParkJsonAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
@@ -90,6 +93,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     }
 
     [HttpPost("bulk/export")]
+    [ParkDataEditorOperation(ParkDataEditorOperationKind.ResourceIntensive)]
     [AdminAudit("park-graph-upsert.bulk-export", "Park", StaticTargetId = "bulk")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> ExportBulkParkJsonAsync([FromBody] ParkGraphBulkExportRequestDto request, CancellationToken cancellationToken = default)
@@ -107,6 +111,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     }
 
     [HttpPost("bulk/export-jobs")]
+    [SkipParkDataEditorOperationCoordination]
     [AdminAudit("park-graph-upsert.bulk-export-job", "Park", StaticTargetId = "bulk")]
     [ProducesResponseType(typeof(ParkGraphBulkExportJobDto), StatusCodes.Status202Accepted)]
     public async Task<IActionResult> StartBulkParkJsonExportJobAsync([FromBody] ParkGraphBulkExportRequestDto request, CancellationToken cancellationToken = default)
@@ -117,12 +122,28 @@ public sealed class ParkGraphUpsertsController : ControllerBase
             return this.Unauthorized();
         }
 
-        BulkParkGraphExportJobSnapshot snapshot = await this.bulkExportJobService.StartAsync(
+        string currentClientId = this.User.FindFirst(ParkDataEditorAuthenticationDefaults.TokenIdClaim)?.Value
+            ?? $"user:{currentUserId}";
+        BulkParkGraphExportJobStartResult startResult = await this.bulkExportJobService.TryStartAsync(
             request.ToApplication(),
             currentUserId,
+            currentClientId,
             cancellationToken);
+        if (!startResult.IsAccepted || startResult.Snapshot is null)
+        {
+            this.Response.Headers.RetryAfter = startResult.RetryAfterSeconds.ToString(CultureInfo.InvariantCulture);
+            ProblemDetails problemDetails = ApiProblemDetailsFactory.Create(
+                this.HttpContext,
+                StatusCodes.Status429TooManyRequests,
+                ApiProblemDetailsFactory.GetDefaultTitle(StatusCodes.Status429TooManyRequests),
+                "Another park data editor operation is already using the available server capacity. Inspect the global operation status and retry after the indicated delay.",
+                "park-data-editor.operation-busy");
+            problemDetails.Extensions["retryAfterSeconds"] = startResult.RetryAfterSeconds;
+            problemDetails.Extensions["statusEndpoint"] = "/park-data-editor/operations/status";
+            return ApiProblemDetailsFactory.ToObjectResult(problemDetails);
+        }
 
-        return this.Accepted(this.ToHttp(snapshot));
+        return this.Accepted(this.ToHttp(startResult.Snapshot));
     }
 
     [HttpGet("bulk/export-jobs/{jobId}")]
@@ -170,6 +191,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     }
 
     [HttpGet("standalone-attractions/{standaloneAttractionId}/export")]
+    [ParkDataEditorOperation(ParkDataEditorOperationKind.ResourceIntensive)]
     [AdminAudit("park-graph-upsert.standalone-attraction.export", "StandaloneAttraction")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> ExportStandaloneAttractionJsonAsync([FromRoute] string standaloneAttractionId, CancellationToken cancellationToken = default)
@@ -187,6 +209,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     }
 
     [HttpPost("preview")]
+    [ParkDataEditorOperation(ParkDataEditorOperationKind.ResourceIntensive)]
     [AdminAudit("park-graph-upsert.preview", "Park")]
     [ProducesResponseType(typeof(ParkGraphUpsertResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> PreviewAsync([FromBody] ParkGraphUpsertRequestDto request, CancellationToken cancellationToken = default)
@@ -204,6 +227,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     }
 
     [HttpPost("bulk/preview")]
+    [ParkDataEditorOperation(ParkDataEditorOperationKind.ResourceIntensive)]
     [AdminAudit("park-graph-upsert.bulk-preview", "Park", StaticTargetId = "bulk")]
     [ProducesResponseType(typeof(BulkParkGraphUpsertResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> PreviewBulkAsync([FromBody] BulkParkGraphUpsertRequestDto request, CancellationToken cancellationToken = default)
@@ -221,6 +245,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     }
 
     [HttpPost("apply")]
+    [ParkDataEditorOperation(ParkDataEditorOperationKind.ResourceIntensive)]
     [AdminAudit("park-graph-upsert.apply", "Park")]
     [InvalidatesPublicCache(PublicCacheScope.Data, PublicCacheScope.Seo, EvictOutputCache = false)]
     [ProducesResponseType(typeof(ParkGraphUpsertResultDto), StatusCodes.Status200OK)]
@@ -239,6 +264,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     }
 
     [HttpPost("bulk/apply")]
+    [ParkDataEditorOperation(ParkDataEditorOperationKind.ResourceIntensive)]
     [AdminAudit("park-graph-upsert.bulk-apply", "Park", StaticTargetId = "bulk")]
     [InvalidatesPublicCache(PublicCacheScope.Data, PublicCacheScope.Seo, EvictOutputCache = false)]
     [ProducesResponseType(typeof(BulkParkGraphUpsertResultDto), StatusCodes.Status200OK)]
