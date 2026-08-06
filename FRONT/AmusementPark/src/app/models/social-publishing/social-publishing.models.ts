@@ -1,3 +1,5 @@
+import { CollectionResponse } from '@shared/models/contracts';
+
 export type SocialNetwork = 'Facebook';
 export type SocialPublicationStatus = 'Pending' | 'Published' | 'Failed' | 'Deleted';
 export type SocialPublicationTrigger = 'Manual' | 'AutomaticParkPublication';
@@ -40,6 +42,27 @@ export interface PublishSocialLinkRequest {
   readonly network: SocialNetwork;
   readonly message: string;
   readonly url: string;
+  readonly previewImageId?: string | null;
+}
+
+export type SocialPublicationTargetKind = 'Park' | 'ParkItem' | 'Video' | 'Page';
+
+export interface SocialPublicationImageOption {
+  readonly id: string;
+  readonly label: string;
+  readonly isCurrent: boolean;
+  readonly width: number;
+  readonly height: number;
+}
+
+export interface SocialPublicationDraft {
+  readonly url: string;
+  readonly defaultMessage: string;
+  readonly targetKind: SocialPublicationTargetKind;
+  readonly targetName: string;
+  readonly imageOwnerType: 'Park' | 'ParkItem' | null;
+  readonly imageOwnerId: string | null;
+  readonly images: CollectionResponse<SocialPublicationImageOption>;
 }
 
 export interface UpdateSocialPublicationRequest {

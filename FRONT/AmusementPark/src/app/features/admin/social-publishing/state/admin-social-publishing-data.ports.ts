@@ -5,6 +5,7 @@ import { AdminSocialPublicationsApiService } from '@data-access/social-publishin
 import {
   PublishSocialLinkRequest,
   SocialPublication,
+  SocialPublicationDraft,
   SocialPublicationSynchronizationResult,
   SocialPublishingOverview,
   UpdateSocialPublicationRequest
@@ -12,6 +13,7 @@ import {
 
 export interface AdminSocialPublishingDataPort {
   getOverview(limit?: number): Observable<SocialPublishingOverview>;
+  getDraft(url: string, imagePage?: number, imagePageSize?: number): Observable<SocialPublicationDraft>;
   publish(request: PublishSocialLinkRequest): Observable<SocialPublication>;
   retry(publicationId: string): Observable<SocialPublication>;
   update(publicationId: string, request: UpdateSocialPublicationRequest): Observable<SocialPublication>;

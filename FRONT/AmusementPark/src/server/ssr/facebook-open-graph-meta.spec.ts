@@ -1,5 +1,7 @@
 import {
+  hasOnlyFacebookImageOverrideQuery,
   injectFacebookAppIdMeta,
+  injectFacebookImageOverrideMeta,
   normalizeFacebookAppId,
 } from './facebook-open-graph-meta';
 
@@ -38,5 +40,40 @@ describe('Facebook Open Graph metadata', () => {
     expect(injectFacebookAppIdMeta(html, 'invalid')).toBe(html);
     expect(injectFacebookAppIdMeta('<div>fragment</div>', '123456789012345'))
       .toBe('<div>fragment</div>');
+  });
+
+  it('overrides social image metadata for a validated Facebook image query', () => {
+    const html: string = '<html><head>'
+      + '<meta property="og:image" content="https://example.test/default.png">'
+      + '<meta property="og:image:secure_url" content="https://example.test/default.png">'
+      + '<meta property="og:image:type" content="image/png">'
+      + '<meta property="og:image:width" content="1200">'
+      + '<meta property="og:image:height" content="630">'
+      + '<meta name="twitter:image" content="https://example.test/default.png">'
+      + '</head><body></body></html>';
+
+    const result: string = injectFacebookImageOverrideMeta(
+      html,
+      '/fr/park/park-1/test?facebook-image=image_1',
+      'https://amusement-parks.fun/fr/park/park-1/test?facebook-image=image_1',
+    );
+
+    expect(result).toContain('property="og:image" content="https://amusement-parks.fun/api/images/binary/image_1/social-preview-v1"');
+    expect(result).toContain('property="og:image:type" content="image/jpeg"');
+    expect(result).toContain('name="twitter:image" content="https://amusement-parks.fun/api/images/binary/image_1/social-preview-v1"');
+    expect(result).not.toContain('property="og:image:width"');
+    expect(result).not.toContain('property="og:image:height"');
+  });
+
+  it('ignores invalid or mixed Facebook image override queries', () => {
+    const html: string = '<html><head><meta property="og:image" content="default"></head></html>';
+
+    expect(hasOnlyFacebookImageOverrideQuery('/fr/home?facebook-image=image-1')).toBe(true);
+    expect(hasOnlyFacebookImageOverrideQuery('/fr/home?facebook-image=image-1&page=2')).toBe(false);
+    expect(injectFacebookImageOverrideMeta(
+      html,
+      '/fr/home?facebook-image=%3Cscript%3E',
+      'https://amusement-parks.fun/fr/home',
+    )).toBe(html);
   });
 });

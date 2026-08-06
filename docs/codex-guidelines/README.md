@@ -1,6 +1,6 @@
 # AmusementPark — Pack de guidelines pour Codex
 
-Date : 2026-08-06
+Date : 2026-08-07
 Projet : `amusement-parks.fun`
 
 Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éditoriales et techniques à appliquer lors des tâches liées aux JSON upsert, aux descriptions publiques et aux articles.
@@ -27,6 +27,8 @@ La demande `Complète le parc <nom>` suffit pour lancer le parcours complet avec
 - s’arrêter au seuil `prêt pour publication` tant que l’utilisateur n’a pas explicitement demandé de publier.
 
 La commande ne demande ni modification de code, ni accès direct à l’administration. Si le jeton technique manque, est expiré ou révoqué, Codex signale le blocage sans contourner le flux prévu.
+
+Une publication Facebook est une opération distincte et explicite. Après une demande dédiée, Codex résout d’abord le brouillon depuis l’URL publique afin d’obtenir le texte automatique et les images éligibles, puis publie avec le client officiel. L’absence de texte personnalisé conserve le texte bilingue par défaut ; l’absence d’image choisie conserve les règles Open Graph actuelles. Un identifiant d’image ne peut être repris que dans la liste paginée renvoyée pour ce parc ou parkItem précis.
 
 Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’appliquent, mais l’utilisateur reste l’opérateur des exports, Preview et Apply et valide le passage entre les étapes.
 

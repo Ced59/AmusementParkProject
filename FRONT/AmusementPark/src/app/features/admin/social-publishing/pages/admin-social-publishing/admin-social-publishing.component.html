@@ -59,6 +59,33 @@
 
         <form [formGroup]="publicationForm" (ngSubmit)="publish()">
           <label>
+            <span>{{ 'admin.socialPublishing.composer.urlLabel' | translate }}</span>
+            <input
+              appUiInputText
+              type="url"
+              formControlName="url"
+              inputmode="url"
+              [placeholder]="'admin.socialPublishing.composer.urlPlaceholder' | translate" />
+          </label>
+
+          @if (draftLoading()) {
+            <div class="admin-social-publishing__draft-status" role="status">
+              <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+              {{ 'admin.socialPublishing.composer.draftLoading' | translate }}
+            </div>
+          } @else if (draftError()) {
+            <div class="admin-social-publishing__draft-status admin-social-publishing__draft-status--error" role="alert">
+              <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+              {{ 'admin.socialPublishing.composer.draftError' | translate }}
+            </div>
+          } @else if (draft(); as currentDraft) {
+            <div class="admin-social-publishing__draft-status" role="status">
+              <i class="pi pi-check-circle" aria-hidden="true"></i>
+              {{ 'admin.socialPublishing.composer.draftResolved' | translate:{ target: currentDraft.targetName } }}
+            </div>
+          }
+
+          <label>
             <span>{{ 'admin.socialPublishing.composer.messageLabel' | translate }}</span>
             <textarea
               rows="8"
@@ -69,15 +96,96 @@
             <small>{{ publicationForm.controls.message.value.length }} / 5000</small>
           </label>
 
-          <label>
-            <span>{{ 'admin.socialPublishing.composer.urlLabel' | translate }}</span>
-            <input
-              appUiInputText
-              type="url"
-              formControlName="url"
-              inputmode="url"
-              [placeholder]="'admin.socialPublishing.composer.urlPlaceholder' | translate" />
-          </label>
+          @if (draft(); as currentDraft) {
+            <section class="admin-social-publishing__image-picker" aria-labelledby="social-image-picker-title">
+              <div class="admin-social-publishing__image-picker-head">
+                <div>
+                  <strong id="social-image-picker-title">{{ 'admin.socialPublishing.composer.imagePickerTitle' | translate }}</strong>
+                  <span>{{ 'admin.socialPublishing.composer.imagePickerDescription' | translate }}</span>
+                </div>
+                @if (currentDraft.images.pagination.totalPages > 1) {
+                  <span>
+                    {{ 'admin.socialPublishing.composer.imagePage' | translate:{
+                      current: currentDraft.images.pagination.currentPage,
+                      total: currentDraft.images.pagination.totalPages
+                    } }}
+                  </span>
+                }
+              </div>
+
+              <button
+                type="button"
+                class="admin-social-publishing__default-image"
+                [class.admin-social-publishing__default-image--selected]="selectedImageId() === null"
+                [attr.aria-pressed]="selectedImageId() === null"
+                (click)="selectPreviewImage(null)">
+                <i class="pi pi-images" aria-hidden="true"></i>
+                <span>
+                  <strong>{{ 'admin.socialPublishing.composer.defaultImage' | translate }}</strong>
+                  <small>{{ 'admin.socialPublishing.composer.defaultImageDescription' | translate }}</small>
+                </span>
+                @if (selectedImageId() === null) {
+                  <i class="pi pi-check-circle" aria-hidden="true"></i>
+                }
+              </button>
+
+              @if (currentDraft.images.data.length > 0) {
+                <div class="admin-social-publishing__carousel">
+                  <button
+                    type="button"
+                    class="admin-social-publishing__carousel-arrow"
+                    [disabled]="currentDraft.images.pagination.currentPage <= 1 || draftLoading()"
+                    [attr.aria-label]="'admin.socialPublishing.composer.previousImages' | translate"
+                    (click)="previousImagePage()">
+                    <i class="pi pi-chevron-left" aria-hidden="true"></i>
+                  </button>
+
+                  <div class="admin-social-publishing__carousel-track">
+                    @for (image of currentDraft.images.data; track image.id) {
+                      <button
+                        type="button"
+                        class="admin-social-publishing__image-option"
+                        [class.admin-social-publishing__image-option--selected]="selectedImageId() === image.id"
+                        [attr.aria-pressed]="selectedImageId() === image.id"
+                        (click)="selectPreviewImage(image.id)">
+                        <app-image-display
+                          [imageId]="image.id"
+                          [alt]="image.label"
+                          imgClass="admin-social-publishing__image-thumbnail"
+                          placeholderClass="admin-social-publishing__image-thumbnail admin-social-publishing__image-thumbnail--placeholder"
+                          sizes="(max-width: 760px) 70vw, 220px"
+                          [srcWidth]="480"
+                          [responsiveWidths]="[320, 480]">
+                        </app-image-display>
+                        <span class="admin-social-publishing__image-label">
+                          <strong>{{ image.label }}</strong>
+                          @if (image.isCurrent) {
+                            <small>{{ 'admin.socialPublishing.composer.currentImage' | translate }}</small>
+                          }
+                        </span>
+                        @if (selectedImageId() === image.id) {
+                          <i class="pi pi-check-circle admin-social-publishing__image-check" aria-hidden="true"></i>
+                        }
+                      </button>
+                    }
+                  </div>
+
+                  <button
+                    type="button"
+                    class="admin-social-publishing__carousel-arrow"
+                    [disabled]="currentDraft.images.pagination.currentPage >= currentDraft.images.pagination.totalPages || draftLoading()"
+                    [attr.aria-label]="'admin.socialPublishing.composer.nextImages' | translate"
+                    (click)="nextImagePage()">
+                    <i class="pi pi-chevron-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+              } @else if (currentDraft.imageOwnerId) {
+                <p class="admin-social-publishing__image-empty">
+                  {{ 'admin.socialPublishing.composer.noEligibleImages' | translate }}
+                </p>
+              }
+            </section>
+          }
 
           <div class="admin-social-publishing__og-note">
             <i class="pi pi-image" aria-hidden="true"></i>
@@ -94,7 +202,7 @@
               icon="pi pi-send"
               [label]="'admin.socialPublishing.composer.publish' | translate"
               [loading]="publishing()"
-              [disabled]="publicationForm.invalid || publishing() || !facebook.isConfigured">
+              [disabled]="publicationForm.invalid || !draft() || draftLoading() || publishing() || !facebook.isConfigured">
             </button>
           </div>
         </form>

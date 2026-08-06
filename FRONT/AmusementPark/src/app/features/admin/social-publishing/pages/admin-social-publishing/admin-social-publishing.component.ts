@@ -1,14 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs';
 
 import {
   PublishSocialLinkRequest,
   SocialPublication,
+  SocialPublicationDraft,
   SocialPublicationStatus
 } from '@app/models/social-publishing/social-publishing.models';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { ButtonDirective } from '@shared/ui/primitives/button';
 import { InputText } from '@shared/ui/primitives/inputtext';
 import { Tag } from '@shared/ui/primitives/tag';
@@ -30,6 +34,7 @@ interface SocialPublicationForm {
     ReactiveFormsModule,
     TranslateModule,
     PageStateComponent,
+    ImageDisplayComponent,
     ButtonDirective,
     InputText,
     Tag
@@ -40,6 +45,10 @@ export class AdminSocialPublishingComponent implements OnInit {
   protected readonly facebookPublisher = this.facade.facebookPublisher;
   protected readonly recentPublications = this.facade.recentPublications;
   protected readonly publishing = this.facade.publishing;
+  protected readonly draft = this.facade.draft;
+  protected readonly draftLoading = this.facade.draftLoading;
+  protected readonly draftError = this.facade.draftError;
+  protected readonly selectedImageId = this.facade.selectedImageId;
   protected readonly retryingPublicationId = this.facade.retryingPublicationId;
   protected readonly updatingPublicationId = this.facade.updatingPublicationId;
   protected readonly deletingPublicationId = this.facade.deletingPublicationId;
@@ -61,18 +70,48 @@ export class AdminSocialPublishingComponent implements OnInit {
     })
   });
 
+  private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private lastAppliedDraftUrl: string | null = null;
+
   constructor(
     private readonly facade: AdminSocialPublishingFacade,
     private readonly translateService: TranslateService
   ) {
+    effect((): void => {
+      const currentDraft: SocialPublicationDraft | null = this.draft();
+      if (currentDraft === null) {
+        this.lastAppliedDraftUrl = null;
+        return;
+      }
+
+      if (this.lastAppliedDraftUrl === currentDraft.url) {
+        return;
+      }
+
+      this.lastAppliedDraftUrl = currentDraft.url;
+      this.publicationForm.patchValue({
+        url: currentDraft.url,
+        message: currentDraft.defaultMessage
+      }, { emitEvent: false });
+    });
   }
 
   ngOnInit(): void {
     this.facade.load();
+    this.publicationForm.controls.url.valueChanges.pipe(
+      map((value: string): string => value.trim()),
+      debounceTime(350),
+      distinctUntilChanged(),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((url: string): void => this.facade.resolveDraft(url));
   }
 
   protected publish(): void {
-    if (this.publicationForm.invalid || this.publishing() || !this.facebookPublisher()?.isConfigured) {
+    if (this.publicationForm.invalid
+      || this.draft() === null
+      || this.draftLoading()
+      || this.publishing()
+      || !this.facebookPublisher()?.isConfigured) {
       this.publicationForm.markAllAsTouched();
       return;
     }
@@ -81,9 +120,31 @@ export class AdminSocialPublishingComponent implements OnInit {
     const request: PublishSocialLinkRequest = {
       network: 'Facebook',
       message: value.message.trim(),
-      url: value.url.trim()
+      url: value.url.trim(),
+      previewImageId: this.selectedImageId()
     };
     this.facade.publish(request);
+  }
+
+  protected selectPreviewImage(imageId: string | null): void {
+    this.facade.selectPreviewImage(imageId);
+  }
+
+  protected previousImagePage(): void {
+    const currentDraft: SocialPublicationDraft | null = this.draft();
+    const currentPage: number = currentDraft?.images.pagination.currentPage ?? 1;
+    if (currentDraft !== null && currentPage > 1) {
+      this.facade.resolveDraft(currentDraft.url, currentPage - 1);
+    }
+  }
+
+  protected nextImagePage(): void {
+    const currentDraft: SocialPublicationDraft | null = this.draft();
+    const currentPage: number = currentDraft?.images.pagination.currentPage ?? 1;
+    const totalPages: number = currentDraft?.images.pagination.totalPages ?? 0;
+    if (currentDraft !== null && currentPage < totalPages) {
+      this.facade.resolveDraft(currentDraft.url, currentPage + 1);
+    }
   }
 
   protected retry(publication: SocialPublication): void {

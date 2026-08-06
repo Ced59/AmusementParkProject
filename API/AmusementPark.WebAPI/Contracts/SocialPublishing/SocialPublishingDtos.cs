@@ -1,3 +1,4 @@
+using AmusementPark.WebAPI.Contracts.Common;
 using System.Text.Json.Serialization;
 
 namespace AmusementPark.WebAPI.Contracts.SocialPublishing;
@@ -15,6 +16,38 @@ public sealed class PublishSocialLinkRequestDto
     public string? Message { get; set; }
 
     public string? Url { get; set; }
+
+    public string? PreviewImageId { get; set; }
+}
+
+public sealed class SocialPublicationDraftDto
+{
+    public string Url { get; set; } = string.Empty;
+
+    public string DefaultMessage { get; set; } = string.Empty;
+
+    public string TargetKind { get; set; } = string.Empty;
+
+    public string TargetName { get; set; } = string.Empty;
+
+    public string? ImageOwnerType { get; set; }
+
+    public string? ImageOwnerId { get; set; }
+
+    public PagedResponseDto<SocialPublicationImageOptionDto> Images { get; set; } = new PagedResponseDto<SocialPublicationImageOptionDto>();
+}
+
+public sealed class SocialPublicationImageOptionDto
+{
+    public string Id { get; set; } = string.Empty;
+
+    public string Label { get; set; } = string.Empty;
+
+    public bool IsCurrent { get; set; }
+
+    public int Width { get; set; }
+
+    public int Height { get; set; }
 }
 
 public sealed class UpdateSocialPublicationRequestDto

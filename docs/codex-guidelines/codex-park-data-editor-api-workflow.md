@@ -1,6 +1,6 @@
 # Workflow API autonome réservé à Codex
 
-Version : **2026-08-06-r2**
+Version : **2026-08-07-r3**
 
 Rôle : **PARK_DATA_EDITOR**
 
@@ -103,9 +103,10 @@ Pour couper l’accès depuis Codex :
 | Lire l’historique d’intégration | `GET admin/park-graph-upserts/history` |
 | Contrôler la complétude | `GET park-data-editor/parks/{id}/data-completeness` |
 | Téléverser/rattacher/documenter une image de parc | `park-data-editor/images/*` |
+| Préparer puis publier explicitement un lien Facebook | `GET park-data-editor/social-publications/facebook/draft`, puis `POST park-data-editor/social-publications/facebook` |
 | Révoquer le jeton courant | `DELETE park-data-editor/tokens/current` |
 
-Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les réseaux sociaux, le SEO, les sources de données, la suppression d’images ou les autres fonctions d’administration.
+Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, la suppression d’images ou les autres fonctions d’administration.
 
 ## Coordination globale obligatoire
 
@@ -126,6 +127,31 @@ Les règles suivantes sont non négociables :
 5. Après une coupure ou une réponse perdue, Codex vérifie d’abord cet état, puis le job d’export ou l’historique d’intégration concerné. Il ne rejoue jamais aveuglément une mutation potentiellement acceptée.
 
 Le serveur rend ces règles contraignantes : au plus deux requêtes techniques ordinaires peuvent être actives, un seul traitement coûteux peut s’exécuter, un seul export peut être en file ou en cours, et les dépassements sont refusés immédiatement sans file d’attente HTTP. L’endpoint d’état est lui-même limité par jeton. Le client officiel effectue l’attente préalable pour les exports, Preview, Apply et uploads, respecte les `429` et sonde les jobs d’export toutes les cinq secondes.
+
+## Publication Facebook explicite
+
+Une complétude ou une publication de données ne déclenche jamais cette opération par elle-même. Codex utilise cette surface uniquement lorsque l’utilisateur demande explicitement une publication Facebook, qu’elle concerne une fiche parc, un parkItem, une vidéo ou une autre page publique reconnue.
+
+1. Résoudre obligatoirement le brouillon depuis l’URL publique. La réponse fournit l’URL normalisée, la cible reconnue, le texte bilingue automatique actuel et une page d’images publiques éligibles :
+
+   ```powershell
+   .\tools\codex\park-data-editor.ps1 -Action ResolveFacebookPublication `
+     -Url 'https://amusement-parks.fun/fr/park/park-id/slug' `
+     -ImagePage 1 -ImagePageSize 6
+   ```
+
+2. Parcourir les pages suivantes si nécessaire. Une image est sélectionnable seulement si son identifiant apparaît dans la réponse de cette même cible. Pour une fiche parc ou ses sous-pages, seules ses images publiques de catégorie `PARK` sont proposées ; pour un parkItem, seules ses images publiques de catégorie `PARK_ITEM` le sont. Une page sans propriétaire d’image conserve simplement son Open Graph automatique.
+3. Publier après le contrôle d’activité global effectué par le client :
+
+   ```powershell
+   .\tools\codex\park-data-editor.ps1 -Action PublishFacebook `
+     -Url 'https://amusement-parks.fun/fr/park/park-id/slug' `
+     -ImageId 'id-retourne-par-le-brouillon'
+   ```
+
+   Omettre `-Message` conserve le texte automatique du brouillon. Fournir `-Message '...'` applique le texte explicite de l’utilisateur. Omettre `-ImageId` conserve exactement les règles et l’image Open Graph actuelles.
+4. Ne jamais deviner un identifiant, reprendre une image d’un autre parc ou appeler directement l’administration. Le serveur revalide au moment de la publication la visibilité, la catégorie et le propriétaire de l’image ; un choix devenu privé ou étranger est refusé.
+5. Rapporter séparément le résultat Facebook et celui d’une éventuelle publication de données. Une annonce automatique de première publication d’un parc reste indépendante : ne pas la doubler par une publication manuelle sans instruction explicite.
 
 ## Export asynchrone et reprenable
 

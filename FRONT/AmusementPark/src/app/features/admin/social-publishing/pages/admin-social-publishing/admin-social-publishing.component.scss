@@ -180,6 +180,164 @@
   color: var(--text-color-secondary);
 }
 
+.admin-social-publishing__draft-status {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.7rem;
+  color: var(--text-color-secondary);
+  background: color-mix(in srgb, var(--primary-color) 8%, var(--surface-ground));
+}
+
+.admin-social-publishing__draft-status--error {
+  color: var(--red-600, #dc2626);
+  background: color-mix(in srgb, var(--red-500, #ef4444) 8%, var(--surface-ground));
+}
+
+.admin-social-publishing__image-picker {
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--surface-ground) 82%, transparent);
+}
+
+.admin-social-publishing__image-picker-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.admin-social-publishing__image-picker-head > div,
+.admin-social-publishing__default-image span,
+.admin-social-publishing__image-label {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.admin-social-publishing__image-picker-head > span,
+.admin-social-publishing__image-picker-head div > span,
+.admin-social-publishing__default-image small,
+.admin-social-publishing__image-label small,
+.admin-social-publishing__image-empty {
+  color: var(--text-color-secondary);
+  font-size: 0.85rem;
+}
+
+.admin-social-publishing__default-image,
+.admin-social-publishing__image-option,
+.admin-social-publishing__carousel-arrow {
+  border: 1px solid var(--surface-border);
+  color: inherit;
+  background: var(--surface-card);
+  cursor: pointer;
+}
+
+.admin-social-publishing__default-image {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.75rem;
+  text-align: left;
+}
+
+.admin-social-publishing__default-image--selected,
+.admin-social-publishing__image-option--selected {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 16%, transparent);
+}
+
+.admin-social-publishing__carousel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.admin-social-publishing__carousel-track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.admin-social-publishing__carousel-arrow {
+  align-self: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+}
+
+.admin-social-publishing__carousel-arrow:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.admin-social-publishing__image-option {
+  position: relative;
+  display: grid;
+  grid-template-rows: 8.5rem auto;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  text-align: left;
+}
+
+.admin-social-publishing__image-option app-image-display {
+  display: block;
+  min-width: 0;
+  height: 8.5rem;
+  background: var(--surface-ground);
+}
+
+:host ::ng-deep .admin-social-publishing__image-thumbnail,
+:host ::ng-deep .admin-social-publishing__image-thumbnail--placeholder {
+  display: block;
+  width: 100%;
+  height: 8.5rem;
+  object-fit: cover;
+}
+
+.admin-social-publishing__image-label {
+  align-content: start;
+  min-width: 0;
+  padding: 0.7rem;
+}
+
+.admin-social-publishing__image-label strong {
+  overflow: hidden;
+  font-size: 0.86rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-social-publishing__image-check {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--primary-color);
+}
+
+.admin-social-publishing__image-empty {
+  margin: 0;
+}
+
 .admin-social-publishing__composer-actions {
   display: flex;
   justify-content: flex-end;
@@ -255,6 +413,21 @@
 
   .admin-social-publishing__section-head {
     flex-direction: column;
+  }
+
+  .admin-social-publishing__image-picker-head {
+    flex-direction: column;
+  }
+
+  .admin-social-publishing__carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .admin-social-publishing__image-option {
+    flex: 0 0 min(72vw, 15rem);
+    scroll-snap-align: start;
   }
 
   .admin-social-publishing__section-head > button,

@@ -36,7 +36,9 @@ import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-po
 import { siteVersion } from './src/environments/version.generated';
 import { buildContentSecurityPolicy } from './src/app/core/security/content-security-policy';
 import {
+  hasOnlyFacebookImageOverrideQuery,
   injectFacebookAppIdMeta,
+  injectFacebookImageOverrideMeta,
   normalizeFacebookAppId,
 } from './src/server/ssr/facebook-open-graph-meta';
 
@@ -1834,7 +1836,12 @@ function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string
 function prepareHtmlForResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): string {
   const robotFamily: RobotFamily | null = detectRobotFamily(req);
   const htmlWithFacebookMetadata: string = injectFacebookAppIdMeta(html, facebookAppId);
-  const preparationResult: RobotHtmlPreparationResult = prepareRobotHtmlForResponse(htmlWithFacebookMetadata, {
+  const htmlWithFacebookImage: string = injectFacebookImageOverrideMeta(
+    htmlWithFacebookMetadata,
+    req.originalUrl,
+    getPublicRequestUrl(req),
+  );
+  const preparationResult: RobotHtmlPreparationResult = prepareRobotHtmlForResponse(htmlWithFacebookImage, {
     allowRobotNoJsOptimization: options.allowRobotNoJsOptimization,
     robotNoJsHtmlEnabled,
     isRobotRequest: shouldServeRobotOptimizedNoJsHtml(robotFamily)
@@ -2142,25 +2149,26 @@ function isPublicSsrCacheRoute(url: string): boolean {
 
 function isCriticalPublicSsrRoute(url: string): boolean {
   const path = getPathOnly(url);
+  const hasBlockingQuery: boolean = hasQueryString(url) && !hasOnlyFacebookImageOverrideQuery(url);
 
   return isPublicStaticSsrRoute(path)
     || isPublicParkDetailRoute(path)
-    || (isPublicParkImagesRoute(path) && !hasQueryString(url))
-    || (isPublicParkHistoryRoute(path) && !hasQueryString(url))
+    || (isPublicParkImagesRoute(path) && !hasBlockingQuery)
+    || (isPublicParkHistoryRoute(path) && !hasBlockingQuery)
     || isPublicParkHistoryArticleRoute(path)
-    || (isPublicParkVideosRoute(path) && !hasQueryString(url))
+    || (isPublicParkVideosRoute(path) && !hasBlockingQuery)
     || isPublicParkVideoDetailRoute(path)
     || isPublicParkMapRoute(path)
-    || (isPublicParkWeatherRoute(path) && !hasQueryString(url))
-    || (isPublicParkOpeningHoursRoute(path) && !hasQueryString(url))
+    || (isPublicParkWeatherRoute(path) && !hasBlockingQuery)
+    || (isPublicParkOpeningHoursRoute(path) && !hasBlockingQuery)
     || isPublicParkZonesRoute(path)
     || isPublicParkZoneDetailRoute(path)
-    || (isPublicParkItemsRoute(path) && !hasQueryString(url))
+    || (isPublicParkItemsRoute(path) && !hasBlockingQuery)
     || isPublicParkItemDetailRoute(path)
-    || (isPublicParkItemImagesRoute(path) && !hasQueryString(url))
-    || (isPublicParkItemHistoryRoute(path) && !hasQueryString(url))
+    || (isPublicParkItemImagesRoute(path) && !hasBlockingQuery)
+    || (isPublicParkItemHistoryRoute(path) && !hasBlockingQuery)
     || isPublicParkItemHistoryArticleRoute(path)
-    || (isPublicParkItemVideosRoute(path) && !hasQueryString(url))
+    || (isPublicParkItemVideosRoute(path) && !hasBlockingQuery)
     || isPublicParkItemVideoDetailRoute(path)
     || isPublicCommentSsrRoute(path)
     || isPublicStandaloneAttractionRoute(path)
