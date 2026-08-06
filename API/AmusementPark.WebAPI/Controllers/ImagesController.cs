@@ -42,6 +42,8 @@ namespace AmusementPark.WebAPI.Controllers;
 [InvalidatesPublicCache(PublicCacheScope.Data, PublicCacheScope.ReferenceData)]
 public sealed class ImagesController : ControllerBase
 {
+    internal const int SocialPreviewImageWidth = 960;
+
     private readonly ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>> uploadImageCommandHandler;
     private readonly ICommandHandler<ImportRemoteImageCommand, ApplicationResult<Image>> importRemoteImageCommandHandler;
     private readonly ICommandHandler<LinkImageCommand, ApplicationResult<Image>> linkImageCommandHandler;
@@ -489,6 +491,48 @@ public sealed class ImagesController : ControllerBase
             : "private,no-store";
         this.Response.Headers.Vary = "Accept";
         return this.File(binary.Value.Stream, binary.Value.ContentType);
+    }
+
+    [HttpGet("binary/{imageId}/social-preview-v1")]
+    [HttpHead("binary/{imageId}/social-preview-v1")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GetSocialPreviewImageAsync(
+        [FromRoute] string imageId,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<Image> result = await this.getImageByIdQueryHandler.HandleAsync(
+            new GetImageByIdQuery(imageId),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        if (!result.Value.IsPublished || string.IsNullOrWhiteSpace(result.Value.Path))
+        {
+            return this.ToNotFoundProblemDetailsResult(
+                "The requested social preview image was not found.",
+                "image.not-found");
+        }
+
+        (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetBestAsync(
+            result.Value.Path,
+            "image/jpeg",
+            SocialPreviewImageWidth,
+            cancellationToken);
+        if (binary is null)
+        {
+            return this.ToNotFoundProblemDetailsResult(
+                "The requested social preview image binary was not found.",
+                "image.binary-not-found");
+        }
+
+        await using System.IO.Stream source = binary.Value.Stream;
+        using System.IO.MemoryStream content = new System.IO.MemoryStream();
+        await source.CopyToAsync(content, cancellationToken);
+
+        this.Response.Headers.CacheControl = "public,max-age=31536000,immutable";
+        return this.File(content.ToArray(), binary.Value.ContentType);
     }
 
     private bool UserCanSeeNonVisible()

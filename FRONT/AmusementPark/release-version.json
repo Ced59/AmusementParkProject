@@ -1,6 +1,20 @@
 {
-  "version": "4.1.11",
+  "version": "4.1.12",
   "history": [
+    {
+      "version": "4.1.12",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les images des publications sociales s’affichent plus fiablement.",
+        "en": "Images in social posts display more reliably.",
+        "de": "Bilder in sozialen Beiträgen werden zuverlässiger angezeigt.",
+        "nl": "Afbeeldingen in sociale berichten worden betrouwbaarder weergegeven.",
+        "it": "Le immagini nei post social vengono visualizzate in modo più affidabile.",
+        "es": "Las imágenes de las publicaciones sociales se muestran con mayor fiabilidad.",
+        "pl": "Obrazy w publikacjach społecznościowych wyświetlają się bardziej niezawodnie.",
+        "pt": "As imagens nas publicações sociais são apresentadas de forma mais fiável."
+      }
+    },
     {
       "version": "4.1.11",
       "releasedAt": "2026-08-06",

@@ -38,6 +38,7 @@ interface SocialImageMetadata {
   url: string;
   width: number | null;
   height: number | null;
+  contentType: string | null;
 }
 
 interface ParkImagesSeoCopy {
@@ -181,7 +182,7 @@ interface IntlWithDisplayNames {
 const SITE_NAME: string = 'Amusement Parks';
 const DEFAULT_DESCRIPTION: string = 'Explore amusement parks, attractions, restaurants, hotels and park references around the world.';
 const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpark.png';
-const SOCIAL_IMAGE_WIDTH: number = 960;
+const SOCIAL_PREVIEW_PATH_VERSION: string = 'social-preview-v1';
 const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
 const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
 const COMMENTS_SEO_COPY: Record<string, CommentsSeoCopy> = {
@@ -2396,6 +2397,7 @@ export class SeoService {
     this.setOpenGraphLocaleAlternates(data.alternates, locale);
     this.meta.updateTag({ property: 'og:image', content: socialImage.url });
     this.meta.updateTag({ property: 'og:image:secure_url', content: socialImage.url });
+    this.updateOpenGraphImageContentType(socialImage.contentType);
     this.updateOpenGraphImageDimension('width', socialImage.width);
     this.updateOpenGraphImageDimension('height', socialImage.height);
     this.meta.updateTag({ property: 'og:image:alt', content: socialImageAlt });
@@ -2426,7 +2428,8 @@ export class SeoService {
     const fallbackImage: SocialImageMetadata = {
       url: this.canonicalUrlService.buildAbsoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH),
       width: DEFAULT_SOCIAL_IMAGE_WIDTH,
-      height: DEFAULT_SOCIAL_IMAGE_HEIGHT
+      height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+      contentType: 'image/png'
     };
     const normalizedImageUrl: string | null = this.normalizeOptionalText(imageUrl);
 
@@ -2445,25 +2448,51 @@ export class SeoService {
         };
       }
 
+      const managedBinaryImageMatch: RegExpMatchArray | null = parsedUrl.pathname.match(
+        /^(.*\/images\/binary\/[^/]+)$/i,
+      );
+      if (managedBinaryImageMatch !== null) {
+        parsedUrl.pathname = `${managedBinaryImageMatch[1]}/${SOCIAL_PREVIEW_PATH_VERSION}`;
+        parsedUrl.search = '';
+
+        return {
+          url: parsedUrl.href,
+          width: null,
+          height: null,
+          contentType: 'image/jpeg'
+        };
+      }
+
       if (normalizedPath.startsWith('/images/') || normalizedPath.startsWith('/api/images/')) {
-        parsedUrl.searchParams.set('width', String(SOCIAL_IMAGE_WIDTH));
+        parsedUrl.searchParams.set('width', '960');
         parsedUrl.searchParams.set('v', RESPONSIVE_IMAGE_VERSION);
 
         return {
           url: parsedUrl.href,
           width: null,
-          height: null
+          height: null,
+          contentType: null
         };
       }
 
       return {
         url: parsedUrl.href,
         width: null,
-        height: null
+        height: null,
+        contentType: null
       };
     } catch {
       return fallbackImage;
     }
+  }
+
+  private updateOpenGraphImageContentType(contentType: string | null): void {
+    if (contentType === null) {
+      this.meta.removeTag('property="og:image:type"');
+      return;
+    }
+
+    this.meta.updateTag({ property: 'og:image:type', content: contentType });
   }
 
   private updateOpenGraphImageDimension(dimension: 'width' | 'height', value: number | null): void {
@@ -3793,6 +3822,7 @@ export class SeoService {
       'property="og:locale"',
       'property="og:image"',
       'property="og:image:secure_url"',
+      'property="og:image:type"',
       'property="og:image:width"',
       'property="og:image:height"',
       'property="og:image:alt"',

@@ -1,12 +1,18 @@
 using System.Reflection;
 using System.Security.Claims;
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.Images.Queries;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Contracts.Images;
 using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using Moq;
 using Xunit;
 
 namespace AmusementPark.WebAPI.Tests.Controllers;
@@ -78,6 +84,86 @@ public sealed class ImagesControllerTests
         Assert.NotNull(method.GetCustomAttribute<AllowAnonymousAttribute>());
     }
 
+    [Fact]
+    public async Task GetSocialPreviewImageAsync_ShouldUseStableJpegVariantWithoutContentNegotiation()
+    {
+        byte[] imageContent = new byte[] { 0xFF, 0xD8, 0xFF, 0xD9 };
+        Image image = new Image
+        {
+            Id = "image-1",
+            Path = "images/image-1",
+            IsPublished = true,
+        };
+        Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
+            new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
+        queryHandler
+            .Setup(candidate => candidate.HandleAsync(
+                It.Is<GetImageByIdQuery>(query => query.ImageId == "image-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<Image>.Success(image));
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        storage
+            .Setup(candidate => candidate.GetBestAsync(
+                "images/image-1",
+                "image/jpeg",
+                ImagesController.SocialPreviewImageWidth,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((new MemoryStream(imageContent), "image/jpeg"));
+        ImagesController controller = CreateController(queryHandler.Object, storage.Object);
+
+        IActionResult result = await controller.GetSocialPreviewImageAsync("image-1", CancellationToken.None);
+
+        FileContentResult file = Assert.IsType<FileContentResult>(result);
+        Assert.Equal("image/jpeg", file.ContentType);
+        Assert.Equal(imageContent, file.FileContents);
+        Assert.Equal("public,max-age=31536000,immutable", controller.Response.Headers.CacheControl);
+        Assert.False(controller.Response.Headers.ContainsKey("Vary"));
+        queryHandler.VerifyAll();
+        storage.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetSocialPreviewImageAsync_WhenImageIsNotPublished_ShouldRemainHidden()
+    {
+        Image image = new Image
+        {
+            Id = "image-1",
+            Path = "images/image-1",
+            IsPublished = false,
+        };
+        Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
+            new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
+        queryHandler
+            .Setup(candidate => candidate.HandleAsync(
+                It.Is<GetImageByIdQuery>(query => query.ImageId == "image-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<Image>.Success(image));
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        ImagesController controller = CreateController(queryHandler.Object, storage.Object);
+
+        IActionResult result = await controller.GetSocialPreviewImageAsync("image-1", CancellationToken.None);
+
+        ObjectResult notFound = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(StatusCodes.Status404NotFound, notFound.StatusCode);
+        queryHandler.VerifyAll();
+        storage.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public void GetSocialPreviewImageAsync_ShouldExposeVersionedAnonymousGetAndHeadRoutes()
+    {
+        MethodInfo method = typeof(ImagesController).GetMethod(nameof(ImagesController.GetSocialPreviewImageAsync))
+            ?? throw new InvalidOperationException("ImagesController.GetSocialPreviewImageAsync was not found.");
+
+        Assert.Contains(
+            method.GetCustomAttributes<HttpGetAttribute>(),
+            static attribute => attribute.Template == "binary/{imageId}/social-preview-v1");
+        Assert.Contains(
+            method.GetCustomAttributes<HttpHeadAttribute>(),
+            static attribute => attribute.Template == "binary/{imageId}/social-preview-v1");
+        Assert.NotNull(method.GetCustomAttribute<AllowAnonymousAttribute>());
+    }
+
     [Theory]
     [InlineData(nameof(ImagesController.UploadAsync))]
     [InlineData(nameof(ImagesController.ImportRemoteAsync))]
@@ -90,5 +176,34 @@ public sealed class ImagesControllerTests
             ?? throw new InvalidOperationException($"ImagesController.{methodName} has no rate limiting policy.");
 
         Assert.Equal(RateLimitPolicyNames.ImageUploadProcessing, attribute.PolicyName);
+    }
+
+    private static ImagesController CreateController(
+        IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>> queryHandler,
+        IImageBinaryStorage storage)
+    {
+        ImagesController controller = new ImagesController(
+            null!,
+            null!,
+            null!,
+            null!,
+            null!,
+            null!,
+            null!,
+            null!,
+            null!,
+            null!,
+            queryHandler,
+            null!,
+            null!,
+            null!,
+            null!,
+            null!,
+            storage);
+        controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext(),
+        };
+        return controller;
     }
 }
