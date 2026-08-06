@@ -1,6 +1,20 @@
 {
-  "version": "4.1.7",
+  "version": "4.1.8",
   "history": [
+    {
+      "version": "4.1.8",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les aperçus des partages affichent mieux leurs images.",
+        "en": "Social sharing previews display images more reliably.",
+        "de": "Vorschaubilder für geteilte Inhalte werden zuverlässiger angezeigt.",
+        "nl": "Voorvertoningen van gedeelde links tonen afbeeldingen betrouwbaarder.",
+        "it": "Le anteprime dei link condivisi mostrano le immagini in modo più affidabile.",
+        "es": "Las vistas previas de los enlaces compartidos muestran mejor las imágenes.",
+        "pl": "Podglądy udostępnianych linków wyświetlają obrazy bardziej niezawodnie.",
+        "pt": "As pré-visualizações de ligações partilhadas mostram melhor as imagens."
+      }
+    },
     {
       "version": "4.1.7",
       "releasedAt": "2026-08-05",

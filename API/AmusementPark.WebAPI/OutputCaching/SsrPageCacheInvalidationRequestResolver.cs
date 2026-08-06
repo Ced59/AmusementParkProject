@@ -490,7 +490,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         }
 
         SsrPageCacheInvalidationRequest request = await this.ResolveEntityImpactAsync(ownerType, ownerId, includeSeoDocuments, cancellationToken);
-        return WithoutRefresh(request);
+        return ForceHardPurge(request);
     }
 
     private async Task<SsrPageCacheInvalidationRequest> ResolveParkGraphUpsertAsync(
@@ -523,7 +523,8 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             return WithoutRefresh(BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false));
         }
 
-        bool requiresHardPurge = changedEntities.Any(ContainsHardPurgeSignal);
+        bool requiresHardPurge = changedEntities.Any(ContainsHardPurgeSignal)
+            || changedEntities.Any(IsImageChange);
         if (changedEntities.Count > MaxTargetedEntityCount)
         {
             return BuildLargeParkGraphUpsertRequest(result, requiresHardPurge, includeSeoDocuments);
@@ -658,7 +659,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
 
         bool requiresHardPurge = changedParks
             .SelectMany(static park => park.Result.Changes)
-            .Any(ContainsHardPurgeSignal);
+            .Any(static change => ContainsHardPurgeSignal(change) || IsImageChange(change));
         IReadOnlyCollection<string> parkIds = changedParks
             .Select(static park => park.TargetParkId ?? park.Result.TargetParkId)
             .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
@@ -1103,6 +1104,11 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         return change.Fields.Any(static field =>
             (string.Equals(field.Field, "isVisible", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, "false", StringComparison.OrdinalIgnoreCase))
             || (string.Equals(field.Field, "adminReviewStatus", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, AdminReviewStatus.NotRelevant.ToString(), StringComparison.OrdinalIgnoreCase)));
+    }
+
+    private static bool IsImageChange(ParkGraphUpsertChangeDto change)
+    {
+        return string.Equals(NormalizeEntityType(change.EntityType), "image", StringComparison.Ordinal);
     }
 
     private static SsrPageCacheInvalidationRequest ForceHardPurge(SsrPageCacheInvalidationRequest request)

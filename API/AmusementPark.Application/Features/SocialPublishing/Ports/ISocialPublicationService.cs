@@ -41,4 +41,9 @@ public interface ISocialPublicationService
         Park park,
         string? requestedByUserId,
         CancellationToken cancellationToken);
+
+    Task<ApplicationResult<SocialPublication>> RefreshParkAnnouncementPreviewAsync(
+        string parkId,
+        string? requestedByUserId,
+        CancellationToken cancellationToken);
 }

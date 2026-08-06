@@ -181,7 +181,7 @@ interface IntlWithDisplayNames {
 const SITE_NAME: string = 'Amusement Parks';
 const DEFAULT_DESCRIPTION: string = 'Explore amusement parks, attractions, restaurants, hotels and park references around the world.';
 const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpark.png';
-const SOCIAL_IMAGE_WIDTH: number = 1200;
+const SOCIAL_IMAGE_WIDTH: number = 960;
 const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
 const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
 const COMMENTS_SEO_COPY: Record<string, CommentsSeoCopy> = {

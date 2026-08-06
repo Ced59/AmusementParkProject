@@ -44,16 +44,16 @@ describe('SeoService', () => {
     service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-photo%201?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-photo%201?width=960&v=3',
     );
     expect(readMetaContent('meta[property="og:image:secure_url"]')).toBe(
-      'https://localhost:44391/images/binary/park-photo%201?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-photo%201?width=960&v=3',
     );
     expect(readMetaContent('meta[property="og:image:width"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:height"]')).toBeNull();
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo Park');
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-photo%201?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-photo%201?width=960&v=3',
     );
   });
 
@@ -325,10 +325,10 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/item-photo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/item-photo-1?width=960&v=3',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/item-photo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/item-photo-1?width=960&v=3',
     );
   });
 
@@ -390,7 +390,7 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-hero-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-hero-1?width=960&v=3',
     );
 
     service.applyParkDetailSeo(
@@ -404,7 +404,7 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-logo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-logo-1?width=960&v=3',
     );
   });
 
@@ -446,10 +446,10 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/gallery%20image%201?width=1200&v=3',
+      'https://localhost:44391/images/binary/gallery%20image%201?width=960&v=3',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/gallery%20image%201?width=1200&v=3',
+      'https://localhost:44391/images/binary/gallery%20image%201?width=960&v=3',
     );
   });
 
@@ -468,10 +468,10 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-main-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-main-1?width=960&v=3',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-main-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-main-1?width=960&v=3',
     );
   });
 
@@ -493,10 +493,10 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/item-main-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/item-main-1?width=960&v=3',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/item-main-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/item-main-1?width=960&v=3',
     );
   });
 
@@ -511,10 +511,10 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/video-thumb-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/video-thumb-1?width=960&v=3',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/video-thumb-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/video-thumb-1?width=960&v=3',
     );
   });
 
@@ -530,10 +530,10 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/item-main-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/item-main-1?width=960&v=3',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/item-main-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/item-main-1?width=960&v=3',
     );
   });
 
@@ -552,10 +552,10 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-main-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-main-1?width=960&v=3',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-main-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/park-main-1?width=960&v=3',
     );
   });
 
@@ -588,7 +588,7 @@ describe('SeoService', () => {
       'http://localhost:4200/fr/park/park-1/phantasialand/item/item-1/river-quest/videos/video-1/river-quest',
     );
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/video-thumb-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/video-thumb-1?width=960&v=3',
     );
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo video');
     expect(readMetaContent('meta[name="twitter:image:alt"]')).toBe(
@@ -788,7 +788,7 @@ describe('SeoService', () => {
       'Le Nitro - Dennlys Parc',
     );
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/nitro-photo-1?width=960&v=3',
     );
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe(
       'Le Nitro - Dennlys Parc',
@@ -873,13 +873,13 @@ describe('SeoService', () => {
       'Article detaille sur l ouverture de Mirapolis.',
     );
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/history-photo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/history-photo-1?width=960&v=3',
     );
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe(
       'Opening of Mirapolis',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/history-photo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/history-photo-1?width=960&v=3',
     );
 
     service.applyParkDetailSeo(
@@ -936,13 +936,13 @@ describe('SeoService', () => {
       'Article sur Le Nitro - Dennlys Parc, autour de 1987.',
     );
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/nitro-photo-1?width=960&v=3',
     );
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe(
       'Arret de Nitro - Le Nitro - Dennlys Parc',
     );
     expect(readMetaContent('meta[name="twitter:image"]')).toBe(
-      'https://localhost:44391/images/binary/nitro-photo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/nitro-photo-1?width=960&v=3',
     );
   });
 
@@ -1594,7 +1594,7 @@ describe('SeoService', () => {
       'Explication technique de la lap bar.',
     );
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/technical-photo-1?width=1200&v=3',
+      'https://localhost:44391/images/binary/technical-photo-1?width=960&v=3',
     );
     expect(readMetaContent('meta[property="og:url"]')).toBe(
       'http://localhost:4200/fr/technical/lap-bar',

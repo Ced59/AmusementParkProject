@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
+using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.SocialPublishing;
 
@@ -16,15 +17,18 @@ public sealed class SocialPublicationService : ISocialPublicationService
     private readonly ISocialPublicationRepository repository;
     private readonly IReadOnlyCollection<ISocialPublisher> publishers;
     private readonly IPublicSeoContextProvider publicSeoContextProvider;
+    private readonly ISsrPageCacheInvalidator ssrPageCacheInvalidator;
 
     public SocialPublicationService(
         ISocialPublicationRepository repository,
         IEnumerable<ISocialPublisher> publishers,
-        IPublicSeoContextProvider publicSeoContextProvider)
+        IPublicSeoContextProvider publicSeoContextProvider,
+        ISsrPageCacheInvalidator ssrPageCacheInvalidator)
     {
         this.repository = repository;
         this.publishers = publishers.ToList();
         this.publicSeoContextProvider = publicSeoContextProvider;
+        this.ssrPageCacheInvalidator = ssrPageCacheInvalidator;
     }
 
     public async Task<ApplicationResult<SocialPublication>> PublishManualAsync(
@@ -290,8 +294,11 @@ public sealed class SocialPublicationService : ISocialPublicationService
 
         PublicSeoContext context = await this.publicSeoContextProvider.GetAsync(cancellationToken);
         string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
-        string url = $"{context.PublicBaseUrl.TrimEnd('/')}/fr/park/{Uri.EscapeDataString(park.Id!)}/{parkSlug}";
+        string parkPath = $"/fr/park/{Uri.EscapeDataString(park.Id!)}/{parkSlug}";
+        string url = $"{context.PublicBaseUrl.TrimEnd('/')}{parkPath}";
         string message = BuildParkAnnouncementMessage(park.Name!);
+
+        await this.HardPurgePublicPageAsync(parkPath, cancellationToken);
 
         ApplicationResult<SocialPublication> result = await this.PublishNewAsync(
             SocialNetwork.Facebook,
@@ -305,6 +312,67 @@ public sealed class SocialPublicationService : ISocialPublicationService
             cancellationToken);
 
         return result.Value;
+    }
+
+    public async Task<ApplicationResult<SocialPublication>> RefreshParkAnnouncementPreviewAsync(
+        string parkId,
+        string? requestedByUserId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        SocialPublication? publication = normalizedParkId.Length == 0
+            ? null
+            : await this.repository.GetByDeduplicationKeyAsync(
+                $"facebook:park:{normalizedParkId}",
+                cancellationToken);
+        if (publication is null)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublicationNotFound(normalizedParkId));
+        }
+
+        if (publication.Network != SocialNetwork.Facebook
+            || publication.Trigger != SocialPublicationTrigger.AutomaticParkPublication
+            || !CanManage(publication)
+            || !Uri.TryCreate(publication.Url, UriKind.Absolute, out Uri? publicationUri))
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublicationCannotBeManaged());
+        }
+
+        ISocialPublisher? publisher = this.FindPublisher(publication.Network);
+        if (publisher is null || !publisher.Describe().IsConfigured)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublisherOperationFailed(null));
+        }
+
+        await this.HardPurgePublicPageAsync(publicationUri.AbsolutePath, cancellationToken);
+
+        SocialPublisherOperationResult refreshResult;
+        try
+        {
+            refreshResult = await publisher.RefreshLinkPreviewAsync(publication.Url, cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
+        {
+            refreshResult = new SocialPublisherOperationResult(false, false, "publisher-unavailable", null);
+        }
+
+        if (!refreshResult.IsSuccess)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublisherOperationFailed(refreshResult.FailureMessage));
+        }
+
+        publication.RequestedByUserId = requestedByUserId;
+        publication.Touch();
+        publication = await this.repository.UpdateAsync(publication, cancellationToken);
+        return ApplicationResult<SocialPublication>.Success(publication);
     }
 
     internal static string BuildParkAnnouncementMessage(string parkName)
@@ -411,6 +479,19 @@ public sealed class SocialPublicationService : ISocialPublicationService
         publication.FailureMessage = result.FailureMessage;
         publication.Touch();
         return await this.repository.UpdateAsync(publication, cancellationToken);
+    }
+
+    private Task HardPurgePublicPageAsync(string path, CancellationToken cancellationToken)
+    {
+        return this.ssrPageCacheInvalidator.InvalidateAsync(
+            new SsrPageCacheInvalidationRequest
+            {
+                Paths = new[] { path },
+                IncludeSeoDocuments = false,
+                AllowStale = false,
+                Refresh = false,
+            },
+            cancellationToken);
     }
 
     private static bool CanManage(SocialPublication publication)

@@ -24,3 +24,7 @@ public sealed record DeleteSocialPublicationCommand(
 
 public sealed record SynchronizeSocialPublicationsCommand(
     int Limit) : ICommand<SocialPublicationSynchronizationResult>;
+
+public sealed record RefreshParkAnnouncementPreviewCommand(
+    string ParkId,
+    string? RequestedByUserId) : ICommand<ApplicationResult<SocialPublication>>;
