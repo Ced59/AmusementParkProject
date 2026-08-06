@@ -19,6 +19,7 @@ public sealed class MinimumIntervalRateLimiterTests
         timeProvider.Advance(TimeSpan.FromSeconds(9));
         using RateLimitLease delayedPoll = limiter.AttemptAcquire();
         timeProvider.Advance(TimeSpan.FromSeconds(1));
+        timeProvider.ShiftUtc(TimeSpan.FromHours(1));
         using RateLimitLease boundaryPoll = limiter.AttemptAcquire();
 
         Assert.True(initialPoll.IsAcquired);
@@ -35,6 +36,7 @@ public sealed class MinimumIntervalRateLimiterTests
     private sealed class AdjustableTimeProvider : TimeProvider
     {
         private DateTimeOffset utcNow;
+        private long timestamp;
 
         public AdjustableTimeProvider(DateTimeOffset utcNow)
         {
@@ -46,7 +48,20 @@ public sealed class MinimumIntervalRateLimiterTests
             return this.utcNow;
         }
 
+        public override long GetTimestamp()
+        {
+            return this.timestamp;
+        }
+
+        public override long TimestampFrequency => TimeSpan.TicksPerSecond;
+
         public void Advance(TimeSpan duration)
+        {
+            this.utcNow = this.utcNow.Add(duration);
+            this.timestamp += duration.Ticks;
+        }
+
+        public void ShiftUtc(TimeSpan duration)
         {
             this.utcNow = this.utcNow.Add(duration);
         }

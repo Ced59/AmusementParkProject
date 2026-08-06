@@ -8,7 +8,7 @@ internal sealed class MinimumIntervalRateLimiter : RateLimiter
     private readonly object synchronizationLock = new object();
     private readonly TimeSpan minimumInterval;
     private readonly TimeProvider timeProvider;
-    private DateTimeOffset? lastAcquisitionUtc;
+    private long? lastAcquisitionTimestamp;
     private long successfulLeaseCount;
     private long failedLeaseCount;
     private bool isDisposed;
@@ -35,8 +35,8 @@ internal sealed class MinimumIntervalRateLimiter : RateLimiter
         {
             lock (this.synchronizationLock)
             {
-                return this.lastAcquisitionUtc.HasValue
-                    ? this.timeProvider.GetUtcNow() - this.lastAcquisitionUtc.Value
+                return this.lastAcquisitionTimestamp.HasValue
+                    ? this.timeProvider.GetElapsedTime(this.lastAcquisitionTimestamp.Value)
                     : null;
             }
         }
@@ -48,7 +48,7 @@ internal sealed class MinimumIntervalRateLimiter : RateLimiter
         {
             return new RateLimiterStatistics
             {
-                CurrentAvailablePermits = this.CanAcquire(this.timeProvider.GetUtcNow()) ? 1 : 0,
+                CurrentAvailablePermits = this.CanAcquire(this.timeProvider.GetTimestamp()) ? 1 : 0,
                 CurrentQueuedCount = 0,
                 TotalFailedLeases = this.failedLeaseCount,
                 TotalSuccessfulLeases = this.successfulLeaseCount,
@@ -72,16 +72,17 @@ internal sealed class MinimumIntervalRateLimiter : RateLimiter
                 return SuccessfulLease;
             }
 
-            DateTimeOffset now = this.timeProvider.GetUtcNow();
-            if (this.CanAcquire(now))
+            long currentTimestamp = this.timeProvider.GetTimestamp();
+            if (this.CanAcquire(currentTimestamp))
             {
-                this.lastAcquisitionUtc = now;
+                this.lastAcquisitionTimestamp = currentTimestamp;
                 this.successfulLeaseCount++;
                 return SuccessfulLease;
             }
 
             this.failedLeaseCount++;
-            TimeSpan retryAfter = this.minimumInterval - (now - this.lastAcquisitionUtc!.Value);
+            TimeSpan retryAfter = this.minimumInterval
+                - this.timeProvider.GetElapsedTime(this.lastAcquisitionTimestamp!.Value, currentTimestamp);
             return new MinimumIntervalRateLimitLease(false, retryAfter);
         }
     }
@@ -106,11 +107,13 @@ internal sealed class MinimumIntervalRateLimiter : RateLimiter
         }
     }
 
-    private bool CanAcquire(DateTimeOffset now)
+    private bool CanAcquire(long currentTimestamp)
     {
         return !this.isDisposed
-            && (!this.lastAcquisitionUtc.HasValue
-                || now - this.lastAcquisitionUtc.Value >= this.minimumInterval);
+            && (!this.lastAcquisitionTimestamp.HasValue
+                || this.timeProvider.GetElapsedTime(
+                    this.lastAcquisitionTimestamp.Value,
+                    currentTimestamp) >= this.minimumInterval);
     }
 
     private sealed class MinimumIntervalRateLimitLease : RateLimitLease
