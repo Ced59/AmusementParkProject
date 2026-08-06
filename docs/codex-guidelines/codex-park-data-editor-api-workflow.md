@@ -96,6 +96,7 @@ Pour couper l’accès depuis Codex :
 
 | Besoin | Surface |
 |---|---|
+| Vérifier l’activité globale avant une opération coûteuse | `GET park-data-editor/operations/status` |
 | Rechercher un parc, y compris masqué ou fermé | `GET park-data-editor/parks` |
 | Exporter le graphe courant | job `POST admin/park-graph-upserts/bulk/export-jobs`, suivi puis téléchargement reprenable |
 | Prévisualiser/appliquer un lot borné | `POST admin/park-graph-upserts/preview` puis `apply` |
@@ -105,6 +106,26 @@ Pour couper l’accès depuis Codex :
 | Révoquer le jeton courant | `DELETE park-data-editor/tokens/current` |
 
 Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les réseaux sociaux, le SEO, les sources de données, la suppression d’images ou les autres fonctions d’administration.
+
+## Coordination globale obligatoire
+
+Plusieurs instances Codex peuvent partager le même serveur sans partager leur état local. Avant tout export, Preview, Apply, import d’image ou autre demande coûteuse, chaque instance doit donc interroger l’état global avec le client officiel :
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action Status
+```
+
+La réponse agrège les requêtes et exports actifs de **tous** les jetons `PARK_DATA_EDITOR`, sans exposer leur identifiant, leur libellé ou un secret. `initiatedByCurrentToken` sert seulement au diagnostic : une opération externe et une opération du jeton courant imposent exactement la même attente.
+
+Les règles suivantes sont non négociables :
+
+1. Une instance Codex n’émet jamais deux appels `PARK_DATA_EDITOR` en parallèle.
+2. Si `isBusy` vaut `true` ou si `canStartResourceIntensiveOperation` vaut `false`, Codex n’envoie aucune nouvelle demande coûteuse. Il attend au minimum `recommendedPollIntervalSeconds`, puis relit l’état.
+3. Le suivi de l’état global et celui d’un job d’export sont espacés d’au moins cinq secondes. Il est interdit de lancer une boucle rapide, plusieurs pollers ou un second export « de secours ».
+4. Tout `429` avec le code `park-data-editor.operation-busy` impose d’honorer `Retry-After`. Les reprises restent séquentielles ; augmenter le nombre d’instances ou changer de jeton pour contourner le refus est interdit.
+5. Après une coupure ou une réponse perdue, Codex vérifie d’abord cet état, puis le job d’export ou l’historique d’intégration concerné. Il ne rejoue jamais aveuglément une mutation potentiellement acceptée.
+
+Le serveur rend ces règles contraignantes : au plus deux requêtes techniques ordinaires peuvent être actives, un seul traitement coûteux peut s’exécuter, un seul export peut être en file ou en cours, et les dépassements sont refusés immédiatement sans file d’attente HTTP. L’endpoint d’état est lui-même limité par jeton. Le client officiel effectue l’attente préalable pour les exports, Preview, Apply et uploads, respecte les `429` et sonde les jobs d’export toutes les cinq secondes.
 
 ## Export asynchrone et reprenable
 

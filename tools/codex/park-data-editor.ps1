@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -158,7 +158,61 @@ function Invoke-ParkDataEditorJsonApi {
         $parameters.Body = $Body | ConvertTo-Json -Depth 100 -Compress
     }
 
-    return Invoke-RestMethod @parameters
+    $deadlineUtc = [DateTime]::UtcNow.AddMinutes(10)
+    while ($true) {
+        try {
+            return Invoke-RestMethod @parameters
+        }
+        catch {
+            $response = $_.Exception.Response
+            $statusCode = if ($null -eq $response) { 0 } else { [int]$response.StatusCode }
+            if ($statusCode -ne 429 -or [DateTime]::UtcNow -ge $deadlineUtc) {
+                throw
+            }
+
+            $retryAfterSeconds = 5
+            try {
+                $retryAfterValues = @($response.Headers.GetValues('Retry-After'))
+                if ($retryAfterValues.Count -gt 0) {
+                    $parsedRetryAfterSeconds = 0
+                    if ([int]::TryParse([string]$retryAfterValues[0], [ref]$parsedRetryAfterSeconds)) {
+                        $retryAfterSeconds = [Math]::Max(1, [Math]::Min(30, $parsedRetryAfterSeconds))
+                    }
+                }
+            }
+            catch {
+                $retryAfterSeconds = 5
+            }
+
+            Write-Verbose "The park data editor API is busy. Retrying after $retryAfterSeconds seconds."
+            Start-Sleep -Seconds $retryAfterSeconds
+        }
+    }
+}
+
+function Wait-ParkDataEditorAvailability {
+    param([int]$TimeoutSeconds = 600)
+
+    $deadlineUtc = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
+    while ($true) {
+        $status = Invoke-ParkDataEditorJsonApi `
+            -Method GET `
+            -RelativePath 'park-data-editor/operations/status' `
+            -Body $null
+        if (-not [bool]$status.isBusy -and [bool]$status.canStartResourceIntensiveOperation) {
+            return $status
+        }
+
+        if ([DateTime]::UtcNow -ge $deadlineUtc) {
+            throw "The park data editor remained busy for $TimeoutSeconds seconds."
+        }
+
+        $pollIntervalSeconds = [Math]::Max(
+            5,
+            [Math]::Max([int]$status.recommendedPollIntervalSeconds, [int]$status.retryAfterSeconds))
+        Write-Verbose "Another park data editor operation is active. Checking again after $pollIntervalSeconds seconds."
+        Start-Sleep -Seconds $pollIntervalSeconds
+    }
 }
 
 function Invoke-AnonymousJsonApi {
@@ -250,7 +304,7 @@ function Wait-ParkGraphExportJob {
             throw "The park export job timed out after $TimeoutSeconds seconds."
         }
 
-        Start-Sleep -Milliseconds 500
+        Start-Sleep -Seconds 5
         $jobId = [Uri]::EscapeDataString([string]$snapshot.jobId)
         $snapshot = Invoke-ParkDataEditorJsonApi -Method GET `
             -RelativePath "admin/park-graph-upserts/bulk/export-jobs/$jobId" `
@@ -368,6 +422,7 @@ function Export-ParkGraph {
         @($RequestedSections)
     }
 
+    Wait-ParkDataEditorAvailability -TimeoutSeconds $TimeoutSeconds | Out-Null
     $job = Invoke-ParkDataEditorJsonApi -Method POST `
         -RelativePath 'admin/park-graph-upserts/bulk/export-jobs' `
         -Body @{
@@ -462,39 +517,54 @@ function Invoke-MultipartImageUpload {
     Add-Type -AssemblyName System.Net.Http
     $token = Get-ParkDataEditorToken
     $client = [System.Net.Http.HttpClient]::new()
-    $multipart = [System.Net.Http.MultipartFormDataContent]::new()
-    $stream = [IO.File]::OpenRead($Path)
-    $fileContent = [System.Net.Http.StreamContent]::new($stream)
     try {
         $client.DefaultRequestHeaders.Authorization = [System.Net.Http.Headers.AuthenticationHeaderValue]::new('Bearer', $token)
-        $fileContent.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::new($ContentType)
         $uploadFileName = switch ($ContentType) {
             'image/jpeg' { 'codex-import.jpg' }
             'image/png' { 'codex-import.png' }
             'image/webp' { 'codex-import.webp' }
             default { throw "Unsupported image content type $ContentType." }
         }
-        $multipart.Add($fileContent, 'File', $uploadFileName)
-        $multipart.Add([System.Net.Http.StringContent]::new($Category), 'Category')
-        $multipart.Add([System.Net.Http.StringContent]::new(([string]$WithWatermark).ToLowerInvariant()), 'WithWatermark')
-        $multipart.Add([System.Net.Http.StringContent]::new(([string]$IsPublished).ToLowerInvariant()), 'IsPublished')
-        if (-not [string]::IsNullOrWhiteSpace($Description)) {
-            $multipart.Add([System.Net.Http.StringContent]::new($Description), 'Description')
-        }
-
         $uri = (Get-NormalizedApiBaseUrl $ApiBaseUrl) + 'park-data-editor/images'
-        $response = $client.PostAsync($uri, $multipart).GetAwaiter().GetResult()
-        $responseBody = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult()
-        if (-not $response.IsSuccessStatusCode) {
-            throw "Image upload failed with HTTP $([int]$response.StatusCode): $responseBody"
-        }
+        $deadlineUtc = [DateTime]::UtcNow.AddMinutes(10)
+        while ($true) {
+            Wait-ParkDataEditorAvailability | Out-Null
+            $multipart = [System.Net.Http.MultipartFormDataContent]::new()
+            $stream = [IO.File]::OpenRead($Path)
+            $fileContent = [System.Net.Http.StreamContent]::new($stream)
+            $response = $null
+            try {
+                $fileContent.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::new($ContentType)
+                $multipart.Add($fileContent, 'File', $uploadFileName)
+                $multipart.Add([System.Net.Http.StringContent]::new($Category), 'Category')
+                $multipart.Add([System.Net.Http.StringContent]::new(([string]$WithWatermark).ToLowerInvariant()), 'WithWatermark')
+                $multipart.Add([System.Net.Http.StringContent]::new(([string]$IsPublished).ToLowerInvariant()), 'IsPublished')
+                if (-not [string]::IsNullOrWhiteSpace($Description)) {
+                    $multipart.Add([System.Net.Http.StringContent]::new($Description), 'Description')
+                }
 
-        return $responseBody | ConvertFrom-Json
+                $response = $client.PostAsync($uri, $multipart).GetAwaiter().GetResult()
+                $responseBody = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult()
+                if ($response.IsSuccessStatusCode) {
+                    return $responseBody | ConvertFrom-Json
+                }
+                if ([int]$response.StatusCode -ne 429 -or [DateTime]::UtcNow -ge $deadlineUtc) {
+                    throw "Image upload failed with HTTP $([int]$response.StatusCode): $responseBody"
+                }
+            }
+            finally {
+                if ($null -ne $response) {
+                    $response.Dispose()
+                }
+                $fileContent.Dispose()
+                $stream.Dispose()
+                $multipart.Dispose()
+            }
+
+            Start-Sleep -Seconds 5
+        }
     }
     finally {
-        $fileContent.Dispose()
-        $stream.Dispose()
-        $multipart.Dispose()
         $client.Dispose()
     }
 }
@@ -615,6 +685,12 @@ switch ($Action) {
         }
         Write-Output 'Local token removed. This does not revoke it on the server.'
     }
+    'Status' {
+        Invoke-ParkDataEditorJsonApi `
+            -Method GET `
+            -RelativePath 'park-data-editor/operations/status' `
+            -Body $null
+    }
     'SearchParks' {
         $relativePath = 'park-data-editor/parks?page=1&size=50'
         if (-not [string]::IsNullOrWhiteSpace($Query)) {
@@ -635,6 +711,7 @@ switch ($Action) {
     'Preview' {
         $resolvedJsonPath = Resolve-RequiredFile -Path $JsonPath -ParameterName 'JsonPath'
         $jsonBody = [IO.File]::ReadAllText($resolvedJsonPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
+        Wait-ParkDataEditorAvailability | Out-Null
         $preview = Invoke-ParkDataEditorJsonApi -Method POST -RelativePath 'admin/park-graph-upserts/preview' -Body $jsonBody
         $previewOutputPath = if ([string]::IsNullOrWhiteSpace($OutputPath)) {
             Get-DefaultOutputPath -InputPath $resolvedJsonPath -Suffix 'preview'
@@ -680,6 +757,7 @@ switch ($Action) {
             throw 'The Preview receipt is invalid, stale, targets another API, or does not match the current JSON. Run Preview again.'
         }
 
+        Wait-ParkDataEditorAvailability | Out-Null
         $jsonBody = [IO.File]::ReadAllText($resolvedJsonPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
         $apply = Invoke-ParkDataEditorJsonApi -Method POST -RelativePath 'admin/park-graph-upserts/apply' -Body $jsonBody
         $applyOutputPath = if ([string]::IsNullOrWhiteSpace($OutputPath)) {

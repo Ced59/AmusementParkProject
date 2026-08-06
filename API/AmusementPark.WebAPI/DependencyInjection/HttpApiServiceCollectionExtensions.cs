@@ -62,6 +62,7 @@ public static class HttpApiServiceCollectionExtensions
         services.AddApiOutputCaching();
         services.AddScoped<ISsrPageCacheInvalidationRequestResolver, SsrPageCacheInvalidationRequestResolver>();
         services.AddScoped<IParkWeatherCacheInvalidator, ParkWeatherPublicCacheInvalidator>();
+        services.AddSingleton<IParkDataEditorOperationCoordinator, ParkDataEditorOperationCoordinator>();
         services.AddSingleton<IBulkParkGraphExportJobService, BulkParkGraphExportJobService>();
         services.AddControllers(static options =>
         {
