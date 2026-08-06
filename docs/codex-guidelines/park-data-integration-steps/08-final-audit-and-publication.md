@@ -196,6 +196,7 @@ Vérifier :
 - pour un parc majeur ou historiquement riche, la timeline couvre les grandes périodes, transformations et fermetures documentables ;
 - les annonces récentes à effet durable ont été vérifiées et disposent d’un article lorsqu’un développement éditorial est justifié ;
 - l’inventaire des attractions définitivement fermées et la timeline se recoupent sans omission emblématique inexpliquée ;
+- aucune ouverture, réouverture, fermeture temporaire ou fermeture définitive de parkItem n’est dupliquée dans la timeline du parc, car ces événements sont portés par la timeline du parkItem concerné ;
 - chaque jalon visible et article possède une image contextualisée trouvable ou une exception documentée.
 
 ### Audit résolution history
