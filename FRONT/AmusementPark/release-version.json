@@ -1,6 +1,20 @@
 {
-  "version": "4.1.9",
+  "version": "4.1.10",
   "history": [
+    {
+      "version": "4.1.10",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les aperçus des publications existantes se réparent plus facilement.",
+        "en": "Existing post previews can be repaired more easily.",
+        "de": "Vorschauen bestehender Beiträge lassen sich leichter reparieren.",
+        "nl": "Voorvertoningen van bestaande berichten zijn eenvoudiger te herstellen.",
+        "it": "Le anteprime dei post esistenti si possono ripristinare più facilmente.",
+        "es": "Las vistas previas de las publicaciones existentes se reparan con mayor facilidad.",
+        "pl": "Podglądy istniejących publikacji można łatwiej naprawić.",
+        "pt": "As pré-visualizações das publicações existentes podem ser reparadas mais facilmente."
+      }
+    },
     {
       "version": "4.1.9",
       "releasedAt": "2026-08-06",

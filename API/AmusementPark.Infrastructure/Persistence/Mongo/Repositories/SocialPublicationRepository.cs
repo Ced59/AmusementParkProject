@@ -69,4 +69,35 @@ public sealed class SocialPublicationRepository : ISocialPublicationRepository
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToList();
     }
+
+    public async Task<IReadOnlyCollection<string>> ListPublishedAutomaticParkAnnouncementParkIdsAsync(
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<SocialPublicationDocument> filter = Builders<SocialPublicationDocument>.Filter.And(
+            Builders<SocialPublicationDocument>.Filter.Eq(
+                static document => document.Network,
+                SocialNetwork.Facebook.ToString()),
+            Builders<SocialPublicationDocument>.Filter.Eq(
+                static document => document.Status,
+                SocialPublicationStatus.Published.ToString()),
+            Builders<SocialPublicationDocument>.Filter.Eq(
+                static document => document.Trigger,
+                SocialPublicationTrigger.AutomaticParkPublication.ToString()),
+            Builders<SocialPublicationDocument>.Filter.Ne(static document => document.SourceEntityId, null),
+            Builders<SocialPublicationDocument>.Filter.Ne(static document => document.SourceEntityId, string.Empty),
+            Builders<SocialPublicationDocument>.Filter.Ne(static document => document.ExternalPostId, null),
+            Builders<SocialPublicationDocument>.Filter.Ne(static document => document.ExternalPostId, string.Empty));
+
+        List<string?> parkIds = await this.collection
+            .Find(filter)
+            .SortByDescending(static document => document.PublishedAtUtc)
+            .Project(static document => document.SourceEntityId)
+            .ToListAsync(cancellationToken);
+
+        return parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId!)
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+    }
 }

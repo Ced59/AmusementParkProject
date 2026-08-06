@@ -55,4 +55,7 @@ public interface ISocialPublicationRepository
     Task<SocialPublication?> GetByExternalPostIdAsync(string externalPostId, CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<SocialPublication>> ListRecentAsync(int limit, CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<string>> ListPublishedAutomaticParkAnnouncementParkIdsAsync(
+        CancellationToken cancellationToken);
 }

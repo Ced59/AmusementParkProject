@@ -5,6 +5,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Application.Features.SocialPublishing.Commands;
+using AmusementPark.Application.Features.SocialPublishing.Queries;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.SocialPublishing;
 using AmusementPark.WebAPI.Authorization;
@@ -32,17 +33,20 @@ public sealed class ParkDataEditorParksController : ControllerBase
     private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksHandler;
     private readonly IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler;
     private readonly ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>> refreshPreviewHandler;
+    private readonly IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>> listPublishedAnnouncementIdsHandler;
 
     public ParkDataEditorParksController(
         IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>> getParksPageHandler,
         IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksHandler,
         IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler,
-        ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>> refreshPreviewHandler)
+        ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>> refreshPreviewHandler,
+        IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>> listPublishedAnnouncementIdsHandler)
     {
         this.getParksPageHandler = getParksPageHandler;
         this.searchParksHandler = searchParksHandler;
         this.completenessHandler = completenessHandler;
         this.refreshPreviewHandler = refreshPreviewHandler;
+        this.listPublishedAnnouncementIdsHandler = listPublishedAnnouncementIdsHandler;
     }
 
     [HttpGet]
@@ -94,6 +98,22 @@ public sealed class ParkDataEditorParksController : ControllerBase
         }
 
         return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpGet("social-preview/publications")]
+    [AdminAudit("park-data-editor.social-preview.list", "SocialPublication", StaticTargetId = "automatic-park-announcements")]
+    [ProducesResponseType(typeof(IReadOnlyCollection<ParkSocialPreviewPublicationDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ListPublishedSocialPreviewsAsync(
+        CancellationToken cancellationToken = default)
+    {
+        IReadOnlyCollection<string> parkIds = await this.listPublishedAnnouncementIdsHandler.HandleAsync(
+            new ListPublishedParkAnnouncementIdsQuery(),
+            cancellationToken);
+
+        IReadOnlyCollection<ParkSocialPreviewPublicationDto> response = parkIds
+            .Select(static parkId => new ParkSocialPreviewPublicationDto { ParkId = parkId })
+            .ToList();
+        return this.Ok(response);
     }
 
     [HttpPost("{parkId}/social-preview/refresh")]

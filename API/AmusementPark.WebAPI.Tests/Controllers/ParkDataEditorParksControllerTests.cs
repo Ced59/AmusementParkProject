@@ -6,6 +6,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Application.Features.SocialPublishing.Commands;
+using AmusementPark.Application.Features.SocialPublishing.Queries;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.SocialPublishing;
 using AmusementPark.WebAPI.Contracts.SocialPublishing;
@@ -44,7 +45,8 @@ public sealed class ParkDataEditorParksControllerTests
             Mock.Of<IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
             Mock.Of<IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
             Mock.Of<IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>>(MockBehavior.Strict),
-            handler.Object);
+            handler.Object,
+            Mock.Of<IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>>>(MockBehavior.Strict));
         controller.ControllerContext = new ControllerContext
         {
             HttpContext = new DefaultHttpContext
@@ -60,6 +62,36 @@ public sealed class ParkDataEditorParksControllerTests
         OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
         SocialPublicationDto response = Assert.IsType<SocialPublicationDto>(ok.Value);
         Assert.Equal("publication-1", response.Id);
+        handler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ListPublishedSocialPreviewsAsync_ShouldReturnOnlyParkIdentifiers()
+    {
+        Mock<IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>>> handler =
+            new Mock<IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>>>(MockBehavior.Strict);
+        handler
+            .Setup(candidate => candidate.HandleAsync(
+                It.IsAny<ListPublishedParkAnnouncementIdsQuery>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { "park-1", "park-2" });
+
+        ParkDataEditorParksController controller = new ParkDataEditorParksController(
+            Mock.Of<IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
+            Mock.Of<IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
+            Mock.Of<IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            handler.Object);
+
+        IActionResult result = await controller.ListPublishedSocialPreviewsAsync(CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        IReadOnlyCollection<ParkSocialPreviewPublicationDto> response =
+            Assert.IsAssignableFrom<IReadOnlyCollection<ParkSocialPreviewPublicationDto>>(ok.Value);
+        Assert.Collection(
+            response,
+            first => Assert.Equal("park-1", first.ParkId),
+            second => Assert.Equal("park-2", second.ParkId));
         handler.VerifyAll();
     }
 }
