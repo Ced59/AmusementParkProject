@@ -298,7 +298,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
         string url = $"{context.PublicBaseUrl.TrimEnd('/')}{parkPath}";
         string message = BuildParkAnnouncementMessage(park.Name!);
 
-        await this.HardPurgePublicPageAsync(parkPath, cancellationToken);
+        await this.PreservePublicPageDuringSocialPreparationAsync(parkPath, cancellationToken);
 
         ApplicationResult<SocialPublication> result = await this.PublishNewAsync(
             SocialNetwork.Facebook,
@@ -347,7 +347,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
                 SocialPublishingApplicationErrors.PublisherOperationFailed(null));
         }
 
-        await this.HardPurgePublicPageAsync(publicationUri.AbsolutePath, cancellationToken);
+        await this.PreservePublicPageDuringSocialPreparationAsync(publicationUri.AbsolutePath, cancellationToken);
 
         SocialPublisherOperationResult refreshResult;
         try
@@ -481,14 +481,14 @@ public sealed class SocialPublicationService : ISocialPublicationService
         return await this.repository.UpdateAsync(publication, cancellationToken);
     }
 
-    private Task HardPurgePublicPageAsync(string path, CancellationToken cancellationToken)
+    private Task PreservePublicPageDuringSocialPreparationAsync(string path, CancellationToken cancellationToken)
     {
         return this.ssrPageCacheInvalidator.InvalidateAsync(
             new SsrPageCacheInvalidationRequest
             {
                 Paths = new[] { path },
                 IncludeSeoDocuments = false,
-                AllowStale = false,
+                AllowStale = true,
                 Refresh = false,
             },
             cancellationToken);

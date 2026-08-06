@@ -1,4 +1,6 @@
 using System.Net;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
 using AmusementPark.Infrastructure.Configuration.SocialPublishing;
 using AmusementPark.Infrastructure.Services.SocialPublishing;
@@ -16,6 +18,7 @@ public sealed class FacebookPageSocialPublisherTests
             "{\"id\":\"123_456\"}");
         FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
             new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
             CreateSettings());
 
         SocialPublisherResult result = await publisher.PublishLinkAsync(
@@ -24,6 +27,14 @@ public sealed class FacebookPageSocialPublisherTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal("123_456", result.ExternalPostId);
+        Assert.Equal(1, handler.PagePreparationCallCount);
+        Assert.Equal(
+            new[]
+            {
+                "https://amusement-parks.fun/fr/park/park-1/test",
+                "https://graph.facebook.com/v24.0/123/feed",
+            },
+            handler.RequestUris);
         Assert.Equal("https://graph.facebook.com/v24.0/123/feed", handler.RequestUri);
         Assert.Equal("Bearer", handler.AuthorizationScheme);
         Assert.Equal("secret-page-token", handler.AuthorizationParameter);
@@ -39,6 +50,7 @@ public sealed class FacebookPageSocialPublisherTests
             "{\"error\":{\"message\":\"Token expired\",\"code\":190,\"error_subcode\":463}}");
         FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
             new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
             CreateSettings());
 
         SocialPublisherResult result = await publisher.PublishLinkAsync(
@@ -57,6 +69,7 @@ public sealed class FacebookPageSocialPublisherTests
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(HttpStatusCode.OK, "{\"success\":true}");
         FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
             new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
             CreateSettings());
 
         SocialPublisherOperationResult result = await publisher.UpdatePostAsync(
@@ -79,6 +92,7 @@ public sealed class FacebookPageSocialPublisherTests
         StubHttpClientFactory httpClientFactory = new StubHttpClientFactory(handler);
         FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
             httpClientFactory,
+            new StubPublicSeoContextProvider(),
             CreateSettings());
 
         SocialPublisherOperationResult result = await publisher.RefreshLinkPreviewAsync(
@@ -86,7 +100,17 @@ public sealed class FacebookPageSocialPublisherTests
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
+        Assert.Equal(
+            new[]
+            {
+                FacebookPageSocialPublisher.PreviewPagePreparationHttpClientName,
+                FacebookPageSocialPublisher.PreviewRefreshHttpClientName,
+            },
+            httpClientFactory.ClientNames);
         Assert.Equal(FacebookPageSocialPublisher.PreviewRefreshHttpClientName, httpClientFactory.LastClientName);
+        Assert.Equal(1, handler.PagePreparationCallCount);
+        Assert.True(handler.WarmupRequested);
+        Assert.True(handler.WarmupRefreshRequested);
         Assert.Equal(HttpMethod.Post, handler.Method);
         Assert.Equal("https://graph.facebook.com/v24.0/", handler.RequestUri);
         Assert.Equal("Bearer", handler.AuthorizationScheme);
@@ -99,6 +123,56 @@ public sealed class FacebookPageSocialPublisherTests
     }
 
     [Fact]
+    public async Task RefreshLinkPreviewAsync_WhenFreshSsrHtmlIsNotSeoReady_ShouldNotAskFacebookToScrape()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{}",
+            pageSeoReady: false);
+        StubHttpClientFactory httpClientFactory = new StubHttpClientFactory(handler);
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            httpClientFactory,
+            new StubPublicSeoContextProvider(),
+            CreateSettings());
+
+        SocialPublisherOperationResult result = await publisher.RefreshLinkPreviewAsync(
+            "https://amusement-parks.fun/fr/park/park-1/test",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("preview-page-not-ready", result.FailureCode);
+        Assert.Equal(1, handler.PagePreparationCallCount);
+        Assert.Equal(0, handler.GraphCallCount);
+        Assert.Equal(
+            new[] { FacebookPageSocialPublisher.PreviewPagePreparationHttpClientName },
+            httpClientFactory.ClientNames);
+    }
+
+    [Fact]
+    public async Task PublishLinkAsync_WhenLinkTargetsAnotherSite_ShouldNotPrepareIt()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{\"id\":\"123_456\"}");
+        StubHttpClientFactory httpClientFactory = new StubHttpClientFactory(handler);
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            httpClientFactory,
+            new StubPublicSeoContextProvider(),
+            CreateSettings());
+
+        SocialPublisherResult result = await publisher.PublishLinkAsync(
+            new SocialPublisherRequest("External link", "https://example.com/article"),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(0, handler.PagePreparationCallCount);
+        Assert.Equal(1, handler.GraphCallCount);
+        Assert.Equal(
+            new[] { FacebookPageSocialPublisher.HttpClientName },
+            httpClientFactory.ClientNames);
+    }
+
+    [Fact]
     public async Task DeletePostAsync_WhenPostNoLongerExists_ShouldReturnMissingResult()
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
@@ -106,6 +180,7 @@ public sealed class FacebookPageSocialPublisherTests
             "{\"error\":{\"message\":\"Unsupported get request\",\"code\":100,\"error_subcode\":33}}");
         FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
             new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
             CreateSettings());
 
         SocialPublisherOperationResult result = await publisher.DeletePostAsync("123_456", CancellationToken.None);
@@ -122,6 +197,7 @@ public sealed class FacebookPageSocialPublisherTests
             "{\"id\":\"123_456\",\"message\":\"Facebook text\",\"permalink_url\":\"https://facebook.test/post\"}");
         FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
             new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
             CreateSettings());
 
         SocialPublisherPostSnapshotResult result = await publisher.GetPostAsync("123_456", CancellationToken.None);
@@ -157,10 +233,23 @@ public sealed class FacebookPageSocialPublisherTests
 
         public string? LastClientName { get; private set; }
 
+        public List<string> ClientNames { get; } = new List<string>();
+
         public HttpClient CreateClient(string name)
         {
             this.LastClientName = name;
+            this.ClientNames.Add(name);
             return this.client;
+        }
+    }
+
+    private sealed class StubPublicSeoContextProvider : IPublicSeoContextProvider
+    {
+        public Task<PublicSeoContext> GetAsync(CancellationToken cancellationToken)
+        {
+            return Task.FromResult(new PublicSeoContext(
+                "https://amusement-parks.fun",
+                Array.Empty<string>()));
         }
     }
 
@@ -168,12 +257,27 @@ public sealed class FacebookPageSocialPublisherTests
     {
         private readonly HttpStatusCode statusCode;
         private readonly string responseBody;
+        private readonly bool pageSeoReady;
 
-        public RecordingHttpMessageHandler(HttpStatusCode statusCode, string responseBody)
+        public RecordingHttpMessageHandler(
+            HttpStatusCode statusCode,
+            string responseBody,
+            bool pageSeoReady = true)
         {
             this.statusCode = statusCode;
             this.responseBody = responseBody;
+            this.pageSeoReady = pageSeoReady;
         }
+
+        public List<string> RequestUris { get; } = new List<string>();
+
+        public int PagePreparationCallCount { get; private set; }
+
+        public int GraphCallCount { get; private set; }
+
+        public bool WarmupRequested { get; private set; }
+
+        public bool WarmupRefreshRequested { get; private set; }
 
         public string? RequestUri { get; private set; }
 
@@ -189,6 +293,31 @@ public sealed class FacebookPageSocialPublisherTests
             HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
+            string requestUri = request.RequestUri?.AbsoluteUri ?? string.Empty;
+            this.RequestUris.Add(requestUri);
+            if (request.Method == HttpMethod.Get
+                && request.RequestUri?.Host == "amusement-parks.fun")
+            {
+                this.PagePreparationCallCount++;
+                this.WarmupRequested = request.Headers.TryGetValues(
+                        "X-AmusementPark-SSR-Warmup",
+                        out IEnumerable<string>? warmupValues)
+                    && warmupValues.Contains("1", StringComparer.Ordinal);
+                this.WarmupRefreshRequested = request.Headers.TryGetValues(
+                        "X-AmusementPark-SSR-Warmup-Refresh",
+                        out IEnumerable<string>? refreshValues)
+                    && refreshValues.Contains("1", StringComparer.Ordinal);
+                HttpResponseMessage preparationResponse = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent("<html></html>"),
+                };
+                preparationResponse.Headers.TryAddWithoutValidation(
+                    "X-AmusementPark-Seo-Ready",
+                    this.pageSeoReady ? "true" : "false");
+                return preparationResponse;
+            }
+
+            this.GraphCallCount++;
             this.RequestUri = request.RequestUri?.AbsoluteUri;
             this.Method = request.Method;
             this.AuthorizationScheme = request.Headers.Authorization?.Scheme;

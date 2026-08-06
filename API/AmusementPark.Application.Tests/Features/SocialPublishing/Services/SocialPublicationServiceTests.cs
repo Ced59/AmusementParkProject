@@ -85,7 +85,7 @@ public sealed class SocialPublicationServiceTests
     }
 
     [Fact]
-    public async Task PublishParkAnnouncementAsync_ShouldHardPurgePublicPageBeforePublishing()
+    public async Task PublishParkAnnouncementAsync_ShouldKeepStalePageAvailableWhilePublisherPreparesFreshHtml()
     {
         List<string> events = new List<string>();
         InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
@@ -112,12 +112,12 @@ public sealed class SocialPublicationServiceTests
         Assert.Equal(new[] { "/fr/park/park-1/parc-etincelle" }, request.Paths);
         Assert.Empty(request.Prefixes);
         Assert.False(request.IncludeSeoDocuments);
-        Assert.False(request.AllowStale);
+        Assert.True(request.AllowStale);
         Assert.False(request.Refresh);
     }
 
     [Fact]
-    public async Task RefreshParkAnnouncementPreviewAsync_ShouldHardPurgeBeforeFacebookRescrape()
+    public async Task RefreshParkAnnouncementPreviewAsync_ShouldKeepStalePageAvailableWhilePublisherPreparesFreshHtml()
     {
         List<string> events = new List<string>();
         InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
@@ -152,7 +152,7 @@ public sealed class SocialPublicationServiceTests
         Assert.Equal(publication.Url, publisher.LastRefreshedUrl);
         SsrPageCacheInvalidationRequest request = Assert.Single(invalidator.Requests);
         Assert.Equal(new[] { "/fr/park/park-1/parc-etincelle" }, request.Paths);
-        Assert.False(request.AllowStale);
+        Assert.True(request.AllowStale);
         Assert.False(request.Refresh);
     }
 
