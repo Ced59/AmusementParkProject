@@ -15,6 +15,29 @@ Vérifier :
 - aucune entité douteuse n’a été enrichie artificiellement ;
 - les éléments historiques fermés restent visibles quand ils sont utiles.
 
+## Niveau de qualité attendu
+
+Le résultat d’une commande de complétude vise le niveau `Excellent` du scoring, sans bloqueur de publication. Pour un parc majeur, viser 100 % des critères applicables et expliquer toute valeur inférieure. Pour un parc plus petit, fermé ou en projet, le même niveau de rigueur s’applique sur un périmètre naturellement plus réduit.
+
+Un score élevé ne remplace jamais cet audit. Il est interdit de rendre un critère artificiellement non applicable, d’omettre une entité connue ou de publier un texte faible pour améliorer le score. Une lacune résiduelle n’est acceptable que si la donnée ou l’image reste introuvable après une recherche réelle et si cette limite est précisément documentée.
+
+## Tableau de couverture obligatoire
+
+Produire les numérateurs, dénominateurs et identifiants manquants pour :
+
+- attractions totales, puis attractions actuelles, annoncées/en construction et définitivement fermées ;
+- attractions avec 8 descriptions naturelles ;
+- attractions avec au moins une image fidèle ;
+- logo officiel présent, courant et sans watermark ajouté ;
+- image principale du parc ;
+- jalons historiques avec sources et image contextualisée ;
+- articles avec sources joignables, localisations attendues et image contextualisée ;
+- attractions définitivement fermées avec statut, période, description, image et jalon applicables ;
+- conditions d’accès recherchées pour chaque attraction concernée ;
+- lacunes restantes avec familles de sources consultées et raison de l’absence.
+
+Le tableau est fondé sur le dernier export, pas sur les intentions des lots précédents. Tout écart inexpliqué déclenche une reprise ciblée de l’étape concernée.
+
 ## Audit JSON
 
 Vérifier :
@@ -52,6 +75,7 @@ Vérifier :
 - les textes ne contiennent pas “upsert”, “SEO”, “contenu public” ou autre jargon interne.
 - les événements et articles ne contiennent pas “repère documentaire prudent”, “présence publique confirmée”, justification de méthode, note d’audit ou formulation mécanique équivalente.
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
+- les textes alternatifs, légendes et descriptions d’images sont naturels et éditoriaux ; ils ne contiennent aucune formulation technique, mécanique, justificative ou liée à l’outil d’import.
 
 ### Audit articles historiques
 
@@ -102,6 +126,12 @@ Vérifier :
 - alt texts et crédits localisés ;
 - pas de page HTML, preview non téléchargeable, image trompeuse ou watermark non autorisé ;
 - images historiques correctement contextualisées.
+- logo officiel actuel distinct de la photo principale, marqué comme logo courant et contrôlé dans l’export ;
+- au moins une image fidèle par attraction actuelle, annoncée, en construction ou définitivement fermée quand elle est trouvable ;
+- chaque fichier inspecté visuellement, sans watermark ou logo incrusté d’un site tiers ;
+- chaque absence d’image justifiée par une recherche réelle et non par un simple oubli ;
+- chaque jalon et article illustré par une image contextualisée quand elle est trouvable ;
+- aucune image secondaire ou historique n’a remplacé par défaut une meilleure image courante.
 
 ### Audit images utilisées dans les articles
 
@@ -145,6 +175,10 @@ Vérifier :
 - toutes les URLs de sources d’articles et d’événements répondent au moment de l’audit ;
 - aucune source ne pointe vers une 404, 410, erreur serveur, soft-404, page d’accueil de remplacement ou URL inventée ;
 - les archives utilisées sont consultables et correspondent bien au contenu cité.
+- pour un parc majeur ou historiquement riche, la timeline couvre les grandes périodes, transformations et fermetures documentables ;
+- les annonces récentes à effet durable ont été vérifiées et disposent d’un article lorsqu’un développement éditorial est justifié ;
+- l’inventaire des attractions définitivement fermées et la timeline se recoupent sans omission emblématique inexpliquée ;
+- chaque jalon visible et article possède une image contextualisée trouvable ou une exception documentée.
 
 ### Audit résolution history
 
@@ -160,6 +194,10 @@ Avant publication :
 
 Garder `adminReviewStatus: "ToReview"` tant qu’une relecture humaine reste nécessaire.
 
+La commande `Complète le parc <nom>` s’arrête ici. Elle ne vaut jamais autorisation de publication. Présenter le tableau de couverture, les corrections éventuelles et une décision `prêt pour publication` ; attendre une demande explicite telle que `Publie le parc <nom>`.
+
+Ne pas masquer un parc déjà public pendant un enrichissement courant. Toute dépublication ou masquage d’un contenu public exige une instruction spécifique, sauf correction de sécurité ou obligation légale traitée hors de ce parcours.
+
 Ne passer `isVisible` à `true` que pour les entités :
 
 - pertinentes ;
@@ -168,6 +206,17 @@ Ne passer `isVisible` à `true` que pour les entités :
 - sans warning bloquant ;
 - prêtes pour le public.
 
+### Après autorisation explicite de publication
+
+1. Réexporter et rejouer les contrôles bloquants sur l’état courant.
+2. Publier d’abord les articles et contenus dépendants prêts, pendant que le nouveau parc reste masqué.
+3. Vérifier les statuts, descriptions, images courantes et sources des parkItems publiables. Ne pas rendre visible un item legacy inconnu au seul motif que la consigne dit « tout publier ».
+4. Passer le parc à `Validated` et visible en dernier.
+5. Contrôler anonymement la fiche publique, le logo, les attractions, les historiques et les articles dans les langues prises en charge.
+6. Recontrôler le score et lancer un Preview d’idempotence : aucune modification inattendue ne doit rester.
+
+Une défaillance d’une annonce sociale ou d’un service périphérique ne doit pas être confondue avec l’échec de publication des données. Rapporter les deux résultats séparément et ne jamais appeler une route d’administration non autorisée pour compenser.
+
 ## Sortie attendue
 
 Produire :
@@ -175,6 +224,7 @@ Produire :
 - une liste de corrections restantes ;
 - ou un dernier JSON upsert ciblé ;
 - ou une décision “prêt pour publication” avec risques résiduels.
+- toujours le tableau de couverture chiffré et le registre final des lacunes.
 
 Ne pas ouvrir un nouveau chantier de fond à cette étape. Les améliorations non bloquantes deviennent des lots séparés.
 

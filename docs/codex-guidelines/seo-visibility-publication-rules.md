@@ -1,6 +1,6 @@
 # AmusementPark — Règles de visibilité publique et de qualité SEO
 
-Version : **2026-07-04-r1**  
+Version : **2026-08-06-r1**
 Projet : **amusement-parks.fun**  
 Usage : règle éditoriale et technique pour décider si un parc ou un parkItem peut être visible publiquement.
 
@@ -110,16 +110,24 @@ Grand parc pauvre = ToProcessLater + invisible
 Grand parc enrichi = Validated + visible
 ```
 
-La liste des grands parcs sert à prioriser l'enrichissement, pas à contourner les critères de qualité. Avant publication, un parc majeur doit au moins avoir :
+La liste des grands parcs sert à prioriser l'enrichissement, pas à contourner les critères de qualité. Avant publication, un parc majeur doit avoir une fiche exhaustive au regard des sources disponibles :
 
-- description spécifique ;
-- pays, ville ou emplacement fiable ;
-- coordonnées ;
-- type ;
-- statut ;
-- quelques parkItems principaux ;
-- title/meta exploitables via le front ;
-- idéalement logo ou image principale.
+- identité, emplacement, type, statut et description spécifique dans les 8 langues ;
+- inventaire diversifié de l’offre actuelle et des nouveautés confirmées ;
+- recherche dédiée et documentation des attractions définitivement fermées ;
+- descriptions localisées des attractions publiables, y compris historiques ;
+- logo officiel courant et image principale distincte ;
+- au moins une image fidèle par attraction actuelle, annoncée, en construction ou définitivement fermée quand elle est trouvable ;
+- histoire substantielle couvrant les grandes périodes, transformations et fermetures ;
+- articles pour les sujets durables, notamment les annonces récentes importantes ;
+- sources joignables, images contextualisées pour les jalons et articles et audit de complétude chiffré ;
+- title/meta exploitables via le front et aucun bloqueur de publication.
+
+Une lacune n’est acceptable qu’après recherche réelle et documentation de l’absence. Un score minimal ou la simple réussite d’un import ne remplace pas cette exigence.
+
+### Parc nouvellement complété
+
+Chaque parc traité par une commande de complétude vise le niveau `Excellent` du scoring, sans bloqueur. Le même degré d’exigence s’applique à tous ; seule la quantité de contenus varie avec la taille, le statut et les sources. Ne jamais inventer des zones, articles ou images pour égaliser artificiellement les volumes.
 
 ### Parc historique fermé
 
@@ -173,6 +181,8 @@ Ces noms peuvent devenir visibles seulement après identification précise : nom
 ### ParkItems fermés
 
 Un parkItem fermé peut rester visible s'il est confirmé et utile à l'histoire ou à la compréhension du parc. Il doit alors avoir un statut cohérent, des dates ou une période fiable si possible, et une description qui explique sa place dans le parc sans survente artificielle.
+
+Quand elle est trouvable, une image historique fidèle et contextualisée complète la fiche. L’absence du parkItem sur le site officiel actuel ne suffit pas à l’écarter : vérifier les archives, la presse et les sources spécialisées avant de conclure.
 
 ## Règles d'exclusion immédiate
 
@@ -232,6 +242,8 @@ Fun Park
 ## Score qualité indicatif
 
 Le score ne remplace pas la validation humaine, mais il aide à automatiser les gros lots.
+
+Ce score court sert au tri SEO historique. Il ne suffit pas à conclure une commande de complétude : celle-ci utilise le scoring détaillé de `data-quality-completeness-scoring.md`, vise `Excellent` à 95-100 et exige le tableau de couverture des étapes 0 et 8.
 
 | Critère parc | Points |
 | --- | ---: |

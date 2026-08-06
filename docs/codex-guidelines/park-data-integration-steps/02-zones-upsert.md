@@ -79,6 +79,6 @@ Chaque zone doit avoir une `key` stable, un `name`, des `names` localisés si po
 
 ## Après Apply
 
-Demander l’export actualisé avant de créer les parkItems, afin de reprendre les vrais IDs et les clés acceptées.
+Obtenir l’export actualisé avant de créer les parkItems, afin de reprendre les vrais IDs et les clés acceptées : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 3 — Inventaire des parkItems. Si aucune zone fiable n’a été créée, l’étape 3 reste généralement utile, mais les parkItems devront être intégrés sans `zoneKey` sauf source claire. Si l’étape 3 est exceptionnellement jugée `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. Attendre la validation utilisateur avant de continuer.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 3 — Inventaire des parkItems. Si aucune zone fiable n’a été créée, l’étape 3 reste généralement utile, mais les parkItems devront être intégrés sans `zoneKey` sauf source claire. Si l’étape 3 est exceptionnellement jugée `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la validation utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

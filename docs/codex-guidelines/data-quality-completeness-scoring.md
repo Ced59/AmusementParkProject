@@ -1,6 +1,6 @@
 # AmusementPark — Scoring de complétude data des parcs et parkItems
 
-Version : **2026-07-04-r1**  
+Version : **2026-08-06-r1**
 Projet : **amusement-parks.fun**  
 Usage : spécification fonctionnelle pour calculer en production un score de complétude data, prioriser les enrichissements et aider la décision de visibilité SEO.
 
@@ -24,6 +24,14 @@ Le score sert à :
 Le score ne remplace pas la validation humaine. Il aide à décider, mais une entité peut rester invisible malgré un bon score si elle est douteuse, hors cible, dupliquée ou non vérifiée.
 
 ## Principes structurants
+
+### Cible d’une commande de complétude
+
+Une commande `Complète le parc <nom>` vise le niveau `Excellent` entre 95 et 100, sans bloqueur de publication. Pour un parc majeur, la cible opérationnelle est 100 % des critères applicables. Une valeur inférieure n’est acceptable en fin de parcours que si les données ou images restantes sont réellement introuvables, non applicables ou soumises à une décision humaine explicitement documentée.
+
+Le même degré de rigueur s’applique à chaque parc nouvellement complété. Le volume attendu reste proportionné à la taille, au statut et aux sources : un petit parc peut atteindre `Excellent` avec moins de contenus, mais pas avec des recherches omises, des textes génériques ou une couverture d’images laissée au hasard.
+
+Le score ne doit jamais être optimisé mécaniquement. Ne pas retirer un critère du dénominateur parce qu’il est difficile à compléter, ne pas omettre une attraction fermée connue et ne pas confondre `introuvable après recherche` avec `non recherché`.
 
 ### Score de complétude et visibilité sont liés mais distincts
 
@@ -153,6 +161,10 @@ Les bloqueurs suivants forcent `isVisible: false` même si le score brut est él
 - sources critiques absentes pour une fiche historique ;
 - URL source d'article ou d'événement non joignable ;
 - contenu public contenant jargon interne, notes d'audit ou données techniques au mauvais endroit.
+- logo officiel courant omis sans recherche documentée ;
+- formulation technique, mécanique ou justificative dans un texte alternatif, une légende ou une description d’image publique ;
+- inventaire historique manifestement léger pour un parc majeur ou ancien ;
+- attraction publiable sans image alors qu’aucune recherche d’image n’est documentée.
 
 ## Scoring des parcs
 
@@ -252,15 +264,16 @@ Inspiré de l'étape 5.
 
 | Critère | Points | Applicabilité |
 | --- | ---: | --- |
-| Logo ou image principale fiable | 2 | Parc publiable |
-| Images du parc suffisantes et représentatives | 2 | Parc publiable |
-| Images des parkItems majeurs | 2 | Si parkItems majeurs présents |
+| Logo officiel courant, distinct de la photo principale | 1 | Parc publiable, sauf absence après recherche documentée |
+| Image principale du parc fiable | 1 | Parc publiable, sauf absence après recherche documentée |
+| Image de chaque attraction actuelle, annoncée ou en construction | 2 | Si attraction présente et image trouvable |
+| Image contextualisée de chaque attraction définitivement fermée, jalon et article | 2 | Si contenu présent et image trouvable |
 | Propriétaires d'images résolus | 1 | Si images présentes |
-| Alt texts et crédits localisés | 1 | Images publiques |
-| Images sans watermark non autorisé ni tromperie éditoriale | 1 | Images publiques |
+| Alt texts, légendes et crédits localisés avec un style éditorial naturel | 1 | Images publiques |
+| Images inspectées, sans watermark tiers ni tromperie éditoriale | 1 | Images publiques |
 | Médias originaux, vidéos ou galeries reliés quand disponibles | 1 | Bonus applicable si médias existent |
 
-Une absence d'image peut être acceptable pour une fiche interne, mais elle limite fortement la publication qualitative d'un parc majeur.
+Une absence d'image peut être acceptable seulement après une recherche réelle et documentée. Elle ne doit jamais être remplacée par une image générique ou attribuée à la mauvaise attraction.
 
 ### 8. Horaires et calendrier — 8 points
 
@@ -292,7 +305,7 @@ Inspiré de l'étape 7. Cette catégorie devient importante pour les parcs majeu
 | Sources d'événements présentes et vérifiées | 2 | Si événements historiques présents |
 | Images historiques ou médias reliés quand pertinents | 1 | Si médias historiques disponibles |
 
-Règle importante : tous les parcs n'ont pas besoin d'articles longs. Un parc local vivant peut être très correct sans article enrichi. En revanche, un parc majeur ou historique sans aucune histoire doit être considéré comme incomplet.
+Règle importante : tous les parcs n'ont pas besoin d'articles longs. Un parc local vivant peut être très correct sans article enrichi. En revanche, un parc majeur ou historique sans histoire substantielle, sans attractions fermées documentées ou sans article sur ses sujets durables doit être considéré comme incomplet. Les annonces récentes à effet durable doivent être recherchées au moment du calcul.
 
 ### 10. Références : fondateurs, exploitants, constructeurs — 8 points
 
@@ -431,6 +444,8 @@ Un parkItem visible avec seulement une description générique doit être masqu�
 | Vidéo, galerie ou média original relié si disponible | 1 | Bonus applicable |
 | Image historique contextualisée si item fermé | 1 | Item historique avec image |
 
+`Photo disponible` signifie qu’une recherche effective a été menée. Une absence non recherchée reste `missing`, pas `notApplicable`.
+
 ### 8. Histoire et articles de parkItem — 10 points
 
 Applicable surtout aux attractions majeures, anciennes attractions, relocalisations et items emblématiques.
@@ -518,8 +533,9 @@ Exemples :
 | Bloqueur de publication | `isVisible: false` |
 | Score < 70 | `isVisible: false`, sauf exception manuelle temporaire |
 | Score 70-84 sans bloqueur | Visible possible pour parc local/intermédiaire |
-| Score 85+ sans bloqueur | Visible recommandé |
-| Parc majeur score < 85 | Visible seulement si les manques ne touchent pas l'identité, les descriptions, l'inventaire principal ou les sources |
+| Score 85-94 sans bloqueur | Bonne fiche, mais commande de complétude non terminée sans dette explicitement acceptée |
+| Score 95+ sans bloqueur | Visible recommandé après validation humaine |
+| Parc majeur score < 95 | Non prêt à l’issue d’une commande de complétude, sauf limites de sources précisément documentées et acceptées |
 | Parc historique score < 80 | Invisible sauf fiche patrimoniale déjà utile et sourcée |
 
 ### ParkItem

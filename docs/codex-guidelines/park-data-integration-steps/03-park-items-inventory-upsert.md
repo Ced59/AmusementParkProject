@@ -34,6 +34,16 @@ Inclure quand c’est fiable :
 - animaux, enclos ou espaces animaliers nommables ;
 - anciens parkItems utiles à l’histoire.
 
+L’inventaire doit être mené en trois passes explicites :
+
+1. offre actuelle et saisonnière stable ;
+2. nouveautés annoncées ou en construction, uniquement quand elles sont confirmées ;
+3. attractions et parkItems définitivement fermés, remplacés, démolis ou relocalisés.
+
+Pour la troisième passe, consulter les historiques officiels, communiqués, archives web, presse et bases spécialisées fiables. Ne pas prendre l’absence sur le plan ou le site actuel comme preuve qu’un ancien item n’existait pas. Pour un parc majeur ou ancien, une recherche historique dédiée est obligatoire et doit produire un total identifié, même si certaines dates restent imprécises.
+
+Il n’existe pas de quota artificiel d’attractions fermées. Intégrer toutes celles qui sont confirmées et apportent une information réelle sur l’histoire du parc, avec une intensité particulière pour les attractions emblématiques, les anciens noms, les remplacements et les relocalisations.
+
 ## Découpage recommandé
 
 Pour un grand parc :
@@ -96,6 +106,7 @@ Ne jamais mettre ces conditions dans les descriptions longues. Si les conditions
 - Pour une attraction déplacée, renseigner l’état dans le parc courant et réserver les autres vies à l’étape histoire.
 - Les restrictions d’accès vont dans `accessConditions`, jamais dans la description.
 - Ne pas supprimer une attraction fermée simplement parce qu’elle n’existe plus physiquement.
+- Une attraction définitivement fermée confirmée doit recevoir son vrai statut, une période fiable quand elle existe et rester dans le périmètre des descriptions, images et timelines des étapes suivantes.
 - Utiliser une suppression contrôlée seulement pour un doublon, une erreur ou une entité hors cible déjà identifiée.
 - Ne pas inventer un constructeur, un modèle ou une zone à partir d’une supposition.
 - Ne pas transformer une information saisonnière en statut permanent.
@@ -221,6 +232,8 @@ Sections possibles :
 - Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
 - Les dates sont exactes ou restent textuelles ; aucune année seule n’est transformée en date complète inventée.
 - Les anciens items importants ne sont pas supprimés.
+- Les trois passes d’inventaire sont terminées et leurs totaux sont annoncés séparément.
+- Les attractions définitivement fermées ont fait l’objet d’une recherche historique dédiée ; les lacunes restantes indiquent les sources vérifiées.
 - Les items sans source fiable restent absents ou `ToReview`.
 
 ## Récap avant livraison
@@ -230,6 +243,7 @@ Avant le fichier JSON, résumer systématiquement :
 - ce qui est ajouté, corrigé, masqué et conservé ;
 - les parkItems inclus dans le lot, avec leur type principal quand le lot porte sur l’inventaire ;
 - le compteur d’avancement de l’étape 3, par exemple `parkItems : 30 / 147` et `attractions uniquement : 30 / 49` quand ces totaux sont connus ;
+- le sous-compteur des attractions actuelles, annoncées/en construction et définitivement fermées ;
 - le reste à traiter avant l’étape 4, notamment les lots d’items non encore intégrés ;
 - les sources principales et les limites du lot.
 
@@ -237,6 +251,6 @@ Si un JSON est une correction d’un lot déjà livré, le récap doit préciser
 
 ## Après Apply
 
-Demander l’export actualisé avant de rédiger les descriptions longues.
+Obtenir l’export actualisé avant de rédiger les descriptions longues : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 4 — Descriptions longues localisées. Si le parc est très mineur ou trop peu documenté pour des textes longs, indiquer `à décider` ou `probablement inutile` avec la raison. Si l’étape 4 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, puis attendre la décision utilisateur.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 4 — Descriptions longues localisées. Si le parc est très mineur ou trop peu documenté pour des textes longs, indiquer `à décider` ou `probablement inutile` avec la raison. Si l’étape 4 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

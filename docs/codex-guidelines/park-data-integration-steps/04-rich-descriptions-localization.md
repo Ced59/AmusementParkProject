@@ -34,7 +34,8 @@ Ordre recommandé :
 2. Descriptions des zones.
 3. ParkItems majeurs par lots de 5 à 8.
 4. ParkItems secondaires par lots de 8 à 12.
-5. Restaurants, boutiques, services, parkings et hôtels par familles.
+5. Attractions définitivement fermées et autres items historiques par lots dédiés.
+6. Restaurants, boutiques, services, parkings et hôtels par familles.
 
 Ne pas rédiger toutes les descriptions d’un grand parc en une seule réponse.
 
@@ -68,6 +69,8 @@ Priorités en cas de doute :
 7. Cohérence multilingue.
 
 Le style attendu est naturel, éditorial, spécifique au lieu, agréable à lire, orienté visiteur, non mécanique, non cloné d’un parc à l’autre et sans remplissage.
+
+Cette charte s’applique à tout texte public produit dans les étapes suivantes, notamment titres, résumés, articles, textes alternatifs et légendes d’images. Aucun de ces textes ne doit ressembler à un champ rempli automatiquement, à une fiche technique, à une note de contrôle ou à une explication du processus d’intégration.
 
 Interdit dans les descriptions :
 
@@ -109,6 +112,7 @@ Formulations interdites :
 - Attraction : expérience ressentie, observations visibles, rythme, ambiance, place dans le parc, sensations fiables.
 - Restaurant, boutique, service : type de lieu, ambiance, utilité réelle, positionnement, particularité visible ou nommable.
 - Fondateur, exploitant, constructeur : biographie factuelle, réutilisable, prudente, non centrée artificiellement sur le parc courant.
+- Attraction définitivement fermée : raconter naturellement l’expérience qu’elle proposait et sa place dans le parc au passé, sans la présenter comme encore visitable ni réduire le texte à ses dates et caractéristiques.
 
 Les descriptions ou biographies de références peuvent être traitées ici seulement si le lot est explicitement consacré à du texte localisé. Sinon, les compléter à l’étape 5. Dans tous les cas, ne pas considérer une référence importante comme complète si elle n’a pas de biographie ou description fiable dans les 8 langues, sauf absence de sources documentée.
 
@@ -170,9 +174,10 @@ Sections possibles :
 - Aucune information structurée ne pollue la narration.
 - Le texte donne envie de lire sans survente.
 - Le texte ne ressemble pas à une fiche interne.
+- Toute attraction publiable, y compris annoncée, en construction ou définitivement fermée, possède ses 8 descriptions naturelles, sauf lacune de source précisément documentée.
 
 ## Après Apply
 
-Demander l’export actualisé avant le lot de descriptions suivant ou avant les images.
+Obtenir l’export actualisé avant le lot de descriptions suivant ou avant les images : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 5 — Images et références. Si aucune image fiable, créditable ou techniquement importable n’a été trouvée, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 5 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, puis attendre la décision utilisateur.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 5 — Images et références. Si aucune image fiable, créditable ou techniquement importable n’a été trouvée après une recherche réelle, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 5 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

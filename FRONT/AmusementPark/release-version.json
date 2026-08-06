@@ -1,6 +1,20 @@
 {
-  "version": "4.1.10",
+  "version": "4.1.11",
   "history": [
+    {
+      "version": "4.1.11",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Le cadre de complétude des parcs a été renforcé.",
+        "en": "The park completion framework has been strengthened.",
+        "de": "Der Rahmen für die Vervollständigung von Parks wurde gestärkt.",
+        "nl": "Het kader voor het vervolledigen van parken is aangescherpt.",
+        "it": "Il quadro per il completamento dei parchi è stato rafforzato.",
+        "es": "Se ha reforzado el marco para completar los parques.",
+        "pl": "Wzmocniono zasady uzupełniania danych parków.",
+        "pt": "O quadro de completude dos parques foi reforçado."
+      }
+    },
     {
       "version": "4.1.10",
       "releasedAt": "2026-08-06",
