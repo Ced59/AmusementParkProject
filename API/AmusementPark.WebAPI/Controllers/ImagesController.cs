@@ -530,12 +530,11 @@ public sealed class ImagesController : ControllerBase
             }
 
             this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
-            this.Response.ContentLength = metadata.Value.ContentLength;
             this.Response.ContentType = metadata.Value.ContentType;
             return this.StatusCode(StatusCodes.Status200OK);
         }
 
-        (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetSocialPreviewAsync(
+        (byte[] Content, string ContentType)? binary = await this.imageBinaryStorage.GetSocialPreviewAsync(
             result.Value.Path,
             SocialPreviewImageWidth,
             cancellationToken);
@@ -547,7 +546,7 @@ public sealed class ImagesController : ControllerBase
         }
 
         this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
-        return this.File(binary.Value.Stream, binary.Value.ContentType);
+        return this.File(binary.Value.Content, binary.Value.ContentType);
     }
 
     private bool UserCanSeeNonVisible()

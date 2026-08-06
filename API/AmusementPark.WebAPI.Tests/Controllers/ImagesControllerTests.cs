@@ -88,7 +88,6 @@ public sealed class ImagesControllerTests
     public async Task GetSocialPreviewImageAsync_ShouldUseStableJpegVariantWithoutContentNegotiation()
     {
         byte[] imageContent = new byte[] { 0xFF, 0xD8, 0xFF, 0xD9 };
-        MemoryStream imageStream = new MemoryStream(imageContent);
         Image image = new Image
         {
             Id = "image-1",
@@ -108,14 +107,14 @@ public sealed class ImagesControllerTests
                 "images/image-1",
                 ImagesController.SocialPreviewImageWidth,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((imageStream, "image/jpeg"));
+            .ReturnsAsync((imageContent, "image/jpeg"));
         ImagesController controller = CreateController(queryHandler.Object, storage.Object);
 
         IActionResult result = await controller.GetSocialPreviewImageAsync("image-1", CancellationToken.None);
 
-        FileStreamResult file = Assert.IsType<FileStreamResult>(result);
+        FileContentResult file = Assert.IsType<FileContentResult>(result);
         Assert.Equal("image/jpeg", file.ContentType);
-        Assert.Same(imageStream, file.FileStream);
+        Assert.Same(imageContent, file.FileContents);
         Assert.Equal("public,max-age=0,must-revalidate", controller.Response.Headers.CacheControl);
         Assert.False(controller.Response.Headers.ContainsKey("Vary"));
         queryHandler.VerifyAll();
@@ -154,7 +153,7 @@ public sealed class ImagesControllerTests
 
         StatusCodeResult status = Assert.IsType<StatusCodeResult>(result);
         Assert.Equal(StatusCodes.Status200OK, status.StatusCode);
-        Assert.Equal(123L, controller.Response.ContentLength);
+        Assert.Null(controller.Response.ContentLength);
         Assert.Equal("image/jpeg", controller.Response.ContentType);
         Assert.Equal("public,max-age=0,must-revalidate", controller.Response.Headers.CacheControl);
         Assert.False(controller.Response.Headers.ContainsKey("Vary"));

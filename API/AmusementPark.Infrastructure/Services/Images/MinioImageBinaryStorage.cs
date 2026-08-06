@@ -286,7 +286,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         return await GetOriginalBestAsync(pathWithoutExtension, supportsWebp, cancellationToken);
     }
 
-    public async Task<(Stream Stream, string ContentType)?> GetSocialPreviewAsync(
+    public async Task<(byte[] Content, string ContentType)?> GetSocialPreviewAsync(
         string pathWithoutExtension,
         int width,
         CancellationToken cancellationToken)
@@ -303,7 +303,8 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
 
         string objectName = GetSocialPreviewVariantObjectName(pathWithoutExtension, socialPreviewWidth);
-        return await this.ExecuteWithSocialPreviewGenerationLockAsync(
+        (Stream Stream, string ContentType)? preview =
+            await this.ExecuteWithSocialPreviewGenerationLockAsync(
             pathWithoutExtension,
             async operationCancellationToken =>
             {
@@ -334,6 +335,25 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                     operationCancellationToken);
             },
             cancellationToken);
+        if (preview is null)
+        {
+            return null;
+        }
+
+        await using Stream previewStream = preview.Value.Stream;
+        if (previewStream.CanSeek)
+        {
+            previewStream.Position = 0;
+        }
+
+        if (previewStream is MemoryStream memoryStream)
+        {
+            return (memoryStream.ToArray(), preview.Value.ContentType);
+        }
+
+        using MemoryStream content = new MemoryStream();
+        await previewStream.CopyToAsync(content, cancellationToken);
+        return (content.ToArray(), preview.Value.ContentType);
     }
 
     public async Task<(long ContentLength, string ContentType)?> GetSocialPreviewMetadataAsync(
