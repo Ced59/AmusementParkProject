@@ -5,6 +5,10 @@ namespace AmusementPark.Application.Features.Images.Ports;
 /// </summary>
 public interface IImageVariantGenerationLease
 {
+    Task<bool> ExistsAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken);
+
     Task<bool> TryAcquireAsync(
         string pathWithoutExtension,
         string leaseToken,

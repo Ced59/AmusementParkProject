@@ -31,7 +31,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private const int ResponsiveVariantVersion = 2;
     private const int SocialPreviewVariantVersion = 1;
     private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
-    private static readonly TimeSpan SocialPreviewLeaseRetryDelay = TimeSpan.FromMilliseconds(100);
+    private static readonly TimeSpan SocialPreviewLeaseRetryDelay = TimeSpan.FromMilliseconds(250);
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
@@ -257,6 +257,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                     return false;
                 }
             },
+            false,
             cancellationToken);
     }
 
@@ -358,6 +359,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private Task<T> ExecuteWithSocialPreviewCoordinationAsync<T>(
         string pathWithoutExtension,
         Func<CancellationToken, Task<T>> operation,
+        T missingTargetResult,
         CancellationToken cancellationToken)
     {
         return this.ExecuteWithSocialPreviewGenerationLockAsync(
@@ -365,6 +367,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             operationCancellationToken => this.ExecuteWithSocialPreviewDistributedLeaseAsync(
                 pathWithoutExtension,
                 operation,
+                missingTargetResult,
                 operationCancellationToken),
             cancellationToken);
     }
@@ -372,6 +375,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     internal async Task<T> ExecuteWithSocialPreviewDistributedLeaseAsync<T>(
         string pathWithoutExtension,
         Func<CancellationToken, Task<T>> operation,
+        T missingTargetResult,
         CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pathWithoutExtension);
@@ -390,6 +394,14 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             if (leaseAcquired)
             {
                 break;
+            }
+
+            bool targetExists = await this.variantGenerationLease.ExistsAsync(
+                pathWithoutExtension,
+                cancellationToken);
+            if (!targetExists)
+            {
+                return missingTargetResult;
             }
 
             await Task.Delay(SocialPreviewLeaseRetryDelay, cancellationToken);
@@ -481,6 +493,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 objectName,
                 width,
                 operationCancellationToken),
+            null,
             cancellationToken);
     }
 

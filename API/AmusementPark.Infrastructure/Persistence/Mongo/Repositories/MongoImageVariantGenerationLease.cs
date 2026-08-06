@@ -20,6 +20,24 @@ public sealed class MongoImageVariantGenerationLease : IImageVariantGenerationLe
             settings.ImagesCollectionName);
     }
 
+    public async Task<bool> ExistsAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(pathWithoutExtension))
+        {
+            return false;
+        }
+
+        FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(
+            static document => document.Path,
+            pathWithoutExtension.Trim());
+        return await this.collection
+            .Find(filter)
+            .Limit(1)
+            .AnyAsync(cancellationToken);
+    }
+
     public async Task<bool> TryAcquireAsync(
         string pathWithoutExtension,
         string leaseToken,
