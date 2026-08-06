@@ -172,6 +172,6 @@ Section principale : `openingHours`.
 
 ## Après Apply
 
-Demander l’export actualisé avant de créer la timeline historique.
+Obtenir l’export actualisé avant de créer la timeline historique : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 7 — Histoire du parc et des parkItems. Si le parc est trop peu documenté pour une timeline fiable, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 7 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, puis attendre la décision utilisateur.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 7 — Histoire du parc et des parkItems. Si le parc est trop peu documenté pour une timeline fiable, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 7 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

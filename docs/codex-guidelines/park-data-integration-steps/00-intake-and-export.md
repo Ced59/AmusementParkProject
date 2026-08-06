@@ -9,6 +9,10 @@ Objectif : décider si le parc doit être intégré, définir le niveau de profo
 - À défaut d’export, confirmation explicite que le parc doit être créé.
 - Objectif du lot : création complète, enrichissement, correction ou audit.
 
+En mode Codex autonome, Codex obtient lui-même l’export et les données de complétude par l’API `PARK_DATA_EDITOR`. Il ne demande pas à l’utilisateur de les extraire depuis l’administration.
+
+Une demande `Complète le parc <nom>` signifie toujours `création ou enrichissement complet avec audit de l’existant`. Elle ne doit pas être réduite à l’ajout de quelques champs manifestement absents.
+
 ## Décision de pertinence
 
 Appliquer d’abord la règle de pertinence. Ne jamais formater, corriger, enrichir ou générer un JSON upsert avant d’avoir décidé si l’entité appartient au périmètre.
@@ -50,6 +54,24 @@ La sortie de cadrage doit retenir exactement un `ParkStatus` canonique parmi `Pl
 
 Un parc majeur ne doit jamais être traité comme une fiche minimale si les sources permettent mieux. Il doit être planifié pour recevoir descriptions longues, zones officielles, parkItems principaux et secondaires, restaurants, boutiques, services, hôtels, parkings, exploitants, fondateurs, constructeurs, images, horaires et histoire.
 
+Le niveau choisi adapte le volume, pas la rigueur. Même pour un parc local, un projet ou un parc fermé, vérifier systématiquement identité, statut, inventaire applicable, anciennes attractions, descriptions, logo, images, histoire, annonces durables et sources. Ne jamais produire artificiellement le même volume qu’un parc majeur lorsque les sources ne le justifient pas.
+
+## État initial et objectifs de couverture
+
+Avant le plan de lots, établir un état initial chiffré à partir de l’export :
+
+- parkItems totaux et attractions par statut ;
+- attractions actuelles, annoncées, en construction et définitivement fermées ;
+- entités disposant des 8 descriptions publiques ;
+- entités disposant d’au moins une image ;
+- présence d’un logo officiel courant et d’une image principale du parc ;
+- nombre de jalons historiques, d’articles, de sources et d’images associées ;
+- données signalées par le contrôle de complétude.
+
+Préparer ensuite les recherches dans quatre ensembles distincts : offre actuelle, projets confirmés, inventaire historique fermé, histoire et actualité récente durable. Pour un parc majeur ou historiquement riche, prévoir des sources officielles, de presse, d’archives et spécialisées : le seul site actuel du parc ne suffit généralement pas à retrouver les éléments disparus.
+
+L’étape 0 doit ouvrir un registre des lacunes. Une donnée ou une image ne peut y être notée `introuvable` qu’après vérification réelle des familles de sources pertinentes. Ce registre nourrit l’audit final ; il n’autorise ni image générique, ni texte inventé.
+
 ## Plan de sous-lots recommandé
 
 Pour un parc majeur, préparer des sous-lots à l’intérieur des étapes officielles. Cette liste aide à éviter la saturation, mais ne remplace jamais le parcours 0 à 8 de l’orchestrateur.
@@ -86,6 +108,8 @@ Produire une réponse courte avec :
 - décision de pertinence ;
 - niveau de traitement ;
 - sources prioritaires à consulter ;
+- état initial chiffré et objectifs de couverture ;
+- registre initial des lacunes et recherches nécessaires ;
 - découpage de sous-lots dans les étapes officielles ;
 - prochaine étape officielle à exécuter ;
 - pertinence de la prochaine étape ;
@@ -93,6 +117,6 @@ Produire une réponse courte avec :
 
 Ne pas produire de JSON upsert massif à l’étape 0.
 
-À la fin de l’étape 0, la prochaine étape officielle est toujours l’étape 1 pour un vrai parc. Si le parc est pertinent, dire si l’étape 1 est `utile`, `probablement inutile` ou `à décider`, avec la raison. Si elle est jugée `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, sans exécuter ni sauter d’étape sans validation utilisateur. Ne pas inventer une étape préparatoire avant l’étape 1.
+À la fin de l’étape 0, la prochaine étape officielle est toujours l’étape 1 pour un vrai parc. Si le parc est pertinent, dire si l’étape 1 est `utile`, `probablement inutile` ou `à décider`, avec la raison. Si elle est jugée `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la validation utilisateur ; en mode Codex autonome, consigner la décision et continuer selon l’orchestrateur. Ne pas inventer une étape préparatoire avant l’étape 1.
 
 Exception : si l’étape 0 conclut que le bon modèle est `StandaloneAttraction`, suspendre le parcours parc 1 à 8 et basculer vers `standalone-attraction-data-integration.md`.

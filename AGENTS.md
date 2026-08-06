@@ -43,6 +43,19 @@ The project must preserve its current architecture, SOLID principles, separation
 - If `.codex-remote-attachments/` exists in the local repository, remove it before committing or pushing.
 - When unsure, inspect the existing pattern and follow it.
 
+## Park data completion requests
+
+- Treat a request such as `Complète le parc <nom>`, `Intègre le parc <nom>` or an equivalent formulation as a data-integration operation, not as a request to change application code or to work directly in the administration UI.
+- Before acting, read `docs/codex-guidelines/README.md`, `docs/codex-guidelines/park-data-integration-orchestrator.md`, every applicable file from steps 0 through 8, and `docs/codex-guidelines/codex-park-data-editor-api-workflow.md` when Codex performs the work.
+- Codex must use the dedicated `PARK_DATA_EDITOR` API workflow from end to end. It must not fall back to direct administration, a browser admin session, direct database access, or improvised endpoints. Missing or revoked credentials are a blocker to report, not permission to bypass this workflow.
+- Use the already provisioned `admin@amusement-parks.fun` account only through its locally encrypted credential and the scoped token flow documented there. Never register that address again, expose its password or token, or use any broader account privilege through another channel.
+- The short completion request authorizes autonomous execution of every applicable step, including research, bounded Preview/Apply lots, refreshed exports, private image imports and the final audit. It does not authorize publication of the park, its new content or its media, deletion, hiding previously public content, or cleanup of an unknown legacy entity.
+- Keep a new or currently hidden park in its review state until the user explicitly authorizes publication. Preserve the visibility of an already public park while enriching it unless a separate correction has been explicitly requested.
+- Apply the same high editorial standard used for a major reference park to every newly completed park. The rigor is constant even when the amount of available content varies: current and historical inventory, permanently closed attractions, recent durable announcements, useful articles, official logo, representative park imagery, contextual images, eight-language public copy, verified sources and documented gaps must all be audited.
+- A park is not complete merely because the API accepts its JSON or a numeric score crosses a threshold. Report quantitative coverage for attractions, descriptions, images, history, articles and logo, and leave only gaps that remain after a genuine source search.
+- Public text, including image descriptions, alternative text and captions, must be natural and editorial. Never expose technical, mechanical, audit-oriented or tool-oriented wording to visitors.
+- A data-only completion run does not require a repository branch, release bump or pull request. Use the repository delivery workflow only when the user also requests documentation or code changes, as in any other implementation task.
+
 ## Backend rules
 
 - Respect clean architecture boundaries.

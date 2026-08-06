@@ -1,18 +1,27 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-07-03-r1**
+Version : **2026-08-06-r1**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
-Cet orchestrateur sert à éviter les JSON trop gros, les oublis de cohérence et les réponses qui saturent à cause d’un parc trop riche. Il ne remplace pas les règles détaillées : il indique quoi lire, dans quel ordre, et quand s’arrêter pour demander un export actualisé.
+Cet orchestrateur sert à éviter les JSON trop gros, les oublis de cohérence et les réponses qui saturent à cause d’un parc trop riche. Il ne remplace pas les règles détaillées : il indique quoi lire, dans quel ordre et comment vérifier qu’un parc est réellement complet.
+
+## Deux modes d’exécution, une seule exigence éditoriale
+
+- **ChatGPT guidé** : l’utilisateur fournit les exports actualisés, exécute ou valide Preview/Apply et décide du passage à l’étape suivante. ChatGPT livre un seul lot à la fois.
+- **Codex autonome par API** : la commande `Complète le parc <nom>` autorise Codex à exécuter de bout en bout toutes les étapes applicables avec `codex-park-data-editor-api-workflow.md`, sans demander une validation intermédiaire à chaque lot. Codex recherche, exporte, prévisualise, applique, réexporte et audite lui-même.
+
+Les deux modes utilisent les mêmes étapes 0 à 8, les mêmes règles métier, la même qualité éditoriale et le même seuil de complétude. Seuls l’opérateur technique et les points de pause diffèrent.
+
+`Complète le parc <nom>` n’autorise pas la publication. Codex s’arrête après l’étape 8 avec un état `prêt pour publication` ou une liste précise de lacunes. Une demande distincte et explicite est nécessaire pour publier les nouvelles images, rendre visibles le parc et les nouveaux contenus, valider leur statut ou déclencher toute annonce de publication.
 
 ## Règle de contexte obligatoire
 
-Avant l’étape 0, l’utilisateur fournit l’export actuel du parc s’il existe déjà, ou confirme qu’il faut créer le parc depuis zéro.
+En mode ChatGPT, avant l’étape 0, l’utilisateur fournit l’export actuel du parc s’il existe déjà, ou confirme qu’il faut créer le parc depuis zéro. En mode Codex, Codex recherche les doublons et récupère lui-même l’export par l’API technique ; il ne demande un choix que si plusieurs identités plausibles subsistent.
 
-Avant chaque nouvelle étape, l’utilisateur fournit l’export actualisé après Preview/Apply de l’étape précédente. Sans cet export actualisé, ne pas continuer : demander l’export plutôt que produire un JSON basé sur un état ancien.
+Avant chaque nouvelle étape, l’état de référence est l’export actualisé après Preview/Apply de l’étape précédente. ChatGPT le demande à l’utilisateur. Codex le récupère lui-même. Sans cet export, ne jamais continuer sur un état ancien.
 
-Chaque réponse doit produire un seul livrable principal :
+En mode ChatGPT, chaque réponse doit produire un seul livrable principal :
 
 - soit une analyse de blocage ;
 - soit un JSON upsert borné pour l’étape en cours ;
@@ -20,11 +29,13 @@ Chaque réponse doit produire un seul livrable principal :
 
 Quand le livrable principal est un JSON upsert, le JSON doit être fourni sous forme de fichier `.json` téléchargeable, pas comme un long bloc texte à copier-coller. La réponse visible doit seulement résumer le contenu du fichier, les sources, les limites et la suite. Si l’interface ne permet pas de joindre un fichier, ne pas contourner en collant tout le JSON : prévenir l’utilisateur et demander explicitement le format de secours souhaité.
 
+En mode Codex autonome, la même limite s’applique à chaque lot API, mais Codex peut enchaîner plusieurs lots et étapes dans le même tour. Il conserve les artefacts de travail hors du dépôt, informe brièvement l’utilisateur de sa progression et livre à la fin un bilan consolidé plutôt qu’un fichier à appliquer manuellement pour chaque lot.
+
 Nommer les fichiers de façon lisible et traçable, par exemple `park-slug-step-03-items-lot-1-YYYYMMDD.json`.
 
 ## Règle de livraison visible
 
-Avant chaque fichier JSON upsert livré, la réponse visible doit récapituler :
+Avant chaque fichier JSON upsert livré par ChatGPT, la réponse visible doit récapituler :
 
 - les ajouts, corrections, suppressions contrôlées, éléments masqués et éléments explicitement conservés ;
 - le périmètre du lot, avec les entités incluses et les entités exclues ou reportées ;
@@ -33,6 +44,8 @@ Avant chaque fichier JSON upsert livré, la réponse visible doit récapituler :
 - les sources principales et les limites connues, sans noyer la réponse dans le JSON.
 
 Pour l’étape 3, distinguer au minimum le compteur de tous les parkItems et, quand c’est utile, le sous-compteur des attractions. Ne pas annoncer le passage à l’étape suivante si le compteur ou les éléments restants montrent que l’étape en cours n’est pas terminée.
+
+Codex reprend ces informations dans ses points d’avancement et dans le bilan final consolidé, avec les compteurs avant/après et les lots réellement appliqués.
 
 ## Règle de parcours strict
 
@@ -51,14 +64,14 @@ Les références ne forment pas une étape autonome :
 
 Si une information utile à l’étape demandée exige une référence, résoudre cette référence dans le JSON de l’étape en cours ou vérifier qu’elle existe déjà dans l’export. Ne pas créer une étape “références” ou “pré-références”.
 
-Si la prochaine étape officielle semble peu pertinente pour le parc en cours, ne pas la sauter seul. À la fin de l’étape en cours, ajouter une section `Pertinence de la prochaine étape` avec :
+Si la prochaine étape officielle semble peu pertinente pour le parc en cours, l’évaluer explicitement. À la fin de l’étape en cours, ajouter une section `Pertinence de la prochaine étape` avec :
 
 - le numéro et le nom de la prochaine étape officielle ;
 - un statut clair : `utile`, `probablement inutile` ou `à décider` ;
 - la raison concrète liée au parc et aux sources ;
 - la décision attendue de l’utilisateur : continuer cette étape, la sauter, ou demander un complément.
 
-Si la prochaine étape officielle est `probablement inutile`, continuer l’analyse de proche en proche jusqu’à identifier la prochaine étape officielle `utile` ou `à décider`. Lister brièvement chaque étape intermédiaire jugée peu pertinente et pourquoi. Ne pas exécuter ni sauter automatiquement ces étapes : l’utilisateur tranche.
+Si la prochaine étape officielle est `probablement inutile`, continuer l’analyse de proche en proche jusqu’à identifier la prochaine étape officielle `utile` ou `à décider`. Lister brièvement chaque étape intermédiaire jugée peu pertinente et pourquoi. En mode ChatGPT, l’utilisateur tranche avant de poursuivre. En mode Codex autonome, consigner la non-applicabilité et continuer ; ne jamais classer une étape applicable comme inutile pour éviter son travail.
 
 ## Règles anti-saturation
 
@@ -284,12 +297,16 @@ Une étape est terminée seulement quand :
 
 Si l’export montre une divergence avec le JSON précédent, l’export gagne. Ne pas réutiliser un ancien `id`, `zoneKey`, `manufacturerKey`, `itemKey` ou `imageKey` qui n’existe plus dans l’état actualisé.
 
-Le passage à l’étape suivante se fait seulement après validation utilisateur. Même si une étape semble inutile pour le parc, la décision appartient à l’utilisateur après lecture de la section `Pertinence de la prochaine étape`.
+En mode ChatGPT, le passage à l’étape suivante se fait seulement après validation utilisateur. Même si une étape semble inutile pour le parc, la décision appartient à l’utilisateur après lecture de la section `Pertinence de la prochaine étape`.
+
+En mode Codex autonome, Codex peut constater qu’une étape est non applicable ou réellement inutile, consigner la raison et continuer vers l’étape officielle suivante. Il ne peut pas sauter un travail applicable pour gagner du temps. Tout doute qui changerait matériellement l’identité du parc, supprimerait une donnée, masquerait un contenu public ou exigerait une décision éditoriale du propriétaire reste bloquant.
 
 ## Règles de recherche
 
 - Utiliser les sources officielles quand elles existent.
 - Croiser les données historiques avec des sources spécialisées ou archivées quand les sources officielles sont incomplètes.
+- Pour un parc majeur ou ancien, effectuer une recherche dédiée sur les attractions définitivement fermées, les anciens noms, les remplacements, les démolitions et les relocalisations. L’absence d’un élément sur le site officiel actuel ne prouve pas qu’il n’a jamais existé.
+- Rechercher les annonces récentes et les actualités à effet durable au moment de l’intégration : nouveauté importante, fermeture, remplacement, transformation, acquisition ou projet structurant. Les intégrer à l’histoire et créer un article quand elles possèdent un vrai angle éditorial durable.
 - Vérifier les informations récentes ou changeantes au moment de l’étape.
 - Vérifier réellement chaque URL utilisée comme source d’article ou d’événement avant livraison. La page finale après redirection doit répondre et rester pertinente ; ne jamais livrer de source 404, 410, erreur serveur, soft-404, page d’accueil utilisée comme remplacement, ou URL inventée.
 - Ne jamais inventer une date complète quand seule l’année ou le mois est fiable.
@@ -302,31 +319,38 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 
 - Vérifier la pertinence avant tout enrichissement.
 - Ne jamais enrichir artificiellement une entité douteuse.
-- Pour un parc majeur `Operating`, viser un traitement complet : parc, zones, attractions, restaurants, boutiques, services, hôtels, parkings, références, images, horaires et histoire. Pour un projet ou un parc non exploité, adapter le traitement à ce qui existe réellement sans simuler une offre visiteurs.
+- Le degré d’exigence est élevé pour chaque parc complété. La profondeur et le volume s’adaptent à son importance, son statut et aux sources, mais jamais la rigueur de recherche, de vérification, de localisation, d’imagerie ou d’audit.
+- Pour un parc majeur `Operating`, viser un traitement exhaustif : parc, zones, attractions actuelles et historiques, restaurants, boutiques, services, hôtels, parkings, références, images, horaires, histoire et actualités durables. Pour un projet ou un parc non exploité, adapter le traitement à ce qui existe réellement sans simuler une offre visiteurs.
 - Ne pas se limiter aux coasters.
 - Résoudre toutes les clés utilisées : `zoneKey`, `manufacturerKey`, `operatorKey`, `founderKey`, `ownerKey`, `itemKey`, `imageKey`.
 - Chercher systématiquement les conditions d’accès de chaque attraction et les intégrer dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.
 - Ne livrer aucune image dont le propriétaire ne peut pas être résolu à partir de l’export actualisé ou des références/items créés dans le même JSON.
+- Pendant une commande de complétude, conserver toute nouvelle image en `isPublished: false`, y compris pour un parc déjà public. La publication des médias appartient à la phase explicitement autorisée de l’étape 8.
 - Vérifier les descriptions ou biographies manquantes des constructeurs, fondateurs et exploitants associés au parc ; les compléter à l’étape 5 ou signaler explicitement l’absence de source fiable.
 - Préserver les données existantes en mode `merge` : IDs, images, rattachements, coordonnées, biographies et contenus validés.
 - Garder les éléments fermés mais confirmés visibles quand ils sont pertinents pour la fiche ou l’histoire.
+- Rechercher explicitement les attractions définitivement fermées et documenter leur statut, leurs dates ou périodes, leurs descriptions, leur histoire et leur image quand les sources le permettent.
 - Renseigner une année seule quand c’est la seule précision fiable pour une date d’ouverture ou de fermeture ; ne jamais fabriquer `01-01` ou un premier jour de mois.
 - Mettre les restrictions, tailles, tarifs, horaires, dates, coordonnées et données techniques dans les champs structurés, pas dans les descriptions.
 - Utiliser uniquement les valeurs enum listées dans `park-graph-upsert-enums.md`.
 - Renseigner `park.audienceClassification` dans les nouveaux JSON d’infos générales de parc et vérifier son absence uniquement comme dette legacy à corriger.
 - Utiliser uniquement des images externes importables par le flux technique du projet : URL HTTP(S) publique, réponse image réelle, taille acceptée et propriétaire résolu.
+- Rechercher le logo officiel actuel, une image représentative du parc et au moins une image fidèle pour chaque attraction actuelle, annoncée, en construction ou définitivement fermée quand elle est trouvable. Vérifier aussi une image contextualisée pour chaque jalon et article historique.
+- Une photo non officielle est acceptable si elle représente sans ambiguïté la bonne entité, peut être correctement créditée et ne porte aucun watermark d’un autre site. Toujours inspecter visuellement l’image ; ne jamais se fier au seul nom de fichier, à l’URL ou à la légende source.
+- Les textes alternatifs, légendes et descriptions d’images sont des contenus éditoriaux destinés au visiteur. Ils décrivent naturellement ce qui est visible et son contexte, sans jargon d’import, formulation mécanique, note d’audit, justification de source ou commentaire sur une image manquante.
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Réserver les libellés et raisons visibles dans le calendrier aux événements nommés, exceptions datées ou informations temporaires utiles ; ne jamais répéter un commentaire général sur tous les jours normaux.
 - Créer un article seulement si le sujet a une vraie valeur éditoriale durable.
 - Pour un incident ou accident trouvé sur un parkItem, créer obligatoirement un article associé quand l’événement est sourcé et retenu, avec une photo contextualisée si une image acceptable est trouvable.
 - Rédiger les événements et articles historiques pour les visiteurs, sans note d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur une présence seulement documentée.
 - Pour les articles et événements historiques, utiliser uniquement des sources dont les liens répondent au moment de la génération. Si la page d’origine ne répond plus, utiliser une archive fiable ou une autre source valide ; sinon retirer la source et documenter la limite.
+- Ne considérer une absence comme acceptable qu’après une recherche réelle. L’audit final doit nommer chaque lacune résiduelle et les familles de sources vérifiées, sans la masquer derrière un score global.
 
 ## Règles de livraison
 
 Avant de livrer un JSON, appliquer le fichier d’étape concerné et les règles globales intégrées ci-dessus.
 
-La réponse doit indiquer clairement :
+Pour ChatGPT, chaque réponse d’étape doit indiquer clairement :
 
 - `Étape traitée` ;
 - `Livrable`, avec le nom du fichier `.json` téléchargeable quand un upsert est généré ;
@@ -338,3 +362,5 @@ La réponse doit indiquer clairement :
 La section `Ce qui reste volontairement hors étape` doit expliquer ce qui est reporté parce que cela appartient à une étape officielle future. Elle ne doit pas proposer un nouveau découpage.
 
 Ne pas coller le JSON complet dans la réponse visible quand un fichier téléchargeable a été généré. Un court extrait ou un résumé des sections incluses suffit.
+
+Pour Codex autonome, le bilan final remplace les livraisons intermédiaires : il indique les étapes exécutées ou non applicables, les lots appliqués, le tableau de couverture, les lacunes après recherche, les éventuels warnings acceptés et la décision `prêt pour publication` ou les corrections restantes.

@@ -307,6 +307,7 @@ function Invoke-MultipartImageUpload {
         $multipart.Add($fileContent, 'File', $uploadFileName)
         $multipart.Add([System.Net.Http.StringContent]::new($Category), 'Category')
         $multipart.Add([System.Net.Http.StringContent]::new(([string]$WithWatermark).ToLowerInvariant()), 'WithWatermark')
+        $multipart.Add([System.Net.Http.StringContent]::new(([string]$IsPublished).ToLowerInvariant()), 'IsPublished')
         if (-not [string]::IsNullOrWhiteSpace($Description)) {
             $multipart.Add([System.Net.Http.StringContent]::new($Description), 'Description')
         }

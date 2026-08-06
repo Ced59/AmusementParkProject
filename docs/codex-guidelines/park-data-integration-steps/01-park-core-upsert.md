@@ -37,7 +37,16 @@ Utiliser l’export initial ou l’export actualisé fourni par l’utilisateur.
 - Fondateur si fiable.
 - Exploitant actuel ou dernier exploitant si le parc est fermé.
 - Coordonnées GPS du parc ou de l’entrée principale.
-- Logo officiel seulement si l’image est techniquement importable et fiable.
+- Logo officiel actuel, distinct d’une photo principale. Sa recherche est obligatoire ; son import peut être fait dans cette étape ou à l’étape 5 selon le mode d’exécution.
+
+## Règles du logo
+
+- Privilégier le site officiel, l’espace presse, les fichiers de marque ou les métadonnées officielles pour identifier le logo actuellement utilisé.
+- Ne pas utiliser une photographie, une ancienne identité visuelle ou une icône de localisation comme remplacement du logo.
+- Pour un parc fermé, utiliser un logo historique dont le lien avec la période d’exploitation est documenté.
+- Le logo utilise la catégorie `Logo`, reste sans watermark ajouté et devient l’image logo courante. Une photo principale du parc reste une image distincte.
+- Si aucun fichier acceptable n’est importable à l’étape 1, inscrire la recherche et l’import comme obligation de l’étape 5, pas comme enrichissement facultatif.
+- Après import, vérifier dans l’export que l’image est bien rattachée au parc et définie comme logo courant. En mode Codex, contrôler aussi la restitution publique avant publication.
 
 ## Références incluses dans cette étape
 
@@ -72,6 +81,7 @@ Cette étape inclut les références nécessaires à la fiche parc. Ne pas crée
 
 - Ne pas effacer une donnée existante fiable en mode `merge`.
 - Préserver les IDs, rattachements, images, coordonnées et contenus validés.
+- Préserver la visibilité d’un parc déjà public pendant son enrichissement. Pour une création ou un parc actuellement masqué, conserver `isVisible: false` et `adminReviewStatus: "ToReview"` jusqu’à l’autorisation explicite de publication.
 - Si une correction remplace une donnée existante, expliquer la raison dans `metadata.notes`.
 - Ne pas confondre fondateur, exploitant, propriétaire et opérateur historique.
 - Ne pas ajouter de tarif, même si la source consultée contient des prix.
@@ -133,10 +143,11 @@ Exemple de forme :
 - `park.type`, `park.status` et `adminReviewStatus` utilisent les valeurs canoniques de `park-graph-upsert-enums.md`.
 - `park.audienceClassification` est renseigné et utilise une valeur canonique de `park-graph-upsert-enums.md`.
 - Les descriptions longues ne sont pas forcées dans cette étape si elles risquent de saturer le lot.
-- Le parc reste masqué tant que les données publiques ne sont pas prêtes, sauf demande explicite.
+- Un parc créé ou initialement masqué reste masqué tant que les données publiques ne sont pas prêtes et que la publication n’est pas explicitement autorisée ; un parc déjà public conserve sa visibilité pendant l’enrichissement.
+- Le logo officiel courant est présent ou son absence est inscrite comme lacune bloquante à reprendre à l’étape 5.
 
 ## Après Apply
 
-Demander l’export actualisé avant de passer aux zones.
+Obtenir l’export actualisé avant de passer aux zones : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 2 — Zones. Si aucune zone officielle ou clairement établie n’existe, indiquer `probablement inutile` avec la raison, puis appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. Attendre la décision utilisateur : ne pas passer directement à l’étape 3 sans accord.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 2 — Zones. Si aucune zone officielle ou clairement établie n’existe, indiquer `probablement inutile` avec la raison, puis appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

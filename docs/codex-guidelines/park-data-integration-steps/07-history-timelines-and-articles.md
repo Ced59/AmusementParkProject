@@ -24,6 +24,22 @@ Pour un parc riche :
 
 Ne pas écrire toute l’histoire d’un grand parc et de toutes ses attractions en un seul JSON.
 
+## Profondeur historique obligatoire
+
+Pour un parc majeur, historiquement riche ou fermé, une timeline limitée à la fondation et à l’ouverture est insuffisante. La recherche doit couvrir, quand les sources existent :
+
+- origine du projet, fondateurs et ouverture ;
+- premières attractions ou zones structurantes ;
+- extensions et nouveautés qui ont changé l’identité du parc ;
+- changements d’exploitant, de propriétaire, de nom ou de thème ;
+- attractions emblématiques définitivement fermées, remplacées, démolies ou relocalisées ;
+- rénovations, interruptions et relances réellement structurantes ;
+- annonces récentes encore pertinentes au moment de la recherche : nouveauté majeure, fermeture, remplacement, transformation, acquisition ou développement futur confirmé.
+
+Croiser l’historique officiel avec la presse, les archives et les sources spécialisées fiables. Le site actuel du parc est rarement suffisant pour retrouver les anciennes attractions. La profondeur attendue dépend des faits documentables, mais le travail de recherche doit rester aussi rigoureux pour chaque parc complété.
+
+À la fin de la recherche, comparer la timeline obtenue à l’inventaire des attractions définitivement fermées de l’étape 3. Toute fermeture emblématique sans jalon, source ou explication doit être corrigée ou inscrite comme lacune explicite.
+
 Le cycle de vie du parc doit être explicable par la timeline quand les sources existent : `Announcement` pour `Planned`, `ConstructionStart` ou jalons pour `UnderConstruction`, `TemporaryClosure` pour `TemporarilyClosed`, `DefinitiveClosure` pour `ClosedDefinitively`, et un événement documentant l’annulation ou l’abandon pour `Cancelled` avec le type historique disponible le plus fidèle. Le statut du parc reste porté par `park.status`; un événement historique ne le remplace pas.
 
 ## Événements de parc
@@ -124,6 +140,8 @@ Créer un article uniquement si le sujet mérite un développement durable :
 
 Un article ne doit pas répéter la description ni devenir une fiche technique.
 
+Pour un parc majeur, un article est attendu pour chaque sujet qui mérite réellement un développement durable, notamment une annonce récente structurante, une transformation majeure ou la fermeture définitive d’une attraction emblématique. Cette obligation ne justifie aucun article de remplissage : les micro-changements restent de simples événements ou sont omis.
+
 Mauvais sujets :
 
 - micro-changement sans intérêt durable ;
@@ -190,6 +208,10 @@ Images d’incident ou accident :
 ## Images créées ou utilisées dans un lot d’article
 
 Le propriétaire d’une image et la référence de cette image depuis un article sont deux résolutions indépendantes. Un événement, un article, `mainImageKey`, `imageKey` ou `imageKeys` ne renseigne jamais le propriétaire de l’objet `images[]`.
+
+Chaque jalon visible et chaque article doit recevoir une image contextualisée quand une image acceptable existe. Rechercher d’abord une image du fait, de l’attraction ou du lieu concerné à la bonne période ; une vue plus générale n’est acceptable que si elle situe honnêtement le sujet. Si aucune image n’est trouvable après recherche réelle, conserver l’exception dans l’audit au lieu d’utiliser une illustration trompeuse.
+
+Les textes alternatifs et légendes suivent la charte de l’étape 4. Ils racontent naturellement ce que l’image montre et son lien avec le sujet ; ils ne mentionnent jamais l’import, la recherche, le choix par défaut, la faiblesse d’une source ou l’absence d’une autre photo.
 
 Le processeur traite les sections dans cet ordre :
 
@@ -402,8 +424,12 @@ Section principale : `history.events`.
 - Les URLs archivées pointent vers une capture consultable de la page utile, pas seulement vers une page d’archive vide.
 - Les titres et résumés importants sont localisés dans les 8 langues quand le lot est complet.
 - Les articles ont un vrai angle éditorial.
+- Les annonces récentes à effet durable ont été recherchées et les sujets importants possèdent un article, pas seulement une ligne de timeline.
+- Pour un parc majeur ou historique, la timeline couvre les grandes périodes et transformations documentables plutôt qu’un historique minimal.
+- Les fermetures emblématiques de l’inventaire de l’étape 3 sont reliées à un jalon, un article quand le sujet le mérite, ou une lacune expliquée.
 - Les titres, résumés et blocs d’articles ne contiennent aucune formulation d’audit interne ou justification documentaire mécanique.
 - Les images référencées existent déjà ou sont créées dans le même JSON.
+- Chaque jalon visible et chaque article possède une image contextualisée quand une image acceptable est trouvable, sinon l’exception de recherche est documentée.
 - Chaque image créée possède un propriétaire résolu selon l’étape 5, indépendamment de l’article.
 - Chaque événement `ParkItem` contient `ownerId`, `parkItemId` et `itemId` explicites quand le parkItem existe déjà dans l’export.
 - Chaque article qui référence une image existante utilise `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` depuis l’export actualisé.
@@ -419,6 +445,6 @@ Section principale : `history.events`.
 
 ## Après Apply
 
-Demander l’export actualisé avant de créer le lot historique suivant ou avant l’audit final.
+Obtenir l’export actualisé avant de créer le lot historique suivant ou avant l’audit final : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 8 — Audit final. L’audit final reste utile dès qu’un JSON a été appliqué, même si certains enrichissements ont été volontairement sautés. Si l’étape 8 est exceptionnellement jugée `probablement inutile`, expliquer pourquoi et rappeler qu’elle est normalement le point de contrôle final du parcours. Attendre la validation utilisateur avant de continuer.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 8 — Audit final. L’audit final reste utile dès qu’un JSON a été appliqué, même si certains enrichissements ont été volontairement sautés. Si l’étape 8 est exceptionnellement jugée `probablement inutile`, expliquer pourquoi et rappeler qu’elle est normalement le point de contrôle final du parcours. En mode ChatGPT, attendre la validation utilisateur ; en mode Codex autonome, exécuter l’audit sans pause.

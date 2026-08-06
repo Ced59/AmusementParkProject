@@ -12,6 +12,8 @@ Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou
 
 Utiliser l’export actualisé après les items et descriptions concernés. Les `ownerKey` doivent correspondre aux clés déjà présentes ou aux références créées dans le même JSON.
 
+Avant toute recherche, produire la liste des propriétaires à couvrir et noter pour chacun l’image courante déjà présente, les images secondaires et l’absence éventuelle. L’objectif n’est pas d’ajouter quelques photos faciles, mais de fermer méthodiquement les lacunes de couverture.
+
 ## Ce que l’import permet techniquement
 
 Le flux d’import d’images remote accepte plus qu’une URL de fichier “directe” classique. D’après le code actuel, une image peut être importée si toutes ces conditions sont vraies :
@@ -45,6 +47,48 @@ Les propriétaires importables par JSON upsert sont :
 
 ## Images à privilégier éditorialement
 
+### Contrat de couverture
+
+Rechercher systématiquement, quand l’entité est applicable :
+
+- le logo officiel actuel du parc, distinct de toute photo principale ;
+- au moins une image représentative du parc ;
+- au moins une image fidèle de chaque attraction actuelle ;
+- au moins une image fidèle de chaque attraction annoncée ou en construction, en distinguant chantier, rendu officiel et attraction ouverte ;
+- au moins une image historique contextualisée de chaque attraction définitivement fermée ;
+- une image contextualisée pour chaque jalon historique visible et chaque article, à acquérir ici ou dans le lot d’étape 7 qui crée le contenu ;
+- les images utiles des références importantes quand une source adaptée existe.
+
+Une même image peut illustrer plusieurs contenus seulement si elle reste réellement pertinente dans chacun de ces contextes. Ne pas réutiliser mécaniquement une vue générale du parc pour masquer l’absence d’une photo de l’attraction, du jalon ou de l’article concerné.
+
+L’absence d’image est acceptable uniquement après une recherche réelle dans les sources officielles, espaces presse, archives, presse, fonds photographiques et sources spécialisées adaptées. Consigner le propriétaire, les familles de sources vérifiées et la raison de l’échec dans le registre des lacunes. Ne jamais compenser avec une image générique, une mauvaise attraction ou un rendu présenté comme une photographie.
+
+### Vérification visuelle et éditoriale
+
+Avant tout import, inspecter visuellement le fichier final, pas seulement sa page, son URL, son nom ou ses métadonnées :
+
+- la bonne attraction, le bon parc ou le bon sujet doit être identifiable sans ambiguïté ;
+- l’époque et l’état représentés doivent être compatibles avec le contexte annoncé ;
+- la résolution et le cadrage doivent rester utiles sur la fiche publique ;
+- aucun watermark, logo incrusté ou signature promotionnelle d’un site tiers ne doit apparaître ;
+- le contenu ne doit être ni trompeur, ni graphique, ni intrusif.
+
+Une photo non officielle peut être utilisée si elle satisfait ces contrôles, possède une source joignable, peut être créditée correctement et respecte le contexte d’utilisation. Préférer les sources officielles et presse lorsqu’elles offrent un visuel équivalent, sans transformer cette préférence en interdiction des bonnes images d’archives ou de contributeurs.
+
+Le logo officiel visible comme sujet de son propre fichier n’est pas un watermark. En revanche, une photographie portant le logo ou le filigrane d’un autre site reste refusée.
+
+### Image courante ou image de contexte
+
+- Le logo officiel actuel devient le logo courant du parc et n’est jamais watermarqué par le projet.
+- La meilleure vue représentative peut devenir l’image principale du parc ou de l’attraction lorsqu’aucune image courante plus juste n’existe.
+- Une image historique, un rendu, une vue de chantier ou une illustration d’article reste secondaire et ne remplace pas automatiquement l’image courante.
+- Vérifier `setAsCurrent` ou `isCurrent` pour chaque import ; ne pas laisser la valeur par défaut choisir la hiérarchie éditoriale.
+
+### Parcours selon l’opérateur
+
+- ChatGPT conserve le flux d’images distantes Park Graph Upsert décrit dans ce fichier.
+- Codex suit le téléchargement, l’inspection, l’upload, le rattachement et la mise à jour des métadonnées décrits dans `../codex-park-data-editor-api-workflow.md`. Il n’utilise pas l’administration comme solution de secours.
+
 Pour `Planned`, `UnderConstruction` ou `Cancelled`, distinguer clairement photographies du site, images officielles du chantier et rendus de conception. Un rendu ne doit jamais être légendé comme une vue d’un parc existant ou ouvert. Pour `TemporarilyClosed` et `ClosedDefinitively`, dater ou contextualiser les images quand leur apparence ne reflète plus l’état actuel.
 
 Une image externe doit être :
@@ -53,7 +97,7 @@ Une image externe doit être :
 - téléchargeable ;
 - fidèle au parc ou à l’item ;
 - créditable ;
-- sans watermark non autorisé, sauf logo officiel ;
+- sans watermark d’un site tiers ;
 - issue d’une source fiable ou librement exploitable selon le contexte du projet.
 
 Refuser ou éviter :
@@ -63,7 +107,7 @@ Refuser ou éviter :
 - miniature trop petite quand une image de meilleure qualité est disponible ;
 - image générique ;
 - image dont l’élément représenté est douteux.
-- image avec watermark, sauf logo officiel.
+- photographie avec watermark, logo incrusté ou signature d’un site tiers.
 
 Ne pas utiliser de lien CDN interne du site comme source externe pour réimporter une image déjà stockée. Utiliser l’ID d’image existant dans ce cas.
 
@@ -128,6 +172,17 @@ Chaque nouvelle image distante doit avoir :
 - `setAsCurrent` si elle doit devenir logo ou image principale ;
 - `description` interne courte ;
 - `altTexts`, `captions`, `credits` dans les 8 langues quand l’image est publique.
+
+Pendant une création ou une commande de complétude avant autorisation de publication, toute nouvelle image doit utiliser `isPublished: false`. Cette règle vaut aussi pour l’enrichissement d’un parc déjà public : sa visibilité existante est préservée, mais le nouveau média reste privé jusqu’à la phase de publication. Ne jamais se fier à une valeur par défaut du client ou du fichier de métadonnées.
+
+Les textes visiteurs de l’image suivent la charte éditoriale de l’étape 4 :
+
+- `altTexts` décrit avec concision ce qui est réellement visible et utile à comprendre ;
+- `captions` situe naturellement la scène, l’attraction ou la période quand ce contexte apporte quelque chose ;
+- `credits` contient l’auteur, la source et la licence ou l’autorisation utile ;
+- `description` reste factuelle et lisible si elle peut apparaître dans un outil éditorial.
+
+Ne jamais écrire dans `altTexts`, `captions` ou `description` : URL source, méthode d’import, statut de vérification, résolution, justification de droits, absence d’une autre photo, propriétaire technique, catégorie de base, score de complétude ou formulation mécanique du type « image contextualisée de l’élément ». Les crédits et notes internes portent ces informations à leur place.
 
 Si une image est techniquement importable mais éditorialement fragile, ne pas l’ajouter : préférer une absence d’image à une image trompeuse, instable ou mal créditée.
 
@@ -296,12 +351,30 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 - Les exploitants liés au parc ont une description et des informations utiles ou une limite de source documentée.
 - Les crédits sont lisibles pour un visiteur.
 - Les logos ne sont pas confondus avec des photos.
+- Le logo officiel courant est présent, sans watermark ajouté, rattaché au parc et marqué comme courant, ou son absence après recherche est documentée comme lacune.
+- Les nouvelles images du lot restent non publiées tant que l’autorisation explicite de l’étape 8 n’a pas été donnée.
+- Chaque attraction actuelle, annoncée, en construction ou définitivement fermée a au moins une image fidèle, ou une exception de recherche précisément documentée.
+- Chaque image a été inspectée visuellement et ne porte aucun watermark ou logo incrusté d’un site tiers.
+- Chaque jalon et article déjà présent possède une image contextualisée quand une image acceptable est trouvable ; les images manquantes sont inscrites au registre de reprise de l’étape 7.
+- Les `altTexts`, `captions` et `description` sont naturels et éditoriaux, sans formulation technique, mécanique ou justificative.
 - Les images historiques ne prétendent pas montrer une date ou un état qu’elles ne montrent pas.
 - Les biographies ne créent pas de doublons de références.
 - Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
 
 ## Après Apply
 
-Demander l’export actualisé pour récupérer les IDs d’images avant de les référencer dans l’histoire.
+Obtenir l’export actualisé pour récupérer les IDs d’images avant de les référencer dans l’histoire : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 6 — Horaires et événements nommés. Si aucun calendrier fiable n’existe ou si le parc est fermé sans horaires utiles, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 6 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`, puis attendre la décision utilisateur.
+Calculer et annoncer la couverture après réexport :
+
+- logo officiel : présent et courant / absent ;
+- image principale du parc : présente / absente ;
+- attractions actuelles avec image / total ;
+- attractions annoncées ou en construction avec image / total ;
+- attractions définitivement fermées avec image / total ;
+- jalons et articles existants avec image / total ;
+- exceptions restantes, avec preuve de recherche.
+
+Ne pas déclarer l’étape terminée sur la seule réussite technique des imports.
+
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 6 — Horaires et événements nommés. Si aucun calendrier fiable n’existe ou si le parc est fermé sans horaires utiles, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 6 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.
