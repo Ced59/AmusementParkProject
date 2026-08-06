@@ -213,6 +213,14 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                     using Image image = await Image.LoadAsync(watermarkedStream, operationCancellationToken);
                     ResizeInPlaceIfNeeded(image);
 
+                    bool socialPreviewsDeleted = await this.DeleteSocialPreviewVariantsAsync(
+                        pathWithoutExtension,
+                        operationCancellationToken);
+                    if (!socialPreviewsDeleted)
+                    {
+                        return false;
+                    }
+
                     foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetFormats())
                     {
                         byte[] content = await EncodeWithSizeLimitAsync(
@@ -232,10 +240,10 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                             operationCancellationToken);
                     }
 
-                    bool variantsDeleted = await this.DeleteResponsiveVariantsAsync(
+                    await this.DeleteResponsiveVariantsAsync(
                         pathWithoutExtension,
                         operationCancellationToken);
-                    return variantsDeleted;
+                    return true;
                 }
                 catch (OperationCanceledException) when (operationCancellationToken.IsCancellationRequested)
                 {
@@ -673,11 +681,10 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         return succeeded;
     }
 
-    internal async Task<bool> DeleteResponsiveVariantsAsync(
+    private async Task DeleteResponsiveVariantsAsync(
         string pathWithoutExtension,
         CancellationToken cancellationToken)
     {
-        bool succeeded = true;
         foreach (string objectName in GetResponsiveObjectNamesForDeletion(pathWithoutExtension))
         {
             try
@@ -697,8 +704,37 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             }
             catch (Exception exception)
             {
-                succeeded = false;
                 this.logger.LogWarning(exception, "Unable to delete responsive image object {ObjectName} from MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
+            }
+        }
+    }
+
+    internal async Task<bool> DeleteSocialPreviewVariantsAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+        bool succeeded = true;
+        foreach (string objectName in GetSocialPreviewObjectNamesForDeletion(pathWithoutExtension))
+        {
+            try
+            {
+                await this.minioClient.RemoveObjectAsync(
+                    new RemoveObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(objectName),
+                    cancellationToken);
+            }
+            catch (Minio.Exceptions.ObjectNotFoundException)
+            {
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                succeeded = false;
+                this.logger.LogWarning(exception, "Unable to delete social preview image object {ObjectName} from MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
             }
         }
 
@@ -722,6 +758,14 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
     }
 
+    private static IEnumerable<string> GetSocialPreviewObjectNamesForDeletion(string pathWithoutExtension)
+    {
+        foreach (int width in ResponsiveWidths)
+        {
+            yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
+        }
+    }
+
     private static IEnumerable<string> GetResponsiveObjectNamesForDeletion(string pathWithoutExtension)
     {
         foreach (int width in ResponsiveWidths)
@@ -730,7 +774,6 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
-            yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
     }
 
