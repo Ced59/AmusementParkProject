@@ -89,7 +89,7 @@ Pour une attraction déplacée, la timeline du parkItem peut continuer hors du p
 
 L’ouverture, la réouverture, la fermeture temporaire et la fermeture définitive d’un parkItem appartiennent exclusivement à la timeline de ce parkItem. Ne jamais dupliquer le même fait dans la timeline du parc, même lorsque le parkItem est emblématique ou que l’événement est majeur.
 
-La timeline du parc peut documenter une transformation d’ensemble, une extension ou une période qui concerne plusieurs parkItems seulement si le fait possède une portée propre à l’échelle du parc. Cet événement de parc ne doit alors ni reprendre comme fait principal l’ouverture ou la fermeture d’un parkItem individuel, ni créer une seconde occurrence de sa date ; utiliser les rattachements vers les parkItems concernés pour conserver le contexte.
+La timeline du parc peut documenter une transformation d’ensemble, une extension ou une période qui concerne plusieurs parkItems seulement si le fait possède une portée propre à l’échelle du parc. Cet événement de parc ne doit alors ni reprendre comme fait principal l’ouverture ou la fermeture d’un parkItem individuel, ni dupliquer ce même fait sous un autre titre. Des faits indépendants peuvent partager une date exacte lorsqu’elle est sourcée ; utiliser les rattachements vers les parkItems concernés pour conserver le contexte.
 
 ## Résolution des propriétaires d’événements history
 

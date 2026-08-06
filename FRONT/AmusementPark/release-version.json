@@ -1,6 +1,20 @@
 {
-  "version": "4.1.25",
+  "version": "4.1.26",
   "history": [
+    {
+      "version": "4.1.26",
+      "releasedAt": "2026-08-07",
+      "labels": {
+        "fr": "Le cadre de qualité des contenus a été précisé.",
+        "en": "Content quality guidance has been refined.",
+        "de": "Die Richtlinien zur Inhaltsqualität wurden weiter präzisiert.",
+        "nl": "De richtlijnen voor inhoudskwaliteit zijn verder verduidelijkt.",
+        "it": "Le linee guida sulla qualità dei contenuti sono state precisate.",
+        "es": "Se han precisado las directrices de calidad del contenido.",
+        "pl": "Doprecyzowano wytyczne dotyczące jakości treści.",
+        "pt": "As orientações sobre a qualidade dos conteúdos foram aperfeiçoadas."
+      }
+    },
     {
       "version": "4.1.25",
       "releasedAt": "2026-08-07",
