@@ -1,6 +1,20 @@
 {
-  "version": "4.1.21",
+  "version": "4.1.22",
   "history": [
+    {
+      "version": "4.1.22",
+      "releasedAt": "2026-08-07",
+      "labels": {
+        "fr": "Les pages restent rapides pendant leur préparation pour les moteurs de recherche.",
+        "en": "Pages stay fast while they are prepared for search engines.",
+        "de": "Seiten bleiben schnell, während sie für Suchmaschinen vorbereitet werden.",
+        "nl": "Pagina's blijven snel terwijl ze voor zoekmachines worden voorbereid.",
+        "it": "Le pagine restano veloci mentre vengono preparate per i motori di ricerca.",
+        "es": "Las páginas siguen siendo rápidas mientras se preparan para los buscadores.",
+        "pl": "Strony pozostają szybkie podczas przygotowywania ich dla wyszukiwarek.",
+        "pt": "As páginas mantêm-se rápidas enquanto são preparadas para os motores de pesquisa."
+      }
+    },
     {
       "version": "4.1.21",
       "releasedAt": "2026-08-06",

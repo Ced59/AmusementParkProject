@@ -181,6 +181,8 @@ En production, le déploiement utilise `Smtp` par défaut si `PROD_EMAIL_MODE` n
 - `SSR_WARMUP_CONTINUOUS_RETRY_SECONDS`, défaut `300` après un échec ou un verrou de cycle occupé.
 - `SSR_WARMUP_ARTIFACT_RETENTION_DAYS`, défaut `7`, supprime les journaux et rapports horodatés plus anciens.
 - `SSR_WARMUP_BOT_VALIDATION_MAX_URLS`, défaut `250`, échantillonne régulièrement toute la sélection réchauffée pour la validation robot.
+- `SSR_WARMUP_MAX_LOAD_PER_CPU`, défaut `0.75`, suspend les nouvelles requêtes du warmup quand la charge par CPU dépasse ce seuil sans réduire la sélection SEO.
+- `SSR_WARMUP_PRESSURE_PAUSE_SECONDS`, défaut `5`, définit la pause entre deux contrôles de charge. Le warmup reprend automatiquement dès que le VPS retrouve de la marge.
 - `PUBLIC_HTTP_PORT`, défaut `18080`
 - `MINIO_API_PORT`, défaut `19000`
 - `MINIO_CONSOLE_PORT`, défaut `19001`
