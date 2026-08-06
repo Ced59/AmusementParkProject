@@ -107,8 +107,12 @@ export class AdminSocialPublishingComponent implements OnInit {
   }
 
   protected publish(): void {
+    const value = this.publicationForm.getRawValue();
+    const normalizedUrl: string = value.url.trim();
+    const currentDraft: SocialPublicationDraft | null = this.draft();
     if (this.publicationForm.invalid
-      || this.draft() === null
+      || currentDraft === null
+      || currentDraft.url !== normalizedUrl
       || this.draftLoading()
       || this.publishing()
       || !this.facebookPublisher()?.isConfigured) {
@@ -116,11 +120,10 @@ export class AdminSocialPublishingComponent implements OnInit {
       return;
     }
 
-    const value = this.publicationForm.getRawValue();
     const request: PublishSocialLinkRequest = {
       network: 'Facebook',
       message: value.message.trim(),
-      url: value.url.trim(),
+      url: normalizedUrl,
       previewImageId: this.selectedImageId()
     };
     this.facade.publish(request);

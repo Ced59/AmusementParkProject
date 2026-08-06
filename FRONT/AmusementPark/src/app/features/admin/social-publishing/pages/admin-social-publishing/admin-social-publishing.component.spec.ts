@@ -12,6 +12,7 @@ interface AdminSocialPublishingHarness {
     url: FormControl<string>;
   }>;
   nextImagePage(): void;
+  publish(): void;
 }
 
 describe('AdminSocialPublishingComponent', () => {
@@ -37,7 +38,17 @@ describe('AdminSocialPublishingComponent', () => {
     fixture.detectChanges();
     httpTestingController.expectOne(
       (request) => request.url === `${environment.apiBaseUrl}admin/social-publications`,
-    ).flush({ publishers: [], recentPublications: [] });
+    ).flush({
+      publishers: [{
+        network: 'Facebook',
+        displayName: 'Facebook',
+        isEnabled: true,
+        isConfigured: true,
+        targetUrl: 'https://www.facebook.com/test',
+        supportsAutomaticParkAnnouncements: true,
+      }],
+      recentPublications: [],
+    });
   });
 
   afterEach(() => {
@@ -71,6 +82,33 @@ describe('AdminSocialPublishingComponent', () => {
       fixture.detectChanges();
 
       expect(harness.publicationForm.controls.message.value).toBe('Mon texte personnalisé');
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('does not publish while the form URL no longer matches the loaded draft', () => {
+    vi.useFakeTimers();
+
+    try {
+      const firstUrl: string = 'https://amusement-parks.fun/fr/park/park-1/park-test';
+      harness.publicationForm.controls.url.setValue(firstUrl);
+      vi.advanceTimersByTime(350);
+      httpTestingController.expectOne((request) =>
+        request.url === `${environment.apiBaseUrl}admin/social-publications/draft`
+        && request.params.get('url') === firstUrl
+      ).flush(createDraft(1));
+      fixture.detectChanges();
+
+      harness.publicationForm.controls.url.setValue(
+        'https://amusement-parks.fun/fr/park/park-2/autre-parc',
+      );
+      harness.publish();
+
+      httpTestingController.expectNone((request) =>
+        request.url === `${environment.apiBaseUrl}admin/social-publications`
+        && request.method === 'POST'
+      );
     } finally {
       vi.useRealTimers();
     }
