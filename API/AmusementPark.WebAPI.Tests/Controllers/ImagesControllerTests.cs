@@ -88,6 +88,7 @@ public sealed class ImagesControllerTests
     public async Task GetSocialPreviewImageAsync_ShouldUseStableJpegVariantWithoutContentNegotiation()
     {
         byte[] imageContent = new byte[] { 0xFF, 0xD8, 0xFF, 0xD9 };
+        MemoryStream imageStream = new MemoryStream(imageContent);
         Image image = new Image
         {
             Id = "image-1",
@@ -107,14 +108,14 @@ public sealed class ImagesControllerTests
                 "images/image-1",
                 ImagesController.SocialPreviewImageWidth,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((new MemoryStream(imageContent), "image/jpeg"));
+            .ReturnsAsync((imageStream, "image/jpeg"));
         ImagesController controller = CreateController(queryHandler.Object, storage.Object);
 
         IActionResult result = await controller.GetSocialPreviewImageAsync("image-1", CancellationToken.None);
 
-        FileContentResult file = Assert.IsType<FileContentResult>(result);
+        FileStreamResult file = Assert.IsType<FileStreamResult>(result);
         Assert.Equal("image/jpeg", file.ContentType);
-        Assert.Equal(imageContent, file.FileContents);
+        Assert.Same(imageStream, file.FileStream);
         Assert.Equal("public,max-age=0,must-revalidate", controller.Response.Headers.CacheControl);
         Assert.False(controller.Response.Headers.ContainsKey("Vary"));
         queryHandler.VerifyAll();

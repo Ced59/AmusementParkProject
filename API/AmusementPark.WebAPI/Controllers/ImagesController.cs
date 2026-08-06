@@ -526,12 +526,8 @@ public sealed class ImagesController : ControllerBase
                 "image.binary-not-found");
         }
 
-        await using System.IO.Stream source = binary.Value.Stream;
-        using System.IO.MemoryStream content = new System.IO.MemoryStream();
-        await source.CopyToAsync(content, cancellationToken);
-
         this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
-        return this.File(content.ToArray(), binary.Value.ContentType);
+        return this.File(binary.Value.Stream, binary.Value.ContentType);
     }
 
     private bool UserCanSeeNonVisible()
