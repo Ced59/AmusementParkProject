@@ -531,7 +531,8 @@ public sealed class ImagesController : ControllerBase
 
             this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
             this.Response.ContentType = metadata.Value.ContentType;
-            return this.StatusCode(StatusCodes.Status200OK);
+            this.Response.ContentLength = metadata.Value.ContentLength;
+            return new EmptyResult();
         }
 
         (byte[] Content, string ContentType)? binary = await this.imageBinaryStorage.GetSocialPreviewAsync(

@@ -181,9 +181,8 @@ public sealed class ImagesControllerTests
             "image-1",
             CancellationToken.None);
 
-        StatusCodeResult status = Assert.IsType<StatusCodeResult>(result);
-        Assert.Equal(StatusCodes.Status200OK, status.StatusCode);
-        Assert.Null(controller.Response.ContentLength);
+        Assert.IsType<EmptyResult>(result);
+        Assert.Equal(123L, controller.Response.ContentLength);
         Assert.Equal("image/jpeg", controller.Response.ContentType);
         Assert.Equal("public,max-age=0,must-revalidate", controller.Response.Headers.CacheControl);
         Assert.False(controller.Response.Headers.ContainsKey("Vary"));
