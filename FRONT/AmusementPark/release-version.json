@@ -1,6 +1,20 @@
 {
-  "version": "4.1.11",
+  "version": "4.1.12",
   "history": [
+    {
+      "version": "4.1.12",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Les outils d’administration sont plus fiables.",
+        "en": "Administration tools are more reliable.",
+        "de": "Die Verwaltungswerkzeuge sind zuverlässiger.",
+        "nl": "De beheertools zijn betrouwbaarder.",
+        "it": "Gli strumenti di amministrazione sono più affidabili.",
+        "es": "Las herramientas de administración son más fiables.",
+        "pl": "Narzędzia administracyjne działają bardziej niezawodnie.",
+        "pt": "As ferramentas de administração estão mais fiáveis."
+      }
+    },
     {
       "version": "4.1.11",
       "releasedAt": "2026-08-06",
