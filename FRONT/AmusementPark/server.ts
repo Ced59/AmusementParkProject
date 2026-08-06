@@ -35,10 +35,15 @@ import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-write
 import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-policy';
 import { siteVersion } from './src/environments/version.generated';
 import { buildContentSecurityPolicy } from './src/app/core/security/content-security-policy';
+import {
+  injectFacebookAppIdMeta,
+  normalizeFacebookAppId,
+} from './src/server/ssr/facebook-open-graph-meta';
 
 const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
 const currentBuildVersion = (process.env['APP_VERSION'] ?? siteVersion).trim() || siteVersion;
+const facebookAppId = normalizeFacebookAppId(process.env['FACEBOOK_APP_ID']);
 const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'false').toLowerCase() !== 'false';
 const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
@@ -1828,7 +1833,8 @@ function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string
 
 function prepareHtmlForResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): string {
   const robotFamily: RobotFamily | null = detectRobotFamily(req);
-  const preparationResult: RobotHtmlPreparationResult = prepareRobotHtmlForResponse(html, {
+  const htmlWithFacebookMetadata: string = injectFacebookAppIdMeta(html, facebookAppId);
+  const preparationResult: RobotHtmlPreparationResult = prepareRobotHtmlForResponse(htmlWithFacebookMetadata, {
     allowRobotNoJsOptimization: options.allowRobotNoJsOptimization,
     robotNoJsHtmlEnabled,
     isRobotRequest: shouldServeRobotOptimizedNoJsHtml(robotFamily)
