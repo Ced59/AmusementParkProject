@@ -348,12 +348,32 @@ function Export-ParkGraph {
         [IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
     }
 
+    $effectiveSections = if (@($RequestedSections).Count -eq 0) {
+        @(
+            'ParkBasics',
+            'ParkAudience',
+            'ParkLocation',
+            'ParkAdministration',
+            'ParkDescriptions',
+            'ParkHomeFeature',
+            'References',
+            'Zones',
+            'Items',
+            'Images',
+            'OpeningHours',
+            'History'
+        )
+    }
+    else {
+        @($RequestedSections)
+    }
+
     $job = Invoke-ParkDataEditorJsonApi -Method POST `
         -RelativePath 'admin/park-graph-upserts/bulk/export-jobs' `
         -Body @{
             selectionMode = 'explicit'
             parkIds = @($TargetParkId)
-            sections = @($RequestedSections)
+            sections = $effectiveSections
         }
     $completedJob = Wait-ParkGraphExportJob -InitialSnapshot $job -TimeoutSeconds $TimeoutSeconds
     $partialPath = Invoke-ResumableFileDownload `
