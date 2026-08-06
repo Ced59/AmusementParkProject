@@ -79,6 +79,48 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
             null);
     }
 
+    public async Task<SocialPublisherOperationResult> RefreshLinkPreviewAsync(
+        string url,
+        CancellationToken cancellationToken)
+    {
+        if (!this.settings.IsConfigured())
+        {
+            return new SocialPublisherOperationResult(
+                false,
+                false,
+                "publisher-not-configured",
+                "La Page Facebook n'est pas configurée.");
+        }
+
+        string endpoint = $"{GraphApiBaseUrl}/{this.settings.ApiVersion}/";
+        using HttpRequestMessage httpRequest = this.CreateAuthorizedRequest(HttpMethod.Post, endpoint);
+        httpRequest.Content = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["id"] = url,
+            ["scrape"] = "true",
+        });
+
+        HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
+        using HttpResponseMessage response = await client.SendAsync(
+            httpRequest,
+            HttpCompletionOption.ResponseHeadersRead,
+            cancellationToken);
+        string responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
+        if (response.IsSuccessStatusCode)
+        {
+            return new SocialPublisherOperationResult(true, false, null, null);
+        }
+
+        SocialPublisherResult failure = ParseFailure(
+            responseBody,
+            ((int)response.StatusCode).ToString(System.Globalization.CultureInfo.InvariantCulture));
+        return new SocialPublisherOperationResult(
+            false,
+            false,
+            failure.FailureCode,
+            failure.FailureMessage);
+    }
+
     public Task<SocialPublisherOperationResult> UpdatePostAsync(
         string externalPostId,
         string message,

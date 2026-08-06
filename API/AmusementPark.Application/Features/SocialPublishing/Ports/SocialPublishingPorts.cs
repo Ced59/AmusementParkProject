@@ -11,6 +11,10 @@ public interface ISocialPublisher
 
     Task<SocialPublisherResult> PublishLinkAsync(SocialPublisherRequest request, CancellationToken cancellationToken);
 
+    Task<SocialPublisherOperationResult> RefreshLinkPreviewAsync(
+        string url,
+        CancellationToken cancellationToken);
+
     Task<SocialPublisherOperationResult> UpdatePostAsync(
         string externalPostId,
         string message,

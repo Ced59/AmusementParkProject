@@ -71,6 +71,32 @@ public sealed class FacebookPageSocialPublisherTests
     }
 
     [Fact]
+    public async Task RefreshLinkPreviewAsync_WhenFacebookAcceptsScrape_ShouldUseGraphRootAndBearerToken()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{\"url\":\"https://amusement-parks.fun/fr/park/park-1/test\"}");
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            CreateSettings());
+
+        SocialPublisherOperationResult result = await publisher.RefreshLinkPreviewAsync(
+            "https://amusement-parks.fun/fr/park/park-1/test",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(HttpMethod.Post, handler.Method);
+        Assert.Equal("https://graph.facebook.com/v24.0/", handler.RequestUri);
+        Assert.Equal("Bearer", handler.AuthorizationScheme);
+        Assert.Equal("secret-page-token", handler.AuthorizationParameter);
+        Assert.Contains(
+            "id=https%3A%2F%2Famusement-parks.fun%2Ffr%2Fpark%2Fpark-1%2Ftest",
+            handler.RequestBody,
+            StringComparison.Ordinal);
+        Assert.Contains("scrape=true", handler.RequestBody, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public async Task DeletePostAsync_WhenPostNoLongerExists_ShouldReturnMissingResult()
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(

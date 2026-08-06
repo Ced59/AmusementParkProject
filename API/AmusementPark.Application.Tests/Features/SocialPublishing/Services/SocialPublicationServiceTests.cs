@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Services;
+using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.SocialPublishing;
 using Xunit;
@@ -81,6 +82,97 @@ public sealed class SocialPublicationServiceTests
         Assert.Equal("https://amusement-parks.fun/fr/park/park-1/parc-etincelle", first.Url);
         Assert.Equal(1, publisher.PublishCallCount);
         Assert.Single(repository.Publications);
+    }
+
+    [Fact]
+    public async Task PublishParkAnnouncementAsync_ShouldHardPurgePublicPageBeforePublishing()
+    {
+        List<string> events = new List<string>();
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured(events);
+        RecordingSsrPageCacheInvalidator invalidator = new RecordingSsrPageCacheInvalidator(events);
+        SocialPublicationService service = CreateService(repository, publisher, invalidator);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Parc Étincelle",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        SocialPublication? publication = await service.PublishParkAnnouncementAsync(
+            park,
+            "admin-1",
+            CancellationToken.None);
+
+        Assert.NotNull(publication);
+        Assert.Equal(new[] { "invalidate", "publish" }, events);
+        SsrPageCacheInvalidationRequest request = Assert.Single(invalidator.Requests);
+        Assert.Equal(new[] { "/fr/park/park-1/parc-etincelle" }, request.Paths);
+        Assert.Empty(request.Prefixes);
+        Assert.False(request.IncludeSeoDocuments);
+        Assert.False(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
+    public async Task RefreshParkAnnouncementPreviewAsync_ShouldHardPurgeBeforeFacebookRescrape()
+    {
+        List<string> events = new List<string>();
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication publication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Published,
+            Trigger = SocialPublicationTrigger.AutomaticParkPublication,
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/park/park-1/parc-etincelle",
+            SourceEntityType = "Park",
+            SourceEntityId = "park-1",
+            DeduplicationKey = "facebook:park:park-1",
+            ExternalPostId = "123_456",
+        };
+        repository.Publications.Add(publication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured(events);
+        RecordingSsrPageCacheInvalidator invalidator = new RecordingSsrPageCacheInvalidator(events);
+        SocialPublicationService service = CreateService(repository, publisher, invalidator);
+
+        ApplicationResult<SocialPublication> result = await service.RefreshParkAnnouncementPreviewAsync(
+            "park-1",
+            "editor-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Same(publication, result.Value);
+        Assert.Equal("editor-1", publication.RequestedByUserId);
+        Assert.Equal(new[] { "invalidate", "refresh" }, events);
+        Assert.Equal(1, publisher.RefreshPreviewCallCount);
+        Assert.Equal(publication.Url, publisher.LastRefreshedUrl);
+        SsrPageCacheInvalidationRequest request = Assert.Single(invalidator.Requests);
+        Assert.Equal(new[] { "/fr/park/park-1/parc-etincelle" }, request.Paths);
+        Assert.False(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
+    public async Task RefreshParkAnnouncementPreviewAsync_WhenParkHasNoAnnouncement_ShouldReturnNotFound()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        RecordingSsrPageCacheInvalidator invalidator = new RecordingSsrPageCacheInvalidator();
+        SocialPublicationService service = CreateService(repository, publisher, invalidator);
+
+        ApplicationResult<SocialPublication> result = await service.RefreshParkAnnouncementPreviewAsync(
+            "park-404",
+            "editor-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "social-publishing.publication.not-found");
+        Assert.Equal(0, publisher.RefreshPreviewCallCount);
+        Assert.Empty(invalidator.Requests);
     }
 
     [Fact]
@@ -285,12 +377,40 @@ public sealed class SocialPublicationServiceTests
 
     private static SocialPublicationService CreateService(
         InMemorySocialPublicationRepository repository,
-        StubSocialPublisher publisher)
+        StubSocialPublisher publisher,
+        ISsrPageCacheInvalidator? ssrPageCacheInvalidator = null)
     {
         return new SocialPublicationService(
             repository,
             new[] { publisher },
-            new StubPublicSeoContextProvider());
+            new StubPublicSeoContextProvider(),
+            ssrPageCacheInvalidator ?? new RecordingSsrPageCacheInvalidator());
+    }
+
+    private sealed class RecordingSsrPageCacheInvalidator : ISsrPageCacheInvalidator
+    {
+        private readonly ICollection<string>? events;
+
+        public RecordingSsrPageCacheInvalidator(ICollection<string>? events = null)
+        {
+            this.events = events;
+        }
+
+        public List<SsrPageCacheInvalidationRequest> Requests { get; } = new List<SsrPageCacheInvalidationRequest>();
+
+        public Task InvalidateAsync(
+            SsrPageCacheInvalidationRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            this.events?.Add("invalidate");
+            this.Requests.Add(request);
+            return Task.CompletedTask;
+        }
+
+        public Task InvalidateAllAsync(CancellationToken cancellationToken = default)
+        {
+            return this.InvalidateAsync(SsrPageCacheInvalidationRequest.AllCaches(), cancellationToken);
+        }
     }
 
     private sealed class StubPublicSeoContextProvider : IPublicSeoContextProvider
@@ -306,10 +426,14 @@ public sealed class SocialPublicationServiceTests
     private sealed class StubSocialPublisher : ISocialPublisher
     {
         private readonly SocialPublisherDescriptor descriptor;
+        private readonly ICollection<string>? events;
 
-        private StubSocialPublisher(SocialPublisherDescriptor descriptor)
+        private StubSocialPublisher(
+            SocialPublisherDescriptor descriptor,
+            ICollection<string>? events = null)
         {
             this.descriptor = descriptor;
+            this.events = events;
         }
 
         public SocialNetwork Network => SocialNetwork.Facebook;
@@ -318,9 +442,13 @@ public sealed class SocialPublicationServiceTests
 
         public int UpdateCallCount { get; private set; }
 
+        public int RefreshPreviewCallCount { get; private set; }
+
         public int DeleteCallCount { get; private set; }
 
         public int GetCallCount { get; private set; }
+
+        public string? LastRefreshedUrl { get; private set; }
 
         public SocialPublisherOperationResult DeleteResult { get; set; } =
             new SocialPublisherOperationResult(true, false, null, null);
@@ -334,7 +462,7 @@ public sealed class SocialPublicationServiceTests
                 null,
                 null);
 
-        public static StubSocialPublisher Configured()
+        public static StubSocialPublisher Configured(ICollection<string>? events = null)
         {
             return new StubSocialPublisher(new SocialPublisherDescriptor(
                 SocialNetwork.Facebook,
@@ -342,7 +470,7 @@ public sealed class SocialPublicationServiceTests
                 true,
                 true,
                 "https://www.facebook.com/test",
-                true));
+                true), events);
         }
 
         public static StubSocialPublisher Disabled()
@@ -363,6 +491,7 @@ public sealed class SocialPublicationServiceTests
 
         public Task<SocialPublisherResult> PublishLinkAsync(SocialPublisherRequest request, CancellationToken cancellationToken)
         {
+            this.events?.Add("publish");
             this.PublishCallCount++;
             return Task.FromResult(new SocialPublisherResult(
                 true,
@@ -378,6 +507,16 @@ public sealed class SocialPublicationServiceTests
             CancellationToken cancellationToken)
         {
             this.UpdateCallCount++;
+            return Task.FromResult(new SocialPublisherOperationResult(true, false, null, null));
+        }
+
+        public Task<SocialPublisherOperationResult> RefreshLinkPreviewAsync(
+            string url,
+            CancellationToken cancellationToken)
+        {
+            this.events?.Add("refresh");
+            this.RefreshPreviewCallCount++;
+            this.LastRefreshedUrl = url;
             return Task.FromResult(new SocialPublisherOperationResult(true, false, null, null));
         }
 

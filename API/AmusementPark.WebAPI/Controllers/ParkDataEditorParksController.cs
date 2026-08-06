@@ -4,10 +4,14 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
+using AmusementPark.Application.Features.SocialPublishing.Commands;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.SocialPublishing;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Parks;
+using AmusementPark.WebAPI.Contracts.SocialPublishing;
+using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
@@ -27,15 +31,18 @@ public sealed class ParkDataEditorParksController : ControllerBase
     private readonly IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>> getParksPageHandler;
     private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksHandler;
     private readonly IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler;
+    private readonly ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>> refreshPreviewHandler;
 
     public ParkDataEditorParksController(
         IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>> getParksPageHandler,
         IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksHandler,
-        IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler)
+        IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler,
+        ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>> refreshPreviewHandler)
     {
         this.getParksPageHandler = getParksPageHandler;
         this.searchParksHandler = searchParksHandler;
         this.completenessHandler = completenessHandler;
+        this.refreshPreviewHandler = refreshPreviewHandler;
     }
 
     [HttpGet]
@@ -80,6 +87,24 @@ public sealed class ParkDataEditorParksController : ControllerBase
     {
         ApplicationResult<DataCompletenessScore> result = await this.completenessHandler.HandleAsync(
             new GetParkDataCompletenessScoreQuery(parkId, IncludeHidden: true),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("{parkId}/social-preview/refresh")]
+    [AdminAudit("park-data-editor.social-preview.refresh", "Park", TargetIdRouteKey = "parkId")]
+    [ProducesResponseType(typeof(SocialPublicationDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> RefreshSocialPreviewAsync(
+        [FromRoute] string parkId,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<SocialPublication> result = await this.refreshPreviewHandler.HandleAsync(
+            new RefreshParkAnnouncementPreviewCommand(parkId, this.User.GetUserId()),
             cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {

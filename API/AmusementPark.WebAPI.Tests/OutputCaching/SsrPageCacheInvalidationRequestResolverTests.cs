@@ -719,6 +719,60 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     }
 
     [Fact]
+    public async Task ResolveAsync_ForBulkParkGraphUpsertWithNonMutatingImages_ShouldKeepStaleInvalidation()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new BulkParkGraphUpsertResultDto
+        {
+            IsApplied = true,
+            Parks = new List<BulkParkGraphUpsertParkResultDto>
+            {
+                new BulkParkGraphUpsertParkResultDto
+                {
+                    TargetParkId = "park-1",
+                    Result = new ParkGraphUpsertResultDto
+                    {
+                        TargetParkId = "park-1",
+                        Changes = new List<ParkGraphUpsertChangeDto>
+                        {
+                            new ParkGraphUpsertChangeDto
+                            {
+                                EntityType = "Park",
+                                EntityId = "park-1",
+                                ChangeType = "Updated",
+                            },
+                            new ParkGraphUpsertChangeDto
+                            {
+                                EntityType = "Image",
+                                EntityId = "image-1",
+                                ChangeType = "Unchanged",
+                            },
+                            new ParkGraphUpsertChangeDto
+                            {
+                                EntityType = "Image",
+                                EntityId = "image-2",
+                                ChangeType = "Skipped",
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/", request.Prefixes);
+        Assert.True(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
     public async Task ResolveAsync_ForLargeParkGraphUpsert_ShouldTargetParkWithSeoDocumentsWithoutHardPurge()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
@@ -874,6 +928,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Contains("/fr/park/park-1/target-park/item/item-2/", request.Prefixes);
         Assert.DoesNotContain("/fr/park/park-1/", request.Prefixes);
         Assert.True(request.IncludeSeoDocuments);
+        Assert.False(request.AllowStale);
         Assert.False(request.Refresh);
         parkRepository.Verify(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()), Times.Exactly(2));
         parkItemRepository.VerifyAll();
@@ -881,7 +936,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     }
 
     [Fact]
-    public async Task ResolveAsync_ForImageMutation_ShouldTargetOwnerWithoutImmediateRefresh()
+    public async Task ResolveAsync_ForImageMutation_ShouldHardPurgeOwnerPages()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
         ActionExecutingContext context = CreateContext("Images", new Dictionary<string, object?>());
@@ -902,12 +957,12 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Contains("/fr/park/park-1/", request.Prefixes);
         Assert.Contains("/fr/home", request.Paths);
         Assert.True(request.IncludeSeoDocuments);
-        Assert.True(request.AllowStale);
+        Assert.False(request.AllowStale);
         Assert.False(request.Refresh);
     }
 
     [Fact]
-    public async Task ResolveAsync_ForStandaloneAttractionImageMutation_ShouldTargetStandaloneAttractionWithoutImmediateRefresh()
+    public async Task ResolveAsync_ForStandaloneAttractionImageMutation_ShouldHardPurgeOwnerPages()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
         ActionExecutingContext context = CreateContext("Images", new Dictionary<string, object?>());
@@ -928,7 +983,7 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         Assert.Contains("/fr/attraction/standalone-1/", request.Prefixes);
         Assert.DoesNotContain("/fr/home", request.Paths);
         Assert.True(request.IncludeSeoDocuments);
-        Assert.True(request.AllowStale);
+        Assert.False(request.AllowStale);
         Assert.False(request.Refresh);
     }
 
