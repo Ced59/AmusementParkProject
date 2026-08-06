@@ -1788,6 +1788,10 @@ export class SeoService {
       : copy.description(park.name, locationLabel);
     const descriptionSource: string | null = lifecycleStatusLabel ? null : park.description;
     const description: string = truncateSeoText(normalizeSeoText(descriptionSource, descriptionFallback), 160);
+    const socialImageId: string | null = this.resolveParkDetailSocialImageId(park);
+    const socialImageRevision: string | null = socialImageId === park.primaryPhoto?.imageId
+      ? park.primaryPhoto.updatedAt ?? null
+      : null;
 
     this.apply({
       title: `${title} — ${SITE_NAME}`,
@@ -1795,7 +1799,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
-      imageUrl: this.resolveImageIdAbsoluteUrl(this.resolveParkDetailSocialImageId(park)) ?? undefined,
+      imageUrl: this.resolveImageIdAbsoluteUrl(socialImageId, socialImageRevision) ?? undefined,
       imageAlt: park.name,
       jsonLd: this.buildParkDetailJsonLd(park, seoUrl, description)
     });
@@ -2452,8 +2456,12 @@ export class SeoService {
         /^(.*\/images\/binary\/[^/]+)$/i,
       );
       if (managedBinaryImageMatch !== null) {
+        const revision: string | null = parsedUrl.searchParams.get('rev');
         parsedUrl.pathname = `${managedBinaryImageMatch[1]}/${SOCIAL_PREVIEW_PATH_VERSION}`;
         parsedUrl.search = '';
+        if (revision !== null && /^\d+$/.test(revision)) {
+          parsedUrl.searchParams.set('rev', revision);
+        }
 
         return {
           url: parsedUrl.href,
@@ -3635,14 +3643,32 @@ export class SeoService {
     return this.isAbsoluteUrl(normalizedValue) ? null : this.resolveImageIdAbsoluteUrl(normalizedValue);
   }
 
-  private resolveImageIdAbsoluteUrl(imageId: string | null | undefined): string | null {
+  private resolveImageIdAbsoluteUrl(
+    imageId: string | null | undefined,
+    updatedAt: string | null = null,
+  ): string | null {
     const normalizedImageId: string | null = this.normalizeOptionalText(imageId);
 
     if (!normalizedImageId) {
       return null;
     }
 
-    return this.buildAbsoluteAssetUrl(`${environment.imagesBaseUrl}/${encodeURIComponent(normalizedImageId)}`);
+    const absoluteUrl: string = this.buildAbsoluteAssetUrl(
+      `${environment.imagesBaseUrl}/${encodeURIComponent(normalizedImageId)}`,
+    );
+    const normalizedUpdatedAt: string | null = this.normalizeOptionalText(updatedAt);
+    if (normalizedUpdatedAt === null) {
+      return absoluteUrl;
+    }
+
+    const revisionDate: Date = new Date(normalizedUpdatedAt);
+    if (Number.isNaN(revisionDate.getTime()) || revisionDate.getTime() <= 0) {
+      return absoluteUrl;
+    }
+
+    const versionedUrl: URL = new URL(absoluteUrl);
+    versionedUrl.searchParams.set('rev', String(revisionDate.getTime()));
+    return versionedUrl.href;
   }
 
   private resolveVideoUploadDate(video: VideoDto): string | null {

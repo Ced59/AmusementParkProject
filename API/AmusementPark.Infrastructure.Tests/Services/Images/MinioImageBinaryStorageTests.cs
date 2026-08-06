@@ -464,7 +464,9 @@ public sealed class MinioImageBinaryStorageTests
         Assert.Contains("images/photo-1.w320.jpg", objectNames);
         Assert.Contains("images/photo-1.w1920.webp", objectNames);
         Assert.Contains("images/photo-1.w1920.jpg", objectNames);
-        Assert.Contains("images/photo-1.social.w960.v1.jpg", objectNames);
+        Assert.DoesNotContain(
+            objectNames,
+            static objectName => objectName.Contains(".social.", StringComparison.Ordinal));
         Assert.DoesNotContain("images/photo-1.w321.webp", objectNames);
         Assert.Equal(objectNames.Length, objectNames.Distinct(StringComparer.Ordinal).Count());
     }
@@ -480,8 +482,19 @@ public sealed class MinioImageBinaryStorageTests
     [Fact]
     public void GetSocialPreviewVariantObjectName_ShouldIncludeDedicatedVariantVersion()
     {
-        string objectName = MinioImageBinaryStorage.GetSocialPreviewVariantObjectName("images/photo-1", 960);
+        string objectName = MinioImageBinaryStorage.GetSocialPreviewVariantObjectName(
+            "images/photo-1",
+            960,
+            1786011330123);
 
-        Assert.Equal("images/photo-1.social.w960.v1.jpg", objectName);
+        Assert.Equal("images/photo-1.social.w960.v1.r1786011330123.jpg", objectName);
+    }
+
+    [Fact]
+    public void GetSocialPreviewVariantPrefix_ShouldCoverEveryImmutableRevision()
+    {
+        string prefix = MinioImageBinaryStorage.GetSocialPreviewVariantPrefix("images/photo-1");
+
+        Assert.Equal("images/photo-1.social.", prefix);
     }
 }

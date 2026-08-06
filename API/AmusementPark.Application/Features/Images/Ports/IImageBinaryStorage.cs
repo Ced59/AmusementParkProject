@@ -48,6 +48,8 @@ public interface IImageBinaryStorage
     Task<(Stream Stream, string ContentType)?> GetSocialPreviewAsync(
         string pathWithoutExtension,
         int width,
+        long revision,
+        bool generateIfMissing,
         CancellationToken cancellationToken);
 
     /// <summary>

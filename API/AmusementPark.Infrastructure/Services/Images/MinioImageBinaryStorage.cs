@@ -1,8 +1,10 @@
+using System.Collections.Concurrent;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Infrastructure.Configuration.Images;
 using Microsoft.Extensions.Logging;
 using Minio;
+using Minio.DataModel;
 using Minio.DataModel.Args;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
@@ -28,9 +30,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private const int MaxLongEdge = 1920;
     private const int ResponsiveVariantVersion = 2;
     private const int SocialPreviewVariantVersion = 1;
-    private const int SocialPreviewGenerationPollAttempts = 20;
     private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
-    private static readonly TimeSpan SocialPreviewGenerationRetryDelay = TimeSpan.FromMilliseconds(250);
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
@@ -40,6 +40,8 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private readonly ILogger<MinioImageBinaryStorage> logger;
     private readonly IImageVariantGenerationLease variantGenerationLease;
     private readonly WatermarkFontFamilies watermarkFonts;
+    private readonly ConcurrentDictionary<string, SemaphoreSlim> socialPreviewGenerationLocks =
+        new ConcurrentDictionary<string, SemaphoreSlim>(StringComparer.Ordinal);
 
     public MinioImageBinaryStorage(
         IMinioClient minioClient,
@@ -260,6 +262,8 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     public async Task<(Stream Stream, string ContentType)?> GetSocialPreviewAsync(
         string pathWithoutExtension,
         int width,
+        long revision,
+        bool generateIfMissing,
         CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(pathWithoutExtension))
@@ -273,7 +277,15 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             return null;
         }
 
-        string objectName = GetSocialPreviewVariantObjectName(pathWithoutExtension, socialPreviewWidth);
+        if (revision <= 0)
+        {
+            return null;
+        }
+
+        string objectName = GetSocialPreviewVariantObjectName(
+            pathWithoutExtension,
+            socialPreviewWidth,
+            revision);
         (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(
             objectName,
             "image/jpeg",
@@ -283,31 +295,37 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             return cached;
         }
 
-        (Stream Stream, string ContentType)? generated = await this.TryCreateSocialPreviewAsync(
-            pathWithoutExtension,
-            objectName,
-            socialPreviewWidth,
-            cancellationToken);
-        if (generated is not null)
+        if (!generateIfMissing)
         {
-            return generated;
+            return null;
         }
 
-        for (int attempt = 0; attempt < SocialPreviewGenerationPollAttempts; attempt++)
+        SemaphoreSlim generationLock = this.socialPreviewGenerationLocks.GetOrAdd(
+            objectName,
+            static _ => new SemaphoreSlim(1, 1));
+        await generationLock.WaitAsync(cancellationToken);
+        try
         {
-            await Task.Delay(SocialPreviewGenerationRetryDelay, cancellationToken);
             cached = await TryGetObjectAsync(objectName, "image/jpeg", cancellationToken);
             if (cached is not null)
             {
                 return cached;
             }
-        }
 
-        return await this.TryCreateSocialPreviewAsync(
-            pathWithoutExtension,
-            objectName,
-            socialPreviewWidth,
-            cancellationToken);
+            return await this.TryCreateSocialPreviewAsync(
+                pathWithoutExtension,
+                objectName,
+                socialPreviewWidth,
+                cancellationToken);
+        }
+        finally
+        {
+            generationLock.Release();
+            if (generationLock.CurrentCount == 1)
+            {
+                this.socialPreviewGenerationLocks.TryRemove(objectName, out SemaphoreSlim? _);
+            }
+        }
     }
 
     private Task<(Stream Stream, string ContentType)?> TryCreateSocialPreviewAsync(
@@ -316,13 +334,10 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         int width,
         CancellationToken cancellationToken)
     {
-        return this.ExecuteWithVariantGenerationLeaseAsync(
+        return this.TryCreateSocialPreviewCoreAsync(
             pathWithoutExtension,
-            token => this.TryCreateSocialPreviewUnderLeaseAsync(
-                pathWithoutExtension,
-                objectName,
-                width,
-                token),
+            objectName,
+            width,
             cancellationToken);
     }
 
@@ -522,7 +537,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
     }
 
-    private async Task<(Stream Stream, string ContentType)?> TryCreateSocialPreviewUnderLeaseAsync(
+    private async Task<(Stream Stream, string ContentType)?> TryCreateSocialPreviewCoreAsync(
         string pathWithoutExtension,
         string objectName,
         int width,
@@ -649,6 +664,71 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             }
         }
 
+        if (!await this.DeleteSocialPreviewVariantsAsync(pathWithoutExtension, cancellationToken))
+        {
+            succeeded = false;
+        }
+
+        return succeeded;
+    }
+
+    private async Task<bool> DeleteSocialPreviewVariantsAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+        string prefix = GetSocialPreviewVariantPrefix(pathWithoutExtension);
+        bool succeeded = true;
+
+        try
+        {
+            IAsyncEnumerable<Item> items = this.minioClient.ListObjectsEnumAsync(
+                new ListObjectsArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithPrefix(prefix)
+                    .WithRecursive(true),
+                cancellationToken);
+            await foreach (Item item in items.WithCancellation(cancellationToken))
+            {
+                try
+                {
+                    await this.minioClient.RemoveObjectAsync(
+                        new RemoveObjectArgs()
+                            .WithBucket(this.settings.Bucket)
+                            .WithObject(item.Key),
+                        cancellationToken);
+                }
+                catch (Minio.Exceptions.ObjectNotFoundException)
+                {
+                }
+                catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+                {
+                    throw;
+                }
+                catch (Exception exception)
+                {
+                    succeeded = false;
+                    this.logger.LogWarning(
+                        exception,
+                        "Unable to delete social preview image object {ObjectName} from MinIO bucket {Bucket}.",
+                        item.Key,
+                        this.settings.Bucket);
+                }
+            }
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogWarning(
+                exception,
+                "Unable to list social preview image objects with prefix {Prefix} from MinIO bucket {Bucket}.",
+                prefix,
+                this.settings.Bucket);
+            return false;
+        }
+
         return succeeded;
     }
 
@@ -691,7 +771,6 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
-            yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
     }
 
@@ -703,7 +782,6 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
-            yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
     }
 
@@ -712,9 +790,17 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.{extension}";
     }
 
-    internal static string GetSocialPreviewVariantObjectName(string pathWithoutExtension, int width)
+    internal static string GetSocialPreviewVariantObjectName(
+        string pathWithoutExtension,
+        int width,
+        long revision)
     {
-        return $"{pathWithoutExtension}.social.w{width}.v{SocialPreviewVariantVersion}.jpg";
+        return $"{pathWithoutExtension}.social.w{width}.v{SocialPreviewVariantVersion}.r{revision}.jpg";
+    }
+
+    internal static string GetSocialPreviewVariantPrefix(string pathWithoutExtension)
+    {
+        return $"{pathWithoutExtension}.social.";
     }
 
     private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetFormats()
