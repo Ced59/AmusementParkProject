@@ -911,6 +911,46 @@ describe('ParkDetailStateFacade', () => {
     ]);
   });
 
+  it('ignores a social image response from a previously viewed park', () => {
+    const context = configureFacade();
+    const staleParkImages$ = new Subject<PagedResult<ImageDto>>();
+    const firstSummary: ParkDetailSummary = createSummary(3, false);
+    firstSummary.park = { ...firstSummary.park, id: 'park-a', name: 'Park A' };
+    const secondSummary: ParkDetailSummary = createSummary(3, false);
+    secondSummary.park = { ...secondSummary.park, id: 'park-b', name: 'Park B' };
+    context.parksPort.summaryResponse$ = of(firstSummary);
+    context.imagesPort.parkImagesResponse$ = staleParkImages$;
+
+    context.facade.loadPark('park-a');
+
+    context.parksPort.summaryResponse$ = of(secondSummary);
+    context.imagesPort.parkImagesResponse$ = of(createImagePage<ImageDto>([
+      {
+        ...createSummary().mainImage!,
+        id: 'park-b-photo',
+        ownerId: 'park-b',
+        isCurrent: false,
+      },
+    ]));
+    context.facade.loadPark('park-b');
+
+    expect(context.facade.park()?.id).toBe('park-b');
+    expect(context.facade.socialImageId()).toBe('park-b-photo');
+
+    staleParkImages$.next(createImagePage<ImageDto>([
+      {
+        ...createSummary().mainImage!,
+        id: 'park-a-photo',
+        ownerId: 'park-a',
+        isCurrent: false,
+      },
+    ]));
+    staleParkImages$.complete();
+
+    expect(context.facade.park()?.id).toBe('park-b');
+    expect(context.facade.socialImageId()).toBe('park-b-photo');
+  });
+
   it('exposes the images link when only park items have photos', () => {
     const context = configureFacade();
     context.parksPort.summaryResponse$ = of(createSummary(3, false, false));
