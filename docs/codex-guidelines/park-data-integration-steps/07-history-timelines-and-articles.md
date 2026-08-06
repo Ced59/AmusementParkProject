@@ -8,9 +8,9 @@ Objectif : créer une histoire fiable, sourcée et lisible, en séparant les év
 - `park-graph-upsert-enums.md`
 - `04-rich-descriptions-localization.md` pour le style public des résumés
 
-## Export requis
+## État de référence requis
 
-Utiliser l’export actualisé après les étapes d’inventaire, de descriptions, d’images et d’horaires. Les timelines doivent pouvoir référencer les vrais IDs ou les `itemKey` existants.
+En mode ChatGPT guidé, utiliser l’export actualisé après les étapes d’inventaire, de descriptions, d’images et d’horaires. En mode Codex autonome, utiliser le registre local consolidé, sans nouvel export complet. Les timelines doivent pouvoir référencer les vrais IDs ou les `itemKey` existants.
 
 ## Découpage recommandé
 
@@ -233,7 +233,7 @@ Chaque image créée dans le lot doit suivre exactement les règles de l’étap
 
 ### Référence depuis l’article
 
-Pour une image déjà présente dans l’export actualisé, utiliser son ID :
+Pour une image déjà présente dans l’état de référence, utiliser son ID :
 
 - `mainImageId` ;
 - `blocks[].imageId` ;
@@ -245,7 +245,7 @@ Pour une image distante créée dans le même JSON, définir une `images[].key` 
 - `blocks[].imageKey` ;
 - `blocks[].imageKeys`.
 
-Ne jamais utiliser la clé d’une image créée dans un lot précédent. Le processeur ne précharge pas les clés de toutes les images existantes. Après un Apply, réexporter et utiliser l’ID obtenu.
+Ne jamais utiliser la clé d’une image créée dans un lot précédent. Le processeur ne précharge pas les clés de toutes les images existantes. En mode ChatGPT, réexporter après l’Apply et utiliser l’ID obtenu. En mode Codex autonome, utiliser l’ID renvoyé par l’Apply ou l’import et conservé dans le registre local.
 
 Une image existante peut techniquement enregistrer une clé dans le lot courant si `images[]` contient à la fois son `imageId` et `key`, mais ChatGPT doit préférer l’ID direct dans l’article afin d’éviter une résolution indirecte inutile.
 
@@ -435,7 +435,7 @@ Section principale : `history.events`.
 - Chaque jalon visible et chaque article possède une image contextualisée quand une image acceptable est trouvable, sinon l’exception de recherche est documentée.
 - Chaque image créée possède un propriétaire résolu selon l’étape 5, indépendamment de l’article.
 - Chaque événement `ParkItem` contient `ownerId`, `parkItemId` et `itemId` explicites quand le parkItem existe déjà dans l’export.
-- Chaque article qui référence une image existante utilise `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` depuis l’export actualisé.
+- Chaque article qui référence une image existante utilise `mainImageId`, `blocks[].imageId` ou `blocks[].imageIds` depuis l’état de référence.
 - `mainImageKey`, `imageKey` et `imageKeys` ne sont utilisés que pour des images créées dans le même JSON.
 - Chaque clé d’image référencée correspond caractère par caractère à une unique `images[].key` du lot.
 - Deux définitions `images[].key` ne deviennent jamais identiques après suppression des espaces de bord et comparaison sans tenir compte de la casse.
@@ -450,6 +450,6 @@ Section principale : `history.events`.
 
 ## Après Apply
 
-Obtenir l’export actualisé avant de créer le lot historique suivant ou avant l’audit final : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
+Avant le lot historique suivant, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer les résultats Apply au registre local et continuer sans export. Une fois tous les lots de l’étape 7 terminés, effectuer l’export complet frais obligatoire avant de commencer l’étape 8.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 8 — Audit final. L’audit final reste utile dès qu’un JSON a été appliqué, même si certains enrichissements ont été volontairement sautés. Si l’étape 8 est exceptionnellement jugée `probablement inutile`, expliquer pourquoi et rappeler qu’elle est normalement le point de contrôle final du parcours. En mode ChatGPT, attendre la validation utilisateur ; en mode Codex autonome, exécuter l’audit sans pause.

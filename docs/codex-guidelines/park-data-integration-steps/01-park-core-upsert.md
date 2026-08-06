@@ -8,9 +8,9 @@ Objectif : créer ou corriger la fiche parc minimale fiable avant tout enrichiss
 - `park-data-integration-orchestrator.md`
 - `park-graph-upsert-enums.md`
 
-## Export requis
+## État de référence requis
 
-Utiliser l’export initial ou l’export actualisé fourni par l’utilisateur. Si l’export manque, le demander avant de générer le JSON.
+En mode ChatGPT guidé, utiliser l’export initial ou l’export actualisé fourni par l’utilisateur et le demander s’il manque. En mode Codex autonome, utiliser l’export complet initial et commencer le registre local consolidé décrit dans le workflow API.
 
 ## Données à rechercher
 
@@ -46,14 +46,14 @@ Utiliser l’export initial ou l’export actualisé fourni par l’utilisateur.
 - Pour un parc fermé, utiliser un logo historique dont le lien avec la période d’exploitation est documenté.
 - Le logo utilise la catégorie `Logo`, reste sans watermark ajouté et devient l’image logo courante. Une photo principale du parc reste une image distincte.
 - Si aucun fichier acceptable n’est importable à l’étape 1, inscrire la recherche et l’import comme obligation de l’étape 5, pas comme enrichissement facultatif.
-- Après import, vérifier dans l’export que l’image est bien rattachée au parc et définie comme logo courant. En mode Codex, contrôler aussi la restitution publique avant publication.
+- Après import, vérifier que l’image est bien rattachée au parc et définie comme logo courant. En mode ChatGPT, utiliser l’export actualisé ; en mode Codex, contrôler la réponse d’import et inscrire le résultat au registre local, puis le confirmer dans l’export complet préalable à l’étape 8. Contrôler aussi la restitution publique avant publication.
 
 ## Références incluses dans cette étape
 
 Cette étape inclut les références nécessaires à la fiche parc. Ne pas créer une étape séparée pour les références.
 
-- Si un `founderKey` est utilisé dans `park`, créer ou corriger la référence dans `references.founders`, sauf si elle existe déjà sûrement dans l’export actualisé.
-- Si un `operatorKey` est utilisé dans `park`, créer ou corriger la référence dans `references.operators`, sauf si elle existe déjà sûrement dans l’export actualisé.
+- Si un `founderKey` est utilisé dans `park`, créer ou corriger la référence dans `references.founders`, sauf si elle existe déjà sûrement dans l’état de référence.
+- Si un `operatorKey` est utilisé dans `park`, créer ou corriger la référence dans `references.operators`, sauf si elle existe déjà sûrement dans l’état de référence.
 - Ne jamais utiliser un UUID, un ID interne ou un nom approximatif comme `founderKey` ou `operatorKey` si l’export ne prouve pas que c’est bien la clé attendue.
 - Ne pas ajouter ici les constructeurs liés aux parkItems : ils appartiennent à l’étape 3, ou à l’étape 5 pour l’enrichissement de référence.
 - Ne pas rédiger de biographies longues ici sauf besoin minimal de désambiguïsation. Les biographies publiques complètes appartiennent à l’étape 4 ou 5 selon le lot.
@@ -148,6 +148,6 @@ Exemple de forme :
 
 ## Après Apply
 
-Obtenir l’export actualisé avant de passer aux zones : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
+Avant de passer aux zones, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer la réponse Apply au registre local et continuer sans nouvel export.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 2 — Zones. Si aucune zone officielle ou clairement établie n’existe, indiquer `probablement inutile` avec la raison, puis appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

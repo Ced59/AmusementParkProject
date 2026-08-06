@@ -8,9 +8,9 @@ Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou
 - `park-graph-upsert-enums.md`
 - `04-rich-descriptions-localization.md` pour les biographies et descriptions de références
 
-## Export requis
+## État de référence requis
 
-Utiliser l’export actualisé après les items et descriptions concernés. Les `ownerKey` doivent correspondre aux clés déjà présentes ou aux références créées dans le même JSON.
+En mode ChatGPT guidé, utiliser l’export actualisé après les items et descriptions concernés. En mode Codex autonome, utiliser le registre local consolidé, sans nouvel export complet. Les `ownerKey` doivent correspondre aux clés déjà présentes dans cet état ou aux références créées dans le même JSON.
 
 Avant toute recherche, produire la liste des propriétaires à couvrir et noter pour chacun l’image courante déjà présente, les images secondaires et l’absence éventuelle. L’objectif n’est pas d’ajouter quelques photos faciles, mais de fermer méthodiquement les lacunes de couverture.
 
@@ -130,7 +130,7 @@ Le parc cible est le seul propriétaire résolu directement par le contexte du p
 
 Le processeur sait déduire certains `ownerType` depuis un préfixe, mais ChatGPT doit toujours l’écrire explicitement pour empêcher un repli accidentel vers `Park`.
 
-Pour un propriétaire existant, recopier depuis le même export actualisé :
+Pour un propriétaire existant, recopier depuis le même état de référence :
 
 - `id`, `key` et `name` dans l’entrée minimale de `items[]` ou de `references` ;
 - exactement la même valeur de `key` dans `images[].ownerKey`, précédée du préfixe requis pour une référence ;
@@ -205,7 +205,7 @@ Pour les fondateurs, une bonne biographie peut couvrir l’identité, le rôle d
 
 Pour les exploitants, utiliser `description` plutôt que `biography`. Une bonne description peut couvrir le nom légal, la période d’activité, le rôle exact dans le parc, les autres parcs ou activités connues, les changements de propriétaire, le site officiel et les coordonnées publiques si elles sont fiables.
 
-Avant de décider que l’étape 5 est inutile, auditer l’export actualisé :
+Avant de décider que l’étape 5 est inutile, auditer l’état de référence :
 
 - constructeur lié à un item sans `biography` fiable ;
 - fondateur lié au parc sans `biography` fiable ;
@@ -366,9 +366,9 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 
 ## Après Apply
 
-Obtenir l’export actualisé pour récupérer les IDs d’images avant de les référencer dans l’histoire : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
+Pour récupérer les IDs d’images avant de les référencer dans l’histoire, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, utiliser les IDs retournés par les imports et conservés dans le registre local ; ne pas réexporter après les imports.
 
-Calculer et annoncer la couverture après réexport :
+Calculer et annoncer la couverture depuis l’export actualisé en mode ChatGPT ou depuis le registre local en mode Codex, puis confirmer les valeurs Codex avec l’export complet préalable à l’étape 8 :
 
 - logo officiel : présent et courant / absent ;
 - image principale du parc : présente / absente ;
