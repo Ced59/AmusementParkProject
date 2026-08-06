@@ -77,7 +77,25 @@ public sealed class ImagesHttpMappersTests
 
         Assert.False(dto.WithWatermark);
         Assert.False(request.WithWatermark);
+        Assert.True(dto.IsPublished);
+        Assert.True(request.IsPublished);
         Assert.Equal(ImageCategory.Park, request.Category);
+    }
+
+    [Fact]
+    public void ParkDataEditorImageCreateDto_WhenDraftIsRequested_ShouldKeepImageUnpublishedInApplicationRequest()
+    {
+        ParkDataEditorImageCreateDto dto = new ParkDataEditorImageCreateDto
+        {
+            Category = ImageCategoryDto.PARK_ITEM,
+            IsPublished = false,
+        };
+
+        ImageUploadRequest request = dto.ToApplication(new FilePayload());
+
+        Assert.False(dto.IsPublished);
+        Assert.False(request.IsPublished);
+        Assert.Equal(ImageCategory.ParkItem, request.Category);
     }
 
     [Fact]

@@ -158,6 +158,7 @@ internal static class ImagesHttpMappers
             File = file,
             Description = value.Description,
             WithWatermark = value.WithWatermark,
+            IsPublished = value.IsPublished,
         };
     }
 

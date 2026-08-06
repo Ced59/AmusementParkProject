@@ -18,7 +18,7 @@ Cette commande courte autorise Codex à :
 - exécuter Preview/Apply, importer les images, réexporter et corriger jusqu’à un audit final propre ;
 - fournir un tableau de couverture chiffré et un état `prêt pour publication`.
 
-Elle n’autorise pas Codex à publier, supprimer, masquer un parc déjà public, nettoyer une entité legacy ambiguë, gérer des utilisateurs ni appeler une route d’administration extérieure aux surfaces autorisées. La publication exige une nouvelle instruction explicite après l’audit de l’étape 8.
+Elle n’autorise pas Codex à publier le parc, ses nouveaux contenus ou ses images, supprimer, masquer un parc déjà public, nettoyer une entité legacy ambiguë, gérer des utilisateurs ni appeler une route d’administration extérieure aux surfaces autorisées. La publication exige une nouvelle instruction explicite après l’audit de l’étape 8.
 
 Codex ne demande pas à l’utilisateur de relancer manuellement chaque étape. Il consigne les étapes non applicables et continue. Il s’arrête seulement lorsqu’une décision matérielle du propriétaire est nécessaire, que l’identité reste ambiguë, que les droits techniques manquent ou qu’un blocage ne peut pas être corrigé dans le périmètre autorisé.
 
@@ -169,7 +169,9 @@ Le téléchargement local ne contourne jamais le traitement applicatif. L’uplo
 
 Pour une image récupérée, le watermark est **désactivé par défaut**. Il ne doit être activé avec `-WithWatermark $true` que sur indication explicite. La règle existante des logos reste prioritaire et empêche leur watermark.
 
-Ne pas importer une image publique sans `MetadataJsonPath` : le comportement par défaut crée des listes vides pour les textes alternatifs, légendes et crédits et ne satisfait donc pas le contrat de complétude.
+Ne pas importer une image sans `MetadataJsonPath` : le comportement par défaut crée des listes vides pour les textes alternatifs, légendes et crédits et ne satisfait donc pas le contrat de complétude.
+
+Le paramètre `IsPublished` du client vaut `true` par défaut et écrase la valeur éventuellement présente dans `MetadataJsonPath`. Pendant `Complète le parc <nom>`, Codex doit donc passer explicitement `-IsPublished $false` à **chaque** appel `ImportPhoto`, depuis le premier upload jusqu’à la fin de l’audit. Cette règle s’applique aussi à un parc déjà public : le nouveau média reste privé sans modifier la visibilité des médias existants.
 
 Le fichier de métadonnées contient les 8 langues publiques pour `altTexts`, `captions` et `credits`. Les textes alternatifs et légendes sont naturels, spécifiques et destinés au visiteur. Ils ne mentionnent jamais l’URL, l’import, le format, la résolution, le propriétaire technique, la méthode de vérification, les droits, le score ou l’absence d’une autre photo. Les informations d’auteur, source et licence restent dans `credits`.
 
@@ -190,6 +192,7 @@ Exemple avec un fichier de métadonnées localisées :
   -Category PARK_ITEM `
   -OwnerType PARK_ITEM `
   -OwnerId 'park-item-id' `
+  -IsPublished $false `
   -MetadataJsonPath .\work\photo-metadata.json
 ```
 
@@ -207,6 +210,6 @@ Un warning de doublon d’image distante peut être non bloquant uniquement si l
 
 Si une réponse d’export volumineuse échoue ou arrive tronquée, ne jamais réutiliser silencieusement un ancien export. Réessayer par la surface technique autorisée, réduire les lectures auxiliaires quand elles sont paginées et considérer Preview puis le nouvel export comme les preuves de l’état appliqué. Ne pas basculer vers l’administration ou la base de données.
 
-Après une instruction explicite de publication, Codex suit l’ordre de l’étape 8 : contenus dépendants et articles prêts, parkItems contrôlés, puis parc validé et visible en dernier. Il vérifie ensuite les pages publiques anonymes, le logo, les articles, la complétude et l’idempotence d’un dernier Preview. Une annonce sociale indisponible est rapportée séparément et n’autorise aucun appel à une route admin interdite.
+Après une instruction explicite de publication, Codex suit l’ordre de l’étape 8 : publier de façon ciblée les images et contenus dépendants prêts, puis les articles, contrôler les parkItems, et enfin valider et rendre visible le nouveau parc en dernier. La publication des images réutilise leurs IDs exportés et la surface de métadonnées autorisée ou un JSON upsert borné conforme au contrat exporté ; elle ne réimporte jamais les fichiers. Codex vérifie ensuite les pages publiques anonymes, le logo, les articles, la complétude et l’idempotence d’un dernier Preview. Une annonce sociale indisponible est rapportée séparément et n’autorise aucun appel à une route admin interdite.
 
 Le propriétaire peut rapprocher chaque appel avec `park-data-editor.request` dans le journal d’audit et filtrer par compte, email, trace ID ou identifiant de jeton.

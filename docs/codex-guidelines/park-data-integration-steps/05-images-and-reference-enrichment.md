@@ -173,6 +173,8 @@ Chaque nouvelle image distante doit avoir :
 - `description` interne courte ;
 - `altTexts`, `captions`, `credits` dans les 8 langues quand l’image est publique.
 
+Pendant une création ou une commande de complétude avant autorisation de publication, toute nouvelle image doit utiliser `isPublished: false`. Cette règle vaut aussi pour l’enrichissement d’un parc déjà public : sa visibilité existante est préservée, mais le nouveau média reste privé jusqu’à la phase de publication. Ne jamais se fier à une valeur par défaut du client ou du fichier de métadonnées.
+
 Les textes visiteurs de l’image suivent la charte éditoriale de l’étape 4 :
 
 - `altTexts` décrit avec concision ce qui est réellement visible et utile à comprendre ;
@@ -350,6 +352,7 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 - Les crédits sont lisibles pour un visiteur.
 - Les logos ne sont pas confondus avec des photos.
 - Le logo officiel courant est présent, sans watermark ajouté, rattaché au parc et marqué comme courant, ou son absence après recherche est documentée comme lacune.
+- Les nouvelles images du lot restent non publiées tant que l’autorisation explicite de l’étape 8 n’a pas été donnée.
 - Chaque attraction actuelle, annoncée, en construction ou définitivement fermée a au moins une image fidèle, ou une exception de recherche précisément documentée.
 - Chaque image a été inspectée visuellement et ne porte aucun watermark ou logo incrusté d’un site tiers.
 - Chaque jalon et article déjà présent possède une image contextualisée quand une image acceptable est trouvable ; les images manquantes sont inscrites au registre de reprise de l’étape 7.

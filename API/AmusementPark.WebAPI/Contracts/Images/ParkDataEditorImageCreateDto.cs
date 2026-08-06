@@ -15,4 +15,6 @@ public sealed class ParkDataEditorImageCreateDto
     public string? Description { get; set; }
 
     public bool WithWatermark { get; set; }
+
+    public bool IsPublished { get; set; } = true;
 }

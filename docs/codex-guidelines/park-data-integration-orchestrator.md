@@ -13,7 +13,7 @@ Cet orchestrateur sert à éviter les JSON trop gros, les oublis de cohérence e
 
 Les deux modes utilisent les mêmes étapes 0 à 8, les mêmes règles métier, la même qualité éditoriale et le même seuil de complétude. Seuls l’opérateur technique et les points de pause diffèrent.
 
-`Complète le parc <nom>` n’autorise pas la publication. Codex s’arrête après l’étape 8 avec un état `prêt pour publication` ou une liste précise de lacunes. Une demande distincte et explicite est nécessaire pour rendre visibles le parc et les nouveaux contenus, valider leur statut ou déclencher toute annonce de publication.
+`Complète le parc <nom>` n’autorise pas la publication. Codex s’arrête après l’étape 8 avec un état `prêt pour publication` ou une liste précise de lacunes. Une demande distincte et explicite est nécessaire pour publier les nouvelles images, rendre visibles le parc et les nouveaux contenus, valider leur statut ou déclencher toute annonce de publication.
 
 ## Règle de contexte obligatoire
 
@@ -325,6 +325,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Résoudre toutes les clés utilisées : `zoneKey`, `manufacturerKey`, `operatorKey`, `founderKey`, `ownerKey`, `itemKey`, `imageKey`.
 - Chercher systématiquement les conditions d’accès de chaque attraction et les intégrer dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.
 - Ne livrer aucune image dont le propriétaire ne peut pas être résolu à partir de l’export actualisé ou des références/items créés dans le même JSON.
+- Pendant une commande de complétude, conserver toute nouvelle image en `isPublished: false`, y compris pour un parc déjà public. La publication des médias appartient à la phase explicitement autorisée de l’étape 8.
 - Vérifier les descriptions ou biographies manquantes des constructeurs, fondateurs et exploitants associés au parc ; les compléter à l’étape 5 ou signaler explicitement l’absence de source fiable.
 - Préserver les données existantes en mode `merge` : IDs, images, rattachements, coordonnées, biographies et contenus validés.
 - Garder les éléments fermés mais confirmés visibles quand ils sont pertinents pour la fiche ou l’histoire.

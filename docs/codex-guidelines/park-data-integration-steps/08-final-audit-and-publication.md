@@ -132,6 +132,7 @@ Vérifier :
 - chaque absence d’image justifiée par une recherche réelle et non par un simple oubli ;
 - chaque jalon et article illustré par une image contextualisée quand elle est trouvable ;
 - aucune image secondaire ou historique n’a remplacé par défaut une meilleure image courante.
+- toutes les images importées pendant la commande de complétude restent en `isPublished: false` avant l’autorisation explicite.
 
 ### Audit images utilisées dans les articles
 
@@ -209,7 +210,7 @@ Ne passer `isVisible` à `true` que pour les entités :
 ### Après autorisation explicite de publication
 
 1. Réexporter et rejouer les contrôles bloquants sur l’état courant.
-2. Publier d’abord les articles et contenus dépendants prêts, pendant que le nouveau parc reste masqué.
+2. Publier de façon ciblée les images validées, puis les articles et contenus dépendants prêts, pendant que le nouveau parc reste masqué. Réutiliser les IDs d’images exportés ; ne pas réimporter les fichiers.
 3. Vérifier les statuts, descriptions, images courantes et sources des parkItems publiables. Ne pas rendre visible un item legacy inconnu au seul motif que la consigne dit « tout publier ».
 4. Passer le parc à `Validated` et visible en dernier.
 5. Contrôler anonymement la fiche publique, le logo, les attractions, les historiques et les articles dans les langues prises en charge.
