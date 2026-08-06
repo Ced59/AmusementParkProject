@@ -580,5 +580,20 @@ public sealed class SocialPublicationServiceTests
             IReadOnlyCollection<SocialPublication> publications = this.Publications.Take(limit).ToList();
             return Task.FromResult(publications);
         }
+
+        public Task<IReadOnlyCollection<string>> ListPublishedAutomaticParkAnnouncementParkIdsAsync(
+            CancellationToken cancellationToken)
+        {
+            IReadOnlyCollection<string> parkIds = this.Publications
+                .Where(static publication => publication.Network == SocialNetwork.Facebook
+                    && publication.Status == SocialPublicationStatus.Published
+                    && publication.Trigger == SocialPublicationTrigger.AutomaticParkPublication
+                    && !string.IsNullOrWhiteSpace(publication.ExternalPostId)
+                    && !string.IsNullOrWhiteSpace(publication.SourceEntityId))
+                .Select(static publication => publication.SourceEntityId!)
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+            return Task.FromResult(parkIds);
+        }
     }
 }

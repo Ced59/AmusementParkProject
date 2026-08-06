@@ -134,3 +134,21 @@ public sealed class GetSocialPublishingOverviewQueryHandler
         return new SocialPublishingOverview(descriptors, publications);
     }
 }
+
+public sealed class ListPublishedParkAnnouncementIdsQueryHandler
+    : IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>>
+{
+    private readonly ISocialPublicationRepository repository;
+
+    public ListPublishedParkAnnouncementIdsQueryHandler(ISocialPublicationRepository repository)
+    {
+        this.repository = repository;
+    }
+
+    public Task<IReadOnlyCollection<string>> HandleAsync(
+        ListPublishedParkAnnouncementIdsQuery query,
+        CancellationToken cancellationToken = default)
+    {
+        return this.repository.ListPublishedAutomaticParkAnnouncementParkIdsAsync(cancellationToken);
+    }
+}

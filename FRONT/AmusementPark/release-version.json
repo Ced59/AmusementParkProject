@@ -1,6 +1,20 @@
 {
-  "version": "4.1.9",
+  "version": "4.1.10",
   "history": [
+    {
+      "version": "4.1.10",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "Amélioration de l’ergonomie de l’administration.",
+        "en": "Administration usability improvements.",
+        "de": "Die Bedienbarkeit der Verwaltung wurde verbessert.",
+        "nl": "De gebruiksvriendelijkheid van het beheer is verbeterd.",
+        "it": "Migliorata l’usabilità dell’amministrazione.",
+        "es": "Mejoras en la usabilidad de la administración.",
+        "pl": "Usprawniono obsługę administracji.",
+        "pt": "Melhorias na usabilidade da administração."
+      }
+    },
     {
       "version": "4.1.9",
       "releasedAt": "2026-08-06",

@@ -22,6 +22,11 @@ public sealed class UpdateSocialPublicationRequestDto
     public string? Message { get; set; }
 }
 
+public sealed class ParkSocialPreviewPublicationDto
+{
+    public string ParkId { get; set; } = string.Empty;
+}
+
 public sealed class SocialPublicationSynchronizationResultDto
 {
     public int CheckedCount { get; set; }
