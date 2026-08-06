@@ -1,8 +1,14 @@
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
-import { resolveParkPhotoSocialImageId, resolveParkSocialImageId, resolveParkSummarySocialImageId } from './park-social-image.helpers';
+import {
+  resolveParkItemSocialImageId,
+  resolveParkPhotoSocialImageId,
+  resolveParkSocialImageId,
+  resolveParkSummarySocialImageId
+} from './park-social-image.helpers';
 
 describe('park social image helpers', () => {
   it('keeps only published park photos as social images', () => {
@@ -23,6 +29,14 @@ describe('park social image helpers', () => {
   it('filters logo fallback images from park summaries', () => {
     expect(resolveParkSummarySocialImageId(createSummary(createImage('logo-1', ImageCategory.LOGO)))).toBeNull();
     expect(resolveParkSummarySocialImageId(createSummary(createImage('photo-1', ImageCategory.PARK)))).toBe('photo-1');
+  });
+
+  it('uses the first published park item photo as the final fallback', () => {
+    expect(resolveParkItemSocialImageId([
+      createParkItemImage('hidden-photo', false),
+      createParkItemImage('item-photo-1'),
+      createParkItemImage('item-photo-2')
+    ])).toBe('item-photo-1');
   });
 });
 
@@ -74,5 +88,24 @@ function createImage(id: string, category: ImageCategory, isPublished: boolean =
     tagIds: [],
     createdAt: '2026-01-01T00:00:00Z',
     updatedAt: '2026-01-01T00:00:00Z'
+  };
+}
+
+function createParkItemImage(id: string, isPublished: boolean = true): ParkItemImageDto {
+  return {
+    item: {
+      id: 'item-1',
+      parkId: 'park-1',
+      name: 'Ride',
+      category: 'Attraction',
+      type: 'FlatRide',
+      latitude: null,
+      longitude: null
+    },
+    image: {
+      ...createImage(id, ImageCategory.PARK_ITEM, isPublished),
+      ownerType: ImageOwnerType.PARK_ITEM,
+      ownerId: 'item-1'
+    }
   };
 }

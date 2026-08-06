@@ -32,6 +32,11 @@ import { mapNullable } from '@shared/utils/mapping';
 import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 import { resolvePublicParkItemsClosedFilter } from '@shared/utils/parks/public-park-items-closed-filter.helper';
 import { isParkOpenToVisitors } from '@shared/utils/parks/park-status.presentation';
+import {
+  resolveParkItemSocialImageId,
+  resolveParkSocialImageId,
+  resolveParkSummarySocialImageId
+} from '@shared/utils/images/park-social-image.helpers';
 import { mapParkDistanceTargetToCardModel } from '../mappers/park-distance-card.mapper';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
 import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
@@ -63,11 +68,13 @@ export class ParkDetailStateFacade {
   private readonly hasVideosSignal = signal(false);
   private readonly hasImagesSignal = signal(false);
   private readonly hasHistorySignal = signal(false);
+  private readonly socialImageIdSignal = signal<string | null>(null);
 
   public readonly state = this.screenStateStore.state;
   public readonly nearbyState = this.nearbyStateStore.state;
   public readonly weatherState = this.weatherStateStore.state;
   public readonly openingHoursState = this.openingHoursStateStore.state;
+  public readonly socialImageId: Signal<string | null> = this.socialImageIdSignal.asReadonly();
   public readonly park: Signal<ParkDetailViewModel | null> = computed(() => {
     const summary: ParkDetailSummary | undefined = this.screenStateStore.data();
 
@@ -146,6 +153,7 @@ export class ParkDetailStateFacade {
     this.hasVideosSignal.set(false);
     this.hasImagesSignal.set(false);
     this.hasHistorySignal.set(false);
+    this.socialImageIdSignal.set(null);
 
     this.parksApiService.getParkDetailSummary(id, anonymousHttpOptions()).pipe(
       switchMap((summary: ParkDetailSummary) => {
@@ -161,6 +169,7 @@ export class ParkDetailStateFacade {
     ).subscribe({
       next: (summary: ParkDetailSummary) => {
         this.screenStateStore.setReady(summary);
+        this.socialImageIdSignal.set(resolveParkSummarySocialImageId(summary));
         this.hasImagesSignal.set(this.hasKnownImage(summary));
         this.loadNearbyParks(summary.park);
         this.loadWeather(summary.park);
@@ -451,7 +460,7 @@ export class ParkDetailStateFacade {
   }
 
   private loadImageAvailability(summary: ParkDetailSummary): void {
-    if (this.hasKnownImage(summary)) {
+    if (resolveParkSummarySocialImageId(summary) !== null) {
       this.hasImagesSignal.set(true);
       return;
     }
@@ -468,6 +477,10 @@ export class ParkDetailStateFacade {
       itemImages: this.imagesApiService.getParkItemImagesByPark(parkId, 1, 1, anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: { parkImages: PagedResult<ImageDto>; logoImages: PagedResult<ImageDto>; itemImages: PagedResult<ParkItemImageDto> }) => {
+        this.socialImageIdSignal.set(
+          resolveParkSocialImageId(response.parkImages.items)
+          ?? resolveParkItemSocialImageId(response.itemImages.items)
+        );
         this.hasImagesSignal.set(
           response.parkImages.pagination.totalItems > 0 ||
           response.logoImages.pagination.totalItems > 0 ||
@@ -475,7 +488,7 @@ export class ParkDetailStateFacade {
         );
       },
       error: () => {
-        this.hasImagesSignal.set(false);
+        this.hasImagesSignal.set(this.hasKnownImage(summary));
       }
     });
   }
