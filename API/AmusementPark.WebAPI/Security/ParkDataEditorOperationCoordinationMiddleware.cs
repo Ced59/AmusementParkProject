@@ -28,6 +28,12 @@ public sealed class ParkDataEditorOperationCoordinationMiddleware
 
         ParkDataEditorOperationAttribute? operationAttribute =
             endpoint?.Metadata.GetMetadata<ParkDataEditorOperationAttribute>();
+        if (context.User.Identity?.IsAuthenticated != true)
+        {
+            await this.next(context);
+            return;
+        }
+
         bool isDedicatedToken = IsDedicatedToken(context);
         if (!isDedicatedToken && operationAttribute is null)
         {

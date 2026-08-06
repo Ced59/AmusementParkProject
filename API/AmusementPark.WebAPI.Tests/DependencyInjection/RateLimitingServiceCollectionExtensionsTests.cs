@@ -14,6 +14,21 @@ namespace AmusementPark.WebAPI.Tests.DependencyInjection;
 public sealed class RateLimitingServiceCollectionExtensionsTests
 {
     [Fact]
+    public void CreateParkDataEditorOperationStatusLimiterOptions_ShouldRejectImmediateSecondPoll()
+    {
+        TokenBucketRateLimiterOptions options =
+            RateLimitingServiceCollectionExtensions.CreateParkDataEditorOperationStatusLimiterOptions();
+        using TokenBucketRateLimiter limiter = new TokenBucketRateLimiter(options);
+
+        using RateLimitLease firstPoll = limiter.AttemptAcquire();
+        using RateLimitLease immediateSecondPoll = limiter.AttemptAcquire();
+
+        Assert.True(firstPoll.IsAcquired);
+        Assert.False(immediateSecondPoll.IsAcquired);
+        Assert.Equal(TimeSpan.FromSeconds(5), options.ReplenishmentPeriod);
+    }
+
+    [Fact]
     public void AddApiRateLimiting_ShouldKeepPublicReadsSeparateFromTheGeneralQuota()
     {
         IConfiguration configuration = new ConfigurationBuilder()

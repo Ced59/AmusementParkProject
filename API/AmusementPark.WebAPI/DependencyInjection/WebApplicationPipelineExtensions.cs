@@ -105,9 +105,9 @@ public static class WebApplicationPipelineExtensions
         app.UseApiAuthenticationRateLimiting();
         app.UseAuthentication();
         app.UseMiddleware<ParkDataEditorRequestAuditMiddleware>();
-        app.UseMiddleware<ParkDataEditorOperationCoordinationMiddleware>();
         app.UseMiddleware<AdminPublicViewSimulationMiddleware>();
         app.UseAuthorization();
+        app.UseMiddleware<ParkDataEditorOperationCoordinationMiddleware>();
         app.UseMiddleware<ApiPerformanceLoggingMiddleware>();
         app.UseOutputCache();
         return app;
