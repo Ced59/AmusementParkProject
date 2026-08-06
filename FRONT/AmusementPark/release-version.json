@@ -1,6 +1,20 @@
 {
-  "version": "4.1.14",
+  "version": "4.1.15",
   "history": [
+    {
+      "version": "4.1.15",
+      "releasedAt": "2026-08-06",
+      "labels": {
+        "fr": "L’affichage des images partagées a été stabilisé.",
+        "en": "Shared image display has been stabilized.",
+        "de": "Die Anzeige geteilter Bilder wurde stabilisiert.",
+        "nl": "De weergave van gedeelde afbeeldingen is gestabiliseerd.",
+        "it": "La visualizzazione delle immagini condivise è stata stabilizzata.",
+        "es": "Se ha estabilizado la visualización de imágenes compartidas.",
+        "pl": "Ustabilizowano wyświetlanie udostępnianych obrazów.",
+        "pt": "A apresentação de imagens partilhadas foi estabilizada."
+      }
+    },
     {
       "version": "4.1.14",
       "releasedAt": "2026-08-06",

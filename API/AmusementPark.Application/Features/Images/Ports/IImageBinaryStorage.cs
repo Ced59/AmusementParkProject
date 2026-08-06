@@ -45,7 +45,7 @@ public interface IImageBinaryStorage
     /// <summary>
     /// Récupère une variante JPEG persistante et stable pour les aperçus sociaux.
     /// </summary>
-    Task<(Stream Stream, string ContentType)?> GetSocialPreviewAsync(
+    Task<(byte[] Content, string ContentType)?> GetSocialPreviewAsync(
         string pathWithoutExtension,
         int width,
         CancellationToken cancellationToken);
