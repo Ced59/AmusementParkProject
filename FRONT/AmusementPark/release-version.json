@@ -5,14 +5,14 @@
       "version": "4.1.10",
       "releasedAt": "2026-08-06",
       "labels": {
-        "fr": "Les aperçus des publications existantes se réparent plus facilement.",
-        "en": "Existing post previews can be repaired more easily.",
-        "de": "Vorschauen bestehender Beiträge lassen sich leichter reparieren.",
-        "nl": "Voorvertoningen van bestaande berichten zijn eenvoudiger te herstellen.",
-        "it": "Le anteprime dei post esistenti si possono ripristinare più facilmente.",
-        "es": "Las vistas previas de las publicaciones existentes se reparan con mayor facilidad.",
-        "pl": "Podglądy istniejących publikacji można łatwiej naprawić.",
-        "pt": "As pré-visualizações das publicações existentes podem ser reparadas mais facilmente."
+        "fr": "Amélioration de l’ergonomie de l’administration.",
+        "en": "Administration usability improvements.",
+        "de": "Die Bedienbarkeit der Verwaltung wurde verbessert.",
+        "nl": "De gebruiksvriendelijkheid van het beheer is verbeterd.",
+        "it": "Migliorata l’usabilità dell’amministrazione.",
+        "es": "Mejoras en la usabilidad de la administración.",
+        "pl": "Usprawniono obsługę administracji.",
+        "pt": "Melhorias na usabilidade da administração."
       }
     },
     {
