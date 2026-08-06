@@ -42,6 +42,8 @@ namespace AmusementPark.WebAPI.Controllers;
 [InvalidatesPublicCache(PublicCacheScope.Data, PublicCacheScope.ReferenceData)]
 public sealed class ImagesController : ControllerBase
 {
+    internal const int SocialPreviewImageWidth = 960;
+
     private readonly ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>> uploadImageCommandHandler;
     private readonly ICommandHandler<ImportRemoteImageCommand, ApplicationResult<Image>> importRemoteImageCommandHandler;
     private readonly ICommandHandler<LinkImageCommand, ApplicationResult<Image>> linkImageCommandHandler;
@@ -488,6 +490,63 @@ public sealed class ImagesController : ControllerBase
             ? "public,max-age=31536000,immutable"
             : "private,no-store";
         this.Response.Headers.Vary = "Accept";
+        return this.File(binary.Value.Stream, binary.Value.ContentType);
+    }
+
+    [HttpGet("binary/{imageId}/social-preview-v1")]
+    [HttpHead("binary/{imageId}/social-preview-v1")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GetSocialPreviewImageAsync(
+        [FromRoute] string imageId,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<Image> result = await this.getImageByIdQueryHandler.HandleAsync(
+            new GetImageByIdQuery(imageId),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        if (!result.Value.IsPublished || string.IsNullOrWhiteSpace(result.Value.Path))
+        {
+            return this.ToNotFoundProblemDetailsResult(
+                "The requested social preview image was not found.",
+                "image.not-found");
+        }
+
+        if (HttpMethods.IsHead(this.Request.Method))
+        {
+            (long ContentLength, string ContentType)? metadata =
+                await this.imageBinaryStorage.GetSocialPreviewMetadataAsync(
+                    result.Value.Path,
+                    SocialPreviewImageWidth,
+                    cancellationToken);
+            if (metadata is null)
+            {
+                return this.ToNotFoundProblemDetailsResult(
+                    "The requested social preview image binary was not found.",
+                    "image.binary-not-found");
+            }
+
+            this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
+            this.Response.ContentLength = metadata.Value.ContentLength;
+            this.Response.ContentType = metadata.Value.ContentType;
+            return this.StatusCode(StatusCodes.Status200OK);
+        }
+
+        (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetSocialPreviewAsync(
+            result.Value.Path,
+            SocialPreviewImageWidth,
+            cancellationToken);
+        if (binary is null)
+        {
+            return this.ToNotFoundProblemDetailsResult(
+                "The requested social preview image binary was not found.",
+                "image.binary-not-found");
+        }
+
+        this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
         return this.File(binary.Value.Stream, binary.Value.ContentType);
     }
 

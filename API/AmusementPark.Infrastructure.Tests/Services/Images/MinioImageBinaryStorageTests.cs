@@ -15,6 +15,263 @@ namespace AmusementPark.Infrastructure.Tests.Services.Images;
 public sealed class MinioImageBinaryStorageTests
 {
     [Fact]
+    public async Task ExecuteWithSocialPreviewDistributedLeaseAsync_WhenLeaseIsBusy_ShouldRetryAndRelease()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.SetupSequence(value => value.TryAcquireAsync(
+                "images/photo-social",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false)
+            .ReturnsAsync(true);
+        lease.Setup(value => value.ExistsAsync(
+                "images/photo-social",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        lease.Setup(value => value.ReleaseAsync(
+                "images/photo-social",
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+
+        bool result = await storage.ExecuteWithSocialPreviewDistributedLeaseAsync(
+            "images/photo-social",
+            _ => Task.FromResult(true),
+            false,
+            CancellationToken.None,
+            TimeSpan.FromSeconds(1),
+            TimeSpan.FromMilliseconds(1));
+
+        Assert.True(result);
+        lease.Verify(value => value.TryAcquireAsync(
+            "images/photo-social",
+            It.IsAny<string>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<CancellationToken>()),
+            Times.Exactly(2));
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteWithSocialPreviewDistributedLeaseAsync_WhenLeaseRemainsBusy_ShouldStopAtDeadline()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "images/busy-photo",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        lease.Setup(value => value.ExistsAsync(
+                "images/busy-photo",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+        bool operationInvoked = false;
+
+        bool result = await storage.ExecuteWithSocialPreviewDistributedLeaseAsync(
+            "images/busy-photo",
+            _ =>
+            {
+                operationInvoked = true;
+                return Task.FromResult(true);
+            },
+            false,
+            CancellationToken.None,
+            TimeSpan.FromMilliseconds(30),
+            TimeSpan.FromMilliseconds(5));
+
+        Assert.False(result);
+        Assert.False(operationInvoked);
+        lease.Verify(value => value.TryAcquireAsync(
+            "images/busy-photo",
+            It.IsAny<string>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<CancellationToken>()),
+            Times.AtLeast(2));
+        lease.Verify(value => value.ReleaseAsync(
+            It.IsAny<string>(),
+            It.IsAny<string>(),
+            It.IsAny<CancellationToken>()),
+            Times.Never);
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteWithSocialPreviewDistributedLeaseAsync_WhenTargetDisappears_ShouldStopRetrying()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "images/missing-photo",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        lease.Setup(value => value.ExistsAsync(
+                "images/missing-photo",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+        bool operationInvoked = false;
+
+        bool result = await storage.ExecuteWithSocialPreviewDistributedLeaseAsync(
+            "images/missing-photo",
+            _ =>
+            {
+                operationInvoked = true;
+                return Task.FromResult(true);
+            },
+            false,
+            CancellationToken.None);
+
+        Assert.False(result);
+        Assert.False(operationInvoked);
+        lease.Verify(value => value.TryAcquireAsync(
+            "images/missing-photo",
+            It.IsAny<string>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<CancellationToken>()),
+            Times.Once);
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteWithSocialPreviewGenerationLockAsync_ShouldCoordinateScopedInstancesForSameImage()
+    {
+        MinioImageBinaryStorage firstStorage = CreateStorage(
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict));
+        MinioImageBinaryStorage secondStorage = CreateStorage(
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict));
+        TaskCompletionSource<bool> firstOperationStarted =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> allowFirstOperationCompletion =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> secondOperationStarted =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        Task<bool> firstOperation = firstStorage.ExecuteWithSocialPreviewGenerationLockAsync(
+            "images/photo-1",
+            async cancellationToken =>
+            {
+                firstOperationStarted.SetResult(true);
+                await allowFirstOperationCompletion.Task.WaitAsync(cancellationToken);
+                return true;
+            },
+            CancellationToken.None);
+
+        await firstOperationStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        Task<bool> secondOperation = secondStorage.ExecuteWithSocialPreviewGenerationLockAsync(
+            "images/photo-1",
+            cancellationToken =>
+            {
+                secondOperationStarted.SetResult(true);
+                return Task.FromResult(true);
+            },
+            CancellationToken.None);
+
+        await Task.Delay(TimeSpan.FromMilliseconds(100));
+        Assert.False(secondOperationStarted.Task.IsCompleted);
+
+        allowFirstOperationCompletion.SetResult(true);
+        await firstOperation.WaitAsync(TimeSpan.FromSeconds(2));
+        await secondOperation.WaitAsync(TimeSpan.FromSeconds(2));
+
+        Assert.True(secondOperationStarted.Task.IsCompletedSuccessfully);
+        Assert.False(MinioImageBinaryStorage.HasSocialPreviewGenerationLock("images/photo-1"));
+    }
+
+    [Fact]
+    public async Task DeleteAsync_ShouldWaitForSocialPreviewGenerationAcrossScopedInstances()
+    {
+        const string ImagePath = "images/delete-lock-photo";
+        MinioImageBinaryStorage previewStorage = CreateStorage(
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict));
+        Mock<IMinioClient> minioClient = new Mock<IMinioClient>(MockBehavior.Strict);
+        int removalAttempt = 0;
+        minioClient
+            .Setup(value => value.RemoveObjectAsync(
+                It.IsAny<Minio.DataModel.Args.RemoveObjectArgs>(),
+                CancellationToken.None))
+            .Callback(() => removalAttempt++)
+            .Returns(Task.CompletedTask);
+        MinioImageBinaryStorage deletionStorage = new MinioImageBinaryStorage(
+            minioClient.Object,
+            new MinioImageStorageSettings(),
+            Mock.Of<IImageVariantGenerationLease>(),
+            NullLogger<MinioImageBinaryStorage>.Instance);
+        TaskCompletionSource<bool> previewStarted =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> allowPreviewCompletion =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        Task<bool> previewOperation = previewStorage.ExecuteWithSocialPreviewGenerationLockAsync(
+            ImagePath,
+            async cancellationToken =>
+            {
+                previewStarted.SetResult(true);
+                await allowPreviewCompletion.Task.WaitAsync(cancellationToken);
+                return true;
+            },
+            CancellationToken.None);
+        await previewStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+
+        Task<bool> deletionOperation = deletionStorage.DeleteAsync(
+            ImagePath,
+            CancellationToken.None);
+        await Task.Delay(TimeSpan.FromMilliseconds(100));
+
+        Assert.Equal(0, removalAttempt);
+        allowPreviewCompletion.SetResult(true);
+        await previewOperation.WaitAsync(TimeSpan.FromSeconds(2));
+        Assert.True(await deletionOperation.WaitAsync(TimeSpan.FromSeconds(2)));
+        Assert.Equal(52, removalAttempt);
+        Assert.False(MinioImageBinaryStorage.HasSocialPreviewGenerationLock(ImagePath));
+        minioClient.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteSocialPreviewVariantsAsync_WhenAnInvalidationFails_ShouldReturnFalse()
+    {
+        Mock<IMinioClient> minioClient = new Mock<IMinioClient>(MockBehavior.Strict);
+        int removalAttempt = 0;
+        minioClient
+            .Setup(value => value.RemoveObjectAsync(
+                It.IsAny<Minio.DataModel.Args.RemoveObjectArgs>(),
+                CancellationToken.None))
+            .Returns(() =>
+            {
+                removalAttempt++;
+                return removalAttempt == 1
+                    ? Task.FromException(new IOException("Transient MinIO failure."))
+                    : Task.CompletedTask;
+            });
+        MinioImageBinaryStorage storage = new MinioImageBinaryStorage(
+            minioClient.Object,
+            new MinioImageStorageSettings(),
+            Mock.Of<IImageVariantGenerationLease>(),
+            NullLogger<MinioImageBinaryStorage>.Instance);
+
+        bool succeeded = await storage.DeleteSocialPreviewVariantsAsync(
+            "images/photo-1",
+            CancellationToken.None);
+
+        Assert.False(succeeded);
+        Assert.Equal(16, removalAttempt);
+        minioClient.VerifyAll();
+    }
+
+    [Fact]
     public async Task ExecuteWithVariantGenerationLeaseAsync_ShouldHoldLeaseUntilGenerationCompletes()
     {
         Mock<IImageVariantGenerationLease> lease =
@@ -464,6 +721,8 @@ public sealed class MinioImageBinaryStorageTests
         Assert.Contains("images/photo-1.w320.jpg", objectNames);
         Assert.Contains("images/photo-1.w1920.webp", objectNames);
         Assert.Contains("images/photo-1.w1920.jpg", objectNames);
+        Assert.Contains("images/photo-1.social.w960.v1.jpg", objectNames);
+        Assert.Contains("images/photo-1.social.w960.v1.jpg.revision", objectNames);
         Assert.DoesNotContain("images/photo-1.w321.webp", objectNames);
         Assert.Equal(objectNames.Length, objectNames.Distinct(StringComparer.Ordinal).Count());
     }
@@ -474,5 +733,48 @@ public sealed class MinioImageBinaryStorageTests
         string objectName = MinioImageBinaryStorage.GetResponsiveVariantObjectName("images/photo-1", 960, "webp");
 
         Assert.Equal("images/photo-1.w960.v2.webp", objectName);
+    }
+
+    [Fact]
+    public void GetSocialPreviewVariantObjectName_ShouldIncludeDedicatedVariantVersion()
+    {
+        string objectName = MinioImageBinaryStorage.GetSocialPreviewVariantObjectName("images/photo-1", 960);
+
+        Assert.Equal("images/photo-1.social.w960.v1.jpg", objectName);
+    }
+
+    [Fact]
+    public void GetSocialPreviewValidationObjectName_ShouldBindMarkerToPreviewVersion()
+    {
+        string objectName = MinioImageBinaryStorage.GetSocialPreviewValidationObjectName(
+            "images/photo-1",
+            960);
+
+        Assert.Equal("images/photo-1.social.w960.v1.jpg.revision", objectName);
+    }
+
+    [Fact]
+    public void IsSocialPreviewRevisionCurrent_ShouldRejectMissingOrDifferentRevision()
+    {
+        Assert.True(MinioImageBinaryStorage.IsSocialPreviewRevisionCurrent(
+            "images/photo-1.webp\netag-a\n123",
+            "images/photo-1.webp\netag-a\n123"));
+        Assert.False(MinioImageBinaryStorage.IsSocialPreviewRevisionCurrent(
+            "images/photo-1.webp\netag-a\n123",
+            "images/photo-1.webp\netag-b\n123"));
+        Assert.False(MinioImageBinaryStorage.IsSocialPreviewRevisionCurrent(
+            "images/photo-1.webp\netag-a\n123",
+            null));
+    }
+
+    [Fact]
+    public void BuildSourceRevision_ShouldIncludeObjectIdentityEtagAndSize()
+    {
+        string revision = MinioImageBinaryStorage.BuildSourceRevision(
+            "images/photo-1.webp",
+            "etag-a",
+            123);
+
+        Assert.Equal("images/photo-1.webp\netag-a\n123", revision);
     }
 }

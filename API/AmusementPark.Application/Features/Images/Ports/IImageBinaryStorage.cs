@@ -43,6 +43,22 @@ public interface IImageBinaryStorage
         CancellationToken cancellationToken);
 
     /// <summary>
+    /// Récupère une variante JPEG persistante et stable pour les aperçus sociaux.
+    /// </summary>
+    Task<(Stream Stream, string ContentType)?> GetSocialPreviewAsync(
+        string pathWithoutExtension,
+        int width,
+        CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Valide une variante sociale sans télécharger son contenu.
+    /// </summary>
+    Task<(long ContentLength, string ContentType)?> GetSocialPreviewMetadataAsync(
+        string pathWithoutExtension,
+        int width,
+        CancellationToken cancellationToken);
+
+    /// <summary>
     /// RecrÃ©e les variantes d'une image existante avec le watermark applicatif.
     /// </summary>
     Task<bool> ApplyWatermarkAsync(string pathWithoutExtension, CancellationToken cancellationToken);

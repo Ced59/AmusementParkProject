@@ -1,8 +1,11 @@
+using System.Collections.Concurrent;
+using System.Text;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Infrastructure.Configuration.Images;
 using Microsoft.Extensions.Logging;
 using Minio;
+using Minio.DataModel;
 using Minio.DataModel.Args;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
@@ -27,10 +30,15 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private const int MaxFileSizeKb = 300;
     private const int MaxLongEdge = 1920;
     private const int ResponsiveVariantVersion = 2;
+    private const int SocialPreviewVariantVersion = 1;
     private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
+    private static readonly TimeSpan SocialPreviewLeaseRetryDelay = TimeSpan.FromMilliseconds(500);
+    private static readonly TimeSpan SocialPreviewLeaseWaitTimeout = TimeSpan.FromSeconds(5);
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
+    private static readonly ConcurrentDictionary<string, SocialPreviewGenerationLockEntry> SocialPreviewGenerationLocks =
+        new ConcurrentDictionary<string, SocialPreviewGenerationLockEntry>(StringComparer.Ordinal);
 
     private readonly IMinioClient minioClient;
     private readonly MinioImageStorageSettings settings;
@@ -186,49 +194,73 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             return false;
         }
 
-        await EnsureBucketExistsAsync(cancellationToken);
-
-        (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(pathWithoutExtension, cancellationToken);
-        if (source is null)
-        {
-            return false;
-        }
-
-        try
-        {
-            await using Stream sourceStream = source.Value.Stream;
-            await using MemoryStream watermarkedStream = await ApplyWatermarkToStreamAsync(sourceStream, cancellationToken);
-            using Image image = await Image.LoadAsync(watermarkedStream, cancellationToken);
-            ResizeInPlaceIfNeeded(image);
-
-            foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetFormats())
+        return await this.ExecuteWithSocialPreviewCoordinationAsync(
+            pathWithoutExtension,
+            async operationCancellationToken =>
             {
-                byte[] content = await EncodeWithSizeLimitAsync(image, format.encoderFactory, cancellationToken);
-                string objectName = $"{pathWithoutExtension}.{format.extension}";
+                try
+                {
+                    await EnsureBucketExistsAsync(operationCancellationToken);
 
-                await using MemoryStream objectStream = new MemoryStream(content);
-                await this.minioClient.PutObjectAsync(
-                    new PutObjectArgs()
-                        .WithBucket(this.settings.Bucket)
-                        .WithObject(objectName)
-                        .WithStreamData(objectStream)
-                        .WithObjectSize(objectStream.Length)
-                        .WithContentType(format.contentType),
-                    cancellationToken);
-            }
+                    (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(
+                        pathWithoutExtension,
+                        operationCancellationToken);
+                    if (source is null)
+                    {
+                        return false;
+                    }
 
-            await this.DeleteResponsiveVariantsAsync(pathWithoutExtension, cancellationToken);
-            return true;
-        }
-        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-        {
-            throw;
-        }
-        catch (Exception exception)
-        {
-            this.logger.LogWarning(exception, "Unable to apply watermark to image {PathWithoutExtension} in MinIO bucket {Bucket}.", pathWithoutExtension, this.settings.Bucket);
-            return false;
-        }
+                    await using Stream sourceStream = source.Value.Stream;
+                    await using MemoryStream watermarkedStream = await ApplyWatermarkToStreamAsync(
+                        sourceStream,
+                        operationCancellationToken);
+                    using Image image = await Image.LoadAsync(watermarkedStream, operationCancellationToken);
+                    ResizeInPlaceIfNeeded(image);
+
+                    bool socialPreviewsDeleted = await this.DeleteSocialPreviewVariantsAsync(
+                        pathWithoutExtension,
+                        operationCancellationToken);
+                    if (!socialPreviewsDeleted)
+                    {
+                        return false;
+                    }
+
+                    foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetFormats())
+                    {
+                        byte[] content = await EncodeWithSizeLimitAsync(
+                            image,
+                            format.encoderFactory,
+                            operationCancellationToken);
+                        string objectName = $"{pathWithoutExtension}.{format.extension}";
+
+                        await using MemoryStream objectStream = new MemoryStream(content);
+                        await this.minioClient.PutObjectAsync(
+                            new PutObjectArgs()
+                                .WithBucket(this.settings.Bucket)
+                                .WithObject(objectName)
+                                .WithStreamData(objectStream)
+                                .WithObjectSize(objectStream.Length)
+                                .WithContentType(format.contentType),
+                            operationCancellationToken);
+                    }
+
+                    await this.DeleteResponsiveVariantsAsync(
+                        pathWithoutExtension,
+                        operationCancellationToken);
+                    return true;
+                }
+                catch (OperationCanceledException) when (operationCancellationToken.IsCancellationRequested)
+                {
+                    throw;
+                }
+                catch (Exception exception)
+                {
+                    this.logger.LogWarning(exception, "Unable to apply watermark to image {PathWithoutExtension} in MinIO bucket {Bucket}.", pathWithoutExtension, this.settings.Bucket);
+                    return false;
+                }
+            },
+            false,
+            cancellationToken);
     }
 
     public async Task<(Stream Stream, string ContentType)?> GetBestAsync(string pathWithoutExtension, string? acceptHeader, int? width, CancellationToken cancellationToken)
@@ -252,6 +284,346 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
 
         return await GetOriginalBestAsync(pathWithoutExtension, supportsWebp, cancellationToken);
+    }
+
+    public async Task<(Stream Stream, string ContentType)?> GetSocialPreviewAsync(
+        string pathWithoutExtension,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(pathWithoutExtension))
+        {
+            return null;
+        }
+
+        int? normalizedWidth = NormalizeResponsiveWidth(width);
+        if (normalizedWidth is not int socialPreviewWidth)
+        {
+            return null;
+        }
+
+        string objectName = GetSocialPreviewVariantObjectName(pathWithoutExtension, socialPreviewWidth);
+        return await this.ExecuteWithSocialPreviewGenerationLockAsync(
+            pathWithoutExtension,
+            async operationCancellationToken =>
+            {
+                (Stream Stream, string ContentType)? cached = await this.TryGetValidatedSocialPreviewAsync(
+                    pathWithoutExtension,
+                    objectName,
+                    socialPreviewWidth,
+                    operationCancellationToken);
+                if (cached is not null)
+                {
+                    return cached;
+                }
+
+                (Stream Stream, string ContentType)? generated = await this.TryCreateSocialPreviewAsync(
+                    pathWithoutExtension,
+                    objectName,
+                    socialPreviewWidth,
+                    operationCancellationToken);
+                if (generated is not null)
+                {
+                    return generated;
+                }
+
+                return await this.TryGetValidatedSocialPreviewAsync(
+                    pathWithoutExtension,
+                    objectName,
+                    socialPreviewWidth,
+                    operationCancellationToken);
+            },
+            cancellationToken);
+    }
+
+    public async Task<(long ContentLength, string ContentType)?> GetSocialPreviewMetadataAsync(
+        string pathWithoutExtension,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(pathWithoutExtension))
+        {
+            return null;
+        }
+
+        int? normalizedWidth = NormalizeResponsiveWidth(width);
+        if (normalizedWidth is not int socialPreviewWidth)
+        {
+            return null;
+        }
+
+        string objectName = GetSocialPreviewVariantObjectName(
+            pathWithoutExtension,
+            socialPreviewWidth);
+        return await this.ExecuteWithSocialPreviewGenerationLockAsync(
+            pathWithoutExtension,
+            async operationCancellationToken =>
+            {
+                (long ContentLength, string ContentType)? cached =
+                    await this.TryGetValidatedSocialPreviewMetadataAsync(
+                        pathWithoutExtension,
+                        objectName,
+                        socialPreviewWidth,
+                        operationCancellationToken);
+                if (cached is not null)
+                {
+                    return cached;
+                }
+
+                (long ContentLength, string ContentType)? generated =
+                    await this.TryEnsureSocialPreviewMetadataAsync(
+                        pathWithoutExtension,
+                        objectName,
+                        socialPreviewWidth,
+                        operationCancellationToken);
+                if (generated is not null)
+                {
+                    return generated;
+                }
+
+                return await this.TryGetValidatedSocialPreviewMetadataAsync(
+                    pathWithoutExtension,
+                    objectName,
+                    socialPreviewWidth,
+                    operationCancellationToken);
+            },
+            cancellationToken);
+    }
+
+    internal async Task<T> ExecuteWithSocialPreviewGenerationLockAsync<T>(
+        string pathWithoutExtension,
+        Func<CancellationToken, Task<T>> operation,
+        CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(pathWithoutExtension);
+        ArgumentNullException.ThrowIfNull(operation);
+
+        SocialPreviewGenerationLockEntry generationLock = RentSocialPreviewGenerationLock(
+            pathWithoutExtension);
+        try
+        {
+            await generationLock.Semaphore.WaitAsync(cancellationToken);
+            try
+            {
+                return await operation(cancellationToken);
+            }
+            finally
+            {
+                generationLock.Semaphore.Release();
+            }
+        }
+        finally
+        {
+            ReturnSocialPreviewGenerationLock(pathWithoutExtension, generationLock);
+        }
+    }
+
+    internal static bool HasSocialPreviewGenerationLock(string pathWithoutExtension)
+    {
+        return SocialPreviewGenerationLocks.ContainsKey(pathWithoutExtension);
+    }
+
+    private Task<T> ExecuteWithSocialPreviewCoordinationAsync<T>(
+        string pathWithoutExtension,
+        Func<CancellationToken, Task<T>> operation,
+        T missingTargetResult,
+        CancellationToken cancellationToken)
+    {
+        return this.ExecuteWithSocialPreviewGenerationLockAsync(
+            pathWithoutExtension,
+            operationCancellationToken => this.ExecuteWithSocialPreviewDistributedLeaseAsync(
+                pathWithoutExtension,
+                operation,
+                missingTargetResult,
+                operationCancellationToken),
+            cancellationToken);
+    }
+
+    internal async Task<T> ExecuteWithSocialPreviewDistributedLeaseAsync<T>(
+        string pathWithoutExtension,
+        Func<CancellationToken, Task<T>> operation,
+        T missingTargetResult,
+        CancellationToken cancellationToken,
+        TimeSpan? waitTimeout = null,
+        TimeSpan? retryDelay = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(pathWithoutExtension);
+        ArgumentNullException.ThrowIfNull(operation);
+
+        string leaseToken = Guid.NewGuid().ToString("N");
+        TimeSpan effectiveWaitTimeout = waitTimeout ?? SocialPreviewLeaseWaitTimeout;
+        TimeSpan effectiveRetryDelay = retryDelay ?? SocialPreviewLeaseRetryDelay;
+        DateTime waitUntilUtc = DateTime.UtcNow.Add(effectiveWaitTimeout);
+        while (true)
+        {
+            DateTime acquiredAtUtc = DateTime.UtcNow;
+            bool leaseAcquired = await this.variantGenerationLease.TryAcquireAsync(
+                pathWithoutExtension,
+                leaseToken,
+                acquiredAtUtc,
+                acquiredAtUtc.Add(VariantGenerationLeaseDuration),
+                cancellationToken);
+            if (leaseAcquired)
+            {
+                break;
+            }
+
+            bool targetExists = await this.variantGenerationLease.ExistsAsync(
+                pathWithoutExtension,
+                cancellationToken);
+            if (!targetExists)
+            {
+                return missingTargetResult;
+            }
+
+            TimeSpan remainingWait = waitUntilUtc - DateTime.UtcNow;
+            if (remainingWait <= TimeSpan.Zero)
+            {
+                return missingTargetResult;
+            }
+
+            TimeSpan delay = remainingWait < effectiveRetryDelay
+                ? remainingWait
+                : effectiveRetryDelay;
+            await Task.Delay(delay, cancellationToken);
+        }
+
+        try
+        {
+            return await operation(cancellationToken);
+        }
+        finally
+        {
+            try
+            {
+                await this.variantGenerationLease.ReleaseAsync(
+                    pathWithoutExtension,
+                    leaseToken,
+                    CancellationToken.None);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogWarning(
+                    exception,
+                    "Unable to release social preview coordination lease for {PathWithoutExtension}.",
+                    pathWithoutExtension);
+            }
+        }
+    }
+
+    private static SocialPreviewGenerationLockEntry RentSocialPreviewGenerationLock(
+        string pathWithoutExtension)
+    {
+        while (true)
+        {
+            SocialPreviewGenerationLockEntry entry = SocialPreviewGenerationLocks.GetOrAdd(
+                pathWithoutExtension,
+                static _ => new SocialPreviewGenerationLockEntry());
+            lock (entry.SyncRoot)
+            {
+                bool isRegistered = SocialPreviewGenerationLocks.TryGetValue(
+                    pathWithoutExtension,
+                    out SocialPreviewGenerationLockEntry? registeredEntry) &&
+                    ReferenceEquals(entry, registeredEntry);
+                if (isRegistered)
+                {
+                    entry.ReferenceCount++;
+                    return entry;
+                }
+            }
+        }
+    }
+
+    private static void ReturnSocialPreviewGenerationLock(
+        string pathWithoutExtension,
+        SocialPreviewGenerationLockEntry entry)
+    {
+        bool shouldDispose = false;
+        lock (entry.SyncRoot)
+        {
+            entry.ReferenceCount--;
+            if (entry.ReferenceCount == 0 &&
+                SocialPreviewGenerationLocks.TryGetValue(
+                    pathWithoutExtension,
+                    out SocialPreviewGenerationLockEntry? registeredEntry) &&
+                ReferenceEquals(entry, registeredEntry))
+            {
+                bool removed = SocialPreviewGenerationLocks.TryRemove(
+                    pathWithoutExtension,
+                    out SocialPreviewGenerationLockEntry? removedEntry);
+                shouldDispose = removed && ReferenceEquals(entry, removedEntry);
+            }
+        }
+
+        if (shouldDispose)
+        {
+            entry.Semaphore.Dispose();
+        }
+    }
+
+    private Task<(Stream Stream, string ContentType)?> TryCreateSocialPreviewAsync(
+        string pathWithoutExtension,
+        string objectName,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        return this.ExecuteWithSocialPreviewDistributedLeaseAsync(
+            pathWithoutExtension,
+            async operationCancellationToken =>
+            {
+                (Stream Stream, string ContentType)? cached =
+                    await this.TryGetValidatedSocialPreviewAsync(
+                        pathWithoutExtension,
+                        objectName,
+                        width,
+                        operationCancellationToken);
+                return cached ?? await this.TryCreateSocialPreviewCoreAsync(
+                    pathWithoutExtension,
+                    objectName,
+                    width,
+                    operationCancellationToken);
+            },
+            null,
+            cancellationToken);
+    }
+
+    private Task<(long ContentLength, string ContentType)?> TryEnsureSocialPreviewMetadataAsync(
+        string pathWithoutExtension,
+        string objectName,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        return this.ExecuteWithSocialPreviewDistributedLeaseAsync(
+            pathWithoutExtension,
+            async operationCancellationToken =>
+            {
+                (long ContentLength, string ContentType)? cached =
+                    await this.TryGetValidatedSocialPreviewMetadataAsync(
+                        pathWithoutExtension,
+                        objectName,
+                        width,
+                        operationCancellationToken);
+                if (cached is not null)
+                {
+                    return cached;
+                }
+
+                (Stream Stream, string ContentType)? generated =
+                    await this.TryCreateSocialPreviewCoreAsync(
+                        pathWithoutExtension,
+                        objectName,
+                        width,
+                        operationCancellationToken);
+                if (generated is null)
+                {
+                    return null;
+                }
+
+                await using Stream generatedStream = generated.Value.Stream;
+                return (generatedStream.Length, generated.Value.ContentType);
+            },
+            null,
+            cancellationToken);
     }
 
     private async Task<(Stream Stream, string ContentType)?> GetOriginalBestAsync(string pathWithoutExtension, bool supportsWebp, CancellationToken cancellationToken)
@@ -450,6 +822,382 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
     }
 
+    private async Task<(Stream Stream, string ContentType)?> TryCreateSocialPreviewCoreAsync(
+        string pathWithoutExtension,
+        string objectName,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        MemoryStream? outputStream = null;
+        bool previewStored = false;
+        string validationObjectName = GetSocialPreviewValidationObjectName(
+            pathWithoutExtension,
+            width);
+        try
+        {
+            bool validationRemoved = await this.TryRemoveSocialPreviewObjectAsync(
+                validationObjectName);
+            if (!validationRemoved)
+            {
+                return null;
+            }
+
+            (Stream Stream, string ContentType, string Revision)? source =
+                await this.TryGetSourceObjectWithRevisionAsync(
+                pathWithoutExtension,
+                cancellationToken);
+            if (source is null)
+            {
+                return null;
+            }
+
+            await using Stream sourceStream = source.Value.Stream;
+            using Image image = await Image.LoadAsync(sourceStream, cancellationToken);
+            if (image.Width > width)
+            {
+                double scale = (double)width / image.Width;
+                int targetHeight = Math.Max(1, (int)Math.Round(image.Height * scale));
+                image.Mutate(context =>
+                {
+                    context.Resize(new ResizeOptions
+                    {
+                        Size = new Size(width, targetHeight),
+                        Mode = ResizeMode.Max,
+                    });
+                });
+            }
+
+            byte[] content = await EncodeResponsiveVariantAsync(
+                image,
+                quality => new JpegEncoder { Quality = quality },
+                cancellationToken);
+            outputStream = new MemoryStream(content);
+            await this.minioClient.PutObjectAsync(
+                new PutObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName)
+                    .WithStreamData(outputStream)
+                    .WithObjectSize(outputStream.Length)
+                    .WithContentType("image/jpeg"),
+                cancellationToken);
+            previewStored = true;
+
+            bool sourceIsCurrent = await this.IsSourceRevisionCurrentAsync(
+                pathWithoutExtension,
+                source.Value.Revision,
+                cancellationToken);
+            if (!sourceIsCurrent)
+            {
+                _ = await this.TryRemoveSocialPreviewObjectAsync(objectName);
+                outputStream.Dispose();
+                return null;
+            }
+
+            byte[] sourceRevision = Encoding.UTF8.GetBytes(source.Value.Revision);
+            await using (MemoryStream validationStream = new MemoryStream(
+                sourceRevision,
+                writable: false))
+            {
+                await this.minioClient.PutObjectAsync(
+                    new PutObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(validationObjectName)
+                        .WithStreamData(validationStream)
+                        .WithObjectSize(validationStream.Length)
+                        .WithContentType("application/octet-stream"),
+                    cancellationToken);
+            }
+
+            outputStream.Position = 0;
+            return (outputStream, "image/jpeg");
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            outputStream?.Dispose();
+            _ = await this.TryRemoveSocialPreviewObjectAsync(validationObjectName);
+            if (previewStored)
+            {
+                _ = await this.TryRemoveSocialPreviewObjectAsync(objectName);
+            }
+
+            this.logger.LogWarning(
+                exception,
+                "Unable to create social preview image variant {ObjectName} in MinIO bucket {Bucket}.",
+                objectName,
+                this.settings.Bucket);
+            return null;
+        }
+    }
+
+    private async Task<(Stream Stream, string ContentType)?> TryGetValidatedSocialPreviewAsync(
+        string pathWithoutExtension,
+        string objectName,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        string? expectedRevision = await this.TryGetSocialPreviewExpectedRevisionAsync(
+            pathWithoutExtension,
+            width,
+            cancellationToken);
+        if (expectedRevision is null
+            || !await this.IsSourceRevisionCurrentAsync(
+                pathWithoutExtension,
+                expectedRevision,
+                cancellationToken))
+        {
+            return null;
+        }
+
+        (Stream Stream, string ContentType)? preview = await TryGetObjectAsync(
+            objectName,
+            "image/jpeg",
+            cancellationToken);
+        if (preview is null)
+        {
+            return null;
+        }
+
+        if (!await this.IsSourceRevisionCurrentAsync(
+                pathWithoutExtension,
+                expectedRevision,
+                cancellationToken))
+        {
+            await preview.Value.Stream.DisposeAsync();
+            return null;
+        }
+
+        return preview;
+    }
+
+    private async Task<(long ContentLength, string ContentType)?>
+        TryGetValidatedSocialPreviewMetadataAsync(
+            string pathWithoutExtension,
+            string objectName,
+            int width,
+            CancellationToken cancellationToken)
+    {
+        string? expectedRevision = await this.TryGetSocialPreviewExpectedRevisionAsync(
+            pathWithoutExtension,
+            width,
+            cancellationToken);
+        if (expectedRevision is null
+            || !await this.IsSourceRevisionCurrentAsync(
+                pathWithoutExtension,
+                expectedRevision,
+                cancellationToken))
+        {
+            return null;
+        }
+
+        long? contentLength = await this.TryGetObjectSizeAsync(
+            objectName,
+            cancellationToken);
+        if (contentLength is null
+            || !await this.IsSourceRevisionCurrentAsync(
+                pathWithoutExtension,
+                expectedRevision,
+                cancellationToken))
+        {
+            return null;
+        }
+
+        return (contentLength.Value, "image/jpeg");
+    }
+
+    private async Task<string?> TryGetSocialPreviewExpectedRevisionAsync(
+        string pathWithoutExtension,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        string validationObjectName = GetSocialPreviewValidationObjectName(
+            pathWithoutExtension,
+            width);
+        (Stream Stream, string ContentType)? validation = await TryGetObjectAsync(
+            validationObjectName,
+            "application/octet-stream",
+            cancellationToken);
+        if (validation is null)
+        {
+            return null;
+        }
+
+        await using Stream validationStream = validation.Value.Stream;
+        const int MaximumRevisionLength = 1024;
+        if (validationStream.Length <= 0
+            || validationStream.Length > MaximumRevisionLength)
+        {
+            return null;
+        }
+
+        byte[] expectedRevisionBytes = new byte[validationStream.Length];
+        await validationStream.ReadExactlyAsync(
+            expectedRevisionBytes,
+            cancellationToken);
+        string expectedRevision = Encoding.UTF8.GetString(expectedRevisionBytes);
+        return string.IsNullOrWhiteSpace(expectedRevision)
+            ? null
+            : expectedRevision;
+    }
+
+    internal static bool IsSocialPreviewRevisionCurrent(
+        string expectedRevision,
+        string? currentRevision)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(expectedRevision);
+        return string.Equals(
+            expectedRevision,
+            currentRevision,
+            StringComparison.Ordinal);
+    }
+
+    internal static string BuildSourceRevision(
+        string objectName,
+        string etag,
+        long size)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(objectName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(etag);
+        return FormattableString.Invariant($"{objectName}\n{etag}\n{size}");
+    }
+
+    private async Task<(Stream Stream, string ContentType, string Revision)?>
+        TryGetSourceObjectWithRevisionAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+        foreach ((string extension, string contentType) format in GetSourceFormats())
+        {
+            string objectName = $"{pathWithoutExtension}.{format.extension}";
+            (Stream Stream, string ContentType, string Revision)? source =
+                await this.TryGetObjectWithRevisionAsync(
+                    objectName,
+                    format.contentType,
+                    cancellationToken);
+            if (source is not null)
+            {
+                return source;
+            }
+        }
+
+        return null;
+    }
+
+    private async Task<bool> IsSourceRevisionCurrentAsync(
+        string pathWithoutExtension,
+        string expectedRevision,
+        CancellationToken cancellationToken)
+    {
+        string? currentRevision = await this.TryGetSourceRevisionAsync(
+            pathWithoutExtension,
+            cancellationToken);
+        return IsSocialPreviewRevisionCurrent(
+            expectedRevision,
+            currentRevision);
+    }
+
+    private async Task<bool> TryRemoveSocialPreviewObjectAsync(string objectName)
+    {
+        const int MaxAttempts = 3;
+        for (int attempt = 1; attempt <= MaxAttempts; attempt++)
+        {
+            try
+            {
+                await this.minioClient.RemoveObjectAsync(
+                    new RemoveObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(objectName),
+                    CancellationToken.None);
+                return true;
+            }
+            catch (Minio.Exceptions.ObjectNotFoundException)
+            {
+                return true;
+            }
+            catch (Exception exception)
+            {
+                if (attempt == MaxAttempts)
+                {
+                    this.logger.LogWarning(
+                        exception,
+                        "Unable to remove obsolete social preview image object {ObjectName} from MinIO bucket {Bucket}.",
+                        objectName,
+                        this.settings.Bucket);
+                    return false;
+                }
+
+                await Task.Delay(SocialPreviewLeaseRetryDelay, CancellationToken.None);
+            }
+        }
+
+        return false;
+    }
+
+    private async Task<string?> TryGetSourceRevisionAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+        foreach ((string extension, string _) in GetSourceFormats())
+        {
+            string objectName = $"{pathWithoutExtension}.{extension}";
+            string? revision = await this.TryGetObjectRevisionAsync(
+                objectName,
+                cancellationToken);
+            if (revision is not null)
+            {
+                return revision;
+            }
+        }
+
+        return null;
+    }
+
+    private async Task<string?> TryGetObjectRevisionAsync(
+        string objectName,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            ObjectStat objectStat = await this.minioClient.StatObjectAsync(
+                new StatObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName),
+                cancellationToken);
+            return BuildSourceRevision(
+                objectName,
+                objectStat.ETag,
+                objectStat.Size);
+        }
+        catch (Minio.Exceptions.ObjectNotFoundException)
+        {
+            return null;
+        }
+    }
+
+    private async Task<long?> TryGetObjectSizeAsync(
+        string objectName,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            ObjectStat objectStat = await this.minioClient.StatObjectAsync(
+                new StatObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName),
+                cancellationToken);
+            return objectStat.Size > 0
+                ? objectStat.Size
+                : null;
+        }
+        catch (Minio.Exceptions.ObjectNotFoundException)
+        {
+            return null;
+        }
+    }
+
     private async Task<(Stream Stream, string ContentType)?> TryGetSourceObjectAsync(string pathWithoutExtension, CancellationToken cancellationToken)
     {
         foreach ((string extension, string contentType) format in GetSourceFormats())
@@ -479,6 +1227,19 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             return true;
         }
 
+        return await this.ExecuteWithSocialPreviewGenerationLockAsync(
+            pathWithoutExtension,
+            operationCancellationToken => this.DeleteCoreAsync(
+                pathWithoutExtension,
+                operationCancellationToken),
+            cancellationToken);
+    }
+
+    private async Task<bool> DeleteCoreAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+
         bool succeeded = true;
         foreach (string objectName in GetObjectNamesForDeletion(pathWithoutExtension))
         {
@@ -507,7 +1268,18 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         return succeeded;
     }
 
-    private async Task DeleteResponsiveVariantsAsync(string pathWithoutExtension, CancellationToken cancellationToken)
+    private sealed class SocialPreviewGenerationLockEntry
+    {
+        public object SyncRoot { get; } = new object();
+
+        public SemaphoreSlim Semaphore { get; } = new SemaphoreSlim(1, 1);
+
+        public int ReferenceCount { get; set; }
+    }
+
+    private async Task DeleteResponsiveVariantsAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
     {
         foreach (string objectName in GetResponsiveObjectNamesForDeletion(pathWithoutExtension))
         {
@@ -533,6 +1305,38 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
     }
 
+    internal async Task<bool> DeleteSocialPreviewVariantsAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+        bool succeeded = true;
+        foreach (string objectName in GetSocialPreviewObjectNamesForDeletion(pathWithoutExtension))
+        {
+            try
+            {
+                await this.minioClient.RemoveObjectAsync(
+                    new RemoveObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(objectName),
+                    cancellationToken);
+            }
+            catch (Minio.Exceptions.ObjectNotFoundException)
+            {
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                succeeded = false;
+                this.logger.LogWarning(exception, "Unable to delete social preview image object {ObjectName} from MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
+            }
+        }
+
+        return succeeded;
+    }
+
     internal static IEnumerable<string> GetObjectNamesForDeletion(string pathWithoutExtension)
     {
         yield return $"{pathWithoutExtension}.webp";
@@ -546,6 +1350,17 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
+            yield return GetSocialPreviewValidationObjectName(pathWithoutExtension, width);
+            yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
+        }
+    }
+
+    private static IEnumerable<string> GetSocialPreviewObjectNamesForDeletion(string pathWithoutExtension)
+    {
+        foreach (int width in ResponsiveWidths)
+        {
+            yield return GetSocialPreviewValidationObjectName(pathWithoutExtension, width);
+            yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
     }
 
@@ -563,6 +1378,16 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     internal static string GetResponsiveVariantObjectName(string pathWithoutExtension, int width, string extension)
     {
         return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.{extension}";
+    }
+
+    internal static string GetSocialPreviewVariantObjectName(string pathWithoutExtension, int width)
+    {
+        return $"{pathWithoutExtension}.social.w{width}.v{SocialPreviewVariantVersion}.jpg";
+    }
+
+    internal static string GetSocialPreviewValidationObjectName(string pathWithoutExtension, int width)
+    {
+        return $"{GetSocialPreviewVariantObjectName(pathWithoutExtension, width)}.revision";
     }
 
     private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetFormats()
@@ -631,6 +1456,43 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
 
             stream.Position = 0;
             return (stream, contentType);
+        }
+        catch (Minio.Exceptions.ObjectNotFoundException)
+        {
+            return null;
+        }
+    }
+
+    private async Task<(Stream Stream, string ContentType, string Revision)?>
+        TryGetObjectWithRevisionAsync(
+            string objectName,
+            string contentType,
+            CancellationToken cancellationToken)
+    {
+        try
+        {
+            ObjectStat objectStat = await this.minioClient.StatObjectAsync(
+                new StatObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName),
+                cancellationToken);
+
+            MemoryStream stream = new MemoryStream();
+            await this.minioClient.GetObjectAsync(
+                new GetObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName)
+                    .WithCallbackStream(callbackStream => callbackStream.CopyTo(stream)),
+                cancellationToken);
+
+            stream.Position = 0;
+            return (
+                stream,
+                contentType,
+                BuildSourceRevision(
+                    objectName,
+                    objectStat.ETag,
+                    objectStat.Size));
         }
         catch (Minio.Exceptions.ObjectNotFoundException)
         {

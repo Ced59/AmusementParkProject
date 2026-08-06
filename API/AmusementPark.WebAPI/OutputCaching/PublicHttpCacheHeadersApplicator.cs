@@ -127,7 +127,10 @@ internal static class PublicHttpCacheHeadersApplicator
             return false;
         }
 
-        if (ContainsDirective(value, "no-store") || ContainsDirective(value, "private") || ContainsDirective(value, "immutable"))
+        if (ContainsDirective(value, "no-store") ||
+            ContainsDirective(value, "private") ||
+            ContainsDirective(value, "immutable") ||
+            ContainsDirective(value, "must-revalidate"))
         {
             return true;
         }
