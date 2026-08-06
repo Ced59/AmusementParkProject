@@ -1,6 +1,20 @@
 {
-  "version": "4.1.24",
+  "version": "4.1.25",
   "history": [
+    {
+      "version": "4.1.25",
+      "releasedAt": "2026-08-07",
+      "labels": {
+        "fr": "Les aperçus de partage restent associés au parc consulté.",
+        "en": "Share previews stay associated with the park being viewed.",
+        "de": "Teilen-Vorschauen bleiben dem angezeigten Park zugeordnet.",
+        "nl": "Deelvoorbeelden blijven gekoppeld aan het bekeken park.",
+        "it": "Le anteprime di condivisione restano associate al parco visualizzato.",
+        "es": "Las vistas previas al compartir permanecen asociadas al parque consultado.",
+        "pl": "Podglądy udostępniania pozostają powiązane z oglądanym parkiem.",
+        "pt": "As pré-visualizações de partilha permanecem associadas ao parque consultado."
+      }
+    },
     {
       "version": "4.1.24",
       "releasedAt": "2026-08-07",

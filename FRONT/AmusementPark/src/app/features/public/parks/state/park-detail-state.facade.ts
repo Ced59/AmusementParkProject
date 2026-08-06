@@ -69,6 +69,7 @@ export class ParkDetailStateFacade {
   private readonly hasImagesSignal = signal(false);
   private readonly hasHistorySignal = signal(false);
   private readonly socialImageIdSignal = signal<string | null>(null);
+  private parkLoadSequence: number = 0;
 
   public readonly state = this.screenStateStore.state;
   public readonly nearbyState = this.nearbyStateStore.state;
@@ -140,6 +141,7 @@ export class ParkDetailStateFacade {
   }
 
   loadPark(id: string): void {
+    const loadSequence: number = ++this.parkLoadSequence;
     const previousData: ParkDetailSummary | undefined = this.screenStateStore.data();
     const previousNearbyData: ParkDistanceTarget[] | undefined = this.nearbyStateStore.data();
     const previousWeatherData: ParkWeatherForecast | undefined = this.weatherStateStore.data();
@@ -168,6 +170,10 @@ export class ParkDetailStateFacade {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe({
       next: (summary: ParkDetailSummary) => {
+        if (loadSequence !== this.parkLoadSequence) {
+          return;
+        }
+
         this.screenStateStore.setReady(summary);
         this.socialImageIdSignal.set(resolveParkSummarySocialImageId(summary));
         this.hasImagesSignal.set(this.hasKnownImage(summary));
@@ -175,10 +181,14 @@ export class ParkDetailStateFacade {
         this.loadWeather(summary.park);
         this.loadOpeningHours(summary.park);
         this.loadVideoAvailability(summary.park);
-        this.loadImageAvailability(summary);
+        this.loadImageAvailability(summary, loadSequence);
         this.loadHistoryAvailability(summary.park);
       },
       error: (error: unknown) => {
+        if (loadSequence !== this.parkLoadSequence) {
+          return;
+        }
+
         console.error('Error loading park detail summary', error);
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
@@ -459,7 +469,7 @@ export class ParkDetailStateFacade {
     });
   }
 
-  private loadImageAvailability(summary: ParkDetailSummary): void {
+  private loadImageAvailability(summary: ParkDetailSummary, loadSequence: number): void {
     if (resolveParkSummarySocialImageId(summary) !== null) {
       this.hasImagesSignal.set(true);
       return;
@@ -477,6 +487,10 @@ export class ParkDetailStateFacade {
       itemImages: this.imagesApiService.getParkItemImagesByPark(parkId, 1, 1, anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: { parkImages: PagedResult<ImageDto>; logoImages: PagedResult<ImageDto>; itemImages: PagedResult<ParkItemImageDto> }) => {
+        if (loadSequence !== this.parkLoadSequence) {
+          return;
+        }
+
         this.socialImageIdSignal.set(
           resolveParkSocialImageId(response.parkImages.items)
           ?? resolveParkItemSocialImageId(response.itemImages.items)
@@ -488,6 +502,10 @@ export class ParkDetailStateFacade {
         );
       },
       error: () => {
+        if (loadSequence !== this.parkLoadSequence) {
+          return;
+        }
+
         this.hasImagesSignal.set(this.hasKnownImage(summary));
       }
     });
