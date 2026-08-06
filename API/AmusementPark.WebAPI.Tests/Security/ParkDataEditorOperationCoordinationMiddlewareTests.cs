@@ -10,6 +10,37 @@ namespace AmusementPark.WebAPI.Tests.Security;
 public sealed class ParkDataEditorOperationCoordinationMiddlewareTests
 {
     [Fact]
+    public async Task InvokeAsync_WhenRequestIsUnauthenticated_ShouldBypassCoordination()
+    {
+        bool nextWasCalled = false;
+        ParkDataEditorOperationCoordinator coordinator = new ParkDataEditorOperationCoordinator();
+        using ParkDataEditorOperationLease activeOperation = coordinator.TryBeginRequest(
+            "token-a",
+            ParkDataEditorOperationKind.ResourceIntensive,
+            "POST",
+            "/admin/park-graph-upserts/preview")!;
+        ParkDataEditorOperationCoordinationMiddleware middleware = new ParkDataEditorOperationCoordinationMiddleware(
+            _ =>
+            {
+                nextWasCalled = true;
+                return Task.CompletedTask;
+            });
+        DefaultHttpContext context = new DefaultHttpContext();
+        context.Request.Method = HttpMethods.Post;
+        context.Request.Path = "/admin/park-graph-upserts/apply";
+        context.SetEndpoint(new Endpoint(
+            _ => Task.CompletedTask,
+            new EndpointMetadataCollection(
+                new ParkDataEditorOperationAttribute(ParkDataEditorOperationKind.ResourceIntensive)),
+            "park-data-editor-apply"));
+
+        await middleware.InvokeAsync(context, coordinator);
+
+        Assert.True(nextWasCalled);
+        Assert.Equal(1, coordinator.GetSnapshot("token-a").ActiveRequestCount);
+    }
+
+    [Fact]
     public async Task InvokeAsync_WhenResourceIntensiveCapacityIsBusy_ShouldReturnRetryableProblem()
     {
         bool nextWasCalled = false;

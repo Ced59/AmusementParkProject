@@ -1,6 +1,20 @@
 {
-  "version": "4.1.23",
+  "version": "4.1.24",
   "history": [
+    {
+      "version": "4.1.24",
+      "releasedAt": "2026-08-07",
+      "labels": {
+        "fr": "L’administration a gagné en stabilité.",
+        "en": "Administration stability has been improved.",
+        "de": "Die Stabilität der Verwaltung wurde verbessert.",
+        "nl": "De stabiliteit van het beheer is verbeterd.",
+        "it": "La stabilità dell’amministrazione è stata migliorata.",
+        "es": "Se ha mejorado la estabilidad de la administración.",
+        "pl": "Poprawiono stabilność administracji.",
+        "pt": "A estabilidade da administração foi melhorada."
+      }
+    },
     {
       "version": "4.1.23",
       "releasedAt": "2026-08-07",

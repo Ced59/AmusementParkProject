@@ -104,17 +104,9 @@ public static class RateLimitingServiceCollectionExtensions
                 limiterOptions.QueueLimit = 8;
             });
             options.AddPolicy(RateLimitPolicyNames.ParkDataEditorOperationStatus, context =>
-                RateLimitPartition.GetTokenBucketLimiter(
+                RateLimitPartition.Get(
                     partitionKey: GetParkDataEditorTokenPartitionKey(context),
-                    factory: _ => new TokenBucketRateLimiterOptions
-                    {
-                        TokenLimit = 2,
-                        QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
-                        QueueLimit = 0,
-                        ReplenishmentPeriod = TimeSpan.FromSeconds(5),
-                        TokensPerPeriod = 1,
-                        AutoReplenishment = true,
-                    }));
+                    factory: _ => new MinimumIntervalRateLimiter(TimeSpan.FromSeconds(5))));
         });
 
         return services;
