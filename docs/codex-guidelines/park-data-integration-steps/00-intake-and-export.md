@@ -91,15 +91,20 @@ Ne pas proposer une étape nouvelle. Si un sujet semble manquer, le rattacher à
 
 ## Règle d’export
 
-Après chaque Apply, demander un nouvel export complet du parc avant de continuer.
+En mode ChatGPT guidé, demander un export actualisé après chaque Apply avant de continuer, puisque l’utilisateur opère les mutations hors de la conversation.
 
-L’export actualisé est obligatoire parce qu’il contient :
+En mode Codex autonome, effectuer l’export complet initial, puis tenir un état de travail consolidé avec les réponses Preview/Apply et d’import d’image. Ne jamais lancer un export complet après chaque Apply ou import, entre deux lots, ni entre les étapes 1 à 7. Hors export initial, le seul export complet planifié et obligatoire a lieu immédiatement avant l’audit de l’étape 8.
 
-- les IDs créés par l’application ;
+Avant l’étape 8, un export limité à certaines sections est exceptionnellement autorisé seulement pour résoudre une incohérence précise, une réponse de mutation manquante ou un ID indispensable absent des résultats. Il ne doit pas devenir une vérification systématique.
+
+Le registre local Codex conserve notamment :
+
+- les IDs créés retournés par l’application ;
 - les clés et rattachements réellement acceptés ;
-- les avertissements éventuels déjà corrigés ;
-- les images importées et leurs IDs ;
-- les données existantes à ne pas écraser.
+- les avertissements corrigés ou explicitement acceptés ;
+- les images importées, leurs IDs et leur statut courant attendu ;
+- les données existantes à ne pas écraser ;
+- les compteurs de couverture et les lacunes à confirmer par l’export complet préalable à l’étape 8.
 
 ## Sortie attendue
 

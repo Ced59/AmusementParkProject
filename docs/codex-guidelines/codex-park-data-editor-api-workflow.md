@@ -15,7 +15,7 @@ Cette commande courte autorise Codex à :
 - rechercher le parc et ses doublons ;
 - exécuter toutes les étapes 0 à 8 applicables, en autant de lots bornés que nécessaire ;
 - rechercher les données actuelles, historiques et récentes ;
-- exécuter Preview/Apply, importer les images, réexporter et corriger jusqu’à un audit final propre ;
+- exécuter Preview/Apply, importer les images, tenir un état local consolidé puis effectuer un export complet frais juste avant l’audit final ;
 - fournir un tableau de couverture chiffré et un état `prêt pour publication`.
 
 Elle n’autorise pas Codex à publier le parc, ses nouveaux contenus ou ses images, supprimer, masquer un parc déjà public, nettoyer une entité legacy ambiguë, gérer des utilisateurs ni appeler une route d’administration extérieure aux surfaces autorisées. La publication exige une nouvelle instruction explicite après l’audit de l’étape 8.
@@ -118,7 +118,9 @@ Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, le
 ```
 
 - Sans `-Sections`, le client exporte toutes les sections.
-- Pour un parc dense, préférer les sections nécessaires à l’étape courante afin de limiter le volume de travail sans perdre l’état de référence utile.
+- Pendant les étapes 1 à 7, ne pas appeler `ExportPark` après chaque Apply, import d’image, lot ou changement d’étape. L’export complet initial est enrichi localement avec les réponses réussies des mutations.
+- Avant l’étape 8, appeler une fois `ExportPark` sans `-Sections` afin d’obtenir l’état complet frais sur lequel repose l’audit final.
+- Avant ce jalon, un export avec `-Sections` est réservé à une incohérence précise, à une réponse de mutation perdue ou à un ID indispensable absent des résultats ; il ne devient jamais une routine de fin de lot.
 - Une coupure pendant le téléchargement est reprise dans la même exécution ; le client n’écrit le fichier final qu’après contrôle de la longueur et du document retourné.
 - Un export final absent, tronqué, d’un autre parc ou avec plusieurs parcs est rejeté. Ne jamais continuer avec l’ancien fichier présent au même chemin.
 - Ne pas recréer un téléchargeur improvisé, revenir à l’ancienne route synchrone, utiliser l’administration ou lire la base de données pour contourner un échec.
@@ -129,15 +131,16 @@ Les noms, l’ordre et le contenu des étapes restent ceux de l’orchestrateur 
 
 1. Lire l’orchestrateur, le fichier exact de l’étape et, si nécessaire, le fichier des enums.
 2. À l’étape 0, rechercher d’abord les doublons par l’API technique. Exporter le parc s’il existe.
-3. Avant toute étape suivante, exporter à nouveau le graphe après l’Apply précédent avec `ExportPark`, éventuellement limité aux sections nécessaires. Cet export validé et reprenable devient l’unique état de référence.
+3. Pour les étapes 1 à 7, partir de l’export initial et maintenir un registre local consolidé des entités, IDs, clés, compteurs et lacunes à partir des réponses réussies de Preview, Apply et d’import d’image.
 4. Rechercher et sourcer seulement les données de l’étape courante. Produire un JSON borné et conserver le compteur traité/total ainsi que le registre des lacunes.
 5. Exécuter `Preview`. Examiner toutes les erreurs, tous les warnings, les entités résolues et chaque changement de champ.
 6. Ne jamais exécuter `Apply` si `canApply` est faux, si une erreur existe ou si un warning bloquant subsiste. Par défaut, le client bloque même les warnings non bloquants; `-AllowWarnings` exige une décision explicite après lecture.
 7. Le client écrit un reçu contenant le hash SHA-256 du JSON, l’API visée et l’heure du Preview. `Apply` refuse un reçu âgé de plus de 30 minutes ou un JSON modifié depuis le Preview.
-8. Après `Apply`, contrôler `isApplied`, les erreurs et les compteurs, puis réexporter immédiatement avant le prochain lot ou la prochaine étape.
+8. Après `Apply`, contrôler `isApplied`, les erreurs, les compteurs et `changes`, puis intégrer les IDs, clés et valeurs acceptées au registre local. Ne pas réexporter le parc à ce moment-là.
 9. Terminer tous les lots applicables avant de poursuivre. Une étape objectivement non applicable peut être consignée puis traversée sans pause ; une étape applicable ne peut jamais être sautée pour accélérer le parcours.
 10. Ne jamais publier un parc, masquer une donnée publique ou supprimer un contenu au-delà du lot annoncé. Pour un parc existant déjà visible, préserver sa visibilité pendant l’enrichissement.
-11. Après chaque étape, rapprocher les compteurs de l’export avec les objectifs de couverture établis à l’étape 0. Une réussite `Apply` ne prouve pas la complétude éditoriale.
+11. Après chaque étape, rapprocher les compteurs consolidés localement avec les objectifs de couverture établis à l’étape 0. Une réussite `Apply` ne prouve pas la complétude éditoriale.
+12. Immédiatement avant l’étape 8, effectuer l’unique réexport complet planifié, puis reconstruire les compteurs et l’état de référence depuis ce fichier frais avant de lancer l’audit.
 
 Exemple :
 
@@ -180,7 +183,7 @@ Pour chaque fichier validé :
 3. Envoyer le fichier à `POST park-data-editor/images`.
 4. Rattacher l’image au `Park`, `ParkItem` ou `StandaloneAttraction` exact grâce à son ID exporté.
 5. Enregistrer l’URL source, les crédits, textes alternatifs, légendes, publication et statut courant via un fichier `MetadataJsonPath` complet.
-6. Réexporter immédiatement le parc et vérifier propriétaire, catégorie, métadonnées, publication et hiérarchie courante.
+6. Contrôler la réponse de l’import et l’intégrer au registre local : ID, propriétaire, catégorie, métadonnées, publication et statut courant. Ne pas réexporter le parc après l’import.
 
 Le téléchargement local ne contourne jamais le traitement applicatif. L’upload appelle le même `UploadImageCommandHandler`, le même `IImageProcessingPipeline` et le même stockage que l’upload existant : détection, métadonnées, conversion, compression, variantes et contraintes continuent donc à s’appliquer.
 
@@ -217,17 +220,17 @@ Les catégories de compte, commentaire, vidéo, exploitant, constructeur et fond
 
 ### Audit après images
 
-Après réexport, annoncer : logo courant, image principale du parc, attractions avec image/total pour chaque statut, attractions fermées avec image/total, jalons avec image/total, articles avec image/total et liste exacte des exceptions. Vérifier aussi que les images n’ont pas été dupliquées et que les imports historiques n’ont pas remplacé une image courante appropriée.
+Après les imports, actualiser le registre local : logo courant attendu, image principale du parc, attractions avec image/total pour chaque statut, attractions fermées avec image/total, jalons avec image/total, articles avec image/total et liste exacte des exceptions. Vérifier les réponses pour éviter les doublons et les remplacements d’image courante inappropriés ; l’export complet préalable à l’étape 8 confirme ensuite ces résultats.
 
-Un warning de doublon d’image distante peut être non bloquant uniquement si l’export prouve que la source est déjà liée au bon propriétaire et qu’aucune modification n’était attendue. Tous les autres warnings doivent être compris et corrigés avant de poursuivre.
+Un warning de doublon d’image distante peut être non bloquant uniquement si l’état de référence prouve que la source est déjà liée au bon propriétaire et qu’aucune modification n’était attendue. Tous les autres warnings doivent être compris et corrigés avant de poursuivre.
 
 ## Audit final
 
-À l’étape 8, Codex doit au minimum : réexporter, exécuter le contrôle de complétude, vérifier les compteurs attendus, les propriétaires d’images, le logo courant, les sources et crédits, les warnings résiduels, la visibilité conservée et l’historique d’Apply. Il fournit le tableau quantitatif exigé par l’étape 8 et ne conclut pas sur le seul score numérique.
+Juste avant de commencer l’étape 8, Codex doit effectuer le seul réexport complet planifié depuis l’export initial. À partir de cet état frais, il exécute le contrôle de complétude et vérifie les compteurs attendus, les propriétaires d’images, le logo courant, les sources et crédits, les warnings résiduels, la visibilité conservée et l’historique d’Apply. Il fournit le tableau quantitatif exigé par l’étape 8 et ne conclut pas sur le seul score numérique.
 
 Il compare aussi le corpus public après retrait des titres et noms d’entités : descriptions du parc, zones et items, textes historiques, sous-titres d’articles, descriptions, textes alternatifs et légendes d’images. Tout paragraphe de secours répété, conseil d’itinéraire ou traduction générique impose une reprise ciblée avant la conclusion.
 
-Si une réponse d’export volumineuse échoue ou arrive tronquée, ne jamais réutiliser silencieusement un ancien export. Réessayer par la surface technique autorisée, réduire les lectures auxiliaires quand elles sont paginées et considérer Preview puis le nouvel export comme les preuves de l’état appliqué. Ne pas basculer vers l’administration ou la base de données.
+Si l’export complet préalable à l’étape 8 échoue ou arrive tronqué, ne jamais réutiliser silencieusement l’export initial. Réessayer par la surface technique autorisée, réduire les lectures auxiliaires quand elles sont paginées et considérer Preview puis le nouvel export comme les preuves de l’état appliqué. Ne pas basculer vers l’administration ou la base de données.
 
 Après une instruction explicite de publication, Codex suit l’ordre de l’étape 8 : publier de façon ciblée les images et contenus dépendants prêts, puis les articles, contrôler les parkItems, et enfin valider et rendre visible le nouveau parc en dernier. La publication des images réutilise leurs IDs exportés et la surface de métadonnées autorisée ou un JSON upsert borné conforme au contrat exporté ; elle ne réimporte jamais les fichiers. Codex vérifie ensuite les pages publiques anonymes, le logo, les articles, la complétude et l’idempotence d’un dernier Preview. Une annonce sociale indisponible est rapportée séparément et n’autorise aucun appel à une route admin interdite.
 

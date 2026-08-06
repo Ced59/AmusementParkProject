@@ -4,7 +4,7 @@ Objectif : vérifier que l’intégration complète est cohérente, fiable, loca
 
 ## Export requis
 
-Utiliser l’export actualisé après toutes les étapes appliquées.
+Immédiatement avant de commencer cet audit, obtenir un export complet frais après toutes les étapes appliquées. Pour Codex autonome, il s’agit du seul réexport complet planifié depuis l’export initial.
 
 ## Audit de pertinence
 
@@ -88,7 +88,7 @@ Auditer ensemble, dans chacune des huit langues : descriptions du parc, zones, p
 - rechercher les conseils d’itinéraire, les classements internes, les descriptions de « rôle dans la journée », les pauses suggérées entre files et tout remplissage de catégorie ;
 - vérifier qu’aucune langue n’est plus générique, plus technique ou moins contextualisée que les autres ;
 - relire manuellement les groupes détectés et corriger l’étape 4, 5 ou 7 correspondante avant publication ;
-- après correction, réexporter puis exécuter un Preview d’idempotence qui ne doit contenir aucune mutation.
+- après correction, contrôler la réponse Apply, mettre à jour l’état d’audit et exécuter un Preview d’idempotence qui ne doit contenir aucune mutation ; ne relancer un export complet que si une incohérence précise reste impossible à résoudre par ces preuves ou par une lecture ciblée.
 
 Les crédits d’images restent exclus de la comparaison stylistique lorsqu’ils portent légitimement l’auteur, la source ou la licence. Les références globales sont auditées, mais une correction qui affecterait d’autres parcs doit devenir un lot transversal explicite au lieu d’être appliquée silencieusement dans le parc courant.
 
@@ -226,7 +226,7 @@ Ne passer `isVisible` à `true` que pour les entités :
 
 ### Après autorisation explicite de publication
 
-1. Réexporter et rejouer les contrôles bloquants sur l’état courant.
+1. Rejouer les contrôles bloquants sur l’export complet de l’audit et les réponses des éventuelles corrections ciblées ; ne pas programmer un nouvel export complet sans incohérence concrète à lever.
 2. Publier de façon ciblée les images validées, puis les articles et contenus dépendants prêts, pendant que le nouveau parc reste masqué. Réutiliser les IDs d’images exportés ; ne pas réimporter les fichiers.
 3. Vérifier les statuts, descriptions, images courantes et sources des parkItems publiables. Ne pas rendre visible un item legacy inconnu au seul motif que la consigne dit « tout publier ».
 4. Passer le parc à `Validated` et visible en dernier.

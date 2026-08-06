@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-08-06-r2**
+Version : **2026-08-06-r3**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -9,7 +9,7 @@ Cet orchestrateur sert à éviter les JSON trop gros, les oublis de cohérence e
 ## Deux modes d’exécution, une seule exigence éditoriale
 
 - **ChatGPT guidé** : l’utilisateur fournit les exports actualisés, exécute ou valide Preview/Apply et décide du passage à l’étape suivante. ChatGPT livre un seul lot à la fois.
-- **Codex autonome par API** : la commande `Complète le parc <nom>` autorise Codex à exécuter de bout en bout toutes les étapes applicables avec `codex-park-data-editor-api-workflow.md`, sans demander une validation intermédiaire à chaque lot. Codex recherche, exporte, prévisualise, applique, réexporte et audite lui-même.
+- **Codex autonome par API** : la commande `Complète le parc <nom>` autorise Codex à exécuter de bout en bout toutes les étapes applicables avec `codex-park-data-editor-api-workflow.md`, sans demander une validation intermédiaire à chaque lot. Codex recherche, exporte l’état initial, prévisualise, applique, consolide localement les résultats, effectue un export complet frais juste avant l’étape 8 et audite lui-même.
 
 Les deux modes utilisent les mêmes étapes 0 à 8, les mêmes règles métier, la même qualité éditoriale et le même seuil de complétude. Seuls l’opérateur technique et les points de pause diffèrent.
 
@@ -19,7 +19,9 @@ Les deux modes utilisent les mêmes étapes 0 à 8, les mêmes règles métier, 
 
 En mode ChatGPT, avant l’étape 0, l’utilisateur fournit l’export actuel du parc s’il existe déjà, ou confirme qu’il faut créer le parc depuis zéro. En mode Codex, Codex recherche les doublons et récupère lui-même l’export par l’API technique ; il ne demande un choix que si plusieurs identités plausibles subsistent.
 
-Avant chaque nouvelle étape, l’état de référence est l’export actualisé après Preview/Apply de l’étape précédente. ChatGPT le demande à l’utilisateur. Codex le récupère lui-même. Sans cet export, ne jamais continuer sur un état ancien.
+En mode ChatGPT guidé, avant chaque nouvelle étape, l’état de référence est l’export actualisé après Preview/Apply de l’étape précédente ; ChatGPT le demande à l’utilisateur et ne continue pas sur un état ancien.
+
+En mode Codex autonome, l’état de référence des étapes 1 à 7 est un registre local consolidé à partir de l’export initial et de chaque réponse réussie de Preview, Apply et d’import d’image. Codex ne lance aucun export complet après chaque Apply ou import, entre deux lots, ni lors du passage d’une étape à la suivante. Il effectue un nouvel export complet une seule fois, immédiatement avant l’audit de l’étape 8. Avant ce jalon, un export limité aux seules sections nécessaires est admis uniquement pour résoudre une incohérence précise, récupérer une réponse de mutation manquante ou lever un doute qui ne peut pas être résolu par les reçus locaux.
 
 En mode ChatGPT, chaque réponse doit produire un seul livrable principal :
 
@@ -102,7 +104,7 @@ Cas autorisé pour les clés :
 
 - `itemKey` / `parkItemKey` peut être utilisé seulement si le même JSON contient aussi une section `items[]` minimale qui permet de remplir le dictionnaire des parkItems avant le traitement dépendant ;
 - `imageKey` peut être utilisé dans un article pour une image créée dans le même JSON avec un `key` stable et unique après suppression des espaces de bord et sans tenir compte de la casse ;
-- sinon utiliser `imageId` depuis l’export actualisé.
+- sinon utiliser `imageId` depuis l’état de référence validé.
 
 Tout Preview qui retourne :
 
@@ -181,7 +183,7 @@ Avant de livrer un fichier JSON upsert, vérifier toutes les clés de rattacheme
 - `itemKey` ;
 - `imageKey`.
 
-Chaque clé utilisée doit être résolue par l’importeur pendant le traitement du JSON courant. Une clé vue seulement dans l’export actualisé sert à identifier la bonne entité, mais elle ne suffit pas toujours comme clé de rattachement si la section qui construit le dictionnaire n’est pas présente dans le JSON courant.
+Chaque clé utilisée doit être résolue par l’importeur pendant le traitement du JSON courant. Une clé vue seulement dans l’état de référence sert à identifier la bonne entité, mais elle ne suffit pas toujours comme clé de rattachement si la section qui construit le dictionnaire n’est pas présente dans le JSON courant.
 
 Résoudre une clé par l’une de ces voies :
 
@@ -191,9 +193,9 @@ Résoudre une clé par l’une de ces voies :
 
 Ne jamais utiliser un UUID, un ID interne ou une valeur devinée comme `manufacturerKey`, `operatorKey`, `founderKey`, `zoneKey`, `itemKey` ou `ownerKey` si l’export ne prouve pas que cette valeur est bien la clé attendue. Une valeur visible, un nom localisé ou un slug probable ne suffit pas.
 
-Pour les zones, ne pas utiliser `items[].zoneKey` uniquement parce que la clé existe dans l’export actualisé. Dans un lot d’items, utiliser `zoneId` pour une zone déjà exportée, ou ajouter dans le même JSON une entrée minimale `zones` avec cette `key` avant de l’utiliser dans `items[].zoneKey`. Si la zone n’est pas fiable, retirer tout rattachement de zone.
+Pour les zones, ne pas utiliser `items[].zoneKey` uniquement parce que la clé existe dans l’état de référence. Dans un lot d’items, utiliser `zoneId` pour une zone déjà connue, ou ajouter dans le même JSON une entrée minimale `zones` avec cette `key` avant de l’utiliser dans `items[].zoneKey`. Si la zone n’est pas fiable, retirer tout rattachement de zone.
 
-Pour les constructeurs, ne pas utiliser `attractionDetails.manufacturerKey` uniquement parce que la clé existe dans l’export actualisé. Dans un lot d’items, utiliser `attractionDetails.manufacturerId` pour un constructeur déjà exporté, ou ajouter dans le même JSON une entrée minimale dans `references.manufacturers` avec cette `key` avant de l’utiliser dans `attractionDetails.manufacturerKey`. Si le constructeur n’est pas fiable, retirer tout rattachement constructeur.
+Pour les constructeurs, ne pas utiliser `attractionDetails.manufacturerKey` uniquement parce que la clé existe dans l’état de référence. Dans un lot d’items, utiliser `attractionDetails.manufacturerId` pour un constructeur déjà connu, ou ajouter dans le même JSON une entrée minimale dans `references.manufacturers` avec cette `key` avant de l’utiliser dans `attractionDetails.manufacturerKey`. Si le constructeur n’est pas fiable, retirer tout rattachement constructeur.
 
 Les zones minimales et constructeurs minimaux nécessaires au lot doivent être embarqués dans le même JSON que les parkItems qui les utilisent. Ne pas livrer un fichier qui dépend d’un futur lot pour résoudre ses `zoneKey` ou `manufacturerKey`.
 
@@ -287,7 +289,7 @@ Sortie attendue : checklist de corrections ou dernier JSON upsert ciblé.
 
 ## Règles de passage entre étapes
 
-Une étape est terminée seulement quand :
+En mode ChatGPT guidé, une étape est terminée seulement quand :
 
 - le JSON a été prévisualisé sans erreur bloquante ;
 - les warnings ont été expliqués ou corrigés ;
@@ -299,7 +301,7 @@ Si l’export montre une divergence avec le JSON précédent, l’export gagne. 
 
 En mode ChatGPT, le passage à l’étape suivante se fait seulement après validation utilisateur. Même si une étape semble inutile pour le parc, la décision appartient à l’utilisateur après lecture de la section `Pertinence de la prochaine étape`.
 
-En mode Codex autonome, Codex peut constater qu’une étape est non applicable ou réellement inutile, consigner la raison et continuer vers l’étape officielle suivante. Il ne peut pas sauter un travail applicable pour gagner du temps. Tout doute qui changerait matériellement l’identité du parc, supprimerait une donnée, masquerait un contenu public ou exigerait une décision éditoriale du propriétaire reste bloquant.
+En mode Codex autonome, une étape est terminée quand ses lots ont été prévisualisés et appliqués sans erreur bloquante, que leurs réponses ont été contrôlées et intégrées au registre local, et que les compteurs et lacunes ont été actualisés. Aucun export complet intermédiaire n’est requis. Codex peut constater qu’une étape est non applicable ou réellement inutile, consigner la raison et continuer vers l’étape officielle suivante. Il ne peut pas sauter un travail applicable pour gagner du temps. Tout doute qui changerait matériellement l’identité du parc, supprimerait une donnée, masquerait un contenu public ou exigerait une décision éditoriale du propriétaire reste bloquant.
 
 ## Règles de recherche
 
@@ -324,7 +326,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Ne pas se limiter aux coasters.
 - Résoudre toutes les clés utilisées : `zoneKey`, `manufacturerKey`, `operatorKey`, `founderKey`, `ownerKey`, `itemKey`, `imageKey`.
 - Chercher systématiquement les conditions d’accès de chaque attraction et les intégrer dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.
-- Ne livrer aucune image dont le propriétaire ne peut pas être résolu à partir de l’export actualisé ou des références/items créés dans le même JSON.
+- Ne livrer aucune image dont le propriétaire ne peut pas être résolu à partir de l’état de référence ou des références/items créés dans le même JSON.
 - Pendant une commande de complétude, conserver toute nouvelle image en `isPublished: false`, y compris pour un parc déjà public. La publication des médias appartient à la phase explicitement autorisée de l’étape 8.
 - Vérifier les descriptions ou biographies manquantes des constructeurs, fondateurs et exploitants associés au parc ; les compléter à l’étape 5 ou signaler explicitement l’absence de source fiable.
 - Préserver les données existantes en mode `merge` : IDs, images, rattachements, coordonnées, biographies et contenus validés.

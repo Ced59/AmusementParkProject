@@ -8,9 +8,9 @@ Objectif : intégrer les horaires vérifiés et les exceptions datées sans inve
 - `park-graph-upsert-enums.md`
 - `04-rich-descriptions-localization.md` pour les libellés publics
 
-## Export requis
+## État de référence requis
 
-Utiliser l’export actualisé après les étapes précédentes. Si des images doivent illustrer un événement historique, elles doivent déjà être dans l’export ou créées dans le même JSON.
+En mode ChatGPT guidé, utiliser l’export actualisé après les étapes précédentes. En mode Codex autonome, utiliser le registre local consolidé, sans nouvel export complet. Si des images doivent illustrer un événement historique, elles doivent déjà être dans cet état de référence ou être créées dans le même JSON.
 
 ## Applicabilité selon le statut
 
@@ -172,6 +172,6 @@ Section principale : `openingHours`.
 
 ## Après Apply
 
-Obtenir l’export actualisé avant de créer la timeline historique : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
+Avant de créer la timeline historique, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer les résultats Apply au registre local et continuer sans nouvel export.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 7 — Histoire du parc et des parkItems. Si le parc est trop peu documenté pour une timeline fiable, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 7 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

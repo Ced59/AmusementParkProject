@@ -10,9 +10,9 @@ Pour `Planned`, `UnderConstruction` ou `Cancelled`, cette étape est non applica
 - `park-graph-upsert-enums.md`
 - `04-rich-descriptions-localization.md` seulement si des descriptions sont incluses dans ce lot
 
-## Export requis
+## État de référence requis
 
-Utiliser l’export actualisé après les zones. Vérifier les `zone.key`, les `references.manufacturers[].key`, les IDs existants et les items déjà présents pour éviter les doublons et les rattachements non résolus.
+En mode ChatGPT guidé, utiliser l’export actualisé après les zones. En mode Codex autonome, utiliser le registre local consolidé avec les résultats des étapes précédentes, sans nouvel export complet. Vérifier les `zone.key`, les `references.manufacturers[].key`, les IDs existants et les items déjà présents pour éviter les doublons et les rattachements non résolus.
 
 ## Contenus à rechercher
 
@@ -117,10 +117,10 @@ Ne jamais mettre ces conditions dans les descriptions longues. Si les conditions
 Avant de livrer un lot de parkItems, faire un contrôle croisé explicite des rattachements :
 
 - lister toutes les valeurs `items[].zoneId` et `items[].zoneKey` utilisées dans le lot ;
-- utiliser `zoneId` pour une zone déjà présente dans l’export actualisé ;
+- utiliser `zoneId` pour une zone déjà présente dans l’état de référence ;
 - vérifier que chaque `zoneKey` existe dans les `zones[].key` du même JSON ;
 - lister toutes les valeurs `attractionDetails.manufacturerKey` utilisées dans les items du lot ;
-- utiliser `attractionDetails.manufacturerId` pour un constructeur déjà présent dans l’export actualisé ;
+- utiliser `attractionDetails.manufacturerId` pour un constructeur déjà présent dans l’état de référence ;
 - vérifier que chaque `manufacturerKey` existe dans `references.manufacturers[].key` du même JSON ;
 - corriger le fichier avant livraison si une clé manque.
 
@@ -128,7 +128,7 @@ Si une zone fiable est nécessaire mais absente de l’export, ajouter une zone 
 
 Si un constructeur fiable est nécessaire mais absent de l’export, ajouter un constructeur minimal dans le même JSON avec `key`, `name`, `isVisible` et `adminReviewStatus`. Si le constructeur existe déjà dans l’export, préférer `attractionDetails.manufacturerId` plutôt que `manufacturerKey` isolé. Si le constructeur n’est pas fiable, ne pas renseigner de rattachement constructeur.
 
-Ne jamais livrer un lot d’items qui suppose qu’une zone ou un constructeur sera créé dans un futur JSON. Le Preview doit pouvoir résoudre toutes les clés avec l’export actualisé et le fichier courant seulement.
+Ne jamais livrer un lot d’items qui suppose qu’une zone ou un constructeur sera créé dans un futur JSON. Le Preview doit pouvoir résoudre toutes les clés avec l’état de référence et le fichier courant seulement.
 
 Une alerte Preview du type `ZoneKey non résolue` ou `ManufacturerKey non résolue` indique une erreur de livrable. Corriger immédiatement le JSON, fournir une version corrigée et ne pas continuer le lot suivant tant que cette alerte existe.
 
@@ -226,8 +226,8 @@ Sections possibles :
 ## Contrôles avant livraison
 
 - Aucun doublon évident avec l’export.
-- Tous les `zoneId` réutilisés proviennent de l’export actualisé, et toutes les `zoneKey` sont résolues par `zones` dans le même JSON.
-- Tous les `manufacturerId` réutilisés proviennent de l’export actualisé, et toutes les `manufacturerKey` sont résolues par `references.manufacturers` dans le même JSON.
+- Tous les `zoneId` réutilisés proviennent de l’état de référence, et toutes les `zoneKey` sont résolues par `zones` dans le même JSON.
+- Tous les `manufacturerId` réutilisés proviennent de l’état de référence, et toutes les `manufacturerKey` sont résolues par `references.manufacturers` dans le même JSON.
 - Les conditions d’accès trouvées sont dans `attractionDetails.accessConditions`, pas dans les descriptions.
 - Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
 - Les dates sont exactes ou restent textuelles ; aucune année seule n’est transformée en date complète inventée.
@@ -251,6 +251,6 @@ Si un JSON est une correction d’un lot déjà livré, le récap doit préciser
 
 ## Après Apply
 
-Obtenir l’export actualisé avant de rédiger les descriptions longues : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
+Avant de rédiger les descriptions longues, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer les résultats Apply au registre local et continuer sans nouvel export.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 4 — Descriptions longues localisées. Si le parc est très mineur ou trop peu documenté pour des textes longs, indiquer `à décider` ou `probablement inutile` avec la raison. Si l’étape 4 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

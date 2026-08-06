@@ -7,9 +7,9 @@ Objectif : produire les descriptions publiques longues, naturelles et utiles dan
 - `park-data-integration-orchestrator.md`
 - `park-graph-upsert-enums.md` si le lot contient aussi des champs structurés
 
-## Export requis
+## État de référence requis
 
-Utiliser l’export actualisé après l’inventaire des parkItems. Les descriptions doivent viser les IDs, noms, zones et statuts réellement présents.
+En mode ChatGPT guidé, utiliser l’export actualisé après l’inventaire des parkItems. En mode Codex autonome, utiliser le registre local consolidé, sans nouvel export complet. Les descriptions doivent viser les IDs, noms, zones et statuts réellement présents.
 
 ## Langues attendues
 
@@ -119,7 +119,7 @@ La présence de huit textes et de noms différents ne suffit pas. Avant Apply pu
 2. repérer les paragraphes identiques, quasi identiques et les mêmes enchaînements de phrases dans chaque langue ;
 3. rechercher les familles de formulations d’itinéraire, de classement interne et de remplissage, pas seulement une liste exacte de mots interdits ;
 4. relire manuellement chaque groupe détecté et réécrire avec des faits propres à l’entité ;
-5. refaire ce contrôle après réexport, car un titre différent peut masquer un corps de paragraphe cloné.
+5. refaire ce contrôle sur le corpus complet de l’export préalable à l’étape 8, car un titre différent peut masquer un corps de paragraphe cloné.
 
 Un même fait peut naturellement employer un vocabulaire proche, mais deux entités distinctes ne doivent pas partager un paragraphe passe-partout. Les traductions allemande et néerlandaise, comme toutes les autres, ne peuvent pas servir de versions de secours plus génériques que le français ou l’anglais.
 
@@ -200,6 +200,6 @@ Sections possibles :
 
 ## Après Apply
 
-Obtenir l’export actualisé avant le lot de descriptions suivant ou avant les images : le demander à l’utilisateur en mode ChatGPT, le récupérer par API en mode Codex autonome.
+Avant le lot de descriptions suivant ou avant les images, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, intégrer les résultats Apply au registre local et continuer sans nouvel export.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 5 — Images et références. Si aucune image fiable, créditable ou techniquement importable n’a été trouvée après une recherche réelle, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 5 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

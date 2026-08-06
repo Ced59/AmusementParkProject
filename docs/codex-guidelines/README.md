@@ -7,7 +7,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 
 ## Entrée recommandée
 
-- `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’export initial, l’export actualisé avant chaque nouvelle étape, les limites de lots et les fichiers de règles à lire selon l’étape.
+- `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’export initial, l’état de travail consolidé, l’export complet actualisé juste avant l’étape 8, les limites de lots et les fichiers de règles à lire selon l’étape.
 - `standalone-attraction-data-integration.md` : fichier à utiliser quand l’entité pertinente est une attraction fixe isolée et non un parc.
 - `codex-park-data-editor-api-workflow.md` : complément strictement réservé à Codex lorsqu’il exécute lui-même les étapes par API avec le rôle technique `PARK_DATA_EDITOR`. Il ajoute les garde-fous Preview/Apply et l’upload local des photos sans modifier le workflow ChatGPT.
 
@@ -17,7 +17,8 @@ La demande `Complète le parc <nom>` suffit pour lancer le parcours complet avec
 
 - retrouver ou cadrer le parc à l’étape 0 ;
 - exécuter de façon autonome toutes les étapes 1 à 8 applicables avec le flux API `PARK_DATA_EDITOR` ;
-- réexporter après chaque Apply et travailler en lots bornés jusqu’à épuisement réel de chaque étape ;
+- tenir à jour l’état de travail à partir des réponses Preview/Apply et d’import d’images, sans export complet entre les étapes 1 à 7 ni après chaque mutation ;
+- effectuer un seul réexport complet planifié juste avant l’audit de l’étape 8 ;
 - rechercher aussi les lacunes de l’existant, pas seulement ajouter les informations les plus faciles à trouver ;
 - atteindre le contrat de complétude exigeant décrit dans l’orchestrateur et produire un audit chiffré final ;
 - s’arrêter au seuil `prêt pour publication` tant que l’utilisateur n’a pas explicitement demandé de publier.
@@ -69,7 +70,7 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - Ne conclure à une image introuvable qu’après une recherche réelle dans les sources officielles, presse, archives et sources spécialisées pertinentes. Conserver la lacune et sa raison dans l’audit plutôt que d’utiliser une image générique ou trompeuse.
 - Une image ne doit jamais être livrée si son propriétaire n’est pas résolu. Un warning Preview du type `Remote image ignored: owner could not be resolved` est une erreur de livrable à corriger avant import.
 - Tout `manufacturerKey`, `zoneKey`, `operatorKey`, `founderKey` ou `ownerKey` utilisé doit être enregistré par la section que le processeur traite avant son utilisation. Pour une image de parkItem ou de référence, l’existence en base ne remplace pas la redéclaration dans `items[]` ou `references`.
-- Les `zoneKey` et `manufacturerKey` sont des causes fréquentes d’erreurs : tout JSON qui les utilise doit embarquer les zones minimales et constructeurs minimaux nécessaires quand l’export actualisé ne prouve pas déjà leur existence.
+- Les `zoneKey` et `manufacturerKey` sont des causes fréquentes d’erreurs : tout JSON qui les utilise doit embarquer les zones minimales et constructeurs minimaux nécessaires quand l’état de référence ne prouve pas déjà leur existence.
 - Une alerte de clé non résolue effectivement retournée par Preview bloque le livrable. Les clés d’images utilisées par les articles doivent en plus être comparées statiquement aux `images[].key` du même JSON, car le Preview ne les valide pas.
 - Les horaires, dates d’ouverture et événements datés doivent être vérifiés avec des sources actuelles et ne doivent pas être mélangés aux tarifs si les tarifs ne sont pas implémentés.
 - Les libellés et raisons visibles dans le calendrier doivent être réservés aux événements nommés, exceptions datées ou informations temporaires utiles. Ne jamais y répéter des commentaires généraux sur tous les jours normaux.
@@ -77,7 +78,7 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - Pour un parc majeur ou historiquement riche, rechercher les attractions définitivement fermées, les transformations structurantes et les annonces récentes à effet durable. Une histoire légère ou limitée à l’ouverture du parc n’est pas considérée complète lorsque les sources permettent davantage.
 - Les événements et articles historiques doivent être rédigés pour les visiteurs, sans phrases d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur la présence confirmée d’un élément.
 - Les sources d’articles et d’événements doivent être des URL HTTP(S) valides et joignables au moment de la génération. Ne jamais livrer de source en 404, 410, erreur serveur, soft-404 ou URL inventée.
-- Pour une intégration complète, ne jamais enchaîner deux étapes sans export actualisé du parc après l’application de l’étape précédente.
+- En mode ChatGPT guidé, ne jamais enchaîner deux étapes sans export actualisé du parc après l’application de l’étape précédente. En mode Codex autonome, ne pas réexporter le parc entre les étapes 1 à 7 : consolider l’export initial avec les résultats Preview/Apply et d’import, puis obtenir un export complet frais juste avant l’étape 8.
 - Les JSON upsert doivent rester bornés : une étape, un lot cohérent, aucune copie massive de l’export complet si seules quelques entités changent.
 - Chaque livraison de JSON upsert doit inclure un récap visible avant le fichier : ce qui est ajouté, corrigé, masqué ou conservé, le périmètre exact du lot, un compteur d’avancement traité/total et le reste à traiter avant l’étape suivante.
 - La cible de complétude est une qualité `Excellent` sans bloqueur, avec le même degré de rigueur pour chaque parc. La quantité de contenu reste proportionnée à la taille, au statut et aux sources : exigence élevée ne signifie jamais invention ou remplissage artificiel.
