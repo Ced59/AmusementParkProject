@@ -1,6 +1,6 @@
 # AmusementPark — Scoring de complétude data des parcs et parkItems
 
-Version : **2026-08-06-r2**
+Version : **2026-08-06-r3**
 Projet : **amusement-parks.fun**  
 Usage : spécification fonctionnelle pour calculer en production un score de complétude data, prioriser les enrichissements et aider la décision de visibilité SEO.
 
@@ -161,11 +161,14 @@ Les bloqueurs suivants forcent `isVisible: false` même si le score brut est él
 - sources critiques absentes pour une fiche historique ;
 - URL source d'article ou d'événement non joignable ;
 - contenu public contenant jargon interne, notes d'audit ou données techniques au mauvais endroit.
+- description ou article transformé en fiche technique narrative : séquence du tracé, rotations, accélérations, principe de fonctionnement, vitesse, durée, capacité ou comptage de sièges et de véhicules hors champs structurés ;
 - corpus de descriptions contenant des paragraphes passe-partout répétés, des conseils d’itinéraire ou des traductions de secours génériques dissimulés par des titres différents ;
 - logo officiel courant omis sans recherche documentée ;
 - formulation technique, mécanique ou justificative dans un texte alternatif, une légende ou une description d’image publique ;
 - inventaire historique manifestement léger pour un parc majeur ou ancien ;
 - attraction publiable sans image alors qu’aucune recherche d’image n’est documentée.
+- parc majeur ou parkItem publiable réduit à une description plate et nettement sous les bandes de profondeur de l’étape 4, sans exception sourcée documentée ;
+- article durable d’un parc majeur réduit à un résumé et deux paragraphes minces, sans développement proportionné au sujet.
 
 ## Scoring des parcs
 
@@ -261,6 +264,8 @@ Les langues publiques attendues sont `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `
 
 Le calcul numérique ne sait pas prouver à lui seul que les textes sont distincts. L’étape 8 doit comparer les corps de paragraphes après retrait des titres et noms ; un groupe répété reste un bloqueur éditorial même si le score calculé atteint 100.
 
+Pour un parc majeur, le critère « spécifique, naturelle et utile » inclut aussi la profondeur contrôlée à l’étape 8 : la description du parc vise `3 h2 / 5 p` et environ 280 à 500 mots visibles ; chaque parkItem publiable vise `2 h2 / 3 p` et environ 120 à 200 mots dans la langue de rédaction. Ces bandes déclenchent une relecture et ne doivent jamais être remplies artificiellement.
+
 ### 7. Images, logos et médias — 10 points
 
 Inspiré de l'étape 5.
@@ -310,6 +315,8 @@ Inspiré de l'étape 7. Cette catégorie devient importante pour les parcs majeu
 
 Règle importante : tous les parcs n'ont pas besoin d'articles longs. Un parc local vivant peut être très correct sans article enrichi. En revanche, un parc majeur ou historique sans histoire substantielle, sans attractions fermées documentées ou sans article sur ses sujets durables doit être considéré comme incomplet. Les annonces récentes à effet durable doivent être recherchées au moment du calcul.
 
+Pour un parc majeur, un article durable vise au moins 250 mots visibles avec trois sections développées ; une synthèse historique structurante vise généralement 500 à 900 mots. Les résumés de timeline visent 25 à 55 mots et doivent expliquer la portée du fait. Ces repères servent à détecter le contenu mince, pas à récompenser le remplissage.
+
 ### 10. Références : fondateurs, exploitants, constructeurs — 8 points
 
 Inspiré des étapes 1, 3 et 5.
@@ -349,7 +356,7 @@ Inspiré de l'étape 8.
 | Sources critiques présentes et vérifiées | 2 | Toujours, avec intensité selon parc |
 | Pas de dates inventées ou précision abusive | 1 | Si dates présentes |
 | Pas de warning Preview connu ou dette bloquante | 1 | Toujours |
-| Données techniques dans les champs structurés, pas dans les descriptions | 1 | Toujours |
+| Données techniques dans les champs structurés, sans dispositif expliqué comme une succession de rails, véhicules, sièges, rotations ou accélérations | 1 | Toujours |
 | Dettes restantes documentées | 1 | Si score < 100 |
 | Relecture humaine effectuée pour publication | 1 | Pour `Validated` |
 
@@ -435,6 +442,8 @@ Si aucune condition n'est publiée par une source fiable, ne pas inventer. Docum
 | Non duplication avec autres items similaires | 2 | Toujours si description |
 
 Un parkItem visible avec seulement une description générique doit être masqué ou mis en dette urgente.
+
+Pour un parc majeur, un parkItem publiable réduit à `1 h2 / 1 p` ou nettement sous 120 mots visibles reste en dette urgente, sauf exception de sources précisément documentée. La présence de huit traductions courtes identiques en structure ne permet pas d’obtenir les points de profondeur éditoriale.
 
 ### 7. Images et médias — 8 points
 

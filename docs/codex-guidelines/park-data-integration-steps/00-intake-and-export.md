@@ -1,15 +1,15 @@
-# Étape 0 — Cadrage, pertinence et export
+# Étape 0 — Cadrage, pertinence et état initial
 
 Objectif : décider si le parc doit être intégré, définir le niveau de profondeur et préparer un découpage qui ne saturera pas ChatGPT/Codex.
 
 ## Entrées obligatoires
 
 - Nom du parc, pays et ville si connus.
-- Export actuel du parc si le parc existe déjà dans l’administration.
-- À défaut d’export, confirmation explicite que le parc doit être créé.
+- Informations existantes utiles si le parc est déjà connu, sans imposer d’export complet.
+- À défaut d’état existant, confirmation explicite que le parc doit être créé.
 - Objectif du lot : création complète, enrichissement, correction ou audit.
 
-En mode Codex autonome, Codex obtient lui-même l’export et les données de complétude par l’API `PARK_DATA_EDITOR`. Il ne demande pas à l’utilisateur de les extraire depuis l’administration.
+En mode Codex autonome, Codex recherche lui-même le parc et obtient seulement les sections ou données de complétude nécessaires par l’API `PARK_DATA_EDITOR`. Il ne demande pas à l’utilisateur de les extraire depuis l’administration et n’impose pas d’export complet à cette étape.
 
 Une demande `Complète le parc <nom>` signifie toujours `création ou enrichissement complet avec audit de l’existant`. Elle ne doit pas être réduite à l’ajout de quelques champs manifestement absents.
 
@@ -58,7 +58,7 @@ Le niveau choisi adapte le volume, pas la rigueur. Même pour un parc local, un 
 
 ## État initial et objectifs de couverture
 
-Avant le plan de lots, établir un état initial chiffré à partir de l’export :
+Avant le plan de lots, établir un état initial chiffré provisoire à partir des informations disponibles, de la recherche du parc et, seulement si nécessaire, d’exports ciblés :
 
 - parkItems totaux et attractions par statut ;
 - attractions actuelles, annoncées, en construction et définitivement fermées ;
@@ -91,11 +91,11 @@ Ne pas proposer une étape nouvelle. Si un sujet semble manquer, le rattacher à
 
 ## Règle d’export
 
-En mode ChatGPT guidé, demander un export actualisé après chaque Apply avant de continuer, puisque l’utilisateur opère les mutations hors de la conversation.
+Dans les deux modes, aucun export complet n’est obligatoire pendant les étapes 0 à 7, y compris pour établir l’état initial. Tenir un état de travail consolidé avec la recherche du parc, les éventuels exports ciblés et les réponses Preview/Apply ou d’import d’image. L’unique export complet obligatoire du parcours a lieu immédiatement avant l’audit de l’étape 8.
 
-En mode Codex autonome, effectuer l’export complet initial, puis tenir un état de travail consolidé avec les réponses Preview/Apply et d’import d’image. Ne jamais lancer un export complet après chaque Apply ou import, entre deux lots, ni entre les étapes 1 à 7. Hors export initial, le seul export complet planifié et obligatoire a lieu immédiatement avant l’audit de l’étape 8.
+Avant l’étape 8, un export limité à certaines sections est autorisé seulement pour identifier l’existant ou résoudre une incohérence précise, une réponse de mutation manquante, un ID indispensable ou une dépendance absente des résultats. Il ne doit pas devenir une vérification systématique.
 
-Avant l’étape 8, un export limité à certaines sections est exceptionnellement autorisé seulement pour résoudre une incohérence précise, une réponse de mutation manquante ou un ID indispensable absent des résultats. Il ne doit pas devenir une vérification systématique.
+Après chaque Apply, contrôler `isApplied`, les erreurs, warnings, compteurs et changements avant de les reporter dans l’état consolidé.
 
 Le registre local Codex conserve notamment :
 

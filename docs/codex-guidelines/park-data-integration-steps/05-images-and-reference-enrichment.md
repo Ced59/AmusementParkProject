@@ -10,7 +10,7 @@ Objectif : ajouter les images fiables et enrichir les fondateurs, exploitants ou
 
 ## État de référence requis
 
-En mode ChatGPT guidé, utiliser l’export actualisé après les items et descriptions concernés. En mode Codex autonome, utiliser le registre local consolidé, sans nouvel export complet. Les `ownerKey` doivent correspondre aux clés déjà présentes dans cet état ou aux références créées dans le même JSON.
+Dans les deux modes, utiliser le registre consolidé et les réponses validées des items et descriptions concernés, sans nouvel export complet. Les `ownerKey` doivent correspondre aux clés déjà présentes dans cet état ou aux références créées dans le même JSON ; un export ciblé est réservé à un identifiant réellement manquant ou à une réponse ambiguë.
 
 Avant toute recherche, produire la liste des propriétaires à couvrir et noter pour chacun l’image courante déjà présente, les images secondaires et l’absence éventuelle. L’objectif n’est pas d’ajouter quelques photos faciles, mais de fermer méthodiquement les lacunes de couverture.
 
@@ -366,9 +366,9 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 
 ## Après Apply
 
-Pour récupérer les IDs d’images avant de les référencer dans l’histoire, demander l’export actualisé en mode ChatGPT. En mode Codex autonome, utiliser les IDs retournés par les imports et conservés dans le registre local ; ne pas réexporter après les imports.
+Pour récupérer les IDs d’images avant de les référencer dans l’histoire, utiliser les IDs retournés par les imports et conservés dans le registre consolidé ; demander un export ciblé de la section `Images` seulement si la réponse ne fournit pas l’identifiant indispensable. Aucun export complet intermédiaire n’est nécessaire.
 
-Calculer et annoncer la couverture depuis l’export actualisé en mode ChatGPT ou depuis le registre local en mode Codex, puis confirmer les valeurs Codex avec l’export complet préalable à l’étape 8 :
+Calculer provisoirement la couverture depuis le registre consolidé, puis confirmer les valeurs avec l’export complet frais précédant l’étape 8 :
 
 - logo officiel : présent et courant / absent ;
 - image principale du parc : présente / absente ;

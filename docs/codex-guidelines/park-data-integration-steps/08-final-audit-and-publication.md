@@ -4,7 +4,7 @@ Objectif : vérifier que l’intégration complète est cohérente, fiable, loca
 
 ## Export requis
 
-Immédiatement avant de commencer cet audit, obtenir un export complet frais après toutes les étapes appliquées. Pour Codex autonome, il s’agit du seul réexport complet planifié depuis l’export initial.
+Immédiatement avant de commencer cet audit, obtenir un export complet frais après toutes les étapes appliquées. Dans les deux modes, il s’agit du seul export complet obligatoire du parcours.
 
 ## Audit de pertinence
 
@@ -22,6 +22,8 @@ Le résultat d’une commande de complétude vise le niveau `Excellent` du scori
 Un score élevé ne remplace jamais cet audit. Il est interdit de rendre un critère artificiellement non applicable, d’omettre une entité connue ou de publier un texte faible pour améliorer le score. Une lacune résiduelle n’est acceptable que si la donnée ou l’image reste introuvable après une recherche réelle et si cette limite est précisément documentée.
 
 Même avec un score de 100, l’étape 8 reste incomplète tant que le corpus éditorial n’a pas été relu dans son ensemble. Les contrôles de présence ne détectent ni un paragraphe de secours répété, ni une traduction littérale faible, ni un conseil d’itinéraire injecté dans des dizaines de fiches.
+
+Cette relecture est effectuée et assumée par Codex dans chacune des huit langues. Une sortie de traduction automatique non réécrite, une validation limitée à des motifs interdits ou une simple comparaison de longueurs bloque la fin de l’étape 8, même lorsque tous les champs sont présents.
 
 ## Tableau de couverture obligatoire
 
@@ -78,6 +80,7 @@ Vérifier :
 - les événements et articles ne contiennent pas “repère documentaire prudent”, “présence publique confirmée”, justification de méthode, note d’audit ou formulation mécanique équivalente.
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 - les textes alternatifs, légendes et descriptions d’images sont naturels et éditoriaux ; ils ne contiennent aucune formulation technique, mécanique, justificative ou liée à l’outil d’import.
+- les descriptions, timelines et articles ne déroulent ni tracé, ni rotations, ni accélérations, ni principe de fonctionnement et ne réinjectent pas vitesse, durée, capacité ou nombre de sièges et de véhicules depuis les données structurées.
 
 ### Audit transversal anti-gabarit
 
@@ -87,8 +90,24 @@ Auditer ensemble, dans chacune des huit langues : descriptions du parc, zones, p
 - signaler les paragraphes identiques et les familles de phrases quasi identiques, même lorsque le `<h2>` ou le nom injecté diffère ;
 - rechercher les conseils d’itinéraire, les classements internes, les descriptions de « rôle dans la journée », les pauses suggérées entre files et tout remplissage de catégorie ;
 - vérifier qu’aucune langue n’est plus générique, plus technique ou moins contextualisée que les autres ;
+- rechercher par langue les familles de termes liées aux rails, voies, véhicules, sièges, structures, rotations, accélérations et trajectoires, puis relire manuellement chaque groupe dense. Un terme concret isolé peut être légitime ; une accumulation ou une succession opératoire est bloquante.
+- rechercher les nombres et unités de vitesse, durée, capacité ou comptage dans les descriptions et articles ; ne conserver que ceux dont la valeur historique ou éditoriale est démontrée.
 - relire manuellement les groupes détectés et corriger l’étape 4, 5 ou 7 correspondante avant publication ;
-- après correction, contrôler la réponse Apply, mettre à jour l’état d’audit et exécuter un Preview d’idempotence qui ne doit contenir aucune mutation ; ne relancer un export complet que si une incohérence précise reste impossible à résoudre par ces preuves ou par une lecture ciblée.
+- après correction, contrôler la réponse Apply, mettre à jour l’état consolidé puis exécuter un Preview d’idempotence qui ne doit contenir aucune mutation ; ne relancer un export complet que si une incohérence précise reste impossible à résoudre par ces preuves ou par une lecture ciblée.
+
+### Audit de profondeur et de mise en forme
+
+Pour chaque langue, produire des mesures sur le texte visible après décodage HTML et retrait des balises : minimum, 10e percentile, médiane, 90e percentile et maximum. Les calculer séparément pour le parc, les zones, les parkItems par catégorie, les résumés de timeline et les articles.
+
+- contrôler le nombre de `<h2>`, `<h3>`, `<p>`, listes et blocs d’article, pas seulement la présence d’une valeur HTML ;
+- pour un parc majeur, reprendre toute description de parc qui reste une courte introduction plate au lieu du contrat `3 h2 / 5 p` de l’étape 4 ;
+- reprendre tout parkItem publiable réduit à `1 h2 / 1 p`, ou nettement sous la bande indicative de 120 à 200 mots sans exception de source documentée ;
+- signaler une langue dont le nombre de blocs diffère ou dont la longueur s’effondre par rapport aux sept autres, puis vérifier qu’aucun fait n’a disparu ;
+- reprendre les résumés de timeline qui répètent seulement le titre ou restent sous la bande indicative de 25 à 55 mots sans exposer la portée du fait ;
+- reprendre les articles durables sous 250 mots ou sans trois sections développées, et les articles de synthèse majeurs qui ne couvrent pas plusieurs périodes ou angles ;
+- refuser les blocs vides, les intertitres génériques et tout texte ajouté uniquement pour atteindre un nombre.
+
+Joindre ces distributions et les exceptions justifiées au tableau de couverture. Un score de 100 avec une médiane de descriptions très basse ou une structure uniforme `1 h2 / 1 p` reste un échec de l’étape 8.
 
 Les crédits d’images restent exclus de la comparaison stylistique lorsqu’ils portent légitimement l’auteur, la source ou la licence. Les références globales sont auditées, mais une correction qui affecterait d’autres parcs doit devenir un lot transversal explicite au lieu d’être appliquée silencieusement dans le parc courant.
 
@@ -101,6 +120,7 @@ Pour chaque article publié ou prêt à publier, vérifier :
 - sous-titre spécifique au sujet et non partagé comme gabarit avec les autres articles du parc ;
 - résumé éditorial utile, pas une note de méthode ;
 - paragraphes fluides, factuels et non redondants ;
+- profondeur conforme au sujet : au moins 250 mots et trois sections développées pour un article durable de parc majeur, ou exception courte explicitement justifiée ;
 - aucune phrase défensive ou méta du type “l’article n’a pas pour but”, “sans dramatisation”, “image contextuelle faute de mieux”, “source faible”, “repère documentaire prudent” ;
 - aucune répétition de la description du parc ou du parkItem ;
 - les termes sensibles sont nécessaires, sourcés et formulés sobrement ;
@@ -227,7 +247,7 @@ Ne passer `isVisible` à `true` que pour les entités :
 
 ### Après autorisation explicite de publication
 
-1. Rejouer les contrôles bloquants sur l’export complet de l’audit et les réponses des éventuelles corrections ciblées ; ne pas programmer un nouvel export complet sans incohérence concrète à lever.
+1. Rapprocher l’export complet obtenu juste avant l’étape 8 avec les réponses des éventuelles corrections ciblées et rejouer les contrôles bloquants ; ne pas programmer un nouvel export complet sans incohérence concrète à lever.
 2. Publier de façon ciblée les images validées, puis les articles et contenus dépendants prêts, pendant que le nouveau parc reste masqué. Réutiliser les IDs d’images exportés ; ne pas réimporter les fichiers.
 3. Vérifier les statuts, descriptions, images courantes et sources des parkItems publiables. Ne pas rendre visible un item legacy inconnu au seul motif que la consigne dit « tout publier ».
 4. Passer le parc à `Validated` et visible en dernier.

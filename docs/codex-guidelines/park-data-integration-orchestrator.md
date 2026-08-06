@@ -8,8 +8,8 @@ Cet orchestrateur sert à éviter les JSON trop gros, les oublis de cohérence e
 
 ## Deux modes d’exécution, une seule exigence éditoriale
 
-- **ChatGPT guidé** : l’utilisateur fournit les exports actualisés, exécute ou valide Preview/Apply et décide du passage à l’étape suivante. ChatGPT livre un seul lot à la fois.
-- **Codex autonome par API** : la commande `Complète le parc <nom>` autorise Codex à exécuter de bout en bout toutes les étapes applicables avec `codex-park-data-editor-api-workflow.md`, sans demander une validation intermédiaire à chaque lot. Codex recherche, exporte l’état initial, prévisualise, applique, consolide localement les résultats, effectue un export complet frais juste avant l’étape 8 et audite lui-même.
+- **ChatGPT guidé** : l’utilisateur fournit les informations existantes et les résultats actualisés utiles, exécute ou valide Preview/Apply et décide du passage à l’étape suivante. ChatGPT livre un seul lot à la fois.
+- **Codex autonome par API** : la commande `Complète le parc <nom>` autorise Codex à exécuter de bout en bout toutes les étapes applicables avec `codex-park-data-editor-api-workflow.md`, sans demander une validation intermédiaire à chaque lot. Codex recherche l’existant, ne demande que les sections précises dont il a besoin, prévisualise, applique, contrôle les reçus, consolide localement les résultats, effectue l’unique export complet obligatoire juste avant l’étape 8 et audite lui-même.
 
 Les deux modes utilisent les mêmes étapes 0 à 8, les mêmes règles métier, la même qualité éditoriale et le même seuil de complétude. Seuls l’opérateur technique et les points de pause diffèrent.
 
@@ -17,11 +17,11 @@ Les deux modes utilisent les mêmes étapes 0 à 8, les mêmes règles métier, 
 
 ## Règle de contexte obligatoire
 
-En mode ChatGPT, avant l’étape 0, l’utilisateur fournit l’export actuel du parc s’il existe déjà, ou confirme qu’il faut créer le parc depuis zéro. En mode Codex, Codex recherche les doublons et récupère lui-même l’export par l’API technique ; il ne demande un choix que si plusieurs identités plausibles subsistent.
+En mode ChatGPT, avant l’étape 0, l’utilisateur fournit les informations existantes utiles dont il dispose ou confirme qu’il faut créer le parc depuis zéro ; un export complet n’est pas exigé. En mode Codex, Codex recherche les doublons et récupère seulement les sections nécessaires par l’API technique ; il ne demande un choix que si plusieurs identités plausibles subsistent.
 
-En mode ChatGPT guidé, avant chaque nouvelle étape, l’état de référence est l’export actualisé après Preview/Apply de l’étape précédente ; ChatGPT le demande à l’utilisateur et ne continue pas sur un état ancien.
+En mode ChatGPT guidé, avant chaque nouvelle étape, l’état de référence est le registre consolidé avec les résultats de Preview/Apply ou d’import de l’étape précédente. ChatGPT ne demande un export ciblé que si une information précise manque pour produire le lot suivant.
 
-En mode Codex autonome, l’état de référence des étapes 1 à 7 est un registre local consolidé à partir de l’export initial et de chaque réponse réussie de Preview, Apply et d’import d’image. Codex ne lance aucun export complet après chaque Apply ou import, entre deux lots, ni lors du passage d’une étape à la suivante. Il effectue un nouvel export complet une seule fois, immédiatement avant l’audit de l’étape 8. Avant ce jalon, un export limité aux seules sections nécessaires est admis uniquement pour résoudre une incohérence précise, récupérer une réponse de mutation manquante ou lever un doute qui ne peut pas être résolu par les reçus locaux.
+En mode Codex autonome, l’état de référence des étapes 0 à 7 est un registre local consolidé à partir de la recherche du parc, des éventuels exports ciblés et de chaque réponse réussie de Preview, Apply et d’import d’image. Codex ne lance aucun export complet au cadrage, après un Apply ou un import, entre deux lots, ni lors du passage d’une étape à la suivante. Il effectue l’unique export complet obligatoire immédiatement avant l’audit de l’étape 8. Avant ce jalon, un export limité aux seules sections nécessaires est admis uniquement pour résoudre une identité, une incohérence précise, récupérer une réponse de mutation manquante ou lever un doute qui ne peut pas être résolu par les reçus locaux.
 
 En mode ChatGPT, chaque réponse doit produire un seul livrable principal :
 
@@ -32,6 +32,8 @@ En mode ChatGPT, chaque réponse doit produire un seul livrable principal :
 Quand le livrable principal est un JSON upsert, le JSON doit être fourni sous forme de fichier `.json` téléchargeable, pas comme un long bloc texte à copier-coller. La réponse visible doit seulement résumer le contenu du fichier, les sources, les limites et la suite. Si l’interface ne permet pas de joindre un fichier, ne pas contourner en collant tout le JSON : prévenir l’utilisateur et demander explicitement le format de secours souhaité.
 
 En mode Codex autonome, la même limite s’applique à chaque lot API, mais Codex peut enchaîner plusieurs lots et étapes dans le même tour. Il conserve les artefacts de travail hors du dépôt, informe brièvement l’utilisateur de sa progression et livre à la fin un bilan consolidé plutôt qu’un fichier à appliquer manuellement pour chaque lot.
+
+Pour limiter la charge lorsque plusieurs intégrations travaillent en parallèle, ne pas demander un export complet après chaque lot. Le reçu d’Apply, ses erreurs, warnings et compteurs constituent le contrôle normal entre deux lots. Un export ciblé sur les seules sections utiles reste nécessaire si la réponse d’Apply est ambiguë, si un lot suivant dépend d’un identifiant nouvellement créé ou si une vérification précise l’exige. Un export complet frais est obligatoire une seule fois, immédiatement avant l’audit de l’étape 8.
 
 Nommer les fichiers de façon lisible et traçable, par exemple `park-slug-step-03-items-lot-1-YYYYMMDD.json`.
 
@@ -249,7 +251,7 @@ Sortie attendue : un ou plusieurs JSON upsert centrés sur `items` et `reference
 
 Lire `park-data-integration-steps/04-rich-descriptions-localization.md`.
 
-Objectif : produire les descriptions longues du parc, des zones et des parkItems dans les 8 langues, avec un style public naturel, spécifique et non technique.
+Objectif : produire les descriptions longues du parc, des zones et des parkItems dans les 8 langues, avec un style public naturel, spécifique et non technique. Pour un parc majeur, contrôler aussi la profondeur visible : plusieurs axes éditoriaux et paragraphes développés pour le parc comme pour chaque parkItem, selon le contrat précis de l’étape 4.
 
 Sortie attendue : plusieurs JSON upsert bornés par lot de descriptions.
 
@@ -275,7 +277,7 @@ Sortie attendue : JSON upsert centré sur `openingHours`, et éventuellement que
 
 Lire `park-data-integration-steps/07-history-timelines-and-articles.md`.
 
-Objectif : créer la timeline du parc, puis les timelines des parkItems importants, avec articles seulement quand le sujet le mérite.
+Objectif : créer la timeline du parc, puis les timelines des parkItems importants, avec articles seulement quand le sujet le mérite. Les résumés expliquent le fait et sa portée ; les articles durables développent plusieurs sections localisées et ne se réduisent pas à deux paragraphes courts.
 
 Sortie attendue : JSON upsert centré sur `history.events`, en plusieurs lots.
 
@@ -294,10 +296,10 @@ En mode ChatGPT guidé, une étape est terminée seulement quand :
 - le JSON a été prévisualisé sans erreur bloquante ;
 - les warnings ont été expliqués ou corrigés ;
 - l’application a été faite si l’utilisateur valide ;
-- l’utilisateur fournit l’export actualisé ;
+- l’utilisateur fournit la réponse actualisée de l’opération et, seulement si nécessaire, la section ciblée demandée ;
 - les nouvelles clés créées sont reprises dans l’étape suivante.
 
-Si l’export montre une divergence avec le JSON précédent, l’export gagne. Ne pas réutiliser un ancien `id`, `zoneKey`, `manufacturerKey`, `itemKey` ou `imageKey` qui n’existe plus dans l’état actualisé.
+Si une réponse actualisée ou un export ciblé montre une divergence avec le JSON précédent, l’état le plus récent gagne. Ne pas réutiliser un ancien `id`, `zoneKey`, `manufacturerKey`, `itemKey` ou `imageKey` qui n’existe plus dans l’état actualisé.
 
 En mode ChatGPT, le passage à l’étape suivante se fait seulement après validation utilisateur. Même si une étape semble inutile pour le parc, la décision appartient à l’utilisateur après lecture de la section `Pertinence de la prochaine étape`.
 
@@ -334,7 +336,9 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Rechercher explicitement les attractions définitivement fermées et documenter leur statut, leurs dates ou périodes, leurs descriptions, leur histoire et leur image quand les sources le permettent.
 - Renseigner une année seule quand c’est la seule précision fiable pour une date d’ouverture ou de fermeture ; ne jamais fabriquer `01-01` ou un premier jour de mois.
 - Mettre les restrictions, tailles, tarifs, horaires, dates, coordonnées et données techniques dans les champs structurés, pas dans les descriptions.
+- Refuser aussi la fiche technique déguisée en prose : ne pas dérouler le tracé, le nombre de véhicules ou de sièges, les rotations, l’accélération, la vitesse, la durée ou le principe de fonctionnement. Les rares noms physiques nécessaires restent naturels et isolés ; une densité de vocabulaire de rails, voies, trains, véhicules, sièges, structures ou mouvements commande une relecture manuelle et une réécriture autour du monde raconté et de l’expérience ressentie.
 - Décrire l’identité et l’expérience propres à chaque entité, jamais l’organisation de la journée du visiteur. Sont notamment interdits les conseils d’itinéraire, les injonctions à « garder » ou « placer » une attraction, les pauses suggérées entre files et véhicules et les paragraphes génériques présentés comme un rôle dans le parcours.
+- Pour un parc majeur, utiliser par défaut le contrat de profondeur de l’étape 4 : au moins trois intertitres et cinq paragraphes pour le parc ; au moins deux intertitres spécifiques et trois paragraphes développés pour chaque parkItem publiable. Les seuils de mots sont des alertes de relecture, pas une cible de remplissage.
 - Relire le corpus par langue après retrait des titres, noms et balises de mise en forme. Une phrase complète, un corps de paragraphe ou un squelette éditorial répété sur plusieurs entités distinctes est une dette bloquante, même si le nom injecté rend le HTML techniquement unique.
 - Utiliser uniquement les valeurs enum listées dans `park-graph-upsert-enums.md`.
 - Renseigner `park.audienceClassification` dans les nouveaux JSON d’infos générales de parc et vérifier son absence uniquement comme dette legacy à corriger.
@@ -342,10 +346,12 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Rechercher le logo officiel actuel, une image représentative du parc et au moins une image fidèle pour chaque attraction actuelle, annoncée, en construction ou définitivement fermée quand elle est trouvable. Vérifier aussi une image contextualisée pour chaque jalon et article historique.
 - Une photo non officielle est acceptable si elle représente sans ambiguïté la bonne entité, peut être correctement créditée et ne porte aucun watermark d’un autre site. Toujours inspecter visuellement l’image ; ne jamais se fier au seul nom de fichier, à l’URL ou à la légende source.
 - Les textes alternatifs, légendes et descriptions d’images sont des contenus éditoriaux destinés au visiteur. Ils décrivent naturellement ce qui est visible et son contexte, sans jargon d’import, formulation mécanique, note d’audit, justification de source ou commentaire sur une image manquante.
+- Codex reste l’auteur et le responsable éditorial de chaque traduction publique. Il rédige ou réécrit substantiellement puis valide lui-même chaque langue, sans déléguer le résultat final à un moteur, une API de traduction ou un autre texte généré. Un outil peut uniquement fournir un élément de comparaison ponctuel ; sa sortie brute ne doit jamais être conservée ni envoyée dans un lot.
 - Chaque traduction est rédigée comme un texte naturel dans sa propre langue. Ne pas conserver un jargon anglais, une tournure littérale ou un paragraphe de secours simplement parce que les huit codes de langue sont présents.
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Réserver les libellés et raisons visibles dans le calendrier aux événements nommés, exceptions datées ou informations temporaires utiles ; ne jamais répéter un commentaire général sur tous les jours normaux.
 - Créer un article seulement si le sujet a une vraie valeur éditoriale durable.
+- Développer les résumés de timeline autour du fait et de sa conséquence historique. Pour les sujets durables d’un parc majeur, appliquer les bandes de profondeur et la structure de l’étape 7 ; une succession de blocs présents mais trop courts reste une dette éditoriale.
 - Pour un incident ou accident trouvé sur un parkItem, créer obligatoirement un article associé quand l’événement est sourcé et retenu, avec une photo contextualisée si une image acceptable est trouvable.
 - Rédiger les événements et articles historiques pour les visiteurs, sans note d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur une présence seulement documentée.
 - Pour les articles et événements historiques, utiliser uniquement des sources dont les liens répondent au moment de la génération. Si la page d’origine ne répond plus, utiliser une archive fiable ou une autre source valide ; sinon retirer la source et documenter la limite.
