@@ -14,6 +14,7 @@ import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { resolveParkItemSocialImageId, resolveParkSocialImageId } from '@shared/utils/images/park-social-image.helpers';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselImage } from '@ui/media';
 import { ParkDetailPhotoViewModel } from '../models/park-detail-view.model';
 import { ParkImagesGalleryTab } from '../models/park-images-view.model';
@@ -75,9 +76,9 @@ export class ParkImagesStateFacade {
   public readonly showItemTab = computed(() => this.itemTabImageCount() > 0 || this.activeTabSignal() === 'items');
   public readonly socialImageId = computed(() => {
     const currentData: ParkImagesPageData | undefined = this.screenStateStore.data();
-    return this.parkGalleryPhotos()[0]?.imageId
-      ?? this.itemGalleryPhotos()[0]?.imageId
-      ?? currentData?.itemPreviewImage?.image.id
+    return resolveParkSocialImageId(currentData?.parkImages ?? [])
+      ?? resolveParkItemSocialImageId(currentData?.itemImages ?? [])
+      ?? resolveParkItemSocialImageId(currentData?.itemPreviewImage ? [currentData.itemPreviewImage] : [])
       ?? null;
   });
   public readonly canLoadMore = computed(() => {

@@ -271,6 +271,7 @@ describe('ParkImagesStateFacade', () => {
     expect(context.facade.totalImages()).toBe(2);
     expect(context.facade.canLoadMore()).toBe(true);
     expect(context.facade.photos()[0]?.categoryKey).toBe('park-map');
+    expect(context.facade.socialImageId()).toBe('image-1');
     expect(context.facade.photos()[0]?.year).toBe('2024');
     expect(context.facade.categories()).toEqual([
       { key: 'park-map', labelKey: 'parks.photos.categories.map', count: 1 },
@@ -347,6 +348,7 @@ describe('ParkImagesStateFacade', () => {
       'logo-1',
       'image-1',
     ]);
+    expect(context.facade.socialImageId()).toBe('image-1');
     expect(context.facade.categories()[0]).toEqual({
       key: 'park-logo',
       labelKey: 'parks.photos.categories.logo',
@@ -375,6 +377,7 @@ describe('ParkImagesStateFacade', () => {
     expect(context.facade.photos().map((photo) => photo.imageId)).toEqual([
       'item-image-1',
     ]);
+    expect(context.facade.socialImageId()).toBe('image-1');
     expect(context.facade.canLoadMore()).toBe(true);
     expect(context.imagesPort.itemImageCalls).toEqual([
       { parkId: 'park-1', page: 1, size: 1 },
@@ -408,6 +411,7 @@ describe('ParkImagesStateFacade', () => {
     expect(context.facade.photos().map((photo) => photo.imageId)).toEqual([
       'item-image-1',
     ]);
+    expect(context.facade.socialImageId()).toBe('item-image-1');
     expect(context.imagesPort.itemImageCalls).toEqual([
       { parkId: 'park-1', page: 1, size: 1 },
       { parkId: 'park-1', page: 1, size: 100 },

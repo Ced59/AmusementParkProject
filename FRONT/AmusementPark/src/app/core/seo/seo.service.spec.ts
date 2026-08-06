@@ -380,7 +380,25 @@ describe('SeoService', () => {
     );
   });
 
-  it('uses the park hero then logo image before falling back to the site social image', () => {
+  it('uses an explicit park item social image when no park photo is available', () => {
+    service.applyParkDetailSeo(
+      buildParkDetail({
+        primaryPhoto: null,
+        heroImageId: 'park-hero-1',
+        logoImageId: 'park-logo-1',
+      }),
+      'fr',
+      '/fr/park/park-1/demo-park',
+      null,
+      'item-photo-1',
+    );
+
+    expect(readMetaContent('meta[property="og:image"]')).toBe(
+      'https://localhost:44391/images/binary/item-photo-1/social-preview-v1',
+    );
+  });
+
+  it('never uses park hero or logo identifiers as social image fallbacks', () => {
     service.applyParkDetailSeo(
       buildParkDetail({
         primaryPhoto: null,
@@ -392,21 +410,7 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-hero-1/social-preview-v1',
-    );
-
-    service.applyParkDetailSeo(
-      buildParkDetail({
-        primaryPhoto: null,
-        heroImageId: null,
-        logoImageId: 'park-logo-1',
-      }),
-      'fr',
-      '/fr/park/park-1/demo-park',
-    );
-
-    expect(readMetaContent('meta[property="og:image"]')).toBe(
-      'https://localhost:44391/images/binary/park-logo-1/social-preview-v1',
+      'http://localhost:4200/assets/general-icon/logo-amusementpark.png',
     );
   });
 

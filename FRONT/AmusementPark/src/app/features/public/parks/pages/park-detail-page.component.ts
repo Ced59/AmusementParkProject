@@ -33,6 +33,7 @@ export class ParkDetailPageComponent implements OnInit {
   protected readonly openingHours = this.stateFacade.openingHours;
   protected readonly nearbyParks = this.stateFacade.nearbyParks;
   protected readonly summary = this.stateFacade.summary;
+  protected readonly socialImageId = this.stateFacade.socialImageId;
   protected readonly currentLang = signal<string>('en');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -70,7 +71,8 @@ export class ParkDetailPageComponent implements OnInit {
           language: this.currentLang(),
           parkId: currentPark.id,
           parkName: currentPark.name
-        }))
+        })),
+        this.socialImageId()
       );
     });
   }

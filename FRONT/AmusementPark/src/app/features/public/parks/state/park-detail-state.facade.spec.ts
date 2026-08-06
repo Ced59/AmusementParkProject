@@ -613,6 +613,7 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.countryName).toBe('Belgique');
     expect(context.facade.park()?.heroImageId).toBe('main-image-1');
     expect(context.facade.park()?.primaryPhoto?.imageId).toBe('main-image-1');
+    expect(context.facade.socialImageId()).toBe('main-image-1');
     expect(context.facade.park()?.imagesLink).toEqual([
       '/',
       'fr',
@@ -862,15 +863,25 @@ describe('ParkDetailStateFacade', () => {
     ).toEqual([today, futureDate]);
   });
 
-  it('keeps the logo fallback and exposes the images link when no main photo exists', () => {
+  it('keeps the logo as hero but selects the first park photo for social sharing', () => {
     const context = configureFacade();
     context.parksPort.summaryResponse$ = of(createSummary(3, false));
+    context.imagesPort.parkImagesResponse$ = of(
+      createImagePage<ImageDto>([
+        {
+          ...createSummary().mainImage!,
+          id: 'park-photo-1',
+          isCurrent: false,
+        },
+      ]),
+    );
 
     context.facade.setCurrentLanguage('fr');
     context.facade.loadPark('park-1');
 
     expect(context.facade.park()?.heroImageId).toBe('logo-1');
     expect(context.facade.park()?.primaryPhoto).toBeNull();
+    expect(context.facade.socialImageId()).toBe('park-photo-1');
     expect(context.facade.park()?.imagesLink).toEqual([
       '/',
       'fr',
@@ -879,8 +890,25 @@ describe('ParkDetailStateFacade', () => {
       'bellewaerde',
       'images',
     ]);
-    expect(context.imagesPort.pageCalls).toEqual([]);
-    expect(context.imagesPort.itemImageCalls).toEqual([]);
+    expect(context.imagesPort.pageCalls).toEqual([
+      {
+        ownerType: ImageOwnerType.PARK,
+        ownerId: 'park-1',
+        category: ImageCategory.PARK,
+        page: 1,
+        size: 1,
+      },
+      {
+        ownerType: ImageOwnerType.PARK,
+        ownerId: 'park-1',
+        category: ImageCategory.LOGO,
+        page: 1,
+        size: 1,
+      },
+    ]);
+    expect(context.imagesPort.itemImageCalls).toEqual([
+      { parkId: 'park-1', page: 1, size: 1 },
+    ]);
   });
 
   it('exposes the images link when only park items have photos', () => {
@@ -927,6 +955,7 @@ describe('ParkDetailStateFacade', () => {
 
     expect(context.facade.park()?.heroImageId).toBeNull();
     expect(context.facade.park()?.primaryPhoto).toBeNull();
+    expect(context.facade.socialImageId()).toBe('item-image-1');
     expect(context.facade.park()?.imagesLink).toEqual([
       '/',
       'fr',

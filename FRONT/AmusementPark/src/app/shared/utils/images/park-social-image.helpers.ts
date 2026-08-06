@@ -1,5 +1,6 @@
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
+import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 
 export function resolveParkSummarySocialImageId(summary: ParkDetailSummary | null | undefined): string | null {
@@ -29,6 +30,17 @@ export function resolveParkSocialImageId(parkPhotos: readonly ImageDto[]): strin
   });
 
   return resolveParkPhotoSocialImageId(fallbackPhoto);
+}
+
+export function resolveParkItemSocialImageId(itemPhotos: readonly ParkItemImageDto[]): string | null {
+  const fallbackPhoto: ParkItemImageDto | undefined = itemPhotos.find((entry: ParkItemImageDto): boolean => {
+    const imageId: string | null = normalizeOptionalImageId(entry.image.id);
+    return entry.image.category === ImageCategory.PARK_ITEM
+      && entry.image.isPublished !== false
+      && imageId !== null;
+  });
+
+  return normalizeOptionalImageId(fallbackPhoto?.image.id);
 }
 
 function normalizeOptionalImageId(value: string | null | undefined): string | null {

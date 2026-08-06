@@ -1771,7 +1771,13 @@ export class SeoService {
     this.applyNoindexFallbackSeo('notFound', language);
   }
 
-  applyParkDetailSeo(park: ParkDetailViewModel, language: string, url: string, canonicalPath: string | null = null): void {
+  applyParkDetailSeo(
+    park: ParkDetailViewModel,
+    language: string,
+    url: string,
+    canonicalPath: string | null = null,
+    socialImageId: string | null = null
+  ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkDetailSeoCopy = PARK_DETAIL_SEO_COPY[normalizedLanguage] ?? PARK_DETAIL_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const lifecycleCopy: ParkLifecycleSeoCopy = PARK_LIFECYCLE_SEO_COPY[normalizedLanguage]
@@ -1795,7 +1801,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
-      imageUrl: this.resolveImageIdAbsoluteUrl(this.resolveParkDetailSocialImageId(park)) ?? undefined,
+      imageUrl: this.resolveImageIdAbsoluteUrl(this.resolveParkDetailSocialImageId(park, socialImageId)) ?? undefined,
       imageAlt: park.name,
       jsonLd: this.buildParkDetailJsonLd(park, seoUrl, description)
     });
@@ -2719,10 +2725,9 @@ export class SeoService {
     return `${itemName}${parkLabel}: ${specSummary}. Photos, location and visit details.`;
   }
 
-  private resolveParkDetailSocialImageId(park: ParkDetailViewModel): string | null {
-    return this.normalizeOptionalText(park.primaryPhoto?.imageId)
-      ?? this.normalizeOptionalText(park.heroImageId)
-      ?? this.normalizeOptionalText(park.logoImageId);
+  private resolveParkDetailSocialImageId(park: ParkDetailViewModel, socialImageId: string | null): string | null {
+    return this.normalizeOptionalText(socialImageId)
+      ?? this.normalizeOptionalText(park.primaryPhoto?.imageId);
   }
 
   private buildParkDetailJsonLd(park: ParkDetailViewModel, url: string, seoDescription: string): unknown[] {
