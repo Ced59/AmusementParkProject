@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-08-06-r1**
+Version : **2026-08-06-r2**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -332,12 +332,15 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Rechercher explicitement les attractions définitivement fermées et documenter leur statut, leurs dates ou périodes, leurs descriptions, leur histoire et leur image quand les sources le permettent.
 - Renseigner une année seule quand c’est la seule précision fiable pour une date d’ouverture ou de fermeture ; ne jamais fabriquer `01-01` ou un premier jour de mois.
 - Mettre les restrictions, tailles, tarifs, horaires, dates, coordonnées et données techniques dans les champs structurés, pas dans les descriptions.
+- Décrire l’identité et l’expérience propres à chaque entité, jamais l’organisation de la journée du visiteur. Sont notamment interdits les conseils d’itinéraire, les injonctions à « garder » ou « placer » une attraction, les pauses suggérées entre files et véhicules et les paragraphes génériques présentés comme un rôle dans le parcours.
+- Relire le corpus par langue après retrait des titres, noms et balises de mise en forme. Une phrase complète, un corps de paragraphe ou un squelette éditorial répété sur plusieurs entités distinctes est une dette bloquante, même si le nom injecté rend le HTML techniquement unique.
 - Utiliser uniquement les valeurs enum listées dans `park-graph-upsert-enums.md`.
 - Renseigner `park.audienceClassification` dans les nouveaux JSON d’infos générales de parc et vérifier son absence uniquement comme dette legacy à corriger.
 - Utiliser uniquement des images externes importables par le flux technique du projet : URL HTTP(S) publique, réponse image réelle, taille acceptée et propriétaire résolu.
 - Rechercher le logo officiel actuel, une image représentative du parc et au moins une image fidèle pour chaque attraction actuelle, annoncée, en construction ou définitivement fermée quand elle est trouvable. Vérifier aussi une image contextualisée pour chaque jalon et article historique.
 - Une photo non officielle est acceptable si elle représente sans ambiguïté la bonne entité, peut être correctement créditée et ne porte aucun watermark d’un autre site. Toujours inspecter visuellement l’image ; ne jamais se fier au seul nom de fichier, à l’URL ou à la légende source.
 - Les textes alternatifs, légendes et descriptions d’images sont des contenus éditoriaux destinés au visiteur. Ils décrivent naturellement ce qui est visible et son contexte, sans jargon d’import, formulation mécanique, note d’audit, justification de source ou commentaire sur une image manquante.
+- Chaque traduction est rédigée comme un texte naturel dans sa propre langue. Ne pas conserver un jargon anglais, une tournure littérale ou un paragraphe de secours simplement parce que les huit codes de langue sont présents.
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Réserver les libellés et raisons visibles dans le calendrier aux événements nommés, exceptions datées ou informations temporaires utiles ; ne jamais répéter un commentaire général sur tous les jours normaux.
 - Créer un article seulement si le sujet a une vraie valeur éditoriale durable.
@@ -345,6 +348,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Rédiger les événements et articles historiques pour les visiteurs, sans note d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur une présence seulement documentée.
 - Pour les articles et événements historiques, utiliser uniquement des sources dont les liens répondent au moment de la génération. Si la page d’origine ne répond plus, utiliser une archive fiable ou une autre source valide ; sinon retirer la source et documenter la limite.
 - Ne considérer une absence comme acceptable qu’après une recherche réelle. L’audit final doit nommer chaque lacune résiduelle et les familles de sources vérifiées, sans la masquer derrière un score global.
+- Auditer les références globales liées au parc, mais ne pas corriger leur texte dans un lot strictement local si la modification affecterait d’autres parcs. Une reprise de référence partagée exige un périmètre transversal explicite et une vérification factuelle adaptée.
 
 ## Règles de livraison
 

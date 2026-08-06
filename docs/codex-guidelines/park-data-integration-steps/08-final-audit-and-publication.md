@@ -21,6 +21,8 @@ Le résultat d’une commande de complétude vise le niveau `Excellent` du scori
 
 Un score élevé ne remplace jamais cet audit. Il est interdit de rendre un critère artificiellement non applicable, d’omettre une entité connue ou de publier un texte faible pour améliorer le score. Une lacune résiduelle n’est acceptable que si la donnée ou l’image reste introuvable après une recherche réelle et si cette limite est précisément documentée.
 
+Même avec un score de 100, l’étape 8 reste incomplète tant que le corpus éditorial n’a pas été relu dans son ensemble. Les contrôles de présence ne détectent ni un paragraphe de secours répété, ni une traduction littérale faible, ni un conseil d’itinéraire injecté dans des dizaines de fiches.
+
 ## Tableau de couverture obligatoire
 
 Produire les numérateurs, dénominateurs et identifiants manquants pour :
@@ -77,12 +79,26 @@ Vérifier :
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 - les textes alternatifs, légendes et descriptions d’images sont naturels et éditoriaux ; ils ne contiennent aucune formulation technique, mécanique, justificative ou liée à l’outil d’import.
 
+### Audit transversal anti-gabarit
+
+Auditer ensemble, dans chacune des huit langues : descriptions du parc, zones, parkItems, titres et résumés d’histoire, titres, sous-titres, résumés et paragraphes d’articles, descriptions d’images, textes alternatifs et légendes.
+
+- normaliser le HTML et comparer les corps après retrait des titres, noms d’entités et balises de mise en forme ;
+- signaler les paragraphes identiques et les familles de phrases quasi identiques, même lorsque le `<h2>` ou le nom injecté diffère ;
+- rechercher les conseils d’itinéraire, les classements internes, les descriptions de « rôle dans la journée », les pauses suggérées entre files et tout remplissage de catégorie ;
+- vérifier qu’aucune langue n’est plus générique, plus technique ou moins contextualisée que les autres ;
+- relire manuellement les groupes détectés et corriger l’étape 4, 5 ou 7 correspondante avant publication ;
+- après correction, réexporter puis exécuter un Preview d’idempotence qui ne doit contenir aucune mutation.
+
+Les crédits d’images restent exclus de la comparaison stylistique lorsqu’ils portent légitimement l’auteur, la source ou la licence. Les références globales sont auditées, mais une correction qui affecterait d’autres parcs doit devenir un lot transversal explicite au lieu d’être appliquée silencieusement dans le parc courant.
+
 ### Audit articles historiques
 
 Pour chaque article publié ou prêt à publier, vérifier :
 
 - titre spécifique et lisible sur mobile ;
 - sous-titre naturel, sans formule générique ;
+- sous-titre spécifique au sujet et non partagé comme gabarit avec les autres articles du parc ;
 - résumé éditorial utile, pas une note de méthode ;
 - paragraphes fluides, factuels et non redondants ;
 - aucune phrase défensive ou méta du type “l’article n’a pas pour but”, “sans dramatisation”, “image contextuelle faute de mieux”, “source faible”, “repère documentaire prudent” ;
@@ -124,6 +140,7 @@ Vérifier :
 - chaque image d’exploitant, de fondateur ou de constructeur possède la référence correspondante dans son JSON de livraison ;
 - aucun `ownerKey` basé sur une URL, un nom de fichier, un dossier de galerie ou une valeur devinée ;
 - alt texts et crédits localisés ;
+- descriptions, alt texts et légendes décrivent la scène et son contexte plutôt que le statut officiel, l’import ou la catégorie technique du média ;
 - pas de page HTML, preview non téléchargeable, image trompeuse ou watermark non autorisé ;
 - images historiques correctement contextualisées.
 - logo officiel actuel distinct de la photo principale, marqué comme logo courant et contrôlé dans l’export ;

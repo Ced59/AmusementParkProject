@@ -178,6 +178,9 @@ Interdits dans les titres, sous-titres, résumés, paragraphes et légendes :
 - “source faible” ;
 - “selon la stratégie de prudence” ;
 - toute phrase expliquant pourquoi le rédacteur a choisi d’écrire ou de ne pas écrire quelque chose.
+- les sous-titres de série interchangeables comme « dates, contexte et portée » répétés d’un article à l’autre ;
+- les résumés de fermeture qui se bornent à dire que l’attraction « reste documentée dans l’histoire du parc » sans raconter le fait, sa période ou sa transformation.
+- les résumés d’ouverture ou d’annonce qui se bornent à dire que le lieu « ouvre et élargit l’offre du parc » ou qu’un projet est « annoncé comme développement futur », ainsi que leurs équivalents traduits.
 
 Bon style :
 
@@ -438,6 +441,8 @@ Section principale : `history.events`.
 - Deux définitions `images[].key` ne deviennent jamais identiques après suppression des espaces de bord et comparaison sans tenir compte de la casse.
 - Le Preview n’est pas considéré comme une validation des clés d’images utilisées par les articles.
 - Les titres, sous-titres, résumés, paragraphes et légendes sont relus en affichage public mobile.
+- Les corps de résumés et sous-titres sont comparés entre événements et articles après retrait des noms propres ; aucun gabarit générique répété ne subsiste.
+- Les huit versions d’un même résumé racontent les mêmes faits avec une précision comparable ; la seule présence des huit codes de langue ne valide pas des traductions raccourcies en phrases de secours.
 - Aucune légende ne doit expliquer l’absence d’une autre image ; elle doit décrire l’image affichée et son lien avec le sujet.
 - Les articles d’incidents ou accidents ne doivent contenir ni dramatisation, ni langage défensif, ni justification de méthode.
 - Les incidents ou accidents retenus sur un parkItem ont un article associé et une photo contextualisée quand une image acceptable est trouvable.

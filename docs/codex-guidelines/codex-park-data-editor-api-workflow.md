@@ -1,6 +1,6 @@
 # Workflow API autonome réservé à Codex
 
-Version : **2026-08-06**
+Version : **2026-08-06-r2**
 
 Rôle : **PARK_DATA_EDITOR**
 
@@ -97,7 +97,7 @@ Pour couper l’accès depuis Codex :
 | Besoin | Surface |
 |---|---|
 | Rechercher un parc, y compris masqué ou fermé | `GET park-data-editor/parks` |
-| Exporter le graphe courant | `GET admin/park-graph-upserts/parks/{id}/export` |
+| Exporter le graphe courant | job `POST admin/park-graph-upserts/bulk/export-jobs`, suivi puis téléchargement reprenable |
 | Prévisualiser/appliquer un lot borné | `POST admin/park-graph-upserts/preview` puis `apply` |
 | Lire l’historique d’intégration | `GET admin/park-graph-upserts/history` |
 | Contrôler la complétude | `GET park-data-editor/parks/{id}/data-completeness` |
@@ -106,13 +106,30 @@ Pour couper l’accès depuis Codex :
 
 Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les réseaux sociaux, le SEO, les sources de données, la suppression d’images ou les autres fonctions d’administration.
 
+## Export asynchrone et reprenable
+
+`ExportPark` utilise le job d’export bulk pour un seul identifiant, attend son achèvement, télécharge le fichier avec reprise HTTP par plages d’octets, vérifie sa taille et son JSON, puis extrait le document du parc. Le fichier remis à Codex conserve donc le contrat `AmusementParkParkGraphUpsert` d’un parc unique ; l’enveloppe bulk temporaire ne fuit pas dans les lots de travail.
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action ExportPark `
+  -ParkId 'park-id' `
+  -Sections ParkBasics,Items,Images `
+  -OutputPath .\work\park-items-images.json
+```
+
+- Sans `-Sections`, le client exporte toutes les sections.
+- Pour un parc dense, préférer les sections nécessaires à l’étape courante afin de limiter le volume de travail sans perdre l’état de référence utile.
+- Une coupure pendant le téléchargement est reprise dans la même exécution ; le client n’écrit le fichier final qu’après contrôle de la longueur et du document retourné.
+- Un export final absent, tronqué, d’un autre parc ou avec plusieurs parcs est rejeté. Ne jamais continuer avec l’ancien fichier présent au même chemin.
+- Ne pas recréer un téléchargeur improvisé, revenir à l’ancienne route synchrone, utiliser l’administration ou lire la base de données pour contourner un échec.
+
 ## Boucle obligatoire pour chaque étape officielle
 
 Les noms, l’ordre et le contenu des étapes restent ceux de l’orchestrateur existant.
 
 1. Lire l’orchestrateur, le fichier exact de l’étape et, si nécessaire, le fichier des enums.
 2. À l’étape 0, rechercher d’abord les doublons par l’API technique. Exporter le parc s’il existe.
-3. Avant toute étape suivante, exporter à nouveau le graphe après l’Apply précédent. Cet export devient l’unique état de référence.
+3. Avant toute étape suivante, exporter à nouveau le graphe après l’Apply précédent avec `ExportPark`, éventuellement limité aux sections nécessaires. Cet export validé et reprenable devient l’unique état de référence.
 4. Rechercher et sourcer seulement les données de l’étape courante. Produire un JSON borné et conserver le compteur traité/total ainsi que le registre des lacunes.
 5. Exécuter `Preview`. Examiner toutes les erreurs, tous les warnings, les entités résolues et chaque changement de champ.
 6. Ne jamais exécuter `Apply` si `canApply` est faux, si une erreur existe ou si un warning bloquant subsiste. Par défaut, le client bloque même les warnings non bloquants; `-AllowWarnings` exige une décision explicite après lecture.
@@ -207,6 +224,8 @@ Un warning de doublon d’image distante peut être non bloquant uniquement si l
 ## Audit final
 
 À l’étape 8, Codex doit au minimum : réexporter, exécuter le contrôle de complétude, vérifier les compteurs attendus, les propriétaires d’images, le logo courant, les sources et crédits, les warnings résiduels, la visibilité conservée et l’historique d’Apply. Il fournit le tableau quantitatif exigé par l’étape 8 et ne conclut pas sur le seul score numérique.
+
+Il compare aussi le corpus public après retrait des titres et noms d’entités : descriptions du parc, zones et items, textes historiques, sous-titres d’articles, descriptions, textes alternatifs et légendes d’images. Tout paragraphe de secours répété, conseil d’itinéraire ou traduction générique impose une reprise ciblée avant la conclusion.
 
 Si une réponse d’export volumineuse échoue ou arrive tronquée, ne jamais réutiliser silencieusement un ancien export. Réessayer par la surface technique autorisée, réduire les lectures auxiliaires quand elles sont paginées et considérer Preview puis le nouvel export comme les preuves de l’état appliqué. Ne pas basculer vers l’administration ou la base de données.
 
