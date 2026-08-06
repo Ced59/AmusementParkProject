@@ -232,10 +232,10 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                             operationCancellationToken);
                     }
 
-                    await this.DeleteResponsiveVariantsAsync(
+                    bool variantsDeleted = await this.DeleteResponsiveVariantsAsync(
                         pathWithoutExtension,
                         operationCancellationToken);
-                    return true;
+                    return variantsDeleted;
                 }
                 catch (OperationCanceledException) when (operationCancellationToken.IsCancellationRequested)
                 {
@@ -673,8 +673,11 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         return succeeded;
     }
 
-    private async Task DeleteResponsiveVariantsAsync(string pathWithoutExtension, CancellationToken cancellationToken)
+    internal async Task<bool> DeleteResponsiveVariantsAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
     {
+        bool succeeded = true;
         foreach (string objectName in GetResponsiveObjectNamesForDeletion(pathWithoutExtension))
         {
             try
@@ -694,9 +697,12 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             }
             catch (Exception exception)
             {
+                succeeded = false;
                 this.logger.LogWarning(exception, "Unable to delete responsive image object {ObjectName} from MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
             }
         }
+
+        return succeeded;
     }
 
     internal static IEnumerable<string> GetObjectNamesForDeletion(string pathWithoutExtension)

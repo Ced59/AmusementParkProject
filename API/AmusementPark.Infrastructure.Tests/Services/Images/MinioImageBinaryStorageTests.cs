@@ -59,6 +59,37 @@ public sealed class MinioImageBinaryStorageTests
     }
 
     [Fact]
+    public async Task DeleteResponsiveVariantsAsync_WhenAnInvalidationFails_ShouldReturnFalse()
+    {
+        Mock<IMinioClient> minioClient = new Mock<IMinioClient>(MockBehavior.Strict);
+        int removalAttempt = 0;
+        minioClient
+            .Setup(value => value.RemoveObjectAsync(
+                It.IsAny<Minio.DataModel.Args.RemoveObjectArgs>(),
+                CancellationToken.None))
+            .Returns(() =>
+            {
+                removalAttempt++;
+                return removalAttempt == 5
+                    ? Task.FromException(new IOException("Transient MinIO failure."))
+                    : Task.CompletedTask;
+            });
+        MinioImageBinaryStorage storage = new MinioImageBinaryStorage(
+            minioClient.Object,
+            new MinioImageStorageSettings(),
+            Mock.Of<IImageVariantGenerationLease>(),
+            NullLogger<MinioImageBinaryStorage>.Instance);
+
+        bool succeeded = await storage.DeleteResponsiveVariantsAsync(
+            "images/photo-1",
+            CancellationToken.None);
+
+        Assert.False(succeeded);
+        Assert.Equal(40, removalAttempt);
+        minioClient.VerifyAll();
+    }
+
+    [Fact]
     public async Task ExecuteWithVariantGenerationLeaseAsync_ShouldHoldLeaseUntilGenerationCompletes()
     {
         Mock<IImageVariantGenerationLease> lease =
