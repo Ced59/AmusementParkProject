@@ -63,7 +63,12 @@ public sealed class SocialPublicationTargetResolver
 
         if (!string.Equals(segments[1], "park", StringComparison.OrdinalIgnoreCase))
         {
-            PageNames pageNames = ResolveStaticPageNames(segments);
+            PageNames? pageNames = ResolveStaticPageNames(segments);
+            if (pageNames is null)
+            {
+                return null;
+            }
+
             return new ResolvedSocialPublicationTarget(
                 normalizedUrl,
                 SocialPublicationTargetKind.Page,
@@ -86,26 +91,32 @@ public sealed class SocialPublicationTargetResolver
             return null;
         }
 
-        int itemSegmentIndex = FindSegment(segments, "item", 4);
+        int itemSegmentIndex = segments.Length > 4
+            && string.Equals(segments[4], "item", StringComparison.OrdinalIgnoreCase)
+                ? 4
+                : -1;
         ParkItem? item = await this.ResolveParkItemAsync(segments, itemSegmentIndex, parkId, cancellationToken);
         if (itemSegmentIndex >= 0 && item is null)
         {
             return null;
         }
 
-        int videosSegmentIndex = FindSegment(segments, "videos", 4);
-        if (videosSegmentIndex >= 0 && videosSegmentIndex + 2 < segments.Length)
+        int entityBaseLength = item is null ? 4 : itemSegmentIndex + 3;
+        bool isVideoDetailRoute = segments.Length == entityBaseLength + 3
+            && string.Equals(segments[entityBaseLength], "videos", StringComparison.OrdinalIgnoreCase)
+            && !string.IsNullOrWhiteSpace(segments[entityBaseLength + 1])
+            && !string.IsNullOrWhiteSpace(segments[entityBaseLength + 2]);
+        if (isVideoDetailRoute)
         {
             return await this.ResolveVideoTargetAsync(
                 normalizedUrl,
                 segments,
-                videosSegmentIndex,
+                entityBaseLength,
                 parkId,
                 item,
                 cancellationToken);
         }
 
-        int entityBaseLength = item is null ? 4 : itemSegmentIndex + 3;
         ImageOwnerType ownerType = item is null ? ImageOwnerType.Park : ImageOwnerType.ParkItem;
         string ownerId = item?.Id ?? parkId;
         ImageCategory category = item is null ? ImageCategory.Park : ImageCategory.ParkItem;
@@ -121,7 +132,12 @@ public sealed class SocialPublicationTargetResolver
                 category);
         }
 
-        PageNames names = ResolveParkPageNames(segments, entityBaseLength, item?.Name ?? park.Name, item is not null);
+        PageNames? names = ResolveParkPageNames(segments, entityBaseLength, item?.Name ?? park.Name, item is not null);
+        if (names is null)
+        {
+            return null;
+        }
+
         return new ResolvedSocialPublicationTarget(
             normalizedUrl,
             SocialPublicationTargetKind.Page,
@@ -243,42 +259,56 @@ public sealed class SocialPublicationTargetResolver
                     StringComparison.OrdinalIgnoreCase)));
     }
 
-    private static PageNames ResolveParkPageNames(
+    private static PageNames? ResolveParkPageNames(
         IReadOnlyList<string> segments,
         int entityBaseLength,
         string entityName,
         bool isParkItem)
     {
-        string section = segments.Count > entityBaseLength
-            ? segments[entityBaseLength].ToLowerInvariant()
-            : string.Empty;
+        int suffixLength = segments.Count - entityBaseLength;
+        if (suffixLength == 3
+            && string.Equals(segments[entityBaseLength], "history", StringComparison.OrdinalIgnoreCase)
+            && string.Equals(segments[entityBaseLength + 1], "page", StringComparison.OrdinalIgnoreCase)
+            && int.TryParse(segments[entityBaseLength + 2], out int page)
+            && page > 0)
+        {
+            return new PageNames($"L’histoire de {entityName}", $"The history of {entityName}");
+        }
+
+        if (suffixLength != 1)
+        {
+            return null;
+        }
+
+        string section = segments[entityBaseLength].ToLowerInvariant();
         return section switch
         {
             "images" => new PageNames($"Les photos de {entityName}", $"{entityName} photos"),
             "history" => new PageNames($"L’histoire de {entityName}", $"The history of {entityName}"),
             "videos" => new PageNames($"Les vidéos de {entityName}", $"{entityName} videos"),
             "comments" => new PageNames($"Les avis sur {entityName}", $"Reviews of {entityName}"),
-            "map" => new PageNames($"La carte de {entityName}", $"The map of {entityName}"),
-            "zones" => new PageNames($"Les zones de {entityName}", $"Areas at {entityName}"),
-            "zone" => ResolveNamedSubpage(segments, entityBaseLength + 2, "La zone", "The area", entityName),
-            "weather" => new PageNames($"La météo de {entityName}", $"The weather at {entityName}"),
-            "opening-hours" => new PageNames($"Les horaires de {entityName}", $"Opening hours for {entityName}"),
-            "items" => new PageNames($"Les attractions et lieux de {entityName}", $"Attractions and places at {entityName}"),
-            _ => new PageNames(
-                isParkItem ? $"La fiche de {entityName}" : entityName,
-                isParkItem ? $"The {entityName} page" : entityName),
+            "map" when !isParkItem => new PageNames($"La carte de {entityName}", $"The map of {entityName}"),
+            "zones" when !isParkItem => new PageNames($"Les zones de {entityName}", $"Areas at {entityName}"),
+            "weather" when !isParkItem => new PageNames($"La météo de {entityName}", $"The weather at {entityName}"),
+            "opening-hours" when !isParkItem => new PageNames($"Les horaires de {entityName}", $"Opening hours for {entityName}"),
+            "items" when !isParkItem => new PageNames($"Les attractions et lieux de {entityName}", $"Attractions and places at {entityName}"),
+            _ => null,
         };
     }
 
-    private static PageNames ResolveStaticPageNames(IReadOnlyList<string> segments)
+    private static PageNames? ResolveStaticPageNames(IReadOnlyList<string> segments)
     {
+        if (segments.Count != 2)
+        {
+            return null;
+        }
+
         string route = segments.Count > 1 ? segments[1].ToLowerInvariant() : string.Empty;
         return route switch
         {
             "home" => new PageNames("L’accueil d’Amusement Parks", "The Amusement Parks home page"),
             "parks" => new PageNames("Les parcs d’attractions", "Amusement parks"),
             "sitemap" => new PageNames("Le plan du site", "The site map"),
-            "technical" when segments.Count > 2 => ResolveNamedSubpage(segments, 2, "Le guide", "The guide", "technique"),
             "technical" => new PageNames("Les guides techniques", "Technical guides"),
             "manufacturers" => new PageNames("Les constructeurs d’attractions", "Attraction manufacturers"),
             "rankings" => new PageNames("Les classements", "The rankings"),
@@ -286,23 +316,8 @@ public sealed class SocialPublicationTargetResolver
             "contact" => new PageNames("Contacter Amusement Parks", "Contact Amusement Parks"),
             "versions" => new PageNames("Les nouveautés d’Amusement Parks", "What’s new on Amusement Parks"),
             "privacy" => new PageNames("La politique de confidentialité", "The privacy policy"),
-            "park-operator" => ResolveNamedSubpage(segments, 3, "L’exploitant", "The operator", string.Empty),
-            "park-founder" => ResolveNamedSubpage(segments, 3, "Le fondateur", "The founder", string.Empty),
-            "park-manufacturer" => ResolveNamedSubpage(segments, 3, "Le constructeur", "The manufacturer", string.Empty),
-            "attraction" => ResolveNamedSubpage(segments, 3, "L’attraction", "The attraction", string.Empty),
-            _ => new PageNames(HumanizeSlug(route), HumanizeSlug(route)),
+            _ => null,
         };
-    }
-
-    private static PageNames ResolveNamedSubpage(
-        IReadOnlyList<string> segments,
-        int nameIndex,
-        string frenchPrefix,
-        string englishPrefix,
-        string fallback)
-    {
-        string name = segments.Count > nameIndex ? HumanizeSlug(segments[nameIndex]) : fallback;
-        return new PageNames($"{frenchPrefix} {name}".Trim(), $"{englishPrefix} {name}".Trim());
     }
 
     private static string ResolveLocalizedText(
@@ -316,19 +331,6 @@ public sealed class SocialPublicationTargetResolver
         return string.IsNullOrWhiteSpace(value) ? fallback.Trim() : value.Trim();
     }
 
-    private static int FindSegment(IReadOnlyList<string> segments, string value, int startIndex)
-    {
-        for (int index = startIndex; index < segments.Count; index++)
-        {
-            if (string.Equals(segments[index], value, StringComparison.OrdinalIgnoreCase))
-            {
-                return index;
-            }
-        }
-
-        return -1;
-    }
-
     private static bool IsPrivateRoute(string route)
     {
         return route.Equals("admin", StringComparison.OrdinalIgnoreCase)
@@ -337,17 +339,6 @@ public sealed class SocialPublicationTargetResolver
             || route.Equals("forgot-password", StringComparison.OrdinalIgnoreCase)
             || route.Equals("reset-password", StringComparison.OrdinalIgnoreCase)
             || route.Equals("not-found", StringComparison.OrdinalIgnoreCase);
-    }
-
-    private static string HumanizeSlug(string value)
-    {
-        string normalized = value.Replace('-', ' ').Replace('_', ' ').Trim();
-        if (normalized.Length == 0)
-        {
-            return "Amusement Parks";
-        }
-
-        return char.ToUpperInvariant(normalized[0]) + normalized[1..];
     }
 
     private sealed record PageNames(string French, string English);

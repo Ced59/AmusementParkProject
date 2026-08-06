@@ -226,6 +226,43 @@ public sealed class SocialPublicationComposerServiceTests
         Assert.Equal(0, draft.Images.TotalItems);
     }
 
+    [Theory]
+    [InlineData("https://amusement-parks.fun/fr/parkz")]
+    [InlineData("https://amusement-parks.fun/fr/park-operator/missing/operator")]
+    [InlineData("https://amusement-parks.fun/fr/technical/missing-guide")]
+    public async Task ResolveDraftAsync_ForUnknownOrUnvalidatedPublicRoute_ShouldReject(string url)
+    {
+        SocialPublicationComposerService service = CreateService(
+            new Mock<IParkRepository>(MockBehavior.Strict),
+            new Mock<IImageRepository>(MockBehavior.Strict));
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            url,
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error => error.Code == "social-publishing.url.invalid");
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForUnknownParkSubpage_ShouldReject()
+    {
+        SocialPublicationComposerService service = CreateService(
+            CreateParkRepository(),
+            new Mock<IImageRepository>(MockBehavior.Strict));
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/park/park-1/park-test/unknown",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error => error.Code == "social-publishing.url.invalid");
+    }
+
     private static SocialPublicationComposerService CreateService(
         Mock<IParkRepository> parks,
         Mock<IImageRepository> images,

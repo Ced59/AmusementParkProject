@@ -218,6 +218,41 @@ public sealed class ImagesControllerTests
     }
 
     [Fact]
+    public async Task GetSocialPreviewImageAsync_WhenExpectedOwnerDoesNotMatch_ShouldRemainHidden()
+    {
+        Image image = new Image
+        {
+            Id = "image-1",
+            Path = "images/image-1",
+            IsPublished = true,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-2",
+            Category = ImageCategory.Park,
+        };
+        Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
+            new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
+        queryHandler
+            .Setup(candidate => candidate.HandleAsync(
+                It.Is<GetImageByIdQuery>(query => query.ImageId == "image-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<Image>.Success(image));
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        ImagesController controller = CreateController(queryHandler.Object, storage.Object);
+
+        IActionResult result = await controller.GetSocialPreviewImageAsync(
+            "image-1",
+            CancellationToken.None,
+            ImageOwnerTypeDto.PARK,
+            "park-1",
+            ImageCategoryDto.PARK);
+
+        ObjectResult notFound = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(StatusCodes.Status404NotFound, notFound.StatusCode);
+        queryHandler.VerifyAll();
+        storage.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public void GetSocialPreviewImageAsync_ShouldExposeVersionedAnonymousGetAndHeadRoutes()
     {
         MethodInfo method = typeof(ImagesController).GetMethod(nameof(ImagesController.GetSocialPreviewImageAsync))

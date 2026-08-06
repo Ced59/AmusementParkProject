@@ -1,5 +1,5 @@
 import {
-  hasOnlyFacebookImageOverrideQuery,
+  hasFacebookImageOverrideQuery,
   injectFacebookAppIdMeta,
   injectFacebookImageOverrideMeta,
   normalizeFacebookAppId,
@@ -58,18 +58,53 @@ describe('Facebook Open Graph metadata', () => {
       'https://amusement-parks.fun/fr/park/park-1/test?facebook-image=image_1',
     );
 
-    expect(result).toContain('property="og:image" content="https://amusement-parks.fun/api/images/binary/image_1/social-preview-v1"');
+    expect(result).toContain(
+      'property="og:image" content="https://amusement-parks.fun/api/images/binary/image_1/social-preview-v1'
+      + '?expectedOwnerType=PARK&amp;expectedOwnerId=park-1&amp;expectedCategory=PARK"',
+    );
     expect(result).toContain('property="og:image:type" content="image/jpeg"');
-    expect(result).toContain('name="twitter:image" content="https://amusement-parks.fun/api/images/binary/image_1/social-preview-v1"');
+    expect(result).toContain(
+      'name="twitter:image" content="https://amusement-parks.fun/api/images/binary/image_1/social-preview-v1'
+      + '?expectedOwnerType=PARK&amp;expectedOwnerId=park-1&amp;expectedCategory=PARK"',
+    );
     expect(result).not.toContain('property="og:image:width"');
     expect(result).not.toContain('property="og:image:height"');
   });
 
-  it('ignores invalid or mixed Facebook image override queries', () => {
+  it('accepts the image override alongside existing query parameters', () => {
     const html: string = '<html><head><meta property="og:image" content="default"></head></html>';
 
-    expect(hasOnlyFacebookImageOverrideQuery('/fr/home?facebook-image=image-1')).toBe(true);
-    expect(hasOnlyFacebookImageOverrideQuery('/fr/home?facebook-image=image-1&page=2')).toBe(false);
+    expect(hasFacebookImageOverrideQuery(
+      '/fr/park/park-1/test?utm_source=facebook&facebook-image=image-1',
+    )).toBe(true);
+    expect(injectFacebookImageOverrideMeta(
+      html,
+      '/fr/park/park-1/test?utm_source=facebook&facebook-image=image-1',
+      'https://amusement-parks.fun/fr/park/park-1/test',
+    )).toContain('expectedOwnerId=park-1');
+  });
+
+  it('binds a park item override to that item ownership', () => {
+    const html: string = '<html><head><meta property="og:image" content="default"></head></html>';
+
+    const result: string = injectFacebookImageOverrideMeta(
+      html,
+      '/fr/park/park-1/test/item/item-1/roller?facebook-image=image-1',
+      'https://amusement-parks.fun/fr/park/park-1/test/item/item-1/roller',
+    );
+
+    expect(result).toContain('expectedOwnerType=PARK_ITEM');
+    expect(result).toContain('expectedOwnerId=item-1');
+    expect(result).toContain('expectedCategory=PARK_ITEM');
+  });
+
+  it('ignores invalid, duplicated, or ownerless Facebook image overrides', () => {
+    const html: string = '<html><head><meta property="og:image" content="default"></head></html>';
+
+    expect(hasFacebookImageOverrideQuery('/fr/home?facebook-image=image-1')).toBe(false);
+    expect(hasFacebookImageOverrideQuery(
+      '/fr/park/park-1/test?facebook-image=image-1&facebook-image=image-2',
+    )).toBe(false);
     expect(injectFacebookImageOverrideMeta(
       html,
       '/fr/home?facebook-image=%3Cscript%3E',

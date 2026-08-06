@@ -4,6 +4,13 @@ const FACEBOOK_APP_ID_META_PATTERN = /<meta\s+[^>]*property=(['"])fb:app_id\1[^>
 const CLOSING_HEAD_PATTERN = /<\/head\s*>/i;
 export const FACEBOOK_IMAGE_QUERY_PARAMETER = 'facebook-image';
 
+interface FacebookImageOverride {
+  imageId: string;
+  expectedOwnerType: 'PARK' | 'PARK_ITEM';
+  expectedOwnerId: string;
+  expectedCategory: 'PARK' | 'PARK_ITEM';
+}
+
 export function normalizeFacebookAppId(value: string | null | undefined): string | null {
   const normalized: string = value?.trim() ?? '';
 
@@ -37,17 +44,21 @@ export function injectFacebookImageOverrideMeta(
   requestUrl: string,
   publicUrl: string,
 ): string {
-  const imageId: string | null = resolveFacebookImageOverrideId(requestUrl);
-  if (imageId === null) {
+  const override: FacebookImageOverride | null = resolveFacebookImageOverride(requestUrl);
+  if (override === null) {
     return html;
   }
 
   let imageUrl: string;
   try {
-    imageUrl = new URL(
-      `/api/images/binary/${encodeURIComponent(imageId)}/social-preview-v1`,
+    const parsedImageUrl: URL = new URL(
+      `/api/images/binary/${encodeURIComponent(override.imageId)}/social-preview-v1`,
       publicUrl,
-    ).href;
+    );
+    parsedImageUrl.searchParams.set('expectedOwnerType', override.expectedOwnerType);
+    parsedImageUrl.searchParams.set('expectedOwnerId', override.expectedOwnerId);
+    parsedImageUrl.searchParams.set('expectedCategory', override.expectedCategory);
+    imageUrl = parsedImageUrl.href;
   } catch {
     return html;
   }
@@ -61,30 +72,51 @@ export function injectFacebookImageOverrideMeta(
   return result;
 }
 
-export function hasOnlyFacebookImageOverrideQuery(url: string): boolean {
-  const queryIndex: number = url.indexOf('?');
-  if (queryIndex < 0) {
-    return false;
-  }
-
-  try {
-    const parsedUrl: URL = new URL(url, 'https://amusement-parks.fun');
-    const entries: Array<[string, string]> = Array.from(parsedUrl.searchParams.entries());
-    return entries.length === 1
-      && entries[0][0] === FACEBOOK_IMAGE_QUERY_PARAMETER
-      && FACEBOOK_IMAGE_ID_PATTERN.test(entries[0][1]);
-  } catch {
-    return false;
-  }
+export function hasFacebookImageOverrideQuery(url: string): boolean {
+  return resolveFacebookImageOverride(url) !== null;
 }
 
-function resolveFacebookImageOverrideId(requestUrl: string): string | null {
-  if (!hasOnlyFacebookImageOverrideQuery(requestUrl)) {
+function resolveFacebookImageOverride(requestUrl: string): FacebookImageOverride | null {
+  try {
+    const parsedUrl: URL = new URL(requestUrl, 'https://amusement-parks.fun');
+    const imageIds: string[] = parsedUrl.searchParams.getAll(FACEBOOK_IMAGE_QUERY_PARAMETER);
+    if (imageIds.length !== 1 || !FACEBOOK_IMAGE_ID_PATTERN.test(imageIds[0])) {
+      return null;
+    }
+
+    const segments: string[] = parsedUrl.pathname
+      .split('/')
+      .filter((segment: string) => segment.length > 0)
+      .map(decodeURIComponent);
+    if (segments.length < 4
+      || segments[1].toLowerCase() !== 'park'
+      || !FACEBOOK_IMAGE_ID_PATTERN.test(segments[2])) {
+      return null;
+    }
+
+    if (segments[4]?.toLowerCase() === 'item') {
+      const itemId: string | undefined = segments[5];
+      if (segments.length < 7 || itemId === undefined || !FACEBOOK_IMAGE_ID_PATTERN.test(itemId)) {
+        return null;
+      }
+
+      return {
+        imageId: imageIds[0],
+        expectedOwnerType: 'PARK_ITEM',
+        expectedOwnerId: itemId,
+        expectedCategory: 'PARK_ITEM',
+      };
+    }
+
+    return {
+      imageId: imageIds[0],
+      expectedOwnerType: 'PARK',
+      expectedOwnerId: segments[2],
+      expectedCategory: 'PARK',
+    };
+  } catch {
     return null;
   }
-
-  const parsedUrl: URL = new URL(requestUrl, 'https://amusement-parks.fun');
-  return parsedUrl.searchParams.get(FACEBOOK_IMAGE_QUERY_PARAMETER);
 }
 
 function replaceOrInsertMeta(
@@ -94,7 +126,8 @@ function replaceOrInsertMeta(
   content: string,
 ): string {
   const pattern: RegExp = buildMetaPattern(attribute, key);
-  const metaTag: string = `<meta ${attribute}="${key}" content="${content}">`;
+  const escapedContent: string = content.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  const metaTag: string = `<meta ${attribute}="${key}" content="${escapedContent}">`;
   if (pattern.test(html)) {
     return html.replace(pattern, metaTag);
   }

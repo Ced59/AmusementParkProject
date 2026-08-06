@@ -36,7 +36,7 @@ import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-po
 import { siteVersion } from './src/environments/version.generated';
 import { buildContentSecurityPolicy } from './src/app/core/security/content-security-policy';
 import {
-  hasOnlyFacebookImageOverrideQuery,
+  hasFacebookImageOverrideQuery,
   injectFacebookAppIdMeta,
   injectFacebookImageOverrideMeta,
   normalizeFacebookAppId,
@@ -2149,7 +2149,7 @@ function isPublicSsrCacheRoute(url: string): boolean {
 
 function isCriticalPublicSsrRoute(url: string): boolean {
   const path = getPathOnly(url);
-  const hasBlockingQuery: boolean = hasQueryString(url) && !hasOnlyFacebookImageOverrideQuery(url);
+  const hasBlockingQuery: boolean = hasQueryString(url) && !hasFacebookImageOverrideQuery(url);
 
   return isPublicStaticSsrRoute(path)
     || isPublicParkDetailRoute(path)

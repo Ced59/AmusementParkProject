@@ -1,5 +1,5 @@
 import { HttpTestingController } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -45,30 +45,36 @@ describe('AdminSocialPublishingComponent', () => {
     httpTestingController.verify();
   });
 
-  it('fills the automatic text after a pasted URL without replacing a later custom edit during pagination', fakeAsync(() => {
-    const url: string = 'https://amusement-parks.fun/fr/park/park-1/park-test';
-    harness.publicationForm.controls.url.setValue(url);
-    tick(350);
+  it('fills the automatic text after a pasted URL without replacing a later custom edit during pagination', () => {
+    vi.useFakeTimers();
 
-    httpTestingController.expectOne((request) =>
-      request.url === `${environment.apiBaseUrl}admin/social-publications/draft`
-      && request.params.get('url') === url
-      && request.params.get('page') === '1'
-    ).flush(createDraft(1));
-    fixture.detectChanges();
+    try {
+      const url: string = 'https://amusement-parks.fun/fr/park/park-1/park-test';
+      harness.publicationForm.controls.url.setValue(url);
+      vi.advanceTimersByTime(350);
 
-    expect(harness.publicationForm.controls.message.value).toBe('Texte automatique pour Parc Test');
+      httpTestingController.expectOne((request) =>
+        request.url === `${environment.apiBaseUrl}admin/social-publications/draft`
+        && request.params.get('url') === url
+        && request.params.get('page') === '1'
+      ).flush(createDraft(1));
+      fixture.detectChanges();
 
-    harness.publicationForm.controls.message.setValue('Mon texte personnalisé');
-    harness.nextImagePage();
-    httpTestingController.expectOne((request) =>
-      request.url === `${environment.apiBaseUrl}admin/social-publications/draft`
-      && request.params.get('page') === '2'
-    ).flush(createDraft(2));
-    fixture.detectChanges();
+      expect(harness.publicationForm.controls.message.value).toBe('Texte automatique pour Parc Test');
 
-    expect(harness.publicationForm.controls.message.value).toBe('Mon texte personnalisé');
-  }));
+      harness.publicationForm.controls.message.setValue('Mon texte personnalisé');
+      harness.nextImagePage();
+      httpTestingController.expectOne((request) =>
+        request.url === `${environment.apiBaseUrl}admin/social-publications/draft`
+        && request.params.get('page') === '2'
+      ).flush(createDraft(2));
+      fixture.detectChanges();
+
+      expect(harness.publicationForm.controls.message.value).toBe('Mon texte personnalisé');
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });
 
 function createDraft(currentPage: number) {

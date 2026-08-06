@@ -4,7 +4,7 @@ Objectif : vérifier que l’intégration complète est cohérente, fiable, loca
 
 ## Export requis
 
-Immédiatement avant de commencer cet audit, obtenir un export complet frais après toutes les étapes appliquées. Dans les deux modes, il s’agit du seul export complet obligatoire du parcours.
+Immédiatement avant de commencer cet audit, obtenir un export complet frais après toutes les étapes appliquées. Dans les deux modes, il s’agit du seul export complet obligatoire du parcours de complétion 0 à 8. Une autorisation de publication donnée plus tard ouvre le contrôle distinct décrit à la fin de cette étape.
 
 ## Audit de pertinence
 
@@ -247,7 +247,7 @@ Ne passer `isVisible` à `true` que pour les entités :
 
 ### Après autorisation explicite de publication
 
-1. Rapprocher l’export complet obtenu juste avant l’étape 8 avec les réponses des éventuelles corrections ciblées et rejouer les contrôles bloquants ; ne pas programmer un nouvel export complet sans incohérence concrète à lever.
+1. Avant toute mutation de visibilité, obtenir un nouvel export complet frais du parc par la voie autorisée du mode courant. En mode Codex, contrôler d’abord l’état global des opérations puis utiliser le client `PARK_DATA_EDITOR`. En mode ChatGPT guidé, demander ce nouvel export à l’utilisateur par la surface d’administration prévue, attendre son fichier et ne jamais appeler `park-data-editor/*`. Rapprocher ensuite cet export de l’état audité et des réponses des éventuelles corrections ciblées, puis rejouer tous les contrôles bloquants sur l’état réellement en ligne. Toute différence inexpliquée suspend la publication jusqu’à une correction ciblée et une nouvelle validation. Cet export appartient au flux de publication séparément autorisé et ne remet pas en cause l’unique export complet obligatoire du parcours de complétion 0 à 8.
 2. Publier de façon ciblée les images validées, puis les articles et contenus dépendants prêts, pendant que le nouveau parc reste masqué. Réutiliser les IDs d’images exportés ; ne pas réimporter les fichiers.
 3. Vérifier les statuts, descriptions, images courantes et sources des parkItems publiables. Ne pas rendre visible un item legacy inconnu au seul motif que la consigne dit « tout publier ».
 4. Passer le parc à `Validated` et visible en dernier.
