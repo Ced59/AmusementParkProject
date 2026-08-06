@@ -11,7 +11,10 @@ using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
 
@@ -87,7 +90,12 @@ public sealed class ImagesControllerTests
     [Fact]
     public async Task GetSocialPreviewImageAsync_ShouldUseStableJpegVariantWithoutContentNegotiation()
     {
-        byte[] imageContent = new byte[] { 0xFF, 0xD8, 0xFF, 0xD9 };
+        byte[] imageContent = new byte[131_089];
+        for (int index = 0; index < imageContent.Length; index++)
+        {
+            imageContent[index] = (byte)(index % 251);
+        }
+
         Image image = new Image
         {
             Id = "image-1",
@@ -117,6 +125,28 @@ public sealed class ImagesControllerTests
         Assert.Same(imageContent, file.FileContents);
         Assert.Equal("public,max-age=0,must-revalidate", controller.Response.Headers.CacheControl);
         Assert.False(controller.Response.Headers.ContainsKey("Vary"));
+
+        ServiceCollection services = new ServiceCollection();
+        services.AddLogging();
+        services.AddMvcCore();
+        await using ServiceProvider serviceProvider = services.BuildServiceProvider();
+        DefaultHttpContext responseContext = new DefaultHttpContext
+        {
+            RequestServices = serviceProvider,
+        };
+        await using MemoryStream responseBody = new MemoryStream();
+        responseContext.Response.Body = responseBody;
+        ActionContext actionContext = new ActionContext(
+            responseContext,
+            new RouteData(),
+            new ActionDescriptor());
+
+        await file.ExecuteResultAsync(actionContext);
+
+        Assert.True(imageContent.Length > 64 * 1024);
+        Assert.Equal(imageContent.Length, responseContext.Response.ContentLength);
+        Assert.Equal(imageContent.Length, responseBody.Length);
+        Assert.Equal(imageContent, responseBody.ToArray());
         queryHandler.VerifyAll();
         storage.VerifyAll();
     }
