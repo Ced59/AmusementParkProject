@@ -515,6 +515,26 @@ public sealed class ImagesController : ControllerBase
                 "image.not-found");
         }
 
+        if (HttpMethods.IsHead(this.Request.Method))
+        {
+            (long ContentLength, string ContentType)? metadata =
+                await this.imageBinaryStorage.GetSocialPreviewMetadataAsync(
+                    result.Value.Path,
+                    SocialPreviewImageWidth,
+                    cancellationToken);
+            if (metadata is null)
+            {
+                return this.ToNotFoundProblemDetailsResult(
+                    "The requested social preview image binary was not found.",
+                    "image.binary-not-found");
+            }
+
+            this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
+            this.Response.ContentLength = metadata.Value.ContentLength;
+            this.Response.ContentType = metadata.Value.ContentType;
+            return this.StatusCode(StatusCodes.Status200OK);
+        }
+
         (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetSocialPreviewAsync(
             result.Value.Path,
             SocialPreviewImageWidth,

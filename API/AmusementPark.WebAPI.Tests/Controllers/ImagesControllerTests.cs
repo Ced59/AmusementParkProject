@@ -123,6 +123,46 @@ public sealed class ImagesControllerTests
     }
 
     [Fact]
+    public async Task GetSocialPreviewImageAsync_ForHead_ShouldUseMetadataOnly()
+    {
+        Image image = new Image
+        {
+            Id = "image-1",
+            Path = "images/image-1",
+            IsPublished = true,
+        };
+        Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
+            new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
+        queryHandler
+            .Setup(candidate => candidate.HandleAsync(
+                It.Is<GetImageByIdQuery>(query => query.ImageId == "image-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<Image>.Success(image));
+        Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
+        storage
+            .Setup(candidate => candidate.GetSocialPreviewMetadataAsync(
+                "images/image-1",
+                ImagesController.SocialPreviewImageWidth,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((123L, "image/jpeg"));
+        ImagesController controller = CreateController(queryHandler.Object, storage.Object);
+        controller.Request.Method = HttpMethods.Head;
+
+        IActionResult result = await controller.GetSocialPreviewImageAsync(
+            "image-1",
+            CancellationToken.None);
+
+        StatusCodeResult status = Assert.IsType<StatusCodeResult>(result);
+        Assert.Equal(StatusCodes.Status200OK, status.StatusCode);
+        Assert.Equal(123L, controller.Response.ContentLength);
+        Assert.Equal("image/jpeg", controller.Response.ContentType);
+        Assert.Equal("public,max-age=0,must-revalidate", controller.Response.Headers.CacheControl);
+        Assert.False(controller.Response.Headers.ContainsKey("Vary"));
+        queryHandler.VerifyAll();
+        storage.VerifyAll();
+    }
+
+    [Fact]
     public async Task GetSocialPreviewImageAsync_WhenImageIsNotPublished_ShouldRemainHidden()
     {
         Image image = new Image
