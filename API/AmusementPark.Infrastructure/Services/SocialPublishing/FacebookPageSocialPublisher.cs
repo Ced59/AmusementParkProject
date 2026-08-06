@@ -1,5 +1,7 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Contracts;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Core.Domain.SocialPublishing;
@@ -13,17 +15,22 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
 
     public const string PreviewRefreshHttpClientName = "SocialPublishing.Facebook.PreviewRefresh";
 
+    public const string PreviewPagePreparationHttpClientName = "SocialPublishing.Facebook.PreviewPagePreparation";
+
     private const string GraphApiBaseUrl = "https://graph.facebook.com";
     private const int MaximumStoredErrorLength = 500;
 
     private readonly IHttpClientFactory httpClientFactory;
+    private readonly IPublicSeoContextProvider publicSeoContextProvider;
     private readonly FacebookPagePublishingSettings settings;
 
     public FacebookPageSocialPublisher(
         IHttpClientFactory httpClientFactory,
+        IPublicSeoContextProvider publicSeoContextProvider,
         FacebookPagePublishingSettings settings)
     {
         this.httpClientFactory = httpClientFactory;
+        this.publicSeoContextProvider = publicSeoContextProvider;
         this.settings = settings;
     }
 
@@ -47,6 +54,16 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
         if (!this.settings.IsConfigured())
         {
             return Failure("publisher-not-configured", "La Page Facebook n'est pas configurée.");
+        }
+
+        SocialPublisherOperationResult preparationResult = await this.PrepareLinkPreviewPageAsync(
+            request.Url,
+            cancellationToken);
+        if (!preparationResult.IsSuccess)
+        {
+            return Failure(
+                preparationResult.FailureCode ?? "preview-page-unavailable",
+                preparationResult.FailureMessage ?? "La page publique n'est pas prête pour son aperçu Facebook.");
         }
 
         string endpoint = $"{GraphApiBaseUrl}/{this.settings.ApiVersion}/{Uri.EscapeDataString(this.settings.PageId)}/feed";
@@ -94,6 +111,14 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
                 "La Page Facebook n'est pas configurée.");
         }
 
+        SocialPublisherOperationResult preparationResult = await this.PrepareLinkPreviewPageAsync(
+            url,
+            cancellationToken);
+        if (!preparationResult.IsSuccess)
+        {
+            return preparationResult;
+        }
+
         string endpoint = $"{GraphApiBaseUrl}/{this.settings.ApiVersion}/";
         using HttpRequestMessage httpRequest = this.CreateAuthorizedRequest(HttpMethod.Post, endpoint);
         httpRequest.Content = new FormUrlEncodedContent(new Dictionary<string, string>
@@ -121,6 +146,69 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
             false,
             failure.FailureCode,
             failure.FailureMessage);
+    }
+
+    private async Task<SocialPublisherOperationResult> PrepareLinkPreviewPageAsync(
+        string url,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            PublicSeoContext context = await this.publicSeoContextProvider.GetAsync(cancellationToken);
+            if (!IsPublicSiteUrl(url, context.PublicBaseUrl))
+            {
+                return new SocialPublisherOperationResult(true, false, null, null);
+            }
+
+            using HttpRequestMessage httpRequest = new HttpRequestMessage(HttpMethod.Get, url);
+            httpRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
+            httpRequest.Headers.UserAgent.ParseAdd("AmusementPark-SocialPreviewPrewarmer/1.0");
+            httpRequest.Headers.TryAddWithoutValidation("X-AmusementPark-SSR-Warmup", "1");
+            httpRequest.Headers.TryAddWithoutValidation("X-AmusementPark-SSR-Warmup-Refresh", "1");
+
+            HttpClient client = this.httpClientFactory.CreateClient(PreviewPagePreparationHttpClientName);
+            using HttpResponseMessage response = await client.SendAsync(
+                httpRequest,
+                HttpCompletionOption.ResponseHeadersRead,
+                cancellationToken);
+            bool isSeoReady = response.Headers.TryGetValues(
+                    "X-AmusementPark-Seo-Ready",
+                    out IEnumerable<string>? values)
+                && values.Any(static value => string.Equals(value, "true", StringComparison.OrdinalIgnoreCase));
+            if (response.IsSuccessStatusCode && isSeoReady)
+            {
+                return new SocialPublisherOperationResult(true, false, null, null);
+            }
+
+            return new SocialPublisherOperationResult(
+                false,
+                false,
+                "preview-page-not-ready",
+                "La page publique n'a pas pu être préparée pour son aperçu Facebook.");
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
+        {
+            return new SocialPublisherOperationResult(
+                false,
+                false,
+                "preview-page-unavailable",
+                "La page publique est temporairement indisponible pour son aperçu Facebook.");
+        }
+    }
+
+    private static bool IsPublicSiteUrl(string url, string publicBaseUrl)
+    {
+        return Uri.TryCreate(url, UriKind.Absolute, out Uri? uri)
+            && Uri.TryCreate(publicBaseUrl, UriKind.Absolute, out Uri? publicBaseUri)
+            && (string.Equals(uri.Scheme, Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(uri.Scheme, Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase))
+            && string.Equals(uri.Scheme, publicBaseUri.Scheme, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(uri.Host, publicBaseUri.Host, StringComparison.OrdinalIgnoreCase)
+            && uri.Port == publicBaseUri.Port;
     }
 
     public Task<SocialPublisherOperationResult> UpdatePostAsync(
