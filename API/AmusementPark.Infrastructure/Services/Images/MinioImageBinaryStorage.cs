@@ -31,7 +31,8 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private const int ResponsiveVariantVersion = 2;
     private const int SocialPreviewVariantVersion = 1;
     private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
-    private static readonly TimeSpan SocialPreviewLeaseRetryDelay = TimeSpan.FromMilliseconds(250);
+    private static readonly TimeSpan SocialPreviewLeaseRetryDelay = TimeSpan.FromMilliseconds(500);
+    private static readonly TimeSpan SocialPreviewLeaseWaitTimeout = TimeSpan.FromSeconds(5);
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
@@ -314,10 +315,19 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                     return cached;
                 }
 
-                return await this.TryCreateSocialPreviewAsync(
+                (Stream Stream, string ContentType)? generated = await this.TryCreateSocialPreviewAsync(
                     pathWithoutExtension,
                     objectName,
                     socialPreviewWidth,
+                    operationCancellationToken);
+                if (generated is not null)
+                {
+                    return generated;
+                }
+
+                return await TryGetObjectAsync(
+                    objectName,
+                    "image/jpeg",
                     operationCancellationToken);
             },
             cancellationToken);
@@ -376,12 +386,17 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         string pathWithoutExtension,
         Func<CancellationToken, Task<T>> operation,
         T missingTargetResult,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        TimeSpan? waitTimeout = null,
+        TimeSpan? retryDelay = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pathWithoutExtension);
         ArgumentNullException.ThrowIfNull(operation);
 
         string leaseToken = Guid.NewGuid().ToString("N");
+        TimeSpan effectiveWaitTimeout = waitTimeout ?? SocialPreviewLeaseWaitTimeout;
+        TimeSpan effectiveRetryDelay = retryDelay ?? SocialPreviewLeaseRetryDelay;
+        DateTime waitUntilUtc = DateTime.UtcNow.Add(effectiveWaitTimeout);
         while (true)
         {
             DateTime acquiredAtUtc = DateTime.UtcNow;
@@ -404,7 +419,16 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 return missingTargetResult;
             }
 
-            await Task.Delay(SocialPreviewLeaseRetryDelay, cancellationToken);
+            TimeSpan remainingWait = waitUntilUtc - DateTime.UtcNow;
+            if (remainingWait <= TimeSpan.Zero)
+            {
+                return missingTargetResult;
+            }
+
+            TimeSpan delay = remainingWait < effectiveRetryDelay
+                ? remainingWait
+                : effectiveRetryDelay;
+            await Task.Delay(delay, cancellationToken);
         }
 
         try

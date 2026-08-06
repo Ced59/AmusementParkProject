@@ -42,7 +42,9 @@ public sealed class MinioImageBinaryStorageTests
             "images/photo-social",
             _ => Task.FromResult(true),
             false,
-            CancellationToken.None);
+            CancellationToken.None,
+            TimeSpan.FromSeconds(1),
+            TimeSpan.FromMilliseconds(1));
 
         Assert.True(result);
         lease.Verify(value => value.TryAcquireAsync(
@@ -52,6 +54,54 @@ public sealed class MinioImageBinaryStorageTests
             It.IsAny<DateTime>(),
             It.IsAny<CancellationToken>()),
             Times.Exactly(2));
+        lease.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteWithSocialPreviewDistributedLeaseAsync_WhenLeaseRemainsBusy_ShouldStopAtDeadline()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.Setup(value => value.TryAcquireAsync(
+                "images/busy-photo",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        lease.Setup(value => value.ExistsAsync(
+                "images/busy-photo",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+        bool operationInvoked = false;
+
+        bool result = await storage.ExecuteWithSocialPreviewDistributedLeaseAsync(
+            "images/busy-photo",
+            _ =>
+            {
+                operationInvoked = true;
+                return Task.FromResult(true);
+            },
+            false,
+            CancellationToken.None,
+            TimeSpan.FromMilliseconds(30),
+            TimeSpan.FromMilliseconds(5));
+
+        Assert.False(result);
+        Assert.False(operationInvoked);
+        lease.Verify(value => value.TryAcquireAsync(
+            "images/busy-photo",
+            It.IsAny<string>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<CancellationToken>()),
+            Times.AtLeast(2));
+        lease.Verify(value => value.ReleaseAsync(
+            It.IsAny<string>(),
+            It.IsAny<string>(),
+            It.IsAny<CancellationToken>()),
+            Times.Never);
         lease.VerifyAll();
     }
 
