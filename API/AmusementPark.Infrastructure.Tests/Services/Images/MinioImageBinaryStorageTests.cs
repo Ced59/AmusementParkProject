@@ -56,6 +56,56 @@ public sealed class MinioImageBinaryStorageTests
         await secondOperation.WaitAsync(TimeSpan.FromSeconds(2));
 
         Assert.True(secondOperationStarted.Task.IsCompletedSuccessfully);
+        Assert.False(MinioImageBinaryStorage.HasSocialPreviewGenerationLock("images/photo-1"));
+    }
+
+    [Fact]
+    public async Task DeleteAsync_ShouldWaitForSocialPreviewGenerationAcrossScopedInstances()
+    {
+        const string ImagePath = "images/delete-lock-photo";
+        MinioImageBinaryStorage previewStorage = CreateStorage(
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict));
+        Mock<IMinioClient> minioClient = new Mock<IMinioClient>(MockBehavior.Strict);
+        int removalAttempt = 0;
+        minioClient
+            .Setup(value => value.RemoveObjectAsync(
+                It.IsAny<Minio.DataModel.Args.RemoveObjectArgs>(),
+                CancellationToken.None))
+            .Callback(() => removalAttempt++)
+            .Returns(Task.CompletedTask);
+        MinioImageBinaryStorage deletionStorage = new MinioImageBinaryStorage(
+            minioClient.Object,
+            new MinioImageStorageSettings(),
+            Mock.Of<IImageVariantGenerationLease>(),
+            NullLogger<MinioImageBinaryStorage>.Instance);
+        TaskCompletionSource<bool> previewStarted =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource<bool> allowPreviewCompletion =
+            new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        Task<bool> previewOperation = previewStorage.ExecuteWithSocialPreviewGenerationLockAsync(
+            ImagePath,
+            async cancellationToken =>
+            {
+                previewStarted.SetResult(true);
+                await allowPreviewCompletion.Task.WaitAsync(cancellationToken);
+                return true;
+            },
+            CancellationToken.None);
+        await previewStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+
+        Task<bool> deletionOperation = deletionStorage.DeleteAsync(
+            ImagePath,
+            CancellationToken.None);
+        await Task.Delay(TimeSpan.FromMilliseconds(100));
+
+        Assert.Equal(0, removalAttempt);
+        allowPreviewCompletion.SetResult(true);
+        await previewOperation.WaitAsync(TimeSpan.FromSeconds(2));
+        Assert.True(await deletionOperation.WaitAsync(TimeSpan.FromSeconds(2)));
+        Assert.Equal(44, removalAttempt);
+        Assert.False(MinioImageBinaryStorage.HasSocialPreviewGenerationLock(ImagePath));
+        minioClient.VerifyAll();
     }
 
     [Fact]

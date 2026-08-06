@@ -33,8 +33,8 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
-    private static readonly ConcurrentDictionary<string, SemaphoreSlim> SocialPreviewGenerationLocks =
-        new ConcurrentDictionary<string, SemaphoreSlim>(StringComparer.Ordinal);
+    private static readonly ConcurrentDictionary<string, SocialPreviewGenerationLockEntry> SocialPreviewGenerationLocks =
+        new ConcurrentDictionary<string, SocialPreviewGenerationLockEntry>(StringComparer.Ordinal);
 
     private readonly IMinioClient minioClient;
     private readonly MinioImageStorageSettings settings;
@@ -328,17 +328,78 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         ArgumentException.ThrowIfNullOrWhiteSpace(pathWithoutExtension);
         ArgumentNullException.ThrowIfNull(operation);
 
-        SemaphoreSlim generationLock = SocialPreviewGenerationLocks.GetOrAdd(
-            pathWithoutExtension,
-            static _ => new SemaphoreSlim(1, 1));
-        await generationLock.WaitAsync(cancellationToken);
+        SocialPreviewGenerationLockEntry generationLock = RentSocialPreviewGenerationLock(
+            pathWithoutExtension);
         try
         {
-            return await operation(cancellationToken);
+            await generationLock.Semaphore.WaitAsync(cancellationToken);
+            try
+            {
+                return await operation(cancellationToken);
+            }
+            finally
+            {
+                generationLock.Semaphore.Release();
+            }
         }
         finally
         {
-            generationLock.Release();
+            ReturnSocialPreviewGenerationLock(pathWithoutExtension, generationLock);
+        }
+    }
+
+    internal static bool HasSocialPreviewGenerationLock(string pathWithoutExtension)
+    {
+        return SocialPreviewGenerationLocks.ContainsKey(pathWithoutExtension);
+    }
+
+    private static SocialPreviewGenerationLockEntry RentSocialPreviewGenerationLock(
+        string pathWithoutExtension)
+    {
+        while (true)
+        {
+            SocialPreviewGenerationLockEntry entry = SocialPreviewGenerationLocks.GetOrAdd(
+                pathWithoutExtension,
+                static _ => new SocialPreviewGenerationLockEntry());
+            lock (entry.SyncRoot)
+            {
+                bool isRegistered = SocialPreviewGenerationLocks.TryGetValue(
+                    pathWithoutExtension,
+                    out SocialPreviewGenerationLockEntry? registeredEntry) &&
+                    ReferenceEquals(entry, registeredEntry);
+                if (isRegistered)
+                {
+                    entry.ReferenceCount++;
+                    return entry;
+                }
+            }
+        }
+    }
+
+    private static void ReturnSocialPreviewGenerationLock(
+        string pathWithoutExtension,
+        SocialPreviewGenerationLockEntry entry)
+    {
+        bool shouldDispose = false;
+        lock (entry.SyncRoot)
+        {
+            entry.ReferenceCount--;
+            if (entry.ReferenceCount == 0 &&
+                SocialPreviewGenerationLocks.TryGetValue(
+                    pathWithoutExtension,
+                    out SocialPreviewGenerationLockEntry? registeredEntry) &&
+                ReferenceEquals(entry, registeredEntry))
+            {
+                bool removed = SocialPreviewGenerationLocks.TryRemove(
+                    pathWithoutExtension,
+                    out SocialPreviewGenerationLockEntry? removedEntry);
+                shouldDispose = removed && ReferenceEquals(entry, removedEntry);
+            }
+        }
+
+        if (shouldDispose)
+        {
+            entry.Semaphore.Dispose();
         }
     }
 
@@ -653,6 +714,19 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             return true;
         }
 
+        return await this.ExecuteWithSocialPreviewGenerationLockAsync(
+            pathWithoutExtension,
+            operationCancellationToken => this.DeleteCoreAsync(
+                pathWithoutExtension,
+                operationCancellationToken),
+            cancellationToken);
+    }
+
+    private async Task<bool> DeleteCoreAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+
         bool succeeded = true;
         foreach (string objectName in GetObjectNamesForDeletion(pathWithoutExtension))
         {
@@ -679,6 +753,15 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
 
         return succeeded;
+    }
+
+    private sealed class SocialPreviewGenerationLockEntry
+    {
+        public object SyncRoot { get; } = new object();
+
+        public SemaphoreSlim Semaphore { get; } = new SemaphoreSlim(1, 1);
+
+        public int ReferenceCount { get; set; }
     }
 
     private async Task DeleteResponsiveVariantsAsync(
