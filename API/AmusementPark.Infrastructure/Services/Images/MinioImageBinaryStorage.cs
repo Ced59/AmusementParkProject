@@ -1,10 +1,11 @@
 using System.Collections.Concurrent;
-using System.Security.Cryptography;
+using System.Text;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Infrastructure.Configuration.Images;
 using Microsoft.Extensions.Logging;
 using Minio;
+using Minio.DataModel;
 using Minio.DataModel.Args;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
@@ -750,8 +751,8 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 return null;
             }
 
-            (Stream Stream, string ContentType, byte[] Fingerprint)? source =
-                await this.TryGetSourceObjectWithFingerprintAsync(
+            (Stream Stream, string ContentType, string Revision)? source =
+                await this.TryGetSourceObjectWithRevisionAsync(
                 pathWithoutExtension,
                 cancellationToken);
             if (source is null)
@@ -790,9 +791,9 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 cancellationToken);
             previewStored = true;
 
-            bool sourceIsCurrent = await this.IsSourceFingerprintCurrentAsync(
+            bool sourceIsCurrent = await this.IsSourceRevisionCurrentAsync(
                 pathWithoutExtension,
-                source.Value.Fingerprint,
+                source.Value.Revision,
                 cancellationToken);
             if (!sourceIsCurrent)
             {
@@ -801,8 +802,9 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 return null;
             }
 
+            byte[] sourceRevision = Encoding.UTF8.GetBytes(source.Value.Revision);
             await using (MemoryStream validationStream = new MemoryStream(
-                source.Value.Fingerprint,
+                sourceRevision,
                 writable: false))
             {
                 await this.minioClient.PutObjectAsync(
@@ -859,28 +861,24 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
 
         await using Stream validationStream = validation.Value.Stream;
-        if (validationStream.Length != SHA256.HashSizeInBytes)
+        const int MaximumRevisionLength = 1024;
+        if (validationStream.Length <= 0
+            || validationStream.Length > MaximumRevisionLength)
         {
             return null;
         }
 
-        byte[] expectedFingerprint = new byte[SHA256.HashSizeInBytes];
+        byte[] expectedRevisionBytes = new byte[validationStream.Length];
         await validationStream.ReadExactlyAsync(
-            expectedFingerprint,
+            expectedRevisionBytes,
             cancellationToken);
-        (Stream Stream, string ContentType, byte[] Fingerprint)? source =
-            await this.TryGetSourceObjectWithFingerprintAsync(
-                pathWithoutExtension,
-                cancellationToken);
-        if (source is null)
-        {
-            return null;
-        }
-
-        await using Stream sourceStream = source.Value.Stream;
-        if (!IsSocialPreviewFingerprintCurrent(
-                expectedFingerprint,
-                source.Value.Fingerprint))
+        string expectedRevision = Encoding.UTF8.GetString(expectedRevisionBytes);
+        string? currentRevision = await this.TryGetSourceRevisionAsync(
+            pathWithoutExtension,
+            cancellationToken);
+        if (!IsSocialPreviewRevisionCurrent(
+                expectedRevision,
+                currentRevision))
         {
             return null;
         }
@@ -891,57 +889,60 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             cancellationToken);
     }
 
-    internal static bool IsSocialPreviewFingerprintCurrent(
-        byte[] expectedFingerprint,
-        byte[] currentFingerprint)
+    internal static bool IsSocialPreviewRevisionCurrent(
+        string expectedRevision,
+        string? currentRevision)
     {
-        ArgumentNullException.ThrowIfNull(expectedFingerprint);
-        ArgumentNullException.ThrowIfNull(currentFingerprint);
-        return expectedFingerprint.Length == SHA256.HashSizeInBytes
-            && currentFingerprint.Length == SHA256.HashSizeInBytes
-            && CryptographicOperations.FixedTimeEquals(
-                expectedFingerprint,
-                currentFingerprint);
+        ArgumentException.ThrowIfNullOrWhiteSpace(expectedRevision);
+        return string.Equals(
+            expectedRevision,
+            currentRevision,
+            StringComparison.Ordinal);
     }
 
-    private async Task<(Stream Stream, string ContentType, byte[] Fingerprint)?>
-        TryGetSourceObjectWithFingerprintAsync(
-            string pathWithoutExtension,
-            CancellationToken cancellationToken)
+    internal static string BuildSourceRevision(
+        string objectName,
+        string etag,
+        long size)
     {
-        (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(
-            pathWithoutExtension,
-            cancellationToken);
-        if (source is null)
-        {
-            return null;
-        }
-
-        byte[] fingerprint = await SHA256.HashDataAsync(
-            source.Value.Stream,
-            cancellationToken);
-        source.Value.Stream.Position = 0;
-        return (source.Value.Stream, source.Value.ContentType, fingerprint);
+        ArgumentException.ThrowIfNullOrWhiteSpace(objectName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(etag);
+        return FormattableString.Invariant($"{objectName}\n{etag}\n{size}");
     }
 
-    private async Task<bool> IsSourceFingerprintCurrentAsync(
+    private async Task<(Stream Stream, string ContentType, string Revision)?>
+        TryGetSourceObjectWithRevisionAsync(
         string pathWithoutExtension,
-        byte[] expectedFingerprint,
         CancellationToken cancellationToken)
     {
-        (Stream Stream, string ContentType, byte[] Fingerprint)? current =
-            await this.TryGetSourceObjectWithFingerprintAsync(
-                pathWithoutExtension,
-                cancellationToken);
-        if (current is null)
+        foreach ((string extension, string contentType) format in GetSourceFormats())
         {
-            return false;
+            string objectName = $"{pathWithoutExtension}.{format.extension}";
+            (Stream Stream, string ContentType, string Revision)? source =
+                await this.TryGetObjectWithRevisionAsync(
+                    objectName,
+                    format.contentType,
+                    cancellationToken);
+            if (source is not null)
+            {
+                return source;
+            }
         }
 
-        await using Stream currentStream = current.Value.Stream;
-        return CryptographicOperations.FixedTimeEquals(
-            expectedFingerprint,
-            current.Value.Fingerprint);
+        return null;
+    }
+
+    private async Task<bool> IsSourceRevisionCurrentAsync(
+        string pathWithoutExtension,
+        string expectedRevision,
+        CancellationToken cancellationToken)
+    {
+        string? currentRevision = await this.TryGetSourceRevisionAsync(
+            pathWithoutExtension,
+            cancellationToken);
+        return IsSocialPreviewRevisionCurrent(
+            expectedRevision,
+            currentRevision);
     }
 
     private async Task<bool> TryRemoveSocialPreviewObjectAsync(string objectName)
@@ -979,6 +980,47 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
 
         return false;
+    }
+
+    private async Task<string?> TryGetSourceRevisionAsync(
+        string pathWithoutExtension,
+        CancellationToken cancellationToken)
+    {
+        foreach ((string extension, string _) in GetSourceFormats())
+        {
+            string objectName = $"{pathWithoutExtension}.{extension}";
+            string? revision = await this.TryGetObjectRevisionAsync(
+                objectName,
+                cancellationToken);
+            if (revision is not null)
+            {
+                return revision;
+            }
+        }
+
+        return null;
+    }
+
+    private async Task<string?> TryGetObjectRevisionAsync(
+        string objectName,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            ObjectStat objectStat = await this.minioClient.StatObjectAsync(
+                new StatObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName),
+                cancellationToken);
+            return BuildSourceRevision(
+                objectName,
+                objectStat.ETag,
+                objectStat.Size);
+        }
+        catch (Minio.Exceptions.ObjectNotFoundException)
+        {
+            return null;
+        }
     }
 
     private async Task<(Stream Stream, string ContentType)?> TryGetSourceObjectAsync(string pathWithoutExtension, CancellationToken cancellationToken)
@@ -1170,7 +1212,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
 
     internal static string GetSocialPreviewValidationObjectName(string pathWithoutExtension, int width)
     {
-        return $"{GetSocialPreviewVariantObjectName(pathWithoutExtension, width)}.sha256";
+        return $"{GetSocialPreviewVariantObjectName(pathWithoutExtension, width)}.revision";
     }
 
     private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetFormats()
@@ -1239,6 +1281,43 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
 
             stream.Position = 0;
             return (stream, contentType);
+        }
+        catch (Minio.Exceptions.ObjectNotFoundException)
+        {
+            return null;
+        }
+    }
+
+    private async Task<(Stream Stream, string ContentType, string Revision)?>
+        TryGetObjectWithRevisionAsync(
+            string objectName,
+            string contentType,
+            CancellationToken cancellationToken)
+    {
+        try
+        {
+            ObjectStat objectStat = await this.minioClient.StatObjectAsync(
+                new StatObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName),
+                cancellationToken);
+
+            MemoryStream stream = new MemoryStream();
+            await this.minioClient.GetObjectAsync(
+                new GetObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName)
+                    .WithCallbackStream(callbackStream => callbackStream.CopyTo(stream)),
+                cancellationToken);
+
+            stream.Position = 0;
+            return (
+                stream,
+                contentType,
+                BuildSourceRevision(
+                    objectName,
+                    objectStat.ETag,
+                    objectStat.Size));
         }
         catch (Minio.Exceptions.ObjectNotFoundException)
         {
