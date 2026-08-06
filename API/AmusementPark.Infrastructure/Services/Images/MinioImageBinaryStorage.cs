@@ -27,7 +27,10 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private const int MaxFileSizeKb = 300;
     private const int MaxLongEdge = 1920;
     private const int ResponsiveVariantVersion = 2;
+    private const int SocialPreviewVariantVersion = 1;
+    private const int SocialPreviewGenerationPollAttempts = 20;
     private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
+    private static readonly TimeSpan SocialPreviewGenerationRetryDelay = TimeSpan.FromMilliseconds(250);
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
@@ -254,6 +257,75 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         return await GetOriginalBestAsync(pathWithoutExtension, supportsWebp, cancellationToken);
     }
 
+    public async Task<(Stream Stream, string ContentType)?> GetSocialPreviewAsync(
+        string pathWithoutExtension,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(pathWithoutExtension))
+        {
+            return null;
+        }
+
+        int? normalizedWidth = NormalizeResponsiveWidth(width);
+        if (normalizedWidth is not int socialPreviewWidth)
+        {
+            return null;
+        }
+
+        string objectName = GetSocialPreviewVariantObjectName(pathWithoutExtension, socialPreviewWidth);
+        (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(
+            objectName,
+            "image/jpeg",
+            cancellationToken);
+        if (cached is not null)
+        {
+            return cached;
+        }
+
+        (Stream Stream, string ContentType)? generated = await this.TryCreateSocialPreviewAsync(
+            pathWithoutExtension,
+            objectName,
+            socialPreviewWidth,
+            cancellationToken);
+        if (generated is not null)
+        {
+            return generated;
+        }
+
+        for (int attempt = 0; attempt < SocialPreviewGenerationPollAttempts; attempt++)
+        {
+            await Task.Delay(SocialPreviewGenerationRetryDelay, cancellationToken);
+            cached = await TryGetObjectAsync(objectName, "image/jpeg", cancellationToken);
+            if (cached is not null)
+            {
+                return cached;
+            }
+        }
+
+        return await this.TryCreateSocialPreviewAsync(
+            pathWithoutExtension,
+            objectName,
+            socialPreviewWidth,
+            cancellationToken);
+    }
+
+    private Task<(Stream Stream, string ContentType)?> TryCreateSocialPreviewAsync(
+        string pathWithoutExtension,
+        string objectName,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        return this.ExecuteWithVariantGenerationLeaseAsync(
+            pathWithoutExtension,
+            token => this.TryCreateSocialPreviewUnderLeaseAsync(
+                pathWithoutExtension,
+                objectName,
+                width,
+                token),
+            cancellationToken);
+    }
+
     private async Task<(Stream Stream, string ContentType)?> GetOriginalBestAsync(string pathWithoutExtension, bool supportsWebp, CancellationToken cancellationToken)
     {
         if (supportsWebp)
@@ -450,6 +522,79 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
     }
 
+    private async Task<(Stream Stream, string ContentType)?> TryCreateSocialPreviewUnderLeaseAsync(
+        string pathWithoutExtension,
+        string objectName,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(
+                objectName,
+                "image/jpeg",
+                cancellationToken);
+            if (cached is not null)
+            {
+                return cached;
+            }
+
+            (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(
+                pathWithoutExtension,
+                cancellationToken);
+            if (source is null)
+            {
+                return null;
+            }
+
+            await using Stream sourceStream = source.Value.Stream;
+            using Image image = await Image.LoadAsync(sourceStream, cancellationToken);
+            if (image.Width > width)
+            {
+                double scale = (double)width / image.Width;
+                int targetHeight = Math.Max(1, (int)Math.Round(image.Height * scale));
+                image.Mutate(context =>
+                {
+                    context.Resize(new ResizeOptions
+                    {
+                        Size = new Size(width, targetHeight),
+                        Mode = ResizeMode.Max,
+                    });
+                });
+            }
+
+            byte[] content = await EncodeResponsiveVariantAsync(
+                image,
+                quality => new JpegEncoder { Quality = quality },
+                cancellationToken);
+            MemoryStream outputStream = new MemoryStream(content);
+            await this.minioClient.PutObjectAsync(
+                new PutObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName)
+                    .WithStreamData(outputStream)
+                    .WithObjectSize(outputStream.Length)
+                    .WithContentType("image/jpeg"),
+                cancellationToken);
+
+            outputStream.Position = 0;
+            return (outputStream, "image/jpeg");
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogWarning(
+                exception,
+                "Unable to create social preview image variant {ObjectName} in MinIO bucket {Bucket}.",
+                objectName,
+                this.settings.Bucket);
+            return null;
+        }
+    }
+
     private async Task<(Stream Stream, string ContentType)?> TryGetSourceObjectAsync(string pathWithoutExtension, CancellationToken cancellationToken)
     {
         foreach ((string extension, string contentType) format in GetSourceFormats())
@@ -546,6 +691,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
+            yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
     }
 
@@ -557,12 +703,18 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
+            yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
     }
 
     internal static string GetResponsiveVariantObjectName(string pathWithoutExtension, int width, string extension)
     {
         return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.{extension}";
+    }
+
+    internal static string GetSocialPreviewVariantObjectName(string pathWithoutExtension, int width)
+    {
+        return $"{pathWithoutExtension}.social.w{width}.v{SocialPreviewVariantVersion}.jpg";
     }
 
     private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetFormats()

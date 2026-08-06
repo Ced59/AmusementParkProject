@@ -515,9 +515,8 @@ public sealed class ImagesController : ControllerBase
                 "image.not-found");
         }
 
-        (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetBestAsync(
+        (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetSocialPreviewAsync(
             result.Value.Path,
-            "image/jpeg",
             SocialPreviewImageWidth,
             cancellationToken);
         if (binary is null)

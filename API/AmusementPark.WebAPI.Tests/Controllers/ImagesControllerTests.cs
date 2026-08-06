@@ -103,9 +103,8 @@ public sealed class ImagesControllerTests
             .ReturnsAsync(ApplicationResult<Image>.Success(image));
         Mock<IImageBinaryStorage> storage = new Mock<IImageBinaryStorage>(MockBehavior.Strict);
         storage
-            .Setup(candidate => candidate.GetBestAsync(
+            .Setup(candidate => candidate.GetSocialPreviewAsync(
                 "images/image-1",
-                "image/jpeg",
                 ImagesController.SocialPreviewImageWidth,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((new MemoryStream(imageContent), "image/jpeg"));
