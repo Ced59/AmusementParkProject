@@ -146,7 +146,10 @@ jobs:
         shell: bash
         run: |
           chmod +x deploy/scripts/*.sh deploy/scripts/tests/*.sh
+          bash -n deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh
           deploy/scripts/tests/social-publishing-env.test.sh
+          deploy/scripts/tests/ssr-warmup-env.test.sh
+          python3 -m unittest deploy/scripts/tests/test_ssr_warmup_support.py
 
   backend:
     name: Backend build and tests
@@ -525,6 +528,8 @@ jobs:
       SSR_WARMUP_CONCURRENCY: ${{ vars.SSR_WARMUP_CONCURRENCY || '1' }}
       SSR_WARMUP_TIMEOUT_SECONDS: ${{ vars.SSR_WARMUP_TIMEOUT_SECONDS || '90' }}
       SSR_WARMUP_SLEEP_SECONDS: ${{ vars.SSR_WARMUP_SLEEP_SECONDS || '0' }}
+      SSR_WARMUP_MAX_LOAD_PER_CPU: ${{ vars.SSR_WARMUP_MAX_LOAD_PER_CPU || '0.75' }}
+      SSR_WARMUP_PRESSURE_PAUSE_SECONDS: ${{ vars.SSR_WARMUP_PRESSURE_PAUSE_SECONDS || '5' }}
       SSR_WARMUP_MAX_URLS: ${{ vars.SSR_WARMUP_MAX_URLS || '500' }}
       SSR_WARMUP_REFRESH: ${{ vars.SSR_WARMUP_REFRESH || 'false' }}
       SSR_WARMUP_LANGS: ${{ vars.SSR_WARMUP_LANGS }}

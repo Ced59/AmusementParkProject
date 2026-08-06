@@ -15,6 +15,8 @@ languages="${SSR_WARMUP_LANGS:-}"
 concurrency="${SSR_WARMUP_CONCURRENCY:-1}"
 timeout_seconds="${SSR_WARMUP_TIMEOUT_SECONDS:-90}"
 sleep_seconds="${SSR_WARMUP_SLEEP_SECONDS:-0}"
+max_load_per_cpu="${SSR_WARMUP_MAX_LOAD_PER_CPU:-0.75}"
+pressure_pause_seconds="${SSR_WARMUP_PRESSURE_PAUSE_SECONDS:-5}"
 max_urls="${SSR_WARMUP_MAX_URLS:-0}"
 refresh="${SSR_WARMUP_REFRESH:-false}"
 output_dir="${SSR_WARMUP_OUTPUT_DIR:-$(pwd)/warmup}"
@@ -118,6 +120,8 @@ export SSR_WARMUP_LANGS_VALUE="${languages}"
 export SSR_WARMUP_CONCURRENCY_VALUE="${concurrency}"
 export SSR_WARMUP_TIMEOUT_SECONDS_VALUE="${timeout_seconds}"
 export SSR_WARMUP_SLEEP_SECONDS_VALUE="${sleep_seconds}"
+export SSR_WARMUP_MAX_LOAD_PER_CPU_VALUE="${max_load_per_cpu}"
+export SSR_WARMUP_PRESSURE_PAUSE_SECONDS_VALUE="${pressure_pause_seconds}"
 export SSR_WARMUP_MAX_URLS_VALUE="${max_urls}"
 export SSR_WARMUP_REFRESH_VALUE="${refresh}"
 export SSR_WARMUP_LOG_FILE_VALUE="${log_file}"
@@ -143,11 +147,17 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 from xml.etree import ElementTree as ET
+
+from scripts.ssr_warmup_support import (
+    build_html_request_headers,
+    drain_response,
+    map_bounded,
+    wait_for_available_capacity,
+)
 
 base_url = os.environ['SSR_WARMUP_PUBLIC_BASE_URL'].rstrip('/')
 profile = os.environ['SSR_WARMUP_PROFILE_VALUE'].strip().lower() or 'critical'
@@ -156,6 +166,8 @@ languages = {item.strip().lower() for item in re.split(r'[;,]', languages_raw) i
 concurrency = max(1, int(os.environ['SSR_WARMUP_CONCURRENCY_VALUE']))
 timeout_seconds = max(1, int(os.environ['SSR_WARMUP_TIMEOUT_SECONDS_VALUE']))
 sleep_seconds = max(0.0, float(os.environ['SSR_WARMUP_SLEEP_SECONDS_VALUE']))
+max_load_per_cpu = max(0.0, float(os.environ['SSR_WARMUP_MAX_LOAD_PER_CPU_VALUE']))
+pressure_pause_seconds = max(0.1, float(os.environ['SSR_WARMUP_PRESSURE_PAUSE_SECONDS_VALUE']))
 max_urls = max(0, int(os.environ['SSR_WARMUP_MAX_URLS_VALUE']))
 refresh = os.environ['SSR_WARMUP_REFRESH_VALUE'].lower() in {'1', 'true', 'yes', 'y'}
 log_file = Path(os.environ['SSR_WARMUP_LOG_FILE_VALUE'])
@@ -193,7 +205,21 @@ def log(message: str) -> None:
         stream.write(line + '\n')
 
 
+def wait_before_request() -> None:
+    wait_for_available_capacity(
+        max_load_per_cpu,
+        pressure_pause_seconds,
+        logger=log,
+    )
+
+
+def rest_after_request() -> None:
+    if sleep_seconds > 0:
+        time.sleep(sleep_seconds)
+
+
 def read_xml(url: str) -> ET.Element:
+    wait_before_request()
     request = urllib.request.Request(
         url,
         headers={
@@ -202,8 +228,11 @@ def read_xml(url: str) -> ET.Element:
         },
         method='GET',
     )
-    with urllib.request.urlopen(request, timeout=timeout_seconds, context=ssl.create_default_context()) as response:
-        return ET.fromstring(response.read())
+    try:
+        with urllib.request.urlopen(request, timeout=timeout_seconds, context=ssl.create_default_context()) as response:
+            return ET.fromstring(response.read())
+    finally:
+        rest_after_request()
 
 
 def locs(root: ET.Element) -> list[str]:
@@ -306,6 +335,7 @@ def warmup_seo_document(path: str) -> tuple[str, int, float, str]:
         'Accept': 'application/xml,text/xml,text/plain,*/*',
         'User-Agent': 'AmusementPark-SSR-Warmup/1.0',
     }
+    wait_before_request()
     started = time.monotonic()
     request = urllib.request.Request(url, headers=headers, method='GET')
     try:
@@ -317,9 +347,15 @@ def warmup_seo_document(path: str) -> tuple[str, int, float, str]:
             cache_status = response.headers.get('X-AmusementPark-SEO-Cache') or '-'
             return url, status, time.monotonic() - started, cache_status
     except urllib.error.HTTPError as exc:
+        try:
+            drain_response(exc)
+        finally:
+            exc.close()
         return url, int(exc.code), time.monotonic() - started, 'HTTP-ERROR'
     except Exception as exc:  # noqa: BLE001 - deployment script needs resilient logging.
         return url, 0, time.monotonic() - started, f"ERROR:{exc}"
+    finally:
+        rest_after_request()
 
 
 def collect_seo_document_paths(root: ET.Element) -> list[str]:
@@ -398,26 +434,26 @@ def collect_urls(root: ET.Element) -> list[str]:
 
 
 def warmup_url(url: str) -> tuple[str, int, float, str]:
-    headers = {
-        'Accept': 'text/html,*/*',
-        'User-Agent': 'AmusementPark-SSR-Warmup/1.0',
-        'X-AmusementPark-SSR-Warmup': '1',
-    }
-    if refresh:
-        headers['X-AmusementPark-SSR-Warmup-Refresh'] = '1'
-
+    headers = build_html_request_headers(refresh)
+    wait_before_request()
     started = time.monotonic()
     request = urllib.request.Request(url, headers=headers, method='GET')
     try:
         with urllib.request.urlopen(request, timeout=timeout_seconds, context=ssl.create_default_context()) as response:
-            response.read(1024)
+            drain_response(response)
             status = int(response.status)
             cache_status = response.headers.get('X-AmusementPark-SSR-Cache') or response.headers.get('X-AmusementPark-SSR-Mode') or '-'
             return url, status, time.monotonic() - started, cache_status
     except urllib.error.HTTPError as exc:
+        try:
+            drain_response(exc)
+        finally:
+            exc.close()
         return url, int(exc.code), time.monotonic() - started, 'HTTP-ERROR'
     except Exception as exc:  # noqa: BLE001
         return url, 0, time.monotonic() - started, f"ERROR:{exc}"
+    finally:
+        rest_after_request()
 
 
 def warmup(urls: list[str]) -> None:
@@ -434,29 +470,22 @@ def warmup(urls: list[str]) -> None:
     fallback = 0
     started = time.monotonic()
 
-    with ThreadPoolExecutor(max_workers=concurrency) as executor:
-        futures = []
-        for url in urls:
-            futures.append(executor.submit(warmup_url, url))
-            if sleep_seconds > 0:
-                time.sleep(sleep_seconds)
+    for index, result in enumerate(map_bounded(urls, warmup_url, concurrency), start=1):
+        url, status, elapsed, cache_status = result
+        if 200 <= status < 300:
+            success += 1
+        else:
+            failed += 1
 
-        for index, future in enumerate(as_completed(futures), start=1):
-            url, status, elapsed, cache_status = future.result()
-            if 200 <= status < 300:
-                success += 1
-            else:
-                failed += 1
+        if cache_status == 'HIT' or cache_status == 'WARMUP-HIT':
+            hit += 1
+        elif cache_status == 'WARMED':
+            warmed += 1
+        elif cache_status.startswith('CSR'):
+            fallback += 1
 
-            if cache_status == 'HIT' or cache_status == 'WARMUP-HIT':
-                hit += 1
-            elif cache_status == 'WARMED':
-                warmed += 1
-            elif cache_status.startswith('CSR'):
-                fallback += 1
-
-            if index <= 20 or index % progress_every == 0 or status < 200 or status >= 300:
-                log(f"{index}/{total} status={status} time={elapsed:.3f}s cache={cache_status} url={url}")
+        if index <= 20 or index % progress_every == 0 or status < 200 or status >= 300:
+            log(f"{index}/{total} status={status} time={elapsed:.3f}s cache={cache_status} url={url}")
 
     elapsed_total = time.monotonic() - started
     log(f"Warmup finished: total={total}, success={success}, failed={failed}, hit={hit}, warmed={warmed}, fallback={fallback}, duration={elapsed_total:.1f}s")
@@ -507,6 +536,7 @@ def validate_bot_url(url: str) -> dict[str, str]:
         'Accept': 'text/html,*/*',
         'User-Agent': bot_user_agent,
     }
+    wait_before_request()
     started = time.monotonic()
     request = urllib.request.Request(url, headers=headers, method='GET')
     body = b''
@@ -525,6 +555,8 @@ def validate_bot_url(url: str) -> dict[str, str]:
         body = exc.read()
     except Exception as exc:  # noqa: BLE001
         error = str(exc)
+    finally:
+        rest_after_request()
 
     html = body.decode('utf-8', errors='replace')
     ssr_mode = response_headers.get('X-AmusementPark-SSR-Mode', '') if response_headers else ''
@@ -628,21 +660,18 @@ def validate_bot_urls(urls: list[str]) -> None:
     log(f"Bot validation started: total={len(urls)}, report={report_file}")
     rows: list[dict[str, str]] = []
     failed_rows: list[dict[str, str]] = []
-    with ThreadPoolExecutor(max_workers=concurrency) as executor:
-        futures = [executor.submit(validate_bot_url, url) for url in urls]
-        for index, future in enumerate(as_completed(futures), start=1):
-            row = future.result()
-            rows.append(row)
-            if row['ok'] != 'true':
-                failed_rows.append(row)
+    for index, row in enumerate(map_bounded(urls, validate_bot_url, concurrency), start=1):
+        rows.append(row)
+        if row['ok'] != 'true':
+            failed_rows.append(row)
 
-            if index <= 20 or index % progress_every == 0 or row['ok'] != 'true':
-                log(
-                    "BOT "
-                    f"{index}/{len(urls)} status={row['status']} seo={row['seo_ready'] or '-'} "
-                    f"robot={row['robot_html'] or '-'} mode={row['ssr_mode'] or '-'} "
-                    f"ok={row['ok']} url={row['url']}"
-                )
+        if index <= 20 or index % progress_every == 0 or row['ok'] != 'true':
+            log(
+                "BOT "
+                f"{index}/{len(urls)} status={row['status']} seo={row['seo_ready'] or '-'} "
+                f"robot={row['robot_html'] or '-'} mode={row['ssr_mode'] or '-'} "
+                f"ok={row['ok']} url={row['url']}"
+            )
 
     rows.sort(key=lambda item: item['url'])
     with report_file.open('w', encoding='utf-8', newline='') as stream:
@@ -656,7 +685,11 @@ def validate_bot_urls(urls: list[str]) -> None:
         raise SystemExit(f"Bot validation failed for {len(failed_rows)} URL(s). Examples: {examples}")
 
 
-log(f"SSR warmup configuration: base={base_url}, profile={profile}, concurrency={concurrency}, max_urls={max_urls}, refresh={refresh}")
+log(
+    f"SSR warmup configuration: base={base_url}, profile={profile}, concurrency={concurrency}, "
+    f"max_urls={max_urls}, refresh={refresh}, sleep={sleep_seconds}s, "
+    f"max_load_per_cpu={max_load_per_cpu}, pressure_pause={pressure_pause_seconds}s"
+)
 
 sitemap_index_root = read_xml(base_url + '/sitemap.xml')
 

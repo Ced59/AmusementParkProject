@@ -173,6 +173,8 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line SSR_WARMUP_CONCURRENCY "$(value_or_default SSR_WARMUP_CONCURRENCY '1')"
   write_line SSR_WARMUP_TIMEOUT_SECONDS "$(value_or_default SSR_WARMUP_TIMEOUT_SECONDS '90')"
   write_line SSR_WARMUP_SLEEP_SECONDS "$(value_or_default SSR_WARMUP_SLEEP_SECONDS '0')"
+  write_line SSR_WARMUP_MAX_LOAD_PER_CPU "$(value_or_default SSR_WARMUP_MAX_LOAD_PER_CPU '0.75')"
+  write_line SSR_WARMUP_PRESSURE_PAUSE_SECONDS "$(value_or_default SSR_WARMUP_PRESSURE_PAUSE_SECONDS '5')"
   write_line SSR_WARMUP_MAX_URLS "$(value_or_default SSR_WARMUP_MAX_URLS '500')"
   write_line SSR_WARMUP_REFRESH "$(value_or_default SSR_WARMUP_REFRESH 'false')"
   write_line SSR_WARMUP_LANGS "$(value_or_default SSR_WARMUP_LANGS '')"
