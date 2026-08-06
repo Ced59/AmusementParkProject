@@ -162,7 +162,11 @@ public sealed class ParkGraphUpsertsController : ControllerBase
         this.Response.Headers.Pragma = "no-cache";
         this.Response.Headers.Expires = "0";
         this.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
-        return this.PhysicalFile(download.FilePath, download.ContentType, download.FileName);
+        return this.PhysicalFile(
+            download.FilePath,
+            download.ContentType,
+            download.FileName,
+            enableRangeProcessing: true);
     }
 
     [HttpGet("standalone-attractions/{standaloneAttractionId}/export")]
