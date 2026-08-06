@@ -104,9 +104,9 @@ public static class RateLimitingServiceCollectionExtensions
                 limiterOptions.QueueLimit = 8;
             });
             options.AddPolicy(RateLimitPolicyNames.ParkDataEditorOperationStatus, context =>
-                RateLimitPartition.GetTokenBucketLimiter(
+                RateLimitPartition.Get(
                     partitionKey: GetParkDataEditorTokenPartitionKey(context),
-                    factory: _ => CreateParkDataEditorOperationStatusLimiterOptions()));
+                    factory: _ => new MinimumIntervalRateLimiter(TimeSpan.FromSeconds(5))));
         });
 
         return services;
@@ -159,19 +159,6 @@ public static class RateLimitingServiceCollectionExtensions
             Window = TimeSpan.FromSeconds(windowSeconds),
             QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
             QueueLimit = 0,
-            AutoReplenishment = true,
-        };
-    }
-
-    internal static TokenBucketRateLimiterOptions CreateParkDataEditorOperationStatusLimiterOptions()
-    {
-        return new TokenBucketRateLimiterOptions
-        {
-            TokenLimit = 1,
-            QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
-            QueueLimit = 0,
-            ReplenishmentPeriod = TimeSpan.FromSeconds(5),
-            TokensPerPeriod = 1,
             AutoReplenishment = true,
         };
     }
