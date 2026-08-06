@@ -15,6 +15,42 @@ namespace AmusementPark.Infrastructure.Tests.Services.Images;
 public sealed class MinioImageBinaryStorageTests
 {
     [Fact]
+    public async Task ExecuteWithSocialPreviewDistributedLeaseAsync_WhenLeaseIsBusy_ShouldRetryAndRelease()
+    {
+        Mock<IImageVariantGenerationLease> lease =
+            new Mock<IImageVariantGenerationLease>(MockBehavior.Strict);
+        lease.SetupSequence(value => value.TryAcquireAsync(
+                "images/photo-social",
+                It.IsAny<string>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<DateTime>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false)
+            .ReturnsAsync(true);
+        lease.Setup(value => value.ReleaseAsync(
+                "images/photo-social",
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        MinioImageBinaryStorage storage = CreateStorage(lease);
+
+        bool result = await storage.ExecuteWithSocialPreviewDistributedLeaseAsync(
+            "images/photo-social",
+            _ => Task.FromResult(true),
+            CancellationToken.None);
+
+        Assert.True(result);
+        lease.Verify(value => value.TryAcquireAsync(
+            "images/photo-social",
+            It.IsAny<string>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<DateTime>(),
+            It.IsAny<CancellationToken>()),
+            Times.Exactly(2));
+        lease.VerifyAll();
+    }
+
+    [Fact]
     public async Task ExecuteWithSocialPreviewGenerationLockAsync_ShouldCoordinateScopedInstancesForSameImage()
     {
         MinioImageBinaryStorage firstStorage = CreateStorage(

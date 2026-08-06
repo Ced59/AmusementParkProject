@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Security.Cryptography;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Infrastructure.Configuration.Images;
@@ -30,6 +31,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     private const int ResponsiveVariantVersion = 2;
     private const int SocialPreviewVariantVersion = 1;
     private static readonly TimeSpan VariantGenerationLeaseDuration = TimeSpan.FromMinutes(10);
+    private static readonly TimeSpan SocialPreviewLeaseRetryDelay = TimeSpan.FromMilliseconds(100);
     private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
     private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
     private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
@@ -190,7 +192,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             return false;
         }
 
-        return await this.ExecuteWithSocialPreviewGenerationLockAsync(
+        return await this.ExecuteWithSocialPreviewCoordinationAsync(
             pathWithoutExtension,
             async operationCancellationToken =>
             {
@@ -353,6 +355,69 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         return SocialPreviewGenerationLocks.ContainsKey(pathWithoutExtension);
     }
 
+    private Task<T> ExecuteWithSocialPreviewCoordinationAsync<T>(
+        string pathWithoutExtension,
+        Func<CancellationToken, Task<T>> operation,
+        CancellationToken cancellationToken)
+    {
+        return this.ExecuteWithSocialPreviewGenerationLockAsync(
+            pathWithoutExtension,
+            operationCancellationToken => this.ExecuteWithSocialPreviewDistributedLeaseAsync(
+                pathWithoutExtension,
+                operation,
+                operationCancellationToken),
+            cancellationToken);
+    }
+
+    internal async Task<T> ExecuteWithSocialPreviewDistributedLeaseAsync<T>(
+        string pathWithoutExtension,
+        Func<CancellationToken, Task<T>> operation,
+        CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(pathWithoutExtension);
+        ArgumentNullException.ThrowIfNull(operation);
+
+        string leaseToken = Guid.NewGuid().ToString("N");
+        while (true)
+        {
+            DateTime acquiredAtUtc = DateTime.UtcNow;
+            bool leaseAcquired = await this.variantGenerationLease.TryAcquireAsync(
+                pathWithoutExtension,
+                leaseToken,
+                acquiredAtUtc,
+                acquiredAtUtc.Add(VariantGenerationLeaseDuration),
+                cancellationToken);
+            if (leaseAcquired)
+            {
+                break;
+            }
+
+            await Task.Delay(SocialPreviewLeaseRetryDelay, cancellationToken);
+        }
+
+        try
+        {
+            return await operation(cancellationToken);
+        }
+        finally
+        {
+            try
+            {
+                await this.variantGenerationLease.ReleaseAsync(
+                    pathWithoutExtension,
+                    leaseToken,
+                    CancellationToken.None);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogWarning(
+                    exception,
+                    "Unable to release social preview coordination lease for {PathWithoutExtension}.",
+                    pathWithoutExtension);
+            }
+        }
+    }
+
     private static SocialPreviewGenerationLockEntry RentSocialPreviewGenerationLock(
         string pathWithoutExtension)
     {
@@ -409,10 +474,13 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         int width,
         CancellationToken cancellationToken)
     {
-        return this.TryCreateSocialPreviewCoreAsync(
+        return this.ExecuteWithSocialPreviewDistributedLeaseAsync(
             pathWithoutExtension,
-            objectName,
-            width,
+            operationCancellationToken => this.TryCreateSocialPreviewCoreAsync(
+                pathWithoutExtension,
+                objectName,
+                width,
+                operationCancellationToken),
             cancellationToken);
     }
 
@@ -618,6 +686,8 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         int width,
         CancellationToken cancellationToken)
     {
+        MemoryStream? outputStream = null;
+        bool previewStored = false;
         try
         {
             (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(
@@ -629,7 +699,8 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 return cached;
             }
 
-            (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(
+            (Stream Stream, string ContentType, byte[] Fingerprint)? source =
+                await this.TryGetSourceObjectWithFingerprintAsync(
                 pathWithoutExtension,
                 cancellationToken);
             if (source is null)
@@ -657,7 +728,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 image,
                 quality => new JpegEncoder { Quality = quality },
                 cancellationToken);
-            MemoryStream outputStream = new MemoryStream(content);
+            outputStream = new MemoryStream(content);
             await this.minioClient.PutObjectAsync(
                 new PutObjectArgs()
                     .WithBucket(this.settings.Bucket)
@@ -666,6 +737,18 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                     .WithObjectSize(outputStream.Length)
                     .WithContentType("image/jpeg"),
                 cancellationToken);
+            previewStored = true;
+
+            bool sourceIsCurrent = await this.IsSourceFingerprintCurrentAsync(
+                pathWithoutExtension,
+                source.Value.Fingerprint,
+                cancellationToken);
+            if (!sourceIsCurrent)
+            {
+                await this.TryRemoveSocialPreviewObjectAsync(objectName);
+                outputStream.Dispose();
+                return null;
+            }
 
             outputStream.Position = 0;
             return (outputStream, "image/jpeg");
@@ -676,6 +759,12 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         }
         catch (Exception exception)
         {
+            outputStream?.Dispose();
+            if (previewStored)
+            {
+                await this.TryRemoveSocialPreviewObjectAsync(objectName);
+            }
+
             this.logger.LogWarning(
                 exception,
                 "Unable to create social preview image variant {ObjectName} in MinIO bucket {Bucket}.",
@@ -683,6 +772,83 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 this.settings.Bucket);
             return null;
         }
+    }
+
+    private async Task<(Stream Stream, string ContentType, byte[] Fingerprint)?>
+        TryGetSourceObjectWithFingerprintAsync(
+            string pathWithoutExtension,
+            CancellationToken cancellationToken)
+    {
+        (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(
+            pathWithoutExtension,
+            cancellationToken);
+        if (source is null)
+        {
+            return null;
+        }
+
+        byte[] fingerprint = await SHA256.HashDataAsync(
+            source.Value.Stream,
+            cancellationToken);
+        source.Value.Stream.Position = 0;
+        return (source.Value.Stream, source.Value.ContentType, fingerprint);
+    }
+
+    private async Task<bool> IsSourceFingerprintCurrentAsync(
+        string pathWithoutExtension,
+        byte[] expectedFingerprint,
+        CancellationToken cancellationToken)
+    {
+        (Stream Stream, string ContentType, byte[] Fingerprint)? current =
+            await this.TryGetSourceObjectWithFingerprintAsync(
+                pathWithoutExtension,
+                cancellationToken);
+        if (current is null)
+        {
+            return false;
+        }
+
+        await using Stream currentStream = current.Value.Stream;
+        return CryptographicOperations.FixedTimeEquals(
+            expectedFingerprint,
+            current.Value.Fingerprint);
+    }
+
+    private async Task<bool> TryRemoveSocialPreviewObjectAsync(string objectName)
+    {
+        const int MaxAttempts = 3;
+        for (int attempt = 1; attempt <= MaxAttempts; attempt++)
+        {
+            try
+            {
+                await this.minioClient.RemoveObjectAsync(
+                    new RemoveObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(objectName),
+                    CancellationToken.None);
+                return true;
+            }
+            catch (Minio.Exceptions.ObjectNotFoundException)
+            {
+                return true;
+            }
+            catch (Exception exception)
+            {
+                if (attempt == MaxAttempts)
+                {
+                    this.logger.LogWarning(
+                        exception,
+                        "Unable to remove obsolete social preview image object {ObjectName} from MinIO bucket {Bucket}.",
+                        objectName,
+                        this.settings.Bucket);
+                    return false;
+                }
+
+                await Task.Delay(SocialPreviewLeaseRetryDelay, CancellationToken.None);
+            }
+        }
+
+        return false;
     }
 
     private async Task<(Stream Stream, string ContentType)?> TryGetSourceObjectAsync(string pathWithoutExtension, CancellationToken cancellationToken)
