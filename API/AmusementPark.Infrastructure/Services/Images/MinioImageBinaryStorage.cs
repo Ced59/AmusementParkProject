@@ -306,9 +306,10 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             pathWithoutExtension,
             async operationCancellationToken =>
             {
-                (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(
+                (Stream Stream, string ContentType)? cached = await this.TryGetValidatedSocialPreviewAsync(
+                    pathWithoutExtension,
                     objectName,
-                    "image/jpeg",
+                    socialPreviewWidth,
                     operationCancellationToken);
                 if (cached is not null)
                 {
@@ -325,9 +326,10 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                     return generated;
                 }
 
-                return await TryGetObjectAsync(
+                return await this.TryGetValidatedSocialPreviewAsync(
+                    pathWithoutExtension,
                     objectName,
-                    "image/jpeg",
+                    socialPreviewWidth,
                     operationCancellationToken);
             },
             cancellationToken);
@@ -725,15 +727,27 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     {
         MemoryStream? outputStream = null;
         bool previewStored = false;
+        string validationObjectName = GetSocialPreviewValidationObjectName(
+            pathWithoutExtension,
+            width);
         try
         {
-            (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(
-                objectName,
-                "image/jpeg",
-                cancellationToken);
+            (Stream Stream, string ContentType)? cached =
+                await this.TryGetValidatedSocialPreviewAsync(
+                    pathWithoutExtension,
+                    objectName,
+                    width,
+                    cancellationToken);
             if (cached is not null)
             {
                 return cached;
+            }
+
+            bool validationRemoved = await this.TryRemoveSocialPreviewObjectAsync(
+                validationObjectName);
+            if (!validationRemoved)
+            {
+                return null;
             }
 
             (Stream Stream, string ContentType, byte[] Fingerprint)? source =
@@ -782,9 +796,23 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 cancellationToken);
             if (!sourceIsCurrent)
             {
-                await this.TryRemoveSocialPreviewObjectAsync(objectName);
+                _ = await this.TryRemoveSocialPreviewObjectAsync(objectName);
                 outputStream.Dispose();
                 return null;
+            }
+
+            await using (MemoryStream validationStream = new MemoryStream(
+                source.Value.Fingerprint,
+                writable: false))
+            {
+                await this.minioClient.PutObjectAsync(
+                    new PutObjectArgs()
+                        .WithBucket(this.settings.Bucket)
+                        .WithObject(validationObjectName)
+                        .WithStreamData(validationStream)
+                        .WithObjectSize(validationStream.Length)
+                        .WithContentType("application/octet-stream"),
+                    cancellationToken);
             }
 
             outputStream.Position = 0;
@@ -797,9 +825,10 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
         catch (Exception exception)
         {
             outputStream?.Dispose();
+            _ = await this.TryRemoveSocialPreviewObjectAsync(validationObjectName);
             if (previewStored)
             {
-                await this.TryRemoveSocialPreviewObjectAsync(objectName);
+                _ = await this.TryRemoveSocialPreviewObjectAsync(objectName);
             }
 
             this.logger.LogWarning(
@@ -809,6 +838,70 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
                 this.settings.Bucket);
             return null;
         }
+    }
+
+    private async Task<(Stream Stream, string ContentType)?> TryGetValidatedSocialPreviewAsync(
+        string pathWithoutExtension,
+        string objectName,
+        int width,
+        CancellationToken cancellationToken)
+    {
+        string validationObjectName = GetSocialPreviewValidationObjectName(
+            pathWithoutExtension,
+            width);
+        (Stream Stream, string ContentType)? validation = await TryGetObjectAsync(
+            validationObjectName,
+            "application/octet-stream",
+            cancellationToken);
+        if (validation is null)
+        {
+            return null;
+        }
+
+        await using Stream validationStream = validation.Value.Stream;
+        if (validationStream.Length != SHA256.HashSizeInBytes)
+        {
+            return null;
+        }
+
+        byte[] expectedFingerprint = new byte[SHA256.HashSizeInBytes];
+        await validationStream.ReadExactlyAsync(
+            expectedFingerprint,
+            cancellationToken);
+        (Stream Stream, string ContentType, byte[] Fingerprint)? source =
+            await this.TryGetSourceObjectWithFingerprintAsync(
+                pathWithoutExtension,
+                cancellationToken);
+        if (source is null)
+        {
+            return null;
+        }
+
+        await using Stream sourceStream = source.Value.Stream;
+        if (!IsSocialPreviewFingerprintCurrent(
+                expectedFingerprint,
+                source.Value.Fingerprint))
+        {
+            return null;
+        }
+
+        return await TryGetObjectAsync(
+            objectName,
+            "image/jpeg",
+            cancellationToken);
+    }
+
+    internal static bool IsSocialPreviewFingerprintCurrent(
+        byte[] expectedFingerprint,
+        byte[] currentFingerprint)
+    {
+        ArgumentNullException.ThrowIfNull(expectedFingerprint);
+        ArgumentNullException.ThrowIfNull(currentFingerprint);
+        return expectedFingerprint.Length == SHA256.HashSizeInBytes
+            && currentFingerprint.Length == SHA256.HashSizeInBytes
+            && CryptographicOperations.FixedTimeEquals(
+                expectedFingerprint,
+                currentFingerprint);
     }
 
     private async Task<(Stream Stream, string ContentType, byte[] Fingerprint)?>
@@ -1040,6 +1133,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
             yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
+            yield return GetSocialPreviewValidationObjectName(pathWithoutExtension, width);
             yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
     }
@@ -1048,6 +1142,7 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     {
         foreach (int width in ResponsiveWidths)
         {
+            yield return GetSocialPreviewValidationObjectName(pathWithoutExtension, width);
             yield return GetSocialPreviewVariantObjectName(pathWithoutExtension, width);
         }
     }
@@ -1071,6 +1166,11 @@ public sealed partial class MinioImageBinaryStorage : IImageBinaryStorage
     internal static string GetSocialPreviewVariantObjectName(string pathWithoutExtension, int width)
     {
         return $"{pathWithoutExtension}.social.w{width}.v{SocialPreviewVariantVersion}.jpg";
+    }
+
+    internal static string GetSocialPreviewValidationObjectName(string pathWithoutExtension, int width)
+    {
+        return $"{GetSocialPreviewVariantObjectName(pathWithoutExtension, width)}.sha256";
     }
 
     private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetFormats()

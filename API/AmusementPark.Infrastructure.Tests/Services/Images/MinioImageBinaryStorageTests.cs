@@ -235,7 +235,7 @@ public sealed class MinioImageBinaryStorageTests
         allowPreviewCompletion.SetResult(true);
         await previewOperation.WaitAsync(TimeSpan.FromSeconds(2));
         Assert.True(await deletionOperation.WaitAsync(TimeSpan.FromSeconds(2)));
-        Assert.Equal(44, removalAttempt);
+        Assert.Equal(52, removalAttempt);
         Assert.False(MinioImageBinaryStorage.HasSocialPreviewGenerationLock(ImagePath));
         minioClient.VerifyAll();
     }
@@ -267,7 +267,7 @@ public sealed class MinioImageBinaryStorageTests
             CancellationToken.None);
 
         Assert.False(succeeded);
-        Assert.Equal(8, removalAttempt);
+        Assert.Equal(16, removalAttempt);
         minioClient.VerifyAll();
     }
 
@@ -722,6 +722,7 @@ public sealed class MinioImageBinaryStorageTests
         Assert.Contains("images/photo-1.w1920.webp", objectNames);
         Assert.Contains("images/photo-1.w1920.jpg", objectNames);
         Assert.Contains("images/photo-1.social.w960.v1.jpg", objectNames);
+        Assert.Contains("images/photo-1.social.w960.v1.jpg.sha256", objectNames);
         Assert.DoesNotContain("images/photo-1.w321.webp", objectNames);
         Assert.Equal(objectNames.Length, objectNames.Distinct(StringComparer.Ordinal).Count());
     }
@@ -740,5 +741,28 @@ public sealed class MinioImageBinaryStorageTests
         string objectName = MinioImageBinaryStorage.GetSocialPreviewVariantObjectName("images/photo-1", 960);
 
         Assert.Equal("images/photo-1.social.w960.v1.jpg", objectName);
+    }
+
+    [Fact]
+    public void GetSocialPreviewValidationObjectName_ShouldBindMarkerToPreviewVersion()
+    {
+        string objectName = MinioImageBinaryStorage.GetSocialPreviewValidationObjectName(
+            "images/photo-1",
+            960);
+
+        Assert.Equal("images/photo-1.social.w960.v1.jpg.sha256", objectName);
+    }
+
+    [Fact]
+    public void IsSocialPreviewFingerprintCurrent_ShouldRejectMissingOrDifferentFingerprint()
+    {
+        byte[] expected = Enumerable.Repeat((byte)0x2A, 32).ToArray();
+        byte[] matching = expected.ToArray();
+        byte[] different = expected.ToArray();
+        different[31] = 0x2B;
+
+        Assert.True(MinioImageBinaryStorage.IsSocialPreviewFingerprintCurrent(expected, matching));
+        Assert.False(MinioImageBinaryStorage.IsSocialPreviewFingerprintCurrent(expected, different));
+        Assert.False(MinioImageBinaryStorage.IsSocialPreviewFingerprintCurrent(expected, new byte[31]));
     }
 }
