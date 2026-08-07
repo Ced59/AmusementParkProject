@@ -165,8 +165,7 @@ public sealed class SocialPublicationComposerService : ISocialPublicationCompose
     {
         UriBuilder builder = new UriBuilder(url);
         string encodedPair = $"{Uri.EscapeDataString(name)}={Uri.EscapeDataString(value)}";
-        string existingQuery = builder.Query.TrimStart('?');
-        builder.Query = existingQuery.Length == 0 ? encodedPair : $"{existingQuery}&{encodedPair}";
+        builder.Query = encodedPair;
         return builder.Uri.AbsoluteUri;
     }
 

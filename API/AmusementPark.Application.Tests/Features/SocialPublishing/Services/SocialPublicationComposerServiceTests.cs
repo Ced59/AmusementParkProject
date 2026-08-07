@@ -129,7 +129,7 @@ public sealed class SocialPublicationComposerServiceTests
             new SocialLinkPublicationRequest(
                 SocialNetwork.Facebook,
                 null,
-                "https://amusement-parks.fun/fr/park/park-1/park-test",
+                "https://amusement-parks.fun/fr/park/park-1/park-test?utm_source=admin",
                 "image-current"),
             "codex-user",
             CancellationToken.None);

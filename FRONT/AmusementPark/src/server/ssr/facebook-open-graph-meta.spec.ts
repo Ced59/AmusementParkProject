@@ -1,5 +1,6 @@
 import {
   hasFacebookImageOverrideQuery,
+  hasOnlyFacebookImageOverrideQuery,
   injectFacebookAppIdMeta,
   injectFacebookImageOverrideMeta,
   normalizeFacebookAppId,
@@ -76,6 +77,12 @@ describe('Facebook Open Graph metadata', () => {
 
     expect(hasFacebookImageOverrideQuery(
       '/fr/park/park-1/test?utm_source=facebook&facebook-image=image-1',
+    )).toBe(true);
+    expect(hasOnlyFacebookImageOverrideQuery(
+      '/fr/park/park-1/test?utm_source=facebook&facebook-image=image-1',
+    )).toBe(false);
+    expect(hasOnlyFacebookImageOverrideQuery(
+      '/fr/park/park-1/test?facebook-image=image-1',
     )).toBe(true);
     expect(injectFacebookImageOverrideMeta(
       html,
