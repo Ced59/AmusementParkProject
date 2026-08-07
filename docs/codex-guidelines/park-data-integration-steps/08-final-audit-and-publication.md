@@ -30,6 +30,7 @@ Cette relecture est effectuée et assumée par Codex dans chacune des huit langu
 Produire les numérateurs, dénominateurs et identifiants manquants pour :
 
 - attractions totales, puis attractions actuelles, annoncées/en construction et définitivement fermées ;
+- attractions avec un `attractionDetails.status` lifecycle canonique, et liste des identifiants portant encore une valeur non canonique ;
 - attractions avec 8 descriptions naturelles ;
 - attractions avec au moins une image fidèle ;
 - logo officiel présent, courant et sans watermark ajouté ;
@@ -51,8 +52,10 @@ Vérifier :
 - aucune suppression implicite ;
 - aucune donnée existante fiable écrasée ;
 - `park.status` est l’une des six valeurs canoniques et correspond aux sources ;
+- chaque `items[].attractionDetails.status` renseigné appartient au vocabulaire lifecycle contrôlé `Operating`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively`, `Removed`, `Planned`, `Unknown` ;
+- aucune transformation historique, aucun alias localisé ni aucun résumé du « dernier fait connu » n’est utilisé comme statut d’attraction ;
 - un projet créé reste masqué par défaut tant que la revue et la décision de publication ne sont pas terminées ;
-- `openingHours` est absent lorsque le statut n’est pas `Operating` ;
+- `openingHours` est absent lorsque le statut du parc n’est pas `Operating` ;
 - les dates ou périodes partielles fiables ont été conservées sans jour ou mois inventé ;
 - toutes les clés sont résolues ;
 - toutes les dates complètes sont sourcées ;
@@ -65,6 +68,37 @@ Vérifier :
 - les données existantes fiables sont préservées en mode `merge`.
 - toutes les valeurs enum utilisées existent dans `park-graph-upsert-enums.md` ;
 - aucun alias legacy ou nombre enum n’est utilisé.
+
+### Audit bloquant — statut lifecycle des attractions
+
+Le backend conserve `AttractionDetails.Status` sous forme de chaîne et peut préserver une valeur inconnue pour des raisons de compatibilité. **Le fait qu’un JSON soit accepté techniquement ne valide donc pas la sémantique du statut.** L’étape 8 doit contrôler le contenu du champ indépendamment du Preview.
+
+1. Lister toutes les valeurs distinctes de `items[].attractionDetails.status` avec leur nombre d’occurrences et les IDs concernés.
+2. Considérer comme valides uniquement `Operating`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively`, `Removed`, `Planned`, `Unknown`.
+3. Traiter toute autre valeur comme un bloqueur de publication tant que sa signification n’a pas été reclassée.
+4. Les alias de langue ou de source se convertissent vers le lifecycle canonique : par exemple `Annoncé` / `Announced` → `Planned`, `Ouvert` → `Operating`, sans conserver l’alias comme valeur stockée.
+5. Les transformations historiques ne se convertissent pas en nouveau statut inventé : elles doivent être préservées dans la timeline.
+
+Cas legacy à détecter explicitement, sans s’y limiter : `Retracké`, `Retracked`, `Délocalisé`, `Relocalisé`, `Relocated`, `Rénové`, `Refurbished`, `Rehab`, `Reconstruit`, `Rebuilt`, `Renommé`, `Renamed`, `Rethemé`, `Rethemed`, `Démonté`, `Dismantled`, `Stocké`, `Stored`, `Vendu`, `Sold`, `Transféré`, `Transferred`, `Réinstallé`, `Reinstalled`, `Remplacé`, `Replaced`, `Démoli`, `Demolished`.
+
+Pour chaque cas trouvé :
+
+- déterminer le vrai état courant depuis les sources et l’état physique/exploité de l’attraction ;
+- produire une **reprise ciblée de l’étape 3** pour corriger `attractionDetails.status` ;
+- vérifier si le fait historique existe déjà avec le bon propriétaire, le bon type, une période fiable et des sources ;
+- sinon produire une **reprise ciblée de l’étape 7** qui crée le ou les événements adéquats ;
+- ne jamais corriger le statut en faisant disparaître l’information historique.
+
+Règles de cohérence minimales :
+
+- retrack/refurbishment terminé + attraction rouverte → `Operating` avec événement `Retrack`, `Refurbishment` ou `Rehab` ;
+- transformation en cours avec attraction fermée au public → généralement `TemporarilyClosed` avec événement correspondant ;
+- renommage ou retheming d’une attraction toujours ouverte → `Operating` et événement `Rename`, `ThemeChange` ou `StoryChange` ;
+- attraction transférée hors du parc, démontée, stockée ou démolie → `Removed` dans le parc d’origine et événement(s) de relocalisation/démontage/stockage/transfert/démolition ;
+- attraction définitivement arrêtée mais encore présente → `ClosedDefinitively` et `DefinitiveClosure` ;
+- ancienne attraction remplacée → `ClosedDefinitively` ou `Removed` selon sa présence réelle et `Replacement`; le remplaçant est une autre entité avec son propre lifecycle.
+
+Tant qu’une valeur non canonique reste dans l’export sans exception métier explicitement validée par une évolution du code et des guidelines, la décision finale est **non prêt pour publication**.
 
 ## Audit contenu public
 
@@ -207,6 +241,7 @@ Vérifier :
 - timeline du parc cohérente ;
 - timeline des parkItems majeurs cohérente ;
 - relocalisations rattachées au bon propriétaire ;
+- les transformations qui existaient à tort dans `attractionDetails.status` ont été conservées sous forme de vrais événements et ne se sont pas perdues pendant la correction ;
 - articles seulement quand il existe un vrai angle ;
 - résumés d’événements écrits pour les visiteurs, pas comme des notes d’audit documentaire ;
 - sources présentes sur les événements importants ;

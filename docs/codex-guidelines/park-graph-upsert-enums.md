@@ -1,6 +1,6 @@
 # AmusementPark — Enums JSON Park Graph Upsert
 
-Version : **2026-08-04**
+Version : **2026-08-07-r1**
 
 Ce fichier liste les valeurs enum à utiliser dans les JSON `AmusementParkParkGraphUpsert` et `standaloneAttractionGraph`.
 
@@ -46,14 +46,58 @@ Si un ancien enregistrement non opérationnel possède encore des horaires stock
 
 ## Champs parkItems
 
-| Champ JSON | Enum | Valeurs |
+| Champ JSON | Type métier | Valeurs |
 | --- | --- | --- |
 | `items[].category` | `ParkItemCategory` | `Attraction`, `Restaurant`, `Hotel`, `Animal`, `Show`, `Shop`, `Service`, `Transport`, `Other` |
 | `items[].type` | `ParkItemType` | `Attraction`, `RollerCoaster`, `WaterRide`, `FlatRide`, `DarkRide`, `FamilyRide`, `ThrillRide`, `TransportRide`, `WalkThrough`, `Playground`, `InteractiveExperience`, `ObservationRide`, `AnimalExhibit`, `Restaurant`, `Snack`, `Hotel`, `Show`, `Shop`, `Game`, `MeetAndGreet`, `Service`, `Toilets`, `FirstAid`, `Information`, `Locker`, `Parking`, `Transport`, `Station`, `Other`, `Cinema`, `DropTower` |
 | `items[].adminReviewStatus` | `AdminReviewStatus` | `ToReview`, `Validated`, `ToProcessLater`, `NotRelevant` |
+| `items[].attractionDetails.status` | chaîne lifecycle contrôlée | `Operating`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively`, `Removed`, `Planned`, `Unknown` |
 | `items[].attractionDetails.waterExposureLevel` | `AttractionWaterExposureLevel` | `None`, `Splash`, `Moderate`, `Soaking`, `ExtremeSoaking` |
 | `items[].attractionDetails.accessConditions[].type` | `AttractionAccessConditionType` | `MinHeight`, `MinHeightAccompanied`, `MaxHeight`, `MinAge`, `MinAgeAccompanied`, `PregnancyRestriction`, `HeartRestriction`, `BackNeckRestriction`, `WheelchairTransferRequired`, `AccessPassRequired`, `Custom` |
 | `items[].attractionDetails.accessConditions[].unit` | `AttractionAccessConditionUnit` | `Centimeter`, `Inch`, `Year` |
+
+### `attractionDetails.status` — état courant, jamais événement historique
+
+`items[].attractionDetails.status` est techniquement stocké comme une chaîne pour assurer la compatibilité avec des données legacy. Ce choix d’implémentation ne rend pas le champ sémantiquement libre. Dans un nouveau JSON ou une correction de complétude, utiliser uniquement le vocabulaire lifecycle contrôlé ci-dessus.
+
+| Valeur | Sens actuel |
+| --- | --- |
+| `Operating` | Attraction actuellement exploitable dans son incarnation et son emplacement courants. |
+| `UnderConstruction` | Attraction confirmée dont la construction ou l’installation est en cours et qui n’a pas encore ouvert. |
+| `TemporarilyClosed` | Attraction existante momentanément indisponible, avec une réouverture attendue ou encore plausible. |
+| `ClosedDefinitively` | Attraction dont l’exploitation dans son incarnation actuelle est terminée définitivement, même si l’installation ou certains éléments existent encore sur place. |
+| `Removed` | Attraction qui n’est plus installée ou présente comme attraction exploitable dans ce parc ; ce statut convient notamment après démontage, transfert hors du parc ou démolition. |
+| `Planned` | Attraction officiellement annoncée mais pas encore en chantier confirmé. Les libellés `Annoncé`, `Announced` ou équivalents sont des alias de sens et ne doivent pas être stockés à la place de `Planned`. |
+| `Unknown` | État courant impossible à établir de manière fiable après recherche ; ne pas l’utiliser comme échappatoire à une recherche incomplète. |
+
+Les mots qui décrivent **ce qui est arrivé** à une attraction ne sont jamais des statuts. Ils appartiennent à `history.events[].eventType`. Sont notamment interdits dans `attractionDetails.status` : `Retracké`, `Retracked`, `Délocalisé`, `Relocated`, `Relocalisé`, `Renommé`, `Rethemé`, `Rebuilt`, `Reconstruit`, `Rénové`, `Refurbished`, `Remplacé`, `Replaced`, `Démoli`, `Demolished`, `Stocké`, `Stored`, `Vendu`, `Sold`, `Transféré`, `Transferred`, `Réinstallé`, `Reinstalled` et toute formulation équivalente.
+
+Le principe est :
+
+- le **statut** répond à « dans quel état cette attraction se trouve-t-elle maintenant dans ce parc ? » ;
+- la **timeline** répond à « quels faits durables lui sont arrivés, quand et dans quel contexte ? ».
+
+Exemples obligatoires :
+
+| Situation | `attractionDetails.status` | Événement(s) history |
+| --- | --- | --- |
+| Retrack terminé et attraction rouverte | `Operating` | `Retrack`, puis `Reopening` si la réouverture mérite son propre jalon |
+| Retrack ou rénovation en cours avec fermeture au public | `TemporarilyClosed` | `Retrack`, `Refurbishment` ou `Rehab` selon le fait documenté |
+| Attraction renommée mais toujours ouverte | `Operating` | `Rename` |
+| Attraction rethemée mais toujours ouverte | `Operating` | `ThemeChange` |
+| Attraction déplacée à un autre emplacement du même parc et rouverte | `Operating` | `RelocationDeparture`, `RelocationArrival` et éventuellement `Reinstallation` |
+| Attraction partie vers un autre parc | `Removed` dans le parc d’origine | `RelocationDeparture`, `Transfer` ou `Sale`; le parc d’arrivée porte sa propre vie |
+| Attraction démontée et stockée hors exploitation | `Removed` | `Dismantling`, puis `Storage` |
+| Attraction démolie | `Removed` | `Demolition` |
+| Attraction définitivement arrêtée mais encore présente | `ClosedDefinitively` | `DefinitiveClosure` |
+| Ancienne attraction remplacée par une autre | `ClosedDefinitively` ou `Removed` selon sa présence réelle | `Replacement`; la nouvelle attraction possède son propre statut |
+
+Si un export legacy contient une transformation historique dans `attractionDetails.status`, ne jamais simplement supprimer cette information. La reprise doit :
+
+1. déterminer le vrai cycle de vie courant et corriger `attractionDetails.status` ;
+2. rechercher la date ou période et les sources du fait historique ;
+3. créer ou corriger le ou les `history.events` correspondants ;
+4. conserver une précision `Year` ou `Month` si la date exacte n’est pas fiable, sans inventer de jour.
 
 ## Conditions d’accès
 
@@ -87,6 +131,8 @@ Les attractions fixes isolées utilisent les mêmes valeurs techniques qu’un p
 | `standaloneAttraction.attractionDetails.waterExposureLevel` | `AttractionWaterExposureLevel` | `None`, `Splash`, `Moderate`, `Soaking`, `ExtremeSoaking` |
 | `standaloneAttraction.attractionDetails.accessConditions[].type` | `AttractionAccessConditionType` | `MinHeight`, `MinHeightAccompanied`, `MaxHeight`, `MinAge`, `MinAgeAccompanied`, `PregnancyRestriction`, `HeartRestriction`, `BackNeckRestriction`, `WheelchairTransferRequired`, `AccessPassRequired`, `Custom` |
 | `standaloneAttraction.attractionDetails.accessConditions[].unit` | `AttractionAccessConditionUnit` | `Centimeter`, `Inch`, `Year` |
+
+Pour `standaloneAttraction.attractionDetails.status`, appliquer le même contrat lifecycle contrôlé que pour `items[].attractionDetails.status`. Les transformations de l’attraction autonome appartiennent à sa timeline, pas à son statut.
 
 Exemples :
 
@@ -298,6 +344,8 @@ Valeurs `ParkItemHistoryEventType` pour `entityType: "ParkItem"` :
 Avant livraison d’un JSON :
 
 - vérifier que toutes les valeurs enum utilisées sont présentes dans ce fichier ;
+- vérifier séparément que chaque `attractionDetails.status` appartient au vocabulaire lifecycle contrôlé ;
 - remplacer tout alias legacy par la valeur canonique actuelle ;
+- corriger toute transformation historique rangée dans `attractionDetails.status` et la préserver dans `history.events` ;
 - supprimer les valeurs devinées ou non documentées ;
 - si une valeur manque, ne pas inventer une nouvelle enum : utiliser `Other` seulement quand le champ le prévoit et documenter la limite dans `metadata.notes`.

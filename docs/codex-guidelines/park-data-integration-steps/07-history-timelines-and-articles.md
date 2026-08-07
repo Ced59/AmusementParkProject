@@ -42,6 +42,42 @@ Croiser l’historique officiel avec la presse, les archives et les sources spé
 
 Le cycle de vie du parc doit être explicable par la timeline quand les sources existent : `Announcement` pour `Planned`, `ConstructionStart` ou jalons pour `UnderConstruction`, `TemporaryClosure` pour `TemporarilyClosed`, `DefinitiveClosure` pour `ClosedDefinitively`, et un événement documentant l’annulation ou l’abandon pour `Cancelled` avec le type historique disponible le plus fidèle. Le statut du parc reste porté par `park.status`; un événement historique ne le remplace pas.
 
+## Statut courant du parkItem vs événements historiques
+
+Le même principe s’applique aux attractions, avec une séparation stricte entre l’état courant et les faits de timeline :
+
+- `items[].attractionDetails.status` répond uniquement à la question « dans quel état cette attraction se trouve-t-elle maintenant dans ce parc ? » ;
+- `history.events[]` répond à « quels faits durables lui sont arrivés, quand et dans quel contexte ? ».
+
+Le statut courant doit rester dans le vocabulaire lifecycle contrôlé : `Operating`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively`, `Removed`, `Planned`, `Unknown`.
+
+Une transformation n’est jamais un statut. `Retracké`, `Délocalisé`, `Relocalisé`, `Rénové`, `Reconstruit`, `Renommé`, `Rethemé`, `Démonté`, `Stocké`, `Vendu`, `Transféré`, `Réinstallé`, `Remplacé`, `Démoli` et leurs équivalents dans d’autres langues doivent être exprimés par les types d’événements de parkItem disponibles.
+
+Matrice de décision :
+
+| Fait documenté | Statut courant typique | Timeline |
+| --- | --- | --- |
+| Retrack terminé et attraction rouverte | `Operating` | `Retrack`, et `Reopening` si pertinent |
+| Retrack, rehab ou rénovation en cours avec fermeture | `TemporarilyClosed` | `Retrack`, `Rehab` ou `Refurbishment` |
+| Changement de nom | état courant inchangé | `Rename` |
+| Changement de thème ou d’histoire | état courant inchangé | `ThemeChange` ou `StoryChange` |
+| Modification importante du parcours ou système | état courant selon exploitation | `LayoutChange` ou `RideSystemChange` |
+| Déplacement dans le même parc puis réouverture | `Operating` | `RelocationDeparture`, `RelocationArrival`, éventuellement `Reinstallation` |
+| Départ vers un autre parc | `Removed` dans le parc d’origine | `RelocationDeparture`, `Transfer` ou `Sale` |
+| Démontage puis stockage | `Removed` | `Dismantling`, puis `Storage` |
+| Démolition | `Removed` | `Demolition` |
+| Fermeture définitive, installation encore présente | `ClosedDefinitively` | `DefinitiveClosure` |
+| Remplacement par une autre attraction | `ClosedDefinitively` ou `Removed` selon la présence réelle | `Replacement`; la nouvelle attraction possède son propre statut |
+
+Si l’étape 7 découvre dans l’état de référence une ancienne valeur historique stockée comme `attractionDetails.status`, ne pas la recopier et ne pas la supprimer silencieusement. La reprise doit :
+
+1. rechercher l’état lifecycle actuel ;
+2. corriger le statut dans un lot ciblé relevant de l’étape 3 ;
+3. créer ou vérifier ici le ou les événements qui préservent le fait historique ;
+4. conserver une précision de date prudente (`Year`, `Month`, `Day`) selon la source, sans inventer une date exacte.
+
+En mode Codex autonome, cette reprise ciblée n’exige pas de revenir manuellement au début du workflow : la consigner comme correction de l’étape 3, appliquer le lot borné correspondant, puis continuer l’étape 7. En mode ChatGPT guidé, livrer clairement la correction ciblée avant de considérer l’historique comme complet.
+
 ## Événements de parc
 
 Créer des événements pour les faits durables :
@@ -75,11 +111,15 @@ Créer des événements pour :
 - soft opening si documentée ;
 - fermeture temporaire ou définitive ;
 - rénovation majeure ;
-- changement de thème ou nom ;
-- changement de trains, système ou constructeur ;
+- retrack, rehab ou modification du parcours ;
+- changement de thème, d’histoire ou de nom ;
+- changement de trains, véhicules, système, modèle ou constructeur ;
 - relocalisation ;
+- démontage ;
 - stockage ;
+- vente ou transfert ;
 - réinstallation ;
+- remplacement ;
 - démolition ;
 - conservation patrimoniale.
 
@@ -444,6 +484,8 @@ Section principale : `history.events`.
 - Chaque événement a un propriétaire résolu.
 - Chaque `eventType` est compatible avec `park` ou `parkItem` selon les valeurs de `park-graph-upsert-enums.md`.
 - `entityType`, `datePrecision` et les types de blocs d’article utilisent les valeurs canoniques de `park-graph-upsert-enums.md`.
+- Le statut courant de chaque attraction reste une valeur lifecycle contrôlée ; aucune transformation historique n’est laissée dans `attractionDetails.status`.
+- Toute valeur legacy de statut qui décrivait un retrack, une relocalisation, une rénovation, un renommage, un changement de thème, un démontage, un stockage, un transfert, une réinstallation, un remplacement ou une démolition a été corrigée sans perdre le fait correspondant dans la timeline.
 - La date respecte la précision disponible : année, mois ou jour.
 - Toutes les URLs de `sources` ont été testées et répondent sans 404, 410, 5xx, soft-404 ou remplacement trompeur.
 - Les URLs archivées pointent vers une capture consultable de la page utile, pas seulement vers une page d’archive vide.
