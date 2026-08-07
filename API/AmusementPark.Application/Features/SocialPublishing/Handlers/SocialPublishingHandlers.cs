@@ -11,16 +11,38 @@ namespace AmusementPark.Application.Features.SocialPublishing.Handlers;
 public sealed class PublishSocialLinkCommandHandler
     : ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>>
 {
-    private readonly ISocialPublicationService service;
+    private readonly ISocialPublicationComposerService service;
 
-    public PublishSocialLinkCommandHandler(ISocialPublicationService service)
+    public PublishSocialLinkCommandHandler(ISocialPublicationComposerService service)
     {
         this.service = service;
     }
 
     public Task<ApplicationResult<SocialPublication>> HandleAsync(PublishSocialLinkCommand command, CancellationToken cancellationToken = default)
     {
-        return this.service.PublishManualAsync(command.Request, command.RequestedByUserId, cancellationToken);
+        return this.service.PublishAsync(command.Request, command.RequestedByUserId, cancellationToken);
+    }
+}
+
+public sealed class GetSocialPublicationDraftQueryHandler
+    : IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>>
+{
+    private readonly ISocialPublicationComposerService service;
+
+    public GetSocialPublicationDraftQueryHandler(ISocialPublicationComposerService service)
+    {
+        this.service = service;
+    }
+
+    public Task<ApplicationResult<SocialPublicationDraft>> HandleAsync(
+        GetSocialPublicationDraftQuery query,
+        CancellationToken cancellationToken = default)
+    {
+        return this.service.ResolveDraftAsync(
+            query.Url,
+            query.ImagePage,
+            query.ImagePageSize,
+            cancellationToken);
     }
 }
 

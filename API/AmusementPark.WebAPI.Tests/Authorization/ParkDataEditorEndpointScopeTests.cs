@@ -42,6 +42,17 @@ public sealed class ParkDataEditorEndpointScopeTests
         Assert.NotNull(typeof(ParkDataEditorOperationsController).GetCustomAttribute<AllowParkDataEditorTokenAttribute>());
     }
 
+    [Fact]
+    public void ParkDataEditorSocialPublicationsController_ShouldRequireAdminOrDedicatedTokenAndExplicitMarker()
+    {
+        AuthorizeAttribute authorize = typeof(ParkDataEditorSocialPublicationsController)
+            .GetCustomAttributes<AuthorizeAttribute>()
+            .Single(attribute => attribute.Policy == AuthorizationPolicyNames.AdminOrParkDataEditorToken);
+
+        Assert.Equal(AuthorizationPolicyNames.AdminOrParkDataEditorToken, authorize.Policy);
+        Assert.NotNull(typeof(ParkDataEditorSocialPublicationsController).GetCustomAttribute<AllowParkDataEditorTokenAttribute>());
+    }
+
     [Theory]
     [InlineData(ImageCategory.Park, ImageOwnerType.Park, true)]
     [InlineData(ImageCategory.Logo, ImageOwnerType.Park, true)]

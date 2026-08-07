@@ -15,7 +15,29 @@ internal static class SocialPublishingHttpMappers
                 _ => (SocialNetwork)(-1),
             },
             dto.Message,
-            dto.Url);
+            dto.Url,
+            dto.PreviewImageId);
+    }
+
+    public static SocialPublicationDraftDto ToHttp(this SocialPublicationDraft draft)
+    {
+        return new SocialPublicationDraftDto
+        {
+            Url = draft.Url,
+            DefaultMessage = draft.DefaultMessage,
+            TargetKind = draft.TargetKind.ToString(),
+            TargetName = draft.TargetName,
+            ImageOwnerType = draft.ImageOwnerType?.ToString(),
+            ImageOwnerId = draft.ImageOwnerId,
+            Images = draft.Images.ToPagedResponse(static image => new SocialPublicationImageOptionDto
+            {
+                Id = image.Id,
+                Label = image.Label,
+                IsCurrent = image.IsCurrent,
+                Width = image.Width,
+                Height = image.Height,
+            }),
+        };
     }
 
     public static SocialPublishingOverviewDto ToHttp(this SocialPublishingOverview overview)

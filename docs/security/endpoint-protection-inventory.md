@@ -91,6 +91,8 @@ Le dépassement renvoie `429 Too Many Requests` avec `traceId`.
 | Park items | `POST /park-items`, `PUT /park-items/{id}`, `DELETE /park-items/{id}`, `PATCH /park-items/bulk-administration` | `ADMIN` + utilisateur activé/non bloqué. |
 | Zones | `POST /park-zones`, `PUT /park-zones/{id}`, `DELETE /park-zones/{id}` | `ADMIN` + utilisateur activé/non bloqué. |
 | Images admin | `POST /images`, `POST /images/links`, `PUT /images/{imageId}/current`, `DELETE /images/{imageId}`, `GET /images`, `PATCH /images/bulk-metadata`, `GET /images/tags`, `POST /images/tags`, `PUT /images/tags/{id}`, `GET /images/{imageId}/metadata`, `PUT /images/{imageId}/metadata` | `ADMIN` + utilisateur activé/non bloqué. |
+| Publications sociales | `GET /admin/social-publications/draft`, `GET /admin/social-publications`, `POST /admin/social-publications`, gestion et synchronisation | `ADMIN` + utilisateur activé/non bloqué ; URL publique du site et image de la cible revalidées côté serveur. |
+| Publication Facebook Codex | `GET /park-data-editor/social-publications/facebook/draft`, `POST /park-data-editor/social-publications/facebook` | `ADMIN` ou jeton `PARK_DATA_EDITOR` explicitement autorisé + compte activé/non bloqué ; réseau forcé à Facebook, cible publique et image propriétaire revalidées. |
 | Exploitants | `POST /park-operators`, `PUT /park-operators/{id}`, `PATCH /park-operators/bulk-review-status` | `ADMIN` + utilisateur activé/non bloqué. |
 | Fondateurs | `POST /park-founders`, `PUT /park-founders/{id}` | `ADMIN` + utilisateur activé/non bloqué. |
 | Constructeurs | `POST /attraction-manufacturers`, `PUT /attraction-manufacturers/{id}`, `PATCH /attraction-manufacturers/bulk-review-status` | `ADMIN` + utilisateur activé/non bloqué. |

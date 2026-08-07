@@ -1,3 +1,5 @@
+using AmusementPark.Application.Common.Results;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.SocialPublishing;
 
 namespace AmusementPark.Application.Features.SocialPublishing.Contracts;
@@ -5,7 +7,32 @@ namespace AmusementPark.Application.Features.SocialPublishing.Contracts;
 public sealed record SocialLinkPublicationRequest(
     SocialNetwork Network,
     string? Message,
-    string? Url);
+    string? Url,
+    string? PreviewImageId = null);
+
+public enum SocialPublicationTargetKind
+{
+    Park = 0,
+    ParkItem = 1,
+    Video = 2,
+    Page = 3,
+}
+
+public sealed record SocialPublicationImageOption(
+    string Id,
+    string Label,
+    bool IsCurrent,
+    int Width,
+    int Height);
+
+public sealed record SocialPublicationDraft(
+    string Url,
+    string DefaultMessage,
+    SocialPublicationTargetKind TargetKind,
+    string TargetName,
+    ImageOwnerType? ImageOwnerType,
+    string? ImageOwnerId,
+    PagedResult<SocialPublicationImageOption> Images);
 
 public sealed record SocialPublisherDescriptor(
     SocialNetwork Network,

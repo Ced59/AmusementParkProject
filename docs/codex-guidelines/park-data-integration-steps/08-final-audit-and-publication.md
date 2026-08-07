@@ -256,6 +256,16 @@ Ne passer `isVisible` à `true` que pour les entités :
 
 Une défaillance d’une annonce sociale ou d’un service périphérique ne doit pas être confondue avec l’échec de publication des données. Rapporter les deux résultats séparément et ne jamais appeler une route d’administration non autorisée pour compenser.
 
+### Publication Facebook demandée explicitement
+
+La publication du parc ou de ses contenus ne vaut pas demande de publication Facebook. Si l’utilisateur la demande séparément, Codex utilise exclusivement le client `PARK_DATA_EDITOR` : `ResolveFacebookPublication` fournit d’abord le texte automatique et le carrousel paginé des images éligibles, puis `PublishFacebook` envoie le lien.
+
+- sans `Message`, conserver le texte bilingue automatique résolu pour la fiche parc, le parkItem, la vidéo ou la page ;
+- avec un texte fourni par l’utilisateur, transmettre ce texte personnalisé ;
+- sans `ImageId`, conserver l’image et les règles Open Graph actuelles ;
+- avec une image, employer uniquement un ID public renvoyé pour cette même cible : image `PARK` du parc ou image `PARK_ITEM` du parkItem ;
+- ne pas publier une seconde fois l’annonce automatique de première mise en visibilité d’un parc sans instruction explicite.
+
 ## Sortie attendue
 
 Produire :

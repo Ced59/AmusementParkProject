@@ -6,6 +6,7 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import {
   PublishSocialLinkRequest,
   SocialPublication,
+  SocialPublicationDraft,
   SocialPublishingOverview
 } from '@app/models/social-publishing/social-publishing.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -31,10 +32,23 @@ describe('AdminSocialPublishingFacade', () => {
     }],
     recentPublications: []
   };
+  const draft: SocialPublicationDraft = {
+    url: 'https://amusement-parks.fun/fr/park/park-1/park-test',
+    defaultMessage: 'Texte automatique',
+    targetKind: 'Park',
+    targetName: 'Parc Test',
+    imageOwnerType: 'Park',
+    imageOwnerId: 'park-1',
+    images: {
+      data: [{ id: 'image-1', label: 'Image principale', isCurrent: true, width: 1200, height: 630 }],
+      pagination: { currentPage: 1, itemsPerPage: 6, totalItems: 7, totalPages: 2 }
+    }
+  };
 
   beforeEach(() => {
     port = {
       getOverview: vi.fn(),
+      getDraft: vi.fn(),
       publish: vi.fn(),
       retry: vi.fn(),
       update: vi.fn(),
@@ -64,6 +78,20 @@ describe('AdminSocialPublishingFacade', () => {
     expect(facade.state().kind).toBe('ready');
     expect(facade.facebookPublisher()?.isConfigured).toBe(true);
     expect(facade.recentPublications()).toEqual([]);
+  });
+
+  it('resolves a draft, pages images and accepts only a visible image option', () => {
+    port.getDraft.mockReturnValue(of(draft));
+
+    facade.resolveDraft('  https://amusement-parks.fun/fr/park/park-1/park-test  ', 1);
+    facade.selectPreviewImage('unknown-image');
+
+    expect(port.getDraft).toHaveBeenCalledWith(draft.url, 1, 6);
+    expect(facade.draft()).toEqual(draft);
+    expect(facade.selectedImageId()).toBeNull();
+
+    facade.selectPreviewImage('image-1');
+    expect(facade.selectedImageId()).toBe('image-1');
   });
 
   it('publishes a link and prepends the result to history', () => {

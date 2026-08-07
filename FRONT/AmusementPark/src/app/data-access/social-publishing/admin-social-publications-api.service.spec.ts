@@ -49,7 +49,8 @@ describe('AdminSocialPublicationsApiService', () => {
     const body: PublishSocialLinkRequest = {
       network: 'Facebook',
       message: 'Message',
-      url: 'https://amusement-parks.fun/fr/home'
+      url: 'https://amusement-parks.fun/fr/home',
+      previewImageId: 'image-1'
     };
 
     service.publish(body).subscribe((publication) => {
@@ -62,6 +63,32 @@ describe('AdminSocialPublicationsApiService', () => {
     expect(request.request.method).toBe('POST');
     expect(request.request.body).toEqual(body);
     request.flush(createPublication('Published'));
+  });
+
+  it('resolves the default text and paged eligible images for a public URL', () => {
+    service.getDraft('https://amusement-parks.fun/fr/park/park-1/park-test', 2, 6).subscribe((draft) => {
+      expect(draft.targetName).toBe('Parc Test');
+    });
+
+    const request = httpTestingController.expectOne(
+      (candidate) => candidate.url === `${environment.apiBaseUrl}admin/social-publications/draft`
+    );
+    expect(request.request.method).toBe('GET');
+    expect(request.request.params.get('url')).toBe('https://amusement-parks.fun/fr/park/park-1/park-test');
+    expect(request.request.params.get('page')).toBe('2');
+    expect(request.request.params.get('size')).toBe('6');
+    request.flush({
+      url: 'https://amusement-parks.fun/fr/park/park-1/park-test',
+      defaultMessage: 'Texte automatique',
+      targetKind: 'Park',
+      targetName: 'Parc Test',
+      imageOwnerType: 'Park',
+      imageOwnerId: 'park-1',
+      images: {
+        data: [],
+        pagination: { currentPage: 2, itemsPerPage: 6, totalItems: 7, totalPages: 2 }
+      }
+    });
   });
 
   it('retries a failed publication with an encoded identifier', () => {

@@ -53,6 +53,14 @@ Le backend envoie le texte dans `message` et l’URL du site dans le champ Graph
 
 Les liens manuels sont volontairement limités à l’origine publique configurée par `Seo:PublicBaseUrl`. Cela empêche l’outil d’administration d’être détourné pour publier des liens externes.
 
+Dans l’administration, le collage d’une URL publique reconnue prépare automatiquement le texte bilingue déjà utilisé pour les annonces de parc et l’adapte au nom de la fiche parc, du parkItem, de la vidéo ou de la page. Le texte reste modifiable avant l’envoi.
+
+Pour les cibles liées à un parc ou un parkItem, les images publiques rattachées à cette entité sont présentées dans un carrousel paginé. Le choix par défaut conserve l’image Open Graph actuelle. Une sélection ajoute au lien publié le paramètre réservé `facebook-image` ; le rendu SSR remplace alors uniquement `og:image` et `twitter:image` pour cette exploration. Le canonical, la description, le titre et les règles SEO de la page restent inchangés.
+
+Le backend ne fait jamais confiance à l’identifiant envoyé par l’interface : il vérifie à nouveau que l’image est publiée, qu’elle appartient exactement au parc ou au parkItem résolu depuis l’URL et que sa catégorie correspond. Les pages sans propriétaire d’image restent sur leur aperçu automatique.
+
+Les mêmes garanties sont disponibles au workflow Codex explicite via `ResolveFacebookPublication` puis `PublishFacebook`. Cette surface accepte le texte automatique en omettant `Message`, un texte personnalisé, et seulement une image issue du brouillon paginé de la cible.
+
 ## Exploitation
 
 - Ne jamais enregistrer le Page Access Token dans `appsettings.json`, un fichier `.env` commité, une capture ou une discussion.

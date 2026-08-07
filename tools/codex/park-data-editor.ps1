@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'UpdatePhotoMetadata', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -46,6 +46,16 @@ param(
     [string]$OwnerId,
 
     [string]$ImageId,
+
+    [string]$Url,
+
+    [string]$Message,
+
+    [ValidateRange(1, 1000000)]
+    [int]$ImagePage = 1,
+
+    [ValidateRange(1, 24)]
+    [int]$ImagePageSize = 6,
 
     [string]$Description,
 
@@ -990,6 +1000,35 @@ switch ($Action) {
         Invoke-ParkDataEditorJsonApi -Method PUT `
             -RelativePath "park-data-editor/images/$([Uri]::EscapeDataString($ImageId))/metadata" `
             -Body $metadata
+    }
+    'ResolveFacebookPublication' {
+        if ([string]::IsNullOrWhiteSpace($Url)) {
+            throw 'Url is required for ResolveFacebookPublication.'
+        }
+
+        $encodedUrl = [Uri]::EscapeDataString($Url.Trim())
+        Invoke-ParkDataEditorJsonApi `
+            -Method GET `
+            -RelativePath "park-data-editor/social-publications/facebook/draft?url=$encodedUrl&page=$ImagePage&size=$ImagePageSize" `
+            -Body $null
+    }
+    'PublishFacebook' {
+        if ([string]::IsNullOrWhiteSpace($Url)) {
+            throw 'Url is required for PublishFacebook.'
+        }
+
+        Wait-ParkDataEditorAvailability | Out-Null
+        $publicationMessage = if ([string]::IsNullOrWhiteSpace($Message)) { $null } else { $Message.Trim() }
+        $previewImageId = if ([string]::IsNullOrWhiteSpace($ImageId)) { $null } else { $ImageId.Trim() }
+        Invoke-ParkDataEditorJsonApi `
+            -Method POST `
+            -RelativePath 'park-data-editor/social-publications/facebook' `
+            -Body @{
+                network = 'Facebook'
+                url = $Url.Trim()
+                message = $publicationMessage
+                previewImageId = $previewImageId
+            }
     }
     'RevokeCurrent' {
         Invoke-ParkDataEditorJsonApi -Method DELETE -RelativePath 'park-data-editor/tokens/current' -Body $null | Out-Null

@@ -7,6 +7,7 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import {
   PublishSocialLinkRequest,
   SocialPublication,
+  SocialPublicationDraft,
   SocialPublicationSynchronizationResult,
   SocialPublisher,
   SocialPublishingOverview,
@@ -22,10 +23,15 @@ import {
 export class AdminSocialPublishingFacade {
   private readonly screenStateStore = new SignalScreenStateStore<SocialPublishingOverview>();
   private readonly publishingSignal = signal<boolean>(false);
+  private readonly draftSignal = signal<SocialPublicationDraft | null>(null);
+  private readonly draftLoadingSignal = signal<boolean>(false);
+  private readonly draftErrorSignal = signal<boolean>(false);
+  private readonly selectedImageIdSignal = signal<string | null>(null);
   private readonly retryingPublicationIdSignal = signal<string | null>(null);
   private readonly updatingPublicationIdSignal = signal<string | null>(null);
   private readonly deletingPublicationIdSignal = signal<string | null>(null);
   private readonly synchronizingSignal = signal<boolean>(false);
+  private draftRequestId: number = 0;
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -38,6 +44,10 @@ export class AdminSocialPublishingFacade {
     () => this.overview()?.recentPublications ?? []
   );
   public readonly publishing = this.publishingSignal.asReadonly();
+  public readonly draft = this.draftSignal.asReadonly();
+  public readonly draftLoading = this.draftLoadingSignal.asReadonly();
+  public readonly draftError = this.draftErrorSignal.asReadonly();
+  public readonly selectedImageId = this.selectedImageIdSignal.asReadonly();
   public readonly retryingPublicationId = this.retryingPublicationIdSignal.asReadonly();
   public readonly updatingPublicationId = this.updatingPublicationIdSignal.asReadonly();
   public readonly deletingPublicationId = this.deletingPublicationIdSignal.asReadonly();
@@ -63,6 +73,63 @@ export class AdminSocialPublishingFacade {
     });
   }
 
+  resolveDraft(url: string, imagePage: number = 1): void {
+    const normalizedUrl: string = url.trim();
+    const requestId: number = ++this.draftRequestId;
+    if (!normalizedUrl) {
+      this.draftSignal.set(null);
+      this.draftLoadingSignal.set(false);
+      this.draftErrorSignal.set(false);
+      this.selectedImageIdSignal.set(null);
+      return;
+    }
+
+    const previousUrl: string | null = this.draftSignal()?.url ?? null;
+    this.draftLoadingSignal.set(true);
+    this.draftErrorSignal.set(false);
+    if (imagePage === 1 && previousUrl !== normalizedUrl) {
+      this.draftSignal.set(null);
+      this.selectedImageIdSignal.set(null);
+    }
+
+    this.dataPort.getDraft(normalizedUrl, imagePage, 6).pipe(
+      takeUntilDestroyed(this.destroyRef),
+      finalize(() => {
+        if (requestId === this.draftRequestId) {
+          this.draftLoadingSignal.set(false);
+        }
+      })
+    ).subscribe({
+      next: (draft: SocialPublicationDraft) => {
+        if (requestId !== this.draftRequestId) {
+          return;
+        }
+
+        const targetChanged: boolean = previousUrl !== null && previousUrl !== draft.url;
+        this.draftSignal.set(draft);
+        if (targetChanged) {
+          this.selectedImageIdSignal.set(null);
+        }
+      },
+      error: (error: unknown) => {
+        if (requestId !== this.draftRequestId) {
+          return;
+        }
+
+        console.error('Error resolving social publication draft', error);
+        this.draftSignal.set(null);
+        this.draftErrorSignal.set(true);
+        this.selectedImageIdSignal.set(null);
+      }
+    });
+  }
+
+  selectPreviewImage(imageId: string | null): void {
+    if (imageId === null || this.draftSignal()?.images.data.some((image) => image.id === imageId)) {
+      this.selectedImageIdSignal.set(imageId);
+    }
+  }
+
   publish(request: PublishSocialLinkRequest): void {
     if (this.publishingSignal()) {
       return;
@@ -75,6 +142,7 @@ export class AdminSocialPublishingFacade {
     ).subscribe({
       next: (publication: SocialPublication) => {
         this.applyPublication(publication);
+        this.selectedImageIdSignal.set(null);
         this.showPublicationResult(publication);
       },
       error: (error: unknown) => {

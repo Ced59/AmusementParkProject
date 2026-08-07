@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import {
   PublishSocialLinkRequest,
   SocialPublication,
+  SocialPublicationDraft,
   SocialPublicationSynchronizationResult,
   SocialPublishingOverview,
   UpdateSocialPublicationRequest
@@ -27,6 +28,14 @@ export class AdminSocialPublicationsApiService {
 
   publish(request: PublishSocialLinkRequest): Observable<SocialPublication> {
     return this.http.post<SocialPublication>(this.baseUrl, request);
+  }
+
+  getDraft(url: string, imagePage: number = 1, imagePageSize: number = 6): Observable<SocialPublicationDraft> {
+    const params: HttpParams = new HttpParams()
+      .set('url', url)
+      .set('page', imagePage.toString())
+      .set('size', imagePageSize.toString());
+    return this.http.get<SocialPublicationDraft>(`${this.baseUrl}/draft`, { params });
   }
 
   retry(publicationId: string): Observable<SocialPublication> {

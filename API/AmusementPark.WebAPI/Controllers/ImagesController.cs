@@ -498,7 +498,10 @@ public sealed class ImagesController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> GetSocialPreviewImageAsync(
         [FromRoute] string imageId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default,
+        [FromQuery] ImageOwnerTypeDto? expectedOwnerType = null,
+        [FromQuery] string? expectedOwnerId = null,
+        [FromQuery] ImageCategoryDto? expectedCategory = null)
     {
         ApplicationResult<Image> result = await this.getImageByIdQueryHandler.HandleAsync(
             new GetImageByIdQuery(imageId),
@@ -508,7 +511,13 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        if (!result.Value.IsPublished || string.IsNullOrWhiteSpace(result.Value.Path))
+        if (!result.Value.IsPublished
+            || string.IsNullOrWhiteSpace(result.Value.Path)
+            || !MatchesExpectedSocialPreviewOwner(
+                result.Value,
+                expectedOwnerType,
+                expectedOwnerId,
+                expectedCategory))
         {
             return this.ToNotFoundProblemDetailsResult(
                 "The requested social preview image was not found.",
@@ -548,6 +557,31 @@ public sealed class ImagesController : ControllerBase
 
         this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
         return this.File(binary.Value.Content, binary.Value.ContentType);
+    }
+
+    internal static bool MatchesExpectedSocialPreviewOwner(
+        Image image,
+        ImageOwnerTypeDto? expectedOwnerType,
+        string? expectedOwnerId,
+        ImageCategoryDto? expectedCategory)
+    {
+        bool hasExpectation = expectedOwnerType.HasValue
+            || !string.IsNullOrWhiteSpace(expectedOwnerId)
+            || expectedCategory.HasValue;
+        if (!hasExpectation)
+        {
+            return true;
+        }
+
+        bool isSupportedExpectation = (expectedOwnerType == ImageOwnerTypeDto.PARK
+                && expectedCategory == ImageCategoryDto.PARK)
+            || (expectedOwnerType == ImageOwnerTypeDto.PARK_ITEM
+                && expectedCategory == ImageCategoryDto.PARK_ITEM);
+        return isSupportedExpectation
+            && !string.IsNullOrWhiteSpace(expectedOwnerId)
+            && image.OwnerType == expectedOwnerType!.Value.ToDomain()
+            && string.Equals(image.OwnerId, expectedOwnerId.Trim(), StringComparison.Ordinal)
+            && image.Category == expectedCategory!.Value.ToDomain();
     }
 
     private bool UserCanSeeNonVisible()

@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.SocialPublishing.Queries;
 using AmusementPark.Core.Domain.SocialPublishing;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.SocialPublishing;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
@@ -23,6 +24,7 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class AdminSocialPublicationsController : ControllerBase
 {
     private readonly IQueryHandler<GetSocialPublishingOverviewQuery, SocialPublishingOverview> overviewHandler;
+    private readonly IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>> draftHandler;
     private readonly ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>> publishHandler;
     private readonly ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>> retryHandler;
     private readonly ICommandHandler<UpdateSocialPublicationCommand, ApplicationResult<SocialPublication>> updateHandler;
@@ -31,6 +33,7 @@ public sealed class AdminSocialPublicationsController : ControllerBase
 
     public AdminSocialPublicationsController(
         IQueryHandler<GetSocialPublishingOverviewQuery, SocialPublishingOverview> overviewHandler,
+        IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>> draftHandler,
         ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>> publishHandler,
         ICommandHandler<RetrySocialPublicationCommand, ApplicationResult<SocialPublication>> retryHandler,
         ICommandHandler<UpdateSocialPublicationCommand, ApplicationResult<SocialPublication>> updateHandler,
@@ -38,11 +41,30 @@ public sealed class AdminSocialPublicationsController : ControllerBase
         ICommandHandler<SynchronizeSocialPublicationsCommand, SocialPublicationSynchronizationResult> synchronizeHandler)
     {
         this.overviewHandler = overviewHandler;
+        this.draftHandler = draftHandler;
         this.publishHandler = publishHandler;
         this.retryHandler = retryHandler;
         this.updateHandler = updateHandler;
         this.deleteHandler = deleteHandler;
         this.synchronizeHandler = synchronizeHandler;
+    }
+
+    [HttpGet("draft")]
+    [ProducesResponseType(typeof(SocialPublicationDraftDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetDraftAsync(
+        [FromQuery] string? url,
+        [FromQuery] PaginationRequestDto imagePagination,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<SocialPublicationDraft> result = await this.draftHandler.HandleAsync(
+            new GetSocialPublicationDraftQuery(url, imagePagination.Page, imagePagination.Size),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
     }
 
     [HttpGet]

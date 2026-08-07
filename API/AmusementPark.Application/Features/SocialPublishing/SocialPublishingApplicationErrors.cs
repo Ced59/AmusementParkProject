@@ -25,6 +25,13 @@ public static class SocialPublishingApplicationErrors
             "Le lien doit être une URL publique du site Amusement Parks.");
     }
 
+    public static ApplicationError InvalidPreviewImage()
+    {
+        return ApplicationError.Validation(
+            "social-publishing.preview-image.invalid",
+            "L’image d’aperçu doit être une image publique rattachée au parc ou à l’élément de parc ciblé.");
+    }
+
     public static ApplicationError PublicationNotFound(string id)
     {
         return ApplicationError.NotFound(
