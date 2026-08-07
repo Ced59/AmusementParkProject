@@ -2,7 +2,7 @@
 
 Objectif : intégrer tous les contenus visiteurs nommables et fiables, avec dates, statuts et rattachements, sans se limiter aux coasters.
 
-Pour `Planned`, `UnderConstruction` ou `Cancelled`, cette étape est non applicable par défaut. N’intégrer que les équipements officiellement nommés et confirmés, avec leur propre statut prévu ou en construction ; ne jamais convertir une intention, un rendu ou une rumeur en inventaire opérationnel. Pour `TemporarilyClosed` et `ClosedDefinitively`, conserver l’inventaire confirmé utile à la compréhension et à l’histoire.
+Pour un parc dont `park.status` vaut `Planned`, `UnderConstruction` ou `Cancelled`, cette étape est non applicable par défaut. N’intégrer que les équipements officiellement nommés et confirmés, avec leur propre état prévu ou en construction ; ne jamais convertir une intention, un rendu ou une rumeur en inventaire opérationnel. Pour un parc `TemporarilyClosed` ou `ClosedDefinitively`, conserver l’inventaire confirmé utile à la compréhension et à l’histoire.
 
 ## Lire avant de commencer
 
@@ -63,7 +63,7 @@ Pour chaque item :
 - `zoneId` pour rattacher une zone déjà exportée, ou `zoneKey` seulement si la zone est créée/redéclarée dans le même JSON ;
 - `isVisible` pour les éléments confirmés, même fermés ;
 - `adminReviewStatus` prudent ;
-- `attractionDetails.status` si l’état est connu ;
+- `attractionDetails.status` si l’état courant est connu ;
 - `attractionDetails.openingDate` ou `openingDateText` ;
 - `attractionDetails.closingDate` ou `closingDateText` ;
 - constructeur via `attractionDetails.manufacturerId` s’il existe déjà dans l’export, ou via `manufacturerKey` seulement si la référence est créée/redéclarée dans le même JSON ;
@@ -95,15 +95,72 @@ Ne jamais mettre ces conditions dans les descriptions longues. Si les conditions
 
 ## Règles dates et statuts
 
+### Contrat du statut d’attraction
+
+`attractionDetails.status` décrit exclusivement **l’état courant du cycle de vie** de l’attraction dans le parc ciblé. Le backend conserve ce champ comme chaîne pour la compatibilité avec l’historique des données, mais un JSON d’intégration ne doit pas exploiter cette tolérance comme un champ libre.
+
+Utiliser uniquement :
+
+- `Operating` : attraction actuellement exploitée ;
+- `UnderConstruction` : installation ou construction réellement en cours avant ouverture ;
+- `TemporarilyClosed` : attraction existante momentanément fermée avec réouverture attendue ou plausible ;
+- `ClosedDefinitively` : exploitation définitivement terminée dans cette incarnation, même si l’installation existe encore ;
+- `Removed` : attraction qui n’est plus installée ou présente comme attraction exploitable dans ce parc ;
+- `Planned` : attraction officiellement annoncée, sans chantier confirmé ;
+- `Unknown` : état réellement impossible à établir après recherche.
+
+Ne jamais traduire ces valeurs dans le JSON. `Annoncé`, `Announced`, `Ouvert`, `Fermé`, etc. ne sont pas des valeurs à stocker : choisir la valeur canonique correspondante.
+
+### Interdiction de mélanger statut et histoire
+
+Un statut ne décrit jamais **la dernière chose arrivée** à l’attraction. Les transformations durables sont des événements de timeline à l’étape 7.
+
+Ne jamais écrire dans `attractionDetails.status` des valeurs telles que :
+
+- `Retracké` / `Retracked` ;
+- `Délocalisé`, `Relocalisé` / `Relocated` ;
+- `Rénové`, `Refurbished`, `Rehab` ;
+- `Reconstruit`, `Rebuilt` ;
+- `Renommé`, `Renamed` ;
+- `Rethemé`, `Rethemed` ;
+- `Démonté`, `Dismantled` ;
+- `Stocké`, `Stored` ;
+- `Vendu`, `Sold` ;
+- `Transféré`, `Transferred` ;
+- `Réinstallé`, `Reinstalled` ;
+- `Remplacé`, `Replaced` ;
+- `Démoli`, `Demolished` ;
+- ou toute formulation équivalente décrivant un fait historique.
+
+Exemples :
+
+- une attraction retrackée et rouverte est `Operating`; le retrack devient un événement `Retrack` ;
+- une attraction en retrack actuellement inaccessible est `TemporarilyClosed`; le travail devient `Retrack`, `Refurbishment` ou `Rehab` selon la source ;
+- une attraction renommée mais ouverte reste `Operating`; le changement devient `Rename` ;
+- une attraction déplacée ailleurs dans le même parc et rouverte est `Operating`; les faits deviennent `RelocationDeparture` puis `RelocationArrival` ;
+- une attraction partie vers un autre parc est `Removed` dans le parc d’origine ; la timeline conserve `RelocationDeparture`, `Transfer` ou `Sale`, puis le parc d’arrivée porte sa propre vie ;
+- une attraction démontée puis stockée est `Removed`; la timeline porte `Dismantling` puis `Storage` ;
+- une attraction démolie est `Removed`; la timeline porte `Demolition` ;
+- une attraction définitivement fermée mais encore physiquement présente est `ClosedDefinitively`; la timeline porte `DefinitiveClosure` ;
+- une attraction remplacée reçoit `ClosedDefinitively` ou `Removed` selon sa présence réelle et un événement `Replacement`; son remplaçant est une entité distincte avec son propre statut.
+
+Si l’état de référence contient déjà une transformation historique dans `attractionDetails.status`, cette anomalie doit être reprise, pas propagée :
+
+1. rechercher le vrai état courant ;
+2. corriger le statut avec une valeur lifecycle canonique ;
+3. noter dans le registre qu’un événement historique doit être créé ou vérifié à l’étape 7 ;
+4. ne jamais perdre le fait historique pendant la correction.
+
+Autres règles :
+
 - Un item fermé mais confirmé reste visible si son intérêt public ou historique est réel.
-- Ajouter un statut de fermeture définitive quand il est fiable, et un tag ou une note `closed-definitively` si le modèle ou le lot le prévoit.
 - Utiliser `attractionDetails.openingDate` ou `attractionDetails.closingDate` avec une date complète fiable au format `YYYY-MM-DD`.
 - Si seule l’année est fiable, renseigner l’année seule dans le champ date, par exemple `"openingDate": "1988"`. L’import la conserve comme précision textuelle et ne doit jamais l’interpréter comme le 1er janvier.
 - Si seul le mois est fiable, utiliser une précision textuelle, par exemple `openingDateText: "mai 1988"` ou `openingDate: "1988-05"` si le mois numérique est sûr.
 - Ne pas laisser une date vide si l’année est fiable : l’année seule est une information utile.
 - Ne pas utiliser une date complète sans source complète.
 - Ne pas confondre annonce, soft opening, ouverture publique et réouverture.
-- Pour une attraction déplacée, renseigner l’état dans le parc courant et réserver les autres vies à l’étape histoire.
+- Pour une attraction déplacée, renseigner l’état courant dans le parc ciblé et réserver les autres vies à l’étape histoire.
 - Les restrictions d’accès vont dans `accessConditions`, jamais dans la description.
 - Ne pas supprimer une attraction fermée simplement parce qu’elle n’existe plus physiquement.
 - Une attraction définitivement fermée confirmée doit recevoir son vrai statut, une période fiable quand elle existe et rester dans le périmètre des descriptions, images et timelines des étapes suivantes.
@@ -230,10 +287,12 @@ Sections possibles :
 - Tous les `manufacturerId` réutilisés proviennent de l’état de référence, et toutes les `manufacturerKey` sont résolues par `references.manufacturers` dans le même JSON.
 - Les conditions d’accès trouvées sont dans `attractionDetails.accessConditions`, pas dans les descriptions.
 - Toutes les valeurs enum utilisées sont listées dans `park-graph-upsert-enums.md`.
+- Chaque `attractionDetails.status` appartient au vocabulaire lifecycle contrôlé et aucune transformation historique n’y est stockée.
 - Les dates sont exactes ou restent textuelles ; aucune année seule n’est transformée en date complète inventée.
 - Les anciens items importants ne sont pas supprimés.
 - Les trois passes d’inventaire sont terminées et leurs totaux sont annoncés séparément.
 - Les attractions définitivement fermées ont fait l’objet d’une recherche historique dédiée ; les lacunes restantes indiquent les sources vérifiées.
+- Toute anomalie legacy de statut historique est enregistrée pour correction et préservation en timeline à l’étape 7.
 - Les items sans source fiable restent absents ou `ToReview`.
 
 ## Récap avant livraison
