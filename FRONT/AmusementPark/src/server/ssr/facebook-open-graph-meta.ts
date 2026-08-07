@@ -89,6 +89,15 @@ export function hasOnlyFacebookImageOverrideQuery(url: string): boolean {
   }
 }
 
+export function normalizeFacebookImageOverrideCacheUrl(url: string): string {
+  if (!hasOnlyFacebookImageOverrideQuery(url)) {
+    return url;
+  }
+
+  const queryIndex: number = url.indexOf('?');
+  return queryIndex < 0 ? url : url.slice(0, queryIndex);
+}
+
 function resolveFacebookImageOverride(requestUrl: string): FacebookImageOverride | null {
   try {
     const parsedUrl: URL = new URL(requestUrl, 'https://amusement-parks.fun');

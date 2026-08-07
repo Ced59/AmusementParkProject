@@ -3,6 +3,7 @@ import {
   hasOnlyFacebookImageOverrideQuery,
   injectFacebookAppIdMeta,
   injectFacebookImageOverrideMeta,
+  normalizeFacebookImageOverrideCacheUrl,
   normalizeFacebookAppId,
 } from './facebook-open-graph-meta';
 
@@ -89,6 +90,21 @@ describe('Facebook Open Graph metadata', () => {
       '/fr/park/park-1/test?utm_source=facebook&facebook-image=image-1',
       'https://amusement-parks.fun/fr/park/park-1/test',
     )).toContain('expectedOwnerId=park-1');
+  });
+
+  it('uses the base page cache URL for a sole image override', () => {
+    expect(normalizeFacebookImageOverrideCacheUrl(
+      '/fr/park/park-1/test?facebook-image=image-1',
+    )).toBe('/fr/park/park-1/test');
+    expect(normalizeFacebookImageOverrideCacheUrl(
+      '/fr/park/park-1/test?facebook-image=another-image',
+    )).toBe('/fr/park/park-1/test');
+    expect(normalizeFacebookImageOverrideCacheUrl(
+      'https://amusement-parks.fun/fr/park/park-1/test?facebook-image=image-1',
+    )).toBe('https://amusement-parks.fun/fr/park/park-1/test');
+    expect(normalizeFacebookImageOverrideCacheUrl(
+      '/fr/park/park-1/test?utm_source=facebook&facebook-image=image-1',
+    )).toBe('/fr/park/park-1/test?utm_source=facebook&facebook-image=image-1');
   });
 
   it('binds a park item override to that item ownership', () => {

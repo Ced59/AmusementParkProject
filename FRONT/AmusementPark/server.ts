@@ -39,6 +39,7 @@ import {
   hasOnlyFacebookImageOverrideQuery,
   injectFacebookAppIdMeta,
   injectFacebookImageOverrideMeta,
+  normalizeFacebookImageOverrideCacheUrl,
   normalizeFacebookAppId,
 } from './src/server/ssr/facebook-open-graph-meta';
 
@@ -534,7 +535,7 @@ export function app(): express.Express {
       res.status(statusCode);
     }
 
-    const publicUrl = getPublicRequestUrl(req);
+    const publicUrl: string = normalizeFacebookImageOverrideCacheUrl(getPublicRequestUrl(req));
     const renderHtml = (): Promise<string> => commonEngine.render({
       bootstrap: AppServerModule,
       documentFilePath: indexHtml,
@@ -2088,7 +2089,8 @@ function buildPageCacheKey(req: Request): string | null {
 
   const host = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? 'localhost';
   const protocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
-  return `${protocol}://${host}${req.originalUrl}`;
+  const cacheUrl: string = normalizeFacebookImageOverrideCacheUrl(req.originalUrl);
+  return `${protocol}://${host}${cacheUrl}`;
 }
 
 function isCacheablePageRequest(req: Request): boolean {
