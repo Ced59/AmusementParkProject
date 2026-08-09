@@ -190,6 +190,16 @@ export function buildPublicParkOpeningHoursRouteCommands(target: PublicParkRoute
   return [...parkRouteCommands, 'opening-hours'];
 }
 
+export function buildPublicParkPricingRouteCommands(target: PublicParkRouteTarget): string[] | null {
+  const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
+
+  if (!parkRouteCommands) {
+    return null;
+  }
+
+  return [...parkRouteCommands, 'pricing'];
+}
+
 export function buildPublicParkHistoryRouteCommands(target: PublicParkRouteTarget): string[] | null {
   const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
 
