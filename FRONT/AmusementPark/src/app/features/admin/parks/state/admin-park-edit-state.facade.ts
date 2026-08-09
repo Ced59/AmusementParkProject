@@ -3,6 +3,7 @@ import { firstValueFrom } from 'rxjs';
 
 import { Park } from '@app/models/parks/park';
 import { ParkOpeningHoursSchedule } from '@app/models/parks/park-opening-hours';
+import { ParkPricing } from '@app/models/parks/park-pricing';
 
 import {
   ADMIN_PARK_EDIT_STATE_PARKS_API_SERVICE_PORT,
@@ -13,10 +14,14 @@ export class AdminParkEditStateFacade {
   private readonly isSavingSignal = signal(false);
   private readonly openingHoursLoadingSignal = signal(false);
   private readonly openingHoursSavingSignal = signal(false);
+  private readonly pricingLoadingSignal = signal(false);
+  private readonly pricingSavingSignal = signal(false);
 
   public readonly isSaving: Signal<boolean> = this.isSavingSignal.asReadonly();
   public readonly openingHoursLoading: Signal<boolean> = this.openingHoursLoadingSignal.asReadonly();
   public readonly openingHoursSaving: Signal<boolean> = this.openingHoursSavingSignal.asReadonly();
+  public readonly pricingLoading: Signal<boolean> = this.pricingLoadingSignal.asReadonly();
+  public readonly pricingSaving: Signal<boolean> = this.pricingSavingSignal.asReadonly();
 
   constructor(@Inject(ADMIN_PARK_EDIT_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: AdminParkEditStateParksApiServicePort) {
   }
@@ -56,6 +61,26 @@ export class AdminParkEditStateFacade {
       return await firstValueFrom(this.parksApiService.upsertAdminParkOpeningHours(parkId, schedule));
     } finally {
       this.openingHoursSavingSignal.set(false);
+    }
+  }
+
+  async loadPricing(parkId: string): Promise<ParkPricing> {
+    this.pricingLoadingSignal.set(true);
+
+    try {
+      return await firstValueFrom(this.parksApiService.getAdminParkPricing(parkId));
+    } finally {
+      this.pricingLoadingSignal.set(false);
+    }
+  }
+
+  async savePricing(parkId: string, pricing: ParkPricing): Promise<ParkPricing> {
+    this.pricingSavingSignal.set(true);
+
+    try {
+      return await firstValueFrom(this.parksApiService.upsertAdminParkPricing(parkId, pricing));
+    } finally {
+      this.pricingSavingSignal.set(false);
     }
   }
 }
