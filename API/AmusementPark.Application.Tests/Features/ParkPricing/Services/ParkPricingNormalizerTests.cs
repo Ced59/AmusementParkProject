@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.ParkPricing.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
 using Xunit;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Tests.Features.ParkPricing.Services;
 
@@ -11,7 +12,7 @@ public sealed class ParkPricingNormalizerTests
     [Fact]
     public void Normalize_ShouldNormalizeCurrencyCodesAndPreserveSeasonalOffersForSameAudience()
     {
-        ParkPricing pricing = new ParkPricing
+        ParkPricingEntity pricing = new ParkPricingEntity
         {
             ParkId = " park-1 ",
             CurrencyCode = " eur ",
@@ -22,7 +23,7 @@ public sealed class ParkPricingNormalizerTests
             },
         };
 
-        ApplicationResult<ParkPricing> result = ParkPricingNormalizer.Normalize(pricing);
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
@@ -35,7 +36,7 @@ public sealed class ParkPricingNormalizerTests
     [Fact]
     public void Normalize_ShouldRejectDuplicateOfferCodes()
     {
-        ParkPricing pricing = new ParkPricing
+        ParkPricingEntity pricing = new ParkPricingEntity
         {
             ParkId = "park-1",
             CurrencyCode = "EUR",
@@ -46,7 +47,7 @@ public sealed class ParkPricingNormalizerTests
             },
         };
 
-        ApplicationResult<ParkPricing> result = ParkPricingNormalizer.Normalize(pricing);
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "park-pricing.invalid");
@@ -61,13 +62,13 @@ public sealed class ParkPricingNormalizerTests
     [InlineData("12A")]
     public void Normalize_ShouldRejectInvalidCurrencyCode(string currencyCode)
     {
-        ParkPricing pricing = new ParkPricing
+        ParkPricingEntity pricing = new ParkPricingEntity
         {
             ParkId = "park-1",
             CurrencyCode = currencyCode,
         };
 
-        ApplicationResult<ParkPricing> result = ParkPricingNormalizer.Normalize(pricing);
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "park-pricing.invalid");
@@ -76,7 +77,7 @@ public sealed class ParkPricingNormalizerTests
     [Fact]
     public void Normalize_ShouldSupportFixedRangeAndDynamicPrices()
     {
-        ParkPricing pricing = new ParkPricing
+        ParkPricingEntity pricing = new ParkPricingEntity
         {
             ParkId = "park-1",
             CurrencyCode = "USD",
@@ -103,7 +104,7 @@ public sealed class ParkPricingNormalizerTests
             },
         };
 
-        ApplicationResult<ParkPricing> result = ParkPricingNormalizer.Normalize(pricing);
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
@@ -115,7 +116,7 @@ public sealed class ParkPricingNormalizerTests
     [Fact]
     public void Normalize_ShouldRejectInvertedDateAndPriceRanges()
     {
-        ParkPricing pricing = new ParkPricing
+        ParkPricingEntity pricing = new ParkPricingEntity
         {
             ParkId = "park-1",
             CurrencyCode = "EUR",
@@ -137,10 +138,109 @@ public sealed class ParkPricingNormalizerTests
             },
         };
 
-        ApplicationResult<ParkPricing> result = ParkPricingNormalizer.Normalize(pricing);
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "park-pricing.invalid");
+    }
+
+    [Theory]
+    [InlineData(ParkPricingMode.Fixed, -1d, null, null)]
+    [InlineData(ParkPricingMode.Range, null, -1d, 10d)]
+    [InlineData(ParkPricingMode.Dynamic, null, 10d, -1d)]
+    public void Normalize_ShouldRejectNegativePrices(
+        ParkPricingMode mode,
+        double? amount,
+        double? minimumAmount,
+        double? maximumAmount)
+    {
+        ParkPricingEntity pricing = new ParkPricingEntity
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            ParkingOffers = new List<ParkParkingPriceOffer>
+            {
+                new ParkParkingPriceOffer
+                {
+                    Code = "parking",
+                    OnlinePrice = new ParkPriceValue
+                    {
+                        Mode = mode,
+                        Amount = amount.HasValue ? Convert.ToDecimal(amount.Value) : null,
+                        MinimumAmount = minimumAmount.HasValue ? Convert.ToDecimal(minimumAmount.Value) : null,
+                        MaximumAmount = maximumAmount.HasValue ? Convert.ToDecimal(maximumAmount.Value) : null,
+                    },
+                },
+            },
+        };
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors.SelectMany(static error => error.Details ?? new Dictionary<string, IReadOnlyCollection<string>>()),
+            static detail => detail.Value.Contains("negative-price"));
+    }
+
+    [Fact]
+    public void Normalize_ShouldAcceptOnlineOnlyAndGateOnlyOffers()
+    {
+        ParkPricingEntity pricing = new ParkPricingEntity
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            AdmissionOffers = new List<ParkAdmissionPriceOffer>
+            {
+                new ParkAdmissionPriceOffer
+                {
+                    Code = "online-only",
+                    AudienceCategory = "adult",
+                    OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
+                },
+                new ParkAdmissionPriceOffer
+                {
+                    Code = "gate-only",
+                    AudienceCategory = "child",
+                    GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 29m },
+                },
+            },
+        };
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.NotNull(result.Value.AdmissionOffers[0].OnlinePrice);
+        Assert.Null(result.Value.AdmissionOffers[0].GatePrice);
+        Assert.Null(result.Value.AdmissionOffers[1].OnlinePrice);
+        Assert.NotNull(result.Value.AdmissionOffers[1].GatePrice);
+    }
+
+    [Fact]
+    public void Normalize_ShouldRejectInvertedValidityDatesIndependentlyOfPriceMode()
+    {
+        ParkPricingEntity pricing = new ParkPricingEntity
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            ParkingOffers = new List<ParkParkingPriceOffer>
+            {
+                new ParkParkingPriceOffer
+                {
+                    Code = "seasonal-parking",
+                    OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Dynamic },
+                    ValidFrom = new DateOnly(2026, 9, 1),
+                    ValidTo = new DateOnly(2026, 8, 31),
+                },
+            },
+        };
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors.SelectMany(static error => error.Details ?? new Dictionary<string, IReadOnlyCollection<string>>()),
+            static detail => detail.Value.Contains("invalid-date-range"));
     }
 
     private static ParkAdmissionPriceOffer CreateAdmission(string code, string audience, decimal amount, DateOnly? validFrom, DateOnly? validTo)

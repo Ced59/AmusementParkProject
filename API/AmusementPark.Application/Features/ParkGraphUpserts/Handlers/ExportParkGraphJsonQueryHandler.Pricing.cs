@@ -1,12 +1,13 @@
 using System.Globalization;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Core.Domain.Parks;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Handlers;
 
 public sealed partial class ExportParkGraphJsonQueryHandler
 {
-    private static ParkGraphExportPricing MapPricing(ParkPricing pricing)
+    private static ParkGraphExportPricing MapPricing(ParkPricingEntity pricing)
     {
         return new ParkGraphExportPricing
         {

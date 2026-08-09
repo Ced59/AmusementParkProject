@@ -14,6 +14,7 @@ using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.ParkPricing.Services;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search.Ports;
@@ -132,7 +133,7 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         List<string> readErrors = new();
-        ParkPricing pricing = ReadPricing(patch.Value, targetPark.Id, readErrors);
+        ParkPricingEntity pricing = ReadPricing(patch.Value, targetPark.Id, readErrors);
         string? requestedParkId = ReadString(patch, "parkId");
         if (!string.IsNullOrWhiteSpace(requestedParkId)
             && !string.Equals(requestedParkId, targetPark.Id, StringComparison.Ordinal))
@@ -148,7 +149,7 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
-        ApplicationResult<ParkPricing> normalizedResult = ParkPricingNormalizer.Normalize(pricing);
+        ApplicationResult<ParkPricingEntity> normalizedResult = ParkPricingNormalizer.Normalize(pricing);
         if (!normalizedResult.IsSuccess || normalizedResult.Value is null)
         {
             change.ChangeType = "Skipped";
@@ -157,8 +158,8 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
-        ParkPricing normalizedPricing = normalizedResult.Value;
-        ParkPricing? existingPricing = await this.parkPricingRepository.GetByParkIdAsync(targetPark.Id, cancellationToken);
+        ParkPricingEntity normalizedPricing = normalizedResult.Value;
+        ParkPricingEntity? existingPricing = await this.parkPricingRepository.GetByParkIdAsync(targetPark.Id, cancellationToken);
         bool isNew = existingPricing is null || !ParkPricingNormalizer.HasPublicPricingData(existingPricing);
 
         AddPricingChanges(change, existingPricing, normalizedPricing);
@@ -201,16 +202,16 @@ public sealed partial class ParkGraphUpsertProcessor
         return value.ValueKind != JsonValueKind.Array || value.GetArrayLength() > 0;
     }
 
-    private static ParkPricing ReadPricing(JsonElement patch, string targetParkId, List<string> errors)
+    private static ParkPricingEntity ReadPricing(JsonElement patch, string targetParkId, List<string> errors)
     {
-        return new ParkPricing
+        return new ParkPricingEntity
         {
             ParkId = targetParkId,
             CurrencyCode = ReadString(patch, "currencyCode") ?? string.Empty,
             SourceUrl = ReadString(patch, "sourceUrl"),
             PurchaseUrl = ReadString(patch, "purchaseUrl"),
             Notes = ReadString(patch, "notes"),
-            LastVerifiedAtUtc = ReadDate(patch, "lastVerifiedAtUtc"),
+            LastVerifiedAtUtc = ReadOptionalPricingUtcDate(patch, "lastVerifiedAtUtc", errors),
             AdmissionOffers = ReadAdmissionOffers(patch, errors),
             AnnualPasses = ReadAnnualPasses(patch, errors),
             ParkingOffers = ReadParkingOffers(patch, errors),
@@ -440,7 +441,28 @@ public sealed partial class ParkGraphUpsertProcessor
         return null;
     }
 
-    private static void AddPricingValidationErrors(ParkGraphUpsertResult result, ApplicationResult<ParkPricing> normalizedResult)
+    private static DateTime? ReadOptionalPricingUtcDate(JsonElement element, string propertyName, List<string> errors)
+    {
+        if (!HasProperty(element, propertyName) || HasNull(element, propertyName))
+        {
+            return null;
+        }
+
+        string? value = ReadString(element, propertyName);
+        if (DateTimeOffset.TryParse(
+            value,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal,
+            out DateTimeOffset parsed))
+        {
+            return parsed.UtcDateTime;
+        }
+
+        errors.Add($"pricing.{propertyName} doit être une date ISO 8601 valide.");
+        return null;
+    }
+
+    private static void AddPricingValidationErrors(ParkGraphUpsertResult result, ApplicationResult<ParkPricingEntity> normalizedResult)
     {
         foreach (ApplicationError error in normalizedResult.Errors)
         {
@@ -457,7 +479,7 @@ public sealed partial class ParkGraphUpsertProcessor
         }
     }
 
-    private static void AddPricingChanges(ParkGraphUpsertChange change, ParkPricing? existingPricing, ParkPricing normalizedPricing)
+    private static void AddPricingChanges(ParkGraphUpsertChange change, ParkPricingEntity? existingPricing, ParkPricingEntity normalizedPricing)
     {
         AddChange(change, "pricing.currencyCode", existingPricing?.CurrencyCode, normalizedPricing.CurrencyCode);
         AddChange(change, "pricing.sourceUrl", existingPricing?.SourceUrl, normalizedPricing.SourceUrl);

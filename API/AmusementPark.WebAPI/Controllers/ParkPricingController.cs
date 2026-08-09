@@ -14,18 +14,19 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.WebAPI.Controllers;
 
 [ApiController]
 public sealed class ParkPricingController : ControllerBase
 {
-    private readonly IQueryHandler<GetParkPricingQuery, ApplicationResult<ParkPricing>> getPricingQueryHandler;
-    private readonly ICommandHandler<UpsertParkPricingCommand, ApplicationResult<ParkPricing>> upsertPricingCommandHandler;
+    private readonly IQueryHandler<GetParkPricingQuery, ApplicationResult<ParkPricingEntity>> getPricingQueryHandler;
+    private readonly ICommandHandler<UpsertParkPricingCommand, ApplicationResult<ParkPricingEntity>> upsertPricingCommandHandler;
 
     public ParkPricingController(
-        IQueryHandler<GetParkPricingQuery, ApplicationResult<ParkPricing>> getPricingQueryHandler,
-        ICommandHandler<UpsertParkPricingCommand, ApplicationResult<ParkPricing>> upsertPricingCommandHandler)
+        IQueryHandler<GetParkPricingQuery, ApplicationResult<ParkPricingEntity>> getPricingQueryHandler,
+        ICommandHandler<UpsertParkPricingCommand, ApplicationResult<ParkPricingEntity>> upsertPricingCommandHandler)
     {
         this.getPricingQueryHandler = getPricingQueryHandler;
         this.upsertPricingCommandHandler = upsertPricingCommandHandler;
@@ -37,7 +38,7 @@ public sealed class ParkPricingController : ControllerBase
     [ProducesResponseType(typeof(ParkPricingDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPricingAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<ParkPricing> result = await this.getPricingQueryHandler.HandleAsync(
+        ApplicationResult<ParkPricingEntity> result = await this.getPricingQueryHandler.HandleAsync(
             new GetParkPricingQuery(parkId, this.HttpContext.UserCanSeeNonVisibleInPublicView()),
             cancellationToken);
 
@@ -55,7 +56,7 @@ public sealed class ParkPricingController : ControllerBase
     [ProducesResponseType(typeof(ParkPricingDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAdminPricingAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<ParkPricing> result = await this.getPricingQueryHandler.HandleAsync(
+        ApplicationResult<ParkPricingEntity> result = await this.getPricingQueryHandler.HandleAsync(
             new GetParkPricingQuery(parkId, IncludeHidden: true),
             cancellationToken);
 
@@ -78,13 +79,13 @@ public sealed class ParkPricingController : ControllerBase
         [FromBody] ParkPricingDto request,
         CancellationToken cancellationToken = default)
     {
-        ApplicationResult<ParkPricing> mappingResult = request.ToDomainResult(parkId);
+        ApplicationResult<ParkPricingEntity> mappingResult = request.ToDomainResult(parkId);
         if (!mappingResult.IsSuccess || mappingResult.Value is null)
         {
             return this.ToActionResult(mappingResult);
         }
 
-        ApplicationResult<ParkPricing> result = await this.upsertPricingCommandHandler.HandleAsync(
+        ApplicationResult<ParkPricingEntity> result = await this.upsertPricingCommandHandler.HandleAsync(
             new UpsertParkPricingCommand(mappingResult.Value),
             cancellationToken);
 

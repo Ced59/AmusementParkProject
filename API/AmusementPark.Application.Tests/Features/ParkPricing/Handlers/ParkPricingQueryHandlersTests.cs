@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
 using Xunit;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Tests.Features.ParkPricing.Handlers;
 
@@ -26,7 +27,7 @@ public sealed class ParkPricingQueryHandlersTests
         Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
         GetParkPricingQueryHandler handler = new(parkRepository.Object, pricingRepository.Object);
 
-        ApplicationResult<ParkPricing> result = await handler.HandleAsync(
+        ApplicationResult<ParkPricingEntity> result = await handler.HandleAsync(
             new GetParkPricingQuery("park-1", false),
             CancellationToken.None);
 
@@ -48,10 +49,10 @@ public sealed class ParkPricingQueryHandlersTests
         Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
         pricingRepository
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ParkPricing { ParkId = "park-1", CurrencyCode = "EUR" });
+            .ReturnsAsync(new ParkPricingEntity { ParkId = "park-1", CurrencyCode = "EUR" });
         GetParkPricingQueryHandler handler = new(parkRepository.Object, pricingRepository.Object);
 
-        ApplicationResult<ParkPricing> result = await handler.HandleAsync(
+        ApplicationResult<ParkPricingEntity> result = await handler.HandleAsync(
             new GetParkPricingQuery("park-1", false),
             CancellationToken.None);
 
@@ -64,7 +65,7 @@ public sealed class ParkPricingQueryHandlersTests
     [Fact]
     public async Task Query_WhenAdminRequestsEmptyPricing_ShouldReturnStoredResource()
     {
-        ParkPricing storedPricing = new ParkPricing { ParkId = "park-1", CurrencyCode = "EUR" };
+        ParkPricingEntity storedPricing = new ParkPricingEntity { ParkId = "park-1", CurrencyCode = "EUR" };
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
@@ -75,7 +76,70 @@ public sealed class ParkPricingQueryHandlersTests
             .ReturnsAsync(storedPricing);
         GetParkPricingQueryHandler handler = new(parkRepository.Object, pricingRepository.Object);
 
-        ApplicationResult<ParkPricing> result = await handler.HandleAsync(
+        ApplicationResult<ParkPricingEntity> result = await handler.HandleAsync(
+            new GetParkPricingQuery("park-1", true),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Same(storedPricing, result.Value);
+        parkRepository.VerifyAll();
+        pricingRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Query_WhenPublicOperatingParkHasPricing_ShouldReturnStoredResource()
+    {
+        ParkPricingEntity storedPricing = new ParkPricingEntity
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            AdmissionOffers = new List<ParkAdmissionPriceOffer>
+            {
+                new ParkAdmissionPriceOffer
+                {
+                    Code = "adult",
+                    AudienceCategory = "adult",
+                    OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
+                },
+            },
+        };
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Status = ParkStatus.Operating, IsVisible = true });
+        Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(storedPricing);
+        GetParkPricingQueryHandler handler = new(parkRepository.Object, pricingRepository.Object);
+
+        ApplicationResult<ParkPricingEntity> result = await handler.HandleAsync(
+            new GetParkPricingQuery("park-1", false),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Same(storedPricing, result.Value);
+        parkRepository.VerifyAll();
+        pricingRepository.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.ClosedDefinitively)]
+    public async Task Query_WhenAdminRequestsNonOperatingPark_ShouldReturnStoredResource(ParkStatus status)
+    {
+        ParkPricingEntity storedPricing = new ParkPricingEntity { ParkId = "park-1", CurrencyCode = "EUR" };
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Status = status, IsVisible = false });
+        Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(storedPricing);
+        GetParkPricingQueryHandler handler = new(parkRepository.Object, pricingRepository.Object);
+
+        ApplicationResult<ParkPricingEntity> result = await handler.HandleAsync(
             new GetParkPricingQuery("park-1", true),
             CancellationToken.None);
 

@@ -3,6 +3,7 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkPricing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Driver;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
@@ -16,7 +17,7 @@ public sealed class ParkPricingRepository : IParkPricingRepository
         this.collection = database.GetCollection<ParkPricingDocument>(CollectionName);
     }
 
-    public async Task<ParkPricing?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken)
+    public async Task<ParkPricingEntity?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken)
     {
         ParkPricingDocument? document = await this.collection
             .Find(item => item.ParkId == parkId)
@@ -25,7 +26,7 @@ public sealed class ParkPricingRepository : IParkPricingRepository
         return document?.ToDomain();
     }
 
-    public async Task<ParkPricing> UpsertAsync(ParkPricing pricing, CancellationToken cancellationToken)
+    public async Task<ParkPricingEntity> UpsertAsync(ParkPricingEntity pricing, CancellationToken cancellationToken)
     {
         DateTime now = DateTime.UtcNow;
         ParkPricingDocument? existing = await this.collection

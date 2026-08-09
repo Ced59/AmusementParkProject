@@ -5,10 +5,11 @@ using AmusementPark.Application.Features.ParkPricing.Queries;
 using AmusementPark.Application.Features.ParkPricing.Services;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.ParkPricing.Handlers;
 
-public sealed class GetParkPricingQueryHandler : IQueryHandler<GetParkPricingQuery, ApplicationResult<ParkPricing>>
+public sealed class GetParkPricingQueryHandler : IQueryHandler<GetParkPricingQuery, ApplicationResult<ParkPricingEntity>>
 {
     private readonly IParkRepository parkRepository;
     private readonly IParkPricingRepository pricingRepository;
@@ -19,31 +20,31 @@ public sealed class GetParkPricingQueryHandler : IQueryHandler<GetParkPricingQue
         this.pricingRepository = pricingRepository;
     }
 
-    public async Task<ApplicationResult<ParkPricing>> HandleAsync(GetParkPricingQuery query, CancellationToken cancellationToken = default)
+    public async Task<ApplicationResult<ParkPricingEntity>> HandleAsync(GetParkPricingQuery query, CancellationToken cancellationToken = default)
     {
         string parkId = (query.ParkId ?? string.Empty).Trim();
         if (parkId.Length == 0)
         {
-            return ApplicationResult<ParkPricing>.Failure(ParkPricingApplicationErrors.ParkNotFound());
+            return ApplicationResult<ParkPricingEntity>.Failure(ParkPricingApplicationErrors.ParkNotFound());
         }
 
         Park? park = await this.parkRepository.GetByIdAsync(parkId, query.IncludeHidden, cancellationToken);
         if (park is null)
         {
-            return ApplicationResult<ParkPricing>.Failure(ParkPricingApplicationErrors.ParkNotFound());
+            return ApplicationResult<ParkPricingEntity>.Failure(ParkPricingApplicationErrors.ParkNotFound());
         }
 
         if (!query.IncludeHidden && !park.Status.IsOpenToVisitors())
         {
-            return ApplicationResult<ParkPricing>.Failure(ParkPricingApplicationErrors.PricingNotFound());
+            return ApplicationResult<ParkPricingEntity>.Failure(ParkPricingApplicationErrors.PricingNotFound());
         }
 
-        ParkPricing? pricing = await this.pricingRepository.GetByParkIdAsync(parkId, cancellationToken);
+        ParkPricingEntity? pricing = await this.pricingRepository.GetByParkIdAsync(parkId, cancellationToken);
         if (pricing is null || (!query.IncludeHidden && !ParkPricingNormalizer.HasPublicPricingData(pricing)))
         {
-            return ApplicationResult<ParkPricing>.Failure(ParkPricingApplicationErrors.PricingNotFound());
+            return ApplicationResult<ParkPricingEntity>.Failure(ParkPricingApplicationErrors.PricingNotFound());
         }
 
-        return ApplicationResult<ParkPricing>.Success(pricing);
+        return ApplicationResult<ParkPricingEntity>.Success(pricing);
     }
 }

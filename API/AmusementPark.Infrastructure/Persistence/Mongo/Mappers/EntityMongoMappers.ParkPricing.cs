@@ -1,12 +1,13 @@
 using System.Globalization;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkPricing;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 
 internal static partial class EntityMongoMappers
 {
-    public static ParkPricingDocument ToDocument(this ParkPricing pricing)
+    public static ParkPricingDocument ToDocument(this ParkPricingEntity pricing)
     {
         return new ParkPricingDocument
         {
@@ -25,9 +26,9 @@ internal static partial class EntityMongoMappers
         };
     }
 
-    public static ParkPricing ToDomain(this ParkPricingDocument document)
+    public static ParkPricingEntity ToDomain(this ParkPricingDocument document)
     {
-        return new ParkPricing
+        return new ParkPricingEntity
         {
             Id = document.Id,
             ParkId = document.ParkId,

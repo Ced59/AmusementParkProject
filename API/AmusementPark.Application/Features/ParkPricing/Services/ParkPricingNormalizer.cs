@@ -1,6 +1,7 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.ParkPricing.Services;
 
@@ -10,12 +11,12 @@ public static class ParkPricingNormalizer
     private const int MaximumAnnualPassCount = 100;
     private const int MaximumParkingOfferCount = 50;
 
-    public static ApplicationResult<ParkPricing> Normalize(ParkPricing pricing)
+    public static ApplicationResult<ParkPricingEntity> Normalize(ParkPricingEntity pricing)
     {
         ArgumentNullException.ThrowIfNull(pricing);
 
         Dictionary<string, IReadOnlyCollection<string>> errors = new(StringComparer.Ordinal);
-        ParkPricing normalized = new()
+        ParkPricingEntity normalized = new()
         {
             Id = NormalizeOptionalString(pricing.Id),
             ParkId = NormalizeOptionalString(pricing.ParkId) ?? string.Empty,
@@ -63,13 +64,13 @@ public static class ParkPricingNormalizer
 
         if (errors.Count > 0)
         {
-            return ApplicationResult<ParkPricing>.Failure(ParkPricingApplicationErrors.InvalidPricing(errors));
+            return ApplicationResult<ParkPricingEntity>.Failure(ParkPricingApplicationErrors.InvalidPricing(errors));
         }
 
-        return ApplicationResult<ParkPricing>.Success(normalized);
+        return ApplicationResult<ParkPricingEntity>.Success(normalized);
     }
 
-    public static bool HasPublicPricingData(ParkPricing pricing)
+    public static bool HasPublicPricingData(ParkPricingEntity pricing)
     {
         ArgumentNullException.ThrowIfNull(pricing);
         return pricing.AdmissionOffers.Count > 0 || pricing.AnnualPasses.Count > 0 || pricing.ParkingOffers.Count > 0;
@@ -85,7 +86,7 @@ public static class ParkPricingNormalizer
 
         foreach (ParkAdmissionPriceOffer offer in offers)
         {
-            string fieldPrefix = $"{nameof(ParkPricing.AdmissionOffers)}[{index}]";
+            string fieldPrefix = $"{nameof(ParkPricingEntity.AdmissionOffers)}[{index}]";
             ParkAdmissionPriceOffer normalized = new()
             {
                 Id = NormalizeOptionalString(offer.Id) ?? Guid.NewGuid().ToString("N"),
@@ -126,7 +127,7 @@ public static class ParkPricingNormalizer
 
         foreach (ParkAnnualPassOffer offer in offers)
         {
-            string fieldPrefix = $"{nameof(ParkPricing.AnnualPasses)}[{index}]";
+            string fieldPrefix = $"{nameof(ParkPricingEntity.AnnualPasses)}[{index}]";
             ParkAnnualPassOffer normalized = new()
             {
                 Id = NormalizeOptionalString(offer.Id) ?? Guid.NewGuid().ToString("N"),
@@ -166,7 +167,7 @@ public static class ParkPricingNormalizer
 
         foreach (ParkParkingPriceOffer offer in offers)
         {
-            string fieldPrefix = $"{nameof(ParkPricing.ParkingOffers)}[{index}]";
+            string fieldPrefix = $"{nameof(ParkPricingEntity.ParkingOffers)}[{index}]";
             ParkParkingPriceOffer normalized = new()
             {
                 Id = NormalizeOptionalString(offer.Id) ?? Guid.NewGuid().ToString("N"),

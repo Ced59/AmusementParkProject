@@ -1,10 +1,10 @@
-using AmusementPark.Core.Domain.Parks;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.ParkPricing.Ports;
 
 public interface IParkPricingRepository
 {
-    Task<ParkPricing?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken);
+    Task<ParkPricingEntity?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken);
 
-    Task<ParkPricing> UpsertAsync(ParkPricing pricing, CancellationToken cancellationToken);
+    Task<ParkPricingEntity> UpsertAsync(ParkPricingEntity pricing, CancellationToken cancellationToken);
 }

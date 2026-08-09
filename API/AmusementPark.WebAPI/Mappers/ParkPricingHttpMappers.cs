@@ -3,6 +3,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkPricing;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.ParkPricing;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.WebAPI.Mappers;
 
@@ -10,12 +11,12 @@ internal static class ParkPricingHttpMappers
 {
     private const string DateFormat = "yyyy-MM-dd";
 
-    public static ApplicationResult<ParkPricing> ToDomainResult(this ParkPricingDto dto, string parkId)
+    public static ApplicationResult<ParkPricingEntity> ToDomainResult(this ParkPricingDto dto, string parkId)
     {
         ArgumentNullException.ThrowIfNull(dto);
 
         Dictionary<string, List<string>> errors = new(StringComparer.Ordinal);
-        ParkPricing pricing = new()
+        ParkPricingEntity pricing = new()
         {
             ParkId = parkId.Trim(),
             CurrencyCode = dto.CurrencyCode?.Trim() ?? string.Empty,
@@ -33,17 +34,17 @@ internal static class ParkPricingHttpMappers
 
         if (errors.Count == 0)
         {
-            return ApplicationResult<ParkPricing>.Success(pricing);
+            return ApplicationResult<ParkPricingEntity>.Success(pricing);
         }
 
         Dictionary<string, IReadOnlyCollection<string>> validationErrors = errors.ToDictionary(
             static item => item.Key,
             static item => (IReadOnlyCollection<string>)item.Value,
             StringComparer.Ordinal);
-        return ApplicationResult<ParkPricing>.Failure(ParkPricingApplicationErrors.InvalidPricing(validationErrors));
+        return ApplicationResult<ParkPricingEntity>.Failure(ParkPricingApplicationErrors.InvalidPricing(validationErrors));
     }
 
-    public static ParkPricingDto ToHttp(this ParkPricing pricing)
+    public static ParkPricingDto ToHttp(this ParkPricingEntity pricing)
     {
         ArgumentNullException.ThrowIfNull(pricing);
 
