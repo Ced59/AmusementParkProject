@@ -8,6 +8,7 @@ import { Park } from '@app/models/parks/park';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkWeatherForecast, ParkWeatherHistoricalComparisons } from '@app/models/parks/park-weather';
 import { ParkOpeningHoursCalendar, ParkOpeningHoursSchedule } from '@app/models/parks/park-opening-hours';
+import { ParkPricing } from '@app/models/parks/park-pricing';
 import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
@@ -121,6 +122,21 @@ export class ParksApiService {
   upsertAdminParkOpeningHours(id: string, schedule: ParkOpeningHoursSchedule): Observable<ParkOpeningHoursSchedule> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.upsertAdminParkOpeningHours(id)}`;
     return this.http.put<ParkOpeningHoursSchedule>(url, schedule, this.jsonHttpOptions);
+  }
+
+  getParkPricing(id: string, options: ParksHttpOptions = {}): Observable<ParkPricing> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkPricing(id)}`;
+    return this.http.get<ParkPricing>(url, options);
+  }
+
+  getAdminParkPricing(id: string): Observable<ParkPricing> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getAdminParkPricing(id)}`;
+    return this.http.get<ParkPricing>(url);
+  }
+
+  upsertAdminParkPricing(id: string, pricing: ParkPricing): Observable<ParkPricing> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.upsertAdminParkPricing(id)}`;
+    return this.http.put<ParkPricing>(url, pricing, this.jsonHttpOptions);
   }
 
   getParkDetailSummary(id: string, options: ParksHttpOptions = {}): Observable<ParkDetailSummary> {
