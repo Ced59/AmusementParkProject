@@ -1,0 +1,53 @@
+<section class="admin-pricing-editor">
+  <header class="admin-pricing-editor__header">
+    <div>
+      <h3>{{ copy.title }}</h3>
+      <p>{{ copy.subtitle }}</p>
+    </div>
+
+    <div class="admin-pricing-editor__actions">
+      <button
+        appUiButton
+        type="button"
+        icon="pi pi-refresh"
+        class="p-button-sm p-button-secondary"
+        [disabled]="loading || saving"
+        [label]="copy.reload"
+        (click)="reload()">
+      </button>
+      <button
+        appUiButton
+        type="button"
+        icon="pi pi-align-left"
+        class="p-button-sm p-button-secondary"
+        [disabled]="loading || saving"
+        [label]="copy.format"
+        (click)="format()">
+      </button>
+      <button
+        appUiButton
+        type="button"
+        icon="pi pi-save"
+        class="p-button-sm p-button-success"
+        [disabled]="loading || saving"
+        [label]="copy.save"
+        (click)="save()">
+      </button>
+    </div>
+  </header>
+
+  <textarea
+    class="admin-pricing-editor__textarea"
+    [ngModel]="pricingJson()"
+    [ngModelOptions]="{ standalone: true }"
+    (ngModelChange)="onJsonChanged($event)"
+    spellcheck="false"
+    [attr.aria-label]="copy.jsonLabel">
+  </textarea>
+
+  @if (errorMessage(); as message) {
+    <p class="admin-pricing-editor__error">{{ message }}</p>
+  } @else {
+    <p class="admin-pricing-editor__hint">{{ copy.hint }}</p>
+  }
+</section>
