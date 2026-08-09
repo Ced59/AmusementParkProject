@@ -13,5 +13,6 @@ public enum ParkGraphExportSection
     Items,
     Images,
     OpeningHours,
+    Pricing,
     History,
 }

@@ -14,6 +14,7 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
@@ -43,6 +44,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
     private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
     private readonly IParkOpeningHoursRepository? openingHoursRepository;
     private readonly IHistoryEventRepository? historyEventRepository;
+    private readonly IParkPricingRepository? pricingRepository;
 
     public ExportParkGraphJsonQueryHandler(
         IParkRepository parkRepository,
@@ -54,7 +56,8 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         IImageRepository imageRepository,
         IParkOpeningHoursRepository? openingHoursRepository = null,
         IHistoryEventRepository? historyEventRepository = null,
-        IStandaloneAttractionRepository? standaloneAttractionRepository = null)
+        IStandaloneAttractionRepository? standaloneAttractionRepository = null,
+        IParkPricingRepository? pricingRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -66,6 +69,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         this.openingHoursRepository = openingHoursRepository;
         this.historyEventRepository = historyEventRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
+        this.pricingRepository = pricingRepository;
     }
 
     public async Task<ApplicationResult<ParkGraphJsonExportResult>> HandleAsync(ExportParkGraphJsonQuery query, CancellationToken cancellationToken = default)
@@ -97,6 +101,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         bool includeReferences = sections.Contains(ParkGraphExportSection.References);
         bool includeImages = sections.Contains(ParkGraphExportSection.Images);
         bool includeOpeningHours = sections.Contains(ParkGraphExportSection.OpeningHours);
+        bool includePricing = sections.Contains(ParkGraphExportSection.Pricing);
         bool includeHistory = sections.Contains(ParkGraphExportSection.History);
         bool needsItems = includeItems || includeReferences || includeHistory;
 
@@ -143,6 +148,9 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         Task<ParkOpeningHoursSchedule?> openingHoursTask = !includeOpeningHours || this.openingHoursRepository is null
             ? Task.FromResult<ParkOpeningHoursSchedule?>(null)
             : this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        Task<ParkPricing?> pricingTask = !includePricing || this.pricingRepository is null
+            ? Task.FromResult<ParkPricing?>(null)
+            : this.pricingRepository.GetByParkIdAsync(park.Id, cancellationToken);
         Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = !includeHistory || this.historyEventRepository is null
             ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>())
             : this.historyEventRepository.GetParkTimelineAsync(park.Id, true, true, itemIds, cancellationToken);
@@ -157,6 +165,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
             operatorImagesTask,
             manufacturerImagesTask,
             openingHoursTask,
+            pricingTask,
             historyEventsTask,
             referencesTask);
 
@@ -166,6 +175,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         IReadOnlyCollection<Image> operatorImages = await operatorImagesTask;
         IReadOnlyCollection<Image> manufacturerImages = await manufacturerImagesTask;
         ParkOpeningHoursSchedule? openingHours = await openingHoursTask;
+        ParkPricing? pricing = await pricingTask;
         IReadOnlyCollection<HistoryEvent> historyEvents = await historyEventsTask;
         ParkGraphExportReferences? references = await referencesTask;
 
@@ -223,6 +233,11 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         if (includeOpeningHours)
         {
             document["openingHours"] = openingHours is null ? null : MapOpeningHours(openingHours);
+        }
+
+        if (includePricing)
+        {
+            document["pricing"] = pricing is null ? null : MapPricing(pricing);
         }
 
         if (includeHistory)
