@@ -17,6 +17,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -214,6 +215,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IParkWeatherRepository, ParkWeatherRepository>();
         services.AddScoped<IParkWeatherRunRepository, ParkWeatherRunRepository>();
         services.AddScoped<IParkOpeningHoursRepository, ParkOpeningHoursRepository>();
+        services.AddScoped<IParkPricingRepository, ParkPricingRepository>();
         services.AddScoped<IHistoryEventRepository, HistoryEventRepository>();
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
         services.AddScoped<IParkWeatherProviderStrategyResolver, ParkWeatherProviderStrategyResolver>();
