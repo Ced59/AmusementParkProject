@@ -20,6 +20,7 @@ import { AdminParkLocationTabComponent } from './tabs/admin-park-location-tab/ad
 import { AdminParkDescriptionsTabComponent } from './tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
 import { AdminParkLogosTabComponent } from './tabs/admin-park-logos-tab/admin-park-logos-tab.component';
 import { AdminParkPhotosTabComponent } from './tabs/admin-park-photos-tab/admin-park-photos-tab.component';
+import { AdminParkPricingTabComponent } from './tabs/admin-park-pricing-tab/admin-park-pricing-tab.component';
 import { PARK_AUDIENCE_CLASSIFICATION_OPTIONS, PARK_STATUS_OPTIONS, PARK_TYPE_OPTIONS } from '@shared/utils/display/display-options';
 import { AdminParkAudienceClassificationOption, AdminParkStatusOption, AdminParkTypeOption } from '@features/admin/parks/models/admin-park-edit.model';
 import {
@@ -70,6 +71,7 @@ type SaveScope = 'section' | 'all';
     AdminParkDescriptionsTabComponent,
     AdminParkLogosTabComponent,
     AdminParkPhotosTabComponent,
+    AdminParkPricingTabComponent,
     AdminVideoCreatePanelComponent,
     TranslateModule
   ]
