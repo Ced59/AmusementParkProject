@@ -8,10 +8,12 @@ using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkPricing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
@@ -27,8 +29,10 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
     private readonly IMongoCollection<ParkFounderDocument> parkFoundersCollection;
     private readonly IMongoCollection<ParkOperatorDocument> parkOperatorsCollection;
     private readonly IMongoCollection<RatingAggregateDocument> ratingAggregatesCollection;
+    private readonly IMongoCollection<ParkPricingDocument> parkPricingCollection;
+    private readonly TimeProvider timeProvider;
 
-    public ParkDetailSummaryReadRepository(IMongoDatabase database, MongoDbSettings settings)
+    public ParkDetailSummaryReadRepository(IMongoDatabase database, MongoDbSettings settings, TimeProvider? timeProvider = null)
     {
         this.parksCollection = database.GetCollection<ParkDocument>(settings.ParksCollectionName);
         this.parkItemsCollection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
@@ -37,6 +41,8 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         this.parkFoundersCollection = database.GetCollection<ParkFounderDocument>(settings.ParkFoundersCollectionName);
         this.parkOperatorsCollection = database.GetCollection<ParkOperatorDocument>(settings.ParkOperatorsCollectionName);
         this.ratingAggregatesCollection = database.GetCollection<RatingAggregateDocument>(settings.RatingAggregatesCollectionName);
+        this.parkPricingCollection = database.GetCollection<ParkPricingDocument>(settings.ParkPricingCollectionName);
+        this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
     public async Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
@@ -60,19 +66,26 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         Task<string?> founderNameTask = this.GetFounderNameAsync(parkDocument.FounderId, cancellationToken);
         Task<string?> operatorNameTask = this.GetOperatorNameAsync(parkDocument.OperatorId, cancellationToken);
         Task<RatingSummaryResult> ratingTask = this.GetRatingSummaryAsync(parkDocument.Id, cancellationToken);
+        Task<ParkPricingEntity?> pricingTask = this.GetPricingAsync(parkDocument.Id, cancellationToken);
 
-        await Task.WhenAll(countsTask, zoneCountTask, mappableItemsCountTask, mainImageTask, founderNameTask, operatorNameTask, ratingTask);
+        await Task.WhenAll(countsTask, zoneCountTask, mappableItemsCountTask, mainImageTask, founderNameTask, operatorNameTask, ratingTask, pricingTask);
 
         IReadOnlyDictionary<ParkItemCategory, int> countsByCategory = await countsTask;
         int totalItems = countsByCategory.Values.Sum();
+        Park park = parkDocument.ToDomain();
+        ParkPricingEntity? pricing = await pricingTask;
+        DateOnly currentDate = DateOnly.FromDateTime(this.timeProvider.GetUtcNow().UtcDateTime);
 
         return new ParkDetailSummaryResult
         {
-            Park = parkDocument.ToDomain(),
+            Park = park,
             MainImage = await mainImageTask,
             FounderName = await founderNameTask,
             OperatorName = await operatorNameTask,
             Rating = await ratingTask,
+            HasCurrentPricing = park.Status.IsOpenToVisitors()
+                && pricing is not null
+                && pricing.HasPricedOffersValidOn(currentDate),
             Stats = new ParkDetailSummaryStatsResult
             {
                 TotalItems = totalItems,
@@ -86,6 +99,14 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
                 CountsByCategory = countsByCategory,
             },
         };
+    }
+
+    private async Task<ParkPricingEntity?> GetPricingAsync(string parkId, CancellationToken cancellationToken)
+    {
+        ParkPricingDocument? document = await this.parkPricingCollection
+            .Find(item => item.ParkId == parkId)
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
     }
 
     private async Task<int> GetMappableItemsCountAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)

@@ -8,6 +8,7 @@ import {
   ParkOpeningHoursCalendar,
   ParkOpeningHoursSchedule,
 } from '@app/models/parks/park-opening-hours';
+import { ParkPricing } from '@app/models/parks/park-pricing';
 import { environment } from '../../../environments/environment';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { ParksApiService } from './parks-api.service';
@@ -293,6 +294,39 @@ describe('ParksApiService', () => {
     adminPutRequest.flush(schedule);
   });
 
+  it('reads public and admin pricing and upserts it through ParksApiService', () => {
+    const pricing: ParkPricing = createPricing();
+
+    service.getParkPricing('park-1').subscribe((result: ParkPricing): void => {
+      expect(result).toEqual(pricing);
+    });
+    service.getAdminParkPricing('park-1').subscribe((result: ParkPricing): void => {
+      expect(result).toEqual(pricing);
+    });
+    service.upsertAdminParkPricing('park-1', pricing).subscribe((result: ParkPricing): void => {
+      expect(result).toEqual(pricing);
+    });
+
+    const publicRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}parks/park-1/pricing`,
+    );
+    expect(publicRequest.request.method).toBe('GET');
+    publicRequest.flush(pricing);
+
+    const adminGetRequest = httpTestingController.expectOne((request) =>
+      request.urlWithParams === `${environment.apiBaseUrl}admin/parks/park-1/pricing`
+        && request.method === 'GET');
+    expect(adminGetRequest.request.method).toBe('GET');
+    adminGetRequest.flush(pricing);
+
+    const adminPutRequest = httpTestingController.expectOne((request) =>
+      request.urlWithParams === `${environment.apiBaseUrl}admin/parks/park-1/pricing`
+        && request.method === 'PUT');
+    expect(adminPutRequest.request.method).toBe('PUT');
+    expect(adminPutRequest.request.body).toEqual(pricing);
+    adminPutRequest.flush(pricing);
+  });
+
   function createParkDetailSummary(name: string): ParkDetailSummary {
     return {
       park: createPark({ name }),
@@ -334,6 +368,17 @@ describe('ParksApiService', () => {
       ],
       missingTargetParkIds: [],
       unavailableTargetParkIds: [],
+    };
+  }
+
+  function createPricing(): ParkPricing {
+    return {
+      parkId: 'park-1',
+      currencyCode: 'EUR',
+      notes: [],
+      admissionOffers: [],
+      annualPasses: [],
+      parkingOffers: [],
     };
   }
 });

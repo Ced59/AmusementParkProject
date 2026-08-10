@@ -1,0 +1,27 @@
+{
+  "parkPricing": {
+    "detailCta": { "title": "Precios y entradas", "subtitle": "Consulta los precios publicados y las opciones de compra" },
+    "page": {
+      "kicker": "Prepara tu visita", "title": "Precios y entradas de {{ name }}", "titleShort": "Precios y entradas",
+      "lead": "Compara los precios publicados actualmente para {{ name }}.", "backToPark": "Volver a {{ name }}",
+      "breadcrumbLabel": "Ruta de navegación", "loadingTitle": "Cargando precios", "loadingMessage": "Se están cargando los precios publicados.",
+      "emptyTitle": "No hay precios disponibles", "emptyMessage": "Todavía no hay una tarifa actual disponible para este parque.",
+      "errorTitle": "Precios no disponibles", "errorMessage": "No se han podido cargar los precios.",
+      "unavailableTitle": "Precios actuales no disponibles para {{ name }}", "unavailableMessage": "La tarifa actual solo se muestra para parques abiertos a los visitantes."
+    },
+    "disclaimer": { "title": "Precios orientativos", "message": "Los precios pueden variar según la fecha, la disponibilidad, la demanda, las promociones y el canal de venta. Comprueba siempre el precio final en el sitio oficial de {{ name }} antes de comprar." },
+    "sections": {
+      "admission": { "title": "Entradas", "subtitle": "Precios por categoría de visitante" },
+      "passes": { "title": "Pases anuales", "subtitle": "Opciones para volver durante todo el año" },
+      "parking": { "title": "Aparcamiento", "subtitle": "Precios de aparcamiento publicados" }
+    },
+    "channels": { "online": "En línea", "gate": "En taquilla" },
+    "modes": { "Fixed": "Precio fijo", "Range": "Intervalo de precios", "Dynamic": "Precio dinámico" },
+    "price": { "from": "desde", "upTo": "hasta", "dynamic": "precio dinámico" },
+    "audiences": { "adult": "Adulto", "child": "Niño", "senior": "Mayor", "youth": "Joven", "infant": "Bebé", "toddler": "Niño pequeño", "student": "Estudiante", "disabled": "Persona con discapacidad", "companion": "Acompañante", "family": "Familia", "group": "Grupo", "general": "Entrada general" },
+    "validity": { "range": "Válido del {{ from }} al {{ to }}", "from": "Válido desde el {{ date }}", "until": "Válido hasta el {{ date }}" },
+    "fields": { "conditions": "Condiciones", "currency": "Moneda", "lastVerified": "Última verificación", "source": "Fuente oficial", "purchase": "Compra general", "notes": "Notas" },
+    "actions": { "buy": "Comprar en el sitio oficial", "buyOffer": "Ver esta oferta", "openSource": "Consultar la fuente" },
+    "meta": { "title": "Información sobre los precios" }
+  }
+}

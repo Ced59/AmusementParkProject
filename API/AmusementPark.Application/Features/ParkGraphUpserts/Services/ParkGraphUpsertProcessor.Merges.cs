@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
@@ -210,9 +211,30 @@ public sealed partial class ParkGraphUpsertProcessor
         IReadOnlyCollection<ParkZone> sourceZones = await this.parkZoneRepository.GetByParkIdAsync(source.Id, cancellationToken);
         IReadOnlyCollection<ParkItem> sourceItems = await this.parkItemRepository.GetByParkIdAsync(source.Id, true, cancellationToken);
         IReadOnlyCollection<Image> sourceImages = await this.imageRepository.GetByOwnerAsync(ImageOwnerType.Park, source.Id, null, cancellationToken);
+        ParkPricingEntity? sourcePricing = this.parkPricingRepository is null
+            ? null
+            : await this.parkPricingRepository.GetByParkIdAsync(source.Id, cancellationToken);
+        ParkPricingEntity? targetPricing = sourcePricing is null || this.parkPricingRepository is null
+            ? null
+            : await this.parkPricingRepository.GetByParkIdAsync(target.Id, cancellationToken);
+        bool shouldMoveSourcePricing = sourcePricing is not null
+            && merged.Status.IsOpenToVisitors()
+            && (targetPricing is null || ShouldTakeSourceSection(sections, "pricing"));
         AddAttachmentCountChange(targetChange, "attachments.zonesMoved", sourceZones.Count);
         AddAttachmentCountChange(targetChange, "attachments.parkItemsMoved", sourceItems.Count);
         AddAttachmentCountChange(targetChange, "attachments.imagesMoved", sourceImages.Count);
+        if (shouldMoveSourcePricing && sourcePricing is not null)
+        {
+            AddChange(targetChange, "attachments.pricingMoved", targetPricing?.ParkId, sourcePricing.ParkId);
+        }
+        else if (sourcePricing is not null && !merged.Status.IsOpenToVisitors())
+        {
+            result.Warnings.Add($"Park merge removed source pricing '{source.Id}' because target park '{target.Id}' is not open to visitors.");
+        }
+        else if (sourcePricing is not null && targetPricing is not null)
+        {
+            result.Warnings.Add($"Park merge kept target pricing '{target.Id}' and removed source pricing '{source.Id}'. Set sections.pricing to 'source' to replace it.");
+        }
 
         if (targetChange.Fields.Count > 0)
         {
@@ -255,6 +277,17 @@ public sealed partial class ParkGraphUpsertProcessor
             foreach (Image image in sourceImages)
             {
                 await this.imageRepository.LinkAsync(image.Id, ImageOwnerType.Park, merged.Id, cancellationToken);
+            }
+
+            if (sourcePricing is not null && this.parkPricingRepository is not null)
+            {
+                if (shouldMoveSourcePricing)
+                {
+                    sourcePricing.ParkId = merged.Id;
+                    await this.parkPricingRepository.UpsertAsync(sourcePricing, cancellationToken);
+                }
+
+                await this.parkPricingRepository.DeleteByParkIdAsync(source.Id, cancellationToken);
             }
 
             await this.parkRepository.DeleteAsync(source.Id, cancellationToken);

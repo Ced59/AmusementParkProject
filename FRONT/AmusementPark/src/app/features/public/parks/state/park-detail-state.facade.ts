@@ -99,7 +99,8 @@ export class ParkDetailStateFacade {
         currentSummary.rating ?? null,
         this.hasVideosSignal(),
         this.hasImagesSignal(),
-        this.hasHistorySignal()
+        this.hasHistorySignal(),
+        currentSummary.hasCurrentPricing === true
       );
     });
   });

@@ -20,7 +20,7 @@ Pour `Planned`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively` e
 
 - ne pas livrer de section `openingHours` ;
 - ne pas recycler d’anciens horaires pour suggérer une ouverture actuelle ;
-- conserver les dates d’annonce, chantier, fermeture ou annulation dans les champs du parc ou à l’étape 7 ;
+- conserver les dates d’annonce, chantier, fermeture ou annulation dans les champs du parc ou à l’étape 8 ;
 - conclure explicitement « étape 6 non applicable au statut courant », puis évaluer l’étape 7.
 
 ## Sources à privilégier
@@ -94,7 +94,7 @@ Ne pas créer d’événement pour :
 - simple haute saison ;
 - week-end prolongé non nommé ;
 - variation horaire sans identité publique ;
-- promotion tarifaire si les tarifs ne sont pas implémentés.
+- promotion tarifaire, qui relève de la grille et des conditions de l’étape 7 lorsqu’elle est encore valable.
 
 Les événements nommés liés au calendrier vont d’abord dans `openingHours.labels` ou `openingHours.reasons`. Ils deviennent des événements `history` seulement s’ils ont une valeur durable pour l’histoire du parc.
 
@@ -172,6 +172,6 @@ Section principale : `openingHours`.
 
 ## Après Apply
 
-Avant de créer la timeline historique, contrôler la réponse Apply, intégrer ses résultats au registre consolidé et continuer sans export complet ; demander uniquement un export ciblé si un identifiant ou une réponse ambiguë l’exige. L’export complet frais reste réservé au passage vers l’étape 8.
+Avant de traiter les tarifs, contrôler la réponse Apply, intégrer ses résultats au registre consolidé et continuer sans export complet ; demander uniquement un export ciblé si un identifiant ou une réponse ambiguë l’exige. L’export complet frais reste réservé au passage vers l’étape 9.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 7 — Histoire du parc et des parkItems. Si le parc est trop peu documenté pour une timeline fiable, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 7 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 7 — Tarifs actuels. Elle est `utile` uniquement pour un parc `Operating` dont des tarifs actuels fiables peuvent être vérifiés. Pour tout autre statut, la déclarer non applicable, puis évaluer l’étape 8 — Histoire du parc et des parkItems. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

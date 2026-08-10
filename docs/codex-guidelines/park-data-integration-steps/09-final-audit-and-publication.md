@@ -1,10 +1,10 @@
-# Étape 8 — Audit final et préparation publication
+# Étape 9 — Audit final et préparation publication
 
 Objectif : vérifier que l’intégration complète est cohérente, fiable, localisée et publiable.
 
 ## Export requis
 
-Immédiatement avant de commencer cet audit, obtenir un export complet frais après toutes les étapes appliquées. Dans les deux modes, il s’agit du seul export complet obligatoire du parcours de complétion 0 à 8. Une autorisation de publication donnée plus tard ouvre le contrôle distinct décrit à la fin de cette étape.
+Immédiatement avant de commencer cet audit, obtenir un export complet frais après toutes les étapes appliquées. Dans les deux modes, il s’agit du seul export complet obligatoire du parcours de complétion 0 à 9. Une autorisation de publication donnée plus tard ouvre le contrôle distinct décrit à la fin de cette étape.
 
 ## Audit de pertinence
 
@@ -21,9 +21,9 @@ Le résultat d’une commande de complétude vise le niveau `Excellent` du scori
 
 Un score élevé ne remplace jamais cet audit. Il est interdit de rendre un critère artificiellement non applicable, d’omettre une entité connue ou de publier un texte faible pour améliorer le score. Une lacune résiduelle n’est acceptable que si la donnée ou l’image reste introuvable après une recherche réelle et si cette limite est précisément documentée.
 
-Même avec un score de 100, l’étape 8 reste incomplète tant que le corpus éditorial n’a pas été relu dans son ensemble. Les contrôles de présence ne détectent ni un paragraphe de secours répété, ni une traduction littérale faible, ni un conseil d’itinéraire injecté dans des dizaines de fiches.
+Même avec un score de 100, l’étape 9 reste incomplète tant que le corpus éditorial n’a pas été relu dans son ensemble. Les contrôles de présence ne détectent ni un paragraphe de secours répété, ni une traduction littérale faible, ni un conseil d’itinéraire injecté dans des dizaines de fiches.
 
-Cette relecture est effectuée et assumée par Codex dans chacune des huit langues. Une sortie de traduction automatique non réécrite, une validation limitée à des motifs interdits ou une simple comparaison de longueurs bloque la fin de l’étape 8, même lorsque tous les champs sont présents.
+Cette relecture est effectuée et assumée par Codex dans chacune des huit langues. Une sortie de traduction automatique non réécrite, une validation limitée à des motifs interdits ou une simple comparaison de longueurs bloque la fin de l’étape 9, même lorsque tous les champs sont présents.
 
 ## Tableau de couverture obligatoire
 
@@ -39,6 +39,7 @@ Produire les numérateurs, dénominateurs et identifiants manquants pour :
 - articles avec sources joignables, localisations attendues et image contextualisée ;
 - attractions définitivement fermées avec statut, période, description, image et jalon applicables ;
 - conditions d’accès recherchées pour chaque attraction concernée ;
+- tarifs actuels : devise, billets d’entrée, pass annuels et offres de parking, ou non-applicabilité/lacune sourcée ;
 - lacunes restantes avec familles de sources consultées et raison de l’absence.
 
 Le tableau est fondé sur le dernier export, pas sur les intentions des lots précédents. Tout écart inexpliqué déclenche une reprise ciblée de l’étape concernée.
@@ -56,6 +57,7 @@ Vérifier :
 - aucune transformation historique, aucun alias localisé ni aucun résumé du « dernier fait connu » n’est utilisé comme statut d’attraction ;
 - un projet créé reste masqué par défaut tant que la revue et la décision de publication ne sont pas terminées ;
 - `openingHours` est absent lorsque le statut du parc n’est pas `Operating` ;
+- `pricing` est absent lorsque le statut du parc n’est pas `Operating` ;
 - les dates ou périodes partielles fiables ont été conservées sans jour ou mois inventé ;
 - toutes les clés sont résolues ;
 - toutes les dates complètes sont sourcées ;
@@ -63,7 +65,7 @@ Vérifier :
 - `park.audienceClassification` est renseigné avec une valeur canonique, sauf reprise volontaire d’un parc legacy explicitement listé comme correction restante ;
 - les notes expliquent les incertitudes.
 - aucun champ obligatoire n’est cassé ;
-- aucun tarif n’est ajouté si les tarifs ne sont pas implémentés ;
+- toute grille `pricing` contient au moins une offre actuelle vérifiée et utilise la propriété canonique, pas l’alias legacy `parkPricing` ;
 - aucun doublon constructeur, exploitant ou fondateur n’est créé ;
 - les données existantes fiables sont préservées en mode `merge`.
 - toutes les valeurs enum utilisées existent dans `park-graph-upsert-enums.md` ;
@@ -71,7 +73,7 @@ Vérifier :
 
 ### Audit bloquant — statut lifecycle des attractions
 
-Le backend conserve `AttractionDetails.Status` sous forme de chaîne et peut préserver une valeur inconnue pour des raisons de compatibilité. **Le fait qu’un JSON soit accepté techniquement ne valide donc pas la sémantique du statut.** L’étape 8 doit contrôler le contenu du champ indépendamment du Preview.
+Le backend conserve `AttractionDetails.Status` sous forme de chaîne et peut préserver une valeur inconnue pour des raisons de compatibilité. **Le fait qu’un JSON soit accepté techniquement ne valide donc pas la sémantique du statut.** L’étape 9 doit contrôler le contenu du champ indépendamment du Preview.
 
 1. Lister toutes les valeurs distinctes de `items[].attractionDetails.status` avec leur nombre d’occurrences et les IDs concernés.
 2. Considérer comme valides uniquement `Operating`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively`, `Removed`, `Planned`, `Unknown`.
@@ -86,7 +88,7 @@ Pour chaque cas trouvé :
 - déterminer le vrai état courant depuis les sources et l’état physique/exploité de l’attraction ;
 - produire une **reprise ciblée de l’étape 3** pour corriger `attractionDetails.status` ;
 - vérifier si le fait historique existe déjà avec le bon propriétaire, le bon type, une période fiable et des sources ;
-- sinon produire une **reprise ciblée de l’étape 7** qui crée le ou les événements adéquats ;
+- sinon produire une **reprise ciblée de l’étape 8** qui crée le ou les événements adéquats ;
 - ne jamais corriger le statut en faisant disparaître l’information historique.
 
 Règles de cohérence minimales :
@@ -141,7 +143,7 @@ Pour chaque langue, produire des mesures sur le texte visible après décodage H
 - reprendre les articles durables sous 250 mots ou sans trois sections développées, et les articles de synthèse majeurs qui ne couvrent pas plusieurs périodes ou angles ;
 - refuser les blocs vides, les intertitres génériques et tout texte ajouté uniquement pour atteindre un nombre.
 
-Joindre ces distributions et les exceptions justifiées au tableau de couverture. Un score de 100 avec une médiane de descriptions très basse ou une structure uniforme `1 h2 / 1 p` reste un échec de l’étape 8.
+Joindre ces distributions et les exceptions justifiées au tableau de couverture. Un score de 100 avec une médiane de descriptions très basse ou une structure uniforme `1 h2 / 1 p` reste un échec de l’étape 9.
 
 Les crédits d’images restent exclus de la comparaison stylistique lorsqu’ils portent légitimement l’auteur, la source ou la licence. Les références globales sont auditées, mais une correction qui affecterait d’autres parcs doit devenir un lot transversal explicite au lieu d’être appliquée silencieusement dans le parc courant.
 
@@ -161,7 +163,7 @@ Pour chaque article publié ou prêt à publier, vérifier :
 - les légendes décrivent l’image affichée et son rapport au sujet, sans justifier l’absence d’une autre image ;
 - les incidents ou accidents retenus sur un parkItem ont un article associé et une photo contextualisée quand une image acceptable est trouvable.
 
-Si un article semble écrit comme une note d’audit, une justification de prudence ou une réponse au reviewer, l’étape 8 doit exiger un JSON de correction ciblé avant publication.
+Si un article semble écrit comme une note d’audit, une justification de prudence ou une réponse au reviewer, l’étape 9 doit exiger un JSON de correction ciblé avant publication.
 
 ## Audit conditions d’accès
 
@@ -226,13 +228,33 @@ Vérifier :
 
 - horaires sourcés et récents pour `Operating` uniquement ;
 - aucun CTA, calendrier ou donnée « ouvert maintenant » pour `Planned`, `UnderConstruction`, `TemporarilyClosed`, `ClosedDefinitively` ou `Cancelled` ;
-- pas de tarifs ;
+- aucun tarif n’est stocké dans `openingHours`, ses libellés ou ses raisons ;
 - événements nommés seulement ;
 - pas de “ouverture estivale” générique transformée en événement ;
 - labels et raisons localisés ;
 - `openingHours.labels` et `openingHours.reasons` réservés aux événements nommés, exceptions datées ou informations temporaires vraiment utiles ;
 - aucun commentaire général répété sur tous les jours normaux du calendrier ;
 - fermetures exceptionnelles distinctes des fermetures définitives.
+
+## Audit tarifs
+
+Pour un parc `Operating`, vérifier la section `pricing` exportée de bout en bout :
+
+- `parkId` correspond au parc audité et `currencyCode` contient trois lettres majuscules ;
+- `sourceUrl`, `purchaseUrl` et les liens spécifiques pointent vers les pages officielles pertinentes ;
+- `lastVerifiedAtUtc` correspond à la vérification réelle et la grille est encore actuelle ;
+- les nombres de billets, pass annuels et offres de parking correspondent au registre consolidé ;
+- chaque code est stable et unique dans sa collection ;
+- chaque billet comporte une `audienceCategory` et des libellés publics compréhensibles ;
+- chaque pass possède un nom localisé ; chaque parking possède un libellé localisé ;
+- chaque offre possède au moins un prix en ligne ou au guichet sans duplication supposée entre les canaux ;
+- `Fixed`, `Range` et `Dynamic` respectent leurs champs, leurs bornes et l’interdiction des montants négatifs ;
+- les périodes ne sont pas inversées et les saisons correspondent aux sources ;
+- les conditions localisées conservent les restrictions qui changent réellement l’offre ;
+- les notes ne contiennent aucune consigne d’audit ou information interne ;
+- l’export `Pricing` peut être réinjecté en Preview sans erreur et sans perte fonctionnelle.
+
+Pour tout autre statut, la présence d’une grille actuelle est un bloqueur. Produire une correction ciblée de l’étape 7 sans présenter ces données au public. Une grille absente pour un parc `Operating` n’est acceptable qu’après recherche réelle et avec une lacune explicitement documentée.
 
 ## Audit histoire
 
@@ -262,7 +284,7 @@ Avant publication :
 - les événements de parkItem existants doivent contenir `ownerId`, `parkItemId`, `itemId` et `contextParkId` explicites ;
 - aucun article ne doit référencer une image par `imageKey` si cette clé n’est pas créée ou enregistrée dans le même JSON ;
 - Preview doit retourner 0 erreur et 0 warning bloquant avant Apply ;
-- les corrections d’articles après audit restent des reprises ciblées de l’étape 7, pas une nouvelle étape.
+- les corrections d’articles après audit restent des reprises ciblées de l’étape 8, pas une nouvelle étape.
 
 ## Décision publication
 
@@ -282,7 +304,7 @@ Ne passer `isVisible` à `true` que pour les entités :
 
 ### Après autorisation explicite de publication
 
-1. Avant toute mutation de visibilité, obtenir un nouvel export complet frais du parc par la voie autorisée du mode courant. En mode Codex, contrôler d’abord l’état global des opérations puis utiliser le client `PARK_DATA_EDITOR`. En mode ChatGPT guidé, demander ce nouvel export à l’utilisateur par la surface d’administration prévue, attendre son fichier et ne jamais appeler `park-data-editor/*`. Rapprocher ensuite cet export de l’état audité et des réponses des éventuelles corrections ciblées, puis rejouer tous les contrôles bloquants sur l’état réellement en ligne. Toute différence inexpliquée suspend la publication jusqu’à une correction ciblée et une nouvelle validation. Cet export appartient au flux de publication séparément autorisé et ne remet pas en cause l’unique export complet obligatoire du parcours de complétion 0 à 8.
+1. Avant toute mutation de visibilité, obtenir un nouvel export complet frais du parc par la voie autorisée du mode courant. En mode Codex, contrôler d’abord l’état global des opérations puis utiliser le client `PARK_DATA_EDITOR`. En mode ChatGPT guidé, demander ce nouvel export à l’utilisateur par la surface d’administration prévue, attendre son fichier et ne jamais appeler `park-data-editor/*`. Rapprocher ensuite cet export de l’état audité et des réponses des éventuelles corrections ciblées, puis rejouer tous les contrôles bloquants sur l’état réellement en ligne. Toute différence inexpliquée suspend la publication jusqu’à une correction ciblée et une nouvelle validation. Cet export appartient au flux de publication séparément autorisé et ne remet pas en cause l’unique export complet obligatoire du parcours de complétion 0 à 9.
 2. Publier de façon ciblée les images validées, puis les articles et contenus dépendants prêts, pendant que le nouveau parc reste masqué. Réutiliser les IDs d’images exportés ; ne pas réimporter les fichiers.
 3. Vérifier les statuts, descriptions, images courantes et sources des parkItems publiables. Ne pas rendre visible un item legacy inconnu au seul motif que la consigne dit « tout publier ».
 4. Passer le parc à `Validated` et visible en dernier.
@@ -312,4 +334,4 @@ Produire :
 
 Ne pas ouvrir un nouveau chantier de fond à cette étape. Les améliorations non bloquantes deviennent des lots séparés.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` et indiquer qu’aucune étape officielle ne suit l’étape 8. Dire que le parcours 0 à 8 est terminé ou lister les corrections ciblées restantes. Ne pas proposer une nouvelle étape de workflow : si une correction appartient à une étape déjà parcourue, la nommer comme reprise ciblée de cette étape.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` et indiquer qu’aucune étape officielle ne suit l’étape 9. Dire que le parcours 0 à 9 est terminé ou lister les corrections ciblées restantes. Ne pas proposer une nouvelle étape de workflow : si une correction appartient à une étape déjà parcourue, la nommer comme reprise ciblée de cette étape.

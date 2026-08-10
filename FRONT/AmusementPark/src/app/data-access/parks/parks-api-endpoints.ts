@@ -129,6 +129,9 @@ export const PARKS_API_ENDPOINTS = {
   },
   getAdminParkOpeningHours: (id: string) => `admin/parks/${encodeURIComponent(id)}/opening-hours`,
   upsertAdminParkOpeningHours: (id: string) => `admin/parks/${encodeURIComponent(id)}/opening-hours`,
+  getParkPricing: (id: string) => `parks/${encodeURIComponent(id)}/pricing`,
+  getAdminParkPricing: (id: string) => `admin/parks/${encodeURIComponent(id)}/pricing`,
+  upsertAdminParkPricing: (id: string) => `admin/parks/${encodeURIComponent(id)}/pricing`,
   getParkDetailSummary: (id: string, closedFilter?: ClosedEntityFilter | null) => `parks/${id}/detail-summary${buildClosedFilterQuery(closedFilter, '?')}`,
   getParkMapItems: (id: string, closedFilter?: ClosedEntityFilter | null) => `parks/${id}/map-items${buildClosedFilterQuery(closedFilter, '?')}`,
   getParkDistances: (sourceParkId: string, targetParkIds: string[]) => {

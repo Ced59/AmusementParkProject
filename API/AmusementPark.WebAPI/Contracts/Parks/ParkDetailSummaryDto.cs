@@ -17,6 +17,8 @@ public sealed class ParkDetailSummaryDto
 
     public RatingSummaryDto? Rating { get; set; }
 
+    public bool HasCurrentPricing { get; set; }
+
     public ParkDetailSummaryStatsDto Stats { get; set; } = new ParkDetailSummaryStatsDto();
 }
 

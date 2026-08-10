@@ -1,0 +1,27 @@
+{
+  "parkPricing": {
+    "detailCta": { "title": "Ceny i bilety", "subtitle": "Sprawdź opublikowane ceny i opcje zakupu" },
+    "page": {
+      "kicker": "Zaplanuj wizytę", "title": "Ceny i bilety do {{ name }}", "titleShort": "Ceny i bilety",
+      "lead": "Porównaj ceny obecnie podane dla {{ name }}.", "backToPark": "Wróć do {{ name }}",
+      "breadcrumbLabel": "Ścieżka nawigacji", "loadingTitle": "Wczytywanie cen", "loadingMessage": "Podane ceny są wczytywane.",
+      "emptyTitle": "Brak dostępnych cen", "emptyMessage": "Dla tego parku nie ma jeszcze aktualnego cennika.",
+      "errorTitle": "Ceny niedostępne", "errorMessage": "Nie udało się wczytać cen.",
+      "unavailableTitle": "Aktualne ceny dla {{ name }} są niedostępne", "unavailableMessage": "Aktualny cennik jest wyświetlany tylko dla parków otwartych dla odwiedzających."
+    },
+    "disclaimer": { "title": "Ceny orientacyjne", "message": "Ceny mogą zależeć od daty, dostępności, popytu, promocji i kanału sprzedaży. Przed zakupem zawsze sprawdź ostateczną cenę na oficjalnej stronie {{ name }}." },
+    "sections": {
+      "admission": { "title": "Bilety wstępu", "subtitle": "Ceny według kategorii odwiedzających" },
+      "passes": { "title": "Karnety roczne", "subtitle": "Opcje na wizyty przez cały rok" },
+      "parking": { "title": "Parking", "subtitle": "Podane opłaty parkingowe" }
+    },
+    "channels": { "online": "Online", "gate": "W kasie" },
+    "modes": { "Fixed": "Cena stała", "Range": "Przedział cenowy", "Dynamic": "Cena dynamiczna" },
+    "price": { "from": "od", "upTo": "do", "dynamic": "cena dynamiczna" },
+    "audiences": { "adult": "Dorosły", "child": "Dziecko", "senior": "Senior", "youth": "Młodzież", "infant": "Niemowlę", "toddler": "Małe dziecko", "student": "Student", "disabled": "Osoba z niepełnosprawnością", "companion": "Opiekun", "family": "Rodzina", "group": "Grupa", "general": "Bilet ogólny" },
+    "validity": { "range": "Ważne od {{ from }} do {{ to }}", "from": "Ważne od {{ date }}", "until": "Ważne do {{ date }}" },
+    "fields": { "conditions": "Warunki", "currency": "Waluta", "lastVerified": "Ostatnio sprawdzono", "source": "Oficjalne źródło", "purchase": "Ogólny link zakupu", "notes": "Uwagi" },
+    "actions": { "buy": "Kup na oficjalnej stronie", "buyOffer": "Zobacz tę ofertę", "openSource": "Zobacz źródło" },
+    "meta": { "title": "Informacje o cenach" }
+  }
+}

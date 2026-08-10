@@ -12,12 +12,16 @@ public sealed class InMemorySeoSitemapRefreshScheduler : BackgroundService, ISeo
     private static readonly TimeSpan DebounceDelay = TimeSpan.FromMinutes(2);
 
     private readonly IServiceScopeFactory serviceScopeFactory;
+    private readonly IPublicSeoResponseCacheInvalidator? responseCacheInvalidator;
     private readonly Channel<bool> requests;
     private int isQueued;
 
-    public InMemorySeoSitemapRefreshScheduler(IServiceScopeFactory serviceScopeFactory)
+    public InMemorySeoSitemapRefreshScheduler(
+        IServiceScopeFactory serviceScopeFactory,
+        IPublicSeoResponseCacheInvalidator? responseCacheInvalidator = null)
     {
         this.serviceScopeFactory = serviceScopeFactory;
+        this.responseCacheInvalidator = responseCacheInvalidator;
         this.requests = Channel.CreateUnbounded<bool>(new UnboundedChannelOptions
         {
             SingleReader = true,
@@ -66,7 +70,7 @@ public sealed class InMemorySeoSitemapRefreshScheduler : BackgroundService, ISeo
         SeoSitemapGenerationOrchestrator orchestrator = scope.ServiceProvider.GetRequiredService<SeoSitemapGenerationOrchestrator>();
         PublicSeoContext context = await contextProvider.GetAsync(cancellationToken);
 
-        await orchestrator.GenerateAsync(
+        SitemapGenerationResult result = await orchestrator.GenerateAsync(
             context.PublicBaseUrl,
             new SitemapGenerationContext
             {
@@ -77,6 +81,18 @@ public sealed class InMemorySeoSitemapRefreshScheduler : BackgroundService, ISeo
             triggeredByUserId: null,
             triggeredByUserEmail: null,
             cancellationToken);
+
+        await this.InvalidatePublicResponsesAfterSuccessfulGenerationAsync(result, cancellationToken);
+    }
+
+    internal async Task InvalidatePublicResponsesAfterSuccessfulGenerationAsync(
+        SitemapGenerationResult result,
+        CancellationToken cancellationToken)
+    {
+        if (result.Status == SitemapGenerationStatus.Succeeded && this.responseCacheInvalidator is not null)
+        {
+            await this.responseCacheInvalidator.InvalidateAsync(cancellationToken);
+        }
     }
 
     private void DrainRequests()

@@ -176,6 +176,7 @@ internal static class ParksHttpMappers
                 OperatorName = value.OperatorName,
             },
             Rating = value.Rating?.ToHttp(),
+            HasCurrentPricing = value.HasCurrentPricing,
             Stats = new ParkDetailSummaryStatsDto
             {
                 TotalItems = value.Stats.TotalItems,

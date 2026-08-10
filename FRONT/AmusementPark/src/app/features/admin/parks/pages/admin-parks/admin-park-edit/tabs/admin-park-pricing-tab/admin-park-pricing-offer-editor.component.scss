@@ -1,0 +1,103 @@
+:host {
+  display: block;
+}
+
+.pricing-offer-editor {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.75rem;
+  background: var(--surface-card);
+}
+
+.pricing-offer-editor__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  div {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  span {
+    color: var(--text-color-secondary);
+    font-size: 0.85rem;
+  }
+}
+
+.pricing-offer-editor__fields,
+.pricing-offer-editor__prices,
+.pricing-offer-editor__range {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.pricing-offer-editor__fields--identity {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pricing-offer-editor label,
+.pricing-offer-editor__localized {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+
+  > span {
+    color: var(--text-color-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+}
+
+.pricing-offer-editor input,
+.pricing-offer-editor select {
+  width: 100%;
+  min-height: 2.6rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.45rem;
+  background: var(--surface-ground);
+  color: var(--text-color);
+}
+
+.pricing-offer-editor fieldset {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.6rem;
+
+  legend {
+    padding: 0 0.35rem;
+    font-weight: 700;
+  }
+
+  small {
+    color: var(--text-color-secondary);
+  }
+}
+
+.pricing-offer-editor__wide {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+  .pricing-offer-editor__fields,
+  .pricing-offer-editor__fields--identity,
+  .pricing-offer-editor__prices,
+  .pricing-offer-editor__range {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-offer-editor__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

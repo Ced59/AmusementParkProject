@@ -281,6 +281,19 @@
             </section>
           }
 
+          @if (currentPark.pricingLink) {
+            <a class="park-side-card park-pricing-cta" [routerLink]="currentPark.pricingLink">
+              <span class="park-pricing-cta__icon" aria-hidden="true">
+                <i class="pi pi-ticket"></i>
+              </span>
+              <span class="park-pricing-cta__copy">
+                <strong>{{ 'parkPricing.detailCta.title' | translate }}</strong>
+                <small>{{ 'parkPricing.detailCta.subtitle' | translate }}</small>
+              </span>
+              <i class="pi pi-arrow-right park-pricing-cta__arrow" aria-hidden="true"></i>
+            </a>
+          }
+
           @if (currentPark.isOpenToVisitors) {
             <app-park-opening-hours-card
               class="park-side-card park-side-card--opening-hours"

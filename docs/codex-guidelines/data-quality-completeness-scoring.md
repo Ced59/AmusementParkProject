@@ -1,6 +1,6 @@
 # AmusementPark — Scoring de complétude data des parcs et parkItems
 
-Version : **2026-08-06-r3**
+Version : **2026-08-09-r4**
 Projet : **amusement-parks.fun**  
 Usage : spécification fonctionnelle pour calculer en production un score de complétude data, prioriser les enrichissements et aider la décision de visibilité SEO.
 
@@ -262,9 +262,9 @@ Inspiré de l'étape 4.
 
 Les langues publiques attendues sont `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `pt`, sauf dette legacy documentée.
 
-Le calcul numérique ne sait pas prouver à lui seul que les textes sont distincts. L’étape 8 doit comparer les corps de paragraphes après retrait des titres et noms ; un groupe répété reste un bloqueur éditorial même si le score calculé atteint 100.
+Le calcul numérique ne sait pas prouver à lui seul que les textes sont distincts. L’étape 9 doit comparer les corps de paragraphes après retrait des titres et noms ; un groupe répété reste un bloqueur éditorial même si le score calculé atteint 100.
 
-Pour un parc majeur, le critère « spécifique, naturelle et utile » inclut aussi la profondeur contrôlée à l’étape 8 : la description du parc vise `3 h2 / 5 p` et environ 280 à 500 mots visibles ; chaque parkItem publiable vise `2 h2 / 3 p` et environ 120 à 200 mots dans la langue de rédaction. Ces bandes déclenchent une relecture et ne doivent jamais être remplies artificiellement.
+Pour un parc majeur, le critère « spécifique, naturelle et utile » inclut aussi la profondeur contrôlée à l’étape 9 : la description du parc vise `3 h2 / 5 p` et environ 280 à 500 mots visibles ; chaque parkItem publiable vise `2 h2 / 3 p` et environ 120 à 200 mots dans la langue de rédaction. Ces bandes déclenchent une relecture et ne doivent jamais être remplies artificiellement.
 
 ### 7. Images, logos et médias — 10 points
 
@@ -300,7 +300,7 @@ Pour tout statut autre que `Operating`, cette catégorie est non applicable. Le 
 
 ### 9. Histoire, timeline et articles enrichis — 14 points
 
-Inspiré de l'étape 7. Cette catégorie devient importante pour les parcs majeurs, historiques ou fermés.
+Inspiré de l'étape 8. Cette catégorie devient importante pour les parcs majeurs, historiques ou fermés.
 
 | Critère | Points | Applicabilité |
 | --- | ---: | --- |
@@ -347,7 +347,7 @@ Si le front génère automatiquement title/meta, le score peut utiliser les cham
 
 ### 12. Audit final et robustesse — 10 points
 
-Inspiré de l'étape 8.
+Inspiré de l'étape 9.
 
 | Critère | Points | Applicabilité |
 | --- | ---: | --- |

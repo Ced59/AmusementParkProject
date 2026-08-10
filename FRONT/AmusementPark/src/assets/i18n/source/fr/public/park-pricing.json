@@ -1,0 +1,27 @@
+{
+  "parkPricing": {
+    "detailCta": { "title": "Tarifs et billets", "subtitle": "Consulte les tarifs publiés et les options d'achat" },
+    "page": {
+      "kicker": "Préparer ta visite", "title": "Tarifs et billets de {{ name }}", "titleShort": "Tarifs et billets",
+      "lead": "Compare les tarifs actuellement renseignés pour {{ name }}.", "backToPark": "Retour à {{ name }}",
+      "breadcrumbLabel": "Fil d’Ariane", "loadingTitle": "Chargement des tarifs", "loadingMessage": "Les tarifs sont en cours de chargement.",
+      "emptyTitle": "Aucun tarif disponible", "emptyMessage": "Aucune grille tarifaire actuelle n’est renseignée pour ce parc.",
+      "errorTitle": "Tarifs indisponibles", "errorMessage": "Impossible de charger les tarifs.",
+      "unavailableTitle": "Tarifs actuels indisponibles pour {{ name }}", "unavailableMessage": "Une grille tarifaire actuelle est uniquement proposée pour les parcs ouverts aux visiteurs."
+    },
+    "disclaimer": { "title": "Tarifs indicatifs", "message": "Les tarifs peuvent varier selon la date, la disponibilité, la demande, les promotions et le canal de vente. Vérifie toujours le prix final sur le site officiel de {{ name }} avant ton achat." },
+    "sections": {
+      "admission": { "title": "Billets d’entrée", "subtitle": "Tarifs par catégorie de visiteur" },
+      "passes": { "title": "Pass annuels", "subtitle": "Formules pour revenir toute l’année" },
+      "parking": { "title": "Parking", "subtitle": "Tarifs de stationnement renseignés" }
+    },
+    "channels": { "online": "En ligne", "gate": "Au guichet" },
+    "modes": { "Fixed": "Prix fixe", "Range": "Plage de prix", "Dynamic": "Tarif dynamique" },
+    "price": { "from": "à partir de", "upTo": "jusqu’à", "dynamic": "tarif dynamique" },
+    "audiences": { "adult": "Adulte", "child": "Enfant", "senior": "Senior", "youth": "Jeune", "infant": "Bébé", "toddler": "Tout-petit", "student": "Étudiant", "disabled": "Personne en situation de handicap", "companion": "Accompagnateur", "family": "Famille", "group": "Groupe", "general": "Tarif général" },
+    "validity": { "range": "Valable du {{ from }} au {{ to }}", "from": "Valable à partir du {{ date }}", "until": "Valable jusqu’au {{ date }}" },
+    "fields": { "conditions": "Conditions", "currency": "Devise", "lastVerified": "Dernière vérification", "source": "Source officielle", "purchase": "Achat général", "notes": "Notes" },
+    "actions": { "buy": "Acheter sur le site officiel", "buyOffer": "Voir cette offre", "openSource": "Consulter la source" },
+    "meta": { "title": "Informations sur les tarifs" }
+  }
+}

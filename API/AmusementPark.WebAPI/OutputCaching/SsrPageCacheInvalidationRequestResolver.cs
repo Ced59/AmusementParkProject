@@ -78,7 +78,8 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             "Parks" => await this.ResolveParksAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "Comments" => await this.ResolveCommentsAsync(context, executedContext, cancellationToken),
             "StandaloneAttractions" => this.ResolveStandaloneAttractions(context, executedContext, includeSeoDocuments),
-            "ParkOpeningHours" => this.ResolveParkOpeningHours(context, includeSeoDocuments),
+            "ParkOpeningHours" => this.ResolveParkScopedData(context, includeSeoDocuments),
+            "ParkPricing" => this.ResolveParkScopedData(context, includeSeoDocuments),
             "ParkItems" => await this.ResolveParkItemsAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "ParkZones" => await this.ResolveParkZonesAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "ParkOperators" => await this.ResolveParkOperatorAsync(context, executedContext, includeSeoDocuments, cancellationToken),
@@ -163,7 +164,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         return BuildRequest(itemPaths, Array.Empty<string>(), includeSeoDocuments: false);
     }
 
-    private SsrPageCacheInvalidationRequest ResolveParkOpeningHours(
+    private SsrPageCacheInvalidationRequest ResolveParkScopedData(
         ActionExecutingContext context,
         bool includeSeoDocuments)
     {

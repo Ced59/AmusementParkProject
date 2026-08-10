@@ -9,6 +9,7 @@ using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
@@ -29,6 +30,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkZoneRepository parkZoneRepository;
     private readonly IParkOpeningHoursRepository openingHoursRepository;
+    private readonly IParkPricingRepository pricingRepository;
     private readonly IImageRepository imageRepository;
     private readonly IVideoRepository videoRepository;
     private readonly IHistoryEventRepository historyEventRepository;
@@ -43,6 +45,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
         IParkItemRepository parkItemRepository,
         IParkZoneRepository parkZoneRepository,
         IParkOpeningHoursRepository openingHoursRepository,
+        IParkPricingRepository pricingRepository,
         IImageRepository imageRepository,
         IVideoRepository videoRepository,
         IHistoryEventRepository historyEventRepository,
@@ -56,6 +59,7 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
         this.parkItemRepository = parkItemRepository;
         this.parkZoneRepository = parkZoneRepository;
         this.openingHoursRepository = openingHoursRepository;
+        this.pricingRepository = pricingRepository;
         this.imageRepository = imageRepository;
         this.videoRepository = videoRepository;
         this.historyEventRepository = historyEventRepository;

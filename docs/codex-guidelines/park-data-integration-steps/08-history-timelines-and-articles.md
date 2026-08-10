@@ -1,4 +1,4 @@
-# Étape 7 — Histoire du parc, des parkItems et articles
+# Étape 8 — Histoire du parc, des parkItems et articles
 
 Objectif : créer une histoire fiable, sourcée et lisible, en séparant les événements du parc, les événements des parkItems et les articles longs.
 
@@ -69,14 +69,14 @@ Matrice de décision :
 | Fermeture définitive, installation encore présente | `ClosedDefinitively` | `DefinitiveClosure` |
 | Remplacement par une autre attraction | `ClosedDefinitively` ou `Removed` selon la présence réelle | `Replacement`; la nouvelle attraction possède son propre statut |
 
-Si l’étape 7 découvre dans l’état de référence une ancienne valeur historique stockée comme `attractionDetails.status`, ne pas la recopier et ne pas la supprimer silencieusement. La reprise doit :
+Si l’étape 8 découvre dans l’état de référence une ancienne valeur historique stockée comme `attractionDetails.status`, ne pas la recopier et ne pas la supprimer silencieusement. La reprise doit :
 
 1. rechercher l’état lifecycle actuel ;
 2. corriger le statut dans un lot ciblé relevant de l’étape 3 ;
 3. créer ou vérifier ici le ou les événements qui préservent le fait historique ;
 4. conserver une précision de date prudente (`Year`, `Month`, `Day`) selon la source, sans inventer une date exacte.
 
-En mode Codex autonome, cette reprise ciblée n’exige pas de revenir manuellement au début du workflow : la consigner comme correction de l’étape 3, appliquer le lot borné correspondant, puis continuer l’étape 7. En mode ChatGPT guidé, livrer clairement la correction ciblée avant de considérer l’historique comme complet.
+En mode Codex autonome, cette reprise ciblée n’exige pas de revenir manuellement au début du workflow : la consigner comme correction de l’étape 3, appliquer le lot borné correspondant, puis continuer l’étape 8. En mode ChatGPT guidé, livrer clairement la correction ciblée avant de considérer l’historique comme complet.
 
 ## Événements de parc
 
@@ -442,7 +442,7 @@ Section principale : `history.events`.
     "source": "codex-history",
     "targetParkId": "id-du-parc",
     "targetParkName": "Nom du parc",
-    "step": "07-park-history-lot-1",
+    "step": "08-park-history-lot-1",
     "notes": "Timeline du parc uniquement. Articles longs reportés au lot suivant."
   },
   "identity": {
@@ -519,6 +519,6 @@ Section principale : `history.events`.
 
 ## Après Apply
 
-Avant le lot historique suivant, contrôler la réponse Apply, intégrer ses résultats au registre consolidé et continuer sans export complet ; un export ciblé reste réservé à une réponse ambiguë ou à un identifiant indispensable. Une fois tous les lots de l’étape 7 terminés, effectuer l’unique export complet obligatoire avant de commencer l’étape 8.
+Avant le lot historique suivant, contrôler la réponse Apply, intégrer ses résultats au registre consolidé et continuer sans export complet ; un export ciblé reste réservé à une réponse ambiguë ou à un identifiant indispensable. Une fois tous les lots de l’étape 8 terminés, effectuer l’unique export complet obligatoire avant de commencer l’étape 9.
 
-À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 8 — Audit final. L’audit final reste utile dès qu’un JSON a été appliqué, même si certains enrichissements ont été volontairement sautés. Si l’étape 8 est exceptionnellement jugée `probablement inutile`, expliquer pourquoi et rappeler qu’elle est normalement le point de contrôle final du parcours. En mode ChatGPT, attendre la validation utilisateur ; en mode Codex autonome, exécuter l’audit sans pause.
+À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 9 — Audit final. L’audit final reste utile dès qu’un JSON a été appliqué, même si certains enrichissements ont été volontairement sautés. Si l’étape 9 est exceptionnellement jugée `probablement inutile`, expliquer pourquoi et rappeler qu’elle est normalement le point de contrôle final du parcours. En mode ChatGPT, attendre la validation utilisateur ; en mode Codex autonome, exécuter l’audit sans pause.

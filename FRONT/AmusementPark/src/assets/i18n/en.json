@@ -2264,6 +2264,86 @@
       }
     }
   },
+  "adminParkPricing": {
+    "tab": "Pricing",
+    "title": "Park pricing",
+    "subtitle": "Manage the admission tickets, annual passes and parking prices published for this park.",
+    "kinds": {
+      "admission": "Admission ticket",
+      "annualPass": "Annual pass",
+      "parking": "Parking"
+    },
+    "offer": {
+      "newOffer": "New offer"
+    },
+    "actions": {
+      "reload": "Reload",
+      "save": "Save pricing",
+      "removeOffer": "Remove",
+      "addAdmission": "Add ticket",
+      "addAnnualPass": "Add pass",
+      "addParking": "Add parking",
+      "copyAllLanguages": "Apply to all languages"
+    },
+    "sections": {
+      "general": "General information",
+      "admissionOffers": "Admission tickets",
+      "annualPasses": "Annual passes",
+      "parkingOffers": "Parking"
+    },
+    "fields": {
+      "currencyCode": "Currency (ISO)",
+      "sourceUrl": "Official pricing URL",
+      "purchaseUrl": "General purchase URL",
+      "lastVerifiedAtUtc": "Last verified (UTC)",
+      "notes": "Notes",
+      "code": "Unique code",
+      "audienceCategory": "Audience category",
+      "sortOrder": "Order",
+      "labels": "Translated labels",
+      "names": "Translated names",
+      "priceMode": "Pricing mode",
+      "amount": "Amount",
+      "minimumAmount": "Minimum amount",
+      "maximumAmount": "Maximum amount",
+      "validFrom": "Valid from",
+      "validTo": "Valid until",
+      "offerPurchaseUrl": "Offer purchase URL",
+      "conditions": "Translated conditions"
+    },
+    "channels": {
+      "online": "Online price",
+      "gate": "Gate price"
+    },
+    "modes": {
+      "none": "Not provided",
+      "Fixed": "Fixed",
+      "Range": "Range",
+      "Dynamic": "Dynamic"
+    },
+    "placeholders": {
+      "localizedValue": "Value in {{ language }}",
+      "conditions": "Conditions in {{ language }}"
+    },
+    "hints": {
+      "dynamicBounds": "Bounds are optional for a dynamic price.",
+      "admissionOffers": "Set the category, translations and sales channels for each ticket.",
+      "annualPasses": "Set annual plans and their conditions.",
+      "parkingOffers": "List useful parking offers separately."
+    },
+    "empty": {
+      "admissionOffers": "No admission tickets.",
+      "annualPasses": "No annual passes.",
+      "parkingOffers": "No parking offers."
+    },
+    "messages": {
+      "loading": "Loading pricing…",
+      "loadError": "Unable to load pricing.",
+      "saveError": "Unable to save pricing.",
+      "savedSummary": "Pricing saved",
+      "savedDetail": "The park price list has been updated."
+    }
+  },
   "auth": {
     "login": {
       "title": "Standard authentication",
@@ -3520,6 +3600,95 @@
       "emptyMessage": "No opening schedule is available for this park yet.",
       "errorTitle": "Dates and hours unavailable",
       "errorMessage": "The opening schedule could not be loaded."
+    }
+  },
+  "parkPricing": {
+    "detailCta": {
+      "title": "Prices and tickets",
+      "subtitle": "Check published prices and purchase options"
+    },
+    "page": {
+      "kicker": "Plan your visit",
+      "title": "Prices and tickets for {{ name }}",
+      "titleShort": "Prices and tickets",
+      "lead": "Compare the prices currently listed for {{ name }}.",
+      "backToPark": "Back to {{ name }}",
+      "breadcrumbLabel": "Breadcrumb",
+      "loadingTitle": "Loading prices",
+      "loadingMessage": "The listed prices are loading.",
+      "emptyTitle": "No prices available",
+      "emptyMessage": "No current price list is available for this park yet.",
+      "errorTitle": "Prices unavailable",
+      "errorMessage": "The prices could not be loaded.",
+      "unavailableTitle": "Current prices unavailable for {{ name }}",
+      "unavailableMessage": "A current price list is only shown for parks that are open to visitors."
+    },
+    "disclaimer": {
+      "title": "Indicative prices",
+      "message": "Prices may vary by date, availability, demand, promotions and sales channel. Always check the final price on the official {{ name }} website before buying."
+    },
+    "sections": {
+      "admission": {
+        "title": "Admission tickets",
+        "subtitle": "Prices by visitor category"
+      },
+      "passes": {
+        "title": "Annual passes",
+        "subtitle": "Options for visiting throughout the year"
+      },
+      "parking": {
+        "title": "Parking",
+        "subtitle": "Listed parking prices"
+      }
+    },
+    "channels": {
+      "online": "Online",
+      "gate": "At the gate"
+    },
+    "modes": {
+      "Fixed": "Fixed price",
+      "Range": "Price range",
+      "Dynamic": "Dynamic price"
+    },
+    "price": {
+      "from": "from",
+      "upTo": "up to",
+      "dynamic": "dynamic price"
+    },
+    "audiences": {
+      "adult": "Adult",
+      "child": "Child",
+      "senior": "Senior",
+      "youth": "Youth",
+      "infant": "Infant",
+      "toddler": "Toddler",
+      "student": "Student",
+      "disabled": "Disabled visitor",
+      "companion": "Companion",
+      "family": "Family",
+      "group": "Group",
+      "general": "General admission"
+    },
+    "validity": {
+      "range": "Valid from {{ from }} to {{ to }}",
+      "from": "Valid from {{ date }}",
+      "until": "Valid until {{ date }}"
+    },
+    "fields": {
+      "conditions": "Conditions",
+      "currency": "Currency",
+      "lastVerified": "Last verified",
+      "source": "Official source",
+      "purchase": "General purchase link",
+      "notes": "Notes"
+    },
+    "actions": {
+      "buy": "Buy on the official website",
+      "buyOffer": "View this offer",
+      "openSource": "View the source"
+    },
+    "meta": {
+      "title": "Pricing information"
     }
   },
   "parkVisitor": {

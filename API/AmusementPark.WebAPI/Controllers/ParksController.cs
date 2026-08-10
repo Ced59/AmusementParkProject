@@ -179,7 +179,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("{id}/detail-summary")]
-    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicPricingData)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDetailSummaryDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetParkDetailSummaryAsync([FromRoute] string id, [FromQuery] string? closedFilter = null, CancellationToken cancellationToken = default)

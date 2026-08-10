@@ -129,12 +129,13 @@ describe('SeoService', () => {
   it.each([
     ['weather', 'Météo indisponible'],
     ['openingHours', 'Horaires indisponibles'],
+    ['pricing', 'Tarifs actuels indisponibles'],
   ] as const)('keeps unavailable %s pages noindex and canonicalized to the park detail', (feature, expectedTitle) => {
     service.applyParkUnavailableFeatureSeo(
       { name: 'Future Park', status: 'Planned' } as Park,
       feature,
       'fr',
-      `/fr/park/park-1/future-park/${feature === 'weather' ? 'weather' : 'opening-hours'}`,
+      `/fr/park/park-1/future-park/${feature === 'weather' ? 'weather' : feature === 'pricing' ? 'pricing' : 'opening-hours'}`,
       null,
       '/fr/park/park-1/future-park',
     );
@@ -676,6 +677,62 @@ describe('SeoService', () => {
     expect(readCanonicalHref()).toBe(
       'http://localhost:4200/en/park/park-1/demo-park/opening-hours',
     );
+  });
+
+  it('applies indexable localized metadata and contextual breadcrumbs to park pricing pages', () => {
+    service.applyParkPricingSeo(
+      'Parc Démo',
+      'fr',
+      '/fr/park/park-1/parc-demo/pricing',
+      3,
+    );
+
+    expect(documentRef.title).toBe(
+      'Tarifs et billets de Parc Démo - Amusement Parks',
+    );
+    expect(readMetaContent('meta[name="description"]')).toContain('Parc Démo');
+    expect(readMetaContent('meta[name="description"]')).not.toContain('pass annuels');
+    expect(readMetaContent('meta[name="description"]')).not.toContain('parkings');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readCanonicalHref()).toBe(
+      'http://localhost:4200/fr/park/park-1/parc-demo/pricing',
+    );
+    expect(readBreadcrumbNames()).toEqual([
+      'Accueil',
+      'Liste des parcs',
+      'Parc Démo',
+      'Tarifs et billets de Parc Démo',
+    ]);
+
+    service.applyParkPricingSeo(
+      'Demo Park',
+      'en',
+      '/en/park/park-1/demo-park/pricing?campaign=spring',
+      3,
+      null,
+      '/en/park/park-1/demo-park/pricing',
+    );
+
+    expect(documentRef.title).toBe(
+      'Prices and tickets for Demo Park - Amusement Parks',
+    );
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBe(
+      'http://localhost:4200/en/park/park-1/demo-park/pricing',
+    );
+  });
+
+  it('keeps an empty park pricing page noindex', () => {
+    service.applyParkPricingSeo(
+      'Demo Park',
+      'en',
+      '/en/park/park-1/demo-park/pricing',
+      0,
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readBreadcrumbElements()).toHaveLength(0);
   });
 
   it('keeps history timeline SEO titles and descriptions unique between public languages', () => {

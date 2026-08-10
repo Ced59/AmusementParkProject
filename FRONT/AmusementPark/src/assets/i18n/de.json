@@ -2264,6 +2264,86 @@
       }
     }
   },
+  "adminParkPricing": {
+    "tab": "Preise",
+    "title": "Parkpreise",
+    "subtitle": "Verwalte die veröffentlichten Eintrittskarten, Jahreskarten und Parkgebühren dieses Parks.",
+    "kinds": {
+      "admission": "Eintrittskarte",
+      "annualPass": "Jahreskarte",
+      "parking": "Parken"
+    },
+    "offer": {
+      "newOffer": "Neues Angebot"
+    },
+    "actions": {
+      "reload": "Neu laden",
+      "save": "Preise speichern",
+      "removeOffer": "Entfernen",
+      "addAdmission": "Ticket hinzufügen",
+      "addAnnualPass": "Jahreskarte hinzufügen",
+      "addParking": "Parkangebot hinzufügen",
+      "copyAllLanguages": "Auf alle Sprachen anwenden"
+    },
+    "sections": {
+      "general": "Allgemeine Angaben",
+      "admissionOffers": "Eintrittskarten",
+      "annualPasses": "Jahreskarten",
+      "parkingOffers": "Parken"
+    },
+    "fields": {
+      "currencyCode": "Währung (ISO)",
+      "sourceUrl": "Offizielle Preis-URL",
+      "purchaseUrl": "Allgemeine Kauf-URL",
+      "lastVerifiedAtUtc": "Zuletzt geprüft (UTC)",
+      "notes": "Hinweise",
+      "code": "Eindeutiger Code",
+      "audienceCategory": "Besucherkategorie",
+      "sortOrder": "Reihenfolge",
+      "labels": "Übersetzte Bezeichnungen",
+      "names": "Übersetzte Namen",
+      "priceMode": "Preismodell",
+      "amount": "Betrag",
+      "minimumAmount": "Mindestbetrag",
+      "maximumAmount": "Höchstbetrag",
+      "validFrom": "Gültig ab",
+      "validTo": "Gültig bis",
+      "offerPurchaseUrl": "Kauf-URL des Angebots",
+      "conditions": "Übersetzte Bedingungen"
+    },
+    "channels": {
+      "online": "Onlinepreis",
+      "gate": "Kassenpreis"
+    },
+    "modes": {
+      "none": "Nicht angegeben",
+      "Fixed": "Fest",
+      "Range": "Spanne",
+      "Dynamic": "Dynamisch"
+    },
+    "placeholders": {
+      "localizedValue": "Wert auf {{ language }}",
+      "conditions": "Bedingungen auf {{ language }}"
+    },
+    "hints": {
+      "dynamicBounds": "Grenzen sind bei einem dynamischen Preis optional.",
+      "admissionOffers": "Lege Kategorie, Übersetzungen und Verkaufskanäle jedes Tickets fest.",
+      "annualPasses": "Lege Jahreskarten und ihre Bedingungen fest.",
+      "parkingOffers": "Erfasse relevante Parkangebote getrennt."
+    },
+    "empty": {
+      "admissionOffers": "Keine Eintrittskarten.",
+      "annualPasses": "Keine Jahreskarten.",
+      "parkingOffers": "Keine Parkangebote."
+    },
+    "messages": {
+      "loading": "Preise werden geladen…",
+      "loadError": "Preise konnten nicht geladen werden.",
+      "saveError": "Preise konnten nicht gespeichert werden.",
+      "savedSummary": "Preise gespeichert",
+      "savedDetail": "Die Preisliste des Parks wurde aktualisiert."
+    }
+  },
   "auth": {
     "login": {
       "title": "Standard-Authentifizierung",
@@ -3520,6 +3600,95 @@
       "emptyMessage": "Für diesen Park ist noch kein Öffnungsplan verfügbar.",
       "errorTitle": "Daten und Zeiten nicht verfügbar",
       "errorMessage": "Der Öffnungsplan konnte nicht geladen werden."
+    }
+  },
+  "parkPricing": {
+    "detailCta": {
+      "title": "Preise und Tickets",
+      "subtitle": "Sieh dir veröffentlichte Preise und Kaufoptionen an"
+    },
+    "page": {
+      "kicker": "Plane deinen Besuch",
+      "title": "Preise und Tickets für {{ name }}",
+      "titleShort": "Preise und Tickets",
+      "lead": "Vergleiche die aktuell eingetragenen Preise für {{ name }}.",
+      "backToPark": "Zurück zu {{ name }}",
+      "breadcrumbLabel": "Brotkrümelnavigation",
+      "loadingTitle": "Preise werden geladen",
+      "loadingMessage": "Die eingetragenen Preise werden geladen.",
+      "emptyTitle": "Keine Preise verfügbar",
+      "emptyMessage": "Für diesen Park ist noch keine aktuelle Preisliste verfügbar.",
+      "errorTitle": "Preise nicht verfügbar",
+      "errorMessage": "Die Preise konnten nicht geladen werden.",
+      "unavailableTitle": "Aktuelle Preise für {{ name }} nicht verfügbar",
+      "unavailableMessage": "Eine aktuelle Preisliste wird nur für Parks angezeigt, die für Besucher geöffnet sind."
+    },
+    "disclaimer": {
+      "title": "Unverbindliche Preise",
+      "message": "Preise können je nach Datum, Verfügbarkeit, Nachfrage, Aktionen und Verkaufskanal variieren. Prüfe vor dem Kauf immer den Endpreis auf der offiziellen Website von {{ name }}."
+    },
+    "sections": {
+      "admission": {
+        "title": "Eintrittskarten",
+        "subtitle": "Preise nach Besucherkategorie"
+      },
+      "passes": {
+        "title": "Jahreskarten",
+        "subtitle": "Angebote für Besuche während des ganzen Jahres"
+      },
+      "parking": {
+        "title": "Parken",
+        "subtitle": "Eingetragene Parkgebühren"
+      }
+    },
+    "channels": {
+      "online": "Online",
+      "gate": "An der Kasse"
+    },
+    "modes": {
+      "Fixed": "Festpreis",
+      "Range": "Preisspanne",
+      "Dynamic": "Dynamischer Preis"
+    },
+    "price": {
+      "from": "ab",
+      "upTo": "bis",
+      "dynamic": "dynamischer Preis"
+    },
+    "audiences": {
+      "adult": "Erwachsener",
+      "child": "Kind",
+      "senior": "Senior",
+      "youth": "Jugendlicher",
+      "infant": "Baby",
+      "toddler": "Kleinkind",
+      "student": "Student",
+      "disabled": "Besucher mit Behinderung",
+      "companion": "Begleitperson",
+      "family": "Familie",
+      "group": "Gruppe",
+      "general": "Allgemeiner Eintritt"
+    },
+    "validity": {
+      "range": "Gültig vom {{ from }} bis {{ to }}",
+      "from": "Gültig ab {{ date }}",
+      "until": "Gültig bis {{ date }}"
+    },
+    "fields": {
+      "conditions": "Bedingungen",
+      "currency": "Währung",
+      "lastVerified": "Zuletzt geprüft",
+      "source": "Offizielle Quelle",
+      "purchase": "Allgemeiner Kauflink",
+      "notes": "Hinweise"
+    },
+    "actions": {
+      "buy": "Auf der offiziellen Website kaufen",
+      "buyOffer": "Dieses Angebot ansehen",
+      "openSource": "Quelle ansehen"
+    },
+    "meta": {
+      "title": "Preisinformationen"
     }
   },
   "parkVisitor": {

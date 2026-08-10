@@ -1,13 +1,13 @@
 # AmusementPark — Pack de guidelines pour Codex
 
-Date : 2026-08-07
+Date : 2026-08-09
 Projet : `amusement-parks.fun`
 
 Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éditoriales et techniques à appliquer lors des tâches liées aux JSON upsert, aux descriptions publiques et aux articles.
 
 ## Entrée recommandée
 
-- `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’état de travail consolidé, l’unique export complet obligatoire juste avant l’étape 8, les limites de lots et les fichiers de règles à lire selon l’étape.
+- `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’état de travail consolidé, l’unique export complet obligatoire juste avant l’étape 9, les limites de lots et les fichiers de règles à lire selon l’étape.
 - `standalone-attraction-data-integration.md` : fichier à utiliser quand l’entité pertinente est une attraction fixe isolée et non un parc.
 - `codex-park-data-editor-api-workflow.md` : complément strictement réservé à Codex lorsqu’il exécute lui-même les étapes par API avec le rôle technique `PARK_DATA_EDITOR`. Il ajoute les garde-fous Preview/Apply et l’upload local des photos sans modifier le workflow ChatGPT.
 
@@ -18,10 +18,10 @@ Le complément API impose aussi une coordination globale entre toutes les instan
 La demande `Complète le parc <nom>` suffit pour lancer le parcours complet avec Codex. Elle signifie :
 
 - retrouver ou cadrer le parc à l’étape 0 ;
-- exécuter de façon autonome toutes les étapes 1 à 8 applicables avec le flux API `PARK_DATA_EDITOR` ;
-- contrôler chaque réponse Preview/Apply et chaque import d’image, puis tenir à jour l’état de travail consolidé sans export complet entre les étapes 1 à 7 ni après chaque mutation ;
+- exécuter de façon autonome toutes les étapes 1 à 9 applicables avec le flux API `PARK_DATA_EDITOR` ;
+- contrôler chaque réponse Preview/Apply et chaque import d’image, puis tenir à jour l’état de travail consolidé sans export complet entre les étapes 1 à 8 ni après chaque mutation ;
 - réserver les exports ciblés aux ambiguïtés, identifiants manquants ou dépendances précises entre lots ;
-- effectuer l’unique export complet obligatoire juste avant l’audit de l’étape 8 ;
+- effectuer l’unique export complet obligatoire juste avant l’audit de l’étape 9 ;
 - rechercher aussi les lacunes de l’existant, pas seulement ajouter les informations les plus faciles à trouver ;
 - atteindre le contrat de complétude exigeant décrit dans l’orchestrateur et produire un audit chiffré final ;
 - s’arrêter au seuil `prêt pour publication` tant que l’utilisateur n’a pas explicitement demandé de publier.
@@ -45,15 +45,16 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - `park-data-integration-steps/04-rich-descriptions-localization.md` : descriptions longues, naturelles et localisées dans les 8 langues.
 - `park-data-integration-steps/05-images-and-reference-enrichment.md` : images importables, logos, crédits, biographies et références.
 - `park-data-integration-steps/06-opening-hours-and-named-events.md` : horaires, exceptions datées et événements nommés.
-- `park-data-integration-steps/07-history-timelines-and-articles.md` : histoire du parc, histoire des parkItems et articles rattachés.
-- `park-data-integration-steps/08-final-audit-and-publication.md` : audit final avant publication.
+- `park-data-integration-steps/07-pricing.md` : tarifs actuels, billets, pass annuels et parking pour les parcs `Operating`.
+- `park-data-integration-steps/08-history-timelines-and-articles.md` : histoire du parc, histoire des parkItems et articles rattachés.
+- `park-data-integration-steps/09-final-audit-and-publication.md` : audit final avant publication.
 
 ## Ordre de lecture conseillé pour Codex
 
 1. Lire ce `README.md`.
 2. Lire `park-data-integration-orchestrator.md` pour une intégration complète de parc.
 3. Lire `codex-park-data-editor-api-workflow.md` pour les autorisations et le parcours d’images propres à Codex.
-4. Lire successivement les fichiers applicables des étapes 0 à 8 dans `park-data-integration-steps/`.
+4. Lire successivement les fichiers applicables des étapes 0 à 9 dans `park-data-integration-steps/`.
 
 ## Règles globales non négociables
 
@@ -82,14 +83,14 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - Tout `manufacturerKey`, `zoneKey`, `operatorKey`, `founderKey` ou `ownerKey` utilisé doit être enregistré par la section que le processeur traite avant son utilisation. Pour une image de parkItem ou de référence, l’existence en base ne remplace pas la redéclaration dans `items[]` ou `references`.
 - Les `zoneKey` et `manufacturerKey` sont des causes fréquentes d’erreurs : tout JSON qui les utilise doit embarquer les zones minimales et constructeurs minimaux nécessaires quand l’état de référence ne prouve pas déjà leur existence.
 - Une alerte de clé non résolue effectivement retournée par Preview bloque le livrable. Les clés d’images utilisées par les articles doivent en plus être comparées statiquement aux `images[].key` du même JSON, car le Preview ne les valide pas.
-- Les horaires, dates d’ouverture et événements datés doivent être vérifiés avec des sources actuelles et ne doivent pas être mélangés aux tarifs si les tarifs ne sont pas implémentés.
+- Les horaires, dates d’ouverture et événements datés doivent être vérifiés avec des sources actuelles. Les tarifs actuels sont traités séparément à l’étape 7 et seulement pour un parc `Operating`.
 - Les libellés et raisons visibles dans le calendrier doivent être réservés aux événements nommés, exceptions datées ou informations temporaires utiles. Ne jamais y répéter des commentaires généraux sur tous les jours normaux.
 - Les articles doivent apporter une vraie valeur éditoriale, avec des sources vérifiées, et ne doivent pas devenir des fiches techniques déguisées.
-- Un résumé de timeline raconte le fait et sa portée durable. Un article de parc majeur ne peut pas être validé avec seulement un titre, un résumé bref et deux paragraphes minces : l’étape 7 impose une profondeur et une structure proportionnées au sujet.
+- Un résumé de timeline raconte le fait et sa portée durable. Un article de parc majeur ne peut pas être validé avec seulement un titre, un résumé bref et deux paragraphes minces : l’étape 8 impose une profondeur et une structure proportionnées au sujet.
 - Pour un parc majeur ou historiquement riche, rechercher les attractions définitivement fermées, les transformations structurantes et les annonces récentes à effet durable. Une histoire légère ou limitée à l’ouverture du parc n’est pas considérée complète lorsque les sources permettent davantage.
 - Les événements et articles historiques doivent être rédigés pour les visiteurs, sans phrases d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur la présence confirmée d’un élément.
 - Les sources d’articles et d’événements doivent être des URL HTTP(S) valides et joignables au moment de la génération. Ne jamais livrer de source en 404, 410, erreur serveur, soft-404 ou URL inventée.
-- Dans les deux modes, aucun export complet n’est obligatoire pendant les étapes 0 à 7, pas même au cadrage. Tenir l’état consolidé à partir de la recherche du parc, des éventuels exports ciblés et des résultats Preview/Apply ou d’import, puis obtenir l’unique export complet obligatoire juste avant l’étape 8.
+- Dans les deux modes, aucun export complet n’est obligatoire pendant les étapes 0 à 8, pas même au cadrage. Tenir l’état consolidé à partir de la recherche du parc, des éventuels exports ciblés et des résultats Preview/Apply ou d’import, puis obtenir l’unique export complet obligatoire juste avant l’étape 9.
 - Les JSON upsert doivent rester bornés : une étape, un lot cohérent, aucune copie massive de l’export complet si seules quelques entités changent.
 - Chaque livraison de JSON upsert doit inclure un récap visible avant le fichier : ce qui est ajouté, corrigé, masqué ou conservé, le périmètre exact du lot, un compteur d’avancement traité/total et le reste à traiter avant l’étape suivante.
 - La cible de complétude est une qualité `Excellent` sans bloqueur, avec le même degré de rigueur pour chaque parc. La quantité de contenu reste proportionnée à la taille, au statut et aux sources : exigence élevée ne signifie jamais invention ou remplissage artificiel.

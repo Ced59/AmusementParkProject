@@ -147,13 +147,13 @@ Formulations interdites :
 
 ## Contrôle anti-gabarit sur tout le corpus
 
-La présence de huit textes et de noms différents ne suffit pas. Avant Apply puis à l’étape 8 :
+La présence de huit textes et de noms différents ne suffit pas. Avant Apply puis à l’étape 9 :
 
 1. retirer temporairement les `<h2>`, le nom de l’entité et les balises de mise en forme pour comparer les corps de texte ;
 2. repérer les paragraphes identiques, quasi identiques et les mêmes enchaînements de phrases dans chaque langue ;
 3. rechercher les familles de formulations d’itinéraire, de classement interne et de remplissage, pas seulement une liste exacte de mots interdits ;
 4. relire manuellement chaque groupe détecté et réécrire avec des faits propres à l’entité ;
-5. refaire ce contrôle sur l’export complet frais précédant l’étape 8, car un titre différent peut masquer un corps de paragraphe cloné.
+5. refaire ce contrôle sur l’export complet frais précédant l’étape 9, car un titre différent peut masquer un corps de paragraphe cloné.
 
 Un même fait peut naturellement employer un vocabulaire proche, mais deux entités distinctes ne doivent pas partager un paragraphe passe-partout. Les traductions allemande et néerlandaise, comme toutes les autres, ne peuvent pas servir de versions de secours plus génériques que le français ou l’anglais.
 
@@ -240,6 +240,6 @@ Sections possibles :
 
 ## Après Apply
 
-Avant le lot de descriptions suivant ou avant les images, contrôler la réponse Apply, reporter ses changements et compteurs dans le registre consolidé et continuer sans export complet ; demander seulement un export ciblé si la réponse est ambiguë ou si un identifiant nouvellement créé est indispensable. L’unique export complet obligatoire reste celui qui précède immédiatement l’étape 8.
+Avant le lot de descriptions suivant ou avant les images, contrôler la réponse Apply, reporter ses changements et compteurs dans le registre consolidé et continuer sans export complet ; demander seulement un export ciblé si la réponse est ambiguë ou si un identifiant nouvellement créé est indispensable. L’unique export complet obligatoire reste celui qui précède immédiatement l’étape 9.
 
 À la fin de la réponse, ajouter `Pertinence de la prochaine étape` pour l’étape 5 — Images et références. Si aucune image fiable, créditable ou techniquement importable n’a été trouvée après une recherche réelle, indiquer `probablement inutile` ou `à décider` avec la raison. Si l’étape 5 est `probablement inutile`, appliquer la règle de proche en proche de l’orchestrateur jusqu’à la prochaine étape officielle `utile` ou `à décider`. En mode ChatGPT, attendre la décision utilisateur ; en mode Codex autonome, consigner la non-applicabilité et continuer selon l’orchestrateur.

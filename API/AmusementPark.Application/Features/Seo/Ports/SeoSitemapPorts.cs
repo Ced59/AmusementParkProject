@@ -83,3 +83,11 @@ public interface ISeoSitemapRuntimeStateStore
 
     void Fail(string step, string message);
 }
+
+/// <summary>
+/// Invalide les réponses HTTP publiques qui exposent le snapshot sitemap persistant.
+/// </summary>
+public interface IPublicSeoResponseCacheInvalidator
+{
+    Task InvalidateAsync(CancellationToken cancellationToken);
+}

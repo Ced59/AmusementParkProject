@@ -16,6 +16,8 @@ public sealed partial class ParkGraphUpsertProcessor
 
     private async Task ProcessOpeningHoursAsync(JsonElement root, Park targetPark, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
     {
+        await this.ProcessPricingAsync(root, targetPark, result, apply, cancellationToken);
+
         if (!HasOpeningHoursPatch(root))
         {
             return;

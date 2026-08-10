@@ -1,0 +1,113 @@
+<article class="pricing-offer-editor">
+  <header class="pricing-offer-editor__header">
+    <div>
+      <strong>{{ offer.code || ('adminParkPricing.offer.newOffer' | translate) }}</strong>
+      <span>{{ ('adminParkPricing.kinds.' + kind) | translate }}</span>
+    </div>
+    <button
+      appUiButton
+      type="button"
+      class="p-button-sm p-button-danger p-button-outlined"
+      icon="pi pi-trash"
+      [disabled]="disabled"
+      [label]="'adminParkPricing.actions.removeOffer' | translate"
+      (click)="remove.emit()">
+    </button>
+  </header>
+
+  <div class="pricing-offer-editor__fields pricing-offer-editor__fields--identity">
+    <label>
+      <span>{{ 'adminParkPricing.fields.code' | translate }}</span>
+      <input type="text" [disabled]="disabled" [ngModel]="offer.code" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateText('code', $event)" />
+    </label>
+    @if (kind === 'admission') {
+      <label>
+        <span>{{ 'adminParkPricing.fields.audienceCategory' | translate }}</span>
+        <input type="text" [disabled]="disabled" [ngModel]="audienceCategory()" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateText('audienceCategory', $event)" />
+      </label>
+    }
+    <label>
+      <span>{{ 'adminParkPricing.fields.sortOrder' | translate }}</span>
+      <input type="number" min="0" step="1" [disabled]="disabled" [ngModel]="offer.sortOrder" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateSortOrder($event)" />
+    </label>
+  </div>
+
+  <div class="pricing-offer-editor__localized">
+    <span>{{ (kind === 'annualPass' ? 'adminParkPricing.fields.names' : 'adminParkPricing.fields.labels') | translate }}</span>
+    <app-localized-text-input
+      [disabled]="disabled"
+      [ngModel]="titleValues()"
+      [ngModelOptions]="{ standalone: true }"
+      [placeholderKey]="'adminParkPricing.placeholders.localizedValue'"
+      [copyAllButtonLabel]="'adminParkPricing.actions.copyAllLanguages' | translate"
+      (ngModelChange)="updateTitleValues($event)">
+    </app-localized-text-input>
+  </div>
+
+  <div class="pricing-offer-editor__prices">
+    @for (channel of priceChannels; track channel) {
+      <fieldset>
+        <legend>{{ (channel === 'onlinePrice' ? 'adminParkPricing.channels.online' : 'adminParkPricing.channels.gate') | translate }}</legend>
+        <label>
+          <span>{{ 'adminParkPricing.fields.priceMode' | translate }}</span>
+          <select [disabled]="disabled" [ngModel]="priceMode(channel)" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updatePriceMode(channel, $event)">
+            <option value="">{{ 'adminParkPricing.modes.none' | translate }}</option>
+            <option value="Fixed">{{ 'adminParkPricing.modes.Fixed' | translate }}</option>
+            <option value="Range">{{ 'adminParkPricing.modes.Range' | translate }}</option>
+            <option value="Dynamic">{{ 'adminParkPricing.modes.Dynamic' | translate }}</option>
+          </select>
+        </label>
+
+        @if (price(channel); as price) {
+          @if (price.mode === 'Fixed') {
+            <label>
+              <span>{{ 'adminParkPricing.fields.amount' | translate }}</span>
+              <input type="number" min="0" step="0.01" [disabled]="disabled" [ngModel]="price.amount" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updatePriceAmount(channel, 'amount', $event)" />
+            </label>
+          } @else {
+            <div class="pricing-offer-editor__range">
+              <label>
+                <span>{{ 'adminParkPricing.fields.minimumAmount' | translate }}</span>
+                <input type="number" min="0" step="0.01" [disabled]="disabled" [ngModel]="price.minimumAmount" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updatePriceAmount(channel, 'minimumAmount', $event)" />
+              </label>
+              <label>
+                <span>{{ 'adminParkPricing.fields.maximumAmount' | translate }}</span>
+                <input type="number" min="0" step="0.01" [disabled]="disabled" [ngModel]="price.maximumAmount" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updatePriceAmount(channel, 'maximumAmount', $event)" />
+              </label>
+            </div>
+            @if (price.mode === 'Dynamic') {
+              <small>{{ 'adminParkPricing.hints.dynamicBounds' | translate }}</small>
+            }
+          }
+        }
+      </fieldset>
+    }
+  </div>
+
+  <div class="pricing-offer-editor__fields">
+    <label>
+      <span>{{ 'adminParkPricing.fields.validFrom' | translate }}</span>
+      <input type="date" [disabled]="disabled" [ngModel]="offer.validFrom" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateText('validFrom', $event)" />
+    </label>
+    <label>
+      <span>{{ 'adminParkPricing.fields.validTo' | translate }}</span>
+      <input type="date" [disabled]="disabled" [ngModel]="offer.validTo" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateText('validTo', $event)" />
+    </label>
+    <label class="pricing-offer-editor__wide">
+      <span>{{ 'adminParkPricing.fields.offerPurchaseUrl' | translate }}</span>
+      <input type="url" [disabled]="disabled" [ngModel]="offer.purchaseUrl" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateText('purchaseUrl', $event)" />
+    </label>
+  </div>
+
+  <div class="pricing-offer-editor__localized">
+    <span>{{ 'adminParkPricing.fields.conditions' | translate }}</span>
+    <app-localized-text-input
+      [disabled]="disabled"
+      [ngModel]="offer.conditions"
+      [ngModelOptions]="{ standalone: true }"
+      [placeholderKey]="'adminParkPricing.placeholders.conditions'"
+      [copyAllButtonLabel]="'adminParkPricing.actions.copyAllLanguages' | translate"
+      (ngModelChange)="updateConditions($event)">
+    </app-localized-text-input>
+  </div>
+</article>

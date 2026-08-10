@@ -14,6 +14,7 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
@@ -23,6 +24,7 @@ using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
 using Xunit;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Handlers;
 
@@ -288,6 +290,104 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenPricingIsSelected_ShouldExportPricingThroughBulkPath()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Pricing Park",
+            CountryCode = "FR",
+            Status = ParkStatus.Operating,
+        };
+        Park parkWithoutPricing = new Park
+        {
+            Id = "park-2",
+            Name = "Park Without Pricing",
+            CountryCode = "BE",
+            Status = ParkStatus.Operating,
+        };
+        Park closedPark = new Park
+        {
+            Id = "park-3",
+            Name = "Closed Pricing Park",
+            CountryCode = "DE",
+            Status = ParkStatus.TemporarilyClosed,
+        };
+        ParkPricingEntity pricing = new ParkPricingEntity
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            PurchaseUrl = "https://example.com/tickets",
+            AdmissionOffers = new List<ParkAdmissionPriceOffer>
+            {
+                new ParkAdmissionPriceOffer
+                {
+                    Code = "adult-high-season",
+                    AudienceCategory = "adult",
+                    OnlinePrice = new ParkPriceValue
+                    {
+                        Mode = ParkPricingMode.Fixed,
+                        Amount = 39m,
+                    },
+                    ValidFrom = new DateOnly(2026, 7, 1),
+                    ValidTo = new DateOnly(2026, 8, 31),
+                },
+            },
+        };
+        ParkPricingEntity retainedClosedPricing = new ParkPricingEntity
+        {
+            ParkId = "park-3",
+            CurrencyCode = "EUR",
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1", "park-2", "park-3" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park, parkWithoutPricing, closedPark });
+        Mock<IParkPricingRepository> pricingRepository = new Mock<IParkPricingRepository>(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1", "park-2", "park-3" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { pricing, retainedClosedPricing });
+
+        ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
+            parkRepository.Object,
+            pricingRepository: pricingRepository.Object);
+
+        ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
+            new ExportBulkParkGraphJsonQuery(new ParkGraphBulkExportRequest
+            {
+                SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
+                ParkIds = new[] { "park-1", "park-2", "park-3" },
+                Sections = new[] { ParkGraphExportSection.Pricing },
+            }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        using JsonDocument document = JsonDocument.Parse(result.Value.Content);
+        JsonElement exportedPricing = document.RootElement.GetProperty("parks")[0].GetProperty("pricing");
+        JsonElement exportedOffer = exportedPricing.GetProperty("admissionOffers")[0];
+
+        Assert.Equal("EUR", exportedPricing.GetProperty("currencyCode").GetString());
+        Assert.Equal("https://example.com/tickets", exportedPricing.GetProperty("purchaseUrl").GetString());
+        Assert.Equal("adult-high-season", exportedOffer.GetProperty("code").GetString());
+        Assert.Equal("Fixed", exportedOffer.GetProperty("onlinePrice").GetProperty("mode").GetString());
+        Assert.Equal(39m, exportedOffer.GetProperty("onlinePrice").GetProperty("amount").GetDecimal());
+        Assert.Equal("2026-07-01", exportedOffer.GetProperty("validFrom").GetString());
+        Assert.Equal("2026-08-31", exportedOffer.GetProperty("validTo").GetString());
+        Assert.Equal(JsonValueKind.Null, document.RootElement.GetProperty("parks")[1].GetProperty("pricing").ValueKind);
+        Assert.Equal(JsonValueKind.Null, document.RootElement.GetProperty("parks")[2].GetProperty("pricing").ValueKind);
+        parkRepository.VerifyAll();
+        pricingRepository.VerifyAll();
+        pricingRepository.Verify(
+            repository => repository.GetByParkIdAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenProgressIsProvided_ShouldReportCompletedProgress()
     {
         Park firstPark = new Park
@@ -379,7 +479,8 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
         IParkRepository parkRepository,
         IParkItemRepository? parkItemRepository = null,
         IImageRepository? imageRepository = null,
-        IHistoryEventRepository? historyEventRepository = null)
+        IHistoryEventRepository? historyEventRepository = null,
+        IParkPricingRepository? pricingRepository = null)
     {
         return new ExportBulkParkGraphJsonQueryHandler(
             parkRepository,
@@ -393,7 +494,8 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             imageRepository ?? Mock.Of<IImageRepository>(MockBehavior.Strict),
             Mock.Of<IParkOpeningHoursRepository>(MockBehavior.Strict),
-            historyEventRepository ?? Mock.Of<IHistoryEventRepository>(MockBehavior.Strict)));
+            historyEventRepository ?? Mock.Of<IHistoryEventRepository>(MockBehavior.Strict),
+            pricingRepository ?? Mock.Of<IParkPricingRepository>(MockBehavior.Strict)));
     }
 
     private sealed class CollectingProgress<TProgress> : IProgress<TProgress>

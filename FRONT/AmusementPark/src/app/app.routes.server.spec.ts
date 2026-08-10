@@ -20,4 +20,12 @@ describe('Server routes', () => {
     expect(nestedAdminIndex).toBeGreaterThanOrEqual(0);
     expect(nestedAdminIndex).toBeLessThan(fallbackIndex);
   });
+
+  it('server-renders the public park pricing page', () => {
+    const pricingRoute: ServerRoute | undefined = serverRoutes.find(
+      (route: ServerRoute): boolean => route.path === ':lang/park/:id/:slug/pricing'
+    );
+
+    expect(pricingRoute?.renderMode).toBe(RenderMode.Server);
+  });
 });

@@ -1,0 +1,135 @@
+<section class="admin-pricing-editor">
+  <header class="admin-pricing-editor__header">
+    <div>
+      <h3>{{ 'adminParkPricing.title' | translate }}</h3>
+      <p>{{ 'adminParkPricing.subtitle' | translate }}</p>
+    </div>
+
+    <div class="admin-pricing-editor__actions">
+      <button
+        appUiButton
+        type="button"
+        icon="pi pi-refresh"
+        class="p-button-sm p-button-secondary"
+        [disabled]="loading || saving"
+        [label]="'adminParkPricing.actions.reload' | translate"
+        (click)="reload()">
+      </button>
+      <button
+        appUiButton
+        type="button"
+        icon="pi pi-save"
+        class="p-button-sm p-button-success"
+        [disabled]="loading || saving || !pricing()"
+        [label]="'adminParkPricing.actions.save' | translate"
+        (click)="save()">
+      </button>
+    </div>
+  </header>
+
+  @if (errorMessageKey(); as messageKey) {
+    <p class="admin-pricing-editor__error">{{ messageKey | translate }}</p>
+  }
+
+  @if (loading && !pricing()) {
+    <p class="admin-pricing-editor__status">{{ 'adminParkPricing.messages.loading' | translate }}</p>
+  }
+
+  @if (pricing(); as currentPricing) {
+    <fieldset class="admin-pricing-editor__metadata" [disabled]="saving">
+      <legend>{{ 'adminParkPricing.sections.general' | translate }}</legend>
+      <div class="admin-pricing-editor__fields">
+        <label>
+          <span>{{ 'adminParkPricing.fields.currencyCode' | translate }}</span>
+          <input type="text" maxlength="3" [ngModel]="currentPricing.currencyCode" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateRootField('currencyCode', $event)" />
+        </label>
+        <label>
+          <span>{{ 'adminParkPricing.fields.lastVerifiedAtUtc' | translate }}</span>
+          <input type="datetime-local" [ngModel]="lastVerifiedInputValue(currentPricing.lastVerifiedAtUtc)" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateLastVerified($event)" />
+        </label>
+        <label class="admin-pricing-editor__wide">
+          <span>{{ 'adminParkPricing.fields.sourceUrl' | translate }}</span>
+          <input type="url" [ngModel]="currentPricing.sourceUrl" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateRootField('sourceUrl', $event)" />
+        </label>
+        <label class="admin-pricing-editor__wide">
+          <span>{{ 'adminParkPricing.fields.purchaseUrl' | translate }}</span>
+          <input type="url" [ngModel]="currentPricing.purchaseUrl" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateRootField('purchaseUrl', $event)" />
+        </label>
+        <div class="admin-pricing-editor__wide">
+          <span>{{ 'adminParkPricing.fields.notes' | translate }}</span>
+          <app-localized-text-input
+            [disabled]="saving"
+            [ngModel]="currentPricing.notes"
+            [ngModelOptions]="{ standalone: true }"
+            [placeholderKey]="'adminParkPricing.placeholders.localizedValue'"
+            [copyAllButtonLabel]="'adminParkPricing.actions.copyAllLanguages' | translate"
+            (ngModelChange)="updateNotes($event)">
+          </app-localized-text-input>
+        </div>
+      </div>
+    </fieldset>
+
+    <section class="admin-pricing-editor__collection">
+      <header>
+        <div>
+          <h4>{{ 'adminParkPricing.sections.admissionOffers' | translate }}</h4>
+          <p>{{ 'adminParkPricing.hints.admissionOffers' | translate }}</p>
+        </div>
+        <button appUiButton type="button" class="p-button-sm" icon="pi pi-plus" [disabled]="saving" [label]="'adminParkPricing.actions.addAdmission' | translate" (click)="addAdmissionOffer()"></button>
+      </header>
+      @for (offer of currentPricing.admissionOffers; track offerTrackKey('admissionOffers', $index); let index = $index) {
+        <app-admin-park-pricing-offer-editor
+          kind="admission"
+          [offer]="offer"
+          [disabled]="saving"
+          (offerChange)="updateOffer('admissionOffers', index, $event)"
+          (remove)="removeOffer('admissionOffers', index)">
+        </app-admin-park-pricing-offer-editor>
+      } @empty {
+        <p class="admin-pricing-editor__empty">{{ 'adminParkPricing.empty.admissionOffers' | translate }}</p>
+      }
+    </section>
+
+    <section class="admin-pricing-editor__collection">
+      <header>
+        <div>
+          <h4>{{ 'adminParkPricing.sections.annualPasses' | translate }}</h4>
+          <p>{{ 'adminParkPricing.hints.annualPasses' | translate }}</p>
+        </div>
+        <button appUiButton type="button" class="p-button-sm" icon="pi pi-plus" [disabled]="saving" [label]="'adminParkPricing.actions.addAnnualPass' | translate" (click)="addAnnualPass()"></button>
+      </header>
+      @for (offer of currentPricing.annualPasses; track offerTrackKey('annualPasses', $index); let index = $index) {
+        <app-admin-park-pricing-offer-editor
+          kind="annualPass"
+          [offer]="offer"
+          [disabled]="saving"
+          (offerChange)="updateOffer('annualPasses', index, $event)"
+          (remove)="removeOffer('annualPasses', index)">
+        </app-admin-park-pricing-offer-editor>
+      } @empty {
+        <p class="admin-pricing-editor__empty">{{ 'adminParkPricing.empty.annualPasses' | translate }}</p>
+      }
+    </section>
+
+    <section class="admin-pricing-editor__collection">
+      <header>
+        <div>
+          <h4>{{ 'adminParkPricing.sections.parkingOffers' | translate }}</h4>
+          <p>{{ 'adminParkPricing.hints.parkingOffers' | translate }}</p>
+        </div>
+        <button appUiButton type="button" class="p-button-sm" icon="pi pi-plus" [disabled]="saving" [label]="'adminParkPricing.actions.addParking' | translate" (click)="addParkingOffer()"></button>
+      </header>
+      @for (offer of currentPricing.parkingOffers; track offerTrackKey('parkingOffers', $index); let index = $index) {
+        <app-admin-park-pricing-offer-editor
+          kind="parking"
+          [offer]="offer"
+          [disabled]="saving"
+          (offerChange)="updateOffer('parkingOffers', index, $event)"
+          (remove)="removeOffer('parkingOffers', index)">
+        </app-admin-park-pricing-offer-editor>
+      } @empty {
+        <p class="admin-pricing-editor__empty">{{ 'adminParkPricing.empty.parkingOffers' | translate }}</p>
+      }
+    </section>
+  }
+</section>

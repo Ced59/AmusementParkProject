@@ -28,6 +28,11 @@ import {
 } from './src/server/ssr/robot-ssr-policy';
 import type { RobotFamily } from './src/server/ssr/robot-ssr-policy';
 import { isPublicCommentSsrRoute } from './src/server/ssr/public-comment-ssr-route-policy';
+import {
+  isCriticalPublicPricingSsrRoute,
+  isPublicPricingSsrRoute,
+  resolvePricingAwarePageCacheExpiration,
+} from './src/server/ssr/public-pricing-ssr-policy';
 import { appendForwardedFor } from './src/server/proxy/forwarded-for';
 import { RetainedBucketCache } from './src/server/technical-stats/retained-bucket-cache';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
@@ -2135,6 +2140,7 @@ function isPublicSsrCacheRoute(url: string): boolean {
     || isPublicParkMapRoute(path)
     || isPublicParkWeatherRoute(path)
     || isPublicParkOpeningHoursRoute(path)
+    || isPublicPricingSsrRoute(path)
     || isPublicParkZonesRoute(path)
     || isPublicParkZoneDetailRoute(path)
     || isPublicParkItemsRoute(path)
@@ -2163,6 +2169,7 @@ function isCriticalPublicSsrRoute(url: string): boolean {
     || isPublicParkMapRoute(path)
     || (isPublicParkWeatherRoute(path) && !hasBlockingQuery)
     || (isPublicParkOpeningHoursRoute(path) && !hasBlockingQuery)
+    || isCriticalPublicPricingSsrRoute(path, hasBlockingQuery)
     || isPublicParkZonesRoute(path)
     || isPublicParkZoneDetailRoute(path)
     || (isPublicParkItemsRoute(path) && !hasBlockingQuery)
@@ -2337,13 +2344,18 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): bool
     return false;
   }
 
+  const nowMs: number = Date.now();
   const entry: PageCacheEntry = {
     buildVersion: currentBuildVersion,
     cacheKey,
     statusCode,
     html,
     seoReady: true,
-    expiresAt: Date.now() + pageCacheTtlSeconds * 1000
+    expiresAt: resolvePricingAwarePageCacheExpiration(
+      cacheKey,
+      nowMs,
+      pageCacheTtlSeconds * 1000,
+    )
   };
 
   pageCache.set(cacheKey, entry);

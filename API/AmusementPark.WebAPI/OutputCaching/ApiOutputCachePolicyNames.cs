@@ -9,6 +9,7 @@ public static class ApiOutputCachePolicyNames
     public const string PublicHtmlSitemapNodes = "public-html-sitemap-nodes";
     public const string PublicDataShort = "public-data-short";
     public const string PublicDataMedium = "public-data-medium";
+    public const string PublicPricingData = "public-pricing-data";
     public const string PublicWeatherDataShort = "public-weather-data-short";
     public const string PublicReferenceData = "public-reference-data";
 

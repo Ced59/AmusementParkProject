@@ -1,24 +1,24 @@
 # Workflow API autonome réservé à Codex
 
-Version : **2026-08-07-r3**
+Version : **2026-08-09-r4**
 
 Rôle : **PARK_DATA_EDITOR**
 
 Client : `tools/codex/park-data-editor.ps1`
 
-Ce document complète le parcours officiel des étapes 0 à 8 lorsque **Codex** exécute lui-même les exports, Preview, Apply, contrôles et uploads par API. Il ne remplace aucune règle éditoriale ou métier des fichiers `park-data-integration-steps/`.
+Ce document complète le parcours officiel des étapes 0 à 9 lorsque **Codex** exécute lui-même les exports, Preview, Apply, contrôles et uploads par API. Il ne remplace aucune règle éditoriale ou métier des fichiers `park-data-integration-steps/`.
 
 ## Contrat de la commande `Complète le parc <nom>`
 
 Cette commande courte autorise Codex à :
 
 - rechercher le parc et ses doublons ;
-- exécuter toutes les étapes 0 à 8 applicables, en autant de lots bornés que nécessaire ;
-- rechercher les données actuelles, historiques et récentes ;
+- exécuter toutes les étapes 0 à 9 applicables, en autant de lots bornés que nécessaire ;
+- rechercher les données actuelles, tarifaires, historiques et récentes ;
 - exécuter Preview/Apply, importer les images, contrôler chaque réponse, tenir un état local consolidé et corriger jusqu’à un audit final propre, précédé d’un export complet frais ;
 - fournir un tableau de couverture chiffré et un état `prêt pour publication`.
 
-Elle n’autorise pas Codex à publier le parc, ses nouveaux contenus ou ses images, supprimer, masquer un parc déjà public, nettoyer une entité legacy ambiguë, gérer des utilisateurs ni appeler une route d’administration extérieure aux surfaces autorisées. La publication exige une nouvelle instruction explicite après l’audit de l’étape 8.
+Elle n’autorise pas Codex à publier le parc, ses nouveaux contenus ou ses images, supprimer, masquer un parc déjà public, nettoyer une entité legacy ambiguë, gérer des utilisateurs ni appeler une route d’administration extérieure aux surfaces autorisées. La publication exige une nouvelle instruction explicite après l’audit de l’étape 9.
 
 Codex ne demande pas à l’utilisateur de relancer manuellement chaque étape. Il consigne les étapes non applicables et continue. Il s’arrête seulement lorsqu’une décision matérielle du propriétaire est nécessaire, que l’identité reste ambiguë, que les droits techniques manquent ou qu’un blocage ne peut pas être corrigé dans le périmètre autorisé.
 
@@ -165,8 +165,8 @@ Une complétude ou une publication de données ne déclenche jamais cette opéra
 ```
 
 - Sans `-Sections`, le client exporte toutes les sections.
-- Pendant les étapes 0 à 7, aucun appel complet à `ExportPark` n’est obligatoire. L’état local est construit depuis la recherche du parc, les éventuels exports ciblés strictement nécessaires et les réponses réussies des mutations.
-- Avant l’étape 8, appeler une fois `ExportPark` sans `-Sections` afin d’obtenir l’état complet frais sur lequel repose l’audit final.
+- Pendant les étapes 0 à 8, aucun appel complet à `ExportPark` n’est obligatoire. L’état local est construit depuis la recherche du parc, les éventuels exports ciblés strictement nécessaires et les réponses réussies des mutations.
+- Avant l’étape 9, appeler une fois `ExportPark` sans `-Sections` afin d’obtenir l’état complet frais sur lequel repose l’audit final. La liste complète inclut la section `Pricing`.
 - Avant ce jalon, un export avec `-Sections` est réservé à l’identification de l’existant ou à une incohérence précise, une réponse de mutation perdue, un ID indispensable ou une dépendance absente des résultats ; il ne devient jamais une routine de fin de lot.
 - Une coupure pendant le téléchargement est reprise dans la même exécution ; le client n’écrit le fichier final qu’après contrôle de la longueur et du document retourné.
 - Le client privilégie le `curl` système sous Windows et télécharge les exports volumineux par plages courtes dont chaque longueur est contrôlée avant assemblage. Chaque plage dispose d’un nombre de tentatives borné ; les fichiers `.partial` et `.chunk` sont supprimés après toute sortie normale, réussie ou en erreur. Une coupure de proxy ne doit donc produire ni attente indéfinie ni faux export final.
@@ -181,7 +181,7 @@ Les noms, l’ordre et le contenu des étapes restent ceux de l’orchestrateur 
 
 1. Lire l’orchestrateur, le fichier exact de l’étape et, si nécessaire, le fichier des enums.
 2. À l’étape 0, rechercher d’abord les doublons par l’API technique. Ne demander que les sections indispensables pour identifier l’existant et cadrer le premier lot ; un export complet n’est pas un prérequis.
-3. Pour les étapes 1 à 7, maintenir un registre local consolidé des entités, IDs, clés, compteurs et lacunes à partir de la recherche initiale, des éventuels exports ciblés et des réponses réussies de Preview, Apply et d’import d’image. Ne produire un export ciblé que pour lever une ambiguïté, récupérer un identifiant créé ou vérifier une dépendance précise ; l’unique export complet obligatoire n’intervient qu’immédiatement avant l’étape 8.
+3. Pour les étapes 1 à 8, maintenir un registre local consolidé des entités, IDs, clés, compteurs et lacunes à partir de la recherche initiale, des éventuels exports ciblés et des réponses réussies de Preview, Apply et d’import d’image. Ne produire un export ciblé que pour lever une ambiguïté, récupérer un identifiant créé ou vérifier une dépendance précise ; l’unique export complet obligatoire n’intervient qu’immédiatement avant l’étape 9.
 4. Rechercher et sourcer seulement les données de l’étape courante. Produire un JSON borné et conserver le compteur traité/total ainsi que le registre des lacunes.
 5. Exécuter `Preview`. Examiner toutes les erreurs, tous les warnings, les entités résolues et chaque changement de champ.
 6. Ne jamais exécuter `Apply` si `canApply` est faux, si une erreur existe ou si un warning bloquant subsiste. Par défaut, le client bloque même les warnings non bloquants; `-AllowWarnings` exige une décision explicite après lecture.
@@ -190,7 +190,7 @@ Les noms, l’ordre et le contenu des étapes restent ceux de l’orchestrateur 
 9. Terminer tous les lots applicables avant de poursuivre. Une étape objectivement non applicable peut être consignée puis traversée sans pause ; une étape applicable ne peut jamais être sautée pour accélérer le parcours.
 10. Ne jamais publier un parc, masquer une donnée publique ou supprimer un contenu au-delà du lot annoncé. Pour un parc existant déjà visible, préserver sa visibilité pendant l’enrichissement.
 11. Après chaque étape, rapprocher les compteurs consolidés localement avec les objectifs de couverture établis à l’étape 0. Une réussite `Apply` ne prouve pas la complétude éditoriale.
-12. Immédiatement avant l’étape 8, effectuer l’unique export complet obligatoire, puis reconstruire les compteurs et l’état de référence depuis ce fichier frais avant de lancer l’audit.
+12. Immédiatement avant l’étape 9, effectuer l’unique export complet obligatoire, puis reconstruire les compteurs et l’état de référence depuis ce fichier frais avant de lancer l’audit.
 
 Exemple :
 
@@ -214,7 +214,7 @@ Construire depuis l’export une ligne par propriétaire avec : identifiant, typ
 - chaque attraction actuelle ;
 - chaque attraction annoncée ou en construction ;
 - chaque attraction définitivement fermée ;
-- chaque jalon et article historique existant ou créé à l’étape 7.
+- chaque jalon et article historique existant ou créé à l’étape 8.
 
 ### Recherche et validation d’une image
 
@@ -233,7 +233,7 @@ Pour chaque fichier validé :
 3. Envoyer le fichier à `POST park-data-editor/images`.
 4. Rattacher l’image au `Park`, `ParkItem` ou `StandaloneAttraction` exact grâce à son ID exporté.
 5. Enregistrer l’URL source, les crédits, textes alternatifs, légendes, publication et statut courant via un fichier `MetadataJsonPath` complet.
-6. Contrôler la réponse de l’import et l’intégrer au registre local : ID, propriétaire, catégorie, métadonnées, publication et statut courant. Ne pas réexporter le parc après l’import ; demander la section `Images` seulement si la réponse est ambiguë ou ne fournit pas l’identifiant indispensable au lot suivant. Le contrôle exhaustif aura lieu sur l’export complet frais précédant l’étape 8.
+6. Contrôler la réponse de l’import et l’intégrer au registre local : ID, propriétaire, catégorie, métadonnées, publication et statut courant. Ne pas réexporter le parc après l’import ; demander la section `Images` seulement si la réponse est ambiguë ou ne fournit pas l’identifiant indispensable au lot suivant. Le contrôle exhaustif aura lieu sur l’export complet frais précédant l’étape 9.
 
 Le téléchargement local ne contourne jamais le traitement applicatif. L’upload appelle le même `UploadImageCommandHandler`, le même `IImageProcessingPipeline` et le même stockage que l’upload existant : détection, métadonnées, conversion, compression, variantes et contraintes continuent donc à s’appliquer.
 
@@ -282,20 +282,32 @@ Les catégories de compte, commentaire, vidéo, exploitant, constructeur et fond
 
 ### Audit après images
 
-Après les imports, actualiser le registre local : logo courant attendu, image principale du parc, attractions avec image/total pour chaque statut, attractions fermées avec image/total, jalons avec image/total, articles avec image/total et liste exacte des exceptions. Vérifier les réponses pour éviter les doublons et les remplacements d’image courante inappropriés ; l’export complet frais préalable à l’étape 8 confirme ensuite ces résultats et porte le tableau annoncé.
+Après les imports, actualiser le registre local : logo courant attendu, image principale du parc, attractions avec image/total pour chaque statut, attractions fermées avec image/total, jalons avec image/total, articles avec image/total et liste exacte des exceptions. Vérifier les réponses pour éviter les doublons et les remplacements d’image courante inappropriés ; l’export complet frais préalable à l’étape 9 confirme ensuite ces résultats et porte le tableau annoncé.
 
 Un warning de doublon d’image distante peut être non bloquant uniquement si l’état de référence prouve que la source est déjà liée au bon propriétaire et qu’aucune modification n’était attendue. Tous les autres warnings doivent être compris et corrigés avant de poursuivre.
 
+## Étape 7 : parcours Codex des tarifs
+
+Codex traite les tarifs exclusivement par un JSON Park Graph Upsert borné et la boucle officielle `Status` → `Preview` → `Apply`. Il ne crée pas de service parallèle, n’appelle pas une route d’administration improvisée et ne modifie pas directement la base de données.
+
+1. Confirmer dans le registre que `park.status` vaut `Operating`. Dans tout autre cas, consigner l’étape comme non applicable sans envoyer de section `pricing`.
+2. Rechercher la page tarifaire et la billetterie officielles actuelles, puis construire le bloc canonique `pricing` conformément à `park-data-integration-steps/07-pricing.md`.
+3. Exécuter Preview sur un lot qui ne contient que l’identité minimale et `pricing`. Contrôler le parc cible, les modes, montants, périodes, codes, compteurs et chaque champ annoncé comme créé ou modifié.
+4. Appliquer avec le reçu exact, contrôler la réponse et reporter dans le registre la devise, les trois compteurs d’offres, les périodes, URLs et `lastVerifiedAtUtc`.
+5. Ne pas réexporter après Apply. Si la réponse est ambiguë, un export ciblé est disponible avec `-Sections Pricing`. L’export complet final de l’étape 9 inclut aussi cette section et doit permettre un round-trip sans perte fonctionnelle.
+
+Une grille vide ne constitue pas une suppression. La commande `Complète le parc` n’autorise pas Codex à effacer une grille existante ni à remplacer une donnée actuelle par un prix non vérifié.
+
 ## Audit final
 
-Juste avant de commencer l’étape 8, Codex doit effectuer l’unique export complet obligatoire du parcours. À partir de cet état frais, il exécute le contrôle de complétude et vérifie les compteurs attendus, les propriétaires d’images, le logo courant, les sources et crédits, les warnings résiduels, la visibilité conservée et l’historique d’Apply. Il fournit le tableau quantitatif exigé par l’étape 8 et ne conclut pas sur le seul score numérique.
+Juste avant de commencer l’étape 9, Codex doit effectuer l’unique export complet obligatoire du parcours. À partir de cet état frais, il exécute le contrôle de complétude et vérifie les compteurs attendus, les propriétaires d’images, le logo courant, les tarifs, les sources et crédits, les warnings résiduels, la visibilité conservée et l’historique d’Apply. Il fournit le tableau quantitatif exigé par l’étape 9 et ne conclut pas sur le seul score numérique.
 
 Il compare aussi le corpus public après retrait des titres et noms d’entités : descriptions du parc, zones et items, textes historiques, sous-titres d’articles, descriptions, textes alternatifs et légendes d’images. Tout paragraphe de secours répété, conseil d’itinéraire ou traduction générique impose une reprise ciblée avant la conclusion.
 
 Il effectue également, langue par langue, un balayage par familles de vocabulaire mécanique et de spécifications chiffrées. Les regroupements de rails, voies, véhicules, sièges, structures, rotations, accélérations ou trajectoires sont relus manuellement : un nom physique isolé peut décrire honnêtement la scène, mais une succession opératoire ou une fiche de vitesse, durée, capacité et comptage doit être réécrite et laissée aux champs structurés.
 
-Si l’export complet préalable à l’étape 8 échoue ou arrive tronqué, ne jamais le présenter comme l’état courant ni le remplacer silencieusement par un ancien export ou par le registre consolidé. Réessayer par la surface technique autorisée et obtenir impérativement un nouvel export complet valide. Hors audit final, une Preview exacte du lot peut prouver si une écriture ambiguë reste attendue ; utiliser un export ciblé seulement lorsqu’il apporte une information supplémentaire nécessaire. Ne pas basculer vers l’administration ou la base de données.
+Si l’export complet préalable à l’étape 9 échoue ou arrive tronqué, ne jamais le présenter comme l’état courant ni le remplacer silencieusement par un ancien export ou par le registre consolidé. Réessayer par la surface technique autorisée et obtenir impérativement un nouvel export complet valide. Hors audit final, une Preview exacte du lot peut prouver si une écriture ambiguë reste attendue ; utiliser un export ciblé seulement lorsqu’il apporte une information supplémentaire nécessaire. Ne pas basculer vers l’administration ou la base de données.
 
-Après une instruction explicite de publication, Codex contrôle d’abord l’état global des opérations, obtient un nouvel export complet frais et rejoue sur cet état réel tous les contrôles bloquants de l’étape 8. Toute différence inexpliquée avec l’export audité ou les reçus de correction suspend la publication. Ce contrôle appartient au flux de publication séparément autorisé et ne change pas l’unique export complet obligatoire du parcours de complétion 0 à 8. Codex suit ensuite l’ordre de l’étape 8 : publier de façon ciblée les images et contenus dépendants prêts, puis les articles, contrôler les parkItems, et enfin valider et rendre visible le nouveau parc en dernier. La publication des images réutilise leurs IDs exportés et la surface de métadonnées autorisée ou un JSON upsert borné conforme au contrat exporté ; elle ne réimporte jamais les fichiers. Codex vérifie ensuite les pages publiques anonymes, le logo, les articles, la complétude et l’idempotence d’un dernier Preview. Une annonce sociale indisponible est rapportée séparément et n’autorise aucun appel à une route admin interdite.
+Après une instruction explicite de publication, Codex contrôle d’abord l’état global des opérations, obtient un nouvel export complet frais et rejoue sur cet état réel tous les contrôles bloquants de l’étape 9. Toute différence inexpliquée avec l’export audité ou les reçus de correction suspend la publication. Ce contrôle appartient au flux de publication séparément autorisé et ne change pas l’unique export complet obligatoire du parcours de complétion 0 à 9. Codex suit ensuite l’ordre de l’étape 9 : publier de façon ciblée les images et contenus dépendants prêts, puis les articles, contrôler les parkItems, et enfin valider et rendre visible le nouveau parc en dernier. La publication des images réutilise leurs IDs exportés et la surface de métadonnées autorisée ou un JSON upsert borné conforme au contrat exporté ; elle ne réimporte jamais les fichiers. Codex vérifie ensuite les pages publiques anonymes, le logo, les articles, la complétude et l’idempotence d’un dernier Preview. Une annonce sociale indisponible est rapportée séparément et n’autorise aucun appel à une route admin interdite.
 
 Le propriétaire peut rapprocher chaque appel avec `park-data-editor.request` dans le journal d’audit et filtrer par compte, email, trace ID ou identifiant de jeton.

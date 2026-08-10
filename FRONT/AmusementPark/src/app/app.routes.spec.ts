@@ -97,6 +97,16 @@ describe('App routes', () => {
     );
   });
 
+  it('exposes the public park pricing page', () => {
+    const route: Route | undefined = getPublicRoutes().find(
+      (candidate: Route): boolean => candidate.path === 'park/:id/:slug/pricing'
+    );
+
+    expect(route).toBeDefined();
+    expect(route?.redirectTo).toBeUndefined();
+    expect(route?.loadComponent).toBeDefined();
+  });
+
   it('exposes the admin history management route behind the admin layout', () => {
     const adminRoutes: Route[] = getAdminRoutes();
     const route: Route | undefined = adminRoutes.find(

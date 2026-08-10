@@ -113,7 +113,7 @@ Ne jamais traduire ces valeurs dans le JSON. `Annoncé`, `Announced`, `Ouvert`, 
 
 ### Interdiction de mélanger statut et histoire
 
-Un statut ne décrit jamais **la dernière chose arrivée** à l’attraction. Les transformations durables sont des événements de timeline à l’étape 7.
+Un statut ne décrit jamais **la dernière chose arrivée** à l’attraction. Les transformations durables sont des événements de timeline à l’étape 8.
 
 Ne jamais écrire dans `attractionDetails.status` des valeurs telles que :
 
@@ -148,7 +148,7 @@ Si l’état de référence contient déjà une transformation historique dans `
 
 1. rechercher le vrai état courant ;
 2. corriger le statut avec une valeur lifecycle canonique ;
-3. noter dans le registre qu’un événement historique doit être créé ou vérifié à l’étape 7 ;
+3. noter dans le registre qu’un événement historique doit être créé ou vérifié à l’étape 8 ;
 4. ne jamais perdre le fait historique pendant la correction.
 
 Autres règles :
@@ -292,7 +292,7 @@ Sections possibles :
 - Les anciens items importants ne sont pas supprimés.
 - Les trois passes d’inventaire sont terminées et leurs totaux sont annoncés séparément.
 - Les attractions définitivement fermées ont fait l’objet d’une recherche historique dédiée ; les lacunes restantes indiquent les sources vérifiées.
-- Toute anomalie legacy de statut historique est enregistrée pour correction et préservation en timeline à l’étape 7.
+- Toute anomalie legacy de statut historique est enregistrée pour correction et préservation en timeline à l’étape 8.
 - Les items sans source fiable restent absents ou `ToReview`.
 
 ## Récap avant livraison
