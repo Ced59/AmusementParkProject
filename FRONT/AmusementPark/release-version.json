@@ -1,6 +1,20 @@
 {
-  "version": "4.1.30",
+  "version": "4.1.31",
   "history": [
+    {
+      "version": "4.1.31",
+      "releasedAt": "2026-08-10",
+      "labels": {
+        "fr": "Les pages de tarifs des parcs répondent désormais correctement.",
+        "en": "Park pricing pages now return the correct response.",
+        "de": "Die Tarifseiten der Parks liefern jetzt die richtige Antwort.",
+        "nl": "Parktariefpagina's geven nu de juiste respons terug.",
+        "it": "Le pagine delle tariffe dei parchi ora restituiscono la risposta corretta.",
+        "es": "Las páginas de tarifas de los parques ahora devuelven la respuesta correcta.",
+        "pl": "Strony z cenami parków zwracają teraz prawidłową odpowiedź.",
+        "pt": "As páginas de preços dos parques devolvem agora a resposta correta."
+      }
+    },
     {
       "version": "4.1.30",
       "releasedAt": "2026-08-10",
