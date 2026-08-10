@@ -20,11 +20,17 @@ public sealed class ParkPricingAvailabilityTests
                 CreateAdmissionOffer("expired", null, date.AddDays(-1)),
                 CreateAdmissionOffer("undated", null, null),
             },
+            HistoricalSnapshots = new List<ParkPricingSnapshot>
+            {
+                new ParkPricingSnapshot { Year = 2024, CurrencyCode = "HRK" },
+                new ParkPricingSnapshot { Year = 2025, CurrencyCode = "EUR" },
+            },
         };
 
         ParkPricing filtered = pricing.FilterOffersValidOn(date);
 
         Assert.Equal(new[] { "current", "undated" }, filtered.AdmissionOffers.Select(static offer => offer.Code));
+        Assert.Equal(new[] { 2025, 2024 }, filtered.HistoricalSnapshots.Select(static snapshot => snapshot.Year));
         Assert.Equal(4, pricing.AdmissionOffers.Count);
     }
 

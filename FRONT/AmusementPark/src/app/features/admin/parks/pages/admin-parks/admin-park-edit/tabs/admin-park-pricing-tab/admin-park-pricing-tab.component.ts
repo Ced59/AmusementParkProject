@@ -7,6 +7,7 @@ import {
   ParkAnnualPassOffer,
   ParkParkingPriceOffer,
   ParkPricing,
+  ParkPricingSnapshot,
 } from '@app/models/parks/park-pricing';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { LocalizedItem } from '@app/models/shared/localized-item';
@@ -18,6 +19,7 @@ import {
   AdminParkPricingOffer,
   AdminParkPricingOfferEditorComponent,
 } from './admin-park-pricing-offer-editor.component';
+import { AdminParkPricingSnapshotEditorComponent } from './admin-park-pricing-snapshot-editor.component';
 
 type PricingCollection = 'admissionOffers' | 'annualPasses' | 'parkingOffers';
 
@@ -28,6 +30,7 @@ type PricingCollection = 'admissionOffers' | 'annualPasses' | 'parkingOffers';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AdminParkPricingOfferEditorComponent,
+    AdminParkPricingSnapshotEditorComponent,
     ButtonDirective,
     FormsModule,
     LocalizedTextInputComponent,
@@ -253,6 +256,63 @@ export class AdminParkPricingTabComponent implements OnChanges {
     }
   }
 
+  protected addHistoricalSnapshot(): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    const snapshots: ParkPricingSnapshot[] = current.historicalSnapshots ?? [];
+    const usedYears = new Set(snapshots.map((snapshot: ParkPricingSnapshot): number => snapshot.year));
+    let year: number = new Date().getUTCFullYear() - 1;
+    while (year >= 1900 && usedYears.has(year)) {
+      year -= 1;
+    }
+
+    const snapshot: ParkPricingSnapshot = {
+      year,
+      currencyCode: current.currencyCode,
+      sourceUrl: null,
+      notes: [],
+      lastVerifiedAtUtc: null,
+      admissionOffers: [],
+      annualPasses: [],
+      parkingOffers: []
+    };
+
+    this.pricing.set({ ...current, historicalSnapshots: [snapshot, ...snapshots] });
+    this.errorMessageKey.set(null);
+  }
+
+  protected updateHistoricalSnapshot(index: number, snapshot: ParkPricingSnapshot): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    this.pricing.set({
+      ...current,
+      historicalSnapshots: (current.historicalSnapshots ?? []).map(
+        (item: ParkPricingSnapshot, itemIndex: number): ParkPricingSnapshot =>
+          itemIndex === index ? snapshot : item)
+    });
+    this.errorMessageKey.set(null);
+  }
+
+  protected removeHistoricalSnapshot(index: number): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    this.pricing.set({
+      ...current,
+      historicalSnapshots: (current.historicalSnapshots ?? []).filter(
+        (_item: ParkPricingSnapshot, itemIndex: number): boolean => itemIndex !== index)
+    });
+    this.errorMessageKey.set(null);
+  }
+
   protected async save(): Promise<void> {
     const parkId: string | null = this.parkId;
     const current: ParkPricing | null = this.pricing();
@@ -267,6 +327,13 @@ export class AdminParkPricingTabComponent implements OnChanges {
       sourceUrl: this.normalizeOptionalText(current.sourceUrl),
       purchaseUrl: this.normalizeOptionalText(current.purchaseUrl),
       notes: current.notes,
+      historicalSnapshots: (current.historicalSnapshots ?? []).map(
+        (snapshot: ParkPricingSnapshot): ParkPricingSnapshot => ({
+          ...snapshot,
+          currencyCode: snapshot.currencyCode.trim().toUpperCase(),
+          sourceUrl: this.normalizeOptionalText(snapshot.sourceUrl),
+          notes: snapshot.notes
+        }))
     };
 
     try {
@@ -293,7 +360,11 @@ export class AdminParkPricingTabComponent implements OnChanges {
     }
 
     try {
-      const pricing: ParkPricing = await this.editStateFacade.loadPricing(parkId);
+      const loadedPricing: ParkPricing = await this.editStateFacade.loadPricing(parkId);
+      const pricing: ParkPricing = {
+        ...loadedPricing,
+        historicalSnapshots: loadedPricing.historicalSnapshots ?? []
+      };
       this.resetOfferClientKeys(pricing);
       this.pricing.set(pricing);
       this.loaded.set(true);
@@ -324,6 +395,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
       admissionOffers: [],
       annualPasses: [],
       parkingOffers: [],
+      historicalSnapshots: [],
     };
   }
 

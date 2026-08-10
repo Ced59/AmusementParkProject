@@ -61,4 +61,17 @@ export interface ParkPricing {
   admissionOffers: ParkAdmissionPriceOffer[];
   annualPasses: ParkAnnualPassOffer[];
   parkingOffers: ParkParkingPriceOffer[];
+  historicalSnapshots?: ParkPricingSnapshot[];
+}
+
+export interface ParkPricingSnapshot {
+  id?: string | null;
+  year: number;
+  currencyCode: string;
+  sourceUrl?: string | null;
+  notes: LocalizedItem<string>[];
+  lastVerifiedAtUtc?: string | null;
+  admissionOffers: ParkAdmissionPriceOffer[];
+  annualPasses: ParkAnnualPassOffer[];
+  parkingOffers: ParkParkingPriceOffer[];
 }

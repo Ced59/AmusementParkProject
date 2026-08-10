@@ -35,6 +35,8 @@ public sealed class ParkPricing
 
     public List<ParkParkingPriceOffer> ParkingOffers { get; set; } = new();
 
+    public List<ParkPricingSnapshot> HistoricalSnapshots { get; set; } = new();
+
     public ParkPricing FilterOffersValidOn(DateOnly date)
     {
         return new ParkPricing
@@ -56,6 +58,9 @@ public sealed class ParkPricing
                 .ToList(),
             ParkingOffers = this.ParkingOffers
                 .Where(offer => IsValidOn(offer.ValidFrom, offer.ValidTo, date))
+                .ToList(),
+            HistoricalSnapshots = this.HistoricalSnapshots
+                .OrderByDescending(static snapshot => snapshot.Year)
                 .ToList(),
         };
     }
@@ -79,6 +84,34 @@ public sealed class ParkPricing
     {
         return (!validFrom.HasValue || validFrom.Value <= date)
             && (!validTo.HasValue || validTo.Value >= date);
+    }
+}
+
+public sealed class ParkPricingSnapshot
+{
+    public string? Id { get; set; }
+
+    public int Year { get; set; }
+
+    public string CurrencyCode { get; set; } = string.Empty;
+
+    public string? SourceUrl { get; set; }
+
+    public List<LocalizedText> Notes { get; set; } = new();
+
+    public DateTime? LastVerifiedAtUtc { get; set; }
+
+    public List<ParkAdmissionPriceOffer> AdmissionOffers { get; set; } = new();
+
+    public List<ParkAnnualPassOffer> AnnualPasses { get; set; } = new();
+
+    public List<ParkParkingPriceOffer> ParkingOffers { get; set; } = new();
+
+    public bool HasPricedOffers()
+    {
+        return this.AdmissionOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
+            || this.AnnualPasses.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
+            || this.ParkingOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null);
     }
 }
 

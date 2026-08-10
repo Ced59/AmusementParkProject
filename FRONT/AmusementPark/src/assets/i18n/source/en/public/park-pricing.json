@@ -15,6 +15,15 @@
       "passes": { "title": "Annual passes", "subtitle": "Options for visiting throughout the year" },
       "parking": { "title": "Parking", "subtitle": "Listed parking prices" }
     },
+    "currency": { "original": "Currency published by the park" },
+    "history": {
+      "title": "Price evolution", "subtitle": "Compare the available records over the last five years.",
+      "method": "The chart uses the fixed price or, for ranges and dynamic prices, the advertised minimum. Every amount stays in the currency published by the park and no conversion is applied.",
+      "kinds": { "admission": "Admission ticket", "annualPass": "Annual pass", "parking": "Parking" },
+      "increase": "Up {{ amount }} ({{ percentage }}) across {{ years }} records", "increaseAmount": "Up {{ amount }} between records", "decrease": "Down {{ amount }} ({{ percentage }}) across {{ years }} records", "decreaseAmount": "Down {{ amount }} between records", "stable": "Price unchanged across {{ years }} records",
+      "chartLabel": "Price evolution chart for {{ product }}", "tableLabel": "Detailed price history for {{ product }}", "year": "Year",
+      "currencyChanged": "The currency changed ({{ currencies }}). The amounts remain available, but are not connected in one chart to avoid a misleading comparison."
+    },
     "channels": { "online": "Online", "gate": "At the gate" },
     "modes": { "Fixed": "Fixed price", "Range": "Price range", "Dynamic": "Dynamic price" },
     "price": { "from": "from", "upTo": "up to", "dynamic": "dynamic price" },

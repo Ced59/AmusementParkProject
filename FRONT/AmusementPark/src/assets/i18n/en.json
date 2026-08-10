@@ -2336,6 +2336,17 @@
       "annualPasses": "No annual passes.",
       "parkingOffers": "No parking offers."
     },
+    "history": {
+      "title": "Yearly history",
+      "hint": "Keep a complete price snapshot for each year and reuse the same product codes to feed the charts.",
+      "currencyHint": "Each year keeps its own currency. Always use the currency actually published by the park, including when it differs from the current currency.",
+      "addSnapshot": "Add a historical year",
+      "removeSnapshot": "Remove this year",
+      "snapshot": "Historical record",
+      "newSnapshot": "New record",
+      "year": "Year",
+      "empty": "No historical record."
+    },
     "messages": {
       "loading": "Loading pricing…",
       "loadError": "Unable to load pricing.",
@@ -3640,6 +3651,28 @@
         "title": "Parking",
         "subtitle": "Listed parking prices"
       }
+    },
+    "currency": {
+      "original": "Currency published by the park"
+    },
+    "history": {
+      "title": "Price evolution",
+      "subtitle": "Compare the available records over the last five years.",
+      "method": "The chart uses the fixed price or, for ranges and dynamic prices, the advertised minimum. Every amount stays in the currency published by the park and no conversion is applied.",
+      "kinds": {
+        "admission": "Admission ticket",
+        "annualPass": "Annual pass",
+        "parking": "Parking"
+      },
+      "increase": "Up {{ amount }} ({{ percentage }}) across {{ years }} records",
+      "increaseAmount": "Up {{ amount }} between records",
+      "decrease": "Down {{ amount }} ({{ percentage }}) across {{ years }} records",
+      "decreaseAmount": "Down {{ amount }} between records",
+      "stable": "Price unchanged across {{ years }} records",
+      "chartLabel": "Price evolution chart for {{ product }}",
+      "tableLabel": "Detailed price history for {{ product }}",
+      "year": "Year",
+      "currencyChanged": "The currency changed ({{ currencies }}). The amounts remain available, but are not connected in one chart to avoid a misleading comparison."
     },
     "channels": {
       "online": "Online",

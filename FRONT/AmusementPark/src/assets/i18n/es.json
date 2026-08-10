@@ -2336,6 +2336,17 @@
       "annualPasses": "No hay pases anuales.",
       "parkingOffers": "No hay ofertas de aparcamiento."
     },
+    "history": {
+      "title": "Historial anual",
+      "hint": "Guarda una instantánea completa de los precios de cada año y reutiliza los mismos códigos de producto para alimentar los gráficos.",
+      "currencyHint": "Cada año conserva su propia moneda. Usa siempre la moneda realmente publicada por el parque, incluso si difiere de la actual.",
+      "addSnapshot": "Añadir un año histórico",
+      "removeSnapshot": "Eliminar este año",
+      "snapshot": "Registro histórico",
+      "newSnapshot": "Nuevo registro",
+      "year": "Año",
+      "empty": "No hay registros históricos."
+    },
     "messages": {
       "loading": "Cargando precios…",
       "loadError": "No se han podido cargar los precios.",
@@ -3640,6 +3651,28 @@
         "title": "Aparcamiento",
         "subtitle": "Precios de aparcamiento publicados"
       }
+    },
+    "currency": {
+      "original": "Moneda publicada por el parque"
+    },
+    "history": {
+      "title": "Evolución de los precios",
+      "subtitle": "Compara los registros disponibles de los últimos cinco años.",
+      "method": "El gráfico utiliza el precio fijo o, para rangos y precios dinámicos, el mínimo anunciado. Cada importe se conserva en la moneda publicada por el parque y no se aplica ninguna conversión.",
+      "kinds": {
+        "admission": "Entrada",
+        "annualPass": "Pase anual",
+        "parking": "Aparcamiento"
+      },
+      "increase": "Subida de {{ amount }} ({{ percentage }}) en {{ years }} registros",
+      "increaseAmount": "Subida de {{ amount }} entre los registros",
+      "decrease": "Bajada de {{ amount }} ({{ percentage }}) en {{ years }} registros",
+      "decreaseAmount": "Bajada de {{ amount }} entre los registros",
+      "stable": "Precio estable en {{ years }} registros",
+      "chartLabel": "Gráfico de evolución de {{ product }}",
+      "tableLabel": "Historial detallado de {{ product }}",
+      "year": "Año",
+      "currencyChanged": "La moneda cambió ({{ currencies }}). Los importes siguen disponibles, pero no se unen en un mismo gráfico para evitar una comparación engañosa."
     },
     "channels": {
       "online": "En línea",

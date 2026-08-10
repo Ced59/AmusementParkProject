@@ -117,6 +117,10 @@ public sealed class ParkGraphPricingTests
         Assert.NotNull(applyResult.Value);
         Assert.Empty(applyResult.Value.Errors);
         Assert.NotNull(savedPricing);
+        ParkPricingSnapshot savedSnapshot = Assert.Single(savedPricing.HistoricalSnapshots);
+        Assert.Equal(2024, savedSnapshot.Year);
+        Assert.Equal("HRK", savedSnapshot.CurrencyCode);
+        Assert.Equal("adult-high-season", Assert.Single(savedSnapshot.AdmissionOffers).Code);
 
         string secondExport = await ExportPricingAsync(park, savedPricing);
         using JsonDocument firstDocument = JsonDocument.Parse(firstExport);
@@ -127,6 +131,66 @@ public sealed class ParkGraphPricingTests
             secondDocument.RootElement.GetProperty("pricing").GetRawText());
         context.VerifyAll();
         importPricingRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenPricingHistoryIsOmitted_ShouldPreserveExistingSnapshots()
+    {
+        Park park = CreateOperatingPark();
+        ParkPricingEntity existingPricing = CreatePricing();
+        ParkPricingEntity? savedPricing = null;
+        Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existingPricing);
+        pricingRepository
+            .Setup(repository => repository.UpsertAsync(It.IsAny<ParkPricingEntity>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkPricingEntity, CancellationToken>((pricing, _) => savedPricing = pricing)
+            .ReturnsAsync((ParkPricingEntity pricing, CancellationToken _) => pricing);
+        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: true);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.ApplyAsync(
+            CreateRequest(CreatePricingDocumentJson()),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(savedPricing);
+        Assert.Equal(2024, Assert.Single(savedPricing.HistoricalSnapshots).Year);
+        context.VerifyAll();
+        pricingRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenPricingHistoryIsExplicitlyEmpty_ShouldClearSnapshots()
+    {
+        Park park = CreateOperatingPark();
+        ParkPricingEntity existingPricing = CreatePricing();
+        ParkPricingEntity? savedPricing = null;
+        Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existingPricing);
+        pricingRepository
+            .Setup(repository => repository.UpsertAsync(It.IsAny<ParkPricingEntity>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkPricingEntity, CancellationToken>((pricing, _) => savedPricing = pricing)
+            .ReturnsAsync((ParkPricingEntity pricing, CancellationToken _) => pricing);
+        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: true);
+        string json = CreatePricingDocumentJson().Replace(
+            "\"parkingOffers\": []",
+            "\"parkingOffers\": [], \"historicalSnapshots\": []",
+            StringComparison.Ordinal);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.ApplyAsync(
+            CreateRequest(json),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(savedPricing);
+        Assert.Empty(savedPricing.HistoricalSnapshots);
+        context.VerifyAll();
+        pricingRepository.VerifyAll();
     }
 
     [Fact]
@@ -419,6 +483,30 @@ public sealed class ParkGraphPricingTests
                     GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 15m },
                     Conditions = new List<LocalizedText>(),
                     SortOrder = 3,
+                },
+            },
+            HistoricalSnapshots = new List<ParkPricingSnapshot>
+            {
+                new ParkPricingSnapshot
+                {
+                    Id = "snapshot-2024",
+                    Year = 2024,
+                    CurrencyCode = "HRK",
+                    SourceUrl = "https://example.test/prices/2024",
+                    LastVerifiedAtUtc = new DateTime(2025, 1, 2, 10, 0, 0, DateTimeKind.Utc),
+                    AdmissionOffers = new List<ParkAdmissionPriceOffer>
+                    {
+                        new ParkAdmissionPriceOffer
+                        {
+                            Id = "admission-2024-1",
+                            Code = "adult-high-season",
+                            AudienceCategory = "adult",
+                            Labels = CreateLocalizedTexts("Adult", "Adulte"),
+                            OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 300m },
+                            Conditions = new List<LocalizedText>(),
+                            SortOrder = 1,
+                        },
+                    },
                 },
             },
         };

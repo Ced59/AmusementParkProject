@@ -102,6 +102,23 @@ public sealed class ParkPricingQueryHandlersTests
                     OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
                 },
             },
+            HistoricalSnapshots = new List<ParkPricingSnapshot>
+            {
+                new ParkPricingSnapshot
+                {
+                    Year = 2025,
+                    CurrencyCode = "EUR",
+                    AdmissionOffers = new List<ParkAdmissionPriceOffer>
+                    {
+                        new ParkAdmissionPriceOffer
+                        {
+                            Code = "adult",
+                            AudienceCategory = "adult",
+                            OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 35m },
+                        },
+                    },
+                },
+            },
         };
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         parkRepository
@@ -120,6 +137,7 @@ public sealed class ParkPricingQueryHandlersTests
         Assert.True(result.IsSuccess);
         Assert.NotSame(storedPricing, result.Value);
         Assert.Single(result.Value!.AdmissionOffers);
+        Assert.Equal(2025, Assert.Single(result.Value.HistoricalSnapshots).Year);
         parkRepository.VerifyAll();
         pricingRepository.VerifyAll();
     }

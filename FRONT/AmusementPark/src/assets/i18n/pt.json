@@ -2336,6 +2336,17 @@
       "annualPasses": "Sem passes anuais.",
       "parkingOffers": "Sem ofertas de estacionamento."
     },
+    "history": {
+      "title": "Histórico anual",
+      "hint": "Guarda um registo completo dos preços de cada ano e reutiliza os mesmos códigos de produto para alimentar os gráficos.",
+      "currencyHint": "Cada ano mantém a sua própria moeda. Usa sempre a moeda realmente publicada pelo parque, mesmo quando difere da moeda atual.",
+      "addSnapshot": "Adicionar um ano histórico",
+      "removeSnapshot": "Remover este ano",
+      "snapshot": "Registo histórico",
+      "newSnapshot": "Novo registo",
+      "year": "Ano",
+      "empty": "Sem registos históricos."
+    },
     "messages": {
       "loading": "A carregar preços…",
       "loadError": "Não foi possível carregar os preços.",
@@ -3640,6 +3651,28 @@
         "title": "Estacionamento",
         "subtitle": "Preços de estacionamento indicados"
       }
+    },
+    "currency": {
+      "original": "Moeda publicada pelo parque"
+    },
+    "history": {
+      "title": "Evolução dos preços",
+      "subtitle": "Compara os registos disponíveis dos últimos cinco anos.",
+      "method": "O gráfico usa o preço fixo ou, nos intervalos e preços dinâmicos, o mínimo anunciado. Cada valor permanece na moeda publicada pelo parque e não é aplicada qualquer conversão.",
+      "kinds": {
+        "admission": "Bilhete de entrada",
+        "annualPass": "Passe anual",
+        "parking": "Estacionamento"
+      },
+      "increase": "Aumento de {{ amount }} ({{ percentage }}) em {{ years }} registos",
+      "increaseAmount": "Aumento de {{ amount }} entre os registos",
+      "decrease": "Descida de {{ amount }} ({{ percentage }}) em {{ years }} registos",
+      "decreaseAmount": "Descida de {{ amount }} entre os registos",
+      "stable": "Preço estável em {{ years }} registos",
+      "chartLabel": "Gráfico da evolução de {{ product }}",
+      "tableLabel": "Histórico detalhado de {{ product }}",
+      "year": "Ano",
+      "currencyChanged": "A moeda mudou ({{ currencies }}). Os valores continuam disponíveis, mas não são ligados no mesmo gráfico para evitar uma comparação enganadora."
     },
     "channels": {
       "online": "Online",

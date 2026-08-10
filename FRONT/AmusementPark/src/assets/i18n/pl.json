@@ -2336,6 +2336,17 @@
       "annualPasses": "Brak karnetów rocznych.",
       "parkingOffers": "Brak ofert parkingowych."
     },
+    "history": {
+      "title": "Historia roczna",
+      "hint": "Zachowaj pełny zapis cen dla każdego roku i używaj tych samych kodów produktów do tworzenia wykresów.",
+      "currencyHint": "Każdy rok zachowuje własną walutę. Zawsze używaj waluty faktycznie opublikowanej przez park, nawet jeśli różni się od obecnej.",
+      "addSnapshot": "Dodaj rok historyczny",
+      "removeSnapshot": "Usuń ten rok",
+      "snapshot": "Zapis historyczny",
+      "newSnapshot": "Nowy zapis",
+      "year": "Rok",
+      "empty": "Brak zapisów historycznych."
+    },
     "messages": {
       "loading": "Wczytywanie cen…",
       "loadError": "Nie udało się wczytać cen.",
@@ -3640,6 +3651,28 @@
         "title": "Parking",
         "subtitle": "Podane opłaty parkingowe"
       }
+    },
+    "currency": {
+      "original": "Waluta opublikowana przez park"
+    },
+    "history": {
+      "title": "Zmiany cen",
+      "subtitle": "Porównaj dostępne dane z ostatnich pięciu lat.",
+      "method": "Wykres wykorzystuje cenę stałą albo, w przypadku zakresu i ceny dynamicznej, ogłoszoną cenę minimalną. Każda kwota pozostaje w walucie opublikowanej przez park i nie jest przeliczana.",
+      "kinds": {
+        "admission": "Bilet wstępu",
+        "annualPass": "Karnet roczny",
+        "parking": "Parking"
+      },
+      "increase": "Wzrost o {{ amount }} ({{ percentage }}) w {{ years }} pomiarach",
+      "increaseAmount": "Wzrost o {{ amount }} między pomiarami",
+      "decrease": "Spadek o {{ amount }} ({{ percentage }}) w {{ years }} pomiarach",
+      "decreaseAmount": "Spadek o {{ amount }} między pomiarami",
+      "stable": "Cena bez zmian w {{ years }} pomiarach",
+      "chartLabel": "Wykres zmian ceny dla {{ product }}",
+      "tableLabel": "Szczegółowa historia ceny dla {{ product }}",
+      "year": "Rok",
+      "currencyChanged": "Waluta uległa zmianie ({{ currencies }}). Kwoty pozostają widoczne, ale nie są łączone na jednym wykresie, aby uniknąć mylącego porównania."
     },
     "channels": {
       "online": "Online",

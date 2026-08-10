@@ -56,6 +56,10 @@ describe('AdminParkPricingTabComponent', () => {
           admissionOffers: 'No tickets', annualPasses: 'No passes',
           parkingOffers: 'No parking',
         },
+        history: {
+          title: 'Yearly history', hint: '', currencyHint: '', addSnapshot: 'Add historical year',
+          removeSnapshot: 'Remove this year', snapshot: 'Historical record', newSnapshot: 'New record', year: 'Year', empty: 'No history',
+        },
         messages: { loading: 'Loading', savedSummary: 'Saved', savedDetail: 'Saved' },
       },
     });
@@ -120,6 +124,25 @@ describe('AdminParkPricingTabComponent', () => {
     expect(editorAfter?.textContent).toContain('adult-updated');
   });
 
+  it('adds an empty historical year in the park currency and allows it to be removed', () => {
+    clickButton('Add historical year');
+    fixture.detectChanges();
+
+    const componentState = fixture.componentInstance as unknown as {
+      pricing: () => ParkPricing | null;
+    };
+    const snapshots = componentState.pricing()?.historicalSnapshots ?? [];
+    expect(snapshots).toHaveLength(1);
+    expect(snapshots[0].currencyCode).toBe('EUR');
+    expect(snapshots[0].year).toBe(new Date().getUTCFullYear() - 1);
+    expect((fixture.nativeElement as HTMLElement).querySelectorAll('app-admin-park-pricing-snapshot-editor')).toHaveLength(1);
+
+    clickButton('Remove this year');
+    fixture.detectChanges();
+
+    expect(componentState.pricing()?.historicalSnapshots).toEqual([]);
+  });
+
   function clickButton(label: string): void {
     const buttons: HTMLButtonElement[] = Array.from(
       (fixture.nativeElement as HTMLElement).querySelectorAll('button'),
@@ -140,5 +163,6 @@ function createPricing(): ParkPricing {
     admissionOffers: [],
     annualPasses: [],
     parkingOffers: [],
+    historicalSnapshots: [],
   };
 }

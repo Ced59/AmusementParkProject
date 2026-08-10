@@ -149,6 +149,12 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
+        ParkPricingEntity? existingPricing = await this.parkPricingRepository.GetByParkIdAsync(targetPark.Id, cancellationToken);
+        if (!HasProperty(patch, "historicalSnapshots") && existingPricing is not null)
+        {
+            pricing.HistoricalSnapshots = existingPricing.HistoricalSnapshots;
+        }
+
         ApplicationResult<ParkPricingEntity> normalizedResult = ParkPricingNormalizer.Normalize(pricing);
         if (!normalizedResult.IsSuccess || normalizedResult.Value is null)
         {
@@ -159,7 +165,6 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         ParkPricingEntity normalizedPricing = normalizedResult.Value;
-        ParkPricingEntity? existingPricing = await this.parkPricingRepository.GetByParkIdAsync(targetPark.Id, cancellationToken);
         bool isNew = existingPricing is null || !ParkPricingNormalizer.HasPublicPricingData(existingPricing);
 
         AddPricingChanges(change, existingPricing, normalizedPricing);
@@ -190,7 +195,8 @@ public sealed partial class ParkGraphUpsertProcessor
     {
         return HasNonEmptyPricingArray(patch, "admissionOffers")
             || HasNonEmptyPricingArray(patch, "annualPasses")
-            || HasNonEmptyPricingArray(patch, "parkingOffers");
+            || HasNonEmptyPricingArray(patch, "parkingOffers")
+            || HasNonEmptyPricingArray(patch, "historicalSnapshots");
     }
 
     private static bool HasNonEmptyPricingArray(JsonElement patch, string propertyName)
@@ -212,21 +218,65 @@ public sealed partial class ParkGraphUpsertProcessor
             SourceUrl = ReadString(patch, "sourceUrl"),
             PurchaseUrl = ReadString(patch, "purchaseUrl"),
             Notes = ReadPricingLocalizedTexts(patch, "notes", "pricing", errors),
-            LastVerifiedAtUtc = ReadOptionalPricingUtcDate(patch, "lastVerifiedAtUtc", errors),
-            AdmissionOffers = ReadAdmissionOffers(patch, errors),
-            AnnualPasses = ReadAnnualPasses(patch, errors),
-            ParkingOffers = ReadParkingOffers(patch, errors),
+            LastVerifiedAtUtc = ReadOptionalPricingUtcDate(patch, "lastVerifiedAtUtc", "pricing", errors),
+            AdmissionOffers = ReadAdmissionOffers(patch, "pricing", errors),
+            AnnualPasses = ReadAnnualPasses(patch, "pricing", errors),
+            ParkingOffers = ReadParkingOffers(patch, "pricing", errors),
+            HistoricalSnapshots = ReadHistoricalSnapshots(patch, errors),
         };
     }
 
-    private static List<ParkAdmissionPriceOffer> ReadAdmissionOffers(JsonElement patch, List<string> errors)
+    private static List<ParkPricingSnapshot> ReadHistoricalSnapshots(JsonElement patch, List<string> errors)
+    {
+        JsonElement? array = GetArray(patch, "historicalSnapshots");
+        if (array is null)
+        {
+            if (HasProperty(patch, "historicalSnapshots"))
+            {
+                errors.Add("pricing.historicalSnapshots doit être un tableau.");
+            }
+
+            return new List<ParkPricingSnapshot>();
+        }
+
+        List<ParkPricingSnapshot> snapshots = new();
+        int index = 0;
+        foreach (JsonElement element in array.Value.EnumerateArray())
+        {
+            string prefix = $"pricing.historicalSnapshots[{index}]";
+            if (element.ValueKind != JsonValueKind.Object)
+            {
+                errors.Add($"{prefix} doit être un objet.");
+                index += 1;
+                continue;
+            }
+
+            snapshots.Add(new ParkPricingSnapshot
+            {
+                Id = ReadString(element, "id"),
+                Year = ReadInt(element, "year") ?? 0,
+                CurrencyCode = ReadString(element, "currencyCode") ?? string.Empty,
+                SourceUrl = ReadString(element, "sourceUrl"),
+                Notes = ReadPricingLocalizedTexts(element, "notes", prefix, errors),
+                LastVerifiedAtUtc = ReadOptionalPricingUtcDate(element, "lastVerifiedAtUtc", prefix, errors),
+                AdmissionOffers = ReadAdmissionOffers(element, prefix, errors),
+                AnnualPasses = ReadAnnualPasses(element, prefix, errors),
+                ParkingOffers = ReadParkingOffers(element, prefix, errors),
+            });
+            index += 1;
+        }
+
+        return snapshots;
+    }
+
+    private static List<ParkAdmissionPriceOffer> ReadAdmissionOffers(JsonElement patch, string rootPrefix, List<string> errors)
     {
         JsonElement? array = GetArray(patch, "admissionOffers");
         if (array is null)
         {
             if (HasProperty(patch, "admissionOffers"))
             {
-                errors.Add("pricing.admissionOffers doit être un tableau.");
+                errors.Add($"{rootPrefix}.admissionOffers doit être un tableau.");
             }
 
             return new List<ParkAdmissionPriceOffer>();
@@ -236,7 +286,7 @@ public sealed partial class ParkGraphUpsertProcessor
         int index = 0;
         foreach (JsonElement element in array.Value.EnumerateArray())
         {
-            string prefix = $"pricing.admissionOffers[{index}]";
+            string prefix = $"{rootPrefix}.admissionOffers[{index}]";
             if (element.ValueKind != JsonValueKind.Object)
             {
                 errors.Add($"{prefix} doit être un objet.");
@@ -264,14 +314,14 @@ public sealed partial class ParkGraphUpsertProcessor
         return offers;
     }
 
-    private static List<ParkAnnualPassOffer> ReadAnnualPasses(JsonElement patch, List<string> errors)
+    private static List<ParkAnnualPassOffer> ReadAnnualPasses(JsonElement patch, string rootPrefix, List<string> errors)
     {
         JsonElement? array = GetArray(patch, "annualPasses");
         if (array is null)
         {
             if (HasProperty(patch, "annualPasses"))
             {
-                errors.Add("pricing.annualPasses doit être un tableau.");
+                errors.Add($"{rootPrefix}.annualPasses doit être un tableau.");
             }
 
             return new List<ParkAnnualPassOffer>();
@@ -281,7 +331,7 @@ public sealed partial class ParkGraphUpsertProcessor
         int index = 0;
         foreach (JsonElement element in array.Value.EnumerateArray())
         {
-            string prefix = $"pricing.annualPasses[{index}]";
+            string prefix = $"{rootPrefix}.annualPasses[{index}]";
             if (element.ValueKind != JsonValueKind.Object)
             {
                 errors.Add($"{prefix} doit être un objet.");
@@ -308,14 +358,14 @@ public sealed partial class ParkGraphUpsertProcessor
         return offers;
     }
 
-    private static List<ParkParkingPriceOffer> ReadParkingOffers(JsonElement patch, List<string> errors)
+    private static List<ParkParkingPriceOffer> ReadParkingOffers(JsonElement patch, string rootPrefix, List<string> errors)
     {
         JsonElement? array = GetArray(patch, "parkingOffers");
         if (array is null)
         {
             if (HasProperty(patch, "parkingOffers"))
             {
-                errors.Add("pricing.parkingOffers doit être un tableau.");
+                errors.Add($"{rootPrefix}.parkingOffers doit être un tableau.");
             }
 
             return new List<ParkParkingPriceOffer>();
@@ -325,7 +375,7 @@ public sealed partial class ParkGraphUpsertProcessor
         int index = 0;
         foreach (JsonElement element in array.Value.EnumerateArray())
         {
-            string prefix = $"pricing.parkingOffers[{index}]";
+            string prefix = $"{rootPrefix}.parkingOffers[{index}]";
             if (element.ValueKind != JsonValueKind.Object)
             {
                 errors.Add($"{prefix} doit être un objet.");
@@ -442,7 +492,7 @@ public sealed partial class ParkGraphUpsertProcessor
         return null;
     }
 
-    private static DateTime? ReadOptionalPricingUtcDate(JsonElement element, string propertyName, List<string> errors)
+    private static DateTime? ReadOptionalPricingUtcDate(JsonElement element, string propertyName, string prefix, List<string> errors)
     {
         if (!HasProperty(element, propertyName) || HasNull(element, propertyName))
         {
@@ -459,7 +509,7 @@ public sealed partial class ParkGraphUpsertProcessor
             return parsed.UtcDateTime;
         }
 
-        errors.Add($"pricing.{propertyName} doit être une date ISO 8601 valide.");
+        errors.Add($"{prefix}.{propertyName} doit être une date ISO 8601 valide.");
         return null;
     }
 
@@ -490,6 +540,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, "pricing.admissionOffers", DescribePricing(existingPricing?.AdmissionOffers), DescribePricing(normalizedPricing.AdmissionOffers));
         AddChange(change, "pricing.annualPasses", DescribePricing(existingPricing?.AnnualPasses), DescribePricing(normalizedPricing.AnnualPasses));
         AddChange(change, "pricing.parkingOffers", DescribePricing(existingPricing?.ParkingOffers), DescribePricing(normalizedPricing.ParkingOffers));
+        AddChange(change, "pricing.historicalSnapshots", DescribePricing(existingPricing?.HistoricalSnapshots), DescribePricing(normalizedPricing.HistoricalSnapshots));
     }
 
     private static string DescribePricing<T>(IReadOnlyCollection<T>? values)

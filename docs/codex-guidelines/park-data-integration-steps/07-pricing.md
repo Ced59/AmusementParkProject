@@ -1,6 +1,6 @@
-# Étape 7 — Tarifs actuels
+# Étape 7 — Tarifs actuels et historique annuel
 
-Objectif : intégrer une grille tarifaire actuelle, vérifiée et directement utile à la préparation d’une visite, sans présenter comme valable une offre ancienne, future ou incertaine.
+Objectif : intégrer une grille tarifaire actuelle, vérifiée et directement utile à la préparation d’une visite, puis conserver les relevés annuels antérieurs réellement sourcés afin de mesurer l’évolution d’un même produit sans présenter une ancienne offre comme encore valable.
 
 ## Lire avant de commencer
 
@@ -69,7 +69,7 @@ Les libellés, noms et conditions destinés au public sont rédigés naturelleme
 
 ## Devise, montants et modes
 
-`currencyCode` est obligatoire et utilise exactement trois lettres majuscules compatibles ISO 4217, par exemple `EUR`, `GBP` ou `USD`.
+`currencyCode` est obligatoire et utilise exactement trois lettres majuscules compatibles ISO 4217, par exemple `EUR`, `GBP` ou `USD`. Pour la grille actuelle, utiliser la devise dans laquelle le parc publie réellement ses tarifs, normalement la devise locale de son pays. Ne jamais convertir la source en euros ou dans la devise de l’utilisateur. Le code ISO de la devise source doit rester explicite même lorsque son symbole paraît familier ou ambigu, par exemple `$`.
 
 Tous les montants sont des nombres décimaux sans symbole de devise et doivent être supérieurs ou égaux à zéro. Ne jamais convertir manuellement une devise ni arrondir un prix source.
 
@@ -82,6 +82,21 @@ Modes canoniques :
 Un prix dynamique sans borne est acceptable seulement lorsque la source confirme réellement une tarification variable sans publier de montant exploitable. Ne pas remplacer un prix inconnu par `Dynamic`.
 
 Un canal absent reste `null` ou est omis. Ne pas recopier automatiquement le prix en ligne au guichet, ni l’inverse.
+
+## Historique annuel
+
+Lorsque des tarifs antérieurs fiables sont disponibles, les conserver dans `historicalSnapshots`. Chaque instantané représente une année et contient :
+
+- un `year` unique compris entre 1900 et 9999 ;
+- son propre `currencyCode`, même si la devise a changé depuis ;
+- sa `sourceUrl`, sa date `lastVerifiedAtUtc` et ses éventuelles `notes` localisées ;
+- ses propres `admissionOffers`, `annualPasses` et `parkingOffers`, avec le même contrat que la grille actuelle.
+
+Pour qu’un produit alimente une courbe cohérente, conserver exactement le même `code` d’une année à l’autre lorsque l’offre reste fonctionnellement comparable. Un changement de nom commercial ne justifie pas à lui seul un nouveau code. En revanche, ne fusionner sous un même code ni des catégories différentes, ni un pass dont les droits ont matériellement changé, ni deux produits seulement ressemblants.
+
+Ne pas inventer un prix annuel à partir d’un souvenir, d’un extrait de moteur de recherche ou d’une conversion. Une archive officielle, une billetterie datée, des conditions de vente datées ou une capture archivée fiable sont nécessaires. La devise historique reste celle de la source de l’époque. Si la devise change entre deux instantanés, conserver les deux codes ISO : l’interface présentera les montants séparément sans calculer une évolution monétaire trompeuse.
+
+Un instantané doit contenir au moins une offre tarifée. Ne pas créer un objet vide pour « réserver » une année. Conserver au maximum 25 instantanés annuels par parc et privilégier les cinq dernières années pour une courbe publique utile, sans supprimer un historique antérieur déjà fiable.
 
 ## Dates et saisonnalité
 
@@ -146,7 +161,38 @@ Section principale : `pricing`.
       }
     ],
     "annualPasses": [],
-    "parkingOffers": []
+    "parkingOffers": [],
+    "historicalSnapshots": [
+      {
+        "year": 2025,
+        "currencyCode": "EUR",
+        "sourceUrl": "https://example.com/archives/tarifs-2025",
+        "lastVerifiedAtUtc": "2026-08-10T10:00:00Z",
+        "notes": [],
+        "admissionOffers": [
+          {
+            "code": "adult-high-season",
+            "audienceCategory": "adult",
+            "labels": [
+              { "languageCode": "fr", "value": "Adulte — haute saison" },
+              { "languageCode": "en", "value": "Adult — high season" },
+              { "languageCode": "es", "value": "Adulto — temporada alta" },
+              { "languageCode": "de", "value": "Erwachsene — Hochsaison" },
+              { "languageCode": "it", "value": "Adulto — alta stagione" },
+              { "languageCode": "nl", "value": "Volwassene — hoogseizoen" },
+              { "languageCode": "pt", "value": "Adulto — época alta" },
+              { "languageCode": "pl", "value": "Dorosły — wysoki sezon" }
+            ],
+            "onlinePrice": { "mode": "Fixed", "amount": 36 },
+            "gatePrice": { "mode": "Fixed", "amount": 42 },
+            "conditions": [],
+            "sortOrder": 10
+          }
+        ],
+        "annualPasses": [],
+        "parkingOffers": []
+      }
+    ]
   }
 }
 ```
@@ -170,6 +216,7 @@ Sont bloquants :
 - un `Dynamic` dont les deux bornes sont inversées ;
 - une période de validité inversée ;
 - une structure de tableau, de date ou de prix refusée par le Preview.
+- plus de 25 instantanés historiques, une année invalide ou dupliquée, une devise historique invalide ou un instantané sans offre tarifée ;
 
 Une section `pricing` sans aucune offre n’efface pas une grille existante et ne constitue pas un lot utile. La commande courte de complétude n’autorise pas la suppression d’une grille existante ; toute suppression ou dépublication exige un périmètre explicite distinct.
 
@@ -180,6 +227,9 @@ Lors d’une fusion de parcs, la grille du parc source est rattachée au parc ci
 - Le statut du parc est `Operating`.
 - La source et la billetterie officielles ont été consultées au moment du lot.
 - La devise et chaque montant correspondent exactement à la source.
+- La grille actuelle utilise la devise réellement publiée par le parc et son code ISO reste visible ; aucune conversion n’a remplacé le montant source.
+- Chaque instantané historique possède une année unique, sa propre devise et une source datée fiable.
+- Les codes produit restent stables entre années uniquement pour des offres réellement comparables.
 - Chaque offre possède un canal de prix au minimum.
 - Les modes et leurs champs correspondent au contrat `Fixed` / `Range` / `Dynamic`.
 - Les périodes sont cohérentes et n’extrapolent pas la source.

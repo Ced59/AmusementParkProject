@@ -11,6 +11,7 @@
     "placeholders": { "localizedValue": "Wartość w języku {{ language }}", "conditions": "Warunki w języku {{ language }}" },
     "hints": { "dynamicBounds": "Granice są opcjonalne dla ceny dynamicznej.", "admissionOffers": "Podaj kategorię, tłumaczenia i kanały sprzedaży każdego biletu.", "annualPasses": "Podaj warianty roczne i ich warunki.", "parkingOffers": "Podaj osobno przydatne opcje parkingowe." },
     "empty": { "admissionOffers": "Brak biletów wstępu.", "annualPasses": "Brak karnetów rocznych.", "parkingOffers": "Brak ofert parkingowych." },
+  "history": { "title": "Historia roczna", "hint": "Zachowaj pełny zapis cen dla każdego roku i używaj tych samych kodów produktów do tworzenia wykresów.", "currencyHint": "Każdy rok zachowuje własną walutę. Zawsze używaj waluty faktycznie opublikowanej przez park, nawet jeśli różni się od obecnej.", "addSnapshot": "Dodaj rok historyczny", "removeSnapshot": "Usuń ten rok", "snapshot": "Zapis historyczny", "newSnapshot": "Nowy zapis", "year": "Rok", "empty": "Brak zapisów historycznych." },
     "messages": { "loading": "Wczytywanie cen…", "loadError": "Nie udało się wczytać cen.", "saveError": "Nie udało się zapisać cen.", "savedSummary": "Ceny zapisane", "savedDetail": "Cennik parku został zaktualizowany." }
   }
 }

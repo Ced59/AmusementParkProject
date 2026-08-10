@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService as NgxTranslateService } from '@ngx-translate/core';
@@ -32,7 +32,13 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { UiButtonDirective } from '@ui/primitives';
 import {
   formatParkPrice,
+  buildParkPricingHistorySeries,
+  hasSingleHistoryCurrency,
+  parkPriceChartAmount,
   ParkPriceFormattingLabels,
+  ParkPricingHistoryChannel,
+  ParkPricingHistoryPoint,
+  ParkPricingHistorySeries,
   resolvePricingLocalizedText
 } from '../models/park-pricing.presentation';
 import { ParkLifecycleNoticeComponent } from '../ui/park-lifecycle-notice.component';
@@ -41,6 +47,13 @@ interface ParkPricingPageData {
   park: Park;
   parkImageId: string | null;
   pricing: ParkPricing | null;
+}
+
+interface ParkPricingEvolution {
+  channel: ParkPricingHistoryChannel;
+  amount: string;
+  percentage: string | null;
+  directionKey: string;
 }
 
 @Component({
@@ -64,6 +77,12 @@ export class ParkPricingPageComponent implements OnInit {
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
   protected readonly unavailablePark = signal<Park | null>(null);
+  protected readonly historySeries = computed((): ParkPricingHistorySeries[] => {
+    const pricing: ParkPricing | null | undefined = this.stateStore.data()?.pricing;
+    return pricing
+      ? buildParkPricingHistorySeries(pricing, this.currentLanguage(), new Date().getUTCFullYear(), 5)
+      : [];
+  });
   private readonly unavailableParkImageId = signal<string | null>(null);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -200,6 +219,131 @@ export class ParkPricingPageComponent implements OnInit {
       month: 'long',
       day: 'numeric'
     }).format(new Date(value));
+  }
+
+  protected historyKindLabelKey(series: ParkPricingHistorySeries): string {
+    return `parkPricing.history.kinds.${series.kind}`;
+  }
+
+  protected historyHasSingleCurrency(series: ParkPricingHistorySeries): boolean {
+    return hasSingleHistoryCurrency(series);
+  }
+
+  protected historyCurrencies(series: ParkPricingHistorySeries): string {
+    return [...new Set(series.points.map((point: ParkPricingHistoryPoint): string => point.currencyCode))].join(' → ');
+  }
+
+  protected historyLinePoints(series: ParkPricingHistorySeries, channel: ParkPricingHistoryChannel): string {
+    return series.points
+      .map((point: ParkPricingHistoryPoint, index: number): string | null => {
+        const amount: number | null = parkPriceChartAmount(point[channel]);
+        return amount === null
+          ? null
+          : `${this.historyPointX(index, series.points.length)},${this.historyPriceY(amount, series)}`;
+      })
+      .filter((point: string | null): point is string => point !== null)
+      .join(' ');
+  }
+
+  protected historyPointX(index: number, pointCount: number): number {
+    return pointCount <= 1 ? 320 : 54 + ((532 * index) / (pointCount - 1));
+  }
+
+  protected historyPriceY(amount: number, series: ParkPricingHistorySeries): number {
+    const amounts: number[] = this.historyAmounts(series);
+    const minimum: number = Math.min(...amounts);
+    const maximum: number = Math.max(...amounts);
+    if (maximum === minimum) {
+      return 105;
+    }
+
+    return 180 - (((amount - minimum) / (maximum - minimum)) * 135);
+  }
+
+  protected historyChartAmount(point: ParkPricingHistoryPoint, channel: ParkPricingHistoryChannel): number | null {
+    return parkPriceChartAmount(point[channel]);
+  }
+
+  protected historyHasChannel(series: ParkPricingHistorySeries, channel: ParkPricingHistoryChannel): boolean {
+    return series.points.some((point: ParkPricingHistoryPoint): boolean => point[channel] !== null && point[channel] !== undefined);
+  }
+
+  protected historyPriceLabel(point: ParkPricingHistoryPoint, channel: ParkPricingHistoryChannel): string {
+    return this.formatPrice(point[channel], point.currencyCode) ?? '—';
+  }
+
+  protected historyEvolution(series: ParkPricingHistorySeries): ParkPricingEvolution | null {
+    if (!hasSingleHistoryCurrency(series)) {
+      return null;
+    }
+
+    const channel: ParkPricingHistoryChannel | null = this.evolutionChannel(series);
+    if (!channel) {
+      return null;
+    }
+
+    const pricedPoints: Array<{ point: ParkPricingHistoryPoint; amount: number }> = series.points
+      .map((point: ParkPricingHistoryPoint): { point: ParkPricingHistoryPoint; amount: number } | null => {
+        const amount: number | null = parkPriceChartAmount(point[channel]);
+        return amount === null ? null : { point, amount };
+      })
+      .filter((item): item is { point: ParkPricingHistoryPoint; amount: number } => item !== null);
+    if (pricedPoints.length < 2) {
+      return null;
+    }
+
+    const oldest = pricedPoints[0];
+    const latest = pricedPoints[pricedPoints.length - 1];
+    const difference: number = latest.amount - oldest.amount;
+    const percentage: number | null = oldest.amount === 0 ? null : (difference / oldest.amount) * 100;
+    const formatter = new Intl.NumberFormat(this.currentLanguage(), {
+      style: 'currency',
+      currency: latest.point.currencyCode,
+      maximumFractionDigits: 2
+    });
+    const percentageFormatter = new Intl.NumberFormat(this.currentLanguage(), {
+      style: 'percent',
+      maximumFractionDigits: 1
+    });
+
+    return {
+      channel,
+      amount: formatter.format(Math.abs(difference)),
+      percentage: percentage === null ? null : percentageFormatter.format(Math.abs(percentage) / 100),
+      directionKey: difference > 0
+        ? percentage === null ? 'parkPricing.history.increaseAmount' : 'parkPricing.history.increase'
+        : difference < 0
+          ? percentage === null ? 'parkPricing.history.decreaseAmount' : 'parkPricing.history.decrease'
+          : 'parkPricing.history.stable'
+    };
+  }
+
+  private evolutionChannel(series: ParkPricingHistorySeries): ParkPricingHistoryChannel | null {
+    const onlineCount: number = series.points.filter(
+      (point: ParkPricingHistoryPoint): boolean => parkPriceChartAmount(point.onlinePrice) !== null).length;
+    if (onlineCount >= 2) {
+      return 'onlinePrice';
+    }
+
+    const gateCount: number = series.points.filter(
+      (point: ParkPricingHistoryPoint): boolean => parkPriceChartAmount(point.gatePrice) !== null).length;
+    return gateCount >= 2 ? 'gatePrice' : null;
+  }
+
+  private historyAmounts(series: ParkPricingHistorySeries): number[] {
+    const amounts: number[] = [];
+    for (const point of series.points) {
+      const onlineAmount: number | null = parkPriceChartAmount(point.onlinePrice);
+      const gateAmount: number | null = parkPriceChartAmount(point.gatePrice);
+      if (onlineAmount !== null) {
+        amounts.push(onlineAmount);
+      }
+      if (gateAmount !== null) {
+        amounts.push(gateAmount);
+      }
+    }
+
+    return amounts.length > 0 ? amounts : [0];
   }
 
   private loadPricingPage(parkId: string): Observable<ParkPricingPageData> {

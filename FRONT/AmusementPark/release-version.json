@@ -1,6 +1,20 @@
 {
-  "version": "4.1.31",
+  "version": "4.1.32",
   "history": [
+    {
+      "version": "4.1.32",
+      "releasedAt": "2026-08-10",
+      "labels": {
+        "fr": "L’évolution des tarifs au fil des années devient visible.",
+        "en": "Price changes over the years are now visible.",
+        "de": "Die Preisentwicklung über die Jahre ist jetzt sichtbar.",
+        "nl": "Prijsveranderingen door de jaren heen zijn nu zichtbaar.",
+        "it": "L’evoluzione dei prezzi nel corso degli anni è ora visibile.",
+        "es": "La evolución de los precios a lo largo de los años ya se puede consultar.",
+        "pl": "Zmiany cen na przestrzeni lat są teraz widoczne.",
+        "pt": "A evolução dos preços ao longo dos anos está agora visível."
+      }
+    },
     {
       "version": "4.1.31",
       "releasedAt": "2026-08-10",

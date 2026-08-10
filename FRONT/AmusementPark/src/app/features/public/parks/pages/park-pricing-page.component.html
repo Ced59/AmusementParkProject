@@ -42,6 +42,12 @@
             <h1>{{ 'parkPricing.page.title' | translate:{ name: data.park.name } }}</h1>
             <p>{{ 'parkPricing.page.lead' | translate:{ name: data.park.name } }}</p>
 
+            <p class="park-pricing-hero__currency">
+              <i class="pi pi-wallet" aria-hidden="true"></i>
+              <span>{{ 'parkPricing.currency.original' | translate }}</span>
+              <strong>{{ pricing.currencyCode }}</strong>
+            </p>
+
             <div class="park-pricing-hero__actions">
               @if (detailLink()) {
                 <a appUiButton="ghost" [routerLink]="detailLink()">
@@ -262,6 +268,101 @@
                         <i class="pi pi-external-link" aria-hidden="true"></i>
                       </a>
                     }
+                  </article>
+                }
+              </div>
+            </section>
+          }
+
+          @if (historySeries().length > 0) {
+            <section class="park-pricing-section park-pricing-history">
+              <header class="park-pricing-section__header">
+                <span class="park-pricing-section__icon"><i class="pi pi-chart-line" aria-hidden="true"></i></span>
+                <div>
+                  <h2>{{ 'parkPricing.history.title' | translate }}</h2>
+                  <p>{{ 'parkPricing.history.subtitle' | translate }}</p>
+                </div>
+              </header>
+
+              <p class="park-pricing-history__method">
+                <i class="pi pi-info-circle" aria-hidden="true"></i>
+                <span>{{ 'parkPricing.history.method' | translate }}</span>
+              </p>
+
+              <div class="park-pricing-history__grid">
+                @for (series of historySeries(); track series.key) {
+                  <article class="park-pricing-history-card">
+                    <header>
+                      <div>
+                        <span>{{ historyKindLabelKey(series) | translate }}</span>
+                        <h3>{{ series.label }}</h3>
+                      </div>
+                      <strong>{{ historyCurrencies(series) }}</strong>
+                    </header>
+
+                    @if (historyEvolution(series); as evolution) {
+                      <p class="park-pricing-history-card__evolution">
+                        {{ evolution.directionKey | translate:{ amount: evolution.amount, percentage: evolution.percentage, years: series.points.length } }}
+                        <small>{{ evolution.channel === 'onlinePrice' ? ('parkPricing.channels.online' | translate) : ('parkPricing.channels.gate' | translate) }}</small>
+                      </p>
+                    }
+
+                    @if (historyHasSingleCurrency(series)) {
+                      <div class="park-pricing-history-chart-scroll">
+                        <svg
+                          class="park-pricing-history-chart"
+                          viewBox="0 0 640 225"
+                          role="img"
+                          [attr.aria-label]="'parkPricing.history.chartLabel' | translate:{ product: series.label }">
+                          <g class="park-pricing-history-chart__grid" aria-hidden="true">
+                            <line x1="54" y1="45" x2="586" y2="45"></line>
+                            <line x1="54" y1="112" x2="586" y2="112"></line>
+                            <line x1="54" y1="180" x2="586" y2="180"></line>
+                          </g>
+
+                          @if (historyHasChannel(series, 'onlinePrice')) {
+                            <polyline class="park-pricing-history-chart__line park-pricing-history-chart__line--online" [attr.points]="historyLinePoints(series, 'onlinePrice')"></polyline>
+                          }
+                          @if (historyHasChannel(series, 'gatePrice')) {
+                            <polyline class="park-pricing-history-chart__line park-pricing-history-chart__line--gate" [attr.points]="historyLinePoints(series, 'gatePrice')"></polyline>
+                          }
+
+                          @for (point of series.points; track point.year; let index = $index) {
+                            @let onlineAmount = historyChartAmount(point, 'onlinePrice');
+                            @let gateAmount = historyChartAmount(point, 'gatePrice');
+                            @if (onlineAmount !== null) {
+                              <circle class="park-pricing-history-chart__point park-pricing-history-chart__point--online" [attr.cx]="historyPointX(index, series.points.length)" [attr.cy]="historyPriceY(onlineAmount, series)" r="5"></circle>
+                            }
+                            @if (gateAmount !== null) {
+                              <circle class="park-pricing-history-chart__point park-pricing-history-chart__point--gate" [attr.cx]="historyPointX(index, series.points.length)" [attr.cy]="historyPriceY(gateAmount, series)" r="5"></circle>
+                            }
+                            <text class="park-pricing-history-chart__year" [attr.x]="historyPointX(index, series.points.length)" y="210">{{ point.year }}</text>
+                          }
+                        </svg>
+                      </div>
+                    } @else {
+                      <p class="park-pricing-history-card__currency-change">
+                        <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+                        {{ 'parkPricing.history.currencyChanged' | translate:{ currencies: historyCurrencies(series) } }}
+                      </p>
+                    }
+
+                    <div class="park-pricing-history-table" role="table" [attr.aria-label]="'parkPricing.history.tableLabel' | translate:{ product: series.label }">
+                      <div class="park-pricing-history-table__row park-pricing-history-table__row--header" role="row">
+                        <span role="columnheader">{{ 'parkPricing.history.year' | translate }}</span>
+                        <span role="columnheader">{{ 'parkPricing.channels.online' | translate }}</span>
+                        <span role="columnheader">{{ 'parkPricing.channels.gate' | translate }}</span>
+                        <span role="columnheader">{{ 'parkPricing.fields.currency' | translate }}</span>
+                      </div>
+                      @for (point of series.points; track point.year) {
+                        <div class="park-pricing-history-table__row" role="row">
+                          <strong role="cell">{{ point.year }}</strong>
+                          <span role="cell">{{ historyPriceLabel(point, 'onlinePrice') }}</span>
+                          <span role="cell">{{ historyPriceLabel(point, 'gatePrice') }}</span>
+                          <strong role="cell">{{ point.currencyCode }}</strong>
+                        </div>
+                      }
+                    </div>
                   </article>
                 }
               </div>

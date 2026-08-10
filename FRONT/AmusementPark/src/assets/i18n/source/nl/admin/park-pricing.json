@@ -11,6 +11,7 @@
     "placeholders": { "localizedValue": "Waarde in het {{ language }}", "conditions": "Voorwaarden in het {{ language }}" },
     "hints": { "dynamicBounds": "Grenzen zijn optioneel voor een dynamische prijs.", "admissionOffers": "Vul categorie, vertalingen en verkoopkanalen van elk ticket in.", "annualPasses": "Vul jaarformules en hun voorwaarden in.", "parkingOffers": "Vul relevante parkeeropties afzonderlijk in." },
     "empty": { "admissionOffers": "Geen toegangstickets.", "annualPasses": "Geen jaarpassen.", "parkingOffers": "Geen parkeeropties." },
+  "history": { "title": "Jaarlijkse geschiedenis", "hint": "Bewaar voor elk jaar een volledige momentopname van de prijzen en hergebruik dezelfde productcodes voor de grafieken.", "currencyHint": "Elk jaar behoudt zijn eigen valuta. Gebruik altijd de valuta die het park werkelijk publiceerde, ook als die afwijkt van de huidige valuta.", "addSnapshot": "Historisch jaar toevoegen", "removeSnapshot": "Dit jaar verwijderen", "snapshot": "Historische meting", "newSnapshot": "Nieuwe meting", "year": "Jaar", "empty": "Geen historische metingen." },
     "messages": { "loading": "Prijzen laden…", "loadError": "Prijzen konden niet worden geladen.", "saveError": "Prijzen konden niet worden opgeslagen.", "savedSummary": "Prijzen opgeslagen", "savedDetail": "De prijslijst van het park is bijgewerkt." }
   }
 }

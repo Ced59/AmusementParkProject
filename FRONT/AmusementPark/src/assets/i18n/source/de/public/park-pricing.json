@@ -15,6 +15,15 @@
       "passes": { "title": "Jahreskarten", "subtitle": "Angebote für Besuche während des ganzen Jahres" },
       "parking": { "title": "Parken", "subtitle": "Eingetragene Parkgebühren" }
     },
+    "currency": { "original": "Vom Park veröffentlichte Währung" },
+    "history": {
+      "title": "Preisentwicklung", "subtitle": "Vergleiche die verfügbaren Angaben der letzten fünf Jahre.",
+      "method": "Das Diagramm nutzt den Festpreis oder bei Spannen und dynamischen Preisen den angekündigten Mindestpreis. Jeder Betrag bleibt in der vom Park veröffentlichten Währung; es erfolgt keine Umrechnung.",
+      "kinds": { "admission": "Eintrittskarte", "annualPass": "Jahrespass", "parking": "Parken" },
+      "increase": "Anstieg um {{ amount }} ({{ percentage }}) über {{ years }} Angaben", "increaseAmount": "Anstieg um {{ amount }} zwischen den Angaben", "decrease": "Rückgang um {{ amount }} ({{ percentage }}) über {{ years }} Angaben", "decreaseAmount": "Rückgang um {{ amount }} zwischen den Angaben", "stable": "Preis über {{ years }} Angaben unverändert",
+      "chartLabel": "Diagramm zur Preisentwicklung von {{ product }}", "tableLabel": "Detaillierter Preisverlauf für {{ product }}", "year": "Jahr",
+      "currencyChanged": "Die Währung hat sich geändert ({{ currencies }}). Die Beträge bleiben sichtbar, werden aber nicht in einem Diagramm verbunden, damit kein irreführender Vergleich entsteht."
+    },
     "channels": { "online": "Online", "gate": "An der Kasse" },
     "modes": { "Fixed": "Festpreis", "Range": "Preisspanne", "Dynamic": "Dynamischer Preis" },
     "price": { "from": "ab", "upTo": "bis", "dynamic": "dynamischer Preis" },
