@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject,
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService as NgxTranslateService } from '@ngx-translate/core';
-import { catchError, EMPTY, map, of, switchMap, throwError } from 'rxjs';
+import { catchError, distinctUntilChanged, EMPTY, map, Observable, of, switchMap, throwError } from 'rxjs';
 
 import {
   ParkPriceValue,
@@ -67,7 +67,6 @@ export class ParkPricingPageComponent implements OnInit {
   private readonly unavailableParkImageId = signal<string | null>(null);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
-  private currentParkId: string | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -137,15 +136,25 @@ export class ParkPricingPageComponent implements OnInit {
       });
 
     this.route.paramMap
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((params: ParamMap): void => {
-        const parkId: string | null = params.get('id');
-        if (!parkId || parkId === this.currentParkId) {
+      .pipe(
+        map((params: ParamMap): string | null => params.get('id')),
+        distinctUntilChanged(),
+        switchMap((parkId: string | null): Observable<ParkPricingPageData> =>
+          parkId ? this.loadPricingPage(parkId) : EMPTY),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe((data: ParkPricingPageData): void => {
+        const offerCount: number = data.pricing
+          ? data.pricing.admissionOffers.length + data.pricing.annualPasses.length + data.pricing.parkingOffers.length
+          : 0;
+
+        if (offerCount === 0) {
+          this.ssrHttpStatusService.setNotFound();
+          this.stateStore.setEmpty(data);
           return;
         }
 
-        this.currentParkId = parkId;
-        this.loadPricingPage(parkId);
+        this.stateStore.setReady(data);
       });
   }
 
@@ -193,13 +202,13 @@ export class ParkPricingPageComponent implements OnInit {
     }).format(new Date(value));
   }
 
-  private loadPricingPage(parkId: string): void {
+  private loadPricingPage(parkId: string): Observable<ParkPricingPageData> {
     const previousData: ParkPricingPageData | undefined = this.stateStore.data();
     this.stateStore.setLoading(previousData);
     this.unavailablePark.set(null);
     this.unavailableParkImageId.set(null);
 
-    this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()).pipe(
+    return this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()).pipe(
       switchMap((summary: ParkDetailSummary) => {
         const parkImageId: string | null = resolveParkSummarySocialImageId(summary);
         const routeTarget = {
@@ -236,32 +245,18 @@ export class ParkPricingPageComponent implements OnInit {
           })
         );
       }),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe({
-      next: (data: ParkPricingPageData): void => {
-        const offerCount: number = data.pricing
-          ? data.pricing.admissionOffers.length + data.pricing.annualPasses.length + data.pricing.parkingOffers.length
-          : 0;
-
-        if (offerCount === 0) {
-          this.ssrHttpStatusService.setNotFound();
-          this.stateStore.setEmpty(data);
-          return;
-        }
-
-        this.stateStore.setReady(data);
-      },
-      error: (error: unknown): void => {
+      catchError((error: unknown): Observable<never> => {
         console.error('Error loading park pricing page', error);
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         if (hasHttpStatus(error, 404)) {
           this.stateStore.setEmpty(previousData);
-          return;
+          return EMPTY;
         }
 
         this.stateStore.setError('parkPricing.page.errorMessage', previousData);
-      }
-    });
+        return EMPTY;
+      })
+    );
   }
 }

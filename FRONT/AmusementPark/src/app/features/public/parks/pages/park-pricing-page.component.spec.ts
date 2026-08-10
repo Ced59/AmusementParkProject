@@ -2,9 +2,9 @@ import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventEmitter } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject, throwError } from 'rxjs';
 
 import { Park } from '@app/models/parks/park';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
@@ -31,6 +31,7 @@ describe('ParkPricingPageComponent', () => {
   let parksApiService: MockedObject<ParksApiService>;
   let seoService: MockedObject<SeoService>;
   let ssrHttpStatusService: MockedObject<SsrHttpStatusService>;
+  let routeParamMap: BehaviorSubject<ParamMap>;
 
   beforeEach(async () => {
     parksApiService = {
@@ -48,6 +49,7 @@ describe('ParkPricingPageComponent', () => {
 
     parksApiService.getParkDetailSummary.mockReturnValue(of(createSummary()));
     parksApiService.getParkPricing.mockReturnValue(of(createPricing()));
+    routeParamMap = new BehaviorSubject(convertToParamMap({ id: 'park-1', lang: 'fr' }));
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, ParkPricingPageComponent],
@@ -58,7 +60,7 @@ describe('ParkPricingPageComponent', () => {
           useValue: {
             snapshot: { paramMap: convertToParamMap({ id: 'park-1', lang: 'fr' }) },
             parent: null,
-            paramMap: of(convertToParamMap({ id: 'park-1', lang: 'fr' })),
+            paramMap: routeParamMap.asObservable(),
           },
         },
         { provide: ParksApiService, useValue: parksApiService },
@@ -144,6 +146,30 @@ describe('ParkPricingPageComponent', () => {
     expect((fixture.nativeElement as HTMLElement).textContent).toContain('Aucun tarif disponible');
   });
 
+  it('cancels obsolete pricing loads when navigating to another park', () => {
+    const firstParkSummary = new Subject<ParkDetailSummary>();
+    const secondParkSummary = new Subject<ParkDetailSummary>();
+    parksApiService.getParkDetailSummary.mockImplementation(
+      (parkId: string): Observable<ParkDetailSummary> =>
+        parkId === 'park-1' ? firstParkSummary.asObservable() : secondParkSummary.asObservable(),
+    );
+
+    const fixture: ComponentFixture<ParkPricingPageComponent> = createComponent();
+    routeParamMap.next(convertToParamMap({ id: 'park-2', lang: 'fr' }));
+    secondParkSummary.next(createSummary('Operating', 'park-2', 'Walibi Belgium'));
+    fixture.detectChanges();
+
+    firstParkSummary.next(createSummary());
+    fixture.detectChanges();
+
+    expect(parksApiService.getParkPricing).toHaveBeenCalledTimes(1);
+    expect(parksApiService.getParkPricing).toHaveBeenCalledWith('park-2', expect.any(Object));
+    expect(seoService.applyParkPricingSeo).toHaveBeenLastCalledWith(
+      'Walibi Belgium', 'fr', expect.any(String), 1, null,
+      '/fr/park/park-2/walibi-belgium/pricing',
+    );
+  });
+
   function createComponent(): ComponentFixture<ParkPricingPageComponent> {
     const fixture: ComponentFixture<ParkPricingPageComponent> = TestBed.createComponent(ParkPricingPageComponent);
     fixture.detectChanges();
@@ -151,10 +177,14 @@ describe('ParkPricingPageComponent', () => {
   }
 });
 
-function createSummary(status: Park['status'] = 'Operating'): ParkDetailSummary {
+function createSummary(
+  status: Park['status'] = 'Operating',
+  parkId: string = 'park-1',
+  parkName: string = 'Bellewaerde',
+): ParkDetailSummary {
   return {
     park: {
-      id: 'park-1', name: 'Bellewaerde', countryCode: 'BE', latitude: 50.845,
+      id: parkId, name: parkName, countryCode: 'BE', latitude: 50.845,
       longitude: 2.945, isVisible: true, status,
     },
     mainImage: null,

@@ -44,6 +44,12 @@ export class AdminParkPricingTabComponent implements OnChanges {
   private readonly editStateFacade: AdminParkEditStateFacade = inject(AdminParkEditStateFacade);
   private readonly toastMessageService: ToastMessageService = inject(ToastMessageService);
   private readonly translateService: TranslateService = inject(TranslateService);
+  private readonly offerClientKeys: Record<PricingCollection, string[]> = {
+    admissionOffers: [],
+    annualPasses: [],
+    parkingOffers: [],
+  };
+  private offerClientKeySequence: number = 0;
 
   protected get loading(): boolean {
     return this.editStateFacade.pricingLoading();
@@ -57,6 +63,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
     if (changes['parkId'] && this.parkId) {
       this.loaded.set(false);
       this.pricing.set(null);
+      this.resetOfferClientKeys();
       void this.loadPricing(false);
     }
   }
@@ -128,6 +135,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
       conditions: [],
       sortOrder: this.nextSortOrder(current.admissionOffers),
     };
+    this.offerClientKeys.admissionOffers.push(this.nextOfferClientKey('admissionOffers'));
     this.pricing.set({ ...current, admissionOffers: [...current.admissionOffers, offer] });
   }
 
@@ -148,6 +156,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
       conditions: [],
       sortOrder: this.nextSortOrder(current.annualPasses),
     };
+    this.offerClientKeys.annualPasses.push(this.nextOfferClientKey('annualPasses'));
     this.pricing.set({ ...current, annualPasses: [...current.annualPasses, offer] });
   }
 
@@ -168,7 +177,18 @@ export class AdminParkPricingTabComponent implements OnChanges {
       conditions: [],
       sortOrder: this.nextSortOrder(current.parkingOffers),
     };
+    this.offerClientKeys.parkingOffers.push(this.nextOfferClientKey('parkingOffers'));
     this.pricing.set({ ...current, parkingOffers: [...current.parkingOffers, offer] });
+  }
+
+  protected offerTrackKey(collection: PricingCollection, index: number): string {
+    let key: string | undefined = this.offerClientKeys[collection][index];
+    if (!key) {
+      key = this.nextOfferClientKey(collection);
+      this.offerClientKeys[collection][index] = key;
+    }
+
+    return key;
   }
 
   protected updateOffer(collection: PricingCollection, index: number, offer: AdminParkPricingOffer): void {
@@ -211,6 +231,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
       return;
     }
 
+    this.offerClientKeys[collection].splice(index, 1);
     if (collection === 'admissionOffers') {
       this.pricing.set({
         ...current,
@@ -250,6 +271,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
 
     try {
       const savedPricing: ParkPricing = await this.editStateFacade.savePricing(parkId, payload);
+      this.resetOfferClientKeys(savedPricing);
       this.pricing.set(savedPricing);
       this.loaded.set(true);
       this.errorMessageKey.set(null);
@@ -272,12 +294,15 @@ export class AdminParkPricingTabComponent implements OnChanges {
 
     try {
       const pricing: ParkPricing = await this.editStateFacade.loadPricing(parkId);
+      this.resetOfferClientKeys(pricing);
       this.pricing.set(pricing);
       this.loaded.set(true);
       this.errorMessageKey.set(null);
     } catch (error: unknown) {
       if (hasHttpStatus(error, 404)) {
-        this.pricing.set(this.createTemplate(parkId));
+        const pricing: ParkPricing = this.createTemplate(parkId);
+        this.resetOfferClientKeys(pricing);
+        this.pricing.set(pricing);
         this.loaded.set(true);
         this.errorMessageKey.set(null);
         return;
@@ -316,6 +341,20 @@ export class AdminParkPricingTabComponent implements OnChanges {
   private nextSortOrder(offers: readonly { sortOrder: number }[]): number {
     return offers.reduce((maximum: number, offer: { sortOrder: number }): number =>
       Math.max(maximum, offer.sortOrder), -1) + 1;
+  }
+
+  private resetOfferClientKeys(pricing?: ParkPricing): void {
+    this.offerClientKeys.admissionOffers = (pricing?.admissionOffers ?? [])
+      .map((): string => this.nextOfferClientKey('admissionOffers'));
+    this.offerClientKeys.annualPasses = (pricing?.annualPasses ?? [])
+      .map((): string => this.nextOfferClientKey('annualPasses'));
+    this.offerClientKeys.parkingOffers = (pricing?.parkingOffers ?? [])
+      .map((): string => this.nextOfferClientKey('parkingOffers'));
+  }
+
+  private nextOfferClientKey(collection: PricingCollection): string {
+    this.offerClientKeySequence += 1;
+    return `${collection}-${this.offerClientKeySequence}`;
   }
 
   private normalizeOptionalText(value: string | null | undefined): string | null {

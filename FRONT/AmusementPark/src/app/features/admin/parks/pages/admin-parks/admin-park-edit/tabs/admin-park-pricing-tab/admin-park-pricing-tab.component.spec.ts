@@ -85,6 +85,30 @@ describe('AdminParkPricingTabComponent', () => {
     expect(fixture.nativeElement.querySelectorAll('app-admin-park-pricing-offer-editor')).toHaveLength(0);
   });
 
+  it('keeps an unsaved offer editor mounted while its code changes', () => {
+    clickButton('Add ticket');
+    fixture.detectChanges();
+
+    const editorBefore: HTMLElement | null = (fixture.nativeElement as HTMLElement)
+      .querySelector('app-admin-park-pricing-offer-editor');
+    const codeInput: HTMLInputElement | null = editorBefore?.querySelector(
+      '.pricing-offer-editor__fields--identity input[type="text"]',
+    ) ?? null;
+    expect(editorBefore).not.toBeNull();
+    expect(codeInput).not.toBeNull();
+
+    if (codeInput) {
+      codeInput.value = 'adult-updated';
+      codeInput.dispatchEvent(new Event('input'));
+    }
+    fixture.detectChanges();
+
+    const editorAfter: HTMLElement | null = (fixture.nativeElement as HTMLElement)
+      .querySelector('app-admin-park-pricing-offer-editor');
+    expect(editorAfter).toBe(editorBefore);
+    expect(editorAfter?.textContent).toContain('adult-updated');
+  });
+
   function clickButton(label: string): void {
     const buttons: HTMLButtonElement[] = Array.from(
       (fixture.nativeElement as HTMLElement).querySelectorAll('button'),

@@ -77,7 +77,7 @@
         </div>
         <button appUiButton type="button" class="p-button-sm" icon="pi pi-plus" [disabled]="saving" [label]="'adminParkPricing.actions.addAdmission' | translate" (click)="addAdmissionOffer()"></button>
       </header>
-      @for (offer of currentPricing.admissionOffers; track offer.id || offer.code; let index = $index) {
+      @for (offer of currentPricing.admissionOffers; track offerTrackKey('admissionOffers', $index); let index = $index) {
         <app-admin-park-pricing-offer-editor
           kind="admission"
           [offer]="offer"
@@ -98,7 +98,7 @@
         </div>
         <button appUiButton type="button" class="p-button-sm" icon="pi pi-plus" [disabled]="saving" [label]="'adminParkPricing.actions.addAnnualPass' | translate" (click)="addAnnualPass()"></button>
       </header>
-      @for (offer of currentPricing.annualPasses; track offer.id || offer.code; let index = $index) {
+      @for (offer of currentPricing.annualPasses; track offerTrackKey('annualPasses', $index); let index = $index) {
         <app-admin-park-pricing-offer-editor
           kind="annualPass"
           [offer]="offer"
@@ -119,7 +119,7 @@
         </div>
         <button appUiButton type="button" class="p-button-sm" icon="pi pi-plus" [disabled]="saving" [label]="'adminParkPricing.actions.addParking' | translate" (click)="addParkingOffer()"></button>
       </header>
-      @for (offer of currentPricing.parkingOffers; track offer.id || offer.code; let index = $index) {
+      @for (offer of currentPricing.parkingOffers; track offerTrackKey('parkingOffers', $index); let index = $index) {
         <app-admin-park-pricing-offer-editor
           kind="parking"
           [offer]="offer"
