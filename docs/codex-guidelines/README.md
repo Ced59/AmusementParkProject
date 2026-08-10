@@ -45,7 +45,7 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 - `park-data-integration-steps/04-rich-descriptions-localization.md` : descriptions longues, naturelles et localisées dans les 8 langues.
 - `park-data-integration-steps/05-images-and-reference-enrichment.md` : images importables, logos, crédits, biographies et références.
 - `park-data-integration-steps/06-opening-hours-and-named-events.md` : horaires, exceptions datées et événements nommés.
-- `park-data-integration-steps/07-pricing.md` : tarifs actuels, billets, pass annuels et parking pour les parcs `Operating`.
+- `park-data-integration-steps/07-pricing.md` : tarifs actuels et relevés annuels historiques, billets, pass annuels et parking pour les parcs `Operating`, en conservant la devise source de chaque année.
 - `park-data-integration-steps/08-history-timelines-and-articles.md` : histoire du parc, histoire des parkItems et articles rattachés.
 - `park-data-integration-steps/09-final-audit-and-publication.md` : audit final avant publication.
 

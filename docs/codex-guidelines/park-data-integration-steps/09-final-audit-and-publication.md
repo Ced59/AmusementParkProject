@@ -240,7 +240,7 @@ Vérifier :
 
 Pour un parc `Operating`, vérifier la section `pricing` exportée de bout en bout :
 
-- `parkId` correspond au parc audité et `currencyCode` contient trois lettres majuscules ;
+- `parkId` correspond au parc audité et `currencyCode` contient trois lettres majuscules ; la devise actuelle est celle réellement publiée par le parc et son code ISO reste visible ;
 - `sourceUrl`, `purchaseUrl` et les liens spécifiques pointent vers les pages officielles pertinentes ;
 - `lastVerifiedAtUtc` correspond à la vérification réelle et la grille est encore actuelle ;
 - les nombres de billets, pass annuels et offres de parking correspondent au registre consolidé ;
@@ -253,6 +253,8 @@ Pour un parc `Operating`, vérifier la section `pricing` exportée de bout en bo
 - les conditions localisées conservent les restrictions qui changent réellement l’offre ;
 - les notes ne contiennent aucune consigne d’audit ou information interne ;
 - l’export `Pricing` peut être réinjecté en Preview sans erreur et sans perte fonctionnelle.
+- `historicalSnapshots` conserve au plus 25 années uniques, chacune avec sa propre devise, sa source fiable et au moins une offre tarifée ;
+- un même produit conserve le même code entre années seulement lorsqu’il reste comparable, et un changement de devise n’est jamais masqué par une conversion implicite ;
 
 Pour tout autre statut, la présence d’une grille actuelle est un bloqueur. Produire une correction ciblée de l’étape 7 sans présenter ces données au public. Une grille absente pour un parc `Operating` n’est acceptable qu’après recherche réelle et avec une lacune explicitement documentée.
 

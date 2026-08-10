@@ -273,11 +273,11 @@ Cette étape ne produit un bloc `openingHours` que pour `Operating`. Pour les ci
 
 Sortie attendue : JSON upsert centré sur `openingHours`, et éventuellement quelques événements `history` seulement s’ils ont une vraie valeur durable.
 
-### Étape 7 — Tarifs actuels
+### Étape 7 — Tarifs actuels et historique annuel
 
 Lire `park-data-integration-steps/07-pricing.md`.
 
-Objectif : intégrer, uniquement pour un parc `Operating`, une grille actuelle vérifiée comprenant les billets d’entrée, pass annuels et offres de parking, avec devise, canaux en ligne/guichet, périodes, conditions localisées et liens officiels.
+Objectif : intégrer, uniquement pour un parc `Operating`, une grille actuelle vérifiée comprenant les billets d’entrée, pass annuels et offres de parking, avec devise source locale, canaux en ligne/guichet, périodes, conditions localisées et liens officiels. Rechercher aussi les relevés fiables des années précédentes et les conserver avec leur devise propre et des codes produit stables afin d’alimenter les graphiques d’évolution.
 
 Sortie attendue : un JSON upsert centré sur `pricing`, prévisualisé puis appliqué par le flux normal. Pour un autre statut, consigner que l’étape est non applicable et ne pas créer de grille actuelle.
 
