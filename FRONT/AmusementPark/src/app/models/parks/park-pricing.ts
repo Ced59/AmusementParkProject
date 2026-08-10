@@ -54,7 +54,7 @@ export interface ParkPricing {
   currencyCode: string;
   sourceUrl?: string | null;
   purchaseUrl?: string | null;
-  notes?: string | null;
+  notes: LocalizedItem<string>[];
   lastVerifiedAtUtc?: string | null;
   createdAtUtc?: string | null;
   updatedAtUtc?: string | null;

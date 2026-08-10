@@ -13,7 +13,7 @@ public sealed class ParkGraphExportPricing
 
     public string? PurchaseUrl { get; init; }
 
-    public string? Notes { get; init; }
+    public List<LocalizedText> Notes { get; init; } = new();
 
     public DateTime? LastVerifiedAtUtc { get; init; }
 

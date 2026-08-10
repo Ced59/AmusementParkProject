@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
 using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
@@ -31,6 +32,9 @@ public sealed class ParkPricingCommandHandlersTests
                 {
                     Code = "adult",
                     AudienceCategory = "adult",
+                    Labels = new[] { "fr", "en", "es", "de", "it", "nl", "pt", "pl" }
+                        .Select(static languageCode => new LocalizedText(languageCode, "Adult"))
+                        .ToList(),
                     OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
                 },
             },

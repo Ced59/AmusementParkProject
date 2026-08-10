@@ -299,10 +299,10 @@
             }
           </section>
 
-          @if (pricing.notes) {
+          @if (localizedText(pricing.notes); as notes) {
             <section class="park-pricing-notes">
               <h2>{{ 'parkPricing.fields.notes' | translate }}</h2>
-              <p>{{ pricing.notes }}</p>
+              <p>{{ notes }}</p>
             </section>
           }
         </article>

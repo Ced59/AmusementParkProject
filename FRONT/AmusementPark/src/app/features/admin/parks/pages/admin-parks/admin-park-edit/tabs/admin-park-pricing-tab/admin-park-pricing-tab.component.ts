@@ -9,9 +9,11 @@ import {
   ParkPricing,
 } from '@app/models/parks/park-pricing';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { LocalizedItem } from '@app/models/shared/localized-item';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { AdminParkEditStateFacade } from '@features/admin/parks/state/admin-park-edit-state.facade';
 import { ButtonDirective } from '@shared/ui/primitives/button';
+import { LocalizedTextInputComponent } from '@shared/components/localized-text-input/localized-text-input.component';
 import {
   AdminParkPricingOffer,
   AdminParkPricingOfferEditorComponent,
@@ -28,6 +30,7 @@ type PricingCollection = 'admissionOffers' | 'annualPasses' | 'parkingOffers';
     AdminParkPricingOfferEditorComponent,
     ButtonDirective,
     FormsModule,
+    LocalizedTextInputComponent,
     TranslateModule,
   ],
 })
@@ -63,7 +66,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
   }
 
   protected updateRootField(
-    field: 'currencyCode' | 'sourceUrl' | 'purchaseUrl' | 'notes',
+    field: 'currencyCode' | 'sourceUrl' | 'purchaseUrl',
     value: string | null
   ): void {
     const current: ParkPricing | null = this.pricing();
@@ -77,9 +80,17 @@ export class AdminParkPricingTabComponent implements OnChanges {
       this.pricing.set({ ...current, sourceUrl: value });
     } else if (field === 'purchaseUrl') {
       this.pricing.set({ ...current, purchaseUrl: value });
-    } else {
-      this.pricing.set({ ...current, notes: value });
     }
+    this.errorMessageKey.set(null);
+  }
+
+  protected updateNotes(values: LocalizedItem<string>[]): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    this.pricing.set({ ...current, notes: values });
     this.errorMessageKey.set(null);
   }
 
@@ -234,7 +245,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
       currencyCode: current.currencyCode.trim().toUpperCase(),
       sourceUrl: this.normalizeOptionalText(current.sourceUrl),
       purchaseUrl: this.normalizeOptionalText(current.purchaseUrl),
-      notes: this.normalizeOptionalText(current.notes),
+      notes: current.notes,
     };
 
     try {
@@ -283,7 +294,7 @@ export class AdminParkPricingTabComponent implements OnChanges {
       currencyCode: 'EUR',
       sourceUrl: null,
       purchaseUrl: null,
-      notes: null,
+      notes: [],
       lastVerifiedAtUtc: null,
       admissionOffers: [],
       annualPasses: [],

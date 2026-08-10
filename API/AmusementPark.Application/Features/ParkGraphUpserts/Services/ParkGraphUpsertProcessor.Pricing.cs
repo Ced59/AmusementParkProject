@@ -210,7 +210,7 @@ public sealed partial class ParkGraphUpsertProcessor
             CurrencyCode = ReadString(patch, "currencyCode") ?? string.Empty,
             SourceUrl = ReadString(patch, "sourceUrl"),
             PurchaseUrl = ReadString(patch, "purchaseUrl"),
-            Notes = ReadString(patch, "notes"),
+            Notes = ReadPricingLocalizedTexts(patch, "notes", "pricing", errors),
             LastVerifiedAtUtc = ReadOptionalPricingUtcDate(patch, "lastVerifiedAtUtc", errors),
             AdmissionOffers = ReadAdmissionOffers(patch, errors),
             AnnualPasses = ReadAnnualPasses(patch, errors),
@@ -484,7 +484,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddChange(change, "pricing.currencyCode", existingPricing?.CurrencyCode, normalizedPricing.CurrencyCode);
         AddChange(change, "pricing.sourceUrl", existingPricing?.SourceUrl, normalizedPricing.SourceUrl);
         AddChange(change, "pricing.purchaseUrl", existingPricing?.PurchaseUrl, normalizedPricing.PurchaseUrl);
-        AddChange(change, "pricing.notes", existingPricing?.Notes, normalizedPricing.Notes);
+        AddChange(change, "pricing.notes", DescribePricing(existingPricing?.Notes), DescribePricing(normalizedPricing.Notes));
         AddChange(change, "pricing.lastVerifiedAtUtc", existingPricing?.LastVerifiedAtUtc, normalizedPricing.LastVerifiedAtUtc);
         AddChange(change, "pricing.admissionOffers", DescribePricing(existingPricing?.AdmissionOffers), DescribePricing(normalizedPricing.AdmissionOffers));
         AddChange(change, "pricing.annualPasses", DescribePricing(existingPricing?.AnnualPasses), DescribePricing(normalizedPricing.AnnualPasses));

@@ -21,8 +21,7 @@ public sealed class ParkPricingDocument : MongoDocumentBase
     public string? PurchaseUrl { get; set; }
 
     [BsonElement("notes")]
-    [BsonIgnoreIfNull]
-    public string? Notes { get; set; }
+    public List<LocalizedTextDocument> Notes { get; set; } = new();
 
     [BsonElement("lastVerifiedAtUtc")]
     [BsonIgnoreIfNull]

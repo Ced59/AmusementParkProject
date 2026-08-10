@@ -10,6 +10,17 @@ public static class ParkPricingNormalizer
     private const int MaximumAdmissionOfferCount = 250;
     private const int MaximumAnnualPassCount = 100;
     private const int MaximumParkingOfferCount = 50;
+    private static readonly IReadOnlyCollection<string> PublicLanguageCodes = new[]
+    {
+        "fr",
+        "en",
+        "es",
+        "de",
+        "it",
+        "nl",
+        "pt",
+        "pl",
+    };
 
     public static ApplicationResult<ParkPricingEntity> Normalize(ParkPricingEntity pricing)
     {
@@ -23,7 +34,7 @@ public static class ParkPricingNormalizer
             CurrencyCode = (NormalizeOptionalString(pricing.CurrencyCode) ?? string.Empty).ToUpperInvariant(),
             SourceUrl = NormalizeOptionalString(pricing.SourceUrl),
             PurchaseUrl = NormalizeOptionalString(pricing.PurchaseUrl),
-            Notes = NormalizeOptionalString(pricing.Notes),
+            Notes = NormalizeLocalizedTexts(pricing.Notes),
             LastVerifiedAtUtc = pricing.LastVerifiedAtUtc,
             CreatedAtUtc = pricing.CreatedAtUtc,
             UpdatedAtUtc = pricing.UpdatedAtUtc,
@@ -38,6 +49,8 @@ public static class ParkPricingNormalizer
         {
             errors[nameof(pricing.CurrencyCode)] = new[] { "invalid-iso-4217-code" };
         }
+
+        ValidateOptionalLocalizedTexts(normalized.Notes, nameof(pricing.Notes), errors);
 
         IReadOnlyCollection<ParkAdmissionPriceOffer> admissionOffers = pricing.AdmissionOffers ?? new List<ParkAdmissionPriceOffer>();
         IReadOnlyCollection<ParkAnnualPassOffer> annualPasses = pricing.AnnualPasses ?? new List<ParkAnnualPassOffer>();
@@ -105,6 +118,7 @@ public static class ParkPricingNormalizer
             };
 
             ValidateCode(normalized.Code, $"{fieldPrefix}.code", usedCodes, errors);
+            ValidateRequiredLocalizedTexts(normalized.Labels, $"{fieldPrefix}.labels", errors);
             if (string.IsNullOrWhiteSpace(normalized.AudienceCategory))
             {
                 errors[$"{fieldPrefix}.audienceCategory"] = new[] { "required" };
@@ -112,6 +126,7 @@ public static class ParkPricingNormalizer
 
             ValidatePricePresence(normalized.OnlinePrice, normalized.GatePrice, fieldPrefix, errors);
             ValidateDateRange(normalized.ValidFrom, normalized.ValidTo, fieldPrefix, errors);
+            ValidateOptionalLocalizedTexts(normalized.Conditions, $"{fieldPrefix}.conditions", errors);
             normalizedOffers.Add(normalized);
             index += 1;
         }
@@ -145,13 +160,11 @@ public static class ParkPricingNormalizer
             };
 
             ValidateCode(normalized.Code, $"{fieldPrefix}.code", usedCodes, errors);
-            if (normalized.Names.Count == 0)
-            {
-                errors[$"{fieldPrefix}.names"] = new[] { "required" };
-            }
+            ValidateRequiredLocalizedTexts(normalized.Names, $"{fieldPrefix}.names", errors);
 
             ValidatePricePresence(normalized.OnlinePrice, normalized.GatePrice, fieldPrefix, errors);
             ValidateDateRange(normalized.ValidFrom, normalized.ValidTo, fieldPrefix, errors);
+            ValidateOptionalLocalizedTexts(normalized.Conditions, $"{fieldPrefix}.conditions", errors);
             normalizedOffers.Add(normalized);
             index += 1;
         }
@@ -185,8 +198,10 @@ public static class ParkPricingNormalizer
             };
 
             ValidateCode(normalized.Code, $"{fieldPrefix}.code", usedCodes, errors);
+            ValidateRequiredLocalizedTexts(normalized.Labels, $"{fieldPrefix}.labels", errors);
             ValidatePricePresence(normalized.OnlinePrice, normalized.GatePrice, fieldPrefix, errors);
             ValidateDateRange(normalized.ValidFrom, normalized.ValidTo, fieldPrefix, errors);
+            ValidateOptionalLocalizedTexts(normalized.Conditions, $"{fieldPrefix}.conditions", errors);
             normalizedOffers.Add(normalized);
             index += 1;
         }
@@ -300,6 +315,46 @@ public static class ParkPricingNormalizer
         else if (!usedCodes.Add(code))
         {
             errors[fieldPath] = new[] { "duplicate" };
+        }
+    }
+
+    private static void ValidateRequiredLocalizedTexts(
+        IReadOnlyCollection<LocalizedText> values,
+        string fieldPath,
+        Dictionary<string, IReadOnlyCollection<string>> errors)
+    {
+        ValidateLocalizedTexts(values, fieldPath, false, errors);
+    }
+
+    private static void ValidateOptionalLocalizedTexts(
+        IReadOnlyCollection<LocalizedText> values,
+        string fieldPath,
+        Dictionary<string, IReadOnlyCollection<string>> errors)
+    {
+        ValidateLocalizedTexts(values, fieldPath, true, errors);
+    }
+
+    private static void ValidateLocalizedTexts(
+        IReadOnlyCollection<LocalizedText> values,
+        string fieldPath,
+        bool allowEmpty,
+        Dictionary<string, IReadOnlyCollection<string>> errors)
+    {
+        if (allowEmpty && values.Count == 0)
+        {
+            return;
+        }
+
+        HashSet<string> availableLanguages = values
+            .Select(static value => value.LanguageCode)
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
+        List<string> missingLanguages = PublicLanguageCodes
+            .Where(languageCode => !availableLanguages.Contains(languageCode))
+            .Select(static languageCode => $"missing-language:{languageCode}")
+            .ToList();
+        if (missingLanguages.Count > 0)
+        {
+            errors[fieldPath] = missingLanguages;
         }
     }
 

@@ -108,6 +108,7 @@ describe('ParkPricingPageComponent', () => {
     expect(text).toContain('En ligne');
     expect(text).toContain('49');
     expect(text).toContain('Tarifs indicatifs');
+    expect(text).toContain('Billets datés uniquement.');
     expect(seoService.applyParkPricingSeo).toHaveBeenCalledWith(
       'Bellewaerde', 'fr', expect.any(String), 1, null,
       '/fr/park/park-1/bellewaerde/pricing',
@@ -169,7 +170,10 @@ function createPricing(): ParkPricing {
   return {
     parkId: 'park-1', currencyCode: 'EUR', sourceUrl: 'https://example.com/prices',
     purchaseUrl: 'https://example.com/tickets', lastVerifiedAtUtc: '2026-08-01T12:00:00Z',
-    notes: null,
+    notes: [
+      { languageCode: 'en', value: 'Dated tickets only.' },
+      { languageCode: 'fr', value: 'Billets datés uniquement.' },
+    ],
     admissionOffers: [{
       code: 'adult', audienceCategory: 'adult',
       labels: [{ languageCode: 'fr', value: 'Adulte' }],

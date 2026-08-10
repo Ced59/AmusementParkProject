@@ -16,7 +16,7 @@ internal static class ParkGraphPricingExportMapper
             CurrencyCode = pricing.CurrencyCode,
             SourceUrl = pricing.SourceUrl,
             PurchaseUrl = pricing.PurchaseUrl,
-            Notes = pricing.Notes,
+            Notes = CopyLocalizedTexts(pricing.Notes),
             LastVerifiedAtUtc = pricing.LastVerifiedAtUtc,
             AdmissionOffers = pricing.AdmissionOffers
                 .OrderBy(static offer => offer.SortOrder)
@@ -94,6 +94,7 @@ internal static class ParkGraphPricingExportMapper
     private static List<LocalizedText> CopyLocalizedTexts(IReadOnlyCollection<LocalizedText> values)
     {
         return values
+            .OrderBy(static value => value.LanguageCode, StringComparer.Ordinal)
             .Select(static value => new LocalizedText(value.LanguageCode, value.Value))
             .ToList();
     }

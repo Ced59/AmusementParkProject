@@ -245,7 +245,16 @@ public sealed class ParkGraphPricingTests
                 "id": "admission-1",
                 "code": "adult-high-season",
                 "audienceCategory": "adult",
-                "labels": [{ "languageCode": "fr", "value": "Adulte" }],
+                "labels": [
+                  { "languageCode": "fr", "value": "Adulte" },
+                  { "languageCode": "en", "value": "Adult" },
+                  { "languageCode": "es", "value": "Adulto" },
+                  { "languageCode": "de", "value": "Erwachsene" },
+                  { "languageCode": "it", "value": "Adulto" },
+                  { "languageCode": "nl", "value": "Volwassene" },
+                  { "languageCode": "pt", "value": "Adulto" },
+                  { "languageCode": "pl", "value": "Dorosły" }
+                ],
                 "onlinePrice": { "mode": "Fixed", "amount": 39 },
                 "gatePrice": { "mode": "Fixed", "amount": 45 },
                 "validFrom": "2026-07-01",
@@ -283,7 +292,7 @@ public sealed class ParkGraphPricingTests
             CurrencyCode = "EUR",
             SourceUrl = "https://example.test/prices",
             PurchaseUrl = "https://example.test/tickets",
-            Notes = "Prices may vary.",
+            Notes = CreateLocalizedTexts("Prices may vary."),
             LastVerifiedAtUtc = new DateTime(2026, 8, 9, 10, 0, 0, DateTimeKind.Utc),
             AdmissionOffers = new List<ParkAdmissionPriceOffer>
             {
@@ -292,21 +301,13 @@ public sealed class ParkGraphPricingTests
                     Id = "admission-1",
                     Code = "adult-high-season",
                     AudienceCategory = "adult",
-                    Labels = new List<LocalizedText>
-                    {
-                        new LocalizedText("en", "Adult"),
-                        new LocalizedText("fr", "Adulte"),
-                    },
+                    Labels = CreateLocalizedTexts("Adult", "Adulte"),
                     OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
                     GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Range, MinimumAmount = 45m, MaximumAmount = 55m },
                     ValidFrom = new DateOnly(2026, 7, 1),
                     ValidTo = new DateOnly(2026, 8, 31),
                     PurchaseUrl = "https://example.test/tickets/adult",
-                    Conditions = new List<LocalizedText>
-                    {
-                        new LocalizedText("en", "Dated ticket."),
-                        new LocalizedText("fr", "Billet daté."),
-                    },
+                    Conditions = CreateLocalizedTexts("Dated ticket.", "Billet daté."),
                     SortOrder = 1,
                 },
             },
@@ -316,11 +317,7 @@ public sealed class ParkGraphPricingTests
                 {
                     Id = "pass-1",
                     Code = "gold",
-                    Names = new List<LocalizedText>
-                    {
-                        new LocalizedText("en", "Gold pass"),
-                        new LocalizedText("fr", "Pass Gold"),
-                    },
+                    Names = CreateLocalizedTexts("Gold pass", "Pass Gold"),
                     OnlinePrice = new ParkPriceValue
                     {
                         Mode = ParkPricingMode.Dynamic,
@@ -337,17 +334,22 @@ public sealed class ParkGraphPricingTests
                 {
                     Id = "parking-1",
                     Code = "car",
-                    Labels = new List<LocalizedText>
-                    {
-                        new LocalizedText("en", "Car"),
-                        new LocalizedText("fr", "Voiture"),
-                    },
+                    Labels = CreateLocalizedTexts("Car", "Voiture"),
                     GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 15m },
                     Conditions = new List<LocalizedText>(),
                     SortOrder = 3,
                 },
             },
         };
+    }
+
+    private static List<LocalizedText> CreateLocalizedTexts(string englishValue, string? frenchValue = null)
+    {
+        return new[] { "fr", "en", "es", "de", "it", "nl", "pt", "pl" }
+            .Select(languageCode => new LocalizedText(
+                languageCode,
+                string.Equals(languageCode, "fr", StringComparison.Ordinal) ? frenchValue ?? englishValue : englishValue))
+            .ToList();
     }
 
     private sealed class ProcessorContext

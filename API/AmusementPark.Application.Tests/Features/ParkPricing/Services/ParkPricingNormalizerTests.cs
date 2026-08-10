@@ -87,18 +87,21 @@ public sealed class ParkPricingNormalizerTests
                 {
                     Code = "adult",
                     AudienceCategory = "adult",
+                    Labels = CreateLocalizedTexts("Adult"),
                     GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 59m },
                 },
                 new ParkAdmissionPriceOffer
                 {
                     Code = "child-range",
                     AudienceCategory = "child",
+                    Labels = CreateLocalizedTexts("Child"),
                     OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Range, MinimumAmount = 29m, MaximumAmount = 45m },
                 },
                 new ParkAdmissionPriceOffer
                 {
                     Code = "dynamic",
                     AudienceCategory = "adult",
+                    Labels = CreateLocalizedTexts("Dynamic"),
                     OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Dynamic, MinimumAmount = 39m },
                 },
             },
@@ -125,7 +128,7 @@ public sealed class ParkPricingNormalizerTests
                 new ParkAnnualPassOffer
                 {
                     Code = "gold",
-                    Names = new List<LocalizedText> { new LocalizedText("fr", "Pass Gold") },
+                    Names = CreateLocalizedTexts("Gold pass"),
                     OnlinePrice = new ParkPriceValue
                     {
                         Mode = ParkPricingMode.Range,
@@ -163,6 +166,7 @@ public sealed class ParkPricingNormalizerTests
                 new ParkParkingPriceOffer
                 {
                     Code = "parking",
+                    Labels = CreateLocalizedTexts("Parking"),
                     OnlinePrice = new ParkPriceValue
                     {
                         Mode = mode,
@@ -195,12 +199,14 @@ public sealed class ParkPricingNormalizerTests
                 {
                     Code = "online-only",
                     AudienceCategory = "adult",
+                    Labels = CreateLocalizedTexts("Online only"),
                     OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
                 },
                 new ParkAdmissionPriceOffer
                 {
                     Code = "gate-only",
                     AudienceCategory = "child",
+                    Labels = CreateLocalizedTexts("Gate only"),
                     GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 29m },
                 },
             },
@@ -228,6 +234,7 @@ public sealed class ParkPricingNormalizerTests
                 new ParkParkingPriceOffer
                 {
                     Code = "seasonal-parking",
+                    Labels = CreateLocalizedTexts("Seasonal parking"),
                     OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Dynamic },
                     ValidFrom = new DateOnly(2026, 9, 1),
                     ValidTo = new DateOnly(2026, 8, 31),
@@ -243,15 +250,75 @@ public sealed class ParkPricingNormalizerTests
             static detail => detail.Value.Contains("invalid-date-range"));
     }
 
+    [Fact]
+    public void Normalize_ShouldRequireAllPublicLanguagesForVisitorFacingTexts()
+    {
+        ParkPricingEntity pricing = new ParkPricingEntity
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            Notes = new List<LocalizedText> { new LocalizedText("fr", "Note") },
+            AdmissionOffers = new List<ParkAdmissionPriceOffer>
+            {
+                new ParkAdmissionPriceOffer
+                {
+                    Code = "adult",
+                    AudienceCategory = "adult",
+                    Labels = new List<LocalizedText> { new LocalizedText("fr", "Adulte") },
+                    OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
+                    Conditions = new List<LocalizedText> { new LocalizedText("fr", "Billet daté.") },
+                },
+            },
+            AnnualPasses = new List<ParkAnnualPassOffer>
+            {
+                new ParkAnnualPassOffer
+                {
+                    Code = "gold",
+                    Names = new List<LocalizedText> { new LocalizedText("fr", "Pass Or") },
+                    OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 199m },
+                },
+            },
+            ParkingOffers = new List<ParkParkingPriceOffer>
+            {
+                new ParkParkingPriceOffer
+                {
+                    Code = "car",
+                    Labels = new List<LocalizedText> { new LocalizedText("fr", "Voiture") },
+                    GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 15m },
+                },
+            },
+        };
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+        IReadOnlyCollection<KeyValuePair<string, IReadOnlyCollection<string>>> details = result.Errors
+            .SelectMany(static error => error.Details ?? new Dictionary<string, IReadOnlyCollection<string>>())
+            .ToList();
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(details, static detail => detail.Key == "Notes" && detail.Value.Contains("missing-language:en"));
+        Assert.Contains(details, static detail => detail.Key == "AdmissionOffers[0].labels" && detail.Value.Contains("missing-language:en"));
+        Assert.Contains(details, static detail => detail.Key == "AdmissionOffers[0].conditions" && detail.Value.Contains("missing-language:en"));
+        Assert.Contains(details, static detail => detail.Key == "AnnualPasses[0].names" && detail.Value.Contains("missing-language:en"));
+        Assert.Contains(details, static detail => detail.Key == "ParkingOffers[0].labels" && detail.Value.Contains("missing-language:en"));
+    }
+
     private static ParkAdmissionPriceOffer CreateAdmission(string code, string audience, decimal amount, DateOnly? validFrom, DateOnly? validTo)
     {
         return new ParkAdmissionPriceOffer
         {
             Code = code,
             AudienceCategory = audience,
+            Labels = CreateLocalizedTexts(code),
             GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = amount },
             ValidFrom = validFrom,
             ValidTo = validTo,
         };
+    }
+
+    private static List<LocalizedText> CreateLocalizedTexts(string value)
+    {
+        return new[] { "fr", "en", "es", "de", "it", "nl", "pt", "pl" }
+            .Select(languageCode => new LocalizedText(languageCode, value))
+            .ToList();
     }
 }

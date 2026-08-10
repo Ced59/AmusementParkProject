@@ -210,6 +210,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<InMemorySeoSitemapRefreshScheduler>();
         services.AddSingleton<ISeoSitemapRefreshScheduler>(serviceProvider => serviceProvider.GetRequiredService<InMemorySeoSitemapRefreshScheduler>());
         services.AddHostedService(serviceProvider => serviceProvider.GetRequiredService<InMemorySeoSitemapRefreshScheduler>());
+        services.AddHostedService<ParkPricingSitemapRolloverRefreshService>();
         services.AddScoped<ISsrPageCacheInvalidator, HttpSsrPageCacheInvalidator>();
         services.AddScoped<IParkGraphUpsertHistoryRepository, ParkGraphUpsertHistoryRepository>();
         services.AddScoped<IParkWeatherRepository, ParkWeatherRepository>();

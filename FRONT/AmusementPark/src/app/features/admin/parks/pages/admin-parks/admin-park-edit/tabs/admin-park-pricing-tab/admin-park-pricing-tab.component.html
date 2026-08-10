@@ -55,10 +55,17 @@
           <span>{{ 'adminParkPricing.fields.purchaseUrl' | translate }}</span>
           <input type="url" [ngModel]="currentPricing.purchaseUrl" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateRootField('purchaseUrl', $event)" />
         </label>
-        <label class="admin-pricing-editor__wide">
+        <div class="admin-pricing-editor__wide">
           <span>{{ 'adminParkPricing.fields.notes' | translate }}</span>
-          <textarea rows="3" [ngModel]="currentPricing.notes" [ngModelOptions]="{ standalone: true }" (ngModelChange)="updateRootField('notes', $event)"></textarea>
-        </label>
+          <app-localized-text-input
+            [disabled]="saving"
+            [ngModel]="currentPricing.notes"
+            [ngModelOptions]="{ standalone: true }"
+            [placeholderKey]="'adminParkPricing.placeholders.localizedValue'"
+            [copyAllButtonLabel]="'adminParkPricing.actions.copyAllLanguages' | translate"
+            (ngModelChange)="updateNotes($event)">
+          </app-localized-text-input>
+        </div>
       </div>
     </fieldset>
 

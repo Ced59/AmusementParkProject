@@ -12,7 +12,7 @@ public sealed class ParkPricingDto
 
     public string? PurchaseUrl { get; set; }
 
-    public string? Notes { get; set; }
+    public IReadOnlyCollection<LocalizedTextDto> Notes { get; set; } = Array.Empty<LocalizedTextDto>();
 
     public DateTime? LastVerifiedAtUtc { get; set; }
 

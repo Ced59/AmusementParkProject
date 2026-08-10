@@ -21,7 +21,7 @@ public sealed class ParkPricing
 
     public string? PurchaseUrl { get; set; }
 
-    public string? Notes { get; set; }
+    public List<LocalizedText> Notes { get; set; } = new();
 
     public DateTime? LastVerifiedAtUtc { get; set; }
 
@@ -44,7 +44,7 @@ public sealed class ParkPricing
             CurrencyCode = this.CurrencyCode,
             SourceUrl = this.SourceUrl,
             PurchaseUrl = this.PurchaseUrl,
-            Notes = this.Notes,
+            Notes = this.Notes.ToList(),
             LastVerifiedAtUtc = this.LastVerifiedAtUtc,
             CreatedAtUtc = this.CreatedAtUtc,
             UpdatedAtUtc = this.UpdatedAtUtc,

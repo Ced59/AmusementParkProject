@@ -101,6 +101,7 @@ function createPricing(): ParkPricing {
   return {
     parkId: 'park-1',
     currencyCode: 'EUR',
+    notes: [],
     admissionOffers: [],
     annualPasses: [],
     parkingOffers: [],

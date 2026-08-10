@@ -22,7 +22,7 @@ internal static class ParkPricingHttpMappers
             CurrencyCode = dto.CurrencyCode?.Trim() ?? string.Empty,
             SourceUrl = NormalizeOptionalString(dto.SourceUrl),
             PurchaseUrl = NormalizeOptionalString(dto.PurchaseUrl),
-            Notes = NormalizeOptionalString(dto.Notes),
+            Notes = dto.Notes.ToDomain(),
             LastVerifiedAtUtc = dto.LastVerifiedAtUtc,
             AdmissionOffers = (dto.AdmissionOffers ?? Array.Empty<ParkAdmissionPriceOfferDto>())
                 .Select((offer, index) => offer.ToDomain(errors, $"admissionOffers[{index}]")).ToList(),
@@ -54,7 +54,7 @@ internal static class ParkPricingHttpMappers
             CurrencyCode = pricing.CurrencyCode,
             SourceUrl = pricing.SourceUrl,
             PurchaseUrl = pricing.PurchaseUrl,
-            Notes = pricing.Notes,
+            Notes = pricing.Notes.ToHttp(),
             LastVerifiedAtUtc = pricing.LastVerifiedAtUtc,
             CreatedAtUtc = pricing.CreatedAtUtc,
             UpdatedAtUtc = pricing.UpdatedAtUtc,

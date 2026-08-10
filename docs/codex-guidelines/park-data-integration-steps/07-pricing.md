@@ -43,7 +43,7 @@ Renseigner :
 - `sourceUrl` avec la page officielle qui permet de contrôler la grille ;
 - `purchaseUrl` avec le lien général d’achat officiel lorsqu’il existe ;
 - `lastVerifiedAtUtc` avec l’instant UTC réel de la vérification, jamais une date supposée ;
-- `notes` seulement pour une information publique utile qui n’a pas de champ plus précis. Ne jamais y placer de commentaire d’audit, de consigne Codex ou de justification de source.
+- `notes` sous forme de textes localisés dans les huit langues, seulement pour une information publique utile qui n’a pas de champ plus précis. Ne jamais y placer de commentaire d’audit, de consigne Codex ou de justification de source.
 
 ## Périmètre de la grille
 
@@ -115,14 +115,20 @@ Section principale : `pricing`.
     "sourceUrl": "https://example.com/tarifs",
     "purchaseUrl": "https://example.com/billetterie",
     "lastVerifiedAtUtc": "2026-08-09T10:00:00Z",
-    "notes": null,
+    "notes": [],
     "admissionOffers": [
       {
         "code": "adult-high-season",
         "audienceCategory": "adult",
         "labels": [
           { "languageCode": "fr", "value": "Adulte — haute saison" },
-          { "languageCode": "en", "value": "Adult — high season" }
+          { "languageCode": "en", "value": "Adult — high season" },
+          { "languageCode": "es", "value": "Adulto — temporada alta" },
+          { "languageCode": "de", "value": "Erwachsene — Hochsaison" },
+          { "languageCode": "it", "value": "Adulto — alta stagione" },
+          { "languageCode": "nl", "value": "Volwassene — hoogseizoen" },
+          { "languageCode": "pt", "value": "Adulto — época alta" },
+          { "languageCode": "pl", "value": "Dorosły — wysoki sezon" }
         ],
         "onlinePrice": {
           "mode": "Fixed",
@@ -145,7 +151,7 @@ Section principale : `pricing`.
 }
 ```
 
-L’exemple n’est pas complet sur les huit langues afin de rester lisible. Un lot public final respecte néanmoins le contrat de localisation ci-dessus.
+L’exemple inclut les huit langues requises. Un lot incomplet est rejeté en Preview avant toute écriture.
 
 ## Preview et Apply
 
