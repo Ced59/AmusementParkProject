@@ -5,6 +5,7 @@ using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
@@ -21,6 +22,8 @@ internal sealed class ParkGraphJsonParkExportData
     public IReadOnlyCollection<Image> Images { get; init; } = Array.Empty<Image>();
 
     public ParkOpeningHoursSchedule? OpeningHours { get; init; }
+
+    public ParkPricingEntity? Pricing { get; init; }
 
     public IReadOnlyCollection<HistoryEvent> HistoryEvents { get; init; } = Array.Empty<HistoryEvent>();
 }
@@ -88,6 +91,13 @@ internal static class ParkGraphJsonExportDocumentFactory
             document["openingHours"] = park.Status.CanHaveCurrentOpeningHours() && data.OpeningHours is not null
                 ? MapOpeningHours(data.OpeningHours)
                 : null;
+        }
+
+        if (sections.Contains(ParkGraphExportSection.Pricing))
+        {
+            document["pricing"] = data.Pricing is null
+                ? null
+                : ParkGraphPricingExportMapper.Map(data.Pricing);
         }
 
         if (sections.Contains(ParkGraphExportSection.History))

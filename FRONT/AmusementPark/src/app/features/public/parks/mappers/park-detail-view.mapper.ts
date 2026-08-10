@@ -50,7 +50,8 @@ export function mapParkToDetailViewModel(
   rating: RatingSummary | null = null,
   hasVideos: boolean = false,
   hasImages: boolean = false,
-  hasHistory: boolean = false
+  hasHistory: boolean = false,
+  hasCurrentPricing: boolean = false
 ): ParkDetailViewModel {
   const hasLocationInfo: boolean = Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   const websiteUrl: string | null = normalizeOptionalString(park.webSiteUrl);
@@ -169,7 +170,7 @@ export function mapParkToDetailViewModel(
     openingHoursLink: hasIdentity && statusPresentation.isOpenToVisitors
       ? buildPublicParkOpeningHoursRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
-    pricingLink: hasIdentity && statusPresentation.isOpenToVisitors
+    pricingLink: hasIdentity && statusPresentation.isOpenToVisitors && hasCurrentPricing
       ? buildPublicParkPricingRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     primaryPhoto,

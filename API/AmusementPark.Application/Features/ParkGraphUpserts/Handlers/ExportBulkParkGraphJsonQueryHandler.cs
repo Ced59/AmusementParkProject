@@ -98,6 +98,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandler : IQueryHandler<ExportBu
                             Items = ResolveCollection(graphData.ItemsByParkId, parkId),
                             Images = ResolveCollection(graphData.ImagesByParkId, parkId),
                             OpeningHours = ResolveValue(graphData.OpeningHoursByParkId, parkId),
+                            Pricing = ResolveValue(graphData.PricingByParkId, parkId),
                             HistoryEvents = ResolveCollection(graphData.HistoryEventsByParkId, parkId),
                         };
                         Dictionary<string, object?> document = ParkGraphJsonExportDocumentFactory.BuildDocument(

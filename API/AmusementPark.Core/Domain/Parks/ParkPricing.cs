@@ -34,6 +34,52 @@ public sealed class ParkPricing
     public List<ParkAnnualPassOffer> AnnualPasses { get; set; } = new();
 
     public List<ParkParkingPriceOffer> ParkingOffers { get; set; } = new();
+
+    public ParkPricing FilterOffersValidOn(DateOnly date)
+    {
+        return new ParkPricing
+        {
+            Id = this.Id,
+            ParkId = this.ParkId,
+            CurrencyCode = this.CurrencyCode,
+            SourceUrl = this.SourceUrl,
+            PurchaseUrl = this.PurchaseUrl,
+            Notes = this.Notes,
+            LastVerifiedAtUtc = this.LastVerifiedAtUtc,
+            CreatedAtUtc = this.CreatedAtUtc,
+            UpdatedAtUtc = this.UpdatedAtUtc,
+            AdmissionOffers = this.AdmissionOffers
+                .Where(offer => IsValidOn(offer.ValidFrom, offer.ValidTo, date))
+                .ToList(),
+            AnnualPasses = this.AnnualPasses
+                .Where(offer => IsValidOn(offer.ValidFrom, offer.ValidTo, date))
+                .ToList(),
+            ParkingOffers = this.ParkingOffers
+                .Where(offer => IsValidOn(offer.ValidFrom, offer.ValidTo, date))
+                .ToList(),
+        };
+    }
+
+    public bool HasPricedOffersValidOn(DateOnly date)
+    {
+        return this.AdmissionOffers.Any(offer => HasPrice(offer.OnlinePrice, offer.GatePrice)
+                && IsValidOn(offer.ValidFrom, offer.ValidTo, date))
+            || this.AnnualPasses.Any(offer => HasPrice(offer.OnlinePrice, offer.GatePrice)
+                && IsValidOn(offer.ValidFrom, offer.ValidTo, date))
+            || this.ParkingOffers.Any(offer => HasPrice(offer.OnlinePrice, offer.GatePrice)
+                && IsValidOn(offer.ValidFrom, offer.ValidTo, date));
+    }
+
+    private static bool HasPrice(ParkPriceValue? onlinePrice, ParkPriceValue? gatePrice)
+    {
+        return onlinePrice is not null || gatePrice is not null;
+    }
+
+    private static bool IsValidOn(DateOnly? validFrom, DateOnly? validTo, DateOnly date)
+    {
+        return (!validFrom.HasValue || validFrom.Value <= date)
+            && (!validTo.HasValue || validTo.Value >= date);
+    }
 }
 
 public sealed class ParkAdmissionPriceOffer

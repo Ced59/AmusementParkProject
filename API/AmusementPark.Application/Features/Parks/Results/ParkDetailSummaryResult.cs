@@ -19,6 +19,8 @@ public sealed class ParkDetailSummaryResult
 
     public RatingSummaryResult? Rating { get; init; }
 
+    public bool HasCurrentPricing { get; init; }
+
     public ParkDetailSummaryStatsResult Stats { get; init; } = new ParkDetailSummaryStatsResult();
 }
 

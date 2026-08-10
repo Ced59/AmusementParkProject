@@ -24,5 +24,6 @@ export interface ParkDetailSummary {
   mainImage?: ImageDto | null;
   references: ParkDetailReferenceSummary;
   rating?: RatingSummary | null;
+  hasCurrentPricing?: boolean;
   stats: ParkDetailSummaryStats;
 }

@@ -122,6 +122,8 @@ public sealed class MongoDbSettings
 
     public string ParkOpeningHoursCollectionName { get; set; } = "parkOpeningHours";
 
+    public string ParkPricingCollectionName { get; set; } = "parkPricing";
+
     public string HistoryEventsCollectionName { get; set; } = "historyEvents";
 
     /// <summary>

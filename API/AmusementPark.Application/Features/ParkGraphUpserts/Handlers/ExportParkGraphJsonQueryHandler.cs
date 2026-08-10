@@ -11,6 +11,7 @@ using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Application.Features.ParkGraphUpserts.Queries;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
+using AmusementPark.Application.Features.ParkGraphUpserts.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
@@ -238,7 +239,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
 
         if (includePricing)
         {
-            document["pricing"] = pricing is null ? null : MapPricing(pricing);
+            document["pricing"] = pricing is null ? null : ParkGraphPricingExportMapper.Map(pricing);
         }
 
         if (includeHistory)

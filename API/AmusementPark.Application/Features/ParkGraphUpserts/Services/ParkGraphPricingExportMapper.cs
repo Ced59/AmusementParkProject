@@ -1,13 +1,14 @@
 using System.Globalization;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Localization;
 using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
-namespace AmusementPark.Application.Features.ParkGraphUpserts.Handlers;
+namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
-public sealed partial class ExportParkGraphJsonQueryHandler
+internal static class ParkGraphPricingExportMapper
 {
-    private static ParkGraphExportPricing MapPricing(ParkPricingEntity pricing)
+    public static ParkGraphExportPricing Map(ParkPricingEntity pricing)
     {
         return new ParkGraphExportPricing
         {
@@ -88,5 +89,12 @@ public sealed partial class ExportParkGraphJsonQueryHandler
     private static string? FormatPricingDate(DateOnly? date)
     {
         return date?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+    }
+
+    private static List<LocalizedText> CopyLocalizedTexts(IReadOnlyCollection<LocalizedText> values)
+    {
+        return values
+            .Select(static value => new LocalizedText(value.LanguageCode, value.Value))
+            .ToList();
     }
 }

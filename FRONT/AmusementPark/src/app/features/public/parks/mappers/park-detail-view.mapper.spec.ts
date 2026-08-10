@@ -21,11 +21,28 @@ describe('mapParkToDetailViewModel lifecycle actions', () => {
 
     expect(mapParkToDetailViewModel(operatingPark, 'en').weatherLink).not.toBeNull();
     expect(mapParkToDetailViewModel(operatingPark, 'en').openingHoursLink).not.toBeNull();
-    expect(mapParkToDetailViewModel(operatingPark, 'en').pricingLink).toEqual([
+    expect(mapParkToDetailViewModel(
+      operatingPark,
+      'en',
+      {},
+      {},
+      [],
+      [],
+      [],
+      null,
+      false,
+      false,
+      false,
+      true
+    ).pricingLink).toEqual([
       '/', 'en', 'park', 'park-1', 'example-park', 'pricing'
     ]);
     expect(mapParkToDetailViewModel(plannedPark, 'en').weatherLink).toBeNull();
     expect(mapParkToDetailViewModel(plannedPark, 'en').openingHoursLink).toBeNull();
     expect(mapParkToDetailViewModel(plannedPark, 'en').pricingLink).toBeNull();
+  });
+
+  it('does not expose pricing when the operating park has no current public offer', () => {
+    expect(mapParkToDetailViewModel(operatingPark, 'en').pricingLink).toBeNull();
   });
 });

@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkPricing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Driver;
@@ -9,12 +10,11 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class ParkPricingRepository : IParkPricingRepository
 {
-    private const string CollectionName = "parkPricing";
     private readonly IMongoCollection<ParkPricingDocument> collection;
 
-    public ParkPricingRepository(IMongoDatabase database)
+    public ParkPricingRepository(IMongoDatabase database, MongoDbSettings settings)
     {
-        this.collection = database.GetCollection<ParkPricingDocument>(CollectionName);
+        this.collection = database.GetCollection<ParkPricingDocument>(settings.ParkPricingCollectionName);
     }
 
     public async Task<ParkPricingEntity?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken)

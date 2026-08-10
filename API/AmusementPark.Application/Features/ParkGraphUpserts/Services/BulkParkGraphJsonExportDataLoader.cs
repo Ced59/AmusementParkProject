@@ -6,10 +6,12 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
@@ -23,6 +25,7 @@ public sealed class BulkParkGraphJsonExportDataLoader
     private readonly IImageRepository imageRepository;
     private readonly IParkOpeningHoursRepository? openingHoursRepository;
     private readonly IHistoryEventRepository? historyEventRepository;
+    private readonly IParkPricingRepository? pricingRepository;
 
     public BulkParkGraphJsonExportDataLoader(
         IParkZoneRepository parkZoneRepository,
@@ -32,7 +35,8 @@ public sealed class BulkParkGraphJsonExportDataLoader
         IAttractionManufacturerRepository attractionManufacturerRepository,
         IImageRepository imageRepository,
         IParkOpeningHoursRepository? openingHoursRepository = null,
-        IHistoryEventRepository? historyEventRepository = null)
+        IHistoryEventRepository? historyEventRepository = null,
+        IParkPricingRepository? pricingRepository = null)
     {
         this.parkZoneRepository = parkZoneRepository;
         this.parkItemRepository = parkItemRepository;
@@ -42,6 +46,7 @@ public sealed class BulkParkGraphJsonExportDataLoader
         this.imageRepository = imageRepository;
         this.openingHoursRepository = openingHoursRepository;
         this.historyEventRepository = historyEventRepository;
+        this.pricingRepository = pricingRepository;
     }
 
     public async Task<BulkParkGraphJsonExportData> LoadAsync(
@@ -56,6 +61,7 @@ public sealed class BulkParkGraphJsonExportDataLoader
         bool includeImages = sections.Contains(ParkGraphExportSection.Images);
         bool includeOpeningHours = sections.Contains(ParkGraphExportSection.OpeningHours);
         bool includeHistory = sections.Contains(ParkGraphExportSection.History);
+        bool includePricing = sections.Contains(ParkGraphExportSection.Pricing);
         bool needsItems = includeItems || includeReferences || includeHistory;
 
         IReadOnlyCollection<ParkItem> items = needsItems
@@ -74,6 +80,9 @@ public sealed class BulkParkGraphJsonExportDataLoader
         Dictionary<string, IReadOnlyCollection<HistoryEvent>> historyEventsByParkId = includeHistory
             ? await this.LoadHistoryEventsByParkIdAsync(parkIds, itemsByParkId, cancellationToken)
             : new Dictionary<string, IReadOnlyCollection<HistoryEvent>>(StringComparer.Ordinal);
+        Dictionary<string, ParkPricingEntity?> pricingByParkId = includePricing
+            ? await this.LoadPricingByParkIdAsync(parkIds, cancellationToken)
+            : new Dictionary<string, ParkPricingEntity?>(StringComparer.Ordinal);
         Dictionary<string, ParkGraphExportReferences?> referencesByParkId = includeReferences
             ? await this.LoadReferencesByParkIdAsync(parks, itemsByParkId, cancellationToken)
             : new Dictionary<string, ParkGraphExportReferences?>(StringComparer.Ordinal);
@@ -89,7 +98,26 @@ public sealed class BulkParkGraphJsonExportDataLoader
             ImagesByParkId = imagesByParkId,
             OpeningHoursByParkId = openingHoursByParkId,
             HistoryEventsByParkId = historyEventsByParkId,
+            PricingByParkId = pricingByParkId,
         };
+    }
+
+    private async Task<Dictionary<string, ParkPricingEntity?>> LoadPricingByParkIdAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        Dictionary<string, ParkPricingEntity?> pricingByParkId = new Dictionary<string, ParkPricingEntity?>(StringComparer.Ordinal);
+        if (this.pricingRepository is null)
+        {
+            return pricingByParkId;
+        }
+
+        foreach (string parkId in parkIds)
+        {
+            pricingByParkId[parkId] = await this.pricingRepository.GetByParkIdAsync(parkId, cancellationToken);
+        }
+
+        return pricingByParkId;
     }
 
     private async Task<Dictionary<string, IReadOnlyCollection<ParkZone>>> LoadZonesByParkIdAsync(
@@ -325,4 +353,7 @@ public sealed class BulkParkGraphJsonExportData
 
     public IReadOnlyDictionary<string, IReadOnlyCollection<HistoryEvent>> HistoryEventsByParkId { get; init; } =
         new Dictionary<string, IReadOnlyCollection<HistoryEvent>>(StringComparer.Ordinal);
+
+    public IReadOnlyDictionary<string, ParkPricingEntity?> PricingByParkId { get; init; } =
+        new Dictionary<string, ParkPricingEntity?>(StringComparer.Ordinal);
 }

@@ -73,7 +73,9 @@ public static class ParkPricingNormalizer
     public static bool HasPublicPricingData(ParkPricingEntity pricing)
     {
         ArgumentNullException.ThrowIfNull(pricing);
-        return pricing.AdmissionOffers.Count > 0 || pricing.AnnualPasses.Count > 0 || pricing.ParkingOffers.Count > 0;
+        return pricing.AdmissionOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
+            || pricing.AnnualPasses.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null)
+            || pricing.ParkingOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null);
     }
 
     private static List<ParkAdmissionPriceOffer> NormalizeAdmissionOffers(

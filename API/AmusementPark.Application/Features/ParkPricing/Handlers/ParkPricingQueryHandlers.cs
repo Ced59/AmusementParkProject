@@ -13,11 +13,16 @@ public sealed class GetParkPricingQueryHandler : IQueryHandler<GetParkPricingQue
 {
     private readonly IParkRepository parkRepository;
     private readonly IParkPricingRepository pricingRepository;
+    private readonly TimeProvider timeProvider;
 
-    public GetParkPricingQueryHandler(IParkRepository parkRepository, IParkPricingRepository pricingRepository)
+    public GetParkPricingQueryHandler(
+        IParkRepository parkRepository,
+        IParkPricingRepository pricingRepository,
+        TimeProvider? timeProvider = null)
     {
         this.parkRepository = parkRepository;
         this.pricingRepository = pricingRepository;
+        this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
     public async Task<ApplicationResult<ParkPricingEntity>> HandleAsync(GetParkPricingQuery query, CancellationToken cancellationToken = default)
@@ -40,9 +45,19 @@ public sealed class GetParkPricingQueryHandler : IQueryHandler<GetParkPricingQue
         }
 
         ParkPricingEntity? pricing = await this.pricingRepository.GetByParkIdAsync(parkId, cancellationToken);
-        if (pricing is null || (!query.IncludeHidden && !ParkPricingNormalizer.HasPublicPricingData(pricing)))
+        if (pricing is null)
         {
             return ApplicationResult<ParkPricingEntity>.Failure(ParkPricingApplicationErrors.PricingNotFound());
+        }
+
+        if (!query.IncludeHidden)
+        {
+            DateOnly currentDate = DateOnly.FromDateTime(this.timeProvider.GetUtcNow().UtcDateTime);
+            pricing = pricing.FilterOffersValidOn(currentDate);
+            if (!ParkPricingNormalizer.HasPublicPricingData(pricing))
+            {
+                return ApplicationResult<ParkPricingEntity>.Failure(ParkPricingApplicationErrors.PricingNotFound());
+            }
         }
 
         return ApplicationResult<ParkPricingEntity>.Success(pricing);
