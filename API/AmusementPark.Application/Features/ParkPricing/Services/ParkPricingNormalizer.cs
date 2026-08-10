@@ -11,11 +11,18 @@ public static class ParkPricingNormalizer
     private const int MaximumAdmissionOfferCount = 250;
     private const int MaximumAnnualPassCount = 100;
     private const int MaximumParkingOfferCount = 50;
+    private const int MaximumHistoricalSnapshotCount = 25;
+    private const int MinimumHistoricalYear = 1900;
     private static readonly IReadOnlySet<string> Iso4217CurrencyCodes = CultureInfo
         .GetCultures(CultureTypes.SpecificCultures)
         .Select(static culture => new RegionInfo(culture.Name).ISOCurrencySymbol)
         .Where(static currencyCode => currencyCode.Length == 3)
         .ToHashSet(StringComparer.Ordinal);
+    private static readonly IReadOnlySet<string> HistoricalIso4217CurrencyCodes = new HashSet<string>(StringComparer.Ordinal)
+    {
+        "ATS", "BEF", "CYP", "DEM", "EEK", "ESP", "FIM", "FRF", "GRD", "HRK", "IEP", "ITL",
+        "LTL", "LUF", "LVL", "MTL", "NLG", "PTE", "ROL", "SIT", "SKK", "TRL",
+    };
     private static readonly IReadOnlyCollection<string> PublicLanguageCodes = new[]
     {
         "fr",
@@ -79,9 +86,12 @@ public static class ParkPricingNormalizer
             errors[nameof(pricing.ParkingOffers)] = new[] { "too-many-offers" };
         }
 
-        normalized.AdmissionOffers = NormalizeAdmissionOffers(admissionOffers, errors);
-        normalized.AnnualPasses = NormalizeAnnualPasses(annualPasses, errors);
-        normalized.ParkingOffers = NormalizeParkingOffers(parkingOffers, errors);
+        normalized.AdmissionOffers = NormalizeAdmissionOffers(admissionOffers, nameof(pricing.AdmissionOffers), errors);
+        normalized.AnnualPasses = NormalizeAnnualPasses(annualPasses, nameof(pricing.AnnualPasses), errors);
+        normalized.ParkingOffers = NormalizeParkingOffers(parkingOffers, nameof(pricing.ParkingOffers), errors);
+        normalized.HistoricalSnapshots = NormalizeHistoricalSnapshots(
+            pricing.HistoricalSnapshots ?? new List<ParkPricingSnapshot>(),
+            errors);
 
         if (errors.Count > 0)
         {
@@ -99,8 +109,92 @@ public static class ParkPricingNormalizer
             || pricing.ParkingOffers.Any(static offer => offer.OnlinePrice is not null || offer.GatePrice is not null);
     }
 
+    private static List<ParkPricingSnapshot> NormalizeHistoricalSnapshots(
+        IReadOnlyCollection<ParkPricingSnapshot> snapshots,
+        Dictionary<string, IReadOnlyCollection<string>> errors)
+    {
+        if (snapshots.Count > MaximumHistoricalSnapshotCount)
+        {
+            errors[nameof(ParkPricingEntity.HistoricalSnapshots)] = new[] { "too-many-snapshots" };
+        }
+
+        HashSet<int> usedYears = new();
+        List<ParkPricingSnapshot> normalizedSnapshots = new();
+        int index = 0;
+        foreach (ParkPricingSnapshot snapshot in snapshots)
+        {
+            string fieldPrefix = $"{nameof(ParkPricingEntity.HistoricalSnapshots)}[{index}]";
+            IReadOnlyCollection<ParkAdmissionPriceOffer> admissionOffers = snapshot.AdmissionOffers ?? new List<ParkAdmissionPriceOffer>();
+            IReadOnlyCollection<ParkAnnualPassOffer> annualPasses = snapshot.AnnualPasses ?? new List<ParkAnnualPassOffer>();
+            IReadOnlyCollection<ParkParkingPriceOffer> parkingOffers = snapshot.ParkingOffers ?? new List<ParkParkingPriceOffer>();
+            ParkPricingSnapshot normalized = new()
+            {
+                Id = NormalizeOptionalString(snapshot.Id) ?? Guid.NewGuid().ToString("N"),
+                Year = snapshot.Year,
+                CurrencyCode = (NormalizeOptionalString(snapshot.CurrencyCode) ?? string.Empty).ToUpperInvariant(),
+                SourceUrl = NormalizeOptionalString(snapshot.SourceUrl),
+                Notes = NormalizeLocalizedTexts(snapshot.Notes),
+                LastVerifiedAtUtc = snapshot.LastVerifiedAtUtc,
+                AdmissionOffers = NormalizeAdmissionOffers(admissionOffers, $"{fieldPrefix}.AdmissionOffers", errors),
+                AnnualPasses = NormalizeAnnualPasses(annualPasses, $"{fieldPrefix}.AnnualPasses", errors),
+                ParkingOffers = NormalizeParkingOffers(parkingOffers, $"{fieldPrefix}.ParkingOffers", errors),
+            };
+
+            if (normalized.Year < MinimumHistoricalYear || normalized.Year > DateTime.MaxValue.Year)
+            {
+                errors[$"{fieldPrefix}.Year"] = new[] { "invalid-year" };
+            }
+            else if (!usedYears.Add(normalized.Year))
+            {
+                errors[$"{fieldPrefix}.Year"] = new[] { "duplicate" };
+            }
+
+            if (!IsValidHistoricalCurrencyCode(normalized.CurrencyCode))
+            {
+                errors[$"{fieldPrefix}.CurrencyCode"] = new[] { "invalid-iso-4217-code" };
+            }
+
+            ValidateOptionalAbsoluteHttpUrl(normalized.SourceUrl, $"{fieldPrefix}.SourceUrl", errors);
+            ValidateOptionalLocalizedTexts(normalized.Notes, $"{fieldPrefix}.Notes", errors);
+            ValidateSnapshotCollectionCounts(normalized, fieldPrefix, errors);
+            if (!normalized.HasPricedOffers())
+            {
+                errors[$"{fieldPrefix}.Offers"] = new[] { "priced-offer-required" };
+            }
+
+            normalizedSnapshots.Add(normalized);
+            index += 1;
+        }
+
+        return normalizedSnapshots
+            .OrderByDescending(static snapshot => snapshot.Year)
+            .ToList();
+    }
+
+    private static void ValidateSnapshotCollectionCounts(
+        ParkPricingSnapshot snapshot,
+        string fieldPrefix,
+        Dictionary<string, IReadOnlyCollection<string>> errors)
+    {
+        if (snapshot.AdmissionOffers.Count > MaximumAdmissionOfferCount)
+        {
+            errors[$"{fieldPrefix}.AdmissionOffers"] = new[] { "too-many-offers" };
+        }
+
+        if (snapshot.AnnualPasses.Count > MaximumAnnualPassCount)
+        {
+            errors[$"{fieldPrefix}.AnnualPasses"] = new[] { "too-many-passes" };
+        }
+
+        if (snapshot.ParkingOffers.Count > MaximumParkingOfferCount)
+        {
+            errors[$"{fieldPrefix}.ParkingOffers"] = new[] { "too-many-offers" };
+        }
+    }
+
     private static List<ParkAdmissionPriceOffer> NormalizeAdmissionOffers(
         IReadOnlyCollection<ParkAdmissionPriceOffer> offers,
+        string collectionFieldPath,
         Dictionary<string, IReadOnlyCollection<string>> errors)
     {
         HashSet<string> usedCodes = new(StringComparer.OrdinalIgnoreCase);
@@ -109,7 +203,7 @@ public static class ParkPricingNormalizer
 
         foreach (ParkAdmissionPriceOffer offer in offers)
         {
-            string fieldPrefix = $"{nameof(ParkPricingEntity.AdmissionOffers)}[{index}]";
+            string fieldPrefix = $"{collectionFieldPath}[{index}]";
             ParkAdmissionPriceOffer normalized = new()
             {
                 Id = NormalizeOptionalString(offer.Id) ?? Guid.NewGuid().ToString("N"),
@@ -145,6 +239,7 @@ public static class ParkPricingNormalizer
 
     private static List<ParkAnnualPassOffer> NormalizeAnnualPasses(
         IReadOnlyCollection<ParkAnnualPassOffer> offers,
+        string collectionFieldPath,
         Dictionary<string, IReadOnlyCollection<string>> errors)
     {
         HashSet<string> usedCodes = new(StringComparer.OrdinalIgnoreCase);
@@ -153,7 +248,7 @@ public static class ParkPricingNormalizer
 
         foreach (ParkAnnualPassOffer offer in offers)
         {
-            string fieldPrefix = $"{nameof(ParkPricingEntity.AnnualPasses)}[{index}]";
+            string fieldPrefix = $"{collectionFieldPath}[{index}]";
             ParkAnnualPassOffer normalized = new()
             {
                 Id = NormalizeOptionalString(offer.Id) ?? Guid.NewGuid().ToString("N"),
@@ -184,6 +279,7 @@ public static class ParkPricingNormalizer
 
     private static List<ParkParkingPriceOffer> NormalizeParkingOffers(
         IReadOnlyCollection<ParkParkingPriceOffer> offers,
+        string collectionFieldPath,
         Dictionary<string, IReadOnlyCollection<string>> errors)
     {
         HashSet<string> usedCodes = new(StringComparer.OrdinalIgnoreCase);
@@ -192,7 +288,7 @@ public static class ParkPricingNormalizer
 
         foreach (ParkParkingPriceOffer offer in offers)
         {
-            string fieldPrefix = $"{nameof(ParkPricingEntity.ParkingOffers)}[{index}]";
+            string fieldPrefix = $"{collectionFieldPath}[{index}]";
             ParkParkingPriceOffer normalized = new()
             {
                 Id = NormalizeOptionalString(offer.Id) ?? Guid.NewGuid().ToString("N"),
@@ -338,6 +434,11 @@ public static class ParkPricingNormalizer
     private static bool IsValidCurrencyCode(string value)
     {
         return Iso4217CurrencyCodes.Contains(value);
+    }
+
+    private static bool IsValidHistoricalCurrencyCode(string value)
+    {
+        return IsValidCurrencyCode(value) || HistoricalIso4217CurrencyCodes.Contains(value);
     }
 
     private static void ValidateOptionalAbsoluteHttpUrl(

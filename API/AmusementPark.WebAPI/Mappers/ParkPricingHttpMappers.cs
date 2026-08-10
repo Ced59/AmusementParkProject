@@ -30,6 +30,8 @@ internal static class ParkPricingHttpMappers
                 .Select((offer, index) => offer.ToDomain(errors, $"annualPasses[{index}]")).ToList(),
             ParkingOffers = (dto.ParkingOffers ?? Array.Empty<ParkParkingPriceOfferDto>())
                 .Select((offer, index) => offer.ToDomain(errors, $"parkingOffers[{index}]")).ToList(),
+            HistoricalSnapshots = (dto.HistoricalSnapshots ?? Array.Empty<ParkPricingSnapshotDto>())
+                .Select((snapshot, index) => snapshot.ToDomain(errors, $"historicalSnapshots[{index}]")).ToList(),
         };
 
         if (errors.Count == 0)
@@ -61,6 +63,58 @@ internal static class ParkPricingHttpMappers
             AdmissionOffers = pricing.AdmissionOffers.Select(static offer => offer.ToHttp()).ToList(),
             AnnualPasses = pricing.AnnualPasses.Select(static offer => offer.ToHttp()).ToList(),
             ParkingOffers = pricing.ParkingOffers.Select(static offer => offer.ToHttp()).ToList(),
+            HistoricalSnapshots = pricing.HistoricalSnapshots
+                .OrderByDescending(static snapshot => snapshot.Year)
+                .Select(static snapshot => snapshot.ToHttp())
+                .ToList(),
+        };
+    }
+
+    public static ParkPricingDto ToPublicHttp(this ParkPricingEntity pricing, int maximumHistoricalSnapshots = 10)
+    {
+        ParkPricingDto dto = pricing.ToHttp();
+        dto.HistoricalSnapshots = dto.HistoricalSnapshots
+            .OrderByDescending(static snapshot => snapshot.Year)
+            .Take(Math.Max(0, maximumHistoricalSnapshots))
+            .ToList();
+        return dto;
+    }
+
+    private static ParkPricingSnapshot ToDomain(
+        this ParkPricingSnapshotDto dto,
+        Dictionary<string, List<string>> errors,
+        string fieldPrefix)
+    {
+        return new ParkPricingSnapshot
+        {
+            Id = NormalizeOptionalString(dto.Id),
+            Year = dto.Year,
+            CurrencyCode = dto.CurrencyCode?.Trim() ?? string.Empty,
+            SourceUrl = NormalizeOptionalString(dto.SourceUrl),
+            Notes = dto.Notes.ToDomain(),
+            LastVerifiedAtUtc = dto.LastVerifiedAtUtc,
+            AdmissionOffers = (dto.AdmissionOffers ?? Array.Empty<ParkAdmissionPriceOfferDto>())
+                .Select((offer, index) => offer.ToDomain(errors, $"{fieldPrefix}.admissionOffers[{index}]")).ToList(),
+            AnnualPasses = (dto.AnnualPasses ?? Array.Empty<ParkAnnualPassOfferDto>())
+                .Select((offer, index) => offer.ToDomain(errors, $"{fieldPrefix}.annualPasses[{index}]")).ToList(),
+            ParkingOffers = (dto.ParkingOffers ?? Array.Empty<ParkParkingPriceOfferDto>())
+                .Select((offer, index) => offer.ToDomain(errors, $"{fieldPrefix}.parkingOffers[{index}]")).ToList(),
+        };
+    }
+
+    private static ParkPricingSnapshotDto ToHttp(this ParkPricingSnapshot snapshot)
+    {
+        return new ParkPricingSnapshotDto
+        {
+            Id = snapshot.Id,
+            Year = snapshot.Year,
+            CurrencyCode = snapshot.CurrencyCode,
+            SourceUrl = snapshot.SourceUrl,
+            Notes = snapshot.Notes.ToHttp(),
+            LastVerifiedAtUtc = snapshot.LastVerifiedAtUtc,
+            AdmissionOffers = snapshot.AdmissionOffers.Select(static offer => offer.ToHttp()).ToList(),
+            AnnualPasses = snapshot.AnnualPasses.Select(static offer => offer.ToHttp()).ToList(),
+            ParkingOffers = snapshot.ParkingOffers.Select(static offer => offer.ToHttp()).ToList(),
         };
     }
 

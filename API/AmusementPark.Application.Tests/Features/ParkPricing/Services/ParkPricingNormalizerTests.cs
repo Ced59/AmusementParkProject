@@ -360,6 +360,108 @@ public sealed class ParkPricingNormalizerTests
         Assert.Contains(details, detail => detail.Key == expectedField && detail.Value.Contains("invalid-http-url"));
     }
 
+    [Fact]
+    public void Normalize_ShouldPreserveHistoricalSnapshotsWithTheirOwnCurrenciesAndStableProductCodes()
+    {
+        ParkPricingEntity pricing = new()
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            AdmissionOffers = new List<ParkAdmissionPriceOffer>
+            {
+                CreateAdmission("adult", "adult", 49m, null, null),
+            },
+            HistoricalSnapshots = new List<ParkPricingSnapshot>
+            {
+                CreateHistoricalSnapshot(2024, "hrk", 300m),
+                CreateHistoricalSnapshot(2025, "eur", 42m),
+            },
+        };
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Collection(
+            result.Value.HistoricalSnapshots,
+            snapshot =>
+            {
+                Assert.Equal(2025, snapshot.Year);
+                Assert.Equal("EUR", snapshot.CurrencyCode);
+                Assert.Equal("adult", Assert.Single(snapshot.AdmissionOffers).Code);
+            },
+            snapshot =>
+            {
+                Assert.Equal(2024, snapshot.Year);
+                Assert.Equal("HRK", snapshot.CurrencyCode);
+                Assert.Equal("adult", Assert.Single(snapshot.AdmissionOffers).Code);
+            });
+    }
+
+    [Fact]
+    public void Normalize_ShouldRejectDuplicateHistoricalYears()
+    {
+        ParkPricingEntity pricing = new()
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            HistoricalSnapshots = new List<ParkPricingSnapshot>
+            {
+                CreateHistoricalSnapshot(2025, "EUR", 39m),
+                CreateHistoricalSnapshot(2025, "EUR", 42m),
+            },
+        };
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors.SelectMany(static error => error.Details ?? new Dictionary<string, IReadOnlyCollection<string>>()),
+            static detail => detail.Key == "HistoricalSnapshots[1].Year" && detail.Value.Contains("duplicate"));
+    }
+
+    [Fact]
+    public void Normalize_ShouldRejectHistoricalSnapshotWithoutPricedOffers()
+    {
+        ParkPricingEntity pricing = new()
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            HistoricalSnapshots = new List<ParkPricingSnapshot>
+            {
+                new ParkPricingSnapshot { Year = 2025, CurrencyCode = "EUR" },
+            },
+        };
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors.SelectMany(static error => error.Details ?? new Dictionary<string, IReadOnlyCollection<string>>()),
+            static detail => detail.Key == "HistoricalSnapshots[0].Offers" && detail.Value.Contains("priced-offer-required"));
+    }
+
+    [Fact]
+    public void Normalize_ShouldRejectInvalidHistoricalCurrencyWithoutChangingCurrentCurrency()
+    {
+        ParkPricingEntity pricing = new()
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            HistoricalSnapshots = new List<ParkPricingSnapshot>
+            {
+                CreateHistoricalSnapshot(2025, "EURO", 39m),
+            },
+        };
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors.SelectMany(static error => error.Details ?? new Dictionary<string, IReadOnlyCollection<string>>()),
+            static detail => detail.Key == "HistoricalSnapshots[0].CurrencyCode" && detail.Value.Contains("invalid-iso-4217-code"));
+    }
+
     private static ParkAdmissionPriceOffer CreateAdmission(string code, string audience, decimal amount, DateOnly? validFrom, DateOnly? validTo)
     {
         return new ParkAdmissionPriceOffer
@@ -370,6 +472,20 @@ public sealed class ParkPricingNormalizerTests
             GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = amount },
             ValidFrom = validFrom,
             ValidTo = validTo,
+        };
+    }
+
+    private static ParkPricingSnapshot CreateHistoricalSnapshot(int year, string currencyCode, decimal amount)
+    {
+        return new ParkPricingSnapshot
+        {
+            Year = year,
+            CurrencyCode = currencyCode,
+            SourceUrl = $"https://example.test/prices/{year}",
+            AdmissionOffers = new List<ParkAdmissionPriceOffer>
+            {
+                CreateAdmission("adult", "adult", amount, null, null),
+            },
         };
     }
 

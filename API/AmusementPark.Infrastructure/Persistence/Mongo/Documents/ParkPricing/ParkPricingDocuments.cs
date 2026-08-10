@@ -35,6 +35,42 @@ public sealed class ParkPricingDocument : MongoDocumentBase
 
     [BsonElement("parkingOffers")]
     public List<ParkParkingPriceOfferDocument> ParkingOffers { get; set; } = new();
+
+    [BsonElement("historicalSnapshots")]
+    public List<ParkPricingSnapshotDocument> HistoricalSnapshots { get; set; } = new();
+}
+
+[BsonIgnoreExtraElements]
+public sealed class ParkPricingSnapshotDocument
+{
+    [BsonElement("id")]
+    public string Id { get; set; } = string.Empty;
+
+    [BsonElement("year")]
+    public int Year { get; set; }
+
+    [BsonElement("currencyCode")]
+    public string CurrencyCode { get; set; } = string.Empty;
+
+    [BsonElement("sourceUrl")]
+    [BsonIgnoreIfNull]
+    public string? SourceUrl { get; set; }
+
+    [BsonElement("notes")]
+    public List<LocalizedTextDocument> Notes { get; set; } = new();
+
+    [BsonElement("lastVerifiedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? LastVerifiedAtUtc { get; set; }
+
+    [BsonElement("admissionOffers")]
+    public List<ParkAdmissionPriceOfferDocument> AdmissionOffers { get; set; } = new();
+
+    [BsonElement("annualPasses")]
+    public List<ParkAnnualPassOfferDocument> AnnualPasses { get; set; } = new();
+
+    [BsonElement("parkingOffers")]
+    public List<ParkParkingPriceOfferDocument> ParkingOffers { get; set; } = new();
 }
 
 [BsonIgnoreExtraElements]

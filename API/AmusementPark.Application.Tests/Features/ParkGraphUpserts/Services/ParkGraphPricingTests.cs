@@ -117,6 +117,10 @@ public sealed class ParkGraphPricingTests
         Assert.NotNull(applyResult.Value);
         Assert.Empty(applyResult.Value.Errors);
         Assert.NotNull(savedPricing);
+        ParkPricingSnapshot savedSnapshot = Assert.Single(savedPricing.HistoricalSnapshots);
+        Assert.Equal(2024, savedSnapshot.Year);
+        Assert.Equal("HRK", savedSnapshot.CurrencyCode);
+        Assert.Equal("adult-high-season", Assert.Single(savedSnapshot.AdmissionOffers).Code);
 
         string secondExport = await ExportPricingAsync(park, savedPricing);
         using JsonDocument firstDocument = JsonDocument.Parse(firstExport);
@@ -419,6 +423,30 @@ public sealed class ParkGraphPricingTests
                     GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 15m },
                     Conditions = new List<LocalizedText>(),
                     SortOrder = 3,
+                },
+            },
+            HistoricalSnapshots = new List<ParkPricingSnapshot>
+            {
+                new ParkPricingSnapshot
+                {
+                    Id = "snapshot-2024",
+                    Year = 2024,
+                    CurrencyCode = "HRK",
+                    SourceUrl = "https://example.test/prices/2024",
+                    LastVerifiedAtUtc = new DateTime(2025, 1, 2, 10, 0, 0, DateTimeKind.Utc),
+                    AdmissionOffers = new List<ParkAdmissionPriceOffer>
+                    {
+                        new ParkAdmissionPriceOffer
+                        {
+                            Id = "admission-2024-1",
+                            Code = "adult-high-season",
+                            AudienceCategory = "adult",
+                            Labels = CreateLocalizedTexts("Adult", "Adulte"),
+                            OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 300m },
+                            Conditions = new List<LocalizedText>(),
+                            SortOrder = 1,
+                        },
+                    },
                 },
             },
         };

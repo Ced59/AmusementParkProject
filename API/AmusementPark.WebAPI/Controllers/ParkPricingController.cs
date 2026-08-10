@@ -47,7 +47,7 @@ public sealed class ParkPricingController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        return this.Ok(result.Value.ToHttp());
+        return this.Ok(result.Value.ToPublicHttp());
     }
 
     [HttpGet("admin/parks/{parkId}/pricing")]

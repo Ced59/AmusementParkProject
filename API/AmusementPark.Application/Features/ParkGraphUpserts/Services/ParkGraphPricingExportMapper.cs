@@ -70,6 +70,75 @@ internal static class ParkGraphPricingExportMapper
                     SortOrder = offer.SortOrder,
                 })
                 .ToList(),
+            HistoricalSnapshots = pricing.HistoricalSnapshots
+                .OrderByDescending(static snapshot => snapshot.Year)
+                .Select(static snapshot => MapSnapshot(snapshot))
+                .ToList(),
+        };
+    }
+
+    private static ParkGraphExportPricingSnapshot MapSnapshot(ParkPricingSnapshot snapshot)
+    {
+        return new ParkGraphExportPricingSnapshot
+        {
+            Id = snapshot.Id,
+            Year = snapshot.Year,
+            CurrencyCode = snapshot.CurrencyCode,
+            SourceUrl = snapshot.SourceUrl,
+            Notes = CopyLocalizedTexts(snapshot.Notes),
+            LastVerifiedAtUtc = snapshot.LastVerifiedAtUtc,
+            AdmissionOffers = snapshot.AdmissionOffers
+                .OrderBy(static offer => offer.SortOrder)
+                .ThenBy(static offer => offer.Code, StringComparer.Ordinal)
+                .Select(static offer => new ParkGraphExportAdmissionPriceOffer
+                {
+                    Id = offer.Id,
+                    Code = offer.Code,
+                    AudienceCategory = offer.AudienceCategory,
+                    Labels = CopyLocalizedTexts(offer.Labels),
+                    OnlinePrice = MapPriceValue(offer.OnlinePrice),
+                    GatePrice = MapPriceValue(offer.GatePrice),
+                    ValidFrom = FormatPricingDate(offer.ValidFrom),
+                    ValidTo = FormatPricingDate(offer.ValidTo),
+                    PurchaseUrl = offer.PurchaseUrl,
+                    Conditions = CopyLocalizedTexts(offer.Conditions),
+                    SortOrder = offer.SortOrder,
+                })
+                .ToList(),
+            AnnualPasses = snapshot.AnnualPasses
+                .OrderBy(static offer => offer.SortOrder)
+                .ThenBy(static offer => offer.Code, StringComparer.Ordinal)
+                .Select(static offer => new ParkGraphExportAnnualPassOffer
+                {
+                    Id = offer.Id,
+                    Code = offer.Code,
+                    Names = CopyLocalizedTexts(offer.Names),
+                    OnlinePrice = MapPriceValue(offer.OnlinePrice),
+                    GatePrice = MapPriceValue(offer.GatePrice),
+                    ValidFrom = FormatPricingDate(offer.ValidFrom),
+                    ValidTo = FormatPricingDate(offer.ValidTo),
+                    PurchaseUrl = offer.PurchaseUrl,
+                    Conditions = CopyLocalizedTexts(offer.Conditions),
+                    SortOrder = offer.SortOrder,
+                })
+                .ToList(),
+            ParkingOffers = snapshot.ParkingOffers
+                .OrderBy(static offer => offer.SortOrder)
+                .ThenBy(static offer => offer.Code, StringComparer.Ordinal)
+                .Select(static offer => new ParkGraphExportParkingPriceOffer
+                {
+                    Id = offer.Id,
+                    Code = offer.Code,
+                    Labels = CopyLocalizedTexts(offer.Labels),
+                    OnlinePrice = MapPriceValue(offer.OnlinePrice),
+                    GatePrice = MapPriceValue(offer.GatePrice),
+                    ValidFrom = FormatPricingDate(offer.ValidFrom),
+                    ValidTo = FormatPricingDate(offer.ValidTo),
+                    PurchaseUrl = offer.PurchaseUrl,
+                    Conditions = CopyLocalizedTexts(offer.Conditions),
+                    SortOrder = offer.SortOrder,
+                })
+                .ToList(),
         };
     }
 

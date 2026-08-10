@@ -23,6 +23,7 @@ internal static partial class EntityMongoMappers
             AdmissionOffers = pricing.AdmissionOffers.Select(static offer => offer.ToDocument()).ToList(),
             AnnualPasses = pricing.AnnualPasses.Select(static offer => offer.ToDocument()).ToList(),
             ParkingOffers = pricing.ParkingOffers.Select(static offer => offer.ToDocument()).ToList(),
+            HistoricalSnapshots = pricing.HistoricalSnapshots.Select(static snapshot => snapshot.ToDocument()).ToList(),
         };
     }
 
@@ -39,6 +40,39 @@ internal static partial class EntityMongoMappers
             LastVerifiedAtUtc = document.LastVerifiedAtUtc,
             CreatedAtUtc = document.CreatedAt,
             UpdatedAtUtc = document.UpdatedAt,
+            AdmissionOffers = document.AdmissionOffers.Select(static offer => offer.ToDomain()).ToList(),
+            AnnualPasses = document.AnnualPasses.Select(static offer => offer.ToDomain()).ToList(),
+            ParkingOffers = document.ParkingOffers.Select(static offer => offer.ToDomain()).ToList(),
+            HistoricalSnapshots = document.HistoricalSnapshots.Select(static snapshot => snapshot.ToDomain()).ToList(),
+        };
+    }
+
+    private static ParkPricingSnapshotDocument ToDocument(this ParkPricingSnapshot snapshot)
+    {
+        return new ParkPricingSnapshotDocument
+        {
+            Id = string.IsNullOrWhiteSpace(snapshot.Id) ? Guid.NewGuid().ToString("N") : snapshot.Id,
+            Year = snapshot.Year,
+            CurrencyCode = snapshot.CurrencyCode,
+            SourceUrl = snapshot.SourceUrl,
+            Notes = CommonMongoMappers.ToDocuments(snapshot.Notes),
+            LastVerifiedAtUtc = snapshot.LastVerifiedAtUtc,
+            AdmissionOffers = snapshot.AdmissionOffers.Select(static offer => offer.ToDocument()).ToList(),
+            AnnualPasses = snapshot.AnnualPasses.Select(static offer => offer.ToDocument()).ToList(),
+            ParkingOffers = snapshot.ParkingOffers.Select(static offer => offer.ToDocument()).ToList(),
+        };
+    }
+
+    private static ParkPricingSnapshot ToDomain(this ParkPricingSnapshotDocument document)
+    {
+        return new ParkPricingSnapshot
+        {
+            Id = document.Id,
+            Year = document.Year,
+            CurrencyCode = document.CurrencyCode,
+            SourceUrl = document.SourceUrl,
+            Notes = CommonMongoMappers.ToDomain(document.Notes),
+            LastVerifiedAtUtc = document.LastVerifiedAtUtc,
             AdmissionOffers = document.AdmissionOffers.Select(static offer => offer.ToDomain()).ToList(),
             AnnualPasses = document.AnnualPasses.Select(static offer => offer.ToDomain()).ToList(),
             ParkingOffers = document.ParkingOffers.Select(static offer => offer.ToDomain()).ToList(),

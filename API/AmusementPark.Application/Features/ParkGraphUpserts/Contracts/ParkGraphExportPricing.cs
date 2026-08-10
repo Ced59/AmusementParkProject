@@ -22,6 +22,29 @@ public sealed class ParkGraphExportPricing
     public List<ParkGraphExportAnnualPassOffer> AnnualPasses { get; init; } = new();
 
     public List<ParkGraphExportParkingPriceOffer> ParkingOffers { get; init; } = new();
+
+    public List<ParkGraphExportPricingSnapshot> HistoricalSnapshots { get; init; } = new();
+}
+
+public sealed class ParkGraphExportPricingSnapshot
+{
+    public string? Id { get; init; }
+
+    public int Year { get; init; }
+
+    public string CurrencyCode { get; init; } = string.Empty;
+
+    public string? SourceUrl { get; init; }
+
+    public List<LocalizedText> Notes { get; init; } = new();
+
+    public DateTime? LastVerifiedAtUtc { get; init; }
+
+    public List<ParkGraphExportAdmissionPriceOffer> AdmissionOffers { get; init; } = new();
+
+    public List<ParkGraphExportAnnualPassOffer> AnnualPasses { get; init; } = new();
+
+    public List<ParkGraphExportParkingPriceOffer> ParkingOffers { get; init; } = new();
 }
 
 public sealed class ParkGraphExportAdmissionPriceOffer
