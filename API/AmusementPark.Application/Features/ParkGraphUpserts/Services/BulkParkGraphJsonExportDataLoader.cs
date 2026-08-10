@@ -112,9 +112,16 @@ public sealed class BulkParkGraphJsonExportDataLoader
             return pricingByParkId;
         }
 
-        foreach (string parkId in parkIds)
+        IReadOnlyCollection<ParkPricingEntity> pricing = await this.pricingRepository.GetByParkIdsAsync(
+            parkIds,
+            cancellationToken);
+
+        foreach (ParkPricingEntity parkPricing in pricing)
         {
-            pricingByParkId[parkId] = await this.pricingRepository.GetByParkIdAsync(parkId, cancellationToken);
+            if (!string.IsNullOrWhiteSpace(parkPricing.ParkId))
+            {
+                pricingByParkId[parkPricing.ParkId] = parkPricing;
+            }
         }
 
         return pricingByParkId;

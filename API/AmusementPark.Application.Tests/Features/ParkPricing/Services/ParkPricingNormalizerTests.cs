@@ -60,6 +60,7 @@ public sealed class ParkPricingNormalizerTests
     [InlineData("EU")]
     [InlineData("EURO")]
     [InlineData("12A")]
+    [InlineData("EUO")]
     public void Normalize_ShouldRejectInvalidCurrencyCode(string currencyCode)
     {
         ParkPricingEntity pricing = new ParkPricingEntity

@@ -1,3 +1,4 @@
+using System.Globalization;
 using AmusementPark.Application.Errors;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
@@ -10,6 +11,11 @@ public static class ParkPricingNormalizer
     private const int MaximumAdmissionOfferCount = 250;
     private const int MaximumAnnualPassCount = 100;
     private const int MaximumParkingOfferCount = 50;
+    private static readonly IReadOnlySet<string> Iso4217CurrencyCodes = CultureInfo
+        .GetCultures(CultureTypes.SpecificCultures)
+        .Select(static culture => new RegionInfo(culture.Name).ISOCurrencySymbol)
+        .Where(static currencyCode => currencyCode.Length == 3)
+        .ToHashSet(StringComparer.Ordinal);
     private static readonly IReadOnlyCollection<string> PublicLanguageCodes = new[]
     {
         "fr",
@@ -360,7 +366,7 @@ public static class ParkPricingNormalizer
 
     private static bool IsValidCurrencyCode(string value)
     {
-        return value.Length == 3 && value.All(static character => character is >= 'A' and <= 'Z');
+        return Iso4217CurrencyCodes.Contains(value);
     }
 
     private static string NormalizeCode(string? value)

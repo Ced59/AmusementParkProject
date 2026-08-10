@@ -2253,7 +2253,7 @@ export class SeoService {
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: this.hasQueryString(url) || offerCount <= 0 ? 'noindex,follow' : 'index,follow',
-      alternates: this.hreflangService.buildAlternates(seoUrl),
+      alternates: offerCount > 0 ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: normalizedParkName,
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkPricingBreadcrumbLabel(normalizedLanguage, normalizedParkName))]

@@ -729,6 +729,7 @@ describe('SeoService', () => {
     );
 
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
   });
 
   it('keeps history timeline SEO titles and descriptions unique between public languages', () => {
