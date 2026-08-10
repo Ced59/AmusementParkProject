@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Handlers;
@@ -20,6 +21,7 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Videos;
 using Moq;
 using Xunit;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Tests.Features.Seo.Handlers;
 
@@ -76,6 +78,12 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Mock<IVideoRepository> videoRepository = CreateVideoRepository(
             CreateVideo("video-park-1", VideoOwnerType.Park, "park-1", "Park tour", new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc)),
             CreateVideo("video-item-1", VideoOwnerType.ParkItem, "item-1", "Front row", new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc)));
+        Mock<IParkPricingRepository> pricingRepository = new Mock<IParkPricingRepository>(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { "park-1" })),
+                cancellationToken))
+            .ReturnsAsync(new[] { CreateCurrentPricing("park-1") });
         SetupPublicSitemapParks(parkRepository, new[] { parentPark });
         SetupPublicSitemapItems(parkItemRepository, new[] { publicItem });
         parkOperatorRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<ParkOperator>());
@@ -88,7 +96,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
             parkFounderRepository.Object,
             attractionManufacturerRepository.Object,
             imageRepository.Object,
-            videoRepository.Object);
+            videoRepository.Object,
+            pricingRepository.Object);
 
         ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>> result = await handler.HandleAsync(
             new GetPublicSitemapSeedQuery(new[] { "fr", "en" }),
@@ -104,6 +113,7 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/map" && url.LastModifiedUtc == new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/weather" && url.LastModifiedUtc == new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/pricing");
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos/video-park-1/park-tour" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos/video-item-1/front-row" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
@@ -123,6 +133,7 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         attractionManufacturerRepository.VerifyAll();
         imageRepository.VerifyAll();
         videoRepository.VerifyAll();
+        pricingRepository.VerifyAll();
     }
 
     [Fact]
@@ -154,6 +165,12 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Mock<IImageRepository> imageRepository = CreateImageRepository(
             CreateImage("image-item-1", ImageOwnerType.ParkItem, "item-1", ImageCategory.ParkItem));
         Mock<IVideoRepository> videoRepository = CreateVideoRepository();
+        Mock<IParkPricingRepository> pricingRepository = new Mock<IParkPricingRepository>(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                cancellationToken))
+            .ReturnsAsync(Array.Empty<ParkPricingEntity>());
         SetupPublicSitemapParks(parkRepository, new[] { parentPark });
         SetupPublicSitemapItems(parkItemRepository, new[] { publicItem });
         parkOperatorRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<ParkOperator>());
@@ -166,7 +183,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
             parkFounderRepository.Object,
             attractionManufacturerRepository.Object,
             imageRepository.Object,
-            videoRepository.Object);
+            videoRepository.Object,
+            pricingRepository.Object);
 
         ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>> result = await handler.HandleAsync(
             new GetPublicSitemapSeedQuery(new[] { "fr" }),
@@ -183,6 +201,24 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         attractionManufacturerRepository.VerifyAll();
         imageRepository.VerifyAll();
         videoRepository.VerifyAll();
+        pricingRepository.VerifyAll();
+    }
+
+    private static ParkPricingEntity CreateCurrentPricing(string parkId)
+    {
+        return new ParkPricingEntity
+        {
+            ParkId = parkId,
+            CurrencyCode = "EUR",
+            AdmissionOffers = new List<ParkAdmissionPriceOffer>
+            {
+                new ParkAdmissionPriceOffer
+                {
+                    Code = "adult",
+                    OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
+                },
+            },
+        };
     }
 
     private static void SetupPublicSitemapParks(Mock<IParkRepository> repository, IReadOnlyCollection<Park> parks)

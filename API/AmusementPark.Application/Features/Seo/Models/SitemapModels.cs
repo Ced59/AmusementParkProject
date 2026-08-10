@@ -8,6 +8,7 @@ public static class SitemapSectionKeys
     public const string Static = "static";
     public const string Parks = "parks";
     public const string ParkOpeningHours = "park-opening-hours";
+    public const string ParkPricing = "park-pricing";
     public const string History = "history";
     public const string HistoryArticles = "history-articles";
     public const string ParkImages = "park-images";
@@ -26,6 +27,7 @@ public static class SitemapSectionKeys
         Static,
         Parks,
         ParkOpeningHours,
+        ParkPricing,
         History,
         HistoryArticles,
         ParkImages,

@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Queries;
@@ -14,6 +15,7 @@ using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Videos;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.Seo.Handlers;
 
@@ -43,6 +45,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly IImageRepository imageRepository;
     private readonly IVideoRepository videoRepository;
+    private readonly IParkPricingRepository pricingRepository;
 
     public GetPublicSitemapSeedQueryHandler(
         IParkRepository parkRepository,
@@ -51,7 +54,8 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         IParkFounderRepository parkFounderRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         IImageRepository imageRepository,
-        IVideoRepository videoRepository)
+        IVideoRepository videoRepository,
+        IParkPricingRepository pricingRepository)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
@@ -60,6 +64,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.imageRepository = imageRepository;
         this.videoRepository = videoRepository;
+        this.pricingRepository = pricingRepository;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>> HandleAsync(GetPublicSitemapSeedQuery query, CancellationToken cancellationToken = default)
@@ -106,8 +111,13 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
                 this.videoRepository,
                 VideoOwnerType.ParkItem,
                 cancellationToken));
+        IReadOnlyDictionary<string, ParkPricingEntity> currentPricingByParkId = await ParkPricingSitemapSectionProvider.LoadCurrentPricingByParkIdsAsync(
+            this.pricingRepository,
+            visibleParkById.Keys.ToList(),
+            DateOnly.FromDateTime(DateTime.UtcNow),
+            cancellationToken);
 
-        this.AddParkUrls(urls, visibleParks, languages, parkIdsWithPublishedImages, parkIdsWithPublishedItemImages, parkIdsWithMapMarkers, videosByParkId);
+        this.AddParkUrls(urls, visibleParks, languages, parkIdsWithPublishedImages, parkIdsWithPublishedItemImages, parkIdsWithMapMarkers, videosByParkId, currentPricingByParkId);
         this.AddParkItemUrls(urls, visibleParkById, languages, publicItems, itemIdsWithPublishedImages, videosByItemId);
 
         await this.AddReferenceUrlsAsync(urls, languages, cancellationToken);
@@ -155,7 +165,8 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         HashSet<string> parkIdsWithPublishedImages,
         HashSet<string> parkIdsWithPublishedItemImages,
         HashSet<string> parkIdsWithMapMarkers,
-        IReadOnlyDictionary<string, List<Video>> videosByParkId)
+        IReadOnlyDictionary<string, List<Video>> videosByParkId,
+        IReadOnlyDictionary<string, ParkPricingEntity> currentPricingByParkId)
     {
         foreach (Park park in parks)
         {
@@ -174,6 +185,15 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
                 }
 
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/weather", park.UpdatedAtUtc));
+                if (park.Status.IsOpenToVisitors()
+                    && currentPricingByParkId.TryGetValue(park.Id, out ParkPricingEntity? pricing))
+                {
+                    DateTime? pricingLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(
+                        park.UpdatedAtUtc,
+                        pricing.UpdatedAtUtc);
+                    urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/pricing", pricingLastModifiedUtc));
+                }
+
                 if (parkIdsWithPublishedImages.Contains(park.Id) || parkIdsWithPublishedItemImages.Contains(park.Id))
                 {
                     urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc));

@@ -10,6 +10,7 @@ using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Videos;
 using AmusementPark.Core.Localization;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Features.Seo.Handlers;
 
@@ -98,6 +99,12 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
 
         return summaries.TryGetValue(parkId, out ParkOpeningHoursScheduleSummary? summary)
                && summary.HasScheduleData;
+    }
+
+    private async Task<bool> HasCurrentPricingAsync(string parkId, CancellationToken cancellationToken)
+    {
+        ParkPricingEntity? pricing = await this.pricingRepository.GetByParkIdAsync(parkId, cancellationToken);
+        return pricing is not null && pricing.HasPricedOffersValidOn(DateOnly.FromDateTime(DateTime.UtcNow));
     }
 
     private async Task<bool> HasParkImagesAsync(

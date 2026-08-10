@@ -15,6 +15,8 @@ public static class OutputCacheServiceCollectionExtensions
     {
         ArgumentNullException.ThrowIfNull(services);
 
+        services.AddSingleton<PricingDateBoundaryOutputCachePolicy>();
+
         services.AddOutputCache(options =>
         {
             options.AddPolicy(ApiOutputCachePolicyNames.PublicSeoDocuments, policy => policy
@@ -50,6 +52,15 @@ public static class OutputCacheServiceCollectionExtensions
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
                 .SetVaryByQuery("*")
                 .Tag(ApiOutputCachePolicyNames.PublicDataTag));
+
+            options.AddPolicy(ApiOutputCachePolicyNames.PublicPricingData, policy => policy
+                .With(IsAnonymousCacheCandidate)
+                .Cache()
+                .Expire(TimeSpan.FromMinutes(30))
+                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
+                .SetVaryByQuery("*")
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
+                .AddPolicy<PricingDateBoundaryOutputCachePolicy>());
 
             options.AddPolicy(ApiOutputCachePolicyNames.PublicWeatherDataShort, policy => policy
                 .With(IsAnonymousCacheCandidate)

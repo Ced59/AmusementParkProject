@@ -9,6 +9,7 @@ using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Handlers;
@@ -24,6 +25,7 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Videos;
 using Moq;
 using Xunit;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Tests.Features.Seo.Handlers;
 
@@ -179,6 +181,22 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         openingHoursRepository
             .Setup(repository => repository.GetSummariesByParkIdsAsync(It.IsAny<IReadOnlyCollection<string>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>(StringComparer.OrdinalIgnoreCase));
+        Mock<IParkPricingRepository> pricingRepository = new Mock<IParkPricingRepository>(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkPricingEntity
+            {
+                ParkId = "park-1",
+                CurrencyCode = "EUR",
+                AdmissionOffers = new List<ParkAdmissionPriceOffer>
+                {
+                    new ParkAdmissionPriceOffer
+                    {
+                        Code = "adult",
+                        OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 39m },
+                    },
+                },
+            });
 
         Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
         imageRepository
@@ -205,7 +223,8 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
             openingHoursRepository,
             imageRepository,
             videoRepository,
-            historyRepository);
+            historyRepository,
+            pricingRepository: pricingRepository);
 
         ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await handler.HandleAsync(
             new GetPublicHtmlSitemapNodesQuery("fr", "park:park-1", new[] { "fr", "en" }),
@@ -215,6 +234,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Assert.NotNull(result.Value);
         Assert.Contains(result.Value, static node => node.Id == "park-items:park-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/items");
         Assert.Contains(result.Value, static node => node.Id == "park-history:park-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/history");
+        Assert.Contains(result.Value, static node => node.Id == "park-pricing:park-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/pricing");
 
         ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> itemNodesResult = await handler.HandleAsync(
             new GetPublicHtmlSitemapNodesQuery("fr", "park-items:park-1", new[] { "fr", "en" }),
@@ -225,6 +245,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Assert.Contains(itemNodesResult.Value, static node => node.Id == "park-item:item-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/item/item-1/old-ride/history");
         itemRepository.VerifyAll();
         historyRepository.VerifyAll();
+        pricingRepository.VerifyAll();
     }
 
     [Theory]
@@ -278,6 +299,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
             .ReturnsAsync(new PagedResult<Video>(Array.Empty<Video>(), 1, 1, 0));
 
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IParkPricingRepository> pricingRepository = new Mock<IParkPricingRepository>(MockBehavior.Strict);
 
         GetPublicHtmlSitemapNodesQueryHandler handler = CreateHandler(
             parkRepository,
@@ -285,7 +307,8 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
             openingHoursRepository,
             imageRepository,
             videoRepository,
-            historyRepository);
+            historyRepository,
+            pricingRepository: pricingRepository);
 
         ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await handler.HandleAsync(
             new GetPublicHtmlSitemapNodesQuery("fr", "park:park-1", new[] { "fr", "en" }),
@@ -295,12 +318,14 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Assert.NotNull(result.Value);
         Assert.DoesNotContain(result.Value, static node => node.Id == "park-weather:park-1");
         Assert.DoesNotContain(result.Value, static node => node.Id == "park-opening-hours:park-1");
+        Assert.DoesNotContain(result.Value, static node => node.Id == "park-pricing:park-1");
         openingHoursRepository.VerifyNoOtherCalls();
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
         imageRepository.VerifyAll();
         videoRepository.VerifyAll();
         historyRepository.VerifyAll();
+        pricingRepository.VerifyNoOtherCalls();
     }
 
     private static GetPublicHtmlSitemapNodesQueryHandler CreateHandler(Mock<ISeoSitemapSnapshotRepository>? sitemapSnapshotRepository = null)
@@ -327,13 +352,15 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Mock<IParkFounderRepository>? parkFounderRepository = null,
         Mock<IAttractionManufacturerRepository>? attractionManufacturerRepository = null,
         Mock<ITechnicalPageRepository>? technicalPageRepository = null,
-        Mock<ISeoSitemapSnapshotRepository>? sitemapSnapshotRepository = null)
+        Mock<ISeoSitemapSnapshotRepository>? sitemapSnapshotRepository = null,
+        Mock<IParkPricingRepository>? pricingRepository = null)
     {
         return new GetPublicHtmlSitemapNodesQueryHandler(
             parkRepository.Object,
             parkItemRepository.Object,
             parkZoneRepository?.Object ?? Mock.Of<IParkZoneRepository>(),
             openingHoursRepository.Object,
+            pricingRepository?.Object ?? Mock.Of<IParkPricingRepository>(),
             imageRepository.Object,
             videoRepository.Object,
             historyEventRepository.Object,

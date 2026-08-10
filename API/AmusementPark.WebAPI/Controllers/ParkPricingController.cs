@@ -34,7 +34,7 @@ public sealed class ParkPricingController : ControllerBase
 
     [HttpGet("parks/{parkId}/pricing")]
     [AllowAnonymous]
-    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicPricingData)]
     [ProducesResponseType(typeof(ParkPricingDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPricingAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
     {

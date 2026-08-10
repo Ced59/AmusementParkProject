@@ -61,6 +61,12 @@ public sealed partial class GetPublicHtmlSitemapNodesQueryHandler
             nodes.Add(CreateLeaf($"park-opening-hours:{park.Id}", Label(language, "openingHours"), $"{parkPath}/opening-hours"));
         }
 
+        if (park.Status.IsOpenToVisitors()
+            && await this.HasCurrentPricingAsync(park.Id!, cancellationToken))
+        {
+            nodes.Add(CreateLeaf($"park-pricing:{park.Id}", Label(language, "pricing"), $"{parkPath}/pricing"));
+        }
+
         if (await this.HasParkImagesAsync(park.Id!, publicItems, cancellationToken))
         {
             nodes.Add(CreateLeaf($"park-images:{park.Id}", Label(language, "images"), $"{parkPath}/images"));

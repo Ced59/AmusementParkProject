@@ -6,5 +6,9 @@ public interface IParkPricingRepository
 {
     Task<ParkPricingEntity?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<ParkPricingEntity>> GetByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken);
+
     Task<ParkPricingEntity> UpsertAsync(ParkPricingEntity pricing, CancellationToken cancellationToken);
 }

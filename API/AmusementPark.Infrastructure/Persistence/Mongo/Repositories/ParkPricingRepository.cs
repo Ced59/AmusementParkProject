@@ -26,6 +26,32 @@ public sealed class ParkPricingRepository : IParkPricingRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<ParkPricingEntity>> GetByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(parkIds);
+
+        List<string> normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        if (normalizedParkIds.Count == 0)
+        {
+            return Array.Empty<ParkPricingEntity>();
+        }
+
+        FilterDefinition<ParkPricingDocument> filter = Builders<ParkPricingDocument>.Filter.In(
+            static document => document.ParkId,
+            normalizedParkIds);
+        List<ParkPricingDocument> documents = await this.collection
+            .Find(filter)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<ParkPricingEntity> UpsertAsync(ParkPricingEntity pricing, CancellationToken cancellationToken)
     {
         DateTime now = DateTime.UtcNow;
