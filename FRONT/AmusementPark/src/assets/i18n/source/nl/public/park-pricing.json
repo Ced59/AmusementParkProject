@@ -15,6 +15,15 @@
       "passes": { "title": "Jaarpassen", "subtitle": "Formules voor bezoeken doorheen het jaar" },
       "parking": { "title": "Parkeren", "subtitle": "Vermelde parkeertarieven" }
     },
+    "currency": { "original": "Door het park gepubliceerde valuta" },
+    "history": {
+      "title": "Prijsontwikkeling", "subtitle": "Vergelijk de beschikbare gegevens van de afgelopen vijf jaar.",
+      "method": "De grafiek gebruikt de vaste prijs of, bij prijsvorken en dynamische prijzen, de aangekondigde minimumprijs. Elk bedrag blijft in de door het park gepubliceerde valuta en wordt niet omgerekend.",
+      "kinds": { "admission": "Toegangsticket", "annualPass": "Jaarpas", "parking": "Parkeren" },
+      "increase": "Stijging van {{ amount }} ({{ percentage }}) over {{ years }} metingen", "increaseAmount": "Stijging van {{ amount }} tussen de metingen", "decrease": "Daling van {{ amount }} ({{ percentage }}) over {{ years }} metingen", "decreaseAmount": "Daling van {{ amount }} tussen de metingen", "stable": "Prijs stabiel over {{ years }} metingen",
+      "chartLabel": "Grafiek met de prijsontwikkeling van {{ product }}", "tableLabel": "Gedetailleerde prijsgeschiedenis van {{ product }}", "year": "Jaar",
+      "currencyChanged": "De valuta is gewijzigd ({{ currencies }}). De bedragen blijven zichtbaar, maar worden niet in één grafiek verbonden om een misleidende vergelijking te voorkomen."
+    },
     "channels": { "online": "Online", "gate": "Aan de kassa" },
     "modes": { "Fixed": "Vaste prijs", "Range": "Prijsbereik", "Dynamic": "Dynamische prijs" },
     "price": { "from": "vanaf", "upTo": "tot", "dynamic": "dynamische prijs" },

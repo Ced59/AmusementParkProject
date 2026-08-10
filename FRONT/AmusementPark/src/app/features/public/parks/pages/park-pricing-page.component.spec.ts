@@ -89,6 +89,13 @@ describe('ParkPricingPageComponent', () => {
           passes: { title: 'Pass', subtitle: 'Toute l’année' },
           parking: { title: 'Parking', subtitle: 'Stationnement' },
         },
+        currency: { original: 'Devise publiée par le parc' },
+        history: {
+          title: 'Évolution des tarifs', subtitle: 'Cinq ans', method: 'Montants source sans conversion.',
+          kinds: { admission: 'Billet', annualPass: 'Pass', parking: 'Parking' },
+          increase: 'Hausse {{amount}} {{percentage}}', decrease: 'Baisse {{amount}} {{percentage}}', stable: 'Stable',
+          chartLabel: 'Graphique {{product}}', tableLabel: 'Tableau {{product}}', year: 'Année', currencyChanged: 'Devise modifiée {{currencies}}',
+        },
         channels: { online: 'En ligne', gate: 'Au guichet' },
         modes: { Fixed: 'Prix fixe', Range: 'Plage', Dynamic: 'Dynamique' },
         price: { from: 'à partir de', upTo: 'jusqu’à', dynamic: 'tarif dynamique' },
@@ -110,6 +117,9 @@ describe('ParkPricingPageComponent', () => {
     expect(text).toContain('Adulte');
     expect(text).toContain('En ligne');
     expect(text).toContain('49');
+    expect(text).toContain('Devise publiée par le parc');
+    expect(text).toContain('Évolution des tarifs');
+    expect((fixture.nativeElement as HTMLElement).querySelector('svg.park-pricing-history-chart')).not.toBeNull();
     expect(text).toContain('Tarifs indicatifs');
     expect(text).toContain('Billets datés uniquement.');
     expect(seoService.applyParkPricingSeo).toHaveBeenCalledWith(
@@ -273,5 +283,18 @@ function createPricing(): ParkPricing {
     }],
     annualPasses: [],
     parkingOffers: [],
+    historicalSnapshots: [{
+      year: 2025,
+      currencyCode: 'EUR',
+      notes: [],
+      admissionOffers: [{
+        code: 'adult', audienceCategory: 'adult',
+        labels: [{ languageCode: 'fr', value: 'Adulte' }],
+        onlinePrice: { mode: 'Fixed', amount: 45 }, gatePrice: null,
+        purchaseUrl: null, conditions: [], sortOrder: 1,
+      }],
+      annualPasses: [],
+      parkingOffers: [],
+    }],
   };
 }

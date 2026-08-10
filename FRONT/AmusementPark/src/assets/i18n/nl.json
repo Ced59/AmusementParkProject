@@ -2336,6 +2336,17 @@
       "annualPasses": "Geen jaarpassen.",
       "parkingOffers": "Geen parkeeropties."
     },
+    "history": {
+      "title": "Jaarlijkse geschiedenis",
+      "hint": "Bewaar voor elk jaar een volledige momentopname van de prijzen en hergebruik dezelfde productcodes voor de grafieken.",
+      "currencyHint": "Elk jaar behoudt zijn eigen valuta. Gebruik altijd de valuta die het park werkelijk publiceerde, ook als die afwijkt van de huidige valuta.",
+      "addSnapshot": "Historisch jaar toevoegen",
+      "removeSnapshot": "Dit jaar verwijderen",
+      "snapshot": "Historische meting",
+      "newSnapshot": "Nieuwe meting",
+      "year": "Jaar",
+      "empty": "Geen historische metingen."
+    },
     "messages": {
       "loading": "Prijzen laden…",
       "loadError": "Prijzen konden niet worden geladen.",
@@ -3640,6 +3651,28 @@
         "title": "Parkeren",
         "subtitle": "Vermelde parkeertarieven"
       }
+    },
+    "currency": {
+      "original": "Door het park gepubliceerde valuta"
+    },
+    "history": {
+      "title": "Prijsontwikkeling",
+      "subtitle": "Vergelijk de beschikbare gegevens van de afgelopen vijf jaar.",
+      "method": "De grafiek gebruikt de vaste prijs of, bij prijsvorken en dynamische prijzen, de aangekondigde minimumprijs. Elk bedrag blijft in de door het park gepubliceerde valuta en wordt niet omgerekend.",
+      "kinds": {
+        "admission": "Toegangsticket",
+        "annualPass": "Jaarpas",
+        "parking": "Parkeren"
+      },
+      "increase": "Stijging van {{ amount }} ({{ percentage }}) over {{ years }} metingen",
+      "increaseAmount": "Stijging van {{ amount }} tussen de metingen",
+      "decrease": "Daling van {{ amount }} ({{ percentage }}) over {{ years }} metingen",
+      "decreaseAmount": "Daling van {{ amount }} tussen de metingen",
+      "stable": "Prijs stabiel over {{ years }} metingen",
+      "chartLabel": "Grafiek met de prijsontwikkeling van {{ product }}",
+      "tableLabel": "Gedetailleerde prijsgeschiedenis van {{ product }}",
+      "year": "Jaar",
+      "currencyChanged": "De valuta is gewijzigd ({{ currencies }}). De bedragen blijven zichtbaar, maar worden niet in één grafiek verbonden om een misleidende vergelijking te voorkomen."
     },
     "channels": {
       "online": "Online",

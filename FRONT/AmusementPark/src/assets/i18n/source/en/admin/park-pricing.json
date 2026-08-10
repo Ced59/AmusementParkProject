@@ -11,6 +11,7 @@
     "placeholders": { "localizedValue": "Value in {{ language }}", "conditions": "Conditions in {{ language }}" },
     "hints": { "dynamicBounds": "Bounds are optional for a dynamic price.", "admissionOffers": "Set the category, translations and sales channels for each ticket.", "annualPasses": "Set annual plans and their conditions.", "parkingOffers": "List useful parking offers separately." },
     "empty": { "admissionOffers": "No admission tickets.", "annualPasses": "No annual passes.", "parkingOffers": "No parking offers." },
+    "history": { "title": "Yearly history", "hint": "Keep a complete price snapshot for each year and reuse the same product codes to feed the charts.", "currencyHint": "Each year keeps its own currency. Always use the currency actually published by the park, including when it differs from the current currency.", "addSnapshot": "Add a historical year", "removeSnapshot": "Remove this year", "snapshot": "Historical record", "newSnapshot": "New record", "year": "Year", "empty": "No historical record." },
     "messages": { "loading": "Loading pricing…", "loadError": "Unable to load pricing.", "saveError": "Unable to save pricing.", "savedSummary": "Pricing saved", "savedDetail": "The park price list has been updated." }
   }
 }

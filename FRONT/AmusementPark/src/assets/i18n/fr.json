@@ -2336,6 +2336,17 @@
       "annualPasses": "Aucun pass annuel.",
       "parkingOffers": "Aucune offre de parking."
     },
+    "history": {
+      "title": "Historique annuel",
+      "hint": "Conserve une photographie complète des tarifs pour chaque année et réutilise les mêmes codes produit pour alimenter les graphiques.",
+      "currencyHint": "Chaque année garde sa propre devise. Utilise toujours la devise réellement publiée par le parc, y compris lorsqu’elle diffère de la devise actuelle.",
+      "addSnapshot": "Ajouter une année historique",
+      "removeSnapshot": "Supprimer cette année",
+      "snapshot": "Relevé historique",
+      "newSnapshot": "Nouveau relevé",
+      "year": "Année",
+      "empty": "Aucun relevé historique."
+    },
     "messages": {
       "loading": "Chargement des tarifs…",
       "loadError": "Impossible de charger les tarifs.",
@@ -3640,6 +3651,28 @@
         "title": "Parking",
         "subtitle": "Tarifs de stationnement renseignés"
       }
+    },
+    "currency": {
+      "original": "Devise publiée par le parc"
+    },
+    "history": {
+      "title": "Évolution des tarifs",
+      "subtitle": "Compare les relevés disponibles sur les cinq dernières années.",
+      "method": "Le graphique utilise le prix fixe ou, pour une plage et un tarif dynamique, le minimum annoncé. Chaque montant reste dans la devise publiée par le parc et aucune conversion n’est appliquée.",
+      "kinds": {
+        "admission": "Billet d’entrée",
+        "annualPass": "Pass annuel",
+        "parking": "Parking"
+      },
+      "increase": "Hausse de {{ amount }} ({{ percentage }}) sur {{ years }} relevés",
+      "increaseAmount": "Hausse de {{ amount }} entre les relevés",
+      "decrease": "Baisse de {{ amount }} ({{ percentage }}) sur {{ years }} relevés",
+      "decreaseAmount": "Baisse de {{ amount }} entre les relevés",
+      "stable": "Tarif stable sur {{ years }} relevés",
+      "chartLabel": "Graphique d’évolution pour {{ product }}",
+      "tableLabel": "Historique détaillé de {{ product }}",
+      "year": "Année",
+      "currencyChanged": "La devise a changé ({{ currencies }}). Les montants restent consultables, mais ne sont pas reliés dans un même graphique afin d’éviter une comparaison trompeuse."
     },
     "channels": {
       "online": "En ligne",

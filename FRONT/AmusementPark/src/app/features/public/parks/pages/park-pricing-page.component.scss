@@ -71,6 +71,24 @@
   margin-top: 1.35rem;
 }
 
+.park-pricing-hero__currency {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 28%, var(--app-border));
+  border-radius: 999px;
+  color: var(--app-text-muted);
+  background: color-mix(in srgb, var(--app-primary) 8%, var(--app-surface));
+  font-size: 0.86rem;
+}
+
+.park-pricing-hero__currency strong {
+  color: var(--app-heading);
+  letter-spacing: 0.06em;
+}
+
 .park-pricing-disclaimer {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -300,6 +318,168 @@
   margin: 0;
 }
 
+.park-pricing-history__method {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: var(--radius-md);
+  color: var(--app-text-muted);
+  background: var(--app-surface-muted);
+  line-height: 1.5;
+}
+
+.park-pricing-history__method i {
+  margin-top: 0.2rem;
+  color: var(--app-primary);
+}
+
+.park-pricing-history__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.park-pricing-history-card {
+  min-width: 0;
+  padding: 1.1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: var(--app-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.park-pricing-history-card > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.park-pricing-history-card > header span {
+  color: var(--app-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.park-pricing-history-card > header h3 {
+  margin: 0.2rem 0 0;
+  color: var(--app-heading);
+}
+
+.park-pricing-history-card > header > strong {
+  flex: 0 0 auto;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  color: var(--app-heading);
+  background: var(--app-surface-muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.park-pricing-history-card__evolution {
+  margin: 0.9rem 0 0;
+  color: var(--app-heading);
+  font-weight: 750;
+}
+
+.park-pricing-history-card__evolution small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--app-text-muted);
+  font-weight: 500;
+}
+
+.park-pricing-history-chart-scroll {
+  overflow-x: auto;
+  margin-top: 0.8rem;
+}
+
+.park-pricing-history-chart {
+  display: block;
+  width: 100%;
+  min-width: 34rem;
+  height: auto;
+}
+
+.park-pricing-history-chart__grid line {
+  stroke: var(--app-border);
+  stroke-dasharray: 4 7;
+  stroke-width: 1;
+}
+
+.park-pricing-history-chart__line {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.park-pricing-history-chart__line--online,
+.park-pricing-history-chart__point--online {
+  stroke: var(--app-primary);
+}
+
+.park-pricing-history-chart__line--gate,
+.park-pricing-history-chart__point--gate {
+  stroke: var(--app-warning);
+}
+
+.park-pricing-history-chart__point {
+  fill: var(--app-surface);
+  stroke-width: 3;
+}
+
+.park-pricing-history-chart__year {
+  fill: var(--app-text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.park-pricing-history-card__currency-change {
+  display: flex;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--app-warning) 38%, var(--app-border));
+  border-radius: var(--radius-md);
+  color: var(--app-text-muted);
+  background: color-mix(in srgb, var(--app-warning) 8%, var(--app-surface));
+  line-height: 1.5;
+}
+
+.park-pricing-history-table {
+  margin-top: 0.8rem;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+}
+
+.park-pricing-history-table__row {
+  display: grid;
+  grid-template-columns: minmax(4rem, 0.7fr) repeat(2, minmax(7rem, 1fr)) minmax(4rem, 0.7fr);
+}
+
+.park-pricing-history-table__row + .park-pricing-history-table__row {
+  border-top: 1px solid var(--app-border);
+}
+
+.park-pricing-history-table__row > * {
+  min-width: 0;
+  padding: 0.65rem;
+}
+
+.park-pricing-history-table__row--header {
+  color: var(--app-text-muted);
+  background: var(--app-surface-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .park-pricing-notes h2 {
   color: var(--app-heading);
   font-size: 1rem;
@@ -337,5 +517,22 @@
 
   .park-price-card__prices {
     grid-template-columns: 1fr;
+  }
+
+  .park-pricing-history-card > header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .park-pricing-history-card > header > strong {
+    align-self: flex-start;
+  }
+
+  .park-pricing-history-table {
+    overflow-x: auto;
+  }
+
+  .park-pricing-history-table__row {
+    min-width: 32rem;
   }
 }

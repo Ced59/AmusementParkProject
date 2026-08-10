@@ -11,6 +11,7 @@
     "placeholders": { "localizedValue": "Valeur en {{ language }}", "conditions": "Conditions en {{ language }}" },
     "hints": { "dynamicBounds": "Les bornes sont facultatives pour un tarif dynamique.", "admissionOffers": "Renseigne la catégorie, les traductions et les canaux de vente de chaque billet.", "annualPasses": "Renseigne les formules annuelles et leurs conditions.", "parkingOffers": "Renseigne séparément les offres de stationnement utiles." },
     "empty": { "admissionOffers": "Aucun billet d’entrée.", "annualPasses": "Aucun pass annuel.", "parkingOffers": "Aucune offre de parking." },
+    "history": { "title": "Historique annuel", "hint": "Conserve une photographie complète des tarifs pour chaque année et réutilise les mêmes codes produit pour alimenter les graphiques.", "currencyHint": "Chaque année garde sa propre devise. Utilise toujours la devise réellement publiée par le parc, y compris lorsqu’elle diffère de la devise actuelle.", "addSnapshot": "Ajouter une année historique", "removeSnapshot": "Supprimer cette année", "snapshot": "Relevé historique", "newSnapshot": "Nouveau relevé", "year": "Année", "empty": "Aucun relevé historique." },
     "messages": { "loading": "Chargement des tarifs…", "loadError": "Impossible de charger les tarifs.", "saveError": "Impossible d’enregistrer les tarifs.", "savedSummary": "Tarifs enregistrés", "savedDetail": "La grille tarifaire du parc a été mise à jour." }
   }
 }

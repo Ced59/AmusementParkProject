@@ -11,6 +11,7 @@
     "placeholders": { "localizedValue": "Valor en {{ language }}", "conditions": "Condiciones en {{ language }}" },
     "hints": { "dynamicBounds": "Los límites son opcionales para un precio dinámico.", "admissionOffers": "Indica la categoría, las traducciones y los canales de venta de cada entrada.", "annualPasses": "Indica las fórmulas anuales y sus condiciones.", "parkingOffers": "Indica por separado las ofertas de aparcamiento útiles." },
     "empty": { "admissionOffers": "No hay entradas.", "annualPasses": "No hay pases anuales.", "parkingOffers": "No hay ofertas de aparcamiento." },
+    "history": { "title": "Historial anual", "hint": "Guarda una instantánea completa de los precios de cada año y reutiliza los mismos códigos de producto para alimentar los gráficos.", "currencyHint": "Cada año conserva su propia moneda. Usa siempre la moneda realmente publicada por el parque, incluso si difiere de la actual.", "addSnapshot": "Añadir un año histórico", "removeSnapshot": "Eliminar este año", "snapshot": "Registro histórico", "newSnapshot": "Nuevo registro", "year": "Año", "empty": "No hay registros históricos." },
     "messages": { "loading": "Cargando precios…", "loadError": "No se han podido cargar los precios.", "saveError": "No se han podido guardar los precios.", "savedSummary": "Precios guardados", "savedDetail": "La tarifa del parque se ha actualizado." }
   }
 }

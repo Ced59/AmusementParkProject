@@ -11,6 +11,7 @@
     "placeholders": { "localizedValue": "Wert auf {{ language }}", "conditions": "Bedingungen auf {{ language }}" },
     "hints": { "dynamicBounds": "Grenzen sind bei einem dynamischen Preis optional.", "admissionOffers": "Lege Kategorie, Übersetzungen und Verkaufskanäle jedes Tickets fest.", "annualPasses": "Lege Jahreskarten und ihre Bedingungen fest.", "parkingOffers": "Erfasse relevante Parkangebote getrennt." },
     "empty": { "admissionOffers": "Keine Eintrittskarten.", "annualPasses": "Keine Jahreskarten.", "parkingOffers": "Keine Parkangebote." },
+    "history": { "title": "Jährlicher Verlauf", "hint": "Bewahre für jedes Jahr einen vollständigen Preisstand auf und verwende dieselben Produktcodes für die Diagramme.", "currencyHint": "Jedes Jahr behält seine eigene Währung. Verwende immer die tatsächlich vom Park veröffentlichte Währung, auch wenn sie von der heutigen abweicht.", "addSnapshot": "Historisches Jahr hinzufügen", "removeSnapshot": "Dieses Jahr entfernen", "snapshot": "Historischer Stand", "newSnapshot": "Neuer Stand", "year": "Jahr", "empty": "Keine historischen Preisstände." },
     "messages": { "loading": "Preise werden geladen…", "loadError": "Preise konnten nicht geladen werden.", "saveError": "Preise konnten nicht gespeichert werden.", "savedSummary": "Preise gespeichert", "savedDetail": "Die Preisliste des Parks wurde aktualisiert." }
   }
 }

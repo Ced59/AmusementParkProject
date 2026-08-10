@@ -15,6 +15,15 @@
       "passes": { "title": "Pases anuales", "subtitle": "Opciones para volver durante todo el año" },
       "parking": { "title": "Aparcamiento", "subtitle": "Precios de aparcamiento publicados" }
     },
+    "currency": { "original": "Moneda publicada por el parque" },
+    "history": {
+      "title": "Evolución de los precios", "subtitle": "Compara los registros disponibles de los últimos cinco años.",
+      "method": "El gráfico utiliza el precio fijo o, para rangos y precios dinámicos, el mínimo anunciado. Cada importe se conserva en la moneda publicada por el parque y no se aplica ninguna conversión.",
+      "kinds": { "admission": "Entrada", "annualPass": "Pase anual", "parking": "Aparcamiento" },
+      "increase": "Subida de {{ amount }} ({{ percentage }}) en {{ years }} registros", "increaseAmount": "Subida de {{ amount }} entre los registros", "decrease": "Bajada de {{ amount }} ({{ percentage }}) en {{ years }} registros", "decreaseAmount": "Bajada de {{ amount }} entre los registros", "stable": "Precio estable en {{ years }} registros",
+      "chartLabel": "Gráfico de evolución de {{ product }}", "tableLabel": "Historial detallado de {{ product }}", "year": "Año",
+      "currencyChanged": "La moneda cambió ({{ currencies }}). Los importes siguen disponibles, pero no se unen en un mismo gráfico para evitar una comparación engañosa."
+    },
     "channels": { "online": "En línea", "gate": "En taquilla" },
     "modes": { "Fixed": "Precio fijo", "Range": "Intervalo de precios", "Dynamic": "Precio dinámico" },
     "price": { "from": "desde", "upTo": "hasta", "dynamic": "precio dinámico" },

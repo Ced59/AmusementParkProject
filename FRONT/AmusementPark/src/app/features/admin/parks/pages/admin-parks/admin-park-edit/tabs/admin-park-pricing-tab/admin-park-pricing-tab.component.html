@@ -131,5 +131,39 @@
         <p class="admin-pricing-editor__empty">{{ 'adminParkPricing.empty.parkingOffers' | translate }}</p>
       }
     </section>
+
+    <section class="admin-pricing-editor__collection admin-pricing-editor__history">
+      <header>
+        <div>
+          <h4>{{ 'adminParkPricing.history.title' | translate }}</h4>
+          <p>{{ 'adminParkPricing.history.hint' | translate }}</p>
+        </div>
+        <button
+          appUiButton
+          type="button"
+          class="p-button-sm"
+          icon="pi pi-history"
+          [disabled]="saving || (currentPricing.historicalSnapshots?.length ?? 0) >= 25"
+          [label]="'adminParkPricing.history.addSnapshot' | translate"
+          (click)="addHistoricalSnapshot()">
+        </button>
+      </header>
+
+      <p class="admin-pricing-editor__history-note">
+        <i class="pi pi-wallet" aria-hidden="true"></i>
+        {{ 'adminParkPricing.history.currencyHint' | translate }}
+      </p>
+
+      @for (snapshot of currentPricing.historicalSnapshots ?? []; track snapshot.id || $index; let index = $index) {
+        <app-admin-park-pricing-snapshot-editor
+          [snapshot]="snapshot"
+          [disabled]="saving"
+          (snapshotChange)="updateHistoricalSnapshot(index, $event)"
+          (remove)="removeHistoricalSnapshot(index)">
+        </app-admin-park-pricing-snapshot-editor>
+      } @empty {
+        <p class="admin-pricing-editor__empty">{{ 'adminParkPricing.history.empty' | translate }}</p>
+      }
+    </section>
   }
 </section>

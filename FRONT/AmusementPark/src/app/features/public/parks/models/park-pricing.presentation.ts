@@ -1,10 +1,36 @@
-import { ParkPriceValue, ParkPricingMode } from '@app/models/parks/park-pricing';
+import {
+  ParkAdmissionPriceOffer,
+  ParkAnnualPassOffer,
+  ParkParkingPriceOffer,
+  ParkPriceValue,
+  ParkPricing,
+  ParkPricingMode,
+  ParkPricingSnapshot
+} from '@app/models/parks/park-pricing';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 
 export interface ParkPriceFormattingLabels {
   from: string;
   upTo: string;
   dynamic: string;
+}
+
+export type ParkPricingHistoryOfferKind = 'admission' | 'annualPass' | 'parking';
+export type ParkPricingHistoryChannel = 'onlinePrice' | 'gatePrice';
+
+export interface ParkPricingHistoryPoint {
+  year: number;
+  currencyCode: string;
+  onlinePrice?: ParkPriceValue | null;
+  gatePrice?: ParkPriceValue | null;
+}
+
+export interface ParkPricingHistorySeries {
+  key: string;
+  code: string;
+  kind: ParkPricingHistoryOfferKind;
+  label: string;
+  points: ParkPricingHistoryPoint[];
 }
 
 export function resolvePricingLocalizedText(
@@ -80,4 +106,144 @@ export function formatParkPrice(
   }
 
   return null;
+}
+
+export function buildParkPricingHistorySeries(
+  pricing: ParkPricing,
+  language: string,
+  currentYear: number,
+  maximumYears: number = 5
+): ParkPricingHistorySeries[] {
+  const snapshots: Array<ParkPricingSnapshot & { isCurrent?: boolean }> = [
+    ...(pricing.historicalSnapshots ?? []),
+    {
+      year: currentYear,
+      currencyCode: pricing.currencyCode,
+      sourceUrl: pricing.sourceUrl,
+      notes: pricing.notes,
+      lastVerifiedAtUtc: pricing.lastVerifiedAtUtc,
+      admissionOffers: pricing.admissionOffers,
+      annualPasses: pricing.annualPasses,
+      parkingOffers: pricing.parkingOffers,
+      isCurrent: true
+    }
+  ].sort((left, right): number => right.year - left.year);
+  const pointsBySeries = new Map<string, ParkPricingHistorySeries>();
+
+  for (const snapshot of snapshots) {
+    appendAdmissionHistory(snapshot, language, pointsBySeries);
+    appendAnnualPassHistory(snapshot, language, pointsBySeries);
+    appendParkingHistory(snapshot, language, pointsBySeries);
+  }
+
+  return [...pointsBySeries.values()]
+    .map((series: ParkPricingHistorySeries): ParkPricingHistorySeries => ({
+      ...series,
+      points: series.points
+        .sort((left, right): number => left.year - right.year)
+        .slice(-Math.max(2, maximumYears))
+    }))
+    .filter((series: ParkPricingHistorySeries): boolean => series.points.length >= 2)
+    .sort((left, right): number => left.kind.localeCompare(right.kind) || left.label.localeCompare(right.label, language));
+}
+
+export function parkPriceChartAmount(value: ParkPriceValue | null | undefined): number | null {
+  if (!value) {
+    return null;
+  }
+
+  if (value.mode === 'Fixed') {
+    return finiteAmount(value.amount);
+  }
+
+  return finiteAmount(value.minimumAmount);
+}
+
+export function hasSingleHistoryCurrency(series: ParkPricingHistorySeries): boolean {
+  return new Set(series.points.map((point: ParkPricingHistoryPoint): string => point.currencyCode)).size === 1;
+}
+
+function appendAdmissionHistory(
+  snapshot: ParkPricingSnapshot,
+  language: string,
+  seriesByKey: Map<string, ParkPricingHistorySeries>
+): void {
+  for (const offer of snapshot.admissionOffers) {
+    appendHistoryPoint(
+      snapshot,
+      'admission',
+      offer.code,
+      resolvePricingLocalizedText(offer.labels, language, offer.code),
+      offer,
+      seriesByKey);
+  }
+}
+
+function appendAnnualPassHistory(
+  snapshot: ParkPricingSnapshot,
+  language: string,
+  seriesByKey: Map<string, ParkPricingHistorySeries>
+): void {
+  for (const offer of snapshot.annualPasses) {
+    appendHistoryPoint(
+      snapshot,
+      'annualPass',
+      offer.code,
+      resolvePricingLocalizedText(offer.names, language, offer.code),
+      offer,
+      seriesByKey);
+  }
+}
+
+function appendParkingHistory(
+  snapshot: ParkPricingSnapshot,
+  language: string,
+  seriesByKey: Map<string, ParkPricingHistorySeries>
+): void {
+  for (const offer of snapshot.parkingOffers) {
+    appendHistoryPoint(
+      snapshot,
+      'parking',
+      offer.code,
+      resolvePricingLocalizedText(offer.labels, language, offer.code),
+      offer,
+      seriesByKey);
+  }
+}
+
+function appendHistoryPoint(
+  snapshot: ParkPricingSnapshot,
+  kind: ParkPricingHistoryOfferKind,
+  code: string,
+  label: string,
+  offer: ParkAdmissionPriceOffer | ParkAnnualPassOffer | ParkParkingPriceOffer,
+  seriesByKey: Map<string, ParkPricingHistorySeries>
+): void {
+  const key: string = `${kind}:${code.trim().toLowerCase()}`;
+  const existing: ParkPricingHistorySeries | undefined = seriesByKey.get(key);
+  const point: ParkPricingHistoryPoint = {
+    year: snapshot.year,
+    currencyCode: snapshot.currencyCode,
+    onlinePrice: offer.onlinePrice,
+    gatePrice: offer.gatePrice
+  };
+
+  if (existing) {
+    if (!existing.points.some((item: ParkPricingHistoryPoint): boolean => item.year === point.year)) {
+      existing.points.push(point);
+    }
+    return;
+  }
+
+  seriesByKey.set(key, {
+    key,
+    code,
+    kind,
+    label,
+    points: [point]
+  });
+}
+
+function finiteAmount(value: number | null | undefined): number | null {
+  return value !== null && value !== undefined && Number.isFinite(value) ? value : null;
 }
