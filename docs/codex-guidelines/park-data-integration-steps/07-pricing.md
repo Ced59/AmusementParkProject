@@ -173,6 +173,8 @@ Sont bloquants :
 
 Une section `pricing` sans aucune offre n’efface pas une grille existante et ne constitue pas un lot utile. La commande courte de complétude n’autorise pas la suppression d’une grille existante ; toute suppression ou dépublication exige un périmètre explicite distinct.
 
+Lors d’une fusion de parcs, la grille du parc source est rattachée au parc cible lorsque celui-ci n’en possède pas. Si les deux parcs possèdent déjà une grille, celle de la cible est conservée par défaut et le Preview émet un avertissement. Utiliser explicitement `sections.pricing: "source"` pour remplacer la grille cible par celle de la source. Après une fusion appliquée, aucune grille ne doit rester rattachée à l’identifiant source supprimé.
+
 ## Contrôles avant de terminer
 
 - Le statut du parc est `Operating`.

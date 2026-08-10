@@ -11,4 +11,6 @@ public interface IParkPricingRepository
         CancellationToken cancellationToken);
 
     Task<ParkPricingEntity> UpsertAsync(ParkPricingEntity pricing, CancellationToken cancellationToken);
+
+    Task<bool> DeleteByParkIdAsync(string parkId, CancellationToken cancellationToken);
 }

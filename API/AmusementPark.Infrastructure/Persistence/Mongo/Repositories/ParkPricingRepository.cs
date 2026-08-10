@@ -77,4 +77,12 @@ public sealed class ParkPricingRepository : IParkPricingRepository
 
         return document.ToDomain();
     }
+
+    public async Task<bool> DeleteByParkIdAsync(string parkId, CancellationToken cancellationToken)
+    {
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            item => item.ParkId == parkId,
+            cancellationToken);
+        return result.DeletedCount > 0;
+    }
 }

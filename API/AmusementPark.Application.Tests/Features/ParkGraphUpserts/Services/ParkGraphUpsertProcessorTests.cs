@@ -15,6 +15,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
+using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
@@ -27,6 +28,7 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Services;
 
@@ -94,8 +96,14 @@ public sealed class ParkGraphUpsertProcessorTests
         manufacturerRepository.VerifyAll();
     }
 
-    [Fact]
-    public async Task ApplyAsync_WhenParkMergeUpdatesTargetPark_ShouldKeepMergedValuesForFinalParkUpdate()
+    [Theory]
+    [InlineData(false, false, true)]
+    [InlineData(true, false, false)]
+    [InlineData(true, true, true)]
+    public async Task ApplyAsync_WhenParkMergeUpdatesTargetPark_ShouldKeepMergedValuesAndResolvePricingConflict(
+        bool targetHasPricing,
+        bool preferSourcePricing,
+        bool expectedPricingMigration)
     {
         Park sourcePark = new Park
         {
@@ -114,6 +122,7 @@ public sealed class ParkGraphUpsertProcessorTests
             AdminReviewStatus = AdminReviewStatus.Validated,
         };
         Park? persistedTargetPark = null;
+        ParkPricingEntity? migratedPricing = null;
         int targetParkReadCount = 0;
         List<string?> updatedParkNames = new List<string?>();
 
@@ -157,6 +166,39 @@ public sealed class ParkGraphUpsertProcessorTests
             .Setup(value => value.GetByOwnerAsync(ImageOwnerType.Park, "park-source", null, It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<Image>());
 
+        ParkPricingEntity sourcePricing = new ParkPricingEntity
+        {
+            ParkId = "park-source",
+            CurrencyCode = "EUR",
+        };
+        ParkPricingEntity? targetPricing = targetHasPricing
+            ? new ParkPricingEntity
+            {
+                ParkId = "park-target",
+                CurrencyCode = "USD",
+            }
+            : null;
+        Mock<IParkPricingRepository> parkPricingRepository = new Mock<IParkPricingRepository>(MockBehavior.Strict);
+        parkPricingRepository
+            .Setup(value => value.GetByParkIdAsync("park-source", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(sourcePricing);
+        parkPricingRepository
+            .Setup(value => value.GetByParkIdAsync("park-target", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(targetPricing);
+        if (expectedPricingMigration)
+        {
+            parkPricingRepository
+                .Setup(value => value.UpsertAsync(
+                    It.Is<ParkPricingEntity>(pricing => pricing.ParkId == "park-target"),
+                    It.IsAny<CancellationToken>()))
+                .Callback<ParkPricingEntity, CancellationToken>((pricing, _) => migratedPricing = pricing)
+                .ReturnsAsync((ParkPricingEntity pricing, CancellationToken _) => pricing);
+        }
+
+        parkPricingRepository
+            .Setup(value => value.DeleteByParkIdAsync("park-source", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
         searchProjectionWriter
             .Setup(value => value.DeleteAsync(SearchProjectionResourceTypes.Parks, "park-source", It.IsAny<CancellationToken>()))
@@ -187,23 +229,42 @@ public sealed class ParkGraphUpsertProcessorTests
             searchProjectionWriter.Object,
             historyRepository.Object,
             publicSeoUpdateNotifier.Object,
-            MeasurementConversionService.Instance);
+            MeasurementConversionService.Instance,
+            parkPricingRepository.Object);
 
-        using JsonDocument document = JsonDocument.Parse("""
-        {
-          "mode": "merge",
-          "merges": [
-            {
-              "entityType": "park",
-              "sourceId": "park-source",
-              "targetId": "park-target",
-              "sections": {
-                "identity": "source"
+        string rawJson = preferSourcePricing
+            ? """
+              {
+                "mode": "merge",
+                "merges": [
+                  {
+                    "entityType": "park",
+                    "sourceId": "park-source",
+                    "targetId": "park-target",
+                    "sections": {
+                      "identity": "source",
+                      "pricing": "source"
+                    }
+                  }
+                ]
               }
-            }
-          ]
-        }
-        """);
+              """
+            : """
+              {
+                "mode": "merge",
+                "merges": [
+                  {
+                    "entityType": "park",
+                    "sourceId": "park-source",
+                    "targetId": "park-target",
+                    "sections": {
+                      "identity": "source"
+                    }
+                  }
+                ]
+              }
+              """;
+        using JsonDocument document = JsonDocument.Parse(rawJson);
 
         ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
         {
@@ -222,6 +283,18 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Equal(new[] { "Source Park", "Source Park" }, updatedParkNames);
         Assert.NotNull(persistedTargetPark);
         Assert.Equal("BE", persistedTargetPark.CountryCode);
+        if (expectedPricingMigration)
+        {
+            Assert.NotNull(migratedPricing);
+            Assert.Equal("park-target", migratedPricing.ParkId);
+            Assert.Equal("EUR", migratedPricing.CurrencyCode);
+            Assert.DoesNotContain(result.Value.Warnings, warning => warning.Contains("kept target pricing", StringComparison.Ordinal));
+        }
+        else
+        {
+            Assert.Null(migratedPricing);
+            Assert.Contains(result.Value.Warnings, warning => warning.Contains("kept target pricing", StringComparison.Ordinal));
+        }
         parkRepository.VerifyAll();
         parkZoneRepository.VerifyAll();
         parkItemRepository.VerifyAll();
@@ -229,6 +302,7 @@ public sealed class ParkGraphUpsertProcessorTests
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
+        parkPricingRepository.VerifyAll();
     }
 
     [Fact]
