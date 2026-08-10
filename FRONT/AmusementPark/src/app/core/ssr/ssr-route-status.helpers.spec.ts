@@ -47,6 +47,7 @@ describe('SSR route status helpers', () => {
       '/fr/park/123/parc-test',
       '/fr/park/123/parc-test/map',
       '/fr/park/123/parc-test/opening-hours',
+      '/fr/park/123/parc-test/pricing',
       '/fr/park/123/parc-test/images',
       '/fr/park/123/parc-test/history',
       '/fr/park/123/parc-test/history/event-1/ouverture-1987',
@@ -104,6 +105,11 @@ describe('SSR route status helpers', () => {
     expect(
       shouldApplyNoindexFollowHeader(
         '/fr/park/123/parc-test/opening-hours?from=2026-07-01',
+      ),
+    ).toBe(true);
+    expect(
+      shouldApplyNoindexFollowHeader(
+        '/fr/park/123/parc-test/pricing?campaign=spring',
       ),
     ).toBe(true);
     expect(shouldApplyNoindexFollowHeader('/fr/profile')).toBe(true);
