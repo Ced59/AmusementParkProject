@@ -129,7 +129,52 @@ public sealed class ParkGraphPricingTests
         importPricingRepository.VerifyAll();
     }
 
-    private static async Task<string> ExportPricingAsync(Park park, ParkPricingEntity pricing)
+    [Fact]
+    public async Task ExportWithoutPricing_Preview_ShouldTreatNullPricingAsAbsent()
+    {
+        Park park = CreateOperatingPark();
+        string exportedJson = await ExportPricingAsync(park, null);
+        using JsonDocument exportedDocument = JsonDocument.Parse(exportedJson);
+        Assert.Equal(JsonValueKind.Null, exportedDocument.RootElement.GetProperty("pricing").ValueKind);
+
+        Mock<IParkPricingRepository> importPricingRepository = new(MockBehavior.Strict);
+        ProcessorContext context = CreateProcessorContext(park, importPricingRepository, apply: false);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.PreviewAsync(
+            CreateRequest(exportedJson),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.CanApply);
+        Assert.Empty(result.Value.Errors);
+        Assert.DoesNotContain(result.Value.Changes, static change => change.EntityType == "ParkPricing");
+        context.VerifyAll();
+        importPricingRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenPricingIsNotAnObject_ShouldRejectTheDocument()
+    {
+        Park park = CreateOperatingPark();
+        Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
+        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: false);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.PreviewAsync(
+            CreateRequest("""{ "mode": "merge", "pricing": 42 }"""),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.False(result.Value.CanApply);
+        Assert.Contains(result.Value.Errors, static error => error.Contains("pricing doit", StringComparison.Ordinal));
+        context.VerifyAll();
+        pricingRepository.VerifyNoOtherCalls();
+    }
+
+    private static async Task<string> ExportPricingAsync(Park park, ParkPricingEntity? pricing)
     {
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         parkRepository

@@ -177,7 +177,8 @@ public sealed partial class ParkGraphUpsertProcessor
 
     private static bool HasPricingPatch(JsonElement root)
     {
-        return HasProperty(root, PricingPropertyName) || HasProperty(root, LegacyPricingPropertyName);
+        return (HasProperty(root, PricingPropertyName) && !HasNull(root, PricingPropertyName))
+            || (HasProperty(root, LegacyPricingPropertyName) && !HasNull(root, LegacyPricingPropertyName));
     }
 
     private static JsonElement? ResolvePricingPatch(JsonElement? root)

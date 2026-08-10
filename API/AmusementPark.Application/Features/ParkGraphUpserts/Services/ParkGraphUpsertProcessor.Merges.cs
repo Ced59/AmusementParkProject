@@ -222,7 +222,7 @@ public sealed partial class ParkGraphUpsertProcessor
         AddAttachmentCountChange(targetChange, "attachments.zonesMoved", sourceZones.Count);
         AddAttachmentCountChange(targetChange, "attachments.parkItemsMoved", sourceItems.Count);
         AddAttachmentCountChange(targetChange, "attachments.imagesMoved", sourceImages.Count);
-        if (shouldMoveSourcePricing)
+        if (shouldMoveSourcePricing && sourcePricing is not null)
         {
             AddChange(targetChange, "attachments.pricingMoved", targetPricing?.ParkId, sourcePricing.ParkId);
         }

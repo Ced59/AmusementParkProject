@@ -19,9 +19,11 @@ public sealed class MongoDatabaseInitializerParkPricingTests
             static index => string.Equals(index.Options.Name, "idx_park_pricing_park_id_unique", StringComparison.Ordinal));
 
         Assert.True(parkIdIndex.Options.Unique);
-        BsonDocument keys = parkIdIndex.Keys.Render(
-            BsonSerializer.SerializerRegistry.GetSerializer<ParkPricingDocument>(),
-            BsonSerializer.SerializerRegistry);
+        IBsonSerializer<ParkPricingDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<ParkPricingDocument>();
+        RenderArgs<ParkPricingDocument> arguments =
+            new RenderArgs<ParkPricingDocument>(serializer, BsonSerializer.SerializerRegistry);
+        BsonDocument keys = parkIdIndex.Keys.Render(arguments);
         Assert.Equal(1, keys["parkId"].AsInt32);
     }
 }
