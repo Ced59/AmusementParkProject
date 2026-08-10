@@ -339,8 +339,10 @@ export class AdminParkPricingTabComponent implements OnChanges {
   }
 
   private nextSortOrder(offers: readonly { sortOrder: number }[]): number {
-    return offers.reduce((maximum: number, offer: { sortOrder: number }): number =>
-      Math.max(maximum, offer.sortOrder), -1) + 1;
+    const highestExplicitOrder: number = offers.reduce(
+      (maximum: number, offer: { sortOrder: number }): number => Math.max(maximum, offer.sortOrder),
+      0);
+    return Math.max(highestExplicitOrder, offers.length) + 1;
   }
 
   private resetOfferClientKeys(pricing?: ParkPricing): void {

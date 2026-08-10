@@ -204,12 +204,14 @@ export class ParkPricingPageComponent implements OnInit {
 
   private loadPricingPage(parkId: string): Observable<ParkPricingPageData> {
     const previousData: ParkPricingPageData | undefined = this.stateStore.data();
+    let resolvedSummary: ParkDetailSummary | null = null;
     this.stateStore.setLoading(previousData);
     this.unavailablePark.set(null);
     this.unavailableParkImageId.set(null);
 
     return this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()).pipe(
       switchMap((summary: ParkDetailSummary) => {
+        resolvedSummary = summary;
         const parkImageId: string | null = resolveParkSummarySocialImageId(summary);
         const routeTarget = {
           language: this.currentLanguage(),
@@ -256,9 +258,36 @@ export class ParkPricingPageComponent implements OnInit {
           return EMPTY;
         }
 
-        this.stateStore.setError('parkPricing.page.errorMessage', previousData);
+        this.stateStore.setError('parkPricing.page.errorMessage');
+        this.applyPricingErrorSeo(resolvedSummary);
         return EMPTY;
       })
     );
+  }
+
+  private applyPricingErrorSeo(summary: ParkDetailSummary | null): void {
+    if (!summary) {
+      this.detailLink.set(null);
+      this.seoService.applyParkPricingSeo(
+        '',
+        this.currentLanguage(),
+        this.router.url,
+        0);
+      return;
+    }
+
+    const routeTarget = {
+      language: this.currentLanguage(),
+      parkId: summary.park.id,
+      parkName: summary.park.name
+    };
+    this.detailLink.set(buildPublicParkRouteCommands(routeTarget));
+    this.seoService.applyParkPricingSeo(
+      summary.park.name ?? '',
+      this.currentLanguage(),
+      this.router.url,
+      0,
+      resolveParkSummarySocialImageId(summary),
+      buildPublicRoutePath(buildPublicParkPricingRouteCommands(routeTarget)));
   }
 }

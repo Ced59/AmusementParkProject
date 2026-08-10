@@ -230,63 +230,29 @@ public static class ParkPricingNormalizer
             return null;
         }
 
-        ParkPriceValue normalized = new()
+        ParkPriceNormalizationResult result = ParkPriceValueRules.Normalize(price);
+        switch (result.Error)
         {
-            Mode = price.Mode,
-            Amount = price.Amount,
-            MinimumAmount = price.MinimumAmount,
-            MaximumAmount = price.MaximumAmount,
-        };
-
-        if (!Enum.IsDefined(normalized.Mode))
-        {
-            errors[$"{fieldPrefix}.mode"] = new[] { "invalid" };
-            return normalized;
-        }
-
-        if (normalized.Amount < 0 || normalized.MinimumAmount < 0 || normalized.MaximumAmount < 0)
-        {
-            errors[fieldPrefix] = new[] { "negative-price" };
-            return normalized;
-        }
-
-        switch (normalized.Mode)
-        {
-            case ParkPricingMode.Fixed:
-                if (!normalized.Amount.HasValue)
-                {
-                    errors[$"{fieldPrefix}.amount"] = new[] { "required" };
-                }
-
-                normalized.MinimumAmount = null;
-                normalized.MaximumAmount = null;
+            case null:
                 break;
-
-            case ParkPricingMode.Range:
-                normalized.Amount = null;
-                if (!normalized.MinimumAmount.HasValue || !normalized.MaximumAmount.HasValue)
-                {
-                    errors[fieldPrefix] = new[] { "range-bounds-required" };
-                }
-                else if (normalized.MinimumAmount.Value > normalized.MaximumAmount.Value)
-                {
-                    errors[fieldPrefix] = new[] { "invalid-range" };
-                }
-
+            case ParkPriceValidationError.InvalidMode:
+                errors[$"{fieldPrefix}.mode"] = new[] { "invalid" };
                 break;
-
-            case ParkPricingMode.Dynamic:
-                normalized.Amount = null;
-                if (normalized.MinimumAmount.HasValue && normalized.MaximumAmount.HasValue
-                    && normalized.MinimumAmount.Value > normalized.MaximumAmount.Value)
-                {
-                    errors[fieldPrefix] = new[] { "invalid-range" };
-                }
-
+            case ParkPriceValidationError.NegativePrice:
+                errors[fieldPrefix] = new[] { "negative-price" };
+                break;
+            case ParkPriceValidationError.FixedAmountRequired:
+                errors[$"{fieldPrefix}.amount"] = new[] { "required" };
+                break;
+            case ParkPriceValidationError.RangeBoundsRequired:
+                errors[fieldPrefix] = new[] { "range-bounds-required" };
+                break;
+            case ParkPriceValidationError.InvalidRange:
+                errors[fieldPrefix] = new[] { "invalid-range" };
                 break;
         }
 
-        return normalized;
+        return result.Value;
     }
 
     private static void ValidatePricePresence(

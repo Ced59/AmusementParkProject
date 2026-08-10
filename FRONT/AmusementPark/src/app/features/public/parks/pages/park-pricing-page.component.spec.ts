@@ -189,6 +189,47 @@ describe('ParkPricingPageComponent', () => {
     expect(seoService.applyParkPricingSeo).toHaveBeenCalledTimes(1);
   });
 
+  it('replaces previous park SEO with noindex pricing metadata after a transient navigation failure', () => {
+    parksApiService.getParkDetailSummary.mockImplementation(
+      (parkId: string): Observable<ParkDetailSummary> => parkId === 'park-1'
+        ? of(createSummary())
+        : throwError(() => new HttpErrorResponse({ status: 503 })),
+    );
+    const fixture: ComponentFixture<ParkPricingPageComponent> = createComponent();
+
+    routeParamMap.next(convertToParamMap({ id: 'park-2', lang: 'fr' }));
+    fixture.detectChanges();
+
+    expect(ssrHttpStatusService.setStatus).toHaveBeenCalledWith(503);
+    expect(seoService.applyParkPricingSeo).toHaveBeenLastCalledWith(
+      '', 'fr', expect.any(String), 0,
+    );
+  });
+
+  it('uses the requested park identity for noindex metadata when its pricing request fails', () => {
+    parksApiService.getParkDetailSummary.mockImplementation(
+      (parkId: string): Observable<ParkDetailSummary> => of(
+        parkId === 'park-1'
+          ? createSummary()
+          : createSummary('Operating', 'park-2', 'Walibi Belgium')),
+    );
+    parksApiService.getParkPricing.mockImplementation(
+      (parkId: string): Observable<ParkPricing> => parkId === 'park-1'
+        ? of(createPricing())
+        : throwError(() => new HttpErrorResponse({ status: 503 })),
+    );
+    const fixture: ComponentFixture<ParkPricingPageComponent> = createComponent();
+
+    routeParamMap.next(convertToParamMap({ id: 'park-2', lang: 'fr' }));
+    fixture.detectChanges();
+
+    expect(ssrHttpStatusService.setStatus).toHaveBeenCalledWith(503);
+    expect(seoService.applyParkPricingSeo).toHaveBeenLastCalledWith(
+      'Walibi Belgium', 'fr', expect.any(String), 0, null,
+      '/fr/park/park-2/walibi-belgium/pricing',
+    );
+  });
+
   function createComponent(): ComponentFixture<ParkPricingPageComponent> {
     const fixture: ComponentFixture<ParkPricingPageComponent> = TestBed.createComponent(ParkPricingPageComponent);
     fixture.detectChanges();

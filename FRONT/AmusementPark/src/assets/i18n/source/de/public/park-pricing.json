@@ -1,6 +1,6 @@
 {
   "parkPricing": {
-    "detailCta": { "title": "Preise und Tickets", "subtitle": "Vergleiche Tickets, Jahreskarten und Parkoptionen" },
+    "detailCta": { "title": "Preise und Tickets", "subtitle": "Sieh dir veröffentlichte Preise und Kaufoptionen an" },
     "page": {
       "kicker": "Plane deinen Besuch", "title": "Preise und Tickets für {{ name }}", "titleShort": "Preise und Tickets",
       "lead": "Vergleiche die aktuell eingetragenen Preise für {{ name }}.", "backToPark": "Zurück zu {{ name }}",

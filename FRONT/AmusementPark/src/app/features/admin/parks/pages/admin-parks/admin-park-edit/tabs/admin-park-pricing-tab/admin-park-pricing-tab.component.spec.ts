@@ -85,6 +85,17 @@ describe('AdminParkPricingTabComponent', () => {
     expect(fixture.nativeElement.querySelectorAll('app-admin-park-pricing-offer-editor')).toHaveLength(0);
   });
 
+  it('starts generated sort orders at one and keeps them distinct', () => {
+    clickButton('Add ticket');
+    clickButton('Add ticket');
+
+    const componentState = fixture.componentInstance as unknown as {
+      pricing: () => ParkPricing | null;
+    };
+
+    expect(componentState.pricing()?.admissionOffers.map(offer => offer.sortOrder)).toEqual([1, 2]);
+  });
+
   it('keeps an unsaved offer editor mounted while its code changes', () => {
     clickButton('Add ticket');
     fixture.detectChanges();

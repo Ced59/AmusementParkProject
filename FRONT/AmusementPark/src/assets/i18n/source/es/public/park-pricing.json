@@ -1,6 +1,6 @@
 {
   "parkPricing": {
-    "detailCta": { "title": "Precios y entradas", "subtitle": "Compara entradas, pases y opciones de aparcamiento" },
+    "detailCta": { "title": "Precios y entradas", "subtitle": "Consulta los precios publicados y las opciones de compra" },
     "page": {
       "kicker": "Prepara tu visita", "title": "Precios y entradas de {{ name }}", "titleShort": "Precios y entradas",
       "lead": "Compara los precios publicados actualmente para {{ name }}.", "backToPark": "Volver a {{ name }}",

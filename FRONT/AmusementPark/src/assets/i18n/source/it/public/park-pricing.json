@@ -1,6 +1,6 @@
 {
   "parkPricing": {
-    "detailCta": { "title": "Prezzi e biglietti", "subtitle": "Confronta biglietti, pass e opzioni di parcheggio" },
+    "detailCta": { "title": "Prezzi e biglietti", "subtitle": "Consulta i prezzi pubblicati e le opzioni di acquisto" },
     "page": {
       "kicker": "Prepara la tua visita", "title": "Prezzi e biglietti di {{ name }}", "titleShort": "Prezzi e biglietti",
       "lead": "Confronta i prezzi attualmente indicati per {{ name }}.", "backToPark": "Torna a {{ name }}",

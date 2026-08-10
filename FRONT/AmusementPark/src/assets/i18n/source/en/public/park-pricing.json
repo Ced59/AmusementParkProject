@@ -1,6 +1,6 @@
 {
   "parkPricing": {
-    "detailCta": { "title": "Prices and tickets", "subtitle": "Compare tickets, passes and parking options" },
+    "detailCta": { "title": "Prices and tickets", "subtitle": "Check published prices and purchase options" },
     "page": {
       "kicker": "Plan your visit", "title": "Prices and tickets for {{ name }}", "titleShort": "Prices and tickets",
       "lead": "Compare the prices currently listed for {{ name }}.", "backToPark": "Back to {{ name }}",

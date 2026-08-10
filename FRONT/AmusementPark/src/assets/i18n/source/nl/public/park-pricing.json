@@ -1,6 +1,6 @@
 {
   "parkPricing": {
-    "detailCta": { "title": "Prijzen en tickets", "subtitle": "Vergelijk tickets, passen en parkeeropties" },
+    "detailCta": { "title": "Prijzen en tickets", "subtitle": "Bekijk gepubliceerde prijzen en aankoopopties" },
     "page": {
       "kicker": "Plan je bezoek", "title": "Prijzen en tickets voor {{ name }}", "titleShort": "Prijzen en tickets",
       "lead": "Vergelijk de prijzen die momenteel voor {{ name }} zijn vermeld.", "backToPark": "Terug naar {{ name }}",
