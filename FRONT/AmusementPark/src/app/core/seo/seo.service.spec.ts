@@ -691,6 +691,8 @@ describe('SeoService', () => {
       'Tarifs et billets de Parc Démo - Amusement Parks',
     );
     expect(readMetaContent('meta[name="description"]')).toContain('Parc Démo');
+    expect(readMetaContent('meta[name="description"]')).not.toContain('pass annuels');
+    expect(readMetaContent('meta[name="description"]')).not.toContain('parkings');
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
     expect(readCanonicalHref()).toBe(
       'http://localhost:4200/fr/park/park-1/parc-demo/pricing',
@@ -730,6 +732,7 @@ describe('SeoService', () => {
 
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readBreadcrumbElements()).toHaveLength(0);
   });
 
   it('keeps history timeline SEO titles and descriptions unique between public languages', () => {

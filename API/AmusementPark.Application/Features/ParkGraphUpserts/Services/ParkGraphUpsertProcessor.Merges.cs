@@ -218,6 +218,7 @@ public sealed partial class ParkGraphUpsertProcessor
             ? null
             : await this.parkPricingRepository.GetByParkIdAsync(target.Id, cancellationToken);
         bool shouldMoveSourcePricing = sourcePricing is not null
+            && merged.Status.IsOpenToVisitors()
             && (targetPricing is null || ShouldTakeSourceSection(sections, "pricing"));
         AddAttachmentCountChange(targetChange, "attachments.zonesMoved", sourceZones.Count);
         AddAttachmentCountChange(targetChange, "attachments.parkItemsMoved", sourceItems.Count);
@@ -225,6 +226,10 @@ public sealed partial class ParkGraphUpsertProcessor
         if (shouldMoveSourcePricing && sourcePricing is not null)
         {
             AddChange(targetChange, "attachments.pricingMoved", targetPricing?.ParkId, sourcePricing.ParkId);
+        }
+        else if (sourcePricing is not null && !merged.Status.IsOpenToVisitors())
+        {
+            result.Warnings.Add($"Park merge removed source pricing '{source.Id}' because target park '{target.Id}' is not open to visitors.");
         }
         else if (sourcePricing is not null && targetPricing is not null)
         {

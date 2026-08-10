@@ -56,6 +56,8 @@ public static class ParkPricingNormalizer
             errors[nameof(pricing.CurrencyCode)] = new[] { "invalid-iso-4217-code" };
         }
 
+        ValidateOptionalAbsoluteHttpUrl(normalized.SourceUrl, nameof(pricing.SourceUrl), errors);
+        ValidateOptionalAbsoluteHttpUrl(normalized.PurchaseUrl, nameof(pricing.PurchaseUrl), errors);
         ValidateOptionalLocalizedTexts(normalized.Notes, nameof(pricing.Notes), errors);
 
         IReadOnlyCollection<ParkAdmissionPriceOffer> admissionOffers = pricing.AdmissionOffers ?? new List<ParkAdmissionPriceOffer>();
@@ -132,6 +134,7 @@ public static class ParkPricingNormalizer
 
             ValidatePricePresence(normalized.OnlinePrice, normalized.GatePrice, fieldPrefix, errors);
             ValidateDateRange(normalized.ValidFrom, normalized.ValidTo, fieldPrefix, errors);
+            ValidateOptionalAbsoluteHttpUrl(normalized.PurchaseUrl, $"{fieldPrefix}.purchaseUrl", errors);
             ValidateOptionalLocalizedTexts(normalized.Conditions, $"{fieldPrefix}.conditions", errors);
             normalizedOffers.Add(normalized);
             index += 1;
@@ -170,6 +173,7 @@ public static class ParkPricingNormalizer
 
             ValidatePricePresence(normalized.OnlinePrice, normalized.GatePrice, fieldPrefix, errors);
             ValidateDateRange(normalized.ValidFrom, normalized.ValidTo, fieldPrefix, errors);
+            ValidateOptionalAbsoluteHttpUrl(normalized.PurchaseUrl, $"{fieldPrefix}.purchaseUrl", errors);
             ValidateOptionalLocalizedTexts(normalized.Conditions, $"{fieldPrefix}.conditions", errors);
             normalizedOffers.Add(normalized);
             index += 1;
@@ -207,6 +211,7 @@ public static class ParkPricingNormalizer
             ValidateRequiredLocalizedTexts(normalized.Labels, $"{fieldPrefix}.labels", errors);
             ValidatePricePresence(normalized.OnlinePrice, normalized.GatePrice, fieldPrefix, errors);
             ValidateDateRange(normalized.ValidFrom, normalized.ValidTo, fieldPrefix, errors);
+            ValidateOptionalAbsoluteHttpUrl(normalized.PurchaseUrl, $"{fieldPrefix}.purchaseUrl", errors);
             ValidateOptionalLocalizedTexts(normalized.Conditions, $"{fieldPrefix}.conditions", errors);
             normalizedOffers.Add(normalized);
             index += 1;
@@ -367,6 +372,24 @@ public static class ParkPricingNormalizer
     private static bool IsValidCurrencyCode(string value)
     {
         return Iso4217CurrencyCodes.Contains(value);
+    }
+
+    private static void ValidateOptionalAbsoluteHttpUrl(
+        string? value,
+        string fieldPath,
+        Dictionary<string, IReadOnlyCollection<string>> errors)
+    {
+        if (value is null)
+        {
+            return;
+        }
+
+        if (!Uri.TryCreate(value, UriKind.Absolute, out Uri? uri)
+            || (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps)
+            || string.IsNullOrWhiteSpace(uri.Host))
+        {
+            errors[fieldPath] = new[] { "invalid-http-url" };
+        }
     }
 
     private static string NormalizeCode(string? value)

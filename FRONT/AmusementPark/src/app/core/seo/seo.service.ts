@@ -102,7 +102,7 @@ interface ParkPricingSeoCopy {
   parkFallback: string;
   breadcrumbLabel: string;
   title: (parkName: string) => string;
-  description: (parkName: string, offerCount: number) => string;
+  description: (parkName: string) => string;
 }
 
 interface HistorySeoCopy {
@@ -832,56 +832,56 @@ const PARK_PRICING_SEO_COPY: Record<string, ParkPricingSeoCopy> = {
     breadcrumbLabel: 'Prices and tickets',
     title: (parkName: string): string => `Prices and tickets for ${parkName}`,
     description: (parkName: string): string =>
-      `Compare ticket, annual pass and parking prices for ${parkName}, including online and gate rates.`
+      `Check the published prices for ${parkName}, with online and gate rates when available.`
   },
   fr: {
     parkFallback: 'ce parc',
     breadcrumbLabel: 'Tarifs et billets',
     title: (parkName: string): string => `Tarifs et billets de ${parkName}`,
     description: (parkName: string): string =>
-      `Compare les tarifs des billets, pass annuels et parkings de ${parkName}, en ligne et au guichet.`
+      `Consulte les tarifs publiés de ${parkName}, en ligne et au guichet lorsqu'ils sont disponibles.`
   },
   es: {
     parkFallback: 'este parque',
     breadcrumbLabel: 'Precios y entradas',
     title: (parkName: string): string => `Precios y entradas de ${parkName}`,
     description: (parkName: string): string =>
-      `Compara los precios de entradas, pases anuales y aparcamiento de ${parkName}, en línea y en taquilla.`
+      `Consulta los precios publicados de ${parkName}, en línea y en taquilla cuando estén disponibles.`
   },
   de: {
     parkFallback: 'diesen Park',
     breadcrumbLabel: 'Preise und Tickets',
     title: (parkName: string): string => `Preise und Tickets für ${parkName}`,
     description: (parkName: string): string =>
-      `Vergleiche Ticket-, Jahreskarten- und Parkpreise für ${parkName}, online und an der Kasse.`
+      `Sieh dir die veröffentlichten Preise für ${parkName} an, online und an der Kasse, sofern verfügbar.`
   },
   it: {
     parkFallback: 'questo parco',
     breadcrumbLabel: 'Prezzi e biglietti',
     title: (parkName: string): string => `Prezzi e biglietti di ${parkName}`,
     description: (parkName: string): string =>
-      `Confronta i prezzi di biglietti, pass annuali e parcheggio per ${parkName}, online e in cassa.`
+      `Consulta i prezzi pubblicati per ${parkName}, online e in cassa quando disponibili.`
   },
   nl: {
     parkFallback: 'dit park',
     breadcrumbLabel: 'Prijzen en tickets',
     title: (parkName: string): string => `Prijzen en tickets voor ${parkName}`,
     description: (parkName: string): string =>
-      `Vergelijk de prijzen voor tickets, jaarpassen en parkeren bij ${parkName}, online en aan de kassa.`
+      `Bekijk de gepubliceerde prijzen voor ${parkName}, online en aan de kassa wanneer beschikbaar.`
   },
   pl: {
     parkFallback: 'tego parku',
     breadcrumbLabel: 'Ceny i bilety',
     title: (parkName: string): string => `Ceny i bilety do ${parkName}`,
     description: (parkName: string): string =>
-      `Porównaj ceny biletów, karnetów rocznych i parkingu w ${parkName}, online i w kasie.`
+      `Sprawdź opublikowane ceny dla ${parkName}, online i w kasie, jeśli są dostępne.`
   },
   pt: {
     parkFallback: 'este parque',
     breadcrumbLabel: 'Preços e bilhetes',
     title: (parkName: string): string => `Preços e bilhetes de ${parkName}`,
     description: (parkName: string): string =>
-      `Compara os preços de bilhetes, passes anuais e estacionamento para ${parkName}, online e na bilheteira.`
+      `Consulta os preços publicados para ${parkName}, online e na bilheteira quando disponíveis.`
   }
 };
 
@@ -2246,7 +2246,7 @@ export class SeoService {
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
     const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
     const title: string = `${copy.title(normalizedParkName)} - ${SITE_NAME}`;
-    const description: string = copy.description(normalizedParkName, offerCount);
+    const description: string = copy.description(normalizedParkName);
 
     this.apply({
       title,
@@ -2256,7 +2256,9 @@ export class SeoService {
       alternates: offerCount > 0 ? this.hreflangService.buildAlternates(seoUrl) : [],
       imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       imageAlt: normalizedParkName,
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkPricingBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
+      jsonLd: offerCount > 0
+        ? [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkPricingBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
+        : []
     });
   }
 

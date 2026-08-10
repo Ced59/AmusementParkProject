@@ -303,6 +303,63 @@ public sealed class ParkPricingNormalizerTests
         Assert.Contains(details, static detail => detail.Key == "ParkingOffers[0].labels" && detail.Value.Contains("missing-language:en"));
     }
 
+    [Theory]
+    [InlineData("SourceUrl", "https//prices.example.test")]
+    [InlineData("PurchaseUrl", "javascript:alert(1)")]
+    [InlineData("PurchaseUrl", "http:tickets.example.test")]
+    [InlineData("AdmissionOffers[0].purchaseUrl", "ftp://tickets.example.test/admission")]
+    [InlineData("AnnualPasses[0].purchaseUrl", "/passes/gold")]
+    [InlineData("ParkingOffers[0].purchaseUrl", "tickets.example.test/parking")]
+    public void Normalize_ShouldRejectMalformedOrNonHttpUrls(string expectedField, string invalidUrl)
+    {
+        ParkPricingEntity pricing = new ParkPricingEntity
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            SourceUrl = expectedField == "SourceUrl" ? invalidUrl : "https://park.example.test/prices",
+            PurchaseUrl = expectedField == "PurchaseUrl" ? invalidUrl : "https://park.example.test/tickets",
+            AdmissionOffers = new List<ParkAdmissionPriceOffer>
+            {
+                CreateAdmission("adult", "adult", 39m, null, null),
+            },
+            AnnualPasses = new List<ParkAnnualPassOffer>
+            {
+                new ParkAnnualPassOffer
+                {
+                    Code = "gold",
+                    Names = CreateLocalizedTexts("Gold"),
+                    OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 199m },
+                },
+            },
+            ParkingOffers = new List<ParkParkingPriceOffer>
+            {
+                new ParkParkingPriceOffer
+                {
+                    Code = "car",
+                    Labels = CreateLocalizedTexts("Car"),
+                    GatePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = 15m },
+                },
+            },
+        };
+        pricing.AdmissionOffers[0].PurchaseUrl = expectedField == "AdmissionOffers[0].purchaseUrl"
+            ? invalidUrl
+            : "https://park.example.test/admission";
+        pricing.AnnualPasses[0].PurchaseUrl = expectedField == "AnnualPasses[0].purchaseUrl"
+            ? invalidUrl
+            : "https://park.example.test/passes";
+        pricing.ParkingOffers[0].PurchaseUrl = expectedField == "ParkingOffers[0].purchaseUrl"
+            ? invalidUrl
+            : "https://park.example.test/parking";
+
+        ApplicationResult<ParkPricingEntity> result = ParkPricingNormalizer.Normalize(pricing);
+        IReadOnlyCollection<KeyValuePair<string, IReadOnlyCollection<string>>> details = result.Errors
+            .SelectMany(static error => error.Details ?? new Dictionary<string, IReadOnlyCollection<string>>())
+            .ToList();
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(details, detail => detail.Key == expectedField && detail.Value.Contains("invalid-http-url"));
+    }
+
     private static ParkAdmissionPriceOffer CreateAdmission(string code, string audience, decimal amount, DateOnly? validFrom, DateOnly? validTo)
     {
         return new ParkAdmissionPriceOffer

@@ -97,12 +97,14 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Theory]
-    [InlineData(false, false, true)]
-    [InlineData(true, false, false)]
-    [InlineData(true, true, true)]
+    [InlineData(false, false, ParkStatus.Operating, true)]
+    [InlineData(true, false, ParkStatus.Operating, false)]
+    [InlineData(true, true, ParkStatus.Operating, true)]
+    [InlineData(false, true, ParkStatus.Planned, false)]
     public async Task ApplyAsync_WhenParkMergeUpdatesTargetPark_ShouldKeepMergedValuesAndResolvePricingConflict(
         bool targetHasPricing,
         bool preferSourcePricing,
+        ParkStatus mergedStatus,
         bool expectedPricingMigration)
     {
         Park sourcePark = new Park
@@ -110,6 +112,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Id = "park-source",
             Name = "Source Park",
             CountryCode = "BE",
+            Status = mergedStatus,
             IsVisible = true,
             AdminReviewStatus = AdminReviewStatus.Validated,
         };
@@ -289,6 +292,11 @@ public sealed class ParkGraphUpsertProcessorTests
             Assert.Equal("park-target", migratedPricing.ParkId);
             Assert.Equal("EUR", migratedPricing.CurrencyCode);
             Assert.DoesNotContain(result.Value.Warnings, warning => warning.Contains("kept target pricing", StringComparison.Ordinal));
+        }
+        else if (!mergedStatus.IsOpenToVisitors())
+        {
+            Assert.Null(migratedPricing);
+            Assert.Contains(result.Value.Warnings, warning => warning.Contains("is not open to visitors", StringComparison.Ordinal));
         }
         else
         {
