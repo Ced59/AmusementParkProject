@@ -80,7 +80,8 @@
           <app-ui-tab [value]="4">{{ 'admin.parks.tabs.photos' | translate }}</app-ui-tab>
           @if (isEditMode()) {
             <app-ui-tab [value]="5">{{ 'admin.parks.tabs.openingHours' | translate }}</app-ui-tab>
-            <app-ui-tab [value]="6">{{ 'admin.parks.tabs.videos' | translate }}</app-ui-tab>
+            <app-ui-tab [value]="6">{{ 'adminParkPricing.tab' | translate }}</app-ui-tab>
+            <app-ui-tab [value]="7">{{ 'admin.parks.tabs.videos' | translate }}</app-ui-tab>
           }
         </app-ui-tab-list>
 
@@ -258,6 +259,12 @@
 
             <app-ui-tab-panel [value]="6">
               @if (activeTabIndex() === 6) {
+                <app-admin-park-pricing-tab [parkId]="parkId()"></app-admin-park-pricing-tab>
+              }
+            </app-ui-tab-panel>
+
+            <app-ui-tab-panel [value]="7">
+              @if (activeTabIndex() === 7) {
                 <app-admin-video-create-panel
                   [ownerType]="videoOwnerType"
                   [ownerId]="parkId()"

@@ -1,0 +1,27 @@
+{
+  "parkPricing": {
+    "detailCta": { "title": "Preços e bilhetes", "subtitle": "Compara bilhetes, passes e opções de estacionamento" },
+    "page": {
+      "kicker": "Prepara a tua visita", "title": "Preços e bilhetes de {{ name }}", "titleShort": "Preços e bilhetes",
+      "lead": "Compara os preços atualmente indicados para {{ name }}.", "backToPark": "Voltar a {{ name }}",
+      "breadcrumbLabel": "Navegação estrutural", "loadingTitle": "A carregar preços", "loadingMessage": "Os preços indicados estão a carregar.",
+      "emptyTitle": "Sem preços disponíveis", "emptyMessage": "Ainda não existe uma tabela de preços atual para este parque.",
+      "errorTitle": "Preços indisponíveis", "errorMessage": "Não foi possível carregar os preços.",
+      "unavailableTitle": "Preços atuais indisponíveis para {{ name }}", "unavailableMessage": "A tabela de preços atual só é apresentada para parques abertos aos visitantes."
+    },
+    "disclaimer": { "title": "Preços indicativos", "message": "Os preços podem variar conforme a data, a disponibilidade, a procura, as promoções e o canal de venda. Confirma sempre o preço final no site oficial de {{ name }} antes de comprar." },
+    "sections": {
+      "admission": { "title": "Bilhetes de entrada", "subtitle": "Preços por categoria de visitante" },
+      "passes": { "title": "Passes anuais", "subtitle": "Opções para regressar ao longo do ano" },
+      "parking": { "title": "Estacionamento", "subtitle": "Preços de estacionamento indicados" }
+    },
+    "channels": { "online": "Online", "gate": "Na bilheteira" },
+    "modes": { "Fixed": "Preço fixo", "Range": "Intervalo de preços", "Dynamic": "Preço dinâmico" },
+    "price": { "from": "a partir de", "upTo": "até", "dynamic": "preço dinâmico" },
+    "audiences": { "adult": "Adulto", "child": "Criança", "senior": "Sénior", "youth": "Jovem", "infant": "Bebé", "toddler": "Criança pequena", "student": "Estudante", "disabled": "Pessoa com deficiência", "companion": "Acompanhante", "family": "Família", "group": "Grupo", "general": "Entrada geral" },
+    "validity": { "range": "Válido de {{ from }} a {{ to }}", "from": "Válido a partir de {{ date }}", "until": "Válido até {{ date }}" },
+    "fields": { "conditions": "Condições", "currency": "Moeda", "lastVerified": "Última verificação", "source": "Fonte oficial", "purchase": "Compra geral", "notes": "Notas" },
+    "actions": { "buy": "Comprar no site oficial", "buyOffer": "Ver esta oferta", "openSource": "Consultar a fonte" },
+    "meta": { "title": "Informações sobre preços" }
+  }
+}

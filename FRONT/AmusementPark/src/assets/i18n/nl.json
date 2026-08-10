@@ -2264,6 +2264,86 @@
       }
     }
   },
+  "adminParkPricing": {
+    "tab": "Prijzen",
+    "title": "Parkprijzen",
+    "subtitle": "Beheer de gepubliceerde toegangstickets, jaarpassen en parkeerprijzen van dit park.",
+    "kinds": {
+      "admission": "Toegangsticket",
+      "annualPass": "Jaarpas",
+      "parking": "Parkeren"
+    },
+    "offer": {
+      "newOffer": "Nieuw aanbod"
+    },
+    "actions": {
+      "reload": "Herladen",
+      "save": "Prijzen opslaan",
+      "removeOffer": "Verwijderen",
+      "addAdmission": "Ticket toevoegen",
+      "addAnnualPass": "Jaarpas toevoegen",
+      "addParking": "Parkeren toevoegen",
+      "copyAllLanguages": "Op alle talen toepassen"
+    },
+    "sections": {
+      "general": "Algemene informatie",
+      "admissionOffers": "Toegangstickets",
+      "annualPasses": "Jaarpassen",
+      "parkingOffers": "Parkeren"
+    },
+    "fields": {
+      "currencyCode": "Valuta (ISO)",
+      "sourceUrl": "Officiële prijs-URL",
+      "purchaseUrl": "Algemene aankoop-URL",
+      "lastVerifiedAtUtc": "Laatst gecontroleerd (UTC)",
+      "notes": "Opmerkingen",
+      "code": "Unieke code",
+      "audienceCategory": "Bezoekerscategorie",
+      "sortOrder": "Volgorde",
+      "labels": "Vertaalde labels",
+      "names": "Vertaalde namen",
+      "priceMode": "Prijsmodel",
+      "amount": "Bedrag",
+      "minimumAmount": "Minimumbedrag",
+      "maximumAmount": "Maximumbedrag",
+      "validFrom": "Geldig vanaf",
+      "validTo": "Geldig tot",
+      "offerPurchaseUrl": "Aankoop-URL van het aanbod",
+      "conditions": "Vertaalde voorwaarden"
+    },
+    "channels": {
+      "online": "Onlineprijs",
+      "gate": "Kassaprijs"
+    },
+    "modes": {
+      "none": "Niet ingevuld",
+      "Fixed": "Vast",
+      "Range": "Bereik",
+      "Dynamic": "Dynamisch"
+    },
+    "placeholders": {
+      "localizedValue": "Waarde in het {{ language }}",
+      "conditions": "Voorwaarden in het {{ language }}"
+    },
+    "hints": {
+      "dynamicBounds": "Grenzen zijn optioneel voor een dynamische prijs.",
+      "admissionOffers": "Vul categorie, vertalingen en verkoopkanalen van elk ticket in.",
+      "annualPasses": "Vul jaarformules en hun voorwaarden in.",
+      "parkingOffers": "Vul relevante parkeeropties afzonderlijk in."
+    },
+    "empty": {
+      "admissionOffers": "Geen toegangstickets.",
+      "annualPasses": "Geen jaarpassen.",
+      "parkingOffers": "Geen parkeeropties."
+    },
+    "messages": {
+      "loading": "Prijzen laden…",
+      "loadError": "Prijzen konden niet worden geladen.",
+      "saveError": "Prijzen konden niet worden opgeslagen.",
+      "savedSummary": "Prijzen opgeslagen",
+      "savedDetail": "De prijslijst van het park is bijgewerkt."
+    }
+  },
   "auth": {
     "login": {
       "title": "Standaard authenticatie",
@@ -3520,6 +3600,95 @@
       "emptyMessage": "Er is nog geen openingsschema beschikbaar voor dit park.",
       "errorTitle": "Data en tijden niet beschikbaar",
       "errorMessage": "Het openingsschema kon niet worden geladen."
+    }
+  },
+  "parkPricing": {
+    "detailCta": {
+      "title": "Prijzen en tickets",
+      "subtitle": "Vergelijk tickets, passen en parkeeropties"
+    },
+    "page": {
+      "kicker": "Plan je bezoek",
+      "title": "Prijzen en tickets voor {{ name }}",
+      "titleShort": "Prijzen en tickets",
+      "lead": "Vergelijk de prijzen die momenteel voor {{ name }} zijn vermeld.",
+      "backToPark": "Terug naar {{ name }}",
+      "breadcrumbLabel": "Kruimelpad",
+      "loadingTitle": "Prijzen laden",
+      "loadingMessage": "De vermelde prijzen worden geladen.",
+      "emptyTitle": "Geen prijzen beschikbaar",
+      "emptyMessage": "Er is nog geen actuele prijslijst voor dit park beschikbaar.",
+      "errorTitle": "Prijzen niet beschikbaar",
+      "errorMessage": "De prijzen konden niet worden geladen.",
+      "unavailableTitle": "Actuele prijzen voor {{ name }} niet beschikbaar",
+      "unavailableMessage": "Een actuele prijslijst wordt alleen getoond voor parken die open zijn voor bezoekers."
+    },
+    "disclaimer": {
+      "title": "Indicatieve prijzen",
+      "message": "Prijzen kunnen variëren naargelang datum, beschikbaarheid, vraag, promoties en verkoopkanaal. Controleer vóór je aankoop altijd de eindprijs op de officiële website van {{ name }}."
+    },
+    "sections": {
+      "admission": {
+        "title": "Toegangstickets",
+        "subtitle": "Prijzen per bezoekerscategorie"
+      },
+      "passes": {
+        "title": "Jaarpassen",
+        "subtitle": "Formules voor bezoeken doorheen het jaar"
+      },
+      "parking": {
+        "title": "Parkeren",
+        "subtitle": "Vermelde parkeertarieven"
+      }
+    },
+    "channels": {
+      "online": "Online",
+      "gate": "Aan de kassa"
+    },
+    "modes": {
+      "Fixed": "Vaste prijs",
+      "Range": "Prijsbereik",
+      "Dynamic": "Dynamische prijs"
+    },
+    "price": {
+      "from": "vanaf",
+      "upTo": "tot",
+      "dynamic": "dynamische prijs"
+    },
+    "audiences": {
+      "adult": "Volwassene",
+      "child": "Kind",
+      "senior": "Senior",
+      "youth": "Jongere",
+      "infant": "Baby",
+      "toddler": "Peuter",
+      "student": "Student",
+      "disabled": "Bezoeker met een beperking",
+      "companion": "Begeleider",
+      "family": "Gezin",
+      "group": "Groep",
+      "general": "Algemene toegang"
+    },
+    "validity": {
+      "range": "Geldig van {{ from }} tot {{ to }}",
+      "from": "Geldig vanaf {{ date }}",
+      "until": "Geldig tot {{ date }}"
+    },
+    "fields": {
+      "conditions": "Voorwaarden",
+      "currency": "Valuta",
+      "lastVerified": "Laatst gecontroleerd",
+      "source": "Officiële bron",
+      "purchase": "Algemene aankooplink",
+      "notes": "Opmerkingen"
+    },
+    "actions": {
+      "buy": "Koop op de officiële website",
+      "buyOffer": "Bekijk dit aanbod",
+      "openSource": "Bekijk de bron"
+    },
+    "meta": {
+      "title": "Prijsinformatie"
     }
   },
   "parkVisitor": {

@@ -98,6 +98,13 @@ interface ParkOpeningHoursSeoCopy {
   description: (parkName: string, totalDays: number) => string;
 }
 
+interface ParkPricingSeoCopy {
+  parkFallback: string;
+  breadcrumbLabel: string;
+  title: (parkName: string) => string;
+  description: (parkName: string, offerCount: number) => string;
+}
+
 interface HistorySeoCopy {
   timelineTitle: (title: string) => string;
   articleTitle: (title: string) => string;
@@ -132,13 +139,15 @@ interface ParkDetailSeoCopy {
   description: (parkName: string, locationLabel: string) => string;
 }
 
-type ParkUnavailableFeature = 'weather' | 'openingHours';
+type ParkUnavailableFeature = 'weather' | 'openingHours' | 'pricing';
 
 interface ParkUnavailableFeatureSeoCopy {
   weatherTitle: (parkName: string) => string;
   weatherDescription: (parkName: string, statusLabel: string) => string;
   openingHoursTitle: (parkName: string) => string;
   openingHoursDescription: (parkName: string, statusLabel: string) => string;
+  pricingTitle: (parkName: string) => string;
+  pricingDescription: (parkName: string, statusLabel: string) => string;
 }
 
 type NonOperatingParkStatus = Exclude<ParkStatus, 'Operating'>;
@@ -817,6 +826,65 @@ const PARK_OPENING_HOURS_SEO_COPY: Record<string, ParkOpeningHoursSeoCopy> = {
   }
 };
 
+const PARK_PRICING_SEO_COPY: Record<string, ParkPricingSeoCopy> = {
+  en: {
+    parkFallback: 'this park',
+    breadcrumbLabel: 'Prices and tickets',
+    title: (parkName: string): string => `Prices and tickets for ${parkName}`,
+    description: (parkName: string): string =>
+      `Compare ticket, annual pass and parking prices for ${parkName}, including online and gate rates.`
+  },
+  fr: {
+    parkFallback: 'ce parc',
+    breadcrumbLabel: 'Tarifs et billets',
+    title: (parkName: string): string => `Tarifs et billets de ${parkName}`,
+    description: (parkName: string): string =>
+      `Compare les tarifs des billets, pass annuels et parkings de ${parkName}, en ligne et au guichet.`
+  },
+  es: {
+    parkFallback: 'este parque',
+    breadcrumbLabel: 'Precios y entradas',
+    title: (parkName: string): string => `Precios y entradas de ${parkName}`,
+    description: (parkName: string): string =>
+      `Compara los precios de entradas, pases anuales y aparcamiento de ${parkName}, en línea y en taquilla.`
+  },
+  de: {
+    parkFallback: 'diesen Park',
+    breadcrumbLabel: 'Preise und Tickets',
+    title: (parkName: string): string => `Preise und Tickets für ${parkName}`,
+    description: (parkName: string): string =>
+      `Vergleiche Ticket-, Jahreskarten- und Parkpreise für ${parkName}, online und an der Kasse.`
+  },
+  it: {
+    parkFallback: 'questo parco',
+    breadcrumbLabel: 'Prezzi e biglietti',
+    title: (parkName: string): string => `Prezzi e biglietti di ${parkName}`,
+    description: (parkName: string): string =>
+      `Confronta i prezzi di biglietti, pass annuali e parcheggio per ${parkName}, online e in cassa.`
+  },
+  nl: {
+    parkFallback: 'dit park',
+    breadcrumbLabel: 'Prijzen en tickets',
+    title: (parkName: string): string => `Prijzen en tickets voor ${parkName}`,
+    description: (parkName: string): string =>
+      `Vergelijk de prijzen voor tickets, jaarpassen en parkeren bij ${parkName}, online en aan de kassa.`
+  },
+  pl: {
+    parkFallback: 'tego parku',
+    breadcrumbLabel: 'Ceny i bilety',
+    title: (parkName: string): string => `Ceny i bilety do ${parkName}`,
+    description: (parkName: string): string =>
+      `Porównaj ceny biletów, karnetów rocznych i parkingu w ${parkName}, online i w kasie.`
+  },
+  pt: {
+    parkFallback: 'este parque',
+    breadcrumbLabel: 'Preços e bilhetes',
+    title: (parkName: string): string => `Preços e bilhetes de ${parkName}`,
+    description: (parkName: string): string =>
+      `Compara os preços de bilhetes, passes anuais e estacionamento para ${parkName}, online e na bilheteira.`
+  }
+};
+
 const PARK_ZONES_SEO_COPY: Record<string, ParkZonesSeoCopy> = {
   en: {
     parkFallback: 'this park',
@@ -1239,7 +1307,10 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
       `Visit-planning weather is not available because ${parkName} is currently listed as ${statusLabel}.`,
     openingHoursTitle: (parkName: string): string => `Opening hours unavailable for ${parkName}`,
     openingHoursDescription: (parkName: string, statusLabel: string): string =>
-      `Current opening hours are not available because ${parkName} is currently listed as ${statusLabel}.`
+      `Current opening hours are not available because ${parkName} is currently listed as ${statusLabel}.`,
+    pricingTitle: (parkName: string): string => `Current prices unavailable for ${parkName}`,
+    pricingDescription: (parkName: string, statusLabel: string): string =>
+      `Current ticket prices are not available because ${parkName} is currently listed as ${statusLabel}.`
   },
   fr: {
     weatherTitle: (parkName: string): string => `Météo indisponible pour ${parkName}`,
@@ -1247,7 +1318,10 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
       `La météo de visite n’est pas proposée car ${parkName} est actuellement répertorié comme ${statusLabel}.`,
     openingHoursTitle: (parkName: string): string => `Horaires indisponibles pour ${parkName}`,
     openingHoursDescription: (parkName: string, statusLabel: string): string =>
-      `Les horaires actuels ne sont pas proposés car ${parkName} est actuellement répertorié comme ${statusLabel}.`
+      `Les horaires actuels ne sont pas proposés car ${parkName} est actuellement répertorié comme ${statusLabel}.`,
+    pricingTitle: (parkName: string): string => `Tarifs actuels indisponibles pour ${parkName}`,
+    pricingDescription: (parkName: string, statusLabel: string): string =>
+      `Les tarifs actuels ne sont pas proposés car ${parkName} est actuellement répertorié comme ${statusLabel}.`
   },
   de: {
     weatherTitle: (parkName: string): string => `Wetter für ${parkName} nicht verfügbar`,
@@ -1255,7 +1329,10 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
       `Besuchswetter ist nicht verfügbar, da ${parkName} derzeit als ${statusLabel} geführt wird.`,
     openingHoursTitle: (parkName: string): string => `Öffnungszeiten für ${parkName} nicht verfügbar`,
     openingHoursDescription: (parkName: string, statusLabel: string): string =>
-      `Aktuelle Öffnungszeiten sind nicht verfügbar, da ${parkName} derzeit als ${statusLabel} geführt wird.`
+      `Aktuelle Öffnungszeiten sind nicht verfügbar, da ${parkName} derzeit als ${statusLabel} geführt wird.`,
+    pricingTitle: (parkName: string): string => `Aktuelle Preise für ${parkName} nicht verfügbar`,
+    pricingDescription: (parkName: string, statusLabel: string): string =>
+      `Aktuelle Ticketpreise sind nicht verfügbar, da ${parkName} derzeit als ${statusLabel} geführt wird.`
   },
   nl: {
     weatherTitle: (parkName: string): string => `Weer voor ${parkName} niet beschikbaar`,
@@ -1263,7 +1340,10 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
       `Bezoekweer is niet beschikbaar omdat ${parkName} momenteel vermeld staat als ${statusLabel}.`,
     openingHoursTitle: (parkName: string): string => `Openingstijden voor ${parkName} niet beschikbaar`,
     openingHoursDescription: (parkName: string, statusLabel: string): string =>
-      `Actuele openingstijden zijn niet beschikbaar omdat ${parkName} momenteel vermeld staat als ${statusLabel}.`
+      `Actuele openingstijden zijn niet beschikbaar omdat ${parkName} momenteel vermeld staat als ${statusLabel}.`,
+    pricingTitle: (parkName: string): string => `Actuele prijzen voor ${parkName} niet beschikbaar`,
+    pricingDescription: (parkName: string, statusLabel: string): string =>
+      `Actuele ticketprijzen zijn niet beschikbaar omdat ${parkName} momenteel vermeld staat als ${statusLabel}.`
   },
   it: {
     weatherTitle: (parkName: string): string => `Meteo non disponibile per ${parkName}`,
@@ -1271,7 +1351,10 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
       `Il meteo per la visita non è disponibile perché ${parkName} risulta attualmente ${statusLabel}.`,
     openingHoursTitle: (parkName: string): string => `Orari non disponibili per ${parkName}`,
     openingHoursDescription: (parkName: string, statusLabel: string): string =>
-      `Gli orari attuali non sono disponibili perché ${parkName} risulta attualmente ${statusLabel}.`
+      `Gli orari attuali non sono disponibili perché ${parkName} risulta attualmente ${statusLabel}.`,
+    pricingTitle: (parkName: string): string => `Prezzi attuali non disponibili per ${parkName}`,
+    pricingDescription: (parkName: string, statusLabel: string): string =>
+      `I prezzi attuali dei biglietti non sono disponibili perché ${parkName} risulta attualmente ${statusLabel}.`
   },
   es: {
     weatherTitle: (parkName: string): string => `Tiempo no disponible para ${parkName}`,
@@ -1279,7 +1362,10 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
       `El tiempo para planificar una visita no está disponible porque ${parkName} figura actualmente como ${statusLabel}.`,
     openingHoursTitle: (parkName: string): string => `Horarios no disponibles para ${parkName}`,
     openingHoursDescription: (parkName: string, statusLabel: string): string =>
-      `Los horarios actuales no están disponibles porque ${parkName} figura actualmente como ${statusLabel}.`
+      `Los horarios actuales no están disponibles porque ${parkName} figura actualmente como ${statusLabel}.`,
+    pricingTitle: (parkName: string): string => `Precios actuales no disponibles para ${parkName}`,
+    pricingDescription: (parkName: string, statusLabel: string): string =>
+      `Los precios actuales de las entradas no están disponibles porque ${parkName} figura actualmente como ${statusLabel}.`
   },
   pl: {
     weatherTitle: (parkName: string): string => `Pogoda dla ${parkName} jest niedostępna`,
@@ -1287,7 +1373,10 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
       `Pogoda do planowania wizyty nie jest dostępna, ponieważ ${parkName} ma obecnie status: ${statusLabel}.`,
     openingHoursTitle: (parkName: string): string => `Godziny otwarcia ${parkName} są niedostępne`,
     openingHoursDescription: (parkName: string, statusLabel: string): string =>
-      `Aktualne godziny otwarcia nie są dostępne, ponieważ ${parkName} ma obecnie status: ${statusLabel}.`
+      `Aktualne godziny otwarcia nie są dostępne, ponieważ ${parkName} ma obecnie status: ${statusLabel}.`,
+    pricingTitle: (parkName: string): string => `Aktualne ceny dla ${parkName} są niedostępne`,
+    pricingDescription: (parkName: string, statusLabel: string): string =>
+      `Aktualne ceny biletów nie są dostępne, ponieważ ${parkName} ma obecnie status: ${statusLabel}.`
   },
   pt: {
     weatherTitle: (parkName: string): string => `Meteorologia indisponível para ${parkName}`,
@@ -1295,7 +1384,10 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
       `A meteorologia para planear uma visita não está disponível porque ${parkName} está atualmente registado como ${statusLabel}.`,
     openingHoursTitle: (parkName: string): string => `Horários indisponíveis para ${parkName}`,
     openingHoursDescription: (parkName: string, statusLabel: string): string =>
-      `Os horários atuais não estão disponíveis porque ${parkName} está atualmente registado como ${statusLabel}.`
+      `Os horários atuais não estão disponíveis porque ${parkName} está atualmente registado como ${statusLabel}.`,
+    pricingTitle: (parkName: string): string => `Preços atuais indisponíveis para ${parkName}`,
+    pricingDescription: (parkName: string, statusLabel: string): string =>
+      `Os preços atuais dos bilhetes não estão disponíveis porque ${parkName} está atualmente registado como ${statusLabel}.`
   }
 };
 
@@ -2141,6 +2233,33 @@ export class SeoService {
     });
   }
 
+  applyParkPricingSeo(
+    parkName: string,
+    language: string,
+    url: string,
+    offerCount: number = 0,
+    parkImageId: string | null = null,
+    canonicalPath: string | null = null
+  ): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: ParkPricingSeoCopy = PARK_PRICING_SEO_COPY[normalizedLanguage] ?? PARK_PRICING_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
+    const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
+    const title: string = `${copy.title(normalizedParkName)} - ${SITE_NAME}`;
+    const description: string = copy.description(normalizedParkName, offerCount);
+
+    this.apply({
+      title,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: this.hasQueryString(url) || offerCount <= 0 ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(seoUrl),
+      imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
+      imageAlt: normalizedParkName,
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, seoUrl, this.resolveParkPricingBreadcrumbLabel(normalizedLanguage, normalizedParkName))]
+    });
+  }
+
   applyParkUnavailableFeatureSeo(
     park: Pick<Park, 'name' | 'status'>,
     feature: ParkUnavailableFeature,
@@ -2163,10 +2282,14 @@ export class SeoService {
       : park.status ?? 'unavailable';
     const title: string = feature === 'weather'
       ? copy.weatherTitle(parkName)
-      : copy.openingHoursTitle(parkName);
+      : feature === 'pricing'
+        ? copy.pricingTitle(parkName)
+        : copy.openingHoursTitle(parkName);
     const description: string = feature === 'weather'
       ? copy.weatherDescription(parkName, statusLabel)
-      : copy.openingHoursDescription(parkName, statusLabel);
+      : feature === 'pricing'
+        ? copy.pricingDescription(parkName, statusLabel)
+        : copy.openingHoursDescription(parkName, statusLabel);
     const seoUrl: string = this.resolveSeoUrl(url, parkDetailCanonicalPath);
 
     this.apply({
@@ -3213,6 +3336,21 @@ export class SeoService {
       nl: `Datums en openingstijden van ${parkLabel}`,
       pl: `Godziny otwarcia ${parkLabel}`,
       pt: `Datas e horários de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkPricingBreadcrumbLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Tarifs et billets de ${parkLabel}`,
+      en: `Prices and tickets for ${parkLabel}`,
+      es: `Precios y entradas de ${parkLabel}`,
+      de: `Preise und Tickets für ${parkLabel}`,
+      it: `Prezzi e biglietti di ${parkLabel}`,
+      nl: `Prijzen en tickets voor ${parkLabel}`,
+      pl: `Ceny i bilety do ${parkLabel}`,
+      pt: `Preços e bilhetes de ${parkLabel}`
     };
 
     return labels[language] ?? labels['en'];

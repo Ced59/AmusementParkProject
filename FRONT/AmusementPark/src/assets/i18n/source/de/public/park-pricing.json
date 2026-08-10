@@ -1,0 +1,27 @@
+{
+  "parkPricing": {
+    "detailCta": { "title": "Preise und Tickets", "subtitle": "Vergleiche Tickets, Jahreskarten und Parkoptionen" },
+    "page": {
+      "kicker": "Plane deinen Besuch", "title": "Preise und Tickets für {{ name }}", "titleShort": "Preise und Tickets",
+      "lead": "Vergleiche die aktuell eingetragenen Preise für {{ name }}.", "backToPark": "Zurück zu {{ name }}",
+      "breadcrumbLabel": "Brotkrümelnavigation", "loadingTitle": "Preise werden geladen", "loadingMessage": "Die eingetragenen Preise werden geladen.",
+      "emptyTitle": "Keine Preise verfügbar", "emptyMessage": "Für diesen Park ist noch keine aktuelle Preisliste verfügbar.",
+      "errorTitle": "Preise nicht verfügbar", "errorMessage": "Die Preise konnten nicht geladen werden.",
+      "unavailableTitle": "Aktuelle Preise für {{ name }} nicht verfügbar", "unavailableMessage": "Eine aktuelle Preisliste wird nur für Parks angezeigt, die für Besucher geöffnet sind."
+    },
+    "disclaimer": { "title": "Unverbindliche Preise", "message": "Preise können je nach Datum, Verfügbarkeit, Nachfrage, Aktionen und Verkaufskanal variieren. Prüfe vor dem Kauf immer den Endpreis auf der offiziellen Website von {{ name }}." },
+    "sections": {
+      "admission": { "title": "Eintrittskarten", "subtitle": "Preise nach Besucherkategorie" },
+      "passes": { "title": "Jahreskarten", "subtitle": "Angebote für Besuche während des ganzen Jahres" },
+      "parking": { "title": "Parken", "subtitle": "Eingetragene Parkgebühren" }
+    },
+    "channels": { "online": "Online", "gate": "An der Kasse" },
+    "modes": { "Fixed": "Festpreis", "Range": "Preisspanne", "Dynamic": "Dynamischer Preis" },
+    "price": { "from": "ab", "upTo": "bis", "dynamic": "dynamischer Preis" },
+    "audiences": { "adult": "Erwachsener", "child": "Kind", "senior": "Senior", "youth": "Jugendlicher", "infant": "Baby", "toddler": "Kleinkind", "student": "Student", "disabled": "Besucher mit Behinderung", "companion": "Begleitperson", "family": "Familie", "group": "Gruppe", "general": "Allgemeiner Eintritt" },
+    "validity": { "range": "Gültig vom {{ from }} bis {{ to }}", "from": "Gültig ab {{ date }}", "until": "Gültig bis {{ date }}" },
+    "fields": { "conditions": "Bedingungen", "currency": "Währung", "lastVerified": "Zuletzt geprüft", "source": "Offizielle Quelle", "purchase": "Allgemeiner Kauflink", "notes": "Hinweise" },
+    "actions": { "buy": "Auf der offiziellen Website kaufen", "buyOffer": "Dieses Angebot ansehen", "openSource": "Quelle ansehen" },
+    "meta": { "title": "Preisinformationen" }
+  }
+}

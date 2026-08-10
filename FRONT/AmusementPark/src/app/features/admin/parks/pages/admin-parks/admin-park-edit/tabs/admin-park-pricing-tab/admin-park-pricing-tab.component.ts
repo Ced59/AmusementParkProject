@@ -1,54 +1,46 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { ParkPricing } from '@app/models/parks/park-pricing';
+import {
+  ParkAdmissionPriceOffer,
+  ParkAnnualPassOffer,
+  ParkParkingPriceOffer,
+  ParkPricing,
+} from '@app/models/parks/park-pricing';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
-import { ButtonDirective } from '@shared/ui/primitives/button';
 import { AdminParkEditStateFacade } from '@features/admin/parks/state/admin-park-edit-state.facade';
+import { ButtonDirective } from '@shared/ui/primitives/button';
+import {
+  AdminParkPricingOffer,
+  AdminParkPricingOfferEditorComponent,
+} from './admin-park-pricing-offer-editor.component';
 
-interface AdminPricingCopy {
-  title: string;
-  subtitle: string;
-  reload: string;
-  format: string;
-  save: string;
-  jsonLabel: string;
-  hint: string;
-  invalidJson: string;
-  loadError: string;
-  saveError: string;
-  savedSummary: string;
-  savedDetail: string;
-}
-
-const COPY: Record<string, AdminPricingCopy> = {
-  fr: { title: 'Tarifs du parc', subtitle: 'Édition rapide du document tarifaire complet. Les règles métier sont validées par l’API lors de l’enregistrement.', reload: 'Recharger', format: 'Formater', save: 'Enregistrer les tarifs', jsonLabel: 'JSON des tarifs du parc', hint: 'Gère les billets, pass annuels, parking, périodes de validité, prix web/guichet, conditions et liens officiels.', invalidJson: 'Le JSON des tarifs est invalide.', loadError: 'Impossible de charger les tarifs.', saveError: 'Impossible d’enregistrer les tarifs.', savedSummary: 'Tarifs enregistrés', savedDetail: 'Le document tarifaire du parc a été mis à jour.' },
-  en: { title: 'Park pricing', subtitle: 'Fast editing of the complete pricing document. Business rules are validated by the API when saving.', reload: 'Reload', format: 'Format', save: 'Save pricing', jsonLabel: 'Park pricing JSON', hint: 'Manage tickets, annual passes, parking, validity periods, online/gate prices, conditions and official links.', invalidJson: 'The pricing JSON is invalid.', loadError: 'Unable to load pricing.', saveError: 'Unable to save pricing.', savedSummary: 'Pricing saved', savedDetail: 'The park pricing document has been updated.' }
-};
+type PricingCollection = 'admissionOffers' | 'annualPasses' | 'parkingOffers';
 
 @Component({
   selector: 'app-admin-park-pricing-tab',
   templateUrl: './admin-park-pricing-tab.component.html',
   styleUrls: ['./admin-park-pricing-tab.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, ButtonDirective]
+  imports: [
+    AdminParkPricingOfferEditorComponent,
+    ButtonDirective,
+    FormsModule,
+    TranslateModule,
+  ],
 })
 export class AdminParkPricingTabComponent implements OnChanges {
   @Input() parkId: string | null = null;
-  @Input() currentLanguage: string = 'en';
 
-  protected readonly pricingJson = signal<string>('');
-  protected readonly errorMessage = signal<string | null>(null);
+  protected readonly pricing = signal<ParkPricing | null>(null);
+  protected readonly errorMessageKey = signal<string | null>(null);
   protected readonly loaded = signal<boolean>(false);
 
   private readonly editStateFacade: AdminParkEditStateFacade = inject(AdminParkEditStateFacade);
   private readonly toastMessageService: ToastMessageService = inject(ToastMessageService);
-
-  protected get copy(): AdminPricingCopy {
-    const language: string = this.currentLanguage?.toLowerCase().split('-')[0] ?? 'en';
-    return COPY[language] ?? COPY['en'];
-  }
+  private readonly translateService: TranslateService = inject(TranslateService);
 
   protected get loading(): boolean {
     return this.editStateFacade.pricingLoading();
@@ -61,58 +53,203 @@ export class AdminParkPricingTabComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['parkId'] && this.parkId) {
       this.loaded.set(false);
+      this.pricing.set(null);
       void this.loadPricing(false);
     }
-  }
-
-  protected onJsonChanged(value: string): void {
-    this.pricingJson.set(value);
-    this.errorMessage.set(null);
   }
 
   protected reload(): void {
     void this.loadPricing(true);
   }
 
-  protected format(): void {
-    try {
-      const parsed: unknown = JSON.parse(this.pricingJson() || '{}');
-      this.pricingJson.set(JSON.stringify(parsed, null, 2));
-      this.errorMessage.set(null);
-    } catch {
-      this.errorMessage.set(this.copy.invalidJson);
+  protected updateRootField(
+    field: 'currencyCode' | 'sourceUrl' | 'purchaseUrl' | 'notes',
+    value: string | null
+  ): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    if (field === 'currencyCode') {
+      this.pricing.set({ ...current, currencyCode: value ?? '' });
+    } else if (field === 'sourceUrl') {
+      this.pricing.set({ ...current, sourceUrl: value });
+    } else if (field === 'purchaseUrl') {
+      this.pricing.set({ ...current, purchaseUrl: value });
+    } else {
+      this.pricing.set({ ...current, notes: value });
+    }
+    this.errorMessageKey.set(null);
+  }
+
+  protected lastVerifiedInputValue(value: string | null | undefined): string {
+    return value ? value.slice(0, 16) : '';
+  }
+
+  protected updateLastVerified(value: string): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    const normalizedValue: string | null = value
+      ? new Date(`${value}:00Z`).toISOString()
+      : null;
+    this.pricing.set({ ...current, lastVerifiedAtUtc: normalizedValue });
+  }
+
+  protected addAdmissionOffer(): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    const offer: ParkAdmissionPriceOffer = {
+      code: this.nextCode('admission', current.admissionOffers.map((item: ParkAdmissionPriceOffer): string => item.code)),
+      audienceCategory: 'adult',
+      labels: [],
+      onlinePrice: { mode: 'Fixed', amount: null },
+      gatePrice: null,
+      validFrom: null,
+      validTo: null,
+      purchaseUrl: null,
+      conditions: [],
+      sortOrder: this.nextSortOrder(current.admissionOffers),
+    };
+    this.pricing.set({ ...current, admissionOffers: [...current.admissionOffers, offer] });
+  }
+
+  protected addAnnualPass(): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    const offer: ParkAnnualPassOffer = {
+      code: this.nextCode('annual-pass', current.annualPasses.map((item: ParkAnnualPassOffer): string => item.code)),
+      names: [],
+      onlinePrice: { mode: 'Fixed', amount: null },
+      gatePrice: null,
+      validFrom: null,
+      validTo: null,
+      purchaseUrl: null,
+      conditions: [],
+      sortOrder: this.nextSortOrder(current.annualPasses),
+    };
+    this.pricing.set({ ...current, annualPasses: [...current.annualPasses, offer] });
+  }
+
+  protected addParkingOffer(): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    const offer: ParkParkingPriceOffer = {
+      code: this.nextCode('parking', current.parkingOffers.map((item: ParkParkingPriceOffer): string => item.code)),
+      labels: [],
+      onlinePrice: null,
+      gatePrice: { mode: 'Fixed', amount: null },
+      validFrom: null,
+      validTo: null,
+      purchaseUrl: null,
+      conditions: [],
+      sortOrder: this.nextSortOrder(current.parkingOffers),
+    };
+    this.pricing.set({ ...current, parkingOffers: [...current.parkingOffers, offer] });
+  }
+
+  protected updateOffer(collection: PricingCollection, index: number, offer: AdminParkPricingOffer): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    if (collection === 'admissionOffers') {
+      const admissionOffer: ParkAdmissionPriceOffer = offer as ParkAdmissionPriceOffer;
+      this.pricing.set({
+        ...current,
+        admissionOffers: current.admissionOffers.map((item: ParkAdmissionPriceOffer, itemIndex: number): ParkAdmissionPriceOffer =>
+          itemIndex === index ? admissionOffer : item),
+      });
+      return;
+    }
+
+    if (collection === 'annualPasses') {
+      const annualPass: ParkAnnualPassOffer = offer as ParkAnnualPassOffer;
+      this.pricing.set({
+        ...current,
+        annualPasses: current.annualPasses.map((item: ParkAnnualPassOffer, itemIndex: number): ParkAnnualPassOffer =>
+          itemIndex === index ? annualPass : item),
+      });
+      return;
+    }
+
+    const parkingOffer: ParkParkingPriceOffer = offer as ParkParkingPriceOffer;
+    this.pricing.set({
+      ...current,
+      parkingOffers: current.parkingOffers.map((item: ParkParkingPriceOffer, itemIndex: number): ParkParkingPriceOffer =>
+        itemIndex === index ? parkingOffer : item),
+    });
+  }
+
+  protected removeOffer(collection: PricingCollection, index: number): void {
+    const current: ParkPricing | null = this.pricing();
+    if (!current) {
+      return;
+    }
+
+    if (collection === 'admissionOffers') {
+      this.pricing.set({
+        ...current,
+        admissionOffers: current.admissionOffers.filter(
+          (_item: ParkAdmissionPriceOffer, itemIndex: number): boolean => itemIndex !== index),
+      });
+    } else if (collection === 'annualPasses') {
+      this.pricing.set({
+        ...current,
+        annualPasses: current.annualPasses.filter(
+          (_item: ParkAnnualPassOffer, itemIndex: number): boolean => itemIndex !== index),
+      });
+    } else {
+      this.pricing.set({
+        ...current,
+        parkingOffers: current.parkingOffers.filter(
+          (_item: ParkParkingPriceOffer, itemIndex: number): boolean => itemIndex !== index),
+      });
     }
   }
 
   protected async save(): Promise<void> {
     const parkId: string | null = this.parkId;
-    if (!parkId || this.saving) {
+    const current: ParkPricing | null = this.pricing();
+    if (!parkId || !current || this.saving) {
       return;
     }
 
-    let payload: ParkPricing;
-    try {
-      payload = JSON.parse(this.pricingJson() || '{}') as ParkPricing;
-    } catch {
-      this.errorMessage.set(this.copy.invalidJson);
-      return;
-    }
-
-    payload.parkId = parkId;
-    payload.currencyCode = payload.currencyCode?.trim().toUpperCase() || 'EUR';
-    payload.admissionOffers = Array.isArray(payload.admissionOffers) ? payload.admissionOffers : [];
-    payload.annualPasses = Array.isArray(payload.annualPasses) ? payload.annualPasses : [];
-    payload.parkingOffers = Array.isArray(payload.parkingOffers) ? payload.parkingOffers : [];
+    const payload: ParkPricing = {
+      ...current,
+      parkId,
+      currencyCode: current.currencyCode.trim().toUpperCase(),
+      sourceUrl: this.normalizeOptionalText(current.sourceUrl),
+      purchaseUrl: this.normalizeOptionalText(current.purchaseUrl),
+      notes: this.normalizeOptionalText(current.notes),
+    };
 
     try {
       const savedPricing: ParkPricing = await this.editStateFacade.savePricing(parkId, payload);
-      this.pricingJson.set(JSON.stringify(savedPricing, null, 2));
+      this.pricing.set(savedPricing);
       this.loaded.set(true);
-      this.errorMessage.set(null);
-      this.toastMessageService.add('success', this.copy.savedSummary, this.copy.savedDetail);
+      this.errorMessageKey.set(null);
+      this.toastMessageService.add(
+        'success',
+        this.translateService.instant('adminParkPricing.messages.savedSummary'),
+        this.translateService.instant('adminParkPricing.messages.savedDetail')
+      );
     } catch (error: unknown) {
       console.error('Error saving park pricing', error);
-      this.errorMessage.set(this.copy.saveError);
+      this.errorMessageKey.set('adminParkPricing.messages.saveError');
     }
   }
 
@@ -124,19 +261,19 @@ export class AdminParkPricingTabComponent implements OnChanges {
 
     try {
       const pricing: ParkPricing = await this.editStateFacade.loadPricing(parkId);
-      this.pricingJson.set(JSON.stringify(pricing, null, 2));
+      this.pricing.set(pricing);
       this.loaded.set(true);
-      this.errorMessage.set(null);
+      this.errorMessageKey.set(null);
     } catch (error: unknown) {
       if (hasHttpStatus(error, 404)) {
-        this.pricingJson.set(JSON.stringify(this.createTemplate(parkId), null, 2));
+        this.pricing.set(this.createTemplate(parkId));
         this.loaded.set(true);
-        this.errorMessage.set(null);
+        this.errorMessageKey.set(null);
         return;
       }
 
       console.error('Error loading park pricing', error);
-      this.errorMessage.set(this.copy.loadError);
+      this.errorMessageKey.set('adminParkPricing.messages.loadError');
     }
   }
 
@@ -144,13 +281,34 @@ export class AdminParkPricingTabComponent implements OnChanges {
     return {
       parkId,
       currencyCode: 'EUR',
-      sourceUrl: '',
-      purchaseUrl: '',
-      notes: '',
-      lastVerifiedAtUtc: new Date().toISOString(),
+      sourceUrl: null,
+      purchaseUrl: null,
+      notes: null,
+      lastVerifiedAtUtc: null,
       admissionOffers: [],
       annualPasses: [],
-      parkingOffers: []
+      parkingOffers: [],
     };
+  }
+
+  private nextCode(prefix: string, codes: readonly string[]): string {
+    let sequence: number = codes.length + 1;
+    let candidate: string = `${prefix}-${sequence}`;
+    while (codes.includes(candidate)) {
+      sequence += 1;
+      candidate = `${prefix}-${sequence}`;
+    }
+
+    return candidate;
+  }
+
+  private nextSortOrder(offers: readonly { sortOrder: number }[]): number {
+    return offers.reduce((maximum: number, offer: { sortOrder: number }): number =>
+      Math.max(maximum, offer.sortOrder), -1) + 1;
+  }
+
+  private normalizeOptionalText(value: string | null | undefined): string | null {
+    const normalizedValue: string = value?.trim() ?? '';
+    return normalizedValue || null;
   }
 }

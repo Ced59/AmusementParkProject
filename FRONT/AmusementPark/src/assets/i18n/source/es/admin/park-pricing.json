@@ -1,0 +1,16 @@
+{
+  "adminParkPricing": {
+    "tab": "Precios", "title": "Precios del parque", "subtitle": "Gestiona las entradas, los pases anuales y los precios de aparcamiento publicados para este parque.",
+    "kinds": { "admission": "Entrada", "annualPass": "Pase anual", "parking": "Aparcamiento" },
+    "offer": { "newOffer": "Nueva oferta" },
+    "actions": { "reload": "Recargar", "save": "Guardar precios", "removeOffer": "Eliminar", "addAdmission": "Añadir entrada", "addAnnualPass": "Añadir pase", "addParking": "Añadir aparcamiento", "copyAllLanguages": "Aplicar a todos los idiomas" },
+    "sections": { "general": "Información general", "admissionOffers": "Entradas", "annualPasses": "Pases anuales", "parkingOffers": "Aparcamiento" },
+    "fields": { "currencyCode": "Moneda (ISO)", "sourceUrl": "URL oficial de precios", "purchaseUrl": "URL general de compra", "lastVerifiedAtUtc": "Última verificación (UTC)", "notes": "Notas", "code": "Código único", "audienceCategory": "Categoría de público", "sortOrder": "Orden", "labels": "Etiquetas traducidas", "names": "Nombres traducidos", "priceMode": "Modalidad de precio", "amount": "Importe", "minimumAmount": "Importe mínimo", "maximumAmount": "Importe máximo", "validFrom": "Válido desde", "validTo": "Válido hasta", "offerPurchaseUrl": "URL de compra de la oferta", "conditions": "Condiciones traducidas" },
+    "channels": { "online": "Precio en línea", "gate": "Precio en taquilla" },
+    "modes": { "none": "No indicado", "Fixed": "Fijo", "Range": "Intervalo", "Dynamic": "Dinámico" },
+    "placeholders": { "localizedValue": "Valor en {{ language }}", "conditions": "Condiciones en {{ language }}" },
+    "hints": { "dynamicBounds": "Los límites son opcionales para un precio dinámico.", "admissionOffers": "Indica la categoría, las traducciones y los canales de venta de cada entrada.", "annualPasses": "Indica las fórmulas anuales y sus condiciones.", "parkingOffers": "Indica por separado las ofertas de aparcamiento útiles." },
+    "empty": { "admissionOffers": "No hay entradas.", "annualPasses": "No hay pases anuales.", "parkingOffers": "No hay ofertas de aparcamiento." },
+    "messages": { "loading": "Cargando precios…", "loadError": "No se han podido cargar los precios.", "saveError": "No se han podido guardar los precios.", "savedSummary": "Precios guardados", "savedDetail": "La tarifa del parque se ha actualizado." }
+  }
+}

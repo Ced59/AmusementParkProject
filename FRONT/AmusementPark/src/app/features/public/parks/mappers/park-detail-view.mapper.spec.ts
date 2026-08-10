@@ -21,7 +21,11 @@ describe('mapParkToDetailViewModel lifecycle actions', () => {
 
     expect(mapParkToDetailViewModel(operatingPark, 'en').weatherLink).not.toBeNull();
     expect(mapParkToDetailViewModel(operatingPark, 'en').openingHoursLink).not.toBeNull();
+    expect(mapParkToDetailViewModel(operatingPark, 'en').pricingLink).toEqual([
+      '/', 'en', 'park', 'park-1', 'example-park', 'pricing'
+    ]);
     expect(mapParkToDetailViewModel(plannedPark, 'en').weatherLink).toBeNull();
     expect(mapParkToDetailViewModel(plannedPark, 'en').openingHoursLink).toBeNull();
+    expect(mapParkToDetailViewModel(plannedPark, 'en').pricingLink).toBeNull();
   });
 });

@@ -4,24 +4,25 @@
 
 .admin-pricing-editor {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
-.admin-pricing-editor__header {
+.admin-pricing-editor__header,
+.admin-pricing-editor__collection > header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
 
   h3,
+  h4,
   p {
     margin: 0;
   }
 
   p {
-    margin-top: 0.35rem;
+    margin-top: 0.3rem;
     color: var(--text-color-secondary);
-    max-width: 70ch;
   }
 }
 
@@ -32,50 +33,85 @@
   gap: 0.5rem;
 }
 
-.admin-pricing-editor__textarea {
-  width: 100%;
-  min-height: 36rem;
-  resize: vertical;
+.admin-pricing-editor__metadata,
+.admin-pricing-editor__collection {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem;
   border: 1px solid var(--surface-border);
   border-radius: 0.75rem;
-  padding: 1rem;
   background: var(--surface-ground);
+}
+
+.admin-pricing-editor__metadata legend {
+  padding: 0 0.4rem;
+  font-weight: 700;
+}
+
+.admin-pricing-editor__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.admin-pricing-editor label {
+  display: grid;
+  gap: 0.4rem;
+
+  span {
+    color: var(--text-color-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+}
+
+.admin-pricing-editor input,
+.admin-pricing-editor textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.45rem;
+  background: var(--surface-card);
   color: var(--text-color);
-  font: 0.86rem/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  tab-size: 2;
 }
 
-.admin-pricing-editor__textarea:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+.admin-pricing-editor__wide {
+  grid-column: 1 / -1;
 }
 
-.admin-pricing-editor__hint,
+.admin-pricing-editor__empty,
+.admin-pricing-editor__status,
 .admin-pricing-editor__error {
   margin: 0;
-  font-size: 0.9rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
 }
 
-.admin-pricing-editor__hint {
+.admin-pricing-editor__empty,
+.admin-pricing-editor__status {
   color: var(--text-color-secondary);
+  background: var(--surface-card);
 }
 
 .admin-pricing-editor__error {
-  color: var(--red-500);
+  color: var(--red-700);
+  background: var(--red-50);
   font-weight: 600;
 }
 
 @media (max-width: 760px) {
-  .admin-pricing-editor__header {
+  .admin-pricing-editor__header,
+  .admin-pricing-editor__collection > header {
     flex-direction: column;
   }
 
-  .admin-pricing-editor__actions {
+  .admin-pricing-editor__actions,
+  .admin-pricing-editor__collection > header button {
     width: 100%;
-    justify-content: flex-start;
   }
 
-  .admin-pricing-editor__textarea {
-    min-height: 28rem;
+  .admin-pricing-editor__fields {
+    grid-template-columns: 1fr;
   }
 }

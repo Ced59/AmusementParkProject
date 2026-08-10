@@ -1,6 +1,20 @@
 {
-  "version": "4.1.27",
+  "version": "4.1.28",
   "history": [
+    {
+      "version": "4.1.28",
+      "releasedAt": "2026-08-09",
+      "labels": {
+        "fr": "Les tarifs et billets des parcs sont désormais plus faciles à consulter.",
+        "en": "Park prices and tickets are now easier to view.",
+        "de": "Parkpreise und Eintrittskarten lassen sich jetzt leichter einsehen.",
+        "nl": "Parkprijzen en tickets zijn nu makkelijker te bekijken.",
+        "it": "Tariffe e biglietti dei parchi sono ora più facili da consultare.",
+        "es": "Las tarifas y entradas de los parques ahora son más fáciles de consultar.",
+        "pl": "Ceny i bilety do parków można teraz łatwiej sprawdzić.",
+        "pt": "Os preços e bilhetes dos parques são agora mais fáceis de consultar."
+      }
+    },
     {
       "version": "4.1.27",
       "releasedAt": "2026-08-07",

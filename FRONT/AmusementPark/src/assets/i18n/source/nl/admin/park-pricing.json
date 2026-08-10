@@ -1,0 +1,16 @@
+{
+  "adminParkPricing": {
+    "tab": "Prijzen", "title": "Parkprijzen", "subtitle": "Beheer de gepubliceerde toegangstickets, jaarpassen en parkeerprijzen van dit park.",
+    "kinds": { "admission": "Toegangsticket", "annualPass": "Jaarpas", "parking": "Parkeren" },
+    "offer": { "newOffer": "Nieuw aanbod" },
+    "actions": { "reload": "Herladen", "save": "Prijzen opslaan", "removeOffer": "Verwijderen", "addAdmission": "Ticket toevoegen", "addAnnualPass": "Jaarpas toevoegen", "addParking": "Parkeren toevoegen", "copyAllLanguages": "Op alle talen toepassen" },
+    "sections": { "general": "Algemene informatie", "admissionOffers": "Toegangstickets", "annualPasses": "Jaarpassen", "parkingOffers": "Parkeren" },
+    "fields": { "currencyCode": "Valuta (ISO)", "sourceUrl": "Officiële prijs-URL", "purchaseUrl": "Algemene aankoop-URL", "lastVerifiedAtUtc": "Laatst gecontroleerd (UTC)", "notes": "Opmerkingen", "code": "Unieke code", "audienceCategory": "Bezoekerscategorie", "sortOrder": "Volgorde", "labels": "Vertaalde labels", "names": "Vertaalde namen", "priceMode": "Prijsmodel", "amount": "Bedrag", "minimumAmount": "Minimumbedrag", "maximumAmount": "Maximumbedrag", "validFrom": "Geldig vanaf", "validTo": "Geldig tot", "offerPurchaseUrl": "Aankoop-URL van het aanbod", "conditions": "Vertaalde voorwaarden" },
+    "channels": { "online": "Onlineprijs", "gate": "Kassaprijs" },
+    "modes": { "none": "Niet ingevuld", "Fixed": "Vast", "Range": "Bereik", "Dynamic": "Dynamisch" },
+    "placeholders": { "localizedValue": "Waarde in het {{ language }}", "conditions": "Voorwaarden in het {{ language }}" },
+    "hints": { "dynamicBounds": "Grenzen zijn optioneel voor een dynamische prijs.", "admissionOffers": "Vul categorie, vertalingen en verkoopkanalen van elk ticket in.", "annualPasses": "Vul jaarformules en hun voorwaarden in.", "parkingOffers": "Vul relevante parkeeropties afzonderlijk in." },
+    "empty": { "admissionOffers": "Geen toegangstickets.", "annualPasses": "Geen jaarpassen.", "parkingOffers": "Geen parkeeropties." },
+    "messages": { "loading": "Prijzen laden…", "loadError": "Prijzen konden niet worden geladen.", "saveError": "Prijzen konden niet worden opgeslagen.", "savedSummary": "Prijzen opgeslagen", "savedDetail": "De prijslijst van het park is bijgewerkt." }
+  }
+}

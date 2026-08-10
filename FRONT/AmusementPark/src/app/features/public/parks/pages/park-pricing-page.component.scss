@@ -1,0 +1,341 @@
+:host {
+  display: block;
+}
+
+.park-pricing-page {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 3rem;
+}
+
+.park-pricing-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+  color: var(--app-text-muted);
+  font-size: 0.88rem;
+}
+
+.park-pricing-breadcrumb a {
+  color: var(--app-primary);
+  text-decoration: none;
+}
+
+.park-pricing-breadcrumb i {
+  font-size: 0.65rem;
+}
+
+.park-pricing-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid color-mix(in srgb, var(--app-primary) 30%, var(--app-border));
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--app-primary) 22%, transparent), transparent 36%),
+    linear-gradient(135deg, color-mix(in srgb, var(--app-primary) 9%, var(--app-surface)) 0%, var(--app-surface) 68%);
+  box-shadow: var(--shadow-lg);
+}
+
+.park-pricing-hero__kicker {
+  margin: 0 0 0.55rem;
+  color: var(--app-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.park-pricing-hero h1 {
+  max-width: 820px;
+  margin: 0;
+  color: var(--app-heading);
+  font-size: clamp(2rem, 5vw, 3.65rem);
+  line-height: 1.04;
+}
+
+.park-pricing-hero > p:not(.park-pricing-hero__kicker) {
+  max-width: 720px;
+  margin: 1rem 0 0;
+  color: var(--app-text-muted);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.park-pricing-hero__actions,
+.park-pricing-hero__back {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+}
+
+.park-pricing-disclaimer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  margin: 1.25rem 0 2rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--app-warning) 42%, var(--app-border));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-warning) 9%, var(--app-surface));
+}
+
+.park-pricing-disclaimer > i {
+  margin-top: 0.15rem;
+  color: var(--app-warning);
+  font-size: 1.35rem;
+}
+
+.park-pricing-disclaimer h2,
+.park-pricing-disclaimer p {
+  margin: 0;
+}
+
+.park-pricing-disclaimer h2 {
+  color: var(--app-heading);
+  font-size: 1rem;
+}
+
+.park-pricing-disclaimer p {
+  margin-top: 0.25rem;
+  color: var(--app-text-muted);
+  line-height: 1.55;
+}
+
+.park-pricing-section {
+  margin-top: 2.35rem;
+}
+
+.park-pricing-section__header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.park-pricing-section__icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  border-radius: var(--radius-md);
+  color: var(--app-primary-contrast);
+  background: var(--app-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.park-pricing-section__header h2,
+.park-pricing-section__header p {
+  margin: 0;
+}
+
+.park-pricing-section__header h2 {
+  color: var(--app-heading);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+}
+
+.park-pricing-section__header p {
+  margin-top: 0.18rem;
+  color: var(--app-text-muted);
+}
+
+.park-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 1rem;
+}
+
+.park-price-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.15rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: var(--app-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.park-price-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.park-price-card__header h3 {
+  margin: 0;
+  color: var(--app-heading);
+  font-size: 1.12rem;
+}
+
+.park-price-card__audience {
+  display: inline-flex;
+  margin-top: 0.45rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  color: var(--app-primary);
+  background: color-mix(in srgb, var(--app-primary) 12%, transparent);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.park-price-card__prices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.park-price-channel {
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.8rem;
+  border-radius: var(--radius-md);
+  background: var(--app-surface-muted);
+}
+
+.park-price-channel span,
+.park-price-channel small {
+  color: var(--app-text-muted);
+  font-size: 0.75rem;
+}
+
+.park-price-channel strong {
+  color: var(--app-heading);
+  font-size: 1.18rem;
+}
+
+.park-price-card__validity {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 0.9rem 0 0;
+  color: var(--app-text-muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.park-price-card__validity i {
+  margin-top: 0.18rem;
+  color: var(--app-primary);
+}
+
+.park-price-card__conditions {
+  margin-top: 0.9rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--app-border);
+}
+
+.park-price-card__conditions strong {
+  color: var(--app-heading);
+  font-size: 0.82rem;
+}
+
+.park-price-card__conditions p {
+  margin: 0.25rem 0 0;
+  color: var(--app-text-muted);
+  line-height: 1.5;
+}
+
+.park-price-card__buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--app-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.park-pricing-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: var(--app-surface-muted);
+}
+
+.park-pricing-meta > div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.park-pricing-meta span {
+  color: var(--app-text-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.park-pricing-meta strong,
+.park-pricing-meta a {
+  color: var(--app-heading);
+  font-weight: 700;
+}
+
+.park-pricing-meta a {
+  color: var(--app-primary);
+  text-decoration: none;
+}
+
+.park-pricing-notes {
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-left: 4px solid var(--app-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: color-mix(in srgb, var(--app-primary) 7%, var(--app-surface));
+}
+
+.park-pricing-notes h2,
+.park-pricing-notes p {
+  margin: 0;
+}
+
+.park-pricing-notes h2 {
+  color: var(--app-heading);
+  font-size: 1rem;
+}
+
+.park-pricing-notes p {
+  margin-top: 0.35rem;
+  color: var(--app-text-muted);
+  white-space: pre-line;
+}
+
+@media (max-width: 640px) {
+  .park-pricing-page {
+    width: min(100% - 1rem, 1180px);
+    padding-top: 0.5rem;
+  }
+
+  .park-pricing-hero {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .park-pricing-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .park-pricing-disclaimer {
+    grid-template-columns: 1fr;
+  }
+
+  .park-pricing-section__header {
+    align-items: flex-start;
+  }
+
+  .park-price-card__prices {
+    grid-template-columns: 1fr;
+  }
+}

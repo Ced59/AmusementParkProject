@@ -1,0 +1,16 @@
+{
+  "adminParkPricing": {
+    "tab": "Pricing", "title": "Park pricing", "subtitle": "Manage the admission tickets, annual passes and parking prices published for this park.",
+    "kinds": { "admission": "Admission ticket", "annualPass": "Annual pass", "parking": "Parking" },
+    "offer": { "newOffer": "New offer" },
+    "actions": { "reload": "Reload", "save": "Save pricing", "removeOffer": "Remove", "addAdmission": "Add ticket", "addAnnualPass": "Add pass", "addParking": "Add parking", "copyAllLanguages": "Apply to all languages" },
+    "sections": { "general": "General information", "admissionOffers": "Admission tickets", "annualPasses": "Annual passes", "parkingOffers": "Parking" },
+    "fields": { "currencyCode": "Currency (ISO)", "sourceUrl": "Official pricing URL", "purchaseUrl": "General purchase URL", "lastVerifiedAtUtc": "Last verified (UTC)", "notes": "Notes", "code": "Unique code", "audienceCategory": "Audience category", "sortOrder": "Order", "labels": "Translated labels", "names": "Translated names", "priceMode": "Pricing mode", "amount": "Amount", "minimumAmount": "Minimum amount", "maximumAmount": "Maximum amount", "validFrom": "Valid from", "validTo": "Valid until", "offerPurchaseUrl": "Offer purchase URL", "conditions": "Translated conditions" },
+    "channels": { "online": "Online price", "gate": "Gate price" },
+    "modes": { "none": "Not provided", "Fixed": "Fixed", "Range": "Range", "Dynamic": "Dynamic" },
+    "placeholders": { "localizedValue": "Value in {{ language }}", "conditions": "Conditions in {{ language }}" },
+    "hints": { "dynamicBounds": "Bounds are optional for a dynamic price.", "admissionOffers": "Set the category, translations and sales channels for each ticket.", "annualPasses": "Set annual plans and their conditions.", "parkingOffers": "List useful parking offers separately." },
+    "empty": { "admissionOffers": "No admission tickets.", "annualPasses": "No annual passes.", "parkingOffers": "No parking offers." },
+    "messages": { "loading": "Loading pricing…", "loadError": "Unable to load pricing.", "saveError": "Unable to save pricing.", "savedSummary": "Pricing saved", "savedDetail": "The park price list has been updated." }
+  }
+}

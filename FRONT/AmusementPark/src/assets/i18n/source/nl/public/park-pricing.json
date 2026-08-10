@@ -1,0 +1,27 @@
+{
+  "parkPricing": {
+    "detailCta": { "title": "Prijzen en tickets", "subtitle": "Vergelijk tickets, passen en parkeeropties" },
+    "page": {
+      "kicker": "Plan je bezoek", "title": "Prijzen en tickets voor {{ name }}", "titleShort": "Prijzen en tickets",
+      "lead": "Vergelijk de prijzen die momenteel voor {{ name }} zijn vermeld.", "backToPark": "Terug naar {{ name }}",
+      "breadcrumbLabel": "Kruimelpad", "loadingTitle": "Prijzen laden", "loadingMessage": "De vermelde prijzen worden geladen.",
+      "emptyTitle": "Geen prijzen beschikbaar", "emptyMessage": "Er is nog geen actuele prijslijst voor dit park beschikbaar.",
+      "errorTitle": "Prijzen niet beschikbaar", "errorMessage": "De prijzen konden niet worden geladen.",
+      "unavailableTitle": "Actuele prijzen voor {{ name }} niet beschikbaar", "unavailableMessage": "Een actuele prijslijst wordt alleen getoond voor parken die open zijn voor bezoekers."
+    },
+    "disclaimer": { "title": "Indicatieve prijzen", "message": "Prijzen kunnen variëren naargelang datum, beschikbaarheid, vraag, promoties en verkoopkanaal. Controleer vóór je aankoop altijd de eindprijs op de officiële website van {{ name }}." },
+    "sections": {
+      "admission": { "title": "Toegangstickets", "subtitle": "Prijzen per bezoekerscategorie" },
+      "passes": { "title": "Jaarpassen", "subtitle": "Formules voor bezoeken doorheen het jaar" },
+      "parking": { "title": "Parkeren", "subtitle": "Vermelde parkeertarieven" }
+    },
+    "channels": { "online": "Online", "gate": "Aan de kassa" },
+    "modes": { "Fixed": "Vaste prijs", "Range": "Prijsbereik", "Dynamic": "Dynamische prijs" },
+    "price": { "from": "vanaf", "upTo": "tot", "dynamic": "dynamische prijs" },
+    "audiences": { "adult": "Volwassene", "child": "Kind", "senior": "Senior", "youth": "Jongere", "infant": "Baby", "toddler": "Peuter", "student": "Student", "disabled": "Bezoeker met een beperking", "companion": "Begeleider", "family": "Gezin", "group": "Groep", "general": "Algemene toegang" },
+    "validity": { "range": "Geldig van {{ from }} tot {{ to }}", "from": "Geldig vanaf {{ date }}", "until": "Geldig tot {{ date }}" },
+    "fields": { "conditions": "Voorwaarden", "currency": "Valuta", "lastVerified": "Laatst gecontroleerd", "source": "Officiële bron", "purchase": "Algemene aankooplink", "notes": "Opmerkingen" },
+    "actions": { "buy": "Koop op de officiële website", "buyOffer": "Bekijk dit aanbod", "openSource": "Bekijk de bron" },
+    "meta": { "title": "Prijsinformatie" }
+  }
+}

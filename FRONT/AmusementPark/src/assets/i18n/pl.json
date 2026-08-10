@@ -2264,6 +2264,86 @@
       }
     }
   },
+  "adminParkPricing": {
+    "tab": "Ceny",
+    "title": "Ceny parku",
+    "subtitle": "Zarządzaj opublikowanymi biletami, karnetami rocznymi i opłatami parkingowymi tego parku.",
+    "kinds": {
+      "admission": "Bilet wstępu",
+      "annualPass": "Karnet roczny",
+      "parking": "Parking"
+    },
+    "offer": {
+      "newOffer": "Nowa oferta"
+    },
+    "actions": {
+      "reload": "Wczytaj ponownie",
+      "save": "Zapisz ceny",
+      "removeOffer": "Usuń",
+      "addAdmission": "Dodaj bilet",
+      "addAnnualPass": "Dodaj karnet",
+      "addParking": "Dodaj parking",
+      "copyAllLanguages": "Zastosuj we wszystkich językach"
+    },
+    "sections": {
+      "general": "Informacje ogólne",
+      "admissionOffers": "Bilety wstępu",
+      "annualPasses": "Karnety roczne",
+      "parkingOffers": "Parking"
+    },
+    "fields": {
+      "currencyCode": "Waluta (ISO)",
+      "sourceUrl": "Oficjalny adres cennika",
+      "purchaseUrl": "Ogólny adres zakupu",
+      "lastVerifiedAtUtc": "Ostatnia weryfikacja (UTC)",
+      "notes": "Uwagi",
+      "code": "Unikalny kod",
+      "audienceCategory": "Kategoria odbiorców",
+      "sortOrder": "Kolejność",
+      "labels": "Przetłumaczone etykiety",
+      "names": "Przetłumaczone nazwy",
+      "priceMode": "Tryb ceny",
+      "amount": "Kwota",
+      "minimumAmount": "Kwota minimalna",
+      "maximumAmount": "Kwota maksymalna",
+      "validFrom": "Ważne od",
+      "validTo": "Ważne do",
+      "offerPurchaseUrl": "Adres zakupu oferty",
+      "conditions": "Przetłumaczone warunki"
+    },
+    "channels": {
+      "online": "Cena online",
+      "gate": "Cena w kasie"
+    },
+    "modes": {
+      "none": "Nie podano",
+      "Fixed": "Stała",
+      "Range": "Przedział",
+      "Dynamic": "Dynamiczna"
+    },
+    "placeholders": {
+      "localizedValue": "Wartość w języku {{ language }}",
+      "conditions": "Warunki w języku {{ language }}"
+    },
+    "hints": {
+      "dynamicBounds": "Granice są opcjonalne dla ceny dynamicznej.",
+      "admissionOffers": "Podaj kategorię, tłumaczenia i kanały sprzedaży każdego biletu.",
+      "annualPasses": "Podaj warianty roczne i ich warunki.",
+      "parkingOffers": "Podaj osobno przydatne opcje parkingowe."
+    },
+    "empty": {
+      "admissionOffers": "Brak biletów wstępu.",
+      "annualPasses": "Brak karnetów rocznych.",
+      "parkingOffers": "Brak ofert parkingowych."
+    },
+    "messages": {
+      "loading": "Wczytywanie cen…",
+      "loadError": "Nie udało się wczytać cen.",
+      "saveError": "Nie udało się zapisać cen.",
+      "savedSummary": "Ceny zapisane",
+      "savedDetail": "Cennik parku został zaktualizowany."
+    }
+  },
   "auth": {
     "login": {
       "title": "Klasyczne logowanie",
@@ -3520,6 +3600,95 @@
       "emptyMessage": "Dla tego parku nie ma jeszcze harmonogramu otwarcia.",
       "errorTitle": "Daty i godziny niedostepne",
       "errorMessage": "Nie udało się załadować harmonogramu otwarcia."
+    }
+  },
+  "parkPricing": {
+    "detailCta": {
+      "title": "Ceny i bilety",
+      "subtitle": "Porównaj bilety, karnety i opcje parkingowe"
+    },
+    "page": {
+      "kicker": "Zaplanuj wizytę",
+      "title": "Ceny i bilety do {{ name }}",
+      "titleShort": "Ceny i bilety",
+      "lead": "Porównaj ceny obecnie podane dla {{ name }}.",
+      "backToPark": "Wróć do {{ name }}",
+      "breadcrumbLabel": "Ścieżka nawigacji",
+      "loadingTitle": "Wczytywanie cen",
+      "loadingMessage": "Podane ceny są wczytywane.",
+      "emptyTitle": "Brak dostępnych cen",
+      "emptyMessage": "Dla tego parku nie ma jeszcze aktualnego cennika.",
+      "errorTitle": "Ceny niedostępne",
+      "errorMessage": "Nie udało się wczytać cen.",
+      "unavailableTitle": "Aktualne ceny dla {{ name }} są niedostępne",
+      "unavailableMessage": "Aktualny cennik jest wyświetlany tylko dla parków otwartych dla odwiedzających."
+    },
+    "disclaimer": {
+      "title": "Ceny orientacyjne",
+      "message": "Ceny mogą zależeć od daty, dostępności, popytu, promocji i kanału sprzedaży. Przed zakupem zawsze sprawdź ostateczną cenę na oficjalnej stronie {{ name }}."
+    },
+    "sections": {
+      "admission": {
+        "title": "Bilety wstępu",
+        "subtitle": "Ceny według kategorii odwiedzających"
+      },
+      "passes": {
+        "title": "Karnety roczne",
+        "subtitle": "Opcje na wizyty przez cały rok"
+      },
+      "parking": {
+        "title": "Parking",
+        "subtitle": "Podane opłaty parkingowe"
+      }
+    },
+    "channels": {
+      "online": "Online",
+      "gate": "W kasie"
+    },
+    "modes": {
+      "Fixed": "Cena stała",
+      "Range": "Przedział cenowy",
+      "Dynamic": "Cena dynamiczna"
+    },
+    "price": {
+      "from": "od",
+      "upTo": "do",
+      "dynamic": "cena dynamiczna"
+    },
+    "audiences": {
+      "adult": "Dorosły",
+      "child": "Dziecko",
+      "senior": "Senior",
+      "youth": "Młodzież",
+      "infant": "Niemowlę",
+      "toddler": "Małe dziecko",
+      "student": "Student",
+      "disabled": "Osoba z niepełnosprawnością",
+      "companion": "Opiekun",
+      "family": "Rodzina",
+      "group": "Grupa",
+      "general": "Bilet ogólny"
+    },
+    "validity": {
+      "range": "Ważne od {{ from }} do {{ to }}",
+      "from": "Ważne od {{ date }}",
+      "until": "Ważne do {{ date }}"
+    },
+    "fields": {
+      "conditions": "Warunki",
+      "currency": "Waluta",
+      "lastVerified": "Ostatnio sprawdzono",
+      "source": "Oficjalne źródło",
+      "purchase": "Ogólny link zakupu",
+      "notes": "Uwagi"
+    },
+    "actions": {
+      "buy": "Kup na oficjalnej stronie",
+      "buyOffer": "Zobacz tę ofertę",
+      "openSource": "Zobacz źródło"
+    },
+    "meta": {
+      "title": "Informacje o cenach"
     }
   },
   "parkVisitor": {

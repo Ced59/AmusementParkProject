@@ -455,6 +455,55 @@
   background: color-mix(in srgb, var(--app-primary) 6%, transparent);
 }
 
+.park-pricing-cta {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  color: var(--app-heading);
+  text-decoration: none;
+  border-color: color-mix(in srgb, var(--app-primary) 34%, var(--app-border));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--app-primary) 11%, var(--app-surface)) 0%, var(--app-surface) 70%);
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.park-pricing-cta:hover,
+.park-pricing-cta:focus-visible {
+  border-color: color-mix(in srgb, var(--app-primary) 62%, var(--app-border));
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.park-pricing-cta__icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  color: var(--app-primary-contrast);
+  background: var(--app-primary);
+}
+
+.park-pricing-cta__copy {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.park-pricing-cta__copy strong {
+  font-size: 1rem;
+}
+
+.park-pricing-cta__copy small {
+  color: var(--app-text-muted);
+  line-height: 1.4;
+}
+
+.park-pricing-cta__arrow {
+  color: var(--app-primary);
+}
+
 @media (min-width: 680px) {
   .park-stats-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));

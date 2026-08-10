@@ -1,0 +1,16 @@
+{
+  "adminParkPricing": {
+    "tab": "Ceny", "title": "Ceny parku", "subtitle": "Zarządzaj opublikowanymi biletami, karnetami rocznymi i opłatami parkingowymi tego parku.",
+    "kinds": { "admission": "Bilet wstępu", "annualPass": "Karnet roczny", "parking": "Parking" },
+    "offer": { "newOffer": "Nowa oferta" },
+    "actions": { "reload": "Wczytaj ponownie", "save": "Zapisz ceny", "removeOffer": "Usuń", "addAdmission": "Dodaj bilet", "addAnnualPass": "Dodaj karnet", "addParking": "Dodaj parking", "copyAllLanguages": "Zastosuj we wszystkich językach" },
+    "sections": { "general": "Informacje ogólne", "admissionOffers": "Bilety wstępu", "annualPasses": "Karnety roczne", "parkingOffers": "Parking" },
+    "fields": { "currencyCode": "Waluta (ISO)", "sourceUrl": "Oficjalny adres cennika", "purchaseUrl": "Ogólny adres zakupu", "lastVerifiedAtUtc": "Ostatnia weryfikacja (UTC)", "notes": "Uwagi", "code": "Unikalny kod", "audienceCategory": "Kategoria odbiorców", "sortOrder": "Kolejność", "labels": "Przetłumaczone etykiety", "names": "Przetłumaczone nazwy", "priceMode": "Tryb ceny", "amount": "Kwota", "minimumAmount": "Kwota minimalna", "maximumAmount": "Kwota maksymalna", "validFrom": "Ważne od", "validTo": "Ważne do", "offerPurchaseUrl": "Adres zakupu oferty", "conditions": "Przetłumaczone warunki" },
+    "channels": { "online": "Cena online", "gate": "Cena w kasie" },
+    "modes": { "none": "Nie podano", "Fixed": "Stała", "Range": "Przedział", "Dynamic": "Dynamiczna" },
+    "placeholders": { "localizedValue": "Wartość w języku {{ language }}", "conditions": "Warunki w języku {{ language }}" },
+    "hints": { "dynamicBounds": "Granice są opcjonalne dla ceny dynamicznej.", "admissionOffers": "Podaj kategorię, tłumaczenia i kanały sprzedaży każdego biletu.", "annualPasses": "Podaj warianty roczne i ich warunki.", "parkingOffers": "Podaj osobno przydatne opcje parkingowe." },
+    "empty": { "admissionOffers": "Brak biletów wstępu.", "annualPasses": "Brak karnetów rocznych.", "parkingOffers": "Brak ofert parkingowych." },
+    "messages": { "loading": "Wczytywanie cen…", "loadError": "Nie udało się wczytać cen.", "saveError": "Nie udało się zapisać cen.", "savedSummary": "Ceny zapisane", "savedDetail": "Cennik parku został zaktualizowany." }
+  }
+}

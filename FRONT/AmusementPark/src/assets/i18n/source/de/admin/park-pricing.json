@@ -1,0 +1,16 @@
+{
+  "adminParkPricing": {
+    "tab": "Preise", "title": "Parkpreise", "subtitle": "Verwalte die veröffentlichten Eintrittskarten, Jahreskarten und Parkgebühren dieses Parks.",
+    "kinds": { "admission": "Eintrittskarte", "annualPass": "Jahreskarte", "parking": "Parken" },
+    "offer": { "newOffer": "Neues Angebot" },
+    "actions": { "reload": "Neu laden", "save": "Preise speichern", "removeOffer": "Entfernen", "addAdmission": "Ticket hinzufügen", "addAnnualPass": "Jahreskarte hinzufügen", "addParking": "Parkangebot hinzufügen", "copyAllLanguages": "Auf alle Sprachen anwenden" },
+    "sections": { "general": "Allgemeine Angaben", "admissionOffers": "Eintrittskarten", "annualPasses": "Jahreskarten", "parkingOffers": "Parken" },
+    "fields": { "currencyCode": "Währung (ISO)", "sourceUrl": "Offizielle Preis-URL", "purchaseUrl": "Allgemeine Kauf-URL", "lastVerifiedAtUtc": "Zuletzt geprüft (UTC)", "notes": "Hinweise", "code": "Eindeutiger Code", "audienceCategory": "Besucherkategorie", "sortOrder": "Reihenfolge", "labels": "Übersetzte Bezeichnungen", "names": "Übersetzte Namen", "priceMode": "Preismodell", "amount": "Betrag", "minimumAmount": "Mindestbetrag", "maximumAmount": "Höchstbetrag", "validFrom": "Gültig ab", "validTo": "Gültig bis", "offerPurchaseUrl": "Kauf-URL des Angebots", "conditions": "Übersetzte Bedingungen" },
+    "channels": { "online": "Onlinepreis", "gate": "Kassenpreis" },
+    "modes": { "none": "Nicht angegeben", "Fixed": "Fest", "Range": "Spanne", "Dynamic": "Dynamisch" },
+    "placeholders": { "localizedValue": "Wert auf {{ language }}", "conditions": "Bedingungen auf {{ language }}" },
+    "hints": { "dynamicBounds": "Grenzen sind bei einem dynamischen Preis optional.", "admissionOffers": "Lege Kategorie, Übersetzungen und Verkaufskanäle jedes Tickets fest.", "annualPasses": "Lege Jahreskarten und ihre Bedingungen fest.", "parkingOffers": "Erfasse relevante Parkangebote getrennt." },
+    "empty": { "admissionOffers": "Keine Eintrittskarten.", "annualPasses": "Keine Jahreskarten.", "parkingOffers": "Keine Parkangebote." },
+    "messages": { "loading": "Preise werden geladen…", "loadError": "Preise konnten nicht geladen werden.", "saveError": "Preise konnten nicht gespeichert werden.", "savedSummary": "Preise gespeichert", "savedDetail": "Die Preisliste des Parks wurde aktualisiert." }
+  }
+}
