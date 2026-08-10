@@ -155,6 +155,32 @@ public sealed class ParkGraphPricingTests
     }
 
     [Fact]
+    public async Task ExportClosedParkWithRetainedPricing_Preview_ShouldTreatPricingAsAbsent()
+    {
+        Park park = CreateOperatingPark();
+        park.Status = ParkStatus.TemporarilyClosed;
+        string exportedJson = await ExportPricingAsync(park, CreatePricing());
+        using JsonDocument exportedDocument = JsonDocument.Parse(exportedJson);
+        Assert.Equal(JsonValueKind.Null, exportedDocument.RootElement.GetProperty("pricing").ValueKind);
+
+        Mock<IParkPricingRepository> importPricingRepository = new(MockBehavior.Strict);
+        ProcessorContext context = CreateProcessorContext(park, importPricingRepository, apply: false);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.PreviewAsync(
+            CreateRequest(exportedJson),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.CanApply);
+        Assert.Empty(result.Value.Errors);
+        Assert.DoesNotContain(result.Value.Changes, static change => change.EntityType == "ParkPricing");
+        context.VerifyAll();
+        importPricingRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task PreviewAsync_WhenPricingIsNotAnObject_ShouldRejectTheDocument()
     {
         Park park = CreateOperatingPark();
@@ -181,9 +207,12 @@ public sealed class ParkGraphPricingTests
             .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
         Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
-        pricingRepository
-            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(pricing);
+        if (park.Status.IsOpenToVisitors())
+        {
+            pricingRepository
+                .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+                .ReturnsAsync(pricing);
+        }
         ExportParkGraphJsonQueryHandler handler = new(
             parkRepository.Object,
             Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
@@ -202,6 +231,13 @@ public sealed class ParkGraphPricingTests
         Assert.NotNull(result.Value);
         parkRepository.VerifyAll();
         pricingRepository.VerifyAll();
+        if (!park.Status.IsOpenToVisitors())
+        {
+            pricingRepository.Verify(
+                repository => repository.GetByParkIdAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()),
+                Times.Never);
+        }
+
         return result.Value.Json;
     }
 

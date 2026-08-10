@@ -306,6 +306,13 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             CountryCode = "BE",
             Status = ParkStatus.Operating,
         };
+        Park closedPark = new Park
+        {
+            Id = "park-3",
+            Name = "Closed Pricing Park",
+            CountryCode = "DE",
+            Status = ParkStatus.TemporarilyClosed,
+        };
         ParkPricingEntity pricing = new ParkPricingEntity
         {
             ParkId = "park-1",
@@ -327,18 +334,23 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
                 },
             },
         };
+        ParkPricingEntity retainedClosedPricing = new ParkPricingEntity
+        {
+            ParkId = "park-3",
+            CurrencyCode = "EUR",
+        };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdsAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1", "park-2" })),
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1", "park-2", "park-3" })),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { park, parkWithoutPricing });
+            .ReturnsAsync(new[] { park, parkWithoutPricing, closedPark });
         Mock<IParkPricingRepository> pricingRepository = new Mock<IParkPricingRepository>(MockBehavior.Strict);
         pricingRepository
             .Setup(repository => repository.GetByParkIdsAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1", "park-2" })),
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1", "park-2", "park-3" })),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { pricing });
+            .ReturnsAsync(new[] { pricing, retainedClosedPricing });
 
         ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
             parkRepository.Object,
@@ -348,7 +360,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             new ExportBulkParkGraphJsonQuery(new ParkGraphBulkExportRequest
             {
                 SelectionMode = ParkGraphBulkParkSelectionMode.Explicit,
-                ParkIds = new[] { "park-1", "park-2" },
+                ParkIds = new[] { "park-1", "park-2", "park-3" },
                 Sections = new[] { ParkGraphExportSection.Pricing },
             }),
             CancellationToken.None);
@@ -367,6 +379,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
         Assert.Equal("2026-07-01", exportedOffer.GetProperty("validFrom").GetString());
         Assert.Equal("2026-08-31", exportedOffer.GetProperty("validTo").GetString());
         Assert.Equal(JsonValueKind.Null, document.RootElement.GetProperty("parks")[1].GetProperty("pricing").ValueKind);
+        Assert.Equal(JsonValueKind.Null, document.RootElement.GetProperty("parks")[2].GetProperty("pricing").ValueKind);
         parkRepository.VerifyAll();
         pricingRepository.VerifyAll();
         pricingRepository.Verify(

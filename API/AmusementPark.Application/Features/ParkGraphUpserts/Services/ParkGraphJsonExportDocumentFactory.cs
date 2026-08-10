@@ -95,9 +95,9 @@ internal static class ParkGraphJsonExportDocumentFactory
 
         if (sections.Contains(ParkGraphExportSection.Pricing))
         {
-            document["pricing"] = data.Pricing is null
-                ? null
-                : ParkGraphPricingExportMapper.Map(data.Pricing);
+            document["pricing"] = park.Status.IsOpenToVisitors() && data.Pricing is not null
+                ? ParkGraphPricingExportMapper.Map(data.Pricing)
+                : null;
         }
 
         if (sections.Contains(ParkGraphExportSection.History))

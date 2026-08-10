@@ -150,7 +150,9 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         Task<ParkOpeningHoursSchedule?> openingHoursTask = !includeOpeningHours || this.openingHoursRepository is null
             ? Task.FromResult<ParkOpeningHoursSchedule?>(null)
             : this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
-        Task<ParkPricingEntity?> pricingTask = !includePricing || this.pricingRepository is null
+        Task<ParkPricingEntity?> pricingTask = !includePricing
+            || this.pricingRepository is null
+            || !park.Status.IsOpenToVisitors()
             ? Task.FromResult<ParkPricingEntity?>(null)
             : this.pricingRepository.GetByParkIdAsync(park.Id, cancellationToken);
         Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = !includeHistory || this.historyEventRepository is null
@@ -239,7 +241,9 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
 
         if (includePricing)
         {
-            document["pricing"] = pricing is null ? null : ParkGraphPricingExportMapper.Map(pricing);
+            document["pricing"] = park.Status.IsOpenToVisitors() && pricing is not null
+                ? ParkGraphPricingExportMapper.Map(pricing)
+                : null;
         }
 
         if (includeHistory)
