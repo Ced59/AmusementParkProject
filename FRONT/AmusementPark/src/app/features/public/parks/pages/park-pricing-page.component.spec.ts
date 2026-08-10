@@ -93,7 +93,8 @@ describe('ParkPricingPageComponent', () => {
         history: {
           title: 'Évolution des tarifs', subtitle: 'Cinq ans', method: 'Montants source sans conversion.',
           kinds: { admission: 'Billet', annualPass: 'Pass', parking: 'Parking' },
-          increase: 'Hausse {{amount}} {{percentage}}', decrease: 'Baisse {{amount}} {{percentage}}', stable: 'Stable',
+          increase: 'Hausse {{amount}} {{percentage}}', increaseAmount: 'Hausse {{amount}}',
+          decrease: 'Baisse {{amount}} {{percentage}}', decreaseAmount: 'Baisse {{amount}}', stable: 'Stable',
           chartLabel: 'Graphique {{product}}', tableLabel: 'Tableau {{product}}', year: 'Année', currencyChanged: 'Devise modifiée {{currencies}}',
         },
         channels: { online: 'En ligne', gate: 'Au guichet' },
@@ -126,6 +127,19 @@ describe('ParkPricingPageComponent', () => {
       'Bellewaerde', 'fr', expect.any(String), 1, null,
       '/fr/park/park-1/bellewaerde/pricing',
     );
+  });
+
+  it('formats a price decrease as an unsigned magnitude', () => {
+    const pricing: ParkPricing = createPricing();
+    pricing.admissionOffers[0].onlinePrice = { mode: 'Fixed', amount: 40 };
+    pricing.historicalSnapshots![0].admissionOffers[0].onlinePrice = { mode: 'Fixed', amount: 50 };
+    parksApiService.getParkPricing.mockReturnValue(of(pricing));
+
+    const fixture: ComponentFixture<ParkPricingPageComponent> = createComponent();
+    const text: string = (fixture.nativeElement as HTMLElement).textContent ?? '';
+
+    expect(text).toContain('Baisse');
+    expect(text).not.toContain('Baisse -');
   });
 
   it('does not request current pricing for a non-operating park', () => {

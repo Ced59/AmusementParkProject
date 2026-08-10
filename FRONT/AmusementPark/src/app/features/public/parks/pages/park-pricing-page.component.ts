@@ -299,19 +299,17 @@ export class ParkPricingPageComponent implements OnInit {
     const formatter = new Intl.NumberFormat(this.currentLanguage(), {
       style: 'currency',
       currency: latest.point.currencyCode,
-      maximumFractionDigits: 2,
-      signDisplay: 'always'
+      maximumFractionDigits: 2
     });
     const percentageFormatter = new Intl.NumberFormat(this.currentLanguage(), {
       style: 'percent',
-      maximumFractionDigits: 1,
-      signDisplay: 'always'
+      maximumFractionDigits: 1
     });
 
     return {
       channel,
-      amount: formatter.format(difference),
-      percentage: percentage === null ? null : percentageFormatter.format(percentage / 100),
+      amount: formatter.format(Math.abs(difference)),
+      percentage: percentage === null ? null : percentageFormatter.format(Math.abs(percentage) / 100),
       directionKey: difference > 0
         ? percentage === null ? 'parkPricing.history.increaseAmount' : 'parkPricing.history.increase'
         : difference < 0

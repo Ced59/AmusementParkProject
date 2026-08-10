@@ -26,7 +26,7 @@ public sealed class ParkPricingDto
 
     public IReadOnlyCollection<ParkParkingPriceOfferDto> ParkingOffers { get; set; } = Array.Empty<ParkParkingPriceOfferDto>();
 
-    public IReadOnlyCollection<ParkPricingSnapshotDto> HistoricalSnapshots { get; set; } = Array.Empty<ParkPricingSnapshotDto>();
+    public IReadOnlyCollection<ParkPricingSnapshotDto>? HistoricalSnapshots { get; set; }
 }
 
 public sealed class ParkPricingSnapshotDto

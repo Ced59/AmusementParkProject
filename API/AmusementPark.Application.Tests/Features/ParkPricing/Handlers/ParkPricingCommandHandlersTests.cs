@@ -14,6 +14,52 @@ namespace AmusementPark.Application.Tests.Features.ParkPricing.Handlers;
 
 public sealed class ParkPricingCommandHandlersTests
 {
+    [Fact]
+    public async Task HandleAsync_WhenLegacyClientOmitsHistory_ShouldPreserveStoredSnapshots()
+    {
+        ParkPricingEntity pricing = CreateValidPricing();
+        ParkPricingEntity existingPricing = CreateValidPricing();
+        existingPricing.HistoricalSnapshots = new List<ParkPricingSnapshot>
+        {
+            new ParkPricingSnapshot
+            {
+                Year = 2025,
+                CurrencyCode = "EUR",
+                AdmissionOffers = CreateAdmissionOffers(35m),
+            },
+        };
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Status = ParkStatus.Operating });
+        Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existingPricing);
+        pricingRepository
+            .Setup(repository => repository.UpsertAsync(It.IsAny<ParkPricingEntity>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkPricingEntity value, CancellationToken _) => value);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new(MockBehavior.Strict);
+        sitemapRefreshScheduler
+            .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        UpsertParkPricingCommandHandler handler = new(
+            parkRepository.Object,
+            pricingRepository.Object,
+            sitemapRefreshScheduler.Object);
+
+        ApplicationResult<ParkPricingEntity> result = await handler.HandleAsync(
+            new UpsertParkPricingCommand(pricing, PreserveHistoricalSnapshots: true),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        ParkPricingSnapshot snapshot = Assert.Single(result.Value!.HistoricalSnapshots);
+        Assert.Equal(2025, snapshot.Year);
+        pricingRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        sitemapRefreshScheduler.VerifyAll();
+    }
+
     [Theory]
     [InlineData(ParkStatus.Planned)]
     [InlineData(ParkStatus.UnderConstruction)]
@@ -63,5 +109,31 @@ public sealed class ParkPricingCommandHandlersTests
             scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()),
             Times.Never);
         parkRepository.VerifyAll();
+    }
+
+    private static ParkPricingEntity CreateValidPricing()
+    {
+        return new ParkPricingEntity
+        {
+            ParkId = "park-1",
+            CurrencyCode = "EUR",
+            AdmissionOffers = CreateAdmissionOffers(39m),
+        };
+    }
+
+    private static List<ParkAdmissionPriceOffer> CreateAdmissionOffers(decimal amount)
+    {
+        return new List<ParkAdmissionPriceOffer>
+        {
+            new ParkAdmissionPriceOffer
+            {
+                Code = "adult",
+                AudienceCategory = "adult",
+                Labels = new[] { "fr", "en", "es", "de", "it", "nl", "pt", "pl" }
+                    .Select(static languageCode => new LocalizedText(languageCode, "Adult"))
+                    .ToList(),
+                OnlinePrice = new ParkPriceValue { Mode = ParkPricingMode.Fixed, Amount = amount },
+            },
+        };
     }
 }

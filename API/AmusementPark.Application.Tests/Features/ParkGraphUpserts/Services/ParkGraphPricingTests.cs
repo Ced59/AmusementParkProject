@@ -134,6 +134,66 @@ public sealed class ParkGraphPricingTests
     }
 
     [Fact]
+    public async Task ApplyAsync_WhenPricingHistoryIsOmitted_ShouldPreserveExistingSnapshots()
+    {
+        Park park = CreateOperatingPark();
+        ParkPricingEntity existingPricing = CreatePricing();
+        ParkPricingEntity? savedPricing = null;
+        Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existingPricing);
+        pricingRepository
+            .Setup(repository => repository.UpsertAsync(It.IsAny<ParkPricingEntity>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkPricingEntity, CancellationToken>((pricing, _) => savedPricing = pricing)
+            .ReturnsAsync((ParkPricingEntity pricing, CancellationToken _) => pricing);
+        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: true);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.ApplyAsync(
+            CreateRequest(CreatePricingDocumentJson()),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(savedPricing);
+        Assert.Equal(2024, Assert.Single(savedPricing.HistoricalSnapshots).Year);
+        context.VerifyAll();
+        pricingRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenPricingHistoryIsExplicitlyEmpty_ShouldClearSnapshots()
+    {
+        Park park = CreateOperatingPark();
+        ParkPricingEntity existingPricing = CreatePricing();
+        ParkPricingEntity? savedPricing = null;
+        Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existingPricing);
+        pricingRepository
+            .Setup(repository => repository.UpsertAsync(It.IsAny<ParkPricingEntity>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkPricingEntity, CancellationToken>((pricing, _) => savedPricing = pricing)
+            .ReturnsAsync((ParkPricingEntity pricing, CancellationToken _) => pricing);
+        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: true);
+        string json = CreatePricingDocumentJson().Replace(
+            "\"parkingOffers\": []",
+            "\"parkingOffers\": [], \"historicalSnapshots\": []",
+            StringComparison.Ordinal);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.ApplyAsync(
+            CreateRequest(json),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(savedPricing);
+        Assert.Empty(savedPricing.HistoricalSnapshots);
+        context.VerifyAll();
+        pricingRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task ExportWithoutPricing_Preview_ShouldTreatNullPricingAsAbsent()
     {
         Park park = CreateOperatingPark();

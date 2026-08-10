@@ -149,6 +149,12 @@ public sealed partial class ParkGraphUpsertProcessor
             return;
         }
 
+        ParkPricingEntity? existingPricing = await this.parkPricingRepository.GetByParkIdAsync(targetPark.Id, cancellationToken);
+        if (!HasProperty(patch, "historicalSnapshots") && existingPricing is not null)
+        {
+            pricing.HistoricalSnapshots = existingPricing.HistoricalSnapshots;
+        }
+
         ApplicationResult<ParkPricingEntity> normalizedResult = ParkPricingNormalizer.Normalize(pricing);
         if (!normalizedResult.IsSuccess || normalizedResult.Value is null)
         {
@@ -159,7 +165,6 @@ public sealed partial class ParkGraphUpsertProcessor
         }
 
         ParkPricingEntity normalizedPricing = normalizedResult.Value;
-        ParkPricingEntity? existingPricing = await this.parkPricingRepository.GetByParkIdAsync(targetPark.Id, cancellationToken);
         bool isNew = existingPricing is null || !ParkPricingNormalizer.HasPublicPricingData(existingPricing);
 
         AddPricingChanges(change, existingPricing, normalizedPricing);

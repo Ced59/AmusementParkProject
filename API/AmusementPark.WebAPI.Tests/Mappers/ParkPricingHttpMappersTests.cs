@@ -120,6 +120,8 @@ public sealed class ParkPricingHttpMappersTests
         ParkPricingDto publicDto = pricing.ToPublicHttp();
         ParkPricingDto adminDto = pricing.ToHttp();
 
+        Assert.NotNull(publicDto.HistoricalSnapshots);
+        Assert.NotNull(adminDto.HistoricalSnapshots);
         Assert.Equal(10, publicDto.HistoricalSnapshots.Count);
         Assert.Equal(2014, publicDto.HistoricalSnapshots.First().Year);
         Assert.Equal(15, adminDto.HistoricalSnapshots.Count);

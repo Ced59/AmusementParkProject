@@ -86,7 +86,9 @@ public sealed class ParkPricingController : ControllerBase
         }
 
         ApplicationResult<ParkPricingEntity> result = await this.upsertPricingCommandHandler.HandleAsync(
-            new UpsertParkPricingCommand(mappingResult.Value),
+            new UpsertParkPricingCommand(
+                mappingResult.Value,
+                PreserveHistoricalSnapshots: request.HistoricalSnapshots is null),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

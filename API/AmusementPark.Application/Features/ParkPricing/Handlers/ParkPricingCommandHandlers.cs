@@ -28,6 +28,17 @@ public sealed class UpsertParkPricingCommandHandler : ICommandHandler<UpsertPark
 
     public async Task<ApplicationResult<ParkPricingEntity>> HandleAsync(UpsertParkPricingCommand command, CancellationToken cancellationToken = default)
     {
+        if (command.PreserveHistoricalSnapshots && !string.IsNullOrWhiteSpace(command.Pricing.ParkId))
+        {
+            ParkPricingEntity? existingPricing = await this.pricingRepository.GetByParkIdAsync(
+                command.Pricing.ParkId.Trim(),
+                cancellationToken);
+            if (existingPricing is not null)
+            {
+                command.Pricing.HistoricalSnapshots = existingPricing.HistoricalSnapshots;
+            }
+        }
+
         ApplicationResult<ParkPricingEntity> normalizedResult = ParkPricingNormalizer.Normalize(command.Pricing);
         if (!normalizedResult.IsSuccess || normalizedResult.Value is null)
         {

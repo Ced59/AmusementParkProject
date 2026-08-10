@@ -73,7 +73,7 @@ internal static class ParkPricingHttpMappers
     public static ParkPricingDto ToPublicHttp(this ParkPricingEntity pricing, int maximumHistoricalSnapshots = 10)
     {
         ParkPricingDto dto = pricing.ToHttp();
-        dto.HistoricalSnapshots = dto.HistoricalSnapshots
+        dto.HistoricalSnapshots = (dto.HistoricalSnapshots ?? Array.Empty<ParkPricingSnapshotDto>())
             .OrderByDescending(static snapshot => snapshot.Year)
             .Take(Math.Max(0, maximumHistoricalSnapshots))
             .ToList();
