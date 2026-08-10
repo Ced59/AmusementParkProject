@@ -41,6 +41,7 @@ describe('ParkPricingPageComponent', () => {
     seoService = {
       applyParkPricingSeo: vi.fn().mockName('SeoService.applyParkPricingSeo'),
       applyParkUnavailableFeatureSeo: vi.fn().mockName('SeoService.applyParkUnavailableFeatureSeo'),
+      applyNotFoundSeo: vi.fn().mockName('SeoService.applyNotFoundSeo'),
     } as unknown as MockedObject<SeoService>;
     ssrHttpStatusService = {
       setNotFound: vi.fn().mockName('SsrHttpStatusService.setNotFound'),
@@ -168,6 +169,24 @@ describe('ParkPricingPageComponent', () => {
       'Walibi Belgium', 'fr', expect.any(String), 1, null,
       '/fr/park/park-2/walibi-belgium/pricing',
     );
+  });
+
+  it('clears the previous park SEO when navigation resolves to a missing park', () => {
+    parksApiService.getParkDetailSummary.mockImplementation(
+      (parkId: string): Observable<ParkDetailSummary> => parkId === 'park-1'
+        ? of(createSummary())
+        : throwError(() => new HttpErrorResponse({ status: 404 })),
+    );
+    const fixture: ComponentFixture<ParkPricingPageComponent> = createComponent();
+
+    expect(seoService.applyParkPricingSeo).toHaveBeenCalledTimes(1);
+
+    routeParamMap.next(convertToParamMap({ id: 'missing-park', lang: 'fr' }));
+    fixture.detectChanges();
+
+    expect(ssrHttpStatusService.setNotFound).toHaveBeenCalled();
+    expect(seoService.applyNotFoundSeo).toHaveBeenCalledWith('fr', expect.any(String));
+    expect(seoService.applyParkPricingSeo).toHaveBeenCalledTimes(1);
   });
 
   function createComponent(): ComponentFixture<ParkPricingPageComponent> {

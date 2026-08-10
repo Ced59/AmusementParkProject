@@ -250,7 +250,9 @@ export class ParkPricingPageComponent implements OnInit {
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         if (hasHttpStatus(error, 404)) {
-          this.stateStore.setEmpty(previousData);
+          this.stateStore.setEmpty();
+          this.detailLink.set(null);
+          this.seoService.applyNotFoundSeo(this.currentLanguage(), this.router.url);
           return EMPTY;
         }
 
