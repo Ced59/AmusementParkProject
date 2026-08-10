@@ -46,7 +46,7 @@ Dans les deux modes, utiliser l’état initial consolidé à l’étape 0 et de
 - Pour un parc fermé, utiliser un logo historique dont le lien avec la période d’exploitation est documenté.
 - Le logo utilise la catégorie `Logo`, reste sans watermark ajouté et devient l’image logo courante. Une photo principale du parc reste une image distincte.
 - Si aucun fichier acceptable n’est importable à l’étape 1, inscrire la recherche et l’import comme obligation de l’étape 5, pas comme enrichissement facultatif.
-- Après import, vérifier que l’image est bien rattachée au parc et définie comme logo courant à partir de la réponse d’import, inscrire le résultat au registre consolidé, puis le confirmer dans l’export complet préalable à l’étape 8. Contrôler aussi la restitution publique avant publication.
+- Après import, vérifier que l’image est bien rattachée au parc et définie comme logo courant à partir de la réponse d’import, inscrire le résultat au registre consolidé, puis le confirmer dans l’export complet préalable à l’étape 9. Contrôler aussi la restitution publique avant publication.
 
 ## Références incluses dans cette étape
 

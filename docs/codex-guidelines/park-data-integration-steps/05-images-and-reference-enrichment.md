@@ -56,7 +56,7 @@ Rechercher systématiquement, quand l’entité est applicable :
 - au moins une image fidèle de chaque attraction actuelle ;
 - au moins une image fidèle de chaque attraction annoncée ou en construction, en distinguant chantier, rendu officiel et attraction ouverte ;
 - au moins une image historique contextualisée de chaque attraction définitivement fermée ;
-- une image contextualisée pour chaque jalon historique visible et chaque article, à acquérir ici ou dans le lot d’étape 7 qui crée le contenu ;
+- une image contextualisée pour chaque jalon historique visible et chaque article, à acquérir ici ou dans le lot d’étape 8 qui crée le contenu ;
 - les images utiles des références importantes quand une source adaptée existe.
 
 Une même image peut illustrer plusieurs contenus seulement si elle reste réellement pertinente dans chacun de ces contextes. Ne pas réutiliser mécaniquement une vue générale du parc pour masquer l’absence d’une photo de l’attraction, du jalon ou de l’article concerné.
@@ -354,10 +354,10 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 - Les crédits sont lisibles pour un visiteur.
 - Les logos ne sont pas confondus avec des photos.
 - Le logo officiel courant est présent, sans watermark ajouté, rattaché au parc et marqué comme courant, ou son absence après recherche est documentée comme lacune.
-- Les nouvelles images du lot restent non publiées tant que l’autorisation explicite de l’étape 8 n’a pas été donnée.
+- Les nouvelles images du lot restent non publiées tant que l’autorisation explicite de l’étape 9 n’a pas été donnée.
 - Chaque attraction actuelle, annoncée, en construction ou définitivement fermée a au moins une image fidèle, ou une exception de recherche précisément documentée.
 - Chaque image a été inspectée visuellement et ne porte aucun watermark ou logo incrusté d’un site tiers.
-- Chaque jalon et article déjà présent possède une image contextualisée quand une image acceptable est trouvable ; les images manquantes sont inscrites au registre de reprise de l’étape 7.
+- Chaque jalon et article déjà présent possède une image contextualisée quand une image acceptable est trouvable ; les images manquantes sont inscrites au registre de reprise de l’étape 8.
 - Les `altTexts`, `captions` et `description` sont naturels et éditoriaux, sans formulation technique, mécanique ou justificative.
 - Les huit versions des `altTexts` et `captions` décrivent le même sujet avec une langue naturelle ; aucune traduction ne retombe sur un libellé générique du seul nom de l’attraction si la scène permet davantage.
 - Les images historiques ne prétendent pas montrer une date ou un état qu’elles ne montrent pas.
@@ -368,7 +368,7 @@ Appliquer la même règle avec `operator:<key>` et `references.operators`, ou `f
 
 Pour récupérer les IDs d’images avant de les référencer dans l’histoire, utiliser les IDs retournés par les imports et conservés dans le registre consolidé ; demander un export ciblé de la section `Images` seulement si la réponse ne fournit pas l’identifiant indispensable. Aucun export complet intermédiaire n’est nécessaire.
 
-Calculer provisoirement la couverture depuis le registre consolidé, puis confirmer les valeurs avec l’export complet frais précédant l’étape 8 :
+Calculer provisoirement la couverture depuis le registre consolidé, puis confirmer les valeurs avec l’export complet frais précédant l’étape 9 :
 
 - logo officiel : présent et courant / absent ;
 - image principale du parc : présente / absente ;

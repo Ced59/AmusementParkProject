@@ -1,6 +1,6 @@
 # AmusementPark — Enums JSON Park Graph Upsert
 
-Version : **2026-08-07-r1**
+Version : **2026-08-09-r2**
 
 Ce fichier liste les valeurs enum à utiliser dans les JSON `AmusementParkParkGraphUpsert` et `standaloneAttractionGraph`.
 
@@ -192,6 +192,16 @@ Exemples :
 | `openingHours.regularRules[].daysOfWeek[]` | `DayOfWeek` | `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday` |
 
 Les dates d’horaires utilisent `yyyy-MM-dd`. Les heures utilisent `HH:mm`.
+
+## Tarifs
+
+| Champ JSON | Enum | Valeurs |
+| --- | --- | --- |
+| `pricing.admissionOffers[].onlinePrice.mode` / `gatePrice.mode` | `ParkPricingMode` | `Fixed`, `Range`, `Dynamic` |
+| `pricing.annualPasses[].onlinePrice.mode` / `gatePrice.mode` | `ParkPricingMode` | `Fixed`, `Range`, `Dynamic` |
+| `pricing.parkingOffers[].onlinePrice.mode` / `gatePrice.mode` | `ParkPricingMode` | `Fixed`, `Range`, `Dynamic` |
+
+`Fixed` exige `amount`. `Range` exige `minimumAmount` et `maximumAmount`. `Dynamic` accepte des bornes facultatives. Dans tous les cas, les montants restent positifs ou nuls et une borne minimale ne dépasse jamais la borne maximale.
 
 ## Histoire
 

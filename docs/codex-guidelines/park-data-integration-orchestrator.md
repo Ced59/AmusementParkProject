@@ -1,6 +1,6 @@
 # AmusementPark — Orchestrateur d’intégration des données d’un parc
 
-Version : **2026-08-06-r3**
+Version : **2026-08-09-r4**
 Projet : **amusement-parks.fun**  
 Usage : fichier d’entrée à donner à ChatGPT/Codex pour intégrer progressivement les données d’un parc avec des JSON Park Graph Upsert.
 
@@ -9,11 +9,11 @@ Cet orchestrateur sert à éviter les JSON trop gros, les oublis de cohérence e
 ## Deux modes d’exécution, une seule exigence éditoriale
 
 - **ChatGPT guidé** : l’utilisateur fournit les informations existantes et les résultats actualisés utiles, exécute ou valide Preview/Apply et décide du passage à l’étape suivante. ChatGPT livre un seul lot à la fois.
-- **Codex autonome par API** : la commande `Complète le parc <nom>` autorise Codex à exécuter de bout en bout toutes les étapes applicables avec `codex-park-data-editor-api-workflow.md`, sans demander une validation intermédiaire à chaque lot. Codex recherche l’existant, ne demande que les sections précises dont il a besoin, prévisualise, applique, contrôle les reçus, consolide localement les résultats, effectue l’unique export complet obligatoire juste avant l’étape 8 et audite lui-même.
+- **Codex autonome par API** : la commande `Complète le parc <nom>` autorise Codex à exécuter de bout en bout toutes les étapes applicables avec `codex-park-data-editor-api-workflow.md`, sans demander une validation intermédiaire à chaque lot. Codex recherche l’existant, ne demande que les sections précises dont il a besoin, prévisualise, applique, contrôle les reçus, consolide localement les résultats, intègre les tarifs actuels quand le parc est `Operating`, effectue l’unique export complet obligatoire juste avant l’étape 9 et audite lui-même.
 
-Les deux modes utilisent les mêmes étapes 0 à 8, les mêmes règles métier, la même qualité éditoriale et le même seuil de complétude. Seuls l’opérateur technique et les points de pause diffèrent.
+Les deux modes utilisent les mêmes étapes 0 à 9, les mêmes règles métier, la même qualité éditoriale et le même seuil de complétude. Seuls l’opérateur technique et les points de pause diffèrent.
 
-`Complète le parc <nom>` n’autorise pas la publication. Codex s’arrête après l’étape 8 avec un état `prêt pour publication` ou une liste précise de lacunes. Une demande distincte et explicite est nécessaire pour publier les nouvelles images, rendre visibles le parc et les nouveaux contenus, valider leur statut ou déclencher toute annonce de publication.
+`Complète le parc <nom>` n’autorise pas la publication. Codex s’arrête après l’étape 9 avec un état `prêt pour publication` ou une liste précise de lacunes. Une demande distincte et explicite est nécessaire pour publier les nouvelles images, rendre visibles le parc et les nouveaux contenus, valider leur statut ou déclencher toute annonce de publication.
 
 ## Règle de contexte obligatoire
 
@@ -21,7 +21,7 @@ En mode ChatGPT, avant l’étape 0, l’utilisateur fournit les informations ex
 
 En mode ChatGPT guidé, avant chaque nouvelle étape, l’état de référence est le registre consolidé avec les résultats de Preview/Apply ou d’import de l’étape précédente. ChatGPT ne demande un export ciblé que si une information précise manque pour produire le lot suivant.
 
-En mode Codex autonome, l’état de référence des étapes 0 à 7 est un registre local consolidé à partir de la recherche du parc, des éventuels exports ciblés et de chaque réponse réussie de Preview, Apply et d’import d’image. Codex ne lance aucun export complet au cadrage, après un Apply ou un import, entre deux lots, ni lors du passage d’une étape à la suivante. Il effectue l’unique export complet obligatoire immédiatement avant l’audit de l’étape 8. Avant ce jalon, un export limité aux seules sections nécessaires est admis uniquement pour résoudre une identité, une incohérence précise, récupérer une réponse de mutation manquante ou lever un doute qui ne peut pas être résolu par les reçus locaux.
+En mode Codex autonome, l’état de référence des étapes 0 à 8 est un registre local consolidé à partir de la recherche du parc, des éventuels exports ciblés et de chaque réponse réussie de Preview, Apply et d’import d’image. Codex ne lance aucun export complet au cadrage, après un Apply ou un import, entre deux lots, ni lors du passage d’une étape à la suivante. Il effectue l’unique export complet obligatoire immédiatement avant l’audit de l’étape 9. Avant ce jalon, un export limité aux seules sections nécessaires est admis uniquement pour résoudre une identité, une incohérence précise, récupérer une réponse de mutation manquante ou lever un doute qui ne peut pas être résolu par les reçus locaux.
 
 En mode ChatGPT, chaque réponse doit produire un seul livrable principal :
 
@@ -33,7 +33,7 @@ Quand le livrable principal est un JSON upsert, le JSON doit être fourni sous f
 
 En mode Codex autonome, la même limite s’applique à chaque lot API, mais Codex peut enchaîner plusieurs lots et étapes dans le même tour. Il conserve les artefacts de travail hors du dépôt, informe brièvement l’utilisateur de sa progression et livre à la fin un bilan consolidé plutôt qu’un fichier à appliquer manuellement pour chaque lot.
 
-Pour limiter la charge lorsque plusieurs intégrations travaillent en parallèle, ne pas demander un export complet après chaque lot. Le reçu d’Apply, ses erreurs, warnings et compteurs constituent le contrôle normal entre deux lots. Un export ciblé sur les seules sections utiles reste nécessaire si la réponse d’Apply est ambiguë, si un lot suivant dépend d’un identifiant nouvellement créé ou si une vérification précise l’exige. Un export complet frais est obligatoire une seule fois, immédiatement avant l’audit de l’étape 8.
+Pour limiter la charge lorsque plusieurs intégrations travaillent en parallèle, ne pas demander un export complet après chaque lot. Le reçu d’Apply, ses erreurs, warnings et compteurs constituent le contrôle normal entre deux lots. Un export ciblé sur les seules sections utiles reste nécessaire si la réponse d’Apply est ambiguë, si un lot suivant dépend d’un identifiant nouvellement créé ou si une vérification précise l’exige. Un export complet frais est obligatoire une seule fois, immédiatement avant l’audit de l’étape 9.
 
 Nommer les fichiers de façon lisible et traçable, par exemple `park-slug-step-03-items-lot-1-YYYYMMDD.json`.
 
@@ -53,7 +53,7 @@ Codex reprend ces informations dans ses points d’avancement et dans le bilan f
 
 ## Règle de parcours strict
 
-Le parcours officiel est uniquement celui défini ci-dessous, de l’étape 0 à l’étape 8. Ne jamais inventer une nouvelle étape, renommer une étape, insérer une étape intermédiaire, fusionner deux étapes ou réordonner le parcours pendant l’intégration d’un parc.
+Le parcours officiel est uniquement celui défini ci-dessous, de l’étape 0 à l’étape 9. Ne jamais inventer une nouvelle étape, renommer une étape, insérer une étape intermédiaire, fusionner deux étapes ou réordonner le parcours pendant l’intégration d’un parc.
 
 Quand l’utilisateur demande `Go étape N`, lire l’orchestrateur puis le fichier exact de l’étape N, et produire seulement le livrable de cette étape. Ne pas recommencer une étape précédente, ne pas anticiper une étape future et ne pas remplacer l’étape demandée par un découpage jugé plus logique.
 
@@ -64,7 +64,7 @@ Les références ne forment pas une étape autonome :
 - les fondateurs et exploitants nécessaires à la fiche parc se traitent à l’étape 1 ;
 - les constructeurs nécessaires aux parkItems se traitent à l’étape 3 ;
 - les biographies de références et les images de références se traitent à l’étape 5 ou dans un lot de descriptions prévu par l’étape 4 ;
-- les références utiles à l’histoire se réutilisent à l’étape 7, sans créer un nouveau bloc de workflow.
+- les références utiles à l’histoire se réutilisent à l’étape 8, sans créer un nouveau bloc de workflow.
 
 Si une information utile à l’étape demandée exige une référence, résoudre cette référence dans le JSON de l’étape en cours ou vérifier qu’elle existe déjà dans l’export. Ne pas créer une étape “références” ou “pré-références”.
 
@@ -142,13 +142,13 @@ Utiliser le mode `merge` sauf demande contraire. Sélectionner aussi le parc cib
 }
 ```
 
-Ajouter seulement les sections utiles à l’étape : `references`, `park`, `zones`, `items`, `images`, `openingHours`, `history`.
+Ajouter seulement les sections utiles à l’étape : `references`, `park`, `zones`, `items`, `images`, `openingHours`, `pricing`, `history`.
 
 Les textes localisés des upserts actuels utilisent les codes courts présents dans les exports : `fr`, `en`, `de`, `nl`, `it`, `es`, `pl`, `pt`. Si un export existant utilise une autre forme, garder la forme déjà présente.
 
 ## Flux attraction fixe isolée
 
-Si l’étape 0 conclut que l’entité est une attraction fixe isolée, ne pas continuer le parcours parc 1 à 8. Lire `standalone-attraction-data-integration.md` et utiliser un document `standaloneAttractionGraph`.
+Si l’étape 0 conclut que l’entité est une attraction fixe isolée, ne pas continuer le parcours parc 1 à 9. Lire `standalone-attraction-data-integration.md` et utiliser un document `standaloneAttractionGraph`.
 
 Règles spécifiques :
 
@@ -273,17 +273,25 @@ Cette étape ne produit un bloc `openingHours` que pour `Operating`. Pour les ci
 
 Sortie attendue : JSON upsert centré sur `openingHours`, et éventuellement quelques événements `history` seulement s’ils ont une vraie valeur durable.
 
-### Étape 7 — Histoire du parc et des parkItems
+### Étape 7 — Tarifs actuels
 
-Lire `park-data-integration-steps/07-history-timelines-and-articles.md`.
+Lire `park-data-integration-steps/07-pricing.md`.
+
+Objectif : intégrer, uniquement pour un parc `Operating`, une grille actuelle vérifiée comprenant les billets d’entrée, pass annuels et offres de parking, avec devise, canaux en ligne/guichet, périodes, conditions localisées et liens officiels.
+
+Sortie attendue : un JSON upsert centré sur `pricing`, prévisualisé puis appliqué par le flux normal. Pour un autre statut, consigner que l’étape est non applicable et ne pas créer de grille actuelle.
+
+### Étape 8 — Histoire du parc et des parkItems
+
+Lire `park-data-integration-steps/08-history-timelines-and-articles.md`.
 
 Objectif : créer la timeline du parc, puis les timelines des parkItems importants, avec articles seulement quand le sujet le mérite. Les résumés expliquent le fait et sa portée ; les articles durables développent plusieurs sections localisées et ne se réduisent pas à deux paragraphes courts.
 
 Sortie attendue : JSON upsert centré sur `history.events`, en plusieurs lots.
 
-### Étape 8 — Audit final
+### Étape 9 — Audit final
 
-Lire `park-data-integration-steps/08-final-audit-and-publication.md`.
+Lire `park-data-integration-steps/09-final-audit-and-publication.md`.
 
 Objectif : vérifier cohérence, sources, localisations, références, images, statut de visibilité, SEO public et absence de données inventées.
 
@@ -329,7 +337,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Résoudre toutes les clés utilisées : `zoneKey`, `manufacturerKey`, `operatorKey`, `founderKey`, `ownerKey`, `itemKey`, `imageKey`.
 - Chercher systématiquement les conditions d’accès de chaque attraction et les intégrer dans `items[].attractionDetails.accessConditions[]` quand elles sont fiables.
 - Ne livrer aucune image dont le propriétaire ne peut pas être résolu à partir de l’état de référence ou des références/items créés dans le même JSON.
-- Pendant une commande de complétude, conserver toute nouvelle image en `isPublished: false`, y compris pour un parc déjà public. La publication des médias appartient à la phase explicitement autorisée de l’étape 8.
+- Pendant une commande de complétude, conserver toute nouvelle image en `isPublished: false`, y compris pour un parc déjà public. La publication des médias appartient à la phase explicitement autorisée de l’étape 9.
 - Vérifier les descriptions ou biographies manquantes des constructeurs, fondateurs et exploitants associés au parc ; les compléter à l’étape 5 ou signaler explicitement l’absence de source fiable.
 - Préserver les données existantes en mode `merge` : IDs, images, rattachements, coordonnées, biographies et contenus validés.
 - Garder les éléments fermés mais confirmés visibles quand ils sont pertinents pour la fiche ou l’histoire.
@@ -351,7 +359,7 @@ Ces règles remplacent les anciennes guidelines séparées et s’appliquent à 
 - Garder les horaires et événements datés sourcés, actuels et séparés des tarifs.
 - Réserver les libellés et raisons visibles dans le calendrier aux événements nommés, exceptions datées ou informations temporaires utiles ; ne jamais répéter un commentaire général sur tous les jours normaux.
 - Créer un article seulement si le sujet a une vraie valeur éditoriale durable.
-- Développer les résumés de timeline autour du fait et de sa conséquence historique. Pour les sujets durables d’un parc majeur, appliquer les bandes de profondeur et la structure de l’étape 7 ; une succession de blocs présents mais trop courts reste une dette éditoriale.
+- Développer les résumés de timeline autour du fait et de sa conséquence historique. Pour les sujets durables d’un parc majeur, appliquer les bandes de profondeur et la structure de l’étape 8 ; une succession de blocs présents mais trop courts reste une dette éditoriale.
 - Pour un incident ou accident trouvé sur un parkItem, créer obligatoirement un article associé quand l’événement est sourcé et retenu, avec une photo contextualisée si une image acceptable est trouvable.
 - Rédiger les événements et articles historiques pour les visiteurs, sans note d’audit interne, justification de méthode, “repère documentaire prudent” ou formulation mécanique sur une présence seulement documentée.
 - Pour les articles et événements historiques, utiliser uniquement des sources dont les liens répondent au moment de la génération. Si la page d’origine ne répond plus, utiliser une archive fiable ou une autre source valide ; sinon retirer la source et documenter la limite.

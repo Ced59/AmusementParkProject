@@ -27,7 +27,7 @@ param(
 
     [string]$OutputPath,
 
-    [ValidateSet('ParkBasics', 'ParkAudience', 'ParkLocation', 'ParkAdministration', 'ParkDescriptions', 'ParkHomeFeature', 'References', 'Zones', 'Items', 'Images', 'OpeningHours', 'History')]
+    [ValidateSet('ParkBasics', 'ParkAudience', 'ParkLocation', 'ParkAdministration', 'ParkDescriptions', 'ParkHomeFeature', 'References', 'Zones', 'Items', 'Images', 'OpeningHours', 'Pricing', 'History')]
     [string[]]$Sections = @(),
 
     [ValidateRange(30, 900)]
@@ -488,6 +488,7 @@ function Export-ParkGraph {
             'Items',
             'Images',
             'OpeningHours',
+            'Pricing',
             'History'
         )
     }

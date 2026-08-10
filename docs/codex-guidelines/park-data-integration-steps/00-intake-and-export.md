@@ -74,7 +74,7 @@ L’étape 0 doit ouvrir un registre des lacunes. Une donnée ou une image ne pe
 
 ## Plan de sous-lots recommandé
 
-Pour un parc majeur, préparer des sous-lots à l’intérieur des étapes officielles. Cette liste aide à éviter la saturation, mais ne remplace jamais le parcours 0 à 8 de l’orchestrateur.
+Pour un parc majeur, préparer des sous-lots à l’intérieur des étapes officielles. Cette liste aide à éviter la saturation, mais ne remplace jamais le parcours 0 à 9 de l’orchestrateur.
 
 Exemples de sous-lots possibles :
 
@@ -84,16 +84,17 @@ Exemples de sous-lots possibles :
 - étape 4 : descriptions du parc, des zones, puis des parkItems par petits lots ;
 - étape 5 : images, logos et enrichissement de références ;
 - étape 6 : horaires et exceptions datées ;
-- étape 7 : histoire du parc, puis histoire des parkItems majeurs ;
-- étape 8 : audit final.
+- étape 7 : tarifs actuels, billets, pass annuels et parking si le parc est `Operating` ;
+- étape 8 : histoire du parc, puis histoire des parkItems majeurs ;
+- étape 9 : audit final.
 
 Ne pas proposer une étape nouvelle. Si un sujet semble manquer, le rattacher à l’étape officielle où il appartient et expliquer ce rattachement.
 
 ## Règle d’export
 
-Dans les deux modes, aucun export complet n’est obligatoire pendant les étapes 0 à 7, y compris pour établir l’état initial. Tenir un état de travail consolidé avec la recherche du parc, les éventuels exports ciblés et les réponses Preview/Apply ou d’import d’image. L’unique export complet obligatoire du parcours a lieu immédiatement avant l’audit de l’étape 8.
+Dans les deux modes, aucun export complet n’est obligatoire pendant les étapes 0 à 8, y compris pour établir l’état initial. Tenir un état de travail consolidé avec la recherche du parc, les éventuels exports ciblés et les réponses Preview/Apply ou d’import d’image. L’unique export complet obligatoire du parcours a lieu immédiatement avant l’audit de l’étape 9.
 
-Avant l’étape 8, un export limité à certaines sections est autorisé seulement pour identifier l’existant ou résoudre une incohérence précise, une réponse de mutation manquante, un ID indispensable ou une dépendance absente des résultats. Il ne doit pas devenir une vérification systématique.
+Avant l’étape 9, un export limité à certaines sections est autorisé seulement pour identifier l’existant ou résoudre une incohérence précise, une réponse de mutation manquante, un ID indispensable ou une dépendance absente des résultats. Il ne doit pas devenir une vérification systématique.
 
 Après chaque Apply, contrôler `isApplied`, les erreurs, warnings, compteurs et changements avant de les reporter dans l’état consolidé.
 
@@ -104,7 +105,7 @@ Le registre local Codex conserve notamment :
 - les avertissements corrigés ou explicitement acceptés ;
 - les images importées, leurs IDs et leur statut courant attendu ;
 - les données existantes à ne pas écraser ;
-- les compteurs de couverture et les lacunes à confirmer par l’export complet préalable à l’étape 8.
+- les compteurs de couverture et les lacunes à confirmer par l’export complet préalable à l’étape 9.
 
 ## Sortie attendue
 
