@@ -11,6 +11,7 @@ describe('SSR HTML response writer', () => {
     writeSsrHtmlResponse('GET', response, html);
 
     expect(response.contentType).toBe('html');
+    expect(response.headers.get('X-Accel-Buffering')).toBe('no');
     expect(response.headers.get('Content-Length')).toBe('46');
     expect(response.endedChunk).toBe(html);
     expect(response.endedEncoding).toBe('utf8');
@@ -27,6 +28,7 @@ describe('SSR HTML response writer', () => {
     );
 
     expect(response.contentType).toBe('html');
+    expect(response.headers.get('X-Accel-Buffering')).toBe('no');
     expect(response.headers.get('Content-Length')).toBe('46');
     expect(response.endedChunk).toBeUndefined();
     expect(response.endedEncoding).toBeUndefined();

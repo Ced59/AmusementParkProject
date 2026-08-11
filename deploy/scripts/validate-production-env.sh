@@ -258,6 +258,7 @@ validate_boolean SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED
 
 if [ "${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}" = "true" ]; then
   social_publishing_required_names=(
+    FACEBOOK_APP_ID
     SOCIAL_PUBLISHING_FACEBOOK_API_VERSION
     SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID
     SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN
@@ -269,6 +270,11 @@ if [ "${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}" = "true" ]; then
     require_value "${social_publishing_name}"
     reject_placeholder "${social_publishing_name}"
   done
+
+  if [[ ! "${FACEBOOK_APP_ID:-}" =~ ^[0-9]+$ ]]; then
+    echo "ERROR: FACEBOOK_APP_ID must contain digits only when Facebook publishing is enabled." >&2
+    errors=$((errors + 1))
+  fi
 
   if [[ ! "${SOCIAL_PUBLISHING_FACEBOOK_API_VERSION:-}" =~ ^v[0-9]+\.[0-9]+$ ]]; then
     echo "ERROR: SOCIAL_PUBLISHING_FACEBOOK_API_VERSION must use the v<major>.<minor> format." >&2

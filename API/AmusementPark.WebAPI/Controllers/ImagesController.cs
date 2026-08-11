@@ -495,6 +495,8 @@ public sealed class ImagesController : ControllerBase
 
     [HttpGet("binary/{imageId}/social-preview-v1")]
     [HttpHead("binary/{imageId}/social-preview-v1")]
+    [HttpGet("binary/{imageId}/social-preview-v2")]
+    [HttpHead("binary/{imageId}/social-preview-v2")]
     [AllowAnonymous]
     public async Task<IActionResult> GetSocialPreviewImageAsync(
         [FromRoute] string imageId,

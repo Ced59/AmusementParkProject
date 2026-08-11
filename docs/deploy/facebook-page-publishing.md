@@ -26,6 +26,7 @@ Références officielles : [collection Facebook API de Meta](https://www.postman
 
 Dans l’environnement GitHub Actions `production` :
 
+- créer le secret `PROD_FACEBOOK_APP_ID` avec l’identifiant numérique public de l’application Meta ;
 - créer le secret `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN` ;
 - créer la variable `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID` ;
 - créer la variable `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL` avec l’URL publique exacte de la Page ;
@@ -33,6 +34,8 @@ Dans l’environnement GitHub Actions `production` :
 - après vérification de l’état « configuré » dans `/fr/admin/social-publications`, passer `PROD_SOCIAL_PUBLISHING_FACEBOOK_ENABLED=true` et redéployer.
 
 La version Graph API est configurable par `PROD_SOCIAL_PUBLISHING_FACEBOOK_API_VERSION`. Lors d’une montée de version Meta, la modifier sans changement de code après validation dans l’environnement de test.
+
+Quand `PROD_SOCIAL_PUBLISHING_FACEBOOK_ENABLED=true`, `PROD_FACEBOOK_APP_ID` est obligatoire. Le déploiement valide sa présence et le frontend SSR refuse de démarrer si cette configuration est incohérente. `PROD_FACEBOOK_APP_SECRET` reste réservé à Facebook OAuth : il n’est pas requis pour publier sur la Page ni pour émettre `fb:app_id`.
 
 ## Synchronisation des modifications et suppressions
 
@@ -55,9 +58,13 @@ Les liens manuels sont volontairement limités à l’origine publique configur�
 
 Dans l’administration, le collage d’une URL publique reconnue prépare automatiquement le texte bilingue déjà utilisé pour les annonces de parc et l’adapte au nom de la fiche parc, du parkItem, de la vidéo ou de la page. Le texte reste modifiable avant l’envoi.
 
-Pour les cibles liées à un parc ou un parkItem, les images publiques rattachées à cette entité sont présentées dans un carrousel paginé. Le choix par défaut conserve l’image Open Graph actuelle. Une sélection ajoute au lien publié le paramètre réservé `facebook-image` ; le rendu SSR remplace alors uniquement `og:image` et `twitter:image` pour cette exploration. Le canonical, la description, le titre et les règles SEO de la page restent inchangés.
+Pour les cibles liées à un parc ou un parkItem, les images publiques rattachées à cette entité sont présentées dans un carrousel paginé. Le choix par défaut conserve l’image Open Graph actuelle. Une sélection ajoute au lien publié le paramètre réservé `facebook-image` ; le rendu SSR remplace alors, après l’optimisation robot, l’unique `og:image`, `og:image:secure_url` et `twitter:image` pour cette exploration. Le canonical, la description, le titre et les règles SEO de la page restent inchangés.
 
 Le backend ne fait jamais confiance à l’identifiant envoyé par l’interface : il vérifie à nouveau que l’image est publiée, qu’elle appartient exactement au parc ou au parkItem résolu depuis l’URL et que sa catégorie correspond. Les pages sans propriétaire d’image restent sur leur aperçu automatique.
+
+La variante publique actuelle est `social-preview-v2`. L’ancienne route `social-preview-v1` reste lisible pour les publications existantes. La version d’URL fournit un cache-busting déterministe lors d’une évolution de la variante ; elle ne change pas à chaque requête. Les réponses exigent une revalidation et le stockage vérifie toujours la révision de l’image source avant de réutiliser un JPEG généré.
+
+Le frontend demande au reverse proxy public de ne pas bufferiser les réponses HTML/API dynamiques. Le déploiement télécharge en plus une page publique non compressée et vérifie que le corps reçu correspond à `Content-Length`, afin de détecter une régression de transport telle qu’une coupure à 64 Kio.
 
 Les mêmes garanties sont disponibles au workflow Codex explicite via `ResolveFacebookPublication` puis `PublishFacebook`. Cette surface accepte le texte automatique en omettant `Message`, un texte personnalisé, et seulement une image issue du brouillon paginé de la cible.
 

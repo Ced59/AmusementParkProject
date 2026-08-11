@@ -1,4 +1,7 @@
-import { isApiHeaderHiddenFromPublicProxy } from './public-api-header-policy';
+import {
+  isApiHeaderHiddenFromPublicProxy,
+  isHopByHopHttpHeader,
+} from './public-api-header-policy';
 
 describe('public API header policy', () => {
   it('hides upstream headers owned by the public edge or SSR layer', () => {
@@ -12,6 +15,16 @@ describe('public API header policy', () => {
       true,
     );
     expect(isApiHeaderHiddenFromPublicProxy('X-Powered-By')).toBe(true);
+    expect(isApiHeaderHiddenFromPublicProxy('X-Accel-Buffering')).toBe(true);
+  });
+
+  it('identifies hop-by-hop headers that must not cross the Node API proxy', () => {
+    expect(isHopByHopHttpHeader('Connection')).toBe(true);
+    expect(isHopByHopHttpHeader('Keep-Alive')).toBe(true);
+    expect(isHopByHopHttpHeader('Transfer-Encoding')).toBe(true);
+    expect(isHopByHopHttpHeader('Upgrade')).toBe(true);
+    expect(isHopByHopHttpHeader('Content-Length')).toBe(false);
+    expect(isHopByHopHttpHeader('Content-Type')).toBe(false);
   });
 
   it('keeps regular API response headers visible', () => {

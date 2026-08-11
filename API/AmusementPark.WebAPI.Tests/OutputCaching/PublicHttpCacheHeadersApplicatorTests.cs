@@ -25,12 +25,14 @@ public sealed class PublicHttpCacheHeadersApplicatorTests
         Assert.Equal(HeaderNames.Accept, context.Response.Headers.Vary.ToString());
     }
 
-    [Fact]
-    public void Apply_WhenSocialPreviewRequiresRevalidation_ShouldKeepExistingCacheControl()
+    [Theory]
+    [InlineData("/images/binary/image-1/social-preview-v1")]
+    [InlineData("/images/binary/image-1/social-preview-v2")]
+    public void Apply_WhenSocialPreviewRequiresRevalidation_ShouldKeepExistingCacheControl(string path)
     {
         DefaultHttpContext context = new DefaultHttpContext();
         context.Request.Method = HttpMethods.Get;
-        context.Request.Path = "/images/binary/image-1/social-preview-v1";
+        context.Request.Path = path;
         context.Response.StatusCode = StatusCodes.Status200OK;
         context.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
 

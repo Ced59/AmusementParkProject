@@ -1,6 +1,7 @@
+import { SOCIAL_PREVIEW_PATH_VERSION } from '../../app/shared/utils/images/social-preview-image.constants';
+
 const FACEBOOK_APP_ID_PATTERN = /^\d+$/;
 const FACEBOOK_IMAGE_ID_PATTERN = /^[A-Za-z0-9_-]{1,128}$/;
-const FACEBOOK_APP_ID_META_PATTERN = /<meta\s+[^>]*property=(['"])fb:app_id\1[^>]*>/i;
 const CLOSING_HEAD_PATTERN = /<\/head\s*>/i;
 export const FACEBOOK_IMAGE_QUERY_PARAMETER = 'facebook-image';
 
@@ -26,17 +27,7 @@ export function injectFacebookAppIdMeta(
     return html;
   }
 
-  const metaTag: string = `<meta property="fb:app_id" content="${normalizedAppId}">`;
-  if (FACEBOOK_APP_ID_META_PATTERN.test(html)) {
-    return html.replace(FACEBOOK_APP_ID_META_PATTERN, metaTag);
-  }
-
-  const closingHeadMatch: RegExpExecArray | null = CLOSING_HEAD_PATTERN.exec(html);
-  if (closingHeadMatch === null) {
-    return html;
-  }
-
-  return `${html.slice(0, closingHeadMatch.index)}${metaTag}\n${html.slice(closingHeadMatch.index)}`;
+  return replaceOrInsertMeta(html, 'property', 'fb:app_id', normalizedAppId);
 }
 
 export function injectFacebookImageOverrideMeta(
@@ -52,7 +43,7 @@ export function injectFacebookImageOverrideMeta(
   let imageUrl: string;
   try {
     const parsedImageUrl: URL = new URL(
-      `/api/images/binary/${encodeURIComponent(override.imageId)}/social-preview-v1`,
+      `/api/images/binary/${encodeURIComponent(override.imageId)}/${SOCIAL_PREVIEW_PATH_VERSION}`,
       publicUrl,
     );
     parsedImageUrl.searchParams.set('expectedOwnerType', override.expectedOwnerType);
@@ -74,6 +65,20 @@ export function injectFacebookImageOverrideMeta(
 
 export function hasFacebookImageOverrideQuery(url: string): boolean {
   return resolveFacebookImageOverride(url) !== null;
+}
+
+export function resolveFacebookOpenGraphAppId(
+  value: string | null | undefined,
+  facebookPublishingEnabled: string | null | undefined,
+): string | null {
+  const normalizedAppId: string | null = normalizeFacebookAppId(value);
+  if (facebookPublishingEnabled?.trim().toLowerCase() === 'true' && normalizedAppId === null) {
+    throw new Error(
+      'FACEBOOK_APP_ID must be configured when SOCIAL_PUBLISHING_FACEBOOK_ENABLED is true.',
+    );
+  }
+
+  return normalizedAppId;
 }
 
 export function hasOnlyFacebookImageOverrideQuery(url: string): boolean {
@@ -151,7 +156,16 @@ function replaceOrInsertMeta(
   const escapedContent: string = content.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
   const metaTag: string = `<meta ${attribute}="${key}" content="${escapedContent}">`;
   if (pattern.test(html)) {
-    return html.replace(pattern, metaTag);
+    pattern.lastIndex = 0;
+    let replaced: boolean = false;
+    return html.replace(pattern, (): string => {
+      if (replaced) {
+        return '';
+      }
+
+      replaced = true;
+      return metaTag;
+    });
   }
 
   const closingHeadMatch: RegExpExecArray | null = CLOSING_HEAD_PATTERN.exec(html);
@@ -168,5 +182,5 @@ function removeMeta(html: string, attribute: 'name' | 'property', key: string): 
 
 function buildMetaPattern(attribute: 'name' | 'property', key: string): RegExp {
   const escapedKey: string = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(`<meta\\s+[^>]*${attribute}=(['"])${escapedKey}\\1[^>]*>`, 'i');
+  return new RegExp(`<meta\\s+[^>]*${attribute}=(['"])${escapedKey}\\1[^>]*>`, 'gi');
 }
