@@ -77,8 +77,13 @@ public sealed class SocialPublicationServiceTests
         Assert.NotNull(first);
         Assert.Same(first, second);
         Assert.Equal("facebook:park:park-1", first.DeduplicationKey);
-        Assert.Contains("Un nouveau parc", first.Message, StringComparison.Ordinal);
-        Assert.Contains("A new park", first.Message, StringComparison.Ordinal);
+        Assert.Contains("Nouveau parc ajouté sur Amusement-Parks.Fun", first.Message, StringComparison.Ordinal);
+        Assert.Contains("New park added to Amusement-Parks.Fun", first.Message, StringComparison.Ordinal);
+        Assert.Contains("Tu l’as déjà visité ?", first.Message, StringComparison.Ordinal);
+        Assert.Contains("Have you visited it?", first.Message, StringComparison.Ordinal);
+        Assert.Contains("https://amusement-parks.fun/fr/park/park-1/parc-etincelle", first.Message, StringComparison.Ordinal);
+        Assert.Contains("#AmusementParks", first.Message, StringComparison.Ordinal);
+        Assert.Contains("#ThemeParks", first.Message, StringComparison.Ordinal);
         Assert.Equal("https://amusement-parks.fun/fr/park/park-1/parc-etincelle", first.Url);
         Assert.Equal(1, publisher.PublishCallCount);
         Assert.Single(repository.Publications);

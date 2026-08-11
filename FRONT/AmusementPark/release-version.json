@@ -1,6 +1,20 @@
 {
-  "version": "4.1.33",
+  "version": "4.1.34",
   "history": [
+    {
+      "version": "4.1.34",
+      "releasedAt": "2026-08-11",
+      "labels": {
+        "fr": "Les annonces de nouveaux parcs invitent au partage d’expériences et gagnent des hashtags.",
+        "en": "New park announcements invite visitors to share their experiences and now include hashtags.",
+        "de": "Ankündigungen neuer Parks laden zum Erfahrungsaustausch ein und enthalten jetzt Hashtags.",
+        "nl": "Aankondigingen van nieuwe parken nodigen uit om ervaringen te delen en bevatten nu hashtags.",
+        "it": "Gli annunci dei nuovi parchi invitano a condividere le proprie esperienze e ora includono hashtag.",
+        "es": "Los anuncios de nuevos parques invitan a compartir experiencias y ahora incluyen hashtags.",
+        "pl": "Ogłoszenia o nowych parkach zachęcają do dzielenia się wrażeniami i zawierają teraz hashtagi.",
+        "pt": "Os anúncios de novos parques convidam à partilha de experiências e incluem agora hashtags."
+      }
+    },
     {
       "version": "4.1.33",
       "releasedAt": "2026-08-11",
