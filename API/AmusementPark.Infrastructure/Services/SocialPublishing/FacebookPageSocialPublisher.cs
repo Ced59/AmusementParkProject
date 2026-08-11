@@ -171,6 +171,7 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
                 httpRequest,
                 HttpCompletionOption.ResponseHeadersRead,
                 cancellationToken);
+            await response.Content.CopyToAsync(Stream.Null, cancellationToken);
             bool isSeoReady = response.Headers.TryGetValues(
                     "X-AmusementPark-Seo-Ready",
                     out IEnumerable<string>? values)

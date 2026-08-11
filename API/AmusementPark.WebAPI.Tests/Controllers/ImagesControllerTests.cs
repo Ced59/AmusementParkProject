@@ -87,8 +87,11 @@ public sealed class ImagesControllerTests
         Assert.NotNull(method.GetCustomAttribute<AllowAnonymousAttribute>());
     }
 
-    [Fact]
-    public async Task GetSocialPreviewImageAsync_ShouldUseStableJpegVariantWithoutContentNegotiation()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task GetSocialPreviewImageAsync_ShouldUseStableJpegVariantWithoutContentNegotiation(
+        bool includeExpectedOwner)
     {
         byte[] imageContent = new byte[131_089];
         for (int index = 0; index < imageContent.Length; index++)
@@ -101,6 +104,9 @@ public sealed class ImagesControllerTests
             Id = "image-1",
             Path = "images/image-1",
             IsPublished = true,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
         };
         Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
             new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
@@ -118,7 +124,16 @@ public sealed class ImagesControllerTests
             .ReturnsAsync((imageContent, "image/jpeg"));
         ImagesController controller = CreateController(queryHandler.Object, storage.Object);
 
-        IActionResult result = await controller.GetSocialPreviewImageAsync("image-1", CancellationToken.None);
+        controller.Request.Headers.UserAgent = "facebookexternalhit/1.1";
+
+        IActionResult result = includeExpectedOwner
+            ? await controller.GetSocialPreviewImageAsync(
+                "image-1",
+                CancellationToken.None,
+                ImageOwnerTypeDto.PARK,
+                "park-1",
+                ImageCategoryDto.PARK)
+            : await controller.GetSocialPreviewImageAsync("image-1", CancellationToken.None);
 
         FileContentResult file = Assert.IsType<FileContentResult>(result);
         Assert.Equal("image/jpeg", file.ContentType);
@@ -159,6 +174,9 @@ public sealed class ImagesControllerTests
             Id = "image-1",
             Path = "images/image-1",
             IsPublished = true,
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.Park,
         };
         Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>> queryHandler =
             new Mock<IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>>>(MockBehavior.Strict);
@@ -176,10 +194,14 @@ public sealed class ImagesControllerTests
             .ReturnsAsync((123L, "image/jpeg"));
         ImagesController controller = CreateController(queryHandler.Object, storage.Object);
         controller.Request.Method = HttpMethods.Head;
+        controller.Request.Headers.UserAgent = "facebookexternalhit/1.1";
 
         IActionResult result = await controller.GetSocialPreviewImageAsync(
             "image-1",
-            CancellationToken.None);
+            CancellationToken.None,
+            ImageOwnerTypeDto.PARK,
+            "park-1",
+            ImageCategoryDto.PARK);
 
         Assert.IsType<EmptyResult>(result);
         Assert.Equal(123L, controller.Response.ContentLength);
@@ -264,6 +286,12 @@ public sealed class ImagesControllerTests
         Assert.Contains(
             method.GetCustomAttributes<HttpHeadAttribute>(),
             static attribute => attribute.Template == "binary/{imageId}/social-preview-v1");
+        Assert.Contains(
+            method.GetCustomAttributes<HttpGetAttribute>(),
+            static attribute => attribute.Template == "binary/{imageId}/social-preview-v2");
+        Assert.Contains(
+            method.GetCustomAttributes<HttpHeadAttribute>(),
+            static attribute => attribute.Template == "binary/{imageId}/social-preview-v2");
         Assert.NotNull(method.GetCustomAttribute<AllowAnonymousAttribute>());
     }
 

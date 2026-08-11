@@ -1,6 +1,20 @@
 {
-  "version": "4.1.32",
+  "version": "4.1.33",
   "history": [
+    {
+      "version": "4.1.33",
+      "releasedAt": "2026-08-11",
+      "labels": {
+        "fr": "Les aperçus de partage Facebook affichent désormais les bonnes photos.",
+        "en": "Facebook sharing previews now display the correct photos.",
+        "de": "Facebook-Vorschauen zeigen jetzt die richtigen Fotos an.",
+        "nl": "Facebook-deelvoorbeelden tonen nu de juiste foto's.",
+        "it": "Le anteprime di condivisione su Facebook mostrano ora le foto corrette.",
+        "es": "Las vistas previas de Facebook ahora muestran las fotos correctas.",
+        "pl": "Podglądy udostępniania na Facebooku pokazują teraz właściwe zdjęcia.",
+        "pt": "As pré-visualizações de partilha no Facebook mostram agora as fotografias corretas."
+      }
+    },
     {
       "version": "4.1.32",
       "releasedAt": "2026-08-10",

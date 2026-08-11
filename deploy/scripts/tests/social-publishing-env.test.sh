@@ -52,6 +52,11 @@ if ! grep -Fq 'FACEBOOK_APP_ID: ${FACEBOOK_APP_ID:-}' "${deploy_scripts_dir}/../
   exit 1
 fi
 
+if ! grep -Fq 'SOCIAL_PUBLISHING_FACEBOOK_ENABLED: ${SOCIAL_PUBLISHING_FACEBOOK_ENABLED:-false}' "${deploy_scripts_dir}/../compose.prod.yml"; then
+  echo 'The frontend SSR service does not receive SOCIAL_PUBLISHING_FACEBOOK_ENABLED.' >&2
+  exit 1
+fi
+
 "${deploy_scripts_dir}/validate-production-env.sh" "${valid_env_file}"
 
 export SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED='true'
@@ -80,5 +85,20 @@ if "${deploy_scripts_dir}/validate-production-env.sh" "${invalid_env_file}" >/de
   echo 'Validation unexpectedly accepted enabled Facebook publishing without a Page Access Token.' >&2
   exit 1
 fi
+
+export SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN='test-page-access-token-value'
+export FACEBOOK_APP_ID=''
+missing_app_id_env_file="${temp_dir}/missing-app-id.env"
+"${deploy_scripts_dir}/write-production-env.sh" "${missing_app_id_env_file}"
+
+if "${deploy_scripts_dir}/validate-production-env.sh" "${missing_app_id_env_file}" >/dev/null 2>&1; then
+  echo 'Validation unexpectedly accepted enabled Facebook publishing without FACEBOOK_APP_ID.' >&2
+  exit 1
+fi
+
+export SOCIAL_PUBLISHING_FACEBOOK_ENABLED='false'
+publishing_disabled_without_app_id_env_file="${temp_dir}/publishing-disabled-without-app-id.env"
+"${deploy_scripts_dir}/write-production-env.sh" "${publishing_disabled_without_app_id_env_file}"
+"${deploy_scripts_dir}/validate-production-env.sh" "${publishing_disabled_without_app_id_env_file}"
 
 echo 'Social publishing production environment tests passed.'

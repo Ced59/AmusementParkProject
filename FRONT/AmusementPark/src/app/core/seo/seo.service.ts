@@ -14,6 +14,7 @@ import { ParkItemDetailViewModel } from '@features/public/park-items/models/park
 import { HistoryArticlePageViewModel, HistoryTimelinePageViewModel } from '@features/public/history/models/history-view.model';
 import { CommentThread } from '@app/models/comments/comment.models';
 import { environment } from '../../../environments/environment';
+import { SOCIAL_PREVIEW_PATH_VERSION } from '@shared/utils/images/social-preview-image.constants';
 import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/localized-text.helpers';
 import { CanonicalUrlService } from './canonical-url.service';
 import { HreflangService } from './hreflang.service';
@@ -191,7 +192,6 @@ interface IntlWithDisplayNames {
 const SITE_NAME: string = 'Amusement Parks';
 const DEFAULT_DESCRIPTION: string = 'Explore amusement parks, attractions, restaurants, hotels and park references around the world.';
 const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpark.png';
-const SOCIAL_PREVIEW_PATH_VERSION: string = 'social-preview-v1';
 const DEFAULT_SOCIAL_IMAGE_WIDTH: number = 1024;
 const DEFAULT_SOCIAL_IMAGE_HEIGHT: number = 1024;
 const COMMENTS_SEO_COPY: Record<string, CommentsSeoCopy> = {

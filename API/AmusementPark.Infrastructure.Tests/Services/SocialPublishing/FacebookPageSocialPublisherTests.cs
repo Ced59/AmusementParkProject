@@ -28,6 +28,7 @@ public sealed class FacebookPageSocialPublisherTests
         Assert.True(result.IsSuccess);
         Assert.Equal("123_456", result.ExternalPostId);
         Assert.Equal(1, handler.PagePreparationCallCount);
+        Assert.True(handler.PagePreparationBodyRead);
         Assert.Equal(
             new[]
             {
@@ -149,6 +150,30 @@ public sealed class FacebookPageSocialPublisherTests
     }
 
     [Fact]
+    public async Task PublishLinkAsync_WhenPreparedPageBodyIsIncomplete_ShouldNotPublish()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{}",
+            failPageBodyRead: true);
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
+            CreateSettings());
+
+        SocialPublisherResult result = await publisher.PublishLinkAsync(
+            new SocialPublisherRequest(
+                "Message",
+                "https://amusement-parks.fun/fr/park/park-1/test"),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("preview-page-unavailable", result.FailureCode);
+        Assert.True(handler.PagePreparationBodyRead);
+        Assert.Equal(0, handler.GraphCallCount);
+    }
+
+    [Fact]
     public async Task PublishLinkAsync_WhenLinkTargetsAnotherSite_ShouldNotPrepareIt()
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
@@ -258,20 +283,25 @@ public sealed class FacebookPageSocialPublisherTests
         private readonly HttpStatusCode statusCode;
         private readonly string responseBody;
         private readonly bool pageSeoReady;
+        private readonly bool failPageBodyRead;
 
         public RecordingHttpMessageHandler(
             HttpStatusCode statusCode,
             string responseBody,
-            bool pageSeoReady = true)
+            bool pageSeoReady = true,
+            bool failPageBodyRead = false)
         {
             this.statusCode = statusCode;
             this.responseBody = responseBody;
             this.pageSeoReady = pageSeoReady;
+            this.failPageBodyRead = failPageBodyRead;
         }
 
         public List<string> RequestUris { get; } = new List<string>();
 
         public int PagePreparationCallCount { get; private set; }
+
+        public bool PagePreparationBodyRead { get; private set; }
 
         public int GraphCallCount { get; private set; }
 
@@ -309,7 +339,16 @@ public sealed class FacebookPageSocialPublisherTests
                     && refreshValues.Contains("1", StringComparer.Ordinal);
                 HttpResponseMessage preparationResponse = new HttpResponseMessage(HttpStatusCode.OK)
                 {
-                    Content = new StringContent("<html></html>"),
+                    Content = new TrackingStringContent(
+                        "<html></html>",
+                        () =>
+                        {
+                            this.PagePreparationBodyRead = true;
+                            if (this.failPageBodyRead)
+                            {
+                                throw new IOException("Simulated incomplete HTTP response body.");
+                            }
+                        }),
                 };
                 preparationResponse.Headers.TryAddWithoutValidation(
                     "X-AmusementPark-Seo-Ready",
@@ -329,6 +368,25 @@ public sealed class FacebookPageSocialPublisherTests
             {
                 Content = new StringContent(this.responseBody),
             };
+        }
+    }
+
+    private sealed class TrackingStringContent : StringContent
+    {
+        private readonly Action onSerialize;
+
+        public TrackingStringContent(string content, Action onSerialize)
+            : base(content)
+        {
+            this.onSerialize = onSerialize;
+        }
+
+        protected override Task SerializeToStreamAsync(
+            Stream stream,
+            TransportContext? context)
+        {
+            this.onSerialize();
+            return base.SerializeToStreamAsync(stream, context);
         }
     }
 }

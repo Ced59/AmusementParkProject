@@ -432,6 +432,9 @@ if [ "${rolling_deploy}" = "true" ]; then
   compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans
 fi
 
+./scripts/verify-public-response-integrity.sh \
+  "${PUBLIC_BASE_URL%/}/fr/home"
+
 reconcile_continuous_warmup_service
 
 if [ "${SSR_WARMUP_AFTER_DEPLOY:-false}" = "true" ]; then

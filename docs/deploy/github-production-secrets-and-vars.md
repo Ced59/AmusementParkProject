@@ -61,10 +61,12 @@ https://amusement-parks.fun/api/auth/external/google/callback
 
 | Secret | Exemple / note |
 |---|---|
-| `PROD_FACEBOOK_APP_ID` | peut rester vide si Facebook n’est pas activé |
-| `PROD_FACEBOOK_APP_SECRET` | peut rester vide si Facebook n’est pas activé |
+| `PROD_FACEBOOK_APP_ID` | identifiant numérique public de l’application Meta ; obligatoire si Facebook OAuth ou la publication Facebook est activée |
+| `PROD_FACEBOOK_APP_SECRET` | requis uniquement pour Facebook OAuth ; la publication Page et `fb:app_id` ne le rendent pas obligatoire |
 
 ### Publication sur la Page Facebook, si activée
+
+La publication réutilise `PROD_FACEBOOK_APP_ID` pour émettre `fb:app_id` dans le HTML SSR. La validation de production refuse `PROD_SOCIAL_PUBLISHING_FACEBOOK_ENABLED=true` si cet identifiant est absent ou non numérique, sans imposer `PROD_FACEBOOK_APP_SECRET`.
 
 | Secret | Exemple / note |
 |---|---|

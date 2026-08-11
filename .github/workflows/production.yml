@@ -146,7 +146,7 @@ jobs:
         shell: bash
         run: |
           chmod +x deploy/scripts/*.sh deploy/scripts/tests/*.sh
-          bash -n deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh
+          bash -n deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh
           python3 -m unittest deploy/scripts/tests/test_ssr_warmup_support.py

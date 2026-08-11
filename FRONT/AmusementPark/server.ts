@@ -10,11 +10,13 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, statSync,
 import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
-import { isApiHeaderHiddenFromPublicProxy } from './src/app/core/ssr/public-api-header-policy';
+import {
+  isApiHeaderHiddenFromPublicProxy,
+  isHopByHopHttpHeader,
+} from './src/app/core/ssr/public-api-header-policy';
 import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
 import {
   inspectSeoReadyHtml,
-  prepareRobotHtmlForResponse,
   RobotHtmlPreparationResult,
   shouldRetrySeoReadyHtmlRender,
   shouldReturnBotSsrUnavailable
@@ -37,21 +39,24 @@ import { appendForwardedFor } from './src/server/proxy/forwarded-for';
 import { RetainedBucketCache } from './src/server/technical-stats/retained-bucket-cache';
 import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { writeSsrHtmlResponse } from './src/app/core/ssr/ssr-html-response-writer';
+import { disablePublicProxyResponseBuffering } from './src/app/core/ssr/public-response-transport-policy';
 import { shouldCacheSsrRenderedHtml } from './src/app/core/ssr/ssr-page-cache-policy';
 import { siteVersion } from './src/environments/version.generated';
 import { buildContentSecurityPolicy } from './src/app/core/security/content-security-policy';
 import {
   hasOnlyFacebookImageOverrideQuery,
-  injectFacebookAppIdMeta,
-  injectFacebookImageOverrideMeta,
   normalizeFacebookImageOverrideCacheUrl,
-  normalizeFacebookAppId,
+  resolveFacebookOpenGraphAppId,
 } from './src/server/ssr/facebook-open-graph-meta';
+import { prepareFacebookHtmlResponse } from './src/server/ssr/facebook-html-response';
 
 const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
 const currentBuildVersion = (process.env['APP_VERSION'] ?? siteVersion).trim() || siteVersion;
-const facebookAppId = normalizeFacebookAppId(process.env['FACEBOOK_APP_ID']);
+const facebookAppId = resolveFacebookOpenGraphAppId(
+  process.env['FACEBOOK_APP_ID'],
+  process.env['SOCIAL_PUBLISHING_FACEBOOK_ENABLED'],
+);
 const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'false').toLowerCase() !== 'false';
 const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
@@ -1841,17 +1846,17 @@ function serveBotSsrUnavailable(req: Request, res: Response, robotFamily: string
 
 function prepareHtmlForResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): string {
   const robotFamily: RobotFamily | null = detectRobotFamily(req);
-  const htmlWithFacebookMetadata: string = injectFacebookAppIdMeta(html, facebookAppId);
-  const htmlWithFacebookImage: string = injectFacebookImageOverrideMeta(
-    htmlWithFacebookMetadata,
+  const preparationResult: RobotHtmlPreparationResult = prepareFacebookHtmlResponse(
+    html,
     req.originalUrl,
     getPublicRequestUrl(req),
+    facebookAppId,
+    {
+      allowRobotNoJsOptimization: options.allowRobotNoJsOptimization,
+      robotNoJsHtmlEnabled,
+      isRobotRequest: shouldServeRobotOptimizedNoJsHtml(robotFamily)
+    },
   );
-  const preparationResult: RobotHtmlPreparationResult = prepareRobotHtmlForResponse(htmlWithFacebookImage, {
-    allowRobotNoJsOptimization: options.allowRobotNoJsOptimization,
-    robotNoJsHtmlEnabled,
-    isRobotRequest: shouldServeRobotOptimizedNoJsHtml(robotFamily)
-  });
 
   res.setHeader('X-AmusementPark-SSR-Mode', options.responseMode);
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
@@ -3297,7 +3302,7 @@ function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLe
   const responseHeaders: Record<string, string | string[]> = {};
 
   Object.entries(headers).forEach(([name, value]: [string, string | string[] | undefined]) => {
-    if (value === undefined || isApiHeaderHiddenFromPublicProxy(name) || isHopByHopHeader(name)) {
+    if (value === undefined || isApiHeaderHiddenFromPublicProxy(name) || isHopByHopHttpHeader(name)) {
       return;
     }
 
@@ -3317,6 +3322,7 @@ function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLe
 }
 
 function writeCachedSeoDocument(req: Request, res: Response, entry: SeoDocumentCacheEntry, cacheStatus: SeoDocumentCacheStatus): void {
+  disablePublicProxyResponseBuffering(res);
   res.status(entry.statusCode);
 
   Object.entries(entry.headers).forEach(([name, value]: [string, string | string[]]) => {
@@ -3348,22 +3354,12 @@ function redirectLegacySitemapSectionRoute(req: Request, res: Response): void {
   res.redirect(308, `/${fileName}`);
 }
 
-function isHopByHopHeader(name: string): boolean {
-  const normalizedName = name.toLowerCase();
-  return normalizedName === 'connection'
-    || normalizedName === 'keep-alive'
-    || normalizedName === 'proxy-authenticate'
-    || normalizedName === 'proxy-authorization'
-    || normalizedName === 'te'
-    || normalizedName === 'trailer'
-    || normalizedName === 'transfer-encoding'
-    || normalizedName === 'upgrade';
-}
-
 function proxyToApi(req: Request, res: Response, next: NextFunction, targetPath: string): void {
   const targetUrl = new URL(targetPath, apiInternalOrigin);
   const client = targetUrl.protocol === 'https:' ? https : http;
   const headers = buildApiProxyHeaders(req, targetUrl);
+
+  disablePublicProxyResponseBuffering(res);
 
   const proxyRequest = client.request(
     targetUrl,
@@ -3375,7 +3371,9 @@ function proxyToApi(req: Request, res: Response, next: NextFunction, targetPath:
       res.status(proxyResponse.statusCode ?? 502);
 
       Object.entries(proxyResponse.headers).forEach(([name, value]: [string, string | string[] | undefined]) => {
-        if (value === undefined || isApiHeaderHiddenFromPublicProxy(name)) {
+        if (value === undefined
+          || isApiHeaderHiddenFromPublicProxy(name)
+          || isHopByHopHttpHeader(name)) {
           return;
         }
 
@@ -3394,6 +3392,11 @@ function buildApiProxyHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHe
   const publicProtocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
   const publicHost = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? targetUrl.host;
   const headers: http.OutgoingHttpHeaders = { ...req.headers };
+  Object.keys(headers).forEach((name: string) => {
+    if (isHopByHopHttpHeader(name)) {
+      delete headers[name];
+    }
+  });
   delete headers['host'];
   delete headers[internalSsrHeaderName];
   delete headers[internalSsrHeaderName.toLowerCase()];
