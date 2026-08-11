@@ -296,7 +296,10 @@ public sealed class SocialPublicationService : ISocialPublicationService
         string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
         string parkPath = $"/fr/park/{Uri.EscapeDataString(park.Id!)}/{parkSlug}";
         string url = $"{context.PublicBaseUrl.TrimEnd('/')}{parkPath}";
-        string message = BuildParkAnnouncementMessage(park.Name!);
+        string message = SocialPublicationMessageBuilder.BuildParkAnnouncementMessage(
+            park.Name!,
+            park.Name!,
+            new Uri(url, UriKind.Absolute));
 
         await this.PreservePublicPageDuringSocialPreparationAsync(parkPath, cancellationToken);
 
@@ -373,14 +376,6 @@ public sealed class SocialPublicationService : ISocialPublicationService
         publication.Touch();
         publication = await this.repository.UpdateAsync(publication, cancellationToken);
         return ApplicationResult<SocialPublication>.Success(publication);
-    }
-
-    internal static string BuildParkAnnouncementMessage(string parkName)
-    {
-        return $"🎢 Un nouveau parc est disponible sur Amusement Parks : {parkName} !\n"
-            + "Découvre sa fiche dès maintenant.\n\n"
-            + $"🇬🇧 A new park is now available on Amusement Parks: {parkName}!\n"
-            + "Discover its page now.";
     }
 
     private async Task<ApplicationResult<SocialPublication>> PublishNewAsync(

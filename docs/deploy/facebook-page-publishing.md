@@ -56,7 +56,7 @@ Le backend envoie le texte dans `message` et l’URL du site dans le champ Graph
 
 Les liens manuels sont volontairement limités à l’origine publique configurée par `Seo:PublicBaseUrl`. Cela empêche l’outil d’administration d’être détourné pour publier des liens externes.
 
-Dans l’administration, le collage d’une URL publique reconnue prépare automatiquement le texte bilingue déjà utilisé pour les annonces de parc et l’adapte au nom de la fiche parc, du parkItem, de la vidéo ou de la page. Le texte reste modifiable avant l’envoi.
+Dans l’administration, le collage d’une URL publique reconnue prépare automatiquement un texte bilingue adapté au nom de la fiche parc, du parkItem, de la vidéo ou de la page. Pour un parc, le message annonce explicitement l’ajout de sa fiche sur Amusement-Parks.Fun, invite la communauté à partager son expérience, affiche la version anglaise, puis le lien public canonical et des hashtags francophones et internationaux. Le texte reste modifiable avant l’envoi. Le paramètre technique `facebook-image` reste réservé au lien Graph API utilisé pour l’aperçu et n’est pas ajouté au lien visible dans le message.
 
 Pour les cibles liées à un parc ou un parkItem, les images publiques rattachées à cette entité sont présentées dans un carrousel paginé. Le choix par défaut conserve l’image Open Graph actuelle. Une sélection ajoute au lien publié le paramètre réservé `facebook-image` ; le rendu SSR remplace alors, après l’optimisation robot, l’unique `og:image`, `og:image:secure_url` et `twitter:image` pour cette exploration. Le canonical, la description, le titre et les règles SEO de la page restent inchangés.
 

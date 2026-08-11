@@ -52,7 +52,12 @@ public sealed class SocialPublicationComposerServiceTests
         Assert.True(result.IsSuccess);
         SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
         Assert.Equal(SocialPublicationTargetKind.Park, draft.TargetKind);
-        Assert.Equal(SocialPublicationService.BuildParkAnnouncementMessage("Parc Test"), draft.DefaultMessage);
+        Assert.Equal(
+            SocialPublicationMessageBuilder.BuildParkAnnouncementMessage(
+                "Parc Test",
+                "Parc Test",
+                new Uri("https://amusement-parks.fun/fr/park/park-1/park-test")),
+            draft.DefaultMessage);
         Assert.Equal(2, draft.Images.TotalItems);
         SocialPublicationImageOption image = Assert.Single(draft.Images.Items);
         Assert.Equal("image-current", image.Id);
@@ -117,7 +122,10 @@ public sealed class SocialPublicationComposerServiceTests
         SocialPublication published = new SocialPublication { Id = "publication-1" };
         publisher.Setup(service => service.PublishManualAsync(
                 It.Is<SocialLinkPublicationRequest>(request =>
-                    request.Message == SocialPublicationService.BuildParkAnnouncementMessage("Parc Test")
+                    request.Message == SocialPublicationMessageBuilder.BuildParkAnnouncementMessage(
+                        "Parc Test",
+                        "Parc Test",
+                        new Uri("https://amusement-parks.fun/fr/park/park-1/park-test"))
                     && request.Url == "https://amusement-parks.fun/fr/park/park-1/park-test?facebook-image=image-current"
                     && request.PreviewImageId == null),
                 "codex-user",
