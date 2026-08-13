@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 46 parcs atteignent le niveau `Excellent` : 44 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **118 parcs publiés remplissent le critère d’entrée, avec un score inférieur ou égal à 95** : 53 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- 47 parcs atteignent le niveau `Excellent` : 45 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **117 parcs publiés remplissent le critère d’entrée, avec un score inférieur ou égal à 95** : 52 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,11 +17,10 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (53)
+## Priorité 1 — niveau `Publishable` (52)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 74 | `Publishable` | Arab Disney | EG | `Operating` | `Regional` | 65/88 | `86b08e20-40ff-4f95-b214-aed7af5b2837` |
 | 75 | `Publishable` | Al-Qidah Park | DZ | `Operating` | `Regional` | 63/84 | `3212fabf-2a98-4af0-9111-917461fccbb5` |
 | 75 | `Publishable` | Arcolandia Pacifico | IT | `Operating` | `Local` | 66/88 | `2aca01b2-b716-4176-9c71-8a9dd73cd282` |
 | 75 | `Publishable` | Baby Luna Park | IT | `Operating` | `Local` | 68/91 | `2652601b-d99d-4dd4-82fa-ac26f1a15cb7` |
