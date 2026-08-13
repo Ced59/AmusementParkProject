@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 40 parcs atteignent le niveau `Excellent` : 38 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **124 parcs publiés remplissent le critère d’entrée, avec un score inférieur ou égal à 95** : 59 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- 48 parcs atteignent le niveau `Excellent` : 46 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après l’exception explicite enregistrée ci-dessous, le backlog actif contient **115 parcs** : 50 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,19 +17,10 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (59)
+## Priorité 1 — niveau `Publishable` (50)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 70 | `Publishable` | Afsona Land | UZ | `Operating` | `National` | 66/94 | `223e28fb-bfab-4a75-a2a5-9941994c5be8` |
-| 70 | `Publishable` | Aladin Amusement Park | PK | `ClosedDefinitively` | `—` | 64/92 | `75fc4710-bdad-4797-8fc1-8d4d2b0cfe70` |
-| 70 | `Publishable` | Altınbaş Lunapark | TR | `Operating` | `Local` | 59/84 | `e1e084b6-4191-4bb2-a2f5-3501ff9f7912` |
-| 72 | `Publishable` | Al Zawraa Land | IQ | `Operating` | `National` | 68/94 | `595ada71-b493-4d73-a0a6-dc4e6e030710` |
-| 73 | `Publishable` | Adıyaman Lunapark | TR | `Operating` | `Local` | 61/84 | `19a3d956-2a2e-4199-8b64-9465e920a5e7` |
-| 74 | `Publishable` | Adler Park of Culture and Recreation | RU | `Operating` | `Regional` | 65/88 | `ee7d4e02-344e-421e-bc6f-9e60db326ee7` |
-| 74 | `Publishable` | Arab Disney | EG | `Operating` | `Regional` | 65/88 | `86b08e20-40ff-4f95-b214-aed7af5b2837` |
-| 75 | `Publishable` | Al-Qidah Park | DZ | `Operating` | `Regional` | 63/84 | `3212fabf-2a98-4af0-9111-917461fccbb5` |
-| 75 | `Publishable` | Arcolandia Pacifico | IT | `Operating` | `Local` | 66/88 | `2aca01b2-b716-4176-9c71-8a9dd73cd282` |
 | 75 | `Publishable` | Baby Luna Park | IT | `Operating` | `Local` | 68/91 | `2652601b-d99d-4dd4-82fa-ac26f1a15cb7` |
 | 77 | `Publishable` | Adventure World Dammam | SA | `Operating` | `Regional` | 68/88 | `89293f95-94f0-474f-a505-3c2a9b7d37ed` |
 | 78 | `Publishable` | Alanya Lunapark | TR | `Operating` | `Regional` | 69/88 | `5f4c7a16-2885-41ac-a526-826a1f4be0cd` |
@@ -155,3 +146,9 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 | 95 | `Excellent` | Babylon Park London | GB | `Operating` | `Regional` | 95/100 | `6c9557a4-c49c-4eb3-ace0-b1817927a0b3` |
 | 95 | `Excellent` | Babylon Park Madrid | ES | `Operating` | `Regional` | 90/95 | `6d0efa82-473d-4bcd-a3fe-c839f1291917` |
+
+## Exceptions explicitement acceptées
+
+| Parc | Décision | Score courant | Lacunes acceptées | Publication Facebook |
+| --- | --- | ---: | --- | --- |
+| Al-Qidah Park (`3212fabf-2a98-4af0-9111-917461fccbb5`) | Exception utilisateur du 2026-08-13 à 17:26 Europe/Paris, après audit complet sans bloqueur | 94 (95/101) | Constructeur des attractions mécaniques et conditions d’accès non établis par les sources disponibles | `Published` — [publication](https://www.facebook.com/1285475681307050/posts/122109939327424431) |
