@@ -68,12 +68,12 @@ public sealed class SocialPublicationService : ISocialPublicationService
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeRetried());
         }
-        publication.RequestedByUserId = requestedByUserId;
-        publication.Status = SocialPublicationStatus.Pending;
-        publication.FailureCode = null;
-        publication.FailureMessage = null;
-        publication.Touch();
-        publication = await this.repository.UpdateAsync(publication, cancellationToken);
+        publication = await this.repository.TryClaimFailedForRetryAsync(
+            publication.Id!, publication.UpdatedAtUtc, requestedByUserId, cancellationToken);
+        if (publication is null)
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeRetried());
+        }
         publication = await this.AttemptPublicationAsync(publication, cancellationToken);
         return ApplicationResult<SocialPublication>.Success(publication);
     }

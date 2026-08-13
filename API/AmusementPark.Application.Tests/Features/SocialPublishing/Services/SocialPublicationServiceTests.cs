@@ -315,6 +315,55 @@ public sealed class SocialPublicationServiceTests
     }
 
     [Fact]
+    public async Task RetryParkAnnouncementAsync_WhenRequestsOverlap_ShouldPublishOnlyOnce()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication failedPublication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.AutomaticParkPublication,
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/park/park-1/parc-etincelle",
+            SourceEntityType = "Park",
+            SourceEntityId = "park-1",
+            DeduplicationKey = "facebook:park:park-1",
+        };
+        repository.Publications.Add(failedPublication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        TaskCompletionSource reconciliationGate = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        int reconciliationCount = 0;
+        publisher.ReconcileAsync = async cancellationToken =>
+        {
+            if (Interlocked.Increment(ref reconciliationCount) == 2)
+            {
+                reconciliationGate.SetResult();
+            }
+
+            await reconciliationGate.Task.WaitAsync(cancellationToken);
+            return publisher.ReconciliationResult;
+        };
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        Task<ApplicationResult<SocialPublication>> first = service.RetryParkAnnouncementAsync(
+            "park-1", "publication-1", "editor-1", CancellationToken.None);
+        Task<ApplicationResult<SocialPublication>> second = service.RetryParkAnnouncementAsync(
+            "park-1", "publication-1", "editor-2", CancellationToken.None);
+        ApplicationResult<SocialPublication>[] results = await Task.WhenAll(first, second);
+
+        Assert.Single(results, static result => result.IsSuccess);
+        Assert.Single(results, static result => !result.IsSuccess);
+        Assert.Contains(
+            results.Single(static result => !result.IsSuccess).Errors,
+            static error => error.Code == "social-publishing.publication.retry-not-allowed");
+        Assert.Equal(1, publisher.PublishCallCount);
+        Assert.Equal(2, publisher.ReconcileCallCount);
+        Assert.Equal(SocialPublicationStatus.Published, failedPublication.Status);
+    }
+
+    [Fact]
     public async Task RetryAsync_WhenAutomaticParkAnnouncementAlreadyPublished_ShouldReconcileWithoutDuplicate()
     {
         InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
@@ -674,6 +723,8 @@ public sealed class SocialPublicationServiceTests
                 null,
                 null);
 
+        public Func<CancellationToken, Task<SocialPublisherLinkReconciliationResult>>? ReconcileAsync { get; set; }
+
         public Exception? PublishException { get; set; }
 
         public string? LastRefreshedUrl { get; private set; }
@@ -739,7 +790,9 @@ public sealed class SocialPublicationServiceTests
             CancellationToken cancellationToken)
         {
             this.ReconcileCallCount++;
-            return Task.FromResult(this.ReconciliationResult);
+            return this.ReconcileAsync is null
+                ? Task.FromResult(this.ReconciliationResult)
+                : this.ReconcileAsync(cancellationToken);
         }
 
         public Task<SocialPublisherOperationResult> UpdatePostAsync(
@@ -797,6 +850,32 @@ public sealed class SocialPublicationServiceTests
             }
 
             return Task.FromResult(publication);
+        }
+
+        public Task<SocialPublication?> TryClaimFailedForRetryAsync(
+            string publicationId,
+            DateTime expectedUpdatedAtUtc,
+            string? requestedByUserId,
+            CancellationToken cancellationToken)
+        {
+            lock (this.Publications)
+            {
+                SocialPublication? publication = this.Publications.FirstOrDefault(current =>
+                    current.Id == publicationId
+                    && current.Status == SocialPublicationStatus.Failed
+                    && current.UpdatedAtUtc == expectedUpdatedAtUtc);
+                if (publication is null)
+                {
+                    return Task.FromResult<SocialPublication?>(null);
+                }
+
+                publication.RequestedByUserId = requestedByUserId;
+                publication.Status = SocialPublicationStatus.Pending;
+                publication.FailureCode = null;
+                publication.FailureMessage = null;
+                publication.Touch();
+                return Task.FromResult<SocialPublication?>(publication);
+            }
         }
 
         public Task<SocialPublication?> GetByIdAsync(string id, CancellationToken cancellationToken)

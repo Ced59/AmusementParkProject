@@ -52,6 +52,12 @@ public interface ISocialPublicationRepository
 
     Task<SocialPublication> UpdateAsync(SocialPublication publication, CancellationToken cancellationToken);
 
+    Task<SocialPublication?> TryClaimFailedForRetryAsync(
+        string publicationId,
+        DateTime expectedUpdatedAtUtc,
+        string? requestedByUserId,
+        CancellationToken cancellationToken);
+
     Task<SocialPublication?> GetByIdAsync(string id, CancellationToken cancellationToken);
 
     Task<SocialPublication?> GetByDeduplicationKeyAsync(string deduplicationKey, CancellationToken cancellationToken);
