@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.SocialPublishing.Services;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.SocialPublishing;
+using Microsoft.Extensions.Logging.Abstractions;
 using Xunit;
 
 namespace AmusementPark.Application.Tests.Features.SocialPublishing.Services;
@@ -595,7 +596,10 @@ public sealed class SocialPublicationServiceTests
             repository,
             new[] { publisher },
             new StubPublicSeoContextProvider(),
-            ssrPageCacheInvalidator ?? new RecordingSsrPageCacheInvalidator());
+            ssrPageCacheInvalidator ?? new RecordingSsrPageCacheInvalidator(),
+            new SocialPublicationReconciler(
+                repository,
+                NullLogger<SocialPublicationReconciler>.Instance));
     }
 
     private sealed class RecordingSsrPageCacheInvalidator : ISsrPageCacheInvalidator

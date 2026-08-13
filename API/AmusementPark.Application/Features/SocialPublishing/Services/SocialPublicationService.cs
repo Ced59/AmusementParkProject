@@ -7,8 +7,6 @@ using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.SocialPublishing;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 
 namespace AmusementPark.Application.Features.SocialPublishing.Services;
 
@@ -20,20 +18,20 @@ public sealed class SocialPublicationService : ISocialPublicationService
     private readonly IReadOnlyCollection<ISocialPublisher> publishers;
     private readonly IPublicSeoContextProvider publicSeoContextProvider;
     private readonly ISsrPageCacheInvalidator ssrPageCacheInvalidator;
-    private readonly ILogger<SocialPublicationService> logger;
+    private readonly SocialPublicationReconciler reconciler;
 
     public SocialPublicationService(
         ISocialPublicationRepository repository,
         IEnumerable<ISocialPublisher> publishers,
         IPublicSeoContextProvider publicSeoContextProvider,
         ISsrPageCacheInvalidator ssrPageCacheInvalidator,
-        ILogger<SocialPublicationService>? logger = null)
+        SocialPublicationReconciler reconciler)
     {
         this.repository = repository;
         this.publishers = publishers.ToList();
         this.publicSeoContextProvider = publicSeoContextProvider;
         this.ssrPageCacheInvalidator = ssrPageCacheInvalidator;
-        this.logger = logger ?? NullLogger<SocialPublicationService>.Instance;
+        this.reconciler = reconciler;
     }
 
     public async Task<ApplicationResult<SocialPublication>> PublishManualAsync(
@@ -373,30 +371,20 @@ public sealed class SocialPublicationService : ISocialPublicationService
                 SocialPublishingApplicationErrors.PublisherOperationFailed(null));
         }
 
-        SocialPublisherLinkReconciliationResult reconciliation = await this.TryReconcilePublishedLinkAsync(
+        ApplicationResult<SocialPublicationRecovery> recovery = await this.reconciler.RecoverFailedAsync(
             publisher,
             publication,
+            requestedByUserId,
             cancellationToken);
-        if (!reconciliation.IsSuccess)
+        if (!recovery.IsSuccess || recovery.Value is null)
         {
             return ApplicationResult<SocialPublication>.Failure(
-                SocialPublishingApplicationErrors.PublisherOperationFailed(reconciliation.FailureMessage));
+                recovery.Errors);
         }
 
-        if (reconciliation.IsAmbiguous)
+        if (recovery.Value.IsRecovered && recovery.Value.Publication is not null)
         {
-            return ApplicationResult<SocialPublication>.Failure(
-                SocialPublishingApplicationErrors.PublicationReconciliationAmbiguous());
-        }
-
-        if (reconciliation.IsFound)
-        {
-            publication.RequestedByUserId = requestedByUserId;
-            publication = await this.MarkReconciledAsPublishedAsync(
-                publication,
-                reconciliation,
-                cancellationToken);
-            return ApplicationResult<SocialPublication>.Success(publication);
+            return ApplicationResult<SocialPublication>.Success(recovery.Value.Publication);
         }
 
         await this.PreservePublicPageDuringSocialPreparationAsync(publicationUri!.AbsolutePath, cancellationToken);
@@ -544,30 +532,14 @@ public sealed class SocialPublicationService : ISocialPublicationService
         }
         catch (Exception exception)
         {
-            this.logger.LogWarning(
+            SocialPublication? recovered = await this.reconciler.RecoverLostResponseAsync(
+                publisher,
+                publication,
                 exception,
-                "Social publication {PublicationId} lost the publisher response; attempting reconciliation.",
-                publication.Id);
-            SocialPublisherLinkReconciliationResult reconciliation =
-                publication.Trigger == SocialPublicationTrigger.AutomaticParkPublication
-                    ? await this.TryReconcilePublishedLinkAsync(
-                        publisher,
-                        publication,
-                        cancellationToken)
-                    : new SocialPublisherLinkReconciliationResult(
-                        false,
-                        false,
-                        false,
-                        null,
-                        null,
-                        null,
-                        null);
-            if (reconciliation.IsSuccess && reconciliation.IsFound && !reconciliation.IsAmbiguous)
+                cancellationToken);
+            if (recovered is not null)
             {
-                return await this.MarkReconciledAsPublishedAsync(
-                    publication,
-                    reconciliation,
-                    cancellationToken);
+                return recovered;
             }
 
             bool isTimeout = exception is OperationCanceledException;
@@ -587,56 +559,6 @@ public sealed class SocialPublicationService : ISocialPublicationService
         publication.ExternalPostUrl = result.ExternalPostUrl;
         publication.FailureCode = result.FailureCode;
         publication.FailureMessage = result.FailureMessage;
-        publication.Touch();
-        return await this.repository.UpdateAsync(publication, cancellationToken);
-    }
-
-    private async Task<SocialPublisherLinkReconciliationResult> TryReconcilePublishedLinkAsync(
-        ISocialPublisher publisher,
-        SocialPublication publication,
-        CancellationToken cancellationToken)
-    {
-        try
-        {
-            return await publisher.ReconcilePublishedLinkAsync(
-                new SocialPublisherLinkReconciliationRequest(
-                    publication.Message,
-                    publication.AttemptedAtUtc ?? publication.RequestedAtUtc),
-                cancellationToken);
-        }
-        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-        {
-            throw;
-        }
-        catch (Exception exception)
-        {
-            this.logger.LogWarning(
-                exception,
-                "Social publication {PublicationId} could not be reconciled with the publisher.",
-                publication.Id);
-            return new SocialPublisherLinkReconciliationResult(
-                false,
-                false,
-                false,
-                null,
-                null,
-                "publisher-reconciliation-unavailable",
-                "Facebook n'a pas pu confirmer si la publication existe déjà.");
-        }
-    }
-
-    private async Task<SocialPublication> MarkReconciledAsPublishedAsync(
-        SocialPublication publication,
-        SocialPublisherLinkReconciliationResult reconciliation,
-        CancellationToken cancellationToken)
-    {
-        publication.Status = SocialPublicationStatus.Published;
-        publication.PublishedAtUtc = publication.AttemptedAtUtc ?? DateTime.UtcNow;
-        publication.LastSynchronizedAtUtc = DateTime.UtcNow;
-        publication.ExternalPostId = reconciliation.ExternalPostId;
-        publication.ExternalPostUrl = reconciliation.ExternalPostUrl;
-        publication.FailureCode = null;
-        publication.FailureMessage = null;
         publication.Touch();
         return await this.repository.UpdateAsync(publication, cancellationToken);
     }
