@@ -1,6 +1,20 @@
 {
-  "version": "4.1.41",
+  "version": "4.1.42",
   "history": [
+    {
+      "version": "4.1.42",
+      "releasedAt": "2026-08-13",
+      "labels": {
+        "fr": "La sécurité des dépendances a été renforcée.",
+        "en": "Dependency security has been strengthened.",
+        "de": "Die Sicherheit der Abhängigkeiten wurde verbessert.",
+        "nl": "De beveiliging van afhankelijkheden is versterkt.",
+        "it": "La sicurezza delle dipendenze è stata rafforzata.",
+        "es": "Se ha reforzado la seguridad de las dependencias.",
+        "pl": "Wzmocniono bezpieczeństwo zależności.",
+        "pt": "A segurança das dependências foi reforçada."
+      }
+    },
     {
       "version": "4.1.41",
       "releasedAt": "2026-08-13",
