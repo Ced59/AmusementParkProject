@@ -265,6 +265,38 @@ public sealed class FacebookPageSocialPublisherTests
         Assert.Equal("secret-page-token", handler.AuthorizationParameter);
     }
 
+    [Fact]
+    public async Task ReconcilePublishedLinkAsync_WhenMatchIsOnNextPage_ShouldFollowCursorBeforeReturning()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{}",
+            graphResponseBodies: new[]
+            {
+                "{\"data\":[],\"paging\":{\"cursors\":{\"after\":\"cursor-1\"},"
+                    + "\"next\":\"https://graph.facebook.com/v24.0/123/published_posts?after=cursor-1\"}}",
+                "{\"data\":[{\"id\":\"123_456\",\"message\":\"Exact message\","
+                    + "\"permalink_url\":\"https://www.facebook.com/123/posts/456\","
+                    + "\"created_time\":\"2026-08-13T09:21:00+0000\"}]}",
+            });
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
+            CreateSettings());
+
+        SocialPublisherLinkReconciliationResult result = await publisher.ReconcilePublishedLinkAsync(
+            new SocialPublisherLinkReconciliationRequest(
+                "Exact message",
+                new DateTime(2026, 8, 13, 9, 20, 0, DateTimeKind.Utc)),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.IsFound);
+        Assert.Equal("123_456", result.ExternalPostId);
+        Assert.Equal(2, handler.GraphCallCount);
+        Assert.Contains("after=cursor-1", handler.RequestUris[1], StringComparison.Ordinal);
+    }
+
     private static FacebookPagePublishingSettings CreateSettings()
     {
         return new FacebookPagePublishingSettings
@@ -315,17 +347,20 @@ public sealed class FacebookPageSocialPublisherTests
         private readonly string responseBody;
         private readonly bool pageSeoReady;
         private readonly bool failPageBodyRead;
+        private readonly Queue<string> graphResponseBodies;
 
         public RecordingHttpMessageHandler(
             HttpStatusCode statusCode,
             string responseBody,
             bool pageSeoReady = true,
-            bool failPageBodyRead = false)
+            bool failPageBodyRead = false,
+            IReadOnlyCollection<string>? graphResponseBodies = null)
         {
             this.statusCode = statusCode;
             this.responseBody = responseBody;
             this.pageSeoReady = pageSeoReady;
             this.failPageBodyRead = failPageBodyRead;
+            this.graphResponseBodies = new Queue<string>(graphResponseBodies ?? Array.Empty<string>());
         }
 
         public List<string> RequestUris { get; } = new List<string>();
@@ -397,7 +432,10 @@ public sealed class FacebookPageSocialPublisherTests
                 : await request.Content.ReadAsStringAsync(cancellationToken);
             return new HttpResponseMessage(this.statusCode)
             {
-                Content = new StringContent(this.responseBody),
+                Content = new StringContent(
+                    this.graphResponseBodies.Count > 0
+                        ? this.graphResponseBodies.Dequeue()
+                        : this.responseBody),
             };
         }
     }

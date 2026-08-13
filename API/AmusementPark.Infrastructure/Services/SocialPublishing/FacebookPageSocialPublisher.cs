@@ -19,6 +19,7 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
 
     private const string GraphApiBaseUrl = "https://graph.facebook.com";
     private const int MaximumStoredErrorLength = 500;
+    private const int MaximumReconciliationPageCount = 20;
 
     private readonly IHttpClientFactory httpClientFactory;
     private readonly IPublicSeoContextProvider publicSeoContextProvider;
@@ -114,76 +115,71 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
         long since = attemptedAtUtc.AddMinutes(-2).ToUnixTimeSeconds();
         long until = attemptedAtUtc.AddMinutes(10).ToUnixTimeSeconds();
         string fields = Uri.EscapeDataString("id,message,permalink_url,created_time");
-        string endpoint = $"{GraphApiBaseUrl}/{this.settings.ApiVersion}/{Uri.EscapeDataString(this.settings.PageId)}"
+        string baseEndpoint = $"{GraphApiBaseUrl}/{this.settings.ApiVersion}/{Uri.EscapeDataString(this.settings.PageId)}"
             + $"/published_posts?fields={fields}&since={since}&until={until}&limit=25";
-        using HttpRequestMessage httpRequest = this.CreateAuthorizedRequest(HttpMethod.Get, endpoint);
-        HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
-        using HttpResponseMessage response = await client.SendAsync(
-            httpRequest,
-            HttpCompletionOption.ResponseHeadersRead,
-            cancellationToken);
-        string responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
-        if (!response.IsSuccessStatusCode)
-        {
-            SocialPublisherResult failure = ParseFailure(
-                responseBody,
-                ((int)response.StatusCode).ToString(System.Globalization.CultureInfo.InvariantCulture));
-            return ReconciliationFailure(
-                failure.FailureCode ?? "facebook-reconciliation-failed",
-                failure.FailureMessage ?? "Facebook n'a pas pu confirmer la publication.");
-        }
+        List<(string Id, string? Url)> matches = new List<(string Id, string? Url)>();
+        string? afterCursor = null;
 
         try
         {
-            using JsonDocument document = JsonDocument.Parse(responseBody);
-            if (!document.RootElement.TryGetProperty("data", out JsonElement dataElement)
-                || dataElement.ValueKind != JsonValueKind.Array)
+            for (int pageNumber = 1; pageNumber <= MaximumReconciliationPageCount; pageNumber++)
             {
-                return ReconciliationFailure(
-                    "facebook-invalid-response",
-                    "Facebook a renvoyé une réponse de rapprochement invalide.");
+                string endpoint = afterCursor is null
+                    ? baseEndpoint
+                    : $"{baseEndpoint}&after={Uri.EscapeDataString(afterCursor)}";
+                using HttpRequestMessage httpRequest = this.CreateAuthorizedRequest(HttpMethod.Get, endpoint);
+                HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
+                using HttpResponseMessage response = await client.SendAsync(
+                    httpRequest,
+                    HttpCompletionOption.ResponseHeadersRead,
+                    cancellationToken);
+                string responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
+                if (!response.IsSuccessStatusCode)
+                {
+                    SocialPublisherResult failure = ParseFailure(
+                        responseBody,
+                        ((int)response.StatusCode).ToString(System.Globalization.CultureInfo.InvariantCulture));
+                    return ReconciliationFailure(
+                        failure.FailureCode ?? "facebook-reconciliation-failed",
+                        failure.FailureMessage ?? "Facebook n'a pas pu confirmer la publication.");
+                }
+
+                using JsonDocument document = JsonDocument.Parse(responseBody);
+                if (!document.RootElement.TryGetProperty("data", out JsonElement dataElement)
+                    || dataElement.ValueKind != JsonValueKind.Array)
+                {
+                    return ReconciliationFailure(
+                        "facebook-invalid-response",
+                        "Facebook a renvoyé une réponse de rapprochement invalide.");
+                }
+
+                matches.AddRange(dataElement
+                    .EnumerateArray()
+                    .Where(element => HasMatchingPublishedMessage(element, request.Message, attemptedAtUtc))
+                    .Select(static element => (
+                        element.GetProperty("id").GetString()!,
+                        TryGetString(element, "permalink_url"))));
+                if (matches.Count > 1)
+                {
+                    return AmbiguousReconciliation();
+                }
+
+                if (!TryGetNextCursor(document.RootElement, out bool hasNextPage, out afterCursor))
+                {
+                    return ReconciliationFailure(
+                        "facebook-invalid-response",
+                        "Facebook a renvoyé une pagination de rapprochement invalide.");
+                }
+
+                if (!hasNextPage)
+                {
+                    return BuildReconciliationResult(matches);
+                }
             }
 
-            IReadOnlyCollection<(string Id, string? Url)> matches = dataElement
-                .EnumerateArray()
-                .Where(element => HasMatchingPublishedMessage(element, request.Message, attemptedAtUtc))
-                .Select(static element => (
-                    element.GetProperty("id").GetString()!,
-                    TryGetString(element, "permalink_url")))
-                .ToList();
-            if (matches.Count == 0)
-            {
-                return new SocialPublisherLinkReconciliationResult(
-                    true,
-                    false,
-                    false,
-                    null,
-                    null,
-                    null,
-                    null);
-            }
-
-            if (matches.Count > 1)
-            {
-                return new SocialPublisherLinkReconciliationResult(
-                    true,
-                    false,
-                    true,
-                    null,
-                    null,
-                    null,
-                    null);
-            }
-
-            (string id, string? url) = matches.Single();
-            return new SocialPublisherLinkReconciliationResult(
-                true,
-                true,
-                false,
-                id,
-                string.IsNullOrWhiteSpace(url) ? BuildExternalPostUrl(id) : url,
-                null,
-                null);
+            return ReconciliationFailure(
+                "facebook-reconciliation-page-limit",
+                "Facebook a renvoyé trop de pages pour confirmer l'absence d'une publication en toute sécurité.");
         }
         catch (JsonException)
         {
@@ -519,6 +515,78 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
                 out DateTimeOffset createdAtUtc)
             && createdAtUtc >= attemptedAtUtc.AddMinutes(-2)
             && createdAtUtc <= attemptedAtUtc.AddMinutes(10);
+    }
+
+    private static bool TryGetNextCursor(
+        JsonElement root,
+        out bool hasNextPage,
+        out string? afterCursor)
+    {
+        hasNextPage = false;
+        afterCursor = null;
+        if (!root.TryGetProperty("paging", out JsonElement pagingElement))
+        {
+            return true;
+        }
+
+        if (pagingElement.ValueKind != JsonValueKind.Object)
+        {
+            return false;
+        }
+
+        string? nextUrl = TryGetString(pagingElement, "next");
+        if (string.IsNullOrWhiteSpace(nextUrl))
+        {
+            return true;
+        }
+
+        hasNextPage = true;
+        if (!pagingElement.TryGetProperty("cursors", out JsonElement cursorsElement)
+            || cursorsElement.ValueKind != JsonValueKind.Object)
+        {
+            return false;
+        }
+
+        afterCursor = TryGetString(cursorsElement, "after")?.Trim();
+        return !string.IsNullOrWhiteSpace(afterCursor);
+    }
+
+    private static SocialPublisherLinkReconciliationResult BuildReconciliationResult(
+        IReadOnlyCollection<(string Id, string? Url)> matches)
+    {
+        if (matches.Count == 0)
+        {
+            return new SocialPublisherLinkReconciliationResult(
+                true,
+                false,
+                false,
+                null,
+                null,
+                null,
+                null);
+        }
+
+        (string id, string? url) = matches.Single();
+        return new SocialPublisherLinkReconciliationResult(
+            true,
+            true,
+            false,
+            id,
+            string.IsNullOrWhiteSpace(url) ? BuildExternalPostUrl(id) : url,
+            null,
+            null);
+    }
+
+    private static SocialPublisherLinkReconciliationResult AmbiguousReconciliation()
+    {
+        return new SocialPublisherLinkReconciliationResult(
+            true,
+            false,
+            true,
+            null,
+            null,
+            null,
+            null);
     }
 
     private static string? TryGetString(JsonElement element, string propertyName)
