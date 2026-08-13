@@ -28,7 +28,7 @@
   "private": true,
   "overrides": {
     "@hono/node-server": "2.0.11",
-    "nanoid": "3.3.17",
+    "nanoid": "3.3.18",
     "@angular/build": {
       "undici": "7.29.0"
     }
