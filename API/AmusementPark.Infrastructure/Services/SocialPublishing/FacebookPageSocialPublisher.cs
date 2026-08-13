@@ -98,6 +98,101 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
             null);
     }
 
+    public async Task<SocialPublisherLinkReconciliationResult> ReconcilePublishedLinkAsync(
+        SocialPublisherLinkReconciliationRequest request,
+        CancellationToken cancellationToken)
+    {
+        if (!this.settings.IsConfigured())
+        {
+            return ReconciliationFailure(
+                "publisher-not-configured",
+                "La Page Facebook n'est pas configurée.");
+        }
+
+        DateTimeOffset attemptedAtUtc = new DateTimeOffset(
+            DateTime.SpecifyKind(request.AttemptedAtUtc, DateTimeKind.Utc));
+        long since = attemptedAtUtc.AddMinutes(-2).ToUnixTimeSeconds();
+        long until = attemptedAtUtc.AddMinutes(10).ToUnixTimeSeconds();
+        string fields = Uri.EscapeDataString("id,message,permalink_url,created_time");
+        string endpoint = $"{GraphApiBaseUrl}/{this.settings.ApiVersion}/{Uri.EscapeDataString(this.settings.PageId)}"
+            + $"/published_posts?fields={fields}&since={since}&until={until}&limit=25";
+        using HttpRequestMessage httpRequest = this.CreateAuthorizedRequest(HttpMethod.Get, endpoint);
+        HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
+        using HttpResponseMessage response = await client.SendAsync(
+            httpRequest,
+            HttpCompletionOption.ResponseHeadersRead,
+            cancellationToken);
+        string responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
+        if (!response.IsSuccessStatusCode)
+        {
+            SocialPublisherResult failure = ParseFailure(
+                responseBody,
+                ((int)response.StatusCode).ToString(System.Globalization.CultureInfo.InvariantCulture));
+            return ReconciliationFailure(
+                failure.FailureCode ?? "facebook-reconciliation-failed",
+                failure.FailureMessage ?? "Facebook n'a pas pu confirmer la publication.");
+        }
+
+        try
+        {
+            using JsonDocument document = JsonDocument.Parse(responseBody);
+            if (!document.RootElement.TryGetProperty("data", out JsonElement dataElement)
+                || dataElement.ValueKind != JsonValueKind.Array)
+            {
+                return ReconciliationFailure(
+                    "facebook-invalid-response",
+                    "Facebook a renvoyé une réponse de rapprochement invalide.");
+            }
+
+            IReadOnlyCollection<(string Id, string? Url)> matches = dataElement
+                .EnumerateArray()
+                .Where(element => HasMatchingPublishedMessage(element, request.Message, attemptedAtUtc))
+                .Select(static element => (
+                    element.GetProperty("id").GetString()!,
+                    TryGetString(element, "permalink_url")))
+                .ToList();
+            if (matches.Count == 0)
+            {
+                return new SocialPublisherLinkReconciliationResult(
+                    true,
+                    false,
+                    false,
+                    null,
+                    null,
+                    null,
+                    null);
+            }
+
+            if (matches.Count > 1)
+            {
+                return new SocialPublisherLinkReconciliationResult(
+                    true,
+                    false,
+                    true,
+                    null,
+                    null,
+                    null,
+                    null);
+            }
+
+            (string id, string? url) = matches.Single();
+            return new SocialPublisherLinkReconciliationResult(
+                true,
+                true,
+                false,
+                id,
+                string.IsNullOrWhiteSpace(url) ? BuildExternalPostUrl(id) : url,
+                null,
+                null);
+        }
+        catch (JsonException)
+        {
+            return ReconciliationFailure(
+                "facebook-invalid-response",
+                "Facebook a renvoyé une réponse de rapprochement invalide.");
+        }
+    }
+
     public async Task<SocialPublisherOperationResult> RefreshLinkPreviewAsync(
         string url,
         CancellationToken cancellationToken)
@@ -407,6 +502,33 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
         }
     }
 
+    private static bool HasMatchingPublishedMessage(
+        JsonElement element,
+        string expectedMessage,
+        DateTimeOffset attemptedAtUtc)
+    {
+        string? id = TryGetString(element, "id");
+        string? message = TryGetString(element, "message");
+        string? createdAtValue = TryGetString(element, "created_time");
+        return !string.IsNullOrWhiteSpace(id)
+            && string.Equals(message, expectedMessage, StringComparison.Ordinal)
+            && DateTimeOffset.TryParse(
+                createdAtValue,
+                System.Globalization.CultureInfo.InvariantCulture,
+                System.Globalization.DateTimeStyles.AssumeUniversal,
+                out DateTimeOffset createdAtUtc)
+            && createdAtUtc >= attemptedAtUtc.AddMinutes(-2)
+            && createdAtUtc <= attemptedAtUtc.AddMinutes(10);
+    }
+
+    private static string? TryGetString(JsonElement element, string propertyName)
+    {
+        return element.TryGetProperty(propertyName, out JsonElement property)
+            && property.ValueKind == JsonValueKind.String
+                ? property.GetString()
+                : null;
+    }
+
     private static SocialPublisherResult ParseFailure(string responseBody, string fallbackCode)
     {
         try
@@ -444,5 +566,20 @@ public sealed class FacebookPageSocialPublisher : ISocialPublisher
             ? message
             : message[..MaximumStoredErrorLength];
         return new SocialPublisherResult(false, null, null, code, safeMessage);
+    }
+
+    private static SocialPublisherLinkReconciliationResult ReconciliationFailure(string code, string message)
+    {
+        string safeMessage = message.Length <= MaximumStoredErrorLength
+            ? message
+            : message[..MaximumStoredErrorLength];
+        return new SocialPublisherLinkReconciliationResult(
+            false,
+            false,
+            false,
+            null,
+            null,
+            code,
+            safeMessage);
     }
 }

@@ -55,6 +55,19 @@ public sealed record SocialPublisherResult(
     string? FailureCode,
     string? FailureMessage);
 
+public sealed record SocialPublisherLinkReconciliationRequest(
+    string Message,
+    DateTime AttemptedAtUtc);
+
+public sealed record SocialPublisherLinkReconciliationResult(
+    bool IsSuccess,
+    bool IsFound,
+    bool IsAmbiguous,
+    string? ExternalPostId,
+    string? ExternalPostUrl,
+    string? FailureCode,
+    string? FailureMessage);
+
 public sealed record SocialPublisherOperationResult(
     bool IsSuccess,
     bool IsMissing,

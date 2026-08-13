@@ -46,6 +46,13 @@ public static class SocialPublishingApplicationErrors
             "Seule une publication en échec peut être relancée.");
     }
 
+    public static ApplicationError PublicationReconciliationAmbiguous()
+    {
+        return ApplicationError.RuleViolation(
+            "social-publishing.publication.reconciliation-ambiguous",
+            "Plusieurs publications sociales correspondent à cette tentative ; aucune relance automatique n'est sûre.");
+    }
+
     public static ApplicationError PublicationCannotBeManaged()
     {
         return ApplicationError.RuleViolation(

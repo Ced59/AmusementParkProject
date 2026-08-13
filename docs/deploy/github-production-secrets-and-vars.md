@@ -82,7 +82,7 @@ Variables associées :
 | `PROD_SOCIAL_PUBLISHING_FACEBOOK_API_VERSION` | `v24.0` |
 | `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID` | identifiant numérique de la Page |
 | `PROD_SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL` | URL publique complète de la Page |
-| `PROD_SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS` | `10` |
+| `PROD_SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS` | `30` |
 | `PROD_SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED` | `false` tant que le callback Meta n’est pas configuré, puis `true` |
 
 La procédure de création et de validation du jeton est détaillée dans

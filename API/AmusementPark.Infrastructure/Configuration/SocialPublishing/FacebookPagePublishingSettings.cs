@@ -16,7 +16,7 @@ public sealed class FacebookPagePublishingSettings
 
     public string PageUrl { get; set; } = string.Empty;
 
-    public int RequestTimeoutSeconds { get; set; } = 10;
+    public int RequestTimeoutSeconds { get; set; } = 30;
 
     public bool WebhookEnabled { get; set; }
 
@@ -55,7 +55,7 @@ public sealed class FacebookPagePublishingSettings
         settings.PageUrl = settings.PageUrl?.Trim() ?? string.Empty;
         settings.AppSecret = settings.AppSecret?.Trim() ?? string.Empty;
         settings.WebhookVerifyToken = settings.WebhookVerifyToken?.Trim() ?? string.Empty;
-        settings.RequestTimeoutSeconds = Math.Clamp(settings.RequestTimeoutSeconds, 3, 30);
+        settings.RequestTimeoutSeconds = Math.Clamp(settings.RequestTimeoutSeconds, 3, 60);
         return settings;
     }
 

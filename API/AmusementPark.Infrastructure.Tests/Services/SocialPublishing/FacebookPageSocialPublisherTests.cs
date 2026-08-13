@@ -234,6 +234,37 @@ public sealed class FacebookPageSocialPublisherTests
         Assert.Contains("fields=id,message,permalink_url", handler.RequestUri, StringComparison.Ordinal);
     }
 
+    [Fact]
+    public async Task ReconcilePublishedLinkAsync_WhenExactRecentMessageExists_ShouldReturnExistingPost()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler(
+            HttpStatusCode.OK,
+            "{\"data\":[{\"id\":\"123_456\",\"message\":\"Exact message\","
+                + "\"permalink_url\":\"https://www.facebook.com/123/posts/456\","
+                + "\"created_time\":\"2026-08-13T09:21:00+0000\"}]}");
+        FacebookPageSocialPublisher publisher = new FacebookPageSocialPublisher(
+            new StubHttpClientFactory(handler),
+            new StubPublicSeoContextProvider(),
+            CreateSettings());
+
+        SocialPublisherLinkReconciliationResult result = await publisher.ReconcilePublishedLinkAsync(
+            new SocialPublisherLinkReconciliationRequest(
+                "Exact message",
+                new DateTime(2026, 8, 13, 9, 20, 0, DateTimeKind.Utc)),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.IsFound);
+        Assert.False(result.IsAmbiguous);
+        Assert.Equal("123_456", result.ExternalPostId);
+        Assert.Equal("https://www.facebook.com/123/posts/456", result.ExternalPostUrl);
+        Assert.Contains("/123/published_posts?", handler.RequestUri, StringComparison.Ordinal);
+        Assert.Contains("since=1786612680", handler.RequestUri, StringComparison.Ordinal);
+        Assert.Contains("until=1786613400", handler.RequestUri, StringComparison.Ordinal);
+        Assert.Equal("Bearer", handler.AuthorizationScheme);
+        Assert.Equal("secret-page-token", handler.AuthorizationParameter);
+    }
+
     private static FacebookPagePublishingSettings CreateSettings()
     {
         return new FacebookPagePublishingSettings
