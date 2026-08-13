@@ -67,6 +67,12 @@ Cette autorisation Facebook est limitée au parc visible traité depuis ce backl
 
 La ligne peut être supprimée du fichier versionné seulement lorsque les données ont été publiées avec succès, que le score courant post-publication est strictement supérieur à 95 et que l’annonce Facebook est soit déjà publiée, soit publiée avec succès pendant le traitement.
 
+### Exception explicite et bornée
+
+Le seuil reste la règle normale. Une exception de score inférieur ou égal à 95 n’est possible que lorsque l’utilisateur nomme le parc et accepte explicitement ses lacunes après un export complet frais et un audit final sans bloqueur. Elle ne peut jamais couvrir un texte public interdit, une duplication éditoriale, un audit incomplet, une publication de données en échec ou une annonce Facebook non confirmée.
+
+Après le succès des deux publications, l’exception doit être inscrite dans la section `Exceptions explicitement acceptées` du backlog avec l’identifiant exact, le score courant, la date de décision et les lacunes factuelles acceptées. Les rafraîchissements ultérieurs excluent uniquement ces identifiants enregistrés, jusqu’à ce que l’utilisateur demande explicitement de rouvrir l’exception. Cette trace remplace la ligne active sans masquer le score réel.
+
 Après validation :
 
 - supprimer uniquement la ligne du parc ;
