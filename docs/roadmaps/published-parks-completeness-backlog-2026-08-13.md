@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 40 parcs atteignent le niveau `Excellent` : 38 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **124 parcs publiés remplissent le critère d’entrée, avec un score inférieur ou égal à 95** : 59 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- **124 parcs publiés remplissent le critère d’entrée, avec un score inférieur ou égal à 95** : 58 au niveau `Publishable`, 64 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,11 +17,14 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (59)
+### Reprise en attente de décision
+
+- **Afsona Land** — reprise éditoriale et audit final effectués le 13 août 2026. Le score est passé de 70 (66/94) à **88 (88/100)**. Le logo, la photo principale, les nouveaux médias, les sept jalons historiques et l’article long restent privés ; aucune annonce Facebook n’a été créée. Le calcul de production ne crédite ces éléments qu’après leur publication : le seuil prépublication strict de 96 ne peut donc pas être constaté sans définir un score projeté ou déplacer le contrôle numérique après la publication ciblée. La ligne reste dans le backlog jusqu’à cette décision.
+
+## Priorité 1 — niveau `Publishable` (58)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 70 | `Publishable` | Afsona Land | UZ | `Operating` | `National` | 66/94 | `223e28fb-bfab-4a75-a2a5-9941994c5be8` |
 | 70 | `Publishable` | Aladin Amusement Park | PK | `ClosedDefinitively` | `—` | 64/92 | `75fc4710-bdad-4797-8fc1-8d4d2b0cfe70` |
 | 70 | `Publishable` | Altınbaş Lunapark | TR | `Operating` | `Local` | 59/84 | `e1e084b6-4191-4bb2-a2f5-3501ff9f7912` |
 | 72 | `Publishable` | Al Zawraa Land | IQ | `Operating` | `National` | 68/94 | `595ada71-b493-4d73-a0a6-dc4e6e030710` |
@@ -81,7 +84,7 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | 84 | `Publishable` | Au Paradis des Enfants | FR | `Operating` | `Regional` | 77/92 | `b3e11451-5350-4d53-b6c4-3d586a338683` |
 | 84 | `Publishable` | DraculaLand | RO | `Planned` | `International` | 74/88 | `f81b3b4c-b1d7-45ae-a7ab-7d2ee8f7e059` |
 
-## Priorité 2 — niveau `Good` (63)
+## Priorité 2 — niveau `Good` (64)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
@@ -118,6 +121,7 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | 87 | `Good` | Azur Park | FR | `Operating` | `Regional` | 81/93 | `de091ae6-7a00-4446-ae69-e7bae1c60a67` |
 | 87 | `Good` | Cobac Parc | FR | `Operating` | `Regional` | 81/93 | `a2db3ed7-8f17-47dd-808f-4340936c82b7` |
 | 87 | `Good` | Parc d’Olhain | FR | `Operating` | `Regional` | 77/89 | `a3a2f6c5-3c81-4591-8ca0-246e677956e7` |
+| 88 | `Good` | Afsona Land | UZ | `Operating` | `National` | 88/100 | `223e28fb-bfab-4a75-a2a5-9941994c5be8` |
 | 88 | `Good` | Austin's Park | US | `Operating` | `Local` | 81/92 | `57d689ef-c11d-4a98-9238-73893061ac15` |
 | 89 | `Good` | 360 Play | BH | `Operating` | `Local` | 89/100 | `1a0f5161-48db-43bf-93d7-c899a74a5965` |
 | 89 | `Good` | Antibes Land | FR | `Operating` | `Regional` | 83/93 | `b0607555-4092-407e-9ee6-7d61423a8c73` |
