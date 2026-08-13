@@ -67,7 +67,8 @@ public sealed class GetParkDataCompletenessScoreQueryHandler : IQueryHandler<Get
             this.parkZoneRepository,
             this.imageRepository,
             this.historyEventRepository,
-            cancellationToken);
+            cancellationToken,
+            query.ProjectForPublication);
 
         ParkDataCompletenessContext? context = !string.IsNullOrWhiteSpace(park.Id) && contextsByParkId.TryGetValue(park.Id, out ParkDataCompletenessContext? resolvedContext)
             ? resolvedContext

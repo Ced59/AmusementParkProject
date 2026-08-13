@@ -101,7 +101,7 @@ Pour couper l’accès depuis Codex :
 | Exporter le graphe courant | job `POST admin/park-graph-upserts/bulk/export-jobs`, suivi puis téléchargement reprenable |
 | Prévisualiser/appliquer un lot borné | `POST admin/park-graph-upserts/preview` puis `apply` |
 | Lire l’historique d’intégration | `GET admin/park-graph-upserts/history` |
-| Contrôler la complétude | `GET park-data-editor/parks/{id}/data-completeness` |
+| Contrôler la complétude courante ou projetée pour publication | `GET park-data-editor/parks/{id}/data-completeness` |
 | Téléverser/rattacher/documenter une image de parc | `park-data-editor/images/*` |
 | Préparer puis publier explicitement un lien Facebook | `GET park-data-editor/social-publications/facebook/draft`, puis `POST park-data-editor/social-publications/facebook` |
 | Révoquer le jeton courant | `DELETE park-data-editor/tokens/current` |
@@ -109,6 +109,14 @@ Pour couper l’accès depuis Codex :
 Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, la suppression d’images ou les autres fonctions d’administration.
 
 `SearchParks` accepte `-Page` et `-PageSize` pour parcourir séquentiellement l’inventaire complet sans contourner le client officiel. La taille de page est limitée à 50 et chaque page doit être traitée avant d’appeler la suivante.
+
+`Completeness` renvoie le score de l’état réellement publié par défaut. Pour la reprise d’un parc déjà visible sélectionné dans le backlog, `-ProjectForPublication` simule le score obtenu après validation du parc et publication des médias et articles déjà intégrés :
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action Completeness -ParkId '<park-id>' -ProjectForPublication
+```
+
+Cette projection est en lecture seule. Elle ne change aucune visibilité, ne publie aucun contenu et ne rend jamais publiable une fiche `NotRelevant`. Elle ne doit être utilisée comme feu vert qu’après l’audit final sans bloqueur ; le score courant doit être recalculé après la publication effective.
 
 ## Coordination globale obligatoire
 
