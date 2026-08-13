@@ -34,6 +34,7 @@ public sealed record SocialPublicationDraft(
     string? ImageOwnerId,
     PagedResult<SocialPublicationImageOption> Images,
     bool HasPublishedParkAnnouncement,
+    string? ParkAnnouncementId,
     SocialPublicationStatus? ParkAnnouncementStatus,
     string? ParkAnnouncementExternalUrl);
 

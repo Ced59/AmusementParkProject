@@ -11,15 +11,16 @@ namespace AmusementPark.Application.Tests.Features.SocialPublishing.Handlers;
 public sealed class RetryParkAnnouncementPublicationCommandHandlerTests
 {
     [Fact]
-    public async Task HandleAsync_WhenPublicationMatchesAutomaticParkAnnouncement_ShouldRetrySamePublication()
+    public async Task HandleAsync_ShouldForwardParkPublicationAndAuthenticatedEditor()
     {
         SocialPublication publication = CreatePublication();
         Mock<ISocialPublicationService> service = new Mock<ISocialPublicationService>(MockBehavior.Strict);
         service
-            .Setup(candidate => candidate.GetParkAnnouncementAsync("park-1", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(publication);
-        service
-            .Setup(candidate => candidate.RetryAsync("publication-1", "editor-1", It.IsAny<CancellationToken>()))
+            .Setup(candidate => candidate.RetryParkAnnouncementAsync(
+                "park-1",
+                "publication-1",
+                "editor-1",
+                It.IsAny<CancellationToken>()))
             .ReturnsAsync(ApplicationResult<SocialPublication>.Success(publication));
         RetryParkAnnouncementPublicationCommandHandler handler =
             new RetryParkAnnouncementPublicationCommandHandler(service.Object);
@@ -34,13 +35,17 @@ public sealed class RetryParkAnnouncementPublicationCommandHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenPublicationDoesNotMatchParkAnnouncement_ShouldRejectWithoutRetry()
+    public async Task HandleAsync_WhenServiceRejectsPublication_ShouldForwardFailure()
     {
-        SocialPublication publication = CreatePublication();
         Mock<ISocialPublicationService> service = new Mock<ISocialPublicationService>(MockBehavior.Strict);
         service
-            .Setup(candidate => candidate.GetParkAnnouncementAsync("park-2", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(publication);
+            .Setup(candidate => candidate.RetryParkAnnouncementAsync(
+                "park-2",
+                "publication-1",
+                "editor-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<SocialPublication>.Failure(
+                AmusementPark.Application.Features.SocialPublishing.SocialPublishingApplicationErrors.PublicationNotFound("publication-1")));
         RetryParkAnnouncementPublicationCommandHandler handler =
             new RetryParkAnnouncementPublicationCommandHandler(service.Object);
 

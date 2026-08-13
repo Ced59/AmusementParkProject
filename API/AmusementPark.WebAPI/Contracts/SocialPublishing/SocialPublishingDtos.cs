@@ -36,6 +36,8 @@ public sealed class SocialPublicationDraftDto
 
     public bool HasPublishedParkAnnouncement { get; set; }
 
+    public string? ParkAnnouncementId { get; set; }
+
     public string? ParkAnnouncementStatus { get; set; }
 
     public string? ParkAnnouncementExternalUrl { get; set; }

@@ -30,6 +30,7 @@ internal static class SocialPublishingHttpMappers
             ImageOwnerType = draft.ImageOwnerType?.ToString(),
             ImageOwnerId = draft.ImageOwnerId,
             HasPublishedParkAnnouncement = draft.HasPublishedParkAnnouncement,
+            ParkAnnouncementId = draft.ParkAnnouncementId,
             ParkAnnouncementStatus = draft.ParkAnnouncementStatus?.ToString(),
             ParkAnnouncementExternalUrl = draft.ParkAnnouncementExternalUrl,
             Images = draft.Images.ToPagedResponse(static image => new SocialPublicationImageOptionDto

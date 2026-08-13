@@ -60,6 +60,7 @@ public sealed class SocialPublicationComposerServiceTests
             draft.DefaultMessage);
         Assert.Equal(2, draft.Images.TotalItems);
         Assert.False(draft.HasPublishedParkAnnouncement);
+        Assert.Null(draft.ParkAnnouncementId);
         Assert.Null(draft.ParkAnnouncementStatus);
         SocialPublicationImageOption image = Assert.Single(draft.Images.Items);
         Assert.Equal("image-current", image.Id);
@@ -82,6 +83,7 @@ public sealed class SocialPublicationComposerServiceTests
         publisher.Setup(service => service.GetParkAnnouncementAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(new SocialPublication
             {
+                Id = "publication-1",
                 Status = SocialPublicationStatus.Published,
                 ExternalPostId = "facebook-post-1",
                 ExternalPostUrl = "https://www.facebook.com/test/posts/facebook-post-1",
@@ -97,6 +99,7 @@ public sealed class SocialPublicationComposerServiceTests
         Assert.True(result.IsSuccess);
         SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
         Assert.True(draft.HasPublishedParkAnnouncement);
+        Assert.Equal("publication-1", draft.ParkAnnouncementId);
         Assert.Equal(SocialPublicationStatus.Published, draft.ParkAnnouncementStatus);
         Assert.Equal("https://www.facebook.com/test/posts/facebook-post-1", draft.ParkAnnouncementExternalUrl);
         publisher.VerifyAll();

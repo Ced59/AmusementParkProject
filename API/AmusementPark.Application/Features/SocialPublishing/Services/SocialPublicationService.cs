@@ -332,6 +332,39 @@ public sealed class SocialPublicationService : ISocialPublicationService
             cancellationToken);
     }
 
+    public async Task<ApplicationResult<SocialPublication>> RetryParkAnnouncementAsync(
+        string parkId,
+        string publicationId,
+        string? requestedByUserId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        string normalizedPublicationId = publicationId?.Trim() ?? string.Empty;
+        SocialPublication? publication = await this.GetParkAnnouncementAsync(normalizedParkId, cancellationToken);
+        Uri? publicationUri = null;
+        bool isRequestedParkAnnouncement = publication is not null
+            && string.Equals(publication.Id, normalizedPublicationId, StringComparison.OrdinalIgnoreCase)
+            && publication.Network == SocialNetwork.Facebook
+            && publication.Trigger == SocialPublicationTrigger.AutomaticParkPublication
+            && string.Equals(publication.SourceEntityType, "Park", StringComparison.Ordinal)
+            && string.Equals(publication.SourceEntityId, normalizedParkId, StringComparison.OrdinalIgnoreCase)
+            && Uri.TryCreate(publication.Url, UriKind.Absolute, out publicationUri);
+        if (!isRequestedParkAnnouncement)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublicationNotFound(normalizedPublicationId));
+        }
+
+        if (publication!.Status != SocialPublicationStatus.Failed)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublicationCannotBeRetried());
+        }
+
+        await this.PreservePublicPageDuringSocialPreparationAsync(publicationUri!.AbsolutePath, cancellationToken);
+        return await this.RetryAsync(publication.Id!, requestedByUserId, cancellationToken);
+    }
+
     public async Task<ApplicationResult<SocialPublication>> RefreshParkAnnouncementPreviewAsync(
         string parkId,
         string? requestedByUserId,

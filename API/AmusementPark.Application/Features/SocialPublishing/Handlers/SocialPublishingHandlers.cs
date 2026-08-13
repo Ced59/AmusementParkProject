@@ -76,23 +76,9 @@ public sealed class RetryParkAnnouncementPublicationCommandHandler
         RetryParkAnnouncementPublicationCommand command,
         CancellationToken cancellationToken = default)
     {
-        SocialPublication? publication = await this.service.GetParkAnnouncementAsync(
+        return await this.service.RetryParkAnnouncementAsync(
             command.ParkId,
-            cancellationToken);
-        bool isRequestedParkAnnouncement = publication is not null
-            && string.Equals(publication.Id, command.PublicationId, StringComparison.OrdinalIgnoreCase)
-            && publication.Network == SocialNetwork.Facebook
-            && publication.Trigger == SocialPublicationTrigger.AutomaticParkPublication
-            && string.Equals(publication.SourceEntityType, "Park", StringComparison.Ordinal)
-            && string.Equals(publication.SourceEntityId, command.ParkId, StringComparison.OrdinalIgnoreCase);
-        if (!isRequestedParkAnnouncement)
-        {
-            return ApplicationResult<SocialPublication>.Failure(
-                SocialPublishingApplicationErrors.PublicationNotFound(command.PublicationId));
-        }
-
-        return await this.service.RetryAsync(
-            publication!.Id,
+            command.PublicationId,
             command.RequestedByUserId,
             cancellationToken);
     }

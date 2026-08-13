@@ -89,6 +89,7 @@ public sealed class AdminSocialPublicationsControllerTests
             null,
             new PagedResult<SocialPublicationImageOption>(Array.Empty<SocialPublicationImageOption>(), 2, 6, 0),
             true,
+            "publication-1",
             SocialPublicationStatus.Published,
             "https://www.facebook.com/test/posts/facebook-post-1");
         draftHandler.Setup(handler => handler.HandleAsync(
@@ -117,6 +118,7 @@ public sealed class AdminSocialPublicationsControllerTests
         Assert.Equal("Accueil", response.TargetName);
         Assert.Equal(2, response.Images.Pagination?.CurrentPage);
         Assert.True(response.HasPublishedParkAnnouncement);
+        Assert.Equal("publication-1", response.ParkAnnouncementId);
         Assert.Equal("Published", response.ParkAnnouncementStatus);
         Assert.Equal("https://www.facebook.com/test/posts/facebook-post-1", response.ParkAnnouncementExternalUrl);
         draftHandler.VerifyAll();
