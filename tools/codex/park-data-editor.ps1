@@ -21,6 +21,12 @@ param(
 
     [string]$Query,
 
+    [ValidateRange(1, 1000000)]
+    [int]$Page = 1,
+
+    [ValidateRange(1, 50)]
+    [int]$PageSize = 50,
+
     [string]$JsonPath,
 
     [string]$ReceiptPath,
@@ -896,7 +902,7 @@ switch ($Action) {
             -Body $null
     }
     'SearchParks' {
-        $relativePath = 'park-data-editor/parks?page=1&size=50'
+        $relativePath = "park-data-editor/parks?page=$Page&size=$PageSize"
         if (-not [string]::IsNullOrWhiteSpace($Query)) {
             $relativePath += '&query=' + [Uri]::EscapeDataString($Query)
         }

@@ -108,6 +108,8 @@ Pour couper l’accès depuis Codex :
 
 Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, la suppression d’images ou les autres fonctions d’administration.
 
+`SearchParks` accepte `-Page` et `-PageSize` pour parcourir séquentiellement l’inventaire complet sans contourner le client officiel. La taille de page est limitée à 50 et chaque page doit être traitée avant d’appeler la suivante.
+
 ## Coordination globale obligatoire
 
 Plusieurs instances Codex peuvent partager le même serveur sans partager leur état local. Avant tout export, Preview, Apply, import d’image ou autre demande coûteuse, chaque instance doit donc interroger l’état global avec le client officiel :
