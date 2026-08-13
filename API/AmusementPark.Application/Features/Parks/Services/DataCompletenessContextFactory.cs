@@ -88,18 +88,30 @@ internal static class DataCompletenessContextFactory
                     ? Enumerable.Empty<Image>()
                     : parkItemImagesByItemId.GetValueOrDefault(item.Id.Trim()) ?? new List<Image>())
                 .ToList();
+            HashSet<string> publicParkItemIds = currentParkItems
+                .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+                .Select(static item => item.Id)
+                .Where(static itemId => !string.IsNullOrWhiteSpace(itemId))
+                .Select(static itemId => itemId!.Trim())
+                .ToHashSet(StringComparer.Ordinal);
+            IReadOnlyCollection<Image> currentPublicParkItemImages = currentParkItemImages
+                .Where(image => !string.IsNullOrWhiteSpace(image.OwnerId) && publicParkItemIds.Contains(image.OwnerId.Trim()))
+                .ToList();
+            IReadOnlyCollection<HistoryEvent> currentPublicParkItemHistory = currentParkItemHistory
+                .Where(historyEvent => !string.IsNullOrWhiteSpace(historyEvent.OwnerId) && publicParkItemIds.Contains(historyEvent.OwnerId.Trim()))
+                .ToList();
             IReadOnlyCollection<Image> scoreParkImages = projectCurrentParkForPublication
                 ? currentParkImages
                 : currentParkImages.Where(static image => image.IsPublished).ToList();
             IReadOnlyCollection<Image> scoreParkItemImages = projectCurrentParkForPublication
-                ? currentParkItemImages
-                : currentParkItemImages.Where(static image => image.IsPublished).ToList();
-            IReadOnlyCollection<HistoryEvent> scoreParkHistory = projectCurrentParkForPublication
-                ? currentParkHistory
-                : currentParkHistory.Where(static historyEvent => historyEvent.IsVisible).ToList();
-            IReadOnlyCollection<HistoryEvent> scoreParkItemHistory = projectCurrentParkForPublication
-                ? currentParkItemHistory
-                : currentParkItemHistory.Where(static historyEvent => historyEvent.IsVisible).ToList();
+                ? currentPublicParkItemImages
+                : currentPublicParkItemImages.Where(static image => image.IsPublished).ToList();
+            IReadOnlyCollection<HistoryEvent> scoreParkHistory = currentParkHistory
+                .Where(static historyEvent => historyEvent.IsVisible)
+                .ToList();
+            IReadOnlyCollection<HistoryEvent> scoreParkItemHistory = currentPublicParkItemHistory
+                .Where(static historyEvent => historyEvent.IsVisible)
+                .ToList();
             bool hasNoForbiddenPublicText = HasNoForbiddenParkRelatedPublicText(
                 currentParkItems,
                 currentZones,
@@ -394,7 +406,7 @@ internal static class DataCompletenessContextFactory
         bool projectForPublication)
     {
         return !parkItems
-                .Where(static item => item.IsVisible)
+                .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
                 .Any(static item => HasForbiddenLocalizedPublicText(item.Descriptions))
             && !zones
                 .Where(static zone => zone.IsVisible)
