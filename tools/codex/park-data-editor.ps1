@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'Completeness', 'ImportPhoto', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'ExportPark', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'ImportPhoto', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -333,6 +333,149 @@ function Get-DefaultOutputPath {
     $directory = [IO.Path]::GetDirectoryName($InputPath)
     $name = [IO.Path]::GetFileNameWithoutExtension($InputPath)
     return [IO.Path]::Combine($directory, "$name.$Suffix.json")
+}
+
+function Assert-ParkDataDeletionRequest {
+    param(
+        [object]$Request,
+        [string]$TargetParkId
+    )
+
+    if ([string]::IsNullOrWhiteSpace($TargetParkId)) {
+        throw 'ParkId is required for a controlled deletion.'
+    }
+
+    $allowedRequestProperties = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    foreach ($propertyName in @('targetParkId', 'createIfMissing', 'replaceCollections', 'document')) {
+        $allowedRequestProperties.Add($propertyName) | Out-Null
+    }
+    foreach ($property in $Request.PSObject.Properties) {
+        if (-not $allowedRequestProperties.Contains($property.Name)) {
+            throw "A controlled deletion request cannot contain the '$($property.Name)' property."
+        }
+    }
+
+    $targetParkProperty = $Request.PSObject.Properties['targetParkId']
+    $createIfMissingProperty = $Request.PSObject.Properties['createIfMissing']
+    $replaceCollectionsProperty = $Request.PSObject.Properties['replaceCollections']
+    $documentProperty = $Request.PSObject.Properties['document']
+    if ($null -eq $targetParkProperty -or [string]::IsNullOrWhiteSpace([string]$targetParkProperty.Value) -or
+        -not [string]::Equals(([string]$targetParkProperty.Value).Trim(), $TargetParkId.Trim(), [StringComparison]::Ordinal) -or
+        $null -eq $createIfMissingProperty -or $createIfMissingProperty.Value -isnot [bool] -or [bool]$createIfMissingProperty.Value -or
+        $null -eq $replaceCollectionsProperty -or $replaceCollectionsProperty.Value -isnot [bool] -or [bool]$replaceCollectionsProperty.Value -or
+        $null -eq $documentProperty -or $null -eq $documentProperty.Value) {
+        throw 'A controlled deletion must target ParkId explicitly, disable createIfMissing and replaceCollections, and contain a document.'
+    }
+
+    $document = $documentProperty.Value
+    $modeProperty = $document.PSObject.Properties['mode']
+    $supprProperty = $document.PSObject.Properties['suppr']
+    if ($null -eq $modeProperty -or -not [string]::Equals([string]$modeProperty.Value, 'merge', [StringComparison]::Ordinal) -or
+        $null -eq $supprProperty) {
+        throw "A controlled deletion document must use mode 'merge' and contain suppr."
+    }
+
+    $allowedDocumentProperties = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    foreach ($propertyName in @('documentType', 'schemaVersion', 'mode', 'metadata', 'identity', 'suppr')) {
+        $allowedDocumentProperties.Add($propertyName) | Out-Null
+    }
+    foreach ($property in $document.PSObject.Properties) {
+        if (-not $allowedDocumentProperties.Contains($property.Name)) {
+            throw "A controlled deletion document cannot contain the '$($property.Name)' mutation section."
+        }
+    }
+
+    $identityProperty = $document.PSObject.Properties['identity']
+    if ($null -ne $identityProperty -and $null -ne $identityProperty.Value) {
+        $identityParkIdProperty = $identityProperty.Value.PSObject.Properties['parkId']
+        if ($null -eq $identityParkIdProperty -or
+            -not [string]::Equals(([string]$identityParkIdProperty.Value).Trim(), $TargetParkId.Trim(), [StringComparison]::Ordinal)) {
+            throw 'The controlled deletion identity.parkId must match ParkId.'
+        }
+    }
+
+    if ($supprProperty.Value -isnot [Array]) {
+        throw 'A controlled deletion suppr value must be an array.'
+    }
+
+    $entries = @($supprProperty.Value)
+    if ($entries.Count -lt 1 -or $entries.Count -gt 100) {
+        throw 'A controlled deletion must contain between 1 and 100 explicit suppr entries.'
+    }
+
+    $allowedEntityTypes = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    foreach ($entityType in @('Image', 'ParkItem', 'ParkZone')) {
+        $allowedEntityTypes.Add($entityType) | Out-Null
+    }
+    $seenTargets = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    foreach ($entry in $entries) {
+        if ($entry -isnot [PSCustomObject]) {
+            throw 'Every controlled deletion entry must be an object with entityType and id.'
+        }
+
+        $entryProperties = @($entry.PSObject.Properties)
+        $entityTypeProperty = $entry.PSObject.Properties['entityType']
+        $idProperty = $entry.PSObject.Properties['id']
+        if ($entryProperties.Count -ne 2 -or $null -eq $entityTypeProperty -or $null -eq $idProperty -or
+            -not $allowedEntityTypes.Contains([string]$entityTypeProperty.Value) -or
+            [string]::IsNullOrWhiteSpace([string]$idProperty.Value)) {
+            throw 'Every controlled deletion entry must contain only a supported entityType (Image, ParkItem or ParkZone) and a non-empty id.'
+        }
+
+        $targetKey = "$([string]$entityTypeProperty.Value):$(([string]$idProperty.Value).Trim())"
+        if (-not $seenTargets.Add($targetKey)) {
+            throw "The controlled deletion target '$targetKey' is duplicated in the request."
+        }
+    }
+
+    return $entries.Count
+}
+
+function Assert-ControlledDeletionResult {
+    param(
+        [object]$Result,
+        [object]$Request,
+        [int]$ExpectedDeletionCount,
+        [bool]$RequireApplied
+    )
+
+    if (-not [bool]$Result.canApply -or @($Result.errors).Count -gt 0 -or @($Result.warnings).Count -gt 0) {
+        throw 'The controlled deletion contains an error or warning and cannot continue.'
+    }
+    if ($RequireApplied -and -not [bool]$Result.isApplied) {
+        throw 'The controlled deletion was not applied.'
+    }
+    if ([int]$Result.counts.deleted -ne $ExpectedDeletionCount) {
+        throw "The controlled deletion expected $ExpectedDeletionCount deletions but the API reported $($Result.counts.deleted)."
+    }
+
+    $expectedTargets = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    foreach ($entry in @($Request.document.suppr)) {
+        $expectedTargets.Add("$([string]$entry.entityType):$(([string]$entry.id).Trim())") | Out-Null
+    }
+
+    $actualTargets = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    foreach ($change in @($Result.changes)) {
+        if ([string]::Equals([string]$change.changeType, 'Unchanged', [StringComparison]::Ordinal)) {
+            continue
+        }
+        if (-not [string]::Equals([string]$change.changeType, 'Deleted', [StringComparison]::Ordinal) -or
+            [string]::IsNullOrWhiteSpace([string]$change.entityType) -or
+            [string]::IsNullOrWhiteSpace([string]$change.entityId)) {
+            throw 'The controlled deletion preview contains an unexpected mutation.'
+        }
+
+        $actualTargets.Add("$([string]$change.entityType):$(([string]$change.entityId).Trim())") | Out-Null
+    }
+
+    if ($actualTargets.Count -ne $expectedTargets.Count) {
+        throw 'The controlled deletion result does not contain exactly the requested targets.'
+    }
+    foreach ($target in $expectedTargets) {
+        if (-not $actualTargets.Contains($target)) {
+            throw "The controlled deletion target '$target' is missing from the API result."
+        }
+    }
 }
 
 function Wait-ParkGraphExportJob {
@@ -860,7 +1003,7 @@ function Import-ParkPhoto {
     }
     catch {
         if (-not [string]::IsNullOrWhiteSpace($uploadedImageId)) {
-            Write-Warning "The image was uploaded as $uploadedImageId but a later step failed. The token cannot delete it; an administrator must inspect the orphan before cleanup."
+            Write-Warning "The image was uploaded as $uploadedImageId but a later step failed. Inspect the orphan and request explicit authorization before using the controlled deletion workflow."
         }
 
         throw
@@ -981,6 +1124,90 @@ switch ($Action) {
         if (-not $apply.isApplied -or @($apply.errors).Count -gt 0) {
             throw "Apply did not complete successfully. Inspect $applyOutputPath."
         }
+        [PSCustomObject]@{ ApplyPath = $applyOutputPath; Result = $apply }
+    }
+    'PreviewDeletion' {
+        $resolvedJsonPath = Resolve-RequiredFile -Path $JsonPath -ParameterName 'JsonPath'
+        $jsonBody = [IO.File]::ReadAllText($resolvedJsonPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
+        $expectedDeletionCount = Assert-ParkDataDeletionRequest -Request $jsonBody -TargetParkId $ParkId
+
+        Wait-ParkDataEditorAvailability | Out-Null
+        $preview = Invoke-ParkDataEditorJsonApi -Method POST -RelativePath 'admin/park-graph-upserts/preview' -Body $jsonBody
+        $previewOutputPath = if ([string]::IsNullOrWhiteSpace($OutputPath)) {
+            Get-DefaultOutputPath -InputPath $resolvedJsonPath -Suffix 'deletion-preview'
+        } else { $OutputPath }
+        Write-JsonFile -Value $preview -Path $previewOutputPath
+
+        try {
+            Assert-ControlledDeletionResult `
+                -Result $preview `
+                -Request $jsonBody `
+                -ExpectedDeletionCount $expectedDeletionCount `
+                -RequireApplied $false
+        }
+        catch {
+            throw "$($_.Exception.Message) Inspect $previewOutputPath."
+        }
+
+        $effectiveReceiptPath = if ([string]::IsNullOrWhiteSpace($ReceiptPath)) {
+            Get-DefaultOutputPath -InputPath $resolvedJsonPath -Suffix 'deletion-preview-receipt'
+        } else { $ReceiptPath }
+        $receipt = @{
+            schemaVersion = 1
+            workflow = 'controlled-deletion'
+            apiBaseUrl = $ApiBaseUrl
+            targetParkId = $ParkId.Trim()
+            jsonPath = $resolvedJsonPath
+            jsonSha256 = (Get-FileHash -LiteralPath $resolvedJsonPath -Algorithm SHA256).Hash
+            createdAtUtc = [DateTime]::UtcNow.ToString('o')
+            operationId = $preview.operationId
+            canApply = [bool]$preview.canApply
+            errorCount = @($preview.errors).Count
+            warningCount = @($preview.warnings).Count
+            expectedDeletionCount = $expectedDeletionCount
+        }
+        Write-JsonFile -Value $receipt -Path $effectiveReceiptPath
+
+        [PSCustomObject]@{ PreviewPath = $previewOutputPath; ReceiptPath = $effectiveReceiptPath; Result = $preview }
+    }
+    'ApplyDeletion' {
+        $resolvedJsonPath = Resolve-RequiredFile -Path $JsonPath -ParameterName 'JsonPath'
+        $resolvedReceiptPath = Resolve-RequiredFile -Path $ReceiptPath -ParameterName 'ReceiptPath'
+        $jsonBody = [IO.File]::ReadAllText($resolvedJsonPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
+        $expectedDeletionCount = Assert-ParkDataDeletionRequest -Request $jsonBody -TargetParkId $ParkId
+        $receipt = [IO.File]::ReadAllText($resolvedReceiptPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
+        $currentHash = (Get-FileHash -LiteralPath $resolvedJsonPath -Algorithm SHA256).Hash
+        $receiptAge = [DateTime]::UtcNow - [DateTime]::Parse($receipt.createdAtUtc).ToUniversalTime()
+        $workflowProperty = $receipt.PSObject.Properties['workflow']
+        $targetParkProperty = $receipt.PSObject.Properties['targetParkId']
+        $expectedCountProperty = $receipt.PSObject.Properties['expectedDeletionCount']
+        if ($receipt.schemaVersion -ne 1 -or $null -eq $workflowProperty -or $workflowProperty.Value -ne 'controlled-deletion' -or
+            $receipt.apiBaseUrl -ne $ApiBaseUrl -or $null -eq $targetParkProperty -or $targetParkProperty.Value -ne $ParkId.Trim() -or
+            $receipt.jsonSha256 -ne $currentHash -or -not $receipt.canApply -or
+            $receipt.errorCount -gt 0 -or $receipt.warningCount -gt 0 -or
+            $null -eq $expectedCountProperty -or [int]$expectedCountProperty.Value -ne $expectedDeletionCount -or
+            $receiptAge.TotalMinutes -gt 30 -or $receiptAge.TotalSeconds -lt 0) {
+            throw 'The controlled deletion Preview receipt is invalid, stale, targets another park or API, or does not match the current JSON. Run PreviewDeletion again.'
+        }
+
+        Wait-ParkDataEditorAvailability | Out-Null
+        $apply = Invoke-ParkDataEditorJsonApi -Method POST -RelativePath 'admin/park-graph-upserts/apply' -Body $jsonBody
+        $applyOutputPath = if ([string]::IsNullOrWhiteSpace($OutputPath)) {
+            Get-DefaultOutputPath -InputPath $resolvedJsonPath -Suffix 'deletion-apply'
+        } else { $OutputPath }
+        Write-JsonFile -Value $apply -Path $applyOutputPath
+
+        try {
+            Assert-ControlledDeletionResult `
+                -Result $apply `
+                -Request $jsonBody `
+                -ExpectedDeletionCount $expectedDeletionCount `
+                -RequireApplied $true
+        }
+        catch {
+            throw "$($_.Exception.Message) Inspect $applyOutputPath."
+        }
+
         [PSCustomObject]@{ ApplyPath = $applyOutputPath; Result = $apply }
     }
     'Completeness' {

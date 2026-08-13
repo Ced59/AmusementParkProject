@@ -183,6 +183,20 @@ public sealed partial class ParkGraphUpsertProcessor
     {
         if (target.Image is not null)
         {
+            if (!string.IsNullOrWhiteSpace(target.Image.Path))
+            {
+                if (this.imageBinaryStorage is null)
+                {
+                    return false;
+                }
+
+                bool binaryDeleted = await this.imageBinaryStorage.DeleteAsync(target.Image.Path, cancellationToken);
+                if (!binaryDeleted)
+                {
+                    return false;
+                }
+            }
+
             bool deleted = await this.imageRepository.DeleteAsync(target.Image.Id, cancellationToken);
             if (deleted)
             {

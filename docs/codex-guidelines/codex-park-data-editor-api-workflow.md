@@ -1,6 +1,6 @@
 # Workflow API autonome réservé à Codex
 
-Version : **2026-08-09-r4**
+Version : **2026-08-13-r5**
 
 Rôle : **PARK_DATA_EDITOR**
 
@@ -100,13 +100,14 @@ Pour couper l’accès depuis Codex :
 | Rechercher un parc, y compris masqué ou fermé | `GET park-data-editor/parks` |
 | Exporter le graphe courant | job `POST admin/park-graph-upserts/bulk/export-jobs`, suivi puis téléchargement reprenable |
 | Prévisualiser/appliquer un lot borné | `POST admin/park-graph-upserts/preview` puis `apply` |
+| Prévisualiser/appliquer une suppression contrôlée explicitement autorisée | mêmes routes via `PreviewDeletion` puis `ApplyDeletion` |
 | Lire l’historique d’intégration | `GET admin/park-graph-upserts/history` |
 | Contrôler la complétude courante ou projetée pour publication | `GET park-data-editor/parks/{id}/data-completeness` |
 | Téléverser/rattacher/documenter une image de parc | `park-data-editor/images/*` |
 | Préparer puis publier explicitement un lien Facebook | `GET park-data-editor/social-publications/facebook/draft`, puis `POST park-data-editor/social-publications/facebook` |
 | Révoquer le jeton courant | `DELETE park-data-editor/tokens/current` |
 
-Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, la suppression d’images ou les autres fonctions d’administration.
+Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, une route générale de suppression ou les autres fonctions d’administration. La seule suppression disponible est le lot contrôlé `suppr` d’un parc, limité aux images, parkItems et zones explicitement identifiés et autorisés.
 
 `SearchParks` accepte `-Page` et `-PageSize` pour parcourir séquentiellement l’inventaire complet sans contourner le client officiel. La taille de page est limitée à 50 et chaque page doit être traitée avant d’appeler la suivante.
 
@@ -225,6 +226,56 @@ Exemple :
   -ReceiptPath .\work\park-step-03.preview-receipt.json
 ```
 
+## Suppression contrôlée après autorisation explicite
+
+Une commande de complétude ou de publication n’autorise jamais implicitement une suppression. Codex n’utilise ce parcours que lorsque le propriétaire a explicitement demandé de retirer un lot identifié, par exemple des doublons confirmés. Le document ne peut contenir aucune autre mutation et respecte toutes les garanties suivantes :
+
+- `targetParkId` et `identity.parkId`, lorsqu’il est présent, désignent exactement le parc annoncé ;
+- `createIfMissing` et `replaceCollections` valent `false`, tandis que `document.mode` vaut `merge` ;
+- `suppr` contient de 1 à 100 objets uniques avec uniquement `entityType` et `id` ;
+- les seuls types acceptés sont `Image`, `ParkItem` et `ParkZone` ; aucun identifiant nu, alias implicite ou suppression par absence n’est accepté ;
+- les IDs proviennent d’un export frais et chaque dépendance à retirer est listée explicitement ; pour un doublon d’image, vérifier notamment qu’il n’est ni courant ni publié et que la copie conservée est bien identifiée ;
+- toute suppression d’un contenu public, courant ou partagé exige une instruction spécifique qui annonce cette conséquence ;
+- aucun warning, aucune erreur, aucune cible manquante et aucune mutation supplémentaire ne sont tolérés entre la Preview et l’Apply.
+
+Exemple de document borné :
+
+```json
+{
+  "targetParkId": "park-id",
+  "createIfMissing": false,
+  "replaceCollections": false,
+  "document": {
+    "mode": "merge",
+    "identity": {
+      "parkId": "park-id"
+    },
+    "suppr": [
+      {
+        "entityType": "Image",
+        "id": "duplicate-image-id"
+      }
+    ]
+  }
+}
+```
+
+L’exécution utilise exclusivement le client officiel et un reçu dédié, non interchangeable avec celui d’un Apply ordinaire :
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action PreviewDeletion `
+  -ParkId 'park-id' `
+  -JsonPath .\work\park-duplicates.deletion.json
+.\tools\codex\park-data-editor.ps1 -Action ApplyDeletion `
+  -ParkId 'park-id' `
+  -JsonPath .\work\park-duplicates.deletion.json `
+  -ReceiptPath .\work\park-duplicates.deletion-preview-receipt.json
+```
+
+`PreviewDeletion` exige exactement autant de changements `Deleted` que de cibles annoncées et refuse tout warning ou changement inattendu. `ApplyDeletion` vérifie à nouveau le parc, le hash, l’âge du reçu, le nombre et l’identité des cibles. Une image n’est considérée supprimée que lorsque toutes ses variantes binaires ont été retirées du stockage avant ses métadonnées. Un échec binaire conserve donc les métadonnées et fait échouer le lot. Les parkItems et zones sont supprimés par leurs repositories applicatifs ; leurs images ou dépendances éventuelles doivent figurer séparément dans le même lot ou dans un lot préalablement contrôlé.
+
+Après Apply, produire l’export ciblé nécessaire pour prouver l’absence de chaque ID et la conservation des entités attendues. Après une réponse perdue ou ambiguë, vérifier l’état global et l’historique puis réexécuter une Preview : ne jamais relancer directement `ApplyDeletion`.
+
 ## Étape 5 : parcours Codex obligatoire des images
 
 Pour les nouvelles images de parc, de parkItem ou d’attraction autonome, Codex utilise `ImportPhoto` et les surfaces `park-data-editor/images/*`. Les images distantes intégrées au JSON restent le mécanisme de ChatGPT ; elles ne justifient pas un retour de Codex vers l’administration.
@@ -302,7 +353,7 @@ Le fichier doit reprendre explicitement l’identité exportée `imageId` ou `id
 
 L’export emploie les noms métier tels que `ParkItem`, tandis que le contrat HTTP utilise les enums publics tels que `PARK_ITEM`. Le client convertit explicitement `category` et `ownerType`, y compris l’ancien alias `Attraction`, avant l’envoi. Ne pas modifier manuellement le document exporté pour contourner ce décalage.
 
-Les catégories de compte, commentaire, vidéo, exploitant, constructeur et fondateur sont refusées. Le jeton ne peut pas supprimer une image : si le rattachement ou les métadonnées échouent après l’upload, le client signale l’identifiant de l’orpheline pour contrôle et nettoyage par un administrateur.
+Les catégories de compte, commentaire, vidéo, exploitant, constructeur et fondateur sont refusées. Si le rattachement ou les métadonnées échouent après l’upload, le client signale l’identifiant de l’orpheline. Codex doit d’abord l’inspecter et obtenir une autorisation explicite ; il peut ensuite employer uniquement `PreviewDeletion` puis `ApplyDeletion`, avec l’ID et le parc exacts.
 
 ### Audit après images
 
