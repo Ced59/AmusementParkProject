@@ -49,6 +49,12 @@ public sealed class SocialPublicationComposerService : ISocialPublicationCompose
             normalizedPage,
             normalizedPageSize,
             cancellationToken);
+        SocialPublication? parkAnnouncement = target.Kind == SocialPublicationTargetKind.Park
+            && target.Park?.Id is not null
+                ? await this.socialPublicationService.GetParkAnnouncementAsync(target.Park.Id, cancellationToken)
+                : null;
+        bool hasPublishedParkAnnouncement = parkAnnouncement?.Status == SocialPublicationStatus.Published
+            && !string.IsNullOrWhiteSpace(parkAnnouncement.ExternalPostId);
         SocialPublicationDraft draft = new SocialPublicationDraft(
             target.Url.AbsoluteUri,
             SocialPublicationMessageBuilder.BuildDefaultMessage(target),
@@ -56,7 +62,10 @@ public sealed class SocialPublicationComposerService : ISocialPublicationCompose
             target.FrenchName,
             target.ImageOwnerType,
             target.ImageOwnerId,
-            images);
+            images,
+            hasPublishedParkAnnouncement,
+            parkAnnouncement?.Status,
+            parkAnnouncement?.ExternalPostUrl);
         return ApplicationResult<SocialPublicationDraft>.Success(draft);
     }
 
@@ -89,8 +98,22 @@ public sealed class SocialPublicationComposerService : ISocialPublicationCompose
             publicationUrl = AddQueryParameter(target.Url, FacebookImageQueryParameter, previewImageId);
         }
 
-        string message = NormalizeOptional(request.Message)
-            ?? SocialPublicationMessageBuilder.BuildDefaultMessage(target);
+        string? customMessage = NormalizeOptional(request.Message);
+        string message = customMessage ?? SocialPublicationMessageBuilder.BuildDefaultMessage(target);
+        if (target.Kind == SocialPublicationTargetKind.Park
+            && target.Park is not null
+            && customMessage is null
+            && previewImageId is null)
+        {
+            SocialPublication? parkAnnouncement = await this.socialPublicationService.PublishParkAnnouncementAsync(
+                target.Park,
+                requestedByUserId,
+                cancellationToken);
+            return parkAnnouncement is null
+                ? ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.InvalidUrl())
+                : ApplicationResult<SocialPublication>.Success(parkAnnouncement);
+        }
+
         return await this.socialPublicationService.PublishManualAsync(
             new SocialLinkPublicationRequest(
                 SocialNetwork.Facebook,

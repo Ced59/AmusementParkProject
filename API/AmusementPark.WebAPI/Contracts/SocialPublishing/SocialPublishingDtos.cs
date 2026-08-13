@@ -34,6 +34,12 @@ public sealed class SocialPublicationDraftDto
 
     public string? ImageOwnerId { get; set; }
 
+    public bool HasPublishedParkAnnouncement { get; set; }
+
+    public string? ParkAnnouncementStatus { get; set; }
+
+    public string? ParkAnnouncementExternalUrl { get; set; }
+
     public PagedResponseDto<SocialPublicationImageOptionDto> Images { get; set; } = new PagedResponseDto<SocialPublicationImageOptionDto>();
 }
 

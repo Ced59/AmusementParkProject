@@ -87,7 +87,10 @@ public sealed class AdminSocialPublicationsControllerTests
             "Accueil",
             null,
             null,
-            new PagedResult<SocialPublicationImageOption>(Array.Empty<SocialPublicationImageOption>(), 2, 6, 0));
+            new PagedResult<SocialPublicationImageOption>(Array.Empty<SocialPublicationImageOption>(), 2, 6, 0),
+            true,
+            SocialPublicationStatus.Published,
+            "https://www.facebook.com/test/posts/facebook-post-1");
         draftHandler.Setup(handler => handler.HandleAsync(
                 It.Is<GetSocialPublicationDraftQuery>(query =>
                     query.Url == "https://amusement-parks.fun/fr/home"
@@ -113,6 +116,9 @@ public sealed class AdminSocialPublicationsControllerTests
         SocialPublicationDraftDto response = Assert.IsType<SocialPublicationDraftDto>(okResult.Value);
         Assert.Equal("Accueil", response.TargetName);
         Assert.Equal(2, response.Images.Pagination?.CurrentPage);
+        Assert.True(response.HasPublishedParkAnnouncement);
+        Assert.Equal("Published", response.ParkAnnouncementStatus);
+        Assert.Equal("https://www.facebook.com/test/posts/facebook-post-1", response.ParkAnnouncementExternalUrl);
         draftHandler.VerifyAll();
     }
 }

@@ -76,6 +76,7 @@ public sealed class SocialPublicationTargetResolver
                 pageNames.English,
                 null,
                 null,
+                null,
                 null);
         }
 
@@ -129,7 +130,8 @@ public sealed class SocialPublicationTargetResolver
                 item?.Name ?? park.Name,
                 ownerType,
                 ownerId,
-                category);
+                category,
+                park);
         }
 
         PageNames? names = ResolveParkPageNames(segments, entityBaseLength, item?.Name ?? park.Name, item is not null);
@@ -145,7 +147,8 @@ public sealed class SocialPublicationTargetResolver
             names.English,
             ownerType,
             ownerId,
-            category);
+            category,
+            park);
     }
 
     private async Task<ParkItem?> ResolveParkItemAsync(
@@ -212,7 +215,8 @@ public sealed class SocialPublicationTargetResolver
             ResolveLocalizedText(video.Titles, "en", video.Title),
             item is null ? ImageOwnerType.Park : ImageOwnerType.ParkItem,
             item?.Id ?? parkId,
-            item is null ? ImageCategory.Park : ImageCategory.ParkItem);
+            item is null ? ImageCategory.Park : ImageCategory.ParkItem,
+            null);
     }
 
     private static Uri? NormalizePublicUrl(string? value, PublicSeoContext context)
@@ -351,7 +355,8 @@ internal sealed record ResolvedSocialPublicationTarget(
     string EnglishName,
     ImageOwnerType? ImageOwnerType,
     string? ImageOwnerId,
-    ImageCategory? ImageCategory)
+    ImageCategory? ImageCategory,
+    Park? Park)
 {
     public string LanguageCode
     {

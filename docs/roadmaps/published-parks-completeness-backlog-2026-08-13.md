@@ -2,20 +2,20 @@
 
 ## Résultat
 
-Audit effectué le **13 août 2026 à 07:26 CEST** avec le client technique `PARK_DATA_EDITOR`.
+Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à **08:36 CEST**, avec le client technique `PARK_DATA_EDITOR`.
 
 - 2 980 fiches ont été parcourues sur 60 pages.
-- 161 parcs étaient publiés (`isVisible: true`).
-- Les 161 scores ont été recalculés individuellement avec `Completeness`.
-- 39 parcs atteignent le niveau `Excellent` (score de 95 à 100).
-- **122 parcs publiés restent sous la cible acceptable de 95** : 59 au niveau `Publishable` et 63 au niveau `Good`.
+- 162 parcs étaient publiés (`isVisible: true`).
+- Les 162 scores ont été recalculés individuellement avec `Completeness`.
+- 40 parcs atteignent le niveau `Excellent` : 38 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **124 parcs publiés remplissent le critère d’entrée, avec un score inférieur ou égal à 95** : 59 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
-La cible de 95 vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md). Cette liste est un backlog numérique : un score de 95 ou plus ne remplace pas l’audit éditorial complet de l’étape 9 et l’absence de bloqueur de publication.
+La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
 
 ## Règle de suivi
 
-Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good`. Une ligne peut être retirée seulement après un nouveau calcul individuel donnant au moins 95. Les améliorations doivent suivre le workflow complet de parc et documenter les éventuelles lacunes de sources ; ce document ne vaut ni autorisation de publication, ni autorisation de suppression ou de masquage.
+Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
 ## Priorité 1 — niveau `Publishable` (59)
 
@@ -148,3 +148,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | 94 | `Good` | ABpark | LV | `Operating` | `National` | 103/109 | `153fb94d-ade2-4ff7-a245-bb40a022e355` |
 | 94 | `Good` | BalatoniBob Szabadidőpark | HU | `Operating` | `Regional` | 95/101 | `eb2e46b1-7970-4eb5-b648-30a6d8ac290b` |
 | 94 | `Good` | Bengtson's Pumpkin Farm | US | `Operating` | `Regional` | 92/98 | `430369d7-6665-4c3b-ae21-6121ef2a3733` |
+
+## Priorité 3 — niveau `Excellent` au seuil (2)
+
+| Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
+| ---: | --- | --- | --- | --- | --- | ---: | --- |
+| 95 | `Excellent` | Babylon Park London | GB | `Operating` | `Regional` | 95/100 | `6c9557a4-c49c-4eb3-ace0-b1817927a0b3` |
+| 95 | `Excellent` | Babylon Park Madrid | ES | `Operating` | `Regional` | 90/95 | `6d0efa82-473d-4bcd-a3fe-c839f1291917` |

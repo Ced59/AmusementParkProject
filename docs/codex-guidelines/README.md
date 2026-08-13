@@ -10,6 +10,7 @@ Ce dossier sert de contexte de travail pour Codex. Il centralise les règles éd
 - `park-data-integration-orchestrator.md` : fichier à donner à ChatGPT/Codex pour intégrer un parc de bout en bout sans saturer le contexte. Il impose le parcours par étapes, l’état de travail consolidé, l’unique export complet obligatoire juste avant l’étape 9, les limites de lots et les fichiers de règles à lire selon l’étape.
 - `standalone-attraction-data-integration.md` : fichier à utiliser quand l’entité pertinente est une attraction fixe isolée et non un parc.
 - `codex-park-data-editor-api-workflow.md` : complément strictement réservé à Codex lorsqu’il exécute lui-même les étapes par API avec le rôle technique `PARK_DATA_EDITOR`. Il ajoute les garde-fous Preview/Apply et l’upload local des photos sans modifier le workflow ChatGPT.
+- `published-park-backlog-workflow.md` : exception bornée pour reprendre un parc déjà visible depuis le backlog versionné, publier les contenus validés et l’annonce Facebook idempotente après un score strictement supérieur à 95, puis retirer la ligne par lots documentaires cumulés.
 
 Le complément API impose aussi une coordination globale entre toutes les instances Codex : consultation de l’état partagé avant les opérations coûteuses, absence d’appels concurrents, sondage espacé et respect strict de `Retry-After`.
 
@@ -36,6 +37,7 @@ Dans ChatGPT, le même orchestrateur et les mêmes exigences éditoriales s’ap
 
 - `park-data-integration-orchestrator.md` : orchestrateur principal du parcours complet.
 - `codex-park-data-editor-api-workflow.md` : surcouche d’exécution API autonome réservée à Codex ; ChatGPT continue d’utiliser l’orchestrateur et les étapes existantes sans changement.
+- `published-park-backlog-workflow.md` : sélection, garnissage, seuil de sortie, publication et retrait cumulatif des parcs déjà visibles inscrits au backlog.
 - `standalone-attraction-data-integration.md` : flux d’intégration et de migration des attractions fixes isolées.
 - `park-graph-upsert-enums.md` : liste des enums et valeurs autorisées dans les JSON Park Graph Upsert.
 - `park-data-integration-steps/00-intake-and-export.md` : cadrage, pertinence, export et découpage anti-saturation.

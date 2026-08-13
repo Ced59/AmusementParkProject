@@ -142,6 +142,8 @@ Une complétude ou une publication de données ne déclenche jamais cette opéra
      -ImagePage 1 -ImagePageSize 6
    ```
 
+   Pour une page parc, la réponse fournit aussi `hasPublishedParkAnnouncement`, `parkAnnouncementStatus` et `parkAnnouncementExternalUrl`. Ces champs permettent au workflow du backlog de vérifier l’annonce idempotente sans lire l’administration ni la base de données.
+
 2. Parcourir les pages suivantes si nécessaire. Une image est sélectionnable seulement si son identifiant apparaît dans la réponse de cette même cible. Pour une fiche parc ou ses sous-pages, seules ses images publiques de catégorie `PARK` sont proposées ; pour un parkItem, seules ses images publiques de catégorie `PARK_ITEM` le sont. Une page sans propriétaire d’image conserve simplement son Open Graph automatique.
 3. Publier après le contrôle d’activité global effectué par le client :
 
@@ -154,6 +156,8 @@ Une complétude ou une publication de données ne déclenche jamais cette opéra
    Omettre `-Message` conserve le texte automatique du brouillon. Fournir `-Message '...'` applique le texte explicite de l’utilisateur. Omettre `-ImageId` conserve exactement les règles et l’image Open Graph actuelles.
 4. Ne jamais deviner un identifiant, reprendre une image d’un autre parc ou appeler directement l’administration. Le serveur revalide au moment de la publication la visibilité, la catégorie et le propriétaire de l’image ; un choix devenu privé ou étranger est refusé.
 5. Rapporter séparément le résultat Facebook et celui d’une éventuelle publication de données. Une annonce automatique de première publication d’un parc reste indépendante : ne pas la doubler par une publication manuelle sans instruction explicite.
+
+Pour une page parc, `PublishFacebook` appelé sans `Message` et sans `ImageId` utilise le chemin d’annonce idempotent du parc. Une publication existante portant la clé du parc est renvoyée au lieu d’être recréée. Un message ou une image explicitement personnalisés restent une publication manuelle distincte.
 
 ## Export asynchrone et reprenable
 

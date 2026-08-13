@@ -317,6 +317,21 @@ public sealed class SocialPublicationService : ISocialPublicationService
         return result.Value;
     }
 
+    public async Task<SocialPublication?> GetParkAnnouncementAsync(
+        string parkId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        if (normalizedParkId.Length == 0)
+        {
+            return null;
+        }
+
+        return await this.repository.GetByDeduplicationKeyAsync(
+            $"facebook:park:{normalizedParkId}",
+            cancellationToken);
+    }
+
     public async Task<ApplicationResult<SocialPublication>> RefreshParkAnnouncementPreviewAsync(
         string parkId,
         string? requestedByUserId,
