@@ -315,7 +315,7 @@ public sealed class SocialPublicationServiceTests
     }
 
     [Fact]
-    public async Task RetryParkAnnouncementAsync_WhenFacebookAlreadyPublished_ShouldReconcileWithoutDuplicate()
+    public async Task RetryAsync_WhenAutomaticParkAnnouncementAlreadyPublished_ShouldReconcileWithoutDuplicate()
     {
         InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
         SocialPublication failedPublication = new SocialPublication
@@ -345,8 +345,7 @@ public sealed class SocialPublicationServiceTests
         RecordingSsrPageCacheInvalidator invalidator = new RecordingSsrPageCacheInvalidator();
         SocialPublicationService service = CreateService(repository, publisher, invalidator);
 
-        ApplicationResult<SocialPublication> result = await service.RetryParkAnnouncementAsync(
-            "park-1",
+        ApplicationResult<SocialPublication> result = await service.RetryAsync(
             "publication-1",
             "editor-1",
             CancellationToken.None);

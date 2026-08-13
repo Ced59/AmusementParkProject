@@ -13,13 +13,11 @@ namespace AmusementPark.Application.Features.SocialPublishing.Services;
 public sealed class SocialPublicationService : ISocialPublicationService
 {
     internal const int MaximumMessageLength = 5000;
-
     private readonly ISocialPublicationRepository repository;
     private readonly IReadOnlyCollection<ISocialPublisher> publishers;
     private readonly IPublicSeoContextProvider publicSeoContextProvider;
     private readonly ISsrPageCacheInvalidator ssrPageCacheInvalidator;
     private readonly SocialPublicationReconciler reconciler;
-
     public SocialPublicationService(
         ISocialPublicationRepository repository,
         IEnumerable<ISocialPublisher> publishers,
@@ -33,7 +31,6 @@ public sealed class SocialPublicationService : ISocialPublicationService
         this.ssrPageCacheInvalidator = ssrPageCacheInvalidator;
         this.reconciler = reconciler;
     }
-
     public async Task<ApplicationResult<SocialPublication>> PublishManualAsync(
         SocialLinkPublicationRequest request,
         string? requestedByUserId,
@@ -51,22 +48,26 @@ public sealed class SocialPublicationService : ISocialPublicationService
             cancellationToken);
     }
 
-    public async Task<ApplicationResult<SocialPublication>> RetryAsync(
-        string publicationId,
-        string? requestedByUserId,
-        CancellationToken cancellationToken)
+    public Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, CancellationToken cancellationToken) =>
+        this.RetryAsync(publicationId, requestedByUserId, true, cancellationToken);
+    private async Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, bool reconcileAutomaticParkAnnouncement, CancellationToken cancellationToken)
     {
         SocialPublication? publication = await this.repository.GetByIdAsync(publicationId, cancellationToken);
         if (publication is null)
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationNotFound(publicationId));
         }
-
+        if (reconcileAutomaticParkAnnouncement
+            && publication.Trigger == SocialPublicationTrigger.AutomaticParkPublication
+            && string.Equals(publication.SourceEntityType, "Park", StringComparison.Ordinal)
+            && !string.IsNullOrWhiteSpace(publication.SourceEntityId))
+        {
+            return await this.RetryParkAnnouncementAsync(publication.SourceEntityId, publication.Id!, requestedByUserId, cancellationToken);
+        }
         if (publication.Status != SocialPublicationStatus.Failed)
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeRetried());
         }
-
         publication.RequestedByUserId = requestedByUserId;
         publication.Status = SocialPublicationStatus.Pending;
         publication.FailureCode = null;
@@ -76,7 +77,6 @@ public sealed class SocialPublicationService : ISocialPublicationService
         publication = await this.AttemptPublicationAsync(publication, cancellationToken);
         return ApplicationResult<SocialPublication>.Success(publication);
     }
-
     public async Task<ApplicationResult<SocialPublication>> UpdateAsync(
         string publicationId,
         string? message,
@@ -388,7 +388,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
         }
 
         await this.PreservePublicPageDuringSocialPreparationAsync(publicationUri!.AbsolutePath, cancellationToken);
-        return await this.RetryAsync(publication.Id!, requestedByUserId, cancellationToken);
+        return await this.RetryAsync(publication.Id!, requestedByUserId, false, cancellationToken);
     }
 
     public async Task<ApplicationResult<SocialPublication>> RefreshParkAnnouncementPreviewAsync(
