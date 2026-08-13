@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 44 parcs atteignent le niveau `Excellent` : 42 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **120 parcs publiés remplissent le critère d’entrée, avec un score inférieur ou égal à 95** : 55 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
+- 45 parcs atteignent le niveau `Excellent` : 43 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **119 parcs publiés remplissent le critère d’entrée, avec un score inférieur ou égal à 95** : 54 au niveau `Publishable`, 63 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -17,11 +17,10 @@ La cible vient de [la spécification de scoring](../codex-guidelines/data-qualit
 
 Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus élevé, puis le groupe `Good` et enfin les éventuelles fiches à 95. À score égal, trier par nom. Le garnissage, la publication ciblée, le contrôle Facebook anti-doublon, le seuil minimal de 96 et le retrait cumulatif d’une ligne sont définis par le workflow lié ci-dessus. Ce document n’autorise aucune suppression ou aucun masquage des données publiques du parc.
 
-## Priorité 1 — niveau `Publishable` (55)
+## Priorité 1 — niveau `Publishable` (54)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 73 | `Publishable` | Adıyaman Lunapark | TR | `Operating` | `Local` | 61/84 | `19a3d956-2a2e-4199-8b64-9465e920a5e7` |
 | 74 | `Publishable` | Adler Park of Culture and Recreation | RU | `Operating` | `Regional` | 65/88 | `ee7d4e02-344e-421e-bc6f-9e60db326ee7` |
 | 74 | `Publishable` | Arab Disney | EG | `Operating` | `Regional` | 65/88 | `86b08e20-40ff-4f95-b214-aed7af5b2837` |
 | 75 | `Publishable` | Al-Qidah Park | DZ | `Operating` | `Regional` | 63/84 | `3212fabf-2a98-4af0-9111-917461fccbb5` |
