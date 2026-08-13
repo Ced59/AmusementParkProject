@@ -59,9 +59,47 @@ public sealed class SocialPublicationComposerServiceTests
                 new Uri("https://amusement-parks.fun/fr/park/park-1/park-test")),
             draft.DefaultMessage);
         Assert.Equal(2, draft.Images.TotalItems);
+        Assert.False(draft.HasPublishedParkAnnouncement);
+        Assert.Null(draft.ParkAnnouncementStatus);
         SocialPublicationImageOption image = Assert.Single(draft.Images.Items);
         Assert.Equal("image-current", image.Id);
         Assert.True(image.IsCurrent);
+        images.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveDraftAsync_ForParkWithPublishedAnnouncement_ShouldExposeExistingPost()
+    {
+        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        images.Setup(repository => repository.GetPageAsync(
+                1,
+                6,
+                It.IsAny<ImageSearchCriteria>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<Image>(Array.Empty<Image>(), 1, 6, 0));
+        Mock<ISocialPublicationService> publisher = new Mock<ISocialPublicationService>(MockBehavior.Strict);
+        publisher.Setup(service => service.GetParkAnnouncementAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new SocialPublication
+            {
+                Status = SocialPublicationStatus.Published,
+                ExternalPostId = "facebook-post-1",
+                ExternalPostUrl = "https://www.facebook.com/test/posts/facebook-post-1",
+            });
+        SocialPublicationComposerService service = CreateService(parks, images, publisher: publisher);
+
+        ApplicationResult<SocialPublicationDraft> result = await service.ResolveDraftAsync(
+            "https://amusement-parks.fun/fr/park/park-1/park-test",
+            1,
+            6,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        SocialPublicationDraft draft = Assert.IsType<SocialPublicationDraft>(result.Value);
+        Assert.True(draft.HasPublishedParkAnnouncement);
+        Assert.Equal(SocialPublicationStatus.Published, draft.ParkAnnouncementStatus);
+        Assert.Equal("https://www.facebook.com/test/posts/facebook-post-1", draft.ParkAnnouncementExternalUrl);
+        publisher.VerifyAll();
         images.VerifyAll();
     }
 
@@ -146,6 +184,39 @@ public sealed class SocialPublicationComposerServiceTests
         Assert.Same(published, result.Value);
         images.VerifyAll();
         publisher.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PublishAsync_ForParkWithoutCustomTextOrImage_ShouldUseIdempotentAnnouncement()
+    {
+        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        Mock<ISocialPublicationService> publisher = new Mock<ISocialPublicationService>(MockBehavior.Strict);
+        SocialPublication published = new SocialPublication
+        {
+            Id = "publication-1",
+            Status = SocialPublicationStatus.Published,
+            ExternalPostId = "facebook-post-1",
+        };
+        publisher.Setup(service => service.PublishParkAnnouncementAsync(
+                It.Is<Park>(park => park.Id == "park-1"),
+                "codex-user",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(published);
+        SocialPublicationComposerService service = CreateService(parks, images, publisher: publisher);
+
+        ApplicationResult<SocialPublication> result = await service.PublishAsync(
+            new SocialLinkPublicationRequest(
+                SocialNetwork.Facebook,
+                null,
+                "https://amusement-parks.fun/fr/park/park-1/park-test"),
+            "codex-user",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Same(published, result.Value);
+        publisher.VerifyAll();
+        images.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -286,8 +357,18 @@ public sealed class SocialPublicationComposerServiceTests
             parks.Object,
             items?.Object ?? Mock.Of<IParkItemRepository>(MockBehavior.Strict),
             videos?.Object ?? Mock.Of<IVideoRepository>(MockBehavior.Strict));
+        Mock<ISocialPublicationService> effectivePublisher = publisher
+            ?? new Mock<ISocialPublicationService>(MockBehavior.Strict);
+        if (publisher is null)
+        {
+            effectivePublisher.Setup(service => service.GetParkAnnouncementAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync((SocialPublication?)null);
+        }
+
         return new SocialPublicationComposerService(
-            publisher?.Object ?? Mock.Of<ISocialPublicationService>(MockBehavior.Strict),
+            effectivePublisher.Object,
             targetResolver,
             images.Object);
     }

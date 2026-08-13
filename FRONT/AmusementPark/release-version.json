@@ -1,6 +1,20 @@
 {
-  "version": "4.1.35",
+  "version": "4.1.36",
   "history": [
+    {
+      "version": "4.1.36",
+      "releasedAt": "2026-08-13",
+      "labels": {
+        "fr": "Le suivi de qualité et les annonces des parcs publiés gagnent en fiabilité.",
+        "en": "Quality tracking and announcements for published parks are more reliable.",
+        "de": "Qualitätsüberwachung und Ankündigungen veröffentlichter Parks sind zuverlässiger.",
+        "nl": "Kwaliteitsopvolging en aankondigingen voor gepubliceerde parken zijn betrouwbaarder.",
+        "it": "Il monitoraggio della qualità e gli annunci dei parchi pubblicati sono più affidabili.",
+        "es": "El seguimiento de calidad y los anuncios de los parques publicados son más fiables.",
+        "pl": "Monitorowanie jakości i ogłoszenia opublikowanych parków są bardziej niezawodne.",
+        "pt": "O acompanhamento da qualidade e os anúncios dos parques publicados são mais fiáveis."
+      }
+    },
     {
       "version": "4.1.35",
       "releasedAt": "2026-08-13",

@@ -17,7 +17,8 @@ public sealed class SocialPublicationMessageBuilderTests
             "Spark Park",
             ImageOwnerType.Park,
             "park-1",
-            ImageCategory.Park);
+            ImageCategory.Park,
+            null);
 
         string message = SocialPublicationMessageBuilder.BuildDefaultMessage(target);
 

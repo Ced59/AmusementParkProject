@@ -32,7 +32,10 @@ public sealed record SocialPublicationDraft(
     string TargetName,
     ImageOwnerType? ImageOwnerType,
     string? ImageOwnerId,
-    PagedResult<SocialPublicationImageOption> Images);
+    PagedResult<SocialPublicationImageOption> Images,
+    bool HasPublishedParkAnnouncement,
+    SocialPublicationStatus? ParkAnnouncementStatus,
+    string? ParkAnnouncementExternalUrl);
 
 public sealed record SocialPublisherDescriptor(
     SocialNetwork Network,
