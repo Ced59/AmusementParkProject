@@ -129,6 +129,12 @@ public sealed class ParkItem : GeolocatedEntityBase
     {
         ParkItemDataCompletenessContext scoreContext = context ?? new ParkItemDataCompletenessContext();
         DataCompletenessScoreBuilder score = new DataCompletenessScoreBuilder();
+        bool hasForbiddenPublicText = this.Descriptions.Any(static description => DataCompletenessScoringRules.HasForbiddenPublicText(description.Value))
+            || !scoreContext.HasNoForbiddenPublicText;
+
+        score.AddPublicationBlocker(
+            hasForbiddenPublicText,
+            DataCompletenessScoringRules.ForbiddenPublicTextPublicationBlocker);
 
         score.Add(DataCompletenessScoringRules.HasText(this.Name), 2);
         score.Add(!DataCompletenessScoringRules.IsPlaceholderName(this.Name), 2);
@@ -172,8 +178,8 @@ public sealed class ParkItem : GeolocatedEntityBase
         score.AddIfApplicable(this.IsPotentiallyPublic(), DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), 4);
         score.AddIfApplicable(this.IsVisible, DataCompletenessScoringRules.CountPublicLanguagesWithText(this.Descriptions) == DataCompletenessScoringRules.PublicLanguageCount, 2);
         score.AddIfApplicable(DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), this.HasTypeAdaptedDescription(), 2);
-        score.AddIfApplicable(DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), this.Descriptions.All(static description => !DataCompletenessScoringRules.HasInternalJargon(description.Value)), 2);
-        score.AddIfApplicable(DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), this.Descriptions.All(static description => !DataCompletenessScoringRules.HasInternalJargon(description.Value)), 2);
+        score.AddIfApplicable(DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), !hasForbiddenPublicText, 2);
+        score.AddIfApplicable(DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), !hasForbiddenPublicText, 2);
         score.AddIfApplicable(DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), this.Descriptions.Any(static description => DataCompletenessScoringRules.HasMeaningfulText(description.Value)), 2);
 
         score.AddIfApplicable(this.IsVisible, scoreContext.HasRepresentativeImage, 2);

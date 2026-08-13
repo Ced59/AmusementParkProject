@@ -66,6 +66,20 @@ public sealed class ParkItemDataCompletenessScoreTests
         Assert.True(score.CompletenessScore < completeScore.CompletenessScore);
     }
 
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenDescriptionNarratesTechnicalMetrics_ShouldExposeBlockerAndCapScore()
+    {
+        ParkItem attraction = CreateMechanicalAttraction();
+        attraction.Descriptions[0] = new LocalizedText(
+            "fr",
+            "<p>Le véhicule suit un tracé sur rails avec plusieurs rotations et atteint 88 km/h pendant 2 minutes.</p>");
+
+        DataCompletenessScore score = attraction.CalculateDataCompletenessScore(CreateRichParkItemContext());
+
+        Assert.Equal(95, score.CompletenessScore);
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
     private static ParkItem CreateMechanicalAttraction()
     {
         ParkItem item = new ParkItem

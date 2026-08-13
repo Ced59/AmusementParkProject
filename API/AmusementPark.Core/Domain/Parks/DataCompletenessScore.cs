@@ -1,5 +1,7 @@
 using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace AmusementPark.Core.Domain.Parks;
 
@@ -15,6 +17,8 @@ public enum DataQualityLevel
 
 public sealed record DataCompletenessScore
 {
+    private const int PublicationBlockerScoreCeiling = 95;
+
     public int CompletenessScore { get; init; }
 
     public DataQualityLevel DataQualityLevel { get; init; }
@@ -23,15 +27,27 @@ public sealed record DataCompletenessScore
 
     public int EarnedPoints { get; init; }
 
-    public static DataCompletenessScore FromPoints(int earnedPoints, int applicableMaxPoints)
+    public string? PublicationBlocker { get; init; }
+
+    public static DataCompletenessScore FromPoints(
+        int earnedPoints,
+        int applicableMaxPoints,
+        string? publicationBlocker = null)
     {
         int normalizedApplicableMaxPoints = Math.Max(0, applicableMaxPoints);
         int normalizedEarnedPoints = Math.Clamp(earnedPoints, 0, normalizedApplicableMaxPoints);
+        string? normalizedPublicationBlocker = string.IsNullOrWhiteSpace(publicationBlocker)
+            ? null
+            : publicationBlocker.Trim();
         int completenessScore = normalizedApplicableMaxPoints == 0
             ? 0
             : (int)Math.Round((double)normalizedEarnedPoints / normalizedApplicableMaxPoints * 100d, MidpointRounding.AwayFromZero);
 
         completenessScore = Math.Clamp(completenessScore, 0, 100);
+        if (normalizedPublicationBlocker is not null)
+        {
+            completenessScore = Math.Min(completenessScore, PublicationBlockerScoreCeiling);
+        }
 
         return new DataCompletenessScore
         {
@@ -39,6 +55,7 @@ public sealed record DataCompletenessScore
             DataQualityLevel = ResolveLevel(completenessScore),
             ApplicableMaxPoints = normalizedApplicableMaxPoints,
             EarnedPoints = normalizedEarnedPoints,
+            PublicationBlocker = normalizedPublicationBlocker,
         };
     }
 
@@ -159,6 +176,8 @@ public sealed record ParkDataCompletenessContext
 
     public bool HasStructuredTechnicalDataOnly { get; init; } = true;
 
+    public bool HasNoForbiddenPublicText { get; init; } = true;
+
     public bool HasDocumentedRemainingDebt { get; init; }
 
     public bool HasPublicSeoSignals { get; init; }
@@ -213,12 +232,15 @@ public sealed record ParkItemDataCompletenessContext
     public bool HasHumanReviewOrDocumentedDebt { get; init; }
 
     public bool HasNoUnresolvedReferences { get; init; } = true;
+
+    public bool HasNoForbiddenPublicText { get; init; } = true;
 }
 
 internal sealed class DataCompletenessScoreBuilder
 {
     private int earnedPoints;
     private int applicableMaxPoints;
+    private string? publicationBlocker;
 
     public bool HasMissingPoints => this.earnedPoints < this.applicableMaxPoints;
 
@@ -258,14 +280,31 @@ internal sealed class DataCompletenessScoreBuilder
         this.Add(isSatisfied, points);
     }
 
+    public void AddPublicationBlocker(bool isBlocking, string blockerKey)
+    {
+        if (!isBlocking || string.IsNullOrWhiteSpace(blockerKey))
+        {
+            return;
+        }
+
+        string normalizedBlockerKey = blockerKey.Trim();
+        if (this.publicationBlocker is null
+            || string.CompareOrdinal(normalizedBlockerKey, this.publicationBlocker) < 0)
+        {
+            this.publicationBlocker = normalizedBlockerKey;
+        }
+    }
+
     public DataCompletenessScore Build()
     {
-        return DataCompletenessScore.FromPoints(this.earnedPoints, this.applicableMaxPoints);
+        return DataCompletenessScore.FromPoints(this.earnedPoints, this.applicableMaxPoints, this.publicationBlocker);
     }
 }
 
-internal static class DataCompletenessScoringRules
+public static class DataCompletenessScoringRules
 {
+    public const string ForbiddenPublicTextPublicationBlocker = "public-text.forbidden-editorial-language";
+
     private static readonly string[] PublicLanguageCodes =
     [
         "fr",
@@ -276,6 +315,95 @@ internal static class DataCompletenessScoringRules
         "es",
         "pl",
         "pt",
+    ];
+
+    private static readonly string[] ForbiddenEditorialPhrases =
+    [
+        "public page",
+        "page publique",
+        "página pública",
+        "öffentliche betreiberseite",
+        "pagina pubblica",
+        "publiczna strona",
+        "openbare pagina",
+        "independent visit",
+        "visite indépendante",
+        "visita independiente",
+        "unabhängiger besuch",
+        "visita indipendente",
+        "niezależna wizyta",
+        "onafhankelijk bezoek",
+        "visita independente",
+        "current inventory",
+        "inventaire actuel",
+        "inventario actual",
+        "heutige sammlung",
+        "proposte attuali",
+        "obecna kolekcja",
+        "huidige verzameling",
+        "these sources",
+        "ces sources",
+        "ambas fuentes",
+        "zusammen zeichnen die quellen",
+        "le fonti descrivono",
+        "źródła przedstawiają",
+        "samen schetsen de bronnen",
+        "as fontes descrevem",
+        "public mapping",
+        "cartographie publique",
+        "visitor content",
+        "contenus visiteurs",
+        "presence confirmed",
+        "présence publique confirmée",
+        "repère documentaire",
+        "documentary marker",
+        "for a visitor page",
+        "pour une fiche visiteur",
+        "contenu public",
+        "public content",
+        "élément de parc",
+        "park item",
+        "dans la base",
+        "in the database",
+        "ce que ça apporte à la journée",
+        "what it adds to the day",
+        "comment l’intégrer dans la journée",
+        "comment l'integrer dans la journee",
+        "how to fit it into the day",
+        "une pause entre les files",
+        "a break between queues",
+        "une expérience utile pour varier le parcours",
+        "a useful experience to vary the itinerary",
+        "une place claire dans la visite",
+        "a clear place in the visit",
+    ];
+
+    private static readonly Regex InternalJargonRegex = new Regex(
+        @"\b(?:audit|admin|upsert|seo|m14|to\s+review|completeness\s+score|score\s+de\s+complétude)\b",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+        TimeSpan.FromMilliseconds(100));
+
+    private static readonly Regex HtmlTagRegex = new Regex(
+        "<[^>]+>",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant,
+        TimeSpan.FromMilliseconds(100));
+
+    private static readonly Regex WhitespaceRegex = new Regex(
+        @"\s+",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant,
+        TimeSpan.FromMilliseconds(100));
+
+    private static readonly Regex RawTechnicalMetricRegex = new Regex(
+        @"\b\d+(?:[.,]\d+)?\s*(?:km\s*/?\s*h|mph|m\s*/\s*s|m|cm|met(?:er|re)s?|mètres?|feet|foot|ft|seconds?|secondes?|sekunden?|seconden?|secondi|segundos?|sekund(?:a|y)?|minutes?|minuten?|minuti|minutos?|riders?\s*(?:per|/)\s*hour|passagers?\s*(?:par|/)\s*heure|personas?\s*(?:por|/)\s*hora|personen?\s*(?:pro|per|/)\s*stunde)\b",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
+        TimeSpan.FromMilliseconds(100));
+
+    private static readonly Regex[] TechnicalNarrativeCategoryRegexes =
+    [
+        new Regex(@"\b(?:track|rails?|layout|structure|tracé|voies?|schienen?|strecke|konstruktion|tracciato|rotaie?|struttura|trazado|vías?|estructura|tory?|szyny?|konstrukcja|baan|rails?|constructie|percurso|trilhos?|estrutura)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"\b(?:vehicles?|seats?|restraints?|harness|véhicules?|sièges?|retenues?|harnais|fahrzeuge?|sitze?|rückhaltesystem|veicoli?|sedili?|ritenute|vehículos?|asientos?|sujeciones?|pojazdy?|siedzenia?|zabezpieczenia|voertuigen?|zitplaatsen?|beugels?|veículos?|assentos?|retenções?)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"\b(?:rotations?|accelerations?|accélérations?|inversions?|launch|propulsion|lift\s+hill|chain\s+lift|rotazioni?|accelerazioni?|lancio|rotaciones?|aceleraciones?|lanzamiento|rotationen?|beschleunigungen?|abschuss|obroty?|przyspieszeni|wystrzelen|rotaties?|versnellingen?|lancering|rotações?|acelerações?|lançamento)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
+        new Regex(@"\b(?:speed|duration|capacity|vitesse|durée|capacité|geschwindigkeit|dauer|kapazität|velocità|durata|capacità|velocidad|duración|capacidad|prędkość|czas\s+trwania|pojemność|snelheid|duur|capaciteit|velocidade|duração|capacidade)\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100)),
     ];
 
     public static bool HasText(string? value)
@@ -336,11 +464,32 @@ internal static class DataCompletenessScoringRules
             return false;
         }
 
-        string normalizedValue = value.Trim();
-        return normalizedValue.Contains("todo", StringComparison.OrdinalIgnoreCase)
-            || normalizedValue.Contains("audit", StringComparison.OrdinalIgnoreCase)
-            || normalizedValue.Contains("to review", StringComparison.OrdinalIgnoreCase)
-            || normalizedValue.Contains("admin", StringComparison.OrdinalIgnoreCase)
-            || normalizedValue.Contains("m14", StringComparison.OrdinalIgnoreCase);
+        return InternalJargonRegex.IsMatch(NormalizePublicText(value));
+    }
+
+    public static bool HasForbiddenPublicText(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return false;
+        }
+
+        string normalizedValue = NormalizePublicText(value);
+        if (InternalJargonRegex.IsMatch(normalizedValue)
+            || ForbiddenEditorialPhrases.Any(phrase => normalizedValue.Contains(phrase, StringComparison.OrdinalIgnoreCase))
+            || RawTechnicalMetricRegex.IsMatch(normalizedValue))
+        {
+            return true;
+        }
+
+        int technicalNarrativeCategoryCount = TechnicalNarrativeCategoryRegexes.Count(regex => regex.IsMatch(normalizedValue));
+        return technicalNarrativeCategoryCount >= 3;
+    }
+
+    private static string NormalizePublicText(string value)
+    {
+        string decodedValue = WebUtility.HtmlDecode(value);
+        string withoutHtml = HtmlTagRegex.Replace(decodedValue, " ");
+        return WhitespaceRegex.Replace(withoutHtml, " ").Trim();
     }
 }

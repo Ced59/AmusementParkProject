@@ -5,6 +5,7 @@ export interface DataCompletenessScore {
   dataQualityLevel: DataQualityLevel;
   applicableMaxPoints: number;
   earnedPoints: number;
+  publicationBlockers?: string[];
 }
 
 export type DataCompletenessSeverity = 'success' | 'info' | 'warn' | 'danger';

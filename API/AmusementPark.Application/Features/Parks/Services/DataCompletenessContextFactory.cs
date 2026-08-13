@@ -88,12 +88,38 @@ internal static class DataCompletenessContextFactory
                     ? Enumerable.Empty<Image>()
                     : parkItemImagesByItemId.GetValueOrDefault(item.Id.Trim()) ?? new List<Image>())
                 .ToList();
+            HashSet<string> publicParkItemIds = currentParkItems
+                .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+                .Select(static item => item.Id)
+                .Where(static itemId => !string.IsNullOrWhiteSpace(itemId))
+                .Select(static itemId => itemId!.Trim())
+                .ToHashSet(StringComparer.Ordinal);
+            IReadOnlyCollection<Image> currentPublicParkItemImages = currentParkItemImages
+                .Where(image => !string.IsNullOrWhiteSpace(image.OwnerId) && publicParkItemIds.Contains(image.OwnerId.Trim()))
+                .ToList();
+            IReadOnlyCollection<HistoryEvent> currentPublicParkItemHistory = currentParkItemHistory
+                .Where(historyEvent => !string.IsNullOrWhiteSpace(historyEvent.OwnerId) && publicParkItemIds.Contains(historyEvent.OwnerId.Trim()))
+                .ToList();
             IReadOnlyCollection<Image> scoreParkImages = projectCurrentParkForPublication
                 ? currentParkImages
                 : currentParkImages.Where(static image => image.IsPublished).ToList();
             IReadOnlyCollection<Image> scoreParkItemImages = projectCurrentParkForPublication
-                ? currentParkItemImages
-                : currentParkItemImages.Where(static image => image.IsPublished).ToList();
+                ? currentPublicParkItemImages
+                : currentPublicParkItemImages.Where(static image => image.IsPublished).ToList();
+            IReadOnlyCollection<HistoryEvent> scoreParkHistory = currentParkHistory
+                .Where(static historyEvent => historyEvent.IsVisible)
+                .ToList();
+            IReadOnlyCollection<HistoryEvent> scoreParkItemHistory = currentPublicParkItemHistory
+                .Where(static historyEvent => historyEvent.IsVisible)
+                .ToList();
+            bool hasNoForbiddenPublicText = HasNoForbiddenParkRelatedPublicText(
+                currentParkItems,
+                currentZones,
+                scoreParkImages,
+                scoreParkItemImages,
+                scoreParkHistory,
+                scoreParkItemHistory,
+                projectCurrentParkForPublication);
 
             ParkDataCompletenessContext context = new ParkDataCompletenessContext
             {
@@ -135,6 +161,8 @@ internal static class DataCompletenessContextFactory
                 ImportantReferencesWithDescriptionsCount = CountReferenceDescriptions(park, currentParkItems),
                 ReferencesWithUsefulDetailsCount = CountReferenceDetails(park, currentParkItems),
                 HasCriticalSources = HasCriticalSource(park, currentParkHistory),
+                HasStructuredTechnicalDataOnly = hasNoForbiddenPublicText,
+                HasNoForbiddenPublicText = hasNoForbiddenPublicText,
                 HasDocumentedRemainingDebt = projectCurrentParkForPublication
                     ? false
                     : park.AdminReviewStatus != AdminReviewStatus.Validated,
@@ -190,6 +218,9 @@ internal static class DataCompletenessContextFactory
             List<Image> itemImages = imagesByItemId.GetValueOrDefault(itemId) ?? new List<Image>();
             List<Image> publishedImages = itemImages.Where(static image => image.IsPublished).ToList();
             List<HistoryEvent> historyEvents = historyByItemId.GetValueOrDefault(itemId) ?? new List<HistoryEvent>();
+            IReadOnlyCollection<HistoryEvent> visibleHistoryEvents = historyEvents
+                .Where(static historyEvent => historyEvent.IsVisible)
+                .ToList();
 
             ParkItemDataCompletenessContext context = new ParkItemDataCompletenessContext
             {
@@ -213,6 +244,8 @@ internal static class DataCompletenessContextFactory
                 HasSeoSignals = HasParkItemSeoSignals(parkItem, parentResolved),
                 HasStructuredDataSignals = parkItem.Category != ParkItemCategory.Other && parkItem.Type != ParkItemType.Other,
                 HasHumanReviewOrDocumentedDebt = parkItem.AdminReviewStatus != AdminReviewStatus.ToReview,
+                HasNoForbiddenPublicText = !publishedImages.Any(HasForbiddenImagePublicText)
+                    && !visibleHistoryEvents.Any(static historyEvent => HasForbiddenHistoryPublicText(historyEvent, false)),
             };
             contextsByItemId[itemId] = context;
         }
@@ -361,6 +394,61 @@ internal static class DataCompletenessContextFactory
         return !string.IsNullOrWhiteSpace(historyEvent.MainImageId)
             || !string.IsNullOrWhiteSpace(historyEvent.Article?.MainImageId)
             || historyEvent.Article?.Blocks.Any(static block => !string.IsNullOrWhiteSpace(block.ImageId) || block.ImageIds.Count > 0) == true;
+    }
+
+    private static bool HasNoForbiddenParkRelatedPublicText(
+        IReadOnlyCollection<ParkItem> parkItems,
+        IReadOnlyCollection<ParkZone> zones,
+        IReadOnlyCollection<Image> parkImages,
+        IReadOnlyCollection<Image> parkItemImages,
+        IReadOnlyCollection<HistoryEvent> parkHistory,
+        IReadOnlyCollection<HistoryEvent> parkItemHistory,
+        bool projectForPublication)
+    {
+        return !parkItems
+                .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+                .Any(static item => HasForbiddenLocalizedPublicText(item.Descriptions))
+            && !zones
+                .Where(static zone => zone.IsVisible)
+                .Any(static zone => HasForbiddenLocalizedPublicText(zone.Descriptions))
+            && !parkImages.Any(HasForbiddenImagePublicText)
+            && !parkItemImages.Any(HasForbiddenImagePublicText)
+            && !parkHistory.Any(historyEvent => HasForbiddenHistoryPublicText(historyEvent, projectForPublication))
+            && !parkItemHistory.Any(historyEvent => HasForbiddenHistoryPublicText(historyEvent, projectForPublication));
+    }
+
+    private static bool HasForbiddenImagePublicText(Image image)
+    {
+        return DataCompletenessScoringRules.HasForbiddenPublicText(image.Description)
+            || HasForbiddenLocalizedPublicText(image.AltTexts)
+            || HasForbiddenLocalizedPublicText(image.Captions);
+    }
+
+    private static bool HasForbiddenHistoryPublicText(HistoryEvent historyEvent, bool projectForPublication)
+    {
+        if (HasForbiddenLocalizedPublicText(historyEvent.Titles)
+            || HasForbiddenLocalizedPublicText(historyEvent.Summaries))
+        {
+            return true;
+        }
+
+        HistoryArticle? article = historyEvent.Article;
+        if (article is null || (!projectForPublication && !article.IsPublished))
+        {
+            return false;
+        }
+
+        return HasForbiddenLocalizedPublicText(article.Titles)
+            || HasForbiddenLocalizedPublicText(article.Subtitles)
+            || HasForbiddenLocalizedPublicText(article.Summaries)
+            || article.Blocks.Any(static block =>
+                HasForbiddenLocalizedPublicText(block.Texts)
+                || HasForbiddenLocalizedPublicText(block.Captions));
+    }
+
+    private static bool HasForbiddenLocalizedPublicText(IEnumerable<LocalizedText> values)
+    {
+        return values.Any(static value => DataCompletenessScoringRules.HasForbiddenPublicText(value.Value));
     }
 
     private static int CountReferenceDescriptions(Park park, IReadOnlyCollection<ParkItem> parkItems)

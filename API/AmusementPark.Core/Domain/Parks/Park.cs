@@ -119,6 +119,13 @@ public sealed class Park : GeolocatedEntityBase
         bool isValidatedForPublication = this.AdminReviewStatus == AdminReviewStatus.Validated
             || (scoreContext.ProjectForPublication && this.AdminReviewStatus != AdminReviewStatus.NotRelevant);
         bool isPotentiallyPublishable = this.IsPotentiallyPublishable(scoreContext.ProjectForPublication);
+        bool hasForbiddenPublicText = this.Descriptions.Any(static description => DataCompletenessScoringRules.HasForbiddenPublicText(description.Value))
+            || !scoreContext.HasNoForbiddenPublicText
+            || !scoreContext.HasStructuredTechnicalDataOnly;
+
+        score.AddPublicationBlocker(
+            hasForbiddenPublicText,
+            DataCompletenessScoringRules.ForbiddenPublicTextPublicationBlocker);
 
         score.Add(DataCompletenessScoringRules.HasText(this.Name), 2);
         score.Add(this.IsProjectRelevantForScoring(), 2);
@@ -160,7 +167,7 @@ public sealed class Park : GeolocatedEntityBase
         score.AddIfApplicable(scoreContext.HasOfficialZones, scoreContext.ZonesWithDescriptionsCount > 0, 1);
         score.AddIfApplicable(scoreContext.ParkItemsTotalCount > 0, scoreContext.CommercialOrServiceItemsWithDescriptionsCount > 0, 1);
         score.Add(DataCompletenessScoringRules.HasAnyLocalizedText(this.Descriptions), 1);
-        score.Add(this.Descriptions.All(static description => !DataCompletenessScoringRules.HasInternalJargon(description.Value)), 1);
+        score.Add(!hasForbiddenPublicText, 1);
         score.Add(this.Descriptions.Any(static description => DataCompletenessScoringRules.HasMeaningfulText(description.Value)), 1);
 
         score.Add(DataCompletenessScoringRules.HasText(this.CurrentLogoImageId) || scoreContext.ParkPublishedImageCount > 0, 2);

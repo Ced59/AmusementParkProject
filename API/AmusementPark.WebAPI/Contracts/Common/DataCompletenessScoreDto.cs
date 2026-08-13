@@ -9,4 +9,6 @@ public sealed class DataCompletenessScoreDto
     public int ApplicableMaxPoints { get; set; }
 
     public int EarnedPoints { get; set; }
+
+    public List<string> PublicationBlockers { get; set; } = new List<string>();
 }
