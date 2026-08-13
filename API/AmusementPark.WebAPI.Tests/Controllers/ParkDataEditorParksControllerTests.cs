@@ -39,6 +39,7 @@ public sealed class ParkDataEditorParksControllerTests
             Mock.Of<IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
             handler.Object,
             Mock.Of<ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
             Mock.Of<IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>>>(MockBehavior.Strict));
 
         IActionResult result = await controller.GetDataCompletenessAsync("park-1", true, CancellationToken.None);
@@ -74,6 +75,7 @@ public sealed class ParkDataEditorParksControllerTests
             Mock.Of<IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
             Mock.Of<IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>>(MockBehavior.Strict),
             handler.Object,
+            Mock.Of<ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
             Mock.Of<IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>>>(MockBehavior.Strict));
         controller.ControllerContext = new ControllerContext
         {
@@ -109,6 +111,7 @@ public sealed class ParkDataEditorParksControllerTests
             Mock.Of<IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
             Mock.Of<IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>>(MockBehavior.Strict),
             Mock.Of<ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
             handler.Object);
 
         IActionResult result = await controller.ListPublishedSocialPreviewsAsync(CancellationToken.None);
@@ -120,6 +123,58 @@ public sealed class ParkDataEditorParksControllerTests
             response,
             first => Assert.Equal("park-1", first.ParkId),
             second => Assert.Equal("park-2", second.ParkId));
+        handler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RetrySocialPreviewPublicationAsync_ShouldForwardParkPublicationAndAuthenticatedEditor()
+    {
+        Mock<ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>>> handler =
+            new Mock<ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict);
+        handler
+            .Setup(candidate => candidate.HandleAsync(
+                It.Is<RetryParkAnnouncementPublicationCommand>(command =>
+                    command.ParkId == "park-1"
+                    && command.PublicationId == "publication-1"
+                    && command.RequestedByUserId == "editor-1"),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<SocialPublication>.Success(new SocialPublication
+            {
+                Id = "publication-1",
+                Network = SocialNetwork.Facebook,
+                Status = SocialPublicationStatus.Published,
+                Trigger = SocialPublicationTrigger.AutomaticParkPublication,
+                Message = "Announcement",
+                Url = "https://amusement-parks.fun/fr/park/park-1/test",
+                SourceEntityType = "Park",
+                SourceEntityId = "park-1",
+            }));
+
+        ParkDataEditorParksController controller = new ParkDataEditorParksController(
+            Mock.Of<IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
+            Mock.Of<IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
+            Mock.Of<IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            handler.Object,
+            Mock.Of<IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>>>(MockBehavior.Strict));
+        controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity(
+                    new[] { new Claim(ClaimTypes.NameIdentifier, "editor-1") },
+                    "test")),
+            },
+        };
+
+        IActionResult result = await controller.RetrySocialPreviewPublicationAsync(
+            "park-1",
+            "publication-1",
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        SocialPublicationDto response = Assert.IsType<SocialPublicationDto>(ok.Value);
+        Assert.Equal("publication-1", response.Id);
         handler.VerifyAll();
     }
 }

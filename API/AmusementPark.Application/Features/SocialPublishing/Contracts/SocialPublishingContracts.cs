@@ -34,6 +34,7 @@ public sealed record SocialPublicationDraft(
     string? ImageOwnerId,
     PagedResult<SocialPublicationImageOption> Images,
     bool HasPublishedParkAnnouncement,
+    string? ParkAnnouncementId,
     SocialPublicationStatus? ParkAnnouncementStatus,
     string? ParkAnnouncementExternalUrl);
 
@@ -49,6 +50,19 @@ public sealed record SocialPublisherRequest(string Message, string Url);
 
 public sealed record SocialPublisherResult(
     bool IsSuccess,
+    string? ExternalPostId,
+    string? ExternalPostUrl,
+    string? FailureCode,
+    string? FailureMessage);
+
+public sealed record SocialPublisherLinkReconciliationRequest(
+    string Message,
+    DateTime AttemptedAtUtc);
+
+public sealed record SocialPublisherLinkReconciliationResult(
+    bool IsSuccess,
+    bool IsFound,
+    bool IsAmbiguous,
     string? ExternalPostId,
     string? ExternalPostUrl,
     string? FailureCode,

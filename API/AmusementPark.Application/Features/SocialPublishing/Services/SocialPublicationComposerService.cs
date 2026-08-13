@@ -64,6 +64,7 @@ public sealed class SocialPublicationComposerService : ISocialPublicationCompose
             target.ImageOwnerId,
             images,
             hasPublishedParkAnnouncement,
+            parkAnnouncement?.Id,
             parkAnnouncement?.Status,
             parkAnnouncement?.ExternalPostUrl);
         return ApplicationResult<SocialPublicationDraft>.Success(draft);

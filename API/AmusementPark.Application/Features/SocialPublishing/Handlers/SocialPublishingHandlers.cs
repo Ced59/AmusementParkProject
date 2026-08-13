@@ -62,6 +62,28 @@ public sealed class RetrySocialPublicationCommandHandler
     }
 }
 
+public sealed class RetryParkAnnouncementPublicationCommandHandler
+    : ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>>
+{
+    private readonly ISocialPublicationService service;
+
+    public RetryParkAnnouncementPublicationCommandHandler(ISocialPublicationService service)
+    {
+        this.service = service;
+    }
+
+    public async Task<ApplicationResult<SocialPublication>> HandleAsync(
+        RetryParkAnnouncementPublicationCommand command,
+        CancellationToken cancellationToken = default)
+    {
+        return await this.service.RetryParkAnnouncementAsync(
+            command.ParkId,
+            command.PublicationId,
+            command.RequestedByUserId,
+            cancellationToken);
+    }
+}
+
 public sealed class UpdateSocialPublicationCommandHandler
     : ICommandHandler<UpdateSocialPublicationCommand, ApplicationResult<SocialPublication>>
 {

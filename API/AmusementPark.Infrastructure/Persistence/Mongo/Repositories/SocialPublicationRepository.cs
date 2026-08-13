@@ -36,6 +36,38 @@ public sealed class SocialPublicationRepository : ISocialPublicationRepository
         return document.ToDomain();
     }
 
+    public async Task<SocialPublication?> TryClaimFailedForRetryAsync(
+        string publicationId,
+        DateTime expectedUpdatedAtUtc,
+        string? requestedByUserId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<SocialPublicationDocument> filter = Builders<SocialPublicationDocument>.Filter.And(
+            Builders<SocialPublicationDocument>.Filter.Eq(static current => current.Id, publicationId),
+            Builders<SocialPublicationDocument>.Filter.Eq(
+                static current => current.Status,
+                SocialPublicationStatus.Failed.ToString()),
+            Builders<SocialPublicationDocument>.Filter.Eq(
+                static current => current.UpdatedAt,
+                expectedUpdatedAtUtc));
+        UpdateDefinition<SocialPublicationDocument> update = Builders<SocialPublicationDocument>.Update
+            .Set(static current => current.Status, SocialPublicationStatus.Pending.ToString())
+            .Set(static current => current.RequestedByUserId, requestedByUserId)
+            .Set(static current => current.FailureCode, null)
+            .Set(static current => current.FailureMessage, null)
+            .Set(static current => current.UpdatedAt, DateTime.UtcNow);
+        SocialPublicationDocument? document = await this.collection.FindOneAndUpdateAsync(
+            filter,
+            update,
+            new FindOneAndUpdateOptions<SocialPublicationDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+                IsUpsert = false,
+            },
+            cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<SocialPublication?> GetByIdAsync(string id, CancellationToken cancellationToken)
     {
         SocialPublicationDocument? document = await this.collection

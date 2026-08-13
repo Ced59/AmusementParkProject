@@ -150,7 +150,7 @@ Une complétude ou une publication de données ne déclenche jamais cette opéra
      -ImagePage 1 -ImagePageSize 6
    ```
 
-   Pour une page parc, la réponse fournit aussi `hasPublishedParkAnnouncement`, `parkAnnouncementStatus` et `parkAnnouncementExternalUrl`. Ces champs permettent au workflow du backlog de vérifier l’annonce idempotente sans lire l’administration ni la base de données.
+   Pour une page parc, la réponse fournit aussi `hasPublishedParkAnnouncement`, `parkAnnouncementId`, `parkAnnouncementStatus` et `parkAnnouncementExternalUrl`. Ces champs permettent au workflow du backlog de vérifier l’annonce idempotente et de relancer exactement son enregistrement échoué sans lire l’administration ni la base de données.
 
 2. Parcourir les pages suivantes si nécessaire. Une image est sélectionnable seulement si son identifiant apparaît dans la réponse de cette même cible. Pour une fiche parc ou ses sous-pages, seules ses images publiques de catégorie `PARK` sont proposées ; pour un parkItem, seules ses images publiques de catégorie `PARK_ITEM` le sont. Une page sans propriétaire d’image conserve simplement son Open Graph automatique.
 3. Publier après le contrôle d’activité global effectué par le client :
@@ -164,6 +164,16 @@ Une complétude ou une publication de données ne déclenche jamais cette opéra
    Omettre `-Message` conserve le texte automatique du brouillon. Fournir `-Message '...'` applique le texte explicite de l’utilisateur. Omettre `-ImageId` conserve exactement les règles et l’image Open Graph actuelles.
 4. Ne jamais deviner un identifiant, reprendre une image d’un autre parc ou appeler directement l’administration. Le serveur revalide au moment de la publication la visibilité, la catégorie et le propriétaire de l’image ; un choix devenu privé ou étranger est refusé.
 5. Rapporter séparément le résultat Facebook et celui d’une éventuelle publication de données. Une annonce automatique de première publication d’un parc reste indépendante : ne pas la doubler par une publication manuelle sans instruction explicite.
+
+Lorsqu’une annonce automatique de parc existe avec le statut `Failed`, le workflow du backlog peut relancer exclusivement ce même enregistrement après un nouveau contrôle d’activité global :
+
+```powershell
+.\tools\codex\park-data-editor.ps1 -Action RetryFacebookPublication `
+  -ParkId 'park-id' `
+  -PublicationId 'publication-id-retourne-par-le-serveur'
+```
+
+`ParkId` et `PublicationId` doivent correspondre à l’annonce Facebook automatique du parc. La commande refuse une publication manuelle, étrangère ou non rattachée au parc, et le service n’accepte la reprise que depuis le statut `Failed`. Avant tout nouvel envoi, il recherche dans les publications de la Page le message exact autour de l’heure de la tentative : une correspondance unique réconcilie l’enregistrement sans doublon, aucune correspondance autorise seulement alors la relance du même enregistrement, et une recherche impossible ou ambiguë bloque tout envoi. Après l’appel, relancer `ResolveFacebookPublication` et exiger le statut `Published`. Ne jamais rappeler `PublishFacebook` ni fabriquer une publication manuelle pour contourner un échec : si la reprise ne publie ou ne réconcilie pas l’annonce, conserver la ligne du backlog et signaler le blocage.
 
 Pour une page parc, `PublishFacebook` appelé sans `Message` et sans `ImageId` utilise le chemin d’annonce idempotent du parc. Une publication existante portant la clé du parc est renvoyée au lieu d’être recréée. Un message ou une image explicitement personnalisés restent une publication manuelle distincte.
 

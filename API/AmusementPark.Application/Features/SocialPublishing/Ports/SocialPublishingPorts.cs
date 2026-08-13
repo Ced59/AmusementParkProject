@@ -11,6 +11,10 @@ public interface ISocialPublisher
 
     Task<SocialPublisherResult> PublishLinkAsync(SocialPublisherRequest request, CancellationToken cancellationToken);
 
+    Task<SocialPublisherLinkReconciliationResult> ReconcilePublishedLinkAsync(
+        SocialPublisherLinkReconciliationRequest request,
+        CancellationToken cancellationToken);
+
     Task<SocialPublisherOperationResult> RefreshLinkPreviewAsync(
         string url,
         CancellationToken cancellationToken);
@@ -47,6 +51,12 @@ public interface ISocialPublicationRepository
     Task<SocialPublication> CreateAsync(SocialPublication publication, CancellationToken cancellationToken);
 
     Task<SocialPublication> UpdateAsync(SocialPublication publication, CancellationToken cancellationToken);
+
+    Task<SocialPublication?> TryClaimFailedForRetryAsync(
+        string publicationId,
+        DateTime expectedUpdatedAtUtc,
+        string? requestedByUserId,
+        CancellationToken cancellationToken);
 
     Task<SocialPublication?> GetByIdAsync(string id, CancellationToken cancellationToken);
 

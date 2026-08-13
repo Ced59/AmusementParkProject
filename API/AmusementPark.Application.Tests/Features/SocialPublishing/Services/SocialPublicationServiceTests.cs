@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.SocialPublishing.Services;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.SocialPublishing;
+using Microsoft.Extensions.Logging.Abstractions;
 using Xunit;
 
 namespace AmusementPark.Application.Tests.Features.SocialPublishing.Services;
@@ -204,6 +205,44 @@ public sealed class SocialPublicationServiceTests
     }
 
     [Fact]
+    public async Task PublishParkAnnouncementAsync_WhenFacebookResponseTimesOutAfterPublishing_ShouldReconcileSuccess()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        publisher.PublishException = new TaskCanceledException("Simulated response timeout.");
+        publisher.ReconciliationResult = new SocialPublisherLinkReconciliationResult(
+            true,
+            true,
+            false,
+            "123_456",
+            "https://www.facebook.com/123/posts/456",
+            null,
+            null);
+        SocialPublicationService service = CreateService(repository, publisher);
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Test Park",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+
+        SocialPublication? publication = await service.PublishParkAnnouncementAsync(
+            park,
+            "editor-1",
+            CancellationToken.None);
+
+        Assert.NotNull(publication);
+        Assert.Equal(SocialPublicationStatus.Published, publication.Status);
+        Assert.Equal("123_456", publication.ExternalPostId);
+        Assert.Null(publication.FailureCode);
+        Assert.Equal(1, publisher.PublishCallCount);
+        Assert.Equal(1, publisher.ReconcileCallCount);
+        Assert.Single(repository.Publications);
+    }
+
+    [Fact]
     public async Task RetryAsync_WhenFailedPublicationExists_ShouldPublishSameRecord()
     {
         InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
@@ -232,6 +271,222 @@ public sealed class SocialPublicationServiceTests
         Assert.Null(result.Value.FailureCode);
         Assert.Equal(1, publisher.PublishCallCount);
         Assert.Single(repository.Publications);
+    }
+
+    [Fact]
+    public async Task RetryParkAnnouncementAsync_ShouldKeepStalePageAvailableAndPublishSameRecord()
+    {
+        List<string> events = new List<string>();
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication failedPublication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.AutomaticParkPublication,
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/park/park-1/parc-etincelle",
+            SourceEntityType = "Park",
+            SourceEntityId = "park-1",
+            DeduplicationKey = "facebook:park:park-1",
+            FailureCode = "publisher-unavailable",
+        };
+        repository.Publications.Add(failedPublication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured(events);
+        RecordingSsrPageCacheInvalidator invalidator = new RecordingSsrPageCacheInvalidator(events);
+        SocialPublicationService service = CreateService(repository, publisher, invalidator);
+
+        ApplicationResult<SocialPublication> result = await service.RetryParkAnnouncementAsync(
+            "park-1",
+            "publication-1",
+            "editor-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Same(failedPublication, result.Value);
+        Assert.Equal(SocialPublicationStatus.Published, failedPublication.Status);
+        Assert.Equal(new[] { "invalidate", "publish" }, events);
+        Assert.Equal(1, publisher.PublishCallCount);
+        Assert.Single(repository.Publications);
+        SsrPageCacheInvalidationRequest request = Assert.Single(invalidator.Requests);
+        Assert.Equal(new[] { "/fr/park/park-1/parc-etincelle" }, request.Paths);
+        Assert.True(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
+    public async Task RetryParkAnnouncementAsync_WhenRequestsOverlap_ShouldPublishOnlyOnce()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication failedPublication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.AutomaticParkPublication,
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/park/park-1/parc-etincelle",
+            SourceEntityType = "Park",
+            SourceEntityId = "park-1",
+            DeduplicationKey = "facebook:park:park-1",
+        };
+        repository.Publications.Add(failedPublication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        TaskCompletionSource reconciliationGate = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        int reconciliationCount = 0;
+        publisher.ReconcileAsync = async cancellationToken =>
+        {
+            if (Interlocked.Increment(ref reconciliationCount) == 2)
+            {
+                reconciliationGate.SetResult();
+            }
+
+            await reconciliationGate.Task.WaitAsync(cancellationToken);
+            return publisher.ReconciliationResult;
+        };
+        SocialPublicationService service = CreateService(repository, publisher);
+
+        Task<ApplicationResult<SocialPublication>> first = service.RetryParkAnnouncementAsync(
+            "park-1", "publication-1", "editor-1", CancellationToken.None);
+        Task<ApplicationResult<SocialPublication>> second = service.RetryParkAnnouncementAsync(
+            "park-1", "publication-1", "editor-2", CancellationToken.None);
+        ApplicationResult<SocialPublication>[] results = await Task.WhenAll(first, second);
+
+        Assert.Single(results, static result => result.IsSuccess);
+        Assert.Single(results, static result => !result.IsSuccess);
+        Assert.Contains(
+            results.Single(static result => !result.IsSuccess).Errors,
+            static error => error.Code == "social-publishing.publication.retry-not-allowed");
+        Assert.Equal(1, publisher.PublishCallCount);
+        Assert.Equal(2, publisher.ReconcileCallCount);
+        Assert.Equal(SocialPublicationStatus.Published, failedPublication.Status);
+    }
+
+    [Fact]
+    public async Task RetryAsync_WhenAutomaticParkAnnouncementAlreadyPublished_ShouldReconcileWithoutDuplicate()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication failedPublication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.AutomaticParkPublication,
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/park/park-1/parc-etincelle",
+            SourceEntityType = "Park",
+            SourceEntityId = "park-1",
+            DeduplicationKey = "facebook:park:park-1",
+            AttemptedAtUtc = new DateTime(2026, 8, 13, 9, 20, 0, DateTimeKind.Utc),
+            FailureCode = "publisher-unavailable",
+        };
+        repository.Publications.Add(failedPublication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        publisher.ReconciliationResult = new SocialPublisherLinkReconciliationResult(
+            true,
+            true,
+            false,
+            "123_456",
+            "https://www.facebook.com/123/posts/456",
+            null,
+            null);
+        RecordingSsrPageCacheInvalidator invalidator = new RecordingSsrPageCacheInvalidator();
+        SocialPublicationService service = CreateService(repository, publisher, invalidator);
+
+        ApplicationResult<SocialPublication> result = await service.RetryAsync(
+            "publication-1",
+            "editor-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(SocialPublicationStatus.Published, failedPublication.Status);
+        Assert.Equal("123_456", failedPublication.ExternalPostId);
+        Assert.Equal("https://www.facebook.com/123/posts/456", failedPublication.ExternalPostUrl);
+        Assert.Null(failedPublication.FailureCode);
+        Assert.Equal(1, publisher.ReconcileCallCount);
+        Assert.Equal(0, publisher.PublishCallCount);
+        Assert.Empty(invalidator.Requests);
+        Assert.Single(repository.Publications);
+    }
+
+    [Fact]
+    public async Task RetryParkAnnouncementAsync_WhenPublicationIdDoesNotMatch_ShouldRejectWithoutSideEffect()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication failedPublication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.AutomaticParkPublication,
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/park/park-1/parc-etincelle",
+            SourceEntityType = "Park",
+            SourceEntityId = "park-1",
+            DeduplicationKey = "facebook:park:park-1",
+        };
+        repository.Publications.Add(failedPublication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        RecordingSsrPageCacheInvalidator invalidator = new RecordingSsrPageCacheInvalidator();
+        SocialPublicationService service = CreateService(repository, publisher, invalidator);
+
+        ApplicationResult<SocialPublication> result = await service.RetryParkAnnouncementAsync(
+            "park-1",
+            "publication-other",
+            "editor-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "social-publishing.publication.not-found");
+        Assert.Equal(SocialPublicationStatus.Failed, failedPublication.Status);
+        Assert.Equal(0, publisher.PublishCallCount);
+        Assert.Empty(invalidator.Requests);
+    }
+
+    [Fact]
+    public async Task RetryParkAnnouncementAsync_WhenReconciliationIsAmbiguous_ShouldNotRepublish()
+    {
+        InMemorySocialPublicationRepository repository = new InMemorySocialPublicationRepository();
+        SocialPublication failedPublication = new SocialPublication
+        {
+            Id = "publication-1",
+            Network = SocialNetwork.Facebook,
+            Status = SocialPublicationStatus.Failed,
+            Trigger = SocialPublicationTrigger.AutomaticParkPublication,
+            Message = "Announcement",
+            Url = "https://amusement-parks.fun/fr/park/park-1/parc-etincelle",
+            SourceEntityType = "Park",
+            SourceEntityId = "park-1",
+            DeduplicationKey = "facebook:park:park-1",
+        };
+        repository.Publications.Add(failedPublication);
+        StubSocialPublisher publisher = StubSocialPublisher.Configured();
+        publisher.ReconciliationResult = new SocialPublisherLinkReconciliationResult(
+            true,
+            false,
+            true,
+            null,
+            null,
+            null,
+            null);
+        RecordingSsrPageCacheInvalidator invalidator = new RecordingSsrPageCacheInvalidator();
+        SocialPublicationService service = CreateService(repository, publisher, invalidator);
+
+        ApplicationResult<SocialPublication> result = await service.RetryParkAnnouncementAsync(
+            "park-1",
+            "publication-1",
+            "editor-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "social-publishing.publication.reconciliation-ambiguous");
+        Assert.Equal(SocialPublicationStatus.Failed, failedPublication.Status);
+        Assert.Equal(1, publisher.ReconcileCallCount);
+        Assert.Equal(0, publisher.PublishCallCount);
+        Assert.Empty(invalidator.Requests);
     }
 
     [Fact]
@@ -389,7 +644,10 @@ public sealed class SocialPublicationServiceTests
             repository,
             new[] { publisher },
             new StubPublicSeoContextProvider(),
-            ssrPageCacheInvalidator ?? new RecordingSsrPageCacheInvalidator());
+            ssrPageCacheInvalidator ?? new RecordingSsrPageCacheInvalidator(),
+            new SocialPublicationReconciler(
+                repository,
+                NullLogger<SocialPublicationReconciler>.Instance));
     }
 
     private sealed class RecordingSsrPageCacheInvalidator : ISsrPageCacheInvalidator
@@ -453,6 +711,22 @@ public sealed class SocialPublicationServiceTests
 
         public int GetCallCount { get; private set; }
 
+        public int ReconcileCallCount { get; private set; }
+
+        public SocialPublisherLinkReconciliationResult ReconciliationResult { get; set; } =
+            new SocialPublisherLinkReconciliationResult(
+                true,
+                false,
+                false,
+                null,
+                null,
+                null,
+                null);
+
+        public Func<CancellationToken, Task<SocialPublisherLinkReconciliationResult>>? ReconcileAsync { get; set; }
+
+        public Exception? PublishException { get; set; }
+
         public string? LastRefreshedUrl { get; private set; }
 
         public SocialPublisherOperationResult DeleteResult { get; set; } =
@@ -498,12 +772,27 @@ public sealed class SocialPublicationServiceTests
         {
             this.events?.Add("publish");
             this.PublishCallCount++;
+            if (this.PublishException is not null)
+            {
+                return Task.FromException<SocialPublisherResult>(this.PublishException);
+            }
+
             return Task.FromResult(new SocialPublisherResult(
                 true,
                 "facebook-post-1",
                 "https://www.facebook.com/facebook-post-1",
                 null,
                 null));
+        }
+
+        public Task<SocialPublisherLinkReconciliationResult> ReconcilePublishedLinkAsync(
+            SocialPublisherLinkReconciliationRequest request,
+            CancellationToken cancellationToken)
+        {
+            this.ReconcileCallCount++;
+            return this.ReconcileAsync is null
+                ? Task.FromResult(this.ReconciliationResult)
+                : this.ReconcileAsync(cancellationToken);
         }
 
         public Task<SocialPublisherOperationResult> UpdatePostAsync(
@@ -561,6 +850,32 @@ public sealed class SocialPublicationServiceTests
             }
 
             return Task.FromResult(publication);
+        }
+
+        public Task<SocialPublication?> TryClaimFailedForRetryAsync(
+            string publicationId,
+            DateTime expectedUpdatedAtUtc,
+            string? requestedByUserId,
+            CancellationToken cancellationToken)
+        {
+            lock (this.Publications)
+            {
+                SocialPublication? publication = this.Publications.FirstOrDefault(current =>
+                    current.Id == publicationId
+                    && current.Status == SocialPublicationStatus.Failed
+                    && current.UpdatedAtUtc == expectedUpdatedAtUtc);
+                if (publication is null)
+                {
+                    return Task.FromResult<SocialPublication?>(null);
+                }
+
+                publication.RequestedByUserId = requestedByUserId;
+                publication.Status = SocialPublicationStatus.Pending;
+                publication.FailureCode = null;
+                publication.FailureMessage = null;
+                publication.Touch();
+                return Task.FromResult<SocialPublication?>(publication);
+            }
         }
 
         public Task<SocialPublication?> GetByIdAsync(string id, CancellationToken cancellationToken)

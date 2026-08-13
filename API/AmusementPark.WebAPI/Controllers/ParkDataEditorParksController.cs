@@ -33,6 +33,7 @@ public sealed class ParkDataEditorParksController : ControllerBase
     private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksHandler;
     private readonly IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler;
     private readonly ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>> refreshPreviewHandler;
+    private readonly ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>> retryParkAnnouncementHandler;
     private readonly IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>> listPublishedAnnouncementIdsHandler;
 
     public ParkDataEditorParksController(
@@ -40,12 +41,14 @@ public sealed class ParkDataEditorParksController : ControllerBase
         IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<ParkListResult>>> searchParksHandler,
         IQueryHandler<GetParkDataCompletenessScoreQuery, ApplicationResult<DataCompletenessScore>> completenessHandler,
         ICommandHandler<RefreshParkAnnouncementPreviewCommand, ApplicationResult<SocialPublication>> refreshPreviewHandler,
+        ICommandHandler<RetryParkAnnouncementPublicationCommand, ApplicationResult<SocialPublication>> retryParkAnnouncementHandler,
         IQueryHandler<ListPublishedParkAnnouncementIdsQuery, IReadOnlyCollection<string>> listPublishedAnnouncementIdsHandler)
     {
         this.getParksPageHandler = getParksPageHandler;
         this.searchParksHandler = searchParksHandler;
         this.completenessHandler = completenessHandler;
         this.refreshPreviewHandler = refreshPreviewHandler;
+        this.retryParkAnnouncementHandler = retryParkAnnouncementHandler;
         this.listPublishedAnnouncementIdsHandler = listPublishedAnnouncementIdsHandler;
     }
 
@@ -129,6 +132,25 @@ public sealed class ParkDataEditorParksController : ControllerBase
     {
         ApplicationResult<SocialPublication> result = await this.refreshPreviewHandler.HandleAsync(
             new RefreshParkAnnouncementPreviewCommand(parkId, this.User.GetUserId()),
+            cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("{parkId}/social-preview/publications/{publicationId}/retry")]
+    [AdminAudit("park-data-editor.social-preview.retry", "SocialPublication", TargetIdRouteKey = "publicationId")]
+    [ProducesResponseType(typeof(SocialPublicationDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> RetrySocialPreviewPublicationAsync(
+        [FromRoute] string parkId,
+        [FromRoute] string publicationId,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<SocialPublication> result = await this.retryParkAnnouncementHandler.HandleAsync(
+            new RetryParkAnnouncementPublicationCommand(parkId, publicationId, this.User.GetUserId()),
             cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {

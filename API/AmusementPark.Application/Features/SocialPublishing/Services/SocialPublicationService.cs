@@ -13,24 +13,24 @@ namespace AmusementPark.Application.Features.SocialPublishing.Services;
 public sealed class SocialPublicationService : ISocialPublicationService
 {
     internal const int MaximumMessageLength = 5000;
-
     private readonly ISocialPublicationRepository repository;
     private readonly IReadOnlyCollection<ISocialPublisher> publishers;
     private readonly IPublicSeoContextProvider publicSeoContextProvider;
     private readonly ISsrPageCacheInvalidator ssrPageCacheInvalidator;
-
+    private readonly SocialPublicationReconciler reconciler;
     public SocialPublicationService(
         ISocialPublicationRepository repository,
         IEnumerable<ISocialPublisher> publishers,
         IPublicSeoContextProvider publicSeoContextProvider,
-        ISsrPageCacheInvalidator ssrPageCacheInvalidator)
+        ISsrPageCacheInvalidator ssrPageCacheInvalidator,
+        SocialPublicationReconciler reconciler)
     {
         this.repository = repository;
         this.publishers = publishers.ToList();
         this.publicSeoContextProvider = publicSeoContextProvider;
         this.ssrPageCacheInvalidator = ssrPageCacheInvalidator;
+        this.reconciler = reconciler;
     }
-
     public async Task<ApplicationResult<SocialPublication>> PublishManualAsync(
         SocialLinkPublicationRequest request,
         string? requestedByUserId,
@@ -48,32 +48,35 @@ public sealed class SocialPublicationService : ISocialPublicationService
             cancellationToken);
     }
 
-    public async Task<ApplicationResult<SocialPublication>> RetryAsync(
-        string publicationId,
-        string? requestedByUserId,
-        CancellationToken cancellationToken)
+    public Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, CancellationToken cancellationToken) =>
+        this.RetryAsync(publicationId, requestedByUserId, true, cancellationToken);
+    private async Task<ApplicationResult<SocialPublication>> RetryAsync(string publicationId, string? requestedByUserId, bool reconcileAutomaticParkAnnouncement, CancellationToken cancellationToken)
     {
         SocialPublication? publication = await this.repository.GetByIdAsync(publicationId, cancellationToken);
         if (publication is null)
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationNotFound(publicationId));
         }
-
+        if (reconcileAutomaticParkAnnouncement
+            && publication.Trigger == SocialPublicationTrigger.AutomaticParkPublication
+            && string.Equals(publication.SourceEntityType, "Park", StringComparison.Ordinal)
+            && !string.IsNullOrWhiteSpace(publication.SourceEntityId))
+        {
+            return await this.RetryParkAnnouncementAsync(publication.SourceEntityId, publication.Id!, requestedByUserId, cancellationToken);
+        }
         if (publication.Status != SocialPublicationStatus.Failed)
         {
             return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeRetried());
         }
-
-        publication.RequestedByUserId = requestedByUserId;
-        publication.Status = SocialPublicationStatus.Pending;
-        publication.FailureCode = null;
-        publication.FailureMessage = null;
-        publication.Touch();
-        publication = await this.repository.UpdateAsync(publication, cancellationToken);
+        publication = await this.repository.TryClaimFailedForRetryAsync(
+            publication.Id!, publication.UpdatedAtUtc, requestedByUserId, cancellationToken);
+        if (publication is null)
+        {
+            return ApplicationResult<SocialPublication>.Failure(SocialPublishingApplicationErrors.PublicationCannotBeRetried());
+        }
         publication = await this.AttemptPublicationAsync(publication, cancellationToken);
         return ApplicationResult<SocialPublication>.Success(publication);
     }
-
     public async Task<ApplicationResult<SocialPublication>> UpdateAsync(
         string publicationId,
         string? message,
@@ -332,6 +335,62 @@ public sealed class SocialPublicationService : ISocialPublicationService
             cancellationToken);
     }
 
+    public async Task<ApplicationResult<SocialPublication>> RetryParkAnnouncementAsync(
+        string parkId,
+        string publicationId,
+        string? requestedByUserId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        string normalizedPublicationId = publicationId?.Trim() ?? string.Empty;
+        SocialPublication? publication = await this.GetParkAnnouncementAsync(normalizedParkId, cancellationToken);
+        Uri? publicationUri = null;
+        bool isRequestedParkAnnouncement = publication is not null
+            && string.Equals(publication.Id, normalizedPublicationId, StringComparison.OrdinalIgnoreCase)
+            && publication.Network == SocialNetwork.Facebook
+            && publication.Trigger == SocialPublicationTrigger.AutomaticParkPublication
+            && string.Equals(publication.SourceEntityType, "Park", StringComparison.Ordinal)
+            && string.Equals(publication.SourceEntityId, normalizedParkId, StringComparison.OrdinalIgnoreCase)
+            && Uri.TryCreate(publication.Url, UriKind.Absolute, out publicationUri);
+        if (!isRequestedParkAnnouncement)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublicationNotFound(normalizedPublicationId));
+        }
+
+        if (publication!.Status != SocialPublicationStatus.Failed)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublicationCannotBeRetried());
+        }
+
+        ISocialPublisher? publisher = this.FindPublisher(publication.Network);
+        if (publisher is null || !publisher.Describe().IsConfigured)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                SocialPublishingApplicationErrors.PublisherOperationFailed(null));
+        }
+
+        ApplicationResult<SocialPublicationRecovery> recovery = await this.reconciler.RecoverFailedAsync(
+            publisher,
+            publication,
+            requestedByUserId,
+            cancellationToken);
+        if (!recovery.IsSuccess || recovery.Value is null)
+        {
+            return ApplicationResult<SocialPublication>.Failure(
+                recovery.Errors);
+        }
+
+        if (recovery.Value.IsRecovered && recovery.Value.Publication is not null)
+        {
+            return ApplicationResult<SocialPublication>.Success(recovery.Value.Publication);
+        }
+
+        await this.PreservePublicPageDuringSocialPreparationAsync(publicationUri!.AbsolutePath, cancellationToken);
+        return await this.RetryAsync(publication.Id!, requestedByUserId, false, cancellationToken);
+    }
+
     public async Task<ApplicationResult<SocialPublication>> RefreshParkAnnouncementPreviewAsync(
         string parkId,
         string? requestedByUserId,
@@ -471,14 +530,27 @@ public sealed class SocialPublicationService : ISocialPublicationService
         {
             throw;
         }
-        catch (Exception)
+        catch (Exception exception)
         {
+            SocialPublication? recovered = await this.reconciler.RecoverLostResponseAsync(
+                publisher,
+                publication,
+                exception,
+                cancellationToken);
+            if (recovered is not null)
+            {
+                return recovered;
+            }
+
+            bool isTimeout = exception is OperationCanceledException;
             result = new SocialPublisherResult(
                 false,
                 null,
                 null,
-                "publisher-unavailable",
-                "Le réseau social n'a pas pu être contacté.");
+                isTimeout ? "publisher-response-timeout" : "publisher-response-unknown",
+                isTimeout
+                    ? "Facebook n'a pas répondu à temps ; la publication doit être rapprochée avant toute relance."
+                    : "La réponse de Facebook a été perdue ; la publication doit être rapprochée avant toute relance.");
         }
 
         publication.Status = result.IsSuccess ? SocialPublicationStatus.Published : SocialPublicationStatus.Failed;

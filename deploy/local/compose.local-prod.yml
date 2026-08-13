@@ -131,7 +131,7 @@ services:
       SocialPublishing__Facebook__PageId: ${SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID:-}
       SocialPublishing__Facebook__PageAccessToken: ${SOCIAL_PUBLISHING_FACEBOOK_PAGE_ACCESS_TOKEN:-}
       SocialPublishing__Facebook__PageUrl: ${SOCIAL_PUBLISHING_FACEBOOK_PAGE_URL:-}
-      SocialPublishing__Facebook__RequestTimeoutSeconds: ${SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS:-10}
+      SocialPublishing__Facebook__RequestTimeoutSeconds: ${SOCIAL_PUBLISHING_FACEBOOK_REQUEST_TIMEOUT_SECONDS:-30}
       SocialPublishing__Facebook__WebhookEnabled: ${SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED:-false}
       SocialPublishing__Facebook__AppSecret: ${SOCIAL_PUBLISHING_FACEBOOK_APP_SECRET:-}
       SocialPublishing__Facebook__WebhookVerifyToken: ${SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_VERIFY_TOKEN:-}

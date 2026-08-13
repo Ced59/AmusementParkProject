@@ -1,6 +1,20 @@
 {
-  "version": "4.1.37",
+  "version": "4.1.38",
   "history": [
+    {
+      "version": "4.1.38",
+      "releasedAt": "2026-08-13",
+      "labels": {
+        "fr": "Les opérations d’administration gagnent en fiabilité.",
+        "en": "Administrative operations are more reliable.",
+        "de": "Verwaltungsabläufe sind jetzt zuverlässiger.",
+        "nl": "Beheerhandelingen zijn betrouwbaarder.",
+        "it": "Le operazioni amministrative sono più affidabili.",
+        "es": "Las operaciones de administración son más fiables.",
+        "pl": "Operacje administracyjne są bardziej niezawodne.",
+        "pt": "As operações de administração estão mais fiáveis."
+      }
+    },
     {
       "version": "4.1.37",
       "releasedAt": "2026-08-13",
